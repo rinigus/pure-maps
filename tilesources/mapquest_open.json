@@ -1,0 +1,7 @@
+{
+    "attribution": "© MapQuest, OpenStreetMap contributors",
+    "extension": ".jpg",
+    "format": "slippy",
+    "name": "MapQuest Open",
+    "url": "http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg"
+}

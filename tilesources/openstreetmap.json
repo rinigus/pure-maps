@@ -1,0 +1,7 @@
+{
+    "attribution": "© OpenStreetMap contributors",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "OpenStreetMap",
+    "url": "http://tile.openstreetmap.org/{z}/{x}/{y}.png"
+}

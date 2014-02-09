@@ -1,0 +1,6 @@
+*.py[co]
+*~
+.hidden
+__pycache__
+dist
+rpm/*.rpm
