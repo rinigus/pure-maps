@@ -17,6 +17,7 @@
 
 """Attribute dictionary of configuration values."""
 
+import copy
 import json
 import os
 import poor
@@ -48,8 +49,7 @@ class Configuration(AttrDict):
 
     def __init__(self):
         """Initialize a :class:`Configuration` object."""
-        AttrDict.__init__(self)
-        self.update(DEFAULTS)
+        AttrDict.__init__(self, copy.deepcopy(DEFAULTS))
 
     def _coerce(self, value, ref):
         """Coerce type of `value` to match `ref`."""
