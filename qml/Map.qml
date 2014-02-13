@@ -55,7 +55,7 @@ Map {
     }
 
     Component.onCompleted: {
-        // XXX: Is this safe at this point?
+        // XXX: This isn't safe!
         py.call("poor.app.send_defaults", [], null);
         timer.start();
     }
@@ -108,6 +108,15 @@ Map {
     // Set the current zoom level.
     function setZoomLevel(zoom) {
         map.zoomLevel = zoom;
+    }
+
+    // Show the tile with given uid.
+    function showTile(uid) {
+        for (var i = 0; i < map.tiles.length; i++) {
+            if (map.tiles[i].uid != uid) continue;
+            map.tiles[i].visible = true ;
+            break;
+        }
     }
 
     // Ask the Python backend to download missing tiles.

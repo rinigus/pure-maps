@@ -29,6 +29,7 @@ Python {
         py.setHandler("set-attribution", map.setAttribution);
         py.setHandler("set-center", map.setCenter);
         py.setHandler("set-zoom-level", map.setZoomLevel);
+        py.setHandler("show-tile", map.showTile);
     }
     onError: console.log("PYTHON ERROR: " + traceback);
 }

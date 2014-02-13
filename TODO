@@ -15,3 +15,8 @@ Poor Maps 1.0
    - Cannot show "individual maneuvers of a calculated route"
  * Add MapBox tiles?
    - Free accounts limited to 3000 views (45000 tiles) per month
+ * Add geocoding
+   - http://wiki.openstreetmap.org/wiki/Nominatim
+   - http://open.mapquestapi.com/nominatim/
+ * Add routing
+   - http://wiki.openstreetmap.org/wiki/Routing/online_routers

@@ -40,6 +40,13 @@ class TileCollection:
         """Initialize a :class:`TileCollection` object."""
         self._tiles = []
 
+    def get(self, x, y, zoom):
+        """Return tile at position or ``None``."""
+        for tile in self._tiles:
+            if (tile.zoom == zoom and tile.x == x and tile.y == y):
+                return tile
+        return None
+
     def get_free(self, xmin, xmax, ymin, ymax, zoom):
         """Return a random tile outside bounds."""
         for tile in self._tiles:
@@ -54,10 +61,3 @@ class TileCollection:
         tile = Tile(len(self._tiles)+1)
         self._tiles.append(tile)
         return(tile)
-
-    def has(self, x, y, zoom):
-        """Return ``True`` if collection contains tile at position."""
-        for tile in self._tiles:
-            if (tile.zoom == zoom and tile.x == x and tile.y == y):
-                return True
-        return False

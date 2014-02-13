@@ -63,7 +63,11 @@ class Application:
         bbox = poor.util.bbox_deg2num(xmin, xmax, ymin, ymax, zoom)
         xmin, xmax, ymin, ymax = bbox
         for x, y in poor.util.prod_tiles(xmin, xmax, ymin, ymax):
-            if self.tilecollection.has(x, y, zoom): continue
+            if len(self.thread_queue) > 1: break
+            tile = self.tilecollection.get(x, y, zoom)
+            if tile is not None:
+                pyotherside.send("show-tile", tile.uid)
+                continue
             path = self.tilesource.download(x, y, zoom)
             if path is None: continue
             uri = poor.util.path2uri(path)
@@ -73,7 +77,6 @@ class Application:
             tile.zoom = zoom
             xcoord, ycoord = poor.util.num2deg(x, y, zoom)
             pyotherside.send("render-tile", tile.uid, xcoord, ycoord, uri)
-            if len(self.thread_queue) > 1: break
         self.thread_queue.pop(0)
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
