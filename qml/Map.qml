@@ -54,11 +54,7 @@ Map {
         onTriggered: map.changed && map.updateTiles();
     }
 
-    Component.onCompleted: {
-        // XXX: This isn't safe!
-        py.call("poor.app.send_defaults", [], null);
-        timer.start();
-    }
+    Component.onCompleted: timer.start();
 
     // Allow zooming with plus and minus keys on the emulator.
     Keys.onPressed: {

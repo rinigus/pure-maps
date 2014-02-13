@@ -43,6 +43,7 @@ class Application:
         self.tilecollection = poor.TileCollection()
         self.tilesource = None
         self._init_tilesource()
+        self._send_defaults()
 
     def _init_tilesource(self):
         """Initialize map tile source."""
@@ -52,7 +53,7 @@ class Application:
             poor.conf.tilesource = poor.conf.get_default("tilesource")
             self.tilesource = poor.TileSource(poor.conf.tilesource)
 
-    def send_defaults(self):
+    def _send_defaults(self):
         """Send default configuration to QML."""
         pyotherside.send("set-center", *poor.conf.center)
         pyotherside.send("set-zoom-level", poor.conf.zoom)
