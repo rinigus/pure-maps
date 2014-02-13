@@ -30,6 +30,8 @@ MapQuickItem {
     sourceItem: Item {
         Image {
             id: image
+            asynchronous: true
+            cache: false
             fillMode: Image.Pad
             height: 256
             smooth: false
