@@ -18,17 +18,9 @@
 """An application to display maps and stuff."""
 
 import poor
+import pyotherside
 import threading
 import time
-
-try:
-    import pyotherside
-except ImportError:
-    # Allow testing Python part alone.
-    print("PyOtherSide not found, continuing anyway!")
-    class pyotherside:
-        def send(*args):
-            pass
 
 __all__ = ("Application",)
 

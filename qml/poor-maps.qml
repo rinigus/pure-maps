@@ -33,4 +33,7 @@ ApplicationWindow {
     Python {
         id: py
     }
+    onApplicationActiveChanged: {
+        applicationActive ? map.timer.start() : map.timer.stop();
+    }
 }

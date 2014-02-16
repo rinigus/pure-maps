@@ -21,6 +21,8 @@ import io.thp.pyotherside 1.0
 
 Python {
     id: py
+    property bool ready: false
+
     Component.onCompleted: {
         addImportPath(Qt.resolvedUrl("..").substr("file://".length));
         importModule("poor", null);
@@ -28,8 +30,15 @@ Python {
         py.setHandler("render-tile", map.renderTile);
         py.setHandler("set-attribution", map.setAttribution);
         py.setHandler("set-center", map.setCenter);
+        py.setHandler("set-ready", py.setReady);
         py.setHandler("set-zoom-level", map.setZoomLevel);
         py.setHandler("show-tile", map.showTile);
     }
+
     onError: console.log("PYTHON ERROR: " + traceback);
+
+    // Set state of the Python backend.
+    function setReady(ready) {
+        py.ready = ready;
+    }
 }

@@ -81,5 +81,6 @@ class TileSource:
         except Exception as error:
             print("Failed to download tile: {}"
                   .format(str(error)), file=sys.stderr)
+
             return None
         return path

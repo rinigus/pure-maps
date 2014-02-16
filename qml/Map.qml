@@ -23,11 +23,10 @@ import QtPositioning 5.0
 Map {
     id: map
     anchors.fill: parent
-    center: QtPositioning.coordinate(0, 0)
+    center: QtPositioning.coordinate(60.169, 24.941)
     focus: true
     gesture.enabled: true
     plugin: MapPlugin {}
-    zoomLevel: 3
     property bool changed: true
     property var tiles: []
 
@@ -47,9 +46,8 @@ Map {
         z: 100
     }
 
-    Timer {
-        id: timer
-        interval: 100
+    property var timer: Timer {
+        interval: 500
         repeat: true
         onTriggered: map.changed && map.updateTiles();
     }
@@ -118,6 +116,7 @@ Map {
     // Ask the Python backend to download missing tiles.
     function updateTiles() {
         if (map.width <= 0 || map.height <= 0) return;
+        if (!py.ready) return;
         var nw = map.toCoordinate(Qt.point(0, 0));
         var se = map.toCoordinate(Qt.point(map.width, map.height));
         py.call("poor.app.update_tiles", [nw.longitude,

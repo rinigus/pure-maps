@@ -31,11 +31,9 @@ from poor.application import *
 
 def main():
     """Initialize application."""
+    import pyotherside
     conf.read()
-    try:
-        import pyotherside
-        pyotherside.atexit(conf.write)
-    except Exception:
-        pass
+    pyotherside.atexit(conf.write)
     global app
     app = Application()
+    pyotherside.send("set-ready", True)
