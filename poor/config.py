@@ -1,4 +1,4 @@
-# -*- coding: utf-8-unix -*-
+# -*- coding: utf-8 -*-
 
 # Copyright (C) 2014 Osmo Salomaa
 #
