@@ -25,7 +25,7 @@ class Tile:
     """Properties of a map tile."""
 
     def __init__(self, uid):
-        """Initialize a :class:`Tile` object."""
+        """Initialize a :class:`Tile` instance."""
         self.x = -1
         self.y = -1
         self.zoom = -1
@@ -37,7 +37,7 @@ class TileCollection:
     """A collection of map tiles visible on screen."""
 
     def __init__(self):
-        """Initialize a :class:`TileCollection` object."""
+        """Initialize a :class:`TileCollection` instance."""
         self._tiles = []
 
     def get(self, x, y, zoom):

@@ -38,7 +38,7 @@ class AttrDict(dict):
     """Dictionary with attribute access to keys."""
 
     def __init__(self, *args, **kwargs):
-        """Initialize an :class:`AttrDict` object."""
+        """Initialize an :class:`AttrDict` instance."""
         dict.__init__(self, *args, **kwargs)
         self.__dict__ = self
 
@@ -48,7 +48,7 @@ class Configuration(AttrDict):
     """Attribute dictionary of configuration values."""
 
     def __init__(self):
-        """Initialize a :class:`Configuration` object."""
+        """Initialize a :class:`Configuration` instance."""
         AttrDict.__init__(self, copy.deepcopy(DEFAULTS))
 
     def _coerce(self, value, ref):

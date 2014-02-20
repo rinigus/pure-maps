@@ -31,7 +31,7 @@ class TileSource:
     """Map tile source with cached tile downloads."""
 
     def __init__(self, id):
-        """Initialize a :class:`TileSource` object."""
+        """Initialize a :class:`TileSource` instance."""
         values = self._load_attributes(id)
         self.attribution = values["attribution"]
         self.extension = values["extension"]
