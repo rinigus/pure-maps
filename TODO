@@ -1,6 +1,9 @@
 Poor Maps 0.1
 =============
 
+ * Pinch-zoom is non-discrete!
+   - Either check image scaling and smoothing settings
+   - or restrict to dicrete zoom levels?
  * Add icon
  * Add distribution files
  * Add UI to change tile source
