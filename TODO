@@ -4,7 +4,7 @@ Poor Maps 0.1
  * Pinch-zoom is non-discrete!
    - Either check image scaling and smoothing settings
    - or restrict to dicrete zoom levels?
- * Add icon
+ * Add positioning
  * Add distribution files
  * Add UI to change tile source
  * Ask permission from OSM sysadmins
@@ -13,11 +13,6 @@ Poor Maps 0.1
 Poor Maps 1.0
 =============
 
- * Add HERE tiles?
-   - Cannot be "commingled" with non-HERE geocoders etc.
-   - Cannot show "individual maneuvers of a calculated route"
- * Add MapBox tiles?
-   - Free accounts limited to 3000 views (45000 tiles) per month
  * Add geocoding
    - http://wiki.openstreetmap.org/wiki/Nominatim
    - http://open.mapquestapi.com/nominatim/
