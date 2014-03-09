@@ -1,9 +1,14 @@
 Poor Maps 0.1
 =============
 
+ * Bugs
+   - Crashes on startup
+   - Crashes when panning or zooming
+   - Preferences saved only on clean exit
  * Add UI to change tile source
  * Ask permission from OSM sysadmins
  * Add OSM Roads from OpenMapSurfer (need to ask permission)
+ * Remove debug messages
 
 Poor Maps 1.0
 =============
