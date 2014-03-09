@@ -1,0 +1,23 @@
+Releasing a New Version
+=======================
+
+ * Bump version numbers
+   - poor/__init__.py
+   - Makefile
+   - rpm/*.spec
+ * Update NEWS and TODO
+ * Build tarball and RPM
+   $ make dist
+   $ make rpm
+ * Install RPM and check that it works
+   $ pkcon install-local rpm/*.noarch.rpm
+ * Commit changes
+   $ git commit -a -m "RELEASE X.Y.Z"
+   $ git tag -s poor-maps-X.Y.Z
+   $ git push
+   $ git push --tags
+ * Build final tarball and RPM
+   $ make dist
+   $ make rpm
+   $ pkcon install-local rpm/*.noarch.rpm
+ * Upload and announce

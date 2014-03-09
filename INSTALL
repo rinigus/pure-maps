@@ -1,0 +1,15 @@
+Installation
+============
+
+To install, run command
+
+    make PREFIX=... install
+
+Uninstallation
+==============
+
+To uninstall, remove files and directories
+
+    .../share/harbour-poor-maps/
+    .../share/applications/harbour-poor-maps.desktop
+    .../share/icons/hicolor/86x86/apps/harbour-poor-maps.png

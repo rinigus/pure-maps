@@ -45,10 +45,10 @@
        gradientUnits="userSpaceOnUse"
        id="SVGID_1_"><stop
          id="stop7"
-         style="stop-color:#ededed;stop-opacity:1;"
+         style="stop-color:#e3e3e3;stop-opacity:1;"
          offset="0.0054" /><stop
          id="stop9"
-         style="stop-color:#cfcfcf;stop-opacity:1;"
+         style="stop-color:#c5c5c5;stop-opacity:1;"
          offset="1" /></linearGradient><linearGradient
        inkscape:collect="always"
        xlink:href="#SVGID_1_"
