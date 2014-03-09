@@ -54,6 +54,8 @@ def makedirs(directory):
     try:
         os.makedirs(directory)
     except OSError as error:
+        if os.path.isdir(directory):
+            return directory
         print("Failed to create directory {}: {}"
               .format(repr(directory), str(error)),
               file=sys.stderr)
