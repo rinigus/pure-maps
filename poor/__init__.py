@@ -19,10 +19,6 @@
 
 __version__ = "0.0"
 
-# XXX: Try to avoid segfaults?
-import threading
-threading.stack_size(10*1024*1024)
-
 from poor.paths import *
 from poor import util
 
@@ -40,6 +36,3 @@ def main():
     pyotherside.atexit(conf.write)
     global app
     app = Application()
-    # XXX: Try to crash less often.
-    import time
-    time.sleep(1)
