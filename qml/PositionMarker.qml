@@ -26,5 +26,5 @@ MapQuickItem {
         id: image
         source: "icons/position.png"
     }
-    z: 201
+    z: 200
 }

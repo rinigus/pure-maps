@@ -49,7 +49,7 @@ Map {
         opacity: 0.6
         text: ""
         textFormat: Text.PlainText
-        z: 101
+        z: 100
     }
 
     Timer {
@@ -87,7 +87,7 @@ Map {
             return;
         }
         for (var i = 0; i < map.tiles.length; i++)
-            map.tiles[i].z = 0;
+            map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
         map.zoomLevelPrev = map.zoomLevel;
         map.changed = true;
     }
@@ -105,7 +105,7 @@ Map {
             map.tiles[i].uri = uri;
             map.tiles[i].zoomLevel = zoom;
             map.tiles[i].visible = true;
-            map.tiles[i].z = 1;
+            map.tiles[i].z = 10;
             return;
         }
         console.log("...adding new tile...");
@@ -116,7 +116,7 @@ Map {
         tile.uid = uid;
         tile.uri = uri;
         tile.zoomLevel = zoom;
-        tile.z = 1;
+        tile.z = 10;
         map.tiles.push(tile);
         map.addMapItem(tile);
         console.log("...map.renderTile");
