@@ -23,7 +23,7 @@ import os
 import poor
 import sys
 
-__all__ = ("Configuration",)
+__all__ = ("ConfigurationStore",)
 
 DEFAULTS = {
     "center": [24.941, 60.169],
@@ -43,7 +43,7 @@ class AttrDict(dict):
         self.__dict__ = self
 
 
-class Configuration(AttrDict):
+class ConfigurationStore(AttrDict):
 
     """Attribute dictionary of configuration values."""
 

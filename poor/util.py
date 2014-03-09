@@ -80,5 +80,5 @@ def prod_tiles(xmin, xmax, ymin, ymax):
     ytiles = range(ymin, ymax+1)
     # Order (and thus render) tiles closest to center first.
     return sorted(itertools.product(xtiles, ytiles),
-                  key=lambda tile: (abs(tile[0] - (xmin + xmax)/2) +
-                                    abs(tile[1] - (ymin + ymax)/2)))
+                  key=lambda tile: ((tile[0] - (xmin + xmax)/2)**2 +
+                                    (tile[1] - (ymin + ymax)/2)**2))
