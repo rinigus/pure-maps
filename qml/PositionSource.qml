@@ -17,20 +17,9 @@
  */
 
 import QtQuick 2.0
-import io.thp.pyotherside 1.0
+import QtPositioning 5.0
 
-Python {
-    id: py
-    property var ready: false
-    Component.onCompleted: {
-        console.log("py.onCompleted");
-        addImportPath(Qt.resolvedUrl("..").substr("file://".length));
-        importModule("poor", function() {
-            py.call("poor.main", [], function() {
-                console.log("Python ready.");
-                py.ready = true;
-            });
-        });
-    }
-    onError: console.log("Error: " + traceback);
+PositionSource {
+    active: false
+    updateInterval: 3000
 }

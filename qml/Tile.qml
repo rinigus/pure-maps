@@ -23,22 +23,17 @@ MapQuickItem {
     id: tile
     anchorPoint.x: 0
     anchorPoint.y: 0
-    height: image.height
-    width: image.width
     property int uid
     property string uri
     sourceItem: Item {
         Image {
             id: image
-            asynchronous: true
-            cache: false
-            fillMode: Image.Pad
-            height: 256
+            asynchronous: false
+            cache: true
             smooth: false
             source: tile.uri
-            sourceSize.height: 256
             sourceSize.width: 256
-            width: 256
+            sourceSize.height: 256
         }
     }
 }

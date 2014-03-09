@@ -18,22 +18,30 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtLocation 5.0
 import "."
 
 ApplicationWindow {
     allowedOrientations: Orientation.All
+    cover: undefined
     initialPage: Page {
         id: page
         Map {
             id: map
         }
     }
-    cover: null
     Python {
         id: py
     }
+    Component.onCompleted: {
+        console.log("ApplicationWindow.onCompleted...");
+        py.setHandler("render-tile", map.renderTile);
+        py.setHandler("set-attribution", map.setAttribution);
+        py.setHandler("set-center", map.setCenter);
+        py.setHandler("set-zoom-level", map.setZoomLevel);
+        py.setHandler("show-tile", map.showTile);
+    }
     onApplicationActiveChanged: {
-        applicationActive ? map.timer.start() : map.timer.stop();
+        console.log("ApplicationWindow.onApplicationActiveChanged...");
+        applicationActive ? map.start() : map.stop();
     }
 }

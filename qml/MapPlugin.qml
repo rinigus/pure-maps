@@ -25,6 +25,6 @@ Plugin {
         PluginParameter { name: "app_id"; value: "N7qPce6rxX5gKujr6ia3"; },
         PluginParameter { name: "token"; value: "4kEWsRWtJQpNFfQmpnknfA"; },
         PluginParameter { name: "mapping.cache.directory"; value: "/dev/null"; },
-        PluginParameter { name: "mapping.host"; value: "127.0.0.1"; }
+        PluginParameter { name: "mapping.host"; value: "..."; }
     ]
 }
