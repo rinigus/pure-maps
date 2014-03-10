@@ -60,7 +60,6 @@ class TileSource:
     def download(self, x, y, zoom):
         """Download map tile and return local file path or ``None``."""
         url = self.url.format(x=x, y=y, z=zoom)
-        print("TileSource.download: {},{},{}... ".format(x, y, zoom), end="")
         directory = os.path.join(poor.CACHE_HOME_DIR,
                                  self.id,
                                  str(zoom),
@@ -71,17 +70,14 @@ class TileSource:
         if os.path.isfile(path):
             # Failed downloads can result in empty files.
             if os.stat(path).st_size > 0:
-                print("found.")
                 return path
         directory = poor.util.makedirs(directory)
         if directory is None: return
         timeout = poor.conf.download_timeout
         try:
-            print("downloading... ", end="")
             with self.opener.open(url, timeout=timeout) as w:
                 with open(path, "wb") as f:
                     f.write(w.read())
-                    print("done.")
         except Exception as error:
             print("Failed to download tile: {}"
                   .format(str(error)), file=sys.stderr)

@@ -19,6 +19,7 @@
 
 import poor
 import pyotherside
+import queue
 import threading
 import time
 
@@ -31,13 +32,22 @@ class Application:
 
     def __init__(self):
         """Initialize a :class:`Application` instance."""
-        print("Application.__init__...")
-        self.thread_queue = []
-        self.tilecollection = poor.TileCollection()
+        self._download_queue = queue.Queue()
+        self._tilecollection = poor.TileCollection()
+        self._timestamp = int(time.time()*1000)
         self.tilesource = None
+        self._init_download_threads()
         self._init_tilesource()
         self._send_defaults()
-        print("...Application.__init__")
+
+    def _init_download_threads(self):
+        """Initialize map tile download threads."""
+        # Use two download threads as per OpenStreetMap tile usage policy.
+        # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
+        target = self._process_download_queue
+        for i in range(2):
+            thread = threading.Thread(target=target, daemon=True)
+            thread.start()
 
     def _init_tilesource(self):
         """Initialize map tile source."""
@@ -49,68 +59,42 @@ class Application:
 
     def _send_defaults(self):
         """Send default configuration to QML."""
-        print("Application._send_defaults...")
         pyotherside.send("set-center", *poor.conf.center)
         pyotherside.send("set-zoom-level", poor.conf.zoom)
         pyotherside.send("set-attribution", self.tilesource.attribution)
 
     def _update_tile(self, x, y, xmin, xmax, ymin, ymax, zoom):
         """Download missing tile and ask QML to render it."""
+        tile = self._tilecollection.get(x, y, zoom)
+        if tile is not None:
+            return pyotherside.send("show-tile", tile.uid)
         path = self.tilesource.download(x, y, zoom)
         if path is None: return
-        if len(self.thread_queue) > 1: return
         uri = poor.util.path2uri(path)
-        tile = self.tilecollection.get_free(xmin, xmax, ymin, ymax, zoom)
+        tile = self._tilecollection.get_free(xmin, xmax, ymin, ymax, zoom)
         tile.x = x
         tile.y = y
         tile.zoom = zoom
         xcoord, ycoord = poor.util.num2deg(x, y, zoom)
         pyotherside.send("render-tile", tile.uid, xcoord, ycoord, zoom, uri)
 
-    def _update_tiles(self, xmin, xmax, ymin, ymax, zoom):
-        """Download missing tiles and ask QML to render them."""
-        print("Application._update_tiles...")
-        bbox = poor.util.bbox_deg2num(xmin, xmax, ymin, ymax, zoom)
-        xmin, xmax, ymin, ymax = bbox
-        download_threads = []
-        for x, y in poor.util.prod_tiles(xmin, xmax, ymin, ymax):
-            if len(self.thread_queue) > 1: break
-            tile = self.tilecollection.get(x, y, zoom)
-            if tile is not None:
-                pyotherside.send("show-tile", tile.uid)
-                continue
-            # Use two simultaneous download threads as per
-            # OpenStreetMap tile usage policy.
-            # (Let's assume no one has stricter rules.)
-            # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
-            while sum(x.is_alive() for x in download_threads) >= 2:
-                time.sleep(0.1)
-            if len(self.thread_queue) > 1: break
-            args = (x, y, xmin, xmax, ymin, ymax, zoom)
-            thread = threading.Thread(target=self._update_tile, args=args)
-            download_threads.append(thread)
-            thread.start()
-        while sum(x.is_alive() for x in download_threads) > 0:
-            time.sleep(0.1)
-        self.thread_queue.pop(0)
-        print("...Application._update_tiles")
+    def _process_download_queue(self):
+        """Infinitely monitor download queue and feed items for update."""
+        while True:
+            args, timestamp = self._download_queue.get()
+            if timestamp == self._timestamp:
+                # Only download tiles queued in the latest update.
+                self._update_tile(*args)
+            self._download_queue.task_done()
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
-        print("Application.update_tiles...")
-        print(self.thread_queue)
-        # Queue a new update thread, but delay start until
-        # previous threads have terminated.
-        thread = threading.Thread(target=self._update_tiles,
-                                  args=(xmin, xmax, ymin, ymax, zoom))
-
-        del self.thread_queue[1:]
-        self.thread_queue.append(thread)
-        while (self.thread_queue and
-               self.thread_queue[0] is not thread):
-            time.sleep(0.1)
-        thread.start()
+        self._timestamp = int(time.time()*1000)
         poor.conf.center[0] = (xmin + xmax) / 2
         poor.conf.center[1] = (ymin + ymax) / 2
         poor.conf.zoom = zoom
-        print("...Application.update_tiles")
+        bbox = poor.util.bbox_deg2num(xmin, xmax, ymin, ymax, zoom)
+        xmin, xmax, ymin, ymax = bbox
+        for x, y in poor.util.prod_tiles(xmin, xmax, ymin, ymax):
+            args = (x, y, xmin, xmax, ymin, ymax, zoom)
+            self._download_queue.put((args, self._timestamp))
