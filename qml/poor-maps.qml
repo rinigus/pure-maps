@@ -33,7 +33,6 @@ ApplicationWindow {
         id: py
     }
     Component.onCompleted: {
-        console.log("ApplicationWindow.onCompleted...");
         py.setHandler("render-tile", map.renderTile);
         py.setHandler("set-attribution", map.setAttribution);
         py.setHandler("set-center", map.setCenter);
@@ -41,7 +40,6 @@ ApplicationWindow {
         py.setHandler("show-tile", map.showTile);
     }
     onApplicationActiveChanged: {
-        console.log("ApplicationWindow.onApplicationActiveChanged...");
         applicationActive ? map.start() : map.stop();
     }
 }

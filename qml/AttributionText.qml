@@ -17,23 +17,19 @@
  */
 
 import QtQuick 2.0
-import QtLocation 5.0
 
-MapQuickItem {
-    id: tile
-    anchorPoint.x: 0
-    anchorPoint.y: 0
-    sourceItem: Item {
-        Image {
-            id: image
-            asynchronous: true
-            cache: true
-            smooth: false
-            source: tile.uri
-            sourceSize.width: 256
-            sourceSize.height: 256
-        }
-    }
-    property int uid
-    property string uri
+Text {
+    id: attribution
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: 6
+    anchors.right: parent.right
+    anchors.rightMargin: 12
+    color: "black"
+    font.family: "sans"
+    font.pixelSize: 13
+    font.weight: Font.DemiBold
+    opacity: 0.6
+    text: ""
+    textFormat: Text.PlainText
+    z: 100
 }

@@ -29,52 +29,23 @@ Map {
     gesture.enabled: true
     plugin: MapPlugin {}
 
-    property bool changed: true
+    property var changed: true
     property var gps: PositionSource {}
     property var position: map.gps.position
     property var positionMarker: PositionMarker {}
     property var tiles: []
-    property int zoomLevelPrev: -1
+    property var zoomLevelPrev: -1
 
-    Text {
-        id: attribution
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 6
-        anchors.right: parent.right
-        anchors.rightMargin: 12
-        color: "black"
-        font.family: "sans"
-        font.pixelSize: 13
-        font.weight: Font.DemiBold
-        opacity: 0.6
-        text: ""
-        textFormat: Text.PlainText
-        z: 100
-    }
-
-    Timer {
-        id: timer
-        interval: 500
-        repeat: true
-        running: false
-        onTriggered: map.changed && map.updateTiles();
-    }
+    AttributionText { id: attribution }
+    MapTimer { id: timer }
 
     Component.onCompleted: {
-        console.log("Map.onCompleted...");
+        // Start periodic tile and position updates.
         map.start();
-    }
-
-    Keys.onPressed: {
-        // Allow zooming with plus and minus keys on the emulator.
-        (event.key == Qt.Key_Plus) && map.zoomLevel++;
-        (event.key == Qt.Key_Minus) && map.zoomLevel--;
-        map.zoomLevelPrev = map.zoomLevel;
     }
 
     gesture.onPinchFinished: {
         // Round piched zoom level to avoid fuzziness.
-        console.log("map.gesture.onPinchFinished: " + map.zoomLevel);
         if (map.zoomLevel < map.zoomLevelPrev) {
             map.zoomLevel % 1 < 0.75 ?
                 map.zoomLevel = Math.floor(map.zoomLevel) :
@@ -92,24 +63,28 @@ Map {
         map.changed = true;
     }
 
-    onCenterChanged: map.changed = true;
-    onPositionChanged: map.positionMarker.coordinate = map.position.coordinate;
+    Keys.onPressed: {
+        // Allow zooming with plus and minus keys on the emulator.
+        (event.key == Qt.Key_Plus) && map.zoomLevel++;
+        (event.key == Qt.Key_Minus) && map.zoomLevel--;
+        map.zoomLevelPrev = map.zoomLevel;
+        map.changed = true;
+    }
 
-    // Render tile from local image file.
-    function renderTile(uid, x, y, zoom, uri) {
-        console.log("map.renderTile: " + uid);
-        for (var i = 0; i < map.tiles.length; i++) {
-            if (map.tiles[i].uid != uid) continue;
-            map.tiles[i].coordinate.longitude = x;
-            map.tiles[i].coordinate.latitude = y;
-            map.tiles[i].uri = uri;
-            map.tiles[i].zoomLevel = zoom;
-            map.tiles[i].visible = true;
-            map.tiles[i].z = 10;
-            return;
-        }
-        console.log("...adding new tile...");
-        // Add missing tile to collection.
+    onCenterChanged: {
+        // Ensure that tiles are updated after panning.
+        // This gets fired ridiculously often, so keep simple.
+        // gesture.onPanFinished would be better, but seems unreliable.
+        map.changed = true;
+    }
+
+    onPositionChanged: {
+        // Update position marker to match new position.
+        map.positionMarker.coordinate = map.position.coordinate;
+    }
+
+    function addTile(uid, x, y, zoom, uri) {
+        // Add new tile from local image file to map.
         var component = Qt.createComponent("Tile.qml");
         var tile = component.createObject(map);
         tile.coordinate = QtPositioning.coordinate(y, x);
@@ -119,65 +94,75 @@ Map {
         tile.z = 10;
         map.tiles.push(tile);
         map.addMapItem(tile);
-        console.log("...map.renderTile");
     }
 
-    // Set map copyright etc. attribution text.
+    function renderTile(uid, x, y, zoom, uri) {
+        // Render tile from local image file.
+        for (var i = 0; i < map.tiles.length; i++) {
+            if (map.tiles[i].uid != uid) continue;
+            map.tiles[i].coordinate.longitude = x;
+            map.tiles[i].coordinate.latitude = y;
+            map.tiles[i].uri = uri;
+            map.tiles[i].zoomLevel = zoom;
+            map.tiles[i].z = 10;
+            map.tiles[i].visible = true;
+            return;
+        }
+        // Add missing tile to collection.
+        map.addTile(uid, x, y, zoom, uri);
+    }
+
     function setAttribution(text) {
+        // Set map copyright etc. attribution text.
         attribution.text = text;
     }
 
-    // Set the current center position.
     function setCenter(x, y) {
+        // Set the current center position.
         map.center.longitude = x;
         map.center.latitude = y;
     }
 
-    // Set the current zoom level.
     function setZoomLevel(zoom) {
+        // Set the current zoom level.
         map.zoomLevel = zoom;
     }
 
-    // Show the tile with given uid.
     function showTile(uid) {
-        console.log("map.showTile: " + uid);
+        // Show tile with given uid.
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != uid) continue;
+            map.tiles[i].z = 10;
             map.tiles[i].visible = true;
             break;
         }
     }
 
-    // Start periodic updates.
     function start() {
-        console.log("map.start...");
+        // Start periodic tile and position updates.
         map.gps.start();
         timer.start();
     }
 
-    // Stop periodic updates.
     function stop() {
-        console.log("map.stop...");
+        // Stop periodic tile and position updates.
         map.gps.stop();
         timer.stop();
     }
 
-    // Ask the Python backend to download missing tiles.
     function updateTiles() {
-        console.log("map.updateTiles...");
+        // Ask the Python backend to download missing tiles.
         if (!py.ready) return;
         if (map.width <= 0 || map.height <= 0) return;
         if (map.gesture.isPinchActive) return;
         var nw = map.toCoordinate(Qt.point(0, 0));
         var se = map.toCoordinate(Qt.point(map.width, map.height));
-        var zoom = Math.floor(map.zoomLevel);
-        py.call("poor.app.update_tiles", [nw.longitude,
-                                          se.longitude,
-                                          se.latitude,
-                                          nw.latitude,
-                                          zoom], null);
+        py.call_sync("poor.app.update_tiles", [nw.longitude,
+                                               se.longitude,
+                                               se.latitude,
+                                               nw.latitude,
+                                               Math.floor(map.zoomLevel)]);
 
         map.changed = false;
-        console.log("...map.updateTiles");
     }
 }

@@ -17,23 +17,10 @@
  */
 
 import QtQuick 2.0
-import QtLocation 5.0
 
-MapQuickItem {
-    id: tile
-    anchorPoint.x: 0
-    anchorPoint.y: 0
-    sourceItem: Item {
-        Image {
-            id: image
-            asynchronous: true
-            cache: true
-            smooth: false
-            source: tile.uri
-            sourceSize.width: 256
-            sourceSize.height: 256
-        }
-    }
-    property int uid
-    property string uri
+Timer {
+    id: timer
+    interval: 500
+    repeat: true
+    onTriggered: map.changed && map.updateTiles();
 }
