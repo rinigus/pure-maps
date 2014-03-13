@@ -27,7 +27,6 @@ MapQuickItem {
         Image {
             id: image
             asynchronous: true
-            cache: true
             smooth: false
             source: tile.uri
             sourceSize.width: 256

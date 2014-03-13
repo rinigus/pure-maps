@@ -79,7 +79,7 @@ class Application:
         pyotherside.send("render-tile", tile.uid, xcoord, ycoord, zoom, uri)
 
     def _process_download_queue(self):
-        """Infinitely monitor download queue and feed items for update."""
+        """Monitor download queue and feed items for update."""
         while True:
             args, timestamp = self._download_queue.get()
             if timestamp == self._timestamp:

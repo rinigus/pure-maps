@@ -146,6 +146,8 @@ Map {
 
     function stop() {
         // Stop periodic tile and position updates.
+        // Write conf, since in case of crash atexit is not run.
+        py.call_sync("poor.conf.write", []);
         map.gps.stop();
         timer.stop();
     }
