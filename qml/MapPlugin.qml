@@ -19,12 +19,32 @@
 import QtQuick 2.0
 import QtLocation 5.0
 
+/*
+ * While waiting for QtLocation's Map component to support dynamic
+ * custom tilesources, we need to use an existing map plugin to be able
+ * to use the map canvas, pan, pinch-zoom, overlaid objects etc. With
+ * some vile tricks, we can use the Nokia plugin, but not load any Nokia
+ * tiles, and overlay our own tiles as MapQuickItems.
+ *
+ * To not load any tiles from local cache, we can simply set the cache
+ * directory to /dev/null. To not load any tiles from Nokia's servers,
+ * we can set the host to localhost. By default, localhost will refuse
+ * the connection attempt and Qt seems to keep trying again causing some
+ * connection blocking that for a couple seconds at a time prevents our
+ * actual tiles from being loaded. We can easily solve this problem by
+ * having our Python backend start a server on localhost that returns
+ * 204 (no content) for all HTTP GET requests.
+ *
+ * http://bugreports.qt-project.org/browse/QTBUG-32937
+ * http://bugreports.qt-project.org/browse/QTBUG-36581
+ */
+
 Plugin {
     name: "nokia"
     parameters: [
         PluginParameter { name: "app_id"; value: "N7qPce6rxX5gKujr6ia3"; },
         PluginParameter { name: "token"; value: "4kEWsRWtJQpNFfQmpnknfA"; },
         PluginParameter { name: "mapping.cache.directory"; value: "/dev/null"; },
-        PluginParameter { name: "mapping.host"; value: "127.0.0.1"; }
+        PluginParameter { name: "mapping.host"; value: "127.0.0.1:64409"; }
     ]
 }

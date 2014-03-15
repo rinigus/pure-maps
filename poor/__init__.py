@@ -31,8 +31,15 @@ from poor.application import *
 
 def main():
     """Initialize application."""
+    import http.server
     import pyotherside
+    import threading
     conf.read()
     pyotherside.atexit(conf.write)
     global app
     app = Application()
+    # Start our own bogus tile server, see qml/MapPlugin.qml.
+    from poor.server import NullHandler
+    httpd = http.server.HTTPServer(("127.0.0.1", 64409), NullHandler)
+    thread = threading.Thread(target=httpd.serve_forever, daemon=True)
+    thread.start()
