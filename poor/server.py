@@ -26,10 +26,18 @@ class NullHandler(http.server.BaseHTTPRequestHandler):
 
     """A HTTP server that always returns 204 no content."""
 
+    # Since we get requests at a very rapid pace, we really need
+    # persistent connections, which are the default in HTTP/1.1.
+    # http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html
+    protocol_version = "HTTP/1.1"
+
     def do_GET(self):
         """Return HTTP GET response."""
-        self.send_response(204)
-        self.end_headers()
+        try:
+            self.send_response(204)
+            self.end_headers()
+        except Exception:
+            pass
 
     def log_message(self, format, *args):
         """Don't print log messages."""

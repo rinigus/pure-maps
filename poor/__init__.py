@@ -41,5 +41,6 @@ def main():
     # Start our own bogus tile server, see qml/MapPlugin.qml.
     from poor.server import NullHandler
     httpd = http.server.HTTPServer(("127.0.0.1", 64409), NullHandler)
+    httpd.request_queue_size = 100
     thread = threading.Thread(target=httpd.serve_forever, daemon=True)
     thread.start()
