@@ -17,6 +17,9 @@
 
 """A collection of map tiles visible on screen."""
 
+import poor
+import threading
+
 __all__ = ("TileCollection",)
 
 
@@ -26,6 +29,7 @@ class Tile:
 
     def __init__(self, uid):
         """Initialize a :class:`Tile` instance."""
+        self.ready = False
         self.x = -1
         self.y = -1
         self.zoom = -1
@@ -38,6 +42,7 @@ class TileCollection:
 
     def __init__(self):
         """Initialize a :class:`TileCollection` instance."""
+        self._lock = threading.Lock()
         self._tiles = []
 
     def get(self, x, y, zoom):
@@ -47,14 +52,16 @@ class TileCollection:
                 return tile
         return None
 
+    @poor.util.locked_method
     def get_free(self, xmin, xmax, ymin, ymax, zoom):
         """Return a random tile outside bounds."""
-        for tile in self._tiles:
+        for tile in filter(lambda x: x.ready, self._tiles):
             if (tile.zoom != zoom or
                 tile.x + 1 < xmin or
                 tile.x > xmax or
                 tile.y + 1 < ymin or
                 tile.y > ymax):
+                tile.ready = False
                 return tile
 
         # If no free tile found, initialize a new one.

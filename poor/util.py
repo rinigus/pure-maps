@@ -17,6 +17,7 @@
 
 """Miscellaneous helper functions."""
 
+import functools
 import itertools
 import math
 import os
@@ -45,6 +46,18 @@ def deg2num(x, y, zoom):
                       / math.pi)) / 2 * n)
 
     return (xtile, ytile)
+
+def locked_method(function):
+    """
+    Decorator for methods to be run thread-safe.
+
+    Requires class to have an instance variable '_lock'.
+    """
+    @functools.wraps(function)
+    def wrapper(*args, **kwargs):
+        with args[0]._lock:
+            return function(*args, **kwargs)
+    return wrapper
 
 def makedirs(directory):
     """Create and return `directory` or ``None`` if fails."""
