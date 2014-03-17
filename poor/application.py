@@ -20,6 +20,7 @@
 import poor
 import pyotherside
 import queue
+import sys
 import threading
 import time
 
@@ -43,6 +44,7 @@ class Application:
     def _init_download_threads(self):
         """Initialize map tile download threads."""
         # Use two download threads as per OpenStreetMap tile usage policy.
+        # See also poor.TileSource._init_http_connections.
         # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
         target = self._process_download_queue
         for i in range(2):
@@ -53,7 +55,11 @@ class Application:
         """Initialize map tile source."""
         try:
             self.tilesource = poor.TileSource(poor.conf.tilesource)
-        except Exception:
+        except Exception as error:
+            print("Failed to initialize tilesource {}: {}"
+                  .format(repr(poor.conf.tilesource), str(error)),
+                  file=sys.stderr)
+
             poor.conf.tilesource = poor.conf.get_default("tilesource")
             self.tilesource = poor.TileSource(poor.conf.tilesource)
 
@@ -63,18 +69,21 @@ class Application:
         pyotherside.send("set-zoom-level", poor.conf.zoom)
         pyotherside.send("set-attribution", self.tilesource.attribution)
 
-    def _update_tile(self, x, y, xmin, xmax, ymin, ymax, zoom):
+    def _update_tile(self, x, y, xmin, xmax, ymin, ymax, zoom, timestamp):
         """Download missing tile and ask QML to render it."""
         tile = self._tilecollection.get(x, y, zoom)
         if tile is not None:
             return pyotherside.send("show-tile", tile.uid)
         path = self.tilesource.download(x, y, zoom)
         if path is None: return
+        # Abort if map moved out of view during download.
+        if timestamp != self._timestamp: return
         uri = poor.util.path2uri(path)
         tile = self._tilecollection.get_free(xmin, xmax, ymin, ymax, zoom)
         tile.x = x
         tile.y = y
         tile.zoom = zoom
+        tile.ready = True
         xcoord, ycoord = poor.util.num2deg(x, y, zoom)
         pyotherside.send("render-tile", tile.uid, xcoord, ycoord, zoom, uri)
 
@@ -84,7 +93,7 @@ class Application:
             args, timestamp = self._download_queue.get()
             if timestamp == self._timestamp:
                 # Only download tiles queued in the latest update.
-                self._update_tile(*args)
+                self._update_tile(*args, timestamp=timestamp)
             self._download_queue.task_done()
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):

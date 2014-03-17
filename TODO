@@ -1,10 +1,10 @@
 Poor Maps 0.1
 =============
 
+ * Check Keep-Alive settings for HTTP/1.0 (opencyclemap?)
  * Add UI to change tile source
  * Ask permission from OSM sysadmins
  * Add OSM Roads from OpenMapSurfer? (need to ask permission)
- * Check versions of dependencies
 
 Poor Maps 1.0
 =============
