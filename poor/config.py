@@ -75,6 +75,8 @@ class ConfigurationStore(AttrDict):
                          file=sys.stderr)
 
         for name, value in values.items():
+            # Ignore options commented out.
+            if name.startswith("#"): continue
             try:
                 # Be liberal, but careful in what to accept.
                 self[name] = self._coerce(value, DEFAULTS[name])
@@ -90,8 +92,12 @@ class ConfigurationStore(AttrDict):
         directory = os.path.dirname(path)
         directory = poor.util.makedirs(directory)
         if directory is None: return
-        # Only write values that differ from defaults.
-        out = {k: v for k, v in self.items() if v != DEFAULTS[k]}
+        out = {}
+        for name, value in self.items():
+            if value == DEFAULTS[name]:
+                # Comment out values still at default.
+                name = "# {}".format(name)
+            out[name] = value
         try:
             with open(path, "w", encoding="utf_8") as f:
                 json.dump(out, f, ensure_ascii=False, indent=4, sort_keys=True)
