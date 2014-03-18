@@ -68,6 +68,8 @@ Map {
         // Allow zooming with plus and minus keys on the emulator.
         (event.key == Qt.Key_Plus) && map.zoomLevel++;
         (event.key == Qt.Key_Minus) && map.zoomLevel--;
+        for (var i = 0; i < map.tiles.length; i++)
+            map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
         map.zoomLevelPrev = map.zoomLevel;
         map.changed = true;
     }
@@ -106,7 +108,6 @@ Map {
             map.tiles[i].uri = uri;
             map.tiles[i].zoomLevel = zoom;
             map.tiles[i].z = 10;
-            map.tiles[i].visible = true;
             return;
         }
         // Add missing tile to collection.
@@ -134,7 +135,6 @@ Map {
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != uid) continue;
             map.tiles[i].z = 10;
-            map.tiles[i].visible = true;
             break;
         }
     }
