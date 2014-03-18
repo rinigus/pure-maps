@@ -17,6 +17,7 @@
 
 """A collection of map tiles visible on screen."""
 
+import collections
 import poor
 import threading
 
@@ -29,7 +30,7 @@ class Tile:
 
     def __init__(self, uid):
         """Initialize a :class:`Tile` instance."""
-        self.ready = False
+        self.ready = True
         self.x = -1
         self.y = -1
         self.zoom = -1
@@ -43,28 +44,43 @@ class TileCollection:
     def __init__(self):
         """Initialize a :class:`TileCollection` instance."""
         self._lock = threading.Lock()
-        self._tiles = []
+        self._tiles = collections.deque()
 
+    @poor.util.locked_method
     def get(self, x, y, zoom):
         """Return tile at position or ``None``."""
-        for tile in self._tiles:
+        # Iterate from the right, append found tile to the right.
+        for i in reversed(range(len(self._tiles))):
+            tile = self._tiles[i]
             if (tile.zoom == zoom and tile.x == x and tile.y == y):
+                del self._tiles[i]
+                self._tiles.append(tile)
                 return tile
         return None
 
     @poor.util.locked_method
     def get_free(self, xmin, xmax, ymin, ymax, zoom):
         """Return a random tile outside bounds."""
-        for tile in filter(lambda x: x.ready, self._tiles):
+        # Iterate from the left, append found tile to the right.
+        for i, tile in enumerate(self._tiles):
+            if not tile.ready: continue
             if (tile.zoom != zoom or
                 tile.x + 1 < xmin or
                 tile.x > xmax or
                 tile.y + 1 < ymin or
                 tile.y > ymax):
+                del self._tiles[i]
+                self._tiles.append(tile)
                 tile.ready = False
                 return tile
 
-        # If no free tile found, initialize a new one.
+        # If no free tile found, grow collection.
+        nscreen = (xmax - xmin + 1) * (ymax - ymin + 1)
+        nneeded = nscreen * 3 - len(self._tiles)
+        for i in range(max(1, nneeded)):
+            tile = Tile(len(self._tiles)+1)
+            self._tiles.appendleft(tile)
         tile = Tile(len(self._tiles)+1)
         self._tiles.append(tile)
+        tile.ready = False
         return(tile)
