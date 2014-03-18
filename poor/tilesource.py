@@ -56,7 +56,7 @@ class TileSource:
             self._http_queue.put(httpc)
         agent = "poor-maps/{}".format(poor.__version__)
         self._headers = {"Connection": "Keep-Alive",
-                         "User-Agent": agent,}
+                         "User-Agent": agent}
 
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
@@ -98,6 +98,8 @@ class TileSource:
             print("Failed to download tile: {}"
                   .format(str(error)), file=sys.stderr)
 
+            httpc.close()
+            httpc.connect()
             return None
         finally:
             self._http_queue.task_done()
