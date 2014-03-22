@@ -39,6 +39,7 @@ Map {
 
     AttributionText { id: attribution }
     MapTimer { id: timer }
+    MenuButton { id: menuButton }
 
     Component.onCompleted: {
         // Start periodic tile and position updates.
@@ -116,6 +117,12 @@ Map {
         }
         // Add missing tile to collection.
         map.addTile(uid, x, y, zoom, uri);
+    }
+
+    function resetTiles() {
+        // Hide all map tiles from view.
+        for (var i = 0; i < map.tiles.length; i++)
+            map.tiles[i].z = -1
     }
 
     function setAttribution(text) {

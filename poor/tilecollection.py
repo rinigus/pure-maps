@@ -84,3 +84,12 @@ class TileCollection:
         self._tiles.append(tile)
         tile.ready = False
         return(tile)
+
+    @poor.util.locked_method
+    def reset(self):
+        """Reset tile properties."""
+        for tile in self._tiles:
+            tile.ready = True
+            tile.x = -1
+            tile.y = -1
+            tile.zoom = -1

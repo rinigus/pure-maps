@@ -18,33 +18,26 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "."
 
-ApplicationWindow {
-    id: app
-    allowedOrientations: Orientation.All
-    cover: undefined
-    initialPage: Page {
-        id: mapPage
-        Map {
-            id: map
+Page {
+    SilicaListView {
+        anchors.fill: parent
+        delegate: BackgroundItem {
+            ListItemLabel { text: name }
+            onClicked: {
+                py.call_sync("poor.app.set_tilesource", [pid]);
+                map.resetTiles();
+                map.changed = true;
+                app.pageStack.pop(mapPage, PageStackAction.Immediate);
+            }
         }
-    }
-    Python {
-        id: py
-    }
-    Component.onCompleted: {
-        py.setHandler("render-tile", map.renderTile);
-        py.setHandler("set-attribution", map.setAttribution);
-        py.setHandler("set-center", map.setCenter);
-        py.setHandler("set-zoom-level", map.setZoomLevel);
-        py.setHandler("show-tile", map.showTile);
-    }
-    onApplicationActiveChanged: {
-        applicationActive ? map.start() : map.stop();
-    }
-    function showMenu() {
-        // Show the actions and preferences menu page.
-        app.pageStack.push("MenuPage.qml");
+        header: PageHeader { title: "Map tiles" }
+        model: ListModel { id: listModel }
+        Component.onCompleted: {
+            var tilesources = py.call_sync("poor.util.get_tilesources", []);
+            for (var i = 0; i < tilesources.length; i++) {
+                listModel.append(tilesources[i]);
+            }
+        }
     }
 }

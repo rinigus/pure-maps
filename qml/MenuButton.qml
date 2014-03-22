@@ -18,33 +18,14 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "."
 
-ApplicationWindow {
-    id: app
-    allowedOrientations: Orientation.All
-    cover: undefined
-    initialPage: Page {
-        id: mapPage
-        Map {
-            id: map
-        }
-    }
-    Python {
-        id: py
-    }
-    Component.onCompleted: {
-        py.setHandler("render-tile", map.renderTile);
-        py.setHandler("set-attribution", map.setAttribution);
-        py.setHandler("set-center", map.setCenter);
-        py.setHandler("set-zoom-level", map.setZoomLevel);
-        py.setHandler("show-tile", map.showTile);
-    }
-    onApplicationActiveChanged: {
-        applicationActive ? map.start() : map.stop();
-    }
-    function showMenu() {
-        // Show the actions and preferences menu page.
-        app.pageStack.push("MenuPage.qml");
-    }
+IconButton {
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.margins: 10
+    height: icon.height
+    icon.source: "icons/menu.png"
+    width: icon.width
+    z: 1000
+    onClicked: app.showMenu();
 }

@@ -21,11 +21,10 @@ import QtQuick 2.0
 Text {
     id: attribution
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: 6
+    anchors.margins: 10
     anchors.right: parent.right
-    anchors.rightMargin: 12
     color: "black"
-    font.family: "sans"
+    font.family: "sans-serif"
     font.pixelSize: 13
     font.weight: Font.DemiBold
     opacity: 0.6

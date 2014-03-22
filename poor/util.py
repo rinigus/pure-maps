@@ -18,9 +18,12 @@
 """Miscellaneous helper functions."""
 
 import functools
+import glob
 import itertools
+import json
 import math
 import os
+import poor
 import sys
 import urllib.parse
 
@@ -46,6 +49,27 @@ def deg2num(x, y, zoom):
                       / math.pi)) / 2 * n)
 
     return (xtile, ytile)
+
+def get_tilesources():
+    """Return a list of dictionaries of tilesource attributes."""
+    tilesources = []
+    for parent in (poor.CONFIG_HOME_DIR, poor.DATA_DIR):
+        for path in glob.glob("{}/tilesources/*.json".format(parent)):
+            # Local definitions override global ones.
+            pid = os.path.basename(path).replace(".json", "")
+            if pid in (x["pid"] for x in tilesources): continue
+            try:
+                with open(path, "r", encoding="utf_8") as f:
+                    tilesource = json.load(f)
+                tilesource["pid"] = pid
+                tilesources.append(tilesource)
+            except Exception as error:
+                print("Failed to read tilesource definition file '{}': {}"
+                      .format(path, str(error)),
+                      file=sys.stderr)
+
+    tilesources.sort(key=lambda x: x["name"])
+    return(tilesources)
 
 def locked_method(function):
     """

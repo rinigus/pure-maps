@@ -38,7 +38,7 @@ class Application:
         self._timestamp = int(time.time()*1000)
         self.tilesource = None
         self._init_download_threads()
-        self._init_tilesource()
+        self.set_tilesource(poor.conf.tilesource)
         self._send_defaults()
 
     def _init_download_threads(self):
@@ -51,23 +51,36 @@ class Application:
             thread = threading.Thread(target=target, daemon=True)
             thread.start()
 
-    def _init_tilesource(self):
-        """Initialize map tile source."""
-        try:
-            self.tilesource = poor.TileSource(poor.conf.tilesource)
-        except Exception as error:
-            print("Failed to initialize tilesource {}: {}"
-                  .format(repr(poor.conf.tilesource), str(error)),
-                  file=sys.stderr)
-
-            poor.conf.tilesource = poor.conf.get_default("tilesource")
-            self.tilesource = poor.TileSource(poor.conf.tilesource)
+    def _process_download_queue(self):
+        """Monitor download queue and feed items for update."""
+        while True:
+            args, timestamp = self._download_queue.get()
+            if timestamp == self._timestamp:
+                # Only download tiles queued in the latest update.
+                self._update_tile(*args, timestamp=timestamp)
+            self._download_queue.task_done()
 
     def _send_defaults(self):
         """Send default configuration to QML."""
         pyotherside.send("set-center", *poor.conf.center)
         pyotherside.send("set-zoom-level", poor.conf.zoom)
         pyotherside.send("set-attribution", self.tilesource.attribution)
+
+    def set_tilesource(self, tilesource):
+        """Set map tile source from string `tilesource`."""
+        try:
+            self.tilesource = poor.TileSource(tilesource)
+            poor.conf.tilesource = tilesource
+            self._tilecollection.reset()
+        except Exception as error:
+            print("Failed to load tilesource '{}': {}"
+                  .format(tilesource, str(error)),
+                  file=sys.stderr)
+
+            if self.tilesource is None:
+                default = poor.conf.get_default("tilesource")
+                if default != tilesource:
+                    self.set_tilesource(default)
 
     def _update_tile(self, x, y, xmin, xmax, ymin, ymax, zoom, timestamp):
         """Download missing tile and ask QML to render it."""
@@ -86,15 +99,6 @@ class Application:
         tile.ready = True
         xcoord, ycoord = poor.util.num2deg(x, y, zoom)
         pyotherside.send("render-tile", tile.uid, xcoord, ycoord, zoom, uri)
-
-    def _process_download_queue(self):
-        """Monitor download queue and feed items for update."""
-        while True:
-            args, timestamp = self._download_queue.get()
-            if timestamp == self._timestamp:
-                # Only download tiles queued in the latest update.
-                self._update_tile(*args, timestamp=timestamp)
-            self._download_queue.task_done()
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
