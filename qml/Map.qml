@@ -95,6 +95,8 @@ Map {
         tile.uri = uri;
         tile.zoomLevel = zoom;
         tile.z = 10;
+        if (zoom != Math.floor(map.zoomLevel))
+            tile.z--;
         map.tiles.push(tile);
         map.addMapItem(tile);
     }
@@ -108,6 +110,8 @@ Map {
             map.tiles[i].uri = uri;
             map.tiles[i].zoomLevel = zoom;
             map.tiles[i].z = 10;
+            if (zoom != Math.floor(map.zoomLevel))
+                map.tiles[i].z--;
             return;
         }
         // Add missing tile to collection.
@@ -135,6 +139,8 @@ Map {
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != uid) continue;
             map.tiles[i].z = 10;
+            if (map.tiles[i].zoom != Math.floor(map.zoomLevel))
+                map.tiles[i].z--;
             break;
         }
     }
