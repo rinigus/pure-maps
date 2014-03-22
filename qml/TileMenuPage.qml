@@ -27,6 +27,7 @@ Page {
             onClicked: {
                 py.call_sync("poor.app.set_tilesource", [pid]);
                 map.resetTiles();
+                map.setAttribution(attribution);
                 map.changed = true;
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }

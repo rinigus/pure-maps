@@ -22,7 +22,6 @@ import Sailfish.Silica 1.0
 IconButton {
     anchors.bottom: parent.bottom
     anchors.left: parent.left
-    anchors.margins: 10
     height: icon.height
     icon.source: "icons/menu.png"
     width: icon.width
