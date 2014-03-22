@@ -8,6 +8,11 @@ Poor Maps 0.1
 Poor Maps 1.0
 =============
 
+ * Bump PyOtherSide API version when available and replace all sync
+   calls with async ones assuming they no longer crash
+ * Check versions of Qt components (bump to 5.2?)
+ * Allow landscape by Page.allowedOrientations
+   - Need to figure out how to rotate gestures too
  * Add geocoding
    - http://wiki.openstreetmap.org/wiki/Nominatim
    - http://open.mapquestapi.com/nominatim/

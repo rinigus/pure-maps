@@ -22,8 +22,8 @@ import json
 import os
 import poor
 import queue
-import re
 import sys
+import urllib.parse
 
 __all__ = ("TileSource",)
 
@@ -45,14 +45,18 @@ class TileSource:
         self.url = values["url"]
         self._init_http_connections()
 
+    def _init_http_connection(self):
+        """Initialize and return a persistent HTTP connection."""
+        host = urllib.parse.urlparse(self.url).netloc
+        timeout = poor.conf.download_timeout
+        return http.client.HTTPConnection(host, timeout=timeout)
+
     def _init_http_connections(self):
         """Initialize persistent HTTP connections."""
         # Use two download threads as per OpenStreetMap tile usage policy.
         # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
-        host = re.sub(r"/.*$", "", re.sub(r"^.*?://", "", self.url))
-        timeout = poor.conf.download_timeout
         for i in range(2):
-            httpc = http.client.HTTPConnection(host, timeout=timeout)
+            httpc = self._init_http_connection()
             self._http_queue.put(httpc)
         agent = "poor-maps/{}".format(poor.__version__)
         self._headers = {"Connection": "Keep-Alive",
@@ -99,7 +103,7 @@ class TileSource:
                   .format(str(error)), file=sys.stderr)
 
             httpc.close()
-            httpc.connect()
+            httpc = self._init_http_connection()
             return None
         finally:
             self._http_queue.task_done()
