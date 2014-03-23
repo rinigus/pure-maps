@@ -3,7 +3,6 @@ Poor Maps 0.1
 
  * Ask permission from OSM sysadmins
  * Add OSM Roads from OpenMapSurfer? (need to ask permission)
- * Fix glitches in tile loading?
 
 Poor Maps 1.0
 =============
@@ -18,3 +17,4 @@ Poor Maps 1.0
    - http://open.mapquestapi.com/nominatim/
  * Add routing
    - http://wiki.openstreetmap.org/wiki/Routing/online_routers
+ * Add auto-rotate on bearing when the Map component supports it

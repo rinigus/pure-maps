@@ -153,7 +153,7 @@ Map {
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != uid) continue;
             map.tiles[i].z = 10;
-            if (map.tiles[i].zoom != Math.floor(map.zoomLevel))
+            if (map.tiles[i].zoomLevel != Math.floor(map.zoomLevel))
                 map.tiles[i].z--;
             break;
         }
