@@ -30,6 +30,7 @@ Map {
     minimumZoomLevel: 3
     plugin: MapPlugin {}
 
+    property var autoCenter: false
     property var changed: true
     property var gps: PositionSource {}
     property var position: map.gps.position
@@ -85,6 +86,7 @@ Map {
     onPositionChanged: {
         // Update position marker to match new position.
         map.positionMarker.coordinate = map.position.coordinate;
+        map.autoCenter && (map.center = map.position.coordinate);
     }
 
     function addTile(uid, x, y, zoom, uri) {
@@ -128,6 +130,11 @@ Map {
     function setAttribution(text) {
         // Set map copyright etc. attribution text.
         attribution.text = text;
+    }
+
+    function setAutoCenter(autoCenter) {
+        // Set to keep centering map on GPS position.
+        map.autoCenter = autoCenter;
     }
 
     function setCenter(x, y) {

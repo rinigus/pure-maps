@@ -62,9 +62,10 @@ class Application:
 
     def _send_defaults(self):
         """Send default configuration to QML."""
+        pyotherside.send("set-attribution", self.tilesource.attribution)
+        pyotherside.send("set-auto-center", poor.conf.auto_center)
         pyotherside.send("set-center", *poor.conf.center)
         pyotherside.send("set-zoom-level", poor.conf.zoom)
-        pyotherside.send("set-attribution", self.tilesource.attribution)
 
     def set_tilesource(self, tilesource):
         """Set map tile source from string `tilesource`."""

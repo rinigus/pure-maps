@@ -31,7 +31,6 @@ Page {
                 ListItemLabel { text: "Find current position" }
                 onClicked: {
                     map.center = map.position.coordinate;
-                    map.changed = true;
                     app.pageStack.pop(mapPage, PageStackAction.Immediate);
                 }
             }
@@ -39,6 +38,15 @@ Page {
             BackgroundItem {
                 ListItemLabel { text: "Map tiles" }
                 onClicked: app.pageStack.push("TileSourcePage.qml");
+            }
+            ListItemSwitch {
+                id: autoCenterSwitch
+                checked: map.autoCenter
+                text: "Auto-center on position"
+                onCheckedChanged: {
+                    map.autoCenter = checked;
+                    py.call_sync("poor.conf.set", ["auto_center", checked]);
+                }
             }
         }
     }

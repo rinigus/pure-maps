@@ -26,6 +26,7 @@ import sys
 __all__ = ("ConfigurationStore",)
 
 DEFAULTS = {
+    "auto_center": False,
     "center": [24.941, 60.169],
     "download_timeout": 10,
     "tilesource": "openstreetmap",
@@ -84,6 +85,10 @@ class ConfigurationStore(AttrDict):
                 print("Discarding bad option-value pair ({}, {}): {}"
                       .format(repr(name), repr(value), str(error)),
                       file=sys.stderr)
+
+    def set(self, option, value):
+        """Set the value of `option`."""
+        self[option] = value
 
     def write(self, path=None):
         """Write values of options to JSON file at `path`."""
