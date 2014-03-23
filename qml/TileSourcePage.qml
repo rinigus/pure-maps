@@ -32,7 +32,7 @@ Page {
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }
         }
-        header: PageHeader { title: "Map tiles" }
+        header: PageHeader { title: "Map Tiles" }
         model: ListModel { id: listModel }
         Component.onCompleted: {
             var tilesources = py.call_sync("poor.util.get_tilesources", []);

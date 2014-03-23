@@ -26,10 +26,19 @@ Page {
         Column {
             anchors.fill: parent
             PageHeader { title: "Poor Maps" }
+            ListTitleLabel { text: "Actions" }
+            BackgroundItem {
+                ListItemLabel { text: "Find current position" }
+                onClicked: {
+                    map.center = map.position.coordinate;
+                    map.changed = true;
+                    app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                }
+            }
             ListTitleLabel { text: "Preferences" }
             BackgroundItem {
                 ListItemLabel { text: "Map tiles" }
-                onClicked: app.pageStack.push("TileMenuPage.qml");
+                onClicked: app.pageStack.push("TileSourcePage.qml");
             }
         }
     }
