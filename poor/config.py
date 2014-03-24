@@ -60,7 +60,7 @@ class ConfigurationStore(AttrDict):
 
     def get_default(self, name):
         """Get the default value of option."""
-        return DEFAULTS[name]
+        return copy.deepcopy(DEFAULTS[name])
 
     def read(self, path=None):
         """Read values of options from JSON file at `path`."""
@@ -88,7 +88,7 @@ class ConfigurationStore(AttrDict):
 
     def set(self, option, value):
         """Set the value of `option`."""
-        self[option] = value
+        self[option] = copy.deepcopy(value)
 
     def write(self, path=None):
         """Write values of options to JSON file at `path`."""
