@@ -23,7 +23,22 @@ Page {
     SilicaListView {
         anchors.fill: parent
         delegate: BackgroundItem {
-            ListItemLabel { text: name }
+            height: nameLabel.height + sourceLabel.height
+            ListItemLabel {
+                id: nameLabel
+                height: Theme.itemSizeMedium/2
+                text: name
+                verticalAlignment: Text.AlignBottom
+            }
+            ListItemLabel {
+                id: sourceLabel
+                anchors.top: nameLabel.bottom
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeExtraSmall
+                height: Theme.itemSizeMedium/2
+                text: "Source: " + source
+                verticalAlignment: Text.AlignTop
+            }
             onClicked: {
                 py.call_sync("poor.app.set_tilesource", [pid]);
                 map.resetTiles();

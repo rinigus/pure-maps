@@ -1,7 +1,8 @@
 {
-    "attribution": "© Thunderforest, OpenStreetMap contributors",
+    "attribution": "Maps © Thunderforest\nData © OpenStreetMap contributors",
     "extension": ".png",
     "format": "slippy",
     "name": "OpenCycleMap",
+    "source": "www.thunderforest.com",
     "url": "http://tile.thunderforest.com/cycle/{z}/{x}/{y}.png"
 }

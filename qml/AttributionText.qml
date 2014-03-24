@@ -27,8 +27,10 @@ Text {
     font.family: "sans-serif"
     font.pixelSize: 13
     font.weight: Font.DemiBold
+    horizontalAlignment: Text.AlignRight
     opacity: 0.6
     text: ""
     textFormat: Text.PlainText
+    width: parent.width
     z: 100
 }

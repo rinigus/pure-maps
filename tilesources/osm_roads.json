@@ -1,0 +1,8 @@
+{
+    "attribution": "GIScience Research Group @ Heidelberg University\nData © OpenStreetMap contributors",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "OSM Roads",
+    "source": "giscience.uni-hd.de",
+    "url": "http://openmapsurfer.uni-hd.de/tiles/roads/x={x}&y={y}&z={z}"
+}

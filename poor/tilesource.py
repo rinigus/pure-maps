@@ -42,6 +42,7 @@ class TileSource:
         self.format = values["format"]
         self.id = id
         self.name = values["name"]
+        self.source = values["source"]
         self.url = values["url"]
         self._init_http_connections()
 
