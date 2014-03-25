@@ -84,9 +84,11 @@ Map {
     }
 
     onPositionChanged: {
-        // Update position marker to match new position.
-        map.positionMarker.coordinate = map.position.coordinate;
-        map.autoCenter && (map.center = map.position.coordinate);
+        // Center map on position.
+        if (map.autoCenter) {
+            map.center.longitude = map.position.coordinate.longitude;
+            map.center.latitude = map.position.coordinate.latitude;
+        }
     }
 
     function addTile(uid, x, y, zoom, uri) {
