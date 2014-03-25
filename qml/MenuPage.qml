@@ -30,7 +30,8 @@ Page {
             BackgroundItem {
                 ListItemLabel { text: "Find current position" }
                 onClicked: {
-                    map.center = map.position.coordinate;
+                    map.center.longitude = map.position.coordinate.longitude;
+                    map.center.latitude = map.position.coordinate.latitude;
                     app.pageStack.pop(mapPage, PageStackAction.Immediate);
                 }
             }
