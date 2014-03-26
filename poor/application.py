@@ -64,6 +64,7 @@ class Application:
         """Send default configuration to QML."""
         pyotherside.send("set-attribution", self.tilesource.attribution)
         pyotherside.send("set-auto-center", poor.conf.auto_center)
+        pyotherside.send("set-gps-update-interval", poor.conf.gps_update_interval)
         pyotherside.send("set-center", *poor.conf.center)
         pyotherside.send("set-zoom-level", poor.conf.zoom)
 

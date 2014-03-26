@@ -145,6 +145,11 @@ Map {
         map.center.latitude = y;
     }
 
+    function setGpsUpdateInterval(interval) {
+        // Set the interval for polling GPS for position.
+        map.gps.updateInterval = interval;
+    }
+
     function setZoomLevel(zoom) {
         // Set the current zoom level.
         map.zoomLevel = zoom;

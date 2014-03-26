@@ -29,6 +29,7 @@ DEFAULTS = {
     "auto_center": False,
     "center": [24.941, 60.169],
     "download_timeout": 10,
+    "gps_update_interval": 3,
     "tilesource": "openstreetmap",
     "zoom": 15,
 }
