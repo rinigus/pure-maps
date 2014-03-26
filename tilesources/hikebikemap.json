@@ -1,0 +1,8 @@
+{
+    "attribution": "Data © OpenStreetMap contributors",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "Hike & Bike Map",
+    "source": "hikebikemap.de",
+    "url": "http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png"
+}

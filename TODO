@@ -3,6 +3,7 @@ Poor Maps 0.1
 
  * Ask permission from OSM sysadmins
  * map.coordinate vs. map.position?
+ * Add GPS update interval to conf
 
 Poor Maps 1.0
 =============
@@ -18,3 +19,4 @@ Poor Maps 1.0
  * Add routing
    - http://wiki.openstreetmap.org/wiki/Routing/online_routers
  * Add auto-rotate on bearing when the Map component supports it
+ * Allow layered tilesources (traffic, hillshade, etc.)
