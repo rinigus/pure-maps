@@ -45,8 +45,12 @@ Page {
                 checked: map.autoCenter
                 text: "Auto-center on position"
                 onCheckedChanged: {
-                    map.autoCenter = checked;
-                    py.call_sync("poor.conf.set", ["auto_center", checked]);
+                    map.autoCenter = autoCenterSwitch.checked;
+                    py.call_sync("poor.conf.set", ["auto_center", map.autoCenter]);
+                    if (map.autoCenter) {
+                        map.center.longitude = map.position.coordinate.longitude;
+                        map.center.latitude = map.position.coordinate.latitude;
+                    }
                 }
             }
         }
