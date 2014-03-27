@@ -20,6 +20,13 @@ import QtQuick 2.0
 import QtPositioning 5.0
 
 PositionSource {
+    id: gps
     active: false
     updateInterval: 3000
+
+    function setUpdateInterval(interval) {
+        // Set the interval for polling for position.
+        gps.updateInterval = interval;
+    }
+
 }

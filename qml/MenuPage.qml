@@ -27,7 +27,7 @@ Page {
             anchors.fill: parent
             PageHeader { title: "Poor Maps" }
             ListTitleLabel { text: "Actions" }
-            BackgroundItem {
+            ListItem {
                 ListItemLabel { text: "Find current position" }
                 onClicked: {
                     map.center.longitude = map.position.coordinate.longitude;
@@ -36,7 +36,7 @@ Page {
                 }
             }
             ListTitleLabel { text: "Preferences" }
-            BackgroundItem {
+            ListItem {
                 ListItemLabel { text: "Map tiles" }
                 onClicked: app.pageStack.push("TileSourcePage.qml");
             }
@@ -47,10 +47,9 @@ Page {
                 onCheckedChanged: {
                     map.autoCenter = autoCenterSwitch.checked;
                     py.call_sync("poor.conf.set", ["auto_center", map.autoCenter]);
-                    if (map.autoCenter) {
-                        map.center.longitude = map.position.coordinate.longitude;
-                        map.center.latitude = map.position.coordinate.latitude;
-                    }
+                    map.autoCenter && map.setCenter(map.position.coordinate.longitude,
+                                                    map.position.coordinate.latitude)
+
                 }
             }
         }

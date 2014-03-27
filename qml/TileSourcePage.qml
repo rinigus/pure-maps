@@ -22,7 +22,7 @@ import Sailfish.Silica 1.0
 Page {
     SilicaListView {
         anchors.fill: parent
-        delegate: BackgroundItem {
+        delegate: ListItem {
             height: nameLabel.height + sourceLabel.height
             ListItemLabel {
                 id: nameLabel
@@ -49,7 +49,11 @@ Page {
         }
         header: PageHeader { title: "Map Tiles" }
         model: ListModel { id: listModel }
+
+        VerticalScrollDecorator {}
+
         Component.onCompleted: {
+            // Load tilesource model entries from the Python backend.
             var tilesources = py.call_sync("poor.util.get_tilesources", []);
             for (var i = 0; i < tilesources.length; i++) {
                 listModel.append(tilesources[i]);

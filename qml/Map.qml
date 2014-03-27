@@ -30,13 +30,13 @@ Map {
     minimumZoomLevel: 3
     plugin: MapPlugin {}
 
-    property var autoCenter: false
-    property var changed: true
-    property var gps: PositionSource {}
-    property var position: map.gps.position
-    property var positionMarker: PositionMarker {}
-    property var tiles: []
-    property var zoomLevelPrev: -1
+    property bool autoCenter: false
+    property bool changed: true
+    property var  gps: PositionSource {}
+    property var  position: map.gps.position
+    property var  positionMarker: PositionMarker {}
+    property var  tiles: []
+    property real zoomLevelPrev: 8
 
     AttributionText { id: attribution }
     MapTimer { id: timer }
@@ -45,6 +45,7 @@ Map {
     Component.onCompleted: {
         // Start periodic tile and position updates.
         map.start();
+        map.zoomLevelPrev = map.zoomLevel;
     }
 
     gesture.onPinchFinished: {
@@ -57,8 +58,6 @@ Map {
             map.zoomLevel % 1 > 0.25 ?
                 map.zoomLevel = Math.ceil(map.zoomLevel) :
                 map.zoomLevel = Math.floor(map.zoomLevel);
-        } else {
-            return;
         }
         for (var i = 0; i < map.tiles.length; i++)
             map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
@@ -85,23 +84,20 @@ Map {
 
     onPositionChanged: {
         // Center map on position.
-        if (map.autoCenter) {
-            map.center.longitude = map.position.coordinate.longitude;
-            map.center.latitude = map.position.coordinate.latitude;
-        }
+        map.autoCenter && map.setCenter(map.position.coordinate.longitude,
+                                        map.position.coordinate.latitude)
+
     }
 
     function addTile(uid, x, y, zoom, uri) {
         // Add new tile from local image file to map.
         var component = Qt.createComponent("Tile.qml");
         var tile = component.createObject(map);
-        tile.coordinate = QtPositioning.coordinate(y, x);
         tile.uid = uid;
-        tile.uri = uri;
+        tile.coordinate = QtPositioning.coordinate(y, x);
         tile.zoomLevel = zoom;
-        tile.z = 10;
-        if (zoom != Math.floor(map.zoomLevel))
-            tile.z--;
+        tile.uri = uri;
+        tile.z = (zoom == Math.floor(map.zoomLevel)) ? 10 : 9;
         map.tiles.push(tile);
         map.addMapItem(tile);
     }
@@ -112,11 +108,9 @@ Map {
             if (map.tiles[i].uid != uid) continue;
             map.tiles[i].coordinate.longitude = x;
             map.tiles[i].coordinate.latitude = y;
-            map.tiles[i].uri = uri;
             map.tiles[i].zoomLevel = zoom;
-            map.tiles[i].z = 10;
-            if (zoom != Math.floor(map.zoomLevel))
-                map.tiles[i].z--;
+            map.tiles[i].uri = uri;
+            map.tiles[i].z = (zoom == Math.floor(map.zoomLevel)) ? 10 : 9;
             return;
         }
         // Add missing tile to collection.
@@ -145,23 +139,19 @@ Map {
         map.center.latitude = y;
     }
 
-    function setGpsUpdateInterval(interval) {
-        // Set the interval for polling GPS for position.
-        map.gps.updateInterval = interval;
-    }
-
     function setZoomLevel(zoom) {
         // Set the current zoom level.
         map.zoomLevel = zoom;
+        map.zoomLevelPrev = zoom;
     }
 
     function showTile(uid) {
         // Show tile with given uid.
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != uid) continue;
-            map.tiles[i].z = 10;
-            if (map.tiles[i].zoomLevel != Math.floor(map.zoomLevel))
-                map.tiles[i].z--;
+            map.tiles[i].z = (map.tiles[i].zoomLevel ==
+                              Math.floor(map.zoomLevel)) ? 10 : 9;
+
             break;
         }
     }
@@ -175,7 +165,7 @@ Map {
     function stop() {
         // Stop periodic tile and position updates.
         // Write conf, since in case of crash atexit is not run.
-        py.call_sync("poor.conf.write", []);
+        py.ready && py.call_sync("poor.conf.write", []);
         map.gps.stop();
         timer.stop();
     }

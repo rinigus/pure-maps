@@ -55,8 +55,8 @@ def get_tilesources():
     tilesources = []
     for parent in (poor.CONFIG_HOME_DIR, poor.DATA_DIR):
         for path in glob.glob("{}/tilesources/*.json".format(parent)):
-            # Local definitions override global ones.
             pid = os.path.basename(path).replace(".json", "")
+            # Local definitions override global ones.
             if pid in (x["pid"] for x in tilesources): continue
             try:
                 with open(path, "r", encoding="utf_8") as f:

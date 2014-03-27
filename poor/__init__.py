@@ -21,10 +21,8 @@ __version__ = "0.0"
 
 from poor.paths import *
 from poor import util
-
 from poor.config import *
 conf = ConfigurationStore()
-
 from poor.tilecollection import *
 from poor.tilesource import *
 from poor.application import *
