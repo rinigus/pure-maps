@@ -23,10 +23,10 @@ Page {
     SilicaListView {
         anchors.fill: parent
         delegate: ListItem {
-            height: nameLabel.height + sourceLabel.height
+            contentHeight: Theme.itemSizeMedium
             ListItemLabel {
                 id: nameLabel
-                height: Theme.itemSizeMedium/2
+                height: 0.53*Theme.itemSizeMedium
                 text: name
                 verticalAlignment: Text.AlignBottom
             }
@@ -35,7 +35,7 @@ Page {
                 anchors.top: nameLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                height: Theme.itemSizeMedium/2
+                height: 0.47*Theme.itemSizeMedium
                 text: "Source: " + source
                 verticalAlignment: Text.AlignTop
             }

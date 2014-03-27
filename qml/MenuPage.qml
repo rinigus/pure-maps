@@ -28,6 +28,7 @@ Page {
             PageHeader { title: "Poor Maps" }
             ListTitleLabel { text: "Actions" }
             ListItem {
+                contentHeight: Theme.itemSizeSmall
                 ListItemLabel { text: "Find current position" }
                 onClicked: {
                     map.center.longitude = map.position.coordinate.longitude;
@@ -37,6 +38,7 @@ Page {
             }
             ListTitleLabel { text: "Preferences" }
             ListItem {
+                contentHeight: Theme.itemSizeSmall
                 ListItemLabel { text: "Map tiles" }
                 onClicked: app.pageStack.push("TileSourcePage.qml");
             }
