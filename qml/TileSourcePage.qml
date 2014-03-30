@@ -23,9 +23,12 @@ Page {
     SilicaListView {
         anchors.fill: parent
         delegate: ListItem {
+            id: listItem
             contentHeight: Theme.itemSizeMedium
             ListItemLabel {
                 id: nameLabel
+                color: (active || listItem.highlighted) ?
+                    Theme.highlightColor : Theme.primaryColor;
                 height: 0.53*Theme.itemSizeMedium
                 text: name
                 verticalAlignment: Text.AlignBottom

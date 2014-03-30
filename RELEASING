@@ -3,8 +3,8 @@ Releasing a New Version
 
  * Bump version numbers
    - poor/__init__.py
-   - Makefile
    - rpm/*.spec
+   - Makefile
  * Update NEWS and TODO
  * Build tarball and RPM
    $ make dist

@@ -84,9 +84,8 @@ Map {
 
     onPositionChanged: {
         // Center map on position.
-        map.autoCenter && map.setCenter(map.position.coordinate.longitude,
-                                        map.position.coordinate.latitude)
-
+        if (!map.autoCenter) return;
+        map.centerOnPosition();
     }
 
     function addTile(uid, x, y, zoom, uri) {
@@ -100,6 +99,13 @@ Map {
         tile.z = (zoom == Math.floor(map.zoomLevel)) ? 10 : 9;
         map.tiles.push(tile);
         map.addMapItem(tile);
+    }
+
+    function centerOnPosition() {
+        // Center map on the current position.
+        map.setCenter(map.position.coordinate.longitude,
+                      map.position.coordinate.latitude);
+
     }
 
     function renderTile(uid, x, y, zoom, uri) {
@@ -135,6 +141,7 @@ Map {
 
     function setCenter(x, y) {
         // Set the current center position.
+        if (!x || !y) return;
         map.center.longitude = x;
         map.center.latitude = y;
     }

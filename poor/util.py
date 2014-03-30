@@ -58,10 +58,12 @@ def get_tilesources():
             pid = os.path.basename(path).replace(".json", "")
             # Local definitions override global ones.
             if pid in (x["pid"] for x in tilesources): continue
+            active = (pid == poor.conf.tilesource)
             try:
                 with open(path, "r", encoding="utf_8") as f:
                     tilesource = json.load(f)
                 tilesource["pid"] = pid
+                tilesource["active"] = active
                 tilesources.append(tilesource)
             except Exception as error:
                 print("Failed to read tilesource definition file '{}': {}"

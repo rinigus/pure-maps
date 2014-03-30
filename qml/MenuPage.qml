@@ -28,30 +28,37 @@ Page {
             PageHeader { title: "Poor Maps" }
             ListTitleLabel { text: "Actions" }
             ListItem {
+                id: findCurrentPositionItem
                 contentHeight: Theme.itemSizeSmall
-                ListItemLabel { text: "Find current position" }
+                ListItemLabel {
+                    color: findCurrentPositionItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    text: "Find current position"
+                }
                 onClicked: {
-                    map.center.longitude = map.position.coordinate.longitude;
-                    map.center.latitude = map.position.coordinate.latitude;
+                    map.centerOnPosition();
                     app.pageStack.pop(mapPage, PageStackAction.Immediate);
                 }
             }
             ListTitleLabel { text: "Preferences" }
             ListItem {
+                id: mapTilesItem
                 contentHeight: Theme.itemSizeSmall
-                ListItemLabel { text: "Map tiles" }
+                ListItemLabel {
+                    color: mapTilesItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    text: "Map tiles"
+                }
                 onClicked: app.pageStack.push("TileSourcePage.qml");
             }
             ListItemSwitch {
-                id: autoCenterSwitch
+                id: autoCenterItem
                 checked: map.autoCenter
                 text: "Auto-center on position"
                 onCheckedChanged: {
-                    map.autoCenter = autoCenterSwitch.checked;
+                    map.autoCenter = autoCenterItem.checked;
                     py.call_sync("poor.conf.set", ["auto_center", map.autoCenter]);
-                    map.autoCenter && map.setCenter(map.position.coordinate.longitude,
-                                                    map.position.coordinate.latitude)
-
+                    map.autoCenter && map.centerOnPosition();
                 }
             }
         }
