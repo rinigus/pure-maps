@@ -84,12 +84,11 @@ Map {
 
     onPositionChanged: {
         // Center map on position if outside center of screen.
+        // map.toScreenPosition returns NaN when outside screen.
         if (!map.autoCenter) return;
         var pos = map.toScreenPosition(map.position.coordinate);
-        if (Math.abs(pos.x - 0) < map.width/3 ||
-            Math.abs(pos.y - 0) < map.height/3 ||
-            Math.abs(pos.x - map.width) < map.width/3 ||
-            Math.abs(pos.y - map.height) < map.height/3)
+        if (!pos.x || pos.x < 0.333 * map.width  || pos.x > 0.667 * map.width ||
+            !pos.y || pos.y < 0.333 * map.height || pos.y > 0.667 * map.height)
             map.centerOnPosition();
     }
 
