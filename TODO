@@ -1,8 +1,8 @@
 Poor Maps 0.1
 =============
 
- * Ask permission from OSM sysadmins
- * Decide default tilesource
+ * Auto-center only if outside center 1/9th of screen
+ * Highlight current tilesource
 
 Poor Maps 1.0
 =============
