@@ -83,9 +83,14 @@ Map {
     }
 
     onPositionChanged: {
-        // Center map on position.
+        // Center map on position if outside center of screen.
         if (!map.autoCenter) return;
-        map.centerOnPosition();
+        var pos = map.toScreenPosition(map.position.coordinate);
+        if (Math.abs(pos.x - 0) < map.width/3 ||
+            Math.abs(pos.y - 0) < map.height/3 ||
+            Math.abs(pos.x - map.width) < map.width/3 ||
+            Math.abs(pos.y - map.height) < map.height/3)
+            map.centerOnPosition();
     }
 
     function addTile(uid, x, y, zoom, uri) {
