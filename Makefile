@@ -11,7 +11,7 @@ icondir    = $(DESTDIR)$(PREFIX)/share/icons/hicolor/86x86/apps
 .PHONY: clean dist install rpm
 
 clean:
-	rm -rf dist poor/__pycache__
+	rm -rf dist */__pycache__
 	rm -f rpm/*.rpm
 
 dist:
@@ -32,6 +32,11 @@ install:
 	@echo "Installing tilesources..."
 	mkdir -p $(datadir)/tilesources
 	cp tilesources/*.json $(datadir)/tilesources
+	@echo "Installing geocoders..."
+	mkdir -p $(datadir)/geocoders
+	cp geocoders/*.json $(datadir)/geocoders
+	cp geocoders/*.py $(datadir)/geocoders
+	cp geocoders/README $(datadir)/geocoders
 	@echo "Installing desktop file..."
 	mkdir -p $(desktopdir)
 	cp data/$(name).desktop $(desktopdir)
