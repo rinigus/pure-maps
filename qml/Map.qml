@@ -112,6 +112,13 @@ Map {
 
     }
 
+    function getBoundingBox() {
+        // Return currently visible [xmin, xmax, ymin, ymax].
+        var nw = map.toCoordinate(Qt.point(0, 0));
+        var se = map.toCoordinate(Qt.point(map.width, map.height));
+        return [nw.longitude, se.longitude, se.latitude, nw.latitude];
+    }
+
     function renderTile(uid, x, y, zoom, uri) {
         // Render tile from local image file.
         for (var i = 0; i < map.tiles.length; i++) {
@@ -186,12 +193,11 @@ Map {
         if (!py.ready) return;
         if (map.width <= 0 || map.height <= 0) return;
         if (map.gesture.isPinchActive) return;
-        var nw = map.toCoordinate(Qt.point(0, 0));
-        var se = map.toCoordinate(Qt.point(map.width, map.height));
-        py.call_sync("poor.app.update_tiles", [nw.longitude,
-                                               se.longitude,
-                                               se.latitude,
-                                               nw.latitude,
+        var bbox = map.getBoundingBox();
+        py.call_sync("poor.app.update_tiles", [bbox[0],
+                                               bbox[1],
+                                               bbox[2],
+                                               bbox[3],
                                                Math.floor(map.zoomLevel)]);
 
         map.changed = false;
