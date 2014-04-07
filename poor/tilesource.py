@@ -35,11 +35,11 @@ class TileSource:
     def __init__(self, id):
         """Initialize a :class:`TileSource` instance."""
         values = self._load_attributes(id)
-        self._headers = None
-        self._http_queue = queue.Queue()
         self.attribution = values["attribution"]
         self.extension = values["extension"]
         self.format = values["format"]
+        self._headers = None
+        self._http_queue = queue.Queue()
         self.id = id
         self.name = values["name"]
         self.source = values["source"]
@@ -70,7 +70,7 @@ class TileSource:
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
         with open(path, "r", encoding="utf_8") as f:
-            return(json.load(f))
+            return json.load(f)
 
     def download(self, x, y, zoom):
         """Download map tile and return local file path or ``None``."""

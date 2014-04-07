@@ -83,7 +83,7 @@ class TileCollection:
         tile = Tile(len(self._tiles)+1)
         self._tiles.append(tile)
         tile.ready = False
-        return(tile)
+        return tile
 
     @poor.util.locked_method
     def reset(self):
