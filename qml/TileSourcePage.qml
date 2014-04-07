@@ -24,12 +24,12 @@ Page {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: Theme.itemSizeMedium
+            contentHeight: nameLabel.height + sourceLabel.height
             ListItemLabel {
                 id: nameLabel
                 color: (active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
-                height: 0.53*Theme.itemSizeMedium
+                height: undefined
                 text: name
                 verticalAlignment: Text.AlignBottom
             }
@@ -38,7 +38,7 @@ Page {
                 anchors.top: nameLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                height: 0.47*Theme.itemSizeMedium
+                height: undefined
                 text: "Source: " + source
                 verticalAlignment: Text.AlignTop
             }
@@ -49,12 +49,14 @@ Page {
                 map.changed = true;
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }
+            Component.onCompleted: {
+                nameLabel.height += Theme.paddingMedium;
+                sourceLabel.height += Theme.paddingMedium;
+            }
         }
         header: PageHeader { title: "Map Tiles" }
         model: ListModel { id: listModel }
-
         VerticalScrollDecorator {}
-
         Component.onCompleted: {
             // Load tilesource model entries from the Python backend.
             var tilesources = py.call_sync("poor.util.get_tilesources", []);
