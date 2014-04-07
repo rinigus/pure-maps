@@ -34,11 +34,14 @@ class Application:
     def __init__(self):
         """Initialize a :class:`Application` instance."""
         self._download_queue = queue.Queue()
+        self.geocoder = None
+        self.history = poor.HistoryManager()
         self._tilecollection = poor.TileCollection()
-        self._timestamp = int(time.time()*1000)
         self.tilesource = None
+        self._timestamp = int(time.time()*1000)
         self._init_download_threads()
         self.set_tilesource(poor.conf.tilesource)
+        self.set_geocoder(poor.conf.geocoder)
         self._send_defaults()
 
     def _init_download_threads(self):
@@ -67,6 +70,21 @@ class Application:
         pyotherside.send("set-gps-update-interval", poor.conf.gps_update_interval)
         pyotherside.send("set-center", *poor.conf.center)
         pyotherside.send("set-zoom-level", poor.conf.zoom)
+
+    def set_geocoder(self, geocoder):
+        """Set geocoding provider from string `geocoder`."""
+        try:
+            self.geocoder = poor.Geocoder(geocoder)
+            poor.conf.geocoder = geocoder
+        except Exception as error:
+            print("Failed to load geocoder '{}': {}"
+                  .format(geocoder, str(error)),
+                  file=sys.stderr)
+
+            if self.geocoder is None:
+                default = poor.conf.get_default("geocoder")
+                if default != geocoder:
+                    self.set_geocoder(default)
 
     def set_tilesource(self, tilesource):
         """Set map tile source from string `tilesource`."""
