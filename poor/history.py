@@ -37,6 +37,7 @@ class HistoryManager:
 
     def add_place(self, place):
         """Add `place` to the list of places."""
+        place = place.strip()
         with poor.util.silent(ValueError):
             self._places.remove(place)
         self._places.insert(0, place)
@@ -51,7 +52,8 @@ class HistoryManager:
         if not os.path.isfile(self._path): return
         try:
             with open(self._path, "r", encoding="utf_8") as f:
-                self._places = list(filter(None, f.read().splitlines()))
+                self._places = [x.strip() for x in f.read().splitlines()]
+                self._places = list(filter(None, self._places))
         except Exception as error:
             print("Failed to read file '{}': {}"
                   .format(self._path, str(error)),
