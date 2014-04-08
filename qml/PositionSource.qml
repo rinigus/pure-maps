@@ -28,5 +28,4 @@ PositionSource {
         // Set the interval for polling for position.
         gps.updateInterval = interval;
     }
-
 }

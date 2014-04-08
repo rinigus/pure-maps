@@ -24,7 +24,6 @@ Label {
     anchors.leftMargin: Theme.paddingLarge
     anchors.right: parent.right
     anchors.rightMargin: Theme.paddingLarge
-    height: Theme.itemSizeSmall
     truncationMode: TruncationMode.Fade
     verticalAlignment: Text.AlignVCenter
 }

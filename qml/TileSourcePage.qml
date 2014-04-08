@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "."
 
 Page {
     SilicaListView {
@@ -29,7 +30,7 @@ Page {
                 id: nameLabel
                 color: (active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
-                height: undefined
+                height: implicitHeight + Theme.paddingMedium
                 text: name
                 verticalAlignment: Text.AlignBottom
             }
@@ -37,8 +38,8 @@ Page {
                 id: sourceLabel
                 anchors.top: nameLabel.bottom
                 color: Theme.secondaryColor
+                height: implicitHeight + Theme.paddingMedium
                 font.pixelSize: Theme.fontSizeExtraSmall
-                height: undefined
                 text: "Source: " + source
                 verticalAlignment: Text.AlignTop
             }
@@ -48,10 +49,6 @@ Page {
                 map.setAttribution(attribution);
                 map.changed = true;
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
-            }
-            Component.onCompleted: {
-                nameLabel.height += Theme.paddingMedium;
-                sourceLabel.height += Theme.paddingMedium;
             }
         }
         header: PageHeader { title: "Map Tiles" }
