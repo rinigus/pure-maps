@@ -2,8 +2,9 @@ Poor Maps 0.2
 =============
 
  [X] New icon (now matches in-app position icon)
- [ ] Add framework to support geocoding
- [ ] Add MapQuest Nominatim geocoder
+ [/] Add framework to support geocoding
+ [/] Add MapQuest Nominatim geocoder
+ [ ] Add action to clear map markers?
 
 Poor Maps 1.0
 =============
@@ -11,6 +12,8 @@ Poor Maps 1.0
  * Bump PyOtherSide API version when available and replace all sync
    calls with async ones assuming they no longer crash
  * Check versions of Qt components (bump to 5.2?)
+ * Add a message box and allow tapping on markers
+ * Add a better cover?
  * Add routing
    - http://wiki.openstreetmap.org/wiki/Routing/online_routers
  * Add listing nearby places (restaurants, hotels, etc.)

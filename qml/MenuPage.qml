@@ -28,11 +28,26 @@ Page {
             PageHeader { title: "Poor Maps" }
             ListTitleLabel { text: "Actions" }
             ListItem {
+                id: findPlaceItem
+                contentHeight: Theme.itemSizeSmall
+                ListItemLabel {
+                    color: findPlaceItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "Find place"
+                }
+                onClicked: {
+                    app.pageStack.push("GeocodePage.qml");
+                    app.pageStack.pushAttached("GeocodingResultsPage.qml");
+                }
+            }
+            ListItem {
                 id: findCurrentPositionItem
                 contentHeight: Theme.itemSizeSmall
                 ListItemLabel {
                     color: findCurrentPositionItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
                     text: "Find current position"
                 }
                 onClicked: {
@@ -47,6 +62,7 @@ Page {
                 ListItemLabel {
                     color: mapTilesItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
                     text: "Map tiles"
                 }
                 onClicked: app.pageStack.push("TileSourcePage.qml");
@@ -54,6 +70,7 @@ Page {
             ListItemSwitch {
                 id: autoCenterItem
                 checked: map.autoCenter
+                height: Theme.itemSizeSmall
                 text: "Auto-center on position"
                 onCheckedChanged: {
                     map.autoCenter = autoCenterItem.checked;
