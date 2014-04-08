@@ -75,6 +75,7 @@ Page {
     }
     function populate(query) {
         // Load geocoding results from the Python backend.
+        py.call_sync("poor.app.history.add_place", [query]);
         listModel.clear();
         var bbox = map.getBoundingBox();
         var x = map.position.coordinate.longitude || 0;

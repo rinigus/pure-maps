@@ -33,7 +33,7 @@ class HistoryManager:
         self._max_size = max_size
         self._path = os.path.join(poor.CONFIG_HOME_DIR, "places.history")
         self._places = []
-        self._read_from_file()
+        self._read()
 
     def add_place(self, place):
         """Add `place` to the list of places."""
@@ -47,7 +47,7 @@ class HistoryManager:
         """Return a list of places."""
         return self._places[:]
 
-    def _read_from_file(self):
+    def _read(self):
         """Read list of places from file."""
         if not os.path.isfile(self._path): return
         try:
@@ -59,7 +59,7 @@ class HistoryManager:
                   .format(self._path, str(error)),
                   file=sys.stderr)
 
-    def write_to_file(self):
+    def write(self):
         """Write list of places to file."""
         directory = os.path.dirname(self._path)
         directory = poor.util.makedirs(directory)

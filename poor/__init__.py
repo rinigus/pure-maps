@@ -36,3 +36,4 @@ def main():
     pyotherside.atexit(conf.write)
     global app
     app = Application()
+    pyotherside.atexit(app.history.write)

@@ -22,6 +22,7 @@ import "."
 
 Page {
     id: page
+    property var history: []
     property string query: ""
     SilicaListView {
         id: listView
@@ -68,26 +69,30 @@ Page {
         }
         model: ListModel {
             id: listModel
-            property var history: py.evaluate("poor.app.history.places")
-            Component.onCompleted: listModel.update();
             function update() {
                 listModel.clear();
                 var query = listView.searchField.text.toLowerCase();
-                for (var i = 0; i < listModel.history.length; i++) {
-                    var historyItem = listModel.history[i].toLowerCase()
+                for (var i = 0; i < page.history.length; i++) {
+                    var historyItem = page.history[i].toLowerCase()
                     if (query != "" && historyItem.indexOf(query) == 0)
-                        listModel.append({"place": listModel.history[i]})
+                        listModel.append({"place": page.history[i]})
                     if (listModel.count >= 100) break;
                 }
-                for (var i = 0; i < listModel.history.length; i++) {
-                    var historyItem = listModel.history[i].toLowerCase()
+                for (var i = 0; i < page.history.length; i++) {
+                    var historyItem = page.history[i].toLowerCase()
                     if (query == "" || historyItem.indexOf(query) > 0)
-                        listModel.append({"place": listModel.history[i]})
+                        listModel.append({"place": page.history[i]})
                     if (listModel.count >= 100) break;
                 }
             }
         }
         property var searchField
         VerticalScrollDecorator {}
+    }
+    onStatusChanged: {
+        if (page.status == PageStatus.Activating) {
+            page.history = py.evaluate("poor.app.history.places")
+            listView.model.update();
+        }
     }
 }
