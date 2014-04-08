@@ -21,6 +21,8 @@ import Sailfish.Silica 1.0
 import "."
 
 Page {
+    id: page
+    property string query: ""
     SilicaListView {
         id: listView
         anchors.fill: parent
@@ -37,9 +39,8 @@ Page {
                 text: place
             }
             onClicked: {
-                var resultPage = app.pageStack.nextPage()
+                page.query = place;
                 app.pageStack.navigateForward();
-                resultPage.populate(place);
             }
         }
         header: Column {
@@ -57,12 +58,11 @@ Page {
                 placeholderText: "Address, landmark, etc."
                 width: parent.width
                 EnterKey.enabled: searchField.text.length > 0
-                EnterKey.onClicked: {
-                    var resultPage = app.pageStack.nextPage()
-                    app.pageStack.navigateForward();
-                    resultPage.populate(searchField.text);
+                EnterKey.onClicked: app.pageStack.navigateForward();
+                onTextChanged: {
+                    page.query = searchField.text;
+                    listModel.update();
                 }
-                onTextChanged: listModel.update();
             }
             Component.onCompleted: listView.searchField = searchField;
         }
