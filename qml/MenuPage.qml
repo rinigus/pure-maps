@@ -55,6 +55,20 @@ Page {
                     app.pageStack.pop(mapPage, PageStackAction.Immediate);
                 }
             }
+            ListItem {
+                id: clearMapItem
+                contentHeight: Theme.itemSizeSmall
+                ListItemLabel {
+                    color: clearMapItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "Clear map"
+                }
+                onClicked: {
+                    map.clearPois();
+                    app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                }
+            }
             ListTitleLabel { text: "Preferences" }
             ListItem {
                 id: mapTilesItem
