@@ -22,6 +22,7 @@ import "."
 
 Page {
     id: page
+    property bool loading: true
     property string title: "Results"
     SilicaListView {
         anchors.fill: parent
@@ -63,11 +64,20 @@ Page {
         model: ListModel { id: listModel }
         VerticalScrollDecorator {}
     }
+    BusyIndicator {
+        anchors.centerIn: parent
+        running: page.loading
+        size: BusyIndicatorSize.Large
+        visible: page.loading
+    }
     onStatusChanged: {
-        if (page.status == PageStatus.Active) {
+        if (page.status == PageStatus.Activating) {
+            page.loading = true;
+        } else if (page.status == PageStatus.Active) {
             var previousPage = app.pageStack.previousPage();
             page.populate(previousPage.query);
             page.title = listModel.count + " Results"
+            page.loading = false;
         } else if (page.status == PageStatus.Inactive) {
             listModel.clear();
             page.title = "Results"
