@@ -2,23 +2,23 @@ Poor Maps 0.2
 =============
 
  [X] New icon (now matches in-app position icon)
- [/] Add framework to support geocoding
- [/] Add MapQuest Nominatim geocoder
- [ ] Add action to clear map markers?
+ [X] Add framework to support geocoding
+ [X] Add MapQuest Nominatim geocoder
+ [ ] Allow landscape by Page.allowedOrientations
+     - Need to figure out how to rotate gestures too
+ [ ] Bump required PyOtherSide version to 1.2 (included in Sailfish OS
+     1.0.4.20 "Ohijärvi" released 2014-03-17)
+     - Replace most sync calls with async ones
 
 Poor Maps 1.0
 =============
 
- * Bump PyOtherSide API version when available and replace all sync
-   calls with async ones assuming they no longer crash
  * Check versions of Qt components (bump to 5.2?)
  * Add a message box and allow tapping on markers
  * Add a better cover?
  * Add routing
    - http://wiki.openstreetmap.org/wiki/Routing/online_routers
  * Add listing nearby places (restaurants, hotels, etc.)
- * Allow landscape by Page.allowedOrientations
-   - Need to figure out how to rotate gestures too
  * Add auto-rotate on bearing when the Map component supports it
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations (both qsTr and gettext?)
