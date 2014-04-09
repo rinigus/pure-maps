@@ -32,7 +32,7 @@ Page {
                 color: (active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
                 height: implicitHeight + Theme.paddingMedium
-                text: name
+                text: model.name
                 verticalAlignment: Text.AlignBottom
             }
             ListItemLabel {
@@ -41,7 +41,7 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight
-                text: "Source: " + source
+                text: "Source: " + model.source
                 verticalAlignment: Text.AlignVCenter
             }
             ListItemLabel {
@@ -50,11 +50,11 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + Theme.paddingMedium
-                text: attribution
+                text: model.attribution
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
-                py.call_sync("poor.app.set_geocoder", [pid]);
+                py.call_sync("poor.app.set_geocoder", [model.pid]);
                 app.pageStack.pop();
             }
         }
@@ -64,9 +64,8 @@ Page {
         Component.onCompleted: {
             // Load geocoder model entries from the Python backend.
             var geocoders = py.call_sync("poor.util.get_geocoders", []);
-            for (var i = 0; i < geocoders.length; i++) {
+            for (var i = 0; i < geocoders.length; i++)
                 listModel.append(geocoders[i]);
-            }
         }
     }
 }

@@ -35,7 +35,7 @@ Page {
                 color: listItem.highlighted ?
                     Theme.highlightColor : Theme.primaryColor;
                 height: implicitHeight + Theme.paddingMedium
-                text: title
+                text: model.title
                 verticalAlignment: Text.AlignBottom
             }
             ListItemText {
@@ -44,7 +44,7 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight
-                text: description
+                text: model.description
                 verticalAlignment: Text.AlignVCenter
             }
             ListItemLabel {
@@ -53,11 +53,13 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + Theme.paddingMedium
-                text: distance
+                text: model.distance
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
-                console.log("Clicked: " + title);
+                map.addPoi(model.x, model.y);
+                map.setCenter(model.x, model.y);
+                app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }
         }
         header: PageHeader { title: page.title }
@@ -99,8 +101,7 @@ Page {
                                     bbox[2],
                                     bbox[3]]);
 
-        for (var i = 0; i < results.length; i++) {
+        for (var i = 0; i < results.length; i++)
             listModel.append(results[i]);
-        }
     }
 }

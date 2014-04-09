@@ -31,7 +31,7 @@ Page {
                 color: (active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
                 height: implicitHeight + Theme.paddingMedium
-                text: name
+                text: model.name
                 verticalAlignment: Text.AlignBottom
             }
             ListItemLabel {
@@ -40,11 +40,11 @@ Page {
                 color: Theme.secondaryColor
                 height: implicitHeight + Theme.paddingMedium
                 font.pixelSize: Theme.fontSizeExtraSmall
-                text: "Source: " + source
+                text: "Source: " + model.source
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
-                py.call_sync("poor.app.set_tilesource", [pid]);
+                py.call_sync("poor.app.set_tilesource", [model.pid]);
                 map.resetTiles();
                 map.setAttribution(attribution);
                 map.changed = true;
@@ -57,9 +57,8 @@ Page {
         Component.onCompleted: {
             // Load tilesource model entries from the Python backend.
             var tilesources = py.call_sync("poor.util.get_tilesources", []);
-            for (var i = 0; i < tilesources.length; i++) {
+            for (var i = 0; i < tilesources.length; i++)
                 listModel.append(tilesources[i]);
-            }
         }
     }
 }

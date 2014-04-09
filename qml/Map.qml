@@ -33,6 +33,7 @@ Map {
     property bool autoCenter: false
     property bool changed: true
     property var  gps: PositionSource {}
+    property var  pois: []
     property var  position: map.gps.position
     property var  positionMarker: PositionMarker {}
     property var  tiles: []
@@ -92,6 +93,15 @@ Map {
             map.centerOnPosition();
     }
 
+    function addPoi(x, y) {
+        // Add new point of interest marker to map.
+        var component = Qt.createComponent("PoiMarker.qml");
+        var poi = component.createObject(map);
+        poi.coordinate = QtPositioning.coordinate(y, x);
+        map.pois.push(poi);
+        map.addMapItem(poi);
+    }
+
     function addTile(uid, x, y, zoom, uri) {
         // Add new tile from local image file to map.
         var component = Qt.createComponent("Tile.qml");
@@ -110,6 +120,13 @@ Map {
         map.setCenter(map.position.coordinate.longitude,
                       map.position.coordinate.latitude);
 
+    }
+
+    function clearPois() {
+        // Remove all point of interest markers from map.
+        for (var i = 0; i < map.pois.length; i++)
+            map.removeMapItem(map.pois[i]);
+        map.pois = [];
     }
 
     function getBoundingBox() {

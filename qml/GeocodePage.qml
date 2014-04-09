@@ -37,10 +37,10 @@ Page {
                 color: listItem.highlighted ?
                     Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
-                text: place
+                text: model.place
             }
             onClicked: {
-                page.query = place;
+                page.query = model.place;
                 app.pageStack.navigateForward();
             }
         }
