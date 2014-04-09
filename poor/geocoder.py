@@ -22,6 +22,7 @@ import json
 import os
 import poor
 import re
+import sys
 import time
 
 __all__ = ("Geocoder",)
@@ -51,7 +52,12 @@ class Geocoder:
 
     def geocode(self, query, x, y, xmin, xmax, ymin, ymax):
         """Return a list of dictionaries of places matching `query`."""
-        results = self._provider.geocode(query, xmin, xmax, ymin, ymax)
+        try:
+            results = self._provider.geocode(query, xmin, xmax, ymin, ymax)
+        except Exception as error:
+            # XXX: Should we relay an error message to QML?
+            print("Geocoding failed: {}".format(str(error)), file=sys.stderr)
+            return []
         for result in results:
             result["distance"] = self._format_distance(x,
                                                        y,
