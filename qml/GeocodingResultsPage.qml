@@ -78,8 +78,6 @@ Page {
         } else if (page.status == PageStatus.Active) {
             var previousPage = app.pageStack.previousPage();
             page.populate(previousPage.query);
-            page.title = listModel.count + " Results"
-            page.loading = false;
         } else if (page.status == PageStatus.Inactive) {
             listModel.clear();
             page.title = "Results"
@@ -92,16 +90,14 @@ Page {
         var bbox = map.getBoundingBox();
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
-        var results = py.call_sync("poor.app.geocoder.geocode",
-                                   [query,
-                                    x,
-                                    y,
-                                    bbox[0],
-                                    bbox[1],
-                                    bbox[2],
-                                    bbox[3]]);
+        py.call("poor.app.geocoder.geocode",
+                [query, x, y, bbox[0], bbox[1], bbox[2], bbox[3]],
+                function(results) {
+                    page.title = results.length + " Results"
+                    for (var i = 0; i < results.length; i++)
+                        listModel.append(results[i]);
+                    page.loading = false;
+                });
 
-        for (var i = 0; i < results.length; i++)
-            listModel.append(results[i]);
     }
 }

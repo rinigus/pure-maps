@@ -11,7 +11,7 @@ Source: %{name}-%{version}.tar.xz
 BuildArch: noarch
 BuildRequires: make
 Requires: libsailfishapp-launcher
-Requires: pyotherside-qml-plugin-python3-qt5
+Requires: pyotherside-qml-plugin-python3-qt5 >= 1.2
 Requires: python3-base
 Requires: qt5-plugin-geoservices-nokia
 Requires: qt5-qtdeclarative-import-location

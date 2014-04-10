@@ -6,9 +6,9 @@ Poor Maps 0.2
  [X] Add MapQuest Nominatim geocoder
  [ ] Allow landscape by Page.allowedOrientations
      - Need to figure out how to rotate gestures too
- [ ] Bump required PyOtherSide version to 1.2 (included in Sailfish OS
+ [X] Bump required PyOtherSide version to 1.2 (included in Sailfish OS
      1.0.4.20 "Ohijärvi" released 2014-03-17)
-     - Replace most sync calls with async ones
+ [ ] Bump marker size and/or alpha
 
 Poor Maps 1.0
 =============

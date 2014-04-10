@@ -214,11 +214,11 @@ Map {
         if (map.width <= 0 || map.height <= 0) return;
         if (map.gesture.isPinchActive) return;
         var bbox = map.getBoundingBox();
-        py.call_sync("poor.app.update_tiles", [bbox[0],
-                                               bbox[1],
-                                               bbox[2],
-                                               bbox[3],
-                                               Math.floor(map.zoomLevel)]);
+        py.call("poor.app.update_tiles", [bbox[0],
+                                          bbox[1],
+                                          bbox[2],
+                                          bbox[3],
+                                          Math.floor(map.zoomLevel)], null);
 
         map.changed = false;
     }

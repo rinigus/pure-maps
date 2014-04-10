@@ -56,9 +56,10 @@ Page {
         VerticalScrollDecorator {}
         Component.onCompleted: {
             // Load tilesource model entries from the Python backend.
-            var tilesources = py.call_sync("poor.util.get_tilesources", []);
-            for (var i = 0; i < tilesources.length; i++)
-                listModel.append(tilesources[i]);
+            py.call("poor.util.get_tilesources", [], function(tilesources) {
+                for (var i = 0; i < tilesources.length; i++)
+                    listModel.append(tilesources[i]);
+            });
         }
     }
 }

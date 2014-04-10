@@ -17,16 +17,17 @@
  */
 
 import QtQuick 2.0
-import io.thp.pyotherside 1.0
+import io.thp.pyotherside 1.2
 
 Python {
     id: py
     property bool ready: false
     Component.onCompleted: {
-        addImportPath(Qt.resolvedUrl("..").substr("file://".length));
+        addImportPath(Qt.resolvedUrl(".."));
         importModule("poor", function() {
-            py.call_sync("poor.main", []);
-            py.ready = true;
+            py.call("poor.main", [], function() {
+                py.ready = true;
+            });
         });
     }
     onError: console.log("Error: " + traceback);

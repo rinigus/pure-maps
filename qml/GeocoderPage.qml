@@ -63,9 +63,10 @@ Page {
         VerticalScrollDecorator {}
         Component.onCompleted: {
             // Load geocoder model entries from the Python backend.
-            var geocoders = py.call_sync("poor.util.get_geocoders", []);
-            for (var i = 0; i < geocoders.length; i++)
-                listModel.append(geocoders[i]);
+            py.call("poor.util.get_geocoders", [], function(geocoders) {
+                for (var i = 0; i < geocoders.length; i++)
+                    listModel.append(geocoders[i]);
+            });
         }
     }
 }
