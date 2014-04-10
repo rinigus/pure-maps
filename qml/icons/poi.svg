@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="32"
-   height="32"
+   width="48"
+   height="48"
    id="svg1901"
    sodipodi:version="0.32"
    inkscape:version="0.48.4 r9939"
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="28.625"
-     inkscape:cx="9.8864629"
-     inkscape:cy="16"
+     inkscape:zoom="19.083333"
+     inkscape:cx="24"
+     inkscape:cy="24"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
@@ -62,21 +62,11 @@
      inkscape:label="Taso 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-1020.3622)">
+     transform="translate(0,-1004.3622)">
     <path
-       style="fill:#ff0540;fill-opacity:0.47058824;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:0;stroke-dasharray:none"
-       d="M 16 0 C 7.1634441 0 0 7.1634442 0 16 C 0 24.836556 7.1634441 32 16 32 C 24.836556 32 32 24.836556 32 16 C 32 7.1634442 24.836556 -3.5527137e-15 16 0 z M 16 5 C 22.075132 5 27 9.9248676 27 16 C 27 22.075132 22.075132 27 16 27 C 9.9248676 27 5 22.075132 5 16 C 5 9.9248676 9.9248676 5 16 5 z "
-       transform="translate(0,1020.3622)"
-       id="path10143" />
-    <path
-       sodipodi:type="arc"
-       style="fill:#ff0540;fill-opacity:0.47058824;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:0;stroke-dasharray:none"
-       id="path10139"
-       sodipodi:cx="15"
-       sodipodi:cy="14.5"
-       sodipodi:rx="4"
-       sodipodi:ry="3.5"
-       d="m 19,14.5 a 4,3.5 0 1 1 -8,0 4,3.5 0 1 1 8,0 z"
-       transform="matrix(1.5,0,0,1.7142857,-6.5,1011.5051)" />
+       style="fill:#ff2205;fill-opacity:0.66666667;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:0;stroke-dasharray:none"
+       d="m 24,1004.3622 c -13.254834,0 -24,10.7452 -24,24 0,13.2548 10.745166,24 24,24 13.254834,0 24,-10.7452 24,-24 0,-13.2548 -10.745166,-24 -24,-24 z m 0,7.5 c 9.112698,0 16.5,7.3873 16.5,16.5 0,9.1127 -7.387302,16.5 -16.5,16.5 -9.112699,0 -16.5,-7.3873 -16.5,-16.5 0,-9.1127 7.387301,-16.5 16.5,-16.5 z"
+       id="path10143"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

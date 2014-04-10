@@ -8,7 +8,6 @@ Poor Maps 0.2
      - Need to figure out how to rotate gestures too
  [X] Bump required PyOtherSide version to 1.2 (included in Sailfish OS
      1.0.4.20 "Ohijärvi" released 2014-03-17)
- [ ] Bump marker size and/or alpha
 
 Poor Maps 1.0
 =============
