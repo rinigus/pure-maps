@@ -22,6 +22,7 @@ import "."
 
 Page {
     id: page
+    allowedOrientations: Orientation.All
     property var history: []
     property string query: ""
     SilicaListView {

@@ -21,9 +21,13 @@ import Sailfish.Silica 1.0
 import "."
 
 Page {
+    allowedOrientations: Orientation.All
     SilicaFlickable {
         anchors.fill: parent
+        contentHeight: column.implicitHeight
+        contentWidth: parent.width
         Column {
+            id: column
             anchors.fill: parent
             PageHeader { title: "Poor Maps" }
             ListTitleLabel { text: "Actions" }
@@ -93,5 +97,6 @@ Page {
                 }
             }
         }
+        VerticalScrollDecorator {}
     }
 }

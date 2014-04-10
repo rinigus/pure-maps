@@ -26,6 +26,8 @@ ApplicationWindow {
     cover: undefined
     initialPage: Page {
         id: mapPage
+        // XXX: Map gestures don't work right in landscape.
+        allowedOrientations: Orientation.Portrait
         Map {
             id: map
         }

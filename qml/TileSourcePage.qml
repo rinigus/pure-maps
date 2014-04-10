@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "."
 
 Page {
+    allowedOrientations: Orientation.All
     SilicaListView {
         anchors.fill: parent
         delegate: ListItem {
