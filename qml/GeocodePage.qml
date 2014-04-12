@@ -73,17 +73,16 @@ Page {
             function update() {
                 listModel.clear();
                 var query = listView.searchField.text.toLowerCase();
+                var nstart = 0;
                 for (var i = 0; i < page.history.length; i++) {
                     var historyItem = page.history[i].toLowerCase()
-                    if (query != "" && historyItem.indexOf(query) == 0)
-                        listModel.append({"place": page.history[i]})
-                    if (listModel.count >= 100) break;
-                }
-                for (var i = 0; i < page.history.length; i++) {
-                    var historyItem = page.history[i].toLowerCase()
-                    if (query == "" || historyItem.indexOf(query) > 0)
-                        listModel.append({"place": page.history[i]})
-                    if (listModel.count >= 100) break;
+                    if (query != "" && historyItem.indexOf(query) == 0) {
+                        listModel.insert(nstart++, {"place": page.history[i]});
+                        if (listModel.count >= 100) break;
+                    } else if (query == "" || historyItem.indexOf(query) > 0) {
+                        listModel.append({"place": page.history[i]});
+                        if (listModel.count >= 100) break;
+                    }
                 }
             }
         }

@@ -2,7 +2,7 @@ Poor Maps 0.2
 =============
 
  [X] New icon (now matches in-app position icon)
- [X] Add framework to support geocoding
+ [X] Add framework to support pluggable geocoders
  [X] Add MapQuest Nominatim geocoder
  [X] Allow landscape for menu pages (the map page remains portrait only
      due to some QtLocation problem rotating gestures)
