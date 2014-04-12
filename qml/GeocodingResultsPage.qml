@@ -65,6 +65,18 @@ Page {
         }
         header: PageHeader { title: page.title }
         model: ListModel { id: listModel }
+        PullDownMenu {
+            visible: listModel.count > 1
+            MenuItem {
+                text: "Show all"
+                onClicked: {
+                    for (var i = 0; i < listModel.count; i++)
+                        map.addPoi(listModel.get(i).x, listModel.get(i).y);
+                    map.fitViewToPois();
+                    app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                }
+            }
+        }
         VerticalScrollDecorator {}
     }
     BusyIndicator {

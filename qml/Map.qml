@@ -129,11 +129,42 @@ Map {
         map.pois = [];
     }
 
+    function fitViewToPois() {
+        // Set center and zoom so that all points of interest are visible.
+        var cx = 0;
+        var cy = 0;
+        for (var i = 0; i < map.pois.length; i++) {
+            cx += map.pois[i].coordinate.longitude;
+            cy += map.pois[i].coordinate.latitude;
+        }
+        cx /= map.pois.length;
+        cy /= map.pois.length;
+        map.setCenter(cx, cy);
+        while (map.zoomLevel > map.minimumZoomLevel) {
+            var allIn = true;
+            for (var i = 0; i < map.pois.length; i++) {
+                if (!map.inView(map.pois[i].coordinate.longitude,
+                                map.pois[i].coordinate.latitude)) {
+                    allIn = false;
+                    break;
+                }
+            }
+            if (allIn) break;
+            map.setZoomLevel(map.zoomLevel - 1);
+        }
+    }
+
     function getBoundingBox() {
         // Return currently visible [xmin, xmax, ymin, ymax].
         var nw = map.toCoordinate(Qt.point(0, 0));
         var se = map.toCoordinate(Qt.point(map.width, map.height));
         return [nw.longitude, se.longitude, se.latitude, nw.latitude];
+    }
+
+    function inView(x, y) {
+        // Return true if point in the current view.
+        var bbox = map.getBoundingBox();
+        return (x >= bbox[0] && x <= bbox[1] && y >= bbox[2] && y <= bbox[3])
     }
 
     function renderTile(uid, x, y, zoom, uri) {
@@ -172,12 +203,14 @@ Map {
         if (!x || !y) return;
         map.center.longitude = x;
         map.center.latitude = y;
+        map.changed = true;
     }
 
     function setZoomLevel(zoom) {
         // Set the current zoom level.
         map.zoomLevel = zoom;
         map.zoomLevelPrev = zoom;
+        map.changed = true;
     }
 
     function showTile(uid) {
