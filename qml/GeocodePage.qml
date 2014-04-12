@@ -23,6 +23,7 @@ import "."
 Page {
     id: page
     allowedOrientations: Orientation.All
+    property string geocoderName: ""
     property var history: []
     property string query: ""
     SilicaListView {
@@ -51,7 +52,7 @@ Page {
             ValueButton {
                 label: "Using"
                 height: Theme.itemSizeSmall
-                value: py.evaluate("poor.app.geocoder.name")
+                value: page.geocoderName
                 width: parent.width
                 onClicked: app.pageStack.push("GeocoderPage.qml");
             }
@@ -91,7 +92,8 @@ Page {
     }
     onStatusChanged: {
         if (page.status == PageStatus.Activating) {
-            page.history = py.evaluate("poor.app.history.places")
+            page.geocoderName = py.evaluate("poor.app.geocoder.name");
+            page.history = py.evaluate("poor.app.history.places");
             listView.model.update();
         }
     }

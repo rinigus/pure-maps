@@ -15,6 +15,7 @@ Poor Maps 1.0
  * Check versions of Qt components (bump to 5.2?)
  * Add a message box and allow tapping on markers
  * Add a better cover?
+ * Add about page?
  * Add routing
    - http://wiki.openstreetmap.org/wiki/Routing/online_routers
  * Add listing nearby places (restaurants, hotels, etc.)
