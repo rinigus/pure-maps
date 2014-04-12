@@ -24,7 +24,7 @@ Page {
     id: page
     allowedOrientations: Orientation.All
     property bool loading: true
-    property string title: "Results"
+    property string title: "Searching"
     SilicaListView {
         anchors.fill: parent
         delegate: ListItem {
@@ -81,7 +81,7 @@ Page {
             page.populate(previousPage.query);
         } else if (page.status == PageStatus.Inactive) {
             listModel.clear();
-            page.title = "Results"
+            page.title = "Searching"
         }
     }
     function populate(query) {
@@ -94,7 +94,8 @@ Page {
         py.call("poor.app.geocoder.geocode",
                 [query, x, y, bbox[0], bbox[1], bbox[2], bbox[3]],
                 function(results) {
-                    page.title = results.length + " Results"
+                    page.title = results.length == 1 ?
+                        "1 Result" : results.length + " Results";
                     for (var i = 0; i < results.length; i++)
                         listModel.append(results[i]);
                     page.loading = false;
