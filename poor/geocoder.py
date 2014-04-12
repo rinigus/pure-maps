@@ -75,7 +75,7 @@ class Geocoder:
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
         leaf = os.path.join("geocoders", "{}.json".format(id))
-        path = os.path.join(poor.CONFIG_HOME_DIR, leaf)
+        path = os.path.join(poor.DATA_HOME_DIR, leaf)
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
         with open(path, "r", encoding="utf_8") as f:

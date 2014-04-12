@@ -106,7 +106,7 @@ def format_distance(distance, n, units="km"):
 def get_geocoders():
     """Return a list of dictionaries of geocoder attributes."""
     geocoders = []
-    for parent in (poor.CONFIG_HOME_DIR, poor.DATA_DIR):
+    for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
         for path in glob.glob("{}/geocoders/*.json".format(parent)):
             pid = os.path.basename(path).replace(".json", "")
             # Local definitions override global ones.
@@ -129,7 +129,7 @@ def get_geocoders():
 def get_tilesources():
     """Return a list of dictionaries of tilesource attributes."""
     tilesources = []
-    for parent in (poor.CONFIG_HOME_DIR, poor.DATA_DIR):
+    for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
         for path in glob.glob("{}/tilesources/*.json".format(parent)):
             pid = os.path.basename(path).replace(".json", "")
             # Local definitions override global ones.

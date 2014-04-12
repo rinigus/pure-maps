@@ -4,6 +4,9 @@ Poor Maps 0.2
  [X] New icon (now matches in-app position icon)
  [X] Add framework to support pluggable geocoders
  [X] Add MapQuest Nominatim geocoder
+ [X] Load user's own tilesources and geocoders from
+     $HOME/.local/share/harbour-poor-maps instead of
+     $HOME/.config/harbour-poor-maps
  [X] Allow landscape for menu pages (the map page remains portrait only
      due to some QtLocation problem rotating gestures)
  [X] Bump required PyOtherSide version to 1.2 (included in Sailfish OS
