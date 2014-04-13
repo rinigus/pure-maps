@@ -2,7 +2,7 @@
 %define __os_install_post %{___build_post}
 
 Name: harbour-poor-maps
-Version: 0.1
+Version: 0.2
 Release: 1
 Summary: An application to display maps and stuff
 License: GPLv3+

@@ -1,3 +1,17 @@
+Poor Maps 0.2
+=============
+
+ * Add framework to support pluggable geocoders
+ * Add MapQuest Nominatim geocoder
+ * New icon (now matches in-app position icon)
+ * Load user's own tilesources and geocoders from
+   $HOME/.local/share/harbour-poor-maps instead of the previous
+   $HOME/.config/harbour-poor-maps
+ * Allow landscape for menu pages (the map page remains portrait only
+   due to some QtLocation problem rotating gestures)
+ * Bump required PyOtherSide version to 1.2 (included in Sailfish OS
+   1.0.4.20 "Ohijärvi" released 2014-03-17)
+
 Poor Maps 0.1
 =============
 
