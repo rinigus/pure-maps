@@ -1,6 +1,8 @@
 Releasing a New Version
 =======================
 
+ * Run all unit tests
+   $ py.test-3 poor
  * Bump version numbers
    - poor/__init__.py
    - rpm/*.spec

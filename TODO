@@ -6,6 +6,8 @@ Poor Maps 1.0
  * Add a better cover?
  * Add about page?
  * Add routing
+   - http://open.mapquest.com/
+   - http://project-osrm.org/
    - http://wiki.openstreetmap.org/wiki/Routing/online_routers
  * Add listing nearby places (restaurants, hotels, etc.)
  * Allow landscape for the map page when gestures work right

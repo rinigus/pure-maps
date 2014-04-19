@@ -19,6 +19,19 @@
 
 __version__ = "0.2"
 
+try:
+    import pyotherside
+except ImportError:
+    import sys
+    # Allow testing Python backend alone.
+    print("PyOtherSide not found, continuing anyway!",
+          file=sys.stderr)
+
+    class pyotherside:
+        def atexit(*args): pass
+        def send(*args): pass
+    sys.modules["pyotherside"] = pyotherside()
+
 from poor.paths import *
 from poor import util
 from poor.config import *
