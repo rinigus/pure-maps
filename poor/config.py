@@ -31,6 +31,7 @@ DEFAULTS = {
     "download_timeout": 10,
     "geocoder": "mapquest_nominatim",
     "gps_update_interval": 3,
+    "router": "mapquest_open",
     "tilesource": "mapquest_open",
     "zoom": 15,
 }
@@ -122,9 +123,9 @@ class ConfigurationStore(AttrDict):
         Add configuration `values` for router `name` if missing.
 
         e.g. calling ``register_router("foo", {"type": "car"})`` will make type
-        available as ``poor.conf.router.foo.type``.
+        available as ``poor.conf.routers.foo.type``.
         """
-        self._register({"router": {name: values}}, self)
+        self._register({"routers": {name: values}}, self)
 
     def set(self, option, value):
         """

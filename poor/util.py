@@ -126,6 +126,29 @@ def get_geocoders():
     geocoders.sort(key=lambda x: x["name"])
     return(geocoders)
 
+def get_routers():
+    """Return a list of dictionaries of router attributes."""
+    routers = []
+    for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
+        for path in glob.glob("{}/routers/*.json".format(parent)):
+            pid = os.path.basename(path).replace(".json", "")
+            # Local definitions override global ones.
+            if pid in (x["pid"] for x in routers): continue
+            active = (pid == poor.conf.router)
+            try:
+                with open(path, "r", encoding="utf_8") as f:
+                    router = json.load(f)
+                router["pid"] = pid
+                router["active"] = active
+                routers.append(router)
+            except Exception as error:
+                print("Failed to read router definition file '{}': {}"
+                      .format(path, str(error)),
+                      file=sys.stderr)
+
+    routers.sort(key=lambda x: x["name"])
+    return(routers)
+
 def get_tilesources():
     """Return a list of dictionaries of tilesource attributes."""
     tilesources = []
