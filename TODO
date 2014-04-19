@@ -1,16 +1,19 @@
+Poor Maps 0.3
+=============
+
+ [/] Add framework to support pluggable routers
+ [/] Add MapQuest Open router (car, bicycle, pedestrian)
+ [?] Add OSRM router (car)
+
 Poor Maps 1.0
 =============
 
- * Check versions of Qt components (bump to 5.2?)
+ * Add narration of routing manoeuvers
  * Add a message box and allow tapping on markers
  * Add a better cover?
  * Add about page?
- * Add routing
-   - http://open.mapquest.com/
-   - http://project-osrm.org/
-   - http://wiki.openstreetmap.org/wiki/Routing/online_routers
- * Add listing nearby places (restaurants, hotels, etc.)
  * Allow landscape for the map page when gestures work right
  * Add auto-rotate on bearing when the Map component supports it
+ * Add listing nearby places (restaurants, hotels, etc.)
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations (both qsTr and gettext?)
