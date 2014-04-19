@@ -44,7 +44,7 @@ class Router:
 
     def route(self, fm, to):
         """
-        Return a list of dictionaries of places matching `query`.
+        Find route and return its properties as a dictionary.
 
         `fm` and `to` can be either strings (usually addresses) or two-element
         tuples or lists of (x,y) coordinates.
