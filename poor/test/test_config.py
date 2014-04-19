@@ -68,7 +68,7 @@ class TestConfigurationStore(poor.test.TestCase):
         assert poor.conf.get_default("router.foo.type") == "car"
 
     def test_set(self):
-        poor.conf.zoom = 99
+        poor.conf.set("zoom", 99)
         assert poor.conf.zoom == 99
 
     def test_set__nested(self):
