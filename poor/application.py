@@ -36,12 +36,14 @@ class Application:
         self._download_queue = queue.Queue()
         self.geocoder = None
         self.history = poor.HistoryManager()
+        self.router = None
         self._tilecollection = poor.TileCollection()
         self.tilesource = None
         self._timestamp = int(time.time()*1000)
         self._init_download_threads()
         self.set_tilesource(poor.conf.tilesource)
         self.set_geocoder(poor.conf.geocoder)
+        self.set_router(poor.conf.router)
         self._send_defaults()
 
     def _init_download_threads(self):
@@ -85,6 +87,21 @@ class Application:
                 default = poor.conf.get_default("geocoder")
                 if default != geocoder:
                     self.set_geocoder(default)
+
+    def set_router(self, router):
+        """Set routing provider from string `router`."""
+        try:
+            self.router = poor.Router(router)
+            poor.conf.router = router
+        except Exception as error:
+            print("Failed to load router '{}': {}"
+                  .format(router, str(error)),
+                  file=sys.stderr)
+
+            if self.router is None:
+                default = poor.conf.get_default("router")
+                if default != router:
+                    self.set_router(default)
 
     def set_tilesource(self, tilesource):
         """Set map tile source from string `tilesource`."""

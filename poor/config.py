@@ -83,7 +83,7 @@ class ConfigurationStore(AttrDict):
         Get the default value of `option`.
 
         For nested keys, `option` can be a dotted string,
-        e.g. 'router.mycoolrouter.type'.
+        e.g. 'routers.mycoolrouter.type'.
         """
         defaults = DEFAULTS
         for section in option.split(".")[:-1]:
@@ -132,7 +132,7 @@ class ConfigurationStore(AttrDict):
         Set the value of `option`.
 
         For nested keys, `option` can be a dotted string,
-        e.g. 'router.mycoolrouter.type'.
+        e.g. 'routers.mycoolrouter.type'.
         """
         root = self
         for section in option.split(".")[:-1]:

@@ -45,7 +45,7 @@ def route(fm, to):
         to = "%.6f,%.6f".format(to[1], to[0])
     fm = urllib.parse.quote_plus(fm)
     to = urllib.parse.quote_plus(to)
-    type = poor.conf.router.mapquest_open.type
+    type = poor.conf.routers.mapquest_open.type
     url = URL.format(**locals())
     result = json.loads(poor.util.request_url(url, "utf_8"))
     r = result["route"]

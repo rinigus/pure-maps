@@ -39,6 +39,7 @@ conf = ConfigurationStore()
 from poor.tilecollection import *
 from poor.tilesource import *
 from poor.geocoder import *
+from poor.router import *
 from poor.history import *
 from poor.application import *
 
