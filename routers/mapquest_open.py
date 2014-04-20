@@ -25,6 +25,8 @@ import json
 import poor
 import urllib.parse
 
+CONF_DEFAULTS = {"type": "fastest"}
+
 URL = ("http://open.mapquestapi.com/directions/v2/route"
        "?key=Fmjtd%7Cluur2quy2h%2Cbn%3Do5-9aasg4"
        "&ambiguities=ignore"
@@ -38,7 +40,6 @@ URL = ("http://open.mapquestapi.com/directions/v2/route"
 
 def route(fm, to):
     """Find route and return its properties as a dictionary."""
-    poor.conf.register_router("mapquest_open", {"type": "fastest"})
     if isinstance(fm, (list, tuple)):
         fm = "%.6f,%.6f".format(fm[1], fm[0])
     if isinstance(to, (list, tuple)):
