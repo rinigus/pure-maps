@@ -20,8 +20,10 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "."
 
-Page {
+Dialog {
+    id: dialog
     allowedOrientations: Orientation.All
+    property string pid: py.evaluate("poor.app.geocoder.id")
     SilicaListView {
         anchors.fill: parent
         delegate: ListItem {
@@ -55,11 +57,11 @@ Page {
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
-                py.call_sync("poor.app.set_geocoder", [model.pid]);
-                app.pageStack.pop();
+                dialog.pid = model.pid;
+                dialog.accept();
             }
         }
-        header: PageHeader { title: "Geocoders" }
+        header: DialogHeader {}
         model: ListModel { id: listModel }
         VerticalScrollDecorator {}
         Component.onCompleted: {
@@ -69,5 +71,8 @@ Page {
                     listModel.append(geocoders[i]);
             });
         }
+    }
+    onAccepted: {
+        py.call_sync("poor.app.set_geocoder", [dialog.pid]);
     }
 }
