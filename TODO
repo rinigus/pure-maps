@@ -4,6 +4,7 @@ Poor Maps 0.3
  [/] Add framework to support pluggable routers
  [/] Add MapQuest Open router (car, bicycle, pedestrian)
  [?] Add OSRM router (car)
+ [X] Fix tile display when zooming to view multiple found places
 
 Poor Maps 1.0
 =============

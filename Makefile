@@ -37,6 +37,11 @@ install:
 	cp geocoders/*.json $(datadir)/geocoders
 	cp geocoders/*.py $(datadir)/geocoders
 	cp geocoders/README $(datadir)/geocoders
+	@echo "Installing routers..."
+	mkdir -p $(datadir)/routers
+	cp routers/*.json $(datadir)/routers
+	cp routers/*.py $(datadir)/routers
+	cp routers/README $(datadir)/routers
 	@echo "Installing desktop file..."
 	mkdir -p $(desktopdir)
 	cp data/$(name).desktop $(desktopdir)
