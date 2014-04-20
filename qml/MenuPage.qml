@@ -46,6 +46,17 @@ Page {
                 }
             }
             ListItem {
+                id: findRouteItem
+                contentHeight: Theme.itemSizeSmall
+                ListItemLabel {
+                    color: findRouteItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "Find route"
+                }
+                onClicked: app.pageStack.push("RoutePage.qml");
+            }
+            ListItem {
                 id: findCurrentPositionItem
                 contentHeight: Theme.itemSizeSmall
                 ListItemLabel {
