@@ -68,12 +68,8 @@ Map {
 
     Keys.onPressed: {
         // Allow zooming with plus and minus keys on the emulator.
-        (event.key == Qt.Key_Plus) && map.zoomLevel++;
-        (event.key == Qt.Key_Minus) && map.zoomLevel--;
-        for (var i = 0; i < map.tiles.length; i++)
-            map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
-        map.zoomLevelPrev = map.zoomLevel;
-        map.changed = true;
+        (event.key == Qt.Key_Plus)  && map.setZoomLevel(map.zoomLevel+1);
+        (event.key == Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
     }
 
     onCenterChanged: {
@@ -150,7 +146,7 @@ Map {
                 }
             }
             if (allIn) break;
-            map.setZoomLevel(map.zoomLevel - 1);
+            map.setZoomLevel(map.zoomLevel-1);
         }
     }
 
@@ -208,6 +204,8 @@ Map {
 
     function setZoomLevel(zoom) {
         // Set the current zoom level.
+        for (var i = 0; i < map.tiles.length; i++)
+            map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
         map.zoomLevel = zoom;
         map.zoomLevelPrev = zoom;
         map.changed = true;
