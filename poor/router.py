@@ -38,9 +38,33 @@ class Router:
         self.attribution = values["attribution"]
         self.id = id
         self.name = values["name"]
+        self._path = path
         self._provider = None
         self.source = values["source"]
-        self._init_provider(re.sub(r"\.json$", ".py", path))
+        self._init_provider(id, re.sub(r"\.json$", ".py", path))
+
+    def _init_provider(self, id, path):
+        """Initialize routing provider module from `path`."""
+        name = "poor.router.provider{:d}".format(int(1000*time.time()))
+        loader = importlib.machinery.SourceFileLoader(name, path)
+        self._provider = loader.load_module(name)
+        if hasattr(self._provider, "CONF_DEFAULTS"):
+            poor.conf.register_router(id, self._provider.CONF_DEFAULTS)
+
+    def _load_attributes(self, id):
+        """Read and return attributes from JSON file."""
+        leaf = os.path.join("routers", "{}.json".format(id))
+        path = os.path.join(poor.DATA_HOME_DIR, leaf)
+        if not os.path.isfile(path):
+            path = os.path.join(poor.DATA_DIR, leaf)
+        with open(path, "r", encoding="utf_8") as f:
+            return path, json.load(f)
+
+    @property
+    def results_qml_uri(self):
+        """Return URI to router results QML file."""
+        path = re.sub(r"\.json$", "_results.qml", self._path)
+        return poor.util.path2uri(path)
 
     def route(self, fm, to):
         """
@@ -56,17 +80,8 @@ class Router:
             print("Routing failed: {}".format(str(error)), file=sys.stderr)
             return {}
 
-    def _init_provider(self, path):
-        """Initialize routing provider module from `path`."""
-        name = "poor.router.provider{:d}".format(int(1000*time.time()))
-        loader = importlib.machinery.SourceFileLoader(name, path)
-        self._provider = loader.load_module(name)
-
-    def _load_attributes(self, id):
-        """Read and return attributes from JSON file."""
-        leaf = os.path.join("routers", "{}.json".format(id))
-        path = os.path.join(poor.DATA_HOME_DIR, leaf)
-        if not os.path.isfile(path):
-            path = os.path.join(poor.DATA_DIR, leaf)
-        with open(path, "r", encoding="utf_8") as f:
-            return path, json.load(f)
+    @property
+    def settings_qml_uri(self):
+        """Return URI to router settings QML file."""
+        path = re.sub(r"\.json$", "_settings.qml", self._path)
+        return poor.util.path2uri(path)
