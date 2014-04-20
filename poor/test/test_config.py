@@ -60,12 +60,17 @@ class TestConfigurationStore(poor.test.TestCase):
     def test_register_router(self):
         poor.conf.register_router("foo", {"type": "car"})
         assert poor.conf.routers.foo.type == "car"
-        assert poor.conf.get_default("routers.foo.type") == "car"
-        poor.conf.routers.foo.type = "bicycle"
+        default = poor.conf.get_default("routers.foo.type")
+        assert default == "car"
+
+    def test_register_router__again(self):
         # Subsequent calls should not change values.
         poor.conf.register_router("foo", {"type": "car"})
+        poor.conf.routers.foo.type = "bicycle"
+        poor.conf.register_router("foo", {"type": "car"})
         assert poor.conf.routers.foo.type == "bicycle"
-        assert poor.conf.get_default("routers.foo.type") == "car"
+        default = poor.conf.get_default("routers.foo.type")
+        assert default == "car"
 
     def test_set(self):
         poor.conf.set("zoom", 99)

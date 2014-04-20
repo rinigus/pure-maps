@@ -40,7 +40,7 @@ def append1(lst, dic, names):
             return lst.append(dic[name])
 
 def geocode(query, xmin, xmax, ymin, ymax):
-    """Return a list of dictionaries of places matching query."""
+    """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())
     results = json.loads(poor.util.request_url(url, "utf_8"))
@@ -111,5 +111,5 @@ def parse_title(result):
     with poor.util.silent(Exception):
         names = result["display_name"].split(", ")
         end = (2 if names[0].isdigit() else 1)
-        return ", ".join(names[0:end])
+        return ", ".join(names[:end])
     return "—"

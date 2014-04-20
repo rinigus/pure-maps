@@ -125,7 +125,7 @@ class ConfigurationStore(AttrDict):
         e.g. calling ``register_router("foo", {"type": "car"})`` will make type
         available as ``poor.conf.routers.foo.type``.
         """
-        self._register({"routers": {name: values}}, self)
+        self._register({"routers": {name: values}})
 
     def set(self, option, value):
         """
