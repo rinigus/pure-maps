@@ -17,6 +17,7 @@
 
 """Translating addresses and names into coordinates."""
 
+import functools
 import importlib.machinery
 import json
 import os
@@ -72,6 +73,7 @@ class Geocoder:
         loader = importlib.machinery.SourceFileLoader(name, path)
         self._provider = loader.load_module(name)
 
+    @functools.lru_cache(maxsize=16)
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
         leaf = os.path.join("geocoders", "{}.json".format(id))

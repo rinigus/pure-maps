@@ -17,6 +17,7 @@
 
 """Finding routes between addresses and/or coordinates."""
 
+import functools
 import importlib.machinery
 import json
 import os
@@ -51,6 +52,7 @@ class Router:
         if hasattr(self._provider, "CONF_DEFAULTS"):
             poor.conf.register_router(id, self._provider.CONF_DEFAULTS)
 
+    @functools.lru_cache(maxsize=16)
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
         leaf = os.path.join("routers", "{}.json".format(id))
