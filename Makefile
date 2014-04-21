@@ -41,6 +41,7 @@ install:
 	mkdir -p $(datadir)/routers
 	cp routers/*.json $(datadir)/routers
 	cp routers/*.py $(datadir)/routers
+	cp routers/*.qml $(datadir)/routers
 	cp routers/README $(datadir)/routers
 	@echo "Installing desktop file..."
 	mkdir -p $(desktopdir)
