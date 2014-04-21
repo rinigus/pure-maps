@@ -27,8 +27,6 @@ import urllib.parse
 
 CONF_DEFAULTS = {"type": "fastest"}
 
-# XXX: Use shapeFormat=cmp once we can decode
-# the damn Google Polyline Encoding Format.
 URL = ("http://open.mapquestapi.com/directions/v2/route"
        "?key=Fmjtd%7Cluur2quy2h%2Cbn%3Do5-9aasg4"
        "&ambiguities=ignore"
@@ -37,7 +35,7 @@ URL = ("http://open.mapquestapi.com/directions/v2/route"
        "&unit=k"
        "&routeType={type}"
        "&doReverseGeocode=false"
-       "&shapeFormat=raw"
+       "&shapeFormat=cmp"
        "&generalize=1"
        "&manMaps=false")
 
@@ -62,6 +60,6 @@ def route(fm, to):
     type = poor.conf.routers.mapquest_open.type
     url = URL.format(**locals())
     result = json.loads(poor.util.request_url(url, "utf_8"))
-    coords = result["route"]["shape"]["shapePoints"]
-    return {"x": list(map(float, coords[1::2])),
-            "y": list(map(float, coords[0::2]))}
+    polyline = result["route"]["shape"]["shapePoints"]
+    x, y = poor.util.decode_epl(polyline)
+    return {"x": x, "y": y}
