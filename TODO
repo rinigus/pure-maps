@@ -3,7 +3,6 @@ Poor Maps 0.3
 
  [/] Add framework to support pluggable routers
      * Try to do something about the polyline display?
-     * Add decoding for Google Polyline format
  [/] Add MapQuest Open router (car, bicycle, pedestrian)
  [?] Add OSRM router (car)
  [X] Fix tile display when zooming to view multiple found places

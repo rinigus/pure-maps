@@ -30,6 +30,19 @@ class TestModule(poor.test.TestCase):
         bearing = poor.util.calculate_bearing(24.94, 60.17, -9.14, 38.72)
         assert round(bearing) == 240
 
+    def test_decode_epl(self):
+        # Values from the official example.
+        # https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+        x, y = poor.util.decode_epl("_p~iF~ps|U_ulLnnqC_mqNvxq`@")
+        assert len(x) == 3
+        assert len(y) == 3
+        assert x[0] == -120.200
+        assert x[1] == -120.950
+        assert x[2] == -126.453
+        assert y[0] ==   38.500
+        assert y[1] ==   40.700
+        assert y[2] ==   43.252
+
     def test_deg2num(self):
         xtile, ytile = poor.util.deg2num(24.94, 60.17, 14)
         assert xtile == 9327

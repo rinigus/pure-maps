@@ -64,6 +64,45 @@ def calculate_bearing(x1, y1, x2, y2):
     bearing = math.degrees(math.atan2(y, x))
     return (bearing + 360) % 360
 
+def decode_epl(string, precision=5):
+    """
+    Decode Google Encoded polyline string representation.
+
+    `precision` usually defaults to five, but note that it can vary!
+    Return X and Y coordinates as separate lists.
+
+    http://developers.google.com/maps/documentation/utilities/polylinealgorithm
+    """
+    # Copied and adapted from various sources, see e.g.
+    # http://facstaff.unca.edu/mcmcclur/GoogleMaps/EncodePolyline/decode.js
+    # http://seewah.blogspot.fi/2009/11/gpolyline-decoding-in-python.html
+    # http://github.com/mapbox/polyline/blob/master/src/polyline.js
+    i = x = y = 0
+    xout = []
+    yout = []
+    while i < len(string):
+        b = shift = result = 0
+        while True:
+            b = ord(string[i]) - 63
+            i = i + 1
+            result |= (b & 0x1f) << shift
+            shift += 5
+            if b < 0x20: break
+        dy = ~(result >> 1) if result & 1 else result >> 1
+        y += dy
+        shift = result = 0
+        while True:
+            b = ord(string[i]) - 63
+            i = i + 1
+            result |= (b & 0x1f) << shift
+            shift += 5
+            if b < 0x20: break
+        dx = ~(result >> 1) if result & 1 else result >> 1
+        x += dx
+        xout.append(x / 10**precision)
+        yout.append(y / 10**precision)
+    return (xout, yout)
+
 def deg2num(x, y, zoom):
     """Convert longitude, latitude to tile numbers."""
     # http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
