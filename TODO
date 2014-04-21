@@ -2,14 +2,16 @@ Poor Maps 0.3
 =============
 
  [/] Add framework to support pluggable routers
+     * Try to do something about the polyline display?
+     * Add decoding for Google Polyline format
  [/] Add MapQuest Open router (car, bicycle, pedestrian)
  [?] Add OSRM router (car)
  [X] Fix tile display when zooming to view multiple found places
- [ ] Use Douglas-Peucker to limit polyline nodes
 
 Poor Maps 1.0
 =============
 
+ * Allow removing places from history (long tap, context menu)
  * Keep objects (POIs, routes) across sessions?
  * Add narration of routing manoeuvers
  * Add a message box and allow tapping on markers

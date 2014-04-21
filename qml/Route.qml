@@ -20,10 +20,10 @@ import QtQuick 2.0
 import QtLocation 5.0
 
 MapPolyline {
-    // MapPolyline is ridiculously slow and fucking ugly.
+    // XXX: MapPolyline looks awfully ugly.
     // http://bugreports.qt-project.org/browse/QTBUG-38459
-    line.color: "#0540FF"
-    line.width: 10
-    opacity: 0.6
+    line.color: "#FF0505"
+    line.width: 3
+    opacity: 0.9
     z: 200
 }

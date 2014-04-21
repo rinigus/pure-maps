@@ -38,7 +38,7 @@ URL = ("http://open.mapquestapi.com/directions/v2/route"
        "&routeType={type}"
        "&doReverseGeocode=false"
        "&shapeFormat=raw"
-       "&generalize=0"
+       "&generalize=1"
        "&manMaps=false")
 
 def prepare_endpoint(point):

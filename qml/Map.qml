@@ -137,22 +137,23 @@ Map {
         }
     }
 
-    function fitViewToRoute() {
-        // Set center and zoom so that the whole route is visible.
+    function fitViewtoCoordinates(coords) {
+        // Set center and zoom so that all points are visible.
+        // XXX: This is very slow if there's a lot of points.
         var cx = 0;
         var cy = 0;
-        for (var i = 0; i < map.route.path.length; i++) {
-            cx += map.route.path[i].longitude;
-            cy += map.route.path[i].latitude;
+        for (var i = 0; i < coords.length; i++) {
+            cx += coords[i].longitude;
+            cy += coords[i].latitude;
         }
-        cx /= map.route.path.length;
-        cy /= map.route.path.length;
+        cx /= coords.length;
+        cy /= coords.length;
         map.setCenter(cx, cy);
         while (map.zoomLevel > map.minimumZoomLevel) {
             var allIn = true;
-            for (var i = 0; i < map.route.path.length; i++) {
-                if (!map.inView(map.route.path[i].longitude,
-                                map.route.path[i].latitude)) {
+            for (var i = 0; i < coords.length; i++) {
+                if (!map.inView(coords[i].longitude,
+                                coords[i].latitude)) {
                     allIn = false;
                     break;
                 }
@@ -164,27 +165,20 @@ Map {
 
     function fitViewToPois() {
         // Set center and zoom so that all points of interest are visible.
-        var cx = 0;
-        var cy = 0;
-        for (var i = 0; i < map.pois.length; i++) {
-            cx += map.pois[i].coordinate.longitude;
-            cy += map.pois[i].coordinate.latitude;
-        }
-        cx /= map.pois.length;
-        cy /= map.pois.length;
-        map.setCenter(cx, cy);
-        while (map.zoomLevel > map.minimumZoomLevel) {
-            var allIn = true;
-            for (var i = 0; i < map.pois.length; i++) {
-                if (!map.inView(map.pois[i].coordinate.longitude,
-                                map.pois[i].coordinate.latitude)) {
-                    allIn = false;
-                    break;
-                }
-            }
-            if (allIn) break;
-            map.setZoomLevel(map.zoomLevel-1);
-        }
+        map.fitViewtoCoordinates(map.pois.map(function(x) {
+            return x.coordinate;
+        }))
+    }
+
+    function fitViewToRoute() {
+        // Set center and zoom so that the whole route is visible.
+        // For simplicity, let's just check the endpoints.
+        var coords = [];
+        if (map.route.path.length > 0)
+            coords.push(map.route.path[0]);
+        if (map.route.path.length > 1)
+            coords.push(map.route.path[map.route.path.length-1]);
+        map.fitViewtoCoordinates(coords);
     }
 
     function getBoundingBox() {
