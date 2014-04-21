@@ -82,6 +82,7 @@ class Router:
 
     @property
     def settings_qml_uri(self):
-        """Return URI to router settings QML file."""
+        """Return URI to router settings QML file or ``None``."""
         path = re.sub(r"\.json$", "_settings.qml", self._path)
+        if not os.path.isfile(path): return None
         return poor.util.path2uri(path)

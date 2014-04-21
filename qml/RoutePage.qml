@@ -35,6 +35,7 @@ Page {
         Column {
             id: column
             anchors.fill: parent
+            property var settings: null
             PageHeader { title: "Find Route" }
             ValueButton {
                 id: usingButton
@@ -46,6 +47,7 @@ Page {
                     var dialog = app.pageStack.push("RouterPage.qml");
                     dialog.accepted.connect(function() {
                         usingButton.value = py.evaluate("poor.app.router.name");
+                        column.addSetttings();
                     })
                 }
             }
@@ -81,15 +83,17 @@ Page {
                     })
                 }
             }
-            Component.onCompleted: {
+            Component.onCompleted: column.addSetttings();
+            function addSetttings() {
                 // Add router-specific settings from router's own QML file.
+                column.settings && column.settings.destroy();
                 var uri = py.evaluate("poor.app.router.settings_qml_uri");
                 if (!uri) return;
                 var component = Qt.createComponent(uri);
-                var settings = component.createObject(column);
-                settings.anchors.left = column.left;
-                settings.anchors.right = column.right;
-                settings.width = column.width;
+                column.settings = component.createObject(column);
+                column.settings.anchors.left = column.left;
+                column.settings.anchors.right = column.right;
+                column.settings.width = column.width;
             }
         }
         VerticalScrollDecorator {}

@@ -3,8 +3,10 @@ Poor Maps 0.3
 
  [/] Add framework to support pluggable routers
      * Try to do something about the polyline display?
- [/] Add MapQuest Open router (car, bicycle, pedestrian)
- [?] Add OSRM router (car)
+ [X] Add MapQuest Open router (car, bicycle, pedestrian)
+ [X] Add OSRM router (car)
+     * Notify info@project-osrm.org
+     * http://github.com/DennisOSRM/Project-OSRM/wiki/Api-usage-policy
  [X] Fix tile display when zooming to view multiple found places
 
 Poor Maps 1.0
