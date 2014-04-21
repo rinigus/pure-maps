@@ -89,8 +89,8 @@ Page {
         if (page.status == PageStatus.Activating) {
             page.loading = true;
         } else if (page.status == PageStatus.Active) {
-            var previousPage = app.pageStack.previousPage();
-            page.populate(previousPage.query);
+            var geocodePage = app.pageStack.previousPage();
+            page.populate(geocodePage.query);
         } else if (page.status == PageStatus.Inactive) {
             listModel.clear();
             page.title = "Searching"

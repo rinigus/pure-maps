@@ -23,6 +23,7 @@ import "."
 Page {
     id: page
     allowedOrientations: Orientation.All
+    canNavigateForward: query.length > 0
     property var history: []
     property string query: ""
     SilicaListView {
@@ -96,9 +97,8 @@ Page {
         VerticalScrollDecorator {}
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Activating) {
-            page.history = py.evaluate("poor.app.history.places");
-            listView.model.update();
-        }
+        if (page.status != PageStatus.Activating) return;
+        page.history = py.evaluate("poor.app.history.places");
+        listView.model.update();
     }
 }
