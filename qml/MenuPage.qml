@@ -80,7 +80,7 @@ Page {
                     text: "Clear map"
                 }
                 onClicked: {
-                    map.clearPois();
+                    map.clear();
                     app.pageStack.pop(mapPage, PageStackAction.Immediate);
                 }
             }
@@ -102,7 +102,7 @@ Page {
                 height: Theme.itemSizeSmall
                 text: "Auto-center on position"
                 onCheckedChanged: {
-                    map.autoCenter = autoCenterItem.checked;
+                    map.setAutoCenter(autoCenterItem.checked);
                     py.call_sync("poor.conf.set", ["auto_center", map.autoCenter]);
                     map.autoCenter && map.centerOnPosition();
                 }

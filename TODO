@@ -5,6 +5,7 @@ Poor Maps 0.3
  [/] Add MapQuest Open router (car, bicycle, pedestrian)
  [?] Add OSRM router (car)
  [X] Fix tile display when zooming to view multiple found places
+ [ ] Use Douglas-Peucker to limit polyline nodes
 
 Poor Maps 1.0
 =============

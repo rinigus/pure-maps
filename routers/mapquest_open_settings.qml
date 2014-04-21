@@ -17,14 +17,27 @@
  */
 
 import QtQuick 2.0
-import QtPositioning 5.0
+import Sailfish.Silica 1.0
 
-PositionSource {
-    id: gps
-    active: false
-    updateInterval: 3000
-    function setUpdateInterval(interval) {
-        // Set the interval for polling for position.
-        gps.updateInterval = interval;
+Column {
+    ComboBox {
+        id: comboBox
+        label: "Type"
+        menu: ContextMenu {
+            MenuItem { text: "Car" }
+            MenuItem { text: "Bicycle" }
+            MenuItem { text: "Pedestrian" }
+        }
+        property var pids: ["fastest", "bicycle", "pedestrian"]
+        Component.onCompleted: {
+            var type = py.evaluate("poor.conf.routers.mapquest_open.type");
+            comboBox.currentIndex = comboBox.pids.indexOf(type);
+        }
+        onCurrentIndexChanged: {
+            py.call_sync("poor.conf.set",
+                         ["routers.mapquest_open.type",
+                          comboBox.pids[comboBox.currentIndex]]);
+
+        }
     }
 }

@@ -17,14 +17,13 @@
  */
 
 import QtQuick 2.0
-import QtPositioning 5.0
+import QtLocation 5.0
 
-PositionSource {
-    id: gps
-    active: false
-    updateInterval: 3000
-    function setUpdateInterval(interval) {
-        // Set the interval for polling for position.
-        gps.updateInterval = interval;
-    }
+MapPolyline {
+    // MapPolyline is ridiculously slow and fucking ugly.
+    // http://bugreports.qt-project.org/browse/QTBUG-38459
+    line.color: "#0540FF"
+    line.width: 10
+    opacity: 0.6
+    z: 200
 }

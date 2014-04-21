@@ -28,13 +28,9 @@ ApplicationWindow {
         id: mapPage
         // XXX: Map gestures don't work right in landscape.
         allowedOrientations: Orientation.Portrait
-        Map {
-            id: map
-        }
+        Map { id: map }
     }
-    Python {
-        id: py
-    }
+    Python { id: py }
     Component.onCompleted: {
         py.setHandler("render-tile", map.renderTile);
         py.setHandler("set-attribution", map.setAttribution);

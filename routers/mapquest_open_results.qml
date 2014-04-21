@@ -17,14 +17,28 @@
  */
 
 import QtQuick 2.0
-import QtPositioning 5.0
+import Sailfish.Silica 1.0
 
-PositionSource {
-    id: gps
-    active: false
-    updateInterval: 3000
-    function setUpdateInterval(interval) {
-        // Set the interval for polling for position.
-        gps.updateInterval = interval;
+Page {
+    id: page
+    allowedOrientations: Orientation.All
+    property bool loading: true
+    PageHeader { title: "Searching" }
+    BusyIndicator {
+        anchors.centerIn: parent
+        running: page.loading
+        size: BusyIndicatorSize.Large
+        visible: page.loading
+    }
+    onStatusChanged: {
+        if (page.status != PageStatus.Active) return;
+        var routePage = app.pageStack.previousPage();
+        py.call("poor.app.router.route",
+                [routePage.from, routePage.to],
+                function(route) {
+                    map.addRoute(route.x, route.y);
+                    map.fitViewToRoute();
+                    app.pageStack.pop(mapPage, PageStackAction.Immediate);
+        })
     }
 }

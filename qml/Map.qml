@@ -36,6 +36,7 @@ Map {
     property var  pois: []
     property var  position: map.gps.position
     property var  positionMarker: PositionMarker {}
+    property var  route: null
     property var  tiles: []
     property real zoomLevelPrev: 8
 
@@ -53,17 +54,13 @@ Map {
         // Round piched zoom level to avoid fuzziness.
         if (map.zoomLevel < map.zoomLevelPrev) {
             map.zoomLevel % 1 < 0.75 ?
-                map.zoomLevel = Math.floor(map.zoomLevel) :
-                map.zoomLevel = Math.ceil(map.zoomLevel);
+                map.setZoomLevel(Math.floor(map.zoomLevel)):
+                map.setZoomLevel(Math.ceil(map.zoomLevel));
         } else if (map.zoomLevel > map.zoomLevelPrev) {
             map.zoomLevel % 1 > 0.25 ?
-                map.zoomLevel = Math.ceil(map.zoomLevel) :
-                map.zoomLevel = Math.floor(map.zoomLevel);
+                map.setZoomLevel(Math.ceil(map.zoomLevel)):
+                map.setZoomLevel(Math.floor(map.zoomLevel));
         }
-        for (var i = 0; i < map.tiles.length; i++)
-            map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
-        map.zoomLevelPrev = map.zoomLevel;
-        map.changed = true;
     }
 
     Keys.onPressed: {
@@ -80,7 +77,7 @@ Map {
     }
 
     onPositionChanged: {
-        // Center map on position if outside center of screen.
+        // Conditionally center map on position if outside center of screen.
         // map.toScreenPosition returns NaN when outside screen.
         if (!map.autoCenter) return;
         var pos = map.toScreenPosition(map.position.coordinate);
@@ -96,6 +93,17 @@ Map {
         poi.coordinate = QtPositioning.coordinate(y, x);
         map.pois.push(poi);
         map.addMapItem(poi);
+    }
+
+    function addRoute(x, y) {
+        // Add a polyline to represent a route.
+        map.route && map.removeMapItem(map.route);
+        var component = Qt.createComponent("Route.qml");
+        map.route = component.createObject(map);
+        map.route.path = x.map(function(currentValue, index, array) {
+            return QtPositioning.coordinate(y[index], x[index]);
+        })
+        map.addMapItem(map.route);
     }
 
     function addTile(uid, x, y, zoom, uri) {
@@ -118,11 +126,40 @@ Map {
 
     }
 
-    function clearPois() {
-        // Remove all point of interest markers from map.
+    function clear() {
+        // Remove all point and line markers from map.
         for (var i = 0; i < map.pois.length; i++)
             map.removeMapItem(map.pois[i]);
         map.pois = [];
+        if (map.route) {
+            map.removeMapItem(map.route);
+            map.route = null;
+        }
+    }
+
+    function fitViewToRoute() {
+        // Set center and zoom so that the whole route is visible.
+        var cx = 0;
+        var cy = 0;
+        for (var i = 0; i < map.route.path.length; i++) {
+            cx += map.route.path[i].longitude;
+            cy += map.route.path[i].latitude;
+        }
+        cx /= map.route.path.length;
+        cy /= map.route.path.length;
+        map.setCenter(cx, cy);
+        while (map.zoomLevel > map.minimumZoomLevel) {
+            var allIn = true;
+            for (var i = 0; i < map.route.path.length; i++) {
+                if (!map.inView(map.route.path[i].longitude,
+                                map.route.path[i].latitude)) {
+                    allIn = false;
+                    break;
+                }
+            }
+            if (allIn) break;
+            map.setZoomLevel(map.zoomLevel-1);
+        }
     }
 
     function fitViewToPois() {
@@ -157,8 +194,15 @@ Map {
         return [nw.longitude, se.longitude, se.latitude, nw.latitude];
     }
 
+    function getCenter() {
+        // Return the current center position as [x,y].
+        return [map.position.coordinate.longitude,
+                map.position.coordinate.latitude];
+
+    }
+
     function inView(x, y) {
-        // Return true if point in the current view.
+        // Return true if point is in the current view.
         var bbox = map.getBoundingBox();
         return (x >= bbox[0] && x <= bbox[1] && y >= bbox[2] && y <= bbox[3])
     }
@@ -245,10 +289,7 @@ Map {
         if (map.width <= 0 || map.height <= 0) return;
         if (map.gesture.isPinchActive) return;
         var bbox = map.getBoundingBox();
-        py.call("poor.app.update_tiles", [bbox[0],
-                                          bbox[1],
-                                          bbox[2],
-                                          bbox[3],
+        py.call("poor.app.update_tiles", [bbox[0], bbox[1], bbox[2], bbox[3],
                                           Math.floor(map.zoomLevel)], null);
 
         map.changed = false;
