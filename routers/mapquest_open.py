@@ -27,28 +27,41 @@ import urllib.parse
 
 CONF_DEFAULTS = {"type": "fastest"}
 
+# XXX: Use shapeFormat=cmp once we can decode
+# the damn Google Polyline Encoding Format.
 URL = ("http://open.mapquestapi.com/directions/v2/route"
        "?key=Fmjtd%7Cluur2quy2h%2Cbn%3Do5-9aasg4"
        "&ambiguities=ignore"
        "&from={fm}"
        "&to={to}"
        "&unit=k"
-       "&type={type}"
+       "&routeType={type}"
        "&doReverseGeocode=false"
-       "&fullShape=true"
+       "&shapeFormat=raw"
+       "&generalize=0"
        "&manMaps=false")
+
+def prepare_endpoint(point):
+    """Return `point` as a string ready to be passed on to MapQuest."""
+    # MapQuest Open accepts both addresses and coordinates as endpoints,
+    # but it doesn't seem to understand as many addresses as Nominatim.
+    # Hence, let's use Nominatim and feed coordinates to MapQuest.
+    if isinstance(point, str):
+        geocoder = poor.Geocoder("mapquest_nominatim")
+        results = geocoder.geocode(point)
+        with poor.util.silent(LookupError):
+            point = (results[0]["x"], results[0]["y"])
+    if isinstance(point, (list, tuple)):
+        point = "{:.6f},{:.6f}".format(point[1], point[0])
+    return urllib.parse.quote_plus(point)
 
 def route(fm, to):
     """Find route and return its properties as a dictionary."""
-    if isinstance(fm, (list, tuple)):
-        fm = "%.6f,%.6f".format(fm[1], fm[0])
-    if isinstance(to, (list, tuple)):
-        to = "%.6f,%.6f".format(to[1], to[0])
-    fm = urllib.parse.quote_plus(fm)
-    to = urllib.parse.quote_plus(to)
+    fm = prepare_endpoint(fm)
+    to = prepare_endpoint(to)
     type = poor.conf.routers.mapquest_open.type
     url = URL.format(**locals())
     result = json.loads(poor.util.request_url(url, "utf_8"))
-    r = result["route"]
-    return {"x": list(map(float, r["shape"]["shapePoints"][1::2])),
-            "y": list(map(float, r["shape"]["shapePoints"][0::2]))}
+    coords = result["route"]["shape"]["shapePoints"]
+    return {"x": list(map(float, coords[1::2])),
+            "y": list(map(float, coords[0::2]))}
