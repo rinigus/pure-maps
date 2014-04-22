@@ -33,16 +33,22 @@ Map {
     property bool autoCenter: false
     property bool changed: true
     property var  gps: PositionSource {}
+    property real heightCoords: 0
     property var  pois: []
     property var  position: map.gps.position
     property var  positionMarker: PositionMarker {}
-    property var  route: null
+    property real scaleX: 0
+    property real scaleY: 0
     property var  tiles: []
+    property real widthCoords: 0
+    property real xcoord: center.longitude - widthCoords/2
+    property real ycoord: center.latitude + heightCoords/2
     property real zoomLevelPrev: 8
 
     AttributionText { id: attribution }
     MapTimer { id: timer }
     MenuButton { id: menuButton }
+    Route { id: route }
 
     Component.onCompleted: {
         // Start periodic tile and position updates.
@@ -97,13 +103,10 @@ Map {
 
     function addRoute(x, y) {
         // Add a polyline to represent a route.
-        map.route && map.removeMapItem(map.route);
-        var component = Qt.createComponent("Route.qml");
-        map.route = component.createObject(map);
-        map.route.path = x.map(function(currentValue, index, array) {
+        route.path = x.map(function(currentValue, index, array) {
             return QtPositioning.coordinate(y[index], x[index]);
         })
-        map.addMapItem(map.route);
+        route.redraw();
     }
 
     function addTile(uid, x, y, zoom, uri) {
@@ -131,10 +134,7 @@ Map {
         for (var i = 0; i < map.pois.length; i++)
             map.removeMapItem(map.pois[i]);
         map.pois = [];
-        if (map.route) {
-            map.removeMapItem(map.route);
-            map.route = null;
-        }
+        route.clear();
     }
 
     function fitViewtoCoordinates(coords) {
@@ -174,10 +174,10 @@ Map {
         // Set center and zoom so that the whole route is visible.
         // For simplicity, let's just check the endpoints.
         var coords = [];
-        if (map.route.path.length > 0)
-            coords.push(map.route.path[0]);
-        if (map.route.path.length > 1)
-            coords.push(map.route.path[map.route.path.length-1]);
+        if (route.path.length > 0)
+            coords.push(route.path[0]);
+        if (route.path.length > 1)
+            coords.push(route.path[route.path.length-1]);
         map.fitViewtoCoordinates(coords);
     }
 
@@ -198,7 +198,9 @@ Map {
     function inView(x, y) {
         // Return true if point is in the current view.
         var bbox = map.getBoundingBox();
-        return (x >= bbox[0] && x <= bbox[1] && y >= bbox[2] && y <= bbox[3])
+        return (x >= bbox[0] && x <= bbox[1] &&
+                y >= bbox[2] && y <= bbox[3])
+
     }
 
     function renderTile(uid, x, y, zoom, uri) {
@@ -247,6 +249,12 @@ Map {
         map.zoomLevel = zoom;
         map.zoomLevelPrev = zoom;
         map.changed = true;
+        var bbox = map.getBoundingBox();
+        map.widthCoords = bbox[1] - bbox[0];
+        map.heightCoords = bbox[3] - bbox[2];
+        map.scaleX = map.width / map.widthCoords;
+        map.scaleY = map.height / map.heightCoords;
+        route.redraw();
     }
 
     function showTile(uid) {
@@ -286,6 +294,10 @@ Map {
         py.call("poor.app.update_tiles", [bbox[0], bbox[1], bbox[2], bbox[3],
                                           Math.floor(map.zoomLevel)], null);
 
+        map.widthCoords = bbox[1] - bbox[0];
+        map.heightCoords = bbox[3] - bbox[2];
+        map.scaleX = map.width / map.widthCoords;
+        map.scaleY = map.height / map.heightCoords;
         map.changed = false;
     }
 }

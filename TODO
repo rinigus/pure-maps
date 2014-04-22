@@ -1,13 +1,13 @@
 Poor Maps 0.3
 =============
 
- [/] Add framework to support pluggable routers
-     * Try to do something about the polyline display?
+ [X] Add framework to support pluggable routers
  [X] Add MapQuest Open router (car, bicycle, pedestrian)
  [X] Add OSRM router (car)
      * Notify info@project-osrm.org
      * http://github.com/DennisOSRM/Project-OSRM/wiki/Api-usage-policy
  [X] Fix tile display when zooming to view multiple found places
+ [ ] Use py.onReadyChanged for defaults
 
 Poor Maps 1.0
 =============

@@ -17,13 +17,82 @@
  */
 
 import QtQuick 2.0
-import QtLocation 5.0
 
-MapPolyline {
-    // XXX: MapPolyline looks awfully ugly.
-    // http://bugreports.qt-project.org/browse/QTBUG-38459
-    line.color: "#0540FF"
-    line.width: 9
-    opacity: 0.5
+/*
+ * The intended way to draw a route on a QtLocation map would be to use
+ * QtLocation's MapPolyline. MapPolyline, however, renders awfully ugly.
+ * To work around this, let's use a Canvas and Context2D drawing primitives
+ * to draw our route. This looks nice, but might be horribly inefficient.
+ * See also map.xcoord, map.ycoord, map.scaleX and map.scaleY for potentially
+ * slow bound calculations that might not be needed without this.
+ *
+ * http://bugreports.qt-project.org/browse/QTBUG-38459
+ */
+
+Canvas {
+    id: canvas
+    contextType: "2d"
+    height: parent.height
+    width: parent.width
+    x: (paintX - map.xcoord) * map.scaleX
+    y: (map.ycoord - paintY) * map.scaleY
     z: 200
+
+    property bool   changed: false
+    property real   lineAlpha: 0.5
+    property string lineColor: "#FF0000"
+    property real   lineWidth: 12
+    property real   paintX: 0
+    property real   paintY: 0
+    property var    path: []
+
+    Timer {
+        id: timer
+        interval: 1000
+        repeat: true
+        running: canvas.path.length > 0
+        onTriggered: canvas.changed && canvas.redraw();
+    }
+
+    Component.onCompleted: {
+        // Load default appearance from the Python backend.
+        py.onReadyChanged.connect(function() {
+            canvas.lineAlpha = py.evaluate("poor.conf.route_alpha");
+            canvas.lineColor = py.evaluate("poor.conf.route_color");
+            canvas.lineWidth = py.evaluate("poor.conf.route_width");
+        })
+    }
+
+    onPaint: {
+        // Ensure that the route is updated after panning.
+        // This gets fired ridiculously often, so keep simple.
+        changed = true;
+    }
+
+    function clear() {
+        // Clear path from the canvas.
+        canvas.path = [];
+        canvas.redraw();
+    }
+
+    function redraw() {
+        // Clear canvas and redraw entire route.
+        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
+        if (canvas.path.length == 0) return;
+        canvas.context.globalAlpha = canvas.lineAlpha;
+        canvas.context.lineCap = "round";
+        canvas.context.linejoin = "round";
+        canvas.context.lineWidth = canvas.lineWidth;
+        canvas.context.strokeStyle = canvas.lineColor;
+        canvas.context.beginPath();
+        canvas.paintX = map.xcoord;
+        canvas.paintY = map.ycoord;
+        canvas.path.forEach(function(p) {
+            canvas.context.lineTo(map.scaleX*(p.longitude - canvas.paintX),
+                                  map.scaleY*(canvas.paintY - p.latitude));
+
+        })
+        canvas.context.stroke();
+        canvas.changed = false;
+    }
 }
