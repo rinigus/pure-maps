@@ -22,8 +22,8 @@ import QtLocation 5.0
 MapPolyline {
     // XXX: MapPolyline looks awfully ugly.
     // http://bugreports.qt-project.org/browse/QTBUG-38459
-    line.color: "#FF0505"
-    line.width: 3
-    opacity: 0.9
+    line.color: "#0540FF"
+    line.width: 9
+    opacity: 0.5
     z: 200
 }
