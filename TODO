@@ -7,7 +7,14 @@ Poor Maps 0.3
      * Notify info@project-osrm.org
      * http://github.com/DennisOSRM/Project-OSRM/wiki/Api-usage-policy
  [X] Fix tile display when zooming to view multiple found places
- [ ] Use py.onReadyChanged for defaults
+
+ FIX:
+  * Use py.onReadyChanged for defaults
+  * Write history after each search?
+  * Fix routing with "Current position"
+  * Clear route canvas immediately
+  * Only render route points on screen?
+  * Use per-zoom-level Douglas-Peucker?
 
 Poor Maps 1.0
 =============
