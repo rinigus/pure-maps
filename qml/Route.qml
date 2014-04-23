@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import "js/simplify.js" as Simplify
 
 /*
  * The intended way to draw a route on a QtLocation map would be to use
@@ -46,6 +47,7 @@ Canvas {
     property real   paintX: 0
     property real   paintY: 0
     property var    path: []
+    property var    simplePaths: {"0": []}
 
     Timer {
         id: timer
@@ -73,10 +75,13 @@ Canvas {
     function clear() {
         // Clear path from the canvas.
         canvas.path = [];
-        canvas.redraw();
+        canvas.simplePaths = {"0": []};
+        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.changed = false;
     }
 
     function initContextProperties() {
+        // Initialize context line appearance properties.
         canvas.context.globalAlpha = canvas.lineAlpha;
         canvas.context.lineCap = "round";
         canvas.context.linejoin = "round";
@@ -89,11 +94,24 @@ Canvas {
         // Clear canvas and redraw entire route.
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         if (canvas.path.length == 0) return;
+        var key = Math.floor(map.zoomLevel).toString();
+        if (canvas.simplePaths.hasOwnProperty(key)) {
+            var simplePath = canvas.simplePaths[key];
+        } else {
+            // If simplified path not found in cache,
+            // do simplification using Douglas-Peucker.
+            var tolerance = Math.pow(2, 16-Math.floor(map.zoomLevel)) / 83250;
+            var simplePath = Simplify.simplify(canvas.path, tolerance, false);
+            Object.defineProperty(canvas.simplePaths,
+                                  map.zoomLevel.toString(),
+                                  {value: simplePath, writable: true});
+
+        }
         canvas.initDone || canvas.initContextProperties();
         canvas.context.beginPath();
         canvas.paintX = map.xcoord;
         canvas.paintY = map.ycoord;
-        canvas.path.forEach(function(p) {
+        simplePath.forEach(function(p) {
             // We need to include some points outside the visible bbox
             // to include polyline segments that cross the bbox edge.
             if (p.longitude < canvas.paintX - map.widthCoords    ||

@@ -12,8 +12,6 @@ Poor Maps 0.3
   * Use py.onReadyChanged for defaults
   * Write history after each search?
   * Fix routing with "Current position"
-  * Clear route canvas immediately
-  * Use per-zoom-level Douglas-Peucker?
 
 Poor Maps 1.0
 =============
