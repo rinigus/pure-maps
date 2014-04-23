@@ -33,7 +33,7 @@ DEFAULTS = {
     "gps_update_interval": 3,
     "route_alpha": 0.5,
     "route_color": "#0540FF",
-    "route_width": 12,
+    "route_width": 10,
     "router": "mapquest_open",
     "tilesource": "mapquest_open",
     "zoom": 15,
