@@ -101,7 +101,7 @@ Canvas {
         } else {
             // If simplified path not found in cache,
             // do simplification using Douglas-Peucker.
-            var tolerance = Math.pow(2, 16-Math.floor(map.zoomLevel)) / 83250;
+            var tolerance = Math.pow(2, 18-Math.floor(map.zoomLevel)) / 83250;
             var simplePath = Simplify.simplify(canvas.path, tolerance, false);
             Object.defineProperty(canvas.simplePaths,
                                   map.zoomLevel.toString(),
