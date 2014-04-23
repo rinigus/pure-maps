@@ -103,10 +103,12 @@ Map {
 
     function addRoute(x, y) {
         // Add a polyline to represent a route.
+        route.clear();
         route.path = x.map(function(currentValue, index, array) {
             return QtPositioning.coordinate(y[index], x[index]);
         })
-        route.redraw();
+        // Queue redraw, don't hang on it.
+        route.changed = true;
     }
 
     function addTile(uid, x, y, zoom, uri) {
