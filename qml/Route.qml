@@ -49,7 +49,7 @@ Canvas {
 
     Timer {
         id: timer
-        interval: 1000
+        interval: 500
         repeat: true
         running: canvas.path.length > 0
         onTriggered: canvas.changed && canvas.redraw();
