@@ -26,9 +26,11 @@ install:
 	cp poor/*.py $(datadir)/poor
 	@echo "Installing QML files..."
 	mkdir -p $(datadir)/qml/icons
+	mkdir -p $(datadir)/qml/js
 	cp qml/poor-maps.qml $(datadir)/qml/$(name).qml
 	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(datadir)/qml
 	cp qml/icons/*.png $(datadir)/qml/icons
+	cp qml/js/*.js $(datadir)/qml/js
 	@echo "Installing tilesources..."
 	mkdir -p $(datadir)/tilesources
 	cp tilesources/*.json $(datadir)/tilesources

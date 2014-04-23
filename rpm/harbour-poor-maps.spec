@@ -28,7 +28,7 @@ An application to display maps and stuff.
 make DESTDIR=%{buildroot} PREFIX=/usr install
 
 %files
-%doc AUTHORS COPYING NEWS README TODO
+%doc AUTHORS COPYING CREDITS NEWS README TODO
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
