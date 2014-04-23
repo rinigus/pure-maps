@@ -34,6 +34,7 @@ Canvas {
     id: canvas
     contextType: "2d"
     height: parent.height
+    renderStrategy: Canvas.Cooperative
     width: parent.width
     x: (paintX - map.xcoord) * map.scaleX
     y: (map.ycoord - paintY) * map.scaleY
