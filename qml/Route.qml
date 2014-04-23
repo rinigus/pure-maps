@@ -39,6 +39,7 @@ Canvas {
     z: 200
 
     property bool   changed: false
+    property bool   initDone: false
     property real   lineAlpha: 0.5
     property string lineColor: "#FF0000"
     property real   lineWidth: 12
@@ -75,15 +76,20 @@ Canvas {
         canvas.redraw();
     }
 
-    function redraw() {
-        // Clear canvas and redraw entire route.
-        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
-        if (canvas.path.length == 0) return;
+    function initContextProperties() {
         canvas.context.globalAlpha = canvas.lineAlpha;
         canvas.context.lineCap = "round";
         canvas.context.linejoin = "round";
         canvas.context.lineWidth = canvas.lineWidth;
         canvas.context.strokeStyle = canvas.lineColor;
+        canvas.initDone = true;
+    }
+
+    function redraw() {
+        // Clear canvas and redraw entire route.
+        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
+        if (canvas.path.length == 0) return;
+        canvas.initDone || canvas.initContextProperties();
         canvas.context.beginPath();
         canvas.paintX = map.xcoord;
         canvas.paintY = map.ycoord;
