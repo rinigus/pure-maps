@@ -88,6 +88,13 @@ Canvas {
         canvas.paintX = map.xcoord;
         canvas.paintY = map.ycoord;
         canvas.path.forEach(function(p) {
+            // We need to include some points outside the visible bbox
+            // to include polyline segments that cross the bbox edge.
+            if (p.longitude < canvas.paintX - map.widthCoords    ||
+                p.latitude  > canvas.paintY + map.heightCoords   ||
+                p.longitude > canvas.paintX + map.widthCoords*2  ||
+                p.latitude  < canvas.paintY - map.heightCoords*2)
+                return;
             canvas.context.lineTo(map.scaleX*(p.longitude - canvas.paintX),
                                   map.scaleY*(canvas.paintY - p.latitude));
 
