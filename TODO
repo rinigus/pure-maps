@@ -7,12 +7,17 @@ Poor Maps 0.3
      * Notify info@project-osrm.org
      * http://github.com/DennisOSRM/Project-OSRM/wiki/Api-usage-policy
  [X] Fix tile display when zooming to view multiple found places
+ [X] Add 'nmax' argument to geocode functions
 
  FIX:
   * Use py.onReadyChanged for defaults
   * Write history after each search?
   * Fix routing with "Current position"
   * Clear route immediately
+  * Cache/memoize geocoder and router results
+  * Use single tilesource, geocoder, router instance per id
+  * Change appearance of spinner screens
+  * Handle zero results / error in routing results pages
 
 Poor Maps 1.0
 =============

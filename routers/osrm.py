@@ -38,11 +38,9 @@ def prepare_endpoint(point):
     # OSRM requires coordinates, let's geocode using Nominatim.
     if isinstance(point, str):
         geocoder = poor.Geocoder("mapquest_nominatim")
-        results = geocoder.geocode(point)
-        with poor.util.silent(LookupError):
-            point = (results[0]["x"], results[0]["y"])
-    if isinstance(point, (list, tuple)):
-        point = "{:.6f},{:.6f}".format(point[1], point[0])
+        results = geocoder.geocode(point, nmax=1)
+        point = (results[0]["x"], results[0]["y"])
+    point = "{:.6f},{:.6f}".format(point[1], point[0])
     return urllib.parse.quote_plus(point)
 
 def route(fm, to):

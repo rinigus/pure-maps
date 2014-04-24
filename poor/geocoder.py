@@ -51,10 +51,13 @@ class Geocoder:
         bearing = poor.util.format_bearing(bearing)
         return "{} {}".format(distance, bearing)
 
-    def geocode(self, query, x=0, y=0, xmin=-180, xmax=180, ymin=-90, ymax=90):
+    def geocode(self, query, x=0, y=0, xmin=-180, xmax=180, ymin=-90, ymax=90,
+                nmax=1):
+
         """Return a list of dictionaries of places matching `query`."""
         try:
-            results = self._provider.geocode(query, xmin, xmax, ymin, ymax)
+            results = self._provider.geocode(
+                query, xmin, xmax, ymin, ymax, nmax)
         except Exception as error:
             # XXX: Should we relay an error message to QML?
             print("Geocoding failed: {}".format(str(error)), file=sys.stderr)

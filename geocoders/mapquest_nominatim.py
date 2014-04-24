@@ -31,7 +31,7 @@ URL = ("http://open.mapquestapi.com/nominatim/v1/search.php"
        "&q={query}"
        "&viewbox={xmin:.6f},{ymax:.6f},{xmax:.6f},{ymin:.6f}"
        "&addressdetails=1"
-       "&limit=20")
+       "&limit={nmax}")
 
 def append1(lst, dic, names):
     """Append the first found name in `dic` to `lst`."""
@@ -39,7 +39,7 @@ def append1(lst, dic, names):
         if name in dic:
             return lst.append(dic[name])
 
-def geocode(query, xmin, xmax, ymin, ymax):
+def geocode(query, xmin, xmax, ymin, ymax, nmax):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())
