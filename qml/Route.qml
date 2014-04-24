@@ -40,15 +40,12 @@ Canvas {
     y: (map.ycoord - paintY) * map.scaleY
     z: 200
 
-    property bool   changed: false
-    property bool   initDone: false
-    property real   lineAlpha: 0.5
-    property string lineColor: "#FF0000"
-    property real   lineWidth: 12
-    property real   paintX: 0
-    property real   paintY: 0
-    property var    path: []
-    property var    simplePaths: {"0": []}
+    property bool changed: false
+    property bool initDone: false
+    property real paintX: 0
+    property real paintY: 0
+    property var  path: []
+    property var  simplePaths: {"0": []}
 
     Timer {
         id: timer
@@ -56,15 +53,6 @@ Canvas {
         repeat: true
         running: canvas.path.length > 0
         onTriggered: canvas.changed && canvas.redraw();
-    }
-
-    Component.onCompleted: {
-        // Load default appearance from the Python backend.
-        py.onReadyChanged.connect(function() {
-            canvas.lineAlpha = py.evaluate("poor.conf.route_alpha");
-            canvas.lineColor = py.evaluate("poor.conf.route_color");
-            canvas.lineWidth = py.evaluate("poor.conf.route_width");
-        })
     }
 
     onPaint: {
@@ -83,11 +71,12 @@ Canvas {
 
     function initContextProperties() {
         // Initialize context line appearance properties.
-        canvas.context.globalAlpha = canvas.lineAlpha;
+        if (!py.ready) return;
+        canvas.context.globalAlpha = py.evaluate("poor.conf.route_alpha");
         canvas.context.lineCap = "round";
         canvas.context.linejoin = "round";
-        canvas.context.lineWidth = canvas.lineWidth;
-        canvas.context.strokeStyle = canvas.lineColor;
+        canvas.context.lineWidth = py.evaluate("poor.conf.route_width");
+        canvas.context.strokeStyle = py.evaluate("poor.conf.route_color");
         canvas.initDone = true;
     }
 
