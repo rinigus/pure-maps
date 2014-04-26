@@ -176,8 +176,13 @@ Map {
         // Set center and zoom so that the whole route is visible.
         // For simplicity, let's just check the endpoints.
         var coords = [];
-        if (route.path.length > 0)
+        if (route.path.length > 0) {
             coords.push(route.path[0]);
+            map.setCenter(route.path[0].longitude,
+                          route.path[0].latitude);
+
+            map.setZoomLevel(16);
+        }
         if (route.path.length > 1)
             coords.push(route.path[route.path.length-1]);
         map.fitViewtoCoordinates(coords);

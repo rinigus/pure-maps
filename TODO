@@ -10,7 +10,6 @@ Poor Maps 0.3
  [X] Add 'nmax' argument to geocode functions
 
  FIX:
-  * Render route immediately
   * Handle zero results / error in routing results pages
   * Use py.onReadyChanged for defaults
   * Write history after each search?
