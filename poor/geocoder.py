@@ -17,7 +17,6 @@
 
 """Translating addresses and names into coordinates."""
 
-import functools
 import importlib.machinery
 import json
 import os
@@ -32,6 +31,14 @@ __all__ = ("Geocoder",)
 class Geocoder:
 
     """Translating addresses and names into coordinates."""
+
+    def __new__(cls, id):
+        """Return possibly existing instance for `id`."""
+        if not hasattr(cls, "_instances"):
+            cls._instances = {}
+        if not id in cls._instances:
+            cls._instances[id] = object.__new__(cls)
+        return cls._instances[id]
 
     def __init__(self, id):
         """Initialize a :class:`Geocoder` instance."""
@@ -76,7 +83,6 @@ class Geocoder:
         loader = importlib.machinery.SourceFileLoader(name, path)
         self._provider = loader.load_module(name)
 
-    @functools.lru_cache(maxsize=16)
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
         leaf = os.path.join("geocoders", "{}.json".format(id))

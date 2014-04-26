@@ -17,7 +17,6 @@
 
 """Finding routes between addresses and/or coordinates."""
 
-import functools
 import importlib.machinery
 import json
 import os
@@ -32,6 +31,14 @@ __all__ = ("Router",)
 class Router:
 
     """Finding routes between addresses and/or coordinates."""
+
+    def __new__(cls, id):
+        """Return possibly existing instance for `id`."""
+        if not hasattr(cls, "_instances"):
+            cls._instances = {}
+        if not id in cls._instances:
+            cls._instances[id] = object.__new__(cls)
+        return cls._instances[id]
 
     def __init__(self, id):
         """Initialize a :class:`Router` instance."""
@@ -52,7 +59,6 @@ class Router:
         if hasattr(self._provider, "CONF_DEFAULTS"):
             poor.conf.register_router(id, self._provider.CONF_DEFAULTS)
 
-    @functools.lru_cache(maxsize=16)
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
         leaf = os.path.join("routers", "{}.json".format(id))

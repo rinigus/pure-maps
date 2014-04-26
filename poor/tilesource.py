@@ -32,6 +32,14 @@ class TileSource:
 
     """Map tile source with cached tile downloads."""
 
+    def __new__(cls, id):
+        """Return possibly existing instance for `id`."""
+        if not hasattr(cls, "_instances"):
+            cls._instances = {}
+        if not id in cls._instances:
+            cls._instances[id] = object.__new__(cls)
+        return cls._instances[id]
+
     def __init__(self, id):
         """Initialize a :class:`TileSource` instance."""
         values = self._load_attributes(id)
