@@ -22,6 +22,7 @@ http://open.mapquestapi.com/nominatim/
 http://wiki.openstreetmap.org/wiki/Nominatim
 """
 
+import copy
 import json
 import poor
 import urllib.parse
@@ -33,6 +34,8 @@ URL = ("http://open.mapquestapi.com/nominatim/v1/search.php"
        "&addressdetails=1"
        "&limit={nmax}")
 
+cache = {}
+
 def append1(lst, dic, names):
     """Append the first found name in `dic` to `lst`."""
     for name in names:
@@ -43,12 +46,18 @@ def geocode(query, xmin, xmax, ymin, ymax, nmax):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())
+    with poor.util.silent(LookupError):
+        return copy.deepcopy(cache[url])
     results = json.loads(poor.util.request_url(url, "utf_8"))
-    return [{"title": parse_title(result),
-             "description": parse_description(result),
-             "x": float(result["lon"]),
-             "y": float(result["lat"]),
-             } for result in results]
+    results = [{"title": parse_title(result),
+                "description": parse_description(result),
+                "x": float(result["lon"]),
+                "y": float(result["lat"]),
+               } for result in results]
+
+    if results:
+        cache[url] = copy.deepcopy(results)
+    return results
 
 def parse_address(result):
     """Parse address from geocoding result."""

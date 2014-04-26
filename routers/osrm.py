@@ -22,6 +22,7 @@ http://project-osrm.org/
 http://github.com/DennisOSRM/Project-OSRM/wiki/Server-api
 """
 
+import copy
 import json
 import poor
 import urllib.parse
@@ -32,6 +33,8 @@ URL = ("http://router.project-osrm.org/viaroute"
        "&output=json"
        "&instructions=false"
        "&alt=false")
+
+cache = {}
 
 def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to OSRM."""
@@ -48,7 +51,12 @@ def route(fm, to):
     fm = prepare_endpoint(fm)
     to = prepare_endpoint(to)
     url = URL.format(**locals())
+    with poor.util.silent(LookupError):
+        return copy.deepcopy(cache[url])
     result = json.loads(poor.util.request_url(url, "utf_8"))
     polyline = result["route_geometry"]
     x, y = poor.util.decode_epl(polyline, precision=6)
-    return {"x": x, "y": y}
+    polyline = {"x": x, "y": y}
+    if polyline and x and y:
+        cache[url] = copy.deepcopy(polyline)
+    return polyline

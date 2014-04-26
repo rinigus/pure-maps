@@ -42,17 +42,20 @@ class TileSource:
 
     def __init__(self, id):
         """Initialize a :class:`TileSource` instance."""
-        values = self._load_attributes(id)
-        self.attribution = values["attribution"]
-        self.extension = values["extension"]
-        self.format = values["format"]
-        self._headers = None
-        self._http_queue = queue.Queue()
-        self.id = id
-        self.name = values["name"]
-        self.source = values["source"]
-        self.url = values["url"]
-        self._init_http_connections()
+        if not hasattr(self, "id"):
+            # Initialize properties only once.
+            # __new__ returns objects usable as-is.
+            values = self._load_attributes(id)
+            self.attribution = values["attribution"]
+            self.extension = values["extension"]
+            self.format = values["format"]
+            self._headers = None
+            self._http_queue = queue.Queue()
+            self.id = id
+            self.name = values["name"]
+            self.source = values["source"]
+            self.url = values["url"]
+            self._init_http_connections()
 
     def _init_http_connection(self):
         """Initialize and return a persistent HTTP connection."""

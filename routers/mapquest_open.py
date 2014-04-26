@@ -21,6 +21,7 @@ Routing using MapQuest Open.
 http://open.mapquestapi.com/directions/
 """
 
+import copy
 import json
 import poor
 import urllib.parse
@@ -38,6 +39,8 @@ URL = ("http://open.mapquestapi.com/directions/v2/route"
        "&shapeFormat=cmp"
        "&generalize=1"
        "&manMaps=false")
+
+cache = {}
 
 def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to MapQuest."""
@@ -59,7 +62,12 @@ def route(fm, to):
     to = prepare_endpoint(to)
     type = poor.conf.routers.mapquest_open.type
     url = URL.format(**locals())
+    with poor.util.silent(LookupError):
+        return copy.deepcopy(cache[url])
     result = json.loads(poor.util.request_url(url, "utf_8"))
     polyline = result["route"]["shape"]["shapePoints"]
     x, y = poor.util.decode_epl(polyline)
-    return {"x": x, "y": y}
+    polyline = {"x": x, "y": y}
+    if polyline and x and y:
+        cache[url] = copy.deepcopy(polyline)
+    return polyline
