@@ -66,7 +66,7 @@ Canvas {
         canvas.path = [];
         canvas.simplePaths = {"0": []};
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.changed = false;
+        canvas.requestPaint();
     }
 
     function initContextProperties() {
@@ -83,7 +83,10 @@ Canvas {
     function redraw() {
         // Clear canvas and redraw entire route.
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
-        if (canvas.path.length == 0) return;
+        if (canvas.path.length == 0) {
+            canvas.changed = false;
+            return;
+        }
         var key = Math.floor(map.zoomLevel).toString();
         if (canvas.simplePaths.hasOwnProperty(key)) {
             var simplePath = canvas.simplePaths[key];

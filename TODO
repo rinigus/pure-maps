@@ -10,14 +10,13 @@ Poor Maps 0.3
  [X] Add 'nmax' argument to geocode functions
 
  FIX:
+  * Use single tilesource, geocoder, router instance per id
+  * Cache/memoize geocoder and router results
+  * Handle zero results / error in routing results pages
   * Use py.onReadyChanged for defaults
   * Write history after each search?
-  * Fix routing with "Current position"
-  * Clear route immediately
-  * Cache/memoize geocoder and router results
-  * Use single tilesource, geocoder, router instance per id
   * Change appearance of spinner screens
-  * Handle zero results / error in routing results pages
+  * Colors, alpha?
 
 Poor Maps 1.0
 =============
@@ -33,3 +32,4 @@ Poor Maps 1.0
  * Add listing nearby places (restaurants, hotels, etc.)
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations (both qsTr and gettext?)
+ * Examine and try to optimize battery use
