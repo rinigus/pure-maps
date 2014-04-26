@@ -23,8 +23,4 @@ PositionSource {
     id: gps
     active: false
     updateInterval: 3000
-    function setUpdateInterval(interval) {
-        // Set the interval for polling for position.
-        gps.updateInterval = interval;
-    }
 }

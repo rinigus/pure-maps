@@ -44,7 +44,6 @@ class Application:
         self.set_tilesource(poor.conf.tilesource)
         self.set_geocoder(poor.conf.geocoder)
         self.set_router(poor.conf.router)
-        self._send_defaults()
 
     def _init_download_threads(self):
         """Initialize map tile download threads."""
@@ -64,14 +63,6 @@ class Application:
                 # Only download tiles queued in the latest update.
                 self._update_tile(*args, timestamp=timestamp)
             self._download_queue.task_done()
-
-    def _send_defaults(self):
-        """Send default configuration to QML."""
-        pyotherside.send("set-attribution", self.tilesource.attribution)
-        pyotherside.send("set-auto-center", poor.conf.auto_center)
-        pyotherside.send("set-gps-update-interval", poor.conf.gps_update_interval)
-        pyotherside.send("set-center", *poor.conf.center)
-        pyotherside.send("set-zoom-level", poor.conf.zoom)
 
     def set_geocoder(self, geocoder):
         """Set geocoding provider from string `geocoder`."""

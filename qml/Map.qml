@@ -51,7 +51,15 @@ Map {
     Route { id: route }
 
     Component.onCompleted: {
-        // Start periodic tile and position updates.
+        // Load default values and start periodic updates.
+        py.onReadyChanged.connect(function() {
+            map.setAttribution(py.evaluate("poor.app.tilesource.attribution"));
+            map.setAutoCenter(py.evaluate("poor.conf.auto_center"));
+            var center = py.evaluate("poor.conf.center");
+            map.setCenter(center[0], center[1]);
+            map.setZoomLevel(py.evaluate("poor.conf.zoom"));
+            gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");
+        })
         map.start();
         map.zoomLevelPrev = map.zoomLevel;
     }

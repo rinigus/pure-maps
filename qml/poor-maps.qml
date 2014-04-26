@@ -33,11 +33,6 @@ ApplicationWindow {
     Python { id: py }
     Component.onCompleted: {
         py.setHandler("render-tile", map.renderTile);
-        py.setHandler("set-attribution", map.setAttribution);
-        py.setHandler("set-auto-center", map.setAutoCenter);
-        py.setHandler("set-center", map.setCenter);
-        py.setHandler("set-gps-update-interval", map.gps.setUpdateInterval);
-        py.setHandler("set-zoom-level", map.setZoomLevel);
         py.setHandler("show-tile", map.showTile);
     }
     onApplicationActiveChanged: {
