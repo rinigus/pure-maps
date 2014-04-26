@@ -149,9 +149,8 @@ Map {
 
     function fitViewtoCoordinates(coords) {
         // Set center and zoom so that all points are visible.
-        // XXX: This is very slow if there's a lot of points.
-        var cx = 0;
-        var cy = 0;
+        if (coords.length == 0) return;
+        var cx = 0, cy = 0;
         for (var i = 0; i < coords.length; i++) {
             cx += coords[i].longitude;
             cy += coords[i].latitude;
@@ -159,18 +158,27 @@ Map {
         cx /= coords.length;
         cy /= coords.length;
         map.setCenter(cx, cy);
-        while (map.zoomLevel > map.minimumZoomLevel) {
-            var allIn = true;
-            for (var i = 0; i < coords.length; i++) {
-                if (!map.inView(coords[i].longitude,
-                                coords[i].latitude)) {
-                    allIn = false;
-                    break;
-                }
-            }
-            if (allIn) break;
-            map.setZoomLevel(map.zoomLevel-1);
+        map.setZoomLevel(map.minimumZoomLevel);
+        // Calculate the greatest offset of a single point from the center
+        // of the screen and based on that the maximum zoom that will still
+        // keep all points visible.
+        var xp = 0, yp = 0;
+        var offset = 0;
+        for (var i = 0; i < coords.length; i++) {
+            xp = coords[i].longitude - map.center.longitude;
+            yp = coords[i].latitude - map.center.latitude;
+            xp = Math.abs(xp / (map.widthCoords/2));
+            yp = Math.abs(yp / (map.heightCoords/2));
+            if (xp > offset) offset = xp;
+            if (yp > offset) offset = yp;
         }
+        // Proposed Math.log2 would be useful here!
+        var zoom = map.zoomLevel;
+        while (offset < 0.5 && zoom < 16) {
+            offset *= 2;
+            zoom++;
+        }
+        map.setZoomLevel(zoom);
     }
 
     function fitViewToPois() {
@@ -189,7 +197,6 @@ Map {
             map.setCenter(route.path[0].longitude,
                           route.path[0].latitude);
 
-            map.setZoomLevel(16);
         }
         if (route.path.length > 1)
             coords.push(route.path[route.path.length-1]);
