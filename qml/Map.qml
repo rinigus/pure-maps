@@ -21,8 +21,6 @@ import QtLocation 5.0
 import QtPositioning 5.0
 import "."
 
-import "js/util.js" as Util
-
 Map {
     id: map
     anchors.fill: parent
