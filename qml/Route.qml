@@ -74,7 +74,7 @@ Canvas {
         if (!py.ready) return;
         canvas.context.globalAlpha = py.evaluate("poor.conf.route_alpha");
         canvas.context.lineCap = "round";
-        canvas.context.linejoin = "round";
+        canvas.context.lineJoin = "round";
         canvas.context.lineWidth = py.evaluate("poor.conf.route_width");
         canvas.context.strokeStyle = py.evaluate("poor.conf.route_color");
         canvas.initDone = true;
