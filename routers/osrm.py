@@ -22,10 +22,8 @@ http://project-osrm.org/
 http://github.com/DennisOSRM/Project-OSRM/wiki/Server-api
 """
 
-import copy
 import json
 import poor
-import urllib.parse
 
 URL = ("http://router.project-osrm.org/viaroute"
        "?loc={fm}"
@@ -34,7 +32,8 @@ URL = ("http://router.project-osrm.org/viaroute"
        "&instructions=false"
        "&alt=false")
 
-cache = {}
+checksum = None
+hints = {}
 
 def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to OSRM."""
@@ -44,19 +43,22 @@ def prepare_endpoint(point):
         results = geocoder.geocode(point, nmax=1)
         point = (results[0]["x"], results[0]["y"])
     point = "{:.6f},{:.6f}".format(point[1], point[0])
-    return urllib.parse.quote_plus(point)
+    return (point, ("{}&hint={}".format(point, hints[point])
+                    if point in hints else point))
 
 def route(fm, to):
     """Find route and return its properties as a dictionary."""
-    fm = prepare_endpoint(fm)
-    to = prepare_endpoint(to)
+    global checksum
+    fm_real, fm = prepare_endpoint(fm)
+    to_real, to = prepare_endpoint(to)
     url = URL.format(**locals())
-    with poor.util.silent(LookupError):
-        return copy.deepcopy(cache[url])
+    if checksum is not None:
+        url = "{}&checksum={}".format(url, checksum)
     result = json.loads(poor.util.request_url(url, "utf_8"))
+    with poor.util.silent(Exception):
+        checksum = str(result["hint_data"]["checksum"])
+        hints[fm_real] = str(result["hint_data"]["locations"][0])
+        hints[to_real] = str(result["hint_data"]["locations"][1])
     polyline = result["route_geometry"]
     x, y = poor.util.decode_epl(polyline, precision=6)
-    polyline = {"x": x, "y": y}
-    if polyline and x and y:
-        cache[url] = copy.deepcopy(polyline)
-    return polyline
+    return {"x": x, "y": y}
