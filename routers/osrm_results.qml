@@ -23,8 +23,19 @@ Page {
     id: page
     allowedOrientations: Orientation.All
     property bool loading: true
-    PageHeader { title: "Searching" }
+    Label {
+        anchors.bottom: busyIndicator.top
+        color: Theme.highlightColor
+        font.pixelSize: Theme.fontSizeLarge
+        height: Theme.itemSizeLarge
+        horizontalAlignment: Text.AlignHCenter
+        text: "Searching"
+        verticalAlignment: Text.AlignVCenter
+        visible: page.loading
+        width: parent.width
+    }
     BusyIndicator {
+        id: busyIndicator
         anchors.centerIn: parent
         running: page.loading
         size: BusyIndicatorSize.Large

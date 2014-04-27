@@ -24,7 +24,7 @@ Page {
     id: page
     allowedOrientations: Orientation.All
     property bool loading: true
-    property string title: "Searching"
+    property string title: ""
     SilicaListView {
         anchors.fill: parent
         delegate: ListItem {
@@ -79,7 +79,19 @@ Page {
         }
         VerticalScrollDecorator {}
     }
+    Label {
+        anchors.bottom: busyIndicator.top
+        color: Theme.highlightColor
+        font.pixelSize: Theme.fontSizeLarge
+        height: Theme.itemSizeLarge
+        horizontalAlignment: Text.AlignHCenter
+        text: "Searching"
+        verticalAlignment: Text.AlignVCenter
+        visible: page.loading
+        width: parent.width
+    }
     BusyIndicator {
+        id: busyIndicator
         anchors.centerIn: parent
         running: page.loading
         size: BusyIndicatorSize.Large
@@ -93,7 +105,7 @@ Page {
             page.populate(geocodePage.query);
         } else if (page.status == PageStatus.Inactive) {
             listModel.clear();
-            page.title = "Searching"
+            page.title = ""
         }
     }
     function populate(query) {
