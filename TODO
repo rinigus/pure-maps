@@ -10,7 +10,6 @@ Poor Maps 0.3
  [X] Add 'nmax' argument to geocode functions
 
  FIX:
-  * Handle zero results / error in routing results pages
   * Colors, alpha?
 
 Poor Maps 1.0

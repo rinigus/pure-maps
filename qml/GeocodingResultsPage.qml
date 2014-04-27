@@ -80,6 +80,7 @@ Page {
         VerticalScrollDecorator {}
     }
     Label {
+        id: busyLabel
         anchors.bottom: busyIndicator.top
         color: Theme.highlightColor
         font.pixelSize: Theme.fontSizeLarge
@@ -87,7 +88,7 @@ Page {
         horizontalAlignment: Text.AlignHCenter
         text: "Searching"
         verticalAlignment: Text.AlignVCenter
-        visible: page.loading
+        visible: page.loading || text != "Searching"
         width: parent.width
     }
     BusyIndicator {
@@ -100,6 +101,7 @@ Page {
     onStatusChanged: {
         if (page.status == PageStatus.Activating) {
             page.loading = true;
+            busyLabel.text = "Searching"
         } else if (page.status == PageStatus.Active) {
             var geocodePage = app.pageStack.previousPage();
             page.populate(geocodePage.query);
@@ -118,10 +120,15 @@ Page {
         py.call("poor.app.geocoder.geocode",
                 [query, x, y, bbox[0], bbox[1], bbox[2], bbox[3], 20],
                 function(results) {
-                    page.title = results.length == 1 ?
-                        "1 Result" : results.length + " Results";
-                    for (var i = 0; i < results.length; i++)
-                        listModel.append(results[i]);
+                    if (results.length > 0) {
+                        page.title = results.length == 1 ?
+                            "1 Result" : results.length + " Results";
+                        for (var i = 0; i < results.length; i++)
+                            listModel.append(results[i]);
+                    } else {
+                        page.title = "";
+                        busyLabel.text = "Nothing found"
+                    }
                     page.loading = false;
                 });
 

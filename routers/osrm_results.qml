@@ -24,6 +24,7 @@ Page {
     allowedOrientations: Orientation.All
     property bool loading: true
     Label {
+        id: busyLabel
         anchors.bottom: busyIndicator.top
         color: Theme.highlightColor
         font.pixelSize: Theme.fontSizeLarge
@@ -31,7 +32,7 @@ Page {
         horizontalAlignment: Text.AlignHCenter
         text: "Searching"
         verticalAlignment: Text.AlignVCenter
-        visible: page.loading
+        visible: page.loading || text != "Searching"
         width: parent.width
     }
     BusyIndicator {
@@ -42,14 +43,29 @@ Page {
         visible: page.loading
     }
     onStatusChanged: {
-        if (page.status != PageStatus.Active) return;
+        if (page.status == PageStatus.Activating) {
+            busyLabel.text = "Searching";
+        } else if (page.status == PageStatus.Active) {
+            page.findRoute();
+        }
+    }
+    function findRoute() {
         var routePage = app.pageStack.previousPage();
         py.call("poor.app.router.route",
                 [routePage.from, routePage.to],
                 function(route) {
-                    map.addRoute(route.x, route.y);
-                    map.fitViewToRoute();
-                    app.pageStack.pop(mapPage, PageStackAction.Immediate);
-        })
+                    if (route &&
+                        route.hasOwnProperty("x") &&
+                        route.x.length > 0) {
+                        map.addRoute(route.x, route.y);
+                        map.fitViewToRoute();
+                        app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                        page.loading = false;
+                    } else {
+                        busyLabel.text = "No route found";
+                        page.loading = false;
+                    }
+                });
+
     }
 }
