@@ -100,7 +100,7 @@ Page {
     }
     onFromTextChanged: {
         if (page.fromText == "Current position") {
-            page.from = map.getCenter();
+            page.from = map.getPosition();
         } else if (page.fromText == "From") {
             page.from = null;
         } else {
@@ -115,7 +115,7 @@ Page {
     }
     onToTextChanged: {
         if (page.toText == "Current position") {
-            page.to = map.getCenter();
+            page.to = map.getPosition();
         } else if (page.toText == "To") {
             page.to = null;
         } else {

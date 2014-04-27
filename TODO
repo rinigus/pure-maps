@@ -4,10 +4,12 @@ Poor Maps 0.3
  [X] Add framework to support pluggable routers
  [X] Add MapQuest Open router (car, bicycle, pedestrian)
  [X] Add OSRM router (car)
-     * Notify info@project-osrm.org
-     * http://github.com/DennisOSRM/Project-OSRM/wiki/Api-usage-policy
  [X] Fix tile display when zooming to view multiple found places
  [X] Add 'nmax' argument to geocode functions
+
+ FIX:
+ * Precompute route simplifications async?
+ * Profile and fix bottlenecks?
 
 Poor Maps 1.0
 =============

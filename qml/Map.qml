@@ -21,6 +21,8 @@ import QtLocation 5.0
 import QtPositioning 5.0
 import "."
 
+import "js/util.js" as Util
+
 Map {
     id: map
     anchors.fill: parent
@@ -33,17 +35,22 @@ Map {
     property bool autoCenter: false
     property bool changed: true
     property var  gps: PositionSource {}
-    property real heightCoords: 0
     property var  pois: []
     property var  position: map.gps.position
     property var  positionMarker: PositionMarker {}
+    property var  tiles: []
+    property real zoomLevelPrev: 8
+
+    // The following coordinate properties are not actually correct for Y,
+    // since scaleY varies by latitude. These approximations are good enough
+    // for some purposes, but can be fixed if needed.
+
+    property real widthCoords: 0
+    property real heightCoords: 0
     property real scaleX: 0
     property real scaleY: 0
-    property var  tiles: []
-    property real widthCoords: 0
     property real xcoord: center.longitude - widthCoords/2
     property real ycoord: center.latitude + heightCoords/2
-    property real zoomLevelPrev: 8
 
     AttributionText { id: attribution }
     MapTimer { id: timer }
@@ -59,7 +66,7 @@ Map {
             map.setCenter(center[0], center[1]);
             map.setZoomLevel(py.evaluate("poor.conf.zoom"));
             gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");
-        })
+        });
         map.start();
         map.zoomLevelPrev = map.zoomLevel;
     }
@@ -114,9 +121,8 @@ Map {
         route.clear();
         route.path = x.map(function(currentValue, index, array) {
             return QtPositioning.coordinate(y[index], x[index]);
-        })
-        // Queue redraw, don't hang on it.
-        route.changed = true;
+        });
+        route.redraw();
     }
 
     function addTile(uid, x, y, zoom, uri) {
@@ -172,7 +178,7 @@ Map {
             if (xp > offset) offset = xp;
             if (yp > offset) offset = yp;
         }
-        // Proposed Math.log2 would be useful here!
+        // Math.log2 would be useful here!
         var zoom = map.zoomLevel;
         while (offset < 0.5 && zoom < 16) {
             offset *= 2;
@@ -185,7 +191,7 @@ Map {
         // Set center and zoom so that all points of interest are visible.
         map.fitViewtoCoordinates(map.pois.map(function(x) {
             return x.coordinate;
-        }))
+        }));
     }
 
     function fitViewToRoute() {
@@ -210,18 +216,10 @@ Map {
         return [nw.longitude, se.longitude, se.latitude, nw.latitude];
     }
 
-    function getCenter() {
-        // Return the current center position as [x,y].
+    function getPosition() {
+        // Return the current position as [x,y].
         return [map.position.coordinate.longitude,
                 map.position.coordinate.latitude];
-
-    }
-
-    function inView(x, y) {
-        // Return true if point is in the current view.
-        var bbox = map.getBoundingBox();
-        return (x >= bbox[0] && x <= bbox[1] &&
-                y >= bbox[2] && y <= bbox[3])
 
     }
 
@@ -270,13 +268,13 @@ Map {
             map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
         map.zoomLevel = zoom;
         map.zoomLevelPrev = zoom;
-        map.changed = true;
         var bbox = map.getBoundingBox();
         map.widthCoords = bbox[1] - bbox[0];
         map.heightCoords = bbox[3] - bbox[2];
         map.scaleX = map.width / map.widthCoords;
         map.scaleY = map.height / map.heightCoords;
         route.redraw();
+        map.changed = true;
     }
 
     function showTile(uid) {

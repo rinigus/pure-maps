@@ -17,7 +17,10 @@
  */
 
 import QtQuick 2.0
+import QtPositioning 5.0
+
 import "js/simplify.js" as Simplify
+import "js/util.js" as Util
 
 /*
  * The intended way to draw a route on a QtLocation map would be to use
@@ -40,32 +43,49 @@ Canvas {
     y: (map.ycoord - paintY) * map.scaleY
     z: 200
 
-    property bool changed: false
     property bool initDone: false
     property real paintX: 0
     property real paintY: 0
     property var  path: []
     property var  simplePaths: {"0": []}
 
-    Timer {
-        id: timer
-        interval: 500
-        repeat: true
-        running: canvas.path.length > 0
-        onTriggered: canvas.changed && canvas.redraw();
-    }
-
     onPaint: {
-        // Ensure that the route is updated after panning.
-        // This gets fired ridiculously often, so keep simple.
-        changed = true;
+        // Clear canvas and redraw entire route.
+        // This gets called continuously as the map is panned!
+        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
+        if (canvas.path.length == 0) return;
+        var zoom = Math.min(18, Math.floor(map.zoomLevel));
+        var key = zoom.toString();
+        if (!canvas.simplePaths.hasOwnProperty(key))
+            canvas.simplify(zoom);
+        var simplePath = canvas.simplePaths[key];
+        canvas.initDone || canvas.initContextProperties();
+        canvas.context.beginPath();
+        var bbox = map.getBoundingBox();
+        var cx = map.center.longitude, cy = map.center.latitude;
+        simplePath.forEach(function(p) {
+            // We need to include some points outside the visible bbox
+            // to include polyline segments that cross the bbox edge.
+            if (p.longitude < cx - 1.5 * map.widthCoords   ||
+                p.longitude > cx + 1.5 * map.widthCoords   ||
+                p.latitude  < cy - 1.5 * map.heightCoords  ||
+                p.latitude  > cy + 1.5 * map.heightCoords) return;
+            canvas.context.lineTo(
+                Util.xcoord2xpos(p.longitude, bbox[0], bbox[1], map.width),
+                Util.ycoord2ypos(p.latitude,  bbox[2], bbox[3], map.height));
+
+        })
+        // This is not actually corrent for Y, since scaleY varies
+        // by latitude, but this is consistent with map.ycoord.
+        canvas.paintX = cx - map.widthCoords/2;
+        canvas.paintY = cy + map.heightCoords/2;
+        canvas.context.stroke();
     }
 
     function clear() {
         // Clear path from the canvas.
         canvas.path = [];
         canvas.simplePaths = {"0": []};
-        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         canvas.requestPaint();
     }
 
@@ -82,41 +102,16 @@ Canvas {
 
     function redraw() {
         // Clear canvas and redraw entire route.
-        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
-        if (canvas.path.length == 0) {
-            canvas.changed = false;
-            return;
-        }
-        var key = Math.floor(map.zoomLevel).toString();
-        if (canvas.simplePaths.hasOwnProperty(key)) {
-            var simplePath = canvas.simplePaths[key];
-        } else {
-            // If simplified path not found in cache,
-            // do simplification using Douglas-Peucker.
-            var tolerance = Math.pow(2, 18-Math.floor(map.zoomLevel)) / 83250;
-            var simplePath = Simplify.simplify(canvas.path, tolerance, false);
-            Object.defineProperty(canvas.simplePaths,
-                                  map.zoomLevel.toString(),
-                                  {value: simplePath, writable: true});
+        canvas.requestPaint();
+    }
 
-        }
-        canvas.initDone || canvas.initContextProperties();
-        canvas.context.beginPath();
-        canvas.paintX = map.xcoord;
-        canvas.paintY = map.ycoord;
-        simplePath.forEach(function(p) {
-            // We need to include some points outside the visible bbox
-            // to include polyline segments that cross the bbox edge.
-            if (p.longitude < canvas.paintX - map.widthCoords    ||
-                p.latitude  > canvas.paintY + map.heightCoords   ||
-                p.longitude > canvas.paintX + map.widthCoords*2  ||
-                p.latitude  < canvas.paintY - map.heightCoords*2)
-                return;
-            canvas.context.lineTo(map.scaleX*(p.longitude - canvas.paintX),
-                                  map.scaleY*(canvas.paintY - p.latitude));
+    function simplify(zoom) {
+        // Simplify path for display at zoom level using Douglas-Peucker.
+        var key = zoom.toString();
+        var tolerance = Math.pow(2, 18-zoom) / 83250;
+        var simplePath = Simplify.simplify(canvas.path, tolerance, false);
+        Object.defineProperty(canvas.simplePaths, key,
+                              {value: simplePath, writable: true});
 
-        })
-        canvas.context.stroke();
-        canvas.changed = false;
     }
 }
