@@ -9,9 +9,6 @@ Poor Maps 0.3
  [X] Fix tile display when zooming to view multiple found places
  [X] Add 'nmax' argument to geocode functions
 
- FIX:
-  * Colors, alpha?
-
 Poor Maps 1.0
 =============
 
