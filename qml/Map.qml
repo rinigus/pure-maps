@@ -41,7 +41,7 @@ Map {
 
     // The following coordinate properties are not actually correct for Y,
     // since scaleY varies by latitude. These approximations are good enough
-    // for some purposes, but can be fixed if needed.
+    // for some purposes, but can be fixed if exact ones are needed.
 
     property real widthCoords: 0
     property real heightCoords: 0
@@ -117,9 +117,10 @@ Map {
     function addRoute(x, y) {
         // Add a polyline to represent a route.
         route.clear();
-        route.path = x.map(function(currentValue, index, array) {
-            return QtPositioning.coordinate(y[index], x[index]);
-        });
+        var path = [];
+        for (var i = 0; i < x.length; i++)
+            path[i] = QtPositioning.coordinate(y[i], x[i]);
+        route.path = path;
         route.redraw();
     }
 
@@ -187,9 +188,10 @@ Map {
 
     function fitViewToPois() {
         // Set center and zoom so that all points of interest are visible.
-        map.fitViewtoCoordinates(map.pois.map(function(x) {
-            return x.coordinate;
-        }));
+        coords = []
+        for (var i = 0; i < map.pois.length; i++)
+            coords[i] = map.pois[i].coordinate;
+        map.fitViewtoCoordinates(coords);
     }
 
     function fitViewToRoute() {

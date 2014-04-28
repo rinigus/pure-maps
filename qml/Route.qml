@@ -19,7 +19,6 @@
 import QtQuick 2.0
 import QtPositioning 5.0
 
-import "js/simplify.js" as Simplify
 import "js/util.js" as Util
 
 /*
@@ -27,8 +26,6 @@ import "js/util.js" as Util
  * QtLocation's MapPolyline. MapPolyline, however, renders awfully ugly.
  * To work around this, let's use a Canvas and Context2D drawing primitives
  * to draw our route. This looks nice, but might be horribly inefficient.
- * See also map.xcoord, map.ycoord, map.scaleX and map.scaleY for potentially
- * slow bound calculations that might not be needed without this.
  *
  * http://bugreports.qt-project.org/browse/QTBUG-38459
  */
@@ -50,36 +47,46 @@ Canvas {
     property var  simplePaths: {"0": []}
 
     onPaint: {
-        // Clear canvas and redraw entire route.
+        // Clear the whole canvas and redraw entire route.
         // This gets called continuously as the map is panned!
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         if (canvas.path.length == 0) return;
         var zoom = Math.min(18, Math.floor(map.zoomLevel));
         var key = zoom.toString();
         if (!canvas.simplePaths.hasOwnProperty(key))
-            canvas.simplify(zoom);
-        var simplePath = canvas.simplePaths[key];
+            return canvas.simplify(zoom);
+        var spath = canvas.simplePaths[key];
         canvas.initDone || canvas.initContextProperties();
         canvas.context.beginPath();
         var bbox = map.getBoundingBox();
-        var cx = map.center.longitude, cy = map.center.latitude;
-        simplePath.forEach(function(p) {
-            // We need to include some points outside the visible bbox
-            // to include polyline segments that cross the bbox edge.
-            if (p.longitude < cx - 1.5 * map.widthCoords   ||
-                p.longitude > cx + 1.5 * map.widthCoords   ||
-                p.latitude  < cy - 1.5 * map.heightCoords  ||
-                p.latitude  > cy + 1.5 * map.heightCoords) return;
+        var xmin = map.center.longitude - 1.5 * map.widthCoords;
+        var xmax = map.center.longitude + 1.5 * map.widthCoords;
+        var ymin = map.center.latitude  - 1.5 * map.heightCoords;
+        var ymax = map.center.latitude  + 1.5 * map.heightCoords;
+        for (var i = 0; i < spath.length; i++) {
+            var x = spath[i].longitude;
+            var y = spath[i].latitude;
+            if (x < xmin || x > xmax || y < ymin || y > ymax) continue;
             canvas.context.lineTo(
-                Util.xcoord2xpos(p.longitude, bbox[0], bbox[1], map.width),
-                Util.ycoord2ypos(p.latitude,  bbox[2], bbox[3], map.height));
+                Util.xcoord2xpos(x, bbox[0], bbox[1], map.width),
+                Util.ycoord2ypos(y, bbox[2], bbox[3], map.height));
 
-        })
-        // This is not actually corrent for Y, since scaleY varies
-        // by latitude, but this is consistent with map.ycoord.
-        canvas.paintX = cx - map.widthCoords/2;
-        canvas.paintY = cy + map.heightCoords/2;
+        }
+        canvas.paintX = map.center.longitude - map.widthCoords/2;
+        canvas.paintY = map.center.latitude + map.heightCoords/2;
         canvas.context.stroke();
+    }
+
+    function addSimplePath(path, zoom) {
+        // Add path simplified for display at zoom level.
+        var spath = [];
+        for (var i = 0; i < path.x.length; i++)
+            spath[i] = QtPositioning.coordinate(path.y[i], path.x[i]);
+        Object.defineProperty(canvas.simplePaths,
+                              zoom.toString(),
+                              {value: spath, writable: true});
+
+        canvas.requestPaint();
     }
 
     function clear() {
@@ -93,10 +100,10 @@ Canvas {
         // Initialize context line appearance properties.
         if (!py.ready) return;
         canvas.context.globalAlpha = py.evaluate("poor.conf.route_alpha");
-        canvas.context.lineCap = "round";
-        canvas.context.lineJoin = "round";
         canvas.context.lineWidth = py.evaluate("poor.conf.route_width");
         canvas.context.strokeStyle = py.evaluate("poor.conf.route_color");
+        canvas.context.lineCap = "round";
+        canvas.context.lineJoin = "round";
         canvas.initDone = true;
     }
 
@@ -107,11 +114,18 @@ Canvas {
 
     function simplify(zoom) {
         // Simplify path for display at zoom level using Douglas-Peucker.
-        var key = zoom.toString();
-        var tolerance = Math.pow(2, 18-zoom) / 83250;
-        var simplePath = Simplify.simplify(canvas.path, tolerance, false);
-        Object.defineProperty(canvas.simplePaths, key,
-                              {value: simplePath, writable: true});
+        var tol = Math.pow(2, 18-zoom) / 83250;
+        var x = [];
+        var y = [];
+        for (var i = 0; i < canvas.path.length; i++) {
+            x[i] = canvas.path[i].longitude;
+            y[i] = canvas.path[i].latitude;
+        }
+        py.call("poor.polysimp.simplify_qml",
+                [x, y, tol, false, 1000],
+                function(path) {
+                    canvas.addSimplePath(path, zoom);
+                });
 
     }
 }
