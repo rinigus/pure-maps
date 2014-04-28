@@ -49,8 +49,8 @@ Canvas {
     onPaint: {
         // Clear the whole canvas and redraw entire route.
         // This gets called continuously as the map is panned!
-        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         if (canvas.path.length == 0) return;
+        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.min(18, Math.floor(map.zoomLevel));
         var key = zoom.toString();
         if (!canvas.simplePaths.hasOwnProperty(key))
@@ -93,6 +93,7 @@ Canvas {
         // Clear path from the canvas.
         canvas.path = [];
         canvas.simplePaths = {"0": []};
+        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         canvas.requestPaint();
     }
 
