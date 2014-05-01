@@ -49,7 +49,7 @@ def get_sq_seg_dist(x, y, x1, y1, x2, y2):
     dy = y - py
     return dx**2 + dy**2
 
-def simplify(x, y, tol, hq=False, nmax=None):
+def simplify(x, y, tol, hq=False, max_length=None, nmax=None):
     """Simplify polyline using Douglas-Peucker and radial distance."""
     xin = x
     yin = y
@@ -58,8 +58,20 @@ def simplify(x, y, tol, hq=False, nmax=None):
     if not hq:
         x, y = simplify_radial_dist(x, y, tol)
     x, y = simplify_douglas_peucker(x, y, tol)
+    if max_length is not None:
+        max_length2 = max_length**2
+        i = 1
+        while i < len(x):
+            dist = get_sq_dist(x[i], y[i], x[i-1], y[i-1])
+            if dist > max_length2:
+                # Using insert here might be slow,
+                # but usually shouldn't get called often.
+                x.insert(i, (x[i-1] + x[i])/2)
+                y.insert(i, (y[i-1] + y[i])/2)
+            else:
+                i += 1
     if nmax is not None and len(x) > nmax:
-        return simplify(xin, yin, tol*2, hq, nmax)
+        return simplify(xin, yin, tol*2, hq, max_length, nmax)
     return (x, y)
 
 def simplify_douglas_peucker(x, y, tol):
@@ -84,10 +96,10 @@ def simplify_douglas_peucker(x, y, tol):
     yout = [y[i] for i in range(len(y)) if keep[i]]
     return (xout, yout)
 
-def simplify_qml(x, y, tol, hq=False, nmax=None):
+def simplify_qml(x, y, tol, hq=False, max_length=None, nmax=None):
     """Simplify polyline using Douglas-Peucker and radial distance."""
     # Return a dictionary, since PyOtherSide handles that better.
-    x, y = simplify(x, y, tol, hq, nmax)
+    x, y = simplify(x, y, tol, hq, max_length, nmax)
     return {"x": x, "y": y}
 
 def simplify_radial_dist(x, y, tol):

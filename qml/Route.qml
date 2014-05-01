@@ -61,29 +61,31 @@ Canvas {
         canvas.initDone || canvas.initContextProperties();
         canvas.context.beginPath();
         var bbox = map.getBoundingBox();
+        // Render also some nodes outside the bbox in order
+        // to render segments that cross the bbox edge.
+        var xmin = bbox[0] - 1.5 * map.widthCoords;
+        var xmax = bbox[1] + 1.5 * map.widthCoords;
+        var ymin = bbox[2] - 1.5 * map.heightCoords;
+        var ymax = bbox[3] + 1.5 * map.heightCoords;
         var prev = false;
         for (var i = 0; i < spath.x.length; i++) {
-            // Render also first nodes outside the bbox.
-            // in order to render segments that cross the bbox.
             var x = spath.x[i];
             var y = spath.y[i];
-            var inbb = (x >= bbox[0] && x <= bbox[1] &&
-                        y >= bbox[2] && y <= bbox[3]);
-
-            if (inbb && !prev && i > 0) {
-                var xp = spath.x[i-1];
-                var yp = spath.y[i-1];
-                canvas.context.lineTo(
-                    Util.xcoord2xpos(xp, bbox[0], bbox[1], map.width),
-                    Util.ycoord2ypos(yp, bbox[2], bbox[3], map.height));
-
-            }
-            if (inbb || prev)
+            if (x >= xmin && x <= xmax && y >= ymin && y <= ymax) {
                 canvas.context.lineTo(
                     Util.xcoord2xpos(x, bbox[0], bbox[1], map.width),
                     Util.ycoord2ypos(y, bbox[2], bbox[3], map.height));
 
-            prev = inbb;
+                prev = true;
+            } else {
+                if (prev) {
+                    // Break path when going outside the area
+                    // in which segments are rendered.
+                    canvas.context.stroke();
+                    canvas.context.beginPath();
+                }
+                prev = false;
+            }
         }
         canvas.paintX = map.center.longitude;
         canvas.paintY = map.center.latitude;
@@ -141,8 +143,9 @@ Canvas {
     function simplify(zoom) {
         // Simplify path for display at zoom level using Douglas-Peucker.
         var tol = Math.pow(2, 18-zoom) / 83250;
+        var maxLength = Math.min(map.widthCoords, map.heightCoords);
         py.call("poor.polysimp.simplify_qml",
-                [canvas.path.x, canvas.path.y, tol, false, 2000],
+                [canvas.path.x, canvas.path.y, tol, false, maxLength, 2000],
                 function(path) {
                     Object.defineProperty(canvas.simplePaths,
                                           zoom.toString(),

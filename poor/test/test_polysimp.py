@@ -20,6 +20,13 @@ import poor.test
 
 class TestModule(poor.test.TestCase):
 
+    def test_simplify__max_length(self):
+        x = [0, 1, 8]
+        y = [0, 0, 0]
+        xout, yout = poor.polysimp.simplify(x, y, tol=1, max_length=4)
+        assert xout == [0, 4, 8]
+        assert yout == [0, 0, 0]
+
     def test_simplify__nmax(self):
         x = [0, 1, 1, 2, 2]
         y = [0, 0, 1, 1, 2]
