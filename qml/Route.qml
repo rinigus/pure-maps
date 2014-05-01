@@ -36,8 +36,6 @@ Canvas {
     height: parent.height
     renderStrategy: Canvas.Cooperative
     width: parent.width
-    x: (paintX - map.center.longitude) * map.scaleX
-    y: (map.center.latitude - paintY) * map.scaleY
     z: 200
 
     property bool initDone: false
@@ -90,6 +88,22 @@ Canvas {
         canvas.paintX = map.center.longitude;
         canvas.paintY = map.center.latitude;
         canvas.context.stroke();
+    }
+
+    onPathChanged: {
+        // Update canvas in conjunction with panning the map
+        // only when we actually have a route to display.
+        if (path.x.length > 0) {
+            canvas.x = Qt.binding(function() {
+                return (this.paintX - map.center.longitude) * map.scaleX;
+            });
+            canvas.y = Qt.binding(function() {
+                return (map.center.latitude - this.paintY) * map.scaleY;
+            });
+        } else {
+            canvas.x = 0;
+            canvas.y = 0;
+        }
     }
 
     function clear() {
