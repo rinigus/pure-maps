@@ -49,7 +49,7 @@ Canvas {
         // This gets called continuously as the map is panned!
         if (canvas.path.x.length == 0) return;
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
-        var zoom = Math.min(18, Math.floor(map.zoomLevel));
+        var zoom = Math.floor(map.zoomLevel);
         var key = zoom.toString();
         if (!canvas.simplePaths.hasOwnProperty(key)) {
             if (map.gesture.isPinchActive) return;
@@ -142,7 +142,7 @@ Canvas {
 
     function simplify(zoom) {
         // Simplify path for display at zoom level using Douglas-Peucker.
-        var tol = Math.pow(2, 18-zoom) / 83250;
+        var tol = Math.pow(2, Math.max(1, 18-zoom)) / 83250;
         var maxLength = Math.min(map.widthCoords, map.heightCoords);
         py.call("poor.polysimp.simplify_qml",
                 [canvas.path.x, canvas.path.y, tol, false, maxLength, 2000],
