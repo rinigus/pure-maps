@@ -56,7 +56,6 @@ Map {
             var center = py.evaluate("poor.conf.center");
             map.setCenter(center[0], center[1]);
             map.setZoomLevel(py.evaluate("poor.conf.zoom"));
-            gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");
         });
         map.start();
         map.zoomLevelPrev = map.zoomLevel;
@@ -188,12 +187,14 @@ Map {
         // For simplicity, let's just check the endpoints.
         var coords = [];
         if (route.path.x.length > 0) {
-            var x = route.path.x[0], y = route.path.y[0];
+            var x = route.path.x[0];
+            var y = route.path.y[0];
             coords.push(QtPositioning.coordinate(y, x));
         }
         var n = route.path.x.length;
         if (n > 1) {
-            var x = route.path.x[n-1], y = route.path.y[n-1];
+            var x = route.path.x[n-1];
+            var y = route.path.y[n-1];
             coords.push(QtPositioning.coordinate(y, x));
         }
         map.fitViewtoCoordinates(coords);
