@@ -34,65 +34,68 @@ Canvas {
     id: canvas
     contextType: "2d"
     height: parent.height
-    renderStrategy: Canvas.Immediate
+    renderStrategy: Canvas.Cooperative
     width: parent.width
-    x: (paintX - map.xcoord) * map.scaleX
-    y: (map.ycoord - paintY) * map.scaleY
+    x: (paintX - map.center.longitude) * map.scaleX
+    y: (map.center.latitude - paintY) * map.scaleY
     z: 200
 
     property bool initDone: false
-    property real paintX: 0
-    property real paintY: 0
-    property var  path: []
-    property var  simplePaths: {"0": []}
+    property var  paintX: 0
+    property var  paintY: 0
+    property var  path: {"x": [], "y": []}
+    property var  simplePaths: {"0": {"x": [], "y": []}}
 
     onPaint: {
         // Clear the whole canvas and redraw entire route.
         // This gets called continuously as the map is panned!
-        if (canvas.path.length == 0) return;
+        if (canvas.path.x.length == 0) return;
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.min(18, Math.floor(map.zoomLevel));
         var key = zoom.toString();
-        if (!canvas.simplePaths.hasOwnProperty(key))
+        if (!canvas.simplePaths.hasOwnProperty(key)) {
+            if (map.gesture.isPinchActive) return;
+            // Prevent calling simplify multiple times.
+            canvas.simplePaths[key] = {"x": [], "y": []};
             return canvas.simplify(zoom);
+        }
         var spath = canvas.simplePaths[key];
         canvas.initDone || canvas.initContextProperties();
         canvas.context.beginPath();
         var bbox = map.getBoundingBox();
-        var xmin = map.center.longitude - 1.5 * map.widthCoords;
-        var xmax = map.center.longitude + 1.5 * map.widthCoords;
-        var ymin = map.center.latitude  - 1.5 * map.heightCoords;
-        var ymax = map.center.latitude  + 1.5 * map.heightCoords;
-        for (var i = 0; i < spath.length; i++) {
-            var x = spath[i].longitude;
-            var y = spath[i].latitude;
-            if (x < xmin || x > xmax || y < ymin || y > ymax) continue;
-            canvas.context.lineTo(
-                Util.xcoord2xpos(x, bbox[0], bbox[1], map.width),
-                Util.ycoord2ypos(y, bbox[2], bbox[3], map.height));
+        var prev = false;
+        for (var i = 0; i < spath.x.length; i++) {
+            // Render also first nodes outside the bbox.
+            // in order to render segments that cross the bbox.
+            var x = spath.x[i];
+            var y = spath.y[i];
+            var inbb = (x >= bbox[0] && x <= bbox[1] &&
+                        y >= bbox[2] && y <= bbox[3]);
 
+            if (inbb && !prev && i > 0) {
+                var xp = spath.x[i-1];
+                var yp = spath.y[i-1];
+                canvas.context.lineTo(
+                    Util.xcoord2xpos(xp, bbox[0], bbox[1], map.width),
+                    Util.ycoord2ypos(yp, bbox[2], bbox[3], map.height));
+
+            }
+            if (inbb || prev)
+                canvas.context.lineTo(
+                    Util.xcoord2xpos(x, bbox[0], bbox[1], map.width),
+                    Util.ycoord2ypos(y, bbox[2], bbox[3], map.height));
+
+            prev = inbb;
         }
-        canvas.paintX = map.center.longitude - map.widthCoords/2;
-        canvas.paintY = map.center.latitude + map.heightCoords/2;
+        canvas.paintX = map.center.longitude;
+        canvas.paintY = map.center.latitude;
         canvas.context.stroke();
-    }
-
-    function addSimplePath(path, zoom) {
-        // Add path simplified for display at zoom level.
-        var spath = [];
-        for (var i = 0; i < path.x.length; i++)
-            spath[i] = QtPositioning.coordinate(path.y[i], path.x[i]);
-        Object.defineProperty(canvas.simplePaths,
-                              zoom.toString(),
-                              {value: spath, writable: true});
-
-        canvas.requestPaint();
     }
 
     function clear() {
         // Clear path from the canvas.
-        canvas.path = [];
-        canvas.simplePaths = {"0": []};
+        canvas.path = {"x": [], "y": []};
+        canvas.simplePaths = {"0": {"x": [], "y": []}};
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         canvas.requestPaint();
     }
@@ -113,19 +116,26 @@ Canvas {
         canvas.requestPaint();
     }
 
+    function setPath(x, y) {
+        // Set route path from coordinates.
+        canvas.path = {"x": x, "y": y};
+        canvas.simplePaths = {"0": {"x": [], "y": []}};
+        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.requestPaint();
+    }
+
     function simplify(zoom) {
         // Simplify path for display at zoom level using Douglas-Peucker.
         var tol = Math.pow(2, 18-zoom) / 83250;
-        var x = [];
-        var y = [];
-        for (var i = 0; i < canvas.path.length; i++) {
-            x[i] = canvas.path[i].longitude;
-            y[i] = canvas.path[i].latitude;
-        }
         py.call("poor.polysimp.simplify_qml",
-                [x, y, tol, false, 1000],
+                [canvas.path.x, canvas.path.y, tol, false, 2000],
                 function(path) {
-                    canvas.addSimplePath(path, zoom);
+                    Object.defineProperty(canvas.simplePaths,
+                                          zoom.toString(),
+                                          {value: {"x": path.x, "y": path.y},
+                                           writable: true});
+
+                    canvas.requestPaint();
                 });
 
     }

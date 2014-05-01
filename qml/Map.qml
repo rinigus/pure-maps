@@ -33,22 +33,15 @@ Map {
     property bool autoCenter: false
     property bool changed: true
     property var  gps: PositionSource {}
+    property real heightCoords: 0
     property var  pois: []
     property var  position: map.gps.position
     property var  positionMarker: PositionMarker {}
-    property var  tiles: []
-    property real zoomLevelPrev: 8
-
-    // The following coordinate properties are not actually correct for Y,
-    // since scaleY varies by latitude. These approximations are good enough
-    // for some purposes, but can be fixed if exact ones are needed.
-
-    property real widthCoords: 0
-    property real heightCoords: 0
     property real scaleX: 0
     property real scaleY: 0
-    property real xcoord: center.longitude - widthCoords/2
-    property real ycoord: center.latitude + heightCoords/2
+    property var  tiles: []
+    property real widthCoords: 0
+    property real zoomLevelPrev: 8
 
     AttributionText { id: attribution }
     MapTimer { id: timer }
@@ -117,10 +110,7 @@ Map {
     function addRoute(x, y) {
         // Add a polyline to represent a route.
         route.clear();
-        var path = [];
-        for (var i = 0; i < x.length; i++)
-            path[i] = QtPositioning.coordinate(y[i], x[i]);
-        route.path = path;
+        route.setPath(x, y);
         route.redraw();
     }
 
@@ -167,8 +157,7 @@ Map {
         // Calculate the greatest offset of a single point from the center
         // of the screen and based on that the maximum zoom that will still
         // keep all points visible.
-        var xp = 0, yp = 0;
-        var offset = 0;
+        var xp = 0, yp = 0, offset = 0;
         for (var i = 0; i < coords.length; i++) {
             xp = coords[i].longitude - map.center.longitude;
             yp = coords[i].latitude - map.center.latitude;
@@ -188,7 +177,7 @@ Map {
 
     function fitViewToPois() {
         // Set center and zoom so that all points of interest are visible.
-        coords = []
+        var coords = []
         for (var i = 0; i < map.pois.length; i++)
             coords[i] = map.pois[i].coordinate;
         map.fitViewtoCoordinates(coords);
@@ -198,14 +187,15 @@ Map {
         // Set center and zoom so that the whole route is visible.
         // For simplicity, let's just check the endpoints.
         var coords = [];
-        if (route.path.length > 0) {
-            coords.push(route.path[0]);
-            map.setCenter(route.path[0].longitude,
-                          route.path[0].latitude);
-
+        if (route.path.x.length > 0) {
+            var x = route.path.x[0], y = route.path.y[0];
+            coords.push(QtPositioning.coordinate(y, x));
         }
-        if (route.path.length > 1)
-            coords.push(route.path[route.path.length-1]);
+        var n = route.path.x.length;
+        if (n > 1) {
+            var x = route.path.x[n-1], y = route.path.y[n-1];
+            coords.push(QtPositioning.coordinate(y, x));
+        }
         map.fitViewtoCoordinates(coords);
     }
 

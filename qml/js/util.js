@@ -38,7 +38,7 @@ function xpos2xcoord(x, xmin, xmax, width) {
     return xmin + (x / (width / (xmax - xmin)));
 }
 
-function ycoord2mercator(y) {
+function ycoord2ymercator(y) {
     // Convert Y-coordinate to Mercator projected Y-coordinate.
     // http://en.wikipedia.org/wiki/Mercator_projection
     return Math.log(Math.tan(Math.PI/4 + deg2rad(y)/2));
@@ -47,9 +47,9 @@ function ycoord2mercator(y) {
 function ycoord2ypos(y, ymin, ymax, height) {
     // Convert Y-coordinate to pixel Y-position on screen.
     // http://en.wikipedia.org/wiki/Mercator_projection
-    ymin = ycoord2mercator(ymin);
-    ymax = ycoord2mercator(ymax);
-    return Math.round((ymax - ycoord2mercator(y)) * (height / (ymax - ymin)));
+    ymin = ycoord2ymercator(ymin);
+    ymax = ycoord2ymercator(ymax);
+    return Math.round((ymax - ycoord2ymercator(y)) * (height / (ymax - ymin)));
 }
 
 function ymercator2ycoord(y) {

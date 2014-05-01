@@ -8,6 +8,7 @@ Poor Maps 0.3
  [X] Add 'nmax' argument to geocode functions
 
  FIX:
+ * Disable canvas rendering when no route
  * Profile and fix bottlenecks?
 
 Poor Maps 1.0
