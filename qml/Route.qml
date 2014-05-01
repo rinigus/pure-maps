@@ -50,19 +50,29 @@ Canvas {
         if (canvas.path.x.length == 0) return;
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.floor(map.zoomLevel);
-        var key = zoom.toString();
-        if (!canvas.simplePaths.hasOwnProperty(key)) {
-            if (map.gesture.isPinchActive) return;
-            // Prevent calling simplify multiple times.
-            canvas.simplePaths[key] = {"x": [], "y": []};
-            return canvas.simplify(zoom);
+        if (zoom < 15) {
+            // Use a simplified path to avoid the slowness of
+            // plotting too many polyline segments on screen.
+            var key = zoom.toString();
+            if (!canvas.simplePaths.hasOwnProperty(key)) {
+                if (map.gesture.isPinchActive) return;
+                canvas.simplePaths[key] = {"x": [], "y": []};
+                return canvas.simplify(zoom);
+            }
+            var spath = canvas.simplePaths[key];
+        } else {
+            // Don't try simplification at high zoom levels as
+            // we approach Douglas-Peucker's worst case O(n^2).
+            var spath = canvas.path;
         }
-        var spath = canvas.simplePaths[key];
         canvas.initDone || canvas.initContextProperties();
         canvas.context.beginPath();
         var bbox = map.getBoundingBox();
         // Render also some nodes outside the bbox in order
         // to render segments that cross the bbox edge.
+        // XXX: This mechanism works fine for simplified lines as we set
+        // the maximum length in the simplification call, but raw paths
+        // at higher zoom levels will at times be rendered only partially.
         var xmin = bbox[0] - 1.5 * map.widthCoords;
         var xmax = bbox[1] + 1.5 * map.widthCoords;
         var ymin = bbox[2] - 1.5 * map.heightCoords;
@@ -142,7 +152,7 @@ Canvas {
 
     function simplify(zoom) {
         // Simplify path for display at zoom level using Douglas-Peucker.
-        var tol = Math.pow(2, Math.max(1, 18-zoom)) / 83250;
+        var tol = Math.pow(2, 18-zoom) / 83250;
         var maxLength = Math.min(map.widthCoords, map.heightCoords);
         py.call("poor.polysimp.simplify_qml",
                 [canvas.path.x, canvas.path.y, tol, false, maxLength, 2000],
