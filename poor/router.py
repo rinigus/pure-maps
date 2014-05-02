@@ -24,6 +24,7 @@ import poor
 import re
 import sys
 import time
+import traceback
 
 __all__ = ("Router",)
 
@@ -88,7 +89,8 @@ class Router:
             return self._provider.route(fm, to)
         except Exception as error:
             # XXX: Should we relay an error message to QML?
-            print("Routing failed: {}".format(str(error)), file=sys.stderr)
+            print("Routing failed:", file=sys.stderr)
+            traceback.print_exc()
             return {}
 
     @property

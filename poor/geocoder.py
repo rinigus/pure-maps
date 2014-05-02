@@ -24,6 +24,7 @@ import poor
 import re
 import sys
 import time
+import traceback
 
 __all__ = ("Geocoder",)
 
@@ -70,7 +71,8 @@ class Geocoder:
                 query, xmin, xmax, ymin, ymax, nmax)
         except Exception as error:
             # XXX: Should we relay an error message to QML?
-            print("Geocoding failed: {}".format(str(error)), file=sys.stderr)
+            print("Geocoding failed:", file=sys.stderr)
+            traceback.print_exc()
             return []
         for result in results:
             result["distance"] = self._format_distance(x,
