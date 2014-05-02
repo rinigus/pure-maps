@@ -50,7 +50,7 @@ Canvas {
         if (canvas.path.x.length == 0) return;
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.floor(map.zoomLevel);
-        if (zoom < 15) {
+        if (zoom < 14) {
             // Use a simplified path to avoid the slowness of
             // plotting too many polyline segments on screen.
             var key = zoom.toString();
@@ -72,7 +72,7 @@ Canvas {
         // to render segments that cross the bbox edge.
         // XXX: This mechanism works fine for simplified lines as we set
         // the maximum length in the simplification call, but raw paths
-        // at higher zoom levels will at times be rendered only partially.
+        // at high zoom levels will at times be rendered only partially.
         var xmin = bbox[0] - 1.5 * map.widthCoords;
         var xmax = bbox[1] + 1.5 * map.widthCoords;
         var ymin = bbox[2] - 1.5 * map.heightCoords;
