@@ -1,3 +1,12 @@
+Poor Maps 0.3
+=============
+
+ * Add framework to support pluggable routers
+ * Add MapQuest Open router (car, bicycle, pedestrian)
+ * Add OSRM router (car)
+ * Fix tile display when zooming to view multiple found places
+ * Add 'nmax' argument to geocode functions
+
 Poor Maps 0.2
 =============
 

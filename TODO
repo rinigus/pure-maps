@@ -1,12 +1,3 @@
-Poor Maps 0.3
-=============
-
- [X] Add framework to support pluggable routers
- [X] Add MapQuest Open router (car, bicycle, pedestrian)
- [X] Add OSRM router (car)
- [X] Fix tile display when zooming to view multiple found places
- [X] Add 'nmax' argument to geocode functions
-
 Poor Maps 1.0
 =============
 
@@ -14,11 +5,8 @@ Poor Maps 1.0
  * Keep objects (POIs, routes) across sessions?
  * Add narration of routing manoeuvers
  * Allow tapping on markers
- * Add a better cover?
- * Add about page?
  * Allow landscape for the map page when gestures work right
  * Add auto-rotate on bearing when the Map component supports it
  * Add listing nearby places (restaurants, hotels, etc.)
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations (both qsTr and gettext?)
- * Examine and try to optimize battery use
