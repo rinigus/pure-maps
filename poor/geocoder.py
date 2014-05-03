@@ -69,7 +69,7 @@ class Geocoder:
         try:
             results = self._provider.geocode(
                 query, xmin, xmax, ymin, ymax, nmax)
-        except Exception as error:
+        except Exception:
             # XXX: Should we relay an error message to QML?
             print("Geocoding failed:", file=sys.stderr)
             traceback.print_exc()
