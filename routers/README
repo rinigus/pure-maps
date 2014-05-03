@@ -1,4 +1,35 @@
 Implementing a Router
 =====================
 
-TODO (APIs are still in motion.)
+To implement a router you need to write a JSON metadata file, a Python
+file that implements the 'route' function and one or two QML files.
+The route function should given two points return properties of the
+found route. The from and to points given as arguments can be either
+strings (addresses, landmarks, etc.) or two-element tuples of (x,y)
+coordinates. The return value format is up to you, since you handle that
+in your router-specific QML. However, a dictionary of route properties
+is a good idea, or a list of dictionaries if returning multiple routes.
+
+Of the two QML files, the settings file ('*_settings.qml') is optional;
+it can be used to provide a column of router-specific settings, which
+are shown in Poor's routing page below the endpoint selectors. If using
+settings, you should use a 'CONF_DEFAULTS' attribute to specify default
+values, which are passed to poor.conf and saved across sessions, see
+'mapquest_open' for an example.
+
+The second QML file ('*_results.qml') is mandatory and used to specify a
+result page. The routers shipped with Poor provide a minimal page which
+shows a busy indicator and handles route display and notification if no
+results found. For a minimal router that returns one route, you can copy
+and possibly adapt that. If writing a router that returns several routes
+that the user can choose from and/or allows a closer examination of the
+route properties before showing it on a map, you can use this page to
+display whatever is best suitable given your router and domain. For
+example, a public transportation router could show departure times,
+vehicle icons, platform numbers, etc.
+
+To download data you should always use 'poor.util.request_url' in order
+to use Poor's user-agent and the default timeout from poor.conf. If your
+routing provider cannot handle addresses, but requires coordinates,
+consider geocoding using 'mapquest_nominatim', which is shipped with
+Poor. See 'mapquest_open' and 'osrm' for examples.
