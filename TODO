@@ -1,3 +1,10 @@
+Poor Maps 0.4
+=============
+
+ [/] Add HSL Journey Planner (Helsinki Region Transport public
+     transportation router, see reittiopas.fi)
+ [?] Add **params argument to routing functions
+
 Poor Maps 1.0
 =============
 
@@ -10,3 +17,4 @@ Poor Maps 1.0
  * Add listing nearby places (restaurants, hotels, etc.)
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations (both qsTr and gettext?)
+ * Add option to prevent sleep while navigating (nemo-keepalive?)
