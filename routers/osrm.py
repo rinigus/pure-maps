@@ -36,7 +36,7 @@ checksum = None
 hints = {}
 
 def prepare_endpoint(point):
-    """Return `point` as a string ready to be passed on to OSRM."""
+    """Return `point` as a string ready to be passed on to the router."""
     # OSRM requires coordinates, let's geocode using Nominatim.
     if isinstance(point, str):
         geocoder = poor.Geocoder("mapquest_nominatim")
@@ -46,19 +46,19 @@ def prepare_endpoint(point):
     return (point, ("{}&hint={}".format(point, hints[point])
                     if point in hints else point))
 
-def route(fm, to):
+def route(fm, to, params):
     """Find route and return its properties as a dictionary."""
     global checksum
     fm_real, fm = prepare_endpoint(fm)
     to_real, to = prepare_endpoint(to)
     url = URL.format(**locals())
     if checksum is not None:
-        url = "{}&checksum={}".format(url, checksum)
+        url += "&checksum={}".format(checksum)
     result = json.loads(poor.util.request_url(url, "utf_8"))
     with poor.util.silent(Exception):
         checksum = str(result["hint_data"]["checksum"])
         hints[fm_real] = str(result["hint_data"]["locations"][0])
         hints[to_real] = str(result["hint_data"]["locations"][1])
-    polyline = result["route_geometry"]
-    x, y = poor.util.decode_epl(polyline, precision=6)
+    route = result["route_geometry"]
+    x, y = poor.util.decode_epl(route, precision=6)
     return {"x": x, "y": y}

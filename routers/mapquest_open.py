@@ -43,7 +43,7 @@ URL = ("http://open.mapquestapi.com/directions/v2/route"
 cache = {}
 
 def prepare_endpoint(point):
-    """Return `point` as a string ready to be passed on to MapQuest."""
+    """Return `point` as a string ready to be passed on to the router."""
     # MapQuest Open accepts both addresses and coordinates as endpoints,
     # but it doesn't seem to understand as many addresses as Nominatim.
     # Hence, let's use Nominatim and feed coordinates to MapQuest.
@@ -56,7 +56,7 @@ def prepare_endpoint(point):
         point = "{:.6f},{:.6f}".format(point[1], point[0])
     return urllib.parse.quote_plus(point)
 
-def route(fm, to):
+def route(fm, to, params):
     """Find route and return its properties as a dictionary."""
     fm = prepare_endpoint(fm)
     to = prepare_endpoint(to)
@@ -67,7 +67,7 @@ def route(fm, to):
     result = json.loads(poor.util.request_url(url, "utf_8"))
     polyline = result["route"]["shape"]["shapePoints"]
     x, y = poor.util.decode_epl(polyline)
-    polyline = {"x": x, "y": y}
-    if polyline and x and y:
-        cache[url] = copy.deepcopy(polyline)
-    return polyline
+    route = {"x": x, "y": y}
+    if route and x and y:
+        cache[url] = copy.deepcopy(route)
+    return route
