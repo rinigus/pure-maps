@@ -44,11 +44,11 @@ def geocode(query, xmin, xmax, ymin, ymax, nmax):
     with poor.util.silent(LookupError):
         return copy.deepcopy(cache[url])
     results = json.loads(poor.util.request_url(url, "utf_8"))
-    results = [{"title": parse_title(result),
-                "description": parse_description(result),
-                "x": float(result["coords"].split(",")[0]),
-                "y": float(result["coords"].split(",")[1]),
-               } for result in results]
+    results = [dict(title=parse_title(result),
+                    description=parse_description(result),
+                    x=float(result["coords"].split(",")[0]),
+                    y=float(result["coords"].split(",")[1]),
+                    ) for result in results]
 
     if results:
         cache[url] = copy.deepcopy(results)
