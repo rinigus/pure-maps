@@ -26,6 +26,7 @@ Page {
     canNavigateForward: page.from && page.to
     property var from: null
     property string fromText: "From"
+    property var params: {}
     property var to: null
     property string toText: "To"
     SilicaFlickable {
@@ -86,6 +87,7 @@ Page {
             Component.onCompleted: column.addSetttings();
             function addSetttings() {
                 // Add router-specific settings from router's own QML file.
+                page.params = {};
                 column.settings && column.settings.destroy();
                 var uri = py.evaluate("poor.app.router.settings_qml_uri");
                 if (!uri) return;

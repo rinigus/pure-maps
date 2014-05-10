@@ -21,22 +21,23 @@ import Sailfish.Silica 1.0
 
 Column {
     ComboBox {
-        id: comboBox
+        id: typeComboBox
         label: "Type"
         menu: ContextMenu {
             MenuItem { text: "Car" }
             MenuItem { text: "Bicycle" }
             MenuItem { text: "Pedestrian" }
         }
-        property var pids: ["fastest", "bicycle", "pedestrian"]
+        property var keys: ["fastest", "bicycle", "pedestrian"]
         Component.onCompleted: {
-            var type = py.evaluate("poor.conf.routers.mapquest_open.type");
-            comboBox.currentIndex = comboBox.pids.indexOf(type);
+            var key = py.evaluate("poor.conf.routers.mapquest_open.type");
+            typeComboBox.currentIndex = typeComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
+            var index = typeComboBox.currentIndex;
             py.call_sync("poor.conf.set",
                          ["routers.mapquest_open.type",
-                          comboBox.pids[comboBox.currentIndex]]);
+                          typeComboBox.keys[index]]);
 
         }
     }
