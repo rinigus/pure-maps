@@ -80,6 +80,24 @@ class TestConfigurationStore(poor.test.TestCase):
         poor.conf.set("foo.bar", 1)
         assert poor.conf.foo.bar == 1
 
+    def test_set_add(self):
+        poor.conf.set("items", [1,2,3])
+        assert poor.conf.items == [1,2,3]
+        poor.conf.set_add("items", 4)
+        assert poor.conf.items == [1,2,3,4]
+
+    def test_set_contains(self):
+        poor.conf.set("items", [1,2,3])
+        assert poor.conf.items == [1,2,3]
+        assert poor.conf.set_contains("items", 1)
+        assert not poor.conf.set_contains("items", 4)
+
+    def test_set_remove(self):
+        poor.conf.set("items", [1,2,3])
+        assert poor.conf.items == [1,2,3]
+        poor.conf.set_remove("items", 3)
+        assert poor.conf.items == [1,2]
+
     def test_write(self):
         poor.conf.zoom = 99
         poor.conf.write(self.path)

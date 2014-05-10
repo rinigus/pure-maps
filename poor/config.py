@@ -52,7 +52,12 @@ class AttrDict(dict):
 
 class ConfigurationStore(AttrDict):
 
-    """Attribute dictionary of configuration values."""
+    """
+    Attribute dictionary of configuration values.
+
+    Options to most methods can be given as a dotted string,
+    e.g. 'routers.mycoolrouter.type'.
+    """
 
     def __init__(self):
         """Initialize a :class:`Configuration` instance."""
@@ -82,12 +87,7 @@ class ConfigurationStore(AttrDict):
         return out
 
     def get_default(self, option):
-        """
-        Get the default value of `option`.
-
-        For nested keys, `option` can be a dotted string,
-        e.g. 'routers.mycoolrouter.type'.
-        """
+        """Return the default value of `option`."""
         defaults = DEFAULTS
         for section in option.split(".")[:-1]:
             defaults = defaults[section]
@@ -131,20 +131,37 @@ class ConfigurationStore(AttrDict):
         self._register({"routers": {name: values}})
 
     def set(self, option, value):
-        """
-        Set the value of `option`.
+        """Set the value of `option`."""
+        root, name = self._split_option(option, create=True)
+        root[name] = copy.deepcopy(value)
 
-        For nested keys, `option` can be a dotted string,
-        e.g. 'routers.mycoolrouter.type'.
-        """
+    def set_add(self, option, item):
+        """Add `item` to `option` of type set."""
+        root, name = self._split_option(option)
+        if not item in root[name]:
+            root[name].append(copy.deepcopy(item))
+
+    def set_contains(self, option, item):
+        """Return ``True`` if `option` of type set contains `item`."""
+        root, name = self._split_option(option)
+        return item in root[name]
+
+    def set_remove(self, option, item):
+        """Remove `item` from `option` of type set."""
+        root, name = self._split_option(option)
+        if item in root[name]:
+            root[name].remove(item)
+
+    def _split_option(self, option, create=False):
+        """Split dotted option to dictionary and option name."""
         root = self
         for section in option.split(".")[:-1]:
-            if not section in root:
+            if create and not section in root:
                 # Create missing hierarchies.
                 root[section] = AttrDict()
             root = root[section]
         name = option.split(".")[-1]
-        root[name] = copy.deepcopy(value)
+        return root, name
 
     def _update(self, values, root=None, defaults=None, path=()):
         """Load values of options after validation."""
