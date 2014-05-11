@@ -93,8 +93,8 @@ Column {
         }
     }
     ComboBox {
-        id: strategyComboBox
-        label: "Strategy"
+        id: prefComboBox
+        label: "Preference"
         menu: ContextMenu {
             MenuItem { text: "Default" }
             MenuItem { text: "Fastest" }
@@ -108,18 +108,19 @@ Column {
 
         Component.onCompleted: {
             var key = py.evaluate("poor.conf.routers.hsl.optimize");
-            strategyComboBox.currentIndex = strategyComboBox.keys.indexOf(key);
+            prefComboBox.currentIndex = prefComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
-            var index = strategyComboBox.currentIndex;
+            var index = prefComboBox.currentIndex;
             py.call_sync("poor.conf.set",
                          ["routers.hsl.optimize",
-                          strategyComboBox.keys[index]]);
+                          prefComboBox.keys[index]]);
 
         }
     }
     Row {
-        width: parent.width
+        width: parent.width - Theme.paddingLarge*2
+        x: parent.x + Theme.paddingLarge
         Repeater {
             id: repeater
             model: 4
@@ -135,6 +136,9 @@ Column {
                                                          [repeater.path,
                                                           repeater.keys[index]]);
 
+                    // This looks ugly, but we seem to get too much padding
+                    // between these switches and the above combo box.
+                    vehicleSwitch.height -= Theme.paddingLarge*1.75
                 }
                 onCheckedChanged: {
                     var fun = vehicleSwitch.checked ?
