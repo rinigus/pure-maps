@@ -53,8 +53,8 @@ Dialog {
                 id: gpsItem
                 contentHeight: Theme.itemSizeSmall
                 ListItemLabel {
-                    color: gpsItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
+                    anchors.leftMargin: listView.searchField.textLeftMargin
+                    color: Theme.highlightColor
                     height: Theme.itemSizeSmall
                     text: "Current position"
                 }
