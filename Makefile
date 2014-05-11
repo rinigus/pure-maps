@@ -24,30 +24,39 @@ install:
 	@echo "Installing Python files..."
 	mkdir -p $(datadir)/poor
 	cp poor/*.py $(datadir)/poor
+
 	@echo "Installing QML files..."
-	mkdir -p $(datadir)/qml/icons
-	mkdir -p $(datadir)/qml/js
+	mkdir -p $(datadir)/qml
 	cp qml/poor-maps.qml $(datadir)/qml/$(name).qml
 	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(datadir)/qml
+	mkdir -p $(datadir)/qml/icons
 	cp qml/icons/*.png $(datadir)/qml/icons
+	mkdir -p $(datadir)/qml/js
 	cp qml/js/*.js $(datadir)/qml/js
+
 	@echo "Installing tilesources..."
 	mkdir -p $(datadir)/tilesources
 	cp tilesources/*.json $(datadir)/tilesources
+
 	@echo "Installing geocoders..."
 	mkdir -p $(datadir)/geocoders
 	cp geocoders/*.json $(datadir)/geocoders
 	cp geocoders/*.py $(datadir)/geocoders
 	cp geocoders/README $(datadir)/geocoders
+
 	@echo "Installing routers..."
 	mkdir -p $(datadir)/routers
 	cp routers/*.json $(datadir)/routers
 	cp routers/*.py $(datadir)/routers
 	cp routers/*.qml $(datadir)/routers
 	cp routers/README $(datadir)/routers
+	mkdir -p $(datadir)/routers/hsl
+	cp routers/hsl/*.png $(datadir)/routers/hsl
+
 	@echo "Installing desktop file..."
 	mkdir -p $(desktopdir)
 	cp data/$(name).desktop $(desktopdir)
+
 	@echo "Installing icon..."
 	mkdir -p $(icondir)
 	cp data/poor-maps.png $(icondir)/$(name).png
