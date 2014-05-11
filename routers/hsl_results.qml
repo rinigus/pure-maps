@@ -25,12 +25,15 @@ Page {
     property bool loading: true
     property var results: {}
     property string title: ""
+    // Column widths set as maximums of individual rows.
+    property int timeWidth: 0
+    property int lineWidth: 0
     SilicaListView {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: titleLabel.height + finalLabel.height +
-                Theme.paddingLarge
+            contentHeight: Theme.paddingLarge*2 +
+                titleLabel.height + finalLabel.height
             property var result: page.results[model.alternative-1]
             Label {
                 id: titleLabel
@@ -39,10 +42,10 @@ Page {
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingLarge
                 color: Theme.highlightColor
-                height: Theme.itemSizeSmall
+                font.pixelSize: Theme.fontSizeSmall
+                height: implicitHeight + Theme.paddingMedium
                 text: "Route " + listItem.result.alternative + ". total " +
                     Math.round(listItem.result.duration) + " min"
-                truncationMode: TruncationMode.Fade
                 verticalAlignment: Text.AlignVCenter
             }
             Repeater {
@@ -52,60 +55,79 @@ Page {
                 model: listItem.result.legs.length
                 width: parent.width
                 Item {
-                    id: item
-                    height: legLabel.height
+                    id: row
+                    height: timeLabel.height
                     width: parent.width
                     property var leg: listItem.result.legs[index]
                     Rectangle {
                         id: bar
-                        color: {"bus":   "#007AC9",
-                                "ferry": "#00B9E4",
-                                "metro": "#FF6319",
-                                "train": "#2DBE2C",
-                                "tram":  "#00985f",
-                                "walk":  "#888888"}[leg.mode]
-
-                        height: item.height
-                        opacity: 0.7
+                        color: leg.color
+                        height: row.height
+                        opacity: 0.6
                         width: (leg.duration/listItem.result.duration) * parent.width
-                        x: (leg.dep_unix - listItem.result.legs[0].dep_unix) /
-                            listItem.result.duration * parent.width
-                        y: repeater.y + index * item.height
+                        x: ((leg.dep_unix - listItem.result.legs[0].dep_unix) /
+                            listItem.result.duration) * parent.width
+                        y: repeater.y + index * row.height
                     }
                     Label {
-                        id: legLabel
-                        anchors.left: parent.left
-                        anchors.leftMargin: Theme.paddingLarge
-                        anchors.right: parent.right
-                        anchors.rightMargin: Theme.paddingLarge
+                        id: timeLabel
                         anchors.top: bar.top
-                        color: leg.mode == "walk" ?
-                            Theme.secondaryColor : Theme.primaryColor
                         height: implicitHeight + Theme.paddingSmall
-                        text: leg.dep_time + "   " +
-                            (leg.mode == "walk" ? "Walk" : leg.line) +
-                            " from " + leg.dep_name
+                        horizontalAlignment: Text.AlignRight
+                        text: leg.dep_time
+                        verticalAlignment: Text.AlignVCenter
+                        width: page.timeWidth
+                        x: parent.x + Theme.paddingLarge
+                        Component.onCompleted: {
+                            if (timeLabel.implicitWidth > page.timeWidth)
+                                page.timeWidth = timeLabel.implicitWidth;
+                        }
+                    }
+                    Label {
+                        id: lineLabel
+                        anchors.top: bar.top
+                        height: implicitHeight + Theme.paddingSmall
+                        horizontalAlignment: Text.AlignRight
+                        text: leg.line
+                        verticalAlignment: Text.AlignVCenter
+                        width: page.lineWidth
+                        x: parent.x + Theme.paddingLarge +
+                            page.timeWidth + Theme.paddingMedium
+                        Component.onCompleted: {
+                            if (lineLabel.implicitWidth > page.lineWidth)
+                                page.lineWidth = lineLabel.implicitWidth;
+                        }
+                    }
+                    Label {
+                        id: nameLabel
+                        anchors.top: bar.top
+                        height: implicitHeight + Theme.paddingSmall
+                        text: leg.dep_name + " → " + leg.arr_name
                         truncationMode: TruncationMode.Fade
                         verticalAlignment: Text.AlignVCenter
+                        x: parent.x + Theme.paddingLarge +
+                            page.timeWidth + Theme.paddingMedium +
+                            page.lineWidth + Theme.paddingMedium
                     }
                     Component.onCompleted: {
-                        repeater.height += item.height;
-                        listItem.contentHeight += item.height;
+                        repeater.height += row.height;
+                        listItem.contentHeight += row.height;
                     }
                 }
             }
             Label {
                 id: finalLabel
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
                 anchors.top: repeater.bottom
-                color: Theme.secondaryColor
-                height: implicitHeight
+                height: implicitHeight + Theme.paddingSmall
+                horizontalAlignment: Text.AlignRight
                 text: listItem.result.legs[listItem.result.legs.length-1].arr_time
-                truncationMode: TruncationMode.Fade
                 verticalAlignment: Text.AlignVCenter
+                width: page.timeWidth
+                x: parent.x + Theme.paddingLarge
+                Component.onCompleted: {
+                    if (finalLabel.implicitWidth > page.timeWidth)
+                        page.timeWidth = finalLabel.implicitWidth;
+                }
             }
             onClicked: {
                 map.addRoute(listItem.result.x, listItem.result.y);
@@ -141,14 +163,15 @@ Page {
             page.loading = true;
             busyLabel.text = "Searching"
         } else if (page.status == PageStatus.Active) {
-            page.populate(app.pageStack.previousPage());
+            page.populate();
         } else if (page.status == PageStatus.Inactive) {
             listModel.clear();
             page.title = ""
         }
     }
-    function populate(routePage) {
+    function populate() {
         // Load routing results from the Python backend.
+        var routePage = app.pageStack.previousPage();
         py.call("poor.app.router.route",
                 [routePage.from, routePage.to, routePage.params],
                 function(results) {

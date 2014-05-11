@@ -24,6 +24,13 @@ http://developer.reittiopas.fi/pages/en/home.php
 import json
 import poor
 
+COLORS = {  "bus": "#007AC9",
+          "ferry": "#00B9E4",
+          "metro": "#FF6319",
+          "train": "#2DBE2C",
+           "tram": "#00985F",
+           "walk": "#777777"}
+
 CONF_DEFAULTS = {"transport_types": [
     "bus", "train", "metro", "tram", "service", "uline", "ferry"],
                  "optimize": "default"}
@@ -75,6 +82,7 @@ def parse_legs(result):
                     dep_name="",
                     arr_name="")
 
+        item["color"] = COLORS[item["mode"]]
         names = [loc["name"] for loc in leg["locs"]]
         names = list(filter(None, names))
         if names:
