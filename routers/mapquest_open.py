@@ -65,9 +65,8 @@ def route(fm, to, params):
     with poor.util.silent(LookupError):
         return copy.deepcopy(cache[url])
     result = json.loads(poor.util.request_url(url, "utf_8"))
-    polyline = result["route"]["shape"]["shapePoints"]
-    x, y = poor.util.decode_epl(polyline)
+    route = result["route"]["shape"]["shapePoints"]
+    x, y = poor.util.decode_epl(route)
     route = {"x": x, "y": y}
-    if route and x and y:
-        cache[url] = copy.deepcopy(route)
+    cache[url] = copy.deepcopy(route)
     return route
