@@ -1,12 +1,13 @@
 Poor Maps 0.4
 =============
 
- [/] Add HSL Journey Planner (Helsinki Region Transport public
+ [X] Add HSL Journey Planner (Helsinki Region Transport public
      transportation router, reittiopas.fi)
  [X] Add 'params' argument to routing functions
 
+ [ ] Fix train and metro line number parsing
  [ ] Update routers/TODO
- [?] Set "Current position" label left margin
+ [ ] Check XXX:
 
 Poor Maps 1.0
 =============
