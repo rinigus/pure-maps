@@ -6,11 +6,11 @@ file and a Python file that implements a 'geocode' function.
 The 'geocode' function should given a string query and bounding box
 coordinates return a list of dictionaries of geocoding results, with
 each dictionary having keys "title", "description", "x" and "y".
-The bounding box coordinates can be used to prioritise results found in
-the current view.
+The bounding box coordinates can optionally be used to prioritise
+results found in the current view.
 
 To download data you should always use 'poor.util.request_url' in order
-to use Poor's user-agent and the default timeout from poor.conf.
-See 'mapquest_nominatim' for an example, but note that you should be
+to use Poor's user-agent and the default timeout from poor.conf. See the
+geocoders shipped with Poor for examples, but note that you should be
 able to get by with a lot less code if your geocoding service returns
-less verbose results than Nominatim.
+concise, human-readable results.
