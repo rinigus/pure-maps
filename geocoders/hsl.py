@@ -50,8 +50,7 @@ def geocode(query, xmin, xmax, ymin, ymax, nmax):
                     y=float(result["coords"].split(",")[1]),
                     ) for result in results]
 
-    if results:
-        cache[url] = copy.deepcopy(results)
+    cache[url] = copy.deepcopy(results)
     return results[:nmax]
 
 def parse_description(result):
