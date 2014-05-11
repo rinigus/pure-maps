@@ -43,7 +43,7 @@ Page {
                 anchors.rightMargin: Theme.paddingLarge
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingMedium
+                height: implicitHeight + Theme.paddingLarge
                 text: "Route " + listItem.result.alternative + ". total " +
                     Math.round(listItem.result.duration) + " min"
                 verticalAlignment: Text.AlignVCenter

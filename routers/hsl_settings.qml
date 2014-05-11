@@ -119,8 +119,8 @@ Column {
         }
     }
     Row {
-        width: parent.width - Theme.paddingLarge*2
-        x: parent.x + Theme.paddingLarge
+        width: parent.width - Theme.paddingMedium*2
+        x: parent.x + Theme.paddingMedium
         Repeater {
             id: repeater
             model: 4
