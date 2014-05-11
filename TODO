@@ -5,7 +5,6 @@ Poor Maps 0.4
      transportation router, reittiopas.fi)
  [X] Add 'params' argument to routing functions
 
- [ ] Fix train and metro line number parsing
  [ ] Update routers/TODO
  [ ] Check XXX:
 
