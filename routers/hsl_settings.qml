@@ -94,7 +94,7 @@ Column {
     }
     ComboBox {
         id: prefComboBox
-        label: "Preference"
+        label: "Criterion"
         menu: ContextMenu {
             MenuItem { text: "Default" }
             MenuItem { text: "Fastest" }
