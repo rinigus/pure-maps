@@ -25,7 +25,7 @@ Page {
     property bool loading: true
     property var results: {}
     property string title: ""
-    // Column widths set as maximums of individual rows.
+    // Column widths to be set based on data.
     property int timeWidth: 0
     property int lineWidth: 0
     SilicaListView {
@@ -102,7 +102,9 @@ Page {
                         id: nameLabel
                         anchors.top: bar.top
                         height: implicitHeight + Theme.paddingSmall
-                        text: leg.dep_name + " → " + leg.arr_name
+                        text: leg.mode == "walk" ?
+                            "Walk " + page.formatLength(leg.length) :
+                            leg.dep_name + " → " + leg.arr_name
                         truncationMode: TruncationMode.Fade
                         verticalAlignment: Text.AlignVCenter
                         x: parent.x + Theme.paddingLarge +
@@ -168,6 +170,10 @@ Page {
             listModel.clear();
             page.title = ""
         }
+    }
+    function formatLength(length) {
+        // Format length in meters to human-readable format.
+        return py.call_sync("poor.util.format_distance", [length, 2, "m"]);
     }
     function populate() {
         // Load routing results from the Python backend.

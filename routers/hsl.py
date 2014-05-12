@@ -75,6 +75,7 @@ def parse_legs(result):
         item = dict(mode=MODES.get(leg["type"]),
                     line=parse_line(leg.get("code", "")),
                     duration=float(leg["duration"])/60,
+                    length=float(leg["length"]),
                     dep_time=parse_time(leg["locs"][0]["depTime"]),
                     dep_unix=parse_unix_time(leg["locs"][0]["depTime"]),
                     arr_time=parse_time(leg["locs"][-1]["arrTime"]),
@@ -89,6 +90,10 @@ def parse_legs(result):
             item["dep_name"] = names[0]
             item["arr_name"] = names[-1]
         items.append(item)
+    if len(items) > 1:
+        # Remove short walking legs, which usually occur
+        # when a geocoded endpoint matches a stop.
+        items = [x for x in items if x["length"] >= 10]
     return items
 
 def parse_line(code):
@@ -153,9 +158,15 @@ def route(fm, to, params):
         if name in params:
             url += "&{}={}".format(name, params[name])
     results = json.loads(poor.util.request_url(url, "utf_8"))
-    return [dict(alternative=i+1,
-                 duration=float(result[0]["duration"])/60,
-                 legs=parse_legs(result[0]),
-                 x=parse_x(result[0]),
-                 y=parse_y(result[0]),
-                 ) for i, result in enumerate(results)]
+    routes = [dict(alternative=i+1,
+                   legs=parse_legs(result[0]),
+                   x=parse_x(result[0]),
+                   y=parse_y(result[0]),
+                   ) for i, result in enumerate(results)]
+
+    for route in routes:
+        # It seems that at times Journey Planner cannot count.
+        # We need these to match leg totals to get graphics right.
+        route["duration"] = sum(leg["duration"] for leg in route["legs"])
+        route["length"] = sum(leg["length"] for leg in route["legs"])
+    return routes

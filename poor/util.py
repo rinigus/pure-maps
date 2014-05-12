@@ -135,6 +135,8 @@ def format_distance(distance, n, units="km"):
     # XXX: We might need to support for non-SI units here.
     if units == "km" and distance < 1:
         return format_distance(distance*1000, n, units="m")
+    if units == "m" and distance > 1000:
+        return format_distance(distance/1000, n, units="km")
     ndigits = n - math.ceil(math.log10(abs(distance)))
     if units == "m":
         ndigits = min(0, ndigits)
