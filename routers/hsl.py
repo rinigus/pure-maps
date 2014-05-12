@@ -29,7 +29,7 @@ COLORS = {  "bus": "#007AC9",
           "metro": "#FF6319",
           "train": "#2DBE2C",
            "tram": "#00985F",
-           "walk": "#777777"}
+           "walk": "#888888"}
 
 CONF_DEFAULTS = {"transport_types": [
     "bus", "train", "metro", "tram", "service", "uline", "ferry"],
