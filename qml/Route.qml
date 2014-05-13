@@ -70,6 +70,7 @@ Canvas {
         var bbox = map.getBoundingBox();
         // Render also some nodes outside the bbox in order
         // to render segments that cross the bbox edge.
+
         // XXX: This mechanism works fine for simplified lines as we set
         // the maximum length in the simplification call, but raw paths
         // at high zoom levels will at times be rendered only partially.
