@@ -159,6 +159,7 @@ def route(fm, to, params):
             url += "&{}={}".format(name, params[name])
     results = json.loads(poor.util.request_url(url, "utf_8"))
     routes = [dict(alternative=i+1,
+                   length=float(result[0]["length"]),
                    legs=parse_legs(result[0]),
                    x=parse_x(result[0]),
                    y=parse_y(result[0]),
@@ -166,7 +167,8 @@ def route(fm, to, params):
 
     for route in routes:
         # It seems that at times Journey Planner cannot count.
-        # We need these to match leg totals to get graphics right.
-        route["duration"] = sum(leg["duration"] for leg in route["legs"])
-        route["length"] = sum(leg["length"] for leg in route["legs"])
+        # We need the duration to match legs to get graphics right.
+        dep = route["legs"][0]["dep_unix"]
+        arr = route["legs"][len(route["legs"])-1]["arr_unix"]
+        route["duration"] = arr - dep
     return routes
