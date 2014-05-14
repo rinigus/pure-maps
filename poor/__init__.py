@@ -17,7 +17,7 @@
 
 """An application to display maps and stuff."""
 
-__version__ = "0.3"
+__version__ = "0.4"
 
 try:
     import pyotherside

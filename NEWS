@@ -1,3 +1,10 @@
+Poor Maps 0.4
+=============
+
+ * Add HSL Journey Planner (Helsinki Region Transport public
+   transportation router, reittiopas.fi)
+ * Add 'params' argument to routing functions
+
 Poor Maps 0.3
 =============
 
