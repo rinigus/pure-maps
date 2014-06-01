@@ -1,13 +1,21 @@
+Poor Maps 0.5
+=============
+
+ [?] Save pagestack to allow returning to geocoding or routing results
+ [ ] Allow removing places from history (long tap, context menu)
+ [ ] Don't auto-center when panning or pinching
+ [ ] Fix partial tile loading after changing tile source
+ [ ] Add about page
+
 Poor Maps 1.0
 =============
 
- * Allow removing places from history (long tap, context menu)
  * Keep objects (POIs, routes) across sessions?
- * Add narration of routing manoeuvers
+ * Add narration of routing maneuvers
  * Allow tapping on markers
  * Allow landscape for the map page when gestures work right
  * Add auto-rotate on bearing when the Map component supports it
  * Add listing nearby places (restaurants, hotels, etc.)
  * Allow layered tilesources (traffic, hillshade, etc.)
- * Add user interface translations (both qsTr and gettext?)
+ * Add user interface translations (strings in QML, Python, JSON!)
  * Add option to prevent sleep while navigating (nemo-keepalive?)
