@@ -22,7 +22,7 @@ import QtPositioning 5.0
 PositionSource {
     id: gps
     active: false
-    updateInterval: 3000
+    updateInterval: 1000
     Component.onCompleted: {
         py.onReadyChanged.connect(function() {
             gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");

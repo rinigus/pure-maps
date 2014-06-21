@@ -6,7 +6,7 @@ Poor Maps 0.5
  [X] Don't auto-center when panning or pinching
  [X] Fix partial tile loading after changing tile source
  [X] Add about page
- [ ] Change default GPS polling to one second
+ [X] Change default GPS polling to one second
 
 Poor Maps 1.0
 =============

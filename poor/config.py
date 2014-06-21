@@ -30,7 +30,7 @@ DEFAULTS = {
     "center": [24.941, 60.169],
     "download_timeout": 10,
     "geocoder": "mapquest_nominatim",
-    "gps_update_interval": 3,
+    "gps_update_interval": 1,
     "route_alpha": 0.5,
     "route_color": "#0540FF",
     "route_width": 10,
