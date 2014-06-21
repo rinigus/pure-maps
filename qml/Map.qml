@@ -232,7 +232,8 @@ Map {
     function resetTiles() {
         // Hide all map tiles from view.
         for (var i = 0; i < map.tiles.length; i++)
-            map.tiles[i].z = -1
+            map.removeMapItem(map.tiles[i]);
+        map.tiles = [];
     }
 
     function setAttribution(text) {

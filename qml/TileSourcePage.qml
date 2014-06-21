@@ -45,8 +45,8 @@ Page {
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
-                py.call_sync("poor.app.set_tilesource", [model.pid]);
                 map.resetTiles();
+                py.call_sync("poor.app.set_tilesource", [model.pid]);
                 map.setAttribution(attribution);
                 map.changed = true;
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
