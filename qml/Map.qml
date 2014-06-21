@@ -91,6 +91,8 @@ Map {
         // Conditionally center map on position if outside center of screen.
         // map.toScreenPosition returns NaN when outside screen.
         if (!map.autoCenter) return;
+        if (map.gesture.isPanActive) return;
+        if (map.gesture.isPinchActive) return;
         var pos = map.toScreenPosition(map.position.coordinate);
         if (!pos.x || pos.x < 0.333 * map.width  || pos.x > 0.667 * map.width ||
             !pos.y || pos.y < 0.333 * map.height || pos.y > 0.667 * map.height)
