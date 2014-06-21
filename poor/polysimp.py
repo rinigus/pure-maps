@@ -54,7 +54,7 @@ def simplify(x, y, tol, hq=False, max_length=None, nmax=None):
     xin = x
     yin = y
     if len(x) < 2:
-        return (x, y)
+        return x, y
     if not hq:
         x, y = simplify_radial_dist(x, y, tol)
     x, y = simplify_douglas_peucker(x, y, tol)
@@ -72,7 +72,7 @@ def simplify(x, y, tol, hq=False, max_length=None, nmax=None):
                 i += 1
     if nmax is not None and len(x) > nmax:
         return simplify(xin, yin, tol*2, hq, max_length, nmax)
-    return (x, y)
+    return x, y
 
 def simplify_douglas_peucker(x, y, tol):
     """Simplify polyline using Douglas-Peucker."""
@@ -94,7 +94,7 @@ def simplify_douglas_peucker(x, y, tol):
             stack.extend((a, max_i, max_i, z))
     xout = [x[i] for i in range(len(x)) if keep[i]]
     yout = [y[i] for i in range(len(y)) if keep[i]]
-    return (xout, yout)
+    return xout, yout
 
 def simplify_qml(x, y, tol, hq=False, max_length=None, nmax=None):
     """Simplify polyline using Douglas-Peucker and radial distance."""
@@ -115,4 +115,4 @@ def simplify_radial_dist(x, y, tol):
             prev = i
     xout.append(x[len(x)-1])
     yout.append(y[len(y)-1])
-    return (xout, yout)
+    return xout, yout

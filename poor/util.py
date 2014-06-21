@@ -39,7 +39,7 @@ def bbox_deg2num(xmin, xmax, ymin, ymax, zoom):
     ymax = min(  85.051099, ymax)
     xtilemin, ytilemax = deg2num(xmin, ymin, zoom)
     xtilemax, ytilemin = deg2num(xmax, ymax, zoom)
-    return (xtilemin, xtilemax, ytilemin, ytilemax)
+    return xtilemin, xtilemax, ytilemin, ytilemax
 
 def calculate_distance(x1, y1, x2, y2):
     """Calculate distance in kilometers from point 1 to point 2."""
@@ -101,7 +101,7 @@ def decode_epl(string, precision=5):
         x += dx
         xout.append(x / 10**precision)
         yout.append(y / 10**precision)
-    return (xout, yout)
+    return xout, yout
 
 def deg2num(x, y, zoom):
     """Convert longitude, latitude to tile numbers."""
@@ -112,7 +112,7 @@ def deg2num(x, y, zoom):
     ytile = int((1 - (math.log(math.tan(yrad) + (1 / math.cos(yrad)))
                       / math.pi)) / 2 * n)
 
-    return (xtile, ytile)
+    return xtile, ytile
 
 def format_bearing(bearing):
     """Format `bearing` to a human readable string."""
@@ -165,7 +165,7 @@ def get_geocoders():
                       file=sys.stderr)
 
     geocoders.sort(key=lambda x: x["name"])
-    return(geocoders)
+    return geocoders
 
 def get_routers():
     """Return a list of dictionaries of router attributes."""
@@ -188,7 +188,7 @@ def get_routers():
                       file=sys.stderr)
 
     routers.sort(key=lambda x: x["name"])
-    return(routers)
+    return routers
 
 def get_tilesources():
     """Return a list of dictionaries of tilesource attributes."""
@@ -249,7 +249,7 @@ def num2deg(xtile, ytile, zoom):
     x = xtile / n * 360 - 180
     yrad = math.atan(math.sinh(math.pi * (1 - 2 * ytile / n)))
     y = math.degrees(yrad)
-    return (x, y)
+    return x, y
 
 def path2uri(path):
     """Convert local filepath to URI."""
