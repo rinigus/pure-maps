@@ -107,6 +107,17 @@ Page {
                     map.autoCenter && map.centerOnPosition();
                 }
             }
+            ListItem {
+                id: aboutItem
+                contentHeight: Theme.itemSizeSmall
+                ListItemLabel {
+                    color: aboutItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "About Poor Maps"
+                }
+                onClicked: app.pageStack.push("AboutPage.qml");
+            }
         }
         VerticalScrollDecorator {}
     }
