@@ -41,8 +41,8 @@ def geocode(query, xmin, xmax, ymin, ymax, nmax):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())
-    with poor.util.silent(LookupError):
-        return copy.deepcopy(cache[url])
+    with poor.util.silent(Exception):
+        return copy.deepcopy(cache[url][:nmax])
     results = json.loads(poor.util.request_url(url, "utf_8"))
     results = [dict(title=parse_title(result),
                     description=parse_description(result),
