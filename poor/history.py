@@ -37,9 +37,8 @@ class HistoryManager:
 
     def add_place(self, place):
         """Add `place` to the list of places."""
-        place = place.strip()
         self.remove_place(place)
-        self._places.insert(0, place)
+        self._places.insert(0, place.strip())
 
     @property
     def places(self):
@@ -61,7 +60,7 @@ class HistoryManager:
     def remove_place(self, place):
         """Remove `place` from the list of places."""
         with poor.util.silent(ValueError):
-            self._places.remove(place)
+            self._places.remove(place.strip())
 
     def write(self):
         """Write list of places to file."""
