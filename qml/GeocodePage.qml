@@ -34,6 +34,8 @@ Page {
         delegate: ListItem {
             id: listItem
             contentHeight: Theme.itemSizeSmall
+            menu: contextMenu
+            ListView.onRemove: animateRemoval(listItem)
             ListItemLabel {
                 anchors.leftMargin: listView.searchField.textLeftMargin
                 color: listItem.highlighted ?
@@ -41,9 +43,26 @@ Page {
                 height: Theme.itemSizeSmall
                 text: model.place
             }
+            Component {
+                id: contextMenu
+                ContextMenu {
+                    MenuItem {
+                        text: "Remove"
+                        onClicked: listItem.remove()
+                    }
+                }
+            }
             onClicked: {
                 page.query = model.place;
                 app.pageStack.navigateForward();
+            }
+            function remove() {
+                remorseAction("Removing", function() {
+                    py.call_sync("poor.app.history.remove_place",
+                                 [model.place]);
+
+                    listView.model.remove(index);
+                })
             }
         }
         header: Column {

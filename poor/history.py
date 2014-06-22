@@ -38,8 +38,7 @@ class HistoryManager:
     def add_place(self, place):
         """Add `place` to the list of places."""
         place = place.strip()
-        with poor.util.silent(ValueError):
-            self._places.remove(place)
+        self.remove_place(place)
         self._places.insert(0, place)
 
     @property
@@ -58,6 +57,11 @@ class HistoryManager:
             print("Failed to read file '{}': {}"
                   .format(self._path, str(error)),
                   file=sys.stderr)
+
+    def remove_place(self, place):
+        """Remove `place` from the list of places."""
+        with poor.util.silent(ValueError):
+            self._places.remove(place)
 
     def write(self):
         """Write list of places to file."""
