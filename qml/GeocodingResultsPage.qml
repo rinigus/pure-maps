@@ -39,7 +39,7 @@ Page {
                 text: model.title
                 verticalAlignment: Text.AlignBottom
             }
-            ListItemText {
+            ListItemLabel {
                 id: descriptionLabel
                 anchors.top: titleLabel.bottom
                 color: Theme.secondaryColor
@@ -47,6 +47,7 @@ Page {
                 height: implicitHeight
                 text: model.description
                 verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WordWrap
             }
             ListItemLabel {
                 id: distanceLabel
