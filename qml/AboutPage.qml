@@ -79,5 +79,6 @@ Page {
                 wrapMode: Text.WordWrap
             }
         }
+        VerticalScrollDecorator {}
     }
 }
