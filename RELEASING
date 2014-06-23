@@ -2,7 +2,7 @@ Releasing a New Version
 =======================
 
  * Do final quality checks
-   $ pyflakes3 poor
+   $ pyflakes3 geocoders poor routers
    $ py.test-3 poor
  * Bump version numbers
    - poor/__init__.py

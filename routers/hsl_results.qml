@@ -134,6 +134,8 @@ Page {
             onClicked: {
                 map.addRoute(listItem.result.x, listItem.result.y);
                 map.fitViewToRoute();
+                for (var i = 0; i < listItem.result.maneuvers.length; i++)
+                    map.addManeuver(listItem.result.maneuvers[i]);
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }
         }

@@ -34,6 +34,7 @@ Map {
     property bool changed: true
     property var  gps: PositionSource {}
     property real heightCoords: 0
+    property var  maneuvers: []
     property var  pois: []
     property var  position: map.gps.position
     property var  positionMarker: PositionMarker {}
@@ -83,7 +84,6 @@ Map {
     onCenterChanged: {
         // Ensure that tiles are updated after panning.
         // This gets fired ridiculously often, so keep simple.
-        // gesture.onPanFinished would be better, but seems unreliable.
         map.changed = true;
     }
 
@@ -99,6 +99,15 @@ Map {
             map.centerOnPosition();
     }
 
+    function addManeuver(props) {
+        // Add new maneuver marker to map.
+        var component = Qt.createComponent("Maneuver.qml");
+        var maneuver = component.createObject(map);
+        maneuver.coordinate = QtPositioning.coordinate(props.y, props.x);
+        map.maneuvers.push(maneuver);
+        map.addMapItem(maneuver);
+    }
+
     function addPoi(x, y) {
         // Add new point of interest marker to map.
         var component = Qt.createComponent("PoiMarker.qml");
@@ -110,6 +119,9 @@ Map {
 
     function addRoute(x, y) {
         // Add a polyline to represent a route.
+        for (var i = 0; i < map.maneuvers.length; i++)
+            map.removeMapItem(map.maneuvers[i]);
+        map.maneuvers = [];
         route.clear();
         route.setPath(x, y);
         route.redraw();
@@ -140,6 +152,9 @@ Map {
         for (var i = 0; i < map.pois.length; i++)
             map.removeMapItem(map.pois[i]);
         map.pois = [];
+        for (var i = 0; i < map.maneuvers.length; i++)
+            map.removeMapItem(map.maneuvers[i]);
+        map.maneuvers = [];
         route.clear();
     }
 

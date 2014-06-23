@@ -6,7 +6,7 @@ Version: 0.4
 Release: 1
 Summary: An application to display maps and stuff
 License: GPLv3+
-URL: https://github.com/otsaloma/poor-maps
+URL: http://github.com/otsaloma/poor-maps
 Source: %{name}-%{version}.tar.xz
 BuildArch: noarch
 BuildRequires: make

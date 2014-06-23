@@ -1,17 +1,18 @@
 Poor Maps 0.5
 =============
 
- [?] Save pagestack to allow returning to geocoding or routing results
+ [X] Show maneuver points along the route polyline
+ [ ] Keep POIs and routes across sessions
+ [ ] Save pagestack to allow returning to geocoding or routing results
  [X] Allow removing places from history (long tap, context menu)
  [X] Don't auto-center when panning or pinching
  [X] Fix partial tile loading after changing tile source
- [X] Add about page
  [X] Change default GPS polling to one second
+ [X] Add an about page
 
 Poor Maps 1.0
 =============
 
- * Keep objects (POIs, routes) across sessions?
  * Add narration of routing maneuvers
  * Allow tapping on markers
  * Allow landscape for the map page when gestures work right

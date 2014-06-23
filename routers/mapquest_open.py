@@ -67,6 +67,13 @@ def route(fm, to, params):
     result = json.loads(poor.util.request_url(url, "utf_8"))
     route = result["route"]["shape"]["shapePoints"]
     x, y = poor.util.decode_epl(route)
-    route = {"x": x, "y": y}
+    maneuvers = []
+    for leg in result["route"]["legs"]:
+        maneuvers.extend(leg["maneuvers"])
+    maneuvers = [dict(x=float(maneuver["startPoint"]["lng"]),
+                      y=float(maneuver["startPoint"]["lat"]),
+                      ) for maneuver in maneuvers]
+
+    route = {"x": x, "y": y, "maneuvers": maneuvers}
     cache[url] = copy.deepcopy(route)
     return route

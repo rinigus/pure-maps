@@ -59,6 +59,8 @@ Page {
                         route.x.length > 0) {
                         map.addRoute(route.x, route.y);
                         map.fitViewToRoute();
+                        for (var i = 0; i < route.maneuvers.length; i++)
+                            map.addManeuver(route.maneuvers[i]);
                         app.pageStack.pop(mapPage, PageStackAction.Immediate);
                         page.loading = false;
                     } else {

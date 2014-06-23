@@ -29,7 +29,7 @@ URL = ("http://router.project-osrm.org/viaroute"
        "?loc={fm}"
        "&loc={to}"
        "&output=json"
-       "&instructions=false"
+       "&instructions=true"
        "&alt=false")
 
 checksum = None
@@ -61,4 +61,8 @@ def route(fm, to, params):
         hints[to_real] = str(result["hint_data"]["locations"][1])
     route = result["route_geometry"]
     x, y = poor.util.decode_epl(route, precision=6)
-    return {"x": x, "y": y}
+    maneuvers = [dict(x=x[int(maneuver[3])],
+                      y=y[int(maneuver[3])],
+                      ) for maneuver in result["route_instructions"]]
+
+    return {"x": x, "y": y, "maneuvers": maneuvers}

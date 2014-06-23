@@ -52,7 +52,7 @@ class TileCollection:
         # Iterate from the right, append found tile to the right.
         for i in reversed(range(len(self._tiles))):
             tile = self._tiles[i]
-            if (tile.zoom == zoom and tile.x == x and tile.y == y):
+            if tile.zoom == zoom and tile.x == x and tile.y == y:
                 del self._tiles[i]
                 self._tiles.append(tile)
                 return tile

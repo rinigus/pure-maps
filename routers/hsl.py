@@ -111,6 +111,16 @@ def parse_line(code):
         line = line[1:]
     return line
 
+def parse_maneuvers(result):
+    """Parse a list of maneuvers from routing result."""
+    maneuvers = []
+    for leg in result["legs"]:
+        with poor.util.silent(Exception):
+            x = float(leg["locs"][0]["coord"]["x"])
+            y = float(leg["locs"][0]["coord"]["y"])
+            maneuvers.append(dict(x=x, y=y))
+    return maneuvers
+
 def parse_time(code):
     """Parse human readable time string from time code."""
     # Journey Planner returns YYYYMMDDHHMM.
@@ -164,6 +174,7 @@ def route(fm, to, params):
                    legs=parse_legs(result[0]),
                    x=parse_x(result[0]),
                    y=parse_y(result[0]),
+                   maneuvers=parse_maneuvers(result[0]),
                    ) for i, result in enumerate(results)]
 
     for route in routes:
