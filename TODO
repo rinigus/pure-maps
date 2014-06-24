@@ -2,8 +2,7 @@ Poor Maps 0.5
 =============
 
  [X] Show maneuver points along the route polyline
- [ ] Keep POIs and routes across sessions
- [ ] Save pagestack to allow returning to geocoding or routing results
+ [X] Keep POIs and routes across sessions
  [X] Allow removing places from history (long tap, context menu)
  [X] Don't auto-center when panning or pinching
  [X] Fix partial tile loading after changing tile source
@@ -14,6 +13,7 @@ Poor Maps 1.0
 =============
 
  * Add narration of routing maneuvers
+ * Save pagestack to allow returning to geocoding or routing results
  * Allow tapping on markers
  * Allow landscape for the map page when gestures work right
  * Add auto-rotate on bearing when the Map component supports it

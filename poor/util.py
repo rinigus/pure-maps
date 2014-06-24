@@ -153,17 +153,11 @@ def get_geocoders():
             # Local definitions override global ones.
             if pid in (x["pid"] for x in geocoders): continue
             active = (pid == poor.conf.geocoder)
-            try:
-                with open(path, "r", encoding="utf_8") as f:
-                    geocoder = json.load(f)
+            with silent(Exception):
+                geocoder = read_json(path)
                 geocoder["pid"] = pid
                 geocoder["active"] = active
                 geocoders.append(geocoder)
-            except Exception as error:
-                print("Failed to read geocoder definition file '{}': {}"
-                      .format(path, str(error)),
-                      file=sys.stderr)
-
     geocoders.sort(key=lambda x: x["name"])
     return geocoders
 
@@ -176,17 +170,11 @@ def get_routers():
             # Local definitions override global ones.
             if pid in (x["pid"] for x in routers): continue
             active = (pid == poor.conf.router)
-            try:
-                with open(path, "r", encoding="utf_8") as f:
-                    router = json.load(f)
+            with silent(Exception):
+                router = read_json(path)
                 router["pid"] = pid
                 router["active"] = active
                 routers.append(router)
-            except Exception as error:
-                print("Failed to read router definition file '{}': {}"
-                      .format(path, str(error)),
-                      file=sys.stderr)
-
     routers.sort(key=lambda x: x["name"])
     return routers
 
@@ -199,17 +187,11 @@ def get_tilesources():
             # Local definitions override global ones.
             if pid in (x["pid"] for x in tilesources): continue
             active = (pid == poor.conf.tilesource)
-            try:
-                with open(path, "r", encoding="utf_8") as f:
-                    tilesource = json.load(f)
+            with silent(Exception):
+                tilesource = read_json(path)
                 tilesource["pid"] = pid
                 tilesource["active"] = active
                 tilesources.append(tilesource)
-            except Exception as error:
-                print("Failed to read tilesource definition file '{}': {}"
-                      .format(path, str(error)),
-                      file=sys.stderr)
-
     tilesources.sort(key=lambda x: x["name"])
     return tilesources
 
@@ -226,7 +208,7 @@ def locked_method(function):
     return wrapper
 
 def makedirs(directory):
-    """Create and return `directory` or ``None`` if fails."""
+    """Create and return `directory` or raise :exc:`OSError`."""
     directory = os.path.abspath(directory)
     if os.path.isdir(directory):
         return directory
@@ -238,8 +220,7 @@ def makedirs(directory):
         print("Failed to create directory {}: {}"
               .format(repr(directory), str(error)),
               file=sys.stderr)
-
-        return None
+        raise # OSError
     return directory
 
 def num2deg(xtile, ytile, zoom):
@@ -263,6 +244,17 @@ def prod_tiles(xmin, xmax, ymin, ymax):
     return sorted(itertools.product(xtiles, ytiles),
                   key=lambda tile: ((tile[0] - (xmin + xmax)/2)**2 +
                                     (tile[1] - (ymin + ymax)/2)**2))
+
+def read_json(path):
+    """Read data from JSON file at `path`."""
+    try:
+        with open(path, "r", encoding="utf_8") as f:
+            return json.load(f)
+    except Exception as error:
+        print("Failed to read file {}: {}"
+              .format(repr(path), str(error)),
+              file=sys.stderr)
+        raise
 
 def request_url(url, encoding=None, timeout=None):
     """
@@ -288,3 +280,15 @@ def silent(*exceptions):
         yield
     except exceptions:
         pass
+
+def write_json(data, path):
+    """Write `data` to JSON file at `path`."""
+    try:
+        makedirs(os.path.dirname(path))
+        with open(path, "w", encoding="utf_8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=4, sort_keys=True)
+    except Exception as error:
+        print("Failed to write file {}: {}"
+              .format(repr(path), str(error)),
+              file=sys.stderr)
+        raise

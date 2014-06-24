@@ -47,11 +47,11 @@ class HistoryManager:
 
     def _read(self):
         """Read list of places from file."""
-        if not os.path.isfile(self._path): return
         try:
-            with open(self._path, "r", encoding="utf_8") as f:
-                self._places = [x.strip() for x in f.read().splitlines()]
-                self._places = list(filter(None, self._places))
+            if os.path.isfile(self._path):
+                with open(self._path, "r", encoding="utf_8") as f:
+                    self._places = [x.strip() for x in f.read().splitlines()]
+                    self._places = list(filter(None, self._places))
         except Exception as error:
             print("Failed to read file '{}': {}"
                   .format(self._path, str(error)),
@@ -64,11 +64,9 @@ class HistoryManager:
 
     def write(self):
         """Write list of places to file."""
-        directory = os.path.dirname(self._path)
-        directory = poor.util.makedirs(directory)
-        if directory is None: return
         self._places = self._places[:self._max_size]
         try:
+            poor.util.makedirs(os.path.dirname(self._path))
             with open(self._path, "w", encoding="utf_8") as f:
                 f.writelines("\n".join(self._places) + "\n")
         except Exception as error:

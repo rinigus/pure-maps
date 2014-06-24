@@ -18,7 +18,6 @@
 """Map tile source with cached tile downloads."""
 
 import http.client
-import json
 import os
 import poor
 import queue
@@ -57,6 +56,44 @@ class TileSource:
             self.url = values["url"]
             self._init_http_connections()
 
+    def download(self, x, y, zoom):
+        """Download map tile and return local file path or ``None``."""
+        url = self.url.format(x=x, y=y, z=zoom)
+        directory = os.path.join(poor.CACHE_HOME_DIR,
+                                 self.id,
+                                 str(zoom),
+                                 str(x))
+
+        basename = "{:d}{}".format(y, self.extension)
+        path = os.path.join(directory, basename)
+        if os.path.isfile(path):
+            # Failed downloads can result in empty files.
+            if os.stat(path).st_size > 0:
+                return path
+        try:
+            httpc = self._http_queue.get()
+            httpc.request("GET", url, headers=self._headers)
+            response = httpc.getresponse()
+            if response.status != 200:
+                raise Exception("Server responded {}: {}"
+                                .format(repr(response.status),
+                                        repr(response.reason)))
+
+            poor.util.makedirs(directory)
+            with open(path, "wb") as f:
+                f.write(response.read(1048576))
+        except Exception as error:
+            print("Failed to download tile: {}"
+                  .format(str(error)), file=sys.stderr)
+
+            httpc.close()
+            httpc = self._init_http_connection()
+            return None
+        finally:
+            self._http_queue.task_done()
+            self._http_queue.put(httpc)
+        return path
+
     def _init_http_connection(self):
         """Initialize and return a persistent HTTP connection."""
         host = urllib.parse.urlparse(self.url).netloc
@@ -80,44 +117,4 @@ class TileSource:
         path = os.path.join(poor.DATA_HOME_DIR, leaf)
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
-        with open(path, "r", encoding="utf_8") as f:
-            return json.load(f)
-
-    def download(self, x, y, zoom):
-        """Download map tile and return local file path or ``None``."""
-        url = self.url.format(x=x, y=y, z=zoom)
-        directory = os.path.join(poor.CACHE_HOME_DIR,
-                                 self.id,
-                                 str(zoom),
-                                 str(x))
-
-        basename = "{:d}{}".format(y, self.extension)
-        path = os.path.join(directory, basename)
-        if os.path.isfile(path):
-            # Failed downloads can result in empty files.
-            if os.stat(path).st_size > 0:
-                return path
-        directory = poor.util.makedirs(directory)
-        if directory is None: return
-        try:
-            httpc = self._http_queue.get()
-            httpc.request("GET", url, headers=self._headers)
-            response = httpc.getresponse()
-            if response.status != 200:
-                raise Exception("Server responded {}: {}"
-                                .format(repr(response.status),
-                                        repr(response.reason)))
-
-            with open(path, "wb") as f:
-                f.write(response.read(1048576))
-        except Exception as error:
-            print("Failed to download tile: {}"
-                  .format(str(error)), file=sys.stderr)
-
-            httpc.close()
-            httpc = self._init_http_connection()
-            return None
-        finally:
-            self._http_queue.task_done()
-            self._http_queue.put(httpc)
-        return path
+        return poor.util.read_json(path)

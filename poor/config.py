@@ -18,7 +18,6 @@
 """Attribute dictionary of configuration values."""
 
 import copy
-import json
 import os
 import poor
 import sys
@@ -98,14 +97,9 @@ class ConfigurationStore(AttrDict):
         """Read values of options from JSON file at `path`."""
         if path is None:
             path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
-        if not os.path.isfile(path): return
-        try:
-            with open(path, "r", encoding="utf_8") as f:
-                self._update(json.load(f))
-        except Exception as error:
-            return print("Failed to read file {}: {}"
-                         .format(repr(path), str(error)),
-                         file=sys.stderr)
+        if os.path.isfile(path):
+            with poor.util.silent(Exception):
+                self._update(poor.util.read_json(path))
 
     def _register(self, values, root=None, defaults=None):
         """Add entries for `values` if missing."""
@@ -192,14 +186,6 @@ class ConfigurationStore(AttrDict):
         """Write values of options to JSON file at `path`."""
         if path is None:
             path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
-        directory = os.path.dirname(path)
-        directory = poor.util.makedirs(directory)
-        if directory is None: return
         out = self._comment_unmodified()
-        try:
-            with open(path, "w", encoding="utf_8") as f:
-                json.dump(out, f, ensure_ascii=False, indent=4, sort_keys=True)
-        except Exception as error:
-            print("Failed to write file {}: {}"
-                  .format(repr(path), str(error)),
-                  file=sys.stderr)
+        with poor.util.silent(Exception):
+            poor.util.write_json(out, path)

@@ -18,7 +18,6 @@
 """Translating addresses and names into coordinates."""
 
 import importlib.machinery
-import json
 import os
 import poor
 import re
@@ -94,5 +93,4 @@ class Geocoder:
         path = os.path.join(poor.DATA_HOME_DIR, leaf)
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
-        with open(path, "r", encoding="utf_8") as f:
-            return path, json.load(f)
+        return path, poor.util.read_json(path)

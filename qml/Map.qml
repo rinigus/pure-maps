@@ -57,6 +57,9 @@ Map {
             var center = py.evaluate("poor.conf.center");
             map.setCenter(center[0], center[1]);
             map.setZoomLevel(py.evaluate("poor.conf.zoom"));
+            map.loadPois();
+            map.loadRoute();
+            map.loadManeuvers();
         });
         map.start();
         map.zoomLevelPrev = map.zoomLevel;
@@ -89,10 +92,10 @@ Map {
 
     onPositionChanged: {
         // Conditionally center map on position if outside center of screen.
-        // map.toScreenPosition returns NaN when outside screen.
         if (!map.autoCenter) return;
         if (map.gesture.isPanActive) return;
         if (map.gesture.isPinchActive) return;
+        // map.toScreenPosition returns NaN when outside screen.
         var pos = map.toScreenPosition(map.position.coordinate);
         if (!pos.x || pos.x < 0.333 * map.width  || pos.x > 0.667 * map.width ||
             !pos.y || pos.y < 0.333 * map.height || pos.y > 0.667 * map.height)
@@ -109,7 +112,7 @@ Map {
     }
 
     function addPoi(x, y) {
-        // Add new point of interest marker to map.
+        // Add new POI marker to map.
         var component = Qt.createComponent("PoiMarker.qml");
         var poi = component.createObject(map);
         poi.coordinate = QtPositioning.coordinate(y, x);
@@ -149,13 +152,13 @@ Map {
 
     function clear() {
         // Remove all point and line markers from map.
-        for (var i = 0; i < map.pois.length; i++)
-            map.removeMapItem(map.pois[i]);
-        map.pois = [];
         for (var i = 0; i < map.maneuvers.length; i++)
             map.removeMapItem(map.maneuvers[i]);
         map.maneuvers = [];
         route.clear();
+        for (var i = 0; i < map.pois.length; i++)
+            map.removeMapItem(map.pois[i]);
+        map.pois = [];
     }
 
     function fitViewtoCoordinates(coords) {
@@ -192,7 +195,7 @@ Map {
     }
 
     function fitViewToPois() {
-        // Set center and zoom so that all points of interest are visible.
+        // Set center and zoom so that all POIs are visible.
         var coords = []
         for (var i = 0; i < map.pois.length; i++)
             coords[i] = map.pois[i].coordinate;
@@ -231,6 +234,34 @@ Map {
 
     }
 
+    function loadManeuvers() {
+        // Load maneuvers from JSON file.
+        if (!py.ready) return;
+        py.call("poor.storage.read_maneuvers", [], function(data) {
+            for (var i = 0; i < data.length; i++)
+                map.addManeuver(data[i]);
+        });
+    }
+
+    function loadPois() {
+        // Load POIs from JSON file.
+        if (!py.ready) return;
+        py.call("poor.storage.read_pois", [], function(data) {
+            for (var i = 0; i < data.length; i++)
+                map.addPoi(data[i].x, data[i].y);
+        });
+    }
+
+    function loadRoute() {
+        // Load route from JSON file.
+        if (!py.ready) return;
+        py.call("poor.storage.read_route", [], function(data) {
+            if (data.x && data.x.length > 0 &&
+                data.y && data.y.length > 0)
+                map.addRoute(data.x, data.y);
+        });
+    }
+
     function renderTile(uid, x, y, zoom, uri) {
         // Render tile from local image file.
         for (var i = 0; i < map.tiles.length; i++) {
@@ -247,10 +278,44 @@ Map {
     }
 
     function resetTiles() {
-        // Hide all map tiles from view.
+        // Remove all map tiles from view.
         for (var i = 0; i < map.tiles.length; i++)
             map.removeMapItem(map.tiles[i]);
         map.tiles = [];
+    }
+
+    function saveManeuvers() {
+        // Save maneuvers to JSON file.
+        if (!py.ready) return;
+        var data = [];
+        for (var i = 0; i < map.maneuvers.length; i++)
+            data.push({"x": map.maneuvers[i].coordinate.longitude,
+                       "y": map.maneuvers[i].coordinate.latitude});
+
+        py.call_sync("poor.storage.write_maneuvers", [data]);
+    }
+
+    function savePois() {
+        // Save POIs to JSON file.
+        if (!py.ready) return;
+        var data = [];
+        for (var i = 0; i < map.pois.length; i++)
+            data.push({"x": map.pois[i].coordinate.longitude,
+                       "y": map.pois[i].coordinate.latitude});
+
+        py.call_sync("poor.storage.write_pois", [data]);
+    }
+
+    function saveRoute() {
+        // Save route to JSON file.
+        if (!py.ready) return;
+        if (route.path.x && route.path.x.length > 0 &&
+            route.path.y && route.path.y.length > 0) {
+            var data = {"x": route.path.x, "y": route.path.y};
+        } else {
+            var data = {};
+        }
+        py.call_sync("poor.storage.write_route", [data]);
     }
 
     function setAttribution(text) {
@@ -310,6 +375,9 @@ Map {
             py.call_sync("poor.conf.write", []);
             py.call_sync("poor.app.history.write", []);
         }
+        map.savePois();
+        map.saveRoute();
+        map.saveManeuvers();
         map.gps.stop();
         timer.stop();
     }

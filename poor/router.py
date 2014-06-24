@@ -18,7 +18,6 @@
 """Finding routes between addresses and/or coordinates."""
 
 import importlib.machinery
-import json
 import os
 import poor
 import re
@@ -69,8 +68,7 @@ class Router:
         path = os.path.join(poor.DATA_HOME_DIR, leaf)
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
-        with open(path, "r", encoding="utf_8") as f:
-            return path, json.load(f)
+        return path, poor.util.read_json(path)
 
     @property
     def results_qml_uri(self):

@@ -35,6 +35,7 @@ except ImportError:
 from poor.paths import *
 from poor import util
 from poor import polysimp
+from poor import storage
 from poor.config import *
 conf = ConfigurationStore()
 from poor.tilecollection import *
