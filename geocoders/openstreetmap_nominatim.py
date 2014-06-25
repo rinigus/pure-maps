@@ -31,7 +31,7 @@ URL = ("http://nominatim.openstreetmap.org/search"
        "?format=json"
        "&q={query}"
        "&addressdetails=1"
-       "&limit={nmax}")
+       "&limit=20")
 
 cache = {}
 
@@ -46,7 +46,7 @@ def geocode(query, nmax):
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())
     with poor.util.silent(LookupError):
-        return copy.deepcopy(cache[url])
+        return copy.deepcopy(cache[url][:nmax])
     results = json.loads(poor.util.request_url(url, "utf_8"))
     results = [dict(title=parse_title(result),
                     description=parse_description(result),
@@ -55,7 +55,7 @@ def geocode(query, nmax):
                     ) for result in results]
 
     cache[url] = copy.deepcopy(results)
-    return results
+    return results[:nmax]
 
 def parse_address(result):
     """Parse address from geocoding result."""

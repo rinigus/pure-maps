@@ -15,7 +15,6 @@ Poor Maps 0.5
 
  FIX:
   * MapQuest Open and OSRM routers to use which Nominatim?
-  * Chek cache-ability of geocoders and routers
 
 Poor Maps 1.0
 =============
