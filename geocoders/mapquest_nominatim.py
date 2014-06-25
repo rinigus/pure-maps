@@ -30,7 +30,6 @@ import urllib.parse
 URL = ("http://open.mapquestapi.com/nominatim/v1/search.php"
        "?format=json"
        "&q={query}"
-       "&viewbox={xmin:.6f},{ymax:.6f},{xmax:.6f},{ymin:.6f}"
        "&addressdetails=1"
        "&limit={nmax}")
 
@@ -42,7 +41,7 @@ def append1(lst, dic, names):
         if name in dic:
             return lst.append(dic[name])
 
-def geocode(query, xmin, xmax, ymin, ymax, nmax):
+def geocode(query, nmax):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())
