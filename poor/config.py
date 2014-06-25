@@ -75,9 +75,8 @@ class ConfigurationStore(AttrDict):
         out = {}
         for name, value in root.items():
             if isinstance(value, dict):
-                value = self._comment_unmodified(value,
-                                                 defaults.setdefault(name, {}))
-
+                value = self._comment_unmodified(
+                    value, defaults.setdefault(name, {}))
             else:
                 if name in defaults:
                     if value == defaults[name]:

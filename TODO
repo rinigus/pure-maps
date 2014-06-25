@@ -13,9 +13,6 @@ Poor Maps 0.5
  [X] Remove viewbox and nmax arguments from geocoders
  [X] Add an about page
 
- FIX:
-  * MapQuest Open and OSRM routers to use which Nominatim?
-
 Poor Maps 1.0
 =============
 
