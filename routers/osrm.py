@@ -40,7 +40,7 @@ def prepare_endpoint(point):
     # OSRM requires coordinates, let's geocode using Nominatim.
     if isinstance(point, str):
         geocoder = poor.Geocoder("mapquest_nominatim")
-        results = geocoder.geocode(point, nmax=1)
+        results = geocoder.geocode(point)
         point = (results[0]["x"], results[0]["y"])
     point = "{:.6f},{:.6f}".format(point[1], point[0])
     return (point, ("{}&hint={}".format(point, hints[point])

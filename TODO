@@ -10,7 +10,7 @@ Poor Maps 0.5
  [X] Don't auto-center when panning or pinching
  [X] Fix partial tile loading after changing tile source
  [X] Change default GPS polling to one second
- [X] Remove viewbox arguments from geocoders
+ [X] Remove viewbox and nmax arguments from geocoders
  [X] Add an about page
 
  FIX:

@@ -119,7 +119,7 @@ Page {
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
         py.call("poor.app.geocoder.geocode",
-                [query, x, y, bbox[0], bbox[1], bbox[2], bbox[3], 20],
+                [query, x, y],
                 function(results) {
                     if (results.length > 0) {
                         page.title = results.length == 1 ?

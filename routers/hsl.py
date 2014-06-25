@@ -154,7 +154,7 @@ def prepare_endpoint(point):
     # Journey Planner requires coordinates, use corresponding geocoder.
     if isinstance(point, str):
         geocoder = poor.Geocoder("hsl")
-        results = geocoder.geocode(point, nmax=1)
+        results = geocoder.geocode(point)
         point = (results[0]["x"], results[0]["y"])
     return "{:.6f},{:.6f}".format(point[0], point[1])
 

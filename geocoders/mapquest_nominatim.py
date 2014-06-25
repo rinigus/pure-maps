@@ -41,12 +41,12 @@ def append1(lst, dic, names):
         if name in dic:
             return lst.append(dic[name])
 
-def geocode(query, nmax):
+def geocode(query):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())
     with poor.util.silent(LookupError):
-        return copy.deepcopy(cache[url][:nmax])
+        return copy.deepcopy(cache[url])
     results = json.loads(poor.util.request_url(url, "utf_8"))
     results = [dict(title=parse_title(result),
                     description=parse_description(result),
@@ -55,7 +55,7 @@ def geocode(query, nmax):
                     ) for result in results]
 
     cache[url] = copy.deepcopy(results)
-    return results[:nmax]
+    return results
 
 def parse_address(result):
     """Parse address from geocoding result."""
