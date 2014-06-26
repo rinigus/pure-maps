@@ -157,7 +157,8 @@ def get_geocoders():
                 geocoder = read_json(path)
                 geocoder["pid"] = pid
                 geocoder["active"] = active
-                geocoders.append(geocoder)
+                if not geocoder.get("hidden", False):
+                    geocoders.append(geocoder)
     geocoders.sort(key=lambda x: x["name"])
     return geocoders
 
@@ -174,7 +175,8 @@ def get_routers():
                 router = read_json(path)
                 router["pid"] = pid
                 router["active"] = active
-                routers.append(router)
+                if not router.get("hidden", False):
+                    routers.append(router)
     routers.sort(key=lambda x: x["name"])
     return routers
 
@@ -191,7 +193,8 @@ def get_tilesources():
                 tilesource = read_json(path)
                 tilesource["pid"] = pid
                 tilesource["active"] = active
-                tilesources.append(tilesource)
+                if not tilesource.get("hidden", False):
+                    tilesources.append(tilesource)
     tilesources.sort(key=lambda x: x["name"])
     return tilesources
 

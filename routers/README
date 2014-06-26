@@ -34,5 +34,5 @@ alternative public transportation routes with relevant details of each.
 To download data you should always use 'poor.util.request_url' in order
 to use Poor's user-agent and the default timeout from poor.conf. If your
 routing provider cannot handle addresses, but requires coordinates,
-consider geocoding using 'mapquest_nominatim', which is shipped with
-Poor. See the routers shipped with Poor for examples.
+consider geocoding using 'nominatim', which is shipped with Poor.
+See the routers shipped with Poor for examples.

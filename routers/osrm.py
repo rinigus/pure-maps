@@ -39,8 +39,7 @@ def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
     # OSRM requires coordinates, let's geocode using Nominatim.
     if isinstance(point, str):
-        # XXX: I don't like hardcoding 'mapquest_nominatim' here.
-        geocoder = poor.Geocoder("mapquest_nominatim")
+        geocoder = poor.Geocoder("nominatim")
         results = geocoder.geocode(point)
         point = (results[0]["x"], results[0]["y"])
     point = "{:.6f},{:.6f}".format(point[1], point[0])
