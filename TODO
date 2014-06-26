@@ -8,6 +8,7 @@ Poor Maps 0.5
      for redundancy, in case MapQuest Nominatim's servers are down,
      but also the version of Nominatim in use might differ from MapQuest)
  [X] Use a redundant Nominatim geocoder for MapQuest Open and OSRM routers
+ [X] Add U-line switch in HSL Journey Planner
  [X] Use stock icons on menu page
  [X] Don't auto-center when panning or pinching
  [X] Fix partial tile loading after changing tile source

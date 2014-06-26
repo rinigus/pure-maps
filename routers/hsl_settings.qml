@@ -119,35 +119,32 @@ Column {
         }
     }
     Row {
+        height: implicitHeight + Theme.paddingLarge
         width: parent.width - Theme.paddingMedium*2
         x: parent.x + Theme.paddingMedium
         Repeater {
             id: repeater
-            model: 4
-            property var keys: ["bus", "tram", "metro", "train"]
+            model: 5
+            property var keys: ["bus", "tram", "metro", "train", "uline"]
             property string path: "routers.hsl.transport_types"
             Switch {
                 id: vehicleSwitch
                 icon.opacity: 0.9
                 icon.source: "hsl/" + repeater.keys[index] + ".png"
-                width: parent.width/4
+                width: parent.width/5
                 Component.onCompleted: {
                     vehicleSwitch.checked = py.call_sync("poor.conf.set_contains",
                                                          [repeater.path,
                                                           repeater.keys[index]]);
 
-                    // This looks ugly, but we seem to get too much padding
-                    // between these switches and the above combo box.
-                    vehicleSwitch.height -= Theme.paddingLarge*1.75
                 }
                 onCheckedChanged: {
                     var fun = vehicleSwitch.checked ?
                         "poor.conf.set_add" : "poor.conf.set_remove";
                     py.call_sync(fun, [repeater.path, repeater.keys[index]]);
                     if (repeater.keys[index] == "bus") {
-                        // Include variations when toggling bus use.
+                        // Include service lines when toggling bus use.
                         py.call_sync(fun, [repeater.path, "service"]);
-                        py.call_sync(fun, [repeater.path, "uline"]);
                     }
                 }
             }
