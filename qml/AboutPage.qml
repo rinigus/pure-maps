@@ -30,12 +30,6 @@ Page {
             id: column
             width: parent.width
             PageHeader { title: "About Poor Maps" }
-            Image {
-                fillMode: Image.Pad
-                height: implicitHeight + 2*Theme.paddingLarge
-                source: "icons/about.png"
-                width: parent.width
-            }
             Label {
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge
