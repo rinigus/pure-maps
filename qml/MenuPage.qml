@@ -34,7 +34,17 @@ Page {
             ListItem {
                 id: findPlaceItem
                 contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: findPlaceImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    source: "image://theme/icon-m-search"
+                    width: implicitWidth + Theme.paddingLarge
+                }
                 ListItemLabel {
+                    anchors.left: findPlaceImage.right
+                    anchors.leftMargin: Theme.paddingMedium
                     color: findPlaceItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
@@ -48,7 +58,17 @@ Page {
             ListItem {
                 id: findRouteItem
                 contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: findRouteImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    source: "image://theme/icon-m-car"
+                    width: implicitWidth + Theme.paddingLarge
+                }
                 ListItemLabel {
+                    anchors.left: findRouteImage.right
+                    anchors.leftMargin: Theme.paddingMedium
                     color: findRouteItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
@@ -59,7 +79,17 @@ Page {
             ListItem {
                 id: findCurrentPositionItem
                 contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: findCurrentPositionImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    source: "image://theme/icon-m-gps"
+                    width: implicitWidth + Theme.paddingLarge
+                }
                 ListItemLabel {
+                    anchors.left: findCurrentPositionImage.right
+                    anchors.leftMargin: Theme.paddingMedium
                     color: findCurrentPositionItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
@@ -73,7 +103,17 @@ Page {
             ListItem {
                 id: clearMapItem
                 contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: clearMapImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    source: "image://theme/icon-m-clear"
+                    width: implicitWidth + Theme.paddingLarge
+                }
                 ListItemLabel {
+                    anchors.left: clearMapImage.right
+                    anchors.leftMargin: Theme.paddingMedium
                     color: clearMapItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
@@ -88,7 +128,17 @@ Page {
             ListItem {
                 id: mapTilesItem
                 contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: mapTilesImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    source: "image://theme/icon-m-levels"
+                    width: implicitWidth + Theme.paddingLarge
+                }
                 ListItemLabel {
+                    anchors.left: mapTilesImage.right
+                    anchors.leftMargin: Theme.paddingMedium
                     color: mapTilesItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
@@ -98,6 +148,7 @@ Page {
             }
             ListItemSwitch {
                 id: autoCenterItem
+                anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
                 checked: map.autoCenter
                 height: Theme.itemSizeSmall
                 text: "Auto-center on position"
@@ -110,7 +161,17 @@ Page {
             ListItem {
                 id: aboutItem
                 contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: aboutImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    source: "image://theme/icon-m-about"
+                    width: implicitWidth + Theme.paddingLarge
+                }
                 ListItemLabel {
+                    anchors.left: aboutImage.right
+                    anchors.leftMargin: Theme.paddingMedium
                     color: aboutItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
