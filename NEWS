@@ -1,3 +1,21 @@
+Poor Maps 0.5
+=============
+
+ * Show maneuver points along the route polyline
+ * Keep POIs and routes across sessions
+ * Allow removing places from history (long tap, context menu)
+ * Add OpenStreetMap Nominatim geocoder (this is mainly
+   for redundancy, in case MapQuest Nominatim's servers are down,
+   but also the version of Nominatim in use might differ)
+ * Use a redundant Nominatim geocoder for MapQuest Open and OSRM routers
+ * Add U-line switch in HSL Journey Planner
+ * Use stock icons on menu page
+ * Don't auto-center when panning or pinching
+ * Fix partial tile loading after changing tile source
+ * Change default GPS polling to one second
+ * Remove viewbox and nmax arguments from geocoders
+ * Add an about page
+
 Poor Maps 0.4
 =============
 
