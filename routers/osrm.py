@@ -25,7 +25,7 @@ http://github.com/DennisOSRM/Project-OSRM/wiki/Server-api
 import json
 import poor
 
-# XXX: Use z=12 as a workaround to avoid OSRM not finding a route at all.
+# XXX: Use z=14 as a workaround to avoid OSRM not finding a route at all.
 # http://lists.openstreetmap.org/pipermail/osrm-talk/2014-June/000588.html
 
 URL = ("http://router.project-osrm.org/viaroute"
@@ -34,7 +34,7 @@ URL = ("http://router.project-osrm.org/viaroute"
        "&output=json"
        "&instructions=true"
        "&alt=false"
-       "&z=12")
+       "&z=14")
 
 checksum = None
 hints = {}
