@@ -37,7 +37,7 @@ URL = ("http://open.mapquestapi.com/directions/v2/route"
        "&routeType={type}"
        "&doReverseGeocode=false"
        "&shapeFormat=cmp"
-       "&generalize=1"
+       "&generalize=8"
        "&manMaps=false")
 
 cache = {}
