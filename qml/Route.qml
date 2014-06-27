@@ -42,7 +42,7 @@ Canvas {
     property var  paintX: 0
     property var  paintY: 0
     property var  path: {"x": [], "y": []}
-    property var  simplePaths: {"0": {"x": [], "y": []}}
+    property var  simplePaths: {}
 
     onPaint: {
         // Clear the whole canvas and redraw entire route.
@@ -50,51 +50,39 @@ Canvas {
         if (canvas.path.x.length == 0) return;
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.floor(map.zoomLevel);
-        if (zoom < 14) {
+        var key = zoom.toString();
+        if (!canvas.simplePaths.hasOwnProperty(key)) {
             // Use a simplified path to avoid the slowness of
             // plotting too many polyline segments on screen.
-            var key = zoom.toString();
-            if (!canvas.simplePaths.hasOwnProperty(key)) {
-                if (map.gesture.isPinchActive) return;
-                canvas.simplePaths[key] = {"x": [], "y": []};
-                return canvas.simplify(zoom);
-            }
-            var spath = canvas.simplePaths[key];
-        } else {
-            // Don't try simplification at high zoom levels as
-            // we approach Douglas-Peucker's worst case O(n^2).
-            var spath = canvas.path;
+            if (map.gesture.isPinchActive) return;
+            canvas.simplePaths[key] = {"x": [], "y": []};
+            return canvas.simplify(zoom);
         }
+        var spath = canvas.simplePaths[key];
         canvas.initDone || canvas.initContextProperties();
         canvas.context.beginPath();
         var bbox = map.getBoundingBox();
-        // Render also some nodes outside the bbox in order
-        // to render segments that cross the bbox edge.
-
-        // XXX: This mechanism works fine for simplified lines as we set
-        // the maximum length in the simplification call, but raw paths
-        // at high zoom levels will at times be rendered only partially.
-        var xmin = bbox[0] - 1.5 * map.widthCoords;
-        var xmax = bbox[1] + 1.5 * map.widthCoords;
-        var ymin = bbox[2] - 1.5 * map.heightCoords;
-        var ymax = bbox[3] + 1.5 * map.heightCoords;
+        var maxLength = Math.min(map.widthCoords, map.heightCoords);
+        var xmin = bbox[0] - 1.5 * maxLength;
+        var xmax = bbox[1] + 1.5 * maxLength;
+        var ymin = bbox[2] - 1.5 * maxLength;
+        var ymax = bbox[3] + 1.5 * maxLength;
         var prev = false;
         for (var i = 0; i < spath.x.length; i++) {
             var x = spath.x[i];
             var y = spath.y[i];
             if (x >= xmin && x <= xmax && y >= ymin && y <= ymax) {
-                canvas.context.lineTo(
-                    Util.xcoord2xpos(x, bbox[0], bbox[1], map.width),
-                    Util.ycoord2ypos(y, bbox[2], bbox[3], map.height));
-
+                var xpos = Util.xcoord2xpos(x, bbox[0], bbox[1], map.width);
+                var ypos = Util.ycoord2ypos(y, bbox[2], bbox[3], map.height);
+                canvas.context.lineTo(xpos, ypos);
                 prev = true;
+            } else if (prev) {
+                // Break path when going outside the area
+                // in which segments are rendered.
+                canvas.context.stroke();
+                canvas.context.beginPath();
+                prev = false;
             } else {
-                if (prev) {
-                    // Break path when going outside the area
-                    // in which segments are rendered.
-                    canvas.context.stroke();
-                    canvas.context.beginPath();
-                }
                 prev = false;
             }
         }
@@ -122,7 +110,7 @@ Canvas {
     function clear() {
         // Clear path from the canvas.
         canvas.path = {"x": [], "y": []};
-        canvas.simplePaths = {"0": {"x": [], "y": []}};
+        canvas.simplePaths = {};
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         canvas.requestPaint();
     }
@@ -146,25 +134,31 @@ Canvas {
     function setPath(x, y) {
         // Set route path from coordinates.
         canvas.path = {"x": x, "y": y};
-        canvas.simplePaths = {"0": {"x": [], "y": []}};
+        canvas.simplePaths = {};
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.requestPaint();
+    }
+
+    function setSimplePath(zoom, path) {
+        // Set simplified path at zoom level.
+        Object.defineProperty(canvas.simplePaths, zoom.toString(), {
+            value: path, writable: true});
         canvas.requestPaint();
     }
 
     function simplify(zoom) {
         // Simplify path for display at zoom level using Douglas-Peucker.
-        var tol = Math.pow(2, 18-zoom) / 83250;
+        if (zoom < 14) {
+            var tol = Math.pow(2, 18-zoom) / 83250;
+        } else {
+            // Don't try simplification at high zoom levels as
+            // we approach Douglas-Peucker's worst case O(n^2).
+            var tol = null;
+        }
         var maxLength = Math.min(map.widthCoords, map.heightCoords);
-        py.call("poor.polysimp.simplify_qml",
-                [canvas.path.x, canvas.path.y, tol, false, maxLength, 2000],
-                function(path) {
-                    Object.defineProperty(canvas.simplePaths,
-                                          zoom.toString(),
-                                          {value: {"x": path.x, "y": path.y},
-                                           writable: true});
-
-                    canvas.requestPaint();
-                });
-
+        var args = [canvas.path.x, canvas.path.y, tol, false, maxLength, 2000];
+        py.call("poor.polysimp.simplify_qml", args, function(path) {
+            canvas.setSimplePath(zoom, path);
+        });
     }
 }

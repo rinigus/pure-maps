@@ -3,11 +3,13 @@ Poor Maps 0.5.1
 
  [X] Work around an OSRM router bug causing it to sometimes not find
      a route at all (see http://lists.openstreetmap.org/pipermail/osrm-talk/2014-June/000588.html)
+ [X] Fix partial display of route polyline at high zoom levels
 
 Poor Maps 1.0
 =============
 
  * Add narration of routing maneuvers
+ * Add reverse geocoding
  * Save pagestack to allow returning to geocoding or routing results
  * Allow tapping on markers
  * Allow landscape for the map page when gestures work right
