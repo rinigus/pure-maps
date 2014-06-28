@@ -267,6 +267,7 @@ def request_url(url, encoding=None, timeout=None):
     to text using `encoding`. If `timeout` is ``None`` use
     :var:`poor.conf.download_timeout`.
     """
+    print("Requesting {}".format(url))
     opener = urllib.request.build_opener()
     agent = "poor-maps/{}".format(poor.__version__)
     opener.addheaders = [("User-Agent", agent)]
