@@ -31,10 +31,10 @@ class Tile:
     def __init__(self, uid):
         """Initialize a :class:`Tile` instance."""
         self.ready = True
+        self.uid = uid
         self.x = -1
         self.y = -1
         self.zoom = -1
-        self.uid = uid
 
 
 class TileCollection:

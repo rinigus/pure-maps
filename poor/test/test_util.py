@@ -20,19 +20,19 @@ import poor.test
 
 class TestModule(poor.test.TestCase):
 
-    def test_calculate_distance(self):
-        # From Helsinki to Lissabon.
-        dist = poor.util.calculate_distance(24.94, 60.17, -9.14, 38.72)
-        assert round(dist) == 3361
-
     def test_calculate_bearing(self):
         # From Helsinki to Lissabon.
         bearing = poor.util.calculate_bearing(24.94, 60.17, -9.14, 38.72)
         assert round(bearing) == 240
 
+    def test_calculate_distance(self):
+        # From Helsinki to Lissabon.
+        dist = poor.util.calculate_distance(24.94, 60.17, -9.14, 38.72)
+        assert round(dist) == 3361
+
     def test_decode_epl(self):
         # Values from the official example.
-        # https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+        # http://developers.google.com/maps/documentation/utilities/polylinealgorithm
         x, y = poor.util.decode_epl("_p~iF~ps|U_ulLnnqC_mqNvxq`@")
         assert len(x) == 3
         assert len(y) == 3

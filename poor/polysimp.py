@@ -65,8 +65,6 @@ def simplify(x, y, tol=None, hq=False, max_length=None, nmax=None):
         while i < len(x):
             dist = get_sq_dist(x[i], y[i], x[i-1], y[i-1])
             if dist > max_length2:
-                # Using insert here might be slow,
-                # but usually shouldn't get called often.
                 x.insert(i, (x[i-1] + x[i])/2)
                 y.insert(i, (y[i-1] + y[i])/2)
             else:

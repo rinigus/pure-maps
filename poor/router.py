@@ -88,7 +88,6 @@ class Router:
         try:
             return self._provider.route(fm, to, params)
         except Exception:
-            # XXX: Should we relay an error message to QML?
             print("Routing failed:", file=sys.stderr)
             traceback.print_exc()
             return {}
