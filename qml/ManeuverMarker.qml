@@ -26,5 +26,5 @@ MapQuickItem {
         id: image
         source: "icons/maneuver.png"
     }
-    z: 200
+    z: 201
 }
