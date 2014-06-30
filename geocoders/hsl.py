@@ -41,7 +41,7 @@ def geocode(query):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())
-    with poor.util.silent(Exception):
+    with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = json.loads(poor.util.request_url(url, "utf_8"))
     results = [dict(title=parse_title(result),
@@ -57,7 +57,7 @@ def parse_description(result):
     """Parse description from geocoding result."""
     items = []
     if result["locType"] == "stop":
-        with poor.util.silent(Exception):
+        with poor.util.silent(KeyError):
             items.append(result["details"]["address"])
     items.append(result["city"])
     return ", ".join(items)
@@ -66,6 +66,6 @@ def parse_title(result):
     """Parse title from geocoding result."""
     items = [result["name"]]
     if result["locType"] == "address":
-        with poor.util.silent(Exception):
+        with poor.util.silent(KeyError, ValueError):
             items.append(str(result["details"]["houseNumber"]))
     return " ".join(items)

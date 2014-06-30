@@ -45,7 +45,7 @@ def geocode(query):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())
-    with poor.util.silent(LookupError):
+    with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = json.loads(poor.util.request_url(url, "utf_8"))
     results = [dict(title=parse_title(result),
