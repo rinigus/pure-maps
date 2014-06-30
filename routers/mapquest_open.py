@@ -62,11 +62,10 @@ def route(fm, to, params):
     to = prepare_endpoint(to)
     type = poor.conf.routers.mapquest_open.type
     url = URL.format(**locals())
-    with poor.util.silent(LookupError):
+    with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     result = json.loads(poor.util.request_url(url, "utf_8"))
-    route = result["route"]["shape"]["shapePoints"]
-    x, y = poor.util.decode_epl(route)
+    x, y = poor.util.decode_epl(result["route"]["shape"]["shapePoints"])
     maneuvers = []
     for leg in result["route"]["legs"]:
         maneuvers.extend(leg["maneuvers"])

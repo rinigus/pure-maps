@@ -158,14 +158,14 @@ def parse_x(result):
     """Parse X-coordinates from routing result."""
     coords = []
     for leg in result["legs"]:
-        coords.extend(point["x"] for point in leg["shape"])
+        coords.extend(float(point["x"]) for point in leg["shape"])
     return coords
 
 def parse_y(result):
     """Parse Y-coordinates from routing result."""
     coords = []
     for leg in result["legs"]:
-        coords.extend(point["y"] for point in leg["shape"])
+        coords.extend(float(point["y"]) for point in leg["shape"])
     return coords
 
 def prepare_endpoint(point):

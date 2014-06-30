@@ -107,8 +107,7 @@ def route(fm, to, params):
         checksum = str(result["hint_data"]["checksum"])
         hints[fm_real] = str(result["hint_data"]["locations"][0])
         hints[to_real] = str(result["hint_data"]["locations"][1])
-    route = result["route_geometry"]
-    x, y = poor.util.decode_epl(route, precision=6)
+    x, y = poor.util.decode_epl(result["route_geometry"], precision=6)
     maneuvers = [dict(x=x[int(maneuver[3])],
                       y=y[int(maneuver[3])],
                       narrative=parse_narrative(maneuver),
