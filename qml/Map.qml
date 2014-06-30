@@ -104,7 +104,7 @@ Map {
 
     function addManeuver(props) {
         // Add new maneuver marker to map.
-        var component = Qt.createComponent("Maneuver.qml");
+        var component = Qt.createComponent("ManeuverMarker.qml");
         var maneuver = component.createObject(map);
         maneuver.coordinate = QtPositioning.coordinate(props.y, props.x);
         map.maneuvers.push(maneuver);
@@ -388,8 +388,9 @@ Map {
         if (map.width <= 0 || map.height <= 0) return;
         if (map.gesture.isPinchActive) return;
         var bbox = map.getBoundingBox();
-        py.call("poor.app.update_tiles", [bbox[0], bbox[1], bbox[2], bbox[3],
-                                          Math.floor(map.zoomLevel)], null);
+        py.call("poor.app.update_tiles",
+                [bbox[0], bbox[1], bbox[2], bbox[3],
+                 Math.floor(map.zoomLevel)], null);
 
         map.widthCoords = bbox[1] - bbox[0];
         map.heightCoords = bbox[3] - bbox[2];
