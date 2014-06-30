@@ -72,6 +72,7 @@ def route(fm, to, params):
         maneuvers.extend(leg["maneuvers"])
     maneuvers = [dict(x=float(maneuver["startPoint"]["lng"]),
                       y=float(maneuver["startPoint"]["lat"]),
+                      narrative=maneuver["narrative"],
                       ) for maneuver in maneuvers]
 
     route = {"x": x, "y": y, "maneuvers": maneuvers}

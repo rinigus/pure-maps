@@ -27,5 +27,4 @@ MapQuickItem {
         source: "icons/maneuver.png"
     }
     z: 200
-    // TODO: Add properties 'narrative', 'icon', etc.
 }

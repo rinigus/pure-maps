@@ -41,17 +41,6 @@ def bbox_deg2num(xmin, xmax, ymin, ymax, zoom):
     xtilemax, ytilemin = deg2num(xmax, ymax, zoom)
     return xtilemin, xtilemax, ytilemin, ytilemax
 
-def calculate_distance(x1, y1, x2, y2):
-    """Calculate distance in kilometers from point 1 to point 2."""
-    # Using the Haversine formula.
-    # http://www.movable-type.co.uk/scripts/latlong.html
-    x1, y1, x2, y2 = map(math.radians, (x1, y1, x2, y2))
-    a = (math.sin((y2-y1)/2)**2 + math.sin((x2-x1)/2)**2 *
-         math.cos(y1) * math.cos(y2))
-
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-    return 6371 * c
-
 def calculate_bearing(x1, y1, x2, y2):
     """Calculate bearing in degrees from point 1 to point 2."""
     # This is the initial bearing on the great-circle path.
@@ -63,6 +52,17 @@ def calculate_bearing(x1, y1, x2, y2):
     y = math.sin(x2-x1) * math.cos(y2)
     bearing = math.degrees(math.atan2(y, x))
     return (bearing + 360) % 360
+
+def calculate_distance(x1, y1, x2, y2):
+    """Calculate distance in kilometers from point 1 to point 2."""
+    # Using the Haversine formula.
+    # http://www.movable-type.co.uk/scripts/latlong.html
+    x1, y1, x2, y2 = map(math.radians, (x1, y1, x2, y2))
+    a = (math.sin((y2-y1)/2)**2 + math.sin((x2-x1)/2)**2 *
+         math.cos(y1) * math.cos(y2))
+
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    return 6371 * c
 
 def decode_epl(string, precision=5):
     """

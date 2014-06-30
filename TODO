@@ -1,8 +1,12 @@
+Poor Maps 0.6
+=============
+
+ [ ] Add narration of routing maneuvers
+
 Poor Maps 1.0
 =============
 
- * Add narration of routing maneuvers
- * Add reverse geocoding
+ * Add reverse geocoding?
  * Save pagestack to allow returning to geocoding or routing results
  * Allow tapping on markers
  * Allow landscape for the map page when gestures work right
