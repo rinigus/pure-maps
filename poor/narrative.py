@@ -30,8 +30,19 @@ class Maneuver:
         """Initialize a :class:`Maneuver` instance."""
         self.narrative = ""
         self.node = 0
+        self.passed = False
+        self._visited_dist = 40000
         self.x = x
         self.y = y
+
+    def set_visited(self, dist):
+        """Set distance at which maneuver node has been visited."""
+        if dist < self._visited_dist:
+            self._visited_dist = dist
+        # XXX: This probably needs some tuning.
+        if self._visited_dist < 0.05:
+            if dist > 2*self._visited_dist and dist > 0.01:
+                self.passed = True
 
 
 class Narrative:
@@ -59,7 +70,7 @@ class Narrative:
         return min_index
 
     def get_display(self, x, y, speed):
-        """Return a dictionary of maneuver details to display."""
+        """Return a dictionary of status details to display."""
         # Calculate advance in kilometers when to show narrative
         # of a particular maneuver based on speed and time.
         advance = speed * 3/60
@@ -70,25 +81,32 @@ class Narrative:
             dist = poor.util.calculate_distance(
                 x, y, self.x[node], self.y[node])
         dist_label = poor.util.format_distance(dist, 2, "km")
-        if (self.maneuver[node] is not None and
-            dist - self.dist[self.maneuver[node].node] < advance):
-            maneuver = self.maneuvers[node]
-            man_dist = dist - self.dist[self.maneuver[node].node]
-            if node == maneuver.node:
-                # Use exact straight-line value at the very end.
-                man_dist = poor.util.calculate_distance(
-                    x, y, maneuver.x, maneuver.y)
-            man_dist_label = poor.util.format_distance(man_dist, 2, "km")
-            narrative = maneuver.narrative
-        else:
-            man_dist = None
-            man_dist_label = None
-            narrative = None
+        man = self._get_maneuver_display(x, y, node, advance)
+        man_dist, man_dist_label, narrative = man
         return dict(dist=dist,
                     dist_label=dist_label,
                     man_dist=man_dist,
                     man_dist_label=man_dist_label,
                     narrative=narrative)
+
+    def _get_maneuver_display(self, x, y, node, advance):
+        """Return maneuver details to display."""
+        if self.maneuver[node] is None:
+            return None, None, None
+        maneuver = self.maneuvers[node]
+        man_dist = self.dist[node] - self.dist[maneuver.node]
+        if node == maneuver.node:
+            # Use exact straight-line value at the very end.
+            man_dist = poor.util.calculate_distance(
+                x, y, maneuver.x, maneuver.y)
+            maneuver.set_visited(man_dist)
+            if maneuver.passed and node+1 < len(self.x):
+                # If the maneuver point has been passed,
+                # show the next maneuver narrative if applicable.
+                return self._get_maneuver_display(x, y, node+1, advance)
+        man_dist_label = poor.util.format_distance(man_dist, 2, "km")
+        narrative = (maneuver.narrative if man_dist < advance else None)
+        return man_dist, man_dist_label, narrative
 
     def set_maneuvers(self, x, y, narrative):
         """Set maneuver points and corresponding narrative."""
