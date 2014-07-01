@@ -43,6 +43,7 @@ from poor.tilesource import *
 from poor.geocoder import *
 from poor.router import *
 from poor.history import *
+from poor.narrative import *
 from poor.application import *
 
 def main():

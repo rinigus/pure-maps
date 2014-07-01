@@ -36,6 +36,7 @@ class Application:
         self._download_queue = queue.Queue()
         self.geocoder = None
         self.history = poor.HistoryManager()
+        self.narrative = poor.Narrative()
         self.router = None
         self._tilecollection = poor.TileCollection()
         self.tilesource = None
