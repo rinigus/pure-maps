@@ -19,7 +19,9 @@ Requires: qt5-qtdeclarative-import-positioning
 Requires: sailfishsilica-qt5
 
 %description
-An application to display maps and stuff.
+Poor Maps is an application for Sailfish OS to display tiled maps
+(e.g. OpenStreetMap), places and routes with a flexible selection
+of data and service providers.
 
 %prep
 %setup -q

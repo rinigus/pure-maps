@@ -2,12 +2,13 @@ Poor Maps 0.6
 =============
 
  [ ] Add narration of routing maneuvers
-     - Update loading and saving maneuvers
-     - Lower MapQuest Open generalize to 5?
+ [ ] Default routing "From" field to current position
 
 Poor Maps 1.0
 =============
 
+ * Add proper icons for different turn types
+   - Compare: http://stackoverflow.com/questions/17941812
  * Add reverse geocoding?
  * Save pagestack to allow returning to geocoding or routing results
  * Allow tapping on markers

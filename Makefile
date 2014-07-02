@@ -11,7 +11,8 @@ icondir    = $(DESTDIR)$(PREFIX)/share/icons/hicolor/86x86/apps
 .PHONY: clean dist install rpm
 
 clean:
-	rm -rf dist __pycache__ */__pycache__ */*/__pycache__
+	rm -rf dist
+	rm -rf __pycache__ */__pycache__ */*/__pycache__
 	rm -f rpm/*.rpm
 
 dist:
