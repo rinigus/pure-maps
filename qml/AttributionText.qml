@@ -19,7 +19,6 @@
 import QtQuick 2.0
 
 Text {
-    id: attribution
     anchors.bottom: parent.bottom
     anchors.margins: 10
     anchors.right: parent.right

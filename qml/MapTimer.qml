@@ -19,7 +19,6 @@
 import QtQuick 2.0
 
 Timer {
-    id: timer
     interval: 500
     repeat: true
     onTriggered: map.changed && map.updateTiles();
