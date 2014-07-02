@@ -117,7 +117,7 @@ def parse_line(code):
 
 def parse_maneuvers(legs):
     """Parse a list of maneuvers from parsed legs of a route."""
-    maneuvers = dict(x=[], y=[], narrative=[])
+    maneuvers = []
     prev_vehicle = False
     for leg in legs:
         this_vehicle = (leg["mode"] != "walk")
@@ -129,15 +129,16 @@ def parse_maneuvers(legs):
             narrative = "Board {mode} {line} at {dep_name} at {dep_time}."
         if not prev_vehicle and not this_vehicle:
             narrative = "Walk towards {arr_name}."
-        maneuvers["x"].append(legs[0]["dep_x"])
-        maneuvers["y"].append(legs[0]["dep_y"])
-        maneuvers["narrative"].append(narrative.format(**leg))
+        maneuvers.append(dict(x=legs[0]["dep_x"],
+                              y=legs[0]["dep_y"],
+                              narrative=narrative.format(**leg)))
+
         prev_vehicle = this_vehicle
     if legs:
-        maneuvers["x"].append(legs[-1]["arr_x"])
-        maneuvers["y"].append(legs[-1]["arr_y"])
-        narrative = "Arrive at your destination."
-        maneuvers["narrative"].append(narrative)
+        maneuvers.append(dict(x=legs[-1]["arr_x"],
+                              y=legs[-1]["arr_y"],
+                              narrative="Arrive at your destination."))
+
     return maneuvers
 
 def parse_time(code):
