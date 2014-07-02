@@ -27,4 +27,5 @@ MapQuickItem {
         source: "icons/maneuver.png"
     }
     z: 201
+    property string narrative: ""
 }
