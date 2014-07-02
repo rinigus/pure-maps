@@ -38,11 +38,21 @@ Canvas {
     width: parent.width
     z: 200
 
-    property bool initDone: false
     property var  paintX: 0
     property var  paintY: 0
     property var  path: {"x": [], "y": []}
     property var  simplePaths: {}
+
+    Component.onCompleted: {
+        // Initialize context line appearance properties.
+        py.onReadyChanged.connect(function() {
+            canvas.context.globalAlpha = py.evaluate("poor.conf.route_alpha");
+            canvas.context.lineWidth = py.evaluate("poor.conf.route_width");
+            canvas.context.strokeStyle = py.evaluate("poor.conf.route_color");
+            canvas.context.lineCap = "round";
+            canvas.context.lineJoin = "round";
+        })
+    }
 
     onPaint: {
         // Clear the whole canvas and redraw entire route.
@@ -59,7 +69,6 @@ Canvas {
             return canvas.simplify(zoom);
         }
         var spath = canvas.simplePaths[key];
-        canvas.initDone || canvas.initContextProperties();
         canvas.context.beginPath();
         var bbox = map.getBoundingBox();
         var maxLength = Math.min(map.widthCoords, map.heightCoords);
@@ -113,17 +122,6 @@ Canvas {
         canvas.simplePaths = {};
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         canvas.requestPaint();
-    }
-
-    function initContextProperties() {
-        // Initialize context line appearance properties.
-        if (!py.ready) return;
-        canvas.context.globalAlpha = py.evaluate("poor.conf.route_alpha");
-        canvas.context.lineWidth = py.evaluate("poor.conf.route_width");
-        canvas.context.strokeStyle = py.evaluate("poor.conf.route_color");
-        canvas.context.lineCap = "round";
-        canvas.context.lineJoin = "round";
-        canvas.initDone = true;
     }
 
     function redraw() {
