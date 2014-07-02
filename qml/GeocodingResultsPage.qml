@@ -118,20 +118,17 @@ Page {
         var bbox = map.getBoundingBox();
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
-        py.call("poor.app.geocoder.geocode",
-                [query, x, y],
-                function(results) {
-                    if (results.length > 0) {
-                        page.title = results.length == 1 ?
-                            "1 Result" : results.length + " Results";
-                        for (var i = 0; i < results.length; i++)
-                            listModel.append(results[i]);
-                    } else {
-                        page.title = "";
-                        busyLabel.text = "Nothing found"
-                    }
-                    page.loading = false;
-                });
-
+        py.call("poor.app.geocoder.geocode", [query, x, y], function(results) {
+            if (results.length > 0) {
+                page.title = results.length == 1 ?
+                    "1 Result" : results.length + " Results";
+                for (var i = 0; i < results.length; i++)
+                    listModel.append(results[i]);
+            } else {
+                page.title = "";
+                busyLabel.text = "Nothing found"
+            }
+            page.loading = false;
+        });
     }
 }

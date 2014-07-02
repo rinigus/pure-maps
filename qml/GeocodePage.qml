@@ -58,9 +58,7 @@ Page {
             }
             function remove() {
                 remorseAction("Removing", function() {
-                    py.call_sync("poor.app.history.remove_place",
-                                 [model.place]);
-
+                    py.call_sync("poor.app.history.remove_place", [model.place]);
                     listView.model.remove(index);
                 })
             }
