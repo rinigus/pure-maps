@@ -42,7 +42,7 @@ class Maneuver:
         """Set distance at which maneuver node has been visited."""
         if dist < self._visited_dist:
             self._visited_dist = dist
-        # Settings these thresholds too tight will cause false positives
+        # Setting these thresholds too tight will cause false positives
         # with inaccurate positioning, e.g. indoors, tunnels etc.
         if self._visited_dist < 0.02 and dist > 0.2:
             self.passed = True

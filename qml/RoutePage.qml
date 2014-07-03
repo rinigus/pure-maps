@@ -25,10 +25,10 @@ Page {
     allowedOrientations: Orientation.All
     canNavigateForward: page.from && page.to
     property var from: null
-    property string fromText: "From"
+    property string fromText: ""
     property var params: {}
     property var to: null
-    property string toText: "To"
+    property string toText: ""
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
@@ -49,39 +49,33 @@ Page {
                     dialog.accepted.connect(function() {
                         usingButton.value = py.evaluate("poor.app.router.name");
                         column.addSetttings();
-                    })
+                    });
                 }
             }
-            ListItem {
-                id: fromItem
-                contentHeight: Theme.itemSizeSmall
-                ListItemLabel {
-                    color: fromItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: page.fromText
-                }
+            ValueButton {
+                id: fromButton
+                label: "From"
+                height: Theme.itemSizeSmall
+                value: page.fromText
+                width: parent.width
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
                         page.fromText = dialog.query;
-                    })
+                    });
                 }
             }
-            ListItem {
-                id: toItem
-                contentHeight: Theme.itemSizeSmall
-                ListItemLabel {
-                    color: toItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: page.toText
-                }
+            ValueButton {
+                id: toButton
+                label: "To"
+                height: Theme.itemSizeSmall
+                value: page.toText
+                width: parent.width
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
                         page.toText = dialog.query;
-                    })
+                    });
                 }
             }
             Component.onCompleted: column.addSetttings();
@@ -100,11 +94,13 @@ Page {
         }
         VerticalScrollDecorator {}
     }
+    Component.onCompleted: {
+        page.from = map.getPosition();
+        page.fromText = "Current position";
+    }
     onFromTextChanged: {
         if (page.fromText == "Current position") {
             page.from = map.getPosition();
-        } else if (page.fromText == "From") {
-            page.from = null;
         } else {
             page.from = page.fromText;
             py.call_sync("poor.app.history.add_place", [page.fromText]);
@@ -118,8 +114,6 @@ Page {
     onToTextChanged: {
         if (page.toText == "Current position") {
             page.to = map.getPosition();
-        } else if (page.toText == "To") {
-            page.to = null;
         } else {
             page.to = page.toText;
             py.call_sync("poor.app.history.add_place", [page.toText]);

@@ -5,7 +5,7 @@ Poor Maps 0.6
      - Map children vs. properties?
      - Show narrative only when near (2 min?)
      - Add preference item "Show routing narrative"
- [ ] Default routing "From" field to current position
+ [X] Default routing "From" field to current position
 
 Poor Maps 1.0
 =============

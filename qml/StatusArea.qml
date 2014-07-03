@@ -89,7 +89,7 @@ Rectangle {
         color: "white"
         font.pixelSize: Theme.fontSizeSmall
         height: statusArea.narrative != "" ?
-            implicitHeight + Theme.paddingMedium/2 : 0
+            implicitHeight + Theme.paddingMedium : 0
         text: statusArea.narrative
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
