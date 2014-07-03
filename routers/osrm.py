@@ -25,6 +25,22 @@ http://github.com/DennisOSRM/Project-OSRM/wiki/Server-api
 import json
 import poor
 
+ICONS = { 1: "alert",
+          2: "alert",
+          3: "alert",
+          4: "alert",
+          5: "alert",
+          6: "alert",
+          7: "alert",
+          8: "alert",
+          9: "alert",
+         10: "alert",
+         11: "alert",
+         12: "alert",
+         13: "alert",
+         14: "alert",
+         15: "alert"}
+
 NARRATIVE = { 1: "{turn} along {street}.",
               2: "{turn} onto {street}.",
               3: "{turn} onto {street}.",
@@ -71,6 +87,12 @@ URL = ("http://router.project-osrm.org/viaroute"
 checksum = None
 hints = {}
 
+def parse_icon(maneuver):
+    """Parse icon from `maneuver`."""
+    with poor.util.silent(ValueError, KeyError):
+        return ICONS[int(maneuver[0])]
+    return "alert"
+
 def parse_narrative(maneuver):
     """Parse narrative from `maneuver`."""
     try:
@@ -109,6 +131,7 @@ def route(fm, to, params):
     x, y = poor.util.decode_epl(result["route_geometry"], precision=6)
     maneuvers = [dict(x=x[int(maneuver[3])],
                       y=y[int(maneuver[3])],
+                      icon=parse_icon(maneuver),
                       narrative=parse_narrative(maneuver),
                       duration=float(maneuver[4]),
                       ) for maneuver in result["route_instructions"]]

@@ -35,6 +35,11 @@ CONF_DEFAULTS = {"transport_types": [
     "bus", "train", "metro", "tram", "service", "uline", "ferry"],
                  "optimize": "default"}
 
+ICONS = {"00": "alert",
+         "01": "alert",
+         "10": "alert",
+         "11": "alert"}
+
 MODES = {"walk": "walk",
             "1": "bus",
             "2": "tram",
@@ -52,6 +57,11 @@ MODES = {"walk": "walk",
            "25": "bus",
            "36": "bus",
            "37": "bus"}
+
+NARRATIVE = {"00": "Walk towards {arr_name}.",
+             "01": "Board {mode} {line} at {dep_name} at {dep_time}.",
+             "10": "Get off at {dep_name} and walk towards {arr_name}.",
+             "11": "Get off at {dep_name} and transfer to {mode} {line} at {dep_time}."}
 
 URL = ("http://api.reittiopas.fi/hsl/prod/"
        "?request=route"
@@ -122,33 +132,22 @@ def parse_maneuvers(legs):
     prev_vehicle = False
     for leg in legs:
         this_vehicle = (leg["mode"] != "walk")
-        narrative = parse_narrative(prev_vehicle, this_vehicle)
+        key = "{:d}{:d}".format(int(prev_vehicle), int(this_vehicle))
         maneuvers.append(dict(x=leg["dep_x"],
                               y=leg["dep_y"],
-                              narrative=narrative.format(**leg),
+                              icon=ICONS[key],
+                              narrative=NARRATIVE[key].format(**leg),
                               duration=leg["duration"]*60))
 
         prev_vehicle = this_vehicle
     if legs:
         maneuvers.append(dict(x=legs[-1]["arr_x"],
                               y=legs[-1]["arr_y"],
+                              icon="alert",
                               narrative="Arrive at your destination.",
                               duration=0))
 
     return maneuvers
-
-def parse_narrative(prev_vehicle, this_vehicle):
-    """Parse maneuver narrative boolean vehicle values."""
-    if not prev_vehicle and not this_vehicle:
-        return "Walk towards {arr_name}."
-    if not prev_vehicle and this_vehicle:
-        return "Board {mode} {line} at {dep_name} at {dep_time}."
-    if prev_vehicle and this_vehicle:
-        return "Get off at {dep_name} and transfer to {mode} {line} at {dep_time}."
-    if prev_vehicle and not this_vehicle:
-        return "Get off at {dep_name} and walk towards {arr_name}."
-    return ValueError("Bad arguments: {}, {}"
-                      .format(repr(prev_vehicle), repr(this_vehicle)))
 
 def parse_time(code):
     """Parse human readable time string from time code."""

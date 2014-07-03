@@ -28,6 +28,26 @@ import urllib.parse
 
 CONF_DEFAULTS = {"type": "fastest"}
 
+ICONS = { 0: "alert",
+          1: "alert",
+          2: "alert",
+          3: "alert",
+          4: "alert",
+          5: "alert",
+          6: "alert",
+          7: "alert",
+          8: "alert",
+          9: "alert",
+         10: "alert",
+         11: "alert",
+         12: "alert",
+         13: "alert",
+         14: "alert",
+         15: "alert",
+         16: "alert",
+         17: "alert",
+         18: "alert"}
+
 URL = ("http://open.mapquestapi.com/directions/v2/route"
        "?key=Fmjtd%7Cluur2quy2h%2Cbn%3Do5-9aasg4"
        "&ambiguities=ignore"
@@ -70,6 +90,7 @@ def route(fm, to, params):
         maneuvers.extend(leg["maneuvers"])
     maneuvers = [dict(x=float(maneuver["startPoint"]["lng"]),
                       y=float(maneuver["startPoint"]["lat"]),
+                      icon=ICONS[maneuver["turnType"]],
                       narrative=maneuver["narrative"],
                       duration=float(maneuver["time"]),
                       ) for maneuver in maneuvers]
