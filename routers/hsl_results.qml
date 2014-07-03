@@ -134,8 +134,7 @@ Page {
             onClicked: {
                 map.addRoute(listItem.result.x, listItem.result.y);
                 map.fitViewToRoute();
-                for (var i = 0; i < listItem.result.maneuvers.length; i++)
-                    map.addManeuver(listItem.result.maneuvers[i]);
+                map.addManeuvers(listItem.result.maneuvers);
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }
         }
@@ -180,20 +179,18 @@ Page {
     function populate() {
         // Load routing results from the Python backend.
         var routePage = app.pageStack.previousPage();
-        py.call("poor.app.router.route",
-                [routePage.from, routePage.to, routePage.params],
-                function(results) {
-                    if (results && results.length > 0) {
-                        page.title = "Results";
-                        page.results = results;
-                        for (var i = 0; i < results.length; i++)
-                            listModel.append(results[i]);
-                    } else {
-                        page.title = "";
-                        busyLabel.text = "No route found"
-                    }
-                    page.loading = false;
-                });
-
+        var args = [routePage.from, routePage.to, routePage.params];
+        py.call("poor.app.router.route", args, function(results) {
+            if (results && results.length > 0) {
+                page.title = "Results";
+                page.results = results;
+                for (var i = 0; i < results.length; i++)
+                    listModel.append(results[i]);
+            } else {
+                page.title = "";
+                busyLabel.text = "No route found"
+            }
+            page.loading = false;
+        });
     }
 }

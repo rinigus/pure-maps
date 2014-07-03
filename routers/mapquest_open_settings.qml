@@ -35,10 +35,8 @@ Column {
         }
         onCurrentIndexChanged: {
             var index = typeComboBox.currentIndex;
-            py.call_sync("poor.conf.set",
-                         ["routers.mapquest_open.type",
-                          typeComboBox.keys[index]]);
-
+            var args = ["routers.mapquest_open.type", typeComboBox.keys[index]];
+            py.call_sync("poor.conf.set", args);
         }
     }
 }

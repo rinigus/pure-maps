@@ -101,21 +101,15 @@ Column {
             MenuItem { text: "Least transfers" }
             MenuItem { text: "Least walking" }
         }
-        property var keys: ["default",
-                            "fastest",
-                            "least_transfers",
-                            "least_walking"]
-
+        property var keys: ["default", "fastest", "least_transfers", "least_walking"]
         Component.onCompleted: {
             var key = py.evaluate("poor.conf.routers.hsl.optimize");
             prefComboBox.currentIndex = prefComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
             var index = prefComboBox.currentIndex;
-            py.call_sync("poor.conf.set",
-                         ["routers.hsl.optimize",
-                          prefComboBox.keys[index]]);
-
+            var args = ["routers.hsl.optimize", prefComboBox.keys[index]];
+            py.call_sync("poor.conf.set", args);
         }
     }
     Row {
@@ -133,10 +127,9 @@ Column {
                 icon.source: "hsl/" + repeater.keys[index] + ".png"
                 width: parent.width/5
                 Component.onCompleted: {
-                    vehicleSwitch.checked = py.call_sync("poor.conf.set_contains",
-                                                         [repeater.path,
-                                                          repeater.keys[index]]);
-
+                    var args = [repeater.path, repeater.keys[index]];
+                    vehicleSwitch.checked =
+                        py.call_sync("poor.conf.set_contains", args);
                 }
                 onCheckedChanged: {
                     var fun = vehicleSwitch.checked ?

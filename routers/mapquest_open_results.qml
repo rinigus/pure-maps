@@ -51,23 +51,20 @@ Page {
     }
     function findRoute() {
         var routePage = app.pageStack.previousPage();
-        py.call("poor.app.router.route",
-                [routePage.from, routePage.to],
-                function(route) {
-                    if (route &&
-                        route.hasOwnProperty("x") &&
-                        route.x.length > 0) {
-                        map.addRoute(route.x, route.y);
-                        map.fitViewToRoute();
-                        for (var i = 0; i < route.maneuvers.length; i++)
-                            map.addManeuver(route.maneuvers[i]);
-                        app.pageStack.pop(mapPage, PageStackAction.Immediate);
-                        page.loading = false;
-                    } else {
-                        busyLabel.text = "No route found";
-                        page.loading = false;
-                    }
-                });
-
+        var args = [routePage.from, routePage.to];
+        py.call("poor.app.router.route", args, function(route) {
+            if (route &&
+                route.hasOwnProperty("x") &&
+                route.x.length > 0) {
+                map.addRoute(route.x, route.y);
+                map.fitViewToRoute();
+                map.addManeuvers(route.maneuvers);
+                app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                page.loading = false;
+            } else {
+                busyLabel.text = "No route found";
+                page.loading = false;
+            }
+        });
     }
 }
