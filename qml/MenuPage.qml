@@ -153,7 +153,7 @@ Page {
                 height: Theme.itemSizeSmall
                 text: "Auto-center on position"
                 onCheckedChanged: {
-                    map.setAutoCenter(autoCenterItem.checked);
+                    map.autoCenter = autoCenterItem.checked;
                     py.call_sync("poor.conf.set", ["auto_center", map.autoCenter]);
                     map.autoCenter && map.centerOnPosition();
                 }
