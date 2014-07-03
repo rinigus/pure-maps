@@ -26,23 +26,26 @@ class Maneuver:
 
     """A routing maneuver."""
 
-    def __init__(self, x, y):
+    def __init__(self, **kwargs):
         """Initialize a :class:`Maneuver` instance."""
+        self.icon = "alert"
         self.narrative = ""
-        self.node = 0
+        self.node = None
         self.passed = False
         self._visited_dist = 40000
-        self.x = x
-        self.y = y
+        self.x = None
+        self.y = None
+        for name in set(kwargs) & set(dir(self)):
+            setattr(self, name, kwargs[name])
 
     def set_visited(self, dist):
         """Set distance at which maneuver node has been visited."""
         if dist < self._visited_dist:
             self._visited_dist = dist
-        # XXX: This probably needs some tuning.
-        if self._visited_dist < 0.05:
-            if dist > 2*self._visited_dist and dist > 0.01:
-                self.passed = True
+        # Settings these thresholds too tight will cause false positives
+        # with inaccurate positioning, e.g. indoors, tunnels etc.
+        if self._visited_dist < 0.02 and dist > 0.2:
+            self.passed = True
 
 
 class Narrative:
@@ -53,6 +56,7 @@ class Narrative:
         """Initialize a :class:`Narrative` instance."""
         self.dist = []
         self.maneuver = []
+        self.time = []
         self.x = []
         self.y = []
 
@@ -69,32 +73,37 @@ class Narrative:
                 min_sq_dist = dist
         return min_index
 
-    def get_display(self, x, y, speed):
+    def get_display(self, x, y):
         """Return a dictionary of status details to display."""
-        # Calculate advance in kilometers when to show narrative
-        # of a particular maneuver based on speed and time.
-        advance = speed * 3/60
+        if not self.ready: return None
         node = self.get_closest_node(x, y)
-        dist = self.dist[node]
+        dest_dist = self.dist[node]
+        dest_time = self.time[node]
         if node == len(self.dist) - 1:
             # Use exact straight-line value at the very end.
-            dist = poor.util.calculate_distance(
+            dest_dist = poor.util.calculate_distance(
                 x, y, self.x[node], self.y[node])
-        dist_label = poor.util.format_distance(dist, 2, "km")
-        man = self._get_maneuver_display(x, y, node, advance)
-        man_dist, man_dist_label, narrative = man
-        return dict(dist=dist,
-                    dist_label=dist_label,
+        dest_dist = poor.util.format_distance(dest_dist, 2)
+        dest_time = poor.util.format_time(dest_time)
+        man = self._get_maneuver_display(x, y, node)
+        man_dist, man_time, icon, narrative = man
+        if man_dist is not None:
+            man_dist = poor.util.format_distance(man_dist, 2)
+            man_time = poor.util.format_time(man_time)
+        return dict(dest_dist=dest_dist,
+                    dest_time=dest_time,
                     man_dist=man_dist,
-                    man_dist_label=man_dist_label,
+                    man_time=man_time,
+                    icon=icon,
                     narrative=narrative)
 
-    def _get_maneuver_display(self, x, y, node, advance):
+    def _get_maneuver_display(self, x, y, node):
         """Return maneuver details to display."""
         if self.maneuver[node] is None:
-            return None, None, None
-        maneuver = self.maneuvers[node]
+            return None, None, None, None
+        maneuver = self.maneuver[node]
         man_dist = self.dist[node] - self.dist[maneuver.node]
+        man_time = self.time[node] - self.time[maneuver.node]
         if node == maneuver.node:
             # Use exact straight-line value at the very end.
             man_dist = poor.util.calculate_distance(
@@ -103,28 +112,60 @@ class Narrative:
             if maneuver.passed and node+1 < len(self.x):
                 # If the maneuver point has been passed,
                 # show the next maneuver narrative if applicable.
-                return self._get_maneuver_display(x, y, node+1, advance)
-        man_dist_label = poor.util.format_distance(man_dist, 2, "km")
-        narrative = (maneuver.narrative if man_dist < advance else None)
-        return man_dist, man_dist_label, narrative
+                return self._get_maneuver_display(x, y, node+1)
+        return man_dist, man_time, maneuver.icon, maneuver.narrative
 
-    def set_maneuvers(self, x, y, narrative):
+    @property
+    def ready(self):
+        """Return ``True`` if narrative is in steady state and ready for use."""
+        return (self.x and
+                len(self.x) ==
+                len(self.y) ==
+                len(self.dist) ==
+                len(self.time) ==
+                len(self.maneuver))
+
+    def set_maneuvers(self, maneuvers):
         """Set maneuver points and corresponding narrative."""
-        for i in reversed(range(len(x))):
-            maneuver = Maneuver(x[i], y[i])
-            maneuver.node = self.get_closest_node(x[i], y[i])
-            maneuver.narrative = narrative
+        prev_maneuver = None
+        for i in reversed(range(len(maneuvers))):
+            maneuver = Maneuver(**maneuvers[i])
+            maneuver.node = self.get_closest_node(maneuver.x, maneuver.y);
             self.maneuver[maneuver.node] = maneuver
-            # Assign maneuver to all preceding nodes as well.
+            # Assign maneuver to preceding nodes as well.
             for j in reversed(range(maneuver.node)):
                 self.maneuver[j] = maneuver
+                if self.dist[j] - self.dist[maneuver.node] > 10: break
+            # Calculate time remaining to destination for each node
+            # based on durations of individual legs following given maneuvers.
+            if prev_maneuver is not None:
+                dist = self.dist[maneuver.node] - self.dist[prev_maneuver.node]
+                speed = dist / max(1, maneuvers[i]["duration"]) # km/s
+                for j in reversed(range(maneuver.node, prev_maneuver.node)):
+                    dist = self.dist[j] - self.dist[j+1]
+                    self.time[j] = self.time[j+1] + dist/speed
+            prev_maneuver = maneuver
 
     def set_route(self, x, y):
         """Set route from coordinates."""
         self.x = x
         self.y = y
         self.dist = [0] * len(x)
+        self.time = [0] * len(x)
         self.maneuver = [None] * len(x)
         for i in reversed(range(len(x)-1)):
             dist = poor.util.calculate_distance(x[i], y[i], x[i+1], y[i+1])
             self.dist[i] = self.dist[i+1] + dist
+            # Calculate remaining time using 120 km/h, which will maximize
+            # the advance at which maneuver notifications are shown.
+            # See 'set_maneuvers' for the actual leg-specific times
+            # that should in most cases overwrite these.
+            self.time[i] = self.time[i+1] + (dist/120)*3600
+
+    def unset(self):
+        """Unset route and maneuvers."""
+        self.dist = []
+        self.maneuver = []
+        self.time = []
+        self.x = []
+        self.y = []

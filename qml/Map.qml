@@ -45,15 +45,17 @@ Map {
     property real zoomLevelPrev: 8
 
     AttributionText { id: attribution }
-    MapTimer { id: timer }
+    MapTimer { id: mapTimer }
     MenuButton { id: menuButton }
+    NarrationTimer { id: narrationTimer }
     Route { id: route }
+    StatusArea { id: statusArea }
 
     Component.onCompleted: {
         // Load default values and start periodic updates.
         py.onReadyChanged.connect(function() {
-            map.setAttribution(py.evaluate("poor.app.tilesource.attribution"));
-            map.setAutoCenter(py.evaluate("poor.conf.auto_center"));
+            attribution.text = py.evaluate("poor.app.tilesource.attribution");
+            map.autoCenter = py.evaluate("poor.conf.auto_center");
             var center = py.evaluate("poor.conf.center");
             map.setCenter(center[0], center[1]);
             map.setZoomLevel(py.evaluate("poor.conf.zoom"));
@@ -102,13 +104,21 @@ Map {
             map.centerOnPosition();
     }
 
-    function addManeuver(props) {
-        // Add new maneuver marker to map.
-        var component = Qt.createComponent("ManeuverMarker.qml");
-        var maneuver = component.createObject(map);
-        maneuver.coordinate = QtPositioning.coordinate(props.y, props.x);
-        map.maneuvers.push(maneuver);
-        map.addMapItem(maneuver);
+    function addManeuvers(maneuvers) {
+        // Add new maneuver markers to map.
+        for (var i = 0; i < maneuvers.length; i++) {
+            var component = Qt.createComponent("ManeuverMarker.qml");
+            var maneuver = component.createObject(map);
+            var x = maneuvers[i].x;
+            var y = maneuvers[i].y;
+            maneuver.coordinate = QtPositioning.coordinate(y, x);
+            maneuver.icon = maneuvers[i].icon;
+            maneuver.narrative = maneuvers[i].narrative;
+            maneuver.duration = maneuvers[i].duration;
+            map.maneuvers.push(maneuver);
+            map.addMapItem(maneuver);
+        }
+        py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
     }
 
     function addPoi(x, y) {
@@ -126,8 +136,14 @@ Map {
             map.removeMapItem(map.maneuvers[i]);
         map.maneuvers = [];
         route.clear();
+        narrationTimer.stop();
+        py.call_sync("poor.app.narrative.unset", []);
+        map.setRoutingStatus(null);
         route.setPath(x, y);
         route.redraw();
+        py.call("poor.app.narrative.set_route", [x, y], function() {
+            narrationTimer.start();
+        });
     }
 
     function addTile(uid, x, y, zoom, uri) {
@@ -156,6 +172,9 @@ Map {
             map.removeMapItem(map.maneuvers[i]);
         map.maneuvers = [];
         route.clear();
+        narrationTimer.stop();
+        py.call_sync("poor.app.narrative.unset", []);
+        map.setRoutingStatus(null);
         for (var i = 0; i < map.pois.length; i++)
             map.removeMapItem(map.pois[i]);
         map.pois = [];
@@ -234,12 +253,17 @@ Map {
 
     }
 
+    function hasRoute() {
+        // Return true if a route is visible.
+        return route.path.x.length > 0;
+    }
+
     function loadManeuvers() {
         // Load maneuvers from JSON file.
         if (!py.ready) return;
         py.call("poor.storage.read_maneuvers", [], function(data) {
-            for (var i = 0; i < data.length; i++)
-                map.addManeuver(data[i]);
+            if (data && data.length > 0)
+                map.addManeuvers(data);
         });
     }
 
@@ -290,7 +314,10 @@ Map {
         var data = [];
         for (var i = 0; i < map.maneuvers.length; i++)
             data.push({"x": map.maneuvers[i].coordinate.longitude,
-                       "y": map.maneuvers[i].coordinate.latitude});
+                       "y": map.maneuvers[i].coordinate.latitude,
+                       "icon": map.maneuvers[i].icon,
+                       "narrative": map.maneuvers[i].narrative,
+                       "duration": map.maneuvers[i].duration});
 
         py.call_sync("poor.storage.write_maneuvers", [data]);
     }
@@ -323,17 +350,31 @@ Map {
         attribution.text = text;
     }
 
-    function setAutoCenter(autoCenter) {
-        // Set to keep centering map on GPS position.
-        map.autoCenter = autoCenter;
-    }
-
     function setCenter(x, y) {
         // Set the current center position.
         if (!x || !y) return;
         map.center.longitude = x;
         map.center.latitude = y;
         map.changed = true;
+    }
+
+    function setRoutingStatus(status) {
+        // Set values of labels in the navigation status area.
+        if (status) {
+            statusArea.destDist  = status.dest_dist || "";
+            statusArea.destTime  = status.dest_time || "";
+            statusArea.icon      = status.icon      || "";
+            statusArea.manDist   = status.man_dist  || "";
+            statusArea.manTime   = status.man_time  || "";
+            statusArea.narrative = status.narrative || "";
+        } else {
+            statusArea.destDist  = "";
+            statusArea.destTime  = "";
+            statusArea.icon      = "";
+            statusArea.manDist   = "";
+            statusArea.manTime   = "";
+            statusArea.narrative = "";
+        }
     }
 
     function setZoomLevel(zoom) {
@@ -365,7 +406,8 @@ Map {
     function start() {
         // Start periodic tile and position updates.
         map.gps.start();
-        timer.start();
+        mapTimer.start();
+        map.hasRoute() && narrationTimer.start();
     }
 
     function stop() {
@@ -379,7 +421,8 @@ Map {
         map.saveRoute();
         map.saveManeuvers();
         map.gps.stop();
-        timer.stop();
+        mapTimer.stop();
+        narrationTimer.stop();
     }
 
     function updateTiles() {
