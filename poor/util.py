@@ -144,6 +144,14 @@ def format_distance(distance, n, units="km"):
     fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
     return fstring.format(distance, units)
 
+def format_time(seconds):
+    """Format `time` to format ``# h # min``."""
+    hours = int(seconds/3600)
+    minutes = round((seconds % 3600) / 60)
+    if hours == 0:
+        return "{:d} min".format(minutes)
+    return "{:d} h {:d} min".format(hours, minutes)
+
 def get_geocoders():
     """Return a list of dictionaries of geocoder attributes."""
     geocoders = []
