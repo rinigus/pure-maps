@@ -90,7 +90,7 @@ def route(fm, to, params):
         maneuvers.extend(leg["maneuvers"])
     maneuvers = [dict(x=float(maneuver["startPoint"]["lng"]),
                       y=float(maneuver["startPoint"]["lat"]),
-                      icon=ICONS[maneuver["turnType"]],
+                      icon=ICONS.get(maneuver["turnType"], "alert"),
                       narrative=maneuver["narrative"],
                       duration=float(maneuver["time"]),
                       ) for maneuver in maneuvers]
