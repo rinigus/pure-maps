@@ -37,7 +37,7 @@ URL = ("http://open.mapquestapi.com/directions/v2/route"
        "&routeType={type}"
        "&doReverseGeocode=false"
        "&shapeFormat=cmp"
-       "&generalize=8"
+       "&generalize=5"
        "&manMaps=false")
 
 cache = {}
@@ -48,8 +48,7 @@ def prepare_endpoint(point):
     # but it doesn't seem to understand as many addresses as Nominatim.
     # Hence, let's use Nominatim and feed coordinates to MapQuest.
     if isinstance(point, str):
-        geocoder = poor.Geocoder("nominatim")
-        results = geocoder.geocode(point)
+        results = poor.Geocoder("nominatim").geocode(point)
         with poor.util.silent(LookupError):
             point = (results[0]["x"], results[0]["y"])
     if isinstance(point, (list, tuple)):
@@ -72,6 +71,7 @@ def route(fm, to, params):
     maneuvers = [dict(x=float(maneuver["startPoint"]["lng"]),
                       y=float(maneuver["startPoint"]["lat"]),
                       narrative=maneuver["narrative"],
+                      duration=float(maneuver["time"]),
                       ) for maneuver in maneuvers]
 
     route = {"x": x, "y": y, "maneuvers": maneuvers}

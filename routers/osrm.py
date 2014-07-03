@@ -87,8 +87,7 @@ def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
     # OSRM requires coordinates, let's geocode using Nominatim.
     if isinstance(point, str):
-        geocoder = poor.Geocoder("nominatim")
-        results = geocoder.geocode(point)
+        results = poor.Geocoder("nominatim").geocode(point)
         point = (results[0]["x"], results[0]["y"])
     point = "{:.6f},{:.6f}".format(point[1], point[0])
     return (point, ("{}&hint={}".format(point, hints[point])
@@ -111,6 +110,7 @@ def route(fm, to, params):
     maneuvers = [dict(x=x[int(maneuver[3])],
                       y=y[int(maneuver[3])],
                       narrative=parse_narrative(maneuver),
+                      duration=float(maneuver[4]),
                       ) for maneuver in result["route_instructions"]]
 
     return {"x": x, "y": y, "maneuvers": maneuvers}

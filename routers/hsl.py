@@ -72,27 +72,28 @@ def parse_legs(result):
     """Parse legs from routing result."""
     items = []
     for leg in result["legs"]:
-        item = dict(mode=MODES.get(leg["type"]),
-                    line=parse_line(leg.get("code", "")),
-                    length=float(leg["length"]),
-                    dep_name="",
-                    dep_x=float(leg["locs"][0]["coord"]["x"]),
-                    dep_y=float(leg["locs"][0]["coord"]["y"]),
-                    dep_time=parse_time(leg["locs"][0]["depTime"]),
-                    dep_unix=parse_unix_time(leg["locs"][0]["depTime"]),
-                    arr_name="",
-                    arr_x=float(leg["locs"][-1]["coord"]["x"]),
-                    arr_y=float(leg["locs"][-1]["coord"]["y"]),
-                    arr_time=parse_time(leg["locs"][-1]["arrTime"]),
-                    arr_unix=parse_unix_time(leg["locs"][-1]["arrTime"]))
+        item = dict(
+            mode=MODES[leg["type"]],
+            color=COLORS[MODES[leg["type"]]],
+            line=parse_line(leg.get("code", "")),
+            length=float(leg["length"]),
+            dep_name="",
+            dep_x=float(leg["locs"][0]["coord"]["x"]),
+            dep_y=float(leg["locs"][0]["coord"]["y"]),
+            dep_time=parse_time(leg["locs"][0]["depTime"]),
+            dep_unix=parse_unix_time(leg["locs"][0]["depTime"]),
+            arr_name="",
+            arr_x=float(leg["locs"][-1]["coord"]["x"]),
+            arr_y=float(leg["locs"][-1]["coord"]["y"]),
+            arr_time=parse_time(leg["locs"][-1]["arrTime"]),
+            arr_unix=parse_unix_time(leg["locs"][-1]["arrTime"]))
 
         # Calculate duration separately to match departure and
         # arrival times rounded at one minute accuracy.
         item["duration"] = item["arr_unix"] - item["dep_unix"]
-        item["color"] = COLORS[item["mode"]]
         names = [loc["name"] for loc in leg["locs"]]
         names = list(filter(None, names))
-        if names:
+        with poor.util.silent(IndexError):
             item["dep_name"] = names[0]
             item["arr_name"] = names[-1]
         items.append(item)
@@ -116,30 +117,38 @@ def parse_line(code):
     return line
 
 def parse_maneuvers(legs):
-    """Parse a list of maneuvers from parsed legs of a route."""
+    """Parse list of maneuvers from parsed legs of a route."""
     maneuvers = []
     prev_vehicle = False
     for leg in legs:
         this_vehicle = (leg["mode"] != "walk")
-        if prev_vehicle and this_vehicle:
-            narrative = "Get off at {dep_name} and transfer to {mode} {line} at {dep_time}."
-        if prev_vehicle and not this_vehicle:
-            narrative = "Get off at {dep_name} and walk towards {arr_name}."
-        if not prev_vehicle and this_vehicle:
-            narrative = "Board {mode} {line} at {dep_name} at {dep_time}."
-        if not prev_vehicle and not this_vehicle:
-            narrative = "Walk towards {arr_name}."
-        maneuvers.append(dict(x=legs[0]["dep_x"],
-                              y=legs[0]["dep_y"],
-                              narrative=narrative.format(**leg)))
+        narrative = parse_narrative(prev_vehicle, this_vehicle)
+        maneuvers.append(dict(x=leg["dep_x"],
+                              y=leg["dep_y"],
+                              narrative=narrative.format(**leg),
+                              duration=leg["duration"]*60))
 
         prev_vehicle = this_vehicle
     if legs:
         maneuvers.append(dict(x=legs[-1]["arr_x"],
                               y=legs[-1]["arr_y"],
-                              narrative="Arrive at your destination."))
+                              narrative="Arrive at your destination.",
+                              duration=0))
 
     return maneuvers
+
+def parse_narrative(prev_vehicle, this_vehicle):
+    """Parse maneuver narrative boolean vehicle values."""
+    if not prev_vehicle and not this_vehicle:
+        return "Walk towards {arr_name}."
+    if not prev_vehicle and this_vehicle:
+        return "Board {mode} {line} at {dep_name} at {dep_time}."
+    if prev_vehicle and this_vehicle:
+        return "Get off at {dep_name} and transfer to {mode} {line} at {dep_time}."
+    if prev_vehicle and not this_vehicle:
+        return "Get off at {dep_name} and walk towards {arr_name}."
+    return ValueError("Bad arguments: {}, {}"
+                      .format(repr(prev_vehicle), repr(this_vehicle)))
 
 def parse_time(code):
     """Parse human readable time string from time code."""
@@ -173,8 +182,7 @@ def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
     # Journey Planner requires coordinates, use corresponding geocoder.
     if isinstance(point, str):
-        geocoder = poor.Geocoder("hsl")
-        results = geocoder.geocode(point)
+        results = poor.Geocoder("hsl").geocode(point)
         point = (results[0]["x"], results[0]["y"])
     return "{:.6f},{:.6f}".format(point[0], point[1])
 
@@ -201,6 +209,6 @@ def route(fm, to, params):
         # Calculate duration separately to match departure and
         # arrival times rounded at one minute accuracy.
         dep = route["legs"][0]["dep_unix"]
-        arr = route["legs"][len(route["legs"])-1]["arr_unix"]
+        arr = route["legs"][-1]["arr_unix"]
         route["duration"] = arr - dep
     return routes
