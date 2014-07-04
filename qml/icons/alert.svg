@@ -43,10 +43,11 @@
     <inkscape:grid
        type="xygrid"
        id="grid10137"
-       empspacing="5"
+       empspacing="4"
        visible="true"
        enabled="true"
-       snapvisiblegridlinesonly="true" />
+       snapvisiblegridlinesonly="true"
+       dotted="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata1906">
@@ -56,7 +57,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
