@@ -30,52 +30,30 @@ Page {
             id: column
             width: parent.width
             PageHeader { title: "About Poor Maps" }
-            Label {
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+            ListItemLabel {
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
                 text: "version " + py.evaluate("poor.__version__")
-                verticalAlignment: Text.AlignVCenter
             }
-            Label {
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+            ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
                 linkColor: Theme.highlightColor
                 text: '<a href="http://github.com/otsaloma/poor-maps">http://github.com/otsaloma/poor-maps</a>'
-                verticalAlignment: Text.AlignVCenter
-                onLinkActivated: {
-                    Qt.openUrlExternally(link);
-                }
+                onLinkActivated: Qt.openUrlExternally(link);
             }
-            Label {
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+            ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
                 text: "Copyright © 2014 Osmo Salomaa"
-                verticalAlignment: Text.AlignVCenter
             }
-            Label {
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+            ListItemLabel {
                 color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + Theme.paddingLarge
                 text: "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later."
-                verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
             }
         }
