@@ -30,16 +30,21 @@ Map {
     minimumZoomLevel: 3
     plugin: MapPlugin {}
 
+    property var  attribution: attribution
     property bool autoCenter: false
     property bool changed: true
     property var  gps: PositionSource {}
     property real heightCoords: 0
     property var  maneuvers: []
+    property var  mapTimer: mapTimer
+    property var  narrationTimer: narrationTimer
     property var  pois: []
     property var  position: map.gps.position
     property var  positionMarker: PositionMarker {}
+    property var  route: route
     property real scaleX: 0
     property real scaleY: 0
+    property var  statusArea: statusArea
     property var  tiles: []
     property real widthCoords: 0
     property real zoomLevelPrev: 8
@@ -54,7 +59,7 @@ Map {
     Component.onCompleted: {
         // Load default values and start periodic updates.
         py.onReadyChanged.connect(function() {
-            attribution.text = py.evaluate("poor.app.tilesource.attribution");
+            map.attribution.text = py.evaluate("poor.app.tilesource.attribution");
             map.autoCenter = py.evaluate("poor.conf.auto_center");
             var center = py.evaluate("poor.conf.center");
             map.setCenter(center[0], center[1]);
@@ -135,14 +140,14 @@ Map {
         for (var i = 0; i < map.maneuvers.length; i++)
             map.removeMapItem(map.maneuvers[i]);
         map.maneuvers = [];
-        route.clear();
-        narrationTimer.stop();
+        map.route.clear();
+        map.narrationTimer.stop();
         py.call_sync("poor.app.narrative.unset", []);
         map.setRoutingStatus(null);
-        route.setPath(x, y);
-        route.redraw();
+        map.route.setPath(x, y);
+        map.route.redraw();
         py.call("poor.app.narrative.set_route", [x, y], function() {
-            narrationTimer.start();
+            map.narrationTimer.start();
         });
     }
 
@@ -171,8 +176,8 @@ Map {
         for (var i = 0; i < map.maneuvers.length; i++)
             map.removeMapItem(map.maneuvers[i]);
         map.maneuvers = [];
-        route.clear();
-        narrationTimer.stop();
+        map.route.clear();
+        map.narrationTimer.stop();
         py.call_sync("poor.app.narrative.unset", []);
         map.setRoutingStatus(null);
         for (var i = 0; i < map.pois.length; i++)
@@ -225,15 +230,15 @@ Map {
         // Set center and zoom so that the whole route is visible.
         // For simplicity, let's just check the endpoints.
         var coords = [];
-        if (route.path.x.length > 0) {
-            var x = route.path.x[0];
-            var y = route.path.y[0];
+        if (map.route.path.x.length > 0) {
+            var x = map.route.path.x[0];
+            var y = map.route.path.y[0];
             coords.push(QtPositioning.coordinate(y, x));
         }
-        var n = route.path.x.length;
+        var n = map.route.path.x.length;
         if (n > 1) {
-            var x = route.path.x[n-1];
-            var y = route.path.y[n-1];
+            var x = map.route.path.x[n-1];
+            var y = map.route.path.y[n-1];
             coords.push(QtPositioning.coordinate(y, x));
         }
         map.fitViewtoCoordinates(coords);
@@ -255,7 +260,7 @@ Map {
 
     function hasRoute() {
         // Return true if a route is visible.
-        return route.path.x.length > 0;
+        return map.route.path.x.length > 0;
     }
 
     function loadManeuvers() {
@@ -336,18 +341,13 @@ Map {
     function saveRoute() {
         // Save route to JSON file.
         if (!py.ready) return;
-        if (route.path.x && route.path.x.length > 0 &&
-            route.path.y && route.path.y.length > 0) {
-            var data = {"x": route.path.x, "y": route.path.y};
+        if (map.route.path.x && map.route.path.x.length > 0 &&
+            map.route.path.y && map.route.path.y.length > 0) {
+            var data = {"x": map.route.path.x, "y": map.route.path.y};
         } else {
             var data = {};
         }
         py.call_sync("poor.storage.write_route", [data]);
-    }
-
-    function setAttribution(text) {
-        // Set map copyright etc. attribution text.
-        attribution.text = text;
     }
 
     function setCenter(x, y) {
@@ -361,19 +361,19 @@ Map {
     function setRoutingStatus(status) {
         // Set values of labels in the navigation status area.
         if (status) {
-            statusArea.destDist  = status.dest_dist || "";
-            statusArea.destTime  = status.dest_time || "";
-            statusArea.icon      = status.icon      || "";
-            statusArea.manDist   = status.man_dist  || "";
-            statusArea.manTime   = status.man_time  || "";
-            statusArea.narrative = status.narrative || "";
+            map.statusArea.destDist  = status.dest_dist || "";
+            map.statusArea.destTime  = status.dest_time || "";
+            map.statusArea.icon      = status.icon      || "";
+            map.statusArea.manDist   = status.man_dist  || "";
+            map.statusArea.manTime   = status.man_time  || "";
+            map.statusArea.narrative = status.narrative || "";
         } else {
-            statusArea.destDist  = "";
-            statusArea.destTime  = "";
-            statusArea.icon      = "";
-            statusArea.manDist   = "";
-            statusArea.manTime   = "";
-            statusArea.narrative = "";
+            map.statusArea.destDist  = "";
+            map.statusArea.destTime  = "";
+            map.statusArea.icon      = "";
+            map.statusArea.manDist   = "";
+            map.statusArea.manTime   = "";
+            map.statusArea.narrative = "";
         }
     }
 
@@ -388,7 +388,7 @@ Map {
         map.heightCoords = bbox[3] - bbox[2];
         map.scaleX = map.width / map.widthCoords;
         map.scaleY = map.height / map.heightCoords;
-        route.redraw();
+        map.route.redraw();
         map.changed = true;
     }
 
@@ -406,8 +406,8 @@ Map {
     function start() {
         // Start periodic tile and position updates.
         map.gps.start();
-        mapTimer.start();
-        map.hasRoute() && narrationTimer.start();
+        map.mapTimer.start();
+        map.hasRoute() && map.narrationTimer.start();
     }
 
     function stop() {
@@ -421,8 +421,8 @@ Map {
         map.saveRoute();
         map.saveManeuvers();
         map.gps.stop();
-        mapTimer.stop();
-        narrationTimer.stop();
+        map.mapTimer.stop();
+        map.narrationTimer.stop();
     }
 
     function updateTiles() {

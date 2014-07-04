@@ -2,7 +2,6 @@ Poor Maps 0.6
 =============
 
  [ ] Add narration of routing maneuvers
-     - Map children vs. properties?
      - Show narrative only when near (2 min?)
      - Add preference item "Show routing narrative"
  [X] Default routing "From" field to current position
