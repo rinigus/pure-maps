@@ -137,7 +137,6 @@ class Narrative:
             # Assign maneuver to preceding nodes as well.
             for j in reversed(range(maneuver.node)):
                 self.maneuver[j] = maneuver
-                if self.dist[j] - self.dist[maneuver.node] > 10: break
             # Calculate time remaining to destination for each node
             # based on durations of individual legs following given maneuvers.
             if prev_maneuver is not None:
