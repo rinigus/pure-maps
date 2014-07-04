@@ -158,6 +158,26 @@ Page {
                     map.autoCenter && map.centerOnPosition();
                 }
             }
+            ListItemSwitch {
+                id: showNarrativeItem
+                anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
+                checked: py.evaluate("poor.conf.show_routing_narrative")
+                height: Theme.itemSizeSmall
+                text: "Show routing narrative"
+                onCheckedChanged: {
+                    map.showNarrative = showNarrativeItem.checked;
+                    py.call_sync("poor.conf.set",
+                                 ["show_routing_narrative",
+                                  map.showNarrative]);
+
+                    if (map.showNarrative) {
+                        map.hasRoute() && map.narrationTimer.start();
+                    } else {
+                        map.narrationTimer.stop();
+                        map.setRoutingStatus(null);
+                    }
+                }
+            }
             ListItem {
                 id: aboutItem
                 contentHeight: Theme.itemSizeSmall

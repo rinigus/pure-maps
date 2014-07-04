@@ -34,6 +34,7 @@ DEFAULTS = {
     "route_color": "#0540FF",
     "route_width": 10,
     "router": "mapquest_open",
+    "show_routing_narrative": True,
     "tilesource": "mapquest_open",
     "zoom": 15,
 }

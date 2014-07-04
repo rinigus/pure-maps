@@ -44,6 +44,7 @@ Map {
     property var  route: route
     property real scaleX: 0
     property real scaleY: 0
+    property bool showNarrative: true
     property var  statusArea: statusArea
     property var  tiles: []
     property real widthCoords: 0
@@ -61,6 +62,7 @@ Map {
         py.onReadyChanged.connect(function() {
             map.attribution.text = py.evaluate("poor.app.tilesource.attribution");
             map.autoCenter = py.evaluate("poor.conf.auto_center");
+            map.showNarrative = py.evaluate("poor.conf.show_routing_narrative");
             var center = py.evaluate("poor.conf.center");
             map.setCenter(center[0], center[1]);
             map.setZoomLevel(py.evaluate("poor.conf.zoom"));
@@ -147,7 +149,7 @@ Map {
         map.route.setPath(x, y);
         map.route.redraw();
         py.call("poor.app.narrative.set_route", [x, y], function() {
-            map.narrationTimer.start();
+            map.showNarrative && map.narrationTimer.start();
         });
     }
 
@@ -407,7 +409,8 @@ Map {
         // Start periodic tile and position updates.
         map.gps.start();
         map.mapTimer.start();
-        map.hasRoute() && map.narrationTimer.start();
+        if (map.hasRoute() && map.showNarrative)
+            map.narrationTimer.start();
     }
 
     function stop() {
