@@ -2,7 +2,6 @@ Poor Maps 0.6
 =============
 
  [ ] Add narration of routing maneuvers
-     - Show narrative only when near (2 min?)
  [X] Default routing "From" field to current position
 
 Poor Maps 1.0
