@@ -128,6 +128,7 @@ def parse_line(code):
 
 def parse_maneuvers(legs):
     """Parse list of maneuvers from parsed legs of a route."""
+    if not legs: return []
     maneuvers = []
     prev_vehicle = False
     for leg in legs:
@@ -140,12 +141,11 @@ def parse_maneuvers(legs):
                               duration=leg["duration"]*60))
 
         prev_vehicle = this_vehicle
-    if legs:
-        maneuvers.append(dict(x=legs[-1]["arr_x"],
-                              y=legs[-1]["arr_y"],
-                              icon="alert",
-                              narrative="Arrive at your destination.",
-                              duration=0))
+    maneuvers.append(dict(x=legs[-1]["arr_x"],
+                          y=legs[-1]["arr_y"],
+                          icon="alert",
+                          narrative="Arrive at your destination.",
+                          duration=0))
 
     return maneuvers
 

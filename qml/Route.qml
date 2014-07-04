@@ -38,10 +38,10 @@ Canvas {
     width: parent.width
     z: 200
 
-    property var  paintX: 0
-    property var  paintY: 0
-    property var  path: {"x": [], "y": []}
-    property var  simplePaths: {}
+    property var paintX: 0
+    property var paintY: 0
+    property var path: {"x": [], "y": []}
+    property var simplePaths: {}
 
     Component.onCompleted: {
         // Initialize context line appearance properties.

@@ -23,12 +23,12 @@ Timer {
     interval: 3000
     repeat: true
     triggeredOnStart: true
-    property real prevX: 0
-    property real prevY: 0
+    property real prevX: -1
+    property real prevY: -1
     onRunningChanged: {
         // Always update after changing timer state.
-        timer.prevX = 0;
-        timer.prevY = 0;
+        timer.prevX = -1;
+        timer.prevY = -1;
     }
     onTriggered: {
         // Query maneuver narrative from Python and update status.

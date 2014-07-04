@@ -40,9 +40,9 @@ Rectangle {
         id: iconImage
         anchors.left: parent.left
         fillMode: Image.Pad
-        height: statusArea.narrative != "" ?
+        height: statusArea.icon != "" ?
             Math.max(implicitHeight +
-                     2*Theme.paddingLarge,
+                     Theme.paddingLarge*2,
                      manLabel.height +
                      narrativeLabel.height +
                      Theme.paddingMedium/2): 0
@@ -52,20 +52,20 @@ Rectangle {
             "icons/" + statusArea.icon + ".png" :
             "icons/alert.png"
         verticalAlignment: Image.AlignVCenter
-        width: statusArea.narrative != "" ?
+        width: statusArea.icon != "" ?
             implicitWidth + 2*Theme.paddingLarge :
             Theme.paddingMedium
     }
     Label {
         id: manLabel
         anchors.left: iconImage.right
-        color: Theme.highlightColor
+        color: statusArea.narrative != "" ?
+            Theme.highlightColor : "white"
         font.family: statusArea.narrative != "" ?
             Theme.fontFamilyHeading : Theme.fontFamily
         font.pixelSize: statusArea.narrative != "" ?
             Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
-        height: statusArea.destDist != "" ?
-            implicitHeight : 0
+        height: statusArea.destDist != "" ? implicitHeight : 0
         text: statusArea.manDist
         verticalAlignment: Text.AlignBottom
     }
@@ -89,7 +89,7 @@ Rectangle {
         color: "white"
         font.pixelSize: Theme.fontSizeSmall
         height: statusArea.narrative != "" ?
-            implicitHeight + Theme.paddingMedium : 0
+            implicitHeight + 0.75*Theme.paddingMedium : 0
         text: statusArea.narrative
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap

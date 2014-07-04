@@ -190,19 +190,20 @@ Map {
     function fitViewtoCoordinates(coords) {
         // Set center and zoom so that all points are visible.
         if (coords.length == 0) return;
-        var cx = 0, cy = 0;
+        var sumx = 0;
+        var sumy = 0;
         for (var i = 0; i < coords.length; i++) {
-            cx += coords[i].longitude;
-            cy += coords[i].latitude;
+            sumx += coords[i].longitude;
+            sumy += coords[i].latitude;
         }
-        cx /= coords.length;
-        cy /= coords.length;
-        map.setCenter(cx, cy);
+        map.setCenter(sumx/coords.length, sumy/coords.length);
         map.setZoomLevel(map.minimumZoomLevel);
         // Calculate the greatest offset of a single point from the center
         // of the screen and based on that the maximum zoom that will still
         // keep all points visible.
-        var xp = 0, yp = 0, offset = 0;
+        var xp = 0;
+        var yp = 0;
+        var offset = 0;
         for (var i = 0; i < coords.length; i++) {
             xp = coords[i].longitude - map.center.longitude;
             yp = coords[i].latitude - map.center.latitude;
@@ -211,13 +212,9 @@ Map {
             if (xp > offset) offset = xp;
             if (yp > offset) offset = yp;
         }
-        // Math.log2 would be useful here!
-        var zoom = map.zoomLevel;
-        while (offset < 0.5 && zoom < 16) {
+        for (var i = map.zoomLevel; offset < 0.5 && i < 16; i++)
             offset *= 2;
-            zoom++;
-        }
-        map.setZoomLevel(zoom);
+        map.setZoomLevel(i);
     }
 
     function fitViewToPois() {
@@ -230,19 +227,17 @@ Map {
 
     function fitViewToRoute() {
         // Set center and zoom so that the whole route is visible.
-        // For simplicity, let's just check the endpoints.
+        // For performance reasons, include only a subset of points.
+        if (!map.hasRoute()) return;
         var coords = [];
-        if (map.route.path.x.length > 0) {
-            var x = map.route.path.x[0];
-            var y = map.route.path.y[0];
+        for (var i = 0; i < map.route.path.x.length; i = i+10) {
+            var x = map.route.path.x[i];
+            var y = map.route.path.y[i];
             coords.push(QtPositioning.coordinate(y, x));
         }
-        var n = map.route.path.x.length;
-        if (n > 1) {
-            var x = map.route.path.x[n-1];
-            var y = map.route.path.y[n-1];
-            coords.push(QtPositioning.coordinate(y, x));
-        }
+        var x = map.route.path.x[map.route.path.x.length-1];
+        var y = map.route.path.y[map.route.path.x.length-1];
+        coords.push(QtPositioning.coordinate(y, x));
         map.fitViewtoCoordinates(coords);
     }
 
@@ -363,17 +358,18 @@ Map {
     function setRoutingStatus(status) {
         // Set values of labels in the navigation status area.
         if (status) {
-            map.statusArea.destDist = status.dest_dist || "";
-            map.statusArea.destTime = status.dest_time || "";
-            map.statusArea.manDist  = status.man_dist  || "";
-            map.statusArea.manTime  = status.man_time  || "";
+            map.statusArea.destDist = status.dest_dist;
+            map.statusArea.destTime = status.dest_time;
+            map.statusArea.manDist  = status.man_dist;
+            map.statusArea.manTime  = status.man_time;
         } else {
             map.statusArea.destDist = "";
             map.statusArea.destTime = "";
             map.statusArea.manDist  = "";
             map.statusArea.manTime  = "";
         }
-        if (status && status.man_time_float < 120) {
+        if (status) {
+            // icon and narrative are null when far from maneuver point.
             map.statusArea.icon = status.icon || "";
             map.statusArea.narrative = status.narrative || "";
         } else {

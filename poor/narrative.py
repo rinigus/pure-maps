@@ -87,22 +87,20 @@ class Narrative:
         dest_time = poor.util.format_time(dest_time)
         man = self._get_maneuver_display(x, y, node)
         man_dist, man_time, icon, narrative = man
-        man_time_float = man_time
-        if man_dist is not None:
-            man_dist = poor.util.format_distance(man_dist, 2)
-            man_time = poor.util.format_time(man_time)
+        if man_time > 120:
+            # Only show narrative near maneuver point.
+            icon = narrative = None
+        man_dist = poor.util.format_distance(man_dist, 2)
+        man_time = poor.util.format_time(man_time)
         return dict(dest_dist=dest_dist,
                     dest_time=dest_time,
                     man_dist=man_dist,
                     man_time=man_time,
-                    man_time_float=man_time_float,
                     icon=icon,
                     narrative=narrative)
 
     def _get_maneuver_display(self, x, y, node):
         """Return maneuver details to display."""
-        if self.maneuver[node] is None:
-            return None, None, None, None
         maneuver = self.maneuver[node]
         man_dist = self.dist[node] - self.dist[maneuver.node]
         man_time = self.time[node] - self.time[maneuver.node]
