@@ -63,7 +63,7 @@ Rectangle {
         font.family: statusArea.narrative != "" ?
             Theme.fontFamilyHeading : Theme.fontFamily
         font.pixelSize: statusArea.narrative != "" ?
-            Theme.fontSizeExtraLarge : Theme.fontSizeSmall
+            Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
         height: statusArea.destDist != "" ?
             implicitHeight : 0
         text: statusArea.manDist
@@ -74,7 +74,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: Theme.paddingMedium
         color: "white"
-        font.pixelSize: Theme.fontSizeSmall
+        font.pixelSize: Theme.fontSizeExtraSmall
         height: manLabel.height
         text: statusArea.destDist + "  ·  " + statusArea.destTime
         verticalAlignment: statusArea.narrative != "" ?
