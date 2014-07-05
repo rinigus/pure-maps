@@ -21,7 +21,7 @@ import Sailfish.Silica 1.0
 
 Rectangle {
     id: statusArea
-    color: "#BB000000"
+    color: "#AA000000"
     height: destDist != "" ?
         Math.max(iconImage.height,
                  manLabel.height +
