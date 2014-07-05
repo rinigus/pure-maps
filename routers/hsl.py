@@ -126,27 +126,44 @@ def parse_line(code):
         line = line[1:]
     return line
 
-def parse_maneuvers(legs):
+def parse_maneuvers(route):
     """Parse list of maneuvers from parsed legs of a route."""
-    if not legs: return []
+    if not route["legs"]: return []
     maneuvers = []
     prev_vehicle = False
-    for leg in legs:
+    for leg in route["legs"]:
         this_vehicle = (leg["mode"] != "walk")
         key = "{:d}{:d}".format(int(prev_vehicle), int(this_vehicle))
-        maneuvers.append(dict(x=leg["dep_x"],
-                              y=leg["dep_y"],
-                              icon=ICONS[key],
-                              narrative=NARRATIVE[key].format(**leg),
-                              duration=leg["duration"]*60))
+        maneuvers.append(dict(
+            x=leg["dep_x"],
+            y=leg["dep_y"],
+            icon=ICONS[key],
+            narrative=NARRATIVE[key].format(**leg),
+            duration=leg["duration"]*60))
 
         prev_vehicle = this_vehicle
-    maneuvers.append(dict(x=legs[-1]["arr_x"],
-                          y=legs[-1]["arr_y"],
-                          icon="alert",
-                          narrative="Arrive at your destination.",
-                          duration=0))
+    maneuvers.append(dict(
+        x=route["legs"][-1]["arr_x"],
+        y=route["legs"][-1]["arr_y"],
+        icon="alert",
+        narrative="Arrive at your destination.",
+        duration=0))
 
+    # Journey Planner returns route shapes and maneuver points
+    # that don't always match. To be visually clearer, let's
+    # move the maneuver points to closest route nodes.
+    for maneuver in maneuvers:
+        min_index = 0
+        min_sq_dist = 360**2
+        for i in range(len(route["x"])):
+            dx = maneuver["x"] - route["x"][i]
+            dy = maneuver["y"] - route["y"][i]
+            dist = dx**2 + dy**2
+            if dist < min_sq_dist:
+                min_index = i
+                min_sq_dist = dist
+        maneuver["x"] = route["x"][min_index]
+        maneuver["y"] = route["y"][min_index]
     return maneuvers
 
 def parse_time(code):
@@ -204,7 +221,7 @@ def route(fm, to, params):
                    ) for i, result in enumerate(results)]
 
     for route in routes:
-        route["maneuvers"] = parse_maneuvers(route["legs"])
+        route["maneuvers"] = parse_maneuvers(route)
         # Calculate duration separately to match departure and
         # arrival times rounded at one minute accuracy.
         dep = route["legs"][0]["dep_unix"]

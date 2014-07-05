@@ -3,6 +3,8 @@ Poor Maps 0.6
 
  [X] Add narration of routing maneuvers
  [X] Default routing "From" field to current position
+ [X] Fix HSL Journey Planner maneuver points to actually be
+     on the route polyline
 
 Poor Maps 1.0
 =============
