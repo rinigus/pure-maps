@@ -37,6 +37,7 @@ class HistoryManager:
 
     def add_place(self, place):
         """Add `place` to the list of places."""
+        if not place: return
         self.remove_place(place)
         self._places.insert(0, place.strip())
 
@@ -59,6 +60,7 @@ class HistoryManager:
 
     def remove_place(self, place):
         """Remove `place` from the list of places."""
+        if not place: return
         with poor.util.silent(ValueError):
             self._places.remove(place.strip())
 
