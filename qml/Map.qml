@@ -358,22 +358,18 @@ Map {
     function setRoutingStatus(status) {
         // Set values of labels in the navigation status area.
         if (status) {
-            map.statusArea.destDist = status.dest_dist;
-            map.statusArea.destTime = status.dest_time;
-            map.statusArea.manDist  = status.man_dist;
-            map.statusArea.manTime  = status.man_time;
-        } else {
-            map.statusArea.destDist = "";
-            map.statusArea.destTime = "";
-            map.statusArea.manDist  = "";
-            map.statusArea.manTime  = "";
-        }
-        if (status) {
-            // icon and narrative are null when far from maneuver point.
-            map.statusArea.icon = status.icon || "";
+            map.statusArea.destDist  = status.dest_dist || "";
+            map.statusArea.destTime  = status.dest_time || "";
+            map.statusArea.icon      = status.icon      || "";
+            map.statusArea.manDist   = status.man_dist  || "";
+            map.statusArea.manTime   = status.man_time  || "";
             map.statusArea.narrative = status.narrative || "";
         } else {
-            map.statusArea.icon = "";
+            map.statusArea.destDist  = "";
+            map.statusArea.destTime  = "";
+            map.statusArea.icon      = "";
+            map.statusArea.manDist   = "";
+            map.statusArea.manTime   = "";
             map.statusArea.narrative = "";
         }
     }

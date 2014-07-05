@@ -73,11 +73,30 @@ class Narrative:
                 min_sq_dist = dist
         return min_index
 
+    def _get_distance_from_route(self, x, y, node):
+        """Return distance in kilometers from the route polyline."""
+        if len(self.x) == 1:
+            return poor.util.calculate_distance(
+                x, y, self.x[node], self.y[node])
+        dist = []
+        if node > 0:
+            x1, x2 = self.x[node-1:node+1]
+            y1, y2 = self.y[node-1:node+1]
+            dist.append(poor.util.calculate_segment_distance(
+                x, y, x1, y1, x2, y2))
+        if node < len(self.x) - 1:
+            x1, x2 = self.x[node:node+2]
+            y1, y2 = self.y[node:node+2]
+            dist.append(poor.util.calculate_segment_distance(
+                x, y, x1, y1, x2, y2))
+        return min(dist)
+
     def get_display(self, x, y):
         """Return a dictionary of status details to display."""
         if not self.ready: return None
         node = self.get_closest_node(x, y)
-        dest_dist = self.dist[node]
+        seg_dist = self._get_distance_from_route(x, y, node)
+        dest_dist = seg_dist + self.dist[node]
         dest_time = self.time[node]
         if node == len(self.dist) - 1:
             # Use exact straight-line value at the very end.
@@ -85,13 +104,17 @@ class Narrative:
                 x, y, self.x[node], self.y[node])
         dest_dist = poor.util.format_distance(dest_dist, 2)
         dest_time = poor.util.format_time(dest_time)
-        man = self._get_maneuver_display(x, y, node)
+        man = self._get_maneuver_display(x, y, node, seg_dist)
         man_dist, man_time, icon, narrative = man
         if man_time > 120:
             # Only show narrative near maneuver point.
             icon = narrative = None
         man_dist = poor.util.format_distance(man_dist, 2)
         man_time = poor.util.format_time(man_time)
+        if seg_dist > 0.2:
+            # Don't show the narrative or details calculated
+            # from nodes along the route if far off route.
+            dest_time = man_time = icon = narrative = None
         return dict(dest_dist=dest_dist,
                     dest_time=dest_time,
                     man_dist=man_dist,
@@ -99,10 +122,10 @@ class Narrative:
                     icon=icon,
                     narrative=narrative)
 
-    def _get_maneuver_display(self, x, y, node):
+    def _get_maneuver_display(self, x, y, node, seg_dist):
         """Return maneuver details to display."""
         maneuver = self.maneuver[node]
-        man_dist = self.dist[node] - self.dist[maneuver.node]
+        man_dist = seg_dist + self.dist[node] - self.dist[maneuver.node]
         man_time = self.time[node] - self.time[maneuver.node]
         if node == maneuver.node:
             # Use exact straight-line value at the very end.
@@ -112,7 +135,7 @@ class Narrative:
             if maneuver.passed and node+1 < len(self.x):
                 # If the maneuver point has been passed,
                 # show the next maneuver narrative if applicable.
-                return self._get_maneuver_display(x, y, node+1)
+                return self._get_maneuver_display(x, y, node+1, seg_dist)
         return man_dist, man_time, maneuver.icon, maneuver.narrative
 
     @property

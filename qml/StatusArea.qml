@@ -76,7 +76,9 @@ Rectangle {
         color: "white"
         font.pixelSize: Theme.fontSizeExtraSmall
         height: manLabel.height
-        text: statusArea.destDist + "  ·  " + statusArea.destTime
+        text: statusArea.destTime != "" ?
+            statusArea.destDist + "  ·  " + statusArea.destTime :
+            statusArea.destDist
         verticalAlignment: statusArea.narrative != "" ?
             Text.AlignVCenter : Text.AlignBottom
     }

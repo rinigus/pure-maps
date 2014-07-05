@@ -64,6 +64,15 @@ def calculate_distance(x1, y1, x2, y2):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
     return 6371 * c
 
+def calculate_segment_distance(x, y, x1, y1, x2, y2):
+    """Calculate distance in kilometers from point to segment."""
+    # This is not quite correct, but maybe close enough,
+    # given sufficiently short segments.
+    med_dist_deg = math.sqrt((x - (x1+x2)/2)**2 + (y - (y1+y2)/2)**2)
+    med_dist_km = calculate_distance(x, y, (x1+x2)/2, (y1+y2)/2)
+    seg_dist_deg = math.sqrt(poor.polysimp.get_sq_seg_dist(x, y, x1, y1, x2, y2))
+    return seg_dist_deg * (med_dist_km / med_dist_deg)
+
 def decode_epl(string, precision=5):
     """
     Decode Google Encoded polyline string representation.

@@ -1,9 +1,7 @@
 Poor Maps 0.6
 =============
 
- [ ] Add narration of routing maneuvers
-     - Don't show narrative when far off route
-       + Haversine version of poor.polysimp.get_sq_seg_dist?
+ [X] Add narration of routing maneuvers
  [X] Default routing "From" field to current position
 
 Poor Maps 1.0
