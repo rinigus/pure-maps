@@ -1,3 +1,14 @@
+Poor Maps 0.6
+=============
+
+ * Add narration of routing maneuvers
+ * Default routing "From" field to current position
+ * Use persistent HTTP connections for geocoding and routing too
+   (this should especially speed up routing, which usually consists
+   of 2-3 requests: 1-2 geocoding and 1 routing)
+ * Fix HSL Journey Planner maneuver points to actually be
+   on the route polyline
+
 Poor Maps 0.5.1
 ===============
 
