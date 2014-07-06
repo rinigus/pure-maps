@@ -38,7 +38,7 @@ Timer {
         var y = map.position.coordinate.latitude;
         var xd = x - timer.prevX;
         var yd = y - timer.prevY;
-        if (Math.sqrt(xd*xd + yd*yd) < 0.00008) return;
+        if (Math.sqrt(xd*xd + yd*yd) < 0.0001) return;
         py.call("poor.app.narrative.get_display", [x, y], function(status) {
             map.setRoutingStatus(status);
             timer.prevX = map.position.coordinate.longitude;
