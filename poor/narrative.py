@@ -72,8 +72,8 @@ class Narrative:
             if dist < min_sq_dist:
                 min_index = i
                 min_sq_dist = dist
-            # Try to cut run-time in half.
-            if dist < threshold: break
+                # Try to cut run-time in half.
+                if dist < threshold: break
         return min_index
 
     def _get_distance_from_route(self, x, y, node):
