@@ -123,7 +123,7 @@ def route(fm, to, params):
     url = URL.format(**locals())
     if checksum is not None:
         url += "&checksum={}".format(checksum)
-    result = json.loads(poor.util.request_url(url, "utf_8"))
+    result = json.loads(poor.http.request_url(url, "utf_8"))
     with poor.util.silent(Exception):
         checksum = str(result["hint_data"]["checksum"])
         hints[fm_real] = str(result["hint_data"]["locations"][0])

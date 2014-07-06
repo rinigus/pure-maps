@@ -212,7 +212,7 @@ def route(fm, to, params):
     # Date and time parameters are optional.
     for name in set(params) & set(("date", "time", "timetype")):
         url += "&{}={}".format(name, params[name])
-    results = json.loads(poor.util.request_url(url, "utf_8"))
+    results = json.loads(poor.http.request_url(url, "utf_8"))
     routes = [dict(alternative=i+1,
                    length=float(result[0]["length"]),
                    legs=parse_legs(result[0]),

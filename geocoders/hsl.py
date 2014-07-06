@@ -43,7 +43,7 @@ def geocode(query):
     url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    results = json.loads(poor.util.request_url(url, "utf_8"))
+    results = json.loads(poor.http.request_url(url, "utf_8"))
     results = [dict(title=parse_title(result),
                     description=parse_description(result),
                     x=float(result["coords"].split(",")[0]),

@@ -83,7 +83,7 @@ def route(fm, to, params):
     url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    result = json.loads(poor.util.request_url(url, "utf_8"))
+    result = json.loads(poor.http.request_url(url, "utf_8"))
     x, y = poor.util.decode_epl(result["route"]["shape"]["shapePoints"])
     maneuvers = []
     for leg in result["route"]["legs"]:

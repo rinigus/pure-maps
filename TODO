@@ -3,6 +3,9 @@ Poor Maps 0.6
 
  [X] Add narration of routing maneuvers
  [X] Default routing "From" field to current position
+ [X] Use persistent HTTP connections for geocoding and routing too
+     (this should especially speed up routing, which usually consists
+     of 2-3 requests: 1-2 geocoding and 1 routing)
  [X] Fix HSL Journey Planner maneuver points to actually be
      on the route polyline
 
@@ -11,6 +14,7 @@ Poor Maps 1.0
 
  * Add proper icons for different turn types
    - Compare: http://stackoverflow.com/questions/17941812
+ * Improve detection of when a maneuver point has been passed?
  * Add reverse geocoding?
  * Save pagestack to allow returning to geocoding or routing results
  * Allow tapping on markers

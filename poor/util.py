@@ -27,7 +27,6 @@ import os
 import poor
 import sys
 import urllib.parse
-import urllib.request
 
 
 def bbox_deg2num(xmin, xmax, ymin, ymax, zoom):
@@ -275,24 +274,6 @@ def read_json(path):
               .format(repr(path), str(error)),
               file=sys.stderr)
         raise
-
-def request_url(url, encoding=None, timeout=None):
-    """
-    Request and return data at `url`.
-
-    If `encoding` is ``None``, return bytes, otherwise decode data
-    to text using `encoding`. If `timeout` is ``None`` use
-    :var:`poor.conf.download_timeout`.
-    """
-    print("Requesting {}".format(url))
-    opener = urllib.request.build_opener()
-    agent = "poor-maps/{}".format(poor.__version__)
-    opener.addheaders = [("User-Agent", agent)]
-    timeout = timeout or poor.conf.download_timeout
-    with opener.open(url, timeout=timeout) as f:
-        blob = f.read()
-        if encoding is None: return blob
-        return blob.decode(encoding, errors="replace")
 
 @contextlib.contextmanager
 def silent(*exceptions):
