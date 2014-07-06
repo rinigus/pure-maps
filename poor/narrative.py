@@ -64,6 +64,7 @@ class Narrative:
         """Return index of the route node closest to coordinates."""
         min_index = 0
         min_sq_dist = 360**2
+        threshold = 0.00005**2
         for i in range(len(self.x)):
             # This should be faster than haversine
             # and probably close enough.
@@ -71,6 +72,8 @@ class Narrative:
             if dist < min_sq_dist:
                 min_index = i
                 min_sq_dist = dist
+            # Try to cut run-time in half.
+            if dist < threshold: break
         return min_index
 
     def _get_distance_from_route(self, x, y, node):
