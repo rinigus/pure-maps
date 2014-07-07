@@ -8,6 +8,7 @@ Poor Maps 0.7
  [ ] Show all stops along a route with HSL Journey Planner
      - Non-maneuver maneuver points? compare: "continue straight"
        o i.e. passive=True field and a different icon?
+ [X] Only cache successful geocoding and routing results
 
 Poor Maps 1.0
 =============

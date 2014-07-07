@@ -54,7 +54,8 @@ def geocode(query):
                     y=float(result["lat"]),
                     ) for result in results]
 
-    cache[url] = copy.deepcopy(results)
+    if results and results[0]:
+        cache[url] = copy.deepcopy(results)
     return results
 
 def parse_address(result):

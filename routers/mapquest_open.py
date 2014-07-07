@@ -96,5 +96,6 @@ def route(fm, to, params):
                       ) for maneuver in maneuvers]
 
     route = {"x": x, "y": y, "maneuvers": maneuvers}
-    cache[url] = copy.deepcopy(route)
+    if route and route["x"]:
+        cache[url] = copy.deepcopy(route)
     return route
