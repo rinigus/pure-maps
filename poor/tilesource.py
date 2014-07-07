@@ -85,7 +85,7 @@ class TileSource:
         except Exception as error:
             httpc.close()
             httpc = self._init_http_connection()
-            if isinstance(error, http.BadStatusLine) and retry > 0:
+            if isinstance(error, http.client.BadStatusLine) and retry > 0:
                 # This probably means that the connection was broken.
                 return self.download(x, y, zoom, retry-1)
             print("Failed to download tile: {}"

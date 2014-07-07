@@ -73,7 +73,7 @@ def request_url(url, encoding=None, retry=1):
         return blob.decode(encoding, errors="replace")
     except Exception as error:
         remove_connection(url)
-        if isinstance(error, http.BadStatusLine) and retry > 0:
+        if isinstance(error, http.client.BadStatusLine) and retry > 0:
             # This probably means that the connection was broken.
             return request_url(url, encoding, retry-1)
         print("Failed to download data: {}"
