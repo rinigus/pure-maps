@@ -56,7 +56,7 @@ class TileSource:
             self.url = values["url"]
             self._init_http_connections()
 
-    def download(self, x, y, zoom):
+    def download(self, x, y, zoom, retry=1):
         """Download map tile and return local file path or ``None``."""
         url = self.url.format(x=x, y=y, z=zoom)
         directory = os.path.join(poor.CACHE_HOME_DIR,
@@ -83,11 +83,14 @@ class TileSource:
             with open(path, "wb") as f:
                 f.write(response.read(1048576))
         except Exception as error:
+            httpc.close()
+            httpc = self._init_http_connection()
+            if isinstance(error, http.BadStatusLine) and retry > 0:
+                # This probably means that the connection was broken.
+                return self.download(x, y, zoom, retry-1)
             print("Failed to download tile: {}"
                   .format(str(error)), file=sys.stderr)
 
-            httpc.close()
-            httpc = self._init_http_connection()
             return None
         finally:
             self._http_queue.task_done()

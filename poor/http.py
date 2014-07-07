@@ -44,17 +44,19 @@ def new_connection(url, timeout=None):
     return connections[host]
 
 def remove_connection(url):
-    """Remove connection to `url` from pool of managed connections."""
+    """Close and remove connection to `url` from the pool."""
     host = urllib.parse.urlparse(url).netloc
     with poor.util.silent(KeyError):
-        del connections[host]
+        connections.pop(host).close()
 
-def request_url(url, encoding=None):
+def request_url(url, encoding=None, retry=1):
     """
     Request and return data at `url`.
 
     If `encoding` is ``None``, return bytes, otherwise decode data
-    to text using `encoding`.
+    to text using `encoding`. Try again `retry` times in some particular
+    cases that imply a connection error. Don't touch the `retry` argument,
+    unless you really know what you're doing.
     """
     print("Requesting {}".format(url))
     httpc = get_connection(url)
@@ -70,8 +72,11 @@ def request_url(url, encoding=None):
         if encoding is None: return blob
         return blob.decode(encoding, errors="replace")
     except Exception as error:
+        remove_connection(url)
+        if isinstance(error, http.BadStatusLine) and retry > 0:
+            # This probably means that the connection was broken.
+            return request_url(url, encoding, retry-1)
         print("Failed to download data: {}"
               .format(str(error)), file=sys.stderr)
 
-        remove_connection(url)
         raise # Exception
