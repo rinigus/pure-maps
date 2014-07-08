@@ -1,12 +1,3 @@
-Poor Maps 0.6.1
-===============
-
- [X] Retry geocoding or routing in case of http.client.BadStatusLine
-     error, which probably implies a broken connection, which seems
-     to probably happen when a persistent HTTP connection was made,
-     but lost due to the device going to sleep
- [X] Only cache successful geocoding and routing results
-
 Poor Maps 0.7
 =============
 
