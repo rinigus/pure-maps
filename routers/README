@@ -31,6 +31,8 @@ on a map, you can use this page to display whatever is best suitable
 given your router and domain. For example, the 'hsl' router shows five
 alternative public transportation routes with relevant details of each.
 
+TODO: Document narrative requirements once somewhat done and stable.
+
 To download data you should always use 'poor.http.request_url' in order
 to use Poor's user-agent and the default timeout from poor.conf. If your
 routing provider cannot handle addresses, but requires coordinates,
