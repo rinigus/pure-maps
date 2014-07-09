@@ -49,7 +49,7 @@ class Application:
     def _init_download_threads(self):
         """Initialize map tile download threads."""
         # Use two download threads as per OpenStreetMap tile usage policy.
-        # See also poor.TileSource._init_http_connections.
+        # See also poor.TileSource._init_http_queue.
         # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
         target = self._process_download_queue
         for i in range(2):

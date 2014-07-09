@@ -54,7 +54,7 @@ class TileSource:
             self.name = values["name"]
             self.source = values["source"]
             self.url = values["url"]
-            self._init_http_connections()
+            self._init_http_queue()
 
     def download(self, x, y, zoom, retry=1):
         """Download map tile and return local file path or ``None``."""
@@ -72,6 +72,8 @@ class TileSource:
                 return path
         try:
             httpc = self._http_queue.get()
+            if httpc is None:
+                httpc = self._new_http_connection()
             httpc.request("GET", url, headers=self._headers)
             response = httpc.getresponse()
             if response.status != 200:
@@ -84,7 +86,7 @@ class TileSource:
                 f.write(response.read(1048576))
         except Exception as error:
             httpc.close()
-            httpc = self._init_http_connection()
+            httpc = None
             if isinstance(error, http.client.BadStatusLine) and retry > 0:
                 # This probably means that the connection was broken.
                 return self.download(x, y, zoom, retry-1)
@@ -97,19 +99,12 @@ class TileSource:
             self._http_queue.put(httpc)
         return path
 
-    def _init_http_connection(self):
-        """Initialize and return a persistent HTTP connection."""
-        host = urllib.parse.urlparse(self.url).netloc
-        timeout = poor.conf.download_timeout
-        return http.client.HTTPConnection(host, timeout=timeout)
-
-    def _init_http_connections(self):
-        """Initialize persistent HTTP connections."""
+    def _init_http_queue(self):
+        """Initialize queue of HTTP connections."""
         # Use two download threads as per OpenStreetMap tile usage policy.
         # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
         for i in range(2):
-            httpc = self._init_http_connection()
-            self._http_queue.put(httpc)
+            self._http_queue.put(None)
         agent = "poor-maps/{}".format(poor.__version__)
         self._headers = {"Connection": "Keep-Alive",
                          "User-Agent": agent}
@@ -121,3 +116,9 @@ class TileSource:
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
         return poor.util.read_json(path)
+
+    def _new_http_connection(self):
+        """Initialize and return a new persistent HTTP connection."""
+        host = urllib.parse.urlparse(self.url).netloc
+        timeout = poor.conf.download_timeout
+        return http.client.HTTPConnection(host, timeout=timeout)
