@@ -216,7 +216,6 @@ def prepare_endpoint(point):
 
 def route(fm, to, params):
     """Find routes and return their properties as dictionaries."""
-    fm_name, to_name = fm, to
     fm = prepare_endpoint(fm)
     to = prepare_endpoint(to)
     transport_types = "|".join(poor.conf.routers.hsl.transport_types)
@@ -234,13 +233,10 @@ def route(fm, to, params):
                    ) for i, result in enumerate(results)]
 
     for route in routes:
-        if isinstance(to_name, str):
-            # Fill in destination name for proper narrative.
-            route["legs"][-1]["arr_name"] = to_name
         route["maneuvers"] = parse_maneuvers(route)
         # Calculate duration separately to match departure and
         # arrival times rounded at one minute accuracy.
-        dep = route["legs"][ 0]["dep_unix"]
+        dep = route["legs"][0]["dep_unix"]
         arr = route["legs"][-1]["arr_unix"]
         route["duration"] = arr - dep
     return routes
