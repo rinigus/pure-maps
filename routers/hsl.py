@@ -106,6 +106,10 @@ def parse_legs(result):
         with poor.util.silent(IndexError):
             item["dep_name"] = names[0]
             item["arr_name"] = names[-1]
+        # Add stops both used and passed along the leg.
+        stops = [loc for loc in leg["locs"] if "code" in loc]
+        item["stops_x"] = [float(stop["coord"]["x"]) for stop in stops]
+        item["stops_y"] = [float(stop["coord"]["y"]) for stop in stops]
         items.append(item)
     if len(items) > 1:
         # Remove short walking legs, which usually occur
@@ -140,6 +144,14 @@ def parse_maneuvers(route):
             icon=ICONS[key],
             narrative=NARRATIVE[key].format(**leg),
             duration=leg["duration"]*60))
+
+        if this_vehicle:
+            # Add stops passed along the way as passive maneuver points.
+            for i in range(1, len(leg["stops_x"])-1):
+                maneuvers.append(dict(
+                    x=leg["stops_x"][i],
+                    y=leg["stops_y"][i],
+                    passive=True))
 
         prev_vehicle = this_vehicle
     maneuvers.append(dict(

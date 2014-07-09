@@ -155,6 +155,8 @@ class Narrative:
         """Set maneuver points and corresponding narrative."""
         prev_maneuver = None
         for i in reversed(range(len(maneuvers))):
+            if "passive" in maneuvers[i]:
+                if maneuvers[i]["passive"]: continue
             maneuver = Maneuver(**maneuvers[i])
             maneuver.node = self.get_closest_node(maneuver.x, maneuver.y);
             self.maneuver[maneuver.node] = maneuver

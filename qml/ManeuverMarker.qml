@@ -20,14 +20,16 @@ import QtQuick 2.0
 import QtLocation 5.0
 
 MapQuickItem {
+    id: maneuver
     anchorPoint.x: image.width/2
     anchorPoint.y: image.height/2
     sourceItem: Image {
         id: image
-        source: "icons/maneuver.png"
+        source: maneuver.passive ? "icons/node.png" : "icons/maneuver.png"
     }
     z: 201
     property real   duration: 0
     property string icon: "alert"
     property string narrative: ""
+    property bool   passive: false
 }

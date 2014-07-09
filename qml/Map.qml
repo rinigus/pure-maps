@@ -119,9 +119,10 @@ Map {
             var x = maneuvers[i].x;
             var y = maneuvers[i].y;
             maneuver.coordinate = QtPositioning.coordinate(y, x);
-            maneuver.icon = maneuvers[i].icon;
-            maneuver.narrative = maneuvers[i].narrative;
-            maneuver.duration = maneuvers[i].duration;
+            maneuver.icon = maneuvers[i].icon || "alert";
+            maneuver.narrative = maneuvers[i].narrative || "";
+            maneuver.duration = maneuvers[i].duration || 0;
+            maneuver.passive = maneuvers[i].passive || false;
             map.maneuvers.push(maneuver);
             map.addMapItem(maneuver);
         }
@@ -314,13 +315,16 @@ Map {
         // Save maneuvers to JSON file.
         if (!py.ready) return;
         var data = [];
-        for (var i = 0; i < map.maneuvers.length; i++)
-            data.push({"x": map.maneuvers[i].coordinate.longitude,
-                       "y": map.maneuvers[i].coordinate.latitude,
-                       "icon": map.maneuvers[i].icon,
-                       "narrative": map.maneuvers[i].narrative,
-                       "duration": map.maneuvers[i].duration});
-
+        for (var i = 0; i < map.maneuvers.length; i++) {
+            var maneuver = {};
+            maneuver.x = map.maneuvers[i].coordinate.longitude;
+            maneuver.y = map.maneuvers[i].coordinate.latitude;
+            maneuver.icon = map.maneuvers[i].icon;
+            maneuver.narrative = map.maneuvers[i].narrative;
+            maneuver.duration = map.maneuvers[i].duration;
+            maneuver.passive = map.maneuvers[i].passive;
+            data.push(maneuver);
+        }
         py.call_sync("poor.storage.write_maneuvers", [data]);
     }
 
