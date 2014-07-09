@@ -59,8 +59,8 @@ def request_url(url, encoding=None, retry=1):
     unless you really know what you're doing.
     """
     print("Requesting {}".format(url))
-    httpc = get_connection(url)
     try:
+        httpc = get_connection(url)
         httpc.request("GET", url, headers=HEADERS)
         response = httpc.getresponse()
         if response.status != 200:
