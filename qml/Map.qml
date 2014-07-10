@@ -138,8 +138,10 @@ Map {
         map.addMapItem(poi);
     }
 
-    function addRoute(x, y) {
+    function addRoute(x, y, mode) {
         // Add a polyline to represent a route.
+        // mode should be either "car" or "transit",
+        // see poor.Narrative.set_route for details.
         for (var i = 0; i < map.maneuvers.length; i++)
             map.removeMapItem(map.maneuvers[i]);
         map.maneuvers = [];
@@ -149,7 +151,7 @@ Map {
         map.setRoutingStatus(null);
         map.route.setPath(x, y);
         map.route.redraw();
-        py.call("poor.app.narrative.set_route", [x, y], function() {
+        py.call("poor.app.narrative.set_route", [x, y, mode], function() {
             map.showNarrative && map.narrationTimer.start();
         });
     }
@@ -284,8 +286,10 @@ Map {
         if (!py.ready) return;
         py.call("poor.storage.read_route", [], function(data) {
             if (data.x && data.x.length > 0 &&
-                data.y && data.y.length > 0)
-                map.addRoute(data.x, data.y);
+                data.y && data.y.length > 0) {
+                var mode = data.mode || "car";
+                map.addRoute(data.x, data.y, mode);
+            }
         });
     }
 
@@ -332,10 +336,12 @@ Map {
         // Save POIs to JSON file.
         if (!py.ready) return;
         var data = [];
-        for (var i = 0; i < map.pois.length; i++)
-            data.push({"x": map.pois[i].coordinate.longitude,
-                       "y": map.pois[i].coordinate.latitude});
-
+        for (var i = 0; i < map.pois.length; i++) {
+            var poi = {}
+            poi.x = map.pois[i].coordinate.longitude;
+            poi.y = map.pois[i].coordinate.latitude;
+            data.push(poi);
+        }
         py.call_sync("poor.storage.write_pois", [data]);
     }
 
@@ -344,7 +350,10 @@ Map {
         if (!py.ready) return;
         if (map.route.path.x && map.route.path.x.length > 0 &&
             map.route.path.y && map.route.path.y.length > 0) {
-            var data = {"x": map.route.path.x, "y": map.route.path.y};
+            var data = {};
+            data.x = map.route.path.x;
+            data.y = map.route.path.y;
+            data.mode = py.evaluate("poor.app.narrative.mode");
         } else {
             var data = {};
         }
