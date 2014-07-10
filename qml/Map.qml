@@ -127,6 +127,7 @@ Map {
             map.addMapItem(maneuver);
         }
         py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
+        map.saveManeuvers();
     }
 
     function addPoi(x, y) {
@@ -154,6 +155,7 @@ Map {
         py.call("poor.app.narrative.set_route", [x, y, mode], function() {
             map.showNarrative && map.narrationTimer.start();
         });
+        map.saveRoute();
     }
 
     function addTile(uid, x, y, zoom, uri) {
@@ -429,8 +431,6 @@ Map {
             py.call_sync("poor.app.history.write", []);
         }
         map.savePois();
-        map.saveRoute();
-        map.saveManeuvers();
         map.gps.stop();
         map.mapTimer.stop();
         map.narrationTimer.stop();
