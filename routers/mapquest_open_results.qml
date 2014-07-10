@@ -62,7 +62,7 @@ Page {
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
                 page.loading = false;
             } else {
-                busyLabel.text = "No route found";
+                busyLabel.text = "Not found, or error";
                 page.loading = false;
             }
         });

@@ -126,7 +126,7 @@ Page {
                     listModel.append(results[i]);
             } else {
                 page.title = "";
-                busyLabel.text = "Nothing found"
+                busyLabel.text = "Not found, or error"
             }
             page.loading = false;
         });

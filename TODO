@@ -6,8 +6,6 @@ Poor Maps 0.7
      - Narrative should have a larger radius when using transit
        o Train/metro platform length vs. stop point
  [X] Show all stops along a route with HSL Journey Planner
- [ ] Make a distinction between geocoders and routers returning
-     zero results vs. returning an error?
  [X] Improve robustness of tile loading and connection to tile server
      in cases of connection breaking and being restored
 

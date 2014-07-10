@@ -188,7 +188,7 @@ Page {
                     listModel.append(results[i]);
             } else {
                 page.title = "";
-                busyLabel.text = "No route found"
+                busyLabel.text = "Not found, or error";
             }
             page.loading = false;
         });
