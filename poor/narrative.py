@@ -175,18 +175,21 @@ class Narrative:
                     self.time[j] = self.time[j+1] + dist/speed
             prev_maneuver = maneuver
 
-    def set_route(self, x, y, mode):
+    def set_mode(self, mode):
         """
-        Set route from coordinates.
+        Set transport mode for route.
 
         `mode` should be "car" or "transit". This affects how maneuver
         notifications are handled. Currently only transit (public
         transportation) is handled differently and thus walking, bicycle, etc.
         should all be marked as "car".
         """
+        self.mode = mode
+
+    def set_route(self, x, y):
+        """Set route from coordinates."""
         self.x = x
         self.y = y
-        self.mode = mode
         self.dist = [0] * len(x)
         self.time = [0] * len(x)
         self.maneuver = [None] * len(x)

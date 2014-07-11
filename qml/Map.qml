@@ -155,11 +155,12 @@ Map {
         map.setRoutingStatus(null);
         map.route.setPath(route.x, route.y);
         map.route.redraw();
-        var mode = route.mode || "car";
-        var args = [route.x, route.y, mode];
+        var args = [route.x, route.y];
         py.call("poor.app.narrative.set_route", args, function() {
             map.showNarrative && map.narrationTimer.start();
         });
+        var args = [route.mode || "car"];
+        py.call("poor.app.narrative.set_mode", args, null);
         map.saveRoute();
         map.saveManeuvers();
     }
