@@ -77,7 +77,7 @@ Page {
                         pois.push({"x": item.x, "y": item.y});
                     }
                     map.addPois(pois);
-                    map.fitViewToPois();
+                    map.fitViewToPois(pois);
                     app.pageStack.pop(mapPage, PageStackAction.Immediate);
                 }
             }

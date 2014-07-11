@@ -8,6 +8,7 @@ Poor Maps 0.7
  [X] Show all stops along a route with HSL Journey Planner
  [X] Improve robustness of tile loading and connection to tile server
      in cases of connection breaking and being restored
+ [X] Fix geocoding to zoom to recent results, not all POIs on map
 
 Poor Maps 1.0
 =============

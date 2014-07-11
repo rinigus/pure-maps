@@ -233,11 +233,11 @@ Map {
         map.setZoomLevel(i);
     }
 
-    function fitViewToPois() {
-        // Set center and zoom so that all POIs are visible.
+    function fitViewToPois(pois) {
+        // Set center and zoom so that given POIs are visible.
         var coords = []
-        for (var i = 0; i < map.pois.length; i++)
-            coords[i] = map.pois[i].coordinate;
+        for (var i = 0; i < pois.length; i++)
+            coords.push(QtPositioning.coordinate(pois[i].y, pois[i].x));
         map.fitViewtoCoordinates(coords);
     }
 
