@@ -56,7 +56,7 @@ Page {
             if (route &&
                 route.hasOwnProperty("x") &&
                 route.x.length > 0) {
-                map.addRoute(route.x, route.y, "car");
+                map.addRoute({"x": route.x, "y": route.y, "mode": "car"});
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);

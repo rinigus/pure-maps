@@ -132,7 +132,11 @@ Page {
                 }
             }
             onClicked: {
-                map.addRoute(listItem.result.x, listItem.result.y, "transit");
+                map.addRoute({
+                    "x": listItem.result.x,
+                    "y": listItem.result.y,
+                    "mode": "transit"});
+
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);

@@ -130,19 +130,22 @@ Map {
         map.saveManeuvers();
     }
 
-    function addPoi(x, y) {
-        // Add new POI marker to map.
-        var component = Qt.createComponent("PoiMarker.qml");
-        var poi = component.createObject(map);
-        poi.coordinate = QtPositioning.coordinate(y, x);
-        map.pois.push(poi);
-        map.addMapItem(poi);
+    function addPois(pois) {
+        // Add new POI markers to map.
+        for (var i = 0; i < pois.length; i++) {
+            var component = Qt.createComponent("PoiMarker.qml");
+            var poi = component.createObject(map);
+            var x = pois[i].x;
+            var y = pois[i].y;
+            poi.coordinate = QtPositioning.coordinate(y, x);
+            map.pois.push(poi);
+            map.addMapItem(poi);
+        }
+        map.savePois();
     }
 
-    function addRoute(x, y, mode) {
+    function addRoute(route) {
         // Add a polyline to represent a route.
-        // mode should be either "car" or "transit",
-        // see poor.Narrative.set_route for details.
         for (var i = 0; i < map.maneuvers.length; i++)
             map.removeMapItem(map.maneuvers[i]);
         map.maneuvers = [];
@@ -150,9 +153,11 @@ Map {
         map.narrationTimer.stop();
         py.call_sync("poor.app.narrative.unset", []);
         map.setRoutingStatus(null);
-        map.route.setPath(x, y);
+        map.route.setPath(route.x, route.y);
         map.route.redraw();
-        py.call("poor.app.narrative.set_route", [x, y, mode], function() {
+        var mode = route.mode || "car";
+        var args = [route.x, route.y, mode];
+        py.call("poor.app.narrative.set_route", args, function() {
             map.showNarrative && map.narrationTimer.start();
         });
         map.saveRoute();
@@ -278,8 +283,8 @@ Map {
         // Load POIs from JSON file.
         if (!py.ready) return;
         py.call("poor.storage.read_pois", [], function(data) {
-            for (var i = 0; i < data.length; i++)
-                map.addPoi(data[i].x, data[i].y);
+            if (data && data.length > 0)
+                map.addPois(data);
         });
     }
 
@@ -288,10 +293,8 @@ Map {
         if (!py.ready) return;
         py.call("poor.storage.read_route", [], function(data) {
             if (data.x && data.x.length > 0 &&
-                data.y && data.y.length > 0) {
-                var mode = data.mode || "car";
-                map.addRoute(data.x, data.y, mode);
-            }
+                data.y && data.y.length > 0)
+                map.addRoute(data);
         });
     }
 
@@ -430,7 +433,6 @@ Map {
             py.call_sync("poor.conf.write", []);
             py.call_sync("poor.app.history.write", []);
         }
-        map.savePois();
         map.gps.stop();
         map.mapTimer.stop();
         map.narrationTimer.stop();

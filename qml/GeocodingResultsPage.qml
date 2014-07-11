@@ -59,7 +59,7 @@ Page {
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
-                map.addPoi(model.x, model.y);
+                map.addPois([{"x": model.x, "y": model.y}]);
                 map.setCenter(model.x, model.y);
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }
@@ -71,8 +71,12 @@ Page {
             MenuItem {
                 text: "Show all"
                 onClicked: {
-                    for (var i = 0; i < listModel.count; i++)
-                        map.addPoi(listModel.get(i).x, listModel.get(i).y);
+                    var pois = [];
+                    for (var i = 0; i < listModel.count; i++) {
+                        var item = listModel.get(i);
+                        pois.push({"x": item.x, "y": item.y});
+                    }
+                    map.addPois(pois);
                     map.fitViewToPois();
                     app.pageStack.pop(mapPage, PageStackAction.Immediate);
                 }
