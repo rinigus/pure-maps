@@ -61,7 +61,7 @@ class Narrative:
         self.x = []
         self.y = []
 
-    def get_closest_node(self, x, y):
+    def _get_closest_node(self, x, y):
         """Return index of the route node closest to coordinates."""
         min_index = 0
         min_sq_dist = 360**2
@@ -98,7 +98,7 @@ class Narrative:
     def get_display(self, x, y):
         """Return a dictionary of status details to display."""
         if not self.ready: return None
-        node = self.get_closest_node(x, y)
+        node = self._get_closest_node(x, y)
         seg_dist = self._get_distance_from_route(x, y, node)
         dest_dist = seg_dist + self.dist[node]
         dest_time = self.time[node]
@@ -153,14 +153,19 @@ class Narrative:
                 len(self.maneuver))
 
     def set_maneuvers(self, maneuvers):
-        """Set maneuver points and corresponding narrative."""
+        """
+        Set maneuver points and corresponding narrative.
+
+        Keys "x", "y" and "duration" are required for each item in `maneuvers`
+        and keys "icon", "narrative" and "passive" are optional.
+        """
         # TODO: Use self.mode.
         prev_maneuver = None
         for i in reversed(range(len(maneuvers))):
             if "passive" in maneuvers[i]:
                 if maneuvers[i]["passive"]: continue
             maneuver = Maneuver(**maneuvers[i])
-            maneuver.node = self.get_closest_node(maneuver.x, maneuver.y);
+            maneuver.node = self._get_closest_node(maneuver.x, maneuver.y);
             self.maneuver[maneuver.node] = maneuver
             # Assign maneuver to preceding nodes as well.
             for j in reversed(range(maneuver.node)):
