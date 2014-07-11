@@ -53,9 +53,7 @@ Page {
         var routePage = app.pageStack.previousPage();
         var args = [routePage.from, routePage.to];
         py.call("poor.app.router.route", args, function(route) {
-            if (route &&
-                route.hasOwnProperty("x") &&
-                route.x.length > 0) {
+            if (route && route.x && route.x.length > 0) {
                 map.addRoute({"x": route.x, "y": route.y, "mode": "car"});
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
