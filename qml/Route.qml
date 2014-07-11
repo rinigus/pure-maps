@@ -38,6 +38,7 @@ Canvas {
     width: parent.width
     z: 200
 
+    property var mode: "car"
     property var paintX: 0
     property var paintY: 0
     property var path: {"x": [], "y": []}

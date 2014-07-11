@@ -154,6 +154,7 @@ Map {
         py.call_sync("poor.app.narrative.unset", []);
         map.setRoutingStatus(null);
         map.route.setPath(route.x, route.y);
+        map.route.mode = route.mode || "car";
         map.route.redraw();
         var args = [route.x, route.y];
         py.call("poor.app.narrative.set_route", args, function() {
@@ -363,7 +364,7 @@ Map {
             var data = {};
             data.x = map.route.path.x;
             data.y = map.route.path.y;
-            data.mode = py.evaluate("poor.app.narrative.mode");
+            data.mode = map.route.mode;
         } else {
             var data = {};
         }
