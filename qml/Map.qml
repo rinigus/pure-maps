@@ -161,6 +161,7 @@ Map {
             map.showNarrative && map.narrationTimer.start();
         });
         map.saveRoute();
+        map.saveManeuvers();
     }
 
     function addTile(uid, x, y, zoom, uri) {
@@ -195,6 +196,9 @@ Map {
         for (var i = 0; i < map.pois.length; i++)
             map.removeMapItem(map.pois[i]);
         map.pois = [];
+        map.savePois();
+        map.saveRoute();
+        map.saveManeuvers();
     }
 
     function fitViewtoCoordinates(coords) {
