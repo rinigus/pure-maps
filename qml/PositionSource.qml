@@ -23,9 +23,27 @@ PositionSource {
     id: gps
     active: false
     updateInterval: 1000
+    property var direction
+    property var prevCoordinate
+    property int prevTime
     Component.onCompleted: {
         py.onReadyChanged.connect(function() {
             gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");
         });
+    }
+    onPositionChanged: {
+        // Calculate direction, since it's missing from gps.position.
+        // http://bugreports.qt-project.org/browse/QTBUG-36298
+        var threshold = gps.position.horizontalAccuracy || 15;
+        if (threshold > 0 && threshold < 30 && gps.prevCoordinate &&
+            gps.prevCoordinate.distanceTo(gps.position.coordinate) > threshold) {
+            gps.direction = gps.prevCoordinate.azimuthTo(gps.position.coordinate);
+            gps.prevCoordinate = gps.position.coordinate;
+            gps.prevTime = Date.now();
+        } else if (!gps.prevCoordinate) {
+            gps.prevCoordinate = gps.position.coordinate;
+        } else if (gps.direction && Date.now() - gps.prevTime > 5*60*1000) {
+            gps.direction = undefined;
+        }
     }
 }

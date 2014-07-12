@@ -25,7 +25,9 @@ MapQuickItem {
     coordinate: map.position.coordinate
     sourceItem: Image {
         id: image
-        source: "icons/position.png"
+        rotation: map.direction || 0
+        source: map.direction ?
+            "icons/position-direction.png" : "icons/position.png"
     }
     z: 300
 }

@@ -1,6 +1,7 @@
 Poor Maps 0.7
 =============
 
+ [X] Make position icon into an arrow that shows bearing
  [ ] Improve detection of when a maneuver point has been passed
      - Narrative should disappear quicker when using car
      - Narrative should have a larger radius when using transit
@@ -10,11 +11,15 @@ Poor Maps 0.7
      in cases of connection breaking and being restored
  [X] Fix geocoding to zoom to recent results, not all POIs on map
 
+ FIX:
+  * Total disappearance of tiles
+
 Poor Maps 1.0
 =============
 
  * Add proper icons for different turn types
    - Compare: http://stackoverflow.com/questions/17941812
+ * Add a scalebar?
  * Add reverse geocoding?
  * Save pagestack to allow returning to geocoding or routing results
  * Allow tapping on markers

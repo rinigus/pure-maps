@@ -33,13 +33,14 @@ Map {
     property var  attribution: attribution
     property bool autoCenter: false
     property bool changed: true
+    property var  direction: gps.direction
     property var  gps: PositionSource {}
     property real heightCoords: 0
     property var  maneuvers: []
     property var  mapTimer: mapTimer
     property var  narrationTimer: narrationTimer
     property var  pois: []
-    property var  position: map.gps.position
+    property var  position: gps.position
     property var  positionMarker: PositionMarker {}
     property var  route: route
     property real scaleX: 0
