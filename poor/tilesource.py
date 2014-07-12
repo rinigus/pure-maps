@@ -59,11 +59,8 @@ class TileSource:
     def download(self, x, y, zoom, retry=1):
         """Download map tile and return local file path or ``None``."""
         url = self.url.format(x=x, y=y, z=zoom)
-        directory = os.path.join(poor.CACHE_HOME_DIR,
-                                 self.id,
-                                 str(zoom),
-                                 str(x))
-
+        root = poor.CACHE_HOME_DIR
+        directory = os.path.join(root, self.id, str(zoom), str(x))
         basename = "{:d}{}".format(y, self.extension)
         path = os.path.join(directory, basename)
         if os.path.isfile(path):
@@ -84,20 +81,26 @@ class TileSource:
             poor.util.makedirs(directory)
             with open(path, "wb") as f:
                 f.write(response.read(1048576))
+            return path
         except Exception as error:
             httpc.close()
             httpc = None
             if isinstance(error, http.client.BadStatusLine) and retry > 0:
-                # This probably means that the connection was broken.
-                return self.download(x, y, zoom, retry-1)
-            print("Failed to download tile: {}"
-                  .format(str(error)), file=sys.stderr)
-
-            return None
+                # BadStatusLine probably means that the connection was broken.
+                pass
+            else:
+                # Otherwise we probably have no reason to expect a different
+                # outcome if we were to force an immediate retry.
+                print("Failed to download tile: {}: {}"
+                      .format(error.__class__.__name__, str(error)),
+                      file=sys.stderr)
+                return None
         finally:
             self._http_queue.task_done()
             self._http_queue.put(httpc)
-        return path
+        if retry > 0:
+            return self.download(x, y, zoom, retry-1)
+        return None
 
     def _init_http_queue(self):
         """Initialize queue of HTTP connections."""

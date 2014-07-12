@@ -76,7 +76,8 @@ def request_url(url, encoding=None, retry=1):
         if isinstance(error, http.client.BadStatusLine) and retry > 0:
             # This probably means that the connection was broken.
             return request_url(url, encoding, retry-1)
-        print("Failed to download data: {}"
-              .format(str(error)), file=sys.stderr)
+        print("Failed to download data: {}: {}"
+              .format(error.__class__.__name__, str(error)),
+              file=sys.stderr)
 
         raise # Exception

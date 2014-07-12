@@ -7,12 +7,8 @@ Poor Maps 0.7
      - Narrative should have a larger radius when using transit
        o Train/metro platform length vs. stop point
  [X] Show all stops along a route with HSL Journey Planner
- [X] Improve robustness of tile loading and connection to tile server
-     in cases of connection breaking and being restored
  [X] Fix geocoding to zoom to recent results, not all POIs on map
-
- FIX:
-  * Total disappearance of tiles
+ [X] Fix a tile loading bug introduced in 0.6.1
 
 Poor Maps 1.0
 =============
