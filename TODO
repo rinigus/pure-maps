@@ -2,10 +2,9 @@ Poor Maps 0.7
 =============
 
  [X] Make position icon into an arrow that shows bearing
- [ ] Improve detection of when a maneuver point has been passed
-     - Narrative should disappear quicker when using car
-     - Narrative should have a larger radius when using transit
-       o Train/metro platform length vs. stop point
+ [X] Improve detection of when a routing maneuver point has been passed
+     and try to show and hide the narrative better handling car and
+     public transportation differently
  [X] Show all stops along a route with HSL Journey Planner
  [X] Fix geocoding to zoom to recent results, not all POIs on map
  [X] Fix a tile loading bug introduced in 0.6.1

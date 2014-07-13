@@ -86,7 +86,7 @@ class TileSource:
             httpc.close()
             httpc = None
             if isinstance(error, http.client.BadStatusLine) and retry > 0:
-                # BadStatusLine probably means that the connection was broken.
+                # This probably means that the connection was broken.
                 pass
             else:
                 # Otherwise we probably have no reason to expect a different

@@ -17,6 +17,7 @@
 
 """Narration of routing maneuvers."""
 
+import bisect
 import poor
 
 __all__ = ("Narrative",)
@@ -31,21 +32,10 @@ class Maneuver:
         self.icon = "alert"
         self.narrative = ""
         self.node = None
-        self.passed = False
-        self._visited_dist = 40000
         self.x = None
         self.y = None
         for name in set(kwargs) & set(dir(self)):
             setattr(self, name, kwargs[name])
-
-    def set_visited(self, dist):
-        """Set distance at which maneuver node has been visited."""
-        if dist < self._visited_dist:
-            self._visited_dist = dist
-        # Setting these thresholds too tight will cause false positives
-        # with inaccurate positioning, e.g. indoors, tunnels etc.
-        if self._visited_dist < 0.02 and dist > 0.2:
-            self.passed = True
 
 
 class Narrative:
@@ -61,11 +51,29 @@ class Narrative:
         self.x = []
         self.y = []
 
+    def _get_closest_maneuver_node(self, x, y, node):
+        """Return index of the maneuver node closest to coordinates."""
+        # Only consider the immediate preceding and following
+        # maneuver nodes from the given closest route node.
+        nodes = sorted(set(x.node for x in self.maneuver if x))
+        a = bisect.bisect_left(nodes, node)
+        b = bisect.bisect_right(nodes, node)
+        nodes = nodes[max(0, a-1):min(len(nodes), b+1)]
+        min_index = 0
+        min_sq_dist = 360**2
+        for i in nodes:
+            # This should be faster than haversine
+            # and probably close enough.
+            dist = (x - self.x[i])**2 + (y - self.y[i])**2
+            if dist < min_sq_dist:
+                min_index = i
+                min_sq_dist = dist
+        return min_index
+
     def _get_closest_node(self, x, y):
         """Return index of the route node closest to coordinates."""
         min_index = 0
         min_sq_dist = 360**2
-        threshold = 0.00005**2
         for i in range(len(self.x)):
             # This should be faster than haversine
             # and probably close enough.
@@ -73,12 +81,14 @@ class Narrative:
             if dist < min_sq_dist:
                 min_index = i
                 min_sq_dist = dist
-                # Try to cut run-time in half.
-                if dist < threshold: break
         return min_index
 
     def _get_distance_from_route(self, x, y, node):
         """Return distance in kilometers from the route polyline."""
+        return min(self._get_distances_from_route(x, y, node))
+
+    def _get_distances_from_route(self, x, y, node):
+        """Return distances in kilometers from route segments."""
         if len(self.x) == 1:
             return poor.util.calculate_distance(
                 x, y, self.x[node], self.y[node])
@@ -93,22 +103,21 @@ class Narrative:
             y1, y2 = self.y[node:node+2]
             dist.append(poor.util.calculate_segment_distance(
                 x, y, x1, y1, x2, y2))
-        return min(dist)
+        return dist
 
     def get_display(self, x, y):
         """Return a dictionary of status details to display."""
         if not self.ready: return None
+        if self.mode == "transit":
+            return self._get_display_transit(x, y)
         node = self._get_closest_node(x, y)
-        seg_dist = self._get_distance_from_route(x, y, node)
-        dest_dist = seg_dist + self.dist[node]
-        dest_time = self.time[node]
-        if node == len(self.dist) - 1:
-            # Use exact straight-line value at the very end.
-            dest_dist = poor.util.calculate_distance(
-                x, y, self.x[node], self.y[node])
+        seg_dists = self._get_distances_from_route(x, y, node)
+        seg_dist = min(seg_dists)
+        dest_dist, dest_time = self._get_display_destination(
+            x, y, node, seg_dist)
         dest_dist = poor.util.format_distance(dest_dist, 2)
         dest_time = poor.util.format_time(dest_time)
-        man = self._get_maneuver_display(x, y, node, seg_dist)
+        man = self._get_display_maneuver(x, y, node, seg_dists)
         man_dist, man_time, icon, narrative = man
         if man_time > 120:
             # Only show narrative near maneuver point.
@@ -126,8 +135,28 @@ class Narrative:
                     icon=icon,
                     narrative=narrative)
 
-    def _get_maneuver_display(self, x, y, node, seg_dist):
+    def _get_display_destination(self, x, y, node, seg_dist):
+        """Return destination details to display."""
+        dest_dist = seg_dist + self.dist[node]
+        dest_time = self.time[node]
+        if node == len(self.x) - 1:
+            # Use exact straight-line value at the very end.
+            dest_dist = poor.util.calculate_distance(
+                x, y, self.maneuver[node].x, self.maneuver[node].y)
+        return dest_dist, dest_time
+
+    def _get_display_maneuver(self, x, y, node, seg_dists):
         """Return maneuver details to display."""
+        # For car, show narrative of the next maneuver point following the
+        # closest route segment, but avoid considering the maneuver point
+        # passed too soon in case the positioning jumps around a bit.
+        if len(seg_dists) == 2:
+            # If the segment following the closest node is closer than the one
+            # preceding, use the maneuver data of the next node.
+            s1, s2 = seg_dists
+            if s2 < s1/2 and s1 > 0.01:
+                node = node + 1
+        seg_dist = min(seg_dists)
         maneuver = self.maneuver[node]
         man_dist = seg_dist + self.dist[node] - self.dist[maneuver.node]
         man_time = self.time[node] - self.time[maneuver.node]
@@ -135,12 +164,49 @@ class Narrative:
             # Use exact straight-line value at the very end.
             man_dist = poor.util.calculate_distance(
                 x, y, maneuver.x, maneuver.y)
-            maneuver.set_visited(man_dist)
-            if maneuver.passed and node+1 < len(self.x):
-                # If the maneuver point has been passed,
-                # show the next maneuver narrative if applicable.
-                return self._get_maneuver_display(x, y, node+1, seg_dist)
         return man_dist, man_time, maneuver.icon, maneuver.narrative
+
+    def _get_display_transit(self, x, y):
+        """Return a dictionary of status details to display."""
+        # For transit, show narrative of the closest node, since transit
+        # maneuver points are not always points, but often stations or
+        # platforms that cover a large area.
+        node = self._get_closest_node(x, y)
+        seg_dist = self._get_distance_from_route(x, y, node)
+        dest_dist, dest_time = self._get_display_destination(
+            x, y, node, seg_dist)
+        dest_dist = poor.util.format_distance(dest_dist, 2)
+        dest_time = poor.util.format_time(dest_time)
+        mnode = self._get_closest_maneuver_node(x, y, node)
+        if mnode > node + 1:
+            # If the maneuver point is far and still ahead, we can calculate
+            # distances and times from along the route, just as for cars.
+            man_dist = seg_dist + self.dist[node] - self.dist[mnode]
+            man_time = self.time[node] - self.time[mnode]
+        else:
+            # If the maneuver point is the very next one,
+            # or already passed, use straight-line distance.
+            man_dist = poor.util.calculate_distance(
+                x, y, self.maneuver[mnode].x, self.maneuver[mnode].y)
+            man_time = 0
+        if node > mnode and man_dist > 0.5:
+            # If closest maneuver point surely passed,
+            # show narrative of the next maneuver.
+            icon = self.maneuver[node].icon
+            narrative = self.maneuver[node].narrative
+        else:
+            # If near a maneuver point,
+            # show the corresponding narrative.
+            icon = self.maneuver[mnode].icon
+            narrative = self.maneuver[mnode].narrative
+        man_dist = poor.util.format_distance(man_dist, 2)
+        man_time = poor.util.format_time(man_time)
+        return dict(dest_dist=dest_dist,
+                    dest_time=dest_time,
+                    man_dist=man_dist,
+                    man_time=man_time,
+                    icon=icon,
+                    narrative=narrative)
 
     @property
     def ready(self):
@@ -157,9 +223,10 @@ class Narrative:
         Set maneuver points and corresponding narrative.
 
         Keys "x", "y" and "duration" are required for each item in `maneuvers`
-        and keys "icon", "narrative" and "passive" are optional.
+        and keys "icon", "narrative" and "passive" are optional. Duration
+        refers to the leg following the maneuver, other data is associated with
+        the maneuver point itself.
         """
-        # TODO: Use self.mode.
         prev_maneuver = None
         for i in reversed(range(len(maneuvers))):
             if "passive" in maneuvers[i]:
@@ -187,7 +254,7 @@ class Narrative:
         `mode` should be "car" or "transit". This affects how maneuver
         notifications are handled. Currently only transit (public
         transportation) is handled differently and thus walking, bicycle, etc.
-        should all be marked as "car".
+        can all be marked as "car".
         """
         self.mode = mode
 
