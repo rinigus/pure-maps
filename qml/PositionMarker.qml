@@ -20,14 +20,24 @@ import QtQuick 2.0
 import QtLocation 5.0
 
 MapQuickItem {
-    anchorPoint.x: image.width/2
-    anchorPoint.y: image.height/2
+    anchorPoint.x: movingImage.width/2
+    anchorPoint.y: movingImage.height/2
     coordinate: map.position.coordinate
-    sourceItem: Image {
-        id: image
-        rotation: map.direction || 0
-        source: map.direction ?
-            "icons/position-direction.png" : "icons/position.png"
+    sourceItem: Item {
+        Image {
+            id: movingImage
+            rotation: map.direction || 0
+            source: "icons/position-direction.png"
+            transformOrigin: Item.Center
+            visible: map.direction || false
+        }
+        Image {
+            id: stillImage
+            anchors.horizontalCenter: movingImage.horizontalCenter
+            anchors.verticalCenter: movingImage.verticalCenter
+            source: "icons/position.png"
+            visible: !movingImage.visible
+        }
     }
     z: 300
 }
