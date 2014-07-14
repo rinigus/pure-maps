@@ -265,8 +265,18 @@ class Narrative:
         self.dist = [0] * len(x)
         self.time = [0] * len(x)
         self.maneuver = [None] * len(x)
-        for i in reversed(range(len(x)-1)):
+        for i in list(reversed(range(len(x)-1))):
             dist = poor.util.calculate_distance(x[i], y[i], x[i+1], y[i+1])
+            if dist < 0.001:
+                # Consequtive duplicate points will cause problems for
+                # calculations that determine when to show narration related
+                # to a maneuver point. We need to drop these.
+                self.x.pop(i)
+                self.y.pop(i)
+                self.dist.pop(i)
+                self.time.pop(i)
+                self.maneuver.pop(i)
+                continue
             self.dist[i] = self.dist[i+1] + dist
             # Calculate remaining time using 120 km/h, which will maximize
             # the advance at which maneuver notifications are shown.
