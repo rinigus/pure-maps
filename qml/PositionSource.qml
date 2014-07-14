@@ -25,7 +25,7 @@ PositionSource {
     updateInterval: 1000
     property var direction
     property var prevCoordinate
-    property int prevTime
+    property var prevTime
     Component.onCompleted: {
         py.onReadyChanged.connect(function() {
             gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");
