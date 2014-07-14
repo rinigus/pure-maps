@@ -269,7 +269,7 @@ class Narrative:
             dist = poor.util.calculate_distance(x[i], y[i], x[i+1], y[i+1])
             if dist < 0.001:
                 # Consecutive duplicate points will cause problems for
-                # calculations that determine when to show narration related
+                # calculations that determine when to show narrative related
                 # to a maneuver point. We need to drop these.
                 self.x.pop(i)
                 self.y.pop(i)
