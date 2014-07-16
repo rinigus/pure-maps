@@ -150,7 +150,7 @@ class Narrative:
         dest_time = poor.util.format_time(dest_time)
         man = self._get_display_maneuver(x, y, node, seg_dists)
         man_dist, man_time, icon, narrative = man
-        if man_time > 120:
+        if man_time > 90:
             # Only show narrative near maneuver point.
             icon = narrative = None
         man_dist = poor.util.format_distance(man_dist, 2)
