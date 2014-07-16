@@ -1,20 +1,7 @@
-Poor Maps 0.7
-=============
-
- [X] Make position icon into an arrow that shows bearing
- [X] Show all stops along a route with HSL Journey Planner
- [X] Fix routing narrative to consider closest segment instead of
-     closest route node
- [X] Improve detection of when a routing maneuver point has been passed
-     and try to show and hide the narrative better, handling car and
-     public transportation differently
- [X] Fix geocoding to zoom to recent results, not all POIs on map
- [X] Fix a tile loading bug introduced in 0.6.1
-
 Poor Maps 1.0
 =============
 
- * Switch distance functions to use meters instead of kilometers
+ * Switch distance functions to use meters instead of kilometers?
  * Add proper icons for different turn types
    - Compare: http://stackoverflow.com/questions/17941812
  * Add a scalebar?

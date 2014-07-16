@@ -1,3 +1,16 @@
+Poor Maps 0.7
+=============
+
+ * Make position icon into an arrow that shows bearing
+ * Show all stops along a route with HSL Journey Planner
+ * Fix routing narrative to consider the closest segment instead of
+   the closest route node
+ * Improve detection of when a routing maneuver point has been passed
+   and try to show and hide the narrative better, handling car and
+   public transportation differently
+ * Fix geocoding to zoom to recent results, not all POIs on map
+ * Fix a tile loading bug introduced in 0.6.1
+
 Poor Maps 0.6.1
 ===============
 
