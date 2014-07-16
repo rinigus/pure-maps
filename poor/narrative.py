@@ -45,6 +45,7 @@ class Narrative:
     def __init__(self):
         """Initialize a :class:`Narrative` instance."""
         self.dist = []
+        self._last_node = 0
         self.maneuver = []
         self.mode = "car"
         self.time = []
@@ -59,29 +60,57 @@ class Narrative:
         a = bisect.bisect_left(nodes, node)
         b = bisect.bisect_right(nodes, node)
         nodes = nodes[max(0, a-1):min(len(nodes), b+1)]
-        min_index = 0
-        min_sq_dist = 360**2
+        min_node = 0
+        min_dist = 360**2
         for i in nodes:
             # This should be faster than haversine
             # and probably close enough.
             dist = (x - self.x[i])**2 + (y - self.y[i])**2
-            if dist < min_sq_dist:
-                min_index = i
-                min_sq_dist = dist
-        return min_index
+            if dist < min_dist:
+                min_node = i
+                min_dist = dist
+        return min_node
 
     def _get_closest_node(self, x, y):
         """Return index of the route node closest to coordinates."""
-        min_index = 0
-        min_sq_dist = 360**2
+        min_node = 0
+        min_dist = 360**2
         for i in range(len(self.x)):
             # This should be faster than haversine
             # and probably close enough.
             dist = (x - self.x[i])**2 + (y - self.y[i])**2
-            if dist < min_sq_dist:
-                min_index = i
-                min_sq_dist = dist
-        return min_index
+            if dist < min_dist:
+                min_node = i
+                min_dist = dist
+        return min_node
+
+    def _get_closest_segment_node(self, x, y):
+        """Return index of a node of the segment closest to coordinates."""
+        min_node = 0
+        min_dist = 360**2
+        eps1 = 0.00005**2
+        eps2 = 0.0002**2
+        eps3 = 0.005**2
+        ahead = range(self._last_node, len(self.x)-1)
+        behind = reversed(range(0, self._last_node))
+        for iterator in (ahead, behind):
+            for i in iterator:
+                # This should be faster than haversine
+                # and probably close enough.
+                dist = poor.polysimp.get_sq_seg_dist(
+                    x, y, self.x[i], self.y[i], self.x[i+1], self.y[i+1])
+                if dist < min_dist:
+                    min_node = i
+                    min_dist = dist
+                # Try to terminate as soon as possible.
+                # These conditions fail if we're off route.
+                if min_dist < eps1: break
+                if min_dist < eps2 and dist > eps3: break
+        self._last_node = min_node
+        a, b = min_node, min_node+1
+        dist_a = (x - self.x[a])**2 + (y - self.y[a])**2
+        dist_b = (x - self.x[b])**2 + (y - self.y[b])**2
+        return (a if dist_a < dist_b else b)
 
     def _get_distance_from_route(self, x, y, node):
         """Return distance in kilometers from the route polyline."""
@@ -110,7 +139,7 @@ class Narrative:
         if not self.ready: return None
         if self.mode == "transit":
             return self._get_display_transit(x, y)
-        node = self._get_closest_node(x, y)
+        node = self._get_closest_segment_node(x, y)
         seg_dists = self._get_distances_from_route(x, y, node)
         seg_dist = min(seg_dists)
         dest_dist, dest_time = self._get_display_destination(
@@ -147,12 +176,12 @@ class Narrative:
 
     def _get_display_maneuver(self, x, y, node, seg_dists):
         """Return maneuver details to display."""
-        # For car, show narrative of the next maneuver point following the
-        # closest route segment, but avoid considering the maneuver point
+        # For car, show narrative of the next maneuver point following
+        # the closest route segment, but avoid considering the maneuver point
         # passed too soon in case the positioning jumps around a bit.
         if len(seg_dists) == 2:
-            # If the segment following the closest node is closer than the one
-            # preceding, use the maneuver data of the next node.
+            # If the segment following the closest node is closer than
+            # the one preceding, use the maneuver data of the next node.
             s1, s2 = seg_dists
             if s2 < s1/2 and s1 > 0.01:
                 node = node + 1
@@ -171,7 +200,7 @@ class Narrative:
         # For transit, show narrative of the closest node, since transit
         # maneuver points are not always points, but often stations or
         # platforms that cover a large area.
-        node = self._get_closest_node(x, y)
+        node = self._get_closest_segment_node(x, y)
         seg_dist = self._get_distance_from_route(x, y, node)
         dest_dist, dest_time = self._get_display_destination(
             x, y, node, seg_dist)
@@ -287,6 +316,7 @@ class Narrative:
     def unset(self):
         """Unset route and maneuvers."""
         self.dist = []
+        self._last_node = 0
         self.maneuver = []
         self.mode = "car"
         self.time = []
