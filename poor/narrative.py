@@ -56,6 +56,8 @@ class Narrative:
         """Return index of the maneuver node closest to coordinates."""
         # Only consider the immediate preceding and following
         # maneuver nodes from the given closest route node.
+        if self.maneuver[node].node == node:
+            return node
         nodes = sorted(set(x.node for x in self.maneuver if x))
         a = bisect.bisect_left(nodes, node)
         b = bisect.bisect_right(nodes, node)
@@ -221,6 +223,8 @@ class Narrative:
         if node > mnode and man_dist > 0.5:
             # If closest maneuver point surely passed,
             # show narrative of the next maneuver.
+            man_dist = poor.util.calculate_distance(
+                x, y, self.maneuver[node].x, self.maneuver[node].y)
             icon = self.maneuver[node].icon
             narrative = self.maneuver[node].narrative
         else:
