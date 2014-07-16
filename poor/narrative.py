@@ -170,7 +170,7 @@ class Narrative:
         """Return destination details to display."""
         dest_dist = seg_dist + self.dist[node]
         dest_time = self.time[node]
-        if node == len(self.x) - 1 or dest_dist < 0.2:
+        if node == len(self.x) - 1 or dest_dist < 0.5:
             # Use exact straight-line value at the very end.
             dest_dist = poor.util.calculate_distance(
                 x, y, self.maneuver[node].x, self.maneuver[node].y)
@@ -191,7 +191,7 @@ class Narrative:
         maneuver = self.maneuver[node]
         man_dist = seg_dist + self.dist[node] - self.dist[maneuver.node]
         man_time = self.time[node] - self.time[maneuver.node]
-        if node == maneuver.node or man_dist < 0.2:
+        if node == maneuver.node or man_dist < 0.5:
             # Use exact straight-line value at the very end.
             man_dist = poor.util.calculate_distance(
                 x, y, maneuver.x, maneuver.y)
