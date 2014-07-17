@@ -36,6 +36,7 @@ Rectangle {
     property string manDist: ""
     property string manTime: ""
     property string narrative: ""
+    property bool   notify: icon != "" || narrative != ""
     Image {
         id: iconImage
         anchors.left: parent.left
@@ -59,11 +60,11 @@ Rectangle {
     Label {
         id: manLabel
         anchors.left: iconImage.right
-        color: statusArea.narrative != "" ?
+        color: statusArea.notify ?
             Theme.highlightColor : "white"
-        font.family: statusArea.narrative != "" ?
+        font.family: statusArea.notify ?
             Theme.fontFamilyHeading : Theme.fontFamily
-        font.pixelSize: statusArea.narrative != "" ?
+        font.pixelSize: statusArea.notify ?
             Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
         height: statusArea.destDist != "" ? implicitHeight : 0
         text: statusArea.manDist
@@ -79,7 +80,7 @@ Rectangle {
         text: statusArea.destTime != "" ?
             statusArea.destDist + "  ·  " + statusArea.destTime :
             statusArea.destDist
-        verticalAlignment: statusArea.narrative != "" ?
+        verticalAlignment: statusArea.notify ?
             Text.AlignVCenter : Text.AlignBottom
     }
     Label {
