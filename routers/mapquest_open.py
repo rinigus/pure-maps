@@ -28,25 +28,25 @@ import urllib.parse
 
 CONF_DEFAULTS = {"type": "fastest"}
 
-ICONS = { 0: "alert",
-          1: "alert",
-          2: "alert",
-          3: "alert",
+ICONS = { 0: "straight",
+          1: "turn-slight-right",
+          2: "turn-right",
+          3: "turn-sharp-right",
           4: "alert",
-          5: "alert",
-          6: "alert",
-          7: "alert",
-          8: "alert",
-          9: "alert",
-         10: "alert",
-         11: "alert",
-         12: "alert",
-         13: "alert",
-         14: "alert",
-         15: "alert",
-         16: "alert",
-         17: "alert",
-         18: "alert"}
+          5: "turn-sharp-left",
+          6: "turn-left",
+          7: "turn-slight-left",
+          8: "u-turn-left",
+          9: "u-turn-right",
+         10: "merge-left",
+         11: "merge-right",
+         12: "ramp-right",
+         13: "ramp-left",
+         14: "ramp-right",
+         15: "ramp-left",
+         16: "fork-right",
+         17: "fork-left",
+         18: "straight"}
 
 URL = ("http://open.mapquestapi.com/directions/v2/route"
        "?key=Fmjtd%7Cluur2quy2h%2Cbn%3Do5-9aasg4"

@@ -25,14 +25,14 @@ http://github.com/DennisOSRM/Project-OSRM/wiki/Server-api
 import json
 import poor
 
-ICONS = { 1: "alert",
-          2: "alert",
-          3: "alert",
-          4: "alert",
-          5: "alert",
-          6: "alert",
-          7: "alert",
-          8: "alert",
+ICONS = { 1: "straight",
+          2: "turn-slight-right",
+          3: "turn-right",
+          4: "turn-sharp-right",
+          5: "u-turn-left",
+          6: "turn-sharp-left",
+          7: "turn-left",
+          8: "turn-slight-left",
           9: "alert",
          10: "alert",
          11: "alert",
