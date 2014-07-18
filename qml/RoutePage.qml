@@ -57,7 +57,8 @@ Page {
                 label: "From"
                 height: Theme.itemSizeSmall
                 value: page.fromText
-                width: parent.width
+                // Avoid putting label and value on different lines.
+                width: 3*parent.width
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
@@ -70,7 +71,8 @@ Page {
                 label: "To"
                 height: Theme.itemSizeSmall
                 value: page.toText
-                width: parent.width
+                // Avoid putting label and value on different lines.
+                width: 3*parent.width
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
