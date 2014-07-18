@@ -22,6 +22,7 @@ http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm
 """
 
 # Adapted from Vladimir Agafonkin's simplify.js.
+# Copyright (C) 2012 Vladimir Agafonkin, BSD-licensed.
 # http://mourner.github.io/simplify-js
 
 import collections
