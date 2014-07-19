@@ -44,15 +44,31 @@ Page {
                 anchors.rightMargin: Theme.paddingLarge
                 color: model.active || listItem.highlighted?
                     Theme.highlightColor : Theme.primaryColor
+                font.pixelSize: Theme.fontSizeSmall
                 text: model.narrative
-                verticalAlignment: Text.AlignVCenter
+                verticalAlignment: Text.AlignBottom
                 wrapMode: Text.WordWrap
             }
+            Label {
+                id: lengthLabel
+                anchors.left: iconImage.right
+                anchors.leftMargin: Theme.paddingMedium
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.paddingLarge
+                anchors.top: narrativeLabel.bottom
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeSmall
+                text: model.index < listView.count-1 ?
+                    "Continue for " + model.length + "." : ""
+                verticalAlignment: Text.AlignTop
+            }
             Component.onCompleted: {
-                var height = Math.max(iconImage.height, narrativeLabel.height);
+                var textHeight = narrativeLabel.height + lengthLabel.height;
+                var height = Math.max(iconImage.height, textHeight);
                 height = height + 2*Theme.paddingMedium;
                 iconImage.height = height;
-                narrativeLabel.height = height;
+                narrativeLabel.height += (height - textHeight)/2;
+                lengthLabel.height += (height - textHeight)/2;
                 listItem.contentHeight = height;
             }
             onClicked: {

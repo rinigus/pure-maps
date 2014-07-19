@@ -29,7 +29,9 @@ class Maneuver:
 
     def __init__(self, **kwargs):
         """Initialize a :class:`Maneuver` instance."""
+        self.duration = 0
         self.icon = "alert"
+        self.length = 0
         self.narrative = ""
         self.node = None
         self.x = None
@@ -249,6 +251,7 @@ class Narrative:
         maneuvers = filter(None, set(self.maneuver))
         maneuvers = sorted(maneuvers, key=lambda x: x.node)
         return [dict(icon=maneuver.icon,
+                     length=poor.util.format_distance(maneuver.length, n=2),
                      narrative=maneuver.narrative,
                      x=maneuver.x,
                      y=maneuver.y,
@@ -287,8 +290,9 @@ class Narrative:
             # Calculate time remaining to destination for each node
             # based on durations of individual legs following given maneuvers.
             if prev_maneuver is not None:
-                dist = self.dist[maneuver.node] - self.dist[prev_maneuver.node]
-                speed = dist / max(1, maneuvers[i]["duration"]) # km/s
+                prev_dist = self.dist[prev_maneuver.node]
+                maneuver.length = self.dist[maneuver.node] - prev_dist
+                speed = maneuver.length / max(1, maneuver.duration) # km/s
                 for j in reversed(range(maneuver.node, prev_maneuver.node)):
                     dist = self.dist[j] - self.dist[j+1]
                     self.time[j] = self.time[j+1] + dist/speed

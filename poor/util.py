@@ -141,11 +141,11 @@ def format_bearing(bearing):
 def format_distance(distance, n, units="km"):
     """Format `distance` to `n` significant digits and unit label."""
     # XXX: We might need to support for non-SI units here.
-    if units == "km" and distance < 1:
+    if units == "km" and abs(distance) < 1:
         return format_distance(distance*1000, n, units="m")
-    if units == "m" and distance > 1000:
+    if units == "m" and abs(distance) > 1000:
         return format_distance(distance/1000, n, units="km")
-    ndigits = n - math.ceil(math.log10(abs(distance)))
+    ndigits = n - math.ceil(math.log10(abs(max(1, distance)) + 1/1000000))
     if units == "m":
         ndigits = min(0, ndigits)
     distance = round(distance, ndigits)
