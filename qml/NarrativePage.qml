@@ -67,7 +67,7 @@ Page {
     }
     Component.onCompleted: {
         // Load narrative from the Python backend.
-        var args = [map.statusArea.manNode];
+        var args = [map.center.longitude, map.center.latitude];
         py.call("poor.app.narrative.get_maneuvers", args, function(maneuvers) {
             var activeIndex = -1;
             for (var i = 0; i < maneuvers.length; i++) {

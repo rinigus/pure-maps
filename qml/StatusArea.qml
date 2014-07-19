@@ -34,7 +34,6 @@ Rectangle {
     property string destTime: ""
     property string icon: ""
     property string manDist: ""
-    property int    manNode: 0
     property string manTime: ""
     property string narrative: ""
     property bool   notify: icon != "" || narrative != ""

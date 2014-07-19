@@ -161,7 +161,6 @@ class Narrative:
             dest_time = man_time = icon = narrative = None
         return dict(dest_dist=dest_dist,
                     dest_time=dest_time,
-                    man_node=man_node,
                     man_dist=man_dist,
                     man_time=man_time,
                     icon=icon,
@@ -238,21 +237,22 @@ class Narrative:
         man_time = poor.util.format_time(man_time)
         return dict(dest_dist=dest_dist,
                     dest_time=dest_time,
-                    man_node=man_node,
                     man_dist=man_dist,
                     man_time=man_time,
                     icon=icon,
                     narrative=narrative)
 
-    def get_maneuvers(self, node):
+    def get_maneuvers(self, x, y):
         """Return a list of dictionaries of maneuver details."""
+        node = self._get_closest_segment_node(x, y)
+        man_node = self._get_closest_maneuver_node(x, y, node)
         maneuvers = filter(None, set(self.maneuver))
         maneuvers = sorted(maneuvers, key=lambda x: x.node)
         return [dict(icon=maneuver.icon,
                      narrative=maneuver.narrative,
                      x=maneuver.x,
                      y=maneuver.y,
-                     active=(maneuver.node == node),
+                     active=(maneuver.node == man_node),
                      ) for maneuver in maneuvers]
 
     @property
