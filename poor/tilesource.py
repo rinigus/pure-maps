@@ -107,7 +107,10 @@ class TileSource:
         # Use two download threads as per OpenStreetMap tile usage policy.
         # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
         for i in range(2):
-            self._http_queue.put(None)
+            try:
+                self._http_queue.put(self._new_http_connection())
+            except Exception:
+                self._http_queue.put(None)
         agent = "poor-maps/{}".format(poor.__version__)
         self._headers = {"Connection": "Keep-Alive",
                          "User-Agent": agent}
