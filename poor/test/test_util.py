@@ -28,7 +28,7 @@ class TestModule(poor.test.TestCase):
     def test_calculate_distance(self):
         # From Helsinki to Lissabon.
         dist = poor.util.calculate_distance(24.94, 60.17, -9.14, 38.72)
-        assert round(dist) == 3361
+        assert round(dist/1000) == 3361
 
     def test_decode_epl(self):
         # Values from the official example.

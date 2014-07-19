@@ -53,7 +53,7 @@ def calculate_bearing(x1, y1, x2, y2):
     return (bearing + 360) % 360
 
 def calculate_distance(x1, y1, x2, y2):
-    """Calculate distance in kilometers from point 1 to point 2."""
+    """Calculate distance in meters from point 1 to point 2."""
     # Using the Haversine formula.
     # http://www.movable-type.co.uk/scripts/latlong.html
     x1, y1, x2, y2 = map(math.radians, (x1, y1, x2, y2))
@@ -61,16 +61,16 @@ def calculate_distance(x1, y1, x2, y2):
          math.cos(y1) * math.cos(y2))
 
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-    return 6371 * c
+    return 6371000 * c
 
 def calculate_segment_distance(x, y, x1, y1, x2, y2):
-    """Calculate distance in kilometers from point to segment."""
+    """Calculate distance in meters from point to segment."""
     # This is not quite correct, but maybe close enough,
     # given sufficiently short segments.
     med_dist_deg = math.sqrt((x - (x1+x2)/2)**2 + (y - (y1+y2)/2)**2)
-    med_dist_km = calculate_distance(x, y, (x1+x2)/2, (y1+y2)/2)
+    med_dist_m = calculate_distance(x, y, (x1+x2)/2, (y1+y2)/2)
     seg_dist_deg = math.sqrt(poor.polysimp.get_sq_seg_dist(x, y, x1, y1, x2, y2))
-    return seg_dist_deg * (med_dist_km / med_dist_deg)
+    return seg_dist_deg * (med_dist_m / med_dist_deg)
 
 def decode_epl(string, precision=5):
     """
@@ -138,7 +138,7 @@ def format_bearing(bearing):
     raise ValueError("Unexpected bearing: {}"
                      .format(repr(bearing)))
 
-def format_distance(distance, n=2, units="km"):
+def format_distance(distance, n=2, units="m"):
     """Format `distance` to `n` significant digits and unit label."""
     # XXX: We might need to support for non-SI units here.
     if units == "km" and abs(distance) < 1:

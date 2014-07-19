@@ -178,7 +178,7 @@ Page {
     }
     function formatLength(length) {
         // Format length in meters to human-readable format.
-        return py.call_sync("poor.util.format_distance", [length, 2, "m"]);
+        return py.call_sync("poor.util.format_distance", [length]);
     }
     function populate() {
         // Load routing results from the Python backend.

@@ -117,11 +117,11 @@ class Narrative:
         return (a if dist_a < dist_b else b)
 
     def _get_distance_from_route(self, x, y, node):
-        """Return distance in kilometers from the route polyline."""
+        """Return distance in meters from the route polyline."""
         return min(self._get_distances_from_route(x, y, node))
 
     def _get_distances_from_route(self, x, y, node):
-        """Return distances in kilometers from route segments."""
+        """Return distances in meters from route segments."""
         if len(self.x) == 1:
             return poor.util.calculate_distance(
                 x, y, self.x[node], self.y[node])
@@ -157,7 +157,7 @@ class Narrative:
             icon = narrative = None
         man_dist = poor.util.format_distance(man_dist)
         man_time = poor.util.format_time(man_time)
-        if seg_dist > 0.2:
+        if seg_dist > 200:
             # Don't show the narrative or details calculated
             # from nodes along the route if far off route.
             dest_time = man_time = icon = narrative = None
@@ -172,7 +172,7 @@ class Narrative:
         """Return destination details to display."""
         dest_dist = seg_dist + self.dist[node]
         dest_time = self.time[node]
-        if node == len(self.x) - 1 or dest_dist < 0.5:
+        if node == len(self.x) - 1 or dest_dist < 500:
             # Use exact straight-line value at the very end.
             dest_dist = poor.util.calculate_distance(
                 x, y, self.maneuver[node].x, self.maneuver[node].y)
@@ -187,14 +187,14 @@ class Narrative:
             # If the segment following the closest node is closer than
             # the one preceding, use the maneuver data of the next node.
             s1, s2 = seg_dists
-            if s2 < s1/2 and s1 > 0.01:
+            if s2 < s1/2 and s1 > 10:
                 node = node + 1
         seg_dist = min(seg_dists)
         maneuver = self.maneuver[node]
         man_node = maneuver.node
         man_dist = seg_dist + self.dist[node] - self.dist[man_node]
         man_time = self.time[node] - self.time[man_node]
-        if node == man_node or man_dist < 0.5:
+        if node == man_node or man_dist < 500:
             # Use exact straight-line value at the very end.
             man_dist = poor.util.calculate_distance(
                 x, y, maneuver.x, maneuver.y)
@@ -223,7 +223,7 @@ class Narrative:
             man_dist = poor.util.calculate_distance(
                 x, y, self.maneuver[man_node].x, self.maneuver[man_node].y)
             man_time = 0
-        if node > man_node and man_dist > 0.5:
+        if node > man_node and man_dist > 500:
             # If closest maneuver point surely passed,
             # show narrative of the next maneuver.
             man_dist = poor.util.calculate_distance(
@@ -274,8 +274,8 @@ class Narrative:
 
         Keys "x", "y" and "duration" are required for each item in `maneuvers`
         and keys "icon", "narrative" and "passive" are optional. Duration
-        refers to the leg following the maneuver, other data is associated with
-        the maneuver point itself.
+        (seconds) refers to the leg following the maneuver, other data is
+        associated with the maneuver point itself.
         """
         prev_maneuver = None
         for i in reversed(range(len(maneuvers))):
@@ -292,7 +292,7 @@ class Narrative:
             if prev_maneuver is not None:
                 prev_dist = self.dist[prev_maneuver.node]
                 maneuver.length = self.dist[maneuver.node] - prev_dist
-                speed = maneuver.length / max(1, maneuver.duration) # km/s
+                speed = maneuver.length / max(1, maneuver.duration) # m/s
                 for j in reversed(range(maneuver.node, prev_maneuver.node)):
                     dist = self.dist[j] - self.dist[j+1]
                     self.time[j] = self.time[j+1] + dist/speed
@@ -319,7 +319,7 @@ class Narrative:
         self._last_node = 0
         for i in list(reversed(range(len(x)-1))):
             dist = poor.util.calculate_distance(x[i], y[i], x[i+1], y[i+1])
-            if dist < 0.001:
+            if dist < 1:
                 # Consecutive duplicate points will cause problems for
                 # calculations that determine when to show narrative related
                 # to a maneuver point. We need to drop these.
@@ -334,7 +334,7 @@ class Narrative:
             # the advance at which maneuver notifications are shown.
             # See 'set_maneuvers' for the actual leg-specific times
             # that should in most cases overwrite these.
-            self.time[i] = self.time[i+1] + (dist/120)*3600
+            self.time[i] = self.time[i+1] + (dist/1000/120)*3600
 
     def unset(self):
         """Unset route and maneuvers."""
