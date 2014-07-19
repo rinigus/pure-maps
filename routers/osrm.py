@@ -34,7 +34,7 @@ ICONS = { 1: "straight",
           7: "turn-left",
           8: "turn-slight-left",
           9: "alert",
-         10: "alert",
+         10: "straight",
          11: "alert",
          12: "alert",
          13: "alert",
@@ -90,20 +90,27 @@ hints = {}
 def parse_icon(maneuver):
     """Parse icon from `maneuver`."""
     with poor.util.silent(ValueError, KeyError):
-        return ICONS[int(maneuver[0])]
+        # One maneuver can have multiple turns, e.g.
+        # Enter the roundabout. Go straight.
+        return ICONS[int(maneuver[0].split("-")[-1])]
     return "alert"
 
 def parse_narrative(maneuver):
     """Parse narrative from `maneuver`."""
-    try:
-        turn = TURNS[int(maneuver[0])]
-        narrative = NARRATIVE[int(maneuver[0])]
-    except (ValueError, KeyError):
-        return ""
-    street = maneuver[1]
-    if street:
-        return narrative.format(**locals())
-    return "{}.".format(turn)
+    narratives = []
+    # One maneuver can have multiple turns, e.g.
+    # Enter the roundabout. Go straight.
+    for num in maneuver[0].split("-"):
+        try:
+            turn = TURNS[int(num)]
+            narrative = NARRATIVE[int(num)]
+        except (ValueError, KeyError):
+            continue
+        street = maneuver[1]
+        narratives.append(narrative.format(**locals())
+                          if street else "{}.".format(turn))
+
+    return " ".join(narratives)
 
 def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
