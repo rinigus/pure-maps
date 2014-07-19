@@ -34,67 +34,80 @@ Rectangle {
     property string destTime: ""
     property string icon: ""
     property string manDist: ""
+    property int    manNode: 0
     property string manTime: ""
     property string narrative: ""
     property bool   notify: icon != "" || narrative != ""
-    Image {
-        id: iconImage
+    BackgroundItem {
         anchors.left: parent.left
-        fillMode: Image.Pad
-        height: statusArea.icon != "" ?
-            Math.max(implicitHeight +
-                     Theme.paddingLarge*2,
-                     manLabel.height +
-                     narrativeLabel.height +
-                     Theme.paddingMedium/2): 0
+        anchors.right: parent.right
+        anchors.top: parent.top
+        // Ensure a sufficiently large tap target.
+        height: Math.max(parent.height, Theme.itemSizeSmall)
+        highlightedColor: "#00000000"
+        Image {
+            id: iconImage
+            anchors.left: parent.left
+            fillMode: Image.Pad
+            height: statusArea.icon != "" ?
+                Math.max(implicitHeight +
+                         Theme.paddingLarge*2,
+                         manLabel.height +
+                         narrativeLabel.height +
+                         Theme.paddingMedium/2): 0
 
-        horizontalAlignment: Image.AlignHCenter
-        source: statusArea.icon != "" ?
-            "icons/" + statusArea.icon + ".png" :
-            "icons/alert.png"
-        verticalAlignment: Image.AlignVCenter
-        width: statusArea.icon != "" ?
-            implicitWidth + 2*Theme.paddingLarge :
-            Theme.paddingMedium
-    }
-    Label {
-        id: manLabel
-        anchors.left: iconImage.right
-        color: statusArea.notify ?
-            Theme.highlightColor : "white"
-        font.family: statusArea.notify ?
-            Theme.fontFamilyHeading : Theme.fontFamily
-        font.pixelSize: statusArea.notify ?
-            Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
-        height: statusArea.destDist != "" ? implicitHeight : 0
-        text: statusArea.manDist
-        verticalAlignment: Text.AlignBottom
-    }
-    Label {
-        id: destLabel
-        anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingMedium
-        color: "white"
-        font.pixelSize: Theme.fontSizeExtraSmall
-        height: manLabel.height
-        text: statusArea.destTime != "" ?
-            statusArea.destDist + "  ·  " + statusArea.destTime :
-            statusArea.destDist
-        verticalAlignment: statusArea.notify ?
-            Text.AlignVCenter : Text.AlignBottom
-    }
-    Label {
-        id: narrativeLabel
-        anchors.left: iconImage.right
-        anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingMedium
-        anchors.top: manLabel.bottom
-        color: "white"
-        font.pixelSize: Theme.fontSizeSmall
-        height: statusArea.narrative != "" ?
-            implicitHeight + 0.75*Theme.paddingMedium : 0
-        text: statusArea.narrative
-        verticalAlignment: Text.AlignTop
-        wrapMode: Text.WordWrap
+            horizontalAlignment: Image.AlignHCenter
+            source: statusArea.icon != "" ?
+                "icons/" + statusArea.icon + ".png" :
+                "icons/alert.png"
+            verticalAlignment: Image.AlignVCenter
+            width: statusArea.icon != "" ?
+                implicitWidth + 2*Theme.paddingLarge :
+                Theme.paddingMedium
+        }
+        Label {
+            id: manLabel
+            anchors.left: iconImage.right
+            color: statusArea.notify ?
+                Theme.highlightColor : "white"
+            font.family: statusArea.notify ?
+                Theme.fontFamilyHeading : Theme.fontFamily
+            font.pixelSize: statusArea.notify ?
+                Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
+            height: statusArea.destDist != "" ? implicitHeight : 0
+            text: statusArea.manDist
+            verticalAlignment: Text.AlignBottom
+        }
+        Label {
+            id: destLabel
+            anchors.right: parent.right
+            anchors.rightMargin: Theme.paddingMedium
+            color: "white"
+            font.pixelSize: Theme.fontSizeExtraSmall
+            height: manLabel.height
+            text: statusArea.destTime != "" ?
+                statusArea.destDist + "  ·  " + statusArea.destTime :
+                statusArea.destDist
+            verticalAlignment: statusArea.notify ?
+                Text.AlignVCenter : Text.AlignBottom
+        }
+        Label {
+            id: narrativeLabel
+            anchors.left: iconImage.right
+            anchors.right: parent.right
+            anchors.rightMargin: Theme.paddingMedium
+            anchors.top: manLabel.bottom
+            color: "white"
+            font.pixelSize: Theme.fontSizeSmall
+            height: statusArea.narrative != "" ?
+                implicitHeight + 0.75*Theme.paddingMedium : 0
+            text: statusArea.narrative
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.WordWrap
+        }
+        onClicked: {
+            // Show the narrative page.
+            app.pageStack.push("NarrativePage.qml");
+        }
     }
 }

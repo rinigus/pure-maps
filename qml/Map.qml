@@ -387,6 +387,7 @@ Map {
             map.statusArea.destTime  = status.dest_time || "";
             map.statusArea.icon      = status.icon      || "";
             map.statusArea.manDist   = status.man_dist  || "";
+            map.statusArea.manNode   = status.man_node  || 0;
             map.statusArea.manTime   = status.man_time  || "";
             map.statusArea.narrative = status.narrative || "";
         } else {
@@ -394,6 +395,7 @@ Map {
             map.statusArea.destTime  = "";
             map.statusArea.icon      = "";
             map.statusArea.manDist   = "";
+            map.statusArea.manNode   = 0;
             map.statusArea.manTime   = "";
             map.statusArea.narrative = "";
         }

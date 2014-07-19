@@ -149,7 +149,7 @@ class Narrative:
         dest_dist = poor.util.format_distance(dest_dist, 2)
         dest_time = poor.util.format_time(dest_time)
         man = self._get_display_maneuver(x, y, node, seg_dists)
-        man_dist, man_time, icon, narrative = man
+        man_node, man_dist, man_time, icon, narrative = man
         if man_time > 90:
             # Only show narrative near maneuver point.
             icon = narrative = None
@@ -161,6 +161,7 @@ class Narrative:
             dest_time = man_time = icon = narrative = None
         return dict(dest_dist=dest_dist,
                     dest_time=dest_time,
+                    man_node=man_node,
                     man_dist=man_dist,
                     man_time=man_time,
                     icon=icon,
@@ -189,13 +190,14 @@ class Narrative:
                 node = node + 1
         seg_dist = min(seg_dists)
         maneuver = self.maneuver[node]
-        man_dist = seg_dist + self.dist[node] - self.dist[maneuver.node]
-        man_time = self.time[node] - self.time[maneuver.node]
-        if node == maneuver.node or man_dist < 0.5:
+        man_node = maneuver.node
+        man_dist = seg_dist + self.dist[node] - self.dist[man_node]
+        man_time = self.time[node] - self.time[man_node]
+        if node == man_node or man_dist < 0.5:
             # Use exact straight-line value at the very end.
             man_dist = poor.util.calculate_distance(
                 x, y, maneuver.x, maneuver.y)
-        return man_dist, man_time, maneuver.icon, maneuver.narrative
+        return man_node, man_dist, man_time, maneuver.icon, maneuver.narrative
 
     def _get_display_transit(self, x, y):
         """Return a dictionary of status details to display."""
@@ -208,19 +210,19 @@ class Narrative:
             x, y, node, seg_dist)
         dest_dist = poor.util.format_distance(dest_dist, 2)
         dest_time = poor.util.format_time(dest_time)
-        mnode = self._get_closest_maneuver_node(x, y, node)
-        if mnode > node + 1:
+        man_node = self._get_closest_maneuver_node(x, y, node)
+        if man_node > node + 1:
             # If the maneuver point is far and still ahead, we can calculate
             # distances and times from along the route, just as for cars.
-            man_dist = seg_dist + self.dist[node] - self.dist[mnode]
-            man_time = self.time[node] - self.time[mnode]
+            man_dist = seg_dist + self.dist[node] - self.dist[man_node]
+            man_time = self.time[node] - self.time[man_node]
         else:
             # If the maneuver point is the very next one,
             # or already passed, use straight-line distance.
             man_dist = poor.util.calculate_distance(
-                x, y, self.maneuver[mnode].x, self.maneuver[mnode].y)
+                x, y, self.maneuver[man_node].x, self.maneuver[man_node].y)
             man_time = 0
-        if node > mnode and man_dist > 0.5:
+        if node > man_node and man_dist > 0.5:
             # If closest maneuver point surely passed,
             # show narrative of the next maneuver.
             man_dist = poor.util.calculate_distance(
@@ -230,16 +232,28 @@ class Narrative:
         else:
             # If near a maneuver point,
             # show the corresponding narrative.
-            icon = self.maneuver[mnode].icon
-            narrative = self.maneuver[mnode].narrative
+            icon = self.maneuver[man_node].icon
+            narrative = self.maneuver[man_node].narrative
         man_dist = poor.util.format_distance(man_dist, 2)
         man_time = poor.util.format_time(man_time)
         return dict(dest_dist=dest_dist,
                     dest_time=dest_time,
+                    man_node=man_node,
                     man_dist=man_dist,
                     man_time=man_time,
                     icon=icon,
                     narrative=narrative)
+
+    def get_maneuvers(self, node):
+        """Return a list of dictionaries of maneuver details."""
+        maneuvers = filter(None, set(self.maneuver))
+        maneuvers = sorted(maneuvers, key=lambda x: x.node)
+        return [dict(icon=maneuver.icon,
+                     narrative=maneuver.narrative,
+                     x=maneuver.x,
+                     y=maneuver.y,
+                     active=(maneuver.node == node),
+                     ) for maneuver in maneuvers]
 
     @property
     def ready(self):

@@ -60,6 +60,7 @@ Page {
             }
             onClicked: {
                 map.addPois([{"x": model.x, "y": model.y}]);
+                map.autoCenter = false;
                 map.setCenter(model.x, model.y);
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }
