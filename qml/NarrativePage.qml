@@ -27,10 +27,16 @@ Page {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
+            contentHeight: iconImage.height
             Image {
                 id: iconImage
                 anchors.left: parent.left
                 fillMode: Image.Pad
+                height: 2*Theme.paddingMedium +
+                    Math.max(implicitHeight,
+                             narrativeLabel.implicitHeight +
+                             lengthLabel.implicitHeight)
+
                 horizontalAlignment: Image.AlignHCenter
                 source: "icons/" + model.icon + ".png"
                 verticalAlignment: Image.AlignVCenter
@@ -45,6 +51,9 @@ Page {
                 color: model.active || listItem.highlighted?
                     Theme.highlightColor : Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
+                height: implicitHeight +
+                    (iconImage.height - implicitHeight -
+                     lengthLabel.implicitHeight)/2
                 text: model.narrative
                 verticalAlignment: Text.AlignBottom
                 wrapMode: Text.WordWrap
@@ -58,18 +67,12 @@ Page {
                 anchors.top: narrativeLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
+                height: implicitHeight +
+                    (iconImage.height - implicitHeight -
+                     narrativeLabel.implicitHeight)/2
                 text: model.index < listView.count-1 ?
                     "Continue for " + model.length + "." : ""
                 verticalAlignment: Text.AlignTop
-            }
-            Component.onCompleted: {
-                var textHeight = narrativeLabel.height + lengthLabel.height;
-                var height = Math.max(iconImage.height, textHeight);
-                height = height + 2*Theme.paddingMedium;
-                iconImage.height = height;
-                narrativeLabel.height += (height - textHeight)/2;
-                lengthLabel.height += (height - textHeight)/2;
-                listItem.contentHeight = height;
             }
             onClicked: {
                 map.autoCenter = false;
