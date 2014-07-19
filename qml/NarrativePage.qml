@@ -58,6 +58,7 @@ Page {
             onClicked: {
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
+                map.zoomLevel < 16 && map.setZoomLevel(16);
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }
         }
