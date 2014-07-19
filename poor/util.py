@@ -138,13 +138,13 @@ def format_bearing(bearing):
     raise ValueError("Unexpected bearing: {}"
                      .format(repr(bearing)))
 
-def format_distance(distance, n, units="km"):
+def format_distance(distance, n=2, units="km"):
     """Format `distance` to `n` significant digits and unit label."""
     # XXX: We might need to support for non-SI units here.
     if units == "km" and abs(distance) < 1:
-        return format_distance(distance*1000, n, units="m")
+        return format_distance(distance*1000, n, "m")
     if units == "m" and abs(distance) > 1000:
-        return format_distance(distance/1000, n, units="km")
+        return format_distance(distance/1000, n, "km")
     ndigits = n - math.ceil(math.log10(abs(max(1, distance)) + 1/1000000))
     if units == "m":
         ndigits = min(0, ndigits)

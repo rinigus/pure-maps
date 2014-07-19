@@ -148,14 +148,14 @@ class Narrative:
         seg_dist = min(seg_dists)
         dest_dist, dest_time = self._get_display_destination(
             x, y, node, seg_dist)
-        dest_dist = poor.util.format_distance(dest_dist, 2)
+        dest_dist = poor.util.format_distance(dest_dist)
         dest_time = poor.util.format_time(dest_time)
         man = self._get_display_maneuver(x, y, node, seg_dists)
         man_node, man_dist, man_time, icon, narrative = man
         if man_time > 90:
             # Only show narrative near maneuver point.
             icon = narrative = None
-        man_dist = poor.util.format_distance(man_dist, 2)
+        man_dist = poor.util.format_distance(man_dist)
         man_time = poor.util.format_time(man_time)
         if seg_dist > 0.2:
             # Don't show the narrative or details calculated
@@ -209,7 +209,7 @@ class Narrative:
         seg_dist = self._get_distance_from_route(x, y, node)
         dest_dist, dest_time = self._get_display_destination(
             x, y, node, seg_dist)
-        dest_dist = poor.util.format_distance(dest_dist, 2)
+        dest_dist = poor.util.format_distance(dest_dist)
         dest_time = poor.util.format_time(dest_time)
         man_node = self._get_closest_maneuver_node(x, y, node)
         if man_node > node + 1:
@@ -235,7 +235,7 @@ class Narrative:
             # show the corresponding narrative.
             icon = self.maneuver[man_node].icon
             narrative = self.maneuver[man_node].narrative
-        man_dist = poor.util.format_distance(man_dist, 2)
+        man_dist = poor.util.format_distance(man_dist)
         man_time = poor.util.format_time(man_time)
         return dict(dest_dist=dest_dist,
                     dest_time=dest_time,
@@ -251,7 +251,7 @@ class Narrative:
         maneuvers = filter(None, set(self.maneuver))
         maneuvers = sorted(maneuvers, key=lambda x: x.node)
         return [dict(icon=maneuver.icon,
-                     length=poor.util.format_distance(maneuver.length, n=2),
+                     length=poor.util.format_distance(maneuver.length),
                      narrative=maneuver.narrative,
                      x=maneuver.x,
                      y=maneuver.y,
