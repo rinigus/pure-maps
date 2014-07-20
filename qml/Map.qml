@@ -38,11 +38,13 @@ Map {
     property real heightCoords: 0
     property var  maneuvers: []
     property var  mapTimer: mapTimer
+    property var  menuButton: menuButton
     property var  narrationTimer: narrationTimer
     property var  pois: []
     property var  position: gps.position
     property var  positionMarker: PositionMarker {}
     property var  route: route
+    property var  scaleBar: scaleBar
     property real scaleX: 0
     property real scaleY: 0
     property bool showNarrative: true
@@ -56,6 +58,7 @@ Map {
     MenuButton { id: menuButton }
     NarrationTimer { id: narrationTimer }
     Route { id: route }
+    ScaleBar { id: scaleBar }
     StatusArea { id: statusArea }
 
     Component.onCompleted: {
@@ -459,6 +462,7 @@ Map {
         map.heightCoords = bbox[3] - bbox[2];
         map.scaleX = map.width / map.widthCoords;
         map.scaleY = map.height / map.heightCoords;
+        map.scaleBar.update();
         map.changed = false;
     }
 }
