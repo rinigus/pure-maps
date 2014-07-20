@@ -35,16 +35,17 @@ PositionSource {
         // Calculate direction, since it's missing from gps.position.
         // http://bugreports.qt-project.org/browse/QTBUG-36298
         var threshold = gps.position.horizontalAccuracy || 15;
-        if (threshold > 0 && threshold < 30 && gps.prevCoordinate &&
-            gps.prevCoordinate.distanceTo(gps.position.coordinate) > threshold) {
+        if (threshold < 0 || threshold > 30) return;
+        if (!gps.prevCoordinate) {
+            var x = gps.position.coordinate.longitude;
+            var y = gps.position.coordinate.latitude;
+            gps.prevCoordinate = QtPositioning.coordinate(y, x);
+        } else if (gps.prevCoordinate.distanceTo(
+            gps.position.coordinate) > threshold) {
             gps.direction = gps.prevCoordinate.azimuthTo(gps.position.coordinate);
             gps.prevCoordinate.longitude = gps.position.coordinate.longitude;
             gps.prevCoordinate.latitude = gps.position.coordinate.latitude;
             gps.prevTime = Date.now();
-        } else if (!gps.prevCoordinate) {
-            var x = gps.position.coordinate.longitude;
-            var y = gps.position.coordinate.latitude;
-            gps.prevCoordinate = QtPositioning.coordinate(y, x);
         } else if (gps.direction && Date.now() - gps.prevTime > 5*60*1000) {
             gps.direction = undefined;
         }
