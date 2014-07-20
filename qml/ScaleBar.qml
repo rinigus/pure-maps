@@ -57,6 +57,7 @@ Item {
     }
     Text {
         anchors.bottom: base.top
+        anchors.bottomMargin: 2
         anchors.left: base.left
         color: "black"
         font.family: "sans-serif"
