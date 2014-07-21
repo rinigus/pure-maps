@@ -1,3 +1,12 @@
+Poor Maps 0.8
+=============
+
+ * Add proper icons for the most common turn types
+ * Add a page listing all maneuvers of a route (accessible by punching
+   the routing status bar at the top of the screen)
+ * Add a scalebar
+ * Fix OSRM routing narrative on roundabouts
+
 Poor Maps 0.7
 =============
 
