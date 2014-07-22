@@ -26,7 +26,7 @@ import json
 import poor
 import urllib.parse
 
-CONF_DEFAULTS = {"type": "fastest"}
+CONF_DEFAULTS = {"avoids": [], "type": "fastest"}
 
 ICONS = { 0: "straight",
           1: "turn-slight-right",
@@ -81,6 +81,10 @@ def route(fm, to, params):
     to = prepare_endpoint(to)
     type = poor.conf.routers.mapquest_open.type
     url = URL.format(**locals())
+    if type == "fastest":
+        # Assume all avoids are related to cars.
+        for avoid in poor.conf.routers.mapquest_open.avoids:
+            url += "&avoids={}".format(urllib.parse.quote_plus(avoid))
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     result = json.loads(poor.http.request_url(url, "utf_8"))
