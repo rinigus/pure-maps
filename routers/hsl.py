@@ -35,11 +35,6 @@ CONF_DEFAULTS = {"transport_types": [
     "bus", "train", "metro", "tram", "service", "uline", "ferry"],
                  "optimize": "default"}
 
-ICONS = {"00": "alert",
-         "01": "alert",
-         "10": "alert",
-         "11": "alert"}
-
 MODES = {"walk": "walk",
             "1": "bus",
             "2": "tram",
@@ -141,7 +136,7 @@ def parse_maneuvers(route):
         maneuvers.append(dict(
             x=leg["dep_x"],
             y=leg["dep_y"],
-            icon=ICONS[key],
+            icon="alert",
             narrative=NARRATIVE[key].format(**leg),
             duration=leg["duration"]*60))
 
