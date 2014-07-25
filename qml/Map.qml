@@ -210,20 +210,22 @@ Map {
     function fitViewtoCoordinates(coords) {
         // Set center and zoom so that all points are visible.
         if (coords.length == 0) return;
-        var sumx = 0;
-        var sumy = 0;
+        var xmin = 360, xmax = -360;
+        var ymin = 360, ymax = -360;
         for (var i = 0; i < coords.length; i++) {
-            sumx += coords[i].longitude;
-            sumy += coords[i].latitude;
+            var x = coords[i].longitude;
+            var y = coords[i].latitude;
+            if (x < xmin) xmin = x;
+            if (x > xmax) xmax = x;
+            if (y < ymin) ymin = y;
+            if (y > ymax) ymax = y;
         }
-        map.setCenter(sumx/coords.length, sumy/coords.length);
+        map.setCenter((xmin + xmax)/2, (ymin + ymax)/2);
         map.setZoomLevel(map.minimumZoomLevel);
         // Calculate the greatest offset of a single point from the center
         // of the screen and based on that the maximum zoom that will still
         // keep all points visible.
-        var xp = 0;
-        var yp = 0;
-        var offset = 0;
+        var xp = 0, yp = 0, offset = 0;
         for (var i = 0; i < coords.length; i++) {
             xp = coords[i].longitude - map.center.longitude;
             yp = coords[i].latitude - map.center.latitude;
