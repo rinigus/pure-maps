@@ -1,8 +1,9 @@
 Poor Maps 0.9
 =============
 
- [ ] Allow tapping on POI markers to show description
+ [X] Allow tapping on POI markers to show description
  [X] Add option for the MapQuest Open router to try to avoid tolls
+ [ ] Split clear action to clear route and clear points?
  [ ] Rethink TimeoutErrors?
 
 Poor Maps 1.0

@@ -59,7 +59,10 @@ Page {
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
-                map.addPois([{"x": model.x, "y": model.y}]);
+                map.addPois([{"x": model.x,
+                              "y": model.y,
+                              "text": model.title}]);
+
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
@@ -75,7 +78,10 @@ Page {
                     var pois = [];
                     for (var i = 0; i < listModel.count; i++) {
                         var item = listModel.get(i);
-                        pois.push({"x": item.x, "y": item.y});
+                        pois.push({"x": item.x,
+                                   "y": item.y,
+                                   "text": item.title});
+
                     }
                     map.addPois(pois);
                     map.fitViewToPois(pois);
