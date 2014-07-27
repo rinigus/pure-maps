@@ -9,15 +9,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="16"
-   height="16"
+   width="64"
+   height="64"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="turn-left.svg"
    version="1.1"
-   inkscape:export-xdpi="360"
-   inkscape:export-ydpi="360">
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs1903" />
   <sodipodi:namedview
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="40.481863"
-     inkscape:cx="5.1592216"
-     inkscape:cy="7.2712786"
+     inkscape:zoom="10.717087"
+     inkscape:cx="32"
+     inkscape:cy="32"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
@@ -65,21 +65,20 @@
      inkscape:label="Taso 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-1036.3622)">
+     transform="translate(0,-988.3622)">
     <g
-       id="g10452"
-       transform="translate(0,-0.99999988)">
+       id="g15316">
       <path
          sodipodi:nodetypes="cccc"
          inkscape:connector-curvature="0"
          id="path10140"
-         d="m 12,1052.3622 c 0,-2.2223 0,-5 0,-7 0,-2 -1,-3 -3,-3 -2,0 -5.3333334,0 -7.0000001,0"
-         style="fill:none;stroke:#bebebe;stroke-width:1.99999976;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         d="m 48,1048.3622 c 0,-8.8892 0,-20 0,-28 0,-8 -4,-12 -12,-12 -8,0 -21.333334,0 -28.0000004,0"
+         style="fill:none;stroke:#bebebe;stroke-width:8;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
       <path
          sodipodi:nodetypes="cccc"
          inkscape:connector-curvature="0"
          id="path10910"
-         d="m 6,1038.3622 -6,4 6,4 z"
+         d="m 24,992.3622 -24,16 24,16 z"
          style="fill:#bebebe;fill-opacity:1;stroke:none" />
     </g>
   </g>

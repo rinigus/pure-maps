@@ -9,15 +9,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="16"
-   height="16"
+   width="64"
+   height="64"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="alert.svg"
    version="1.1"
-   inkscape:export-xdpi="360"
-   inkscape:export-ydpi="360">
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs1903" />
   <sodipodi:namedview
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="40.481863"
-     inkscape:cx="8.4940484"
-     inkscape:cy="7.2712786"
+     inkscape:zoom="10.717087"
+     inkscape:cx="32"
+     inkscape:cy="32"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
@@ -57,7 +57,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -65,11 +65,11 @@
      inkscape:label="Taso 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-1036.3622)">
+     transform="translate(0,-988.3622)">
     <g
        style="font-size:96px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#bebebe;fill-opacity:1;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans Bold"
        id="text10139"
-       transform="matrix(0.22923671,0,0,0.22923671,-1.8571785,812.97934)">
+       transform="matrix(0.91694682,0,0,0.91694682,-7.4287133,94.830763)">
       <path
          d="m 48.8125,1020.2606 -11.4375,0 -2.390625,-45.79685 16.21875,0 -2.390625,45.79685 m -14.015625,16.0313 c -5e-6,-2.625 0.703119,-4.6094 2.109375,-5.9532 1.406241,-1.3437 3.453114,-2.0156 6.140625,-2.0156 2.593734,0 4.593732,0.6875 6,2.0625 1.437479,1.375 2.156228,3.3438 2.15625,5.9063 -2.2e-5,2.4687 -0.718771,4.4218 -2.15625,5.8593 -1.437518,1.4063 -3.437516,2.1094 -6,2.1094 -2.625011,0 -4.656259,-0.6875 -6.09375,-2.0625 -1.437506,-1.4062 -2.156255,-3.375 -2.15625,-5.9062"
          style="fill:#bebebe;fill-opacity:1"
