@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""Translating addresses and names into coordinates."""
+"""Listing nearby sevices based on service type."""
 
 import importlib.machinery
 import os
@@ -25,12 +25,12 @@ import sys
 import time
 import traceback
 
-__all__ = ("Geocoder",)
+__all__ = ("Guide",)
 
 
-class Geocoder:
+class Guide:
 
-    """Translating addresses and names into coordinates."""
+    """Listing nearby sevices based on service type."""
 
     def __new__(cls, id):
         """Return possibly existing instance for `id`."""
@@ -41,7 +41,7 @@ class Geocoder:
         return cls._instances[id]
 
     def __init__(self, id):
-        """Initialize a :class:`Geocoder` instance."""
+        """Initialize a :class:`Guide` instance."""
         if not hasattr(self, "id"):
             # Initialize properties only once.
             # __new__ returns objects usable as-is.
@@ -61,36 +61,42 @@ class Geocoder:
         bearing = poor.util.format_bearing(bearing)
         return "{} {}".format(distance, bearing)
 
-    def geocode(self, query, params=None, x=0, y=0):
-        """
-        Return a list of dictionaries of places matching `query`.
-
-        `params` can be used to specify a dictionary of geocoder-specific
-        parameters. If the current position as `x` and `y` are provided,
-        the results will include correct distance and bearing.
-        """
-        params = params or {}
-        try:
-            results = self._provider.geocode(query, params)
-        except Exception:
-            print("Geocoding failed:", file=sys.stderr)
-            traceback.print_exc()
-            return []
-        for result in results:
-            result["distance"] = self._format_distance(
-                x, y, result["x"], result["y"])
-        return results
-
     def _init_provider(self, path):
-        """Initialize geocoding provider module from `path`."""
-        name = "poor.geocoder.provider{:d}".format(int(1000*time.time()))
+        """Initialize service guide provider module from `path`."""
+        name = "poor.guide.provider{:d}".format(int(1000*time.time()))
         loader = importlib.machinery.SourceFileLoader(name, path)
         self._provider = loader.load_module(name)
 
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
-        leaf = os.path.join("geocoders", "{}.json".format(id))
+        leaf = os.path.join("guides", "{}.json".format(id))
         path = os.path.join(poor.DATA_HOME_DIR, leaf)
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
         return path, poor.util.read_json(path)
+
+    def nearby(self, query, near, radius, params=None):
+        """
+        Return a list of dictionaries of services matching `query`.
+
+        `near` can be either a string (usually an address) or a two-element
+        tuple or list of (x,y) coordinates. `radius` should be meters around
+        `near` to search services for. `params` can be used to specify
+        a dictionary of guide-specific parameters.
+        """
+        params = params or {}
+        try:
+            x, y, results = self._provider.nearby(query, near, radius, params)
+        except Exception:
+            print("Finding nearby services failed:", file=sys.stderr)
+            traceback.print_exc()
+            return []
+        for result in results:
+            result["distance"] = poor.util.calculate_distance(
+                x, y, result["x"], result["y"])
+        results = [x for x in results if x["distance"] <= radius]
+        results.sort(key=lambda x: x["distance"])
+        for result in results:
+            result["distance"] = self._format_distance(
+                x, y, result["x"], result["y"])
+        return results

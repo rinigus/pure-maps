@@ -178,6 +178,24 @@ def get_geocoders():
     geocoders.sort(key=lambda x: x["name"])
     return geocoders
 
+def get_guides():
+    """Return a list of dictionaries of guide attributes."""
+    guides = []
+    for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
+        for path in glob.glob("{}/guides/*.json".format(parent)):
+            pid = os.path.basename(path).replace(".json", "")
+            # Local definitions override global ones.
+            if pid in (x["pid"] for x in guides): continue
+            active = (pid == poor.conf.guide)
+            with silent(Exception):
+                guide = read_json(path)
+                guide["pid"] = pid
+                guide["active"] = active
+                if not guide.get("hidden", False):
+                    guides.append(guide)
+    guides.sort(key=lambda x: x["name"])
+    return guides
+
 def get_routers():
     """Return a list of dictionaries of router attributes."""
     routers = []

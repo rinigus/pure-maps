@@ -1,17 +1,16 @@
 Poor Maps 0.9
 =============
 
+ [X] Add framework to list nearby services (restaurants, etc.)
+ [X] Add Nominatim providers for listing nearby services
  [X] Allow tapping on POI markers to show description
  [X] Add option for the MapQuest Open router to try to avoid tolls
- [ ] Split clear action to clear route and clear points?
- [ ] Rethink TimeoutErrors?
+ [ ] Show an error message when connection times out
 
 Poor Maps 1.0
 =============
 
- * Add framework to explore nearby places (restaurants, etc.)
- * Add Nominatim providers for exploring places
- * Add Foursquare and Yelp providers for exploring nearby places
+ * Add Foursquare and Yelp providers for listing nearby services
    (assuming their terms of use are reasonable)
  * Add auto-rotate on bearing when the Map component supports it
  * Allow landscape for the map page when gestures work right

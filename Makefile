@@ -45,6 +45,12 @@ install:
 	cp geocoders/*.py $(datadir)/geocoders
 	cp geocoders/README $(datadir)/geocoders
 
+	@echo "Installing guides..."
+	mkdir -p $(datadir)/guides
+	cp guides/*.json $(datadir)/guides
+	cp guides/*.py $(datadir)/guides
+	cp guides/README $(datadir)/guides
+
 	@echo "Installing routers..."
 	mkdir -p $(datadir)/routers
 	cp routers/*.json $(datadir)/routers

@@ -65,7 +65,7 @@ MapQuickItem {
             }
         }
     }
-    z: 200
+    z: 400
     property bool labelVisible: false
     property string text: ""
 }

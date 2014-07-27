@@ -29,7 +29,7 @@ Rectangle {
                  Theme.paddingMedium/2) : 0
 
     width: parent.width
-    z: 400
+    z: 401
     property string destDist: ""
     property string destTime: ""
     property string icon: ""

@@ -37,7 +37,7 @@ URL=("http://api.reittiopas.fi/hsl/prod/"
 
 cache = {}
 
-def geocode(query):
+def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     url = URL.format(**locals())

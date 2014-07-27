@@ -35,6 +35,7 @@ class Application:
         """Initialize a :class:`Application` instance."""
         self._download_queue = queue.Queue()
         self.geocoder = None
+        self.guide = None
         self.history = poor.HistoryManager()
         self.narrative = poor.Narrative()
         self.router = None
@@ -44,6 +45,7 @@ class Application:
         self._init_download_threads()
         self.set_tilesource(poor.conf.tilesource)
         self.set_geocoder(poor.conf.geocoder)
+        self.set_guide(poor.conf.guide)
         self.set_router(poor.conf.router)
 
     def _init_download_threads(self):
@@ -79,6 +81,21 @@ class Application:
                 default = poor.conf.get_default("geocoder")
                 if default != geocoder:
                     self.set_geocoder(default)
+
+    def set_guide(self, guide):
+        """Set service guide provider from string `guide`."""
+        try:
+            self.guide = poor.Guide(guide)
+            poor.conf.guide = guide
+        except Exception as error:
+            print("Failed to load guide '{}': {}"
+                  .format(guide, str(error)),
+                  file=sys.stderr)
+
+            if self.guide is None:
+                default = poor.conf.get_default("guide")
+                if default != guide:
+                    self.set_guide(default)
 
     def set_router(self, router):
         """Set routing provider from string `router`."""

@@ -31,7 +31,7 @@ URL = ("http://open.mapquestapi.com/nominatim/v1/search.php"
        "?format=json"
        "&q={query}"
        "&addressdetails=1"
-       "&limit=20")
+       "&limit={limit}")
 
 cache = {}
 
@@ -41,10 +41,21 @@ def append1(lst, dic, names):
         if name in dic:
             return lst.append(dic[name])
 
-def geocode(query):
+def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
+    limit = params.get("limit", 20)
     url = URL.format(**locals())
+    if ("xmin" in params and "xmax" in params and
+        "ymin" in params and "ymax" in params):
+        url += ("&viewbox={:.6f},{:.6f},{:.6f},{:.6f}"
+                .format(params["xmin"],
+                        params["ymax"],
+                        params["xmax"],
+                        params["ymin"]))
+
+    if params.get("bounded", False):
+        url += "&bounded=1"
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = json.loads(poor.http.request_url(url, "utf_8"))

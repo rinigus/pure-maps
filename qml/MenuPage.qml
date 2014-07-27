@@ -77,6 +77,30 @@ Page {
                 onClicked: app.pageStack.push("RoutePage.qml");
             }
             ListItem {
+                id: findservicesItem
+                contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: findservicesImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    source: "icons/services.png"
+                    width: implicitWidth + Theme.paddingLarge
+                }
+                ListItemLabel {
+                    anchors.left: findservicesImage.right
+                    anchors.leftMargin: Theme.paddingMedium
+                    color: findservicesItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "Find services"
+                }
+                onClicked: {
+                    app.pageStack.push("ServicesPage.qml");
+                    app.pageStack.pushAttached("ServicesResultsPage.qml");
+                }
+            }
+            ListItem {
                 id: findCurrentPositionItem
                 contentHeight: Theme.itemSizeSmall
                 Image {

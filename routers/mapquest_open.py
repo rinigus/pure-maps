@@ -68,7 +68,8 @@ def prepare_endpoint(point):
     # but it doesn't seem to understand as many addresses as Nominatim.
     # Hence, let's use Nominatim and feed coordinates to MapQuest.
     if isinstance(point, str):
-        results = poor.Geocoder("nominatim").geocode(point)
+        geocoder = poor.Geocoder("nominatim")
+        results = geocoder.geocode(point, dict(limit=1))
         with poor.util.silent(LookupError):
             point = (results[0]["x"], results[0]["y"])
     if isinstance(point, (list, tuple)):

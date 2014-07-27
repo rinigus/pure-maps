@@ -115,21 +115,21 @@ Page {
             page.loading = true;
             busyLabel.text = "Searching"
         } else if (page.status == PageStatus.Active) {
-            var geocodePage = app.pageStack.previousPage();
-            page.populate(geocodePage.query);
+            var servicesPage = app.pageStack.previousPage();
+            page.populate(servicesPage.service,
+                          servicesPage.near,
+                          servicesPage.radius);
+
         } else if (page.status == PageStatus.Inactive) {
             listModel.clear();
             page.title = ""
         }
     }
-    function populate(query) {
-        // Load geocoding results from the Python backend.
-        py.call_sync("poor.app.history.add_place", [query]);
+    function populate(service, near, radius) {
+        // Load service results from the Python backend.
         listModel.clear();
-        var x = map.position.coordinate.longitude || 0;
-        var y = map.position.coordinate.latitude || 0;
-        var args = [query, null, x, y];
-        py.call("poor.app.geocoder.geocode", args, function(results) {
+        var args = [service, near, radius];
+        py.call("poor.app.guide.nearby", args, function(results) {
             if (results.length > 0) {
                 page.title = results.length == 1 ?
                     "1 Result" : results.length + " Results";
