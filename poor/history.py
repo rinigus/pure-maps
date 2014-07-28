@@ -31,10 +31,10 @@ class HistoryManager:
     def __init__(self, max_size=1000):
         """Initialize a :class:`HistoryManager` instance."""
         self._max_size = max_size
+        self._place_types = []
         self._places = []
-        self._services = []
+        self._read_place_types()
         self._read_places()
-        self._read_services()
 
     def add_place(self, place):
         """Add `place` to the list of places."""
@@ -43,17 +43,45 @@ class HistoryManager:
         self.remove_place(place)
         self._places.insert(0, place)
 
-    def add_service(self, service):
-        """Add `service` to the list of services."""
-        service = service.strip()
-        if not service: return
-        self.remove_service(service)
-        self._services.insert(0, service)
+    def add_place_type(self, place_type):
+        """Add `place_type` to the list of place types."""
+        place_type = place_type.strip()
+        if not place_type: return
+        self.remove_place_type(place_type)
+        self._place_types.insert(0, place_type)
+
+    @property
+    def place_types(self):
+        """Return a list of place types."""
+        return self._place_types[:]
 
     @property
     def places(self):
         """Return a list of places."""
         return self._places[:]
+
+    def _read_place_types(self):
+        """Read list of place types from file."""
+        path = os.path.join(poor.CONFIG_HOME_DIR, "place_types.history")
+        try:
+            if os.path.isfile(path):
+                with open(path, "r", encoding="utf_8") as f:
+                    self._place_types = [x.strip() for x in f.read().splitlines()]
+                    self._place_types = list(filter(None, self._place_types))
+        except Exception as error:
+            print("Failed to read file '{}': {}"
+                  .format(path, str(error)),
+                  file=sys.stderr)
+
+        if not self._place_types:
+            # Provide some examples of place types.
+            self._place_types = ["ATM",
+                                 "Café",
+                                 "Gas station",
+                                 "Grocery store",
+                                 "Hotel",
+                                 "Pub",
+                                 "Restaurant"]
 
     def _read_places(self):
         """Read list of places from file."""
@@ -68,51 +96,19 @@ class HistoryManager:
                   .format(path, str(error)),
                   file=sys.stderr)
 
-    def _read_services(self):
-        """Read list of services from file."""
-        path = os.path.join(poor.CONFIG_HOME_DIR, "services.history")
-        try:
-            if os.path.isfile(path):
-                with open(path, "r", encoding="utf_8") as f:
-                    self._services = [x.strip() for x in f.read().splitlines()]
-                    self._services = list(filter(None, self._services))
-        except Exception as error:
-            print("Failed to read file '{}': {}"
-                  .format(path, str(error)),
-                  file=sys.stderr)
-
-        if not self._services:
-            # Provide some examples of services.
-            self._services = ["ATM",
-                              "Cafe",
-                              "Convenience store",
-                              "Gas station",
-                              "Grocery shop",
-                              "Hotel",
-                              "Library",
-                              "Pharmacy",
-                              "Pub",
-                              "Restaurant",
-                              "Supermarket"]
-
     def remove_place(self, place):
         """Remove `place` from the list of places."""
         place = place.strip().lower()
         for i in list(reversed(range(len(self._places)))):
-            if self.places[i].lower() == place:
+            if self._places[i].lower() == place:
                 self._places.pop(i)
 
-    def remove_service(self, service):
-        """Remove `service` from the list of services."""
-        service = service.strip().lower()
-        for i in list(reversed(range(len(self._services)))):
-            if self.services[i].lower() == service:
-                self._services.pop(i)
-
-    @property
-    def services(self):
-        """Return a list of services."""
-        return self._services[:]
+    def remove_place_type(self, place_type):
+        """Remove `place_type` from the list of place types."""
+        place_type = place_type.strip().lower()
+        for i in list(reversed(range(len(self._place_types)))):
+            if self._place_types[i].lower() == place_type:
+                self._place_types.pop(i)
 
     def _write(self, items, basename):
         """Write `items` to file `basename`."""
@@ -129,5 +125,5 @@ class HistoryManager:
 
     def write(self):
         """Write lists of history items to files."""
+        self._write(self._place_types, "place_types.history")
         self._write(self._places, "places.history")
-        self._write(self._services, "services.history")

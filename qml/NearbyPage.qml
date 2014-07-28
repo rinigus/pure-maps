@@ -23,11 +23,11 @@ import "."
 Page {
     id: page
     allowedOrientations: Orientation.All
-    canNavigateForward: page.near && page.service != ""
+    canNavigateForward: page.near && page.query != ""
     property var near: null
     property string nearText: ""
+    property string query: ""
     property var radius: 1000
-    property string service: ""
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
@@ -35,7 +35,7 @@ Page {
         Column {
             id: column
             anchors.fill: parent
-            PageHeader { title: "Find Services" }
+            PageHeader { title: "Find Nearby" }
             ValueButton {
                 id: usingButton
                 label: "Using"
@@ -64,16 +64,16 @@ Page {
                 }
             }
             ValueButton {
-                id: serviceButton
-                label: "Service"
+                id: typeButton
+                label: "Type"
                 height: Theme.itemSizeSmall
-                value: page.service
+                value: page.query
                 // Avoid putting label and value on different lines.
                 width: 3*parent.width
                 onClicked: {
-                    var dialog = app.pageStack.push("ServiceTypePage.qml");
+                    var dialog = app.pageStack.push("PlaceTypePage.qml");
                     dialog.accepted.connect(function() {
-                        page.service = dialog.query;
+                        page.query = dialog.query;
                     });
                 }
             }
@@ -114,7 +114,7 @@ Page {
             py.call_sync("poor.app.history.add_place", [page.nearText]);
         }
     }
-    onServiceChanged: {
-        py.call_sync("poor.app.history.add_service", [page.service]);
+    onQueryChanged: {
+        py.call_sync("poor.app.history.add_place_type", [page.query]);
     }
 }

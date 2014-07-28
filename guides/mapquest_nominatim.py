@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Listing nearby services using MapQuest Nominatim.
+Listing nearby places using MapQuest Nominatim.
 
 http://open.mapquestapi.com/nominatim/
 http://wiki.openstreetmap.org/wiki/Nominatim
@@ -26,7 +26,7 @@ import poor
 
 
 def nearby(query, near, radius, params):
-    """Return a list of dictionaries of services matching `query`."""
+    """Return a list of dictionaries of places matching `query`."""
     geocoder = poor.Geocoder("mapquest_nominatim")
     if isinstance(near, str):
         results = geocoder.geocode(near, dict(limit=1))

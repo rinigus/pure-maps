@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Listing nearby services using OpenStreetMap Nominatim.
+Listing nearby places using OpenStreetMap Nominatim.
 
 http://wiki.openstreetmap.org/wiki/Nominatim
 http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy
@@ -26,7 +26,7 @@ import poor
 
 
 def nearby(query, near, radius, params):
-    """Return a list of dictionaries of services matching `query`."""
+    """Return a list of dictionaries of places matching `query`."""
     geocoder = poor.Geocoder("openstreetmap_nominatim")
     if isinstance(near, str):
         results = geocoder.geocode(near, dict(limit=1))

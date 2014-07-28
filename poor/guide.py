@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""Listing nearby sevices based on service type."""
+"""Listing nearby places based on place type."""
 
 import importlib.machinery
 import os
@@ -30,7 +30,7 @@ __all__ = ("Guide",)
 
 class Guide:
 
-    """Listing nearby sevices based on service type."""
+    """Listing nearby places based on place type."""
 
     def __new__(cls, id):
         """Return possibly existing instance for `id`."""
@@ -62,7 +62,7 @@ class Guide:
         return "{} {}".format(distance, bearing)
 
     def _init_provider(self, path):
-        """Initialize service guide provider module from `path`."""
+        """Initialize place guide provider module from `path`."""
         name = "poor.guide.provider{:d}".format(int(1000*time.time()))
         loader = importlib.machinery.SourceFileLoader(name, path)
         self._provider = loader.load_module(name)
@@ -77,18 +77,18 @@ class Guide:
 
     def nearby(self, query, near, radius, params=None):
         """
-        Return a list of dictionaries of services matching `query`.
+        Return a list of dictionaries of places matching `query`.
 
         `near` can be either a string (usually an address) or a two-element
         tuple or list of (x,y) coordinates. `radius` should be meters around
-        `near` to search services for. `params` can be used to specify
+        `near` to search places for. `params` can be used to specify
         a dictionary of guide-specific parameters.
         """
         params = params or {}
         try:
             x, y, results = self._provider.nearby(query, near, radius, params)
         except Exception:
-            print("Finding nearby services failed:", file=sys.stderr)
+            print("Finding nearby places failed:", file=sys.stderr)
             traceback.print_exc()
             return []
         for result in results:

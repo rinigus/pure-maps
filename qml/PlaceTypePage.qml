@@ -41,7 +41,7 @@ Dialog {
                 color: listItem.highlighted ?
                     Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
-                text: model.service
+                text: model.type
             }
             Component {
                 id: contextMenu
@@ -53,12 +53,12 @@ Dialog {
                 }
             }
             onClicked: {
-                dialog.query = model.service;
+                dialog.query = model.type;
                 dialog.accept();
             }
             function remove() {
                 remorseAction("Removing", function() {
-                    py.call_sync("poor.app.history.remove_service", [model.service]);
+                    py.call_sync("poor.app.history.remove_place_type", [model.type]);
                     listView.model.remove(index);
                 })
             }
@@ -68,7 +68,7 @@ Dialog {
             DialogHeader {}
             SearchField {
                 id: searchField
-                placeholderText: "Service type"
+                placeholderText: "Type of place"
                 width: parent.width
                 EnterKey.enabled: searchField.text.length > 0
                 EnterKey.onClicked: dialog.accept();
@@ -88,10 +88,10 @@ Dialog {
                 for (var i = 0; i < dialog.history.length; i++) {
                     var historyItem = dialog.history[i].toLowerCase()
                     if (query != "" && historyItem.indexOf(query) == 0) {
-                        listModel.insert(nstart++, {"service": dialog.history[i]});
+                        listModel.insert(nstart++, {"type": dialog.history[i]});
                         if (listModel.count >= 100) break;
                     } else if (query == "" || historyItem.indexOf(query) > 0) {
-                        listModel.append({"service": dialog.history[i]});
+                        listModel.append({"type": dialog.history[i]});
                         if (listModel.count >= 100) break;
                     }
                 }
@@ -102,7 +102,7 @@ Dialog {
     }
     onStatusChanged: {
         if (dialog.status != PageStatus.Activating) return;
-        dialog.history = py.evaluate("poor.app.history.services");
+        dialog.history = py.evaluate("poor.app.history.place_types");
         listView.model.update();
     }
 }

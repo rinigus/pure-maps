@@ -115,20 +115,20 @@ Page {
             page.loading = true;
             busyLabel.text = "Searching"
         } else if (page.status == PageStatus.Active) {
-            var servicesPage = app.pageStack.previousPage();
-            page.populate(servicesPage.service,
-                          servicesPage.near,
-                          servicesPage.radius);
+            var nearbyPage = app.pageStack.previousPage();
+            page.populate(nearbyPage.query,
+                          nearbyPage.near,
+                          nearbyPage.radius);
 
         } else if (page.status == PageStatus.Inactive) {
             listModel.clear();
             page.title = ""
         }
     }
-    function populate(service, near, radius) {
-        // Load service results from the Python backend.
+    function populate(query, near, radius) {
+        // Load place results from the Python backend.
         listModel.clear();
-        var args = [service, near, radius];
+        var args = [query, near, radius];
         py.call("poor.app.guide.nearby", args, function(results) {
             if (results.length > 0) {
                 page.title = results.length == 1 ?

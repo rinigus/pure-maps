@@ -83,7 +83,7 @@ class Application:
                     self.set_geocoder(default)
 
     def set_guide(self, guide):
-        """Set service guide provider from string `guide`."""
+        """Set place guide provider from string `guide`."""
         try:
             self.guide = poor.Guide(guide)
             poor.conf.guide = guide

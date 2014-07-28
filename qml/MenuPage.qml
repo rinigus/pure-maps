@@ -77,27 +77,27 @@ Page {
                 onClicked: app.pageStack.push("RoutePage.qml");
             }
             ListItem {
-                id: findservicesItem
+                id: findNearbyItem
                 contentHeight: Theme.itemSizeSmall
                 Image {
-                    id: findservicesImage
+                    id: findNearbyImage
                     fillMode: Image.Pad
                     height: Theme.itemSizeSmall
                     horizontalAlignment: Image.AlignRight
-                    source: "icons/services.png"
+                    source: "icons/nearby.png"
                     width: implicitWidth + Theme.paddingLarge
                 }
                 ListItemLabel {
-                    anchors.left: findservicesImage.right
+                    anchors.left: findNearbyImage.right
                     anchors.leftMargin: Theme.paddingMedium
-                    color: findservicesItem.highlighted ?
+                    color: findNearbyItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Find services"
+                    text: "Find nearby"
                 }
                 onClicked: {
-                    app.pageStack.push("ServicesPage.qml");
-                    app.pageStack.pushAttached("ServicesResultsPage.qml");
+                    app.pageStack.push("NearbyPage.qml");
+                    app.pageStack.pushAttached("NearbyResultsPage.qml");
                 }
             }
             ListItem {
