@@ -54,7 +54,7 @@ def calculate_bearing(x1, y1, x2, y2):
 
 def calculate_distance(x1, y1, x2, y2):
     """Calculate distance in meters from point 1 to point 2."""
-    # Using the Haversine formula.
+    # Using the haversine formula.
     # http://www.movable-type.co.uk/scripts/latlong.html
     x1, y1, x2, y2 = map(math.radians, (x1, y1, x2, y2))
     a = (math.sin((y2-y1)/2)**2 + math.sin((x2-x1)/2)**2 *
@@ -65,7 +65,7 @@ def calculate_distance(x1, y1, x2, y2):
 
 def calculate_segment_distance(x, y, x1, y1, x2, y2):
     """Calculate distance in meters from point to segment."""
-    # This is not quite correct, but maybe close enough,
+    # This is not exactly correct, but maybe close enough,
     # given sufficiently short segments.
     med_dist_deg = math.sqrt((x - (x1+x2)/2)**2 + (y - (y1+y2)/2)**2)
     med_dist_m = calculate_distance(x, y, (x1+x2)/2, (y1+y2)/2)
@@ -162,75 +162,36 @@ def format_time(seconds):
 
 def get_geocoders():
     """Return a list of dictionaries of geocoder attributes."""
-    geocoders = []
-    for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
-        for path in glob.glob("{}/geocoders/*.json".format(parent)):
-            pid = os.path.basename(path).replace(".json", "")
-            # Local definitions override global ones.
-            if pid in (x["pid"] for x in geocoders): continue
-            active = (pid == poor.conf.geocoder)
-            with silent(Exception):
-                geocoder = read_json(path)
-                geocoder["pid"] = pid
-                geocoder["active"] = active
-                if not geocoder.get("hidden", False):
-                    geocoders.append(geocoder)
-    geocoders.sort(key=lambda x: x["name"])
-    return geocoders
+    return _get_providers("geocoders", poor.conf.geocoder)
 
 def get_guides():
     """Return a list of dictionaries of guide attributes."""
-    guides = []
+    return _get_providers("guides", poor.conf.guide)
+
+def _get_providers(directory, current):
+    """Return a list of dictionaries of provider attributes."""
+    providers = []
     for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
-        for path in glob.glob("{}/guides/*.json".format(parent)):
+        for path in glob.glob("{}/{}/*.json".format(parent, directory)):
             pid = os.path.basename(path).replace(".json", "")
             # Local definitions override global ones.
-            if pid in (x["pid"] for x in guides): continue
-            active = (pid == poor.conf.guide)
+            if pid in (x["pid"] for x in providers): continue
             with silent(Exception):
-                guide = read_json(path)
-                guide["pid"] = pid
-                guide["active"] = active
-                if not guide.get("hidden", False):
-                    guides.append(guide)
-    guides.sort(key=lambda x: x["name"])
-    return guides
+                provider = read_json(path)
+                provider["pid"] = pid
+                provider["active"] = (pid == current)
+                if not provider.get("hidden", False):
+                    providers.append(provider)
+    providers.sort(key=lambda x: x["name"])
+    return providers
 
 def get_routers():
     """Return a list of dictionaries of router attributes."""
-    routers = []
-    for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
-        for path in glob.glob("{}/routers/*.json".format(parent)):
-            pid = os.path.basename(path).replace(".json", "")
-            # Local definitions override global ones.
-            if pid in (x["pid"] for x in routers): continue
-            active = (pid == poor.conf.router)
-            with silent(Exception):
-                router = read_json(path)
-                router["pid"] = pid
-                router["active"] = active
-                if not router.get("hidden", False):
-                    routers.append(router)
-    routers.sort(key=lambda x: x["name"])
-    return routers
+    return _get_providers("routers", poor.conf.router)
 
 def get_tilesources():
     """Return a list of dictionaries of tilesource attributes."""
-    tilesources = []
-    for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
-        for path in glob.glob("{}/tilesources/*.json".format(parent)):
-            pid = os.path.basename(path).replace(".json", "")
-            # Local definitions override global ones.
-            if pid in (x["pid"] for x in tilesources): continue
-            active = (pid == poor.conf.tilesource)
-            with silent(Exception):
-                tilesource = read_json(path)
-                tilesource["pid"] = pid
-                tilesource["active"] = active
-                if not tilesource.get("hidden", False):
-                    tilesources.append(tilesource)
-    tilesources.sort(key=lambda x: x["name"])
-    return tilesources
+    return _get_providers("tilesources", poor.conf.tilesource)
 
 def locked_method(function):
     """
