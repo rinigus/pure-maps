@@ -29,7 +29,6 @@ import poor
 
 providers = ["mapquest_nominatim", "openstreetmap_nominatim"]
 
-
 def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
     for i, provider in enumerate(providers):

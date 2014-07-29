@@ -44,11 +44,10 @@ def append1(lst, dic, names):
 def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
-    limit = params.get("limit", 20)
+    limit = params.get("limit", 10)
     url = URL.format(**locals())
-    if ("xmin" in params and "xmax" in params and
-        "ymin" in params and "ymax" in params):
-        url += ("&viewbox={:.6f},{:.6f},{:.6f},{:.6f}"
+    with poor.util.silent(KeyError):
+        url += ("&viewbox={:.5f},{:.5f},{:.5f},{:.5f}"
                 .format(params["xmin"],
                         params["ymax"],
                         params["xmax"],

@@ -73,7 +73,7 @@ def prepare_endpoint(point):
         with poor.util.silent(LookupError):
             point = (results[0]["x"], results[0]["y"])
     if isinstance(point, (list, tuple)):
-        point = "{:.6f},{:.6f}".format(point[1], point[0])
+        point = "{:.5f},{:.5f}".format(point[1], point[0])
     return urllib.parse.quote_plus(point)
 
 def route(fm, to, params):

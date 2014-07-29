@@ -119,7 +119,7 @@ def prepare_endpoint(point):
         geocoder = poor.Geocoder("nominatim")
         results = geocoder.geocode(point, dict(limit=1))
         point = (results[0]["x"], results[0]["y"])
-    point = "{:.6f},{:.6f}".format(point[1], point[0])
+    point = "{:.5f},{:.5f}".format(point[1], point[0])
     return (point, ("{}&hint={}".format(point, hints[point])
                     if point in hints else point))
 

@@ -160,17 +160,17 @@ def parse_maneuvers(route):
     # that don't always match. To be visually clearer, let's
     # move the maneuver points to closest route nodes.
     for maneuver in maneuvers:
-        min_index = 0
-        min_sq_dist = 360**2
+        min_node = 0
+        min_dist = 360**2
         for i in range(len(route["x"])):
             dx = maneuver["x"] - route["x"][i]
             dy = maneuver["y"] - route["y"][i]
             dist = dx**2 + dy**2
-            if dist < min_sq_dist:
-                min_index = i
-                min_sq_dist = dist
-        maneuver["x"] = route["x"][min_index]
-        maneuver["y"] = route["y"][min_index]
+            if dist < min_dist:
+                min_node = i
+                min_dist = dist
+        maneuver["x"] = route["x"][min_node]
+        maneuver["y"] = route["y"][min_node]
     return maneuvers
 
 def parse_time(code):
@@ -207,7 +207,7 @@ def prepare_endpoint(point):
     if isinstance(point, str):
         results = poor.Geocoder("hsl").geocode(point)
         point = (results[0]["x"], results[0]["y"])
-    return "{:.6f},{:.6f}".format(point[0], point[1])
+    return "{:.5f},{:.5f}".format(point[0], point[1])
 
 def route(fm, to, params):
     """Find routes and return their properties as dictionaries."""
@@ -229,8 +229,8 @@ def route(fm, to, params):
 
     for route in routes:
         route["maneuvers"] = parse_maneuvers(route)
-        # Calculate duration separately to match departure and
-        # arrival times rounded at one minute accuracy.
+        # Calculate duration separately to match departure
+        # and arrival times rounded at one minute accuracy.
         dep = route["legs"][0]["dep_unix"]
         arr = route["legs"][-1]["arr_unix"]
         route["duration"] = arr - dep
