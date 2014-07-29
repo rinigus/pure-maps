@@ -250,12 +250,12 @@ class Narrative:
         man_node = self._get_closest_maneuver_node(x, y, node)
         maneuvers = filter(None, set(self.maneuver))
         maneuvers = sorted(maneuvers, key=lambda x: x.node)
-        return [dict(icon=maneuver.icon,
+        return [dict(active=(maneuver.node == man_node),
+                     icon=maneuver.icon,
                      length=poor.util.format_distance(maneuver.length),
                      narrative=maneuver.narrative,
                      x=maneuver.x,
                      y=maneuver.y,
-                     active=(maneuver.node == man_node),
                      ) for maneuver in maneuvers]
 
     @property

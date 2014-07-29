@@ -75,7 +75,7 @@ Item {
             Math.abs(y - scaleBar.prevCoord.latitude) < 0.1) return;
         var bbox = map.getBoundingBox();
         var tail = QtPositioning.coordinate(y, bbox[1]);
-        var dist = Util.roundSig(map.center.distanceTo(tail)/2.5, 1);
+        var dist = Util.siground(map.center.distanceTo(tail)/2.5, 1);
         var tail = map.center.atDistanceAndAzimuth(dist, 45);
         var xend = Util.xcoord2xpos(tail.longitude, bbox[0], bbox[1], map.width);
         var yend = Util.ycoord2ypos(tail.latitude, bbox[2], bbox[3], map.height);

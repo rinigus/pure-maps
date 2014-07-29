@@ -26,7 +26,7 @@ function rad2deg(rad) {
     return (rad / (2 * Math.PI)) * 360;
 }
 
-function roundSig(x, n) {
+function siground(x, n) {
     // Round x to n significant digits.
     var mult = Math.pow(10, n - Math.floor(Math.log(x) / Math.LN10) - 1);
     return Math.round(x * mult) / mult;

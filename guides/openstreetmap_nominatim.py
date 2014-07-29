@@ -24,7 +24,6 @@ http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy
 
 import poor
 
-
 def nearby(query, near, radius, params):
     """Return a list of dictionaries of places matching `query`."""
     geocoder = poor.Geocoder("openstreetmap_nominatim")
@@ -32,12 +31,12 @@ def nearby(query, near, radius, params):
         results = geocoder.geocode(near, dict(limit=1))
         near = (results[0]["x"], results[0]["y"])
     x, y = near
-    xdist_per_deg = poor.util.calculate_distance(x, y, x+1, y)
-    ydist_per_deg = poor.util.calculate_distance(x, y, x, y+1)
+    x_m_per_deg = poor.util.calculate_distance(x, y, x+1, y)
+    y_m_per_deg = poor.util.calculate_distance(x, y, x, y+1)
     return x, y, geocoder.geocode(query,
-                                  dict(xmin=x-radius/xdist_per_deg,
-                                       xmax=x+radius/xdist_per_deg,
-                                       ymin=y-radius/ydist_per_deg,
-                                       ymax=y+radius/ydist_per_deg,
+                                  dict(xmin=x-radius/x_m_per_deg,
+                                       xmax=x+radius/x_m_per_deg,
+                                       ymin=y-radius/y_m_per_deg,
+                                       ymax=y+radius/y_m_per_deg,
                                        bounded=True,
                                        limit=100))

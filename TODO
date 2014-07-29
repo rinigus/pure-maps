@@ -3,10 +3,14 @@ Poor Maps 0.9
 
  [X] Add framework to list nearby places by type (restaurants, etc.)
  [ ] Add Foursquare provider for listing nearby places
+     - Set as default
  [X] Add Nominatim providers for listing nearby places
  [X] Allow tapping on POI markers to show description
  [X] Add option for the MapQuest Open router to try to avoid tolls
  [ ] Show an error message when connection times out
+     - dict(error=True, message="Connection timed out")?
+
+ * Add attribution to NarrativePage?
 
 Poor Maps 1.0
 =============

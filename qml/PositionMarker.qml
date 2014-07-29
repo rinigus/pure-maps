@@ -28,13 +28,11 @@ MapQuickItem {
             id: movingImage
             rotation: map.direction || 0
             source: "icons/position-direction.png"
-            transformOrigin: Item.Center
             visible: map.direction || false
         }
         Image {
             id: stillImage
-            anchors.horizontalCenter: movingImage.horizontalCenter
-            anchors.verticalCenter: movingImage.verticalCenter
+            anchors.centerIn: movingImage
             source: "icons/position.png"
             visible: !movingImage.visible
         }

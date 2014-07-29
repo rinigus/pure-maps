@@ -21,6 +21,8 @@ import Sailfish.Silica 1.0
 
 Rectangle {
     id: statusArea
+    anchors.left: parent.left
+    anchors.top: parent.top
     color: "#BB000000"
     height: destDist != "" ?
         Math.max(iconImage.height,
@@ -29,7 +31,7 @@ Rectangle {
                  Theme.paddingMedium/2) : 0
 
     width: parent.width
-    z: 500
+    z: 900
     property string destDist: ""
     property string destTime: ""
     property string icon: ""
