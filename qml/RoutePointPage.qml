@@ -48,7 +48,7 @@ Dialog {
                 ContextMenu {
                     MenuItem {
                         text: "Remove"
-                        onClicked: listItem.remove()
+                        onClicked: listItem.remove();
                     }
                 }
             }
@@ -57,10 +57,8 @@ Dialog {
                 dialog.accept();
             }
             function remove() {
-                remorseAction("Removing", function() {
-                    py.call_sync("poor.app.history.remove_place", [model.place]);
-                    listView.model.remove(index);
-                })
+                py.call_sync("poor.app.history.remove_place", [model.place]);
+                listView.model.remove(index);
             }
         }
         header: Column {
