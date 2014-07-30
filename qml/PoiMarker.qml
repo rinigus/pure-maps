@@ -41,13 +41,13 @@ MapQuickItem {
         Rectangle {
             id: rectangle
             anchors.bottom: image.top
-            anchors.bottomMargin: Theme.paddingMedium
+            anchors.bottomMargin: 10
             anchors.horizontalCenter: image.horizontalCenter
             color: "#BB000000"
             height: label.height + Theme.paddingLarge
-            radius: height/2
+            radius: label.font.pixelSize/2
             visible: item.labelVisible
-            width: label.width + 2*Theme.paddingLarge
+            width: label.width + 1.5*Theme.paddingLarge
             Label {
                 id: label
                 anchors.centerIn: parent
@@ -55,17 +55,20 @@ MapQuickItem {
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight + 2
                 text: item.text
+                textFormat: Text.RichText
                 verticalAlignment: Text.AlignTop
-            }
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    item.labelVisible = false;
-                }
+                width: Math.min(0.6*map.width, implicitWidth)
+                wrapMode: Text.WordWrap
             }
         }
     }
     z: 400
-    property bool labelVisible: false
+    property bool   labelVisible: false
+    property string link: ""
     property string text: ""
+    onTextChanged: {
+        item.text = item.text.replace("Theme.highlightColor",
+                                      Theme.highlightColor);
+
+    }
 }

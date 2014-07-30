@@ -61,7 +61,8 @@ Page {
             onClicked: {
                 map.addPois([{"x": model.x,
                               "y": model.y,
-                              "text": model.title}]);
+                              "text": model.text || model.title,
+                              "link": model.link || ""}]);
 
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
@@ -80,7 +81,8 @@ Page {
                         var item = listModel.get(i);
                         pois.push({"x": item.x,
                                    "y": item.y,
-                                   "text": item.title});
+                                   "text": item.text || item.title,
+                                   "link": item.link || ""});
 
                     }
                     map.addPois(pois);

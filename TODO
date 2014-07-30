@@ -3,7 +3,9 @@ Poor Maps 0.9
 
  [X] Add framework to list nearby places by type (restaurants, etc.)
  [ ] Add Foursquare provider for listing nearby places
-     - Set as default
+     - https://developer.foursquare.com/overview/attribution.html
+       * Provide links to foursquare venue pages
+       * Visual attribution in search results
  [X] Add Nominatim providers for listing nearby places
  [X] Allow tapping on POI markers to show description
  [X] Add option for the MapQuest Open router to try to avoid tolls
@@ -11,6 +13,12 @@ Poor Maps 0.9
      - dict(error=True, message="Connection timed out")?
 
  * Add attribution to NarrativePage?
+ * Clear existing POIs before a "show all"?
+ * Fix z-ordering: bubbles over POI markers!
+ * Add close button to bubbles
+ * Add arrow to bubbles
+ * Open hyperlinks from bubbles
+ * Add walk and transit icons?
 
 Poor Maps 1.0
 =============
