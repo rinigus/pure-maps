@@ -85,6 +85,7 @@ Page {
                                    "link": item.link || ""});
 
                     }
+                    map.clearPois();
                     map.addPois(pois);
                     map.fitViewToPois(pois);
                     app.pageStack.pop(mapPage, PageStackAction.Immediate);

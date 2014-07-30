@@ -9,16 +9,18 @@ Poor Maps 0.9
  [X] Add Nominatim providers for listing nearby places
  [X] Allow tapping on POI markers to show description
  [X] Add option for the MapQuest Open router to try to avoid tolls
+ [X] Clear POIs before using "Show all" to add new POIs from either
+     geocoding or nearby search results
  [ ] Show an error message when connection times out
      - dict(error=True, message="Connection timed out")?
 
  * Add attribution to NarrativePage?
- * Clear existing POIs before a "show all"?
  * Fix z-ordering: bubbles over POI markers!
  * Add close button to bubbles
  * Add arrow to bubbles
  * Open hyperlinks from bubbles
  * Add walk and transit icons?
+ * Separate clear POIs and clear route?
 
 Poor Maps 1.0
 =============

@@ -152,13 +152,7 @@ Map {
 
     function addRoute(route) {
         // Add a polyline to represent a route.
-        for (var i = 0; i < map.maneuvers.length; i++)
-            map.removeMapItem(map.maneuvers[i]);
-        map.maneuvers = [];
-        map.route.clear();
-        map.narrationTimer.stop();
-        py.call_sync("poor.app.narrative.unset", []);
-        map.setRoutingStatus(null);
+        map.clearRoute();
         map.route.setPath(route.x, route.y);
         map.route.mode = route.mode || "car";
         map.route.redraw();
@@ -194,6 +188,20 @@ Map {
 
     function clear() {
         // Remove all point and line markers from map.
+        map.clearPois();
+        map.clearRoute();
+    }
+
+    function clearPois() {
+        // Remove all point marker from map.
+        for (var i = 0; i < map.pois.length; i++)
+            map.removeMapItem(map.pois[i]);
+        map.pois = [];
+        map.savePois();
+    }
+
+    function clearRoute() {
+        // Remove all line marker from map.
         for (var i = 0; i < map.maneuvers.length; i++)
             map.removeMapItem(map.maneuvers[i]);
         map.maneuvers = [];
@@ -201,10 +209,6 @@ Map {
         map.narrationTimer.stop();
         py.call_sync("poor.app.narrative.unset", []);
         map.setRoutingStatus(null);
-        for (var i = 0; i < map.pois.length; i++)
-            map.removeMapItem(map.pois[i]);
-        map.pois = [];
-        map.savePois();
         map.saveRoute();
         map.saveManeuvers();
     }
