@@ -91,19 +91,17 @@ def parse_text(item):
     lines = []
     with poor.util.silent(Exception):
         name = html.escape(item["venue"]["name"])
-        lines.append('<font color="Theme.highlightColor">{}</font>'
+        lines.append('<font color="Theme.highlightColor"><big>{}</big></font>'
                      .format(name))
 
     subtitle = []
     with poor.util.silent(Exception):
         rating = float(item["venue"]["rating"])
-        subtitle.append('<small><font color="Theme.highlightColor">{:.1f}</font>/10</small>'
-                        .format(rating))
-
+        subtitle.append('<font color="Theme.highlightColor"><big>{:.1f}</big></font><small>&nbsp;/&nbsp;10</small>'.format(rating))
     with poor.util.silent(Exception):
         category = html.escape(item["venue"]["categories"][0]["name"])
         subtitle.append("<small>{}</small>".format(category))
-    lines.append("&emsp;".join(subtitle))
+    lines.append("&nbsp;&nbsp;".join(subtitle))
     with poor.util.silent(Exception):
         quote = html.escape(item["tips"][0]["text"])
         lines.append("<small>“{}”</small>".format(quote))

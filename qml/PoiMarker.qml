@@ -64,6 +64,22 @@ MapQuickItem {
                 width: Math.min(0.6*map.width, implicitWidth)
                 wrapMode: Text.WordWrap
             }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    highlightTimer.start();
+                    Qt.openUrlExternally(item.link);
+                }
+            }
+            Timer {
+                id: highlightTimer
+                interval: 3000
+                repeat: false
+                onRunningChanged: {
+                    label.color = highlightTimer.running ?
+                        Theme.highlightColor : "white";
+                }
+            }
         }
         Image {
             id: arrow

@@ -15,8 +15,6 @@ Poor Maps 0.9
      - dict(error=True, message="Connection timed out")?
 
  * Add attribution to NarrativePage?
- * Add close button to bubbles
- * Open hyperlinks from bubbles
  * Add walk and transit icons?
 
 Poor Maps 1.0
