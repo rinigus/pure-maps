@@ -34,6 +34,10 @@ MapQuickItem {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+                    // Ensure that bubble will be above other POIs.
+                    for (var i = 0; i < map.pois.length; i++)
+                        map.pois[i].z = 400;
+                    item.z = 401;
                     item.labelVisible = !item.labelVisible;
                 }
             }

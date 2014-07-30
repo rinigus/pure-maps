@@ -15,12 +15,10 @@ Poor Maps 0.9
      - dict(error=True, message="Connection timed out")?
 
  * Add attribution to NarrativePage?
- * Fix z-ordering: bubbles over POI markers!
  * Add close button to bubbles
  * Add arrow to bubbles
  * Open hyperlinks from bubbles
  * Add walk and transit icons?
- * Separate clear POIs and clear route?
 
 Poor Maps 1.0
 =============
