@@ -45,7 +45,7 @@ MapQuickItem {
         Rectangle {
             id: rectangle
             anchors.bottom: image.top
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: 18
             anchors.horizontalCenter: image.horizontalCenter
             color: "#BB000000"
             height: label.height + Theme.paddingLarge
@@ -64,6 +64,13 @@ MapQuickItem {
                 width: Math.min(0.6*map.width, implicitWidth)
                 wrapMode: Text.WordWrap
             }
+        }
+        Image {
+            id: arrow
+            anchors.top: rectangle.bottom
+            anchors.horizontalCenter: rectangle.horizontalCenter
+            source: "icons/bubble-arrow.png"
+            visible: item.labelVisible
         }
     }
     z: 400
