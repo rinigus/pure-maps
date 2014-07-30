@@ -22,6 +22,7 @@ http://developer.foursquare.com/docs/venues/explore
 """
 
 import copy
+import html
 import itertools
 import json
 import poor
@@ -89,20 +90,22 @@ def parse_text(item):
     """Parse blurb text from search result `item`."""
     lines = []
     with poor.util.silent(Exception):
-        name = item["venue"]["name"]
+        name = html.escape(item["venue"]["name"])
         lines.append('<font color="Theme.highlightColor">{}</font>'
                      .format(name))
 
     subtitle = []
     with poor.util.silent(Exception):
         rating = float(item["venue"]["rating"])
-        subtitle.append("{:.1f}<sup>/10</sup>".format(rating))
+        subtitle.append('<small><font color="Theme.highlightColor">{:.1f}</font>/10</small>'
+                        .format(rating))
+
     with poor.util.silent(Exception):
-        category = item["venue"]["categories"][0]["name"]
+        category = html.escape(item["venue"]["categories"][0]["name"])
         subtitle.append("<small>{}</small>".format(category))
     lines.append("&emsp;".join(subtitle))
     with poor.util.silent(Exception):
-        quote = item["tips"][0]["text"]
+        quote = html.escape(item["tips"][0]["text"])
         lines.append("<small>“{}”</small>".format(quote))
     return "<br>".join(lines)
 
