@@ -31,23 +31,38 @@ HEADERS = {"Connection": "Keep-Alive",
 def get_connection(url, timeout=None):
     """Return HTTP connection to `url`."""
     try:
-        host = urllib.parse.urlparse(url).netloc
-        return connections[host]
+        return connections[get_key(url)]
     except KeyError:
         return new_connection(url, timeout)
 
+def get_connection_class(url):
+    """Return HTTP connection class for `url`."""
+    protocol = urllib.parse.urlparse(url).scheme
+    if protocol == "http":
+        return http.client.HTTPConnection
+    if protocol == "https":
+        return http.client.HTTPSConnection
+    raise ValueError("Bad URL: {}".format(repr(url)))
+
+def get_key(url):
+    """Return a dictionary key for `url`."""
+    protocol = urllib.parse.urlparse(url).scheme
+    host = urllib.parse.urlparse(url).netloc
+    return "{}://{}".format(protocol, host)
+
 def new_connection(url, timeout=None):
     """Return new HTTP connection to `url`."""
+    cls = get_connection_class(url)
     host = urllib.parse.urlparse(url).netloc
     timeout = timeout or poor.conf.download_timeout
-    connections[host] = http.client.HTTPConnection(host, timeout=timeout)
-    return connections[host]
+    key = get_key(url)
+    connections[key] = cls(host, timeout=timeout)
+    return connections[key]
 
 def remove_connection(url):
     """Close and remove connection to `url` from the pool."""
-    host = urllib.parse.urlparse(url).netloc
     with poor.util.silent(KeyError):
-        connections.pop(host).close()
+        connections.pop(get_key(url)).close()
 
 def request_url(url, encoding=None, retry=1):
     """
