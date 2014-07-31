@@ -44,7 +44,8 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: parent.top
         // Ensure a sufficiently large tap target.
-        height: Math.max(parent.height, Theme.itemSizeSmall)
+        height: statusArea.destDist != "" ?
+            Math.max(parent.height, Theme.itemSizeSmall) : 0
         highlightedColor: "#00000000"
         Image {
             id: iconImage
