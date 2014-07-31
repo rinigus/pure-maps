@@ -22,7 +22,7 @@ import QtPositioning 5.0
 import "js/util.js" as Util
 
 /*
- * The intended way to draw a route on a QtLocation map would be to use
+ * XXX: The intended way to draw a route on a QtLocation map would be to use
  * QtLocation's MapPolyline. MapPolyline, however, renders awfully ugly.
  * To work around this, let's use a Canvas and Context2D drawing primitives
  * to draw our route. This looks nice, but might be horribly inefficient.
