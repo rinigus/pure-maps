@@ -11,7 +11,6 @@ Poor Maps 0.9
  [ ] Show an error message when connection times out
      - dict(error=True, message="Connection timed out")?
 
- * Add attribution to NarrativePage?
  * Add walk and transit icons?
 
 Poor Maps 1.0

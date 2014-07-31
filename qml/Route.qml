@@ -38,11 +38,12 @@ Canvas {
     width: parent.width
     z: 200
 
-    property var mode: "car"
-    property var paintX: 0
-    property var paintY: 0
-    property var path: {"x": [], "y": []}
-    property var simplePaths: {}
+    property string attribution: ""
+    property string mode: "car"
+    property var    paintX: 0
+    property var    paintY: 0
+    property var    path: {"x": [], "y": []}
+    property var    simplePaths: {}
 
     Component.onCompleted: {
         // Initialize context line appearance properties.

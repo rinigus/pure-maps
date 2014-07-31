@@ -54,7 +54,11 @@ Page {
         var args = [routePage.from, routePage.to];
         py.call("poor.app.router.route", args, function(route) {
             if (route && route.x && route.x.length > 0) {
-                map.addRoute({"x": route.x, "y": route.y, "mode": "car"});
+                map.addRoute({"x": route.x, 
+                              "y": route.y, 
+                              "mode": "car",
+                              "attribution": "Routing courtesy of OSRM."});
+
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);

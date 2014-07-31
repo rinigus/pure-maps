@@ -135,7 +135,8 @@ Page {
                 map.addRoute({
                     "x": listItem.result.x,
                     "y": listItem.result.y,
-                    "mode": "transit"});
+                    "mode": "transit",
+                    "attribution": "Routing courtesy of HSL."});
 
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);

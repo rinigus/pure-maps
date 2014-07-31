@@ -154,6 +154,7 @@ Map {
         // Add a polyline to represent a route.
         map.clearRoute();
         map.route.setPath(route.x, route.y);
+        map.route.attribution = route.attribution || ""
         map.route.mode = route.mode || "car";
         map.route.redraw();
         var args = [route.x, route.y];
@@ -378,6 +379,7 @@ Map {
             var data = {};
             data.x = map.route.path.x;
             data.y = map.route.path.y;
+            data.attribution = map.route.attribution;
             data.mode = map.route.mode;
         } else {
             var data = {};

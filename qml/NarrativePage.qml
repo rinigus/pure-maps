@@ -71,7 +71,8 @@ Page {
                     (iconImage.height - implicitHeight -
                      narrativeLabel.implicitHeight)/2
                 text: model.index < listView.count-1 ?
-                    "Continue for " + model.length + "." : ""
+                    "Continue for " + model.length + "." :
+                    map.route.attribution
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
