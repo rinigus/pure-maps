@@ -67,8 +67,10 @@ MapQuickItem {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    highlightTimer.start();
-                    Qt.openUrlExternally(item.link);
+                    if (item.link && item.link != "") {
+                        highlightTimer.start();
+                        Qt.openUrlExternally(item.link);
+                    }
                 }
             }
             Timer {
