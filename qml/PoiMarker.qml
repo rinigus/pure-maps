@@ -84,6 +84,8 @@ MapQuickItem {
         Image {
             id: arrow
             anchors.top: rectangle.bottom
+            // Try to avoid a stripe between rectangle and arrow.
+            anchors.topMargin: -0.5
             anchors.horizontalCenter: rectangle.horizontalCenter
             source: "icons/bubble-arrow.png"
             visible: item.labelVisible
