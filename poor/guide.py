@@ -21,6 +21,7 @@ import importlib.machinery
 import os
 import poor
 import re
+import socket
 import sys
 import time
 import traceback
@@ -87,6 +88,8 @@ class Guide:
         params = params or {}
         try:
             x, y, results = self._provider.nearby(query, near, radius, params)
+        except socket.timeout:
+            return dict(error=True, message="Connection timed out")
         except Exception:
             print("Finding nearby places failed:", file=sys.stderr)
             traceback.print_exc()

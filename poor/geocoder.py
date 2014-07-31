@@ -21,6 +21,7 @@ import importlib.machinery
 import os
 import poor
 import re
+import socket
 import sys
 import time
 import traceback
@@ -72,6 +73,8 @@ class Geocoder:
         params = params or {}
         try:
             results = self._provider.geocode(query, params)
+        except socket.timeout:
+            return dict(error=True, message="Connection timed out")
         except Exception:
             print("Geocoding failed:", file=sys.stderr)
             traceback.print_exc()

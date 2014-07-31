@@ -186,7 +186,10 @@ Page {
         var routePage = app.pageStack.previousPage();
         var args = [routePage.from, routePage.to, routePage.params];
         py.call("poor.app.router.route", args, function(results) {
-            if (results && results.length > 0) {
+            if (results.error && results.message) {
+                page.title = "";
+                busyLabel.text = results.message;
+            } else if (results && results.length > 0) {
                 page.title = "Results";
                 page.results = results;
                 for (var i = 0; i < results.length; i++)

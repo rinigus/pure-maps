@@ -21,6 +21,7 @@ import importlib.machinery
 import os
 import poor
 import re
+import socket
 import sys
 import time
 import traceback
@@ -87,6 +88,8 @@ class Router:
         params = params or {}
         try:
             return self._provider.route(fm, to, params)
+        except socket.timeout:
+            return dict(error=True, message="Connection timed out")
         except Exception:
             print("Routing failed:", file=sys.stderr)
             traceback.print_exc()

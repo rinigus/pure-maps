@@ -8,10 +8,7 @@ Poor Maps 0.9
  [X] Add option for the MapQuest Open router to try to avoid tolls
  [X] Clear existing POIs before using "Show all" to add new POIs
      from either geocoding or nearby search results
- [ ] Show an error message when connection times out
-     - dict(error=True, message="Connection timed out")?
-
- * Add walk and transit icons?
+ [X] Show an error message when connection times out
 
 Poor Maps 1.0
 =============

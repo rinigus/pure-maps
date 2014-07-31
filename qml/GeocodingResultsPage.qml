@@ -133,14 +133,17 @@ Page {
         var y = map.position.coordinate.latitude || 0;
         var args = [query, null, x, y];
         py.call("poor.app.geocoder.geocode", args, function(results) {
-            if (results.length > 0) {
+            if (results.error && results.message) {
+                page.title = "";
+                busyLabel.text = results.message;
+            } else if (results.length > 0) {
                 page.title = results.length == 1 ?
                     "1 Result" : results.length + " Results";
                 for (var i = 0; i < results.length; i++)
                     listModel.append(results[i]);
             } else {
                 page.title = "";
-                busyLabel.text = "Not found, or error"
+                busyLabel.text = "Not found, or error";
             }
             page.loading = false;
         });
