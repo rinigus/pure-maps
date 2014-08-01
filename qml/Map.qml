@@ -116,7 +116,18 @@ Map {
     }
 
     function addManeuvers(maneuvers) {
-        // Add new maneuver markers to map.
+        /*
+         * Add new maneuver markers to map.
+         *
+         * Expected fields for each item in in maneuvers:
+         *  - x: Longitude coordinate of maneuver point
+         *  - y: Latitude coordinate of maneuver point
+         *  - icon: Name of maneuver icon (optional, defaults to 'alert')
+         *  - narrative: Plain text instruction of maneuver
+         *  - passive: true if point doesn't require any actual action
+         *    (optional, defaults to false)
+         *  - duration: Duration (s) of leg following maneuver point
+         */
         for (var i = 0; i < maneuvers.length; i++) {
             var component = Qt.createComponent("ManeuverMarker.qml");
             var maneuver = component.createObject(map);
@@ -125,8 +136,8 @@ Map {
             maneuver.coordinate = QtPositioning.coordinate(y, x);
             maneuver.icon = maneuvers[i].icon || "alert";
             maneuver.narrative = maneuvers[i].narrative || "";
-            maneuver.duration = maneuvers[i].duration || 0;
             maneuver.passive = maneuvers[i].passive || false;
+            maneuver.duration = maneuvers[i].duration || 0;
             map.maneuvers.push(maneuver);
             map.addMapItem(maneuver);
         }
@@ -135,7 +146,15 @@ Map {
     }
 
     function addPois(pois) {
-        // Add new POI markers to map.
+        /*
+         * Add new POI markers to map.
+         *
+         * Expected fields for each item in pois:
+         *  - x: Longitude coordinate of point
+         *  - y: Latitude coordinate of point
+         *  - text: Text.RichText to show in POI bubble
+         *  - link: Hyperlink accessible from POI bubble (optional)
+         */
         for (var i = 0; i < pois.length; i++) {
             var component = Qt.createComponent("PoiMarker.qml");
             var poi = component.createObject(map);
@@ -151,7 +170,15 @@ Map {
     }
 
     function addRoute(route) {
-        // Add a polyline to represent a route.
+        /*
+         * Add a polyline to represent a route.
+         *
+         * Expected fields in route:
+         *  - x: Array of route polyline longitude coordinates
+         *  - y: Array of route polyline latitude coordinates
+         *  - attribution: Plain text router attribution
+         *  - mode: Transport mode, "car" or "transit"
+         */
         map.clearRoute();
         map.route.setPath(route.x, route.y);
         map.route.attribution = route.attribution || ""

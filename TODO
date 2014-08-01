@@ -7,7 +7,7 @@ Poor Maps 0.9
  [X] Allow tapping on POI markers to show description
  [X] Add option for the MapQuest Open router to try to avoid tolls
  [X] Clear existing POIs before using "Show all" to add new POIs
-     from either geocoding or nearby search results
+     from geocoding results
  [X] Show an error message when connection times out
 
 Poor Maps 1.0
