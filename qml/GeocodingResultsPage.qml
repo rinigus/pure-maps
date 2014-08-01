@@ -143,7 +143,7 @@ Page {
                     listModel.append(results[i]);
             } else {
                 page.title = "";
-                busyLabel.text = "Not found, or error";
+                busyLabel.text = "No results";
             }
             page.loading = false;
         });

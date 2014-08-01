@@ -67,7 +67,7 @@ Page {
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
                 page.loading = false;
             } else {
-                busyLabel.text = "Not found, or error";
+                busyLabel.text = "No results";
                 page.loading = false;
             }
         });
