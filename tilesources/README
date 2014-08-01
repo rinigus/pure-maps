@@ -1,0 +1,13 @@
+Implementing a Tile Source
+==========================
+
+To implement a tile source you need to write a JSON metadata file, see
+the tile sources shipped with poor for examples. Only standard 256x256
+Web Mercator tiles ("format": "slippy" in the JSON file) [1] are
+supported for now.
+
+ [1] http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
+
+Use "~/.local/share/harbour-poor-maps/tilesources" as a local
+installation directory in which to place your JSOn file. Restart Poor,
+and your tile source should be loaded, listed and available for use.
