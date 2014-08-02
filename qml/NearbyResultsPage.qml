@@ -59,13 +59,27 @@ Page {
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
-                map.addPois([{"x": model.x,
-                              "y": model.y,
-                              "text": model.text || model.title,
-                              "link": model.link || ""}]);
+                var pois = [];
+                for (var i = 0; i < listModel.count; i++) {
+                    if (i == model.index) continue
+                    var item = listModel.get(i);
+                    pois.push({"x": item.x,
+                               "y": item.y,
+                               "text": item.text || item.title,
+                               "link": item.link || ""});
 
+                }
+                pois.push({"x": model.x,
+                           "y": model.y,
+                           "text": model.text || model.title,
+                           "link": model.link || ""})
+
+                map.clearPois();
+                map.addPois(pois);
+                map.fitViewToPois(pois);
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
+                map.pois[map.pois.length-1].labelVisible = true;
                 app.pageStack.pop(mapPage, PageStackAction.Immediate);
             }
         }
