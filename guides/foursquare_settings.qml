@@ -25,7 +25,7 @@ Column {
         label: "Prefer"
         menu: ContextMenu {
             MenuItem { text: "Closest" }
-            MenuItem { text: "Best rated" }
+            MenuItem { text: "Best" }
         }
         Component.onCompleted: {
             var attr = "poor.conf.guides.foursquare.sort_by_distance";
