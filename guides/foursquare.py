@@ -72,12 +72,12 @@ def parse_description(item):
     """Parse description from search result `item`."""
     description = []
     with poor.util.silent(Exception):
+        rating = float(item["venue"]["rating"])
+        description.append("{:.1f}/10".format(rating))
+    with poor.util.silent(Exception):
         description.append(item["venue"]["categories"][0]["name"])
     with poor.util.silent(Exception):
         description.append(item["venue"]["location"]["address"])
-    with poor.util.silent(Exception):
-        rating = float(item["venue"]["rating"])
-        description.append("{:.1f}/10".format(rating))
     description = ", ".join(description)
     with poor.util.silent(Exception):
         quote = item["tips"][0]["text"]
