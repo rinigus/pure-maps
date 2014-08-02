@@ -262,6 +262,15 @@ def silent(*exceptions):
     except exceptions:
         pass
 
+def sorted_by_distance(items, x, y):
+    """Return `items` sorted by distance from given coordinates."""
+    for item in items:
+        item["__dist"] = calculate_distance(item["x"], item["y"], x, y)
+    items = sorted(items, key=lambda z: z["__dist"])
+    for item in items:
+        del item["__dist"]
+    return items
+
 def write_json(data, path):
     """Write `data` to JSON file at `path`."""
     try:

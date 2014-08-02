@@ -33,10 +33,13 @@ def nearby(query, near, radius, params):
     x, y = near
     x_m_per_deg = poor.util.calculate_distance(x, y, x+1, y)
     y_m_per_deg = poor.util.calculate_distance(x, y, x, y+1)
-    return x, y, geocoder.geocode(query,
-                                  dict(xmin=x-radius/x_m_per_deg,
-                                       xmax=x+radius/x_m_per_deg,
-                                       ymin=y-radius/y_m_per_deg,
-                                       ymax=y+radius/y_m_per_deg,
-                                       bounded=True,
-                                       limit=100))
+    results = geocoder.geocode(query,
+                               dict(xmin=x-radius/x_m_per_deg,
+                                    xmax=x+radius/x_m_per_deg,
+                                    ymin=y-radius/y_m_per_deg,
+                                    ymax=y+radius/y_m_per_deg,
+                                    bounded=True,
+                                    limit=50))
+
+    results = poor.util.sorted_by_distance(results, x, y)
+    return x, y, results

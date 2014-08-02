@@ -100,8 +100,8 @@ class Guide:
         for result in results:
             result["distance"] = poor.util.calculate_distance(
                 x, y, result["x"], result["y"])
+        # Enforce radius in case the provider didn't.
         results = [z for z in results if z["distance"] <= radius]
-        results.sort(key=lambda x: x["distance"])
         for result in results:
             result["distance"] = self._format_distance(
                 x, y, result["x"], result["y"])
