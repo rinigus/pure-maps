@@ -27,6 +27,7 @@ Page {
     property var near: null
     property string nearText: ""
     property string query: ""
+    property var params: {}
     property var radius: 1000
     SilicaFlickable {
         anchors.fill: parent
@@ -35,6 +36,7 @@ Page {
         Column {
             id: column
             anchors.fill: parent
+            property var settings: null
             PageHeader { title: "Find Nearby" }
             ValueButton {
                 id: usingButton
@@ -46,6 +48,7 @@ Page {
                     var dialog = app.pageStack.push("GuidePage.qml");
                     dialog.accepted.connect(function() {
                         usingButton.value = py.evaluate("poor.app.guide.name");
+                        column.addSetttings();
                     });
                 }
             }
@@ -98,6 +101,19 @@ Page {
                 onCurrentIndexChanged: {
                     page.radius = radiusComboBox.radii[radiusComboBox.currentIndex];
                 }
+            }
+            Component.onCompleted: column.addSetttings();
+            function addSetttings() {
+                // Add guide-specific settings from guide's own QML file.
+                page.params = {};
+                column.settings && column.settings.destroy();
+                var uri = py.evaluate("poor.app.guide.settings_qml_uri");
+                if (!uri) return;
+                var component = Qt.createComponent(uri);
+                column.settings = component.createObject(column);
+                column.settings.anchors.left = column.left;
+                column.settings.anchors.right = column.right;
+                column.settings.width = column.width;
             }
         }
         VerticalScrollDecorator {}

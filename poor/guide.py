@@ -50,9 +50,10 @@ class Guide:
             self.attribution = values["attribution"]
             self.id = id
             self.name = values["name"]
+            self._path = path
             self._provider = None
             self.source = values["source"]
-            self._init_provider(re.sub(r"\.json$", ".py", path))
+            self._init_provider(id, re.sub(r"\.json$", ".py", path))
 
     def _format_distance(self, x1, y1, x2, y2):
         """Calculate and format a human readable distance string."""
@@ -62,11 +63,13 @@ class Guide:
         bearing = poor.util.format_bearing(bearing)
         return "{} {}".format(distance, bearing)
 
-    def _init_provider(self, path):
+    def _init_provider(self, id, path):
         """Initialize place guide provider module from `path`."""
         name = "poor.guide.provider{:d}".format(int(1000*time.time()))
         loader = importlib.machinery.SourceFileLoader(name, path)
         self._provider = loader.load_module(name)
+        if hasattr(self._provider, "CONF_DEFAULTS"):
+            poor.conf.register_guide(id, self._provider.CONF_DEFAULTS)
 
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
@@ -103,3 +106,10 @@ class Guide:
             result["distance"] = self._format_distance(
                 x, y, result["x"], result["y"])
         return results
+
+    @property
+    def settings_qml_uri(self):
+        """Return URI to guide settings QML file or ``None``."""
+        path = re.sub(r"\.json$", "_settings.qml", self._path)
+        if not os.path.isfile(path): return None
+        return poor.util.path2uri(path)

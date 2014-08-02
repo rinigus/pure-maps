@@ -116,6 +116,15 @@ class ConfigurationStore(AttrDict):
                 root.setdefault(name, copy.deepcopy(value))
                 defaults.setdefault(name, copy.deepcopy(value))
 
+    def register_guide(self, name, values):
+        """
+        Add configuration `values` for guide `name` if missing.
+
+        e.g. calling ``register_guide("foo", {"type": 1})`` will make type
+        available as ``poor.conf.guides.foo.type``.
+        """
+        self._register({"guides": {name: values}})
+
     def register_router(self, name, values):
         """
         Add configuration `values` for router `name` if missing.

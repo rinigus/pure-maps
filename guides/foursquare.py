@@ -28,6 +28,8 @@ import json
 import poor
 import urllib.parse
 
+CONF_DEFAULTS = {"sort_by_distance": False}
+
 CLIENT_ID = "BP3KCWJXGQDXWVMYSVLWWRITMVZTG5XANJ43D2ZD0D5JMKCX"
 
 URL = ("https://api.foursquare.com/v2/venues/explore"
@@ -38,13 +40,14 @@ URL = ("https://api.foursquare.com/v2/venues/explore"
        "&ll={y:.5f},{x:.5f}"
        "&limit=50"
        "&radius={radius:.0f}"
-       "&sortByDistance=1")
+       "&sortByDistance={sort_by_distance}")
 
 cache = {}
 
 def nearby(query, near, radius, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
+    sort_by_distance = str(int(poor.conf.guides.foursquare.sort_by_distance))
     x, y = prepare_point(near)
     url = URL.format(CLIENT_ID=CLIENT_ID, **locals())
     with poor.util.silent(KeyError):
