@@ -25,12 +25,13 @@ The second QML file ('*_results.qml') is mandatory and used to specify
 a result page. At minimum this should be a page which shows a busy
 indicator and handles passing data to the map or notification if
 no results found. For a minimal router that returns one route, you can
-copy 'mapquest_open' or 'osrm' and possibly adapt that. If writing a
-router that returns several routes that the user can choose from and/or
-allows a closer examination of the route properties before showing it
-on a map, you can use this page to display whatever is best suitable
-given your router and domain. For example, the 'hsl' router shows five
-alternative public transportation routes with relevant details of each.
+copy 'mapquest_open' or 'osrm' and possibly adapt that. If writing
+a router that returns several routes that the user can choose from
+and/or allows a closer examination of the route properties before
+showing it on a map, you can use this page to display whatever is best
+suitable given your router and domain. For example, the 'hsl' router
+shows five alternative public transportation routes with relevant
+details of each.
 
 To display a route on the map, you'll want to call 'map.addRoute' and
 'map.addManeuvers'. See the documentation of these functions in
@@ -52,7 +53,7 @@ the Python interpreter or a test script, e.g.
 
     >>> import poor
     >>> router = poor.Router("my_router")
-    >>> router.route("from place, from city", "to place, to city")
+    >>> router.route("erottaja, helsinki", "tapiola, espoo")
 
 and qmlscene ('/usr/lib/qt5/bin/qmlscene qml/poor-maps.qml')
 for testing.

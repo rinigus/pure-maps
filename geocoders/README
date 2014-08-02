@@ -21,7 +21,7 @@ the Python interpreter or a test script, e.g.
 
     >>> import poor
     >>> geocoder = poor.Geocoder("my_geocoder")
-    >>> geocoder.geocode("my place, my city")
+    >>> geocoder.geocode("erottaja, helsinki")
 
 and qmlscene ('/usr/lib/qt5/bin/qmlscene qml/poor-maps.qml')
 for testing.

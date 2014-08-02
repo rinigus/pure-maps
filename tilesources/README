@@ -9,5 +9,5 @@ supported for now.
  [1] http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
 
 Use "~/.local/share/harbour-poor-maps/tilesources" as a local
-installation directory in which to place your JSOn file. Restart Poor,
+installation directory in which to place your JSON file. Restart Poor,
 and your tile source should be loaded, listed and available for use.
