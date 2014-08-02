@@ -49,6 +49,7 @@ install:
 	mkdir -p $(datadir)/guides
 	cp guides/*.json $(datadir)/guides
 	cp guides/*.py $(datadir)/guides
+	cp guides/*.qml $(datadir)/guides
 	cp guides/README $(datadir)/guides
 
 	@echo "Installing routers..."
