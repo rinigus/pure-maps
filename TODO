@@ -1,3 +1,10 @@
+Poor Maps 0.10
+==============
+
+ [ ] Provide link in POI bubbles (geocoding and nearby place results) to
+     find route from current position to that location
+ [X] Make POI marker tap target bigger
+
 Poor Maps 1.0
 =============
 
