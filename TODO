@@ -1,15 +1,3 @@
-Poor Maps 0.9
-=============
-
- [X] Add framework to list nearby places by type (restaurants, etc.)
- [X] Add Foursquare provider for listing nearby places
- [X] Add Nominatim providers for listing nearby places
- [X] Allow tapping on POI markers to show description
- [X] Add option for the MapQuest Open router to try to avoid tolls
- [X] Clear existing POIs before using "Show all" to add new POIs
-     from geocoding results
- [X] Show an error message when connection times out
-
 Poor Maps 1.0
 =============
 
