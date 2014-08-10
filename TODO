@@ -3,7 +3,7 @@ Poor Maps 0.10
 
  [X] Provide link in POI bubbles (geocoding and nearby place results)
      to find route from current position to that location
- [ ] Add pulldown menu item in route search page to reverse endpoints
+ [X] Add pulldown menu item in route search page to reverse endpoints
  [X] Make POI marker tap target bigger
  [X] Retry geocoding, routing etc. in case of BrokenPipeError
 

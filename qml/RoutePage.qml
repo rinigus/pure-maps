@@ -108,6 +108,19 @@ Page {
                 column.settings.width = column.width;
             }
         }
+        PullDownMenu {
+            MenuItem {
+                text: "Reverse endpoints"
+                onClicked: {
+                    var from = page.from;
+                    var fromText = page.fromText;
+                    page.from = page.to;
+                    page.fromText = page.toText;
+                    page.to = from;
+                    page.toText = fromText;
+                }
+            }
+        }
         VerticalScrollDecorator {}
     }
     Component.onCompleted: {
