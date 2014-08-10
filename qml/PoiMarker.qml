@@ -43,52 +43,115 @@ MapQuickItem {
             }
         }
         Rectangle {
-            id: rectangle
+            id: bubble
             anchors.bottom: image.top
             anchors.bottomMargin: 18
             anchors.horizontalCenter: image.horizontalCenter
             color: "#BB000000"
-            height: label.height + Theme.paddingLarge
-            radius: label.font.pixelSize/2
+            height: content.height + 1.5*Theme.paddingLarge
+            radius: textLabel.font.pixelSize/2
             visible: item.labelVisible
-            width: label.width + 1.5*Theme.paddingLarge
-            Label {
-                id: label
+            width: content.width + 1.5*Theme.paddingLarge
+            Item {
+                id: content
                 anchors.centerIn: parent
-                color: "white"
-                font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + 2
-                text: item.text
-                textFormat: Text.RichText
-                verticalAlignment: Text.AlignTop
-                width: Math.min(0.6*map.width, implicitWidth)
-                wrapMode: Text.WordWrap
-            }
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    if (item.link && item.link != "") {
-                        highlightTimer.start();
-                        Qt.openUrlExternally(item.link);
+                height: textLabel.height + routeButton.height
+                width: Math.max(textLabel.width,
+                                routeButton.width +
+                                linkButton.width +
+                                Theme.paddingLarge)
+
+                Label {
+                    id: textLabel
+                    color: "white"
+                    font.pixelSize: Theme.fontSizeSmall
+                    height: implicitHeight + 1.5*Theme.paddingMedium
+                    text: item.text
+                    textFormat: Text.RichText
+                    verticalAlignment: Text.AlignTop
+                    width: Math.min(0.6*map.width, implicitWidth)
+                    wrapMode: Text.WordWrap
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: item.labelVisible = false;
                     }
                 }
-            }
-            Timer {
-                id: highlightTimer
-                interval: 3000
-                repeat: false
-                onRunningChanged: {
-                    label.color = highlightTimer.running ?
-                        Theme.highlightColor : "white";
+                Rectangle {
+                    id: routeButton
+                    anchors.left: parent.left
+                    anchors.top: textLabel.bottom
+                    color: "#BBFFFFFF"
+                    height: routeLabel.height + Theme.paddingMedium
+                    radius: bubble.radius/2
+                    width: routeLabel.width + 1.5*Theme.paddingMedium
+                    Label {
+                        id: routeLabel
+                        anchors.centerIn: parent
+                        color: "black"
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        text: "Route"
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            routeTimer.start();
+                            var x = item.coordinate.longitude;
+                            var y = item.coordinate.latitude;
+                            app.pageStack.push("RoutePage.qml", {
+                                "to": [x, y], "toText": item.title});
+                        }
+                    }
+                    Timer {
+                        id: routeTimer
+                        interval: 3000
+                        repeat: false
+                        onRunningChanged: {
+                            routeButton.color = routeTimer.running ?
+                                Theme.highlightColor : "#BBFFFFFF";
+                        }
+                    }
+                }
+                Rectangle {
+                    id: linkButton
+                    anchors.right: parent.right
+                    anchors.top: textLabel.bottom
+                    color: "#BBFFFFFF"
+                    height: linkLabel.height + Theme.paddingMedium
+                    radius: bubble.radius/2
+                    visible: item.link && item.link != ""
+                    width: visible ? linkLabel.width + 1.5*Theme.paddingMedium : 0
+                    Label {
+                        id: linkLabel
+                        anchors.centerIn: parent
+                        color: "black"
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        text: "Web"
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            linkTimer.start();
+                            Qt.openUrlExternally(item.link);
+                        }
+                    }
+                    Timer {
+                        id: linkTimer
+                        interval: 3000
+                        repeat: false
+                        onRunningChanged: {
+                            linkButton.color = linkTimer.running ?
+                                Theme.highlightColor : "#BBFFFFFF";
+                        }
+                    }
                 }
             }
         }
         Image {
             id: arrow
-            anchors.top: rectangle.bottom
-            // Try to avoid a stripe between rectangle and arrow.
+            anchors.top: bubble.bottom
+            // Try to avoid a stripe between bubble and arrow.
             anchors.topMargin: -0.5
-            anchors.horizontalCenter: rectangle.horizontalCenter
+            anchors.horizontalCenter: bubble.horizontalCenter
             source: "icons/bubble-arrow.png"
             visible: item.labelVisible
         }
@@ -97,6 +160,7 @@ MapQuickItem {
     property bool   labelVisible: false
     property string link: ""
     property string text: ""
+    property string title: ""
     onTextChanged: {
         item.text = item.text.replace("Theme.highlightColor",
                                       Theme.highlightColor);

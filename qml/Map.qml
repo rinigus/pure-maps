@@ -152,6 +152,7 @@ Map {
          * Expected fields for each item in pois:
          *  - x: Longitude coordinate of point
          *  - y: Latitude coordinate of point
+         *  - title: Plain text name by which to refer to point
          *  - text: Text.RichText to show in POI bubble
          *  - link: Hyperlink accessible from POI bubble (optional)
          */
@@ -161,8 +162,9 @@ Map {
             var x = pois[i].x;
             var y = pois[i].y;
             poi.coordinate = QtPositioning.coordinate(y, x);
-            poi.text = pois[i].text || "";
-            poi.link = pois[i].link || ""
+            poi.title = pois[i].title || "";
+            poi.text  = pois[i].text  || "";
+            poi.link  = pois[i].link  || ""
             map.pois.push(poi);
             map.addMapItem(poi);
         }
@@ -391,8 +393,9 @@ Map {
             var poi = {}
             poi.x = map.pois[i].coordinate.longitude;
             poi.y = map.pois[i].coordinate.latitude;
-            poi.text = map.pois[i].text;
-            poi.link = map.pois[i].link;
+            poi.title = map.pois[i].title;
+            poi.text  = map.pois[i].text;
+            poi.link  = map.pois[i].link;
             data.push(poi);
         }
         py.call_sync("poor.storage.write_pois", [data]);

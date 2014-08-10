@@ -62,7 +62,14 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        page.fromText = dialog.query;
+                        if (dialog.query == "Current position") {
+                            page.from = map.getPosition();
+                            page.fromText = dialog.query;
+                        } else {
+                            page.from = dialog.query;
+                            page.fromText = dialog.query;
+                            py.call_sync("poor.app.history.add_place", [dialog.query]);
+                        }
                     });
                 }
             }
@@ -76,7 +83,14 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        page.toText = dialog.query;
+                        if (dialog.query == "Current position") {
+                            page.to = map.getPosition();
+                            page.toText = dialog.query;
+                        } else {
+                            page.to = dialog.query;
+                            page.toText = dialog.query;
+                            py.call_sync("poor.app.history.add_place", [dialog.query]);
+                        }
                     });
                 }
             }
@@ -100,25 +114,9 @@ Page {
         page.from = map.getPosition();
         page.fromText = "Current position";
     }
-    onFromTextChanged: {
-        if (page.fromText == "Current position") {
-            page.from = map.getPosition();
-        } else {
-            page.from = page.fromText;
-            py.call_sync("poor.app.history.add_place", [page.fromText]);
-        }
-    }
     onStatusChanged: {
         if (page.status != PageStatus.Active) return;
         var uri = py.evaluate("poor.app.router.results_qml_uri");
         app.pageStack.pushAttached(uri);
-    }
-    onToTextChanged: {
-        if (page.toText == "Current position") {
-            page.to = map.getPosition();
-        } else {
-            page.to = page.toText;
-            py.call_sync("poor.app.history.add_place", [page.toText]);
-        }
     }
 }

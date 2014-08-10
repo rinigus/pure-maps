@@ -61,6 +61,7 @@ Page {
             onClicked: {
                 map.addPois([{"x": model.x,
                               "y": model.y,
+                              "title": model.title,
                               "text": model.text || model.title,
                               "link": model.link || ""}]);
 
@@ -81,6 +82,7 @@ Page {
                         var item = listModel.get(i);
                         pois.push({"x": item.x,
                                    "y": item.y,
+                                   "title": item.title,
                                    "text": item.text || item.title,
                                    "link": item.link || ""});
 
