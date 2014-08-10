@@ -5,7 +5,7 @@ Poor Maps 0.10
      to find route from current position to that location
  [ ] Add pulldown menu item in route search page to reverse endpoints
  [X] Make POI marker tap target bigger
- [ ] Retry geocoding, routing etc. in case of BrokenPipeError
+ [X] Retry geocoding, routing etc. in case of BrokenPipeError
 
 Poor Maps 1.0
 =============

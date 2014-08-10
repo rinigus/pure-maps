@@ -85,7 +85,8 @@ class TileSource:
         except Exception as error:
             httpc.close()
             httpc = None
-            if isinstance(error, http.client.BadStatusLine) and retry > 0:
+            broken = (BrokenPipeError, http.client.BadStatusLine)
+            if isinstance(error, broken) and retry > 0:
                 # This probably means that the connection was broken.
                 pass
             else:
