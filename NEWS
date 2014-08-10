@@ -1,3 +1,12 @@
+Poor Maps 0.10
+==============
+
+ * Add buttons to POI bubbles (geocoding and nearby place results)
+   to find route to that location and to open Foursquare links
+ * Add pulldown menu item in route search page to reverse endpoints
+ * Make POI marker tap target bigger
+ * Retry geocoding, routing etc. in case of BrokenPipeError
+
 Poor Maps 0.9
 =============
 
