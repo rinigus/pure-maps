@@ -71,10 +71,6 @@ MapQuickItem {
                     verticalAlignment: Text.AlignTop
                     width: Math.min(0.6*map.width, implicitWidth)
                     wrapMode: Text.WordWrap
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: item.labelVisible = false;
-                    }
                 }
                 Rectangle {
                     id: routeButton
