@@ -27,6 +27,7 @@ ApplicationWindow {
     initialPage: Page {
         id: mapPage
         // XXX: Map gestures don't work right in landscape.
+        // https://bugreports.qt-project.org/browse/QTBUG-40799
         allowedOrientations: Orientation.Portrait
         Map { id: map }
     }
