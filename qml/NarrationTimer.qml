@@ -24,23 +24,23 @@ Timer {
     interval: 3000
     repeat: true
     triggeredOnStart: true
-    property var prevCoordinate: QtPositioning.coordinate(0, 0)
+    property var coordinatePrev: QtPositioning.coordinate(0, 0)
     onRunningChanged: {
         // Always update after changing timer state.
-        timer.prevCoordinate.longitude = 0;
-        timer.prevCoordinate.latitude = 0;
+        timer.coordinatePrev.longitude = 0;
+        timer.coordinatePrev.latitude = 0;
     }
     onTriggered: {
         // Query maneuver narrative from Python and update status.
         if (!py.ready) return;
         if (!map.hasRoute()) return;
-        if (map.position.coordinate.distanceTo(timer.prevCoordinate) < 10) return;
+        if (map.position.coordinate.distanceTo(timer.coordinatePrev) < 10) return;
         var x = map.position.coordinate.longitude;
         var y = map.position.coordinate.latitude;
         py.call("poor.app.narrative.get_display", [x, y], function(status) {
             map.setRoutingStatus(status);
-            timer.prevCoordinate.longitude = map.position.coordinate.longitude;
-            timer.prevCoordinate.latitude = map.position.coordinate.latitude;
+            timer.coordinatePrev.longitude = map.position.coordinate.longitude;
+            timer.coordinatePrev.latitude = map.position.coordinate.latitude;
         });
     }
 }

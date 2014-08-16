@@ -23,9 +23,9 @@ PositionSource {
     id: gps
     active: false
     updateInterval: 1000
+    property var coordinatePrev
     property var direction
-    property var prevCoordinate
-    property var prevTime
+    property var timePrev
     Component.onCompleted: {
         py.onReadyChanged.connect(function() {
             gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");
@@ -36,17 +36,17 @@ PositionSource {
         // http://bugreports.qt-project.org/browse/QTBUG-36298
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 30) return;
-        if (!gps.prevCoordinate) {
+        if (!gps.coordinatePrev) {
             var x = gps.position.coordinate.longitude;
             var y = gps.position.coordinate.latitude;
-            gps.prevCoordinate = QtPositioning.coordinate(y, x);
-        } else if (gps.prevCoordinate.distanceTo(
+            gps.coordinatePrev = QtPositioning.coordinate(y, x);
+        } else if (gps.coordinatePrev.distanceTo(
             gps.position.coordinate) > threshold) {
-            gps.direction = gps.prevCoordinate.azimuthTo(gps.position.coordinate);
-            gps.prevCoordinate.longitude = gps.position.coordinate.longitude;
-            gps.prevCoordinate.latitude = gps.position.coordinate.latitude;
-            gps.prevTime = Date.now();
-        } else if (gps.direction && Date.now() - gps.prevTime > 5*60*1000) {
+            gps.direction = gps.coordinatePrev.azimuthTo(gps.position.coordinate);
+            gps.coordinatePrev.longitude = gps.position.coordinate.longitude;
+            gps.coordinatePrev.latitude = gps.position.coordinate.latitude;
+            gps.timePrev = Date.now();
+        } else if (gps.direction && Date.now() - gps.timePrev > 5*60*1000) {
             gps.direction = undefined;
         }
     }

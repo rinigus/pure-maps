@@ -31,10 +31,10 @@ Item {
     visible: scaleWidth > 0
     width: base.width
     z: 101
-    property var prevCoord: QtPositioning.coordinate(0, 0)
-    property var prevZoomLevel: -1
+    property var coordinatePrev: QtPositioning.coordinate(0, 0)
     property var scaleWidth: 0
     property var text: ""
+    property var zoomLevelPrev: -1
     Rectangle {
         id: base
         color: "black"
@@ -71,8 +71,8 @@ Item {
         // Update scalebar for current zoom level and latitude.
         var x = map.center.longitude;
         var y = map.center.latitude;
-        if (map.zoomLevel == scaleBar.prevZoomLevel &&
-            Math.abs(y - scaleBar.prevCoord.latitude) < 0.1) return;
+        if (map.zoomLevel == scaleBar.zoomLevelPrev &&
+            Math.abs(y - scaleBar.coordinatePrev.latitude) < 0.1) return;
         var bbox = map.getBoundingBox();
         var tail = QtPositioning.coordinate(y, bbox[1]);
         var dist = Util.siground(map.center.distanceTo(tail)/2.5, 1);
@@ -83,8 +83,8 @@ Item {
         var yd = Util.ycoord2ypos(y, bbox[2], bbox[3], map.height) - yend;
         scaleBar.scaleWidth = Math.sqrt(xd*xd + yd*yd);
         scaleBar.text = py.call_sync("poor.util.format_distance", [dist, 1]);
-        scaleBar.prevCoord.longitude = map.center.longitude;
-        scaleBar.prevCoord.latitude = map.center.latitude;
-        scaleBar.prevZoomLevel = map.zoomLevel;
+        scaleBar.coordinatePrev.longitude = map.center.longitude;
+        scaleBar.coordinatePrev.latitude = map.center.latitude;
+        scaleBar.zoomLevelPrev = map.zoomLevel;
     }
 }
