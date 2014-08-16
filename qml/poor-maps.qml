@@ -27,7 +27,7 @@ ApplicationWindow {
     initialPage: Page {
         id: mapPage
         // XXX: Map gestures don't work right in landscape.
-        // https://bugreports.qt-project.org/browse/QTBUG-40799
+        // http://bugreports.qt-project.org/browse/QTBUG-40799
         allowedOrientations: Orientation.Portrait
         Map { id: map }
     }
@@ -40,7 +40,6 @@ ApplicationWindow {
         applicationActive ? map.start() : map.stop();
     }
     function showMenu() {
-        // Show the actions and preferences menu page.
         app.pageStack.push("MenuPage.qml");
     }
 }

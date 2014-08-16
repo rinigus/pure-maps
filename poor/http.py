@@ -22,20 +22,20 @@ import poor
 import sys
 import urllib.parse
 
-connections = {}
+_connections = {}
 
 HEADERS = {"Connection": "Keep-Alive",
            "User-Agent": "poor-maps/{}".format(poor.__version__)}
 
 
-def get_connection(url, timeout=None):
+def _get_connection(url, timeout=None):
     """Return HTTP connection to `url`."""
     try:
-        return connections[get_key(url)]
+        return _connections[_get_key(url)]
     except KeyError:
-        return new_connection(url, timeout)
+        return _new_connection(url, timeout)
 
-def get_connection_class(url):
+def _get_connection_class(url):
     """Return HTTP connection class for `url`."""
     protocol = urllib.parse.urlparse(url).scheme
     if protocol == "http":
@@ -44,25 +44,27 @@ def get_connection_class(url):
         return http.client.HTTPSConnection
     raise ValueError("Bad URL: {}".format(repr(url)))
 
-def get_key(url):
+def _get_key(url):
     """Return a dictionary key for `url`."""
     protocol = urllib.parse.urlparse(url).scheme
     host = urllib.parse.urlparse(url).netloc
     return "{}://{}".format(protocol, host)
 
-def new_connection(url, timeout=None):
+def _new_connection(url, timeout=None):
     """Return new HTTP connection to `url`."""
-    cls = get_connection_class(url)
+    cls = _get_connection_class(url)
     host = urllib.parse.urlparse(url).netloc
     timeout = timeout or poor.conf.download_timeout
-    key = get_key(url)
-    connections[key] = cls(host, timeout=timeout)
-    return connections[key]
+    _connections[_get_key(url)] = cls(host, timeout=timeout)
+    return _connections[_get_key(url)]
 
-def remove_connection(url):
+def _remove_connection(url):
     """Close and remove connection to `url` from the pool."""
-    with poor.util.silent(KeyError):
-        connections.pop(get_key(url)).close()
+    try:
+        httpc = _connections.pop(_get_key(url))
+        httpc.close()
+    except Exception:
+        pass
 
 def request_url(url, encoding=None, retry=1):
     """
@@ -70,12 +72,11 @@ def request_url(url, encoding=None, retry=1):
 
     If `encoding` is ``None``, return bytes, otherwise decode data
     to text using `encoding`. Try again `retry` times in some particular
-    cases that imply a connection error. Don't touch the `retry` argument,
-    unless you really know what you're doing.
+    cases that imply a connection error.
     """
     print("Requesting {}".format(url))
     try:
-        httpc = get_connection(url)
+        httpc = _get_connection(url)
         httpc.request("GET", url, headers=HEADERS)
         response = httpc.getresponse()
         if response.status != 200:
@@ -87,7 +88,7 @@ def request_url(url, encoding=None, retry=1):
         if encoding is None: return blob
         return blob.decode(encoding, errors="replace")
     except Exception as error:
-        remove_connection(url)
+        _remove_connection(url)
         broken = (BrokenPipeError, http.client.BadStatusLine)
         if isinstance(error, broken) and retry > 0:
             # This probably means that the connection was broken.

@@ -108,7 +108,6 @@ Rectangle {
             wrapMode: Text.WordWrap
         }
         onClicked: {
-            // Show the narrative page.
             app.pageStack.push("NarrativePage.qml");
         }
     }
