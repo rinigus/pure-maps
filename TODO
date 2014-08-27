@@ -1,10 +1,14 @@
+Poor Maps 0.11
+==============
+
+ [ ] Add option to prevent display blanking while navigating
+
 Poor Maps 1.0
 =============
 
  * Bump Foursquare API version and send m=foursquare
  * Add auto-rotate on bearing when the Map component supports it
  * Allow landscape for the map page when gestures work right
- * Add option to prevent sleep while navigating (nemo-keepalive?)
  * Save pagestack to allow returning to geocoding or routing results
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations (strings in QML, Python and JSON
