@@ -2,13 +2,14 @@ Poor Maps 0.11
 ==============
 
  [ ] Add option to prevent display blanking while navigating
+ [ ] Bump Foursquare API version and send m=foursquare
+ [ ] Allow landscape only for keyboard pages?
+ [ ] Think about what kinds of covers to have?
 
 Poor Maps 1.0
 =============
 
- * Add a cover that show narrative when navigating
-   - And think about other covers as well
- * Bump Foursquare API version and send m=foursquare
+ * Add a cover that shows narrative when navigating
  * Add auto-rotate on bearing when the Map component supports it
  * Allow landscape for the map page when gestures work right
  * Save pagestack to allow returning to geocoding or routing results
