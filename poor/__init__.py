@@ -52,7 +52,7 @@ def main():
     """Initialize application."""
     import pyotherside
     conf.read()
-    pyotherside.atexit(conf.write)
     global app
     app = Application()
+    pyotherside.atexit(conf.write)
     pyotherside.atexit(app.history.write)

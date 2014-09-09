@@ -22,7 +22,6 @@ http://project-osrm.org/
 http://github.com/DennisOSRM/Project-OSRM/wiki/Server-api
 """
 
-import json
 import poor
 
 ICONS = { 1: "straight",
@@ -131,7 +130,7 @@ def route(fm, to, params):
     url = URL.format(**locals())
     if checksum is not None:
         url += "&checksum={}".format(checksum)
-    result = json.loads(poor.http.request_url(url, "utf_8"))
+    result = poor.http.request_json(url)
     with poor.util.silent(Exception):
         checksum = str(result["hint_data"]["checksum"])
         hints[fm_real] = str(result["hint_data"]["locations"][0])

@@ -23,7 +23,6 @@ http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy
 """
 
 import copy
-import json
 import poor
 import urllib.parse
 
@@ -57,7 +56,7 @@ def geocode(query, params):
         url += "&bounded=1"
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    results = json.loads(poor.http.request_url(url, "utf_8"))
+    results = poor.http.request_json(url)
     results = [dict(title=parse_title(result),
                     description=parse_description(result),
                     x=float(result["lon"]),

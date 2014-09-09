@@ -21,7 +21,6 @@ Routing using Helsinki Region Transport (HSL) Journey Planner.
 http://developer.reittiopas.fi/pages/en/home.php
 """
 
-import json
 import poor
 
 COLORS = {  "bus": "#007AC9",
@@ -219,7 +218,7 @@ def route(fm, to, params):
     # Date and time parameters are optional.
     for name in set(params) & set(("date", "time", "timetype")):
         url += "&{}={}".format(name, params[name])
-    results = json.loads(poor.http.request_url(url, "utf_8"))
+    results = poor.http.request_json(url)
     routes = [dict(alternative=i+1,
                    length=float(result[0]["length"]),
                    legs=parse_legs(result[0]),

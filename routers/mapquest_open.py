@@ -22,7 +22,6 @@ http://open.mapquestapi.com/directions/
 """
 
 import copy
-import json
 import poor
 import urllib.parse
 
@@ -88,7 +87,7 @@ def route(fm, to, params):
             url += "&avoids={}".format(urllib.parse.quote_plus(avoid))
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    result = json.loads(poor.http.request_url(url, "utf_8"))
+    result = poor.http.request_json(url)
     x, y = poor.util.decode_epl(result["route"]["shape"]["shapePoints"])
     maneuvers = []
     for leg in result["route"]["legs"]:

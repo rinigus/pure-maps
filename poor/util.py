@@ -153,7 +153,7 @@ def format_distance(distance, n=2, units="m"):
     return fstring.format(distance, units)
 
 def format_time(seconds):
-    """Format `time` to format ``# h # min``."""
+    """Format `seconds` to format ``# h # min``."""
     hours = int(seconds/3600)
     minutes = round((seconds % 3600) / 60)
     if hours == 0:

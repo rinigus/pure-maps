@@ -24,7 +24,6 @@ http://developer.foursquare.com/docs/venues/explore
 import copy
 import html
 import itertools
-import json
 import poor
 import urllib.parse
 
@@ -52,7 +51,7 @@ def nearby(query, near, radius, params):
     url = URL.format(CLIENT_ID=CLIENT_ID, **locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    output = json.loads(poor.http.request_url(url, "utf_8"))
+    output = poor.http.request_json(url)
     results = [dict(title=item["venue"]["name"],
                     description=parse_description(item),
                     text=parse_text(item),

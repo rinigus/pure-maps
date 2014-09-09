@@ -18,6 +18,7 @@
 """Managed persistent HTTP connections."""
 
 import http.client
+import json
 import poor
 import sys
 import urllib.parse
@@ -30,10 +31,9 @@ HEADERS = {"Connection": "Keep-Alive",
 
 def _get_connection(url, timeout=None):
     """Return HTTP connection to `url`."""
-    try:
+    with poor.util.silent(KeyError):
         return _connections[_get_key(url)]
-    except KeyError:
-        return _new_connection(url, timeout)
+    return _new_connection(url, timeout)
 
 def _get_connection_class(url):
     """Return HTTP connection class for `url`."""
@@ -60,11 +60,30 @@ def _new_connection(url, timeout=None):
 
 def _remove_connection(url):
     """Close and remove connection to `url` from the pool."""
+    with poor.util.silent(Exception):
+        _connections.pop(_get_key(url)).close()
+
+def request_json(url, encoding="utf_8", retry=1):
+    """
+    Request, parse and return JSON data at `url`.
+
+    Try again `retry` times in some particular cases that imply
+    a connection error.
+    """
+    text = request_url(url, encoding, retry)
+    if not text.strip() and retry > 0:
+        # A blank return is probably an error.
+        _remove_connection(url)
+        text = request_url(url, encoding, retry-1)
     try:
-        httpc = _connections.pop(_get_key(url))
-        httpc.close()
-    except Exception:
-        pass
+        if not text.strip():
+            raise ValueError("Expected JSON, received blank")
+        return json.loads(text)
+    except Exception as error:
+        print("Failed to parse JSON data: {}: {}"
+              .format(error.__class__.__name__, str(error)),
+              file=sys.stderr)
+        raise # Exception
 
 def request_url(url, encoding=None, retry=1):
     """
@@ -96,5 +115,4 @@ def request_url(url, encoding=None, retry=1):
         print("Failed to download data: {}: {}"
               .format(error.__class__.__name__, str(error)),
               file=sys.stderr)
-
         raise # Exception
