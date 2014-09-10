@@ -31,9 +31,6 @@ DEFAULTS = {
     "geocoder": "mapquest_nominatim",
     "gps_update_interval": 1,
     "guide": "foursquare",
-    "route_alpha": 0.5,
-    "route_color": "#0540FF",
-    "route_width": 10,
     "router": "mapquest_open",
     "show_routing_narrative": True,
     "tilesource": "mapquest_open",
@@ -129,7 +126,7 @@ class ConfigurationStore(AttrDict):
         """
         Add configuration `values` for router `name` if missing.
 
-        e.g. calling ``register_router("foo", {"type": "car"})`` will make type
+        e.g. calling ``register_router("foo", {"type": 1})`` will make type
         available as ``poor.conf.routers.foo.type``.
         """
         self._register({"routers": {name: values}})

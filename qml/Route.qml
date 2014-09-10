@@ -46,14 +46,11 @@ Canvas {
     property var    simplePaths: {}
 
     Component.onCompleted: {
-        // Initialize context line appearance properties.
-        py.onReadyChanged.connect(function() {
-            canvas.context.globalAlpha = py.evaluate("poor.conf.route_alpha");
-            canvas.context.lineWidth = py.evaluate("poor.conf.route_width");
-            canvas.context.strokeStyle = py.evaluate("poor.conf.route_color");
-            canvas.context.lineCap = "round";
-            canvas.context.lineJoin = "round";
-        })
+        canvas.context.globalAlpha = 0.5;
+        canvas.context.lineCap = "round";
+        canvas.context.lineJoin = "round";
+        canvas.context.lineWidth = 10;
+        canvas.context.strokeStyle = "#0540FF";
     }
 
     onPaint: {
