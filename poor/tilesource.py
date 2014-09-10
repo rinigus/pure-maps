@@ -128,4 +128,8 @@ class TileSource:
         """Initialize and return a new persistent HTTP connection."""
         host = urllib.parse.urlparse(self.url).netloc
         timeout = poor.conf.download_timeout
-        return http.client.HTTPConnection(host, timeout=timeout)
+        if self.url.startswith("http:"):
+            return http.client.HTTPConnection(host, timeout=timeout)
+        if self.url.startswith("https:"):
+            return http.client.HTTPSConnection(host, timeout=timeout)
+        raise ValueError("Bad URL: {}".format(repr(self.url)))

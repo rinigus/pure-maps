@@ -94,7 +94,7 @@ class Guide:
         except socket.timeout:
             return dict(error=True, message="Connection timed out")
         except Exception:
-            print("Finding nearby places failed:", file=sys.stderr)
+            print("Nearby failed:", file=sys.stderr)
             traceback.print_exc()
             return []
         for result in results:
