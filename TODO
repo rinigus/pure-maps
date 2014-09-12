@@ -2,9 +2,9 @@ Poor Maps 0.11
 ==============
 
  [ ] Add option to prevent display blanking while navigating
- [ ] Bump Foursquare API version and send m=foursquare
  [ ] Allow landscape only for keyboard pages?
  [ ] Think about what kinds of covers to have?
+ [ ] Reconsider viewing a single nearby place
 
 Poor Maps 1.0
 =============
