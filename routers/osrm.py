@@ -143,4 +143,4 @@ def route(fm, to, params):
                       duration=float(maneuver[4]),
                       ) for maneuver in result["route_instructions"]]
 
-    return {"x": x, "y": y, "maneuvers": maneuvers}
+    return dict(x=x, y=y, maneuvers=maneuvers)

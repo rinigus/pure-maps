@@ -29,6 +29,7 @@ Page {
     property int timeWidth: 0
     property int lineWidth: 0
     SilicaListView {
+        id: listView
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
@@ -144,7 +145,7 @@ Page {
             }
         }
         header: PageHeader { title: page.title }
-        model: ListModel { id: listModel }
+        model: ListModel {}
         VerticalScrollDecorator {}
     }
     Label {
@@ -154,7 +155,6 @@ Page {
         font.pixelSize: Theme.fontSizeLarge
         height: Theme.itemSizeLarge
         horizontalAlignment: Text.AlignHCenter
-        text: "Searching"
         verticalAlignment: Text.AlignVCenter
         visible: page.loading || text != "Searching"
         width: parent.width
@@ -168,13 +168,12 @@ Page {
     }
     onStatusChanged: {
         if (page.status == PageStatus.Activating) {
+            listView.model.clear();
             page.loading = true;
+            page.title = ""
             busyLabel.text = "Searching"
         } else if (page.status == PageStatus.Active) {
             page.populate();
-        } else if (page.status == PageStatus.Inactive) {
-            listModel.clear();
-            page.title = ""
         }
     }
     function formatLength(length) {
@@ -186,14 +185,14 @@ Page {
         var routePage = app.pageStack.previousPage();
         var args = [routePage.from, routePage.to, routePage.params];
         py.call("poor.app.router.route", args, function(results) {
-            if (results.error && results.message) {
+            if (route && results.error && results.message) {
                 page.title = "";
                 busyLabel.text = results.message;
             } else if (results && results.length > 0) {
                 page.title = "Results";
                 page.results = results;
                 for (var i = 0; i < results.length; i++)
-                    listModel.append(results[i]);
+                    listView.model.append(results[i]);
             } else {
                 page.title = "";
                 busyLabel.text = "No results";

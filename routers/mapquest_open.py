@@ -99,7 +99,7 @@ def route(fm, to, params):
                       duration=float(maneuver["time"]),
                       ) for maneuver in maneuvers]
 
-    route = {"x": x, "y": y, "maneuvers": maneuvers}
+    route = dict(x=x, y=y, maneuvers=maneuvers)
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route

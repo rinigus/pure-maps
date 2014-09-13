@@ -30,7 +30,6 @@ Page {
         font.pixelSize: Theme.fontSizeLarge
         height: Theme.itemSizeLarge
         horizontalAlignment: Text.AlignHCenter
-        text: "Searching"
         verticalAlignment: Text.AlignVCenter
         visible: page.loading || text != "Searching"
         width: parent.width
@@ -50,10 +49,11 @@ Page {
         }
     }
     function findRoute() {
+        // Load routing results from the Python backend.
         var routePage = app.pageStack.previousPage();
         var args = [routePage.from, routePage.to];
         py.call("poor.app.router.route", args, function(route) {
-            if (route.error && route.message) {
+            if (route && route.error && route.message) {
                 busyLabel.text = route.message;
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {

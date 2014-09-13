@@ -135,10 +135,9 @@ Column {
                     var fun = vehicleSwitch.checked ?
                         "poor.conf.set_add" : "poor.conf.set_remove";
                     py.call_sync(fun, [repeater.path, repeater.keys[index]]);
-                    if (repeater.keys[index] == "bus") {
+                    if (repeater.keys[index] == "bus")
                         // Include service lines when toggling bus use.
                         py.call_sync(fun, [repeater.path, "service"]);
-                    }
                 }
             }
         }
