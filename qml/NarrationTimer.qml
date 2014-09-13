@@ -23,6 +23,7 @@ Timer {
     id: timer
     interval: 3000
     repeat: true
+    running: app.running && map.hasRoute
     triggeredOnStart: true
     property var coordinatePrev: QtPositioning.coordinate(0, 0)
     onRunningChanged: {
@@ -33,7 +34,7 @@ Timer {
     onTriggered: {
         // Query maneuver narrative from Python and update status.
         if (!py.ready) return;
-        if (!map.hasRoute()) return;
+        if (!map.hasRoute) return;
         if (map.position.coordinate.distanceTo(timer.coordinatePrev) < 10) return;
         var x = map.position.coordinate.longitude;
         var y = map.position.coordinate.latitude;

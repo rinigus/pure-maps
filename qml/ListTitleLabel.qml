@@ -26,7 +26,6 @@ Label {
     anchors.rightMargin: Theme.paddingLarge
     color: Theme.highlightColor
     font.pixelSize: Theme.fontSizeSmall
-    height: Theme.itemSizeExtraSmall
     horizontalAlignment: Text.AlignRight
     truncationMode: TruncationMode.Fade
     verticalAlignment: Text.AlignVCenter

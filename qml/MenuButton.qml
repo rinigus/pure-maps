@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "."
 
 IconButton {
     anchors.bottom: parent.bottom
@@ -26,5 +27,5 @@ IconButton {
     icon.source: "icons/menu.png"
     width: icon.width
     z: 1000
-    onClicked: app.showMenu();
+    onClicked: app.pageStack.push("MenuPage.qml");
 }

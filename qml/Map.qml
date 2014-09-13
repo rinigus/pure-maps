@@ -34,12 +34,10 @@ Map {
     property bool autoCenter: false
     property bool changed: true
     property var  direction: gps.direction
-    property var  gps: PositionSource {}
+    property bool hasRoute: route.path.x.length > 0
     property real heightCoords: 0
     property var  maneuvers: []
-    property var  mapTimer: mapTimer
     property var  menuButton: menuButton
-    property var  narrationTimer: narrationTimer
     property var  pois: []
     property var  position: gps.position
     property var  positionMarker: PositionMarker {}
@@ -54,9 +52,9 @@ Map {
     property real zoomLevelPrev: 8
 
     AttributionText { id: attribution }
-    MapTimer { id: mapTimer }
+    MapTimer {}
     MenuButton { id: menuButton }
-    NarrationTimer { id: narrationTimer }
+    NarrationTimer {}
     Route { id: route }
     ScaleBar { id: scaleBar }
     StatusArea { id: statusArea }
@@ -74,7 +72,6 @@ Map {
             map.loadRoute();
             map.loadManeuvers();
         });
-        map.start();
         map.zoomLevelPrev = map.zoomLevel;
     }
 
@@ -187,9 +184,7 @@ Map {
         map.route.mode = route.mode || "car";
         map.route.redraw();
         var args = [route.x, route.y];
-        py.call("poor.app.narrative.set_route", args, function() {
-            map.showNarrative && map.narrationTimer.start();
-        });
+        py.call("poor.app.narrative.set_route", args, null);
         var args = [route.mode || "car"];
         py.call("poor.app.narrative.set_mode", args, null);
         map.saveRoute();
@@ -223,7 +218,7 @@ Map {
     }
 
     function clearPois() {
-        // Remove all point marker from map.
+        // Remove all point markers from map.
         for (var i = 0; i < map.pois.length; i++)
             map.removeMapItem(map.pois[i]);
         map.pois = [];
@@ -236,7 +231,6 @@ Map {
             map.removeMapItem(map.maneuvers[i]);
         map.maneuvers = [];
         map.route.clear();
-        map.narrationTimer.stop();
         py.call_sync("poor.app.narrative.unset", []);
         map.setRoutingStatus(null);
         map.saveRoute();
@@ -286,7 +280,7 @@ Map {
     function fitViewToRoute() {
         // Set center and zoom so that the whole route is visible.
         // For performance reasons, include only a subset of points.
-        if (!map.hasRoute()) return;
+        if (!map.hasRoute) return;
         var coords = [];
         for (var i = 0; i < map.route.path.x.length; i = i+10) {
             var x = map.route.path.x[i];
@@ -311,11 +305,6 @@ Map {
         return [map.position.coordinate.longitude,
                 map.position.coordinate.latitude];
 
-    }
-
-    function hasRoute() {
-        // Return true if a route is visible.
-        return map.route.path.x.length > 0;
     }
 
     function loadManeuvers() {
@@ -468,26 +457,6 @@ Map {
 
             break;
         }
-    }
-
-    function start() {
-        // Start periodic tile and position updates.
-        map.gps.start();
-        map.mapTimer.start();
-        if (map.hasRoute() && map.showNarrative)
-            map.narrationTimer.start();
-    }
-
-    function stop() {
-        // Stop periodic tile and position updates.
-        // Write conf, since in case of crash atexit is not run.
-        if (py.ready) {
-            py.call_sync("poor.conf.write", []);
-            py.call_sync("poor.app.history.write", []);
-        }
-        map.gps.stop();
-        map.mapTimer.stop();
-        map.narrationTimer.stop();
     }
 
     function updateTiles() {

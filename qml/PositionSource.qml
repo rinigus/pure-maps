@@ -21,11 +21,11 @@ import QtPositioning 5.0
 
 PositionSource {
     id: gps
-    active: false
+    active: app.running
     updateInterval: 1000
-    property var coordinatePrev
-    property var direction
-    property var timePrev
+    property var coordinatePrev: undefined
+    property var direction: undefined
+    property var timePrev: -1
     Component.onCompleted: {
         py.onReadyChanged.connect(function() {
             gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");

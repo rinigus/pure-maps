@@ -31,15 +31,18 @@ ApplicationWindow {
         allowedOrientations: Orientation.Portrait
         Map { id: map }
     }
+    // TODO: Add cover.status when we have a cover.
+    property bool running: applicationActive
+    PositionSource { id: gps }
     Python { id: py }
     Component.onCompleted: {
         py.setHandler("render-tile", map.renderTile);
         py.setHandler("show-tile", map.showTile);
     }
     onApplicationActiveChanged: {
-        applicationActive ? map.start() : map.stop();
-    }
-    function showMenu() {
-        app.pageStack.push("MenuPage.qml");
+        if (!app.applicationActive && py.ready) {
+            py.call_sync("poor.conf.write", []);
+            py.call_sync("poor.app.history.write", []);
+        }
     }
 }

@@ -93,7 +93,7 @@ Page {
                     color: findNearbyItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Find nearby"
+                    text: "List nearby venues"
                 }
                 onClicked: {
                     app.pageStack.push("NearbyPage.qml");
@@ -117,7 +117,7 @@ Page {
                     color: findCurrentPositionItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Find current position"
+                    text: "Center on current position"
                 }
                 onClicked: {
                     map.centerOnPosition();
@@ -194,12 +194,7 @@ Page {
                                  ["show_routing_narrative",
                                   map.showNarrative]);
 
-                    if (map.showNarrative) {
-                        map.hasRoute() && map.narrationTimer.start();
-                    } else {
-                        map.narrationTimer.stop();
-                        map.setRoutingStatus(null);
-                    }
+                    map.showNarrative || map.setRoutingStatus(null);
                 }
             }
             ListItem {

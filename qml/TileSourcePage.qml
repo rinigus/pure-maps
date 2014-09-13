@@ -23,6 +23,7 @@ import "."
 Page {
     allowedOrientations: Orientation.All
     SilicaListView {
+        id: listView
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
@@ -53,13 +54,13 @@ Page {
             }
         }
         header: PageHeader { title: "Map Tiles" }
-        model: ListModel { id: listModel }
+        model: ListModel {}
         VerticalScrollDecorator {}
         Component.onCompleted: {
             // Load tilesource model entries from the Python backend.
             py.call("poor.util.get_tilesources", [], function(tilesources) {
                 for (var i = 0; i < tilesources.length; i++)
-                    listModel.append(tilesources[i]);
+                    listView.model.append(tilesources[i]);
             });
         }
     }

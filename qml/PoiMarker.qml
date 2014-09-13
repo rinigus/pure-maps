@@ -153,7 +153,7 @@ MapQuickItem {
         }
     }
     z: 400
-    property bool   labelVisible: false
+    property bool labelVisible: false
     property string link: ""
     property string text: ""
     property string title: ""

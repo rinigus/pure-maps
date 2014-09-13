@@ -28,8 +28,8 @@ MapQuickItem {
         source: maneuver.passive ? "icons/node.png" : "icons/maneuver.png"
     }
     z: 201
-    property real   duration: 0
+    property real duration: 0
     property string icon: "alert"
     property string narrative: ""
-    property bool   passive: false
+    property bool passive: false
 }
