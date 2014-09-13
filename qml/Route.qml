@@ -37,26 +37,19 @@ Canvas {
     renderStrategy: Canvas.Cooperative
     width: parent.width
     z: 200
-
     property string attribution: ""
+    property bool initDone: false
     property string mode: "car"
-    property var    paintX: 0
-    property var    paintY: 0
-    property var    path: {"x": [], "y": []}
-    property var    simplePaths: {}
-
-    Component.onCompleted: {
-        canvas.context.globalAlpha = 0.5;
-        canvas.context.lineCap = "round";
-        canvas.context.lineJoin = "round";
-        canvas.context.lineWidth = 10;
-        canvas.context.strokeStyle = "#0540FF";
-    }
+    property var paintX: 0
+    property var paintY: 0
+    property var path: {"x": [], "y": []}
+    property var simplePaths: {}
 
     onPaint: {
         // Clear the whole canvas and redraw entire route.
         // This gets called continuously as the map is panned!
         if (canvas.path.x.length == 0) return;
+        canvas.initDone || canvas.initContextProperties();
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.floor(map.zoomLevel);
         var key = zoom.toString();
@@ -121,6 +114,16 @@ Canvas {
         canvas.simplePaths = {};
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         canvas.requestPaint();
+    }
+
+    function initContextProperties() {
+        // Initialize context paint properties.
+        canvas.context.globalAlpha = 0.5;
+        canvas.context.lineCap = "round";
+        canvas.context.lineJoin = "round";
+        canvas.context.lineWidth = 10;
+        canvas.context.strokeStyle = "#0540FF";
+        canvas.initDone = true;
     }
 
     function redraw() {
