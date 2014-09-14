@@ -2,15 +2,15 @@ Poor Maps 0.11
 ==============
 
  [X] Add an active mini map cover
- [X] Add option to prevent display blanking always, when navigating
-     or never (see "Preferences" from the main menu page)
+ [X] Add option to prevent display blanking either always,
+     when navigating or never (see "Preferences" from the main menu)
  [X] Allow landscape only for keyboard pages
- [ ] Reconsider viewing a single nearby place
  [X] Update Hike & Bike Map tile URL
 
 Poor Maps 1.0
 =============
 
+ * Reconsider how to view and browse nearby results
  * Add a cover that shows narrative when navigating
  * Add a no-download mode?
  * Add auto-rotate on bearing when the Map component supports it
