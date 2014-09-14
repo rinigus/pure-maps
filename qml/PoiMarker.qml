@@ -114,7 +114,7 @@ MapQuickItem {
                     color: "#BBFFFFFF"
                     height: linkLabel.height + Theme.paddingMedium
                     radius: bubble.radius/2
-                    visible: item.link && item.link != ""
+                    visible: item.link && item.link.length > 0
                     width: visible ? linkLabel.width + 1.5*Theme.paddingMedium : 0
                     Label {
                         id: linkLabel

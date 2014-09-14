@@ -25,6 +25,7 @@ Dialog {
     allowedOrientations: Orientation.All
     property string pid: py.evaluate("poor.app.geocoder.id")
     SilicaListView {
+        id: listView
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
@@ -62,13 +63,13 @@ Dialog {
             }
         }
         header: DialogHeader {}
-        model: ListModel { id: listModel }
+        model: ListModel {}
         VerticalScrollDecorator {}
         Component.onCompleted: {
             // Load geocoder model entries from the Python backend.
             py.call("poor.util.get_geocoders", [], function(geocoders) {
                 for (var i = 0; i < geocoders.length; i++)
-                    listModel.append(geocoders[i]);
+                    listView.model.append(geocoders[i]);
             });
         }
     }

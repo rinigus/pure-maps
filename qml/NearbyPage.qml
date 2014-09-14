@@ -23,7 +23,7 @@ import "."
 Page {
     id: page
     allowedOrientations: Orientation.All
-    canNavigateForward: page.near && page.query != ""
+    canNavigateForward: page.near && page.query.length > 0
     property var near: null
     property string nearText: ""
     property string query: ""
@@ -37,7 +37,7 @@ Page {
             id: column
             anchors.fill: parent
             property var settings: null
-            PageHeader { title: "Find Nearby" }
+            PageHeader { title: "Nearby Venues" }
             ValueButton {
                 id: usingButton
                 label: "Using"

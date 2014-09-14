@@ -37,15 +37,15 @@ Page {
                              narrativeLabel.implicitHeight +
                              lengthLabel.implicitHeight)
 
-                horizontalAlignment: Image.AlignHCenter
+                horizontalAlignment: Image.AlignRight
                 source: "icons/" + model.icon + ".png"
                 verticalAlignment: Image.AlignVCenter
-                width: implicitWidth + 2*Theme.paddingMedium
+                width: implicitWidth + Theme.paddingLarge
             }
             Label {
                 id: narrativeLabel
                 anchors.left: iconImage.right
-                anchors.leftMargin: Theme.paddingMedium
+                anchors.leftMargin: Theme.paddingLarge
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingLarge
                 color: model.active || listItem.highlighted ?
@@ -61,7 +61,7 @@ Page {
             Label {
                 id: lengthLabel
                 anchors.left: iconImage.right
-                anchors.leftMargin: Theme.paddingMedium
+                anchors.leftMargin: Theme.paddingLarge
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingLarge
                 anchors.top: narrativeLabel.bottom
@@ -83,7 +83,7 @@ Page {
             }
         }
         header: PageHeader { title: "Maneuvers" }
-        model: ListModel { id: listModel }
+        model: ListModel {}
         VerticalScrollDecorator {}
     }
     Component.onCompleted: {
@@ -92,7 +92,7 @@ Page {
         py.call("poor.app.narrative.get_maneuvers", args, function(maneuvers) {
             var activeIndex = -1;
             for (var i = 0; i < maneuvers.length; i++) {
-                listModel.append(maneuvers[i]);
+                listView.model.append(maneuvers[i]);
                 if (maneuvers[i].active) activeIndex = i;
             }
             if (activeIndex >= 0)

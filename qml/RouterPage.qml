@@ -25,6 +25,7 @@ Dialog {
     allowedOrientations: Orientation.All
     property string pid: py.evaluate("poor.app.router.id")
     SilicaListView {
+        id: listView
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
@@ -62,13 +63,13 @@ Dialog {
             }
         }
         header: DialogHeader {}
-        model: ListModel { id: listModel }
+        model: ListModel {}
         VerticalScrollDecorator {}
         Component.onCompleted: {
             // Load router model entries from the Python backend.
             py.call("poor.util.get_routers", [], function(routers) {
                 for (var i = 0; i < routers.length; i++)
-                    listModel.append(routers[i]);
+                    listView.model.append(routers[i]);
             });
         }
     }

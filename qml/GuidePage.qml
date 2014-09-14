@@ -25,6 +25,7 @@ Dialog {
     allowedOrientations: Orientation.All
     property string pid: py.evaluate("poor.app.guide.id")
     SilicaListView {
+        id: listView
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
@@ -62,13 +63,13 @@ Dialog {
             }
         }
         header: DialogHeader {}
-        model: ListModel { id: listModel }
+        model: ListModel {}
         VerticalScrollDecorator {}
         Component.onCompleted: {
             // Load guide model entries from the Python backend.
             py.call("poor.util.get_guides", [], function(guides) {
                 for (var i = 0; i < guides.length; i++)
-                    listModel.append(guides[i]);
+                    listView.model.append(guides[i]);
             });
         }
     }

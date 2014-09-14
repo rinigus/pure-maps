@@ -128,8 +128,9 @@ Page {
         page.fromText = "Current position";
     }
     onStatusChanged: {
-        if (page.status != PageStatus.Active) return;
-        var uri = py.evaluate("poor.app.router.results_qml_uri");
-        app.pageStack.pushAttached(uri);
+        if (page.status == PageStatus.Active) {
+            var uri = py.evaluate("poor.app.router.results_qml_uri");
+            app.pageStack.pushAttached(uri);
+        }
     }
 }

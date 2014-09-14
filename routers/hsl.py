@@ -22,6 +22,7 @@ http://developer.reittiopas.fi/pages/en/home.php
 """
 
 import poor
+import re
 
 COLORS = {  "bus": "#007AC9",
           "ferry": "#00B9E4",
@@ -98,8 +99,8 @@ def parse_legs(result):
         names = [loc["name"] for loc in leg["locs"]]
         names = list(filter(None, names))
         with poor.util.silent(IndexError):
-            item["dep_name"] = names[0]
-            item["arr_name"] = names[-1]
+            item["dep_name"] = parse_name(names[0])
+            item["arr_name"] = parse_name(names[-1])
         # Add stops both used and passed along the leg.
         stops = [loc for loc in leg["locs"] if "code" in loc]
         item["stops_x"] = [float(stop["coord"]["x"]) for stop in stops]
@@ -171,6 +172,11 @@ def parse_maneuvers(route):
         maneuver["x"] = route["x"][min_node]
         maneuver["y"] = route["y"][min_node]
     return maneuvers
+
+def parse_name(name):
+    """Parse human readable stop name."""
+    # Fix inconsistent naming of stops at metro stations.
+    return re.sub(r"(\S)\(", r"\1 (", name)
 
 def parse_time(code):
     """Parse human readable time string from time code."""

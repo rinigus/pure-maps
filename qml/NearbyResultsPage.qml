@@ -26,6 +26,7 @@ Page {
     property bool loading: true
     property string title: ""
     SilicaListView {
+        id: listView
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
@@ -60,9 +61,9 @@ Page {
             }
             onClicked: {
                 var pois = [];
-                for (var i = 0; i < listModel.count; i++) {
+                for (var i = 0; i < listView.model.count; i++) {
                     if (i == model.index) continue
-                    var item = listModel.get(i);
+                    var item = listView.model.get(i);
                     pois.push({"x": item.x,
                                "y": item.y,
                                "title": item.title,
@@ -86,15 +87,15 @@ Page {
             }
         }
         header: PageHeader { title: page.title }
-        model: ListModel { id: listModel }
+        model: ListModel {}
         PullDownMenu {
-            visible: listModel.count > 1
+            visible: listView.model.count > 1
             MenuItem {
                 text: "Show all"
                 onClicked: {
                     var pois = [];
-                    for (var i = 0; i < listModel.count; i++) {
-                        var item = listModel.get(i);
+                    for (var i = 0; i < listView.model.count; i++) {
+                        var item = listView.model.get(i);
                         pois.push({"x": item.x,
                                    "y": item.y,
                                    "title": item.title,
@@ -118,7 +119,6 @@ Page {
         font.pixelSize: Theme.fontSizeLarge
         height: Theme.itemSizeLarge
         horizontalAlignment: Text.AlignHCenter
-        text: "Searching"
         verticalAlignment: Text.AlignVCenter
         visible: page.loading || text != "Searching"
         width: parent.width
@@ -132,7 +132,9 @@ Page {
     }
     onStatusChanged: {
         if (page.status == PageStatus.Activating) {
+            listView.model.clear();
             page.loading = true;
+            page.title = ""
             busyLabel.text = "Searching"
         } else if (page.status == PageStatus.Active) {
             var nearbyPage = app.pageStack.previousPage();
@@ -140,24 +142,21 @@ Page {
                           nearbyPage.near,
                           nearbyPage.radius);
 
-        } else if (page.status == PageStatus.Inactive) {
-            listModel.clear();
-            page.title = ""
         }
     }
     function populate(query, near, radius) {
         // Load place results from the Python backend.
-        listModel.clear();
+        listView.model.clear();
         var args = [query, near, radius];
         py.call("poor.app.guide.nearby", args, function(results) {
-            if (results.error && results.message) {
+            if (results && results.error && results.message) {
                 page.title = "";
                 busyLabel.text = results.message;
             } else if (results.length > 0) {
                 page.title = results.length == 1 ?
                     "1 Result" : results.length + " Results";
                 for (var i = 0; i < results.length; i++)
-                    listModel.append(results[i]);
+                    listView.model.append(results[i]);
             } else {
                 page.title = "";
                 busyLabel.text = "No results";

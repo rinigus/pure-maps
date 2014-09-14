@@ -34,7 +34,7 @@ Map {
     property bool autoCenter: false
     property bool changed: true
     property var  direction: gps.direction
-    property bool hasRoute: route.path.x.length > 0
+    property bool hasRoute: false
     property real heightCoords: 0
     property var  maneuvers: []
     property var  menuButton: menuButton
@@ -183,10 +183,12 @@ Map {
         map.route.attribution = route.attribution || ""
         map.route.mode = route.mode || "car";
         map.route.redraw();
-        var args = [route.x, route.y];
-        py.call("poor.app.narrative.set_route", args, null);
         var args = [route.mode || "car"];
-        py.call("poor.app.narrative.set_mode", args, null);
+        py.call_sync("poor.app.narrative.set_mode", args);
+        var args = [route.x, route.y];
+        py.call("poor.app.narrative.set_route", args, function() {
+            map.hasRoute = true;
+        });
         map.saveRoute();
         map.saveManeuvers();
     }
@@ -235,6 +237,7 @@ Map {
         map.setRoutingStatus(null);
         map.saveRoute();
         map.saveManeuvers();
+        map.hasRoute = false;
     }
 
     function fitViewtoCoordinates(coords) {
@@ -280,7 +283,7 @@ Map {
     function fitViewToRoute() {
         // Set center and zoom so that the whole route is visible.
         // For performance reasons, include only a subset of points.
-        if (!map.hasRoute) return;
+        if (map.route.path.x.length == 0) return;
         var coords = [];
         for (var i = 0; i < map.route.path.x.length; i = i+10) {
             var x = map.route.path.x[i];

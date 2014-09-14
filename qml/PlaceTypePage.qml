@@ -43,12 +43,13 @@ Dialog {
                 height: Theme.itemSizeSmall
                 text: model.type
             }
-            Component {
+            ContextMenu {
                 id: contextMenu
-                ContextMenu {
-                    MenuItem {
-                        text: "Remove"
-                        onClicked: listItem.remove();
+                MenuItem {
+                    text: "Remove"
+                    onClicked: {
+                        py.call_sync("poor.app.history.remove_place_type", [model.type]);
+                        listView.model.remove(index);
                     }
                 }
             }
@@ -56,51 +57,47 @@ Dialog {
                 dialog.query = model.type;
                 dialog.accept();
             }
-            function remove() {
-                py.call_sync("poor.app.history.remove_place_type", [model.type]);
-                listView.model.remove(index);
-            }
         }
         header: Column {
             width: parent.width
             DialogHeader {}
             SearchField {
                 id: searchField
-                placeholderText: "Type of place"
+                placeholderText: "Type of venue"
                 width: parent.width
                 EnterKey.enabled: searchField.text.length > 0
                 EnterKey.onClicked: dialog.accept();
                 onTextChanged: {
                     dialog.query = searchField.text;
-                    listModel.update();
+                    page.populate();
                 }
             }
             Component.onCompleted: listView.searchField = searchField;
         }
-        model: ListModel {
-            id: listModel
-            function update() {
-                listModel.clear();
-                var query = listView.searchField.text.toLowerCase();
-                var nstart = 0;
-                for (var i = 0; i < dialog.history.length; i++) {
-                    var historyItem = dialog.history[i].toLowerCase()
-                    if (query != "" && historyItem.indexOf(query) == 0) {
-                        listModel.insert(nstart++, {"type": dialog.history[i]});
-                        if (listModel.count >= 100) break;
-                    } else if (query == "" || historyItem.indexOf(query) > 0) {
-                        listModel.append({"type": dialog.history[i]});
-                        if (listModel.count >= 100) break;
-                    }
-                }
-            }
-        }
+        model: ListModel {}
         property var searchField
         VerticalScrollDecorator {}
     }
     onStatusChanged: {
-        if (dialog.status != PageStatus.Activating) return;
-        dialog.history = py.evaluate("poor.app.history.place_types");
-        listView.model.update();
+        if (dialog.status == PageStatus.Activating) {
+            dialog.history = py.evaluate("poor.app.history.place_types");
+            dialog.populate();
+        }
+    }
+    function populate() {
+        // Load search history items from the Python backend.
+        listView.model.clear();
+        var query = listView.searchField.text.toLowerCase();
+        var nstart = 0;
+        for (var i = 0; i < dialog.history.length; i++) {
+            var historyItem = dialog.history[i].toLowerCase()
+            if (query.length > 0 && historyItem.indexOf(query) == 0) {
+                listView.model.insert(nstart++, {"type": dialog.history[i]});
+                if (listView.model.count >= 100) break;
+            } else if (query == "" || historyItem.indexOf(query) > 0) {
+                listView.model.append({"type": dialog.history[i]});
+                if (listView.model.count >= 100) break;
+            }
+        }
     }
 }
