@@ -22,7 +22,7 @@ import "."
 
 Page {
     id: page
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
     canNavigateForward: page.near && page.query.length > 0
     property var near: null
     property string nearText: ""

@@ -22,7 +22,7 @@ import "."
 
 Page {
     id: page
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
     property bool loading: true
     property string title: ""
     SilicaListView {

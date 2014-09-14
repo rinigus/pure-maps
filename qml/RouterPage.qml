@@ -22,7 +22,7 @@ import "."
 
 Dialog {
     id: dialog
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
     property string pid: py.evaluate("poor.app.router.id")
     SilicaListView {
         id: listView

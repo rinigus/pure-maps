@@ -21,7 +21,7 @@ import Sailfish.Silica 1.0
 import "."
 
 Page {
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
     SilicaListView {
         id: listView
         anchors.fill: parent

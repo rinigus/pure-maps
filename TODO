@@ -3,7 +3,7 @@ Poor Maps 0.11
 
  [X] Add an active mini map cover
  [ ] Add option to prevent display blanking while navigating
- [ ] Allow landscape only for keyboard pages?
+ [X] Allow landscape only for keyboard pages
  [ ] Reconsider viewing a single nearby place
  [X] Update Hike & Bike Map tile URL
 
