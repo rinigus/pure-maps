@@ -23,7 +23,7 @@ import "."
 ApplicationWindow {
     id: app
     allowedOrientations: Orientation.All
-    cover: undefined
+    cover: Cover {}
     initialPage: Page {
         id: mapPage
         // XXX: Map gestures don't work right in landscape.
@@ -31,8 +31,7 @@ ApplicationWindow {
         allowedOrientations: Orientation.Portrait
         Map { id: map }
     }
-    // TODO: Add cover.status when we have a cover.
-    property bool running: applicationActive
+    property bool running: applicationActive || cover.status == Cover.Active
     PositionSource { id: gps }
     Python { id: py }
     Component.onCompleted: {
