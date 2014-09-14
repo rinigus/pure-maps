@@ -32,6 +32,7 @@ Page {
             PageHeader { title: "Preferences" }
             ComboBox {
                 id: sleepComboBox
+                description: "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences."
                 label: "Prevent sleep"
                 menu: ContextMenu {
                     MenuItem { text: "Never" }
