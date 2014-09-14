@@ -30,7 +30,6 @@ Page {
             id: column
             anchors.fill: parent
             PageHeader { title: "Poor Maps" }
-            ListTitleLabel { text: "Actions" }
             ListItem {
                 id: findPlaceItem
                 contentHeight: Theme.itemSizeSmall
