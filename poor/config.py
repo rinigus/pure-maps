@@ -31,6 +31,8 @@ DEFAULTS = {
     "geocoder": "mapquest_nominatim",
     "gps_update_interval": 1,
     "guide": "foursquare",
+    # 'always', 'navigating' or 'never'.
+    "keep_alive": "navigating",
     "router": "mapquest_open",
     "show_routing_narrative": True,
     "tilesource": "mapquest_open",

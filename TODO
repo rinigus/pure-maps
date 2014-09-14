@@ -2,7 +2,8 @@ Poor Maps 0.11
 ==============
 
  [X] Add an active mini map cover
- [ ] Add option to prevent display blanking while navigating
+ [X] Add option to prevent display blanking always, when navigating
+     or never (see "Preferences" from the main menu page)
  [X] Allow landscape only for keyboard pages
  [ ] Reconsider viewing a single nearby place
  [X] Update Hike & Bike Map tile URL

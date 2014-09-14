@@ -10,6 +10,7 @@ URL: http://github.com/otsaloma/poor-maps
 Source: %{name}-%{version}.tar.xz
 BuildArch: noarch
 BuildRequires: make
+Requires: libkeepalive
 Requires: libsailfishapp-launcher
 Requires: pyotherside-qml-plugin-python3-qt5 >= 1.2
 Requires: python3-base

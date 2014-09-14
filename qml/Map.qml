@@ -73,6 +73,7 @@ Map {
             map.loadRoute();
             map.loadManeuvers();
             map.ready = true;
+            app.updateKeepAlive();
         });
         map.zoomLevelPrev = map.zoomLevel;
     }
@@ -100,6 +101,11 @@ Map {
         // Ensure that tiles are updated after panning.
         // This gets fired ridiculously often, so keep simple.
         map.changed = true;
+    }
+
+    onHasRouteChanged: {
+        // Update keep-alive in case set to 'navigating'.
+        app.updateKeepAlive();
     }
 
     onPositionChanged: {

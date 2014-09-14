@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import org.nemomobile.keepalive 1.0
 import "."
 
 ApplicationWindow {
@@ -43,5 +44,12 @@ ApplicationWindow {
             py.call_sync("poor.conf.write", []);
             py.call_sync("poor.app.history.write", []);
         }
+        app.updateKeepAlive();
+    }
+    function updateKeepAlive() {
+        // Update state of display blanking prevention, i.e. keep-alive.
+        var prevent = py.evaluate("poor.conf.keep_alive");
+        DisplayBlanking.preventBlanking = app.applicationActive && (
+            prevent == "always" || (map.hasRoute && prevent == "navigating"));
     }
 }
