@@ -23,6 +23,7 @@ MapQuickItem {
     anchorPoint.x: movingImage.width/2
     anchorPoint.y: movingImage.height/2
     coordinate: map.position.coordinate
+    visible: map.ready
     sourceItem: Item {
         Image {
             id: movingImage

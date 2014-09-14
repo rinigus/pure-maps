@@ -41,6 +41,7 @@ Map {
     property var  pois: []
     property var  position: gps.position
     property var  positionMarker: PositionMarker {}
+    property bool ready: false
     property var  route: route
     property var  scaleBar: scaleBar
     property real scaleX: 0
@@ -71,6 +72,7 @@ Map {
             map.loadPois();
             map.loadRoute();
             map.loadManeuvers();
+            map.ready = true;
         });
         map.zoomLevelPrev = map.zoomLevel;
     }
