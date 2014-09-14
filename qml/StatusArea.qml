@@ -82,6 +82,7 @@ Rectangle {
         }
         Label {
             id: destLabel
+            anchors.baseline: manLabel.baseline
             anchors.right: parent.right
             anchors.rightMargin: Theme.paddingMedium
             color: "white"
@@ -90,8 +91,6 @@ Rectangle {
             text: statusArea.destTime.length > 0 ?
                 statusArea.destDist + "  ·  " + statusArea.destTime :
                 statusArea.destDist
-            verticalAlignment: statusArea.notify ?
-                Text.AlignVCenter : Text.AlignBottom
         }
         Label {
             id: narrativeLabel
