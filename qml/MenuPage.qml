@@ -92,7 +92,7 @@ Page {
                     color: findNearbyItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "List nearby venues"
+                    text: "Explore nearby venues"
                 }
                 onClicked: {
                     app.pageStack.push("NearbyPage.qml");
@@ -107,7 +107,7 @@ Page {
                     fillMode: Image.Pad
                     height: Theme.itemSizeSmall
                     horizontalAlignment: Image.AlignRight
-                    source: "image://theme/icon-m-gps"
+                    source: "icons/center-position.png"
                     width: implicitWidth + Theme.paddingLarge
                 }
                 ListItemLabel {

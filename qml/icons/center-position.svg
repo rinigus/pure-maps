@@ -14,7 +14,7 @@
    id="svg1901"
    sodipodi:version="0.32"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="nearby.svg"
+   sodipodi:docname="center-position.svg"
    version="1.1"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -58,7 +58,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -67,17 +67,25 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-988.3622)">
-    <g
-       transform="matrix(1.1391173,0,0,-1.1364601,2.3829673,2181.1204)"
-       id="layer1-9"
-       inkscape:label="Taso 1"
-       style="fill:none;stroke:#ffffff;stroke-width:1.84568667;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none">
-      <path
-         sodipodi:nodetypes="scsss"
-         inkscape:connector-curvature="0"
-         id="path10139-7"
-         d="m 10.963385,1026.3684 c 0,-8.301 6.036615,-13.0062 15.036615,-25.0062 9,12 15.036585,16.7052 15.036585,25.0062 0,8.3012 -6.7321,15.0304 -15.0366,15.0304 -8.3045,0 -15.0366,-6.7292 -15.0366,-15.0304 z"
-         style="fill:none;stroke:#ffffff;stroke-width:1.84568667;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-    </g>
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#ffffff;stroke-width:1.63084795;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.50196081000000004;stroke-dasharray:none"
+       id="path10139"
+       sodipodi:cx="-1"
+       sodipodi:cy="16"
+       sodipodi:rx="15"
+       sodipodi:ry="17"
+       d="m 14,16 c 0,9.388841 -6.7157288,17 -15,17 -8.2842712,0 -15,-7.611159 -15,-17 0,-9.3888407 6.7157288,-17 15,-17 8.2842712,0 15,7.6111593 15,17 z"
+       transform="matrix(1.5666667,0,0,1.3823529,33.566667,998.24455)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#ffffff;stroke-width:4.47124144;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path10139-4-0"
+       sodipodi:cx="-1"
+       sodipodi:cy="16"
+       sodipodi:rx="15"
+       sodipodi:ry="17"
+       d="m 14,16 c 0,9.388841 -6.7157288,17 -15,17 -8.2842712,0 -15,-7.611159 -15,-17 0,-9.3888407 6.7157288,-17 15,-17 8.2842712,0 15,7.6111593 15,17 z"
+       transform="matrix(0.5,0,0,0.44117647,32.5,1013.3034)" />
   </g>
 </svg>
