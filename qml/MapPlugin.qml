@@ -28,6 +28,7 @@ import QtLocation 5.0
  *
  * http://bugreports.qt-project.org/browse/QTBUG-32937
  * http://bugreports.qt-project.org/browse/QTBUG-36581
+ * http://bugreports.qt-project.org/browse/QTBUG-40994
  */
 
 Plugin {
