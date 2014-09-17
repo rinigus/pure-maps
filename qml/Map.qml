@@ -69,11 +69,12 @@ Map {
             var center = py.evaluate("poor.conf.center");
             map.setCenter(center[0], center[1]);
             map.setZoomLevel(py.evaluate("poor.conf.zoom"));
+            map.updateTiles();
+            app.updateKeepAlive();
             map.loadPois();
             map.loadRoute();
             map.loadManeuvers();
             map.ready = true;
-            app.updateKeepAlive();
         });
         map.zoomLevelPrev = map.zoomLevel;
     }
