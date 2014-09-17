@@ -23,7 +23,7 @@ Timer {
     id: timer
     interval: 3000
     repeat: true
-    running: app.running && map.hasRoute
+    running: app.running && map.hasRoute && map.showNarrative
     triggeredOnStart: true
     property var coordinatePrev: QtPositioning.coordinate(0, 0)
     onRunningChanged: {

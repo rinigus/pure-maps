@@ -428,7 +428,7 @@ Map {
 
     function setRoutingStatus(status) {
         // Set values of labels in the navigation status area.
-        if (status) {
+        if (status && map.showNarrative) {
             map.statusArea.destDist  = status.dest_dist || "";
             map.statusArea.destTime  = status.dest_time || "";
             map.statusArea.icon      = status.icon      || "";
