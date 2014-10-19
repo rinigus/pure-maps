@@ -24,11 +24,11 @@ http://developer.reittiopas.fi/pages/en/home.php
 import poor
 import re
 
-COLORS = {  "bus": "#007AC9",
-          "ferry": "#00B9E4",
-          "metro": "#FF6319",
-          "train": "#2DBE2C",
-           "tram": "#00985F",
+COLORS = {  "bus": "#007ac9",
+          "ferry": "#00b9e4",
+          "metro": "#ff6319",
+          "train": "#2dbe2c",
+           "tram": "#00985f",
            "walk": "#888888"}
 
 CONF_DEFAULTS = {"transport_types": [

@@ -23,7 +23,7 @@ PositionSource {
     id: gps
     active: app.running
     updateInterval: 1000
-    property var coordinatePrev: undefined
+    property var coordPrev: undefined
     property var direction: undefined
     property var timePrev: -1
     Component.onCompleted: {
@@ -36,15 +36,15 @@ PositionSource {
         // http://bugreports.qt-project.org/browse/QTBUG-36298
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 30) return;
-        if (!gps.coordinatePrev) {
+        if (!gps.coordPrev) {
             var x = gps.position.coordinate.longitude;
             var y = gps.position.coordinate.latitude;
-            gps.coordinatePrev = QtPositioning.coordinate(y, x);
-        } else if (gps.coordinatePrev.distanceTo(
+            gps.coordPrev = QtPositioning.coordinate(y, x);
+        } else if (gps.coordPrev.distanceTo(
             gps.position.coordinate) > threshold) {
-            gps.direction = gps.coordinatePrev.azimuthTo(gps.position.coordinate);
-            gps.coordinatePrev.longitude = gps.position.coordinate.longitude;
-            gps.coordinatePrev.latitude = gps.position.coordinate.latitude;
+            gps.direction = gps.coordPrev.azimuthTo(gps.position.coordinate);
+            gps.coordPrev.longitude = gps.position.coordinate.longitude;
+            gps.coordPrev.latitude = gps.position.coordinate.latitude;
             gps.timePrev = Date.now();
         } else if (gps.direction && Date.now() - gps.timePrev > 5*60*1000) {
             gps.direction = undefined;

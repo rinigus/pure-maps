@@ -1,7 +1,16 @@
+Poor Maps 0.12
+==============
+
+ [ ] Use a split screen to browse search results with both
+     the result list and the map visible
+     - Remove map from the page stack
+     - Use MenuPage as the initial page
+     - Use ApplicationWindow.bottomMargin to control the split using
+       both full screen and half screen pages
+
 Poor Maps 1.0
 =============
 
- * Reconsider how to view and browse nearby results
  * Add a cover that shows narrative when navigating
  * Add a compass arrow that shows which way one is facing
    - http://qt-project.org/doc/qt-5/qml-qtsensors-compass.html
@@ -9,7 +18,6 @@ Poor Maps 1.0
    - http://together.jolla.com/question/53124
  * Add auto-rotate on bearing when the Map component supports it
  * Allow landscape for the map page when gestures work right
- * Save pagestack to allow returning to geocoding or routing results
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations (strings in QML, Python and JSON
    files as well narrative returned by routing APIs)
