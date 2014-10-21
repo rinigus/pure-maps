@@ -46,7 +46,7 @@ Cover {
     Rectangle {
         // Matches the default QtLocation Map background.
         anchors.fill: parent
-        color: "#E6E6E6"
+        color: "#e6e6e6"
     }
     Item {
         id: positionMarker

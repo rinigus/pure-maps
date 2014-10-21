@@ -122,7 +122,7 @@ Canvas {
         canvas.context.lineCap = "round";
         canvas.context.lineJoin = "round";
         canvas.context.lineWidth = 10;
-        canvas.context.strokeStyle = "#0540FF";
+        canvas.context.strokeStyle = "#0540ff";
         canvas.initDone = true;
     }
 

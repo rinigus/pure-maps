@@ -47,7 +47,7 @@ MapQuickItem {
             anchors.bottom: image.top
             anchors.bottomMargin: 18
             anchors.horizontalCenter: image.horizontalCenter
-            color: "#BB000000"
+            color: "#bb000000"
             height: content.height + 1.5*Theme.paddingLarge
             radius: textLabel.font.pixelSize/2
             visible: item.labelVisible
@@ -76,7 +76,7 @@ MapQuickItem {
                     id: routeButton
                     anchors.left: parent.left
                     anchors.top: textLabel.bottom
-                    color: "#BBFFFFFF"
+                    color: "#bbffffff"
                     height: routeLabel.height + Theme.paddingMedium
                     radius: bubble.radius/2
                     width: routeLabel.width + 1.5*Theme.paddingMedium
@@ -103,7 +103,7 @@ MapQuickItem {
                         repeat: false
                         onRunningChanged: {
                             routeButton.color = routeTimer.running ?
-                                Theme.highlightColor : "#BBFFFFFF";
+                                Theme.highlightColor : "#bbffffff";
                         }
                     }
                 }
@@ -111,7 +111,7 @@ MapQuickItem {
                     id: linkButton
                     anchors.right: parent.right
                     anchors.top: textLabel.bottom
-                    color: "#BBFFFFFF"
+                    color: "#bbffffff"
                     height: linkLabel.height + Theme.paddingMedium
                     radius: bubble.radius/2
                     visible: item.link && item.link.length > 0
@@ -136,7 +136,7 @@ MapQuickItem {
                         repeat: false
                         onRunningChanged: {
                             linkButton.color = linkTimer.running ?
-                                Theme.highlightColor : "#BBFFFFFF";
+                                Theme.highlightColor : "#bbffffff";
                         }
                     }
                 }

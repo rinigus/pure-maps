@@ -23,7 +23,7 @@ Rectangle {
     id: statusArea
     anchors.left: parent.left
     anchors.top: parent.top
-    color: "#BB000000"
+    color: "#bb000000"
     height: destDist.length > 0 ?
         Math.max(iconImage.height,
                  manLabel.height +
