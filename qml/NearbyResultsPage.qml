@@ -60,30 +60,15 @@ Page {
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
-                var pois = [];
-                for (var i = 0; i < listView.model.count; i++) {
-                    if (i == model.index) continue
-                    var item = listView.model.get(i);
-                    pois.push({"x": item.x,
-                               "y": item.y,
-                               "title": item.title,
-                               "text": item.text || item.title,
-                               "link": item.link || ""});
+                map.addPois([{"x": model.x,
+                              "y": model.y,
+                              "title": model.title,
+                              "text": model.text || model.title,
+                              "link": model.link || ""}]);
 
-                }
-                pois.push({"x": model.x,
-                           "y": model.y,
-                           "title": model.title,
-                           "text": model.text || model.title,
-                           "link": model.link || ""})
-
-                map.clearPois();
-                map.addPois(pois);
-                map.fitViewToPois(pois);
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
-                map.pois[map.pois.length-1].labelVisible = true;
-                app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                app.hideMenu();
             }
         }
         header: PageHeader { title: page.title }
@@ -105,8 +90,9 @@ Page {
                     }
                     map.clearPois();
                     map.addPois(pois);
+                    map.autoCenter = false;
                     map.fitViewToPois(pois);
-                    app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                    app.hideMenu();
                 }
             }
         }

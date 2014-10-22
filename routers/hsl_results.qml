@@ -139,9 +139,10 @@ Page {
                     "mode": "transit",
                     "attribution": "Routing courtesy of HSL."});
 
+                map.autoCenter = false;
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);
-                app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                app.hideMenu();
             }
         }
         header: PageHeader { title: page.title }

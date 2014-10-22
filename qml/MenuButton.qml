@@ -25,7 +25,8 @@ IconButton {
     anchors.left: parent.left
     height: icon.height
     icon.source: "icons/menu.png"
+    visible: py.ready
     width: icon.width
     z: 1000
-    onClicked: app.pageStack.push("MenuPage.qml");
+    onClicked: app.showMenu();
 }

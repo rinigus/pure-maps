@@ -23,7 +23,6 @@ import "."
 
 Map {
     id: map
-    anchors.fill: parent
     center: QtPositioning.coordinate(60.169, 24.941)
     focus: true
     gesture.enabled: true

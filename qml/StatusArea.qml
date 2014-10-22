@@ -107,7 +107,7 @@ Rectangle {
             wrapMode: Text.WordWrap
         }
         onClicked: {
-            app.pageStack.push("NarrativePage.qml");
+            app.showMenu("NarrativePage.qml");
         }
     }
 }

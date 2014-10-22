@@ -69,8 +69,7 @@ Cover {
     function addTile() {
         // Add a new blank tile to the end of collection.
         var component = Qt.createComponent("CoverTile.qml");
-        var tile = component.createObject(cover);
-        cover.tiles.push(tile);
+        cover.tiles.push(component.createObject(cover));
     }
     function mapXToCoverX(x) {
         // Convert map pixel X-coordinate to cover equivalent.

@@ -68,7 +68,7 @@ Page {
 
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
-                app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                app.hideMenu();
             }
         }
         header: PageHeader { title: page.title }
@@ -90,8 +90,9 @@ Page {
                     }
                     map.clearPois();
                     map.addPois(pois);
+                    map.autoCenter = false;
                     map.fitViewToPois(pois);
-                    app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                    app.hideMenu();
                 }
             }
         }

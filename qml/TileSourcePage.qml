@@ -50,7 +50,7 @@ Page {
                 py.call_sync("poor.app.set_tilesource", [model.pid]);
                 map.attribution.text = attribution;
                 map.changed = true;
-                app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                app.hideMenu();
             }
         }
         header: PageHeader { title: "Map Tiles" }

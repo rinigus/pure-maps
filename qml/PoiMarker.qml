@@ -93,7 +93,7 @@ MapQuickItem {
                             routeTimer.start();
                             var x = item.coordinate.longitude;
                             var y = item.coordinate.latitude;
-                            app.pageStack.push("RoutePage.qml", {
+                            app.showMenu("RoutePage.qml", {
                                 "to": [x, y], "toText": item.title});
                         }
                     }

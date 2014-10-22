@@ -62,9 +62,11 @@ Page {
                               "mode": "car",
                               "attribution": "Routing courtesy of MapQuest."});
 
+                map.autoCenter = false;
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
-                app.pageStack.pop(mapPage, PageStackAction.Immediate);
+                app.hideMenu();
+                app.pageStack.pop();
                 page.loading = false;
             } else {
                 busyLabel.text = "No results";
