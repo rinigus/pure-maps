@@ -87,7 +87,7 @@ Cover {
     function updateTiles() {
         // Update cover map tiles from map equivalents.
         for (var i = 0; i < map.tiles.length; i++) {
-            (cover.tiles.length > i) || cover.addTile();
+            if (cover.tiles.length <= i) cover.addTile();
             cover.tiles[i].source = map.tiles[i].uri;
             cover.tiles[i].x = cover.mapXToCoverX(map.tiles[i].x);
             cover.tiles[i].y = cover.mapYToCoverY(map.tiles[i].y);

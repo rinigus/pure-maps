@@ -133,6 +133,7 @@ Page {
                 }
             }
             onClicked: {
+                app.hideMenu();
                 map.addRoute({
                     "x": listItem.result.x,
                     "y": listItem.result.y,
@@ -142,7 +143,6 @@ Page {
                 map.autoCenter = false;
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);
-                app.hideMenu();
             }
         }
         header: PageHeader { title: page.title }

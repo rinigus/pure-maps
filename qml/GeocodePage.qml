@@ -95,6 +95,9 @@ Page {
         if (page.status == PageStatus.Activating) {
             page.history = py.evaluate("poor.app.history.places");
             page.populate();
+        } else if (page.status == PageStatus.Active) {
+            var resultPage = app.pageStack.nextPage();
+            resultPage.populated = false;
         }
     }
     function populate() {

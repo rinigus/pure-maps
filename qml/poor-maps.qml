@@ -74,11 +74,11 @@ ApplicationWindow {
         app.hideMenu();
     }
     function hideMenu() {
-        // Hide the menu, keeping pages intact.
+        // Immediately hide the menu, keeping pages intact.
         app.bottomMargin = Math.max(Screen.width, Screen.height);
     }
     function showMenu(page, params) {
-        // Show a menu page, either given or last viewed.
+        // Show a menu page, either given, last viewed or menu.
         dummy.updateTiles();
         if (page) {
             app.pageStack.pop(dummy, PageStackAction.Immediate);

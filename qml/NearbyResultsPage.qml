@@ -24,6 +24,7 @@ Page {
     id: page
     allowedOrientations: Orientation.Portrait
     property bool loading: true
+    property bool populated: false
     property string title: ""
     SilicaListView {
         id: listView
@@ -60,6 +61,7 @@ Page {
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
+                app.hideMenu();
                 map.addPois([{"x": model.x,
                               "y": model.y,
                               "title": model.title,
@@ -68,7 +70,6 @@ Page {
 
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
-                app.hideMenu();
             }
         }
         header: PageHeader { title: page.title }
@@ -89,10 +90,10 @@ Page {
 
                     }
                     map.clearPois();
+                    app.hideMenu();
                     map.addPois(pois);
                     map.autoCenter = false;
                     map.fitViewToPois(pois);
-                    app.hideMenu();
                 }
             }
         }
@@ -117,7 +118,9 @@ Page {
         visible: page.loading
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Activating) {
+        if (page.populated) {
+            return;
+        } else if (page.status == PageStatus.Activating) {
             listView.model.clear();
             page.loading = true;
             page.title = ""
@@ -148,6 +151,7 @@ Page {
                 busyLabel.text = "No results";
             }
             page.loading = false;
+            page.populated = true;
         });
     }
 }

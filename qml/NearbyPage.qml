@@ -133,4 +133,10 @@ Page {
     onQueryChanged: {
         py.call_sync("poor.app.history.add_place_type", [page.query]);
     }
+    onStatusChanged: {
+        if (page.status == PageStatus.Active) {
+            var resultPage = app.pageStack.nextPage();
+            resultPage.populated = false;
+        }
+    }
 }

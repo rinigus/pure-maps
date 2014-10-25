@@ -120,7 +120,7 @@ Page {
                 }
                 onClicked: {
                     map.centerOnPosition();
-                    app.hideMenu();
+                    app.clearMenu();
                 }
             }
             ListItem {
@@ -144,7 +144,7 @@ Page {
                 }
                 onClicked: {
                     map.clear();
-                    app.hideMenu();
+                    app.clearMenu();
                 }
             }
             ListItem {

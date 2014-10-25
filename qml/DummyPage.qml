@@ -37,10 +37,9 @@ Page {
     }
     onStatusChanged: {
         if (page.status == PageStatus.Active) {
-            // Hide menu if navigated backwards to this page.
+            // Clear and hide menu if navigated backwards to this page.
             // This gets fired on application startup as well!
-            app.pageStack.pop(page, PageStackAction.Immediate);
-            app.hideMenu();
+            app.clearMenu();
         }
     }
     function addTile() {
@@ -51,7 +50,7 @@ Page {
     function updateTiles() {
         // Update cover map tiles from map equivalents.
         for (var i = 0; i < map.tiles.length; i++) {
-            (page.tiles.length > i) || page.addTile();
+            if (page.tiles.length <= i) page.addTile();
             page.tiles[i].source = map.tiles[i].uri;
             page.tiles[i].x = map.tiles[i].x;
             page.tiles[i].y = map.tiles[i].y;

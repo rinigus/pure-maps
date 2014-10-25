@@ -1,11 +1,13 @@
 Poor Maps 0.12
 ==============
 
- [ ] Return to the last viewed page when showing the menu
-     * Make sure pages don't rely too much on onCompleted
-     * Set labelVisible when adding POIs?
-     * Add transition when restoring menu
-       - Dummy at the end of the stack, transition back?
+ [X] Return to the last viewed page when showing the menu
+
+ FIX:
+ * Make sure pages don't rely too much on onCompleted
+ * Fix conf connections (at least MenuPage.qml)
+ * Fix propagation of values from map to conf (e.g. autoCenter, showNarrative)
+ * Use labelVisible for nearby venues?
 
 Poor Maps 1.0
 =============

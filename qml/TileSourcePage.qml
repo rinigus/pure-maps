@@ -30,7 +30,7 @@ Page {
             contentHeight: nameLabel.height + sourceLabel.height
             ListItemLabel {
                 id: nameLabel
-                color: (active || listItem.highlighted) ?
+                color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
                 height: implicitHeight + Theme.paddingMedium
                 text: model.name
@@ -46,11 +46,14 @@ Page {
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
+                app.hideMenu();
                 map.resetTiles();
                 py.call_sync("poor.app.set_tilesource", [model.pid]);
                 map.attribution.text = attribution;
                 map.changed = true;
-                app.hideMenu();
+                for (var i = 0; i < listView.model.count; i++)
+                    listView.model.setProperty(i, "active", false);
+                listView.model.setProperty(model.index, "active", true);
             }
         }
         header: PageHeader { title: "Map Tiles" }

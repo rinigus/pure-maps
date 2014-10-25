@@ -33,7 +33,7 @@ Dialog {
                 attributionLabel.height
             ListItemLabel {
                 id: nameLabel
-                color: (active || listItem.highlighted) ?
+                color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
                 height: implicitHeight + Theme.paddingMedium
                 text: model.name

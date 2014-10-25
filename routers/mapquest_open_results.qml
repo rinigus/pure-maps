@@ -57,6 +57,7 @@ Page {
                 busyLabel.text = route.message;
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
+                app.hideMenu();
                 map.addRoute({"x": route.x,
                               "y": route.y,
                               "mode": "car",
@@ -65,7 +66,6 @@ Page {
                 map.autoCenter = false;
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
-                app.hideMenu();
                 app.pageStack.pop();
                 page.loading = false;
             } else {
