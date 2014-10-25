@@ -61,20 +61,7 @@ Map {
 
     Component.onCompleted: {
         // Load default values and start periodic updates.
-        py.onReadyChanged.connect(function() {
-            map.attribution.text = py.evaluate("poor.app.tilesource.attribution");
-            map.autoCenter = py.evaluate("poor.conf.auto_center");
-            map.showNarrative = py.evaluate("poor.conf.show_routing_narrative");
-            var center = py.evaluate("poor.conf.center");
-            map.setCenter(center[0], center[1]);
-            map.setZoomLevel(py.evaluate("poor.conf.zoom"));
-            map.updateTiles();
-            app.updateKeepAlive();
-            map.loadPois();
-            map.loadRoute();
-            map.loadManeuvers();
-            map.ready = true;
-        });
+        map.initProperties();
         map.zoomLevelPrev = map.zoomLevel;
     }
 
@@ -316,6 +303,24 @@ Map {
         return [map.position.coordinate.longitude,
                 map.position.coordinate.latitude];
 
+    }
+
+    function initProperties() {
+        // Load default values and start periodic updates.
+        if (!py.ready)
+            return py.onReadyChanged.connect(map.initProperties);
+        map.attribution.text = py.evaluate("poor.app.tilesource.attribution");
+        map.autoCenter = py.evaluate("poor.conf.auto_center");
+        map.showNarrative = py.evaluate("poor.conf.show_routing_narrative");
+        var center = py.evaluate("poor.conf.center");
+        map.setCenter(center[0], center[1]);
+        map.setZoomLevel(py.evaluate("poor.conf.zoom"));
+        map.updateTiles();
+        app.updateKeepAlive();
+        map.loadPois();
+        map.loadRoute();
+        map.loadManeuvers();
+        map.ready = true;
     }
 
     function loadManeuvers() {

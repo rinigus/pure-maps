@@ -26,11 +26,7 @@ PositionSource {
     property var coordPrev: undefined
     property var direction: undefined
     property var timePrev: -1
-    Component.onCompleted: {
-        py.onReadyChanged.connect(function() {
-            gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");
-        });
-    }
+    Component.onCompleted: gps.initProperties();
     onPositionChanged: {
         // XXX: Calculate direction, since it's missing from gps.position.
         // http://bugreports.qt-project.org/browse/QTBUG-36298
@@ -49,5 +45,10 @@ PositionSource {
         } else if (gps.direction && Date.now() - gps.timePrev > 5*60*1000) {
             gps.direction = undefined;
         }
+    }
+    function initProperties() {
+        if (!py.ready)
+            return py.onReadyChanged.connect(gps.initProperties);
+        gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");
     }
 }
