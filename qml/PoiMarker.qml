@@ -36,9 +36,9 @@ MapQuickItem {
                 onClicked: {
                     // Ensure that bubble will be above other POIs.
                     for (var i = 0; i < map.pois.length; i++)
-                        map.pois[i].z = map.pois[i].labelVisible ? 401 : 400;
-                    item.z = 402;
+                        map.pois[i].z = map.pois[i].labelVisible ? 402 : 400;
                     item.labelVisible = !item.labelVisible;
+                    item.z = item.labelVisible ? 403 : 401;
                 }
             }
         }
