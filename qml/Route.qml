@@ -32,10 +32,9 @@ import "js/util.js" as Util
 
 Canvas {
     id: canvas
+    anchors.fill: parent
     contextType: "2d"
-    height: parent.height
-    renderStrategy: Canvas.Cooperative
-    width: parent.width
+    renderStrategy: Canvas.Immediate
     z: 200
     property string attribution: ""
     property bool initDone: false
