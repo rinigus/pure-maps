@@ -48,6 +48,8 @@ ApplicationWindow {
     cover: Cover {}
     initialPage: DummyPage { id: dummy }
     property bool running: applicationActive || cover.status == Cover.Active
+    property int totalHeight: Screen.height
+    property int totalWidth: Screen.width
     Map {
         id: map
         anchors.left: app.contentItem.left
@@ -79,7 +81,7 @@ ApplicationWindow {
     }
     function hideMenu() {
         // Immediately hide the menu, keeping pages intact.
-        app.bottomMargin = Math.max(Screen.width, Screen.height);
+        app.bottomMargin = app.totalHeight;
     }
     function showMenu(page, params) {
         // Show a menu page, either given, last viewed, or menu.
