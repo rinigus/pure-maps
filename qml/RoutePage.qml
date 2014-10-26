@@ -129,6 +129,10 @@ Page {
     }
     onStatusChanged: {
         if (page.status == PageStatus.Active) {
+            if (page.fromText == "Current position")
+                page.from = map.getPosition();
+            if (page.toText == "Current position")
+                page.to = map.getPosition();
             var uri = py.evaluate("poor.app.router.results_qml_uri");
             app.pageStack.pushAttached(uri);
         }

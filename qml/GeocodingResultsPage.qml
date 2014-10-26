@@ -89,8 +89,8 @@ Page {
                                    "link": item.link || ""});
 
                     }
-                    map.clearPois();
                     app.hideMenu();
+                    map.clearPois();
                     map.addPois(pois);
                     map.autoCenter = false;
                     map.fitViewToPois(pois);

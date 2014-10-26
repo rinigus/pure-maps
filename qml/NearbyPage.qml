@@ -135,6 +135,8 @@ Page {
     }
     onStatusChanged: {
         if (page.status == PageStatus.Active) {
+            if (page.nearText == "Current position")
+                page.near = map.getPosition();
             var resultPage = app.pageStack.nextPage();
             resultPage.populated = false;
         }
