@@ -25,6 +25,8 @@ Page {
     SilicaListView {
         id: listView
         anchors.fill: parent
+        // Prevent list items from stealing focus.
+        currentIndex: -1
         delegate: ListItem {
             id: listItem
             contentHeight: iconImage.height
@@ -95,8 +97,9 @@ Page {
                 listView.model.append(maneuvers[i]);
                 if (maneuvers[i].active) activeIndex = i;
             }
-            if (activeIndex >= 0)
-                listView.positionViewAtIndex(activeIndex, ListView.Center);
+            // XXX: Positioning at ListView.Center doesn't seem to work.
+            activeIndex = Math.max(0, activeIndex-2);
+            listView.positionViewAtIndex(activeIndex, ListView.Contain);
         });
     }
 }
