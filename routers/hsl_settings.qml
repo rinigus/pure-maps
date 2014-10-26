@@ -108,8 +108,7 @@ Column {
         }
         onCurrentIndexChanged: {
             var index = prefComboBox.currentIndex;
-            var args = ["routers.hsl.optimize", prefComboBox.keys[index]];
-            py.call_sync("poor.conf.set", args);
+            app.setConf("routers.hsl.optimize", prefComboBox.keys[index]);
         }
     }
     Row {

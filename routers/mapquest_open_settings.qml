@@ -34,9 +34,9 @@ Column {
             typeComboBox.currentIndex = typeComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
-            var key = "routers.mapquest_open.type";
-            var type = typeComboBox.keys[typeComboBox.currentIndex];
-            py.call_sync("poor.conf.set", [key, type]);
+            var option = "routers.mapquest_open.type";
+            var value = typeComboBox.keys[typeComboBox.currentIndex];
+            app.setConf(option, value);
         }
     }
     TextSwitch {

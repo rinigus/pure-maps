@@ -33,9 +33,9 @@ Column {
             closestComboBox.currentIndex = closest ? 0 : 1;
         }
         onCurrentIndexChanged: {
-            var key = "guides.foursquare.sort_by_distance"
-            var closest = closestComboBox.currentIndex == 0;
-            py.call_sync("poor.conf.set", [key, closest]);
+            var option = "guides.foursquare.sort_by_distance"
+            var value = closestComboBox.currentIndex == 0;
+            app.setConf(option, value);
         }
     }
 }

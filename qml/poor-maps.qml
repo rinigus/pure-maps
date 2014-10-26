@@ -63,10 +63,10 @@ ApplicationWindow {
     }
     onApplicationActiveChanged: {
         if (!app.applicationActive && py.ready) {
-            app.setConf(["auto_center", map.autoCenter]);
-            app.setConf(["center", [map.center.longitude, map.center.latitude]]);
-            app.setConf(["show_routing_narrative", map.showNarrative]);
-            app.setConf(["zoom", Math.floor(map.zoomLevel)]);
+            app.setConf("auto_center", map.autoCenter);
+            app.setConf("center", [map.center.longitude, map.center.latitude]);
+            app.setConf("show_routing_narrative", map.showNarrative);
+            app.setConf("zoom", Math.floor(map.zoomLevel));
             py.call_sync("poor.conf.write", []);
             py.call_sync("poor.app.history.write", []);
         }
@@ -92,9 +92,9 @@ ApplicationWindow {
         }
         app.bottomMargin = 0;
     }
-    function setConf(args) {
-        // Set value of configuration variable.
-        py.call_sync("poor.conf.set", args);
+    function setConf(option, value) {
+        // Set value of configuration option.
+        py.call_sync("poor.conf.set", [option, value]);
     }
     function updateKeepAlive() {
         // Update state of display blanking prevention, i.e. keep-alive.

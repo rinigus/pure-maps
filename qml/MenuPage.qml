@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "."
 
 Page {
+    id: page
     allowedOrientations: Orientation.Portrait
     SilicaFlickable {
         anchors.fill: parent
@@ -174,24 +175,31 @@ Page {
                 checked: map.autoCenter
                 height: Theme.itemSizeSmall
                 text: "Auto-center on position"
+                Component.onCompleted: {
+                    page.onStatusChanged.connect(function() {
+                        autoCenterItem.checked = map.autoCenter;
+                    });
+                }
                 onCheckedChanged: {
                     map.autoCenter = autoCenterItem.checked;
-                    py.call_sync("poor.conf.set", ["auto_center", map.autoCenter]);
+                    app.setConf("auto_center", map.autoCenter);
                     map.autoCenter && map.centerOnPosition();
                 }
             }
             ListItemSwitch {
                 id: showNarrativeItem
                 anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
-                checked: py.evaluate("poor.conf.show_routing_narrative")
+                checked: map.showNarrative
                 height: Theme.itemSizeSmall
                 text: "Show routing narrative"
+                Component.onCompleted: {
+                    page.onStatusChanged.connect(function() {
+                        showNarrativeItem.checked = map.showNarrative;
+                    });
+                }
                 onCheckedChanged: {
                     map.showNarrative = showNarrativeItem.checked;
-                    py.call_sync("poor.conf.set",
-                                 ["show_routing_narrative",
-                                  map.showNarrative]);
-
+                    app.setConf("show_routing_narrative", map.showNarrative);
                     map.showNarrative || map.setRoutingStatus(null);
                 }
             }
