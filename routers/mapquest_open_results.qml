@@ -67,7 +67,6 @@ Page {
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.pop();
-                page.loading = false;
             } else {
                 busyLabel.text = "No results";
                 page.loading = false;

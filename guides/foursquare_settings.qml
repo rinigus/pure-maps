@@ -28,8 +28,8 @@ Column {
             MenuItem { text: "Best" }
         }
         Component.onCompleted: {
-            var attr = "poor.conf.guides.foursquare.sort_by_distance";
-            var closest = py.evaluate(attr);
+            var closest = py.evaluate(
+                "poor.conf.guides.foursquare.sort_by_distance");
             closestComboBox.currentIndex = closest ? 0 : 1;
         }
         onCurrentIndexChanged: {

@@ -23,6 +23,7 @@ Page {
     id: page
     allowedOrientations: Orientation.Portrait
     property bool loading: true
+    property bool populated: false
     property var results: {}
     property string title: ""
     // Column widths to be set based on data.
@@ -168,7 +169,9 @@ Page {
         visible: page.loading
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Activating) {
+        if (page.populated) {
+            return;
+        } else if (page.status == PageStatus.Activating) {
             listView.model.clear();
             page.loading = true;
             page.title = ""
@@ -199,6 +202,7 @@ Page {
                 busyLabel.text = "No results";
             }
             page.loading = false;
+            page.populated = true;
         });
     }
 }

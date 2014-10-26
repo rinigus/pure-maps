@@ -34,19 +34,18 @@ Column {
             typeComboBox.currentIndex = typeComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
-            var index = typeComboBox.currentIndex;
-            var args = ["routers.mapquest_open.type", typeComboBox.keys[index]];
-            py.call_sync("poor.conf.set", args);
+            var key = "routers.mapquest_open.type";
+            var type = typeComboBox.keys[typeComboBox.currentIndex];
+            py.call_sync("poor.conf.set", [key, type]);
         }
     }
     TextSwitch {
         id: tollSwitch
         anchors.left: parent.left
         anchors.right: parent.right
-        checked: py.call_sync("poor.conf.set_contains",
-                              ["routers.mapquest_open.avoids",
-                               "Toll Road"])
-
+        checked: py.call_sync(
+            "poor.conf.set_contains",
+            ["routers.mapquest_open.avoids", "Toll Road"])
         height: Theme.itemSizeSmall
         text: "Try to avoid tolls"
         visible: typeComboBox.currentIndex == 0
