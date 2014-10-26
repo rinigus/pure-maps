@@ -123,9 +123,8 @@ Map {
         for (var i = 0; i < maneuvers.length; i++) {
             var component = Qt.createComponent("ManeuverMarker.qml");
             var maneuver = component.createObject(map);
-            var x = maneuvers[i].x;
-            var y = maneuvers[i].y;
-            maneuver.coordinate = QtPositioning.coordinate(y, x);
+            maneuver.coordinate = QtPositioning.coordinate(
+                maneuvers[i].y, maneuvers[i].x;);
             maneuver.icon = maneuvers[i].icon || "alert";
             maneuver.narrative = maneuvers[i].narrative || "";
             maneuver.passive = maneuvers[i].passive || false;
@@ -151,9 +150,7 @@ Map {
         for (var i = 0; i < pois.length; i++) {
             var component = Qt.createComponent("PoiMarker.qml");
             var poi = component.createObject(map);
-            var x = pois[i].x;
-            var y = pois[i].y;
-            poi.coordinate = QtPositioning.coordinate(y, x);
+            poi.coordinate = QtPositioning.coordinate(pois[i].y, pois[i].x);
             poi.title = pois[i].title || "";
             poi.text  = pois[i].text  || "";
             poi.link  = pois[i].link  || ""
@@ -281,9 +278,8 @@ Map {
         if (map.route.path.x.length == 0) return;
         var coords = [];
         for (var i = 0; i < map.route.path.x.length; i = i+10) {
-            var x = map.route.path.x[i];
-            var y = map.route.path.y[i];
-            coords.push(QtPositioning.coordinate(y, x));
+            coords.push(QtPositioning.coordinate(
+                map.route.path.y[i], map.route.path.x[i]));
         }
         var x = map.route.path.x[map.route.path.x.length-1];
         var y = map.route.path.y[map.route.path.x.length-1];

@@ -68,6 +68,9 @@ Page {
                               "text": model.text || model.title,
                               "link": model.link || ""}]);
 
+                for (var i = 0; i < map.pois.length; i++)
+                    map.pois[i].labelVisible = false;
+                map.pois[map.pois.length-1].labelVisible = true;
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
             }
