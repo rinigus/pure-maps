@@ -48,7 +48,7 @@ Page {
                 anchors.leftMargin: Theme.paddingLarge
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingLarge
-                color: model.active || listItem.highlighted ?
+                color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight +

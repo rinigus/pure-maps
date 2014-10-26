@@ -45,8 +45,8 @@ Page {
                     sleepComboBox.currentIndex = sleepComboBox.keys.indexOf(key);
                 }
                 onCurrentIndexChanged: {
-                    var key = sleepComboBox.keys[sleepComboBox.currentIndex];
-                    py.call_sync("poor.conf.set", ["keep_alive", key]);
+                    var value = sleepComboBox.keys[sleepComboBox.currentIndex];
+                    py.call_sync("poor.conf.set", ["keep_alive", value]);
                     app.updateKeepAlive();
                 }
             }

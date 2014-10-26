@@ -149,9 +149,6 @@ class Application:
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
         self._timestamp = int(time.time()*1000)
-        poor.conf.center[0] = (xmin + xmax) / 2
-        poor.conf.center[1] = (ymin + ymax) / 2
-        poor.conf.zoom = zoom
         bbox = poor.util.bbox_deg2num(xmin, xmax, ymin, ymax, zoom)
         xmin, xmax, ymin, ymax = bbox
         for x, y in poor.util.prod_tiles(xmin, xmax, ymin, ymax):

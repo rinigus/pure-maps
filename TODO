@@ -6,7 +6,6 @@ Poor Maps 0.12
  FIX:
  * Make sure pages don't rely too much on onCompleted
  * Fix conf connections (at least MenuPage.qml)
- * Fix propagation of values from map to conf (e.g. autoCenter, showNarrative)
  * Use labelVisible for nearby venues?
 
 Poor Maps 1.0

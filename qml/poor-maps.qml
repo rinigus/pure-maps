@@ -29,7 +29,7 @@ import "."
  * in the stack to be a dummy that upon activation hides the page stack.
  * Hiding the page stack is done using ApplicationWindow.bottomMargin.
  * To make transitions smooth and animated, we can make the dummy look like
- * the actual map providing the smooth built-in page stack transition,
+ * the actual map, thus providing the smooth built-in page stack transition,
  * followed by a sudden bottomMargin change, only noticeable by
  * the reappearance of map overlays not duplicated in the dummy.
  *
@@ -63,6 +63,10 @@ ApplicationWindow {
     }
     onApplicationActiveChanged: {
         if (!app.applicationActive && py.ready) {
+            app.setConf(["auto_center", map.autoCenter]);
+            app.setConf(["center", [map.center.longitude, map.center.latitude]]);
+            app.setConf(["show_routing_narrative", map.showNarrative]);
+            app.setConf(["zoom", Math.floor(map.zoomLevel)]);
             py.call_sync("poor.conf.write", []);
             py.call_sync("poor.app.history.write", []);
         }
@@ -78,7 +82,7 @@ ApplicationWindow {
         app.bottomMargin = Math.max(Screen.width, Screen.height);
     }
     function showMenu(page, params) {
-        // Show a menu page, either given, last viewed or menu.
+        // Show a menu page, either given, last viewed, or menu.
         dummy.updateTiles();
         if (page) {
             app.pageStack.pop(dummy, PageStackAction.Immediate);
@@ -87,6 +91,10 @@ ApplicationWindow {
             app.pageStack.push("MenuPage.qml");
         }
         app.bottomMargin = 0;
+    }
+    function setConf(args) {
+        // Set value of configuration variable.
+        py.call_sync("poor.conf.set", args);
     }
     function updateKeepAlive() {
         // Update state of display blanking prevention, i.e. keep-alive.
