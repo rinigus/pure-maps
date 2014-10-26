@@ -124,7 +124,7 @@ Map {
             var component = Qt.createComponent("ManeuverMarker.qml");
             var maneuver = component.createObject(map);
             maneuver.coordinate = QtPositioning.coordinate(
-                maneuvers[i].y, maneuvers[i].x;);
+                maneuvers[i].y, maneuvers[i].x);
             maneuver.icon = maneuvers[i].icon || "alert";
             maneuver.narrative = maneuvers[i].narrative || "";
             maneuver.passive = maneuvers[i].passive || false;
