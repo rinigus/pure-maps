@@ -151,6 +151,7 @@ class Application:
         self._timestamp = int(time.time()*1000)
         bbox = poor.util.bbox_deg2num(xmin, xmax, ymin, ymax, zoom)
         xmin, xmax, ymin, ymax = bbox
+        zoom = int(zoom)
         for x, y in poor.util.prod_tiles(xmin, xmax, ymin, ymax):
             args = (x, y, xmin, xmax, ymin, ymax, zoom)
             self._download_queue.put((args, self._timestamp))
