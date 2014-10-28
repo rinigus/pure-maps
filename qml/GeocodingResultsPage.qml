@@ -33,9 +33,10 @@ Page {
             id: listItem
             contentHeight: titleLabel.height + descriptionLabel.height +
                 distanceLabel.height
+            property bool visited: false
             ListItemLabel {
                 id: titleLabel
-                color: listItem.highlighted ?
+                color: (listItem.highlighted || listItem.visited)?
                     Theme.highlightColor : Theme.primaryColor;
                 height: implicitHeight + Theme.paddingMedium
                 text: model.title
@@ -70,6 +71,7 @@ Page {
 
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
+                listItem.visited = true;
             }
         }
         header: PageHeader { title: page.title }

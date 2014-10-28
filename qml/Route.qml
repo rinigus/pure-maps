@@ -58,7 +58,6 @@ Canvas {
     }
 
     onPaint: {
-        console.log("onPaint: " + Date.now());
         // Clear the whole canvas and redraw entire route.
         // This gets called continuously as the map is panned!
         if (!canvas.hasPath) return;
