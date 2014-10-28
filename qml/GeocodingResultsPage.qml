@@ -120,16 +120,19 @@ Page {
         visible: page.loading
     }
     onStatusChanged: {
-        if (page.populated) {
-            return;
-        } else if (page.status == PageStatus.Activating) {
+        if (page.status == PageStatus.Activating) {
+            if (page.populated) return;
             listView.model.clear();
             page.loading = true;
             page.title = "";
             busyLabel.text = "Searching";
         } else if (page.status == PageStatus.Active) {
+            if (page.populated) return;
             var geocodePage = app.pageStack.previousPage();
             page.populate(geocodePage.query);
+            listView.visible = true;
+        } else if (page.status == PageStatus.Inactive) {
+            listView.visible = false;
         }
     }
     function populate(query) {
