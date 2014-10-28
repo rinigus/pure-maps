@@ -23,9 +23,13 @@ import "."
 
 Map {
     id: map
+    anchors.left: app.contentItem.left
+    anchors.right: app.contentItem.right
+    anchors.top: app.contentItem.bottom
     center: QtPositioning.coordinate(60.169, 24.941)
     focus: true
     gesture.enabled: true
+    height: app.bottomMargin
     minimumZoomLevel: 3
     plugin: MapPlugin {}
 

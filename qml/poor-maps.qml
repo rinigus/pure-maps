@@ -50,13 +50,7 @@ ApplicationWindow {
     property bool running: applicationActive || cover.status == Cover.Active
     property int totalHeight: Screen.height
     property int totalWidth: Screen.width
-    Map {
-        id: map
-        anchors.left: app.contentItem.left
-        anchors.right: app.contentItem.right
-        anchors.top: app.contentItem.bottom
-        height: app.bottomMargin
-    }
+    Map { id: map }
     PositionSource { id: gps }
     Python { id: py }
     Component.onCompleted: {
