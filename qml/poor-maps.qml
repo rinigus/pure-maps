@@ -47,6 +47,7 @@ ApplicationWindow {
     allowedOrientations: Orientation.All
     cover: Cover {}
     initialPage: DummyPage { id: dummy }
+    property var conf: Config {}
     property bool running: applicationActive || cover.status == Cover.Active
     property int totalHeight: Screen.height
     property int totalWidth: Screen.width
@@ -58,14 +59,7 @@ ApplicationWindow {
         py.setHandler("show-tile", map.showTile);
     }
     onApplicationActiveChanged: {
-        if (!app.applicationActive && py.ready) {
-            app.setConf("auto_center", map.autoCenter);
-            app.setConf("center", [map.center.longitude, map.center.latitude]);
-            app.setConf("show_routing_narrative", map.showNarrative);
-            app.setConf("zoom", Math.floor(map.zoomLevel));
-            py.call_sync("poor.conf.write", []);
-            py.call_sync("poor.app.history.write", []);
-        }
+        py.ready && !app.applicationActive && app.save();
         app.updateKeepAlive();
     }
     function clearMenu() {
@@ -76,6 +70,15 @@ ApplicationWindow {
     function hideMenu() {
         // Immediately hide the menu, keeping pages intact.
         app.bottomMargin = app.totalHeight;
+    }
+    function save() {
+        // Save application-level configuration and persistent data.
+        app.conf.set("auto_center", map.autoCenter);
+        app.conf.set("center", [map.center.longitude, map.center.latitude]);
+        app.conf.set("show_routing_narrative", map.showNarrative);
+        app.conf.set("zoom", Math.floor(map.zoomLevel));
+        py.call_sync("poor.conf.write", []);
+        py.call_sync("poor.app.history.write", []);
     }
     function showMenu(page, params) {
         // Show a menu page, either given, last viewed, or menu.
@@ -88,13 +91,9 @@ ApplicationWindow {
         }
         app.bottomMargin = 0;
     }
-    function setConf(option, value) {
-        // Set value of configuration option.
-        py.call_sync("poor.conf.set", [option, value]);
-    }
     function updateKeepAlive() {
         // Update state of display blanking prevention, i.e. keep-alive.
-        var prevent = py.evaluate("poor.conf.keep_alive");
+        var prevent = app.conf.get("keep_alive");
         DisplayBlanking.preventBlanking = app.applicationActive && (
             prevent == "always" || (map.hasRoute && prevent == "navigating"));
     }

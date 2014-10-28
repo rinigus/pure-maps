@@ -182,7 +182,7 @@ Page {
                 }
                 onCheckedChanged: {
                     map.autoCenter = autoCenterItem.checked;
-                    app.setConf("auto_center", map.autoCenter);
+                    app.conf.set("auto_center", map.autoCenter);
                     map.autoCenter && map.centerOnPosition();
                 }
             }
@@ -199,7 +199,7 @@ Page {
                 }
                 onCheckedChanged: {
                     map.showNarrative = showNarrativeItem.checked;
-                    app.setConf("show_routing_narrative", map.showNarrative);
+                    app.conf.set("show_routing_narrative", map.showNarrative);
                     map.showNarrative || map.setRoutingStatus(null);
                 }
             }

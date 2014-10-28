@@ -48,6 +48,6 @@ PositionSource {
     function initProperties() {
         if (!py.ready)
             return py.onReadyChanged.connect(gps.initProperties);
-        gps.updateInterval = py.evaluate("poor.conf.gps_update_interval");
+        gps.updateInterval = app.conf.get("gps_update_interval");
     }
 }

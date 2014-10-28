@@ -310,11 +310,11 @@ Map {
         if (!py.ready)
             return py.onReadyChanged.connect(map.initProperties);
         map.attribution.text = py.evaluate("poor.app.tilesource.attribution");
-        map.autoCenter = py.evaluate("poor.conf.auto_center");
-        map.showNarrative = py.evaluate("poor.conf.show_routing_narrative");
-        var center = py.evaluate("poor.conf.center");
+        map.autoCenter = app.conf.get("auto_center");
+        map.showNarrative = app.conf.get("show_routing_narrative");
+        var center = app.conf.get("center");
         map.setCenter(center[0], center[1]);
-        map.setZoomLevel(py.evaluate("poor.conf.zoom"));
+        map.setZoomLevel(app.conf.get("zoom"));
         map.updateTiles();
         app.updateKeepAlive();
         map.loadPois();

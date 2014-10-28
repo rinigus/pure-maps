@@ -85,6 +85,14 @@ class ConfigurationStore(AttrDict):
             out[name] = copy.deepcopy(value)
         return out
 
+    def get(self, option):
+        """Return the value of `option`."""
+        root = self
+        for section in option.split(".")[:-1]:
+            root = root[section]
+        name = option.split(".")[-1]
+        return copy.deepcopy(root[name])
+
     def get_default(self, option):
         """Return the default value of `option`."""
         defaults = DEFAULTS

@@ -28,14 +28,13 @@ Column {
             MenuItem { text: "Best" }
         }
         Component.onCompleted: {
-            var closest = py.evaluate(
-                "poor.conf.guides.foursquare.sort_by_distance");
+            var closest = app.conf.get("guides.foursquare.sort_by_distance");
             closestComboBox.currentIndex = closest ? 0 : 1;
         }
         onCurrentIndexChanged: {
             var option = "guides.foursquare.sort_by_distance";
             var value = closestComboBox.currentIndex == 0;
-            app.setConf(option, value);
+            app.conf.set(option, value);
         }
     }
 }

@@ -41,12 +41,12 @@ Page {
                 }
                 property var keys: ["never", "navigating", "always"]
                 Component.onCompleted: {
-                    var key = py.evaluate("poor.conf.keep_alive");
+                    var key = app.conf.get("keep_alive");
                     sleepComboBox.currentIndex = sleepComboBox.keys.indexOf(key);
                 }
                 onCurrentIndexChanged: {
                     var index = sleepComboBox.currentIndex;
-                    app.setConf("keep_alive", sleepComboBox.keys[index]);
+                    app.conf.set("keep_alive", sleepComboBox.keys[index]);
                     app.updateKeepAlive();
                 }
             }

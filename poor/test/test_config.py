@@ -31,6 +31,10 @@ class TestConfigurationStore(poor.test.TestCase):
     def teardown_method(self, method):
         os.remove(self.path)
 
+    def test_get(self):
+        zoom = poor.conf.get("zoom")
+        assert zoom == 15
+
     def test_get_default(self):
         zoom = poor.conf.get_default("zoom")
         assert zoom == 15

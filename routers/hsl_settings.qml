@@ -103,12 +103,12 @@ Column {
         }
         property var keys: ["default", "fastest", "least_transfers", "least_walking"]
         Component.onCompleted: {
-            var key = py.evaluate("poor.conf.routers.hsl.optimize");
+            var key = app.conf.get("routers.hsl.optimize");
             prefComboBox.currentIndex = prefComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
             var index = prefComboBox.currentIndex;
-            app.setConf("routers.hsl.optimize", prefComboBox.keys[index]);
+            app.conf.set("routers.hsl.optimize", prefComboBox.keys[index]);
         }
     }
     Row {
@@ -119,24 +119,26 @@ Column {
             id: repeater
             model: 5
             property var keys: ["bus", "tram", "metro", "train", "uline"]
-            property string path: "routers.hsl.transport_types"
+            property string option: "routers.hsl.transport_types"
             Switch {
                 id: vehicleSwitch
                 icon.opacity: 0.9
                 icon.source: "hsl/" + repeater.keys[index] + ".png"
                 width: parent.width/5
                 Component.onCompleted: {
-                    var args = [repeater.path, repeater.keys[index]];
-                    vehicleSwitch.checked =
-                        py.call_sync("poor.conf.set_contains", args);
+                    vehicleSwitch.checked = app.conf.set_contains(
+                        repeater.option, repeater.keys[index]);
                 }
                 onCheckedChanged: {
-                    var fun = vehicleSwitch.checked ?
-                        "poor.conf.set_add" : "poor.conf.set_remove";
-                    py.call_sync(fun, [repeater.path, repeater.keys[index]]);
-                    if (repeater.keys[index] == "bus")
+                    vehicleSwitch.checked ?
+                        app.conf.set_add(repeater.option, repeater.keys[index]) :
+                        app.conf.set_remove(repeater.option, repeater.keys[index]);
+                    if (repeater.keys[index] == "bus") {
                         // Include service lines when toggling bus use.
-                        py.call_sync(fun, [repeater.path, "service"]);
+                        vehicleSwitch.checked ?
+                            app.conf.set_add(repeater.option, "service") :
+                            app.conf.set_remove(repeater.option, "service");
+                    }
                 }
             }
         }
