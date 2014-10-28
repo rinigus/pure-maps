@@ -49,7 +49,7 @@ Canvas {
     property var    simplePaths: {}
 
     Timer {
-        // Use an timer to ensure updates if map panned.
+        // Use a timer to ensure updates if map panned.
         // Needed since Sailfish OS 1.1.0.38.
         interval: 500
         repeat: true
@@ -109,7 +109,8 @@ Canvas {
     onPathChanged: {
         // Update canvas in conjunction with panning the map
         // only when we actually have a route to display.
-        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
+        if (canvas.context)
+            canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         canvas.simplePaths = {};
         canvas.hasPath = canvas.path.x.length > 0;
         if (canvas.hasPath) {
@@ -136,6 +137,7 @@ Canvas {
 
     function initContextProperties() {
         // Initialize context paint properties.
+        if (!canvas.context) return;
         canvas.context.globalAlpha = 0.5;
         canvas.context.lineCap = "round";
         canvas.context.lineJoin = "round";
