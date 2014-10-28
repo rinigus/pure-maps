@@ -90,7 +90,7 @@ Dialog {
         var query = listView.searchField.text.toLowerCase();
         var nstart = 0;
         for (var i = 0; i < dialog.history.length; i++) {
-            var historyItem = dialog.history[i].toLowerCase()
+            var historyItem = dialog.history[i].toLowerCase();
             if (query.length > 0 && historyItem.indexOf(query) == 0) {
                 listView.model.insert(nstart++, {"type": dialog.history[i]});
                 if (listView.model.count >= 100) break;

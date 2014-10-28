@@ -123,8 +123,8 @@ Page {
         } else if (page.status == PageStatus.Activating) {
             listView.model.clear();
             page.loading = true;
-            page.title = ""
-            busyLabel.text = "Searching"
+            page.title = "";
+            busyLabel.text = "Searching";
         } else if (page.status == PageStatus.Active) {
             var geocodePage = app.pageStack.previousPage();
             page.populate(geocodePage.query);

@@ -71,7 +71,7 @@ Page {
                     var dialog = app.pageStack.push("GeocoderPage.qml");
                     dialog.accepted.connect(function() {
                         usingButton.value = py.evaluate("poor.app.geocoder.name");
-                    })
+                    });
                 }
             }
             SearchField {
@@ -106,7 +106,7 @@ Page {
         var query = listView.searchField.text.toLowerCase();
         var nstart = 0;
         for (var i = 0; i < page.history.length; i++) {
-            var historyItem = page.history[i].toLowerCase()
+            var historyItem = page.history[i].toLowerCase();
             if (query.length > 0 && historyItem.indexOf(query) == 0) {
                 listView.model.insert(nstart++, {"place": page.history[i]});
                 if (listView.model.count >= 100) break;

@@ -69,11 +69,11 @@ Map {
         // Round piched zoom level to avoid fuzziness.
         if (map.zoomLevel < map.zoomLevelPrev) {
             map.zoomLevel % 1 < 0.75 ?
-                map.setZoomLevel(Math.floor(map.zoomLevel)):
+                map.setZoomLevel(Math.floor(map.zoomLevel)) :
                 map.setZoomLevel(Math.ceil(map.zoomLevel));
         } else if (map.zoomLevel > map.zoomLevelPrev) {
             map.zoomLevel % 1 > 0.25 ?
-                map.setZoomLevel(Math.ceil(map.zoomLevel)):
+                map.setZoomLevel(Math.ceil(map.zoomLevel)) :
                 map.setZoomLevel(Math.floor(map.zoomLevel));
         }
     }
@@ -172,7 +172,7 @@ Map {
          */
         map.clearRoute();
         map.route.setPath(route.x, route.y);
-        map.route.attribution = route.attribution || ""
+        map.route.attribution = route.attribution || "";
         map.route.mode = route.mode || "car";
         map.route.redraw();
         var args = [route.mode || "car"];
@@ -266,7 +266,7 @@ Map {
 
     function fitViewToPois(pois) {
         // Set center and zoom so that given POIs are visible.
-        var coords = []
+        var coords = [];
         for (var i = 0; i < pois.length; i++)
             coords.push(QtPositioning.coordinate(pois[i].y, pois[i].x));
         map.fitViewtoCoordinates(coords);
@@ -391,7 +391,7 @@ Map {
         if (!py.ready) return;
         var data = [];
         for (var i = 0; i < map.pois.length; i++) {
-            var poi = {}
+            var poi = {};
             poi.x = map.pois[i].coordinate.longitude;
             poi.y = map.pois[i].coordinate.latitude;
             poi.title = map.pois[i].title;
