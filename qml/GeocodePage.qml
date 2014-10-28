@@ -119,5 +119,8 @@ Page {
                 if (listView.model.count >= 100) break;
             }
         }
+        // XXX: Work around a bug causing the search field to disappear
+        // if text has been typed, but there are no matches.
+        listView.model.append({"place": listView.searchField.text});
     }
 }
