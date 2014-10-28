@@ -37,18 +37,32 @@ Canvas {
     contextType: "2d"
     renderStrategy: Canvas.Cooperative
     z: 200
+
     property string attribution: ""
-    property bool initDone: false
+    property bool   changed: false
+    property bool   hasPath: false
+    property bool   initDone: false
     property string mode: "car"
-    property var paintX: 0
-    property var paintY: 0
-    property var path: {"x": [], "y": []}
-    property var simplePaths: {}
+    property var    paintX: 0
+    property var    paintY: 0
+    property var    path: {"x": [], "y": []}
+    property var    simplePaths: {}
+
+    Timer {
+        // Use an timer to ensure updates if map panned.
+        // Needed since Sailfish OS 1.1.0.38.
+        interval: 500
+        repeat: true
+        running: canvas.hasPath
+        onTriggered: canvas.changed && canvas.requestPaint();
+    }
 
     onPaint: {
+        console.log("onPaint: " + Date.now());
         // Clear the whole canvas and redraw entire route.
         // This gets called continuously as the map is panned!
-        if (canvas.path.x.length == 0) return;
+        if (!canvas.hasPath) return;
+        if (!canvas.changed) return;
         canvas.initDone || canvas.initContextProperties();
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.floor(map.zoomLevel);
@@ -89,13 +103,17 @@ Canvas {
         }
         canvas.paintX = map.center.longitude;
         canvas.paintY = map.center.latitude;
+        canvas.changed = false;
         canvas.context.stroke();
     }
 
     onPathChanged: {
         // Update canvas in conjunction with panning the map
         // only when we actually have a route to display.
-        if (path.x.length > 0) {
+        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.simplePaths = {};
+        canvas.hasPath = canvas.path.x.length > 0;
+        if (canvas.hasPath) {
             canvas.x = Qt.binding(function() {
                 return (this.paintX - map.center.longitude) * map.scaleX;
             });
@@ -108,12 +126,13 @@ Canvas {
         }
     }
 
+    onXChanged: canvas.changed = true;
+    onYChanged: canvas.changed = true;
+
     function clear() {
         // Clear path from the canvas.
         canvas.path = {"x": [], "y": []};
-        canvas.simplePaths = {};
-        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.requestPaint();
+        canvas.redraw();
     }
 
     function initContextProperties() {
@@ -128,15 +147,14 @@ Canvas {
 
     function redraw() {
         // Clear canvas and redraw entire route.
+        canvas.changed = true;
         canvas.requestPaint();
     }
 
     function setPath(x, y) {
         // Set route path from coordinates.
         canvas.path = {"x": x, "y": y};
-        canvas.simplePaths = {};
-        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.requestPaint();
+        canvas.redraw();
     }
 
     function setSimplePath(zoom, path) {
