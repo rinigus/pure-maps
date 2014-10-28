@@ -26,7 +26,6 @@ except ImportError:
     # Allow testing Python backend alone.
     print("PyOtherSide not found, continuing anyway!",
           file=sys.stderr)
-
     class pyotherside:
         def atexit(*args): pass
         def send(*args): pass

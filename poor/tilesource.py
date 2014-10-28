@@ -58,6 +58,7 @@ class TileSource:
 
     def download(self, x, y, zoom, retry=1):
         """Download map tile and return local file path or ``None``."""
+        x, y, zoom = map(int, (x, y, zoom))
         url = self.url.format(x=x, y=y, z=zoom)
         root = poor.CACHE_HOME_DIR
         directory = os.path.join(root, self.id, str(zoom), str(x))
