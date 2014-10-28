@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "."
 
 Page {
+    id: page
     allowedOrientations: Orientation.Portrait
     SilicaListView {
         id: listView
@@ -88,18 +89,28 @@ Page {
         model: ListModel {}
         VerticalScrollDecorator {}
     }
-    Component.onCompleted: {
+    onStatusChanged: {
+        if (page.status == PageStatus.Activating) {
+            listView.visible = false;
+            page.populate();
+        } else if (page.status == PageStatus.Active) {
+            page.scrollToActive();
+            listView.visible = true;
+        }
+    }
+    function populate() {
         // Load narrative from the Python backend.
         var args = [map.center.longitude, map.center.latitude];
         py.call("poor.app.narrative.get_maneuvers", args, function(maneuvers) {
-            var activeIndex = -1;
-            for (var i = 0; i < maneuvers.length; i++) {
+            for (var i = 0; i < maneuvers.length; i++)
                 listView.model.append(maneuvers[i]);
-                if (maneuvers[i].active) activeIndex = i;
-            }
-            // XXX: Positioning at ListView.Center doesn't seem to work.
-            activeIndex = Math.max(0, activeIndex-2);
-            listView.positionViewAtIndex(activeIndex, ListView.Contain);
         });
+    }
+    function scrollToActive() {
+        // Scroll view to the active maneuver.
+        for (var i = 0; i < listView.model.count; i++) {
+            if (!listView.model.get(i).active) continue;
+            listView.positionViewAtIndex(i, ListView.Center);
+        }
     }
 }
