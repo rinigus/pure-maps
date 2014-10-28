@@ -59,8 +59,12 @@ Page {
             }
         }
         header: Column {
+            height: pageHeader.height + usingButton.height + searchField.height;
             width: parent.width
-            PageHeader { title: "Find Place" }
+            PageHeader {
+                id: pageHeader
+                title: "Find Place"
+            }
             ValueButton {
                 id: usingButton
                 label: "Using"

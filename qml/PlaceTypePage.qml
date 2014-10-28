@@ -59,8 +59,9 @@ Dialog {
             }
         }
         header: Column {
+            height: dialogHeader.height + searchField.height
             width: parent.width
-            DialogHeader {}
+            DialogHeader { id: dialogHeader }
             SearchField {
                 id: searchField
                 placeholderText: "Type of venue"

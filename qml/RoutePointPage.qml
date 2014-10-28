@@ -59,8 +59,9 @@ Dialog {
             }
         }
         header: Column {
+            height: dialogHeader.height + gpsItem.height + searchField.height
             width: parent.width
-            DialogHeader {}
+            DialogHeader { id: dialogHeader }
             ListItem {
                 id: gpsItem
                 contentHeight: Theme.itemSizeSmall
