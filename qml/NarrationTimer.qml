@@ -34,13 +34,13 @@ Timer {
     onTriggered: {
         // Query maneuver narrative from Python and update status.
         if (!py.ready) return;
-        if (map.position.coordinate.distanceTo(timer.coordPrev) < 10) return;
-        var x = map.position.coordinate.longitude;
-        var y = map.position.coordinate.latitude;
-        py.call("poor.app.narrative.get_display", [x, y], function(status) {
+        var coord = map.position.coordinate;
+        if (coord.distanceTo(timer.coordPrev) < 10) return;
+        var args = [coord.longitude, coord.latitude];
+        py.call("poor.app.narrative.get_display", args, function(status) {
             map.setRoutingStatus(status);
-            timer.coordPrev.longitude = map.position.coordinate.longitude;
-            timer.coordPrev.latitude = map.position.coordinate.latitude;
+            timer.coordPrev.longitude = coord.longitude;
+            timer.coordPrev.latitude = coord.latitude;
         });
     }
 }

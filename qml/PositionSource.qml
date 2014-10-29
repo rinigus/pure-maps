@@ -32,14 +32,14 @@ PositionSource {
         // http://bugreports.qt-project.org/browse/QTBUG-36298
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 30) return;
+        var coord = gps.position.coordinate;
         if (!gps.coordPrev) {
-            var x = gps.position.coordinate.longitude;
-            var y = gps.position.coordinate.latitude;
-            gps.coordPrev = QtPositioning.coordinate(y, x);
-        } else if (gps.coordPrev.distanceTo(gps.position.coordinate) > threshold) {
-            gps.direction = gps.coordPrev.azimuthTo(gps.position.coordinate);
-            gps.coordPrev.longitude = gps.position.coordinate.longitude;
-            gps.coordPrev.latitude = gps.position.coordinate.latitude;
+            gps.coordPrev = QtPositioning.coordinate(
+                coord.latitude, coord.longitude);
+        } else if (gps.coordPrev.distanceTo(coord) > threshold) {
+            gps.direction = gps.coordPrev.azimuthTo(coord);
+            gps.coordPrev.longitude = coord.longitude;
+            gps.coordPrev.latitude = coord.latitude;
             gps.timePrev = Date.now();
         } else if (gps.direction && Date.now() - gps.timePrev > 5*60*1000) {
             gps.direction = undefined;
