@@ -64,6 +64,7 @@ Page {
                               "attribution": "Routing courtesy of MapQuest."});
 
                 map.autoCenter = false;
+                map.hidePoiLabels();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.pop();

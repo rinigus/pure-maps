@@ -305,6 +305,12 @@ Map {
 
     }
 
+    function hidePoiLabels() {
+        // Hide label bubble of all POI markers.
+        for (var i = 0; i < map.pois.length; i++)
+            map.pois[i].labelVisible = false;
+    }
+
     function initProperties() {
         // Load default values and start periodic updates.
         if (!py.ready)
