@@ -102,6 +102,7 @@ Dialog {
         }
         // XXX: Work around a bug causing the search field to disappear
         // if text has been typed, but there are no matches.
-        listView.model.append({"place": listView.searchField.text});
+        if (listView.model.count == 0)
+            listView.model.append({"type": listView.searchField.text});
     }
 }
