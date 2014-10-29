@@ -1,24 +1,13 @@
-Poor Maps 0.12
-==============
-
- [X] Return to the last viewed page when showing the menu
- [X] Fix tile loading with Sailfish OS 1.1.0.38 "Uitukka"
- [X] Fix route polyline rendering with Sailfish OS 1.1.0.38 "Uitukka"
- [X] Fix dialog headers with Sailfish OS 1.1.0.38 "Uitukka"
- [X] Fix narrative page scrolling with Sailfish OS 1.1.0.38 "Uitukka"
- [X] Fix disappearing search fields with Sailfish OS 1.1.0.38 "Uitukka"
- [X] Update OSM Roads tile source URL
-
 Poor Maps 1.0
 =============
 
- * Add a cover that shows narrative when navigating
  * Add a compass arrow that shows which way one is facing
    - http://qt-project.org/doc/qt-5/qml-qtsensors-compass.html
+ * Add a cover that shows narrative when navigating
  * Add a no-download mode?
    - http://together.jolla.com/question/53124
- * Add auto-rotate on bearing when the Map component supports it
  * Allow landscape for the map when gestures work right
+ * Add auto-rotate on bearing when the Map component supports it
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations (strings in QML, Python and JSON
    files as well narrative returned by routing APIs)

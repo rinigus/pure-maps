@@ -1,3 +1,14 @@
+Poor Maps 0.12
+==============
+
+ * Return to the last viewed page when showing the menu
+ * Fix tile loading with Sailfish OS 1.1.0.38 "Uitukka"
+ * Fix route polyline rendering with Sailfish OS 1.1.0.38 "Uitukka"
+ * Fix dialog headers with Sailfish OS 1.1.0.38 "Uitukka"
+ * Fix narrative page scrolling with Sailfish OS 1.1.0.38 "Uitukka"
+ * Fix disappearing search fields with Sailfish OS 1.1.0.38 "Uitukka"
+ * Update OSM Roads tile source URL
+
 Poor Maps 0.11
 ==============
 
