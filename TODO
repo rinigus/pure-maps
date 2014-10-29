@@ -7,6 +7,7 @@ Poor Maps 0.12
  [X] Fix dialog headers with Sailfish OS 1.1.0.38 "Uitukka"
  [X] Fix narrative page scrolling with Sailfish OS 1.1.0.38 "Uitukka"
  [X] Fix disappearing search fields with Sailfish OS 1.1.0.38 "Uitukka"
+ [X] Update OSM Roads tile source URL
 
 Poor Maps 1.0
 =============

@@ -93,6 +93,7 @@ class TileSource:
             else:
                 # Otherwise we probably have no reason to expect a different
                 # outcome if we were to force an immediate retry.
+                print(url)
                 print("Failed to download tile: {}: {}"
                       .format(error.__class__.__name__, str(error)),
                       file=sys.stderr)
