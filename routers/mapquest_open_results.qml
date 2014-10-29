@@ -67,7 +67,7 @@ Page {
                 map.hidePoiLabels();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
-                app.pageStack.pop();
+                app.pageStack.navigateBack(PageStackAction.Immediate);
             } else {
                 busyLabel.text = "No results";
                 page.loading = false;
