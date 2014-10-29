@@ -176,9 +176,9 @@ Page {
             page.title = "";
             busyLabel.text = "Searching";
         } else if (page.status == PageStatus.Active) {
+            listView.visible = true;
             if (page.populated) return;
             page.populate();
-            listView.visible = true;
         } else if (page.status == PageStatus.Inactive) {
             listView.visible = false;
         }

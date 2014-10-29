@@ -50,8 +50,9 @@ Column {
             width: parent.width/2
             property var date: new Date()
             onClicked: {
-                var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {
-                    date: dateButton.date
+                var dialog = pageStack.push(
+                    "Sailfish.Silica.DatePickerDialog", {
+                        date: dateButton.date
                 });
                 dialog.accepted.connect(function() {
                     dateButton.date = dialog.date;
@@ -74,10 +75,11 @@ Column {
             width: parent.width/2
             property var time: new Date()
             onClicked: {
-                var dialog = pageStack.push("Sailfish.Silica.TimePickerDialog", {
-                    hourMode: DateTime.TwentyFourHours,
-                    hour: time.getHours(),
-                    minute: time.getMinutes()
+                var dialog = pageStack.push(
+                    "Sailfish.Silica.TimePickerDialog", {
+                        hourMode: DateTime.TwentyFourHours,
+                        hour: time.getHours(),
+                        minute: time.getMinutes()
                 });
                 dialog.accepted.connect(function() {
                     timeButton.time = dialog.time;

@@ -130,13 +130,13 @@ Page {
             page.title = "";
             busyLabel.text = "Searching";
         } else if (page.status == PageStatus.Active) {
+            listView.visible = true;
             if (page.populated) return;
             var nearbyPage = app.pageStack.previousPage();
             page.populate(nearbyPage.query,
                           nearbyPage.near,
                           nearbyPage.radius);
 
-            listView.visible = true;
         } else if (page.status == PageStatus.Inactive) {
             listView.visible = false;
         }
