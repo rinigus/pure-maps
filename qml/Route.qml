@@ -41,7 +41,6 @@ Canvas {
     property string attribution: ""
     property bool   changed: false
     property bool   hasPath: false
-    property bool   initDone: false
     property string mode: "car"
     property var    paintX: 0
     property var    paintY: 0
@@ -57,12 +56,22 @@ Canvas {
         onTriggered: canvas.changed && canvas.requestPaint();
     }
 
+    onContextChanged: {
+        // Initialize context paint properties.
+        if (!canvas.context) return;
+        canvas.context.globalAlpha = 0.5;
+        canvas.context.lineCap = "round";
+        canvas.context.lineJoin = "round";
+        canvas.context.lineWidth = 10;
+        canvas.context.strokeStyle = "#0540ff";
+        canvas.redraw();
+    }
+
     onPaint: {
         // Clear the whole canvas and redraw entire route.
         // This gets called continuously as the map is panned!
         if (!canvas.hasPath) return;
         if (!canvas.changed) return;
-        canvas.initDone || canvas.initContextProperties();
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.floor(map.zoomLevel);
         var key = zoom.toString();
@@ -133,17 +142,6 @@ Canvas {
         // Clear path from the canvas.
         canvas.path = {"x": [], "y": []};
         canvas.redraw();
-    }
-
-    function initContextProperties() {
-        // Initialize context paint properties.
-        if (!canvas.context) return;
-        canvas.context.globalAlpha = 0.5;
-        canvas.context.lineCap = "round";
-        canvas.context.lineJoin = "round";
-        canvas.context.lineWidth = 10;
-        canvas.context.strokeStyle = "#0540ff";
-        canvas.initDone = true;
     }
 
     function redraw() {
