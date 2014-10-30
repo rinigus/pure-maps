@@ -27,7 +27,6 @@ Map {
     anchors.right: app.contentItem.right
     anchors.top: app.contentItem.bottom
     center: QtPositioning.coordinate(60.169, 24.941)
-    focus: true
     gesture.enabled: true
     height: app.bottomMargin
     minimumZoomLevel: 3
@@ -80,12 +79,6 @@ Map {
                 map.setZoomLevel(Math.ceil(map.zoomLevel)) :
                 map.setZoomLevel(Math.floor(map.zoomLevel));
         }
-    }
-
-    Keys.onPressed: {
-        // Allow zooming with plus and minus keys on the emulator.
-        (event.key == Qt.Key_Plus)  && map.setZoomLevel(map.zoomLevel+1);
-        (event.key == Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
     }
 
     onCenterChanged: {

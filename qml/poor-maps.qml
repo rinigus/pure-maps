@@ -58,6 +58,11 @@ ApplicationWindow {
         py.setHandler("render-tile", map.renderTile);
         py.setHandler("show-tile", map.showTile);
     }
+    Keys.onPressed: {
+        // Allow zooming with plus and minus keys on the emulator.
+        (event.key == Qt.Key_Plus)  && map.setZoomLevel(map.zoomLevel+1);
+        (event.key == Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
+    }
     onApplicationActiveChanged: {
         py.ready && !app.applicationActive && app.save();
         app.updateKeepAlive();
