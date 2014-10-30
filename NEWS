@@ -1,3 +1,9 @@
+Poor Maps 0.12.1
+================
+
+ * Fix route polyline style resetting when minimizing and restoring
+   application with Sailfish OS 1.1.0.38 "Uitukka"
+
 Poor Maps 0.12
 ==============
 
