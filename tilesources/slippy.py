@@ -53,7 +53,7 @@ def list_tiles(xmin, xmax, ymin, ymax, zoom):
     return sorted(tiles, key=lambda tile: ((tile["x"] - xc)**2 +
                                            (tile["y"] - yc)**2))
 
-@functools.lru_cache(64)
+@functools.lru_cache(256)
 def num2deg(xtile, ytile, zoom):
     """Convert tile numbers to longitude, latitude."""
     xmerc = (xtile / 2**zoom * 2 - 1) * math.pi
