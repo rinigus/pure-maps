@@ -1,3 +1,11 @@
+Poor Maps 0.13
+==============
+
+ [ ] Add support for custom Mercator tile formats
+     - Update documentation in tilesources/README
+ [ ] Add elliptical mercator tile format (format: "slippy_elliptical"
+     in the JSON definition file)
+
 Poor Maps 1.0
 =============
 

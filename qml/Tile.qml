@@ -28,8 +28,6 @@ MapQuickItem {
             id: image
             smooth: false
             source: tile.uri
-            sourceSize.width: 256
-            sourceSize.height: 256
         }
     }
     property int uid

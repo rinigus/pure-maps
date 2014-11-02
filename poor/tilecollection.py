@@ -17,7 +17,6 @@
 
 """A collection of map tiles visible on screen."""
 
-import collections
 import poor
 import threading
 
@@ -30,10 +29,17 @@ class Tile:
 
     def __init__(self, uid):
         """Initialize a :class:`Tile` instance."""
-        self.ready = True
         self.uid = uid
-        self.x = -1
-        self.y = -1
+        self.reset()
+
+    def reset(self):
+        """Reset properties."""
+        self.ready = True
+        self.path = ""
+        self.xmin = -1
+        self.xmax = -1
+        self.ymin = -1
+        self.ymax = -1
         self.zoom = -1
 
 
@@ -44,52 +50,37 @@ class TileCollection:
     def __init__(self):
         """Initialize a :class:`TileCollection` instance."""
         self._lock = threading.Lock()
-        self._tiles = collections.deque()
+        self._tiles = []
 
     @poor.util.locked_method
-    def get(self, x, y, zoom):
-        """Return tile at position or ``None``."""
-        # Iterate from the right, append found tile to the right.
-        for i in reversed(range(len(self._tiles))):
-            tile = self._tiles[i]
-            if tile.zoom == zoom and tile.x == x and tile.y == y:
-                del self._tiles[i]
-                self._tiles.append(tile)
+    def get(self, path):
+        """Return requested tile ``None``."""
+        for tile in self._tiles:
+            if tile.path == path:
                 return tile
         return None
 
     @poor.util.locked_method
     def get_free(self, xmin, xmax, ymin, ymax, zoom):
         """Return a random tile outside bounds."""
-        # Iterate from the left, append found tile to the right.
-        for i, tile in enumerate(self._tiles):
+        for tile in self._tiles:
             if not tile.ready: continue
             if (tile.zoom != zoom or
-                tile.x + 1 < xmin or
-                tile.x > xmax or
-                tile.y + 1 < ymin or
-                tile.y > ymax):
-                del self._tiles[i]
-                self._tiles.append(tile)
+                tile.xmin  > xmax or
+                tile.xmax  < xmin or
+                tile.ymin  > ymax or
+                tile.ymax  < ymin):
                 tile.ready = False
                 return tile
-
         # If no free tile found, grow collection.
-        nscreen = (xmax - xmin + 1) * (ymax - ymin + 1)
-        nneeded = nscreen * 3 - len(self._tiles)
-        for i in range(max(1, nneeded)):
+        for i in range(len(self._tiles)+1):
             tile = Tile(len(self._tiles)+1)
-            self._tiles.appendleft(tile)
-        tile = Tile(len(self._tiles)+1)
-        self._tiles.append(tile)
-        tile.ready = False
-        return tile
+            self._tiles.append(tile)
+        self._tiles[-1].ready = False
+        return self._tiles[-1]
 
     @poor.util.locked_method
     def reset(self):
         """Reset tile properties."""
         for tile in self._tiles:
-            tile.ready = True
-            tile.x = -1
-            tile.y = -1
-            tile.zoom = -1
+            tile.reset()

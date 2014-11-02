@@ -20,6 +20,4 @@ import QtQuick 2.0
 
 Image {
     smooth: false
-    sourceSize.width: 256
-    sourceSize.height: 256
 }

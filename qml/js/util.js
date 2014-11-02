@@ -16,14 +16,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * Calculations below between longitude/latitude coordinates,
+ * Mercator-projected coordinates and pixel positions on screen
+ * assume a spherical Mercator map canvas.
+ *
+ * http://en.wikipedia.org/wiki/Mercator_projection
+ * http://wiki.openstreetmap.org/wiki/Mercator
+ */
+
 function deg2rad(deg) {
     // Convert degrees to radians.
-    return (deg/360) * (2 * Math.PI);
+    return deg / 180 * Math.PI;
 }
 
 function rad2deg(rad) {
     // Convert radians to degrees.
-    return (rad / (2 * Math.PI)) * 360;
+    return rad / Math.PI * 180;
 }
 
 function siground(x, n) {
@@ -34,25 +43,21 @@ function siground(x, n) {
 
 function xcoord2xpos(x, xmin, xmax, width) {
     // Convert X-coordinate to pixel X-position on screen.
-    // http://en.wikipedia.org/wiki/Mercator_projection
     return Math.round((x - xmin) * (width / (xmax - xmin)));
 }
 
 function xpos2xcoord(x, xmin, xmax, width) {
     // Convert screen pixel X-position to X-coordinate.
-    // http://en.wikipedia.org/wiki/Mercator_projection
     return xmin + (x / (width / (xmax - xmin)));
 }
 
 function ycoord2ymercator(y) {
     // Convert Y-coordinate to Mercator projected Y-coordinate.
-    // http://en.wikipedia.org/wiki/Mercator_projection
     return Math.log(Math.tan(Math.PI/4 + deg2rad(y)/2));
 }
 
 function ycoord2ypos(y, ymin, ymax, height) {
     // Convert Y-coordinate to pixel Y-position on screen.
-    // http://en.wikipedia.org/wiki/Mercator_projection
     ymin = ycoord2ymercator(ymin);
     ymax = ycoord2ymercator(ymax);
     return Math.round((ymax - ycoord2ymercator(y)) * (height / (ymax - ymin)));
@@ -60,13 +65,11 @@ function ycoord2ypos(y, ymin, ymax, height) {
 
 function ymercator2ycoord(y) {
     // Convert Mercator projected Y-coordinate to Y-coordinate.
-    // http://en.wikipedia.org/wiki/Mercator_projection
     return rad2deg(2 * Math.atan(Math.exp(y)) - Math.PI/2);
 }
 
 function ypos2ycoord(y, ymin, ymax, height) {
     // Convert screen pixel Y-position to Y-coordinate.
-    // http://en.wikipedia.org/wiki/Mercator_projection
     ymin = ymercator2ycoord(ymin);
     ymax = ymercator2ycoord(ymax);
     return (ymin + (ymercator2ycoord(y) / (height / (ymax - ymin))));

@@ -42,13 +42,3 @@ class TestModule(poor.test.TestCase):
         assert y[0] ==   38.500
         assert y[1] ==   40.700
         assert y[2] ==   43.252
-
-    def test_deg2num(self):
-        xtile, ytile = poor.util.deg2num(24.94, 60.17, 14)
-        assert xtile == 9327
-        assert ytile == 4742
-
-    def test_num2deg(self):
-        x, y = poor.util.num2deg(9327, 4742, 14)
-        assert abs(x - 24.939) < 0.001
-        assert abs(y - 60.174) < 0.001

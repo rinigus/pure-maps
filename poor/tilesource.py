@@ -18,10 +18,12 @@
 """Map tile source with cached tile downloads."""
 
 import http.client
+import importlib.machinery
 import os
 import poor
 import queue
 import sys
+import time
 import urllib.parse
 
 __all__ = ("TileSource",)
@@ -52,18 +54,18 @@ class TileSource:
             self._http_queue = queue.Queue()
             self.id = id
             self.name = values["name"]
+            self._provider = None
             self.source = values["source"]
             self.url = values["url"]
+            self._init_provider(values["format"])
             self._init_http_queue()
 
-    def download(self, x, y, zoom, retry=1):
+    def download(self, tile, retry=1):
         """Download map tile and return local file path or ``None``."""
-        x, y, zoom = map(int, (x, y, zoom))
-        url = self.url.format(x=x, y=y, z=zoom)
-        root = poor.CACHE_HOME_DIR
-        directory = os.path.join(root, self.id, str(zoom), str(x))
-        basename = "{:d}{}".format(y, self.extension)
-        path = os.path.join(directory, basename)
+        url = self.url.format(**tile)
+        path = self.tile_path(tile)
+        path = os.path.join(poor.CACHE_HOME_DIR, self.id, path)
+        directory = os.path.dirname(path)
         if os.path.isfile(path):
             # Failed downloads can result in empty files.
             if os.stat(path).st_size > 0:
@@ -79,7 +81,8 @@ class TileSource:
                                 .format(repr(response.status),
                                         repr(response.reason)))
 
-            poor.util.makedirs(directory)
+            if not os.path.isdir(directory):
+                poor.util.makedirs(directory)
             with open(path, "wb") as f:
                 f.write(response.read(1048576))
             return path
@@ -102,7 +105,7 @@ class TileSource:
             self._http_queue.task_done()
             self._http_queue.put(httpc)
         if retry > 0:
-            return self.download(x, y, zoom, retry-1)
+            return self.download(tile, retry-1)
         return None
 
     def _init_http_queue(self):
@@ -117,6 +120,24 @@ class TileSource:
         agent = "poor-maps/{}".format(poor.__version__)
         self._headers = {"Connection": "Keep-Alive",
                          "User-Agent": agent}
+
+    def _init_provider(self, format):
+        """Initialize tile format provider module from `format`."""
+        leaf = os.path.join("tilesources", "{}.py".format(format))
+        path = os.path.join(poor.DATA_HOME_DIR, leaf)
+        if not os.path.isfile(path):
+            path = os.path.join(poor.DATA_DIR, leaf)
+            if not os.path.isfile(path):
+                raise ValueError("Tile format %s implementation not found"
+                                 .format(repr(format)))
+
+        name = "poor.tilesource.format{:d}".format(int(1000*time.time()))
+        loader = importlib.machinery.SourceFileLoader(name, path)
+        self._provider = loader.load_module(name)
+
+    def list_tiles(self, xmin, xmax, ymin, ymax, zoom):
+        """Return a sequence of tiles within given bounding box."""
+        return self._provider.list_tiles(xmin, xmax, ymin, ymax, zoom)
 
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
@@ -135,3 +156,12 @@ class TileSource:
         if self.url.startswith("https:"):
             return http.client.HTTPSConnection(host, timeout=timeout)
         raise ValueError("Bad URL: {}".format(repr(self.url)))
+
+    def tile_corners(self, tile):
+        """Return coordinates of NE, SE, SW, NW corners of given tile."""
+        return self._provider.tile_corners(tile)
+
+    def tile_path(self, tile, extension=None):
+        """Return relative cache path to use for given tile."""
+        extension = extension or self.extension
+        return self._provider.tile_path(tile, extension)

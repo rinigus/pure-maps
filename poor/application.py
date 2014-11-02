@@ -128,30 +128,32 @@ class Application:
                 if default != tilesource:
                     self.set_tilesource(default)
 
-    def _update_tile(self, x, y, xmin, xmax, ymin, ymax, zoom, timestamp):
+    def _update_tile(self, xmin, xmax, ymin, ymax, zoom, tile, timestamp):
         """Download missing tile and ask QML to render it."""
-        tile = self._tilecollection.get(x, y, zoom)
-        if tile is not None:
-            return pyotherside.send("show-tile", tile.uid)
-        path = self.tilesource.download(x, y, zoom)
+        path = self.tilesource.tile_path(tile)
+        item = self._tilecollection.get(path)
+        if item is not None:
+            return pyotherside.send("show-tile", item.uid)
+        path = self.tilesource.download(tile)
         if path is None: return
         # Abort if map moved out of view during download.
         if timestamp != self._timestamp: return
         uri = poor.util.path2uri(path)
-        tile = self._tilecollection.get_free(xmin, xmax, ymin, ymax, zoom)
-        tile.x = x
-        tile.y = y
-        tile.zoom = zoom
-        tile.ready = True
-        xcoord, ycoord = poor.util.num2deg(x, y, zoom)
-        pyotherside.send("render-tile", tile.uid, xcoord, ycoord, zoom, uri)
+        item = self._tilecollection.get_free(xmin, xmax, ymin, ymax, zoom)
+        corners = self.tilesource.tile_corners(tile)
+        item.xmin = min(corner[0] for corner in corners)
+        item.xmax = max(corner[0] for corner in corners)
+        item.ymin = min(corner[1] for corner in corners)
+        item.ymax = max(corner[1] for corner in corners)
+        item.zoom = zoom
+        item.ready = True
+        x, y = corners[3]
+        pyotherside.send("render-tile", item.uid, x, y, zoom, uri)
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
         zoom = int(zoom)
         self._timestamp = int(time.time()*1000)
-        bbox = poor.util.bbox_deg2num(xmin, xmax, ymin, ymax, zoom)
-        xmin, xmax, ymin, ymax = bbox
-        for x, y in poor.util.prod_tiles(xmin, xmax, ymin, ymax):
-            args = (x, y, xmin, xmax, ymin, ymax, zoom)
+        for tile in self.tilesource.list_tiles(xmin, xmax, ymin, ymax, zoom):
+            args = (xmin, xmax, ymin, ymax, zoom, tile)
             self._download_queue.put((args, self._timestamp))
