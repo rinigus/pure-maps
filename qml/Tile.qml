@@ -42,12 +42,12 @@ MapQuickItem {
         var height = Util.ycoord2ymercator(props.nwy) -
             Util.ycoord2ymercator(props.swy);
         var height = height / (2*Math.PI) * total;
-        image.height = Math.ceil(height - 0.25);
+        image.height = Math.ceil(height - 0.4);
     }
     function setWidth(props) {
         // Set tile pixel width from corner coordinates.
         var total = Math.pow(2, props.zoom) * 256;
         var width = (props.nex - props.nwx) / 360 * total;
-        image.width = Math.ceil(width - 0.25);
+        image.width = Math.ceil(width - 0.4);
     }
 }
