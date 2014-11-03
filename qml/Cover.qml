@@ -92,6 +92,10 @@ Cover {
             cover.tiles[i].x = cover.mapXToCoverX(map.tiles[i].x);
             cover.tiles[i].y = cover.mapYToCoverY(map.tiles[i].y);
             cover.tiles[i].z = map.tiles[i].z;
+            var width = map.tiles[i].width;
+            var height = map.tiles[i].height;
+            width && width > 0 && (cover.tiles[i].width = width);
+            height && height > 0 && (cover.tiles[i].height = height);
         }
         for (var i = map.tiles.length; i < cover.tiles.length; i++)
             // Hide remaining tiles if map.tiles has been shrunk.

@@ -19,10 +19,13 @@
 import QtQuick 2.0
 import QtLocation 5.0
 
+import "js/util.js" as Util
+
 MapQuickItem {
     id: tile
     anchorPoint.x: 0
     anchorPoint.y: 0
+    height: image.height
     sourceItem: Item {
         Image {
             id: image
@@ -30,6 +33,21 @@ MapQuickItem {
             source: tile.uri
         }
     }
+    width: image.width
     property int uid
     property string uri
+    function setHeight(props) {
+        // Set tile pixel height from corner coordinates.
+        var total = Math.pow(2, props.zoom) * 256;
+        var height = Util.ycoord2ymercator(props.nwy) -
+            Util.ycoord2ymercator(props.swy);
+        var height = height / (2*Math.PI) * total;
+        image.height = Math.ceil(height - 0.25);
+    }
+    function setWidth(props) {
+        // Set tile pixel width from corner coordinates.
+        var total = Math.pow(2, props.zoom) * 256;
+        var width = (props.nex - props.nwx) / 360 * total;
+        image.width = Math.ceil(width - 0.25);
+    }
 }

@@ -55,6 +55,10 @@ Page {
             page.tiles[i].x = map.tiles[i].x;
             page.tiles[i].y = map.tiles[i].y;
             page.tiles[i].z = map.tiles[i].z;
+            var width = map.tiles[i].width;
+            var height = map.tiles[i].height;
+            width && width > 0 && (page.tiles[i].width = width);
+            height && height > 0 && (page.tiles[i].height = height);
         }
         for (var i = map.tiles.length; i < page.tiles.length; i++)
             // Hide remaining tiles if map.tiles has been shrunk.

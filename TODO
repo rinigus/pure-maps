@@ -3,9 +3,8 @@ Poor Maps 0.13
 
  [X] Add support for custom Mercator tile formats
  [X] Add elliptical Mercator tile format
- [ ] Add quadkey tile format
+ [ ] Add Quadkey tile format
 
- * Handle tile stretching and maybe smooth?
  * Update documentation in tilesources/README
 
 Poor Maps 1.0
@@ -17,9 +16,9 @@ Poor Maps 1.0
  * Add a no-download mode?
    - http://together.jolla.com/question/53124
  * Allow landscape for the map when gestures work right
- * Add auto-rotate on bearing when the Map component supports it
+ * Allow tile formats that require rotation
  * Allow layered tilesources (traffic, hillshade, etc.)
- * Add user interface translations (strings in QML, Python and JSON
-   files as well narrative returned by routing APIs)
+ * Add user interface translations (strings in QML, Python and
+   JSON files as well narrative returned by routing APIs)
  * Add support for non-SI units (miles, etc.)
    - http://stackoverflow.com/a/14044413

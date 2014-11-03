@@ -182,19 +182,6 @@ Map {
         map.saveManeuvers();
     }
 
-    function addTile(uid, x, y, zoom, uri) {
-        // Add new tile from local image file to map.
-        var component = Qt.createComponent("Tile.qml");
-        var tile = component.createObject(map);
-        tile.uid = uid;
-        tile.coordinate = QtPositioning.coordinate(y, x);
-        tile.zoomLevel = zoom;
-        tile.uri = uri;
-        tile.z = (zoom == Math.floor(map.zoomLevel)) ? 10 : 9;
-        map.tiles.push(tile);
-        map.addMapItem(tile);
-    }
-
     function centerOnPosition() {
         // Center map on the current position.
         map.setCenter(map.position.coordinate.longitude,
@@ -350,19 +337,26 @@ Map {
         });
     }
 
-    function renderTile(uid, x, y, zoom, uri) {
+    function renderTile(props) {
         // Render tile from local image file.
         for (var i = 0; i < map.tiles.length; i++) {
-            if (map.tiles[i].uid != uid) continue;
-            map.tiles[i].coordinate.longitude = x;
-            map.tiles[i].coordinate.latitude = y;
-            map.tiles[i].zoomLevel = zoom;
-            map.tiles[i].uri = uri;
-            map.tiles[i].z = (zoom == Math.floor(map.zoomLevel)) ? 10 : 9;
+            if (map.tiles[i].uid != props.uid) continue;
+            map.tiles[i].coordinate.longitude = props.nwx;
+            map.tiles[i].coordinate.latitude = props.nwy;
+            map.tiles[i].zoomLevel = props.zoom;
+            map.tiles[i].uri = props.uri;
+            map.tiles[i].setWidth(props);
+            map.tiles[i].setHeight(props);
+            map.tiles[i].z = (props.zoom == Math.floor(map.zoomLevel)) ? 10 : 9;
             return;
         }
         // Add missing tile to collection.
-        map.addTile(uid, x, y, zoom, uri);
+        var component = Qt.createComponent("Tile.qml");
+        var tile = component.createObject(map);
+        tile.uid = props.uid;
+        map.tiles.push(tile);
+        map.addMapItem(tile);
+        map.renderTile(props);
     }
 
     function resetTiles() {

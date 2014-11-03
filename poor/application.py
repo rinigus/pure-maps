@@ -147,8 +147,13 @@ class Application:
         item.ymax = max(corner[1] for corner in corners)
         item.zoom = zoom
         item.ready = True
-        x, y = corners[3]
-        pyotherside.send("render-tile", item.uid, x, y, zoom, uri)
+        pyotherside.send("render-tile", dict(uid=item.uid,
+                                             nex=corners[0][0],
+                                             nwx=corners[3][0],
+                                             swy=corners[2][1],
+                                             nwy=corners[3][1],
+                                             zoom=zoom,
+                                             uri=uri))
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
