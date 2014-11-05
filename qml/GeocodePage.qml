@@ -33,8 +33,9 @@ Page {
         currentIndex: -1
         delegate: ListItem {
             id: listItem
-            contentHeight: Theme.itemSizeSmall
+            contentHeight: visible ? Theme.itemSizeSmall : 0
             menu: contextMenu
+            visible: model.visible
             ListView.onRemove: animateRemoval(listItem)
             ListItemLabel {
                 anchors.leftMargin: listView.searchField.textLeftMargin
@@ -86,7 +87,7 @@ Page {
                 EnterKey.onClicked: app.pageStack.navigateForward();
                 onTextChanged: {
                     page.query = searchField.text;
-                    page.populate();
+                    page.filterHistory();
                 }
             }
             Component.onCompleted: listView.searchField = searchField;
@@ -97,31 +98,40 @@ Page {
     }
     onStatusChanged: {
         if (page.status == PageStatus.Activating) {
-            page.history = py.evaluate("poor.app.history.places");
-            page.populate();
+            page.loadHistory();
+            page.filterHistory();
         } else if (page.status == PageStatus.Active) {
             var resultPage = app.pageStack.nextPage();
             resultPage.populated = false;
         }
     }
-    function populate() {
-        // Load search history items from the Python backend.
-        listView.model.clear();
+    function filterHistory() {
+        // Filter search history for current search field text.
         var query = listView.searchField.text.toLowerCase();
-        var nstart = 0;
+        var found = [], n = 0;
         for (var i = 0; i < page.history.length; i++) {
             var historyItem = page.history[i].toLowerCase();
             if (query.length > 0 && historyItem.indexOf(query) == 0) {
-                listView.model.insert(nstart++, {"place": page.history[i]});
-                if (listView.model.count >= 100) break;
-            } else if (query == "" || historyItem.indexOf(query) > 0) {
-                listView.model.append({"place": page.history[i]});
-                if (listView.model.count >= 100) break;
+                found[n++] = page.history[i];
+                if (found.length >= listView.count) break;
+            } else if (query.length == 0 || historyItem.indexOf(query) > 0) {
+                found[found.length] = page.history[i];
+                if (found.length >= listView.count) break;
             }
         }
-        // XXX: Work around a bug causing the search field to disappear
-        // if text has been typed, but there are no matches.
-        if (listView.model.count == 0)
-            listView.model.append({"place": listView.searchField.text});
+        for (var i = 0; i < found.length; i++) {
+            listView.model.setProperty(i, "place", found[i]);
+            listView.model.setProperty(i, "visible", true);
+        }
+        for (var i = found.length; i < listView.count; i++)
+            listView.model.setProperty(i, "visible", false);
+    }
+    function loadHistory() {
+        // Load search history and preallocate list items.
+        page.history = py.evaluate("poor.app.history.places");
+        if (listView.model.count == 0) {
+            for (var i = 0; i < 50; i++)
+                listView.model.append({"place": "", "visible": false});
+        }
     }
 }

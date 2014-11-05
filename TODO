@@ -4,6 +4,7 @@ Poor Maps 0.13
  [X] Add support for custom Mercator tile formats
  [X] Add elliptical Mercator tile format
  [ ] Add Quadkey tile format
+ [X] Fix search field history list filtering to be faster and smoother
 
  * Update documentation in tilesources/README
 

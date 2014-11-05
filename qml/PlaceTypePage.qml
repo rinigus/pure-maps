@@ -33,8 +33,9 @@ Dialog {
         currentIndex: -1
         delegate: ListItem {
             id: listItem
-            contentHeight: Theme.itemSizeSmall
+            contentHeight: visible ? Theme.itemSizeSmall : 0
             menu: contextMenu
+            visible: model.visible
             ListView.onRemove: animateRemoval(listItem)
             ListItemLabel {
                 anchors.leftMargin: listView.searchField.textLeftMargin
@@ -70,7 +71,7 @@ Dialog {
                 EnterKey.onClicked: dialog.accept();
                 onTextChanged: {
                     dialog.query = searchField.text;
-                    page.populate();
+                    dialog.filterHistory();
                 }
             }
             Component.onCompleted: listView.searchField = searchField;
@@ -81,28 +82,37 @@ Dialog {
     }
     onStatusChanged: {
         if (dialog.status == PageStatus.Activating) {
-            dialog.history = py.evaluate("poor.app.history.place_types");
-            dialog.populate();
+            dialog.loadHistory();
+            dialog.filterHistory();
         }
     }
-    function populate() {
-        // Load search history items from the Python backend.
-        listView.model.clear();
+    function filterHistory() {
+        // Filter search history for current search field text.
         var query = listView.searchField.text.toLowerCase();
-        var nstart = 0;
+        var found = [], n = 0;
         for (var i = 0; i < dialog.history.length; i++) {
             var historyItem = dialog.history[i].toLowerCase();
             if (query.length > 0 && historyItem.indexOf(query) == 0) {
-                listView.model.insert(nstart++, {"type": dialog.history[i]});
-                if (listView.model.count >= 100) break;
-            } else if (query == "" || historyItem.indexOf(query) > 0) {
-                listView.model.append({"type": dialog.history[i]});
-                if (listView.model.count >= 100) break;
+                found[n++] = dialog.history[i];
+                if (found.length >= listView.count) break;
+            } else if (query.length == 0 || historyItem.indexOf(query) > 0) {
+                found[found.length] = dialog.history[i];
+                if (found.length >= listView.count) break;
             }
         }
-        // XXX: Work around a bug causing the search field to disappear
-        // if text has been typed, but there are no matches.
-        if (listView.model.count == 0)
-            listView.model.append({"type": listView.searchField.text});
+        for (var i = 0; i < found.length; i++) {
+            listView.model.setProperty(i, "type", found[i]);
+            listView.model.setProperty(i, "visible", true);
+        }
+        for (var i = found.length; i < listView.count; i++)
+            listView.model.setProperty(i, "visible", false);
+    }
+    function loadHistory() {
+        // Load search history and preallocate list items.
+        dialog.history = py.evaluate("poor.app.history.place_types");
+        if (listView.model.count == 0) {
+            for (var i = 0; i < 50; i++)
+                listView.model.append({"type": "", "visible": false});
+        }
     }
 }
