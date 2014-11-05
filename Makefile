@@ -38,6 +38,7 @@ install:
 	@echo "Installing tilesources..."
 	mkdir -p $(datadir)/tilesources
 	cp tilesources/*.json $(datadir)/tilesources
+	cp tilesources/*.py $(datadir)/tilesources
 
 	@echo "Installing geocoders..."
 	mkdir -p $(datadir)/geocoders
