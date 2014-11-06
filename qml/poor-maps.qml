@@ -48,6 +48,7 @@ ApplicationWindow {
     cover: Cover {}
     initialPage: DummyPage { id: dummy }
     property var conf: Config {}
+    property bool inMenu: bottomMargin == 0
     property bool running: applicationActive || cover.status == Cover.Active
     property int totalHeight: Screen.height
     property int totalWidth: Screen.width

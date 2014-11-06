@@ -34,7 +34,6 @@ import os
 path = os.path.join(os.path.dirname(__file__), "slippy.py")
 loader = importlib.machinery.SourceFileLoader("slippy", path)
 slippy = loader.load_module("slippy")
-
 list_tiles = slippy.list_tiles
 tile_corners = slippy.tile_corners
 tile_path = slippy.tile_path

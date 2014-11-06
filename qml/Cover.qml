@@ -39,6 +39,7 @@ Cover {
             cover.status == Cover.Active
         triggeredOnStart: true
         onTriggered: {
+            if (app.inMenu) return;
             cover.updateTiles();
             cover.updatePositionMarker();
         }
