@@ -18,7 +18,7 @@
 """
 A variation of the 'slippy' format using elliptical Mercator.
 
-This is the tiling format used at least by Yandex. Compared to the 'slippy'
+This tile format is used at least by Yandex. Compared to the 'slippy'
 format, the conversion between latitude/longitude coordinates and Mercator
 coordinates differs, but the tiling logic is otherwise the same.
 

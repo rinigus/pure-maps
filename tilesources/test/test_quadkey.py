@@ -19,19 +19,13 @@ import importlib.machinery
 import os
 import poor.test
 
-path = os.path.join(os.path.dirname(__file__), "..", "slippy_elliptical.py")
+path = os.path.join(os.path.dirname(__file__), "..", "quadkey.py")
 loader = importlib.machinery.SourceFileLoader("format", path)
 format = loader.load_module("format")
 
 
 class TestModule(poor.test.TestCase):
 
-    def test_deg2num(self):
-        xtile, ytile = format.deg2num(24.94093, 60.16867, 18)
-        assert xtile == 149233
-        assert ytile == 76122
-
-    def test_num2deg(self):
-        x, y = format.num2deg(149233, 76122, 18)
-        assert abs(x - 24.94034) < 0.00001
-        assert abs(y - 60.16932) < 0.00001
+    def test_num2key(self):
+        key = format.num2key(149233, 75880, 18)
+        assert key == "120120211013312001"

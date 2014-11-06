@@ -18,8 +18,8 @@
 """
 A popular spherical Mercator tiling format.
 
-This is the tiling format used by Google, OpenSteetMap etc. based on
-a spherical Mercator projection ("Web Mercator", EPSG: 3857).
+This tile format is used by Google, OpenSteetMap and many others.
+It's based on a spherical Mercator projection ("Web Mercator", EPSG: 3857).
 
 http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
 """
