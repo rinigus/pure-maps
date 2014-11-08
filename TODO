@@ -4,7 +4,8 @@ Poor Maps 0.13
  [X] Add support for custom Mercator tile formats
  [X] Add elliptical Mercator tile format
  [X] Add Quadkey tile format
- [ ] Add descriptions for geocoders, routers and guides
+ [X] Allow tilesources where the image format varies by zoom level
+ [X] Add descriptions for geocoders, routers and guides
  [X] Fix search field history list filtering to be faster and smoother
  [X] Fix display of cover tiles when in a menu page
 

@@ -1,5 +1,6 @@
 {
     "attribution": "Data © OpenStreetMap contributors",
+    "description": "Points of interest from OpenStreetMap data",
     "name": "OpenStreetMap Nominatim",
     "source": "nominatim.openstreetmap.org"
 }

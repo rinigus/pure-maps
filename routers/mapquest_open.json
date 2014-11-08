@@ -1,5 +1,6 @@
 {
     "attribution": "Data © OpenStreetMap contributors",
+    "description": "Car, bicycle and pedestrian routing based on OpenStreetMap data",
     "name": "MapQuest Open",
     "source": "open.mapquest.com"
 }

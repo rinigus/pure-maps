@@ -29,8 +29,8 @@ Dialog {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: nameLabel.height + sourceLabel.height +
-                attributionLabel.height
+            contentHeight: nameLabel.height + descriptionLabel.height +
+                sourceLabel.height + attributionLabel.height
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
@@ -40,8 +40,20 @@ Dialog {
                 verticalAlignment: Text.AlignBottom
             }
             ListItemLabel {
-                id: sourceLabel
+                id: descriptionLabel
                 anchors.top: nameLabel.bottom
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeExtraSmall
+                // Description field added in 0.13.
+                height: model.description && model.description.length > 0 ?
+                    implicitHeight : 0
+                text: model.description
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WordWrap
+            }
+            ListItemLabel {
+                id: sourceLabel
+                anchors.top: descriptionLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight

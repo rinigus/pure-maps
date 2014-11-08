@@ -1,5 +1,6 @@
 {
     "attribution": "Data © OpenStreetMap contributors",
+    "description": "Geocoding based on OpenStreetMap data",
     "hidden": true,
     "name": "Nominatim",
     "source": "nominatim.openstreetmap.org"
