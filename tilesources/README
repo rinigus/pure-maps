@@ -3,10 +3,10 @@ Implementing a Tile Source
 
 To implement a tile source you need to write a JSON metadata file, see
 the tile sources shipped with poor for examples. The "extension" field
-is optional; usually you should define it, but if the image format
-varies by zoom level, you can leave it out. If left out, the image
-format will be auto-detected based on the Content-Type header of
-the HTTP download response.
+is optional; usually you should define it, it makes things faster,
+but if the image format varies by zoom level, you can leave it out.
+If left out, the image format will be auto-detected based on
+the Content-Type header of the HTTP download response.
 
 The "format" field should correspond to a tile format implementation,
 i.e. if you mark the format as "foo", there should be a "foo.py" file in
@@ -14,13 +14,16 @@ the tilesources directory. The following tile format implementations are
 shipped with Poor, for adding you own, see the next section.
 
  * "slippy": By far the most common format, based on spherical Mercator
-   and pyramid-style zoom levels and tile numbers, see [1].
+   and pyramid-style zoom levels and tile numbers, see [1]. Provides URL
+   parameters "x", "y" and "z".
 
  * "slippy_elliptical": A variation of the "slippy" format, but using
-   elliptical Mercator instead of spherical.
+   elliptical Mercator instead of spherical. Provides URL parameters
+   "x", "y" and "z".
 
  * "quadkey": By tile division equivalent to the "slippy" format,
-   but with tiles referred to by a single key, see [2].
+   but with tiles referred to by a single key, see [2]. Provides URL
+   parameters "x", "y", "z" and "key".
 
  [1] http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
  [2] http://msdn.microsoft.com/en-us/library/bb259689.aspx

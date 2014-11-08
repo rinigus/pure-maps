@@ -77,6 +77,14 @@ class TileSource:
             # Failed downloads can result in empty files.
             if os.stat(path).st_size > 0:
                 return path
+        if not self.extension:
+            # Test all handled extensions for cached files.
+            # This requires that no erroneous duplicates exist.
+            for candidate in (path + x for x in MIMETYPE_EXTENSIONS.values()):
+                if os.path.isfile(candidate):
+                    # Failed downloads can result in empty files.
+                    if os.stat(candidate).st_size > 0:
+                        return candidate
         try:
             httpc = self._http_queue.get()
             if httpc is None:
