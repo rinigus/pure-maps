@@ -9,19 +9,16 @@ Poor Maps 0.13
  [X] Fix search field history list filtering to be faster and smoother
  [X] Fix display of cover tiles when in a menu page
 
- * Update documentation in tilesources/README
-
 Poor Maps 1.0
 =============
 
+ * Add some kind of cache management
  * Add a compass arrow that shows which way one is facing
    - http://qt-project.org/doc/qt-5/qml-qtsensors-compass.html
  * Add a cover that shows narrative when navigating
- * Add some kind of cache management
  * Add a no-download mode?
    - http://together.jolla.com/question/53124
  * Allow landscape for the map when gestures work right
- * Allow tile formats that require rotation
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations (strings in QML, Python and
    JSON files as well narrative returned by routing APIs)
