@@ -28,6 +28,8 @@ import urllib.parse
 
 __all__ = ("TileSource",)
 
+MIMETYPE_EXTENSIONS = {"image/jpeg": ".jpg", "image/png": ".png"}
+
 
 class TileSource:
 
@@ -48,7 +50,8 @@ class TileSource:
             # __new__ returns objects usable as-is.
             values = self._load_attributes(id)
             self.attribution = values["attribution"]
-            self.extension = values["extension"]
+            self._blacklist = []
+            self.extension = values.get("extension", "")
             self.format = values["format"]
             self._headers = None
             self._http_queue = queue.Queue()
@@ -63,6 +66,10 @@ class TileSource:
     def download(self, tile, retry=1):
         """Download map tile and return local file path or ``None``."""
         url = self.url.format(**tile)
+        if url in self._blacklist:
+            return print("Not downloading blacklisted tile: {}"
+                         .format(url), file=sys.stderr)
+
         path = self.tile_path(tile)
         path = os.path.join(poor.CACHE_HOME_DIR, self.id, path)
         directory = os.path.dirname(path)
@@ -81,6 +88,16 @@ class TileSource:
                                 .format(repr(response.status),
                                         repr(response.reason)))
 
+            if not self.extension:
+                mimetype = response.getheader("Content-Type")
+                if not mimetype in MIMETYPE_EXTENSIONS:
+                    # Don't try to redownload tile
+                    # if we don't know what to do with it.
+                    self._blacklist.append(url)
+                    raise Exception(
+                        "Failed to detect tile mimetype -- "
+                        "Content-Type header missing or unexpected value")
+                path = path + MIMETYPE_EXTENSIONS[mimetype]
             if not os.path.isdir(directory):
                 poor.util.makedirs(directory)
             with open(path, "wb") as f:
