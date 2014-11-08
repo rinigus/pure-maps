@@ -54,4 +54,4 @@ by Poor in conjunction with the tile source metadata file to construct
 URLs and download those tiles. "tile_corners" should return
 longitude/latitude coordinates of each corner of the given tile.
 "tile_path" should return the relative path used to store the tile
-in the user's local cache  directory ~/.cache/harbour-poor-maps/.
+in the user's local cache directory ~/.cache/harbour-poor-maps/.
