@@ -3,6 +3,6 @@
     "extension": ".png",
     "format": "slippy",
     "name": "OpenCycleMap",
-    "source": "www.thunderforest.com",
+    "source": "thunderforest.com",
     "url": "http://tile.thunderforest.com/cycle/{z}/{x}/{y}.png"
 }
