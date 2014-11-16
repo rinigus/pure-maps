@@ -60,7 +60,7 @@ Page {
             }
         }
         header: Column {
-            height: pageHeader.height + usingButton.height + searchField.height;
+            height: pageHeader.height + usingButton.height + searchField.height
             width: parent.width
             PageHeader {
                 id: pageHeader
@@ -83,7 +83,7 @@ Page {
                 id: searchField
                 placeholderText: "Address, landmark, etc."
                 width: parent.width
-                EnterKey.enabled: searchField.text.length > 0
+                EnterKey.enabled: text.length > 0
                 EnterKey.onClicked: app.pageStack.navigateForward();
                 onTextChanged: {
                     page.query = searchField.text;

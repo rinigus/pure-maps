@@ -81,7 +81,7 @@ Dialog {
                 id: searchField
                 placeholderText: "Address, landmark, etc."
                 width: parent.width
-                EnterKey.enabled: searchField.text.length > 0
+                EnterKey.enabled: text.length > 0
                 EnterKey.onClicked: dialog.accept();
                 onTextChanged: {
                     dialog.query = searchField.text;
