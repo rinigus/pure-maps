@@ -60,10 +60,10 @@ Page {
             }
         }
         header: Column {
-            height: pageHeader.height + usingButton.height + searchField.height
+            height: header.height + usingButton.height + searchField.height
             width: parent.width
             PageHeader {
-                id: pageHeader
+                id: header
                 title: "Find Place"
             }
             ValueButton {
