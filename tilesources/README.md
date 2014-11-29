@@ -14,19 +14,19 @@ the tilesources directory. The following tile format implementations are
 shipped with Poor, for adding you own, see the next section.
 
  * "slippy": By far the most common format, based on spherical Mercator
-   and pyramid-style zoom levels and tile numbers, see [1]. Provides URL
-   parameters "x", "y" and "z".
+   and pyramid-style zoom levels and tile numbers, see
+   [documentation][1]. Provides URL parameters "x", "y" and "z".
 
  * "slippy_elliptical": A variation of the "slippy" format, but using
    elliptical Mercator instead of spherical. Provides URL parameters
    "x", "y" and "z".
 
  * "quadkey": By tile division equivalent to the "slippy" format,
-   but with tiles referred to by a single key, see [2]. Provides URL
-   parameters "x", "y", "z" and "key".
+   but with tiles referred to by a single key, see [documentation][2].
+   Provides URL parameters "x", "y", "z" and "key".
 
- [1] http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
- [2] http://msdn.microsoft.com/en-us/library/bb259689.aspx
+ [1]: http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
+ [2]: http://msdn.microsoft.com/en-us/library/bb259689.aspx
 
 Use "~/.local/share/harbour-poor-maps/tilesources" as a local
 installation directory in which to place your JSON file. Restart Poor,
@@ -48,10 +48,10 @@ a bug report and maybe we can adjust.
 The main job of the tile format implementation is to provide formulas
 to convert between longitude/latitude coordinates and tile numbers,
 or keys or whatever way tiles are referred to. You need to implement
-three functions. "list_tiles" should given bounding box coordinates
+three functions. `list_tiles` should given bounding box coordinates
 return a list of dictionaries of tile properties, which will be used
 by Poor in conjunction with the tile source metadata file to construct
-URLs and download those tiles. "tile_corners" should return
+URLs and download those tiles. `tile_corners` should return
 longitude/latitude coordinates of each corner of the given tile.
-"tile_path" should return the relative path used to store the tile
+`tile_path` should return the relative path used to store the tile
 in the user's local cache directory ~/.cache/harbour-poor-maps/.

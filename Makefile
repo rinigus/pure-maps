@@ -44,21 +44,21 @@ install:
 	mkdir -p $(datadir)/geocoders
 	cp geocoders/*.json $(datadir)/geocoders
 	cp geocoders/*.py $(datadir)/geocoders
-	cp geocoders/README $(datadir)/geocoders
+	cp geocoders/README.md $(datadir)/geocoders
 
 	@echo "Installing guides..."
 	mkdir -p $(datadir)/guides
 	cp guides/*.json $(datadir)/guides
 	cp guides/*.py $(datadir)/guides
 	cp guides/*.qml $(datadir)/guides
-	cp guides/README $(datadir)/guides
+	cp guides/README.md $(datadir)/guides
 
 	@echo "Installing routers..."
 	mkdir -p $(datadir)/routers
 	cp routers/*.json $(datadir)/routers
 	cp routers/*.py $(datadir)/routers
 	cp routers/*.qml $(datadir)/routers
-	cp routers/README $(datadir)/routers
+	cp routers/README.md $(datadir)/routers
 	mkdir -p $(datadir)/routers/hsl
 	cp routers/hsl/*.png $(datadir)/routers/hsl
 

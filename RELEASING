@@ -8,7 +8,7 @@ Releasing a New Version
    - poor/__init__.py
    - rpm/*.spec
    - Makefile
- * Update NEWS and TODO
+ * Update NEWS.md and TODO
  * Build tarball and RPM
    $ make dist
    $ make rpm

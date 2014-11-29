@@ -1,8 +1,6 @@
 Poor Maps 1.0
 =============
 
- * Use GitHub-compatible markdown for README files?
-   - http://github.com/github/markup
  * Add some kind of cache management
  * Add a compass arrow that shows which way one is facing
    - http://qt-project.org/doc/qt-5/qml-qtsensors-compass.html
