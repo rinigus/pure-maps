@@ -129,7 +129,7 @@ Poor Maps 0.4
 
  * Add HSL Journey Planner (Helsinki Region Transport public
    transportation router, reittiopas.fi)
- * Add 'params' argument to routing functions
+ * Add "params" argument to routing functions
 
 Poor Maps 0.3
 =============
@@ -138,7 +138,7 @@ Poor Maps 0.3
  * Add MapQuest Open router (car, bicycle, pedestrian)
  * Add OSRM router (car)
  * Fix tile display when zooming to view multiple found places
- * Add 'nmax' argument to geocode functions
+ * Add "nmax" argument to geocode functions
 
 Poor Maps 0.2
 =============
@@ -147,8 +147,8 @@ Poor Maps 0.2
  * Add MapQuest Nominatim geocoder
  * New icon (now matches in-app position icon)
  * Load user's own tilesources and geocoders from
-   $HOME/.local/share/harbour-poor-maps instead of the previous
-   $HOME/.config/harbour-poor-maps
+   `$HOME/.local/share/harbour-poor-maps` instead of the previous
+   `$HOME/.config/harbour-poor-maps`
  * Allow landscape for menu pages (the map page remains portrait only
    due to some QtLocation problem rotating gestures)
  * Bump required PyOtherSide version to 1.2 (included in Sailfish OS
