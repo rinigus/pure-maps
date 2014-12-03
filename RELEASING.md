@@ -5,10 +5,10 @@ Releasing a New Version
    - `pyflakes3 geocoders guides poor routers`
    - `py.test-3 poor`
  * Bump version numbers
-   - poor/__init__.py
-   - rpm/*.spec
-   - Makefile
- * Update NEWS.md and TODO.md
+   - `poor/__init__.py`
+   - `rpm/*.spec`
+   - `Makefile`
+ * Update `NEWS.md` and `TODO.md`
  * Build tarball and RPM
    - `make dist`
    - `make rpm`

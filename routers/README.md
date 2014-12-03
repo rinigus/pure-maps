@@ -6,7 +6,7 @@ file that implements the `route` function and one or two QML files.
 The route function should given two points return properties of the
 found route. The from and to points given as arguments can be either
 strings (addresses, landmarks, etc.) or two-element tuples or lists
-of (x,y) coordinates. The return value format is up to you, since you
+of (x, y) coordinates. The return value format is up to you, since you
 handle that in your router-specific QML. However, for passing onwards,
 a dictionary of route properties is a good idea, or a list of
 dictionaries if returning multiple routes.
@@ -46,7 +46,7 @@ addresses, but requires coordinates, consider geocoding using
 "nominatim", which is shipped with Poor. See the routers shipped with
 Poor for examples.
 
-Use "~/.local/share/harbour-poor-maps/routers" as a local installation
+Use `~/.local/share/harbour-poor-maps/routers` as a local installation
 directory in which to place your files. Restart Poor, and your router
 should be loaded, listed and available for use. During development,
 consider keeping your files under the `poor-maps` source tree and using

@@ -13,7 +13,7 @@ timeout and error handling. See the geocoders shipped with Poor for
 examples, but note that you should be able to get by with a lot less
 code if your geocoding service returns concise, human-readable results.
 
-Use "~/.local/share/harbour-poor-maps/geocoders" as a local installation
+Use `~/.local/share/harbour-poor-maps/geocoders` as a local installation
 directory in which to place your files. Restart Poor, and your geocoder
 should be loaded, listed and available for use. During development,
 consider keeping your files under the `poor-maps` source tree and using

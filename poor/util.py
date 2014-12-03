@@ -99,7 +99,6 @@ def decode_epl(string, precision=5):
         yout.append(y / 10**precision)
     return xout, yout
 
-
 def format_bearing(bearing):
     """Format `bearing` to a human readable string."""
     bearing = (bearing + 360) % 360

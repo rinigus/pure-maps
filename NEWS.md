@@ -42,7 +42,7 @@ Poor Maps 0.10
    to find route to that location and to open Foursquare links
  * Add pulldown menu item in route search page to reverse endpoints
  * Make POI marker tap target bigger
- * Retry geocoding, routing etc. in case of BrokenPipeError
+ * Retry geocoding, routing etc. in case of `BrokenPipeError`
 
 Poor Maps 0.9
 =============
@@ -102,7 +102,7 @@ Poor Maps 0.5.1
 ===============
 
  * Work around an OSRM router bug causing it to sometimes not find
-   a route at all (see http://lists.openstreetmap.org/pipermail/osrm-talk/2014-June/000588.html)
+   a route at all (see <http://lists.openstreetmap.org/pipermail/osrm-talk/2014-June/000588.html>)
  * Simplify MapQuest Open router paths at high zoom levels as well
  * Fix partial display of route polyline at high zoom levels
 

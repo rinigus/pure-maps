@@ -9,26 +9,26 @@ If left out, the image format will be auto-detected based on
 the Content-Type header of the HTTP download response.
 
 The "format" field should correspond to a tile format implementation,
-i.e. if you mark the format as "foo", there should be a "foo.py" file in
+i.e. if you mark the format as "foo", there should be a `foo.py` file in
 the tilesources directory. The following tile format implementations are
 shipped with Poor, for adding you own, see the next section.
 
- * "slippy": By far the most common format, based on spherical Mercator
-   and pyramid-style zoom levels and tile numbers, see
+ * **"slippy"**: By far the most common format, based on spherical
+   Mercator and pyramid-style zoom levels and tile numbers, see
    [documentation][1]. Provides URL parameters "x", "y" and "z".
 
- * "slippy_elliptical": A variation of the "slippy" format, but using
-   elliptical Mercator instead of spherical. Provides URL parameters
-   "x", "y" and "z".
+ * **"slippy_elliptical"**: A variation of the "slippy" format, but
+   using elliptical Mercator instead of spherical. Provides URL
+   parameters "x", "y" and "z".
 
- * "quadkey": By tile division equivalent to the "slippy" format,
+ * **"quadkey"**: By tile division equivalent to the "slippy" format,
    but with tiles referred to by a single key, see [documentation][2].
    Provides URL parameters "x", "y", "z" and "key".
 
  [1]: http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
  [2]: http://msdn.microsoft.com/en-us/library/bb259689.aspx
 
-Use "~/.local/share/harbour-poor-maps/tilesources" as a local
+Use `~/.local/share/harbour-poor-maps/tilesources` as a local
 installation directory in which to place your JSON file. Restart Poor,
 and your tile source should be loaded, listed and available for use.
 
@@ -54,4 +54,4 @@ by Poor in conjunction with the tile source metadata file to construct
 URLs and download those tiles. `tile_corners` should return
 longitude/latitude coordinates of each corner of the given tile.
 `tile_path` should return the relative path used to store the tile
-in the user's local cache directory ~/.cache/harbour-poor-maps/.
+in the user's local cache directory `~/.cache/harbour-poor-maps/`.
