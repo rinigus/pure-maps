@@ -64,7 +64,7 @@ def parse_description(result):
 
 def parse_title(result):
     """Parse title from geocoding result."""
-    items = [result["name"]]
+    items = [result.get("shortName", result["name"])]
     if result["locType"] == "address":
         with poor.util.silent(KeyError, ValueError):
             items.append(str(result["details"]["houseNumber"]))

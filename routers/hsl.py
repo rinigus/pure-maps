@@ -96,7 +96,7 @@ def parse_legs(result):
         # Calculate duration separately to match departure and
         # arrival times rounded at one minute accuracy.
         item["duration"] = item["arr_unix"] - item["dep_unix"]
-        names = [loc["name"] for loc in leg["locs"]]
+        names = [loc.get("shortName", loc["name"]) for loc in leg["locs"]]
         names = list(filter(None, names))
         with poor.util.silent(IndexError):
             item["dep_name"] = parse_name(names[0])
