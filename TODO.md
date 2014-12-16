@@ -1,11 +1,15 @@
 Poor Maps 1.0
 =============
 
+ * Add Mapzen OSRM router
+   - http://mapzen.com/blog/osrm-services
+ * Add Photon geocoder?
+   - http://photon.komoot.de/
+ * Add MapBox Outdoors tiles?
+   - http://www.mapbox.com/plans/
  * Add some kind of cache management
  * Add a compass arrow that shows which way one is facing
    - http://qt-project.org/doc/qt-5/qml-qtsensors-compass.html
- * Add Photon geocoder?
-   - http://photon.komoot.de/
  * Add a cover that shows narrative when navigating
  * Add ability to import a route from file
  * Add a no-download mode?
