@@ -34,8 +34,7 @@ PositionSource {
         if (threshold < 0 || threshold > 30) return;
         var coord = gps.position.coordinate;
         if (!gps.coordPrev) {
-            gps.coordPrev = QtPositioning.coordinate(
-                coord.latitude, coord.longitude);
+            gps.coordPrev = QtPositioning.coordinate(coord.latitude, coord.longitude);
         } else if (gps.coordPrev.distanceTo(coord) > threshold) {
             gps.direction = gps.coordPrev.azimuthTo(coord);
             gps.coordPrev.longitude = coord.longitude;

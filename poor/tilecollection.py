@@ -74,8 +74,7 @@ class TileCollection:
                 return tile
         # If no free tile found, grow collection.
         for i in range(len(self._tiles)+1):
-            tile = Tile(len(self._tiles)+1)
-            self._tiles.append(tile)
+            self._tiles.append(Tile(len(self._tiles)+1))
         self._tiles[-1].ready = False
         return self._tiles[-1]
 

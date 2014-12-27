@@ -88,7 +88,9 @@ MapQuickItem {
                             var x = item.coordinate.longitude;
                             var y = item.coordinate.latitude;
                             app.showMenu("RoutePage.qml", {
-                                "to": [x, y], "toText": item.title});
+                                "to": [x, y],
+                                "toText": item.title
+                            });
                         }
                     }
                     Timer {
@@ -158,8 +160,6 @@ MapQuickItem {
         item.z = item.labelVisible ? 403 : 401;
     }
     onTextChanged: {
-        item.text = item.text.replace("Theme.highlightColor",
-                                      Theme.highlightColor);
-
+        item.text = item.text.replace("Theme.highlightColor", Theme.highlightColor);
     }
 }

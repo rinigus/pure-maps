@@ -34,8 +34,7 @@ Page {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: Theme.paddingLarge*2 +
-                titleLabel.height + finalLabel.height
+            contentHeight: Theme.paddingLarge*2 + titleLabel.height + finalLabel.height
             property var result: page.results[model.alternative-1]
             Label {
                 id: titleLabel

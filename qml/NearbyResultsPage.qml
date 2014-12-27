@@ -31,8 +31,7 @@ Page {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: titleLabel.height + descriptionLabel.height +
-                distanceLabel.height
+            contentHeight: titleLabel.height + descriptionLabel.height + distanceLabel.height
             property bool visited: false
             ListItemLabel {
                 id: titleLabel
@@ -133,10 +132,7 @@ Page {
             listView.visible = true;
             if (page.populated) return;
             var nearbyPage = app.pageStack.previousPage();
-            page.populate(nearbyPage.query,
-                          nearbyPage.near,
-                          nearbyPage.radius);
-
+            page.populate(nearbyPage.query, nearbyPage.near, nearbyPage.radius);
         } else if (page.status == PageStatus.Inactive) {
             listView.visible = false;
         }
@@ -144,8 +140,7 @@ Page {
     function populate(query, near, radius) {
         // Load place results from the Python backend.
         listView.model.clear();
-        var args = [query, near, radius];
-        py.call("poor.app.guide.nearby", args, function(results) {
+        py.call("poor.app.guide.nearby", [query, near, radius], function(results) {
             if (results && results.error && results.message) {
                 page.title = "";
                 busyLabel.text = results.message;

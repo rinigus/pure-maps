@@ -33,8 +33,7 @@ Column {
         }
         onCurrentIndexChanged: {
             var option = "guides.foursquare.sort_by_distance";
-            var value = closestComboBox.currentIndex == 0;
-            app.conf.set(option, value);
+            app.conf.set(option, closestComboBox.currentIndex == 0);
         }
     }
 }

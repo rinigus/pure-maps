@@ -208,8 +208,7 @@ Page {
                 contentHeight: Theme.itemSizeSmall
                 ListItemLabel {
                     anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingLarge +
-                        64 + Theme.paddingMedium
+                    anchors.leftMargin: Theme.paddingLarge + 64 + Theme.paddingMedium
                     color: preferencesItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
@@ -222,8 +221,7 @@ Page {
                 contentHeight: Theme.itemSizeSmall
                 ListItemLabel {
                     anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingLarge +
-                        64 + Theme.paddingMedium
+                    anchors.leftMargin: Theme.paddingLarge + 64 + Theme.paddingMedium
                     color: aboutItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall

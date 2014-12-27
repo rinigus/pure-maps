@@ -70,10 +70,8 @@ Rectangle {
         Label {
             id: manLabel
             anchors.left: iconImage.right
-            color: statusArea.notify ?
-                Theme.highlightColor : "white"
-            font.family: statusArea.notify ?
-                Theme.fontFamilyHeading : Theme.fontFamily
+            color: statusArea.notify ? Theme.highlightColor : "white"
+            font.family: statusArea.notify ? Theme.fontFamilyHeading : Theme.fontFamily
             font.pixelSize: statusArea.notify ?
                 Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
             height: statusArea.destDist.length > 0 ? implicitHeight : 0

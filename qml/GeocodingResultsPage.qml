@@ -31,8 +31,7 @@ Page {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: titleLabel.height + descriptionLabel.height +
-                distanceLabel.height
+            contentHeight: titleLabel.height + descriptionLabel.height + distanceLabel.height
             property bool visited: false
             ListItemLabel {
                 id: titleLabel
@@ -141,8 +140,7 @@ Page {
         listView.model.clear();
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
-        var args = [query, null, x, y];
-        py.call("poor.app.geocoder.geocode", args, function(results) {
+        py.call("poor.app.geocoder.geocode", [query, null, x, y], function(results) {
             if (results && results.error && results.message) {
                 page.title = "";
                 busyLabel.text = results.message;

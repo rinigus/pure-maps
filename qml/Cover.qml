@@ -74,11 +74,11 @@ Cover {
     }
     function mapXToCoverX(x) {
         // Convert map pixel X-coordinate to cover equivalent.
-        return x - (map.width - cover.width)/2;
+        return x - (map.width - cover.width) / 2;
     }
     function mapYToCoverY(y) {
         // Convert map pixel Y-coordinate to cover equivalent.
-        return y - (map.height - cover.height)/2;
+        return y - (map.height - cover.height) / 2;
     }
     function updatePositionMarker() {
         // Update position marker from map equivalent.

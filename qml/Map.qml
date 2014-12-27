@@ -120,8 +120,7 @@ Map {
         for (var i = 0; i < maneuvers.length; i++) {
             var component = Qt.createComponent("ManeuverMarker.qml");
             var maneuver = component.createObject(map);
-            maneuver.coordinate = QtPositioning.coordinate(
-                maneuvers[i].y, maneuvers[i].x);
+            maneuver.coordinate = QtPositioning.coordinate(maneuvers[i].y, maneuvers[i].x);
             maneuver.icon = maneuvers[i].icon || "alert";
             maneuver.narrative = maneuvers[i].narrative || "";
             maneuver.passive = maneuvers[i].passive || false;
@@ -172,10 +171,8 @@ Map {
         map.route.attribution = route.attribution || "";
         map.route.mode = route.mode || "car";
         map.route.redraw();
-        var args = [route.mode || "car"];
-        py.call_sync("poor.app.narrative.set_mode", args);
-        var args = [route.x, route.y];
-        py.call("poor.app.narrative.set_route", args, function() {
+        py.call_sync("poor.app.narrative.set_mode", [route.mode || "car"]);
+        py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
             map.hasRoute = true;
         });
         map.saveRoute();
@@ -461,9 +458,7 @@ Map {
         // Show tile with given uid.
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != uid) continue;
-            map.tiles[i].z = (map.tiles[i].zoomLevel ==
-                              Math.floor(map.zoomLevel)) ? 10 : 9;
-
+            map.tiles[i].z = (map.tiles[i].zoomLevel == Math.floor(map.zoomLevel)) ? 10 : 9;
             break;
         }
     }

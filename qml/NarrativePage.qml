@@ -35,11 +35,8 @@ Page {
                 id: iconImage
                 anchors.left: parent.left
                 fillMode: Image.Pad
-                height: 2*Theme.paddingMedium +
-                    Math.max(implicitHeight,
-                             narrativeLabel.implicitHeight +
-                             lengthLabel.implicitHeight)
-
+                height: 2*Theme.paddingMedium +Math.max(
+                    implicitHeight, narrativeLabel.implicitHeight + lengthLabel.implicitHeight)
                 horizontalAlignment: Image.AlignRight
                 source: "icons/" + model.icon + ".png"
                 verticalAlignment: Image.AlignVCenter
@@ -55,8 +52,7 @@ Page {
                     Theme.highlightColor : Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight +
-                    (iconImage.height - implicitHeight -
-                     lengthLabel.implicitHeight)/2
+                    (iconImage.height - implicitHeight - lengthLabel.implicitHeight) / 2
                 text: model.narrative
                 verticalAlignment: Text.AlignBottom
                 wrapMode: Text.WordWrap
@@ -71,8 +67,7 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight +
-                    (iconImage.height - implicitHeight -
-                     narrativeLabel.implicitHeight)/2
+                    (iconImage.height - implicitHeight - narrativeLabel.implicitHeight) / 2
                 text: model.index < listView.count-1 ?
                     "Continue for " + model.length + "." :
                     map.route.attribution

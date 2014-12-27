@@ -39,8 +39,7 @@ Page {
             ListView.onRemove: animateRemoval(listItem)
             ListItemLabel {
                 anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ?
-                    Theme.highlightColor : Theme.primaryColor
+                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
                 text: model.place
             }
