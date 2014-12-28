@@ -33,6 +33,7 @@ except ImportError:
 
 from poor.paths import *
 from poor import http
+from poor import cache
 from poor import util
 from poor import polysimp
 from poor import storage

@@ -26,10 +26,11 @@ __all__ = ("ConfigurationStore",)
 
 DEFAULTS = {
     "auto_center": False,
+    "cache_max_age": 36500, # days
     "center": [24.941, 60.169],
-    "download_timeout": 10,
+    "download_timeout": 10, # seconds
     "geocoder": "mapquest_nominatim",
-    "gps_update_interval": 1,
+    "gps_update_interval": 1, # seconds
     "guide": "foursquare",
     # 'always', 'navigating' or 'never'.
     "keep_alive": "navigating",

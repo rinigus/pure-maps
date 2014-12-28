@@ -115,19 +115,38 @@ def format_bearing(bearing):
     raise ValueError("Unexpected bearing: {}"
                      .format(repr(bearing)))
 
-def format_distance(distance, n=2, units="m"):
-    """Format `distance` to `n` significant digits and unit label."""
+def format_distance(meters, n=2):
+    """Format `meters` to `n` significant digits and unit label."""
     # XXX: We might need to support for non-SI units here.
-    if units == "km" and abs(distance) < 1:
-        return format_distance(distance*1000, n, "m")
-    if units == "m" and abs(distance) > 1000:
-        return format_distance(distance/1000, n, "km")
+    if meters > 1000:
+        distance = meters/1000
+        units = "km"
+    else:
+        # Let's not use units less than a meter.
+        distance = meters
+        units = "m"
     ndigits = n - math.ceil(math.log10(abs(max(1, distance)) + 1/1000000))
     if units == "m":
         ndigits = min(0, ndigits)
     distance = round(distance, ndigits)
     fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
     return fstring.format(distance, units)
+
+def format_filesize(bytes, n=2):
+    """Format `bytes` to `n` significant digits and unit label."""
+    if bytes > 1024**3:
+        size = bytes/1024**3
+        units = "GB"
+    else:
+        # Let's not use units less than a megabyte.
+        size = bytes/1024**2
+        units = "MB"
+    ndigits = n - math.ceil(math.log10(abs(max(1, size)) + 1/1000000))
+    if units == "MB":
+        ndigits = min(0, ndigits)
+    size = round(size, ndigits)
+    fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
+    return fstring.format(size, units)
 
 def format_time(seconds):
     """Format `seconds` to format ``# h # min``."""

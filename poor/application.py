@@ -47,6 +47,7 @@ class Application:
         self.set_geocoder(poor.conf.geocoder)
         self.set_guide(poor.conf.guide)
         self.set_router(poor.conf.router)
+        self._purge_cache()
 
     def _init_download_threads(self):
         """Initialize map tile download threads."""
@@ -55,8 +56,7 @@ class Application:
         # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
         target = self._process_download_queue
         for i in range(2):
-            thread = threading.Thread(target=target, daemon=True)
-            thread.start()
+            threading.Thread(target=target, daemon=True).start()
 
     def _process_download_queue(self):
         """Monitor download queue and feed items for update."""
@@ -66,6 +66,10 @@ class Application:
                 # Only download tiles queued in the latest update.
                 self._update_tile(*args, timestamp=timestamp)
             self._download_queue.task_done()
+
+    def _purge_cache(self):
+        """Remove all expired tiles from the cache directory."""
+        threading.Thread(target=poor.cache.purge, daemon=True).start()
 
     def set_geocoder(self, geocoder):
         """Set geocoding provider from string `geocoder`."""
