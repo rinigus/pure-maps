@@ -57,10 +57,12 @@ Page {
                 MenuItem {
                     text: "Remove all"
                     onClicked: remorse.execute(listItem, "Removing", function() {
-                        page.purge(model.directory, 0);
+                        py.call("poor.cache.purge_directory", [model.directory, 0], null);
+                        listView.model.remove(index);
                     });
                 }
             }
+            ListView.onRemove: animateRemoval(listItem)
         }
         header: PageHeader { title: page.title }
         model: ListModel {}
@@ -100,21 +102,9 @@ Page {
                     listView.model.append(results[i]);
             } else {
                 page.title = "";
-                busyLabel.text = "Error";
+                busyLabel.text = "No cache, or error";
             }
             page.loading = false;
-        });
-    }
-    function purge(directory, maxAge) {
-        // Remove tiles in directory older than maxAge.
-        listView.model.clear();
-        page.loading = true;
-        page.title = "";
-        busyLabel.text = "Removing";
-        var fun = "poor.cache.purge_directory";
-        py.call(fun, [directory, maxAge], function() {
-            busyLabel.text = "Calculating";
-            page.populate();
         });
     }
 }

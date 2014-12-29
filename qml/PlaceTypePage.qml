@@ -36,7 +36,6 @@ Dialog {
             contentHeight: visible ? Theme.itemSizeSmall : 0
             menu: contextMenu
             visible: model.visible
-            ListView.onRemove: animateRemoval(listItem)
             ListItemLabel {
                 anchors.leftMargin: listView.searchField.textLeftMargin
                 color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
@@ -53,6 +52,7 @@ Dialog {
                     }
                 }
             }
+            ListView.onRemove: animateRemoval(listItem)
             onClicked: {
                 dialog.query = model.type;
                 dialog.accept();

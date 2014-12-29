@@ -55,10 +55,11 @@ def purge_directory(directory, max_age):
     :attr:`poor.conf.CACHE_HOME_DIR`. `max_age` should be age in days,
     tiles older which to remove.
     """
+    if not directory: return
     directory = os.path.join(poor.CACHE_HOME_DIR, directory)
     if not os.path.isdir(directory): return
-    print("Purging cache > {:.0f} for {}..."
-          .format(max_age, os.path.basename(directory)),
+    print("Purging cache >{:3.0f}d for {:22s}..."
+          .format(max_age, repr(os.path.basename(directory))),
           end="")
 
     if max_age <= 0:
@@ -81,7 +82,7 @@ def purge_directory(directory, max_age):
     with poor.util.silent(OSError):
         # Fails if the directory is not empty.
         os.rmdir(directory)
-    print(" {:d} tiles removed, {:d} left.".format(removed, total-removed))
+    print(" {:6d} tiles removed, {:6d} left.".format(removed, total-removed))
 
 def stat():
     """Return file count and total size of cache subdirectories."""
