@@ -39,16 +39,59 @@ Page {
                     MenuItem { text: "When navigating" }
                     MenuItem { text: "Always" }
                 }
-                property var keys: ["never", "navigating", "always"]
+                property var values: ["never", "navigating", "always"]
                 Component.onCompleted: {
-                    var key = app.conf.get("keep_alive");
-                    sleepComboBox.currentIndex = sleepComboBox.keys.indexOf(key);
+                    var value = app.conf.get("keep_alive");
+                    sleepComboBox.currentIndex = sleepComboBox.values.indexOf(value);
                 }
                 onCurrentIndexChanged: {
                     var index = sleepComboBox.currentIndex;
-                    app.conf.set("keep_alive", sleepComboBox.keys[index]);
+                    app.conf.set("keep_alive", sleepComboBox.values[index]);
                     app.updateKeepAlive();
                 }
+            }
+            ComboBox {
+                id: cacheComboBox
+                description: "Allowing auto-removal of old tiles will ensure up-to-date maps and will keep disk use under control, but will cause more data traffic."
+                label: "Remove map tiles"
+                menu: ContextMenu {
+                    MenuItem { text: "After one week" }
+                    MenuItem { text: "After one month" }
+                    MenuItem { text: "After three months" }
+                    MenuItem { text: "After six months" }
+                    MenuItem { text: "Never" }
+                }
+                property var values: [7, 30, 90, 180, 36500]
+                Component.onCompleted: {
+                    // Activate closest in case the user has edited the configuration file
+                    // by hand using a value outside the combo box steps.
+                    var value = app.conf.get("cache_max_age");
+                    var minItem = 0;
+                    var minDiff = 36500;
+                    for (var i = 0; i < cacheComboBox.values.length; i++) {
+                        var diff = Math.abs(cacheComboBox.values[i] - value);
+                        if (diff < minDiff) {
+                            minItem = i;
+                            minDiff = diff;
+                        }
+                    }
+                    cacheComboBox.currentIndex = minItem;
+                }
+                onCurrentIndexChanged: {
+                    var index = cacheComboBox.currentIndex;
+                    app.conf.set("cache_max_age", cacheComboBox.values[index]);
+                }
+            }
+            ListItem {
+                id: examineCacheItem
+                contentHeight: Theme.itemSizeSmall
+                ListItemLabel {
+                    color: examineCacheItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "Examine map tile cache"
+                }
+                onClicked: app.pageStack.push("CachePage.qml");
             }
         }
         VerticalScrollDecorator {}
