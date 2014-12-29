@@ -57,13 +57,14 @@ def purge_directory(directory, max_age):
     """
     directory = os.path.join(poor.CACHE_HOME_DIR, directory)
     if not os.path.isdir(directory): return
-    print("Purging cache for '{}', max_age={:.0f}"
-          .format(os.path.basename(directory), max_age),
-          end=(":" if max_age > 0 else "\n"))
+    print("Purging cache > {:.0f} for {}..."
+          .format(max_age, os.path.basename(directory)),
+          end="")
 
     if max_age <= 0:
         # Avoid stat calls if removing all files.
-        return shutil.rmtree(directory, ignore_errors=True)
+        shutil.rmtree(directory, ignore_errors=True)
+        return print(" done.")
     cutoff = time.time() - max_age * 86400
     total = removed = 0
     for root, dirs, files, rootfd in os.fwalk(directory, topdown=False):
