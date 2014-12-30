@@ -38,6 +38,7 @@ Page {
                 anchors.leftMargin: Theme.paddingLarge
                 anchors.right: statLabel.left
                 anchors.rightMargin: 0
+                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
                 text: model.name
             }
