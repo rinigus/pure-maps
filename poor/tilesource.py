@@ -56,6 +56,7 @@ class TileSource:
             self._headers = None
             self._http_queue = queue.Queue()
             self.id = id
+            self.max_age = values.get("max_age", None)
             self.name = values["name"]
             self._provider = None
             self.source = values["source"]
@@ -72,19 +73,14 @@ class TileSource:
 
         path = self.tile_path(tile)
         path = os.path.join(poor.CACHE_HOME_DIR, self.id, path)
-        directory = os.path.dirname(path)
-        if os.path.isfile(path):
-            # Failed downloads can result in empty files.
-            if os.stat(path).st_size > 0:
-                return path
+        if self._tile_exists(path):
+            return path
         if not self.extension:
             # Test all handled extensions for cached files.
             # This requires that no erroneous duplicates exist.
             for candidate in (path + x for x in MIMETYPE_EXTENSIONS.values()):
-                if os.path.isfile(candidate):
-                    # Failed downloads can result in empty files.
-                    if os.stat(candidate).st_size > 0:
-                        return candidate
+                if self._tile_exists(candidate):
+                    return candidate
         try:
             httpc = self._http_queue.get()
             if httpc is None:
@@ -106,6 +102,7 @@ class TileSource:
                         "Failed to detect tile mimetype -- "
                         "Content-Type header missing or unexpected value")
                 path = path + MIMETYPE_EXTENSIONS[mimetype]
+            directory = os.path.dirname(path)
             if not os.path.isdir(directory):
                 poor.util.makedirs(directory)
             with open(path, "wb") as f:
@@ -185,6 +182,20 @@ class TileSource:
     def tile_corners(self, tile):
         """Return coordinates of NE, SE, SW, NW corners of given tile."""
         return self._provider.tile_corners(tile)
+
+    def _tile_exists(self, path):
+        """Return ``True`` if tile exists in cache and is good to use."""
+        if not os.path.isfile(path):
+            return False
+        stat = os.stat(path)
+        # Failed downloads can result in empty files.
+        if stat.st_size == 0:
+            return False
+        if self.max_age is not None:
+            # Redownload expired tiles.
+            if stat.st_mtime < time.time() - self.max_age * 86400:
+                return False
+        return True
 
     def tile_path(self, tile, extension=None):
         """Return relative cache path to use for given tile."""
