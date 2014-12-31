@@ -1,6 +1,0 @@
-{
-    "attribution": "Data © OpenStreetMap contributors",
-    "description": "Car routing based on OpenStreetMap data",
-    "name": "OSRM",
-    "source": "project-osrm.org"
-}

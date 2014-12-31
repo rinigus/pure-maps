@@ -16,13 +16,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Routing using OSRM.
+Routing using Mapzen OSRM.
 
-http://project-osrm.org/
+http://mapzen.com/blog/osrm-services
 http://github.com/DennisOSRM/Project-OSRM/wiki/Server-api
 """
 
 import poor
+import re
+
+CONF_DEFAULTS = {"type": "car"}
 
 ICONS = { 1: "straight",
           2: "turn-slight-right",
@@ -75,7 +78,7 @@ TURNS = { 1: "Go straight",
 # XXX: Use z=14 as a workaround to avoid OSRM not finding a route at all.
 # http://lists.openstreetmap.org/pipermail/osrm-talk/2014-June/000588.html
 
-URL = ("http://router.project-osrm.org/viaroute"
+URL = ("http://osrm.mapzen.com/{type}/viaroute/"
        "?loc={fm}"
        "&loc={to}"
        "&output=json"
@@ -106,6 +109,10 @@ def parse_narrative(maneuver):
         except (ValueError, KeyError):
             continue
         street = maneuver[1]
+        # "If your start_point is on a road that hasn't been properly
+        # tagged with a name, the query will return something like
+        # {highway:pedestrian} or {highway:footway} [...]."
+        street = re.sub(r"\{highway:.*?\}", "Unnamed road", street)
         narratives.append(narrative.format(**locals())
                           if street else "{}.".format(turn))
 
@@ -127,6 +134,7 @@ def route(fm, to, params):
     global checksum
     fm_real, fm = prepare_endpoint(fm)
     to_real, to = prepare_endpoint(to)
+    type = poor.conf.routers.mapzen_osrm.type
     url = URL.format(**locals())
     if checksum is not None:
         url += "&checksum={}".format(checksum)

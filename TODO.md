@@ -6,7 +6,7 @@ Poor Maps 0.14
        page, defaults to never removing tiles)
  * [X] Allow tile source definition files to specify a "max_age" field,
        which, if lower, will override the above global threshold
- * [ ] Use Mapzen instead of project-osrm.org for OSRM routing (adds
+ * [X] Use Mapzen instead of project-osrm.org for OSRM routing (adds
        bicycle and pedestrian in addition to previous car routing)
        - <https://mapzen.com/blog/osrm-services>
 

@@ -1,0 +1,6 @@
+{
+    "attribution": "Data © OpenStreetMap contributors",
+    "description": "Car, bicycle and pedestrian routing based on OpenStreetMap data",
+    "name": "Mapzen OSRM",
+    "source": "mapzen.com, project-osrm.org"
+}
