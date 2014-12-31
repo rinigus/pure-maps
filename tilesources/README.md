@@ -1,12 +1,22 @@
 Implementing a Tile Source
 ==========================
 
-To implement a tile source you need to write a JSON metadata file, see
-the tile sources shipped with poor for examples. The "extension" field
-is optional; usually you should define it, it makes things faster,
-but if the image format varies by zoom level, you can leave it out.
-If left out, the image format will be auto-detected based on
-the Content-Type header of the HTTP download response.
+To implement a tile source you need to write a JSON metadata file. Most
+of the fields are self-explanatory, see the tile sources shipped with
+Poor for examples; non-trivial fields are explained below.
+
+ * **"extension"**: Defines the filename extension of map tiles. The
+   "extension" field is optional; usually you should define it, it makes
+   things faster, but if the image format varies by zoom level, you
+   should leave it out. If left out, the image format will be
+   auto-detected based on the Content-Type header of the HTTP download
+   response.
+
+ * **"max_age"**: Defines the maximum amount of days to keep tiles
+   cached on disk. Usually you should not define this as there is a
+   corresponding global preference that gives the user control over
+   up-to-date maps vs. data traffic costs. You should, however, define
+   it for tiles that change often, e.g. traffic tiles.
 
 The "format" field should correspond to a tile format implementation,
 i.e. if you mark the format as "foo", there should be a `foo.py` file in

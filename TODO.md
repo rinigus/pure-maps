@@ -4,7 +4,7 @@ Poor Maps 0.14
  * [X] Add option to auto-remove old map tiles after specified amount
        of days has passed since the tile download (see the preferences
        page, defaults to never removing tiles)
- * [ ] Allow tile source definition files to specify a "max_age" field,
+ * [X] Allow tile source definition files to specify a "max_age" field,
        which, if lower, will override the above global threshold
  * [ ] Use Mapzen instead of project-osrm.org for OSRM routing (adds
        bicycle and pedestrian in addition to previous car routing)
