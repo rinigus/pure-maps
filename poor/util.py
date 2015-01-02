@@ -230,7 +230,7 @@ def read_json(path):
         print("Failed to read file {}: {}"
               .format(repr(path), str(error)),
               file=sys.stderr)
-        raise
+        raise # Exception
 
 @contextlib.contextmanager
 def silent(*exceptions):
@@ -259,4 +259,4 @@ def write_json(data, path):
         print("Failed to write file {}: {}"
               .format(repr(path), str(error)),
               file=sys.stderr)
-        raise
+        raise # Exception

@@ -9,6 +9,7 @@ Poor Maps 0.14
  * [X] Use Mapzen instead of project-osrm.org for OSRM routing (adds
        bicycle and pedestrian in addition to previous car routing)
        - <https://mapzen.com/blog/osrm-services>
+ * [X] Fix application icon rasterization
 
 Poor Maps 1.0
 =============

@@ -16,7 +16,8 @@ Poor for examples; non-trivial fields are explained below.
    cached on disk. Usually you should not define this as there is a
    corresponding global preference that gives the user control over
    up-to-date maps vs. data traffic costs. You should, however, define
-   it for tiles that change often, e.g. traffic tiles.
+   it for tiles that change often, e.g. for traffic tiles, try something
+   like 0.01 days, i.e. about 15 minutes.
 
 The "format" field should correspond to a tile format implementation,
 i.e. if you mark the format as "foo", there should be a `foo.py` file in

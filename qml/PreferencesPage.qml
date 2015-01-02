@@ -59,9 +59,10 @@ Page {
                     MenuItem { text: "After one month" }
                     MenuItem { text: "After three months" }
                     MenuItem { text: "After six months" }
+                    MenuItem { text: "After one year" }
                     MenuItem { text: "Never" }
                 }
-                property var values: [7, 30, 90, 180, 36500]
+                property var values: [7, 30, 90, 180, 365, 36500]
                 Component.onCompleted: {
                     // Activate closest in case the user has edited the configuration file
                     // by hand using a value outside the combo box steps.
@@ -89,7 +90,7 @@ Page {
                     color: examineCacheItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Examine map tile cache"
+                    text: "Examine tile cache"
                 }
                 onClicked: app.pageStack.push("CachePage.qml");
             }
