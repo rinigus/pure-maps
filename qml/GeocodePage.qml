@@ -52,7 +52,7 @@ Page {
                     }
                 }
             }
-            ListView.onRemove: animateRemoval(listItem)
+            ListView.onRemove: animateRemoval(listItem);
             onClicked: {
                 page.query = model.place;
                 app.pageStack.navigateForward();

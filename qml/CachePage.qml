@@ -63,7 +63,8 @@ Page {
                     });
                 }
             }
-            ListView.onRemove: animateRemoval(listItem)
+            ListView.onRemove: animateRemoval(listItem);
+            onClicked: listItem.showMenu();
         }
         header: PageHeader { title: page.title }
         model: ListModel {}
@@ -98,7 +99,7 @@ Page {
         listView.model.clear();
         py.call("poor.cache.stat", [], function(results) {
             if (results && results.length > 0) {
-                page.title = "Tile Cache"
+                page.title = "Map Tile Cache"
                 for (var i = 0; i < results.length; i++)
                     listView.model.append(results[i]);
             } else {

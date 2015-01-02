@@ -52,7 +52,7 @@ Dialog {
                     }
                 }
             }
-            ListView.onRemove: animateRemoval(listItem)
+            ListView.onRemove: animateRemoval(listItem);
             onClicked: {
                 dialog.query = model.type;
                 dialog.accept();

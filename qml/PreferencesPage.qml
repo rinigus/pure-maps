@@ -52,15 +52,15 @@ Page {
             }
             ComboBox {
                 id: cacheComboBox
-                description: "Allowing auto-removal of old tiles will ensure up-to-date maps and will keep disk use under control, but will cause more data traffic."
-                label: "Remove map tiles"
+                description: "Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic."
+                label: "Cache map tiles"
                 menu: ContextMenu {
-                    MenuItem { text: "After one week" }
-                    MenuItem { text: "After one month" }
-                    MenuItem { text: "After three months" }
-                    MenuItem { text: "After six months" }
-                    MenuItem { text: "After one year" }
-                    MenuItem { text: "Never" }
+                    MenuItem { text: "For one week" }
+                    MenuItem { text: "For one month" }
+                    MenuItem { text: "For three months" }
+                    MenuItem { text: "For six months" }
+                    MenuItem { text: "For one year" }
+                    MenuItem { text: "Forever" }
                 }
                 property var values: [7, 30, 90, 180, 365, 36500]
                 Component.onCompleted: {
@@ -90,7 +90,7 @@ Page {
                     color: examineCacheItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Examine tile cache"
+                    text: "Examine map tile cache"
                 }
                 onClicked: app.pageStack.push("CachePage.qml");
             }
