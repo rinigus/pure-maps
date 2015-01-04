@@ -1,19 +1,7 @@
-Poor Maps 0.14
-==============
-
- * [X] Add option to auto-remove old map tiles after specified amount
-       of days has passed since the tile download (see the preferences
-       page, defaults to never removing tiles)
- * [X] Allow tile source definition files to specify a "max_age" field,
-       which, if lower, will override the above global threshold
- * [X] Use Mapzen instead of project-osrm.org for OSRM routing (adds
-       bicycle and pedestrian in addition to previous car routing)
-       - <https://mapzen.com/blog/osrm-services>
- * [X] Fix application icon rasterization
-
 Poor Maps 1.0
 =============
 
+ * Center on user's position on first time startup
  * Add [Photon](http://photon.komoot.de/) geocoder?
  * Add a QtSensors Compass arrow that shows which way one is facing
  * Add a cover that shows narrative when navigating
