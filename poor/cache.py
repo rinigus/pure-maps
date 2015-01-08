@@ -62,13 +62,10 @@ def purge_directory(directory, max_age):
           .format(max_age, repr(os.path.basename(directory))),
           end="")
 
-    if max_age <= 0:
-        # Avoid stat calls if removing all files.
-        shutil.rmtree(directory, ignore_errors=True)
-        return print(" done.")
     cutoff = time.time() - max_age * 86400
     total = removed = 0
-    for root, dirs, files, rootfd in os.fwalk(directory, topdown=False):
+    for root, dirs, files, rootfd in os.fwalk(
+            directory, topdown=False, follow_symlinks=True):
         total += len(files)
         for name in files:
             if os.stat(name, dir_fd=rootfd).st_mtime < cutoff:
@@ -78,9 +75,11 @@ def purge_directory(directory, max_age):
         for name in dirs:
             with poor.util.silent(OSError):
                 # Fails if the directory is not empty.
+                # Fails if the directory is a symlink.
                 os.rmdir(name, dir_fd=rootfd)
     with poor.util.silent(OSError):
         # Fails if the directory is not empty.
+        # Fails if the directory is a symlink.
         os.rmdir(directory)
     print(" {:6d} tiles removed, {:6d} left.".format(removed, total-removed))
 
@@ -93,7 +92,7 @@ def stat():
     for child in sorted(directories):
         count = 0
         bytes = 0
-        for root, dirs, files, rootfd in os.fwalk(child):
+        for root, dirs, files, rootfd in os.fwalk(child, follow_symlinks=True):
             count += len(files)
             bytes += sum(os.stat(x, dir_fd=rootfd).st_size for x in files)
         directory = os.path.basename(child)
