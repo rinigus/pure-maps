@@ -1,7 +1,7 @@
 Poor Maps 0.15
 ==============
 
- * [ ] Center on user's position on first time startup
+ * [X] Center on user's position on first time startup
  * [X] Have cache management follow symlinks
 
 Poor Maps 1.0

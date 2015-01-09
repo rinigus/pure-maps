@@ -27,7 +27,7 @@ __all__ = ("ConfigurationStore",)
 DEFAULTS = {
     "auto_center": False,
     "cache_max_age": 36500, # days
-    "center": [24.941, 60.169],
+    "center": [0.0, 0.0],
     "download_timeout": 10, # seconds
     "geocoder": "mapquest_nominatim",
     "gps_update_interval": 1, # seconds
@@ -37,7 +37,7 @@ DEFAULTS = {
     "router": "mapquest_open",
     "show_routing_narrative": True,
     "tilesource": "mapquest_open",
-    "zoom": 15,
+    "zoom": 4,
 }
 
 

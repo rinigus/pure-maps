@@ -34,6 +34,7 @@ Map {
 
     property var  attribution: attribution
     property bool autoCenter: false
+    property bool centerFound: true
     property bool changed: true
     property var  direction: gps.direction
     property bool hasRoute: false
@@ -93,15 +94,19 @@ Map {
     }
 
     onPositionChanged: {
-        // Conditionally center map on position if outside center of screen.
-        if (!map.autoCenter) return;
-        if (map.gesture.isPanActive) return;
-        if (map.gesture.isPinchActive) return;
-        // map.toScreenPosition returns NaN when outside screen.
-        var pos = map.toScreenPosition(map.position.coordinate);
-        if (!pos.x || pos.x < 0.333 * map.width  || pos.x > 0.667 * map.width ||
-            !pos.y || pos.y < 0.333 * map.height || pos.y > 0.667 * map.height)
+        if (!map.centerFound) {
+            // Center on user's position on first start.
+            // Don't zoom in case positioning is bogus.
+            map.centerFound = true;
             map.centerOnPosition();
+        } else if (map.autoCenter && !map.gesture.isPanActive && !map.gesture.isPinchActive) {
+            // Center map on position if outside center of screen.
+            // map.toScreenPosition returns NaN when outside screen.
+            var pos = map.toScreenPosition(map.position.coordinate);
+            if (!pos.x || pos.x < 0.333 * map.width  || pos.x > 0.667 * map.width ||
+                !pos.y || pos.y < 0.333 * map.height || pos.y > 0.667 * map.height)
+                map.centerOnPosition();
+        }
     }
 
     function addManeuvers(maneuvers) {
@@ -295,9 +300,15 @@ Map {
         map.attribution.text = py.evaluate("poor.app.tilesource.attribution");
         map.autoCenter = app.conf.get("auto_center");
         map.showNarrative = app.conf.get("show_routing_narrative");
-        var center = app.conf.get("center");
-        map.setCenter(center[0], center[1]);
         map.setZoomLevel(app.conf.get("zoom"));
+        var center = app.conf.get("center");
+        if (center[0] == 0.0 && center[1] == 0.0) {
+            // Center on user's position on first start.
+            map.centerFound = false;
+        } else {
+            map.centerFound = true;
+            map.setCenter(center[0], center[1]);
+        }
         map.updateTiles();
         app.updateKeepAlive();
         map.loadPois();
