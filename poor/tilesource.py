@@ -83,11 +83,11 @@ class TileSource:
             for candidate in (path + x for x in MIMETYPE_EXTENSIONS.values()):
                 if self._tile_exists(candidate):
                     return candidate
-        if not poor.conf.allow_tile_download:
+        if (not poor.conf.allow_tile_download and
+            not RE_LOCALHOST.search(url)):
             # If not allowing tiles to be downloaded, return a special tile to
             # make a distinction between prevented and queued downloads.
-            if not RE_LOCALHOST.search(url):
-                return "icons/tile.png"
+            return "icons/tile.png"
         try:
             httpc = self._http_queue.get()
             if httpc is None:
