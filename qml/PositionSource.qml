@@ -29,7 +29,7 @@ PositionSource {
     Component.onCompleted: gps.initProperties();
     onPositionChanged: {
         // XXX: Calculate direction, since it's missing from gps.position.
-        // http://bugreports.qt-project.org/browse/QTBUG-36298
+        // http://bugreports.qt.io/browse/QTBUG-36298
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 30) return;
         var coord = gps.position.coordinate;

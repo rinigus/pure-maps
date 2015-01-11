@@ -27,7 +27,7 @@ import "js/util.js" as Util
  * To work around this, let's use a Canvas and Context2D drawing primitives
  * to draw our route. This looks nice, but might be horribly inefficient.
  *
- * http://bugreports.qt-project.org/browse/QTBUG-38459
+ * http://bugreports.qt.io/browse/QTBUG-38459
  */
 
 Canvas {

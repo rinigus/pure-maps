@@ -26,9 +26,10 @@ import QtLocation 5.0
  * Luckily, we can use the Nokia plugin, but not load any Nokia tiles,
  * and overlay our own tiles as MapQuickItems.
  *
- * http://bugreports.qt-project.org/browse/QTBUG-32937
- * http://bugreports.qt-project.org/browse/QTBUG-36581
- * http://bugreports.qt-project.org/browse/QTBUG-40994
+ * http://bugreports.qt.io/browse/QTBUG-32937
+ * http://bugreports.qt.io/browse/QTBUG-36581
+ * http://bugreports.qt.io/browse/QTBUG-40994
+ * http://bugreports.qt.io/browse/QTBUG-43762
  */
 
 Plugin {

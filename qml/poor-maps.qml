@@ -38,7 +38,7 @@ import "."
  * to write our own orientation handling code once Qt bug #40799 is resolved
  * and map gestures correctly change orientation along with the map.
  *
- * http://bugreports.qt-project.org/browse/QTBUG-40799
+ * http://bugreports.qt.io/browse/QTBUG-40799
  * http://lists.sailfishos.org/pipermail/devel/2014-October/005064.html
  */
 
