@@ -1,3 +1,11 @@
+Poor Maps 0.15
+==============
+
+ * Add a mode in which no tiles are downloaded, only cached tiles
+   are used (can be activated in the preferences page)
+ * Center on user's position on first time startup
+ * Have cache management follow symlinks
+
 Poor Maps 0.14
 ==============
 
