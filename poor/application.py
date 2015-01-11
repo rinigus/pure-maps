@@ -17,6 +17,7 @@
 
 """An application to display maps and stuff."""
 
+import os
 import poor
 import pyotherside
 import queue
@@ -142,7 +143,7 @@ class Application:
         if path is None: return
         # Abort if map moved out of view during download.
         if timestamp != self._timestamp: return
-        uri = poor.util.path2uri(path)
+        uri = (poor.util.path2uri(path) if os.path.isabs(path) else path)
         item = self._tilecollection.get_free(xmin, xmax, ymin, ymax, zoom)
         corners = self.tilesource.tile_corners(tile)
         item.xmin = min(corner[0] for corner in corners)

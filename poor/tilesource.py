@@ -22,6 +22,7 @@ import importlib.machinery
 import os
 import poor
 import queue
+import re
 import sys
 import time
 import urllib.parse
@@ -29,6 +30,7 @@ import urllib.parse
 __all__ = ("TileSource",)
 
 MIMETYPE_EXTENSIONS = {"image/jpeg": ".jpg", "image/png": ".png"}
+RE_LOCALHOST = re.compile(r"://(127.0.0.1|localhost)\b")
 
 
 class TileSource:
@@ -81,6 +83,11 @@ class TileSource:
             for candidate in (path + x for x in MIMETYPE_EXTENSIONS.values()):
                 if self._tile_exists(candidate):
                     return candidate
+        if not poor.conf.allow_tile_download:
+            # If not allowing tiles to be downloaded, return a special tile to
+            # make a distinction between prevented and queued downloads.
+            if not RE_LOCALHOST.search(url):
+                return "icons/tile.png"
         try:
             httpc = self._http_queue.get()
             if httpc is None:

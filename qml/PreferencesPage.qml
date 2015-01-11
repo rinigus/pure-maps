@@ -30,6 +30,17 @@ Page {
             id: column
             anchors.fill: parent
             PageHeader { title: "Preferences" }
+            ListItemSwitch {
+                id: downloadTilesItem
+                checked: app.conf.get("allow_tile_download")
+                description: "Disallow tile downloads to minimize data traffic. You will be left with previously downloaded and cached tiles."
+                text: "Allow downloading map tiles"
+                onCheckedChanged: {
+                    var value = downloadTilesItem.checked
+                    app.conf.set("allow_tile_download", value);
+                    if (value) map.changed = true;
+                }
+            }
             ComboBox {
                 id: sleepComboBox
                 description: "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences."

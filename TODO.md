@@ -1,19 +1,18 @@
 Poor Maps 0.15
 ==============
 
+ * [X] Add a mode in which no tiles are downloaded, only cached tiles
+       are used (can be activated in the preferences page)
  * [X] Center on user's position on first time startup
  * [X] Have cache management follow symlinks
 
 Poor Maps 1.0
 =============
 
- * Add [Photon](http://photon.komoot.de/) geocoder?
- * Add a QtSensors Compass arrow that shows which way one is facing
- * Add a cover that shows narrative when navigating
  * Add voice guidance (espeak?)
+ * Add a cover that shows narrative when navigating
+ * Add a QtSensors Compass arrow that shows which way one is facing
  * Add ability to import a route from file
- * Add a no-download mode? (see annoying popup
-   <http://together.jolla.com/question/53124>)
  * Allow landscape for the map when gestures work right
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add user interface translations

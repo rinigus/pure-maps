@@ -25,6 +25,7 @@ import sys
 __all__ = ("ConfigurationStore",)
 
 DEFAULTS = {
+    "allow_tile_download": True,
     "auto_center": False,
     "cache_max_age": 36500, # days
     "center": [0.0, 0.0],
