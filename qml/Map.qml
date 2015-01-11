@@ -96,7 +96,6 @@ Map {
     onPositionChanged: {
         if (!map.centerFound) {
             // Center on user's position on first start.
-            // Don't zoom in case positioning is bogus.
             map.centerFound = true;
             map.centerOnPosition();
         } else if (map.autoCenter && !map.gesture.isPanActive && !map.gesture.isPinchActive) {

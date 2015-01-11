@@ -20,7 +20,6 @@
 import glob
 import os
 import poor
-import shutil
 import time
 
 

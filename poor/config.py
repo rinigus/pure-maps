@@ -38,7 +38,7 @@ DEFAULTS = {
     "router": "mapquest_open",
     "show_routing_narrative": True,
     "tilesource": "mapquest_open",
-    "zoom": 4,
+    "zoom": 15,
 }
 
 
