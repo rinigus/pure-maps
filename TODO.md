@@ -1,8 +1,11 @@
 Poor Maps 1.0
 =============
 
- * Add voice guidance (espeak?)
+ * Toggle auto-centering on position by tapping the position marker?
+ * Center on position when double-tapping map?
+ * Add support for scaling and retina tiles
  * Add a cover that shows narrative when navigating
+ * Add voice guidance (espeak?)
  * Add a QtSensors Compass arrow that shows which way one is facing
  * Add ability to import a route from file
  * Allow landscape for the map when gestures work right
