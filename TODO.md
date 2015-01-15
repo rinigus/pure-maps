@@ -3,6 +3,8 @@ Poor Maps 0.16
 
  * [X] Center on position when double-tapping map
  * [ ] Toggle auto-centering on position by tapping the position marker?
+ * [X] Make cache purge on startup less likely to block
+ * [ ] Add manual cache purge actions of different ages?
  * [X] Bump required QtPositioning version to 5.2
 
 Poor Maps 1.0

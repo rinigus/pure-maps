@@ -76,6 +76,8 @@ def purge_directory(directory, max_age):
                 # Fails if the directory is not empty.
                 # Fails if the directory is a symlink.
                 os.rmdir(name, dir_fd=rootfd)
+        # Release GIL to let other threads do something more important.
+        time.sleep(0.001)
     with poor.util.silent(OSError):
         # Fails if the directory is not empty.
         # Fails if the directory is a symlink.
