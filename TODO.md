@@ -1,8 +1,13 @@
+Poor Maps 0.16
+==============
+
+ * [X] Center on position when double-tapping map
+ * [ ] Toggle auto-centering on position by tapping the position marker?
+ * [X] Bump required QtPositioning version to 5.2
+
 Poor Maps 1.0
 =============
 
- * Toggle auto-centering on position by tapping the position marker?
- * Center on position when double-tapping map?
  * Add support for scaling and retina tiles
  * Add a cover that shows narrative when navigating
  * Add voice guidance (espeak?)

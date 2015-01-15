@@ -18,7 +18,7 @@
 
 import QtQuick 2.0
 import QtLocation 5.0
-import QtPositioning 5.0
+import QtPositioning 5.3
 import "."
 
 Map {
@@ -26,7 +26,6 @@ Map {
     anchors.left: app.contentItem.left
     anchors.right: app.contentItem.right
     anchors.top: app.contentItem.bottom
-    center: QtPositioning.coordinate(60.169, 24.941)
     gesture.enabled: true
     height: app.bottomMargin
     minimumZoomLevel: 3
@@ -55,6 +54,13 @@ Map {
     property real widthCoords: 0
     property real zoomLevelPrev: 8
 
+    Behavior on center {
+        CoordinateAnimation {
+            duration: 500
+            easing.type: Easing.InOutQuad
+        }
+    }
+
     AttributionText { id: attribution }
     MapTimer {}
     MenuButton { id: menuButton }
@@ -62,6 +68,11 @@ Map {
     Route { id: route }
     ScaleBar { id: scaleBar }
     StatusArea { id: statusArea }
+
+    MouseArea {
+        anchors.fill: parent
+        onDoubleClicked: map.centerOnPosition();
+    }
 
     Component.onCompleted: {
         // Load default values and start periodic updates.
@@ -425,8 +436,8 @@ Map {
     function setCenter(x, y) {
         // Set the current center position.
         if (!x || !y) return;
-        map.center.longitude = x;
-        map.center.latitude = y;
+        // Create a new object to trigger animation.
+        map.center = QtPositioning.coordinate(y, x);
         map.changed = true;
     }
 

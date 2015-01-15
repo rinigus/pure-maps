@@ -16,7 +16,7 @@ Requires: pyotherside-qml-plugin-python3-qt5 >= 1.2
 Requires: python3-base
 Requires: qt5-plugin-geoservices-nokia
 Requires: qt5-qtdeclarative-import-location
-Requires: qt5-qtdeclarative-import-positioning
+Requires: qt5-qtdeclarative-import-positioning >= 5.2
 Requires: sailfishsilica-qt5
 
 %description
