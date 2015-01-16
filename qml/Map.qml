@@ -62,17 +62,13 @@ Map {
     }
 
     AttributionText { id: attribution }
+    MapMouseArea {}
     MapTimer {}
     MenuButton { id: menuButton }
     NarrationTimer {}
     Route { id: route }
     ScaleBar { id: scaleBar }
     StatusArea { id: statusArea }
-
-    MouseArea {
-        anchors.fill: parent
-        onDoubleClicked: map.centerOnPosition();
-    }
 
     Component.onCompleted: {
         // Load default values and start periodic updates.

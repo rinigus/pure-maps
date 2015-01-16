@@ -3,7 +3,7 @@ Poor Maps 0.16
 
  * [X] Center on position by double-tapping map
  * [ ] Toggle auto-centering on position by tapping the position marker
- * [ ] Add point of interest by tapping map
+ * [X] Add point of interest by tapping map
  * [X] Use an animation when centering map
  * [X] Make cache purge on startup less likely to block
  * [ ] Make cache purge safer?
