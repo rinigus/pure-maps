@@ -56,7 +56,7 @@ Map {
 
     Behavior on center {
         CoordinateAnimation {
-            duration: 500
+            duration: map.ready ? 500 : 0
             easing.type: Easing.InOutQuad
         }
     }
@@ -77,7 +77,6 @@ Map {
     Component.onCompleted: {
         // Load default values and start periodic updates.
         map.initProperties();
-        map.zoomLevelPrev = map.zoomLevel;
     }
 
     gesture.onPinchFinished: {

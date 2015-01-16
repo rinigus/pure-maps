@@ -1,16 +1,20 @@
 Poor Maps 0.16
 ==============
 
- * [X] Center on position when double-tapping map
- * [ ] Toggle auto-centering on position by tapping the position marker?
+ * [X] Center on position by double-tapping map
+ * [ ] Toggle auto-centering on position by tapping the position marker
+ * [ ] Add point of interest by tapping map
+ * [X] Use an animation when centering map
  * [X] Make cache purge on startup less likely to block
- * [ ] Add manual cache purge actions of different ages?
+ * [ ] Make cache purge safer?
+ * [ ] Add manual cache purge actions of different ages
  * [X] Bump required QtPositioning version to 5.2
 
 Poor Maps 1.0
 =============
 
  * Add support for scaling and retina tiles
+   - Map.scale, MapQuickItem.zoomLevel?
  * Add a cover that shows narrative when navigating
  * Add voice guidance (espeak?)
  * Add a QtSensors Compass arrow that shows which way one is facing
