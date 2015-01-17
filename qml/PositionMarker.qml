@@ -18,8 +18,10 @@
 
 import QtQuick 2.0
 import QtLocation 5.0
+import Sailfish.Silica 1.0
 
 MapQuickItem {
+    id: marker
     anchorPoint.x: movingImage.width/2
     anchorPoint.y: movingImage.height/2
     coordinate: map.position.coordinate
@@ -36,6 +38,48 @@ MapQuickItem {
             anchors.centerIn: movingImage
             source: "icons/position.png"
             visible: !movingImage.visible
+        }
+        MouseArea {
+            anchors.fill: movingImage
+            onClicked: {
+                if (app.conf.get("auto_center")) {
+                    app.conf.set("auto_center", false);
+                    map.autoCenter = false;
+                    bubble.message = "Auto-center off";
+                } else {
+                    app.conf.set("auto_center", true);
+                    map.autoCenter = true;
+                    map.centerOnPosition();
+                    bubble.message = "Auto-center on";
+                }
+                bubble.visible = true;
+                timer.restart();
+            }
+        }
+        Rectangle {
+            id: bubble
+            anchors.bottom: movingImage.top
+            anchors.bottomMargin: 18
+            anchors.horizontalCenter: movingImage.horizontalCenter
+            color: "#bb000000"
+            height: label.height + Theme.paddingLarge
+            radius: label.font.pixelSize/2
+            visible: false
+            width: label.width + 1.5*Theme.paddingLarge
+            property string message: ""
+            Label {
+                id: label
+                anchors.centerIn: bubble
+                color: "white"
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeSmall
+                text: bubble.message
+            }
+        }
+        Timer {
+            id: timer
+            interval: 3000
+            onTriggered: bubble.visible = !bubble.visible;
         }
     }
     z: 300

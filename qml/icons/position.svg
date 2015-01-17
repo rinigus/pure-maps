@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="48"
-   height="48"
+   width="72"
+   height="72"
    id="svg1901"
    sodipodi:version="0.32"
    inkscape:version="0.48.5 r10040"
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="14.28945"
-     inkscape:cx="24"
-     inkscape:cy="24"
+     inkscape:zoom="13.486111"
+     inkscape:cx="36"
+     inkscape:cy="36"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
@@ -63,10 +63,11 @@
      inkscape:label="Taso 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-1004.3622)">
+     transform="translate(0,-980.3622)">
     <g
        id="g10914"
-       style="fill:#0540ff;fill-opacity:0.5">
+       style="fill:#0540ff;fill-opacity:0.5"
+       transform="translate(12,-12)">
       <path
          inkscape:connector-curvature="0"
          id="path10143"
