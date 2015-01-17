@@ -30,7 +30,7 @@ MouseArea {
         clickTimer.stop();
         map.centerOnPosition();
     }
-    property var coord
+    property var coord: null
     Timer {
         id: clickTimer
         interval: 300

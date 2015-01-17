@@ -76,9 +76,18 @@ MapQuickItem {
                 text: bubble.message
             }
         }
+        Image {
+            id: arrow
+            anchors.top: bubble.bottom
+            // Try to avoid a stripe between bubble and arrow.
+            anchors.topMargin: -0.5
+            anchors.horizontalCenter: bubble.horizontalCenter
+            source: "icons/bubble-arrow.png"
+            visible: bubble.visible
+        }
         Timer {
             id: timer
-            interval: 3000
+            interval: 2000
             onTriggered: bubble.visible = !bubble.visible;
         }
     }

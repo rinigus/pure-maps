@@ -12,29 +12,29 @@ Poor for examples; non-trivial fields are explained below.
    auto-detected based on the Content-Type header of the HTTP download
    response.
 
+ * **"format"**: Corresponds to a tile format implementation, i.e. if
+   you mark the format as "foo", there should be a `foo.py` file in the
+   tilesources directory. The following tile format implementations are
+   shipped with Poor, for adding you own, see the next section.
+
+   - **"slippy"**: By far the most common format, based on spherical
+     Mercator and pyramid-style zoom levels and tile numbers, see
+     [documentation][1]. Provides URL parameters "x", "y" and "z".
+
+   - **"slippy_elliptical"**: A variation of the "slippy" format, but
+     using elliptical Mercator instead of spherical. Provides URL
+     parameters "x", "y" and "z".
+
+   - **"quadkey"**: By tile division equivalent to the "slippy" format,
+     but with tiles referred to by a single key, see [documentation][2].
+     Provides URL parameters "x", "y", "z" and "key".
+
  * **"max_age"**: Defines the maximum amount of days to keep tiles
    cached on disk. Usually you should not define this as there is a
    corresponding global preference that gives the user control over
    up-to-date maps vs. data traffic costs. You should, however, define
    it for tiles that change often, e.g. for traffic tiles, try something
    like 0.01 days, i.e. about 15 minutes.
-
-The "format" field should correspond to a tile format implementation,
-i.e. if you mark the format as "foo", there should be a `foo.py` file in
-the tilesources directory. The following tile format implementations are
-shipped with Poor, for adding you own, see the next section.
-
- * **"slippy"**: By far the most common format, based on spherical
-   Mercator and pyramid-style zoom levels and tile numbers, see
-   [documentation][1]. Provides URL parameters "x", "y" and "z".
-
- * **"slippy_elliptical"**: A variation of the "slippy" format, but
-   using elliptical Mercator instead of spherical. Provides URL
-   parameters "x", "y" and "z".
-
- * **"quadkey"**: By tile division equivalent to the "slippy" format,
-   but with tiles referred to by a single key, see [documentation][2].
-   Provides URL parameters "x", "y", "z" and "key".
 
  [1]: http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
  [2]: http://msdn.microsoft.com/en-us/library/bb259689.aspx
