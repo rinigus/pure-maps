@@ -5,9 +5,9 @@ Poor Maps 0.16
  * [X] Toggle auto-center on position by tapping position marker
  * [X] Add point of interest by tapping map
  * [X] Use an animation when centering map
- * [ ] Make cache purge safer?
  * [ ] Add manual cache purge actions of different ages
- * [X] Bump required QtPositioning version to 5.2
+ * [X] Bump required QtPositioning version to 5.2 and use the 5.3 API,
+       (probably available since Sailfish OS 1.1.0.38 "Uitukka")
 
 Poor Maps 1.0
 =============

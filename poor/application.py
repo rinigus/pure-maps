@@ -48,7 +48,7 @@ class Application:
         self.set_geocoder(poor.conf.geocoder)
         self.set_guide(poor.conf.guide)
         self.set_router(poor.conf.router)
-        self._purge_cache()
+        poor.cache.purge_async()
 
     def _init_download_threads(self):
         """Initialize map tile download threads."""
@@ -67,10 +67,6 @@ class Application:
                 # Only download tiles queued in the latest update.
                 self._update_tile(*args, timestamp=timestamp)
             self._download_queue.task_done()
-
-    def _purge_cache(self):
-        """Remove all expired tiles from the cache directory."""
-        threading.Thread(target=poor.cache.purge, daemon=True).start()
 
     def set_geocoder(self, geocoder):
         """Set geocoding provider from string `geocoder`."""

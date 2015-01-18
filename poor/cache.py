@@ -20,6 +20,7 @@
 import glob
 import os
 import poor
+import threading
 import time
 
 
@@ -31,12 +32,11 @@ def purge(max_age=None):
     If `max_age` is not given, the minimum of tilesource's "max_age" field
     and :attr:`poor.conf.cache_max_age` will be used.
     """
+    max_age_given = max_age
     directories = glob.glob("{}/*".format(poor.CACHE_HOME_DIR))
     directories = list(filter(os.path.isdir, directories))
-    ages = dict((x["pid"], x.get("max_age", poor.conf.cache_max_age))
-                for x in poor.util.get_tilesources())
-
-    max_age_given = max_age
+    get_age = lambda x: (x["pid"], x.get("max_age", poor.conf.cache_max_age))
+    ages = dict(get_age(x) for x in poor.util.get_tilesources())
     for child in sorted(directories):
         directory = os.path.basename(child)
         max_age = max_age_given
@@ -45,6 +45,12 @@ def purge(max_age=None):
             max_age = min((max_age, ages.get(directory, max_age)))
         if max_age >= 36500: continue
         purge_directory(directory, max_age)
+
+def purge_async(max_age=None):
+    """Remove all expired tiles from the cache directory."""
+    threading.Thread(target=purge,
+                     kwargs=dict(max_age=max_age),
+                     daemon=True).start()
 
 def purge_directory(directory, max_age):
     """
@@ -55,14 +61,31 @@ def purge_directory(directory, max_age):
     tiles older which to remove.
     """
     if not directory: return
+    if not poor.CACHE_HOME_DIR:
+        # This shouldn't happen, but just in case it does,
+        # let's try to avoid a disaster.
+        raise Exception("poor.CACHE_HOME_DIR not set")
     directory = os.path.join(poor.CACHE_HOME_DIR, directory)
     if not os.path.isdir(directory): return
+    if os.path.samefile(os.path.expanduser("~"), directory):
+        # This shouldn't happen, but just in case it does,
+        # let's try to avoid a disaster.
+        raise Exception("Refusing to act on $HOME")
     print("Purging cache >{:3.0f}d for {:22s}..."
           .format(max_age, repr(os.path.basename(directory))),
           end="")
 
     cutoff = time.time() - max_age * 86400
     total = removed = 0
+    # First run topdown to make sure there's no misconfigured
+    # symlinks etc. that could cause a disaster. After that run
+    # bottomup to able to remove directories as well.
+    for root, dirs, files, rootfd in os.fwalk(
+            directory, topdown=True, follow_symlinks=True):
+        if os.path.samefile(os.path.expanduser("~"), root):
+            # This shouldn't happen, but just in case it does,
+            # let's try to avoid a disaster.
+            raise Exception("Refusing to act on $HOME")
     for root, dirs, files, rootfd in os.fwalk(
             directory, topdown=False, follow_symlinks=True):
         total += len(files)
@@ -83,6 +106,12 @@ def purge_directory(directory, max_age):
         # Fails if the directory is a symlink.
         os.rmdir(directory)
     print(" {:6d} tiles removed, {:6d} left.".format(removed, total-removed))
+
+def purge_directory_async(directory, max_age):
+    """Remove all expired tiles in cache subdirectory."""
+    threading.Thread(target=purge_directory,
+                     args=(directory, max_age),
+                     daemon=True).start()
 
 def stat():
     """Return file count and total size of cache subdirectories."""

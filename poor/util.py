@@ -117,7 +117,7 @@ def format_bearing(bearing):
 
 def format_distance(meters, n=2):
     """Format `meters` to `n` significant digits and unit label."""
-    # XXX: We might need to support for non-SI units here.
+    # XXX: We might need to add support for non-SI units here.
     if meters > 1000:
         distance = meters/1000
         units = "km"
