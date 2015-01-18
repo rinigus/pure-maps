@@ -21,7 +21,6 @@ import QtLocation 5.0
 import Sailfish.Silica 1.0
 
 MapQuickItem {
-    id: marker
     anchorPoint.x: movingImage.width/2
     anchorPoint.y: movingImage.height/2
     coordinate: map.position.coordinate
@@ -49,8 +48,8 @@ MapQuickItem {
                 } else {
                     app.conf.set("auto_center", true);
                     map.autoCenter = true;
-                    map.centerOnPosition();
                     bubble.message = "Auto-center on";
+                    map.centerOnPosition();
                 }
                 bubble.visible = true;
                 timer.restart();
