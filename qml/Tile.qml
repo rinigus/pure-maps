@@ -29,11 +29,12 @@ MapQuickItem {
     sourceItem: Item {
         Image {
             id: image
-            smooth: false
+            smooth: tile.smooth
             source: tile.uri
         }
     }
     width: image.width
+    property bool smooth: false
     property int uid
     property string uri
     function setHeight(props) {

@@ -62,6 +62,7 @@ class TileSource:
             self.name = values["name"]
             self._provider = None
             self.scale = values.get("scale", 1)
+            self.smooth = values.get("smooth", False)
             self.source = values["source"]
             self.url = values["url"]
             self._init_provider(values["format"])

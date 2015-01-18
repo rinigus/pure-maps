@@ -362,6 +362,7 @@ Map {
             map.tiles[i].coordinate.longitude = props.nwx;
             map.tiles[i].coordinate.latitude = props.nwy;
             map.tiles[i].zoomLevel = zoom;
+            map.tiles[i].smooth = props.smooth;
             map.tiles[i].uri = props.uri;
             map.tiles[i].setWidth(props);
             map.tiles[i].setHeight(props);

@@ -93,6 +93,7 @@ Cover {
             cover.tiles[i].x = cover.mapXToCoverX(map.tiles[i].x);
             cover.tiles[i].y = cover.mapYToCoverY(map.tiles[i].y);
             cover.tiles[i].z = map.tiles[i].z;
+            cover.tiles[i].smooth = map.tiles[i].smooth;
             var width = map.tiles[i].width;
             var height = map.tiles[i].height;
             width && width > 0 && (cover.tiles[i].width = width);

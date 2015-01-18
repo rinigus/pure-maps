@@ -156,6 +156,7 @@ class Application:
                                              nwy=corners[3][1],
                                              zoom=zoom,
                                              scale=self.tilesource.scale,
+                                             smooth=self.tilesource.smooth,
                                              uri=uri))
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):

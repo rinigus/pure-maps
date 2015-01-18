@@ -40,14 +40,20 @@ Poor for examples; non-trivial fields are explained below.
    normal tiles are 256x256, then tiles at `scale=2` are 512x512 pixels,
    covering the same geographic area. If omitted, the default `scale=1`
    is assumed. The only allowed values are powers of two: 1, 2, 4, etc.
-   The scale field is meant for so called "retina" (or "HiDPI" or
-   "HiRes" or "@2x") tiles that fit high pixel density screens better,
-   especially regarding font sizes. Note that there are different kinds
-   of retina tiles available and different ways of displaying them and
-   thus different definitions for different sources.
+   (also 0.5, 0.25, etc. for the rarer inverse problem). The scale field
+   is meant for so called "retina" (or "HiDPI" or "HiRes" or "@2x")
+   tiles that fit high pixel density screens better, especially
+   regarding font sizes. Note that there are different kinds of retina
+   tiles available and different ways of displaying them and thus
+   different definitions for different sources.
+
+ * **"smooth"**: `true` to display tiles with [smooth filtering][3] --
+   useful for tiles not displayed at natural size. If omitted, defaults
+   to `false`.
 
  [1]: http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
  [2]: http://msdn.microsoft.com/en-us/library/bb259689.aspx
+ [3]: http://doc.qt.io/qt-5/qml-qtquick-image.html#smooth-prop
 
 Use `~/.local/share/harbour-poor-maps/tilesources` as a local
 installation directory in which to place your JSON file. Restart Poor,
