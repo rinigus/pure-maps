@@ -30,7 +30,7 @@ Page {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: Theme.itemSizeSmall
+            contentHeight: visible ? Theme.itemSizeSmall : 0
             menu: contextMenu
             ListItemLabel {
                 id: nameLabel
@@ -56,10 +56,40 @@ Page {
             ContextMenu {
                 id: contextMenu
                 MenuItem {
+                    text: "Remove older than one year"
+                    onClicked: remorse.execute(listItem, "Removing", function() {
+                        page.purge(model.index, model.directory, 365);
+                    });
+                }
+                MenuItem {
+                    text: "Remove older than six months"
+                    onClicked: remorse.execute(listItem, "Removing", function() {
+                        page.purge(model.index, model.directory, 180);
+                    });
+                }
+                MenuItem {
+                    text: "Remove older than three months"
+                    onClicked: remorse.execute(listItem, "Removing", function() {
+                        page.purge(model.index, model.directory, 90);
+                    });
+                }
+                MenuItem {
+                    text: "Remove older than one month"
+                    onClicked: remorse.execute(listItem, "Removing", function() {
+                        page.purge(model.index, model.directory, 30);
+                    });
+                }
+                MenuItem {
+                    text: "Remove older than one week"
+                    onClicked: remorse.execute(listItem, "Removing", function() {
+                        page.purge(model.index, model.directory, 7);
+                    });
+                }
+                MenuItem {
                     text: "Remove all"
                     onClicked: remorse.execute(listItem, "Removing", function() {
                         py.call("poor.cache.purge_directory", [model.directory, 0], null);
-                        listView.model.remove(index);
+                        listItem.visible = false;
                     });
                 }
             }
@@ -107,6 +137,15 @@ Page {
                 busyLabel.text = "No cache, or error";
             }
             page.loading = false;
+        });
+    }
+    function purge(index, directory, max_age) {
+        // Remove tiles in cache and recalculate statistics.
+        listView.model.setProperty(index, "size", "· · ·");
+        py.call("poor.cache.purge_directory", [directory, max_age], function(result) {
+            py.call("poor.cache.stat_directory", [directory], function(result) {
+                listView.model.setProperty(index, "size", result.size);
+            });
         });
     }
 }

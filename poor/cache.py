@@ -37,14 +37,14 @@ def purge(max_age=None):
     directories = list(filter(os.path.isdir, directories))
     get_age = lambda x: (x["pid"], x.get("max_age", poor.conf.cache_max_age))
     ages = dict(get_age(x) for x in poor.util.get_tilesources())
-    for child in sorted(directories):
-        directory = os.path.basename(child)
+    for directory in sorted(directories):
+        child = os.path.basename(directory)
         max_age = max_age_given
         if max_age_given is None:
             max_age = poor.conf.cache_max_age
-            max_age = min((max_age, ages.get(directory, max_age)))
+            max_age = min((max_age, ages.get(child, max_age)))
         if max_age >= 36500: continue
-        purge_directory(directory, max_age)
+        purge_directory(child, max_age)
 
 def purge_async(max_age=None):
     """Remove all expired tiles from the cache directory."""
@@ -118,19 +118,30 @@ def stat():
     stat = []
     directories = glob.glob("{}/*".format(poor.CACHE_HOME_DIR))
     directories = list(filter(os.path.isdir, directories))
-    names = dict((x["pid"], x["name"]) for x in poor.util.get_tilesources())
-    for child in sorted(directories):
-        count = 0
-        bytes = 0
-        for root, dirs, files, rootfd in os.fwalk(child, follow_symlinks=True):
+    for directory in sorted(directories):
+        child = os.path.basename(directory)
+        stat.append(stat_directory(child))
+    return stat
+
+def stat_directory(directory):
+    """
+    Return file count and total size of cache subdirectory.
+
+    `directory` should be a relative directory under
+    :attr:`poor.conf.CACHE_HOME_DIR`.
+    """
+    count = 0
+    bytes = 0
+    directory = os.path.join(poor.CACHE_HOME_DIR, directory)
+    if os.path.isdir(directory):
+        for root, dirs, files, rootfd in os.fwalk(directory, follow_symlinks=True):
             count += len(files)
             bytes += sum(os.stat(x, dir_fd=rootfd).st_size for x in files)
-        directory = os.path.basename(child)
-        name = names.get(directory, directory)
-        stat.append(dict(directory=directory,
-                         name=name,
-                         count=count,
-                         bytes=bytes,
-                         size=poor.util.format_filesize(bytes)))
-
-    return stat
+    names = dict((x["pid"], x["name"]) for x in poor.util.get_tilesources())
+    directory = os.path.basename(directory)
+    name = names.get(directory, directory)
+    return dict(directory=directory,
+                name=name,
+                count=count,
+                bytes=bytes,
+                size=poor.util.format_filesize(bytes))
