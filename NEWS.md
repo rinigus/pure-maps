@@ -1,3 +1,19 @@
+Poor Maps 0.16
+==============
+
+ * Center on position by double-tapping map
+ * Toggle auto-center on position by tapping position marker
+ * Add point of interest by tapping map
+ * Use an animation when centering map
+ * Add manual cache purge actions of different ages
+ * Add support for "retina" tiles that require scaling for display
+   (e.g. 512x512 pixel tiles that cover the same geographic area as
+   normal 256x256 pixel tiles)
+ * Add optional "smooth" field to tile source definition files
+   (corresponds to QML Image.smooth, defaults to false)
+ * Bump required QtPositioning version to 5.2 and use the 5.3 API,
+   (probably available since Sailfish OS 1.1.0.38 "Uitukka")
+
 Poor Maps 0.15
 ==============
 
