@@ -17,6 +17,7 @@
 
 """An application to display maps and stuff."""
 
+import math
 import os
 import poor
 import pyotherside
@@ -154,11 +155,13 @@ class Application:
                                              swy=corners[2][1],
                                              nwy=corners[3][1],
                                              zoom=zoom,
+                                             scale=self.tilesource.scale,
                                              uri=uri))
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
-        zoom = int(zoom)
+        # For scales above one, get tile from an above zoom level.
+        zoom = int(zoom - math.log2(self.tilesource.scale))
         self._timestamp = int(time.time()*1000)
         for tile in self.tilesource.list_tiles(xmin, xmax, ymin, ymax, zoom):
             args = (xmin, xmax, ymin, ymax, zoom, tile)

@@ -6,14 +6,13 @@ Poor Maps 0.16
  * [X] Add point of interest by tapping map
  * [X] Use an animation when centering map
  * [X] Add manual cache purge actions of different ages
+ * [X] Add support for "retina" tiles
  * [X] Bump required QtPositioning version to 5.2 and use the 5.3 API,
        (probably available since Sailfish OS 1.1.0.38 "Uitukka")
 
 Poor Maps 1.0
 =============
 
- * Add support for scaling and retina tiles
-   - Map.scale, MapQuickItem.zoomLevel?
  * Add a cover that shows narrative when navigating
  * Add voice guidance (espeak?)
  * Add a QtSensors Compass arrow that shows which way one is facing

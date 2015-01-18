@@ -352,15 +352,19 @@ Map {
 
     function renderTile(props) {
         // Render tile from local image file.
+        // For scales above one, props.zoom refers to an above zoom layer
+        // from which the tile has been downloaded. The below zoom refers
+        // to the zoom level in which the tile is to be displayed.
+        var zoom = Math.floor(props.zoom + Math.log(props.scale) / Math.LN2);
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != props.uid) continue;
             map.tiles[i].coordinate.longitude = props.nwx;
             map.tiles[i].coordinate.latitude = props.nwy;
-            map.tiles[i].zoomLevel = props.zoom;
+            map.tiles[i].zoomLevel = zoom;
             map.tiles[i].uri = props.uri;
             map.tiles[i].setWidth(props);
             map.tiles[i].setHeight(props);
-            map.tiles[i].z = (props.zoom == Math.floor(map.zoomLevel)) ? 10 : 9;
+            map.tiles[i].z = (zoom == Math.floor(map.zoomLevel)) ? 10 : 9;
             return;
         }
         // Add missing tile to collection.

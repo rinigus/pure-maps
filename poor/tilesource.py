@@ -61,6 +61,7 @@ class TileSource:
             self.max_age = values.get("max_age", None)
             self.name = values["name"]
             self._provider = None
+            self.scale = values.get("scale", 1)
             self.source = values["source"]
             self.url = values["url"]
             self._init_provider(values["format"])
