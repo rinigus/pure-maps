@@ -6,7 +6,9 @@ Poor Maps 0.16
  * [X] Add point of interest by tapping map
  * [X] Use an animation when centering map
  * [X] Add manual cache purge actions of different ages
- * [X] Add support for "retina" tiles
+ * [X] Add support for "retina" tiles that require scaling for display
+       (e.g. 512x512 pixel tiles that cover the same geographic area as
+       normal 256x256 pixel tiles)
  * [X] Bump required QtPositioning version to 5.2 and use the 5.3 API,
        (probably available since Sailfish OS 1.1.0.38 "Uitukka")
 

@@ -40,12 +40,11 @@ Poor for examples; non-trivial fields are explained below.
    normal tiles are 256x256, then tiles at `scale=2` are 512x512 pixels,
    covering the same geographic area. If omitted, the default `scale=1`
    is assumed. The only allowed values are powers of two: 1, 2, 4, etc.
-   For display, Poor Maps will do a zoom level shift to display scales
-   over one correctly. The scale field is meant for so called "retina"
-   (or "hidpi" or "hires" or "@2x") tiles that solve the problem of too
-   small font in text labels on high pixel density screens. (Note that
-   this power of two implementation is an inflexible hack and likely
-   to change in the future.)
+   The scale field is meant for so called "retina" (or "HiDPI" or
+   "HiRes" or "@2x") tiles that fit high pixel density screens better,
+   especially regarding font sizes. Note that there are different kinds
+   of retina tiles available and different ways of displaying them and
+   thus different definitions for different sources.
 
  [1]: http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
  [2]: http://msdn.microsoft.com/en-us/library/bb259689.aspx
