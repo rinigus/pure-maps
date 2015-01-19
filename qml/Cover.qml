@@ -27,9 +27,10 @@ import "."
  * considered to be centered on the map.
  */
 
-Cover {
+CoverBackground {
     id: cover
     property bool ready: false
+    property bool showNarrative: map.hasRoute && map.showNarrative
     property var tiles: []
     Timer {
         interval: 1000
@@ -44,14 +45,27 @@ Cover {
             cover.updatePositionMarker();
         }
     }
+    Image {
+        anchors.centerIn: parent
+        height: width/sourceSize.width * sourceSize.height
+        opacity: 0.1
+        source: "icons/cover.png"
+        width: 1.5 * parent.width
+    }
+    /*
+     * Default map cover.
+     */
     Rectangle {
         // Matches the default QtLocation Map background.
         anchors.fill: parent
         color: "#e6e6e6"
+        visible: !cover.showNarrative
+        z: 1
     }
     Item {
         id: positionMarker
         height: movingImage.height
+        visible: !cover.showNarrative
         width: movingImage.width
         z: 100
         Image {
@@ -66,6 +80,47 @@ Cover {
             source: "icons/position.png"
             visible: !movingImage.visible
         }
+    }
+    /*
+     * Navigation narrative cover.
+     */
+    Image {
+        anchors.bottom: parent.verticalCenter
+        anchors.bottomMargin: Theme.paddingLarge
+        anchors.horizontalCenter: parent.horizontalCenter
+        source: map.statusArea.icon.length > 0 ?
+            "icons/" + map.statusArea.icon + ".png" :
+            "icons/alert.png"
+        visible: cover.showNarrative
+    }
+    Label {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.verticalCenter
+        color: Theme.highlightColor
+        font.family: Theme.fontFamilyHeading
+        font.pixelSize: Theme.fontSizeHuge
+        text: map.statusArea.manDist
+        visible: cover.showNarrative
+    }
+    Label {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: Theme.paddingLarge
+        anchors.left: parent.left
+        anchors.leftMargin: Theme.paddingLarge
+        font.family: Theme.fontFamily
+        font.pixelSize: Theme.fontSizeExtraSmall
+        text: map.statusArea.destDist
+        visible: cover.showNarrative
+    }
+    Label {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: Theme.paddingLarge
+        anchors.right: parent.right
+        anchors.rightMargin: Theme.paddingLarge
+        font.family: Theme.fontFamily
+        font.pixelSize: Theme.fontSizeExtraSmall
+        text: map.statusArea.destTime
+        visible: cover.showNarrative
     }
     function addTile() {
         // Add a new blank tile to the end of collection.
@@ -94,6 +149,7 @@ Cover {
             cover.tiles[i].y = cover.mapYToCoverY(map.tiles[i].y);
             cover.tiles[i].z = map.tiles[i].z;
             cover.tiles[i].smooth = map.tiles[i].smooth;
+            cover.tiles[i].visible = !cover.showNarrative;
             var width = map.tiles[i].width;
             var height = map.tiles[i].height;
             width && width > 0 && (cover.tiles[i].width = width);

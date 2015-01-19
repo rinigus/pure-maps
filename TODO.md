@@ -1,7 +1,7 @@
 Poor Maps 0.17
 ==============
 
- * [ ] Add a cover that shows narrative when navigating
+ * [X] Add a cover that shows narrative when navigating
 
 Poor Maps 1.0
 =============
