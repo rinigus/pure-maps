@@ -96,7 +96,6 @@ CoverBackground {
     Label {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.verticalCenter
-        color: Theme.highlightColor
         font.family: Theme.fontFamilyHeading
         font.pixelSize: Theme.fontSizeHuge
         text: map.statusArea.manDist
