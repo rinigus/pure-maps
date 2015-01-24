@@ -1,3 +1,10 @@
+Poor Maps 0.17
+==============
+
+ * Add a cover that shows upcoming maneuver when navigating
+ * Move "Show routing narrative" toggle from the main menu
+   to the preferences page
+
 Poor Maps 0.16
 ==============
 
