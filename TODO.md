@@ -1,10 +1,11 @@
 Poor Maps 1.0
 =============
 
- * Add voice guidance (espeak?)
+ * Redo maneuver icons to fit cover better (double-size, white?)
  * Add a QtSensors Compass arrow that shows which way one is facing
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add ability to import a route from file
+ * Add voice guidance (espeak?)
  * Allow landscape for the map page (need to wait for Qt 5.4.1)
    - <http://bugreports.qt.io/browse/QTBUG-40799>
  * Add user interface translations
