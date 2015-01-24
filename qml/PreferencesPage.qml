@@ -41,6 +41,16 @@ Page {
                     if (value) map.changed = true;
                 }
             }
+            ListItemSwitch {
+                id: showNarrativeItem
+                checked: map.showNarrative
+                text: "Show routing narrative"
+                onCheckedChanged: {
+                    map.showNarrative = showNarrativeItem.checked;
+                    app.conf.set("show_routing_narrative", map.showNarrative);
+                    map.showNarrative || map.setRoutingStatus(null);
+                }
+            }
             ComboBox {
                 id: sleepComboBox
                 description: "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences."

@@ -186,23 +186,6 @@ Page {
                     map.autoCenter && map.centerOnPosition();
                 }
             }
-            ListItemSwitch {
-                id: showNarrativeItem
-                anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
-                checked: map.showNarrative
-                height: Theme.itemSizeSmall
-                text: "Show routing narrative"
-                Component.onCompleted: {
-                    page.onStatusChanged.connect(function() {
-                        showNarrativeItem.checked = map.showNarrative;
-                    });
-                }
-                onCheckedChanged: {
-                    map.showNarrative = showNarrativeItem.checked;
-                    app.conf.set("show_routing_narrative", map.showNarrative);
-                    map.showNarrative || map.setRoutingStatus(null);
-                }
-            }
             ListItem {
                 id: preferencesItem
                 contentHeight: Theme.itemSizeSmall
