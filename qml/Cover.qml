@@ -97,7 +97,7 @@ CoverBackground {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.verticalCenter
         font.family: Theme.fontFamilyHeading
-        font.pixelSize: Theme.fontSizeHuge
+        font.pixelSize: Theme.fontSizeExtraLarge
         text: map.statusArea.manDist
         visible: cover.showNarrative
     }

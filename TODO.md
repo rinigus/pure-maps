@@ -1,7 +1,6 @@
 Poor Maps 1.0
 =============
 
- * Redo maneuver icons to fit cover better (double-size, white?)
  * Add a QtSensors Compass arrow that shows which way one is facing
  * Allow layered tilesources (traffic, hillshade, etc.)
  * Add ability to import a route from file
