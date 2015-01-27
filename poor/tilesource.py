@@ -64,7 +64,9 @@ class TileSource:
             self.scale = values.get("scale", 1)
             self.smooth = values.get("smooth", False)
             self.source = values["source"]
+            self.type = values.get("type", "basemap")
             self.url = values["url"]
+            self.z = max(0, min(40, values.get("z", 0)))
             self._init_provider(values["format"])
             self._init_http_queue()
 
