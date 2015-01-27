@@ -1,0 +1,10 @@
+{
+    "attribution": "GIScience Research Group @ Heidelberg University\nData © CIAT, METI, NASA, NOAA",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "ASTER GDEM & SRTM Hillshade",
+    "source": "giscience.uni-hd.de",
+    "type": "overlay",
+    "url": "http://129.206.74.245/tiles/asterh/x={x}&y={y}&z={z}",
+    "z": 10
+}

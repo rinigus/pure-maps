@@ -1,0 +1,10 @@
+{
+    "attribution": "© OpenStreetMap contributors",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "OpenSeaMap",
+    "source": "openseamap.org",
+    "type": "overlay",
+    "url": "http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png",
+    "z": 30
+}

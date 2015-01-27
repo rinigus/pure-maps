@@ -1,0 +1,10 @@
+{
+    "attribution": "© OpenStreetMap contributors",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "OpenPTMap",
+    "source": "openptmap.org",
+    "type": "overlay",
+    "url": "http://openptmap.org/tiles/{z}/{x}/{y}.png",
+    "z": 20
+}

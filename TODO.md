@@ -2,12 +2,15 @@ Poor Maps 0.18
 ==============
 
  * [ ] Add support for transparent overlay tiles
-       - Add some actual overlay tilesources
        - Handle `poor.conf.allow_tile_download`
        - Add `TileSource.host` (for `Application` thread pool)?
        - Queue overlay tiles for download
        - Communicate z-level to QML
        - Add main menu item "Overlays"
+ * [X] Add ASTER GDEM & SRTM Hillshade overlay
+ * [X] Add OpenPTMap overlay
+ * [X] Add OpenSeaMap overlay
+ * maps.sputnik.ru?
 
 Poor Maps 1.0
 =============
