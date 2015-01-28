@@ -10,7 +10,7 @@ Poor Maps 0.18
  * [X] Add ASTER GDEM & SRTM Hillshade overlay
  * [X] Add OpenPTMap overlay
  * [X] Add OpenSeaMap overlay
- * maps.sputnik.ru?
+ * [X] Add Sputnik tiles
 
 Poor Maps 1.0
 =============

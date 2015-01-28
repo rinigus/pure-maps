@@ -1,0 +1,8 @@
+{
+    "attribution": "Maps © Sputnik\nData © OpenStreetMap contributors",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "Sputnik",
+    "source": "sputnik.ru",
+    "url": "http://tiles.maps.sputnik.ru/{z}/{x}/{y}.png"
+}
