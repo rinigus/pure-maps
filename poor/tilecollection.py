@@ -68,9 +68,9 @@ class TileCollection:
     @poor.util.locked_method
     def get(self, key):
         """Return requested tile ``None``."""
-        for i in reversed(range(len(self._tiles))):
-            if self._tiles[i].key == key:
-                return self._tiles[i]
+        for tile in reversed(self._tiles):
+            if tile.key == key:
+                return tile
         return None
 
     @poor.util.locked_method
@@ -81,7 +81,7 @@ class TileCollection:
         tymin = min(corner[1] for corner in tile_corners)
         tymax = max(corner[1] for corner in tile_corners)
         props = (key, txmin, txmax, tymin, tymax, zoom)
-        for i, tile in enumerate(self._tiles):
+        for tile in self._tiles:
             if (tile.xmin > xmax or tile.xmax < xmin or
                 tile.ymin > ymax or tile.ymax < ymin or
                 tile.zoom != zoom):
