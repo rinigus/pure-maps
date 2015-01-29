@@ -184,10 +184,17 @@ class Application:
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
+        self._tilecollection.sort()
         self._timestamp = int(time.time()*1000)
+        total_tiles = 0
         for tilesource in [self.tilesource] + self.overlays:
             # For scales above one, get tile from an above zoom level.
             zoom = int(zoom - math.log2(tilesource.scale))
             for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, zoom):
                 args = (tilesource, xmin, xmax, ymin, ymax, zoom, tile)
                 self._download_queue.put((args, self._timestamp))
+                total_tiles += 1
+        # Keep 2-4 screenfulls of tiles per source in memory.
+        size = max(2, 4-len(self.overlays)) * total_tiles
+        if self._tilecollection.size < size:
+            self._tilecollection.grow(size)

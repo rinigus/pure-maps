@@ -19,6 +19,7 @@
 
 import poor
 import threading
+import time
 
 __all__ = ("TileCollection",)
 
@@ -35,6 +36,7 @@ class Tile:
     def assign(self, key, xmin, xmax, ymin, ymax, zoom):
         """Assign properties."""
         self.key  = key
+        self.time = time.time()
         self.xmin = xmin
         self.xmax = xmax
         self.ymin = ymin
@@ -44,6 +46,7 @@ class Tile:
     def reset(self):
         """Reset properties."""
         self.key  = ""
+        self.time = -1
         self.xmin = -1
         self.xmax = -1
         self.ymin = -1
@@ -58,14 +61,16 @@ class TileCollection:
     def __init__(self):
         """Initialize a :class:`TileCollection` instance."""
         self._lock = threading.Lock()
+        # Keep most recently used tiles on the right.
+        # Requires an external call to sort.
         self._tiles = []
 
     @poor.util.locked_method
     def get(self, key):
         """Return requested tile ``None``."""
-        for tile in self._tiles:
-            if tile.key == key:
-                return tile
+        for i in reversed(range(len(self._tiles))):
+            if self._tiles[i].key == key:
+                return self._tiles[i]
         return None
 
     @poor.util.locked_method
@@ -76,22 +81,36 @@ class TileCollection:
         tymin = min(corner[1] for corner in tile_corners)
         tymax = max(corner[1] for corner in tile_corners)
         props = (key, txmin, txmax, tymin, tymax, zoom)
-        for tile in self._tiles:
-            if (tile.zoom != zoom or
-                tile.xmin >  xmax or
-                tile.xmax <  xmin or
-                tile.ymin >  ymax or
-                tile.ymax <  ymin):
+        for i, tile in enumerate(self._tiles):
+            if (tile.xmin > xmax or tile.xmax < xmin or
+                tile.ymin > ymax or tile.ymax < ymin or
+                tile.zoom != zoom):
                 tile.assign(*props)
                 return tile
         # If no free tile found, grow collection.
-        for i in range(len(self._tiles)+1):
-            self._tiles.append(Tile(len(self._tiles)+1))
+        self._tiles.append(Tile(self.size+1))
         self._tiles[-1].assign(*props)
         return self._tiles[-1]
+
+    @poor.util.locked_method
+    def grow(self, size):
+        """Grow amount of tiles in collection to `size`."""
+        while self.size < size:
+            self._tiles.append(Tile(self.size+1))
+        self._tiles.sort(key=lambda x: x.time)
 
     @poor.util.locked_method
     def reset(self):
         """Reset tile properties."""
         for tile in self._tiles:
             tile.reset()
+
+    @property
+    def size(self):
+        """Amount of tiles in collection."""
+        return len(self._tiles)
+
+    @poor.util.locked_method
+    def sort(self):
+        """Sort tiles in collection to optimize queries."""
+        self._tiles.sort(key=lambda x: x.time)

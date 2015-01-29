@@ -2,10 +2,9 @@ Poor Maps 0.18
 ==============
 
  * [ ] Add support for transparent overlay tiles
-       - Add opacity field for overlays
+       - Add opacity field for overlays?
        - Handle blank overlay tiles (302, 404, etc.)
        - s/tilesource/basemap/g
-       - Rethink TileCollection size
        - Rethink download threads
        - Main menu items "Basemaps", "Overlays"
        - Fix CachePage listing
