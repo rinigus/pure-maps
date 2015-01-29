@@ -164,7 +164,13 @@ def get_guides():
     """Return a list of dictionaries of guide attributes."""
     return _get_providers("guides", poor.conf.guide)
 
-def _get_providers(directory, current):
+def get_overlays():
+    """Return a list of dictionaries of overlay attributes."""
+    return list(filter(
+        lambda x: x.get("type", "basemap") == "overlay",
+        _get_providers("tilesources", *poor.conf.overlays)))
+
+def _get_providers(directory, *active):
     """Return a list of dictionaries of provider attributes."""
     providers = []
     for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
@@ -175,7 +181,7 @@ def _get_providers(directory, current):
             with silent(Exception):
                 provider = read_json(path)
                 provider["pid"] = pid
-                provider["active"] = (pid == current)
+                provider["active"] = pid in active
                 if not provider.get("hidden", False):
                     providers.append(provider)
     providers.sort(key=lambda x: x["name"])
@@ -187,7 +193,9 @@ def get_routers():
 
 def get_tilesources():
     """Return a list of dictionaries of tilesource attributes."""
-    return _get_providers("tilesources", poor.conf.tilesource)
+    return list(filter(
+        lambda x: x.get("type", "basemap") == "basemap",
+        _get_providers("tilesources", poor.conf.tilesource)))
 
 def locked_method(function):
     """

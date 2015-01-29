@@ -91,7 +91,9 @@ class TileSource:
             not RE_LOCALHOST.search(url)):
             # If not allowing tiles to be downloaded, return a special tile to
             # make a distinction between prevented and queued downloads.
-            return "icons/tile.png"
+            if self.type == "basemap":
+                return "icons/tile.png"
+            return None
         try:
             httpc = self._http_queue.get()
             if httpc is None:
@@ -207,6 +209,10 @@ class TileSource:
             if stat.st_mtime < time.time() - self.max_age * 86400:
                 return False
         return True
+
+    def tile_key(self, tile):
+        """Return a unique key to use to refer to given tile."""
+        return os.path.join(self.id, self._provider.tile_path(tile, ""))
 
     def tile_path(self, tile, extension=None):
         """Return relative cache path to use for given tile."""

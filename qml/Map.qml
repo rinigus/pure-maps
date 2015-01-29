@@ -224,6 +224,18 @@ Map {
         map.hasRoute = false;
     }
 
+    function demoteTiles() {
+        // Drop basemap tiles to a lower z-level and remove overlays.
+        for (var i = map.tiles.length-1; i >= 0; i--) {
+            if (map.tiles[i].type == "overlay") {
+                map.removeMapItem(map.tiles[i]);
+                map.tiles.splice(i, 1);
+            } else {
+                map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
+            }
+        }
+    }
+
     function fitViewtoCoordinates(coords) {
         // Set center and zoom so that all points are visible.
         if (coords.length == 0) return;
@@ -359,14 +371,16 @@ Map {
         var zoom = Math.floor(props.zoom + Math.log(props.scale) / Math.LN2);
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != props.uid) continue;
-            map.tiles[i].coordinate.longitude = props.nwx;
             map.tiles[i].coordinate.latitude = props.nwy;
-            map.tiles[i].zoomLevel = zoom;
+            map.tiles[i].coordinate.longitude = props.nwx;
             map.tiles[i].smooth = props.smooth;
+            map.tiles[i].type = props.type;
+            map.tiles[i].zOffset = props.z;
+            map.tiles[i].zoomLevel = zoom;
             map.tiles[i].uri = props.uri;
             map.tiles[i].setWidth(props);
             map.tiles[i].setHeight(props);
-            map.tiles[i].z = (zoom == Math.floor(map.zoomLevel)) ? 10 : 9;
+            map.tiles[i].setZ(map.zoomLevel);
             return;
         }
         // Add missing tile to collection.
@@ -463,8 +477,7 @@ Map {
 
     function setZoomLevel(zoom) {
         // Set the current zoom level.
-        for (var i = 0; i < map.tiles.length; i++)
-            map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
+        map.demoteTiles();
         map.zoomLevel = zoom;
         map.zoomLevelPrev = zoom;
         var bbox = map.getBoundingBox();
@@ -480,7 +493,7 @@ Map {
         // Show tile with given uid.
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != uid) continue;
-            map.tiles[i].z = (map.tiles[i].zoomLevel == Math.floor(map.zoomLevel)) ? 10 : 9;
+            map.tiles[i].setZ(map.zoomLevel);
             break;
         }
     }

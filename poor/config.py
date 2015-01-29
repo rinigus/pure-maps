@@ -35,6 +35,7 @@ DEFAULTS = {
     "guide": "foursquare",
     # 'always', 'navigating' or 'never'.
     "keep_alive": "navigating",
+    "overlays": [],
     "router": "mapquest_open",
     "show_routing_narrative": True,
     "tilesource": "mapquest_open",
@@ -67,7 +68,8 @@ class ConfigurationStore(AttrDict):
 
     def _coerce(self, value, ref):
         """Coerce type of `value` to match `ref`."""
-        if isinstance(value, list):
+        # XXX: No coercion done if ref is an empty list!
+        if isinstance(value, list) and ref:
             return [self._coerce(x, ref[0]) for x in value]
         return type(ref)(value)
 

@@ -40,16 +40,31 @@ class Application:
         self.guide = None
         self.history = poor.HistoryManager()
         self.narrative = poor.Narrative()
+        self.overlays = []
         self.router = None
         self._tilecollection = poor.TileCollection()
         self.tilesource = None
         self._timestamp = int(time.time()*1000)
         self._init_download_threads()
         self.set_tilesource(poor.conf.tilesource)
+        self.add_overlays(*poor.conf.overlays)
         self.set_geocoder(poor.conf.geocoder)
         self.set_guide(poor.conf.guide)
         self.set_router(poor.conf.router)
         poor.cache.purge_async()
+
+    def add_overlays(self, *overlays):
+        """Add overlay providers from strings `overlays`."""
+        for overlay in overlays:
+            try:
+                self.overlays.append(poor.TileSource(overlay))
+                self.overlays.sort(key=lambda x: x.z)
+                poor.conf.set_add("overlays", overlay)
+                self._tilecollection.reset()
+            except Exception as error:
+                print("Failed to load overlay '{}': {}"
+                      .format(overlay, str(error)),
+                      file=sys.stderr)
 
     def _init_download_threads(self):
         """Initialize map tile download threads."""
@@ -68,6 +83,17 @@ class Application:
                 # Only download tiles queued in the latest update.
                 self._update_tile(*args, timestamp=timestamp)
             self._download_queue.task_done()
+
+    def remove_overlays(self, *overlays):
+        """Remove overlay providers from strings `overlays`."""
+        if not overlays:
+            overlays = [x.id for x in self.overlays]
+        for i in reversed(range(len(self.overlays))):
+            if self.overlays[i].id in overlays:
+                self.overlays.pop(i)
+        for overlay in overlays:
+            poor.conf.set_remove("overlays", overlay)
+        self._tilecollection.reset()
 
     def set_geocoder(self, geocoder):
         """Set geocoding provider from string `geocoder`."""
@@ -130,40 +156,38 @@ class Application:
                 if default != tilesource:
                     self.set_tilesource(default)
 
-    def _update_tile(self, xmin, xmax, ymin, ymax, zoom, tile, timestamp):
+    def _update_tile(self, tilesource, xmin, xmax, ymin, ymax, zoom, tile, timestamp):
         """Download missing tile and ask QML to render it."""
-        path = self.tilesource.tile_path(tile)
-        item = self._tilecollection.get(path)
+        key = tilesource.tile_key(tile)
+        item = self._tilecollection.get(key)
         if item is not None:
             return pyotherside.send("show-tile", item.uid)
-        path = self.tilesource.download(tile)
+        path = tilesource.download(tile)
         if path is None: return
         # Abort if map moved out of view during download.
         if timestamp != self._timestamp: return
         uri = (poor.util.path2uri(path) if os.path.isabs(path) else path)
-        item = self._tilecollection.get_free(xmin, xmax, ymin, ymax, zoom)
-        corners = self.tilesource.tile_corners(tile)
-        item.xmin = min(corner[0] for corner in corners)
-        item.xmax = max(corner[0] for corner in corners)
-        item.ymin = min(corner[1] for corner in corners)
-        item.ymax = max(corner[1] for corner in corners)
-        item.zoom = zoom
-        item.ready = True
-        pyotherside.send("render-tile", dict(uid=item.uid,
-                                             nex=corners[0][0],
+        corners = tilesource.tile_corners(tile)
+        item = self._tilecollection.get_free(
+            key, xmin, xmax, ymin, ymax, zoom, corners)
+        pyotherside.send("render-tile", dict(nex=corners[0][0],
                                              nwx=corners[3][0],
-                                             swy=corners[2][1],
                                              nwy=corners[3][1],
-                                             zoom=zoom,
-                                             scale=self.tilesource.scale,
-                                             smooth=self.tilesource.smooth,
-                                             uri=uri))
+                                             scale=tilesource.scale,
+                                             smooth=tilesource.smooth,
+                                             swy=corners[2][1],
+                                             type=tilesource.type,
+                                             uid=item.uid,
+                                             uri=uri,
+                                             z=tilesource.z,
+                                             zoom=zoom))
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
-        # For scales above one, get tile from an above zoom level.
-        zoom = int(zoom - math.log2(self.tilesource.scale))
         self._timestamp = int(time.time()*1000)
-        for tile in self.tilesource.list_tiles(xmin, xmax, ymin, ymax, zoom):
-            args = (xmin, xmax, ymin, ymax, zoom, tile)
-            self._download_queue.put((args, self._timestamp))
+        for tilesource in [self.tilesource] + self.overlays:
+            # For scales above one, get tile from an above zoom level.
+            zoom = int(zoom - math.log2(tilesource.scale))
+            for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, zoom):
+                args = (tilesource, xmin, xmax, ymin, ymax, zoom, tile)
+                self._download_queue.put((args, self._timestamp))

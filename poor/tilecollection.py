@@ -32,10 +32,18 @@ class Tile:
         self.uid = uid
         self.reset()
 
+    def assign(self, key, xmin, xmax, ymin, ymax, zoom):
+        """Assign properties."""
+        self.key  = key
+        self.xmin = xmin
+        self.xmax = xmax
+        self.ymin = ymin
+        self.ymax = ymax
+        self.zoom = zoom
+
     def reset(self):
         """Reset properties."""
-        self.ready = True
-        self.path = ""
+        self.key  = ""
         self.xmin = -1
         self.xmax = -1
         self.ymin = -1
@@ -53,29 +61,33 @@ class TileCollection:
         self._tiles = []
 
     @poor.util.locked_method
-    def get(self, path):
+    def get(self, key):
         """Return requested tile ``None``."""
         for tile in self._tiles:
-            if tile.path == path:
+            if tile.key == key:
                 return tile
         return None
 
     @poor.util.locked_method
-    def get_free(self, xmin, xmax, ymin, ymax, zoom):
-        """Return a random tile outside bounds."""
+    def get_free(self, key, xmin, xmax, ymin, ymax, zoom, tile_corners):
+        """Assign and return a random tile outside bounds."""
+        txmin = min(corner[0] for corner in tile_corners)
+        txmax = max(corner[0] for corner in tile_corners)
+        tymin = min(corner[1] for corner in tile_corners)
+        tymax = max(corner[1] for corner in tile_corners)
+        props = (key, txmin, txmax, tymin, tymax, zoom)
         for tile in self._tiles:
-            if not tile.ready: continue
             if (tile.zoom != zoom or
-                tile.xmin  > xmax or
-                tile.xmax  < xmin or
-                tile.ymin  > ymax or
-                tile.ymax  < ymin):
-                tile.ready = False
+                tile.xmin >  xmax or
+                tile.xmax <  xmin or
+                tile.ymin >  ymax or
+                tile.ymax <  ymin):
+                tile.assign(*props)
                 return tile
         # If no free tile found, grow collection.
         for i in range(len(self._tiles)+1):
             self._tiles.append(Tile(len(self._tiles)+1))
-        self._tiles[-1].ready = False
+        self._tiles[-1].assign(*props)
         return self._tiles[-1]
 
     @poor.util.locked_method

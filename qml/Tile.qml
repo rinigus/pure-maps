@@ -35,8 +35,10 @@ MapQuickItem {
     }
     width: image.width
     property bool smooth: false
+    property string type: "basemap"
     property int uid
     property string uri
+    property real zOffset: 0
     function setHeight(props) {
         // Set tile pixel height from corner coordinates.
         var total = Math.pow(2, props.zoom) * 256 * props.scale;
@@ -50,5 +52,10 @@ MapQuickItem {
         var total = Math.pow(2, props.zoom) * 256 * props.scale;
         var width = (props.nex - props.nwx) / 360 * total;
         image.width = Math.ceil(width - 0.4);
+    }
+    function setZ(zoom) {
+        // Set tile z-level for display on given zoom level.
+        var base = (tile.zoomLevel == Math.floor(zoom)) ? 10 : 9;
+        tile.z = base + tile.zOffset;
     }
 }
