@@ -2,17 +2,23 @@ Poor Maps 0.18
 ==============
 
  * [ ] Add support for transparent overlay tiles
-       - Add opacity field for overlays?
-       - Handle blank overlay tiles (302, 404, etc.)
        - s/tilesource/basemap/g
        - Rethink download threads
        - Main menu items "Basemaps", "Overlays"
+       - Fix overlays with @2x tiles
        - Fix CachePage listing
+       - Add opacity field for overlays?
+       - Investigate memory use, check amount of tiles to keep in memory
+       - Check that cover tiles work (or limit to basemap)
+       - Check if http.py needs changes made to tilesource.py
+       - Remove debug printing
  * [X] Add ASTER GDEM & SRTM Hillshade overlay
  * [X] Add OpenPTMap overlay
  * [X] Add OpenSeaMap overlay
  * [X] Add Sputnik basemap
  * [X] Fix a tile display efficiency bug introduced in 0.13
+ * [X] Don't retry a tile download after three failed attempts
+ * [ ] Destroy dynamically created QML objects when no longer used
 
 Poor Maps 1.0
 =============

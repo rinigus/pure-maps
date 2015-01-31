@@ -228,8 +228,7 @@ Map {
         // Drop basemap tiles to a lower z-level and remove overlays.
         for (var i = map.tiles.length-1; i >= 0; i--) {
             if (map.tiles[i].type == "overlay") {
-                map.removeMapItem(map.tiles[i]);
-                map.tiles.splice(i, 1);
+                map.tiles[i].z = -1;
             } else {
                 map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
             }
@@ -384,6 +383,7 @@ Map {
             return;
         }
         // Add missing tile to collection.
+        console.log("Map.renderTile: adding: " + (map.tiles.length+1));
         var component = Qt.createComponent("Tile.qml");
         var tile = component.createObject(map);
         tile.uid = props.uid;
@@ -394,9 +394,12 @@ Map {
 
     function resetTiles() {
         // Remove all map tiles from view.
-        for (var i = 0; i < map.tiles.length; i++)
-            map.removeMapItem(map.tiles[i]);
-        map.tiles = [];
+        while (map.tiles.length > 0) {
+            var tile = map.tiles[0];
+            map.removeMapItem(tile);
+            map.tiles.splice(0, 1);
+            tile.destroy();
+        }
     }
 
     function saveManeuvers() {
