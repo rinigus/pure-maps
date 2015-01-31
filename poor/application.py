@@ -104,7 +104,6 @@ class Application:
             print("Failed to load geocoder '{}': {}"
                   .format(geocoder, str(error)),
                   file=sys.stderr)
-
             if self.geocoder is None:
                 default = poor.conf.get_default("geocoder")
                 if default != geocoder:
@@ -119,7 +118,6 @@ class Application:
             print("Failed to load guide '{}': {}"
                   .format(guide, str(error)),
                   file=sys.stderr)
-
             if self.guide is None:
                 default = poor.conf.get_default("guide")
                 if default != guide:
@@ -134,7 +132,6 @@ class Application:
             print("Failed to load router '{}': {}"
                   .format(router, str(error)),
                   file=sys.stderr)
-
             if self.router is None:
                 default = poor.conf.get_default("router")
                 if default != router:
@@ -150,7 +147,6 @@ class Application:
             print("Failed to load tilesource '{}': {}"
                   .format(tilesource, str(error)),
                   file=sys.stderr)
-
             if self.tilesource is None:
                 default = poor.conf.get_default("tilesource")
                 if default != tilesource:
@@ -194,7 +190,8 @@ class Application:
                 args = (tilesource, xmin, xmax, ymin, ymax, zoom, tile)
                 self._download_queue.put((args, self._timestamp))
                 total_tiles += 1
-        # Keep 2-4 screenfulls of tiles per source in memory.
-        size = max(2, 4-len(self.overlays)) * total_tiles
+        # Keep a few screenfulls of tiles in memory.
+        total_tiles = math.ceil(total_tiles / (1 + len(self.overlays)))
+        size = (3 + len(self.overlays)) * total_tiles
         if self._tilecollection.size < size:
             self._tilecollection.grow(size)

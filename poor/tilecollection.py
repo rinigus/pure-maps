@@ -67,7 +67,7 @@ class TileCollection:
 
     @poor.util.locked_method
     def get(self, key):
-        """Return requested tile ``None``."""
+        """Return requested tile or ``None``."""
         for tile in reversed(self._tiles):
             if tile.key == key:
                 return tile
@@ -88,6 +88,7 @@ class TileCollection:
                 tile.assign(*props)
                 return tile
         # If no free tile found, grow collection.
+        print("TileCollection.get_free: growing to {:d}".format(self.size+1))
         self._tiles.append(Tile(self.size+1))
         self._tiles[-1].assign(*props)
         return self._tiles[-1]
@@ -95,6 +96,7 @@ class TileCollection:
     @poor.util.locked_method
     def grow(self, size):
         """Grow amount of tiles in collection to `size`."""
+        print("TileCollection.grow: {:d}".format(size))
         while self.size < size:
             self._tiles.append(Tile(self.size+1))
         self._tiles.sort(key=lambda x: x.time)

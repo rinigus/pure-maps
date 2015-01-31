@@ -77,7 +77,7 @@ class TileSource:
         if len(self._blacklist) > 500:
             while len(self._blacklist) > 400:
                 self._blacklist.pop()
-        print("Blacklist: {:d}".format(len(self._blacklist)))
+        print("TileSource._add_to_blacklist: {:d}".format(len(self._blacklist)))
 
     def download(self, tile, retry=1):
         """Download map tile and return local file path or ``None``."""
@@ -108,7 +108,7 @@ class TileSource:
             httpc.request("GET", url, headers=self._headers)
             response = httpc.getresponse()
             # Always read response to avoid
-            # ResponseNotReady: Request-sent
+            # http.client.ResponseNotReady: Request-sent.
             blob = response.read(1048576)
             if not self.extension:
                 mimetype = response.getheader("Content-Type")
