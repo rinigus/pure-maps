@@ -48,7 +48,7 @@ Page {
             onClicked: {
                 app.hideMenu();
                 map.resetTiles();
-                py.call_sync("poor.app.set_tilesource", [model.pid]);
+                py.call_sync("poor.app.set_basemap", [model.pid]);
                 map.attribution.text = attribution;
                 map.changed = true;
                 for (var i = 0; i < listView.model.count; i++)
@@ -60,10 +60,10 @@ Page {
         model: ListModel {}
         VerticalScrollDecorator {}
         Component.onCompleted: {
-            // Load tilesource model entries from the Python backend.
-            py.call("poor.util.get_tilesources", [], function(tilesources) {
-                for (var i = 0; i < tilesources.length; i++)
-                    listView.model.append(tilesources[i]);
+            // Load basemap model entries from the Python backend.
+            py.call("poor.util.get_basemaps", [], function(basemaps) {
+                for (var i = 0; i < basemaps.length; i++)
+                    listView.model.append(basemaps[i]);
             });
         }
     }

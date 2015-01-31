@@ -35,6 +35,7 @@ class Application:
 
     def __init__(self):
         """Initialize a :class:`Application` instance."""
+        self.basemap = None
         self._download_queue = queue.Queue()
         self.geocoder = None
         self.guide = None
@@ -43,10 +44,9 @@ class Application:
         self.overlays = []
         self.router = None
         self._tilecollection = poor.TileCollection()
-        self.tilesource = None
         self._timestamp = int(time.time()*1000)
         self._init_download_threads()
-        self.set_tilesource(poor.conf.tilesource)
+        self.set_basemap(poor.conf.basemap)
         self.add_overlays(*poor.conf.overlays)
         self.set_geocoder(poor.conf.geocoder)
         self.set_guide(poor.conf.guide)
@@ -95,6 +95,21 @@ class Application:
             poor.conf.set_remove("overlays", overlay)
         self._tilecollection.reset()
 
+    def set_basemap(self, basemap):
+        """Set basemap from string `basemap`."""
+        try:
+            self.basemap = poor.TileSource(basemap)
+            poor.conf.basemap = basemap
+            self._tilecollection.reset()
+        except Exception as error:
+            print("Failed to load basemap '{}': {}"
+                  .format(basemap, str(error)),
+                  file=sys.stderr)
+            if self.basemap is None:
+                default = poor.conf.get_default("basemap")
+                if default != basemap:
+                    self.set_basemap(default)
+
     def set_geocoder(self, geocoder):
         """Set geocoding provider from string `geocoder`."""
         try:
@@ -137,21 +152,6 @@ class Application:
                 if default != router:
                     self.set_router(default)
 
-    def set_tilesource(self, tilesource):
-        """Set map tile source from string `tilesource`."""
-        try:
-            self.tilesource = poor.TileSource(tilesource)
-            poor.conf.tilesource = tilesource
-            self._tilecollection.reset()
-        except Exception as error:
-            print("Failed to load tilesource '{}': {}"
-                  .format(tilesource, str(error)),
-                  file=sys.stderr)
-            if self.tilesource is None:
-                default = poor.conf.get_default("tilesource")
-                if default != tilesource:
-                    self.set_tilesource(default)
-
     def _update_tile(self, tilesource, xmin, xmax, ymin, ymax, zoom, tile, timestamp):
         """Download missing tile and ask QML to render it."""
         key = tilesource.tile_key(tile)
@@ -183,7 +183,7 @@ class Application:
         self._tilecollection.sort()
         self._timestamp = int(time.time()*1000)
         total_tiles = 0
-        for tilesource in [self.tilesource] + self.overlays:
+        for tilesource in [self.basemap] + self.overlays:
             # For scales above one, get tile from an above zoom level.
             zoom = int(zoom - math.log2(tilesource.scale))
             for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, zoom):

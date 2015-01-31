@@ -27,6 +27,7 @@ __all__ = ("ConfigurationStore",)
 DEFAULTS = {
     "allow_tile_download": True,
     "auto_center": False,
+    "basemap": "mapquest_open",
     "cache_max_age": 36500, # days
     "center": [0.0, 0.0],
     "download_timeout": 10, # seconds
@@ -38,7 +39,6 @@ DEFAULTS = {
     "overlays": [],
     "router": "mapquest_open",
     "show_routing_narrative": True,
-    "tilesource": "mapquest_open",
     "zoom": 15,
 }
 
@@ -104,6 +104,13 @@ class ConfigurationStore(AttrDict):
             defaults = defaults[section]
         name = option.split(".")[-1]
         return copy.deepcopy(defaults[name])
+
+    def _migrate(self, values):
+        """Migrate configuration values from earlier versions."""
+        # 'tilesource' renamed to 'basemap' in 0.18.
+        if not "basemap" in values and "tilesource" in values:
+            values["basemap"] = values.pop("tilesource")
+        return values
 
     def read(self, path=None):
         """Read values of options from JSON file at `path`."""
@@ -180,6 +187,7 @@ class ConfigurationStore(AttrDict):
 
     def _update(self, values, root=None, defaults=None, path=()):
         """Load values of options after validation."""
+        values = self._migrate(values)
         root = (self if root is None else root)
         defaults = (DEFAULTS if defaults is None else defaults)
         for name, value in values.items():

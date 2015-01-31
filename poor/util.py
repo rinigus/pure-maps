@@ -156,6 +156,12 @@ def format_time(seconds):
         return "{:d} min".format(minutes)
     return "{:d} h {:d} min".format(hours, minutes)
 
+def get_basemaps():
+    """Return a list of dictionaries of basemap attributes."""
+    return list(filter(
+        lambda x: x.get("type", "basemap") == "basemap",
+        _get_providers("tilesources", poor.conf.basemap)))
+
 def get_geocoders():
     """Return a list of dictionaries of geocoder attributes."""
     return _get_providers("geocoders", poor.conf.geocoder)
@@ -193,9 +199,7 @@ def get_routers():
 
 def get_tilesources():
     """Return a list of dictionaries of tilesource attributes."""
-    return list(filter(
-        lambda x: x.get("type", "basemap") == "basemap",
-        _get_providers("tilesources", poor.conf.tilesource)))
+    return _get_providers("tilesources")
 
 def locked_method(function):
     """

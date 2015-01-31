@@ -21,7 +21,7 @@ import QtLocation 5.0
 
 /*
  * XXX: While waiting for QtLocation's Map component to support dynamic
- * custom tilesources, we need to use an existing map plugin to be able
+ * custom tile sources, we need to use an existing map plugin to be able
  * to use the map canvas, pan, pinch-zoom, overlaid objects etc.
  * Luckily, we can use the Nokia plugin, but not load any Nokia tiles,
  * and overlay our own tiles as MapQuickItems.

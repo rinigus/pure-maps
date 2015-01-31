@@ -314,7 +314,7 @@ Map {
         // Load default values and start periodic updates.
         if (!py.ready)
             return py.onReadyChanged.connect(map.initProperties);
-        map.attribution.text = py.evaluate("poor.app.tilesource.attribution");
+        map.attribution.text = py.evaluate("poor.app.basemap.attribution");
         map.autoCenter = app.conf.get("auto_center");
         map.showNarrative = app.conf.get("show_routing_narrative");
         map.setZoomLevel(app.conf.get("zoom"));

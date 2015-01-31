@@ -167,7 +167,7 @@ Page {
                     height: Theme.itemSizeSmall
                     text: "Map tiles"
                 }
-                onClicked: app.pageStack.push("TileSourcePage.qml");
+                onClicked: app.pageStack.push("BasemapPage.qml");
             }
             ListItemSwitch {
                 id: autoCenterItem
