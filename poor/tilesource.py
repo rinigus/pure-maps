@@ -52,8 +52,9 @@ class TileSource:
             # __new__ returns objects usable as-is.
             values = self._load_attributes(id)
             self.attribution = values["attribution"]
-            self._blacklist = []
+            self._blacklist = set()
             self.extension = values.get("extension", "")
+            self._failures = {}
             self.format = values["format"]
             self._headers = None
             self._http_queue = queue.Queue()
@@ -70,13 +71,19 @@ class TileSource:
             self._init_provider(values["format"])
             self._init_http_queue()
 
+    def _add_to_blacklist(self, url):
+        """Add `url` to list of tiles to not try to download."""
+        self._blacklist.add(url)
+        if len(self._blacklist) > 500:
+            while len(self._blacklist) > 400:
+                self._blacklist.pop()
+        print("Blacklist: {:d}".format(len(self._blacklist)))
+
     def download(self, tile, retry=1):
         """Download map tile and return local file path or ``None``."""
         url = self.url.format(**tile)
         if url in self._blacklist:
-            return print("Not downloading blacklisted tile: {}"
-                         .format(url), file=sys.stderr)
-
+            return None
         path = self.tile_path(tile)
         path = os.path.join(poor.CACHE_HOME_DIR, self.id, path)
         if self._tile_exists(path):
@@ -100,26 +107,34 @@ class TileSource:
                 httpc = self._new_http_connection()
             httpc.request("GET", url, headers=self._headers)
             response = httpc.getresponse()
-            if response.status != 200:
-                raise Exception("Server responded {}: {}"
-                                .format(repr(response.status),
-                                        repr(response.reason)))
-
+            # Always read response to avoid
+            # ResponseNotReady: Request-sent
+            blob = response.read(1048576)
             if not self.extension:
                 mimetype = response.getheader("Content-Type")
                 if not mimetype in MIMETYPE_EXTENSIONS:
                     # Don't try to redownload tile
                     # if we don't know what to do with it.
-                    self._blacklist.append(url)
+                    self._add_to_blacklist(url)
                     raise Exception(
                         "Failed to detect tile mimetype -- "
                         "Content-Type header missing or unexpected value")
                 path = path + MIMETYPE_EXTENSIONS[mimetype]
+            if response.status != 200:
+                if self.type == "overlay":
+                    # Many overlays seem to use non-200
+                    # (e.g. 302 or 404) for areas with no data.
+                    self._add_to_blacklist(url)
+                    return None
+                raise Exception("Server responded {}: {}"
+                                .format(repr(response.status),
+                                        repr(response.reason)))
+
             directory = os.path.dirname(path)
             if not os.path.isdir(directory):
                 poor.util.makedirs(directory)
             with open(path, "wb") as f:
-                f.write(response.read(1048576))
+                f.write(blob)
             return path
         except Exception as error:
             httpc.close()
@@ -135,6 +150,16 @@ class TileSource:
                 print("Failed to download tile: {}: {}"
                       .format(error.__class__.__name__, str(error)),
                       file=sys.stderr)
+
+                # Keep track of the amount of failed downloads per URL
+                # and avoid trying to endlessly redownload the same tile.
+                self._failures.setdefault(url, 0)
+                self._failures[url] += 1
+                if self._failures[url] > 2:
+                    print("Blacklisted after 3 failed attempts.",
+                          file=sys.stderr)
+                    self._add_to_blacklist(url)
+                    del self._failures[url]
                 return None
         finally:
             self._http_queue.task_done()
