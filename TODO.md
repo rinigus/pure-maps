@@ -2,7 +2,6 @@ Poor Maps 0.18
 ==============
 
  * [ ] Add support for transparent overlay tiles
-       - Fix overlays with @2x tiles
        - Investigate memory use, check amount of tiles to keep in memory
        - Check that cover tiles work (or limit to basemap)
        - Check if http.py needs changes made to tilesource.py

@@ -153,7 +153,9 @@ class Application:
                 if default != router:
                     self.set_router(default)
 
-    def _update_tile(self, tilesource, xmin, xmax, ymin, ymax, zoom, tile, timestamp):
+    def _update_tile(self, tilesource, xmin, xmax, ymin, ymax, zoom,
+                     display_zoom, tile, timestamp):
+
         """Download missing tile and ask QML to render it."""
         key = tilesource.tile_key(tile)
         item = self._tilecollection.get(key)
@@ -166,8 +168,9 @@ class Application:
         uri = (poor.util.path2uri(path) if os.path.isabs(path) else path)
         corners = tilesource.tile_corners(tile)
         item = self._tilecollection.get_free(
-            key, xmin, xmax, ymin, ymax, zoom, corners)
-        pyotherside.send("render-tile", dict(nex=corners[0][0],
+            key, xmin, xmax, ymin, ymax, display_zoom, corners)
+        pyotherside.send("render-tile", dict(display_zoom=display_zoom,
+                                             nex=corners[0][0],
                                              nwx=corners[3][0],
                                              nwy=corners[3][1],
                                              scale=tilesource.scale,
@@ -188,7 +191,7 @@ class Application:
             # For scales above one, get tile from an above zoom level.
             z = int(zoom - math.log2(tilesource.scale))
             for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, z):
-                args = (tilesource, xmin, xmax, ymin, ymax, z, tile)
+                args = (tilesource, xmin, xmax, ymin, ymax, z, zoom, tile)
                 self._download_queue.put((args, self._timestamp))
                 total_tiles += 1
         # Keep a few screenfulls of tiles in memory.

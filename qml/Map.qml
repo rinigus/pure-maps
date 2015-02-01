@@ -361,10 +361,6 @@ Map {
 
     function renderTile(props) {
         // Render tile from local image file.
-        // For scales above one, props.zoom refers to an above zoom layer
-        // from which the tile has been downloaded. The below zoom refers
-        // to the zoom level in which the tile is to be displayed.
-        var zoom = Math.floor(props.zoom + Math.log(props.scale) / Math.LN2);
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid != props.uid) continue;
             map.tiles[i].coordinate.latitude = props.nwy;
@@ -372,7 +368,7 @@ Map {
             map.tiles[i].smooth = props.smooth;
             map.tiles[i].type = props.type;
             map.tiles[i].zOffset = props.z;
-            map.tiles[i].zoomLevel = zoom;
+            map.tiles[i].zoomLevel = props.display_zoom;
             map.tiles[i].uri = props.uri;
             map.tiles[i].setWidth(props);
             map.tiles[i].setHeight(props);
