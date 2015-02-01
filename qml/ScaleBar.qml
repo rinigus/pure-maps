@@ -25,7 +25,8 @@ Item {
     id: scaleBar
     anchors.bottom: map.bottom
     anchors.bottomMargin: 10
-    anchors.left: map.menuButton.right
+    anchors.right: map.right
+    anchors.rightMargin: 10
     height: base.height
     opacity: 0.9
     visible: scaleWidth > 0

@@ -2,7 +2,6 @@ Poor Maps 0.18
 ==============
 
  * [ ] Add support for transparent overlay tiles
-       - Move tile source attribution to basemap and overlay pages?
        - Main menu items "Basemaps", "Overlays"
        - Add opacity field for overlays?
        - Fix overlays with @2x tiles
@@ -14,6 +13,8 @@ Poor Maps 0.18
  * [X] Add OpenPTMap overlay
  * [X] Add OpenSeaMap overlay
  * [X] Add Sputnik basemap
+ * [X] Move tile provider attribution from the map corner
+       to the basemap and overlay selection pages
  * [X] Fix a tile display efficiency bug introduced in 0.13
  * [X] Don't retry a tile download after three failed attempts
  * [ ] Destroy dynamically created QML objects when no longer used

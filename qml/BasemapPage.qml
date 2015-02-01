@@ -27,7 +27,7 @@ Page {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: nameLabel.height + sourceLabel.height
+            contentHeight: nameLabel.height + attributionLabel.height
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
@@ -37,19 +37,18 @@ Page {
                 verticalAlignment: Text.AlignBottom
             }
             ListItemLabel {
-                id: sourceLabel
+                id: attributionLabel
                 anchors.top: nameLabel.bottom
                 color: Theme.secondaryColor
                 height: implicitHeight + Theme.paddingMedium
                 font.pixelSize: Theme.fontSizeExtraSmall
-                text: "Source: " + model.source
+                text: "Source: " + model.source + "\n" + model.attribution
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
                 app.hideMenu();
                 map.resetTiles();
                 py.call_sync("poor.app.set_basemap", [model.pid]);
-                map.attribution.text = attribution;
                 map.changed = true;
                 for (var i = 0; i < listView.model.count; i++)
                     listView.model.setProperty(i, "active", false);
