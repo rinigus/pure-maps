@@ -2,7 +2,6 @@ Poor Maps 0.18
 ==============
 
  * [ ] Add support for transparent overlay tiles
-       - Main menu items "Basemaps", "Overlays"
        - Add opacity field for overlays?
        - Fix overlays with @2x tiles
        - Investigate memory use, check amount of tiles to keep in memory

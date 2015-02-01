@@ -30,7 +30,7 @@ Page {
             id: column
             anchors.fill: parent
             PageHeader { title: "Preferences" }
-            ListItemSwitch {
+            TextSwitch {
                 id: downloadTilesItem
                 checked: app.conf.get("allow_tile_download")
                 description: "Disallow tile downloads to minimize data traffic. You will be left with previously downloaded and cached tiles."
@@ -41,7 +41,7 @@ Page {
                     if (value) map.changed = true;
                 }
             }
-            ListItemSwitch {
+            TextSwitch {
                 id: showNarrativeItem
                 checked: map.showNarrative
                 text: "Show routing narrative"

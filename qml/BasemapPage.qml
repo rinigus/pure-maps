@@ -55,7 +55,7 @@ Page {
                 listView.model.setProperty(model.index, "active", true);
             }
         }
-        header: PageHeader { title: "Map Tiles" }
+        header: PageHeader { title: "Basemaps" }
         model: ListModel {}
         VerticalScrollDecorator {}
         Component.onCompleted: {

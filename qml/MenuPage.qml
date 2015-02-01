@@ -149,10 +149,10 @@ Page {
                 }
             }
             ListItem {
-                id: mapTilesItem
+                id: basemapItem
                 contentHeight: Theme.itemSizeSmall
                 Image {
-                    id: mapTilesImage
+                    id: basemapImage
                     fillMode: Image.Pad
                     height: Theme.itemSizeSmall
                     horizontalAlignment: Image.AlignRight
@@ -160,17 +160,40 @@ Page {
                     width: implicitWidth + Theme.paddingLarge
                 }
                 ListItemLabel {
-                    anchors.left: mapTilesImage.right
+                    anchors.left: basemapImage.right
                     anchors.leftMargin: Theme.paddingMedium
-                    color: mapTilesItem.highlighted ?
+                    color: basemapItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Map tiles"
+                    text: "Basemaps"
                 }
                 onClicked: app.pageStack.push("BasemapPage.qml");
             }
-            ListItemSwitch {
+            ListItem {
+                id: overlayItem
+                contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: overlayImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    opacity: 0.5
+                    source: "image://theme/icon-m-levels"
+                    width: implicitWidth + Theme.paddingLarge
+                }
+                ListItemLabel {
+                    anchors.left: overlayImage.right
+                    anchors.leftMargin: Theme.paddingMedium
+                    color: overlayItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "Overlays"
+                }
+                onClicked: app.pageStack.push("OverlayPage.qml");
+            }
+            TextSwitch {
                 id: autoCenterItem
+                anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
                 checked: map.autoCenter
                 height: Theme.itemSizeSmall
