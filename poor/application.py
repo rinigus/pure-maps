@@ -186,9 +186,9 @@ class Application:
         total_tiles = 0
         for tilesource in [self.basemap] + self.overlays:
             # For scales above one, get tile from an above zoom level.
-            zoom = int(zoom - math.log2(tilesource.scale))
-            for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, zoom):
-                args = (tilesource, xmin, xmax, ymin, ymax, zoom, tile)
+            z = int(zoom - math.log2(tilesource.scale))
+            for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, z):
+                args = (tilesource, xmin, xmax, ymin, ymax, z, tile)
                 self._download_queue.put((args, self._timestamp))
                 total_tiles += 1
         # Keep a few screenfulls of tiles in memory.
