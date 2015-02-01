@@ -2,12 +2,10 @@ Poor Maps 0.18
 ==============
 
  * [ ] Add support for transparent overlay tiles
-       - Rethink download threads
+       - Move tile source attribution to basemap and overlay pages?
        - Main menu items "Basemaps", "Overlays"
-       - Fix overlays with @2x tiles
-       - Fix CachePage listing
        - Add opacity field for overlays?
-       - Display overlay attribution as well?
+       - Fix overlays with @2x tiles
        - Investigate memory use, check amount of tiles to keep in memory
        - Check that cover tiles work (or limit to basemap)
        - Check if http.py needs changes made to tilesource.py

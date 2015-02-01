@@ -43,17 +43,16 @@ class Guide:
 
     def __init__(self, id):
         """Initialize a :class:`Guide` instance."""
-        if not hasattr(self, "id"):
-            # Initialize properties only once.
-            # __new__ returns objects usable as-is.
-            path, values = self._load_attributes(id)
-            self.attribution = values["attribution"]
-            self.id = id
-            self.name = values["name"]
-            self._path = path
-            self._provider = None
-            self.source = values["source"]
-            self._init_provider(id, re.sub(r"\.json$", ".py", path))
+        # Initialize properties only once.
+        if hasattr(self, "id"): return
+        path, values = self._load_attributes(id)
+        self.attribution = values["attribution"]
+        self.id = id
+        self.name = values["name"]
+        self._path = path
+        self._provider = None
+        self.source = values["source"]
+        self._init_provider(id, re.sub(r"\.json$", ".py", path))
 
     def _format_distance(self, x1, y1, x2, y2):
         """Calculate and format a human readable distance string."""

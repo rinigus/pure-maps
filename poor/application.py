@@ -68,12 +68,13 @@ class Application:
 
     def _init_download_threads(self):
         """Initialize map tile download threads."""
-        # Use two download threads as per OpenStreetMap tile usage policy.
-        # See also poor.TileSource._init_http_queue.
-        # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
-        target = self._process_download_queue
-        for i in range(2):
-            threading.Thread(target=target, daemon=True).start()
+        # tilesource.ConnectionPool limits the actual amount of
+        # connections per host. This thread count should be greater
+        # than that to allow tiles from different hosts (basemap, overlays)
+        # to be downloaded at the same time.
+        for i in range(16):
+            threading.Thread(target=self._process_download_queue,
+                             daemon=True).start()
 
     def _process_download_queue(self):
         """Monitor download queue and feed items for update."""

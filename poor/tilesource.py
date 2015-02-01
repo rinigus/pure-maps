@@ -24,6 +24,7 @@ import poor
 import queue
 import re
 import sys
+import threading
 import time
 import urllib.parse
 
@@ -31,6 +32,63 @@ __all__ = ("TileSource",)
 
 MIMETYPE_EXTENSIONS = {"image/jpeg": ".jpg", "image/png": ".png"}
 RE_LOCALHOST = re.compile(r"://(127.0.0.1|localhost)\b")
+
+
+class ConnectionPool:
+
+    """A managed single-instance pool of per-host HTTP connections."""
+
+    def __new__(cls, threads):
+        """Return single instance."""
+        if not hasattr(cls, "_instance"):
+            cls._instance = object.__new__(cls)
+        return cls._instance
+
+    def __init__(self, threads):
+        """Initialize a :class:`ConnectionPool` instance."""
+        # Initialize properties only once.
+        if hasattr(self, "_queue"): return
+        self._lock = threading.Lock()
+        self._queue = {}
+        self._threads = threads
+
+    def get(self, url):
+        """Return an HTTP connection to `url`."""
+        key = self._get_key(url)
+        connection = self._queue[key].get()
+        connection = connection or self._new(url)
+        return connection
+
+    def _get_key(self, url):
+        """Return a dictionary key for `url`."""
+        components = urllib.parse.urlparse(url)
+        return "{}://{}".format(components.scheme, components.netloc)
+
+    @poor.util.locked_method
+    def init(self, url):
+        """Initialize a queue of HTTP connections to `url`."""
+        key = self._get_key(url)
+        if key in self._queue: return
+        self._queue[key] = queue.Queue()
+        for i in range(self._threads):
+            self._queue[key].put(None)
+
+    def _new(self, url):
+        """Initialize and return a new HTTP connection to `url`."""
+        host = urllib.parse.urlparse(url).netloc
+        timeout = poor.conf.download_timeout
+        print("ConnectionPool._new: {}".format(host))
+        if url.startswith("http:"):
+            return http.client.HTTPConnection(host, timeout=timeout)
+        if url.startswith("https:"):
+            return http.client.HTTPSConnection(host, timeout=timeout)
+        raise ValueError("Bad URL: {}".format(repr(url)))
+
+    def put(self, url, connection):
+        """Return `connection` to the pool of connections."""
+        key = self._get_key(url)
+        self._queue[key].task_done()
+        self._queue[key].put(connection)
 
 
 class TileSource:
@@ -47,29 +105,31 @@ class TileSource:
 
     def __init__(self, id):
         """Initialize a :class:`TileSource` instance."""
-        if not hasattr(self, "id"):
-            # Initialize properties only once.
-            # __new__ returns objects usable as-is.
-            values = self._load_attributes(id)
-            self.attribution = values["attribution"]
-            self._blacklist = set()
-            self.extension = values.get("extension", "")
-            self._failures = {}
-            self.format = values["format"]
-            self._headers = None
-            self._http_queue = queue.Queue()
-            self.id = id
-            self.max_age = values.get("max_age", None)
-            self.name = values["name"]
-            self._provider = None
-            self.scale = values.get("scale", 1)
-            self.smooth = values.get("smooth", False)
-            self.source = values["source"]
-            self.type = values.get("type", "basemap")
-            self.url = values["url"]
-            self.z = max(0, min(40, values.get("z", 0)))
-            self._init_provider(values["format"])
-            self._init_http_queue()
+        # Initialize properties only once.
+        if hasattr(self, "id"): return
+        values = self._load_attributes(id)
+        self.attribution = values["attribution"]
+        self._blacklist = set()
+        self.extension = values.get("extension", "")
+        self._failures = {}
+        self.format = values["format"]
+        self.id = id
+        self.max_age = values.get("max_age", None)
+        self.name = values["name"]
+        self._provider = None
+        self.scale = values.get("scale", 1)
+        self.smooth = values.get("smooth", False)
+        self.source = values["source"]
+        self.type = values.get("type", "basemap")
+        self.url = values["url"]
+        self.z = max(0, min(40, values.get("z", 0)))
+        self._init_provider(values["format"])
+        # Use two download threads as per OpenStreetMap tile usage policy.
+        # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
+        self._pool = ConnectionPool(2)
+        self._pool.init(self.url)
+        agent = "poor-maps/{}".format(poor.__version__)
+        self._headers = {"Connection": "Keep-Alive", "User-Agent": agent}
 
     def _add_to_blacklist(self, url):
         """Add `url` to list of tiles to not try to download."""
@@ -102,11 +162,9 @@ class TileSource:
                 return "icons/tile.png"
             return None
         try:
-            httpc = self._http_queue.get()
-            if httpc is None:
-                httpc = self._new_http_connection()
-            httpc.request("GET", url, headers=self._headers)
-            response = httpc.getresponse()
+            connection = self._pool.get(url)
+            connection.request("GET", url, headers=self._headers)
+            response = connection.getresponse()
             # Always read response to avoid
             # http.client.ResponseNotReady: Request-sent.
             blob = response.read(1048576)
@@ -137,8 +195,8 @@ class TileSource:
                 f.write(blob)
             return path
         except Exception as error:
-            httpc.close()
-            httpc = None
+            connection.close()
+            connection = None
             broken = (BrokenPipeError, http.client.BadStatusLine)
             if isinstance(error, broken) and retry > 0:
                 # This probably means that the connection was broken.
@@ -162,24 +220,11 @@ class TileSource:
                     del self._failures[url]
                 return None
         finally:
-            self._http_queue.task_done()
-            self._http_queue.put(httpc)
+            # Return persistent connection for reuse.
+            self._pool.put(url, connection)
         if retry > 0:
             return self.download(tile, retry-1)
         return None
-
-    def _init_http_queue(self):
-        """Initialize queue of HTTP connections."""
-        # Use two download threads as per OpenStreetMap tile usage policy.
-        # http://wiki.openstreetmap.org/wiki/Tile_usage_policy
-        for i in range(2):
-            try:
-                self._http_queue.put(self._new_http_connection())
-            except Exception:
-                self._http_queue.put(None)
-        agent = "poor-maps/{}".format(poor.__version__)
-        self._headers = {"Connection": "Keep-Alive",
-                         "User-Agent": agent}
 
     def _init_provider(self, format):
         """Initialize tile format provider module from `format`."""
@@ -206,16 +251,6 @@ class TileSource:
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
         return poor.util.read_json(path)
-
-    def _new_http_connection(self):
-        """Initialize and return a new persistent HTTP connection."""
-        host = urllib.parse.urlparse(self.url).netloc
-        timeout = poor.conf.download_timeout
-        if self.url.startswith("http:"):
-            return http.client.HTTPConnection(host, timeout=timeout)
-        if self.url.startswith("https:"):
-            return http.client.HTTPSConnection(host, timeout=timeout)
-        raise ValueError("Bad URL: {}".format(repr(self.url)))
 
     def tile_corners(self, tile):
         """Return coordinates of NE, SE, SW, NW corners of given tile."""
