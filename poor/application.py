@@ -36,7 +36,7 @@ class Application:
     def __init__(self):
         """Initialize a :class:`Application` instance."""
         self.basemap = None
-        self._download_queue = queue.Queue()
+        self._download_queue = {}
         self.geocoder = None
         self.guide = None
         self.history = poor.HistoryManager()
@@ -45,7 +45,6 @@ class Application:
         self.router = None
         self._tilecollection = poor.TileCollection()
         self._timestamp = int(time.time()*1000)
-        self._init_download_threads()
         self.set_basemap(poor.conf.basemap)
         self.add_overlays(*poor.conf.overlays)
         self.set_geocoder(poor.conf.geocoder)
@@ -66,24 +65,40 @@ class Application:
                       .format(overlay, str(error)),
                       file=sys.stderr)
 
-    def _init_download_threads(self):
-        """Initialize map tile download threads."""
-        # tilesource.ConnectionPool limits the actual amount of
-        # connections per host. This thread count should be greater
-        # than that to allow tiles from different hosts (basemap, overlays)
-        # to be downloaded at the same time.
-        for i in range(16):
-            threading.Thread(target=self._process_download_queue,
-                             daemon=True).start()
+    def _drop_download_queues(self):
+        """Remove download queues of no longer used tile sources."""
+        current = [self.basemap.id] + [x.id for x in self.overlays]
+        for id in list(self._download_queue.keys()):
+            if not id in current:
+                self._download_queue.pop(id)
 
-    def _process_download_queue(self):
-        """Monitor download queue and feed items for update."""
+    def _get_download_queue(self, id, create=False):
+        """Return download queue for tile source `id`."""
+        with poor.util.silent(KeyError):
+            return self._download_queue[id]
+        if create:
+            self._download_queue[id] = queue.Queue()
+            # Initialize threads to clear the queue.
+            # tilesource.ConnectionPool limits the actual amount
+            # of connections per host. This thread count should
+            # just be greater than or equal to that.
+            for i in range(4):
+                target = self._process_download_queue
+                threading.Thread(target=target, args=(id,), daemon=True).start()
+            return self._download_queue[id]
+        return None
+
+    def _process_download_queue(self, id):
+        """Monitor download queue of `id` and feed items for update."""
         while True:
-            args, timestamp = self._download_queue.get()
+            download_queue = self._get_download_queue(id)
+            # Terminate thread if tile source no longer used.
+            if download_queue is None: break
+            args, timestamp = download_queue.get()
             if timestamp == self._timestamp:
                 # Only download tiles queued in the latest update.
                 self._update_tile(*args, timestamp=timestamp)
-            self._download_queue.task_done()
+            download_queue.task_done()
 
     def remove_overlays(self, *overlays):
         """Remove overlay providers from strings `overlays`."""
@@ -94,6 +109,7 @@ class Application:
                 self.overlays.pop(i)
         for overlay in overlays:
             poor.conf.set_remove("overlays", overlay)
+        self._drop_download_queues()
         self._tilecollection.reset()
 
     def set_basemap(self, basemap):
@@ -101,6 +117,7 @@ class Application:
         try:
             self.basemap = poor.TileSource(basemap)
             poor.conf.basemap = basemap
+            self._drop_download_queues()
             self._tilecollection.reset()
         except Exception as error:
             print("Failed to load basemap '{}': {}"
@@ -188,11 +205,12 @@ class Application:
         self._timestamp = int(time.time()*1000)
         total_tiles = 0
         for tilesource in [self.basemap] + self.overlays:
-            # For scales above one, get tile from an above zoom level.
+            # For scales above one, get tile from a lower zoom level.
             z = int(zoom - math.log2(tilesource.scale))
+            download_queue = self._get_download_queue(tilesource.id, create=True)
             for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, z):
                 args = (tilesource, xmin, xmax, ymin, ymax, z, zoom, tile)
-                self._download_queue.put((args, self._timestamp))
+                download_queue.put((args, self._timestamp))
                 total_tiles += 1
         # Keep a few screenfulls of tiles in memory.
         total_tiles = math.ceil(total_tiles / (1 + len(self.overlays)))
