@@ -20,48 +20,76 @@
 import http.client
 import json
 import poor
+import queue
 import sys
+import threading
 import urllib.parse
-
-_connections = {}
 
 HEADERS = {"Connection": "Keep-Alive",
            "User-Agent": "poor-maps/{}".format(poor.__version__)}
 
 
-def _get_connection(url, timeout=None):
-    """Return HTTP connection to `url`."""
-    with poor.util.silent(KeyError):
-        return _connections[_get_key(url)]
-    return _new_connection(url, timeout)
+class ConnectionPool:
 
-def _get_connection_class(url):
-    """Return HTTP connection class for `url`."""
-    protocol = urllib.parse.urlparse(url).scheme
-    if protocol == "http":
-        return http.client.HTTPConnection
-    if protocol == "https":
-        return http.client.HTTPSConnection
-    raise ValueError("Bad URL: {}".format(repr(url)))
+    """A managed pool of persistent per-host HTTP connections."""
 
-def _get_key(url):
-    """Return a dictionary key for `url`."""
-    protocol = urllib.parse.urlparse(url).scheme
-    host = urllib.parse.urlparse(url).netloc
-    return "{}://{}".format(protocol, host)
+    def __init__(self, threads):
+        """Initialize a :class:`ConnectionPool` instance."""
+        self._lock = threading.Lock()
+        self._queue = {}
+        self._threads = threads
 
-def _new_connection(url, timeout=None):
-    """Return new HTTP connection to `url`."""
-    cls = _get_connection_class(url)
-    host = urllib.parse.urlparse(url).netloc
-    timeout = timeout or poor.conf.download_timeout
-    _connections[_get_key(url)] = cls(host, timeout=timeout)
-    return _connections[_get_key(url)]
+    @poor.util.locked_method
+    def _allocate(self, url):
+        """Initialize a queue of HTTP connections to `url`."""
+        key = self._get_key(url)
+        if key in self._queue: return
+        self._queue[key] = queue.Queue()
+        for i in range(self._threads):
+            self._queue[key].put(None)
 
-def _remove_connection(url):
-    """Close and remove connection to `url` from the pool."""
-    with poor.util.silent(Exception):
-        _connections.pop(_get_key(url)).close()
+    def get(self, url):
+        """Return an HTTP connection to `url`."""
+        key = self._get_key(url)
+        if not key in self._queue:
+            self._allocate(url)
+        connection = self._queue[key].get()
+        if connection is None:
+            connection = self._new(url)
+        return connection
+
+    def _get_key(self, url):
+        """Return a dictionary key for the host of `url`."""
+        components = urllib.parse.urlparse(url)
+        return "{}://{}".format(components.scheme, components.netloc)
+
+    def _new(self, url):
+        """Initialize and return a new HTTP connection to `url`."""
+        components = urllib.parse.urlparse(url)
+        timeout = poor.conf.download_timeout
+        print("ConnectionPool._new: {}".format(components.netloc))
+        cls = {
+            "http":  http.client.HTTPConnection,
+            "https": http.client.HTTPSConnection,
+        }[components.scheme]
+        return cls(components.netloc, timeout=timeout)
+
+    def put(self, url, connection):
+        """Return `connection` to the pool of connections."""
+        key = self._get_key(url)
+        self._queue[key].task_done()
+        self._queue[key].put(connection)
+
+    def reset(self, url):
+        """Close and re-establish HTTP connection to `url`."""
+        connection = self.get(url)
+        with poor.util.silent(Exception):
+            connection.close()
+        self.put(None)
+
+
+pool = ConnectionPool(1)
+
 
 def request_json(url, encoding="utf_8", retry=1):
     """
@@ -73,7 +101,7 @@ def request_json(url, encoding="utf_8", retry=1):
     text = request_url(url, encoding, retry)
     if not text.strip() and retry > 0:
         # A blank return is probably an error.
-        _remove_connection(url)
+        pool.reset(url)
         text = request_url(url, encoding, retry-1)
     try:
         if not text.strip():
@@ -95,19 +123,24 @@ def request_url(url, encoding=None, retry=1):
     """
     print("Requesting {}".format(url))
     try:
-        httpc = _get_connection(url)
-        httpc.request("GET", url, headers=HEADERS)
-        response = httpc.getresponse()
+        connection = pool.get(url)
+        connection.request("GET", url, headers=HEADERS)
+        response = connection.getresponse()
+        # Always read response to avoid
+        # http.client.ResponseNotReady: Request-sent.
+        blob = response.read()
         if response.status != 200:
             raise Exception("Server responded {}: {}"
                             .format(repr(response.status),
                                     repr(response.reason)))
 
-        blob = response.read()
         if encoding is None: return blob
-        return blob.decode(encoding, errors="replace")
+        text = blob.decode(encoding, errors="replace")
+        pool.put(url, connection)
+        return text
     except Exception as error:
-        _remove_connection(url)
+        connection.close()
+        pool.put(url, None)
         broken = (BrokenPipeError, http.client.BadStatusLine)
         if isinstance(error, broken) and retry > 0:
             # This probably means that the connection was broken.
