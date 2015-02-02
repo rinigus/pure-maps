@@ -35,8 +35,7 @@ Column {
         }
         onCurrentIndexChanged: {
             var option = "routers.mapzen_osrm.type";
-            var value = typeComboBox.keys[typeComboBox.currentIndex];
-            app.conf.set(option, value);
+            app.conf.set(option, typeComboBox.keys[typeComboBox.currentIndex]);
         }
     }
 }

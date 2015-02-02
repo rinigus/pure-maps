@@ -28,8 +28,8 @@ Column {
             MenuItem { text: "Best" }
         }
         Component.onCompleted: {
-            var closest = app.conf.get("guides.foursquare.sort_by_distance");
-            closestComboBox.currentIndex = closest ? 0 : 1;
+            var option = "guides.foursquare.sort_by_distance";
+            closestComboBox.currentIndex = app.conf.get(option) ? 0 : 1;
         }
         onCurrentIndexChanged: {
             var option = "guides.foursquare.sort_by_distance";
