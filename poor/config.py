@@ -118,7 +118,9 @@ class ConfigurationStore(AttrDict):
             path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
         if os.path.isfile(path):
             with poor.util.silent(Exception):
-                self._update(poor.util.read_json(path))
+                values = poor.util.read_json(path)
+                values = self._migrate(values)
+                self._update(values)
 
     def _register(self, values, root=None, defaults=None):
         """Add entries for `values` if missing."""
@@ -187,7 +189,6 @@ class ConfigurationStore(AttrDict):
 
     def _update(self, values, root=None, defaults=None, path=()):
         """Load values of options after validation."""
-        values = self._migrate(values)
         root = (self if root is None else root)
         defaults = (DEFAULTS if defaults is None else defaults)
         for name, value in values.items():
@@ -216,5 +217,6 @@ class ConfigurationStore(AttrDict):
         if path is None:
             path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
         out = self._comment_unmodified()
+        out["version"] = poor.__version__
         with poor.util.silent(Exception):
             poor.util.write_json(out, path)

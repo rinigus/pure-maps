@@ -17,8 +17,6 @@ Poor Maps 0.18
  * [X] Fix a tile display efficiency bug introduced in 0.13
  * [ ] Destroy dynamically created QML objects when no longer used
 
- * Write version number to configuration file
-
 Poor Maps 1.0
 =============
 
