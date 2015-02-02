@@ -97,12 +97,14 @@ class TileSource:
                 return "icons/tile.png"
             return None
         try:
+            print("WAIT: {}".format(url))
             connection = self._pool.get(url)
             # ConnectionPool.get can block for a while, check that
             # another thread didn't download the tile during.
             cached = self._tile_in_cache(path)
             if cached is not None:
                 return cached
+            print("GET: {}".format(url))
             connection.request("GET", url, headers=poor.http.HEADERS)
             response = connection.getresponse()
             # Always read response to avoid
@@ -133,30 +135,32 @@ class TileSource:
                 poor.util.makedirs(directory)
             with open(path, "wb") as f:
                 f.write(blob)
-            self._pool.put(url, connection)
             return path
         except Exception as error:
             connection.close()
-            self._pool.put(url, None)
+            connection = None
+            # These probably mean that the connection was broken.
             broken = (BrokenPipeError, http.client.BadStatusLine)
-            if isinstance(error, broken) and retry > 0:
-                # This probably means that the connection was broken.
-                return self.download(tile, retry-1)
-            print(url)
-            print("Failed to download tile: {}: {}"
-                  .format(error.__class__.__name__, str(error)),
-                  file=sys.stderr)
-
-            # Keep track of the amount of failed downloads per URL
-            # and avoid trying to endlessly redownload the same tile.
-            self._failures.setdefault(url, 0)
-            self._failures[url] += 1
-            if self._failures[url] > 2:
-                print("Blacklisted after 3 failed attempts.",
+            if not isinstance(error, broken) or retry == 0:
+                print(url)
+                print("Failed to download tile: {}: {}"
+                      .format(error.__class__.__name__, str(error)),
                       file=sys.stderr)
-                self._add_to_blacklist(url)
-                self._failures.pop(url)
-            return None
+
+                # Keep track of the amount of failed downloads per URL
+                # and avoid trying to endlessly redownload the same tile.
+                self._failures.setdefault(url, 0)
+                self._failures[url] += 1
+                if self._failures[url] > 2:
+                    print("Blacklisted after 3 failed attempts.",
+                          file=sys.stderr)
+                    self._add_to_blacklist(url)
+                    self._failures.pop(url)
+                return None
+        finally:
+            self._pool.put(url, connection)
+        assert retry > 0
+        return self.download(tile, retry-1)
 
     def _init_provider(self, format):
         """Initialize tile format provider module from `format`."""

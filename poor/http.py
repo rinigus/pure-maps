@@ -135,17 +135,18 @@ def request_url(url, encoding=None, retry=1):
                                     repr(response.reason)))
 
         if encoding is None: return blob
-        text = blob.decode(encoding, errors="replace")
-        pool.put(url, connection)
-        return text
+        return blob.decode(encoding, errors="replace")
     except Exception as error:
         connection.close()
-        pool.put(url, None)
+        connection = None
+        # These probably mean that the connection was broken.
         broken = (BrokenPipeError, http.client.BadStatusLine)
-        if isinstance(error, broken) and retry > 0:
-            # This probably means that the connection was broken.
-            return request_url(url, encoding, retry-1)
-        print("Failed to download data: {}: {}"
-              .format(error.__class__.__name__, str(error)),
-              file=sys.stderr)
-        raise # Exception
+        if not isinstance(error, broken) or retry == 0:
+            print("Failed to download data: {}: {}"
+                  .format(error.__class__.__name__, str(error)),
+                  file=sys.stderr)
+            raise # Exception
+    finally:
+        pool.put(url, connection)
+    assert retry > 0
+    return request_url(url, encoding, retry-1)
