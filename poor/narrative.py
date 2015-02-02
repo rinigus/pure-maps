@@ -261,12 +261,8 @@ class Narrative:
     @property
     def ready(self):
         """Return ``True`` if narrative is in steady state and ready for use."""
-        return (self.x and
-                len(self.x) ==
-                len(self.y) ==
-                len(self.dist) ==
-                len(self.time) ==
-                len(self.maneuver))
+        return (self.x and len(self.x) == len(self.y) ==
+                len(self.dist) == len(self.time) == len(self.maneuver))
 
     def set_maneuvers(self, maneuvers):
         """

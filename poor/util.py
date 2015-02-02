@@ -158,9 +158,8 @@ def format_time(seconds):
 
 def get_basemaps():
     """Return a list of dictionaries of basemap attributes."""
-    return list(filter(
-        lambda x: x.get("type", "basemap") == "basemap",
-        _get_providers("tilesources", poor.conf.basemap)))
+    return list(filter(lambda x: x.get("type", "basemap") == "basemap",
+                       _get_providers("tilesources", poor.conf.basemap)))
 
 def get_geocoders():
     """Return a list of dictionaries of geocoder attributes."""
@@ -172,9 +171,8 @@ def get_guides():
 
 def get_overlays():
     """Return a list of dictionaries of overlay attributes."""
-    return list(filter(
-        lambda x: x.get("type", "basemap") == "overlay",
-        _get_providers("tilesources", *poor.conf.overlays)))
+    return list(filter(lambda x: x.get("type", "basemap") == "overlay",
+                       _get_providers("tilesources", *poor.conf.overlays)))
 
 def _get_providers(directory, *active):
     """Return a list of dictionaries of provider attributes."""

@@ -58,8 +58,8 @@ class Guide:
         """Calculate and format a human readable distance string."""
         distance = poor.util.calculate_distance(x1, y1, x2, y2)
         distance = poor.util.format_distance(distance)
-        bearing = poor.util.calculate_bearing(x1, y1, x2, y2)
-        bearing = poor.util.format_bearing(bearing)
+        bearing  = poor.util.calculate_bearing(x1, y1, x2, y2)
+        bearing  = poor.util.format_bearing(bearing)
         return "{} {}".format(distance, bearing)
 
     def _init_provider(self, id, path):

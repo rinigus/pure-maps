@@ -30,8 +30,14 @@ class Tile:
 
     def __init__(self, uid):
         """Initialize a :class:`Tile` instance."""
-        self.uid = uid
-        self.reset()
+        self.uid  = uid
+        self.key  = ""
+        self.time = -1
+        self.xmin = -1
+        self.xmax = -1
+        self.ymin = -1
+        self.ymax = -1
+        self.zoom = -1
 
     def assign(self, key, xmin, xmax, ymin, ymax, zoom):
         """Assign properties."""
@@ -42,16 +48,6 @@ class Tile:
         self.ymin = ymin
         self.ymax = ymax
         self.zoom = zoom
-
-    def reset(self):
-        """Reset properties."""
-        self.key  = ""
-        self.time = -1
-        self.xmin = -1
-        self.xmax = -1
-        self.ymin = -1
-        self.ymax = -1
-        self.zoom = -1
 
 
 class TileCollection:
@@ -103,7 +99,7 @@ class TileCollection:
 
     @poor.util.locked_method
     def reset(self):
-        """Reset tile properties."""
+        """Reset the entire tile collection."""
         self._tiles = []
 
     @property
