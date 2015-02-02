@@ -2,19 +2,22 @@ Poor Maps 0.18
 ==============
 
  * [ ] Add support for transparent overlay tiles
-       - Investigate memory use, check amount of tiles to keep in memory
+       - Check memory use with overlays
        - Check that cover tiles work (or limit to basemap)
-       - Check if http.py needs changes made to tilesource.py
        - Remove debug printing
  * [X] Add ASTER GDEM & SRTM Hillshade overlay
- * [X] Add OpenPTMap overlay
- * [X] Add OpenSeaMap overlay
+ * [X] Add OpenPTMap public transportation overlay
+ * [X] Add OpenSeaMap nautical overlay
  * [X] Add Sputnik basemap
+ * [ ] Change default auto-removal of cached tiles from "never" to XXX
+ * [ ] Show tile count in addition to size on tile cache page
  * [X] Move tile provider attribution from the map corner
-       to the basemap and overlay selection pages
- * [X] Fix a tile display efficiency bug introduced in 0.13
+       to basemap and overlay selection pages
  * [X] Don't retry a tile download after three failed attempts
+ * [X] Fix a tile display efficiency bug introduced in 0.13
  * [ ] Destroy dynamically created QML objects when no longer used
+
+ * Write version number to configuration file
 
 Poor Maps 1.0
 =============

@@ -32,9 +32,9 @@ except ImportError:
     sys.modules["pyotherside"] = pyotherside()
 
 from poor.paths import *
-from poor import http
-from poor import cache
 from poor import util
+from poor import cache
+from poor import http
 from poor import polysimp
 from poor import storage
 from poor.config import *
@@ -43,8 +43,8 @@ from poor.tilecollection import *
 from poor.tilesource import *
 from poor.geocoder import *
 from poor.guide import *
-from poor.router import *
 from poor.history import *
+from poor.router import *
 from poor.narrative import *
 from poor.application import *
 

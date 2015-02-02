@@ -16,15 +16,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import poor.test
-import poor.tilesource
 
 
 class TestConnectionPool(poor.test.TestCase):
 
     def test___new__(self):
-        a = poor.tilesource.ConnectionPool(1)
-        b = poor.tilesource.ConnectionPool(2)
-        assert a is b
+        a = poor.TileSource("openstreetmap")
+        b = poor.TileSource("mapquest_open")
+        assert a._pool is b._pool
 
 
 class TestTileSource(poor.test.TestCase):
