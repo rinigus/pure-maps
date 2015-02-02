@@ -29,6 +29,7 @@ import "."
 
 CoverBackground {
     id: cover
+    property bool active: status == Cover.Active
     property bool ready: false
     property bool showNarrative: map.hasRoute && map.showNarrative
     property var tiles: []
@@ -141,22 +142,25 @@ CoverBackground {
     }
     function updateTiles() {
         // Update cover map tiles from map equivalents.
+        for (var i = 0; i < cover.tiles.length; i++)
+            cover.tiles[i].z = -1;
+        var j = 1;
         for (var i = 0; i < map.tiles.length; i++) {
-            if (cover.tiles.length <= i) cover.addTile();
-            cover.tiles[i].source = map.tiles[i].uri;
-            cover.tiles[i].x = cover.mapXToCoverX(map.tiles[i].x);
-            cover.tiles[i].y = cover.mapYToCoverY(map.tiles[i].y);
-            cover.tiles[i].z = map.tiles[i].z;
-            cover.tiles[i].smooth = map.tiles[i].smooth;
-            cover.tiles[i].visible = !cover.showNarrative;
+            if (map.tiles[i].type != "basemap") continue;
+            if (map.tiles[i].z != 10) continue;
+            while (cover.tiles.length <= j) cover.addTile();
+            cover.tiles[j].smooth = map.tiles[i].smooth;
+            cover.tiles[j].source = map.tiles[i].uri;
+            cover.tiles[j].x = cover.mapXToCoverX(map.tiles[i].x);
+            cover.tiles[j].y = cover.mapYToCoverY(map.tiles[i].y);
+            cover.tiles[j].z = map.tiles[i].z;
+            cover.tiles[j].visible = !cover.showNarrative;
             var width = map.tiles[i].width;
             var height = map.tiles[i].height;
-            width && width > 0 && (cover.tiles[i].width = width);
-            height && height > 0 && (cover.tiles[i].height = height);
+            width && width > 0 && (cover.tiles[j].width = width);
+            height && height > 0 && (cover.tiles[j].height = height);
+            j++;
         }
-        for (var i = map.tiles.length; i < cover.tiles.length; i++)
-            // Hide remaining tiles if map.tiles has been shrunk.
-            cover.tiles[i].z = -1;
         cover.ready = cover.tiles.length > 4;
     }
 }

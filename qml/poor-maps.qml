@@ -47,36 +47,44 @@ ApplicationWindow {
     allowedOrientations: Orientation.All
     cover: Cover {}
     initialPage: DummyPage { id: dummy }
-    property var conf: Config {}
+
+    property var  conf: Config {}
     property bool inMenu: bottomMargin == 0
-    property bool running: applicationActive || cover.status == Cover.Active
-    property int totalHeight: Screen.height
-    property int totalWidth: Screen.width
+    property bool running: applicationActive || cover.active
+    property int  totalHeight: Screen.height
+    property int  totalWidth: Screen.width
+
     Map { id: map }
     PositionSource { id: gps }
     Python { id: py }
+
     Component.onCompleted: {
         py.setHandler("render-tile", map.renderTile);
         py.setHandler("show-tile", map.showTile);
     }
+
     Keys.onPressed: {
         // Allow zooming with plus and minus keys on the emulator.
         (event.key == Qt.Key_Plus)  && map.setZoomLevel(map.zoomLevel+1);
         (event.key == Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
     }
+
     onApplicationActiveChanged: {
         py.ready && !app.applicationActive && app.save();
         app.updateKeepAlive();
     }
+
     function clearMenu() {
         // Clear pages from the menu and hide the menu.
         app.pageStack.pop(dummy, PageStackAction.Immediate);
         app.hideMenu();
     }
+
     function hideMenu() {
         // Immediately hide the menu, keeping pages intact.
         app.bottomMargin = app.totalHeight;
     }
+
     function save() {
         // Save application-level configuration and persistent data.
         app.conf.set("auto_center", map.autoCenter);
@@ -86,6 +94,7 @@ ApplicationWindow {
         py.call_sync("poor.conf.write", []);
         py.call_sync("poor.app.history.write", []);
     }
+
     function showMenu(page, params) {
         // Show a menu page, either given, last viewed, or menu.
         dummy.updateTiles();
@@ -97,6 +106,7 @@ ApplicationWindow {
         }
         app.bottomMargin = 0;
     }
+
     function updateKeepAlive() {
         // Update state of display blanking prevention, i.e. keep-alive.
         var prevent = app.conf.get("keep_alive");

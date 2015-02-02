@@ -19,5 +19,6 @@
 import QtQuick 2.0
 
 Image {
+    asynchronous: true
     smooth: false
 }

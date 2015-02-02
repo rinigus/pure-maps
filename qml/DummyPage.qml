@@ -49,19 +49,23 @@ Page {
     }
     function updateTiles() {
         // Update cover map tiles from map equivalents.
+        for (var i = 0; i < page.tiles.length; i++)
+            page.tiles[i].z = -1;
+        var j = 1;
         for (var i = 0; i < map.tiles.length; i++) {
-            if (page.tiles.length <= i) page.addTile();
-            page.tiles[i].source = map.tiles[i].uri;
-            page.tiles[i].x = map.tiles[i].x;
-            page.tiles[i].y = map.tiles[i].y;
-            page.tiles[i].z = map.tiles[i].z;
+            if (map.tiles[i].type != "basemap") continue;
+            if (map.tiles[i].z != 10) continue;
+            while (page.tiles.length <= j) page.addTile();
+            page.tiles[j].smooth = map.tiles[i].smooth;
+            page.tiles[j].source = map.tiles[i].uri;
+            page.tiles[j].x = map.tiles[i].x;
+            page.tiles[j].y = map.tiles[i].y;
+            page.tiles[j].z = map.tiles[i].z;
             var width = map.tiles[i].width;
             var height = map.tiles[i].height;
-            width && width > 0 && (page.tiles[i].width = width);
-            height && height > 0 && (page.tiles[i].height = height);
+            width && width > 0 && (page.tiles[j].width = width);
+            height && height > 0 && (page.tiles[j].height = height);
+            j++;
         }
-        for (var i = map.tiles.length; i < page.tiles.length; i++)
-            // Hide remaining tiles if map.tiles has been shrunk.
-            page.tiles[i].z = -1;
     }
 }
