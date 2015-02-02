@@ -61,33 +61,27 @@ def purge_directory(directory, max_age):
     tiles older which to remove.
     """
     if not directory: return
+    basename = directory
     if not poor.CACHE_HOME_DIR:
         # This shouldn't happen, but just in case it does,
         # let's try to avoid a disaster.
         raise Exception("poor.CACHE_HOME_DIR not set")
     directory = os.path.join(poor.CACHE_HOME_DIR, directory)
+    directory = os.path.realpath(directory)
     if not os.path.isdir(directory): return
     if os.path.samefile(os.path.expanduser("~"), directory):
         # This shouldn't happen, but just in case it does,
         # let's try to avoid a disaster.
         raise Exception("Refusing to act on $HOME")
     print("Purging cache >{:3.0f}d for {:22s}..."
-          .format(max_age, repr(os.path.basename(directory))),
-          end="")
+          .format(max_age, repr(basename)), end="")
 
     cutoff = time.time() - max_age * 86400
     total = removed = 0
-    # First run topdown to make sure there's no misconfigured
-    # symlinks etc. that could cause a disaster. After that run
-    # bottomup to able to remove directories as well.
+    # Only follow symlinks for the directory itself, not its children
+    # in order to simplify matters and do a safe bottomup walk.
     for root, dirs, files, rootfd in os.fwalk(
-            directory, topdown=True, follow_symlinks=True):
-        if os.path.samefile(os.path.expanduser("~"), root):
-            # This shouldn't happen, but just in case it does,
-            # let's try to avoid a disaster.
-            raise Exception("Refusing to act on $HOME")
-    for root, dirs, files, rootfd in os.fwalk(
-            directory, topdown=False, follow_symlinks=True):
+            directory, topdown=False, follow_symlinks=False):
         total += len(files)
         for name in files:
             if os.stat(name, dir_fd=rootfd).st_mtime < cutoff:
@@ -100,7 +94,7 @@ def purge_directory(directory, max_age):
                 # Fails if the directory is a symlink.
                 os.rmdir(name, dir_fd=rootfd)
         # Release GIL to let other threads do something more important.
-        time.sleep(0.001)
+        time.sleep(0.000001)
     with poor.util.silent(OSError):
         # Fails if the directory is not empty.
         # Fails if the directory is a symlink.
@@ -132,15 +126,17 @@ def stat_directory(directory):
     """
     count = 0
     bytes = 0
+    basename = directory
     directory = os.path.join(poor.CACHE_HOME_DIR, directory)
+    directory = os.path.realpath(directory)
     if os.path.isdir(directory):
-        for root, dirs, files, rootfd in os.fwalk(directory, follow_symlinks=True):
+        for root, dirs, files, rootfd in os.fwalk(
+                directory, follow_symlinks=False):
             count += len(files)
             bytes += sum(os.stat(x, dir_fd=rootfd).st_size for x in files)
     names = dict((x["pid"], x["name"]) for x in poor.util.get_tilesources())
-    directory = os.path.basename(directory)
-    name = names.get(directory, directory)
-    return dict(directory=directory,
+    name = names.get(basename, basename)
+    return dict(directory=basename,
                 name=name,
                 count=count,
                 bytes=bytes,
