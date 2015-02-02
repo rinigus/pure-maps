@@ -29,6 +29,7 @@ MapQuickItem {
     sourceItem: Item {
         Image {
             id: image
+            asynchronous: true
             smooth: tile.smooth
             source: tile.uri
         }
