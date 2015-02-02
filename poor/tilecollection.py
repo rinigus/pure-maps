@@ -104,8 +104,7 @@ class TileCollection:
     @poor.util.locked_method
     def reset(self):
         """Reset tile properties."""
-        for tile in self._tiles:
-            tile.reset()
+        self._tiles = []
 
     @property
     def size(self):
