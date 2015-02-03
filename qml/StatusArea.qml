@@ -24,12 +24,9 @@ Rectangle {
     anchors.left: parent.left
     anchors.top: parent.top
     color: "#bb000000"
-    height: destDist.length > 0 ?
-        Math.max(iconImage.height,
-                 manLabel.height +
-                 narrativeLabel.height +
-                 Theme.paddingMedium/2) : 0
-
+    height: destDist.length > 0 ? Math.max(
+        iconImage.height, manLabel.height +
+            narrativeLabel.height + Theme.paddingMedium/2) : 0
     width: parent.width
     z: 900
     property string destDist: ""
@@ -51,13 +48,9 @@ Rectangle {
             id: iconImage
             anchors.left: parent.left
             fillMode: Image.Pad
-            height: statusArea.icon.length > 0 ?
-                Math.max(implicitHeight +
-                         Theme.paddingLarge*2,
-                         manLabel.height +
-                         narrativeLabel.height +
-                         Theme.paddingMedium/2): 0
-
+            height: statusArea.icon.length > 0 ? Math.max(
+                implicitHeight + Theme.paddingLarge*2,
+                manLabel.height + narrativeLabel.height + Theme.paddingMedium/2): 0
             horizontalAlignment: Image.AlignHCenter
             source: statusArea.icon.length > 0 ?
                 "icons/" + statusArea.icon + ".png" :

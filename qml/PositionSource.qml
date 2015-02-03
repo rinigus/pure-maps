@@ -40,7 +40,7 @@ PositionSource {
             gps.coordPrev.longitude = coord.longitude;
             gps.coordPrev.latitude = coord.latitude;
             gps.timePrev = Date.now();
-        } else if (gps.direction && Date.now() - gps.timePrev > 5*60*1000) {
+        } else if (gps.direction && Date.now() - gps.timePrev > 300000) {
             gps.direction = undefined;
         }
     }

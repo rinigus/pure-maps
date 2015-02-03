@@ -225,10 +225,10 @@ Map {
     function demoteTiles() {
         // Drop basemap tiles to a lower z-level and remove overlays.
         for (var i = map.tiles.length-1; i >= 0; i--) {
-            if (map.tiles[i].type == "overlay") {
-                map.tiles[i].z = -1;
+            if (map.tiles[i].type == "basemap") {
+                map.tiles[i].z = Math.max(1, map.tiles[i].z-1);
             } else {
-                map.tiles[i].z = Math.max(0, map.tiles[i].z-1);
+                map.tiles[i].z = -1;
             }
         }
     }
