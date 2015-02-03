@@ -1,21 +1,19 @@
 Poor Maps 0.18
 ==============
 
- * [ ] Add support for transparent overlay tiles
-       - Check memory use with overlays
-       - Check that cover tiles work (or limit to basemap)
-       - Remove debug printing
+ * [X] Add support for transparent overlay tiles
  * [X] Add ASTER GDEM & SRTM Hillshade overlay
- * [X] Add OpenPTMap public transportation overlay
  * [X] Add OpenSeaMap nautical overlay
  * [X] Add Sputnik basemap
+ * [X] Add Thunderforest Transport basemap
  * [ ] Change default auto-removal of cached tiles from "never" to XXX
  * [ ] Show tile count in addition to size on tile cache page
- * [X] Move tile provider attribution from the map corner
-       to basemap and overlay selection pages
  * [X] Don't retry a tile download after three failed attempts
  * [X] Fix a tile display efficiency bug introduced in 0.13
  * [ ] Destroy dynamically created QML objects when no longer used
+
+ * Remove tile loading and display related debug printing
+ * Check UI changes
 
 Poor Maps 1.0
 =============

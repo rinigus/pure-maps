@@ -1,0 +1,8 @@
+{
+    "attribution": "Maps © Thunderforest\nData © OpenStreetMap contributors",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "Thunderforest Transport",
+    "source": "thunderforest.com",
+    "url": "http://tile.thunderforest.com/transport/{z}/{x}/{y}.png"
+}
