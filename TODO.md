@@ -6,7 +6,9 @@ Poor Maps 0.18
  * [X] Add OpenSeaMap nautical overlay
  * [X] Add Sputnik basemap
  * [X] Add Thunderforest Transport basemap
- * [ ] Change default auto-removal of cached tiles from "never" to XXX
+ * [X] Change default auto-removal of cached tiles from "never"
+       to 30 days (only affects new users, if you have used Poor Maps
+       prior to 0.18, your existing setting will stay as-is)
  * [X] Show tile count in addition to size on tile cache page
  * [X] Don't retry a tile download after three failed attempts
  * [X] Fix a tile display efficiency bug introduced in 0.13

@@ -45,6 +45,12 @@ class TestConfigurationStore(poor.test.TestCase):
         bar = poor.conf.get_default("foo.bar")
         assert bar == 1
 
+    def test_migrate(self):
+        values = {"tilesource": "openstreetmap"}
+        values = poor.conf._migrate(values)
+        assert values["basemap"] == "openstreetmap"
+        assert not "tilesource" in values
+
     def test_read(self):
         poor.conf.zoom = 99
         poor.conf.write(self.path)
@@ -54,12 +60,12 @@ class TestConfigurationStore(poor.test.TestCase):
         assert poor.conf.zoom == 99
 
     def test_read__nested(self):
-        poor.conf.set("foo.bar", 1)
+        poor.conf.register_router("foo", {"type": "car"})
         poor.conf.write(self.path)
-        del poor.conf.foo
-        assert not "foo" in poor.conf
+        del poor.conf.routers["foo"]
+        assert not "foo" in poor.conf.routers
         poor.conf.read(self.path)
-        assert poor.conf.foo.bar == 1
+        assert poor.conf.routers.foo.type == "car"
 
     def test_register_router(self):
         poor.conf.register_router("foo", {"type": "car"})
@@ -101,6 +107,12 @@ class TestConfigurationStore(poor.test.TestCase):
         assert poor.conf.items == [1,2,3]
         poor.conf.set_remove("items", 3)
         assert poor.conf.items == [1,2]
+
+    def test_uncomment(self):
+        values = {"# cache_max_age": 36500}
+        values = poor.conf._uncomment(values)
+        assert values["cache_max_age"] == 36500
+        assert len(list(values.keys())) == 1
 
     def test_write(self):
         poor.conf.zoom = 99

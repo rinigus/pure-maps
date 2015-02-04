@@ -28,7 +28,7 @@ DEFAULTS = {
     "allow_tile_download": True,
     "auto_center": False,
     "basemap": "mapquest_open",
-    "cache_max_age": 36500, # days
+    "cache_max_age": 30, # days
     "center": [0.0, 0.0],
     "download_timeout": 10, # seconds
     "geocoder": "mapquest_nominatim",
@@ -91,6 +91,7 @@ class ConfigurationStore(AttrDict):
 
     def _migrate(self, values):
         """Migrate configuration values from earlier versions."""
+        values = copy.deepcopy(values)
         # 'tilesource' renamed to 'basemap' in 0.18.
         if not "basemap" in values and "tilesource" in values:
             values["basemap"] = values.pop("tilesource")
@@ -100,11 +101,14 @@ class ConfigurationStore(AttrDict):
         """Read values of options from JSON file at `path`."""
         if path is None:
             path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
-        if os.path.isfile(path):
-            with poor.util.silent(Exception):
-                values = poor.util.read_json(path)
-                values = self._migrate(values)
-                self._update(values)
+        if not os.path.isfile(path): return
+        values = {}
+        with poor.util.silent(Exception):
+            values = poor.util.read_json(path)
+        if not values: return
+        values = self._uncomment(values)
+        values = self._migrate(values)
+        self._update(values)
 
     def _register(self, values, root=None, defaults=None):
         """Add entries for `values` if missing."""
@@ -171,13 +175,27 @@ class ConfigurationStore(AttrDict):
         name = option.split(".")[-1]
         return root, name
 
+    def _uncomment(self, values):
+        """Uncomment names of options in `values`."""
+        values = copy.deepcopy(values)
+        # Prior to 0.18 options at default value were commented out.
+        # Uncomment these to avoid disruptive changes, in particular,
+        # 'cache_max_age' change from 36500 to 30.
+        for name, value in list(values.items()):
+            if name.startswith("#"):
+                del values[name]
+                name = name[1:].strip()
+                if not name in values:
+                    values[name] = value
+            if isinstance(value, dict):
+                values[name] = self._uncomment(value)
+        return values
+
     def _update(self, values, root=None, defaults=None, path=()):
         """Load values of options after validation."""
         root = (self if root is None else root)
         defaults = (DEFAULTS if defaults is None else defaults)
         for name, value in values.items():
-            # Ignore options commented out (used prior to 0.18).
-            if name.startswith("#"): continue
             if isinstance(value, dict):
                 self._update(value,
                              root.setdefault(name, AttrDict()),
@@ -201,6 +219,11 @@ class ConfigurationStore(AttrDict):
         if path is None:
             path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
         out = copy.deepcopy(self)
+        # Make sure no obsolete top-level options remain.
+        names = list(DEFAULTS.keys()) + ["guides", "routers"]
+        for name in list(out.keys()):
+            if not name in names:
+                del out[name]
         out["version"] = poor.__version__
         with poor.util.silent(Exception):
             poor.util.write_json(out, path)
