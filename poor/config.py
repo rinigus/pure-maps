@@ -73,22 +73,6 @@ class ConfigurationStore(AttrDict):
             return [self._coerce(x, ref[0]) for x in value]
         return type(ref)(value)
 
-    def _comment_unmodified(self, root=None, defaults=None):
-        """Return values with those at default commented out."""
-        root = (self if root is None else root)
-        defaults = (DEFAULTS if defaults is None else defaults)
-        out = {}
-        for name, value in root.items():
-            if isinstance(value, dict):
-                value = self._comment_unmodified(
-                    value, defaults.setdefault(name, {}))
-            else:
-                if name in defaults:
-                    if value == defaults[name]:
-                        name = "# {}".format(name)
-            out[name] = copy.deepcopy(value)
-        return out
-
     def get(self, option):
         """Return the value of `option`."""
         root = self
@@ -192,7 +176,7 @@ class ConfigurationStore(AttrDict):
         root = (self if root is None else root)
         defaults = (DEFAULTS if defaults is None else defaults)
         for name, value in values.items():
-            # Ignore options commented out.
+            # Ignore options commented out (used prior to 0.18).
             if name.startswith("#"): continue
             if isinstance(value, dict):
                 self._update(value,
@@ -216,7 +200,7 @@ class ConfigurationStore(AttrDict):
         """Write values of options to JSON file at `path`."""
         if path is None:
             path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
-        out = self._comment_unmodified()
+        out = copy.deepcopy(self)
         out["version"] = poor.__version__
         with poor.util.silent(Exception):
             poor.util.write_json(out, path)
