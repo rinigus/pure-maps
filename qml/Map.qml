@@ -475,6 +475,7 @@ Map {
 
     function setZoomLevel(zoom) {
         // Set the current zoom level.
+        zoom = Math.floor(zoom);
         map.demoteTiles();
         map.zoomLevel = zoom;
         map.zoomLevelPrev = zoom;
