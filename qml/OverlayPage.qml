@@ -36,7 +36,7 @@ Page {
                 // Avoid implicit line breaks.
                 width: 3*parent.width
                 onCheckedChanged: {
-                    map.resetTiles();
+                    map.clearTiles();
                     var fun = overlaySwitch.checked ?
                         "poor.app.add_overlays" : "poor.app.remove_overlays";
                     py.call_sync(fun, [model.pid]);

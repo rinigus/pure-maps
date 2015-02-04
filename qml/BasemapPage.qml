@@ -47,7 +47,7 @@ Page {
             }
             onClicked: {
                 app.hideMenu();
-                map.resetTiles();
+                map.clearTiles();
                 py.call_sync("poor.app.set_basemap", [model.pid]);
                 map.changed = true;
                 for (var i = 0; i < listView.model.count; i++)

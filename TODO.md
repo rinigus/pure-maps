@@ -10,10 +10,11 @@ Poor Maps 0.18
  * [ ] Show tile count in addition to size on tile cache page
  * [X] Don't retry a tile download after three failed attempts
  * [X] Fix a tile display efficiency bug introduced in 0.13
- * [ ] Destroy dynamically created QML objects when no longer used
+ * [X] Destroy dynamically created QML objects when no longer used
 
  * Remove tile loading and display related debug printing
  * Check UI changes
+ * Mapbox? Outdoors, Outdoors @2x?
 
 Poor Maps 1.0
 =============

@@ -196,23 +196,27 @@ Map {
     }
 
     function clear() {
-        // Remove all point and line markers from map.
+        // Remove all point and route markers from the map.
         map.clearPois();
         map.clearRoute();
     }
 
     function clearPois() {
-        // Remove all point markers from map.
-        for (var i = 0; i < map.pois.length; i++)
+        // Remove all point of interest from the map.
+        for (var i = 0; i < map.pois.length; i++) {
             map.removeMapItem(map.pois[i]);
+            map.pois[i].destroy();
+        }
         map.pois = [];
         map.savePois();
     }
 
     function clearRoute() {
-        // Remove all line marker from map.
-        for (var i = 0; i < map.maneuvers.length; i++)
+        // Remove all route markers from the map.
+        for (var i = 0; i < map.maneuvers.length; i++) {
             map.removeMapItem(map.maneuvers[i]);
+            map.maneuvers[i].destroy();
+        }
         map.maneuvers = [];
         map.route.clear();
         py.call_sync("poor.app.narrative.unset", []);
@@ -220,6 +224,15 @@ Map {
         map.saveRoute();
         map.saveManeuvers();
         map.hasRoute = false;
+    }
+
+    function clearTiles() {
+        // Remove all tiles from the map.
+        for (var i = 0; i < map.tiles.length; i++) {
+            map.removeMapItem(map.tiles[i]);
+            map.tiles[i].destroy();
+        }
+        map.tiles = [];
     }
 
     function demoteTiles() {
@@ -383,16 +396,6 @@ Map {
         map.tiles.push(tile);
         map.addMapItem(tile);
         map.renderTile(props);
-    }
-
-    function resetTiles() {
-        // Remove all map tiles from view.
-        while (map.tiles.length > 0) {
-            var tile = map.tiles[0];
-            map.removeMapItem(tile);
-            map.tiles.splice(0, 1);
-            tile.destroy();
-        }
     }
 
     function saveManeuvers() {
