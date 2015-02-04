@@ -7,7 +7,7 @@ Poor Maps 0.18
  * [X] Add Sputnik basemap
  * [X] Add Thunderforest Transport basemap
  * [ ] Change default auto-removal of cached tiles from "never" to XXX
- * [ ] Show tile count in addition to size on tile cache page
+ * [X] Show tile count in addition to size on tile cache page
  * [X] Don't retry a tile download after three failed attempts
  * [X] Fix a tile display efficiency bug introduced in 0.13
  * [X] Destroy dynamically created QML objects when no longer used
