@@ -76,7 +76,6 @@ class TileSource:
         if len(self._blacklist) > 500:
             while len(self._blacklist) > 400:
                 self._blacklist.pop()
-        print("TileSource._add_to_blacklist: {:d}".format(len(self._blacklist)))
 
     def download(self, tile, retry=1):
         """Download map tile and return local file path or ``None``."""
@@ -97,14 +96,12 @@ class TileSource:
                 return "icons/tile.png"
             return None
         try:
-            print("WAIT: {}".format(url))
             connection = self._pool.get(url)
             # ConnectionPool.get can block for a while, check that
             # another thread didn't download the tile during.
             cached = self._tile_in_cache(path)
             if cached is not None:
                 return cached
-            print("GET: {}".format(url))
             connection.request("GET", url, headers=poor.http.HEADERS)
             response = connection.getresponse()
             # Always read response to avoid

@@ -67,7 +67,7 @@ class ConnectionPool:
         """Initialize and return a new HTTP connection to `url`."""
         components = urllib.parse.urlparse(url)
         timeout = poor.conf.download_timeout
-        print("ConnectionPool._new: {}".format(components.netloc))
+        print("Establishing connection to {}".format(components.netloc))
         cls = {
             "http":  http.client.HTTPConnection,
             "https": http.client.HTTPSConnection,

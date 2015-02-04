@@ -12,7 +12,6 @@ Poor Maps 0.18
  * [X] Fix a tile display efficiency bug introduced in 0.13
  * [X] Destroy dynamically created QML objects when no longer used
 
- * Remove tile loading and display related debug printing
  * Check UI changes
  * Mapbox? Outdoors, Outdoors @2x?
 

@@ -389,7 +389,6 @@ Map {
             return;
         }
         // Add missing tile to collection.
-        console.log("Map.renderTile: adding: " + (map.tiles.length+1));
         var component = Qt.createComponent("Tile.qml");
         var tile = component.createObject(map);
         tile.uid = props.uid;
