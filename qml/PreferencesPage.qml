@@ -37,8 +37,14 @@ Page {
                 text: "Allow downloading map tiles"
                 onCheckedChanged: {
                     var value = downloadTilesItem.checked
+                    if (value == app.conf.get("allow_tile_download")) return;
                     app.conf.set("allow_tile_download", value);
-                    if (value) map.changed = true;
+                    if (value) {
+                        // Clear tiles to ensure no logo tiles remain.
+                        map.clearTiles();
+                        py.call_sync("poor.app.tilecollection.clear", []);
+                        map.changed = true;
+                    }
                 }
             }
             TextSwitch {

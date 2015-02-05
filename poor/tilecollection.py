@@ -62,6 +62,11 @@ class TileCollection:
         self._tiles = []
 
     @poor.util.locked_method
+    def clear(self):
+        """Clear the entire tile collection."""
+        self._tiles = []
+
+    @poor.util.locked_method
     def get(self, key):
         """Return requested tile or ``None``."""
         for tile in reversed(self._tiles):
@@ -94,11 +99,6 @@ class TileCollection:
         while self.size < size:
             self._tiles.append(Tile(self.size+1))
         self._tiles.sort(key=lambda x: x.time)
-
-    @poor.util.locked_method
-    def reset(self):
-        """Reset the entire tile collection."""
-        self._tiles = []
 
     @property
     def size(self):

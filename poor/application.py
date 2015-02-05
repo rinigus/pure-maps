@@ -43,7 +43,7 @@ class Application:
         self.narrative = poor.Narrative()
         self.overlays = []
         self.router = None
-        self._tilecollection = poor.TileCollection()
+        self.tilecollection = poor.TileCollection()
         self._timestamp = int(time.time()*1000)
         self.set_basemap(poor.conf.basemap)
         self.add_overlays(*poor.conf.overlays)
@@ -59,7 +59,7 @@ class Application:
                 self.overlays.append(poor.TileSource(overlay))
                 self.overlays.sort(key=lambda x: x.z)
                 poor.conf.set_add("overlays", overlay)
-                self._tilecollection.reset()
+                self.tilecollection.clear()
             except Exception as error:
                 print("Failed to load overlay '{}': {}"
                       .format(overlay, str(error)),
@@ -110,7 +110,7 @@ class Application:
         for overlay in overlays:
             poor.conf.set_remove("overlays", overlay)
         self._drop_download_queues()
-        self._tilecollection.reset()
+        self.tilecollection.clear()
 
     def set_basemap(self, basemap):
         """Set basemap from string `basemap`."""
@@ -118,7 +118,7 @@ class Application:
             self.basemap = poor.TileSource(basemap)
             poor.conf.basemap = basemap
             self._drop_download_queues()
-            self._tilecollection.reset()
+            self.tilecollection.clear()
         except Exception as error:
             print("Failed to load basemap '{}': {}"
                   .format(basemap, str(error)),
@@ -175,7 +175,7 @@ class Application:
 
         """Download missing tile and ask QML to render it."""
         key = tilesource.tile_key(tile)
-        item = self._tilecollection.get(key)
+        item = self.tilecollection.get(key)
         if item is not None:
             return pyotherside.send("show-tile", item.uid)
         path = tilesource.download(tile)
@@ -184,7 +184,7 @@ class Application:
         if timestamp != self._timestamp: return
         uri = (poor.util.path2uri(path) if os.path.isabs(path) else path)
         corners = tilesource.tile_corners(tile)
-        item = self._tilecollection.get_free(
+        item = self.tilecollection.get_free(
             key, xmin, xmax, ymin, ymax, display_zoom, corners)
         pyotherside.send("render-tile", dict(display_zoom=display_zoom,
                                              nex=corners[0][0],
@@ -201,7 +201,7 @@ class Application:
 
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
-        self._tilecollection.sort()
+        self.tilecollection.sort()
         self._timestamp = int(time.time()*1000)
         total_tiles = 0
         for tilesource in [self.basemap] + self.overlays:
@@ -215,5 +215,5 @@ class Application:
         # Keep a few screenfulls of tiles in memory.
         total_tiles = math.ceil(total_tiles / (1 + len(self.overlays)))
         size = (3 + len(self.overlays)) * total_tiles
-        if self._tilecollection.size < size:
-            self._tilecollection.grow(size)
+        if self.tilecollection.size < size:
+            self.tilecollection.grow(size)
