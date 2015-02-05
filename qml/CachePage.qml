@@ -45,7 +45,8 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + Theme.paddingMedium
-                text: model.count + " tiles · " + model.size
+                // model.count negative during operations, see page.purge.
+                text: model.count < 0 ? "· · ·" : model.count + " tiles · " + model.size
                 verticalAlignment: Text.AlignTop
             }
             RemorseItem { id: remorse }
@@ -137,10 +138,10 @@ Page {
     }
     function purge(index, directory, max_age) {
         // Remove tiles in cache and recalculate statistics.
-        listView.model.setProperty(index, "count", "· · ·");
-        listView.model.setProperty(index, "size", "· · ·");
+        listView.model.setProperty(index, "count", -1);
         py.call("poor.cache.purge_directory", [directory, max_age], function(result) {
             py.call("poor.cache.stat_directory", [directory], function(result) {
+                listView.model.setProperty(index, "count", result.count);
                 listView.model.setProperty(index, "size", result.size);
             });
         });
