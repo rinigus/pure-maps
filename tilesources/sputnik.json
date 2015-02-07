@@ -3,6 +3,6 @@
     "extension": ".png",
     "format": "slippy",
     "name": "Sputnik",
-    "source": "sputnik.ru",
+    "source": "maps.sputnik.ru",
     "url": "http://tiles.maps.sputnik.ru/{z}/{x}/{y}.png"
 }

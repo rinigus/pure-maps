@@ -1,5 +1,5 @@
 {
-    "attribution": "Data © OpenStreetMap contributors",
+    "attribution": "Data © OpenStreetMap contributors\nHillshading: SRTM3 v2 (NASA)",
     "extension": ".png",
     "format": "slippy",
     "name": "Hike & Bike Map",

@@ -4,10 +4,7 @@ Poor Maps 0.18
  * [X] Add support for transparent overlay tiles
  * [X] Add ASTER GDEM & SRTM Hillshade overlay
  * [X] Add OpenSeaMap nautical overlay
- * [ ] Add Mapbox Outdoors basemaps (both normal size and @2x)
-       - https://www.mapbox.com/tos/
-       - https://www.mapbox.com/developers/api/maps/
-       - https://www.mapbox.com/help/attribution/
+ * [X] Add Mapbox Outdoors basemaps (both normal size and @2x)
  * [X] Add Sputnik basemap
  * [X] Add Thunderforest Transport basemap
  * [X] Change default auto-removal of cached tiles from "never"
