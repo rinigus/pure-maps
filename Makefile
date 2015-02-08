@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
 name       = harbour-poor-maps
-version    = 0.17
+version    = 0.18
 DESTDIR    =
 PREFIX     = /usr/local
 datadir    = $(DESTDIR)$(PREFIX)/share/$(name)

@@ -1,3 +1,20 @@
+Poor Maps 0.18
+==============
+
+ * Add support for transparent overlay tiles
+ * Add ASTER GDEM & SRTM Hillshade overlay
+ * Add OpenSeaMap nautical overlay
+ * Add Mapbox Outdoors basemaps (both normal size and retina)
+ * Add Sputnik basemap
+ * Add Thunderforest Transport basemap
+ * Change default auto-removal of cached tiles from "never"
+   to 30 days (only affects new users, if you have used Poor Maps
+   prior to 0.18, your existing setting will stay as-is)
+ * Show tile count in addition to total size on tile cache page
+ * Don't retry a tile download after three failed attempts
+ * Fix a tile display efficiency bug introduced in 0.13
+ * Destroy dynamically created QML objects when no longer used
+
 Poor Maps 0.17
 ==============
 
