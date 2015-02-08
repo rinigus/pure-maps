@@ -79,7 +79,7 @@ class Application:
         if create:
             self._download_queue[id] = queue.Queue()
             # Initialize threads to clear the queue.
-            # tilesource.ConnectionPool limits the actual amount
+            # tilesource's connection pool limits the actual amount
             # of connections per host. This thread count should
             # just be greater than or equal to that.
             for i in range(4):

@@ -17,7 +17,7 @@ Poor for examples; non-trivial and optional fields are explained below.
    Poor, for adding you own, see the next section.
 
    - **"slippy"**: By far the most common format, based on spherical
-     Mercator and division into an amount of tiles that doubles with
+     Mercator and division into an amount of tiles that quadruples with
      each zoom level. See [documentation][1]. Provides URL parameters
      "x", "y" and "z".
 

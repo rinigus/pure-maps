@@ -68,7 +68,7 @@ class ConfigurationStore(AttrDict):
 
     def _coerce(self, value, ref):
         """Coerce type of `value` to match `ref`."""
-        # XXX: No coercion done if ref is an empty list!
+        # XXX: No coercion is done if ref is an empty list!
         if isinstance(value, list) and ref:
             return [self._coerce(x, ref[0]) for x in value]
         return type(ref)(value)
@@ -83,17 +83,21 @@ class ConfigurationStore(AttrDict):
 
     def get_default(self, option):
         """Return the default value of `option`."""
-        defaults = DEFAULTS
+        root = DEFAULTS
         for section in option.split(".")[:-1]:
-            defaults = defaults[section]
+            root = root[section]
         name = option.split(".")[-1]
-        return copy.deepcopy(defaults[name])
+        return copy.deepcopy(root[name])
 
     def _migrate(self, values):
         """Migrate configuration values from earlier versions."""
         values = copy.deepcopy(values)
-        # 'tilesource' renamed to 'basemap' in 0.18.
         if not "basemap" in values and "tilesource" in values:
+            # 'cache_max_age' added in 0.14, value changed in 0.18.
+            # Upgrading from < 0.14 to 0.18 should set the old implicit
+            # default of never removing tiles, valued as 36500.
+            values.setdefault("cache_max_age", 36500)
+            # 'tilesource' renamed to 'basemap' in 0.18.
             values["basemap"] = values.pop("tilesource")
         return values
 
@@ -112,23 +116,23 @@ class ConfigurationStore(AttrDict):
 
     def _register(self, values, root=None, defaults=None):
         """Add entries for `values` if missing."""
-        root = (self if root is None else root)
-        defaults = (DEFAULTS if defaults is None else defaults)
+        if root is None: root = self
+        if defaults is None: defaults = DEFAULTS
         for name, value in values.items():
             if isinstance(value, dict):
                 self._register(values[name],
                                root.setdefault(name, AttrDict()),
                                defaults.setdefault(name, {}))
-
-            else:
-                root.setdefault(name, copy.deepcopy(value))
-                defaults.setdefault(name, copy.deepcopy(value))
+                continue
+            # Do not change values if they already exist.
+            root.setdefault(name, copy.deepcopy(value))
+            defaults.setdefault(name, copy.deepcopy(value))
 
     def register_guide(self, name, values):
         """
         Add configuration `values` for guide `name` if missing.
 
-        e.g. calling ``register_guide("foo", {"type": 1})`` will make type
+        Calling ``register_guide("foo", {"type": 1})`` will make type
         available as ``poor.conf.guides.foo.type``.
         """
         self._register({"guides": {name: values}})
@@ -137,7 +141,7 @@ class ConfigurationStore(AttrDict):
         """
         Add configuration `values` for router `name` if missing.
 
-        e.g. calling ``register_router("foo", {"type": 1})`` will make type
+        Calling ``register_router("foo", {"type": 1})`` will make type
         available as ``poor.conf.routers.foo.type``.
         """
         self._register({"routers": {name: values}})
@@ -177,10 +181,9 @@ class ConfigurationStore(AttrDict):
 
     def _uncomment(self, values):
         """Uncomment names of options in `values`."""
-        values = copy.deepcopy(values)
         # Prior to 0.18 options at default value were commented out.
-        # Uncomment these to avoid disruptive changes, in particular,
-        # 'cache_max_age' change from 36500 to 30.
+        # Uncomment these to avoid disruptive changes.
+        values = copy.deepcopy(values)
         for name, value in list(values.items()):
             if name.startswith("#"):
                 del values[name]
@@ -193,26 +196,25 @@ class ConfigurationStore(AttrDict):
 
     def _update(self, values, root=None, defaults=None, path=()):
         """Load values of options after validation."""
-        root = (self if root is None else root)
-        defaults = (DEFAULTS if defaults is None else defaults)
+        if root is None: root = self
+        if defaults is None: defaults = DEFAULTS
         for name, value in values.items():
             if isinstance(value, dict):
                 self._update(value,
                              root.setdefault(name, AttrDict()),
                              defaults.setdefault(name, {}),
                              (path + (name,)))
-
-            else:
-                try:
-                    if name in defaults:
-                        # Be liberal, but careful in what to accept.
-                        value = self._coerce(value, defaults[name])
-                    root[name] = copy.deepcopy(value)
-                except Exception as error:
-                    full_name = ".".join(path + (name,))
-                    print("Discarding bad option-value pair ({}, {}): {}"
-                          .format(repr(full_name), repr(value), str(error)),
-                          file=sys.stderr)
+                continue
+            try:
+                if name in defaults:
+                    # Be liberal, but careful in what to accept.
+                    value = self._coerce(value, defaults[name])
+                root[name] = copy.deepcopy(value)
+            except Exception as error:
+                full_name = ".".join(path + (name,))
+                print("Discarding bad option-value pair ({}, {}): {}"
+                      .format(repr(full_name), repr(value), str(error)),
+                      file=sys.stderr)
 
     def write(self, path=None):
         """Write values of options to JSON file at `path`."""

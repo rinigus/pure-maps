@@ -32,24 +32,30 @@ class TestConfigurationStore(poor.test.TestCase):
         os.remove(self.path)
 
     def test_get(self):
-        zoom = poor.conf.get("zoom")
-        assert zoom == 15
+        assert poor.conf.get("zoom") == 15
 
     def test_get_default(self):
-        zoom = poor.conf.get_default("zoom")
-        assert zoom == 15
+        assert poor.conf.get_default("zoom") == 15
 
     def test_get_default__nested(self):
         poor.config.DEFAULTS["foo"] = poor.config.AttrDict()
         poor.config.DEFAULTS["foo"]["bar"] = 1
-        bar = poor.conf.get_default("foo.bar")
-        assert bar == 1
+        assert poor.conf.get_default("foo.bar") == 1
 
-    def test_migrate(self):
+    def test_migrate__basemap(self):
+        # 'tilesource' renamed to 'basemap' in 0.18.
         values = {"tilesource": "openstreetmap"}
         values = poor.conf._migrate(values)
         assert values["basemap"] == "openstreetmap"
         assert not "tilesource" in values
+
+    def test_migrate__cache_max_age(self):
+        # 'cache_max_age' added in 0.14, value changed in 0.18.
+        # Upgrading from < 0.14 to 0.18 should set the old implicit
+        # default of never removing tiles, valued as 36500.
+        values = {"tilesource": "openstreetmap"}
+        values = poor.conf._migrate(values)
+        assert values["cache_max_age"] == 36500
 
     def test_read(self):
         poor.conf.zoom = 99
@@ -70,8 +76,7 @@ class TestConfigurationStore(poor.test.TestCase):
     def test_register_router(self):
         poor.conf.register_router("foo", {"type": "car"})
         assert poor.conf.routers.foo.type == "car"
-        default = poor.conf.get_default("routers.foo.type")
-        assert default == "car"
+        assert poor.conf.get_default("routers.foo.type") == "car"
 
     def test_register_router__again(self):
         # Subsequent calls should not change values.
@@ -79,8 +84,7 @@ class TestConfigurationStore(poor.test.TestCase):
         poor.conf.routers.foo.type = "bicycle"
         poor.conf.register_router("foo", {"type": "car"})
         assert poor.conf.routers.foo.type == "bicycle"
-        default = poor.conf.get_default("routers.foo.type")
-        assert default == "car"
+        assert poor.conf.get_default("routers.foo.type") == "car"
 
     def test_set(self):
         poor.conf.set("zoom", 99)
@@ -109,6 +113,8 @@ class TestConfigurationStore(poor.test.TestCase):
         assert poor.conf.items == [1,2]
 
     def test_uncomment(self):
+        # Prior to 0.18 options at default value were commented out.
+        # Uncomment these to avoid disruptive changes.
         values = {"# cache_max_age": 36500}
         values = poor.conf._uncomment(values)
         assert values["cache_max_age"] == 36500
