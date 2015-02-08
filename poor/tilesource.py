@@ -24,6 +24,7 @@ import poor
 import re
 import sys
 import time
+import threading
 
 __all__ = ("TileSource",)
 
@@ -53,12 +54,14 @@ class TileSource:
         # Initialize properties only once.
         if hasattr(self, "id"): return
         values = self._load_attributes(id)
+        self._active_urls = set()
         self.attribution = values["attribution"]
         self._blacklist = set()
         self.extension = values.get("extension", "")
         self._failures = {}
         self.format = values["format"]
         self.id = id
+        self._lock = threading.Lock()
         self.max_age = values.get("max_age", None)
         self.name = values["name"]
         self._provider = None
@@ -70,6 +73,7 @@ class TileSource:
         self.z = max(0, min(40, values.get("z", 0)))
         self._init_provider(values["format"])
 
+    @poor.util.locked_method
     def _add_to_blacklist(self, url):
         """Add `url` to list of tiles to not try to download."""
         self._blacklist.add(url)
@@ -97,8 +101,12 @@ class TileSource:
             return None
         try:
             connection = self._pool.get(url)
-            # ConnectionPool.get can block for a while, check that
-            # another thread didn't download the tile during.
+            with self._lock:
+                # Ensure that only one thread downloads URL.
+                if url in self._active_urls: return None
+                self._active_urls.add(url)
+            # Check again that another thread didn't download
+            # the tile during the above preparations.
             cached = self._tile_in_cache(path)
             if cached is not None:
                 return cached
@@ -146,16 +154,22 @@ class TileSource:
 
                 # Keep track of the amount of failed downloads per URL
                 # and avoid trying to endlessly redownload the same tile.
-                self._failures.setdefault(url, 0)
-                self._failures[url] += 1
-                if self._failures[url] > 2:
-                    print("Blacklisted after 3 failed attempts.",
-                          file=sys.stderr)
+                should_blacklist = False
+                with self._lock:
+                    self._failures.setdefault(url, 0)
+                    self._failures[url] += 1
+                    if self._failures[url] > 2:
+                        should_blacklist = True
+                        print("Blacklisted after 3 failed attempts.",
+                              file=sys.stderr)
+                        del self._failures[url]
+                if should_blacklist:
                     self._add_to_blacklist(url)
-                    del self._failures[url]
                 return None
         finally:
             self._pool.put(url, connection)
+            with self._lock:
+                self._active_urls.discard(url)
         assert retry > 0
         return self.download(tile, retry-1)
 

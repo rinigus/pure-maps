@@ -180,8 +180,6 @@ class Application:
             return pyotherside.send("show-tile", item.uid)
         path = tilesource.download(tile)
         if path is None: return
-        # Abort if map moved out of view during download.
-        if timestamp != self._timestamp: return
         uri = (poor.util.path2uri(path) if os.path.isabs(path) else path)
         corners = tilesource.tile_corners(tile)
         item = self.tilecollection.get_free(
