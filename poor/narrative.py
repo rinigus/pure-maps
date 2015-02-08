@@ -319,11 +319,11 @@ class Narrative:
                 # Consecutive duplicate points will cause problems for
                 # calculations that determine when to show narrative related
                 # to a maneuver point. We need to drop these.
-                self.x.pop(i)
-                self.y.pop(i)
-                self.dist.pop(i)
-                self.time.pop(i)
-                self.maneuver.pop(i)
+                del self.x[i]
+                del self.y[i]
+                del self.dist[i]
+                del self.time[i]
+                del self.maneuver[i]
                 continue
             self.dist[i] = self.dist[i+1] + dist
             # Calculate remaining time using 120 km/h, which will maximize

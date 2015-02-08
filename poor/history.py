@@ -101,14 +101,14 @@ class HistoryManager:
         place = place.strip().lower()
         for i in list(reversed(range(len(self._places)))):
             if self._places[i].lower() == place:
-                self._places.pop(i)
+                del self._places[i]
 
     def remove_place_type(self, place_type):
         """Remove `place_type` from the list of place types."""
         place_type = place_type.strip().lower()
         for i in list(reversed(range(len(self._place_types)))):
             if self._place_types[i].lower() == place_type:
-                self._place_types.pop(i)
+                del self._place_types[i]
 
     def _write(self, items, basename):
         """Write `items` to file `basename`."""

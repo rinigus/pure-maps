@@ -100,7 +100,7 @@ def parse_description(result):
         items.extend(parse_region(result))
     title = parse_title(result)
     while items and title.startswith(items[0]):
-        items.pop(0)
+        del items[0]
     if not items:
         return "—"
     return ", ".join(items)

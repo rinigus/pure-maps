@@ -70,7 +70,7 @@ class Application:
         current = [self.basemap.id] + [x.id for x in self.overlays]
         for id in list(self._download_queue.keys()):
             if not id in current:
-                self._download_queue.pop(id)
+                del self._download_queue[id]
 
     def _get_download_queue(self, id, create=False):
         """Return download queue for tile source `id`."""
@@ -106,7 +106,7 @@ class Application:
             overlays = [x.id for x in self.overlays]
         for i in reversed(range(len(self.overlays))):
             if self.overlays[i].id in overlays:
-                self.overlays.pop(i)
+                del self.overlays[i]
         for overlay in overlays:
             poor.conf.set_remove("overlays", overlay)
         self._drop_download_queues()

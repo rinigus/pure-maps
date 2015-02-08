@@ -152,7 +152,7 @@ class TileSource:
                     print("Blacklisted after 3 failed attempts.",
                           file=sys.stderr)
                     self._add_to_blacklist(url)
-                    self._failures.pop(url)
+                    del self._failures[url]
                 return None
         finally:
             self._pool.put(url, connection)
