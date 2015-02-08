@@ -1,3 +1,8 @@
+Poor Maps 0.18.1
+================
+
+ * [X] Fix updating tiles after major recentering of map
+
 Poor Maps 1.0
 =============
 
