@@ -36,6 +36,7 @@ class Application:
     def __init__(self):
         """Initialize a :class:`Application` instance."""
         self.basemap = None
+        self._bbox = (-1,-1,-1,-1)
         self._download_queue = {}
         self.geocoder = None
         self.guide = None
@@ -170,9 +171,7 @@ class Application:
                 if default != router:
                     self.set_router(default)
 
-    def _update_tile(self, tilesource, xmin, xmax, ymin, ymax, zoom,
-                     display_zoom, tile, timestamp):
-
+    def _update_tile(self, tilesource, zoom, display_zoom, tile, timestamp):
         """Download missing tile and ask QML to render it."""
         key = tilesource.tile_key(tile)
         item = self.tilecollection.get(key)
@@ -182,6 +181,10 @@ class Application:
         if path is None: return
         uri = (poor.util.path2uri(path) if os.path.isabs(path) else path)
         corners = tilesource.tile_corners(tile)
+        xmin, xmax, ymin, ymax = self._bbox
+        # Abort if map moved so that tile is no longer in view.
+        if xmax <= corners[2][0] or xmin >= corners[0][0]: return
+        if ymax <= corners[2][1] or ymin >= corners[0][1]: return
         item = self.tilecollection.get_free(
             key, xmin, xmax, ymin, ymax, display_zoom, corners)
         pyotherside.send("render-tile", dict(display_zoom=display_zoom,
@@ -200,14 +203,15 @@ class Application:
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom):
         """Download missing tiles and ask QML to render them."""
         self.tilecollection.sort()
+        self._bbox = (xmin, xmax, ymin, ymax)
         self._timestamp = int(time.time()*1000)
         total_tiles = 0
         for tilesource in [self.basemap] + self.overlays:
             # For scales above one, get tile from a lower zoom level.
-            z = int(zoom - math.log2(tilesource.scale))
+            tile_zoom = int(zoom - math.log2(tilesource.scale))
             download_queue = self._get_download_queue(tilesource.id, create=True)
-            for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, z):
-                args = (tilesource, xmin, xmax, ymin, ymax, z, zoom, tile)
+            for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, tile_zoom):
+                args = (tilesource, tile_zoom, zoom, tile)
                 download_queue.put((args, self._timestamp))
                 total_tiles += 1
         # Keep a few screenfulls of tiles in memory.
