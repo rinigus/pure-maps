@@ -62,27 +62,12 @@ Map {
     }
 
     MapMouseArea {}
+    MapTimer {}
     MenuButton { id: menuButton }
     NarrationTimer {}
     Route { id: route }
     ScaleBar { id: scaleBar }
     StatusArea { id: statusArea }
-
-    Timer {
-        id: updateTimer
-        interval: 500
-        repeat: true
-        running: app.running
-        onTriggered: map.changed && map.updateTiles();
-    }
-
-    Timer {
-        id: lazyUpdateTimer
-        interval: 1000
-        repeat: false
-        running: false
-        onTriggered: map.updateTiles();
-    }
 
     Component.onCompleted: {
         // Load default values and start periodic updates.
@@ -464,10 +449,8 @@ Map {
     function setCenter(x, y) {
         // Set the current center position.
         if (!x || !y) return;
-        // Create a new object to trigger animation and
-        // make sure tiles are updated after animation is complete.
+        // Create a new object to trigger animation.
         map.center = QtPositioning.coordinate(y, x);
-        lazyUpdateTimer.restart();
         map.changed = true;
     }
 
