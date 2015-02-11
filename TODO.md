@@ -1,11 +1,7 @@
-Poor Maps 0.18.1
-================
-
- * [X] Fix updating tiles after major recentering of map
-
 Poor Maps 1.0
 =============
 
+ * Add more Mapbox basemaps (Street, Emerald?)
  * Add a QtSensors Compass arrow that shows which way one is facing
  * Add ability to import a route from file
  * Add voice guidance (espeak?)
