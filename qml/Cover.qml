@@ -33,6 +33,10 @@ CoverBackground {
     property bool ready: false
     property bool showNarrative: map.hasRoute && map.showNarrative
     property var tiles: []
+    onShowNarrativeChanged: {
+        for (var i = 0; i < cover.tiles.length; i++)
+            cover.tiles[i].visible = !cover.showNarrative;
+    }
     Timer {
         interval: 1000
         repeat: true

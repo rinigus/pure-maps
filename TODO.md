@@ -1,3 +1,8 @@
+Poor Maps 0.18.2
+================
+
+ * [X] Fix tiles partially overlapping navigation cover
+
 Poor Maps 1.0
 =============
 
