@@ -21,17 +21,33 @@ import QtPositioning 5.3
 
 PositionSource {
     id: gps
-    active: app.running
+    active: true
     updateInterval: 1000
     property var coordPrev: undefined
     property var direction: undefined
+    property var timeActivate: Date.now()
     property var timePrev: -1
-    Component.onCompleted: gps.initProperties();
+    Component.onCompleted: {
+        gps.initProperties();
+        app.onRunningChanged.connect(function() {
+            // Turn positioning on when application is reactivated.
+            if (app.running) gps.active = true;
+        });
+    }
+    onActiveChanged: {
+        // Keep track when positioning was (re)activated.
+        if (gps.active) gps.timeActivate = Date.now();
+    }
     onPositionChanged: {
         // XXX: Calculate direction, since it's missing from gps.position.
         // http://bugreports.qt.io/browse/QTBUG-36298
+        if (!app.running && (gps.coordPrev || Date.now() - gps.timeActivate > 180000))
+            // If application is no longer active, turn positioning off immediately
+            // if we already have a lock, otherwise keep trying for a couple minutes
+            // and give up if we still don't gain that lock.
+            gps.active = false;
         var threshold = gps.position.horizontalAccuracy || 15;
-        if (threshold < 0 || threshold > 30) return;
+        if (threshold < 0 || threshold > 40) return;
         var coord = gps.position.coordinate;
         if (!gps.coordPrev) {
             gps.coordPrev = QtPositioning.coordinate(coord.latitude, coord.longitude);

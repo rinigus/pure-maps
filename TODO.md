@@ -1,6 +1,9 @@
-Poor Maps 0.18.2
-================
+Poor Maps 0.19
+==============
 
+ * [ ] Use an animation on position and bearing changes
+ * [X] Keep positioning on for three minutes if Poor Maps has been
+       minimized and is not active, but there's no GPS lock yet
  * [X] Fix tiles partially overlapping navigation cover
 
 Poor Maps 1.0
