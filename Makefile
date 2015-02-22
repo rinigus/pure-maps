@@ -3,7 +3,7 @@
 name       = harbour-poor-maps
 version    = 0.18.1
 DESTDIR    =
-PREFIX     = /usr/local
+PREFIX     = /usr
 datadir    = $(DESTDIR)$(PREFIX)/share/$(name)
 desktopdir = $(DESTDIR)$(PREFIX)/share/applications
 icondir    = $(DESTDIR)$(PREFIX)/share/icons/hicolor/86x86/apps
