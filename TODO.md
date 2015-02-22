@@ -1,6 +1,7 @@
 Poor Maps 0.19
 ==============
 
+ * [X] Add Mapbox Streets basemaps (both normal size and retina)
  * [X] Animate position and bearing changes
  * [X] Keep positioning on for three minutes if Poor Maps has been
        minimized and is not active, but there's no GPS lock yet
