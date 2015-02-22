@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtLocation 5.0
+import QtPositioning 5.3
 import Sailfish.Silica 1.0
 
 MapQuickItem {
@@ -31,6 +32,13 @@ MapQuickItem {
             rotation: map.direction || 0
             source: "icons/position-direction.png"
             visible: map.direction || false
+            Behavior on rotation {
+                RotationAnimation {
+                    direction: RotationAnimation.Shortest
+                    duration: 500
+                    easing.type: Easing.Linear
+                }
+            }
         }
         Image {
             id: stillImage
@@ -91,4 +99,10 @@ MapQuickItem {
         }
     }
     z: 300
+    Behavior on coordinate {
+        CoordinateAnimation {
+            duration: 500
+            easing.type: Easing.Linear
+        }
+    }
 }
