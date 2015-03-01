@@ -86,22 +86,12 @@ MapQuickItem {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            routeTimer.start();
                             var x = item.coordinate.longitude;
                             var y = item.coordinate.latitude;
                             app.showMenu("RoutePage.qml", {
                                 "to": [x, y],
                                 "toText": item.title
                             });
-                        }
-                    }
-                    Timer {
-                        id: routeTimer
-                        interval: 3000
-                        repeat: false
-                        onRunningChanged: {
-                            routeButton.color = routeTimer.running ?
-                                Theme.highlightColor : "#bbffffff";
                         }
                     }
                 }
@@ -125,7 +115,8 @@ MapQuickItem {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            linkTimer.start();
+                            linkButton.color = Theme.highlightColor;
+                            linkTimer.restart();
                             Qt.openUrlExternally(item.link);
                         }
                     }
@@ -133,10 +124,7 @@ MapQuickItem {
                         id: linkTimer
                         interval: 3000
                         repeat: false
-                        onRunningChanged: {
-                            linkButton.color = linkTimer.running ?
-                                Theme.highlightColor : "#bbffffff";
-                        }
+                        onTriggered: linkButton.color = "#bbffffff";
                     }
                 }
                 Rectangle {
@@ -157,22 +145,12 @@ MapQuickItem {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            shareTimer.start();
                             app.showMenu("SharePage.qml", {
                                 "coordinate": QtPositioning.coordinate(
                                     item.coordinate.latitude,
                                     item.coordinate.longitude),
                                 "title": "Share Location"
                             });
-                        }
-                    }
-                    Timer {
-                        id: shareTimer
-                        interval: 3000
-                        repeat: false
-                        onRunningChanged: {
-                            shareButton.color = shareTimer.running ?
-                                Theme.highlightColor : "#bbffffff";
                         }
                     }
                 }
