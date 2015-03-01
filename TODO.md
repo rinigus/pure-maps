@@ -1,16 +1,18 @@
 Poor Maps 0.19
 ==============
 
+ * [ ] Add ability to share one's position or a location by sending
+       sms, email, etc. with properly formatted links with coordinates
+ * [X] Add Mapbox Bright basemap
  * [X] Add Mapbox Streets basemaps (both normal size and retina)
  * [X] Animate position and bearing changes
  * [X] Keep positioning on for three minutes if Poor Maps has been
-       minimized and is not active, but there's no GPS lock yet
+       minimized and cover is not active, but there's no GPS lock yet
  * [X] Fix tiles partially overlapping navigation cover
 
 Poor Maps 1.0
 =============
 
- * Add more Mapbox basemaps (Street, Emerald?)
  * Add a QtSensors Compass arrow that shows which way one is facing
  * Add ability to import a route from file
  * Add voice guidance (espeak?)
