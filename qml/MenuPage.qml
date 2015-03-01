@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtPositioning 5.3
 import Sailfish.Silica 1.0
 import "."
 
@@ -125,6 +126,33 @@ Page {
                 }
             }
             ListItem {
+                id: shareCurrentPositionItem
+                contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: shareCurrentPositionImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    smooth: true
+                    source: "image://theme/icon-m-share"
+                    width: implicitWidth + Theme.paddingLarge
+                }
+                ListItemLabel {
+                    anchors.left: shareCurrentPositionImage.right
+                    anchors.leftMargin: Theme.paddingMedium
+                    color: shareCurrentPositionItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "Share current position"
+                }
+                onClicked: app.pageStack.push("SharePage.qml", {
+                    "coordinate": QtPositioning.coordinate(
+                        gps.position.coordinate.latitude,
+                        gps.position.coordinate.longitude),
+                    "title": "Share Current Position"
+                });
+            }
+            ListItem {
                 id: clearMapItem
                 contentHeight: Theme.itemSizeSmall
                 Image {
@@ -221,19 +249,6 @@ Page {
                     text: "Preferences"
                 }
                 onClicked: app.pageStack.push("PreferencesPage.qml");
-            }
-            ListItem {
-                id: aboutItem
-                contentHeight: Theme.itemSizeSmall
-                ListItemLabel {
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingLarge + 64 + Theme.paddingMedium
-                    color: aboutItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "About Poor Maps"
-                }
-                onClicked: app.pageStack.push("AboutPage.qml");
             }
         }
         VerticalScrollDecorator {}

@@ -1,14 +1,18 @@
 Poor Maps 0.19
 ==============
 
- * [ ] Add ability to share one's position or a location by sending
+ * [X] Add ability to share one's position or a location by sending
        sms, email, etc. with properly formatted links with coordinates
- * [X] Add Mapbox Bright basemap
+ * [X] Add Mapbox Bright basemap (a.k.a. OSM Bright 2)
  * [X] Add Mapbox Streets basemaps (both normal size and retina)
  * [X] Animate position and bearing changes
  * [X] Keep positioning on for three minutes if Poor Maps has been
        minimized and cover is not active, but there's no GPS lock yet
  * [X] Fix tiles partially overlapping navigation cover
+ * [X] Move about menu item from the main menu to the preferences page
+
+ * Add a "Drive" button?
+ * Review menu items
 
 Poor Maps 1.0
 =============

@@ -24,6 +24,7 @@ import json
 import math
 import os
 import poor
+import subprocess
 import sys
 import urllib.parse
 
@@ -148,6 +149,18 @@ def format_filesize(bytes, n=2):
     fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
     return fstring.format(size, units)
 
+def format_location_message(x, y, html=False):
+    """Format coordinates of a point into a location message."""
+    if html:
+        return ('<a href="geo:{y:.5f},{x:.5f}">geo:{y:.5f},{x:.5f}</a><br>'
+                '<a href="http://maps.google.com/?q={y:.5f},{x:.5f}">'
+                'http://maps.google.com/?q={y:.5f},{x:.5f}</a>'
+                .format(x=x, y=y))
+    else:
+        return ('geo:{y:.5f},{x:.5f} '
+                'http://maps.google.com/?q={y:.5f},{x:.5f}'
+                .format(x=x, y=y))
+
 def format_time(seconds):
     """Format `seconds` to format ``# h # min``."""
     hours = int(seconds/3600)
@@ -230,6 +243,10 @@ def makedirs(directory):
 def path2uri(path):
     """Convert local filepath to URI."""
     return "file://{}".format(urllib.parse.quote(path))
+
+def popen(*args):
+    """Run command `args` without waiting for it to complete."""
+    subprocess.Popen(args)
 
 def read_json(path):
     """Read data from JSON file at `path`."""

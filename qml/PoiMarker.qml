@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtLocation 5.0
+import QtPositioning 5.3
 import Sailfish.Silica 1.0
 
 MapQuickItem {
@@ -53,7 +54,8 @@ MapQuickItem {
                 width: Math.max(textLabel.width,
                                 routeButton.width +
                                 linkButton.width +
-                                Theme.paddingLarge)
+                                shareButton.width +
+                                3*Theme.paddingMedium)
 
                 Label {
                     id: textLabel
@@ -105,7 +107,8 @@ MapQuickItem {
                 }
                 Rectangle {
                     id: linkButton
-                    anchors.right: parent.right
+                    anchors.right: shareButton.left
+                    anchors.rightMargin: 1.5*Theme.paddingMedium
                     anchors.top: textLabel.bottom
                     color: "#bbffffff"
                     height: linkLabel.height + Theme.paddingMedium
@@ -132,6 +135,43 @@ MapQuickItem {
                         repeat: false
                         onRunningChanged: {
                             linkButton.color = linkTimer.running ?
+                                Theme.highlightColor : "#bbffffff";
+                        }
+                    }
+                }
+                Rectangle {
+                    id: shareButton
+                    anchors.right: parent.right
+                    anchors.top: textLabel.bottom
+                    color: "#bbffffff"
+                    height: shareLabel.height + Theme.paddingMedium
+                    radius: bubble.radius/2
+                    width: shareLabel.width + 1.5*Theme.paddingMedium
+                    Label {
+                        id: shareLabel
+                        anchors.centerIn: parent
+                        color: "black"
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        text: "Share"
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            shareTimer.start();
+                            app.showMenu("SharePage.qml", {
+                                "coordinate": QtPositioning.coordinate(
+                                    item.coordinate.latitude,
+                                    item.coordinate.longitude),
+                                "title": "Share Location"
+                            });
+                        }
+                    }
+                    Timer {
+                        id: shareTimer
+                        interval: 3000
+                        repeat: false
+                        onRunningChanged: {
+                            shareButton.color = shareTimer.running ?
                                 Theme.highlightColor : "#bbffffff";
                         }
                     }
