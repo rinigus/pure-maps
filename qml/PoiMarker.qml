@@ -68,6 +68,14 @@ MapQuickItem {
                     width: Math.min(0.6*map.width, implicitWidth)
                     wrapMode: Text.WordWrap
                 }
+                MouseArea {
+                    // Hide bubble by tapping label area.
+                    anchors.bottom: textLabel.bottom
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: textLabel.top
+                    onClicked: item.labelVisible = !item.labelVisible
+                }
                 Rectangle {
                     id: routeButton
                     anchors.left: parent.left
