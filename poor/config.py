@@ -27,7 +27,7 @@ __all__ = ("ConfigurationStore",)
 DEFAULTS = {
     "allow_tile_download": True,
     "auto_center": False,
-    "basemap": "mapquest_open",
+    "basemap": "mapbox_streets",
     "cache_max_age": 30, # days
     "center": [0.0, 0.0],
     "download_timeout": 10, # seconds

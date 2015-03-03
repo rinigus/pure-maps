@@ -11,6 +11,7 @@ Poor Maps 0.19
        minimized and cover is not active, but there's no GPS lock yet
  * [X] Fix tiles partially overlapping navigation cover
  * [X] Check that downloaded tiles are actually images
+ * [X] Change default basemap for new users to Mapbox Streets
  * [X] Move about menu item from the main menu to the preferences page
 
 Poor Maps 1.0
