@@ -4,15 +4,17 @@ Poor Maps 0.19
  * [X] Add ability to share one's position or a location by sending
        sms, email, etc. with properly formatted links with coordinates
        (see the main menu and point of interest bubbles)
+ * [X] Begin navigating (turn on auto-center, zoom to current position)
+       by tapping on the maneuver icon of the route statusbar
+ * [X] Hide POI bubbles by tapping on the label part
+ * [X] Animate position and bearing changes
  * [X] Add Mapbox Streets basemaps (both normal size and retina)
  * [X] Add Mapbox Emerald basemaps (both normal size and retina)
- * [X] Animate position and bearing changes
+ * [X] Change default basemap for new users to Mapbox Streets
  * [X] Keep positioning on for three minutes if Poor Maps has been
        minimized and cover is not active, but there's no GPS lock yet
- * [X] Fix tiles partially overlapping navigation cover
  * [X] Check that downloaded tiles are actually images
- * [X] Hide POI bubbles by tapping on the label part
- * [X] Change default basemap for new users to Mapbox Streets
+ * [X] Fix tiles partially overlapping navigation cover
  * [X] Move about menu item from the main menu to the preferences page
 
 Poor Maps 1.0

@@ -97,8 +97,24 @@ Rectangle {
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
         }
-        onClicked: {
-            app.showMenu("NarrativePage.qml");
+        MouseArea {
+            // Use the maneuver icon as a "begin" button.
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.right: manLabel.left
+            anchors.top: parent.top
+            onClicked: {
+                map.autoCenter = true;
+                map.centerOnPosition();
+                map.zoomLevel < 16 && map.setZoomLevel(16);
+            }
+        }
+        MouseArea {
+            anchors.bottom: parent.bottom
+            anchors.left: manLabel.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            onClicked: app.showMenu("NarrativePage.qml");
         }
     }
 }
