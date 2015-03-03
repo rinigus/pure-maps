@@ -3,8 +3,9 @@ Poor Maps 0.19
 
  * [X] Add ability to share one's position or a location by sending
        sms, email, etc. with properly formatted links with coordinates
- * [X] Add Mapbox Bright basemap (a.k.a. OSM Bright 2)
+       (see the main menu and point of interest bubbles)
  * [X] Add Mapbox Streets basemaps (both normal size and retina)
+ * [X] Add Mapbox Emerald basemaps (both normal size and retina)
  * [X] Animate position and bearing changes
  * [X] Keep positioning on for three minutes if Poor Maps has been
        minimized and cover is not active, but there's no GPS lock yet

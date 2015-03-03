@@ -2,7 +2,7 @@
     "attribution": "© Mapbox © OpenStreetMap\nhttps://www.mapbox.com/about/maps/\nhttps://www.mapbox.com/map-feedback/",
     "extension": ".png",
     "format": "slippy",
-    "name": "Mapbox Bright",
+    "name": "Mapbox Emerald",
     "source": "mapbox.com",
-    "url": "http://api.tiles.mapbox.com/v4/otsaloma.f02e5733/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoib3RzYWxvbWEiLCJhIjoiWE9xam1rQSJ9.yJfSVOUe5AvllrlTRccLBA"
+    "url": "http://api.tiles.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoib3RzYWxvbWEiLCJhIjoiWE9xam1rQSJ9.yJfSVOUe5AvllrlTRccLBA"
 }
