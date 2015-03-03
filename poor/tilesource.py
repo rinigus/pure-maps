@@ -18,6 +18,7 @@
 """Map tile source with cached tile downloads."""
 
 import http.client
+import imghdr
 import importlib.machinery
 import os
 import poor
@@ -115,6 +116,8 @@ class TileSource:
             # Always read response to avoid
             # http.client.ResponseNotReady: Request-sent.
             blob = response.read(1048576)
+            if imghdr.what("", h=blob) is None:
+                raise Exception("Non-image data received")
             if not self.extension:
                 mimetype = response.getheader("Content-Type")
                 if not mimetype in MIMETYPE_EXTENSIONS:
@@ -218,6 +221,10 @@ class TileSource:
         # Failed downloads can result in empty files.
         if stat.st_size == 0:
             return None
+        # Check that suspiciously small files are actually images.
+        if stat.st_size < 64:
+            if imghdr.what(path) is None:
+                return None
         if self.max_age is not None:
             # Redownload expired tiles.
             if stat.st_mtime < time.time() - self.max_age * 86400:

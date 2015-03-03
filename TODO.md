@@ -9,10 +9,8 @@ Poor Maps 0.19
  * [X] Keep positioning on for three minutes if Poor Maps has been
        minimized and cover is not active, but there's no GPS lock yet
  * [X] Fix tiles partially overlapping navigation cover
+ * [X] Check that downloaded tiles are actually images
  * [X] Move about menu item from the main menu to the preferences page
-
- * Add a "Drive" button?
- * Review menu items
 
 Poor Maps 1.0
 =============
