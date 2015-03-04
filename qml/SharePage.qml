@@ -54,7 +54,7 @@ Page {
             // XXX: SMS links don't work without a recipient.
             // http://together.jolla.com/question/84134/
             Clipboard.text = page.formatMessage(false);
-            infoLabel.flash("Message copied to the clipboard\nLaunching the Messages application");
+            infoLabel.text = "Message copied to the clipboard\nLaunching the Messages application";
             var args = ["/usr/bin/invoker", "--type=silica-qt5", "/usr/bin/jolla-messages"];
             py.call("poor.util.popen", args, null);
         }
@@ -67,7 +67,7 @@ Page {
         text: "Email"
         onClicked: {
             var link = "mailto:?body=" + page.formatMessage(false);
-            infoLabel.flash("Launching the Email application");
+            infoLabel.text = "Launching the Email application";
             Qt.openUrlExternally(link);
         }
     }
@@ -76,10 +76,10 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: emailButton.bottom
         anchors.topMargin: Theme.paddingLarge
-        text: "Clipboard"
+        text: "Other"
         onClicked: {
             Clipboard.text = page.formatMessage(false);
-            infoLabel.flash("Message copied to the clipboard");
+            infoLabel.text = "Message copied to the clipboard";
         }
     }
     ListItemLabel {
@@ -88,18 +88,6 @@ Page {
         anchors.topMargin: 2*Theme.paddingLarge
         color: Theme.highlightColor
         horizontalAlignment: Text.AlignHCenter
-        visible: false
-        Timer {
-            id: timer
-            interval: 5000
-            repeat: false
-            onTriggered: infoLabel.visible = false;
-        }
-        function flash(text) {
-            infoLabel.text = text;
-            infoLabel.visible = true;
-            timer.restart();
-        }
     }
     function formatMessage(html) {
         return py.call_sync("poor.util.format_location_message",
