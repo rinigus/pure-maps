@@ -233,7 +233,6 @@ Page {
                 }
                 onCheckedChanged: {
                     map.autoCenter = autoCenterItem.checked;
-                    app.conf.set("auto_center", map.autoCenter);
                     map.autoCenter && map.centerOnPosition();
                 }
             }

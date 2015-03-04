@@ -49,12 +49,10 @@ MapQuickItem {
         MouseArea {
             anchors.fill: movingImage
             onClicked: {
-                if (app.conf.get("auto_center")) {
-                    app.conf.set("auto_center", false);
+                if (map.autoCenter) {
                     map.autoCenter = false;
                     bubble.message = "Auto-center off";
                 } else {
-                    app.conf.set("auto_center", true);
                     map.autoCenter = true;
                     bubble.message = "Auto-center on";
                     map.centerOnPosition();
