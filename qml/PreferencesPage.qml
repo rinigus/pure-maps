@@ -50,7 +50,7 @@ Page {
             TextSwitch {
                 id: showNarrativeItem
                 checked: map.showNarrative
-                text: "Show routing narrative"
+                text: "Show navigation narrative"
                 onCheckedChanged: {
                     map.showNarrative = showNarrativeItem.checked;
                     app.conf.set("show_routing_narrative", map.showNarrative);
@@ -117,7 +117,7 @@ Page {
                     color: examineCacheItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Examine map tile cache"
+                    text: "Examine cache"
                 }
                 onClicked: app.pageStack.push("CachePage.qml");
             }

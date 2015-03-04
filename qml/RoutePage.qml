@@ -37,7 +37,7 @@ Page {
             id: column
             anchors.fill: parent
             property var settings: null
-            PageHeader { title: "Find Route" }
+            PageHeader { title: "Navigation" }
             ValueButton {
                 id: usingButton
                 label: "Using"

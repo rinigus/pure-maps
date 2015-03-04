@@ -63,7 +63,7 @@ Page {
             width: parent.width
             PageHeader {
                 id: header
-                title: "Find Place"
+                title: "Search"
             }
             ValueButton {
                 id: usingButton

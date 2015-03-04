@@ -33,10 +33,10 @@ Page {
             anchors.fill: parent
             PageHeader { title: "Poor Maps" }
             ListItem {
-                id: findPlaceItem
+                id: searchItem
                 contentHeight: Theme.itemSizeSmall
                 Image {
-                    id: findPlaceImage
+                    id: searchImage
                     fillMode: Image.Pad
                     height: Theme.itemSizeSmall
                     horizontalAlignment: Image.AlignRight
@@ -44,12 +44,12 @@ Page {
                     width: implicitWidth + Theme.paddingLarge
                 }
                 ListItemLabel {
-                    anchors.left: findPlaceImage.right
+                    anchors.left: searchImage.right
                     anchors.leftMargin: Theme.paddingMedium
-                    color: findPlaceItem.highlighted ?
+                    color: searchItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Find place"
+                    text: "Search"
                 }
                 onClicked: {
                     app.pageStack.push("GeocodePage.qml");
@@ -57,10 +57,10 @@ Page {
                 }
             }
             ListItem {
-                id: findRouteItem
+                id: navigationItem
                 contentHeight: Theme.itemSizeSmall
                 Image {
-                    id: findRouteImage
+                    id: navigationImage
                     fillMode: Image.Pad
                     height: Theme.itemSizeSmall
                     horizontalAlignment: Image.AlignRight
@@ -68,12 +68,12 @@ Page {
                     width: implicitWidth + Theme.paddingLarge
                 }
                 ListItemLabel {
-                    anchors.left: findRouteImage.right
+                    anchors.left: navigationImage.right
                     anchors.leftMargin: Theme.paddingMedium
-                    color: findRouteItem.highlighted ?
+                    color: navigationItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Find route"
+                    text: "Navigation"
                 }
                 onClicked: app.pageStack.push("RoutePage.qml");
             }
@@ -94,7 +94,7 @@ Page {
                     color: findNearbyItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Explore nearby venues"
+                    text: "Nearby venues"
                 }
                 onClicked: {
                     app.pageStack.push("NearbyPage.qml");

@@ -15,7 +15,7 @@ Poor Maps 0.19
        minimized and cover is not active, but there's no GPS lock yet
  * [X] Check that downloaded tiles are actually images
  * [X] Fix tiles partially overlapping navigation cover
- * [X] Move about menu item from the main menu to the preferences page
+ * [X] Rename and rearrange menu items
 
 Poor Maps 1.0
 =============
