@@ -104,9 +104,36 @@ MapQuickItem {
                     }
                 }
                 Rectangle {
+                    id: shareButton
+                    anchors.left: routeButton.right
+                    anchors.leftMargin: 1.5*Theme.paddingMedium
+                    anchors.top: textLabel.bottom
+                    color: "#bbffffff"
+                    height: shareLabel.height + Theme.paddingMedium
+                    radius: bubble.radius/2
+                    width: shareLabel.width + 1.5*Theme.paddingMedium
+                    Label {
+                        id: shareLabel
+                        anchors.centerIn: parent
+                        color: "black"
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        text: "Share"
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            app.showMenu("SharePage.qml", {
+                                "coordinate": QtPositioning.coordinate(
+                                    item.coordinate.latitude,
+                                    item.coordinate.longitude),
+                                "title": "Share Location"
+                            });
+                        }
+                    }
+                }
+                Rectangle {
                     id: linkButton
-                    anchors.right: shareButton.left
-                    anchors.rightMargin: 1.5*Theme.paddingMedium
+                    anchors.right: parent.right
                     anchors.top: textLabel.bottom
                     color: "#bbffffff"
                     height: linkLabel.height + Theme.paddingMedium
@@ -133,33 +160,6 @@ MapQuickItem {
                         interval: 3000
                         repeat: false
                         onTriggered: linkButton.color = "#bbffffff";
-                    }
-                }
-                Rectangle {
-                    id: shareButton
-                    anchors.right: parent.right
-                    anchors.top: textLabel.bottom
-                    color: "#bbffffff"
-                    height: shareLabel.height + Theme.paddingMedium
-                    radius: bubble.radius/2
-                    width: shareLabel.width + 1.5*Theme.paddingMedium
-                    Label {
-                        id: shareLabel
-                        anchors.centerIn: parent
-                        color: "black"
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        text: "Share"
-                    }
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            app.showMenu("SharePage.qml", {
-                                "coordinate": QtPositioning.coordinate(
-                                    item.coordinate.latitude,
-                                    item.coordinate.longitude),
-                                "title": "Share Location"
-                            });
-                        }
                     }
                 }
             }
