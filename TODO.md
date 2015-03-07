@@ -1,27 +1,9 @@
-Poor Maps 0.19
-==============
-
- * [X] Add ability to share one's position or a location by sending
-       sms, email, etc. with properly formatted links with coordinates
-       (see the main menu and point of interest bubbles)
- * [X] Begin navigating (turn on auto-center, zoom to current position)
-       by tapping on the maneuver icon of the route statusbar
- * [X] Hide POI bubbles by tapping on the label part
- * [X] Animate position and bearing changes
- * [X] Add Mapbox Streets basemaps (both normal size and retina)
- * [X] Add Mapbox Emerald basemaps (both normal size and retina)
- * [X] Change default basemap for new users to Mapbox Streets
- * [X] Keep positioning on for three minutes if Poor Maps has been
-       minimized and cover is not active, but there's no GPS lock yet
- * [X] Check that downloaded tiles are actually images
- * [X] Fix tiles partially overlapping navigation cover
- * [X] Rename and rearrange menu items
-
 Poor Maps 1.0
 =============
 
  * Add a QtSensors Compass arrow that shows which way one is facing
  * Add ability to import a route from file
+ * Add ability to import POIs from file?
  * Add voice guidance (espeak?)
  * Allow landscape for the map page (need to wait for Qt 5.4.1)
    - <http://bugreports.qt.io/browse/QTBUG-40799>
