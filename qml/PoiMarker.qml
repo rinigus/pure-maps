@@ -55,7 +55,8 @@ MapQuickItem {
                                 routeButton.width +
                                 linkButton.width +
                                 shareButton.width +
-                                3*Theme.paddingMedium)
+                                linkButton.visible * 1.5 * Theme.paddingMedium +
+                                shareButton.visible * 1.5 * Theme.paddingMedium)
 
                 Label {
                     id: textLabel
