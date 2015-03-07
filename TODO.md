@@ -1,6 +1,7 @@
 Poor Maps 1.0
 =============
 
+ * Move menu button to the center or provide a separate left hand mode
  * Add a QtSensors Compass arrow that shows which way one is facing
  * Add ability to import a route from file
  * Add ability to import POIs from file?
