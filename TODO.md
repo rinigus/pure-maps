@@ -1,6 +1,7 @@
 Poor Maps 1.0
 =============
 
+ * Use Theme.highlightText for search matches
  * Move menu button to the center or provide a separate left hand mode
  * Add a QtSensors Compass arrow that shows which way one is facing
  * Add ability to import a route from file
