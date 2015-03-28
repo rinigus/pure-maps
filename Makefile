@@ -73,6 +73,7 @@ install:
 rpm:
 	mkdir -p $$HOME/rpmbuild/SOURCES
 	cp dist/$(name)-$(version).tar.xz $$HOME/rpmbuild/SOURCES
+	rm -rf $$HOME/rpmbuild/BUILD/$(name)-$(version)
 	rpmbuild -ba rpm/$(name).spec
 	cp $$HOME/rpmbuild/RPMS/noarch/$(name)-$(version)-*.rpm rpm
 	cp $$HOME/rpmbuild/SRPMS/$(name)-$(version)-*.rpm rpm

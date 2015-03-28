@@ -12,7 +12,9 @@ Releasing a New Version
  * Build tarball and RPM
    - `make dist`
    - `make rpm`
- * Install RPM and check that it works
+ * Check that RPM is Harbour-OK, installs and works
+   - `rpm -qpil rpm/*.noarch.rpm`
+   - `rpmvalidation.sh rpm/*.noarch.rpm`
    - `pkcon install-local rpm/*.noarch.rpm`
  * Commit changes
    - `git commit -a -m "RELEASE X.Y.Z"`

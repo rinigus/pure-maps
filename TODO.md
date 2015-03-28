@@ -1,3 +1,10 @@
+Poor Maps 0.19.1
+================
+
+ * [X] Don't install %doc files (COPYING, README, etc.)
+ * [X] Remove python3-base from RPM dependencies
+ * [X] Prevent provides in RPM package
+
 Poor Maps 1.0
 =============
 
