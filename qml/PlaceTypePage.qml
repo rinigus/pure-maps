@@ -40,7 +40,7 @@ Dialog {
                 anchors.leftMargin: listView.searchField.textLeftMargin
                 color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
-                text: model.type
+                text: model.text
             }
             ContextMenu {
                 id: contextMenu
@@ -100,7 +100,9 @@ Dialog {
             }
         }
         for (var i = 0; i < found.length; i++) {
+            var text = Theme.highlightText(found[i], query, Theme.highlightColor);
             listView.model.setProperty(i, "type", found[i]);
+            listView.model.setProperty(i, "text", text);
             listView.model.setProperty(i, "visible", true);
         }
         for (var i = found.length; i < listView.count; i++)
@@ -109,9 +111,7 @@ Dialog {
     function loadHistory() {
         // Load search history and preallocate list items.
         dialog.history = py.evaluate("poor.app.history.place_types");
-        if (listView.model.count == 0) {
-            for (var i = 0; i < 50; i++)
-                listView.model.append({"type": "", "visible": false});
-        }
+        while (listView.model.count < 50)
+            listView.model.append({"type": "", "text": "", "visible": false});
     }
 }
