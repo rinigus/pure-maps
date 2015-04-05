@@ -3,6 +3,7 @@ Poor Maps 0.19.1
 
  * [X] Color matching parts of search history items
  * [ ] Allow searching nearby venues around the center of screen
+ * [ ] or add nearby buttons to POI bubbles
  * [X] Don't install %doc files (COPYING, README, etc.)
  * [X] Remove python3-base from RPM dependencies
  * [X] Prevent provides in RPM package
