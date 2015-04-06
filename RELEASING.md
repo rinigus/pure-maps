@@ -18,11 +18,12 @@ Releasing a New Version
    - `pkcon install-local rpm/*.noarch.rpm`
  * Commit changes
    - `git commit -a -m "RELEASE X.Y.Z"`
-   - `git tag -s poor-maps-X.Y.Z`
+   - `git tag -s X.Y.Z`
    - `git push`
    - `git push --tags`
  * Build final tarball and RPM
    - `make dist`
    - `make rpm`
    - `pkcon install-local rpm/*.noarch.rpm`
+ * Add release notes on GitHub
  * Upload and announce
