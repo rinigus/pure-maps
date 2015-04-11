@@ -11,6 +11,7 @@ Poor Maps 0.19.1
 Poor Maps 1.0
 =============
 
+ * Use `short_name` for stops once HSL Reittiopas API 1.2.0 is stable?
  * Allow landscape for the map page (need to wait for Qt 5.4.1)
    - <http://bugreports.qt.io/browse/QTBUG-40799>
  * Add user interface translations
