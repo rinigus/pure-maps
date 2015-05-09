@@ -1,6 +1,8 @@
 Poor Maps 0.19.1
 ================
 
+ * [ ] Allow landscape orientation (requires Sailfish OS 1.1.4
+       "Äijänpäivänjärvi" to work correctly)
  * [X] Color matching parts of search history items
  * [ ] Allow searching nearby venues around the center of screen
  * [ ] or add nearby buttons to POI bubbles
@@ -12,8 +14,8 @@ Poor Maps 1.0
 =============
 
  * Use `short_name` for stops once HSL Reittiopas API 1.2.0 is stable?
- * Allow landscape for the map page (need to wait for Qt 5.4.1)
-   - <http://bugreports.qt.io/browse/QTBUG-40799>
+ * Switch to the QtLocation OSM plugin (need to wait for Qt 5.5)
+   - <http://bugreports.qt.io/browse/QTBUG-32937>
  * Add user interface translations
    - Strings in QML: mark with `qsTr`, run `lupdate`
    - Strings in Python: mark with `tr`, run `pylupdate`
