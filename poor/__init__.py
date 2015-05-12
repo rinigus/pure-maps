@@ -54,5 +54,3 @@ def main():
     conf.read()
     global app
     app = Application()
-    pyotherside.atexit(conf.write)
-    pyotherside.atexit(app.history.write)

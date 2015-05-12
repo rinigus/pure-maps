@@ -101,6 +101,15 @@ class Application:
                 self._update_tile(*args, timestamp=timestamp)
             download_queue.task_done()
 
+    def quit(self):
+        """Quit the application."""
+        poor.http.pool.terminate()
+        self.basemap.terminate()
+        for overlay in self.overlays:
+            overlay.terminate()
+        poor.conf.write()
+        self.history.write()
+
     def remove_overlays(self, *overlays):
         """Remove overlay providers from strings `overlays`."""
         if not overlays:

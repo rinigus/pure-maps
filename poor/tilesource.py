@@ -202,6 +202,10 @@ class TileSource:
             path = os.path.join(poor.DATA_DIR, leaf)
         return poor.util.read_json(path)
 
+    def terminate(self):
+        """Close all connections and terminate."""
+        self._pool.terminate()
+
     def tile_corners(self, tile):
         """Return coordinates of NE, SE, SW, NW corners of given tile."""
         return self._provider.tile_corners(tile)

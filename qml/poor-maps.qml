@@ -63,6 +63,15 @@ ApplicationWindow {
         py.setHandler("show-tile", map.showTile);
     }
 
+    Component.onDestruction: {
+        if (!py.ready) return;
+        app.conf.set("auto_center", map.autoCenter);
+        app.conf.set("center", [map.center.longitude, map.center.latitude]);
+        app.conf.set("show_routing_narrative", map.showNarrative);
+        app.conf.set("zoom", Math.floor(map.zoomLevel));
+        py.call_sync("poor.app.quit", []);
+    }
+
     Keys.onPressed: {
         // Allow zooming with plus and minus keys on the emulator.
         (event.key == Qt.Key_Plus)  && map.setZoomLevel(map.zoomLevel+1);
@@ -70,7 +79,6 @@ ApplicationWindow {
     }
 
     onApplicationActiveChanged: {
-        py.ready && !app.applicationActive && app.save();
         app.updateKeepAlive();
     }
 
@@ -83,16 +91,6 @@ ApplicationWindow {
     function hideMenu() {
         // Immediately hide the menu, keeping pages intact.
         app.bottomMargin = app.totalHeight;
-    }
-
-    function save() {
-        // Save application-level configuration and persistent data.
-        app.conf.set("auto_center", map.autoCenter);
-        app.conf.set("center", [map.center.longitude, map.center.latitude]);
-        app.conf.set("show_routing_narrative", map.showNarrative);
-        app.conf.set("zoom", Math.floor(map.zoomLevel));
-        py.call_sync("poor.conf.write", []);
-        py.call_sync("poor.app.history.write", []);
     }
 
     function showMenu(page, params) {

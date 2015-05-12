@@ -9,7 +9,7 @@ Poor Maps 0.19.1
  * [X] Fix error resetting HTTP connection
  * [X] Ensure that blocking HTTP connection pool operations terminate
        immediately and gracefully on application exit
- * [ ] Write configuration to file only once on application exit
+ * [X] Write configuration to file only once on application exit
  * [X] Don't install %doc files (COPYING, README, etc.)
  * [X] Remove python3-base from RPM dependencies
  * [X] Prevent provides in RPM package
