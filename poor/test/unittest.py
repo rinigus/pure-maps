@@ -24,6 +24,16 @@ class TestCase:
 
     """Base class for unit test cases."""
 
+    def assert_raises(self, exception, function, *args, **kwargs):
+        """Assert that calling `function` raises `exception`."""
+        try:
+            function(*args, **kwargs)
+        except exception:
+            return
+        raise AssertionError("{} failed to raise {}"
+                             .format(repr(function),
+                                     repr(exception)))
+
     def setUp(self):
         """Compatibility alias for :meth:`setup_method`."""
         self.setup_method(None)
