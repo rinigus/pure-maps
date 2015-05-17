@@ -1,6 +1,7 @@
 Poor Maps 0.20
 ==============
 
+ * [ ] Add option to auto-rotate map to match bearing
  * [X] Allow landscape orientation (requires Sailfish OS 1.1.4
        "Äijänpäivänjärvi" to work correctly)
  * [X] Color matching parts of search history items

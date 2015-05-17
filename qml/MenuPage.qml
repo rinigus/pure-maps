@@ -236,6 +236,22 @@ Page {
                     map.autoCenter && map.centerOnPosition();
                 }
             }
+            TextSwitch {
+                id: autoRotateItem
+                anchors.left: parent.left
+                anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
+                checked: map.autoRotate
+                height: Theme.itemSizeSmall
+                text: "Auto-rotate on bearing"
+                Component.onCompleted: {
+                    page.onStatusChanged.connect(function() {
+                        autoRotateItem.checked = map.autoRotate;
+                    });
+                }
+                onCheckedChanged: {
+                    map.autoRotate = autoRotateItem.checked;
+                }
+            }
             ListItem {
                 id: preferencesItem
                 contentHeight: Theme.itemSizeSmall

@@ -23,16 +23,21 @@ import "."
 
 Map {
     id: map
-    anchors.fill: parent
+    anchors.centerIn: parent
     center: QtPositioning.coordinate(60.169, 24.941)
     gesture.enabled: true
+    height: parent.height
     minimumZoomLevel: 3
     plugin: MapPlugin {}
+    rotation: 0
+    width: parent.width
 
     property bool autoCenter: false
+    property bool autoRotate: false
     property bool centerFound: true
     property bool changed: true
     property var  direction: gps.direction
+    property var  directionPrev: 0
     property bool hasRoute: false
     property real heightCoords: 0
     property var  maneuvers: []
@@ -52,6 +57,14 @@ Map {
         CoordinateAnimation {
             duration: map.ready ? 500 : 0
             easing.type: Easing.InOutQuad
+        }
+    }
+
+    Behavior on rotation {
+        RotationAnimation {
+            direction: RotationAnimation.Shortest
+            duration: map.ready ? 500 : 0
+            easing.type: Easing.Linear
         }
     }
 
@@ -78,10 +91,33 @@ Map {
         }
     }
 
+    onAutoRotateChanged: {
+        if (map.autoRotate) {
+            if (map.direction)
+                map.rotation = -map.direction;
+            var dim = Math.ceil(Math.SQRT2 * Math.max(parent.width, parent.height));
+            map.width = dim;
+            map.height = dim;
+        } else {
+            map.rotation = 0;
+            map.width = parent.width;
+            map.height = parent.height;
+        }
+    }
+
     onCenterChanged: {
         // Ensure that tiles are updated after panning.
         // This gets fired ridiculously often, so keep simple.
         map.changed = true;
+    }
+
+    onDirectionChanged: {
+        var direction = map.direction || 0;
+        if (map.autoRotate && direction) {
+            if (Math.abs(direction - map.directionPrev) > 15)
+                map.rotation = -direction;
+        }
+        map.directionPrev = direction;
     }
 
     onHasRouteChanged: {
@@ -317,6 +353,7 @@ Map {
         if (!py.ready)
             return py.onReadyChanged.connect(map.initProperties);
         map.autoCenter = app.conf.get("auto_center");
+        map.autoRotate = app.conf.get("auto_rotate");
         map.showNarrative = app.conf.get("show_routing_narrative");
         map.setZoomLevel(app.conf.get("zoom"));
         var center = app.conf.get("center");
@@ -369,7 +406,7 @@ Map {
             if (map.tiles[i].uid != props.uid) continue;
             map.tiles[i].coordinate.latitude = props.nwy;
             map.tiles[i].coordinate.longitude = props.nwx;
-            map.tiles[i].smooth = props.smooth;
+            map.tiles[i].smooth = map.autoRotate || props.smooth;
             map.tiles[i].type = props.type;
             map.tiles[i].zOffset = props.z;
             map.tiles[i].zoomLevel = props.display_zoom;

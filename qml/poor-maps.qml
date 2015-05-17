@@ -96,6 +96,7 @@ ApplicationWindow {
     Component.onDestruction: {
         if (!py.ready) return;
         app.conf.set("auto_center", map.autoCenter);
+        app.conf.set("auto_rotate", map.autoRotate);
         app.conf.set("center", [map.center.longitude, map.center.latitude]);
         app.conf.set("show_routing_narrative", map.showNarrative);
         app.conf.set("zoom", Math.floor(map.zoomLevel));
