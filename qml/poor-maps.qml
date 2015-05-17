@@ -71,6 +71,7 @@ ApplicationWindow {
                     mapContainer.rotation = 270;
                 }
                 map.changed = true;
+                map.hasRoute && map.route.redraw();
             }
         }
     }
