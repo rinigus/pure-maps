@@ -22,24 +22,15 @@ import QtPositioning 5.3
 MouseArea {
     id: mouseArea
     anchors.fill: parent
-    onClicked: {
-        mouseArea.coord = map.toCoordinate(Qt.point(mouse.x, mouse.y));
-        clickTimer.start();
-    }
     onDoubleClicked: {
-        clickTimer.stop();
         map.centerOnPosition();
     }
-    property var coord: null
-    Timer {
-        id: clickTimer
-        interval: 300
-        onTriggered: {
-            map.addPois([{"x": mouseArea.coord.longitude,
-                          "y": mouseArea.coord.latitude,
-                          "title": "Unnamed point",
-                          "text": "Unnamed point"}]);
+    onPressAndHold: {
+        var coord = coord = map.toCoordinate(Qt.point(mouse.x, mouse.y));
+        map.addPois([{"x": coord.longitude,
+                      "y": coord.latitude,
+                      "title": "Unnamed point",
+                      "text": "Unnamed point"}]);
 
-        }
     }
 }

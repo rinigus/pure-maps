@@ -6,6 +6,7 @@ Poor Maps 0.20
  * [X] Color matching parts of search history items
  * [ ] Allow searching nearby venues around the center of screen
  * [ ] or add nearby buttons to POI bubbles
+ * [X] Use long tap instead of plain tap to add POIs
  * [X] Fix error resetting HTTP connection
  * [X] Ensure that blocking HTTP connection pool operations terminate
        immediately and gracefully on application exit
