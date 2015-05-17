@@ -22,7 +22,7 @@ import "."
 
 Page {
     id: page
-    allowedOrientations: Orientation.Portrait
+    allowedOrientations: ~Orientation.PortraitInverse
     property bool loading: true
     property bool populated: false
     property string title: ""

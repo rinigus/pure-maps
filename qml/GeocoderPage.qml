@@ -22,7 +22,7 @@ import "."
 
 Dialog {
     id: dialog
-    allowedOrientations: Orientation.Portrait
+    allowedOrientations: ~Orientation.PortraitInverse
     property string pid: py.evaluate("poor.app.geocoder.id")
     SilicaListView {
         id: listView

@@ -23,7 +23,7 @@ import "."
 
 Page {
     id: page
-    allowedOrientations: Orientation.Portrait
+    allowedOrientations: ~Orientation.PortraitInverse
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight

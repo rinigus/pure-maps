@@ -21,7 +21,7 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
-    allowedOrientations: Orientation.Portrait
+    allowedOrientations: ~Orientation.PortraitInverse
     property bool loading: true
     property bool populated: false
     property var results: {}

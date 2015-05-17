@@ -27,7 +27,7 @@ import "."
 
 Page {
     id: page
-    allowedOrientations: Orientation.Portrait
+    allowedOrientations: ~Orientation.PortraitInverse
     clip: true
     property var tiles: []
     Rectangle {

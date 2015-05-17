@@ -1,7 +1,7 @@
-Poor Maps 0.19.1
-================
+Poor Maps 0.20
+==============
 
- * [ ] Allow landscape orientation (requires Sailfish OS 1.1.4
+ * [X] Allow landscape orientation (requires Sailfish OS 1.1.4
        "Äijänpäivänjärvi" to work correctly)
  * [X] Color matching parts of search history items
  * [ ] Allow searching nearby venues around the center of screen

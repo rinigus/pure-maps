@@ -22,7 +22,7 @@ import "."
 
 Dialog {
     id: dialog
-    allowedOrientations: Orientation.All
+    allowedOrientations: ~Orientation.PortraitInverse
     canAccept: dialog.query.length > 0
     property var history: []
     property string query: ""

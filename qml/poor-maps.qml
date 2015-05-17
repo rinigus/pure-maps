@@ -27,34 +27,54 @@ import "."
  * Technically, this also allows us to use a split screen if need arises.
  * To allow swiping back from the menu to the map, we need the first page
  * in the stack to be a dummy that upon activation hides the page stack.
- * Hiding the page stack is done using ApplicationWindow.bottomMargin.
  * To make transitions smooth and animated, we can make the dummy look like
- * the actual map, thus providing the smooth built-in page stack transition,
- * followed by a sudden bottomMargin change, only noticeable by
- * the reappearance of map overlays not duplicated in the dummy.
- *
- * As a downside, our map cannot benefit from automatic orientation handling
- * in the Page container as the map is not in a Page. This means that we need
- * to write our own orientation handling code once Qt bug #40799 is resolved
- * and map gestures correctly change orientation along with the map.
- *
- * http://bugreports.qt.io/browse/QTBUG-40799
- * http://lists.sailfishos.org/pipermail/devel/2014-October/005064.html
+ * the actual map, thus providing the smooth built-in page stack transition.
  */
 
 ApplicationWindow {
     id: app
-    allowedOrientations: Orientation.All
+    allowedOrientations: ~Orientation.PortraitInverse
     cover: Cover {}
     initialPage: DummyPage { id: dummy }
 
     property var  conf: Config {}
-    property bool inMenu: bottomMargin == 0
     property bool running: applicationActive || cover.active
-    property int  totalHeight: Screen.height
-    property int  totalWidth: Screen.width
+    property var map: null;
 
-    Map { id: map }
+    Item {
+        id: rootContainer
+        anchors.fill: parent
+        height: Screen.height
+        width: Screen.width
+        z: 1000000
+        Item {
+            id: mapContainer
+            anchors.centerIn: parent
+            Map { id: map }
+            Component.onCompleted: {
+                mapContainer.updateOrientation();
+                app.onDeviceOrientationChanged.connect(mapContainer.updateOrientation);
+                app.map = map;
+            }
+            function updateOrientation() {
+                if (app.deviceOrientation == Orientation.Portrait) {
+                    mapContainer.width = Screen.width;
+                    mapContainer.height = Screen.height;
+                    mapContainer.rotation = 0;
+                } else if (app.deviceOrientation == Orientation.Landscape) {
+                    mapContainer.width = Screen.height;
+                    mapContainer.height = Screen.width;
+                    mapContainer.rotation = 90;
+                } else if (app.deviceOrientation == Orientation.LandscapeInverted) {
+                    mapContainer.width = Screen.height;
+                    mapContainer.height = Screen.width;
+                    mapContainer.rotation = 270;
+                }
+                map.changed = true;
+            }
+        }
+    }
+
     PositionSource { id: gps }
     Python { id: py }
 
@@ -79,6 +99,8 @@ ApplicationWindow {
     }
 
     onApplicationActiveChanged: {
+        if (!py.ready)
+            return py.onReadyChanged.connect(app.updateKeepAlive);
         app.updateKeepAlive();
     }
 
@@ -90,7 +112,7 @@ ApplicationWindow {
 
     function hideMenu() {
         // Immediately hide the menu, keeping pages intact.
-        app.bottomMargin = app.totalHeight;
+        rootContainer.visible = true;
     }
 
     function showMenu(page, params) {
@@ -102,7 +124,7 @@ ApplicationWindow {
         } else if (app.pageStack.depth < 2) {
             app.pageStack.push("MenuPage.qml");
         }
-        app.bottomMargin = 0;
+        rootContainer.visible = false;
     }
 
     function updateKeepAlive() {
