@@ -25,6 +25,7 @@ Map {
     id: map
     anchors.centerIn: parent
     center: QtPositioning.coordinate(60.169, 24.941)
+    clip: true
     gesture.enabled: true
     height: parent.height
     minimumZoomLevel: 3
@@ -95,7 +96,9 @@ Map {
         if (map.autoRotate) {
             if (map.direction)
                 map.rotation = -map.direction;
-            var dim = Math.ceil(Math.SQRT2 * Math.max(parent.width, parent.height));
+            var dim = Math.floor(Math.sqrt(
+                parent.width*parent.width +
+                    parent.height*parent.height));
             map.width = dim;
             map.height = dim;
         } else {
