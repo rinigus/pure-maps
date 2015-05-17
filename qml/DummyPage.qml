@@ -31,9 +31,13 @@ Page {
     clip: true
     property var tiles: []
     Rectangle {
+        id: background
         // Matches the default QtLocation Map background.
-        anchors.fill: parent
+        anchors.centerIn: parent
         color: "#e6e6e6"
+        height: map.height
+        rotation: map.rotation
+        width: map.width
     }
     onStatusChanged: {
         if (page.status == PageStatus.Active) {
@@ -45,7 +49,7 @@ Page {
     function addTile() {
         // Add a new blank tile to the end of collection.
         var component = Qt.createComponent("CoverTile.qml");
-        page.tiles.push(component.createObject(page));
+        page.tiles.push(component.createObject(background));
     }
     function updateTiles() {
         // Update cover map tiles from map equivalents.
