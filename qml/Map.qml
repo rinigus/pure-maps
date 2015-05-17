@@ -36,17 +36,14 @@ Map {
     property bool hasRoute: false
     property real heightCoords: 0
     property var  maneuvers: []
-    property var  menuButton: menuButton
     property var  pois: []
     property var  position: gps.position
     property var  positionMarker: PositionMarker {}
     property bool ready: false
     property var  route: route
-    property var  scaleBar: scaleBar
     property real scaleX: 0
     property real scaleY: 0
     property bool showNarrative: true
-    property var  statusArea: statusArea
     property var  tiles: []
     property real widthCoords: 0
     property real zoomLevelPrev: 8
@@ -60,11 +57,8 @@ Map {
 
     MapMouseArea {}
     MapTimer {}
-    MenuButton { id: menuButton }
     NarrationTimer {}
     Route { id: route }
-    ScaleBar { id: scaleBar }
-    StatusArea { id: statusArea }
 
     Component.onCompleted: {
         // Load default values and start periodic updates.
@@ -454,19 +448,19 @@ Map {
     function setRoutingStatus(status) {
         // Set values of labels in the navigation status area.
         if (status && map.showNarrative) {
-            map.statusArea.destDist  = status.dest_dist || "";
-            map.statusArea.destTime  = status.dest_time || "";
-            map.statusArea.icon      = status.icon      || "";
-            map.statusArea.manDist   = status.man_dist  || "";
-            map.statusArea.manTime   = status.man_time  || "";
-            map.statusArea.narrative = status.narrative || "";
+            app.statusArea.destDist  = status.dest_dist || "";
+            app.statusArea.destTime  = status.dest_time || "";
+            app.statusArea.icon      = status.icon      || "";
+            app.statusArea.manDist   = status.man_dist  || "";
+            app.statusArea.manTime   = status.man_time  || "";
+            app.statusArea.narrative = status.narrative || "";
         } else {
-            map.statusArea.destDist  = "";
-            map.statusArea.destTime  = "";
-            map.statusArea.icon      = "";
-            map.statusArea.manDist   = "";
-            map.statusArea.manTime   = "";
-            map.statusArea.narrative = "";
+            app.statusArea.destDist  = "";
+            app.statusArea.destTime  = "";
+            app.statusArea.icon      = "";
+            app.statusArea.manDist   = "";
+            app.statusArea.manTime   = "";
+            app.statusArea.narrative = "";
         }
     }
 
@@ -508,7 +502,7 @@ Map {
         map.heightCoords = bbox[3] - bbox[2];
         map.scaleX = map.width / map.widthCoords;
         map.scaleY = map.height / map.heightCoords;
-        map.scaleBar.update();
+        app.scaleBar.update();
         map.changed = false;
     }
 }

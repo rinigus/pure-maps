@@ -23,9 +23,9 @@ import "js/util.js" as Util
 
 Item {
     id: scaleBar
-    anchors.bottom: map.bottom
+    anchors.bottom: parent.bottom
     anchors.bottomMargin: 10
-    anchors.right: map.right
+    anchors.right: parent.right
     anchors.rightMargin: 10
     height: base.height
     opacity: 0.9

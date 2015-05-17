@@ -38,8 +38,11 @@ ApplicationWindow {
     initialPage: DummyPage { id: dummy }
 
     property var  conf: Config {}
+    property var  map: null
+    property var  menuButton: null
     property bool running: applicationActive || cover.active
-    property var map: null;
+    property var  scaleBar: null
+    property var  statusArea: null
 
     Item {
         id: rootContainer
@@ -51,10 +54,16 @@ ApplicationWindow {
             id: mapContainer
             anchors.centerIn: parent
             Map { id: map }
+            MenuButton { id: menuButton }
+            ScaleBar { id: scaleBar }
+            StatusArea { id: statusArea }
             Component.onCompleted: {
                 mapContainer.updateOrientation();
                 app.onDeviceOrientationChanged.connect(mapContainer.updateOrientation);
                 app.map = map;
+                app.menuButton = menuButton;
+                app.scaleBar = scaleBar;
+                app.statusArea = statusArea;
             }
             function updateOrientation() {
                 if (app.deviceOrientation == Orientation.Portrait) {
