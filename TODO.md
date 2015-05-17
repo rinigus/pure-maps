@@ -4,9 +4,8 @@ Poor Maps 0.20
  * [ ] Add option to auto-rotate map to match bearing
  * [X] Allow landscape orientation (requires Sailfish OS 1.1.4
        "Äijänpäivänjärvi" to work correctly)
+ * [ ] Add nearby buttons to POI bubbles
  * [X] Color matching parts of search history items
- * [ ] Allow searching nearby venues around the center of screen
- * [ ] or add nearby buttons to POI bubbles
  * [X] Use long tap instead of plain tap to add POIs
  * [X] Fix error resetting HTTP connection
  * [X] Ensure that blocking HTTP connection pool operations terminate

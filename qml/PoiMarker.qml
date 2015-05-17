@@ -66,7 +66,7 @@ MapQuickItem {
                     text: item.text
                     textFormat: Text.RichText
                     verticalAlignment: Text.AlignTop
-                    width: Math.min(0.6*map.width, implicitWidth)
+                    width: Math.min(0.6*app.contentItem.width, implicitWidth)
                     wrapMode: Text.WordWrap
                 }
                 MouseArea {
