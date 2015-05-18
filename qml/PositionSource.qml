@@ -22,13 +22,11 @@ import QtPositioning 5.3
 PositionSource {
     id: gps
     active: true
-    updateInterval: 1000
     property var coordPrev: undefined
     property var direction: undefined
     property var timeActivate: Date.now()
     property var timePrev: -1
     Component.onCompleted: {
-        gps.initProperties();
         app.onRunningChanged.connect(function() {
             // Turn positioning on when application is reactivated.
             if (app.running) gps.active = true;
@@ -59,10 +57,5 @@ PositionSource {
         } else if (gps.direction && Date.now() - gps.timePrev > 300000) {
             gps.direction = undefined;
         }
-    }
-    function initProperties() {
-        if (!py.ready)
-            return py.onReadyChanged.connect(gps.initProperties);
-        gps.updateInterval = app.conf.get("gps_update_interval");
     }
 }

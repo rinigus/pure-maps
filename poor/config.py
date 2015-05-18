@@ -33,7 +33,6 @@ DEFAULTS = {
     "center": [0.0, 0.0],
     "download_timeout": 10, # seconds
     "geocoder": "mapquest_nominatim",
-    "gps_update_interval": 1, # seconds
     "guide": "foursquare",
     # 'always', 'navigating' or 'never'.
     "keep_alive": "navigating",
