@@ -25,8 +25,7 @@ Item {
     id: scaleBar
     anchors.bottom: parent.bottom
     anchors.bottomMargin: 10
-    anchors.right: parent.right
-    anchors.rightMargin: 10
+    anchors.horizontalCenter: parent.horizontalCenter
     height: base.height
     opacity: 0.9
     visible: scaleWidth > 0
@@ -58,11 +57,11 @@ Item {
     }
     Text {
         anchors.bottom: base.top
-        anchors.bottomMargin: 2
+        anchors.bottomMargin: 4
         anchors.left: base.left
         color: "black"
         font.family: "sans-serif"
-        font.pixelSize: 13
+        font.pixelSize: 15
         font.weight: Font.DemiBold
         horizontalAlignment: Text.AlignHCenter
         text: scaleBar.text
@@ -76,7 +75,7 @@ Item {
             Math.abs(y - scaleBar.coordPrev.latitude) < 0.1) return;
         var bbox = map.getBoundingBox();
         var tail = QtPositioning.coordinate(y, bbox[1]);
-        var dist = Util.siground(map.center.distanceTo(tail)/2.5, 1);
+        var dist = Util.siground(parent.width/map.width * map.center.distanceTo(tail)/2, 1);
         var tail = map.center.atDistanceAndAzimuth(dist, 45);
         var xend = Util.xcoord2xpos(tail.longitude, bbox[0], bbox[1], map.width);
         var yend = Util.ycoord2ypos(tail.latitude, bbox[2], bbox[3], map.height);

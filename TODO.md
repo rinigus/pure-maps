@@ -5,6 +5,7 @@ Poor Maps 0.20
  * [X] Allow landscape orientation (requires Sailfish OS 1.1.4
        "Äijänpäivänjärvi" to work correctly)
  * [ ] Add nearby buttons to POI bubbles
+ * [X] Add GPS accuracy and speed display
  * [X] Color matching parts of search history items
  * [X] Use long tap instead of plain tap to add POIs
  * [X] Fix error resetting HTTP connection

@@ -55,6 +55,7 @@ ApplicationWindow {
             anchors.centerIn: parent
             Map { id: map }
             MenuButton { id: menuButton }
+            Meters { id: meters }
             ScaleBar { id: scaleBar }
             StatusArea { id: statusArea }
             Component.onCompleted: {
