@@ -409,7 +409,7 @@ Map {
             if (map.tiles[i].uid != props.uid) continue;
             map.tiles[i].coordinate.latitude = props.nwy;
             map.tiles[i].coordinate.longitude = props.nwx;
-            map.tiles[i].smooth = map.autoRotate || props.smooth;
+            map.tiles[i].smooth = props.smooth;
             map.tiles[i].type = props.type;
             map.tiles[i].zOffset = props.z;
             map.tiles[i].zoomLevel = props.display_zoom;
