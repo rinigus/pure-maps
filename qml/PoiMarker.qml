@@ -175,6 +175,11 @@ MapQuickItem {
             visible: item.labelVisible
         }
     }
+    transform: Rotation {
+        angle: -map.rotation
+        origin.x: container.width/2
+        origin.y: container.height/2
+    }
     z: 400
     property bool labelVisible: false
     property string link: ""
