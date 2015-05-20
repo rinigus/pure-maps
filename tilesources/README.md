@@ -5,38 +5,38 @@ To implement a tile source you need to write a JSON metadata file. Most
 of the fields are self-explanatory, see the tile sources shipped with
 Poor for examples; non-trivial and optional fields are explained below.
 
- * **"extension"**: The filename extension of map tiles. The "extension"
+ * **`extension`**: The filename extension of map tiles. The "extension"
    field is optional; usually you should define it, it makes things
    faster, but if the image format varies by zoom level, you should
    leave it out. If left out, the image format will be auto-detected
    based on the Content-Type header of the HTTP download response.
 
- * **"format"**: Name of tile format implementation. If you mark the
+ * **`format`**: Name of tile format implementation. If you mark the
    format as "foo", there should be a `foo.py` file in the tilesources
    directory. The following tile format implementations are shipped with
    Poor, for adding you own, see the next section.
 
-   - **"slippy"**: By far the most common format, based on spherical
+   - `"slippy"`: By far the most common format, based on spherical
      Mercator and division into an amount of tiles that quadruples with
      each zoom level. See [documentation][1]. Provides URL parameters
      "x", "y" and "z".
 
-   - **"slippy_elliptical"**: A variation of the "slippy" format, but
+   - `"slippy_elliptical"`: A variation of the "slippy" format, but
      using elliptical Mercator instead of spherical. Provides URL
      parameters "x", "y" and "z".
 
-   - **"quadkey"**: By tile division equivalent to the "slippy" format,
+   - `"quadkey"`: By tile division equivalent to the "slippy" format,
      but with tiles referred to by a single key, see [documentation][2].
      Provides URL parameters "x", "y", "z" and "key".
 
- * **"max_age"**: Maximum amount of days to keep tiles cached on disk.
+ * **`max_age`**: Maximum amount of days to keep tiles cached on disk.
    Usually you should not define this as there is a corresponding global
    preference that gives the user control over up-to-date maps vs. data
    traffic costs. You should, however, define it for tiles that change
    often, e.g. for traffic tiles, try something like 0.01 days,
    i.e. about 15 minutes.
 
- * **"scale"**: The relative pixel density of tiles; e.g. if normal
+ * **`scale`**: The relative pixel density of tiles; e.g. if normal
    tiles are 256x256, then tiles at `scale=2` are 512x512 pixels,
    covering the same geographic area. If omitted, the default `scale=1`
    is assumed. The only allowed values are powers of two: 1, 2, 4, etc.
@@ -47,15 +47,15 @@ Poor for examples; non-trivial and optional fields are explained below.
    tiles available and different ways of displaying them and thus
    different definitions for different sources.
 
- * **"smooth"**: `true` to display tiles with [smooth filtering][3] --
+ * **`smooth`**: `true` to display tiles with [smooth filtering][3] --
    useful for tiles not displayed at natural size. If omitted, defaults
    to `false`.
 
- * **"type"**: Type of tiles: either "basemap" or "overlay". If omitted,
+ * **`type`**: Type of tiles: either "basemap" or "overlay". If omitted,
    the default "basemap" is assumed. Overlays are partly transparent
    tiles stacked on top of basemaps, e.g. hillshade or traffic.
 
- * **"z"**: The stacking order of layer among overlay tiles. "z" is only
+ * **`z`**: The stacking order of layer among overlay tiles. "z" is only
    used for tiles of type "overlay". Low z-values are placed in the
    bottom and high ones on top. Recommended values are 10 for areas, 20
    for lines and 30 for points. Valid values are from 0 to 40.
