@@ -22,14 +22,19 @@ import QtPositioning 5.3
 import Sailfish.Silica 1.0
 
 MapQuickItem {
-    anchorPoint.x: movingImage.width/2
-    anchorPoint.y: movingImage.height/2
+    id: marker
+    anchorPoint.x: sourceItem.width/2
+    anchorPoint.y: sourceItem.height/2
     coordinate: map.position.coordinate
+    height: sourceItem.height
     visible: map.ready
+    width: sourceItem.width
     sourceItem: Item {
+        height: movingImage.height
+        width: movingImage.width
         Image {
             id: movingImage
-            rotation: map.direction || 0
+            rotation: map.rotation + (map.direction || 0)
             source: "icons/position-direction.png"
             visible: map.direction || false
             Behavior on rotation {

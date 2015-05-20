@@ -25,6 +25,8 @@ MapQuickItem {
     id: item
     anchorPoint.x: sourceItem.width/2
     anchorPoint.y: sourceItem.height/2
+    height: sourceItem.height
+    width: sourceItem.width
     sourceItem: Item {
         id: container
         height: image.height
