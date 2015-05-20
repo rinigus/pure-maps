@@ -23,8 +23,8 @@ import Sailfish.Silica 1.0
 
 MapQuickItem {
     id: item
-    anchorPoint.x: container.width/2
-    anchorPoint.y: container.height/2
+    anchorPoint.x: sourceItem.width/2
+    anchorPoint.y: sourceItem.height/2
     sourceItem: Item {
         id: container
         height: image.height
@@ -177,8 +177,8 @@ MapQuickItem {
     }
     transform: Rotation {
         angle: -map.rotation
-        origin.x: container.width/2
-        origin.y: container.height/2
+        origin.x: sourceItem.width/2
+        origin.y: sourceItem.height/2
     }
     z: 400
     property bool labelVisible: false

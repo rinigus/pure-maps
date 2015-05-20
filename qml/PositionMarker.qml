@@ -96,6 +96,11 @@ MapQuickItem {
             onTriggered: bubble.visible = !bubble.visible;
         }
     }
+    transform: Rotation {
+        angle: -map.rotation
+        origin.x: sourceItem.width/2
+        origin.y: sourceItem.height/2
+    }
     z: 300
     Behavior on coordinate {
         CoordinateAnimation {
