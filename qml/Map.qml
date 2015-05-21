@@ -21,6 +21,8 @@ import QtLocation 5.0
 import QtPositioning 5.3
 import "."
 
+import "js/util.js" as Util
+
 Map {
     id: map
     anchors.centerIn: parent
@@ -38,6 +40,7 @@ Map {
     property bool centerFound: true
     property bool changed: true
     property var  direction: gps.direction
+    property var  directionPast: []
     property var  directionPrev: 0
     property bool hasRoute: false
     property real heightCoords: 0
@@ -116,11 +119,16 @@ Map {
 
     onDirectionChanged: {
         var direction = map.direction || 0;
-        if (map.autoRotate && direction) {
-            if (Math.abs(direction - map.directionPrev) > 15)
+        if (!direction) return;
+        map.directionPast.push(direction);
+        while (map.directionPast.length > 3)
+            map.directionPast.shift();
+        if (map.autoRotate) {
+            direction = Util.median(map.directionPast);
+            var directionPrev = -map.rotation;
+            if (Math.abs(direction - directionPrev) > 20)
                 map.rotation = -direction;
         }
-        map.directionPrev = direction;
     }
 
     onHasRouteChanged: {

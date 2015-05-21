@@ -49,7 +49,7 @@ PositionSource {
         var coord = gps.position.coordinate;
         if (!gps.coordPrev) {
             gps.coordPrev = QtPositioning.coordinate(coord.latitude, coord.longitude);
-        } else if (gps.coordPrev.distanceTo(coord) > threshold) {
+        } else if (gps.coordPrev.distanceTo(coord) > 1.5 * threshold) {
             gps.direction = gps.coordPrev.azimuthTo(coord);
             gps.coordPrev.longitude = coord.longitude;
             gps.coordPrev.latitude = coord.latitude;
