@@ -24,8 +24,8 @@ import os
 import poor
 import re
 import sys
-import time
 import threading
+import time
 
 __all__ = ("TileSource",)
 
@@ -119,6 +119,7 @@ class TileSource:
             if imghdr.what("", h=blob) is None:
                 raise Exception("Non-image data received")
             if not self.extension:
+                # XXX: Should we use the above imghdr result here?
                 mimetype = response.getheader("Content-Type")
                 if not mimetype in MIMETYPE_EXTENSIONS:
                     # Don't try to redownload tile
@@ -145,6 +146,7 @@ class TileSource:
                 f.write(blob)
             return path
         except Exception as error:
+            if not self._pool.is_alive(): raise
             connection.close()
             connection = None
             # These probably mean that the connection was broken.

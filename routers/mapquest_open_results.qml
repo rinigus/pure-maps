@@ -53,15 +53,15 @@ Page {
         var routePage = app.pageStack.previousPage();
         var args = [routePage.from, routePage.to];
         py.call("poor.app.router.route", args, function(route) {
-            if (route && route && route.error && route.message) {
+            if (route && route.error && route.message) {
                 busyLabel.text = route.message;
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
                 app.hideMenu();
-                map.addRoute({"x": route.x,
-                              "y": route.y,
-                              "mode": "car",
-                              "attribution": "Routing courtesy of MapQuest."});
+                map.addRoute({x: route.x,
+                              y: route.y,
+                              mode: "car",
+                              attribution: "Routing courtesy of MapQuest."});
 
                 map.autoCenter = false;
                 map.hidePoiLabels();

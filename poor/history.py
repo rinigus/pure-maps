@@ -72,7 +72,6 @@ class HistoryManager:
             print("Failed to read file '{}': {}"
                   .format(path, str(error)),
                   file=sys.stderr)
-
         if not self._place_types:
             # Provide some examples of place types.
             self._place_types = ["ATM",

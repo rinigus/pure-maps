@@ -103,7 +103,8 @@ def parse_text(item):
         rating = float(item["venue"]["rating"])
         subtitle.append('<font color="Theme.highlightColor">'
                         '<big>{:.1f}</big></font>'
-                        '<small>&nbsp;/&nbsp;10</small>'.format(rating))
+                        '<small>&nbsp;/&nbsp;10</small>'
+                        .format(rating))
 
     with poor.util.silent(Exception):
         category = html.escape(item["venue"]["categories"][0]["name"])
