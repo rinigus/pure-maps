@@ -21,8 +21,6 @@ import QtLocation 5.0
 import QtPositioning 5.3
 import "."
 
-import "js/util.js" as Util
-
 Map {
     id: map
     anchors.centerIn: parent
@@ -40,7 +38,6 @@ Map {
     property bool centerFound: true
     property bool changed: true
     property var  direction: gps.direction
-    property var  directionPast: []
     property var  directionPrev: 0
     property bool hasRoute: false
     property real heightCoords: 0
@@ -96,18 +93,12 @@ Map {
     }
 
     onAutoRotateChanged: {
-        if (map.autoRotate) {
-            if (map.direction)
-                map.rotation = -map.direction;
-            var dim = Math.floor(Math.sqrt(
-                parent.width*parent.width +
-                    parent.height*parent.height));
-            map.width = dim;
-            map.height = dim;
+        // Update map size and rotation.
+        map.updateSize();
+        if (map.autoRotate && map.direction) {
+            map.rotation = -map.direction;
         } else {
             map.rotation = 0;
-            map.width = parent.width;
-            map.height = parent.height;
         }
     }
 
@@ -118,16 +109,12 @@ Map {
     }
 
     onDirectionChanged: {
+        // Update map rotation to match direction.
         var direction = map.direction || 0;
-        if (!direction) return;
-        map.directionPast.push(direction);
-        while (map.directionPast.length > 3)
-            map.directionPast.shift();
-        if (map.autoRotate) {
-            direction = Util.median(map.directionPast);
-            var directionPrev = -map.rotation;
-            if (Math.abs(direction - directionPrev) > 20)
-                map.rotation = -direction;
+        if (map.autoRotate && !map.gesture.isPanActive && !map.gesture.isPinchActive &&
+            Math.abs(direction - directionPrev) > 20) {
+            map.rotation = -direction;
+            map.directionPrev = direction;
         }
     }
 
@@ -143,10 +130,12 @@ Map {
             map.centerOnPosition();
         } else if (map.autoCenter && !map.gesture.isPanActive && !map.gesture.isPinchActive) {
             // Center map on position if outside center of screen.
-            // map.toScreenPosition returns NaN when outside screen.
+            // map.toScreenPosition returns NaN when outside component and
+            // otherwise actually relative positions inside the map component,
+            // which can differ from the screen when using auto-rotation.
             var pos = map.toScreenPosition(map.position.coordinate);
-            if (!pos.x || pos.x < 0.333 * map.width  || pos.x > 0.667 * map.width ||
-                !pos.y || pos.y < 0.333 * map.height || pos.y > 0.667 * map.height)
+            if (!pos.x || Math.abs(pos.x - map.width/2)  > app.screenWidth/6 ||
+                !pos.y || Math.abs(pos.y - map.height/2) > app.screenHeight/6)
                 map.centerOnPosition();
         }
     }
@@ -211,7 +200,7 @@ Map {
          *  - x: Array of route polyline longitude coordinates
          *  - y: Array of route polyline latitude coordinates
          *  - attribution: Plain text router attribution
-         *  - mode: Transport mode, "car" or "transit"
+         *  - mode: Transport mode: "car" or "transit"
          */
         map.clearRoute();
         map.route.setPath(route.x, route.y);
@@ -258,7 +247,7 @@ Map {
         map.maneuvers = [];
         map.route.clear();
         py.call_sync("poor.app.narrative.unset", []);
-        map.setRoutingStatus(null);
+        app.setRoutingStatus(null);
         map.saveRoute();
         map.saveManeuvers();
         map.hasRoute = false;
@@ -354,7 +343,7 @@ Map {
     }
 
     function hidePoiLabels() {
-        // Hide label bubble of all POI markers.
+        // Hide label bubbles of all POI markers.
         for (var i = 0; i < map.pois.length; i++)
             map.pois[i].labelVisible = false;
     }
@@ -493,25 +482,6 @@ Map {
         map.changed = true;
     }
 
-    function setRoutingStatus(status) {
-        // Set values of labels in the navigation status area.
-        if (status && map.showNarrative) {
-            app.statusArea.destDist  = status.dest_dist || "";
-            app.statusArea.destTime  = status.dest_time || "";
-            app.statusArea.icon      = status.icon      || "";
-            app.statusArea.manDist   = status.man_dist  || "";
-            app.statusArea.manTime   = status.man_time  || "";
-            app.statusArea.narrative = status.narrative || "";
-        } else {
-            app.statusArea.destDist  = "";
-            app.statusArea.destTime  = "";
-            app.statusArea.icon      = "";
-            app.statusArea.manDist   = "";
-            app.statusArea.manTime   = "";
-            app.statusArea.narrative = "";
-        }
-    }
-
     function setZoomLevel(zoom) {
         // Set the current zoom level.
         zoom = Math.floor(zoom);
@@ -523,7 +493,7 @@ Map {
         map.heightCoords = bbox[3] - bbox[2];
         map.scaleX = map.width / map.widthCoords;
         map.scaleY = map.height / map.heightCoords;
-        map.route.redraw();
+        map.hasRoute && map.route.redraw();
         map.changed = true;
     }
 
@@ -534,6 +504,22 @@ Map {
             map.tiles[i].setZ(map.zoomLevel);
             break;
         }
+    }
+
+    function updateSize() {
+        // Update map width and height to match environment.
+        if (map.autoRotate) {
+            var dim = Math.floor(Math.sqrt(
+                parent.width*parent.width +
+                    parent.height*parent.height));
+            map.width = dim;
+            map.height = dim;
+        } else {
+            map.width = parent.width;
+            map.height = parent.height;
+        }
+        map.hasRoute && map.route.redraw();
+        map.changed = true;
     }
 
     function updateTiles() {

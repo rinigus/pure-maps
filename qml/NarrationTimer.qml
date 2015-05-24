@@ -38,7 +38,7 @@ Timer {
         if (coord.distanceTo(timer.coordPrev) < 10) return;
         var args = [coord.longitude, coord.latitude];
         py.call("poor.app.narrative.get_display", args, function(status) {
-            map.setRoutingStatus(status);
+            app.setRoutingStatus(status);
             timer.coordPrev.longitude = coord.longitude;
             timer.coordPrev.latitude = coord.latitude;
         });

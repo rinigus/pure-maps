@@ -42,9 +42,14 @@ ApplicationWindow {
     property var  menuButton: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
+    property int  screenHeight: Screen.height
+    property int  screenWidth: Screen.width
     property var  statusArea: null
 
     Item {
+        // Since the map is outside the page stack, it cannot use the automatic
+        // orientation handling, which is part of the Page container. Let's
+        // handle orientation changes ourselves with two containers.
         id: rootContainer
         anchors.fill: parent
         height: Screen.height
@@ -53,7 +58,11 @@ ApplicationWindow {
         Item {
             id: mapContainer
             anchors.centerIn: parent
+            height: app.screenHeight
+            width: app.screenWidth
             Map { id: map }
+            // Keep various widgets apart from the map so that they're
+            // not affected by any possible map rotation.
             MenuButton { id: menuButton }
             Meters { id: meters }
             ScaleBar { id: scaleBar }
@@ -67,21 +76,21 @@ ApplicationWindow {
                 app.statusArea = statusArea;
             }
             function updateOrientation() {
-                if (app.deviceOrientation == Orientation.Portrait) {
-                    mapContainer.width = Screen.width;
-                    mapContainer.height = Screen.height;
+                var dor = app.deviceOrientation;
+                if (dor == Orientation.Portrait) {
+                    app.screenWidth = Screen.width;
+                    app.screenHeight = Screen.height;
                     mapContainer.rotation = 0;
-                } else if (app.deviceOrientation == Orientation.Landscape) {
-                    mapContainer.width = Screen.height;
-                    mapContainer.height = Screen.width;
+                } else if (dor == Orientation.Landscape) {
+                    app.screenWidth = Screen.height;
+                    app.screenHeight = Screen.width;
                     mapContainer.rotation = 90;
-                } else if (app.deviceOrientation == Orientation.LandscapeInverted) {
-                    mapContainer.width = Screen.height;
-                    mapContainer.height = Screen.width;
+                } else if (dor == Orientation.LandscapeInverted) {
+                    app.screenWidth = Screen.height;
+                    app.screenHeight = Screen.width;
                     mapContainer.rotation = 270;
                 }
-                map.changed = true;
-                map.hasRoute && map.route.redraw();
+                map.updateSize();
             }
         }
     }
@@ -125,6 +134,25 @@ ApplicationWindow {
     function hideMenu() {
         // Immediately hide the menu, keeping pages intact.
         rootContainer.visible = true;
+    }
+
+    function setRoutingStatus(status) {
+        // Set values of labels in the navigation status area.
+        if (status && map.showNarrative) {
+            app.statusArea.destDist  = status.dest_dist || "";
+            app.statusArea.destTime  = status.dest_time || "";
+            app.statusArea.icon      = status.icon      || "";
+            app.statusArea.manDist   = status.man_dist  || "";
+            app.statusArea.manTime   = status.man_time  || "";
+            app.statusArea.narrative = status.narrative || "";
+        } else {
+            app.statusArea.destDist  = "";
+            app.statusArea.destTime  = "";
+            app.statusArea.icon      = "";
+            app.statusArea.manDist   = "";
+            app.statusArea.manTime   = "";
+            app.statusArea.narrative = "";
+        }
     }
 
     function showMenu(page, params) {
