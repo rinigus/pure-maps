@@ -97,28 +97,14 @@ Page {
         model: ListModel {}
         VerticalScrollDecorator {}
     }
-    Label {
-        id: busyLabel
-        anchors.bottom: busyIndicator.top
-        color: Theme.highlightColor
-        font.pixelSize: Theme.fontSizeLarge
-        height: Theme.itemSizeLarge
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        visible: page.loading || (text != "Calculating" && text != "Removing")
-        width: parent.width
-    }
-    BusyIndicator {
-        id: busyIndicator
-        anchors.centerIn: parent
+    BusyItem {
+        id: busy
         running: page.loading
-        size: BusyIndicatorSize.Large
-        visible: page.loading
     }
     Component.onCompleted: {
         page.loading = true;
         page.title = "";
-        busyLabel.text = "Calculating";
+        busy.text = "Calculating";
         page.populate();
     }
     function populate(query) {
@@ -131,7 +117,7 @@ Page {
                     listView.model.append(results[i]);
             } else {
                 page.title = "";
-                busyLabel.text = "No cache, or error";
+                busy.error = "No cache, or error";
             }
             page.loading = false;
         });

@@ -39,7 +39,7 @@ Item {
         Behavior on rotation {
             RotationAnimation {
                 direction: RotationAnimation.Shortest
-                duration: 500
+                duration: 250
                 easing.type: Easing.Linear
             }
         }
