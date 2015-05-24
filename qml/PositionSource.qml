@@ -19,11 +19,14 @@
 import QtQuick 2.0
 import QtPositioning 5.3
 
+import "js/util.js" as Util
+
 PositionSource {
     id: gps
     active: true
     property var coordPrev: undefined
     property var direction: undefined
+    property var directionHistory: []
     property var timeActivate: Date.now()
     property var timePrev: -1
     Component.onCompleted: {
@@ -37,20 +40,27 @@ PositionSource {
         if (gps.active) gps.timeActivate = Date.now();
     }
     onPositionChanged: {
-        // XXX: Calculate direction, since it's missing from gps.position.
+        // XXX: Direction is missing from gps.position.
         // http://bugreports.qt.io/browse/QTBUG-36298
         if (!app.running && (gps.coordPrev || Date.now() - gps.timeActivate > 180000))
             // If application is no longer active, turn positioning off immediately
             // if we already have a lock, otherwise keep trying for a couple minutes
             // and give up if we still don't gain that lock.
             gps.active = false;
+        // Calculate direction as a median of individual direction values
+        // calculated after significant changes in position. This should be
+        // more stable than any direct value and usable with map.autoRotate.
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 40) return;
         var coord = gps.position.coordinate;
         if (!gps.coordPrev) {
             gps.coordPrev = QtPositioning.coordinate(coord.latitude, coord.longitude);
         } else if (gps.coordPrev.distanceTo(coord) > 1.5 * threshold) {
-            gps.direction = gps.coordPrev.azimuthTo(coord);
+            var direction = gps.coordPrev.azimuthTo(coord);
+            gps.directionHistory.push(direction);
+            while (map.directionHistory.length > 3)
+                map.directionHistory.shift();
+            gps.direction = Util.median(gps.directionHistory);
             gps.coordPrev.longitude = coord.longitude;
             gps.coordPrev.latitude = coord.latitude;
             gps.timePrev = Date.now();
