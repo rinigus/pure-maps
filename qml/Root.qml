@@ -1,0 +1,80 @@
+/* -*- coding: utf-8-unix -*-
+ *
+ * Copyright (C) 2015 Osmo Salomaa
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+import "."
+
+/*
+ * Since the map is outside the page stack, it cannot use the automatic
+ * orientation handling, which is part of the Page container. Let's
+ * handle orientation changes ourselves with two wrapper containers.
+ */
+
+Item {
+    anchors.fill: parent
+    height: Screen.height
+    width: Screen.width
+    z: 1000000
+    Item {
+        id: revolver
+        anchors.centerIn: parent
+        height: app.screenHeight
+        width: app.screenWidth
+        Behavior on rotation {
+            RotationAnimation {
+                direction: RotationAnimation.Shortest
+                duration: 500
+                easing.type: Easing.Linear
+            }
+        }
+        Map { id: map }
+        MenuButton { id: menuButton }
+        Meters { id: meters }
+        NavigationArea { id: navigationArea }
+        ScaleBar { id: scaleBar }
+        Component.onCompleted: {
+            revolver.updateOrientation();
+            app.onDeviceOrientationChanged.connect(revolver.updateOrientation);
+            app.map = map;
+            app.menuButton = menuButton;
+            app.scaleBar = scaleBar;
+            app.navigationArea = navigationArea;
+        }
+        function updateOrientation() {
+            switch (app.deviceOrientation) {
+            case Orientation.Portrait:
+                app.screenWidth = Screen.width;
+                app.screenHeight = Screen.height;
+                revolver.rotation = 0;
+                break;
+            case Orientation.Landscape:
+                app.screenWidth = Screen.height;
+                app.screenHeight = Screen.width;
+                revolver.rotation = 90;
+                break;
+            case Orientation.LandscapeInverted:
+                app.screenWidth = Screen.height;
+                app.screenHeight = Screen.width;
+                revolver.rotation = 270;
+                break;
+            }
+            map.updateSize();
+        }
+    }
+}

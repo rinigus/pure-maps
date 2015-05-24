@@ -20,7 +20,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Rectangle {
-    id: statusArea
+    id: navigationArea
     anchors.left: parent.left
     anchors.top: parent.top
     color: "#bb000000"
@@ -41,34 +41,34 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: parent.top
         // Ensure a sufficiently large tap target.
-        height: statusArea.destDist.length > 0 ?
+        height: navigationArea.destDist.length > 0 ?
             Math.max(parent.height, Theme.itemSizeSmall) : 0
         highlightedColor: "#00000000"
         Image {
             id: iconImage
             anchors.left: parent.left
             fillMode: Image.Pad
-            height: statusArea.icon.length > 0 ? Math.max(
+            height: navigationArea.icon.length > 0 ? Math.max(
                 implicitHeight + Theme.paddingLarge*2,
                 manLabel.height + narrativeLabel.height + Theme.paddingMedium/2): 0
             horizontalAlignment: Image.AlignHCenter
-            source: statusArea.icon.length > 0 ?
-                "icons/" + statusArea.icon + ".png" :
+            source: navigationArea.icon.length > 0 ?
+                "icons/" + navigationArea.icon + ".png" :
                 "icons/alert.png"
             verticalAlignment: Image.AlignVCenter
-            width: statusArea.icon.length > 0 ?
+            width: navigationArea.icon.length > 0 ?
                 implicitWidth + 2*Theme.paddingLarge :
                 Theme.paddingMedium
         }
         Label {
             id: manLabel
             anchors.left: iconImage.right
-            color: statusArea.notify ? Theme.highlightColor : "white"
-            font.family: statusArea.notify ? Theme.fontFamilyHeading : Theme.fontFamily
-            font.pixelSize: statusArea.notify ?
+            color: navigationArea.notify ? Theme.highlightColor : "white"
+            font.family: navigationArea.notify ? Theme.fontFamilyHeading : Theme.fontFamily
+            font.pixelSize: navigationArea.notify ?
                 Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
-            height: statusArea.destDist.length > 0 ? implicitHeight : 0
-            text: statusArea.manDist
+            height: navigationArea.destDist.length > 0 ? implicitHeight : 0
+            text: navigationArea.manDist
             verticalAlignment: Text.AlignBottom
         }
         Label {
@@ -79,9 +79,9 @@ Rectangle {
             color: "white"
             font.pixelSize: Theme.fontSizeExtraSmall
             height: manLabel.height
-            text: statusArea.destTime.length > 0 ?
-                statusArea.destDist + "  ·  " + statusArea.destTime :
-                statusArea.destDist
+            text: navigationArea.destTime.length > 0 ?
+                navigationArea.destDist + "  ·  " + navigationArea.destTime :
+                navigationArea.destDist
         }
         Label {
             id: narrativeLabel
@@ -91,9 +91,9 @@ Rectangle {
             anchors.top: manLabel.bottom
             color: "white"
             font.pixelSize: Theme.fontSizeSmall
-            height: statusArea.narrative.length > 0 ?
+            height: navigationArea.narrative.length > 0 ?
                 implicitHeight + 0.75*Theme.paddingMedium : 0
-            text: statusArea.narrative
+            text: navigationArea.narrative
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
         }

@@ -93,8 +93,8 @@ CoverBackground {
         anchors.bottom: parent.verticalCenter
         anchors.bottomMargin: Theme.paddingLarge
         anchors.horizontalCenter: parent.horizontalCenter
-        source: app.statusArea.icon.length > 0 ?
-            "icons/" + app.statusArea.icon + ".png" :
+        source: app.navigationArea.icon.length > 0 ?
+            "icons/" + app.navigationArea.icon + ".png" :
             "icons/alert.png"
         visible: cover.showNarrative
     }
@@ -103,7 +103,7 @@ CoverBackground {
         anchors.top: parent.verticalCenter
         font.family: Theme.fontFamilyHeading
         font.pixelSize: Theme.fontSizeExtraLarge
-        text: app.statusArea.manDist
+        text: app.navigationArea.manDist
         visible: cover.showNarrative
     }
     Label {
@@ -113,7 +113,7 @@ CoverBackground {
         anchors.leftMargin: Theme.paddingLarge
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeExtraSmall
-        text: app.statusArea.destDist
+        text: app.navigationArea.destDist
         visible: cover.showNarrative
     }
     Label {
@@ -123,7 +123,7 @@ CoverBackground {
         anchors.rightMargin: Theme.paddingLarge
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeExtraSmall
-        text: app.statusArea.destTime
+        text: app.navigationArea.destTime
         visible: cover.showNarrative
     }
     function addTile() {

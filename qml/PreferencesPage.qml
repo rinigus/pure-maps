@@ -54,7 +54,7 @@ Page {
                 onCheckedChanged: {
                     map.showNarrative = showNarrativeItem.checked;
                     app.conf.set("show_routing_narrative", map.showNarrative);
-                    map.showNarrative || app.setRoutingStatus(null);
+                    map.showNarrative || app.setNavigationStatus(null);
                 }
             }
             ComboBox {

@@ -40,61 +40,13 @@ ApplicationWindow {
     property var  conf: Config {}
     property var  map: null
     property var  menuButton: null
+    property var  navigationArea: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
     property int  screenHeight: Screen.height
     property int  screenWidth: Screen.width
-    property var  statusArea: null
 
-    Item {
-        // Since the map is outside the page stack, it cannot use the automatic
-        // orientation handling, which is part of the Page container. Let's
-        // handle orientation changes ourselves with two containers.
-        id: rootContainer
-        anchors.fill: parent
-        height: Screen.height
-        width: Screen.width
-        z: 1000000
-        Item {
-            id: mapContainer
-            anchors.centerIn: parent
-            height: app.screenHeight
-            width: app.screenWidth
-            Map { id: map }
-            // Keep various widgets apart from the map so that they're
-            // not affected by any possible map rotation.
-            MenuButton { id: menuButton }
-            Meters { id: meters }
-            ScaleBar { id: scaleBar }
-            StatusArea { id: statusArea }
-            Component.onCompleted: {
-                mapContainer.updateOrientation();
-                app.onDeviceOrientationChanged.connect(mapContainer.updateOrientation);
-                app.map = map;
-                app.menuButton = menuButton;
-                app.scaleBar = scaleBar;
-                app.statusArea = statusArea;
-            }
-            function updateOrientation() {
-                var dor = app.deviceOrientation;
-                if (dor == Orientation.Portrait) {
-                    app.screenWidth = Screen.width;
-                    app.screenHeight = Screen.height;
-                    mapContainer.rotation = 0;
-                } else if (dor == Orientation.Landscape) {
-                    app.screenWidth = Screen.height;
-                    app.screenHeight = Screen.width;
-                    mapContainer.rotation = 90;
-                } else if (dor == Orientation.LandscapeInverted) {
-                    app.screenWidth = Screen.height;
-                    app.screenHeight = Screen.width;
-                    mapContainer.rotation = 270;
-                }
-                map.updateSize();
-            }
-        }
-    }
-
+    Root { id: root }
     PositionSource { id: gps }
     Python { id: py }
 
@@ -133,25 +85,25 @@ ApplicationWindow {
 
     function hideMenu() {
         // Immediately hide the menu, keeping pages intact.
-        rootContainer.visible = true;
+        root.visible = true;
     }
 
-    function setRoutingStatus(status) {
+    function setNavigationStatus(status) {
         // Set values of labels in the navigation status area.
         if (status && map.showNarrative) {
-            app.statusArea.destDist  = status.dest_dist || "";
-            app.statusArea.destTime  = status.dest_time || "";
-            app.statusArea.icon      = status.icon      || "";
-            app.statusArea.manDist   = status.man_dist  || "";
-            app.statusArea.manTime   = status.man_time  || "";
-            app.statusArea.narrative = status.narrative || "";
+            app.navigationArea.destDist  = status.dest_dist || "";
+            app.navigationArea.destTime  = status.dest_time || "";
+            app.navigationArea.icon      = status.icon      || "";
+            app.navigationArea.manDist   = status.man_dist  || "";
+            app.navigationArea.manTime   = status.man_time  || "";
+            app.navigationArea.narrative = status.narrative || "";
         } else {
-            app.statusArea.destDist  = "";
-            app.statusArea.destTime  = "";
-            app.statusArea.icon      = "";
-            app.statusArea.manDist   = "";
-            app.statusArea.manTime   = "";
-            app.statusArea.narrative = "";
+            app.navigationArea.destDist  = "";
+            app.navigationArea.destTime  = "";
+            app.navigationArea.icon      = "";
+            app.navigationArea.manDist   = "";
+            app.navigationArea.manTime   = "";
+            app.navigationArea.narrative = "";
         }
     }
 
@@ -164,7 +116,7 @@ ApplicationWindow {
         } else if (app.pageStack.depth < 2) {
             app.pageStack.push("MenuPage.qml");
         }
-        rootContainer.visible = false;
+        root.visible = false;
     }
 
     function updateKeepAlive() {
