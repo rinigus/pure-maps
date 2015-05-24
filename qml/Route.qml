@@ -54,7 +54,7 @@ Canvas {
         // Needed since Sailfish OS 1.1.0.38.
         interval: 500
         repeat: true
-        running: canvas.hasPath
+        running: app.running && canvas.hasPath
         onTriggered: canvas.changed && canvas.requestPaint();
     }
 
