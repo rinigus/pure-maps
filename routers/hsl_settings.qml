@@ -77,9 +77,9 @@ Column {
             onClicked: {
                 var dialog = pageStack.push(
                     "Sailfish.Silica.TimePickerDialog", {
-                        hourMode: DateTime.TwentyFourHours,
-                        hour: time.getHours(),
-                        minute: time.getMinutes()
+                        "hourMode": DateTime.TwentyFourHours,
+                        "hour": time.getHours(),
+                        "minute": time.getMinutes()
                 });
                 dialog.accepted.connect(function() {
                     timeButton.time = dialog.time;

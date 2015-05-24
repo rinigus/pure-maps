@@ -58,10 +58,10 @@ Page {
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
                 app.hideMenu();
-                map.addRoute({x: route.x,
-                              y: route.y,
-                              mode: "car",
-                              attribution: "Routing courtesy of MapQuest."});
+                map.addRoute({"x": route.x,
+                              "y": route.y,
+                              "mode": "car",
+                              "attribution": "Routing courtesy of MapQuest."});
 
                 map.autoCenter = false;
                 map.hidePoiLabels();

@@ -135,10 +135,10 @@ Page {
             onClicked: {
                 app.hideMenu();
                 map.addRoute({
-                    x: listItem.result.x,
-                    y: listItem.result.y,
-                    mode: "transit",
-                    attribution: "Routing courtesy of HSL."});
+                    "x": listItem.result.x,
+                    "y": listItem.result.y,
+                    "mode": "transit",
+                    "attribution": "Routing courtesy of HSL."});
 
                 map.autoCenter = false;
                 map.hidePoiLabels();
