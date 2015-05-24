@@ -108,7 +108,7 @@ ApplicationWindow {
     }
 
     function showMenu(page, params) {
-        // Show a menu page, either given, last viewed, or menu.
+        // Show a menu page, either given, last viewed, or the main menu.
         dummy.updateTiles();
         if (page) {
             app.pageStack.pop(dummy, PageStackAction.Immediate);
