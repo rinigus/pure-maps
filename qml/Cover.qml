@@ -93,7 +93,7 @@ CoverBackground {
         anchors.bottom: parent.verticalCenter
         anchors.bottomMargin: Theme.paddingLarge
         anchors.horizontalCenter: parent.horizontalCenter
-        source: app.navigationArea.icon.length > 0 ?
+        source: app.navigationArea.icon ?
             "icons/" + app.navigationArea.icon + ".png" :
             "icons/alert.png"
         visible: cover.showNarrative

@@ -31,8 +31,8 @@ Page {
     clip: true
     property var tiles: []
     Rectangle {
-        id: background
         // Matches the default QtLocation Map background.
+        id: background
         anchors.centerIn: parent
         color: "#e6e6e6"
         height: map.height

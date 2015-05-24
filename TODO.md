@@ -2,6 +2,7 @@ Poor Maps 0.20
 ==============
 
  * [X] Add option to auto-rotate map to match bearing
+ * [ ] Add a north arrow visible when auto-rotate is on
  * [X] Allow landscape orientation (requires Sailfish OS 1.1.4
        "Äijänpäivänjärvi" to work correctly)
  * [ ] Add nearby buttons to POI bubbles

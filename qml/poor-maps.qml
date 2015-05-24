@@ -38,6 +38,7 @@ ApplicationWindow {
     initialPage: DummyPage { id: dummy }
 
     property var  conf: Config {}
+    property bool inMenu: !root.visible
     property var  map: null
     property var  menuButton: null
     property var  navigationArea: null
