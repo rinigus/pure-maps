@@ -53,21 +53,9 @@ Page {
             ContextMenu {
                 id: contextMenu
                 MenuItem {
-                    text: "Remove older than one year"
+                    text: "Remove older than one week"
                     onClicked: remorse.execute(listItem, "Removing", function() {
-                        page.purge(model.index, model.directory, 365);
-                    });
-                }
-                MenuItem {
-                    text: "Remove older than six months"
-                    onClicked: remorse.execute(listItem, "Removing", function() {
-                        page.purge(model.index, model.directory, 180);
-                    });
-                }
-                MenuItem {
-                    text: "Remove older than three months"
-                    onClicked: remorse.execute(listItem, "Removing", function() {
-                        page.purge(model.index, model.directory, 90);
+                        page.purge(model.index, model.directory, 7);
                     });
                 }
                 MenuItem {
@@ -77,15 +65,27 @@ Page {
                     });
                 }
                 MenuItem {
-                    text: "Remove older than one week"
+                    text: "Remove older than three months"
                     onClicked: remorse.execute(listItem, "Removing", function() {
-                        page.purge(model.index, model.directory, 7);
+                        page.purge(model.index, model.directory, 90);
+                    });
+                }
+                MenuItem {
+                    text: "Remove older than six months"
+                    onClicked: remorse.execute(listItem, "Removing", function() {
+                        page.purge(model.index, model.directory, 180);
+                    });
+                }
+                MenuItem {
+                    text: "Remove older than one year"
+                    onClicked: remorse.execute(listItem, "Removing", function() {
+                        page.purge(model.index, model.directory, 365);
                     });
                 }
                 MenuItem {
                     text: "Remove all"
                     onClicked: remorse.execute(listItem, "Removing", function() {
-                        py.call("poor.cache.purge_directory", [model.directory, 0], null);
+                        page.purge(model.index, model.directory, 0);
                         listItem.visible = false;
                     });
                 }
