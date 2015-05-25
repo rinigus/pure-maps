@@ -9,6 +9,7 @@ Poor Maps 0.20
  * [X] Add GPS accuracy and speed display
  * [X] Color matching parts of search history items
  * [X] Use long tap instead of plain tap to add POIs
+ * [X] Hide POI bubbles on plain tap outside bubble
  * [X] Fix error resetting HTTP connection
  * [X] Ensure that blocking HTTP connection pool operations terminate
        immediately and gracefully on application exit
