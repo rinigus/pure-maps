@@ -147,7 +147,7 @@ Map {
          * Expected fields for each item in in maneuvers:
          *  - x: Longitude coordinate of maneuver point
          *  - y: Latitude coordinate of maneuver point
-         *  - icon: Name of maneuver icon (optional, defaults to 'alert')
+         *  - icon: Name of maneuver icon (optional, defaults to "alert")
          *  - narrative: Plain text instruction of maneuver
          *  - passive: true if point doesn't require any actual action
          *    (optional, defaults to false)
@@ -286,6 +286,7 @@ Map {
             if (y < ymin) ymin = y;
             if (y > ymax) ymax = y;
         }
+        map.autoCenter = false;
         map.setCenter((xmin + xmax)/2, (ymin + ymax)/2);
         map.setZoomLevel(map.minimumZoomLevel);
         // Calculate the greatest offset of a single point from the center
@@ -476,8 +477,8 @@ Map {
 
     function setCenter(x, y) {
         // Set the current center position.
-        if (!x || !y) return;
         // Create a new object to trigger animation.
+        if (!x || !y) return;
         map.center = QtPositioning.coordinate(y, x);
         map.changed = true;
     }

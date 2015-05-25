@@ -63,7 +63,6 @@ Page {
                               "mode": "car",
                               "attribution": "Routing courtesy of Mapzen OSRM."});
 
-                map.autoCenter = false;
                 map.hidePoiLabels();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);

@@ -140,7 +140,6 @@ Page {
                     "mode": "transit",
                     "attribution": "Routing courtesy of HSL."});
 
-                map.autoCenter = false;
                 map.hidePoiLabels();
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);

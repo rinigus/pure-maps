@@ -96,7 +96,6 @@ Page {
                     app.hideMenu();
                     map.clearPois();
                     map.addPois(pois);
-                    map.autoCenter = false;
                     map.fitViewToPois(pois);
                 }
             }
