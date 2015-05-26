@@ -58,8 +58,8 @@ PositionSource {
         } else if (gps.coordPrev.distanceTo(coord) > 1.5 * threshold) {
             var direction = gps.coordPrev.azimuthTo(coord);
             gps.directionHistory.push(direction);
-            while (map.directionHistory.length > 3)
-                map.directionHistory.shift();
+            while (gps.directionHistory.length > 3)
+                gps.directionHistory.shift();
             gps.direction = Util.median(gps.directionHistory);
             gps.coordPrev.longitude = coord.longitude;
             gps.coordPrev.latitude = coord.latitude;
