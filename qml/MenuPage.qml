@@ -24,6 +24,7 @@ import "."
 Page {
     id: page
     allowedOrientations: ~Orientation.PortraitInverse
+    property var iconWidth: 0
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
@@ -42,6 +43,9 @@ Page {
                     horizontalAlignment: Image.AlignRight
                     source: "image://theme/icon-m-search"
                     width: implicitWidth + Theme.paddingLarge
+                    Component.onCompleted: {
+                        page.iconWidth = searchImage.sourceSize.width;
+                    }
                 }
                 ListItemLabel {
                     anchors.left: searchImage.right
@@ -133,7 +137,6 @@ Page {
                     fillMode: Image.Pad
                     height: Theme.itemSizeSmall
                     horizontalAlignment: Image.AlignRight
-                    smooth: true
                     source: "image://theme/icon-m-share"
                     width: implicitWidth + Theme.paddingLarge
                 }
@@ -242,7 +245,7 @@ Page {
                 anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
                 checked: map.autoRotate
                 height: Theme.itemSizeSmall
-                text: "Auto-rotate on bearing"
+                text: "Auto-rotate to match direction"
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
                         autoRotateItem.checked = map.autoRotate;
@@ -257,13 +260,28 @@ Page {
                 contentHeight: Theme.itemSizeSmall
                 ListItemLabel {
                     anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingLarge + 64 + Theme.paddingMedium
+                    anchors.leftMargin: Theme.paddingLarge +
+                        page.iconWidth + Theme.paddingMedium
                     color: preferencesItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
                     text: "Preferences"
                 }
                 onClicked: app.pageStack.push("PreferencesPage.qml");
+            }
+            ListItem {
+                id: aboutItem
+                contentHeight: Theme.itemSizeSmall
+                ListItemLabel {
+                    anchors.left: parent.left
+                    anchors.leftMargin: Theme.paddingLarge +
+                        page.iconWidth + Theme.paddingMedium
+                    color: aboutItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "About Poor Maps"
+                }
+                onClicked: app.pageStack.push("AboutPage.qml");
             }
         }
         VerticalScrollDecorator {}
