@@ -24,7 +24,7 @@ Rectangle {
     anchors.left: parent.left
     anchors.top: parent.top
     color: "#bb000000"
-    height: destDist.length > 0 ? Math.max(
+    height: destDist ? Math.max(
         iconImage.height, manLabel.height +
             narrativeLabel.height + Theme.paddingMedium/2) : 0
     width: parent.width
@@ -35,28 +35,28 @@ Rectangle {
     property string manDist: ""
     property string manTime: ""
     property string narrative: ""
-    property bool notify: icon.length > 0 || narrative.length > 0
+    property bool notify: icon || narrative
     BackgroundItem {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
         // Ensure a sufficiently large tap target.
-        height: navigationArea.destDist.length > 0 ?
+        height: navigationArea.destDist ?
             Math.max(parent.height, Theme.itemSizeSmall) : 0
         highlightedColor: "#00000000"
         Image {
             id: iconImage
             anchors.left: parent.left
             fillMode: Image.Pad
-            height: navigationArea.icon.length > 0 ? Math.max(
+            height: navigationArea.icon ? Math.max(
                 implicitHeight + Theme.paddingLarge*2,
                 manLabel.height + narrativeLabel.height + Theme.paddingMedium/2): 0
             horizontalAlignment: Image.AlignHCenter
-            source: navigationArea.icon.length > 0 ?
+            source: navigationArea.icon ?
                 "icons/" + navigationArea.icon + ".png" :
                 "icons/alert.png"
             verticalAlignment: Image.AlignVCenter
-            width: navigationArea.icon.length > 0 ?
+            width: navigationArea.icon ?
                 implicitWidth + 2*Theme.paddingLarge :
                 Theme.paddingMedium
         }
@@ -67,7 +67,7 @@ Rectangle {
             font.family: navigationArea.notify ? Theme.fontFamilyHeading : Theme.fontFamily
             font.pixelSize: navigationArea.notify ?
                 Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
-            height: navigationArea.destDist.length > 0 ? implicitHeight : 0
+            height: navigationArea.destDist ? implicitHeight : 0
             text: navigationArea.manDist
             verticalAlignment: Text.AlignBottom
         }
@@ -79,7 +79,7 @@ Rectangle {
             color: "white"
             font.pixelSize: Theme.fontSizeExtraSmall
             height: manLabel.height
-            text: navigationArea.destTime.length > 0 ?
+            text: navigationArea.destTime ?
                 navigationArea.destDist + "  ·  " + navigationArea.destTime :
                 navigationArea.destDist
         }
@@ -91,7 +91,7 @@ Rectangle {
             anchors.top: manLabel.bottom
             color: "white"
             font.pixelSize: Theme.fontSizeSmall
-            height: navigationArea.narrative.length > 0 ?
+            height: navigationArea.narrative ?
                 implicitHeight + 0.75*Theme.paddingMedium : 0
             text: navigationArea.narrative
             verticalAlignment: Text.AlignTop

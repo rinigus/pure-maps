@@ -45,7 +45,7 @@ Dialog {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 // Description field added in 0.13.
-                height: model.description && model.description.length > 0 ? implicitHeight : 0
+                height: model.description ? implicitHeight : 0
                 text: model.description
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap

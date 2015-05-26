@@ -110,7 +110,7 @@ Page {
         var found = [], n = 0;
         for (var i = 0; i < page.history.length; i++) {
             var historyItem = page.history[i].toLowerCase();
-            if (query.length > 0 && historyItem.indexOf(query) == 0) {
+            if (query && historyItem.indexOf(query) == 0) {
                 found[n++] = page.history[i];
                 if (found.length >= listView.count) break;
             } else if (query.length == 0 || historyItem.indexOf(query) > 0) {
