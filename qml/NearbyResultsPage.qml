@@ -68,8 +68,7 @@ Page {
                               "text": model.text || model.title,
                               "link": model.link || ""}]);
 
-                for (var i = 0; i < map.pois.length; i++)
-                    map.pois[i].labelVisible = false;
+                map.hidePoiLabels();
                 map.pois[map.pois.length-1].labelVisible = true;
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
@@ -86,12 +85,13 @@ Page {
                     var pois = [];
                     for (var i = 0; i < listView.model.count; i++) {
                         var item = listView.model.get(i);
-                        pois.push({"x": item.x,
-                                   "y": item.y,
-                                   "title": item.title,
-                                   "text": item.text || item.title,
-                                   "link": item.link || ""});
-
+                        pois.push({
+                            "x": item.x,
+                            "y": item.y,
+                            "title": item.title,
+                            "text": item.text || item.title,
+                            "link": item.link || ""
+                        });
                     }
                     app.hideMenu();
                     map.clearPois();
@@ -102,23 +102,9 @@ Page {
         }
         VerticalScrollDecorator {}
     }
-    Label {
-        id: busyLabel
-        anchors.bottom: busyIndicator.top
-        color: Theme.highlightColor
-        font.pixelSize: Theme.fontSizeLarge
-        height: Theme.itemSizeLarge
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        visible: page.loading || text != "Searching"
-        width: parent.width
-    }
-    BusyIndicator {
-        id: busyIndicator
-        anchors.centerIn: parent
+    BusyItem {
+        id: busy
         running: page.loading
-        size: BusyIndicatorSize.Large
-        visible: page.loading
     }
     onStatusChanged: {
         if (page.status == PageStatus.Activating) {
@@ -126,7 +112,7 @@ Page {
             listView.model.clear();
             page.loading = true;
             page.title = "";
-            busyLabel.text = "Searching";
+            busy.text = "Searching";
         } else if (page.status == PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
@@ -142,7 +128,7 @@ Page {
         py.call("poor.app.guide.nearby", [query, near, radius], function(results) {
             if (results && results.error && results.message) {
                 page.title = "";
-                busyLabel.text = results.message;
+                busy.error = results.message;
             } else if (results.length > 0) {
                 page.title = results.length == 1 ?
                     "1 Result" : results.length + " Results";
@@ -150,7 +136,7 @@ Page {
                     listView.model.append(results[i]);
             } else {
                 page.title = "";
-                busyLabel.text = "No results";
+                busy.text = "No results";
             }
             page.loading = false;
             page.populated = true;
