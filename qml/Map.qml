@@ -112,7 +112,7 @@ Map {
         // Update map rotation to match direction.
         var direction = map.direction || 0;
         if (map.autoRotate && !map.gesture.isPanActive && !map.gesture.isPinchActive &&
-            Math.abs(direction - directionPrev) > 20) {
+            Math.abs(direction - directionPrev) > 15) {
             map.rotation = -direction;
             map.directionPrev = direction;
         }

@@ -23,49 +23,50 @@ import "js/util.js" as Util
 
 PositionSource {
     id: gps
-    active: true
-    property var coordPrev: undefined
+    // If application is no longer active, turn positioning off immediately
+    // if we already have a lock, otherwise keep trying for a couple minutes
+    // and give up if we still don't gain that lock.
+    active: app.running || (coordHistory.length == 0 & timePosition - timeActivate > 180000)
+    property var coordHistory: []
     property var direction: undefined
     property var directionHistory: []
     property var timeActivate: Date.now()
-    property var timePrev: -1
-    Component.onCompleted: {
-        app.onRunningChanged.connect(function() {
-            // Turn positioning on when application is reactivated.
-            if (app.running) gps.active = true;
-        });
-    }
+    property var timeDirection: -1
+    property var timePosition: -1
     onActiveChanged: {
         // Keep track when positioning was (re)activated.
         if (gps.active) gps.timeActivate = Date.now();
     }
     onPositionChanged: {
-        // XXX: Direction is missing from gps.position.
-        // http://bugreports.qt.io/browse/QTBUG-36298
-        if (!app.running && (gps.coordPrev || Date.now() - gps.timeActivate > 180000))
-            // If application is no longer active, turn positioning off immediately
-            // if we already have a lock, otherwise keep trying for a couple minutes
-            // and give up if we still don't gain that lock.
-            gps.active = false;
         // Calculate direction as a median of individual direction values
         // calculated after significant changes in position. This should be
         // more stable than any direct value and usable with map.autoRotate.
+        gps.timePosition = Date.now();
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 40) return;
         var coord = gps.position.coordinate;
-        if (!gps.coordPrev) {
-            gps.coordPrev = QtPositioning.coordinate(coord.latitude, coord.longitude);
-        } else if (gps.coordPrev.distanceTo(coord) > 1.5 * threshold) {
-            var direction = gps.coordPrev.azimuthTo(coord);
+        if (gps.coordHistory.length == 0)
+            gps.coordHistory.push(QtPositioning.coordinate(
+                coord.latitude, coord.longitude));
+        var coordPrev = gps.coordHistory[gps.coordHistory.length-1];
+        if (coordPrev.distanceTo(coord) > threshold) {
+            // XXX: Direction is missing from gps.position.
+            // http://bugreports.qt.io/browse/QTBUG-36298
+            var direction = coordPrev.azimuthTo(coord);
             gps.directionHistory.push(direction);
-            while (gps.directionHistory.length > 3)
-                gps.directionHistory.shift();
-            gps.direction = Util.median(gps.directionHistory);
-            gps.coordPrev.longitude = coord.longitude;
-            gps.coordPrev.latitude = coord.latitude;
-            gps.timePrev = Date.now();
-        } else if (gps.direction && Date.now() - gps.timePrev > 300000) {
+            gps.directionHistory = gps.directionHistory.slice(-3);
+            if (gps.directionHistory.length >= 3 &&
+                gps.coordHistory[0].distanceTo(coord) > 2*threshold) {
+                gps.direction = Util.median(gps.directionHistory);
+                gps.timeDirection = Date.now();
+                gps.coordHistory.push(coord);
+                gps.coordHistory = gps.coordHistory.slice(-3);
+            }
+        } else if (Date.now() - gps.timeDirection > 300000) {
+            // Clear direction if we have not seen any valid
+            // direction updates in a while.
             gps.direction = undefined;
+            gps.directionHistory = [];
         }
     }
 }
