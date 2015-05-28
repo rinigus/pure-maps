@@ -39,8 +39,7 @@ ApplicationWindow {
     property var  conf: Config {}
     property bool inMenu: !root.visible
     property var  map: null
-    property var  menuButton: null
-    property var  navigationArea: null
+    property var  navigationBlock: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
     property int  screenHeight: Screen.height
@@ -90,19 +89,19 @@ ApplicationWindow {
     function setNavigationStatus(status) {
         // Set values of labels in the navigation status area.
         if (status && map.showNarrative) {
-            app.navigationArea.destDist  = status.dest_dist || "";
-            app.navigationArea.destTime  = status.dest_time || "";
-            app.navigationArea.icon      = status.icon      || "";
-            app.navigationArea.manDist   = status.man_dist  || "";
-            app.navigationArea.manTime   = status.man_time  || "";
-            app.navigationArea.narrative = status.narrative || "";
+            app.navigationBlock.destDist  = status.dest_dist || "";
+            app.navigationBlock.destTime  = status.dest_time || "";
+            app.navigationBlock.icon      = status.icon      || "";
+            app.navigationBlock.manDist   = status.man_dist  || "";
+            app.navigationBlock.manTime   = status.man_time  || "";
+            app.navigationBlock.narrative = status.narrative || "";
         } else {
-            app.navigationArea.destDist  = "";
-            app.navigationArea.destTime  = "";
-            app.navigationArea.icon      = "";
-            app.navigationArea.manDist   = "";
-            app.navigationArea.manTime   = "";
-            app.navigationArea.narrative = "";
+            app.navigationBlock.destDist  = "";
+            app.navigationBlock.destTime  = "";
+            app.navigationBlock.icon      = "";
+            app.navigationBlock.manDist   = "";
+            app.navigationBlock.manTime   = "";
+            app.navigationBlock.narrative = "";
         }
     }
 

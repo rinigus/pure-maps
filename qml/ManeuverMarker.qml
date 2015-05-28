@@ -20,11 +20,11 @@ import QtQuick 2.0
 import QtLocation 5.0
 
 MapQuickItem {
-    id: maneuver
+    id: marker
     anchorPoint.x: sourceItem.width/2
     anchorPoint.y: sourceItem.height/2
     sourceItem: Image {
-        source: maneuver.passive ?
+        source: marker.passive ?
             "icons/node.png" : "icons/maneuver.png"
     }
     z: 201

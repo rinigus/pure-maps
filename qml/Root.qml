@@ -44,17 +44,16 @@ Item {
             }
         }
         Map { id: map }
-        MenuButton { id: menuButton }
-        Meters { id: meters }
-        NavigationArea { id: navigationArea }
+        MenuButton { }
+        Meters { }
+        NavigationBlock { id: navigationBlock }
         ScaleBar { id: scaleBar }
         Component.onCompleted: {
             revolver.updateOrientation();
             app.onDeviceOrientationChanged.connect(revolver.updateOrientation);
             app.map = map;
-            app.menuButton = menuButton;
             app.scaleBar = scaleBar;
-            app.navigationArea = navigationArea;
+            app.navigationBlock = navigationBlock;
         }
         function updateOrientation() {
             switch (app.deviceOrientation) {

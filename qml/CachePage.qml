@@ -97,7 +97,7 @@ Page {
         model: ListModel {}
         VerticalScrollDecorator {}
     }
-    BusyItem {
+    BusyModal {
         id: busy
         running: page.loading
     }

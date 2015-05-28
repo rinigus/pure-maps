@@ -102,7 +102,7 @@ Page {
         }
         VerticalScrollDecorator {}
     }
-    BusyItem {
+    BusyModal {
         id: busy
         running: page.loading
     }

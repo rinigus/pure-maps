@@ -20,7 +20,6 @@ import QtQuick 2.0
 import QtPositioning 5.3
 
 MouseArea {
-    id: mouseArea
     anchors.fill: parent
     onClicked: {
         map.hidePoiLabels();
