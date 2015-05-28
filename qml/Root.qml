@@ -30,7 +30,7 @@ Item {
     anchors.fill: parent
     height: Screen.height
     width: Screen.width
-    z: 1000000
+    z: 100
     Item {
         id: revolver
         anchors.centerIn: parent

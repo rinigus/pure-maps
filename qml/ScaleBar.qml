@@ -30,7 +30,7 @@ Item {
     opacity: 0.9
     visible: scaleWidth > 0
     width: base.width
-    z: 101
+    z: 100
     property var coordPrev: QtPositioning.coordinate(0, 0)
     property var scaleWidth: 0
     property var text: ""

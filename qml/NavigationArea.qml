@@ -28,7 +28,7 @@ Rectangle {
         iconImage.height, manLabel.height +
             narrativeLabel.height + Theme.paddingMedium/2) : 0
     width: parent.width
-    z: 900
+    z: 500
     property string destDist: ""
     property string destTime: ""
     property string icon: ""

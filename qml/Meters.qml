@@ -28,7 +28,7 @@ Item {
     height: labels.implicitHeight
     opacity: 0.9
     width: parent.width
-    z: 101
+    z: 100
     Text {
         id: values
         anchors.bottom: parent.bottom
