@@ -24,8 +24,8 @@ Page {
     id: page
     allowedOrientations: ~Orientation.PortraitInverse
     // Required to be set by caller.
-    property var coordinate
-    property string title
+    property var coordinate: undefined
+    property string title: ""
     PageHeader {
         id: header
         title: page.title

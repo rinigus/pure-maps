@@ -92,7 +92,7 @@ Page {
             Component.onCompleted: listView.searchField = searchField;
         }
         model: ListModel {}
-        property var searchField
+        property var searchField: undefined
         VerticalScrollDecorator {}
     }
     onStatusChanged: {

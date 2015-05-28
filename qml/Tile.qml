@@ -36,8 +36,8 @@ MapQuickItem {
     width: image.width
     property bool smooth: false
     property string type: "basemap"
-    property int uid
-    property string uri
+    property int uid: -1
+    property string uri: ""
     property real zOffset: 0
     function setHeight(props) {
         // Set tile pixel height from corner coordinates.
