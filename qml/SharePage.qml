@@ -54,9 +54,15 @@ Page {
             // XXX: SMS links don't work without a recipient.
             // http://together.jolla.com/question/84134/
             Clipboard.text = page.formatMessage(false);
-            infoLabel.text = "Message copied to the clipboard\nLaunching the Messages application";
-            var args = ["/usr/bin/invoker", "--type=silica-qt5", "/usr/bin/jolla-messages"];
-            py.call("poor.util.popen", args, null);
+            infoLabel.text = [
+                "Message copied to the clipboard",
+                "Launching the Messages application"
+            ].join("\n");
+            py.call("poor.util.popen", [
+                "/usr/bin/invoker",
+                "--type=silica-qt5",
+                "/usr/bin/jolla-messages"
+            ], null);
         }
     }
     Button {

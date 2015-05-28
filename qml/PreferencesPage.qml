@@ -42,7 +42,6 @@ Page {
                     if (value) {
                         // Clear tiles to ensure no logo tiles remain.
                         map.clearTiles();
-                        py.call_sync("poor.app.tilecollection.clear", []);
                         map.changed = true;
                     }
                 }
@@ -117,7 +116,7 @@ Page {
                     color: examineCacheItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Examine cache"
+                    text: "Examine map tile cache"
                 }
                 onClicked: app.pageStack.push("CachePage.qml");
             }

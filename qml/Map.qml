@@ -260,6 +260,7 @@ Map {
             map.tiles[i].destroy();
         }
         map.tiles = [];
+        py.call_sync("poor.app.tilecollection.clear", []);
     }
 
     function demoteTiles() {

@@ -24,7 +24,6 @@ import "."
 /*
  * We need to keep the map outside of the page stack so that we can easily
  * flip between the map and a particular page in a retained state.
- * Technically, this also allows us to use a split screen if need arises.
  * To allow swiping back from the menu to the map, we need the first page
  * in the stack to be a dummy that upon activation hides the page stack.
  * To make transitions smooth and animated, we can make the dummy look like
@@ -61,7 +60,6 @@ ApplicationWindow {
         app.conf.set("auto_center", map.autoCenter);
         app.conf.set("auto_rotate", map.autoRotate);
         app.conf.set("center", [map.center.longitude, map.center.latitude]);
-        app.conf.set("show_routing_narrative", map.showNarrative);
         app.conf.set("zoom", Math.floor(map.zoomLevel));
         py.call_sync("poor.app.quit", []);
     }
@@ -79,7 +77,7 @@ ApplicationWindow {
     }
 
     function clearMenu() {
-        // Clear pages from the menu and hide the menu.
+        // Clear the page stack and hide the menu.
         app.pageStack.pop(dummy, PageStackAction.Immediate);
         app.hideMenu();
     }
@@ -121,9 +119,9 @@ ApplicationWindow {
     }
 
     function updateKeepAlive() {
-        // Update state of display blanking prevention, i.e. keep-alive.
+        // Update state of keep-alive, i.e. display blanking prevention.
         var prevent = app.conf.get("keep_alive");
-        DisplayBlanking.preventBlanking = app.applicationActive && (
-            prevent == "always" || (map.hasRoute && prevent == "navigating"));
+        DisplayBlanking.preventBlanking = app.applicationActive &&
+            (prevent == "always" || (prevent == "navigating" && map.hasRoute));
     }
 }
