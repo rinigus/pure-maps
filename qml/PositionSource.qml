@@ -26,13 +26,13 @@ PositionSource {
     // If application is no longer active, turn positioning off immediately
     // if we already have a lock, otherwise keep trying for a couple minutes
     // and give up if we still don't gain that lock.
-    active: app.running || (coordHistory.length == 0 & timePosition - timeActivate > 180000)
+    active: app.running || (coordHistory.length == 0 && timePosition - timeActivate < 180000)
     property var coordHistory: []
     property var direction: undefined
     property var directionHistory: []
     property var timeActivate: Date.now()
-    property var timeDirection: -1
-    property var timePosition: -1
+    property var timeDirection: Date.now()
+    property var timePosition: Date.now()
     onActiveChanged: {
         // Keep track when positioning was (re)activated.
         if (gps.active) gps.timeActivate = Date.now();
@@ -50,21 +50,20 @@ PositionSource {
                 coord.latitude, coord.longitude));
         var coordPrev = gps.coordHistory[gps.coordHistory.length-1];
         if (coordPrev.distanceTo(coord) > threshold) {
+            gps.coordHistory.push(coord);
+            gps.coordHistory = gps.coordHistory.slice(-3);
             // XXX: Direction is missing from gps.position.
             // http://bugreports.qt.io/browse/QTBUG-36298
             var direction = coordPrev.azimuthTo(coord);
             gps.directionHistory.push(direction);
             gps.directionHistory = gps.directionHistory.slice(-3);
-            if (gps.directionHistory.length >= 3 &&
-                gps.coordHistory[0].distanceTo(coord) > 2*threshold) {
+            if (gps.directionHistory.length >= 3) {
                 gps.direction = Util.median(gps.directionHistory);
                 gps.timeDirection = Date.now();
-                gps.coordHistory.push(coord);
-                gps.coordHistory = gps.coordHistory.slice(-3);
             }
-        } else if (Date.now() - gps.timeDirection > 300000) {
-            // Clear direction if we have not seen any valid
-            // direction updates in a while.
+        } else if (gps.direction && Date.now() - gps.timeDirection > 300000) {
+            // Clear direction if we have not seen any valid updates in a while.
+            gps.coordHistory = [];
             gps.direction = undefined;
             gps.directionHistory = [];
         }
