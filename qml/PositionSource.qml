@@ -50,7 +50,8 @@ PositionSource {
                 coord.latitude, coord.longitude));
         var coordPrev = gps.coordHistory[gps.coordHistory.length-1];
         if (coordPrev.distanceTo(coord) > threshold) {
-            gps.coordHistory.push(coord);
+            gps.coordHistory.push(QtPositioning.coordinate(
+                coord.latitude, coord.longitude));
             gps.coordHistory = gps.coordHistory.slice(-3);
             // XXX: Direction is missing from gps.position.
             // http://bugreports.qt.io/browse/QTBUG-36298
