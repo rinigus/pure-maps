@@ -24,19 +24,23 @@ Item {
     anchors.horizontalCenter: anchorItem.horizontalCenter
 
     property var    anchorItem: undefined
+    property string align: "center"
     property real   buttonHeight: 0
     property real   buttonWidth: 0
     property var    contentItem: bubble
     property string message: ""
     property real   paddingX: 0.75*Theme.paddingLarge
     property real   paddingY: 0.50*Theme.paddingLarge
+    property bool   showArrow: true
 
     signal clicked()
     Rectangle {
         id: bubble
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 18
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: parent.showArrow ? 18 : 6
+        anchors.horizontalCenter: parent.align == "center" ? parent.horizontalCenter : undefined
+        anchors.right: parent.align == "right" ? parent.right : undefined
+        anchors.left: parent.align == "left" ? parent.left : undefined
         color: "#bb000000"
         height: parent.buttonHeight > 0 ?
             label.height + parent.buttonHeight + 3*parent.paddingY :
@@ -73,6 +77,6 @@ Item {
         // Try to avoid a stripe between bubble and arrow.
         anchors.topMargin: -0.5
         source: "icons/bubble-arrow.png"
-        visible: parent.visible
+        visible: parent.visible && parent.showArrow
     }
 }

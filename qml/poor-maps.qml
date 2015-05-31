@@ -39,7 +39,9 @@ ApplicationWindow {
     property var  conf: Config {}
     property bool inMenu: !root.visible
     property var  map: null
+    property var  menuButton: null
     property var  navigationBlock: null
+    property var  northArrow: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
     property int  screenHeight: Screen.height

@@ -25,7 +25,7 @@ Item {
     id: scaleBar
     anchors.bottom: parent.bottom
     anchors.bottomMargin: 10
-    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.left: app.menuButton.right
     height: base.height
     opacity: 0.9
     visible: scaleWidth > 0

@@ -23,8 +23,8 @@ Item {
     id: meters
     anchors.bottom: parent.bottom
     anchors.bottomMargin: 10
-    anchors.right: parent.right
-    anchors.rightMargin: 15
+    anchors.right: app.northArrow.left
+    anchors.rightMargin: 10
     height: labels.implicitHeight
     opacity: 0.9
     width: parent.width
