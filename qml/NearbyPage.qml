@@ -28,7 +28,7 @@ Page {
     property string nearText: ""
     property string query: ""
     property var params: {}
-    property var radius: 1000
+    property real radius: 1000
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight

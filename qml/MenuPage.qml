@@ -24,7 +24,7 @@ import "."
 Page {
     id: page
     allowedOrientations: ~Orientation.PortraitInverse
-    property var iconWidth: 0
+    property real iconWidth: 0
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight

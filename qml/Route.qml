@@ -44,8 +44,8 @@ Canvas {
     property bool   changed: false
     property bool   hasPath: false
     property string mode: "car"
-    property var    paintX: 0
-    property var    paintY: 0
+    property real   paintX: 0
+    property real   paintY: 0
     property var    path: {"x": [], "y": []}
     property var    simplePaths: {}
 

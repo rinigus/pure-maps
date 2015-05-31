@@ -32,9 +32,9 @@ Item {
     width: base.width
     z: 100
     property var coordPrev: QtPositioning.coordinate(0, 0)
-    property var scaleWidth: 0
-    property var text: ""
-    property var zoomLevelPrev: -1
+    property real scaleWidth: 0
+    property string text: ""
+    property real zoomLevelPrev: -1
     Rectangle {
         id: base
         color: "black"
