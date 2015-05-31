@@ -188,7 +188,7 @@ Page {
                     listView.model.append(results[i]);
             } else {
                 page.title = "";
-                busy.text = "No results";
+                busy.error = "No results";
             }
             page.loading = false;
             page.populated = true;

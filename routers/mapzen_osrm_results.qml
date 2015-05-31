@@ -55,7 +55,7 @@ Page {
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.navigateBack(PageStackAction.Immediate);
             } else {
-                busy.text = "No results";
+                busy.error = "No results";
                 page.loading = false;
             }
         });
