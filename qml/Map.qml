@@ -344,10 +344,10 @@ Map {
 
     }
 
-    function hidePoiLabels() {
+    function hidePoiBubbles() {
         // Hide label bubbles of all POI markers.
         for (var i = 0; i < map.pois.length; i++)
-            map.pois[i].labelVisible = false;
+            map.pois[i].bubbleVisible = false;
     }
 
     function initProperties() {

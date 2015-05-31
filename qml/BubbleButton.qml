@@ -17,22 +17,35 @@
  */
 
 import QtQuick 2.0
-import QtPositioning 5.3
+import Sailfish.Silica 1.0
 
-MouseArea {
-    anchors.fill: parent
-    onClicked: {
-        map.hidePoiBubbles();
+Rectangle {
+    id: button
+    color: "#bbffffff"
+    height: label.height + 0.75*Theme.paddingLarge
+    radius: Theme.fontSizeSmall/4
+    width: label.width + Theme.paddingLarge
+    property string text: ""
+    signal clicked()
+    Label {
+        id: label
+        anchors.centerIn: parent
+        color: "black"
+        font.pixelSize: Theme.fontSizeExtraSmall
+        text: parent.text
     }
-    onDoubleClicked: {
-        map.centerOnPosition();
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            button.color = Theme.highlightColor;
+            timer.restart();
+            button.clicked();
+        }
     }
-    onPressAndHold: {
-        var coord = map.toCoordinate(Qt.point(mouse.x, mouse.y));
-        map.addPois([{"x": coord.longitude,
-                      "y": coord.latitude,
-                      "title": "Unnamed point",
-                      "text": "Unnamed point"}]);
-
+    Timer {
+        id: timer
+        interval: 3000
+        repeat: false
+        onTriggered: button.color = "#bbffffff";
     }
 }

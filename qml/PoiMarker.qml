@@ -20,9 +20,10 @@ import QtQuick 2.0
 import QtLocation 5.0
 import QtPositioning 5.3
 import Sailfish.Silica 1.0
+import "."
 
 MapQuickItem {
-    id: item
+    id: marker
     anchorPoint.x: sourceItem.width/2
     anchorPoint.y: sourceItem.height/2
     height: sourceItem.height
@@ -36,145 +37,82 @@ MapQuickItem {
             source: "icons/poi.png"
             MouseArea {
                 anchors.fill: parent
-                onClicked: item.labelVisible = !item.labelVisible
+                onClicked: marker.bubbleVisible = !marker.bubbleVisible
             }
         }
-        Rectangle {
+        Bubble {
             id: bubble
-            anchors.bottom: image.top
-            anchors.bottomMargin: 18
-            anchors.horizontalCenter: image.horizontalCenter
-            color: "#bb000000"
-            height: content.height + 1.5*Theme.paddingLarge
-            radius: textLabel.font.pixelSize/2
-            visible: item.labelVisible
-            width: content.width + 1.5*Theme.paddingLarge
-            Item {
-                id: content
-                anchors.centerIn: parent
-                height: textLabel.height + routeButton.height
-                width: Math.max(textLabel.width,
-                                routeButton.width +
-                                linkButton.width +
-                                shareButton.width +
-                                linkButton.visible * 1.5 * Theme.paddingMedium +
-                                shareButton.visible * 1.5 * Theme.paddingMedium)
+            anchorItem: image
+            buttonHeight: routeButton.height + paddingY
+            buttonWidth: (routeButton.width +
+                          nearbyButton.width +
+                          shareButton.width +
+                          2*Theme.paddingMedium +
+                          (marker.link.length > 0) * (webButton.width +
+                                                      Theme.paddingMedium))
 
-                Label {
-                    id: textLabel
-                    color: "white"
-                    font.pixelSize: Theme.fontSizeSmall
-                    height: implicitHeight + 1.5*Theme.paddingMedium
-                    text: item.text
-                    textFormat: Text.RichText
-                    verticalAlignment: Text.AlignTop
-                    width: Math.min(0.6*app.contentItem.width, implicitWidth)
-                    wrapMode: Text.WordWrap
-                }
-                MouseArea {
-                    // Hide bubble by tapping label area.
-                    anchors.bottom: textLabel.bottom
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: textLabel.top
-                    onClicked: item.labelVisible = !item.labelVisible
-                }
-                Rectangle {
-                    id: routeButton
-                    anchors.left: parent.left
-                    anchors.top: textLabel.bottom
-                    color: "#bbffffff"
-                    height: routeLabel.height + Theme.paddingMedium
-                    radius: bubble.radius/2
-                    width: routeLabel.width + 1.5*Theme.paddingMedium
-                    Label {
-                        id: routeLabel
-                        anchors.centerIn: parent
-                        color: "black"
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        text: "Route"
-                    }
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            var x = item.coordinate.longitude;
-                            var y = item.coordinate.latitude;
-                            app.showMenu("RoutePage.qml", {
-                                "to": [x, y],
-                                "toText": item.title
-                            });
-                        }
-                    }
-                }
-                Rectangle {
-                    id: shareButton
-                    anchors.left: routeButton.right
-                    anchors.leftMargin: 1.5*Theme.paddingMedium
-                    anchors.top: textLabel.bottom
-                    color: "#bbffffff"
-                    height: shareLabel.height + Theme.paddingMedium
-                    radius: bubble.radius/2
-                    width: shareLabel.width + 1.5*Theme.paddingMedium
-                    Label {
-                        id: shareLabel
-                        anchors.centerIn: parent
-                        color: "black"
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        text: "Share"
-                    }
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            app.showMenu("SharePage.qml", {
-                                "coordinate": QtPositioning.coordinate(
-                                    item.coordinate.latitude,
-                                    item.coordinate.longitude),
-                                "title": "Share Location"
-                            });
-                        }
-                    }
-                }
-                Rectangle {
-                    id: linkButton
-                    anchors.right: parent.right
-                    anchors.top: textLabel.bottom
-                    color: "#bbffffff"
-                    height: linkLabel.height + Theme.paddingMedium
-                    radius: bubble.radius/2
-                    visible: item.link && item.link.length > 0
-                    width: visible ? linkLabel.width + 1.5*Theme.paddingMedium : 0
-                    Label {
-                        id: linkLabel
-                        anchors.centerIn: parent
-                        color: "black"
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        text: "Web"
-                    }
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            linkButton.color = Theme.highlightColor;
-                            linkTimer.restart();
-                            Qt.openUrlExternally(item.link);
-                        }
-                    }
-                    Timer {
-                        id: linkTimer
-                        interval: 3000
-                        repeat: false
-                        onTriggered: linkButton.color = "#bbffffff";
-                    }
+            message: marker.text
+            visible: marker.bubbleVisible
+            // Hide bubble by tapping label area.
+            onClicked: marker.bubbleVisible = !marker.bubbleVisible;
+            BubbleButton {
+                id: routeButton
+                anchors.bottom: parent.contentItem.bottom
+                anchors.bottomMargin: parent.paddingX
+                anchors.left: parent.contentItem.left
+                anchors.leftMargin: parent.paddingX
+                text: "Route"
+                onClicked: {
+                    var x = marker.coordinate.longitude;
+                    var y = marker.coordinate.latitude;
+                    app.showMenu("RoutePage.qml", {
+                        "to": [x, y],
+                        "toText": marker.title
+                    });
                 }
             }
-        }
-        Image {
-            id: arrow
-            anchors.top: bubble.bottom
-            // Try to avoid a stripe between bubble and arrow.
-            anchors.topMargin: -0.5
-            anchors.horizontalCenter: bubble.horizontalCenter
-            source: "icons/bubble-arrow.png"
-            visible: item.labelVisible
+            BubbleButton {
+                id: nearbyButton
+                anchors.bottom: parent.contentItem.bottom
+                anchors.bottomMargin: parent.paddingX
+                anchors.left: routeButton.right
+                anchors.leftMargin: Theme.paddingMedium
+                text: "Nearby"
+                onClicked: {
+                    var x = marker.coordinate.longitude;
+                    var y = marker.coordinate.latitude;
+                    app.showMenu("NearbyPage.qml", {
+                        "near": [x, y],
+                        "nearText": marker.title
+                    });
+                }
+            }
+            BubbleButton {
+                id: shareButton
+                anchors.bottom: parent.contentItem.bottom
+                anchors.bottomMargin: parent.paddingX
+                anchors.left: nearbyButton.right
+                anchors.leftMargin: Theme.paddingMedium
+                text: "Share"
+                onClicked: {
+                    app.showMenu("SharePage.qml", {
+                        "coordinate": QtPositioning.coordinate(
+                            marker.coordinate.latitude,
+                            marker.coordinate.longitude),
+                        "title": "Share Location"
+                    });
+                }
+            }
+            BubbleButton {
+                id: webButton
+                anchors.bottom: parent.contentItem.bottom
+                anchors.bottomMargin: parent.paddingX
+                anchors.right: parent.contentItem.right
+                anchors.rightMargin: parent.paddingX
+                text: "Web"
+                z: marker.link ? 1 : -1
+                onClicked: Qt.openUrlExternally(marker.link);
+            }
         }
     }
     transform: Rotation {
@@ -183,17 +121,17 @@ MapQuickItem {
         origin.y: sourceItem.height/2
     }
     z: 400
-    property bool labelVisible: false
+    property bool bubbleVisible: false
     property string link: ""
     property string text: ""
     property string title: ""
-    onLabelVisibleChanged: {
+    onBubbleVisibleChanged: {
         // Ensure that bubble will be above other POIs.
         for (var i = 0; i < map.pois.length; i++)
-            map.pois[i].z = map.pois[i].labelVisible ? 402 : 400;
-        item.z = item.labelVisible ? 403 : 401;
+            map.pois[i].z = map.pois[i].bubbleVisible ? 402 : 400;
+        marker.z = marker.bubbleVisible ? 403 : 401;
     }
     onTextChanged: {
-        item.text = item.text.replace("Theme.highlightColor", Theme.highlightColor);
+        marker.text = marker.text.replace("Theme.highlightColor", Theme.highlightColor);
     }
 }

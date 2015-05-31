@@ -62,7 +62,14 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        page.nearText = dialog.query;
+                        if (dialog.page == "Current position") {
+                            page.near = map.getPosition();
+                            page.nearText = dialog.query;
+                        } else {
+                            page.near = dialog.query;
+                            page.nearText = dialog.query;
+                            py.call_sync("poor.app.history.add_place", [dialog.query]);
+                        }
                     });
                 }
             }
@@ -119,15 +126,9 @@ Page {
         VerticalScrollDecorator {}
     }
     Component.onCompleted: {
-        page.near = map.getPosition();
-        page.nearText = "Current position";
-    }
-    onNearTextChanged: {
-        if (page.nearText == "Current position") {
+        if (!page.near) {
             page.near = map.getPosition();
-        } else {
-            page.near = page.nearText;
-            py.call_sync("poor.app.history.add_place", [page.nearText]);
+            page.nearText = "Current position";
         }
     }
     onQueryChanged: {
@@ -137,7 +138,7 @@ Page {
         if (page.status == PageStatus.Active) {
             if (page.nearText == "Current position")
                 page.near = map.getPosition();
-            var resultPage = app.pageStack.nextPage();
+            var resultPage = app.pageStack.pushAttached("NearbyResultsPage.qml");
             resultPage.populated = false;
         }
     }

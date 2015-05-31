@@ -102,7 +102,6 @@ Page {
                 }
                 onClicked: {
                     app.pageStack.push("NearbyPage.qml");
-                    app.pageStack.pushAttached("NearbyResultsPage.qml");
                 }
             }
             ListItem {

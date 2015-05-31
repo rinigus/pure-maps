@@ -63,7 +63,7 @@ Page {
                               "mode": "car",
                               "attribution": "Routing courtesy of MapQuest."});
 
-                map.hidePoiLabels();
+                map.hidePoiBubbles();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.navigateBack(PageStackAction.Immediate);

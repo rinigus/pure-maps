@@ -20,6 +20,7 @@ import QtQuick 2.0
 import QtLocation 5.0
 import QtPositioning 5.3
 import Sailfish.Silica 1.0
+import "."
 
 MapQuickItem {
     id: marker
@@ -66,34 +67,10 @@ MapQuickItem {
                 timer.restart();
             }
         }
-        Rectangle {
+        Bubble {
             id: bubble
-            anchors.bottom: movingImage.top
-            anchors.bottomMargin: 18
-            anchors.horizontalCenter: movingImage.horizontalCenter
-            color: "#bb000000"
-            height: label.height + Theme.paddingLarge
-            radius: label.font.pixelSize/2
+            anchorItem: movingImage
             visible: false
-            width: label.width + 1.5*Theme.paddingLarge
-            property string message: ""
-            Label {
-                id: label
-                anchors.centerIn: bubble
-                color: "white"
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeSmall
-                text: bubble.message
-            }
-        }
-        Image {
-            id: arrow
-            anchors.horizontalCenter: bubble.horizontalCenter
-            anchors.top: bubble.bottom
-            // Try to avoid a stripe between bubble and arrow.
-            anchors.topMargin: -0.5
-            source: "icons/bubble-arrow.png"
-            visible: bubble.visible
         }
         Timer {
             id: timer
