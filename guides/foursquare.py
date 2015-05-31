@@ -62,7 +62,7 @@ def nearby(query, near, radius, params):
                     ) for item in
                itertools.chain.from_iterable(
                    group["items"] for group in
-                   output["response"]["groups"])]
+                   output["response"].get("groups", []))]
 
     if results and results[0]:
         cache[url] = copy.deepcopy((x, y, results))
