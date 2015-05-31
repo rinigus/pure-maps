@@ -7,7 +7,7 @@
 Name: harbour-poor-maps
 Version: 0.19
 Release: 1
-Summary: An application to display maps and stuff
+Summary: Maps and navigation
 License: GPLv3+
 URL: http://github.com/otsaloma/poor-maps
 Source: %{name}-%{version}.tar.xz
@@ -22,9 +22,12 @@ Requires: qt5-qtdeclarative-import-positioning >= 5.2
 Requires: sailfishsilica-qt5
 
 %description
-Poor Maps is an application for Sailfish OS to display tiled maps
-(e.g. OpenStreetMap), places and routes with a flexible selection
-of data and service providers.
+View maps, find places and routes, navigate with turn-by-turn instructions,
+search for nearby places by type and share your location.
+
+Poor Maps supports a variety of mainly OpenStreetMap-based providers of maps
+and related services, from which you can freely choose depending on your
+surroundings, travel mode, etc.
 
 %prep
 %setup -q

@@ -43,7 +43,7 @@ MapQuickItem {
         Bubble {
             id: bubble
             anchorItem: image
-            buttonHeight: routeButton.height + paddingY
+            buttonHeight: routeButton.height
             buttonWidth: (routeButton.width +
                           nearbyButton.width +
                           shareButton.width +
@@ -53,7 +53,6 @@ MapQuickItem {
 
             message: marker.text
             visible: marker.bubbleVisible
-            // Hide bubble by tapping label area.
             onClicked: marker.bubbleVisible = !marker.bubbleVisible;
             BubbleButton {
                 id: routeButton
@@ -121,7 +120,7 @@ MapQuickItem {
         origin.y: sourceItem.height/2
     }
     z: 400
-    property bool bubbleVisible: false
+    property bool   bubbleVisible: false
     property string link: ""
     property string text: ""
     property string title: ""

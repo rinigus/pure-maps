@@ -41,8 +41,8 @@ IconButton {
     }
     Bubble {
         id: bubble
-        align: "right"
         anchorItem: parent
+        horizontalAlignment: Text.AlignLeft
         showArrow: false
         visible: false
     }

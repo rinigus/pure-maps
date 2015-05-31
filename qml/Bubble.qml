@@ -24,10 +24,10 @@ Item {
     anchors.horizontalCenter: anchorItem.horizontalCenter
 
     property var    anchorItem: undefined
-    property string align: "center"
     property real   buttonHeight: 0
     property real   buttonWidth: 0
     property var    contentItem: bubble
+    property var    horizontalAlignment: Text.AlignHCenter
     property string message: ""
     property real   paddingX: 0.75*Theme.paddingLarge
     property real   paddingY: 0.50*Theme.paddingLarge
@@ -38,16 +38,25 @@ Item {
         id: bubble
         anchors.bottom: parent.bottom
         anchors.bottomMargin: parent.showArrow ? 18 : 6
-        anchors.horizontalCenter: parent.align == "center" ? parent.horizontalCenter : undefined
-        anchors.right: parent.align == "right" ? parent.right : undefined
-        anchors.left: parent.align == "left" ? parent.left : undefined
         color: "#bb000000"
-        height: parent.buttonHeight > 0 ?
-            label.height + parent.buttonHeight + 3*parent.paddingY :
-            label.height + 2*parent.paddingY
+        height: label.height + 2*parent.paddingY + parent.buttonHeight +
+            (parent.buttonHeight > 0) * 2*parent.paddingY
         radius: Theme.fontSizeSmall/2
         visible: parent.visible
         width: label.width + 2*parent.paddingX
+        Component.onCompleted: {
+            switch (parent.horizontalAlignment) {
+            case Text.AlignHCenter:
+                bubble.anchors.horizontalCenter = parent.horizontalCenter;
+                break;
+            case Text.AlignLeft:
+                bubble.anchors.right = parent.right;
+                break;
+            case Text.AlignRight:
+                bubble.anchors.left = parent.left;
+                break;
+            }
+        }
     }
     Label {
         id: label
