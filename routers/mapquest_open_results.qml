@@ -18,32 +18,19 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../qml"
 
 Page {
     id: page
     allowedOrientations: ~Orientation.PortraitInverse
     property bool loading: true
-    Label {
-        id: busyLabel
-        anchors.bottom: busyIndicator.top
-        color: Theme.highlightColor
-        font.pixelSize: Theme.fontSizeLarge
-        height: Theme.itemSizeLarge
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        visible: page.loading || text != "Searching"
-        width: parent.width
-    }
-    BusyIndicator {
-        id: busyIndicator
-        anchors.centerIn: parent
+    BusyModal {
+        id: busy
         running: page.loading
-        size: BusyIndicatorSize.Large
-        visible: page.loading
     }
     onStatusChanged: {
         if (page.status == PageStatus.Activating) {
-            busyLabel.text = "Searching";
+            busy.text = "Searching";
         } else if (page.status == PageStatus.Active) {
             page.findRoute();
         }
@@ -54,7 +41,7 @@ Page {
         var args = [routePage.from, routePage.to];
         py.call("poor.app.router.route", args, function(route) {
             if (route && route.error && route.message) {
-                busyLabel.text = route.message;
+                busy.error = route.message;
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
                 app.hideMenu();
@@ -68,7 +55,7 @@ Page {
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.navigateBack(PageStackAction.Immediate);
             } else {
-                busyLabel.text = "No results";
+                busy.text = "No results";
                 page.loading = false;
             }
         });

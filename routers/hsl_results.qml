@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../qml"
 
 Page {
     id: page
@@ -149,23 +150,9 @@ Page {
         model: ListModel {}
         VerticalScrollDecorator {}
     }
-    Label {
-        id: busyLabel
-        anchors.bottom: busyIndicator.top
-        color: Theme.highlightColor
-        font.pixelSize: Theme.fontSizeLarge
-        height: Theme.itemSizeLarge
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        visible: page.loading || text != "Searching"
-        width: parent.width
-    }
-    BusyIndicator {
-        id: busyIndicator
-        anchors.centerIn: parent
+    BusyModal {
+        id: busy
         running: page.loading
-        size: BusyIndicatorSize.Large
-        visible: page.loading
     }
     onStatusChanged: {
         if (page.status == PageStatus.Activating) {
@@ -173,7 +160,7 @@ Page {
             listView.model.clear();
             page.loading = true;
             page.title = "";
-            busyLabel.text = "Searching";
+            busy.text = "Searching";
         } else if (page.status == PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
@@ -193,7 +180,7 @@ Page {
         py.call("poor.app.router.route", args, function(results) {
             if (results && results.error && results.message) {
                 page.title = "";
-                busyLabel.text = results.message;
+                busy.error = results.message;
             } else if (results && results.length > 0) {
                 page.title = "Results";
                 page.results = results;
@@ -201,7 +188,7 @@ Page {
                     listView.model.append(results[i]);
             } else {
                 page.title = "";
-                busyLabel.text = "No results";
+                busy.text = "No results";
             }
             page.loading = false;
             page.populated = true;
