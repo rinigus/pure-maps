@@ -2,8 +2,8 @@ Implementing a Geocoder
 =======================
 
 To implement a geocoder, you need to write two files: a JSON metadata
-file and a Python file that implements the `geocode` function.
-The `geocode` function should given a string query return a list of
+file and a Python file that implements the `geocode` function. The
+`geocode` function should given a string query return a list of
 dictionaries of geocoding results, with each dictionary having keys
 `title`, `description`, `x` and `y`.
 
@@ -25,5 +25,5 @@ the Python interpreter or a test script, e.g.
 >>> geocoder.geocode("erottaja, helsinki")
 ```
 
-and qmlscene (`/usr/lib/qt5/bin/qmlscene qml/poor-maps.qml`)
-for testing.
+and qmlscene (`/usr/lib/qt5/bin/qmlscene qml/poor-maps.qml`) for
+testing.
