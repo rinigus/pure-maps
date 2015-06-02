@@ -22,41 +22,52 @@ import Sailfish.Silica 1.0
 Item {
     anchors.bottom: anchorItem.top
     anchors.horizontalCenter: anchorItem.horizontalCenter
+    state: "center"
+    states: [
+        State {
+            name: "center"
+            AnchorChanges {
+                target: bubble
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+        },
+        State {
+            name: "left"
+            AnchorChanges {
+                target: bubble
+                anchors.right: parent.horizontalCenter
+            }
+        },
+        State {
+            name: "right"
+            AnchorChanges {
+                target: bubble
+                anchors.left: parent.horizontalCenter
+            }
+        }
+    ]
 
     property var    anchorItem: undefined
-    property real   buttonHeight: 0
-    property real   buttonWidth: 0
+    property real   buttonBlockHeight: 0
+    property real   buttonBlockWidth: 0
     property var    contentItem: bubble
-    property var    horizontalAlignment: Text.AlignHCenter
     property string message: ""
     property real   paddingX: 0.75*Theme.paddingLarge
     property real   paddingY: 0.50*Theme.paddingLarge
     property bool   showArrow: true
 
     signal clicked()
+
     Rectangle {
         id: bubble
         anchors.bottom: parent.bottom
         anchors.bottomMargin: parent.showArrow ? 18 : 6
         color: "#bb000000"
-        height: label.height + 2*parent.paddingY + parent.buttonHeight +
-            (parent.buttonHeight > 0) * 2*parent.paddingY
+        height: label.height + 2*parent.paddingY + parent.buttonBlockHeight +
+            (parent.buttonBlockHeight > 0) * 2*parent.paddingY
         radius: Theme.fontSizeSmall/2
         visible: parent.visible
         width: label.width + 2*parent.paddingX
-        Component.onCompleted: {
-            switch (parent.horizontalAlignment) {
-            case Text.AlignHCenter:
-                bubble.anchors.horizontalCenter = parent.horizontalCenter;
-                break;
-            case Text.AlignLeft:
-                bubble.anchors.right = parent.right;
-                break;
-            case Text.AlignRight:
-                bubble.anchors.left = parent.left;
-                break;
-            }
-        }
     }
     Label {
         id: label
@@ -72,7 +83,7 @@ Item {
         visible: parent.visible
         width: Math.max(Math.min(
             0.65*Math.min(app.screenWidth, app.screenHeight),
-            implicitWidth), parent.buttonWidth)
+            implicitWidth), parent.buttonBlockWidth)
         wrapMode: Text.WordWrap
     }
     MouseArea {

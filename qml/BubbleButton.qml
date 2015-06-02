@@ -26,6 +26,7 @@ Rectangle {
     radius: Theme.fontSizeSmall/4
     width: label.width + Theme.paddingLarge
     property string text: ""
+    property bool useHighlight: false
     signal clicked()
     Label {
         id: label
@@ -37,8 +38,10 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            button.color = Theme.highlightColor;
-            timer.restart();
+            if (button.useHighlight) {
+                button.color = Theme.highlightColor;
+                timer.restart();
+            }
             button.clicked();
         }
     }

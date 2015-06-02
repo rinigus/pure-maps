@@ -49,8 +49,8 @@ IconButton {
     Bubble {
         id: bubble
         anchorItem: parent
-        horizontalAlignment: Text.AlignLeft
         showArrow: false
+        state: "left"
         visible: false
     }
     Timer {

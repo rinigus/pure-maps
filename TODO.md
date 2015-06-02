@@ -14,7 +14,7 @@ Poor Maps 0.20
 * [X] Ensure that blocking HTTP connection pool operations terminate
       immediately and gracefully on application exit
 * [X] Write configuration to file only once on application exit
-* [X] Don't install %doc files (`COPYING`, `README`, etc.)
+* [X] Don't install `%doc` files (`COPYING`, `README`, etc.)
 * [X] Remove python3-base from RPM dependencies
 * [X] Prevent provides in RPM package
 

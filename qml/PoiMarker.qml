@@ -43,13 +43,13 @@ MapQuickItem {
         Bubble {
             id: bubble
             anchorItem: image
-            buttonHeight: routeButton.height
-            buttonWidth: (routeButton.width +
-                          nearbyButton.width +
-                          shareButton.width +
-                          2*Theme.paddingMedium +
-                          (marker.link.length > 0) * (webButton.width +
-                                                      Theme.paddingMedium))
+            buttonBlockHeight: routeButton.height
+            buttonBlockWidth: (routeButton.width +
+                               nearbyButton.width +
+                               shareButton.width +
+                               2*Theme.paddingMedium +
+                               (marker.link.length > 0) * (webButton.width +
+                                                           Theme.paddingMedium))
 
             message: marker.text
             visible: marker.bubbleVisible
@@ -109,6 +109,7 @@ MapQuickItem {
                 anchors.right: parent.contentItem.right
                 anchors.rightMargin: parent.paddingX
                 text: "Web"
+                useHighlight: true
                 z: marker.link ? 1 : -1
                 onClicked: Qt.openUrlExternally(marker.link);
             }
