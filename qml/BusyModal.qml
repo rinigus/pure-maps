@@ -31,17 +31,17 @@ Item {
         font.pixelSize: Theme.fontSizeLarge
         height: Theme.itemSizeLarge
         horizontalAlignment: Text.AlignHCenter
-        text: parent.error || parent.text
+        text: busy.error || busy.text
         verticalAlignment: Text.AlignVCenter
-        visible: parent.running || parent.error
+        visible: busy.running || busy.error
         width: parent.width
     }
     BusyIndicator {
         id: indicator
         anchors.centerIn: parent
-        running: parent.running
+        running: busy.running
         size: BusyIndicatorSize.Large
-        visible: parent.running
+        visible: busy.running
     }
     onTextChanged: busy.error = "";
 }

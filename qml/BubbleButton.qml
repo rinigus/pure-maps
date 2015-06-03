@@ -35,7 +35,7 @@ Rectangle {
         anchors.centerIn: parent
         color: "black"
         font.pixelSize: Theme.fontSizeExtraSmall
-        text: parent.text
+        text: button.text
     }
     MouseArea {
         anchors.fill: parent
