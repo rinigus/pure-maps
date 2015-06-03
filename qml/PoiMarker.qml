@@ -56,9 +56,9 @@ MapQuickItem {
             onClicked: marker.bubbleVisible = !marker.bubbleVisible;
             BubbleButton {
                 id: routeButton
-                anchors.bottom: parent.contentItem.bottom
+                anchors.bottom: parent.content.bottom
                 anchors.bottomMargin: parent.paddingX
-                anchors.left: parent.contentItem.left
+                anchors.left: parent.content.left
                 anchors.leftMargin: parent.paddingX
                 text: "Route"
                 onClicked: {
@@ -72,7 +72,7 @@ MapQuickItem {
             }
             BubbleButton {
                 id: nearbyButton
-                anchors.bottom: parent.contentItem.bottom
+                anchors.bottom: parent.content.bottom
                 anchors.bottomMargin: parent.paddingX
                 anchors.left: routeButton.right
                 anchors.leftMargin: Theme.paddingMedium
@@ -88,7 +88,7 @@ MapQuickItem {
             }
             BubbleButton {
                 id: shareButton
-                anchors.bottom: parent.contentItem.bottom
+                anchors.bottom: parent.content.bottom
                 anchors.bottomMargin: parent.paddingX
                 anchors.left: nearbyButton.right
                 anchors.leftMargin: Theme.paddingMedium
@@ -104,9 +104,9 @@ MapQuickItem {
             }
             BubbleButton {
                 id: webButton
-                anchors.bottom: parent.contentItem.bottom
+                anchors.bottom: parent.content.bottom
                 anchors.bottomMargin: parent.paddingX
-                anchors.right: parent.contentItem.right
+                anchors.right: parent.content.right
                 anchors.rightMargin: parent.paddingX
                 text: "Web"
                 useHighlight: true

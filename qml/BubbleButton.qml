@@ -26,6 +26,8 @@ Rectangle {
     radius: Theme.fontSizeSmall/4
     width: label.width + Theme.paddingLarge
     property string text: ""
+    // Use a pressed effect only when the associated action has a delay,
+    // e.g. launching an external application.
     property bool useHighlight: false
     signal clicked()
     Label {
