@@ -21,12 +21,8 @@ import QtPositioning 5.3
 
 MouseArea {
     anchors.fill: parent
-    onClicked: {
-        map.hidePoiBubbles();
-    }
-    onDoubleClicked: {
-        map.centerOnPosition();
-    }
+    onClicked: map.hidePoiBubbles();
+    onDoubleClicked: map.centerOnPosition();
     onPressAndHold: {
         var coord = map.toCoordinate(Qt.point(mouse.x, mouse.y));
         map.addPois([{"x": coord.longitude,

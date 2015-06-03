@@ -52,9 +52,8 @@ Page {
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight +
-                    (iconImage.height - implicitHeight -
-                     lengthLabel.implicitHeight) / 2
+                height: implicitHeight + (iconImage.height -
+                    implicitHeight - lengthLabel.implicitHeight) / 2
                 text: model.narrative
                 verticalAlignment: Text.AlignBottom
                 wrapMode: Text.WordWrap
@@ -68,9 +67,8 @@ Page {
                 anchors.top: narrativeLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight +
-                    (iconImage.height - implicitHeight -
-                     narrativeLabel.implicitHeight) / 2
+                height: implicitHeight + (iconImage.height -
+                    implicitHeight - narrativeLabel.implicitHeight) / 2
                 text: model.index < listView.count-1 ?
                     "Continue for " + model.length + "." :
                     map.route.attribution

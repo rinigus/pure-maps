@@ -126,9 +126,13 @@ Canvas {
         canvas.hasPath = canvas.path.x.length > 0;
         if (canvas.hasPath) {
             canvas.x = Qt.binding(function() {
+                // Return canvas pixel X deviation to match panned map;
+                // for use until a redraw pulls X back to zero.
                 return (this.paintX - map.center.longitude) * map.scaleX;
             });
             canvas.y = Qt.binding(function() {
+                // Return canvas pixel Y deviation to match panned map;
+                // for use until a redraw pulls Y back to zero.
                 return (map.center.latitude - this.paintY) * map.scaleY;
             });
         } else {
@@ -161,7 +165,8 @@ Canvas {
     function setSimplePath(zoom, path) {
         // Set simplified path at zoom level.
         Object.defineProperty(canvas.simplePaths, zoom.toString(), {
-            value: path, writable: true});
+            value: path, writable: true
+        });
         canvas.requestPaint();
     }
 

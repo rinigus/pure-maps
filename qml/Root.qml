@@ -54,9 +54,9 @@ Item {
             app.onDeviceOrientationChanged.connect(revolver.updateOrientation);
             app.map = map;
             app.menuButton = menuButton;
+            app.navigationBlock = navigationBlock;
             app.northArrow = northArrow;
             app.scaleBar = scaleBar;
-            app.navigationBlock = navigationBlock;
         }
         function updateOrientation() {
             switch (app.deviceOrientation) {

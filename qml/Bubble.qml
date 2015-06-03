@@ -47,18 +47,15 @@ Item {
             }
         }
     ]
-
-    property var    anchorItem: undefined
-    property real   buttonBlockHeight: 0
-    property real   buttonBlockWidth: 0
-    property var    content: content
+    property var  anchorItem: undefined
+    property real buttonBlockHeight: 0
+    property real buttonBlockWidth: 0
+    property var  content: content
     property string message: ""
-    property real   paddingX: 0.75*Theme.paddingLarge
-    property real   paddingY: 0.50*Theme.paddingLarge
-    property bool   showArrow: true
-
+    property real paddingX: 0.75*Theme.paddingLarge
+    property real paddingY: 0.50*Theme.paddingLarge
+    property bool showArrow: true
     signal clicked()
-
     Rectangle {
         id: content
         anchors.bottom: bubble.bottom

@@ -41,7 +41,8 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: parent.top
         // Ensure a sufficiently large tap target.
-        height: block.destDist ? Math.max(parent.height, Theme.itemSizeSmall) : 0
+        height: block.destDist ?
+            Math.max(parent.height, Theme.itemSizeSmall) : 0
         highlightedColor: "#00000000"
         Image {
             id: iconImage
@@ -51,16 +52,22 @@ Rectangle {
                 implicitHeight + Theme.paddingLarge*2,
                 manLabel.height + narrativeLabel.height + Theme.paddingMedium/2): 0
             horizontalAlignment: Image.AlignHCenter
-            source: block.icon ? "icons/" + block.icon + ".png" : "icons/alert.png"
+            source: block.icon ?
+                "icons/" + block.icon + ".png" :
+                "icons/alert.png"
             verticalAlignment: Image.AlignVCenter
-            width: block.icon ? implicitWidth + 2*Theme.paddingLarge : Theme.paddingMedium
+            width: block.icon ?
+                implicitWidth + 2*Theme.paddingLarge :
+                Theme.paddingMedium
         }
         Label {
             id: manLabel
             anchors.left: iconImage.right
             color: block.notify ? Theme.highlightColor : "white"
-            font.family: block.notify ? Theme.fontFamilyHeading : Theme.fontFamily
-            font.pixelSize: block.notify ? Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
+            font.family: block.notify ?
+                Theme.fontFamilyHeading : Theme.fontFamily
+            font.pixelSize: block.notify ?
+                Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
             height: block.destDist ? implicitHeight : 0
             text: block.manDist
             verticalAlignment: Text.AlignBottom
@@ -73,7 +80,9 @@ Rectangle {
             color: "white"
             font.pixelSize: Theme.fontSizeExtraSmall
             height: manLabel.height
-            text: block.destTime ? block.destDist + "  ·  " + block.destTime : block.destDist
+            text: block.destTime ?
+                block.destDist + "  ·  " + block.destTime :
+                block.destDist
         }
         Label {
             id: narrativeLabel
@@ -83,13 +92,14 @@ Rectangle {
             anchors.top: manLabel.bottom
             color: "white"
             font.pixelSize: Theme.fontSizeSmall
-            height: block.narrative ? implicitHeight + 0.75*Theme.paddingMedium : 0
+            height: block.narrative ?
+                implicitHeight + 0.75*Theme.paddingMedium : 0
             text: block.narrative
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
         }
         MouseArea {
-            // Use the maneuver icon as a "begin" button.
+            // Use the maneuver icon to begin navigating.
             anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.right: manLabel.left
@@ -101,6 +111,7 @@ Rectangle {
             }
         }
         MouseArea {
+            // Use rest of the block to open the narrative page.
             anchors.bottom: parent.bottom
             anchors.left: manLabel.left
             anchors.right: parent.right

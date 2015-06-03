@@ -47,9 +47,10 @@ MapQuickItem {
             buttonBlockWidth: (routeButton.width +
                                nearbyButton.width +
                                shareButton.width +
-                               2*Theme.paddingMedium +
-                               (marker.link.length > 0) * (webButton.width +
-                                                           Theme.paddingMedium))
+                               Theme.paddingMedium +
+                               Theme.paddingMedium +
+                               (marker.link.length > 0) * webButton.width +
+                               (marker.link.length > 0) * Theme.paddingMedium)
 
             message: marker.text
             visible: marker.bubbleVisible
@@ -94,10 +95,10 @@ MapQuickItem {
                 anchors.leftMargin: Theme.paddingMedium
                 text: "Share"
                 onClicked: {
+                    var x = marker.coordinate.longitude;
+                    var y = marker.coordinate.latitude;
                     app.showMenu("SharePage.qml", {
-                        "coordinate": QtPositioning.coordinate(
-                            marker.coordinate.latitude,
-                            marker.coordinate.longitude),
+                        "coordinate": QtPositioning.coordinate(y, x),
                         "title": "Share Location"
                     });
                 }
