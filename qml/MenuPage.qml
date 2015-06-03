@@ -24,7 +24,6 @@ import "."
 Page {
     id: page
     allowedOrientations: ~Orientation.PortraitInverse
-    property real iconWidth: 0
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
@@ -43,9 +42,6 @@ Page {
                     horizontalAlignment: Image.AlignRight
                     source: "image://theme/icon-m-search"
                     width: implicitWidth + Theme.paddingLarge
-                    Component.onCompleted: {
-                        page.iconWidth = searchImage.sourceSize.width;
-                    }
                 }
                 ListItemLabel {
                     anchors.left: searchImage.right
@@ -260,7 +256,7 @@ Page {
                 ListItemLabel {
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.paddingLarge +
-                        page.iconWidth + Theme.paddingMedium
+                        Theme.iconSizeMedium + Theme.paddingMedium
                     color: preferencesItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
@@ -274,7 +270,7 @@ Page {
                 ListItemLabel {
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.paddingLarge +
-                        page.iconWidth + Theme.paddingMedium
+                        Theme.iconSizeMedium + Theme.paddingMedium
                     color: aboutItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
