@@ -112,7 +112,7 @@ Page {
         listView.model.clear();
         py.call("poor.cache.stat", [], function(results) {
             if (results && results.length > 0) {
-                page.title = "Cache"
+                page.title = "Map Tile Cache"
                 for (var i = 0; i < results.length; i++)
                     listView.model.append(results[i]);
             } else {
