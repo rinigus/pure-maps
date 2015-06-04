@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="86"
-   height="86"
+   width="76"
+   height="76"
    id="svg1901"
    sodipodi:version="0.32"
    inkscape:version="0.91 r13725"
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="11.104651"
-     inkscape:cx="43"
-     inkscape:cy="43"
+     inkscape:zoom="12.565789"
+     inkscape:cx="38"
+     inkscape:cy="38"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
@@ -71,21 +71,21 @@
      inkscape:label="Taso 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-966.3622)">
+     transform="translate(0,-976.3622)">
     <g
        id="g11210"
-       transform="translate(17,2)">
+       transform="matrix(1,0,0,0.77777778,12,230.85826)">
       <path
          sodipodi:nodetypes="cccccc"
          inkscape:connector-curvature="0"
          id="path10403"
-         d="m 20,1007.3622 12,0 0,-28 -6,-8 -6,8 z"
+         d="m 20,1007.3622 12,0 0,-28.28571 -6,-7.71429 -6,7.71429 z"
          style="fill:#ff0000;fill-opacity:0.62745098;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cccccc"
          inkscape:connector-curvature="0"
          id="path10403-8"
-         d="m 20,1007.3622 12,0 0,28 -6,8 -6,-8 z"
+         d="m 20,1007.3622 12,0 0,28.2857 -6,7.7143 -6,-7.7143 z"
          style="fill:#000000;fill-opacity:0.62745098;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
   </g>
