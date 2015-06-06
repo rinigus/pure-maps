@@ -22,7 +22,7 @@ import "../qml"
 
 Page {
     id: page
-    allowedOrientations: ~Orientation.PortraitInverse
+    allowedOrientations: app.defaultAllowedOrientations
     property bool loading: true
     BusyModal {
         id: busy

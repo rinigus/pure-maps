@@ -32,7 +32,7 @@ import "."
 
 ApplicationWindow {
     id: app
-    allowedOrientations: ~Orientation.PortraitInverse
+    allowedOrientations: defaultAllowedOrientations
     cover: Cover {}
     initialPage: DummyPage { id: dummy }
 

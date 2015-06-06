@@ -22,7 +22,7 @@ import "."
 
 Page {
     id: page
-    allowedOrientations: ~Orientation.PortraitInverse
+    allowedOrientations: app.defaultAllowedOrientations
     canNavigateForward: page.from && page.to
     property var from: null
     property string fromText: ""

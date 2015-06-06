@@ -59,11 +59,18 @@ Item {
             app.scaleBar = scaleBar;
         }
         function updateOrientation() {
+            if (!(app.deviceOrientation & app.allowedOrientations)) return;
             switch (app.deviceOrientation) {
             case Orientation.Portrait:
                 app.screenWidth = Screen.width;
                 app.screenHeight = Screen.height;
                 revolver.rotation = 0;
+                map.updateSize();
+                break;
+            case Orientation.PortraitInverted:
+                app.screenWidth = Screen.width;
+                app.screenHeight = Screen.height;
+                revolver.rotation = 180;
                 map.updateSize();
                 break;
             case Orientation.Landscape:

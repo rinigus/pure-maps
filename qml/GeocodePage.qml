@@ -22,7 +22,7 @@ import "."
 
 Page {
     id: page
-    allowedOrientations: ~Orientation.PortraitInverse
+    allowedOrientations: app.defaultAllowedOrientations
     canNavigateForward: query.length > 0
     property var history: []
     property string query: ""

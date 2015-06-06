@@ -21,7 +21,7 @@ import Sailfish.Silica 1.0
 import "."
 
 Page {
-    allowedOrientations: ~Orientation.PortraitInverse
+    allowedOrientations: app.defaultAllowedOrientations
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
