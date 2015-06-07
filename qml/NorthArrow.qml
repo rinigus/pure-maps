@@ -24,17 +24,10 @@ IconButton {
     anchors.bottom: parent.bottom
     anchors.right: parent.right
     height: icon.height
+    icon.rotation: map.rotation
     icon.source: "icons/north.png"
-    rotation: map.rotation
     width: icon.width
     z: 600
-    Behavior on rotation {
-        RotationAnimation {
-            direction: RotationAnimation.Shortest
-            duration: 500
-            easing.type: Easing.Linear
-        }
-    }
     onClicked: {
         if (map.autoRotate) {
             map.autoRotate = false;
