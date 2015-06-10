@@ -1,3 +1,23 @@
+Poor Maps 0.20
+==============
+
+* Add option to auto-rotate map to match bearing
+* Add a north arrow, tapping which toggles auto-rotate
+* Allow landscape orientation (requires Sailfish OS 1.1.4
+  "Äijänpäivänjärvi" to work correctly)
+* Add nearby buttons to POI bubbles
+* Add positioning accuracy and speed display
+* Color matching parts of search history items
+* Use long tap instead of plain tap to add POIs
+* Hide POI bubbles on plain tap outside bubble
+* Fix error resetting HTTP connection
+* Ensure that blocking HTTP connection pool operations terminate
+  immediately and gracefully on application exit
+* Write configuration to file only once on application exit
+* Don't install `%doc` files (`COPYING`, `README`, etc.)
+* Remove python3-base from RPM dependencies
+* Prevent provides in RPM package
+
 Poor Maps 0.19
 ==============
 
