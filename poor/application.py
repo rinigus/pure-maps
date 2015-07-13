@@ -195,7 +195,7 @@ class Application:
         if xmax <= corners[2][0] or xmin >= corners[0][0]: return
         if ymax <= corners[2][1] or ymin >= corners[0][1]: return
         item = self.tilecollection.get_free(
-            key, xmin, xmax, ymin, ymax, display_zoom, corners)
+            key, path, xmin, xmax, ymin, ymax, display_zoom, corners)
         pyotherside.send("render-tile", dict(display_zoom=display_zoom,
                                              nex=corners[0][0],
                                              nwx=corners[3][0],

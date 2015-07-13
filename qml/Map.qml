@@ -402,6 +402,11 @@ Map {
         });
     }
 
+    function queueUpdate() {
+        // Mark map as changed to trigger an update.
+        map.changed = true;
+    }
+
     function renderTile(props) {
         // Render tile from local image file.
         for (var i = 0; i < map.tiles.length; i++) {

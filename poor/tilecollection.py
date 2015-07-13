@@ -17,6 +17,7 @@
 
 """A collection of map tiles visible on screen."""
 
+import os
 import poor
 import threading
 import time
@@ -32,6 +33,7 @@ class Tile:
         """Initialize a :class:`Tile` instance."""
         self.uid  = uid
         self.key  = ""
+        self.path = ""
         self.time = -1
         self.xmin = -1
         self.xmax = -1
@@ -39,15 +41,24 @@ class Tile:
         self.ymax = -1
         self.zoom = -1
 
-    def assign(self, key, xmin, xmax, ymin, ymax, zoom):
+    def assign(self, key, path, xmin, xmax, ymin, ymax, zoom):
         """Assign properties."""
         self.key  = key
+        self.path = path
         self.time = time.time()
         self.xmin = xmin
         self.xmax = xmax
         self.ymin = ymin
         self.ymax = ymax
         self.zoom = zoom
+
+    @property
+    def path_exists(self):
+        """``True`` if corresponding file exists on disk."""
+        if os.path.isabs(self.path):
+            return os.path.isfile(self.path)
+        # Assume files shipped with application always exist.
+        return True
 
 
 class TileCollection:
@@ -67,6 +78,13 @@ class TileCollection:
         self._tiles = []
 
     @poor.util.locked_method
+    def clear_removed(self):
+        """Clear tiles, whose corresponding file has been removed."""
+        for i in reversed(range(len(self._tiles))):
+            if not self._tiles[i].path_exists:
+                del self._tiles[i]
+
+    @poor.util.locked_method
     def get(self, key):
         """Return requested tile or ``None``."""
         for tile in reversed(self._tiles):
@@ -75,13 +93,13 @@ class TileCollection:
         return None
 
     @poor.util.locked_method
-    def get_free(self, key, xmin, xmax, ymin, ymax, zoom, tile_corners):
+    def get_free(self, key, path, xmin, xmax, ymin, ymax, zoom, tile_corners):
         """Assign and return a random tile outside bounds."""
         txmin = min(corner[0] for corner in tile_corners)
         txmax = max(corner[0] for corner in tile_corners)
         tymin = min(corner[1] for corner in tile_corners)
         tymax = max(corner[1] for corner in tile_corners)
-        props = (key, txmin, txmax, tymin, tymax, zoom)
+        props = (key, path, txmin, txmax, tymin, tymax, zoom)
         for tile in self._tiles:
             if (tile.xmin > xmax or tile.xmax < xmin or
                 tile.ymin > ymax or tile.ymax < ymin or

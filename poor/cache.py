@@ -20,6 +20,7 @@
 import glob
 import os
 import poor
+import pyotherside
 import threading
 import time
 
@@ -100,6 +101,11 @@ def purge_directory(directory, max_age):
         # Fails if the directory is a symlink.
         os.rmdir(directory)
     print(" {:6d} tiles removed, {:6d} left.".format(removed, total-removed))
+    if removed > 0:
+        # Make sure application doesn't try to use tiles that were allocated
+        # before this purge, but whose files have now been removed.
+        poor.app.tilecollection.clear_removed()
+        pyotherside.send("queue-update")
 
 def purge_directory_async(directory, max_age):
     """Remove all expired tiles in cache subdirectory."""
