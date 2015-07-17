@@ -1,9 +1,3 @@
-Poor Maps 0.20.1
-================
-
-* [X] Fix broken tile display when tiles being removed at startup by
-      cache purge were already being displayed
-
 Poor Maps 1.0
 =============
 
