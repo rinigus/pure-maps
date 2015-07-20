@@ -1,6 +1,8 @@
 Poor Maps 1.0
 =============
 
+* QtLocation >= 5.5 API changes
+    - <http://doc.qt.io/qt-5/qtlocation-changes.html>
 * Use `short_name` for stops once HSL Reittiopas API 1.2.0 is stable?
 * Use a userhash once HSL Reittiopas API 1.2.1 is stable?
 * Switch to the QtLocation OSM plugin (need to wait for Qt 5.5)
