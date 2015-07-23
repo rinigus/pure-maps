@@ -1,3 +1,8 @@
+Poor Maps 0.20.2
+================
+
+* [X] Fix updating progress labels of search results
+
 Poor Maps 1.0
 =============
 

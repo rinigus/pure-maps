@@ -43,5 +43,6 @@ Item {
         size: BusyIndicatorSize.Large
         visible: busy.running
     }
-    onTextChanged: busy.error = "";
+    onErrorChanged: busy.error && (busy.text = "");
+    onTextChanged: busy.text && (busy.error = "");
 }
