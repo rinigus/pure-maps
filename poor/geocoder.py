@@ -28,6 +28,8 @@ import traceback
 
 __all__ = ("Geocoder",)
 
+RE_GEO_URI = re.compile(r"\bgeo:([\d.]+),([\d.]+)\b", re.IGNORECASE)
+
 
 class Geocoder:
 
@@ -70,6 +72,16 @@ class Geocoder:
         the results will include correct distance and bearing.
         """
         params = params or {}
+        # Parse position if query is a geo URI.
+        match = RE_GEO_URI.search(query)
+        if match is not None:
+            qy, qx = map(float, match.groups())
+            return [dict(title="Point from geo link",
+                         description=match.group(0),
+                         x=qx,
+                         y=qy,
+                         distance=self._format_distance(x, y, qx, qy))]
+
         try:
             results = self._provider.geocode(query, params)
         except socket.timeout:
