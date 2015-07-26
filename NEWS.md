@@ -1,3 +1,10 @@
+Poor Maps 0.20.2
+================
+
+* If search string is a geo URI, parse those coordinates instead of
+  sending the query to a geocoding service
+* Fix updating progress labels of search results
+
 Poor Maps 0.20.1
 ================
 
