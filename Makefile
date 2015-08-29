@@ -1,14 +1,13 @@
 # -*- coding: us-ascii-unix -*-
 
-name       = harbour-poor-maps
-version    = 0.20.2
+NAME       = harbour-poor-maps
+VERSION    = 0.20.2
+
 DESTDIR    =
 PREFIX     = /usr
-datadir    = $(DESTDIR)$(PREFIX)/share/$(name)
-desktopdir = $(DESTDIR)$(PREFIX)/share/applications
-icondir    = $(DESTDIR)$(PREFIX)/share/icons/hicolor/86x86/apps
-
-.PHONY: clean dist install rpm
+DATADIR    = $(DESTDIR)$(PREFIX)/share/$(NAME)
+DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
+ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor/86x86/apps
 
 clean:
 	rm -rf dist
@@ -17,63 +16,65 @@ clean:
 
 dist:
 	$(MAKE) clean
-	mkdir -p dist/$(name)-$(version)
-	cp -r `cat MANIFEST` dist/$(name)-$(version)
-	tar -C dist -cJf dist/$(name)-$(version).tar.xz $(name)-$(version)
+	mkdir -p dist/$(NAME)-$(VERSION)
+	cp -r `cat MANIFEST` dist/$(NAME)-$(VERSION)
+	tar -C dist -cJf dist/$(NAME)-$(VERSION).tar.xz $(NAME)-$(VERSION)
 
 install:
 	@echo "Installing Python files..."
-	mkdir -p $(datadir)/poor
-	cp poor/*.py $(datadir)/poor
+	mkdir -p $(DATADIR)/poor
+	cp poor/*.py $(DATADIR)/poor
 
 	@echo "Installing QML files..."
-	mkdir -p $(datadir)/qml
-	cp qml/poor-maps.qml $(datadir)/qml/$(name).qml
-	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(datadir)/qml
-	mkdir -p $(datadir)/qml/icons
-	cp qml/icons/*.png $(datadir)/qml/icons
-	mkdir -p $(datadir)/qml/js
-	cp qml/js/*.js $(datadir)/qml/js
+	mkdir -p $(DATADIR)/qml
+	cp qml/poor-maps.qml $(DATADIR)/qml/$(NAME).qml
+	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(DATADIR)/qml
+	mkdir -p $(DATADIR)/qml/icons
+	cp qml/icons/*.png $(DATADIR)/qml/icons
+	mkdir -p $(DATADIR)/qml/js
+	cp qml/js/*.js $(DATADIR)/qml/js
 
 	@echo "Installing tilesources..."
-	mkdir -p $(datadir)/tilesources
-	cp tilesources/*.json $(datadir)/tilesources
-	cp tilesources/*.py $(datadir)/tilesources
+	mkdir -p $(DATADIR)/tilesources
+	cp tilesources/*.json $(DATADIR)/tilesources
+	cp tilesources/*.py $(DATADIR)/tilesources
 
 	@echo "Installing geocoders..."
-	mkdir -p $(datadir)/geocoders
-	cp geocoders/*.json $(datadir)/geocoders
-	cp geocoders/*.py $(datadir)/geocoders
-	cp geocoders/README.md $(datadir)/geocoders
+	mkdir -p $(DATADIR)/geocoders
+	cp geocoders/*.json $(DATADIR)/geocoders
+	cp geocoders/*.py $(DATADIR)/geocoders
+	cp geocoders/README.md $(DATADIR)/geocoders
 
 	@echo "Installing guides..."
-	mkdir -p $(datadir)/guides
-	cp guides/*.json $(datadir)/guides
-	cp guides/*.py $(datadir)/guides
-	cp guides/*.qml $(datadir)/guides
-	cp guides/README.md $(datadir)/guides
+	mkdir -p $(DATADIR)/guides
+	cp guides/*.json $(DATADIR)/guides
+	cp guides/*.py $(DATADIR)/guides
+	cp guides/*.qml $(DATADIR)/guides
+	cp guides/README.md $(DATADIR)/guides
 
 	@echo "Installing routers..."
-	mkdir -p $(datadir)/routers
-	cp routers/*.json $(datadir)/routers
-	cp routers/*.py $(datadir)/routers
-	cp routers/*.qml $(datadir)/routers
-	cp routers/README.md $(datadir)/routers
-	mkdir -p $(datadir)/routers/hsl
-	cp routers/hsl/*.png $(datadir)/routers/hsl
+	mkdir -p $(DATADIR)/routers
+	cp routers/*.json $(DATADIR)/routers
+	cp routers/*.py $(DATADIR)/routers
+	cp routers/*.qml $(DATADIR)/routers
+	cp routers/README.md $(DATADIR)/routers
+	mkdir -p $(DATADIR)/routers/hsl
+	cp routers/hsl/*.png $(DATADIR)/routers/hsl
 
 	@echo "Installing desktop file..."
-	mkdir -p $(desktopdir)
-	cp data/$(name).desktop $(desktopdir)
+	mkdir -p $(DESKTOPDIR)
+	cp data/$(NAME).desktop $(DESKTOPDIR)
 
 	@echo "Installing icon..."
-	mkdir -p $(icondir)
-	cp data/poor-maps.png $(icondir)/$(name).png
+	mkdir -p $(ICONDIR)
+	cp data/poor-maps.png $(ICONDIR)/$(NAME).png
 
 rpm:
 	mkdir -p $$HOME/rpmbuild/SOURCES
-	cp dist/$(name)-$(version).tar.xz $$HOME/rpmbuild/SOURCES
-	rm -rf $$HOME/rpmbuild/BUILD/$(name)-$(version)
-	rpmbuild -ba rpm/$(name).spec
-	cp $$HOME/rpmbuild/RPMS/noarch/$(name)-$(version)-*.rpm rpm
-	cp $$HOME/rpmbuild/SRPMS/$(name)-$(version)-*.rpm rpm
+	cp dist/$(NAME)-$(VERSION).tar.xz $$HOME/rpmbuild/SOURCES
+	rm -rf $$HOME/rpmbuild/BUILD/$(NAME)-$(VERSION)
+	rpmbuild -ba rpm/$(NAME).spec
+	cp $$HOME/rpmbuild/RPMS/noarch/$(NAME)-$(VERSION)-*.rpm rpm
+	cp $$HOME/rpmbuild/SRPMS/$(NAME)-$(VERSION)-*.rpm rpm
+
+.PHONY: clean dist install rpm
