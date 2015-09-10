@@ -41,7 +41,8 @@ MapQuickItem {
     property real zOffset: 0
     function setHeight(props) {
         // Set tile pixel height from corner coordinates.
-        var total = Math.pow(2, props.zoom) * 256 * props.scale;
+        var total = Math.pow(2, props.zoom) *
+            map.constants.canvasTileSize * props.scale;
         var height = Util.ycoord2ymercator(props.nwy) -
             Util.ycoord2ymercator(props.swy);
         var height = height / (2*Math.PI) * total;
@@ -49,7 +50,8 @@ MapQuickItem {
     }
     function setWidth(props) {
         // Set tile pixel width from corner coordinates.
-        var total = Math.pow(2, props.zoom) * 256 * props.scale;
+        var total = Math.pow(2, props.zoom) *
+            map.constants.canvasTileSize * props.scale;
         var width = (props.nex - props.nwx) / 360 * total;
         image.width = Math.ceil(width - 0.4);
     }

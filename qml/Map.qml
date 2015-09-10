@@ -54,6 +54,14 @@ Map {
     property real widthCoords: 0
     property real zoomLevelPrev: 8
 
+    property var constants: QtObject {
+        // Define metrics of the canvas used. Must match what plugin uses.
+        // Scale factor is relative to the traditional tile size 256.
+        // https://github.com/qtproject/qtlocation/commit/1ca75bd6bc109c6e5ad47fd5c236709d3f64c466
+        property real canvasTileSize: 512
+        property real canvasScaleFactor: 0.5
+    }
+
     Behavior on center {
         CoordinateAnimation {
             duration: map.ready ? 500 : 0
@@ -537,7 +545,9 @@ Map {
         var bbox = map.getBoundingBox();
         py.call("poor.app.update_tiles",
                 [bbox[0], bbox[1], bbox[2], bbox[3],
-                 Math.floor(map.zoomLevel)], null);
+                 Math.floor(map.zoomLevel),
+                 map.constants.canvasScaleFactor],
+                null);
 
         map.widthCoords = bbox[1] - bbox[0];
         map.heightCoords = bbox[3] - bbox[2];
