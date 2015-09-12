@@ -1,10 +1,3 @@
-Poor Maps 0.20.3
-================
-
-* [X] Fix tile display with Sailfish OS 1.1.9 "Eineheminlampi"
-* [X] Bump qt5-plugin-geoservices-nokia dependency to version shipped
-      with Sailfish OS 1.1.9 "Eineheminlampi"
-
 Poor Maps 1.0
 =============
 
