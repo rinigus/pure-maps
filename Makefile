@@ -70,6 +70,7 @@ install:
 	cp data/poor-maps.png $(ICONDIR)/$(NAME).png
 
 rpm:
+	$(MAKE) dist
 	mkdir -p $$HOME/rpmbuild/SOURCES
 	cp dist/$(NAME)-$(VERSION).tar.xz $$HOME/rpmbuild/SOURCES
 	rm -rf $$HOME/rpmbuild/BUILD/$(NAME)-$(VERSION)

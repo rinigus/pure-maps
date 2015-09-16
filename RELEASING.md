@@ -9,8 +9,7 @@ Releasing a New Version
     - `rpm/*.spec`
     - `Makefile`
 * Update `NEWS.md` and `TODO.md`
-* Build tarball and RPM
-    - `make dist`
+* Build RPM
     - `make rpm`
 * Check that RPM is Harbour-OK, installs and works
     - `rpm -qpil rpm/*.noarch.rpm`
@@ -21,8 +20,7 @@ Releasing a New Version
     - `git tag -s X.Y.Z`
     - `git push`
     - `git push --tags`
-* Build final tarball and RPM
-    - `make dist`
+* Build final RPM
     - `make rpm`
     - `pkcon install-local rpm/*.noarch.rpm`
 * Add release notes on GitHub
