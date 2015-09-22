@@ -5,6 +5,8 @@ Poor Maps 1.0
     - <http://doc.qt.io/qt-5/qtlocation-changes.html>
 * Use `short_name` for stops once HSL Reittiopas API 1.2.0 is stable?
 * Use a userhash once HSL Reittiopas API 1.2.1 is stable?
+* Add Mapzen's Valhalla router?
+    - <https://mapzen.com/projects/valhalla/>
 * Switch to the QtLocation OSM plugin (need to wait for Qt 5.5)
     - <http://bugreports.qt.io/browse/QTBUG-32937>
 * Add user interface translations
