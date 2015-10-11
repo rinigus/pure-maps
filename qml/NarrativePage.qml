@@ -39,7 +39,7 @@ Page {
                     implicitHeight, narrativeLabel.implicitHeight +
                         lengthLabel.implicitHeight)
                 horizontalAlignment: Image.AlignRight
-                source: "icons/" + model.icon + ".png"
+                source: "icons/%1.png".arg(model.icon)
                 verticalAlignment: Image.AlignVCenter
                 width: implicitWidth + Theme.paddingLarge
             }
@@ -70,7 +70,7 @@ Page {
                 height: implicitHeight + (iconImage.height -
                     implicitHeight - narrativeLabel.implicitHeight) / 2
                 text: model.index < listView.count-1 ?
-                    "Continue for " + model.length + "." :
+                    "Continue for %1.".arg(model.length) :
                     map.route.attribution
                 verticalAlignment: Text.AlignTop
             }

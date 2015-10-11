@@ -33,7 +33,7 @@ Page {
             ListItemLabel {
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
-                text: "version " + py.evaluate("poor.__version__")
+                text: "version %1".arg(py.evaluate("poor.__version__"))
             }
             ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall

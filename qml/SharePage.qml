@@ -72,7 +72,7 @@ Page {
         anchors.topMargin: Theme.paddingLarge
         text: "Email"
         onClicked: {
-            var link = "mailto:?body=" + page.formatMessage(false);
+            var link = "mailto:?body=%1".arg(page.formatMessage(false));
             infoLabel.text = "Launching the Email application";
             Qt.openUrlExternally(link);
         }

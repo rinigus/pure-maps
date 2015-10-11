@@ -3,12 +3,13 @@ Poor Maps 0.21
 
 * [ ] Add Mapzen Pelias geocoder
 * [ ] Add Mapzen Valhalla router
+* [ ] Add ÖPNV-Karte basemap (OpenStreetMap public transportation)
+* [ ] Remove Mapbox Emerald basemaps
 * [ ] Adapt MapQuest Open geocoder and router to work with
       recent [changes][0.21a] in their terms and API
 * [ ] Use a HiDPI @2x basemap by default ([#2][])
     - Or, use data from QML screen?
 * [ ] Don't smooth tiles if map auto-rotate is on, but angle zero
-* [ ] Use QML string formatting
 
 [0.21a]: http://devblog.mapquest.com/2015/08/17/mapquest-free-open-license-updates-and-changes/
 [#2]: https://github.com/otsaloma/poor-maps/issues/2

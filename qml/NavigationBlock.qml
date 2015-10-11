@@ -53,7 +53,7 @@ Rectangle {
                 manLabel.height + narrativeLabel.height + Theme.paddingMedium/2): 0
             horizontalAlignment: Image.AlignHCenter
             source: block.icon ?
-                "icons/" + block.icon + ".png" :
+                "icons/%1.png".arg(block.icon) :
                 "icons/alert.png"
             verticalAlignment: Image.AlignVCenter
             width: block.icon ?
@@ -81,7 +81,7 @@ Rectangle {
             font.pixelSize: Theme.fontSizeExtraSmall
             height: manLabel.height
             text: block.destTime ?
-                block.destDist + "  ·  " + block.destTime :
+                "%1 · %2".arg(block.destDist).arg(block.destTime) :
                 block.destDist
         }
         Label {

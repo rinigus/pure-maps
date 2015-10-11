@@ -30,5 +30,5 @@ Python {
             });
         });
     }
-    onError: console.log("Error: " + traceback);
+    onError: console.log("Error: %1".arg(traceback));
 }

@@ -31,7 +31,7 @@ Page {
             TextSwitch {
                 id: overlaySwitch
                 checked: model.active
-                description: "Source: " + model.source + "\n" + model.attribution
+                description: "Source: %1\n%2".arg(model.source).arg(model.attribution)
                 text: model.name
                 // Avoid implicit line breaks.
                 width: 3*parent.width

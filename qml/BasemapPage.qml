@@ -42,7 +42,7 @@ Page {
                 color: Theme.secondaryColor
                 height: implicitHeight + Theme.paddingMedium
                 font.pixelSize: Theme.fontSizeExtraSmall
-                text: "Source: " + model.source + "\n" + model.attribution
+                text: "Source: %1\n%2".arg(model.source).arg(model.attribution)
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {

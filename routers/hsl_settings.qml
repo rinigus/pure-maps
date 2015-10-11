@@ -61,8 +61,8 @@ Column {
                     var year = dialog.year.toString();
                     var month = dialog.month.toString();
                     var day = dialog.day.toString();
-                    if (month.length < 2) month = "0" + month;
-                    if (day.length < 2) day = "0" + day;
+                    if (month.length < 2) month = "0%1".arg(month);
+                    if (day.length < 2) day = "0%1".arg(day);
                     page.params.date = year + month + day;
                 });
             }
@@ -87,8 +87,8 @@ Column {
                     // Journey Planner wants time in format HHMM.
                     var hour = dialog.hour.toString();
                     var minute = dialog.minute.toString();
-                    if (hour.length < 2) hour = "0" + hour;
-                    if (minute.length < 2) minute = "0" + minute;
+                    if (hour.length < 2) hour = "0%1".arg(hour);
+                    if (minute.length < 2) minute = "0%1".arg(minute);
                     page.params.time = hour + minute;
                 });
             }
@@ -125,7 +125,7 @@ Column {
             Switch {
                 id: vehicleSwitch
                 icon.opacity: 0.9
-                icon.source: "hsl/" + repeater.keys[index] + ".png"
+                icon.source: "hsl/%1.png".arg(repeater.keys[index])
                 width: parent.width/5
                 Component.onCompleted: {
                     vehicleSwitch.checked = app.conf.set_contains(

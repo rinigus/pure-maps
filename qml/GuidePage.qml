@@ -56,7 +56,7 @@ Dialog {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight
-                text: "Source: " + model.source
+                text: "Source: %1".arg(model.source)
                 verticalAlignment: Text.AlignVCenter
             }
             ListItemLabel {

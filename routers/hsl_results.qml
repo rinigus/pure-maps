@@ -46,8 +46,7 @@ Page {
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight + Theme.paddingLarge
-                text: "Route " + listItem.result.alternative + ". total " +
-                    Math.round(listItem.result.duration) + " min"
+                text: "Route %1. total %2 min".arg(listItem.result.alternative).arg(Math.round(listItem.result.duration))
                 verticalAlignment: Text.AlignVCenter
             }
             Repeater {
@@ -105,8 +104,8 @@ Page {
                         anchors.top: bar.top
                         height: implicitHeight + Theme.paddingSmall
                         text: leg.mode === "walk" ?
-                            "Walk " + page.formatLength(leg.length) :
-                            leg.dep_name + " → " + leg.arr_name
+                            "Walk %1".arg(page.formatLength(leg.length)) :
+                            "%1 → %2".arg(leg.dep_name).arg(leg.arr_name)
                         truncationMode: TruncationMode.Fade
                         verticalAlignment: Text.AlignVCenter
                         x: parent.x + Theme.paddingLarge +

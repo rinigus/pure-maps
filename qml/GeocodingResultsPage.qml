@@ -132,7 +132,7 @@ Page {
                 busy.error = results.message;
             } else if (results.length > 0) {
                 page.title = results.length === 1 ?
-                    "1 Result" : results.length + " Results";
+                    "1 Result" : "%1 Results".arg(results.length);
                 for (var i = 0; i < results.length; i++)
                     listView.model.append(results[i]);
             } else {
