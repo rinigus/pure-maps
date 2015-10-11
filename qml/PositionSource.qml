@@ -26,7 +26,7 @@ PositionSource {
     // If application is no longer active, turn positioning off immediately
     // if we already have a lock, otherwise keep trying for a couple minutes
     // and give up if we still don't gain that lock.
-    active: app.running || (coordHistory.length == 0 && timePosition - timeActivate < 180000)
+    active: app.running || (coordHistory.length === 0 && timePosition - timeActivate < 180000)
     property var coordHistory: []
     property var direction: undefined
     property var directionHistory: []
@@ -45,7 +45,7 @@ PositionSource {
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 40) return;
         var coord = gps.position.coordinate;
-        if (gps.coordHistory.length == 0)
+        if (gps.coordHistory.length === 0)
             gps.coordHistory.push(QtPositioning.coordinate(
                 coord.latitude, coord.longitude));
         var coordPrev = gps.coordHistory[gps.coordHistory.length-1];

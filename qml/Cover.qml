@@ -29,7 +29,7 @@ import "."
 
 CoverBackground {
     id: cover
-    property bool active: status == Cover.Active
+    property bool active: status === Cover.Active
     property bool ready: false
     property bool showNarrative: map.hasRoute && map.showNarrative
     property var tiles: []
@@ -41,8 +41,8 @@ CoverBackground {
         interval: 1000
         repeat: true
         running: !ready ||
-            cover.status == Cover.Activating ||
-            cover.status == Cover.Active
+            cover.status === Cover.Activating ||
+            cover.status === Cover.Active
         triggeredOnStart: true
         onTriggered: {
             if (app.inMenu) return;
@@ -150,8 +150,8 @@ CoverBackground {
             cover.tiles[i].z = -1;
         var j = 1;
         for (var i = 0; i < map.tiles.length; i++) {
-            if (map.tiles[i].type != "basemap") continue;
-            if (map.tiles[i].z != 10) continue;
+            if (map.tiles[i].type !== "basemap") continue;
+            if (map.tiles[i].z !== 10) continue;
             while (cover.tiles.length <= j) cover.addTile();
             cover.tiles[j].smooth = map.tiles[i].smooth;
             cover.tiles[j].source = map.tiles[i].uri;

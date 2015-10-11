@@ -62,7 +62,7 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        if (dialog.query == "Current position") {
+                        if (dialog.query === "Current position") {
                             page.from = map.getPosition();
                             page.fromText = dialog.query;
                         } else {
@@ -83,7 +83,7 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        if (dialog.query == "Current position") {
+                        if (dialog.query === "Current position") {
                             page.to = map.getPosition();
                             page.toText = dialog.query;
                         } else {
@@ -128,10 +128,10 @@ Page {
         page.fromText = "Current position";
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Active) {
-            if (page.fromText == "Current position")
+        if (page.status === PageStatus.Active) {
+            if (page.fromText === "Current position")
                 page.from = map.getPosition();
-            if (page.toText == "Current position")
+            if (page.toText === "Current position")
                 page.to = map.getPosition();
             var uri = py.evaluate("poor.app.router.results_qml_uri");
             app.pageStack.pushAttached(uri);

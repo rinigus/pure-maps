@@ -135,7 +135,7 @@ Column {
                     vehicleSwitch.checked ?
                         app.conf.set_add(repeater.option, repeater.keys[index]) :
                         app.conf.set_remove(repeater.option, repeater.keys[index]);
-                    if (repeater.keys[index] == "bus") {
+                    if (repeater.keys[index] === "bus") {
                         // Include service lines when toggling bus use.
                         vehicleSwitch.checked ?
                             app.conf.set_add(repeater.option, "service") :

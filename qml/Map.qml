@@ -274,7 +274,7 @@ Map {
     function demoteTiles() {
         // Drop basemap tiles to a lower z-level and remove overlays.
         for (var i = map.tiles.length-1; i >= 0; i--) {
-            if (map.tiles[i].type == "basemap") {
+            if (map.tiles[i].type === "basemap") {
                 map.tiles[i].z = Math.max(1, map.tiles[i].z-1);
             } else {
                 map.tiles[i].z = -1;
@@ -284,7 +284,7 @@ Map {
 
     function fitViewtoCoordinates(coords) {
         // Set center and zoom so that all points are visible.
-        if (coords.length == 0) return;
+        if (coords.length === 0) return;
         var xmin = 360, xmax = -360;
         var ymin = 360, ymax = -360;
         for (var i = 0; i < coords.length; i++) {
@@ -326,7 +326,7 @@ Map {
     function fitViewToRoute() {
         // Set center and zoom so that the whole route is visible.
         // For performance reasons, include only a subset of points.
-        if (map.route.path.x.length == 0) return;
+        if (map.route.path.x.length === 0) return;
         var coords = [];
         for (var i = 0; i < map.route.path.x.length; i = i+10) {
             coords.push(QtPositioning.coordinate(
@@ -367,7 +367,7 @@ Map {
         map.showNarrative = app.conf.get("show_routing_narrative");
         map.setZoomLevel(app.conf.get("zoom"));
         var center = app.conf.get("center");
-        if (center[0] == 0.0 && center[1] == 0.0) {
+        if (center[0] === 0.0 && center[1] === 0.0) {
             // Center on user's position on first start.
             map.centerFound = false;
         } else {
@@ -418,7 +418,7 @@ Map {
     function renderTile(props) {
         // Render tile from local image file.
         for (var i = 0; i < map.tiles.length; i++) {
-            if (map.tiles[i].uid != props.uid) continue;
+            if (map.tiles[i].uid !== props.uid) continue;
             map.tiles[i].coordinate.latitude = props.nwy;
             map.tiles[i].coordinate.longitude = props.nwx;
             map.tiles[i].smooth = props.smooth;
@@ -515,7 +515,7 @@ Map {
     function showTile(uid) {
         // Show tile with given uid.
         for (var i = 0; i < map.tiles.length; i++) {
-            if (map.tiles[i].uid != uid) continue;
+            if (map.tiles[i].uid !== uid) continue;
             map.tiles[i].setZ(map.zoomLevel);
             break;
         }

@@ -68,8 +68,8 @@ ApplicationWindow {
 
     Keys.onPressed: {
         // Allow zooming with plus and minus keys on the emulator.
-        (event.key == Qt.Key_Plus)  && map.setZoomLevel(map.zoomLevel+1);
-        (event.key == Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
+        (event.key === Qt.Key_Plus)  && map.setZoomLevel(map.zoomLevel+1);
+        (event.key === Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
     }
 
     onApplicationActiveChanged: {
@@ -124,6 +124,6 @@ ApplicationWindow {
         // Update state of keep-alive, i.e. display blanking prevention.
         var prevent = app.conf.get("keep_alive");
         DisplayBlanking.preventBlanking = app.applicationActive &&
-            (prevent == "always" || (prevent == "navigating" && map.hasRoute));
+            (prevent === "always" || (prevent === "navigating" && map.hasRoute));
     }
 }

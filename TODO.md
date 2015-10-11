@@ -1,19 +1,28 @@
+Poor Maps 0.21
+==============
+
+* [ ] Add Mapzen Pelias geocoder
+* [ ] Add Mapzen Valhalla router
+* [ ] Adapt MapQuest Open geocoder and router to work with
+      recent [changes][0.21a] in their terms and API
+* [ ] Use a HiDPI @2x basemap by default ([#2][])
+    - Or, use data from QML screen?
+* [ ] Don't smooth tiles if map auto-rotate is on, but angle zero
+* [ ] Use QML string formatting
+
+[0.21a]: http://devblog.mapquest.com/2015/08/17/mapquest-free-open-license-updates-and-changes/
+[#2]: https://github.com/otsaloma/poor-maps/issues/2
+
 Poor Maps 1.0
 =============
 
-* QtLocation >= 5.5 API changes
-    - <http://doc.qt.io/qt-5/qtlocation-changes.html>
-* Use `short_name` for stops once HSL Reittiopas API 1.2.0 is stable?
-* Use a userhash once HSL Reittiopas API 1.2.1 is stable?
-* Add Mapzen's Valhalla router?
-    - <https://mapzen.com/projects/valhalla/>
-* Switch to the QtLocation OSM plugin (need to wait for Qt 5.5)
-    - <http://bugreports.qt.io/browse/QTBUG-32937>
-* Add user interface translations
-    - <http://github.com/otsaloma/poor-maps/issues/1>
+* Adapt to QtLocation >= 5.5 API
+  [changes](http://doc.qt.io/qt-5/qtlocation-changes.html)
+    - Switch to the OSM plugin along with 5.5
+      (see Qt bug [#32937](http://bugreports.qt.io/browse/QTBUG-32937))
+    - Move menu button to the center?
+* Use `short_name` for stops once Reittiopas API 1.2.0 is stable?
+* Use a userhash once Reittiopas API 1.2.1 is stable?
+* Add user interface translations (#1)
+* Allowing saving POIs for future use (#3)
 * Add support for non-SI units (miles, etc.)
-    - <http://stackoverflow.com/a/14044413>
-* Move menu button to the center or provide a separate left hand mode
-* Add a QtSensors Compass arrow that shows which way one is facing?
-* Add ability to import POIS or routes from file?
-* Add voice guidance to navigation (espeak?)

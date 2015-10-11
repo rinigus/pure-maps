@@ -57,8 +57,8 @@ MapQuickItem {
     }
     function setZ(zoom) {
         // Set tile z-level for display on given zoom level.
-        var zoomMatch = (tile.zoomLevel == Math.floor(zoom));
-        if (tile.type == "basemap") {
+        var zoomMatch = (tile.zoomLevel === Math.floor(zoom));
+        if (tile.type === "basemap") {
             tile.z = zoomMatch ? 10 : 9;
         } else {
             // Never show overlays from a different zoom level.

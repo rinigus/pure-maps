@@ -62,7 +62,7 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        if (dialog.page == "Current position") {
+                        if (dialog.page === "Current position") {
                             page.near = map.getPosition();
                             page.nearText = dialog.query;
                         } else {
@@ -101,7 +101,7 @@ Page {
                 property var radii: [1000, 2000, 5000, 10000, 20000, 50000]
                 Component.onCompleted: {
                     for (var i = 0; i < radiusComboBox.radii.length; i++) {
-                        if (radiusComboBox.radii[i] == page.radius)
+                        if (radiusComboBox.radii[i] === page.radius)
                             radiusComboBox.currentIndex = i;
                     }
                 }
@@ -135,8 +135,8 @@ Page {
         py.call_sync("poor.app.history.add_place_type", [page.query]);
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Active) {
-            if (page.nearText == "Current position")
+        if (page.status === PageStatus.Active) {
+            if (page.nearText === "Current position")
                 page.near = map.getPosition();
             var resultPage = app.pageStack.pushAttached("NearbyResultsPage.qml");
             resultPage.populated = false;

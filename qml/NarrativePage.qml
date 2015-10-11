@@ -86,10 +86,10 @@ Page {
         VerticalScrollDecorator {}
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Activating) {
+        if (page.status === PageStatus.Activating) {
             listView.visible = false;
             page.populate();
-        } else if (page.status == PageStatus.Active) {
+        } else if (page.status === PageStatus.Active) {
             page.scrollToActive();
             listView.visible = true;
         }

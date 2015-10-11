@@ -45,7 +45,7 @@ Column {
         checked: app.conf.set_contains("routers.mapquest_open.avoids", "Toll Road")
         height: Theme.itemSizeSmall
         text: "Try to avoid tolls"
-        visible: typeComboBox.currentIndex == 0
+        visible: typeComboBox.currentIndex === 0
         onCheckedChanged: {
             tollSwitch.checked ?
                 app.conf.set_add("routers.mapquest_open.avoids", "Toll Road") :

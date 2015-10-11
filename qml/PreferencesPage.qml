@@ -37,7 +37,7 @@ Page {
                 text: "Allow downloading map tiles"
                 onCheckedChanged: {
                     var value = downloadTilesItem.checked
-                    if (value == app.conf.get("allow_tile_download")) return;
+                    if (value === app.conf.get("allow_tile_download")) return;
                     app.conf.set("allow_tile_download", value);
                     if (value) {
                         // Clear tiles to ensure no logo tiles remain.

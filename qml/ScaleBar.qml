@@ -71,7 +71,7 @@ Item {
         // Update scalebar for current zoom level and latitude.
         var x = map.center.longitude;
         var y = map.center.latitude;
-        if (map.zoomLevel == scaleBar.zoomLevelPrev &&
+        if (map.zoomLevel === scaleBar.zoomLevelPrev &&
             Math.abs(y - scaleBar.coordPrev.latitude) < 0.1) return;
         var bbox = map.getBoundingBox();
         var tail = QtPositioning.coordinate(y, bbox[1]);

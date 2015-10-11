@@ -104,7 +104,7 @@ Page {
                         id: nameLabel
                         anchors.top: bar.top
                         height: implicitHeight + Theme.paddingSmall
-                        text: leg.mode == "walk" ?
+                        text: leg.mode === "walk" ?
                             "Walk " + page.formatLength(leg.length) :
                             leg.dep_name + " → " + leg.arr_name
                         truncationMode: TruncationMode.Fade
@@ -155,17 +155,17 @@ Page {
         running: page.loading
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Activating) {
+        if (page.status === PageStatus.Activating) {
             if (page.populated) return;
             listView.model.clear();
             page.loading = true;
             page.title = "";
             busy.text = "Searching";
-        } else if (page.status == PageStatus.Active) {
+        } else if (page.status === PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
             page.populate();
-        } else if (page.status == PageStatus.Inactive) {
+        } else if (page.status === PageStatus.Inactive) {
             listView.visible = false;
         }
     }

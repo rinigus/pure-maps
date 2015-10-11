@@ -40,7 +40,7 @@ Page {
         width: map.width
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Active) {
+        if (page.status === PageStatus.Active) {
             // Clear and hide menu if navigated backwards to this page.
             // This gets fired on application startup as well!
             app.clearMenu();
@@ -57,8 +57,8 @@ Page {
             page.tiles[i].z = -1;
         var j = 1;
         for (var i = 0; i < map.tiles.length; i++) {
-            if (map.tiles[i].type != "basemap") continue;
-            if (map.tiles[i].z != 10) continue;
+            if (map.tiles[i].type !== "basemap") continue;
+            if (map.tiles[i].z !== 10) continue;
             while (page.tiles.length <= j) page.addTile();
             page.tiles[j].smooth = map.tiles[i].smooth;
             page.tiles[j].source = map.tiles[i].uri;

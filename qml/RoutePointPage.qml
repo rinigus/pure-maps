@@ -94,7 +94,7 @@ Dialog {
         VerticalScrollDecorator {}
     }
     onStatusChanged: {
-        if (dialog.status == PageStatus.Activating) {
+        if (dialog.status === PageStatus.Activating) {
             dialog.loadHistory();
             dialog.filterHistory();
         }
@@ -105,10 +105,10 @@ Dialog {
         var found = [], n = 0;
         for (var i = 0; i < dialog.history.length; i++) {
             var historyItem = dialog.history[i].toLowerCase();
-            if (query && historyItem.indexOf(query) == 0) {
+            if (query && historyItem.indexOf(query) === 0) {
                 found[n++] = dialog.history[i];
                 if (found.length >= listView.count) break;
-            } else if (query.length == 0 || historyItem.indexOf(query) > 0) {
+            } else if (query.length === 0 || historyItem.indexOf(query) > 0) {
                 found[found.length] = dialog.history[i];
                 if (found.length >= listView.count) break;
             }

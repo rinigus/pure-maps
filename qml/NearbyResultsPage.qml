@@ -107,18 +107,18 @@ Page {
         running: page.loading
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Activating) {
+        if (page.status === PageStatus.Activating) {
             if (page.populated) return;
             listView.model.clear();
             page.loading = true;
             page.title = "";
             busy.text = "Searching";
-        } else if (page.status == PageStatus.Active) {
+        } else if (page.status === PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
             var nearbyPage = app.pageStack.previousPage();
             page.populate(nearbyPage.query, nearbyPage.near, nearbyPage.radius);
-        } else if (page.status == PageStatus.Inactive) {
+        } else if (page.status === PageStatus.Inactive) {
             listView.visible = false;
         }
     }
@@ -130,7 +130,7 @@ Page {
                 page.title = "";
                 busy.error = results.message;
             } else if (results.length > 0) {
-                page.title = results.length == 1 ?
+                page.title = results.length === 1 ?
                     "1 Result" : results.length + " Results";
                 for (var i = 0; i < results.length; i++)
                     listView.model.append(results[i]);

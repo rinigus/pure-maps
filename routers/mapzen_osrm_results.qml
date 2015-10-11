@@ -29,9 +29,9 @@ Page {
         running: page.loading
     }
     onStatusChanged: {
-        if (page.status == PageStatus.Activating) {
+        if (page.status === PageStatus.Activating) {
             busy.text = "Searching";
-        } else if (page.status == PageStatus.Active) {
+        } else if (page.status === PageStatus.Active) {
             page.findRoute();
         }
     }
