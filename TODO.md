@@ -4,7 +4,7 @@ Poor Maps 0.21
 * [ ] Add Mapzen Pelias geocoder
 * [ ] Add Mapzen Valhalla router
 * [X] Add ÖPNVKarte basemap (OpenStreetMap public transportation)
-* [ ] Adapt MapQuest Open geocoder and router to work with
+* [/] Adapt MapQuest Open geocoder and router to work with
       recent [changes][0.21a] in their terms and API
 * [ ] Use a HiDPI @2x basemap by default ([#2][])
     - Or, use data from QML screen?
