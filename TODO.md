@@ -1,8 +1,6 @@
 Poor Maps 0.21
 ==============
 
-* [ ] Add Mapzen Search geocoder (a.k.a. Pelias)
-* [ ] Add Mapzen Turn-by-Turn router (a.k.a Valhalla)
 * [X] Adapt MapQuest Open geocoder and router to work with
       recent [changes][0.21a] in their terms and API
 * [X] Use project-osrm.org again for OSRM routing as Mapzen shut down
@@ -13,6 +11,12 @@ Poor Maps 0.21
 
 [0.21a]: http://devblog.mapquest.com/2015/08/17/mapquest-free-open-license-updates-and-changes/
 [#2]: https://github.com/otsaloma/poor-maps/issues/2
+
+Poor Maps 0.22
+==============
+
+* [ ] Add Mapzen Search geocoder (a.k.a. Pelias)
+* [ ] Add Mapzen Turn-by-Turn router (a.k.a Valhalla)
 
 Poor Maps 1.0
 =============
