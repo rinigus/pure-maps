@@ -48,7 +48,7 @@ ICONS = { 0: "straight",
          18: "straight"}
 
 URL = ("http://open.mapquestapi.com/directions/v2/route"
-       "?key=Fmjtd%7Cluur2quy2h%2Cbn%3Do5-9aasg4"
+       "?key=Fmjtd|luur2quy2h,bn=o5-9aasg4"
        "&ambiguities=ignore"
        "&from={fm}"
        "&to={to}"

@@ -46,7 +46,9 @@ Page {
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight + Theme.paddingLarge
-                text: "Route %1. total %2 min".arg(listItem.result.alternative).arg(Math.round(listItem.result.duration))
+                text: "Route %1. total %2 min".arg(
+                    listItem.result.alternative).arg(
+                        Math.round(listItem.result.duration))
                 verticalAlignment: Text.AlignVCenter
             }
             Repeater {

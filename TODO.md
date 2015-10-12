@@ -6,6 +6,8 @@ Poor Maps 0.21
 * [X] Add ÖPNVKarte basemap (OpenStreetMap public transportation)
 * [/] Adapt MapQuest Open geocoder and router to work with
       recent [changes][0.21a] in their terms and API
+* [X] Use project-osrm.org again for OSRM routing as Mapzen shut down
+      their OSRM instance (we lose pedestrian and bicycle routing)
 * [ ] Use a HiDPI @2x basemap by default ([#2][])
     - Or, use data from QML screen?
 * [ ] Don't smooth tiles if map auto-rotate is on, but angle zero

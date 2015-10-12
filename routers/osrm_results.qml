@@ -48,7 +48,7 @@ Page {
                 map.addRoute({"x": route.x,
                               "y": route.y,
                               "mode": "car",
-                              "attribution": "Routing courtesy of Mapzen OSRM."});
+                              "attribution": "Routing courtesy of OSRM."});
 
                 map.hidePoiBubbles();
                 map.fitViewToRoute();
