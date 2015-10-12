@@ -3,13 +3,13 @@ Poor Maps 0.21
 
 * [ ] Add Mapzen Search geocoder (a.k.a. Pelias)
 * [ ] Add Mapzen Turn-by-Turn router (a.k.a Valhalla)
-* [X] Add ÖPNVKarte basemap (OpenStreetMap public transportation)
 * [X] Adapt MapQuest Open geocoder and router to work with
       recent [changes][0.21a] in their terms and API
 * [X] Use project-osrm.org again for OSRM routing as Mapzen shut down
       their OSRM instance (we lose pedestrian and bicycle routing)
+* [X] Add ÖPNVKarte basemap (OpenStreetMap public transportation)
 * [X] Use the HiDPI version of Mapbox Streets basemap by default ([#2][])
-* [ ] Don't smooth tiles if map auto-rotate is on, but angle zero
+* [X] Don't smooth tiles if map auto-rotate is on, but angle zero
 
 [0.21a]: http://devblog.mapquest.com/2015/08/17/mapquest-free-open-license-updates-and-changes/
 [#2]: https://github.com/otsaloma/poor-maps/issues/2

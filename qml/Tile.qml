@@ -29,7 +29,7 @@ MapQuickItem {
     sourceItem: Item {
         Image {
             id: image
-            smooth: map.autoRotate || tile.smooth
+            smooth: (map.autoRotate && map.rotation !== 0) || tile.smooth
             source: tile.uri
         }
     }
