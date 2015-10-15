@@ -19,13 +19,14 @@ import importlib.machinery
 import os
 import poor.test
 
-path = os.path.join(os.path.dirname(__file__), "..", "quadkey.py")
-loader = importlib.machinery.SourceFileLoader("format", path)
-format = loader.load_module("format")
-
 
 class TestModule(poor.test.TestCase):
 
+    def setup_method(self, method):
+        path = os.path.join(os.path.dirname(__file__), "..", "quadkey.py")
+        loader = importlib.machinery.SourceFileLoader("format", path)
+        self.format = loader.load_module("format")
+
     def test_num2key(self):
-        key = format.num2key(149233, 75880, 18)
+        key = self.format.num2key(149233, 75880, 18)
         assert key == "120120211013312001"

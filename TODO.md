@@ -1,8 +1,8 @@
 Poor Maps 0.21
 ==============
 
-* [X] Adapt MapQuest Open geocoder and router to work with
-      recent [changes][0.21a] in their terms and API
+* [X] Adapt MapQuest Nominatim geocoder to work with recent
+      [changes][0.21a] in their terms and API
 * [X] Use project-osrm.org again for OSRM routing as Mapzen shut down
       their OSRM instance (we lose pedestrian and bicycle routing)
 * [X] Add ÖPNVKarte basemap (OpenStreetMap public transportation)

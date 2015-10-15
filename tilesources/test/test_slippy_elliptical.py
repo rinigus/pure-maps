@@ -19,19 +19,20 @@ import importlib.machinery
 import os
 import poor.test
 
-path = os.path.join(os.path.dirname(__file__), "..", "slippy_elliptical.py")
-loader = importlib.machinery.SourceFileLoader("format", path)
-format = loader.load_module("format")
-
 
 class TestModule(poor.test.TestCase):
 
+    def setup_method(self, method):
+        path = os.path.join(os.path.dirname(__file__), "..", "slippy_elliptical.py")
+        loader = importlib.machinery.SourceFileLoader("format", path)
+        self.format = loader.load_module("format")
+
     def test_deg2num(self):
-        xtile, ytile = format.deg2num(24.94093, 60.16867, 18)
+        xtile, ytile = self.format.deg2num(24.94093, 60.16867, 18)
         assert xtile == 149233
         assert ytile == 76122
 
     def test_num2deg(self):
-        x, y = format.num2deg(149233, 76122, 18)
+        x, y = self.format.num2deg(149233, 76122, 18)
         assert abs(x - 24.94034) < 0.00001
         assert abs(y - 60.16932) < 0.00001

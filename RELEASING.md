@@ -2,8 +2,8 @@ Releasing a New Version
 =======================
 
 * Do final quality checks
-    - `pyflakes3 geocoders guides poor routers tilesources`
-    - `py.test-3 poor`
+    - `make check`
+    - `make test`
 * Bump version numbers
     - `poor/__init__.py`
     - `rpm/*.spec`
