@@ -24,7 +24,7 @@ import random
 
 class TestModule(poor.test.TestCase):
 
-    def test_get(self):
+    def test_urls(self):
         # Make sure all tilesource URLs still work by downloading
         # one tile and making sure the server doesn't raise an error
         # and that the returned data is an image file.
