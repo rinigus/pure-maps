@@ -24,7 +24,7 @@ class TestModule(poor.test.TestCase):
         self.guide = poor.Guide("mapquest_nominatim")
 
     def test_geocode(self):
-        results = self.guide.nearby("restaurant", "soukka, espoo", 1000)
+        results = self.guide.nearby("restaurant", "perkkaa, espoo", 1000)
         assert isinstance(results, list)
         assert len(results) > 0
         for result in results:

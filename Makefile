@@ -40,25 +40,25 @@ install:
 	@echo "Installing tilesources..."
 	mkdir -p $(DATADIR)/tilesources
 	cp tilesources/*.json $(DATADIR)/tilesources
-	cp tilesources/*.py $(DATADIR)/tilesources
+	cp tilesources/[!_]*.py $(DATADIR)/tilesources
 
 	@echo "Installing geocoders..."
 	mkdir -p $(DATADIR)/geocoders
 	cp geocoders/*.json $(DATADIR)/geocoders
-	cp geocoders/*.py $(DATADIR)/geocoders
+	cp geocoders/[!_]*.py $(DATADIR)/geocoders
 	cp geocoders/README.md $(DATADIR)/geocoders
 
 	@echo "Installing guides..."
 	mkdir -p $(DATADIR)/guides
 	cp guides/*.json $(DATADIR)/guides
-	cp guides/*.py $(DATADIR)/guides
+	cp guides/[!_]*.py $(DATADIR)/guides
 	cp guides/*.qml $(DATADIR)/guides
 	cp guides/README.md $(DATADIR)/guides
 
 	@echo "Installing routers..."
 	mkdir -p $(DATADIR)/routers
 	cp routers/*.json $(DATADIR)/routers
-	cp routers/*.py $(DATADIR)/routers
+	cp routers/[!_]*.py $(DATADIR)/routers
 	cp routers/*.qml $(DATADIR)/routers
 	cp routers/README.md $(DATADIR)/routers
 	mkdir -p $(DATADIR)/routers/hsl
