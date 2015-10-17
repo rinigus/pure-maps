@@ -32,14 +32,14 @@ function deg2rad(deg) {
 
 function median(x) {
     // Calculate the median of numeric array.
-    if (x.length == 0) return NaN
-    if (x.length == 1) return x[0];
+    if (x.length === 0) return NaN;
+    if (x.length === 1) return x[0];
     x = x.slice();
     x.sort(function(a, b) {
         return a-b;
     });
     var i = Math.floor(x.length / 2);
-    if (x.length % 2 == 1)
+    if (x.length % 2 === 1)
         return x[i];
     return (x[i-1] + x[i]) / 2;
 }

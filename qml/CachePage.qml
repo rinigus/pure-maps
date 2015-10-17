@@ -46,7 +46,7 @@ Page {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + Theme.paddingMedium
                 // model.count negative during operations, see page.purge.
-                text: model.count < 0 ? "· · ·" : 
+                text: model.count < 0 ? "· · ·" :
                     "%1 tiles · %2".arg(model.count).arg(model.size)
                 verticalAlignment: Text.AlignTop
             }
