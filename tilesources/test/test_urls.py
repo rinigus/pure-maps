@@ -15,7 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import glob
 import imghdr
 import os
 import poor.test
@@ -24,22 +23,23 @@ import random
 
 class TestModule(poor.test.TestCase):
 
-    def test_urls(self):
-        # Make sure all tilesource URLs still work by downloading
-        # one tile and making sure the server doesn't raise an error
-        # and that the returned data is an image file.
-        directory = os.path.join(os.path.dirname(__file__), "..")
-        for path in glob.glob(os.path.join(directory, "*.json")):
-            tilesource = poor.util.read_json(path)
-            # Don't test overlays as they can legitimately return
-            # non-200 responses for areas with no data.
-            type = tilesource.get("type", "basemap")
-            if type == "overlay": continue
-            url = tilesource["url"].format(
-                x=random.randint(2071, 2080),
-                y=random.randint(1401, 1410),
-                z=12)
+    # XXX: Only test the default basemap tile source? Some of the other
+    # tile sources tend to be broken for a short while every now and then,
+    # which is probably not something we would need to react to.
 
-            blob = poor.http.request_url(url)
-            imgtype = imghdr.what("", h=blob)
-            assert imgtype in ("jpeg", "png")
+    def request_url(self, name):
+        directory = os.path.join(os.path.dirname(__file__), "..")
+        path = os.path.join(directory, "{}.json".format(name))
+        tilesource = poor.util.read_json(path)
+        url = tilesource["url"].format(
+            x=random.randint(2071, 2080),
+            y=random.randint(1401, 1410),
+            z=12)
+
+        blob = poor.http.request_url(url)
+        imgtype = imghdr.what("", h=blob)
+        assert imgtype in ("jpeg", "png")
+
+    def test_mapbox_streets(self):
+        self.request_url("mapbox_streets")
+        self.request_url("mapbox_streets_@2x")
