@@ -24,10 +24,39 @@ import json
 import math
 import os
 import poor
+import random
+import shutil
+import stat
 import subprocess
 import sys
 import urllib.parse
 
+
+@contextlib.contextmanager
+def atomic_open(path, mode="w", *args, **kwargs):
+    """A context manager for atomically writing a file."""
+    # This is a simplified version of atomic_open from gaupol.
+    # https://github.com/otsaloma/gaupol/blob/master/aeidon/util.py
+    path = os.path.realpath(path)
+    suffix = random.randint(1, 10**9)
+    temp_path = "{}.tmp{}".format(path, suffix)
+    try:
+        if os.path.isfile(path):
+            with open(temp_path, "w") as f: pass
+            st = os.stat(path)
+            os.chmod(temp_path, stat.S_IMODE(st.st_mode))
+        with open(temp_path, mode, *args, **kwargs) as f:
+            yield f
+            f.flush()
+            os.fsync(f.fileno())
+        try:
+            os.replace(temp_path, path)
+        except OSError:
+            # Fall back on a non-atomic operation.
+            shutil.move(temp_path, path)
+    finally:
+        with silent(Exception):
+            os.remove(temp_path)
 
 def calculate_bearing(x1, y1, x2, y2):
     """Calculate bearing in degrees from point 1 to point 2."""
@@ -280,7 +309,7 @@ def write_json(data, path):
     """Write `data` to JSON file at `path`."""
     try:
         makedirs(os.path.dirname(path))
-        with open(path, "w", encoding="utf_8") as f:
+        with atomic_open(path, "w", encoding="utf_8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4, sort_keys=True)
     except Exception as error:
         print("Failed to write file {}: {}"

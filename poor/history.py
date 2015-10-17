@@ -115,7 +115,7 @@ class HistoryManager:
         path = os.path.join(poor.CONFIG_HOME_DIR, basename)
         try:
             poor.util.makedirs(os.path.dirname(path))
-            with open(path, "w", encoding="utf_8") as f:
+            with poor.util.atomic_open(path, "w", encoding="utf_8") as f:
                 f.writelines("\n".join(items) + "\n")
         except Exception as error:
             print("Failed to write file '{}': {}"
