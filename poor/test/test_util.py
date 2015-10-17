@@ -15,10 +15,29 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
 import poor.test
+import tempfile
 
 
 class TestModule(poor.test.TestCase):
+
+    def test_atomic_open__file_exists(self):
+        text = "testing\ntesting\n"
+        handle, path = tempfile.mkstemp()
+        with poor.util.atomic_open(path, "w") as f:
+            f.write(text)
+        assert open(path, "r").read() == text
+        os.remove(path)
+
+    def test_atomic_open__new_file(self):
+        text = "testing\ntesting\n"
+        handle, path = tempfile.mkstemp()
+        os.remove(path)
+        with poor.util.atomic_open(path, "w") as f:
+            f.write(text)
+        assert open(path, "r").read() == text
+        os.remove(path)
 
     def test_calculate_bearing(self):
         # From Helsinki to Lissabon.

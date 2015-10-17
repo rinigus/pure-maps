@@ -10,7 +10,7 @@ Poor Maps 0.21
 * [X] Add ÖPNVKarte basemap (OpenStreetMap public transportation)
 * [X] Use the HiDPI version of Mapbox Streets basemap by default ([#2][])
 * [X] Don't smooth tiles if map auto-rotate is on, but angle zero
-* [X] Write config file atomically
+* [X] Write config files atomically to avoid data loss in case of crash
 
 [0.21a]: http://devblog.mapquest.com/2015/08/17/mapquest-free-open-license-updates-and-changes/
 [#2]: https://github.com/otsaloma/poor-maps/issues/2
