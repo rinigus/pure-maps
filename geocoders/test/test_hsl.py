@@ -24,7 +24,7 @@ class TestModule(poor.test.TestCase):
         self.geocoder = poor.Geocoder("hsl")
 
     def test_geocode(self):
-        results = self.geocoder.geocode("erottaja, helsinki")
+        results = self.geocoder.geocode("kasarmitori, helsinki")
         assert isinstance(results, list)
         assert len(results) > 0
         for result in results:

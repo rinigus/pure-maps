@@ -21,13 +21,11 @@ import poor.test
 class TestModule(poor.test.TestCase):
 
     def setup_method(self, method):
-        self.guide = poor.Guide("mapquest_nominatim")
+        self.router = poor.Router("osrm")
 
     def test_geocode(self):
-        results = self.guide.nearby("restaurant", "soukka, espoo", 1000)
-        assert isinstance(results, list)
-        assert len(results) > 0
-        for result in results:
-            assert result["title"]
-            assert result["x"]
-            assert result["y"]
+        result = self.router.route("maunula, helsinki", "kallio, helsinki")
+        assert isinstance(result, dict)
+        assert result["maneuvers"]
+        assert result["x"]
+        assert result["y"]
