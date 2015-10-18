@@ -1,6 +1,7 @@
 {
     "attribution": "Data © HSL",
-    "description": "Public transportation routing for the Helsinki region",
+    "description": "Routing for the Helsinki region",
+    "modes": "public transport",
     "name": "HSL Journey Planner",
     "source": "reittiopas.fi"
 }

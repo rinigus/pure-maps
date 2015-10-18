@@ -1,6 +1,6 @@
 {
-    "attribution": "Date © OpenStreetMap, Quattroshapes, OpenAddresses, Geonames",
-    "description": "Geocoding based on various open data sources",
+    "attribution": "Data © OpenStreetMap, Quattroshapes, OpenAddresses, Geonames",
+    "description": "Geocoding based on open data sources",
     "name": "Mapzen Search",
     "source": "mapzen.com"
 }

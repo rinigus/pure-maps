@@ -48,7 +48,6 @@ Dialog {
                 height: model.description ? implicitHeight : 0
                 text: model.description
                 verticalAlignment: Text.AlignVCenter
-                wrapMode: Text.WordWrap
             }
             ListItemLabel {
                 id: sourceLabel

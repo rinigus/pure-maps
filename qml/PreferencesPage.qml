@@ -33,7 +33,7 @@ Page {
             TextSwitch {
                 id: downloadTilesItem
                 checked: app.conf.get("allow_tile_download")
-                description: "Disallow tile downloads to minimize data traffic. You will be left with previously downloaded and cached tiles."
+                description: "Uncheck to minimize data traffic. You will be left with previously downloaded and cached tiles."
                 text: "Allow downloading map tiles"
                 onCheckedChanged: {
                     var value = downloadTilesItem.checked
