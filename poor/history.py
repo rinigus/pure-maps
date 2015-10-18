@@ -28,6 +28,8 @@ class HistoryManager:
 
     """Managing a history of search queries."""
 
+    _places_blacklist = ["Current position"]
+
     def __init__(self, max_size=1000):
         """Initialize a :class:`HistoryManager` instance."""
         self._max_size = max_size
@@ -40,6 +42,7 @@ class HistoryManager:
         """Add `place` to the list of places."""
         place = place.strip()
         if not place: return
+        if place in self._places_blacklist: return
         self.remove_place(place)
         self._places.insert(0, place)
 
@@ -94,6 +97,8 @@ class HistoryManager:
             print("Failed to read file '{}': {}"
                   .format(path, str(error)),
                   file=sys.stderr)
+        for place in self._places_blacklist:
+            self.remove_place(place)
 
     def remove_place(self, place):
         """Remove `place` from the list of places."""
