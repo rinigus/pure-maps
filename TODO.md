@@ -9,6 +9,7 @@ Poor Maps 0.21
       their OSRM instance (we lose pedestrian and bicycle routing)
 * [X] Add ÖPNVKarte basemap (OpenStreetMap public transportation)
 * [X] Use the HiDPI version of Mapbox Streets basemap by default ([#2][])
+* [X] Show POI bubble for geocoding results by default
 * [X] Don't smooth tiles if map auto-rotate is on, but angle zero
 * [X] Write config files atomically to avoid data loss in case of crash
 

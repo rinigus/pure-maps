@@ -68,6 +68,8 @@ Page {
                               "text": model.text || model.title,
                               "link": model.link || ""}]);
 
+                map.hidePoiBubbles();
+                map.pois[map.pois.length-1].bubbleVisible = true;
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
                 listItem.visited = true;
