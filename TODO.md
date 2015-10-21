@@ -1,22 +1,3 @@
-Poor Maps 0.21
-==============
-
-* [X] Add Mapzen Search geocoder (a.k.a. Pelias)
-* [X] Add Mapzen Turn-by-Turn router (a.k.a Valhalla)
-* [X] Adapt MapQuest Nominatim geocoder to work with recent
-      [changes][0.21a] in their terms and API
-* [X] Use project-osrm.org again for OSRM routing as Mapzen shut down
-      their OSRM instance (we lose pedestrian and bicycle routing)
-* [X] Add ÖPNVKarte basemap (OpenStreetMap public transportation)
-* [X] Use the HiDPI version of Mapbox Streets basemap by default ([#2][])
-* [X] Show POI bubble for geocoding results by default
-* [X] Don't smooth tiles if map auto-rotate is on, but angle zero
-* [X] Write config files atomically to avoid data loss in case of crash
-* [X] Add new application icon sizes for tablet and whatever else
-
-[0.21a]: http://devblog.mapquest.com/2015/08/17/mapquest-free-open-license-updates-and-changes/
-[#2]: https://github.com/otsaloma/poor-maps/issues/2
-
 Poor Maps 1.0
 =============
 
