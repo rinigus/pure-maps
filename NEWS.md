@@ -2,7 +2,7 @@ Poor Maps 0.21
 ==============
 
 * Add Mapzen Search geocoder (a.k.a. Pelias)
-* Add Mapzen Turn-by-Turn router (a.k.a Valhalla)
+* Add Mapzen Turn-by-Turn router (a.k.a. Valhalla)
 * Adapt MapQuest Nominatim geocoder to work with recent
   [changes][0.21a] in their terms and API
 * Use project-osrm.org again for OSRM routing as Mapzen shut down

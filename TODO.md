@@ -1,3 +1,8 @@
+Poor Maps 0.21.1
+================
+
+* [ ] Fix Cover and Dummy tile display
+
 Poor Maps 1.0
 =============
 
