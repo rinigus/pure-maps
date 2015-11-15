@@ -65,8 +65,8 @@ Page {
             page.tiles[j].x = map.tiles[i].x;
             page.tiles[j].y = map.tiles[i].y;
             page.tiles[j].z = map.tiles[i].z;
-            var width = map.tiles[i].width;
-            var height = map.tiles[i].height;
+            var width = map.tiles[i].image.width;
+            var height = map.tiles[i].image.height;
             width && width > 0 && (page.tiles[j].width = width);
             height && height > 0 && (page.tiles[j].height = height);
             j++;

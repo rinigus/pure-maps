@@ -1,7 +1,7 @@
 Poor Maps 0.21.1
 ================
 
-* [ ] Fix Cover and Dummy tile display
+* [x] Fix cover tile display
 
 Poor Maps 1.0
 =============
@@ -14,5 +14,5 @@ Poor Maps 1.0
 * Use `short_name` for stops once Reittiopas API 1.2.0 is stable?
 * Use a userhash once Reittiopas API 1.2.1 is stable?
 * Add user interface translations (#1)
-* Allowing saving POIs for future use (#3)
+* Allow saving POIs for future use (#3)
 * Add support for non-SI units (miles, etc.)

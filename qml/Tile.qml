@@ -34,6 +34,7 @@ MapQuickItem {
         }
     }
     width: image.width
+    property var image: image
     property bool smooth: false
     property string type: "basemap"
     property int uid: -1

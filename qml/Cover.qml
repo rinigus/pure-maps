@@ -159,8 +159,8 @@ CoverBackground {
             cover.tiles[j].y = cover.mapYToCoverY(map.tiles[i].y);
             cover.tiles[j].z = map.tiles[i].z;
             cover.tiles[j].visible = !cover.showNarrative;
-            var width = map.tiles[i].width;
-            var height = map.tiles[i].height;
+            var width = map.tiles[i].image.width;
+            var height = map.tiles[i].image.height;
             width && width > 0 && (cover.tiles[j].width = width);
             height && height > 0 && (cover.tiles[j].height = height);
             j++;
