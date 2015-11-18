@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
 NAME       = harbour-poor-maps
-VERSION    = 0.21
+VERSION    = 0.21.1
 
 DESTDIR    =
 PREFIX     = /usr

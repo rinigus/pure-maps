@@ -1,3 +1,10 @@
+Poor Maps 0.21.1
+================
+
+* Fix cover tile display
+* Update OSM Roads basemap URL
+* Update ASTER GDEM & SRTM Hillshade overlay URL
+
 Poor Maps 0.21
 ==============
 

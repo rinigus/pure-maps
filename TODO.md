@@ -1,8 +1,3 @@
-Poor Maps 0.21.1
-================
-
-* [x] Fix cover tile display
-
 Poor Maps 1.0
 =============
 
