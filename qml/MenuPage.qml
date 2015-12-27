@@ -250,33 +250,15 @@ Page {
                     map.autoRotate = autoRotateItem.checked;
                 }
             }
-            ListItem {
-                id: preferencesItem
-                contentHeight: Theme.itemSizeSmall
-                ListItemLabel {
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingLarge +
-                        Theme.iconSizeMedium + Theme.paddingMedium
-                    color: preferencesItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Preferences"
-                }
-                onClicked: app.pageStack.push("PreferencesPage.qml");
-            }
-            ListItem {
-                id: aboutItem
-                contentHeight: Theme.itemSizeSmall
-                ListItemLabel {
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingLarge +
-                        Theme.iconSizeMedium + Theme.paddingMedium
-                    color: aboutItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "About Poor Maps"
-                }
+        }
+        PullDownMenu {
+            MenuItem {
+                text: "About"
                 onClicked: app.pageStack.push("AboutPage.qml");
+            }
+            MenuItem {
+                text: "Preferences"
+                onClicked: app.pageStack.push("PreferencesPage.qml");
             }
         }
         VerticalScrollDecorator {}
