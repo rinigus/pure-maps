@@ -1,12 +1,13 @@
 Poor Maps 0.22
 ==============
 
-* Bump font size of meters and scalebar
-* Move preferences and about to a pulldown menu
-* Only show one Nominatim geocoder, which will use either MapQuest
-  or OpenStreetMap Nominatim behind the scenes (#4)
-* Add a begin navigation button?
-* Check Sputnik tiles
+* [ ] Bump font size of meters and scalebar
+* [ ] Move preferences and about to a pulldown menu
+* [ ] Only show one Nominatim geocoder, which will use either MapQuest
+      or OpenStreetMap Nominatim behind the scenes (#4)
+* [ ] Add a begin navigation button?
+* [x] Update Sputnik tile source definition and add Sputnik @2x as
+      Sputnik tiles have changed to 512x512 pixels
 
 Poor Maps 1.0
 =============
