@@ -101,30 +101,6 @@ Page {
                 }
             }
             ListItem {
-                id: findCurrentPositionItem
-                contentHeight: Theme.itemSizeSmall
-                Image {
-                    id: findCurrentPositionImage
-                    fillMode: Image.Pad
-                    height: Theme.itemSizeSmall
-                    horizontalAlignment: Image.AlignRight
-                    source: "icons/center-position.png"
-                    width: implicitWidth + Theme.paddingLarge
-                }
-                ListItemLabel {
-                    anchors.left: findCurrentPositionImage.right
-                    anchors.leftMargin: Theme.paddingMedium
-                    color: findCurrentPositionItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Center on current position"
-                }
-                onClicked: {
-                    map.centerOnPosition();
-                    app.clearMenu();
-                }
-            }
-            ListItem {
                 id: shareCurrentPositionItem
                 contentHeight: Theme.itemSizeSmall
                 Image {
@@ -149,6 +125,30 @@ Page {
                         gps.position.coordinate.longitude),
                     "title": "Share Current Position"
                 });
+            }
+            ListItem {
+                id: findCurrentPositionItem
+                contentHeight: Theme.itemSizeSmall
+                Image {
+                    id: findCurrentPositionImage
+                    fillMode: Image.Pad
+                    height: Theme.itemSizeSmall
+                    horizontalAlignment: Image.AlignRight
+                    source: "icons/center-position.png"
+                    width: implicitWidth + Theme.paddingLarge
+                }
+                ListItemLabel {
+                    anchors.left: findCurrentPositionImage.right
+                    anchors.leftMargin: Theme.paddingMedium
+                    color: findCurrentPositionItem.highlighted ?
+                        Theme.highlightColor : Theme.primaryColor
+                    height: Theme.itemSizeSmall
+                    text: "Center on current position"
+                }
+                onClicked: {
+                    map.centerOnPosition();
+                    app.clearMenu();
+                }
             }
             ListItem {
                 id: clearMapItem
