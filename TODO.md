@@ -1,18 +1,18 @@
 Poor Maps 0.22
 ==============
 
-* [ ] Bump font size of meters and scalebar
-* [ ] Move preferences and about to a pulldown menu
 * [ ] Only show one Nominatim geocoder, which will use either MapQuest
       or OpenStreetMap Nominatim behind the scenes (#4)
 * [ ] Add a begin navigation button?
+* [ ] Move preferences and about to a pulldown menu
+* [x] Bump font sizes of scalebar and meters
 * [x] Update Sputnik tile source definition and add Sputnik @2x as
       Sputnik tiles have changed to 512x512 pixels
 
 Poor Maps 1.0
 =============
 
-* Enforce destination-driven routing (#5)
+* Enforce destination-driven routing? (#5)
 * Adapt to QtLocation >= 5.5 API
   [changes](http://doc.qt.io/qt-5/qtlocation-changes.html)
     - Switch to the OSM plugin along with 5.5

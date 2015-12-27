@@ -35,7 +35,7 @@ Item {
         anchors.right: labels.left
         color: "black"
         font.family: "sans-serif"
-        font.pixelSize: 15
+        font.pixelSize: 19
         font.weight: Font.DemiBold
         horizontalAlignment: Text.AlignRight
         lineHeight: 1.25
@@ -46,7 +46,7 @@ Item {
         anchors.right: parent.right
         color: "black"
         font.family: "sans-serif"
-        font.pixelSize: 15
+        font.pixelSize: 19
         font.weight: Font.DemiBold
         horizontalAlignment: Text.AlignLeft
         lineHeight: 1.25

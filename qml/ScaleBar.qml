@@ -61,7 +61,7 @@ Item {
         anchors.left: base.left
         color: "black"
         font.family: "sans-serif"
-        font.pixelSize: 15
+        font.pixelSize: 19
         font.weight: Font.DemiBold
         horizontalAlignment: Text.AlignHCenter
         text: scaleBar.text

@@ -50,7 +50,6 @@ from poor.application import *
 
 def main():
     """Initialize application."""
-    import pyotherside
     conf.read()
     global app
     app = Application()
