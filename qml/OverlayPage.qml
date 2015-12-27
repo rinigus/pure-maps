@@ -35,7 +35,13 @@ Page {
                 text: model.name
                 // Avoid implicit line breaks.
                 width: 3*parent.width
+                property bool ready: false
+                Component.onCompleted: {
+                    overlaySwitch.ready = true;
+                }
                 onCheckedChanged: {
+                    if (!overlaySwitch.ready) return;
+                    app.hideMenu();
                     map.clearTiles();
                     var fun = overlaySwitch.checked ?
                         "poor.app.add_overlays" : "poor.app.remove_overlays";

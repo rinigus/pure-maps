@@ -191,31 +191,9 @@ Page {
                     color: basemapItem.highlighted ?
                         Theme.highlightColor : Theme.primaryColor
                     height: Theme.itemSizeSmall
-                    text: "Basemaps"
+                    text: "Basemaps and overlays"
                 }
                 onClicked: app.pageStack.push("BasemapPage.qml");
-            }
-            ListItem {
-                id: overlayItem
-                contentHeight: Theme.itemSizeSmall
-                Image {
-                    id: overlayImage
-                    fillMode: Image.Pad
-                    height: Theme.itemSizeSmall
-                    horizontalAlignment: Image.AlignRight
-                    opacity: 0.5
-                    source: "image://theme/icon-m-levels"
-                    width: implicitWidth + Theme.paddingLarge
-                }
-                ListItemLabel {
-                    anchors.left: overlayImage.right
-                    anchors.leftMargin: Theme.paddingMedium
-                    color: overlayItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Overlays"
-                }
-                onClicked: app.pageStack.push("OverlayPage.qml");
             }
             TextSwitch {
                 id: autoCenterItem

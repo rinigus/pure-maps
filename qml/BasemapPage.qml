@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "."
 
 Page {
+    id: page
     allowedOrientations: app.defaultAllowedOrientations
     SilicaListView {
         id: listView
@@ -65,5 +66,9 @@ Page {
                     listView.model.append(basemaps[i]);
             });
         }
+    }
+    onStatusChanged: {
+        page.status === PageStatus.Active &&
+            app.pageStack.pushAttached("OverlayPage.qml");
     }
 }
