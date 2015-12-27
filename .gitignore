@@ -1,5 +1,6 @@
 *.py[co]
 *~
+.cache
 .hidden
 __pycache__
 dist
