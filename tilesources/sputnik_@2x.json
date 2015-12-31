@@ -5,5 +5,5 @@
     "name": "Sputnik @2x",
     "scale": 2,
     "source": "maps.sputnik.ru",
-    "url": "http://tiles.maps.sputnik.ru/{z}/{x}/{y}.png"
+    "url": "http://tiles.maps.sputnik.ru/{z}/{x}/{y}.png?tag=retina"
 }

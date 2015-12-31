@@ -3,17 +3,20 @@ Poor Maps 0.22
 
 * [ ] Only show one Nominatim geocoder, which will use either MapQuest
       or OpenStreetMap Nominatim behind the scenes (#4)
-* [ ] Add a begin navigation button?
 * [x] Move preferences and about to a pulldown menu
-* [x] Move basemaps and overlays under a single main menu item
+* [x] Move basemaps and overlays under a single menu item
 * [x] Bump font sizes of scalebar and meters
-* [x] Update Sputnik tile source definition and add Sputnik @2x as
-      Sputnik tiles have changed to 512x512 pixels
+* [ ] Flip speed and positioning accuracy meters
+* [x] Update Sputnik tile source definition and add Sputnik @2x tiles
+
+* [ ] Review navigation block design
+* [ ] Add a begin navigation button?
+* [ ] Add an end navigation button?
+* [ ] Have begin navigation turn on auto-rotate?
 
 Poor Maps 1.0
 =============
 
-* Enforce destination-driven routing? (#5)
 * Adapt to QtLocation >= 5.5 API
   [changes](http://doc.qt.io/qt-5/qtlocation-changes.html)
     - Switch to the OSM plugin along with 5.5
