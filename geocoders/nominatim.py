@@ -19,10 +19,7 @@
 Geocoding using Nominatim.
 
 This is an error tolerant Nominatim geocoder that falls back on a another
-provider if the first one tried does not work. This is especially useful for
-routers that take coordinates, and thus need pre-geocoding, but where the user
-should not be bothered with which geocoder is used and thus cannot change it
-in case of an error situation.
+provider if the first one tried does not work.
 """
 
 import poor

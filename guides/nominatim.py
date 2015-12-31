@@ -16,13 +16,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Listing nearby places using OpenStreetMap Nominatim.
+Listing nearby places using Nominatim.
 
-http://wiki.openstreetmap.org/wiki/Nominatim
-http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy
+This is an error tolerant Nominatim guide that falls back on a another
+provider if the first one tried does not work.
 """
 
 import poor
+
+providers = ["mapquest_nominatim", "openstreetmap_nominatim"]
 
 def nearby(query, near, radius, params):
     """Return a list of dictionaries of places matching `query`."""
@@ -31,15 +33,13 @@ def nearby(query, near, radius, params):
         results = geocoder.geocode(near, dict(limit=1))
         near = (results[0]["x"], results[0]["y"])
     x, y = near
-    x_m_per_deg = poor.util.calculate_distance(x, y, x+1, y)
-    y_m_per_deg = poor.util.calculate_distance(x, y, x, y+1)
-    results = geocoder.geocode(query,
-                               dict(xmin=x-radius/x_m_per_deg,
-                                    xmax=x+radius/x_m_per_deg,
-                                    ymin=y-radius/y_m_per_deg,
-                                    ymax=y+radius/y_m_per_deg,
-                                    bounded=True,
-                                    limit=50))
-
-    results = poor.util.sorted_by_distance(results, x, y)
-    return x, y, results
+    for i, provider in enumerate(providers):
+        guide = poor.Guide(provider)
+        # 'nearby' returns an empty list or a dict(error=True)
+        # in case of an error.
+        results = guide.nearby(query, near, radius, params)
+        if results and isinstance(results, list):
+            if i > 0:
+                providers.insert(0, providers.pop(i))
+            return x, y, results
+    return x, y, []

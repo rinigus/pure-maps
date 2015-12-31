@@ -1,6 +1,7 @@
 {
     "attribution": "Data © OpenStreetMap contributors",
     "description": "Points of interest from OpenStreetMap data",
+    "hidden": true,
     "name": "MapQuest Nominatim",
     "source": "open.mapquest.com"
 }

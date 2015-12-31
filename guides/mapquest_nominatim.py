@@ -26,7 +26,7 @@ import poor
 
 def nearby(query, near, radius, params):
     """Return a list of dictionaries of places matching `query`."""
-    geocoder = poor.Geocoder("mapquest_nominatim")
+    geocoder = poor.Geocoder("nominatim")
     if isinstance(near, str):
         results = geocoder.geocode(near, dict(limit=1))
         near = (results[0]["x"], results[0]["y"])

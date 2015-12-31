@@ -32,7 +32,7 @@ DEFAULTS = {
     "cache_max_age": 30, # days
     "center": [0.0, 0.0],
     "download_timeout": 10, # seconds
-    "geocoder": "mapquest_nominatim",
+    "geocoder": "nominatim",
     "guide": "foursquare",
     # 'always', 'navigating' or 'never'.
     "keep_alive": "navigating",
@@ -99,6 +99,14 @@ class ConfigurationStore(AttrDict):
             values.setdefault("cache_max_age", 36500)
             # 'tilesource' renamed to 'basemap' in 0.18.
             values["basemap"] = values.pop("tilesource")
+        if values.get("geocoder", "").endswith("_nominatim"):
+            # 'mapquest_nominatim' and 'openstreetmap_nominatim'
+            # hidden in 0.22 in favor of 'nominatim'.
+            values["geocoder"] = "nominatim"
+        if values.get("guide", "").endswith("_nominatim"):
+            # 'mapquest_nominatim' and 'openstreetmap_nominatim'
+            # hidden in 0.22 in favor of 'nominatim'.
+            values["guide"] = "nominatim"
         return values
 
     def read(self, path=None):
