@@ -50,7 +50,7 @@ Item {
         font.weight: Font.DemiBold
         horizontalAlignment: Text.AlignLeft
         lineHeight: 1.25
-        text: " m\n km/h"
+        text: " km/h\n m"
     }
     Timer {
         interval: 3000
@@ -61,10 +61,10 @@ Item {
     }
     function update() {
         var lines = ["—", "—"];
-        if (gps.position.horizontalAccuracyValid)
-            lines[0] = Math.round(gps.position.horizontalAccuracy);
         if (gps.position.speedValid)
-            lines[1] = Math.round(gps.position.speed*3.6);
+            lines[0] = Math.round(gps.position.speed*3.6);
+        if (gps.position.horizontalAccuracyValid)
+            lines[1] = Math.round(gps.position.horizontalAccuracy);
         values.text = lines.join("\n");
     }
 }

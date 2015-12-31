@@ -6,7 +6,7 @@ Poor Maps 0.22
 * [x] Move preferences and about to a pulldown menu
 * [x] Move basemaps and overlays under a single menu item
 * [x] Bump font sizes of scalebar and meters
-* [ ] Flip speed and positioning accuracy meters
+* [x] Flip speed and positioning accuracy meters
 * [x] Update Sputnik tile source definition and add Sputnik @2x tiles
 
 * [ ] Review navigation block design
