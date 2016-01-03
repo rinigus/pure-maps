@@ -6,15 +6,12 @@ Poor Maps 0.22
 * [x] Move preferences and about to a pulldown menu
 * [x] Move basemaps and overlays under a single menu item
 * [x] Make navigation narrative block a bit bigger
+* [x] Add begin, pause and clear navigation buttons to the maneuver list page
+* [x] Have begin navigation turn on auto-rotate
 * [x] Bump font sizes of the scalebar and meters
-* [ ] Handle lack of positioning better, e.g. AGPS off (#6)
+* [ ] Handle lack of positioning data better (#6)
+    - Navigate, Nearby venues, Share current position
 * [x] Update Sputnik tile source definition and add Sputnik @2x tiles
-
-?
-
-* Add a begin and end navigation buttons
-    - Or an instructive label shown for five seconds
-* Have begin navigation turn on auto-rotate
 
 Poor Maps 1.0
 =============

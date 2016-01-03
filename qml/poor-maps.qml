@@ -40,6 +40,7 @@ ApplicationWindow {
     property bool inMenu: !root.visible
     property var  map: null
     property var  menuButton: null
+    property var  narrativePageSeen: false
     property var  navigationBlock: null
     property var  northArrow: null
     property bool running: applicationActive || cover.active

@@ -221,6 +221,15 @@ Map {
         });
         map.saveRoute();
         map.saveManeuvers();
+        app.narrativePageSeen = false;
+    }
+
+    function beginNavigating() {
+        // Set UI to navigation mode.
+        map.autoCenter = true;
+        map.autoRotate = true;
+        map.centerOnPosition();
+        map.zoomLevel < 16 && map.setZoomLevel(16);
     }
 
     function centerOnPosition() {
@@ -280,6 +289,13 @@ Map {
                 map.tiles[i].z = -1;
             }
         }
+    }
+
+    function endNavigating() {
+        // Restore UI from navigation mode.
+        map.autoCenter = false;
+        map.autoRotate = false;
+        map.zoomLevel > 15 && map.setZoomLevel(15);
     }
 
     function fitViewtoCoordinates(coords) {

@@ -81,7 +81,91 @@ Page {
                 app.clearMenu();
             }
         }
-        header: PageHeader { title: "Maneuvers" }
+        header: Column {
+            height: header.height + row.height + Theme.paddingLarge
+            width: parent.width
+            PageHeader {
+                id: header
+                title: "Navigation"
+            }
+            Row {
+                id: row
+                height: Theme.itemSizeSmall
+                width: parent.width
+                ListItem {
+                    id: beginItem
+                    contentHeight: Theme.itemSizeSmall
+                    width: parent.width/3
+                    Rectangle {
+                        anchors.fill: parent
+                        color: Theme.highlightColor
+                        opacity: 0.1
+                    }
+                    ListItemLabel {
+                        id: beginLabel
+                        anchors.fill: parent
+                        anchors.leftMargin: Theme.paddingLarge
+                        anchors.rightMargin: Theme.paddingLarge
+                        color: beginItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        height: Theme.itemSizeSmall
+                        horizontalAlignment: Text.AlignHCenter
+                        text: "Begin"
+                    }
+                    onClicked: {
+                        map.beginNavigating();
+                        app.clearMenu();
+                    }
+                }
+                ListItem {
+                    id: pauseItem
+                    contentHeight: Theme.itemSizeSmall
+                    width: parent.width/3
+                    Rectangle {
+                        anchors.fill: parent
+                        color: Theme.highlightColor
+                        opacity: 0.1
+                    }
+                    ListItemLabel {
+                        id: pauseLabel
+                        anchors.fill: parent
+                        anchors.leftMargin: Theme.paddingLarge
+                        anchors.rightMargin: Theme.paddingLarge
+                        color: pauseItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        height: Theme.itemSizeSmall
+                        horizontalAlignment: Text.AlignHCenter
+                        text: "Pause"
+                    }
+                    onClicked: {
+                        map.endNavigating();
+                        app.clearMenu();
+                    }
+                }
+                ListItem {
+                    id: clearItem
+                    contentHeight: Theme.itemSizeSmall
+                    width: parent.width/3
+                    Rectangle {
+                        anchors.fill: parent
+                        color: Theme.highlightColor
+                        opacity: 0.1
+                    }
+                    ListItemLabel {
+                        id: clearLabel
+                        anchors.fill: parent
+                        anchors.leftMargin: Theme.paddingLarge
+                        anchors.rightMargin: Theme.paddingLarge
+                        color: clearItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        height: Theme.itemSizeSmall
+                        horizontalAlignment: Text.AlignHCenter
+                        text: "Clear"
+                    }
+                    onClicked: {
+                        map.clearRoute();
+                        app.clearMenu();
+                    }
+                }
+            }
+        }
         model: ListModel {}
         VerticalScrollDecorator {}
     }
@@ -90,7 +174,12 @@ Page {
             listView.visible = false;
             page.populate();
         } else if (page.status === PageStatus.Active) {
-            page.scrollToActive();
+            // On first time showing maneuvers, start at the top so that
+            // the user can see the begin, pause and end buttons. On later
+            // views, scroll to the maneuver closest to the screen center,
+            // allowing the user to tap through the maneuvers.
+            app.narrativePageSeen && page.scrollToActive();
+            app.narrativePageSeen = true;
             listView.visible = true;
         }
     }

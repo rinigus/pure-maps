@@ -99,23 +99,7 @@ Rectangle {
             wrapMode: Text.WordWrap
         }
         MouseArea {
-            // Use the maneuver icon to begin navigating.
-            anchors.bottom: parent.bottom
-            anchors.left: parent.left
-            anchors.right: manLabel.left
-            anchors.top: parent.top
-            onClicked: {
-                map.autoCenter = true;
-                map.centerOnPosition();
-                map.zoomLevel < 16 && map.setZoomLevel(16);
-            }
-        }
-        MouseArea {
-            // Use rest of the block to open the narrative page.
-            anchors.bottom: parent.bottom
-            anchors.left: manLabel.left
-            anchors.right: parent.right
-            anchors.top: parent.top
+            anchors.fill: parent
             onClicked: app.showMenu("NarrativePage.qml");
         }
     }
