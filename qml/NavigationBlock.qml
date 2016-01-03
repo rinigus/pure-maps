@@ -23,10 +23,11 @@ Rectangle {
     id: block
     anchors.left: parent.left
     anchors.top: parent.top
-    color: "#bb000000"
+    color: "#cc000000"
     height: destDist ? Math.max(
         iconImage.height, manLabel.height +
-            narrativeLabel.height + Theme.paddingMedium/2) : 0
+            narrativeLabel.height + Theme.paddingMedium/2) +
+        blockContent.anchors.margins*2 : 0
     width: parent.width
     z: 500
     property string destDist: ""
@@ -37,12 +38,13 @@ Rectangle {
     property string narrative: ""
     property bool notify: icon || narrative
     BackgroundItem {
+        id: blockContent
         anchors.left: parent.left
+        anchors.margins: Theme.paddingMedium
         anchors.right: parent.right
         anchors.top: parent.top
         // Ensure a sufficiently large tap target.
-        height: block.destDist ?
-            Math.max(parent.height, Theme.itemSizeSmall) : 0
+        height: block.destDist ? Math.max(parent.height, Theme.itemSizeSmall) : 0
         highlightedColor: "#00000000"
         Image {
             id: iconImage
@@ -57,17 +59,15 @@ Rectangle {
                 "icons/alert.png"
             verticalAlignment: Image.AlignVCenter
             width: block.icon ?
-                implicitWidth + 2*Theme.paddingLarge :
+                implicitWidth + Theme.paddingLarge*2 :
                 Theme.paddingMedium
         }
         Label {
             id: manLabel
             anchors.left: iconImage.right
             color: block.notify ? Theme.highlightColor : "white"
-            font.family: block.notify ?
-                Theme.fontFamilyHeading : Theme.fontFamily
-            font.pixelSize: block.notify ?
-                Theme.fontSizeExtraLarge : Theme.fontSizeExtraSmall
+            font.family: block.notify ? Theme.fontFamilyHeading : Theme.fontFamily
+            font.pixelSize: block.notify ? Theme.fontSizeHuge : Theme.fontSizeMedium
             height: block.destDist ? implicitHeight : 0
             text: block.manDist
             verticalAlignment: Text.AlignBottom
@@ -77,8 +77,8 @@ Rectangle {
             anchors.baseline: manLabel.baseline
             anchors.right: parent.right
             anchors.rightMargin: Theme.paddingMedium
-            color: "white"
-            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.secondaryColor
+            font.pixelSize: Theme.fontSizeSmall
             height: manLabel.height
             text: block.destTime ?
                 "%1 · %2".arg(block.destDist).arg(block.destTime) :
@@ -91,7 +91,7 @@ Rectangle {
             anchors.rightMargin: Theme.paddingMedium
             anchors.top: manLabel.bottom
             color: "white"
-            font.pixelSize: Theme.fontSizeSmall
+            font.pixelSize: Theme.fontSizeMedium
             height: block.narrative ?
                 implicitHeight + 0.75*Theme.paddingMedium : 0
             text: block.narrative

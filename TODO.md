@@ -5,13 +5,15 @@ Poor Maps 0.22
       or OpenStreetMap Nominatim behind the scenes (#4)
 * [x] Move preferences and about to a pulldown menu
 * [x] Move basemaps and overlays under a single menu item
-* [x] Bump font sizes of scalebar and meters
+* [x] Make navigation narrative block a bit bigger
+* [x] Bump font sizes of the scalebar and meters
+* [ ] Handle lack of positioning better, e.g. AGPS off (#6)
 * [x] Update Sputnik tile source definition and add Sputnik @2x tiles
 
 ?
 
-* Review navigation block design
 * Add a begin and end navigation buttons
+    - Or an instructive label shown for five seconds
 * Have begin navigation turn on auto-rotate
 
 Poor Maps 1.0
