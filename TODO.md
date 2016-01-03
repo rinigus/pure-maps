@@ -2,15 +2,18 @@ Poor Maps 0.22
 ==============
 
 * [x] Only show one Nominatim geocoder, which will use either MapQuest
-      or OpenStreetMap Nominatim behind the scenes (#4)
+      or OpenStreetMap Nominatim behind the scenes ([#4][])
 * [x] Move preferences and about to a pulldown menu
 * [x] Move basemaps and overlays under a single menu item
 * [x] Make navigation narrative block a bit bigger
 * [x] Add begin, pause and clear navigation buttons to the maneuver list page
 * [x] Have begin navigation turn on auto-rotate
 * [x] Bump font sizes of the scalebar and meters
-* [x] Handle lack of positioning data better (#6)
+* [x] Handle lack of positioning data better ([#6][])
 * [x] Update Sputnik tile source definition and add Sputnik @2x tiles
+
+[#4]: https://github.com/otsaloma/poor-maps/issues/4
+[#6]: https://github.com/otsaloma/poor-maps/issues/6
 
 Poor Maps 1.0
 =============
