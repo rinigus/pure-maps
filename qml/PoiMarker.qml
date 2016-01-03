@@ -61,7 +61,7 @@ MapQuickItem {
                 anchors.bottomMargin: parent.paddingX
                 anchors.left: parent.content.left
                 anchors.leftMargin: parent.paddingX
-                text: "Route"
+                text: "Navigate"
                 onClicked: {
                     var x = marker.coordinate.longitude;
                     var y = marker.coordinate.latitude;
