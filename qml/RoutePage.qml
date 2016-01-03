@@ -23,7 +23,9 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
-    canNavigateForward: page.from && page.to
+    canNavigateForward: page.from && page.to &&
+        (page.fromText !== "Current position" || gps.ready) &&
+        (page.toText !== "Current position" || gps.ready)
     property var from: null
     property string fromText: ""
     property var params: {}
@@ -59,6 +61,14 @@ Page {
                 value: page.fromText
                 // Avoid putting label and value on different lines.
                 width: 3*parent.width
+                BusyIndicator {
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.paddingLarge + (parent.width - page.width)
+                    anchors.verticalCenter: parent.verticalCenter
+                    running: page.fromText === "Current position" && !gps.ready
+                    size: BusyIndicatorSize.Small
+                    z: parent.z + 1
+                }
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
@@ -80,6 +90,14 @@ Page {
                 value: page.toText
                 // Avoid putting label and value on different lines.
                 width: 3*parent.width
+                BusyIndicator {
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.paddingLarge + (parent.width - page.width)
+                    anchors.verticalCenter: parent.verticalCenter
+                    running: page.toText === "Current position" && !gps.ready
+                    size: BusyIndicatorSize.Small
+                    z: parent.z + 1
+                }
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {

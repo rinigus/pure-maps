@@ -119,12 +119,23 @@ Page {
                     height: Theme.itemSizeSmall
                     text: "Share current position"
                 }
-                onClicked: app.pageStack.push("SharePage.qml", {
-                    "coordinate": QtPositioning.coordinate(
-                        gps.position.coordinate.latitude,
-                        gps.position.coordinate.longitude),
-                    "title": "Share Current Position"
-                });
+                BusyIndicator {
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.paddingLarge
+                    anchors.verticalCenter: parent.verticalCenter
+                    running: !gps.ready
+                    size: BusyIndicatorSize.Small
+                    z: parent.z + 1
+                }
+                onClicked: {
+                    if (!gps.ready) return;
+                    app.pageStack.push("SharePage.qml", {
+                        "coordinate": QtPositioning.coordinate(
+                            gps.position.coordinate.latitude,
+                            gps.position.coordinate.longitude),
+                        "title": "Share Current Position"
+                    });
+                }
             }
             ListItem {
                 id: findCurrentPositionItem

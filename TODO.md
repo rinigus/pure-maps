@@ -9,8 +9,7 @@ Poor Maps 0.22
 * [x] Add begin, pause and clear navigation buttons to the maneuver list page
 * [x] Have begin navigation turn on auto-rotate
 * [x] Bump font sizes of the scalebar and meters
-* [ ] Handle lack of positioning data better (#6)
-    - Navigate, Nearby venues, Share current position
+* [x] Handle lack of positioning data better (#6)
 * [x] Update Sputnik tile source definition and add Sputnik @2x tiles
 
 Poor Maps 1.0

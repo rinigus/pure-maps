@@ -23,7 +23,9 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
-    canNavigateForward: page.near && page.query.length > 0
+    canNavigateForward: page.near &&
+        (page.nearText !== "Current position" || gps.ready) &&
+        page.query.length > 0
     property var near: null
     property string nearText: ""
     property string query: ""
@@ -59,6 +61,14 @@ Page {
                 value: page.nearText
                 // Avoid putting label and value on different lines.
                 width: 3*parent.width
+                BusyIndicator {
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.paddingLarge + (parent.width - page.width)
+                    anchors.verticalCenter: parent.verticalCenter
+                    running: page.nearText === "Current position" && !gps.ready
+                    size: BusyIndicatorSize.Small
+                    z: parent.z + 1
+                }
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {

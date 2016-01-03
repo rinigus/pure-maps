@@ -30,6 +30,7 @@ PositionSource {
     property var coordHistory: []
     property var direction: undefined
     property var directionHistory: []
+    property var ready: false
     property var timeActivate: Date.now()
     property var timeDirection: Date.now()
     property var timePosition: Date.now()
@@ -41,6 +42,10 @@ PositionSource {
         // Calculate direction as a median of individual direction values
         // calculated after significant changes in position. This should be
         // more stable than any direct value and usable with map.autoRotate.
+        gps.ready = gps.position.latitudeValid &&
+            gps.position.longitudeValid &&
+            gps.position.coordinate.latitude &&
+            gps.position.coordinate.longitude;
         gps.timePosition = Date.now();
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 40) return;
