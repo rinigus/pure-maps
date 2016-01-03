@@ -106,10 +106,10 @@ Dialog {
         for (var i = 0; i < dialog.history.length; i++) {
             var historyItem = dialog.history[i].toLowerCase();
             if (query && historyItem.indexOf(query) === 0) {
-                found[n++] = dialog.history[i];
+                found.splice(n++, 0, dialog.history[i]);
                 if (found.length >= listView.count) break;
             } else if (query.length === 0 || historyItem.indexOf(query) > 0) {
-                found[found.length] = dialog.history[i];
+                found.push(dialog.history[i]);
                 if (found.length >= listView.count) break;
             }
         }

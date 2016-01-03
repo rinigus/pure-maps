@@ -11,6 +11,7 @@ Poor Maps 0.22
 * [x] Bump font sizes of the scalebar and meters
 * [x] Handle lack of positioning data better ([#6][])
 * [x] Update Sputnik tile source definition and add Sputnik @2x tiles
+* [x] Fix search history filtering
 
 [#4]: https://github.com/otsaloma/poor-maps/issues/4
 [#6]: https://github.com/otsaloma/poor-maps/issues/6
