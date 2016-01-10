@@ -1,3 +1,21 @@
+Poor Maps 0.22
+==============
+
+* Only show one Nominatim geocoder, which will use either MapQuest
+  or OpenStreetMap Nominatim behind the scenes ([#4])
+* Move preferences and about to a pulldown menu
+* Move basemaps and overlays under a single menu item
+* Make navigation narrative block a bit bigger
+* Add begin, pause and clear navigation buttons to the maneuver list page
+* Have begin navigation turn on auto-rotate
+* Bump font sizes of the scalebar and meters
+* Handle lack of positioning data better ([#6])
+* Update Sputnik tile source definition and add Sputnik @2x tiles
+* Fix search history filtering
+
+[#4]: https://github.com/otsaloma/poor-maps/issues/4
+[#6]: https://github.com/otsaloma/poor-maps/issues/6
+
 Poor Maps 0.21.1
 ================
 
@@ -15,7 +33,7 @@ Poor Maps 0.21
 * Use project-osrm.org again for OSRM routing as Mapzen shut down
   their OSRM instance (we lose pedestrian and bicycle routing)
 * Add ÖPNVKarte basemap (OpenStreetMap public transportation)
-* Use the HiDPI version of Mapbox Streets basemap by default ([#2][])
+* Use the HiDPI version of Mapbox Streets basemap by default ([#2])
 * Show POI bubble for geocoding results by default
 * Don't smooth tiles if map auto-rotate is on, but angle zero
 * Write config files atomically to avoid data loss in case of crash
