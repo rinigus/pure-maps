@@ -2,6 +2,7 @@
 *~
 .cache
 .hidden
+.tern-port
 __pycache__
 dist
 rpm/*.rpm

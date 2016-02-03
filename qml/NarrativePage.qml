@@ -160,6 +160,7 @@ Page {
                         text: "Clear"
                     }
                     onClicked: {
+                        map.endNavigating();
                         map.clearRoute();
                         app.clearMenu();
                     }
