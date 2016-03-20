@@ -4,7 +4,6 @@ Poor Maps 0.23
 * [ ] Add support for British and American units, i.e. miles/yards and
       miles/feet (not auto-detected, defaults to metric, changeable in
       the preferences dialog)
-    - poor.util.format_distance
     - Meters.qml
     - ScaleBar.qml
     - PreferencesPage.qml

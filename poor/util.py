@@ -153,7 +153,48 @@ def format_bearing(bearing):
 
 def format_distance(meters, n=2):
     """Format `meters` to `n` significant digits and unit label."""
-    # XXX: We might need to add support for non-SI units here.
+    if poor.conf.units == "american":
+        feet = 3.28084 * meters
+        return format_distance_american(feet, n)
+    if poor.conf.units == "british":
+        yards = 1.09361 * meters
+        return format_distance_british(yards, n)
+    return format_distance_metric(meters, n)
+
+def format_distance_american(feet, n=2):
+    """Format `feet` to `n` significant digits and unit label."""
+    if feet > 1000:
+        distance = feet/5280
+        units = "mi"
+    else:
+        # Let's not use units less than a foot.
+        distance = feet
+        units = "ft"
+    ndigits = n - math.ceil(math.log10(abs(max(1, distance)) + 1/1000000))
+    if units == "ft":
+        ndigits = min(0, ndigits)
+    distance = round(distance, ndigits)
+    fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
+    return fstring.format(distance, units)
+
+def format_distance_british(yards, n=2):
+    """Format `yards` to `n` significant digits and unit label."""
+    if yards > 400:
+        distance = yards/1760
+        units = "mi"
+    else:
+        # Let's not use units less than a yard.
+        distance = yards
+        units = "yd"
+    ndigits = n - math.ceil(math.log10(abs(max(1, distance)) + 1/1000000))
+    if units == "yd":
+        ndigits = min(0, ndigits)
+    distance = round(distance, ndigits)
+    fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
+    return fstring.format(distance, units)
+
+def format_distance_metric(meters, n=2):
+    """Format `meters` to `n` significant digits and unit label."""
     if meters > 1000:
         distance = meters/1000
         units = "km"
