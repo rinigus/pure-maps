@@ -39,6 +39,8 @@ DEFAULTS = {
     "overlays": [],
     "router": "mapquest_open",
     "show_routing_narrative": True,
+    # 'metric', 'american' or 'british'.
+    "units": "metric",
     "zoom": 15,
 }
 

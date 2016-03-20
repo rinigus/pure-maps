@@ -1,3 +1,15 @@
+Poor Maps 0.23
+==============
+
+* [ ] Add support for British and American units, i.e. miles/yards and
+      miles/feet (not auto-detected, defaults to metric, changeable in
+      the preferences dialog)
+    - poor.util.format_distance
+    - Meters.qml
+    - ScaleBar.qml
+    - PreferencesPage.qml
+    - NearbyPage.qml
+
 Poor Maps 1.0
 =============
 
@@ -10,4 +22,3 @@ Poor Maps 1.0
 * Use a userhash once Reittiopas API 1.2.1 is stable?
 * Add user interface translations (#1)
 * Allow saving POIs for future use (#3)
-* Add support for non-SI units (miles, etc.)
