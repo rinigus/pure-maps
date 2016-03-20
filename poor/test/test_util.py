@@ -61,3 +61,15 @@ class TestModule(poor.test.TestCase):
         assert y[0] ==   38.500
         assert y[1] ==   40.700
         assert y[2] ==   43.252
+
+    def test_format_distance_american(self):
+        assert poor.util.format_distance_american(123, 2) == "120 ft"
+        assert poor.util.format_distance_american(6000, 1) == "1 mi"
+
+    def test_format_distance_british(self):
+        assert poor.util.format_distance_british(123, 2) == "120 yd"
+        assert poor.util.format_distance_british(2000, 1) == "1 mi"
+
+    def test_format_distance_metric(self):
+        assert poor.util.format_distance_metric(123, 2) == "120 m"
+        assert poor.util.format_distance_metric(1234, 1) == "1 km"
