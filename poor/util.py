@@ -163,7 +163,7 @@ def format_distance(meters, n=2):
 
 def format_distance_american(feet, n=2):
     """Format `feet` to `n` significant digits and unit label."""
-    if feet > 1000:
+    if (n > 1 and feet >= 1000) or feet >= 5280:
         distance = feet/5280
         units = "mi"
     else:
@@ -179,7 +179,7 @@ def format_distance_american(feet, n=2):
 
 def format_distance_british(yards, n=2):
     """Format `yards` to `n` significant digits and unit label."""
-    if yards > 400:
+    if (n > 1 and yards >= 400) or yards >= 1760:
         distance = yards/1760
         units = "mi"
     else:
@@ -195,7 +195,7 @@ def format_distance_british(yards, n=2):
 
 def format_distance_metric(meters, n=2):
     """Format `meters` to `n` significant digits and unit label."""
-    if meters > 1000:
+    if meters >= 1000:
         distance = meters/1000
         units = "km"
     else:

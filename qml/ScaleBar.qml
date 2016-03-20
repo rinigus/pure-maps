@@ -67,6 +67,24 @@ Item {
         text: scaleBar.text
         width: base.width
     }
+    function roundedDistace(dist) {
+        // Return dist rounded to an even amount of user-visible units,
+        // but keeping the value of dist as meters.
+        if (app.conf.get("units") === "american")
+            // Round to an even amount of miles or feet.
+            return dist >= 1609.34 ?
+                dist = Util.siground(dist / 1609.34, 1) * 1609.34 :
+                dist = Util.siground(dist * 3.28084, 1) / 3.28084;
+        if (app.conf.get("units") === "british")
+            // Round to an even amount of miles or yards.
+            return dist >= 1609.34 ?
+                dist = Util.siground(dist / 1609.34, 1) * 1609.34 :
+                dist = Util.siground(dist * 1.09361, 1) / 1.09361;
+        // Round to an even amount of kilometers or meters.
+        return dist >= 1000 ?
+            dist = Util.siground(dist / 1000, 1) * 1000 :
+            dist = Util.siground(dist, 1);
+    }
     function update() {
         // Update scalebar for current zoom level and latitude.
         var x = map.center.longitude;
@@ -75,7 +93,8 @@ Item {
             Math.abs(y - scaleBar.coordPrev.latitude) < 0.1) return;
         var bbox = map.getBoundingBox();
         var tail = QtPositioning.coordinate(y, bbox[1]);
-        var dist = Util.siground(parent.width/map.width * map.center.distanceTo(tail)/2, 1);
+        var dist = parent.width/map.width * map.center.distanceTo(tail)/2;
+        var dist = scaleBar.roundedDistace(dist);
         var tail = map.center.atDistanceAndAzimuth(dist, 45);
         var xend = Util.xcoord2xpos(tail.longitude, bbox[0], bbox[1], map.width);
         var yend = Util.ycoord2ypos(tail.latitude, bbox[2], bbox[3], map.height);

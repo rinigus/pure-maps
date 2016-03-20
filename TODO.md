@@ -5,9 +5,9 @@ Poor Maps 0.23
       miles/feet (not auto-detected, defaults to metric, changeable in
       the preferences dialog)
     - Meters.qml
-    - ScaleBar.qml
-    - PreferencesPage.qml
     - NearbyPage.qml
+    - PreferencesPage.qml
+        * Update meters, scalebar
 
 Poor Maps 1.0
 =============
