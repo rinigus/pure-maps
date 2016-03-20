@@ -69,27 +69,27 @@ Item {
     }
     function roundedDistace(dist) {
         // Return dist rounded to an even amount of user-visible units,
-        // but keeping the value of dist as meters.
+        // but keeping the value as meters.
         if (app.conf.get("units") === "american")
             // Round to an even amount of miles or feet.
             return dist >= 1609.34 ?
-                dist = Util.siground(dist / 1609.34, 1) * 1609.34 :
-                dist = Util.siground(dist * 3.28084, 1) / 3.28084;
+                Util.siground(dist / 1609.34, 1) * 1609.34 :
+                Util.siground(dist * 3.28084, 1) / 3.28084;
         if (app.conf.get("units") === "british")
             // Round to an even amount of miles or yards.
             return dist >= 1609.34 ?
-                dist = Util.siground(dist / 1609.34, 1) * 1609.34 :
-                dist = Util.siground(dist * 1.09361, 1) / 1.09361;
+                Util.siground(dist / 1609.34, 1) * 1609.34 :
+                Util.siground(dist * 1.09361, 1) / 1.09361;
         // Round to an even amount of kilometers or meters.
-        return dist >= 1000 ?
-            dist = Util.siground(dist / 1000, 1) * 1000 :
-            dist = Util.siground(dist, 1);
+        return Util.siground(dist, 1);
     }
-    function update() {
+    function update(force) {
         // Update scalebar for current zoom level and latitude.
+        force = force || false;
         var x = map.center.longitude;
         var y = map.center.latitude;
-        if (map.zoomLevel === scaleBar.zoomLevelPrev &&
+        if (!force &&
+            map.zoomLevel === scaleBar.zoomLevelPrev &&
             Math.abs(y - scaleBar.coordPrev.latitude) < 0.1) return;
         var bbox = map.getBoundingBox();
         var tail = QtPositioning.coordinate(y, bbox[1]);
