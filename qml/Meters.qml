@@ -19,6 +19,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "js/util.js" as Util
+
 Item {
     id: meters
     anchors.bottom: parent.bottom
@@ -50,7 +52,7 @@ Item {
         font.weight: Font.DemiBold
         horizontalAlignment: Text.AlignLeft
         lineHeight: 1.25
-        text: " km/h\n m"
+        text: "\n"
     }
     Timer {
         interval: 3000
@@ -60,11 +62,31 @@ Item {
         onTriggered: meters.update();
     }
     function update() {
-        var lines = ["—", "—"];
-        if (gps.position.speedValid)
-            lines[0] = Math.round(gps.position.speed*3.6);
-        if (gps.position.horizontalAccuracyValid)
-            lines[1] = Math.round(gps.position.horizontalAccuracy);
-        values.text = lines.join("\n");
+        if (!py.ready) return;
+        if (app.conf.get("units") == "american") {
+            labels.text = " mph\n ft"
+            var lines = ["—", "—"];
+            if (gps.position.speedValid)
+                lines[0] = Math.round(gps.position.speed*2.23694);
+            if (gps.position.horizontalAccuracyValid)
+                lines[1] = Util.siground(gps.position.horizontalAccuracy*3.28084, 2);
+            values.text = lines.join("\n");
+        } else if (app.conf.get("units") == "british") {
+            labels.text = " mph\n yd"
+            var lines = ["—", "—"];
+            if (gps.position.speedValid)
+                lines[0] = Math.round(gps.position.speed*2.23694);
+            if (gps.position.horizontalAccuracyValid)
+                lines[1] = Util.siground(gps.position.horizontalAccuracy*1.09361, 2);
+            values.text = lines.join("\n");
+        } else {
+            labels.text = " km/h\n m"
+            var lines = ["—", "—"];
+            if (gps.position.speedValid)
+                lines[0] = Math.round(gps.position.speed*3.6);
+            if (gps.position.horizontalAccuracyValid)
+                lines[1] = Util.siground(gps.position.horizontalAccuracy, 2);
+            values.text = lines.join("\n");
+        }
     }
 }
