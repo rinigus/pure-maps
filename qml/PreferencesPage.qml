@@ -57,6 +57,25 @@ Page {
                 }
             }
             ComboBox {
+                id: unitsComboBox
+                label: "Units"
+                menu: ContextMenu {
+                    MenuItem { text: "Metric" }
+                    MenuItem { text: "American" }
+                    MenuItem { text: "British" }
+                }
+                property var values: ["metric", "american", "british"]
+                Component.onCompleted: {
+                    var value = app.conf.get("units");
+                    unitsComboBox.currentIndex = unitsComboBox.values.indexOf(value);
+                }
+                onCurrentIndexChanged: {
+                    var index = unitsComboBox.currentIndex;
+                    app.conf.set("units", unitsComboBox.values[index]);
+                    app.scaleBar.update(true);
+                }
+            }
+            ComboBox {
                 id: sleepComboBox
                 description: "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences."
                 label: "Prevent sleep"

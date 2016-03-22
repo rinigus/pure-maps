@@ -5,8 +5,9 @@ Poor Maps 0.23
       miles/feet (not auto-detected, defaults to metric, changeable in
       the preferences dialog)
     - NearbyPage.qml
-    - PreferencesPage.qml
-        * Update meters, scalebar
+        * Only saved temporarily to NearbyPage.radius
+* [ ] Update Mapbox basemaps?
+* [x] Fix clear navigating to clear a bit more
 
 Poor Maps 1.0
 =============
@@ -16,7 +17,5 @@ Poor Maps 1.0
     - Switch to the OSM plugin along with 5.5
       (see Qt bug [#32937](http://bugreports.qt.io/browse/QTBUG-32937))
     - Move menu button to the center?
-* Use `short_name` for stops once Reittiopas API 1.2.0 is stable?
-* Use a userhash once Reittiopas API 1.2.1 is stable?
 * Add user interface translations (#1)
 * Allow saving POIs for future use (#3)
