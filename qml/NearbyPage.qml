@@ -31,6 +31,14 @@ Page {
     property string query: ""
     property var params: {}
     property real radius: 1000
+    // Offer a different selection of radii depending on the user's
+    // preferred length units, but keep values as meters.
+    property var radiusLabels: app.conf.get("units") === "metric" ?
+        ["1 km", "2 km", "5 km", "10 km", "20 km", "50 km"] :
+        ["½ mi", "1 mi", "2 mi", "5 mi", "10 mi", "20 mi"]
+    property var radiusValues: app.conf.get("units") === "metric" ?
+        [1000, 2000, 5000, 10000, 20000, 50000] :
+        [805, 1609, 3219, 8047, 16093, 32187]
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
@@ -101,22 +109,21 @@ Page {
                 id: radiusComboBox
                 label: "Radius"
                 menu: ContextMenu {
-                    MenuItem { text:  "1 km" }
-                    MenuItem { text:  "2 km" }
-                    MenuItem { text:  "5 km" }
-                    MenuItem { text: "10 km" }
-                    MenuItem { text: "20 km" }
-                    MenuItem { text: "50 km" }
+                    MenuItem { text: page.radiusLabels[0] }
+                    MenuItem { text: page.radiusLabels[1] }
+                    MenuItem { text: page.radiusLabels[2] }
+                    MenuItem { text: page.radiusLabels[3] }
+                    MenuItem { text: page.radiusLabels[4] }
+                    MenuItem { text: page.radiusLabels[5] }
                 }
-                property var radii: [1000, 2000, 5000, 10000, 20000, 50000]
                 Component.onCompleted: {
-                    for (var i = 0; i < radiusComboBox.radii.length; i++) {
-                        if (radiusComboBox.radii[i] === page.radius)
+                    for (var i = 0; i < page.radiusValues.length; i++) {
+                        if (page.radiusValues[i] === page.radius)
                             radiusComboBox.currentIndex = i;
                     }
                 }
                 onCurrentIndexChanged: {
-                    page.radius = radiusComboBox.radii[radiusComboBox.currentIndex];
+                    page.radius = page.radiusValues[radiusComboBox.currentIndex];
                 }
             }
             Component.onCompleted: column.addSetttings();
