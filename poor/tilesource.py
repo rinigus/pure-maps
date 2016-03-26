@@ -115,7 +115,7 @@ class TileSource:
             response = connection.getresponse()
             # Always read response to avoid
             # http.client.ResponseNotReady: Request-sent.
-            blob = response.read(1048576)
+            blob = response.read(10*1024*1024)
             if imghdr.what("", h=blob) is None:
                 raise Exception("Non-image data received")
             if not self.extension:
