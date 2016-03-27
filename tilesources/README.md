@@ -37,16 +37,16 @@ Poor for examples; non-trivial and optional fields are explained below.
   often, e.g. for traffic tiles, try something like 0.01 days, i.e.
   about 15 minutes.
 
-* **`scale`**: The relative pixel density of tiles; e.g. if normal tiles
-  are 256x256, then tiles at `scale=2` are 512x512 pixels, covering the
-  same geographic area. If omitted, the default `scale=1` is assumed.
-  The only allowed values are powers of two: 1, 2, 4, etc. (also 0.5,
-  0.25, etc. for the rarer inverse problem). The scale field is meant
-  for so called "retina" (or "HiDPI" or "HiRes" or "@2x") tiles that fit
-  high pixel density screens better, especially regarding font sizes.
-  Note that there are different kinds of retina tiles available and
-  different ways of displaying them and thus different definitions for
-  different sources.
+* **`scale`**: The relative pixel density of tiles vs. traditional
+  256x256 tiles; e.g. in the usual case, tiles at `scale=2` are 512x512
+  pixels, covering the same geographic area as regular 256x256 tiles. If
+  omitted, the default `scale=1` is assumed. The only allowed values are
+  powers of two: 1, 2, 4, etc. (also 0.5, 0.25, etc. for the rarer
+  inverse problem). The scale field is meant for so called "retina" (or
+  "HiDPI" or "HiRes" or "@2x") tiles that fit high pixel density screens
+  better, especially regarding font sizes. Note that there are different
+  kinds of retina tiles available and different ways of displaying them
+  and thus different definitions for different sources.
 
 * **`smooth`**: `true` to display tiles with [smooth filtering][3] –
   useful for tiles not displayed at natural size. If omitted, defaults
