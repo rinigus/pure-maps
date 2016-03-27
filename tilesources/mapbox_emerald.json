@@ -4,5 +4,5 @@
     "format": "slippy",
     "name": "Mapbox Emerald",
     "source": "mapbox.com",
-    "url": "http://api.tiles.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoib3RzYWxvbWEiLCJhIjoiWE9xam1rQSJ9.yJfSVOUe5AvllrlTRccLBA"
+    "url": "https://api.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoib3RzYWxvbWEiLCJhIjoiNW5MOTN6YyJ9.RnPbZEzAX5z8V0DjqycyMQ"
 }

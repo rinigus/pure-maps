@@ -1,0 +1,9 @@
+{
+    "attribution": "Data © OpenStreetMap contributors",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "HSL @2x",
+    "scale": 4,
+    "source": "digitransit.fi",
+    "url": "http://beta.digitransit.fi/hsl-map/{z}/{x}/{y}@2x.png"
+}
