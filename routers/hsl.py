@@ -27,7 +27,7 @@ import re
 COLORS = {  "bus": "#007ac9",
           "ferry": "#00b9e4",
           "metro": "#ff6319",
-          "train": "#2dbe2c",
+          "train": "#8c4799",
            "tram": "#00985f",
            "walk": "#888888"}
 

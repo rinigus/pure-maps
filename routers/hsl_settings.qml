@@ -122,16 +122,19 @@ Column {
             model: 5
             property var keys: ["bus", "tram", "metro", "train", "uline"]
             property string option: "routers.hsl.transport_types"
-            Switch {
+            IconButton {
                 id: vehicleSwitch
-                icon.opacity: 0.9
+                height: icon.sourceSize.height + 2*Theme.paddingLarge
+                icon.opacity: checked ? 0.9 : 0.3
                 icon.source: "hsl/%1.png".arg(repeater.keys[index])
-                width: parent.width/5
+                width: Math.floor(parent.width/5)
+                property bool checked: false
                 Component.onCompleted: {
                     vehicleSwitch.checked = app.conf.set_contains(
                         repeater.option, repeater.keys[index]);
                 }
-                onCheckedChanged: {
+                onClicked: {
+                    vehicleSwitch.checked = !vehicleSwitch.checked;
                     vehicleSwitch.checked ?
                         app.conf.set_add(repeater.option, repeater.keys[index]) :
                         app.conf.set_remove(repeater.option, repeater.keys[index]);
