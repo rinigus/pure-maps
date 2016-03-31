@@ -1,3 +1,17 @@
+Poor Maps 0.23
+==============
+
+* Add support for British and American units, i.e. miles/yards and
+  miles/feet (not auto-detected, defaults to metric, changeable in
+  the preferences dialog)
+* Add [Digitransit HSL basemap][0.23a] (Finnish public transport tiles)
+* Update Mapbox basemap URLs
+* Use the basic version of Mapbox Streets
+* Fix clear navigating to clear a bit more
+* Fix handling of tiles over 1 MB in size
+
+[0.23a]: http://digitransit.fi/en/developers/service-catalogue/apis/map-api/
+
 Poor Maps 0.22
 ==============
 
