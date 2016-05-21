@@ -38,7 +38,9 @@ Page {
             ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall
                 height: Theme.itemSizeExtraSmall
-                horizontalAlignment: Text.AlignHCenter
+                horizontalAlignment: implicitWidth > parent.width -
+                    anchors.leftMargin - anchors.rightMargin ?
+                    Text.AlignLeft : Text.AlignHCenter
                 linkColor: Theme.highlightColor
                 text: '<a href="http://github.com/otsaloma/poor-maps">http://github.com/otsaloma/poor-maps</a>'
                 onLinkActivated: Qt.openUrlExternally(link);
