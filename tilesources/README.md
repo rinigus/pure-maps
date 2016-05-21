@@ -11,24 +11,9 @@ Poor for examples; non-trivial and optional fields are explained below.
   it out. If left out, the image format will be auto-detected based on
   the Content-Type header of the HTTP download response.
 
-* **`format`**: Name of tile format implementation. If you mark the
+* **`format`**: Name of the tile format implementation. If you mark the
   format as "foo", there should be a `foo.py` file in the tilesources
-  directory. The following tile format implementations are shipped with
-  Poor, for adding you own, see the next section.
-
-    - `"slippy"`: By far the most common format, based on spherical
-      Mercator and division into an amount of tiles that quadruples with
-      each zoom level. See [documentation][1]. Provides URL parameters
-      `x`, `y` and `z`.
-
-    - `"slippy_elliptical"`: A variation of the "slippy" format, but
-      using elliptical Mercator instead of spherical. Provides URL
-      parameters `x`, `y` and `z`.
-
-    - `"quadkey"`: By tile division equivalent to the "slippy" format,
-      but with tiles referred to by a single key, see
-      [documentation][2]. Provides URL parameters `x`, `y`, `z` and
-      `key`.
+  directory. See the next section for information about tile formats.
 
 * **`max_age`**: Maximum amount of days to keep tiles cached on disk.
   Usually you should not define this as there is a corresponding global
@@ -38,8 +23,8 @@ Poor for examples; non-trivial and optional fields are explained below.
   about 15 minutes.
 
 * **`scale`**: The relative pixel density of tiles vs. traditional
-  256x256 tiles; e.g. in the usual case, tiles at `scale=2` are 512x512
-  pixels, covering the same geographic area as regular 256x256 tiles. If
+  256×256 tiles; e.g. in the usual case, tiles at `scale=2` are 512×512
+  pixels, covering the same geographic area as regular 256×256 tiles. If
   omitted, the default `scale=1` is assumed. The only allowed values are
   powers of two: 1, 2, 4, etc. (also 0.5, 0.25, etc. for the rarer
   inverse problem). The scale field is meant for so called "retina" (or
@@ -48,26 +33,46 @@ Poor for examples; non-trivial and optional fields are explained below.
   kinds of retina tiles available and different ways of displaying them
   and thus different definitions for different sources.
 
-* **`smooth`**: `true` to display tiles with [smooth filtering][3] –
-  useful for tiles not displayed at natural size. If omitted, defaults
+* **`smooth`**: `true` to display tiles with [smooth filtering][smooth]
+  – useful for tiles not displayed at natural size. If omitted, defaults
   to `false`.
 
 * **`type`**: Type of tiles: either "basemap" or "overlay". If omitted,
   the default "basemap" is assumed. Overlays are partly transparent
   tiles stacked on top of basemaps, e.g. hillshade or traffic.
 
-* **`z`**: The stacking order of layer among overlay tiles. `z` is only
-  used for tiles of type "overlay". Low z-values are placed in the
+* **`z`**: The stacking order of the layer among overlay tiles. `z` is
+  only used for tiles of type "overlay". Low z-values are placed at the
   bottom and high ones on top. Recommended values are 10 for areas, 20
   for lines and 30 for points. Valid values are from 0 to 40.
-
-[1]: http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
-[2]: http://msdn.microsoft.com/en-us/library/bb259689.aspx
-[3]: http://doc.qt.io/qt-5/qml-qtquick-image.html#smooth-prop
 
 Use `~/.local/share/harbour-poor-maps/tilesources` as a local
 installation directory in which to place your JSON file. Restart Poor,
 and your tile source should be loaded, listed and available for use.
+
+[smooth]: http://doc.qt.io/qt-5/qml-qtquick-image.html#smooth-prop
+
+Available Tile Formats
+======================
+
+The following tile format implementations are shipped with Poor. For
+adding a new tile format, see the next section.
+
+* **`slippy`**: By far the most common format, based on spherical
+  Mercator and division into an amount of tiles that quadruples with
+  each zoom level. See [documentation][slippy]. Provides URL parameters
+  `x`, `y` and `z`.
+
+* **`slippy_elliptical`**: A variation of the `slippy` format, but using
+  elliptical Mercator instead of spherical. Provides URL parameters `x`,
+  `y` and `z`.
+
+* **`quadkey`**: By tile division equivalent to the `slippy` format, but
+  with tiles referred to by a single key, see [documentation][quadkey].
+  Provides URL parameters `x`, `y`, `z` and `key`.
+
+[slippy]: http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
+[quadkey]: http://msdn.microsoft.com/en-us/library/bb259689.aspx
 
 Implementing a Tile Format
 ==========================
