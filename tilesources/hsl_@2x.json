@@ -5,5 +5,5 @@
     "name": "HSL @2x",
     "scale": 4,
     "source": "digitransit.fi",
-    "url": "http://beta.digitransit.fi/hsl-map/{z}/{x}/{y}@2x.png"
+    "url": "http://api.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}@2x.png"
 }
