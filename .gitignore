@@ -1,7 +1,5 @@
-*.py[co]
 *~
 .cache
-.hidden
 .tern-port
 __pycache__
 dist
