@@ -118,18 +118,19 @@ class ConnectionPool:
 pool = ConnectionPool(1)
 
 
-def request_json(url, encoding="utf_8", retry=1):
+def request_json(url, encoding="utf_8", retry=1, headers=None):
     """
     Request, parse and return JSON data at `url`.
 
     Try again `retry` times in some particular cases that imply
-    a connection error.
+    a connection error. `headers` should be a dictionary of custom
+    headers to add to the defaults :attr:`http.HEADERS`.
     """
-    text = request_url(url, encoding, retry)
+    text = request_url(url, encoding, retry, headers)
     if not text.strip() and retry > 0:
         # A blank return is probably an error.
         pool.reset(url)
-        text = request_url(url, encoding, retry-1)
+        text = request_url(url, encoding, retry-1, headers)
     try:
         if not text.strip():
             raise ValueError("Expected JSON, received blank")
@@ -140,18 +141,21 @@ def request_json(url, encoding="utf_8", retry=1):
               file=sys.stderr)
         raise # Exception
 
-def request_url(url, encoding=None, retry=1):
+def request_url(url, encoding=None, retry=1, headers=None):
     """
     Request and return data at `url`.
 
     If `encoding` is ``None``, return bytes, otherwise decode data
     to text using `encoding`. Try again `retry` times in some particular
-    cases that imply a connection error.
+    cases that imply a connection error. `headers` should be a dictionary
+    of custom headers to add to the defaults :attr:`http.HEADERS`.
     """
     print("Requesting {}".format(url))
     try:
         connection = pool.get(url)
-        connection.request("GET", url, headers=HEADERS)
+        headall = HEADERS.copy()
+        headall.update(headers or {})
+        connection.request("GET", url, headers=headall)
         response = connection.getresponse()
         # Always read response to avoid
         # http.client.ResponseNotReady: Request-sent.
@@ -177,4 +181,4 @@ def request_url(url, encoding=None, retry=1):
     finally:
         pool.put(url, connection)
     assert retry > 0
-    return request_url(url, encoding, retry-1)
+    return request_url(url, encoding, retry-1, headers)
