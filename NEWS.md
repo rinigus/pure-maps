@@ -1,3 +1,18 @@
+Poor Maps 0.24
+==============
+
+* Add [Mapbox Streets GL][0.24a] and [Mapbox Outdoors GL][0.24b]
+  basemaps (tile renders of the new GL styles; differ significantly
+  from the previous non-GL styles, so the old ones are kept too,
+  at least for now)
+* Change the default basemap for new users to Mapbox Streets GL @2x
+* Update URLs of HSL basemaps
+* Remove Mapbox Emerald basemaps
+* Remove OSM Roads basemap
+
+[0.24a]: https://www.mapbox.com/blog/mapbox-streets-redesign/
+[0.24b]: https://www.mapbox.com/blog/mapbox-outdoors-redesign-launch/
+
 Poor Maps 0.23
 ==============
 
