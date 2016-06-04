@@ -41,7 +41,7 @@ DEFAULTS = {
     "show_routing_narrative": True,
     # 'metric', 'american' or 'british'.
     "units": "metric",
-    "zoom": 15,
+    "zoom": 3,
 }
 
 

@@ -136,6 +136,7 @@ Map {
             // Center on user's position on first start.
             map.centerFound = true;
             map.centerOnPosition();
+            map.setZoomLevel(14);
         } else if (map.autoCenter && !map.gesture.isPanActive && !map.gesture.isPinchActive) {
             // Center map on position if outside center of screen.
             // map.toScreenPosition returns NaN when outside component and
@@ -386,6 +387,7 @@ Map {
         if (center[0] === 0.0 && center[1] === 0.0) {
             // Center on user's position on first start.
             map.centerFound = false;
+            map.setCenter(13, 49);
         } else {
             map.centerFound = true;
             map.setCenter(center[0], center[1]);
