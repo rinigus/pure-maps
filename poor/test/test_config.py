@@ -32,10 +32,10 @@ class TestConfigurationStore(poor.test.TestCase):
         os.remove(self.path)
 
     def test_get(self):
-        assert poor.conf.get("zoom") == 15
+        assert poor.conf.get("zoom") == 3
 
     def test_get_default(self):
-        assert poor.conf.get_default("zoom") == 15
+        assert poor.conf.get_default("zoom") == 3
 
     def test_get_default__nested(self):
         poor.config.DEFAULTS["foo"] = poor.config.AttrDict()
