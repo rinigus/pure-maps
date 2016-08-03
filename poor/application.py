@@ -65,6 +65,7 @@ class Application:
                 print("Failed to load overlay '{}': {}"
                       .format(overlay, str(error)),
                       file=sys.stderr)
+                poor.conf.set_remove("overlays", overlay)
 
     def _drop_download_queues(self):
         """Remove download queues of no longer used tile sources."""
