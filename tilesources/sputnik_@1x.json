@@ -2,7 +2,8 @@
     "attribution": "Maps © Sputnik\nData © OpenStreetMap contributors",
     "extension": ".png",
     "format": "slippy",
-    "name": "Sputnik",
+    "name": "Sputnik @1x",
+    "scale": 1,
     "source": "maps.sputnik.ru",
     "url": "http://tiles.maps.sputnik.ru/{z}/{x}/{y}.png"
 }
