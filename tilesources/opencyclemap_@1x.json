@@ -5,5 +5,5 @@
     "name": "OpenCycleMap @1x",
     "scale": 1,
     "source": "thunderforest.com",
-    "url": "http://tile.thunderforest.com/cycle/{z}/{x}/{y}.png"
+    "url": "http://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=0890777c70cf4966a624a99e258ef9a8"
 }
