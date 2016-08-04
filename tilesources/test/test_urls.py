@@ -41,5 +41,5 @@ class TestModule(poor.test.TestCase):
         assert imgtype in ("jpeg", "png")
 
     def test_mapbox_streets_gl(self):
-        self.request_url("mapbox_streets_gl")
+        self.request_url("mapbox_streets_gl_@1x")
         self.request_url("mapbox_streets_gl_@2x")

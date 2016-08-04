@@ -21,19 +21,19 @@ import poor.test
 class TestConnectionPool(poor.test.TestCase):
 
     def test___new__(self):
-        a = poor.TileSource("openstreetmap")
-        b = poor.TileSource("mapquest_open")
+        a = poor.TileSource("openstreetmap_@1x")
+        b = poor.TileSource("hikebikemap_@1x")
         assert a._pool is b._pool
 
 
 class TestTileSource(poor.test.TestCase):
 
     def test___new____no(self):
-        a = poor.TileSource("openstreetmap")
-        b = poor.TileSource("mapquest_open")
+        a = poor.TileSource("openstreetmap_@1x")
+        b = poor.TileSource("hikebikemap_@1x")
         assert not a is b
 
     def test___new____yes(self):
-        a = poor.TileSource("openstreetmap")
-        b = poor.TileSource("openstreetmap")
+        a = poor.TileSource("openstreetmap_@1x")
+        b = poor.TileSource("openstreetmap_@1x")
         assert a is b
