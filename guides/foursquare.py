@@ -117,9 +117,9 @@ def parse_text(item):
 
 def prepare_point(point):
     """Return geocoded coordinates for `point`."""
-    # Foursquare does geocoding too, but Nominatim seems better.
+    # Foursquare does geocoding too, but not that well.
     if isinstance(point, (list, tuple)):
         return point[0], point[1]
-    geocoder = poor.Geocoder("nominatim")
+    geocoder = poor.Geocoder("default")
     results = geocoder.geocode(point, dict(limit=1))
     return results[0]["x"], results[0]["y"]

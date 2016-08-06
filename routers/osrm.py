@@ -113,9 +113,8 @@ def parse_narrative(maneuver):
 
 def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
-    # OSRM requires coordinates, let's geocode using Nominatim.
     if isinstance(point, str):
-        geocoder = poor.Geocoder("nominatim")
+        geocoder = poor.Geocoder("default")
         results = geocoder.geocode(point, dict(limit=1))
         point = (results[0]["x"], results[0]["y"])
     point = "{:.5f},{:.5f}".format(point[1], point[0])

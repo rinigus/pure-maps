@@ -5,7 +5,6 @@ Poor Maps 0.25
       if positioning data not available
 * [x] Include scale in all tile source names, including @1x
 * [x] Remove MapQuest Open tile source as tiles are [no longer available][0.25a]
-* [x] Use an API key to load Thunderforest tiles
 * [x] Add @2x variants of OpenCycleMap and Thunderforest Transport
 
 [0.25a]: http://devblog.mapquest.com/2016/06/15/modernization-of-mapquest-results-in-changes-to-open-tile-access/

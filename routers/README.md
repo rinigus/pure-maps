@@ -42,7 +42,7 @@ To download data you should always use `poor.http.request_url` or
 `poor.http.request_json` in order to use Poor's user-agent and default
 timeout and error handling. If your routing provider cannot handle
 addresses, but requires coordinates, consider geocoding using
-`nominatim`, which is shipped with Poor. See the routers shipped with
+`default`, which is shipped with Poor. See the routers shipped with
 Poor for examples.
 
 Use `~/.local/share/harbour-poor-maps/routers` as a local installation

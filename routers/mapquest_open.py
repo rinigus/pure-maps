@@ -63,11 +63,9 @@ cache = {}
 
 def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
-    # MapQuest Open accepts both addresses and coordinates as endpoints,
-    # but it doesn't seem to understand as many addresses as Nominatim.
-    # Hence, let's use Nominatim and feed coordinates to MapQuest.
+    # MapQuest Open does geocoding too, but not that well.
     if isinstance(point, str):
-        geocoder = poor.Geocoder("nominatim")
+        geocoder = poor.Geocoder("default")
         results = geocoder.geocode(point, dict(limit=1))
         with poor.util.silent(LookupError):
             point = (results[0]["x"], results[0]["y"])

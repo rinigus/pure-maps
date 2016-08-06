@@ -68,9 +68,8 @@ cache = {}
 
 def prepare_endpoint(point):
     """Return `point` as a dictionary ready to be passed on to the router."""
-    # Mapzen requires coordinates, let's geocode using Nominatim.
     if isinstance(point, str):
-        geocoder = poor.Geocoder("nominatim")
+        geocoder = poor.Geocoder("default")
         results = geocoder.geocode(point, dict(limit=1))
         with poor.util.silent(LookupError):
             point = (results[0]["x"], results[0]["y"])
