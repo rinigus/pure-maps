@@ -116,7 +116,7 @@ class ConfigurationStore(AttrDict):
             path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
         if not os.path.isfile(path): return
         values = {}
-        with poor.util.silent(Exception):
+        with poor.util.silent(Exception, tb=True):
             values = poor.util.read_json(path)
         if not values: return
         values = self._uncomment(values)
@@ -236,5 +236,5 @@ class ConfigurationStore(AttrDict):
             if not name in names:
                 del out[name]
         out["version"] = poor.__version__
-        with poor.util.silent(Exception):
+        with poor.util.silent(Exception, tb=True):
             poor.util.write_json(out, path)

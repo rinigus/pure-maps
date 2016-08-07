@@ -29,6 +29,7 @@ import shutil
 import stat
 import subprocess
 import sys
+import traceback
 import urllib.parse
 
 
@@ -271,7 +272,7 @@ def _get_providers(directory, *active):
             pid = os.path.basename(path).replace(".json", "")
             # Local definitions override global ones.
             if pid in (x["pid"] for x in providers): continue
-            with silent(Exception):
+            with silent(Exception, tb=True):
                 provider = read_json(path)
                 provider["pid"] = pid
                 provider["active"] = pid in active
@@ -336,12 +337,12 @@ def read_json(path):
         raise # Exception
 
 @contextlib.contextmanager
-def silent(*exceptions):
+def silent(*exceptions, tb=False):
     """Try to execute body, ignoring `exceptions`."""
     try:
         yield
     except exceptions:
-        pass
+        if tb: traceback.print_exc()
 
 def sorted_by_distance(items, x, y):
     """Return `items` sorted by distance from given coordinates."""
