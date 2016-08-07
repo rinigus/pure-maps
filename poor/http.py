@@ -78,13 +78,12 @@ class ConnectionPool:
     def _new(self, url):
         """Initialize and return a new HTTP connection to `url`."""
         components = urllib.parse.urlparse(url)
-        timeout = poor.conf.download_timeout
         print("Establishing connection to {}".format(components.netloc))
         cls = {
             "http":  http.client.HTTPConnection,
             "https": http.client.HTTPSConnection,
         }[components.scheme]
-        return cls(components.netloc, timeout=timeout)
+        return cls(components.netloc, timeout=15)
 
     def put(self, url, connection):
         """Return `connection` to the pool of connections."""

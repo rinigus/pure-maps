@@ -31,7 +31,6 @@ DEFAULTS = {
     "basemap": "mapbox_streets_gl_@2x",
     "cache_max_age": 30, # days
     "center": [0.0, 0.0],
-    "download_timeout": 10, # seconds
     "geocoder": "nominatim",
     "guide": "foursquare",
     # 'always', 'navigating' or 'never'.
