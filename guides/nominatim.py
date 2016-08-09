@@ -16,30 +16,119 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Listing nearby places using Nominatim.
+Listing nearby places using MapQuest Nominatim.
 
-This is an error tolerant Nominatim guide that falls back on a another
-provider if the first one tried does not work.
+http://open.mapquestapi.com/nominatim/
+http://wiki.openstreetmap.org/wiki/Nominatim
 """
 
+import copy
 import poor
+import urllib.parse
 
-providers = ["mapquest_nominatim", "openstreetmap_nominatim"]
+URL = ("http://open.mapquestapi.com/nominatim/v1/search.php"
+       "?key=Fmjtd|luur2quy2h,bn=o5-9aasg4"
+       "&format=json"
+       "&q={query}"
+       "&addressdetails=1"
+       "&limit={limit}"
+       "&bounded=1"
+       "&viewbox={xmin:.5f},{ymax:.5f},{xmax:.5f},{ymin:.5f}")
+
+cache = {}
+
+def append1(lst, dic, names):
+    """Append the first found name in `dic` to `lst`."""
+    for name in names:
+        if name in dic:
+            return lst.append(dic[name])
+
+def get_bbox(x, y, radius):
+    """Return xmin, xmax, ymin, ymax."""
+    x_m_per_deg = poor.util.calculate_distance(x, y, x+1, y)
+    y_m_per_deg = poor.util.calculate_distance(x, y, x, y+1)
+    xmin = x - radius/x_m_per_deg
+    xmax = x + radius/x_m_per_deg
+    ymin = y - radius/y_m_per_deg
+    ymax = y + radius/y_m_per_deg
+    return xmin, xmax, ymin, ymax
 
 def nearby(query, near, radius, params):
     """Return a list of dictionaries of places matching `query`."""
-    geocoder = poor.Geocoder("nominatim")
-    if isinstance(near, str):
-        results = geocoder.geocode(near, dict(limit=1))
-        near = (results[0]["x"], results[0]["y"])
-    x, y = near
-    for i, provider in enumerate(providers):
-        guide = poor.Guide(provider)
-        # 'nearby' returns an empty list or a dict(error=True)
-        # in case of an error.
-        results = guide.nearby(query, near, radius, params)
-        if results and isinstance(results, list):
-            if i > 0:
-                providers.insert(0, providers.pop(i))
-            return x, y, results
-    return x, y, []
+    query = urllib.parse.quote_plus(query)
+    x, y = prepare_point(near)
+    xmin, xmax, ymin, ymax = get_bbox(x, y, radius)
+    limit = params.get("limit", 50)
+    url = URL.format(**locals())
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[url])
+    results = poor.http.request_json(url)
+    results = [dict(title=parse_title(result),
+                    description=parse_description(result),
+                    x=float(result["lon"]),
+                    y=float(result["lat"]),
+                    ) for result in results]
+
+    if results and results[0]:
+        results = poor.util.sorted_by_distance(results, x, y)
+        cache[url] = copy.deepcopy((x, y, results))
+    return x, y, results
+
+def parse_address(result):
+    """Parse address from geocoding result."""
+    address = result["address"]
+    items = []
+    # http://help.openstreetmap.org/questions/17072
+    append1(items, address, ("road", "pedestrian", "footway", "cycleway"))
+    append1(items, address, ("house_number",))
+    if not items:
+        raise ValueError
+    return " ".join(items)
+
+def parse_city(result):
+    """Parse city from geocoding result."""
+    address = result["address"]
+    items = []
+    # http://wiki.openstreetmap.org/wiki/Key:place
+    append1(items, address, ("borough", "suburb", "quarter", "neighbourhood"))
+    append1(items, address, ("city", "town", "village", "hamlet"))
+    if not items:
+        raise ValueError
+    return items
+
+def parse_description(result):
+    """Parse description from geocoding result."""
+    items = []
+    with poor.util.silent(Exception):
+        items.append(parse_address(result))
+    with poor.util.silent(Exception):
+        items.extend(parse_city(result))
+    title = parse_title(result)
+    while items and title.startswith(items[0]):
+        del items[0]
+    if not items:
+        return "—"
+    return ", ".join(items)
+
+def parse_title(result):
+    """Parse title from geocoding result."""
+    address = result["address"]
+    with poor.util.silent(Exception):
+        return address[result["type"]]
+    with poor.util.silent(Exception):
+        return address[result["class"]]
+    with poor.util.silent(Exception):
+        return parse_address(result)
+    with poor.util.silent(Exception):
+        names = result["display_name"].split(", ")
+        end = (2 if names[0].isdigit() else 1)
+        return ", ".join(names[:end])
+    return "—"
+
+def prepare_point(point):
+    """Return geocoded coordinates for `point`."""
+    if isinstance(point, (list, tuple)):
+        return point[0], point[1]
+    geocoder = poor.Geocoder("default")
+    results = geocoder.geocode(point, dict(limit=1))
+    return results[0]["x"], results[0]["y"]
