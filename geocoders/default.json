@@ -1,7 +1,7 @@
 {
-    "attribution": "Data © OpenStreetMap contributors",
-    "description": "Geocoding based on OpenStreetMap data",
+    "attribution": "Data © OpenStreetMap and others",
+    "description": "Geocoding using a priority list of providers",
     "hidden": true,
     "name": "Default",
-    "source": "open.mapquest.com, nominatim.openstreetmap.org"
+    "source": "Various"
 }

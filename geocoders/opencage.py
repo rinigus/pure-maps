@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2015 Osmo Salomaa
+# Copyright (C) 2016 Osmo Salomaa
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,20 +16,21 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Geocoding using Mapzen Search.
+Geocoding using OpenCage Geocoder.
 
-https://mapzen.com/products/search/
-https://mapzen.com/documentation/search/
+https://geocoder.opencagedata.com/api
 """
 
 import copy
 import poor
+import re
 import urllib.parse
 
-URL = ("https://search.mapzen.com/v1/search"
-       "?api_key=search--jugOXM"
-       "&text={query}"
-       "&size={limit}")
+URL = ("http://api.opencagedata.com/geocode/v1/json"
+       "?key=ad37417e2a825d392bd94767ef5235ff"
+       "&q={query}"
+       "&limit={limit}"
+       "&no_annotations=1")
 
 cache = {}
 
@@ -40,11 +41,11 @@ def geocode(query, params):
     url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    results = poor.http.request_json(url)["features"]
-    results = [dict(title=result["properties"]["name"],
+    results = poor.http.request_json(url)["results"]
+    results = [dict(title=parse_title(result),
                     description=parse_description(result),
-                    x=float(result["geometry"]["coordinates"][0]),
-                    y=float(result["geometry"]["coordinates"][1]),
+                    x=float(result["geometry"]["lng"]),
+                    y=float(result["geometry"]["lat"]),
                     ) for result in results]
 
     if results and results[0]:
@@ -53,14 +54,15 @@ def geocode(query, params):
 
 def parse_description(result):
     """Parse description from geocoding result."""
-    props = result["properties"]
-    items = []
-    with poor.util.silent(Exception):
-        items.append(props["neighbourhood"])
-    with poor.util.silent(Exception):
-        items.append(props["locality"])
-    with poor.util.silent(Exception):
-        items.append(props["region"])
-    with poor.util.silent(Exception):
-        items.append(props["country"])
-    return ", ".join(items)
+    title = parse_title(result)
+    description = result["formatted"]
+    if description.startswith(title):
+        description = description[len(title):]
+    return re.sub("^[, ]+", "", description)
+
+def parse_title(result):
+    """Parse title from geocoding result."""
+    with poor.util.silent(KeyError):
+        type = result["components"]["_type"]
+        return result["components"][type]
+    return result["formatted"].split(",")[0]

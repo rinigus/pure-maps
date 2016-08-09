@@ -21,11 +21,11 @@ import poor.test
 class TestGeocoder(poor.test.TestCase):
 
     def test___new____no(self):
-        a = poor.Guide("mapquest_nominatim")
-        b = poor.Guide("openstreetmap_nominatim")
+        a = poor.Guide("foursquare")
+        b = poor.Guide("nominatim")
         assert not a is b
 
     def test___new____yes(self):
-        a = poor.Guide("mapquest_nominatim")
-        b = poor.Guide("mapquest_nominatim")
+        a = poor.Guide("foursquare")
+        b = poor.Guide("foursquare")
         assert a is b

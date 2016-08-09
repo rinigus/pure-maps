@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2015 Osmo Salomaa
+# Copyright (C) 2016 Osmo Salomaa
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,21 +16,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Geocoding using Mapzen Search.
+Geocoding using Photon.
 
-https://mapzen.com/products/search/
-https://mapzen.com/documentation/search/
+http://photon.komoot.de/
 """
 
 import copy
 import poor
 import urllib.parse
 
-URL = ("https://search.mapzen.com/v1/search"
-       "?api_key=search--jugOXM"
-       "&text={query}"
-       "&size={limit}")
-
+URL = "http://photon.komoot.de/api/?q={query}&limit={limit}"
 cache = {}
 
 def geocode(query, params):
@@ -41,7 +36,7 @@ def geocode(query, params):
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.request_json(url)["features"]
-    results = [dict(title=result["properties"]["name"],
+    results = [dict(title=parse_title(result),
                     description=parse_description(result),
                     x=float(result["geometry"]["coordinates"][0]),
                     y=float(result["geometry"]["coordinates"][1]),
@@ -51,16 +46,40 @@ def geocode(query, params):
         cache[url] = copy.deepcopy(results)
     return results
 
-def parse_description(result):
-    """Parse description from geocoding result."""
+def parse_address(props):
+    """Parse address from geocoding result properties."""
+    items = []
+    with poor.util.silent(Exception):
+        items.append(props["street"])
+    with poor.util.silent(Exception):
+        items.append(props["housenumber"])
+    if not items:
+        raise ValueError
+    return " ".join(items)
+
+def parse_components(result):
+    """Parse location components from geocoding result."""
     props = result["properties"]
     items = []
     with poor.util.silent(Exception):
-        items.append(props["neighbourhood"])
+        items.append(parse_address(props))
     with poor.util.silent(Exception):
-        items.append(props["locality"])
+        items.append(props["city"])
     with poor.util.silent(Exception):
-        items.append(props["region"])
+        items.append(props["state"])
     with poor.util.silent(Exception):
         items.append(props["country"])
-    return ", ".join(items)
+    return items
+
+def parse_description(result):
+    """Parse description from geocoding result."""
+    description = parse_components(result)
+    if description[0] == parse_title(result):
+        del description[0]
+    return ", ".join(description).strip()
+
+def parse_title(result):
+    """Parse title from geocoding result."""
+    with poor.util.silent(KeyError):
+        return result["properties"]["name"]
+    return parse_components(result)[0]

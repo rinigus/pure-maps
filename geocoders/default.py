@@ -24,17 +24,16 @@ if the first one tried does not work.
 
 import poor
 
-providers = ["mapquest_nominatim", "openstreetmap_nominatim"]
+providers = ["opencage", "photon", "mapzen"]
 
 def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
     for i, provider in enumerate(providers):
         geocoder = poor.Geocoder(provider)
         # 'geocode' returns an empty list or a dict(error=True)
-        # in case of an error.
+        # in case of no results or an error.
         results = geocoder.geocode(query, params)
         if results and isinstance(results, list):
-            if i > 0:
-                providers.insert(0, providers.pop(i))
+            if i > 0: providers.insert(0, providers.pop(i))
             return results
     return []

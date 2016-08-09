@@ -1,7 +1,0 @@
-{
-    "attribution": "Data © OpenStreetMap contributors",
-    "description": "Geocoding based on OpenStreetMap data",
-    "hidden": true,
-    "name": "MapQuest Nominatim",
-    "source": "open.mapquest.com"
-}

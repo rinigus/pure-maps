@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2015 Osmo Salomaa
+# Copyright (C) 2016 Osmo Salomaa
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,10 +21,10 @@ import poor.test
 class TestModule(poor.test.TestCase):
 
     def setup_method(self, method):
-        self.geocoder = poor.Geocoder("openstreetmap_nominatim")
+        self.geocoder = poor.Geocoder("opencage")
 
     def test_geocode(self):
-        results = self.geocoder.geocode("rautatientori, helsinki")
+        results = self.geocoder.geocode("viiskulma, helsinki")
         assert isinstance(results, list)
         assert len(results) > 0
         for result in results:
