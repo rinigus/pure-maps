@@ -36,7 +36,7 @@ DEFAULTS = {
     # 'always', 'navigating' or 'never'.
     "keep_alive": "navigating",
     "overlays": [],
-    "router": "mapquest_open",
+    "router": "mapzen",
     "show_routing_narrative": True,
     # 'metric', 'american' or 'british'.
     "units": "metric",
@@ -93,21 +93,17 @@ class ConfigurationStore(AttrDict):
     def _migrate(self, values):
         """Migrate configuration values from earlier versions."""
         values = copy.deepcopy(values)
-        if not "basemap" in values and "tilesource" in values:
-            # 'cache_max_age' added in 0.14, value changed in 0.18.
-            # Upgrading from < 0.14 to 0.18 should set the old implicit
+        version = values.get("version", "0.0.0").strip()
+        version = tuple(map(int, version.split(".")))[:2]
+        if version < (0,14):
+            # cache_max_age added in 0.14, default value dropped to 30 in 0.18.
+            # Upgrading from < 0.14 to >= 0.18 should set the old implicit
             # default of never removing tiles, valued as 36500.
             values.setdefault("cache_max_age", 36500)
-            # 'tilesource' renamed to 'basemap' in 0.18.
-            values["basemap"] = values.pop("tilesource")
-        if values.get("geocoder", "").endswith("_nominatim"):
-            # 'mapquest_nominatim' and 'openstreetmap_nominatim'
-            # hidden in 0.22 in favor of 'nominatim'.
-            values["geocoder"] = "nominatim"
-        if values.get("guide", "").endswith("_nominatim"):
-            # 'mapquest_nominatim' and 'openstreetmap_nominatim'
-            # hidden in 0.22 in favor of 'nominatim'.
-            values["guide"] = "nominatim"
+        if version < (0,25):
+            # Impose new default providers introduced in 0.25.
+            for option in ("geocoder", "guide", "router"):
+                values[option] = DEFAULTS[option]
         return values
 
     def read(self, path=None):

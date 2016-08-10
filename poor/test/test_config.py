@@ -42,19 +42,22 @@ class TestConfigurationStore(poor.test.TestCase):
         poor.config.DEFAULTS["foo"]["bar"] = 1
         assert poor.conf.get_default("foo.bar") == 1
 
-    def test_migrate__basemap(self):
-        # 'tilesource' renamed to 'basemap' in 0.18.
-        values = {"tilesource": "openstreetmap"}
-        values = poor.conf._migrate(values)
-        assert values["basemap"] == "openstreetmap"
-        assert not "tilesource" in values
+    def test_migrate__version_parse(self):
+        poor.conf._migrate(dict(version="0.1"))
+        poor.conf._migrate(dict(version="0.1.1"))
+        poor.conf._migrate(dict(version="0.1.1.1"))
+        poor.conf._migrate(dict(version="0.22"))
+        poor.conf._migrate(dict(version="0.22.2"))
+        poor.conf._migrate(dict(version="0.22.2.2"))
+        poor.conf._migrate(dict(version="3.33"))
+        poor.conf._migrate(dict(version="3.33.3"))
+        poor.conf._migrate(dict(version="3.33.3.3"))
 
     def test_migrate__cache_max_age(self):
-        # 'cache_max_age' added in 0.14, value changed in 0.18.
-        # Upgrading from < 0.14 to 0.18 should set the old implicit
+        # cache_max_age added in 0.14, default value dropped to 30 in 0.18.
+        # Upgrading from < 0.14 to >= 0.18 should set the old implicit
         # default of never removing tiles, valued as 36500.
-        values = {"tilesource": "openstreetmap"}
-        values = poor.conf._migrate(values)
+        values = poor.conf._migrate(dict(version="0.13"))
         assert values["cache_max_age"] == 36500
 
     def test_read(self):
