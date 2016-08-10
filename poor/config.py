@@ -21,6 +21,7 @@ import copy
 import os
 import poor
 import sys
+import traceback
 
 __all__ = ("ConfigurationStore",)
 
@@ -93,8 +94,13 @@ class ConfigurationStore(AttrDict):
     def _migrate(self, values):
         """Migrate configuration values from earlier versions."""
         values = copy.deepcopy(values)
-        version = values.get("version", "0.0.0").strip()
-        version = tuple(map(int, version.split(".")))[:2]
+        try:
+            version = values.get("version", "0.0.0").strip()
+            version = tuple(map(int, version.split(".")))[:2]
+        except Exception:
+            # XXX: Run all migrations if version malformed?
+            traceback.print_exc()
+            version = (0,0)
         if version < (0,14):
             # cache_max_age added in 0.14, default value dropped to 30 in 0.18.
             # Upgrading from < 0.14 to >= 0.18 should set the old implicit
