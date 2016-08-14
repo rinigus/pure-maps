@@ -27,9 +27,9 @@ Item {
     property string text: ""
     Label {
         anchors.bottom: indicator.top
+        anchors.bottomMargin: Math.round(indicator.height/4)
         color: Theme.highlightColor
         font.pixelSize: Theme.fontSizeLarge
-        height: Theme.itemSizeLarge
         horizontalAlignment: Text.AlignHCenter
         text: busy.error || busy.text
         verticalAlignment: Text.AlignVCenter
