@@ -21,9 +21,9 @@ import Sailfish.Silica 1.0
 
 Label {
     anchors.left: parent.left
-    anchors.leftMargin: Theme.paddingLarge
+    anchors.leftMargin: Theme.horizontalPageMargin
     anchors.right: parent.right
-    anchors.rightMargin: Theme.paddingLarge
+    anchors.rightMargin: Theme.horizontalPageMargin
     truncationMode: TruncationMode.Fade
     verticalAlignment: Text.AlignVCenter
 }
