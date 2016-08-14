@@ -40,9 +40,9 @@ Page {
             Label {
                 id: titleLabel
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
+                anchors.leftMargin: Theme.horizontalPageMargin
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+                anchors.rightMargin: Theme.horizontalPageMargin
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight + Theme.paddingLarge
@@ -67,9 +67,9 @@ Page {
                         color: leg.color
                         height: row.height
                         opacity: 0.6
-                        width: (leg.duration/listItem.result.duration) * parent.width
-                        x: ((leg.dep_unix - listItem.result.legs[0].dep_unix) /
-                            listItem.result.duration) * parent.width
+                        width: leg.duration/listItem.result.duration * parent.width
+                        x: (leg.dep_unix - listItem.result.legs[0].dep_unix) /
+                            listItem.result.duration * parent.width
                         y: repeater.y + index * row.height
                     }
                     Label {
@@ -80,7 +80,7 @@ Page {
                         text: leg.dep_time
                         verticalAlignment: Text.AlignVCenter
                         width: page.timeWidth
-                        x: parent.x + Theme.paddingLarge
+                        x: parent.x + Theme.horizontalPageMargin
                         Component.onCompleted: {
                             if (timeLabel.implicitWidth > page.timeWidth)
                                 page.timeWidth = timeLabel.implicitWidth;
@@ -94,8 +94,7 @@ Page {
                         text: leg.line
                         verticalAlignment: Text.AlignVCenter
                         width: page.lineWidth
-                        x: parent.x + Theme.paddingLarge +
-                            page.timeWidth + Theme.paddingMedium
+                        x: timeLabel.x + page.timeWidth + Theme.paddingMedium
                         Component.onCompleted: {
                             if (lineLabel.implicitWidth > page.lineWidth)
                                 page.lineWidth = lineLabel.implicitWidth;
@@ -110,9 +109,7 @@ Page {
                             "%1 → %2".arg(leg.dep_name).arg(leg.arr_name)
                         truncationMode: TruncationMode.Fade
                         verticalAlignment: Text.AlignVCenter
-                        x: parent.x + Theme.paddingLarge +
-                            page.timeWidth + Theme.paddingMedium +
-                            page.lineWidth + Theme.paddingMedium
+                        x: lineLabel.x + page.lineWidth + Theme.paddingMedium
                     }
                     Component.onCompleted: {
                         repeater.height += row.height;
@@ -128,7 +125,7 @@ Page {
                 text: listItem.result.legs[listItem.result.legs.length-1].arr_time
                 verticalAlignment: Text.AlignVCenter
                 width: page.timeWidth
-                x: parent.x + Theme.paddingLarge
+                x: parent.x + Theme.horizontalPageMargin
                 Component.onCompleted: {
                     if (finalLabel.implicitWidth > page.timeWidth)
                         page.timeWidth = finalLabel.implicitWidth;
@@ -140,8 +137,8 @@ Page {
                     "x": listItem.result.x,
                     "y": listItem.result.y,
                     "mode": "transit",
-                    "attribution": "Routing courtesy of HSL."});
-
+                    "attribution": "Routing courtesy of HSL."
+                });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);

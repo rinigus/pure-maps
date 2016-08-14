@@ -39,59 +39,51 @@ Column {
             page.params.timetype = timetypeComboBox.keys[index];
         }
     }
-    Row {
-        height: Theme.itemSizeSmall
-        width: parent.width
-        ValueButton {
-            id: dateButton
-            height: Theme.itemSizeSmall
-            label: "Date"
-            value: "Today"
-            width: parent.width/2
-            property var date: new Date()
-            onClicked: {
-                var dialog = pageStack.push(
-                    "Sailfish.Silica.DatePickerDialog", {
-                        date: dateButton.date
+    ValueButton {
+        id: dateButton
+        label: "Date"
+        value: "Today"
+        property var date: new Date()
+        onClicked: {
+            var dialog = pageStack.push(
+                "Sailfish.Silica.DatePickerDialog", {
+                    date: dateButton.date
                 });
-                dialog.accepted.connect(function() {
-                    dateButton.date = dialog.date;
-                    dateButton.value = dialog.dateText;
-                    // Journey Planner wants date in format YYYYMMDD.
-                    var year = dialog.year.toString();
-                    var month = dialog.month.toString();
-                    var day = dialog.day.toString();
-                    if (month.length < 2) month = "0%1".arg(month);
-                    if (day.length < 2) day = "0%1".arg(day);
-                    page.params.date = year + month + day;
-                });
-            }
+            dialog.accepted.connect(function() {
+                dateButton.date = dialog.date;
+                dateButton.value = dialog.dateText;
+                // Journey Planner wants date in format YYYYMMDD.
+                var year = dialog.year.toString();
+                var month = dialog.month.toString();
+                var day = dialog.day.toString();
+                if (month.length < 2) month = "0%1".arg(month);
+                if (day.length < 2) day = "0%1".arg(day);
+                page.params.date = year + month + day;
+            });
         }
-        ValueButton {
-            id: timeButton
-            height: Theme.itemSizeSmall
-            label: "Time"
-            value: "Now"
-            width: parent.width/2
-            property var time: new Date()
-            onClicked: {
-                var dialog = pageStack.push(
-                    "Sailfish.Silica.TimePickerDialog", {
-                        "hourMode": DateTime.TwentyFourHours,
-                        "hour": time.getHours(),
-                        "minute": time.getMinutes()
+    }
+    ValueButton {
+        id: timeButton
+        label: "Time"
+        value: "Now"
+        property var time: new Date()
+        onClicked: {
+            var dialog = pageStack.push(
+                "Sailfish.Silica.TimePickerDialog", {
+                    "hourMode": DateTime.TwentyFourHours,
+                    "hour": time.getHours(),
+                    "minute": time.getMinutes()
                 });
-                dialog.accepted.connect(function() {
-                    timeButton.time = dialog.time;
-                    timeButton.value = dialog.timeText;
-                    // Journey Planner wants time in format HHMM.
-                    var hour = dialog.hour.toString();
-                    var minute = dialog.minute.toString();
-                    if (hour.length < 2) hour = "0%1".arg(hour);
-                    if (minute.length < 2) minute = "0%1".arg(minute);
-                    page.params.time = hour + minute;
-                });
-            }
+            dialog.accepted.connect(function() {
+                timeButton.time = dialog.time;
+                timeButton.value = dialog.timeText;
+                // Journey Planner wants time in format HHMM.
+                var hour = dialog.hour.toString();
+                var minute = dialog.minute.toString();
+                if (hour.length < 2) hour = "0%1".arg(hour);
+                if (minute.length < 2) minute = "0%1".arg(minute);
+                page.params.time = hour + minute;
+            });
         }
     }
     ComboBox {
@@ -114,9 +106,9 @@ Column {
         }
     }
     Row {
+        anchors.left: parent.left
+        anchors.leftMargin: Theme.horizontalPageMargin - Theme.paddingLarge/2
         height: implicitHeight + Theme.paddingLarge
-        width: parent.width - Theme.paddingMedium*2
-        x: parent.x + Theme.paddingMedium
         Repeater {
             id: repeater
             model: 5
@@ -126,8 +118,8 @@ Column {
                 id: vehicleSwitch
                 height: icon.sourceSize.height + 2*Theme.paddingLarge
                 icon.opacity: checked ? 0.9 : 0.3
-                icon.source: "hsl/%1.png".arg(repeater.keys[index])
-                width: Math.floor(parent.width/5)
+                icon.source: app.getIcon("hsl/%1".arg(repeater.keys[index]))
+                width: icon.sourceSize.width + Theme.paddingLarge
                 property bool checked: false
                 Component.onCompleted: {
                     vehicleSwitch.checked = app.conf.set_contains(
