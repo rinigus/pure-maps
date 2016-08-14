@@ -45,11 +45,12 @@ Page {
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
                 app.hideMenu();
-                map.addRoute({"x": route.x,
-                              "y": route.y,
-                              "mode": "car",
-                              "attribution": "Routing courtesy of OSRM."});
-
+                map.addRoute({
+                    "x": route.x,
+                    "y": route.y,
+                    "mode": "car",
+                    "attribution": "Routing courtesy of OSRM."
+                });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);

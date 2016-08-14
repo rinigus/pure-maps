@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Osmo Salomaa
+# Copyright (C) 2016 Osmo Salomaa
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,127 +19,131 @@
 Routing using OSRM.
 
 http://project-osrm.org/
-http://github.com/DennisOSRM/Project-OSRM/wiki/Server-api
+https://github.com/Project-OSRM/osrm-backend/blob/master/docs/http.md
 """
 
+import copy
+import glob
+import os
 import poor
+import re
 
-ICONS = { 1: "straight",
-          2: "turn-slight-right",
-          3: "turn-right",
-          4: "turn-sharp-right",
-          5: "u-turn-left",
-          6: "turn-sharp-left",
-          7: "turn-left",
-          8: "turn-slight-left",
-          9: "alert",
-         10: "straight",
-         11: "alert",
-         12: "alert",
-         13: "alert",
-         14: "alert",
-         15: "alert"}
+ICONS = []
 
-NARRATIVE = { 1: "{turn} along {street}.",
-              2: "{turn} onto {street}.",
-              3: "{turn} onto {street}.",
-              4: "{turn} onto {street}.",
-              5: "{turn}.",
-              6: "{turn} onto {street}.",
-              7: "{turn} onto {street}.",
-              8: "{turn} onto {street}.",
-              9: "{turn}.",
-             10: "{turn}.",
-             11: "{turn}.",
-             12: "{turn} onto {}.",
-             13: "{turn}.",
-             14: "{turn}.",
-             15: "{turn}."}
+# XXX: The following list of narratives for maneuvers is far from complete as
+# per the combinations of types and modifiers and combined with the clean-ups
+# in parse_narrative is very untranslatable. If we use OSRM in production,
+# these issues should be fixed to be able to present a proper narrative.
 
-TURNS = { 1: "Go straight",
-          2: "Turn slightly to the right",
-          3: "Turn right",
-          4: "Turn sharp to the right",
-          5: "Make a U-turn",
-          6: "Turn sharp to the left",
-          7: "Turn left",
-          8: "Turn slightly to the left",
-          9: "Reach your via point",
-         10: "Head on",
-         11: "Enter the roundabout",
-         12: "Leave the roundabout",
-         13: "Stay on the roundabout",
-         14: "Start at the end of the street",
-         15: "Arrive at your destination"}
+NARRATIVE = {
+            "turn": "Turn {modifier} onto {street}.",
+   "turn-straight": "Continue straight along {street}.",
+      "turn-uturn": "Make a U-turn.",
+        "new-name": "Continue along {street}.",
+          "depart": "Head out {modifier} along {street}.",
+          "arrive": "Arrive at your destination.",
+     "arrive-left": "Your destination is on the left.",
+    "arrive-right": "Your destination is on the right.",
+           "merge": "Merge {modifier} onto {street}.",
+         "on-ramp": "Take the ramp {modifier} onto {street}.",
+        "off-ramp": "Take the ramp {modifier} onto {street}.",
+            "fork": "Keep {modifier} in the fork ahead.",
+     "end-of-road": "Turn {modifier} onto {street}.",
+        "use-lane": "Use the lane to go {modifier}.",
+        "continue": "Continue {modifier} along {street}.",
+  "continue-uturn": "Make a U-turn.",
+      "roundabout": "Take the {exit} exit in the roundabout.",
+          "rotary": "Take the {exit} exit in the roundabout.",
+ "roundabout-turn": "Turn {modifier} in the roundabout.",
+}
 
-# XXX: Use z=14 as a workaround to avoid OSRM not finding a route at all.
-# http://lists.openstreetmap.org/pipermail/osrm-talk/2014-June/000588.html
+URL = "http://router.project-osrm.org/route/v1/car/{fm};{to}?steps=true&overview=full"
+cache = {}
 
-URL = ("http://router.project-osrm.org/viaroute"
-       "?loc={fm}"
-       "&loc={to}"
-       "&output=json"
-       "&instructions=true"
-       "&alt=false"
-       "&z=14")
+def init_icons():
+    """Initialize the global list of maneuver icons."""
+    # OSRM's maneuver types and modifiers match Mapbox directions
+    # icons, which are included under qml/icons/navigation.
+    directory = os.path.join(poor.DATA_DIR, "qml", "icons", "navigation")
+    icons = glob.glob("{}/*-large@1.00.png".format(directory))
+    icons = list(map(os.path.basename, icons))
+    icons = [x.replace("-large@1.00.png", "") for x in icons]
+    ICONS.extend(icons)
 
-checksum = None
-hints = {}
+def get_maneuver_components(maneuver):
+    """Return type, modififer, name from `maneuver`."""
+    type = maneuver.get("type", "").replace(" ", "-")
+    modifier = maneuver.get("modifier", "").replace(" ", "-")
+    name = "{}-{}".format(type, modifier)
+    return type, modifier, name
 
 def parse_icon(maneuver):
-    """Parse icon from `maneuver`."""
-    with poor.util.silent(ValueError, KeyError):
-        # One maneuver can have multiple turns, e.g.
-        # Enter the roundabout. Go straight.
-        return ICONS[int(maneuver[0].split("-")[-1])]
-    return "alert"
+    """Return name of maneuver icon to use."""
+    if not ICONS: init_icons()
+    type, modifier, name = get_maneuver_components(maneuver)
+    if type == "roundabout":
+        # XXX: Roundabout modifiers seem bonkers -- let's not
+        # use them and instead rely on the exit numbers in
+        # the narrative, which seems better.
+        name = "roundabout"
+    if name in ICONS: return name
+    if type in ICONS: return type
+    if type != "turn":
+        # "Types unknown to the client should be handled like the turn type."
+        return parse_icon(dict(type="turn", modifier=modifier))
+    return "flag"
 
-def parse_narrative(maneuver):
-    """Parse narrative from `maneuver`."""
-    narratives = []
-    # One maneuver can have multiple turns, e.g.
-    # Enter the roundabout. Go straight.
-    for num in maneuver[0].split("-"):
-        try:
-            turn = TURNS[int(num)]
-            narrative = NARRATIVE[int(num)]
-        except (ValueError, KeyError):
-            continue
-        street = maneuver[1]
-        narratives.append(narrative.format(**locals())
-                          if street else "{}.".format(turn))
+def parse_narrative(maneuver, street):
+    """Return narrative to display for `maneuver`."""
+    type, modifier, name = get_maneuver_components(maneuver)
+    exit = str(maneuver.get("exit", ""))
+    exit = re.sub(r"1$", "1st", exit)
+    exit = re.sub(r"2$", "2nd", exit)
+    exit = re.sub(r"3$", "3rd", exit)
+    exit = re.sub(r"3$", "3rd", exit)
+    exit = re.sub(r"4$", "4th", exit)
+    exit = re.sub(r"5$", "5th", exit)
+    narrative = parse_narrative_raw(maneuver)
+    narrative = narrative.format(**locals())
+    # Clean up narrative since modifier or street might be blank.
+    narrative = re.sub(" (along|onto|to go) +.$", ".", narrative)
+    narrative = re.sub("  +", " ", narrative)
+    return narrative
 
-    return " ".join(narratives)
+def parse_narrative_raw(maneuver):
+    """Return narrative to display for `maneuver`."""
+    type, modifier, name = get_maneuver_components(maneuver)
+    if name in NARRATIVE: return NARRATIVE[name]
+    if type in NARRATIVE: return NARRATIVE[type]
+    if type != "turn":
+        # "Types unknown to the client should be handled like the turn type."
+        return parse_narrative_raw(dict(type="turn", modifier=modifier))
+    return ""
 
 def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
-    if isinstance(point, str):
-        geocoder = poor.Geocoder("default")
-        results = geocoder.geocode(point, dict(limit=1))
-        point = (results[0]["x"], results[0]["y"])
-    point = "{:.5f},{:.5f}".format(point[1], point[0])
-    return (point, ("{}&hint={}".format(point, hints[point])
-                    if point in hints else point))
+    if isinstance(point, (list, tuple)):
+        return "{:.5f},{:.5f}".format(point[0], point[1])
+    geocoder = poor.Geocoder("default")
+    results = geocoder.geocode(point, dict(limit=1))
+    return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
 def route(fm, to, params):
     """Find route and return its properties as a dictionary."""
-    global checksum
-    fm_real, fm = prepare_endpoint(fm)
-    to_real, to = prepare_endpoint(to)
+    fm, to = map(prepare_endpoint, (fm, to))
     url = URL.format(**locals())
-    if checksum is not None:
-        url += "&checksum={}".format(checksum)
-    result = poor.http.request_json(url)
-    with poor.util.silent(Exception):
-        checksum = str(result["hint_data"]["checksum"])
-        hints[fm_real] = str(result["hint_data"]["locations"][0])
-        hints[to_real] = str(result["hint_data"]["locations"][1])
-    x, y = poor.util.decode_epl(result["route_geometry"], precision=6)
-    maneuvers = [dict(x=x[int(maneuver[3])],
-                      y=y[int(maneuver[3])],
-                      icon=parse_icon(maneuver),
-                      narrative=parse_narrative(maneuver),
-                      duration=float(maneuver[4]),
-                      ) for maneuver in result["route_instructions"]]
-
-    return dict(x=x, y=y, maneuvers=maneuvers)
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[url])
+    result = poor.http.request_json(url)["routes"][0]
+    x, y = poor.util.decode_epl(result["geometry"])
+    maneuvers = [dict(
+        x=float(step["maneuver"]["location"][0]),
+        y=float(step["maneuver"]["location"][1]),
+        icon=parse_icon(step["maneuver"]),
+        narrative=parse_narrative(step["maneuver"], step.get("name", "")),
+        duration=float(step["duration"]),
+    ) for step in result["legs"][0]["steps"]]
+    route = dict(x=x, y=y, maneuvers=maneuvers)
+    if route and route["x"]:
+        cache[url] = copy.deepcopy(route)
+    return route
