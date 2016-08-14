@@ -13,7 +13,7 @@
    height="72"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="position-direction.svg"
    version="1.1"
    inkscape:export-xdpi="90"
@@ -27,7 +27,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="9.5262997"
+     inkscape:zoom="13.013889"
      inkscape:cx="36"
      inkscape:cy="36"
      inkscape:document-units="px"
@@ -43,7 +43,7 @@
     <inkscape:grid
        type="xygrid"
        id="grid10137"
-       empspacing="12"
+       empspacing="8"
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true" />
@@ -77,7 +77,7 @@
          sodipodi:nodetypes="cssscsssss" />
       <path
          transform="matrix(2.25,0,0,2.5714286,-9.75,991.07655)"
-         d="m 19,14.5 c 0,1.932997 -1.790861,3.5 -4,3.5 -2.209139,0 -4,-1.567003 -4,-3.5 0,-1.932997 1.790861,-3.5 4,-3.5 2.209139,0 4,1.567003 4,3.5 z"
+         d="M 19,14.5 A 4,3.5 0 0 1 15,18 4,3.5 0 0 1 11,14.5 4,3.5 0 0 1 15,11 4,3.5 0 0 1 19,14.5 Z"
          sodipodi:ry="3.5"
          sodipodi:rx="4"
          sodipodi:cy="14.5"

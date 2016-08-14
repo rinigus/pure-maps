@@ -13,7 +13,7 @@
    height="512"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.48.5 r10040"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="cover.svg"
    version="1.1"
    inkscape:export-xdpi="90"
@@ -27,7 +27,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.8964844"
+     inkscape:zoom="1.8300781"
      inkscape:cx="256"
      inkscape:cy="256"
      inkscape:document-units="px"
@@ -69,22 +69,20 @@
     <g
        id="g10914"
        style="fill:#ffffff;fill-opacity:1"
-       transform="matrix(10.666667,0,0,10.666667,0,-10172.835)">
+       transform="matrix(10.624998,0,0,10.624998,1.000048,-10129.984)">
       <path
          inkscape:connector-curvature="0"
          id="path10143"
          d="m 24,1004.3622 c -13.254834,0 -24,10.7452 -24,24 0,13.2548 10.745166,24 24,24 13.254834,0 24,-10.7452 24,-24 0,-13.2548 -10.745166,-24 -24,-24 z m 0,7.5 c 9.112698,0 16.5,7.3873 16.5,16.5 0,9.1127 -7.387302,16.5 -16.5,16.5 -9.112699,0 -16.5,-7.3873 -16.5,-16.5 0,-9.1127 7.387301,-16.5 16.5,-16.5 z"
-         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:0;stroke-dasharray:none" />
-      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0" />
+      <ellipse
          transform="matrix(2.25,0,0,2.5714286,-9.75,991.07655)"
-         d="m 19,14.5 c 0,1.932997 -1.790861,3.5 -4,3.5 -2.209139,0 -4,-1.567003 -4,-3.5 0,-1.932997 1.790861,-3.5 4,-3.5 2.209139,0 4,1.567003 4,3.5 z"
-         sodipodi:ry="3.5"
-         sodipodi:rx="4"
-         sodipodi:cy="14.5"
-         sodipodi:cx="15"
          id="path10139"
-         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:0;stroke-dasharray:none"
-         sodipodi:type="arc" />
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+         cx="15"
+         cy="14.5"
+         rx="4"
+         ry="3.5" />
     </g>
   </g>
 </svg>

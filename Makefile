@@ -14,8 +14,8 @@ check:
 
 clean:
 	rm -rf dist
-	rm -rf .cache */.cache */*/.cache
 	rm -rf __pycache__ */__pycache__ */*/__pycache__
+	rm -rf .cache */.cache */*/.cache
 	rm -f rpm/*.rpm
 
 dist:
@@ -33,8 +33,9 @@ install:
 	mkdir -p $(DATADIR)/qml
 	cp qml/poor-maps.qml $(DATADIR)/qml/$(NAME).qml
 	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(DATADIR)/qml
-	mkdir -p $(DATADIR)/qml/icons
+	mkdir -p $(DATADIR)/qml/icons/navigation
 	cp qml/icons/*.png $(DATADIR)/qml/icons
+	cp qml/icons/navigation/*.png $(DATADIR)/qml/icons/navigation
 	mkdir -p $(DATADIR)/qml/js
 	cp qml/js/*.js $(DATADIR)/qml/js
 

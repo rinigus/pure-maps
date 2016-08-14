@@ -13,7 +13,7 @@
    height="16"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.48.5 r10040"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="maneuver.svg"
    version="1.1"
    inkscape:export-xdpi="90"
@@ -27,7 +27,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="42.868349"
+     inkscape:zoom="58.5625"
      inkscape:cx="8"
      inkscape:cy="8"
      inkscape:document-units="px"
@@ -42,7 +42,7 @@
     <inkscape:grid
        type="xygrid"
        id="grid10137"
-       empspacing="5"
+       empspacing="4"
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true" />
@@ -55,7 +55,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>

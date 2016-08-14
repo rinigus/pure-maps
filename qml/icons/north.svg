@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="76"
-   height="76"
+   width="96"
+   height="96"
    id="svg1901"
    sodipodi:version="0.32"
    inkscape:version="0.91 r13725"
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="12.565789"
-     inkscape:cx="38"
-     inkscape:cy="38"
+     inkscape:zoom="9.7604167"
+     inkscape:cx="48"
+     inkscape:cy="48"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
@@ -50,7 +50,7 @@
     <inkscape:grid
        type="xygrid"
        id="grid10137"
-       empspacing="5"
+       empspacing="16"
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true" />
@@ -71,22 +71,22 @@
      inkscape:label="Taso 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-976.3622)">
+     transform="translate(0,-956.3622)">
     <g
-       id="g11210"
-       transform="matrix(1,0,0,0.77777778,12,230.85826)">
+       id="g10395"
+       transform="matrix(1.1428571,0,0,1.1428571,6.8571444,-157.19456)">
       <path
          sodipodi:nodetypes="cccccc"
          inkscape:connector-curvature="0"
          id="path10403"
-         d="m 20,1007.3622 12,0 0,-28.28571 -6,-7.71429 -6,7.71429 z"
-         style="fill:#ff0000;fill-opacity:0.62745098;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+         d="m 30,1016.3622 12,0 0,-22 -6,-6 -6,6 z"
+         style="fill:#ff0000;fill-opacity:0.75294118;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cccccc"
          inkscape:connector-curvature="0"
          id="path10403-8"
-         d="m 20,1007.3622 12,0 0,28.2857 -6,7.7143 -6,-7.7143 z"
-         style="fill:#000000;fill-opacity:0.62745098;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+         d="m 30,1016.3622 12,0 0,22 -6,6 -6,-6 z"
+         style="fill:#000000;fill-opacity:0.75294118;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
   </g>
 </svg>
