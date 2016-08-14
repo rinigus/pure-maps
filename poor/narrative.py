@@ -30,7 +30,7 @@ class Maneuver:
     def __init__(self, **kwargs):
         """Initialize a :class:`Maneuver` instance."""
         self.duration = 0
-        self.icon = "alert"
+        self.icon = "flag"
         self.length = 0
         self.narrative = ""
         self.node = None

@@ -27,25 +27,25 @@ import urllib.parse
 
 CONF_DEFAULTS = {"avoids": [], "type": "fastest"}
 
-ICONS = { 0: "straight",
+ICONS = { 0: "continue",
           1: "turn-slight-right",
           2: "turn-right",
           3: "turn-sharp-right",
-          4: "alert",
+          4: "flag",
           5: "turn-sharp-left",
           6: "turn-left",
           7: "turn-slight-left",
-          8: "u-turn-right",
-          9: "u-turn-left",
-         10: "merge-left",
-         11: "merge-right",
-         12: "ramp-right",
-         13: "ramp-left",
-         14: "ramp-right",
-         15: "ramp-left",
-         16: "fork-right",
-         17: "fork-left",
-         18: "straight"}
+          8: "uturn",
+          9: "uturn",
+         10: "merge-slight-left",
+         11: "merge-slight-right",
+         12: "off-ramp-slight-right",
+         13: "off-ramp-slight-left",
+         14: "off-ramp-slight-right",
+         15: "off-ramp-slight-left",
+         16: "fork-slight-right",
+         17: "fork-slight-left",
+         18: "fork-straight"}
 
 URL = ("http://open.mapquestapi.com/directions/v2/route"
        "?key=Fmjtd|luur2quy2h,bn=o5-9aasg4"
@@ -63,20 +63,15 @@ cache = {}
 
 def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
-    # MapQuest Open does geocoding too, but not that well.
-    if isinstance(point, str):
-        geocoder = poor.Geocoder("default")
-        results = geocoder.geocode(point, dict(limit=1))
-        with poor.util.silent(LookupError):
-            point = (results[0]["x"], results[0]["y"])
     if isinstance(point, (list, tuple)):
-        point = "{:.5f},{:.5f}".format(point[1], point[0])
-    return urllib.parse.quote_plus(point)
+        return "{:.5f},{:.5f}".format(point[1], point[0])
+    geocoder = poor.Geocoder("default")
+    results = geocoder.geocode(point, dict(limit=1))
+    return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
 def route(fm, to, params):
     """Find route and return its properties as a dictionary."""
-    fm = prepare_endpoint(fm)
-    to = prepare_endpoint(to)
+    fm, to = map(prepare_endpoint, (fm, to))
     type = poor.conf.routers.mapquest_open.type
     url = URL.format(**locals())
     if type == "fastest":
@@ -90,13 +85,16 @@ def route(fm, to, params):
     maneuvers = []
     for leg in result["route"]["legs"]:
         maneuvers.extend(leg["maneuvers"])
-    maneuvers = [dict(x=float(maneuver["startPoint"]["lng"]),
-                      y=float(maneuver["startPoint"]["lat"]),
-                      icon=ICONS.get(maneuver["turnType"], "alert"),
-                      narrative=maneuver["narrative"],
-                      duration=float(maneuver["time"]),
-                      ) for maneuver in maneuvers]
-
+    maneuvers = [dict(
+        x=float(maneuver["startPoint"]["lng"]),
+        y=float(maneuver["startPoint"]["lat"]),
+        icon=ICONS.get(maneuver["turnType"], "flag"),
+        narrative=maneuver["narrative"],
+        duration=float(maneuver["time"]),
+    ) for maneuver in maneuvers]
+    if len(maneuvers) > 1:
+        maneuvers[ 0]["icon"] = "depart"
+        maneuvers[-1]["icon"] = "arrive"
     route = dict(x=x, y=y, maneuvers=maneuvers)
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)

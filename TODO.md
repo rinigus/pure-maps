@@ -10,8 +10,7 @@ Poor Maps 0.25
 * [x] Remove Nominatim geocoders
 * [x] Add [OpenCage](https://geocoder.opencagedata.com/) and
       [Photon](http://photon.komoot.de/) geocoders and make OpenCage the default
-* [x] Use the latest version of the OSRM router API and add OSRM bicycle
-      and pedestrian routing
+* [x] Use the latest version of the OSRM router API
 * [x] Make Mapzen Turn-by-Turn the default router
 * [x] Handle initial centering and zoom level better on first startup
       if positioning data not available

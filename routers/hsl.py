@@ -136,7 +136,7 @@ def parse_maneuvers(route):
         maneuvers.append(dict(
             x=leg["dep_x"],
             y=leg["dep_y"],
-            icon="alert",
+            icon="flag",
             narrative=NARRATIVE[key].format(**leg),
             duration=leg["duration"]*60))
 
@@ -152,7 +152,7 @@ def parse_maneuvers(route):
     maneuvers.append(dict(
         x=route["legs"][-1]["arr_x"],
         y=route["legs"][-1]["arr_y"],
-        icon="alert",
+        icon="flag",
         narrative="Arrive at your destination.",
         duration=0))
 
@@ -208,16 +208,14 @@ def parse_y(result):
 
 def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
-    # Journey Planner requires coordinates, use corresponding geocoder.
-    if isinstance(point, str):
-        results = poor.Geocoder("hsl").geocode(point)
-        point = (results[0]["x"], results[0]["y"])
-    return "{:.5f},{:.5f}".format(point[0], point[1])
+    if isinstance(point, (list, tuple)):
+        return "{:.5f},{:.5f}".format(point[0], point[1])
+    results = poor.Geocoder("hsl").geocode(point)
+    return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
 def route(fm, to, params):
     """Find routes and return their properties as dictionaries."""
-    fm = prepare_endpoint(fm)
-    to = prepare_endpoint(to)
+    fm, to = map(prepare_endpoint, (fm, to))
     transport_types = "|".join(poor.conf.routers.hsl.transport_types)
     optimize = poor.conf.routers.hsl.optimize
     url = URL.format(**locals())
@@ -225,18 +223,18 @@ def route(fm, to, params):
     for name in set(params) & set(("date", "time", "timetype")):
         url += "&{}={}".format(name, params[name])
     results = poor.http.request_json(url)
-    routes = [dict(alternative=i+1,
-                   length=float(result[0]["length"]),
-                   legs=parse_legs(result[0]),
-                   x=parse_x(result[0]),
-                   y=parse_y(result[0]),
-                   ) for i, result in enumerate(results)]
-
+    routes = [dict(
+        alternative=i+1,
+        length=float(result[0]["length"]),
+        legs=parse_legs(result[0]),
+        x=parse_x(result[0]),
+        y=parse_y(result[0]),
+    ) for i, result in enumerate(results)]
     for route in routes:
         route["maneuvers"] = parse_maneuvers(route)
         # Calculate duration separately to match departure
         # and arrival times rounded at one minute accuracy.
-        dep = route["legs"][0]["dep_unix"]
+        dep = route["legs"][ 0]["dep_unix"]
         arr = route["legs"][-1]["arr_unix"]
         route["duration"] = arr - dep
     return routes
