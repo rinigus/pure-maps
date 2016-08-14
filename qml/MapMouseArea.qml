@@ -25,10 +25,11 @@ MouseArea {
     onDoubleClicked: map.centerOnPosition();
     onPressAndHold: {
         var coord = map.toCoordinate(Qt.point(mouse.x, mouse.y));
-        map.addPois([{"x": coord.longitude,
-                      "y": coord.latitude,
-                      "title": "Unnamed point",
-                      "text": "Unnamed point"}]);
-
+        map.addPois([{
+            "x": coord.longitude,
+            "y": coord.latitude,
+            "title": "Unnamed point",
+            "text": "Unnamed point"
+        }]);
     }
 }

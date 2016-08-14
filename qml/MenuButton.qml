@@ -22,11 +22,11 @@ import "."
 
 IconButton {
     anchors.bottom: parent.bottom
-    anchors.left: parent.left
-    height: icon.height
-    icon.source: "icons/menu.png"
+    anchors.bottomMargin: Theme.paddingSmall
+    anchors.horizontalCenter: parent.horizontalCenter
+    icon.smooth: false
+    icon.source: app.getIcon("icons/menu")
     visible: py.ready
-    width: icon.width
     z: 600
     onClicked: app.showMenu();
 }

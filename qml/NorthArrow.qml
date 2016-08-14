@@ -22,11 +22,12 @@ import "."
 
 IconButton {
     anchors.bottom: parent.bottom
+    anchors.bottomMargin: Theme.paddingSmall
     anchors.right: parent.right
-    height: icon.height
+    anchors.rightMargin: Theme.paddingSmall
     icon.rotation: map.rotation
-    icon.source: "icons/north.png"
-    width: icon.width
+    icon.smooth: true
+    icon.source: app.getIcon("icons/north")
     z: 600
     onClicked: {
         if (map.autoRotate) {
@@ -49,6 +50,7 @@ IconButton {
     Timer {
         id: timer
         interval: 2000
-        onTriggered: bubble.visible = !bubble.visible;
+        repeat: false
+        onTriggered: bubble.visible = false;
     }
 }

@@ -23,10 +23,9 @@ import "js/util.js" as Util
 
 Item {
     id: meters
-    anchors.bottom: parent.bottom
-    anchors.bottomMargin: 10
     anchors.right: app.northArrow.left
-    anchors.rightMargin: 10
+    anchors.rightMargin: Theme.paddingLarge
+    anchors.verticalCenter: app.northArrow.verticalCenter
     height: labels.implicitHeight
     opacity: 0.9
     width: parent.width
@@ -36,9 +35,9 @@ Item {
         anchors.bottom: parent.bottom
         anchors.right: labels.left
         color: "black"
+        font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: 19
-        font.weight: Font.DemiBold
+        font.pixelSize: Math.round(Theme.pixelRatio*18)
         horizontalAlignment: Text.AlignRight
         lineHeight: 1.25
     }
@@ -47,9 +46,9 @@ Item {
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         color: "black"
+        font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: 19
-        font.weight: Font.DemiBold
+        font.pixelSize: Math.round(Theme.pixelRatio*18)
         horizontalAlignment: Text.AlignLeft
         lineHeight: 1.25
         text: "\n"

@@ -18,18 +18,18 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
+import Sailfish.Silica 1.0
 
 import "js/util.js" as Util
 
 Item {
     id: scaleBar
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: 10
-    anchors.left: app.menuButton.right
-    height: base.height
+    anchors.bottomMargin: Theme.paddingLarge
+    anchors.left: parent.left
+    anchors.leftMargin: Theme.paddingLarge
     opacity: 0.9
     visible: scaleWidth > 0
-    width: base.width
     z: 100
     property var coordPrev: QtPositioning.coordinate(0, 0)
     property real scaleWidth: 0
@@ -38,34 +38,33 @@ Item {
     Rectangle {
         id: base
         color: "black"
-        height: 2
+        height: Math.floor(Theme.pixelRatio*2)
         width: scaleBar.scaleWidth
     }
     Rectangle {
         anchors.bottom: base.top
         anchors.left: base.left
         color: "black"
-        height: 10
-        width: 2
+        height: Math.floor(Theme.pixelRatio*10)
+        width: Math.floor(Theme.pixelRatio*2)
     }
     Rectangle {
         anchors.bottom: base.top
         anchors.right: base.right
         color: "black"
-        height: 10
-        width: 2
+        height: Math.floor(Theme.pixelRatio*10)
+        width: Math.floor(Theme.pixelRatio*2)
     }
     Text {
         anchors.bottom: base.top
-        anchors.bottomMargin: 4
-        anchors.left: base.left
+        anchors.bottomMargin: Math.floor(Theme.pixelRatio*4)
+        anchors.horizontalCenter: base.horizontalCenter
         color: "black"
+        font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: 19
-        font.weight: Font.DemiBold
+        font.pixelSize: Math.round(Theme.pixelRatio*18)
         horizontalAlignment: Text.AlignHCenter
         text: scaleBar.text
-        width: base.width
     }
     function roundedDistace(dist) {
         // Return dist rounded to an even amount of user-visible units,
