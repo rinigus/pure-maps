@@ -3,6 +3,7 @@ Poor Maps 0.25
 
 * [ ] Fix padding, spacing, icon sizes and font sizes to work better
       across different size and different pixel density screens
+* [x] Move the menu button to the bottom center of screen
 * [x] Use [Mapbox's navigation icons][0.25b]
 * [x] Include scale in all tile source names, including @1x
 * [x] Remove MapQuest Open tile source as tiles are [no longer available][0.25a]

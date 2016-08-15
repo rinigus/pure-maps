@@ -32,96 +32,34 @@ Page {
             id: column
             anchors.fill: parent
             PageHeader { title: "Poor Maps" }
-            ListItem {
-                id: searchItem
-                contentHeight: Theme.itemSizeSmall
-                Image {
-                    id: searchImage
-                    fillMode: Image.Pad
-                    height: Theme.itemSizeSmall
-                    horizontalAlignment: Image.AlignRight
-                    source: "image://theme/icon-m-search"
-                    width: implicitWidth + Theme.paddingLarge
-                }
-                ListItemLabel {
-                    anchors.left: searchImage.right
-                    anchors.leftMargin: Theme.paddingMedium
-                    color: searchItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Search"
-                }
+            IconListItem {
+                icon: "image://theme/icon-m-search"
+                label: "Search"
                 onClicked: {
                     app.pageStack.push("GeocodePage.qml");
                     app.pageStack.pushAttached("GeocodingResultsPage.qml");
                 }
             }
-            ListItem {
-                id: navigationItem
-                contentHeight: Theme.itemSizeSmall
-                Image {
-                    id: navigationImage
-                    fillMode: Image.Pad
-                    height: Theme.itemSizeSmall
-                    horizontalAlignment: Image.AlignRight
-                    source: "image://theme/icon-m-car"
-                    width: implicitWidth + Theme.paddingLarge
+            IconListItem {
+                icon: "image://theme/icon-m-car"
+                label: "Navigation"
+                onClicked: {
+                    app.pageStack.push("RoutePage.qml");
                 }
-                ListItemLabel {
-                    anchors.left: navigationImage.right
-                    anchors.leftMargin: Theme.paddingMedium
-                    color: navigationItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Navigation"
-                }
-                onClicked: app.pageStack.push("RoutePage.qml");
             }
-            ListItem {
-                id: findNearbyItem
-                contentHeight: Theme.itemSizeSmall
-                Image {
-                    id: findNearbyImage
-                    fillMode: Image.Pad
-                    height: Theme.itemSizeSmall
-                    horizontalAlignment: Image.AlignRight
-                    source: "icons/nearby.png"
-                    width: implicitWidth + Theme.paddingLarge
-                }
-                ListItemLabel {
-                    anchors.left: findNearbyImage.right
-                    anchors.leftMargin: Theme.paddingMedium
-                    color: findNearbyItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Nearby venues"
-                }
+            IconListItem {
+                icon: "image://theme/icon-m-whereami"
+                label: "Nearby venues"
                 onClicked: {
                     app.pageStack.push("NearbyPage.qml");
                 }
             }
-            ListItem {
-                id: shareCurrentPositionItem
-                contentHeight: Theme.itemSizeSmall
-                Image {
-                    id: shareCurrentPositionImage
-                    fillMode: Image.Pad
-                    height: Theme.itemSizeSmall
-                    horizontalAlignment: Image.AlignRight
-                    source: "image://theme/icon-m-share"
-                    width: implicitWidth + Theme.paddingLarge
-                }
-                ListItemLabel {
-                    anchors.left: shareCurrentPositionImage.right
-                    anchors.leftMargin: Theme.paddingMedium
-                    color: shareCurrentPositionItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Share current position"
-                }
+            IconListItem {
+                icon: "image://theme/icon-m-share"
+                label: "Share current position"
                 BusyIndicator {
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     anchors.verticalCenter: parent.verticalCenter
                     running: !gps.ready
                     size: BusyIndicatorSize.Small
@@ -137,81 +75,34 @@ Page {
                     });
                 }
             }
-            ListItem {
-                id: findCurrentPositionItem
-                contentHeight: Theme.itemSizeSmall
-                Image {
-                    id: findCurrentPositionImage
-                    fillMode: Image.Pad
-                    height: Theme.itemSizeSmall
-                    horizontalAlignment: Image.AlignRight
-                    source: "icons/center-position.png"
-                    width: implicitWidth + Theme.paddingLarge
-                }
-                ListItemLabel {
-                    anchors.left: findCurrentPositionImage.right
-                    anchors.leftMargin: Theme.paddingMedium
-                    color: findCurrentPositionItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Center on current position"
-                }
+            IconListItem {
+                icon: "image://theme/icon-m-dot"
+                label: "Center on current position"
                 onClicked: {
                     map.centerOnPosition();
                     app.clearMenu();
                 }
             }
-            ListItem {
-                id: clearMapItem
-                contentHeight: Theme.itemSizeSmall
-                Image {
-                    id: clearMapImage
-                    fillMode: Image.Pad
-                    height: Theme.itemSizeSmall
-                    horizontalAlignment: Image.AlignRight
-                    source: "image://theme/icon-m-clear"
-                    width: implicitWidth + Theme.paddingLarge
-                }
-                ListItemLabel {
-                    anchors.left: clearMapImage.right
-                    anchors.leftMargin: Theme.paddingMedium
-                    color: clearMapItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Clear map"
-                }
+            IconListItem {
+                icon: "image://theme/icon-m-clear"
+                label: "Clear map"
                 onClicked: {
                     map.clear();
                     app.clearMenu();
                 }
             }
-            ListItem {
-                id: basemapItem
-                contentHeight: Theme.itemSizeSmall
-                Image {
-                    id: basemapImage
-                    fillMode: Image.Pad
-                    height: Theme.itemSizeSmall
-                    horizontalAlignment: Image.AlignRight
-                    source: "image://theme/icon-m-levels"
-                    width: implicitWidth + Theme.paddingLarge
+            IconListItem {
+                icon: "image://theme/icon-m-levels"
+                label: "Basemaps and overlays"
+                onClicked: {
+                    app.pageStack.push("BasemapPage.qml");
                 }
-                ListItemLabel {
-                    anchors.left: basemapImage.right
-                    anchors.leftMargin: Theme.paddingMedium
-                    color: basemapItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Basemaps and overlays"
-                }
-                onClicked: app.pageStack.push("BasemapPage.qml");
             }
             TextSwitch {
                 id: autoCenterItem
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
                 checked: map.autoCenter
                 height: Theme.itemSizeSmall
+                leftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
                 text: "Auto-center on position"
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
@@ -225,10 +116,9 @@ Page {
             }
             TextSwitch {
                 id: autoRotateItem
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
                 checked: map.autoRotate
                 height: Theme.itemSizeSmall
+                leftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
                 text: "Auto-rotate to match direction"
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
