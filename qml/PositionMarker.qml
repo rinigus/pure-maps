@@ -36,7 +36,8 @@ MapQuickItem {
         Image {
             id: movingImage
             rotation: map.rotation + (map.direction || 0)
-            source: "icons/position-direction.png"
+            smooth: true
+            source: app.getIcon("icons/position-direction")
             visible: map.direction || false
             Behavior on rotation {
                 RotationAnimation {
@@ -49,7 +50,8 @@ MapQuickItem {
         Image {
             id: stillImage
             anchors.centerIn: movingImage
-            source: "icons/position.png"
+            smooth: false
+            source: app.getIcon("icons/position")
             visible: !movingImage.visible
         }
         MouseArea {
@@ -75,7 +77,8 @@ MapQuickItem {
         Timer {
             id: timer
             interval: 2000
-            onTriggered: bubble.visible = !bubble.visible;
+            repeat: false
+            onTriggered: bubble.visible = false;
         }
     }
     transform: Rotation {

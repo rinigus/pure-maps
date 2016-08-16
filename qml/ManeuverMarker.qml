@@ -24,12 +24,14 @@ MapQuickItem {
     anchorPoint.x: sourceItem.width/2
     anchorPoint.y: sourceItem.height/2
     sourceItem: Image {
+        smooth: false
         source: marker.passive ?
-            "icons/node.png" : "icons/maneuver.png"
+            app.getIcon("icons/node") :
+            app.getIcon("icons/maneuver")
     }
     z: 201
     property real duration: 0
-    property string icon: "alert"
+    property string icon: "flag"
     property string narrative: ""
     property bool passive: false
 }
