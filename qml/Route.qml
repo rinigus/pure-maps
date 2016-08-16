@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
+import Sailfish.Silica 1.0
 
 import "js/util.js" as Util
 
@@ -51,7 +52,6 @@ Canvas {
 
     Timer {
         // Use a timer to ensure updates if map panned.
-        // Needed since Sailfish OS 1.1.0.38.
         interval: 500
         repeat: true
         running: app.running && canvas.hasPath
@@ -64,7 +64,7 @@ Canvas {
         canvas.context.globalAlpha = 0.5;
         canvas.context.lineCap = "round";
         canvas.context.lineJoin = "round";
-        canvas.context.lineWidth = 10;
+        canvas.context.lineWidth = Math.floor(Theme.pixelRatio*10);
         canvas.context.strokeStyle = "#0540ff";
         canvas.redraw();
     }
@@ -120,8 +120,8 @@ Canvas {
     onPathChanged: {
         // Update canvas in conjunction with panning the map
         // only when we actually have a route to display.
-        if (canvas.context)
-            canvas.context.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.context && canvas.context.clearRect(
+            0, 0, canvas.width, canvas.height);
         canvas.simplePaths = {};
         canvas.hasPath = canvas.path.x.length > 0;
         if (canvas.hasPath) {

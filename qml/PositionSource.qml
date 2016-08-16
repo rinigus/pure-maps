@@ -31,11 +31,11 @@ PositionSource {
     property var direction: undefined
     property var directionHistory: []
     property var ready: false
-    property var timeActivate: Date.now()
+    property var timeActivate:  Date.now()
     property var timeDirection: Date.now()
-    property var timePosition: Date.now()
+    property var timePosition:  Date.now()
     onActiveChanged: {
-        // Keep track when positioning was (re)activated.
+        // Keep track of when positioning was (re)activated.
         if (gps.active) gps.timeActivate = Date.now();
     }
     onPositionChanged: {
