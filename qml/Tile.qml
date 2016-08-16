@@ -46,7 +46,7 @@ MapQuickItem {
             map.constants.canvasTileSize * props.scale;
         var height = Util.ycoord2ymercator(props.nwy) -
             Util.ycoord2ymercator(props.swy);
-        var height = height / (2*Math.PI) * total;
+        height = height / (2*Math.PI) * total;
         image.height = Math.ceil(height - 0.4);
     }
     function setWidth(props) {
