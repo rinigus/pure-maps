@@ -119,7 +119,7 @@ Page {
                 checked: map.autoRotate
                 height: Theme.itemSizeSmall
                 leftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
-                text: "Auto-rotate to match direction"
+                text: "Auto-rotate on direction"
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
                         autoRotateItem.checked = map.autoRotate;
