@@ -32,7 +32,7 @@ CoverBackground {
     property bool active: status === Cover.Active
     property bool ready: false
     property bool showNarrative: map.hasRoute && map.showNarrative
-    property var tiles: []
+    property var  tiles: []
     onShowNarrativeChanged: {
         for (var i = 0; i < cover.tiles.length; i++)
             cover.tiles[i].visible = !cover.showNarrative;
@@ -54,6 +54,7 @@ CoverBackground {
         anchors.centerIn: parent
         height: width/sourceSize.width * sourceSize.height
         opacity: 0.1
+        smooth: true
         source: "icons/cover.png"
         width: 1.5 * parent.width
     }
@@ -76,13 +77,15 @@ CoverBackground {
         Image {
             id: movingImage
             rotation: map.direction || 0
-            source: "icons/position-direction.png"
+            smooth: true
+            source: app.getIcon("icons/position-direction")
             visible: map.direction || false
         }
         Image {
             id: stillImage
             anchors.centerIn: movingImage
-            source: "icons/position.png"
+            smooth: false
+            source: app.getIcon("icons/position")
             visible: !movingImage.visible
         }
     }
@@ -91,11 +94,15 @@ CoverBackground {
      */
     Image {
         anchors.bottom: parent.verticalCenter
-        anchors.bottomMargin: Theme.paddingLarge
+        anchors.bottomMargin: Theme.paddingMedium
         anchors.horizontalCenter: parent.horizontalCenter
+        opacity: 0.9
+        smooth: true
         source: app.navigationBlock.icon ?
-            "icons/%1.png".arg(app.navigationBlock.icon) :
-            "icons/alert.png"
+            "icons/navigation/%1.svg".arg(app.navigationBlock.icon) :
+            "icons/navigation/flag.svg"
+        sourceSize.height: 128
+        sourceSize.width: 128
         visible: cover.showNarrative
     }
     Label {
@@ -161,8 +168,8 @@ CoverBackground {
             cover.tiles[j].visible = !cover.showNarrative;
             var width = map.tiles[i].image.width;
             var height = map.tiles[i].image.height;
-            width && width > 0 && (cover.tiles[j].width = width);
-            height && height > 0 && (cover.tiles[j].height = height);
+            if (width && width > 0) cover.tiles[j].width = width;
+            if (height && height > 0) cover.tiles[j].height = height;
             j++;
         }
         cover.ready = cover.tiles.length > 4;

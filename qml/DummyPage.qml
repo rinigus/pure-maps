@@ -40,11 +40,9 @@ Page {
         width: map.width
     }
     onStatusChanged: {
-        if (page.status === PageStatus.Active) {
-            // Clear and hide menu if navigated backwards to this page.
-            // This gets fired on application startup as well!
-            app.clearMenu();
-        }
+        // Clear and hide menu if navigated backwards to this page.
+        // This gets fired on application startup as well!
+        page.status === PageStatus.Active && app.clearMenu();
     }
     function addTile() {
         // Add a new blank tile to the end of collection.
@@ -67,8 +65,8 @@ Page {
             page.tiles[j].z = map.tiles[i].z;
             var width = map.tiles[i].image.width;
             var height = map.tiles[i].image.height;
-            width && width > 0 && (page.tiles[j].width = width);
-            height && height > 0 && (page.tiles[j].height = height);
+            if (width && width > 0) page.tiles[j].width = width;
+            if (height && height > 0) page.tiles[j].height = height;
             j++;
         }
     }
