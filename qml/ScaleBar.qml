@@ -38,7 +38,7 @@ Item {
     Rectangle {
         id: base
         color: "black"
-        height: Math.floor(Theme.pixelRatio*2)
+        height: Math.floor(Theme.pixelRatio*3)
         width: scaleBar.scaleWidth
     }
     Rectangle {
@@ -46,14 +46,14 @@ Item {
         anchors.left: base.left
         color: "black"
         height: Math.floor(Theme.pixelRatio*10)
-        width: Math.floor(Theme.pixelRatio*2)
+        width: Math.floor(Theme.pixelRatio*3)
     }
     Rectangle {
         anchors.bottom: base.top
         anchors.right: base.right
         color: "black"
         height: Math.floor(Theme.pixelRatio*10)
-        width: Math.floor(Theme.pixelRatio*2)
+        width: Math.floor(Theme.pixelRatio*3)
     }
     Text {
         anchors.bottom: base.top
