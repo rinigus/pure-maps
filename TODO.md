@@ -7,6 +7,7 @@ Poor Maps 0.25
 * [x] Use [Mapbox's navigation icons][0.25b]
 * [x] Indicate in lists of providers which is the default one
 * [x] Include scale in all tile source names, including @1x
+* [x] Add scale filters to a pulldown menu in the basemap page
 * [x] Remove MapQuest Open tile source as tiles are [no longer available][0.25a]
 * [x] Add @2x variants of OpenCycleMap and Thunderforest Transport
 * [x] Remove Nominatim geocoders

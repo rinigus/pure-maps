@@ -23,12 +23,14 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
+    property string title: "Basemaps"
     SilicaListView {
         id: listView
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: nameLabel.height + attributionLabel.height
+            contentHeight: visible ? nameLabel.height + descriptionLabel.height : 0
+            visible: model.visible
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
@@ -38,11 +40,11 @@ Page {
                 verticalAlignment: Text.AlignBottom
             }
             ListItemLabel {
-                id: attributionLabel
+                id: descriptionLabel
                 anchors.top: nameLabel.bottom
                 color: Theme.secondaryColor
-                height: implicitHeight + Theme.paddingMedium
                 font.pixelSize: Theme.fontSizeExtraSmall
+                height: implicitHeight + 1.5*Theme.paddingMedium
                 text: "Source: %1\n%2".arg(model.source).arg(model.attribution)
                 verticalAlignment: Text.AlignTop
             }
@@ -56,19 +58,54 @@ Page {
                 listView.model.setProperty(model.index, "active", true);
             }
         }
-        header: PageHeader { title: "Basemaps" }
+        header: PageHeader { title: page.title }
         model: ListModel {}
+        PullDownMenu {
+            MenuItem {
+                text: "All"
+                onClicked: page.setFilter("");
+            }
+            MenuItem {
+                text: "@1x"
+                onClicked: page.setFilter("@1x");
+            }
+            MenuItem {
+                text: "@2x"
+                onClicked: page.setFilter("@2x");
+            }
+        }
         VerticalScrollDecorator {}
         Component.onCompleted: {
             // Load basemap model entries from the Python backend.
+            var defpid = app.conf.getDefault("basemap");
             py.call("poor.util.get_basemaps", [], function(basemaps) {
-                for (var i = 0; i < basemaps.length; i++)
+                for (var i = 0; i < basemaps.length; i++) {
+                    if (basemaps[i].pid === defpid)
+                        basemaps[i].name = "%1 (default)".arg(basemaps[i].name);
+                    basemaps[i].visible = true;
                     listView.model.append(basemaps[i]);
+                }
+                page.filterBasemaps();
             });
         }
     }
     onStatusChanged: {
         page.status === PageStatus.Active &&
             app.pageStack.pushAttached("OverlayPage.qml");
+    }
+    function filterBasemaps() {
+        // Show only basemaps that match the scale filter.
+        var filter = app.conf.get("basemap_filter");
+        for (var i = 0; i < listView.count; i++) {
+            var visible = listView.model.get(i).name.indexOf(filter) > -1;
+            listView.model.setProperty(i, "visible", visible);
+        }
+        page.title = filter.length > 0 ?
+            "Basemaps %1".arg(filter) : "Basemaps";
+    }
+    function setFilter(value) {
+        // Set value of the scale filter and update.
+        app.conf.set("basemap_filter", value);
+        page.filterBasemaps();
     }
 }

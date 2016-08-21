@@ -43,18 +43,16 @@ Page {
                     if (!overlaySwitch.ready) return;
                     app.hideMenu();
                     map.clearTiles();
-                    var fun = overlaySwitch.checked ?
-                        "poor.app.add_overlays" : "poor.app.remove_overlays";
-                    py.call_sync(fun, [model.pid]);
+                    overlaySwitch.checked ?
+                        py.call_sync("poor.app.add_overlays", [model.pid]) :
+                        py.call_sync("poor.app.remove_overlays", [model.pid]);
                     map.changed = true;
                 }
             }
             OpacityRampEffect {
                 // Try to match Label with TruncationMode.Fade.
                 direction: OpacityRamp.LeftToRight
-                offset: (listItem.width - 2*Theme.paddingLarge) / overlaySwitch.width
-                slope: (overlaySwitch.width - listItem.width + 2*Theme.paddingLarge) /
-                    Theme.paddingLarge
+                offset: (overlaySwitch.width - overlaySwitch.rightMargin) / overlaySwitch.width
                 sourceItem: overlaySwitch
             }
         }
