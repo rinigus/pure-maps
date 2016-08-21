@@ -23,19 +23,23 @@ QtObject {
         // Return value of configuration option.
         return py.call_sync("poor.conf.get", [option]);
     }
+    function getDefault(option) {
+        // Return default value of configuration option.
+        return py.call_sync("poor.conf.get_default", [option]);
+    }
     function set(option, value) {
         // Set the value of configuration option.
         return py.call_sync("poor.conf.set", [option, value]);
     }
-    function set_add(option, item) {
+    function setAdd(option, item) {
         // Add item to option of type set.
         return py.call_sync("poor.conf.set_add", [option, item]);
     }
-    function set_contains(option, item) {
+    function setContains(option, item) {
         // Return true if configuration option of type set contains item.
         return py.call_sync("poor.conf.set_contains", [option, item]);
     }
-    function set_remove(option, item) {
+    function setRemove(option, item) {
         // Remove item from option of type set.
         return py.call_sync("poor.conf.set_remove", [option, item]);
     }

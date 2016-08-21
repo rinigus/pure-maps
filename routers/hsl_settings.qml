@@ -122,19 +122,19 @@ Column {
                 width: icon.sourceSize.width + Theme.paddingLarge
                 property bool checked: false
                 Component.onCompleted: {
-                    vehicleSwitch.checked = app.conf.set_contains(
+                    vehicleSwitch.checked = app.conf.setContains(
                         repeater.option, repeater.keys[index]);
                 }
                 onClicked: {
                     vehicleSwitch.checked = !vehicleSwitch.checked;
                     vehicleSwitch.checked ?
-                        app.conf.set_add(repeater.option, repeater.keys[index]) :
-                        app.conf.set_remove(repeater.option, repeater.keys[index]);
+                        app.conf.setAdd(repeater.option, repeater.keys[index]) :
+                        app.conf.setRemove(repeater.option, repeater.keys[index]);
                     if (repeater.keys[index] === "bus") {
                         // Include service lines when toggling bus use.
                         vehicleSwitch.checked ?
-                            app.conf.set_add(repeater.option, "service") :
-                            app.conf.set_remove(repeater.option, "service");
+                            app.conf.setAdd(repeater.option, "service") :
+                            app.conf.setRemove(repeater.option, "service");
                     }
                 }
             }

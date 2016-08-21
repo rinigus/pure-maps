@@ -29,8 +29,7 @@ Dialog {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: nameLabel.height + modeLabel.height +
-                descriptionLabel.height + sourceLabel.height + attributionLabel.height
+            contentHeight: nameLabel.height + descriptionLabel.height
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
@@ -40,42 +39,14 @@ Dialog {
                 verticalAlignment: Text.AlignBottom
             }
             ListItemLabel {
-                id: modeLabel
+                id: descriptionLabel
                 anchors.top: nameLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                // Modes field added in 0.21.
-                height: model.modes ? implicitHeight : 0
-                text: "Modes: %1".arg(model.modes)
-                verticalAlignment: Text.AlignVCenter
-            }
-            ListItemLabel {
-                id: descriptionLabel
-                anchors.top: modeLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                // Description field added in 0.13.
-                height: model.description ? implicitHeight : 0
-                text: model.description
-                verticalAlignment: Text.AlignVCenter
-            }
-            ListItemLabel {
-                id: sourceLabel
-                anchors.top: descriptionLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight
-                text: "Source: %1".arg(model.source)
-                verticalAlignment: Text.AlignVCenter
-            }
-            ListItemLabel {
-                id: attributionLabel
-                anchors.top: sourceLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight + Theme.paddingMedium
-                text: model.attribution
+                height: implicitHeight + 1.5*Theme.paddingMedium
+                text: "%1\nModes: %2\nSource: %3\n%4".arg(model.description).arg(model.modes).arg(model.source).arg(model.attribution)
                 verticalAlignment: Text.AlignTop
+                wrapMode: Text.WordWrap
             }
             onClicked: {
                 dialog.pid = model.pid;
@@ -87,9 +58,13 @@ Dialog {
         VerticalScrollDecorator {}
         Component.onCompleted: {
             // Load router model entries from the Python backend.
+            var defpid = app.conf.getDefault("router");
             py.call("poor.util.get_routers", [], function(routers) {
-                for (var i = 0; i < routers.length; i++)
+                for (var i = 0; i < routers.length; i++) {
+                    if (routers[i].pid === defpid)
+                        routers[i].name = "%1 (default)".arg(routers[i].name);
                     listView.model.append(routers[i]);
+                }
             });
         }
     }

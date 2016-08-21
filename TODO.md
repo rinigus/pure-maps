@@ -5,6 +5,7 @@ Poor Maps 0.25
       across different size and different pixel density screens
 * [x] Move the menu button to the bottom center of screen
 * [x] Use [Mapbox's navigation icons][0.25b]
+* [x] Indicate in lists of providers which is the default one
 * [x] Include scale in all tile source names, including @1x
 * [x] Remove MapQuest Open tile source as tiles are [no longer available][0.25a]
 * [x] Add @2x variants of OpenCycleMap and Thunderforest Transport

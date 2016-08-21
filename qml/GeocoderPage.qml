@@ -29,8 +29,7 @@ Dialog {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: nameLabel.height + descriptionLabel.height +
-                sourceLabel.height + attributionLabel.height
+            contentHeight: nameLabel.height + descriptionLabel.height
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
@@ -44,28 +43,10 @@ Dialog {
                 anchors.top: nameLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                // Description field added in 0.13.
-                height: model.description ? implicitHeight : 0
-                text: model.description
-                verticalAlignment: Text.AlignVCenter
-            }
-            ListItemLabel {
-                id: sourceLabel
-                anchors.top: descriptionLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight
-                text: "Source: %1".arg(model.source)
-                verticalAlignment: Text.AlignVCenter
-            }
-            ListItemLabel {
-                id: attributionLabel
-                anchors.top: sourceLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight + Theme.paddingMedium
-                text: model.attribution
+                height: implicitHeight + 1.5*Theme.paddingMedium
+                text: "%1\nSource: %2\n%3".arg(model.description).arg(model.source).arg(model.attribution)
                 verticalAlignment: Text.AlignTop
+                wrapMode: Text.WordWrap
             }
             onClicked: {
                 dialog.pid = model.pid;
@@ -77,9 +58,13 @@ Dialog {
         VerticalScrollDecorator {}
         Component.onCompleted: {
             // Load geocoder model entries from the Python backend.
+            var defpid = app.conf.getDefault("geocoder");
             py.call("poor.util.get_geocoders", [], function(geocoders) {
-                for (var i = 0; i < geocoders.length; i++)
+                for (var i = 0; i < geocoders.length; i++) {
+                    if (geocoders[i].pid === defpid)
+                        geocoders[i].name = "%1 (default)".arg(geocoders[i].name);
                     listView.model.append(geocoders[i]);
+                }
             });
         }
     }
