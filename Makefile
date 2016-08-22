@@ -35,7 +35,6 @@ install:
 	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(DATADIR)/qml
 	mkdir -p $(DATADIR)/qml/icons/navigation
 	cp qml/icons/*.png $(DATADIR)/qml/icons
-	cp qml/icons/navigation/*.png $(DATADIR)/qml/icons/navigation
 	cp qml/icons/navigation/*.svg $(DATADIR)/qml/icons/navigation
 	mkdir -p $(DATADIR)/qml/js
 	cp qml/js/*.js $(DATADIR)/qml/js
