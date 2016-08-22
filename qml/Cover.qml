@@ -101,8 +101,8 @@ CoverBackground {
         source: app.navigationBlock.icon ?
             "icons/navigation/%1.svg".arg(app.navigationBlock.icon) :
             "icons/navigation/flag.svg"
-        sourceSize.height: 128
-        sourceSize.width: 128
+        sourceSize.height: cover.width/2
+        sourceSize.width: cover.width/2
         visible: cover.showNarrative
     }
     Label {
