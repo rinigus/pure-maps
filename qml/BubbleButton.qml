@@ -21,9 +21,9 @@ import Sailfish.Silica 1.0
 
 Rectangle {
     id: button
-    color: "#bbffffff"
+    color: "#d0ffffff"
     height: label.height + 0.75*Theme.paddingLarge
-    radius: Theme.fontSizeSmall/4
+    radius: Theme.paddingSmall/4
     width: label.width + Theme.paddingLarge
     property string text: ""
     // Use a pressed effect only when the associated action has a delay,
@@ -51,6 +51,6 @@ Rectangle {
         id: timer
         interval: 3000
         repeat: false
-        onTriggered: button.color = "#bbffffff";
+        onTriggered: button.color = "#d0ffffff";
     }
 }

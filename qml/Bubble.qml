@@ -60,10 +60,10 @@ Item {
         id: content
         anchors.bottom: bubble.bottom
         anchors.bottomMargin: bubble.showArrow ? 18 : 6
-        color: "#bb000000"
+        color: "#d0000000"
         height: label.height + 2*bubble.paddingY + bubble.buttonBlockHeight +
             (bubble.buttonBlockHeight > 0) * 2*bubble.paddingY
-        radius: Theme.fontSizeSmall/2
+        radius: Theme.paddingSmall/2
         visible: bubble.visible
         width: label.width + 2*bubble.paddingX
     }
@@ -94,7 +94,8 @@ Item {
         anchors.top: content.bottom
         // Try to avoid a stripe between bubble and arrow.
         anchors.topMargin: -0.5
-        source: "icons/bubble-arrow.png"
+        smooth: false
+        source: app.getIcon("icons/bubble-arrow")
         visible: bubble.visible && bubble.showArrow
     }
 }

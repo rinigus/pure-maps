@@ -156,7 +156,7 @@ Map {
          * Expected fields for each item in in maneuvers:
          *  - x: Longitude coordinate of maneuver point
          *  - y: Latitude coordinate of maneuver point
-         *  - icon: Name of maneuver icon (optional, defaults to "alert")
+         *  - icon: Name of maneuver icon (optional, defaults to "flag")
          *  - narrative: Plain text instruction of maneuver
          *  - passive: true if point doesn't require any actual action
          *    (optional, defaults to false)
@@ -166,7 +166,7 @@ Map {
             var component = Qt.createComponent("ManeuverMarker.qml");
             var maneuver = component.createObject(map);
             maneuver.coordinate = QtPositioning.coordinate(maneuvers[i].y, maneuvers[i].x);
-            maneuver.icon = maneuvers[i].icon || "alert";
+            maneuver.icon = maneuvers[i].icon || "flag";
             maneuver.narrative = maneuvers[i].narrative || "";
             maneuver.passive = maneuvers[i].passive || false;
             maneuver.duration = maneuvers[i].duration || 0;

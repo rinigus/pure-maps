@@ -34,7 +34,8 @@ MapQuickItem {
         width: image.width
         Image {
             id: image
-            source: "icons/poi.png"
+            smooth: false
+            source: app.getIcon("icons/poi")
             MouseArea {
                 anchors.fill: parent
                 onClicked: marker.bubbleVisible = !marker.bubbleVisible
