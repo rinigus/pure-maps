@@ -30,48 +30,60 @@ Page {
         currentIndex: -1
         delegate: ListItem {
             id: listItem
-            contentHeight: iconImage.height
+            contentHeight: icon.height
             Image {
-                id: iconImage
+                id: icon
                 anchors.left: parent.left
+                anchors.leftMargin: Theme.horizontalPageMargin
                 fillMode: Image.Pad
-                height: 2*Theme.paddingMedium + Math.max(
-                    implicitHeight, narrativeLabel.implicitHeight +
-                        lengthLabel.implicitHeight)
+                height: {
+                    var labelHeight = narrativeLabel.implicitHeight + lengthLabel.implicitHeight;
+                    var contentHeight = Math.max(implicitHeight, labelHeight)
+                    return contentHeight + 2*Theme.paddingMedium;
+                }
                 horizontalAlignment: Image.AlignRight
-                source: "icons/%1.png".arg(model.icon)
+                opacity: 0.9
+                smooth: true
+                source: "icons/navigation/%1.svg".arg(model.icon)
+                sourceSize.height: Theme.iconSizeMedium
+                sourceSize.width: Theme.iconSizeMedium
                 verticalAlignment: Image.AlignVCenter
-                width: implicitWidth + Theme.paddingLarge
             }
             Label {
                 id: narrativeLabel
-                anchors.left: iconImage.right
-                anchors.leftMargin: Theme.paddingLarge
+                anchors.left: icon.right
+                anchors.leftMargin: Theme.paddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+                anchors.rightMargin: Theme.horizontalPageMargin
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + (iconImage.height -
-                    implicitHeight - lengthLabel.implicitHeight) / 2
+                height: {
+                    var labelHeight = implicitHeight + lengthLabel.implicitHeight
+                    var difference = icon.height - labelHeight;
+                    return implicitHeight + difference/2;
+                }
                 text: model.narrative
                 verticalAlignment: Text.AlignBottom
                 wrapMode: Text.WordWrap
             }
             Label {
                 id: lengthLabel
-                anchors.left: iconImage.right
-                anchors.leftMargin: Theme.paddingLarge
+                anchors.left: icon.right
+                anchors.leftMargin: Theme.paddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+                anchors.rightMargin: Theme.horizontalPageMargin
                 anchors.top: narrativeLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + (iconImage.height -
-                    implicitHeight - narrativeLabel.implicitHeight) / 2
-                text: model.index < listView.count-1 ?
-                    "Continue for %1.".arg(model.length) :
-                    map.route.attribution
+                height: {
+                    var labelHeight = implicitHeight + narrativeLabel.implicitHeight
+                    var difference = icon.height - labelHeight;
+                    return implicitHeight + difference/2;
+                }
+                text: model.index < listView.count - 1 ?
+                    "Continue for %1.".arg(model.length) : map.route.attribution
+                truncationMode: TruncationMode.Fade
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
@@ -92,73 +104,23 @@ Page {
                 id: row
                 height: Theme.itemSizeSmall
                 width: parent.width
-                ListItem {
-                    id: beginItem
-                    contentHeight: Theme.itemSizeSmall
-                    width: parent.width/3
-                    Rectangle {
-                        anchors.fill: parent
-                        color: Theme.highlightColor
-                        opacity: 0.1
-                    }
-                    ListItemLabel {
-                        id: beginLabel
-                        anchors.fill: parent
-                        anchors.leftMargin: Theme.paddingLarge
-                        anchors.rightMargin: Theme.paddingLarge
-                        color: beginItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                        height: Theme.itemSizeSmall
-                        horizontalAlignment: Text.AlignHCenter
-                        text: "Begin"
-                    }
+                property int count: 3
+                ToolItem {
+                    text: "Begin"
                     onClicked: {
                         map.beginNavigating();
                         app.clearMenu();
                     }
                 }
-                ListItem {
-                    id: pauseItem
-                    contentHeight: Theme.itemSizeSmall
-                    width: parent.width/3
-                    Rectangle {
-                        anchors.fill: parent
-                        color: Theme.highlightColor
-                        opacity: 0.1
-                    }
-                    ListItemLabel {
-                        id: pauseLabel
-                        anchors.fill: parent
-                        anchors.leftMargin: Theme.paddingLarge
-                        anchors.rightMargin: Theme.paddingLarge
-                        color: pauseItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                        height: Theme.itemSizeSmall
-                        horizontalAlignment: Text.AlignHCenter
-                        text: "Pause"
-                    }
+                ToolItem {
+                    text: "Pause"
                     onClicked: {
                         map.endNavigating();
                         app.clearMenu();
                     }
                 }
-                ListItem {
-                    id: clearItem
-                    contentHeight: Theme.itemSizeSmall
-                    width: parent.width/3
-                    Rectangle {
-                        anchors.fill: parent
-                        color: Theme.highlightColor
-                        opacity: 0.1
-                    }
-                    ListItemLabel {
-                        id: clearLabel
-                        anchors.fill: parent
-                        anchors.leftMargin: Theme.paddingLarge
-                        anchors.rightMargin: Theme.paddingLarge
-                        color: clearItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                        height: Theme.itemSizeSmall
-                        horizontalAlignment: Text.AlignHCenter
-                        text: "Clear"
-                    }
+                ToolItem {
+                    text: "Clear"
                     onClicked: {
                         map.endNavigating();
                         map.clearRoute();
@@ -176,7 +138,7 @@ Page {
             page.populate();
         } else if (page.status === PageStatus.Active) {
             // On first time showing maneuvers, start at the top so that
-            // the user can see the begin, pause and end buttons. On later
+            // the user can see the begin, pause and clear buttons. On later
             // views, scroll to the maneuver closest to the screen center,
             // allowing the user to tap through the maneuvers.
             app.narrativePageSeen && page.scrollToActive();
@@ -195,8 +157,8 @@ Page {
     function scrollToActive() {
         // Scroll view to the active maneuver.
         for (var i = 0; i < listView.model.count; i++) {
-            if (!listView.model.get(i).active) continue;
-            listView.positionViewAtIndex(i, ListView.Center);
+            listView.model.get(i).active &&
+                listView.positionViewAtIndex(i, ListView.Center);
         }
     }
 }

@@ -22,12 +22,16 @@ import Sailfish.Silica 1.0
 Rectangle {
     id: block
     anchors.left: parent.left
+    anchors.right: parent.right
     anchors.top: parent.top
-    color: "#cc000000"
-    // If far off route, manLabel defines the height of the block,
-    // but we need padding to make a sufficiently large tap target.
-    height: destDist ? Math.max(iconImage.height, manLabel.height + 1.4*Theme.paddingMedium) : 0
-    width: parent.width
+    color: "#d0000000"
+    height: destDist ? Math.max(
+        iconImage.height + 2*Theme.paddingLarge,
+        manLabel.height + Theme.paddingSmall + narrativeLabel.height,
+        // If far off route, manLabel defines the height of the block,
+        // but we need padding to make a sufficiently large tap target.
+        1.3*manLabel.height) : 0
+
     z: 500
     property string destDist: ""
     property string destTime: ""
@@ -36,27 +40,10 @@ Rectangle {
     property string manTime: ""
     property string narrative: ""
     property bool notify: icon || narrative
-    Image {
-        id: iconImage
-        anchors.left: parent.left
-        anchors.top: parent.top
-        fillMode: Image.Pad
-        // Center icon vertically in the whole block,
-        // whose height can be limited by the icon or text,
-        // depending on narrative text length and screen orientation.
-        height: block.notify ? Math.max(
-            sourceSize.height + 2*Theme.paddingLarge,
-            manLabel.height + narrativeLabel.anchors.topMargin + narrativeLabel.height
-        ) : 0
-        horizontalAlignment: Image.AlignRight
-        source: block.icon ? "icons/%1.png".arg(block.icon) : "icons/alert.png"
-        verticalAlignment: Image.AlignVCenter
-        width: block.notify ? sourceSize.width + Theme.paddingLarge : 0
-    }
     Label {
         id: manLabel
         anchors.left: iconImage.right
-        anchors.leftMargin: Theme.paddingLarge
+        anchors.leftMargin: iconImage.width > 0 ? Theme.paddingLarge : 0
         anchors.right: parent.right
         anchors.top: parent.top
         color: block.notify ? Theme.highlightColor : "white"
@@ -79,20 +66,32 @@ Rectangle {
     Label {
         id: narrativeLabel
         anchors.left: iconImage.right
-        anchors.leftMargin: Theme.paddingLarge
+        anchors.leftMargin: iconImage.width > 0 ? Theme.paddingLarge : 0
         anchors.right: parent.right
         anchors.rightMargin: Theme.paddingLarge
         anchors.top: manLabel.bottom
         anchors.topMargin: Theme.paddingSmall
-        color: "white"
+        color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeMedium
-        // manLabel has some extra padding due to the line height
-        // of the huge font size. Account vaguely to have visually
-        // about equal top and bottom padding in the block.
-        height: block.narrative ? implicitHeight + 1.2*Theme.paddingLarge : 0
+        height: text ? implicitHeight + 0.3*manLabel.height : 0
         text: block.narrative
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
+    }
+    Image {
+        id: iconImage
+        anchors.left: parent.left
+        anchors.leftMargin: Theme.paddingLarge
+        anchors.top: parent.top
+        anchors.topMargin: Theme.paddingLarge
+        fillMode: Image.Pad
+        height: block.notify ? sourceSize.height : 0
+        opacity: 0.9
+        smooth: true
+        source: "icons/navigation/%1.svg".arg(block.icon || "flag")
+        sourceSize.height: Theme.iconSizeLarge
+        sourceSize.width: Theme.iconSizeLarge
+        width: block.notify ? sourceSize.width : 0
     }
     MouseArea {
         anchors.fill: parent
