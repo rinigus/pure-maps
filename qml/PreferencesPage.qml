@@ -112,31 +112,30 @@ Page {
                     // Activate closest in case the user has edited the configuration file
                     // by hand using a value outside the combo box steps.
                     var value = app.conf.get("cache_max_age");
-                    var minItem = 0;
-                    var minDiff = 36500;
+                    var minIndex = -1, minDiff = 36500;
                     for (var i = 0; i < cacheComboBox.values.length; i++) {
                         var diff = Math.abs(cacheComboBox.values[i] - value);
-                        if (diff < minDiff) {
-                            minItem = i;
-                            minDiff = diff;
-                        }
+                        minIndex = diff < minDiff ? i : minIndex;
+                        minDiff = Math.min(minDiff, diff);
                     }
-                    cacheComboBox.currentIndex = minItem;
+                    cacheComboBox.currentIndex = minIndex;
                 }
                 onCurrentIndexChanged: {
                     var index = cacheComboBox.currentIndex;
                     app.conf.set("cache_max_age", cacheComboBox.values[index]);
                 }
             }
-            ListItem {
-                id: examineCacheItem
-                contentHeight: Theme.itemSizeSmall
-                ListItemLabel {
-                    color: examineCacheItem.highlighted ?
-                        Theme.highlightColor : Theme.primaryColor
-                    height: Theme.itemSizeSmall
-                    text: "Examine map tile cache"
-                }
+            Rectangle {
+                // For spacing.
+                color: "#00000000"
+                height: Theme.paddingMedium
+                width: parent.width
+            }
+            Button {
+                id: examineButton
+                anchors.horizontalCenter: parent.horizontalCenter
+                preferredWidth: Theme.buttonWidthLarge
+                text: "Examine map tile cache"
                 onClicked: app.pageStack.push("CachePage.qml");
             }
         }
