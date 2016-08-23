@@ -32,11 +32,8 @@ Page {
     }
     ListItemLabel {
         id: messageLabel
-        anchors.leftMargin: 3*Theme.paddingLarge
-        anchors.rightMargin: 3*Theme.paddingLarge
         anchors.top: header.bottom
         anchors.topMargin: Theme.paddingLarge
-        font.pixelSize: Theme.fontSizeMedium
         horizontalAlignment: Text.AlignHCenter
         lineHeight: 1.15
         linkColor: Theme.highlightColor
@@ -96,10 +93,10 @@ Page {
         horizontalAlignment: Text.AlignHCenter
     }
     function formatMessage(html) {
-        return py.call_sync("poor.util.format_location_message",
-                            [page.coordinate.longitude,
-                             page.coordinate.latitude,
-                             html]);
-
+        return py.call_sync("poor.util.format_location_message", [
+            page.coordinate.longitude,
+            page.coordinate.latitude,
+            html
+        ]);
     }
 }
