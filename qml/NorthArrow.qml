@@ -32,10 +32,10 @@ IconButton {
     onClicked: {
         if (map.autoRotate) {
             map.autoRotate = false;
-            bubble.message = "Auto-rotate off";
+            bubble.text = "Auto-rotate off";
         } else {
             map.autoRotate = true;
-            bubble.message = "Auto-rotate on";
+            bubble.text = "Auto-rotate on";
         }
         bubble.visible = true;
         timer.restart();
@@ -43,8 +43,8 @@ IconButton {
     Bubble {
         id: bubble
         anchorItem: parent
+        position: "left"
         showArrow: false
-        state: "left"
         visible: false
     }
     Timer {

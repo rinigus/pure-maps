@@ -22,12 +22,12 @@ import Sailfish.Silica 1.0
 Rectangle {
     id: button
     color: "#d0ffffff"
-    height: label.height + 0.75*Theme.paddingLarge
-    radius: Theme.paddingSmall/4
-    width: label.width + Theme.paddingLarge
+    height: label.height + 1.5*Theme.paddingMedium
+    radius: Theme.paddingSmall
+    width: label.width + 2.5*Theme.paddingMedium
     property string text: ""
-    // Use a pressed effect only when the associated action has a delay,
-    // e.g. launching an external application.
+    // Use a pressed effect only when the associated action has
+    // a delay, e.g. launching an external application.
     property bool useHighlight: false
     signal clicked()
     Label {

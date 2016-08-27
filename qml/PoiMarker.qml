@@ -29,7 +29,6 @@ MapQuickItem {
     height: sourceItem.height
     width: sourceItem.width
     sourceItem: Item {
-        id: container
         height: image.height
         width: image.width
         Image {
@@ -38,30 +37,25 @@ MapQuickItem {
             source: app.getIcon("icons/poi")
             MouseArea {
                 anchors.fill: parent
-                onClicked: marker.bubbleVisible = !marker.bubbleVisible
+                onClicked: marker.bubbleVisible = !marker.bubbleVisible;
             }
         }
         Bubble {
             id: bubble
             anchorItem: image
-            buttonBlockHeight: routeButton.height
-            buttonBlockWidth: (routeButton.width +
-                               nearbyButton.width +
-                               shareButton.width +
-                               Theme.paddingMedium +
-                               Theme.paddingMedium +
-                               (marker.link.length > 0) * webButton.width +
-                               (marker.link.length > 0) * Theme.paddingMedium)
-
-            message: marker.text
+            controlHeight: routeButton.height
+            controlWidth: routeButton.width + nearbyButton.width + shareButton.width +
+                (marker.link.length > 0 ? webButton.width : 0) +
+                (marker.link.length > 0 ? 3 : 2) * Theme.paddingMedium
+            text: marker.text
             visible: marker.bubbleVisible
             onClicked: marker.bubbleVisible = !marker.bubbleVisible;
             BubbleButton {
                 id: routeButton
-                anchors.bottom: parent.content.bottom
-                anchors.bottomMargin: parent.paddingX
-                anchors.left: parent.content.left
-                anchors.leftMargin: parent.paddingX
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: Theme.paddingMedium
+                anchors.left: parent.left
+                anchors.leftMargin: Theme.paddingMedium
                 text: "Navigate"
                 onClicked: {
                     var x = marker.coordinate.longitude;
@@ -74,8 +68,8 @@ MapQuickItem {
             }
             BubbleButton {
                 id: nearbyButton
-                anchors.bottom: parent.content.bottom
-                anchors.bottomMargin: parent.paddingX
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: Theme.paddingMedium
                 anchors.left: routeButton.right
                 anchors.leftMargin: Theme.paddingMedium
                 text: "Nearby"
@@ -90,8 +84,8 @@ MapQuickItem {
             }
             BubbleButton {
                 id: shareButton
-                anchors.bottom: parent.content.bottom
-                anchors.bottomMargin: parent.paddingX
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: Theme.paddingMedium
                 anchors.left: nearbyButton.right
                 anchors.leftMargin: Theme.paddingMedium
                 text: "Share"
@@ -106,13 +100,13 @@ MapQuickItem {
             }
             BubbleButton {
                 id: webButton
-                anchors.bottom: parent.content.bottom
-                anchors.bottomMargin: parent.paddingX
-                anchors.right: parent.content.right
-                anchors.rightMargin: parent.paddingX
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: Theme.paddingMedium
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.paddingMedium
                 text: "Web"
                 useHighlight: true
-                z: marker.link ? 1 : -1
+                visible: marker.link.length > 0
                 onClicked: Qt.openUrlExternally(marker.link);
             }
         }
@@ -123,7 +117,7 @@ MapQuickItem {
         origin.y: sourceItem.height/2
     }
     z: 400
-    property bool   bubbleVisible: false
+    property bool bubbleVisible: false
     property string link: ""
     property string text: ""
     property string title: ""

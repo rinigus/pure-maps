@@ -59,10 +59,10 @@ MapQuickItem {
             onClicked: {
                 if (map.autoCenter) {
                     map.autoCenter = false;
-                    bubble.message = "Auto-center off";
+                    bubble.text = "Auto-center off";
                 } else {
                     map.autoCenter = true;
-                    bubble.message = "Auto-center on";
+                    bubble.text = "Auto-center on";
                     map.centerOnPosition();
                 }
                 bubble.visible = true;

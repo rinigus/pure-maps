@@ -19,83 +19,65 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Item {
+Rectangle {
     id: bubble
     anchors.bottom: anchorItem.top
-    anchors.horizontalCenter: anchorItem.horizontalCenter
-    state: "center"
-    states: [
-        State {
-            name: "center"
-            AnchorChanges {
-                target: content
-                anchors.horizontalCenter: bubble.horizontalCenter
-            }
-        },
-        State {
-            name: "left"
-            AnchorChanges {
-                target: content
-                anchors.right: bubble.horizontalCenter
-            }
-        },
-        State {
-            name: "right"
-            AnchorChanges {
-                target: content
-                anchors.left: bubble.horizontalCenter
-            }
-        }
-    ]
-    property var  anchorItem: undefined
-    property real buttonBlockHeight: 0
-    property real buttonBlockWidth: 0
-    property var  content: content
-    property string message: ""
-    property real paddingX: 0.75*Theme.paddingLarge
-    property real paddingY: 0.50*Theme.paddingLarge
+    anchors.bottomMargin: arrow.height + Theme.paddingSmall
+    anchors.horizontalCenter: position === "center" ? anchorItem.horizontalCenter : undefined
+    anchors.left: position === "right" ? anchorItem.horizontalCenter : undefined
+    anchors.right: position === "left" ? anchorItem.horizontalCenter : undefined
+    color: "#d0000000"
+    height: controls.height + label.height +
+        (controlHeight > 0 ? 3 : 2) * Theme.paddingMedium
+    radius: 2*Theme.paddingSmall
+    width: label.width + 2*Theme.paddingMedium
+    property var anchorItem: undefined
+    property real controlHeight: 0
+    property real controlWidth: 0
+    property string position: "center"
+    property string text: ""
     property bool showArrow: true
     signal clicked()
-    Rectangle {
-        id: content
-        anchors.bottom: bubble.bottom
-        anchors.bottomMargin: bubble.showArrow ? 18 : 6
-        color: "#d0000000"
-        height: label.height + 2*bubble.paddingY + bubble.buttonBlockHeight +
-            (bubble.buttonBlockHeight > 0) * 2*bubble.paddingY
-        radius: Theme.paddingSmall/2
-        visible: bubble.visible
-        width: label.width + 2*bubble.paddingX
-    }
-    Label {
-        id: label
-        anchors.left: content.left
-        anchors.leftMargin: bubble.paddingX
-        anchors.top: content.top
-        anchors.topMargin: bubble.paddingY
-        color: "white"
-        font.family: Theme.fontFamily
-        font.pixelSize: Theme.fontSizeSmall
-        text: bubble.message
-        textFormat: Text.RichText
-        visible: bubble.visible
-        width: Math.max(Math.min(
-            0.65*Math.min(app.screenWidth, app.screenHeight),
-            implicitWidth), bubble.buttonBlockWidth)
-        wrapMode: Text.WordWrap
-    }
-    MouseArea {
-        anchors.fill: label
-        onClicked: bubble.clicked();
-    }
     Image {
         id: arrow
-        anchors.horizontalCenter: content.horizontalCenter
-        anchors.top: content.bottom
+        anchors.horizontalCenter: bubble.horizontalCenter
+        anchors.top: bubble.bottom
         // Try to avoid a stripe between bubble and arrow.
         anchors.topMargin: -0.5
         smooth: false
         source: app.getIcon("icons/bubble-arrow")
         visible: bubble.visible && bubble.showArrow
+    }
+    Rectangle {
+        id: controls
+        anchors.bottom: bubble.bottom
+        anchors.bottomMargin: Theme.paddingMedium
+        anchors.left: bubble.left
+        anchors.leftMargin: Theme.paddingMedium
+        anchors.right: bubble.right
+        anchors.rightMargin: Theme.paddingMedium
+        color: "#00000000"
+        height: bubble.controlHeight
+    }
+    Label {
+        id: label
+        anchors.bottom: controls.top
+        anchors.bottomMargin: bubble.controlHeight > 0 ? Theme.paddingMedium : 0
+        anchors.horizontalCenter: bubble.horizontalCenter
+        color: "white"
+        font.family: Theme.fontFamily
+        font.pixelSize: Theme.fontSizeSmall
+        text: bubble.text
+        textFormat: Text.RichText
+        visible: bubble.visible
+        width: Math.max(Math.min(
+            0.65*app.screenWidth,
+            0.65*app.screenHeight,
+            implicitWidth), bubble.controlWidth)
+        wrapMode: Text.WordWrap
+    }
+    MouseArea {
+        anchors.fill: label
+        onClicked: bubble.clicked();
     }
 }
