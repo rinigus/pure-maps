@@ -28,12 +28,16 @@ Rectangle {
     anchors.right: position === "left" ? anchorItem.horizontalCenter : undefined
     color: "#d0000000"
     height: controls.height + label.height +
-        (controlHeight > 0 ? 3 : 2) * Theme.paddingMedium
+        (controlHeight > 0 ? 3 : 2) * padding
     radius: 2*Theme.paddingSmall
-    width: label.width + 2*Theme.paddingMedium
+    width: Math.max(Math.min(
+        0.65*app.screenWidth,
+        0.65*app.screenHeight,
+        label.implicitWidth), bubble.controlWidth) + 2*padding
     property var anchorItem: undefined
     property real controlHeight: 0
     property real controlWidth: 0
+    property real padding: 1.5*Theme.paddingMedium
     property string position: "center"
     property string text: ""
     property bool showArrow: true
@@ -51,33 +55,33 @@ Rectangle {
     Rectangle {
         id: controls
         anchors.bottom: bubble.bottom
-        anchors.bottomMargin: Theme.paddingMedium
+        anchors.bottomMargin: bubble.padding
         anchors.left: bubble.left
-        anchors.leftMargin: Theme.paddingMedium
+        anchors.leftMargin: bubble.padding
         anchors.right: bubble.right
-        anchors.rightMargin: Theme.paddingMedium
+        anchors.rightMargin: bubble.padding
         color: "#00000000"
         height: bubble.controlHeight
     }
     Label {
         id: label
         anchors.bottom: controls.top
-        anchors.bottomMargin: bubble.controlHeight > 0 ? Theme.paddingMedium : 0
-        anchors.horizontalCenter: bubble.horizontalCenter
+        anchors.bottomMargin: bubble.controlHeight > 0 ? bubble.padding : 0
+        anchors.left: bubble.left
+        anchors.leftMargin: bubble.padding
+        anchors.right: bubble.right
+        anchors.rightMargin: bubble.padding
         color: "white"
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeSmall
         text: bubble.text
         textFormat: Text.RichText
         visible: bubble.visible
-        width: Math.max(Math.min(
-            0.65*app.screenWidth,
-            0.65*app.screenHeight,
-            implicitWidth), bubble.controlWidth)
         wrapMode: Text.WordWrap
     }
     MouseArea {
         anchors.fill: label
         onClicked: bubble.clicked();
     }
+    onWidthChanged: label.doLayout();
 }

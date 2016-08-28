@@ -53,9 +53,9 @@ MapQuickItem {
             BubbleButton {
                 id: routeButton
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: Theme.paddingMedium
+                anchors.bottomMargin: bubble.padding
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingMedium
+                anchors.leftMargin: bubble.padding
                 text: "Navigate"
                 onClicked: {
                     var x = marker.coordinate.longitude;
@@ -69,7 +69,7 @@ MapQuickItem {
             BubbleButton {
                 id: nearbyButton
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: Theme.paddingMedium
+                anchors.bottomMargin: bubble.padding
                 anchors.left: routeButton.right
                 anchors.leftMargin: Theme.paddingMedium
                 text: "Nearby"
@@ -85,7 +85,7 @@ MapQuickItem {
             BubbleButton {
                 id: shareButton
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: Theme.paddingMedium
+                anchors.bottomMargin: bubble.padding
                 anchors.left: nearbyButton.right
                 anchors.leftMargin: Theme.paddingMedium
                 text: "Share"
@@ -101,9 +101,9 @@ MapQuickItem {
             BubbleButton {
                 id: webButton
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: Theme.paddingMedium
+                anchors.bottomMargin: bubble.padding
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingMedium
+                anchors.rightMargin: bubble.padding
                 text: "Web"
                 useHighlight: true
                 visible: marker.link.length > 0
