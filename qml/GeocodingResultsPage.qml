@@ -62,12 +62,13 @@ Page {
             }
             onClicked: {
                 app.hideMenu();
-                map.addPois([{"x": model.x,
-                              "y": model.y,
-                              "title": model.title,
-                              "text": model.text || model.title,
-                              "link": model.link || ""}]);
-
+                map.addPois([{
+                    "x": model.x,
+                    "y": model.y,
+                    "title": model.title,
+                    "text": model.text || model.title,
+                    "link": model.link || ""
+                }]);
                 map.hidePoiBubbles();
                 map.pois[map.pois.length-1].bubbleVisible = true;
                 map.autoCenter = false;

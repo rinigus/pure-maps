@@ -65,9 +65,9 @@ def init_icons():
     # OSRM's maneuver types and modifiers match Mapbox directions
     # icons, which are included under qml/icons/navigation.
     directory = os.path.join(poor.DATA_DIR, "qml", "icons", "navigation")
-    icons = glob.glob("{}/*-large@1.00.png".format(directory))
+    icons = glob.glob("{}/*.svg".format(directory))
     icons = list(map(os.path.basename, icons))
-    icons = [x.replace("-large@1.00.png", "") for x in icons]
+    icons = [x.replace(".svg", "") for x in icons]
     ICONS.extend(icons)
 
 def get_maneuver_components(maneuver):
@@ -100,9 +100,12 @@ def parse_narrative(maneuver, street):
     exit = re.sub(r"1$", "1st", exit)
     exit = re.sub(r"2$", "2nd", exit)
     exit = re.sub(r"3$", "3rd", exit)
-    exit = re.sub(r"3$", "3rd", exit)
     exit = re.sub(r"4$", "4th", exit)
     exit = re.sub(r"5$", "5th", exit)
+    exit = re.sub(r"6$", "6th", exit)
+    exit = re.sub(r"7$", "7th", exit)
+    exit = re.sub(r"8$", "8th", exit)
+    exit = re.sub(r"9$", "9th", exit)
     narrative = parse_narrative_raw(maneuver)
     narrative = narrative.format(**locals())
     # Clean up narrative since modifier or street might be blank.
