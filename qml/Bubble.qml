@@ -31,9 +31,10 @@ Rectangle {
         (controlHeight > 0 ? 3 : 2) * padding
     radius: 2*Theme.paddingSmall
     width: Math.max(Math.min(
+        label.implicitWidth,
         0.65*app.screenWidth,
         0.65*app.screenHeight,
-        label.implicitWidth), bubble.controlWidth) + 2*padding
+        500*Theme.pixelRatio), bubble.controlWidth) + 2*padding
     property var anchorItem: undefined
     property real controlHeight: 0
     property real controlWidth: 0
