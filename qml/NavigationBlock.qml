@@ -89,8 +89,10 @@ Rectangle {
         opacity: 0.9
         smooth: true
         source: "icons/navigation/%1.svg".arg(block.icon || "flag")
-        sourceSize.height: Theme.iconSizeLarge
-        sourceSize.width: Theme.iconSizeLarge
+        sourceSize.height: Screen.sizeCategory >= Screen.Large ?
+            1.7*Theme.iconSizeLarge : Theme.iconSizeLarge
+        sourceSize.width: Screen.sizeCategory >= Screen.Large ?
+            1.7*Theme.iconSizeLarge : Theme.iconSizeLarge
         width: block.notify ? sourceSize.width : 0
     }
     MouseArea {
