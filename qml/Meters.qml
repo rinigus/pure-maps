@@ -70,6 +70,7 @@ Item {
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy*3.28084, 2);
             values.text = lines.join("\n");
+            values.doLayout();
         } else if (app.conf.get("units") == "british") {
             labels.text = " mph\n yd"
             var lines = ["—", "—"];
@@ -78,6 +79,7 @@ Item {
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy*1.09361, 2);
             values.text = lines.join("\n");
+            values.doLayout();
         } else {
             labels.text = " km/h\n m"
             var lines = ["—", "—"];
@@ -86,6 +88,7 @@ Item {
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy, 2);
             values.text = lines.join("\n");
+            values.doLayout();
         }
     }
 }
