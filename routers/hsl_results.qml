@@ -35,7 +35,7 @@ Page {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: Theme.paddingLarge*2 + titleLabel.height + finalLabel.height
+            contentHeight: Theme.paddingLarge*2 + titleLabel.height + bar.height + finalLabel.height
             property var result: page.results[model.alternative-1]
             Label {
                 id: titleLabel
@@ -51,9 +51,20 @@ Page {
                         Math.round(listItem.result.duration))
                 verticalAlignment: Text.AlignVCenter
             }
+            Rectangle {
+                id: bar
+                anchors.left: parent.left
+                anchors.leftMargin: Theme.horizontalPageMargin
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.top: titleLabel.bottom
+                color: "#00000000"
+                height: 0.7*Theme.itemSizeSmall
+            }
             Repeater {
                 id: repeater
-                anchors.top: titleLabel.bottom
+                anchors.top: bar.bottom
+                anchors.topMargin: Theme.paddingSmall
                 height: 0
                 model: listItem.result.legs.length
                 width: parent.width
@@ -63,24 +74,32 @@ Page {
                     width: parent.width
                     property var leg: listItem.result.legs[index]
                     Rectangle {
-                        id: bar
+                        id: barChunk
                         color: leg.color
-                        height: row.height
-                        opacity: 0.6
-                        width: leg.duration/listItem.result.duration * parent.width
-                        x: (leg.dep_unix - listItem.result.legs[0].dep_unix) /
-                            listItem.result.duration * parent.width
-                        y: repeater.y + index * row.height
+                        height: bar.height
+                        opacity: leg.mode === "walk" ? 0.7 : 0.85
+                        width: leg.duration/listItem.result.duration * bar.width - 3*Theme.pixelRatio
+                        x: bar.x + (leg.dep_unix - listItem.result.legs[0].dep_unix) /
+                            listItem.result.duration * bar.width + 3*Theme.pixelRatio
+                        y: bar.y
+                    }
+                    Label {
+                        id: barChunkLabel
+                        height: barChunk.height
+                        text: leg.line
+                        verticalAlignment: Text.AlignVCenter
+                        x: barChunk.x + Theme.paddingMedium
+                        y: barChunk.y
                     }
                     Label {
                         id: timeLabel
-                        anchors.top: bar.top
                         height: implicitHeight + Theme.paddingSmall
                         horizontalAlignment: Text.AlignRight
                         text: leg.dep_time
                         verticalAlignment: Text.AlignVCenter
                         width: page.timeWidth
                         x: parent.x + Theme.horizontalPageMargin
+                        y: repeater.y + index * row.height
                         Component.onCompleted: {
                             if (timeLabel.implicitWidth > page.timeWidth)
                                 page.timeWidth = timeLabel.implicitWidth;
@@ -88,13 +107,13 @@ Page {
                     }
                     Label {
                         id: lineLabel
-                        anchors.top: bar.top
                         height: implicitHeight + Theme.paddingSmall
                         horizontalAlignment: Text.AlignRight
                         text: leg.line
                         verticalAlignment: Text.AlignVCenter
                         width: page.lineWidth
                         x: timeLabel.x + page.timeWidth + Theme.paddingMedium
+                        y: repeater.y + index * row.height
                         Component.onCompleted: {
                             if (lineLabel.implicitWidth > page.lineWidth)
                                 page.lineWidth = lineLabel.implicitWidth;
@@ -102,14 +121,15 @@ Page {
                     }
                     Label {
                         id: nameLabel
-                        anchors.top: bar.top
                         height: implicitHeight + Theme.paddingSmall
                         text: leg.mode === "walk" ?
                             "Walk %1".arg(page.formatLength(leg.length)) :
                             "%1 → %2".arg(leg.dep_name).arg(leg.arr_name)
                         truncationMode: TruncationMode.Fade
                         verticalAlignment: Text.AlignVCenter
+                        width: parent.width - x - Theme.horizontalPageMargin
                         x: lineLabel.x + page.lineWidth + Theme.paddingMedium
+                        y: repeater.y + index * row.height
                     }
                     Component.onCompleted: {
                         repeater.height += row.height;
