@@ -116,8 +116,12 @@ def parse_line(code):
     """Parse human readable line number from line code."""
     # Journey Planner returns 7-character JORE-codes.
     if not code: return ""
+    if code.startswith("31M"):
+        # Metro. Use V and M instead of 1 and 2.
+        lines = {"1": "V", "2": "M"}
+        return lines.get(code[3], code[3])
     if code.startswith(("13", "3")):
-        # Metro and trains.
+        # Metro (?) and trains.
         return code[4]
     # Buses and trams.
     line = code[1:5].strip()
