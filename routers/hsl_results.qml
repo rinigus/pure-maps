@@ -35,7 +35,8 @@ Page {
         anchors.fill: parent
         delegate: ListItem {
             id: listItem
-            contentHeight: Theme.paddingLarge*2 + titleLabel.height + bar.height + finalLabel.height
+            contentHeight: titleLabel.height + Theme.paddingMedium + bar.height +
+                Theme.paddingMedium + repeater.height + finalLabel.height + Theme.paddingMedium
             property var result: page.results[model.alternative-1]
             Label {
                 id: titleLabel
@@ -45,26 +46,27 @@ Page {
                 anchors.rightMargin: Theme.horizontalPageMargin
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingLarge
+                height: implicitHeight + Theme.paddingMedium
                 text: "Route %1. total %2 min".arg(
                     listItem.result.alternative).arg(
                         Math.round(listItem.result.duration))
-                verticalAlignment: Text.AlignVCenter
+                verticalAlignment: Text.AlignBottom
             }
             Rectangle {
                 id: bar
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin
+                anchors.leftMargin: Theme.horizontalPageMargin - 3*Theme.pixelRatio
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.rightMargin: Theme.horizontalPageMargin - 3*Theme.pixelRatio
                 anchors.top: titleLabel.bottom
+                anchors.topMargin: Theme.paddingMedium
                 color: "#00000000"
-                height: 0.7*Theme.itemSizeSmall
+                height: 0.65*Theme.itemSizeSmall
             }
             Repeater {
                 id: repeater
                 anchors.top: bar.bottom
-                anchors.topMargin: Theme.paddingSmall
+                anchors.topMargin: Theme.paddingMedium
                 height: 0
                 model: listItem.result.legs.length
                 width: parent.width
@@ -133,7 +135,6 @@ Page {
                     }
                     Component.onCompleted: {
                         repeater.height += row.height;
-                        listItem.contentHeight += row.height;
                     }
                 }
             }

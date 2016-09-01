@@ -15,6 +15,7 @@ Poor Maps 0.25
       [Photon](http://photon.komoot.de/) geocoders and make OpenCage the default
 * [x] Use the latest version of the OSRM router API
 * [x] Make Mapzen Turn-by-Turn the default router
+* [x] New layout for HSL Journey Planner results page
 * [x] Handle initial centering and zoom level better on first startup
       if positioning data not available
 * [x] Raise API connection timeout to 15 seconds
