@@ -97,6 +97,16 @@ def calculate_segment_distance(x, y, x1, y1, x2, y2):
     seg_dist_deg = math.sqrt(poor.polysimp.get_sq_seg_dist(x, y, x1, y1, x2, y2))
     return seg_dist_deg * (med_dist_m / med_dist_deg)
 
+@functools.lru_cache(None)
+def cpu_count():
+    """Return the number of CPUs in the system."""
+    # os.cpu_count doesn't return the true count.
+    # http://stackoverflow.com/q/30119604
+    count = len(glob.glob("/sys/devices/system/cpu/cpu[0123456789]*"))
+    if count > 0: return count
+    print("Failed to detect CPU count", file=sys.stderr)
+    return max(2, os.cpu_count())
+
 def decode_epl(string, precision=5):
     """
     Decode Google Encoded polyline string representation.

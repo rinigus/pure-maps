@@ -73,6 +73,12 @@ class TileSource:
         self.url = values["url"]
         self.z = max(0, min(40, values.get("z", 0)))
         self._init_provider(values["format"])
+        if RE_LOCALHOST.search(self.url):
+            # A tile server running on localhost is likely to be rendering
+            # tiles from vector data and likely to be CPU-bound. Have the
+            # download thread count equal the CPU core count to make full use
+            # of processors in rendering.
+            self._pool = poor.http.ConnectionPool(poor.util.cpu_count())
 
     @poor.util.locked_method
     def _add_to_blacklist(self, url):
