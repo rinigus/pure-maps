@@ -1,0 +1,9 @@
+{
+    "attribution": "Data OpenStreetMap contributors",
+    "extension": ".png",
+    "format": "slippy",
+    "name": "OSM scout day larger tiles @1x",
+    "scale": 2,
+    "source": "osmscout",
+    "url": "http://localhost:8553/v1/tile?daylight=1&shift=1&scale=2&z={z}&x={x}&y={y}"
+}

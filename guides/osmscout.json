@@ -1,0 +1,6 @@
+{
+    "attribution": "Data OpenStreetMap",
+    "description": "Points of interest from OpenStreetMap data",
+    "name": "OSMScout",
+    "source": "libosmscout.sourceforge.net"
+}
