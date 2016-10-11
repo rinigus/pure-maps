@@ -68,7 +68,7 @@ def nearby(query, near, radius, params):
 
     if results and results[0]:
         results = poor.util.sorted_by_distance(results, x, y)
-        cache[url] = copy.deepcopy(results)
+        cache[url] = copy.deepcopy((x,y,results))
 
     return x, y, results
 
