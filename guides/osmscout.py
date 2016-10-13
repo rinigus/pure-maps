@@ -1,4 +1,6 @@
-# Copyright (C) 2016 rinigus 
+# -*- coding: utf-8 -*-
+
+# Copyright (C) 2016 rinigus
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,30 +16,27 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Geocoding using OSMScout Server Geocoder.
+Geocoding using OSM Scout Server Geocoder.
 
 https://github.com/rinigus/osmscout-server
 """
 
 import copy
 import poor
-import re
 import urllib.parse
 
-URLs = ("http://localhost:8553/v1/guide?"
-        "limit={limit}&"
-        "poitype={query}&"
-        "radius={radius}&"
-        "search={search}"        
-)
+URL_SEARCH = ("http://localhost:8553/v1/guide"
+              "?limit={limit}"
+              "&poitype={query}"
+              "&radius={radius}"
+              "&search={search}")
 
-URLxy = ("http://localhost:8553/v1/guide?"
-        "limit={limit}&"
-        "poitype={query}&"
-        "radius={radius}&"
-         "lng={x}&"
-         "lat={y}"
-)
+URL_XY = ("http://localhost:8553/v1/guide"
+          "?limit={limit}"
+          "&poitype={query}"
+          "&radius={radius}"
+          "&lng={x}"
+          "&lat={y}")
 
 cache = {}
 
@@ -45,21 +44,17 @@ def nearby(query, near, radius, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 50)
-
     if isinstance(near, (list, tuple)):
         x, y = near[0], near[1]
-        url = URLxy.format(**locals())
+        url = URL_XY.format(**locals())
     else:
         search = urllib.parse.quote_plus(near)
-        url = URLs.format(**locals())
-        
+        url = URL_SEARCH.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-
-    print(url)
     results = poor.http.request_json(url)
-
-    x, y = results["origin"]["lng"], results["origin"]["lat"]
+    x = float(results["origin"]["lng"])
+    y = float(results["origin"]["lat"])
     results = [dict(title=result["title"],
                     description=parse_description(result),
                     x=float(result["lng"]),
@@ -68,14 +63,17 @@ def nearby(query, near, radius, params):
 
     if results and results[0]:
         results = poor.util.sorted_by_distance(results, x, y)
-        cache[url] = copy.deepcopy((x,y,results))
-
+        cache[url] = copy.deepcopy((x, y, results))
     return x, y, results
 
 def parse_description(result):
     """Parse description from geocoding result."""
-    description = ""
-    for i in ["type", "admin_region", "object_id"]:
-        if i in result:
-            description += result[i] + "; "
-    return description.strip()
+    items = []
+    with poor.util.silent(Exception):
+        type = result["type"]
+        type = type.replace("amenity", "")
+        type = type.replace("_", " ").strip()
+        items.append(type.capitalize())
+    with poor.util.silent(Exception):
+        items.append(result["admin_region"])
+    return ", ".join(items)

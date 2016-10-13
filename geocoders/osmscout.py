@@ -1,4 +1,6 @@
-# Copyright (C) 2016 rinigus 
+# -*- coding: utf-8 -*-
+
+# Copyright (C) 2016 rinigus
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,20 +16,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Geocoding using OSMScout Server Geocoder.
+Geocoding using OSM Scout Server Geocoder.
 
 https://github.com/rinigus/osmscout-server
 """
 
 import copy
 import poor
-import re
 import urllib.parse
 
-URL = ("http://localhost:8553/v1/search?"
-       "limit={limit}&"
-       "search={query}" )
-
+URL = "http://localhost:8553/v1/search?limit={limit}&search={query}"
 cache = {}
 
 def geocode(query, params):
@@ -39,7 +37,7 @@ def geocode(query, params):
         return copy.deepcopy(cache[url])
     results = poor.http.request_json(url)
     results = [dict(title=result["title"],
-                    description=parse_description(result),
+                    description=result["admin_region"],
                     x=float(result["lng"]),
                     y=float(result["lat"]),
                     ) for result in results]
@@ -47,12 +45,3 @@ def geocode(query, params):
     if results and results[0]:
         cache[url] = copy.deepcopy(results)
     return results
-
-def parse_description(result):
-    """Parse description from geocoding result."""
-    description = ""
-    for i in ["type", "admin_region", "object_id"]:
-        if i in result:
-            description += result[i] + "; "
-    return description.strip()
-
