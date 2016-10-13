@@ -3,5 +3,5 @@
     "description": "Geocoding based on OpenStreetMap data",
     "name": "OSM Scout",
     "requires": ["harbour-osmscout-server"],
-    "source": "libosmscout.sourceforge.net"
+    "source": "OSM Scout offline server"
 }

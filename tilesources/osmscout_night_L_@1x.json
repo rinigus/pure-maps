@@ -5,6 +5,6 @@
     "name": "OSM Scout night large @1x",
     "requires": ["harbour-osmscout-server"],
     "scale": 2,
-    "source": "libosmscout.sourceforge.net",
+    "source": "OSM Scout offline server",
     "url": "http://localhost:8553/v1/tile?daylight=0&shift=1&scale=2&z={z}&x={x}&y={y}"
 }
