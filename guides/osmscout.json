@@ -2,5 +2,6 @@
     "attribution": "Data OpenStreetMap",
     "description": "Points of interest from OpenStreetMap data",
     "name": "OSMScout",
+    "requires": ["harbour-osmscout-server"],
     "source": "libosmscout.sourceforge.net"
 }

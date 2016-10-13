@@ -2,5 +2,6 @@
     "attribution": "Data © OpenStreetMap",
     "description": "Geocoding based on open data sources",
     "name": "OSMScout",
+    "requires": ["harbour-osmscout-server"],
     "source": "libosmscout.sourceforge.net"
 }

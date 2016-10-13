@@ -3,6 +3,7 @@
     "extension": ".png",
     "format": "slippy",
     "name": "OSM scout night @1x",
+    "requires": ["harbour-osmscout-server"],
     "scale": 1,
     "source": "osmscout",
     "url": "http://localhost:8553/v1/tile?daylight=0&shift=0&scale=1&z={z}&x={x}&y={y}"
