@@ -2,9 +2,9 @@
     "attribution": "Data © OpenStreetMap contributors",
     "extension": ".png",
     "format": "slippy",
-    "name": "OSM scout night larger tiles @2x",
+    "name": "OSM Scout night large @2x",
     "requires": ["harbour-osmscout-server"],
     "scale": 4,
-    "source": "osmscout",
+    "source": "libosmscout.sourceforge.net",
     "url": "http://localhost:8553/v1/tile?daylight=0&shift=1&scale=4&z={z}&x={x}&y={y}"
 }
