@@ -8,10 +8,10 @@ details, reviews, ratings, etc. of those places.
 To implement a place guide you need to write a JSON metadata file, a
 Python file that implements the `nearby` function and possibly a QML
 file. The `nearby` function should given a string query, a point and a
-radius return a list of dictionaries of places, with each dictionary
-having keys `title`, `description`, `x` and `y`. The point to search
-near can be either a string (an address, a landmark, etc.) or a
-two-element tuple or list of (x, y) coordinates.
+radius return coordinates of the point and a list of dictionaries of
+places, with each dictionary having keys `title`, `description`, `x` and
+`y`. The point to search near can be either a string (an address, a
+landmark, etc.) or a two-element tuple or list of (x, y) coordinates.
 
 The QML settings file (`*_settings.qml`) is optional; it can be used to
 provide a column of guide-specific settings, which are shown in Poor's

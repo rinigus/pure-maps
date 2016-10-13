@@ -45,7 +45,7 @@ URL = ("https://api.foursquare.com/v2/venues/explore"
 cache = {}
 
 def nearby(query, near, radius, params):
-    """Return a list of dictionaries of places matching `query`."""
+    """Return X, Y and a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     sort_by_distance = str(int(poor.conf.guides.foursquare.sort_by_distance))
     x, y = prepare_point(near)

@@ -41,7 +41,7 @@ URL_XY = ("http://localhost:8553/v1/guide"
 cache = {}
 
 def nearby(query, near, radius, params):
-    """Return a list of dictionaries of places matching `query`."""
+    """Return X, Y and a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 50)
     if isinstance(near, (list, tuple)):
@@ -67,7 +67,7 @@ def nearby(query, near, radius, params):
     return x, y, results
 
 def parse_description(result):
-    """Parse description from geocoding result."""
+    """Parse description from search result."""
     items = []
     with poor.util.silent(Exception):
         type = result["type"]

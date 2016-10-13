@@ -54,7 +54,7 @@ def get_bbox(x, y, radius):
     return xmin, xmax, ymin, ymax
 
 def nearby(query, near, radius, params):
-    """Return a list of dictionaries of places matching `query`."""
+    """Return X, Y and a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     x, y = prepare_point(near)
     xmin, xmax, ymin, ymax = get_bbox(x, y, radius)
@@ -75,7 +75,7 @@ def nearby(query, near, radius, params):
     return x, y, results
 
 def parse_address(result):
-    """Parse address from geocoding result."""
+    """Parse address from search result."""
     address = result["address"]
     items = []
     # http://help.openstreetmap.org/questions/17072
@@ -86,7 +86,7 @@ def parse_address(result):
     return " ".join(items)
 
 def parse_city(result):
-    """Parse city from geocoding result."""
+    """Parse city from search result."""
     address = result["address"]
     items = []
     # http://wiki.openstreetmap.org/wiki/Key:place
@@ -97,7 +97,7 @@ def parse_city(result):
     return items
 
 def parse_description(result):
-    """Parse description from geocoding result."""
+    """Parse description from search result."""
     items = []
     with poor.util.silent(Exception):
         items.append(parse_address(result))
@@ -111,7 +111,7 @@ def parse_description(result):
     return ", ".join(items)
 
 def parse_title(result):
-    """Parse title from geocoding result."""
+    """Parse title from search result."""
     address = result["address"]
     with poor.util.silent(Exception):
         return address[result["type"]]
