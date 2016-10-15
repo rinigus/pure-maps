@@ -37,7 +37,7 @@ def geocode(query, params):
         return copy.deepcopy(cache[url])
     results = poor.http.request_json(url)
     results = [dict(title=result["title"],
-                    description=result["admin_region"],
+                    description=result.get("admin_region", "–"),
                     x=float(result["lng"]),
                     y=float(result["lat"]),
                     ) for result in results]
