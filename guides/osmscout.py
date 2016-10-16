@@ -76,4 +76,4 @@ def parse_description(result):
         items.append(type.capitalize())
     with poor.util.silent(Exception):
         items.append(result["admin_region"])
-    return ", ".join(items)
+    return ", ".join(items) or "–"
