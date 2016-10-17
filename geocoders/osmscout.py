@@ -47,7 +47,7 @@ def geocode(query, params):
     return results
 
 def parse_description(result):
-    """Parse description from search result."""
+    """Parse description from geocoding result."""
     items = []
     with poor.util.silent(Exception):
         type = result["type"]
