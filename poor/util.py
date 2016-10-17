@@ -286,7 +286,9 @@ def _get_providers(directory, *active):
                 provider = read_json(path)
                 provider["pid"] = pid
                 provider["active"] = pid in active
-                if not provider.get("hidden", False):
+                requires = provider.get("requires", [])
+                if (not provider.get("hidden", False) and
+                    all(requirement_found(x) for x in requires)):
                     providers.append(provider)
     providers.sort(key=lambda x: x["name"])
     return providers
@@ -345,6 +347,18 @@ def read_json(path):
               .format(repr(path), str(error)),
               file=sys.stderr)
         raise # Exception
+
+def requirement_found(name):
+    """
+    Return ``True`` if `name` can be found on the system.
+
+    `name` can be either a command, in which case it needs to be found in $PATH
+    and it needs to be executable, or it can be a full absolute path to a file
+    or a directory, in which case it needs to exist.
+    """
+    if os.path.isabs(name):
+        return os.path.exists(name)
+    return shutil.which(name) is not None
 
 @contextlib.contextmanager
 def silent(*exceptions, tb=False):

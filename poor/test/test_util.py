@@ -73,3 +73,9 @@ class TestModule(poor.test.TestCase):
     def test_format_distance_metric(self):
         assert poor.util.format_distance_metric(123, 2) == "120 m"
         assert poor.util.format_distance_metric(1234, 1) == "1 km"
+
+    def test_requirement_found(self):
+        assert poor.util.requirement_found("sh")
+        assert poor.util.requirement_found("/bin/sh")
+        assert not poor.util.requirement_found("fgbklp")
+        assert not poor.util.requirement_found("/bin/fgbklp")
