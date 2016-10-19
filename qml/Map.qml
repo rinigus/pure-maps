@@ -143,8 +143,20 @@ Map {
             // otherwise actually relative positions inside the map component,
             // which can differ from the screen when using auto-rotation.
             var pos = map.toScreenPosition(map.position.coordinate);
-            if (!pos.x || Math.abs(pos.x - map.width/2)  > app.screenWidth/6 ||
-                !pos.y || Math.abs(pos.y - map.height/2) > app.screenHeight/6)
+            var cx = map.width / 2, cy = map.height / 2;
+            if (app.navigationBlock.height > 0) {
+                // If the navigation block covers the top part of the screen,
+                // center the position to the part of the map remaining visible.
+                cy += app.navigationBlock.height / 2;
+                if (map.autoRotate)
+                    // If auto-rotate is on, the user is always heading up
+                    // on the screen and should see more ahead than behind.
+                    cy += 0.1 * (app.screenHeight - app.navigationBlock.height);
+            }
+            var dx = app.screenWidth / 6;
+            var dy = (app.screenHeight - app.navigationBlock.height) / 6;
+            if (!pos.x || Math.abs(pos.x - cx) > dx ||
+                !pos.y || Math.abs(pos.y - cy) > dy)
                 map.centerOnPosition();
         }
     }
@@ -235,8 +247,21 @@ Map {
 
     function centerOnPosition() {
         // Center map on the current position.
+        var yshift = 0;
+        if (app.navigationBlock.height > 0) {
+            // If the navigation block covers the top part of the screen,
+            // center the position to the part of the map remaining visible.
+            var dy = app.navigationBlock.height / 2;
+            if (map.autoRotate)
+                // If auto-rotate is on, the user is always heading up
+                // on the screen and should see more ahead than behind.
+                dy += 0.1 * (app.screenHeight - app.navigationBlock.height);
+            var y0 = map.toCoordinate(Qt.point(map.width/2, map.height/2));
+            var y1 = map.toCoordinate(Qt.point(map.width/2, map.height/2 + dy));
+            yshift = y1.latitude - y0.latitude;
+        }
         map.setCenter(map.position.coordinate.longitude,
-                      map.position.coordinate.latitude);
+                      map.position.coordinate.latitude - yshift);
 
     }
 

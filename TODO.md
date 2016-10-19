@@ -2,10 +2,14 @@ Poor Maps 0.26
 ==============
 
 * [x] Add [OSM Scout Server][0.26a] offline tiles, geocoder and nearby
-      search -- listed in Poor Maps if you have OSM Scout Server
-      installed and they will only work if the server is running and you
-      have OpenStreetMap data available for the server (rinigus)
+      search – only listed in Poor Maps if you have OSM Scout Server
+      installed and will only work if the server is running and you
+      have made OpenStreetMap data available for the server (rinigus)
 * [x] Increase download thread count to match CPU core count for
       localhost (offline) tile servers
+* [x] When navigating, make centering and auto-centering on position
+      center the position on the part of the map visible below the
+      navigation narrative, and further, if auto-rotate is on, center
+      slightly lower so that more map is shown ahead than behind (#14)
 
 [0.26a]: https://openrepos.net/content/rinigus/osm-scout-server
