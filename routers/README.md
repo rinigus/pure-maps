@@ -46,7 +46,10 @@ addresses, but requires coordinates, consider geocoding using
 Poor for examples.
 
 Use `~/.local/share/harbour-poor-maps/routers` as a local installation
-directory in which to place your files. Restart Poor, and your router
+directory in which to place your files. Since routers require QML
+files and include `"../qml"` in their source, add a symbolic link at
+`~/.local/share/harbour-poor-maps/qml` pointing to
+`/usr/share/harbour-poor-maps/qml`. Restart Poor, and your router
 should be loaded, listed and available for use. During development,
 consider keeping your files under the Poor Maps source tree and using
 the Python interpreter or a test script, e.g.
