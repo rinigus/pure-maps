@@ -48,6 +48,7 @@ Dialog {
                     text: "Remove"
                     onClicked: {
                         py.call_sync("poor.app.history.remove_place_type", [model.type]);
+                        dialog.history = py.evaluate("poor.app.history.place_types");
                         listView.model.remove(index);
                     }
                 }

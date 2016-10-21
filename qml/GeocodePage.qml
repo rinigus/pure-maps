@@ -48,6 +48,7 @@ Page {
                     text: "Remove"
                     onClicked: {
                         py.call_sync("poor.app.history.remove_place", [model.place]);
+                        page.history = py.evaluate("poor.app.history.places");
                         listView.model.remove(index);
                     }
                 }

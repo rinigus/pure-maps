@@ -11,5 +11,7 @@ Poor Maps 0.26
       center the position on the part of the map visible below the
       navigation narrative, and further, if auto-rotate is on, center
       slightly lower so that more map is shown ahead than behind (#14)
+* [x] Fix removing an item from search history to not show the removed
+      item in the UI after refiltering
 
 [0.26a]: https://openrepos.net/content/rinigus/osm-scout-server
