@@ -21,6 +21,8 @@ import QtLocation 5.0
 import QtPositioning 5.3
 import "."
 
+import "js/util.js" as Util
+
 Map {
     id: map
     anchors.centerIn: parent
@@ -147,16 +149,19 @@ Map {
             if (app.navigationBlock.height > 0) {
                 // If the navigation block covers the top part of the screen,
                 // center the position to the part of the map remaining visible.
-                cy += app.navigationBlock.height / 2;
+                var shift = app.navigationBlock.height / 2;
                 if (map.autoRotate)
                     // If auto-rotate is on, the user is always heading up
                     // on the screen and should see more ahead than behind.
-                    cy += 0.1 * (app.screenHeight - app.navigationBlock.height);
+                    shift += 0.1 * (app.screenHeight - app.navigationBlock.height);
+                // https://en.wikipedia.org/wiki/Azimuth#Cartographical_azimuth
+                cx += shift * Math.sin(Util.deg2rad(map.rotation));
+                cy += shift * Math.cos(Util.deg2rad(map.rotation));
             }
-            var dx = app.screenWidth / 6;
-            var dy = (app.screenHeight - app.navigationBlock.height) / 6;
-            if (!pos.x || Math.abs(pos.x - cx) > dx ||
-                !pos.y || Math.abs(pos.y - cy) > dy)
+            var height = app.screenHeight - app.navigationBlock.height;
+            var threshold = Math.min(app.screenWidth, height) / 5;
+            if (!pos.x || Math.abs(pos.x - cx) > threshold ||
+                !pos.y || Math.abs(pos.y - cy) > threshold)
                 map.centerOnPosition();
         }
     }
@@ -247,7 +252,6 @@ Map {
 
     function centerOnPosition() {
         // Center map on the current position.
-        var yshift = 0;
         if (app.navigationBlock.height > 0) {
             // If the navigation block covers the top part of the screen,
             // center the position to the part of the map remaining visible.
@@ -256,13 +260,16 @@ Map {
                 // If auto-rotate is on, the user is always heading up
                 // on the screen and should see more ahead than behind.
                 dy += 0.1 * (app.screenHeight - app.navigationBlock.height);
-            var y0 = map.toCoordinate(Qt.point(map.width/2, map.height/2));
-            var y1 = map.toCoordinate(Qt.point(map.width/2, map.height/2 + dy));
-            yshift = y1.latitude - y0.latitude;
-        }
-        map.setCenter(map.position.coordinate.longitude,
-                      map.position.coordinate.latitude - yshift);
+            var p0 = map.toCoordinate(Qt.point(map.width/2, map.height/2));
+            var p1 = map.toCoordinate(Qt.point(map.width/2, map.height/2 + dy));
+            var coord = map.position.coordinate.atDistanceAndAzimuth(
+                p0.distanceTo(p1), -map.rotation);
+            map.setCenter(coord.longitude, coord.latitude);
+        } else {
+            map.setCenter(map.position.coordinate.longitude,
+                          map.position.coordinate.latitude);
 
+        }
     }
 
     function clear() {
