@@ -11,6 +11,9 @@ Poor Maps 0.26
       center the position on the part of the map visible below the
       navigation narrative, and further, if auto-rotate is on, center
       slightly lower so that more map is shown ahead than behind (#14)
+* [x] When navigating, auto-rotate to match the route polyline instead
+      of bearing calculated from GPS data, which should make the map
+      rotate faster after a turn (#13)
 * [x] Fix removing an item from search history to not show the removed
       item in the UI after refiltering
 

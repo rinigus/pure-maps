@@ -42,6 +42,7 @@ ApplicationWindow {
     property var  menuButton: null
     property var  narrativePageSeen: false
     property var  navigationBlock: null
+    property var  navigationDirection: null
     property var  northArrow: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
@@ -113,6 +114,7 @@ ApplicationWindow {
             app.navigationBlock.manDist   = status.man_dist  || "";
             app.navigationBlock.manTime   = status.man_time  || "";
             app.navigationBlock.narrative = status.narrative || "";
+            app.navigationDirection       = status.direction || null;
         } else {
             app.navigationBlock.destDist  = "";
             app.navigationBlock.destTime  = "";
@@ -120,6 +122,7 @@ ApplicationWindow {
             app.navigationBlock.manDist   = "";
             app.navigationBlock.manTime   = "";
             app.navigationBlock.narrative = "";
+            app.navigationDirection       = null;
         }
     }
 

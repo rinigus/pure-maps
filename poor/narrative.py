@@ -19,6 +19,7 @@
 
 import bisect
 import poor
+import statistics
 
 __all__ = ("Narrative",)
 
@@ -53,6 +54,16 @@ class Narrative:
         self.time = []
         self.x = []
         self.y = []
+
+    def _calculate_direction_ahead(self, node):
+        """Return direction of the segment from `node` ahead."""
+        return poor.util.calculate_bearing(
+            self.x[node], self.y[node], self.x[node+1], self.y[node+1])
+
+    def _calculate_length_ahead(self, node):
+        """Return length of the segment from `node` ahead."""
+        return poor.util.calculate_distance(
+            self.x[node], self.y[node], self.x[node+1], self.y[node+1])
 
     def _get_closest_maneuver_node(self, x, y, node):
         """Return index of the maneuver node closest to coordinates."""
@@ -116,6 +127,29 @@ class Narrative:
         dist_b = (x - self.x[b])**2 + (y - self.y[b])**2
         return (a if dist_a < dist_b else b)
 
+    def _get_direction(self, x, y, node):
+        """Return the direction of the route at `node`."""
+        if node > 0:
+            # The closest segment is right before or after the closest node.
+            dist = (x - self.x[node])**2 + (y - self.y[node])**2
+            dist_prev = (x - self.x[node-1])**2 + (y - self.y[node-1])**2
+            if dist_prev < dist: node -= 1
+        node = max(0, min(len(self.x) - 2, node))
+        # If the closest route segment is very short, it could be a lane change
+        # or something else unordinary, which we are unlikely to want to rotate
+        # over. Find segments to cover a minimum distance and take the median
+        # of their individual directions to dampen irrelevant variation.
+        length = self._calculate_length_ahead(node)
+        directions = [self._calculate_direction_ahead(node)]
+        r = 1
+        while length < 50 and node - r >= 0 and node + r < len(self.x):
+            directions.append(self._calculate_direction_ahead(node - r))
+            directions.append(self._calculate_direction_ahead(node + r))
+            length += self._calculate_length_ahead(node - r)
+            length += self._calculate_length_ahead(node + r)
+            r += 1
+        return statistics.median(directions)
+
     def _get_distance_from_route(self, x, y, node):
         """Return distance in meters from the route polyline."""
         return min(self._get_distances_from_route(x, y, node))
@@ -158,12 +192,15 @@ class Narrative:
             # Don't show the narrative or details calculated
             # from nodes along the route if far off route.
             dest_time = man_time = icon = narrative = None
+        # Don't provide route direction to auto-rotate by if off route.
+        direction = self._get_direction(x, y, node) if seg_dist < 50 else None
         return dict(dest_dist=dest_dist,
                     dest_time=dest_time,
                     man_dist=man_dist,
                     man_time=man_time,
                     icon=icon,
-                    narrative=narrative)
+                    narrative=narrative,
+                    direction=direction)
 
     def _get_display_destination(self, x, y, node, seg_dist):
         """Return destination details to display."""

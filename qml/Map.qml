@@ -37,7 +37,7 @@ Map {
     property bool autoRotate: false
     property bool centerFound: true
     property bool changed: true
-    property var  direction: gps.direction
+    property var  direction: app.navigationDirection || gps.direction
     property var  directionPrev: 0
     property bool hasRoute: false
     property real heightCoords: 0
@@ -120,7 +120,7 @@ Map {
         // Update map rotation to match direction.
         var direction = map.direction || 0;
         if (map.autoRotate && !map.gesture.isPanActive && !map.gesture.isPinchActive &&
-            Math.abs(direction - directionPrev) > 15) {
+            Math.abs(direction - directionPrev) > 10) {
             map.rotation = -direction;
             map.directionPrev = direction;
         }
