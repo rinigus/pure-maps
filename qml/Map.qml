@@ -244,10 +244,14 @@ Map {
 
     function beginNavigating() {
         // Set UI to navigation mode.
-        map.autoCenter = true;
-        map.autoRotate = true;
-        map.centerOnPosition();
         map.zoomLevel < 16 && map.setZoomLevel(16);
+        map.centerOnPosition();
+        // Wait for the centering animation to complete before turning
+        // on auto-rotate to avoid getting the trigonometry wrong.
+        py.call("poor.util.sleep", [0.5], function() {
+            map.autoCenter = true;
+            map.autoRotate = true;
+        });
     }
 
     function centerOnPosition() {

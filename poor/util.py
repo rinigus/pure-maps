@@ -29,6 +29,7 @@ import shutil
 import stat
 import subprocess
 import sys
+import time
 import traceback
 import urllib.parse
 
@@ -367,6 +368,11 @@ def silent(*exceptions, tb=False):
         yield
     except exceptions:
         if tb: traceback.print_exc()
+
+def sleep(seconds):
+    """Wait for the given amount of seconds."""
+    time.sleep(seconds)
+    return True
 
 def sorted_by_distance(items, x, y):
     """Return `items` sorted by distance from given coordinates."""
