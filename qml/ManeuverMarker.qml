@@ -24,7 +24,7 @@ MapQuickItem {
     anchorPoint.x: sourceItem.width/2
     anchorPoint.y: sourceItem.height/2
     sourceItem: Image {
-        smooth: false
+        smooth: true
         source: marker.passive ?
             app.getIcon("icons/node") :
             app.getIcon("icons/maneuver")

@@ -14,6 +14,7 @@ Poor Maps 0.26
 * [x] When navigating, auto-rotate to match the route polyline instead
       of bearing calculated from GPS data, which should make the map
       rotate faster after a turn (#13)
+* [x] Fix smoothing of maneuver node icons along the route polyline
 * [x] Fix removing an item from search history to not show the removed
       item in the UI after refiltering
 
