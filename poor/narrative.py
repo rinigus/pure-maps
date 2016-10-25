@@ -271,12 +271,15 @@ class Narrative:
             narrative = self.maneuver[man_node].narrative
         man_dist = poor.util.format_distance(man_dist)
         man_time = poor.util.format_time(man_time)
+        # Don't provide route direction to auto-rotate by if off route.
+        direction = self._get_direction(x, y, node) if seg_dist < 50 else None
         return dict(dest_dist=dest_dist,
                     dest_time=dest_time,
                     man_dist=man_dist,
                     man_time=man_time,
                     icon=icon,
-                    narrative=narrative)
+                    narrative=narrative,
+                    direction=direction)
 
     def get_maneuvers(self, x, y):
         """Return a list of dictionaries of maneuver details."""
