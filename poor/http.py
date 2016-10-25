@@ -21,12 +21,15 @@ import http.client
 import json
 import poor
 import queue
+import re
 import sys
 import threading
 import urllib.parse
 
 HEADERS = {"Connection": "Keep-Alive",
            "User-Agent": "poor-maps/{}".format(poor.__version__)}
+
+RE_LOCALHOST = re.compile(r"://(127.0.0.1|localhost)\b")
 
 
 class ConnectionPool:
@@ -36,6 +39,7 @@ class ConnectionPool:
     def __init__(self, threads):
         """Initialize a :class:`ConnectionPool` instance."""
         self._alive = True
+        self._all_connections = set()
         self._lock = threading.Lock()
         self._queue = {}
         self._threads = threads
@@ -83,7 +87,14 @@ class ConnectionPool:
             "http":  http.client.HTTPConnection,
             "https": http.client.HTTPSConnection,
         }[components.scheme]
-        return cls(components.netloc, timeout=15)
+        # Use a longer timeout for localhost connections where connection
+        # problems are unlikely, but inefficient software and hardware
+        # can make e.g. a routing query take a long time.
+        # https://github.com/otsaloma/poor-maps/issues/23
+        timeout = (15 if RE_LOCALHOST.search(url) else 600)
+        connection = cls(components.netloc, timeout=timeout)
+        self._all_connections.add(connection)
+        return connection
 
     def put(self, url, connection):
         """Return `connection` to the pool of connections."""
@@ -104,12 +115,9 @@ class ConnectionPool:
     def terminate(self):
         """Close all connections and terminate."""
         if not self._alive: return
-        for key in self._queue:
-            with poor.util.silent(queue.Empty):
-                while True:
-                    connection = self._queue[key].get(block=False)
-                    with poor.util.silent(Exception):
-                        connection.close()
+        for connection in self._all_connections:
+            with poor.util.silent(Exception):
+                connection.close()
         # Mark as dead so that subsequent operations fail.
         self._alive = False
 

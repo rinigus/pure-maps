@@ -7,6 +7,7 @@ Poor Maps 0.26
       have made OpenStreetMap data available for the server (rinigus)
 * [x] Increase download thread count to match CPU core count for
       localhost (offline) tile servers
+* [x] Increase download timeout for localhost (offline) connections
 * [x] When navigating, make centering and auto-centering on position
       center the position on the part of the map visible below the
       navigation narrative, and further, if auto-rotate is on, center
