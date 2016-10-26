@@ -62,6 +62,10 @@ Map {
         // https://github.com/qtproject/qtlocation/commit/1ca75bd6bc109c6e5ad47fd5c236709d3f64c466
         property real canvasTileSize: 512
         property real canvasScaleFactor: 0.5
+        // Distance of position center point from screen bottom when
+        // navigating and auto-rotate is on, i.e. heading up on screen.
+        // This is relative to the total visible map height.
+        property real navigationCenterY: 0.2
     }
 
     Behavior on center {
@@ -145,23 +149,22 @@ Map {
             // otherwise actually relative positions inside the map component,
             // which can differ from the screen when using auto-rotation.
             var pos = map.toScreenPosition(map.position.coordinate);
-            var cx = map.width / 2, cy = map.height / 2;
-            if (app.navigationBlock.height > 0) {
-                // If the navigation block covers the top part of the screen,
-                // center the position to the part of the map remaining visible.
-                var shift = app.navigationBlock.height / 2;
-                if (map.autoRotate)
-                    // If auto-rotate is on, the user is always heading up
-                    // on the screen and should see more ahead than behind.
-                    shift += 0.1 * (app.screenHeight - app.navigationBlock.height);
-                // https://en.wikipedia.org/wiki/Azimuth#Cartographical_azimuth
-                cx += shift * Math.sin(Util.deg2rad(map.rotation));
-                cy += shift * Math.cos(Util.deg2rad(map.rotation));
-            }
+            if (!pos.x || !pos.y)
+                return map.centerOnPosition();
             var height = app.screenHeight - app.navigationBlock.height;
-            var threshold = Math.min(app.screenWidth, height) / 5;
-            if (!pos.x || Math.abs(pos.x - cx) > threshold ||
-                !pos.y || Math.abs(pos.y - cy) > threshold)
+            // If the navigation block covers the top part of the screen,
+            // center the position to the part of the map remaining visible.
+            var dy = app.navigationBlock.height / 2;
+            if (map.autoRotate)
+                // If auto-rotate is on, the user is always heading up
+                // on the screen and should see more ahead than behind.
+                dy += (0.5 - map.constants.navigationCenterY) * height;
+            // https://en.wikipedia.org/wiki/Azimuth#Cartographical_azimuth
+            var cx = map.width  / 2 + dy * Math.sin(Util.deg2rad(map.rotation));
+            var cy = map.height / 2 + dy * Math.cos(Util.deg2rad(map.rotation));
+            var threshold = map.autoRotate ? 0.1 * height :
+                0.18 * Math.min(app.screenWidth, height);
+            if (Util.eucd(pos.x, pos.y, cx, cy) > threshold)
                 map.centerOnPosition();
         }
     }
@@ -256,14 +259,16 @@ Map {
 
     function centerOnPosition() {
         // Center map on the current position.
-        if (app.navigationBlock.height > 0) {
+        if (app.navigationBlock.height > 0 || map.autoRotate) {
             // If the navigation block covers the top part of the screen,
             // center the position to the part of the map remaining visible.
             var dy = app.navigationBlock.height / 2;
-            if (map.autoRotate)
+            if (map.autoRotate) {
                 // If auto-rotate is on, the user is always heading up
                 // on the screen and should see more ahead than behind.
-                dy += 0.1 * (app.screenHeight - app.navigationBlock.height);
+                var height = app.screenHeight - app.navigationBlock.height;
+                dy += (0.5 - map.constants.navigationCenterY) * height;
+            }
             var p0 = map.toCoordinate(Qt.point(map.width/2, map.height/2));
             var p1 = map.toCoordinate(Qt.point(map.width/2, map.height/2 + dy));
             var coord = map.position.coordinate.atDistanceAndAzimuth(

@@ -30,6 +30,13 @@ function deg2rad(deg) {
     return deg / 180 * Math.PI;
 }
 
+function eucd(x1, y1, x2, y2) {
+    // Calculate euclidean distance.
+    var xd = x2 - x1;
+    var yd = y2 - y1;
+    return Math.sqrt(xd*xd + yd*yd);
+}
+
 function median(x) {
     // Calculate the median of numeric array.
     if (x.length === 0) return NaN;
