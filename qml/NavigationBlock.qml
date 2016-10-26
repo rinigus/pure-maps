@@ -76,7 +76,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeMedium
         height: text ? implicitHeight + 0.3*manLabel.height : 0
         text: block.narrativePageSeen ? block.narrative :
-            "Tap to review maneuvers or begin navigating"
+            (block.notify ? "Tap to review maneuvers or begin navigating" : "")
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
