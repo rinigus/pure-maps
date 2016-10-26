@@ -91,7 +91,7 @@ class ConnectionPool:
         # problems are unlikely, but inefficient software and hardware
         # can make e.g. a routing query take a long time.
         # https://github.com/otsaloma/poor-maps/issues/23
-        timeout = (15 if RE_LOCALHOST.search(url) else 600)
+        timeout = (600 if RE_LOCALHOST.search(url) else 15)
         connection = cls(components.netloc, timeout=timeout)
         self._all_connections.add(connection)
         return connection
