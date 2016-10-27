@@ -26,6 +26,7 @@ Page {
     property bool loading: true
     BusyModal {
         id: busy
+        description: "For long routes, this could take up to a minute."
         running: page.loading
     }
     onStatusChanged: {
