@@ -65,7 +65,7 @@ Map {
         // Distance of position center point from screen bottom when
         // navigating and auto-rotate is on, i.e. heading up on screen.
         // This is relative to the total visible map height.
-        property real navigationCenterY: 0.2
+        property real navigationCenterY: 0.22
     }
 
     Behavior on center {
@@ -162,7 +162,7 @@ Map {
             // https://en.wikipedia.org/wiki/Azimuth#Cartographical_azimuth
             var cx = map.width  / 2 + dy * Math.sin(Util.deg2rad(map.rotation));
             var cy = map.height / 2 + dy * Math.cos(Util.deg2rad(map.rotation));
-            var threshold = map.autoRotate ? 0.1 * height :
+            var threshold = map.autoRotate ? 0.12 * height :
                 0.18 * Math.min(app.screenWidth, height);
             if (Util.eucd(pos.x, pos.y, cx, cy) > threshold)
                 map.centerOnPosition();
