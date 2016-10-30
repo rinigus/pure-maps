@@ -22,6 +22,7 @@ import Sailfish.Silica 1.0
 Item {
     id: busy
     anchors.fill: parent
+    property string description: ""
     property string error: ""
     property bool running: false
     property string text: ""
@@ -32,7 +33,6 @@ Item {
         font.pixelSize: Theme.fontSizeLarge
         horizontalAlignment: Text.AlignHCenter
         text: busy.error || busy.text
-        verticalAlignment: Text.AlignVCenter
         visible: busy.running || busy.error
         width: parent.width
     }
@@ -42,6 +42,15 @@ Item {
         running: busy.running
         size: BusyIndicatorSize.Large
         visible: busy.running
+    }
+    ListItemLabel {
+        anchors.top: indicator.bottom
+        anchors.topMargin: Math.round(indicator.height/4)
+        color: Theme.secondaryColor
+        horizontalAlignment: Text.AlignHCenter
+        text: busy.error ? "" : busy.description
+        visible: busy.running
+        wrapMode: Text.WordWrap
     }
     onErrorChanged: busy.error && (busy.text = "");
     onTextChanged: busy.text && (busy.error = "");
