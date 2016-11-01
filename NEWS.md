@@ -1,3 +1,26 @@
+2016-11-01: Poor Maps 0.26
+==========================
+
+* Add [OSM Scout Server][0.26a] offline tiles, geocoder, nearby
+  search and router – only listed in Poor Maps if you have OSM Scout
+  Server installed and will only work if the server is running and
+  you have made OpenStreetMap data available for the server (rinigus)
+* Increase download thread count to match CPU core count for
+  localhost (offline) tile servers
+* Increase download timeout for localhost (offline) connections
+* When navigating, make centering and auto-centering on position
+  center the position on the part of the map visible below the
+  navigation narrative, and further, if auto-rotate is on, center
+  lower so that more map is shown ahead than behind (#14)
+* When navigating, auto-rotate to match the route polyline instead
+  of bearing calculated from GPS data, which should make the map
+  rotate faster after a turn (#13)
+* Fix smoothing of maneuver node icons along the route polyline
+* Fix removing an item from search history to not show the removed
+  item in the UI after refiltering
+
+[0.26a]: https://openrepos.net/content/rinigus/osm-scout-server
+
 2016-09-04: Poor Maps 0.25
 ==========================
 
