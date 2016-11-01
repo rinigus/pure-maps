@@ -141,8 +141,8 @@ Map {
         if (!map.centerFound) {
             // Center on user's position on first start.
             map.centerFound = true;
-            map.centerOnPosition();
             map.setZoomLevel(14);
+            map.centerOnPosition();
         } else if (map.autoCenter && !map.gesture.isPanActive && !map.gesture.isPinchActive) {
             // Center map on position if outside center of screen.
             // map.toScreenPosition returns NaN when outside component and
@@ -231,6 +231,7 @@ Map {
          *  - attribution: Plain text router attribution
          *  - mode: Transport mode: "car" or "transit"
          */
+        map.endNavigating();
         map.clearRoute();
         map.route.setPath(route.x, route.y);
         map.route.attribution = route.attribution || "";
@@ -353,18 +354,21 @@ Map {
             if (y < ymin) ymin = y;
             if (y > ymax) ymax = y;
         }
+        var xc = (xmin + xmax) / 2;
+        var yc = (ymin + ymax) / 2;
         map.autoCenter = false;
-        map.setCenter((xmin + xmax)/2, (ymin + ymax)/2);
+        map.autoRotate = false;
         map.setZoomLevel(map.minimumZoomLevel);
+        map.setCenter(xc, yc);
         // Calculate the greatest offset of a single point from the center
         // of the screen and based on that the maximum zoom that will still
         // keep all points visible.
-        var xp = 0, yp = 0, offset = 0;
+        var offset = 0;
+        var xr = map.widthCoords  / 2;
+        var yr = map.heightCoords / 2;
         for (var i = 0; i < coords.length; i++) {
-            xp = coords[i].longitude - map.center.longitude;
-            yp = coords[i].latitude - map.center.latitude;
-            xp = Math.abs(xp / (map.widthCoords/2));
-            yp = Math.abs(yp / (map.heightCoords/2));
+            var xp = Math.abs(coords[i].longitude - xc) / xr;
+            var yp = Math.abs(coords[i].latitude  - yc) / yr;
             if (xp > offset) offset = xp;
             if (yp > offset) offset = yp;
         }
@@ -420,10 +424,10 @@ Map {
         // Load default values and start periodic updates.
         if (!py.ready)
             return py.onReadyChanged.connect(map.initProperties);
+        map.setZoomLevel(app.conf.get("zoom"));
         map.autoCenter = app.conf.get("auto_center");
         map.autoRotate = app.conf.get("auto_rotate");
         map.showNarrative = app.conf.get("show_routing_narrative");
-        map.setZoomLevel(app.conf.get("zoom"));
         var center = app.conf.get("center");
         if (center[0] === 0.0 && center[1] === 0.0) {
             // Center on user's position on first start.
