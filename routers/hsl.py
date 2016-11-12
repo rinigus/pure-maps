@@ -214,7 +214,7 @@ def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
     if isinstance(point, (list, tuple)):
         return "{:.5f},{:.5f}".format(point[0], point[1])
-    results = poor.Geocoder("hsl").geocode(point)
+    results = poor.Geocoder("digitransit").geocode(point)
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
 def route(fm, to, params):
