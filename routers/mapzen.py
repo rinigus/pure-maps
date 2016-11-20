@@ -88,7 +88,7 @@ def route(fm, to, params):
     url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    result = poor.http.request_json(url)
+    result = poor.http.get_json(url)
     legs = result["trip"]["legs"][0]
     x, y = poor.util.decode_epl(legs["shape"], precision=6)
     maneuvers = [dict(

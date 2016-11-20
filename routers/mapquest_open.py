@@ -80,7 +80,7 @@ def route(fm, to, params):
             url += "&avoids={}".format(urllib.parse.quote_plus(avoid))
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    result = poor.http.request_json(url)
+    result = poor.http.get_json(url)
     x, y = poor.util.decode_epl(result["route"]["shape"]["shapePoints"])
     maneuvers = []
     for leg in result["route"]["legs"]:

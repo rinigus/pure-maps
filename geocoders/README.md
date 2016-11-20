@@ -7,8 +7,8 @@ file and a Python file that implements the `geocode` function. The
 dictionaries of geocoding results, with each dictionary having keys
 `title`, `description`, `x` and `y`.
 
-To download data you should always use `poor.http.request_url` or
-`poor.http.request_json` in order to use Poor's user-agent and default
+To download data you should always use `poor.http.get` or
+`poor.http.get_json` in order to use Poor's user-agent and default
 timeout and error handling. See the geocoders shipped with Poor for
 examples, but note that you should be able to get by with a lot less
 code if your geocoding service returns concise, human-readable results.

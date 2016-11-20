@@ -22,8 +22,8 @@ will be automatically passed to and available at `poor.conf`. For
 settings which shouldn't be saved across sessions, you can use
 `page.params` in your QML.
 
-To download data you should always use `poor.http.request_url` or
-`poor.http.request_json` in order to use Poor's user-agent and default
+To download data you should always use `poor.http.get` or
+`poor.http.get_json` in order to use Poor's user-agent and default
 timeout and error handling. If your guide provider cannot handle
 addresses, but requires coordinates, consider geocoding using
 `default`, which is shipped with Poor. See the guides shipped with

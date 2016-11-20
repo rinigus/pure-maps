@@ -18,8 +18,8 @@ settings to your router, you have two options. If those settings are to
 be saved across sessions, define a `CONF_DEFAULTS` attribute in your
 Python code; it will be automatically passed to and available at
 `poor.conf`. For settings which shouldn't be saved across sessions, you
-can use `page.params` in your QML. See the `hsl` router for an example
-of both of these two ways.
+can use `page.params` in your QML. See the `digitransit` router for an
+example of both of these two ways.
 
 The second QML file (`*_results.qml`) is mandatory and used to specify a
 result page. At minimum this should be a page which shows a busy
@@ -29,8 +29,8 @@ results found. For a minimal router that returns one route, you can copy
 that returns several routes that the user can choose from and/or allows
 a closer examination of the route properties before showing it on a map,
 you can use this page to display whatever is best suitable given your
-router and domain. For example, the `hsl` router shows five alternative
-public transportation routes with relevant details of each.
+router and domain. For example, the `digitransit` router shows five
+alternative public transportation routes with relevant details of each.
 
 To display a route on the map, you'll want to call `map.addRoute` and
 `map.addManeuvers`. See the documentation of these functions in
@@ -38,8 +38,8 @@ To display a route on the map, you'll want to call `map.addRoute` and
 arguments. It is easiest to have your Python `route` function return
 something that can fairly directly be passed to these QML functions.
 
-To download data you should always use `poor.http.request_url` or
-`poor.http.request_json` in order to use Poor's user-agent and default
+To download data you should always use `poor.http.get` or
+`poor.http.get_json` in order to use Poor's user-agent and default
 timeout and error handling. If your routing provider cannot handle
 addresses, but requires coordinates, consider geocoding using
 `default`, which is shipped with Poor. See the routers shipped with

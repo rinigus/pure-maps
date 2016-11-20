@@ -65,7 +65,7 @@ def route(fm, to, params):
         url += render_endpoint(i, point)
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    result = poor.http.request_json(url)
+    result = poor.http.get_json(url)
     x, y = result["lng"], result["lat"]
     maneuvers = [dict(
         x=float(maneuver["lng"]),

@@ -27,7 +27,7 @@ class TestModule(poor.test.TestCase):
     # tile sources tend to be broken for a short while every now and then,
     # which is probably not something we would need to react to.
 
-    def request_url(self, name):
+    def get(self, name):
         directory = os.path.join(os.path.dirname(__file__), "..")
         path = os.path.join(directory, "{}.json".format(name))
         tilesource = poor.util.read_json(path)
@@ -36,10 +36,10 @@ class TestModule(poor.test.TestCase):
             y=random.randint(1401, 1410),
             z=12)
 
-        blob = poor.http.request_url(url)
+        blob = poor.http.get(url)
         imgtype = imghdr.what("", h=blob)
         assert imgtype in ("jpeg", "png")
 
     def test_mapbox_streets_gl(self):
-        self.request_url("mapbox_streets_gl_@1x")
-        self.request_url("mapbox_streets_gl_@2x")
+        self.get("mapbox_streets_gl_@1x")
+        self.get("mapbox_streets_gl_@2x")

@@ -125,53 +125,47 @@ class ConnectionPool:
 pool = ConnectionPool(1)
 
 
-def request_json(url, encoding="utf_8", retry=1, headers=None):
-    """
-    Request, parse and return JSON data at `url`.
+def get(url, encoding=None, retry=1, headers=None):
+    """Make a HTTP GET request at `url` and return response."""
+    return _request("GET", url, None, encoding, retry, headers)
 
-    Try again `retry` times in some particular cases that imply
-    a connection error. `headers` should be a dictionary of custom
+def get_json(url, encoding="utf_8", retry=1, headers=None):
+    """Make a HTTP GET request at `url` and return response parsed as JSON."""
+    return _request_json("GET", url, None, encoding, retry, headers)
+
+def post(url, body, encoding=None, retry=1, headers=None):
+    """Make a HTTP POST request at `url` and return response."""
+    return _request("POST", url, body, encoding, retry, headers)
+
+def post_json(url, body, encoding="utf_8", retry=1, headers=None):
+    """Make a HTTP POST request at `url` and return response parsed as JSON."""
+    return _request_json("POST", url, body, encoding, retry, headers)
+
+def _request(method, url, body=None, encoding=None, retry=1, headers=None):
+    """
+    Make a HTTP request at `url` using `method`.
+
+    `method` should be the name of a HTTP method, e.g. "GET" or "POST". `body`
+    should be ``None`` for methods that don't expect data (e.g. GET) or the
+    data to send (usually a string) for method that do expect data (e.g. POST).
+    If `encoding` is ``None``, return bytes, otherwise decode response data to
+    text using `encoding`. Try again `retry` times in some particular cases
+    that imply a connection error. `headers` should be a dictionary of custom
     headers to add to the defaults :attr:`http.HEADERS`.
     """
-    text = request_url(url, encoding, retry, headers)
-    if not text.strip() and retry > 0:
-        # A blank return is probably an error.
-        pool.reset(url)
-        text = request_url(url, encoding, retry-1, headers)
-    try:
-        if not text.strip():
-            raise ValueError("Expected JSON, received blank")
-        return json.loads(text)
-    except Exception as error:
-        print("Failed to parse JSON data: {}: {}"
-              .format(error.__class__.__name__, str(error)),
-              file=sys.stderr)
-        raise # Exception
-
-def request_url(url, encoding=None, retry=1, headers=None):
-    """
-    Request and return data at `url`.
-
-    If `encoding` is ``None``, return bytes, otherwise decode data
-    to text using `encoding`. Try again `retry` times in some particular
-    cases that imply a connection error. `headers` should be a dictionary
-    of custom headers to add to the defaults :attr:`http.HEADERS`.
-    """
-    print("Requesting {}".format(url))
+    print("{} {}".format(method, url))
     try:
         connection = pool.get(url)
         headall = HEADERS.copy()
         headall.update(headers or {})
-        connection.request("GET", url, headers=headall)
+        connection.request(method, url, body, headers=headall)
         response = connection.getresponse()
         # Always read response to avoid
         # http.client.ResponseNotReady: Request-sent.
         blob = response.read()
-        if response.status != 200:
-            raise Exception("Server responded {}: {}"
-                            .format(repr(response.status),
-                                    repr(response.reason)))
-
+        if not 200 <= response.status <= 299:
+            raise Exception("Server responded {}: {}".format(
+                repr(response.status), repr(response.reason)))
         if encoding is None: return blob
         return blob.decode(encoding, errors="replace")
     except Exception as error:
@@ -181,11 +175,53 @@ def request_url(url, encoding=None, retry=1, headers=None):
         # These probably mean that the connection was broken.
         broken = (BrokenPipeError, http.client.BadStatusLine)
         if not isinstance(error, broken) or retry == 0:
-            print("Failed to download data: {}: {}"
-                  .format(error.__class__.__name__, str(error)),
+            name = error.__class__.__name__
+            print("{} failed: {}: {}"
+                  .format(method, name, str(error)),
                   file=sys.stderr)
             raise # Exception
+        # If we haven't successfully returned a response,
+        # nor reraised an Exception, we move on to try again.
+        assert retry > 0
     finally:
         pool.put(url, connection)
-    assert retry > 0
-    return request_url(url, encoding, retry-1, headers)
+    return _request(method, url, body, encoding, retry-1, headers)
+
+def _request_json(method, url, body=None, encoding="utf_8", retry=1, headers=None):
+    """
+    Make a HTTP request, return response parsed as JSON.
+
+    `method` should be the name of a HTTP method, e.g. "GET" or "POST". `body`
+    should be ``None`` for methods that don't expect data (e.g. GET) or the
+    data to send (usually a string) for method that do expect data (e.g. POST).
+    If `encoding` is ``None``, return bytes, otherwise decode response data to
+    text using `encoding`. Try again `retry` times in some particular cases
+    that imply a connection error. `headers` should be a dictionary of custom
+    headers to add to the defaults :attr:`http.HEADERS`.
+    """
+    text = _request(method, url, body, encoding, retry, headers)
+    if not text.strip() and retry > 0:
+        # A blank return is probably an error.
+        pool.reset(url)
+        text = _request(method, url, body, encoding, retry, headers)
+    try:
+        if not text.strip():
+            raise ValueError("Expected JSON, received blank")
+        return json.loads(text)
+    except Exception as error:
+        name = error.__class__.__name__
+        print("Failed to parse JSON data: {}: {}"
+              .format(name, str(error)), file=sys.stderr)
+        raise # Exception
+
+def request_json(url, encoding="utf_8", retry=1, headers=None):
+    """Make a HTTP GET request at `url` and return response parsed as JSON."""
+    # Deprecated since version 0.27.
+    print("http.request_json is deprecated, please use http.get_json instead", file=sys.stderr)
+    return _request_json("GET", url, None, encoding, retry, headers)
+
+def request_url(url, encoding=None, retry=1, headers=None):
+    """Make a HTTP GET request at `url` and return response."""
+    # Deprecated since version 0.27.
+    print("http.request_url is deprecated, please use http.get instead", file=sys.stderr)
+    return _request("GET", url, None, encoding, retry, headers)

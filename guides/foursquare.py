@@ -52,7 +52,7 @@ def nearby(query, near, radius, params):
     url = URL.format(CLIENT_ID=CLIENT_ID, **locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    output = poor.http.request_json(url)
+    output = poor.http.get_json(url)
     results = [dict(title=item["venue"]["name"],
                     description=parse_description(item),
                     text=parse_text(item),

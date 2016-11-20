@@ -81,24 +81,32 @@ class TestConnectionPool(poor.test.TestCase):
 
 class TestModule(poor.test.TestCase):
 
-    def test_request_json(self):
-        url = "https://api.github.com/repos/otsaloma/poor-maps/releases"
-        json = poor.http.request_json(url)
-        assert isinstance(json, list)
-
-    def test_request_json__error(self):
+    def test_get(self):
         url = "https://github.com/otsaloma/poor-maps"
-        self.assert_raises(Exception, poor.http.request_json, url)
-
-    def test_request_url(self):
-        url = "https://github.com/otsaloma/poor-maps"
-        blob = poor.http.request_url(url, encoding="utf_8")
+        blob = poor.http.get(url, encoding="utf_8")
         assert blob.strip().startswith("<!DOCTYPE html>")
 
-    def test_request_url__error(self):
+    def test_get__error(self):
         url = "http://xxx.yyy.zzz/"
-        self.assert_raises(Exception, poor.http.request_url, url)
+        self.assert_raises(Exception, poor.http.get, url)
 
-    def test_request_url__non_200(self):
+    def test_get__non_200(self):
         url = "http://www.google.com/xxx/yyy/zzz"
-        self.assert_raises(Exception, poor.http.request_url, url)
+        self.assert_raises(Exception, poor.http.get, url)
+
+    def test_get_json(self):
+        url = "https://api.github.com/repos/otsaloma/poor-maps/releases"
+        json = poor.http.get_json(url)
+        assert isinstance(json, list)
+
+    def test_get_json__error(self):
+        url = "https://github.com/otsaloma/poor-maps"
+        self.assert_raises(Exception, poor.http.get_json, url)
+
+    def test_post(self):
+        blob = poor.http.post("http://httpbin.org/post", "Hello!")
+        assert isinstance(blob, bytes)
+
+    def test_post_json(self):
+        blob = poor.http.post_json("http://httpbin.org/post", "Hello!")
+        assert blob["data"] == "Hello!"
