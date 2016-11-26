@@ -1,3 +1,9 @@
+2016-11-26: Poor Maps 0.26.205
+==============================
+
+* Adapt to Nokia/HERE map plugin changes in Sailfish OS 2.0.5 "Haapajoki"
+* Fix initial centering on new route sometimes being wrong
+
 2016-11-01: Poor Maps 0.26
 ==========================
 
