@@ -56,8 +56,6 @@ def parse_description(result):
     props = result["properties"]
     items = []
     with poor.util.silent(Exception):
-        items.append(props["neighbourhood"])
-    with poor.util.silent(Exception):
         items.append(props["locality"])
     with poor.util.silent(Exception):
         items.append(props["region"])
