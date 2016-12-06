@@ -39,69 +39,100 @@ Column {
             app.conf.set("routers.digitransit.region", regionComboBox.keys[index]);
         }
     }
-    ComboBox {
-        id: arriveByComboBox
-        label: "Bind"
-        menu: ContextMenu {
-            MenuItem { text: "Departure" }
-            MenuItem { text: "Arrival" }
+    Item {
+        height: Theme.itemSizeSmall
+        width: parent.width
+        BackgroundItem {
+            id: bindItem
+            anchors.left: parent.left
+            anchors.top: parent.top
+            height: parent.height
+            width: bindLabel.width + Theme.horizontalPageMargin + Theme.paddingMedium
+            Label {
+                id: bindLabel
+                anchors.left: parent.left
+                anchors.leftMargin: Theme.horizontalPageMargin
+                anchors.top: parent.top
+                height: parent.height
+                text: "Depart"
+                verticalAlignment: Text.AlignVCenter
+            }
+            onClicked: {
+                bindLabel.text = {"Depart": "Arrive", "Arrive": "Depart"}[bindLabel.text];
+                page.params.arrive_by = {"Depart": "false", "Arrive": "true"}[bindLabel.text];
+                bindLabel.color = Theme.highlightColor;
+            }
         }
-        property var keys: ["false", "true"]
-        Component.onCompleted: {
-            page.params.arrive_by = "false";
-            var index = arriveByComboBox.keys.indexOf(page.params.arrive_by);
-            arriveByComboBox.currentIndex = index;
-        }
-        onCurrentIndexChanged: {
-            var index = arriveByComboBox.currentIndex;
-            page.params.arrive_by = arriveByComboBox.keys[index];
-        }
-    }
-    ValueButton {
-        id: dateButton
-        label: "Date"
-        value: "Today"
-        property var date: new Date()
-        onClicked: {
-            var dialog = pageStack.push(
-                "Sailfish.Silica.DatePickerDialog", {
-                    date: dateButton.date
+        BackgroundItem {
+            id: dateItem
+            anchors.left: bindItem.right
+            anchors.top: parent.top
+            height: parent.height
+            width: dateLabel.width + 2*Theme.paddingMedium
+            property var date: new Date()
+            Label {
+                id: dateLabel
+                anchors.left: parent.left
+                anchors.leftMargin: Theme.paddingMedium
+                anchors.top: parent.top
+                height: parent.height
+                text: "Today"
+                verticalAlignment: Text.AlignVCenter
+            }
+            onClicked: {
+                var dialog = pageStack.push(
+                    "Sailfish.Silica.DatePickerDialog", {
+                        date: dateItem.date
+                    });
+                dialog.accepted.connect(function() {
+                    dateItem.date = dialog.date;
+                    dateLabel.text = dialog.dateText;
+                    dateLabel.color = Theme.highlightColor;
+                    // Format date as YYYY-MM-DD.
+                    var year = dialog.year.toString();
+                    var month = dialog.month.toString();
+                    var day = dialog.day.toString();
+                    if (month.length < 2) month = "0%1".arg(month);
+                    if (day.length < 2) day = "0%1".arg(day);
+                    page.params.date = "%1-%2-%3".arg(year).arg(month).arg(day);
                 });
-            dialog.accepted.connect(function() {
-                dateButton.date = dialog.date;
-                dateButton.value = dialog.dateText;
-                // Format date as YYYY-MM-DD.
-                var year = dialog.year.toString();
-                var month = dialog.month.toString();
-                var day = dialog.day.toString();
-                if (month.length < 2) month = "0%1".arg(month);
-                if (day.length < 2) day = "0%1".arg(day);
-                page.params.date = "%1-%2-%3".arg(year).arg(month).arg(day);
-            });
+            }
         }
-    }
-    ValueButton {
-        id: timeButton
-        label: "Time"
-        value: "Now"
-        property var time: new Date()
-        onClicked: {
-            var dialog = pageStack.push(
-                "Sailfish.Silica.TimePickerDialog", {
-                    "hourMode": DateTime.TwentyFourHours,
-                    "hour": time.getHours(),
-                    "minute": time.getMinutes()
+        BackgroundItem {
+            id: timeItem
+            anchors.left: dateItem.right
+            anchors.top: parent.top
+            height: parent.height
+            width: timeLabel.width + 2*Theme.paddingMedium
+            property var time: new Date()
+            Label {
+                id: timeLabel
+                anchors.left: parent.left
+                anchors.leftMargin: Theme.paddingMedium
+                anchors.top: parent.top
+                height: parent.height
+                text: "Now"
+                verticalAlignment: Text.AlignVCenter
+            }
+            onClicked: {
+                var dialog = pageStack.push(
+                    "Sailfish.Silica.TimePickerDialog", {
+                        "hourMode": DateTime.TwentyFourHours,
+                        "hour": timeItem.time.getHours(),
+                        "minute": timeItem.time.getMinutes()
+                    });
+                dialog.accepted.connect(function() {
+                    timeItem.time = dialog.time;
+                    timeLabel.text = dialog.timeText;
+                    timeLabel.color = Theme.highlightColor;
+                    // Format time as HH:MM:SS.
+                    var hour = dialog.hour.toString();
+                    var minute = dialog.minute.toString();
+                    if (hour.length < 2) hour = "0%1".arg(hour);
+                    if (minute.length < 2) minute = "0%1".arg(minute);
+                    page.params.time = "%1:%2:00".arg(hour).arg(minute);
                 });
-            dialog.accepted.connect(function() {
-                timeButton.time = dialog.time;
-                timeButton.value = dialog.timeText;
-                // Format time as HH:MM:SS.
-                var hour = dialog.hour.toString();
-                var minute = dialog.minute.toString();
-                if (hour.length < 2) hour = "0%1".arg(hour);
-                if (minute.length < 2) minute = "0%1".arg(minute);
-                page.params.time = "%1:%2:00".arg(hour).arg(minute);
-            });
+            }
         }
     }
     ComboBox {
