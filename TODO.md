@@ -1,11 +1,11 @@
 Poor Maps 0.27
 ==============
 
-* [x] Replace HSL geocoder with a [Digitransit][0.27a] geocoder, which
-      covers not just the Helsinki region, but whole Finland
-* [ ] Migrate HSL router to the [Digitransit API][0.27b], which adds XXX
-* [?] Add Digitransit Waltti/Finland routing
-* [ ] #28
+* [x] Replace HSL geocoder and router with ones that use the
+      [Digitransit API][0.27a] (adds geocoding for whole Finland, public
+      transport routing for Waltti and whole Finland regions and
+      real-time routing, #19)
+* [ ] Show route summary in the maneuver list page (#28)
+* [ ] Fix overlaps in the navigation instruction block
 
-[0.27a]: https://digitransit.fi/en/developers/services-and-apis/2-geocoding-api/
-[0.27b]: https://digitransit.fi/en/developers/services-and-apis/1-routing-api/
+[0.27a]: https://digitransit.fi/en/developers/

@@ -35,12 +35,12 @@ DEFAULTS = {
     "center": [0.0, 0.0],
     "geocoder": "opencage",
     "guide": "foursquare",
-    # 'always', 'navigating' or 'never'.
+    # "always", "navigating" or "never".
     "keep_alive": "navigating",
     "overlays": [],
     "router": "mapzen",
     "show_routing_narrative": True,
-    # 'metric', 'american' or 'british'.
+    # "metric", "american" or "british".
     "units": "metric",
     "zoom": 3,
 }

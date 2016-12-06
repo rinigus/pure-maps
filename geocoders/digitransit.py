@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Geocoding using Digitransit.
+Geocoding in Finland using Digitransit.
 
 https://digitransit.fi/en/developers/services-and-apis/2-geocoding-api/address-search/
 """

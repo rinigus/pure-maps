@@ -21,7 +21,7 @@ import poor.test
 class TestModule(poor.test.TestCase):
 
     def setup_method(self, method):
-        self.router = poor.Router("hsl")
+        self.router = poor.Router("digitransit")
 
     def test_geocode(self):
         results = self.router.route("munkkiniemi, helsinki", "kumpula, helsinki")

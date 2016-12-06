@@ -63,8 +63,8 @@ install:
 	cp routers/[!_]*.py $(DATADIR)/routers
 	cp routers/*.qml $(DATADIR)/routers
 	cp routers/README.md $(DATADIR)/routers
-	mkdir -p $(DATADIR)/routers/hsl
-	cp routers/hsl/*.png $(DATADIR)/routers/hsl
+	mkdir -p $(DATADIR)/routers/digitransit
+	cp routers/digitransit/*.png $(DATADIR)/routers/digitransit
 
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)

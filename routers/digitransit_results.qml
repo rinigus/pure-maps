@@ -47,9 +47,9 @@ Page {
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight + Theme.paddingMedium
-                text: "Route %1. total %2 min".arg(
-                    listItem.result.alternative).arg(
-                        Math.round(listItem.result.duration))
+                text: "Route %1. total %2"
+                    .arg(listItem.result.alternative)
+                    .arg(py.call_sync("poor.util.format_time", [listItem.result.duration]))
                 verticalAlignment: Text.AlignBottom
             }
             Rectangle {
@@ -158,7 +158,7 @@ Page {
                     "x": listItem.result.x,
                     "y": listItem.result.y,
                     "mode": "transit",
-                    "attribution": "Routing courtesy of HSL."
+                    "attribution": "Routing courtesy of Digitransit."
                 });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();

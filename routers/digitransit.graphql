@@ -1,0 +1,51 @@
+{
+    plan(
+        arriveBy: {arrive_by}
+        date: "{date}"
+        from: {fm}
+        modes: "{modes}"
+        numItineraries: 5
+        time: "{time}"
+        to: {to}
+        transferPenalty: {transfer_penalty}
+        walkReluctance: {walk_reluctance}
+    ) {
+        itineraries {
+            duration
+            legs {
+                distance
+                duration
+                endTime
+                from {
+                    lat
+                    lon
+                    name
+                }
+                intermediateStops {
+                    lat
+                    lon
+                    name
+                }
+                legGeometry {
+                    points
+                }
+                mode
+                realTime
+                route {
+                    agency {
+                        name
+                    }
+                    desc
+                    longName
+                    shortName
+                }
+                startTime
+                to {
+                    lat
+                    lon
+                    name
+                }
+            }
+        }
+    }
+}
