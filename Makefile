@@ -59,6 +59,7 @@ install:
 
 	@echo "Installing routers..."
 	mkdir -p $(DATADIR)/routers
+	cp routers/*.graphql $(DATADIR)/routers
 	cp routers/*.json $(DATADIR)/routers
 	cp routers/[!_]*.py $(DATADIR)/routers
 	cp routers/*.qml $(DATADIR)/routers
