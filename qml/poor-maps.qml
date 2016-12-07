@@ -43,6 +43,7 @@ ApplicationWindow {
     property var  narrativePageSeen: false
     property var  navigationBlock: null
     property var  navigationDirection: null
+    property var  navigationStatus: null
     property var  northArrow: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
@@ -124,6 +125,7 @@ ApplicationWindow {
             app.navigationBlock.narrative = "";
             app.navigationDirection       = null;
         }
+        app.navigationStatus = status;
     }
 
     function showMenu(page, params) {

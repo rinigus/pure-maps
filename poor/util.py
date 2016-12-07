@@ -251,6 +251,7 @@ def format_location_message(x, y, html=False):
 
 def format_time(seconds):
     """Format `seconds` to format ``# h # min``."""
+    seconds = 60 * round(seconds/60)
     hours = int(seconds/3600)
     minutes = round((seconds % 3600) / 60)
     if hours == 0:

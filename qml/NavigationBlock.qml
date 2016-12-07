@@ -60,9 +60,9 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: Theme.paddingLarge
         color: Theme.secondaryColor
-        font.pixelSize: Theme.fontSizeSmall
+        font.pixelSize: Theme.fontSizeMedium
         height: manLabel.height
-        text: block.destTime ? "%1 · %2".arg(block.destDist).arg(block.destTime) : block.destDist
+        text: block.destDist
     }
     Label {
         id: narrativeLabel

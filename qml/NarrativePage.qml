@@ -94,7 +94,8 @@ Page {
             }
         }
         header: Column {
-            height: header.height + row.height + Theme.paddingLarge
+            height: header.height + row.height + spacer1.height +
+                distItem.height + timeItem.height + spacer2.height
             width: parent.width
             PageHeader {
                 id: header
@@ -127,6 +128,38 @@ Page {
                         app.clearMenu();
                     }
                 }
+            }
+            Rectangle {
+                // For spacing.
+                id: spacer1
+                color: "#00000000"
+                height: Theme.paddingLarge
+                width: parent.width
+            }
+            DetailItem {
+                id: distItem
+                label: "Distance remaining"
+                value: "%1 / %2"
+                    .arg(app.navigationStatus.dest_dist || "?")
+                    .arg(app.navigationStatus.total_dist || "?")
+            }
+            DetailItem {
+                id: timeItem
+                label: "Time remaining"
+                value: "%1 / %2"
+                    .arg(timeItem.format(app.navigationStatus.dest_time || "?"))
+                    .arg(timeItem.format(app.navigationStatus.total_time || "?"))
+                function format(time) {
+                    // We don't always have enough space for the usual # h # min.
+                    return time.match(/h/) ? time.replace(/min/, "m") : time
+                }
+            }
+            Rectangle {
+                // For spacing.
+                id: spacer2
+                color: "#00000000"
+                height: 0.5*Theme.paddingLarge
+                width: parent.width
             }
         }
         model: ListModel {}

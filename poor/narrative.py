@@ -194,7 +194,9 @@ class Narrative:
             dest_time = man_time = icon = narrative = None
         # Don't provide route direction to auto-rotate by if off route.
         direction = self._get_direction(x, y, node) if seg_dist < 50 else None
-        return dict(dest_dist=dest_dist,
+        return dict(total_dist=poor.util.format_distance(max(self.dist)),
+                    total_time=poor.util.format_time(max(self.time)),
+                    dest_dist=dest_dist,
                     dest_time=dest_time,
                     man_dist=man_dist,
                     man_time=man_time,
@@ -273,7 +275,9 @@ class Narrative:
         man_time = poor.util.format_time(man_time)
         # Don't provide route direction to auto-rotate by if off route.
         direction = self._get_direction(x, y, node) if seg_dist < 50 else None
-        return dict(dest_dist=dest_dist,
+        return dict(total_dist=poor.util.format_distance(max(self.dist)),
+                    total_time=poor.util.format_time(max(self.time)),
+                    dest_dist=dest_dist,
                     dest_time=dest_time,
                     man_dist=man_dist,
                     man_time=man_time,
