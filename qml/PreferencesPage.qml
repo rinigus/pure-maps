@@ -125,12 +125,7 @@ Page {
                     app.conf.set("cache_max_age", cacheComboBox.values[index]);
                 }
             }
-            Rectangle {
-                // For spacing.
-                color: "#00000000"
-                height: Theme.paddingMedium
-                width: parent.width
-            }
+            Spacer { height: Theme.paddingMedium }
             Button {
                 id: examineButton
                 anchors.horizontalCenter: parent.horizontalCenter

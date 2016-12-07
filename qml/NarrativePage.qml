@@ -129,12 +129,9 @@ Page {
                     }
                 }
             }
-            Rectangle {
-                // For spacing.
+            Spacer {
                 id: spacer1
-                color: "#00000000"
                 height: Theme.paddingLarge
-                width: parent.width
             }
             DetailItem {
                 id: distItem
@@ -154,12 +151,9 @@ Page {
                     return time.match(/h/) ? time.replace(/min/, "m") : time
                 }
             }
-            Rectangle {
-                // For spacing.
+            Spacer {
                 id: spacer2
-                color: "#00000000"
                 height: 0.5*Theme.paddingLarge
-                width: parent.width
             }
         }
         model: ListModel {}

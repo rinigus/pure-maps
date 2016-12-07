@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../qml"
 
 Column {
     id: column
@@ -153,12 +154,7 @@ Column {
             app.conf.set("routers.digitransit.optimize", prefComboBox.keys[index]);
         }
     }
-    Rectangle {
-        // For spacing.
-        color: "#00000000"
-        height: Theme.paddingLarge
-        width: parent.width
-    }
+    Spacer { height: Theme.paddingLarge }
     Grid {
         id: modeGrid
         anchors.left: parent.left
