@@ -22,6 +22,7 @@ import imghdr
 import importlib.machinery
 import os
 import poor
+import random
 import re
 import sys
 import threading
@@ -194,7 +195,7 @@ class TileSource:
                 raise ValueError("Tile format %s implementation not found"
                                  .format(repr(format)))
 
-        name = "poor.tilesource.format{:d}".format(int(1000*time.time()))
+        name = "poor.tilesource.format{:d}".format(random.randrange(10**12))
         loader = importlib.machinery.SourceFileLoader(name, path)
         self._provider = loader.load_module(name)
 

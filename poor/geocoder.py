@@ -20,10 +20,10 @@
 import importlib.machinery
 import os
 import poor
+import random
 import re
 import socket
 import sys
-import time
 import traceback
 
 __all__ = ("Geocoder",)
@@ -97,7 +97,7 @@ class Geocoder:
 
     def _init_provider(self, path):
         """Initialize geocoding provider module from `path`."""
-        name = "poor.geocoder.provider{:d}".format(int(1000*time.time()))
+        name = "poor.geocoder.provider{:d}".format(random.randrange(10**12))
         loader = importlib.machinery.SourceFileLoader(name, path)
         self._provider = loader.load_module(name)
 

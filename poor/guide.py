@@ -20,10 +20,10 @@
 import importlib.machinery
 import os
 import poor
+import random
 import re
 import socket
 import sys
-import time
 import traceback
 
 __all__ = ("Guide",)
@@ -64,7 +64,7 @@ class Guide:
 
     def _init_provider(self, id, path):
         """Initialize place guide provider module from `path`."""
-        name = "poor.guide.provider{:d}".format(int(1000*time.time()))
+        name = "poor.guide.provider{:d}".format(random.randrange(10**12))
         loader = importlib.machinery.SourceFileLoader(name, path)
         self._provider = loader.load_module(name)
         if hasattr(self._provider, "CONF_DEFAULTS"):

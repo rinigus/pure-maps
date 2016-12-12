@@ -20,10 +20,10 @@
 import importlib.machinery
 import os
 import poor
+import random
 import re
 import socket
 import sys
-import time
 import traceback
 
 __all__ = ("Router",)
@@ -56,7 +56,7 @@ class Router:
 
     def _init_provider(self, id, path):
         """Initialize routing provider module from `path`."""
-        name = "poor.router.provider{:d}".format(int(1000*time.time()))
+        name = "poor.router.provider{:d}".format(random.randrange(10**12))
         loader = importlib.machinery.SourceFileLoader(name, path)
         self._provider = loader.load_module(name)
         if hasattr(self._provider, "CONF_DEFAULTS"):
