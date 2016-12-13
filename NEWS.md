@@ -1,3 +1,16 @@
+2016-12-13: Poor Maps 0.27
+==========================
+
+* Replace HSL geocoder and router with ones that use the new
+  [Digitransit API][0.27a] (adds geocoding for whole Finland,
+  real-time routing and experimental routing for Waltti and whole
+  Finland regions, #19)
+* Show route summary in the maneuver list page (#28)
+* Don't show time remaining in the navigation instruction block
+  to avoid overlapping text
+
+[0.27a]: https://digitransit.fi/en/developers/
+
 2016-11-26: Poor Maps 0.26.205
 ==============================
 
