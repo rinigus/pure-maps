@@ -154,7 +154,7 @@ Column {
             app.conf.set("routers.digitransit.optimize", prefComboBox.keys[index]);
         }
     }
-    Spacer { height: Theme.paddingLarge }
+    Spacer { height: 1.25*Theme.paddingLarge }
     Grid {
         id: modeGrid
         anchors.left: parent.left
@@ -164,12 +164,12 @@ Column {
         columns: {
             // Use a dynamic column count based on available screen width.
             var width = parent.width - 2*Theme.horizontalPageMargin;
-            var cellWidth = busButton.width + Theme.paddingLarge;
+            var cellWidth = busButton.width + spacing;
             return Math.floor(width/cellWidth);
         }
         height: implicitHeight + Theme.paddingLarge
         rows: Math.ceil(6/columns)
-        spacing: Theme.paddingLarge
+        spacing: Theme.paddingMedium
         property string option: "routers.digitransit.modes"
         IconButton {
             id: busButton
