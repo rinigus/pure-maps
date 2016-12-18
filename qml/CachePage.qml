@@ -47,45 +47,45 @@ Page {
                 height: implicitHeight + Theme.paddingMedium
                 // model.count negative during operations, see page.purge.
                 text: model.count < 0 ? "· · ·" :
-                    "%1 tiles · %2".arg(model.count).arg(model.size)
+                    qsTranslate("", "%1 tiles · %2").arg(model.count).arg(model.size)
                 verticalAlignment: Text.AlignTop
             }
             RemorseItem { id: remorse }
             ContextMenu {
                 id: contextMenu
                 MenuItem {
-                    text: "Remove older than one week"
-                    onClicked: remorse.execute(listItem, "Removing", function() {
+                    text: qsTranslate("", "Remove older than one week")
+                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 7);
                     });
                 }
                 MenuItem {
-                    text: "Remove older than one month"
-                    onClicked: remorse.execute(listItem, "Removing", function() {
+                    text: qsTranslate("", "Remove older than one month")
+                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 30);
                     });
                 }
                 MenuItem {
-                    text: "Remove older than three months"
-                    onClicked: remorse.execute(listItem, "Removing", function() {
+                    text: qsTranslate("", "Remove older than three months")
+                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 90);
                     });
                 }
                 MenuItem {
-                    text: "Remove older than six months"
-                    onClicked: remorse.execute(listItem, "Removing", function() {
+                    text: qsTranslate("", "Remove older than six months")
+                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 180);
                     });
                 }
                 MenuItem {
-                    text: "Remove older than one year"
-                    onClicked: remorse.execute(listItem, "Removing", function() {
+                    text: qsTranslate("", "Remove older than one year")
+                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 365);
                     });
                 }
                 MenuItem {
-                    text: "Remove all"
-                    onClicked: remorse.execute(listItem, "Removing", function() {
+                    text: qsTranslate("", "Remove all")
+                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 0);
                         listItem.visible = false;
                     });
@@ -105,7 +105,7 @@ Page {
     Component.onCompleted: {
         page.loading = true;
         page.title = "";
-        busy.text = "Calculating";
+        busy.text = qsTranslate("", "Calculating");
         page.populate();
     }
     function populate(query) {
@@ -113,12 +113,12 @@ Page {
         listView.model.clear();
         py.call("poor.cache.stat", [], function(results) {
             if (results && results.length > 0) {
-                page.title = "Map Tile Cache"
+                page.title = qsTranslate("", "Map Tile Cache")
                 for (var i = 0; i < results.length; i++)
                     listView.model.append(results[i]);
             } else {
                 page.title = "";
-                busy.error = "No cache, or error";
+                busy.error = qsTranslate("", "No cache, or error");
             }
             page.loading = false;
         });

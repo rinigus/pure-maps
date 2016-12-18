@@ -34,7 +34,7 @@ Page {
             PageHeader { title: "Poor Maps" }
             IconListItem {
                 icon: "image://theme/icon-m-search"
-                label: "Search"
+                label: qsTranslate("", "Search")
                 onClicked: {
                     app.pageStack.push("GeocodePage.qml");
                     app.pageStack.pushAttached("GeocodingResultsPage.qml");
@@ -42,21 +42,21 @@ Page {
             }
             IconListItem {
                 icon: "image://theme/icon-m-car"
-                label: "Navigation"
+                label: qsTranslate("", "Navigation")
                 onClicked: {
                     app.pageStack.push("RoutePage.qml");
                 }
             }
             IconListItem {
                 icon: "image://theme/icon-m-whereami"
-                label: "Nearby venues"
+                label: qsTranslate("", "Nearby venues")
                 onClicked: {
                     app.pageStack.push("NearbyPage.qml");
                 }
             }
             IconListItem {
                 icon: "image://theme/icon-m-share"
-                label: "Share current position"
+                label: qsTranslate("", "Share current position")
                 BusyIndicator {
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.horizontalPageMargin
@@ -71,13 +71,13 @@ Page {
                         "coordinate": QtPositioning.coordinate(
                             gps.position.coordinate.latitude,
                             gps.position.coordinate.longitude),
-                        "title": "Share Current Position"
+                        "title": qsTranslate("", "Share Current Position")
                     });
                 }
             }
             IconListItem {
                 icon: "image://theme/icon-m-dot"
-                label: "Center on current position"
+                label: qsTranslate("", "Center on current position")
                 onClicked: {
                     map.centerOnPosition();
                     app.clearMenu();
@@ -85,7 +85,7 @@ Page {
             }
             IconListItem {
                 icon: "image://theme/icon-m-clear"
-                label: "Clear map"
+                label: qsTranslate("", "Clear map")
                 onClicked: {
                     map.clear();
                     app.clearMenu();
@@ -93,7 +93,7 @@ Page {
             }
             IconListItem {
                 icon: "image://theme/icon-m-levels"
-                label: "Basemaps and overlays"
+                label: qsTranslate("", "Basemaps and overlays")
                 onClicked: {
                     app.pageStack.push("BasemapPage.qml");
                 }
@@ -103,7 +103,7 @@ Page {
                 checked: map.autoCenter
                 height: Theme.itemSizeSmall
                 leftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
-                text: "Auto-center on position"
+                text: qsTranslate("", "Auto-center on position")
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
                         autoCenterItem.checked = map.autoCenter;
@@ -119,7 +119,7 @@ Page {
                 checked: map.autoRotate
                 height: Theme.itemSizeSmall
                 leftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
-                text: "Auto-rotate on direction"
+                text: qsTranslate("", "Auto-rotate on direction")
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
                         autoRotateItem.checked = map.autoRotate;
@@ -132,11 +132,11 @@ Page {
         }
         PullDownMenu {
             MenuItem {
-                text: "About"
+                text: qsTranslate("", "About")
                 onClicked: app.pageStack.push("AboutPage.qml");
             }
             MenuItem {
-                text: "Preferences"
+                text: qsTranslate("", "Preferences")
                 onClicked: app.pageStack.push("PreferencesPage.qml");
             }
         }

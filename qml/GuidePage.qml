@@ -44,7 +44,7 @@ Dialog {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + 1.5*Theme.paddingMedium
-                text: "%1\nSource: %2\n%3".arg(model.description).arg(model.source).arg(model.attribution)
+                text: qsTranslate("", "%1\nSource: %2\n%3").arg(model.description).arg(model.source).arg(model.attribution)
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
             }
@@ -62,7 +62,7 @@ Dialog {
             py.call("poor.util.get_guides", [], function(guides) {
                 for (var i = 0; i < guides.length; i++) {
                     if (guides[i].pid === defpid)
-                        guides[i].name = "%1 (default)".arg(guides[i].name);
+                        guides[i].name = qsTranslate("", "%1 (default)").arg(guides[i].name);
                     listView.model.append(guides[i]);
                 }
             });

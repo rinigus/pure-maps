@@ -45,7 +45,7 @@ Dialog {
             ContextMenu {
                 id: contextMenu
                 MenuItem {
-                    text: "Remove"
+                    text: qsTranslate("", "Remove")
                     onClicked: {
                         py.call_sync("poor.app.history.remove_place", [model.place]);
                         dialog.history = py.evaluate("poor.app.history.places");
@@ -70,16 +70,16 @@ Dialog {
                     anchors.leftMargin: listView.searchField.textLeftMargin
                     color: Theme.highlightColor
                     height: Theme.itemSizeSmall
-                    text: "Current position"
+                    text: qsTranslate("", "Current position")
                 }
                 onClicked: {
-                    dialog.query = "Current position";
+                    dialog.query = qsTranslate("", "Current position");
                     dialog.accept();
                 }
             }
             SearchField {
                 id: searchField
-                placeholderText: "Address, landmark, etc."
+                placeholderText: qsTranslate("", "Address, landmark, etc.")
                 width: parent.width
                 EnterKey.enabled: text.length > 0
                 EnterKey.onClicked: dialog.accept();

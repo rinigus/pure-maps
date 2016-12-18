@@ -31,7 +31,7 @@ Page {
             TextSwitch {
                 id: overlaySwitch
                 checked: model.active
-                description: "Source: %1\n%2".arg(model.source).arg(model.attribution)
+                description: qsTranslate("", "Source: %1\n%2").arg(model.source).arg(model.attribution)
                 text: model.name
                 // Avoid implicit line breaks.
                 width: 3*parent.width
@@ -56,7 +56,7 @@ Page {
                 sourceItem: overlaySwitch
             }
         }
-        header: PageHeader { title: "Overlays" }
+        header: PageHeader { title: qsTranslate("", "Overlays") }
         model: ListModel {}
         VerticalScrollDecorator {}
         Component.onCompleted: {

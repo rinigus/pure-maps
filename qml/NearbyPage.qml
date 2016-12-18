@@ -24,7 +24,7 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
     canNavigateForward: page.near &&
-        (page.nearText !== "Current position" || gps.ready) &&
+        (page.nearText !== qsTranslate("", "Current position") || gps.ready) &&
         page.query.length > 0
     property var near: null
     property string nearText: ""
@@ -47,10 +47,10 @@ Page {
             id: column
             anchors.fill: parent
             property var settings: null
-            PageHeader { title: "Nearby Venues" }
+            PageHeader { title: qsTranslate("", "Nearby Venues") }
             ValueButton {
                 id: usingButton
-                label: "Using"
+                label: qsTranslate("", "Using")
                 height: Theme.itemSizeSmall
                 value: py.evaluate("poor.app.guide.name")
                 width: parent.width
@@ -64,7 +64,7 @@ Page {
             }
             ValueButton {
                 id: nearButton
-                label: "Near"
+                label: qsTranslate("", "Near")
                 height: Theme.itemSizeSmall
                 value: page.nearText
                 // Avoid putting label and value on different lines.
@@ -73,14 +73,14 @@ Page {
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge + (parent.width - page.width)
                     anchors.verticalCenter: parent.verticalCenter
-                    running: page.nearText === "Current position" && !gps.ready
+                    running: page.nearText === qsTranslate("", "Current position") && !gps.ready
                     size: BusyIndicatorSize.Small
                     z: parent.z + 1
                 }
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        if (dialog.page === "Current position") {
+                        if (dialog.page === qsTranslate("", "Current position")) {
                             page.near = map.getPosition();
                             page.nearText = dialog.query;
                         } else {
@@ -93,7 +93,7 @@ Page {
             }
             ValueButton {
                 id: typeButton
-                label: "Type"
+                label: qsTranslate("", "Type")
                 height: Theme.itemSizeSmall
                 value: page.query
                 // Avoid putting label and value on different lines.
@@ -107,7 +107,7 @@ Page {
             }
             ComboBox {
                 id: radiusComboBox
-                label: "Radius"
+                label: qsTranslate("", "Radius")
                 menu: ContextMenu {
                     MenuItem { text: page.radiusLabels[0] }
                     MenuItem { text: page.radiusLabels[1] }
@@ -145,7 +145,7 @@ Page {
     Component.onCompleted: {
         if (!page.near) {
             page.near = map.getPosition();
-            page.nearText = "Current position";
+            page.nearText = qsTranslate("", "Current position");
         }
     }
     onQueryChanged: {
@@ -153,7 +153,7 @@ Page {
     }
     onStatusChanged: {
         if (page.status === PageStatus.Active) {
-            if (page.nearText === "Current position")
+            if (page.nearText === qsTranslate("", "Current position"))
                 page.near = map.getPosition();
             var resultPage = app.pageStack.pushAttached("NearbyResultsPage.qml");
             resultPage.populated = false;

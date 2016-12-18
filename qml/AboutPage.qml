@@ -29,11 +29,11 @@ Page {
         Column {
             id: column
             width: parent.width
-            PageHeader { title: "About Poor Maps" }
+            PageHeader { title: qsTranslate("", "About Poor Maps") }
             ListItemLabel {
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
-                text: "version %1".arg(py.evaluate("poor.__version__"))
+                text: qsTranslate("", "version %1").arg(py.evaluate("poor.__version__"))
             }
             ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall
@@ -57,7 +57,7 @@ Page {
                 horizontalAlignment: implicitWidth > parent.width -
                     anchors.leftMargin - anchors.rightMargin ?
                     Text.AlignLeft : Text.AlignHCenter
-                text: "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later."
+                text: qsTranslate("", "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later.")
                 wrapMode: Text.WordWrap
             }
         }

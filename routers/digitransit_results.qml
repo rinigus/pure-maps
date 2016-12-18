@@ -47,7 +47,7 @@ Page {
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight + Theme.paddingMedium
-                text: "Route %1. total %2"
+                text: qsTranslate("", "Route %1. total %2")
                     .arg(listItem.result.alternative)
                     .arg(py.call_sync("poor.util.format_time", [listItem.result.duration]))
                 verticalAlignment: Text.AlignBottom
@@ -125,8 +125,8 @@ Page {
                         id: nameLabel
                         height: implicitHeight + Theme.paddingSmall
                         text: leg.mode === "walk" ?
-                            "Walk %1".arg(page.formatLength(leg.length)) :
-                            "%1 → %2".arg(leg.dep_name).arg(leg.arr_name)
+                            qsTranslate("", "Walk %1").arg(page.formatLength(leg.length)) :
+                            qsTranslate("", "%1 → %2").arg(leg.dep_name).arg(leg.arr_name)
                         truncationMode: TruncationMode.Fade
                         verticalAlignment: Text.AlignVCenter
                         width: parent.width - x - Theme.horizontalPageMargin
@@ -158,7 +158,7 @@ Page {
                     "x": listItem.result.x,
                     "y": listItem.result.y,
                     "mode": "transit",
-                    "attribution": "Routing courtesy of Digitransit."
+                    "attribution": qsTranslate("", "Routing courtesy of %1.").arg("Digitransit")
                 });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();
@@ -179,7 +179,7 @@ Page {
             listView.model.clear();
             page.loading = true;
             page.title = "";
-            busy.text = "Searching";
+            busy.text = qsTranslate("", "Searching");
         } else if (page.status === PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
@@ -201,13 +201,13 @@ Page {
                 page.title = "";
                 busy.error = results.message;
             } else if (results && results.length > 0) {
-                page.title = "Results";
+                page.title = qsTranslate("", "Results");
                 page.results = results;
                 for (var i = 0; i < results.length; i++)
                     listView.model.append(results[i]);
             } else {
                 page.title = "";
-                busy.error = "No results";
+                busy.error = qsTranslate("", "No results");
             }
             page.loading = false;
             page.populated = true;

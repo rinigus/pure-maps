@@ -22,11 +22,11 @@ import Sailfish.Silica 1.0
 Column {
     ComboBox {
         id: typeComboBox
-        label: "Type"
+        label: qsTranslate("", "Type")
         menu: ContextMenu {
-            MenuItem { text: "Car" }
-            MenuItem { text: "Bicycle" }
-            MenuItem { text: "Pedestrian" }
+            MenuItem { text: qsTranslate("", "Car") }
+            MenuItem { text: qsTranslate("", "Bicycle") }
+            MenuItem { text: qsTranslate("", "Pedestrian") }
         }
         property var keys: ["auto", "bicycle", "pedestrian"]
         Component.onCompleted: {

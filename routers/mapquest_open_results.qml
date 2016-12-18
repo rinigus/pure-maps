@@ -30,7 +30,7 @@ Page {
     }
     onStatusChanged: {
         if (page.status === PageStatus.Activating) {
-            busy.text = "Searching";
+            busy.text = qsTranslate("", "Searching");
         } else if (page.status === PageStatus.Active) {
             page.findRoute();
         }
@@ -49,14 +49,14 @@ Page {
                     "x": route.x,
                     "y": route.y,
                     "mode": "car",
-                    "attribution": "Routing courtesy of MapQuest."
+                    "attribution": qsTranslate("", "Routing courtesy of %1.").arg("MapQuest")
                 });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.navigateBack(PageStackAction.Immediate);
             } else {
-                busy.error = "No results";
+                busy.error = qsTranslate("", "No results");
                 page.loading = false;
             }
         });

@@ -45,7 +45,7 @@ Page {
             ContextMenu {
                 id: contextMenu
                 MenuItem {
-                    text: "Remove"
+                    text: qsTranslate("", "Remove")
                     onClicked: {
                         py.call_sync("poor.app.history.remove_place", [model.place]);
                         page.history = py.evaluate("poor.app.history.places");
@@ -64,11 +64,11 @@ Page {
             width: parent.width
             PageHeader {
                 id: header
-                title: "Search"
+                title: qsTranslate("", "Search")
             }
             ValueButton {
                 id: usingButton
-                label: "Using"
+                label: qsTranslate("", "Using")
                 height: Theme.itemSizeSmall
                 value: py.evaluate("poor.app.geocoder.name")
                 width: parent.width
@@ -81,7 +81,7 @@ Page {
             }
             SearchField {
                 id: searchField
-                placeholderText: "Address, landmark, etc."
+                placeholderText: qsTranslate("", "Address, landmark, etc.")
                 width: parent.width
                 EnterKey.enabled: text.length > 0
                 EnterKey.onClicked: app.pageStack.navigateForward();

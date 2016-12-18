@@ -56,7 +56,7 @@ MapQuickItem {
                 anchors.bottomMargin: bubble.padding
                 anchors.left: parent.left
                 anchors.leftMargin: bubble.padding
-                text: "Navigate"
+                text: qsTranslate("", "Navigate")
                 onClicked: {
                     var x = marker.coordinate.longitude;
                     var y = marker.coordinate.latitude;
@@ -72,7 +72,7 @@ MapQuickItem {
                 anchors.bottomMargin: bubble.padding
                 anchors.left: routeButton.right
                 anchors.leftMargin: Theme.paddingMedium
-                text: "Nearby"
+                text: qsTranslate("", "Nearby")
                 onClicked: {
                     var x = marker.coordinate.longitude;
                     var y = marker.coordinate.latitude;
@@ -88,7 +88,7 @@ MapQuickItem {
                 anchors.bottomMargin: bubble.padding
                 anchors.left: nearbyButton.right
                 anchors.leftMargin: Theme.paddingMedium
-                text: "Share"
+                text: qsTranslate("", "Share")
                 onClicked: {
                     var x = marker.coordinate.longitude;
                     var y = marker.coordinate.latitude;
@@ -104,7 +104,7 @@ MapQuickItem {
                 anchors.bottomMargin: bubble.padding
                 anchors.right: parent.right
                 anchors.rightMargin: bubble.padding
-                text: "Web"
+                text: qsTranslate("", "Web")
                 useHighlight: true
                 visible: marker.link.length > 0
                 onClicked: Qt.openUrlExternally(marker.link);

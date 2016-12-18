@@ -23,7 +23,7 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
-    property string title: "Basemaps"
+    property string title: qsTranslate("", "Basemaps")
     SilicaListView {
         id: listView
         anchors.fill: parent
@@ -45,7 +45,7 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + 1.5*Theme.paddingMedium
-                text: "Source: %1\n%2".arg(model.source).arg(model.attribution)
+                text: qsTranslate("", "Source: %1\n%2").arg(model.source).arg(model.attribution)
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {
@@ -62,7 +62,7 @@ Page {
         model: ListModel {}
         PullDownMenu {
             MenuItem {
-                text: "All"
+                text: qsTranslate("", "All")
                 onClicked: page.setFilter("");
             }
             MenuItem {
@@ -81,7 +81,7 @@ Page {
             py.call("poor.util.get_basemaps", [], function(basemaps) {
                 for (var i = 0; i < basemaps.length; i++) {
                     if (basemaps[i].pid === defpid)
-                        basemaps[i].name = "%1 (default)".arg(basemaps[i].name);
+                        basemaps[i].name = qsTranslate("", "%1 (default)").arg(basemaps[i].name);
                     basemaps[i].visible = true;
                     listView.model.append(basemaps[i]);
                 }
@@ -101,7 +101,7 @@ Page {
             listView.model.setProperty(i, "visible", visible);
         }
         page.title = filter.length > 0 ?
-            "Basemaps %1".arg(filter) : "Basemaps";
+            qsTranslate("", "Basemaps %1").arg(filter) : qsTranslate("", "Basemaps");
     }
     function setFilter(value) {
         // Set value of the scale filter and update.

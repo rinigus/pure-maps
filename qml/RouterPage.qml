@@ -44,7 +44,7 @@ Dialog {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + 1.5*Theme.paddingMedium
-                text: "%1\nModes: %2\nSource: %3\n%4".arg(model.description).arg(model.modes).arg(model.source).arg(model.attribution)
+                text: qsTranslate("", "%1\nModes: %2\nSource: %3\n%4").arg(model.description).arg(model.modes).arg(model.source).arg(model.attribution)
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
             }
@@ -62,7 +62,7 @@ Dialog {
             py.call("poor.util.get_routers", [], function(routers) {
                 for (var i = 0; i < routers.length; i++) {
                     if (routers[i].pid === defpid)
-                        routers[i].name = "%1 (default)".arg(routers[i].name);
+                        routers[i].name = qsTranslate("", "%1 (default)").arg(routers[i].name);
                     listView.model.append(routers[i]);
                 }
             });

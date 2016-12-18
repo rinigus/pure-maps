@@ -46,14 +46,14 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: messageLabel.bottom
         anchors.topMargin: 2*Theme.paddingLarge
-        text: "SMS"
+        text: qsTranslate("", "SMS")
         onClicked: {
             // XXX: SMS links don't work without a recipient.
             // http://together.jolla.com/question/84134/
             Clipboard.text = page.formatMessage(false);
             infoLabel.text = [
-                "Message copied to the clipboard",
-                "Launching the Messages application"
+                qsTranslate("", "Message copied to the clipboard"),
+                qsTranslate("", "Launching the Messages application")
             ].join("\n");
             py.call("poor.util.popen", [
                 "/usr/bin/invoker",
@@ -67,10 +67,10 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: smsButton.bottom
         anchors.topMargin: Theme.paddingLarge
-        text: "Email"
+        text: qsTranslate("", "Email")
         onClicked: {
             var link = "mailto:?body=%1".arg(page.formatMessage(false));
-            infoLabel.text = "Launching the Email application";
+            infoLabel.text = qsTranslate("", "Launching the Email application");
             Qt.openUrlExternally(link);
         }
     }
@@ -79,10 +79,10 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: emailButton.bottom
         anchors.topMargin: Theme.paddingLarge
-        text: "Other"
+        text: qsTranslate("", "Other")
         onClicked: {
             Clipboard.text = page.formatMessage(false);
-            infoLabel.text = "Message copied to the clipboard";
+            infoLabel.text = qsTranslate("", "Message copied to the clipboard");
         }
     }
     ListItemLabel {
