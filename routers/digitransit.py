@@ -27,6 +27,8 @@ import os
 import poor
 import re
 
+from poor.i18n import _
+
 GRAPHQL = "{}.graphql".format(os.path.splitext(__file__)[0])
 BODY = open(GRAPHQL, "r").read().strip()
 BODY = re.sub(r"\{(\s*)$", r"{{\1", BODY, flags=re.MULTILINE)
