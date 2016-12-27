@@ -33,7 +33,8 @@ URL = ("http://open.mapquestapi.com/nominatim/v1/search.php"
        "&addressdetails=1"
        "&limit={limit}"
        "&bounded=1"
-       "&viewbox={xmin:.5f},{ymax:.5f},{xmax:.5f},{ymin:.5f}")
+       "&viewbox={xmin:.5f},{ymax:.5f},{xmax:.5f},{ymin:.5f}"
+       "&accept-language={lang}")
 
 cache = {}
 
@@ -59,6 +60,7 @@ def nearby(query, near, radius, params):
     x, y = prepare_point(near)
     xmin, xmax, ymin, ymax = get_bbox(x, y, radius)
     limit = params.get("limit", 50)
+    lang = poor.util.get_default_language("en")
     url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])

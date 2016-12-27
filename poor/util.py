@@ -21,6 +21,7 @@ import contextlib
 import functools
 import glob
 import json
+import locale
 import math
 import os
 import poor
@@ -32,6 +33,8 @@ import sys
 import time
 import traceback
 import urllib.parse
+
+from poor.i18n import _
 
 
 @contextlib.contextmanager
@@ -151,15 +154,15 @@ def format_bearing(bearing):
     """Format `bearing` to a human readable string."""
     bearing = (bearing + 360) % 360
     bearing = int(round(bearing/45)*45)
-    if bearing ==   0: return "north"
-    if bearing ==  45: return "north-east"
-    if bearing ==  90: return "east"
-    if bearing == 135: return "south-east"
-    if bearing == 180: return "south"
-    if bearing == 225: return "south-west"
-    if bearing == 270: return "west"
-    if bearing == 315: return "north-west"
-    if bearing == 360: return "north"
+    if bearing ==   0: return _("north")
+    if bearing ==  45: return _("north-east")
+    if bearing ==  90: return _("east")
+    if bearing == 135: return _("south-east")
+    if bearing == 180: return _("south")
+    if bearing == 225: return _("south-west")
+    if bearing == 270: return _("west")
+    if bearing == 315: return _("north-west")
+    if bearing == 360: return _("north")
     raise ValueError("Unexpected bearing: {}"
                      .format(repr(bearing)))
 
@@ -262,6 +265,14 @@ def get_basemaps():
     """Return a list of dictionaries of basemap attributes."""
     return list(filter(lambda x: x.get("type", "basemap") == "basemap",
                        _get_providers("tilesources", poor.conf.basemap)))
+
+def get_default_language(fallback="en"):
+    """Return the system default language code or `fallback`."""
+    return (locale.getdefaultlocale()[0] or fallback)[:2]
+
+def get_default_locale(fallback="en_US"):
+    """Return the system default locale code or `fallback`."""
+    return (locale.getdefaultlocale()[0] or fallback)[:5]
 
 def get_geocoders():
     """Return a list of dictionaries of geocoder attributes."""

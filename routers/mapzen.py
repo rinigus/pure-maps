@@ -68,7 +68,7 @@ ICONS = { 0: "flag",
          36: "flag",
 }
 
-URL = "http://valhalla.mapzen.com/route?api_key=valhalla-bm7qrlo&json={input}"
+URL = "http://valhalla.mapzen.com/route?api_key=valhalla-bm7qrlo&json={input}&language={lang}"
 cache = {}
 
 def prepare_endpoint(point):
@@ -85,6 +85,7 @@ def route(fm, to, params):
     type = poor.conf.routers.mapzen.type
     input = dict(locations=[fm, to], costing=type)
     input = urllib.parse.quote(json.dumps(input))
+    lang = poor.util.get_default_language("en")
     url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])

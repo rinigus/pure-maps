@@ -53,20 +53,20 @@ CONF_DEFAULTS = {
 HEADERS = {"Content-Type": "application/graphql"}
 
 MODES = {
- "AIRPLANE": "airplane",
-      "BUS": "bus",
-    "FERRY": "ferry",
-     "RAIL": "train",
-   "SUBWAY": "metro",
-     "TRAM": "tram",
-     "WALK": "walk",
+ "AIRPLANE": _("airplane"),
+      "BUS": _("bus"),
+    "FERRY": _("ferry"),
+     "RAIL": _("train"),
+   "SUBWAY": _("metro"),
+     "TRAM": _("tram"),
+     "WALK": _("walk"),
 }
 
 NARRATIVE = {
-    "00": "Walk towards {arr_name}.",
-    "01": "Board {mode} {line_desc} at {dep_name} at {dep_time}.",
-    "10": "Get off at {dep_name} and walk towards {arr_name}.",
-    "11": "Get off at {dep_name} and transfer to {mode} {line_desc} at {dep_time}.",
+    "00": _("Walk towards {arr_name}."),
+    "01": _("Board {mode} {line_desc} at {dep_name} at {dep_time}."),
+    "10": _("Get off at {dep_name} and walk towards {arr_name}."),
+    "11": _("Get off at {dep_name} and transfer to {mode} {line_desc} at {dep_time}."),
 }
 
 URL = "http://api.digitransit.fi/routing/v1/routers/{region}/index/graphql"

@@ -25,13 +25,15 @@ import copy
 import poor
 import urllib.parse
 
-URL = "http://photon.komoot.de/api/?q={query}&limit={limit}"
+URL = "http://photon.komoot.de/api/?q={query}&limit={limit}&lang={lang}"
 cache = {}
 
 def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 10)
+    lang = poor.util.get_default_language("en")
+    lang = (lang if lang in ("de", "en", "it", "fr") else "en")
     url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])

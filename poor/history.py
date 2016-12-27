@@ -21,6 +21,8 @@ import os
 import poor
 import sys
 
+from poor.i18n import _
+
 __all__ = ("HistoryManager",)
 
 
@@ -28,7 +30,7 @@ class HistoryManager:
 
     """Managing a history of search queries."""
 
-    _places_blacklist = ["Current position"]
+    _places_blacklist = ["Current position", _("Current position")]
 
     def __init__(self, max_size=1000):
         """Initialize a :class:`HistoryManager` instance."""

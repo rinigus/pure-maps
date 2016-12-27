@@ -26,6 +26,8 @@ import socket
 import sys
 import traceback
 
+from poor.i18n import _
+
 __all__ = ("Geocoder",)
 
 RE_GEO_URI = re.compile(r"\bgeo:([\d.]+),([\d.]+)\b", re.IGNORECASE)
@@ -76,7 +78,7 @@ class Geocoder:
         match = RE_GEO_URI.search(query)
         if match is not None:
             qy, qx = map(float, match.groups())
-            return [dict(title="Point from geo link",
+            return [dict(title=_("Point from geo link"),
                          description=match.group(0),
                          x=qx,
                          y=qy,
@@ -85,7 +87,7 @@ class Geocoder:
         try:
             results = self._provider.geocode(query, params)
         except socket.timeout:
-            return dict(error=True, message="Connection timed out")
+            return dict(error=True, message=_("Connection timed out"))
         except Exception:
             print("Geocoding failed:", file=sys.stderr)
             traceback.print_exc()
