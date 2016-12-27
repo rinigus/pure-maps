@@ -45,7 +45,10 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + 1.5*Theme.paddingMedium
-                text: qsTranslate("", "Source: %1\n%2").arg(model.source).arg(model.attribution)
+                text: [
+                    qsTranslate("", "Source: %1").arg(model.source),
+                    model.attribution
+                ].join("\n")
                 verticalAlignment: Text.AlignTop
             }
             onClicked: {

@@ -31,7 +31,10 @@ Page {
             TextSwitch {
                 id: overlaySwitch
                 checked: model.active
-                description: qsTranslate("", "Source: %1\n%2").arg(model.source).arg(model.attribution)
+                description: [
+                    qsTranslate("", "Source: %1").arg(model.source),
+                    model.attribution
+                ].join("\n")
                 text: model.name
                 // Avoid implicit line breaks.
                 width: 3*parent.width

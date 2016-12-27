@@ -44,7 +44,11 @@ Dialog {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + 1.5*Theme.paddingMedium
-                text: qsTranslate("", "%1\nSource: %2\n%3").arg(model.description).arg(model.source).arg(model.attribution)
+                text: [
+                    model.description,
+                    qsTranslate("", "Source: %1").arg(model.source),
+                    model.attribution
+                ].join("\n")
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
             }
