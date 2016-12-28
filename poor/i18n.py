@@ -22,7 +22,7 @@ import locale
 import poor
 
 _translation = gettext.translation(
-    "poor",
+    "poor-maps",
     localedir=poor.LOCALE_DIR,
     languages=[locale.getdefaultlocale()[0] or ""],
     fallback=True)

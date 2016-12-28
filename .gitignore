@@ -3,4 +3,5 @@
 .tern-port
 __pycache__
 dist
+po/*.ts
 rpm/*.rpm
