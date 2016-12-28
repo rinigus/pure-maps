@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-28 04:06+0200\n"
-"PO-Revision-Date: 2016-12-27 23:19+0200\n"
+"POT-Creation-Date: 2016-12-28 18:47+0200\n"
+"PO-Revision-Date: 2016-12-28 19:11+0200\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>\n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: poor/geocoder.py:81
+#: poor/geocoder.py:79
 msgid "Point from geo link"
-msgstr ""
+msgstr "Piste geolinkistä"
 
-#: poor/geocoder.py:90 poor/guide.py:96 poor/router.py:93
+#: poor/geocoder.py:88 poor/guide.py:94 poor/router.py:93
 msgid "Connection timed out"
-msgstr ""
+msgstr "Yhteys aikakatkaistiin"
 
 #: poor/history.py:33 qml/NearbyPage.qml:27 qml/NearbyPage.qml:76
 #: qml/NearbyPage.qml:83 qml/NearbyPage.qml:148 qml/NearbyPage.qml:156
@@ -32,113 +32,126 @@ msgstr ""
 #: qml/RoutePage.qml:146 qml/RoutePage.qml:150 qml/RoutePage.qml:152
 #: qml/RoutePointPage.qml:73 qml/RoutePointPage.qml:76
 msgid "Current position"
-msgstr ""
+msgstr "Nykyinen sijainti"
 
-#: poor/util.py:157 poor/util.py:165
-msgid "north"
-msgstr ""
+#: poor/util.py:217 poor/util.py:225
+#, python-brace-format
+msgid "{distance} north"
+msgstr "{distance} pohjoiseen"
 
-#: poor/util.py:158
-msgid "north-east"
-msgstr ""
+#: poor/util.py:218
+#, python-brace-format
+msgid "{distance} north-east"
+msgstr "{distance} koilliseen"
 
-#: poor/util.py:159
-msgid "east"
-msgstr ""
+#: poor/util.py:219
+#, python-brace-format
+msgid "{distance} east"
+msgstr "{distance} itään"
 
-#: poor/util.py:160
-msgid "south-east"
-msgstr ""
+#: poor/util.py:220
+#, python-brace-format
+msgid "{distance} south-east"
+msgstr "{distance} kaakkoon"
 
-#: poor/util.py:161
-msgid "south"
-msgstr ""
+#: poor/util.py:221
+#, python-brace-format
+msgid "{distance} south"
+msgstr "{distance} etelään"
 
-#: poor/util.py:162
-msgid "south-west"
-msgstr ""
+#: poor/util.py:222
+#, python-brace-format
+msgid "{distance} south-west"
+msgstr "{distance} lounaaseen"
 
-#: poor/util.py:163
-msgid "west"
-msgstr ""
+#: poor/util.py:223
+#, python-brace-format
+msgid "{distance} west"
+msgstr "{distance} länteen"
 
-#: poor/util.py:164
-msgid "north-west"
-msgstr ""
+#: poor/util.py:224
+#, python-brace-format
+msgid "{distance} north-west"
+msgstr "{distance} luoteeseen"
 
 #: routers/digitransit.py:58
 msgid "airplane"
-msgstr ""
+msgstr "lentokone"
 
 #: routers/digitransit.py:59
 msgid "bus"
-msgstr ""
+msgstr "bussi"
 
 #: routers/digitransit.py:60
 msgid "ferry"
-msgstr ""
+msgstr "lautta"
 
 #: routers/digitransit.py:61
 msgid "train"
-msgstr ""
+msgstr "juna"
 
 #: routers/digitransit.py:62
 msgid "metro"
-msgstr ""
+msgstr "metro"
 
 #: routers/digitransit.py:63
 msgid "tram"
-msgstr ""
+msgstr "raitiovaunu"
 
 #: routers/digitransit.py:64
 msgid "walk"
-msgstr ""
+msgstr "kävely"
 
 #: routers/digitransit.py:68
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr ""
+msgstr "Kävele kohti paikkaa {arr_name}"
 
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Board {mode} {line_desc} at {dep_name} at {dep_time}."
 msgstr ""
+"Nouse välineeseen {mode} {line_desc} pysäkillä {dep_name} klo. {dep_time}."
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr ""
+msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti paikkaa {arr_name}."
 
 #: routers/digitransit.py:71
 #, python-brace-format
 msgid "Get off at {dep_name} and transfer to {mode} {line_desc} at {dep_time}."
 msgstr ""
+"Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode} {line_desc}\n"
+"klo. {dep_time}."
 
 #: guides/foursquare_settings.qml:25
 msgid "Prefer"
-msgstr ""
+msgstr "Mieluiten"
 
 #: guides/foursquare_settings.qml:27
 msgid "Closest"
-msgstr ""
+msgstr "Lähimmät"
 
 #: guides/foursquare_settings.qml:28
 msgid "Best"
-msgstr ""
+msgstr "Parhaat"
 
 #: qml/AboutPage.qml:32
 msgid "About Poor Maps"
-msgstr ""
+msgstr "Tietoja Poor Mapsista"
 
 #: qml/AboutPage.qml:36
 msgid "version %1"
-msgstr ""
+msgstr "versio %1"
 
 #: qml/AboutPage.qml:60
 msgid ""
 "Poor Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
+"Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public\n"
+"License (GPL), versio 3 tai uudempi."
 
 #. TRANSLATORS: This is a special message that shouldn't be
 #. translated literally. It is used in the about page to give
@@ -148,528 +161,534 @@ msgstr ""
 #. them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:74
 msgid "translator-credits"
-msgstr ""
+msgstr "Osmo Salomaa"
 
 #: qml/AboutPage.qml:83
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
+"Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten\n"
+"käännösten parantamiseen Transifexissa."
 
 #: qml/BasemapPage.qml:26 qml/BasemapPage.qml:107
 msgid "Basemaps"
-msgstr ""
+msgstr "Pohjakartat"
 
 #: qml/BasemapPage.qml:49 qml/GeocoderPage.qml:49 qml/GuidePage.qml:49
 #: qml/OverlayPage.qml:35 qml/RouterPage.qml:50
 msgid "Source: %1"
-msgstr ""
+msgstr "Lähde: %1"
 
 #: qml/BasemapPage.qml:68
 msgid "All"
-msgstr ""
+msgstr "Kaikki"
 
 #: qml/BasemapPage.qml:87 qml/GeocoderPage.qml:69 qml/GuidePage.qml:69
 #: qml/RouterPage.qml:70
 msgid "%1 (default)"
-msgstr ""
+msgstr "%1 (oletus)"
 
 #: qml/BasemapPage.qml:107
 msgid "Basemaps %1"
-msgstr ""
+msgstr "Pohjakartat %1"
 
 #: qml/CachePage.qml:50
 msgid "%1 tiles · %2"
-msgstr ""
+msgstr "%1 laattaa · %2"
 
 #: qml/CachePage.qml:57
 msgid "Remove older than one week"
-msgstr ""
+msgstr "Poista viikkoa vanhemmat"
 
 #: qml/CachePage.qml:58 qml/CachePage.qml:64 qml/CachePage.qml:70
 #: qml/CachePage.qml:76 qml/CachePage.qml:82 qml/CachePage.qml:88
 msgid "Removing"
-msgstr ""
+msgstr "Poistetaan"
 
 #: qml/CachePage.qml:63
 msgid "Remove older than one month"
-msgstr ""
+msgstr "Poista kuukautta vanhemmat"
 
 #: qml/CachePage.qml:69
 msgid "Remove older than three months"
-msgstr ""
+msgstr "Poista kolmea kuukautta vanhemmat"
 
 #: qml/CachePage.qml:75
 msgid "Remove older than six months"
-msgstr ""
+msgstr "Poista kuutta kuukautta vanhemmat"
 
 #: qml/CachePage.qml:81
 msgid "Remove older than one year"
-msgstr ""
+msgstr "Poista vuotta vanhemmat"
 
 #: qml/CachePage.qml:87
 msgid "Remove all"
-msgstr ""
+msgstr "Poista kaikki"
 
 #: qml/CachePage.qml:108
 msgid "Calculating"
-msgstr ""
+msgstr "Lasketaan"
 
 #: qml/CachePage.qml:116
 msgid "Map Tile Cache"
-msgstr ""
+msgstr "Karttalaattavälimuisti"
 
 #: qml/CachePage.qml:121
-msgid "No cache, or error"
-msgstr ""
+msgid "Empty cache, or error"
+msgstr "Tyhjä välimuisti, tai virhe"
 
 #: qml/GeocodePage.qml:48 qml/PlaceTypePage.qml:48 qml/RoutePointPage.qml:48
 msgid "Remove"
-msgstr ""
+msgstr "Poista"
 
 #: qml/GeocodePage.qml:67 qml/MenuPage.qml:37
 msgid "Search"
-msgstr ""
+msgstr "Haku"
 
 #: qml/GeocodePage.qml:71 qml/NearbyPage.qml:53 qml/RoutePage.qml:45
 msgid "Using"
-msgstr ""
+msgstr "Käyttäen"
 
 #: qml/GeocodePage.qml:84 qml/RoutePointPage.qml:82
 msgid "Address, landmark, etc."
-msgstr ""
+msgstr "Osoite, maamerkki, ym."
 
 #: qml/GeocodingResultsPage.qml:84 qml/NearbyResultsPage.qml:84
 msgid "Show all"
-msgstr ""
+msgstr "Näytä kaikki"
 
 #: qml/GeocodingResultsPage.qml:116 qml/NearbyResultsPage.qml:116
 #: routers/digitransit_results.qml:182 routers/mapquest_open_results.qml:33
 #: routers/mapzen_results.qml:33 routers/osmscout_results.qml:34
 #: routers/osrm_results.qml:33
 msgid "Searching"
-msgstr ""
+msgstr "Haetaan"
 
 #: qml/GeocodingResultsPage.qml:137 qml/NearbyResultsPage.qml:134
 msgid "%1 Results"
-msgstr ""
+msgstr "%1 tulosta"
 
 #: qml/GeocodingResultsPage.qml:142 qml/NearbyResultsPage.qml:139
 #: routers/digitransit_results.qml:210 routers/mapquest_open_results.qml:59
 #: routers/mapzen_results.qml:59 routers/osmscout_results.qml:60
 #: routers/osrm_results.qml:59
 msgid "No results"
-msgstr ""
+msgstr "Ei tuloksia"
 
 #: qml/MapMouseArea.qml:31 qml/MapMouseArea.qml:32
 msgid "Unnamed point"
-msgstr ""
+msgstr "Nimetön piste"
 
 #: qml/MenuPage.qml:45 qml/NarrativePage.qml:102 qml/RoutePage.qml:42
 msgid "Navigation"
-msgstr ""
+msgstr "Navigointi"
 
 #: qml/MenuPage.qml:52
 msgid "Nearby venues"
-msgstr ""
+msgstr "Läheiset paikat"
 
 #: qml/MenuPage.qml:59
 msgid "Share current position"
-msgstr ""
+msgstr "Jaa nykyinen sijainti"
 
 #: qml/MenuPage.qml:74
 msgid "Share Current Position"
-msgstr ""
+msgstr "Jaa nykyinen sijainti"
 
 #: qml/MenuPage.qml:80
 msgid "Center on current position"
-msgstr ""
+msgstr "Keskitä nykyiseen sijaintiin"
 
 #: qml/MenuPage.qml:88
 msgid "Clear map"
-msgstr ""
+msgstr "Tyhjennä kartta"
 
 #: qml/MenuPage.qml:96
 msgid "Basemaps and overlays"
-msgstr ""
+msgstr "Pohjakartat ja peittotasot"
 
 #: qml/MenuPage.qml:106
 msgid "Auto-center on position"
-msgstr ""
+msgstr "Keskitä sijainnin muuttuessa"
 
 #: qml/MenuPage.qml:122
 msgid "Auto-rotate on direction"
-msgstr ""
+msgstr "Kierrä suunnan muuttuessa"
 
 #: qml/MenuPage.qml:135
 msgid "About"
-msgstr ""
+msgstr "Tietoja"
 
 #: qml/MenuPage.qml:139 qml/PreferencesPage.qml:32
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 #: qml/NarrativePage.qml:85
 msgid "Continue for %1."
-msgstr ""
+msgstr "Jatka %1."
 
 #: qml/NarrativePage.qml:110
 msgid "Begin"
-msgstr ""
+msgstr "Aloita"
 
 #: qml/NarrativePage.qml:117
 msgid "Pause"
-msgstr ""
+msgstr "Tauko"
 
 #: qml/NarrativePage.qml:124
 msgid "Clear"
-msgstr ""
+msgstr "Tyhjennä"
 
 #: qml/NarrativePage.qml:138
 msgid "Distance remaining"
-msgstr ""
+msgstr "Matkaa jäljellä"
 
 #: qml/NarrativePage.qml:145
 msgid "Time remaining"
-msgstr ""
+msgstr "Aikaa jäljellä"
 
 #: qml/NavigationBlock.qml:79
 msgid "Tap to review maneuvers or begin navigating"
-msgstr ""
+msgstr "Napauta tarkastellaksesi reitin vaiheita tai aloittaaksesi navigoinnin"
 
 #: qml/NearbyPage.qml:50
 msgid "Nearby Venues"
-msgstr ""
+msgstr "Läheiset paikat"
 
 #: qml/NearbyPage.qml:67
 msgid "Near"
-msgstr ""
+msgstr "Lähellä"
 
 #: qml/NearbyPage.qml:96 routers/mapquest_open_settings.qml:25
 #: routers/mapzen_settings.qml:25 routers/osmscout_settings.qml:25
 msgid "Type"
-msgstr ""
+msgstr "Tyyppi"
 
 #: qml/NearbyPage.qml:110
 msgid "Radius"
-msgstr ""
+msgstr "Säde"
 
 #: qml/NorthArrow.qml:35
 msgid "Auto-rotate off"
-msgstr ""
+msgstr "Automaattinen kierto pois päältä"
 
 #: qml/NorthArrow.qml:38
 msgid "Auto-rotate on"
-msgstr ""
+msgstr "Automaattinen kierto päällä"
 
 #: qml/OverlayPage.qml:62
 msgid "Overlays"
-msgstr ""
+msgstr "Peitetasot"
 
 #: qml/PlaceTypePage.qml:68
 msgid "Type of venue"
-msgstr ""
+msgstr "Paikan tyyppi"
 
 #: qml/PoiMarker.qml:59
 msgid "Navigate"
-msgstr ""
+msgstr "Navigoi"
 
 #: qml/PoiMarker.qml:75
 msgid "Nearby"
-msgstr ""
+msgstr "Lähellä"
 
 #: qml/PoiMarker.qml:91
 msgid "Share"
-msgstr ""
+msgstr "Jaa"
 
 #: qml/PoiMarker.qml:107
 msgid "Web"
-msgstr ""
+msgstr "WWW"
 
 #: qml/PositionMarker.qml:62
 msgid "Auto-center off"
-msgstr ""
+msgstr "Automaattinen keskitys pois päältä"
 
 #: qml/PositionMarker.qml:65
 msgid "Auto-center on"
-msgstr ""
+msgstr "Automaattinen keskitys päällä"
 
 #: qml/PreferencesPage.qml:36
 msgid ""
 "Uncheck to minimize data traffic. You will be left with previously "
 "downloaded and cached tiles."
 msgstr ""
+"Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää\n"
+"aiemmin ladatut välimuistissa olevat laatat."
 
 #: qml/PreferencesPage.qml:37
 msgid "Allow downloading map tiles"
-msgstr ""
+msgstr "Salli karttalaattojen lataaminen"
 
 #: qml/PreferencesPage.qml:52
 msgid "Show navigation narrative"
-msgstr ""
+msgstr "Näytä navigointiohjeet"
 
 #: qml/PreferencesPage.qml:61
 msgid "Units"
-msgstr ""
+msgstr "Yksiköt"
 
 #: qml/PreferencesPage.qml:63
 msgid "Metric"
-msgstr ""
+msgstr "Metrinen"
 
 #: qml/PreferencesPage.qml:64
 msgid "American"
-msgstr ""
+msgstr "Amerikkalainen"
 
 #: qml/PreferencesPage.qml:65
 msgid "British"
-msgstr ""
+msgstr "Brittiläinen"
 
 #: qml/PreferencesPage.qml:80
 msgid ""
 "Only applies when Poor Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
+"Pätee vain, kun Poor Maps on aktiivisena. Kun minimoituna, lepotilaan \n"
+"siirrytään laitteen normaalien asetusten mukaan."
 
 #: qml/PreferencesPage.qml:81
 msgid "Prevent sleep"
-msgstr ""
+msgstr "Estä lepotila"
 
 #: qml/PreferencesPage.qml:83
 msgid "Never"
-msgstr ""
+msgstr "Ei koskaan"
 
 #: qml/PreferencesPage.qml:84
 msgid "When navigating"
-msgstr ""
+msgstr "Navigoidessa"
 
 #: qml/PreferencesPage.qml:85
 msgid "Always"
-msgstr ""
+msgstr "Aina"
 
 #: qml/PreferencesPage.qml:100
 msgid ""
 "Limiting tile caching ensures up-to-date maps and keeps disk use under "
 "control, but loads maps slower and causes more data traffic."
 msgstr ""
+"Karttalaattojen välimuistin rajoittaminen varmistaa ajantasaiset kartat\n"
+"ja pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa\n"
+"enemmän tiedonsiirtoa."
 
 #: qml/PreferencesPage.qml:101
 msgid "Cache map tiles"
-msgstr ""
+msgstr "Pidä karttalaatat välimuistissa"
 
 #: qml/PreferencesPage.qml:103
 msgid "For one week"
-msgstr ""
+msgstr "Viikon"
 
 #: qml/PreferencesPage.qml:104
 msgid "For one month"
-msgstr ""
+msgstr "Kuukauden"
 
 #: qml/PreferencesPage.qml:105
 msgid "For three months"
-msgstr ""
+msgstr "Kolme kuukautta"
 
 #: qml/PreferencesPage.qml:106
 msgid "For six months"
-msgstr ""
+msgstr "Kuusi kuukautta"
 
 #: qml/PreferencesPage.qml:107
 msgid "For one year"
-msgstr ""
+msgstr "Vuoden"
 
 #: qml/PreferencesPage.qml:108
 msgid "Forever"
-msgstr ""
+msgstr "Ikuisesti"
 
 #: qml/PreferencesPage.qml:133
 msgid "Examine map tile cache"
-msgstr ""
+msgstr "Tarkastele välimuistia"
 
 #: qml/RoutePage.qml:59
 msgid "From"
-msgstr ""
+msgstr "Lähtöpaikka"
 
 #: qml/RoutePage.qml:88
 msgid "To"
-msgstr ""
+msgstr "Määräpaikka"
 
 #: qml/RoutePage.qml:131
 msgid "Reverse endpoints"
-msgstr ""
+msgstr "Käännä päätepisteet"
 
 #: qml/RouterPage.qml:49
 msgid "Modes: %1"
-msgstr ""
+msgstr "Kulkutavat: %1"
 
 #: qml/SharePage.qml:49
 msgid "SMS"
-msgstr ""
+msgstr "Tekstiviesti"
 
 #: qml/SharePage.qml:55 qml/SharePage.qml:85
 msgid "Message copied to the clipboard"
-msgstr ""
+msgstr "Viesti kopioitu leikepöydälle"
 
 #: qml/SharePage.qml:56
 msgid "Launching the Messages application"
-msgstr ""
+msgstr "Käynnistetään Viestit -sovellus"
 
 #: qml/SharePage.qml:70
 msgid "Email"
-msgstr ""
+msgstr "Sähköposti"
 
 #: qml/SharePage.qml:73
 msgid "Launching the Email application"
-msgstr ""
+msgstr "Käynnistetään Sähköpostisovellus"
 
 #: qml/SharePage.qml:82
 msgid "Other"
-msgstr ""
+msgstr "Muu"
 
 #: routers/digitransit_results.qml:50
 msgid "Route %1. total %2"
-msgstr ""
+msgstr "Reitti %1. yhteensä %2"
 
 #: routers/digitransit_results.qml:128
 msgid "Walk %1"
-msgstr ""
+msgstr "Kävellen %1"
 
 #: routers/digitransit_results.qml:129
 msgid "%1 → %2"
-msgstr ""
+msgstr "%1 → %2"
 
 #: routers/digitransit_results.qml:161 routers/mapquest_open_results.qml:52
-#: routers/mapzen_results.qml:52 routers/osrm_results.qml:52
+#: routers/mapzen_results.qml:52 routers/osmscout_results.qml:53
+#: routers/osrm_results.qml:52
 msgid "Routing courtesy of %1."
-msgstr ""
+msgstr "Reitityksen tarjosi %1."
 
 #: routers/digitransit_results.qml:204
 msgid "Results"
-msgstr ""
+msgstr "Tulokset"
 
 #: routers/digitransit_settings.qml:27
 msgid "Region"
-msgstr ""
+msgstr "Alue"
 
 #: routers/digitransit_settings.qml:29
 msgid "HSL"
-msgstr ""
+msgstr "HSL"
 
 #: routers/digitransit_settings.qml:30
 msgid "Waltti"
-msgstr ""
+msgstr "Waltti"
 
 #: routers/digitransit_settings.qml:31
 msgid "Finland"
-msgstr ""
+msgstr "Suomi"
 
 #: routers/digitransit_settings.qml:58 routers/digitransit_settings.qml:63
 #: routers/digitransit_settings.qml:64 routers/digitransit_settings.qml:67
 msgid "Depart"
-msgstr ""
+msgstr "Lähtö"
 
 #: routers/digitransit_settings.qml:63 routers/digitransit_settings.qml:64
 #: routers/digitransit_settings.qml:68
 msgid "Arrive"
-msgstr ""
+msgstr "Saapuminen"
 
 #: routers/digitransit_settings.qml:86
 msgid "Today"
-msgstr ""
+msgstr "Tänään"
 
 #: routers/digitransit_settings.qml:121
 msgid "Now"
-msgstr ""
+msgstr "Nyt"
 
 #: routers/digitransit_settings.qml:147
 msgid "Criterion"
-msgstr ""
+msgstr "Kriteeri"
 
 #: routers/digitransit_settings.qml:149
 msgid "Default"
-msgstr ""
+msgstr "Oletus"
 
 #: routers/digitransit_settings.qml:150
 msgid "Least transfers"
-msgstr ""
+msgstr "Vähiten vaihtoja"
 
 #: routers/digitransit_settings.qml:151
 msgid "Least walking"
-msgstr ""
+msgstr "Vähiten kävelyä"
 
 #: routers/mapquest_open_settings.qml:27 routers/mapzen_settings.qml:27
 #: routers/osmscout_settings.qml:27
 msgid "Car"
-msgstr ""
+msgstr "Auto"
 
 #: routers/mapquest_open_settings.qml:28 routers/mapzen_settings.qml:28
 #: routers/osmscout_settings.qml:28
 msgid "Bicycle"
-msgstr ""
+msgstr "Polkupyörä"
 
 #: routers/mapquest_open_settings.qml:29 routers/mapzen_settings.qml:29
 #: routers/osmscout_settings.qml:29
-msgid "Pedestrian"
-msgstr ""
+msgid "Foot"
+msgstr "Kävely"
 
 #: routers/mapquest_open_settings.qml:46
 msgid "Try to avoid tolls"
-msgstr ""
+msgstr "Yritä välttää tiemaksuja"
 
 #: routers/osmscout_results.qml:29
 msgid "For long routes, this could take up to a minute."
-msgstr ""
-
-#: routers/osmscout_results.qml:53
-msgid "Routing by OSM Scout Server."
-msgstr ""
+msgstr "Pitkille reiteille tämä voi kestää jopa minuutin."
 
 #: standard input:1
 msgid "Geocoding in Finland"
-msgstr ""
+msgstr "Geokoodaus Suomessa"
 
 #: standard input:2 input:3
 msgid "Geocoding based on open data sources"
-msgstr ""
+msgstr "Geokoodaus perustuen avoimiin tietolähteisiin"
 
 #: standard input:4 input:6
 msgid "Geocoding based on OpenStreetMap data"
-msgstr ""
+msgstr "Geokoodaus perustuen OpenStreetMap-aineistoon"
 
 #: standard input:5 input:10 input:15 input:19 input:21 input:23 input:25
 msgid "OSM Scout offline server"
-msgstr ""
+msgstr "OSM Scout offline-palvelin"
 
 #: standard input:7
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr ""
+msgstr "Foursquaren käyttäjien lisäämät ja arvioimat paikat"
 
 #: standard input:8 input:9
 msgid "Points of interest from OpenStreetMap data"
-msgstr ""
+msgstr "Paikkapisteet OpenStreetMap-aineistosta"
 
 #: standard input:11
 msgid "Public transport routing in Finland"
-msgstr ""
+msgstr "Reititys joukkoliikenteellä Suomessa"
 
 #: standard input:12 input:13 input:14 input:16
 msgid "Routing based on OpenStreetMap data"
-msgstr ""
+msgstr "Reititys perustuen OpenStreetMap-aineistoon"
 
 #: standard input:17
 msgid "ASTER GDEM & SRTM Hillshade @1x"
-msgstr ""
+msgstr "ASTER GDEM & SRTM korkeusvarjostus @1x"
 
 #: standard input:18
 msgid "OSM Scout day @1x"
-msgstr ""
+msgstr "OSM Scout päivä @1x"
 
 #: standard input:20
 msgid "OSM Scout day @2x"
-msgstr ""
+msgstr "OSM Scout päivä @2x"
 
 #: standard input:22
 msgid "OSM Scout night @1x"
-msgstr ""
+msgstr "OSM Scout yö @1x"
 
 #: standard input:24
 msgid "OSM Scout night @2x"
-msgstr ""
+msgstr "OSM Scout yö @2x"

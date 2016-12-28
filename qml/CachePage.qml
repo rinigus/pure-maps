@@ -118,7 +118,7 @@ Page {
                     listView.model.append(results[i]);
             } else {
                 page.title = "";
-                busy.error = qsTranslate("", "No cache, or error");
+                busy.error = qsTranslate("", "Empty cache, or error");
             }
             page.loading = false;
         });

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-28 04:06+0200\n"
+"POT-Creation-Date: 2016-12-28 18:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: poor/geocoder.py:81
+#: poor/geocoder.py:79
 msgid "Point from geo link"
 msgstr ""
 
-#: poor/geocoder.py:90 poor/guide.py:96 poor/router.py:93
+#: poor/geocoder.py:88 poor/guide.py:94 poor/router.py:93
 msgid "Connection timed out"
 msgstr ""
 
@@ -34,36 +34,44 @@ msgstr ""
 msgid "Current position"
 msgstr ""
 
-#: poor/util.py:157 poor/util.py:165
-msgid "north"
+#: poor/util.py:217 poor/util.py:225
+#, python-brace-format
+msgid "{distance} north"
 msgstr ""
 
-#: poor/util.py:158
-msgid "north-east"
+#: poor/util.py:218
+#, python-brace-format
+msgid "{distance} north-east"
 msgstr ""
 
-#: poor/util.py:159
-msgid "east"
+#: poor/util.py:219
+#, python-brace-format
+msgid "{distance} east"
 msgstr ""
 
-#: poor/util.py:160
-msgid "south-east"
+#: poor/util.py:220
+#, python-brace-format
+msgid "{distance} south-east"
 msgstr ""
 
-#: poor/util.py:161
-msgid "south"
+#: poor/util.py:221
+#, python-brace-format
+msgid "{distance} south"
 msgstr ""
 
-#: poor/util.py:162
-msgid "south-west"
+#: poor/util.py:222
+#, python-brace-format
+msgid "{distance} south-west"
 msgstr ""
 
-#: poor/util.py:163
-msgid "west"
+#: poor/util.py:223
+#, python-brace-format
+msgid "{distance} west"
 msgstr ""
 
-#: poor/util.py:164
-msgid "north-west"
+#: poor/util.py:224
+#, python-brace-format
+msgid "{distance} north-west"
 msgstr ""
 
 #: routers/digitransit.py:58
@@ -220,7 +228,7 @@ msgid "Map Tile Cache"
 msgstr ""
 
 #: qml/CachePage.qml:121
-msgid "No cache, or error"
+msgid "Empty cache, or error"
 msgstr ""
 
 #: qml/GeocodePage.qml:48 qml/PlaceTypePage.qml:48 qml/RoutePointPage.qml:48
@@ -537,7 +545,8 @@ msgid "%1 → %2"
 msgstr ""
 
 #: routers/digitransit_results.qml:161 routers/mapquest_open_results.qml:52
-#: routers/mapzen_results.qml:52 routers/osrm_results.qml:52
+#: routers/mapzen_results.qml:52 routers/osmscout_results.qml:53
+#: routers/osrm_results.qml:52
 msgid "Routing courtesy of %1."
 msgstr ""
 
@@ -607,7 +616,7 @@ msgstr ""
 
 #: routers/mapquest_open_settings.qml:29 routers/mapzen_settings.qml:29
 #: routers/osmscout_settings.qml:29
-msgid "Pedestrian"
+msgid "Foot"
 msgstr ""
 
 #: routers/mapquest_open_settings.qml:46
@@ -616,10 +625,6 @@ msgstr ""
 
 #: routers/osmscout_results.qml:29
 msgid "For long routes, this could take up to a minute."
-msgstr ""
-
-#: routers/osmscout_results.qml:53
-msgid "Routing by OSM Scout Server."
 msgstr ""
 
 #: standard input:1

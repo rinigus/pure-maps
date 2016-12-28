@@ -60,10 +60,8 @@ class Geocoder:
     def _format_distance(self, x1, y1, x2, y2):
         """Calculate and format a human readable distance string."""
         distance = poor.util.calculate_distance(x1, y1, x2, y2)
-        distance = poor.util.format_distance(distance)
         bearing  = poor.util.calculate_bearing(x1, y1, x2, y2)
-        bearing  = poor.util.format_bearing(bearing)
-        return "{} {}".format(distance, bearing)
+        return poor.util.format_distance_and_bearing(distance, bearing)
 
     def geocode(self, query, params=None, x=0, y=0):
         """

@@ -150,22 +150,6 @@ def decode_epl(string, precision=5):
         yout.append(y / 10**precision)
     return xout, yout
 
-def format_bearing(bearing):
-    """Format `bearing` to a human readable string."""
-    bearing = (bearing + 360) % 360
-    bearing = int(round(bearing/45)*45)
-    if bearing ==   0: return _("north")
-    if bearing ==  45: return _("north-east")
-    if bearing ==  90: return _("east")
-    if bearing == 135: return _("south-east")
-    if bearing == 180: return _("south")
-    if bearing == 225: return _("south-west")
-    if bearing == 270: return _("west")
-    if bearing == 315: return _("north-west")
-    if bearing == 360: return _("north")
-    raise ValueError("Unexpected bearing: {}"
-                     .format(repr(bearing)))
-
 def format_distance(meters, n=2):
     """Format `meters` to `n` significant digits and unit label."""
     if poor.conf.units == "american":
@@ -223,6 +207,24 @@ def format_distance_metric(meters, n=2):
     distance = round(distance, ndigits)
     fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
     return fstring.format(distance, units)
+
+def format_distance_and_bearing(meters, bearing, n=2):
+    """Format `meters` and `bearing` to a human readable string."""
+    distance = format_distance(meters, n)
+    f = lambda x: x.format(distance=distance)
+    bearing = (bearing + 360) % 360
+    bearing = int(round(bearing/45)*45)
+    if bearing ==   0: return f(_("{distance} north"))
+    if bearing ==  45: return f(_("{distance} north-east"))
+    if bearing ==  90: return f(_("{distance} east"))
+    if bearing == 135: return f(_("{distance} south-east"))
+    if bearing == 180: return f(_("{distance} south"))
+    if bearing == 225: return f(_("{distance} south-west"))
+    if bearing == 270: return f(_("{distance} west"))
+    if bearing == 315: return f(_("{distance} north-west"))
+    if bearing == 360: return f(_("{distance} north"))
+    raise ValueError("Unexpected bearing: {}"
+                     .format(repr(bearing)))
 
 def format_filesize(bytes, n=2):
     """Format `bytes` to `n` significant digits and unit label."""

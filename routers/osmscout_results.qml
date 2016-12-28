@@ -50,7 +50,7 @@ Page {
                     "x": route.x,
                     "y": route.y,
                     "mode": "car",
-                    "attribution": qsTranslate("", "Routing by OSM Scout Server.")
+                    "attribution": qsTranslate("", "Routing courtesy of %1.").arg("OSM Scout Server")
                 });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();

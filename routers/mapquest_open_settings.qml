@@ -26,7 +26,7 @@ Column {
         menu: ContextMenu {
             MenuItem { text: qsTranslate("", "Car") }
             MenuItem { text: qsTranslate("", "Bicycle") }
-            MenuItem { text: qsTranslate("", "Pedestrian") }
+            MenuItem { text: qsTranslate("", "Foot") }
         }
         property var keys: ["fastest", "bicycle", "pedestrian"]
         Component.onCompleted: {
