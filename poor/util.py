@@ -368,7 +368,7 @@ def read_json(path):
             return list(map(translate, value))
         return _(value)
     if isinstance(data, dict):
-        for key in [x for x in dict.keys() if x.startswith("_")]:
+        for key in [x for x in data if x.startswith("_")]:
             data[key[1:]] = translate(data.pop(key))
     return data
 
