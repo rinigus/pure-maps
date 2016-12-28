@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-28 18:47+0200\n"
-"PO-Revision-Date: 2016-12-28 21:51+0200\n"
+"POT-Creation-Date: 2016-12-28 23:08+0200\n"
+"PO-Revision-Date: 2016-12-28 23:35+0200\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>\n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -105,7 +105,7 @@ msgstr "kävely"
 #: routers/digitransit.py:68
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr "Kävele kohti paikkaa {arr_name}"
+msgstr "Kävele kohti pysäkkiä {arr_name}."
 
 #: routers/digitransit.py:69
 #, python-brace-format
@@ -122,20 +122,20 @@ msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti paikkaa {arr_name}."
 #, python-brace-format
 msgid "Get off at {dep_name} and transfer to {mode} {line_desc} at {dep_time}."
 msgstr ""
-"Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode} {line_desc}\n"
-"klo. {dep_time}."
+"Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode} {line_desc} klo. "
+"{dep_time}."
 
 #: guides/foursquare_settings.qml:25
 msgid "Prefer"
-msgstr "Mieluiten"
+msgstr "Suosi"
 
 #: guides/foursquare_settings.qml:27
 msgid "Closest"
-msgstr "Lähimmät"
+msgstr "Lähimpiä"
 
 #: guides/foursquare_settings.qml:28
 msgid "Best"
-msgstr "Parhaat"
+msgstr "Parhaita"
 
 #: qml/AboutPage.qml:32
 msgid "About Poor Maps"
@@ -150,7 +150,7 @@ msgid ""
 "Poor Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
-"Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public\n"
+"Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public "
 "License (GPL), versio 3 tai uudempi."
 
 #. TRANSLATORS: This is a special message that shouldn't be
@@ -168,7 +168,7 @@ msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
-"Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten\n"
+"Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten "
 "käännösten parantamiseen Transifexissa."
 
 #: qml/BasemapPage.qml:26 qml/BasemapPage.qml:107
@@ -232,11 +232,11 @@ msgstr "Lasketaan"
 
 #: qml/CachePage.qml:116
 msgid "Map Tile Cache"
-msgstr "Karttalaattavälimuisti"
+msgstr "Karttalaattavarasto"
 
 #: qml/CachePage.qml:121
 msgid "Empty cache, or error"
-msgstr "Tyhjä välimuisti, tai virhe"
+msgstr "Tyhjä varasto, tai virhe"
 
 #: qml/GeocodePage.qml:48 qml/PlaceTypePage.qml:48 qml/RoutePointPage.qml:48
 msgid "Remove"
@@ -358,7 +358,7 @@ msgstr "Läheiset paikat"
 
 #: qml/NearbyPage.qml:67
 msgid "Near"
-msgstr "Lähellä"
+msgstr "Lähtöpaikka"
 
 #: qml/NearbyPage.qml:96 routers/mapquest_open_settings.qml:25
 #: routers/mapzen_settings.qml:25 routers/osmscout_settings.qml:25
@@ -371,7 +371,7 @@ msgstr "Säde"
 
 #: qml/NorthArrow.qml:35
 msgid "Auto-rotate off"
-msgstr "Automaattinen kierto pois päältä"
+msgstr "Automaattinen kierto pois"
 
 #: qml/NorthArrow.qml:38
 msgid "Auto-rotate on"
@@ -403,7 +403,7 @@ msgstr "WWW"
 
 #: qml/PositionMarker.qml:62
 msgid "Auto-center off"
-msgstr "Automaattinen keskitys pois päältä"
+msgstr "Automaattinen keskitys pois"
 
 #: qml/PositionMarker.qml:65
 msgid "Auto-center on"
@@ -413,9 +413,7 @@ msgstr "Automaattinen keskitys päällä"
 msgid ""
 "Uncheck to minimize data traffic. You will be left with previously "
 "downloaded and cached tiles."
-msgstr ""
-"Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää\n"
-"aiemmin ladatut välimuistissa olevat laatat."
+msgstr "Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää aiemmin ladatut, varastossa olevat laatat."
 
 #: qml/PreferencesPage.qml:37
 msgid "Allow downloading map tiles"
@@ -446,7 +444,7 @@ msgid ""
 "Only applies when Poor Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
-"Pätee vain, kun Poor Maps on aktiivisena. Kun minimoituna, lepotilaan \n"
+"Pätee vain, kun Poor Maps on aktiivisena. Kun minimoituna, lepotilaan "
 "siirrytään laitteen normaalien asetusten mukaan."
 
 #: qml/PreferencesPage.qml:81
@@ -469,34 +467,31 @@ msgstr "Aina"
 msgid ""
 "Limiting tile caching ensures up-to-date maps and keeps disk use under "
 "control, but loads maps slower and causes more data traffic."
-msgstr ""
-"Karttalaattojen välimuistin rajoittaminen varmistaa ajantasaiset kartat\n"
-"ja pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa\n"
-"enemmän tiedonsiirtoa."
+msgstr "Karttalaattojen varastoinnin rajoittaminen varmistaa ajantasaiset kartat ja pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa enemmän tiedonsiirtoa verkon yli."
 
 #: qml/PreferencesPage.qml:101
 msgid "Cache map tiles"
-msgstr "Pidä karttalaatat välimuistissa"
+msgstr "Varastoi ladatut karttalaatat"
 
 #: qml/PreferencesPage.qml:103
 msgid "For one week"
-msgstr "Viikon"
+msgstr "Viikon ajan"
 
 #: qml/PreferencesPage.qml:104
 msgid "For one month"
-msgstr "Kuukauden"
+msgstr "Kuukauden ajan"
 
 #: qml/PreferencesPage.qml:105
 msgid "For three months"
-msgstr "Kolme kuukautta"
+msgstr "Kolmen kuukauden ajan"
 
 #: qml/PreferencesPage.qml:106
 msgid "For six months"
-msgstr "Kuusi kuukautta"
+msgstr "Kuuden kuukauden ajan"
 
 #: qml/PreferencesPage.qml:107
 msgid "For one year"
-msgstr "Vuoden"
+msgstr "Vuoden ajan"
 
 #: qml/PreferencesPage.qml:108
 msgid "Forever"
@@ -504,7 +499,7 @@ msgstr "Ikuisesti"
 
 #: qml/PreferencesPage.qml:133
 msgid "Examine map tile cache"
-msgstr "Tarkastele välimuistia"
+msgstr "Tarkastele varastoa"
 
 #: qml/RoutePage.qml:59
 msgid "From"
@@ -532,7 +527,7 @@ msgstr "Viesti kopioitu leikepöydälle"
 
 #: qml/SharePage.qml:56
 msgid "Launching the Messages application"
-msgstr "Käynnistetään Viestit -sovellus"
+msgstr "Käynnistetään viestisovellus"
 
 #: qml/SharePage.qml:70
 msgid "Email"
@@ -540,7 +535,7 @@ msgstr "Sähköposti"
 
 #: qml/SharePage.qml:73
 msgid "Launching the Email application"
-msgstr "Käynnistetään Sähköpostisovellus"
+msgstr "Käynnistetään sähköpostisovellus"
 
 #: qml/SharePage.qml:82
 msgid "Other"
@@ -653,7 +648,7 @@ msgstr "Geokoodaus perustuen avoimiin tietolähteisiin"
 msgid "Geocoding based on OpenStreetMap data"
 msgstr "Geokoodaus perustuen OpenStreetMap-aineistoon"
 
-#: standard input:5 input:10 input:15 input:19 input:21 input:23 input:25
+#: standard input:5 input:10 input:19 input:24 input:26 input:28 input:30
 msgid "OSM Scout offline server"
 msgstr "OSM Scout offline-palvelin"
 
@@ -669,26 +664,38 @@ msgstr "Paikkapisteet OpenStreetMap-aineistosta"
 msgid "Public transport routing in Finland"
 msgstr "Reititys joukkoliikenteellä Suomessa"
 
-#: standard input:12 input:13 input:14 input:16
+#: standard input:12
+msgid "public transport"
+msgstr "joukkoliikenne"
+
+#: standard input:13 input:15 input:17 input:20
 msgid "Routing based on OpenStreetMap data"
 msgstr "Reititys perustuen OpenStreetMap-aineistoon"
 
-#: standard input:17
+#: standard input:14 input:16 input:18
+msgid "car, bicycle, foot"
+msgstr "auto, polkupyörä, kävely"
+
+#: standard input:21
+msgid "car"
+msgstr "auto"
+
+#: standard input:22
 msgid "ASTER GDEM & SRTM Hillshade @1x"
 msgstr "ASTER GDEM & SRTM korkeusvarjostus @1x"
 
-#: standard input:18
+#: standard input:23
 msgid "OSM Scout day @1x"
 msgstr "OSM Scout päivä @1x"
 
-#: standard input:20
+#: standard input:25
 msgid "OSM Scout day @2x"
 msgstr "OSM Scout päivä @2x"
 
-#: standard input:22
+#: standard input:27
 msgid "OSM Scout night @1x"
 msgstr "OSM Scout yö @1x"
 
-#: standard input:24
+#: standard input:29
 msgid "OSM Scout night @2x"
 msgstr "OSM Scout yö @2x"

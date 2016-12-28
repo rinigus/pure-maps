@@ -119,6 +119,7 @@ translations:
 	 --join-existing \
 	 --keyword=_ \
 	 --add-comments=TRANSLATORS: \
+	 --no-wrap \
 	 */*.py
 	xgettext \
 	 --output=$(POT_FILE) \
@@ -127,6 +128,7 @@ translations:
 	 --join-existing \
 	 --keyword=qsTranslate:2 \
 	 --add-comments=TRANSLATORS: \
+	 --no-wrap \
 	 */*.qml
 	cat */*.json \
 	 | grep '^ *"_' \
@@ -137,6 +139,7 @@ translations:
 	    --from-code=UTF-8 \
 	    --join-existing \
 	    --keyword=_ \
+	    --no-wrap \
 	    -
 	cd po && for X in *.po; do msgmerge -UN $$X *.pot; done
 

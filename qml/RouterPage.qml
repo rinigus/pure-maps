@@ -46,7 +46,7 @@ Dialog {
                 height: implicitHeight + 1.5*Theme.paddingMedium
                 text: [
                     model.description,
-                    qsTranslate("", "Modes: %1").arg(model.modes.join(", ")),
+                    qsTranslate("", "Modes: %1").arg(model.modes),
                     qsTranslate("", "Source: %1").arg(model.source),
                     model.attribution
                 ].join("\n")

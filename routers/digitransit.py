@@ -128,7 +128,7 @@ def parse_maneuvers(route):
     maneuvers = []
     prev_vehicle = False
     for leg in route["legs"]:
-        this_vehicle = (leg["mode"] != "walk")
+        this_vehicle = (leg["mode"] != _("walk"))
         key = "{:d}{:d}".format(int(prev_vehicle), int(this_vehicle))
         narrative = NARRATIVE[key].format(**leg)
         narrative = re.sub(r"\.{2,}$", ".", narrative)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-28 18:47+0200\n"
+"POT-Creation-Date: 2016-12-28 23:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,9 +143,7 @@ msgid "version %1"
 msgstr ""
 
 #: qml/AboutPage.qml:60
-msgid ""
-"Poor Maps is free software released under the GNU General Public License "
-"(GPL), version 3 or later."
+msgid "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later."
 msgstr ""
 
 #. TRANSLATORS: This is a special message that shouldn't be
@@ -159,9 +157,7 @@ msgid "translator-credits"
 msgstr ""
 
 #: qml/AboutPage.qml:83
-msgid ""
-"You can add new user interface translations or contribute to existing ones "
-"at Transifex."
+msgid "You can add new user interface translations or contribute to existing ones at Transifex."
 msgstr ""
 
 #: qml/BasemapPage.qml:26 qml/BasemapPage.qml:107
@@ -403,9 +399,7 @@ msgid "Auto-center on"
 msgstr ""
 
 #: qml/PreferencesPage.qml:36
-msgid ""
-"Uncheck to minimize data traffic. You will be left with previously "
-"downloaded and cached tiles."
+msgid "Uncheck to minimize data traffic. You will be left with previously downloaded and cached tiles."
 msgstr ""
 
 #: qml/PreferencesPage.qml:37
@@ -433,9 +427,7 @@ msgid "British"
 msgstr ""
 
 #: qml/PreferencesPage.qml:80
-msgid ""
-"Only applies when Poor Maps is active. When minimized, sleep is controlled "
-"by normal device-level preferences."
+msgid "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences."
 msgstr ""
 
 #: qml/PreferencesPage.qml:81
@@ -455,9 +447,7 @@ msgid "Always"
 msgstr ""
 
 #: qml/PreferencesPage.qml:100
-msgid ""
-"Limiting tile caching ensures up-to-date maps and keeps disk use under "
-"control, but loads maps slower and causes more data traffic."
+msgid "Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic."
 msgstr ""
 
 #: qml/PreferencesPage.qml:101
@@ -639,8 +629,8 @@ msgstr ""
 msgid "Geocoding based on OpenStreetMap data"
 msgstr ""
 
-#: standard input:5 standard input:10 standard input:15 standard input:19
-#: standard input:21 standard input:23 standard input:25
+#: standard input:5 standard input:10 standard input:19 standard input:24
+#: standard input:26 standard input:28 standard input:30
 msgid "OSM Scout offline server"
 msgstr ""
 
@@ -656,26 +646,38 @@ msgstr ""
 msgid "Public transport routing in Finland"
 msgstr ""
 
-#: standard input:12 standard input:13 standard input:14 standard input:16
+#: standard input:12
+msgid "public transport"
+msgstr ""
+
+#: standard input:13 standard input:15 standard input:17 standard input:20
 msgid "Routing based on OpenStreetMap data"
 msgstr ""
 
-#: standard input:17
-msgid "ASTER GDEM & SRTM Hillshade @1x"
+#: standard input:14 standard input:16 standard input:18
+msgid "car, bicycle, foot"
 msgstr ""
 
-#: standard input:18
-msgid "OSM Scout day @1x"
-msgstr ""
-
-#: standard input:20
-msgid "OSM Scout day @2x"
+#: standard input:21
+msgid "car"
 msgstr ""
 
 #: standard input:22
+msgid "ASTER GDEM & SRTM Hillshade @1x"
+msgstr ""
+
+#: standard input:23
+msgid "OSM Scout day @1x"
+msgstr ""
+
+#: standard input:25
+msgid "OSM Scout day @2x"
+msgstr ""
+
+#: standard input:27
 msgid "OSM Scout night @1x"
 msgstr ""
 
-#: standard input:24
+#: standard input:29
 msgid "OSM Scout night @2x"
 msgstr ""

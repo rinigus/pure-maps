@@ -59,15 +59,15 @@ Column {
                 verticalAlignment: Text.AlignVCenter
             }
             onClicked: {
-                bindLabel.text = {
-                    qsTranslate("", "Depart"): qsTranslate("", "Arrive"),
-                    qsTranslate("", "Arrive"): qsTranslate("", "Depart")
-                }[bindLabel.text];
-                page.params.arrive_by = {
-                    qsTranslate("", "Depart"): "false",
-                    qsTranslate("", "Arrive"): "true"
-                }[bindLabel.text];
-                bindLabel.color = Theme.highlightColor;
+                if (bindLabel.text === qsTranslate("", "Depart")) {
+                    bindLabel.text = qsTranslate("", "Arrive");
+                    page.params.arrive_by = "true";
+                    bindLabel.color = Theme.highlightColor;
+                } else {
+                    bindLabel.text = qsTranslate("", "Depart");
+                    page.params.arrive_by = "false";
+                    bindLabel.color = Theme.highlightColor;
+                }
             }
         }
         BackgroundItem {
