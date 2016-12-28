@@ -3,6 +3,7 @@ Releasing a New Version
 
 * Update translations
     - `tx pull`
+    - `tools/check-translations`
     - `make translations`
     - `virtaal po/fi.po`
     - `tx push -stf`
