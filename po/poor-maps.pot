@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-27 23:22+0200\n"
+"POT-Creation-Date: 2016-12-28 04:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -620,4 +620,57 @@ msgstr ""
 
 #: routers/osmscout_results.qml:53
 msgid "Routing by OSM Scout Server."
+msgstr ""
+
+#: standard input:1
+msgid "Geocoding in Finland"
+msgstr ""
+
+#: standard input:2 standard input:3
+msgid "Geocoding based on open data sources"
+msgstr ""
+
+#: standard input:4 standard input:6
+msgid "Geocoding based on OpenStreetMap data"
+msgstr ""
+
+#: standard input:5 standard input:10 standard input:15 standard input:19
+#: standard input:21 standard input:23 standard input:25
+msgid "OSM Scout offline server"
+msgstr ""
+
+#: standard input:7
+msgid "Venues listed and reviewed by Foursquare users"
+msgstr ""
+
+#: standard input:8 standard input:9
+msgid "Points of interest from OpenStreetMap data"
+msgstr ""
+
+#: standard input:11
+msgid "Public transport routing in Finland"
+msgstr ""
+
+#: standard input:12 standard input:13 standard input:14 standard input:16
+msgid "Routing based on OpenStreetMap data"
+msgstr ""
+
+#: standard input:17
+msgid "ASTER GDEM & SRTM Hillshade @1x"
+msgstr ""
+
+#: standard input:18
+msgid "OSM Scout day @1x"
+msgstr ""
+
+#: standard input:20
+msgid "OSM Scout day @2x"
+msgstr ""
+
+#: standard input:22
+msgid "OSM Scout night @1x"
+msgstr ""
+
+#: standard input:24
+msgid "OSM Scout night @2x"
 msgstr ""

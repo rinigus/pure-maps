@@ -1,6 +1,6 @@
 {
     "attribution": "Data © OpenStreetMap, DataScienceToolkit, Flickr Shapefiles, GeoNames, Natural Earth, OpenGeoCode, Quattroshapes, Twofishes, Yahoo GeoPlanet",
-    "description": "Geocoding based on open data sources",
+    "_description": "Geocoding based on open data sources",
     "name": "OpenCage",
     "source": "geocoder.opencagedata.com"
 }

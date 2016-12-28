@@ -1,7 +1,7 @@
 {
     "attribution": "Data © OpenStreetMap contributors",
-    "description": "Routing based on OpenStreetMap data",
-    "modes": "car, bicycle, pedestrian",
+    "_description": "Routing based on OpenStreetMap data",
+    "modes": ["car", "bicycle", "foot"],
     "name": "MapQuest Open",
     "source": "open.mapquest.com"
 }

@@ -1,7 +1,7 @@
 {
     "attribution": "Data © HSL, Liikennevirasto",
-    "description": "Public transport routing in Finland",
-    "modes": "public transport",
+    "_description": "Public transport routing in Finland",
+    "modes": ["public transport"],
     "name": "Digitransit",
     "source": "digitransit.fi"
 }

@@ -128,6 +128,16 @@ translations:
 	 --keyword=qsTranslate:2 \
 	 --add-comments=TRANSLATORS: \
 	 */*.qml
+	cat */*.json \
+	 | grep '^ *"_' \
+	 | sed 's/: *\(".*"\)/: _(\1)/' \
+	 | xgettext \
+	    --output=$(POT_FILE) \
+	    --language=JavaScript \
+	    --from-code=UTF-8 \
+	    --join-existing \
+	    --keyword=_ \
+	    -
 	cd po && for X in *.po; do msgmerge -UN $$X *.pot; done
 
 .PHONY: check clean dist install rpm test translations

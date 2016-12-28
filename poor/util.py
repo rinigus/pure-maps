@@ -354,12 +354,23 @@ def read_json(path):
     """Read data from JSON file at `path`."""
     try:
         with open(path, "r", encoding="utf_8") as f:
-            return json.load(f)
+            data = json.load(f)
     except Exception as error:
         print("Failed to read file {}: {}"
               .format(repr(path), str(error)),
               file=sys.stderr)
         raise # Exception
+    # Translatable field names are prefixed with an underscore,
+    # e.g. "_description". Translate the values of these fields
+    # and drop the underscore from the field name.
+    def translate(value):
+        if isinstance(value, list):
+            return list(map(translate, value))
+        return _(value)
+    if isinstance(data, dict):
+        for key in [x for x in dict.keys() if x.startswith("_")]:
+            data[key[1:]] = translate(data.pop(key))
+    return data
 
 def requirement_found(name):
     """
