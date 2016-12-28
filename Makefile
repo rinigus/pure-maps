@@ -11,8 +11,8 @@ DATADIR    = $(DESTDIR)$(PREFIX)/share/$(NAME)
 DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
 
-# XXX: lconvert on a Debian Desktop system.
-LCONVERT = /usr/lib/x86_64-linux-gnu/qt5/bin/lconvert
+LCONVERT = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
+$(wildcard /usr/lib/x86_64-linux-gnu/qt5/bin/lconvert))
 
 check:
 	pyflakes geocoders guides poor routers tilesources
