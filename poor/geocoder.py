@@ -26,6 +26,8 @@ import socket
 import sys
 import traceback
 
+from poor.i18n import _
+
 __all__ = ("Geocoder",)
 
 RE_GEO_URI = re.compile(r"\bgeo:([\d.]+),([\d.]+)\b", re.IGNORECASE)
@@ -58,10 +60,8 @@ class Geocoder:
     def _format_distance(self, x1, y1, x2, y2):
         """Calculate and format a human readable distance string."""
         distance = poor.util.calculate_distance(x1, y1, x2, y2)
-        distance = poor.util.format_distance(distance)
         bearing  = poor.util.calculate_bearing(x1, y1, x2, y2)
-        bearing  = poor.util.format_bearing(bearing)
-        return "{} {}".format(distance, bearing)
+        return poor.util.format_distance_and_bearing(distance, bearing)
 
     def geocode(self, query, params=None, x=0, y=0):
         """
@@ -76,7 +76,7 @@ class Geocoder:
         match = RE_GEO_URI.search(query)
         if match is not None:
             qy, qx = map(float, match.groups())
-            return [dict(title="Point from geo link",
+            return [dict(title=_("Point from geo link"),
                          description=match.group(0),
                          x=qx,
                          y=qy,
@@ -85,7 +85,7 @@ class Geocoder:
         try:
             results = self._provider.geocode(query, params)
         except socket.timeout:
-            return dict(error=True, message="Connection timed out")
+            return dict(error=True, message=_("Connection timed out"))
         except Exception:
             print("Geocoding failed:", file=sys.stderr)
             traceback.print_exc()

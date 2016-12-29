@@ -30,7 +30,8 @@ URL = ("http://api.opencagedata.com/geocode/v1/json"
        "?key=ad37417e2a825d392bd94767ef5235ff"
        "&q={query}"
        "&limit={limit}"
-       "&no_annotations=1")
+       "&no_annotations=1"
+       "&language={lang}")
 
 cache = {}
 
@@ -38,6 +39,7 @@ def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 10)
+    lang = poor.util.get_default_language("en")
     url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])

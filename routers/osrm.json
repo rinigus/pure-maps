@@ -1,7 +1,7 @@
 {
     "attribution": "Data © OpenStreetMap contributors",
-    "description": "Routing based on OpenStreetMap data",
-    "modes": "car",
+    "_description": "Routing based on OpenStreetMap data",
+    "_modes": "car",
     "name": "OSRM",
     "source": "project-osrm.org"
 }

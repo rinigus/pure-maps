@@ -32,6 +32,7 @@ except ImportError:
     sys.modules["pyotherside"] = pyotherside()
 
 from poor.paths import *
+from poor import i18n
 from poor import util
 from poor import cache
 from poor import http

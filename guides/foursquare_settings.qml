@@ -22,10 +22,10 @@ import Sailfish.Silica 1.0
 Column {
     ComboBox {
         id: closestComboBox
-        label: "Prefer"
+        label: qsTranslate("", "Prefer")
         menu: ContextMenu {
-            MenuItem { text: "Closest" }
-            MenuItem { text: "Best" }
+            MenuItem { text: qsTranslate("", "Closest") }
+            MenuItem { text: qsTranslate("", "Best") }
         }
         Component.onCompleted: {
             var option = "guides.foursquare.sort_by_distance";

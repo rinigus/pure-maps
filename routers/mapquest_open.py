@@ -47,6 +47,17 @@ ICONS = { 0: "continue",
          17: "fork-slight-left",
          18: "fork-straight"}
 
+SUPPORTED_LOCALES = [
+    "en_US",
+    "en_GB",
+    "fr_CA",
+    "fr_FR",
+    "de_DE",
+    "es_ES",
+    "es_MX",
+    "ru_RU",
+]
+
 URL = ("http://open.mapquestapi.com/directions/v2/route"
        "?key=Fmjtd|luur2quy2h,bn=o5-9aasg4"
        "&ambiguities=ignore"
@@ -57,7 +68,8 @@ URL = ("http://open.mapquestapi.com/directions/v2/route"
        "&doReverseGeocode=false"
        "&shapeFormat=cmp"
        "&generalize=5"
-       "&manMaps=false")
+       "&manMaps=false"
+       "&locale={locale}")
 
 cache = {}
 
@@ -73,6 +85,8 @@ def route(fm, to, params):
     """Find route and return its properties as a dictionary."""
     fm, to = map(prepare_endpoint, (fm, to))
     type = poor.conf.routers.mapquest_open.type
+    locale = poor.util.get_default_locale("en_US")
+    locale = (locale if locale in SUPPORTED_LOCALES else "en_US")
     url = URL.format(**locals())
     if type == "fastest":
         # Assume all avoids are related to cars.

@@ -29,11 +29,11 @@ Page {
         Column {
             id: column
             width: parent.width
-            PageHeader { title: "About Poor Maps" }
+            PageHeader { title: qsTranslate("", "About Poor Maps") }
             ListItemLabel {
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
-                text: "version %1".arg(py.evaluate("poor.__version__"))
+                text: qsTranslate("", "version %1").arg(py.evaluate("poor.__version__"))
             }
             ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall
@@ -42,7 +42,7 @@ Page {
                     anchors.leftMargin - anchors.rightMargin ?
                     Text.AlignLeft : Text.AlignHCenter
                 linkColor: Theme.highlightColor
-                text: '<a href="http://github.com/otsaloma/poor-maps">http://github.com/otsaloma/poor-maps</a>'
+                text: '<a href="https://github.com/otsaloma/poor-maps">https://github.com/otsaloma/poor-maps</a>'
                 onLinkActivated: Qt.openUrlExternally(link);
             }
             ListItemLabel {
@@ -57,8 +57,41 @@ Page {
                 horizontalAlignment: implicitWidth > parent.width -
                     anchors.leftMargin - anchors.rightMargin ?
                     Text.AlignLeft : Text.AlignHCenter
-                text: "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later."
+                text: qsTranslate("", "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later.")
                 wrapMode: Text.WordWrap
+            }
+            SectionHeader { text: "Translated by" }
+            ListItemLabel {
+                font.pixelSize: Theme.fontSizeSmall
+                height: visible ? Theme.itemSizeExtraSmall : 0
+                horizontalAlignment: Text.AlignHCenter
+                // TRANSLATORS: This is a special message that shouldn't be
+                // translated literally. It is used in the about page to give
+                // credits to the translators. Thus, you should translate it to
+                // your name. You can also include other translators who have
+                // contributed to this translation; in that case, please write
+                // them on separate lines seperated by newlines (\n).
+                text: qsTranslate("", "translator-credits")
+                visible: text !== "translator-credits"
+            }
+            ListItemLabel {
+                font.pixelSize: Theme.fontSizeSmall
+                height: implicitHeight + Theme.paddingLarge
+                horizontalAlignment: implicitWidth > parent.width -
+                    anchors.leftMargin - anchors.rightMargin ?
+                    Text.AlignLeft : Text.AlignHCenter
+                text: qsTranslate("", "You can add new user interface translations or contribute to existing ones at Transifex.")
+                wrapMode: Text.WordWrap
+            }
+            ListItemLabel {
+                font.pixelSize: Theme.fontSizeSmall
+                height: Theme.itemSizeExtraSmall
+                horizontalAlignment: implicitWidth > parent.width -
+                    anchors.leftMargin - anchors.rightMargin ?
+                    Text.AlignLeft : Text.AlignHCenter
+                linkColor: Theme.highlightColor
+                text: '<a href="https://www.transifex.com/otsaloma/poor-maps/">https://www.transifex.com/otsaloma/poor-maps/</a>'
+                onLinkActivated: Qt.openUrlExternally(link);
             }
         }
         VerticalScrollDecorator {}

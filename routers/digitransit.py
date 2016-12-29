@@ -27,6 +27,8 @@ import os
 import poor
 import re
 
+from poor.i18n import _
+
 GRAPHQL = "{}.graphql".format(os.path.splitext(__file__)[0])
 BODY = open(GRAPHQL, "r").read().strip()
 BODY = re.sub(r"\{(\s*)$", r"{{\1", BODY, flags=re.MULTILINE)
@@ -52,21 +54,22 @@ CONF_DEFAULTS = {
 
 HEADERS = {"Content-Type": "application/graphql"}
 
-MODES = {
- "AIRPLANE": "airplane",
-      "BUS": "bus",
-    "FERRY": "ferry",
-     "RAIL": "train",
-   "SUBWAY": "metro",
-     "TRAM": "tram",
-     "WALK": "walk",
+MODE_NAMES = {
+ "AIRPLANE": _("airplane"),
+      "BUS": _("bus"),
+    "FERRY": _("ferry"),
+     "RAIL": _("train"),
+   "SUBWAY": _("metro"),
+     "TRAM": _("tram"),
+     "WALK": _("walk"),
 }
 
 NARRATIVE = {
-    "00": "Walk towards {arr_name}.",
-    "01": "Board {mode} {line_desc} at {dep_name} at {dep_time}.",
-    "10": "Get off at {dep_name} and walk towards {arr_name}.",
-    "11": "Get off at {dep_name} and transfer to {mode} {line_desc} at {dep_time}.",
+    "00": _("Walk towards {arr_name}."),
+    "01": _("Board {mode_name} {line_desc} at {dep_name} at {dep_time}."),
+    "10": _("Get off at {dep_name} and walk towards {arr_name}."),
+    "19": _("Get off at {dep_name} and walk towards your destination."),
+    "11": _("Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."),
 }
 
 URL = "http://api.digitransit.fi/routing/v1/routers/{region}/index/graphql"
@@ -74,7 +77,8 @@ URL = "http://api.digitransit.fi/routing/v1/routers/{region}/index/graphql"
 def parse_legs(legs):
     """Parse legs from routing result."""
     return [dict(
-        mode=MODES.get(leg["mode"], "BUS"),
+        mode=leg["mode"],
+        mode_name=MODE_NAMES.get(leg["mode"], "BUS"),
         color=COLORS.get(leg["mode"], "BUS"),
         agency=parse_agency(leg),
         line=parse_line(leg),
@@ -109,7 +113,7 @@ def parse_line(leg):
     # Return the mode for legs without a short name,
     # e.g. Helsinki metro and long distance buses.
     short_name = leg["route"].get("shortName", "")
-    mode_name = MODES.get(leg["mode"], "").capitalize()
+    mode_name = MODE_NAMES.get(leg["mode"], "").capitalize()
     return short_name or mode_name
 
 def parse_line_description(leg):
@@ -125,9 +129,13 @@ def parse_maneuvers(route):
     if not route["legs"]: return []
     maneuvers = []
     prev_vehicle = False
-    for leg in route["legs"]:
-        this_vehicle = (leg["mode"] != "walk")
+    for i, leg in enumerate(route["legs"]):
+        this_vehicle = (leg["mode"] != "WALK")
         key = "{:d}{:d}".format(int(prev_vehicle), int(this_vehicle))
+        # Handle the last leg differently since OpenTripPlanner
+        # gives "Destination" as the destination name.
+        if i == len(route["legs"]) - 1:
+            key = "{}9".format(key[0])
         narrative = NARRATIVE[key].format(**leg)
         narrative = re.sub(r"\.{2,}$", ".", narrative)
         maneuvers.append(dict(
@@ -148,7 +156,7 @@ def parse_maneuvers(route):
         x=route["legs"][-1]["arr_x"],
         y=route["legs"][-1]["arr_y"],
         icon="flag",
-        narrative="Arrive at your destination.",
+        narrative=_("Arrive at your destination."),
         duration=0))
     # For clarity, move stops to the nearest point
     # on the route polyline.

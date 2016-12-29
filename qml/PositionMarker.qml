@@ -59,10 +59,10 @@ MapQuickItem {
             onClicked: {
                 if (map.autoCenter) {
                     map.autoCenter = false;
-                    bubble.text = "Auto-center off";
+                    bubble.text = qsTranslate("", "Auto-center off");
                 } else {
                     map.autoCenter = true;
-                    bubble.text = "Auto-center on";
+                    bubble.text = qsTranslate("", "Auto-center on");
                     map.centerOnPosition();
                 }
                 bubble.visible = true;

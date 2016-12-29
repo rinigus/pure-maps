@@ -1,8 +1,8 @@
 {
     "attribution": "Data © OpenStreetMap",
-    "description": "Routing based on OpenStreetMap data",
+    "_description": "Routing based on OpenStreetMap data",
     "name": "OSM Scout",
-    "modes": "car, bicycle, pedestrian",
+    "_modes": "car, bicycle, foot",
     "requires": ["harbour-osmscout-server"],
-    "source": "OSM Scout offline server"
+    "_source": "OSM Scout offline server"
 }

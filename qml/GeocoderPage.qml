@@ -44,7 +44,11 @@ Dialog {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + 1.5*Theme.paddingMedium
-                text: "%1\nSource: %2\n%3".arg(model.description).arg(model.source).arg(model.attribution)
+                text: [
+                    model.description,
+                    qsTranslate("", "Source: %1").arg(model.source),
+                    model.attribution
+                ].join("\n")
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
             }
@@ -62,7 +66,7 @@ Dialog {
             py.call("poor.util.get_geocoders", [], function(geocoders) {
                 for (var i = 0; i < geocoders.length; i++) {
                     if (geocoders[i].pid === defpid)
-                        geocoders[i].name = "%1 (default)".arg(geocoders[i].name);
+                        geocoders[i].name = qsTranslate("", "%1 (default)").arg(geocoders[i].name);
                     listView.model.append(geocoders[i]);
                 }
             });

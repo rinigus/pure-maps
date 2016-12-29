@@ -82,7 +82,7 @@ Page {
                     return implicitHeight + difference/2;
                 }
                 text: model.index < listView.count - 1 ?
-                    "Continue for %1.".arg(model.length) : map.route.attribution
+                    qsTranslate("", "Continue for %1.").arg(model.length) : map.route.attribution
                 truncationMode: TruncationMode.Fade
                 verticalAlignment: Text.AlignTop
             }
@@ -93,13 +93,16 @@ Page {
                 app.clearMenu();
             }
         }
+        footer: Spacer {
+            height: Theme.paddingMedium
+        }
         header: Column {
             height: header.height + row.height + spacer1.height +
                 distItem.height + timeItem.height + spacer2.height
             width: parent.width
             PageHeader {
                 id: header
-                title: "Navigation"
+                title: qsTranslate("", "Navigation")
             }
             Row {
                 id: row
@@ -107,21 +110,21 @@ Page {
                 width: parent.width
                 property int count: 3
                 ToolItem {
-                    text: "Begin"
+                    text: qsTranslate("", "Begin")
                     onClicked: {
                         map.beginNavigating();
                         app.clearMenu();
                     }
                 }
                 ToolItem {
-                    text: "Pause"
+                    text: qsTranslate("", "Pause")
                     onClicked: {
                         map.endNavigating();
                         app.clearMenu();
                     }
                 }
                 ToolItem {
-                    text: "Clear"
+                    text: qsTranslate("", "Clear")
                     onClicked: {
                         map.endNavigating();
                         map.clearRoute();
@@ -135,14 +138,14 @@ Page {
             }
             DetailItem {
                 id: distItem
-                label: "Distance remaining"
+                label: qsTranslate("", "Distance remaining")
                 value: "%1 / %2"
                     .arg(app.navigationStatus.dest_dist || "?")
                     .arg(app.navigationStatus.total_dist || "?")
             }
             DetailItem {
                 id: timeItem
-                label: "Time remaining"
+                label: qsTranslate("", "Time remaining")
                 value: "%1 / %2"
                     .arg(timeItem.format(app.navigationStatus.dest_time || "?"))
                     .arg(timeItem.format(app.navigationStatus.total_time || "?"))

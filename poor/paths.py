@@ -19,7 +19,7 @@
 
 import os
 
-__all__ = ("CACHE_HOME_DIR", "CONFIG_HOME_DIR", "DATA_DIR", "DATA_HOME_DIR")
+__all__ = ("CACHE_HOME_DIR", "CONFIG_HOME_DIR", "DATA_DIR", "DATA_HOME_DIR", "LOCALE_DIR")
 
 XDG_CACHE_HOME = os.path.expanduser(os.getenv("XDG_CACHE_HOME", "~/.cache"))
 XDG_CONFIG_HOME = os.path.expanduser(os.getenv("XDG_CONFIG_HOME", "~/.config"))
@@ -29,3 +29,4 @@ CACHE_HOME_DIR = os.path.join(XDG_CACHE_HOME, "harbour-poor-maps")
 CONFIG_HOME_DIR = os.path.join(XDG_CONFIG_HOME, "harbour-poor-maps")
 DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DATA_HOME_DIR = os.path.join(XDG_DATA_HOME, "harbour-poor-maps")
+LOCALE_DIR = "/usr/share/harbour-poor-maps/locale"

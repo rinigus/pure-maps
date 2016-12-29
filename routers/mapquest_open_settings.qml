@@ -22,11 +22,11 @@ import Sailfish.Silica 1.0
 Column {
     ComboBox {
         id: typeComboBox
-        label: "Type"
+        label: qsTranslate("", "Type")
         menu: ContextMenu {
-            MenuItem { text: "Car" }
-            MenuItem { text: "Bicycle" }
-            MenuItem { text: "Pedestrian" }
+            MenuItem { text: qsTranslate("", "Car") }
+            MenuItem { text: qsTranslate("", "Bicycle") }
+            MenuItem { text: qsTranslate("", "Foot") }
         }
         property var keys: ["fastest", "bicycle", "pedestrian"]
         Component.onCompleted: {
@@ -43,7 +43,7 @@ Column {
         anchors.left: parent.left
         anchors.right: parent.right
         checked: app.conf.setContains("routers.mapquest_open.avoids", "Toll Road")
-        text: "Try to avoid tolls"
+        text: qsTranslate("", "Try to avoid tolls")
         visible: typeComboBox.currentIndex === 0
         onCheckedChanged: {
             tollSwitch.checked ?

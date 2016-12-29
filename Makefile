@@ -2,12 +2,17 @@
 
 NAME       = harbour-poor-maps
 VERSION    = 0.27
+LANGS      = $(basename $(notdir $(wildcard po/*.po)))
+POT_FILE   = po/poor-maps.pot
 
 DESTDIR    =
 PREFIX     = /usr
 DATADIR    = $(DESTDIR)$(PREFIX)/share/$(NAME)
 DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
+
+LCONVERT = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
+$(wildcard /usr/lib/x86_64-linux-gnu/qt5/bin/lconvert))
 
 check:
 	pyflakes geocoders guides poor routers tilesources
@@ -23,6 +28,15 @@ dist:
 	mkdir -p dist/$(NAME)-$(VERSION)
 	cp -r `cat MANIFEST` dist/$(NAME)-$(VERSION)
 	tar -C dist -cJf dist/$(NAME)-$(VERSION).tar.xz $(NAME)-$(VERSION)
+
+define install-translations =
+# GNU gettext translations for Python use.
+mkdir -p $(DATADIR)/locale/$(1)/LC_MESSAGES
+msgfmt po/$(1).po -o $(DATADIR)/locale/$(1)/LC_MESSAGES/poor-maps.mo
+# Qt linguist translations for QML use.
+mkdir -p $(DATADIR)/translations
+$(LCONVERT) -o $(DATADIR)/translations/$(NAME)-$(1).qm po/$(1).po
+endef
 
 install:
 	@echo "Installing Python files..."
@@ -67,6 +81,9 @@ install:
 	mkdir -p $(DATADIR)/routers/digitransit
 	cp routers/digitransit/*.png $(DATADIR)/routers/digitransit
 
+	@echo "Installing translations..."
+	$(foreach lang,$(LANGS),$(call install-translations,$(lang)))
+
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
 	cp data/$(NAME).desktop $(DESKTOPDIR)
@@ -93,4 +110,37 @@ rpm:
 test:
 	py.test geocoders guides poor routers tilesources
 
-.PHONY: check clean dist install rpm test
+translations:
+	truncate -s0 $(POT_FILE)
+	xgettext \
+	 --output=$(POT_FILE) \
+	 --language=Python \
+	 --from-code=UTF-8 \
+	 --join-existing \
+	 --keyword=_ \
+	 --add-comments=TRANSLATORS: \
+	 --no-wrap \
+	 */*.py
+	xgettext \
+	 --output=$(POT_FILE) \
+	 --language=JavaScript \
+	 --from-code=UTF-8 \
+	 --join-existing \
+	 --keyword=qsTranslate:2 \
+	 --add-comments=TRANSLATORS: \
+	 --no-wrap \
+	 */*.qml
+	cat */*.json \
+	 | grep '^ *"_' \
+	 | sed 's/: *\(".*"\)/: _(\1)/' \
+	 | xgettext \
+	    --output=$(POT_FILE) \
+	    --language=JavaScript \
+	    --from-code=UTF-8 \
+	    --join-existing \
+	    --keyword=_ \
+	    --no-wrap \
+	    -
+	cd po && for X in *.po; do msgmerge -UN $$X *.pot; done
+
+.PHONY: check clean dist install rpm test translations

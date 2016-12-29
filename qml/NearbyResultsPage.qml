@@ -81,7 +81,7 @@ Page {
         PullDownMenu {
             visible: listView.model.count > 1
             MenuItem {
-                text: "Show all"
+                text: qsTranslate("", "Show all")
                 onClicked: {
                     var pois = [];
                     for (var i = 0; i < listView.model.count; i++) {
@@ -113,7 +113,7 @@ Page {
             listView.model.clear();
             page.loading = true;
             page.title = "";
-            busy.text = "Searching";
+            busy.text = qsTranslate("", "Searching");
         } else if (page.status === PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
@@ -131,13 +131,12 @@ Page {
                 page.title = "";
                 busy.error = results.message;
             } else if (results.length > 0) {
-                page.title = results.length === 1 ?
-                    "1 Result" : "%1 Results".arg(results.length);
+                page.title = qsTranslate("", "%1 Results").arg(results.length);
                 for (var i = 0; i < results.length; i++)
                     listView.model.append(results[i]);
             } else {
                 page.title = "";
-                busy.error = "No results";
+                busy.error = qsTranslate("", "No results");
             }
             page.loading = false;
             page.populated = true;

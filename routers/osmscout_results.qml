@@ -26,12 +26,12 @@ Page {
     property bool loading: true
     BusyModal {
         id: busy
-        description: "For long routes, this could take up to a minute."
+        description: qsTranslate("", "For long routes, this could take up to a minute.")
         running: page.loading
     }
     onStatusChanged: {
         if (page.status === PageStatus.Activating) {
-            busy.text = "Searching";
+            busy.text = qsTranslate("", "Searching");
         } else if (page.status === PageStatus.Active) {
             page.findRoute();
         }
@@ -50,14 +50,14 @@ Page {
                     "x": route.x,
                     "y": route.y,
                     "mode": "car",
-                    "attribution": "Routing by OSM Scout Server."
+                    "attribution": qsTranslate("", "Routing courtesy of %1.").arg("OSM Scout Server")
                 });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.navigateBack(PageStackAction.Immediate);
             } else {
-                busy.error = "No results";
+                busy.error = qsTranslate("", "No results");
                 page.loading = false;
             }
         });

@@ -45,7 +45,7 @@ Dialog {
             ContextMenu {
                 id: contextMenu
                 MenuItem {
-                    text: "Remove"
+                    text: qsTranslate("", "Remove")
                     onClicked: {
                         py.call_sync("poor.app.history.remove_place_type", [model.type]);
                         dialog.history = py.evaluate("poor.app.history.place_types");
@@ -65,7 +65,7 @@ Dialog {
             DialogHeader { id: dialogHeader }
             SearchField {
                 id: searchField
-                placeholderText: "Type of venue"
+                placeholderText: qsTranslate("", "Type of venue")
                 width: parent.width
                 EnterKey.enabled: text.length > 0
                 EnterKey.onClicked: dialog.accept();

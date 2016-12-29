@@ -24,11 +24,11 @@ Column {
     id: column
     ComboBox {
         id: regionComboBox
-        label: "Region"
+        label: qsTranslate("", "Region")
         menu: ContextMenu {
-            MenuItem { text: "HSL" }
-            MenuItem { text: "Waltti" }
-            MenuItem { text: "Finland" }
+            MenuItem { text: qsTranslate("", "HSL") }
+            MenuItem { text: qsTranslate("", "Waltti") }
+            MenuItem { text: qsTranslate("", "Finland") }
         }
         property var keys: ["hsl", "waltti", "finland"]
         Component.onCompleted: {
@@ -55,13 +55,19 @@ Column {
                 anchors.leftMargin: Theme.horizontalPageMargin
                 anchors.top: parent.top
                 height: parent.height
-                text: "Depart"
+                text: qsTranslate("", "Depart")
                 verticalAlignment: Text.AlignVCenter
             }
             onClicked: {
-                bindLabel.text = {"Depart": "Arrive", "Arrive": "Depart"}[bindLabel.text];
-                page.params.arrive_by = {"Depart": "false", "Arrive": "true"}[bindLabel.text];
-                bindLabel.color = Theme.highlightColor;
+                if (bindLabel.text === qsTranslate("", "Depart")) {
+                    bindLabel.text = qsTranslate("", "Arrive");
+                    page.params.arrive_by = "true";
+                    bindLabel.color = Theme.highlightColor;
+                } else {
+                    bindLabel.text = qsTranslate("", "Depart");
+                    page.params.arrive_by = "false";
+                    bindLabel.color = Theme.highlightColor;
+                }
             }
         }
         BackgroundItem {
@@ -77,7 +83,7 @@ Column {
                 anchors.leftMargin: Theme.paddingMedium
                 anchors.top: parent.top
                 height: parent.height
-                text: "Today"
+                text: qsTranslate("", "Today")
                 verticalAlignment: Text.AlignVCenter
             }
             onClicked: {
@@ -112,7 +118,7 @@ Column {
                 anchors.leftMargin: Theme.paddingMedium
                 anchors.top: parent.top
                 height: parent.height
-                text: "Now"
+                text: qsTranslate("", "Now")
                 verticalAlignment: Text.AlignVCenter
             }
             onClicked: {
@@ -138,11 +144,11 @@ Column {
     }
     ComboBox {
         id: prefComboBox
-        label: "Criterion"
+        label: qsTranslate("", "Criterion")
         menu: ContextMenu {
-            MenuItem { text: "Default" }
-            MenuItem { text: "Least transfers" }
-            MenuItem { text: "Least walking" }
+            MenuItem { text: qsTranslate("", "Default") }
+            MenuItem { text: qsTranslate("", "Least transfers") }
+            MenuItem { text: qsTranslate("", "Least walking") }
         }
         property var keys: ["default", "least-transfers", "least-walking"]
         Component.onCompleted: {

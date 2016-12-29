@@ -21,6 +21,7 @@ import contextlib
 import functools
 import glob
 import json
+import locale
 import math
 import os
 import poor
@@ -32,6 +33,8 @@ import sys
 import time
 import traceback
 import urllib.parse
+
+from poor.i18n import _
 
 
 @contextlib.contextmanager
@@ -147,22 +150,6 @@ def decode_epl(string, precision=5):
         yout.append(y / 10**precision)
     return xout, yout
 
-def format_bearing(bearing):
-    """Format `bearing` to a human readable string."""
-    bearing = (bearing + 360) % 360
-    bearing = int(round(bearing/45)*45)
-    if bearing ==   0: return "north"
-    if bearing ==  45: return "north-east"
-    if bearing ==  90: return "east"
-    if bearing == 135: return "south-east"
-    if bearing == 180: return "south"
-    if bearing == 225: return "south-west"
-    if bearing == 270: return "west"
-    if bearing == 315: return "north-west"
-    if bearing == 360: return "north"
-    raise ValueError("Unexpected bearing: {}"
-                     .format(repr(bearing)))
-
 def format_distance(meters, n=2):
     """Format `meters` to `n` significant digits and unit label."""
     if poor.conf.units == "american":
@@ -221,6 +208,24 @@ def format_distance_metric(meters, n=2):
     fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
     return fstring.format(distance, units)
 
+def format_distance_and_bearing(meters, bearing, n=2):
+    """Format `meters` and `bearing` to a human readable string."""
+    distance = format_distance(meters, n)
+    f = lambda x: x.format(distance=distance)
+    bearing = (bearing + 360) % 360
+    bearing = int(round(bearing/45)*45)
+    if bearing ==   0: return f(_("{distance} north"))
+    if bearing ==  45: return f(_("{distance} north-east"))
+    if bearing ==  90: return f(_("{distance} east"))
+    if bearing == 135: return f(_("{distance} south-east"))
+    if bearing == 180: return f(_("{distance} south"))
+    if bearing == 225: return f(_("{distance} south-west"))
+    if bearing == 270: return f(_("{distance} west"))
+    if bearing == 315: return f(_("{distance} north-west"))
+    if bearing == 360: return f(_("{distance} north"))
+    raise ValueError("Unexpected bearing: {}"
+                     .format(repr(bearing)))
+
 def format_filesize(bytes, n=2):
     """Format `bytes` to `n` significant digits and unit label."""
     if bytes > 1024**3:
@@ -262,6 +267,14 @@ def get_basemaps():
     """Return a list of dictionaries of basemap attributes."""
     return list(filter(lambda x: x.get("type", "basemap") == "basemap",
                        _get_providers("tilesources", poor.conf.basemap)))
+
+def get_default_language(fallback="en"):
+    """Return the system default language code or `fallback`."""
+    return (locale.getdefaultlocale()[0] or fallback)[:2]
+
+def get_default_locale(fallback="en_US"):
+    """Return the system default locale code or `fallback`."""
+    return (locale.getdefaultlocale()[0] or fallback)[:5]
 
 def get_geocoders():
     """Return a list of dictionaries of geocoder attributes."""
@@ -343,12 +356,23 @@ def read_json(path):
     """Read data from JSON file at `path`."""
     try:
         with open(path, "r", encoding="utf_8") as f:
-            return json.load(f)
+            data = json.load(f)
     except Exception as error:
         print("Failed to read file {}: {}"
               .format(repr(path), str(error)),
               file=sys.stderr)
         raise # Exception
+    # Translatable field names are prefixed with an underscore,
+    # e.g. "_description". Translate the values of these fields
+    # and drop the underscore from the field name.
+    def translate(value):
+        if isinstance(value, list):
+            return list(map(translate, value))
+        return _(value)
+    if isinstance(data, dict):
+        for key in [x for x in data if x.startswith("_")]:
+            data[key[1:]] = translate(data.pop(key))
+    return data
 
 def requirement_found(name):
     """

@@ -32,10 +32,10 @@ IconButton {
     onClicked: {
         if (map.autoRotate) {
             map.autoRotate = false;
-            bubble.text = "Auto-rotate off";
+            bubble.text = qsTranslate("", "Auto-rotate off");
         } else {
             map.autoRotate = true;
-            bubble.text = "Auto-rotate on";
+            bubble.text = qsTranslate("", "Auto-rotate on");
         }
         bubble.visible = true;
         timer.restart();
