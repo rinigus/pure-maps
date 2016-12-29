@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-29 03:51+0200\n"
-"PO-Revision-Date: 2016-12-29 03:53+0200\n"
+"POT-Creation-Date: 2016-12-29 04:39+0200\n"
+"PO-Revision-Date: 2016-12-29 04:48+0200\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>\n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -110,18 +110,27 @@ msgstr "Kävele kohti pysäkkiä {arr_name}."
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} klo. {dep_time}."
+msgstr "Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} klo. {dep_time}."
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti paikkaa {arr_name}."
+msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti pysäkkiä {arr_name}."
 
 #: routers/digitransit.py:71
 #, python-brace-format
+msgid "Get off at {dep_name} and walk towards your destination."
+msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti määräpaikkaa."
+
+#: routers/digitransit.py:72
+#, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
-msgstr "Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode_name} {line_desc} klo. {dep_time}."
+msgstr "Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode_name} {line_desc} klo. {dep_time}."
+
+#: routers/digitransit.py:159
+msgid "Arrive at your destination."
+msgstr "Saavu määräpaikkaasi."
 
 #: guides/foursquare_settings.qml:25
 msgid "Prefer"
@@ -278,7 +287,7 @@ msgstr "Ei tuloksia"
 msgid "Unnamed point"
 msgstr "Nimetön piste"
 
-#: qml/MenuPage.qml:45 qml/NarrativePage.qml:102 qml/RoutePage.qml:42
+#: qml/MenuPage.qml:45 qml/NarrativePage.qml:105 qml/RoutePage.qml:42
 msgid "Navigation"
 msgstr "Navigointi"
 
@@ -326,23 +335,23 @@ msgstr "Asetukset"
 msgid "Continue for %1."
 msgstr "Jatka %1."
 
-#: qml/NarrativePage.qml:110
+#: qml/NarrativePage.qml:113
 msgid "Begin"
 msgstr "Aloita"
 
-#: qml/NarrativePage.qml:117
+#: qml/NarrativePage.qml:120
 msgid "Pause"
 msgstr "Tauko"
 
-#: qml/NarrativePage.qml:124
+#: qml/NarrativePage.qml:127
 msgid "Clear"
 msgstr "Tyhjennä"
 
-#: qml/NarrativePage.qml:138
+#: qml/NarrativePage.qml:141
 msgid "Distance remaining"
 msgstr "Matkaa jäljellä"
 
-#: qml/NarrativePage.qml:145
+#: qml/NarrativePage.qml:148
 msgid "Time remaining"
 msgstr "Aikaa jäljellä"
 
@@ -377,7 +386,7 @@ msgstr "Automaattinen kierto päällä"
 
 #: qml/OverlayPage.qml:62
 msgid "Overlays"
-msgstr "Peitetasot"
+msgstr "Peittotasot"
 
 #: qml/PlaceTypePage.qml:68
 msgid "Type of venue"
@@ -550,7 +559,7 @@ msgstr "Reitti %1. yhteensä %2"
 
 #: routers/digitransit_results.qml:128
 msgid "Walk %1"
-msgstr "Kävellen %1"
+msgstr "Kävelyä %1"
 
 #: routers/digitransit_results.qml:129
 msgid "%1 → %2"
@@ -701,13 +710,3 @@ msgstr "OSM Scout yö @1x"
 #: standard input:29
 msgid "OSM Scout night @2x"
 msgstr "OSM Scout yö @2x"
-
-#~ msgid "Board {mode} {line_desc} at {dep_name} at {dep_time}."
-#~ msgstr ""
-#~ "Nouse välineeseen {mode} {line_desc} pysäkillä {dep_name} klo. {dep_time}."
-
-#~ msgid ""
-#~ "Get off at {dep_name} and transfer to {mode} {line_desc} at {dep_time}."
-#~ msgstr ""
-#~ "Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode} {line_desc} "
-#~ "klo. {dep_time}."

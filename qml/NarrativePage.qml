@@ -93,6 +93,9 @@ Page {
                 app.clearMenu();
             }
         }
+        footer: Spacer {
+            height: Theme.paddingMedium
+        }
         header: Column {
             height: header.height + row.height + spacer1.height +
                 distItem.height + timeItem.height + spacer2.height

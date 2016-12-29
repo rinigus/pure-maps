@@ -133,6 +133,7 @@ Page {
                 text: qsTranslate("", "Examine map tile cache")
                 onClicked: app.pageStack.push("CachePage.qml");
             }
+            Spacer { height: Theme.paddingMedium }
         }
         VerticalScrollDecorator {}
     }

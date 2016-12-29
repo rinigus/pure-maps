@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-29 03:51+0200\n"
+"POT-Creation-Date: 2016-12-29 04:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,7 +119,16 @@ msgstr ""
 
 #: routers/digitransit.py:71
 #, python-brace-format
+msgid "Get off at {dep_name} and walk towards your destination."
+msgstr ""
+
+#: routers/digitransit.py:72
+#, python-brace-format
 msgid "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+msgstr ""
+
+#: routers/digitransit.py:159
+msgid "Arrive at your destination."
 msgstr ""
 
 #: guides/foursquare_settings.qml:25
@@ -269,7 +278,7 @@ msgstr ""
 msgid "Unnamed point"
 msgstr ""
 
-#: qml/MenuPage.qml:45 qml/NarrativePage.qml:102 qml/RoutePage.qml:42
+#: qml/MenuPage.qml:45 qml/NarrativePage.qml:105 qml/RoutePage.qml:42
 msgid "Navigation"
 msgstr ""
 
@@ -317,23 +326,23 @@ msgstr ""
 msgid "Continue for %1."
 msgstr ""
 
-#: qml/NarrativePage.qml:110
+#: qml/NarrativePage.qml:113
 msgid "Begin"
 msgstr ""
 
-#: qml/NarrativePage.qml:117
+#: qml/NarrativePage.qml:120
 msgid "Pause"
 msgstr ""
 
-#: qml/NarrativePage.qml:124
+#: qml/NarrativePage.qml:127
 msgid "Clear"
 msgstr ""
 
-#: qml/NarrativePage.qml:138
+#: qml/NarrativePage.qml:141
 msgid "Distance remaining"
 msgstr ""
 
-#: qml/NarrativePage.qml:145
+#: qml/NarrativePage.qml:148
 msgid "Time remaining"
 msgstr ""
 

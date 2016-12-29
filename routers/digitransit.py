@@ -68,6 +68,7 @@ NARRATIVE = {
     "00": _("Walk towards {arr_name}."),
     "01": _("Board {mode_name} {line_desc} at {dep_name} at {dep_time}."),
     "10": _("Get off at {dep_name} and walk towards {arr_name}."),
+    "19": _("Get off at {dep_name} and walk towards your destination."),
     "11": _("Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."),
 }
 
@@ -128,9 +129,13 @@ def parse_maneuvers(route):
     if not route["legs"]: return []
     maneuvers = []
     prev_vehicle = False
-    for leg in route["legs"]:
+    for i, leg in enumerate(route["legs"]):
         this_vehicle = (leg["mode"] != "WALK")
         key = "{:d}{:d}".format(int(prev_vehicle), int(this_vehicle))
+        # Handle the last leg differently since OpenTripPlanner
+        # gives "Destination" as the destination name.
+        if i == len(route["legs"]) - 1:
+            key = "{}9".format(key[0])
         narrative = NARRATIVE[key].format(**leg)
         narrative = re.sub(r"\.{2,}$", ".", narrative)
         maneuvers.append(dict(
@@ -151,7 +156,7 @@ def parse_maneuvers(route):
         x=route["legs"][-1]["arr_x"],
         y=route["legs"][-1]["arr_y"],
         icon="flag",
-        narrative="Arrive at your destination.",
+        narrative=_("Arrive at your destination."),
         duration=0))
     # For clarity, move stops to the nearest point
     # on the route polyline.
