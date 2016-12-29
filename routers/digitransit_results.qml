@@ -79,7 +79,7 @@ Page {
                         id: barChunk
                         color: leg.color
                         height: bar.height
-                        opacity: leg.mode === "walk" ? 0.7 : 0.85
+                        opacity: leg.mode === "WALK" ? 0.7 : 0.85
                         width: leg.duration/listItem.result.duration * bar.width - 3*Theme.pixelRatio
                         x: bar.x + (leg.dep_unix - listItem.result.legs[0].dep_unix) /
                             listItem.result.duration * bar.width + 3*Theme.pixelRatio
@@ -124,7 +124,7 @@ Page {
                     Label {
                         id: nameLabel
                         height: implicitHeight + Theme.paddingSmall
-                        text: leg.mode === "walk" ?
+                        text: leg.mode === "WALK" ?
                             qsTranslate("", "Walk %1").arg(page.formatLength(leg.length)) :
                             qsTranslate("", "%1 → %2").arg(leg.dep_name).arg(leg.arr_name)
                         truncationMode: TruncationMode.Fade

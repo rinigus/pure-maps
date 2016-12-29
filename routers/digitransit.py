@@ -54,7 +54,7 @@ CONF_DEFAULTS = {
 
 HEADERS = {"Content-Type": "application/graphql"}
 
-MODES = {
+MODE_NAMES = {
  "AIRPLANE": _("airplane"),
       "BUS": _("bus"),
     "FERRY": _("ferry"),
@@ -66,9 +66,9 @@ MODES = {
 
 NARRATIVE = {
     "00": _("Walk towards {arr_name}."),
-    "01": _("Board {mode} {line_desc} at {dep_name} at {dep_time}."),
+    "01": _("Board {mode_name} {line_desc} at {dep_name} at {dep_time}."),
     "10": _("Get off at {dep_name} and walk towards {arr_name}."),
-    "11": _("Get off at {dep_name} and transfer to {mode} {line_desc} at {dep_time}."),
+    "11": _("Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."),
 }
 
 URL = "http://api.digitransit.fi/routing/v1/routers/{region}/index/graphql"
@@ -76,7 +76,8 @@ URL = "http://api.digitransit.fi/routing/v1/routers/{region}/index/graphql"
 def parse_legs(legs):
     """Parse legs from routing result."""
     return [dict(
-        mode=MODES.get(leg["mode"], "BUS"),
+        mode=leg["mode"],
+        mode_name=MODE_NAMES.get(leg["mode"], "BUS"),
         color=COLORS.get(leg["mode"], "BUS"),
         agency=parse_agency(leg),
         line=parse_line(leg),
@@ -111,7 +112,7 @@ def parse_line(leg):
     # Return the mode for legs without a short name,
     # e.g. Helsinki metro and long distance buses.
     short_name = leg["route"].get("shortName", "")
-    mode_name = MODES.get(leg["mode"], "").capitalize()
+    mode_name = MODE_NAMES.get(leg["mode"], "").capitalize()
     return short_name or mode_name
 
 def parse_line_description(leg):
@@ -128,7 +129,7 @@ def parse_maneuvers(route):
     maneuvers = []
     prev_vehicle = False
     for leg in route["legs"]:
-        this_vehicle = (leg["mode"] != _("walk"))
+        this_vehicle = (leg["mode"] != "WALK")
         key = "{:d}{:d}".format(int(prev_vehicle), int(this_vehicle))
         narrative = NARRATIVE[key].format(**leg)
         narrative = re.sub(r"\.{2,}$", ".", narrative)

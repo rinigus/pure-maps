@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-28 23:08+0200\n"
-"PO-Revision-Date: 2016-12-28 23:35+0200\n"
+"POT-Creation-Date: 2016-12-29 03:51+0200\n"
+"PO-Revision-Date: 2016-12-29 03:53+0200\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>\n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -109,9 +109,8 @@ msgstr "Kävele kohti pysäkkiä {arr_name}."
 
 #: routers/digitransit.py:69
 #, python-brace-format
-msgid "Board {mode} {line_desc} at {dep_name} at {dep_time}."
-msgstr ""
-"Nouse välineeseen {mode} {line_desc} pysäkillä {dep_name} klo. {dep_time}."
+msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
+msgstr "Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} klo. {dep_time}."
 
 #: routers/digitransit.py:70
 #, python-brace-format
@@ -120,10 +119,9 @@ msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti paikkaa {arr_name}."
 
 #: routers/digitransit.py:71
 #, python-brace-format
-msgid "Get off at {dep_name} and transfer to {mode} {line_desc} at {dep_time}."
-msgstr ""
-"Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode} {line_desc} klo. "
-"{dep_time}."
+msgid ""
+"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+msgstr "Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode_name} {line_desc} klo. {dep_time}."
 
 #: guides/foursquare_settings.qml:25
 msgid "Prefer"
@@ -413,7 +411,9 @@ msgstr "Automaattinen keskitys päällä"
 msgid ""
 "Uncheck to minimize data traffic. You will be left with previously "
 "downloaded and cached tiles."
-msgstr "Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää aiemmin ladatut, varastossa olevat laatat."
+msgstr ""
+"Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää aiemmin "
+"ladatut, varastossa olevat laatat."
 
 #: qml/PreferencesPage.qml:37
 msgid "Allow downloading map tiles"
@@ -467,7 +467,10 @@ msgstr "Aina"
 msgid ""
 "Limiting tile caching ensures up-to-date maps and keeps disk use under "
 "control, but loads maps slower and causes more data traffic."
-msgstr "Karttalaattojen varastoinnin rajoittaminen varmistaa ajantasaiset kartat ja pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa enemmän tiedonsiirtoa verkon yli."
+msgstr ""
+"Karttalaattojen varastoinnin rajoittaminen varmistaa ajantasaiset kartat ja "
+"pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa "
+"enemmän tiedonsiirtoa verkon yli."
 
 #: qml/PreferencesPage.qml:101
 msgid "Cache map tiles"
@@ -579,13 +582,12 @@ msgstr "Waltti"
 msgid "Finland"
 msgstr "Suomi"
 
-#: routers/digitransit_settings.qml:58 routers/digitransit_settings.qml:63
-#: routers/digitransit_settings.qml:64 routers/digitransit_settings.qml:67
+#: routers/digitransit_settings.qml:58 routers/digitransit_settings.qml:62
+#: routers/digitransit_settings.qml:67
 msgid "Depart"
 msgstr "Lähtö"
 
-#: routers/digitransit_settings.qml:63 routers/digitransit_settings.qml:64
-#: routers/digitransit_settings.qml:68
+#: routers/digitransit_settings.qml:63
 msgid "Arrive"
 msgstr "Saapuminen"
 
@@ -699,3 +701,13 @@ msgstr "OSM Scout yö @1x"
 #: standard input:29
 msgid "OSM Scout night @2x"
 msgstr "OSM Scout yö @2x"
+
+#~ msgid "Board {mode} {line_desc} at {dep_name} at {dep_time}."
+#~ msgstr ""
+#~ "Nouse välineeseen {mode} {line_desc} pysäkillä {dep_name} klo. {dep_time}."
+
+#~ msgid ""
+#~ "Get off at {dep_name} and transfer to {mode} {line_desc} at {dep_time}."
+#~ msgstr ""
+#~ "Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode} {line_desc} "
+#~ "klo. {dep_time}."
