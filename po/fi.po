@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-29 04:39+0200\n"
-"PO-Revision-Date: 2016-12-29 04:48+0200\n"
+"PO-Revision-Date: 2016-12-29 18:24+0200\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>\n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -120,12 +120,11 @@ msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti pysäkkiä {arr_name}
 #: routers/digitransit.py:71
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti määräpaikkaa."
+msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti määräpaikkaasi."
 
 #: routers/digitransit.py:72
 #, python-brace-format
-msgid ""
-"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+msgid "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr "Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode_name} {line_desc} klo. {dep_time}."
 
 #: routers/digitransit.py:159
@@ -153,12 +152,8 @@ msgid "version %1"
 msgstr "versio %1"
 
 #: qml/AboutPage.qml:60
-msgid ""
-"Poor Maps is free software released under the GNU General Public License "
-"(GPL), version 3 or later."
-msgstr ""
-"Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public "
-"License (GPL), versio 3 tai uudempi."
+msgid "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later."
+msgstr "Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public License (GPL), versio 3 tai uudempi."
 
 #. TRANSLATORS: This is a special message that shouldn't be
 #. translated literally. It is used in the about page to give
@@ -171,12 +166,8 @@ msgid "translator-credits"
 msgstr "Osmo Salomaa"
 
 #: qml/AboutPage.qml:83
-msgid ""
-"You can add new user interface translations or contribute to existing ones "
-"at Transifex."
-msgstr ""
-"Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten "
-"käännösten parantamiseen Transifexissa."
+msgid "You can add new user interface translations or contribute to existing ones at Transifex."
+msgstr "Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten käännösten parantamiseen Transifexissa."
 
 #: qml/BasemapPage.qml:26 qml/BasemapPage.qml:107
 msgid "Basemaps"
@@ -417,12 +408,8 @@ msgid "Auto-center on"
 msgstr "Automaattinen keskitys päällä"
 
 #: qml/PreferencesPage.qml:36
-msgid ""
-"Uncheck to minimize data traffic. You will be left with previously "
-"downloaded and cached tiles."
-msgstr ""
-"Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää aiemmin "
-"ladatut, varastossa olevat laatat."
+msgid "Uncheck to minimize data traffic. You will be left with previously downloaded and cached tiles."
+msgstr "Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää aiemmin ladatut, varastossa olevat laatat."
 
 #: qml/PreferencesPage.qml:37
 msgid "Allow downloading map tiles"
@@ -449,12 +436,8 @@ msgid "British"
 msgstr "Brittiläinen"
 
 #: qml/PreferencesPage.qml:80
-msgid ""
-"Only applies when Poor Maps is active. When minimized, sleep is controlled "
-"by normal device-level preferences."
-msgstr ""
-"Pätee vain, kun Poor Maps on aktiivisena. Kun minimoituna, lepotilaan "
-"siirrytään laitteen normaalien asetusten mukaan."
+msgid "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences."
+msgstr "Pätee vain, kun Poor Maps on aktiivisena. Kun minimoituna, lepotilaan siirrytään laitteen normaalien asetusten mukaan."
 
 #: qml/PreferencesPage.qml:81
 msgid "Prevent sleep"
@@ -473,13 +456,8 @@ msgid "Always"
 msgstr "Aina"
 
 #: qml/PreferencesPage.qml:100
-msgid ""
-"Limiting tile caching ensures up-to-date maps and keeps disk use under "
-"control, but loads maps slower and causes more data traffic."
-msgstr ""
-"Karttalaattojen varastoinnin rajoittaminen varmistaa ajantasaiset kartat ja "
-"pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa "
-"enemmän tiedonsiirtoa verkon yli."
+msgid "Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic."
+msgstr "Karttalaattojen varastoinnin rajoittaminen varmistaa ajantasaiset kartat ja pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa enemmän tiedonsiirtoa verkon yli."
 
 #: qml/PreferencesPage.qml:101
 msgid "Cache map tiles"
@@ -653,11 +631,11 @@ msgstr "Geokoodaus Suomessa"
 
 #: standard input:2 input:3
 msgid "Geocoding based on open data sources"
-msgstr "Geokoodaus perustuen avoimiin tietolähteisiin"
+msgstr "Geokoodaus pohjautuen avoimiin tietolähteisiin"
 
 #: standard input:4 input:6
 msgid "Geocoding based on OpenStreetMap data"
-msgstr "Geokoodaus perustuen OpenStreetMap-aineistoon"
+msgstr "Geokoodaus pohjautuen OpenStreetMap-aineistoon"
 
 #: standard input:5 input:10 input:19 input:24 input:26 input:28 input:30
 msgid "OSM Scout offline server"
@@ -681,7 +659,7 @@ msgstr "joukkoliikenne"
 
 #: standard input:13 input:15 input:17 input:20
 msgid "Routing based on OpenStreetMap data"
-msgstr "Reititys perustuen OpenStreetMap-aineistoon"
+msgstr "Reititys pohjautuen OpenStreetMap-aineistoon"
 
 #: standard input:14 input:16 input:18
 msgid "car, bicycle, foot"
