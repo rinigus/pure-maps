@@ -133,7 +133,8 @@ translations:
 	 */*.qml
 	cat */*.json \
 	 | grep '^ *"_' \
-	 | sed 's/: *\(".*"\)/: _(\1)/' \
+	 | sed 's/: *\("[^"]*"\)/: _(\1)/' \
+	 | sed 's/\("[^"]*"\)\(,\|]\)/_(\1)\2/g' \
 	 | xgettext \
 	    --output=$(POT_FILE) \
 	    --language=JavaScript \
