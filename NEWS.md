@@ -1,3 +1,11 @@
+2017-01-04: Poor Maps 0.28
+==========================
+
+* Add user interface translations (see the file
+  [`po/README.md`][0.28a] for details)
+
+[0.28a]: https://github.com/otsaloma/poor-maps/blob/master/po/README.md
+
 2016-12-13: Poor Maps 0.27
 ==========================
 
