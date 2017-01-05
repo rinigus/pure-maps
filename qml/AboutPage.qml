@@ -60,7 +60,7 @@ Page {
                 text: qsTranslate("", "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later.")
                 wrapMode: Text.WordWrap
             }
-            SectionHeader { text: "Translated by" }
+            SectionHeader { text: qsTranslate("", "Translated by") }
             ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall
                 height: visible ? Theme.itemSizeExtraSmall : 0
