@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-07 04:38+0200\n"
-"PO-Revision-Date: 2017-01-07 04:38+0200\n"
+"PO-Revision-Date: 2017-01-07 18:51+0200\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>\n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -157,7 +157,7 @@ msgstr "Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public 
 
 #: qml/AboutPage.qml:63
 msgid "Translated by"
-msgstr "Kääntäjä"
+msgstr "Käännös"
 
 #. TRANSLATORS: This is a special message that shouldn't be
 #. translated literally. It is used in the about page to give
