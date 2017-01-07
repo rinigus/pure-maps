@@ -143,6 +143,6 @@ translations:
 	    --keyword=_ \
 	    --no-wrap \
 	    -
-	cd po && for X in *.po; do msgmerge -UN $$X *.pot; done
+	cd po && for X in *.po; do msgmerge -UN --no-wrap $$X *.pot; done
 
 .PHONY: check clean dist install rpm test translations
