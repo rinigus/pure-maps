@@ -260,8 +260,8 @@ def format_time(seconds):
     hours = int(seconds/3600)
     minutes = round((seconds % 3600) / 60)
     if hours == 0:
-        return "{:d} min".format(minutes)
-    return "{:d} h {:d} min".format(hours, minutes)
+        return _("{:d} min").format(minutes)
+    return _("{:d} h {:d} min").format(hours, minutes)
 
 def get_basemaps():
     """Return a list of dictionaries of basemap attributes."""

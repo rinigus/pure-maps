@@ -139,19 +139,24 @@ Page {
             DetailItem {
                 id: distItem
                 label: qsTranslate("", "Distance remaining")
-                value: "%1 / %2"
+                value: app.navigationStatus ? "%1 / %2"
                     .arg(app.navigationStatus.dest_dist || "?")
-                    .arg(app.navigationStatus.total_dist || "?")
+                    .arg(app.navigationStatus.total_dist || "?") : ""
             }
             DetailItem {
                 id: timeItem
                 label: qsTranslate("", "Time remaining")
-                value: "%1 / %2"
+                value: app.navigationStatus ? "%1 / %2"
                     .arg(timeItem.format(app.navigationStatus.dest_time || "?"))
-                    .arg(timeItem.format(app.navigationStatus.total_time || "?"))
+                    .arg(timeItem.format(app.navigationStatus.total_time || "?")) : ""
                 function format(time) {
-                    // We don't always have enough space for the usual # h # min.
-                    return time.match(/h/) ? time.replace(/min/, "m") : time
+                    // For long time strings on small screens, shorten unit labels
+                    // to single characters to hopefully fit on one line. Note that
+                    // time strings are translatable. In English this shortens
+                    // "# h # min" to "# h # m".
+                    return (Screen.sizeCategory < Screen.Large &&
+                            time.match(/^\d+ *[^\d ]+ *\d+ *[^\d ]+$/)) ?
+                        time.replace(/([^\d ])[^\d ]+/, "$1") : time;
                 }
             }
             Spacer {
