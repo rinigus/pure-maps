@@ -168,7 +168,7 @@ Canvas {
         Object.defineProperty(canvas.simplePaths, zoom.toString(), {
             value: path, writable: true
         });
-        canvas.requestPaint();
+        canvas.redraw();
     }
 
     function simplify(zoom) {
