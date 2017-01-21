@@ -1,0 +1,727 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-12 23:17+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>, 2017\n"
+"Language-Team: Swedish (https://www.transifex.com/otsaloma/teams/70314/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: poor/geocoder.py:79
+msgid "Point from geo link"
+msgstr "Punkt från geolänk"
+
+#: poor/geocoder.py:88 poor/guide.py:94 poor/router.py:93
+msgid "Connection timed out"
+msgstr "Tidsgränsen för anslutning överskreds"
+
+#: poor/history.py:33 qml/NearbyPage.qml:27 qml/NearbyPage.qml:76
+#: qml/NearbyPage.qml:83 qml/NearbyPage.qml:148 qml/NearbyPage.qml:156
+#: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:68
+#: qml/RoutePage.qml:75 qml/RoutePage.qml:97 qml/RoutePage.qml:104
+#: qml/RoutePage.qml:146 qml/RoutePage.qml:150 qml/RoutePage.qml:152
+#: qml/RoutePointPage.qml:73 qml/RoutePointPage.qml:76
+msgid "Current position"
+msgstr "Aktuell position"
+
+#: poor/util.py:217 poor/util.py:225
+#, python-brace-format
+msgid "{distance} north"
+msgstr "{distance} norr"
+
+#: poor/util.py:218
+#, python-brace-format
+msgid "{distance} north-east"
+msgstr "{distance} nordost"
+
+#: poor/util.py:219
+#, python-brace-format
+msgid "{distance} east"
+msgstr "{distance} öst"
+
+#: poor/util.py:220
+#, python-brace-format
+msgid "{distance} south-east"
+msgstr "{distance} sydost"
+
+#: poor/util.py:221
+#, python-brace-format
+msgid "{distance} south"
+msgstr "{distance} syd"
+
+#: poor/util.py:222
+#, python-brace-format
+msgid "{distance} south-west"
+msgstr "{distance} sydväst"
+
+#: poor/util.py:223
+#, python-brace-format
+msgid "{distance} west"
+msgstr "{distance} väst"
+
+#: poor/util.py:224
+#, python-brace-format
+msgid "{distance} north-west"
+msgstr "{distance} nordväst"
+
+#: poor/util.py:263
+msgid "{:d} min"
+msgstr "{:d} min"
+
+#: poor/util.py:264
+msgid "{:d} h {:d} min"
+msgstr "{:d} t {:d} min"
+
+#: routers/digitransit.py:58
+msgid "airplane"
+msgstr "flygplan"
+
+#: routers/digitransit.py:59
+msgid "bus"
+msgstr "buss"
+
+#: routers/digitransit.py:60
+msgid "ferry"
+msgstr "färja"
+
+#: routers/digitransit.py:61
+msgid "train"
+msgstr "tåg"
+
+#: routers/digitransit.py:62
+msgid "metro"
+msgstr "tunnelbana"
+
+#: routers/digitransit.py:63
+msgid "tram"
+msgstr "spårvagn"
+
+#: routers/digitransit.py:64
+msgid "walk"
+msgstr "gång"
+
+#: routers/digitransit.py:68
+#, python-brace-format
+msgid "Walk towards {arr_name}."
+msgstr "Gå till {arr_name}."
+
+#: routers/digitransit.py:69
+#, python-brace-format
+msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
+msgstr "Ta {mode_name} {line_desc} vid {dep_name} kl.{dep_time}."
+
+#: routers/digitransit.py:70
+#, python-brace-format
+msgid "Get off at {dep_name} and walk towards {arr_name}."
+msgstr "Gå av vid {dep_name} och gå till {arr_name}."
+
+#: routers/digitransit.py:71
+#, python-brace-format
+msgid "Get off at {dep_name} and walk towards your destination."
+msgstr "Gå av vid {dep_name} och gå till destinationen."
+
+#: routers/digitransit.py:72
+#, python-brace-format
+msgid ""
+"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+msgstr ""
+"Gå av vid {dep_name} och byt till {mode_name} {line_desc} kl.{dep_time}."
+
+#: routers/digitransit.py:159
+msgid "Arrive at your destination."
+msgstr "Anländer till din destination."
+
+#: guides/foursquare_settings.qml:25
+msgid "Prefer"
+msgstr "Föredra"
+
+#: guides/foursquare_settings.qml:27
+msgid "Closest"
+msgstr "Närmast"
+
+#: guides/foursquare_settings.qml:28
+msgid "Best"
+msgstr "Bäst"
+
+#: qml/AboutPage.qml:32
+msgid "About Poor Maps"
+msgstr "Om Poor Maps"
+
+#: qml/AboutPage.qml:36
+msgid "version %1"
+msgstr "version %1"
+
+#: qml/AboutPage.qml:60
+msgid ""
+"Poor Maps is free software released under the GNU General Public License "
+"(GPL), version 3 or later."
+msgstr ""
+"Poor Maps är fri mjukvara, släppt under GNU General Public License (GPL), "
+"version 3 eller senare."
+
+#: qml/AboutPage.qml:63
+msgid "Translated by"
+msgstr "Översatt av"
+
+#. TRANSLATORS: This is a special message that shouldn't be
+#. translated literally. It is used in the about page to give
+#. credits to the translators. Thus, you should translate it to
+#. your name. You can also include other translators who have
+#. contributed to this translation; in that case, please write
+#. them on separate lines seperated by newlines (\n).
+#: qml/AboutPage.qml:74
+msgid "translator-credits"
+msgstr "Åke Engelbrektson"
+
+#: qml/AboutPage.qml:83
+msgid ""
+"You can add new user interface translations or contribute to existing ones "
+"at Transifex."
+msgstr ""
+"Du kan lägga till nya programöversättningar eller bidra till befintliga på "
+"Transifex."
+
+#: qml/BasemapPage.qml:26 qml/BasemapPage.qml:107
+msgid "Basemaps"
+msgstr "Baskartor"
+
+#: qml/BasemapPage.qml:49 qml/GeocoderPage.qml:49 qml/GuidePage.qml:49
+#: qml/OverlayPage.qml:35 qml/RouterPage.qml:50
+msgid "Source: %1"
+msgstr "Källa: %1"
+
+#: qml/BasemapPage.qml:68
+msgid "All"
+msgstr "Alla"
+
+#: qml/BasemapPage.qml:87 qml/GeocoderPage.qml:69 qml/GuidePage.qml:69
+#: qml/RouterPage.qml:70
+msgid "%1 (default)"
+msgstr "%1 (standard)"
+
+#: qml/BasemapPage.qml:107
+msgid "Basemaps %1"
+msgstr "Baskartor %1"
+
+#: qml/CachePage.qml:50
+msgid "%1 tiles · %2"
+msgstr "%1 rutor · %2"
+
+#: qml/CachePage.qml:57
+msgid "Remove older than one week"
+msgstr "Ta bort äldre än en vecka"
+
+#: qml/CachePage.qml:58 qml/CachePage.qml:64 qml/CachePage.qml:70
+#: qml/CachePage.qml:76 qml/CachePage.qml:82 qml/CachePage.qml:88
+msgid "Removing"
+msgstr "Tar bort"
+
+#: qml/CachePage.qml:63
+msgid "Remove older than one month"
+msgstr "Ta bort äldre än en månad"
+
+#: qml/CachePage.qml:69
+msgid "Remove older than three months"
+msgstr "Ta bort äldre än tre månader"
+
+#: qml/CachePage.qml:75
+msgid "Remove older than six months"
+msgstr "Ta bort äldre än sex månader"
+
+#: qml/CachePage.qml:81
+msgid "Remove older than one year"
+msgstr "Ta bort äldre än ett år"
+
+#: qml/CachePage.qml:87
+msgid "Remove all"
+msgstr "Ta bort alla"
+
+#: qml/CachePage.qml:108
+msgid "Calculating"
+msgstr "Beräknar"
+
+#: qml/CachePage.qml:116
+msgid "Map Tile Cache"
+msgstr "Cache-lagring av kartor"
+
+#: qml/CachePage.qml:121
+msgid "Empty cache, or error"
+msgstr "Tom cache, eller fel"
+
+#: qml/GeocodePage.qml:48 qml/PlaceTypePage.qml:48 qml/RoutePointPage.qml:48
+msgid "Remove"
+msgstr "Ta bort"
+
+#: qml/GeocodePage.qml:67 qml/MenuPage.qml:37
+msgid "Search"
+msgstr "Sök"
+
+#: qml/GeocodePage.qml:71 qml/NearbyPage.qml:53 qml/RoutePage.qml:45
+msgid "Using"
+msgstr "Använder"
+
+#: qml/GeocodePage.qml:84 qml/RoutePointPage.qml:82
+msgid "Address, landmark, etc."
+msgstr "Adress, landmärke, etc."
+
+#: qml/GeocodingResultsPage.qml:84 qml/NearbyResultsPage.qml:84
+msgid "Show all"
+msgstr "Visa alla"
+
+#: qml/GeocodingResultsPage.qml:116 qml/NearbyResultsPage.qml:116
+#: routers/digitransit_results.qml:182 routers/mapquest_open_results.qml:33
+#: routers/mapzen_results.qml:33 routers/osmscout_results.qml:34
+#: routers/osrm_results.qml:33
+msgid "Searching"
+msgstr "Söker"
+
+#: qml/GeocodingResultsPage.qml:137 qml/NearbyResultsPage.qml:134
+msgid "%1 Results"
+msgstr "%1 Resultat"
+
+#: qml/GeocodingResultsPage.qml:142 qml/NearbyResultsPage.qml:139
+#: routers/digitransit_results.qml:210 routers/mapquest_open_results.qml:59
+#: routers/mapzen_results.qml:59 routers/osmscout_results.qml:60
+#: routers/osrm_results.qml:59
+msgid "No results"
+msgstr "Inga resultat"
+
+#: qml/MapMouseArea.qml:31 qml/MapMouseArea.qml:32
+msgid "Unnamed point"
+msgstr "Namnlös punkt"
+
+#: qml/MenuPage.qml:45 qml/NarrativePage.qml:105 qml/RoutePage.qml:42
+msgid "Navigation"
+msgstr "Navigation"
+
+#: qml/MenuPage.qml:52
+msgid "Nearby venues"
+msgstr "Närliggande platser"
+
+#: qml/MenuPage.qml:59
+msgid "Share current position"
+msgstr "Dela aktuell position"
+
+#: qml/MenuPage.qml:74
+msgid "Share Current Position"
+msgstr "Dela aktuell position"
+
+#: qml/MenuPage.qml:80
+msgid "Center on current position"
+msgstr "Centrera på aktuell position"
+
+#: qml/MenuPage.qml:88
+msgid "Clear map"
+msgstr "Rensa kartan"
+
+#: qml/MenuPage.qml:96
+msgid "Basemaps and overlays"
+msgstr "Baskartor och överlägg"
+
+#: qml/MenuPage.qml:106
+msgid "Auto-center on position"
+msgstr "Autocentrera på positionen"
+
+#: qml/MenuPage.qml:122
+msgid "Auto-rotate on direction"
+msgstr "Autorotera i riktningen"
+
+#: qml/MenuPage.qml:135
+msgid "About"
+msgstr "Om"
+
+#: qml/MenuPage.qml:139 qml/PreferencesPage.qml:32
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: qml/NarrativePage.qml:85
+msgid "Continue for %1."
+msgstr "Fortsätt %1."
+
+#: qml/NarrativePage.qml:113
+msgid "Begin"
+msgstr "Börja"
+
+#: qml/NarrativePage.qml:120
+msgid "Pause"
+msgstr "Paus"
+
+#: qml/NarrativePage.qml:127
+msgid "Clear"
+msgstr "Rensa"
+
+#: qml/NarrativePage.qml:141
+msgid "Distance remaining"
+msgstr "Återstående distans"
+
+#: qml/NarrativePage.qml:148
+msgid "Time remaining"
+msgstr "Återstående tid"
+
+#: qml/NavigationBlock.qml:79
+msgid "Tap to review maneuvers or begin navigating"
+msgstr "Tryck för att granska manövrer eller börja navigera"
+
+#: qml/NearbyPage.qml:50
+msgid "Nearby Venues"
+msgstr "Närliggande platser"
+
+#: qml/NearbyPage.qml:67
+msgid "Near"
+msgstr "Nära"
+
+#: qml/NearbyPage.qml:96 routers/mapquest_open_settings.qml:25
+#: routers/mapzen_settings.qml:25 routers/osmscout_settings.qml:25
+msgid "Type"
+msgstr "Typ"
+
+#: qml/NearbyPage.qml:110
+msgid "Radius"
+msgstr "Radie"
+
+#: qml/NorthArrow.qml:35
+msgid "Auto-rotate off"
+msgstr "Autorotation av"
+
+#: qml/NorthArrow.qml:38
+msgid "Auto-rotate on"
+msgstr "Autorotation på"
+
+#: qml/OverlayPage.qml:62
+msgid "Overlays"
+msgstr "Överlägg"
+
+#: qml/PlaceTypePage.qml:68
+msgid "Type of venue"
+msgstr "Typ av plats"
+
+#: qml/PoiMarker.qml:59
+msgid "Navigate"
+msgstr "Navigera"
+
+#: qml/PoiMarker.qml:75
+msgid "Nearby"
+msgstr "I närheten"
+
+#: qml/PoiMarker.qml:91
+msgid "Share"
+msgstr "Dela"
+
+#: qml/PoiMarker.qml:107
+msgid "Web"
+msgstr "Webb"
+
+#: qml/PositionMarker.qml:62
+msgid "Auto-center off"
+msgstr "Autocentrering av"
+
+#: qml/PositionMarker.qml:65
+msgid "Auto-center on"
+msgstr "Autocentrering på"
+
+#: qml/PreferencesPage.qml:36
+msgid ""
+"Uncheck to minimize data traffic. You will be left with previously "
+"downloaded and cached tiles."
+msgstr ""
+"Avaktivera för att minimera datatrafik. Du får då nöja dig med tidigare "
+"nerladdade och cache-lagrade kartrutor."
+
+#: qml/PreferencesPage.qml:37
+msgid "Allow downloading map tiles"
+msgstr "Tillåt nerladdning av kartrutor"
+
+#: qml/PreferencesPage.qml:52
+msgid "Show navigation narrative"
+msgstr "Visa navigeringsinstruktioner"
+
+#: qml/PreferencesPage.qml:61
+msgid "Units"
+msgstr "Enheter"
+
+#: qml/PreferencesPage.qml:63
+msgid "Metric"
+msgstr "Metrisk"
+
+#: qml/PreferencesPage.qml:64
+msgid "American"
+msgstr "Amerikansk"
+
+#: qml/PreferencesPage.qml:65
+msgid "British"
+msgstr "Brittisk"
+
+#: qml/PreferencesPage.qml:80
+msgid ""
+"Only applies when Poor Maps is active. When minimized, sleep is controlled "
+"by normal device-level preferences."
+msgstr ""
+"Tillämpas endast när Poor Maps är aktivt. Vid minimering kontrolleras "
+"viloläget av normala inställningar på enhetsnivå."
+
+#: qml/PreferencesPage.qml:81
+msgid "Prevent sleep"
+msgstr "Förhindra viloläge"
+
+#: qml/PreferencesPage.qml:83
+msgid "Never"
+msgstr "Aldrig"
+
+#: qml/PreferencesPage.qml:84
+msgid "When navigating"
+msgstr "Vid navigering"
+
+#: qml/PreferencesPage.qml:85
+msgid "Always"
+msgstr "Alltid"
+
+#: qml/PreferencesPage.qml:100
+msgid ""
+"Limiting tile caching ensures up-to-date maps and keeps disk use under "
+"control, but loads maps slower and causes more data traffic."
+msgstr ""
+"Begränsad cache-lagring säkerställer uppdaterade kartor och håller "
+"diskanvändningen under kontroll, men läser in kartor långsammare och orsakar"
+" mer datatrafik."
+
+#: qml/PreferencesPage.qml:101
+msgid "Cache map tiles"
+msgstr "Cache-lagra kartor"
+
+#: qml/PreferencesPage.qml:103
+msgid "For one week"
+msgstr "I en vecka"
+
+#: qml/PreferencesPage.qml:104
+msgid "For one month"
+msgstr "I en månad"
+
+#: qml/PreferencesPage.qml:105
+msgid "For three months"
+msgstr "I tre månader"
+
+#: qml/PreferencesPage.qml:106
+msgid "For six months"
+msgstr "I sex månader"
+
+#: qml/PreferencesPage.qml:107
+msgid "For one year"
+msgstr "I ett år"
+
+#: qml/PreferencesPage.qml:108
+msgid "Forever"
+msgstr "För alltid"
+
+#: qml/PreferencesPage.qml:133
+msgid "Examine map tile cache"
+msgstr "Utforska kart-cache"
+
+#: qml/RoutePage.qml:59
+msgid "From"
+msgstr "Från"
+
+#: qml/RoutePage.qml:88
+msgid "To"
+msgstr "Till"
+
+#: qml/RoutePage.qml:131
+msgid "Reverse endpoints"
+msgstr "Växla start-/slutpunkt"
+
+#: qml/RouterPage.qml:49
+msgid "Modes: %1"
+msgstr "Lägen: %1"
+
+#: qml/SharePage.qml:49
+msgid "SMS"
+msgstr "SMS"
+
+#: qml/SharePage.qml:55 qml/SharePage.qml:85
+msgid "Message copied to the clipboard"
+msgstr "Meddelandet kopierat till urklipp"
+
+#: qml/SharePage.qml:56
+msgid "Launching the Messages application"
+msgstr "Startar meddelandeprogrammet"
+
+#: qml/SharePage.qml:70
+msgid "Email"
+msgstr "E-post"
+
+#: qml/SharePage.qml:73
+msgid "Launching the Email application"
+msgstr "Startar e-postprogrammet"
+
+#: qml/SharePage.qml:82
+msgid "Other"
+msgstr "Annat"
+
+#: routers/digitransit_results.qml:50
+msgid "Route %1. total %2"
+msgstr "Rutt %1. Totalt %2"
+
+#: routers/digitransit_results.qml:128
+msgid "Walk %1"
+msgstr "Gå %1"
+
+#: routers/digitransit_results.qml:129
+msgid "%1 → %2"
+msgstr "%1 → %2"
+
+#: routers/digitransit_results.qml:161 routers/mapquest_open_results.qml:52
+#: routers/mapzen_results.qml:52 routers/osmscout_results.qml:53
+#: routers/osrm_results.qml:52
+msgid "Routing courtesy of %1."
+msgstr "Hälsning från %1."
+
+#: routers/digitransit_results.qml:204
+msgid "Results"
+msgstr "Resultat"
+
+#: routers/digitransit_settings.qml:27
+msgid "Region"
+msgstr "Region"
+
+#: routers/digitransit_settings.qml:29
+msgid "HSL"
+msgstr "HSL"
+
+#: routers/digitransit_settings.qml:30
+msgid "Waltti"
+msgstr "Waltti"
+
+#: routers/digitransit_settings.qml:31
+msgid "Finland"
+msgstr "Finland"
+
+#: routers/digitransit_settings.qml:58 routers/digitransit_settings.qml:62
+#: routers/digitransit_settings.qml:67
+msgid "Depart"
+msgstr "Avgår"
+
+#: routers/digitransit_settings.qml:63
+msgid "Arrive"
+msgstr "Anländer"
+
+#: routers/digitransit_settings.qml:86
+msgid "Today"
+msgstr "I dag"
+
+#: routers/digitransit_settings.qml:121
+msgid "Now"
+msgstr "Nu"
+
+#: routers/digitransit_settings.qml:147
+msgid "Criterion"
+msgstr "Kriterium"
+
+#: routers/digitransit_settings.qml:149
+msgid "Default"
+msgstr "Standard"
+
+#: routers/digitransit_settings.qml:150
+msgid "Least transfers"
+msgstr "Lägst antal byten"
+
+#: routers/digitransit_settings.qml:151
+msgid "Least walking"
+msgstr "Kortast gångavstånd"
+
+#: routers/mapquest_open_settings.qml:27 routers/mapzen_settings.qml:27
+#: routers/osmscout_settings.qml:27
+msgid "Car"
+msgstr "Bil"
+
+#: routers/mapquest_open_settings.qml:28 routers/mapzen_settings.qml:28
+#: routers/osmscout_settings.qml:28
+msgid "Bicycle"
+msgstr "Cykel"
+
+#: routers/mapquest_open_settings.qml:29 routers/mapzen_settings.qml:29
+#: routers/osmscout_settings.qml:29
+msgid "Foot"
+msgstr "Gång"
+
+#: routers/mapquest_open_settings.qml:46
+msgid "Try to avoid tolls"
+msgstr "Försök undvika vägtullar"
+
+#: routers/osmscout_results.qml:29
+msgid "For long routes, this could take up to a minute."
+msgstr "Detta kan ta upp till en minut, för långa rutter."
+
+#: standard input:1
+msgid "Geocoding in Finland"
+msgstr "Geokodning i Finland"
+
+#: standard input:2 standard input:3
+msgid "Geocoding based on open data sources"
+msgstr "Geokodning baserat på öppna datakällor"
+
+#: standard input:4 standard input:6
+msgid "Geocoding based on OpenStreetMap data"
+msgstr "Geokodning baserat på OpenStreetMap-data"
+
+#: standard input:5 standard input:10 standard input:19 standard input:24
+#: standard input:26 standard input:28 standard input:30
+msgid "OSM Scout offline server"
+msgstr "OSM Scout offline-server"
+
+#: standard input:7
+msgid "Venues listed and reviewed by Foursquare users"
+msgstr "Platser listade och utvärderade av Foursquare-användare"
+
+#: standard input:8 standard input:9
+msgid "Points of interest from OpenStreetMap data"
+msgstr "Punkter av intresse, från OpenStreetMap-data"
+
+#: standard input:11
+msgid "Public transport routing in Finland"
+msgstr "Kollektivtrafikrutter i Finland"
+
+#: standard input:12
+msgid "public transport"
+msgstr "kollektivtrafik"
+
+#: standard input:13 standard input:15 standard input:17 standard input:20
+msgid "Routing based on OpenStreetMap data"
+msgstr "Färdväg baserad på OpenStreetMap-data"
+
+#: standard input:14 standard input:16 standard input:18
+msgid "car, bicycle, foot"
+msgstr "bil, cykel, gång"
+
+#: standard input:21
+msgid "car"
+msgstr "bil"
+
+#: standard input:22
+msgid "ASTER GDEM & SRTM Hillshade @1x"
+msgstr "ASTER GDEM & SRTM Hillshade @1x"
+
+#: standard input:23
+msgid "OSM Scout day @1x"
+msgstr "OSM Scout dag @1x"
+
+#: standard input:25
+msgid "OSM Scout day @2x"
+msgstr "OSM Scout dag @2x"
+
+#: standard input:27
+msgid "OSM Scout night @1x"
+msgstr "OSM Scout natt @1x"
+
+#: standard input:29
+msgid "OSM Scout night @2x"
+msgstr "OSM Scout natt @2x"

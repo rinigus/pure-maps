@@ -2,7 +2,7 @@ Releasing a New Version
 =======================
 
 * Update translations
-    - `tx pull`
+    - `tx pull -a [--minimum-perc=95]`
     - `tools/check-translations`
     - `make translations`
     - `emacs po/fi.po`

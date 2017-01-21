@@ -1,0 +1,726 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-12 23:17+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2017\n"
+"Language-Team: German (Germany) (https://www.transifex.com/otsaloma/teams/70314/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: poor/geocoder.py:79
+msgid "Point from geo link"
+msgstr "Punkt aus Geo-Link"
+
+#: poor/geocoder.py:88 poor/guide.py:94 poor/router.py:93
+msgid "Connection timed out"
+msgstr "Zeitüberschreitung der Verbindung"
+
+#: poor/history.py:33 qml/NearbyPage.qml:27 qml/NearbyPage.qml:76
+#: qml/NearbyPage.qml:83 qml/NearbyPage.qml:148 qml/NearbyPage.qml:156
+#: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:68
+#: qml/RoutePage.qml:75 qml/RoutePage.qml:97 qml/RoutePage.qml:104
+#: qml/RoutePage.qml:146 qml/RoutePage.qml:150 qml/RoutePage.qml:152
+#: qml/RoutePointPage.qml:73 qml/RoutePointPage.qml:76
+msgid "Current position"
+msgstr "Derzeitige Position"
+
+#: poor/util.py:217 poor/util.py:225
+#, python-brace-format
+msgid "{distance} north"
+msgstr "{distance} nördlich"
+
+#: poor/util.py:218
+#, python-brace-format
+msgid "{distance} north-east"
+msgstr "{distance} nordöstlich"
+
+#: poor/util.py:219
+#, python-brace-format
+msgid "{distance} east"
+msgstr "{distance} östlich"
+
+#: poor/util.py:220
+#, python-brace-format
+msgid "{distance} south-east"
+msgstr "{distance} südöstlich"
+
+#: poor/util.py:221
+#, python-brace-format
+msgid "{distance} south"
+msgstr "{distance} südlich"
+
+#: poor/util.py:222
+#, python-brace-format
+msgid "{distance} south-west"
+msgstr "{distance} südwestlich"
+
+#: poor/util.py:223
+#, python-brace-format
+msgid "{distance} west"
+msgstr "{distance} westlich"
+
+#: poor/util.py:224
+#, python-brace-format
+msgid "{distance} north-west"
+msgstr "{distance} nordwestlich"
+
+#: poor/util.py:263
+msgid "{:d} min"
+msgstr "{:d} Min."
+
+#: poor/util.py:264
+msgid "{:d} h {:d} min"
+msgstr "{:d} Std. {:d} Min."
+
+#: routers/digitransit.py:58
+msgid "airplane"
+msgstr "Flugzeug"
+
+#: routers/digitransit.py:59
+msgid "bus"
+msgstr "Bus"
+
+#: routers/digitransit.py:60
+msgid "ferry"
+msgstr "Fähre"
+
+#: routers/digitransit.py:61
+msgid "train"
+msgstr "Zug"
+
+#: routers/digitransit.py:62
+msgid "metro"
+msgstr "U-Bahn"
+
+#: routers/digitransit.py:63
+msgid "tram"
+msgstr "Straßenbahn"
+
+#: routers/digitransit.py:64
+msgid "walk"
+msgstr "Fußweg"
+
+#: routers/digitransit.py:68
+#, python-brace-format
+msgid "Walk towards {arr_name}."
+msgstr "Gehe Richtung {arr_name}."
+
+#: routers/digitransit.py:69
+#, python-brace-format
+msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
+msgstr "Nimm {mode_name} {line_desc} bei {dep_name} um {dep_time}."
+
+#: routers/digitransit.py:70
+#, python-brace-format
+msgid "Get off at {dep_name} and walk towards {arr_name}."
+msgstr "Steige bei {dep_name} aus und gehe Richtung {arr_name}."
+
+#: routers/digitransit.py:71
+#, python-brace-format
+msgid "Get off at {dep_name} and walk towards your destination."
+msgstr "Steige bei {dep_name} aus und gehe in Richtung des Ziels."
+
+#: routers/digitransit.py:72
+#, python-brace-format
+msgid ""
+"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+msgstr "Steige bei {dep_name} um in {mode_name} {line_desc} um {dep_time}."
+
+#: routers/digitransit.py:159
+msgid "Arrive at your destination."
+msgstr "Erreiche dein Ziel"
+
+#: guides/foursquare_settings.qml:25
+msgid "Prefer"
+msgstr "Bevorzuge"
+
+#: guides/foursquare_settings.qml:27
+msgid "Closest"
+msgstr "Nächste"
+
+#: guides/foursquare_settings.qml:28
+msgid "Best"
+msgstr "Beste"
+
+#: qml/AboutPage.qml:32
+msgid "About Poor Maps"
+msgstr "Über Poor Maps"
+
+#: qml/AboutPage.qml:36
+msgid "version %1"
+msgstr "Version %1"
+
+#: qml/AboutPage.qml:60
+msgid ""
+"Poor Maps is free software released under the GNU General Public License "
+"(GPL), version 3 or later."
+msgstr ""
+"Poor Maps ist freie Software und ist unter der GNU General Public License "
+"(GPL) Version 3 oder höher veröffentlicht."
+
+#: qml/AboutPage.qml:63
+msgid "Translated by"
+msgstr "Übersetzt von"
+
+#. TRANSLATORS: This is a special message that shouldn't be
+#. translated literally. It is used in the about page to give
+#. credits to the translators. Thus, you should translate it to
+#. your name. You can also include other translators who have
+#. contributed to this translation; in that case, please write
+#. them on separate lines seperated by newlines (\n).
+#: qml/AboutPage.qml:74
+msgid "translator-credits"
+msgstr "Übersetzer"
+
+#: qml/AboutPage.qml:83
+msgid ""
+"You can add new user interface translations or contribute to existing ones "
+"at Transifex."
+msgstr ""
+"Du kannst über Transifex neue Übersetzungen hinzufügen oder etwas zu "
+"Vorhandenen beitragen."
+
+#: qml/BasemapPage.qml:26 qml/BasemapPage.qml:107
+msgid "Basemaps"
+msgstr "Grundkarten"
+
+#: qml/BasemapPage.qml:49 qml/GeocoderPage.qml:49 qml/GuidePage.qml:49
+#: qml/OverlayPage.qml:35 qml/RouterPage.qml:50
+msgid "Source: %1"
+msgstr "Quelle: %1"
+
+#: qml/BasemapPage.qml:68
+msgid "All"
+msgstr "Alle"
+
+#: qml/BasemapPage.qml:87 qml/GeocoderPage.qml:69 qml/GuidePage.qml:69
+#: qml/RouterPage.qml:70
+msgid "%1 (default)"
+msgstr "%1 (Voreinstellung)"
+
+#: qml/BasemapPage.qml:107
+msgid "Basemaps %1"
+msgstr "Grundkarten %1"
+
+#: qml/CachePage.qml:50
+msgid "%1 tiles · %2"
+msgstr "%1 Kacheln · %2"
+
+#: qml/CachePage.qml:57
+msgid "Remove older than one week"
+msgstr "Entferne älter als eine Woche"
+
+#: qml/CachePage.qml:58 qml/CachePage.qml:64 qml/CachePage.qml:70
+#: qml/CachePage.qml:76 qml/CachePage.qml:82 qml/CachePage.qml:88
+msgid "Removing"
+msgstr "Entferne"
+
+#: qml/CachePage.qml:63
+msgid "Remove older than one month"
+msgstr "Entferne älter als einen Monat"
+
+#: qml/CachePage.qml:69
+msgid "Remove older than three months"
+msgstr "Entferne älter als drei Monate"
+
+#: qml/CachePage.qml:75
+msgid "Remove older than six months"
+msgstr "Entferne älter als sechs Monate"
+
+#: qml/CachePage.qml:81
+msgid "Remove older than one year"
+msgstr "Entferne älter als ein Jahr"
+
+#: qml/CachePage.qml:87
+msgid "Remove all"
+msgstr "Entferne alle"
+
+#: qml/CachePage.qml:108
+msgid "Calculating"
+msgstr "Berechne"
+
+#: qml/CachePage.qml:116
+msgid "Map Tile Cache"
+msgstr "Speicher für Karten"
+
+#: qml/CachePage.qml:121
+msgid "Empty cache, or error"
+msgstr "Leere Zwischenspeicher, oder Fehler"
+
+#: qml/GeocodePage.qml:48 qml/PlaceTypePage.qml:48 qml/RoutePointPage.qml:48
+msgid "Remove"
+msgstr "Entferne"
+
+#: qml/GeocodePage.qml:67 qml/MenuPage.qml:37
+msgid "Search"
+msgstr "Suche"
+
+#: qml/GeocodePage.qml:71 qml/NearbyPage.qml:53 qml/RoutePage.qml:45
+msgid "Using"
+msgstr "Benutze"
+
+#: qml/GeocodePage.qml:84 qml/RoutePointPage.qml:82
+msgid "Address, landmark, etc."
+msgstr "Adresse, Orientierungspunkt, etc."
+
+#: qml/GeocodingResultsPage.qml:84 qml/NearbyResultsPage.qml:84
+msgid "Show all"
+msgstr "Zeige alle"
+
+#: qml/GeocodingResultsPage.qml:116 qml/NearbyResultsPage.qml:116
+#: routers/digitransit_results.qml:182 routers/mapquest_open_results.qml:33
+#: routers/mapzen_results.qml:33 routers/osmscout_results.qml:34
+#: routers/osrm_results.qml:33
+msgid "Searching"
+msgstr "Suche"
+
+#: qml/GeocodingResultsPage.qml:137 qml/NearbyResultsPage.qml:134
+msgid "%1 Results"
+msgstr "%1 Ergebnisse"
+
+#: qml/GeocodingResultsPage.qml:142 qml/NearbyResultsPage.qml:139
+#: routers/digitransit_results.qml:210 routers/mapquest_open_results.qml:59
+#: routers/mapzen_results.qml:59 routers/osmscout_results.qml:60
+#: routers/osrm_results.qml:59
+msgid "No results"
+msgstr "Keine Ergebnisse"
+
+#: qml/MapMouseArea.qml:31 qml/MapMouseArea.qml:32
+msgid "Unnamed point"
+msgstr "Namenloser Ort"
+
+#: qml/MenuPage.qml:45 qml/NarrativePage.qml:105 qml/RoutePage.qml:42
+msgid "Navigation"
+msgstr "Navigation"
+
+#: qml/MenuPage.qml:52
+msgid "Nearby venues"
+msgstr "Nahegelegene Orte"
+
+#: qml/MenuPage.qml:59
+msgid "Share current position"
+msgstr "Teile derzeitige Position"
+
+#: qml/MenuPage.qml:74
+msgid "Share Current Position"
+msgstr "Teile derzeitige Position"
+
+#: qml/MenuPage.qml:80
+msgid "Center on current position"
+msgstr "Zentriere auf derzeitige Position"
+
+#: qml/MenuPage.qml:88
+msgid "Clear map"
+msgstr "Leere Karte"
+
+#: qml/MenuPage.qml:96
+msgid "Basemaps and overlays"
+msgstr "Grundkarten und Overlays"
+
+#: qml/MenuPage.qml:106
+msgid "Auto-center on position"
+msgstr "Zentriere Position automatisch"
+
+#: qml/MenuPage.qml:122
+msgid "Auto-rotate on direction"
+msgstr "Drehe Ansicht je nach Richtung"
+
+#: qml/MenuPage.qml:135
+msgid "About"
+msgstr "Über"
+
+#: qml/MenuPage.qml:139 qml/PreferencesPage.qml:32
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: qml/NarrativePage.qml:85
+msgid "Continue for %1."
+msgstr "Weiter zu %1."
+
+#: qml/NarrativePage.qml:113
+msgid "Begin"
+msgstr "Beginne"
+
+#: qml/NarrativePage.qml:120
+msgid "Pause"
+msgstr "Pause"
+
+#: qml/NarrativePage.qml:127
+msgid "Clear"
+msgstr "Leere"
+
+#: qml/NarrativePage.qml:141
+msgid "Distance remaining"
+msgstr "Verbleibende Entfernung"
+
+#: qml/NarrativePage.qml:148
+msgid "Time remaining"
+msgstr "Verbleibende Zeit"
+
+#: qml/NavigationBlock.qml:79
+msgid "Tap to review maneuvers or begin navigating"
+msgstr "Tippe, um Anweisungen zu prüfen oder die Navigation zu starten"
+
+#: qml/NearbyPage.qml:50
+msgid "Nearby Venues"
+msgstr "Nahegelegene Orte"
+
+#: qml/NearbyPage.qml:67
+msgid "Near"
+msgstr "Nähe"
+
+#: qml/NearbyPage.qml:96 routers/mapquest_open_settings.qml:25
+#: routers/mapzen_settings.qml:25 routers/osmscout_settings.qml:25
+msgid "Type"
+msgstr "Typ"
+
+#: qml/NearbyPage.qml:110
+msgid "Radius"
+msgstr "Radius"
+
+#: qml/NorthArrow.qml:35
+msgid "Auto-rotate off"
+msgstr "Automatische Drehung aus"
+
+#: qml/NorthArrow.qml:38
+msgid "Auto-rotate on"
+msgstr "Automatische Drehung an"
+
+#: qml/OverlayPage.qml:62
+msgid "Overlays"
+msgstr "Overlays"
+
+#: qml/PlaceTypePage.qml:68
+msgid "Type of venue"
+msgstr "Art des Ortes"
+
+#: qml/PoiMarker.qml:59
+msgid "Navigate"
+msgstr "Navigiere"
+
+#: qml/PoiMarker.qml:75
+msgid "Nearby"
+msgstr "Nähe"
+
+#: qml/PoiMarker.qml:91
+msgid "Share"
+msgstr "Teile"
+
+#: qml/PoiMarker.qml:107
+msgid "Web"
+msgstr "Web"
+
+#: qml/PositionMarker.qml:62
+msgid "Auto-center off"
+msgstr "Autozentrierung aus"
+
+#: qml/PositionMarker.qml:65
+msgid "Auto-center on"
+msgstr "Autozentrierung an"
+
+#: qml/PreferencesPage.qml:36
+msgid ""
+"Uncheck to minimize data traffic. You will be left with previously "
+"downloaded and cached tiles."
+msgstr ""
+"Wähle dies ab, um Datenverbrauch zu minimieren. Es werden nur vorher "
+"heruntergeladene und zwischengespeicherte Kacheln genutzt."
+
+#: qml/PreferencesPage.qml:37
+msgid "Allow downloading map tiles"
+msgstr "Erlaube das Herunterladen von Kartenkacheln"
+
+#: qml/PreferencesPage.qml:52
+msgid "Show navigation narrative"
+msgstr "Zeige Navigationsbericht"
+
+#: qml/PreferencesPage.qml:61
+msgid "Units"
+msgstr "Einheiten"
+
+#: qml/PreferencesPage.qml:63
+msgid "Metric"
+msgstr "Metrisch"
+
+#: qml/PreferencesPage.qml:64
+msgid "American"
+msgstr "Amerikanisch"
+
+#: qml/PreferencesPage.qml:65
+msgid "British"
+msgstr "Britisch"
+
+#: qml/PreferencesPage.qml:80
+msgid ""
+"Only applies when Poor Maps is active. When minimized, sleep is controlled "
+"by normal device-level preferences."
+msgstr ""
+"Nur gültig, solange Poor Maps aktiv ist. Minimiert wird der Ruhemodus über "
+"die Systemeinstellungen kontrolliert."
+
+#: qml/PreferencesPage.qml:81
+msgid "Prevent sleep"
+msgstr "Verhindere Ruhemodus"
+
+#: qml/PreferencesPage.qml:83
+msgid "Never"
+msgstr "Nie"
+
+#: qml/PreferencesPage.qml:84
+msgid "When navigating"
+msgstr "Während Navigation"
+
+#: qml/PreferencesPage.qml:85
+msgid "Always"
+msgstr "Immer"
+
+#: qml/PreferencesPage.qml:100
+msgid ""
+"Limiting tile caching ensures up-to-date maps and keeps disk use under "
+"control, but loads maps slower and causes more data traffic."
+msgstr ""
+"Begrenzung des Kartenspeichers sorgt für aktuellere Karten und für "
+"geringeren Speicherbedarf, Karten werden dafür langsamer angezeigt und es "
+"wird mehr Datenvolumen verbraucht."
+
+#: qml/PreferencesPage.qml:101
+msgid "Cache map tiles"
+msgstr "Speichere Kartenkacheln zwischen"
+
+#: qml/PreferencesPage.qml:103
+msgid "For one week"
+msgstr "Für eine Woche"
+
+#: qml/PreferencesPage.qml:104
+msgid "For one month"
+msgstr "Für einen Monat"
+
+#: qml/PreferencesPage.qml:105
+msgid "For three months"
+msgstr "Für drei Monate"
+
+#: qml/PreferencesPage.qml:106
+msgid "For six months"
+msgstr "Für sechs Monate"
+
+#: qml/PreferencesPage.qml:107
+msgid "For one year"
+msgstr "Für ein Jahr"
+
+#: qml/PreferencesPage.qml:108
+msgid "Forever"
+msgstr "Für immer"
+
+#: qml/PreferencesPage.qml:133
+msgid "Examine map tile cache"
+msgstr "Überprüfe Kartenspeicher"
+
+#: qml/RoutePage.qml:59
+msgid "From"
+msgstr "Von"
+
+#: qml/RoutePage.qml:88
+msgid "To"
+msgstr "Nach"
+
+#: qml/RoutePage.qml:131
+msgid "Reverse endpoints"
+msgstr "Tausche Endpunkte"
+
+#: qml/RouterPage.qml:49
+msgid "Modes: %1"
+msgstr "Arten: %1"
+
+#: qml/SharePage.qml:49
+msgid "SMS"
+msgstr "SMS"
+
+#: qml/SharePage.qml:55 qml/SharePage.qml:85
+msgid "Message copied to the clipboard"
+msgstr "Nachricht in Zwischenablage kopiert"
+
+#: qml/SharePage.qml:56
+msgid "Launching the Messages application"
+msgstr "Öffne das Nachrichtenprogramm"
+
+#: qml/SharePage.qml:70
+msgid "Email"
+msgstr "E-Mail"
+
+#: qml/SharePage.qml:73
+msgid "Launching the Email application"
+msgstr "Öffne das E-Mail-Programm"
+
+#: qml/SharePage.qml:82
+msgid "Other"
+msgstr "Anderes"
+
+#: routers/digitransit_results.qml:50
+msgid "Route %1. total %2"
+msgstr "Route %1. Gesamt %2"
+
+#: routers/digitransit_results.qml:128
+msgid "Walk %1"
+msgstr "Gehe %1"
+
+#: routers/digitransit_results.qml:129
+msgid "%1 → %2"
+msgstr "%1 → %2"
+
+#: routers/digitransit_results.qml:161 routers/mapquest_open_results.qml:52
+#: routers/mapzen_results.qml:52 routers/osmscout_results.qml:53
+#: routers/osrm_results.qml:52
+msgid "Routing courtesy of %1."
+msgstr "Routenplanung mit freundlicher Genehmigung von %1."
+
+#: routers/digitransit_results.qml:204
+msgid "Results"
+msgstr "Ergebnisse"
+
+#: routers/digitransit_settings.qml:27
+msgid "Region"
+msgstr "Region"
+
+#: routers/digitransit_settings.qml:29
+msgid "HSL"
+msgstr "HSL"
+
+#: routers/digitransit_settings.qml:30
+msgid "Waltti"
+msgstr "Waltti"
+
+#: routers/digitransit_settings.qml:31
+msgid "Finland"
+msgstr "Finnland"
+
+#: routers/digitransit_settings.qml:58 routers/digitransit_settings.qml:62
+#: routers/digitransit_settings.qml:67
+msgid "Depart"
+msgstr "Abreise"
+
+#: routers/digitransit_settings.qml:63
+msgid "Arrive"
+msgstr "Ankunft"
+
+#: routers/digitransit_settings.qml:86
+msgid "Today"
+msgstr "Heute"
+
+#: routers/digitransit_settings.qml:121
+msgid "Now"
+msgstr "Jetzt"
+
+#: routers/digitransit_settings.qml:147
+msgid "Criterion"
+msgstr "Kriterium"
+
+#: routers/digitransit_settings.qml:149
+msgid "Default"
+msgstr "Voreinstellung"
+
+#: routers/digitransit_settings.qml:150
+msgid "Least transfers"
+msgstr "Möglichst wenig Umsteigen"
+
+#: routers/digitransit_settings.qml:151
+msgid "Least walking"
+msgstr "Möglichst wenig Gehen"
+
+#: routers/mapquest_open_settings.qml:27 routers/mapzen_settings.qml:27
+#: routers/osmscout_settings.qml:27
+msgid "Car"
+msgstr "Auto"
+
+#: routers/mapquest_open_settings.qml:28 routers/mapzen_settings.qml:28
+#: routers/osmscout_settings.qml:28
+msgid "Bicycle"
+msgstr "Fahrrad"
+
+#: routers/mapquest_open_settings.qml:29 routers/mapzen_settings.qml:29
+#: routers/osmscout_settings.qml:29
+msgid "Foot"
+msgstr "Zu Fuß"
+
+#: routers/mapquest_open_settings.qml:46
+msgid "Try to avoid tolls"
+msgstr "Versuche, Mautstrecken zu vermeiden"
+
+#: routers/osmscout_results.qml:29
+msgid "For long routes, this could take up to a minute."
+msgstr "Dies kann für lange Strecken bis zu einer Minute dauern."
+
+#: standard input:1
+msgid "Geocoding in Finland"
+msgstr "Geocoding in Finnland"
+
+#: standard input:2 standard input:3
+msgid "Geocoding based on open data sources"
+msgstr "Geocoding basierend auf freien Datenquellen"
+
+#: standard input:4 standard input:6
+msgid "Geocoding based on OpenStreetMap data"
+msgstr "Geocoding basierend auf OpenStreetMap-Daten"
+
+#: standard input:5 standard input:10 standard input:19 standard input:24
+#: standard input:26 standard input:28 standard input:30
+msgid "OSM Scout offline server"
+msgstr "OSM Scout Offline-Server"
+
+#: standard input:7
+msgid "Venues listed and reviewed by Foursquare users"
+msgstr "Von Foursquarenutzern eingetragene und geprüfte Orte "
+
+#: standard input:8 standard input:9
+msgid "Points of interest from OpenStreetMap data"
+msgstr "Sehenswürdigkeiten aus OpenStreetMap-Daten"
+
+#: standard input:11
+msgid "Public transport routing in Finland"
+msgstr "ÖPNV-Routing in Finnland"
+
+#: standard input:12
+msgid "public transport"
+msgstr "ÖPNV"
+
+#: standard input:13 standard input:15 standard input:17 standard input:20
+msgid "Routing based on OpenStreetMap data"
+msgstr "Routing nach OpenStreetMap-Daten"
+
+#: standard input:14 standard input:16 standard input:18
+msgid "car, bicycle, foot"
+msgstr "Auto, Rad, Zu Fuß"
+
+#: standard input:21
+msgid "car"
+msgstr "Auto"
+
+#: standard input:22
+msgid "ASTER GDEM & SRTM Hillshade @1x"
+msgstr "ASTER GDEM & SRTM Hillshade @1x"
+
+#: standard input:23
+msgid "OSM Scout day @1x"
+msgstr "OSM Scout Tag @1x"
+
+#: standard input:25
+msgid "OSM Scout day @2x"
+msgstr "OSM Scout Tag @2x"
+
+#: standard input:27
+msgid "OSM Scout night @1x"
+msgstr "OSM Scout Nacht @1x"
+
+#: standard input:29
+msgid "OSM Scout night @2x"
+msgstr "OSM Scout Nacht @2x"
