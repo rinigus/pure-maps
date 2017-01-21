@@ -1,3 +1,10 @@
+2017-01-21: Poor Maps 0.28.1
+============================
+
+* Fix long routes not visible before moving or zooming the map
+* Add German (Germany), Spanish (Spain), French, Dutch and Swedish
+  translations
+
 2017-01-04: Poor Maps 0.28
 ==========================
 
