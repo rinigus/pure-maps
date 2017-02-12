@@ -12,7 +12,9 @@ License: GPLv3+
 URL: http://github.com/otsaloma/poor-maps
 Source: %{name}-%{version}.tar.xz
 BuildArch: noarch
+BuildRequires: gettext
 BuildRequires: make
+BuildRequires: qt5-qttools-linguist
 Requires: libkeepalive
 Requires: libsailfishapp-launcher
 Requires: pyotherside-qml-plugin-python3-qt5 >= 1.2
