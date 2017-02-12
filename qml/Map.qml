@@ -517,7 +517,7 @@ Map {
             maneuver.passive = map.maneuvers[i].passive;
             data.push(maneuver);
         }
-        py.call_sync("poor.storage.write_maneuvers", [data]);
+        py.call("poor.storage.write_maneuvers", [data], null);
     }
 
     function savePois() {
@@ -533,7 +533,7 @@ Map {
             poi.link  = map.pois[i].link;
             data.push(poi);
         }
-        py.call_sync("poor.storage.write_pois", [data]);
+        py.call("poor.storage.write_pois", [data], null);
     }
 
     function saveRoute() {
@@ -549,7 +549,7 @@ Map {
         } else {
             var data = {};
         }
-        py.call_sync("poor.storage.write_route", [data]);
+        py.call("poor.storage.write_route", [data], null);
     }
 
     function setCenter(x, y) {

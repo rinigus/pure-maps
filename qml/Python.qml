@@ -31,4 +31,23 @@ Python {
         });
     }
     onError: console.log("Error: %1".arg(traceback));
+    function call_sync(func, args) {
+        // XXX: Work around a call_sync bug by using evaluate.
+        // https://github.com/thp/pyotherside/issues/49
+        for (var i = 0; i < args.length; i++) {
+            if (typeof args[i] === "string") {
+                args[i] = args[i].replace(/'/, "\\'");
+                args[i] = "'%1'".arg(args[i]);
+            } else if (typeof args[i] === "number") {
+                args[i] = args[i].toString();
+            } else if (typeof args[i] === "boolean") {
+                args[i] = args[i] ? "True" : "False";
+            } else {
+                throw "Unrecognized argument type: %1: %2"
+                    .arg(args[i]).arg(typeof args[i]);
+            }
+        }
+        var call = "%1(%2)".arg(func).arg(args.join(", "));
+        return py.evaluate(call);
+    }
 }

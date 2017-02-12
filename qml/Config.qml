@@ -29,7 +29,7 @@ QtObject {
     }
     function set(option, value) {
         // Set the value of configuration option.
-        return py.call_sync("poor.conf.set", [option, value]);
+        return py.call("poor.conf.set", [option, value], null);
     }
     function setAdd(option, item) {
         // Add item to option of type set.
