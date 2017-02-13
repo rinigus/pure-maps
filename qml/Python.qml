@@ -31,4 +31,32 @@ Python {
         });
     }
     onError: console.log("Error: %1".arg(traceback));
+    function call_sync(func, args) {
+        // XXX: Work around a call_sync bug by using evaluate.
+        // https://github.com/thp/pyotherside/issues/49
+        args = args.map(py.stringify).join(", ");
+        return py.evaluate("%1(%2)".arg(func).arg(args));
+    }
+    function stringify(obj) {
+        // Return Python string representation of obj.
+        if (Array.isArray(obj)) {
+            return "[%1]".arg(obj.map(py.stringify).join(", "));
+        } else if (obj === null || obj === undefined) {
+            return "None";
+        } else if (typeof obj === "string") {
+            return "'%1'".arg(obj.replace(/'/, "\\'"));
+        } else if (typeof obj === "number") {
+            return obj.toString();
+        } else if (typeof obj === "boolean") {
+            return obj ? "True" : "False";
+        } else if (typeof obj === "object") {
+            // Assume all remaining objects are dictionaries.
+            return "{%1}".arg(Object.keys(obj).map(function(x) {
+                return [py.stringify(x), py.stringify(obj[x])].join(": ");
+            }).join(", "));
+        } else {
+            throw "Unrecognized argument type: %1: %2"
+                .arg(obj).arg(typeof obj);
+        }
+    }
 }
