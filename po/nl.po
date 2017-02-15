@@ -190,8 +190,8 @@ msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
-"Je kan nieuwe vertalingen voor de gebruikersinterface toevoegen of bijwerken"
-" op Transifex."
+"Je kan vertalingen voor de gebruikersinterface toevoegen of bijwerken op "
+"Transifex."
 
 #: qml/BasemapPage.qml:26 qml/BasemapPage.qml:107
 msgid "Basemaps"

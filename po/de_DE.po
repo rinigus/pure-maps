@@ -181,7 +181,7 @@ msgstr "Übersetzt von"
 #. them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:74
 msgid "translator-credits"
-msgstr "Übersetzer"
+msgstr "John Gibbon"
 
 #: qml/AboutPage.qml:83
 msgid ""
