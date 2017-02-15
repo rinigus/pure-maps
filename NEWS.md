@@ -1,3 +1,10 @@
+2017-02-15: Poor Maps 0.28.2
+============================
+
+* Work around PyOtherSide's call_sync being broken in Sailfish OS
+  2.1.0.9 "Iijoki"
+* Add Italian and Polish translations
+
 2017-01-21: Poor Maps 0.28.1
 ============================
 
