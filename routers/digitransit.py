@@ -67,9 +67,10 @@ MODE_NAMES = {
 NARRATIVE = {
     "00": _("Walk towards {arr_name}."),
     "01": _("Board {mode_name} {line_desc} at {dep_name} at {dep_time}."),
+    "09": _("Walk towards {arr_name}."),
     "10": _("Get off at {dep_name} and walk towards {arr_name}."),
-    "19": _("Get off at {dep_name} and walk towards your destination."),
     "11": _("Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."),
+    "19": _("Get off at {dep_name} and walk towards your destination."),
 }
 
 URL = "http://api.digitransit.fi/routing/v1/routers/{region}/index/graphql"
