@@ -74,7 +74,7 @@ Canvas {
         // This gets called continuously as the map is panned!
         if (!canvas.hasPath) return;
         if (!canvas.changed) return;
-        if (!canvas.context) return;
+        if (!canvas.context) return canvas.getContext("2d");
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.floor(map.zoomLevel);
         var key = zoom.toString();
