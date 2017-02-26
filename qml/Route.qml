@@ -56,8 +56,8 @@ Canvas {
         repeat: true
         running: app.running && canvas.hasPath
         onTriggered: {
-            if (canvas.context && canvas.changed) {
-                canvas.requestPaint();
+            if (canvas.context) {
+                canvas.changed && canvas.requestPaint();
             } else if (app.applicationActive && canvas.hasPath && canvas.available) {
                 // When Poor Maps is minimized, the context seems to be lost,
                 // with its value being null. Calling getContext after application
