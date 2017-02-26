@@ -55,7 +55,17 @@ Canvas {
         interval: 500
         repeat: true
         running: app.running && canvas.hasPath
-        onTriggered: canvas.changed && canvas.requestPaint();
+        onTriggered: {
+            if (canvas.context && canvas.changed) {
+                canvas.requestPaint();
+            } else if (app.applicationActive && canvas.hasPath && canvas.available) {
+                // When Poor Maps is minimized, the context seems to be lost,
+                // with its value being null. Calling getContext after application
+                // is active again and the canvas available again, will reinitialize
+                // the context and via onContextChanged trigger a repaint.
+                canvas.getContext("2d");
+            }
+        }
     }
 
     onContextChanged: {
@@ -66,6 +76,7 @@ Canvas {
         canvas.context.lineJoin = "round";
         canvas.context.lineWidth = Math.floor(Theme.pixelRatio*10);
         canvas.context.strokeStyle = "#0540ff";
+        canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         canvas.redraw();
     }
 
@@ -74,7 +85,7 @@ Canvas {
         // This gets called continuously as the map is panned!
         if (!canvas.hasPath) return;
         if (!canvas.changed) return;
-        if (!canvas.context) return canvas.getContext("2d");
+        if (!canvas.context) return;
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.floor(map.zoomLevel);
         var key = zoom.toString();
