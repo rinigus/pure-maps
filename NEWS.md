@@ -1,3 +1,10 @@
+2017-02-27: Poor Maps 0.28.4
+============================
+
+* Fix route polyline disappearing after minimizing Poor Maps (#35)
+* Fix Digitransit router not returning anything if even one of the
+  alternatives was fully a walking trip
+
 2017-02-16: Poor Maps 0.28.3
 ============================
 
