@@ -18,8 +18,8 @@
 """
 Routing using Mapzen Turn-by-Turn.
 
-https://mapzen.com/projects/valhalla
-https://github.com/valhalla/valhalla-docs
+https://mapzen.com/products/turn-by-turn/
+https://mapzen.com/documentation/mobility/turn-by-turn/api-reference/
 """
 
 import copy
