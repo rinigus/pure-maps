@@ -127,19 +127,39 @@ pool = ConnectionPool(1)
 
 def get(url, encoding=None, retry=1, headers=None):
     """Make a HTTP GET request at `url` and return response."""
-    return _request("GET", url, None, encoding, retry, headers)
+    return _request("GET",
+                    url,
+                    body=None,
+                    encoding=encoding,
+                    retry=retry,
+                    headers=headers)
 
 def get_json(url, encoding="utf_8", retry=1, headers=None):
     """Make a HTTP GET request at `url` and return response parsed as JSON."""
-    return _request_json("GET", url, None, encoding, retry, headers)
+    return _request_json("GET",
+                         url,
+                         body=None,
+                         encoding=encoding,
+                         retry=retry,
+                         headers=headers)
 
 def post(url, body, encoding=None, retry=1, headers=None):
     """Make a HTTP POST request at `url` and return response."""
-    return _request("POST", url, body, encoding, retry, headers)
+    return _request("POST",
+                    url,
+                    body=body,
+                    encoding=encoding,
+                    retry=retry,
+                    headers=headers)
 
 def post_json(url, body, encoding="utf_8", retry=1, headers=None):
     """Make a HTTP POST request at `url` and return response parsed as JSON."""
-    return _request_json("POST", url, body, encoding, retry, headers)
+    return _request_json("POST",
+                         url,
+                         body=body,
+                         encoding=encoding,
+                         retry=retry,
+                         headers=headers)
 
 def _request(method, url, body=None, encoding=None, retry=1, headers=None):
     """
@@ -147,7 +167,7 @@ def _request(method, url, body=None, encoding=None, retry=1, headers=None):
 
     `method` should be the name of a HTTP method, e.g. "GET" or "POST". `body`
     should be ``None`` for methods that don't expect data (e.g. GET) or the
-    data to send (usually a string) for method that do expect data (e.g. POST).
+    data to send (usually a string) for methods that do expect data (e.g. POST).
     If `encoding` is ``None``, return bytes, otherwise decode response data to
     text using `encoding`. Try again `retry` times in some particular cases
     that imply a connection error. `headers` should be a dictionary of custom
@@ -157,12 +177,16 @@ def _request(method, url, body=None, encoding=None, retry=1, headers=None):
     try:
         connection = pool.get(url)
         # Do relative requests (without scheme and netloc)
-        # for better compatiblity.
+        # for better compatibility with different servers.
         components = urllib.parse.urlparse(url)
         components = ("", "") + components[2:]
         path = urllib.parse.urlunparse(components)
         headall = HEADERS.copy()
         headall.update(headers or {})
+        if isinstance(body, str):
+            # UTF-8 is likely to work in most cases,
+            # otherwise caller can encode and give bytes.
+            body = body.encode("utf_8")
         connection.request(method, path, body, headers=headall)
         response = connection.getresponse()
         # Always read response to avoid
@@ -178,8 +202,12 @@ def _request(method, url, body=None, encoding=None, retry=1, headers=None):
         connection.close()
         connection = None
         # These probably mean that the connection was broken.
-        broken = (BrokenPipeError, http.client.BadStatusLine)
-        if not isinstance(error, broken) or retry == 0:
+        broken = [
+            BrokenPipeError,
+            ConnectionResetError,
+            http.client.BadStatusLine,
+        ]
+        if not isinstance(error, tuple(broken)) or retry == 0:
             name = error.__class__.__name__
             print("{} failed: {}: {}"
                   .format(method, name, str(error)),
