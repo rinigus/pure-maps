@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-12 23:17+0200\n"
+"POT-Creation-Date: 2017-06-15 22:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,7 +110,7 @@ msgstr ""
 msgid "walk"
 msgstr ""
 
-#: routers/digitransit.py:68
+#: routers/digitransit.py:68 routers/digitransit.py:70
 #, python-brace-format
 msgid "Walk towards {arr_name}."
 msgstr ""
@@ -120,14 +120,9 @@ msgstr ""
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
 msgstr ""
 
-#: routers/digitransit.py:70
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr ""
-
 #: routers/digitransit.py:71
 #, python-brace-format
-msgid "Get off at {dep_name} and walk towards your destination."
+msgid "Get off at {dep_name} and walk towards {arr_name}."
 msgstr ""
 
 #: routers/digitransit.py:72
@@ -135,7 +130,12 @@ msgstr ""
 msgid "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr ""
 
-#: routers/digitransit.py:159
+#: routers/digitransit.py:73
+#, python-brace-format
+msgid "Get off at {dep_name} and walk towards your destination."
+msgstr ""
+
+#: routers/digitransit.py:160
 msgid "Arrive at your destination."
 msgstr ""
 
@@ -271,7 +271,7 @@ msgstr ""
 #: qml/GeocodingResultsPage.qml:116 qml/NearbyResultsPage.qml:116
 #: routers/digitransit_results.qml:182 routers/mapquest_open_results.qml:33
 #: routers/mapzen_results.qml:33 routers/osmscout_results.qml:34
-#: routers/osrm_results.qml:33
+#: routers/osmscout_valhalla_results.qml:33 routers/osrm_results.qml:33
 msgid "Searching"
 msgstr ""
 
@@ -282,7 +282,7 @@ msgstr ""
 #: qml/GeocodingResultsPage.qml:142 qml/NearbyResultsPage.qml:139
 #: routers/digitransit_results.qml:210 routers/mapquest_open_results.qml:59
 #: routers/mapzen_results.qml:59 routers/osmscout_results.qml:60
-#: routers/osrm_results.qml:59
+#: routers/osmscout_valhalla_results.qml:63 routers/osrm_results.qml:59
 msgid "No results"
 msgstr ""
 
@@ -372,6 +372,7 @@ msgstr ""
 
 #: qml/NearbyPage.qml:96 routers/mapquest_open_settings.qml:25
 #: routers/mapzen_settings.qml:25 routers/osmscout_settings.qml:25
+#: routers/osmscout_valhalla_settings.qml:25
 msgid "Type"
 msgstr ""
 
@@ -615,17 +616,17 @@ msgid "Least walking"
 msgstr ""
 
 #: routers/mapquest_open_settings.qml:27 routers/mapzen_settings.qml:27
-#: routers/osmscout_settings.qml:27
+#: routers/osmscout_settings.qml:27 routers/osmscout_valhalla_settings.qml:27
 msgid "Car"
 msgstr ""
 
 #: routers/mapquest_open_settings.qml:28 routers/mapzen_settings.qml:28
-#: routers/osmscout_settings.qml:28
+#: routers/osmscout_settings.qml:28 routers/osmscout_valhalla_settings.qml:28
 msgid "Bicycle"
 msgstr ""
 
 #: routers/mapquest_open_settings.qml:29 routers/mapzen_settings.qml:29
-#: routers/osmscout_settings.qml:29
+#: routers/osmscout_settings.qml:29 routers/osmscout_valhalla_settings.qml:29
 msgid "Foot"
 msgstr ""
 
@@ -635,6 +636,11 @@ msgstr ""
 
 #: routers/osmscout_results.qml:29
 msgid "For long routes, this could take up to a minute."
+msgstr ""
+
+#. TRANSLATORS: %1 refers to the routing engine, %2 to the service.
+#: routers/osmscout_valhalla_results.qml:53
+msgid "Routing by %1, courtesy of %2"
 msgstr ""
 
 #: standard input:1
@@ -649,8 +655,8 @@ msgstr ""
 msgid "Geocoding based on OpenStreetMap data"
 msgstr ""
 
-#: standard input:5 standard input:10 standard input:19 standard input:24
-#: standard input:26 standard input:28 standard input:30
+#: standard input:5 standard input:10 standard input:19 standard input:22
+#: standard input:27 standard input:29 standard input:31 standard input:33
 msgid "OSM Scout offline server"
 msgstr ""
 
@@ -671,33 +677,34 @@ msgid "public transport"
 msgstr ""
 
 #: standard input:13 standard input:15 standard input:17 standard input:20
+#: standard input:23
 msgid "Routing based on OpenStreetMap data"
 msgstr ""
 
-#: standard input:14 standard input:16 standard input:18
+#: standard input:14 standard input:16 standard input:18 standard input:21
 msgid "car, bicycle, foot"
 msgstr ""
 
-#: standard input:21
+#: standard input:24
 msgid "car"
 msgstr ""
 
-#: standard input:22
+#: standard input:25
 msgid "ASTER GDEM & SRTM Hillshade @1x"
 msgstr ""
 
-#: standard input:23
+#: standard input:26
 msgid "OSM Scout day @1x"
 msgstr ""
 
-#: standard input:25
+#: standard input:28
 msgid "OSM Scout day @2x"
 msgstr ""
 
-#: standard input:27
+#: standard input:30
 msgid "OSM Scout night @1x"
 msgstr ""
 
-#: standard input:29
+#: standard input:32
 msgid "OSM Scout night @2x"
 msgstr ""

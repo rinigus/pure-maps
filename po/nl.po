@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-12 23:17+0200\n"
+"POT-Creation-Date: 2017-06-15 22:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Nathan Follens <follens@dr.com>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/otsaloma/teams/70314/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: poor/geocoder.py:79
@@ -111,7 +111,7 @@ msgstr "tram"
 msgid "walk"
 msgstr "te voet"
 
-#: routers/digitransit.py:68
+#: routers/digitransit.py:68 routers/digitransit.py:70
 #, python-brace-format
 msgid "Walk towards {arr_name}."
 msgstr "Wandel naar {arr_name}."
@@ -121,25 +121,22 @@ msgstr "Wandel naar {arr_name}."
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
 msgstr "Stap in op {mode_name} {line_desc} te {dep_name} om {dep_time}."
 
-#: routers/digitransit.py:70
+#: routers/digitransit.py:71
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
 msgstr "Stap uit te {dep_name} en wandel naar {arr_name}."
 
-#: routers/digitransit.py:71
+#: routers/digitransit.py:72
+#, python-brace-format
+msgid "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+msgstr "Stap uit te {dep_name} en stap over op {mode_name} {line_desc} om {dep_time}."
+
+#: routers/digitransit.py:73
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
 msgstr "Stap uit te {dep_name} en wandel naar je bestemming."
 
-#: routers/digitransit.py:72
-#, python-brace-format
-msgid ""
-"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
-msgstr ""
-"Stap uit te {dep_name} en stap over op {mode_name} {line_desc} om "
-"{dep_time}."
-
-#: routers/digitransit.py:159
+#: routers/digitransit.py:160
 msgid "Arrive at your destination."
 msgstr "Kom aan op je bestemming."
 
@@ -164,12 +161,8 @@ msgid "version %1"
 msgstr "versie %1"
 
 #: qml/AboutPage.qml:60
-msgid ""
-"Poor Maps is free software released under the GNU General Public License "
-"(GPL), version 3 or later."
-msgstr ""
-"Poor Maps is vrije software, uitgebracht onder de GNU General Public License"
-" (GPL), versie 3 of later."
+msgid "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later."
+msgstr "Poor Maps is vrije software, uitgebracht onder de GNU General Public License (GPL), versie 3 of later."
 
 #: qml/AboutPage.qml:63
 msgid "Translated by"
@@ -186,12 +179,8 @@ msgid "translator-credits"
 msgstr "Nathan Follens"
 
 #: qml/AboutPage.qml:83
-msgid ""
-"You can add new user interface translations or contribute to existing ones "
-"at Transifex."
-msgstr ""
-"Je kan vertalingen voor de gebruikersinterface toevoegen of bijwerken op "
-"Transifex."
+msgid "You can add new user interface translations or contribute to existing ones at Transifex."
+msgstr "Je kan vertalingen voor de gebruikersinterface toevoegen of bijwerken op Transifex."
 
 #: qml/BasemapPage.qml:26 qml/BasemapPage.qml:107
 msgid "Basemaps"
@@ -283,7 +272,7 @@ msgstr "Toon alles"
 #: qml/GeocodingResultsPage.qml:116 qml/NearbyResultsPage.qml:116
 #: routers/digitransit_results.qml:182 routers/mapquest_open_results.qml:33
 #: routers/mapzen_results.qml:33 routers/osmscout_results.qml:34
-#: routers/osrm_results.qml:33
+#: routers/osmscout_valhalla_results.qml:33 routers/osrm_results.qml:33
 msgid "Searching"
 msgstr "Bezig met zoeken"
 
@@ -294,7 +283,7 @@ msgstr "%1 resultaten"
 #: qml/GeocodingResultsPage.qml:142 qml/NearbyResultsPage.qml:139
 #: routers/digitransit_results.qml:210 routers/mapquest_open_results.qml:59
 #: routers/mapzen_results.qml:59 routers/osmscout_results.qml:60
-#: routers/osrm_results.qml:59
+#: routers/osmscout_valhalla_results.qml:63 routers/osrm_results.qml:59
 msgid "No results"
 msgstr "Geen resultaten"
 
@@ -384,6 +373,7 @@ msgstr "Dichtbij"
 
 #: qml/NearbyPage.qml:96 routers/mapquest_open_settings.qml:25
 #: routers/mapzen_settings.qml:25 routers/osmscout_settings.qml:25
+#: routers/osmscout_valhalla_settings.qml:25
 msgid "Type"
 msgstr "Type"
 
@@ -432,12 +422,8 @@ msgid "Auto-center on"
 msgstr "Automatisch centreren aan"
 
 #: qml/PreferencesPage.qml:36
-msgid ""
-"Uncheck to minimize data traffic. You will be left with previously "
-"downloaded and cached tiles."
-msgstr ""
-"Vink dit uit om gegevensoverdracht te minimaliseren. Voorheen gedownloade en"
-" in cachegeheugen opgeslagen tegels blijven behouden."
+msgid "Uncheck to minimize data traffic. You will be left with previously downloaded and cached tiles."
+msgstr "Vink dit uit om gegevensoverdracht te minimaliseren. Voorheen gedownloade en in cachegeheugen opgeslagen tegels blijven behouden."
 
 #: qml/PreferencesPage.qml:37
 msgid "Allow downloading map tiles"
@@ -464,12 +450,8 @@ msgid "British"
 msgstr "Brits"
 
 #: qml/PreferencesPage.qml:80
-msgid ""
-"Only applies when Poor Maps is active. When minimized, sleep is controlled "
-"by normal device-level preferences."
-msgstr ""
-"Geldt enkel wanneer Poor Maps actief is. Wanneer geminimaliseerd hangt "
-"slaapmodus af van normale apparaatsvoorkeuren."
+msgid "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences."
+msgstr "Geldt enkel wanneer Poor Maps actief is. Wanneer geminimaliseerd hangt slaapmodus af van normale apparaatsvoorkeuren."
 
 #: qml/PreferencesPage.qml:81
 msgid "Prevent sleep"
@@ -488,13 +470,8 @@ msgid "Always"
 msgstr "Altijd"
 
 #: qml/PreferencesPage.qml:100
-msgid ""
-"Limiting tile caching ensures up-to-date maps and keeps disk use under "
-"control, but loads maps slower and causes more data traffic."
-msgstr ""
-"Opslaan van tegels in cachegeheugen beperken zorgt voor up-to-date kaarten "
-"en houdt geheugengebruik in bedwang, maar laadt kaarten trager en leidt tot "
-"hoger gegevensverbruik."
+msgid "Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic."
+msgstr "Opslaan van tegels in cachegeheugen beperken zorgt voor up-to-date kaarten en houdt geheugengebruik in bedwang, maar laadt kaarten trager en leidt tot hoger gegevensverbruik."
 
 #: qml/PreferencesPage.qml:101
 msgid "Cache map tiles"
@@ -640,17 +617,17 @@ msgid "Least walking"
 msgstr "Minst wandelen"
 
 #: routers/mapquest_open_settings.qml:27 routers/mapzen_settings.qml:27
-#: routers/osmscout_settings.qml:27
+#: routers/osmscout_settings.qml:27 routers/osmscout_valhalla_settings.qml:27
 msgid "Car"
 msgstr "Auto"
 
 #: routers/mapquest_open_settings.qml:28 routers/mapzen_settings.qml:28
-#: routers/osmscout_settings.qml:28
+#: routers/osmscout_settings.qml:28 routers/osmscout_valhalla_settings.qml:28
 msgid "Bicycle"
 msgstr "Fiets"
 
 #: routers/mapquest_open_settings.qml:29 routers/mapzen_settings.qml:29
-#: routers/osmscout_settings.qml:29
+#: routers/osmscout_settings.qml:29 routers/osmscout_valhalla_settings.qml:29
 msgid "Foot"
 msgstr "Te voet"
 
@@ -662,20 +639,25 @@ msgstr "Probeer tol te vermijden"
 msgid "For long routes, this could take up to a minute."
 msgstr "Voor lange routes kan dit tot een minuut duren."
 
+#. TRANSLATORS: %1 refers to the routing engine, %2 to the service.
+#: routers/osmscout_valhalla_results.qml:53
+msgid "Routing by %1, courtesy of %2"
+msgstr ""
+
 #: standard input:1
 msgid "Geocoding in Finland"
 msgstr "Geocodering in Finland"
 
-#: standard input:2 standard input:3
+#: standard input:2 input:3
 msgid "Geocoding based on open data sources"
 msgstr "Geocodering gebaseerd op open gegevensbronnen"
 
-#: standard input:4 standard input:6
+#: standard input:4 input:6
 msgid "Geocoding based on OpenStreetMap data"
 msgstr "Geocodering gebaseerd op OpenStreetMap-gegevens"
 
-#: standard input:5 standard input:10 standard input:19 standard input:24
-#: standard input:26 standard input:28 standard input:30
+#: standard input:5 input:10 input:19 input:22 input:27 input:29 input:31
+#: input:33
 msgid "OSM Scout offline server"
 msgstr "OSM Scout-offlineserver"
 
@@ -683,7 +665,7 @@ msgstr "OSM Scout-offlineserver"
 msgid "Venues listed and reviewed by Foursquare users"
 msgstr "Plaatsen opgelijst en beoordeeld door Foursquare-gebruikers"
 
-#: standard input:8 standard input:9
+#: standard input:8 input:9
 msgid "Points of interest from OpenStreetMap data"
 msgstr "Bezienswaardigheden uit OpenStreetMap-gegevens"
 
@@ -695,34 +677,34 @@ msgstr "Routering voor openbaar vervoer in Finland"
 msgid "public transport"
 msgstr "openbaar vervoer"
 
-#: standard input:13 standard input:15 standard input:17 standard input:20
+#: standard input:13 input:15 input:17 input:20 input:23
 msgid "Routing based on OpenStreetMap data"
 msgstr "Routering gebaseerd op OpenStreetMap-gegevens"
 
-#: standard input:14 standard input:16 standard input:18
+#: standard input:14 input:16 input:18 input:21
 msgid "car, bicycle, foot"
 msgstr "auto, fiets, te voet"
 
-#: standard input:21
+#: standard input:24
 msgid "car"
 msgstr "auto"
 
-#: standard input:22
+#: standard input:25
 msgid "ASTER GDEM & SRTM Hillshade @1x"
 msgstr "ASTER GDEM & SRTM reliëfschaduw @1x"
 
-#: standard input:23
+#: standard input:26
 msgid "OSM Scout day @1x"
 msgstr "OSM Scout dag @1x"
 
-#: standard input:25
+#: standard input:28
 msgid "OSM Scout day @2x"
 msgstr "OSM Scout dag @2x"
 
-#: standard input:27
+#: standard input:30
 msgid "OSM Scout night @1x"
 msgstr "OSM Scout nacht @1x"
 
-#: standard input:29
+#: standard input:32
 msgid "OSM Scout night @2x"
 msgstr "OSM Scout nacht @2x"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-12 23:17+0200\n"
-"PO-Revision-Date: 2017-01-12 23:18+0200\n"
+"POT-Creation-Date: 2017-06-15 22:25+0300\n"
+"PO-Revision-Date: 2017-06-15 22:28+0300\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>\n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -110,7 +110,7 @@ msgstr "raitiovaunu"
 msgid "walk"
 msgstr "kävely"
 
-#: routers/digitransit.py:68
+#: routers/digitransit.py:68 routers/digitransit.py:70
 #, python-brace-format
 msgid "Walk towards {arr_name}."
 msgstr "Kävele kohti pysäkkiä {arr_name}."
@@ -120,22 +120,22 @@ msgstr "Kävele kohti pysäkkiä {arr_name}."
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
 msgstr "Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} klo. {dep_time}."
 
-#: routers/digitransit.py:70
+#: routers/digitransit.py:71
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
 msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti pysäkkiä {arr_name}."
-
-#: routers/digitransit.py:71
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti määräpaikkaasi."
 
 #: routers/digitransit.py:72
 #, python-brace-format
 msgid "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr "Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode_name} {line_desc} klo. {dep_time}."
 
-#: routers/digitransit.py:159
+#: routers/digitransit.py:73
+#, python-brace-format
+msgid "Get off at {dep_name} and walk towards your destination."
+msgstr "Jää pois pysäkillä {dep_name} ja kävele kohti määräpaikkaasi."
+
+#: routers/digitransit.py:160
 msgid "Arrive at your destination."
 msgstr "Saavu määräpaikkaasi."
 
@@ -271,7 +271,7 @@ msgstr "Näytä kaikki"
 #: qml/GeocodingResultsPage.qml:116 qml/NearbyResultsPage.qml:116
 #: routers/digitransit_results.qml:182 routers/mapquest_open_results.qml:33
 #: routers/mapzen_results.qml:33 routers/osmscout_results.qml:34
-#: routers/osrm_results.qml:33
+#: routers/osmscout_valhalla_results.qml:33 routers/osrm_results.qml:33
 msgid "Searching"
 msgstr "Haetaan"
 
@@ -282,7 +282,7 @@ msgstr "%1 tulosta"
 #: qml/GeocodingResultsPage.qml:142 qml/NearbyResultsPage.qml:139
 #: routers/digitransit_results.qml:210 routers/mapquest_open_results.qml:59
 #: routers/mapzen_results.qml:59 routers/osmscout_results.qml:60
-#: routers/osrm_results.qml:59
+#: routers/osmscout_valhalla_results.qml:63 routers/osrm_results.qml:59
 msgid "No results"
 msgstr "Ei tuloksia"
 
@@ -372,6 +372,7 @@ msgstr "Lähtöpaikka"
 
 #: qml/NearbyPage.qml:96 routers/mapquest_open_settings.qml:25
 #: routers/mapzen_settings.qml:25 routers/osmscout_settings.qml:25
+#: routers/osmscout_valhalla_settings.qml:25
 msgid "Type"
 msgstr "Tyyppi"
 
@@ -615,17 +616,17 @@ msgid "Least walking"
 msgstr "Vähiten kävelyä"
 
 #: routers/mapquest_open_settings.qml:27 routers/mapzen_settings.qml:27
-#: routers/osmscout_settings.qml:27
+#: routers/osmscout_settings.qml:27 routers/osmscout_valhalla_settings.qml:27
 msgid "Car"
 msgstr "Auto"
 
 #: routers/mapquest_open_settings.qml:28 routers/mapzen_settings.qml:28
-#: routers/osmscout_settings.qml:28
+#: routers/osmscout_settings.qml:28 routers/osmscout_valhalla_settings.qml:28
 msgid "Bicycle"
 msgstr "Polkupyörä"
 
 #: routers/mapquest_open_settings.qml:29 routers/mapzen_settings.qml:29
-#: routers/osmscout_settings.qml:29
+#: routers/osmscout_settings.qml:29 routers/osmscout_valhalla_settings.qml:29
 msgid "Foot"
 msgstr "Kävely"
 
@@ -636,6 +637,11 @@ msgstr "Yritä välttää tiemaksuja"
 #: routers/osmscout_results.qml:29
 msgid "For long routes, this could take up to a minute."
 msgstr "Pitkille reiteille tämä voi kestää jopa minuutin."
+
+#. TRANSLATORS: %1 refers to the routing engine, %2 to the service.
+#: routers/osmscout_valhalla_results.qml:53
+msgid "Routing by %1, courtesy of %2"
+msgstr "Reitityksen tarjosi %2, reitittimellä %1"
 
 #: standard input:1
 msgid "Geocoding in Finland"
@@ -649,7 +655,8 @@ msgstr "Geokoodaus pohjautuen avoimiin tietolähteisiin"
 msgid "Geocoding based on OpenStreetMap data"
 msgstr "Geokoodaus pohjautuen OpenStreetMap-aineistoon"
 
-#: standard input:5 input:10 input:19 input:24 input:26 input:28 input:30
+#: standard input:5 input:10 input:19 input:22 input:27 input:29 input:31
+#: input:33
 msgid "OSM Scout offline server"
 msgstr "OSM Scout offline-palvelin"
 
@@ -669,34 +676,34 @@ msgstr "Reititys joukkoliikenteellä Suomessa"
 msgid "public transport"
 msgstr "joukkoliikenne"
 
-#: standard input:13 input:15 input:17 input:20
+#: standard input:13 input:15 input:17 input:20 input:23
 msgid "Routing based on OpenStreetMap data"
 msgstr "Reititys pohjautuen OpenStreetMap-aineistoon"
 
-#: standard input:14 input:16 input:18
+#: standard input:14 input:16 input:18 input:21
 msgid "car, bicycle, foot"
 msgstr "auto, polkupyörä, kävely"
 
-#: standard input:21
+#: standard input:24
 msgid "car"
 msgstr "auto"
 
-#: standard input:22
+#: standard input:25
 msgid "ASTER GDEM & SRTM Hillshade @1x"
 msgstr "ASTER GDEM & SRTM korkeusvarjostus @1x"
 
-#: standard input:23
+#: standard input:26
 msgid "OSM Scout day @1x"
 msgstr "OSM Scout päivä @1x"
 
-#: standard input:25
+#: standard input:28
 msgid "OSM Scout day @2x"
 msgstr "OSM Scout päivä @2x"
 
-#: standard input:27
+#: standard input:30
 msgid "OSM Scout night @1x"
 msgstr "OSM Scout yö @1x"
 
-#: standard input:29
+#: standard input:32
 msgid "OSM Scout night @2x"
 msgstr "OSM Scout yö @2x"
