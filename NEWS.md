@@ -1,3 +1,8 @@
+2017-06-15: Poor Maps 0.29
+==========================
+
+* Add support for OSM Scout Server's Valhalla router
+
 2017-02-27: Poor Maps 0.28.4
 ============================
 
