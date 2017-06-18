@@ -68,7 +68,7 @@ ICONS = { 0: "flag",
          36: "flag",
 }
 
-URL = "http://localhost:8553/v2/route?json={input}&language={lang}"
+URL = "http://localhost:8553/v2/route?json={input}"
 cache = {}
 
 def prepare_endpoint(point):
@@ -83,9 +83,9 @@ def route(fm, to, params):
     """Find route and return its properties as a dictionary."""
     fm, to = map(prepare_endpoint, (fm, to))
     type = poor.conf.routers.osmscout_valhalla.type
-    input = dict(locations=[fm, to], costing=type)
+    input = dict(locations=[fm, to], costing=type,
+                 directions_options={"language": poor.util.get_default_language("en")})
     input = urllib.parse.quote(json.dumps(input))
-    lang = poor.util.get_default_language("en")
     url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
