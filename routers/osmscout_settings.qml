@@ -28,7 +28,7 @@ Column {
             MenuItem { text: qsTranslate("", "Bicycle") }
             MenuItem { text: qsTranslate("", "Foot") }
         }
-        property var keys: ["car", "bicycle", "foot"]
+        property var keys: ["auto", "bicycle", "pedestrian"]
         Component.onCompleted: {
             var key = app.conf.get("routers.osmscout.type");
             typeComboBox.currentIndex = typeComboBox.keys.indexOf(key);

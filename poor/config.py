@@ -111,6 +111,12 @@ class ConfigurationStore(AttrDict):
             # Impose new default providers introduced in 0.25.
             for option in ("geocoder", "guide", "router"):
                 values[option] = DEFAULTS[option]
+        if version < (0,30):
+            # libosmscout and Valhalla routers merged in 0.30.
+            # https://github.com/otsaloma/poor-maps/pull/41
+            routers = values.setdefault("routers", {})
+            routers.pop("osmscout", None)
+            routers.pop("osmscout_valhalla", None)
         return values
 
     def read(self, path=None):

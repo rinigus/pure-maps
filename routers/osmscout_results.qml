@@ -26,7 +26,6 @@ Page {
     property bool loading: true
     BusyModal {
         id: busy
-        description: qsTranslate("", "For long routes, this could take up to a minute.")
         running: page.loading
     }
     onStatusChanged: {
@@ -50,7 +49,11 @@ Page {
                     "x": route.x,
                     "y": route.y,
                     "mode": "car",
-                    "attribution": qsTranslate("", "Routing courtesy of %1.").arg("OSM Scout Server")
+                    // TRANSLATORS: %1 refers to the routing engine, %2 to the service.
+                    "attribution": (qsTranslate("", "Routing by %1, courtesy of %2")
+                                    .arg(route.engine)
+                                    .arg("OSM Scout Server"))
+
                 });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();
