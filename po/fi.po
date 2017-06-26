@@ -1,16 +1,17 @@
-# Finnish translations for PACKAGE package.
-# Copyright (C) 2016 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Osmo Salomaa <otsaloma@iki.fi>, 2016.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 22:25+0300\n"
-"PO-Revision-Date: 2017-06-15 22:28+0300\n"
-"Last-Translator: Osmo Salomaa <otsaloma@iki.fi>\n"
-"Language-Team: Finnish\n"
+"POT-Creation-Date: 2017-06-27 02:37+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2016\n"
+"Language-Team: Finnish (https://www.transifex.com/otsaloma/teams/70314/fi/)\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -270,8 +271,8 @@ msgstr "Näytä kaikki"
 
 #: qml/GeocodingResultsPage.qml:116 qml/NearbyResultsPage.qml:116
 #: routers/digitransit_results.qml:182 routers/mapquest_open_results.qml:33
-#: routers/mapzen_results.qml:33 routers/osmscout_results.qml:34
-#: routers/osmscout_valhalla_results.qml:33 routers/osrm_results.qml:33
+#: routers/mapzen_results.qml:33 routers/osmscout_results.qml:33
+#: routers/osrm_results.qml:33
 msgid "Searching"
 msgstr "Haetaan"
 
@@ -281,8 +282,8 @@ msgstr "%1 tulosta"
 
 #: qml/GeocodingResultsPage.qml:142 qml/NearbyResultsPage.qml:139
 #: routers/digitransit_results.qml:210 routers/mapquest_open_results.qml:59
-#: routers/mapzen_results.qml:59 routers/osmscout_results.qml:60
-#: routers/osmscout_valhalla_results.qml:63 routers/osrm_results.qml:59
+#: routers/mapzen_results.qml:59 routers/osmscout_results.qml:63
+#: routers/osrm_results.qml:59
 msgid "No results"
 msgstr "Ei tuloksia"
 
@@ -372,7 +373,6 @@ msgstr "Lähtöpaikka"
 
 #: qml/NearbyPage.qml:96 routers/mapquest_open_settings.qml:25
 #: routers/mapzen_settings.qml:25 routers/osmscout_settings.qml:25
-#: routers/osmscout_valhalla_settings.qml:25
 msgid "Type"
 msgstr "Tyyppi"
 
@@ -557,8 +557,7 @@ msgid "%1 → %2"
 msgstr "%1 → %2"
 
 #: routers/digitransit_results.qml:161 routers/mapquest_open_results.qml:52
-#: routers/mapzen_results.qml:52 routers/osmscout_results.qml:53
-#: routers/osrm_results.qml:52
+#: routers/mapzen_results.qml:52 routers/osrm_results.qml:52
 msgid "Routing courtesy of %1."
 msgstr "Reitityksen tarjosi %1."
 
@@ -616,17 +615,17 @@ msgid "Least walking"
 msgstr "Vähiten kävelyä"
 
 #: routers/mapquest_open_settings.qml:27 routers/mapzen_settings.qml:27
-#: routers/osmscout_settings.qml:27 routers/osmscout_valhalla_settings.qml:27
+#: routers/osmscout_settings.qml:27
 msgid "Car"
 msgstr "Auto"
 
 #: routers/mapquest_open_settings.qml:28 routers/mapzen_settings.qml:28
-#: routers/osmscout_settings.qml:28 routers/osmscout_valhalla_settings.qml:28
+#: routers/osmscout_settings.qml:28
 msgid "Bicycle"
 msgstr "Polkupyörä"
 
 #: routers/mapquest_open_settings.qml:29 routers/mapzen_settings.qml:29
-#: routers/osmscout_settings.qml:29 routers/osmscout_valhalla_settings.qml:29
+#: routers/osmscout_settings.qml:29
 msgid "Foot"
 msgstr "Kävely"
 
@@ -634,12 +633,8 @@ msgstr "Kävely"
 msgid "Try to avoid tolls"
 msgstr "Yritä välttää tiemaksuja"
 
-#: routers/osmscout_results.qml:29
-msgid "For long routes, this could take up to a minute."
-msgstr "Pitkille reiteille tämä voi kestää jopa minuutin."
-
 #. TRANSLATORS: %1 refers to the routing engine, %2 to the service.
-#: routers/osmscout_valhalla_results.qml:53
+#: routers/osmscout_results.qml:53
 msgid "Routing by %1, courtesy of %2"
 msgstr "Reitityksen tarjosi %2, reitittimellä %1"
 
@@ -655,8 +650,7 @@ msgstr "Geokoodaus pohjautuen avoimiin tietolähteisiin"
 msgid "Geocoding based on OpenStreetMap data"
 msgstr "Geokoodaus pohjautuen OpenStreetMap-aineistoon"
 
-#: standard input:5 input:10 input:19 input:22 input:27 input:29 input:31
-#: input:33
+#: standard input:5 input:10 input:19 input:24 input:26 input:28 input:30
 msgid "OSM Scout offline server"
 msgstr "OSM Scout offline-palvelin"
 
@@ -676,34 +670,37 @@ msgstr "Reititys joukkoliikenteellä Suomessa"
 msgid "public transport"
 msgstr "joukkoliikenne"
 
-#: standard input:13 input:15 input:17 input:20 input:23
+#: standard input:13 input:15 input:17 input:20
 msgid "Routing based on OpenStreetMap data"
 msgstr "Reititys pohjautuen OpenStreetMap-aineistoon"
 
-#: standard input:14 input:16 input:18 input:21
+#: standard input:14 input:16 input:18
 msgid "car, bicycle, foot"
 msgstr "auto, polkupyörä, kävely"
 
-#: standard input:24
+#: standard input:21
 msgid "car"
 msgstr "auto"
 
-#: standard input:25
+#: standard input:22
 msgid "ASTER GDEM & SRTM Hillshade @1x"
 msgstr "ASTER GDEM & SRTM korkeusvarjostus @1x"
 
-#: standard input:26
+#: standard input:23
 msgid "OSM Scout day @1x"
 msgstr "OSM Scout päivä @1x"
 
-#: standard input:28
+#: standard input:25
 msgid "OSM Scout day @2x"
 msgstr "OSM Scout päivä @2x"
 
-#: standard input:30
+#: standard input:27
 msgid "OSM Scout night @1x"
 msgstr "OSM Scout yö @1x"
 
-#: standard input:32
+#: standard input:29
 msgid "OSM Scout night @2x"
 msgstr "OSM Scout yö @2x"
+
+#~ msgid "For long routes, this could take up to a minute."
+#~ msgstr "Pitkille reiteille tämä voi kestää jopa minuutin."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 22:25+0300\n"
+"POT-Creation-Date: 2017-06-27 02:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2017\n"
 "Language-Team: Polish (https://www.transifex.com/otsaloma/teams/70314/pl/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: poor/geocoder.py:79
 msgid "Point from geo link"
@@ -271,8 +271,8 @@ msgstr "Pokaż wszystko"
 
 #: qml/GeocodingResultsPage.qml:116 qml/NearbyResultsPage.qml:116
 #: routers/digitransit_results.qml:182 routers/mapquest_open_results.qml:33
-#: routers/mapzen_results.qml:33 routers/osmscout_results.qml:34
-#: routers/osmscout_valhalla_results.qml:33 routers/osrm_results.qml:33
+#: routers/mapzen_results.qml:33 routers/osmscout_results.qml:33
+#: routers/osrm_results.qml:33
 msgid "Searching"
 msgstr "Wyszukiwanie"
 
@@ -282,8 +282,8 @@ msgstr "%1 Wyniki"
 
 #: qml/GeocodingResultsPage.qml:142 qml/NearbyResultsPage.qml:139
 #: routers/digitransit_results.qml:210 routers/mapquest_open_results.qml:59
-#: routers/mapzen_results.qml:59 routers/osmscout_results.qml:60
-#: routers/osmscout_valhalla_results.qml:63 routers/osrm_results.qml:59
+#: routers/mapzen_results.qml:59 routers/osmscout_results.qml:63
+#: routers/osrm_results.qml:59
 msgid "No results"
 msgstr "Brak wyników"
 
@@ -373,7 +373,6 @@ msgstr "Niedaleko"
 
 #: qml/NearbyPage.qml:96 routers/mapquest_open_settings.qml:25
 #: routers/mapzen_settings.qml:25 routers/osmscout_settings.qml:25
-#: routers/osmscout_valhalla_settings.qml:25
 msgid "Type"
 msgstr "Rodzaj"
 
@@ -558,8 +557,7 @@ msgid "%1 → %2"
 msgstr "%1 → %2"
 
 #: routers/digitransit_results.qml:161 routers/mapquest_open_results.qml:52
-#: routers/mapzen_results.qml:52 routers/osmscout_results.qml:53
-#: routers/osrm_results.qml:52
+#: routers/mapzen_results.qml:52 routers/osrm_results.qml:52
 msgid "Routing courtesy of %1."
 msgstr "Kierowanie dzięki uprzejmości %1."
 
@@ -617,17 +615,17 @@ msgid "Least walking"
 msgstr "Najmniej chodzenia"
 
 #: routers/mapquest_open_settings.qml:27 routers/mapzen_settings.qml:27
-#: routers/osmscout_settings.qml:27 routers/osmscout_valhalla_settings.qml:27
+#: routers/osmscout_settings.qml:27
 msgid "Car"
 msgstr "Samochód"
 
 #: routers/mapquest_open_settings.qml:28 routers/mapzen_settings.qml:28
-#: routers/osmscout_settings.qml:28 routers/osmscout_valhalla_settings.qml:28
+#: routers/osmscout_settings.qml:28
 msgid "Bicycle"
 msgstr "Rower"
 
 #: routers/mapquest_open_settings.qml:29 routers/mapzen_settings.qml:29
-#: routers/osmscout_settings.qml:29 routers/osmscout_valhalla_settings.qml:29
+#: routers/osmscout_settings.qml:29
 msgid "Foot"
 msgstr "Pieszo"
 
@@ -635,14 +633,10 @@ msgstr "Pieszo"
 msgid "Try to avoid tolls"
 msgstr "Staraj się unikać opłat za przejazd"
 
-#: routers/osmscout_results.qml:29
-msgid "For long routes, this could take up to a minute."
-msgstr "W przypadku długich trasach, może to potrwać nawet minutę."
-
 #. TRANSLATORS: %1 refers to the routing engine, %2 to the service.
-#: routers/osmscout_valhalla_results.qml:53
+#: routers/osmscout_results.qml:53
 msgid "Routing by %1, courtesy of %2"
-msgstr ""
+msgstr "Wyznaczanie trasy przez %1, dzięki uprzejmości %2"
 
 #: standard input:1
 msgid "Geocoding in Finland"
@@ -656,8 +650,7 @@ msgstr "Geokodowanie na podstawie źródeł otwartych danych"
 msgid "Geocoding based on OpenStreetMap data"
 msgstr "Geokodowanie na podstawie danych z OpenStreetMap"
 
-#: standard input:5 input:10 input:19 input:22 input:27 input:29 input:31
-#: input:33
+#: standard input:5 input:10 input:19 input:24 input:26 input:28 input:30
 msgid "OSM Scout offline server"
 msgstr "Serwer offline OSM Scout"
 
@@ -677,34 +670,37 @@ msgstr "Przebieg tras transportu publicznego w Finlandii"
 msgid "public transport"
 msgstr "transport publiczny"
 
-#: standard input:13 input:15 input:17 input:20 input:23
+#: standard input:13 input:15 input:17 input:20
 msgid "Routing based on OpenStreetMap data"
 msgstr "Przebieg trasy na podstawie danych OpenStreetMap"
 
-#: standard input:14 input:16 input:18 input:21
+#: standard input:14 input:16 input:18
 msgid "car, bicycle, foot"
 msgstr "samochód, rower, pieszo"
 
-#: standard input:24
+#: standard input:21
 msgid "car"
 msgstr "samochód"
 
-#: standard input:25
+#: standard input:22
 msgid "ASTER GDEM & SRTM Hillshade @1x"
 msgstr "ASTER GDEM & SRTM Hillshade @1x"
 
-#: standard input:26
+#: standard input:23
 msgid "OSM Scout day @1x"
 msgstr "OSM Scout dzień @1x"
 
-#: standard input:28
+#: standard input:25
 msgid "OSM Scout day @2x"
 msgstr "OSM Scout dzień @2x"
 
-#: standard input:30
+#: standard input:27
 msgid "OSM Scout night @1x"
 msgstr "OSM Scout noc @1x"
 
-#: standard input:32
+#: standard input:29
 msgid "OSM Scout night @2x"
 msgstr "OSM Scout noc @2x"
+
+#~ msgid "For long routes, this could take up to a minute."
+#~ msgstr "W przypadku długich trasach, może to potrwać nawet minutę."
