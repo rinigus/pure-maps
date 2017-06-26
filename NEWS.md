@@ -1,3 +1,9 @@
+2017-06-27: Poor Maps 0.30
+==========================
+
+* Merge OSM Scout routers (libosmscout and Valhalla)
+* Fix language parameter for Mapzen/Valhalla routers
+
 2017-06-15: Poor Maps 0.29
 ==========================
 
