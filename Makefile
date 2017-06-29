@@ -12,7 +12,7 @@ DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
 
 LCONVERT = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
-$(wildcard /usr/lib/x86_64-linux-gnu/qt5/bin/lconvert))
+$(wildcard /usr/lib/*/qt5/bin/lconvert))
 
 check:
 	pyflakes geocoders guides poor routers tilesources
@@ -99,19 +99,7 @@ install:
 	cp data/poor-maps-128.png $(ICONDIR)/128x128/apps/$(NAME).png
 	cp data/poor-maps-256.png $(ICONDIR)/256x256/apps/$(NAME).png
 
-rpm:
-	$(MAKE) dist
-	mkdir -p $$HOME/rpmbuild/SOURCES
-	cp dist/$(NAME)-$(VERSION).tar.xz $$HOME/rpmbuild/SOURCES
-	rm -rf $$HOME/rpmbuild/BUILD/$(NAME)-$(VERSION)
-	rpmbuild -ba --nodeps rpm/$(NAME).spec
-	cp $$HOME/rpmbuild/RPMS/noarch/$(NAME)-$(VERSION)-*.rpm rpm
-	cp $$HOME/rpmbuild/SRPMS/$(NAME)-$(VERSION)-*.rpm rpm
-
-test:
-	py.test geocoders guides poor routers tilesources
-
-translations:
+pot:
 	truncate -s0 $(POT_FILE)
 	xgettext \
 	 --output=$(POT_FILE) \
@@ -143,6 +131,17 @@ translations:
 	    --keyword=_ \
 	    --no-wrap \
 	    -
-	cd po && for X in *.po; do msgmerge -UN --no-wrap $$X *.pot; done
 
-.PHONY: check clean dist install rpm test translations
+rpm:
+	$(MAKE) dist
+	mkdir -p $$HOME/rpmbuild/SOURCES
+	cp dist/$(NAME)-$(VERSION).tar.xz $$HOME/rpmbuild/SOURCES
+	rm -rf $$HOME/rpmbuild/BUILD/$(NAME)-$(VERSION)
+	rpmbuild -ba --nodeps rpm/$(NAME).spec
+	cp $$HOME/rpmbuild/RPMS/noarch/$(NAME)-$(VERSION)-*.rpm rpm
+	cp $$HOME/rpmbuild/SRPMS/$(NAME)-$(VERSION)-*.rpm rpm
+
+test:
+	py.test geocoders guides poor routers tilesources
+
+.PHONY: check clean dist install pot rpm test

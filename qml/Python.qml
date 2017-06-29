@@ -21,7 +21,9 @@ import io.thp.pyotherside 1.2
 
 Python {
     id: py
+
     property bool ready: false
+
     Component.onCompleted: {
         addImportPath(Qt.resolvedUrl(".."));
         importModule("poor", function() {
@@ -30,13 +32,17 @@ Python {
             });
         });
     }
+
     onError: console.log("Error: %1".arg(traceback));
+
     function call_sync(func, args) {
         // XXX: Work around a call_sync bug by using evaluate.
         // https://github.com/thp/pyotherside/issues/49
+        // https://together.jolla.com/question/156736
         args = args.map(py.stringify).join(", ");
         return py.evaluate("%1(%2)".arg(func).arg(args));
     }
+
     function stringify(obj) {
         // Return Python string representation of obj.
         if (Array.isArray(obj)) {
@@ -59,4 +65,5 @@ Python {
                 .arg(obj).arg(typeof obj);
         }
     }
+
 }

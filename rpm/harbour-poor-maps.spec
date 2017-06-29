@@ -1,7 +1,7 @@
 # Prevent brp-python-bytecompile from running.
 %define __os_install_post %{___build_post}
 
-# "Harbour RPM packages should not provide anything".
+# "Harbour RPM packages should not provide anything."
 %define __provides_exclude_from ^%{_datadir}/.*$
 
 Name: harbour-poor-maps
@@ -9,7 +9,7 @@ Version: 0.30
 Release: 1
 Summary: Maps and navigation
 License: GPLv3+
-URL: http://github.com/otsaloma/poor-maps
+URL: https://github.com/otsaloma/poor-maps
 Source: %{name}-%{version}.tar.xz
 BuildArch: noarch
 BuildRequires: gettext

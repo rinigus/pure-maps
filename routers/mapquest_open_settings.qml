@@ -42,13 +42,13 @@ Column {
         id: tollSwitch
         anchors.left: parent.left
         anchors.right: parent.right
-        checked: app.conf.setContains("routers.mapquest_open.avoids", "Toll Road")
+        checked: app.conf.contains("routers.mapquest_open.avoids", "Toll Road")
         text: qsTranslate("", "Try to avoid tolls")
         visible: typeComboBox.currentIndex === 0
         onCheckedChanged: {
             tollSwitch.checked ?
-                app.conf.setAdd("routers.mapquest_open.avoids", "Toll Road") :
-                app.conf.setRemove("routers.mapquest_open.avoids", "Toll Road");
+                app.conf.add("routers.mapquest_open.avoids", "Toll Road") :
+                app.conf.remove("routers.mapquest_open.avoids", "Toll Road");
         }
     }
 }

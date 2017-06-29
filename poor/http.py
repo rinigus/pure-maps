@@ -226,7 +226,7 @@ def _request_json(method, url, body=None, encoding="utf_8", retry=1, headers=Non
 
     `method` should be the name of a HTTP method, e.g. "GET" or "POST". `body`
     should be ``None`` for methods that don't expect data (e.g. GET) or the
-    data to send (usually a string) for method that do expect data (e.g. POST).
+    data to send (usually a string) for methods that do expect data (e.g. POST).
     If `encoding` is ``None``, return bytes, otherwise decode response data to
     text using `encoding`. Try again `retry` times in some particular cases
     that imply a connection error. `headers` should be a dictionary of custom

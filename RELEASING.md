@@ -2,12 +2,14 @@ Releasing a New Version
 =======================
 
 * Update translations
-    - `tx pull -a [--minimum-perc=95]`
-    - `tools/check-translations`
-    - `make translations`
+    - `make pot`
+    - `msgmerge -UN --no-wrap po/fi.po po/poor-maps.pot`
     - `emacs po/fi.po`
     - `tx push -s`
     - `tx push -tf -l fi`
+    - `tx pull -a --minimum-perc=95`
+    - `tools/check-translations`
+    - `tools/check-translations | grep %`
     - `git commit -a -m "Update translations for X.Y.Z"`
 * Do final quality checks
     - `make check`

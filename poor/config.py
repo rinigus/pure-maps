@@ -46,35 +46,30 @@ DEFAULTS = {
 }
 
 
-class AttrDict(dict):
+class ConfigurationStore(poor.AttrDict):
 
-    """Dictionary with attribute access to keys."""
-
-    def __init__(self, *args, **kwargs):
-        """Initialize an :class:`AttrDict` instance."""
-        dict.__init__(self, *args, **kwargs)
-        self.__dict__ = self
-
-
-class ConfigurationStore(AttrDict):
-
-    """
-    Attribute dictionary of configuration values.
-
-    Options to most methods can be given as a dotted string,
-    e.g. 'routers.mycoolrouter.type'.
-    """
+    """Attribute dictionary of configuration values."""
 
     def __init__(self):
         """Initialize a :class:`Configuration` instance."""
-        AttrDict.__init__(self, copy.deepcopy(DEFAULTS))
+        poor.AttrDict.__init__(self, copy.deepcopy(DEFAULTS))
+
+    def add(self, option, item):
+        """Add `item` to the value of `option`."""
+        root, name = self._split_option(option)
+        if item in root[name]: return
+        root[name].append(copy.deepcopy(item))
 
     def _coerce(self, value, ref):
         """Coerce type of `value` to match `ref`."""
-        # XXX: No coercion is done if ref is an empty list!
         if isinstance(value, list) and ref:
             return [self._coerce(x, ref[0]) for x in value]
         return type(ref)(value)
+
+    def contains(self, option, item):
+        """Return ``True`` if the value of `option` contains `item`."""
+        root, name = self._split_option(option)
+        return item in root[name]
 
     def get(self, option):
         """Return the value of `option`."""
@@ -121,8 +116,7 @@ class ConfigurationStore(AttrDict):
 
     def read(self, path=None):
         """Read values of options from JSON file at `path`."""
-        if path is None:
-            path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
+        path = path or os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
         if not os.path.isfile(path): return
         values = {}
         with poor.util.silent(Exception, tb=True):
@@ -164,27 +158,16 @@ class ConfigurationStore(AttrDict):
         """
         self._register({"routers": {name: values}})
 
+    def remove(self, option, item):
+        """Remove `item` from the value of `option`."""
+        root, name = self._split_option(option)
+        if not item in root[name]: return
+        root[name].remove(item)
+
     def set(self, option, value):
         """Set the value of `option`."""
         root, name = self._split_option(option, create=True)
         root[name] = copy.deepcopy(value)
-
-    def set_add(self, option, item):
-        """Add `item` to `option` of type set."""
-        root, name = self._split_option(option)
-        if not item in root[name]:
-            root[name].append(copy.deepcopy(item))
-
-    def set_contains(self, option, item):
-        """Return ``True`` if `option` of type set contains `item`."""
-        root, name = self._split_option(option)
-        return item in root[name]
-
-    def set_remove(self, option, item):
-        """Remove `item` from `option` of type set."""
-        root, name = self._split_option(option)
-        if item in root[name]:
-            root[name].remove(item)
 
     def _split_option(self, option, create=False):
         """Split dotted option to dictionary and option name."""
@@ -192,7 +175,7 @@ class ConfigurationStore(AttrDict):
         for section in option.split(".")[:-1]:
             if create and not section in root:
                 # Create missing hierarchies.
-                root[section] = AttrDict()
+                root[section] = poor.AttrDict()
             root = root[section]
         name = option.split(".")[-1]
         return root, name
@@ -219,9 +202,9 @@ class ConfigurationStore(AttrDict):
         for name, value in values.items():
             if isinstance(value, dict):
                 self._update(value,
-                             root.setdefault(name, AttrDict()),
+                             root.setdefault(name, poor.AttrDict()),
                              defaults.setdefault(name, {}),
-                             (path + (name,)))
+                             path + (name,))
                 continue
             try:
                 if name in defaults:
@@ -230,14 +213,13 @@ class ConfigurationStore(AttrDict):
                 root[name] = copy.deepcopy(value)
             except Exception as error:
                 full_name = ".".join(path + (name,))
-                print("Discarding bad option-value pair ({}, {}): {}"
+                print("Discarding bad option-value pair {}, {}: {}"
                       .format(repr(full_name), repr(value), str(error)),
                       file=sys.stderr)
 
     def write(self, path=None):
         """Write values of options to JSON file at `path`."""
-        if path is None:
-            path = os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
+        path = path or os.path.join(poor.CONFIG_HOME_DIR, "poor-maps.json")
         out = copy.deepcopy(self)
         # Make sure no obsolete top-level options remain.
         names = list(DEFAULTS.keys()) + ["guides", "routers"]

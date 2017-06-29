@@ -19,28 +19,35 @@
 import QtQuick 2.0
 
 QtObject {
+
+    function add(option, item) {
+        // Add item to the value of option.
+        return py.call_sync("poor.conf.add", [option, item]);
+    }
+
+    function contains(option, item) {
+        // Return true if the value of option contains item.
+        return py.call_sync("poor.conf.contains", [option, item]);
+    }
+
     function get(option) {
-        // Return value of configuration option.
+        // Return the value of option.
         return py.call_sync("poor.conf.get", [option]);
     }
+
     function getDefault(option) {
         // Return default value of configuration option.
         return py.call_sync("poor.conf.get_default", [option]);
     }
+
+    function remove(option, item) {
+        // Remove item from the value of option.
+        return py.call_sync("poor.conf.remove", [option, item]);
+    }
+
     function set(option, value) {
-        // Set the value of configuration option.
+        // Set the value of option.
         return py.call_sync("poor.conf.set", [option, value]);
     }
-    function setAdd(option, item) {
-        // Add item to option of type set.
-        return py.call_sync("poor.conf.set_add", [option, item]);
-    }
-    function setContains(option, item) {
-        // Return true if configuration option of type set contains item.
-        return py.call_sync("poor.conf.set_contains", [option, item]);
-    }
-    function setRemove(option, item) {
-        // Remove item from option of type set.
-        return py.call_sync("poor.conf.set_remove", [option, item]);
-    }
+
 }

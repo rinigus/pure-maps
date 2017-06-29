@@ -31,6 +31,18 @@ class TestConfigurationStore(poor.test.TestCase):
     def teardown_method(self, method):
         os.remove(self.path)
 
+    def test_add(self):
+        poor.conf.set("test", [1, 2, 3])
+        assert poor.conf.test == [1, 2, 3]
+        poor.conf.add("test", 4)
+        assert poor.conf.test == [1, 2, 3, 4]
+
+    def test_contains(self):
+        poor.conf.set("test", [1, 2, 3])
+        assert poor.conf.test == [1, 2, 3]
+        assert poor.conf.contains("test", 1)
+        assert not poor.conf.contains("test", 4)
+
     def test_get(self):
         assert poor.conf.get("zoom") == 3
 
@@ -38,8 +50,7 @@ class TestConfigurationStore(poor.test.TestCase):
         assert poor.conf.get_default("zoom") == 3
 
     def test_get_default__nested(self):
-        poor.config.DEFAULTS["foo"] = poor.config.AttrDict()
-        poor.config.DEFAULTS["foo"]["bar"] = 1
+        poor.config.DEFAULTS["foo"] = dict(bar=1)
         assert poor.conf.get_default("foo.bar") == 1
 
     def test_migrate__version_parse(self):
@@ -69,12 +80,13 @@ class TestConfigurationStore(poor.test.TestCase):
         assert poor.conf.zoom == 99
 
     def test_read__nested(self):
-        poor.conf.register_router("foo", {"type": "car"})
+        poor.config.DEFAULTS["foo"] = dict(bar=1)
+        poor.conf.set("foo.bar", 2)
         poor.conf.write(self.path)
-        del poor.conf.routers["foo"]
-        assert not "foo" in poor.conf.routers
+        del poor.conf.foo
+        assert not "foo" in poor.conf
         poor.conf.read(self.path)
-        assert poor.conf.routers.foo.type == "car"
+        assert poor.conf.foo.bar == 2
 
     def test_register_router(self):
         poor.conf.register_router("foo", {"type": "car"})
@@ -89,6 +101,12 @@ class TestConfigurationStore(poor.test.TestCase):
         assert poor.conf.routers.foo.type == "bicycle"
         assert poor.conf.get_default("routers.foo.type") == "car"
 
+    def test_remove(self):
+        poor.conf.set("test", [1, 2, 3])
+        assert poor.conf.test == [1, 2, 3]
+        poor.conf.remove("test", 3)
+        assert poor.conf.test == [1, 2]
+
     def test_set(self):
         poor.conf.set("zoom", 99)
         assert poor.conf.zoom == 99
@@ -96,24 +114,6 @@ class TestConfigurationStore(poor.test.TestCase):
     def test_set__nested(self):
         poor.conf.set("foo.bar", 1)
         assert poor.conf.foo.bar == 1
-
-    def test_set_add(self):
-        poor.conf.set("items", [1,2,3])
-        assert poor.conf.items == [1,2,3]
-        poor.conf.set_add("items", 4)
-        assert poor.conf.items == [1,2,3,4]
-
-    def test_set_contains(self):
-        poor.conf.set("items", [1,2,3])
-        assert poor.conf.items == [1,2,3]
-        assert poor.conf.set_contains("items", 1)
-        assert not poor.conf.set_contains("items", 4)
-
-    def test_set_remove(self):
-        poor.conf.set("items", [1,2,3])
-        assert poor.conf.items == [1,2,3]
-        poor.conf.set_remove("items", 3)
-        assert poor.conf.items == [1,2]
 
     def test_uncomment(self):
         # Prior to 0.18 options at default value were commented out.

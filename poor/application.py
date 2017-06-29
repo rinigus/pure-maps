@@ -59,13 +59,13 @@ class Application:
             try:
                 self.overlays.append(poor.TileSource(overlay))
                 self.overlays.sort(key=lambda x: x.z)
-                poor.conf.set_add("overlays", overlay)
+                poor.conf.add("overlays", overlay)
                 self.tilecollection.clear()
             except Exception as error:
                 print("Failed to load overlay '{}': {}"
                       .format(overlay, str(error)),
                       file=sys.stderr)
-                poor.conf.set_remove("overlays", overlay)
+                poor.conf.remove("overlays", overlay)
 
     def _drop_download_queues(self):
         """Remove download queues of no longer used tile sources."""
@@ -119,7 +119,7 @@ class Application:
             if self.overlays[i].id in overlays:
                 del self.overlays[i]
         for overlay in overlays:
-            poor.conf.set_remove("overlays", overlay)
+            poor.conf.remove("overlays", overlay)
         self._drop_download_queues()
         self.tilecollection.clear()
 

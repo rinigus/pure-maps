@@ -86,10 +86,9 @@ def calculate_distance(x1, y1, x2, y2):
     # Using the haversine formula.
     # http://www.movable-type.co.uk/scripts/latlong.html
     x1, y1, x2, y2 = map(math.radians, (x1, y1, x2, y2))
-    a = (math.sin((y2-y1)/2)**2 + math.sin((x2-x1)/2)**2 *
-         math.cos(y1) * math.cos(y2))
-
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    a = (math.sin((y2 - y1)/2)**2 +
+         math.sin((x2 - x1)/2)**2 * math.cos(y1) * math.cos(y2))
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return 6371000 * c
 
 def calculate_segment_distance(x, y, x1, y1, x2, y2):

@@ -96,8 +96,7 @@ class TestModule(poor.test.TestCase):
 
     def test_get_json(self):
         url = "https://api.github.com/repos/otsaloma/poor-maps/releases"
-        json = poor.http.get_json(url)
-        assert isinstance(json, list)
+        assert isinstance(poor.http.get_json(url), list)
 
     def test_get_json__error(self):
         url = "https://github.com/otsaloma/poor-maps"

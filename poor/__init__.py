@@ -38,6 +38,7 @@ from poor import cache
 from poor import http
 from poor import polysimp
 from poor import storage
+from poor.attrdict import *
 from poor.config import *
 conf = ConfigurationStore()
 from poor.tilecollection import *

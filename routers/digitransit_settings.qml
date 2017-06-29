@@ -185,7 +185,7 @@ Column {
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: busButton.checked =
-                app.conf.setContains(modeGrid.option, "BUS");
+                app.conf.contains(modeGrid.option, "BUS");
             onClicked: modeGrid.toggle(busButton, "BUS");
         }
         IconButton {
@@ -196,7 +196,7 @@ Column {
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: tramButton.checked =
-                app.conf.setContains(modeGrid.option, "TRAM");
+                app.conf.contains(modeGrid.option, "TRAM");
             onClicked: modeGrid.toggle(tramButton, "TRAM");
         }
         IconButton {
@@ -207,7 +207,7 @@ Column {
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: trainButton.checked =
-                app.conf.setContains(modeGrid.option, "RAIL");
+                app.conf.contains(modeGrid.option, "RAIL");
             onClicked: modeGrid.toggle(trainButton, "RAIL");
         }
         IconButton {
@@ -218,7 +218,7 @@ Column {
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: metroButton.checked =
-                app.conf.setContains(modeGrid.option, "SUBWAY");
+                app.conf.contains(modeGrid.option, "SUBWAY");
             onClicked: modeGrid.toggle(metroButton, "SUBWAY");
         }
         IconButton {
@@ -229,7 +229,7 @@ Column {
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: ferryButton.checked =
-                app.conf.setContains(modeGrid.option, "FERRY");
+                app.conf.contains(modeGrid.option, "FERRY");
             onClicked: modeGrid.toggle(ferryButton, "FERRY");
         }
         IconButton {
@@ -242,14 +242,14 @@ Column {
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: airplaneButton.checked =
-                app.conf.setContains(modeGrid.option, "AIRPLANE");
+                app.conf.contains(modeGrid.option, "AIRPLANE");
             onClicked: modeGrid.toggle(airplaneButton, "AIRPLANE");
         }
         function toggle(button, value) {
             button.checked = !button.checked;
             button.checked ?
-                app.conf.setAdd(modeGrid.option, value) :
-                app.conf.setRemove(modeGrid.option, value);
+                app.conf.add(modeGrid.option, value) :
+                app.conf.remove(modeGrid.option, value);
         }
     }
 }

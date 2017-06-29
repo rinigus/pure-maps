@@ -27,7 +27,6 @@ _translation = gettext.translation(
     languages=[locale.getdefaultlocale()[0] or ""],
     fallback=True)
 
-
 def _(message):
     """Return the localized translation of `message`."""
     return _translation.gettext(message)

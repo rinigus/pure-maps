@@ -30,9 +30,8 @@ class TestCase:
             function(*args, **kwargs)
         except exception:
             return
-        raise AssertionError("{} failed to raise {}"
-                             .format(repr(function),
-                                     repr(exception)))
+        raise AssertionError("{} failed to raise {}".format(
+            repr(function), repr(exception)))
 
     def setUp(self):
         """Compatibility alias for :meth:`setup_method`."""
