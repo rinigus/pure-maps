@@ -58,6 +58,7 @@ install:
 	mkdir -p $(DATADIR)/tilesources
 	cp tilesources/*.json $(DATADIR)/tilesources
 	cp tilesources/[!_]*.py $(DATADIR)/tilesources
+	cp tilesources/README.md $(DATADIR)/tilesources
 
 	@echo "Installing geocoders..."
 	mkdir -p $(DATADIR)/geocoders
