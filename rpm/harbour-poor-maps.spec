@@ -27,10 +27,6 @@ Requires: sailfishsilica-qt5
 View maps, find places and routes, navigate with turn-by-turn instructions,
 search for nearby places by type and share your location.
 
-Poor Maps supports a variety of mainly OpenStreetMap-based providers of maps
-and related services, from which you can freely choose depending on your
-surroundings, travel mode, etc.
-
 %prep
 %setup -q
 
