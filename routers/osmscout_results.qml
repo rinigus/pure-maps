@@ -23,11 +23,14 @@ import "../qml"
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
+
     property bool loading: true
+
     BusyModal {
         id: busy
         running: page.loading
     }
+
     onStatusChanged: {
         if (page.status === PageStatus.Activating) {
             busy.text = qsTranslate("", "Searching");
@@ -35,6 +38,7 @@ Page {
             page.findRoute();
         }
     }
+
     function findRoute() {
         // Load routing results from the Python backend.
         var routePage = app.pageStack.previousPage();
@@ -65,4 +69,5 @@ Page {
             }
         });
     }
+
 }

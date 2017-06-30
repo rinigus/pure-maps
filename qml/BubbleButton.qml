@@ -25,11 +25,14 @@ Rectangle {
     height: label.height + 1.5*Theme.paddingMedium
     radius: Theme.paddingSmall
     width: label.width + 2.5*Theme.paddingMedium
+
     property string text: ""
     // Use a pressed effect only when the associated action has
     // a delay, e.g. launching an external application.
     property bool useHighlight: false
+
     signal clicked()
+
     Label {
         id: label
         anchors.centerIn: parent
@@ -37,6 +40,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeExtraSmall
         text: button.text
     }
+
     MouseArea {
         anchors.fill: parent
         onClicked: {
@@ -47,10 +51,12 @@ Rectangle {
             button.clicked();
         }
     }
+
     Timer {
         id: timer
         interval: 3000
         repeat: false
         onTriggered: button.color = "#d0ffffff";
     }
+
 }

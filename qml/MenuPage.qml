@@ -24,14 +24,20 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
+
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
         contentWidth: parent.width
+
         Column {
             id: column
             anchors.fill: parent
-            PageHeader { title: "Poor Maps" }
+
+            PageHeader {
+                title: "Poor Maps"
+            }
+
             IconListItem {
                 icon: "image://theme/icon-m-search"
                 label: qsTranslate("", "Search")
@@ -40,6 +46,7 @@ Page {
                     app.pageStack.pushAttached("GeocodingResultsPage.qml");
                 }
             }
+
             IconListItem {
                 icon: "image://theme/icon-m-car"
                 label: qsTranslate("", "Navigation")
@@ -47,6 +54,7 @@ Page {
                     app.pageStack.push("RoutePage.qml");
                 }
             }
+
             IconListItem {
                 icon: "image://theme/icon-m-whereami"
                 label: qsTranslate("", "Nearby venues")
@@ -54,6 +62,7 @@ Page {
                     app.pageStack.push("NearbyPage.qml");
                 }
             }
+
             IconListItem {
                 icon: "image://theme/icon-m-share"
                 label: qsTranslate("", "Share current position")
@@ -75,6 +84,7 @@ Page {
                     });
                 }
             }
+
             IconListItem {
                 icon: "image://theme/icon-m-dot"
                 label: qsTranslate("", "Center on current position")
@@ -83,6 +93,7 @@ Page {
                     app.clearMenu();
                 }
             }
+
             IconListItem {
                 icon: "image://theme/icon-m-clear"
                 label: qsTranslate("", "Clear map")
@@ -91,6 +102,7 @@ Page {
                     app.clearMenu();
                 }
             }
+
             IconListItem {
                 icon: "image://theme/icon-m-levels"
                 label: qsTranslate("", "Basemaps and overlays")
@@ -98,6 +110,7 @@ Page {
                     app.pageStack.push("BasemapPage.qml");
                 }
             }
+
             TextSwitch {
                 id: autoCenterItem
                 checked: map.autoCenter
@@ -114,6 +127,7 @@ Page {
                     map.autoCenter && map.centerOnPosition();
                 }
             }
+
             TextSwitch {
                 id: autoRotateItem
                 checked: map.autoRotate
@@ -129,7 +143,9 @@ Page {
                     map.autoRotate = autoRotateItem.checked;
                 }
             }
+
         }
+
         PullDownMenu {
             MenuItem {
                 text: qsTranslate("", "About")
@@ -140,6 +156,9 @@ Page {
                 onClicked: app.pageStack.push("PreferencesPage.qml");
             }
         }
+
         VerticalScrollDecorator {}
+
     }
+
 }

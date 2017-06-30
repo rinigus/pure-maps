@@ -24,8 +24,10 @@ ListItem {
     anchors.left: parent.left
     anchors.right: parent.right
     contentHeight: Theme.itemSizeSmall
+
     property string icon: ""
     property string label: ""
+
     Image {
         id: icon
         anchors.left: parent.left
@@ -34,6 +36,7 @@ ListItem {
         height: Theme.itemSizeSmall
         source: item.icon
     }
+
     Label {
         id: label
         anchors.left: icon.right
@@ -46,4 +49,5 @@ ListItem {
         truncationMode: TruncationMode.Fade
         verticalAlignment: Text.AlignVCenter
     }
+
 }

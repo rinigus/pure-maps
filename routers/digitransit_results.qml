@@ -23,6 +23,7 @@ import "../qml"
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
+
     property bool loading: true
     property bool populated: false
     property var results: {}
@@ -30,14 +31,17 @@ Page {
     // Column widths to be set based on data.
     property int timeWidth: 0
     property int lineWidth: 0
+
     SilicaListView {
         id: listView
         anchors.fill: parent
+
         delegate: ListItem {
             id: listItem
             contentHeight: titleLabel.height + Theme.paddingMedium + bar.height +
                 Theme.paddingMedium + repeater.height + finalLabel.height + Theme.paddingMedium
             property var result: page.results[model.alternative-1]
+
             Label {
                 id: titleLabel
                 anchors.left: parent.left
@@ -52,6 +56,7 @@ Page {
                     .arg(py.call_sync("poor.util.format_time", [listItem.result.duration]))
                 verticalAlignment: Text.AlignBottom
             }
+
             Rectangle {
                 id: bar
                 anchors.left: parent.left
@@ -63,6 +68,7 @@ Page {
                 color: "#00000000"
                 height: 0.65*Theme.itemSizeSmall
             }
+
             Repeater {
                 id: repeater
                 anchors.top: bar.bottom
@@ -70,11 +76,13 @@ Page {
                 height: 0
                 model: listItem.result.legs.length
                 width: parent.width
+
                 Item {
                     id: row
                     height: timeLabel.height
                     width: parent.width
                     property var leg: listItem.result.legs[index]
+
                     Rectangle {
                         id: barChunk
                         color: leg.color
@@ -85,6 +93,7 @@ Page {
                             listItem.result.duration * bar.width + 3*Theme.pixelRatio
                         y: bar.y
                     }
+
                     Label {
                         id: barChunkLabel
                         height: barChunk.height
@@ -93,6 +102,7 @@ Page {
                         x: barChunk.x + Theme.paddingMedium
                         y: barChunk.y
                     }
+
                     Label {
                         id: timeLabel
                         height: implicitHeight + Theme.paddingSmall
@@ -107,6 +117,7 @@ Page {
                                 page.timeWidth = timeLabel.implicitWidth;
                         }
                     }
+
                     Label {
                         id: lineLabel
                         height: implicitHeight + Theme.paddingSmall
@@ -121,6 +132,7 @@ Page {
                                 page.lineWidth = lineLabel.implicitWidth;
                         }
                     }
+
                     Label {
                         id: nameLabel
                         height: implicitHeight + Theme.paddingSmall
@@ -133,11 +145,15 @@ Page {
                         x: lineLabel.x + page.lineWidth + Theme.paddingMedium
                         y: repeater.y + index * row.height
                     }
+
                     Component.onCompleted: {
                         repeater.height += row.height;
                     }
+
                 }
+
             }
+
             Label {
                 id: finalLabel
                 anchors.top: repeater.bottom
@@ -152,6 +168,7 @@ Page {
                         page.timeWidth = finalLabel.implicitWidth;
                 }
             }
+
             onClicked: {
                 app.hideMenu();
                 map.addRoute({
@@ -164,15 +181,23 @@ Page {
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);
             }
+
         }
-        header: PageHeader { title: page.title }
+        header: PageHeader {
+            title: page.title
+        }
+
         model: ListModel {}
+
         VerticalScrollDecorator {}
+
     }
+
     BusyModal {
         id: busy
         running: page.loading
     }
+
     onStatusChanged: {
         if (page.status === PageStatus.Activating) {
             if (page.populated) return;
@@ -188,10 +213,12 @@ Page {
             listView.visible = false;
         }
     }
+
     function formatLength(length) {
         // Format length in meters to human-readable format.
         return py.call_sync("poor.util.format_distance", [length]);
     }
+
     function populate() {
         // Load routing results from the Python backend.
         var routePage = app.pageStack.previousPage();
@@ -213,4 +240,5 @@ Page {
             page.populated = true;
         });
     }
+
 }

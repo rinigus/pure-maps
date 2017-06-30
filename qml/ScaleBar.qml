@@ -31,16 +31,19 @@ Item {
     opacity: 0.9
     visible: scaleWidth > 0
     z: 100
+
     property var coordPrev: QtPositioning.coordinate(0, 0)
     property real scaleWidth: 0
     property string text: ""
     property real zoomLevelPrev: -1
+
     Rectangle {
         id: base
         color: "black"
         height: Math.floor(Theme.pixelRatio*3)
         width: scaleBar.scaleWidth
     }
+
     Rectangle {
         anchors.bottom: base.top
         anchors.left: base.left
@@ -48,6 +51,7 @@ Item {
         height: Math.floor(Theme.pixelRatio*10)
         width: Math.floor(Theme.pixelRatio*3)
     }
+
     Rectangle {
         anchors.bottom: base.top
         anchors.right: base.right
@@ -55,6 +59,7 @@ Item {
         height: Math.floor(Theme.pixelRatio*10)
         width: Math.floor(Theme.pixelRatio*3)
     }
+
     Text {
         anchors.bottom: base.top
         anchors.bottomMargin: Math.floor(Theme.pixelRatio*4)
@@ -66,6 +71,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         text: scaleBar.text
     }
+
     function roundedDistace(dist) {
         // Return dist rounded to an even amount of user-visible units,
         // but keeping the value as meters.
@@ -82,6 +88,7 @@ Item {
         // Round to an even amount of kilometers or meters.
         return Util.siground(dist, 1);
     }
+
     function update(force) {
         // Update scalebar for current zoom level and latitude.
         force = force || false;
@@ -105,4 +112,5 @@ Item {
         scaleBar.coordPrev.latitude = map.center.latitude;
         scaleBar.zoomLevelPrev = map.zoomLevel;
     }
+
 }

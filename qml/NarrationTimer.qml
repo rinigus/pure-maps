@@ -25,12 +25,15 @@ Timer {
     repeat: true
     running: app.running && map.hasRoute && map.showNarrative
     triggeredOnStart: true
+
     property var coordPrev: QtPositioning.coordinate(0, 0)
+
     onRunningChanged: {
         // Always update after changing timer state.
         timer.coordPrev.longitude = 0;
         timer.coordPrev.latitude = 0;
     }
+
     onTriggered: {
         // Query maneuver narrative from Python and update status.
         if (!py.ready) return;
@@ -43,4 +46,5 @@ Timer {
             timer.coordPrev.latitude = coord.latitude;
         });
     }
+
 }

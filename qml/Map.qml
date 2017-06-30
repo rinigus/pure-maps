@@ -84,8 +84,11 @@ Map {
     }
 
     MapMouseArea {}
+
     MapTimer {}
+
     NarrationTimer {}
+
     Route { id: route }
 
     Component.onCompleted: {
@@ -619,4 +622,5 @@ Map {
         app.scaleBar.update();
         map.changed = false;
     }
+
 }

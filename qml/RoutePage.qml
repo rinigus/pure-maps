@@ -26,20 +26,28 @@ Page {
     canNavigateForward: page.from && page.to &&
         (page.fromText !== qsTranslate("", "Current position") || gps.ready) &&
         (page.toText !== qsTranslate("", "Current position") || gps.ready)
+
     property var from: null
     property string fromText: ""
     property var params: {}
     property var to: null
     property string toText: ""
+
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
         contentWidth: parent.width
+
         Column {
             id: column
             anchors.fill: parent
+
             property var settings: null
-            PageHeader { title: qsTranslate("", "Navigation") }
+
+            PageHeader {
+                title: qsTranslate("", "Navigation")
+            }
+
             ValueButton {
                 id: usingButton
                 label: qsTranslate("", "Using")
@@ -54,6 +62,7 @@ Page {
                     });
                 }
             }
+
             ValueButton {
                 id: fromButton
                 label: qsTranslate("", "From")
@@ -61,6 +70,7 @@ Page {
                 value: page.fromText
                 // Avoid putting label and value on different lines.
                 width: 3*parent.width
+
                 BusyIndicator {
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge + (parent.width - page.width)
@@ -69,6 +79,7 @@ Page {
                     size: BusyIndicatorSize.Small
                     z: parent.z + 1
                 }
+
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
@@ -82,7 +93,9 @@ Page {
                         }
                     });
                 }
+
             }
+
             ValueButton {
                 id: toButton
                 label: qsTranslate("", "To")
@@ -90,6 +103,7 @@ Page {
                 value: page.toText
                 // Avoid putting label and value on different lines.
                 width: 3*parent.width
+
                 BusyIndicator {
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge + (parent.width - page.width)
@@ -98,6 +112,7 @@ Page {
                     size: BusyIndicatorSize.Small
                     z: parent.z + 1
                 }
+
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
@@ -111,8 +126,11 @@ Page {
                         }
                     });
                 }
+
             }
+
             Component.onCompleted: column.addSetttings();
+
             function addSetttings() {
                 // Add router-specific settings from router's own QML file.
                 page.params = {};
@@ -125,7 +143,9 @@ Page {
                 column.settings.anchors.right = column.right;
                 column.settings.width = column.width;
             }
+
         }
+
         PullDownMenu {
             MenuItem {
                 text: qsTranslate("", "Reverse endpoints")
@@ -139,12 +159,16 @@ Page {
                 }
             }
         }
+
         VerticalScrollDecorator {}
+
     }
+
     Component.onCompleted: {
         page.from = map.getPosition();
         page.fromText = qsTranslate("", "Current position");
     }
+
     onStatusChanged: {
         if (page.status === PageStatus.Active) {
             if (page.fromText === qsTranslate("", "Current position"))
@@ -155,4 +179,5 @@ Page {
             app.pageStack.pushAttached(uri);
         }
     }
+
 }

@@ -26,11 +26,13 @@ Page {
     canNavigateForward: page.near &&
         (page.nearText !== qsTranslate("", "Current position") || gps.ready) &&
         page.query.length > 0
+
     property var near: null
     property string nearText: ""
     property string query: ""
     property var params: {}
     property real radius: 1000
+
     // Offer a different selection of radii depending on the user's
     // preferred length units, but keep values as meters.
     property var radiusLabels: app.conf.get("units") === "metric" ?
@@ -39,15 +41,21 @@ Page {
     property var radiusValues: app.conf.get("units") === "metric" ?
         [1000, 2000, 5000, 10000, 20000, 50000] :
         [805, 1609, 3219, 8047, 16093, 32187]
+
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
         contentWidth: parent.width
+
         Column {
             id: column
             anchors.fill: parent
             property var settings: null
-            PageHeader { title: qsTranslate("", "Nearby Venues") }
+
+            PageHeader {
+                title: qsTranslate("", "Nearby Venues")
+            }
+
             ValueButton {
                 id: usingButton
                 label: qsTranslate("", "Using")
@@ -62,6 +70,7 @@ Page {
                     });
                 }
             }
+
             ValueButton {
                 id: nearButton
                 label: qsTranslate("", "Near")
@@ -69,6 +78,7 @@ Page {
                 value: page.nearText
                 // Avoid putting label and value on different lines.
                 width: 3*parent.width
+
                 BusyIndicator {
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge + (parent.width - page.width)
@@ -77,6 +87,7 @@ Page {
                     size: BusyIndicatorSize.Small
                     z: parent.z + 1
                 }
+
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
@@ -90,7 +101,9 @@ Page {
                         }
                     });
                 }
+
             }
+
             ValueButton {
                 id: typeButton
                 label: qsTranslate("", "Type")
@@ -105,6 +118,7 @@ Page {
                     });
                 }
             }
+
             ComboBox {
                 id: radiusComboBox
                 label: qsTranslate("", "Radius")
@@ -126,7 +140,9 @@ Page {
                     page.radius = page.radiusValues[radiusComboBox.currentIndex];
                 }
             }
+
             Component.onCompleted: column.addSetttings();
+
             function addSetttings() {
                 // Add guide-specific settings from guide's own QML file.
                 page.params = {};
@@ -139,18 +155,24 @@ Page {
                 column.settings.anchors.right = column.right;
                 column.settings.width = column.width;
             }
+
         }
+
         VerticalScrollDecorator {}
+
     }
+
     Component.onCompleted: {
         if (!page.near) {
             page.near = map.getPosition();
             page.nearText = qsTranslate("", "Current position");
         }
     }
+
     onQueryChanged: {
         py.call_sync("poor.app.history.add_place_type", [page.query]);
     }
+
     onStatusChanged: {
         if (page.status === PageStatus.Active) {
             if (page.nearText === qsTranslate("", "Current position"))
@@ -159,4 +181,5 @@ Page {
             resultPage.populated = false;
         }
     }
+
 }

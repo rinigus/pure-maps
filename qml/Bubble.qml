@@ -35,6 +35,7 @@ Rectangle {
         0.65*app.screenWidth,
         0.65*app.screenHeight,
         500*Theme.pixelRatio), bubble.controlWidth) + 2*padding
+
     property var anchorItem: undefined
     property real controlHeight: 0
     property real controlWidth: 0
@@ -42,7 +43,9 @@ Rectangle {
     property string position: "center"
     property string text: ""
     property bool showArrow: true
+
     signal clicked()
+
     Image {
         id: arrow
         anchors.horizontalCenter: bubble.horizontalCenter
@@ -53,6 +56,7 @@ Rectangle {
         source: app.getIcon("icons/bubble-arrow")
         visible: bubble.visible && bubble.showArrow
     }
+
     Rectangle {
         id: controls
         anchors.bottom: bubble.bottom
@@ -64,6 +68,7 @@ Rectangle {
         color: "#00000000"
         height: bubble.controlHeight
     }
+
     Label {
         id: label
         anchors.bottom: controls.top
@@ -80,9 +85,12 @@ Rectangle {
         visible: bubble.visible
         wrapMode: Text.WordWrap
     }
+
     MouseArea {
         anchors.fill: label
         onClicked: bubble.clicked();
     }
+
     onWidthChanged: label.doLayout();
+
 }

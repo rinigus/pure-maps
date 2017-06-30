@@ -31,11 +31,13 @@ Item {
     height: Screen.height
     width: Screen.width
     z: 100
+
     Item {
         id: revolver
         anchors.centerIn: parent
         height: app.screenHeight
         width: app.screenWidth
+
         Behavior on rotation {
             RotationAnimation {
                 direction: RotationAnimation.Shortest
@@ -43,12 +45,19 @@ Item {
                 easing.type: Easing.Linear
             }
         }
+
         Map { id: map }
+
         MenuButton { id: menuButton }
+
         Meters { }
+
         NavigationBlock { id: navigationBlock }
+
         NorthArrow { id: northArrow }
+
         ScaleBar { id: scaleBar }
+
         Component.onCompleted: {
             revolver.updateOrientation();
             app.onDeviceOrientationChanged.connect(revolver.updateOrientation);
@@ -58,6 +67,7 @@ Item {
             app.northArrow = northArrow;
             app.scaleBar = scaleBar;
         }
+
         function updateOrientation() {
             if (!(app.deviceOrientation & app.allowedOrientations)) return;
             switch (app.deviceOrientation) {
@@ -87,5 +97,7 @@ Item {
                 break;
             }
         }
+
     }
+
 }

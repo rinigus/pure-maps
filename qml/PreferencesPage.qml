@@ -22,14 +22,20 @@ import "."
 
 Page {
     allowedOrientations: app.defaultAllowedOrientations
+
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
         contentWidth: parent.width
+
         Column {
             id: column
             anchors.fill: parent
-            PageHeader { title: qsTranslate("", "Preferences") }
+
+            PageHeader {
+                title: qsTranslate("", "Preferences")
+            }
+
             TextSwitch {
                 id: downloadTilesItem
                 checked: app.conf.get("allow_tile_download")
@@ -46,6 +52,7 @@ Page {
                     }
                 }
             }
+
             TextSwitch {
                 id: showNarrativeItem
                 checked: map.showNarrative
@@ -56,6 +63,7 @@ Page {
                     map.showNarrative || app.setNavigationStatus(null);
                 }
             }
+
             ComboBox {
                 id: unitsComboBox
                 label: qsTranslate("", "Units")
@@ -75,6 +83,7 @@ Page {
                     app.scaleBar.update(true);
                 }
             }
+
             ComboBox {
                 id: sleepComboBox
                 description: qsTranslate("", "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
@@ -95,6 +104,7 @@ Page {
                     app.updateKeepAlive();
                 }
             }
+
             ComboBox {
                 id: cacheComboBox
                 description: qsTranslate("", "Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic.")
@@ -125,7 +135,11 @@ Page {
                     app.conf.set("cache_max_age", cacheComboBox.values[index]);
                 }
             }
-            Spacer { height: Theme.paddingMedium }
+
+            Spacer {
+                height: Theme.paddingMedium
+            }
+
             Button {
                 id: examineButton
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -133,8 +147,15 @@ Page {
                 text: qsTranslate("", "Examine map tile cache")
                 onClicked: app.pageStack.push("CachePage.qml");
             }
-            Spacer { height: Theme.paddingMedium }
+
+            Spacer {
+                height: Theme.paddingMedium
+            }
+
         }
+
         VerticalScrollDecorator {}
+
     }
+
 }

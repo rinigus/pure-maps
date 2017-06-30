@@ -22,6 +22,7 @@ import "../qml"
 
 Column {
     id: column
+
     ComboBox {
         id: regionComboBox
         label: qsTranslate("", "Region")
@@ -40,15 +41,18 @@ Column {
             app.conf.set("routers.digitransit.region", regionComboBox.keys[index]);
         }
     }
+
     Item {
         height: Theme.itemSizeSmall
         width: parent.width
+
         BackgroundItem {
             id: bindItem
             anchors.left: parent.left
             anchors.top: parent.top
             height: parent.height
             width: bindLabel.width + Theme.horizontalPageMargin + Theme.paddingMedium
+
             Label {
                 id: bindLabel
                 anchors.left: parent.left
@@ -58,6 +62,7 @@ Column {
                 text: qsTranslate("", "Depart")
                 verticalAlignment: Text.AlignVCenter
             }
+
             onClicked: {
                 if (bindLabel.text === qsTranslate("", "Depart")) {
                     bindLabel.text = qsTranslate("", "Arrive");
@@ -69,14 +74,18 @@ Column {
                     bindLabel.color = Theme.highlightColor;
                 }
             }
+
         }
+
         BackgroundItem {
             id: dateItem
             anchors.left: bindItem.right
             anchors.top: parent.top
             height: parent.height
             width: dateLabel.width + 2*Theme.paddingMedium
+
             property var date: new Date()
+
             Label {
                 id: dateLabel
                 anchors.left: parent.left
@@ -86,6 +95,7 @@ Column {
                 text: qsTranslate("", "Today")
                 verticalAlignment: Text.AlignVCenter
             }
+
             onClicked: {
                 var dialog = pageStack.push(
                     "Sailfish.Silica.DatePickerDialog", {
@@ -104,14 +114,18 @@ Column {
                     page.params.date = "%1-%2-%3".arg(year).arg(month).arg(day);
                 });
             }
+
         }
+
         BackgroundItem {
             id: timeItem
             anchors.left: dateItem.right
             anchors.top: parent.top
             height: parent.height
             width: timeLabel.width + 2*Theme.paddingMedium
+
             property var time: new Date()
+
             Label {
                 id: timeLabel
                 anchors.left: parent.left
@@ -121,6 +135,7 @@ Column {
                 text: qsTranslate("", "Now")
                 verticalAlignment: Text.AlignVCenter
             }
+
             onClicked: {
                 var dialog = pageStack.push(
                     "Sailfish.Silica.TimePickerDialog", {
@@ -140,8 +155,11 @@ Column {
                     page.params.time = "%1:%2:00".arg(hour).arg(minute);
                 });
             }
+
         }
+
     }
+
     ComboBox {
         id: prefComboBox
         label: qsTranslate("", "Criterion")
@@ -160,7 +178,11 @@ Column {
             app.conf.set("routers.digitransit.optimize", prefComboBox.keys[index]);
         }
     }
-    Spacer { height: 1.25*Theme.paddingLarge }
+
+    Spacer {
+        height: 1.25*Theme.paddingLarge
+    }
+
     Grid {
         id: modeGrid
         anchors.left: parent.left
@@ -176,7 +198,9 @@ Column {
         height: implicitHeight + Theme.paddingLarge
         rows: Math.ceil(6/columns)
         spacing: Theme.paddingMedium
+
         property string option: "routers.digitransit.modes"
+
         IconButton {
             id: busButton
             height: icon.sourceSize.height
@@ -188,6 +212,7 @@ Column {
                 app.conf.contains(modeGrid.option, "BUS");
             onClicked: modeGrid.toggle(busButton, "BUS");
         }
+
         IconButton {
             id: tramButton
             height: icon.sourceSize.height
@@ -199,6 +224,7 @@ Column {
                 app.conf.contains(modeGrid.option, "TRAM");
             onClicked: modeGrid.toggle(tramButton, "TRAM");
         }
+
         IconButton {
             id: trainButton
             height: icon.sourceSize.height
@@ -210,6 +236,7 @@ Column {
                 app.conf.contains(modeGrid.option, "RAIL");
             onClicked: modeGrid.toggle(trainButton, "RAIL");
         }
+
         IconButton {
             id: metroButton
             height: icon.sourceSize.height
@@ -221,6 +248,7 @@ Column {
                 app.conf.contains(modeGrid.option, "SUBWAY");
             onClicked: modeGrid.toggle(metroButton, "SUBWAY");
         }
+
         IconButton {
             id: ferryButton
             height: icon.sourceSize.height
@@ -232,6 +260,7 @@ Column {
                 app.conf.contains(modeGrid.option, "FERRY");
             onClicked: modeGrid.toggle(ferryButton, "FERRY");
         }
+
         IconButton {
             id: airplaneButton
             height: icon.sourceSize.height
@@ -245,11 +274,14 @@ Column {
                 app.conf.contains(modeGrid.option, "AIRPLANE");
             onClicked: modeGrid.toggle(airplaneButton, "AIRPLANE");
         }
+
         function toggle(button, value) {
             button.checked = !button.checked;
             button.checked ?
                 app.conf.add(modeGrid.option, value) :
                 app.conf.remove(modeGrid.option, value);
         }
+
     }
+
 }

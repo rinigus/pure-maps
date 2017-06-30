@@ -23,14 +23,18 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
+
     property string title: qsTranslate("", "Basemaps")
+
     SilicaListView {
         id: listView
         anchors.fill: parent
+
         delegate: ListItem {
             id: listItem
             contentHeight: visible ? nameLabel.height + descriptionLabel.height : 0
             visible: model.visible
+
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
@@ -39,6 +43,7 @@ Page {
                 text: model.name
                 verticalAlignment: Text.AlignBottom
             }
+
             ListItemLabel {
                 id: descriptionLabel
                 anchors.top: nameLabel.bottom
@@ -51,6 +56,7 @@ Page {
                 ].join("\n")
                 verticalAlignment: Text.AlignTop
             }
+
             onClicked: {
                 app.hideMenu();
                 map.clearTiles();
@@ -60,9 +66,15 @@ Page {
                     listView.model.setProperty(i, "active", false);
                 listView.model.setProperty(model.index, "active", true);
             }
+
         }
-        header: PageHeader { title: page.title }
+
+        header: PageHeader {
+            title: page.title
+        }
+
         model: ListModel {}
+
         PullDownMenu {
             MenuItem {
                 text: qsTranslate("", "All")
@@ -77,7 +89,9 @@ Page {
                 onClicked: page.setFilter("@2x");
             }
         }
+
         VerticalScrollDecorator {}
+
         Component.onCompleted: {
             // Load basemap model entries from the Python backend.
             var defpid = app.conf.getDefault("basemap");
@@ -91,11 +105,14 @@ Page {
                 page.filterBasemaps();
             });
         }
+
     }
+
     onStatusChanged: {
         page.status === PageStatus.Active &&
             app.pageStack.pushAttached("OverlayPage.qml");
     }
+
     function filterBasemaps() {
         // Show only basemaps that match the scale filter.
         var filter = app.conf.get("basemap_filter");
@@ -106,9 +123,11 @@ Page {
         page.title = filter.length > 0 ?
             qsTranslate("", "Basemaps %1").arg(filter) : qsTranslate("", "Basemaps");
     }
+
     function setFilter(value) {
         // Set value of the scale filter and update.
         app.conf.set("basemap_filter", value);
         page.filterBasemaps();
     }
+
 }

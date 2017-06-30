@@ -30,6 +30,7 @@ Item {
     opacity: 0.9
     width: parent.width
     z: 100
+
     Text {
         id: values
         anchors.bottom: parent.bottom
@@ -41,6 +42,7 @@ Item {
         horizontalAlignment: Text.AlignRight
         lineHeight: 1.25
     }
+
     Text {
         id: labels
         anchors.bottom: parent.bottom
@@ -53,6 +55,7 @@ Item {
         lineHeight: 1.25
         text: "\n"
     }
+
     Timer {
         interval: 3000
         repeat: true
@@ -60,6 +63,7 @@ Item {
         triggeredOnStart: true
         onTriggered: meters.update();
     }
+
     function update() {
         if (!py.ready) return;
         if (app.conf.get("units") == "american") {
@@ -91,4 +95,5 @@ Item {
             values.doLayout();
         }
     }
+
 }

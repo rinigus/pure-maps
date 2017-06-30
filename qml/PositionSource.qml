@@ -27,6 +27,7 @@ PositionSource {
     // if we already have a lock, otherwise keep trying for a couple minutes
     // and give up if we still don't gain that lock.
     active: app.running || (coordHistory.length === 0 && timePosition - timeActivate < 180000)
+
     property var coordHistory: []
     property var direction: undefined
     property var directionHistory: []
@@ -34,10 +35,12 @@ PositionSource {
     property var timeActivate:  Date.now()
     property var timeDirection: Date.now()
     property var timePosition:  Date.now()
+
     onActiveChanged: {
         // Keep track of when positioning was (re)activated.
         if (gps.active) gps.timeActivate = Date.now();
     }
+
     onPositionChanged: {
         // Calculate direction as a median of individual direction values
         // calculated after significant changes in position. This should be
@@ -74,4 +77,5 @@ PositionSource {
             gps.directionHistory = [];
         }
     }
+
 }

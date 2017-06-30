@@ -22,12 +22,15 @@ import "."
 
 Page {
     allowedOrientations: app.defaultAllowedOrientations
+
     SilicaListView {
         id: listView
         anchors.fill: parent
+
         delegate: ListItem {
             id: listItem
             contentHeight: overlaySwitch.height
+
             TextSwitch {
                 id: overlaySwitch
                 checked: model.active
@@ -52,16 +55,24 @@ Page {
                     map.changed = true;
                 }
             }
+
             OpacityRampEffect {
                 // Try to match Label with TruncationMode.Fade.
                 direction: OpacityRamp.LeftToRight
                 offset: (overlaySwitch.width - overlaySwitch.rightMargin) / overlaySwitch.width
                 sourceItem: overlaySwitch
             }
+
         }
-        header: PageHeader { title: qsTranslate("", "Overlays") }
+
+        header: PageHeader {
+            title: qsTranslate("", "Overlays")
+        }
+
         model: ListModel {}
+
         VerticalScrollDecorator {}
+
         Component.onCompleted: {
             // Load overlay model entries from the Python backend.
             py.call("poor.util.get_overlays", [], function(overlays) {
@@ -69,5 +80,7 @@ Page {
                     listView.model.append(overlays[i]);
             });
         }
+
     }
+
 }

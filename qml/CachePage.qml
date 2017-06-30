@@ -23,15 +23,19 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
+
     property bool loading: true
     property string title: ""
+
     SilicaListView {
         id: listView
         anchors.fill: parent
+
         delegate: ListItem {
             id: listItem
             contentHeight: visible ? nameLabel.height + statLabel.height : 0
             menu: contextMenu
+
             ListItemLabel {
                 id: nameLabel
                 color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
@@ -39,6 +43,7 @@ Page {
                 text: model.name
                 verticalAlignment: Text.AlignBottom
             }
+
             ListItemLabel {
                 id: statLabel
                 anchors.top: nameLabel.bottom
@@ -50,39 +55,49 @@ Page {
                     qsTranslate("", "%1 tiles · %2").arg(model.count).arg(model.size)
                 verticalAlignment: Text.AlignTop
             }
-            RemorseItem { id: remorse }
+
+            RemorseItem {
+                id: remorse
+            }
+
             ContextMenu {
                 id: contextMenu
+
                 MenuItem {
                     text: qsTranslate("", "Remove older than one week")
                     onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 7);
                     });
                 }
+
                 MenuItem {
                     text: qsTranslate("", "Remove older than one month")
                     onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 30);
                     });
                 }
+
                 MenuItem {
                     text: qsTranslate("", "Remove older than three months")
                     onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 90);
                     });
                 }
+
                 MenuItem {
                     text: qsTranslate("", "Remove older than six months")
                     onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 180);
                     });
                 }
+
                 MenuItem {
                     text: qsTranslate("", "Remove older than one year")
                     onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
                         page.purge(model.index, model.directory, 365);
                     });
                 }
+
                 MenuItem {
                     text: qsTranslate("", "Remove all")
                     onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
@@ -90,24 +105,36 @@ Page {
                         listItem.visible = false;
                     });
                 }
+
             }
+
             ListView.onRemove: animateRemoval(listItem);
             onClicked: listItem.showMenu();
+
         }
-        header: PageHeader { title: page.title }
+
+        header: PageHeader {
+            title: page.title
+        }
+
         model: ListModel {}
+
         VerticalScrollDecorator {}
+
     }
+
     BusyModal {
         id: busy
         running: page.loading
     }
+
     Component.onCompleted: {
         page.loading = true;
         page.title = "";
         busy.text = qsTranslate("", "Calculating");
         page.populate();
     }
+
     function populate(query) {
         // Load cache use statistics from the Python backend.
         listView.model.clear();
@@ -123,6 +150,7 @@ Page {
             page.loading = false;
         });
     }
+
     function purge(index, directory, max_age) {
         // Remove tiles in cache and recalculate statistics.
         listView.model.setProperty(index, "count", -1);
@@ -133,4 +161,5 @@ Page {
             });
         });
     }
+
 }

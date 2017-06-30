@@ -28,9 +28,11 @@ MapQuickItem {
     anchorPoint.y: sourceItem.height/2
     height: sourceItem.height
     width: sourceItem.width
+
     sourceItem: Item {
         height: image.height
         width: image.width
+
         Image {
             id: image
             smooth: false
@@ -40,6 +42,7 @@ MapQuickItem {
                 onClicked: marker.bubbleVisible = !marker.bubbleVisible;
             }
         }
+
         Bubble {
             id: bubble
             anchorItem: image
@@ -50,6 +53,7 @@ MapQuickItem {
             text: marker.text
             visible: marker.bubbleVisible
             onClicked: marker.bubbleVisible = !marker.bubbleVisible;
+
             BubbleButton {
                 id: routeButton
                 anchors.bottom: parent.bottom
@@ -66,6 +70,7 @@ MapQuickItem {
                     });
                 }
             }
+
             BubbleButton {
                 id: nearbyButton
                 anchors.bottom: parent.bottom
@@ -82,6 +87,7 @@ MapQuickItem {
                     });
                 }
             }
+
             BubbleButton {
                 id: shareButton
                 anchors.bottom: parent.bottom
@@ -98,6 +104,7 @@ MapQuickItem {
                     });
                 }
             }
+
             BubbleButton {
                 id: webButton
                 anchors.bottom: parent.bottom
@@ -109,25 +116,33 @@ MapQuickItem {
                 visible: marker.link.length > 0
                 onClicked: Qt.openUrlExternally(marker.link);
             }
+
         }
+
     }
+
     transform: Rotation {
         angle: -map.rotation
         origin.x: sourceItem.width/2
         origin.y: sourceItem.height/2
     }
+
     z: 400
+
     property bool bubbleVisible: false
     property string link: ""
     property string text: ""
     property string title: ""
+
     onBubbleVisibleChanged: {
         // Ensure that bubble will be above other POIs.
         for (var i = 0; i < map.pois.length; i++)
             map.pois[i].z = map.pois[i].bubbleVisible ? 402 : 400;
         marker.z = marker.bubbleVisible ? 403 : 401;
     }
+
     onTextChanged: {
         marker.text = marker.text.replace("Theme.highlightColor", Theme.highlightColor);
     }
+
 }

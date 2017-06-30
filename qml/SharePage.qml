@@ -23,13 +23,16 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
+
     // Required to be set by caller.
     property var coordinate: undefined
     property string title: ""
+
     PageHeader {
         id: header
         title: page.title
     }
+
     ListItemLabel {
         id: messageLabel
         anchors.top: header.bottom
@@ -41,6 +44,7 @@ Page {
         wrapMode: TextEdit.Wrap
         onLinkActivated: Qt.openUrlExternally(link);
     }
+
     Button {
         id: smsButton
         anchors.horizontalCenter: parent.horizontalCenter
@@ -62,6 +66,7 @@ Page {
             ], null);
         }
     }
+
     Button {
         id: emailButton
         anchors.horizontalCenter: parent.horizontalCenter
@@ -74,6 +79,7 @@ Page {
             Qt.openUrlExternally(link);
         }
     }
+
     Button {
         id: clipboardButton
         anchors.horizontalCenter: parent.horizontalCenter
@@ -85,6 +91,7 @@ Page {
             infoLabel.text = qsTranslate("", "Message copied to the clipboard");
         }
     }
+
     ListItemLabel {
         id: infoLabel
         anchors.top: clipboardButton.bottom
@@ -92,6 +99,7 @@ Page {
         color: Theme.highlightColor
         horizontalAlignment: Text.AlignHCenter
     }
+
     function formatMessage(html) {
         return py.call_sync("poor.util.format_location_message", [
             page.coordinate.longitude,
@@ -99,4 +107,5 @@ Page {
             html
         ]);
     }
+
 }

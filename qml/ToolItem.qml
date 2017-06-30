@@ -23,12 +23,15 @@ ListItem {
     id: item
     contentHeight: Theme.itemSizeSmall
     width: parent.width/parent.count
+
     property string text: ""
+
     Rectangle {
         anchors.fill: parent
         color: Theme.highlightColor
         opacity: 0.1
     }
+
     ListItemLabel {
         anchors.fill: parent
         anchors.leftMargin: Theme.paddingMedium
@@ -38,4 +41,5 @@ ListItem {
         horizontalAlignment: Text.AlignHCenter
         text: item.text
     }
+
 }

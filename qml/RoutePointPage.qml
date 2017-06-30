@@ -24,24 +24,29 @@ Dialog {
     id: dialog
     allowedOrientations: app.defaultAllowedOrientations
     canAccept: dialog.query.length > 0
+
     property var history: []
     property string query: ""
+
     SilicaListView {
         id: listView
         anchors.fill: parent
         // Prevent list items from stealing focus.
         currentIndex: -1
+
         delegate: ListItem {
             id: listItem
             contentHeight: visible ? Theme.itemSizeSmall : 0
             menu: contextMenu
             visible: model.visible
+
             ListItemLabel {
                 anchors.leftMargin: listView.searchField.textLeftMargin
                 color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
                 text: model.text
             }
+
             ContextMenu {
                 id: contextMenu
                 MenuItem {
@@ -53,16 +58,24 @@ Dialog {
                     }
                 }
             }
+
             ListView.onRemove: animateRemoval(listItem);
+
             onClicked: {
                 dialog.query = model.place;
                 dialog.accept();
             }
+
         }
+
         header: Column {
             height: dialogHeader.height + gpsItem.height + searchField.height
             width: parent.width
-            DialogHeader { id: dialogHeader }
+
+            DialogHeader {
+                id: dialogHeader
+            }
+
             ListItem {
                 id: gpsItem
                 contentHeight: Theme.itemSizeSmall
@@ -77,6 +90,7 @@ Dialog {
                     dialog.accept();
                 }
             }
+
             SearchField {
                 id: searchField
                 placeholderText: qsTranslate("", "Address, landmark, etc.")
@@ -88,18 +102,26 @@ Dialog {
                     dialog.filterHistory();
                 }
             }
+
             Component.onCompleted: listView.searchField = searchField;
+
         }
+
         model: ListModel {}
+
         property var searchField: undefined
+
         VerticalScrollDecorator {}
+
     }
+
     onStatusChanged: {
         if (dialog.status === PageStatus.Activating) {
             dialog.loadHistory();
             dialog.filterHistory();
         }
     }
+
     function filterHistory() {
         // Filter search history for current search field text.
         var query = listView.searchField.text.toLowerCase();
@@ -123,10 +145,12 @@ Dialog {
         for (var i = found.length; i < listView.count; i++)
             listView.model.setProperty(i, "visible", false);
     }
+
     function loadHistory() {
         // Load search history and preallocate list items.
         dialog.history = py.evaluate("poor.app.history.places");
         while (listView.model.count < 50)
             listView.model.append({"place": "", "text": "", "visible": false});
     }
+
 }

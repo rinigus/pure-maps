@@ -197,4 +197,5 @@ Canvas {
             canvas.setSimplePath(zoom, path);
         });
     }
+
 }

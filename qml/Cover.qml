@@ -29,14 +29,17 @@ import "."
 
 CoverBackground {
     id: cover
+
     property bool active: status === Cover.Active
     property bool ready: false
     property bool showNarrative: map.hasRoute && map.showNarrative
     property var  tiles: []
+
     onShowNarrativeChanged: {
         for (var i = 0; i < cover.tiles.length; i++)
             cover.tiles[i].visible = !cover.showNarrative;
     }
+
     Timer {
         interval: 1000
         repeat: true
@@ -50,6 +53,7 @@ CoverBackground {
             cover.updatePositionMarker();
         }
     }
+
     Image {
         anchors.centerIn: parent
         height: width/sourceSize.width * sourceSize.height
@@ -58,9 +62,11 @@ CoverBackground {
         source: "icons/cover.png"
         width: 1.5 * parent.width
     }
+
     /*
      * Default map cover.
      */
+
     Rectangle {
         // Matches the default QtLocation Map background.
         anchors.fill: parent
@@ -68,12 +74,14 @@ CoverBackground {
         visible: !cover.showNarrative
         z: 1
     }
+
     Item {
         id: positionMarker
         height: movingImage.height
         visible: !cover.showNarrative
         width: movingImage.width
         z: 100
+
         Image {
             id: movingImage
             rotation: map.direction || 0
@@ -81,6 +89,7 @@ CoverBackground {
             source: app.getIcon("icons/position-direction")
             visible: map.direction || false
         }
+
         Image {
             id: stillImage
             anchors.centerIn: movingImage
@@ -88,10 +97,13 @@ CoverBackground {
             source: app.getIcon("icons/position")
             visible: !movingImage.visible
         }
+
     }
+
     /*
      * Navigation narrative cover.
      */
+
     Image {
         anchors.bottom: parent.verticalCenter
         anchors.bottomMargin: Theme.paddingMedium
@@ -105,6 +117,7 @@ CoverBackground {
         sourceSize.width: cover.width/2
         visible: cover.showNarrative
     }
+
     Label {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.verticalCenter
@@ -113,6 +126,7 @@ CoverBackground {
         text: app.navigationBlock.manDist
         visible: cover.showNarrative
     }
+
     Label {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: Theme.paddingLarge
@@ -123,6 +137,7 @@ CoverBackground {
         text: app.navigationBlock.destDist
         visible: cover.showNarrative
     }
+
     Label {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: Theme.paddingLarge
@@ -133,24 +148,29 @@ CoverBackground {
         text: app.navigationBlock.destTime
         visible: cover.showNarrative
     }
+
     function addTile() {
         // Add a new blank tile to the end of collection.
         var component = Qt.createComponent("CoverTile.qml");
         cover.tiles.push(component.createObject(cover));
     }
+
     function mapXToCoverX(x) {
         // Convert map pixel X-coordinate to cover equivalent.
         return x - (map.width - cover.width) / 2;
     }
+
     function mapYToCoverY(y) {
         // Convert map pixel Y-coordinate to cover equivalent.
         return y - (map.height - cover.height) / 2;
     }
+
     function updatePositionMarker() {
         // Update position marker from map equivalent.
         positionMarker.x = cover.mapXToCoverX(map.positionMarker.x);
         positionMarker.y = cover.mapYToCoverY(map.positionMarker.y);
     }
+
     function updateTiles() {
         // Update cover map tiles from map equivalents.
         for (var i = 0; i < cover.tiles.length; i++)
@@ -174,4 +194,5 @@ CoverBackground {
         }
         cover.ready = cover.tiles.length > 4;
     }
+
 }

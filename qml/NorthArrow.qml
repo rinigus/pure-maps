@@ -29,6 +29,7 @@ IconButton {
     icon.smooth: true
     icon.source: app.getIcon("icons/north")
     z: 600
+
     onClicked: {
         if (map.autoRotate) {
             map.autoRotate = false;
@@ -40,6 +41,7 @@ IconButton {
         bubble.visible = true;
         timer.restart();
     }
+
     Bubble {
         id: bubble
         anchorItem: parent
@@ -47,10 +49,12 @@ IconButton {
         showArrow: false
         visible: false
     }
+
     Timer {
         id: timer
         interval: 2000
         repeat: false
         onTriggered: bubble.visible = false;
     }
+
 }

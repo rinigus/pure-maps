@@ -30,9 +30,11 @@ MapQuickItem {
     height: sourceItem.height
     visible: map.ready
     width: sourceItem.width
+
     sourceItem: Item {
         height: movingImage.height
         width: movingImage.width
+
         Image {
             id: movingImage
             rotation: map.rotation + (map.direction || 0)
@@ -47,6 +49,7 @@ MapQuickItem {
                 }
             }
         }
+
         Image {
             id: stillImage
             anchors.centerIn: movingImage
@@ -54,6 +57,7 @@ MapQuickItem {
             source: app.getIcon("icons/position")
             visible: !movingImage.visible
         }
+
         MouseArea {
             anchors.fill: movingImage
             onClicked: {
@@ -69,28 +73,35 @@ MapQuickItem {
                 timer.restart();
             }
         }
+
         Bubble {
             id: bubble
             anchorItem: movingImage
             visible: false
         }
+
         Timer {
             id: timer
             interval: 2000
             repeat: false
             onTriggered: bubble.visible = false;
         }
+
     }
+
     transform: Rotation {
         angle: -map.rotation
         origin.x: sourceItem.width/2
         origin.y: sourceItem.height/2
     }
+
     z: 300
+
     Behavior on coordinate {
         CoordinateAnimation {
             duration: 500
             easing.type: Easing.Linear
         }
     }
+
 }

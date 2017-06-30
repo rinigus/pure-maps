@@ -51,7 +51,9 @@ ApplicationWindow {
     property int  screenWidth: Screen.width
 
     Root { id: root }
+
     PositionSource { id: gps }
+
     Python { id: py }
 
     Component.onCompleted: {
@@ -146,4 +148,5 @@ ApplicationWindow {
         DisplayBlanking.preventBlanking = app.applicationActive &&
             (prevent === "always" || (prevent === "navigating" && map.hasRoute));
     }
+
 }

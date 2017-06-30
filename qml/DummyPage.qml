@@ -29,7 +29,9 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
     clip: true
+
     property var tiles: []
+
     Rectangle {
         // Matches the default QtLocation Map background.
         id: background
@@ -39,16 +41,19 @@ Page {
         rotation: map.rotation
         width: map.width
     }
+
     onStatusChanged: {
         // Clear and hide menu if navigated backwards to this page.
         // This gets fired on application startup as well!
         page.status === PageStatus.Active && app.clearMenu();
     }
+
     function addTile() {
         // Add a new blank tile to the end of collection.
         var component = Qt.createComponent("CoverTile.qml");
         page.tiles.push(component.createObject(background));
     }
+
     function updateTiles() {
         // Update cover map tiles from map equivalents.
         for (var i = 0; i < page.tiles.length; i++)
@@ -70,4 +75,5 @@ Page {
             j++;
         }
     }
+
 }

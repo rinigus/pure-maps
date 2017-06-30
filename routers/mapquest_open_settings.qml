@@ -20,6 +20,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Column {
+
     ComboBox {
         id: typeComboBox
         label: qsTranslate("", "Type")
@@ -38,6 +39,7 @@ Column {
             app.conf.set(option, typeComboBox.keys[typeComboBox.currentIndex]);
         }
     }
+
     TextSwitch {
         id: tollSwitch
         anchors.left: parent.left
@@ -51,4 +53,5 @@ Column {
                 app.conf.remove("routers.mapquest_open.avoids", "Toll Road");
         }
     }
+
 }

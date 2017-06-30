@@ -23,13 +23,17 @@ import "."
 Dialog {
     id: dialog
     allowedOrientations: app.defaultAllowedOrientations
+
     property string pid: py.evaluate("poor.app.geocoder.id")
+
     SilicaListView {
         id: listView
         anchors.fill: parent
+
         delegate: ListItem {
             id: listItem
             contentHeight: nameLabel.height + descriptionLabel.height
+
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
@@ -38,6 +42,7 @@ Dialog {
                 text: model.name
                 verticalAlignment: Text.AlignBottom
             }
+
             ListItemLabel {
                 id: descriptionLabel
                 anchors.top: nameLabel.bottom
@@ -52,14 +57,19 @@ Dialog {
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
             }
+
             onClicked: {
                 dialog.pid = model.pid;
                 dialog.accept();
             }
+
         }
+
         header: DialogHeader {}
         model: ListModel {}
+
         VerticalScrollDecorator {}
+
         Component.onCompleted: {
             // Load geocoder model entries from the Python backend.
             var defpid = app.conf.getDefault("geocoder");
@@ -71,8 +81,11 @@ Dialog {
                 }
             });
         }
+
     }
+
     onAccepted: {
         py.call_sync("poor.app.set_geocoder", [dialog.pid]);
     }
+
 }

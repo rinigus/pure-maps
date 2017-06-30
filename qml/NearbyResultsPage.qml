@@ -23,16 +23,20 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
+
     property bool loading: true
     property bool populated: false
     property string title: ""
+
     SilicaListView {
         id: listView
         anchors.fill: parent
+
         delegate: ListItem {
             id: listItem
             contentHeight: titleLabel.height + descriptionLabel.height + distanceLabel.height
             property bool visited: false
+
             ListItemLabel {
                 id: titleLabel
                 color: (listItem.highlighted || listItem.visited) ?
@@ -41,6 +45,7 @@ Page {
                 text: model.title
                 verticalAlignment: Text.AlignBottom
             }
+
             ListItemLabel {
                 id: descriptionLabel
                 anchors.top: titleLabel.bottom
@@ -51,6 +56,7 @@ Page {
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
             }
+
             ListItemLabel {
                 id: distanceLabel
                 anchors.top: descriptionLabel.bottom
@@ -60,6 +66,7 @@ Page {
                 text: model.distance
                 verticalAlignment: Text.AlignTop
             }
+
             onClicked: {
                 app.hideMenu();
                 map.addPois([{
@@ -75,9 +82,15 @@ Page {
                 map.setCenter(model.x, model.y);
                 listItem.visited = true;
             }
+
         }
-        header: PageHeader { title: page.title }
+
+        header: PageHeader {
+            title: page.title
+        }
+
         model: ListModel {}
+
         PullDownMenu {
             visible: listView.model.count > 1
             MenuItem {
@@ -101,12 +114,16 @@ Page {
                 }
             }
         }
+
         VerticalScrollDecorator {}
+
     }
+
     BusyModal {
         id: busy
         running: page.loading
     }
+
     onStatusChanged: {
         if (page.status === PageStatus.Activating) {
             if (page.populated) return;
@@ -123,6 +140,7 @@ Page {
             listView.visible = false;
         }
     }
+
     function populate(query, near, radius) {
         // Load place results from the Python backend.
         listView.model.clear();
@@ -142,4 +160,5 @@ Page {
             page.populated = true;
         });
     }
+
 }

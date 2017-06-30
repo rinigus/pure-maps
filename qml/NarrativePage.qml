@@ -23,14 +23,17 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
+
     SilicaListView {
         id: listView
         anchors.fill: parent
         // Prevent list items from stealing focus.
         currentIndex: -1
+
         delegate: ListItem {
             id: listItem
             contentHeight: icon.height
+
             Image {
                 id: icon
                 anchors.left: parent.left
@@ -49,6 +52,7 @@ Page {
                 sourceSize.width: Theme.iconSizeMedium
                 verticalAlignment: Image.AlignVCenter
             }
+
             Label {
                 id: narrativeLabel
                 anchors.left: icon.right
@@ -67,6 +71,7 @@ Page {
                 verticalAlignment: Text.AlignBottom
                 wrapMode: Text.WordWrap
             }
+
             Label {
                 id: lengthLabel
                 anchors.left: icon.right
@@ -86,24 +91,30 @@ Page {
                 truncationMode: TruncationMode.Fade
                 verticalAlignment: Text.AlignTop
             }
+
             onClicked: {
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
                 map.zoomLevel < 16 && map.setZoomLevel(16);
                 app.clearMenu();
             }
+
         }
+
         footer: Spacer {
             height: Theme.paddingMedium
         }
+
         header: Column {
             height: header.height + row.height + spacer1.height +
                 distItem.height + timeItem.height + spacer2.height
             width: parent.width
+
             PageHeader {
                 id: header
                 title: qsTranslate("", "Navigation")
             }
+
             Row {
                 id: row
                 height: Theme.itemSizeSmall
@@ -132,10 +143,12 @@ Page {
                     }
                 }
             }
+
             Spacer {
                 id: spacer1
                 height: Theme.paddingLarge
             }
+
             DetailItem {
                 id: distItem
                 label: qsTranslate("", "Distance remaining")
@@ -143,6 +156,7 @@ Page {
                     .arg(app.navigationStatus.dest_dist || "?")
                     .arg(app.navigationStatus.total_dist || "?") : ""
             }
+
             DetailItem {
                 id: timeItem
                 label: qsTranslate("", "Time remaining")
@@ -159,14 +173,20 @@ Page {
                         time.replace(/([^\d ])[^\d ]+/, "$1") : time;
                 }
             }
+
             Spacer {
                 id: spacer2
                 height: 0.5*Theme.paddingLarge
             }
+
         }
+
         model: ListModel {}
+
         VerticalScrollDecorator {}
+
     }
+
     onStatusChanged: {
         if (page.status === PageStatus.Activating) {
             listView.visible = false;
@@ -181,6 +201,7 @@ Page {
             listView.visible = true;
         }
     }
+
     function populate() {
         // Load narrative from the Python backend.
         var args = [map.center.longitude, map.center.latitude];
@@ -189,6 +210,7 @@ Page {
                 listView.model.append(maneuvers[i]);
         });
     }
+
     function scrollToActive() {
         // Scroll view to the active maneuver.
         for (var i = 0; i < listView.model.count; i++) {
@@ -196,4 +218,5 @@ Page {
                 listView.positionViewAtIndex(i, ListView.Center);
         }
     }
+
 }

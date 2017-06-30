@@ -24,24 +24,29 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
     canNavigateForward: query.length > 0
+
     property var history: []
     property string query: ""
+
     SilicaListView {
         id: listView
         anchors.fill: parent
         // Prevent list items from stealing focus.
         currentIndex: -1
+
         delegate: ListItem {
             id: listItem
             contentHeight: visible ? Theme.itemSizeSmall : 0
             menu: contextMenu
             visible: model.visible
+
             ListItemLabel {
                 anchors.leftMargin: listView.searchField.textLeftMargin
                 color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
                 text: model.text
             }
+
             ContextMenu {
                 id: contextMenu
                 MenuItem {
@@ -53,19 +58,25 @@ Page {
                     }
                 }
             }
+
             ListView.onRemove: animateRemoval(listItem);
+
             onClicked: {
                 page.query = model.place;
                 app.pageStack.navigateForward();
             }
+
         }
+
         header: Column {
             height: header.height + usingButton.height + searchField.height
             width: parent.width
+
             PageHeader {
                 id: header
                 title: qsTranslate("", "Search")
             }
+
             ValueButton {
                 id: usingButton
                 label: qsTranslate("", "Using")
@@ -79,6 +90,7 @@ Page {
                     });
                 }
             }
+
             SearchField {
                 id: searchField
                 placeholderText: qsTranslate("", "Address, landmark, etc.")
@@ -90,12 +102,19 @@ Page {
                     page.filterHistory();
                 }
             }
+
             Component.onCompleted: listView.searchField = searchField;
+
         }
+
         model: ListModel {}
+
         property var searchField: undefined
+
         VerticalScrollDecorator {}
+
     }
+
     onStatusChanged: {
         if (page.status === PageStatus.Activating) {
             page.loadHistory();
@@ -105,6 +124,7 @@ Page {
             resultPage.populated = false;
         }
     }
+
     function filterHistory() {
         // Filter search history for current search field text.
         var query = listView.searchField.text.toLowerCase();
@@ -128,10 +148,12 @@ Page {
         for (var i = found.length; i < listView.count; i++)
             listView.model.setProperty(i, "visible", false);
     }
+
     function loadHistory() {
         // Load search history and preallocate list items.
         page.history = py.evaluate("poor.app.history.places");
         while (listView.model.count < 50)
             listView.model.append({"place": "", "text": "", "visible": false});
     }
+
 }

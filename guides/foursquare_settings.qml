@@ -20,6 +20,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Column {
+
     ComboBox {
         id: closestComboBox
         label: qsTranslate("", "Prefer")
@@ -36,4 +37,5 @@ Column {
             app.conf.set(option, closestComboBox.currentIndex === 0);
         }
     }
+
 }

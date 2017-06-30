@@ -33,6 +33,7 @@ Rectangle {
         1.3*manLabel.height) : 0
 
     z: 500
+
     property string destDist: ""
     property string destTime: ""
     property string icon: ""
@@ -41,6 +42,7 @@ Rectangle {
     property string narrative: ""
     property bool narrativePageSeen: false
     property bool notify: icon || narrative
+
     Label {
         id: manLabel
         anchors.left: iconImage.right
@@ -54,6 +56,7 @@ Rectangle {
         text: block.manDist
         verticalAlignment: Text.AlignBottom
     }
+
     Label {
         id: destLabel
         anchors.baseline: manLabel.baseline
@@ -64,6 +67,7 @@ Rectangle {
         height: manLabel.height
         text: block.destDist
     }
+
     Label {
         id: narrativeLabel
         anchors.left: iconImage.right
@@ -80,6 +84,7 @@ Rectangle {
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
+
     Image {
         id: iconImage
         anchors.left: parent.left
@@ -97,6 +102,7 @@ Rectangle {
             1.7*Theme.iconSizeLarge : Theme.iconSizeLarge
         width: block.notify ? sourceSize.width : 0
     }
+
     MouseArea {
         anchors.fill: parent
         onClicked: {
@@ -104,4 +110,5 @@ Rectangle {
             app.showMenu("NarrativePage.qml");
         }
     }
+
 }
