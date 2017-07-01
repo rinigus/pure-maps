@@ -162,7 +162,7 @@ class TileSource:
                 ConnectionResetError,
                 http.client.BadStatusLine,
             ]
-            if not isinstance(error, broken) or retry == 0:
+            if not isinstance(error, tuple(broken)) or retry == 0:
                 print(url)
                 print("Failed to download tile: {}: {}"
                       .format(error.__class__.__name__, str(error)),
