@@ -133,7 +133,7 @@ class ConfigurationStore(poor.AttrDict):
         for name, value in values.items():
             if isinstance(value, dict):
                 self._register(values[name],
-                               root.setdefault(name, AttrDict()),
+                               root.setdefault(name, poor.AttrDict()),
                                defaults.setdefault(name, {}))
                 continue
             # Do not change values if they already exist.
