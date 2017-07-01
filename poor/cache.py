@@ -74,8 +74,8 @@ def purge_directory(directory, max_age):
         # This shouldn't happen, but just in case it does,
         # let's try to avoid a disaster.
         raise Exception("Refusing to act on $HOME")
-    print("Purging cache >{:3.0f}d for {:22s}..."
-          .format(max_age, repr(basename)), end="")
+    print("Purging cache >{:3.0f}d {:28s}..."
+          .format(max_age, basename), end="")
 
     cutoff = time.time() - max_age * 86400
     total = removed = 0
@@ -100,7 +100,7 @@ def purge_directory(directory, max_age):
         # Fails if the directory is not empty.
         # Fails if the directory is a symlink.
         os.rmdir(directory)
-    print(" {:6d} tiles removed, {:6d} left.".format(removed, total-removed))
+    print(" {:6d} rm, {:6d} left.".format(removed, total-removed))
     if removed > 0:
         # Make sure application doesn't try to use tiles that were allocated
         # before this purge, but whose files have now been removed.
