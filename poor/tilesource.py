@@ -157,7 +157,11 @@ class TileSource:
             connection.close()
             connection = None
             # These probably mean that the connection was broken.
-            broken = (BrokenPipeError, http.client.BadStatusLine)
+            broken = [
+                BrokenPipeError,
+                ConnectionResetError,
+                http.client.BadStatusLine,
+            ]
             if not isinstance(error, broken) or retry == 0:
                 print(url)
                 print("Failed to download tile: {}: {}"
