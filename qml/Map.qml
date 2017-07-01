@@ -324,6 +324,7 @@ Map {
         }
         map.tiles = [];
         py.call_sync("poor.app.tilecollection.clear", []);
+        map.changed = true;
     }
 
     function demoteTiles() {

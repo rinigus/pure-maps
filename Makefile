@@ -119,7 +119,7 @@ pot:
 	 --keyword=qsTranslate:2 \
 	 --add-comments=TRANSLATORS: \
 	 --no-wrap \
-	 */*.qml
+	 */*.qml qml/js/*.js
 	cat */*.json \
 	 | grep '^ *"_' \
 	 | sed 's/: *\("[^"]*"\)/: _(\1)/' \

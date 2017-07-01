@@ -25,6 +25,18 @@
  * http://wiki.openstreetmap.org/wiki/Mercator
  */
 
+function addProperties(items, name, value) {
+    // Assign name to value in-place in all given items.
+    for (var i = 0; i < items.length; i++)
+        items[i][name] = value;
+}
+
+function appendAll(model, items) {
+    // Append all items to model.
+    for (var i = 0; i < items.length; i++)
+        model.append(items[i]);
+}
+
 function deg2rad(deg) {
     // Convert degrees to radians.
     return deg / 180 * Math.PI;
@@ -35,6 +47,15 @@ function eucd(x1, y1, x2, y2) {
     var xd = x2 - x1;
     var yd = y2 - y1;
     return Math.sqrt(xd*xd + yd*yd);
+}
+
+function markDefault(providers, defpid) {
+    // Edit the default provider's name in-place.
+    for (var i = 0; i < providers.length; i++)
+        if (providers[i].pid === defpid)
+            providers[i].name = (qsTranslate("", "%1 (default)")
+                                 .arg(providers[i].name));
+
 }
 
 function median(x) {

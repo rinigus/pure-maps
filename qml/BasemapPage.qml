@@ -20,6 +20,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "."
 
+import "js/util.js" as Util
+
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
@@ -39,32 +41,41 @@ Page {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
-                height: implicitHeight + Theme.paddingMedium
+                height: implicitHeight + topMargin
                 text: model.name
                 verticalAlignment: Text.AlignBottom
+                property real topMargin: (Theme.itemSizeSmall - implicitHeight) / 2
             }
 
             ListItemLabel {
                 id: descriptionLabel
                 anchors.top: nameLabel.bottom
+                anchors.topMargin: visible ? Theme.paddingSmall : 0
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight + 1.5*Theme.paddingMedium
-                text: [
-                    qsTranslate("", "Source: %1").arg(model.source),
-                    model.attribution
-                ].join("\n")
+                height: (visible ? implicitHeight : 0) + nameLabel.topMargin
+                text: visible ? qsTranslate("", "Source: %1").arg(model.source) +
+                    "\n" + model.attribution : ""
+                // Avoid a seemigly irrelevant warning about a binding loop.
+                // QML Label: Binding loop detected for property "_elideText"
+                truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
+                visible: model.show_description
             }
 
             onClicked: {
                 app.hideMenu();
                 map.clearTiles();
                 py.call_sync("poor.app.set_basemap", [model.pid]);
-                map.changed = true;
-                for (var i = 0; i < listView.model.count; i++)
+                for (var i = 0; i < listView.model.count; i++) {
                     listView.model.setProperty(i, "active", false);
-                listView.model.setProperty(model.index, "active", true);
+                    listView.model.setProperty(i, "show_description", false);
+                }
+                model.active = true;
+            }
+
+            onPressAndHold: {
+                model.show_description = !model.show_description;
             }
 
         }
@@ -93,15 +104,12 @@ Page {
         VerticalScrollDecorator {}
 
         Component.onCompleted: {
-            // Load basemap model entries from the Python backend.
-            var defpid = app.conf.getDefault("basemap");
+            // Load basemap model items from the Python backend.
             py.call("poor.util.get_basemaps", [], function(basemaps) {
-                for (var i = 0; i < basemaps.length; i++) {
-                    if (basemaps[i].pid === defpid)
-                        basemaps[i].name = qsTranslate("", "%1 (default)").arg(basemaps[i].name);
-                    basemaps[i].visible = true;
-                    listView.model.append(basemaps[i]);
-                }
+                Util.markDefault(basemaps, app.conf.getDefault("basemap"));
+                Util.addProperties(basemaps, "show_description", false);
+                Util.addProperties(basemaps, "visible", false);
+                Util.appendAll(listView.model, basemaps);
                 page.filterBasemaps();
             });
         }
@@ -115,13 +123,14 @@ Page {
 
     function filterBasemaps() {
         // Show only basemaps that match the scale filter.
-        var filter = app.conf.get("basemap_filter");
+        var filter = app.conf.get("basemap_filter"), item;
         for (var i = 0; i < listView.count; i++) {
-            var visible = listView.model.get(i).name.indexOf(filter) > -1;
-            listView.model.setProperty(i, "visible", visible);
+            item = listView.model.get(i);
+            item.visible = item.name.indexOf(filter) > -1;
         }
         page.title = filter.length > 0 ?
-            qsTranslate("", "Basemaps %1").arg(filter) : qsTranslate("", "Basemaps");
+            qsTranslate("", "Basemaps %1").arg(filter) :
+            qsTranslate("", "Basemaps");
     }
 
     function setFilter(value) {

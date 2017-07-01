@@ -52,7 +52,6 @@ Page {
                     overlaySwitch.checked ?
                         py.call_sync("poor.app.add_overlays", [model.pid]) :
                         py.call_sync("poor.app.remove_overlays", [model.pid]);
-                    map.changed = true;
                 }
             }
 

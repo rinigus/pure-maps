@@ -45,11 +45,8 @@ Page {
                     var value = downloadTilesItem.checked
                     if (value === app.conf.get("allow_tile_download")) return;
                     app.conf.set("allow_tile_download", value);
-                    if (value) {
-                        // Clear tiles to ensure no logo tiles remain.
-                        map.clearTiles();
-                        map.changed = true;
-                    }
+                    // Clear tiles to ensure no logo tiles remain.
+                    value && map.clearTiles();
                 }
             }
 
