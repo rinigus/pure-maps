@@ -20,6 +20,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "."
 
+import "js/util.js" as Util
+
 Dialog {
     id: dialog
     allowedOrientations: app.defaultAllowedOrientations
@@ -32,36 +34,52 @@ Dialog {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: nameLabel.height + descriptionLabel.height
+            contentHeight: nameLabel.height + descriptionLabel.height + attributionLabel.height
 
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
-                height: implicitHeight + Theme.paddingMedium
+                height: implicitHeight + topMargin
                 text: model.name
                 verticalAlignment: Text.AlignBottom
+                property real topMargin: (Theme.itemSizeSmall - implicitHeight) / 2
             }
 
             ListItemLabel {
                 id: descriptionLabel
                 anchors.top: nameLabel.bottom
+                anchors.topMargin: Theme.paddingSmall
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight + 1.5*Theme.paddingMedium
-                text: [
-                    model.description,
-                    qsTranslate("", "Modes: %1").arg(model.modes),
-                    qsTranslate("", "Source: %1").arg(model.source),
-                    model.attribution
-                ].join("\n")
+                text: model.description + "\n" + qsTranslate("", "Modes: %1").arg(model.modes)
                 verticalAlignment: Text.AlignTop
+                wrapMode: Text.WordWrap
+            }
+
+            ListItemLabel {
+                id: attributionLabel
+                anchors.top: descriptionLabel.bottom
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeExtraSmall
+                height: (visible ? implicitHeight : 0) + nameLabel.topMargin
+                text: visible ? qsTranslate("", "Source: %1").arg(model.source) +
+                    "\n" + model.attribution : ""
+                // Avoid a seemigly irrelevant warning about a binding loop.
+                // QML Label: Binding loop detected for property "_elideText"
+                truncationMode: TruncationMode.None
+                verticalAlignment: Text.AlignTop
+                visible: model.show_attribution
                 wrapMode: Text.WordWrap
             }
 
             onClicked: {
                 dialog.pid = model.pid;
                 dialog.accept();
+            }
+
+            onPressAndHold: {
+                model.show_attribution = !model.show_attribution;
             }
 
         }
@@ -72,14 +90,13 @@ Dialog {
         VerticalScrollDecorator {}
 
         Component.onCompleted: {
-            // Load router model entries from the Python backend.
-            var defpid = app.conf.getDefault("router");
+            // Load router model items from the Python backend.
             py.call("poor.util.get_routers", [], function(routers) {
-                for (var i = 0; i < routers.length; i++) {
-                    if (routers[i].pid === defpid)
-                        routers[i].name = qsTranslate("", "%1 (default)").arg(routers[i].name);
-                    listView.model.append(routers[i]);
-                }
+                Util.markDefault(routers, app.conf.getDefault("router"));
+                Util.addProperties(routers, "show_attribution", false);
+                for (var i = 0; i < routers.length; i++)
+                    routers[i].modes = routers[i].modes.join(", ");
+                Util.appendAll(listView.model, routers);
             });
         }
 

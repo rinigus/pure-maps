@@ -34,7 +34,7 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: visible ? nameLabel.height + descriptionLabel.height : 0
+            contentHeight: visible ? nameLabel.height + attributionLabel.height : 0
             visible: model.visible
 
             ListItemLabel {
@@ -48,7 +48,7 @@ Page {
             }
 
             ListItemLabel {
-                id: descriptionLabel
+                id: attributionLabel
                 anchors.top: nameLabel.bottom
                 anchors.topMargin: visible ? Theme.paddingSmall : 0
                 color: Theme.secondaryColor
@@ -60,7 +60,7 @@ Page {
                 // QML Label: Binding loop detected for property "_elideText"
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
-                visible: model.show_description
+                visible: model.show_attribution
             }
 
             onClicked: {
@@ -69,13 +69,13 @@ Page {
                 py.call_sync("poor.app.set_basemap", [model.pid]);
                 for (var i = 0; i < listView.model.count; i++) {
                     listView.model.setProperty(i, "active", false);
-                    listView.model.setProperty(i, "show_description", false);
+                    listView.model.setProperty(i, "show_attribution", false);
                 }
                 model.active = true;
             }
 
             onPressAndHold: {
-                model.show_description = !model.show_description;
+                model.show_attribution = !model.show_attribution;
             }
 
         }
@@ -107,7 +107,7 @@ Page {
             // Load basemap model items from the Python backend.
             py.call("poor.util.get_basemaps", [], function(basemaps) {
                 Util.markDefault(basemaps, app.conf.getDefault("basemap"));
-                Util.addProperties(basemaps, "show_description", false);
+                Util.addProperties(basemaps, "show_attribution", false);
                 Util.addProperties(basemaps, "visible", false);
                 Util.appendAll(listView.model, basemaps);
                 page.filterBasemaps();

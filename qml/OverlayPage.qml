@@ -20,6 +20,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "."
 
+import "js/util.js" as Util
+
 Page {
     allowedOrientations: app.defaultAllowedOrientations
 
@@ -34,32 +36,22 @@ Page {
             TextSwitch {
                 id: overlaySwitch
                 checked: model.active
-                description: [
-                    qsTranslate("", "Source: %1").arg(model.source),
-                    model.attribution
-                ].join("\n")
+                description: model.show_attribution ?
+                    qsTranslate("", "Source: %1").arg(model.source) +
+                    "\n" + model.attribution : ""
                 text: model.name
                 // Avoid implicit line breaks.
-                width: 3*parent.width
-                property bool ready: false
-                Component.onCompleted: {
-                    overlaySwitch.ready = true;
-                }
+                width: 3 * parent.width
                 onCheckedChanged: {
-                    if (!overlaySwitch.ready) return;
                     app.hideMenu();
                     map.clearTiles();
                     overlaySwitch.checked ?
                         py.call_sync("poor.app.add_overlays", [model.pid]) :
                         py.call_sync("poor.app.remove_overlays", [model.pid]);
                 }
-            }
-
-            OpacityRampEffect {
-                // Try to match Label with TruncationMode.Fade.
-                direction: OpacityRamp.LeftToRight
-                offset: (overlaySwitch.width - overlaySwitch.rightMargin) / overlaySwitch.width
-                sourceItem: overlaySwitch
+                onPressAndHold: {
+                    model.show_attribution = !model.show_attribution;
+                }
             }
 
         }
@@ -73,10 +65,10 @@ Page {
         VerticalScrollDecorator {}
 
         Component.onCompleted: {
-            // Load overlay model entries from the Python backend.
+            // Load overlay model items from the Python backend.
             py.call("poor.util.get_overlays", [], function(overlays) {
-                for (var i = 0; i < overlays.length; i++)
-                    listView.model.append(overlays[i]);
+                Util.addProperties(overlays, "show_attribution", false);
+                Util.appendAll(listView.model, overlays);
             });
         }
 
