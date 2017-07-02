@@ -52,18 +52,19 @@ def nearby(query, near, radius, params):
     url = URL.format(CLIENT_ID=CLIENT_ID, **locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    output = poor.http.get_json(url)
-    results = [dict(title=item["venue"]["name"],
-                    description=parse_description(item),
-                    text=parse_text(item),
-                    link=parse_link(item),
-                    x=float(item["venue"]["location"]["lng"]),
-                    y=float(item["venue"]["location"]["lat"]),
-                    ) for item in
-               itertools.chain.from_iterable(
-                   group["items"] for group in
-                   output["response"].get("groups", []))]
-
+    results = poor.http.get_json(url)
+    results = poor.AttrDict(results)
+    results = [dict(
+        title=item.venue.name,
+        description=parse_description(item),
+        text=parse_text(item),
+        link=parse_link(item),
+        x=float(item.venue.location.lng),
+        y=float(item.venue.location.lat),
+    ) for item in itertools.chain.from_iterable(
+        group["items"] for group in
+        results.response.get("groups", [])
+    )]
     if results and results[0]:
         cache[url] = copy.deepcopy((x, y, results))
     return x, y, results
@@ -72,46 +73,45 @@ def parse_description(item):
     """Parse description from search result `item`."""
     description = []
     with poor.util.silent(Exception):
-        rating = float(item["venue"]["rating"])
+        rating = float(item.venue.rating)
         description.append("{:.1f}/10".format(rating))
     with poor.util.silent(Exception):
-        description.append(item["venue"]["categories"][0]["name"])
+        description.append(item.venue.categories[0].name)
     with poor.util.silent(Exception):
-        description.append(item["venue"]["location"]["address"])
+        description.append(item.venue.location.address)
     description = ", ".join(description)
     with poor.util.silent(Exception):
-        quote = item["tips"][0]["text"]
-        description += "\n“{}”".format(quote)
+        description += "\n“{}”".format(item.tips[0].text)
     return description
 
 def parse_link(item):
     """Parse hyperlink from search result `item`."""
     return ("http://foursquare.com/v/{}?ref={}"
-            .format(item["venue"]["id"], CLIENT_ID))
+            .format(item.venue.id, CLIENT_ID))
 
 def parse_text(item):
     """Parse blurb text from search result `item`."""
     lines = []
     with poor.util.silent(Exception):
-        name = html.escape(item["venue"]["name"])
         lines.append('<font color="Theme.highlightColor">'
-                     '<big>{}</big></font>'
-                     .format(name))
+                     '<big>{}</big>'
+                     '</font>'
+                     .format(html.escape(item.venue.name)))
 
     subtitle = []
     with poor.util.silent(Exception):
-        rating = float(item["venue"]["rating"])
         subtitle.append('<font color="Theme.highlightColor">'
-                        '<big>{:.1f}</big></font>'
+                        '<big>{:.1f}</big>'
+                        '</font>'
                         '<small>&nbsp;/&nbsp;10</small>'
-                        .format(rating))
+                        .format(float(item.venue.rating)))
 
     with poor.util.silent(Exception):
-        category = html.escape(item["venue"]["categories"][0]["name"])
+        category = html.escape(item.venue.categories[0].name)
         subtitle.append("<small>{}</small>".format(category))
     lines.append("&nbsp;&nbsp;".join(subtitle))
     with poor.util.silent(Exception):
-        quote = html.escape(item["tips"][0]["text"])
+        quote = html.escape(item.tips[0].text)
         lines.append("<small>“{}”</small>".format(quote))
     return "<br>".join(lines)
 

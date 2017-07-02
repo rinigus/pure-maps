@@ -1,5 +1,5 @@
 {
-    "attribution": "Data © OpenStreetMap",
+    "attribution": "Data © OpenStreetMap contributors",
     "_description": "Points of interest from OpenStreetMap data",
     "name": "OSM Scout",
     "requires": ["harbour-osmscout-server"],

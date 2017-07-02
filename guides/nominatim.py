@@ -65,20 +65,20 @@ def nearby(query, near, radius, params):
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)
-    results = [dict(title=parse_title(result),
-                    description=parse_description(result),
-                    x=float(result["lon"]),
-                    y=float(result["lat"]),
-                    ) for result in results]
-
+    results = list(map(poor.AttrDict, results))
+    results = [dict(
+        title=parse_title(result),
+        description=parse_description(result),
+        x=float(result.lon),
+        y=float(result.lat),
+    ) for result in results]
     if results and results[0]:
         results = poor.util.sorted_by_distance(results, x, y)
         cache[url] = copy.deepcopy((x, y, results))
     return x, y, results
 
-def parse_address(result):
+def parse_address(address):
     """Parse address from search result."""
-    address = result["address"]
     items = []
     # http://help.openstreetmap.org/questions/17072
     append1(items, address, ("road", "pedestrian", "footway", "cycleway"))
@@ -87,9 +87,8 @@ def parse_address(result):
         raise ValueError
     return " ".join(items)
 
-def parse_city(result):
+def parse_city(address):
     """Parse city from search result."""
-    address = result["address"]
     items = []
     # http://wiki.openstreetmap.org/wiki/Key:place
     append1(items, address, ("borough", "suburb", "quarter", "neighbourhood"))
@@ -102,9 +101,9 @@ def parse_description(result):
     """Parse description from search result."""
     items = []
     with poor.util.silent(Exception):
-        items.append(parse_address(result))
+        items.append(parse_address(result.address))
     with poor.util.silent(Exception):
-        items.extend(parse_city(result))
+        items.extend(parse_city(result.address))
     title = parse_title(result)
     while items and title.startswith(items[0]):
         del items[0]
@@ -114,15 +113,15 @@ def parse_description(result):
 
 def parse_title(result):
     """Parse title from search result."""
-    address = result["address"]
+    address = result.address
     with poor.util.silent(Exception):
-        return address[result["type"]]
+        return address[result.type]
     with poor.util.silent(Exception):
         return address[result["class"]]
     with poor.util.silent(Exception):
         return parse_address(result)
     with poor.util.silent(Exception):
-        names = result["display_name"].split(", ")
+        names = result.display_name.split(", ")
         end = (2 if names[0].isdigit() else 1)
         return ", ".join(names[:end])
     return "—"
