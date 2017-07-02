@@ -41,5 +41,4 @@ the Python interpreter or a test script, e.g.
 >>> guide.nearby("restaurant", "erottaja, helsinki", 1000)
 ```
 
-and qmlscene (`/usr/lib/qt5/bin/qmlscene qml/poor-maps.qml`) for
-testing.
+and qmlscene (`qmlscene qml/poor-maps.qml`) for testing.

@@ -38,12 +38,13 @@ def geocode(query, params):
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)["features"]
-    results = [dict(title=parse_title(result),
-                    description=parse_description(result),
-                    x=float(result["geometry"]["coordinates"][0]),
-                    y=float(result["geometry"]["coordinates"][1]),
-                    ) for result in results]
-
+    results = list(map(poor.AttrDict, results))
+    results = [dict(
+        title=parse_title(result),
+        description=parse_description(result),
+        x=float(result.geometry.coordinates[0]),
+        y=float(result.geometry.coordinates[1]),
+    ) for result in results]
     if results and results[0]:
         cache[url] = copy.deepcopy(results)
     return results
@@ -52,30 +53,29 @@ def parse_address(props):
     """Parse address from geocoding result properties."""
     items = []
     with poor.util.silent(Exception):
-        items.append(props["street"])
+        items.append(props.street)
     with poor.util.silent(Exception):
-        items.append(props["housenumber"])
+        items.append(props.housenumber)
     if not items:
         raise ValueError
     return " ".join(items)
 
-def parse_components(result):
-    """Parse location components from geocoding result."""
-    props = result["properties"]
+def parse_components(props):
+    """Parse location components from geocoding result properties."""
     items = []
     with poor.util.silent(Exception):
         items.append(parse_address(props))
     with poor.util.silent(Exception):
-        items.append(props["city"])
+        items.append(props.city)
     with poor.util.silent(Exception):
-        items.append(props["state"])
+        items.append(props.state)
     with poor.util.silent(Exception):
-        items.append(props["country"])
+        items.append(props.country)
     return items
 
 def parse_description(result):
     """Parse description from geocoding result."""
-    description = parse_components(result)
+    description = parse_components(result.properties)
     if description[0] == parse_title(result):
         del description[0]
     return ", ".join(description).strip()
@@ -83,5 +83,5 @@ def parse_description(result):
 def parse_title(result):
     """Parse title from geocoding result."""
     with poor.util.silent(KeyError):
-        return result["properties"]["name"]
+        return result.properties.name
     return parse_components(result)[0]

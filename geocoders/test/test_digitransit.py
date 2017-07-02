@@ -25,9 +25,9 @@ class TestModule(poor.test.TestCase):
 
     def test_geocode(self):
         results = self.geocoder.geocode("kasarmitori, helsinki")
-        assert isinstance(results, list)
-        assert len(results) > 0
+        results = list(map(poor.AttrDict, results))
+        assert results
         for result in results:
-            assert result["title"]
-            assert result["x"]
-            assert result["y"]
+            assert result.title
+            assert result.x
+            assert result.y

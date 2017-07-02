@@ -60,5 +60,4 @@ the Python interpreter or a test script, e.g.
 >>> router.route("erottaja, helsinki", "tapiola, espoo")
 ```
 
-and qmlscene (`/usr/lib/qt5/bin/qmlscene qml/poor-maps.qml`) for
-testing.
+and qmlscene (`qmlscene qml/poor-maps.qml`) for testing.

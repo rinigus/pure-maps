@@ -44,12 +44,13 @@ def geocode(query, params):
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)["results"]
-    results = [dict(title=parse_title(result),
-                    description=parse_description(result),
-                    x=float(result["geometry"]["lng"]),
-                    y=float(result["geometry"]["lat"]),
-                    ) for result in results]
-
+    results = list(map(poor.AttrDict, results))
+    results = [dict(
+        title=parse_title(result),
+        description=parse_description(result),
+        x=float(result.geometry.lng),
+        y=float(result.geometry.lat),
+    ) for result in results]
     if results and results[0]:
         cache[url] = copy.deepcopy(results)
     return results
@@ -57,7 +58,7 @@ def geocode(query, params):
 def parse_description(result):
     """Parse description from geocoding result."""
     title = parse_title(result)
-    description = result["formatted"]
+    description = result.formatted
     if description.startswith(title):
         description = description[len(title):]
     return re.sub("^[, ]+", "", description)
@@ -65,6 +66,6 @@ def parse_description(result):
 def parse_title(result):
     """Parse title from geocoding result."""
     with poor.util.silent(KeyError):
-        type = result["components"]["_type"]
-        return result["components"][type]
-    return result["formatted"].split(",")[0]
+        type = result.components._type
+        return result.components[type]
+    return result.formatted.split(",")[0]

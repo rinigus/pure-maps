@@ -36,12 +36,13 @@ def geocode(query, params):
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)
-    results = [dict(title=result["title"],
-                    description=parse_description(result),
-                    x=float(result["lng"]),
-                    y=float(result["lat"]),
-                    ) for result in results]
-
+    results = list(map(poor.AttrDict, results))
+    results = [dict(
+        title=result.title,
+        description=parse_description(result),
+        x=float(result.lng),
+        y=float(result.lat),
+    ) for result in results]
     if results and results[0]:
         cache[url] = copy.deepcopy(results)
     return results
@@ -50,10 +51,10 @@ def parse_description(result):
     """Parse description from geocoding result."""
     items = []
     with poor.util.silent(Exception):
-        type = result["type"]
+        type = result.type
         type = type.replace("amenity", "")
         type = type.replace("_", " ").strip()
         items.append(type.capitalize())
     with poor.util.silent(Exception):
-        items.append(result["admin_region"])
+        items.append(result.admin_region)
     return ", ".join(items) or "–"
