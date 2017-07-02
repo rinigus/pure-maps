@@ -1,6 +1,6 @@
 {
     "attribution": "Data © OpenStreetMap and others",
-    "description": "Geocoding using a priority list of providers",
+    "description": "Search using a priority list of providers",
     "hidden": true,
     "name": "Default",
     "source": "Various"

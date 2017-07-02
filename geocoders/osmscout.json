@@ -1,6 +1,6 @@
 {
     "attribution": "Data © OpenStreetMap",
-    "_description": "Geocoding based on OpenStreetMap data",
+    "_description": "Search based on OpenStreetMap data",
     "name": "OSM Scout",
     "requires": ["harbour-osmscout-server"],
     "_source": "OSM Scout offline server"
