@@ -82,9 +82,8 @@ def parse_icon(maneuver):
     if not ICONS: init_icons()
     type, modifier, name = get_maneuver_components(maneuver)
     if type == "roundabout":
-        # XXX: Roundabout modifiers seem bonkers -- let's not
-        # use them and instead rely on the exit numbers in
-        # the narrative, which seems better.
+        # XXX: Roundabout modifiers seem bonkers,
+        # let's use exit numbers in the narrative instead.
         name = "roundabout"
     if name in ICONS: return name
     if type in ICONS: return type
@@ -138,14 +137,15 @@ def route(fm, to, params):
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     result = poor.http.get_json(url)["routes"][0]
-    x, y = poor.util.decode_epl(result["geometry"])
+    result = poor.AttrDict(result)
+    x, y = poor.util.decode_epl(result.geometry)
     maneuvers = [dict(
-        x=float(step["maneuver"]["location"][0]),
-        y=float(step["maneuver"]["location"][1]),
-        icon=parse_icon(step["maneuver"]),
-        narrative=parse_narrative(step["maneuver"], step.get("name", "")),
-        duration=float(step["duration"]),
-    ) for step in result["legs"][0]["steps"]]
+        x=float(step.maneuver.location[0]),
+        y=float(step.maneuver.location[1]),
+        icon=parse_icon(step.maneuver),
+        narrative=parse_narrative(step.maneuver, step.get("name", "")),
+        duration=float(step.duration),
+    ) for step in result.legs[0].steps]
     route = dict(x=x, y=y, maneuvers=maneuvers)
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)

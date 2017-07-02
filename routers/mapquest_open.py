@@ -27,25 +27,27 @@ import urllib.parse
 
 CONF_DEFAULTS = {"avoids": [], "type": "fastest"}
 
-ICONS = { 0: "continue",
-          1: "turn-slight-right",
-          2: "turn-right",
-          3: "turn-sharp-right",
-          4: "flag",
-          5: "turn-sharp-left",
-          6: "turn-left",
-          7: "turn-slight-left",
-          8: "uturn",
-          9: "uturn",
-         10: "merge-slight-left",
-         11: "merge-slight-right",
-         12: "off-ramp-slight-right",
-         13: "off-ramp-slight-left",
-         14: "off-ramp-slight-right",
-         15: "off-ramp-slight-left",
-         16: "fork-slight-right",
-         17: "fork-slight-left",
-         18: "fork-straight"}
+ICONS = {
+     0: "continue",
+     1: "turn-slight-right",
+     2: "turn-right",
+     3: "turn-sharp-right",
+     4: "flag",
+     5: "turn-sharp-left",
+     6: "turn-left",
+     7: "turn-slight-left",
+     8: "uturn",
+     9: "uturn",
+    10: "merge-slight-left",
+    11: "merge-slight-right",
+    12: "off-ramp-slight-right",
+    13: "off-ramp-slight-left",
+    14: "off-ramp-slight-right",
+    15: "off-ramp-slight-left",
+    16: "fork-slight-right",
+    17: "fork-slight-left",
+    18: "fork-straight",
+}
 
 SUPPORTED_LOCALES = [
     "en_US",
@@ -95,16 +97,17 @@ def route(fm, to, params):
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     result = poor.http.get_json(url)
-    x, y = poor.util.decode_epl(result["route"]["shape"]["shapePoints"])
+    result = poor.AttrDict(result)
+    x, y = poor.util.decode_epl(result.route.shape.shapePoints)
     maneuvers = []
-    for leg in result["route"]["legs"]:
-        maneuvers.extend(leg["maneuvers"])
+    for leg in result.route.legs:
+        maneuvers.extend(leg.maneuvers)
     maneuvers = [dict(
-        x=float(maneuver["startPoint"]["lng"]),
-        y=float(maneuver["startPoint"]["lat"]),
-        icon=ICONS.get(maneuver["turnType"], "flag"),
-        narrative=maneuver["narrative"],
-        duration=float(maneuver["time"]),
+        x=float(maneuver.startPoint.lng),
+        y=float(maneuver.startPoint.lat),
+        icon=ICONS.get(maneuver.turnType, "flag"),
+        narrative=maneuver.narrative,
+        duration=float(maneuver.time),
     ) for maneuver in maneuvers]
     if len(maneuvers) > 1:
         maneuvers[ 0]["icon"] = "depart"

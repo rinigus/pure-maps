@@ -29,43 +29,44 @@ import urllib.parse
 
 CONF_DEFAULTS = {"type": "auto"}
 
-ICONS = { 0: "flag",
-          1: "depart",
-          2: "depart-right",
-          3: "depart-left",
-          4: "arrive",
-          5: "arrive-right",
-          6: "arrive-left",
-          7: "continue",
-          8: "continue",
-          9: "turn-slight-right",
-         10: "turn-right",
-         11: "turn-sharp-right",
-         12: "uturn",
-         13: "uturn",
-         14: "turn-sharp-left",
-         15: "turn-left",
-         16: "turn-slight-left",
-         17: "continue",
-         18: "off-ramp-slight-right",
-         19: "off-ramp-slight-left",
-         20: "off-ramp-slight-right",
-         21: "off-ramp-slight-left",
-         22: "fork-straight",
-         23: "fork-slight-right",
-         24: "fork-slight-left",
-         25: "merge-slight-left",
-         26: "roundabout",
-         27: "off-ramp-slight-right",
-         28: "ferry",
-         29: "depart",
-         30: "flag",
-         31: "flag",
-         32: "flag",
-         33: "flag",
-         34: "flag",
-         35: "flag",
-         36: "flag",
+ICONS = {
+     0: "flag",
+     1: "depart",
+     2: "depart-right",
+     3: "depart-left",
+     4: "arrive",
+     5: "arrive-right",
+     6: "arrive-left",
+     7: "continue",
+     8: "continue",
+     9: "turn-slight-right",
+    10: "turn-right",
+    11: "turn-sharp-right",
+    12: "uturn",
+    13: "uturn",
+    14: "turn-sharp-left",
+    15: "turn-left",
+    16: "turn-slight-left",
+    17: "continue",
+    18: "off-ramp-slight-right",
+    19: "off-ramp-slight-left",
+    20: "off-ramp-slight-right",
+    21: "off-ramp-slight-left",
+    22: "fork-straight",
+    23: "fork-slight-right",
+    24: "fork-slight-left",
+    25: "merge-slight-left",
+    26: "roundabout",
+    27: "off-ramp-slight-right",
+    28: "ferry",
+    29: "depart",
+    30: "flag",
+    31: "flag",
+    32: "flag",
+    33: "flag",
+    34: "flag",
+    35: "flag",
+    36: "flag",
 }
 
 ICONS_OSMSCOUT = {
@@ -111,21 +112,22 @@ def route(fm, to, params):
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     result = poor.http.get_json(url)
+    result = poor.AttrDict(result)
     if result.get("API version", "") == "libosmscout V1":
         return parse_result_libosmscout(url, result)
     return parse_result_valhalla(url, result)
 
 def parse_result_libosmscout(url, result):
     """Parse and return route from libosmscout engine."""
-    x, y = result["lng"], result["lat"]
+    x, y = result.lng, result.lat
     maneuvers = [dict(
-        x=float(maneuver["lng"]),
-        y=float(maneuver["lat"]),
-        icon=ICONS_OSMSCOUT.get(maneuver.get("type", "flag"), "flag"),
-        narrative=maneuver["instruction"],
-        duration=float(maneuver["time"]),
-        length=float(maneuver["length"]),
-    ) for maneuver in result["maneuvers"]]
+        x=float(maneuver.lng),
+        y=float(maneuver.lat),
+        icon=ICONS_OSMSCOUT.get(maneuver.get("type"), "flag"),
+        narrative=maneuver.instruction,
+        duration=float(maneuver.time),
+        length=float(maneuver.length),
+    ) for maneuver in result.maneuvers]
     route = dict(x=x, y=y, maneuvers=maneuvers, engine="libosmscout")
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
@@ -133,15 +135,15 @@ def parse_result_libosmscout(url, result):
 
 def parse_result_valhalla(url, result):
     """Parse and return route from Valhalla engine."""
-    legs = result["trip"]["legs"][0]
-    x, y = poor.util.decode_epl(legs["shape"], precision=6)
+    legs = result.trip.legs[0]
+    x, y = poor.util.decode_epl(legs.shape, precision=6)
     maneuvers = [dict(
-        x=float(x[maneuver["begin_shape_index"]]),
-        y=float(y[maneuver["begin_shape_index"]]),
-        icon=ICONS.get(maneuver["type"], "flag"),
-        narrative=maneuver["instruction"],
-        duration=float(maneuver["time"]),
-    ) for maneuver in legs["maneuvers"]]
+        x=float(x[maneuver.begin_shape_index]),
+        y=float(y[maneuver.begin_shape_index]),
+        icon=ICONS.get(maneuver.type, "flag"),
+        narrative=maneuver.instruction,
+        duration=float(maneuver.time),
+    ) for maneuver in legs.maneuvers]
     route = dict(x=x, y=y, maneuvers=maneuvers, engine="Valhalla")
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)

@@ -25,7 +25,7 @@ class TestModule(poor.test.TestCase):
 
     def test_geocode(self):
         result = self.router.route("viikki, helsinki", "kontula, helsinki")
-        assert isinstance(result, dict)
-        assert result["maneuvers"]
-        assert result["x"]
-        assert result["y"]
+        result = poor.AttrDict(result)
+        assert result.maneuvers
+        assert result.x
+        assert result.y
