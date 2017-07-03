@@ -1,5 +1,6 @@
-Poor Maps 0.30.1/0.31
-=====================
+Poor Maps 0.31
+==============
 
+* [x] Add city bikes to Digitransit router
 * [x] Add ferry icon for navigation instructions
 * [x] Hide provider attribution behind long tap

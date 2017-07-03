@@ -20,14 +20,17 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../qml"
 
+import "../qml/js/util.js" as Util
+
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
     property bool loading: true
     property bool populated: false
-    property var results: {}
+    property var  results: {}
     property string title: ""
+
     // Column widths to be set based on data.
     property int timeWidth: 0
     property int lineWidth: 0
@@ -36,18 +39,21 @@ Page {
         id: listView
         anchors.fill: parent
 
+        /*
+         * Single alternative route
+         */
+
         delegate: ListItem {
             id: listItem
             contentHeight: titleLabel.height + Theme.paddingMedium + bar.height +
                 Theme.paddingMedium + repeater.height + finalLabel.height + Theme.paddingMedium
-            property var result: page.results[model.alternative-1]
 
-            Label {
+            property real barGap: Math.round(3 * Theme.pixelRatio)
+            property real barMargin: Theme.horizontalPageMargin - barGap
+            property var  result: page.results[model.alternative-1]
+
+            ListItemLabel {
                 id: titleLabel
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight + Theme.paddingMedium
@@ -60,14 +66,18 @@ Page {
             Rectangle {
                 id: bar
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin - 3*Theme.pixelRatio
+                anchors.leftMargin: listItem.barMargin
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin - 3*Theme.pixelRatio
+                anchors.rightMargin: listItem.barMargin
                 anchors.top: titleLabel.bottom
                 anchors.topMargin: Theme.paddingMedium
                 color: "#00000000"
-                height: 0.65*Theme.itemSizeSmall
+                height: 0.65 * Theme.itemSizeSmall
             }
+
+            /*
+             * Table of route legs
+             */
 
             Repeater {
                 id: repeater
@@ -77,20 +87,25 @@ Page {
                 model: listItem.result.legs.length
                 width: parent.width
 
+                /*
+                 * Single route leg
+                 */
+
                 Item {
                     id: row
                     height: timeLabel.height
                     width: parent.width
-                    property var leg: listItem.result.legs[index]
+
+                    property real elapsed: leg.dep_unix - listItem.result.legs[0].dep_unix
+                    property var  leg: listItem.result.legs[index]
 
                     Rectangle {
                         id: barChunk
                         color: leg.color
                         height: bar.height
                         opacity: leg.mode === "WALK" ? 0.7 : 0.85
-                        width: leg.duration/listItem.result.duration * bar.width - 3*Theme.pixelRatio
-                        x: bar.x + (leg.dep_unix - listItem.result.legs[0].dep_unix) /
-                            listItem.result.duration * bar.width + 3*Theme.pixelRatio
+                        width: leg.duration/listItem.result.duration * bar.width - listItem.barGap
+                        x: bar.x + row.elapsed/listItem.result.duration * bar.width + listItem.barGap
                         y: bar.y
                     }
 
@@ -112,10 +127,8 @@ Page {
                         width: page.timeWidth
                         x: parent.x + Theme.horizontalPageMargin
                         y: repeater.y + index * row.height
-                        Component.onCompleted: {
-                            if (timeLabel.implicitWidth > page.timeWidth)
-                                page.timeWidth = timeLabel.implicitWidth;
-                        }
+                        Component.onCompleted: page.timeWidth = Math.max(
+                            page.timeWidth, timeLabel.implicitWidth);
                     }
 
                     Label {
@@ -127,10 +140,8 @@ Page {
                         width: page.lineWidth
                         x: timeLabel.x + page.timeWidth + Theme.paddingMedium
                         y: repeater.y + index * row.height
-                        Component.onCompleted: {
-                            if (lineLabel.implicitWidth > page.lineWidth)
-                                page.lineWidth = lineLabel.implicitWidth;
-                        }
+                        Component.onCompleted: page.lineWidth = Math.max(
+                            page.lineWidth, lineLabel.implicitWidth);
                     }
 
                     Label {
@@ -146,15 +157,14 @@ Page {
                         y: repeater.y + index * row.height
                     }
 
-                    Component.onCompleted: {
-                        repeater.height += row.height;
-                    }
+                    Component.onCompleted: repeater.height += row.height;
 
                 }
 
             }
 
             Label {
+                // Not a real leg, needed to show arrival time.
                 id: finalLabel
                 anchors.top: repeater.bottom
                 height: implicitHeight + Theme.paddingSmall
@@ -163,10 +173,8 @@ Page {
                 verticalAlignment: Text.AlignVCenter
                 width: page.timeWidth
                 x: parent.x + Theme.horizontalPageMargin
-                Component.onCompleted: {
-                    if (finalLabel.implicitWidth > page.timeWidth)
-                        page.timeWidth = finalLabel.implicitWidth;
-                }
+                Component.onCompleted: page.timeWidth = Math.max(
+                    page.timeWidth, finalLabel.implicitWidth);
             }
 
             onClicked: {
@@ -183,6 +191,7 @@ Page {
             }
 
         }
+
         header: PageHeader {
             title: page.title
         }
@@ -230,8 +239,7 @@ Page {
             } else if (results && results.length > 0) {
                 page.title = qsTranslate("", "Results");
                 page.results = results;
-                for (var i = 0; i < results.length; i++)
-                    listView.model.append(results[i]);
+                Util.appendAll(listView.model, results);
             } else {
                 page.title = "";
                 busy.error = qsTranslate("", "No results");

@@ -36,6 +36,7 @@ BODY = re.sub(r"^(\s*)\}", r"\1}}", BODY, flags=re.MULTILINE)
 
 COLORS = {
  "AIRPLANE": "#ed145d",
+  "BICYCLE": "#fab00b",
       "BUS": "#007ac9",
     "FERRY": "#00b9e4",
      "RAIL": "#8c4799",
@@ -45,10 +46,9 @@ COLORS = {
 }
 
 CONF_DEFAULTS = {
+    # See digitransit_settings.qml for all possible values.
     "modes": ["AIRPLANE", "BUS", "FERRY", "RAIL", "SUBWAY", "TRAM", "WALK"],
-    # "default", "least-transfers" or "least-walking"
     "optimize": "default",
-    # "hsl", "waltti" or "finland"
     "region": "hsl",
 }
 
@@ -56,6 +56,7 @@ HEADERS = {"Content-Type": "application/graphql"}
 
 MODE_NAMES = {
  "AIRPLANE": _("airplane"),
+  "BICYCLE": _("bicycle"),
       "BUS": _("bus"),
     "FERRY": _("ferry"),
      "RAIL": _("train"),
@@ -65,12 +66,17 @@ MODE_NAMES = {
 }
 
 NARRATIVE = {
-    "00": _("Walk towards {arr_name}."),
-    "01": _("Board {mode_name} {line_desc} at {dep_name} at {dep_time}."),
-    "09": _("Walk towards {arr_name}."),
-    "10": _("Get off at {dep_name} and walk towards {arr_name}."),
-    "11": _("Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."),
-    "19": _("Get off at {dep_name} and walk towards your destination."),
+    "ww": _("Walk towards {arr_name}."),
+    "wb": _("Get a city bike at {dep_name}."),
+    "wt": _("Board {mode_name} {line_desc} at {dep_name} at {dep_time}."),
+    "wa": _("Walk towards your destination."),
+    "bw": _("Leave the city bike at {dep_name} and walk towards {arr_name}."),
+    "bt": _("Board {mode_name} {line_desc} at {dep_name} at {dep_time}."),
+    "ba": _("Leave the city bike at {dep_name} and walk towards your destination."),
+    "tw": _("Get off at {dep_name} and walk towards {arr_name}."),
+    "tb": _("Get off at {dep_name} and bike towards {arr_name}."),
+    "tt": _("Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."),
+    "ta": _("Get off at {dep_name} and walk towards your destination."),
 }
 
 URL = "http://api.digitransit.fi/routing/v1/routers/{region}/index/graphql"
@@ -110,6 +116,9 @@ def parse_agency(leg):
 
 def parse_line(leg):
     """Parse line number from `leg`."""
+    # We need some kind of a short symbol for city bikes
+    # to be shown in a column of public transport line numbers.
+    if leg.mode == "BICYCLE": return "CB"
     if not leg.route: return ""
     # Return the mode for legs without a short name,
     # e.g. Helsinki metro and long distance buses.
@@ -129,30 +138,31 @@ def parse_maneuvers(route):
     """Parse list of maneuvers from the legs of `route`."""
     if not route.legs: return []
     maneuvers = []
-    prev_vehicle = False
+    prev_mode = "w"
+    modes = dict(WALK="w", BICYCLE="b")
     for i, leg in enumerate(route.legs):
-        this_vehicle = (leg.mode != "WALK")
-        key = "{:d}{:d}".format(int(prev_vehicle), int(this_vehicle))
+        this_mode = modes.get(leg.mode, "t")
+        key = prev_mode + this_mode
         # Handle the last leg differently since OpenTripPlanner
         # gives "Destination" as the destination name.
         if i == len(route.legs) - 1:
-            key = "{}9".format(key[0])
+            key = key[0] + "a"
         narrative = NARRATIVE[key].format(**leg)
-        narrative = re.sub(r"\.{2,}$", ".", narrative)
+        narrative = re.sub(r"\.\.+$", ".", narrative)
         maneuvers.append(poor.AttrDict(
             x=leg.dep_x,
             y=leg.dep_y,
             icon="flag",
             narrative=narrative,
             duration=leg.duration))
-        if this_vehicle:
+        if this_mode == "t":
             # Add intermediate stops as passive maneuver points.
             maneuvers.extend([poor.AttrDict(
                 x=leg.stops_x[i],
                 y=leg.stops_y[i],
                 passive=True,
             ) for i in range(len(leg.stops_x))])
-        prev_vehicle = this_vehicle
+        prev_mode = this_mode
     maneuvers.append(poor.AttrDict(
         x=route.legs[-1].arr_x,
         y=route.legs[-1].arr_y,
@@ -185,7 +195,7 @@ def prepare_endpoint(point):
     if isinstance(point, (list, tuple)):
         return "{{lat: {:.6f}, lon: {:.6f}}}".format(point[1], point[0])
     geocoder = poor.Geocoder("digitransit")
-    # XXX: limit=1 sometimes returns no results.
+    # XXX: limit=1 sometimes returns no results!?
     results = geocoder.geocode(point, dict(limit=3))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
@@ -206,7 +216,7 @@ def route(fm, to, params):
     walk_reluctance = (10 if optimize == "least-walking" else None)
     body = BODY.format(**locals())
     body = re.sub(r"^.*\bNone\b.*$", "", body, flags=re.MULTILINE)
-    body = "\n".join([x for x in body.splitlines() if x])
+    body = "\n".join(x for x in body.splitlines() if x)
     result = poor.http.post_json(url, body, headers=HEADERS)
     result = poor.AttrDict(result)
     itineraries = result.data.plan.itineraries

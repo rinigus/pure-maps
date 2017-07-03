@@ -42,9 +42,17 @@ Column {
         }
     }
 
+    /*
+     * Depart/Arrive, Date, Time
+     */
+
     Item {
         height: Theme.itemSizeSmall
         width: parent.width
+
+        /*
+         * Depart/Arrive
+         */
 
         BackgroundItem {
             id: bindItem
@@ -77,12 +85,16 @@ Column {
 
         }
 
+        /*
+         * Date
+         */
+
         BackgroundItem {
             id: dateItem
             anchors.left: bindItem.right
             anchors.top: parent.top
             height: parent.height
-            width: dateLabel.width + 2*Theme.paddingMedium
+            width: dateLabel.width + 2 * Theme.paddingMedium
 
             property var date: new Date()
 
@@ -97,10 +109,9 @@ Column {
             }
 
             onClicked: {
-                var dialog = pageStack.push(
-                    "Sailfish.Silica.DatePickerDialog", {
-                        date: dateItem.date
-                    });
+                var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {
+                    "date": dateItem.date
+                });
                 dialog.accepted.connect(function() {
                     dateItem.date = dialog.date;
                     dateLabel.text = dialog.dateText;
@@ -117,12 +128,16 @@ Column {
 
         }
 
+        /*
+         * Time
+         */
+
         BackgroundItem {
             id: timeItem
             anchors.left: dateItem.right
             anchors.top: parent.top
             height: parent.height
-            width: timeLabel.width + 2*Theme.paddingMedium
+            width: timeLabel.width + 2 * Theme.paddingMedium
 
             property var time: new Date()
 
@@ -137,12 +152,11 @@ Column {
             }
 
             onClicked: {
-                var dialog = pageStack.push(
-                    "Sailfish.Silica.TimePickerDialog", {
-                        "hourMode": DateTime.TwentyFourHours,
-                        "hour": timeItem.time.getHours(),
-                        "minute": timeItem.time.getMinutes()
-                    });
+                var dialog = pageStack.push("Sailfish.Silica.TimePickerDialog", {
+                    "hourMode": DateTime.TwentyFourHours,
+                    "hour": timeItem.time.getHours(),
+                    "minute": timeItem.time.getMinutes()
+                });
                 dialog.accepted.connect(function() {
                     timeItem.time = dialog.time;
                     timeLabel.text = dialog.timeText;
@@ -180,8 +194,12 @@ Column {
     }
 
     Spacer {
-        height: 1.25*Theme.paddingLarge
+        height: 1.25 * Theme.paddingLarge
     }
+
+    /*
+     * Vehicle type toggle buttons
+     */
 
     Grid {
         id: modeGrid
@@ -191,7 +209,7 @@ Column {
         anchors.rightMargin: Theme.horizontalPageMargin
         columns: {
             // Use a dynamic column count based on available screen width.
-            var width = parent.width - 2*Theme.horizontalPageMargin;
+            var width = parent.width - 2 * Theme.horizontalPageMargin;
             var cellWidth = busButton.width + spacing;
             return Math.floor(width/cellWidth);
         }
@@ -259,6 +277,20 @@ Column {
             Component.onCompleted: ferryButton.checked =
                 app.conf.contains(modeGrid.option, "FERRY");
             onClicked: modeGrid.toggle(ferryButton, "FERRY");
+        }
+
+        IconButton {
+            id: citybikeButton
+            height: icon.sourceSize.height
+            icon.opacity: checked ? 0.9 : 0.3
+            icon.source: app.getIcon("digitransit/citybike")
+            // Only visible in HSL region routing.
+            visible: regionComboBox.currentIndex == 0
+            width: icon.sourceSize.width
+            property bool checked: false
+            Component.onCompleted: citybikeButton.checked =
+                app.conf.contains(modeGrid.option, "BICYCLE_RENT");
+            onClicked: modeGrid.toggle(citybikeButton, "BICYCLE_RENT");
         }
 
         IconButton {
