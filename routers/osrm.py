@@ -147,6 +147,7 @@ def route(fm, to, params):
         duration=float(step.duration),
     ) for step in result.legs[0].steps]
     route = dict(x=x, y=y, maneuvers=maneuvers)
+    route["attribution"] = poor.util.get_routing_attribution("OSRM")
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route

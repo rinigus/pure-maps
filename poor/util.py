@@ -311,6 +311,13 @@ def get_routers():
     """Return a list of dictionaries of router attributes."""
     return _get_providers("routers", poor.conf.router)
 
+def get_routing_attribution(service, engine=None):
+    """Return translated routing attribution string."""
+    if engine is None:
+        return _("Routing courtesy of {}.").format(service)
+    return (_("Routing by {engine}, courtesy of {service}.")
+            .format(engine=engine, service=service))
+
 def get_tilesources():
     """Return a list of dictionaries of tilesource attributes."""
     return _get_providers("tilesources")

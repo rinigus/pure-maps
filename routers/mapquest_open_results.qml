@@ -53,7 +53,7 @@ Page {
                     "x": route.x,
                     "y": route.y,
                     "mode": "car",
-                    "attribution": qsTranslate("", "Routing courtesy of %1.").arg("MapQuest")
+                    "attribution": route.attribution
                 });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();

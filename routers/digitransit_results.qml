@@ -183,7 +183,7 @@ Page {
                     "x": listItem.result.x,
                     "y": listItem.result.y,
                     "mode": "transit",
-                    "attribution": qsTranslate("", "Routing courtesy of %1.").arg("Digitransit")
+                    "attribution": listItem.result.attribution
                 });
                 map.hidePoiBubbles();
                 map.fitViewToRoute();

@@ -113,6 +113,7 @@ def route(fm, to, params):
         maneuvers[ 0]["icon"] = "depart"
         maneuvers[-1]["icon"] = "arrive"
     route = dict(x=x, y=y, maneuvers=maneuvers)
+    route["attribution"] = poor.util.get_routing_attribution("MapQuest")
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route
