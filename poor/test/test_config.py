@@ -64,13 +64,6 @@ class TestConfigurationStore(poor.test.TestCase):
         poor.conf._migrate(dict(version="3.33.3"))
         poor.conf._migrate(dict(version="3.33.3.3"))
 
-    def test_migrate__cache_max_age(self):
-        # cache_max_age added in 0.14, default value dropped to 30 in 0.18.
-        # Upgrading from < 0.14 to >= 0.18 should set the old implicit
-        # default of never removing tiles, valued as 36500.
-        values = poor.conf._migrate(dict(version="0.13"))
-        assert values["cache_max_age"] == 36500
-
     def test_read(self):
         poor.conf.zoom = 99
         poor.conf.write(self.path)
@@ -89,15 +82,15 @@ class TestConfigurationStore(poor.test.TestCase):
         assert poor.conf.foo.bar == 2
 
     def test_register_router(self):
-        poor.conf.register_router("foo", {"type": "car"})
+        poor.conf.register_router("foo", dict(type="car"))
         assert poor.conf.routers.foo.type == "car"
         assert poor.conf.get_default("routers.foo.type") == "car"
 
     def test_register_router__again(self):
         # Subsequent calls should not change values.
-        poor.conf.register_router("foo", {"type": "car"})
+        poor.conf.register_router("foo", dict(type="car"))
         poor.conf.routers.foo.type = "bicycle"
-        poor.conf.register_router("foo", {"type": "car"})
+        poor.conf.register_router("foo", dict(type="car"))
         assert poor.conf.routers.foo.type == "bicycle"
         assert poor.conf.get_default("routers.foo.type") == "car"
 
@@ -114,14 +107,6 @@ class TestConfigurationStore(poor.test.TestCase):
     def test_set__nested(self):
         poor.conf.set("foo.bar", 1)
         assert poor.conf.foo.bar == 1
-
-    def test_uncomment(self):
-        # Prior to 0.18 options at default value were commented out.
-        # Uncomment these to avoid disruptive changes.
-        values = {"# cache_max_age": 36500}
-        values = poor.conf._uncomment(values)
-        assert values["cache_max_age"] == 36500
-        assert len(list(values.keys())) == 1
 
     def test_write(self):
         poor.conf.zoom = 99

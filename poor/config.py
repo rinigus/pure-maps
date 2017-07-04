@@ -96,17 +96,12 @@ class ConfigurationStore(poor.AttrDict):
         except Exception:
             # XXX: Run all migrations if version malformed?
             traceback.print_exc()
-            version = (0,0)
-        if version < (0,14):
-            # cache_max_age added in 0.14, default value dropped to 30 in 0.18.
-            # Upgrading from < 0.14 to >= 0.18 should set the old implicit
-            # default of never removing tiles, valued as 36500.
-            values.setdefault("cache_max_age", 36500)
-        if version < (0,25):
+            version = (0, 0)
+        if version < (0, 25):
             # Impose new default providers introduced in 0.25.
             for option in ("geocoder", "guide", "router"):
                 values[option] = DEFAULTS[option]
-        if version < (0,30):
+        if version < (0, 30):
             # libosmscout and Valhalla routers merged in 0.30.
             # https://github.com/otsaloma/poor-maps/pull/41
             routers = values.setdefault("routers", {})
@@ -122,7 +117,6 @@ class ConfigurationStore(poor.AttrDict):
         with poor.util.silent(Exception, tb=True):
             values = poor.util.read_json(path)
         if not values: return
-        values = self._uncomment(values)
         values = self._migrate(values)
         self._update(values)
 
@@ -141,21 +135,11 @@ class ConfigurationStore(poor.AttrDict):
             defaults.setdefault(name, copy.deepcopy(value))
 
     def register_guide(self, name, values):
-        """
-        Add configuration `values` for guide `name` if missing.
-
-        Calling ``register_guide("foo", {"type": 1})`` will make type
-        available as ``poor.conf.guides.foo.type``.
-        """
+        """Add configuration `values` for guide `name` if missing."""
         self._register({"guides": {name: values}})
 
     def register_router(self, name, values):
-        """
-        Add configuration `values` for router `name` if missing.
-
-        Calling ``register_router("foo", {"type": 1})`` will make type
-        available as ``poor.conf.routers.foo.type``.
-        """
+        """Add configuration `values` for router `name` if missing."""
         self._register({"routers": {name: values}})
 
     def remove(self, option, item):
@@ -179,21 +163,6 @@ class ConfigurationStore(poor.AttrDict):
             root = root[section]
         name = option.split(".")[-1]
         return root, name
-
-    def _uncomment(self, values):
-        """Uncomment names of options in `values`."""
-        # Prior to 0.18 options at default value were commented out.
-        # Uncomment these to avoid disruptive changes.
-        values = copy.deepcopy(values)
-        for name, value in list(values.items()):
-            if name.startswith("#"):
-                del values[name]
-                name = name[1:].strip()
-                if not name in values:
-                    values[name] = value
-            if isinstance(value, dict):
-                values[name] = self._uncomment(value)
-        return values
 
     def _update(self, values, root=None, defaults=None, path=()):
         """Load values of options after validation."""
