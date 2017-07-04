@@ -23,8 +23,7 @@ import poor
 
 def read_maneuvers(path=None):
     """Read a list of maneuvers from JSON file at `path`."""
-    if path is None:
-       path = os.path.join(poor.CONFIG_HOME_DIR, "maneuvers.json")
+    path = path or os.path.join(poor.CONFIG_HOME_DIR, "maneuvers.json")
     if os.path.isfile(path):
         with poor.util.silent(Exception, tb=True):
             return poor.util.read_json(path)
@@ -32,8 +31,7 @@ def read_maneuvers(path=None):
 
 def read_pois(path=None):
     """Read a list of POIs from JSON file at `path`."""
-    if path is None:
-       path = os.path.join(poor.CONFIG_HOME_DIR, "pois.json")
+    path = path or os.path.join(poor.CONFIG_HOME_DIR, "pois.json")
     if os.path.isfile(path):
         with poor.util.silent(Exception, tb=True):
             return poor.util.read_json(path)
@@ -41,8 +39,7 @@ def read_pois(path=None):
 
 def read_route(path=None):
     """Read a route dictionary from JSON file at `path`."""
-    if path is None:
-       path = os.path.join(poor.CONFIG_HOME_DIR, "route.json")
+    path = path or os.path.join(poor.CONFIG_HOME_DIR, "route.json")
     if os.path.isfile(path):
         with poor.util.silent(Exception, tb=True):
             return poor.util.read_json(path)
@@ -50,21 +47,18 @@ def read_route(path=None):
 
 def write_maneuvers(maneuvers, path=None):
     """Write a list of maneuvers to JSON file at `path`."""
-    if path is None:
-       path = os.path.join(poor.CONFIG_HOME_DIR, "maneuvers.json")
+    path = path or os.path.join(poor.CONFIG_HOME_DIR, "maneuvers.json")
     with poor.util.silent(Exception, tb=True):
         poor.util.write_json(maneuvers, path)
 
 def write_pois(pois, path=None):
     """Write a list of POIs to JSON file at `path`."""
-    if path is None:
-       path = os.path.join(poor.CONFIG_HOME_DIR, "pois.json")
+    path = path or os.path.join(poor.CONFIG_HOME_DIR, "pois.json")
     with poor.util.silent(Exception, tb=True):
         poor.util.write_json(pois, path)
 
 def write_route(route, path=None):
     """Write a route dictionary to JSON file at `path`."""
-    if path is None:
-       path = os.path.join(poor.CONFIG_HOME_DIR, "route.json")
+    path = path or os.path.join(poor.CONFIG_HOME_DIR, "route.json")
     with poor.util.silent(Exception, tb=True):
         poor.util.write_json(route, path)

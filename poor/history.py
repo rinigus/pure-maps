@@ -32,9 +32,8 @@ class HistoryManager:
 
     _places_blacklist = ["Current position", _("Current position")]
 
-    def __init__(self, max_size=1000):
+    def __init__(self):
         """Initialize a :class:`HistoryManager` instance."""
-        self._max_size = max_size
         self._place_types = []
         self._places = []
         self._read_place_types()
@@ -105,25 +104,24 @@ class HistoryManager:
     def remove_place(self, place):
         """Remove `place` from the list of places."""
         place = place.strip().lower()
-        for i in list(reversed(range(len(self._places)))):
+        for i in reversed(range(len(self._places))):
             if self._places[i].lower() == place:
                 del self._places[i]
 
     def remove_place_type(self, place_type):
         """Remove `place_type` from the list of place types."""
         place_type = place_type.strip().lower()
-        for i in list(reversed(range(len(self._place_types)))):
+        for i in reversed(range(len(self._place_types))):
             if self._place_types[i].lower() == place_type:
                 del self._place_types[i]
 
     def _write(self, items, basename):
         """Write `items` to file `basename`."""
-        items = items[:self._max_size]
         path = os.path.join(poor.CONFIG_HOME_DIR, basename)
         try:
             poor.util.makedirs(os.path.dirname(path))
             with poor.util.atomic_open(path, "w", encoding="utf_8") as f:
-                f.writelines("\n".join(items) + "\n")
+                f.writelines("\n".join(items[:1000]) + "\n")
         except Exception as error:
             print("Failed to write file '{}': {}"
                   .format(path, str(error)),

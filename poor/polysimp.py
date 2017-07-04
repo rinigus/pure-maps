@@ -100,7 +100,7 @@ def simplify_qml(x, y, tol=None, hq=False, max_length=None, nmax=None):
     """Simplify polyline using Douglas-Peucker and radial distance."""
     # Return a dictionary, since PyOtherSide handles that better.
     x, y = simplify(x, y, tol, hq, max_length, nmax)
-    return {"x": x, "y": y}
+    return dict(x=x, y=y)
 
 def simplify_radial_dist(x, y, tol):
     """Simplify polyline using radial distance."""

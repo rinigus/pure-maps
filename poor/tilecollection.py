@@ -107,7 +107,7 @@ class TileCollection:
                 tile.assign(*props)
                 return tile
         # If no free tile found, grow collection.
-        self._tiles.append(Tile(self.size+1))
+        self._tiles.append(Tile(self.size + 1))
         self._tiles[-1].assign(*props)
         return self._tiles[-1]
 
@@ -115,7 +115,7 @@ class TileCollection:
     def grow(self, size):
         """Grow amount of tiles in collection to `size`."""
         while self.size < size:
-            self._tiles.append(Tile(self.size+1))
+            self._tiles.append(Tile(self.size + 1))
         self._tiles.sort(key=lambda x: x.time)
 
     @property

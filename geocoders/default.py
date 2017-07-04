@@ -36,4 +36,5 @@ def geocode(query, params):
         if results and isinstance(results, list):
             if i > 0: providers.insert(0, providers.pop(i))
             return results
+    # All providers failed.
     return []
