@@ -70,13 +70,14 @@ def purge_directory(directory, max_age):
     directory = os.path.join(poor.CACHE_HOME_DIR, directory)
     directory = os.path.realpath(directory)
     if not os.path.isdir(directory): return
-    if os.path.samefile(os.path.expanduser("~"), directory):
+    if not "poor-maps" in directory:
         # This shouldn't happen, but just in case it does,
         # let's try to avoid a disaster.
-        raise Exception("Refusing to act on $HOME")
+        raise Exception("Suspicious value for cache directory: {}"
+                        .format(repr(directory)))
+
     print("Purging cache >{:3.0f}d {:28s}..."
           .format(max_age, basename), end="")
-
     cutoff = time.time() - max_age * 86400
     total = removed = 0
     # Only follow symlinks for the directory itself, not its children
@@ -100,7 +101,8 @@ def purge_directory(directory, max_age):
         # Fails if the directory is not empty.
         # Fails if the directory is a symlink.
         os.rmdir(directory)
-    print(" {:6d} rm, {:6d} left.".format(removed, total-removed))
+    print(" {:6d} rm, {:6d} left."
+          .format(removed, total-removed))
     if removed > 0:
         # Make sure application doesn't try to use tiles that were allocated
         # before this purge, but whose files have now been removed.
