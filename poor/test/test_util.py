@@ -62,6 +62,12 @@ class TestModule(poor.test.TestCase):
         assert y[1] ==   40.700
         assert y[2] ==   43.252
 
+    def test_find_closest(self):
+        x = [24, 25, 26]
+        y = [60, 61, 62]
+        index = poor.util.find_closest(x, y, 26, 60)
+        assert index == 1
+
     def test_format_distance_american(self):
         assert poor.util.format_distance_american(123, 2) == "120 ft"
         assert poor.util.format_distance_american(6000, 1) == "1 mi"

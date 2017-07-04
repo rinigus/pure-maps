@@ -75,9 +75,8 @@ def calculate_bearing(x1, y1, x2, y2):
     # http://www.movable-type.co.uk/scripts/latlong.html
     x1, y1, x2, y2 = map(math.radians, (x1, y1, x2, y2))
     x = (math.cos(y1) * math.sin(y2) -
-         math.sin(y1) * math.cos(y2) * math.cos(x2-x1))
-
-    y = math.sin(x2-x1) * math.cos(y2)
+         math.sin(y1) * math.cos(y2) * math.cos(x2 - x1))
+    y = math.sin(x2 - x1) * math.cos(y2)
     bearing = math.degrees(math.atan2(y, x))
     return (bearing + 360) % 360
 
@@ -95,8 +94,8 @@ def calculate_segment_distance(x, y, x1, y1, x2, y2):
     """Calculate distance in meters from point to segment."""
     # This is not exactly correct, but maybe close enough,
     # given sufficiently short segments.
-    med_dist_deg = math.sqrt((x - (x1+x2)/2)**2 + (y - (y1+y2)/2)**2)
-    med_dist_m = calculate_distance(x, y, (x1+x2)/2, (y1+y2)/2)
+    med_dist_deg = math.sqrt((x - (x1 + x2)/2)**2 + (y - (y1 + y2)/2)**2)
+    med_dist_m = calculate_distance(x, y, (x1 + x2)/2, (y1 + y2)/2)
     seg_dist_deg = math.sqrt(poor.polysimp.get_sq_seg_dist(x, y, x1, y1, x2, y2))
     return seg_dist_deg * (med_dist_m / med_dist_deg)
 
@@ -149,6 +148,19 @@ def decode_epl(string, precision=5):
         yout.append(y / 10**precision)
     return xout, yout
 
+def find_closest(x, y, cx, cy, subset=None):
+    """Return index of the item closest to `cx`, `cy`."""
+    # This is not exactly correct, but should be significantly
+    # faster than using the haversine formula.
+    min_index = 0
+    min_dist = 360**2
+    for i in subset or range(len(x)):
+        dist = (x[i] - cx)**2 + (y[i] - cy)**2
+        if dist < min_dist:
+            min_index = i
+            min_dist = dist
+    return min_index
+
 def format_distance(meters, n=2):
     """Format `meters` to `n` significant digits and unit label."""
     if poor.conf.units == "american":
@@ -162,7 +174,7 @@ def format_distance(meters, n=2):
 def format_distance_american(feet, n=2):
     """Format `feet` to `n` significant digits and unit label."""
     if (n > 1 and feet >= 1000) or feet >= 5280:
-        distance = feet/5280
+        distance = feet / 5280
         units = "mi"
     else:
         # Let's not use units less than a foot.
@@ -178,7 +190,7 @@ def format_distance_american(feet, n=2):
 def format_distance_british(yards, n=2):
     """Format `yards` to `n` significant digits and unit label."""
     if (n > 1 and yards >= 400) or yards >= 1760:
-        distance = yards/1760
+        distance = yards / 1760
         units = "mi"
     else:
         # Let's not use units less than a yard.
@@ -194,7 +206,7 @@ def format_distance_british(yards, n=2):
 def format_distance_metric(meters, n=2):
     """Format `meters` to `n` significant digits and unit label."""
     if meters >= 1000:
-        distance = meters/1000
+        distance = meters / 1000
         units = "km"
     else:
         # Let's not use units less than a meter.
@@ -212,7 +224,7 @@ def format_distance_and_bearing(meters, bearing, n=2):
     distance = format_distance(meters, n)
     f = lambda x: x.format(distance=distance)
     bearing = (bearing + 360) % 360
-    bearing = int(round(bearing/45)*45)
+    bearing = int(round(bearing/45) * 45)
     if bearing ==   0: return f(_("{distance} north"))
     if bearing ==  45: return f(_("{distance} north-east"))
     if bearing ==  90: return f(_("{distance} east"))
@@ -222,17 +234,16 @@ def format_distance_and_bearing(meters, bearing, n=2):
     if bearing == 270: return f(_("{distance} west"))
     if bearing == 315: return f(_("{distance} north-west"))
     if bearing == 360: return f(_("{distance} north"))
-    raise ValueError("Unexpected bearing: {}"
-                     .format(repr(bearing)))
+    raise ValueError("Unexpected bearing: {}".format(repr(bearing)))
 
 def format_filesize(bytes, n=2):
     """Format `bytes` to `n` significant digits and unit label."""
     if bytes > 1024**3:
-        size = bytes/1024**3
+        size = bytes / 1024**3
         units = "GB"
     else:
         # Let's not use units less than a megabyte.
-        size = bytes/1024**2
+        size = bytes / 1024**2
         units = "MB"
     ndigits = n - math.ceil(math.log10(abs(max(1, size)) + 1/1000000))
     if units == "MB":
@@ -296,14 +307,13 @@ def _get_providers(directory, *active):
             pid = os.path.basename(path).replace(".json", "")
             # Local definitions override global ones.
             if pid in (x["pid"] for x in providers): continue
-            with silent(Exception, tb=True):
-                provider = read_json(path)
-                provider["pid"] = pid
-                provider["active"] = pid in active
-                requires = provider.get("requires", [])
-                if (not provider.get("hidden", False) and
-                    all(requirement_found(x) for x in requires)):
-                    providers.append(provider)
+            provider = read_json(path)
+            if provider.get("hidden", False): continue
+            requires = provider.get("requires", [])
+            if not all(map(requirement_found, requires)): continue
+            provider["pid"] = pid
+            provider["active"] = pid in active
+            providers.append(provider)
     providers.sort(key=lambda x: x["name"])
     return providers
 
@@ -342,6 +352,7 @@ def makedirs(directory):
     try:
         os.makedirs(directory)
     except OSError as error:
+        # Check again, in case another thread succeeded.
         if os.path.isdir(directory):
             return directory
         print("Failed to create directory {}: {}"
