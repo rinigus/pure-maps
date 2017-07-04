@@ -34,9 +34,9 @@ class Application:
     """An application to display maps and stuff."""
 
     def __init__(self):
-        """Initialize a :class:`Application` instance."""
+        """Initialize an :class:`Application` instance."""
         self.basemap = None
-        self._bbox = (-1,-1,-1,-1)
+        self._bbox = [-1, -1, -1, -1]
         self._download_queue = {}
         self.geocoder = None
         self.guide = None
@@ -45,7 +45,7 @@ class Application:
         self.overlays = []
         self.router = None
         self.tilecollection = poor.TileCollection()
-        self._timestamp = int(time.time()*1000)
+        self._timestamp = int(time.time() * 1000)
         self.set_basemap(poor.conf.basemap)
         self.add_overlays(*poor.conf.overlays)
         self.set_geocoder(poor.conf.geocoder)
@@ -78,17 +78,15 @@ class Application:
         """Return download queue for tile source `id`."""
         with poor.util.silent(KeyError):
             return self._download_queue[id]
-        if create:
-            self._download_queue[id] = queue.Queue()
-            # Initialize threads to clear the queue.
-            # tilesource's connection pool limits the actual amount
-            # of connections per host. This thread count should
-            # just be greater than or equal to that.
-            for i in range(4):
-                target = self._process_download_queue
-                threading.Thread(target=target, args=(id,), daemon=True).start()
-            return self._download_queue[id]
-        return None
+        if not create: return None
+        self._download_queue[id] = queue.Queue()
+        # Initialize threads to process the queue. tilesource's own connection
+        # pool limits the actual total amount of connections per host. This
+        # thread count should just be greater than or equal to that.
+        for i in range(4):
+            target = self._process_download_queue
+            threading.Thread(target=target, args=(id,), daemon=True).start()
+        return self._download_queue[id]
 
     def _process_download_queue(self, id):
         """Monitor download queue of `id` and feed items for update."""
@@ -190,7 +188,7 @@ class Application:
             return pyotherside.send("show-tile", item.uid)
         path = tilesource.download(tile)
         if path is None: return
-        uri = (poor.util.path2uri(path) if os.path.isabs(path) else path)
+        uri = poor.util.path2uri(path) if os.path.isabs(path) else path
         corners = tilesource.tile_corners(tile)
         xmin, xmax, ymin, ymax = self._bbox
         # Abort if map moved so that tile is no longer in view.
@@ -214,12 +212,12 @@ class Application:
     def update_tiles(self, xmin, xmax, ymin, ymax, zoom, scale_factor):
         """Download missing tiles and ask QML to render them."""
         self.tilecollection.sort()
-        self._bbox = (xmin, xmax, ymin, ymax)
-        self._timestamp = int(time.time()*1000)
+        self._bbox = [xmin, xmax, ymin, ymax]
+        self._timestamp = int(time.time() * 1000)
         total_tiles = 0
         for tilesource in [self.basemap] + self.overlays:
             # For scales above one, get tile from a lower zoom level.
-            tile_zoom = int(zoom - math.log2(scale_factor*tilesource.scale))
+            tile_zoom = int(zoom - math.log2(scale_factor * tilesource.scale))
             download_queue = self._get_download_queue(tilesource.id, create=True)
             for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, tile_zoom):
                 args = (tilesource, tile_zoom, zoom, scale_factor, tile)
