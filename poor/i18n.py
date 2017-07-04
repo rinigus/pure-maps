@@ -30,11 +30,3 @@ _translation = gettext.translation(
 def _(message):
     """Return the localized translation of `message`."""
     return _translation.gettext(message)
-
-def d_(domain, message):
-    """Return the localized translation of `message` from `domain`."""
-    return gettext.dgettext(domain, message)
-
-def n_(singular, plural, n):
-    """Return the localized translation of `singular` or `plural`."""
-    return _translation.ngettext(singular, plural, n)
