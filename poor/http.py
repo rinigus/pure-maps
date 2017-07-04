@@ -26,8 +26,16 @@ import sys
 import threading
 import urllib.parse
 
-HEADERS = {"Connection": "Keep-Alive",
-           "User-Agent": "poor-maps/{}".format(poor.__version__)}
+BROKEN_CONNECTION_ERRORS = [
+    BrokenPipeError,
+    ConnectionResetError,
+    http.client.BadStatusLine,
+]
+
+HEADERS = {
+    "Connection": "Keep-Alive",
+    "User-Agent": "poor-maps/{}".format(poor.__version__),
+}
 
 RE_LOCALHOST = re.compile(r"://(127.0.0.1|localhost)\b")
 
@@ -201,13 +209,8 @@ def _request(method, url, body=None, encoding=None, retry=1, headers=None):
         if not pool.is_alive(): raise
         connection.close()
         connection = None
-        # These probably mean that the connection was broken.
-        broken = [
-            BrokenPipeError,
-            ConnectionResetError,
-            http.client.BadStatusLine,
-        ]
-        if not isinstance(error, tuple(broken)) or retry == 0:
+        broken = tuple(BROKEN_CONNECTION_ERRORS)
+        if not isinstance(error, broken) or retry == 0:
             name = error.__class__.__name__
             print("{} failed: {}: {}"
                   .format(method, name, str(error)),
@@ -244,17 +247,6 @@ def _request_json(method, url, body=None, encoding="utf_8", retry=1, headers=Non
     except Exception as error:
         name = error.__class__.__name__
         print("Failed to parse JSON data: {}: {}"
-              .format(name, str(error)), file=sys.stderr)
+              .format(name, str(error)),
+              file=sys.stderr)
         raise # Exception
-
-def request_json(url, encoding="utf_8", retry=1, headers=None):
-    """Make a HTTP GET request at `url` and return response parsed as JSON."""
-    # Deprecated since version 0.27.
-    print("http.request_json is deprecated, please use http.get_json instead", file=sys.stderr)
-    return _request_json("GET", url, None, encoding, retry, headers)
-
-def request_url(url, encoding=None, retry=1, headers=None):
-    """Make a HTTP GET request at `url` and return response."""
-    # Deprecated since version 0.27.
-    print("http.request_url is deprecated, please use http.get instead", file=sys.stderr)
-    return _request("GET", url, None, encoding, retry, headers)
