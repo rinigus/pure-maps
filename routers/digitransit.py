@@ -172,17 +172,9 @@ def parse_maneuvers(route):
     # For clarity, move stops to the nearest point
     # on the route polyline.
     for maneuver in maneuvers:
-        min_node = 0
-        min_dist = 360**2
-        for i in range(len(route.x)):
-            dx = maneuver.x - route.x[i]
-            dy = maneuver.y - route.y[i]
-            dist = dx**2 + dy**2
-            if dist < min_dist:
-                min_node = i
-                min_dist = dist
-        maneuver.x = route.x[min_node]
-        maneuver.y = route.y[min_node]
+        i = poor.util.find_closest(route.x, route.y, maneuver.x, maneuver.y)
+        maneuver.x = route.x[i]
+        maneuver.y = route.y[i]
     return maneuvers
 
 def parse_time(time):

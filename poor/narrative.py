@@ -67,37 +67,18 @@ class Narrative:
 
     def _get_closest_maneuver_node(self, x, y, node):
         """Return index of the maneuver node closest to coordinates."""
-        if self.maneuver[node].node == node:
-            return node
+        if self.maneuver[node].node == node: return node
         # Only consider the immediate preceding and following
         # maneuver nodes from the given closest route node.
         nodes = sorted(set(x.node for x in self.maneuver if x))
         a = bisect.bisect_left(nodes, node)
         b = bisect.bisect_right(nodes, node)
         nodes = nodes[max(0, a-1):min(len(nodes), b+1)]
-        min_node = 0
-        min_dist = 360**2
-        for i in nodes:
-            # This should be faster than haversine
-            # and probably close enough.
-            dist = (x - self.x[i])**2 + (y - self.y[i])**2
-            if dist < min_dist:
-                min_node = i
-                min_dist = dist
-        return min_node
+        return poor.util.find_closest(self.x, self.y, x, y, nodes)
 
     def _get_closest_node(self, x, y):
         """Return index of the route node closest to coordinates."""
-        min_node = 0
-        min_dist = 360**2
-        for i in range(len(self.x)):
-            # This should be faster than haversine
-            # and probably close enough.
-            dist = (x - self.x[i])**2 + (y - self.y[i])**2
-            if dist < min_dist:
-                min_node = i
-                min_dist = dist
-        return min_node
+        return poor.util.find_closest(self.x, self.y, x, y)
 
     def _get_closest_segment_node(self, x, y):
         """Return index of a node of the segment closest to coordinates."""
@@ -106,7 +87,7 @@ class Narrative:
         eps1 = 0.00005**2
         eps2 = 0.0002**2
         eps3 = 0.005**2
-        ahead = range(self._last_node, len(self.x)-1)
+        ahead = range(self._last_node, len(self.x) - 1)
         behind = reversed(range(0, self._last_node))
         for iterator in (ahead, behind):
             for i in iterator:
@@ -122,7 +103,7 @@ class Narrative:
                 if min_dist < eps1: break
                 if min_dist < eps2 and dist > eps3: break
         self._last_node = min_node
-        a, b = min_node, min_node+1
+        a, b = min_node, min_node + 1
         dist_a = (x - self.x[a])**2 + (y - self.y[a])**2
         dist_b = (x - self.x[b])**2 + (y - self.y[b])**2
         return (a if dist_a < dist_b else b)
@@ -302,8 +283,12 @@ class Narrative:
     @property
     def ready(self):
         """Return ``True`` if narrative is in steady state and ready for use."""
-        return (self.x and len(self.x) == len(self.y) ==
-                len(self.dist) == len(self.time) == len(self.maneuver))
+        return (self.x and
+                len(self.x) ==
+                len(self.y) ==
+                len(self.dist) ==
+                len(self.time) ==
+                len(self.maneuver))
 
     def set_maneuvers(self, maneuvers):
         """
@@ -316,8 +301,7 @@ class Narrative:
         """
         prev_maneuver = None
         for i in reversed(range(len(maneuvers))):
-            if "passive" in maneuvers[i]:
-                if maneuvers[i]["passive"]: continue
+            if maneuvers[i].get("passive", False): continue
             maneuver = Maneuver(**maneuvers[i])
             maneuver.node = self._get_closest_node(maneuver.x, maneuver.y);
             self.maneuver[maneuver.node] = maneuver
@@ -354,7 +338,7 @@ class Narrative:
         self.time = [0] * len(x)
         self.maneuver = [None] * len(x)
         self._last_node = 0
-        for i in list(reversed(range(len(x)-1))):
+        for i in list(reversed(range(len(x) - 1))):
             dist = poor.util.calculate_distance(x[i], y[i], x[i+1], y[i+1])
             if dist < 1:
                 # Consecutive duplicate points will cause problems for
@@ -371,7 +355,7 @@ class Narrative:
             # the advance at which maneuver notifications are shown.
             # See 'set_maneuvers' for the actual leg-specific times
             # that should in most cases overwrite these.
-            self.time[i] = self.time[i+1] + (dist/1000/120)*3600
+            self.time[i] = self.time[i+1] + (dist/1000/120) * 3600
 
     def unset(self):
         """Unset route and maneuvers."""
