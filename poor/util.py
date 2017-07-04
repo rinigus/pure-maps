@@ -148,14 +148,14 @@ def decode_epl(string, precision=5):
         yout.append(y / 10**precision)
     return xout, yout
 
-def find_closest(x, y, cx, cy, subset=None):
-    """Return index of the item closest to `cx`, `cy`."""
+def find_closest(xs, ys, x, y, subset=None):
+    """Return index of the item closest to `x`, `y`."""
     # This is not exactly correct, but should be significantly
     # faster than using the haversine formula.
     min_index = 0
     min_dist = 360**2
-    for i in subset or range(len(x)):
-        dist = (x[i] - cx)**2 + (y[i] - cy)**2
+    for i in subset or range(len(xs)):
+        dist = (xs[i] - x)**2 + (ys[i] - y)**2
         if dist < min_dist:
             min_index = i
             min_dist = dist
