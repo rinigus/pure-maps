@@ -45,10 +45,12 @@ Canvas {
     property bool   changed: false
     property bool   hasPath: false
     property string mode: "car"
-    property real   paintX: 0
-    property real   paintY: 0
     property var    path: {"x": [], "y": []}
     property var    simplePaths: {}
+
+    // Needed as separate properties for bindings.
+    property real paintX: 0
+    property real paintY: 0
 
     Timer {
         // Use a timer to ensure updates if map panned.
@@ -74,7 +76,7 @@ Canvas {
         canvas.context.globalAlpha = 0.5;
         canvas.context.lineCap = "round";
         canvas.context.lineJoin = "round";
-        canvas.context.lineWidth = Math.floor(Theme.pixelRatio*10);
+        canvas.context.lineWidth = Math.floor(Theme.pixelRatio * 12);
         canvas.context.strokeStyle = "#0540ff";
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         canvas.redraw();
@@ -88,38 +90,31 @@ Canvas {
         if (!canvas.context) return;
         canvas.context.clearRect(0, 0, canvas.width, canvas.height);
         var zoom = Math.floor(map.zoomLevel);
-        var key = zoom.toString();
-        if (!canvas.simplePaths.hasOwnProperty(key)) {
+        if (canvas.simplePaths.hasOwnProperty(zoom)) {
             // Use a simplified path to avoid the slowness of
             // plotting too many polyline segments on screen.
+            var spath = canvas.simplePaths[zoom];
+        } else {
             if (map.gesture.isPinchActive) return;
-            canvas.simplePaths[key] = {"x": [], "y": []};
+            canvas.simplePaths[zoom] = {"x": [], "y": []};
             return canvas.simplify(zoom);
         }
-        var spath = canvas.simplePaths[key];
         canvas.context.beginPath();
         var bbox = map.getBoundingBox();
-        var maxLength = Math.min(map.widthCoords, map.heightCoords);
-        var xmin = bbox[0] - 1.5 * maxLength;
-        var xmax = bbox[1] + 1.5 * maxLength;
-        var ymin = bbox[2] - 1.5 * maxLength;
-        var ymax = bbox[3] + 1.5 * maxLength;
-        var prev = false;
+        var cbox = canvas.getClipBox(bbox);
+        var prev, x, y, xpos, ypos;
         for (var i = 0; i < spath.x.length; i++) {
-            var x = spath.x[i];
-            var y = spath.y[i];
-            if (x >= xmin && x <= xmax && y >= ymin && y <= ymax) {
-                var xpos = Util.xcoord2xpos(x, bbox[0], bbox[1], map.width);
-                var ypos = Util.ycoord2ypos(y, bbox[2], bbox[3], map.height);
+            x = spath.x[i];
+            y = spath.y[i];
+            if (x >= cbox[0] && x <= cbox[1] && y >= cbox[2] && y <= cbox[3]) {
+                xpos = Util.xcoord2xpos(x, bbox[0], bbox[1], map.width);
+                ypos = Util.ycoord2ypos(y, bbox[2], bbox[3], map.height);
                 canvas.context.lineTo(xpos, ypos);
                 prev = true;
             } else if (prev) {
-                // Break path when going outside the area
-                // in which segments are rendered.
+                // Break path when going outside the clipbox.
                 canvas.context.stroke();
                 canvas.context.beginPath();
-                prev = false;
-            } else {
                 prev = false;
             }
         }
@@ -162,6 +157,16 @@ Canvas {
         canvas.redraw();
     }
 
+    function getClipBox(bbox) {
+        // Return [xmin, xmax, ymin, ymax] to clip polyline to.
+        var maxLength = Math.min(map.widthCoords, map.heightCoords);
+        var xmin = bbox[0] - 1.5 * maxLength;
+        var xmax = bbox[1] + 1.5 * maxLength;
+        var ymin = bbox[2] - 1.5 * maxLength;
+        var ymax = bbox[3] + 1.5 * maxLength;
+        return [xmin, xmax, ymin, ymax];
+    }
+
     function redraw() {
         // Clear canvas and redraw entire route.
         canvas.changed = true;
@@ -174,18 +179,10 @@ Canvas {
         canvas.redraw();
     }
 
-    function setSimplePath(zoom, path) {
-        // Set simplified path at zoom level.
-        Object.defineProperty(canvas.simplePaths, zoom.toString(), {
-            value: path, writable: true
-        });
-        canvas.redraw();
-    }
-
     function simplify(zoom) {
         // Simplify path for display at zoom level using Douglas-Peucker.
         if (zoom < 14) {
-            var tol = Math.pow(2, 18-zoom) / 83250;
+            var tol = Math.pow(2, 18 - zoom) / 83250;
         } else {
             // Don't try simplification at high zoom levels as
             // we approach Douglas-Peucker's worst case O(n^2).
@@ -194,7 +191,10 @@ Canvas {
         var maxLength = Math.min(map.widthCoords, map.heightCoords);
         var args = [canvas.path.x, canvas.path.y, tol, false, maxLength, 2000];
         py.call("poor.polysimp.simplify_qml", args, function(path) {
-            canvas.setSimplePath(zoom, path);
+            Object.defineProperty(canvas.simplePaths, zoom.toString(), {
+                "value": path, "writable": true
+            });
+            canvas.redraw();
         });
     }
 
