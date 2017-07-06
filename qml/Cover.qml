@@ -43,7 +43,7 @@ CoverBackground {
     Timer {
         interval: 1000
         repeat: true
-        running: !ready ||
+        running: !cover.ready ||
             cover.status === Cover.Activating ||
             cover.status === Cover.Active
         triggeredOnStart: true
@@ -64,7 +64,7 @@ CoverBackground {
     }
 
     /*
-     * Default map cover.
+     * Default map cover
      */
 
     Rectangle {
@@ -101,24 +101,24 @@ CoverBackground {
     }
 
     /*
-     * Navigation narrative cover.
+     * Navigation narrative cover
      */
 
     Image {
+        // Maneuver icon
         anchors.bottom: parent.verticalCenter
         anchors.bottomMargin: Theme.paddingMedium
         anchors.horizontalCenter: parent.horizontalCenter
         opacity: 0.9
         smooth: true
-        source: app.navigationBlock.icon ?
-            "icons/navigation/%1.svg".arg(app.navigationBlock.icon) :
-            "icons/navigation/flag.svg"
-        sourceSize.height: cover.width/2
-        sourceSize.width: cover.width/2
+        source: "icons/navigation/%1.svg".arg(app.navigationBlock.icon || "flag")
+        sourceSize.height: cover.width / 2
+        sourceSize.width: cover.width / 2
         visible: cover.showNarrative
     }
 
     Label {
+        // Distance remaining to next maneuver
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.verticalCenter
         font.family: Theme.fontFamilyHeading
@@ -128,6 +128,7 @@ CoverBackground {
     }
 
     Label {
+        // Distance remaining to destination
         anchors.bottom: parent.bottom
         anchors.bottomMargin: Theme.paddingLarge
         anchors.left: parent.left
@@ -139,6 +140,7 @@ CoverBackground {
     }
 
     Label {
+        // Time remaining to destination
         anchors.bottom: parent.bottom
         anchors.bottomMargin: Theme.paddingLarge
         anchors.right: parent.right
@@ -175,24 +177,30 @@ CoverBackground {
         // Update cover map tiles from map equivalents.
         for (var i = 0; i < cover.tiles.length; i++)
             cover.tiles[i].z = -1;
-        var j = 1;
+        var j = 0;
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].type !== "basemap") continue;
             if (map.tiles[i].z !== 10) continue;
-            while (cover.tiles.length <= j) cover.addTile();
-            cover.tiles[j].smooth = map.tiles[i].smooth;
-            cover.tiles[j].source = map.tiles[i].uri;
-            cover.tiles[j].x = cover.mapXToCoverX(map.tiles[i].x);
-            cover.tiles[j].y = cover.mapYToCoverY(map.tiles[i].y);
-            cover.tiles[j].z = map.tiles[i].z;
-            cover.tiles[j].visible = !cover.showNarrative;
+            var x = cover.mapXToCoverX(map.tiles[i].x);
+            var y = cover.mapYToCoverY(map.tiles[i].y);
+            if (x > cover.width) continue;
+            if (y > cover.height) continue;
             var width = map.tiles[i].image.width;
             var height = map.tiles[i].image.height;
-            if (width && width > 0) cover.tiles[j].width = width;
-            if (height && height > 0) cover.tiles[j].height = height;
+            if (!width || x + width < 0) continue;
+            if (!height || y + height < 0) continue;
+            while (cover.tiles.length <= j) cover.addTile();
+            cover.tiles[j].height = height;
+            cover.tiles[j].smooth = map.tiles[i].smooth;
+            cover.tiles[j].source = map.tiles[i].uri;
+            cover.tiles[j].visible = !cover.showNarrative;
+            cover.tiles[j].width = width;
+            cover.tiles[j].x = x;
+            cover.tiles[j].y = y;
+            cover.tiles[j].z = map.tiles[i].z;
             j++;
         }
-        cover.ready = cover.tiles.length > 4;
+        cover.ready = cover.tiles.length > 3;
     }
 
 }
