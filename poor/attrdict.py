@@ -38,27 +38,23 @@ class AttrDict(dict):
             return value
         if isinstance(value, dict):
             return AttrDict(value)
-        if isinstance(value, list):
-            return list(map(self.__coerce, value))
+        if isinstance(value, (list, tuple, set)):
+            return type(value)(map(self.__coerce, value))
         return value
 
     def __delattr__(self, name):
         """Remove `name` from dictionary."""
         try:
             return self.__delitem__(name)
-        except KeyError:
-            message = "{} object has no attribute {}"
-            message = message.format(repr(type(self)), repr(name))
-            raise AttributeError(message)
+        except KeyError as error:
+            raise AttributeError(str(error))
 
     def __getattr__(self, name):
         """Return `name` from dictionary."""
         try:
             return self.__getitem__(name)
-        except KeyError:
-            message = "{} object has no attribute {}"
-            message = message.format(repr(type(self)), repr(name))
-            raise AttributeError(message)
+        except KeyError as error:
+            raise AttributeError(str(error))
 
     def __setattr__(self, name, value):
         """Set `name` to `value` in dictionary."""
