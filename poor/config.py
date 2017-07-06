@@ -94,7 +94,7 @@ class ConfigurationStore(poor.AttrDict):
             version = values.get("version", "0.0.0").strip()
             version = tuple(map(int, version.split(".")))[:2]
         except Exception:
-            # XXX: Run all migrations if version malformed?
+            # Run all migrations if version malformed.
             traceback.print_exc()
             version = (0, 0)
         if version < (0, 25):

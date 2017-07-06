@@ -102,7 +102,7 @@ def purge_directory(directory, max_age):
         # Fails if the directory is a symlink.
         os.rmdir(directory)
     print(" {:6d} rm, {:6d} left."
-          .format(removed, total-removed))
+          .format(removed, total - removed))
     if removed > 0:
         # Make sure application doesn't try to use tiles that were allocated
         # before this purge, but whose files have now been removed.
@@ -117,13 +117,10 @@ def purge_directory_async(directory, max_age):
 
 def stat():
     """Return file count and total size of cache subdirectories."""
-    stat = []
     directories = glob.glob("{}/*".format(poor.CACHE_HOME_DIR))
     directories = list(filter(os.path.isdir, directories))
-    for directory in sorted(directories):
-        child = os.path.basename(directory)
-        stat.append(stat_directory(child))
-    return stat
+    directories = list(map(os.path.basename, sorted(directories)))
+    return list(map(stat_directory, directories))
 
 def stat_directory(directory):
     """
