@@ -26,9 +26,9 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
-    property bool loading: true
-    property bool populated: false
-    property var  results: {}
+    property bool   loading: true
+    property bool   populated: false
+    property var    results: {}
     property string title: ""
 
     // Column widths to be set based on data.
@@ -57,9 +57,11 @@ Page {
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight + Theme.paddingMedium
-                text: qsTranslate("", "Route %1. total %2")
-                    .arg(listItem.result.alternative)
-                    .arg(py.call_sync("poor.util.format_time", [listItem.result.duration]))
+                text: app.tr("Route %1. total %2",
+                             listItem.result.alternative,
+                             py.call_sync("poor.util.format_time",
+                                          [listItem.result.duration]))
+
                 verticalAlignment: Text.AlignBottom
             }
 
@@ -148,8 +150,8 @@ Page {
                         id: nameLabel
                         height: implicitHeight + Theme.paddingSmall
                         text: leg.mode === "WALK" ?
-                            qsTranslate("", "Walk %1").arg(page.formatLength(leg.length)) :
-                            qsTranslate("", "%1 → %2").arg(leg.dep_name).arg(leg.arr_name)
+                            app.tr("Walk %1", page.formatLength(leg.length)) :
+                            app.tr("%1 → %2", leg.dep_name, leg.arr_name)
                         truncationMode: TruncationMode.Fade
                         verticalAlignment: Text.AlignVCenter
                         width: parent.width - x - Theme.horizontalPageMargin
@@ -213,7 +215,7 @@ Page {
             listView.model.clear();
             page.loading = true;
             page.title = "";
-            busy.text = qsTranslate("", "Searching");
+            busy.text = app.tr("Searching");
         } else if (page.status === PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
@@ -237,12 +239,12 @@ Page {
                 page.title = "";
                 busy.error = results.message;
             } else if (results && results.length > 0) {
-                page.title = qsTranslate("", "Results");
+                page.title = app.tr("Results");
                 page.results = results;
                 Util.appendAll(listView.model, results);
             } else {
                 page.title = "";
-                busy.error = qsTranslate("", "No results");
+                busy.error = app.tr("No results");
             }
             page.loading = false;
             page.populated = true;

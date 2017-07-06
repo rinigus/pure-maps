@@ -25,7 +25,7 @@ Page {
     allowedOrientations: app.defaultAllowedOrientations
 
     // Required to be set by caller.
-    property var coordinate: undefined
+    property var    coordinate: undefined
     property string title: ""
 
     PageHeader {
@@ -49,15 +49,15 @@ Page {
         id: smsButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: messageLabel.bottom
-        anchors.topMargin: 2*Theme.paddingLarge
-        text: qsTranslate("", "SMS")
+        anchors.topMargin: 2 * Theme.paddingLarge
+        text: app.tr("SMS")
         onClicked: {
             // XXX: SMS links don't work without a recipient.
-            // http://together.jolla.com/question/84134/
+            // https://together.jolla.com/question/84134/
             Clipboard.text = page.formatMessage(false);
             infoLabel.text = [
-                qsTranslate("", "Message copied to the clipboard"),
-                qsTranslate("", "Launching the Messages application")
+                app.tr("Message copied to the clipboard"),
+                app.tr("Launching the Messages application")
             ].join("\n");
             py.call("poor.util.popen", [
                 "/usr/bin/invoker",
@@ -72,10 +72,10 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: smsButton.bottom
         anchors.topMargin: Theme.paddingLarge
-        text: qsTranslate("", "Email")
+        text: app.tr("Email")
         onClicked: {
             var link = "mailto:?body=%1".arg(page.formatMessage(false));
-            infoLabel.text = qsTranslate("", "Launching the Email application");
+            infoLabel.text = app.tr("Launching the Email application");
             Qt.openUrlExternally(link);
         }
     }
@@ -85,17 +85,17 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: emailButton.bottom
         anchors.topMargin: Theme.paddingLarge
-        text: qsTranslate("", "Other")
+        text: app.tr("Other")
         onClicked: {
             Clipboard.text = page.formatMessage(false);
-            infoLabel.text = qsTranslate("", "Message copied to the clipboard");
+            infoLabel.text = app.tr("Message copied to the clipboard");
         }
     }
 
     ListItemLabel {
         id: infoLabel
         anchors.top: clipboardButton.bottom
-        anchors.topMargin: 2*Theme.paddingLarge
+        anchors.topMargin: 2 * Theme.paddingLarge
         color: Theme.highlightColor
         horizontalAlignment: Text.AlignHCenter
     }

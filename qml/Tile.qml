@@ -35,12 +35,12 @@ MapQuickItem {
     }
     width: image.width
 
-    property var image: image
-    property bool smooth: false
+    property var    image: image
+    property bool   smooth: false
     property string type: "basemap"
-    property int uid: -1
+    property int    uid: -1
     property string uri: ""
-    property real zOffset: 0
+    property real   zOffset: 0
 
     function setHeight(props) {
         // Set tile pixel height from corner coordinates.
@@ -48,7 +48,7 @@ MapQuickItem {
             map.constants.canvasTileSize * props.scale;
         var height = Util.ycoord2ymercator(props.nwy) -
             Util.ycoord2ymercator(props.swy);
-        height = height / (2*Math.PI) * total;
+        height = height / (2 * Math.PI) * total;
         image.height = Math.ceil(height - 0.4);
     }
 

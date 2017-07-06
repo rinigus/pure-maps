@@ -26,7 +26,7 @@ import "js/util.js" as Util
 Map {
     id: map
     anchors.centerIn: parent
-    center: QtPositioning.coordinate(60.169, 24.941)
+    center: QtPositioning.coordinate(49, 13)
     clip: true
     gesture.enabled: true
     height: parent.height
@@ -57,15 +57,17 @@ Map {
     property real zoomLevelPrev: 8
 
     property var constants: QtObject {
+
         // Define metrics of the canvas used. Must match what plugin uses.
         // Scale factor is relative to the traditional tile size 256.
-        // https://github.com/qtproject/qtlocation/commit/1ca75bd6bc109c6e5ad47fd5c236709d3f64c466
         property real canvasTileSize: 512
         property real canvasScaleFactor: 0.5
+
         // Distance of position center point from screen bottom when
         // navigating and auto-rotate is on, i.e. heading up on screen.
         // This is relative to the total visible map height.
         property real navigationCenterY: 0.22
+
     }
 
     Behavior on center {
@@ -84,11 +86,8 @@ Map {
     }
 
     MapMouseArea {}
-
     MapTimer {}
-
     NarrationTimer {}
-
     Route { id: route }
 
     Component.onCompleted: {
@@ -185,9 +184,10 @@ Map {
          *    (optional, defaults to false)
          *  - duration: Duration (s) of leg following maneuver point
          */
+        var component, maneuver;
         for (var i = 0; i < maneuvers.length; i++) {
-            var component = Qt.createComponent("ManeuverMarker.qml");
-            var maneuver = component.createObject(map);
+            component = Qt.createComponent("ManeuverMarker.qml");
+            maneuver = component.createObject(map);
             maneuver.coordinate = QtPositioning.coordinate(maneuvers[i].y, maneuvers[i].x);
             maneuver.icon = maneuvers[i].icon || "flag";
             maneuver.narrative = maneuvers[i].narrative || "";
@@ -211,13 +211,14 @@ Map {
          *  - text: Text.RichText to show in POI bubble
          *  - link: Hyperlink accessible from POI bubble (optional)
          */
+        var component, poi;
         for (var i = 0; i < pois.length; i++) {
-            var component = Qt.createComponent("PoiMarker.qml");
-            var poi = component.createObject(map);
+            component = Qt.createComponent("PoiMarker.qml");
+            poi = component.createObject(map);
             poi.coordinate = QtPositioning.coordinate(pois[i].y, pois[i].x);
             poi.title = pois[i].title || "";
-            poi.text  = pois[i].text  || "";
-            poi.link  = pois[i].link  || ""
+            poi.text = pois[i].text || "";
+            poi.link = pois[i].link || ""
             map.pois.push(poi);
             map.addMapItem(poi);
         }
@@ -293,20 +294,14 @@ Map {
 
     function clearPois() {
         // Remove all point of interest from the map.
-        for (var i = 0; i < map.pois.length; i++) {
-            map.removeMapItem(map.pois[i]);
-            map.pois[i].destroy();
-        }
+        Util.removeMapItems(map, map.pois);
         map.pois = [];
         map.savePois();
     }
 
     function clearRoute() {
         // Remove all route markers from the map.
-        for (var i = 0; i < map.maneuvers.length; i++) {
-            map.removeMapItem(map.maneuvers[i]);
-            map.maneuvers[i].destroy();
-        }
+        Util.removeMapItems(map, map.maneuvers);
         map.maneuvers = [];
         map.route.clear();
         py.call_sync("poor.app.narrative.unset", []);
@@ -318,10 +313,7 @@ Map {
 
     function clearTiles() {
         // Remove all tiles from the map.
-        for (var i = 0; i < map.tiles.length; i++) {
-            map.removeMapItem(map.tiles[i]);
-            map.tiles[i].destroy();
-        }
+        Util.removeMapItems(map, map.tiles);
         map.tiles = [];
         py.call_sync("poor.app.tilecollection.clear", []);
         map.changed = true;
@@ -329,9 +321,9 @@ Map {
 
     function demoteTiles() {
         // Drop basemap tiles to a lower z-level and remove overlays.
-        for (var i = map.tiles.length-1; i >= 0; i--) {
+        for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].type === "basemap") {
-                map.tiles[i].z = Math.max(1, map.tiles[i].z-1);
+                map.tiles[i].z = Math.max(1, map.tiles[i].z - 1);
             } else {
                 map.tiles[i].z = -1;
             }
@@ -394,7 +386,7 @@ Map {
         // For performance reasons, include only a subset of points.
         if (map.route.path.x.length === 0) return;
         var coords = [];
-        for (var i = 0; i < map.route.path.x.length; i = i+10) {
+        for (var i = 0; i < map.route.path.x.length; i = i + 10) {
             coords.push(QtPositioning.coordinate(
                 map.route.path.y[i], map.route.path.x[i]));
         }
@@ -533,8 +525,8 @@ Map {
             poi.x = map.pois[i].coordinate.longitude;
             poi.y = map.pois[i].coordinate.latitude;
             poi.title = map.pois[i].title;
-            poi.text  = map.pois[i].text;
-            poi.link  = map.pois[i].link;
+            poi.text = map.pois[i].text;
+            poi.link = map.pois[i].link;
             data.push(poi);
         }
         py.call_sync("poor.storage.write_pois", [data]);
@@ -592,8 +584,8 @@ Map {
         // Update map width and height to match environment.
         if (map.autoRotate) {
             var dim = Math.floor(Math.sqrt(
-                parent.width*parent.width +
-                    parent.height*parent.height));
+                parent.width * parent.width +
+                    parent.height * parent.height));
             map.width = dim;
             map.height = dim;
         } else {

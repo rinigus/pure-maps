@@ -33,7 +33,7 @@ Page {
 
     onStatusChanged: {
         if (page.status === PageStatus.Activating) {
-            busy.text = qsTranslate("", "Searching");
+            busy.text = app.tr("Searching");
         } else if (page.status === PageStatus.Active) {
             page.findRoute();
         }
@@ -60,7 +60,7 @@ Page {
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.navigateBack(PageStackAction.Immediate);
             } else {
-                busy.error = qsTranslate("", "No results");
+                busy.error = app.tr("No results");
                 page.loading = false;
             }
         });

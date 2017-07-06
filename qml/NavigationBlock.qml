@@ -25,13 +25,15 @@ Rectangle {
     anchors.right: parent.right
     anchors.top: parent.top
     color: "#d0000000"
-    height: destDist ? Math.max(
-        iconImage.height + 2*Theme.paddingLarge,
-        manLabel.height + Theme.paddingSmall + narrativeLabel.height,
+    height: {
+        if (!destDist) return 0;
+        var h1 = iconImage.height + 2 * Theme.paddingLarge;
+        var h2 = manLabel.height + Theme.paddingSmall + narrativeLabel.height;
         // If far off route, manLabel defines the height of the block,
         // but we need padding to make a sufficiently large tap target.
-        1.3*manLabel.height) : 0
-
+        var h3 = 1.3 * manLabel.height;
+        return Math.max(h1, h2, h3);
+    }
     z: 500
 
     property string destDist: ""
@@ -40,10 +42,11 @@ Rectangle {
     property string manDist: ""
     property string manTime: ""
     property string narrative: ""
-    property bool narrativePageSeen: false
-    property bool notify: icon || narrative
+    property bool   narrativePageSeen: false
+    property bool   notify: icon || narrative
 
     Label {
+        // Distance remaining to the next maneuver
         id: manLabel
         anchors.left: iconImage.right
         anchors.leftMargin: iconImage.width > 0 ? Theme.paddingLarge : 0
@@ -58,6 +61,7 @@ Rectangle {
     }
 
     Label {
+        // Distance remaining to destination
         id: destLabel
         anchors.baseline: manLabel.baseline
         anchors.right: parent.right
@@ -69,6 +73,7 @@ Rectangle {
     }
 
     Label {
+        // Instruction text for the next maneuver
         id: narrativeLabel
         anchors.left: iconImage.right
         anchors.leftMargin: iconImage.width > 0 ? Theme.paddingLarge : 0
@@ -78,14 +83,15 @@ Rectangle {
         anchors.topMargin: Theme.paddingSmall
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeMedium
-        height: text ? implicitHeight + 0.3*manLabel.height : 0
+        height: text ? implicitHeight + 0.3 * manLabel.height : 0
         text: block.narrativePageSeen ? block.narrative :
-            (block.notify ? qsTranslate("", "Tap to review maneuvers or begin navigating") : "")
+            (block.notify ? app.tr("Tap to review maneuvers or begin navigating") : "")
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
 
     Image {
+        // Icon for the next maneuver
         id: iconImage
         anchors.left: parent.left
         anchors.leftMargin: Theme.paddingLarge
@@ -96,10 +102,8 @@ Rectangle {
         opacity: 0.9
         smooth: true
         source: "icons/navigation/%1.svg".arg(block.icon || "flag")
-        sourceSize.height: Screen.sizeCategory >= Screen.Large ?
-            1.7*Theme.iconSizeLarge : Theme.iconSizeLarge
-        sourceSize.width: Screen.sizeCategory >= Screen.Large ?
-            1.7*Theme.iconSizeLarge : Theme.iconSizeLarge
+        sourceSize.height: (Screen.sizeCategory >= Screen.Large ? 1.7 : 1) * Theme.iconSizeLarge
+        sourceSize.width: (Screen.sizeCategory >= Screen.Large ? 1.7 : 1) * Theme.iconSizeLarge
         width: block.notify ? sourceSize.width : 0
     }
 

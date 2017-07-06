@@ -33,20 +33,20 @@ Page {
             width: parent.width
 
             PageHeader {
-                title: qsTranslate("", "About Poor Maps")
+                title: app.tr("About Poor Maps")
             }
 
             ListItemLabel {
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTranslate("", "version %1").arg(py.evaluate("poor.__version__"))
+                text: app.tr("version %1", py.evaluate("poor.__version__"))
             }
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: Theme.itemSizeLarge
                 preferredWidth: Theme.buttonWidthMedium
-                text: qsTranslate("", "GitHub page")
+                text: app.tr("GitHub page")
                 onClicked: Qt.openUrlExternally("https://github.com/otsaloma/poor-maps");
             }
 
@@ -63,12 +63,12 @@ Page {
                 horizontalAlignment: implicitWidth >
                     parent.width - anchors.leftMargin - anchors.rightMargin ?
                     Text.AlignLeft : Text.AlignHCenter
-                text: qsTranslate("", "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later.")
+                text: app.tr("Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later.")
                 wrapMode: Text.WordWrap
             }
 
             SectionHeader {
-                text: qsTranslate("", "Translated by")
+                text: app.tr("Translated by")
             }
 
             ListItemLabel {
@@ -80,7 +80,7 @@ Page {
                 // Thus, you should translate it to your name. You can also include other
                 // translators who have contributed to this translation; in that case, please
                 // write them on separate lines seperated by newlines (\n).
-                text: qsTranslate("", "translator-credits")
+                text: app.tr("translator-credits")
                 visible: text && text !== "translator-credits"
             }
 
@@ -90,7 +90,7 @@ Page {
                 horizontalAlignment: implicitWidth >
                     parent.width - anchors.leftMargin - anchors.rightMargin ?
                     Text.AlignLeft : Text.AlignHCenter
-                text: qsTranslate("", "You can add new user interface translations or contribute to existing ones at Transifex.")
+                text: app.tr("You can add new user interface translations or contribute to existing ones at Transifex.")
                 wrapMode: Text.WordWrap
             }
 
@@ -98,7 +98,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: Theme.itemSizeLarge
                 preferredWidth: Theme.buttonWidthMedium
-                text: qsTranslate("", "Transifex page")
+                text: app.tr("Transifex page")
                 onClicked: Qt.openUrlExternally("https://www.transifex.com/otsaloma/poor-maps/");
             }
 

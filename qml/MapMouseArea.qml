@@ -28,8 +28,8 @@ MouseArea {
         map.addPois([{
             "x": coord.longitude,
             "y": coord.latitude,
-            "title": qsTranslate("", "Unnamed point"),
-            "text": qsTranslate("", "Unnamed point")
+            "title": app.tr("Unnamed point"),
+            "text": app.tr("Unnamed point")
         }]);
     }
 }

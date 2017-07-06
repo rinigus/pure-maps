@@ -34,7 +34,8 @@ Dialog {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: nameLabel.height + descriptionLabel.height + attributionLabel.height
+            contentHeight: nameLabel.height + descriptionLabel.anchors.topMargin +
+                descriptionLabel.height + attributionLabel.height
 
             ListItemLabel {
                 id: nameLabel
@@ -63,10 +64,7 @@ Dialog {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: (visible ? implicitHeight : 0) + nameLabel.topMargin
-                text: visible ? qsTranslate("", "Source: %1").arg(model.source) +
-                    "\n" + model.attribution : ""
-                // Avoid a seemigly irrelevant warning about a binding loop.
-                // QML Label: Binding loop detected for property "_elideText"
+                text: visible ? app.tr("Source: %1", model.source) + "\n" + model.attribution : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
                 visible: model.show_attribution

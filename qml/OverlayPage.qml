@@ -23,6 +23,7 @@ import "."
 import "js/util.js" as Util
 
 Page {
+    id: page
     allowedOrientations: app.defaultAllowedOrientations
 
     SilicaListView {
@@ -37,8 +38,7 @@ Page {
                 id: overlaySwitch
                 checked: model.active
                 description: model.show_attribution ?
-                    qsTranslate("", "Source: %1").arg(model.source) +
-                    "\n" + model.attribution : ""
+                    app.tr("Source: %1", model.source) + "\n" + model.attribution : ""
                 text: model.name
                 // Avoid implicit line breaks.
                 width: 3 * parent.width
@@ -57,7 +57,7 @@ Page {
         }
 
         header: PageHeader {
-            title: qsTranslate("", "Overlays")
+            title: app.tr("Overlays")
         }
 
         model: ListModel {}

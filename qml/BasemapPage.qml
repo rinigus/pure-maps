@@ -26,7 +26,7 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
-    property string title: qsTranslate("", "Basemaps")
+    property string title: app.tr("Basemaps")
 
     SilicaListView {
         id: listView
@@ -34,7 +34,8 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: visible ? nameLabel.height + attributionLabel.height : 0
+            contentHeight: visible ? nameLabel.height + attributionLabel.anchors.topMargin +
+                attributionLabel.height : 0
             visible: model.visible
 
             ListItemLabel {
@@ -54,13 +55,11 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: (visible ? implicitHeight : 0) + nameLabel.topMargin
-                text: visible ? qsTranslate("", "Source: %1").arg(model.source) +
-                    "\n" + model.attribution : ""
-                // Avoid a seemigly irrelevant warning about a binding loop.
-                // QML Label: Binding loop detected for property "_elideText"
+                text: visible ? app.tr("Source: %1", model.source) + "\n" + model.attribution : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
                 visible: model.show_attribution
+                wrapMode: Text.WordWrap
             }
 
             onClicked: {
@@ -88,7 +87,7 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTranslate("", "All")
+                text: app.tr("All")
                 onClicked: page.setFilter("");
             }
             MenuItem {
@@ -129,8 +128,8 @@ Page {
             item.visible = item.name.indexOf(filter) > -1;
         }
         page.title = filter.length > 0 ?
-            qsTranslate("", "Basemaps %1").arg(filter) :
-            qsTranslate("", "Basemaps");
+            app.tr("Basemaps %1", filter) :
+            app.tr("Basemaps");
     }
 
     function setFilter(value) {

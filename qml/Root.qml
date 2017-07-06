@@ -47,15 +47,10 @@ Item {
         }
 
         Map { id: map }
-
         MenuButton { id: menuButton }
-
-        Meters { }
-
+        Meters { id: meters }
         NavigationBlock { id: navigationBlock }
-
         NorthArrow { id: northArrow }
-
         ScaleBar { id: scaleBar }
 
         Component.onCompleted: {

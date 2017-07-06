@@ -24,8 +24,8 @@ import "."
 
 MapQuickItem {
     id: marker
-    anchorPoint.x: sourceItem.width/2
-    anchorPoint.y: sourceItem.height/2
+    anchorPoint.x: sourceItem.width / 2
+    anchorPoint.y: sourceItem.height / 2
     coordinate: map.position.coordinate
     height: sourceItem.height
     visible: map.ready
@@ -63,10 +63,10 @@ MapQuickItem {
             onClicked: {
                 if (map.autoCenter) {
                     map.autoCenter = false;
-                    bubble.text = qsTranslate("", "Auto-center off");
+                    bubble.text = app.tr("Auto-center off");
                 } else {
                     map.autoCenter = true;
-                    bubble.text = qsTranslate("", "Auto-center on");
+                    bubble.text = app.tr("Auto-center on");
                     map.centerOnPosition();
                 }
                 bubble.visible = true;
@@ -91,8 +91,8 @@ MapQuickItem {
 
     transform: Rotation {
         angle: -map.rotation
-        origin.x: sourceItem.width/2
-        origin.y: sourceItem.height/2
+        origin.x: sourceItem.width / 2
+        origin.y: sourceItem.height / 2
     }
 
     z: 300

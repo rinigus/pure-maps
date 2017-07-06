@@ -25,6 +25,9 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    // To make TextSwitch text line up with IconListItem's text label.
+    property real switchLeftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
+
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.implicitHeight
@@ -40,7 +43,7 @@ Page {
 
             IconListItem {
                 icon: "image://theme/icon-m-search"
-                label: qsTranslate("", "Search")
+                label: app.tr("Search")
                 onClicked: {
                     app.pageStack.push("GeocodePage.qml");
                     app.pageStack.pushAttached("GeocodingResultsPage.qml");
@@ -49,23 +52,19 @@ Page {
 
             IconListItem {
                 icon: "image://theme/icon-m-car"
-                label: qsTranslate("", "Navigation")
-                onClicked: {
-                    app.pageStack.push("RoutePage.qml");
-                }
+                label: app.tr("Navigation")
+                onClicked: app.pageStack.push("RoutePage.qml");
             }
 
             IconListItem {
                 icon: "image://theme/icon-m-whereami"
-                label: qsTranslate("", "Nearby venues")
-                onClicked: {
-                    app.pageStack.push("NearbyPage.qml");
-                }
+                label: app.tr("Nearby venues")
+                onClicked: app.pageStack.push("NearbyPage.qml");
             }
 
             IconListItem {
                 icon: "image://theme/icon-m-share"
-                label: qsTranslate("", "Share current position")
+                label: app.tr("Share current position")
                 BusyIndicator {
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.horizontalPageMargin
@@ -76,18 +75,18 @@ Page {
                 }
                 onClicked: {
                     if (!gps.ready) return;
+                    var y = gps.position.coordinate.latitude;
+                    var x = gps.position.coordinate.longitude;
                     app.pageStack.push("SharePage.qml", {
-                        "coordinate": QtPositioning.coordinate(
-                            gps.position.coordinate.latitude,
-                            gps.position.coordinate.longitude),
-                        "title": qsTranslate("", "Share Current Position")
+                        "coordinate": QtPositioning.coordinate(y, x),
+                        "title": app.tr("Share Current Position")
                     });
                 }
             }
 
             IconListItem {
                 icon: "image://theme/icon-m-dot"
-                label: qsTranslate("", "Center on current position")
+                label: app.tr("Center on current position")
                 onClicked: {
                     map.centerOnPosition();
                     app.clearMenu();
@@ -96,7 +95,7 @@ Page {
 
             IconListItem {
                 icon: "image://theme/icon-m-clear"
-                label: qsTranslate("", "Clear map")
+                label: app.tr("Clear map")
                 onClicked: {
                     map.clear();
                     app.clearMenu();
@@ -105,18 +104,16 @@ Page {
 
             IconListItem {
                 icon: "image://theme/icon-m-levels"
-                label: qsTranslate("", "Basemaps and overlays")
-                onClicked: {
-                    app.pageStack.push("BasemapPage.qml");
-                }
+                label: app.tr("Basemaps and overlays")
+                onClicked: app.pageStack.push("BasemapPage.qml");
             }
 
             TextSwitch {
                 id: autoCenterItem
                 checked: map.autoCenter
                 height: Theme.itemSizeSmall
-                leftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
-                text: qsTranslate("", "Auto-center on position")
+                leftMargin: page.switchLeftMargin
+                text: app.tr("Auto-center on position")
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
                         autoCenterItem.checked = map.autoCenter;
@@ -132,8 +129,8 @@ Page {
                 id: autoRotateItem
                 checked: map.autoRotate
                 height: Theme.itemSizeSmall
-                leftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
-                text: qsTranslate("", "Auto-rotate on direction")
+                leftMargin: page.switchLeftMargin
+                text: app.tr("Auto-rotate on direction")
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
                         autoRotateItem.checked = map.autoRotate;
@@ -148,11 +145,11 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTranslate("", "About")
+                text: app.tr("About")
                 onClicked: app.pageStack.push("AboutPage.qml");
             }
             MenuItem {
-                text: qsTranslate("", "Preferences")
+                text: app.tr("Preferences")
                 onClicked: app.pageStack.push("PreferencesPage.qml");
             }
         }

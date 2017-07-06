@@ -23,11 +23,11 @@ Column {
 
     ComboBox {
         id: typeComboBox
-        label: qsTranslate("", "Type")
+        label: app.tr("Type")
         menu: ContextMenu {
-            MenuItem { text: qsTranslate("", "Car") }
-            MenuItem { text: qsTranslate("", "Bicycle") }
-            MenuItem { text: qsTranslate("", "Foot") }
+            MenuItem { text: app.tr("Car") }
+            MenuItem { text: app.tr("Bicycle") }
+            MenuItem { text: app.tr("Foot") }
         }
         property var keys: ["auto", "bicycle", "pedestrian"]
         Component.onCompleted: {

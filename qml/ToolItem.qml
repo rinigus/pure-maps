@@ -18,11 +18,12 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "."
 
 ListItem {
     id: item
     contentHeight: Theme.itemSizeSmall
-    width: parent.width/parent.count
+    width: parent.width / parent.count
 
     property string text: ""
 

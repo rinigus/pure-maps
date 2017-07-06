@@ -30,8 +30,10 @@ MapQuickItem {
             app.getIcon("icons/maneuver")
     }
     z: 201
-    property real duration: 0
+
+    property real   duration: 0
     property string icon: "flag"
     property string narrative: ""
-    property bool passive: false
+    property bool   passive: false
+
 }

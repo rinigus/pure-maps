@@ -24,8 +24,8 @@ import "."
 
 MapQuickItem {
     id: marker
-    anchorPoint.x: sourceItem.width/2
-    anchorPoint.y: sourceItem.height/2
+    anchorPoint.x: sourceItem.width / 2
+    anchorPoint.y: sourceItem.height / 2
     height: sourceItem.height
     width: sourceItem.width
 
@@ -60,7 +60,7 @@ MapQuickItem {
                 anchors.bottomMargin: bubble.padding
                 anchors.left: parent.left
                 anchors.leftMargin: bubble.padding
-                text: qsTranslate("", "Navigate")
+                text: app.tr("Navigate")
                 onClicked: {
                     var x = marker.coordinate.longitude;
                     var y = marker.coordinate.latitude;
@@ -77,7 +77,7 @@ MapQuickItem {
                 anchors.bottomMargin: bubble.padding
                 anchors.left: routeButton.right
                 anchors.leftMargin: Theme.paddingMedium
-                text: qsTranslate("", "Nearby")
+                text: app.tr("Nearby")
                 onClicked: {
                     var x = marker.coordinate.longitude;
                     var y = marker.coordinate.latitude;
@@ -94,13 +94,13 @@ MapQuickItem {
                 anchors.bottomMargin: bubble.padding
                 anchors.left: nearbyButton.right
                 anchors.leftMargin: Theme.paddingMedium
-                text: qsTranslate("", "Share")
+                text: app.tr("Share")
                 onClicked: {
                     var x = marker.coordinate.longitude;
                     var y = marker.coordinate.latitude;
                     app.showMenu("SharePage.qml", {
                         "coordinate": QtPositioning.coordinate(y, x),
-                        "title": "Share Location"
+                        "title": app.tr("Share Location")
                     });
                 }
             }
@@ -111,7 +111,7 @@ MapQuickItem {
                 anchors.bottomMargin: bubble.padding
                 anchors.right: parent.right
                 anchors.rightMargin: bubble.padding
-                text: qsTranslate("", "Web")
+                text: app.tr("Web")
                 useHighlight: true
                 visible: marker.link.length > 0
                 onClicked: Qt.openUrlExternally(marker.link);
@@ -123,13 +123,13 @@ MapQuickItem {
 
     transform: Rotation {
         angle: -map.rotation
-        origin.x: sourceItem.width/2
-        origin.y: sourceItem.height/2
+        origin.x: sourceItem.width / 2
+        origin.y: sourceItem.height / 2
     }
 
     z: 400
 
-    property bool bubbleVisible: false
+    property bool   bubbleVisible: false
     property string link: ""
     property string text: ""
     property string title: ""

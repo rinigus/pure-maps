@@ -23,6 +23,7 @@ import "js/util.js" as Util
 
 PositionSource {
     id: gps
+
     // If application is no longer active, turn positioning off immediately
     // if we already have a lock, otherwise keep trying for a couple minutes
     // and give up if we still don't gain that lock.
@@ -62,7 +63,7 @@ PositionSource {
                 coord.latitude, coord.longitude));
             gps.coordHistory = gps.coordHistory.slice(-3);
             // XXX: Direction is missing from gps.position.
-            // http://bugreports.qt.io/browse/QTBUG-36298
+            // https://bugreports.qt.io/browse/QTBUG-36298
             var direction = coordPrev.azimuthTo(coord);
             gps.directionHistory.push(direction);
             gps.directionHistory = gps.directionHistory.slice(-3);

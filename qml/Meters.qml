@@ -38,7 +38,7 @@ Item {
         color: "black"
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: Math.round(Theme.pixelRatio*18)
+        font.pixelSize: Math.round(Theme.pixelRatio * 18)
         horizontalAlignment: Text.AlignRight
         lineHeight: 1.25
     }
@@ -50,7 +50,7 @@ Item {
         color: "black"
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: Math.round(Theme.pixelRatio*18)
+        font.pixelSize: Math.round(Theme.pixelRatio * 18)
         horizontalAlignment: Text.AlignLeft
         lineHeight: 1.25
         text: "\n"
@@ -65,34 +65,38 @@ Item {
     }
 
     function update() {
+        // Update speed and positioning accuracy values in user's preferred units.
         if (!py.ready) return;
         if (app.conf.get("units") == "american") {
             labels.text = " mph\n ft"
             var lines = ["—", "—"];
             if (gps.position.speedValid)
-                lines[0] = Math.round(gps.position.speed*2.23694);
+                lines[0] = Math.round(gps.position.speed * 2.23694);
             if (gps.position.horizontalAccuracyValid)
-                lines[1] = Util.siground(gps.position.horizontalAccuracy*3.28084, 2);
+                lines[1] = Util.siground(gps.position.horizontalAccuracy * 3.28084, 2);
             values.text = lines.join("\n");
             values.doLayout();
+
         } else if (app.conf.get("units") == "british") {
             labels.text = " mph\n yd"
             var lines = ["—", "—"];
             if (gps.position.speedValid)
-                lines[0] = Math.round(gps.position.speed*2.23694);
+                lines[0] = Math.round(gps.position.speed * 2.23694);
             if (gps.position.horizontalAccuracyValid)
-                lines[1] = Util.siground(gps.position.horizontalAccuracy*1.09361, 2);
+                lines[1] = Util.siground(gps.position.horizontalAccuracy * 1.09361, 2);
             values.text = lines.join("\n");
             values.doLayout();
+
         } else {
             labels.text = " km/h\n m"
             var lines = ["—", "—"];
             if (gps.position.speedValid)
-                lines[0] = Math.round(gps.position.speed*3.6);
+                lines[0] = Math.round(gps.position.speed * 3.6);
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy, 2);
             values.text = lines.join("\n");
             values.doLayout();
+
         }
     }
 

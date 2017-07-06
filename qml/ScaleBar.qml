@@ -32,15 +32,15 @@ Item {
     visible: scaleWidth > 0
     z: 100
 
-    property var coordPrev: QtPositioning.coordinate(0, 0)
-    property real scaleWidth: 0
+    property var    coordPrev: QtPositioning.coordinate(0, 0)
+    property real   scaleWidth: 0
     property string text: ""
-    property real zoomLevelPrev: -1
+    property real   zoomLevelPrev: -1
 
     Rectangle {
         id: base
         color: "black"
-        height: Math.floor(Theme.pixelRatio*3)
+        height: Math.floor(Theme.pixelRatio * 3)
         width: scaleBar.scaleWidth
     }
 
@@ -48,26 +48,26 @@ Item {
         anchors.bottom: base.top
         anchors.left: base.left
         color: "black"
-        height: Math.floor(Theme.pixelRatio*10)
-        width: Math.floor(Theme.pixelRatio*3)
+        height: Math.floor(Theme.pixelRatio * 10)
+        width: Math.floor(Theme.pixelRatio * 3)
     }
 
     Rectangle {
         anchors.bottom: base.top
         anchors.right: base.right
         color: "black"
-        height: Math.floor(Theme.pixelRatio*10)
-        width: Math.floor(Theme.pixelRatio*3)
+        height: Math.floor(Theme.pixelRatio * 10)
+        width: Math.floor(Theme.pixelRatio * 3)
     }
 
     Text {
         anchors.bottom: base.top
-        anchors.bottomMargin: Math.floor(Theme.pixelRatio*4)
+        anchors.bottomMargin: Math.floor(Theme.pixelRatio * 4)
         anchors.horizontalCenter: base.horizontalCenter
         color: "black"
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: Math.round(Theme.pixelRatio*18)
+        font.pixelSize: Math.round(Theme.pixelRatio * 18)
         horizontalAlignment: Text.AlignHCenter
         text: scaleBar.text
     }

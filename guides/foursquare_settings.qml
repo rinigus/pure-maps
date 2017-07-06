@@ -23,10 +23,10 @@ Column {
 
     ComboBox {
         id: closestComboBox
-        label: qsTranslate("", "Prefer")
+        label: app.tr("Prefer")
         menu: ContextMenu {
-            MenuItem { text: qsTranslate("", "Closest") }
-            MenuItem { text: qsTranslate("", "Best") }
+            MenuItem { text: app.tr("Closest") }
+            MenuItem { text: app.tr("Best") }
         }
         Component.onCompleted: {
             var option = "guides.foursquare.sort_by_distance";

@@ -20,12 +20,14 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "."
 
+import "js/util.js" as Util
+
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
-    property bool loading: true
-    property bool populated: false
+    property bool   loading: true
+    property bool   populated: false
     property string title: ""
 
     SilicaListView {
@@ -35,11 +37,12 @@ Page {
         delegate: ListItem {
             id: listItem
             contentHeight: titleLabel.height + descriptionLabel.height + distanceLabel.height
+
             property bool visited: false
 
             ListItemLabel {
                 id: titleLabel
-                color: (listItem.highlighted || listItem.visited)?
+                color: (listItem.highlighted || listItem.visited) ?
                     Theme.highlightColor : Theme.primaryColor;
                 height: implicitHeight + Theme.paddingMedium
                 text: model.title
@@ -94,7 +97,7 @@ Page {
         PullDownMenu {
             visible: listView.model.count > 1
             MenuItem {
-                text: qsTranslate("", "Show all")
+                text: app.tr("Show all")
                 onClicked: {
                     var pois = [];
                     for (var i = 0; i < listView.model.count; i++) {
@@ -130,7 +133,7 @@ Page {
             listView.model.clear();
             page.loading = true;
             page.title = "";
-            busy.text = qsTranslate("", "Searching");
+            busy.text = app.tr("Searching");
         } else if (page.status === PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
@@ -152,12 +155,11 @@ Page {
                 page.title = "";
                 busy.error = results.message;
             } else if (results.length > 0) {
-                page.title = qsTranslate("", "%1 Results").arg(results.length);
-                for (var i = 0; i < results.length; i++)
-                    listView.model.append(results[i]);
+                page.title = app.tr("%1 Results", results.length);
+                Util.appendAll(listView.model, results);
             } else {
                 page.title = "";
-                busy.error = qsTranslate("", "No results");
+                busy.error = app.tr("No results");
             }
             page.loading = false;
             page.populated = true;

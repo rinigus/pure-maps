@@ -24,13 +24,13 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
     canNavigateForward: page.from && page.to &&
-        (page.fromText !== qsTranslate("", "Current position") || gps.ready) &&
-        (page.toText !== qsTranslate("", "Current position") || gps.ready)
+        (page.fromText !== app.tr("Current position") || gps.ready) &&
+        (page.toText   !== app.tr("Current position") || gps.ready)
 
-    property var from: null
+    property var    from: null
     property string fromText: ""
-    property var params: {}
-    property var to: null
+    property var    params: {}
+    property var    to: null
     property string toText: ""
 
     SilicaFlickable {
@@ -45,12 +45,12 @@ Page {
             property var settings: null
 
             PageHeader {
-                title: qsTranslate("", "Navigation")
+                title: app.tr("Navigation")
             }
 
             ValueButton {
                 id: usingButton
-                label: qsTranslate("", "Using")
+                label: app.tr("Using")
                 height: Theme.itemSizeSmall
                 value: py.evaluate("poor.app.router.name")
                 width: parent.width
@@ -65,17 +65,17 @@ Page {
 
             ValueButton {
                 id: fromButton
-                label: qsTranslate("", "From")
+                label: app.tr("From")
                 height: Theme.itemSizeSmall
                 value: page.fromText
                 // Avoid putting label and value on different lines.
-                width: 3*parent.width
+                width: 3 * parent.width
 
                 BusyIndicator {
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge + (parent.width - page.width)
+                    anchors.rightMargin: Theme.horizontalPageMargin + (parent.width - page.width)
                     anchors.verticalCenter: parent.verticalCenter
-                    running: page.fromText === qsTranslate("", "Current position") && !gps.ready
+                    running: page.fromText === app.tr("Current position") && !gps.ready
                     size: BusyIndicatorSize.Small
                     z: parent.z + 1
                 }
@@ -83,7 +83,7 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        if (dialog.query === qsTranslate("", "Current position")) {
+                        if (dialog.query === app.tr("Current position")) {
                             page.from = map.getPosition();
                             page.fromText = dialog.query;
                         } else {
@@ -98,17 +98,17 @@ Page {
 
             ValueButton {
                 id: toButton
-                label: qsTranslate("", "To")
+                label: app.tr("To")
                 height: Theme.itemSizeSmall
                 value: page.toText
                 // Avoid putting label and value on different lines.
-                width: 3*parent.width
+                width: 3 * parent.width
 
                 BusyIndicator {
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge + (parent.width - page.width)
+                    anchors.rightMargin: Theme.horizontalPageMargin + (parent.width - page.width)
                     anchors.verticalCenter: parent.verticalCenter
-                    running: page.toText === qsTranslate("", "Current position") && !gps.ready
+                    running: page.toText === app.tr("Current position") && !gps.ready
                     size: BusyIndicatorSize.Small
                     z: parent.z + 1
                 }
@@ -116,7 +116,7 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        if (dialog.query === qsTranslate("", "Current position")) {
+                        if (dialog.query === app.tr("Current position")) {
                             page.to = map.getPosition();
                             page.toText = dialog.query;
                         } else {
@@ -148,7 +148,7 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTranslate("", "Reverse endpoints")
+                text: app.tr("Reverse endpoints")
                 onClicked: {
                     var from = page.from;
                     var fromText = page.fromText;
@@ -166,14 +166,14 @@ Page {
 
     Component.onCompleted: {
         page.from = map.getPosition();
-        page.fromText = qsTranslate("", "Current position");
+        page.fromText = app.tr("Current position");
     }
 
     onStatusChanged: {
         if (page.status === PageStatus.Active) {
-            if (page.fromText === qsTranslate("", "Current position"))
+            if (page.fromText === app.tr("Current position"))
                 page.from = map.getPosition();
-            if (page.toText === qsTranslate("", "Current position"))
+            if (page.toText === app.tr("Current position"))
                 page.to = map.getPosition();
             var uri = py.evaluate("poor.app.router.results_qml_uri");
             app.pageStack.pushAttached(uri);
