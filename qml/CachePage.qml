@@ -20,11 +20,13 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "."
 
+import "js/util.js" as Util
+
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
-    property bool loading: true
+    property bool   loading: true
     property string title: ""
 
     SilicaListView {
@@ -50,9 +52,8 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + Theme.paddingMedium
-                // model.count negative during operations, see page.purge.
-                text: model.count < 0 ? "· · ·" :
-                    qsTranslate("", "%1 tiles · %2").arg(model.count).arg(model.size)
+                // model.count is negative during operations, see page.purge.
+                text: model.count < 0 ? "· · ·" : app.tr("%1 tiles · %2", model.count, model.size)
                 verticalAlignment: Text.AlignTop
             }
 
@@ -64,45 +65,29 @@ Page {
                 id: contextMenu
 
                 MenuItem {
-                    text: qsTranslate("", "Remove older than one week")
-                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
-                        page.purge(model.index, model.directory, 7);
-                    });
+                    text: app.tr("Remove older than one year")
+                    onClicked: contextMenu.remove(365);
                 }
 
                 MenuItem {
-                    text: qsTranslate("", "Remove older than one month")
-                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
-                        page.purge(model.index, model.directory, 30);
-                    });
+                    text: app.tr("Remove older than one month")
+                    onClicked: contextMenu.remove(30);
                 }
 
                 MenuItem {
-                    text: qsTranslate("", "Remove older than three months")
-                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
-                        page.purge(model.index, model.directory, 90);
-                    });
+                    text: app.tr("Remove older than one week")
+                    onClicked: contextMenu.remove(7);
                 }
 
                 MenuItem {
-                    text: qsTranslate("", "Remove older than six months")
-                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
-                        page.purge(model.index, model.directory, 180);
-                    });
+                    text: app.tr("Remove all")
+                    onClicked: contextMenu.remove(0);
                 }
 
-                MenuItem {
-                    text: qsTranslate("", "Remove older than one year")
-                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
-                        page.purge(model.index, model.directory, 365);
-                    });
-                }
-
-                MenuItem {
-                    text: qsTranslate("", "Remove all")
-                    onClicked: remorse.execute(listItem, qsTranslate("", "Removing"), function() {
-                        page.purge(model.index, model.directory, 0);
-                        listItem.visible = false;
+                function remove(age) {
+                    remorse.execute(listItem, app.tr("Removing"), function() {
+                        page.purge(model.index, model.directory, age);
+                        if (age === 0) listItem.visible = false;
                     });
                 }
 
@@ -131,30 +116,30 @@ Page {
     Component.onCompleted: {
         page.loading = true;
         page.title = "";
-        busy.text = qsTranslate("", "Calculating");
+        busy.text = app.tr("Calculating");
         page.populate();
     }
 
     function populate(query) {
-        // Load cache use statistics from the Python backend.
+        // Load cache statistics from the Python backend.
         listView.model.clear();
         py.call("poor.cache.stat", [], function(results) {
             if (results && results.length > 0) {
-                page.title = qsTranslate("", "Map Tile Cache")
-                for (var i = 0; i < results.length; i++)
-                    listView.model.append(results[i]);
+                page.title = app.tr("Map Tile Cache")
+                Util.appendAll(listView.model, results);
+                page.loading = false;
             } else {
                 page.title = "";
-                busy.error = qsTranslate("", "Empty cache, or error");
+                busy.error = app.tr("Empty cache, or error");
+                page.loading = false;
             }
-            page.loading = false;
         });
     }
 
-    function purge(index, directory, max_age) {
+    function purge(index, directory, age) {
         // Remove tiles in cache and recalculate statistics.
         listView.model.setProperty(index, "count", -1);
-        py.call("poor.cache.purge_directory", [directory, max_age], function(result) {
+        py.call("poor.cache.purge_directory", [directory, age], function(result) {
             py.call("poor.cache.stat_directory", [directory], function(result) {
                 listView.model.setProperty(index, "count", result.count);
                 listView.model.setProperty(index, "size", result.size);

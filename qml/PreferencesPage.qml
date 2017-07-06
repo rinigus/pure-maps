@@ -33,14 +33,14 @@ Page {
             anchors.fill: parent
 
             PageHeader {
-                title: qsTranslate("", "Preferences")
+                title: app.tr("Preferences")
             }
 
             TextSwitch {
                 id: downloadTilesItem
                 checked: app.conf.get("allow_tile_download")
-                description: qsTranslate("", "Uncheck to minimize data traffic. You will be left with previously downloaded and cached tiles.")
-                text: qsTranslate("", "Allow downloading map tiles")
+                description: app.tr("Uncheck to minimize data traffic. You will be left with previously downloaded and cached tiles.")
+                text: app.tr("Allow downloading map tiles")
                 onCheckedChanged: {
                     var value = downloadTilesItem.checked
                     if (value === app.conf.get("allow_tile_download")) return;
@@ -53,7 +53,7 @@ Page {
             TextSwitch {
                 id: showNarrativeItem
                 checked: map.showNarrative
-                text: qsTranslate("", "Show navigation narrative")
+                text: app.tr("Show navigation narrative")
                 onCheckedChanged: {
                     map.showNarrative = showNarrativeItem.checked;
                     app.conf.set("show_routing_narrative", map.showNarrative);
@@ -63,11 +63,11 @@ Page {
 
             ComboBox {
                 id: unitsComboBox
-                label: qsTranslate("", "Units")
+                label: app.tr("Units")
                 menu: ContextMenu {
-                    MenuItem { text: qsTranslate("", "Metric") }
-                    MenuItem { text: qsTranslate("", "American") }
-                    MenuItem { text: qsTranslate("", "British") }
+                    MenuItem { text: app.tr("Metric") }
+                    MenuItem { text: app.tr("American") }
+                    MenuItem { text: app.tr("British") }
                 }
                 property var values: ["metric", "american", "british"]
                 Component.onCompleted: {
@@ -83,12 +83,12 @@ Page {
 
             ComboBox {
                 id: sleepComboBox
-                description: qsTranslate("", "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
-                label: qsTranslate("", "Prevent sleep")
+                description: app.tr("Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
+                label: app.tr("Prevent sleep")
                 menu: ContextMenu {
-                    MenuItem { text: qsTranslate("", "Never") }
-                    MenuItem { text: qsTranslate("", "When navigating") }
-                    MenuItem { text: qsTranslate("", "Always") }
+                    MenuItem { text: app.tr("Never") }
+                    MenuItem { text: app.tr("When navigating") }
+                    MenuItem { text: app.tr("Always") }
                 }
                 property var values: ["never", "navigating", "always"]
                 Component.onCompleted: {
@@ -104,20 +104,21 @@ Page {
 
             ComboBox {
                 id: cacheComboBox
-                description: qsTranslate("", "Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic.")
-                label: qsTranslate("", "Cache map tiles")
+                description: app.tr("Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic.")
+                label: app.tr("Cache map tiles")
                 menu: ContextMenu {
-                    MenuItem { text: qsTranslate("", "For one week") }
-                    MenuItem { text: qsTranslate("", "For one month") }
-                    MenuItem { text: qsTranslate("", "For three months") }
-                    MenuItem { text: qsTranslate("", "For six months") }
-                    MenuItem { text: qsTranslate("", "For one year") }
-                    MenuItem { text: qsTranslate("", "Forever") }
+                    MenuItem { text: app.tr("One week") }
+                    MenuItem { text: app.tr("One month") }
+                    MenuItem { text: app.tr("One year") }
+                    MenuItem { text: app.tr("Forever") }
                 }
-                property var values: [7, 30, 90, 180, 365, 36500]
+                property bool ready: false
+                property var  values: [7, 30, 365, 36500]
                 Component.onCompleted: {
-                    // Activate closest in case the user has edited the configuration file
-                    // by hand using a value outside the combo box steps.
+                    // Activate the closest value in case the user has edited the configuration file
+                    // by hand using a value outside the combo box steps or used values 90 or 180
+                    // supported in Poor Maps < 0.31. Note that this only changes what is displayed,
+                    // the actual configuration value is only changed on user input.
                     var value = app.conf.get("cache_max_age");
                     var minIndex = -1, minDiff = 36500;
                     for (var i = 0; i < cacheComboBox.values.length; i++) {
@@ -126,27 +127,29 @@ Page {
                         minDiff = Math.min(minDiff, diff);
                     }
                     cacheComboBox.currentIndex = minIndex;
+                    cacheComboBox.ready = true;
                 }
                 onCurrentIndexChanged: {
+                    if (!cacheComboBox.ready) return;
                     var index = cacheComboBox.currentIndex;
                     app.conf.set("cache_max_age", cacheComboBox.values[index]);
                 }
             }
 
             Spacer {
-                height: Theme.paddingMedium
+                height: Theme.paddingLarge
             }
 
             Button {
                 id: examineButton
                 anchors.horizontalCenter: parent.horizontalCenter
                 preferredWidth: Theme.buttonWidthLarge
-                text: qsTranslate("", "Examine map tile cache")
+                text: app.tr("Examine map tile cache")
                 onClicked: app.pageStack.push("CachePage.qml");
             }
 
             Spacer {
-                height: Theme.paddingMedium
+                height: Theme.paddingLarge
             }
 
         }
