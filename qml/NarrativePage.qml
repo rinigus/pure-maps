@@ -20,6 +20,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "."
 
+import "js/util.js" as Util
+
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
@@ -32,18 +34,16 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: icon.height
+            contentHeight: narrativeLabel.implicitHeight + Theme.paddingMedium +
+                lengthLabel.implicitHeight + Theme.paddingMedium
 
             Image {
                 id: icon
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.horizontalPageMargin
                 fillMode: Image.Pad
-                height: {
-                    var labelHeight = narrativeLabel.implicitHeight + lengthLabel.implicitHeight;
-                    var contentHeight = Math.max(implicitHeight, labelHeight)
-                    return contentHeight + 2*Theme.paddingMedium;
-                }
+                height: narrativeLabel.implicitHeight + Theme.paddingMedium +
+                    lengthLabel.implicitHeight + Theme.paddingMedium
                 horizontalAlignment: Image.AlignRight
                 opacity: 0.9
                 smooth: true
@@ -62,11 +62,7 @@ Page {
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: {
-                    var labelHeight = implicitHeight + lengthLabel.implicitHeight
-                    var difference = icon.height - labelHeight;
-                    return implicitHeight + difference/2;
-                }
+                height: implicitHeight + Theme.paddingMedium
                 text: model.narrative
                 verticalAlignment: Text.AlignBottom
                 wrapMode: Text.WordWrap
@@ -81,13 +77,9 @@ Page {
                 anchors.top: narrativeLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: {
-                    var labelHeight = implicitHeight + narrativeLabel.implicitHeight
-                    var difference = icon.height - labelHeight;
-                    return implicitHeight + difference/2;
-                }
+                height: implicitHeight + Theme.paddingMedium
                 text: model.index < listView.count - 1 ?
-                    qsTranslate("", "Continue for %1.").arg(model.length) : map.route.attribution
+                    app.tr("Continue for %1.", model.length) : map.route.attribution
                 truncationMode: TruncationMode.Fade
                 verticalAlignment: Text.AlignTop
             }
@@ -112,7 +104,7 @@ Page {
 
             PageHeader {
                 id: header
-                title: qsTranslate("", "Navigation")
+                title: app.tr("Navigation")
             }
 
             Row {
@@ -121,21 +113,21 @@ Page {
                 width: parent.width
                 property int count: 3
                 ToolItem {
-                    text: qsTranslate("", "Begin")
+                    text: app.tr("Begin")
                     onClicked: {
                         map.beginNavigating();
                         app.clearMenu();
                     }
                 }
                 ToolItem {
-                    text: qsTranslate("", "Pause")
+                    text: app.tr("Pause")
                     onClicked: {
                         map.endNavigating();
                         app.clearMenu();
                     }
                 }
                 ToolItem {
-                    text: qsTranslate("", "Clear")
+                    text: app.tr("Clear")
                     onClicked: {
                         map.endNavigating();
                         map.clearRoute();
@@ -151,7 +143,7 @@ Page {
 
             DetailItem {
                 id: distItem
-                label: qsTranslate("", "Distance remaining")
+                label: app.tr("Distance remaining")
                 value: app.navigationStatus ? "%1 / %2"
                     .arg(app.navigationStatus.dest_dist || "?")
                     .arg(app.navigationStatus.total_dist || "?") : ""
@@ -159,7 +151,7 @@ Page {
 
             DetailItem {
                 id: timeItem
-                label: qsTranslate("", "Time remaining")
+                label: app.tr("Time remaining")
                 value: app.navigationStatus ? "%1 / %2"
                     .arg(timeItem.format(app.navigationStatus.dest_time || "?"))
                     .arg(timeItem.format(app.navigationStatus.total_time || "?")) : ""
@@ -176,7 +168,7 @@ Page {
 
             Spacer {
                 id: spacer2
-                height: 0.5*Theme.paddingLarge
+                height: Theme.paddingLarge - Theme.paddingMedium
             }
 
         }
@@ -206,8 +198,7 @@ Page {
         // Load narrative from the Python backend.
         var args = [map.center.longitude, map.center.latitude];
         py.call("poor.app.narrative.get_maneuvers", args, function(maneuvers) {
-            for (var i = 0; i < maneuvers.length; i++)
-                listView.model.append(maneuvers[i]);
+            Util.appendAll(listView.model, maneuvers);
         });
     }
 
