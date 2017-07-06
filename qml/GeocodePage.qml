@@ -20,12 +20,14 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "."
 
+import "js/util.js" as Util
+
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
     canNavigateForward: query.length > 0
 
-    property var history: []
+    property var    history: []
     property string query: ""
 
     SilicaListView {
@@ -50,7 +52,7 @@ Page {
             ContextMenu {
                 id: contextMenu
                 MenuItem {
-                    text: qsTranslate("", "Remove")
+                    text: app.tr("Remove")
                     onClicked: {
                         py.call_sync("poor.app.history.remove_place", [model.place]);
                         page.history = py.evaluate("poor.app.history.places");
@@ -74,13 +76,13 @@ Page {
 
             PageHeader {
                 id: header
-                title: qsTranslate("", "Search")
+                title: app.tr("Search")
             }
 
             ValueButton {
                 id: usingButton
-                label: qsTranslate("", "Using")
                 height: Theme.itemSizeSmall
+                label: app.tr("Using")
                 value: py.evaluate("poor.app.geocoder.name")
                 width: parent.width
                 onClicked: {
@@ -93,7 +95,7 @@ Page {
 
             SearchField {
                 id: searchField
-                placeholderText: qsTranslate("", "Address, landmark, etc.")
+                placeholderText: app.tr("Search")
                 width: parent.width
                 EnterKey.enabled: text.length > 0
                 EnterKey.onClicked: app.pageStack.navigateForward();
@@ -111,6 +113,13 @@ Page {
 
         property var searchField: undefined
 
+        ViewPlaceholder {
+            id: viewPlaceholder
+            enabled: false
+            hintText: app.tr('You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. "address, city" or "city, country".')
+            text: app.tr("No matches in history")
+        }
+
         VerticalScrollDecorator {}
 
     }
@@ -127,33 +136,20 @@ Page {
 
     function filterHistory() {
         // Filter search history for current search field text.
-        var query = listView.searchField.text.toLowerCase();
-        var found = [], n = 0;
-        for (var i = 0; i < page.history.length; i++) {
-            var historyItem = page.history[i].toLowerCase();
-            if (query && historyItem.indexOf(query) === 0) {
-                found.splice(n++, 0, page.history[i]);
-                if (found.length >= listView.count) break;
-            } else if (query.length === 0 || historyItem.indexOf(query) > 0) {
-                found.push(page.history[i]);
-                if (found.length >= listView.count) break;
-            }
-        }
-        for (var i = 0; i < found.length; i++) {
-            var text = Theme.highlightText(found[i], query, Theme.highlightColor);
-            listView.model.setProperty(i, "place", found[i]);
-            listView.model.setProperty(i, "text", text);
-            listView.model.setProperty(i, "visible", true);
-        }
-        for (var i = found.length; i < listView.count; i++)
-            listView.model.setProperty(i, "visible", false);
+        var query = listView.searchField.text;
+        var found = Util.findMatches(query, page.history, listView.model.count);
+        Util.injectMatches(listView.model, found, "place", "text");
+        viewPlaceholder.enabled = found.length === 0;
     }
 
     function loadHistory() {
         // Load search history and preallocate list items.
         page.history = py.evaluate("poor.app.history.places");
-        while (listView.model.count < 50)
-            listView.model.append({"place": "", "text": "", "visible": false});
+        while (listView.model.count < 100)
+            listView.model.append({"place": "",
+                                   "text": "",
+                                   "visible": false});
+
     }
 
 }
