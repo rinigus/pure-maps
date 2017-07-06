@@ -51,9 +51,7 @@ ApplicationWindow {
     property int  screenWidth: Screen.width
 
     Root { id: root }
-
     PositionSource { id: gps }
-
     Python { id: py }
 
     Component.onCompleted: {
@@ -93,9 +91,9 @@ ApplicationWindow {
         // Return path to icon suitable for user's screen,
         // finding the closest match to Theme.pixelRatio.
         var ratios = [1.00, 1.25, 1.50, 1.75, 2.00];
-        var minIndex = -1, minDiff = 1000;
+        var minIndex = -1, minDiff = 1000, diff;
         for (var i = 0; i < ratios.length; i++) {
-            var diff = Math.abs(Theme.pixelRatio - ratios[i]);
+            diff = Math.abs(Theme.pixelRatio - ratios[i]);
             minIndex = diff < minDiff ? i : minIndex;
             minDiff = Math.min(minDiff, diff);
         }
@@ -140,6 +138,16 @@ ApplicationWindow {
             app.pageStack.push("MenuPage.qml");
         }
         root.visible = false;
+    }
+
+    function tr(message) {
+        // Return translated message.
+        // In addition to the message, string formatting arguments can be passed
+        // as well as short-hand for message.arg(arg1).arg(arg2)...
+        message = qsTranslate("", message);
+        for (var i = 1; i < arguments.length; i++)
+            message = message.arg(arguments[i]);
+        return message;
     }
 
     function updateKeepAlive() {
