@@ -23,12 +23,12 @@ class TestModule(poor.test.TestCase):
     def setup_method(self, method):
         self.geocoder = poor.Geocoder("photon")
 
-    def test_geocode(self):
+    # XXX: Photon demo server is often over capacity.
+    def __test_geocode(self):
         results = self.geocoder.geocode("vallisaari, helsinki")
-        # XXX: Photon demo server is often over capacity.
-        # results = list(map(poor.AttrDict, results))
-        # assert results
-        # for result in results:
-        #     assert result.title
-        #     assert result.x
-        #     assert result.y
+        results = list(map(poor.AttrDict, results))
+        assert results
+        for result in results:
+            assert result.title
+            assert result.x
+            assert result.y

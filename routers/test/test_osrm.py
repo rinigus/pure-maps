@@ -23,10 +23,10 @@ class TestModule(poor.test.TestCase):
     def setup_method(self, method):
         self.router = poor.Router("osrm")
 
-    def test_geocode(self):
+    # XXX: OSRM demo server is often over capacity.
+    def __test_geocode(self):
         result = self.router.route("maunula, helsinki", "kallio, helsinki")
         result = poor.AttrDict(result)
-        # XXX: OSRM demo server is often over capacity.
-        # assert result.maneuvers
-        # assert result.x
-        # assert result.y
+        assert result.maneuvers
+        assert result.x
+        assert result.y
