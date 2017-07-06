@@ -49,6 +49,44 @@ function eucd(x1, y1, x2, y2) {
     return Math.sqrt(xd*xd + yd*yd);
 }
 
+function findMatches(query, candidates, max) {
+    // Return an array of matches from among candidates.
+    query = query.toLowerCase();
+    var found = [];
+    for (var i = 0; i < candidates.length; i++) {
+        // Match at the start of candidate strings.
+        var candidate = candidates[i].toLowerCase();
+        if (query && candidate.indexOf(query) === 0)
+            found.push(candidates[i]);
+    }
+    for (var i = 0; i < candidates.length; i++) {
+        // Match later in the candidate strings.
+        var candidate = candidates[i].toLowerCase();
+        if (query.length === 0 || candidate.indexOf(query) > 0)
+            found.push(candidates[i]);
+    }
+    found = found.slice(0, max);
+    for (var i = 0; i < found.length; i++) {
+        // Highlight matching portion in markup field.
+        found[i] = {"text": found[i]};
+        found[i].markup = Theme.highlightText(
+            found[i].text, query, Theme.highlightColor);
+    }
+    return found;
+}
+
+function injectMatches(model, found, text, markup) {
+    // Set array of matches into existing ListView model items.
+    found = found.slice(0, model.count);
+    for (var i = 0; i < found.length; i++) {
+        model.setProperty(i, text, found[i].text);
+        model.setProperty(i, markup, found[i].markup);
+        model.setProperty(i, "visible", true);
+    }
+    for (var i = found.length; i < model.count; i++)
+        model.setProperty(i, "visible", false);
+}
+
 function markDefault(providers, defpid) {
     // Edit the default provider's name in-place.
     for (var i = 0; i < providers.length; i++)
@@ -75,6 +113,14 @@ function median(x) {
 function rad2deg(rad) {
     // Convert radians to degrees.
     return rad / Math.PI * 180;
+}
+
+function removeMapItems(map, items) {
+    // Remove map items from map and destroy them.
+    for (var i = 0; i < items.length; i++) {
+        map.removeMapItem(items[i]);
+        items[i].destroy();
+    }
 }
 
 function siground(x, n) {
