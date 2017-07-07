@@ -81,9 +81,41 @@ NARRATIVE = {
 
 URL = "http://api.digitransit.fi/routing/v1/routers/{region}/index/graphql"
 
+def merge_bad_legs(legs):
+    """Merge any bad legs, modifying legs in-place."""
+    # Work around Digitransit sometimes breaking city bike legs
+    # into multiple legs, possibly with a short walk between.
+    i = 0
+    while i < len(legs):
+        modes = "-".join(legs[j].mode for j in range(i, len(legs)))
+        if modes.startswith(("BICYCLE-BICYCLE", "BICYCLE-WALK-BICYCLE")):
+            merge_legs(legs, [i, i + 1])
+        else:
+            i += 1
+
+def merge_legs(legs, ii):
+    """Merge the given legs into one, modifying legs in-place."""
+    a, z = ii[0], ii[-1]
+    for i in ii[1:]:
+        # Accumulate stats and geometry.
+        legs[a].length += legs[i].length
+        legs[a].duration += legs[i].duration
+        legs[a].x += legs[i].x
+        legs[a].y += legs[i].y
+        legs[a].stops_x += legs[i].stops_x
+        legs[a].stops_y += legs[i].stops_y
+    # Set arrival based on the last leg.
+    legs[a].arr_name = legs[z].arr_name
+    legs[a].arr_x = legs[z].arr_x
+    legs[a].arr_y = legs[z].arr_y
+    legs[a].arr_time = legs[z].arr_time
+    legs[a].arr_unix = legs[z].arr_unix
+    for i in list(reversed(ii[1:])):
+        del legs[i]
+
 def parse_legs(legs):
     """Parse legs from routing result."""
-    return [poor.AttrDict(
+    legs = [poor.AttrDict(
         mode=leg.mode,
         mode_name=MODE_NAMES.get(leg.mode, "BUS"),
         color=COLORS.get(leg.mode, "BUS"),
@@ -108,6 +140,8 @@ def parse_legs(legs):
         stops_x=[float(x.lon) for x in leg.intermediateStops or []],
         stops_y=[float(x.lat) for x in leg.intermediateStops or []],
     ) for leg in legs]
+    merge_bad_legs(legs)
+    return legs
 
 def parse_agency(leg):
     """Parse agency name from `leg`."""
