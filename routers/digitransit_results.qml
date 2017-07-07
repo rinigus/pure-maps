@@ -114,9 +114,11 @@ Page {
                     Label {
                         id: barChunkLabel
                         height: barChunk.height
+                        horizontalAlignment: Text.AlignHCenter
                         text: leg.line
                         verticalAlignment: Text.AlignVCenter
-                        x: barChunk.x + Theme.paddingMedium
+                        width: barChunk.width
+                        x: barChunk.x
                         y: barChunk.y
                     }
 
