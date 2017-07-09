@@ -149,7 +149,7 @@ Page {
             }
 
             Spacer {
-                height: Theme.paddingLarge
+                height: 2 * Theme.paddingLarge
             }
 
         }
