@@ -1,3 +1,12 @@
+2017-07-09: Poor Maps 0.31
+==========================
+
+* Add city bikes to the Digitransit router
+* Add ferry icon for navigation instructions
+* Add hint texts to search screens
+* Hide provider attribution behind long tap
+* Update translations
+
 2017-06-27: Poor Maps 0.30
 ==========================
 
