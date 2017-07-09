@@ -101,8 +101,7 @@ Dialog {
         ViewPlaceholder {
             id: viewPlaceholder
             enabled: false
-            hintText: app.tr("You can search by venue type or name.")
-            text: app.tr("No matches in history")
+            hintText: app.tr("You can search for venues by type or name.")
         }
 
         VerticalScrollDecorator {}

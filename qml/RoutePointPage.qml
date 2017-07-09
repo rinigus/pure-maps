@@ -117,7 +117,6 @@ Dialog {
             id: viewPlaceholder
             enabled: false
             hintText: app.tr("You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. “address, city” or “city, country”.")
-            text: app.tr("No matches in history")
         }
 
         VerticalScrollDecorator {}
