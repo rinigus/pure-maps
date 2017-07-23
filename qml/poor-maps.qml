@@ -41,12 +41,13 @@ ApplicationWindow {
     property var  map: null
     property var  menuButton: null
     property var  narrativePageSeen: false
+    property bool navigationActive: false
     property var  navigationBlock: null
+    property bool navigationCanStart: false
     property var  navigationDirection: null
+    property bool navigationReroutable: false
     property var  navigationStatus: null
     property var  navigationTarget: null
-    property bool navigationReroutable: false
-    property bool navigationActive: false
     property var  northArrow: null
     property var  routerInfo: null
     property bool running: applicationActive || cover.active
