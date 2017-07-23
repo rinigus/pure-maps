@@ -48,6 +48,7 @@ ApplicationWindow {
     property bool navigationReroutable: false
     property bool navigationActive: false
     property var  northArrow: null
+    property var  routerInfo: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
     property int  screenHeight: Screen.height
@@ -110,15 +111,17 @@ ApplicationWindow {
     }
 
     function navigationReroute() {
+        app.routerInfo.setInfo(app.tr("Finding new route"))
         // Prevent new reroute calculations before this route is ready
         app.navigationReroutable = false;
         // Start recalculations
         var args = [map.getPosition(), app.navigationTarget];
         py.call("poor.app.router.route", args, function(route) {
             if (route && route.error && route.message) {
-                console.log("Rerouting error: " + route.message);
+                app.routerInfo.setError(route.message);
             } else if (route && route.x && route.x.length > 0) {
                 app.hideMenu();
+                app.routerInfo.clear();
                 map.addRoute({
                     "x": route.x,
                     "y": route.y,
@@ -136,7 +139,7 @@ ApplicationWindow {
                 app.clearMenu();
                 app.navigationReroutable = true;
             } else {
-                console.log("Rerouting error: " + app.tr("No results"));
+                app.routerInfo.setError(app.tr("New route not found"));
             }
         });
     }
