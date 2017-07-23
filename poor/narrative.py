@@ -169,10 +169,12 @@ class Narrative:
         man_node, man_dist, man_time, icon, narrative = man
         man_dist = poor.util.format_distance(man_dist)
         man_time = poor.util.format_time(man_time)
+        reroute = False
         if seg_dist > 200:
             # Don't show the narrative or details calculated
             # from nodes along the route if far off route.
             dest_time = man_time = icon = narrative = None
+            reroute = True
         # Don't provide route direction to auto-rotate by if off route.
         direction = self._get_direction(x, y, node) if seg_dist < 50 else None
         return dict(total_dist=poor.util.format_distance(max(self.dist)),
@@ -183,7 +185,8 @@ class Narrative:
                     man_time=man_time,
                     icon=icon,
                     narrative=narrative,
-                    direction=direction)
+                    direction=direction,
+                    reroute=reroute)
 
     def _get_display_destination(self, x, y, node, seg_dist):
         """Return destination details to display."""

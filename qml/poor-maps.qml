@@ -44,6 +44,9 @@ ApplicationWindow {
     property var  navigationBlock: null
     property var  navigationDirection: null
     property var  navigationStatus: null
+    property var  navigationTarget: null
+    property bool navigationReroutable: false
+    property bool navigationActive: false
     property var  northArrow: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
@@ -106,6 +109,38 @@ ApplicationWindow {
         root.visible = true;
     }
 
+    function navigationReroute() {
+        // Prevent new reroute calculations before this route is ready
+        app.navigationReroutable = false;
+        // Start recalculations
+        var args = [map.getPosition(), app.navigationTarget];
+        py.call("poor.app.router.route", args, function(route) {
+            if (route && route.error && route.message) {
+                console.log("Rerouting error: " + route.message);
+            } else if (route && route.x && route.x.length > 0) {
+                app.hideMenu();
+                map.addRoute({
+                    "x": route.x,
+                    "y": route.y,
+                    "mode": "car",
+                    "attribution": route.attribution
+                });
+                map.hidePoiBubbles();
+                map.fitViewToRoute();
+                map.addManeuvers(route.maneuvers);
+                //app.pageStack.navigateBack(PageStackAction.Immediate);
+
+                // start navigation again
+                app.narrativePageSeen = true;
+                map.beginNavigating();
+                app.clearMenu();
+                app.navigationReroutable = true;
+            } else {
+                console.log("Rerouting error: " + app.tr("No results"));
+            }
+        });
+    }
+
     function setNavigationStatus(status) {
         // Set values of labels in the navigation status area.
         if (status && map.showNarrative) {
@@ -116,6 +151,10 @@ ApplicationWindow {
             app.navigationBlock.manTime   = status.man_time  || "";
             app.navigationBlock.narrative = status.narrative || "";
             app.navigationDirection       = status.direction || null;
+
+            if (status.reroute && app.navigationReroutable && app.navigationActive)  {
+                app.navigationReroute();
+            }
         } else {
             app.navigationBlock.destDist  = "";
             app.navigationBlock.destTime  = "";

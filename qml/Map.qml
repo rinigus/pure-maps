@@ -251,6 +251,7 @@ Map {
     }
 
     function beginNavigating() {
+        app.navigationActive = true;
         // Set UI to navigation mode.
         map.zoomLevel < 16 && map.setZoomLevel(16);
         map.centerOnPosition();
@@ -331,6 +332,7 @@ Map {
     }
 
     function endNavigating() {
+        app.navigationActive = false;
         // Restore UI from navigation mode.
         map.autoCenter = false;
         map.autoRotate = false;
@@ -407,7 +409,6 @@ Map {
         // Return the current position as [x,y].
         return [map.position.coordinate.longitude,
                 map.position.coordinate.latitude];
-
     }
 
     function hidePoiBubbles() {
