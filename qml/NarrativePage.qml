@@ -129,6 +129,8 @@ Page {
                 ToolItem {
                     text: app.tr("Clear")
                     onClicked: {
+                        app.navigationReroutable = false;
+                        app.navigationTarget = null;
                         map.endNavigating();
                         map.clearRoute();
                         app.clearMenu();
