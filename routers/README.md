@@ -57,7 +57,9 @@ the Python interpreter or a test script, e.g.
 ```python
 >>> import poor
 >>> router = poor.Router("my_router")
->>> router.route("erottaja, helsinki", "tapiola, espoo")
+>>> router.route("erottaja, helsinki", None, "tapiola, espoo")
 ```
 
-and qmlscene (`qmlscene qml/poor-maps.qml`) for testing.
+and qmlscene (`qmlscene qml/poor-maps.qml`) for testing. In Python
+example, the arguments of `route` function correspond to point of
+origin, bearing direction as an angle or `None`, and the target.
