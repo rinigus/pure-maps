@@ -263,6 +263,32 @@ Map {
         });
     }
 
+    function reRoute(route) {
+        /*
+         * Re-route by changing with the given polyline and maneuvers
+         *
+         * Expected fields in route:
+         *  - x: Array of route polyline longitude coordinates
+         *  - y: Array of route polyline latitude coordinates
+         *  - attribution: Plain text router attribution
+         *  - mode: Transport mode: "car" or "transit"
+         *  - maneuvers: as expected by addManeuvers
+         */
+        map.clearRoute();
+        map.route.setPath(route.x, route.y);
+        map.route.attribution = route.attribution || "";
+        map.route.mode = route.mode || "car";
+        map.route.redraw();
+        py.call_sync("poor.app.narrative.set_mode", [route.mode || "car"]);
+        py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
+            map.hasRoute = true;
+        });
+        map.saveRoute();
+        map.saveManeuvers();
+        map.hidePoiBubbles();
+        map.addManeuvers(route.maneuvers);
+    }
+
     function centerOnPosition() {
         // Center map on the current position.
         if (app.navigationBlock.height > 0 || map.autoRotate) {

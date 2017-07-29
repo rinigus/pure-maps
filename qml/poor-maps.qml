@@ -123,20 +123,13 @@ ApplicationWindow {
             } else if (route && route.x && route.x.length > 0) {
                 app.hideMenu();
                 app.routerInfo.clear();
-                map.addRoute({
-                    "x": route.x,
-                    "y": route.y,
-                    "mode": "car",
-                    "attribution": route.attribution
-                });
-                map.hidePoiBubbles();
-                map.fitViewToRoute();
-                map.addManeuvers(route.maneuvers);
-                //app.pageStack.navigateBack(PageStackAction.Immediate);
-
-                // start navigation again
-                app.narrativePageSeen = true;
-                map.beginNavigating();
+                map.reRoute({
+                            "x": route.x,
+                            "y": route.y,
+                            "mode": "car",
+                            "attribution": route.attribution,
+                            "maneuvers": route.maneuvers
+                            });
                 app.clearMenu();
                 app.navigationReroutable = true;
             } else {
