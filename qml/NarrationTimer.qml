@@ -39,7 +39,9 @@ Timer {
         if (!py.ready) return;
         var coord = map.position.coordinate;
         if (coord.distanceTo(timer.coordPrev) < 10) return;
-        var args = [coord.longitude, coord.latitude, map.position.horizontalAccuracy, map.position.horizontalAccuracyValid];
+        var accuracy = map.position.horizontalAccuracyValid ?
+            map.position.horizontalAccuracy : null;
+        var args = [coord.longitude, coord.latitude, accuracy];
         py.call("poor.app.narrative.get_display", args, function(status) {
             app.setNavigationStatus(status);
             timer.coordPrev.longitude = coord.longitude;

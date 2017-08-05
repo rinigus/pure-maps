@@ -153,7 +153,7 @@ class Narrative:
                 x, y, x1, y1, x2, y2))
         return dist
 
-    def get_display(self, x, y, accuracy, accuracy_valid):
+    def get_display(self, x, y, accuracy=None):
         """Return a dictionary of status details to display."""
         if not self.ready: return None
         if self.mode == "transit":
@@ -173,13 +173,10 @@ class Narrative:
             # Don't show the narrative or details calculated
             # from nodes along the route if far off route.
             dest_time = man_time = icon = narrative = None
-        reroute = False
-        reroute_distance = 200 # in meters
-        if accuracy_valid: reroute_distance += accuracy
-        if seg_dist > reroute_distance:
-            reroute = True
         # Don't provide route direction to auto-rotate by if off route.
         direction = self._get_direction(x, y, node) if seg_dist < 50 else None
+        # Trigger rerouting if far off route.
+        reroute = seg_dist > 200 + (accuracy or 40000000)
         return dict(total_dist=poor.util.format_distance(max(self.dist)),
                     total_time=poor.util.format_time(max(self.time)),
                     dest_dist=dest_dist,
