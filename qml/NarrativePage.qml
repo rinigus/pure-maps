@@ -114,28 +114,21 @@ Page {
                 property int count: 3
                 ToolItem {
                     text: app.tr("Begin")
-                    enabled: app.navigationCanStart
                     onClicked: {
-                        if (app.navigationCanStart) {
-                            map.beginNavigating();
-                            app.clearMenu();
-                        }
+                        map.beginNavigating();
+                        app.clearMenu();
                     }
                 }
                 ToolItem {
                     text: app.tr("Pause")
-                    enabled: app.navigationCanStart
                     onClicked: {
-                        if (app.navigationCanStart) {
-                            map.endNavigating();
-                            app.clearMenu();
-                        }
+                        map.endNavigating();
+                        app.clearMenu();
                     }
                 }
                 ToolItem {
                     text: app.tr("Clear")
                     onClicked: {
-                        app.navigationCanStart = false;
                         app.navigationReroutable = false;
                         app.navigationTarget = null;
                         map.endNavigating();
