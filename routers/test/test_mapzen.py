@@ -24,7 +24,7 @@ class TestModule(poor.test.TestCase):
         self.router = poor.Router("mapzen")
 
     def test_geocode(self):
-        result = self.router.route("vuosaari, helsinki", None, "arabianranta, helsinki")
+        result = self.router.route("vuosaari, helsinki", "arabianranta, helsinki")
         result = poor.AttrDict(result)
         assert result.maneuvers
         assert result.x
