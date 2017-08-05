@@ -24,6 +24,7 @@ IconButton {
     anchors.bottom: parent.bottom
     anchors.bottomMargin: Theme.paddingSmall
     anchors.horizontalCenter: parent.horizontalCenter
+    height: icon.sourceSize.height
     icon.smooth: false
     icon.source: app.getIcon("icons/menu")
     visible: py.ready

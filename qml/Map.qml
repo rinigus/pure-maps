@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import QtLocation 5.0
 import QtPositioning 5.3
+import Sailfish.Silica 1.0
 import "."
 
 import "js/util.js" as Util
@@ -157,10 +158,19 @@ Map {
             // If the navigation block covers the top part of the screen,
             // center the position to the part of the map remaining visible.
             var dy = app.navigationBlock.height / 2;
-            if (map.autoRotate)
+            if (map.autoRotate) {
                 // If auto-rotate is on, the user is always heading up
                 // on the screen and should see more ahead than behind.
                 dy += (0.5 - map.constants.navigationCenterY) * height;
+                // Avoid overlap with the menu button. Note that the position marker
+                // height includes the arrow, which points up when navigating,
+                // leaving padding the size of the arrow at the bottom.
+                dy = Math.min(dy, (app.screenHeight/2 -
+                                   app.menuButton.height -
+                                   app.menuButton.anchors.bottomMargin -
+                                   map.positionMarker.height/2));
+
+            }
             // https://en.wikipedia.org/wiki/Azimuth#Cartographical_azimuth
             var cx = map.width  / 2 + dy * Math.sin(Util.deg2rad(map.rotation));
             var cy = map.height / 2 + dy * Math.cos(Util.deg2rad(map.rotation));
@@ -273,6 +283,14 @@ Map {
                 // on the screen and should see more ahead than behind.
                 var height = app.screenHeight - app.navigationBlock.height;
                 dy += (0.5 - map.constants.navigationCenterY) * height;
+                // Avoid overlap with the menu button. Note that the position marker
+                // height includes the arrow, which points up when navigating,
+                // leaving padding the size of the arrow at the bottom.
+                dy = Math.min(dy, (app.screenHeight/2 -
+                                   app.menuButton.height -
+                                   app.menuButton.anchors.bottomMargin -
+                                   map.positionMarker.height/2));
+
             }
             var p0 = map.toCoordinate(Qt.point(map.width/2, map.height/2));
             var p1 = map.toCoordinate(Qt.point(map.width/2, map.height/2 + dy));
