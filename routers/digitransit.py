@@ -225,7 +225,7 @@ def prepare_endpoint(point):
     results = geocoder.geocode(point, dict(limit=3))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
-def route(fm, fmdir, to, params):
+def route(fm, to, heading, params):
     """Find routes and return their properties as dictionaries."""
     fm, to = map(prepare_endpoint, (fm, to))
     region = poor.conf.routers.digitransit.region

@@ -130,7 +130,7 @@ def prepare_endpoint(point):
     results = geocoder.geocode(point, dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
-def route(fm, fmdir, to, params):
+def route(fm, to, heading, params):
     """Find route and return its properties as a dictionary."""
     fm, to = map(prepare_endpoint, (fm, to))
     url = URL.format(**locals())

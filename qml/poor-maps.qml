@@ -116,7 +116,7 @@ ApplicationWindow {
         // Prevent new reroute calculations before this route is ready
         app.navigationReroutable = false;
         // Start recalculations
-        var args = [map.getPosition(), gps.direction, app.navigationTarget];
+        var args = [map.getPosition(), app.navigationTarget, gps.direction];
         py.call("poor.app.router.route", args, function(route) {
             if (route && route.error && route.message) {
                 app.routerInfo.setError(route.message);
