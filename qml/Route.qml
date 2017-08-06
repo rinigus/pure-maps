@@ -167,6 +167,13 @@ Canvas {
         return [xmin, xmax, ymin, ymax];
     }
 
+    function getDestination() {
+        // Return coordinates [x,y] of the route destination.
+        return [canvas.path.x[canvas.path.x.length - 1],
+                canvas.path.y[canvas.path.y.length - 1]];
+
+    }
+
     function redraw() {
         // Clear canvas and redraw entire route.
         canvas.changed = true;

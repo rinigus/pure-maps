@@ -340,8 +340,6 @@ Map {
         map.autoRotate = false;
         map.zoomLevel > 15 && map.setZoomLevel(15);
         app.navigationActive = false;
-        app.navigationReroutable = false;
-        app.navigationTarget = null;
     }
 
     function fitViewtoCoordinates(coords) {

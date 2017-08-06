@@ -44,10 +44,9 @@ ApplicationWindow {
     property bool navigationActive: false
     property var  navigationBlock: null
     property var  navigationDirection: null
-    property bool navigationReroutable: false
     property var  navigationStatus: null
-    property var  navigationTarget: null
     property var  northArrow: null
+    property bool rerouting: false
     property var  routerInfo: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
@@ -112,11 +111,12 @@ ApplicationWindow {
 
     function reroute() {
         // Find a new route from the current position to the existing destination.
+        if (app.rerouting) return;
         app.routerInfo.setInfo(app.tr("Rerouting"));
-        app.navigationReroutable = false;
+        app.rerouting = true;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
-        var args = [map.getPosition(), app.navigationTarget, gps.direction];
+        var args = [map.getPosition(), map.route.getDestination(), gps.direction];
         py.call("poor.app.router.route", args, function(route) {
             if (Array.isArray(route) && route.length > 0)
                 // If the router returns multiple alternative routes,
@@ -131,12 +131,12 @@ ApplicationWindow {
                     "y": route.y,
                     "mode": route.mode || "car",
                     "attribution": route.attribution || ""
-                });
+                }, true);
                 map.addManeuvers(route.maneuvers);
-                app.navigationReroutable = true;
             } else {
                 app.routerInfo.setError(app.tr("Rerouting failed"));
             }
+            app.rerouting = false;
         });
     }
 
@@ -160,7 +160,7 @@ ApplicationWindow {
             app.navigationDirection       = null;
         }
         app.navigationStatus = status;
-        status && status.reroute && app.navigationReroutable && app.navigationActive && app.reroute();
+        status && status.reroute && app.navigationActive && app.reroute();
     }
 
     function showMenu(page, params) {
