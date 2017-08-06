@@ -123,7 +123,7 @@ class Narrative:
         length = self._calculate_length_ahead(node)
         directions = [self._calculate_direction_ahead(node)]
         r = 1
-        while length < 50 and node - r >= 0 and node + r < len(self.x):
+        while length < 50 and node - r >= 0 and node + r < len(self.x) - 1:
             directions.append(self._calculate_direction_ahead(node - r))
             directions.append(self._calculate_direction_ahead(node + r))
             length += self._calculate_length_ahead(node - r)
