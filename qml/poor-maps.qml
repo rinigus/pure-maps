@@ -154,8 +154,9 @@ ApplicationWindow {
         if (!gps.position.horizontalAccuracyValid) return;
         if (gps.position.horizontalAccuracy > 100) return;
         if (app.rerouteTotalCalls > 50) return;
+        // Double rerouting interval with each error, limit to one minute.
         var interval = Math.pow(2, app.rerouteConsecutiveErrors) * 5000;
-        interval = Math.min(interval, 300000);
+        interval = Math.min(interval, 60000);
         if (Date.now() - app.reroutePreviousTime < interval) return;
         return app.reroute();
     }
