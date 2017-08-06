@@ -25,7 +25,6 @@ ListItem {
     contentHeight: Theme.itemSizeSmall
     width: parent.width / parent.count
 
-    property bool   enabled: true
     property string text: ""
 
     Rectangle {
@@ -38,11 +37,10 @@ ListItem {
         anchors.fill: parent
         anchors.leftMargin: Theme.paddingMedium
         anchors.rightMargin: Theme.paddingMedium
-        color: item.highlighted && item.enabled ? Theme.highlightColor : Theme.primaryColor
+        color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
         height: Theme.itemSizeSmall
         horizontalAlignment: Text.AlignHCenter
         text: item.text
-        opacity: item.enabled ? 1.0 : 0.1
     }
 
 }
