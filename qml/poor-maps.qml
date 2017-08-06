@@ -118,6 +118,10 @@ ApplicationWindow {
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
         var args = [map.getPosition(), app.navigationTarget, gps.direction];
         py.call("poor.app.router.route", args, function(route) {
+            if (Array.isArray(route) && route.length > 0)
+                // If the router returns multiple alternative routes,
+                // always reroute using the first one.
+                route = route[0];
             if (route && route.error && route.message) {
                 app.routerInfo.setError(route.message);
             } else if (route && route.x && route.x.length > 0) {

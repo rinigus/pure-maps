@@ -6,10 +6,13 @@ file that implements the `route` function and one or two QML files. The
 `route` function should given two points return properties of the found
 route. The from and to points given as arguments can be either strings
 (addresses, landmarks, etc.) or two-element tuples or lists of (x, y)
-coordinates. The return value format is up to you, since you handle that
-in your router-specific QML. However, for passing onwards, a dictionary
-of route properties is a good idea, or a list of dictionaries if
-returning multiple routes.
+coordinates. The return value should be a dictionary of route properties
+for a single route or a list of dictionaries if returning multiple
+alternative routes. See the routers shipped with Poor for the exact
+fields expected in the return value. Note that while you handle the
+return value yourself in router specific QML, rerouting doesn't go
+through that same interactive code and requires a return value
+consistent with other routers.
 
 Of the two QML files, the settings file (`*_settings.qml`) is optional;
 it can be used to provide a column of router-specific settings, which
@@ -57,9 +60,7 @@ the Python interpreter or a test script, e.g.
 ```python
 >>> import poor
 >>> router = poor.Router("my_router")
->>> router.route("erottaja, helsinki", None, "tapiola, espoo")
+>>> router.route("erottaja, helsinki", "tapiola, espoo")
 ```
 
-and qmlscene (`qmlscene qml/poor-maps.qml`) for testing. In Python
-example, the arguments of `route` function correspond to point of
-origin, bearing direction as an angle or `None`, and the target.
+and qmlscene (`qmlscene qml/poor-maps.qml`) for testing.

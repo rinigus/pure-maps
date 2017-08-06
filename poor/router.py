@@ -85,7 +85,7 @@ class Router:
         tuples or lists of (x,y) coordinates. `heading` is the initial
         direction as an angle with zero being north, increasing clockwise, with
         360 being north again. `heading` is mostly useful for rerouting, to
-        avoid suggesting U-turns, and will be be ``None`` in non-rerouting
+        avoid suggesting U-turns, and will be ``None`` in non-rerouting
         context. `params` can be used to specify a dictionary of
         router-specific parameters.
         """
