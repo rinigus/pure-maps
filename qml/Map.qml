@@ -225,7 +225,7 @@ Map {
         map.savePois();
     }
 
-    function addRoute(route) {
+    function addRoute(route, amend) {
         /*
          * Add a polyline to represent a route.
          *
@@ -234,8 +234,11 @@ Map {
          *  - y: Array of route polyline latitude coordinates
          *  - attribution: Plain text router attribution
          *  - mode: Transport mode: "car" or "transit"
+         *
+         * amend should be true to update the current polyline with minimum side-effects,
+         * e.g. when rerouting, not given or false otherwise.
          */
-        map.endNavigating();
+        amend || map.endNavigating();
         map.clearRoute();
         map.route.setPath(route.x, route.y);
         map.route.attribution = route.attribution || "";
@@ -247,11 +250,10 @@ Map {
         });
         map.saveRoute();
         map.saveManeuvers();
-        app.narrativePageSeen = false;
+        app.narrativePageSeen = !!amend;
     }
 
     function beginNavigating() {
-        app.navigationActive = true;
         // Set UI to navigation mode.
         map.zoomLevel < 16 && map.setZoomLevel(16);
         map.centerOnPosition();
@@ -261,32 +263,7 @@ Map {
             map.autoCenter = true;
             map.autoRotate = true;
         });
-    }
-
-    function reRoute(route) {
-        /*
-         * Re-route by changing with the given polyline and maneuvers
-         *
-         * Expected fields in route:
-         *  - x: Array of route polyline longitude coordinates
-         *  - y: Array of route polyline latitude coordinates
-         *  - attribution: Plain text router attribution
-         *  - mode: Transport mode: "car" or "transit"
-         *  - maneuvers: as expected by addManeuvers
-         */
-        map.clearRoute();
-        map.route.setPath(route.x, route.y);
-        map.route.attribution = route.attribution || "";
-        map.route.mode = route.mode || "car";
-        map.route.redraw();
-        py.call_sync("poor.app.narrative.set_mode", [route.mode || "car"]);
-        py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
-            map.hasRoute = true;
-        });
-        map.saveRoute();
-        map.saveManeuvers();
-        map.hidePoiBubbles();
-        map.addManeuvers(route.maneuvers);
+        app.navigationActive = true;
     }
 
     function centerOnPosition() {
@@ -358,11 +335,11 @@ Map {
     }
 
     function endNavigating() {
-        app.navigationActive = false;
         // Restore UI from navigation mode.
         map.autoCenter = false;
         map.autoRotate = false;
         map.zoomLevel > 15 && map.setZoomLevel(15);
+        app.navigationActive = false;
     }
 
     function fitViewtoCoordinates(coords) {
@@ -435,6 +412,7 @@ Map {
         // Return the current position as [x,y].
         return [map.position.coordinate.longitude,
                 map.position.coordinate.latitude];
+
     }
 
     function hidePoiBubbles() {
