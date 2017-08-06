@@ -46,6 +46,9 @@ ApplicationWindow {
     property var  navigationDirection: null
     property var  navigationStatus: null
     property var  northArrow: null
+    property int  rerouteConsecutiveErrors: 0
+    property var  reroutePreviousTime: -1
+    property int  rerouteTotalCalls: 0
     property bool rerouting: false
     property var  routerInfo: null
     property bool running: applicationActive || cover.active
@@ -124,6 +127,7 @@ ApplicationWindow {
                 route = route[0];
             if (route && route.error && route.message) {
                 app.routerInfo.setError(route.message);
+                app.rerouteConsecutiveErrors++;
             } else if (route && route.x && route.x.length > 0) {
                 app.routerInfo.clear();
                 map.addRoute({
@@ -133,11 +137,27 @@ ApplicationWindow {
                     "attribution": route.attribution || ""
                 }, true);
                 map.addManeuvers(route.maneuvers);
+                app.rerouteConsecutiveErrors = 0;
             } else {
                 app.routerInfo.setError(app.tr("Rerouting failed"));
+                app.rerouteConsecutiveErrors++;
             }
+            app.reroutePreviousTime = Date.now();
+            app.rerouteTotalCalls++;
             app.rerouting = false;
         });
+    }
+
+    function rerouteMaybe() {
+        // Find a new route if conditions are met.
+        if (!app.navigationActive) return;
+        if (!gps.position.horizontalAccuracyValid) return;
+        if (gps.position.horizontalAccuracy > 100) return;
+        if (app.rerouteTotalCalls > 50) return;
+        var interval = Math.pow(2, app.rerouteConsecutiveErrors) * 5000;
+        interval = Math.min(interval, 300000);
+        if (Date.now() - app.reroutePreviousTime < interval) return;
+        return app.reroute();
     }
 
     function setNavigationStatus(status) {
@@ -160,7 +180,7 @@ ApplicationWindow {
             app.navigationDirection       = null;
         }
         app.navigationStatus = status;
-        status && status.reroute && app.navigationActive && app.reroute();
+        status && status.reroute && app.rerouteMaybe();
     }
 
     function showMenu(page, params) {

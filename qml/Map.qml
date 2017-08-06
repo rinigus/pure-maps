@@ -264,6 +264,9 @@ Map {
             map.autoRotate = true;
         });
         app.navigationActive = true;
+        app.rerouteConsecutiveErrors = 0;
+        app.reroutePreviousTime = -1;
+        app.rerouteTotalCalls = 0;
     }
 
     function centerOnPosition() {
