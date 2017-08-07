@@ -150,6 +150,7 @@ ApplicationWindow {
 
     function rerouteMaybe() {
         // Find a new route if conditions are met.
+        if (!app.conf.get("reroute")) return;
         if (!app.navigationActive) return;
         if (!gps.position.horizontalAccuracyValid) return;
         if (gps.position.horizontalAccuracy > 100) return;

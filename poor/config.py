@@ -38,6 +38,7 @@ DEFAULTS = {
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
     "overlays": [],
+    "reroute": True,
     "router": "mapzen",
     "show_routing_narrative": True,
     # "metric", "american" or "british".
