@@ -45,8 +45,8 @@ IconButton {
     Bubble {
         id: bubble
         anchorItem: parent
-        position: "left"
         showArrow: false
+        state: "top-left"
         visible: false
     }
 
