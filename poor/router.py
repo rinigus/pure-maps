@@ -52,6 +52,7 @@ class Router:
         self.id = id
         self.name = values["name"]
         self._path = path
+        self.offline = values.get("offline", False)
         self._provider = None
         self.source = values["source"]
         self._init_provider(id, re.sub(r"\.json$", ".py", path))
