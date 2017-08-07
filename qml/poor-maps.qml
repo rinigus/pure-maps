@@ -153,12 +153,19 @@ ApplicationWindow {
         if (!app.navigationActive) return;
         if (!gps.position.horizontalAccuracyValid) return;
         if (gps.position.horizontalAccuracy > 100) return;
-        if (app.rerouteTotalCalls > 50) return;
-        // Double rerouting interval with each error, limit to one minute.
-        var interval = Math.pow(2, app.rerouteConsecutiveErrors) * 5000;
-        interval = Math.min(interval, 60000);
-        if (Date.now() - app.reroutePreviousTime < interval) return;
-        return app.reroute();
+        if (py.evaluate("poor.app.router.offline")) {
+            if (Date.now() - app.reroutePreviousTime < 5000) return;
+            return app.reroute();
+        } else {
+            // Limit the total amount and frequency of rerouting for online routers
+            // to avoid an excessive amount of API calls (causing data traffic and
+            // costs) in some special case where the router returns bogus results
+            // and the user is not able to manually intervene.
+            if (app.rerouteTotalCalls > 50) return;
+            var interval = 5000 * Math.pow(2, Math.min(4, app.rerouteConsecutiveErrors));
+            if (Date.now() - app.reroutePreviousTime < interval) return;
+            return app.reroute();
+        }
     }
 
     function setNavigationStatus(status) {
