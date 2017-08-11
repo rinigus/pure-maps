@@ -46,11 +46,11 @@ ApplicationWindow {
     property var  navigationDirection: null
     property var  navigationStatus: null
     property var  northArrow: null
+    property var  notification: null
     property int  rerouteConsecutiveErrors: 0
     property var  reroutePreviousTime: -1
     property int  rerouteTotalCalls: 0
     property bool rerouting: false
-    property var  routerInfo: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
     property int  screenHeight: Screen.height
@@ -115,7 +115,7 @@ ApplicationWindow {
     function reroute() {
         // Find a new route from the current position to the existing destination.
         if (app.rerouting) return;
-        app.routerInfo.setInfo(app.tr("Rerouting"));
+        app.notification.hold(app.tr("Rerouting"));
         app.rerouting = true;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
@@ -126,10 +126,10 @@ ApplicationWindow {
                 // always reroute using the first one.
                 route = route[0];
             if (route && route.error && route.message) {
-                app.routerInfo.setError(route.message);
+                app.notification.flash(app.tr("Rerouting failed: %1").arg(route.message));
                 app.rerouteConsecutiveErrors++;
             } else if (route && route.x && route.x.length > 0) {
-                app.routerInfo.clear();
+                app.notification.flash(app.tr("New route found"));
                 map.addRoute({
                     "x": route.x,
                     "y": route.y,
@@ -139,7 +139,7 @@ ApplicationWindow {
                 map.addManeuvers(route.maneuvers);
                 app.rerouteConsecutiveErrors = 0;
             } else {
-                app.routerInfo.setError(app.tr("Rerouting failed"));
+                app.notification.flash(app.tr("Rerouting failed"));
                 app.rerouteConsecutiveErrors++;
             }
             app.reroutePreviousTime = Date.now();
