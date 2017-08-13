@@ -26,6 +26,8 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property bool partOfNavigationStack: true
+
     SilicaListView {
         id: listView
         anchors.fill: parent
@@ -85,10 +87,10 @@ Page {
             }
 
             onClicked: {
-                map.autoCenter = false;
+                map.endNavigating();
                 map.setCenter(model.x, model.y);
                 map.zoomLevel < 16 && map.setZoomLevel(16);
-                app.clearMenu();
+                app.hideMenu();
             }
 
         }
@@ -97,80 +99,8 @@ Page {
             height: Theme.paddingMedium
         }
 
-        header: Column {
-            height: header.height + row.height + spacer1.height +
-                distItem.height + timeItem.height + spacer2.height
-            width: parent.width
-
-            PageHeader {
-                id: header
-                title: app.tr("Navigation")
-            }
-
-            Row {
-                id: row
-                height: Theme.itemSizeSmall
-                width: parent.width
-                property int count: 3
-                ToolItem {
-                    text: app.tr("Begin")
-                    onClicked: {
-                        map.beginNavigating();
-                        app.clearMenu();
-                    }
-                }
-                ToolItem {
-                    text: app.tr("Pause")
-                    onClicked: {
-                        map.endNavigating();
-                        app.clearMenu();
-                    }
-                }
-                ToolItem {
-                    text: app.tr("Clear")
-                    onClicked: {
-                        map.endNavigating();
-                        map.clearRoute();
-                        app.clearMenu();
-                    }
-                }
-            }
-
-            Spacer {
-                id: spacer1
-                height: Theme.paddingLarge
-            }
-
-            DetailItem {
-                id: distItem
-                label: app.tr("Distance remaining")
-                value: app.navigationStatus ? "%1 / %2"
-                    .arg(app.navigationStatus.dest_dist || "?")
-                    .arg(app.navigationStatus.total_dist || "?") : ""
-            }
-
-            DetailItem {
-                id: timeItem
-                label: app.tr("Time remaining")
-                value: app.navigationStatus ? "%1 / %2"
-                    .arg(timeItem.format(app.navigationStatus.dest_time || "?"))
-                    .arg(timeItem.format(app.navigationStatus.total_time || "?")) : ""
-                function format(time) {
-                    // For long time strings on small screens, shorten unit labels
-                    // to single characters to hopefully fit on one line. Note that
-                    // time strings are translatable. In English this shortens
-                    // "# h # min" to "# h # m".
-                    return (Screen.sizeCategory < Screen.Large &&
-                            time.match(/^\d+ *[^\d ]+ *\d+ *[^\d ]+$/)) ?
-                        time.replace(/([^\d ])[^\d ]+/, "$1") : time;
-                }
-            }
-
-            Spacer {
-                id: spacer2
-                height: Theme.paddingLarge - Theme.paddingMedium
-            }
-
+        header: PageHeader {
+            title: app.tr("Maneuvers")
         }
 
         model: ListModel {}
@@ -180,25 +110,18 @@ Page {
     }
 
     onStatusChanged: {
-        if (page.status === PageStatus.Activating) {
-            listView.visible = false;
+        if (page.status === PageStatus.Activating)
             page.populate();
-        } else if (page.status === PageStatus.Active) {
-            // On first time showing maneuvers, start at the top so that
-            // the user can see the begin, pause and clear buttons. On later
-            // views, scroll to the maneuver closest to the screen center,
-            // allowing the user to tap through the maneuvers.
-            app.narrativePageSeen && page.scrollToActive();
-            app.narrativePageSeen = true;
-            listView.visible = true;
-        }
     }
 
     function populate() {
         // Load narrative from the Python backend.
+        listView.model.clear();
         var args = [map.center.longitude, map.center.latitude];
         py.call("poor.app.narrative.get_maneuvers", args, function(maneuvers) {
             Util.appendAll(listView.model, maneuvers);
+            app.narrativePageSeen && page.scrollToActive();
+            app.narrativePageSeen = true;
         });
     }
 

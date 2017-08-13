@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2016 Osmo Salomaa
+ * Copyright (C) 2017 Osmo Salomaa
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,28 +18,29 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "."
 
-ListItem {
+BackgroundItem {
     id: item
-    contentHeight: Theme.itemSizeSmall
-    width: parent.width / parent.count
+    height: image.height + label.height
+    width: image.width
 
+    property string icon: ""
     property string text: ""
 
-    Rectangle {
-        anchors.fill: parent
-        color: Theme.highlightColor
-        opacity: 0.1
+    Image {
+        id: image
+        fillMode: Image.Pad
+        height: sourceSize.height + Theme.paddingLarge + Theme.paddingMedium
+        source: item.icon
+        width: item.width
     }
 
-    ListItemLabel {
-        anchors.fill: parent
-        anchors.leftMargin: Theme.paddingMedium
-        anchors.rightMargin: Theme.paddingMedium
+    Label {
+        id: label
+        anchors.horizontalCenter: image.horizontalCenter
+        anchors.top: image.bottom
         color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
-        height: Theme.itemSizeSmall
-        horizontalAlignment: Text.AlignHCenter
+        height: implicitHeight + Theme.paddingLarge
         text: item.text
     }
 

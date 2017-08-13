@@ -250,7 +250,7 @@ Map {
         });
         map.saveRoute();
         map.saveManeuvers();
-        app.narrativePageSeen = !!amend;
+        app.navigationStarted = !!amend;
     }
 
     function beginNavigating() {
@@ -264,6 +264,8 @@ Map {
             map.autoRotate = true;
         });
         app.navigationActive = true;
+        app.navigationPageSeen = true;
+        app.navigationStarted = true;
         app.rerouteConsecutiveErrors = 0;
         app.reroutePreviousTime = -1;
         app.rerouteTotalCalls = 0;
