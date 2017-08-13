@@ -105,7 +105,7 @@ def route(fm, to, heading, params):
         narrative=maneuver.instruction,
         duration=float(maneuver.time),
     ) for maneuver in legs.maneuvers]
-    route = dict(x=x, y=y, maneuvers=maneuvers)
+    route = dict(x=x, y=y, maneuvers=maneuvers, mode="car")
     route["attribution"] = poor.util.get_routing_attribution("Mapzen")
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)

@@ -148,7 +148,7 @@ def parse_result_valhalla(url, result):
         narrative=maneuver.instruction,
         duration=float(maneuver.time),
     ) for maneuver in legs.maneuvers]
-    route = dict(x=x, y=y, maneuvers=maneuvers)
+    route = dict(x=x, y=y, maneuvers=maneuvers, mode="car")
     route["attribution"] = poor.util.get_routing_attribution(
         "OSM Scout", "Valhalla")
     if route and route["x"]:

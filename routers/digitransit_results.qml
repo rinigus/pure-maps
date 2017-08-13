@@ -186,7 +186,7 @@ Page {
                 map.addRoute({
                     "x": listItem.result.x,
                     "y": listItem.result.y,
-                    "mode": "transit",
+                    "mode": listItem.result.mode,
                     "attribution": listItem.result.attribution
                 });
                 map.hidePoiBubbles();

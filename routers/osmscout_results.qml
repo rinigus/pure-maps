@@ -52,7 +52,7 @@ Page {
                 map.addRoute({
                     "x": route.x,
                     "y": route.y,
-                    "mode": "car",
+                    "mode": route.mode,
                     "attribution": route.attribution
                 });
                 map.hidePoiBubbles();

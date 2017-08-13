@@ -146,7 +146,7 @@ def route(fm, to, heading, params):
         narrative=parse_narrative(step.maneuver, step.get("name", "")),
         duration=float(step.duration),
     ) for step in result.legs[0].steps]
-    route = dict(x=x, y=y, maneuvers=maneuvers)
+    route = dict(x=x, y=y, maneuvers=maneuvers, mode="car")
     route["attribution"] = poor.util.get_routing_attribution("OSRM")
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)

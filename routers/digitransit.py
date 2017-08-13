@@ -259,5 +259,6 @@ def route(fm, to, heading, params):
             route.x.extend(leg.pop("x"))
             route.y.extend(leg.pop("y"))
         route.maneuvers = parse_maneuvers(route)
+        route.mode = "transit"
         route.attribution = poor.util.get_routing_attribution("Digitransit")
     return routes
