@@ -29,11 +29,7 @@ Bubble {
     state: "bottom-center"
     visible: opacity > 0
 
-    Behavior on opacity {
-        PropertyAnimation {
-            duration: 250
-        }
-    }
+    Behavior on opacity { FadeAnimator {} }
 
     Timer {
         id: timer
