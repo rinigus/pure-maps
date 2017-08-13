@@ -18,30 +18,41 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "."
 
-BackgroundItem {
-    id: item
-    height: image.height + label.height
-    width: image.width
+Bubble {
+    id: bubble
+    anchorItem: app.navigationBlock
+    anchors.topMargin: Theme.paddingLarge
+    opacity: 0
+    showArrow: false
+    state: "bottom-center"
+    visible: opacity > 0
 
-    property string icon: ""
-    property string text: ""
+    Behavior on opacity { FadeAnimator {} }
 
-    Image {
-        id: image
-        fillMode: Image.Pad
-        height: sourceSize.height + Theme.paddingLarge + Theme.paddingMedium
-        source: item.icon
-        width: item.width
+    Timer {
+        id: timer
+        interval: 5000
+        repeat: false
+        onTriggered: bubble.opacity = 0;
     }
 
-    Label {
-        id: label
-        anchors.horizontalCenter: image.horizontalCenter
-        anchors.top: image.bottom
-        color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
-        height: implicitHeight + Theme.paddingLarge
-        text: item.text
+    function clear(text) {
+        bubble.opacity = 0;
+        timer.stop();
+    }
+
+    function flash(text) {
+        bubble.text = text;
+        bubble.opacity = 1;
+        timer.restart();
+    }
+
+    function hold(text) {
+        bubble.text = text;
+        bubble.opacity = 1;
+        timer.stop();
     }
 
 }

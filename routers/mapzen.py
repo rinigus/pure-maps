@@ -80,9 +80,11 @@ def prepare_endpoint(point):
     results = geocoder.geocode(point, dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
-def route(fm, to, params):
+def route(fm, to, heading, params):
     """Find route and return its properties as a dictionary."""
     fm, to = map(prepare_endpoint, (fm, to))
+    if heading is not None:
+        fm["heading"] = heading
     lang = poor.util.get_default_language("en")
     input = dict(locations=[fm, to],
                  costing=poor.conf.routers.mapzen.type,

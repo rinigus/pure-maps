@@ -235,7 +235,7 @@ Map {
         map.savePois();
     }
 
-    function addRoute(route) {
+    function addRoute(route, amend) {
         /*
          * Add a polyline to represent a route.
          *
@@ -244,8 +244,11 @@ Map {
          *  - y: Array of route polyline latitude coordinates
          *  - attribution: Plain text router attribution
          *  - mode: Transport mode: "car" or "transit"
+         *
+         * amend should be true to update the current polyline with minimum side-effects,
+         * e.g. when rerouting, not given or false otherwise.
          */
-        map.endNavigating();
+        amend || map.endNavigating();
         map.clearRoute();
         map.route.setPath(route.x, route.y);
         map.route.attribution = route.attribution || "";
@@ -257,7 +260,7 @@ Map {
         });
         map.saveRoute();
         map.saveManeuvers();
-        app.narrativePageSeen = false;
+        app.navigationStarted = !!amend;
     }
 
     function beginNavigating() {
@@ -270,6 +273,12 @@ Map {
             map.autoCenter = true;
             map.autoRotate = true;
         });
+        app.navigationActive = true;
+        app.navigationPageSeen = true;
+        app.navigationStarted = true;
+        app.rerouteConsecutiveErrors = 0;
+        app.reroutePreviousTime = -1;
+        app.rerouteTotalCalls = 0;
     }
 
     function centerOnPosition() {
@@ -353,6 +362,7 @@ Map {
         map.autoCenter = false;
         map.autoRotate = false;
         map.zoomLevel > 15 && map.setZoomLevel(15);
+        app.navigationActive = false;
     }
 
     function fitViewtoCoordinates(coords) {

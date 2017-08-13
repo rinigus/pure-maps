@@ -21,17 +21,93 @@ import Sailfish.Silica 1.0
 
 Rectangle {
     id: bubble
-
-    // XXX: Apparently we should use AnchorChanges instead here.
-    // https://doc.qt.io/qt-5.6/qtquick-positioning-anchors.html#changing-anchors
-    anchors.bottom: anchorItem.top
-    anchors.bottomMargin: arrow.height + Theme.paddingSmall
-    anchors.horizontalCenter: position === "center" ? anchorItem.horizontalCenter : undefined
-    anchors.left: position === "right" ? anchorItem.horizontalCenter : undefined
-    anchors.right: position === "left" ? anchorItem.horizontalCenter : undefined
-
+    anchors.bottomMargin: showArrow * arrow.height + Theme.paddingSmall
+    anchors.topMargin: showArrow * arrow.height + Theme.paddingSmall
     color: "#d0000000"
     height: controls.height + label.height + (controlHeight > 0 ? 3 : 2) * padding
+    state: "top-center"
+    states: [
+
+        State {
+            name: "bottom-center"
+            AnchorChanges {
+                anchors.bottom: undefined
+                anchors.horizontalCenter: anchorItem.horizontalCenter
+                anchors.left: undefined
+                anchors.right: undefined
+                anchors.top: anchorItem.bottom
+                anchors.verticalCenter: undefined
+                target: bubble
+            }
+        },
+
+        State {
+            name: "bottom-left"
+            AnchorChanges {
+                anchors.bottom: undefined
+                anchors.horizontalCenter: undefined
+                anchors.left: undefined
+                anchors.right: anchorItem.horizontalCenter
+                anchors.top: anchorItem.bottom
+                anchors.verticalCenter: undefined
+                target: bubble
+            }
+        },
+
+        State {
+            name: "bottom-right"
+            AnchorChanges {
+                anchors.bottom: undefined
+                anchors.horizontalCenter: undefined
+                anchors.left: anchorItem.horizontalCenter
+                anchors.right: undefined
+                anchors.top: anchorItem.bottom
+                anchors.verticalCenter: undefined
+                target: bubble
+            }
+        },
+
+        State {
+            name: "top-center"
+            AnchorChanges {
+                anchors.bottom: anchorItem.top
+                anchors.horizontalCenter: anchorItem.horizontalCenter
+                anchors.left: undefined
+                anchors.right: undefined
+                anchors.top: undefined
+                anchors.verticalCenter: undefined
+                target: bubble
+            }
+        },
+
+        State {
+            name: "top-left"
+            AnchorChanges {
+                anchors.bottom: anchorItem.top
+                anchors.horizontalCenter: undefined
+                anchors.left: undefined
+                anchors.right: anchorItem.horizontalCenter
+                anchors.top: undefined
+                anchors.verticalCenter: undefined
+                target: bubble
+            }
+        },
+
+        State {
+            name: "top-right"
+            AnchorChanges {
+                anchors.bottom: anchorItem.top
+                anchors.horizontalCenter: undefined
+                anchors.left: anchorItem.horizontalCenter
+                anchors.right: undefined
+                anchors.top: undefined
+                anchors.verticalCenter: undefined
+                target: bubble
+            }
+        }
+
+    ]
+
     radius: 2 * Theme.paddingSmall
 
     width: {
@@ -46,7 +122,6 @@ Rectangle {
     property real   controlHeight: 0
     property real   controlWidth: 0
     property real   padding: 1.5 * Theme.paddingMedium
-    property string position: "center"
     property string text: ""
     property bool   showArrow: true
 

@@ -51,6 +51,7 @@ Item {
         Meters { id: meters }
         NavigationBlock { id: navigationBlock }
         NorthArrow { id: northArrow }
+        Notification { id: notification }
         ScaleBar { id: scaleBar }
 
         Component.onCompleted: {
@@ -60,6 +61,7 @@ Item {
             app.menuButton = menuButton;
             app.navigationBlock = navigationBlock;
             app.northArrow = northArrow;
+            app.notification = notification;
             app.scaleBar = scaleBar;
         }
 

@@ -123,7 +123,7 @@ class Narrative:
         length = self._calculate_length_ahead(node)
         directions = [self._calculate_direction_ahead(node)]
         r = 1
-        while length < 50 and node - r >= 0 and node + r < len(self.x):
+        while length < 50 and node - r >= 0 and node + r < len(self.x) - 1:
             directions.append(self._calculate_direction_ahead(node - r))
             directions.append(self._calculate_direction_ahead(node + r))
             length += self._calculate_length_ahead(node - r)
@@ -153,7 +153,7 @@ class Narrative:
                 x, y, x1, y1, x2, y2))
         return dist
 
-    def get_display(self, x, y):
+    def get_display(self, x, y, accuracy=None):
         """Return a dictionary of status details to display."""
         if not self.ready: return None
         if self.mode == "transit":
@@ -163,6 +163,7 @@ class Narrative:
         seg_dist = min(seg_dists)
         dest_dist, dest_time = self._get_display_destination(
             x, y, node, seg_dist)
+        progress  = (max(self.time) - dest_time) / max(self.time)
         dest_dist = poor.util.format_distance(dest_dist)
         dest_time = poor.util.format_time(dest_time)
         man = self._get_display_maneuver(x, y, node, seg_dists)
@@ -175,15 +176,19 @@ class Narrative:
             dest_time = man_time = icon = narrative = None
         # Don't provide route direction to auto-rotate by if off route.
         direction = self._get_direction(x, y, node) if seg_dist < 50 else None
+        # Trigger rerouting if far off route.
+        reroute = seg_dist > 200 + (accuracy or 40000000)
         return dict(total_dist=poor.util.format_distance(max(self.dist)),
                     total_time=poor.util.format_time(max(self.time)),
                     dest_dist=dest_dist,
                     dest_time=dest_time,
                     man_dist=man_dist,
                     man_time=man_time,
+                    progress=progress,
                     icon=icon,
                     narrative=narrative,
-                    direction=direction)
+                    direction=direction,
+                    reroute=reroute)
 
     def _get_display_destination(self, x, y, node, seg_dist):
         """Return destination details to display."""
@@ -226,9 +231,10 @@ class Narrative:
         seg_dist = self._get_distance_from_route(x, y, node)
         dest_dist, dest_time = self._get_display_destination(
             x, y, node, seg_dist)
+        progress  = (max(self.time) - dest_time) / max(self.time)
         dest_dist = poor.util.format_distance(dest_dist)
         dest_time = poor.util.format_time(dest_time)
-        man_node = self._get_closest_maneuver_node(x, y, node)
+        man_node  = self._get_closest_maneuver_node(x, y, node)
         if man_node > node + 1:
             # If the maneuver point is far and still ahead, we can calculate
             # distances and times from along the route, just as for cars.
@@ -262,9 +268,11 @@ class Narrative:
                     dest_time=dest_time,
                     man_dist=man_dist,
                     man_time=man_time,
+                    progress=progress,
                     icon=icon,
                     narrative=narrative,
-                    direction=direction)
+                    direction=direction,
+                    reroute=False)
 
     def get_maneuvers(self, x, y):
         """Return a list of dictionaries of maneuver details."""

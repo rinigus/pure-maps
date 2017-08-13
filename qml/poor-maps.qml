@@ -41,10 +41,18 @@ ApplicationWindow {
     property var  map: null
     property var  menuButton: null
     property var  narrativePageSeen: false
+    property bool navigationActive: false
     property var  navigationBlock: null
     property var  navigationDirection: null
+    property var  navigationPageSeen: false
     property var  navigationStatus: null
+    property bool navigationStarted: false
     property var  northArrow: null
+    property var  notification: null
+    property int  rerouteConsecutiveErrors: 0
+    property var  reroutePreviousTime: -1
+    property int  rerouteTotalCalls: 0
+    property bool rerouting: false
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
     property int  screenHeight: Screen.height
@@ -106,6 +114,63 @@ ApplicationWindow {
         root.visible = true;
     }
 
+    function reroute() {
+        // Find a new route from the current position to the existing destination.
+        if (app.rerouting) return;
+        app.notification.hold(app.tr("Rerouting"));
+        app.rerouting = true;
+        // Note that rerouting does not allow us to relay params to the router,
+        // i.e. ones saved only temporarily as page.params in RoutePage.qml.
+        var args = [map.getPosition(), map.route.getDestination(), gps.direction];
+        py.call("poor.app.router.route", args, function(route) {
+            if (Array.isArray(route) && route.length > 0)
+                // If the router returns multiple alternative routes,
+                // always reroute using the first one.
+                route = route[0];
+            if (route && route.error && route.message) {
+                app.notification.flash(app.tr("Rerouting failed: %1").arg(route.message));
+                app.rerouteConsecutiveErrors++;
+            } else if (route && route.x && route.x.length > 0) {
+                app.notification.flash(app.tr("New route found"));
+                map.addRoute({
+                    "x": route.x,
+                    "y": route.y,
+                    "mode": route.mode || "car",
+                    "attribution": route.attribution || ""
+                }, true);
+                map.addManeuvers(route.maneuvers);
+                app.rerouteConsecutiveErrors = 0;
+            } else {
+                app.notification.flash(app.tr("Rerouting failed"));
+                app.rerouteConsecutiveErrors++;
+            }
+            app.reroutePreviousTime = Date.now();
+            app.rerouteTotalCalls++;
+            app.rerouting = false;
+        });
+    }
+
+    function rerouteMaybe() {
+        // Find a new route if conditions are met.
+        if (!app.conf.get("reroute")) return;
+        if (!app.navigationActive) return;
+        if (!gps.position.horizontalAccuracyValid) return;
+        if (gps.position.horizontalAccuracy > 100) return;
+        if (py.evaluate("poor.app.router.offline")) {
+            if (Date.now() - app.reroutePreviousTime < 5000) return;
+            return app.reroute();
+        } else {
+            // Limit the total amount and frequency of rerouting for online routers
+            // to avoid an excessive amount of API calls (causing data traffic and
+            // costs) in some special case where the router returns bogus results
+            // and the user is not able to manually intervene.
+            if (app.rerouteTotalCalls > 50) return;
+            var interval = 5000 * Math.pow(2, Math.min(4, app.rerouteConsecutiveErrors));
+            if (Date.now() - app.reroutePreviousTime < interval) return;
+            return app.reroute();
+        }
+    }
+
     function setNavigationStatus(status) {
         // Set values of labels in the navigation status area.
         if (status && map.showNarrative) {
@@ -126,15 +191,39 @@ ApplicationWindow {
             app.navigationDirection       = null;
         }
         app.navigationStatus = status;
+        status && status.reroute && app.rerouteMaybe();
+    }
+
+    function showNavigationPages() {
+        // Show NavigationPage and NarrativePage.
+        if (!app.pageStack.currentPage ||
+            !app.pageStack.currentPage.partOfNavigationStack) {
+            dummy.updateTiles();
+            app.pageStack.pop(dummy, PageStackAction.Immediate);
+            app.pageStack.push("NavigationPage.qml");
+            app.pageStack.pushAttached("NarrativePage.qml");
+        }
+        // If the narrative page is already active, we don't get the page status
+        // change signal and must request repopulation to scroll the list.
+        var narrativePage = app.pageStack.nextPage(app.pageStack.nextPage(dummy));
+        app.pageStack.currentPage === narrativePage && narrativePage.populate();
+        root.visible = false;
     }
 
     function showMenu(page, params) {
         // Show a menu page, either given, last viewed, or the main menu.
-        dummy.updateTiles();
         if (page) {
+            dummy.updateTiles();
             app.pageStack.pop(dummy, PageStackAction.Immediate);
             app.pageStack.push(page, params || {});
+        } else if (app.pageStack.currentPage &&
+                   app.pageStack.currentPage.partOfNavigationStack) {
+            // Clear NavigationPage and NarrativePage from the stack.
+            dummy.updateTiles();
+            app.pageStack.pop(dummy, PageStackAction.Immediate);
+            app.pageStack.push("MenuPage.qml");
         } else if (app.pageStack.depth < 2) {
+            dummy.updateTiles();
             app.pageStack.push("MenuPage.qml");
         }
         root.visible = false;

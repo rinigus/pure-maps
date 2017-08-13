@@ -42,7 +42,6 @@ Rectangle {
     property string manDist: ""
     property string manTime: ""
     property string narrative: ""
-    property bool   narrativePageSeen: false
     property bool   notify: icon || narrative
 
     Label {
@@ -84,7 +83,7 @@ Rectangle {
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeMedium
         height: text ? implicitHeight + 0.3 * manLabel.height : 0
-        text: block.narrativePageSeen ? block.narrative :
+        text: app.navigationPageSeen ? block.narrative :
             (block.notify ? app.tr("Tap to review maneuvers or begin navigating") : "")
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
@@ -109,10 +108,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: {
-            block.narrativePageSeen = true;
-            app.showMenu("NarrativePage.qml");
-        }
+        onClicked: app.showNavigationPages();
     }
 
 }
