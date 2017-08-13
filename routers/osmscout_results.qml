@@ -49,12 +49,7 @@ Page {
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
                 app.hideMenu();
-                map.addRoute({
-                    "x": route.x,
-                    "y": route.y,
-                    "mode": route.mode,
-                    "attribution": route.attribution
-                });
+                map.addRoute(route);
                 map.hidePoiBubbles();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);

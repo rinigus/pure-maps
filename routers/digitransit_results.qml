@@ -183,12 +183,7 @@ Page {
 
             onClicked: {
                 app.hideMenu();
-                map.addRoute({
-                    "x": listItem.result.x,
-                    "y": listItem.result.y,
-                    "mode": listItem.result.mode,
-                    "attribution": listItem.result.attribution
-                });
+                map.addRoute(listItem.result);
                 map.hidePoiBubbles();
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);
