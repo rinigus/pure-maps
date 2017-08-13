@@ -116,7 +116,10 @@ Page {
                     color: Theme.highlightColor
                     height: Theme.paddingSmall
                     radius: height / 2
-                    width: (app.navigationStatus.progress || 0) * progressTotal.width
+                    width: (app.navigationStatus &&
+                            app.navigationStatus.progress ||
+                            0) * progressTotal.width
+
                 }
             }
 
