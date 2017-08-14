@@ -67,5 +67,5 @@ def parse_title(result):
     """Parse title from geocoding result."""
     with poor.util.silent(KeyError):
         type = result.components._type
-        return result.components[type]
+        return str(result.components[type])
     return result.formatted.split(",")[0]
