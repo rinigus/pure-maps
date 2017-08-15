@@ -35,8 +35,8 @@ Column {
             typeComboBox.currentIndex = typeComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
-            var option = "routers.mapzen.type";
-            app.conf.set(option, typeComboBox.keys[typeComboBox.currentIndex]);
+            var key = typeComboBox.keys[typeComboBox.currentIndex];
+            app.conf.set("routers.mapzen.type", key);
         }
     }
 

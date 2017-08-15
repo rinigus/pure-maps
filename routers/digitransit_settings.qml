@@ -37,8 +37,8 @@ Column {
             regionComboBox.currentIndex = regionComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
-            var index = regionComboBox.currentIndex;
-            app.conf.set("routers.digitransit.region", regionComboBox.keys[index]);
+            var key = regionComboBox.keys[regionComboBox.currentIndex]
+            app.conf.set("routers.digitransit.region", key);
         }
     }
 
@@ -188,8 +188,8 @@ Column {
             prefComboBox.currentIndex = prefComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
-            var index = prefComboBox.currentIndex;
-            app.conf.set("routers.digitransit.optimize", prefComboBox.keys[index]);
+            var key = prefComboBox.keys[prefComboBox.currentIndex]
+            app.conf.set("routers.digitransit.optimize", key);
         }
     }
 

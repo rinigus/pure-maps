@@ -35,8 +35,8 @@ Column {
             typeComboBox.currentIndex = typeComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
-            var option = "routers.mapquest_open.type";
-            app.conf.set(option, typeComboBox.keys[typeComboBox.currentIndex]);
+            var key = typeComboBox.keys[typeComboBox.currentIndex];
+            app.conf.set("routers.mapquest_open.type", key);
         }
     }
 
