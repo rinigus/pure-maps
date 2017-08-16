@@ -16,7 +16,7 @@ yourself in router specific QML, rerouting doesn't go through that same
 interactive code and requires a return value consistent with other
 routers.
 
-```json
+```python
 {
     "x": [24.943464, 24.943294, 24.94318, ...],
     "y": [60.166938, 60.167053, 60.16705, ...],
@@ -26,12 +26,12 @@ routers.
             "y": 60.166938,
             "icon": "depart",
             "narrative": "Drive northwest.",
-            "duration": 29.0
+            "duration": 29.0,
         },
         ...
     ],
     "mode": "car",
-    "attribution": "Routing courtesy of Mapzen."
+    "attribution": "Routing courtesy of Mapzen.",
 }
 ```
 

@@ -16,7 +16,7 @@ dictionaries of venues, with each dictionary having keys `title`,
 be either a string (an address, a landmark, etc.) or a two-element tuple
 or list of (x, y) coordinates.
 
-```json
+```python
 [
     {
         "title": "Ragu",

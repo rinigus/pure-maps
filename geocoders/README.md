@@ -9,13 +9,13 @@ file and a Python file that implements the `geocode` function. The
 dictionaries of geocoding results, with each dictionary having keys
 `title`, `description`, `x` and `y`, example below.
 
-```json
+```python
 [
     {
         "title": "Erottaja",
         "description": "Mannerheimintie, 00120 Helsinki, Finland",
         "x": 24.9434147,
-        "y": 60.1669202
+        "y": 60.1669202,
     },
     ...
 ]
