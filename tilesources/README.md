@@ -27,11 +27,10 @@ Poor for examples; non-trivial and optional fields are explained below.
   pixels, covering the same geographic area as regular 256×256 tiles. If
   omitted, the default `scale=1` is assumed. The only allowed values are
   powers of two: 1, 2, 4, etc. (also 0.5, 0.25, etc. for the rarer
-  inverse problem). The scale field is meant for so called "retina" (or
-  "HiDPI" or "HiRes" or "@2x") tiles that fit high pixel density screens
-  better, especially regarding font sizes. Note that there are different
-  kinds of retina tiles available and different ways of displaying them
-  and thus different definitions for different sources.
+  inverse problem). The scale field is meant for so called "retina" or
+  "HiDPI" tiles that fit high pixel density screens better. Note that
+  different providers have different conventions regarding retina tiles,
+  so definitions will vary.
 
 * **`smooth`**: `true` to display tiles with [smooth filtering][smooth]
   – useful for tiles not displayed at natural size. If omitted, defaults
@@ -58,13 +57,12 @@ Available Tile Formats
 The following tile format implementations are shipped with Poor. For
 adding a new tile format, see the next section.
 
-* **`slippy`**: By far the most common format, based on spherical
-  Mercator and division into an amount of tiles that quadruples with
-  each zoom level. See [documentation][slippy]. Provides URL parameters
-  `x`, `y` and `z`.
+* **`slippy`**: By far the most common format, used among others by
+  Google and OpenStreetMap. Based on Spherical Mercator. See
+  [documentation][slippy]. Provides URL parameters `x`, `y` and `z`.
 
 * **`slippy_elliptical`**: A variation of the `slippy` format, but using
-  elliptical Mercator instead of spherical. Provides URL parameters `x`,
+  Elliptical Mercator instead of Spherical. Provides URL parameters `x`,
   `y` and `z`.
 
 * **`quadkey`**: By tile division equivalent to the `slippy` format, but
@@ -79,7 +77,7 @@ Implementing a Tile Format
 
 With most tile sources you should get by with using one of the formats
 shipped with Poor, but you can also implement your own. Poor uses a
-spherical Mercator canvas with zoom levels matching the "slippy" format.
+Spherical Mercator canvas with zoom levels matching the "slippy" format.
 There is no projection done at the canvas level, so best results can be
 achieved with small variations to that or different ways of referring to
 the same tiles, e.g. inverse zoom level numbering. If you have a tile

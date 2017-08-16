@@ -1,17 +1,33 @@
 Implementing a Geocoder
 =======================
 
+## API
+
 To implement a geocoder, you need to write two files: a JSON metadata
 file and a Python file that implements the `geocode` function. The
 `geocode` function should given a string query return a list of
 dictionaries of geocoding results, with each dictionary having keys
-`title`, `description`, `x` and `y`.
+`title`, `description`, `x` and `y`, example below.
+
+```json
+[
+    {
+        "title": "Erottaja",
+        "description": "Mannerheimintie, 00120 Helsinki, Finland",
+        "x": 24.9434147,
+        "y": 60.1669202
+    },
+    ...
+]
+```
+
+## Tips
 
 To download data you should always use `poor.http.get` or
 `poor.http.get_json` in order to use Poor's user-agent and default
-timeout and error handling. See the geocoders shipped with Poor for
-examples, but note that you should be able to get by with a lot less
-code if your geocoding service returns concise, human-readable results.
+timeout and error handling. You might also find `poor.AttrDict`, a
+dictionary with attribute access to keys, convenient when working with
+JSON data.
 
 Use `~/.local/share/harbour-poor-maps/geocoders` as a local installation
 directory in which to place your files. Restart Poor, and your geocoder
