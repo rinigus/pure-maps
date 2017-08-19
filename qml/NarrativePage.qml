@@ -36,16 +36,14 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: narrativeLabel.implicitHeight + Theme.paddingMedium +
-                lengthLabel.implicitHeight + Theme.paddingMedium
+            contentHeight: narrativeLabel.height + lengthLabel.height
 
             Image {
                 id: icon
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.horizontalPageMargin
                 fillMode: Image.Pad
-                height: narrativeLabel.implicitHeight + Theme.paddingMedium +
-                    lengthLabel.implicitHeight + Theme.paddingMedium
+                height: narrativeLabel.height + lengthLabel.height
                 horizontalAlignment: Image.AlignRight
                 opacity: 0.9
                 smooth: true
@@ -64,10 +62,11 @@ Page {
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingMedium
+                height: implicitHeight + topMargin
                 text: model.narrative
                 verticalAlignment: Text.AlignBottom
                 wrapMode: Text.WordWrap
+                property real topMargin: (Theme.itemSizeSmall - implicitHeight) / 2
             }
 
             Label {
@@ -77,9 +76,10 @@ Page {
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.horizontalPageMargin
                 anchors.top: narrativeLabel.bottom
+                anchors.topMargin: Theme.paddingSmall
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingMedium
+                height: implicitHeight + narrativeLabel.topMargin
                 text: model.index < listView.count - 1 ?
                     app.tr("Continue for %1.", model.length) : map.route.attribution
                 truncationMode: TruncationMode.Fade
