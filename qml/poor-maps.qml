@@ -132,12 +132,7 @@ ApplicationWindow {
                 app.rerouteConsecutiveErrors++;
             } else if (route && route.x && route.x.length > 0) {
                 app.notification.flash(app.tr("New route found"));
-                map.addRoute({
-                    "x": route.x,
-                    "y": route.y,
-                    "mode": route.mode || "car",
-                    "attribution": route.attribution || ""
-                }, true);
+                map.addRoute(route, true);
                 map.addManeuvers(route.maneuvers);
                 app.rerouteConsecutiveErrors = 0;
             } else {
