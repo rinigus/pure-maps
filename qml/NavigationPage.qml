@@ -127,43 +127,67 @@ Page {
                 height: Theme.paddingLarge + Theme.paddingSmall
             }
 
-            Item {
+            Row {
+                // Distance and time remaining
                 anchors.left: parent.left
+                anchors.leftMargin: Theme.horizontalPageMargin
                 anchors.right: parent.right
+                anchors.rightMargin: Theme.horizontalPageMargin
                 height: Theme.itemSizeExtraSmall
-                ListItemLabel {
+                Label {
+                    id: remaining1
                     font.pixelSize: Theme.fontSizeSmall
                     height: Theme.itemSizeExtraSmall
-                    text: app.navigationStatus ? app.tr("%1 remaining")
-                        .arg(app.navigationStatus.dest_dist || "?") : ""
+                    text: app.tr("Remaining")
+                    truncationMode: TruncationMode.Fade
+                    verticalAlignment: Text.AlignVCenter
+                    width: parent.width / 3
                 }
-                ListItemLabel {
-                    color: Theme.secondaryColor
-                    font.pixelSize: Theme.fontSizeSmall
-                    height: Theme.itemSizeExtraSmall
+                Label {
+                    anchors.baseline: remaining1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus ? app.tr("total %1")
-                        .arg(app.navigationStatus.total_dist || "?") : ""
+                    text: app.navigationStatus.dest_dist || "?"
+                    truncationMode: TruncationMode.Fade
+                    width: parent.width / 3
+                }
+                Label {
+                    anchors.baseline: remaining1.baseline
+                    horizontalAlignment: Text.AlignRight
+                    text: app.navigationStatus.dest_time || "?"
+                    truncationMode: TruncationMode.Fade
+                    width: parent.width / 3
                 }
             }
 
-            Item {
+            Row {
+                // Total distance and time
                 anchors.left: parent.left
+                anchors.leftMargin: Theme.horizontalPageMargin
                 anchors.right: parent.right
+                anchors.rightMargin: Theme.horizontalPageMargin
                 height: Theme.itemSizeExtraSmall
-                ListItemLabel {
+                Label {
+                    id: total1
                     font.pixelSize: Theme.fontSizeSmall
                     height: Theme.itemSizeExtraSmall
-                    text: app.navigationStatus ? app.tr("%1 remaining")
-                        .arg(app.navigationStatus.dest_time || "?") : ""
+                    text: app.tr("Total")
+                    truncationMode: TruncationMode.Fade
+                    verticalAlignment: Text.AlignVCenter
+                    width: parent.width / 3
                 }
-                ListItemLabel {
-                    color: Theme.secondaryColor
-                    font.pixelSize: Theme.fontSizeSmall
-                    height: Theme.itemSizeExtraSmall
+                Label {
+                    anchors.baseline: total1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus ? app.tr("total %1")
-                        .arg(app.navigationStatus.total_time || "?") : ""
+                    text: app.navigationStatus.total_dist || "?"
+                    truncationMode: TruncationMode.Fade
+                    width: parent.width / 3
+                }
+                Label {
+                    anchors.baseline: total1.baseline
+                    horizontalAlignment: Text.AlignRight
+                    text: app.navigationStatus.total_time || "?"
+                    truncationMode: TruncationMode.Fade
+                    width: parent.width / 3
                 }
             }
 
