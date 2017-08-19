@@ -34,11 +34,20 @@ Dialog {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: nameLabel.height + descriptionLabel.anchors.topMargin +
-                descriptionLabel.height + attributionLabel.height
+            contentHeight: defaultHeader.height + nameLabel.height +
+                descriptionLabel.anchors.topMargin + descriptionLabel.height +
+                attributionLabel.height + alternativesHeader.height
+
+            SectionHeader {
+                id: defaultHeader
+                height: model.default ? implicitHeight : 0
+                text: app.tr("Default")
+                visible: model.default && !listItem.highlighted
+            }
 
             ListItemLabel {
                 id: nameLabel
+                anchors.top: defaultHeader.bottom
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
                 height: implicitHeight + topMargin
@@ -53,6 +62,7 @@ Dialog {
                 anchors.topMargin: Theme.paddingSmall
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
+                lineHeight: 1.25
                 text: model.description
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
@@ -64,11 +74,20 @@ Dialog {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: (visible ? implicitHeight : 0) + nameLabel.topMargin
+                lineHeight: 1.25
                 text: visible ? app.tr("Source: %1", model.source) + "\n" + model.attribution : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
                 visible: model.show_attribution
                 wrapMode: Text.WordWrap
+            }
+
+            SectionHeader {
+                id: alternativesHeader
+                anchors.top: attributionLabel.bottom
+                height: model.default ? implicitHeight : 0
+                text: app.tr("Alternatives")
+                visible: model.default && !listItem.highlighted
             }
 
             onClicked: {
@@ -90,7 +109,7 @@ Dialog {
         Component.onCompleted: {
             // Load geocoder model items from the Python backend.
             py.call("poor.util.get_geocoders", [], function(geocoders) {
-                Util.markDefault(geocoders, app.conf.getDefault("geocoder"));
+                Util.sortDefaultFirst(geocoders);
                 Util.addProperties(geocoders, "show_attribution", false);
                 Util.appendAll(listView.model, geocoders);
             });

@@ -129,6 +129,14 @@ function siground(x, n) {
     return Math.round(x * mult) / mult;
 }
 
+function sortDefaultFirst(providers) {
+    // Sort providers in-place, placing the default first.
+    for (var i = 0; i < providers.length; i++) {
+        providers[i]["default"] &&
+            providers.splice(0, 0, providers.splice(i, 1)[0]);
+    }
+}
+
 function xcoord2xpos(x, xmin, xmax, width) {
     // Convert X-coordinate to pixel X-position on screen.
     return Math.round((x - xmin) * (width / (xmax - xmin)));

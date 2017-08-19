@@ -276,7 +276,9 @@ def format_time(seconds):
 def get_basemaps():
     """Return a list of dictionaries of basemap attributes."""
     return list(filter(lambda x: x.get("type", "basemap") == "basemap",
-                       _get_providers("tilesources", poor.conf.basemap)))
+                       _get_providers("tilesources",
+                                      poor.conf.get_default("basemap"),
+                                      poor.conf.basemap)))
 
 def get_default_language(fallback="en"):
     """Return the system default language code or `fallback`."""
@@ -288,19 +290,28 @@ def get_default_locale(fallback="en_US"):
 
 def get_geocoders():
     """Return a list of dictionaries of geocoder attributes."""
-    return _get_providers("geocoders", poor.conf.geocoder)
+    return _get_providers("geocoders",
+                          poor.conf.get_default("geocoder"),
+                          poor.conf.geocoder)
 
 def get_guides():
     """Return a list of dictionaries of guide attributes."""
-    return _get_providers("guides", poor.conf.guide)
+    return _get_providers("guides",
+                          poor.conf.get_default("guide"),
+                          poor.conf.guide)
 
 def get_overlays():
     """Return a list of dictionaries of overlay attributes."""
     return list(filter(lambda x: x.get("type", "basemap") == "overlay",
-                       _get_providers("tilesources", *poor.conf.overlays)))
+                       _get_providers("tilesources",
+                                      poor.conf.get_default("overlays"),
+                                      poor.conf.overlays)))
 
-def _get_providers(directory, *active):
+def _get_providers(directory, default, active):
     """Return a list of dictionaries of provider attributes."""
+    def matches(pid, ref):
+        # Allow default and active to be either strings or lists of strings.
+        return (pid in ref if isinstance(ref, list) else pid == ref)
     providers = []
     for parent in (poor.DATA_HOME_DIR, poor.DATA_DIR):
         for path in glob.glob("{}/{}/*.json".format(parent, directory)):
@@ -312,14 +323,17 @@ def _get_providers(directory, *active):
             requires = provider.get("requires", [])
             if not all(map(requirement_found, requires)): continue
             provider["pid"] = pid
-            provider["active"] = pid in active
+            provider["default"] = matches(pid, default)
+            provider["active"] = matches(pid, active)
             providers.append(provider)
     providers.sort(key=lambda x: x["name"])
     return providers
 
 def get_routers():
     """Return a list of dictionaries of router attributes."""
-    return _get_providers("routers", poor.conf.router)
+    return _get_providers("routers",
+                          poor.conf.get_default("router"),
+                          poor.conf.router)
 
 def get_routing_attribution(service, engine=None):
     """Return translated routing attribution string."""
@@ -330,7 +344,9 @@ def get_routing_attribution(service, engine=None):
 
 def get_tilesources():
     """Return a list of dictionaries of tilesource attributes."""
-    return _get_providers("tilesources")
+    tilesources = get_basemaps() + get_overlays()
+    tilesources.sort(key=lambda x: x["pid"])
+    return tilesources
 
 def locked_method(function):
     """
