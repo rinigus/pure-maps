@@ -36,7 +36,7 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: titleLabel.height + descriptionLabel.height + distanceLabel.height
+            contentHeight: titleLabel.height + descriptionLabel.height
 
             property bool visited: false
 
@@ -44,30 +44,23 @@ Page {
                 id: titleLabel
                 color: (listItem.highlighted || listItem.visited) ?
                     Theme.highlightColor : Theme.primaryColor;
-                height: implicitHeight + Theme.paddingMedium
+                height: implicitHeight + topMargin
                 text: model.title
                 verticalAlignment: Text.AlignBottom
+                property real topMargin: (Theme.itemSizeSmall - implicitHeight) / 2
             }
 
             ListItemLabel {
                 id: descriptionLabel
                 anchors.top: titleLabel.bottom
+                anchors.topMargin: Theme.paddingSmall
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight
-                text: model.description
-                verticalAlignment: Text.AlignVCenter
-                wrapMode: Text.WordWrap
-            }
-
-            ListItemLabel {
-                id: distanceLabel
-                anchors.top: descriptionLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight + Theme.paddingMedium
-                text: model.distance
+                height: implicitHeight + titleLabel.topMargin
+                lineHeight: 1.25
+                text: model.description + "\n" + model.distance
                 verticalAlignment: Text.AlignTop
+                wrapMode: Text.WordWrap
             }
 
             onClicked: {
