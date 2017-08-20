@@ -57,6 +57,7 @@ ApplicationWindow {
     property var  scaleBar: null
     property int  screenHeight: Screen.height
     property int  screenWidth: Screen.width
+    property var  showNarrative: null
 
     Root { id: root }
     PositionSource { id: gps }
@@ -168,7 +169,9 @@ ApplicationWindow {
 
     function setNavigationStatus(status) {
         // Set values of labels in the navigation status area.
-        if (status && map.showNarrative) {
+        if (app.showNarrative === null)
+            app.showNarrative = app.conf.get("show_narrative");
+        if (status) {
             app.navigationBlock.destDist  = status.dest_dist || "";
             app.navigationBlock.destTime  = status.dest_time || "";
             app.navigationBlock.icon      = status.icon      || "";

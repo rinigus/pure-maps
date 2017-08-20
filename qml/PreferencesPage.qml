@@ -50,17 +50,6 @@ Page {
                 }
             }
 
-            TextSwitch {
-                id: showNarrativeItem
-                checked: map.showNarrative
-                text: app.tr("Show navigation narrative")
-                onCheckedChanged: {
-                    map.showNarrative = showNarrativeItem.checked;
-                    app.conf.set("show_routing_narrative", map.showNarrative);
-                    map.showNarrative || app.setNavigationStatus(null);
-                }
-            }
-
             ComboBox {
                 id: unitsComboBox
                 label: app.tr("Units")

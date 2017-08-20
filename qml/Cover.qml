@@ -32,7 +32,7 @@ CoverBackground {
 
     property bool active: status === Cover.Active
     property bool ready: false
-    property bool showNarrative: map.hasRoute && map.showNarrative
+    property bool showNarrative: map.hasRoute && app.showNarrative
     property var  tiles: []
 
     onShowNarrativeChanged: {

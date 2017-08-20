@@ -40,7 +40,7 @@ DEFAULTS = {
     "overlays": [],
     "reroute": True,
     "router": "mapzen",
-    "show_routing_narrative": True,
+    "show_narrative": True,
     # "metric", "american" or "british".
     "units": "metric",
     "zoom": 3,

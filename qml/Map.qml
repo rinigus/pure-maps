@@ -52,7 +52,6 @@ Map {
     property var  route: route
     property real scaleX: 0
     property real scaleY: 0
-    property bool showNarrative: true
     property var  tiles: []
     property real widthCoords: 0
     property real zoomLevelPrev: 8
@@ -451,7 +450,6 @@ Map {
         map.setZoomLevel(app.conf.get("zoom"));
         map.autoCenter = app.conf.get("auto_center");
         map.autoRotate = app.conf.get("auto_rotate");
-        map.showNarrative = app.conf.get("show_routing_narrative");
         var center = app.conf.get("center");
         if (center[0] === 0.0 && center[1] === 0.0) {
             // Center on user's position on first start.

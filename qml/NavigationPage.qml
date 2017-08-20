@@ -194,6 +194,16 @@ Page {
             }
 
             TextSwitch {
+                id: showNarrativeSwitch
+                checked: app.conf.get("show_narrative")
+                text: app.tr("Show navigation instructions")
+                onCheckedChanged: {
+                    app.conf.set("show_narrative", showNarrativeSwitch.checked);
+                    app.showNarrative = showNarrativeSwitch.checked;
+                }
+            }
+
+            TextSwitch {
                 id: rerouteSwitch
                 checked: enabled && app.conf.get("reroute")
                 enabled: map.route.mode === "car"

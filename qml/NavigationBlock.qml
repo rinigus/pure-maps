@@ -42,7 +42,7 @@ Rectangle {
     property string manDist: ""
     property string manTime: ""
     property string narrative: ""
-    property bool   notify: icon || narrative
+    property bool   notify: app.showNarrative && (icon || narrative)
 
     Label {
         // Distance remaining to the next maneuver
@@ -83,7 +83,8 @@ Rectangle {
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeMedium
         height: text ? implicitHeight + 0.3 * manLabel.height : 0
-        text: app.navigationPageSeen ? block.narrative :
+        text: app.navigationPageSeen ?
+            (block.notify ? block.narrative : "") :
             (block.notify ? app.tr("Tap to review maneuvers or begin navigating") : "")
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
@@ -100,7 +101,7 @@ Rectangle {
         height: block.notify ? sourceSize.height : 0
         opacity: 0.9
         smooth: true
-        source: "icons/navigation/%1.svg".arg(block.icon || "flag")
+        source: block.notify ? "icons/navigation/%1.svg".arg(block.icon || "flag") : ""
         sourceSize.height: (Screen.sizeCategory >= Screen.Large ? 1.7 : 1) * Theme.iconSizeLarge
         sourceSize.width: (Screen.sizeCategory >= Screen.Large ? 1.7 : 1) * Theme.iconSizeLarge
         width: block.notify ? sourceSize.width : 0
