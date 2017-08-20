@@ -145,14 +145,14 @@ Page {
                 Label {
                     anchors.baseline: remaining1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus.dest_dist || "?"
+                    text: app.navigationStatus && app.navigationStatus.dest_dist || "?"
                     truncationMode: TruncationMode.Fade
                     width: parent.width / 3
                 }
                 Label {
                     anchors.baseline: remaining1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus.dest_time || "?"
+                    text: app.navigationStatus && app.navigationStatus.dest_time || "?"
                     truncationMode: TruncationMode.Fade
                     width: parent.width / 3
                 }
@@ -176,14 +176,14 @@ Page {
                 Label {
                     anchors.baseline: total1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus.total_dist || "?"
+                    text: app.navigationStatus && app.navigationStatus.total_dist || "?"
                     truncationMode: TruncationMode.Fade
                     width: parent.width / 3
                 }
                 Label {
                     anchors.baseline: total1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus.total_time || "?"
+                    text: app.navigationStatus && app.navigationStatus.total_time || "?"
                     truncationMode: TruncationMode.Fade
                     width: parent.width / 3
                 }
