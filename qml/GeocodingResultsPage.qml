@@ -44,10 +44,9 @@ Page {
                 id: titleLabel
                 color: (listItem.highlighted || listItem.visited) ?
                     Theme.highlightColor : Theme.primaryColor;
-                height: implicitHeight + topMargin
+                height: implicitHeight + app.listItemVerticalMargin
                 text: model.title
                 verticalAlignment: Text.AlignBottom
-                property real topMargin: (Theme.itemSizeSmall - implicitHeight) / 2
             }
 
             ListItemLabel {
@@ -56,7 +55,7 @@ Page {
                 anchors.topMargin: Theme.paddingSmall
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight + titleLabel.topMargin
+                height: implicitHeight + app.listItemVerticalMargin
                 lineHeight: 1.15
                 text: model.description + "\n" + model.distance
                 verticalAlignment: Text.AlignTop

@@ -50,10 +50,9 @@ Dialog {
                 anchors.top: defaultHeader.bottom
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
-                height: implicitHeight + topMargin
+                height: implicitHeight + app.listItemVerticalMargin
                 text: model.name
                 verticalAlignment: Text.AlignBottom
-                property real topMargin: (Theme.itemSizeSmall - implicitHeight) / 2
             }
 
             ListItemLabel {
@@ -73,7 +72,7 @@ Dialog {
                 anchors.top: descriptionLabel.bottom
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                height: (visible ? implicitHeight : 0) + nameLabel.topMargin
+                height: (visible ? implicitHeight : 0) + app.listItemVerticalMargin
                 lineHeight: 1.15
                 text: visible ? app.tr("Source: %1", model.source) + "\n" + model.attribution : ""
                 truncationMode: TruncationMode.None
