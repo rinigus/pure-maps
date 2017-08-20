@@ -36,13 +36,13 @@ Rectangle {
     }
     z: 500
 
-    property string destDist: ""
-    property string destTime: ""
-    property string icon: ""
-    property string manDist: ""
-    property string manTime: ""
-    property string narrative: ""
-    property bool   notify: app.showNarrative && (icon || narrative)
+    property string destDist:  app.navigationStatus.destDist
+    property string destTime:  app.navigationStatus.destTime
+    property string icon:      app.navigationStatus.icon
+    property string manDist:   app.navigationStatus.manDist
+    property string manTime:   app.navigationStatus.manTime
+    property string narrative: app.navigationStatus.narrative
+    property bool   notify:    app.navigationStatus.notify
 
     Label {
         // Distance remaining to the next maneuver

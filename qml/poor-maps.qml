@@ -45,7 +45,7 @@ ApplicationWindow {
     property var  navigationBlock: null
     property var  navigationDirection: null
     property var  navigationPageSeen: false
-    property var  navigationStatus: null
+    property var  navigationStatus: NavigationStatus {}
     property bool navigationStarted: false
     property var  northArrow: null
     property var  notification: null
@@ -58,6 +58,11 @@ ApplicationWindow {
     property int  screenHeight: Screen.height
     property int  screenWidth: Screen.width
     property var  showNarrative: null
+
+    // Default vertical margin for various multiline list items
+    // such that it would be consistent with single-line list items
+    // and the associated constant Theme.itemSizeSmall.
+    property real listItemVerticalMargin: (Theme.itemSizeSmall - 1.125 * Theme.fontSizeMedium) / 2
 
     Root { id: root }
     PositionSource { id: gps }
@@ -167,31 +172,6 @@ ApplicationWindow {
         }
     }
 
-    function setNavigationStatus(status) {
-        // Set values of labels in the navigation status area.
-        if (app.showNarrative === null)
-            app.showNarrative = app.conf.get("show_narrative");
-        if (status) {
-            app.navigationBlock.destDist  = status.dest_dist || "";
-            app.navigationBlock.destTime  = status.dest_time || "";
-            app.navigationBlock.icon      = status.icon      || "";
-            app.navigationBlock.manDist   = status.man_dist  || "";
-            app.navigationBlock.manTime   = status.man_time  || "";
-            app.navigationBlock.narrative = status.narrative || "";
-            app.navigationDirection       = status.direction || null;
-        } else {
-            app.navigationBlock.destDist  = "";
-            app.navigationBlock.destTime  = "";
-            app.navigationBlock.icon      = "";
-            app.navigationBlock.manDist   = "";
-            app.navigationBlock.manTime   = "";
-            app.navigationBlock.narrative = "";
-            app.navigationDirection       = null;
-        }
-        app.navigationStatus = status;
-        status && status.reroute && app.rerouteMaybe();
-    }
-
     function showNavigationPages() {
         // Show NavigationPage and NarrativePage.
         if (!app.pageStack.currentPage ||
@@ -242,6 +222,14 @@ ApplicationWindow {
         var prevent = app.conf.get("keep_alive");
         DisplayBlanking.preventBlanking = app.applicationActive &&
             (prevent === "always" || (prevent === "navigating" && map.hasRoute));
+    }
+
+    function updateNavigationStatus(status) {
+        // Update navigation status with data from Python backend.
+        if (app.showNarrative === null)
+            app.showNarrative = app.conf.get("show_narrative");
+        app.navigationStatus.update(status);
+        app.navigationStatus.reroute && app.rerouteMaybe();
     }
 
 }

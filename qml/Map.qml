@@ -331,7 +331,7 @@ Map {
         map.maneuvers = [];
         map.route.clear();
         py.call_sync("poor.app.narrative.unset", []);
-        app.setNavigationStatus(null);
+        app.navigationStatus.clear();
         map.saveRoute();
         map.saveManeuvers();
         map.hasRoute = false;

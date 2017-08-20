@@ -62,11 +62,10 @@ Page {
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + topMargin
+                height: implicitHeight + app.listItemVerticalMargin
                 text: model.narrative
                 verticalAlignment: Text.AlignBottom
                 wrapMode: Text.WordWrap
-                property real topMargin: (Theme.itemSizeSmall - implicitHeight) / 2
             }
 
             Label {
@@ -79,7 +78,7 @@ Page {
                 anchors.topMargin: Theme.paddingSmall
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + narrativeLabel.topMargin
+                height: implicitHeight + app.listItemVerticalMargin
                 lineHeight: 1.15
                 text: model.index < listView.count - 1 ?
                     app.tr("Continue for %1.", model.length) : map.route.attribution

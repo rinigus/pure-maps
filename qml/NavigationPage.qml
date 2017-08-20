@@ -116,10 +116,7 @@ Page {
                     color: Theme.highlightColor
                     height: Theme.paddingSmall
                     radius: height / 2
-                    width: (app.navigationStatus &&
-                            app.navigationStatus.progress ||
-                            0) * progressTotal.width
-
+                    width: app.navigationStatus.progress * progressTotal.width
                 }
             }
 
@@ -145,14 +142,14 @@ Page {
                 Label {
                     anchors.baseline: remaining1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus && app.navigationStatus.dest_dist || "?"
+                    text: app.navigationStatus.destDist
                     truncationMode: TruncationMode.Fade
                     width: parent.width / 3
                 }
                 Label {
                     anchors.baseline: remaining1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus && app.navigationStatus.dest_time || "?"
+                    text: app.navigationStatus.destTime
                     truncationMode: TruncationMode.Fade
                     width: parent.width / 3
                 }
@@ -176,14 +173,14 @@ Page {
                 Label {
                     anchors.baseline: total1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus && app.navigationStatus.total_dist || "?"
+                    text: app.navigationStatus.totalDist
                     truncationMode: TruncationMode.Fade
                     width: parent.width / 3
                 }
                 Label {
                     anchors.baseline: total1.baseline
                     horizontalAlignment: Text.AlignRight
-                    text: app.navigationStatus && app.navigationStatus.total_time || "?"
+                    text: app.navigationStatus.totalTime
                     truncationMode: TruncationMode.Fade
                     width: parent.width / 3
                 }

@@ -43,7 +43,7 @@ Timer {
             map.position.horizontalAccuracy : null;
         var args = [coord.longitude, coord.latitude, accuracy];
         py.call("poor.app.narrative.get_display", args, function(status) {
-            app.setNavigationStatus(status);
+            app.updateNavigationStatus(status);
             timer.coordPrev.longitude = coord.longitude;
             timer.coordPrev.latitude = coord.latitude;
         });
