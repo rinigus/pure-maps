@@ -136,7 +136,6 @@ Page {
                 height: Theme.itemSizeExtraSmall
                 Label {
                     id: remaining1
-                    font.pixelSize: Theme.fontSizeSmall
                     height: Theme.itemSizeExtraSmall
                     text: app.tr("Remaining")
                     truncationMode: TruncationMode.Fade
@@ -168,7 +167,6 @@ Page {
                 height: Theme.itemSizeExtraSmall
                 Label {
                     id: total1
-                    font.pixelSize: Theme.fontSizeSmall
                     height: Theme.itemSizeExtraSmall
                     text: app.tr("Total")
                     truncationMode: TruncationMode.Fade
