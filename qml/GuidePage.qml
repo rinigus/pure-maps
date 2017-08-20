@@ -62,7 +62,7 @@ Dialog {
                 anchors.topMargin: Theme.paddingSmall
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                lineHeight: 1.25
+                lineHeight: 1.15
                 text: model.description
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
@@ -74,7 +74,7 @@ Dialog {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: (visible ? implicitHeight : 0) + nameLabel.topMargin
-                lineHeight: 1.25
+                lineHeight: 1.15
                 text: visible ? app.tr("Source: %1", model.source) + "\n" + model.attribution : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop

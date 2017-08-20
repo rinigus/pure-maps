@@ -80,6 +80,7 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: implicitHeight + narrativeLabel.topMargin
+                lineHeight: 1.15
                 text: model.index < listView.count - 1 ?
                     app.tr("Continue for %1.", model.length) : map.route.attribution
                 truncationMode: TruncationMode.Fade

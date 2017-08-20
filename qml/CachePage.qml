@@ -54,6 +54,7 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + nameLabel.topMargin
+                lineHeight: 1.15
                 // model.count is negative during operations, see page.purge.
                 text: model.count < 0 ? "· · ·" : app.tr("%1 tiles · %2", model.count, model.size)
                 verticalAlignment: Text.AlignTop

@@ -57,7 +57,7 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: implicitHeight + titleLabel.topMargin
-                lineHeight: 1.25
+                lineHeight: 1.15
                 text: model.description + "\n" + model.distance
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
