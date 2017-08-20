@@ -29,3 +29,21 @@ class TestGeocoder(poor.test.TestCase):
         a = poor.Geocoder("mapzen")
         b = poor.Geocoder("mapzen")
         assert a is b
+
+    def test_geocode__geo_uri(self):
+        geocoder = poor.Geocoder("default")
+        point = geocoder.geocode("geo:60.169,24.941")
+        assert point[0]["x"] == 24.941
+        assert point[0]["y"] == 60.169
+
+    def test_geocode__lat_lon_comma(self):
+        geocoder = poor.Geocoder("default")
+        point = geocoder.geocode("60.169,24.941")
+        assert point[0]["x"] == 24.941
+        assert point[0]["y"] == 60.169
+
+    def test_geocode__lat_lon_space(self):
+        geocoder = poor.Geocoder("default")
+        point = geocoder.geocode("60.169 24.941")
+        assert point[0]["x"] == 24.941
+        assert point[0]["y"] == 60.169

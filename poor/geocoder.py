@@ -31,6 +31,7 @@ from poor.i18n import _
 __all__ = ("Geocoder",)
 
 RE_GEO_URI = re.compile(r"\bgeo:([\d.]+),([\d.]+)\b", re.IGNORECASE)
+RE_LAT_LON = re.compile(r"^\s*(\d+(\.\d+)?)\W+(\d+(\.\d+)?)\s*")
 
 
 class Geocoder:
@@ -72,11 +73,23 @@ class Geocoder:
         the results will include correct distance and bearing.
         """
         params = params or {}
-        # Parse position if query is a geo URI.
+        # Parse coordinates if query is a geo URI.
         match = RE_GEO_URI.search(query)
         if match is not None:
-            qy, qx = map(float, match.groups())
+            qy = float(match.group(1))
+            qx = float(match.group(2))
             return [dict(title=_("Point from geo link"),
+                         description=match.group(0),
+                         x=qx,
+                         y=qy,
+                         distance=self._format_distance(x, y, qx, qy))]
+
+        # Parse coordinates if query is "LAT,LON".
+        match = RE_LAT_LON.search(query)
+        if match is not None:
+            qy = float(match.group(1))
+            qx = float(match.group(3))
+            return [dict(title=_("Point from coordinates"),
                          description=match.group(0),
                          x=qx,
                          y=qy,
