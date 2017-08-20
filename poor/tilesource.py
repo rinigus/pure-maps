@@ -26,6 +26,7 @@ import re
 import sys
 import threading
 import time
+import urllib
 
 __all__ = ("TileSource",)
 
@@ -131,7 +132,12 @@ class TileSource:
             cached = self._tile_in_cache(path)
             if cached is not None:
                 return cached
-            connection.request("GET", url, headers=poor.http.HEADERS)
+            # Do relative requests (without scheme and netloc)
+            # for better compatibility with different servers.
+            components = urllib.parse.urlparse(url)
+            components = ("", "") + components[2:]
+            url_path = urllib.parse.urlunparse(components)
+            connection.request("GET", url_path, headers=poor.http.HEADERS)
             response = connection.getresponse()
             # Always read response to avoid
             # http.client.ResponseNotReady: Request-sent.

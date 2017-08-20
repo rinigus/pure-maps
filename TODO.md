@@ -9,4 +9,5 @@ Poor Maps 0.32
       non-alphanumeric separator between latitude and longitude)
 * [x] Fix auto-centering in landscape in navigation mode to not have
       the position icon overlap with the menu button (#46)
+* [x] Do relative requests to download tiles, fixes HSL map
 * [ ] Update translations
