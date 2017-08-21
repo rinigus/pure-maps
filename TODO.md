@@ -10,4 +10,5 @@ Poor Maps 0.32
 * [x] Fix auto-centering in landscape in navigation mode to not have
       the position icon overlap with the menu button (#46)
 * [x] Do relative requests to download tiles, fixes HSL map
+* [x] Fix string escaping in Python calls from QML (#50, rinigus)
 * [ ] Update translations
