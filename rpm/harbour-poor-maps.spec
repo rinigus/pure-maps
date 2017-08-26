@@ -5,7 +5,7 @@
 %define __provides_exclude_from ^%{_datadir}/.*$
 
 Name: harbour-poor-maps
-Version: 0.31
+Version: 0.32
 Release: 1
 Summary: Maps and navigation
 License: GPLv3+
