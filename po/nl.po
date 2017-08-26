@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 22:06+0300\n"
+"POT-Creation-Date: 2017-08-26 18:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Nathan Follens <follens@dr.com>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/otsaloma/teams/70314/nl/)\n"
@@ -18,11 +18,15 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: poor/geocoder.py:79
+#: poor/geocoder.py:81
 msgid "Point from geo link"
 msgstr "Punt van geolink"
 
-#: poor/geocoder.py:88 poor/guide.py:94 poor/router.py:93
+#: poor/geocoder.py:92
+msgid "Point from coordinates"
+msgstr "Punt van coördinaten"
+
+#: poor/geocoder.py:101 poor/guide.py:94 poor/router.py:97
 msgid "Connection timed out"
 msgstr "Time-out bij verbinding"
 
@@ -83,14 +87,14 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} u {:d} min"
 
-#: poor/util.py:327
+#: poor/util.py:341
 msgid "Routing courtesy of {}."
-msgstr ""
+msgstr "Routering dankzij {}."
 
-#: poor/util.py:328
+#: poor/util.py:342
 #, python-brace-format
 msgid "Routing by {engine}, courtesy of {service}."
-msgstr ""
+msgstr "Routering door {engine}, dankzij {service}."
 
 #: routers/digitransit.py:58
 msgid "airplane"
@@ -99,7 +103,7 @@ msgstr "vliegtuig"
 #: routers/digitransit.py:59 standard input:14 standard input:16 standard
 #: input:18
 msgid "bicycle"
-msgstr ""
+msgstr "fiets"
 
 #: routers/digitransit.py:60
 msgid "bus"
@@ -133,7 +137,7 @@ msgstr "Wandel naar {arr_name}."
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get a city bike at {dep_name}."
-msgstr ""
+msgstr "Haal een stadsfiets bij {dep_name}."
 
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
@@ -142,17 +146,18 @@ msgstr "Stap in op {mode_name} {line_desc} te {dep_name} om {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr ""
+msgstr "Wandel naar je bestemming."
 
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr ""
+msgstr "Laat de stadsfiets achter bij {dep_name} en wandel naar {arr_name}."
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
 msgstr ""
+"Laat de stadsfiets achter bij {dep_name} en wandel naar je bestemming."
 
 #: routers/digitransit.py:76
 #, python-brace-format
@@ -162,7 +167,7 @@ msgstr "Stap uit te {dep_name} en wandel naar {arr_name}."
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr ""
+msgstr "Stap uit te {dep_name} en fiets naar {arr_name}."
 
 #: routers/digitransit.py:78
 #, python-brace-format
@@ -203,7 +208,7 @@ msgstr "versie %1"
 
 #: qml/AboutPage.qml:49
 msgid "GitHub page"
-msgstr ""
+msgstr "GitHub-pagina"
 
 #: qml/AboutPage.qml:66
 msgid ""
@@ -236,14 +241,14 @@ msgstr ""
 
 #: qml/AboutPage.qml:101
 msgid "Transifex page"
-msgstr ""
+msgstr "Transifex-pagina"
 
 #: qml/BasemapPage.qml:29 qml/BasemapPage.qml:132
 msgid "Basemaps"
 msgstr "Basiskaarten"
 
-#: qml/BasemapPage.qml:58 qml/GeocoderPage.qml:67 qml/GuidePage.qml:67
-#: qml/OverlayPage.qml:41 qml/RouterPage.qml:67
+#: qml/BasemapPage.qml:58 qml/GeocoderPage.qml:77 qml/GuidePage.qml:77
+#: qml/OverlayPage.qml:41 qml/RouterPage.qml:77
 msgid "Source: %1"
 msgstr "Bron: %1"
 
@@ -255,39 +260,39 @@ msgstr "Alles"
 msgid "Basemaps %1"
 msgstr "Basiskaarten %1"
 
-#: qml/CachePage.qml:56
+#: qml/CachePage.qml:58
 msgid "%1 tiles · %2"
 msgstr "%1 tegels · %2"
 
-#: qml/CachePage.qml:68
+#: qml/CachePage.qml:70
 msgid "Remove older than one year"
 msgstr "Verwijder ouder dan een jaar"
 
-#: qml/CachePage.qml:73
+#: qml/CachePage.qml:75
 msgid "Remove older than one month"
 msgstr "Verwijder ouder dan een maand"
 
-#: qml/CachePage.qml:78
+#: qml/CachePage.qml:80
 msgid "Remove older than one week"
 msgstr "Verwijder ouder dan een week"
 
-#: qml/CachePage.qml:83
+#: qml/CachePage.qml:85
 msgid "Remove all"
 msgstr "Verwijder alles"
 
-#: qml/CachePage.qml:88
+#: qml/CachePage.qml:90
 msgid "Removing"
 msgstr "Verwijderen"
 
-#: qml/CachePage.qml:119
+#: qml/CachePage.qml:121
 msgid "Calculating"
 msgstr "Berekenen"
 
-#: qml/CachePage.qml:128
+#: qml/CachePage.qml:130
 msgid "Map Tile Cache"
 msgstr "Kaarttegelcache"
 
-#: qml/CachePage.qml:133
+#: qml/CachePage.qml:135
 msgid "Empty cache, or error"
 msgstr "Leeg cachegeheugen of fout"
 
@@ -309,26 +314,38 @@ msgid ""
 "You can search by address, locality, landmark and many other terms. For best"
 " results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
+"Je kan zoeken op adres, plaats, oriëntatiepunt, en vele andere termen. Voor "
+"de beste resultaten kan je een regio toevoegen, bv. “adres, stad” of “stad, "
+"land”."
 
-#: qml/GeocodingResultsPage.qml:100 qml/NearbyResultsPage.qml:100
+#: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
+#: routers/digitransit_settings.qml:181
+msgid "Default"
+msgstr "Standaard"
+
+#: qml/GeocoderPage.qml:88 qml/GuidePage.qml:88 qml/RouterPage.qml:88
+msgid "Alternatives"
+msgstr "Alternatieven"
+
+#: qml/GeocodingResultsPage.qml:92 qml/NearbyResultsPage.qml:92
 msgid "Show all"
 msgstr "Toon alles"
 
-#: qml/GeocodingResultsPage.qml:136 qml/NearbyResultsPage.qml:136
-#: routers/digitransit_results.qml:220 routers/mapquest_open_results.qml:36
+#: qml/GeocodingResultsPage.qml:128 qml/NearbyResultsPage.qml:128
+#: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
 #: routers/mapzen_results.qml:36 routers/osmscout_results.qml:36
 #: routers/osrm_results.qml:36
 msgid "Searching"
 msgstr "Bezig met zoeken"
 
-#: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
+#: qml/GeocodingResultsPage.qml:150 qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
 msgstr "%1 resultaten"
 
-#: qml/GeocodingResultsPage.qml:162 qml/NearbyResultsPage.qml:159
-#: routers/digitransit_results.qml:249 routers/mapquest_open_results.qml:63
-#: routers/mapzen_results.qml:63 routers/osmscout_results.qml:63
-#: routers/osrm_results.qml:63
+#: qml/GeocodingResultsPage.qml:154 qml/NearbyResultsPage.qml:151
+#: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
+#: routers/mapzen_results.qml:58 routers/osmscout_results.qml:58
+#: routers/osrm_results.qml:58
 msgid "No results"
 msgstr "Geen resultaten"
 
@@ -336,7 +353,7 @@ msgstr "Geen resultaten"
 msgid "Unnamed point"
 msgstr "Punt zonder naam"
 
-#: qml/MenuPage.qml:55 qml/NarrativePage.qml:107 qml/RoutePage.qml:48
+#: qml/MenuPage.qml:55 qml/NavigationPage.qml:39 qml/RoutePage.qml:48
 msgid "Navigation"
 msgstr "Navigatie"
 
@@ -380,33 +397,61 @@ msgstr "Over"
 msgid "Preferences"
 msgstr "Voorkeuren"
 
-#: qml/NarrativePage.qml:82
+#: qml/NarrativePage.qml:84
 msgid "Continue for %1."
 msgstr "Ga door voor %1."
 
-#: qml/NarrativePage.qml:116
-msgid "Begin"
-msgstr "Beginnen"
-
-#: qml/NarrativePage.qml:123
-msgid "Pause"
-msgstr "Pauzeren"
-
-#: qml/NarrativePage.qml:130
-msgid "Clear"
-msgstr "Wissen"
-
-#: qml/NarrativePage.qml:146
-msgid "Distance remaining"
-msgstr "Resterende afstand"
-
-#: qml/NarrativePage.qml:154
-msgid "Time remaining"
-msgstr "Resterende tijd"
+#: qml/NarrativePage.qml:103
+msgid "Maneuvers"
+msgstr "Manoeuvres"
 
 #: qml/NavigationBlock.qml:88
 msgid "Tap to review maneuvers or begin navigating"
 msgstr "Tik om manoeuvres na te kijken of navigatie te beginnen"
+
+#: qml/NavigationPage.qml:54
+msgid "Pause"
+msgstr "Pauzeren"
+
+#: qml/NavigationPage.qml:55
+msgid "Resume"
+msgstr "Hervatten"
+
+#: qml/NavigationPage.qml:55
+msgid "Begin"
+msgstr "Beginnen"
+
+#: qml/NavigationPage.qml:66
+msgid "Reroute"
+msgstr "Route herberekenen"
+
+#: qml/NavigationPage.qml:78
+msgid "Clear"
+msgstr "Wissen"
+
+#: qml/NavigationPage.qml:89
+msgid "Status"
+msgstr "Status"
+
+#: qml/NavigationPage.qml:137
+msgid "Remaining"
+msgstr "Resterend"
+
+#: qml/NavigationPage.qml:168
+msgid "Total"
+msgstr "Totaal"
+
+#: qml/NavigationPage.qml:190
+msgid "Options"
+msgstr "Opties"
+
+#: qml/NavigationPage.qml:196
+msgid "Show navigation instructions"
+msgstr "Navigatie-instructies weergeven"
+
+#: qml/NavigationPage.qml:207
+msgid "Reroute automatically"
+msgstr "Route automatisch herberekenen"
 
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
@@ -439,7 +484,7 @@ msgstr "Overlays"
 
 #: qml/PlaceTypePage.qml:104
 msgid "You can search for venues by type or name."
-msgstr ""
+msgstr "Je kan zoeken naar ontmoetingsplaatsen op type of naam."
 
 #: qml/PoiMarker.qml:63
 msgid "Navigate"
@@ -455,7 +500,7 @@ msgstr "Delen"
 
 #: qml/PoiMarker.qml:103
 msgid "Share Location"
-msgstr ""
+msgstr "Locatie delen"
 
 #: qml/PoiMarker.qml:114
 msgid "Web"
@@ -481,27 +526,23 @@ msgstr ""
 msgid "Allow downloading map tiles"
 msgstr "Downloaden van kaarttegels toestaan"
 
-#: qml/PreferencesPage.qml:56
-msgid "Show navigation narrative"
-msgstr "Navigatienarratief weergeven"
-
-#: qml/PreferencesPage.qml:66
+#: qml/PreferencesPage.qml:55
 msgid "Units"
 msgstr "Eenheden"
 
-#: qml/PreferencesPage.qml:68
+#: qml/PreferencesPage.qml:57
 msgid "Metric"
 msgstr "Metrisch"
 
-#: qml/PreferencesPage.qml:69
+#: qml/PreferencesPage.qml:58
 msgid "American"
 msgstr "Amerikaans"
 
-#: qml/PreferencesPage.qml:70
+#: qml/PreferencesPage.qml:59
 msgid "British"
 msgstr "Brits"
 
-#: qml/PreferencesPage.qml:86
+#: qml/PreferencesPage.qml:75
 msgid ""
 "Only applies when Poor Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
@@ -509,23 +550,23 @@ msgstr ""
 "Geldt enkel wanneer Poor Maps actief is. Wanneer geminimaliseerd hangt "
 "slaapmodus af van normale apparaatsvoorkeuren."
 
-#: qml/PreferencesPage.qml:87
+#: qml/PreferencesPage.qml:76
 msgid "Prevent sleep"
 msgstr "Slaap verhinderen"
 
-#: qml/PreferencesPage.qml:89
+#: qml/PreferencesPage.qml:78
 msgid "Never"
 msgstr "Nooit"
 
-#: qml/PreferencesPage.qml:90
+#: qml/PreferencesPage.qml:79
 msgid "When navigating"
 msgstr "Tijdens navigatie"
 
-#: qml/PreferencesPage.qml:91
+#: qml/PreferencesPage.qml:80
 msgid "Always"
 msgstr "Altijd"
 
-#: qml/PreferencesPage.qml:107
+#: qml/PreferencesPage.qml:96
 msgid ""
 "Limiting tile caching ensures up-to-date maps and keeps disk use under "
 "control, but loads maps slower and causes more data traffic."
@@ -534,27 +575,27 @@ msgstr ""
 "en houdt geheugengebruik in bedwang, maar laadt kaarten trager en leidt tot "
 "hoger gegevensverbruik."
 
-#: qml/PreferencesPage.qml:108
+#: qml/PreferencesPage.qml:97
 msgid "Cache map tiles"
 msgstr "Kaarttegels cachen"
 
-#: qml/PreferencesPage.qml:110
+#: qml/PreferencesPage.qml:99
 msgid "One week"
-msgstr ""
+msgstr "Een week"
 
-#: qml/PreferencesPage.qml:111
+#: qml/PreferencesPage.qml:100
 msgid "One month"
-msgstr ""
+msgstr "Een maand"
 
-#: qml/PreferencesPage.qml:112
+#: qml/PreferencesPage.qml:101
 msgid "One year"
-msgstr ""
+msgstr "Een jaar"
 
-#: qml/PreferencesPage.qml:113
+#: qml/PreferencesPage.qml:102
 msgid "Forever"
 msgstr "Voor altijd"
 
-#: qml/PreferencesPage.qml:147
+#: qml/PreferencesPage.qml:136
 msgid "Examine map tile cache"
 msgstr "Kaarttegelcache onderzoeken"
 
@@ -570,7 +611,7 @@ msgstr "Naar"
 msgid "Reverse endpoints"
 msgstr "Eindpunten wisselen"
 
-#: qml/RouterPage.qml:56
+#: qml/RouterPage.qml:65
 msgid "Modes: %1"
 msgstr "Modi: %1"
 
@@ -598,6 +639,22 @@ msgstr "E-mail wordt gestart"
 msgid "Other"
 msgstr "Andere"
 
+#: qml/poor-maps.qml:126
+msgid "Rerouting"
+msgstr "Route wordt herberekend"
+
+#: qml/poor-maps.qml:137
+msgid "Rerouting failed: %1"
+msgstr "Routeherberekening mislukt: %1"
+
+#: qml/poor-maps.qml:140
+msgid "New route found"
+msgstr "Nieuwe route gevonden"
+
+#: qml/poor-maps.qml:145
+msgid "Rerouting failed"
+msgstr "Routeherberekening mislukt"
+
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
 msgstr "Route %1. totaal %2"
@@ -610,7 +667,7 @@ msgstr "Wandel voor %1"
 msgid "%1 → %2"
 msgstr "%1 → %2"
 
-#: routers/digitransit_results.qml:244
+#: routers/digitransit_results.qml:239
 msgid "Results"
 msgstr "Resultaten"
 
@@ -651,10 +708,6 @@ msgstr "Nu"
 msgid "Criterion"
 msgstr "Criterium"
 
-#: routers/digitransit_settings.qml:181
-msgid "Default"
-msgstr "Standaard"
-
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
 msgstr "Minst overstappen"
@@ -688,18 +741,19 @@ msgstr "%1 (standaard)"
 
 #: standard input:1
 msgid "Search in Finland"
-msgstr ""
+msgstr "Zoeken in Finland"
 
 #: standard input:2 standard input:3
 msgid "Search based on open data sources"
-msgstr ""
+msgstr "Zoeken gebaseerd op opengegevensbronnen"
 
 #: standard input:4 standard input:6
 msgid "Search based on OpenStreetMap data"
-msgstr ""
+msgstr "Zoeken gebaseerd op OpenStreetMap-gegevens"
 
 #: standard input:5 standard input:10 standard input:19 standard input:24
-#: standard input:26 standard input:28 standard input:30
+#: standard input:26 standard input:28 standard input:30 standard input:32
+#: standard input:34 standard input:36 standard input:38
 msgid "OSM Scout offline server"
 msgstr "OSM Scout-offlineserver"
 
@@ -729,24 +783,40 @@ msgstr "auto"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "foot"
-msgstr ""
+msgstr "te voet"
 
 #: standard input:22
 msgid "ASTER GDEM & SRTM Hillshade @1x"
 msgstr "ASTER GDEM & SRTM reliëfschaduw @1x"
 
 #: standard input:23
+msgid "OSM Scout car day @1x"
+msgstr "OSM Scout auto dag @1x"
+
+#: standard input:25
+msgid "OSM Scout car day @2x"
+msgstr "OSM Scout auto dag @2x"
+
+#: standard input:27
+msgid "OSM Scout car night @1x"
+msgstr "OSM Scout auto nacht @1x"
+
+#: standard input:29
+msgid "OSM Scout car night @2x"
+msgstr "OSM Scout auto nacht @2x"
+
+#: standard input:31
 msgid "OSM Scout day @1x"
 msgstr "OSM Scout dag @1x"
 
-#: standard input:25
+#: standard input:33
 msgid "OSM Scout day @2x"
 msgstr "OSM Scout dag @2x"
 
-#: standard input:27
+#: standard input:35
 msgid "OSM Scout night @1x"
 msgstr "OSM Scout nacht @1x"
 
-#: standard input:29
+#: standard input:37
 msgid "OSM Scout night @2x"
 msgstr "OSM Scout nacht @2x"
