@@ -41,7 +41,7 @@ Page {
 
             Row {
                 id: row
-                height: startItem.height
+                height: Math.max(startItem.height, rerouteItem.height, clearItem.height)
                 width: parent.width
 
                 property real contentWidth: width - 2 * Theme.horizontalPageMargin

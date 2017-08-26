@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 18:17+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-08-26 19:02+0300\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2016\n"
 "Language-Team: Finnish (https://www.transifex.com/otsaloma/teams/70314/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -427,7 +427,7 @@ msgstr "Aloita"
 
 #: qml/NavigationPage.qml:66
 msgid "Reroute"
-msgstr ""
+msgstr "Reititä uudelleen"
 
 #: qml/NavigationPage.qml:78
 msgid "Clear"

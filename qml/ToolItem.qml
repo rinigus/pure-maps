@@ -37,11 +37,16 @@ BackgroundItem {
 
     Label {
         id: label
-        anchors.horizontalCenter: image.horizontalCenter
+        anchors.left: parent.left
+        anchors.leftMargin: Theme.paddingSmall
+        anchors.right: parent.right
+        anchors.rightMargin: Theme.paddingSmall
         anchors.top: image.bottom
         color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
         height: implicitHeight + Theme.paddingLarge
+        horizontalAlignment: Text.AlignHCenter
         text: item.text
+        wrapMode: Text.WordWrap
     }
 
 }
