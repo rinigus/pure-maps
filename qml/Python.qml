@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.2
 
 Python {
@@ -27,7 +28,10 @@ Python {
     Component.onCompleted: {
         addImportPath(Qt.resolvedUrl(".."));
         importModule("poor", function() {
-            py.call("poor.main", [], function() {
+            // Theme.pixelRatio is relative to the Jolla 1,
+            // which is maybe around 1.5 in terms of map scales.
+            var pixelRatio = Theme.pixelRatio * 1.5;
+            py.call("poor.main", [pixelRatio], function() {
                 py.ready = true;
             });
         });

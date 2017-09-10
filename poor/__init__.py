@@ -50,8 +50,12 @@ from poor.router import *
 from poor.narrative import *
 from poor.application import *
 
-def main():
+def main(pixel_ratio=1):
     """Initialize application."""
+    import poor.config
+    poor.config.DEFAULTS["basemap"] = (
+        "mapbox_streets_gl_@2x" if pixel_ratio >= 1.5 else
+        "mapbox_streets_gl_@1x")
     conf.read()
     global app
     app = Application()

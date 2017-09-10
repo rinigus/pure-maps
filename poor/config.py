@@ -29,6 +29,7 @@ DEFAULTS = {
     "allow_tile_download": True,
     "auto_center": False,
     "auto_rotate": False,
+    # Reset based on pixel ratio in poor.main.
     "basemap": "mapbox_streets_gl_@2x",
     "basemap_filter": "",
     "cache_max_age": 30, # days
