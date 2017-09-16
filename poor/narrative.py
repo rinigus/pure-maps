@@ -177,7 +177,7 @@ class Narrative:
         # Don't provide route direction to auto-rotate by if off route.
         direction = self._get_direction(x, y, node) if seg_dist < 50 else None
         # Trigger rerouting if far off route.
-        reroute = seg_dist > 200 + (accuracy or 40000000)
+        reroute = seg_dist > 100 + (accuracy or 40000000)
         return dict(total_dist=poor.util.format_distance(max(self.dist)),
                     total_time=poor.util.format_time(max(self.time)),
                     dest_dist=dest_dist,
