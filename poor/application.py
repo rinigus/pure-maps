@@ -201,6 +201,7 @@ class Application:
                                              nwx=corners[3][0],
                                              nwy=corners[3][1],
                                              scale=scale_factor*tilesource.scale,
+                                             half_zoom=tilesource.half_zoom,
                                              smooth=tilesource.smooth,
                                              swy=corners[2][1],
                                              type=tilesource.type,
@@ -217,7 +218,8 @@ class Application:
         total_tiles = 0
         for tilesource in [self.basemap] + self.overlays:
             # For scales above one, get tile from a lower zoom level.
-            tile_zoom = int(zoom - math.log2(scale_factor * tilesource.scale))
+            offset = math.log2(scale_factor * tilesource.scale)
+            tile_zoom = math.ceil(zoom - offset - 0.01)
             download_queue = self._get_download_queue(tilesource.id, create=True)
             for tile in tilesource.list_tiles(xmin, xmax, ymin, ymax, tile_zoom):
                 args = (tilesource, tile_zoom, zoom, scale_factor, tile)

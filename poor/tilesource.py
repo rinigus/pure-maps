@@ -194,6 +194,11 @@ class TileSource:
                 self._active_urls.discard(url)
         return self.download(tile, retry - 1)
 
+    @property
+    def half_zoom(self):
+        """``True`` if scale is native at half zoom levels."""
+        return self.scale in (3, 6, 12, 24, 48, 96)
+
     def _init_provider(self, format):
         """Initialize tile format provider module from `format`."""
         leaf = os.path.join("tilesources", "{}.py".format(format))

@@ -42,6 +42,7 @@ Map {
     property bool changed: true
     property var  direction: app.navigationDirection || gps.direction
     property var  directionPrev: 0
+    property bool halfZoom: false
     property bool hasRoute: false
     property real heightCoords: 0
     property var  maneuvers: []
@@ -68,6 +69,10 @@ Map {
         // This is relative to the total visible map height.
         property real navigationCenterY: 0.22
 
+        // This is the zoom level offset at which @3x, @6x, etc. tiles
+        // can be shown pixel for pixel. The exact value is log2(1.5),
+        // but QML's JavaScript doesn't have Math.log2.
+        property real halfZoom: 0.5849625
     }
 
     Behavior on center {
@@ -97,15 +102,10 @@ Map {
 
     gesture.onPinchFinished: {
         // Round piched zoom level to avoid fuzziness.
-        if (map.zoomLevel < map.zoomLevelPrev) {
-            map.zoomLevel % 1 < 0.75 ?
-                map.setZoomLevel(Math.floor(map.zoomLevel)) :
-                map.setZoomLevel(Math.ceil(map.zoomLevel));
-        } else if (map.zoomLevel > map.zoomLevelPrev) {
-            map.zoomLevel % 1 > 0.25 ?
-                map.setZoomLevel(Math.ceil(map.zoomLevel)) :
-                map.setZoomLevel(Math.floor(map.zoomLevel));
-        }
+        var offset = map.zoomLevel < map.zoomLevelPrev ? -1 : 1;
+        Math.abs(map.zoomLevel - map.zoomLevelPrev) > 0.25 ?
+            map.setZoomLevel(map.zoomLevelPrev + offset) :
+            map.setZoomLevel(map.zoomLevelPrev);
     }
 
     onAutoRotateChanged: {
@@ -502,6 +502,10 @@ Map {
 
     function renderTile(props) {
         // Render tile from local image file.
+        if (props.half_zoom !== map.halfZoom) {
+            map.halfZoom = props.half_zoom;
+            map.setZoomLevel(map.zoomLevel);
+        }
         for (var i = 0; i < map.tiles.length; i++) {
             if (map.tiles[i].uid !== props.uid) continue;
             map.tiles[i].coordinate.latitude = props.nwy;
@@ -509,7 +513,8 @@ Map {
             map.tiles[i].smooth = props.smooth;
             map.tiles[i].type = props.type;
             map.tiles[i].zOffset = props.z;
-            map.tiles[i].zoomLevel = props.display_zoom;
+            map.tiles[i].zoomLevel = props.display_zoom +
+                (props.half_zoom ? constants.halfZoom : 0);
             map.tiles[i].uri = props.uri;
             map.tiles[i].setWidth(props);
             map.tiles[i].setHeight(props);
@@ -584,7 +589,10 @@ Map {
 
     function setZoomLevel(zoom) {
         // Set the current zoom level.
-        zoom = Math.floor(zoom);
+        // Round zoom level so that tiles are displayed pixel for pixel.
+         zoom = map.halfZoom ?
+            Math.ceil(zoom - constants.halfZoom - 0.01) + constants.halfZoom :
+            Math.floor(zoom + 0.01);
         map.demoteTiles();
         map.zoomLevel = zoom;
         map.zoomLevelPrev = zoom;
