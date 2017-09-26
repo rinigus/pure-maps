@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 18:17+0300\n"
-"PO-Revision-Date: 2017-08-26 19:02+0300\n"
+"POT-Creation-Date: 2017-09-26 22:19+0300\n"
+"PO-Revision-Date: 2017-09-26 22:20+0300\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2016\n"
 "Language-Team: Finnish (https://www.transifex.com/otsaloma/teams/70314/fi/)\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: poor/geocoder.py:81
@@ -100,8 +100,7 @@ msgstr "Reitityksen tarjosi {service}, reitittimellä {engine}."
 msgid "airplane"
 msgstr "lentokone"
 
-#: routers/digitransit.py:59 standard input:14 standard input:16 standard
-#: input:18
+#: routers/digitransit.py:59 standard input:14 input:16 input:18
 msgid "bicycle"
 msgstr "polkupyörä"
 
@@ -142,9 +141,7 @@ msgstr "Ota kaupunkipyörä asemalta {dep_name}."
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr ""
-"Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} klo. "
-"{dep_time}."
+msgstr "Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} klo. {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
@@ -153,14 +150,12 @@ msgstr "Kävele kohti määräpaikkaasi."
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr ""
-"Jätä kaupunkipyörä asemalle {dep_name} ja kävele kohti pysäkkiä {arr_name}."
+msgstr "Jätä kaupunkipyörä asemalle {dep_name} ja kävele kohti pysäkkiä {arr_name}."
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr ""
-"Jätä kaupunkipyörä asemalle {dep_name} ja kävele kohti määräpaikkaasi."
+msgstr "Jätä kaupunkipyörä asemalle {dep_name} ja kävele kohti määräpaikkaasi."
 
 #: routers/digitransit.py:76
 #, python-brace-format
@@ -174,11 +169,8 @@ msgstr "Jää pois pysäkillä {dep_name} ja pyöräile kohti pysäkkiä {arr_na
 
 #: routers/digitransit.py:78
 #, python-brace-format
-msgid ""
-"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
-msgstr ""
-"Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode_name} {line_desc} "
-"klo. {dep_time}."
+msgid "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+msgstr "Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode_name} {line_desc} klo. {dep_time}."
 
 #: routers/digitransit.py:79
 #, python-brace-format
@@ -214,12 +206,8 @@ msgid "GitHub page"
 msgstr "GitHub-sivu"
 
 #: qml/AboutPage.qml:66
-msgid ""
-"Poor Maps is free software released under the GNU General Public License "
-"(GPL), version 3 or later."
-msgstr ""
-"Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public "
-"License (GPL), versio 3 tai uudempi."
+msgid "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later."
+msgstr "Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public License (GPL), versio 3 tai uudempi."
 
 #: qml/AboutPage.qml:71
 msgid "Translated by"
@@ -235,12 +223,8 @@ msgid "translator-credits"
 msgstr "Osmo Salomaa"
 
 #: qml/AboutPage.qml:93
-msgid ""
-"You can add new user interface translations or contribute to existing ones "
-"at Transifex."
-msgstr ""
-"Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten "
-"käännösten parantamiseen Transifexissa."
+msgid "You can add new user interface translations or contribute to existing ones at Transifex."
+msgstr "Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten käännösten parantamiseen Transifexissa."
 
 #: qml/AboutPage.qml:101
 msgid "Transifex page"
@@ -313,13 +297,8 @@ msgid "Using"
 msgstr "Käyttäen"
 
 #: qml/GeocodePage.qml:119 qml/RoutePointPage.qml:119
-msgid ""
-"You can search by address, locality, landmark and many other terms. For best"
-" results, include a region, e.g. “address, city” or “city, country”."
-msgstr ""
-"Voit etsiä osoitteen, alueen, maamerkin ja monen muun tekijän perusteella. "
-"Parhaat tulokset saat, kun sisällytät alueen, esim. “osoite, kaupunki” tai "
-"“kaupunki, maa”."
+msgid "You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. “address, city” or “city, country”."
+msgstr "Voit etsiä osoitteen, alueen, maamerkin ja monen muun tekijän perusteella. Parhaat tulokset saat, kun sisällytät alueen, esim. “osoite, kaupunki” tai “kaupunki, maa”."
 
 #: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
 #: routers/digitransit_settings.qml:181
@@ -410,8 +389,7 @@ msgstr "Vaiheet"
 
 #: qml/NavigationBlock.qml:88
 msgid "Tap to review maneuvers or begin navigating"
-msgstr ""
-"Napauta tarkastellaksesi reitin vaiheita tai aloittaaksesi navigoinnin"
+msgstr "Napauta tarkastellaksesi reitin vaiheita tai aloittaaksesi navigoinnin"
 
 #: qml/NavigationPage.qml:54
 msgid "Pause"
@@ -519,12 +497,8 @@ msgid "Auto-center on"
 msgstr "Automaattinen keskitys päällä"
 
 #: qml/PreferencesPage.qml:42
-msgid ""
-"Uncheck to minimize data traffic. You will be left with previously "
-"downloaded and cached tiles."
-msgstr ""
-"Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää aiemmin "
-"ladatut, varastossa olevat laatat."
+msgid "Uncheck to minimize data traffic. You will be left with previously downloaded and cached tiles."
+msgstr "Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää aiemmin ladatut, varastossa olevat laatat."
 
 #: qml/PreferencesPage.qml:43
 msgid "Allow downloading map tiles"
@@ -547,12 +521,8 @@ msgid "British"
 msgstr "Brittiläinen"
 
 #: qml/PreferencesPage.qml:75
-msgid ""
-"Only applies when Poor Maps is active. When minimized, sleep is controlled "
-"by normal device-level preferences."
-msgstr ""
-"Pätee vain, kun Poor Maps on aktiivisena. Kun minimoituna, lepotilaan "
-"siirrytään laitteen normaalien asetusten mukaan."
+msgid "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences."
+msgstr "Pätee vain, kun Poor Maps on aktiivisena. Kun minimoituna, lepotilaan siirrytään laitteen normaalien asetusten mukaan."
 
 #: qml/PreferencesPage.qml:76
 msgid "Prevent sleep"
@@ -571,13 +541,8 @@ msgid "Always"
 msgstr "Aina"
 
 #: qml/PreferencesPage.qml:96
-msgid ""
-"Limiting tile caching ensures up-to-date maps and keeps disk use under "
-"control, but loads maps slower and causes more data traffic."
-msgstr ""
-"Karttalaattojen varastoinnin rajoittaminen varmistaa ajantasaiset kartat ja "
-"pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa "
-"enemmän tiedonsiirtoa verkon yli."
+msgid "Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic."
+msgstr "Karttalaattojen varastoinnin rajoittaminen varmistaa ajantasaiset kartat ja pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa enemmän tiedonsiirtoa verkon yli."
 
 #: qml/PreferencesPage.qml:97
 msgid "Cache map tiles"
@@ -747,17 +712,16 @@ msgstr "%1 (oletus)"
 msgid "Search in Finland"
 msgstr "Haku Suomessa"
 
-#: standard input:2 standard input:3
+#: standard input:2 input:3
 msgid "Search based on open data sources"
 msgstr "Haku perustuen avoimiin tietolähteisiin"
 
-#: standard input:4 standard input:6
+#: standard input:4 input:6
 msgid "Search based on OpenStreetMap data"
 msgstr "Haku perustuen OpenStreetMap-aineistoon"
 
-#: standard input:5 standard input:10 standard input:19 standard input:24
-#: standard input:26 standard input:28 standard input:30 standard input:32
-#: standard input:34 standard input:36 standard input:38
+#: standard input:5 input:10 input:19 input:24 input:26 input:28 input:30
+#: input:32 input:34 input:36 input:38
 msgid "OSM Scout offline server"
 msgstr "OSM Scout offline-palvelin"
 
@@ -765,7 +729,7 @@ msgstr "OSM Scout offline-palvelin"
 msgid "Venues listed and reviewed by Foursquare users"
 msgstr "Foursquaren käyttäjien lisäämät ja arvioimat paikat"
 
-#: standard input:8 standard input:9
+#: standard input:8 input:9
 msgid "Points of interest from OpenStreetMap data"
 msgstr "Paikkapisteet OpenStreetMap-aineistosta"
 
@@ -777,15 +741,15 @@ msgstr "Reititys joukkoliikenteellä Suomessa"
 msgid "public transport"
 msgstr "joukkoliikenne"
 
-#: standard input:13 standard input:15 standard input:17 standard input:20
+#: standard input:13 input:15 input:17 input:20
 msgid "Routing based on OpenStreetMap data"
 msgstr "Reititys pohjautuen OpenStreetMap-aineistoon"
 
-#: standard input:14 standard input:16 standard input:18 standard input:21
+#: standard input:14 input:16 input:18 input:21
 msgid "car"
 msgstr "auto"
 
-#: standard input:14 standard input:16 standard input:18
+#: standard input:14 input:16 input:18
 msgid "foot"
 msgstr "kävely"
 

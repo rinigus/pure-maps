@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 18:17+0300\n"
+"POT-Creation-Date: 2017-09-26 22:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ricardo Breitkopf <lemmind@htp-tel.de>, 2017\n"
 "Language-Team: German (Germany) (https://www.transifex.com/otsaloma/teams/70314/de_DE/)\n"
@@ -128,12 +128,12 @@ msgstr "Straßenbahn"
 
 #: routers/digitransit.py:65
 msgid "walk"
-msgstr "Fußweg"
+msgstr "Zu Fuß"
 
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr "Gehe Richtung {arr_name}."
+msgstr "Gehe in Richtung {arr_name}."
 
 #: routers/digitransit.py:70
 #, python-brace-format
@@ -239,7 +239,7 @@ msgstr ""
 
 #: qml/AboutPage.qml:101
 msgid "Transifex page"
-msgstr "Transifex seite"
+msgstr "Transifex Seite"
 
 #: qml/BasemapPage.qml:29 qml/BasemapPage.qml:132
 msgid "Basemaps"
@@ -264,15 +264,15 @@ msgstr "%1 Kacheln · %2"
 
 #: qml/CachePage.qml:70
 msgid "Remove older than one year"
-msgstr "Entferne älter als ein Jahr"
+msgstr "Entferne ältere als ein Jahr"
 
 #: qml/CachePage.qml:75
 msgid "Remove older than one month"
-msgstr "Entferne älter als einen Monat"
+msgstr "Entferne ältere als einen Monat"
 
 #: qml/CachePage.qml:80
 msgid "Remove older than one week"
-msgstr "Entferne älter als eine Woche"
+msgstr "Entferne ältere als eine Woche"
 
 #: qml/CachePage.qml:85
 msgid "Remove all"
@@ -280,11 +280,11 @@ msgstr "Entferne alle"
 
 #: qml/CachePage.qml:90
 msgid "Removing"
-msgstr "Entferne"
+msgstr "Am Entfernen"
 
 #: qml/CachePage.qml:121
 msgid "Calculating"
-msgstr "Berechne"
+msgstr "Am Berechnen"
 
 #: qml/CachePage.qml:130
 msgid "Map Tile Cache"
@@ -292,7 +292,7 @@ msgstr "Zwischenspeicher für Kartenkacheln"
 
 #: qml/CachePage.qml:135
 msgid "Empty cache, or error"
-msgstr "Leere Zwischenspeicher, oder Fehler"
+msgstr "Leerer Zwischenspeicher, oder Fehler"
 
 #: qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55 qml/RoutePointPage.qml:55
 msgid "Remove"
@@ -334,7 +334,7 @@ msgstr "Zeige alle"
 #: routers/mapzen_results.qml:36 routers/osmscout_results.qml:36
 #: routers/osrm_results.qml:36
 msgid "Searching"
-msgstr "Suche"
+msgstr "Am Suchen"
 
 #: qml/GeocodingResultsPage.qml:150 qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
@@ -490,7 +490,7 @@ msgstr "Navigiere"
 
 #: qml/PoiMarker.qml:80
 msgid "Nearby"
-msgstr "Nahe"
+msgstr "In der Nähe"
 
 #: qml/PoiMarker.qml:97
 msgid "Share"
@@ -631,7 +631,7 @@ msgstr "E-Mail"
 
 #: qml/SharePage.qml:78
 msgid "Launching the Email application"
-msgstr "Öffne das E-Mail-Programm"
+msgstr "Öffne das E-Mail Programm"
 
 #: qml/SharePage.qml:88
 msgid "Other"

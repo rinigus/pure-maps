@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 18:17+0300\n"
+"POT-Creation-Date: 2017-09-26 22:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2017\n"
 "Language-Team: Polish (https://www.transifex.com/otsaloma/teams/70314/pl/)\n"
@@ -24,7 +24,7 @@ msgstr "Punkt z geo linku"
 
 #: poor/geocoder.py:92
 msgid "Point from coordinates"
-msgstr ""
+msgstr "Wskaż współrzędne"
 
 #: poor/geocoder.py:101 poor/guide.py:94 poor/router.py:97
 msgid "Connection timed out"
@@ -325,7 +325,7 @@ msgstr "Domyślny"
 
 #: qml/GeocoderPage.qml:88 qml/GuidePage.qml:88 qml/RouterPage.qml:88
 msgid "Alternatives"
-msgstr ""
+msgstr "Alternatywy"
 
 #: qml/GeocodingResultsPage.qml:92 qml/NearbyResultsPage.qml:92
 msgid "Show all"
@@ -403,7 +403,7 @@ msgstr "Kontynuuj przez %1."
 
 #: qml/NarrativePage.qml:103
 msgid "Maneuvers"
-msgstr ""
+msgstr "Manewry"
 
 #: qml/NavigationBlock.qml:88
 msgid "Tap to review maneuvers or begin navigating"
@@ -415,7 +415,7 @@ msgstr "Wstrzymaj"
 
 #: qml/NavigationPage.qml:55
 msgid "Resume"
-msgstr ""
+msgstr "Wznów"
 
 #: qml/NavigationPage.qml:55
 msgid "Begin"
@@ -423,7 +423,7 @@ msgstr "Zacznij"
 
 #: qml/NavigationPage.qml:66
 msgid "Reroute"
-msgstr ""
+msgstr "Zmień trasę"
 
 #: qml/NavigationPage.qml:78
 msgid "Clear"
@@ -431,27 +431,27 @@ msgstr "Wyczyść"
 
 #: qml/NavigationPage.qml:89
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: qml/NavigationPage.qml:137
 msgid "Remaining"
-msgstr ""
+msgstr "Pozostały"
 
 #: qml/NavigationPage.qml:168
 msgid "Total"
-msgstr ""
+msgstr "Całkowicie"
 
 #: qml/NavigationPage.qml:190
 msgid "Options"
-msgstr ""
+msgstr "Opcje"
 
 #: qml/NavigationPage.qml:196
 msgid "Show navigation instructions"
-msgstr ""
+msgstr "Pokaż instrukcje nawigacji"
 
 #: qml/NavigationPage.qml:207
 msgid "Reroute automatically"
-msgstr ""
+msgstr "Zmieniaj trasę automatycznie"
 
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
@@ -641,19 +641,19 @@ msgstr "Inne"
 
 #: qml/poor-maps.qml:126
 msgid "Rerouting"
-msgstr ""
+msgstr "Zmiana trasy"
 
 #: qml/poor-maps.qml:137
 msgid "Rerouting failed: %1"
-msgstr ""
+msgstr "Zmiana trasy nie powiodła się: %1"
 
 #: qml/poor-maps.qml:140
 msgid "New route found"
-msgstr ""
+msgstr "Znaleziono nową trasę"
 
 #: qml/poor-maps.qml:145
 msgid "Rerouting failed"
-msgstr ""
+msgstr "Zmiana trasy nie powiodła się"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
@@ -791,19 +791,19 @@ msgstr "ASTER GDEM & SRTM Hillshade @1x"
 
 #: standard input:23
 msgid "OSM Scout car day @1x"
-msgstr ""
+msgstr "OSM Scout samochód dzień @1x"
 
 #: standard input:25
 msgid "OSM Scout car day @2x"
-msgstr ""
+msgstr "OSM Scout samochód dzień @2x"
 
 #: standard input:27
 msgid "OSM Scout car night @1x"
-msgstr ""
+msgstr "OSM Scout samochód noc @1x"
 
 #: standard input:29
 msgid "OSM Scout car night @2x"
-msgstr ""
+msgstr "OSM Scout samochód noc @2x"
 
 #: standard input:31
 msgid "OSM Scout day @1x"

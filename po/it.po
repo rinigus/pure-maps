@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 22:06+0300\n"
+"POT-Creation-Date: 2017-09-26 22:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Michele Claus <claus.miki@hotmail.it>, 2017\n"
 "Language-Team: Italian (https://www.transifex.com/otsaloma/teams/70314/it/)\n"
@@ -18,11 +18,15 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: poor/geocoder.py:79
+#: poor/geocoder.py:81
 msgid "Point from geo link"
 msgstr "Punto da geo link"
 
-#: poor/geocoder.py:88 poor/guide.py:94 poor/router.py:93
+#: poor/geocoder.py:92
+msgid "Point from coordinates"
+msgstr ""
+
+#: poor/geocoder.py:101 poor/guide.py:94 poor/router.py:97
 msgid "Connection timed out"
 msgstr "Time-out connessione"
 
@@ -83,11 +87,11 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
-#: poor/util.py:327
+#: poor/util.py:341
 msgid "Routing courtesy of {}."
 msgstr ""
 
-#: poor/util.py:328
+#: poor/util.py:342
 #, python-brace-format
 msgid "Routing by {engine}, courtesy of {service}."
 msgstr ""
@@ -241,8 +245,8 @@ msgstr ""
 msgid "Basemaps"
 msgstr "Mappa base"
 
-#: qml/BasemapPage.qml:58 qml/GeocoderPage.qml:67 qml/GuidePage.qml:67
-#: qml/OverlayPage.qml:41 qml/RouterPage.qml:67
+#: qml/BasemapPage.qml:58 qml/GeocoderPage.qml:77 qml/GuidePage.qml:77
+#: qml/OverlayPage.qml:41 qml/RouterPage.qml:77
 msgid "Source: %1"
 msgstr "Fonte: %1"
 
@@ -254,39 +258,39 @@ msgstr "Tutto"
 msgid "Basemaps %1"
 msgstr "Mappa base %1"
 
-#: qml/CachePage.qml:56
+#: qml/CachePage.qml:58
 msgid "%1 tiles · %2"
 msgstr "%1 mattonelle · %2"
 
-#: qml/CachePage.qml:68
+#: qml/CachePage.qml:70
 msgid "Remove older than one year"
 msgstr "Rimuovi più vecchio di un anno"
 
-#: qml/CachePage.qml:73
+#: qml/CachePage.qml:75
 msgid "Remove older than one month"
 msgstr "Rimuovi più vecchio di un mese"
 
-#: qml/CachePage.qml:78
+#: qml/CachePage.qml:80
 msgid "Remove older than one week"
 msgstr "Rimuovi più vecchio di una settimana"
 
-#: qml/CachePage.qml:83
+#: qml/CachePage.qml:85
 msgid "Remove all"
 msgstr "Rimuovi tutto"
 
-#: qml/CachePage.qml:88
+#: qml/CachePage.qml:90
 msgid "Removing"
 msgstr "Rimuovendo"
 
-#: qml/CachePage.qml:119
+#: qml/CachePage.qml:121
 msgid "Calculating"
 msgstr "Calcolando"
 
-#: qml/CachePage.qml:128
+#: qml/CachePage.qml:130
 msgid "Map Tile Cache"
 msgstr "Cache dei frammenti di mappa"
 
-#: qml/CachePage.qml:133
+#: qml/CachePage.qml:135
 msgid "Empty cache, or error"
 msgstr "Cache vuota, o errore"
 
@@ -309,25 +313,34 @@ msgid ""
 " results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
 
-#: qml/GeocodingResultsPage.qml:100 qml/NearbyResultsPage.qml:100
+#: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
+#: routers/digitransit_settings.qml:181
+msgid "Default"
+msgstr "Standard"
+
+#: qml/GeocoderPage.qml:88 qml/GuidePage.qml:88 qml/RouterPage.qml:88
+msgid "Alternatives"
+msgstr ""
+
+#: qml/GeocodingResultsPage.qml:92 qml/NearbyResultsPage.qml:92
 msgid "Show all"
 msgstr "Mostra tutto"
 
-#: qml/GeocodingResultsPage.qml:136 qml/NearbyResultsPage.qml:136
-#: routers/digitransit_results.qml:220 routers/mapquest_open_results.qml:36
+#: qml/GeocodingResultsPage.qml:128 qml/NearbyResultsPage.qml:128
+#: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
 #: routers/mapzen_results.qml:36 routers/osmscout_results.qml:36
 #: routers/osrm_results.qml:36
 msgid "Searching"
 msgstr "Cercando"
 
-#: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
+#: qml/GeocodingResultsPage.qml:150 qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
 msgstr "%1 Risultati"
 
-#: qml/GeocodingResultsPage.qml:162 qml/NearbyResultsPage.qml:159
-#: routers/digitransit_results.qml:249 routers/mapquest_open_results.qml:63
-#: routers/mapzen_results.qml:63 routers/osmscout_results.qml:63
-#: routers/osrm_results.qml:63
+#: qml/GeocodingResultsPage.qml:154 qml/NearbyResultsPage.qml:151
+#: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
+#: routers/mapzen_results.qml:58 routers/osmscout_results.qml:58
+#: routers/osrm_results.qml:58
 msgid "No results"
 msgstr "Nessun risultato"
 
@@ -335,7 +348,7 @@ msgstr "Nessun risultato"
 msgid "Unnamed point"
 msgstr "Punto senza nome"
 
-#: qml/MenuPage.qml:55 qml/NarrativePage.qml:107 qml/RoutePage.qml:48
+#: qml/MenuPage.qml:55 qml/NavigationPage.qml:39 qml/RoutePage.qml:48
 msgid "Navigation"
 msgstr "Navigazione"
 
@@ -379,33 +392,61 @@ msgstr "A proposito"
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: qml/NarrativePage.qml:82
+#: qml/NarrativePage.qml:84
 msgid "Continue for %1."
 msgstr "Continua per %1."
 
-#: qml/NarrativePage.qml:116
-msgid "Begin"
-msgstr "Inizia"
-
-#: qml/NarrativePage.qml:123
-msgid "Pause"
-msgstr "Pausa"
-
-#: qml/NarrativePage.qml:130
-msgid "Clear"
-msgstr "Cancella"
-
-#: qml/NarrativePage.qml:146
-msgid "Distance remaining"
-msgstr "Distanza rimanente"
-
-#: qml/NarrativePage.qml:154
-msgid "Time remaining"
-msgstr "Tempo rimanente"
+#: qml/NarrativePage.qml:103
+msgid "Maneuvers"
+msgstr ""
 
 #: qml/NavigationBlock.qml:88
 msgid "Tap to review maneuvers or begin navigating"
 msgstr "Premi per rivedere le manovre o inizia la navigazione"
+
+#: qml/NavigationPage.qml:54
+msgid "Pause"
+msgstr "Pausa"
+
+#: qml/NavigationPage.qml:55
+msgid "Resume"
+msgstr ""
+
+#: qml/NavigationPage.qml:55
+msgid "Begin"
+msgstr "Inizia"
+
+#: qml/NavigationPage.qml:66
+msgid "Reroute"
+msgstr ""
+
+#: qml/NavigationPage.qml:78
+msgid "Clear"
+msgstr "Cancella"
+
+#: qml/NavigationPage.qml:89
+msgid "Status"
+msgstr ""
+
+#: qml/NavigationPage.qml:137
+msgid "Remaining"
+msgstr ""
+
+#: qml/NavigationPage.qml:168
+msgid "Total"
+msgstr ""
+
+#: qml/NavigationPage.qml:190
+msgid "Options"
+msgstr ""
+
+#: qml/NavigationPage.qml:196
+msgid "Show navigation instructions"
+msgstr ""
+
+#: qml/NavigationPage.qml:207
+msgid "Reroute automatically"
+msgstr ""
 
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
@@ -480,27 +521,23 @@ msgstr ""
 msgid "Allow downloading map tiles"
 msgstr "Permetti il download delle mappe."
 
-#: qml/PreferencesPage.qml:56
-msgid "Show navigation narrative"
-msgstr "Mostra indicazioni di navigazione"
-
-#: qml/PreferencesPage.qml:66
+#: qml/PreferencesPage.qml:55
 msgid "Units"
 msgstr "Unità"
 
-#: qml/PreferencesPage.qml:68
+#: qml/PreferencesPage.qml:57
 msgid "Metric"
 msgstr "Metrico"
 
-#: qml/PreferencesPage.qml:69
+#: qml/PreferencesPage.qml:58
 msgid "American"
 msgstr "Americano"
 
-#: qml/PreferencesPage.qml:70
+#: qml/PreferencesPage.qml:59
 msgid "British"
 msgstr "Britannico"
 
-#: qml/PreferencesPage.qml:86
+#: qml/PreferencesPage.qml:75
 msgid ""
 "Only applies when Poor Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
@@ -508,23 +545,23 @@ msgstr ""
 "Si applica solo quando Poor Maps è attivo. Quando minimizzato, lo stand-by è"
 " controllato dalle normali preferenze del dispositivo."
 
-#: qml/PreferencesPage.qml:87
+#: qml/PreferencesPage.qml:76
 msgid "Prevent sleep"
 msgstr "Previeni stand-by"
 
-#: qml/PreferencesPage.qml:89
+#: qml/PreferencesPage.qml:78
 msgid "Never"
 msgstr "Mai"
 
-#: qml/PreferencesPage.qml:90
+#: qml/PreferencesPage.qml:79
 msgid "When navigating"
 msgstr "Quando in navigazione"
 
-#: qml/PreferencesPage.qml:91
+#: qml/PreferencesPage.qml:80
 msgid "Always"
 msgstr "Sempre"
 
-#: qml/PreferencesPage.qml:107
+#: qml/PreferencesPage.qml:96
 msgid ""
 "Limiting tile caching ensures up-to-date maps and keeps disk use under "
 "control, but loads maps slower and causes more data traffic."
@@ -533,27 +570,27 @@ msgstr ""
 "mantiene l'uso della memoria sotto controllo, ma causa un caricamento più "
 "lento dele mappe e più traffico dati."
 
-#: qml/PreferencesPage.qml:108
+#: qml/PreferencesPage.qml:97
 msgid "Cache map tiles"
 msgstr "Cache delle mappe"
 
-#: qml/PreferencesPage.qml:110
+#: qml/PreferencesPage.qml:99
 msgid "One week"
 msgstr ""
 
-#: qml/PreferencesPage.qml:111
+#: qml/PreferencesPage.qml:100
 msgid "One month"
 msgstr ""
 
-#: qml/PreferencesPage.qml:112
+#: qml/PreferencesPage.qml:101
 msgid "One year"
 msgstr ""
 
-#: qml/PreferencesPage.qml:113
+#: qml/PreferencesPage.qml:102
 msgid "Forever"
 msgstr "Per sempre"
 
-#: qml/PreferencesPage.qml:147
+#: qml/PreferencesPage.qml:136
 msgid "Examine map tile cache"
 msgstr "Esamina la cache delle mappe"
 
@@ -569,7 +606,7 @@ msgstr "A"
 msgid "Reverse endpoints"
 msgstr "Inverti destinazione/arrivo"
 
-#: qml/RouterPage.qml:56
+#: qml/RouterPage.qml:65
 msgid "Modes: %1"
 msgstr "Modalità: %1"
 
@@ -597,6 +634,22 @@ msgstr "Aprendo l'applicazione Email"
 msgid "Other"
 msgstr "Altro"
 
+#: qml/poor-maps.qml:126
+msgid "Rerouting"
+msgstr ""
+
+#: qml/poor-maps.qml:137
+msgid "Rerouting failed: %1"
+msgstr ""
+
+#: qml/poor-maps.qml:140
+msgid "New route found"
+msgstr ""
+
+#: qml/poor-maps.qml:145
+msgid "Rerouting failed"
+msgstr ""
+
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
 msgstr "Percorso %1. totale %2"
@@ -609,7 +662,7 @@ msgstr "A piedi %1"
 msgid "%1 → %2"
 msgstr "%1 → %2"
 
-#: routers/digitransit_results.qml:244
+#: routers/digitransit_results.qml:239
 msgid "Results"
 msgstr "Risultati"
 
@@ -649,10 +702,6 @@ msgstr "Ora"
 #: routers/digitransit_settings.qml:179
 msgid "Criterion"
 msgstr "Criterio"
-
-#: routers/digitransit_settings.qml:181
-msgid "Default"
-msgstr "Standard"
 
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
@@ -698,7 +747,8 @@ msgid "Search based on OpenStreetMap data"
 msgstr ""
 
 #: standard input:5 standard input:10 standard input:19 standard input:24
-#: standard input:26 standard input:28 standard input:30
+#: standard input:26 standard input:28 standard input:30 standard input:32
+#: standard input:34 standard input:36 standard input:38
 msgid "OSM Scout offline server"
 msgstr "OSM Scout offline server"
 
@@ -735,17 +785,33 @@ msgid "ASTER GDEM & SRTM Hillshade @1x"
 msgstr "ASTER GDEM & SRTM Hillshade @1x"
 
 #: standard input:23
+msgid "OSM Scout car day @1x"
+msgstr ""
+
+#: standard input:25
+msgid "OSM Scout car day @2x"
+msgstr ""
+
+#: standard input:27
+msgid "OSM Scout car night @1x"
+msgstr ""
+
+#: standard input:29
+msgid "OSM Scout car night @2x"
+msgstr ""
+
+#: standard input:31
 msgid "OSM Scout day @1x"
 msgstr "OSM Scout giorno @1x"
 
-#: standard input:25
+#: standard input:33
 msgid "OSM Scout day @2x"
 msgstr "OSM Scout giorno @2x"
 
-#: standard input:27
+#: standard input:35
 msgid "OSM Scout night @1x"
 msgstr "OSM Scout notte @1x"
 
-#: standard input:29
+#: standard input:37
 msgid "OSM Scout night @2x"
 msgstr "OSM Scout notte @2x"
