@@ -98,6 +98,14 @@ Page {
                 text: "@2x"
                 onClicked: page.setFilter("@2x");
             }
+            MenuItem {
+                text: "@3x"
+                onClicked: page.setFilter("@3x");
+            }
+            MenuItem {
+                text: "@4x"
+                onClicked: page.setFilter("@4x");
+            }
         }
 
         VerticalScrollDecorator {}
