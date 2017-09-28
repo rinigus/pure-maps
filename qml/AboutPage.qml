@@ -67,6 +67,14 @@ Page {
                 wrapMode: Text.WordWrap
             }
 
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: Theme.itemSizeLarge
+                preferredWidth: Theme.buttonWidthMedium
+                text: app.tr("Donate via PayPal")
+                onClicked: Qt.openUrlExternally("https://www.paypal.me/otsaloma");
+            }
+
             SectionHeader {
                 text: app.tr("Translated by")
             }

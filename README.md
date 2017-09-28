@@ -3,6 +3,8 @@ Poor Maps
 
 [![Build Status](https://travis-ci.org/otsaloma/poor-maps.svg)](
 https://travis-ci.org/otsaloma/poor-maps)
+[![Donate](https://img.shields.io/badge/donate-paypal.me-blue.svg)](
+https://www.paypal.me/otsaloma)
 
 Poor Maps is an application for Sailfish OS to display tiled maps (e.g.
 OpenStreetMap), places and routes with a flexible selection of data and
