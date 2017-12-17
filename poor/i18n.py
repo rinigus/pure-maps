@@ -27,6 +27,25 @@ _translation = gettext.translation(
     languages=[locale.getdefaultlocale()[0] or ""],
     fallback=True)
 
+_foreign_translations = {}
+
 def _(message):
     """Return the localized translation of `message`."""
     return _translation.gettext(message)
+
+def __(message, language):
+    """Return the translation of `message` to `language`."""
+    # Try to account for differences between provider API languages
+    # and our translations, allowing some amount of fuzziness, e.g.
+    # for German try "de" and "de_DE" in addition to the requested.
+    plain = language.split("_")[0]
+    origin = "{}_{}".format(plain, plain.upper())
+    if not language in _foreign_translations:
+        _foreign_translations[language] = gettext.translation(
+            "poor-maps",
+            localedir=poor.LOCALE_DIR,
+            languages=[language, plain, origin],
+            fallback=True)
+
+    translation = _foreign_translations[language]
+    return translation.gettext(message)

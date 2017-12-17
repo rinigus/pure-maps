@@ -44,6 +44,9 @@ DEFAULTS = {
     "show_narrative": True,
     # "metric", "american" or "british".
     "units": "metric",
+    # "male" or "female"
+    "voice_gender": "male",
+    "voice_navigation": True,
     "zoom": 3,
 }
 

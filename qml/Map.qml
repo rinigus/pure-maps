@@ -198,10 +198,13 @@ Map {
             component = Qt.createComponent("ManeuverMarker.qml");
             maneuver = component.createObject(map);
             maneuver.coordinate = QtPositioning.coordinate(maneuvers[i].y, maneuvers[i].x);
+            maneuver.duration = maneuvers[i].duration || 0;
             maneuver.icon = maneuvers[i].icon || "flag";
             maneuver.narrative = maneuvers[i].narrative || "";
             maneuver.passive = maneuvers[i].passive || false;
-            maneuver.duration = maneuvers[i].duration || 0;
+            maneuver.verbalAlert = maneuvers[i].verbal_alert || "";
+            maneuver.verbalPost = maneuvers[i].verbal_post || "";
+            maneuver.verbalPre = maneuvers[i].verbal_pre || "";
             map.maneuvers.push(maneuver);
             map.addMapItem(maneuver);
         }
@@ -251,6 +254,7 @@ Map {
         map.clearRoute();
         map.route.setPath(route.x, route.y);
         map.route.attribution = route.attribution || "";
+        map.route.language = route.language || "en";
         map.route.mode = route.mode || "car";
         map.route.redraw();
         py.call_sync("poor.app.narrative.set_mode", [route.mode || "car"]);
@@ -272,6 +276,13 @@ Map {
             map.autoCenter = true;
             map.autoRotate = true;
         });
+        if (app.conf.get("voice_navigation")) {
+            var args = [route.language, app.conf.get("voice_gender")];
+            py.call_sync("poor.app.narrative.set_voice", args);
+            app.notification.flash(app.tr("Voice navigation on"));
+        } else {
+            py.call_sync("poor.app.narrative.set_voice", [null, null]);
+        }
         app.navigationActive = true;
         app.navigationPageSeen = true;
         app.navigationStarted = true;
@@ -538,10 +549,13 @@ Map {
             var maneuver = {};
             maneuver.x = map.maneuvers[i].coordinate.longitude;
             maneuver.y = map.maneuvers[i].coordinate.latitude;
+            maneuver.duration = map.maneuvers[i].duration;
             maneuver.icon = map.maneuvers[i].icon;
             maneuver.narrative = map.maneuvers[i].narrative;
-            maneuver.duration = map.maneuvers[i].duration;
             maneuver.passive = map.maneuvers[i].passive;
+            maneuver.verbal_alert = map.maneuvers[i].verbalAlert;
+            maneuver.verbal_post = map.maneuvers[i].verbalPost;
+            maneuver.verbal_pre = map.maneuvers[i].verbalPre;
             data.push(maneuver);
         }
         py.call_sync("poor.storage.write_maneuvers", [data]);
@@ -572,6 +586,7 @@ Map {
             data.x = map.route.path.x;
             data.y = map.route.path.y;
             data.attribution = map.route.attribution;
+            data.language = map.route.language;
             data.mode = map.route.mode;
         } else {
             var data = {};

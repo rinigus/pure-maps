@@ -25,7 +25,11 @@ import copy
 import poor
 import urllib.parse
 
-CONF_DEFAULTS = {"avoids": [], "type": "fastest"}
+CONF_DEFAULTS = {
+    "avoids": [],
+    "language": poor.util.get_default_language("en_US"),
+    "type": "fastest",
+}
 
 ICONS = {
      0: "continue",
@@ -87,7 +91,7 @@ def route(fm, to, heading, params):
     """Find route and return its properties as a dictionary."""
     fm, to = map(prepare_endpoint, (fm, to))
     type = poor.conf.routers.mapquest_open.type
-    locale = poor.util.get_default_locale("en_US")
+    locale = poor.conf.routers.mapquest_open.language
     locale = (locale if locale in SUPPORTED_LOCALES else "en_US")
     url = URL.format(**locals())
     if type == "fastest":
@@ -114,6 +118,7 @@ def route(fm, to, heading, params):
         maneuvers[-1]["icon"] = "arrive"
     route = dict(x=x, y=y, maneuvers=maneuvers, mode="car")
     route["attribution"] = poor.util.get_routing_attribution("MapQuest")
+    route["language"] = locale
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route

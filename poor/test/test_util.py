@@ -85,3 +85,21 @@ class TestModule(poor.test.TestCase):
         assert poor.util.requirement_found("/bin/sh")
         assert not poor.util.requirement_found("fgbklp")
         assert not poor.util.requirement_found("/bin/fgbklp")
+
+    def test_round_distance__metric(self):
+        assert poor.util.round_distance(1234.56, 1) == 1000
+        assert poor.util.round_distance(1234.56, 2) == 1200
+        assert poor.util.round_distance(123.456, 1) == 100
+        assert poor.util.round_distance(123.456, 2) == 120
+        assert poor.util.round_distance(12.3456, 1) == 10
+        assert poor.util.round_distance(12.3456, 2) == 12
+        assert poor.util.round_distance(1.23456, 1) == 1
+        assert poor.util.round_distance(1.23456, 2) == 1
+
+    def test_siground(self):
+        assert poor.util.siground(123.456, 1) == 100
+        assert poor.util.siground(123.456, 2) == 120
+        assert poor.util.siground(123.456, 3) == 123
+        assert poor.util.siground(123.456, 4) == 123.5
+        assert poor.util.siground(123.456, 5) == 123.46
+        assert poor.util.siground(123.456, 6) == 123.456

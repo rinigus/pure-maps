@@ -148,6 +148,7 @@ def route(fm, to, heading, params):
     ) for step in result.legs[0].steps]
     route = dict(x=x, y=y, maneuvers=maneuvers, mode="car")
     route["attribution"] = poor.util.get_routing_attribution("OSRM")
+    route["language"] = "en_US"
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route

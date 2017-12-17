@@ -26,9 +26,9 @@ import math
 import os
 import poor
 import random
+import re
 import shutil
 import stat
-import subprocess
 import sys
 import time
 import traceback
@@ -161,17 +161,17 @@ def find_closest(xs, ys, x, y, subset=None):
             min_dist = dist
     return min_index
 
-def format_distance(meters, n=2):
+def format_distance(meters, n=2, short=True):
     """Format `meters` to `n` significant digits and unit label."""
     if poor.conf.units == "american":
         feet = 3.28084 * meters
-        return format_distance_american(feet, n)
+        return format_distance_american(feet, n, short)
     if poor.conf.units == "british":
         yards = 1.09361 * meters
-        return format_distance_british(yards, n)
-    return format_distance_metric(meters, n)
+        return format_distance_british(yards, n, short)
+    return format_distance_metric(meters, n, short)
 
-def format_distance_american(feet, n=2):
+def format_distance_american(feet, n=2, short=True):
     """Format `feet` to `n` significant digits and unit label."""
     if (n > 1 and feet >= 1000) or feet >= 5280:
         distance = feet / 5280
@@ -184,10 +184,13 @@ def format_distance_american(feet, n=2):
     if units == "ft":
         ndigits = min(0, ndigits)
     distance = round(distance, ndigits)
+    if not short:
+        units = re.sub("^mi$", _("miles"), units)
+        units = re.sub("^ft$", _("feet"), units)
     fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
     return fstring.format(distance, units)
 
-def format_distance_british(yards, n=2):
+def format_distance_british(yards, n=2, short=True):
     """Format `yards` to `n` significant digits and unit label."""
     if (n > 1 and yards >= 400) or yards >= 1760:
         distance = yards / 1760
@@ -200,10 +203,13 @@ def format_distance_british(yards, n=2):
     if units == "yd":
         ndigits = min(0, ndigits)
     distance = round(distance, ndigits)
+    if not short:
+        units = re.sub("^mi$", _("miles"), units)
+        units = re.sub("^yd$", _("yards"), units)
     fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
     return fstring.format(distance, units)
 
-def format_distance_metric(meters, n=2):
+def format_distance_metric(meters, n=2, short=True):
     """Format `meters` to `n` significant digits and unit label."""
     if meters >= 1000:
         distance = meters / 1000
@@ -216,12 +222,15 @@ def format_distance_metric(meters, n=2):
     if units == "m":
         ndigits = min(0, ndigits)
     distance = round(distance, ndigits)
+    if not short:
+        units = re.sub("^m$", _("meters"), units)
+        units = re.sub("^km$", _("kilometers"), units)
     fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
     return fstring.format(distance, units)
 
-def format_distance_and_bearing(meters, bearing, n=2):
+def format_distance_and_bearing(meters, bearing, n=2, short=True):
     """Format `meters` and `bearing` to a human readable string."""
-    distance = format_distance(meters, n)
+    distance = format_distance(meters, n, short)
     f = lambda x: x.format(distance=distance)
     bearing = (bearing + 360) % 360
     bearing = int(round(bearing/45) * 45)
@@ -381,10 +390,6 @@ def path2uri(path):
     """Convert local filepath to URI."""
     return "file://{}".format(urllib.parse.quote(path))
 
-def popen(*args):
-    """Run command `args` without waiting for it to complete."""
-    subprocess.Popen(args)
-
 def read_json(path):
     """Read data from JSON file at `path`."""
     try:
@@ -418,6 +423,32 @@ def requirement_found(name):
     if os.path.isabs(name):
         return os.path.exists(name)
     return shutil.which(name) is not None
+
+def round_distance(meters, n=2):
+    """Round `meters` to `n` significant digits in native units."""
+    mile = 1609.34
+    yard = 0.9144
+    foot = 0.3048
+    if poor.conf.units == "american":
+        if meters >= mile:
+            return siground(meters/mile, n) * mile
+        n = min(n, math.ceil(math.log10(meters/foot)))
+        return siground(meters/foot, n) * mile
+    elif poor.conf.units == "british":
+        if meters >= mile:
+            return siground(meters/mile, n) * mile
+        n = min(n, math.ceil(math.log10(meters/yard)))
+        return siground(meters/yard, n) * mile
+    else: # Metric
+        if meters >= 1000:
+            return siground(meters/1000, n) * 1000
+        n = min(n, math.ceil(math.log10(meters)))
+        return siground(meters, n)
+
+def siground(x, n):
+    """Round `x` to `n` significant digits."""
+    mult = 10**(n - math.floor(math.log10(x)) - 1)
+    return round(x * mult) / mult
 
 @contextlib.contextmanager
 def silent(*exceptions, tb=False):

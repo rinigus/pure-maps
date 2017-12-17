@@ -6,14 +6,14 @@ Implementing a Router
 To implement a router you need to write a JSON metadata file, a Python
 file that implements the `route` function and one or two QML files. The
 `route` function should given two points return a dictionary of route
-properties with keys `x`, `y`, `maneuvers`, `mode` and `attribution`,
-example below. The from and to points given as arguments can be either
-strings (addresses, landmarks, etc.) or two-element tuples or lists of
-(x, y) coordinates. If returning multiple alternative routes for the
-user to choose from, the return value should be a list of dictionaries
-of route properties. Note that while you handle the return value
-yourself in router specific QML, rerouting doesn't go through that same
-interactive code and requires a return value consistent with other
+properties with keys `x`, `y`, `maneuvers`, `mode`, `language`, and
+`attribution`, example below. The from and to points given as arguments
+can be either strings (addresses, landmarks, etc.) or two-element tuples
+or lists of (x, y) coordinates. If returning multiple alternative routes
+for the user to choose from, the return value should be a list of
+dictionaries of route properties. Note that while you handle the return
+value yourself in router specific QML, rerouting doesn't go through that
+same interactive code and requires a return value consistent with other
 routers.
 
 ```python
@@ -31,6 +31,7 @@ routers.
         ...
     ],
     "mode": "car",
+    "language": "en_US",
     "attribution": "Routing courtesy of Mapzen.",
 }
 ```
@@ -43,6 +44,13 @@ be saved across sessions, define a `CONF_DEFAULTS` attribute in your
 Python code; it will be automatically passed to and available at
 `poor.conf`. For settings which shouldn't be saved across sessions, you
 can use `page.params` in your QML.
+
+If your router supports multiple languages, provide the list of
+languages in `*_settings.qml` and use the user-given selection in the
+Python `route` function. When returning the narration language as a part
+of the return dictionary of `route`, make sure to use the standard
+locale format `xx[_YY]`. See the Mapzen router for an example on how to
+implement language settings in QML and Python.
 
 The second QML file (`*_results.qml`) is mandatory and used to specify a
 result page. At minimum this should be a page which shows a busy

@@ -27,7 +27,10 @@ import json
 import poor
 import urllib.parse
 
-CONF_DEFAULTS = {"type": "auto"}
+CONF_DEFAULTS = {
+    "language": poor.util.get_default_language("en"),
+    "type": "auto",
+}
 
 ICONS = {
      0: "flag",
@@ -104,10 +107,11 @@ def route(fm, to, heading, params):
     fm, to = map(prepare_endpoint, (fm, to))
     if heading is not None:
         fm["heading"] = heading
-    lang = poor.util.get_default_language("en")
+    language = poor.conf.routers.osmscout.language
+    units = "kilometers" if poor.conf.units == "metric" else "miles"
     input = dict(locations=[fm, to],
                  costing=poor.conf.routers.osmscout.type,
-                 directions_options=dict(language=lang))
+                 directions_options=dict(language=language, units=units))
 
     input = urllib.parse.quote(json.dumps(input))
     url = URL.format(**locals())
@@ -133,6 +137,7 @@ def parse_result_libosmscout(url, result):
     route = dict(x=x, y=y, maneuvers=maneuvers)
     route["attribution"] = poor.util.get_routing_attribution(
         "OSM Scout", "libosmscout")
+    route["language"] = result.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route
@@ -146,11 +151,15 @@ def parse_result_valhalla(url, result):
         y=float(y[maneuver.begin_shape_index]),
         icon=ICONS.get(maneuver.type, "flag"),
         narrative=maneuver.instruction,
+        verbal_alert=maneuver.get("verbal_transition_alert_instruction", None),
+        verbal_pre=maneuver.get("verbal_pre_transition_instruction", None),
+        verbal_post=maneuver.get("verbal_post_transition_instruction", None),
         duration=float(maneuver.time),
     ) for maneuver in legs.maneuvers]
     route = dict(x=x, y=y, maneuvers=maneuvers, mode="car")
     route["attribution"] = poor.util.get_routing_attribution(
         "OSM Scout", "Valhalla")
+    route["language"] = result.trip.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route

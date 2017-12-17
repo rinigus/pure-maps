@@ -108,6 +108,7 @@ pot:
 	 --from-code=UTF-8 \
 	 --join-existing \
 	 --keyword=_ \
+	 --keyword=__ \
 	 --add-comments=TRANSLATORS: \
 	 --no-wrap \
 	 */*.py

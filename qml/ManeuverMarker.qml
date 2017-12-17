@@ -35,5 +35,8 @@ MapQuickItem {
     property string icon: "flag"
     property string narrative: ""
     property bool   passive: false
+    property string verbalAlert: ""
+    property string verbalPost: ""
+    property string verbalPre: ""
 
 }

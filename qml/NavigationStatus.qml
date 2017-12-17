@@ -33,6 +33,7 @@ QtObject {
     property bool   reroute: false
     property string totalDist: ""
     property string totalTime: ""
+    property string voiceUri: ""
 
     function clear() {
         // Reset all navigation status properties.
@@ -47,6 +48,7 @@ QtObject {
         status.reroute   = false;
         status.totalDist = "";
         status.totalTime = "";
+        status.voiceUri  = "";
     }
 
     function update(data) {
@@ -63,6 +65,7 @@ QtObject {
         status.reroute   = data.reroute    || false
         status.totalDist = data.total_dist || "";
         status.totalTime = data.total_time || "";
+        status.voiceUri  = data.voice_uri  || "";
     }
 
 }

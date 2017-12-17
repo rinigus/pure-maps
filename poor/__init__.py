@@ -47,6 +47,7 @@ from poor.geocoder import *
 from poor.guide import *
 from poor.history import *
 from poor.router import *
+from poor.voice import *
 from poor.narrative import *
 from poor.application import *
 

@@ -52,4 +52,29 @@ Column {
             app.conf.remove("routers.mapquest_open.avoids", "Toll Road");
     }
 
+    ComboBox {
+        id: langComboBox
+        label: app.tr("Language")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("English (UK)") }
+            MenuItem { text: app.tr("English (US)") }
+            MenuItem { text: app.tr("French (Canada)") }
+            MenuItem { text: app.tr("French (France)") }
+            MenuItem { text: app.tr("German") }
+            MenuItem { text: app.tr("Russian") }
+            MenuItem { text: app.tr("Spanish (Mexico)") }
+            MenuItem { text: app.tr("Spanish (Spain)") }
+        }
+        property var keys: ["en_GB", "en_US", "fr_CA", "fr_FR", "de_DE", "ru_RU", "es_MX", "es_ES"]
+        Component.onCompleted: {
+            var key = app.conf.get("routers.mapquest_open.language");
+            var index = langComboBox.keys.indexOf(key);
+            langComboBox.currentIndex = index > -1 ? index : 1;
+        }
+        onCurrentIndexChanged: {
+            var key = langComboBox.keys[langComboBox.currentIndex];
+            app.conf.set("routers.mapquest_open.language", key);
+        }
+    }
+
 }

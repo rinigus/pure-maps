@@ -108,6 +108,7 @@ class Application:
             overlay.terminate()
         poor.conf.write()
         self.history.write()
+        self.narrative.quit()
 
     def remove_overlays(self, *overlays):
         """Remove overlay providers from strings `overlays`."""
