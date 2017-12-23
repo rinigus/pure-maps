@@ -1,0 +1,34 @@
+#!/bin/sh
+cd "$(dirname "$0")/.." || exit 1
+truncate -s0 po/poor-maps.pot
+# Python code
+xgettext --output=po/poor-maps.pot \
+         --join-existing \
+         --from-code=UTF-8 \
+         --language=Python \
+         --keyword=_:1 \
+         --keyword=__:1 \
+         --add-comments=TRANSLATORS: \
+         */*.py
+
+# QML and JavaScript code
+xgettext --output=po/poor-maps.pot \
+         --join-existing \
+         --from-code=UTF-8 \
+         --language=JavaScript \
+         --keyword=tr:1 \
+         --keyword=qsTranslate:2 \
+         --add-comments=TRANSLATORS: \
+         */*.qml qml/js/*.js
+
+# JSON metadata
+cat */*.json \
+    | grep '^ *"_' \
+    | sed 's/: *\("[^"]*"\)/: _(\1)/' \
+    | sed 's/\("[^"]*"\)\(,\|]\)/_(\1)\2/g' \
+    | xgettext --output=po/poor-maps.pot \
+               --join-existing \
+               --from-code=UTF-8 \
+               --language=JavaScript \
+               --keyword=_:1 \
+               -

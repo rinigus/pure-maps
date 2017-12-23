@@ -1,0 +1,14 @@
+#!/bin/bash
+# Commit changes, tag and push release to GitHub.
+cd "$(dirname "$0")/.." || exit 1
+VERSION="$(python3 -c "import poor; print(poor.__version__)")"
+echo "Git status:"
+git status --porcelain
+printf "\nRelease version: $VERSION\n"
+read -p "Press Enter to continue or Ctrl+C to abort: "
+git commit -a -m "RELEASE $VERSION"
+git tag -s -m "RELEASE $VERSION" $VERSION
+git push
+git push --tags
+# Add release notes and possible downloads.
+xdg-open https://github.com/otsaloma/poor-maps/tags

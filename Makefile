@@ -3,7 +3,6 @@
 NAME       = harbour-poor-maps
 VERSION    = 0.33
 LANGS      = $(basename $(notdir $(wildcard po/*.po)))
-POT_FILE   = po/poor-maps.pot
 
 DESTDIR    =
 PREFIX     = /usr
@@ -12,15 +11,17 @@ DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
 
 LCONVERT = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
-$(wildcard /usr/lib/*/qt5/bin/lconvert))
+    $(wildcard /usr/lib/*/qt5/bin/lconvert))
 
 check:
 	pyflakes geocoders guides poor routers tilesources
 
 clean:
 	rm -rf dist
-	rm -rf __pycache__ */__pycache__ */*/__pycache__
-	rm -rf .cache */.cache */*/.cache
+	rm -rf */.cache
+	rm -rf */*/.cache
+	rm -rf */__pycache__
+	rm -rf */*/__pycache__
 	rm -f po/*~
 	rm -f rpm/*.rpm
 
@@ -31,12 +32,12 @@ dist:
 	tar -C dist -cJf dist/$(NAME)-$(VERSION).tar.xz $(NAME)-$(VERSION)
 
 define install-translations =
-# GNU gettext translations for Python use.
-mkdir -p $(DATADIR)/locale/$(1)/LC_MESSAGES
-msgfmt po/$(1).po -o $(DATADIR)/locale/$(1)/LC_MESSAGES/poor-maps.mo
-# Qt linguist translations for QML use.
-mkdir -p $(DATADIR)/translations
-$(LCONVERT) -o $(DATADIR)/translations/$(NAME)-$(1).qm po/$(1).po
+    # GNU gettext translations for Python use.
+    mkdir -p $(DATADIR)/locale/$(1)/LC_MESSAGES
+    msgfmt po/$(1).po -o $(DATADIR)/locale/$(1)/LC_MESSAGES/poor-maps.mo
+    # Qt linguist translations for QML use.
+    mkdir -p $(DATADIR)/translations
+    $(LCONVERT) -o $(DATADIR)/translations/$(NAME)-$(1).qm po/$(1).po
 endef
 
 install:
@@ -101,41 +102,7 @@ install:
 	cp data/poor-maps-256.png $(ICONDIR)/256x256/apps/$(NAME).png
 
 pot:
-	truncate -s0 $(POT_FILE)
-	xgettext \
-	 --output=$(POT_FILE) \
-	 --language=Python \
-	 --from-code=UTF-8 \
-	 --join-existing \
-	 --keyword=_ \
-	 --keyword=__ \
-	 --add-comments=TRANSLATORS: \
-	 --no-wrap \
-	 */*.py
-
-	xgettext \
-	 --output=$(POT_FILE) \
-	 --language=JavaScript \
-	 --from-code=UTF-8 \
-	 --join-existing \
-	 --keyword=tr:1 \
-	 --keyword=qsTranslate:2 \
-	 --add-comments=TRANSLATORS: \
-	 --no-wrap \
-	 */*.qml qml/js/*.js
-
-	cat */*.json \
-	 | grep '^ *"_' \
-	 | sed 's/: *\("[^"]*"\)/: _(\1)/' \
-	 | sed 's/\("[^"]*"\)\(,\|]\)/_(\1)\2/g' \
-	 | xgettext \
-	    --output=$(POT_FILE) \
-	    --language=JavaScript \
-	    --from-code=UTF-8 \
-	    --join-existing \
-	    --keyword=_ \
-	    --no-wrap \
-	    -
+	tools/update-translations
 
 rpm:
 	$(MAKE) dist
