@@ -34,7 +34,7 @@ DEFAULTS = {
     "basemap_filter": "",
     "cache_max_age": 30, # days
     "center": [0.0, 0.0],
-    "geocoder": "opencage",
+    "geocoder": "mapzen",
     "guide": "foursquare",
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
