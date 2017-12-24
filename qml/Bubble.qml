@@ -23,7 +23,7 @@ Rectangle {
     id: bubble
     anchors.bottomMargin: showArrow * arrow.height + Theme.paddingSmall
     anchors.topMargin: showArrow * arrow.height + Theme.paddingSmall
-    color: "#d0000000"
+    color: "#e6000000"
     height: controls.height + label.height + (controlHeight > 0 ? 3 : 2) * padding
     state: "top-center"
     states: [

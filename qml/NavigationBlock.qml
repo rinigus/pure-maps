@@ -24,7 +24,7 @@ Rectangle {
     anchors.left: parent.left
     anchors.right: parent.right
     anchors.top: parent.top
-    color: "#d0000000"
+    color: "#e6000000"
     height: {
         if (!destDist) return 0;
         var h1 = iconImage.height + 2 * Theme.paddingLarge;
