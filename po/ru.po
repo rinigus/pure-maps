@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-26 22:19+0300\n"
+"POT-Creation-Date: 2017-12-24 03:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Anton A. <bootyper@yandex.ru>, 2017\n"
+"Last-Translator: Alexey Andreyev <aa13q@ya.ru>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/otsaloma/teams/70314/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr "Местоположение от geo link"
 
 #: poor/geocoder.py:92
 msgid "Point from coordinates"
-msgstr ""
+msgstr "Местоположение по координатам"
 
 #: poor/geocoder.py:101 poor/guide.py:94 poor/router.py:97
 msgid "Connection timed out"
@@ -39,59 +39,96 @@ msgstr "Время ожидания соединения истекло"
 msgid "Current position"
 msgstr "Текущая позиция"
 
-#: poor/util.py:228 poor/util.py:236
+#: poor/narrative.py:124
+#, python-brace-format
+msgid "In {distance}, {direction}"
+msgstr ""
+
+#: poor/narrative.py:391 qml/poor-maps.qml:143
+msgid "Rerouting"
+msgstr "Перестроение маршрута"
+
+#: poor/narrative.py:392 qml/poor-maps.qml:165
+msgid "Rerouting failed"
+msgstr "Перестроение маршрута не удалось"
+
+#: poor/narrative.py:393 qml/poor-maps.qml:159
+msgid "New route found"
+msgstr "Найден новый маршрут"
+
+#: poor/util.py:188 poor/util.py:207
+msgid "miles"
+msgstr ""
+
+#: poor/util.py:189
+msgid "feet"
+msgstr ""
+
+#: poor/util.py:208
+msgid "yards"
+msgstr ""
+
+#: poor/util.py:226
+msgid "meters"
+msgstr ""
+
+#: poor/util.py:227
+msgid "kilometers"
+msgstr ""
+
+#: poor/util.py:237 poor/util.py:245
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} север"
 
-#: poor/util.py:229
+#: poor/util.py:238
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} северо-восток"
 
-#: poor/util.py:230
+#: poor/util.py:239
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} восток"
 
-#: poor/util.py:231
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} юго-восток"
 
-#: poor/util.py:232
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} юг"
 
-#: poor/util.py:233
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} юго-запад"
 
-#: poor/util.py:234
+#: poor/util.py:243
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} запад"
 
-#: poor/util.py:235
+#: poor/util.py:244
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} северо-запад"
 
-#: poor/util.py:273
+#: poor/util.py:282
 msgid "{:d} min"
 msgstr "{:d} мин"
 
-#: poor/util.py:274
+#: poor/util.py:283
 msgid "{:d} h {:d} min"
 msgstr "{:d} ч {:d} мин"
 
-#: poor/util.py:341
+#: poor/util.py:350
 msgid "Routing courtesy of {}."
 msgstr "Для построения маршрута используется {}"
 
-#: poor/util.py:342
+#: poor/util.py:351
 #, python-brace-format
 msgid "Routing by {engine}, courtesy of {service}."
 msgstr ""
@@ -217,7 +254,11 @@ msgstr ""
 "Poor Maps - это свободное программное обеспечение, распространяемое по "
 "стандартной общественной лицензии GNU (GPL) версии 3 или более поздней."
 
-#: qml/AboutPage.qml:71
+#: qml/AboutPage.qml:74
+msgid "Donate via PayPal"
+msgstr ""
+
+#: qml/AboutPage.qml:79
 msgid "Translated by"
 msgstr "Переведено благодаря:"
 
@@ -226,11 +267,11 @@ msgstr "Переведено благодаря:"
 #. Thus, you should translate it to your name. You can also include other
 #. translators who have contributed to this translation; in that case, please
 #. write them on separate lines seperated by newlines (\n).
-#: qml/AboutPage.qml:83
+#: qml/AboutPage.qml:91
 msgid "translator-credits"
 msgstr ""
 
-#: qml/AboutPage.qml:93
+#: qml/AboutPage.qml:101
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
@@ -238,11 +279,11 @@ msgstr ""
 "Вы можете добавить новые переводы пользовательского интерфейса или принять "
 "участие в существующих на сайте Transifex.com."
 
-#: qml/AboutPage.qml:101
+#: qml/AboutPage.qml:109
 msgid "Transifex page"
 msgstr "Страница на Transifex"
 
-#: qml/BasemapPage.qml:29 qml/BasemapPage.qml:132
+#: qml/BasemapPage.qml:29 qml/BasemapPage.qml:140
 msgid "Basemaps"
 msgstr "Базовые карты"
 
@@ -255,7 +296,7 @@ msgstr "Источник: %1"
 msgid "All"
 msgstr "Все"
 
-#: qml/BasemapPage.qml:131
+#: qml/BasemapPage.qml:139
 msgid "Basemaps %1"
 msgstr "Базовые карты %1"
 
@@ -348,6 +389,10 @@ msgstr "%1 результат(ов)"
 msgid "No results"
 msgstr "Нет результатов"
 
+#: qml/Map.qml:282
+msgid "Voice navigation on"
+msgstr ""
+
 #: qml/MapMouseArea.qml:31 qml/MapMouseArea.qml:32
 msgid "Unnamed point"
 msgstr "Безымянное местоположение"
@@ -414,7 +459,7 @@ msgstr "Пауза"
 
 #: qml/NavigationPage.qml:55
 msgid "Resume"
-msgstr ""
+msgstr "Продолжить"
 
 #: qml/NavigationPage.qml:55
 msgid "Begin"
@@ -422,7 +467,7 @@ msgstr "Начать"
 
 #: qml/NavigationPage.qml:66
 msgid "Reroute"
-msgstr ""
+msgstr "Перестроить маршрут"
 
 #: qml/NavigationPage.qml:78
 msgid "Clear"
@@ -430,27 +475,31 @@ msgstr "Очистить"
 
 #: qml/NavigationPage.qml:89
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 #: qml/NavigationPage.qml:137
 msgid "Remaining"
-msgstr ""
+msgstr "Осталось"
 
 #: qml/NavigationPage.qml:168
 msgid "Total"
-msgstr ""
+msgstr "Всего"
 
 #: qml/NavigationPage.qml:190
 msgid "Options"
-msgstr ""
+msgstr "Настройки"
 
 #: qml/NavigationPage.qml:196
 msgid "Show navigation instructions"
-msgstr ""
+msgstr "Показать инструкции по навигации"
 
 #: qml/NavigationPage.qml:207
-msgid "Reroute automatically"
+msgid "Voice navigation instructions"
 msgstr ""
+
+#: qml/NavigationPage.qml:215
+msgid "Reroute automatically"
+msgstr "Перестроение маршрута автоматически"
 
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
@@ -541,7 +590,25 @@ msgstr "американские"
 msgid "British"
 msgstr "британские"
 
-#: qml/PreferencesPage.qml:75
+#: qml/PreferencesPage.qml:76
+msgid ""
+"Preferred gender for voice navigation. Only supported by some engines and "
+"languages."
+msgstr ""
+
+#: qml/PreferencesPage.qml:77
+msgid "Voice gender"
+msgstr ""
+
+#: qml/PreferencesPage.qml:79
+msgid "Male"
+msgstr ""
+
+#: qml/PreferencesPage.qml:80
+msgid "Female"
+msgstr ""
+
+#: qml/PreferencesPage.qml:95
 msgid ""
 "Only applies when Poor Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
@@ -549,23 +616,23 @@ msgstr ""
 "Только когда Poor Maps открыто. Когда приложение свёрнуто, переход в спящий "
 "режим определяется настройками устройства. "
 
-#: qml/PreferencesPage.qml:76
+#: qml/PreferencesPage.qml:96
 msgid "Prevent sleep"
 msgstr "Не допускать перехода экрана в спящий режим"
 
-#: qml/PreferencesPage.qml:78
+#: qml/PreferencesPage.qml:98
 msgid "Never"
 msgstr "Никогда"
 
-#: qml/PreferencesPage.qml:79
+#: qml/PreferencesPage.qml:99
 msgid "When navigating"
 msgstr "Во время навигации"
 
-#: qml/PreferencesPage.qml:80
+#: qml/PreferencesPage.qml:100
 msgid "Always"
 msgstr "Всегда"
 
-#: qml/PreferencesPage.qml:96
+#: qml/PreferencesPage.qml:116
 msgid ""
 "Limiting tile caching ensures up-to-date maps and keeps disk use under "
 "control, but loads maps slower and causes more data traffic."
@@ -574,27 +641,27 @@ msgstr ""
 "использование дискового пространства, но при этом загрузка карт происходит "
 "медленнее и используется больший трафик данных."
 
-#: qml/PreferencesPage.qml:97
+#: qml/PreferencesPage.qml:117
 msgid "Cache map tiles"
 msgstr "Кэширование карт:"
 
-#: qml/PreferencesPage.qml:99
+#: qml/PreferencesPage.qml:119
 msgid "One week"
 msgstr "За неделю"
 
-#: qml/PreferencesPage.qml:100
+#: qml/PreferencesPage.qml:120
 msgid "One month"
 msgstr "За месяц"
 
-#: qml/PreferencesPage.qml:101
+#: qml/PreferencesPage.qml:121
 msgid "One year"
 msgstr "За год"
 
-#: qml/PreferencesPage.qml:102
+#: qml/PreferencesPage.qml:122
 msgid "Forever"
 msgstr "всегда"
 
-#: qml/PreferencesPage.qml:136
+#: qml/PreferencesPage.qml:156
 msgid "Examine map tile cache"
 msgstr "Посмотреть кэшированные карты"
 
@@ -638,21 +705,9 @@ msgstr "Запуск приложения \"Почта\""
 msgid "Other"
 msgstr "Прочее"
 
-#: qml/poor-maps.qml:126
-msgid "Rerouting"
-msgstr ""
-
-#: qml/poor-maps.qml:137
+#: qml/poor-maps.qml:155
 msgid "Rerouting failed: %1"
-msgstr ""
-
-#: qml/poor-maps.qml:140
-msgid "New route found"
-msgstr ""
-
-#: qml/poor-maps.qml:145
-msgid "Rerouting failed"
-msgstr ""
+msgstr "Перестроение маршрута не удалось: %1"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
@@ -676,11 +731,11 @@ msgstr "Область"
 
 #: routers/digitransit_settings.qml:30
 msgid "HSL"
-msgstr ""
+msgstr "HLS"
 
 #: routers/digitransit_settings.qml:31
 msgid "Waltti"
-msgstr ""
+msgstr "Waltti"
 
 #: routers/digitransit_settings.qml:32
 msgid "Finland"
@@ -734,6 +789,77 @@ msgstr "Пешком"
 msgid "Try to avoid tolls"
 msgstr "Избегать платных дорог"
 
+#: routers/mapquest_open_settings.qml:57 routers/mapzen_settings.qml:45
+#: routers/osmscout_settings.qml:45
+msgid "Language"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:59
+msgid "English (UK)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:60
+msgid "English (US)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:61
+msgid "French (Canada)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:62
+msgid "French (France)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:63 routers/mapzen_settings.qml:50
+#: routers/osmscout_settings.qml:50
+msgid "German"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:64 routers/mapzen_settings.qml:53
+#: routers/osmscout_settings.qml:53
+msgid "Russian"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:65
+msgid "Spanish (Mexico)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:66
+msgid "Spanish (Spain)"
+msgstr ""
+
+#: routers/mapzen_settings.qml:47 routers/osmscout_settings.qml:47
+msgid "Catalan"
+msgstr ""
+
+#: routers/mapzen_settings.qml:48 routers/osmscout_settings.qml:48
+msgid "Czech"
+msgstr ""
+
+#: routers/mapzen_settings.qml:49 routers/osmscout_settings.qml:49
+msgid "English"
+msgstr ""
+
+#: routers/mapzen_settings.qml:51 routers/osmscout_settings.qml:51
+msgid "Hindi"
+msgstr ""
+
+#: routers/mapzen_settings.qml:52 routers/osmscout_settings.qml:52
+msgid "Italian"
+msgstr ""
+
+#: routers/mapzen_settings.qml:54 routers/osmscout_settings.qml:54
+msgid "Slovenian"
+msgstr ""
+
+#: routers/mapzen_settings.qml:55 routers/osmscout_settings.qml:55
+msgid "Spanish"
+msgstr ""
+
+#: routers/mapzen_settings.qml:56 routers/osmscout_settings.qml:56
+msgid "Swedish"
+msgstr ""
+
 #: qml/js/util.js:94
 msgid "%1 (default)"
 msgstr "%1 (по умолчанию)"
@@ -786,36 +912,36 @@ msgstr "пешком"
 
 #: standard input:22
 msgid "ASTER GDEM & SRTM Hillshade @1x"
-msgstr ""
+msgstr "ASTER GDEM & SRTM Hillshade @1x"
 
 #: standard input:23
 msgid "OSM Scout car day @1x"
-msgstr ""
+msgstr "OSM Scout на машине днем @1x"
 
 #: standard input:25
 msgid "OSM Scout car day @2x"
-msgstr ""
+msgstr "OSM Scout на машине днем @2x"
 
 #: standard input:27
 msgid "OSM Scout car night @1x"
-msgstr ""
+msgstr "OSM Scout на машине ночью @1x"
 
 #: standard input:29
 msgid "OSM Scout car night @2x"
-msgstr ""
+msgstr "OSM Scout на машине ночью @2x"
 
 #: standard input:31
 msgid "OSM Scout day @1x"
-msgstr ""
+msgstr "OSM Scout днем @1x"
 
 #: standard input:33
 msgid "OSM Scout day @2x"
-msgstr ""
+msgstr "OSM Scout днем @2x"
 
 #: standard input:35
 msgid "OSM Scout night @1x"
-msgstr ""
+msgstr "OSM Scout ночью @1x"
 
 #: standard input:37
 msgid "OSM Scout night @2x"
-msgstr ""
+msgstr "OSM Scout ночью @2x"

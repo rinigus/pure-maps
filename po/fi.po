@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-26 22:19+0300\n"
-"PO-Revision-Date: 2017-09-26 22:20+0300\n"
+"POT-Creation-Date: 2017-12-24 03:15+0200\n"
+"PO-Revision-Date: 2017-12-24 03:27+0200\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2016\n"
 "Language-Team: Finnish (https://www.transifex.com/otsaloma/teams/70314/fi/)\n"
 "Language: fi\n"
@@ -39,59 +39,96 @@ msgstr "Yhteys aikakatkaistiin"
 msgid "Current position"
 msgstr "Nykyinen sijainti"
 
-#: poor/util.py:228 poor/util.py:236
+#: poor/narrative.py:124
+#, python-brace-format
+msgid "In {distance}, {direction}"
+msgstr "{distance} päästä, {direction}"
+
+#: poor/narrative.py:391 qml/poor-maps.qml:143
+msgid "Rerouting"
+msgstr "Uudelleenreititetään"
+
+#: poor/narrative.py:392 qml/poor-maps.qml:165
+msgid "Rerouting failed"
+msgstr "Uudelleenreititys epäonnistui"
+
+#: poor/narrative.py:393 qml/poor-maps.qml:159
+msgid "New route found"
+msgstr "Uusi reitti löydetty"
+
+#: poor/util.py:188 poor/util.py:207
+msgid "miles"
+msgstr "mailia"
+
+#: poor/util.py:189
+msgid "feet"
+msgstr "jalkaa"
+
+#: poor/util.py:208
+msgid "yards"
+msgstr "jaardia"
+
+#: poor/util.py:226
+msgid "meters"
+msgstr "metriä"
+
+#: poor/util.py:227
+msgid "kilometers"
+msgstr "kilometriä"
+
+#: poor/util.py:237 poor/util.py:245
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} pohjoiseen"
 
-#: poor/util.py:229
+#: poor/util.py:238
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} koilliseen"
 
-#: poor/util.py:230
+#: poor/util.py:239
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} itään"
 
-#: poor/util.py:231
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} kaakkoon"
 
-#: poor/util.py:232
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} etelään"
 
-#: poor/util.py:233
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} lounaaseen"
 
-#: poor/util.py:234
+#: poor/util.py:243
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} länteen"
 
-#: poor/util.py:235
+#: poor/util.py:244
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} luoteeseen"
 
-#: poor/util.py:273
+#: poor/util.py:282
 msgid "{:d} min"
 msgstr "{:d} min"
 
-#: poor/util.py:274
+#: poor/util.py:283
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
-#: poor/util.py:341
+#: poor/util.py:350
 msgid "Routing courtesy of {}."
 msgstr "Reitityksen tarjosi {}."
 
-#: poor/util.py:342
+#: poor/util.py:351
 #, python-brace-format
 msgid "Routing by {engine}, courtesy of {service}."
 msgstr "Reitityksen tarjosi {service}, reitittimellä {engine}."
@@ -141,7 +178,9 @@ msgstr "Ota kaupunkipyörä asemalta {dep_name}."
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} klo. {dep_time}."
+msgstr ""
+"Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} "
+"klo. {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
@@ -150,7 +189,8 @@ msgstr "Kävele kohti määräpaikkaasi."
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "Jätä kaupunkipyörä asemalle {dep_name} ja kävele kohti pysäkkiä {arr_name}."
+msgstr ""
+"Jätä kaupunkipyörä asemalle {dep_name} ja kävele kohti pysäkkiä {arr_name}."
 
 #: routers/digitransit.py:75
 #, python-brace-format
@@ -169,8 +209,11 @@ msgstr "Jää pois pysäkillä {dep_name} ja pyöräile kohti pysäkkiä {arr_na
 
 #: routers/digitransit.py:78
 #, python-brace-format
-msgid "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
-msgstr "Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode_name} {line_desc} klo. {dep_time}."
+msgid ""
+"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+msgstr ""
+"Jää pois pysäkillä {dep_name} ja vaihda välineeseen {mode_name} {line_desc} "
+"klo. {dep_time}."
 
 #: routers/digitransit.py:79
 #, python-brace-format
@@ -206,10 +249,18 @@ msgid "GitHub page"
 msgstr "GitHub-sivu"
 
 #: qml/AboutPage.qml:66
-msgid "Poor Maps is free software released under the GNU General Public License (GPL), version 3 or later."
-msgstr "Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public License (GPL), versio 3 tai uudempi."
+msgid ""
+"Poor Maps is free software released under the GNU General Public License "
+"(GPL), version 3 or later."
+msgstr ""
+"Poor Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public "
+"License (GPL), versio 3 tai uudempi."
 
-#: qml/AboutPage.qml:71
+#: qml/AboutPage.qml:74
+msgid "Donate via PayPal"
+msgstr "Lahjoita PayPalin kautta"
+
+#: qml/AboutPage.qml:79
 msgid "Translated by"
 msgstr "Käännös"
 
@@ -218,19 +269,23 @@ msgstr "Käännös"
 #. Thus, you should translate it to your name. You can also include other
 #. translators who have contributed to this translation; in that case, please
 #. write them on separate lines seperated by newlines (\n).
-#: qml/AboutPage.qml:83
+#: qml/AboutPage.qml:91
 msgid "translator-credits"
 msgstr "Osmo Salomaa"
 
-#: qml/AboutPage.qml:93
-msgid "You can add new user interface translations or contribute to existing ones at Transifex."
-msgstr "Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten käännösten parantamiseen Transifexissa."
-
 #: qml/AboutPage.qml:101
+msgid ""
+"You can add new user interface translations or contribute to existing ones "
+"at Transifex."
+msgstr ""
+"Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten "
+"käännösten parantamiseen Transifexissa."
+
+#: qml/AboutPage.qml:109
 msgid "Transifex page"
 msgstr "Transifex-sivu"
 
-#: qml/BasemapPage.qml:29 qml/BasemapPage.qml:132
+#: qml/BasemapPage.qml:29 qml/BasemapPage.qml:140
 msgid "Basemaps"
 msgstr "Pohjakartat"
 
@@ -243,7 +298,7 @@ msgstr "Lähde: %1"
 msgid "All"
 msgstr "Kaikki"
 
-#: qml/BasemapPage.qml:131
+#: qml/BasemapPage.qml:139
 msgid "Basemaps %1"
 msgstr "Pohjakartat %1"
 
@@ -297,8 +352,13 @@ msgid "Using"
 msgstr "Käyttäen"
 
 #: qml/GeocodePage.qml:119 qml/RoutePointPage.qml:119
-msgid "You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. “address, city” or “city, country”."
-msgstr "Voit etsiä osoitteen, alueen, maamerkin ja monen muun tekijän perusteella. Parhaat tulokset saat, kun sisällytät alueen, esim. “osoite, kaupunki” tai “kaupunki, maa”."
+msgid ""
+"You can search by address, locality, landmark and many other terms. For best "
+"results, include a region, e.g. “address, city” or “city, country”."
+msgstr ""
+"Voit etsiä osoitteen, alueen, maamerkin ja monen muun tekijän perusteella. "
+"Parhaat tulokset saat, kun sisällytät alueen, esim. “osoite, kaupunki” tai "
+"“kaupunki, maa”."
 
 #: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
 #: routers/digitransit_settings.qml:181
@@ -330,6 +390,10 @@ msgstr "%1 tulosta"
 #: routers/osrm_results.qml:58
 msgid "No results"
 msgstr "Ei tuloksia"
+
+#: qml/Map.qml:282
+msgid "Voice navigation on"
+msgstr "Ääninavigointi päällä"
 
 #: qml/MapMouseArea.qml:31 qml/MapMouseArea.qml:32
 msgid "Unnamed point"
@@ -432,6 +496,10 @@ msgid "Show navigation instructions"
 msgstr "Näytä navigointiohjeet"
 
 #: qml/NavigationPage.qml:207
+msgid "Voice navigation instructions"
+msgstr "Lausu navigointiohjeet"
+
+#: qml/NavigationPage.qml:215
 msgid "Reroute automatically"
 msgstr "Uudelleenreititä automaattisesti"
 
@@ -497,8 +565,12 @@ msgid "Auto-center on"
 msgstr "Automaattinen keskitys päällä"
 
 #: qml/PreferencesPage.qml:42
-msgid "Uncheck to minimize data traffic. You will be left with previously downloaded and cached tiles."
-msgstr "Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää aiemmin ladatut, varastossa olevat laatat."
+msgid ""
+"Uncheck to minimize data traffic. You will be left with previously "
+"downloaded and cached tiles."
+msgstr ""
+"Ota pois päältä minimoidaksesi tiedonsiirron. Tällöin jäljelle jää aiemmin "
+"ladatut, varastossa olevat laatat."
 
 #: qml/PreferencesPage.qml:43
 msgid "Allow downloading map tiles"
@@ -520,51 +592,78 @@ msgstr "Amerikkalainen"
 msgid "British"
 msgstr "Brittiläinen"
 
-#: qml/PreferencesPage.qml:75
-msgid "Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences."
-msgstr "Pätee vain, kun Poor Maps on aktiivisena. Kun minimoituna, lepotilaan siirrytään laitteen normaalien asetusten mukaan."
-
 #: qml/PreferencesPage.qml:76
+msgid ""
+"Preferred gender for voice navigation. Only supported by some engines and "
+"languages."
+msgstr "Mieluisin sukupuoli navigoinnin ääniohjeisiin. Tuettu vain osassa äänikoneita ja kieliä."
+
+#: qml/PreferencesPage.qml:77
+msgid "Voice gender"
+msgstr "Äänen sukupuoli"
+
+#: qml/PreferencesPage.qml:79
+msgid "Male"
+msgstr "Mies"
+
+#: qml/PreferencesPage.qml:80
+msgid "Female"
+msgstr "Nainen"
+
+#: qml/PreferencesPage.qml:95
+msgid ""
+"Only applies when Poor Maps is active. When minimized, sleep is controlled "
+"by normal device-level preferences."
+msgstr ""
+"Pätee vain, kun Poor Maps on aktiivisena. Kun minimoituna, lepotilaan "
+"siirrytään laitteen normaalien asetusten mukaan."
+
+#: qml/PreferencesPage.qml:96
 msgid "Prevent sleep"
 msgstr "Estä lepotila"
 
-#: qml/PreferencesPage.qml:78
+#: qml/PreferencesPage.qml:98
 msgid "Never"
 msgstr "Ei koskaan"
 
-#: qml/PreferencesPage.qml:79
+#: qml/PreferencesPage.qml:99
 msgid "When navigating"
 msgstr "Navigoidessa"
 
-#: qml/PreferencesPage.qml:80
+#: qml/PreferencesPage.qml:100
 msgid "Always"
 msgstr "Aina"
 
-#: qml/PreferencesPage.qml:96
-msgid "Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic."
-msgstr "Karttalaattojen varastoinnin rajoittaminen varmistaa ajantasaiset kartat ja pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa enemmän tiedonsiirtoa verkon yli."
+#: qml/PreferencesPage.qml:116
+msgid ""
+"Limiting tile caching ensures up-to-date maps and keeps disk use under "
+"control, but loads maps slower and causes more data traffic."
+msgstr ""
+"Karttalaattojen varastoinnin rajoittaminen varmistaa ajantasaiset kartat ja "
+"pitää levynkäytön aisoissa, mutta lataa kartat hitaammin ja aiheuttaa "
+"enemmän tiedonsiirtoa verkon yli."
 
-#: qml/PreferencesPage.qml:97
+#: qml/PreferencesPage.qml:117
 msgid "Cache map tiles"
 msgstr "Säilytä karttalaatat"
 
-#: qml/PreferencesPage.qml:99
+#: qml/PreferencesPage.qml:119
 msgid "One week"
 msgstr "Viikko"
 
-#: qml/PreferencesPage.qml:100
+#: qml/PreferencesPage.qml:120
 msgid "One month"
 msgstr "Kuukausi"
 
-#: qml/PreferencesPage.qml:101
+#: qml/PreferencesPage.qml:121
 msgid "One year"
 msgstr "Vuosi"
 
-#: qml/PreferencesPage.qml:102
+#: qml/PreferencesPage.qml:122
 msgid "Forever"
 msgstr "Ikuisesti"
 
-#: qml/PreferencesPage.qml:136
+#: qml/PreferencesPage.qml:156
 msgid "Examine map tile cache"
 msgstr "Tarkastele varastoa"
 
@@ -608,21 +707,9 @@ msgstr "Käynnistetään sähköpostisovellus"
 msgid "Other"
 msgstr "Muu"
 
-#: qml/poor-maps.qml:126
-msgid "Rerouting"
-msgstr "Uudelleenreititetään"
-
-#: qml/poor-maps.qml:137
+#: qml/poor-maps.qml:155
 msgid "Rerouting failed: %1"
 msgstr "Uudelleenreititys epäonnistui: %1"
-
-#: qml/poor-maps.qml:140
-msgid "New route found"
-msgstr "Uusi reitti löydetty"
-
-#: qml/poor-maps.qml:145
-msgid "Rerouting failed"
-msgstr "Uudelleenreititys epäonnistui"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
@@ -703,6 +790,77 @@ msgstr "Kävely"
 #: routers/mapquest_open_settings.qml:48
 msgid "Try to avoid tolls"
 msgstr "Yritä välttää tiemaksuja"
+
+#: routers/mapquest_open_settings.qml:57 routers/mapzen_settings.qml:45
+#: routers/osmscout_settings.qml:45
+msgid "Language"
+msgstr "Kieli"
+
+#: routers/mapquest_open_settings.qml:59
+msgid "English (UK)"
+msgstr "Englanti (Yhdistynyt kuningaskunta)"
+
+#: routers/mapquest_open_settings.qml:60
+msgid "English (US)"
+msgstr "Englanti (Yhdysvallat)"
+
+#: routers/mapquest_open_settings.qml:61
+msgid "French (Canada)"
+msgstr "Ranska (Kanada)"
+
+#: routers/mapquest_open_settings.qml:62
+msgid "French (France)"
+msgstr "Ranska (Ranska)"
+
+#: routers/mapquest_open_settings.qml:63 routers/mapzen_settings.qml:50
+#: routers/osmscout_settings.qml:50
+msgid "German"
+msgstr "Saksa"
+
+#: routers/mapquest_open_settings.qml:64 routers/mapzen_settings.qml:53
+#: routers/osmscout_settings.qml:53
+msgid "Russian"
+msgstr "Venäjä"
+
+#: routers/mapquest_open_settings.qml:65
+msgid "Spanish (Mexico)"
+msgstr "Espanja (Meksiko)"
+
+#: routers/mapquest_open_settings.qml:66
+msgid "Spanish (Spain)"
+msgstr "Espanja (Espanja)"
+
+#: routers/mapzen_settings.qml:47 routers/osmscout_settings.qml:47
+msgid "Catalan"
+msgstr "Katalaani"
+
+#: routers/mapzen_settings.qml:48 routers/osmscout_settings.qml:48
+msgid "Czech"
+msgstr "Tšekki"
+
+#: routers/mapzen_settings.qml:49 routers/osmscout_settings.qml:49
+msgid "English"
+msgstr "Englanti"
+
+#: routers/mapzen_settings.qml:51 routers/osmscout_settings.qml:51
+msgid "Hindi"
+msgstr "Hindi"
+
+#: routers/mapzen_settings.qml:52 routers/osmscout_settings.qml:52
+msgid "Italian"
+msgstr "Italia"
+
+#: routers/mapzen_settings.qml:54 routers/osmscout_settings.qml:54
+msgid "Slovenian"
+msgstr "Slovenia"
+
+#: routers/mapzen_settings.qml:55 routers/osmscout_settings.qml:55
+msgid "Spanish"
+msgstr "Espanja"
+
+#: routers/mapzen_settings.qml:56 routers/osmscout_settings.qml:56
+msgid "Swedish"
+msgstr "Ruotsi"
 
 #: qml/js/util.js:94
 msgid "%1 (default)"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-26 22:19+0300\n"
+"POT-Creation-Date: 2017-12-24 03:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Carmen Fernández B. <carmenfdezb@mail.com>, 2017\n"
 "Language-Team: Spanish (Spain) (https://www.transifex.com/otsaloma/teams/70314/es_ES/)\n"
@@ -39,59 +39,96 @@ msgstr "Tiempo de conexión finalizado"
 msgid "Current position"
 msgstr "Posición actual"
 
-#: poor/util.py:228 poor/util.py:236
+#: poor/narrative.py:124
+#, python-brace-format
+msgid "In {distance}, {direction}"
+msgstr ""
+
+#: poor/narrative.py:391 qml/poor-maps.qml:143
+msgid "Rerouting"
+msgstr "Recalculando"
+
+#: poor/narrative.py:392 qml/poor-maps.qml:165
+msgid "Rerouting failed"
+msgstr "Error al recalcular"
+
+#: poor/narrative.py:393 qml/poor-maps.qml:159
+msgid "New route found"
+msgstr "Nueva ruta encontrada"
+
+#: poor/util.py:188 poor/util.py:207
+msgid "miles"
+msgstr ""
+
+#: poor/util.py:189
+msgid "feet"
+msgstr ""
+
+#: poor/util.py:208
+msgid "yards"
+msgstr ""
+
+#: poor/util.py:226
+msgid "meters"
+msgstr ""
+
+#: poor/util.py:227
+msgid "kilometers"
+msgstr ""
+
+#: poor/util.py:237 poor/util.py:245
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} norte"
 
-#: poor/util.py:229
+#: poor/util.py:238
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} noreste"
 
-#: poor/util.py:230
+#: poor/util.py:239
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} este"
 
-#: poor/util.py:231
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} sureste"
 
-#: poor/util.py:232
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} sur"
 
-#: poor/util.py:233
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} suroeste"
 
-#: poor/util.py:234
+#: poor/util.py:243
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} oeste"
 
-#: poor/util.py:235
+#: poor/util.py:244
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} noroeste"
 
-#: poor/util.py:273
+#: poor/util.py:282
 msgid "{:d} min"
 msgstr "{:d} min"
 
-#: poor/util.py:274
+#: poor/util.py:283
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
-#: poor/util.py:341
+#: poor/util.py:350
 msgid "Routing courtesy of {}."
 msgstr "Ruta cortesía de {}."
 
-#: poor/util.py:342
+#: poor/util.py:351
 #, python-brace-format
 msgid "Routing by {engine}, courtesy of {service}."
 msgstr "Ruta calculada por {engine}, cortesía de {service}."
@@ -216,7 +253,11 @@ msgstr ""
 "Poor Maps es un programa libre publicado bajo la Licencia Pública General de"
 " GNU (GPL), versión 3 o posterior."
 
-#: qml/AboutPage.qml:71
+#: qml/AboutPage.qml:74
+msgid "Donate via PayPal"
+msgstr ""
+
+#: qml/AboutPage.qml:79
 msgid "Translated by"
 msgstr "Traducido por"
 
@@ -225,11 +266,11 @@ msgstr "Traducido por"
 #. Thus, you should translate it to your name. You can also include other
 #. translators who have contributed to this translation; in that case, please
 #. write them on separate lines seperated by newlines (\n).
-#: qml/AboutPage.qml:83
+#: qml/AboutPage.qml:91
 msgid "translator-credits"
 msgstr "Carmen Fdez. B."
 
-#: qml/AboutPage.qml:93
+#: qml/AboutPage.qml:101
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
@@ -237,11 +278,11 @@ msgstr ""
 "Puedes añadir nuevas traducciones a la interfaz de usuario o contribuir a "
 "las existentes en Transifex."
 
-#: qml/AboutPage.qml:101
+#: qml/AboutPage.qml:109
 msgid "Transifex page"
 msgstr "Página de Transifex"
 
-#: qml/BasemapPage.qml:29 qml/BasemapPage.qml:132
+#: qml/BasemapPage.qml:29 qml/BasemapPage.qml:140
 msgid "Basemaps"
 msgstr "Mapas de referencia"
 
@@ -254,7 +295,7 @@ msgstr "Fuente: %1"
 msgid "All"
 msgstr "Todo"
 
-#: qml/BasemapPage.qml:131
+#: qml/BasemapPage.qml:139
 msgid "Basemaps %1"
 msgstr "Mapas de referencia %1"
 
@@ -346,6 +387,10 @@ msgstr "%1 Resultados"
 #: routers/osrm_results.qml:58
 msgid "No results"
 msgstr "No hay resultados"
+
+#: qml/Map.qml:282
+msgid "Voice navigation on"
+msgstr ""
 
 #: qml/MapMouseArea.qml:31 qml/MapMouseArea.qml:32
 msgid "Unnamed point"
@@ -448,6 +493,10 @@ msgid "Show navigation instructions"
 msgstr "Mostrar instrucciones de navegación"
 
 #: qml/NavigationPage.qml:207
+msgid "Voice navigation instructions"
+msgstr ""
+
+#: qml/NavigationPage.qml:215
 msgid "Reroute automatically"
 msgstr "Recalcular ruta automáticamente"
 
@@ -540,7 +589,25 @@ msgstr "Americano"
 msgid "British"
 msgstr "Británico"
 
-#: qml/PreferencesPage.qml:75
+#: qml/PreferencesPage.qml:76
+msgid ""
+"Preferred gender for voice navigation. Only supported by some engines and "
+"languages."
+msgstr ""
+
+#: qml/PreferencesPage.qml:77
+msgid "Voice gender"
+msgstr ""
+
+#: qml/PreferencesPage.qml:79
+msgid "Male"
+msgstr ""
+
+#: qml/PreferencesPage.qml:80
+msgid "Female"
+msgstr ""
+
+#: qml/PreferencesPage.qml:95
 msgid ""
 "Only applies when Poor Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
@@ -548,23 +615,23 @@ msgstr ""
 "Sólo se aplica cuando Poor Maps está activo. Si la aplicación se minimiza, "
 "el modo reposo es controlado por la configuración normal del dispositivo."
 
-#: qml/PreferencesPage.qml:76
+#: qml/PreferencesPage.qml:96
 msgid "Prevent sleep"
 msgstr "Evitar el modo reposo"
 
-#: qml/PreferencesPage.qml:78
+#: qml/PreferencesPage.qml:98
 msgid "Never"
 msgstr "Nunca"
 
-#: qml/PreferencesPage.qml:79
+#: qml/PreferencesPage.qml:99
 msgid "When navigating"
 msgstr "Durante la navegación"
 
-#: qml/PreferencesPage.qml:80
+#: qml/PreferencesPage.qml:100
 msgid "Always"
 msgstr "Siempre"
 
-#: qml/PreferencesPage.qml:96
+#: qml/PreferencesPage.qml:116
 msgid ""
 "Limiting tile caching ensures up-to-date maps and keeps disk use under "
 "control, but loads maps slower and causes more data traffic."
@@ -573,27 +640,27 @@ msgstr ""
 "mantendrás el uso del disco bajo control, pero los mapas tardarán más en "
 "cargar y se producirá un mayor tráfico de datos."
 
-#: qml/PreferencesPage.qml:97
+#: qml/PreferencesPage.qml:117
 msgid "Cache map tiles"
 msgstr "Teselas de mapa en caché"
 
-#: qml/PreferencesPage.qml:99
+#: qml/PreferencesPage.qml:119
 msgid "One week"
 msgstr "Una semana"
 
-#: qml/PreferencesPage.qml:100
+#: qml/PreferencesPage.qml:120
 msgid "One month"
 msgstr "Un mes"
 
-#: qml/PreferencesPage.qml:101
+#: qml/PreferencesPage.qml:121
 msgid "One year"
 msgstr "Un año"
 
-#: qml/PreferencesPage.qml:102
+#: qml/PreferencesPage.qml:122
 msgid "Forever"
 msgstr "Para siempre"
 
-#: qml/PreferencesPage.qml:136
+#: qml/PreferencesPage.qml:156
 msgid "Examine map tile cache"
 msgstr "Examinar caché de teselas de mapa"
 
@@ -637,21 +704,9 @@ msgstr "Abriendo la aplicación Correo"
 msgid "Other"
 msgstr "Otro"
 
-#: qml/poor-maps.qml:126
-msgid "Rerouting"
-msgstr "Recalculando"
-
-#: qml/poor-maps.qml:137
+#: qml/poor-maps.qml:155
 msgid "Rerouting failed: %1"
 msgstr "Error al recalcular: %1"
-
-#: qml/poor-maps.qml:140
-msgid "New route found"
-msgstr "Nueva ruta encontrada"
-
-#: qml/poor-maps.qml:145
-msgid "Rerouting failed"
-msgstr "Error al recalcular"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
@@ -732,6 +787,77 @@ msgstr "A pie"
 #: routers/mapquest_open_settings.qml:48
 msgid "Try to avoid tolls"
 msgstr "Evitar peajes"
+
+#: routers/mapquest_open_settings.qml:57 routers/mapzen_settings.qml:45
+#: routers/osmscout_settings.qml:45
+msgid "Language"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:59
+msgid "English (UK)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:60
+msgid "English (US)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:61
+msgid "French (Canada)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:62
+msgid "French (France)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:63 routers/mapzen_settings.qml:50
+#: routers/osmscout_settings.qml:50
+msgid "German"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:64 routers/mapzen_settings.qml:53
+#: routers/osmscout_settings.qml:53
+msgid "Russian"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:65
+msgid "Spanish (Mexico)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:66
+msgid "Spanish (Spain)"
+msgstr ""
+
+#: routers/mapzen_settings.qml:47 routers/osmscout_settings.qml:47
+msgid "Catalan"
+msgstr ""
+
+#: routers/mapzen_settings.qml:48 routers/osmscout_settings.qml:48
+msgid "Czech"
+msgstr ""
+
+#: routers/mapzen_settings.qml:49 routers/osmscout_settings.qml:49
+msgid "English"
+msgstr ""
+
+#: routers/mapzen_settings.qml:51 routers/osmscout_settings.qml:51
+msgid "Hindi"
+msgstr ""
+
+#: routers/mapzen_settings.qml:52 routers/osmscout_settings.qml:52
+msgid "Italian"
+msgstr ""
+
+#: routers/mapzen_settings.qml:54 routers/osmscout_settings.qml:54
+msgid "Slovenian"
+msgstr ""
+
+#: routers/mapzen_settings.qml:55 routers/osmscout_settings.qml:55
+msgid "Spanish"
+msgstr ""
+
+#: routers/mapzen_settings.qml:56 routers/osmscout_settings.qml:56
+msgid "Swedish"
+msgstr ""
 
 #: qml/js/util.js:94
 msgid "%1 (default)"
