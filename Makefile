@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
 NAME       = harbour-poor-maps
-VERSION    = 0.33
+VERSION    = 0.34
 LANGS      = $(basename $(notdir $(wildcard po/*.po)))
 
 DESTDIR    =

@@ -1,3 +1,13 @@
+2017-12-24: Poor Maps 0.34
+==========================
+
+* Add voice navigation (rinigus)
+* Make Mapzen the default geocoder
+* Improve route polyline rendering on HiDPI screens
+* Make black map overlays less transparent
+* Add donate button to the about page
+* Update translations
+
 2017-10-26: Poor Maps 0.33
 ==========================
 
