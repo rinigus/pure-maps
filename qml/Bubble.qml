@@ -133,7 +133,7 @@ Rectangle {
         anchors.top: bubble.bottom
         // Try to avoid a stripe between bubble and arrow.
         anchors.topMargin: -0.5
-        smooth: false
+        smooth: true
         source: app.getIcon("icons/bubble-arrow")
         visible: bubble.visible && bubble.showArrow
     }
