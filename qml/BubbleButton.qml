@@ -57,7 +57,7 @@ Rectangle {
         id: timer
         interval: 3000
         repeat: false
-        onTriggered: button.color = "#d0ffffff";
+        onTriggered: button.color = "#bbffffff";
     }
 
 }
