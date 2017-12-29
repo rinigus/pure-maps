@@ -80,13 +80,13 @@
          inkscape:connector-curvature="0"
          id="path10403"
          d="m 30,1016.3622 12,0 0,-22 -6,-6 -6,6 z"
-         style="fill:#ff0000;fill-opacity:0.75294118;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+         style="fill:#ff0000;fill-opacity:0.9;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cccccc"
          inkscape:connector-curvature="0"
          id="path10403-8"
          d="m 30,1016.3622 12,0 0,22 -6,6 -6,-6 z"
-         style="fill:#000000;fill-opacity:0.75294118;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+         style="fill:#000000;fill-opacity:0.9;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
   </g>
 </svg>

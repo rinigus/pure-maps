@@ -66,12 +66,12 @@
      transform="translate(0,-956.3622)">
     <g
        id="g10147"
-       style="fill:#000000;fill-opacity:0.75294118"
+       style="fill:#000000;fill-opacity:0.9"
        transform="matrix(1.3333333,0,0,1.3333333,16.000001,-366.78735)">
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,28.666667,1008.6349)"
          id="path10142"
-         style="fill:#000000;fill-opacity:0.75294118;stroke:none"
+         style="fill:#000000;fill-opacity:0.9;stroke:none"
          cx="-4"
          cy="15.5"
          rx="6"
@@ -79,7 +79,7 @@
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,11.666667,1008.6349)"
          id="path10142-7"
-         style="fill:#000000;fill-opacity:0.75294118;stroke:none"
+         style="fill:#000000;fill-opacity:0.9;stroke:none"
          cx="-4"
          cy="15.5"
          rx="6"
@@ -87,7 +87,7 @@
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,45.666667,1008.6349)"
          id="path10142-77"
-         style="fill:#000000;fill-opacity:0.75294118;stroke:none"
+         style="fill:#000000;fill-opacity:0.9;stroke:none"
          cx="-4"
          cy="15.5"
          rx="6"
@@ -95,7 +95,7 @@
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,28.666667,991.63493)"
          id="path10142-3"
-         style="fill:#000000;fill-opacity:0.75294118;stroke:none"
+         style="fill:#000000;fill-opacity:0.9;stroke:none"
          cx="-4"
          cy="15.5"
          rx="6"
@@ -103,7 +103,7 @@
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,11.666667,991.63493)"
          id="path10142-31"
-         style="fill:#000000;fill-opacity:0.75294118;stroke:none"
+         style="fill:#000000;fill-opacity:0.9;stroke:none"
          cx="-4"
          cy="15.5"
          rx="6"
@@ -111,7 +111,7 @@
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,45.666667,991.63493)"
          id="path10142-6"
-         style="fill:#000000;fill-opacity:0.75294118;stroke:none"
+         style="fill:#000000;fill-opacity:0.9;stroke:none"
          cx="-4"
          cy="15.5"
          rx="6"
@@ -119,7 +119,7 @@
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,11.666667,1025.6349)"
          id="path10142-9"
-         style="fill:#000000;fill-opacity:0.75294118;stroke:none"
+         style="fill:#000000;fill-opacity:0.9;stroke:none"
          cx="-4"
          cy="15.5"
          rx="6"
@@ -127,7 +127,7 @@
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,28.666667,1025.6349)"
          id="path10142-1"
-         style="fill:#000000;fill-opacity:0.75294118;stroke:none"
+         style="fill:#000000;fill-opacity:0.9;stroke:none"
          cx="-4"
          cy="15.5"
          rx="6"
@@ -135,7 +135,7 @@
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,45.666667,1025.6349)"
          id="path10142-69"
-         style="fill:#000000;fill-opacity:0.75294118;stroke:none"
+         style="fill:#000000;fill-opacity:0.9;stroke:none"
          cx="-4"
          cy="15.5"
          rx="6"
