@@ -1,9 +1,0 @@
-{
-    "attribution": "Data © OpenStreetMap contributors\nHillshading: SRTM3 v2 (NASA)",
-    "extension": ".png",
-    "format": "slippy",
-    "name": "Hike & Bike Map @1x",
-    "scale": 1,
-    "source": "hikebikemap.org",
-    "url": "http://tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png"
-}

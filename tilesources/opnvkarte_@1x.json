@@ -1,9 +1,0 @@
-{
-    "attribution": "Maps © MeMoMaps\nData© OpenStreetMap contributors",
-    "extension": ".png",
-    "format": "slippy",
-    "name": "ÖPNVKarte @1x",
-    "scale": 1,
-    "source": "öpnvkarte.de",
-    "url": "http://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png"
-}

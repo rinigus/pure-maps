@@ -1,9 +1,0 @@
-{
-    "attribution": "© OpenStreetMap contributors\nhttp://www.openstreetmap.org/copyright",
-    "extension": ".png",
-    "format": "slippy",
-    "name": "OpenStreetMap @1x",
-    "scale": 1,
-    "source": "openstreetmap.org",
-    "url": "http://tile.openstreetmap.org/{z}/{x}/{y}.png"
-}

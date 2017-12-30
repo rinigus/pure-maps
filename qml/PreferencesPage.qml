@@ -36,20 +36,6 @@ Page {
                 title: app.tr("Preferences")
             }
 
-            TextSwitch {
-                id: downloadTilesItem
-                checked: app.conf.get("allow_tile_download")
-                description: app.tr("Uncheck to minimize data traffic. You will be left with previously downloaded and cached tiles.")
-                text: app.tr("Allow downloading map tiles")
-                onCheckedChanged: {
-                    var value = downloadTilesItem.checked
-                    if (value === app.conf.get("allow_tile_download")) return;
-                    app.conf.set("allow_tile_download", value);
-                    // Clear tiles to ensure no logo tiles remain.
-                    value && map.clearTiles();
-                }
-            }
-
             ComboBox {
                 id: unitsComboBox
                 label: app.tr("Units")
@@ -113,22 +99,22 @@ Page {
 
             ComboBox {
                 id: cacheComboBox
-                description: app.tr("Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic.")
-                label: app.tr("Cache map tiles")
+                description: app.tr("Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic. " +
+                                    "Note that the cache size settings will be applied after restart of the application.")
+                label: app.tr("Cache size")
                 menu: ContextMenu {
-                    MenuItem { text: app.tr("One week") }
-                    MenuItem { text: app.tr("One month") }
-                    MenuItem { text: app.tr("One year") }
-                    MenuItem { text: app.tr("Forever") }
+                    MenuItem { text: app.tr("25 MB") }
+                    MenuItem { text: app.tr("50 MB") }
+                    MenuItem { text: app.tr("100 MB") }
+                    MenuItem { text: app.tr("250 MB") }
                 }
                 property bool ready: false
-                property var  values: [7, 30, 365, 36500]
+                property var  values: [25, 50, 100, 250]
                 Component.onCompleted: {
                     // Activate the closest value in case the user has edited the configuration file
-                    // by hand using a value outside the combo box steps or used values 90 or 180
-                    // supported in Poor Maps < 0.31. Note that this only changes what is displayed,
-                    // the actual configuration value is only changed on user input.
-                    var value = app.conf.get("cache_max_age");
+                    // by hand using a value outside the combo box steps. Note that this only changes
+                    // what is displayed, the actual configuration value is only changed on user input.
+                    var value = map.cacheDatabaseMaximalSize / 1024 / 1024;
                     var minIndex = -1, minDiff = 36500;
                     for (var i = 0; i < cacheComboBox.values.length; i++) {
                         var diff = Math.abs(cacheComboBox.values[i] - value);
@@ -141,20 +127,8 @@ Page {
                 onCurrentIndexChanged: {
                     if (!cacheComboBox.ready) return;
                     var index = cacheComboBox.currentIndex;
-                    app.conf.set("cache_max_age", cacheComboBox.values[index]);
+                    map.cacheDatabaseMaximalSize = cacheComboBox.values[index] * 1024 * 1024;
                 }
-            }
-
-            Spacer {
-                height: Theme.paddingLarge
-            }
-
-            Button {
-                id: examineButton
-                anchors.horizontalCenter: parent.horizontalCenter
-                preferredWidth: Theme.buttonWidthLarge
-                text: app.tr("Examine map tile cache")
-                onClicked: app.pageStack.push("CachePage.qml");
             }
 
             Spacer {

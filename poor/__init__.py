@@ -34,15 +34,12 @@ except ImportError:
 from poor.paths import *
 from poor import i18n
 from poor import util
-from poor import cache
 from poor import http
 from poor import polysimp
 from poor import storage
 from poor.attrdict import *
 from poor.config import *
 conf = ConfigurationStore()
-from poor.tilecollection import *
-from poor.tilesource import *
 from poor.geocoder import *
 from poor.guide import *
 from poor.history import *
@@ -53,13 +50,14 @@ from poor.application import *
 
 def get_default_basemap(pixel_ratio):
     """Return default basemap for `pixel_ratio`."""
-    if pixel_ratio >= 3.5:
-        return "cartago_streets_@4x"
-    if pixel_ratio >= 2.5:
-        return "cartago_streets_@3x"
-    if pixel_ratio >= 1.5:
-        return "mapbox_streets_gl_@2x"
-    return "mapbox_streets_gl_@1x"
+    return "mapbox_streets_gl"
+    # if pixel_ratio >= 3.5:
+    #     return "cartago_streets_@4x"
+    # if pixel_ratio >= 2.5:
+    #     return "cartago_streets_@3x"
+    # if pixel_ratio >= 1.5:
+    #     return "mapbox_streets_gl_@2x"
+    # return "mapbox_streets_gl_@1x"
 
 def main(pixel_ratio=1):
     """Initialize application."""

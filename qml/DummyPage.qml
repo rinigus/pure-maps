@@ -55,29 +55,29 @@ Page {
     }
 
     function updateTiles() {
-        // Update dummy map tiles from map equivalents.
-        for (var i = 0; i < page.tiles.length; i++)
-            page.tiles[i].z = -1;
-        var j = 0;
-        for (var i = 0; i < map.tiles.length; i++) {
-            if (map.tiles[i].type !== "basemap") continue;
-            if (map.tiles[i].z !== 10) continue;
-            if (map.tiles[i].x > page.width) continue;
-            if (map.tiles[i].y > page.height) continue;
-            var width = map.tiles[i].image.width;
-            var height = map.tiles[i].image.height;
-            if (!width || map.tiles[i].x + width < 0) continue;
-            if (!height || map.tiles[i].y + height < 0) continue;
-            while (page.tiles.length <= j) page.addTile();
-            page.tiles[j].height = height;
-            page.tiles[j].smooth = map.tiles[i].smooth;
-            page.tiles[j].source = map.tiles[i].uri;
-            page.tiles[j].width = width;
-            page.tiles[j].x = map.tiles[i].x;
-            page.tiles[j].y = map.tiles[i].y;
-            page.tiles[j].z = map.tiles[i].z;
-            j++;
-        }
+        /* // Update dummy map tiles from map equivalents. */
+        /* for (var i = 0; i < page.tiles.length; i++) */
+        /*     page.tiles[i].z = -1; */
+        /* var j = 0; */
+        /* for (var i = 0; i < map.tiles.length; i++) { */
+        /*     if (map.tiles[i].type !== "basemap") continue; */
+        /*     if (map.tiles[i].z !== 10) continue; */
+        /*     if (map.tiles[i].x > page.width) continue; */
+        /*     if (map.tiles[i].y > page.height) continue; */
+        /*     var width = map.tiles[i].image.width; */
+        /*     var height = map.tiles[i].image.height; */
+        /*     if (!width || map.tiles[i].x + width < 0) continue; */
+        /*     if (!height || map.tiles[i].y + height < 0) continue; */
+        /*     while (page.tiles.length <= j) page.addTile(); */
+        /*     page.tiles[j].height = height; */
+        /*     page.tiles[j].smooth = map.tiles[i].smooth; */
+        /*     page.tiles[j].source = map.tiles[i].uri; */
+        /*     page.tiles[j].width = width; */
+        /*     page.tiles[j].x = map.tiles[i].x; */
+        /*     page.tiles[j].y = map.tiles[i].y; */
+        /*     page.tiles[j].z = map.tiles[i].z; */
+        /*     j++; */
+        /* } */
     }
 
 }

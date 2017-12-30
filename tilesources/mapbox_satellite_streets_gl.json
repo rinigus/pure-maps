@@ -1,0 +1,9 @@
+{
+    "attribution": "© Mapbox © OpenStreetMap",
+    "attributionFull": "<a href=https://www.mapbox.com/about/maps>© Mapbox</a><br><a href=http://www.openstreetmap.org/copyright>© OpenStreetMap</a><br><a href=https://www.mapbox.com/map-feedback>Improve this map</a>",
+    "attributionLogo": "icons/attribution/mapbox.svg",
+    "format": "mapbox",
+    "name": "Mapbox Satellite Streets",
+    "source": "mapbox.com",
+    "styleUrl": "mapbox://styles/mapbox/satellite-streets-v10"
+}

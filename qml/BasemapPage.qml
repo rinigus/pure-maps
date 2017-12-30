@@ -64,8 +64,8 @@ Page {
 
             onClicked: {
                 app.hideMenu();
-                map.clearTiles();
                 py.call_sync("poor.app.set_basemap", [model.pid]);
+                map.setBasemap();
                 for (var i = 0; i < listView.model.count; i++) {
                     listView.model.setProperty(i, "active", false);
                     listView.model.setProperty(i, "show_attribution", false);

@@ -26,13 +26,10 @@ import traceback
 __all__ = ("ConfigurationStore",)
 
 DEFAULTS = {
-    "allow_tile_download": True,
     "auto_center": False,
     "auto_rotate": False,
-    # Reset based on pixel ratio in poor.main.
-    "basemap": "mapbox_streets_gl_@2x",
+    "basemap": "mapbox_streets_gl",
     "basemap_filter": "",
-    "cache_max_age": 30, # days
     "center": [0.0, 0.0],
     "geocoder": "mapzen",
     "guide": "foursquare",

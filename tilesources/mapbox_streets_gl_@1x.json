@@ -1,9 +1,0 @@
-{
-    "attribution": "© Mapbox © OpenStreetMap\nhttps://www.mapbox.com/about/maps/\nhttps://www.mapbox.com/map-feedback/",
-    "extension": ".png",
-    "format": "slippy",
-    "name": "Mapbox Streets GL @1x",
-    "scale": 2,
-    "source": "mapbox.com",
-    "url": "https://api.mapbox.com/styles/v1/otsaloma/ciogdk8zp0006dani2i3b96vv/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib3RzYWxvbWEiLCJhIjoiNW5MOTN6YyJ9.RnPbZEzAX5z8V0DjqycyMQ"
-}

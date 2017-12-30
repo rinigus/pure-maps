@@ -1,9 +1,0 @@
-{
-    "attribution": "© Osmo Salomaa © OpenMapTiles © OpenStreetMap",
-    "extension": ".png",
-    "format": "slippy",
-    "name": "Cartago Streets @2x",
-    "scale": 2,
-    "source": "cartago.io",
-    "url": "http://tile.cartago.io/styles/cartago-streets/{z}/{x}/{y}@2x.png?apikey=60a99f2yarnuahk3"
-}

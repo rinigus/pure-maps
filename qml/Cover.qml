@@ -33,71 +33,39 @@ CoverBackground {
     property bool active: status === Cover.Active
     property bool ready: false
     property bool showNarrative: map.hasRoute && app.showNarrative
-    property var  tiles: []
 
     onShowNarrativeChanged: {
-        for (var i = 0; i < cover.tiles.length; i++)
-            cover.tiles[i].visible = !cover.showNarrative;
+        /* for (var i = 0; i < cover.tiles.length; i++) */
+        /*     cover.tiles[i].visible = !cover.showNarrative; */
     }
 
-    Timer {
-        interval: 1000
-        repeat: true
-        running: !cover.ready ||
-            cover.status === Cover.Activating ||
-            cover.status === Cover.Active
-        triggeredOnStart: true
-        onTriggered: {
-            if (app.inMenu) return;
-            cover.updateTiles();
-            cover.updatePositionMarker();
-        }
-    }
-
-    Image {
-        anchors.centerIn: parent
-        height: width/sourceSize.width * sourceSize.height
-        opacity: 0.1
-        smooth: true
-        source: "icons/cover.png"
-        width: 1.5 * parent.width
-    }
+//    Timer {
+//        interval: 1000
+//        repeat: true
+//        running: !cover.ready ||
+//            cover.status === Cover.Activating ||
+//            cover.status === Cover.Active
+//        triggeredOnStart: true
+//        onTriggered: {
+//            if (app.inMenu) return;
+//            cover.updatePositionMarker();
+//        }
+//    }
 
     /*
      * Default map cover
      */
 
-    Rectangle {
-        // Matches the default QtLocation Map background.
-        anchors.fill: parent
-        color: "#e6e6e6"
+    Image {
+        anchors.centerIn: parent
+//        height: width/sourceSize.width * sourceSize.height
+//        opacity: 0.1
+        smooth: true
+        source: "icons/cover.png"
+//        width: 1.5 * parent.width
+        fillMode: Image.PreserveAspectFit
+        width: parent.width*3/4
         visible: !cover.showNarrative
-        z: 1
-    }
-
-    Item {
-        id: positionMarker
-        height: movingImage.height
-        visible: !cover.showNarrative
-        width: movingImage.width
-        z: 100
-
-        Image {
-            id: movingImage
-            rotation: map.direction || 0
-            smooth: true
-            source: app.getIcon("icons/position-direction")
-            visible: map.direction || false
-        }
-
-        Image {
-            id: stillImage
-            anchors.centerIn: movingImage
-            smooth: false
-            source: app.getIcon("icons/position")
-            visible: !movingImage.visible
-        }
-
     }
 
     /*
@@ -150,57 +118,4 @@ CoverBackground {
         text: app.navigationBlock.destTime
         visible: cover.showNarrative
     }
-
-    function addTile() {
-        // Add a new blank tile to the end of collection.
-        var component = Qt.createComponent("CoverTile.qml");
-        cover.tiles.push(component.createObject(cover));
-    }
-
-    function mapXToCoverX(x) {
-        // Convert map pixel X-coordinate to cover equivalent.
-        return x - (map.width - cover.width) / 2;
-    }
-
-    function mapYToCoverY(y) {
-        // Convert map pixel Y-coordinate to cover equivalent.
-        return y - (map.height - cover.height) / 2;
-    }
-
-    function updatePositionMarker() {
-        // Update position marker from map equivalent.
-        positionMarker.x = cover.mapXToCoverX(map.positionMarker.x);
-        positionMarker.y = cover.mapYToCoverY(map.positionMarker.y);
-    }
-
-    function updateTiles() {
-        // Update cover map tiles from map equivalents.
-        for (var i = 0; i < cover.tiles.length; i++)
-            cover.tiles[i].z = -1;
-        var j = 0;
-        for (var i = 0; i < map.tiles.length; i++) {
-            if (map.tiles[i].type !== "basemap") continue;
-            if (map.tiles[i].z !== 10) continue;
-            var x = cover.mapXToCoverX(map.tiles[i].x);
-            var y = cover.mapYToCoverY(map.tiles[i].y);
-            if (x > cover.width) continue;
-            if (y > cover.height) continue;
-            var width = map.tiles[i].image.width;
-            var height = map.tiles[i].image.height;
-            if (!width || x + width < 0) continue;
-            if (!height || y + height < 0) continue;
-            while (cover.tiles.length <= j) cover.addTile();
-            cover.tiles[j].height = height;
-            cover.tiles[j].smooth = map.tiles[i].smooth;
-            cover.tiles[j].source = map.tiles[i].uri;
-            cover.tiles[j].visible = !cover.showNarrative;
-            cover.tiles[j].width = width;
-            cover.tiles[j].x = x;
-            cover.tiles[j].y = y;
-            cover.tiles[j].z = map.tiles[i].z;
-            j++;
-        }
-        cover.ready = cover.tiles.length > 3;
-    }
-
 }

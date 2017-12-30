@@ -17,91 +17,119 @@
  */
 
 import QtQuick 2.0
-import QtLocation 5.0
-import QtPositioning 5.3
 import Sailfish.Silica 1.0
 import "."
 
-MapQuickItem {
-    id: marker
-    anchorPoint.x: sourceItem.width / 2
-    anchorPoint.y: sourceItem.height / 2
-    coordinate: map.position.coordinate
-    height: sourceItem.height
-    visible: map.ready
-    width: sourceItem.width
+Item {
 
-    sourceItem: Item {
-        height: movingImage.height
-        width: movingImage.width
+    property bool directionVisible: false
 
-        Image {
-            id: movingImage
-            rotation: map.rotation + (map.direction || 0)
-            smooth: true
-            source: app.getIcon("icons/position-direction")
-            visible: map.direction || false
-            Behavior on rotation {
-                RotationAnimation {
-                    direction: RotationAnimation.Shortest
-                    duration: 500
-                    easing.type: Easing.Linear
-                }
-            }
-        }
+    property var constants: QtObject {
+        property string sourceName: "pm-position-marker"
 
-        Image {
-            id: stillImage
-            anchors.centerIn: movingImage
-            smooth: false
-            source: app.getIcon("icons/position")
-            visible: !movingImage.visible
-        }
+        property string imageStill: "pm-image-still"
+        property string imageMoving: "pm-image-moving"
 
-        MouseArea {
-            anchors.fill: movingImage
-            onClicked: {
-                if (map.autoCenter) {
-                    map.autoCenter = false;
-                    bubble.text = app.tr("Auto-center off");
-                } else {
-                    map.autoCenter = true;
-                    bubble.text = app.tr("Auto-center on");
-                    map.centerOnPosition();
-                }
-                bubble.visible = true;
-                timer.restart();
-            }
-        }
-
-        Bubble {
-            id: bubble
-            anchorItem: movingImage
-            visible: false
-        }
-
-        Timer {
-            id: timer
-            interval: 2000
-            repeat: false
-            onTriggered: bubble.visible = false;
-        }
-
+        property string layerUncertainty: "pm-layer-position-uncertain"
+        //        property string layerDot: "pm-layer-position-dot"
+        //        property string layerCircle: "pm-layer-position-circle"
+        property string layerStill: "pm-layer-position-still"
+        property string layerMoving: "pm-layer-position-moving"
     }
 
-    transform: Rotation {
-        angle: -map.rotation
-        origin.x: sourceItem.width / 2
-        origin.y: sourceItem.height / 2
+    function init() {
+        // add the source that will be updated with the current position
+        map.addSourcePoint(constants.sourceName, map.position.coordinate);
+
+        // load icons
+        map.addImagePath(constants.imageStill, Qt.resolvedUrl(app.getIcon("icons/position")))
+        map.addImagePath(constants.imageMoving, Qt.resolvedUrl(app.getIcon("icons/position-direction")));
+
+        // add layers
+
+        map.addLayer(constants.layerUncertainty, {"type": "circle", "source": constants.sourceName}, map.styleReferenceLayer);
+        map.setPaintProperty(constants.layerUncertainty, "circle-radius", 0);
+        map.setPaintProperty(constants.layerUncertainty, "circle-color", "#87cefa");
+        map.setPaintProperty(constants.layerUncertainty, "circle-opacity", 0.15);
+
+        //        map.addLayer(constants.layerDot, {"type": "circle", "source": constants.sourceName}, map.styleReferenceLayer);
+        //        map.setPaintProperty(constants.layerDot, "circle-radius", 6);
+        //        map.setPaintProperty(constants.layerDot, "circle-color", "#819FFF");
+
+        //        map.addLayer(constants.layerCircle, {"type": "circle", "source": constants.sourceName}, map.styleReferenceLayer);
+        //        map.setPaintProperty(constants.layerCircle, "circle-radius", 12);
+        //        map.setPaintProperty(constants.layerCircle, "circle-opacity", 0);
+        //        map.setPaintProperty(constants.layerCircle, "circle-stroke-width", 6);
+        //        map.setPaintProperty(constants.layerCircle, "circle-stroke-color", "#819FFF");
+
+        map.addLayer(constants.layerStill, {"type": "symbol", "source": constants.sourceName}); //, map.styleReferenceLayer);
+        map.setLayoutProperty(constants.layerStill, "icon-image", constants.imageStill);
+        map.setLayoutProperty(constants.layerStill, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(constants.layerStill, "visibility", "visible");
+
+        map.addLayer(constants.layerMoving, {"type": "symbol", "source": constants.sourceName}); //, map.styleReferenceLayer);
+        map.setLayoutProperty(constants.layerMoving, "icon-image", constants.imageMoving);
+        map.setLayoutProperty(constants.layerMoving, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(constants.layerMoving, "icon-rotation-alignment", "map");
+        map.setLayoutProperty(constants.layerMoving, "visibility", "none");
+
+        directionVisible = false;
+
+        // set current values
+        setUncertainty();
+        setLayers();
     }
 
-    z: 300
+    function setUncertainty() {
+        if (map.position.horizontalAccuracyValid)
+            map.setPaintProperty(constants.layerUncertainty, "circle-radius",
+                                 map.position.horizontalAccuracy / map.metersPerPixel / map.pixelRatio);
+        else
+            map.setPaintProperty(constants.layerUncertainty, "circle-radius", 0);
+    }
 
-    Behavior on coordinate {
-        CoordinateAnimation {
-            duration: 500
-            easing.type: Easing.Linear
+    function setLayers() {
+        if (map.direction && !directionVisible) {
+            map.setLayoutProperty(constants.layerMoving, "visibility", "visible");
+            map.setLayoutProperty(constants.layerStill, "visibility", "none");
+            directionVisible = true;
+        }
+        if (!map.direction && directionVisible) {
+            map.setLayoutProperty(constants.layerStill, "visibility", "visible");
+            map.setLayoutProperty(constants.layerMoving, "visibility", "none");
+            directionVisible = false;
+        }
+
+        if (directionVisible) {
+            map.setLayoutProperty(constants.layerMoving, "icon-rotate", map.direction)
         }
     }
 
+    function mouseClick() {
+        if (map.autoCenter) {
+            map.autoCenter = false;
+            notification.flash(app.tr("Auto-center off"));
+        } else {
+            map.autoCenter = true;
+            notification.flash(app.tr("Auto-center on"));
+            map.centerOnPosition();
+        }
+    }
+
+    Component.onCompleted: {
+        init();
+    }
+
+    Connections {
+        target: map
+
+        onPositionChanged: {
+            map.updateSourcePoint(constants.sourceName, map.position.coordinate);
+            setUncertainty();
+        }
+
+        onMetersPerPixelChanged: setUncertainty()
+
+        onDirectionChanged: setLayers()
+    }
 }

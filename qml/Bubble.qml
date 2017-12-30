@@ -169,7 +169,11 @@ Rectangle {
 
     MouseArea {
         anchors.fill: label
-        onClicked: bubble.clicked();
+        onClicked: {
+            bubble.clicked();
+            var link = label.linkAt(mouse.x, mouse.y);
+            link && Qt.openUrlExternally(link);
+        }
     }
 
     onWidthChanged: label.doLayout();

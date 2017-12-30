@@ -1,9 +1,0 @@
-{
-    "attribution": "© Mapbox © OpenStreetMap\nhttps://www.mapbox.com/about/maps/\nhttps://www.mapbox.com/map-feedback/",
-    "extension": ".png",
-    "format": "slippy",
-    "name": "Mapbox Outdoors GL @2x",
-    "scale": 4,
-    "source": "mapbox.com",
-    "url": "https://api.mapbox.com/styles/v1/otsaloma/cioge9c5m0004cqno072gh0bh/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoib3RzYWxvbWEiLCJhIjoiNW5MOTN6YyJ9.RnPbZEzAX5z8V0DjqycyMQ"
-}
