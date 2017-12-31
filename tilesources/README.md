@@ -23,7 +23,7 @@ Poor for examples; non-trivial and optional fields are explained below.
   bottom and high ones on top. Recommended values are 10 for areas, 20
   for lines and 30 for points. Valid values are from 0 to 40.
 
-Use `~/.local/share/harbour-poor-maps/tilesources` as a local
+Use `~/.local/share/harbour-whogo-maps/tilesources` as a local
 installation directory in which to place your JSON file. Restart Poor,
 and your tile source should be loaded, listed and available for use.
 

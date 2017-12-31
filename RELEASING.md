@@ -4,7 +4,7 @@ Releasing a New Version
 ```bash
 # Update translations.
 make pot
-msgmerge -UN po/fi.po po/poor-maps.pot
+msgmerge -UN po/fi.po po/whogo-maps.pot
 emacs po/fi.po
 tx push -s
 tx push -tf -l fi
@@ -23,5 +23,5 @@ pkcon install-local rpm/*.noarch.rpm
 tools/release
 
 # Add release notes and RPM on GitHub.
-# Update OpenRepos: https://openrepos.net/content/otsaloma/poor-maps
+# Update OpenRepos: https://openrepos.net/content/otsaloma/whogo-maps
 ```

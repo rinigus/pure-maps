@@ -63,7 +63,7 @@ Canvas {
             if (canvas.context) {
                 canvas.changed && canvas.requestPaint();
             } else if (app.applicationActive && canvas.hasPath && canvas.available) {
-                // When Poor Maps is minimized, the context seems to be lost,
+                // When WhoGo Maps is minimized, the context seems to be lost,
                 // with its value being null. Calling getContext after application
                 // is active again and the canvas available again, will reinitialize
                 // the context and via onContextChanged trigger a repaint.

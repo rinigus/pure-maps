@@ -78,7 +78,7 @@ Page {
 
             ComboBox {
                 id: sleepComboBox
-                description: app.tr("Only applies when Poor Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
+                description: app.tr("Only applies when WhoGo Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
                 label: app.tr("Prevent sleep")
                 menu: ContextMenu {
                     MenuItem { text: app.tr("Never") }

@@ -72,13 +72,13 @@ timeout and error handling. You might also find `poor.AttrDict`, a
 dictionary with attribute access to keys, convenient when working with
 JSON data.
 
-Use `~/.local/share/harbour-poor-maps/routers` as a local installation
+Use `~/.local/share/harbour-whogo-maps/routers` as a local installation
 directory in which to place your files. Since routers require QML files
 and include `"../qml"` in their source, add a symbolic link at
-`~/.local/share/harbour-poor-maps/qml` pointing to
-`/usr/share/harbour-poor-maps/qml`. Restart Poor, and your router should
+`~/.local/share/harbour-whogo-maps/qml` pointing to
+`/usr/share/harbour-whogo-maps/qml`. Restart Poor, and your router should
 be loaded, listed and available for use. During development, consider
-keeping your files under the Poor Maps source tree and using the Python
+keeping your files under the WhoGo Maps source tree and using the Python
 interpreter or a test script, e.g.
 
 ```python
@@ -87,4 +87,4 @@ interpreter or a test script, e.g.
 >>> router.route("erottaja, helsinki", "tapiola, espoo")
 ```
 
-and qmlscene (`qmlscene qml/poor-maps.qml`) for testing.
+and qmlscene (`qmlscene qml/whogo-maps.qml`) for testing.

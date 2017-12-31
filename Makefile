@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
-NAME       = harbour-poor-maps
-VERSION    = 0.34
+NAME       = harbour-whogo-maps
+VERSION    = 0.0.1
 LANGS      = $(basename $(notdir $(wildcard po/*.po)))
 
 DESTDIR    =
@@ -34,7 +34,7 @@ dist:
 define install-translations =
     # GNU gettext translations for Python use.
     mkdir -p $(DATADIR)/locale/$(1)/LC_MESSAGES
-    msgfmt po/$(1).po -o $(DATADIR)/locale/$(1)/LC_MESSAGES/poor-maps.mo
+    msgfmt po/$(1).po -o $(DATADIR)/locale/$(1)/LC_MESSAGES/whogo-maps.mo
     # Qt linguist translations for QML use.
     mkdir -p $(DATADIR)/translations
     $(LCONVERT) -o $(DATADIR)/translations/$(NAME)-$(1).qm po/$(1).po
@@ -47,7 +47,7 @@ install:
 
 	@echo "Installing QML files..."
 	mkdir -p $(DATADIR)/qml
-	cp qml/poor-maps.qml $(DATADIR)/qml/$(NAME).qml
+	cp qml/whogo-maps.qml $(DATADIR)/qml/$(NAME).qml
 	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(DATADIR)/qml
 	mkdir -p $(DATADIR)/qml/icons/navigation $(DATADIR)/qml/icons/attribution
 	cp qml/icons/*.png $(DATADIR)/qml/icons
@@ -97,10 +97,10 @@ install:
 	mkdir -p $(ICONDIR)/108x108/apps
 	mkdir -p $(ICONDIR)/128x128/apps
 	mkdir -p $(ICONDIR)/256x256/apps
-	cp data/poor-maps-86.png  $(ICONDIR)/86x86/apps/$(NAME).png
-	cp data/poor-maps-108.png $(ICONDIR)/108x108/apps/$(NAME).png
-	cp data/poor-maps-128.png $(ICONDIR)/128x128/apps/$(NAME).png
-	cp data/poor-maps-256.png $(ICONDIR)/256x256/apps/$(NAME).png
+	cp data/whogo-maps-86.png  $(ICONDIR)/86x86/apps/$(NAME).png
+	cp data/whogo-maps-108.png $(ICONDIR)/108x108/apps/$(NAME).png
+	cp data/whogo-maps-128.png $(ICONDIR)/128x128/apps/$(NAME).png
+	cp data/whogo-maps-256.png $(ICONDIR)/256x256/apps/$(NAME).png
 
 pot:
 	tools/update-translations

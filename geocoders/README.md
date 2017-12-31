@@ -29,10 +29,10 @@ timeout and error handling. You might also find `poor.AttrDict`, a
 dictionary with attribute access to keys, convenient when working with
 JSON data.
 
-Use `~/.local/share/harbour-poor-maps/geocoders` as a local installation
+Use `~/.local/share/harbour-whogo-maps/geocoders` as a local installation
 directory in which to place your files. Restart Poor, and your geocoder
 should be loaded, listed and available for use. During development,
-consider keeping your files under the Poor Maps source tree and using
+consider keeping your files under the WhoGo Maps source tree and using
 the Python interpreter or a test script, e.g.
 
 ```python
@@ -41,4 +41,4 @@ the Python interpreter or a test script, e.g.
 >>> geocoder.geocode("erottaja, helsinki")
 ```
 
-and qmlscene (`qmlscene qml/poor-maps.qml`) for testing.
+and qmlscene (`qmlscene qml/whogo-maps.qml`) for testing.

@@ -40,6 +40,6 @@ class TestModule(poor.test.TestCase):
         imgtype = imghdr.what("", h=blob)
         assert imgtype in ("jpeg", "png")
 
-    def test_mapbox_streets_gl(self):
+    def _test_mapbox_streets_gl(self):
         self.get("mapbox_streets_gl_@1x")
         self.get("mapbox_streets_gl_@2x")

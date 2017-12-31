@@ -22,7 +22,7 @@ import locale
 import poor
 
 _translation = gettext.translation(
-    "poor-maps",
+    "whogo-maps",
     localedir=poor.LOCALE_DIR,
     languages=[locale.getdefaultlocale()[0] or ""],
     fallback=True)
@@ -42,7 +42,7 @@ def __(message, language):
     origin = "{}_{}".format(plain, plain.upper())
     if not language in _foreign_translations:
         _foreign_translations[language] = gettext.translation(
-            "poor-maps",
+            "whogo-maps",
             localedir=poor.LOCALE_DIR,
             languages=[language, plain, origin],
             fallback=True)

@@ -11,4 +11,4 @@ git tag -s -m "RELEASE $VERSION" $VERSION
 git push
 git push --tags
 # Add release notes and possible downloads.
-xdg-open https://github.com/otsaloma/poor-maps/tags
+xdg-open https://github.com/otsaloma/whogo-maps/tags

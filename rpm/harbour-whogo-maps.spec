@@ -4,12 +4,12 @@
 # "Harbour RPM packages should not provide anything."
 %define __provides_exclude_from ^%{_datadir}/.*$
 
-Name: harbour-poor-maps
-Version: 0.34
+Name: harbour-whogo-maps
+Version: 0.0.1
 Release: 1
 Summary: Maps and navigation
 License: GPLv3+
-URL: https://github.com/otsaloma/poor-maps
+URL: https://github.com/otsaloma/whogo-maps
 Source: %{name}-%{version}.tar.xz
 BuildArch: noarch
 BuildRequires: gettext

@@ -24,8 +24,8 @@ class TestConnectionPool(poor.test.TestCase):
 
     def setup_method(self, method):
         self.pool = poor.http.ConnectionPool(2)
-        self.http_url = "http://github.com/otsaloma/poor-maps"
-        self.https_url = "https://github.com/otsaloma/poor-maps"
+        self.http_url = "http://github.com/otsaloma/whogo-maps"
+        self.https_url = "https://github.com/otsaloma/whogo-maps"
 
     def teardown_method(self, method):
         self.pool.terminate()
@@ -82,7 +82,7 @@ class TestConnectionPool(poor.test.TestCase):
 class TestModule(poor.test.TestCase):
 
     def test_get(self):
-        url = "https://github.com/otsaloma/poor-maps"
+        url = "https://github.com/otsaloma/whogo-maps"
         blob = poor.http.get(url, encoding="utf_8")
         assert blob.strip().startswith("<!DOCTYPE html>")
 
@@ -95,11 +95,11 @@ class TestModule(poor.test.TestCase):
         self.assert_raises(Exception, poor.http.get, url)
 
     def test_get_json(self):
-        url = "https://api.github.com/repos/otsaloma/poor-maps/releases"
+        url = "https://api.github.com/repos/otsaloma/whogo-maps/releases"
         assert isinstance(poor.http.get_json(url), list)
 
     def test_get_json__error(self):
-        url = "https://github.com/otsaloma/poor-maps"
+        url = "https://github.com/otsaloma/whogo-maps"
         self.assert_raises(Exception, poor.http.get_json, url)
 
     def test_post(self):

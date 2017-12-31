@@ -1,11 +1,11 @@
-Translating Poor Maps
+Translating WhoGo Maps
 =====================
 
 Translations are available at [Transifex][1]. Please use that to add and
 update translations. Try to keep your translation consistent with the
 [Sailfish OS translations][2] and [language-specific style guides][3].
 
-[1]: https://www.transifex.com/otsaloma/poor-maps/
+[1]: https://www.transifex.com/otsaloma/whogo-maps/
 [2]: https://sailfishos.org/wiki/Translate_the_OS
 [3]: https://sailfishos.org/wiki/Translate_the_OS#Style
 
@@ -13,13 +13,13 @@ update translations. Try to keep your translation consistent with the
 
 If you wish to test your translation (e.g. for context or brevity)
 before it's included in a public release, the easiest way is to add your
-translation to the Poor Maps source tree, build the RPM and install it.
+translation to the WhoGo Maps source tree, build the RPM and install it.
 
 1. Download your translation from Transifex with the link "Download for
    use". You should find it via the language list, or
    use [this full link][dl-po], replacing `fi` with your language code.
 
-1. Download Poor Maps from GitHub. Usually you'll probably want the
+1. Download WhoGo Maps from GitHub. Usually you'll probably want the
    source code of the latest release, which can be downloaded from
    the [releases][releases] page.
 
@@ -33,5 +33,5 @@ translation to the Poor Maps source tree, build the RPM and install it.
    install e.g. via the File Browser app or `pkcon install-local ...` at
    a command line.
 
-[dl-po]: https://www.transifex.com/otsaloma/poor-maps/poor-mapspot/fi/download/for_use/
-[releases]: https://github.com/otsaloma/poor-maps/releases
+[dl-po]: https://www.transifex.com/otsaloma/whogo-maps/whogo-mapspot/fi/download/for_use/
+[releases]: https://github.com/otsaloma/whogo-maps/releases
