@@ -42,7 +42,7 @@ MapboxMap {
     pixelRatio: Theme.pixelRatio * 1.5
 
     // Access token has to be defined from the start of the application
-    accessToken: "pk.eyJ1IjoicmluaWd1cyIsImEiOiJjamIwbmUyYWM4ajZoMnhyMXVoZGtybXJqIn0.CfG6j_Kyg_Ho_ksH_8_iyw"
+    accessToken: "pk.eyJ1Ijoib3RzYWxvbWEiLCJhIjoiY2pidTlwMTdhMW9kNzJ4cGMycTh4c216eSJ9._KFWLhzdsKnkTeYwbEHzhg"
     styleUrl: "mapbox://styles/mapbox/streets-v10"
 
     cacheDatabaseStoreSettings: true
