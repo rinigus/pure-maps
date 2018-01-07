@@ -3,6 +3,8 @@ WhoGo Maps
 
 [![Build Status](https://travis-ci.org/otsaloma/whogo-maps.svg)](
 https://travis-ci.org/otsaloma/whogo-maps)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](
+https://gitter.im/otsaloma/whogo-maps)
 [![Donate](https://img.shields.io/badge/donate-paypal.me-blue.svg)](
 https://www.paypal.me/otsaloma)
 
