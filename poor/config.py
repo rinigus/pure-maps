@@ -31,13 +31,13 @@ DEFAULTS = {
     "basemap": "mapbox_streets_gl",
     "basemap_filter": "",
     "center": [0.0, 0.0],
-    "geocoder": "mapzen",
+    "geocoder": "opencage",
     "guide": "foursquare",
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
     "overlays": [],
     "reroute": True,
-    "router": "mapzen",
+    "router": "mapquest_open",
     "show_narrative": True,
     # "metric", "american" or "british".
     "units": "metric",
@@ -99,16 +99,10 @@ class ConfigurationStore(poor.AttrDict):
             # Run all migrations if version malformed.
             traceback.print_exc()
             version = (0, 0)
-        if version < (0, 25):
-            # Impose new default providers introduced in 0.25.
+        if version < (0, 1):
+            # Impose new default providers introduced in 0.1.
             for option in ("geocoder", "guide", "router"):
                 values[option] = DEFAULTS[option]
-        if version < (0, 30):
-            # libosmscout and Valhalla routers merged in 0.30.
-            # https://github.com/otsaloma/poor-maps/pull/41
-            routers = values.setdefault("routers", {})
-            routers.pop("osmscout", None)
-            routers.pop("osmscout_valhalla", None)
         return values
 
     def read(self, path=None):

@@ -21,13 +21,13 @@ import poor.test
 class TestGeocoder(poor.test.TestCase):
 
     def test___new____no(self):
-        a = poor.Geocoder("mapzen")
+        a = poor.Geocoder("digitransit")
         b = poor.Geocoder("opencage")
         assert not a is b
 
     def test___new____yes(self):
-        a = poor.Geocoder("mapzen")
-        b = poor.Geocoder("mapzen")
+        a = poor.Geocoder("digitransit")
+        b = poor.Geocoder("digitransit")
         assert a is b
 
     def test_geocode__geo_uri(self):

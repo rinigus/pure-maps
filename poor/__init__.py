@@ -48,22 +48,8 @@ from poor.voice import *
 from poor.narrative import *
 from poor.application import *
 
-def get_default_basemap(pixel_ratio):
-    """Return default basemap for `pixel_ratio`."""
-    return "mapbox_streets_gl"
-    # if pixel_ratio >= 3.5:
-    #     return "cartago_streets_@4x"
-    # if pixel_ratio >= 2.5:
-    #     return "cartago_streets_@3x"
-    # if pixel_ratio >= 1.5:
-    #     return "mapbox_streets_gl_@2x"
-    # return "mapbox_streets_gl_@1x"
-
-def main(pixel_ratio=1):
+def main():
     """Initialize application."""
-    import poor.config
-    basemap = get_default_basemap(pixel_ratio)
-    poor.config.DEFAULTS["basemap"] = basemap
     conf.read()
     global app
     app = Application()
