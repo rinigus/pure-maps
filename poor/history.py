@@ -19,7 +19,6 @@
 
 import os
 import poor
-import sys
 
 from poor.i18n import _
 
@@ -34,10 +33,10 @@ class HistoryManager:
 
     def __init__(self):
         """Initialize a :class:`HistoryManager` instance."""
+        self._path = os.path.join(poor.CONFIG_HOME_DIR, "search-history.json")
         self._place_types = []
         self._places = []
-        self._read_place_types()
-        self._read_places()
+        self._read()
 
     def add_place(self, place):
         """Add `place` to the list of places."""
@@ -64,18 +63,15 @@ class HistoryManager:
         """Return a list of places."""
         return self._places[:]
 
-    def _read_place_types(self):
-        """Read list of place types from file."""
-        path = os.path.join(poor.CONFIG_HOME_DIR, "place_types.history")
-        try:
-            if os.path.isfile(path):
-                with open(path, "r", encoding="utf_8") as f:
-                    self._place_types = [x.strip() for x in f.read().splitlines()]
-                    self._place_types = list(filter(None, self._place_types))
-        except Exception as error:
-            print("Failed to read file '{}': {}"
-                  .format(path, str(error)),
-                  file=sys.stderr)
+    def _read(self):
+        """Read list of queries from file."""
+        with poor.util.silent(Exception, tb=True):
+            if os.path.isfile(self._path):
+                history = poor.util.read_json(self._path)
+                self._places = history.get("places", [])
+                self._place_types = history.get("place_types", [])
+        for place in self._places_blacklist:
+            self.remove_place(place)
         if not self._place_types:
             # Provide some examples of place types.
             self._place_types = ["ATM",
@@ -85,21 +81,6 @@ class HistoryManager:
                                  "Hotel",
                                  "Pub",
                                  "Restaurant"]
-
-    def _read_places(self):
-        """Read list of places from file."""
-        path = os.path.join(poor.CONFIG_HOME_DIR, "places.history")
-        try:
-            if os.path.isfile(path):
-                with open(path, "r", encoding="utf_8") as f:
-                    self._places = [x.strip() for x in f.read().splitlines()]
-                    self._places = list(filter(None, self._places))
-        except Exception as error:
-            print("Failed to read file '{}': {}"
-                  .format(path, str(error)),
-                  file=sys.stderr)
-        for place in self._places_blacklist:
-            self.remove_place(place)
 
     def remove_place(self, place):
         """Remove `place` from the list of places."""
@@ -115,19 +96,10 @@ class HistoryManager:
             if self._place_types[i].lower() == place_type:
                 del self._place_types[i]
 
-    def _write(self, items, basename):
-        """Write `items` to file `basename`."""
-        path = os.path.join(poor.CONFIG_HOME_DIR, basename)
-        try:
-            poor.util.makedirs(os.path.dirname(path))
-            with poor.util.atomic_open(path, "w", encoding="utf_8") as f:
-                f.writelines("\n".join(items[:1000]) + "\n")
-        except Exception as error:
-            print("Failed to write file '{}': {}"
-                  .format(path, str(error)),
-                  file=sys.stderr)
-
     def write(self):
-        """Write lists of history items to files."""
-        self._write(self._place_types, "place_types.history")
-        self._write(self._places, "places.history")
+        """Write list of queries to file."""
+        with poor.util.silent(Exception, tb=True):
+            poor.util.write_json({
+                "places": self._places[:1000],
+                "place_types": self._place_types[:1000],
+            }, self._path)
