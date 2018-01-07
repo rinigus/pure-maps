@@ -8,8 +8,8 @@ https://gitter.im/otsaloma/whogo-maps)
 [![Donate](https://img.shields.io/badge/donate-paypal.me-blue.svg)](
 https://www.paypal.me/otsaloma)
 
-WhoGo Maps is an application for Sailfish OS to display tiled maps (e.g.
-OpenStreetMap), places and routes with a flexible selection of data and
+WhoGo Maps is an application for Sailfish OS to display vector and
+raster maps, places and routes with a flexible selection of data and
 service providers.
 
 WhoGo Maps is free software released under the GNU General Public License
