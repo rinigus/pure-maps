@@ -67,7 +67,7 @@ MapboxMap {
     // which can be used to position route and other layers
     // under to avoid covering important map features, such
     // as labels.
-    property string styleReferenceLayer: "waterway-label"
+    property string firstLabelLayer: "waterway-label"
 
     property real widthCoords: 0
     property real zoomLevelPrev: 8
@@ -444,7 +444,7 @@ MapboxMap {
         // POIs
 
         // since we have text labels, put the symbols on top
-        map.addLayer(constants.layerPois, {"type": "symbol", "source": constants.sourcePois}); //, map.styleReferenceLayer);
+        map.addLayer(constants.layerPois, {"type": "symbol", "source": constants.sourcePois}); //, map.firstLabelLayer);
         map.setLayoutProperty(constants.layerPois, "icon-image", constants.imagePoi);
         map.setLayoutProperty(constants.layerPois, "icon-size", 1.0 / map.pixelRatio);
         map.setLayoutProperty(constants.layerPois, "icon-allow-overlap", true);
@@ -462,14 +462,14 @@ MapboxMap {
 
         map.removeLayer(constants.layerRouteCase);
         map.addLayer(constants.layerRouteCase,
-                     {"type": "line", "source": constants.sourceRoute}, map.styleReferenceLayer);
+                     {"type": "line", "source": constants.sourceRoute}, map.firstLabelLayer);
         map.setLayoutProperty(constants.layerRouteCase, "line-join", "round");
         map.setLayoutProperty(constants.layerRouteCase, "line-cap", "round");
         map.setPaintProperty(constants.layerRouteCase, "line-color", "#819FFF");
         map.setPaintProperty(constants.layerRouteCase, "line-width", 8);
 
         map.addLayer(constants.layerRoute,
-                     {"type": "line", "source": constants.sourceRoute}, map.styleReferenceLayer);
+                     {"type": "line", "source": constants.sourceRoute}, map.firstLabelLayer);
         map.setLayoutProperty(constants.layerRoute, "line-join", "round");
         map.setLayoutProperty(constants.layerRoute, "line-cap", "round");
         map.setPaintProperty(constants.layerRoute, "line-color", "white");
@@ -479,7 +479,7 @@ MapboxMap {
         // Maneuvers - drawn on top of the route
 
         map.addLayer(constants.layerManeuvers,
-                     {"type": "circle", "source": constants.sourceManeuvers}, map.styleReferenceLayer);
+                     {"type": "circle", "source": constants.sourceManeuvers}, map.firstLabelLayer);
         map.setPaintProperty(constants.layerManeuvers, "circle-radius", 3);
         map.setPaintProperty(constants.layerManeuvers, "circle-color", "white");
         map.setPaintProperty(constants.layerManeuvers, "circle-stroke-width", 2);
@@ -639,23 +639,20 @@ MapboxMap {
         // basemap file
         if (!py.ready) return;
 
-        var basemap = py.call_sync("poor.app.get_basemap", []);
-
-        map.urlDebug = basemap.urlDebug || false;
-        map.urlSuffix = basemap.urlSuffix || "";
-        if (typeof basemap.styleReferenceLayer !== 'undefined') map.styleReferenceLayer = basemap.styleReferenceLayer;
-        else map.styleReferenceLayer = "waterway-label";
-        map.pixelRatio = basemap.pixelRatio || Theme.pixelRatio * 1.5
+        map.urlSuffix = py.evaluate("poor.app.basemap.url_suffix");
+        map.firstLabelLayer = py.evaluate("poor.app.basemap.first_label_layer");
 
         map.initLayers();
         positionMarker.init();
 
         // only one of styleUrl or styleJson can be specified
-        if (basemap.styleUrl) map.styleUrl = basemap.styleUrl;
-        else map.styleJson = basemap.styleJson || "";
+        if (py.evaluate("poor.app.basemap.style_url"))
+            map.styleUrl = py.evaluate("poor.app.basemap.style_url");
+        else
+            map.styleJson = py.evaluate("poor.app.basemap.style_json");
 
-        attribution.setInfo(basemap.attributionFull || basemap.attribution);
-        attribution.setLogo(basemap.attributionLogo || "");
+        attribution.setInfo(py.evaluate("poor.app.basemap.attribution"));
+        attribution.setLogo(py.evaluate("poor.app.basemap.logo"));
     }
 
     function setCenter(x, y) {

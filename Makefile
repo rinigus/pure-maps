@@ -14,7 +14,7 @@ LCONVERT = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
     $(wildcard /usr/lib/*/qt5/bin/lconvert))
 
 check:
-	pyflakes geocoders guides poor routers tilesources
+	pyflakes geocoders guides poor routers
 
 clean:
 	rm -rf dist
@@ -56,11 +56,10 @@ install:
 	mkdir -p $(DATADIR)/qml/js
 	cp qml/js/*.js $(DATADIR)/qml/js
 
-	@echo "Installing tilesources..."
-	mkdir -p $(DATADIR)/tilesources
-	cp tilesources/*.json $(DATADIR)/tilesources
-	cp tilesources/[!_]*.py $(DATADIR)/tilesources
-	cp tilesources/README.md $(DATADIR)/tilesources
+	@echo "Installing maps..."
+	mkdir -p $(DATADIR)/maps
+	cp maps/*.json $(DATADIR)/maps
+	cp maps/README.md $(DATADIR)/maps
 
 	@echo "Installing geocoders..."
 	mkdir -p $(DATADIR)/geocoders
@@ -115,6 +114,6 @@ rpm:
 	cp $$HOME/rpmbuild/SRPMS/$(NAME)-$(VERSION)-*.rpm rpm
 
 test:
-	py.test geocoders guides poor routers tilesources
+	py.test geocoders guides poor routers
 
 .PHONY: check clean dist install pot rpm test

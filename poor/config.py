@@ -28,14 +28,12 @@ __all__ = ("ConfigurationStore",)
 DEFAULTS = {
     "auto_center": False,
     "auto_rotate": False,
-    "basemap": "mapbox_streets_gl",
-    "basemap_filter": "",
+    "basemap": "mapbox_streets",
     "center": [0.0, 0.0],
     "geocoder": "opencage",
     "guide": "foursquare",
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
-    "overlays": [],
     "reroute": True,
     "router": "mapquest_open",
     "show_narrative": True,

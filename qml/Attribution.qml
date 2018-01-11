@@ -43,14 +43,14 @@ Column {
     }
 
     function setLogo(logo) {
-        image.source = logo;
+        image.source = "icons/attribution/%1".arg(logo);
         if (logo) image.visible = true;
         else image.visible = false;
     }
 
     Image {
         id: info
-        source: "icons/attribution/attrib.svg"
+        source: "icons/attribution/default.svg"
 
         // size matches the size of Mapbox logo circle
         height: sourceSize.height / 2.5 * Theme.pixelRatio * 1.5
@@ -85,7 +85,7 @@ Column {
     Image {
         id: image
 
-        source: logoSource
+        source: "icons/attribution/%1".arg(logoSource)
 
         visible: true
         //anchors.verticalCenter: info.verticalCenter

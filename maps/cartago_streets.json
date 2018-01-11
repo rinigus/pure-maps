@@ -1,0 +1,8 @@
+{
+    "attribution": "© Osmo Salomaa<br><a href=\"https://openmaptiles.org/\">© OpenMapTiles</a><br><a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap</a>",
+    "firstLabelLayer": "housenumber",
+    "format": "mapbox-gl",
+    "name": "Cartago Streets",
+    "styleUrl": "http://tile.cartago.io/styles/cartago-streets/style.json",
+    "urlSuffix": "?apikey=kvvyc4nkgsenfk6d"
+}

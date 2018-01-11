@@ -1,9 +1,0 @@
-{
-    "attribution": "Data © OpenStreetMap contributors",
-    "attributionFull": "<a href=https://github.com/rinigus/osmscout-server>OSM Scout Server</a><br><a href=http://www.openstreetmap.org/copyright>© OpenStreetMap</a>",
-    "format": "mapbox",
-    "name": "OSM Scout",
-    "_source": "OSM Scout offline server",
-    "styleUrl": "http://localhost:8553/v1/mbgl/style?style=osmbright",
-    "styleReferenceLayer": "waterway-name"
-}

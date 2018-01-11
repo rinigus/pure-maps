@@ -284,10 +284,9 @@ def format_time(seconds):
 
 def get_basemaps():
     """Return a list of dictionaries of basemap attributes."""
-    return list(filter(lambda x: x.get("type", "basemap") == "basemap",
-                       _get_providers("tilesources",
-                                      poor.conf.get_default("basemap"),
-                                      poor.conf.basemap)))
+    return _get_providers("maps",
+                          poor.conf.get_default("basemap"),
+                          poor.conf.basemap)
 
 def get_default_language(fallback="en"):
     """Return the system default language code or `fallback`."""
@@ -308,13 +307,6 @@ def get_guides():
     return _get_providers("guides",
                           poor.conf.get_default("guide"),
                           poor.conf.guide)
-
-def get_overlays():
-    """Return a list of dictionaries of overlay attributes."""
-    return list(filter(lambda x: x.get("type", "basemap") == "overlay",
-                       _get_providers("tilesources",
-                                      poor.conf.get_default("overlays"),
-                                      poor.conf.overlays)))
 
 def _get_providers(directory, default, active):
     """Return a list of dictionaries of provider attributes."""
@@ -350,12 +342,6 @@ def get_routing_attribution(service, engine=None):
         return _("Routing courtesy of {}.").format(service)
     return (_("Routing by {engine}, courtesy of {service}.")
             .format(engine=engine, service=service))
-
-def get_tilesources():
-    """Return a list of dictionaries of tilesource attributes."""
-    tilesources = get_basemaps() + get_overlays()
-    tilesources.sort(key=lambda x: x["pid"])
-    return tilesources
 
 def locked_method(function):
     """

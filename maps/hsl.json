@@ -1,0 +1,7 @@
+{
+    "attribution": "<a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap</a>",
+    "format": "raster",
+    "name": "HSL",
+    "tileSize": 512,
+    "tileUrl": "http://api.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}@2x.png"
+}

@@ -15,24 +15,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import importlib.machinery
-import os
 import poor.test
 
 
-class TestModule(poor.test.TestCase):
+class TestMap(poor.test.TestCase):
 
-    def setup_method(self, method):
-        path = os.path.join(os.path.dirname(__file__), "..", "slippy.py")
-        loader = importlib.machinery.SourceFileLoader("format", path)
-        self.format = loader.load_module("format")
+    def test___new____no(self):
+        a = poor.Map("mapbox_streets")
+        b = poor.Map("mapbox_outdoors")
+        assert not a is b
 
-    def test_deg2num(self):
-        xtile, ytile = self.format.deg2num(24.94093, 60.16867, 18)
-        assert xtile == 149233
-        assert ytile == 75880
-
-    def test_num2deg(self):
-        x, y = self.format.num2deg(149233, 75880, 18)
-        assert abs(x - 24.94034) < 0.00001
-        assert abs(y - 60.16884) < 0.00001
+    def test___new____yes(self):
+        a = poor.Map("mapbox_streets")
+        b = poor.Map("mapbox_streets")
+        assert a is b

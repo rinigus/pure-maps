@@ -104,7 +104,7 @@ Page {
 
             IconListItem {
                 icon: "image://theme/icon-m-levels"
-                label: app.tr("Basemaps and overlays")
+                label: app.tr("Basemaps")
                 onClicked: app.pageStack.push("BasemapPage.qml");
             }
 

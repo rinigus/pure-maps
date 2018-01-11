@@ -40,6 +40,7 @@ from poor import storage
 from poor.attrdict import *
 from poor.config import *
 conf = ConfigurationStore()
+from poor.map import *
 from poor.geocoder import *
 from poor.guide import *
 from poor.history import *

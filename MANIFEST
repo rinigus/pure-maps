@@ -1,12 +1,12 @@
 data
 geocoders
 guides
+maps
 po
 poor
 qml
 routers
 rpm
-tilesources
 AUTHORS.md
 COPYING
 Makefile

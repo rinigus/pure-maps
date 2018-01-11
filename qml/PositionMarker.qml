@@ -47,27 +47,27 @@ Item {
 
         // add layers
 
-        map.addLayer(constants.layerUncertainty, {"type": "circle", "source": constants.sourceName}, map.styleReferenceLayer);
+        map.addLayer(constants.layerUncertainty, {"type": "circle", "source": constants.sourceName}, map.firstLabelLayer);
         map.setPaintProperty(constants.layerUncertainty, "circle-radius", 0);
         map.setPaintProperty(constants.layerUncertainty, "circle-color", "#87cefa");
         map.setPaintProperty(constants.layerUncertainty, "circle-opacity", 0.15);
 
-        //        map.addLayer(constants.layerDot, {"type": "circle", "source": constants.sourceName}, map.styleReferenceLayer);
+        //        map.addLayer(constants.layerDot, {"type": "circle", "source": constants.sourceName}, map.firstLabelLayer);
         //        map.setPaintProperty(constants.layerDot, "circle-radius", 6);
         //        map.setPaintProperty(constants.layerDot, "circle-color", "#819FFF");
 
-        //        map.addLayer(constants.layerCircle, {"type": "circle", "source": constants.sourceName}, map.styleReferenceLayer);
+        //        map.addLayer(constants.layerCircle, {"type": "circle", "source": constants.sourceName}, map.firstLabelLayer);
         //        map.setPaintProperty(constants.layerCircle, "circle-radius", 12);
         //        map.setPaintProperty(constants.layerCircle, "circle-opacity", 0);
         //        map.setPaintProperty(constants.layerCircle, "circle-stroke-width", 6);
         //        map.setPaintProperty(constants.layerCircle, "circle-stroke-color", "#819FFF");
 
-        map.addLayer(constants.layerStill, {"type": "symbol", "source": constants.sourceName}); //, map.styleReferenceLayer);
+        map.addLayer(constants.layerStill, {"type": "symbol", "source": constants.sourceName}); //, map.firstLabelLayer);
         map.setLayoutProperty(constants.layerStill, "icon-image", constants.imageStill);
         map.setLayoutProperty(constants.layerStill, "icon-size", 1.0 / map.pixelRatio);
         map.setLayoutProperty(constants.layerStill, "visibility", "visible");
 
-        map.addLayer(constants.layerMoving, {"type": "symbol", "source": constants.sourceName}); //, map.styleReferenceLayer);
+        map.addLayer(constants.layerMoving, {"type": "symbol", "source": constants.sourceName}); //, map.firstLabelLayer);
         map.setLayoutProperty(constants.layerMoving, "icon-image", constants.imageMoving);
         map.setLayoutProperty(constants.layerMoving, "icon-size", 1.0 / map.pixelRatio);
         map.setLayoutProperty(constants.layerMoving, "icon-rotation-alignment", "map");

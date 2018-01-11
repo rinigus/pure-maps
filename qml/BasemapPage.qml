@@ -85,29 +85,6 @@ Page {
 
         model: ListModel {}
 
-        PullDownMenu {
-            MenuItem {
-                text: app.tr("All")
-                onClicked: page.setFilter("");
-            }
-            MenuItem {
-                text: "@1x"
-                onClicked: page.setFilter("@1x");
-            }
-            MenuItem {
-                text: "@2x"
-                onClicked: page.setFilter("@2x");
-            }
-            MenuItem {
-                text: "@3x"
-                onClicked: page.setFilter("@3x");
-            }
-            MenuItem {
-                text: "@4x"
-                onClicked: page.setFilter("@4x");
-            }
-        }
-
         VerticalScrollDecorator {}
 
         Component.onCompleted: {
@@ -115,35 +92,11 @@ Page {
             py.call("poor.util.get_basemaps", [], function(basemaps) {
                 Util.markDefault(basemaps, app.conf.getDefault("basemap"));
                 Util.addProperties(basemaps, "show_attribution", false);
-                Util.addProperties(basemaps, "visible", false);
+                Util.addProperties(basemaps, "visible", true);
                 Util.appendAll(listView.model, basemaps);
-                page.filterBasemaps();
             });
         }
 
-    }
-
-    onStatusChanged: {
-        page.status === PageStatus.Active &&
-            app.pageStack.pushAttached("OverlayPage.qml");
-    }
-
-    function filterBasemaps() {
-        // Show only basemaps that match the scale filter.
-        var filter = app.conf.get("basemap_filter"), item;
-        for (var i = 0; i < listView.count; i++) {
-            item = listView.model.get(i);
-            item.visible = item.name.indexOf(filter) > -1;
-        }
-        page.title = filter.length > 0 ?
-            app.tr("Basemaps %1", filter) :
-            app.tr("Basemaps");
-    }
-
-    function setFilter(value) {
-        // Set value of the scale filter and update.
-        app.conf.set("basemap_filter", value);
-        page.filterBasemaps();
     }
 
 }

@@ -17,14 +17,8 @@
 
 """An application to display maps and stuff."""
 
-import math
-import os
 import poor
-import pyotherside
-import queue
 import sys
-import threading
-import time
 
 __all__ = ("Application",)
 
@@ -36,21 +30,15 @@ class Application:
     def __init__(self):
         """Initialize an :class:`Application` instance."""
         self.basemap = None
-        self._bbox = [-1, -1, -1, -1]
         self.geocoder = None
         self.guide = None
         self.history = poor.HistoryManager()
         self.narrative = poor.Narrative()
-        self.overlays = []
         self.router = None
-        self._timestamp = int(time.time() * 1000)
         self.set_basemap(poor.conf.basemap)
         self.set_geocoder(poor.conf.geocoder)
         self.set_guide(poor.conf.guide)
         self.set_router(poor.conf.router)
-
-    def get_basemap(self):
-        return self.basemap
 
     def quit(self):
         """Quit the application."""
@@ -62,46 +50,7 @@ class Application:
     def set_basemap(self, basemap):
         """Set basemap from string `basemap`."""
         try:
-            leaf = os.path.join("tilesources", "{}.json".format(basemap))
-            path = os.path.join(poor.DATA_HOME_DIR, leaf)
-            if not os.path.isfile(path):
-                path = os.path.join(poor.DATA_DIR, leaf)
-            bmap = poor.util.read_json(path)
-            if bmap["format"] == "slippy":
-                styleJson = """
-{
-    "sources": {
-        "raster": {
-            "tiles": ["URL_SOURCE"],
-            "type": "raster",
-            "tileSize": TILE_SIZE
-        }
-    },
-    "layers": [
-        {
-            "id": "raster",
-            "type": "raster",
-            "source": "raster",
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "raster-opacity": 1
-            }
-        }
-    ],
-    "id": "raster"
-}"""
-                styleJson = styleJson.replace("URL_SOURCE", bmap["url"])
-                styleJson = styleJson.replace("TILE_SIZE", str(bmap["scale"]*256))
-                bmap["styleJson"] = styleJson
-                bmap["pixelRatio"] = 1
-                bmap["styleReferenceLayer"] = ""
-            elif bmap["format"] == "mapbox":
-                pass
-            else:
-                raise ValueError("Unsupported tilesource format: {}".format(bmap["format"]))
-            self.basemap = bmap
+            self.basemap = poor.Map(basemap)
             poor.conf.basemap = basemap
         except Exception as error:
             print("Failed to load basemap '{}': {}"

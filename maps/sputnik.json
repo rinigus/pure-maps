@@ -1,0 +1,7 @@
+{
+    "attribution": "<a href=\"http://maps.sputnik.ru/\">© Sputnik</a><br><a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap</a>",
+    "format": "raster",
+    "name": "Sputnik",
+    "tileSize": 256,
+    "tileUrl": "http://tiles.maps.sputnik.ru/{z}/{x}/{y}.png?tag=retina"
+}
