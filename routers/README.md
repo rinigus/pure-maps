@@ -61,8 +61,7 @@ page can be used to list the routes and their properties.
 To display a route on the map, you'll want to call `map.addRoute` and
 `map.addManeuvers`. See the documentation of these functions in
 `qml/Map.qml` to understand which fields are expected in their
-arguments. It is easiest to have your Python `route` function return
-something that can be directly passed to these QML functions.
+arguments.
 
 ## Tips
 
