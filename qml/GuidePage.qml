@@ -74,7 +74,7 @@ Dialog {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 height: (visible ? implicitHeight : 0) + app.listItemVerticalMargin
                 lineHeight: 1.15
-                text: visible ? app.tr("Source: %1", model.source) + "\n" + model.attribution : ""
+                text: visible ? model.attribution : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
                 visible: model.show_attribution

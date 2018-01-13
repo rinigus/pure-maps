@@ -1,6 +1,5 @@
 {
     "attribution": "Data © OpenStreetMap contributors",
     "_description": "Search based on OpenStreetMap data",
-    "name": "Photon",
-    "source": "komoot.de"
+    "name": "Photon"
 }

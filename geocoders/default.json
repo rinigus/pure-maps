@@ -2,6 +2,5 @@
     "attribution": "Data © OpenStreetMap and others",
     "description": "Search using a priority list of providers",
     "hidden": true,
-    "name": "Default",
-    "source": "Various"
+    "name": "Default"
 }

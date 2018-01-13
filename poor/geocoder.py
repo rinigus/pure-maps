@@ -55,7 +55,6 @@ class Geocoder:
         self.id = id
         self.name = values["name"]
         self._provider = None
-        self.source = values["source"]
         self._init_provider(re.sub(r"\.json$", ".py", path))
 
     def _format_distance(self, x1, y1, x2, y2):
