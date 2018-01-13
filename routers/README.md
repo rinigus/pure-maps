@@ -32,7 +32,7 @@ routers.
     ],
     "mode": "car",
     "language": "en_US",
-    "attribution": "Routing courtesy of Mapzen.",
+    "attribution": "Routing courtesy of MapQuest.",
 }
 ```
 
@@ -49,8 +49,8 @@ If your router supports multiple languages, provide the list of
 languages in `*_settings.qml` and use the user-given selection in the
 Python `route` function. When returning the narration language as a part
 of the return dictionary of `route`, make sure to use the standard
-locale format `xx[_YY]`. See the Mapzen router for an example on how to
-implement language settings in QML and Python.
+locale format `xx[_YY]`. See the OSM Scout router for an example on how
+to implement language settings in QML and Python.
 
 The second QML file (`*_results.qml`) is mandatory and used to specify a
 result page. At minimum this should be a page which shows a busy

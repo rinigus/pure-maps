@@ -1,7 +1,0 @@
-{
-    "attribution": "Data © OpenStreetMap contributors",
-    "_description": "Routing based on OpenStreetMap data",
-    "_modes": ["car", "bicycle", "foot"],
-    "name": "Mapzen Turn-by-Turn",
-    "source": "mapzen.com"
-}
