@@ -56,6 +56,8 @@ Column {
         id: langComboBox
         label: app.tr("Language")
         menu: ContextMenu {
+            // XXX: We need something more complicated here in order to
+            // have the languages in alphabetical order after translation.
             MenuItem { text: app.tr("English (UK)") }
             MenuItem { text: app.tr("English (US)") }
             MenuItem { text: app.tr("French (Canada)") }
