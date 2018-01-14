@@ -58,6 +58,7 @@ Item {
         Component.onCompleted: {
             revolver.updateOrientation();
             app.onDeviceOrientationChanged.connect(revolver.updateOrientation);
+            app.attribution = attribution;
             app.map = map;
             app.menuButton = menuButton;
             app.navigationBlock = navigationBlock;

@@ -221,7 +221,7 @@ MapboxMap {
 
             // Unknown click - let's close all POI dialogs and info bubble for attribution
             map.hidePoiBubbles();
-            attribution.clearInfo();
+            // attribution.clearInfo();
         }
 
         onPressAndHoldGeo: map.addPois([{
@@ -651,8 +651,8 @@ MapboxMap {
         else
             map.styleJson = py.evaluate("poor.app.basemap.style_json");
 
-        attribution.setInfo(py.evaluate("poor.app.basemap.attribution"));
-        attribution.setLogo(py.evaluate("poor.app.basemap.logo"));
+        attribution.logo = py.evaluate("poor.app.basemap.logo");
+        attribution.text = py.evaluate("poor.app.basemap.attribution");
     }
 
     function setCenter(x, y) {

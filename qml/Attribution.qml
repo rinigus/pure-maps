@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2018 Osmo Salomaa
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,77 +20,50 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "."
 
-Column {
-
-    property string logoSource
-    property string infoText
-
+IconButton {
+    id: attribution
     anchors.bottom: scaleBar.top
     anchors.bottomMargin: Theme.paddingSmall
     anchors.left: parent.left
     anchors.leftMargin: Theme.paddingLarge
-
+    height: icon.height
+    icon.height: icon.sourceSize.height
+    icon.opacity: 0.9
+    icon.smooth: false
+    icon.source: ""
+    icon.width: icon.sourceSize.width
+    visible: !!icon.source
+    width: icon.width
     z: 100
 
-    spacing: Theme.paddingMedium
+    property string logo: ""
+    property string text: ""
 
-    function clearInfo() {
-        info.clear();
+    Bubble {
+        id: bubble
+        anchorItem: parent
+        lineHeight: 1.15
+        padding: Theme.paddingLarge
+        showArrow: false
+        state: "top-right"
+        visible: false
     }
 
-    function setInfo(infotxt) {
-        infoText = infotxt
+    Timer {
+        id: timer
+        interval: 3000
+        repeat: false
+        onTriggered: bubble.visible = false;
     }
 
-    function setLogo(logo) {
-        image.source = "icons/attribution/%1".arg(logo);
-        if (logo) image.visible = true;
-        else image.visible = false;
+    onClicked: {
+        bubble.text = "<style>a:link { color: %1; text-decoration: none; }</style>%2"
+            .arg(Theme.highlightColor).arg(attribution.text);
+        bubble.visible = true;
+        timer.restart();
     }
 
-    Image {
-        id: info
-        source: "icons/attribution/default.svg"
+    onLogoChanged: attribution.icon.source = logo ?
+        app.getIcon("icons/attribution/%1".arg(logo)) : "";
 
-        // size matches the size of Mapbox logo circle
-        height: sourceSize.height / 2.5 * Theme.pixelRatio * 1.5
-        width: sourceSize.width / 2.5 * Theme.pixelRatio * 1.5
-
-        function clear(text) {
-            infoBubble.opacity = 0;
-        }
-
-        function show() {
-            infoBubble.opacity = 1;
-        }
-
-        Bubble {
-            id: infoBubble
-            anchorItem: info
-            opacity: 0
-            showArrow: false
-            state: "top-right"
-            text: "<style>a:link { color: " + Theme.highlightColor + "; }</style> " + infoText
-            visible: opacity > 0
-
-            Behavior on opacity { FadeAnimator {} }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: info.show();
-        }
-    }
-
-    Image {
-        id: image
-
-        source: "icons/attribution/%1".arg(logoSource)
-
-        visible: true
-        //anchors.verticalCenter: info.verticalCenter
-
-        height: sourceSize.height * Theme.pixelRatio * 1.5
-        width: sourceSize.width * Theme.pixelRatio * 1.5
-    }
 }

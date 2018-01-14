@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+import glob, os, xml.dom.minidom
+for svg in glob.glob("*.svg"):
+    # Skip icons used as a single size.
+    if os.path.isfile(svg.replace("svg", "png")): continue
+    doc = xml.dom.minidom.parse(svg)
+    doc = doc.getElementsByTagName("svg")[0]
+    width = int(doc.getAttribute("width"))
+    height = int(doc.getAttribute("height"))
+    assert width > 0 and height > 0
+    for ratio in [1.00, 1.25, 1.50, 1.75, 2.00]:
+        png = "{}@{:.2f}.png".format(svg[:-4], ratio)
+        os.system("inkscape -f {} -e {} -C -w {:.0f} -h {:.0f}"
+                  .format(svg, png, ratio*width, ratio*height))

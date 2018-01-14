@@ -46,7 +46,7 @@ class Map:
         self.first_label_layer = values.get("firstLabelLayer", "")
         self.id = id
         self.format = values["format"]
-        self.logo = values.get("logo", "default.svg")
+        self.logo = values.get("logo", "default")
         self.name = values["name"]
         self.style_dict = values.get("styleJson", {})
         self.style_url = values.get("styleUrl", "")

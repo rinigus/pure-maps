@@ -24,7 +24,7 @@ Rectangle {
     anchors.bottomMargin: showArrow * arrow.height + Theme.paddingSmall
     anchors.topMargin: showArrow * arrow.height + Theme.paddingSmall
     color: "#e6000000"
-    height: controls.height + label.height + (controlHeight > 0 ? 3 : 2) * padding
+    height: controls.height + label.height + (controlHeight > 0 ? 3 : 2) * verticalPadding
     state: "top-center"
     states: [
 
@@ -115,15 +115,18 @@ Rectangle {
         w = Math.min(w, 0.65 * app.screenWidth);
         w = Math.min(w, 0.65 * app.screenHeight);
         w = Math.min(w,  500 * Theme.pixelRatio);
-        return Math.max(w, bubble.controlWidth) + 2 * padding;
+        return Math.max(w, bubble.controlWidth) + 2 * horizontalPadding;
     }
 
     property var    anchorItem: undefined
     property real   controlHeight: 0
     property real   controlWidth: 0
+    property real   horizontalPadding: 1.5 * padding
+    property real   lineHeight: 1.0
     property real   padding: 1.5 * Theme.paddingMedium
     property string text: ""
     property bool   showArrow: true
+    property real   verticalPadding: padding
 
     signal clicked()
 
@@ -141,11 +144,11 @@ Rectangle {
     Rectangle {
         id: controls
         anchors.bottom: bubble.bottom
-        anchors.bottomMargin: bubble.padding
+        anchors.bottomMargin: bubble.verticalPadding
         anchors.left: bubble.left
-        anchors.leftMargin: bubble.padding
+        anchors.leftMargin: bubble.horizontalPadding
         anchors.right: bubble.right
-        anchors.rightMargin: bubble.padding
+        anchors.rightMargin: bubble.horizontalPadding
         color: "#00000000"
         height: bubble.controlHeight
     }
@@ -153,14 +156,15 @@ Rectangle {
     Label {
         id: label
         anchors.bottom: controls.top
-        anchors.bottomMargin: bubble.controlHeight > 0 ? bubble.padding : 0
+        anchors.bottomMargin: bubble.controlHeight > 0 ? bubble.verticalPadding : 0
         anchors.left: bubble.left
-        anchors.leftMargin: bubble.padding
+        anchors.leftMargin: bubble.horizontalPadding
         anchors.right: bubble.right
-        anchors.rightMargin: bubble.padding
+        anchors.rightMargin: bubble.horizontalPadding
         color: "white"
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeSmall
+        lineHeight: bubble.lineHeight
         text: bubble.text
         textFormat: Text.RichText
         visible: bubble.visible

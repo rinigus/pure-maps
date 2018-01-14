@@ -37,6 +37,7 @@ ApplicationWindow {
     cover: Cover {}
     initialPage: DummyPage { id: dummy }
 
+    property var  attribution: null
     property var  conf: Config {}
     property bool inMenu: !root.visible
     property var  map: null

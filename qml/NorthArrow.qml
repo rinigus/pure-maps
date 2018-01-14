@@ -30,18 +30,6 @@ IconButton {
     icon.source: app.getIcon("icons/north")
     z: 600
 
-    onClicked: {
-        if (map.autoRotate) {
-            map.autoRotate = false;
-            bubble.text = app.tr("Auto-rotate off");
-        } else {
-            map.autoRotate = true;
-            bubble.text = app.tr("Auto-rotate on");
-        }
-        bubble.visible = true;
-        timer.restart();
-    }
-
     Bubble {
         id: bubble
         anchorItem: parent
@@ -55,6 +43,18 @@ IconButton {
         interval: 2000
         repeat: false
         onTriggered: bubble.visible = false;
+    }
+
+    onClicked: {
+        if (map.autoRotate) {
+            map.autoRotate = false;
+            bubble.text = app.tr("Auto-rotate off");
+        } else {
+            map.autoRotate = true;
+            bubble.text = app.tr("Auto-rotate on");
+        }
+        bubble.visible = true;
+        timer.restart();
     }
 
 }
