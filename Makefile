@@ -52,7 +52,7 @@ install:
 	mkdir -p $(DATADIR)/qml/icons/navigation $(DATADIR)/qml/icons/attribution
 	cp qml/icons/*.png $(DATADIR)/qml/icons
 	cp qml/icons/navigation/*.svg $(DATADIR)/qml/icons/navigation
-	cp qml/icons/attribution/*.svg $(DATADIR)/qml/icons/attribution
+	cp qml/icons/attribution/*.png $(DATADIR)/qml/icons/attribution
 	mkdir -p $(DATADIR)/qml/js
 	cp qml/js/*.js $(DATADIR)/qml/js
 
