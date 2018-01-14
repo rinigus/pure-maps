@@ -97,10 +97,8 @@ class ConfigurationStore(poor.AttrDict):
             # Run all migrations if version malformed.
             traceback.print_exc()
             version = (0, 0)
-        if version < (0, 1):
-            # Impose new default providers introduced in 0.1.
-            for option in ("geocoder", "guide", "router"):
-                values[option] = DEFAULTS[option]
+        # See Poor Maps for examples of migrations and their unit tests.
+        # https://github.com/otsaloma/poor-maps/blob/master/poor/config.py
         return values
 
     def read(self, path=None):
