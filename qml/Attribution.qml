@@ -28,7 +28,6 @@ IconButton {
     anchors.leftMargin: Theme.paddingLarge
     height: icon.height
     icon.height: icon.sourceSize.height
-    icon.opacity: 0.9
     icon.smooth: false
     icon.source: ""
     icon.width: icon.sourceSize.width
