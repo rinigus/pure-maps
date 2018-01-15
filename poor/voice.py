@@ -248,6 +248,7 @@ class VoiceGenerator:
 
     def _find_engine(self, language, gender="male"):
         """Return TTS engine instance for `language` and `gender`."""
+        if language is None: return None
         for engine in self.engines:
             if engine.supports(language):
                 return engine(language, gender)
