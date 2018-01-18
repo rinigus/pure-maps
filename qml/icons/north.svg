@@ -13,7 +13,7 @@
    height="96"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92+devel (177a8e8, 2017-12-08)"
    sodipodi:docname="north.svg"
    version="1.1"
    inkscape:export-xdpi="90"
@@ -27,7 +27,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="9.7604167"
+     inkscape:zoom="9.5208333"
      inkscape:cx="48"
      inkscape:cy="48"
      inkscape:document-units="px"
@@ -46,7 +46,8 @@
      inkscape:object-nodes="true"
      inkscape:snap-smooth-nodes="true"
      inkscape:snap-midpoints="true"
-     inkscape:object-paths="true">
+     inkscape:object-paths="true"
+     inkscape:document-rotation="0">
     <inkscape:grid
        type="xygrid"
        id="grid10137"
@@ -63,7 +64,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -79,13 +80,13 @@
          sodipodi:nodetypes="cccccc"
          inkscape:connector-curvature="0"
          id="path10403"
-         d="m 30,1016.3622 12,0 0,-22 -6,-6 -6,6 z"
+         d="m 30,1016.3622 h 12 v -22 l -6,-6 -6,6 z"
          style="fill:#ff0000;fill-opacity:0.9;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cccccc"
          inkscape:connector-curvature="0"
          id="path10403-8"
-         d="m 30,1016.3622 12,0 0,22 -6,6 -6,-6 z"
+         d="m 30,1016.3622 h 12 v 22 l -6,6 -6,-6 z"
          style="fill:#000000;fill-opacity:0.9;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
   </g>

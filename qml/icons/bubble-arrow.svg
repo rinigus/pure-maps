@@ -13,7 +13,7 @@
    height="12"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92+devel (177a8e8, 2017-12-08)"
    sodipodi:docname="bubble-arrow.svg"
    version="1.1"
    inkscape:export-xdpi="90"
@@ -27,7 +27,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="55.9375"
+     inkscape:zoom="56.0625"
      inkscape:cx="16"
      inkscape:cy="6"
      inkscape:document-units="px"
@@ -50,7 +50,8 @@
      inkscape:snap-smooth-nodes="true"
      inkscape:snap-midpoints="true"
      inkscape:snap-object-midpoints="true"
-     inkscape:snap-center="true">
+     inkscape:snap-center="true"
+     inkscape:document-rotation="0">
     <inkscape:grid
        type="xygrid"
        id="grid10137"
@@ -67,7 +68,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
