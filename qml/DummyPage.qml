@@ -18,66 +18,31 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "."
 
 /*
- * Construct a dummy page by duplicating tiles from the actual map.
- * This exact resemblance will allow smooth transitions.
+ * Ideally we'd replicate the map here to make the transition from the map to
+ * the menu page stack smooth, but for now, let's just use a background color
+ * that matches the background color of the current map.
  */
 
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
-    clip: true
-
-    property var tiles: []
 
     Rectangle {
-        // Matches the default QtLocation Map background.
         id: background
-        anchors.centerIn: parent
+        anchors.fill: parent
         color: "#e6e6e6"
-        height: map.height
-        rotation: map.rotation
-        width: map.width
     }
 
     onStatusChanged: {
-        // Clear and hide menu if navigated backwards to this page.
-        // This gets fired on application startup as well!
-        page.status === PageStatus.Active && app.clearMenu();
-    }
-
-    function addTile() {
-        // Add a new blank tile to the end of collection.
-        var component = Qt.createComponent("CoverTile.qml");
-        page.tiles.push(component.createObject(background));
-    }
-
-    function updateTiles() {
-        /* // Update dummy map tiles from map equivalents. */
-        /* for (var i = 0; i < page.tiles.length; i++) */
-        /*     page.tiles[i].z = -1; */
-        /* var j = 0; */
-        /* for (var i = 0; i < map.tiles.length; i++) { */
-        /*     if (map.tiles[i].type !== "basemap") continue; */
-        /*     if (map.tiles[i].z !== 10) continue; */
-        /*     if (map.tiles[i].x > page.width) continue; */
-        /*     if (map.tiles[i].y > page.height) continue; */
-        /*     var width = map.tiles[i].image.width; */
-        /*     var height = map.tiles[i].image.height; */
-        /*     if (!width || map.tiles[i].x + width < 0) continue; */
-        /*     if (!height || map.tiles[i].y + height < 0) continue; */
-        /*     while (page.tiles.length <= j) page.addTile(); */
-        /*     page.tiles[j].height = height; */
-        /*     page.tiles[j].smooth = map.tiles[i].smooth; */
-        /*     page.tiles[j].source = map.tiles[i].uri; */
-        /*     page.tiles[j].width = width; */
-        /*     page.tiles[j].x = map.tiles[i].x; */
-        /*     page.tiles[j].y = map.tiles[i].y; */
-        /*     page.tiles[j].z = map.tiles[i].z; */
-        /*     j++; */
-        /* } */
+        if (page.status === PageStatus.Activating && py.ready) {
+            background.color = py.evaluate("poor.app.basemap.background_color");
+        } else if (page.status === PageStatus.Active) {
+            // Clear and hide menu if navigated backwards to this page.
+            // This gets fired on application startup as well!
+            app.clearMenu();
+        }
     }
 
 }

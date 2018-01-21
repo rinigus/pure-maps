@@ -18,53 +18,35 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "."
-
-/*
- * Construct the default map cover by duplicating tiles and a position marker
- * from the center part of the map. This is achieved by simply mapping
- * the pixel coordinates of individual tiles and markers to a smaller cover
- * considered to be centered on the map.
- */
 
 CoverBackground {
     id: cover
 
     property bool active: status === Cover.Active
-    property bool ready: false
     property bool showNarrative: map.hasRoute && app.showNarrative
 
-    onShowNarrativeChanged: {
-        /* for (var i = 0; i < cover.tiles.length; i++) */
-        /*     cover.tiles[i].visible = !cover.showNarrative; */
-    }
-
-//    Timer {
-//        interval: 1000
-//        repeat: true
-//        running: !cover.ready ||
-//            cover.status === Cover.Activating ||
-//            cover.status === Cover.Active
-//        triggeredOnStart: true
-//        onTriggered: {
-//            if (app.inMenu) return;
-//            cover.updatePositionMarker();
-//        }
-//    }
-
-    /*
-     * Default map cover
-     */
-
     Image {
+        // Background icon
         anchors.centerIn: parent
-//        height: width/sourceSize.width * sourceSize.height
-//        opacity: 0.1
+        height: width/sourceSize.width * sourceSize.height
+        opacity: 0.1
         smooth: true
         source: "icons/cover.png"
-//        width: 1.5 * parent.width
-        fillMode: Image.PreserveAspectFit
-        width: parent.width*3/4
+        visible: !cover.showNarrative
+        width: 1.5 * parent.width
+    }
+
+    /*
+     * Default cover
+     */
+
+    Label {
+        // Title
+        anchors.centerIn: parent
+        font.pixelSize: Theme.fontSizeLarge
+        horizontalAlignment: Text.AlignHCenter
+        lineHeight: 1.25
+        text: "WhoGo\nMaps"
         visible: !cover.showNarrative
     }
 
@@ -118,4 +100,5 @@ CoverBackground {
         text: app.navigationBlock.destTime
         visible: cover.showNarrative
     }
+
 }

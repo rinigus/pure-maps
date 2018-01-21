@@ -54,7 +54,7 @@ Page {
                 font.pixelSize: Theme.fontSizeSmall
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
-                text: "Copyright © 2014–2017 Osmo Salomaa"
+                text: "Copyright © 2014–2018 Osmo Salomaa"
             }
 
             ListItemLabel {

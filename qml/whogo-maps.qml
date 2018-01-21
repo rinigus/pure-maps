@@ -195,7 +195,6 @@ ApplicationWindow {
         // Show NavigationPage and NarrativePage.
         if (!app.pageStack.currentPage ||
             !app.pageStack.currentPage.partOfNavigationStack) {
-            dummy.updateTiles();
             app.pageStack.pop(dummy, PageStackAction.Immediate);
             app.pageStack.push("NavigationPage.qml");
             app.pageStack.pushAttached("NarrativePage.qml");
@@ -210,17 +209,14 @@ ApplicationWindow {
     function showMenu(page, params) {
         // Show a menu page, either given, last viewed, or the main menu.
         if (page) {
-            dummy.updateTiles();
             app.pageStack.pop(dummy, PageStackAction.Immediate);
             app.pageStack.push(page, params || {});
         } else if (app.pageStack.currentPage &&
                    app.pageStack.currentPage.partOfNavigationStack) {
             // Clear NavigationPage and NarrativePage from the stack.
-            dummy.updateTiles();
             app.pageStack.pop(dummy, PageStackAction.Immediate);
             app.pageStack.push("MenuPage.qml");
         } else if (app.pageStack.depth < 2) {
-            dummy.updateTiles();
             app.pageStack.push("MenuPage.qml");
         }
         root.visible = false;
