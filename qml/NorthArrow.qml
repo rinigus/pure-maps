@@ -25,7 +25,7 @@ IconButton {
     anchors.bottomMargin: Theme.paddingSmall
     anchors.right: parent.right
     anchors.rightMargin: Theme.paddingSmall
-    icon.rotation: map.autoRotate ? -map.bearing : 0
+    icon.rotation: -map.bearing
     icon.smooth: true
     icon.source: app.getIcon("icons/north")
     z: 600
