@@ -174,9 +174,9 @@ Rectangle {
     MouseArea {
         anchors.fill: label
         onClicked: {
-            bubble.clicked();
             var link = label.linkAt(mouse.x, mouse.y);
             link && Qt.openUrlExternally(link);
+            link || bubble.clicked();
         }
     }
 
