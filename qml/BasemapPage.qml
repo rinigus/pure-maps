@@ -26,7 +26,7 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
-    property string title: app.tr("Basemaps")
+    property string title: app.tr("Maps")
 
     SilicaListView {
         id: listView
