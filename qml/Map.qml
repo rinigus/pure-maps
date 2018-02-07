@@ -59,7 +59,7 @@ MapboxMap {
     property var  pois: []
     property var  position: gps.position
     property bool ready: false
-    property var  route: {}
+    property var  route: Route {}
     property real scaleX: 0
     property real scaleY: 0
 
@@ -342,13 +342,6 @@ MapboxMap {
         app.rerouteTotalCalls = 0;
     }
 
-    function getRouteDestination() {
-        // Return coordinates [x,y] of the route destination.
-        return [map.route.x[map.route.x.length - 1],
-                map.route.y[map.route.y.length - 1]];
-
-    }
-
     function centerOnPosition() {
         // Center map on the current position.
         map.setCenter(map.position.coordinate.longitude,
@@ -372,7 +365,7 @@ MapboxMap {
     function clearRoute() {
         // Remove all route markers from the map.
         map.maneuvers = [];
-        map.route = {};
+        map.route.clear();
         py.call_sync("poor.app.narrative.unset", []);
         app.navigationStatus.clear();
         map.saveRoute();
