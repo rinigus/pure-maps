@@ -23,30 +23,23 @@ import "."
 
 Item {
     id: marker
-
+    height: Theme.iconSizeMedium
+    width: Theme.iconSizeMedium
     z: 400
 
-    property var coordinate
-    property string trackerId: ""
+    property var coordinate: null
     property string link: ""
     property string text: ""
     property string title: ""
-
-    Item {
-        id: dot
-        width: 1
-        height: 1
-    }
+    property string trackerId: ""
 
     Bubble {
         id: bubble
-
-        anchorItem: dot
+        anchorItem: marker
         controlHeight: routeButton.height
         controlWidth: routeButton.width + nearbyButton.width + shareButton.width +
-                      (marker.link.length > 0 ? webButton.width : 0) +
-                      (marker.link.length > 0 ? 3 : 2) * Theme.paddingMedium
-
+            (marker.link.length > 0 ? webButton.width : 0) +
+            (marker.link.length > 0 ? 3 : 2) * Theme.paddingMedium
         text: marker.text
 
         BubbleButton {
@@ -60,9 +53,9 @@ Item {
                 var x = marker.coordinate.longitude;
                 var y = marker.coordinate.latitude;
                 app.showMenu("RoutePage.qml", {
-                                 "to": [x, y],
-                                 "toText": marker.title
-                             });
+                    "to": [x, y],
+                    "toText": marker.title
+                });
             }
         }
 
@@ -77,9 +70,9 @@ Item {
                 var x = marker.coordinate.longitude;
                 var y = marker.coordinate.latitude;
                 app.showMenu("NearbyPage.qml", {
-                                 "near": [x, y],
-                                 "nearText": marker.title
-                             });
+                    "near": [x, y],
+                    "nearText": marker.title
+                });
             }
         }
 
@@ -94,9 +87,9 @@ Item {
                 var x = marker.coordinate.longitude;
                 var y = marker.coordinate.latitude;
                 app.showMenu("SharePage.qml", {
-                                 "coordinate": QtPositioning.coordinate(y, x),
-                                 "title": app.tr("Share Location")
-                             });
+                    "coordinate": QtPositioning.coordinate(y, x),
+                    "title": app.tr("Share Location")
+                });
             }
         }
 
@@ -111,29 +104,24 @@ Item {
             visible: marker.link.length > 0
             onClicked: Qt.openUrlExternally(marker.link);
         }
-    }
 
-    function process_text() {
-        marker.text = marker.text.replace("Theme.highlightColor", Theme.highlightColor);
     }
-
-    onTextChanged: process_text()
-    Component.onCompleted: process_text()
 
     Connections {
         target: map
-
         onLocationChanged: {
             if (id !== trackerId) return;
-
-            dot.x = pixel.x; // + marker.width/2;
-            dot.y = pixel.y; // + marker.height;
+            marker.x = pixel.x - marker.width  / 2;
+            marker.y = pixel.y - marker.height / 2;
             marker.visible = visible;
         }
-
-//        onLocationTrackingRemoved: {
-//            if (id !== trackerId) return;
-//            // marker.destroy(); // destruction done in the map
-//        }
     }
+
+    onTextChanged: processText()
+    Component.onCompleted: processText()
+
+    function processText() {
+        marker.text = marker.text.replace("Theme.highlightColor", Theme.highlightColor);
+    }
+
 }
