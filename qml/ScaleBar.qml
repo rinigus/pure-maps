@@ -28,7 +28,7 @@ Item {
     anchors.bottomMargin: Theme.paddingLarge
     anchors.left: parent.left
     anchors.leftMargin: Theme.paddingLarge
-    height: base.height + text.height + text.anchors.bottomMargin
+    height: base.height + text.anchors.bottomMargin + text.height
     opacity: 0.9
     visible: scaleWidth > 0
     z: 100
@@ -73,6 +73,17 @@ Item {
         text: scaleBar.text
     }
 
+    Connections {
+        target: map
+        onMetersPerPixelChanged: scaleBar.update();
+        onWidthChanged: scaleBar.update();
+    }
+
+    Connections {
+        target: py
+        onReadyChanged: scaleBar.update();
+    }
+
     function roundedDistace(dist) {
         // Return dist rounded to an even amount of user-visible units,
         // but keeping the value as meters.
@@ -90,27 +101,12 @@ Item {
         return Util.siground(dist, 1);
     }
 
-    function update(force) {
+    function update() {
         if (!py.ready) return;
-
-        // Update scalebar for current zoom level and latitude.
-        //force = force || false;
-
-        var meters = map.metersPerPixel * map.width / 4;
-        var dist = scaleBar.roundedDistace(meters);
-
-        scaleBar.scaleWidth = dist / map.metersPerPixel
+        var dist = map.metersPerPixel * map.width / 4;
+        dist = scaleBar.roundedDistace(dist);
+        scaleBar.scaleWidth = dist / map.metersPerPixel;
         scaleBar.text = py.call_sync("poor.util.format_distance", [dist, 1]);
     }
 
-    Connections {
-        target: map
-        onMetersPerPixelChanged: scaleBar.update()
-        onWidthChanged: scaleBar.update()
-    }
-
-    Connections {
-        target: py
-        onReadyChanged: scaleBar.update()
-    }
 }
