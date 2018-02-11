@@ -193,7 +193,14 @@ MapboxMap {
             // check if its current position
             if ( Math.abs(geocoordinate.longitude - map.position.coordinate.longitude) < nearby_lon &&
                  Math.abs(geocoordinate.latitude - map.position.coordinate.latitude) < nearby_lat ) {
-                positionMarker.mouseClick();
+                if (map.autoCenter) {
+                    map.autoCenter = false;
+                    notification.flash(app.tr("Auto-center off"));
+                } else {
+                    map.autoCenter = true;
+                    notification.flash(app.tr("Auto-center on"));
+                    map.centerOnPosition();
+                }
                 return;
             }
 
@@ -636,7 +643,6 @@ MapboxMap {
         map.firstLabelLayer = py.evaluate("poor.app.basemap.first_label_layer");
 
         map.initLayers();
-        positionMarker.init();
 
         // only one of styleUrl or styleJson can be specified
         if (py.evaluate("poor.app.basemap.style_url"))

@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2018 Osmo Salomaa
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,115 +21,50 @@ import Sailfish.Silica 1.0
 import "."
 
 Item {
+    id: marker
 
     property bool directionVisible: false
 
-    property var constants: QtObject {
-        property string sourceName: "pm-position-marker"
-
-        property string imageStill: "pm-image-still"
-        property string imageMoving: "pm-image-moving"
-
-        property string layerUncertainty: "pm-layer-position-uncertain"
-        //        property string layerDot: "pm-layer-position-dot"
-        //        property string layerCircle: "pm-layer-position-circle"
-        property string layerStill: "pm-layer-position-still"
-        property string layerMoving: "pm-layer-position-moving"
-    }
-
-    function init() {
-        // add the source that will be updated with the current position
-        map.addSourcePoint(constants.sourceName, map.position.coordinate);
-
-        // load icons
-        map.addImagePath(constants.imageStill, Qt.resolvedUrl(app.getIcon("icons/position")))
-        map.addImagePath(constants.imageMoving, Qt.resolvedUrl(app.getIcon("icons/position-direction")));
-
-        // add layers
-
-        map.addLayer(constants.layerUncertainty, {"type": "circle", "source": constants.sourceName}, map.firstLabelLayer);
-        map.setPaintProperty(constants.layerUncertainty, "circle-radius", 0);
-        map.setPaintProperty(constants.layerUncertainty, "circle-color", "#87cefa");
-        map.setPaintProperty(constants.layerUncertainty, "circle-opacity", 0.15);
-
-        //        map.addLayer(constants.layerDot, {"type": "circle", "source": constants.sourceName}, map.firstLabelLayer);
-        //        map.setPaintProperty(constants.layerDot, "circle-radius", 6);
-        //        map.setPaintProperty(constants.layerDot, "circle-color", "#819FFF");
-
-        //        map.addLayer(constants.layerCircle, {"type": "circle", "source": constants.sourceName}, map.firstLabelLayer);
-        //        map.setPaintProperty(constants.layerCircle, "circle-radius", 12);
-        //        map.setPaintProperty(constants.layerCircle, "circle-opacity", 0);
-        //        map.setPaintProperty(constants.layerCircle, "circle-stroke-width", 6);
-        //        map.setPaintProperty(constants.layerCircle, "circle-stroke-color", "#819FFF");
-
-        map.addLayer(constants.layerStill, {"type": "symbol", "source": constants.sourceName}); //, map.firstLabelLayer);
-        map.setLayoutProperty(constants.layerStill, "icon-image", constants.imageStill);
-        map.setLayoutProperty(constants.layerStill, "icon-size", 1.0 / map.pixelRatio);
-        map.setLayoutProperty(constants.layerStill, "visibility", "visible");
-
-        map.addLayer(constants.layerMoving, {"type": "symbol", "source": constants.sourceName}); //, map.firstLabelLayer);
-        map.setLayoutProperty(constants.layerMoving, "icon-image", constants.imageMoving);
-        map.setLayoutProperty(constants.layerMoving, "icon-size", 1.0 / map.pixelRatio);
-        map.setLayoutProperty(constants.layerMoving, "icon-rotation-alignment", "map");
-        map.setLayoutProperty(constants.layerMoving, "visibility", "none");
-
-        directionVisible = false;
-
-        // set current values
-        setUncertainty();
-        setLayers();
-    }
-
-    function setUncertainty() {
-        if (map.position.horizontalAccuracyValid)
-            map.setPaintProperty(constants.layerUncertainty, "circle-radius",
-                                 map.position.horizontalAccuracy / map.metersPerPixel / map.pixelRatio);
-        else
-            map.setPaintProperty(constants.layerUncertainty, "circle-radius", 0);
-    }
-
-    function setLayers() {
-        if (map.direction && !directionVisible) {
-            map.setLayoutProperty(constants.layerMoving, "visibility", "visible");
-            map.setLayoutProperty(constants.layerStill, "visibility", "none");
-            directionVisible = true;
-        }
-        if (!map.direction && directionVisible) {
-            map.setLayoutProperty(constants.layerStill, "visibility", "visible");
-            map.setLayoutProperty(constants.layerMoving, "visibility", "none");
-            directionVisible = false;
-        }
-
-        if (directionVisible) {
-            map.setLayoutProperty(constants.layerMoving, "icon-rotate", map.direction)
-        }
-    }
-
-    function mouseClick() {
-        if (map.autoCenter) {
-            map.autoCenter = false;
-            notification.flash(app.tr("Auto-center off"));
-        } else {
-            map.autoCenter = true;
-            notification.flash(app.tr("Auto-center on"));
-            map.centerOnPosition();
-        }
-    }
-
-    Component.onCompleted: {
-        init();
-    }
+    property string imageMoving: "whogo-image-position-moving"
+    property string imageStill:  "whogo-image-position-still"
+    property string layerMoving: "whogo-layer-position-moving"
+    property string layerStill:  "whogo-layer-position-still"
+    property string sourceName:  "whogo-position-marker"
 
     Connections {
         target: map
-
-        onPositionChanged: {
-            map.updateSourcePoint(constants.sourceName, map.position.coordinate);
-            setUncertainty();
-        }
-
-        onMetersPerPixelChanged: setUncertainty()
-
-        onDirectionChanged: setLayers()
+        onPositionChanged: map.updateSourcePoint(marker.sourceName, map.position.coordinate);
+        onDirectionChanged: marker.updateDirection();
     }
+
+    Component.onCompleted: {
+        map.addSourcePoint(marker.sourceName, map.position.coordinate);
+        map.addImagePath(marker.imageStill, Qt.resolvedUrl(app.getIcon("icons/position")))
+        map.addImagePath(marker.imageMoving, Qt.resolvedUrl(app.getIcon("icons/position-direction")));
+        map.addLayer(marker.layerStill, {"type": "symbol", "source": marker.sourceName});
+        map.setLayoutProperty(marker.layerStill, "icon-image", marker.imageStill);
+        map.setLayoutProperty(marker.layerStill, "icon-size", 1 / map.pixelRatio);
+        map.setLayoutProperty(marker.layerStill, "visibility", "visible");
+        map.addLayer(marker.layerMoving, {"type": "symbol", "source": marker.sourceName});
+        map.setLayoutProperty(marker.layerMoving, "icon-image", marker.imageMoving);
+        map.setLayoutProperty(marker.layerMoving, "icon-size", 1 / map.pixelRatio);
+        map.setLayoutProperty(marker.layerMoving, "icon-rotation-alignment", "map");
+        map.setLayoutProperty(marker.layerMoving, "visibility", "none");
+        marker.updateDirection();
+    }
+
+    function updateDirection() {
+        if (map.direction && !marker.directionVisible) {
+            map.setLayoutProperty(marker.layerStill, "visibility", "none");
+            map.setLayoutProperty(marker.layerMoving, "visibility", "visible");
+            marker.directionVisible = true;
+        } else if (!map.direction && marker.directionVisible) {
+            map.setLayoutProperty(marker.layerStill, "visibility", "visible");
+            map.setLayoutProperty(marker.layerMoving, "visibility", "none");
+            marker.directionVisible = false;
+        }
+        marker.directionVisible &&
+            map.setLayoutProperty(marker.layerMoving, "icon-rotate", map.direction);
+    }
+
 }
