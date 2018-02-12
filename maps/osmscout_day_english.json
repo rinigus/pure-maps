@@ -3,5 +3,6 @@
     "firstLabelLayer": "waterway-name",
     "format": "mapbox-gl",
     "name": "OSM Scout Day English",
+    "requires": ["harbour-osmscout-server"],
     "styleUrl": "http://localhost:8553/v1/mbgl/style?style=osmbright-en"
 }
