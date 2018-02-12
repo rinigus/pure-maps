@@ -42,7 +42,7 @@ DEFAULTS = {
     # "male" or "female"
     "voice_gender": "male",
     "voice_navigation": False,
-    "zoom": 3,
+    "zoom": 3.0,
 }
 
 

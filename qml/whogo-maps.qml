@@ -85,7 +85,7 @@ ApplicationWindow {
         app.conf.set("auto_center", map.autoCenter);
         app.conf.set("auto_rotate", map.autoRotate);
         app.conf.set("center", [map.center.longitude, map.center.latitude]);
-        app.conf.set("zoom", Math.floor(map.zoomLevel));
+        app.conf.set("zoom", map.zoomLevel);
         py.call_sync("poor.app.quit", []);
     }
 
