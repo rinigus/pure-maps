@@ -34,47 +34,23 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: visible ? nameLabel.height + attributionLabel.anchors.topMargin +
-                attributionLabel.height : 0
-            visible: model.visible
+            contentHeight: Theme.itemSizeSmall
 
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor;
-                height: implicitHeight + app.listItemVerticalMargin
+                height: Theme.itemSizeSmall
                 text: model.name
-                verticalAlignment: Text.AlignBottom
-            }
-
-            ListItemLabel {
-                id: attributionLabel
-                anchors.top: nameLabel.bottom
-                anchors.topMargin: visible ? Theme.paddingSmall : 0
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                height: (visible ? implicitHeight : 0) + app.listItemVerticalMargin
-                lineHeight: 1.15
-                text: visible ? model.attribution : ""
-                truncationMode: TruncationMode.None
-                verticalAlignment: Text.AlignTop
-                visible: model.show_attribution
-                wrapMode: Text.WordWrap
             }
 
             onClicked: {
                 app.hideMenu();
                 py.call_sync("poor.app.set_basemap", [model.pid]);
                 map.setBasemap();
-                for (var i = 0; i < listView.model.count; i++) {
+                for (var i = 0; i < listView.model.count; i++)
                     listView.model.setProperty(i, "active", false);
-                    listView.model.setProperty(i, "show_attribution", false);
-                }
                 model.active = true;
-            }
-
-            onPressAndHold: {
-                model.show_attribution = !model.show_attribution;
             }
 
         }
@@ -91,8 +67,6 @@ Page {
             // Load basemap model items from the Python backend.
             py.call("poor.util.get_basemaps", [], function(basemaps) {
                 Util.markDefault(basemaps, app.conf.getDefault("basemap"));
-                Util.addProperties(basemaps, "show_attribution", false);
-                Util.addProperties(basemaps, "visible", true);
                 Util.appendAll(listView.model, basemaps);
             });
         }
