@@ -29,6 +29,7 @@ import random
 import re
 import shutil
 import stat
+import subprocess
 import sys
 import time
 import traceback
@@ -375,6 +376,10 @@ def makedirs(directory):
 def path2uri(path):
     """Convert local filepath to URI."""
     return "file://{}".format(urllib.parse.quote(path))
+
+def popen(*args):
+    """Run command `args` without waiting for it to complete."""
+    subprocess.Popen(args)
 
 def read_json(path):
     """Read data from JSON file at `path`."""
