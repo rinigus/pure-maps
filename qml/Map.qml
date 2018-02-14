@@ -44,7 +44,7 @@ MapboxMap {
     accessToken: "pk.eyJ1Ijoib3RzYWxvbWEiLCJhIjoiY2pidTlwMTdhMW9kNzJ4cGMycTh4c216eSJ9._KFWLhzdsKnkTeYwbEHzhg"
     styleUrl: "mapbox://styles/mapbox/streets-v10"
 
-    cacheDatabaseStoreSettings: true
+    cacheDatabaseStoreSettings: false
     cacheDatabaseDefaultPath: true
 
     property bool autoCenter: false

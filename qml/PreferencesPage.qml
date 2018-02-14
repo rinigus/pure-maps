@@ -52,10 +52,9 @@ Page {
                 onCurrentIndexChanged: {
                     var index = unitsComboBox.currentIndex;
                     app.conf.set("units", unitsComboBox.values[index]);
-                    app.scaleBar.update(true);
+                    app.scaleBar.update();
                 }
             }
-
 
             ComboBox {
                 id: voiceGenderComboBox
@@ -94,40 +93,6 @@ Page {
                     var index = sleepComboBox.currentIndex;
                     app.conf.set("keep_alive", sleepComboBox.values[index]);
                     app.updateKeepAlive();
-                }
-            }
-
-            ComboBox {
-                id: cacheComboBox
-                description: app.tr("Limiting tile caching ensures up-to-date maps and keeps disk use under control, but loads maps slower and causes more data traffic. " +
-                                    "Note that the cache size settings will be applied after restart of the application.")
-                label: app.tr("Cache size")
-                menu: ContextMenu {
-                    MenuItem { text: app.tr("25 MB") }
-                    MenuItem { text: app.tr("50 MB") }
-                    MenuItem { text: app.tr("100 MB") }
-                    MenuItem { text: app.tr("250 MB") }
-                }
-                property bool ready: false
-                property var  values: [25, 50, 100, 250]
-                Component.onCompleted: {
-                    // Activate the closest value in case the user has edited the configuration file
-                    // by hand using a value outside the combo box steps. Note that this only changes
-                    // what is displayed, the actual configuration value is only changed on user input.
-                    var value = map.cacheDatabaseMaximalSize / 1024 / 1024;
-                    var minIndex = -1, minDiff = 36500;
-                    for (var i = 0; i < cacheComboBox.values.length; i++) {
-                        var diff = Math.abs(cacheComboBox.values[i] - value);
-                        minIndex = diff < minDiff ? i : minIndex;
-                        minDiff = Math.min(minDiff, diff);
-                    }
-                    cacheComboBox.currentIndex = minIndex;
-                    cacheComboBox.ready = true;
-                }
-                onCurrentIndexChanged: {
-                    if (!cacheComboBox.ready) return;
-                    var index = cacheComboBox.currentIndex;
-                    map.cacheDatabaseMaximalSize = cacheComboBox.values[index] * 1024 * 1024;
                 }
             }
 
