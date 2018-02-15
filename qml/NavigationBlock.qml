@@ -60,7 +60,7 @@ Rectangle {
     }
 
     Label {
-        // Distance remaining to destination
+        // Time remaining to destination
         id: destLabel
         anchors.baseline: manLabel.baseline
         anchors.right: parent.right
@@ -68,7 +68,7 @@ Rectangle {
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeMedium
         height: manLabel.height
-        text: block.destDist
+        text: block.destTime
     }
 
     Label {
