@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import QtMultimedia 5.2
+import Sailfish.Silica 1.0
 import org.nemomobile.keepalive 1.0
 import "."
 
@@ -75,9 +75,6 @@ ApplicationWindow {
         autoLoad: true
         autoPlay: true
         loops: 1
-    }
-
-    Component.onCompleted: {
     }
 
     Component.onDestruction: {
