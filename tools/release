@@ -10,5 +10,8 @@ git commit -a -m "RELEASE $VERSION"
 git tag -s -m "RELEASE $VERSION" $VERSION
 git push
 git push --tags
-# Add release notes and possible downloads.
-xdg-open https://github.com/otsaloma/whogo-maps/tags
+echo ""
+echo "Add release notes and possible downloads:"
+echo "https://github.com/otsaloma/whogo-maps/tags"
+echo ""
+egrep -B 999 -m2 "==+" NEWS.md
