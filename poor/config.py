@@ -29,7 +29,7 @@ DEFAULTS = {
     "auto_center": False,
     "auto_rotate": False,
     "basemap": "mapbox_streets",
-    "center": [0.0, 0.0],
+    "center": [13.0, 49.0],
     "geocoder": "opencage",
     "guide": "foursquare",
     # "always", "navigating" or "never".

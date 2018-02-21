@@ -22,6 +22,12 @@ function addProperties(items, name, value) {
         items[i][name] = value;
 }
 
+function angleDifference(alpha, beta) {
+    // Return the absolute difference in degrees between two angles.
+    var phi = Math.abs(beta - alpha) % 360;
+    return phi > 180 ? 360 - phi : phi;
+}
+
 function appendAll(model, items) {
     // Append all items to model.
     for (var i = 0; i < items.length; i++)

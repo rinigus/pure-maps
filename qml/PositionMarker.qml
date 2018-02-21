@@ -25,11 +25,11 @@ Item {
 
     property bool directionVisible: false
 
-    property string imageMoving: "whogo-image-position-moving"
-    property string imageStill:  "whogo-image-position-still"
-    property string layerMoving: "whogo-layer-position-moving"
-    property string layerStill:  "whogo-layer-position-still"
-    property string sourceName:  "whogo-position-marker"
+    readonly property string imageMoving: "whogo-image-position-moving"
+    readonly property string imageStill:  "whogo-image-position-still"
+    readonly property string layerMoving: "whogo-layer-position-moving"
+    readonly property string layerStill:  "whogo-layer-position-still"
+    readonly property string sourceName:  "whogo-position-marker"
 
     Connections {
         target: map

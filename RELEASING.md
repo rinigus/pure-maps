@@ -23,7 +23,4 @@ make rpm
 rpmvalidation.sh rpm/*.noarch.rpm
 install-rpm-on-jolla rpm/*.noarch.rpm
 tools/release
-
-# Add release notes and RPM on GitHub.
-# Update OpenRepos: https://openrepos.net/content/otsaloma/whogo-maps
 ```
