@@ -72,7 +72,7 @@ Page {
                     "link": model.link || ""
                 }]);
                 map.hidePoiBubbles();
-                map.pois[map.pois.length-1].bubbleVisible = true;
+                map.popPoiBubble(map.pois[map.pois.length-1]);
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
                 listItem.visited = true;
