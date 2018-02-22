@@ -493,9 +493,9 @@ MapboxMap {
         var content = map.height - header - footer;
         // If auto-rotate is on, the user is always heading up
         // on the screen and should see more ahead than behind.
-        var marginY = map.autoRotate ? footer/height : 0;
-        var marginHeight = map.autoRotate ? 0.2 * content/height : 1;
-        map.margins = Qt.rect(0, marginY, 1, marginHeight);
+        var marginY = (map.autoRotate ? footer/map.height : 0) + 0.05;
+        var marginHeight = (map.autoRotate ? 0.2 : 0.9) * content/map.height;
+        map.margins = Qt.rect(0.05, marginY, 0.9, marginHeight);
     }
 
     function updatePois() {
