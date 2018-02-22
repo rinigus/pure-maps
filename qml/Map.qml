@@ -282,6 +282,17 @@ MapboxMap {
 
     }
 
+    function hidePoiBubble(poi) {
+        // Hide label bubble of given POI marker.
+        for (var i = 0; i < map.pois.length; i++) {
+            if (!map.pois[i].bubble) continue;
+            if (map.pois[i].coordinate != poi.coordinate) continue;
+            map.removeLocationTracking(map.pois[i].bubble.trackerId);
+            map.pois[i].bubble.destroy();
+            map.pois[i].bubble = false;
+        }
+    }
+
     function hidePoiBubbles() {
         // Hide label bubbles of all POI markers.
         for (var i = 0; i < map.pois.length; i++) {
@@ -476,6 +487,11 @@ MapboxMap {
             notification.flash(app.tr("Auto-center on"));
             map.centerOnPosition();
         }
+    }
+
+    function togglePoiBubble(poi) {
+        // Show or hide a detail bubble for the given POI.
+        poi.bubble ? map.hidePoiBubble(poi) : map.popPoiBubble(poi);
     }
 
     function updateManeuvers() {

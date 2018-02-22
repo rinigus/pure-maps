@@ -39,7 +39,7 @@ MapboxMapGestureArea {
         // Show information bubble if POI marker clicked.
         for (var i = 0; i < map.pois.length; i++)
             if (area.coordinatesMatch(geocoordinate, map.pois[i].coordinate))
-                return map.popPoiBubble(map.pois[i]);
+                return map.togglePoiBubble(map.pois[i]);
         // Hide any POI bubbles if background map clicked.
         map.hidePoiBubbles();
     }

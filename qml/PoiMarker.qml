@@ -41,6 +41,7 @@ Item {
             (marker.link.length > 0 ? webButton.width : 0) +
             (marker.link.length > 0 ? 3 : 2) * Theme.paddingMedium
         text: marker.text
+        onClicked: map.hidePoiBubble(marker);
 
         BubbleButton {
             id: routeButton
