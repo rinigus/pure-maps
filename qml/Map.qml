@@ -49,7 +49,6 @@ MapboxMap {
     property bool   ready: false
     property var    route: Route {}
 
-    readonly property string imagePoi:        "whogo-image-poi"
     readonly property string layerManeuvers:  "whogo-layer-maneuvers"
     readonly property string layerPois:       "whogo-layer-pois"
     readonly property string layerRoute:      "whogo-layer-route"
@@ -305,11 +304,13 @@ MapboxMap {
 
     function initLayers() {
         // Initialize layer for POI markers.
-        var params = {"type": "symbol", "source": map.sourcePois};
+        var params = {"type": "circle", "source": map.sourcePois};
         map.addLayer(map.layerPois, params);
-        map.setLayoutProperty(map.layerPois, "icon-allow-overlap", true);
-        map.setLayoutProperty(map.layerPois, "icon-image", map.imagePoi);
-        map.setLayoutProperty(map.layerPois, "icon-size", 1/map.pixelRatio);
+        map.setPaintProperty(map.layerPois, "circle-opacity", 0);
+        map.setPaintProperty(map.layerPois, "circle-radius", 12);
+        map.setPaintProperty(map.layerPois, "circle-stroke-color", "#0540ff");
+        map.setPaintProperty(map.layerPois, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layerPois, "circle-stroke-width", 5);
         // Initialize layer for route polyline.
         var params = {"type": "line", "source": map.sourceRoute};
         map.addLayer(map.layerRoute, params);
@@ -350,7 +351,6 @@ MapboxMap {
         map.addSourcePoints(map.sourcePois, []);
         map.addSourceLine(map.sourceRoute, []);
         map.addSourcePoints(map.sourceManeuvers, []);
-        map.addImagePath(map.imagePoi, Qt.resolvedUrl(app.getIcon("icons/poi")));
     }
 
     function initVoiceNavigation() {
