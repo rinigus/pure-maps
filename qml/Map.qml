@@ -190,7 +190,7 @@ MapboxMap {
 
     function beginNavigating() {
         // Set UI to navigation mode.
-        map.zoomLevel < 16 && map.setZoomLevel(16);
+        map.zoomLevel < 15 && map.setZoomLevel(15);
         map.centerOnPosition();
         map.autoCenter = true;
         map.autoRotate = true;
@@ -241,7 +241,7 @@ MapboxMap {
         // Restore UI from navigation mode.
         map.autoCenter = false;
         map.autoRotate = false;
-        map.zoomLevel > 15 && map.setZoomLevel(15);
+        map.zoomLevel > 14 && map.setZoomLevel(14);
         app.navigationActive = false;
     }
 

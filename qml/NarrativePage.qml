@@ -89,7 +89,7 @@ Page {
             onClicked: {
                 map.endNavigating();
                 map.setCenter(model.x, model.y);
-                map.zoomLevel < 16 && map.setZoomLevel(16);
+                map.zoomLevel < 15 && map.setZoomLevel(15);
                 app.hideMenu();
             }
 
