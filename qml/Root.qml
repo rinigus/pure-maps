@@ -63,6 +63,7 @@ Item {
             app.centerButton = centerButton;
             app.map = map;
             app.menuButton = menuButton;
+            app.meters = meters;
             app.navigationBlock = navigationBlock;
             app.northArrow = northArrow;
             app.notification = notification;

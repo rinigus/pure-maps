@@ -24,7 +24,7 @@ import "js/util.js" as Util
 Item {
     id: meters
     anchors.right: app.northArrow.left
-    anchors.rightMargin: Theme.paddingLarge
+    anchors.rightMargin: Theme.paddingSmall
     anchors.verticalCenter: app.northArrow.verticalCenter
     height: labels.implicitHeight
     opacity: 0.9

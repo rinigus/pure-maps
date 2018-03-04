@@ -22,11 +22,13 @@ import "."
 
 IconButton {
     anchors.right: parent.right
-    anchors.rightMargin: Theme.paddingSmall
     anchors.top: navigationBlock.bottom
-    anchors.topMargin: Theme.paddingSmall
+    height: icon.height
+    icon.height: icon.sourceSize.height
     icon.smooth: false
     icon.source: app.getIcon("icons/center")
+    icon.width: icon.sourceSize.width
+    width: icon.width
     z: 600
     onClicked: map.centerOnPosition();
 }

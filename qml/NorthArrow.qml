@@ -22,12 +22,14 @@ import "."
 
 IconButton {
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: Theme.paddingSmall
     anchors.right: parent.right
-    anchors.rightMargin: Theme.paddingSmall
+    height: icon.height
+    icon.height: icon.sourceSize.height
     icon.rotation: -map.bearing
     icon.smooth: true
     icon.source: app.getIcon("icons/north")
+    icon.width: icon.sourceSize.width
+    width: icon.width
     z: 600
 
     Bubble {

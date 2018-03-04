@@ -23,17 +23,14 @@ import "."
 IconButton {
     id: attribution
     anchors.left: parent.left
-    anchors.leftMargin: Theme.paddingLarge
     anchors.top: navigationBlock.bottom
-    anchors.topMargin: Theme.paddingSmall
     height: icon.height
     icon.height: icon.sourceSize.height
     icon.smooth: false
-    icon.source: ""
+    icon.source: app.getIcon("icons/attribution/default")
     icon.width: icon.sourceSize.width
-    visible: !!icon.source
     width: icon.width
-    z: 100
+    z: 600
 
     property string logo: ""
     property string text: ""
@@ -44,7 +41,7 @@ IconButton {
         lineHeight: 1.15
         padding: Theme.paddingLarge
         showArrow: false
-        state: "top-right"
+        state: "bottom-right"
         visible: false
     }
 

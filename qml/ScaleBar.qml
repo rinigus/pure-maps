@@ -25,9 +25,9 @@ import "js/util.js" as Util
 Item {
     id: scaleBar
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: Theme.paddingLarge
+    anchors.bottomMargin: Theme.paddingLarge + Theme.paddingSmall
     anchors.left: parent.left
-    anchors.leftMargin: Theme.paddingLarge
+    anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
     height: base.height + text.anchors.bottomMargin + text.height
     opacity: 0.9
     visible: scaleWidth > 0
