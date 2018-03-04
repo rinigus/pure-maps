@@ -51,12 +51,13 @@ MapboxMap {
     property bool   ready: false
     property var    route: Route {}
 
-    readonly property string layerManeuvers:  "whogo-layer-maneuvers"
-    readonly property string layerPois:       "whogo-layer-pois"
-    readonly property string layerRoute:      "whogo-layer-route"
-    readonly property string sourceManeuvers: "whogo-source-maneuvers"
-    readonly property string sourcePois:      "whogo-source-pois"
-    readonly property string sourceRoute:     "whogo-source-route"
+    readonly property string layerManeuversActive:  "whogo-layer-maneuvers-active"
+    readonly property string layerManeuversPassive: "whogo-layer-maneuvers-passive"
+    readonly property string layerPois:             "whogo-layer-pois"
+    readonly property string layerRoute:            "whogo-layer-route"
+    readonly property string sourceManeuvers:       "whogo-source-maneuvers"
+    readonly property string sourcePois:            "whogo-source-pois"
+    readonly property string sourceRoute:           "whogo-source-route"
 
     Behavior on bearing {
         RotationAnimation {
@@ -310,30 +311,53 @@ MapboxMap {
     }
 
     function initLayers() {
+
         // Initialize layer for POI markers.
-        var params = {"type": "circle", "source": map.sourcePois};
-        map.addLayer(map.layerPois, params);
+        map.addLayer(map.layerPois, {
+            "type": "circle",
+            "source": map.sourcePois,
+        });
         map.setPaintProperty(map.layerPois, "circle-opacity", 0);
         map.setPaintProperty(map.layerPois, "circle-radius", 12);
         map.setPaintProperty(map.layerPois, "circle-stroke-color", "#0540ff");
         map.setPaintProperty(map.layerPois, "circle-stroke-opacity", 0.5);
         map.setPaintProperty(map.layerPois, "circle-stroke-width", 5);
+
         // Initialize layer for route polyline.
-        var params = {"type": "line", "source": map.sourceRoute};
-        map.addLayer(map.layerRoute, params);
+        map.addLayer(map.layerRoute, {
+            "type": "line",
+            "source": map.sourceRoute,
+        });
         map.setLayoutProperty(map.layerRoute, "line-cap", "round");
         map.setLayoutProperty(map.layerRoute, "line-join", "round");
         map.setPaintProperty(map.layerRoute, "line-color", "#0540ff");
         map.setPaintProperty(map.layerRoute, "line-opacity", 0.5);
         map.setPaintProperty(map.layerRoute, "line-width", 8);
-        // Initialize layer for maneuver markers.
-        var params = {"type": "circle", "source": map.sourceManeuvers};
-        map.addLayer(map.layerManeuvers, params);
-        map.setPaintProperty(map.layerManeuvers, "circle-color", "white");
-        map.setPaintProperty(map.layerManeuvers, "circle-radius", 4);
-        map.setPaintProperty(map.layerManeuvers, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layerManeuvers, "circle-stroke-opacity", 0.5);
-        map.setPaintProperty(map.layerManeuvers, "circle-stroke-width", 3);
+
+        // Initialize layer for active maneuver markers.
+        map.addLayer(map.layerManeuversActive, {
+            "type": "circle",
+            "source": map.sourceManeuvers,
+            "filter": ["==", "name", "active"],
+        });
+        map.setPaintProperty(map.layerManeuversActive, "circle-color", "white");
+        map.setPaintProperty(map.layerManeuversActive, "circle-radius", 4);
+        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-color", "#0540ff");
+        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-width", 3);
+
+        // Initialize layer for passive maneuver markers.
+        map.addLayer(map.layerManeuversPassive, {
+            "type": "circle",
+            "source": map.sourceManeuvers,
+            "filter": ["==", "name", "passive"],
+        });
+        map.setPaintProperty(map.layerManeuversPassive, "circle-color", "white");
+        map.setPaintProperty(map.layerManeuversPassive, "circle-radius", 2);
+        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-color", "#0540ff");
+        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-width", 3);
+
     }
 
     function initProperties() {
@@ -504,10 +528,13 @@ MapboxMap {
 
     function updateManeuvers() {
         // Update maneuver marker source.
-        var maneuvers = [];
-        for (var i = 0; i < map.maneuvers.length; i++)
-            maneuvers.push(map.maneuvers[i].coordinate);
-        map.updateSourcePoints(map.sourceManeuvers, maneuvers);
+        var coords = [];
+        var names = [];
+        for (var i = 0; i < map.maneuvers.length; i++) {
+            coords.push(map.maneuvers[i].coordinate);
+            names.push(map.maneuvers[i].passive ? "passive" : "active");
+        }
+        map.updateSourcePoints(map.sourceManeuvers, coords, names);
     }
 
     function updateMargins() {
