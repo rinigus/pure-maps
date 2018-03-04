@@ -110,6 +110,7 @@ MapboxMap {
     Component.onCompleted: {
         map.initSources();
         map.initLayers();
+        map.configureLayers();
         map.initProperties();
         map.updateMargins();
     }
@@ -245,6 +246,33 @@ MapboxMap {
         map.saveRoute();
     }
 
+    function configureLayers() {
+        // Configure layer for POI markers.
+        map.setPaintProperty(map.layerPois, "circle-opacity", 0);
+        map.setPaintProperty(map.layerPois, "circle-radius", 32 / map.pixelRatio);
+        map.setPaintProperty(map.layerPois, "circle-stroke-color", "#0540ff");
+        map.setPaintProperty(map.layerPois, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layerPois, "circle-stroke-width", 13 / map.pixelRatio);
+        // Configure layer for route polyline.
+        map.setLayoutProperty(map.layerRoute, "line-cap", "round");
+        map.setLayoutProperty(map.layerRoute, "line-join", "round");
+        map.setPaintProperty(map.layerRoute, "line-color", "#0540ff");
+        map.setPaintProperty(map.layerRoute, "line-opacity", 0.5);
+        map.setPaintProperty(map.layerRoute, "line-width", 22 / map.pixelRatio);
+        // Configure layer for active maneuver markers.
+        map.setPaintProperty(map.layerManeuversActive, "circle-color", "white");
+        map.setPaintProperty(map.layerManeuversActive, "circle-radius", 11 / map.pixelRatio);
+        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-color", "#0540ff");
+        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-width", 8 / map.pixelRatio);
+        // Configure layer for passive maneuver markers.
+        map.setPaintProperty(map.layerManeuversPassive, "circle-color", "white");
+        map.setPaintProperty(map.layerManeuversPassive, "circle-radius", 5 / map.pixelRatio);
+        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-color", "#0540ff");
+        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-width", 8 / map.pixelRatio);
+    }
+
     function endNavigating() {
         // Restore UI from navigation mode.
         map.autoCenter = false;
@@ -311,59 +339,31 @@ MapboxMap {
     }
 
     function initLayers() {
-
-        // Initialize layer for POI markers.
         map.addLayer(map.layerPois, {
             "type": "circle",
             "source": map.sourcePois,
         });
-        map.setPaintProperty(map.layerPois, "circle-opacity", 0);
-        map.setPaintProperty(map.layerPois, "circle-radius", 12);
-        map.setPaintProperty(map.layerPois, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layerPois, "circle-stroke-opacity", 0.5);
-        map.setPaintProperty(map.layerPois, "circle-stroke-width", 5);
-
-        // Initialize layer for route polyline.
         map.addLayer(map.layerRoute, {
             "type": "line",
             "source": map.sourceRoute,
         });
-        map.setLayoutProperty(map.layerRoute, "line-cap", "round");
-        map.setLayoutProperty(map.layerRoute, "line-join", "round");
-        map.setPaintProperty(map.layerRoute, "line-color", "#0540ff");
-        map.setPaintProperty(map.layerRoute, "line-opacity", 0.5);
-        map.setPaintProperty(map.layerRoute, "line-width", 8);
-
-        // Initialize layer for active maneuver markers.
         map.addLayer(map.layerManeuversActive, {
             "type": "circle",
             "source": map.sourceManeuvers,
             "filter": ["==", "name", "active"],
         });
-        map.setPaintProperty(map.layerManeuversActive, "circle-color", "white");
-        map.setPaintProperty(map.layerManeuversActive, "circle-radius", 4);
-        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-opacity", 0.5);
-        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-width", 3);
-
-        // Initialize layer for passive maneuver markers.
         map.addLayer(map.layerManeuversPassive, {
             "type": "circle",
             "source": map.sourceManeuvers,
             "filter": ["==", "name", "passive"],
         });
-        map.setPaintProperty(map.layerManeuversPassive, "circle-color", "white");
-        map.setPaintProperty(map.layerManeuversPassive, "circle-radius", 2);
-        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-opacity", 0.5);
-        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-width", 3);
-
     }
 
     function initProperties() {
         // Load default values and saved overlays.
         if (!py.ready)
             return py.onReadyChanged.connect(map.initProperties);
+        map.setScale(app.conf.get("map_scale"));
         map.setBasemap();
         map.setZoomLevel(app.conf.get("zoom"));
         map.autoCenter = app.conf.get("auto_center");
@@ -507,6 +507,11 @@ MapboxMap {
         // Create a new object to trigger animation.
         if (!x || !y) return;
         map.center = QtPositioning.coordinate(y, x);
+    }
+
+    function setScale(scale) {
+        map.pixelRatio = Theme.pixelRatio * 1.5 * scale;
+        map.configureLayers();
     }
 
     function toggleAutoCenter() {

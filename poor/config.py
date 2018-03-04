@@ -34,6 +34,7 @@ DEFAULTS = {
     "guide": "foursquare",
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
+    "map_scale": 1.0,
     "reroute": True,
     "router": "mapquest_open",
     "show_narrative": True,

@@ -36,6 +36,21 @@ Page {
                 title: app.tr("Preferences")
             }
 
+            Slider {
+                id: scaleSlider
+                label: app.tr("Map scale")
+                maximumValue: 1.5
+                minimumValue: 0.5
+                stepSize: 0.1
+                value: app.conf.get("map_scale")
+                valueText: value
+                width: parent.width
+                onValueChanged: {
+                    app.conf.set("map_scale", scaleSlider.value);
+                    map.setScale(scaleSlider.value);
+                }
+            }
+
             TextSwitch {
                 id: tiltSwitch
                 checked: app.conf.get("tilt_when_navigating")
