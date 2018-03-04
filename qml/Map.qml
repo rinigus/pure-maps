@@ -49,7 +49,7 @@ MapboxMap {
     property var    pois: []
     property var    position: gps.position
     property bool   ready: false
-    property var    route: Route {}
+    property var    route: {}
 
     readonly property string layerManeuversActive:  "whogo-layer-maneuvers-active"
     readonly property string layerManeuversPassive: "whogo-layer-maneuvers-passive"
@@ -236,7 +236,7 @@ MapboxMap {
     function clearRoute() {
         // Remove all route markers from the map.
         map.maneuvers = [];
-        map.route.clear();
+        map.route = {};
         py.call_sync("poor.app.narrative.unset", []);
         app.navigationStatus.clear();
         map.hasRoute = false;
@@ -299,7 +299,8 @@ MapboxMap {
     function fitViewToRoute() {
         // Set center and zoom so that the whole route is visible.
         // For performance reasons, include only a subset of points.
-        if (map.route.x.length === 0) return;
+        if (!map.route.x) return;
+        if (!map.route.x.length > 0) return;
         var coords = [];
         for (var i = 0; i < map.route.x.length; i = i + 10)
             coords.push(QtPositioning.coordinate(
@@ -308,6 +309,13 @@ MapboxMap {
         var y = map.route.y[map.route.x.length-1];
         coords.push(QtPositioning.coordinate(y, x));
         map.fitViewtoCoordinates(coords);
+    }
+
+    function getDestination() {
+        // Return coordinates [x, y] of the route destination.
+        return [map.route.x[map.route.x.length - 1],
+                map.route.y[map.route.y.length - 1]];
+
     }
 
     function getPosition() {
@@ -387,7 +395,7 @@ MapboxMap {
     function initVoiceNavigation() {
         // Initialize TTS engine for the current route.
         if (app.conf.get("voice_navigation")) {
-            var args = [route.language, app.conf.get("voice_gender")];
+            var args = [map.route.language, app.conf.get("voice_gender")];
             py.call_sync("poor.app.narrative.set_voice", args);
             app.notification.flash(app.tr("Voice navigation on"));
         } else {
@@ -477,16 +485,7 @@ MapboxMap {
     function saveRoute() {
         // Save route to JSON file.
         if (!py.ready) return;
-        var data = {};
-        if (map.route.x && map.route.x.length > 0 &&
-            map.route.y && map.route.y.length > 0) {
-            data.attribution = map.route.attribution;
-            data.language = map.route.language;
-            data.mode = map.route.mode;
-            data.x = map.route.x;
-            data.y = map.route.y;
-        }
-        py.call_sync("poor.storage.write_route", [data]);
+        py.call_sync("poor.storage.write_route", [map.route]);
     }
 
     function setBasemap() {
@@ -567,8 +566,9 @@ MapboxMap {
     function updateRoute() {
         // Update route polyline source.
         var route = [];
-        for (var i = 0; i < map.route.x.length; i++)
-            route.push(QtPositioning.coordinate(map.route.y[i], map.route.x[i]));
+        if (map.route.x)
+            for (var i = 0; i < map.route.x.length; i++)
+                route.push(QtPositioning.coordinate(map.route.y[i], map.route.x[i]));
         map.updateSourceLine(map.sourceRoute, route);
     }
 
