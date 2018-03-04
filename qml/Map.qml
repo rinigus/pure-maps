@@ -540,12 +540,13 @@ MapboxMap {
     function updateMargins() {
         // Calculate new margins and set them for the map.
         var header = app.navigationBlock ? app.navigationBlock.height : 0;
-        var footer = app.menuButton ? app.menuButton.height + Theme.paddingSmall : 0;
-        var content = map.height - header - footer;
+        var footer = app.menuButton ? app.menuButton.height : 0;
         // If auto-rotate is on, the user is always heading up
         // on the screen and should see more ahead than behind.
-        var marginY = (map.autoRotate ? footer/map.height : 0) + 0.05;
-        var marginHeight = (map.autoRotate ? 0.2 : 0.9) * content/map.height;
+        var marginY = map.autoRotate ? footer/map.height : 0.05;
+        var marginHeight = map.autoRotate ?
+            0.2 * (map.height - header - footer) / map.height :
+            0.9 * (map.height - header) / map.height;
         map.margins = Qt.rect(0.05, marginY, 0.9, marginHeight);
     }
 
