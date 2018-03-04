@@ -22,7 +22,7 @@ import Sailfish.Silica 1.0
 import "."
 
 Item {
-    id: marker
+    id: anchor
     height: Theme.iconSizeMedium
     width: Theme.iconSizeMedium
     z: 400
@@ -35,13 +35,13 @@ Item {
 
     Bubble {
         id: bubble
-        anchorItem: marker
+        anchorItem: anchor
         controlHeight: routeButton.height
         controlWidth: routeButton.width + nearbyButton.width + shareButton.width +
-            (marker.link.length > 0 ? webButton.width : 0) +
-            (marker.link.length > 0 ? 3 : 2) * Theme.paddingMedium
-        text: marker.text
-        onClicked: map.hidePoiBubble(marker);
+            (anchor.link.length > 0 ? webButton.width : 0) +
+            (anchor.link.length > 0 ? 3 : 2) * Theme.paddingMedium
+        text: anchor.text
+        onClicked: map.hidePoiBubble(anchor);
 
         BubbleButton {
             id: routeButton
@@ -51,11 +51,11 @@ Item {
             anchors.leftMargin: bubble.padding
             text: app.tr("Navigate")
             onClicked: {
-                var x = marker.coordinate.longitude;
-                var y = marker.coordinate.latitude;
+                var x = anchor.coordinate.longitude;
+                var y = anchor.coordinate.latitude;
                 app.showMenu("RoutePage.qml", {
                     "to": [x, y],
-                    "toText": marker.title
+                    "toText": anchor.title
                 });
             }
         }
@@ -68,11 +68,11 @@ Item {
             anchors.leftMargin: Theme.paddingMedium
             text: app.tr("Nearby")
             onClicked: {
-                var x = marker.coordinate.longitude;
-                var y = marker.coordinate.latitude;
+                var x = anchor.coordinate.longitude;
+                var y = anchor.coordinate.latitude;
                 app.showMenu("NearbyPage.qml", {
                     "near": [x, y],
-                    "nearText": marker.title
+                    "nearText": anchor.title
                 });
             }
         }
@@ -85,8 +85,8 @@ Item {
             anchors.leftMargin: Theme.paddingMedium
             text: app.tr("Share")
             onClicked: {
-                var x = marker.coordinate.longitude;
-                var y = marker.coordinate.latitude;
+                var x = anchor.coordinate.longitude;
+                var y = anchor.coordinate.latitude;
                 app.showMenu("SharePage.qml", {
                     "coordinate": QtPositioning.coordinate(y, x),
                     "title": app.tr("Share Location")
@@ -102,8 +102,8 @@ Item {
             anchors.rightMargin: bubble.padding
             text: app.tr("Web")
             useHighlight: true
-            visible: marker.link.length > 0
-            onClicked: Qt.openUrlExternally(marker.link);
+            visible: anchor.link.length > 0
+            onClicked: Qt.openUrlExternally(anchor.link);
         }
 
     }
@@ -112,9 +112,9 @@ Item {
         target: map
         onLocationChanged: {
             if (id !== trackerId) return;
-            marker.x = pixel.x - marker.width  / 2;
-            marker.y = pixel.y - marker.height / 2;
-            marker.visible = visible;
+            anchor.x = pixel.x - anchor.width  / 2;
+            anchor.y = pixel.y - anchor.height / 2;
+            anchor.visible = visible;
         }
     }
 
@@ -122,7 +122,7 @@ Item {
     Component.onCompleted: processText()
 
     function processText() {
-        marker.text = marker.text.replace("Theme.highlightColor", Theme.highlightColor);
+        anchor.text = anchor.text.replace("Theme.highlightColor", Theme.highlightColor);
     }
 
 }

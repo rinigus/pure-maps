@@ -434,7 +434,7 @@ MapboxMap {
     function popPoiBubble(poi) {
         // Show a detail bubble for the given POI.
         if (poi.bubble) return;
-        var component = Qt.createComponent("PoiMarker.qml");
+        var component = Qt.createComponent("PoiBubble.qml");
         var bubble = component.createObject(map, {
             "coordinate": poi.coordinate,
             "link": poi.link,
