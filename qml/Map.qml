@@ -42,6 +42,7 @@ MapboxMap {
     property var    direction: app.navigationDirection || gps.direction
     property var    directionPrev: 0
     property string firstLabelLayer: ""
+    property string format: ""
     property bool   hasRoute: false
     property var    maneuvers: []
     property var    pois: []
@@ -85,7 +86,12 @@ MapboxMap {
         }
     }
 
-    MapGestureArea { map: map }
+    MapGestureArea {
+        id: gestureArea
+        integerZoomLevels: map.format == "raster"
+        map: map
+    }
+
     NarrationTimer {}
     PositionMarker { id: positionMarker }
 
@@ -461,8 +467,9 @@ MapboxMap {
     function setBasemap() {
         // Set basemap to use and related properties.
         if (!py.ready) return;
-        map.urlSuffix = py.evaluate("poor.app.basemap.url_suffix");
         map.firstLabelLayer = py.evaluate("poor.app.basemap.first_label_layer");
+        map.format = py.evaluate("poor.app.basemap.format");
+        map.urlSuffix = py.evaluate("poor.app.basemap.url_suffix");
         py.evaluate("poor.app.basemap.style_url") ?
             (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
