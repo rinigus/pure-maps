@@ -45,7 +45,7 @@ MapboxMapGestureArea {
     }
 
     onDoubleClicked: {
-        map.centerOnPosition();
+        map.setZoomLevel(map.zoomLevel + 1, Qt.point(mouse.x, mouse.y));
     }
 
     onPressAndHoldGeo: {

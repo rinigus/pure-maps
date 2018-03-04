@@ -22,10 +22,10 @@ import "."
 
 IconButton {
     id: attribution
-    anchors.bottom: scaleBar.top
-    anchors.bottomMargin: Theme.paddingSmall
     anchors.left: parent.left
     anchors.leftMargin: Theme.paddingLarge
+    anchors.top: navigationBlock.bottom
+    anchors.topMargin: Theme.paddingSmall
     height: icon.height
     icon.height: icon.sourceSize.height
     icon.smooth: false

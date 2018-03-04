@@ -47,6 +47,7 @@ Item {
         }
 
         Attribution { id: attribution }
+        CenterButton { id: centerButton }
         Map { id: map }
         MenuButton { id: menuButton }
         Meters { id: meters }
@@ -59,6 +60,7 @@ Item {
             revolver.updateOrientation();
             app.onDeviceOrientationChanged.connect(revolver.updateOrientation);
             app.attribution = attribution;
+            app.centerButton = centerButton;
             app.map = map;
             app.menuButton = menuButton;
             app.navigationBlock = navigationBlock;
