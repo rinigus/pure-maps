@@ -36,23 +36,13 @@ Page {
                 title: app.tr("Preferences")
             }
 
-            ComboBox {
-                id: unitsComboBox
-                label: app.tr("Units")
-                menu: ContextMenu {
-                    MenuItem { text: app.tr("Metric") }
-                    MenuItem { text: app.tr("American") }
-                    MenuItem { text: app.tr("British") }
-                }
-                property var values: ["metric", "american", "british"]
-                Component.onCompleted: {
-                    var value = app.conf.get("units");
-                    unitsComboBox.currentIndex = unitsComboBox.values.indexOf(value);
-                }
-                onCurrentIndexChanged: {
-                    var index = unitsComboBox.currentIndex;
-                    app.conf.set("units", unitsComboBox.values[index]);
-                    app.scaleBar.update();
+            TextSwitch {
+                id: tiltSwitch
+                checked: app.conf.get("tilt_when_navigating")
+                description: app.tr("Only applies to vector maps.")
+                text: app.tr("Tilt map when navigating")
+                onCheckedChanged: {
+                    app.conf.set("tilt_when_navigating", tiltSwitch.checked);
                 }
             }
 
@@ -93,6 +83,26 @@ Page {
                     var index = sleepComboBox.currentIndex;
                     app.conf.set("keep_alive", sleepComboBox.values[index]);
                     app.updateKeepAlive();
+                }
+            }
+
+            ComboBox {
+                id: unitsComboBox
+                label: app.tr("Units")
+                menu: ContextMenu {
+                    MenuItem { text: app.tr("Metric") }
+                    MenuItem { text: app.tr("American") }
+                    MenuItem { text: app.tr("British") }
+                }
+                property var values: ["metric", "american", "british"]
+                Component.onCompleted: {
+                    var value = app.conf.get("units");
+                    unitsComboBox.currentIndex = unitsComboBox.values.indexOf(value);
+                }
+                onCurrentIndexChanged: {
+                    var index = unitsComboBox.currentIndex;
+                    app.conf.set("units", unitsComboBox.values[index]);
+                    app.scaleBar.update();
                 }
             }
 

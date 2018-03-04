@@ -37,6 +37,7 @@ DEFAULTS = {
     "reroute": True,
     "router": "mapquest_open",
     "show_narrative": True,
+    "tilt_when_navigating": True,
     # "metric", "american" or "british".
     "units": "metric",
     # "male" or "female"
