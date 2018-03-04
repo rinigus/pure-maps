@@ -97,6 +97,17 @@ Page {
             }
 
             Spacer {
+                height: Theme.paddingLarge
+            }
+
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                preferredWidth: Theme.buttonWidthLarge
+                text: app.tr("Clear cache")
+                onClicked: map.clearCache();
+            }
+
+            Spacer {
                 height: 2 * Theme.paddingLarge
             }
 
