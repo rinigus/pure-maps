@@ -512,6 +512,7 @@ MapboxMap {
     function setScale(scale) {
         map.pixelRatio = Theme.pixelRatio * 1.5 * scale;
         map.configureLayers();
+        positionMarker.configureLayers();
     }
 
     function toggleAutoCenter() {
