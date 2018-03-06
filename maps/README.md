@@ -11,31 +11,30 @@ keys are explained below, format-specific keys in following sections.
 * **`format`**: Either "mapbox-gl" or "slippy", see below.
 
 * **`logo`**: Name of logo file found under `qml/icons/attribution` to
-  display in the bottom left corner of the map. Optional, defaults to
-  "default.svg".
+  display in a corner of the map. Optional, defaults to "default.svg".
 
 * **`name`**: Name of the map source shown in listings.
 
 Use `~/.local/share/harbour-whogo-maps/maps` as a local installation
-directory in which to place your JSON file. Restart WhoGo maps, and your
+directory in which to place your JSON file. Restart WhoGo Maps, and your
 map source should be loaded, listed and available for use.
 
 ## Mapbox GL Vector Map Format
 
 Mapbox GL is a vector map format that follows the [Mapbox style
 specification][mapbox-style]. It can be used by either providing the URL
-to a JSON format specification, or by writing a specification into the
-JSON metadata file itself.
+to a JSON format style definition, or by writing the style definition
+into the JSON metadata file itself.
 
 * **`firstLabelLayer`**: Identifier of the lowest label layer in the
-  style. Icons and route polylines are rendered right below this layer
+  style. Icons and route polylines might rendered right below this layer
   so that labels are not obscured and remain readable.
 
-* **`styleJson`**: A full JSON format style specification.
+* **`styleJson`**: A full JSON format style definition.
 
-* **`styleUrl`**: A URL to a full JSON format style specification.
-  Supports regular HTTP etc. URLS as well as `mapbox://` URLs for
-  Mapbox-hosted styles.
+* **`styleUrl`**: A URL to a full JSON format style definition. Supports
+  regular HTTP etc. URLs as well as `mapbox://` URLs for
+  Mapbox.com-hosted styles.
 
 * **`urlSuffix`**: A suffix to add to all URL requests, including tiles,
   fonts, icons or whatever specified by the style. Usually used to
@@ -46,8 +45,8 @@ JSON metadata file itself.
 ## Slippy Raster Tile Format
 
 Slippy is a raster tile format based on Spherical Mercator. It is used
-by most global providers of raster tiles, e.g. Google and OpenStreetMap.
-For documentation, see e.g. [OpenStreetMap Wiki][slippy].
+by most global providers of raster tiles, such as Google and
+OpenStreetMap. For documentation, see e.g. [OpenStreetMap Wiki][slippy].
 
 * **`backgroundColor`**: Background color used behind actual tiles,
   visible before tiles are loaded. Optional, defaults to "#e6e6e6".
