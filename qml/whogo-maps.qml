@@ -142,7 +142,7 @@ ApplicationWindow {
         app.rerouting = true;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
-        var args = [map.getPosition(), map.route.getDestination(), gps.direction];
+        var args = [map.getPosition(), map.getDestination(), gps.direction];
         py.call("poor.app.router.route", args, function(route) {
             if (Array.isArray(route) && route.length > 0)
                 // If the router returns multiple alternative routes,
