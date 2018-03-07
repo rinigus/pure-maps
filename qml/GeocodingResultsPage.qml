@@ -69,7 +69,7 @@ Page {
                     "y": model.y,
                     "title": model.title,
                     "text": model.text || model.title,
-                    "link": model.link || ""
+                    "link": model.link || "",
                 }]);
                 map.hidePoiBubbles();
                 map.popPoiBubble(map.pois[map.pois.length-1]);
@@ -99,7 +99,7 @@ Page {
                             "y": item.y,
                             "title": item.title,
                             "text": item.text || item.title,
-                            "link": item.link || ""
+                            "link": item.link || "",
                         });
                     }
                     app.hideMenu();

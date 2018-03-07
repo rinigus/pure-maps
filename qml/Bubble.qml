@@ -104,7 +104,7 @@ Rectangle {
                 anchors.verticalCenter: undefined
                 target: bubble
             }
-        }
+        },
 
     ]
 

@@ -156,7 +156,7 @@ MapboxMap {
                 "passive": maneuvers[i].passive || false,
                 "verbalAlert": maneuvers[i].verbal_alert || "",
                 "verbalPost": maneuvers[i].verbal_post || "",
-                "verbalPre": maneuvers[i].verbal_pre || ""
+                "verbalPre": maneuvers[i].verbal_pre || "",
             });
         }
         py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
@@ -171,7 +171,7 @@ MapboxMap {
                 "coordinate": QtPositioning.coordinate(pois[i].y, pois[i].x),
                 "link": pois[i].link || "",
                 "text": pois[i].text || "",
-                "title": pois[i].title || ""
+                "title": pois[i].title || "",
             });
         }
         map.updatePois();
@@ -440,7 +440,7 @@ MapboxMap {
             "link": poi.link,
             "text": poi.text,
             "title": poi.title,
-            "trackerId": "poi-%1".arg(++map.counter)
+            "trackerId": "poi-%1".arg(++map.counter),
         });
         map.trackLocation(bubble.trackerId, poi.coordinate);
         poi.bubble = bubble;

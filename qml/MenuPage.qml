@@ -79,7 +79,7 @@ Page {
                     var x = gps.position.coordinate.longitude;
                     app.pageStack.push("SharePage.qml", {
                         "coordinate": QtPositioning.coordinate(y, x),
-                        "title": app.tr("Share Current Position")
+                        "title": app.tr("Share Current Position"),
                     });
                 }
             }

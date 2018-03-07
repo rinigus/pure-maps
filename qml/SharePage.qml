@@ -57,12 +57,12 @@ Page {
             Clipboard.text = page.formatMessage(false);
             infoLabel.text = [
                 app.tr("Message copied to the clipboard"),
-                app.tr("Launching the Messages application")
+                app.tr("Launching the Messages application"),
             ].join("\n");
             py.call("poor.util.popen", [
                 "/usr/bin/invoker",
                 "--type=silica-qt5",
-                "/usr/bin/jolla-messages"
+                "/usr/bin/jolla-messages",
             ], null);
         }
     }
@@ -104,7 +104,7 @@ Page {
         return py.call_sync("poor.util.format_location_message", [
             page.coordinate.longitude,
             page.coordinate.latitude,
-            html
+            html,
         ]);
     }
 

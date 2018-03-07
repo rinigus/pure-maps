@@ -55,7 +55,7 @@ Item {
                 var y = anchor.coordinate.latitude;
                 app.showMenu("RoutePage.qml", {
                     "to": [x, y],
-                    "toText": anchor.title
+                    "toText": anchor.title,
                 });
             }
         }
@@ -72,7 +72,7 @@ Item {
                 var y = anchor.coordinate.latitude;
                 app.showMenu("NearbyPage.qml", {
                     "near": [x, y],
-                    "nearText": anchor.title
+                    "nearText": anchor.title,
                 });
             }
         }
@@ -89,7 +89,7 @@ Item {
                 var y = anchor.coordinate.latitude;
                 app.showMenu("SharePage.qml", {
                     "coordinate": QtPositioning.coordinate(y, x),
-                    "title": app.tr("Share Location")
+                    "title": app.tr("Share Location"),
                 });
             }
         }
