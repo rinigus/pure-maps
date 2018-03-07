@@ -59,7 +59,7 @@ results found. If writing a router that returns alternative routes, this
 page can be used to list the routes and their properties.
 
 To display a route on the map, you'll want to call `map.addRoute` and
-`map.addManeuvers`. See the documentation of these functions in
+`map.addManeuvers`. See the implementation of these functions in
 `qml/Map.qml` to understand which fields are expected in their
 arguments.
 
@@ -73,7 +73,7 @@ JSON data.
 
 Use `~/.local/share/harbour-whogo-maps/routers` as a local installation
 directory in which to place your files. Since routers require QML files
-and include `"../qml"` in their source, add a symbolic link at
+and include `"../qml"` in their source, add a symbolic link
 `~/.local/share/harbour-whogo-maps/qml` pointing to
 `/usr/share/harbour-whogo-maps/qml`. Restart WhoGo Maps, and your router
 should be loaded, listed and available for use. During development,

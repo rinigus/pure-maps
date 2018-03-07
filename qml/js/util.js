@@ -24,8 +24,8 @@ function addProperties(items, name, value) {
 
 function angleDifference(alpha, beta) {
     // Return the absolute difference in degrees between two angles.
-    var phi = Math.abs(beta - alpha) % 360;
-    return phi > 180 ? 360 - phi : phi;
+    var diff = Math.abs(alpha - beta) % 360;
+    return diff > 180 ? 360 - diff : diff;
 }
 
 function appendAll(model, items) {

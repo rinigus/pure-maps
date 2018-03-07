@@ -12,7 +12,7 @@ tx pull -a --minimum-perc=95
 sed -i "s/charset=CHARSET/charset=UTF-8/" po/*.po
 tools/check-translations
 tools/check-translations | grep %
-git add po/*.po po/*.pot
+git add po/*.po po/*.pot; git status
 git commit -m "Update translations"
 
 # Check, test, do final edits and release.
