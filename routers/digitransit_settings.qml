@@ -155,7 +155,7 @@ Column {
                 var dialog = pageStack.push("Sailfish.Silica.TimePickerDialog", {
                     "hourMode": DateTime.TwentyFourHours,
                     "hour": timeItem.time.getHours(),
-                    "minute": timeItem.time.getMinutes()
+                    "minute": timeItem.time.getMinutes(),
                 });
                 dialog.accepted.connect(function() {
                     timeItem.time = dialog.time;

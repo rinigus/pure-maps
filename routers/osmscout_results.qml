@@ -49,8 +49,8 @@ Page {
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
                 app.hideMenu();
-                map.addRoute(route);
                 map.hidePoiBubbles();
+                map.addRoute(route);
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.navigateBack(PageStackAction.Immediate);
