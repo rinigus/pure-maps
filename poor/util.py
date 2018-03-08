@@ -246,22 +246,6 @@ def format_distance_and_bearing(meters, bearing, n=2, short=True):
     if bearing == 360: return f(_("{distance} north"))
     raise ValueError("Unexpected bearing: {}".format(repr(bearing)))
 
-def format_filesize(bytes, n=2):
-    """Format `bytes` to `n` significant digits and unit label."""
-    if bytes > 1024**3:
-        size = bytes / 1024**3
-        units = "GB"
-    else:
-        # Let's not use units less than a megabyte.
-        size = bytes / 1024**2
-        units = "MB"
-    ndigits = n - math.ceil(math.log10(abs(max(1, size)) + 1/1000000))
-    if units == "MB":
-        ndigits = min(0, ndigits)
-    size = round(size, ndigits)
-    fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
-    return fstring.format(size, units)
-
 def format_location_message(x, y, html=False):
     """Format coordinates of a point into a location message."""
     if html:
