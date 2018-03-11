@@ -29,7 +29,7 @@ Item {
     height: labels.implicitHeight
     opacity: 0.9
     width: parent.width
-    z: 100
+    z: 400
 
     Text {
         id: values

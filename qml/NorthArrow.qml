@@ -30,7 +30,7 @@ IconButton {
     icon.source: app.getIcon("icons/north")
     icon.width: icon.sourceSize.width
     width: icon.width
-    z: 600
+    z: 500
 
     Bubble {
         id: bubble
@@ -48,13 +48,10 @@ IconButton {
     }
 
     onClicked: {
-        if (map.autoRotate) {
-            map.autoRotate = false;
-            bubble.text = app.tr("Auto-rotate off");
-        } else {
-            map.autoRotate = true;
-            bubble.text = app.tr("Auto-rotate on");
-        }
+        map.autoRotate = !map.autoRotate;
+        bubble.text = map.autoRotate ?
+            app.tr("Auto-rotate on") :
+            app.tr("Auto-rotate off");
         bubble.visible = true;
         timer.restart();
     }

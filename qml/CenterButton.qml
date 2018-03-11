@@ -18,7 +18,6 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "."
 
 IconButton {
     anchors.right: parent.right
@@ -29,6 +28,6 @@ IconButton {
     icon.source: app.getIcon("icons/center")
     icon.width: icon.sourceSize.width
     width: icon.width
-    z: 600
+    z: 500
     onClicked: map.centerOnPosition();
 }

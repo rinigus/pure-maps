@@ -30,7 +30,7 @@ IconButton {
     icon.source: app.getIcon("icons/attribution/default")
     icon.width: icon.sourceSize.width
     width: icon.width
-    z: 600
+    z: 500
 
     property string logo: ""
     property string text: ""

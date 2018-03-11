@@ -18,7 +18,6 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "."
 
 IconButton {
     anchors.bottom: parent.bottom
@@ -30,6 +29,6 @@ IconButton {
     icon.width: icon.sourceSize.width
     width: icon.width
     visible: py.ready
-    z: 600
+    z: 900
     onClicked: app.showMenu();
 }

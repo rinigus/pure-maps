@@ -25,7 +25,7 @@ Item {
     id: anchor
     height: Theme.iconSizeMedium
     width: Theme.iconSizeMedium
-    z: 400
+    z: 600
 
     property var coordinate: null
     property string link: ""

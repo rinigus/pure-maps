@@ -31,7 +31,7 @@ Item {
     height: base.height + text.anchors.bottomMargin + text.height
     opacity: 0.9
     visible: scaleWidth > 0
-    z: 100
+    z: 400
 
     property real   scaleWidth: 0
     property string text: ""
