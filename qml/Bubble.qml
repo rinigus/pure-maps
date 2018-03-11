@@ -24,8 +24,9 @@ Rectangle {
     anchors.bottomMargin: showArrow * arrow.height + Theme.paddingSmall
     anchors.topMargin: showArrow * arrow.height + Theme.paddingSmall
     color: "#e6000000"
-    height: controls.height + label.height + (controlHeight > 0 ? 3 : 2) * verticalPadding
-    radius: 2 * Theme.paddingSmall
+    height: controls.height + label.height +
+        (controlHeight > 0 ? 3 : 2) * verticalPadding
+    radius: 0.85 * padding
     state: "top-center"
     states: [
 
@@ -127,12 +128,11 @@ Rectangle {
 
     // Padding on the edges of the bubble.
     property real padding: 1.5 * Theme.paddingMedium
-    property real horizontalPadding: 1.5 * padding
+    property real horizontalPadding: 1.3 * padding
     property real verticalPadding: padding
 
     // HTML-format text to display in the bubble.
     property string text: ""
-    property real lineHeight: 1.0
 
     signal clicked()
 
@@ -170,7 +170,7 @@ Rectangle {
         color: "white"
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeSmall
-        lineHeight: bubble.lineHeight
+        lineHeight: 1.1
         text: bubble.text
         textFormat: Text.RichText
         visible: bubble.visible
