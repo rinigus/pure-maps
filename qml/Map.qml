@@ -261,12 +261,14 @@ MapboxMap {
         map.setPaintProperty(map.layerRoute, "line-width", 22 / map.pixelRatio);
         // Configure layer for active maneuver markers.
         map.setPaintProperty(map.layerManeuversActive, "circle-color", "white");
+        map.setPaintProperty(map.layerManeuversActive, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layerManeuversActive, "circle-radius", 11 / map.pixelRatio);
         map.setPaintProperty(map.layerManeuversActive, "circle-stroke-color", "#0540ff");
         map.setPaintProperty(map.layerManeuversActive, "circle-stroke-opacity", 0.5);
         map.setPaintProperty(map.layerManeuversActive, "circle-stroke-width", 8 / map.pixelRatio);
         // Configure layer for passive maneuver markers.
         map.setPaintProperty(map.layerManeuversPassive, "circle-color", "white");
+        map.setPaintProperty(map.layerManeuversPassive, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layerManeuversPassive, "circle-radius", 5 / map.pixelRatio);
         map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-color", "#0540ff");
         map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-opacity", 0.5);
