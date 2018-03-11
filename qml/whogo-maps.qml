@@ -40,7 +40,6 @@ ApplicationWindow {
     property var  attribution: null
     property var  centerButton: null
     property var  conf: Config {}
-    property bool inMenu: !root.visible
     property var  map: null
     property var  menuButton: null
     property var  meters: null
