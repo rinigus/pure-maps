@@ -41,14 +41,14 @@ Page {
 
             Row {
                 id: row
-                height: Math.max(startItem.height, rerouteItem.height, clearItem.height)
+                height: Math.max(beginItem.height, rerouteItem.height, clearItem.height)
                 width: parent.width
 
                 property real contentWidth: width - 2 * Theme.horizontalPageMargin
                 property real itemWidth: contentWidth / 3
 
                 ToolItem {
-                    id: startItem
+                    id: beginItem
                     width: row.itemWidth + Theme.horizontalPageMargin
                     icon: app.navigationActive ? "image://theme/icon-m-pause" : "image://theme/icon-m-play"
                     text: app.navigationActive ? app.tr("Pause") :

@@ -21,19 +21,19 @@ import QtQuick 2.0
 QtObject {
     id: status
 
-    property string destDist: ""
-    property string destTime: ""
+    property string destDist:  ""
+    property string destTime:  ""
     property var    direction: null
-    property string icon: ""
-    property string manDist: ""
-    property string manTime: ""
+    property string icon:      ""
+    property string manDist:   ""
+    property string manTime:   ""
     property string narrative: ""
-    property bool   notify: app.showNarrative && (icon || narrative)
-    property real   progress: 0
-    property bool   reroute: false
+    property bool   notify:    app.showNarrative && (icon || narrative)
+    property real   progress:  0
+    property bool   reroute:   false
     property string totalDist: ""
     property string totalTime: ""
-    property string voiceUri: ""
+    property string voiceUri:  ""
 
     function clear() {
         // Reset all navigation status properties.

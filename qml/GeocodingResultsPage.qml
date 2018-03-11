@@ -65,14 +65,14 @@ Page {
             onClicked: {
                 app.hideMenu();
                 map.addPois([{
+                    "link": model.link || "",
+                    "text": model.text || model.title,
+                    "title": model.title,
                     "x": model.x,
                     "y": model.y,
-                    "title": model.title,
-                    "text": model.text || model.title,
-                    "link": model.link || "",
                 }]);
                 map.hidePoiBubbles();
-                map.popPoiBubble(map.pois[map.pois.length-1]);
+                map.showPoiBubble(map.pois[map.pois.length-1]);
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
                 listItem.visited = true;
@@ -95,11 +95,11 @@ Page {
                     for (var i = 0; i < listView.model.count; i++) {
                         var item = listView.model.get(i);
                         pois.push({
+                            "link": item.link || "",
+                            "text": item.text || item.title,
+                            "title": item.title,
                             "x": item.x,
                             "y": item.y,
-                            "title": item.title,
-                            "text": item.text || item.title,
-                            "link": item.link || "",
                         });
                     }
                     app.hideMenu();

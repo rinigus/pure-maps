@@ -50,15 +50,15 @@ MapboxMapGestureArea {
 
     onPressAndHoldGeo: {
         map.addPois([{
+            "text": app.tr("Unnamed point"),
+            "title": app.tr("Unnamed point"),
             "x": geocoordinate.longitude,
             "y": geocoordinate.latitude,
-            "title": app.tr("Unnamed point"),
-            "text": app.tr("Unnamed point"),
         }]);
     }
 
     function coordinatesMatch(a, b) {
-        // Return true if coordinates match given sufficient tap buffer.
+        // Return true if coordinates match given a sufficient tap buffer.
         var epsLon = map.pixelRatio * 30 * area.degLonPerPixel;
         var epsLat = map.pixelRatio * 30 * area.degLatPerPixel;
         return (Math.abs(a.longitude - b.longitude) < epsLon &&

@@ -433,7 +433,7 @@ MapboxMap {
         });
     }
 
-    function popPoiBubble(poi) {
+    function showPoiBubble(poi) {
         // Show a detail bubble for the given POI.
         if (poi.bubble) return;
         var component = Qt.createComponent("PoiBubble.qml");
@@ -530,7 +530,7 @@ MapboxMap {
 
     function togglePoiBubble(poi) {
         // Show or hide a detail bubble for the given POI.
-        poi.bubble ? map.hidePoiBubble(poi) : map.popPoiBubble(poi);
+        poi.bubble ? map.hidePoiBubble(poi) : map.showPoiBubble(poi);
     }
 
     function updateManeuvers() {
