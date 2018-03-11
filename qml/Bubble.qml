@@ -25,6 +25,7 @@ Rectangle {
     anchors.topMargin: showArrow * arrow.height + Theme.paddingSmall
     color: "#e6000000"
     height: controls.height + label.height + (controlHeight > 0 ? 3 : 2) * verticalPadding
+    radius: 2 * Theme.paddingSmall
     state: "top-center"
     states: [
 
@@ -108,8 +109,6 @@ Rectangle {
 
     ]
 
-    radius: 2 * Theme.paddingSmall
-
     width: {
         var w = label.implicitWidth;
         w = Math.min(w, 0.65 * app.screenWidth);
@@ -118,15 +117,22 @@ Rectangle {
         return Math.max(w, bubble.controlWidth) + 2 * horizontalPadding;
     }
 
-    property var    anchorItem: undefined
-    property real   controlHeight: 0
-    property real   controlWidth: 0
-    property real   horizontalPadding: 1.5 * padding
-    property real   lineHeight: 1.0
-    property real   padding: 1.5 * Theme.paddingMedium
+    // Item to anchor the bubble on, see also states.
+    property var anchorItem: undefined
+    property bool showArrow: true
+
+    // Width and height of the bubble button area.
+    property real controlWidth: 0
+    property real controlHeight: 0
+
+    // Padding on the edges of the bubble.
+    property real padding: 1.5 * Theme.paddingMedium
+    property real horizontalPadding: 1.5 * padding
+    property real verticalPadding: padding
+
+    // HTML-format text to display in the bubble.
     property string text: ""
-    property bool   showArrow: true
-    property real   verticalPadding: padding
+    property real lineHeight: 1.0
 
     signal clicked()
 
