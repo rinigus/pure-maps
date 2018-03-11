@@ -35,6 +35,7 @@ def _(message):
 
 def __(message, language):
     """Return the translation of `message` to `language`."""
+    if not language: return message
     # Try to account for differences between provider API languages
     # and our translations, allowing some amount of fuzziness, e.g.
     # for German try "de" and "de_DE" in addition to the requested.
