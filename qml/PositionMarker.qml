@@ -49,6 +49,7 @@ Item {
 
     function configureLayers() {
         map.setLayoutProperty(marker.layerStill, "icon-image", marker.imageStill);
+        map.setLayoutProperty(marker.layerStill, "icon-rotation-alignment", "map");
         map.setLayoutProperty(marker.layerStill, "icon-size", 1 / map.pixelRatio);
         map.setLayoutProperty(marker.layerStill, "visibility", "visible");
         map.setLayoutProperty(marker.layerMoving, "icon-image", marker.imageMoving);
