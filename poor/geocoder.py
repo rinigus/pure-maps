@@ -51,11 +51,16 @@ class Geocoder:
         # Initialize properties only once.
         if hasattr(self, "id"): return
         path, values = self._load_attributes(id)
-        self.attribution = values["attribution"]
+        self._attribution = values.get("attribution", {})
         self.id = id
         self.name = values["name"]
         self._provider = None
         self._init_provider(re.sub(r"\.json$", ".py", path))
+
+    @property
+    def attribution(self):
+        """Return a list of attribution dictionaries."""
+        return [{"text": k, "url": v} for k, v in self._attribution.items()]
 
     def _format_distance(self, x1, y1, x2, y2):
         """Calculate and format a human readable distance string."""
@@ -81,7 +86,8 @@ class Geocoder:
                          description=match.group(0),
                          x=qx,
                          y=qy,
-                         distance=self._format_distance(x, y, qx, qy))]
+                         distance=self._format_distance(x, y, qx, qy),
+                         provider=self.id)]
 
         # Parse coordinates if query is "LAT,LON".
         match = RE_LAT_LON.search(query)
@@ -92,7 +98,8 @@ class Geocoder:
                          description=match.group(0),
                          x=qx,
                          y=qy,
-                         distance=self._format_distance(x, y, qx, qy))]
+                         distance=self._format_distance(x, y, qx, qy),
+                         provider=self.id)]
 
         try:
             results = self._provider.geocode(query, params)
@@ -105,6 +112,7 @@ class Geocoder:
         for result in results:
             result["distance"] = self._format_distance(
                 x, y, result["x"], result["y"])
+            result["provider"] = self.id
         return results
 
     def _init_provider(self, path):

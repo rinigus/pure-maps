@@ -46,7 +46,7 @@ Item {
             }
         }
 
-        Attribution { id: attribution }
+        AttributionButton { id: attributionButton }
         CenterButton { id: centerButton }
         Map { id: map }
         MenuButton { id: menuButton }
@@ -59,7 +59,7 @@ Item {
         Component.onCompleted: {
             revolver.updateOrientation();
             app.onDeviceOrientationChanged.connect(revolver.updateOrientation);
-            app.attribution = attribution;
+            app.attributionButton = attributionButton;
             app.centerButton = centerButton;
             app.map = map;
             app.menuButton = menuButton;

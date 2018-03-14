@@ -48,12 +48,17 @@ class Guide:
         # Initialize properties only once.
         if hasattr(self, "id"): return
         path, values = self._load_attributes(id)
-        self.attribution = values["attribution"]
+        self._attribution = values.get("attribution", {})
         self.id = id
         self.name = values["name"]
         self._path = path
         self._provider = None
         self._init_provider(id, re.sub(r"\.json$", ".py", path))
+
+    @property
+    def attribution(self):
+        """Return a list of attribution dictionaries."""
+        return [{"text": k, "url": v} for k, v in self._attribution.items()]
 
     def _format_distance(self, x1, y1, x2, y2):
         """Calculate and format a human readable distance string."""
@@ -98,6 +103,7 @@ class Guide:
         for result in results:
             result["distance"] = poor.util.calculate_distance(
                 x, y, result["x"], result["y"])
+            result["provider"] = self.id
         # Enforce radius in case the provider didn't.
         results = [z for z in results if z["distance"] <= radius]
         for result in results:

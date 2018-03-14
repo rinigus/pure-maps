@@ -1,5 +1,8 @@
 {
-    "attribution": "<a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap</a>",
+    "attribution": {
+        "Digitransit": "https://digitransit.fi/",
+        "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+    },
     "format": "raster",
     "name": "HSL",
     "tileSize": 512,

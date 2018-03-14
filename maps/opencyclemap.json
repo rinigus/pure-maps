@@ -1,5 +1,8 @@
 {
-    "attribution": "<a href=\"https://www.thunderforest.com/\">© Thunderforest</a><br><a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap</a>",
+    "attribution": {
+        "© Thunderforest": "https://www.thunderforest.com/",
+        "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+    },
     "format": "raster",
     "name": "OpenCycleMap",
     "tileSize": 256,

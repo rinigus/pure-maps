@@ -170,8 +170,10 @@ MapboxMap {
             map.pois.push({
                 "coordinate": QtPositioning.coordinate(pois[i].y, pois[i].x),
                 "link": pois[i].link || "",
+                "provider": pois[i].provider || "",
                 "text": pois[i].text || "",
                 "title": pois[i].title || "",
+                "type": pois[i].type || "",
             });
         }
         map.updatePois();
@@ -187,6 +189,7 @@ MapboxMap {
         map.route.attribution = route.attribution || "";
         map.route.language = route.language || "en";
         map.route.mode = route.mode || "car";
+        map.route.provider = route.provider || "";
         py.call_sync("poor.app.narrative.set_mode", [route.mode || "car"]);
         py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
             map.hasRoute = true;
@@ -318,6 +321,16 @@ MapboxMap {
         return [map.route.x[map.route.x.length - 1],
                 map.route.y[map.route.y.length - 1]];
 
+    }
+
+    function getPoiProviders(type) {
+        var providers = [];
+        for (var i = 0; i < map.pois.length; i++)
+            if (map.pois[i].type == type &&
+                map.pois[i].provider &&
+                providers.indexOf(map.pois[i].provider) < 0)
+                providers.push(map.pois[i].provider);
+        return providers;
     }
 
     function getPosition() {
@@ -475,8 +488,10 @@ MapboxMap {
         for (var i = 0; i < map.pois.length; i++) {
             var poi = {};
             poi.link = map.pois[i].link;
+            poi.provider = map.pois[i].provider;
             poi.text = map.pois[i].text;
             poi.title = map.pois[i].title;
+            poi.type = map.pois[i].type;
             poi.x = map.pois[i].coordinate.longitude;
             poi.y = map.pois[i].coordinate.latitude;
             data.push(poi);
@@ -499,8 +514,7 @@ MapboxMap {
         py.evaluate("poor.app.basemap.style_url") ?
             (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
-        app.attribution.logo = py.evaluate("poor.app.basemap.logo");
-        app.attribution.text = py.evaluate("poor.app.basemap.attribution");
+        app.attributionButton.logo = py.evaluate("poor.app.basemap.logo");
     }
 
     function setCenter(x, y) {

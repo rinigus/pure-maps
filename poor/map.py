@@ -41,7 +41,7 @@ class Map:
         # Initialize properties only once.
         if hasattr(self, "id"): return
         values = self._load_attributes(id)
-        self.attribution = values["attribution"]
+        self._attribution = values.get("attribution", {})
         self.background_color = values.get("background_color", "#e6e6e6")
         self.first_label_layer = values.get("firstLabelLayer", "")
         self.id = id
@@ -53,6 +53,11 @@ class Map:
         self.tile_size = values.get("tileSize", 256)
         self.tile_url = values.get("tileUrl", "")
         self.url_suffix = values.get("urlSuffix", "")
+
+    @property
+    def attribution(self):
+        """Return a list of attribution dictionaries."""
+        return [{"text": k, "url": v} for k, v in self._attribution.items()]
 
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""

@@ -36,7 +36,7 @@ Dialog {
             id: listItem
             contentHeight: defaultHeader.height + nameLabel.height +
                 descriptionLabel.anchors.topMargin + descriptionLabel.height +
-                attributionLabel.height + alternativesHeader.height
+                alternativesHeader.height
 
             SectionHeader {
                 id: defaultHeader
@@ -61,29 +61,16 @@ Dialog {
                 anchors.topMargin: Theme.paddingSmall
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
+                height: implicitHeight + app.listItemVerticalMargin
                 lineHeight: 1.15
                 text: model.description
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
             }
 
-            ListItemLabel {
-                id: attributionLabel
-                anchors.top: descriptionLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                height: (visible ? implicitHeight : 0) + app.listItemVerticalMargin
-                lineHeight: 1.15
-                text: visible ? model.attribution : ""
-                truncationMode: TruncationMode.None
-                verticalAlignment: Text.AlignTop
-                visible: model.show_attribution
-                wrapMode: Text.WordWrap
-            }
-
             SectionHeader {
                 id: alternativesHeader
-                anchors.top: attributionLabel.bottom
+                anchors.top: descriptionLabel.bottom
                 height: model.default ? implicitHeight : 0
                 text: app.tr("Alternatives")
                 visible: model.default && !listItem.highlighted
@@ -92,10 +79,6 @@ Dialog {
             onClicked: {
                 dialog.pid = model.pid;
                 dialog.accept();
-            }
-
-            onPressAndHold: {
-                model.show_attribution = !model.show_attribution;
             }
 
         }
@@ -109,7 +92,6 @@ Dialog {
             // Load guide model items from the Python backend.
             py.call("poor.util.get_guides", [], function(guides) {
                 Util.sortDefaultFirst(guides);
-                Util.addProperties(guides, "show_attribution", false);
                 Util.appendAll(listView.model, guides);
             });
         }

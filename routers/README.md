@@ -6,14 +6,14 @@ Implementing a Router
 To implement a router you need to write a JSON metadata file, a Python
 file that implements the `route` function and one or two QML files. The
 `route` function should given two points return a dictionary of route
-properties with keys `x`, `y`, `maneuvers`, `mode`, `language`, and
-`attribution`, example below. The from and to points given as arguments
-can be either strings (addresses, landmarks, etc.) or two-element tuples
-or lists of (x, y) coordinates. If returning multiple alternative routes
-for the user to choose from, the return value should be a list of
-dictionaries of route properties. Note that while you handle the return
-value yourself in router specific QML, rerouting doesn't go through that
-same interactive code and requires a return value consistent with other
+properties with keys `x`, `y`, `maneuvers`, `mode` and `language`,
+example below. The from and to points given as arguments can be either
+strings (addresses, landmarks, etc.) or two-element tuples or lists of
+(x, y) coordinates. If returning multiple alternative routes for the
+user to choose from, the return value should be a list of dictionaries
+of route properties. Note that while you handle the return value
+yourself in router specific QML, rerouting doesn't go through that same
+interactive code and requires a return value consistent with other
 routers.
 
 ```python
@@ -32,7 +32,6 @@ routers.
     ],
     "mode": "car",
     "language": "en_US",
-    "attribution": "Routing courtesy of MapQuest.",
 }
 ```
 

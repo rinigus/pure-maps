@@ -17,6 +17,7 @@
 
 """Miscellaneous helper functions."""
 
+import collections
 import contextlib
 import functools
 import glob
@@ -293,6 +294,18 @@ def get_guides():
                           poor.conf.get_default("guide"),
                           poor.conf.guide)
 
+def get_provider_class(type):
+    """Return provider class of given type."""
+    if type == "geocoder":
+        return poor.Geocoder
+    if type == "guide":
+        return poor.Guide
+    if type == "map":
+        return poor.Map
+    if type == "router":
+        return poor.Router
+    raise ValueError("Bad type: {}".format(repr(type)))
+
 def _get_providers(directory, default, active):
     """Return a list of dictionaries of provider attributes."""
     def matches(pid, ref):
@@ -320,13 +333,6 @@ def get_routers():
     return _get_providers("routers",
                           poor.conf.get_default("router"),
                           poor.conf.router)
-
-def get_routing_attribution(service, engine=None):
-    """Return translated routing attribution string."""
-    if engine is None:
-        return _("Routing courtesy of {}.").format(service)
-    return (_("Routing by {engine}, courtesy of {service}.")
-            .format(engine=engine, service=service))
 
 def locked_method(function):
     """
@@ -369,7 +375,7 @@ def read_json(path):
     """Read data from JSON file at `path`."""
     try:
         with open(path, "r", encoding="utf_8") as f:
-            data = json.load(f)
+            data = json.load(f, object_pairs_hook=collections.OrderedDict)
     except Exception as error:
         print("Failed to read file {}: {}"
               .format(repr(path), str(error)),

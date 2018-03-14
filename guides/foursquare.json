@@ -1,5 +1,7 @@
 {
-    "attribution": "Data © Foursquare",
+    "attribution": {
+        "© Foursquare": "https://foursquare.com/"
+    },
     "_description": "Venues listed and reviewed by Foursquare users",
     "name": "Foursquare"
 }

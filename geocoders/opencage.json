@@ -1,5 +1,16 @@
 {
-    "attribution": "Data © OpenStreetMap, DataScienceToolkit, Flickr Shapefiles, GeoNames, Natural Earth, OpenGeoCode, Quattroshapes, Twofishes, Yahoo GeoPlanet",
+    "attribution": {
+        "OpenCage": "https://geocoder.opencagedata.com/",
+        "© OpenStreetMap": "https://www.openstreetmap.org/copyright",
+        "© DataScienceToolkit": "http://www.datasciencetoolkit.org/",
+        "© Flickr Shapefiles": "https://code.flickr.net/2009/05/21/flickr-shapefiles-public-dataset-10/",
+        "© GeoNames": "http://www.geonames.org/",
+        "© Natural Earth": "http://www.naturalearthdata.com/",
+        "© OpenGeoCode": "http://www.opengeocode.org/",
+        "© Quattroshapes": "http://quattroshapes.com/",
+        "© Twofishes": "https://github.com/foursquare/fsqio/tree/master/src/jvm/io/fsq/twofishes",
+        "© Yahoo GeoPlanet": "https://developer.yahoo.com/geo/geoplanet/data/"
+    },
     "_description": "Search based on open data sources",
     "name": "OpenCage"
 }

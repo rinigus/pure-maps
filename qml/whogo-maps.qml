@@ -37,7 +37,7 @@ ApplicationWindow {
     cover: Cover {}
     initialPage: DummyPage { id: dummy }
 
-    property var  attribution: null
+    property var  attributionButton: null
     property var  centerButton: null
     property var  conf: Config {}
     property var  map: null

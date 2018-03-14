@@ -81,7 +81,7 @@ Page {
                 height: implicitHeight + app.listItemVerticalMargin
                 lineHeight: 1.15
                 text: model.index < listView.count - 1 ?
-                    app.tr("Continue for %1.", model.length) : map.route.attribution
+                    app.tr("Continue for %1.", model.length) : ""
                 truncationMode: TruncationMode.Fade
                 verticalAlignment: Text.AlignTop
             }

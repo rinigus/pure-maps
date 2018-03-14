@@ -66,8 +66,10 @@ Page {
                 app.hideMenu();
                 map.addPois([{
                     "link": model.link || "",
+                    "provider": model.provider || "",
                     "text": model.text || model.title,
                     "title": model.title,
+                    "type": "geocode",
                     "x": model.x,
                     "y": model.y,
                 }]);
@@ -96,8 +98,10 @@ Page {
                         var item = listView.model.get(i);
                         pois.push({
                             "link": item.link || "",
+                            "provider": item.provider || "",
                             "text": item.text || item.title,
                             "title": item.title,
+                            "type": "geocode",
                             "x": item.x,
                             "y": item.y,
                         });

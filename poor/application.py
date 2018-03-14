@@ -40,6 +40,17 @@ class Application:
         self.set_guide(poor.conf.guide)
         self.set_router(poor.conf.router)
 
+    def get_attribution(self, type, providers):
+        """Return attribution entries for given providers."""
+        items = []
+        cls = poor.util.get_provider_class(type)
+        for provider in providers:
+            with poor.util.silent(Exception):
+                for item in cls(provider).attribution:
+                    if not item["text"] in (x["text"] for x in items):
+                        items.append(item)
+        return items
+
     def quit(self):
         """Quit the application."""
         poor.http.pool.terminate()

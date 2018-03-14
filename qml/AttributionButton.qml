@@ -18,10 +18,9 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "."
 
 IconButton {
-    id: attribution
+    id: attributionButton
     anchors.left: parent.left
     anchors.top: navigationBlock.bottom
     height: icon.height
@@ -33,33 +32,10 @@ IconButton {
     z: 500
 
     property string logo: ""
-    property string text: ""
 
-    Bubble {
-        id: bubble
-        anchorItem: parent
-        lineHeight: 1.15
-        padding: Theme.paddingLarge
-        showArrow: false
-        state: "bottom-right"
-        visible: false
-    }
+    onClicked: app.showMenu("AttributionPage.qml");
 
-    Timer {
-        id: timer
-        interval: 3000
-        repeat: false
-        onTriggered: bubble.visible = false;
-    }
-
-    onClicked: {
-        bubble.text = "<style>a:link { color: %1; text-decoration: none; }</style>%2"
-            .arg(Theme.highlightColor).arg(attribution.text);
-        bubble.visible = true;
-        timer.restart();
-    }
-
-    onLogoChanged: attribution.icon.source = logo ?
+    onLogoChanged: attributionButton.icon.source = logo ?
         app.getIcon("icons/attribution/%1".arg(logo)) : "";
 
 }

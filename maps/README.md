@@ -4,9 +4,7 @@ Implementing a Map Source
 To implement a map source you need to write a JSON metadata file. Common
 keys are explained below, format-specific keys in following sections.
 
-* **`attribution`**: A string of plain text or HTML used to provide
-  copyright and other information, usually as required by the terms of
-  the provider.
+* **`attribution`**: Key-value pairs of attribution text and URL.
 
 * **`format`**: Either "mapbox-gl" or "slippy", see below.
 

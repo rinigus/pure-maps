@@ -48,13 +48,18 @@ class Router:
         # Initialize properties only once.
         if hasattr(self, "id"): return
         path, values = self._load_attributes(id)
-        self.attribution = values["attribution"]
+        self._attribution = values.get("attribution", {})
         self.id = id
         self.name = values["name"]
         self._path = path
         self.offline = values.get("offline", False)
         self._provider = None
         self._init_provider(id, re.sub(r"\.json$", ".py", path))
+
+    @property
+    def attribution(self):
+        """Return a list of attribution dictionaries."""
+        return [{"text": k, "url": v} for k, v in self._attribution.items()]
 
     def _init_provider(self, id, path):
         """Initialize routing provider module from `path`."""
@@ -91,13 +96,15 @@ class Router:
         """
         params = params or {}
         try:
-            return self._provider.route(fm, to, heading, params)
+            route = self._provider.route(fm, to, heading, params)
         except socket.timeout:
             return dict(error=True, message=_("Connection timed out"))
         except Exception:
             print("Routing failed:", file=sys.stderr)
             traceback.print_exc()
             return {}
+        route["provider"] = self.id
+        return route
 
     @property
     def settings_qml_uri(self):

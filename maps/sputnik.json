@@ -1,5 +1,8 @@
 {
-    "attribution": "<a href=\"http://maps.sputnik.ru/\">© Sputnik</a><br><a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap</a>",
+    "attribution": {
+        "© Sputnik": "http://maps.sputnik.ru/",
+        "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+    },
     "format": "raster",
     "name": "Sputnik",
     "tileSize": 256,

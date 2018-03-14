@@ -1,5 +1,8 @@
 {
-    "attribution": "<a href=\"https://github.com/rinigus/osmscout-server\">OSM Scout Server</a><br><a href=\"http://www.openstreetmap.org/copyright\">© OpenStreetMap</a>",
+    "attribution": {
+        "OSM Scout Server": "https://github.com/rinigus/osmscout-server",
+        "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+    },
     "firstLabelLayer": "waterway-name",
     "format": "mapbox-gl",
     "name": "OSM Scout Night English",
