@@ -103,7 +103,12 @@ class Router:
             print("Routing failed:", file=sys.stderr)
             traceback.print_exc()
             return {}
-        route["provider"] = self.id
+        if isinstance(route, dict):
+            route["provider"] = self.id
+        if isinstance(route, list):
+            for alternative in route:
+                if isinstance(alternative, dict):
+                    alternative["provider"] = self.id
         return route
 
     @property
