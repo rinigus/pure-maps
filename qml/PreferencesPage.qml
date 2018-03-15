@@ -36,6 +36,16 @@ Page {
                 title: app.tr("Preferences")
             }
 
+            TextSwitch {
+                id: tiltSwitch
+                checked: app.conf.get("tilt_when_navigating")
+                description: app.tr("Only applies to vector maps.")
+                text: app.tr("Tilt map when navigating")
+                onCheckedChanged: {
+                    app.conf.set("tilt_when_navigating", tiltSwitch.checked);
+                }
+            }
+
             Slider {
                 id: scaleSlider
                 label: app.tr("Map scale")
@@ -48,16 +58,6 @@ Page {
                 onValueChanged: {
                     app.conf.set("map_scale", scaleSlider.value);
                     map.setScale(scaleSlider.value);
-                }
-            }
-
-            TextSwitch {
-                id: tiltSwitch
-                checked: app.conf.get("tilt_when_navigating")
-                description: app.tr("Only applies to vector maps.")
-                text: app.tr("Tilt map when navigating")
-                onCheckedChanged: {
-                    app.conf.set("tilt_when_navigating", tiltSwitch.checked);
                 }
             }
 
