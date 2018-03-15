@@ -25,53 +25,65 @@ Item {
 
     property bool directionVisible: false
 
-    readonly property string imageMoving: "whogo-image-position-moving"
-    readonly property string imageStill:  "whogo-image-position-still"
-    readonly property string layerMoving: "whogo-layer-position-moving"
-    readonly property string layerStill:  "whogo-layer-position-still"
-    readonly property string sourceName:  "whogo-position-marker"
+    readonly property var images: QtObject {
+        readonly property string moving: "whogo-position-moving"
+        readonly property string still:  "whogo-position-still"
+    }
+
+    readonly property var layers: QtObject {
+        readonly property string moving: "whogo-position-moving"
+        readonly property string still:  "whogo-position-still"
+    }
+
+    readonly property var sources: QtObject {
+        readonly property string position: "whogo-position"
+    }
 
     Connections {
         target: map
-        onPositionChanged: map.updateSourcePoint(marker.sourceName, map.position.coordinate);
         onDirectionChanged: marker.updateDirection();
+        onPositionChanged: map.updateSourcePoint(marker.sources.position, map.position.coordinate);
     }
 
     Component.onCompleted: {
-        map.addSourcePoint(marker.sourceName, map.position.coordinate);
-        map.addImagePath(marker.imageStill, Qt.resolvedUrl(app.getIcon("icons/position")))
-        map.addImagePath(marker.imageMoving, Qt.resolvedUrl(app.getIcon("icons/position-direction")));
-        map.addLayer(marker.layerStill, {"type": "symbol", "source": marker.sourceName});
-        map.addLayer(marker.layerMoving, {"type": "symbol", "source": marker.sourceName});
+        marker.initLayers();
         marker.configureLayers();
         marker.updateDirection();
     }
 
     function configureLayers() {
-        map.setLayoutProperty(marker.layerStill, "icon-image", marker.imageStill);
-        map.setLayoutProperty(marker.layerStill, "icon-allow-overlap", true);
-        map.setLayoutProperty(marker.layerStill, "icon-rotation-alignment", "map");
-        map.setLayoutProperty(marker.layerStill, "icon-size", 1 / map.pixelRatio);
-        map.setLayoutProperty(marker.layerStill, "visibility", "visible");
-        map.setLayoutProperty(marker.layerMoving, "icon-image", marker.imageMoving);
-        map.setLayoutProperty(marker.layerMoving, "icon-allow-overlap", true);
-        map.setLayoutProperty(marker.layerMoving, "icon-size", 1 / map.pixelRatio);
-        map.setLayoutProperty(marker.layerMoving, "icon-rotation-alignment", "map");
-        map.setLayoutProperty(marker.layerMoving, "visibility", "none");
+        map.setLayoutProperty(marker.layers.still, "icon-allow-overlap", true);
+        map.setLayoutProperty(marker.layers.still, "icon-image", marker.images.still);
+        map.setLayoutProperty(marker.layers.still, "icon-rotation-alignment", "map");
+        map.setLayoutProperty(marker.layers.still, "icon-size", 1 / map.pixelRatio);
+        map.setLayoutProperty(marker.layers.still, "visibility", "visible");
+        map.setLayoutProperty(marker.layers.moving, "icon-allow-overlap", true);
+        map.setLayoutProperty(marker.layers.moving, "icon-image", marker.images.moving);
+        map.setLayoutProperty(marker.layers.moving, "icon-rotation-alignment", "map");
+        map.setLayoutProperty(marker.layers.moving, "icon-size", 1 / map.pixelRatio);
+        map.setLayoutProperty(marker.layers.moving, "visibility", "none");
+    }
+
+    function initLayers() {
+        map.addSourcePoint(marker.sources.position, map.position.coordinate);
+        map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIcon("icons/position")));
+        map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIcon("icons/position-direction")));
+        map.addLayer(marker.layers.still, {"type": "symbol", "source": marker.sources.position});
+        map.addLayer(marker.layers.moving, {"type": "symbol", "source": marker.sources.position});
     }
 
     function updateDirection() {
         if (map.direction && !marker.directionVisible) {
-            map.setLayoutProperty(marker.layerStill, "visibility", "none");
-            map.setLayoutProperty(marker.layerMoving, "visibility", "visible");
+            map.setLayoutProperty(marker.layers.still, "visibility", "none");
+            map.setLayoutProperty(marker.layers.moving, "visibility", "visible");
             marker.directionVisible = true;
         } else if (!map.direction && marker.directionVisible) {
-            map.setLayoutProperty(marker.layerStill, "visibility", "visible");
-            map.setLayoutProperty(marker.layerMoving, "visibility", "none");
+            map.setLayoutProperty(marker.layers.still, "visibility", "visible");
+            map.setLayoutProperty(marker.layers.moving, "visibility", "none");
             marker.directionVisible = false;
         }
-        marker.directionVisible &&
-            map.setLayoutProperty(marker.layerMoving, "icon-rotate", map.direction);
+        if (marker.directionVisible)
+            map.setLayoutProperty(marker.layers.moving, "icon-rotate", map.direction);
     }
 
 }

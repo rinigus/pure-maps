@@ -30,11 +30,8 @@ IconButton {
     icon.width: icon.sourceSize.width
     width: icon.width
     z: 500
-
     property string logo: ""
-
     onClicked: app.showMenu("AttributionPage.qml");
-
     onLogoChanged: attributionButton.icon.source = logo ?
         app.getIcon("icons/attribution/%1".arg(logo)) : "";
 
