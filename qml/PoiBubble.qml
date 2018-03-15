@@ -22,25 +22,24 @@ import Sailfish.Silica 1.0
 import "."
 
 Item {
+    // As the icon we are attaching to is in Mapbox GL instead of QML,
+    // we need an invisible tappable size QML anchor that is attached
+    // to the location of the corresponding actual POI icon.
     id: anchor
     height: Theme.iconSizeMedium
     width: Theme.iconSizeMedium
     z: 600
 
-    property var coordinate: null
-    property string link: ""
-    property string text: ""
-    property string title: ""
-    property string trackerId: ""
+    property var poi: null
 
     Bubble {
         id: bubble
         anchorItem: anchor
         controlHeight: routeButton.height
         controlWidth: routeButton.width + nearbyButton.width + shareButton.width +
-            (anchor.link.length > 0 ? webButton.width : 0) +
-            (anchor.link.length > 0 ? 3 : 2) * Theme.paddingMedium
-        text: anchor.text
+            (anchor.poi.link.length > 0 ? webButton.width : 0) +
+            (anchor.poi.link.length > 0 ? 3 : 2) * Theme.paddingMedium
+        text: anchor.poi.text.replace(/Theme.highlightColor/g, Theme.highlightColor)
         onClicked: map.hidePoiBubble(anchor);
 
         BubbleButton {
@@ -51,11 +50,11 @@ Item {
             anchors.leftMargin: bubble.padding
             text: app.tr("Navigate")
             onClicked: {
-                var x = anchor.coordinate.longitude;
-                var y = anchor.coordinate.latitude;
+                var x = anchor.poi.coordinate.longitude;
+                var y = anchor.poi.coordinate.latitude;
                 app.showMenu("RoutePage.qml", {
                     "to": [x, y],
-                    "toText": anchor.title,
+                    "toText": anchor.poi.title,
                 });
             }
         }
@@ -68,11 +67,11 @@ Item {
             anchors.leftMargin: Theme.paddingMedium
             text: app.tr("Nearby")
             onClicked: {
-                var x = anchor.coordinate.longitude;
-                var y = anchor.coordinate.latitude;
+                var x = anchor.poi.coordinate.longitude;
+                var y = anchor.poi.coordinate.latitude;
                 app.showMenu("NearbyPage.qml", {
                     "near": [x, y],
-                    "nearText": anchor.title,
+                    "nearText": anchor.poi.title,
                 });
             }
         }
@@ -85,8 +84,8 @@ Item {
             anchors.leftMargin: Theme.paddingMedium
             text: app.tr("Share")
             onClicked: {
-                var x = anchor.coordinate.longitude;
-                var y = anchor.coordinate.latitude;
+                var x = anchor.poi.coordinate.longitude;
+                var y = anchor.poi.coordinate.latitude;
                 app.showMenu("SharePage.qml", {
                     "coordinate": QtPositioning.coordinate(y, x),
                     "title": app.tr("Share Location"),
@@ -102,8 +101,8 @@ Item {
             anchors.rightMargin: bubble.padding
             text: app.tr("Web")
             useHighlight: true
-            visible: anchor.link.length > 0
-            onClicked: Qt.openUrlExternally(anchor.link);
+            visible: anchor.poi.link.length > 0
+            onClicked: Qt.openUrlExternally(anchor.poi.link);
         }
 
     }
@@ -111,18 +110,11 @@ Item {
     Connections {
         target: map
         onLocationChanged: {
-            if (id !== trackerId) return;
+            if (id !== anchor.poi.trackerId) return;
             anchor.x = pixel.x - anchor.width  / 2;
             anchor.y = pixel.y - anchor.height / 2;
             anchor.visible = visible;
         }
-    }
-
-    onTextChanged: processText()
-    Component.onCompleted: processText()
-
-    function processText() {
-        anchor.text = anchor.text.replace("Theme.highlightColor", Theme.highlightColor);
     }
 
 }

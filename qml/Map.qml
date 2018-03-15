@@ -345,7 +345,7 @@ MapboxMap {
         for (var i = 0; i < map.pois.length; i++) {
             if (!map.pois[i].bubble) continue;
             if (map.pois[i].coordinate != poi.coordinate) continue;
-            map.removeLocationTracking(map.pois[i].bubble.trackerId);
+            map.removeLocationTracking(map.pois[i].trackerId);
             map.pois[i].bubble.destroy();
             map.pois[i].bubble = false;
         }
@@ -355,7 +355,7 @@ MapboxMap {
         // Hide label bubbles of all POI markers.
         for (var i = 0; i < map.pois.length; i++) {
             if (!map.pois[i].bubble) continue;
-            map.removeLocationTracking(map.pois[i].bubble.trackerId);
+            map.removeLocationTracking(map.pois[i].trackerId);
             map.pois[i].bubble.destroy();
             map.pois[i].bubble = false;
         }
@@ -451,13 +451,10 @@ MapboxMap {
         if (poi.bubble) return;
         var component = Qt.createComponent("PoiBubble.qml");
         var bubble = component.createObject(map, {
-            "coordinate": poi.coordinate,
-            "link": poi.link,
-            "text": poi.text,
-            "title": poi.title,
-            "trackerId": "poi-%1".arg(++map.counter),
+            "poi": poi,
         });
-        map.trackLocation(bubble.trackerId, poi.coordinate);
+        poi.trackerId = "poi-%1".arg(++map.counter);
+        map.trackLocation(poi.trackerId, poi.coordinate);
         poi.bubble = bubble;
     }
 
