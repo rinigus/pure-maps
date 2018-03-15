@@ -113,7 +113,7 @@ Page {
             }
 
             SectionHeader {
-                text: app.tr("Route")
+                text: app.tr("Navigation")
                 visible: routeRepeater.model > 0
             }
 
