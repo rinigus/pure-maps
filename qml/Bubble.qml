@@ -25,7 +25,7 @@ Rectangle {
     anchors.topMargin: showArrow * arrow.height + Theme.paddingSmall
     color: "#e6000000"
     height: controls.height + label.height +
-        (controlHeight > 0 ? 3 : 2) * verticalPadding
+        (controlHeight > 0 ? 3 : 2) * padding
     radius: 0.85 * padding
     state: "top-center"
     states: [
@@ -115,7 +115,7 @@ Rectangle {
         w = Math.min(w, 0.65 * app.screenWidth);
         w = Math.min(w, 0.65 * app.screenHeight);
         w = Math.min(w,  500 * Theme.pixelRatio);
-        return Math.max(w, bubble.controlWidth) + 2 * horizontalPadding;
+        return Math.max(w, bubble.controlWidth) + 2 * padding;
     }
 
     // Item to anchor the bubble on, see also states.
@@ -128,8 +128,6 @@ Rectangle {
 
     // Padding on the edges of the bubble.
     property real padding: 1.5 * Theme.paddingMedium
-    property real horizontalPadding: 1.3 * padding
-    property real verticalPadding: padding
 
     // HTML-format text to display in the bubble.
     property string text: ""
@@ -150,11 +148,11 @@ Rectangle {
     Rectangle {
         id: controls
         anchors.bottom: bubble.bottom
-        anchors.bottomMargin: bubble.verticalPadding
+        anchors.bottomMargin: bubble.padding
         anchors.left: bubble.left
-        anchors.leftMargin: bubble.horizontalPadding
+        anchors.leftMargin: bubble.padding
         anchors.right: bubble.right
-        anchors.rightMargin: bubble.horizontalPadding
+        anchors.rightMargin: bubble.padding
         color: "#00000000"
         height: bubble.controlHeight
     }
@@ -162,11 +160,11 @@ Rectangle {
     Label {
         id: label
         anchors.bottom: controls.top
-        anchors.bottomMargin: bubble.controlHeight > 0 ? bubble.verticalPadding : 0
+        anchors.bottomMargin: bubble.controlHeight > 0 ? bubble.padding : 0
         anchors.left: bubble.left
-        anchors.leftMargin: bubble.horizontalPadding
+        anchors.leftMargin: bubble.padding
         anchors.right: bubble.right
-        anchors.rightMargin: bubble.horizontalPadding
+        anchors.rightMargin: bubble.padding
         color: "white"
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeSmall
