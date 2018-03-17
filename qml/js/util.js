@@ -108,6 +108,7 @@ function pointsToJson(points) {
         var data = shallowCopy(point);
         data.x = data.coordinate.longitude;
         data.y = data.coordinate.latitude;
+        delete data.bubble;
         delete data.coordinate;
         return data;
     });
