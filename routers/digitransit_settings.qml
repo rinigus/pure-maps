@@ -285,7 +285,7 @@ Column {
             icon.opacity: checked ? 0.9 : 0.3
             icon.source: app.getIcon("digitransit/citybike")
             // Only visible in HSL region routing.
-            visible: regionComboBox.currentIndex == 0
+            visible: regionComboBox.currentIndex === 0
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: citybikeButton.checked =
@@ -299,7 +299,7 @@ Column {
             icon.opacity: checked ? 0.9 : 0.3
             icon.source: app.getIcon("digitransit/airplane")
             // Only visible in whole Finland routing.
-            visible: regionComboBox.currentIndex == 2
+            visible: regionComboBox.currentIndex === 2
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: airplaneButton.checked =

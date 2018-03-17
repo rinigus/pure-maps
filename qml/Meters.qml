@@ -67,7 +67,7 @@ Item {
     function update() {
         // Update speed and positioning accuracy values in user's preferred units.
         if (!py.ready) return;
-        if (app.conf.get("units") == "american") {
+        if (app.conf.get("units") === "american") {
             labels.text = " mph\n ft"
             var lines = ["—", "—"];
             if (gps.position.speedValid)
@@ -77,7 +77,7 @@ Item {
             values.text = lines.join("\n");
             values.doLayout();
 
-        } else if (app.conf.get("units") == "british") {
+        } else if (app.conf.get("units") === "british") {
             labels.text = " mph\n yd"
             var lines = ["—", "—"];
             if (gps.position.speedValid)

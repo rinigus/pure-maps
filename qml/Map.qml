@@ -30,7 +30,7 @@ MapboxMap {
     cacheDatabaseDefaultPath: true
     cacheDatabaseStoreSettings: false
     center: QtPositioning.coordinate(49, 13)
-    pitch: app.navigationActive && format != "raster" ? 60 : 0
+    pitch: app.navigationActive && format !== "raster" ? 60 : 0
     pixelRatio: Theme.pixelRatio * 1.5
     zoomLevel: 4.0
 
@@ -94,7 +94,7 @@ MapboxMap {
 
     MapGestureArea {
         id: gestureArea
-        integerZoomLevels: map.format == "raster"
+        integerZoomLevels: map.format === "raster"
         map: map
     }
 
@@ -311,7 +311,7 @@ MapboxMap {
     function getPoiProviders(type) {
         // Return list of providers for POIs of given type.
         return map.pois.filter(function(poi) {
-            return poi.type == type && poi.provider;
+            return poi.type === type && poi.provider;
         }).map(function(poi) {
             return poi.provider;
         }).filter(function(provider, index, self) {
