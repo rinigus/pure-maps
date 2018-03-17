@@ -82,6 +82,6 @@ def parse_description(result):
 
 def parse_title(result):
     """Parse title from geocoding result."""
-    with poor.util.silent(KeyError):
+    with poor.util.silent(Exception):
         return result.properties.name
-    return parse_components(result)[0]
+    return parse_components(result.properties)[0]
