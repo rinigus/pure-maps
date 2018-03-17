@@ -46,7 +46,8 @@ Item {
         text: anchor.text.replace(/Theme.highlightColor/g, Theme.highlightColor)
         onClicked: {
             for (var i = 0; i < map.pois.length; i++)
-                if (map.pois[i].bubble.trackerId === anchor.trackerId)
+                if (map.pois[i].bubble &&
+                    map.pois[i].bubble.trackerId === anchor.trackerId)
                     map.hidePoiBubble(map.pois[i]);
         }
 
