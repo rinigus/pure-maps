@@ -5,6 +5,6 @@
     },
     "format": "raster",
     "name": "OpenCycleMap",
-    "tileSize": 256,
-    "tileUrl": "https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=0890777c70cf4966a624a99e258ef9a8"
+    "tile_size": 256,
+    "tile_url": "https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=0890777c70cf4966a624a99e258ef9a8"
 }

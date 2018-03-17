@@ -24,19 +24,19 @@ specification][mapbox-style]. It can be used by either providing the URL
 to a JSON format style definition, or by writing the style definition
 into the JSON metadata file itself.
 
-* **`firstLabelLayer`**: Identifier of the lowest label layer in the
+* **`first_label_layer`**: Identifier of the lowest label layer in the
   style. Icons and route polylines might rendered right below this layer
   so that labels are not obscured and remain readable.
 
-* **`styleJson`**: A full JSON format style definition.
+* **`style_json`**: A full JSON format style definition.
 
-* **`styleUrl`**: A URL to a full JSON format style definition. Supports
-  regular HTTP etc. URLs as well as `mapbox://` URLs for
+* **`style_url`**: A URL to a full JSON format style definition.
+  Supports regular HTTP etc. URLs as well as `mapbox://` URLs for
   Mapbox.com-hosted styles.
 
-* **`urlSuffix`**: A suffix to add to all URL requests, including tiles,
-  fonts, icons or whatever specified by the style. Usually used to
-  provide an API key, token or some other identification.
+* **`url_suffix`**: A suffix to add to all URL requests, including
+  tiles, fonts, icons or whatever specified by the style. Usually used
+  to provide an API key, token or some other identification.
 
 [mapbox-style]: https://www.mapbox.com/mapbox-gl-js/style-spec/
 
@@ -46,15 +46,15 @@ Slippy is a raster tile format based on Spherical Mercator. It is used
 by most global providers of raster tiles, such as Google and
 OpenStreetMap. For documentation, see e.g. [OpenStreetMap Wiki][slippy].
 
-* **`backgroundColor`**: Background color used behind actual tiles,
+* **`background_color`**: Background color used behind actual tiles,
   visible before tiles are loaded. Optional, defaults to "#e6e6e6".
   Useful to change to a dark color for night styles.
 
-* **`tileSize`**: The minimum visual size at which to display tiles.
+* **`tile_size`**: The minimum visual size at which to display tiles.
   Note that this is not necessarily the pixel dimension of the actual
   tiles, try values 256, 512 and 1024 and use which one looks best.
 
-* **`tileUrl`**: Tile URL template, containing variables `{x}`, `{y}`
+* **`tile_url`**: Tile URL template, containing variables `{x}`, `{y}`
   and `{z}` replaced with longitude tile number, latitude tile number
   and zoom level.
 

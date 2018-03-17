@@ -3,9 +3,9 @@
         "OSM Scout Server": "https://github.com/rinigus/osmscout-server",
         "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
     },
-    "firstLabelLayer": "waterway-name",
+    "first_label_layer": "waterway-name",
     "format": "mapbox-gl",
     "name": "OSM Scout Day English",
     "requires": ["harbour-osmscout-server"],
-    "styleUrl": "http://localhost:8553/v1/mbgl/style?style=osmbright-en"
+    "style_url": "http://localhost:8553/v1/mbgl/style?style=osmbright-en"
 }

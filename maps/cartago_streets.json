@@ -4,9 +4,9 @@
         "© OpenMapTiles": "https://openmaptiles.org/",
         "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
     },
-    "firstLabelLayer": "housenumber",
+    "first_label_layer": "housenumber",
     "format": "mapbox-gl",
     "name": "Cartago Streets",
-    "styleUrl": "http://tile.cartago.io/styles/cartago-streets/style.json",
-    "urlSuffix": "?apikey=kvvyc4nkgsenfk6d"
+    "style_url": "http://tile.cartago.io/styles/cartago-streets/style.json",
+    "url_suffix": "?apikey=kvvyc4nkgsenfk6d"
 }

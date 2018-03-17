@@ -43,16 +43,16 @@ class Map:
         values = self._load_attributes(id)
         self._attribution = values.get("attribution", {})
         self.background_color = values.get("background_color", "#e6e6e6")
-        self.first_label_layer = values.get("firstLabelLayer", "")
+        self.first_label_layer = values.get("first_label_layer", "")
         self.id = id
         self.format = values["format"]
         self.logo = values.get("logo", "default")
         self.name = values["name"]
-        self.style_dict = values.get("styleJson", {})
-        self.style_url = values.get("styleUrl", "")
-        self.tile_size = values.get("tileSize", 256)
-        self.tile_url = values.get("tileUrl", "")
-        self.url_suffix = values.get("urlSuffix", "")
+        self.style_dict = values.get("style_json", {})
+        self.style_url = values.get("style_url", "")
+        self.tile_size = values.get("tile_size", 256)
+        self.tile_url = values.get("tile_url", "")
+        self.url_suffix = values.get("url_suffix", "")
 
     @property
     def attribution(self):

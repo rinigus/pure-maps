@@ -5,6 +5,6 @@
     },
     "format": "raster",
     "name": "HSL",
-    "tileSize": 512,
-    "tileUrl": "https://cdn.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}@2x.png"
+    "tile_size": 512,
+    "tile_url": "https://cdn.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}@2x.png"
 }
