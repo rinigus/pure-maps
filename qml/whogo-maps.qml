@@ -99,6 +99,10 @@ ApplicationWindow {
         app.updateKeepAlive();
     }
 
+    onNavigationActiveChanged: {
+        app.updateKeepAlive();
+    }
+
     function clearMenu() {
         // Clear the page stack and hide the menu.
         app.pageStack.pop(dummy, PageStackAction.Immediate);
@@ -234,7 +238,7 @@ ApplicationWindow {
         // Update state of keep-alive, i.e. display blanking prevention.
         var prevent = app.conf.get("keep_alive");
         DisplayBlanking.preventBlanking = app.applicationActive &&
-            (prevent === "always" || (prevent === "navigating" && map.hasRoute));
+            (prevent === "always" || (prevent === "navigating" && app.navigationActive));
     }
 
     function updateNavigationStatus(status) {

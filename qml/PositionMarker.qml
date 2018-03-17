@@ -35,14 +35,12 @@ Item {
         readonly property string still:  "whogo-position-still"
     }
 
-    readonly property var sources: QtObject {
-        readonly property string position: "whogo-position"
-    }
+    readonly property string source: "whogo-position"
 
     Connections {
         target: map
         onDirectionChanged: marker.updateDirection();
-        onPositionChanged: map.updateSourcePoint(marker.sources.position, map.position.coordinate);
+        onPositionChanged: map.updateSourcePoint(marker.source, map.position.coordinate);
     }
 
     Component.onCompleted: {
@@ -65,11 +63,11 @@ Item {
     }
 
     function initLayers() {
-        map.addSourcePoint(marker.sources.position, map.position.coordinate);
+        map.addSourcePoint(marker.source, map.position.coordinate);
         map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIcon("icons/position")));
         map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIcon("icons/position-direction")));
-        map.addLayer(marker.layers.still, {"type": "symbol", "source": marker.sources.position});
-        map.addLayer(marker.layers.moving, {"type": "symbol", "source": marker.sources.position});
+        map.addLayer(marker.layers.still, {"type": "symbol", "source": marker.source});
+        map.addLayer(marker.layers.moving, {"type": "symbol", "source": marker.source});
     }
 
     function updateDirection() {

@@ -30,16 +30,20 @@ Item {
     width: Theme.iconSizeMedium
     z: 600
 
-    property var poi: null
+    property var    coordinate: null
+    property string link: ""
+    property string text: ""
+    property string title: ""
+    property string trackerId: ""
 
     Bubble {
         id: bubble
         anchorItem: anchor
         controlHeight: routeButton.height
         controlWidth: routeButton.width + nearbyButton.width + shareButton.width +
-            (anchor.poi.link.length > 0 ? webButton.width : 0) +
-            (anchor.poi.link.length > 0 ? 3 : 2) * Theme.paddingMedium
-        text: anchor.poi.text.replace(/Theme.highlightColor/g, Theme.highlightColor)
+            (anchor.link.length > 0 ? webButton.width : 0) +
+            (anchor.link.length > 0 ? 3 : 2) * Theme.paddingMedium
+        text: anchor.text.replace(/Theme.highlightColor/g, Theme.highlightColor)
         onClicked: map.hidePoiBubble(anchor);
 
         BubbleButton {
@@ -50,11 +54,11 @@ Item {
             anchors.leftMargin: bubble.padding
             text: app.tr("Navigate")
             onClicked: {
-                var x = anchor.poi.coordinate.longitude;
-                var y = anchor.poi.coordinate.latitude;
+                var x = anchor.coordinate.longitude;
+                var y = anchor.coordinate.latitude;
                 app.showMenu("RoutePage.qml", {
                     "to": [x, y],
-                    "toText": anchor.poi.title,
+                    "toText": anchor.title,
                 });
             }
         }
@@ -67,11 +71,11 @@ Item {
             anchors.leftMargin: Theme.paddingMedium
             text: app.tr("Nearby")
             onClicked: {
-                var x = anchor.poi.coordinate.longitude;
-                var y = anchor.poi.coordinate.latitude;
+                var x = anchor.coordinate.longitude;
+                var y = anchor.coordinate.latitude;
                 app.showMenu("NearbyPage.qml", {
                     "near": [x, y],
-                    "nearText": anchor.poi.title,
+                    "nearText": anchor.title,
                 });
             }
         }
@@ -84,8 +88,8 @@ Item {
             anchors.leftMargin: Theme.paddingMedium
             text: app.tr("Share")
             onClicked: {
-                var x = anchor.poi.coordinate.longitude;
-                var y = anchor.poi.coordinate.latitude;
+                var x = anchor.coordinate.longitude;
+                var y = anchor.coordinate.latitude;
                 app.showMenu("SharePage.qml", {
                     "coordinate": QtPositioning.coordinate(y, x),
                     "title": app.tr("Share Location"),
@@ -101,8 +105,8 @@ Item {
             anchors.rightMargin: bubble.padding
             text: app.tr("Web")
             useHighlight: true
-            visible: anchor.poi.link.length > 0
-            onClicked: Qt.openUrlExternally(anchor.poi.link);
+            visible: anchor.link.length > 0
+            onClicked: Qt.openUrlExternally(anchor.link);
         }
 
     }
@@ -110,7 +114,7 @@ Item {
     Connections {
         target: map
         onLocationChanged: {
-            if (id !== anchor.poi.trackerId) return;
+            if (id !== anchor.trackerId) return;
             anchor.x = pixel.x - anchor.width  / 2;
             anchor.y = pixel.y - anchor.height / 2;
             anchor.visible = visible;

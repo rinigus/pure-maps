@@ -95,6 +95,42 @@ function median(x) {
     return (x[i-1] + x[i]) / 2;
 }
 
+function pluck(items, key) {
+    // Return an array of the values of key in items.
+    return items.map(function(item) {
+        return item[key];
+    });
+}
+
+function pointsToJson(points) {
+    // Return a shallow copy of points with coordinates unpacked.
+    return points.map(function(point) {
+        var data = shallowCopy(point);
+        data.x = data.coordinate.longitude;
+        data.y = data.coordinate.latitude;
+        delete data.coordinate;
+        return data;
+    });
+}
+
+function polylineToJson(polyline) {
+    // Return a shallow copy of points with coordinates unpacked.
+    if (!polyline.coordinates) return {};
+    var data = shallowCopy(polyline);
+    data.x = pluck(data.coordinates, "longitude");
+    data.y = pluck(data.coordinates, "latitude");
+    delete data.coordinates;
+    return data;
+}
+
+function shallowCopy(obj) {
+    // Return a shallow copy of object.
+    var copy = {};
+    for (var key in obj)
+        copy[key] = obj[key];
+    return copy;
+}
+
 function siground(x, n) {
     // Round x to n significant digits.
     var mult = Math.pow(10, n - Math.floor(Math.log(x) / Math.LN10) - 1);

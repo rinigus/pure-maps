@@ -34,14 +34,13 @@ MapboxMap {
     pixelRatio: Theme.pixelRatio * 1.5
     zoomLevel: 4.0
 
-    // Token for Mapbox maps, i.e. sources with mapbox:// URLs.
+    // Token for Mapbox.com-hosted maps, i.e. sources with mapbox:// URLs.
     accessToken: "pk.eyJ1Ijoib3RzYWxvbWEiLCJhIjoiY2pidTlwMTdhMW9kNzJ4cGMycTh4c216eSJ9._KFWLhzdsKnkTeYwbEHzhg"
 
     property bool   autoCenter: false
     property bool   autoRotate: false
     property int    counter: 0
     property var    direction: app.navigationDirection || gps.direction
-    property var    directionPrev: 0
     property string firstLabelLayer: ""
     property string format: ""
     property bool   hasRoute: false
@@ -51,13 +50,18 @@ MapboxMap {
     property bool   ready: false
     property var    route: {}
 
-    readonly property string layerManeuversActive:  "whogo-layer-maneuvers-active"
-    readonly property string layerManeuversPassive: "whogo-layer-maneuvers-passive"
-    readonly property string layerPois:             "whogo-layer-pois"
-    readonly property string layerRoute:            "whogo-layer-route"
-    readonly property string sourceManeuvers:       "whogo-source-maneuvers"
-    readonly property string sourcePois:            "whogo-source-pois"
-    readonly property string sourceRoute:           "whogo-source-route"
+    readonly property var layers: QtObject {
+        readonly property string maneuvers: "whogo-layer-maneuvers-active"
+        readonly property string nodes:     "whogo-layer-maneuvers-passive"
+        readonly property string pois:      "whogo-layer-pois"
+        readonly property string route:     "whogo-layer-route"
+    }
+
+    readonly property var sources: QtObject {
+        readonly property string maneuvers: "whogo-source-maneuvers"
+        readonly property string pois:      "whogo-source-pois"
+        readonly property string route:     "whogo-source-route"
+    }
 
     Behavior on bearing {
         RotationAnimation {
@@ -95,16 +99,17 @@ MapboxMap {
     }
 
     NarrationTimer {}
-    PositionMarker { id: positionMarker }
 
-    Connections {
-        target: app.navigationBlock
-        onHeightChanged: map.updateMargins();
-    }
+    PositionMarker { id: positionMarker }
 
     Connections {
         target: app.menuButton
         onYChanged: map.updateMargins();
+    }
+
+    Connections {
+        target: app.navigationBlock
+        onHeightChanged: map.updateMargins();
     }
 
     Component.onCompleted: {
@@ -118,22 +123,7 @@ MapboxMap {
     onAutoRotateChanged: {
         // Update map rotation to match travel direction.
         map.bearing = map.autoRotate && map.direction ? map.direction : 0;
-        updateMargins();
-    }
-
-    onDirectionChanged: {
-        // Update map rotation to match travel direction.
-        if (!map.autoRotate) return;
-        var direction = map.direction || 0;
-        if (Util.angleDifference(direction, map.directionPrev) > 10) {
-            map.bearing = direction;
-            map.directionPrev = direction;
-        }
-    }
-
-    onHasRouteChanged: {
-        // Update keep-alive in case set to "navigating".
-        app.updateKeepAlive();
+        map.updateMargins();
     }
 
     onHeightChanged: {
@@ -141,56 +131,66 @@ MapboxMap {
     }
 
     onPositionChanged: {
-        // Recenter map so that position is at the center of the screen.
         map.autoCenter && map.centerOnPosition();
     }
 
+    function _addManeuver(maneuver) {
+        // Add new maneuver marker to the map.
+        map.maneuvers.push({
+            "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
+            "duration": maneuver.duration || 0,
+            "icon": maneuver.icon || "flag",
+            // Needed to have separate layers via filters.
+            "name": maneuver.passive ? "passive" : "active",
+            "narrative": maneuver.narrative || "",
+            "passive": maneuver.passive || false,
+            "verbal_alert": maneuver.verbal_alert || "",
+            "verbal_post": maneuver.verbal_post || "",
+            "verbal_pre": maneuver.verbal_pre || "",
+        });
+    }
+
     function addManeuvers(maneuvers) {
-        // Add new maneuver markers to map.
-        for (var i = 0; i < maneuvers.length; i++) {
-            map.maneuvers.push({
-                "coordinate": QtPositioning.coordinate(maneuvers[i].y, maneuvers[i].x),
-                "duration": maneuvers[i].duration || 0,
-                "icon": maneuvers[i].icon || "flag",
-                "narrative": maneuvers[i].narrative || "",
-                "passive": maneuvers[i].passive || false,
-                "verbalAlert": maneuvers[i].verbal_alert || "",
-                "verbalPost": maneuvers[i].verbal_post || "",
-                "verbalPre": maneuvers[i].verbal_pre || "",
-            });
-        }
+        // Add new maneuver markers to the map.
+        maneuvers.map(map._addManeuver);
         py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
         map.updateManeuvers();
         map.saveManeuvers();
     }
 
+    function _addPoi(poi) {
+        // Add new POI marker to the map.
+        map.pois.push({
+            "coordinate": QtPositioning.coordinate(poi.y, poi.x),
+            "link": poi.link || "",
+            "provider": poi.provider || "",
+            "text": poi.text || "",
+            "title": poi.title || "",
+            "type": poi.type || "",
+        });
+    }
+
     function addPois(pois) {
-        // Add new POI markers to map.
-        for (var i = 0; i < pois.length; i++) {
-            map.pois.push({
-                "coordinate": QtPositioning.coordinate(pois[i].y, pois[i].x),
-                "link": pois[i].link || "",
-                "provider": pois[i].provider || "",
-                "text": pois[i].text || "",
-                "title": pois[i].title || "",
-                "type": pois[i].type || "",
-            });
-        }
+        // Add new POI markers to the map.
+        pois.map(map._addPoi);
         map.updatePois();
         map.savePois();
     }
 
     function addRoute(route, amend) {
-        // Add a polyline to represent a route.
+        // Add new route polyline to the map.
         amend || map.endNavigating();
         map.clearRoute();
-        map.route.x = route.x;
-        map.route.y = route.y;
-        map.route.attribution = route.attribution || "";
-        map.route.language = route.language || "en";
-        map.route.mode = route.mode || "car";
-        map.route.provider = route.provider || "";
-        py.call_sync("poor.app.narrative.set_mode", [route.mode || "car"]);
+        route.coordinates = route.x.map(function(value, i) {
+            return QtPositioning.coordinate(route.y[i], route.x[i]);
+        });
+        map.route = {
+            "coordinates": route.coordinates || [],
+            "language": route.language || "en",
+            "mode": route.mode || "car",
+            "provider": route.provider || "",
+        };
+        py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);
         py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
             map.hasRoute = true;
         });
@@ -216,14 +216,14 @@ MapboxMap {
     }
 
     function centerOnPosition() {
-        // Center map on the current position.
-        map.setCenter(map.position.coordinate.longitude,
-                      map.position.coordinate.latitude);
-
+        // Center on the current position.
+        map.setCenter(
+            map.position.coordinate.longitude,
+            map.position.coordinate.latitude);
     }
 
     function clear() {
-        // Remove all POI and route markers from the map.
+        // Remove all markers from the map.
         map.clearPois();
         map.clearRoute();
     }
@@ -237,10 +237,10 @@ MapboxMap {
     }
 
     function clearRoute() {
-        // Remove all route markers from the map.
+        // Remove route polyline from the map.
         map.maneuvers = [];
         map.route = {};
-        py.call_sync("poor.app.narrative.unset", []);
+        py.call("poor.app.narrative.unset", [], null);
         app.navigationStatus.clear();
         map.hasRoute = false;
         map.updateManeuvers();
@@ -251,31 +251,31 @@ MapboxMap {
 
     function configureLayers() {
         // Configure layer for POI markers.
-        map.setPaintProperty(map.layerPois, "circle-opacity", 0);
-        map.setPaintProperty(map.layerPois, "circle-radius", 32 / map.pixelRatio);
-        map.setPaintProperty(map.layerPois, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layerPois, "circle-stroke-opacity", 0.5);
-        map.setPaintProperty(map.layerPois, "circle-stroke-width", 13 / map.pixelRatio);
+        map.setPaintProperty(map.layers.pois, "circle-opacity", 0);
+        map.setPaintProperty(map.layers.pois, "circle-radius", 32 / map.pixelRatio);
+        map.setPaintProperty(map.layers.pois, "circle-stroke-color", "#0540ff");
+        map.setPaintProperty(map.layers.pois, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layers.pois, "circle-stroke-width", 13 / map.pixelRatio);
         // Configure layer for route polyline.
-        map.setLayoutProperty(map.layerRoute, "line-cap", "round");
-        map.setLayoutProperty(map.layerRoute, "line-join", "round");
-        map.setPaintProperty(map.layerRoute, "line-color", "#0540ff");
-        map.setPaintProperty(map.layerRoute, "line-opacity", 0.5);
-        map.setPaintProperty(map.layerRoute, "line-width", 22 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.route, "line-cap", "round");
+        map.setLayoutProperty(map.layers.route, "line-join", "round");
+        map.setPaintProperty(map.layers.route, "line-color", "#0540ff");
+        map.setPaintProperty(map.layers.route, "line-opacity", 0.5);
+        map.setPaintProperty(map.layers.route, "line-width", 22 / map.pixelRatio);
         // Configure layer for active maneuver markers.
-        map.setPaintProperty(map.layerManeuversActive, "circle-color", "white");
-        map.setPaintProperty(map.layerManeuversActive, "circle-pitch-alignment", "map");
-        map.setPaintProperty(map.layerManeuversActive, "circle-radius", 11 / map.pixelRatio);
-        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-opacity", 0.5);
-        map.setPaintProperty(map.layerManeuversActive, "circle-stroke-width", 8 / map.pixelRatio);
+        map.setPaintProperty(map.layers.maneuvers, "circle-color", "white");
+        map.setPaintProperty(map.layers.maneuvers, "circle-pitch-alignment", "map");
+        map.setPaintProperty(map.layers.maneuvers, "circle-radius", 11 / map.pixelRatio);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", "#0540ff");
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 8 / map.pixelRatio);
         // Configure layer for passive maneuver markers.
-        map.setPaintProperty(map.layerManeuversPassive, "circle-color", "white");
-        map.setPaintProperty(map.layerManeuversPassive, "circle-pitch-alignment", "map");
-        map.setPaintProperty(map.layerManeuversPassive, "circle-radius", 5 / map.pixelRatio);
-        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-opacity", 0.5);
-        map.setPaintProperty(map.layerManeuversPassive, "circle-stroke-width", 8 / map.pixelRatio);
+        map.setPaintProperty(map.layers.nodes, "circle-color", "white");
+        map.setPaintProperty(map.layers.nodes, "circle-pitch-alignment", "map");
+        map.setPaintProperty(map.layers.nodes, "circle-radius", 5 / map.pixelRatio);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-color", "#0540ff");
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 8 / map.pixelRatio);
     }
 
     function endNavigating() {
@@ -286,106 +286,76 @@ MapboxMap {
         app.navigationActive = false;
     }
 
-    function fitViewtoCoordinates(coords) {
-        // Set center and zoom so that given coordinates are visible.
-        map.autoCenter = false;
-        map.autoRotate = false;
-        map.fitView(coords);
-    }
-
     function fitViewToPois(pois) {
         // Set center and zoom so that given POIs are visible.
-        var coords = [];
-        for (var i = 0; i < pois.length; i++)
-            coords.push(QtPositioning.coordinate(pois[i].y, pois[i].x));
-        map.fitViewtoCoordinates(coords);
+        map.autoCenter = false;
+        map.autoRotate = false;
+        map.fitView(pois.map(function(poi) {
+            return poi.coordinate || QtPositioning.coordinate(poi.y, poi.x);
+        }));
     }
 
     function fitViewToRoute() {
         // Set center and zoom so that the whole route is visible.
-        // For performance reasons, include only a subset of points.
-        if (!map.route.x) return;
-        if (!map.route.x.length > 0) return;
-        var coords = [];
-        for (var i = 0; i < map.route.x.length; i = i + 10)
-            coords.push(QtPositioning.coordinate(
-                map.route.y[i], map.route.x[i]));
-        var x = map.route.x[map.route.x.length-1];
-        var y = map.route.y[map.route.x.length-1];
-        coords.push(QtPositioning.coordinate(y, x));
-        map.fitViewtoCoordinates(coords);
+        map.autoCenter = false;
+        map.autoRotate = false;
+        map.fitView(map.route.coordinates);
     }
 
     function getDestination() {
-        // Return coordinates [x, y] of the route destination.
-        return [map.route.x[map.route.x.length - 1],
-                map.route.y[map.route.y.length - 1]];
-
+        // Return coordinates of the route destination.
+        var destination = map.route.coordinates[map.route.coordinates.length - 1];
+        return [destination.longitude, destination.latitude];
     }
 
     function getPoiProviders(type) {
-        var providers = [];
-        for (var i = 0; i < map.pois.length; i++)
-            if (map.pois[i].type == type &&
-                map.pois[i].provider &&
-                providers.indexOf(map.pois[i].provider) < 0)
-                providers.push(map.pois[i].provider);
-        return providers;
+        // Return list of providers for POIs of given type.
+        return map.pois.filter(function(poi) {
+            return poi.type == type && poi.provider;
+        }).map(function(poi) {
+            return poi.provider;
+        }).filter(function(provider, index, self) {
+            return self.indexOf(provider) === index;
+        });
     }
 
     function getPosition() {
-        // Return the current position as [x, y].
-        return [map.position.coordinate.longitude,
-                map.position.coordinate.latitude];
-
+        // Return the coordinates of the current position.
+        return [map.position.coordinate.longitude, map.position.coordinate.latitude];
     }
 
     function hidePoiBubble(poi) {
-        // Hide label bubble of given POI marker.
-        for (var i = 0; i < map.pois.length; i++) {
-            if (!map.pois[i].bubble) continue;
-            if (map.pois[i].coordinate != poi.coordinate) continue;
-            map.removeLocationTracking(map.pois[i].trackerId);
-            map.pois[i].bubble.destroy();
-            map.pois[i].bubble = false;
-        }
+        // Hide the bubble of given POI.
+        if (!poi.bubble) return;
+        map.removeLocationTracking(poi.bubble.trackerId);
+        poi.bubble.destroy();
+        poi.bubble = null;
     }
 
     function hidePoiBubbles() {
         // Hide label bubbles of all POI markers.
-        for (var i = 0; i < map.pois.length; i++) {
-            if (!map.pois[i].bubble) continue;
-            map.removeLocationTracking(map.pois[i].trackerId);
-            map.pois[i].bubble.destroy();
-            map.pois[i].bubble = false;
-        }
+        map.pois.map(hidePoiBubble);
     }
 
     function initLayers() {
-        map.addLayer(map.layerPois, {
+        // Initialize layers for POI markers, route polyline and maneuver markers.
+        map.addLayer(map.layers.pois, {"type": "circle", "source": map.sources.pois});
+        map.addLayer(map.layers.route, {"type": "line", "source": map.sources.route});
+        map.addLayer(map.layers.maneuvers, {
             "type": "circle",
-            "source": map.sourcePois,
-        });
-        map.addLayer(map.layerRoute, {
-            "type": "line",
-            "source": map.sourceRoute,
-        });
-        map.addLayer(map.layerManeuversActive, {
-            "type": "circle",
-            "source": map.sourceManeuvers,
+            "source": map.sources.maneuvers,
             "filter": ["==", "name", "active"],
         });
-        map.addLayer(map.layerManeuversPassive, {
+        map.addLayer(map.layers.nodes, {
             "type": "circle",
-            "source": map.sourceManeuvers,
+            "source": map.sources.maneuvers,
             "filter": ["==", "name", "passive"],
         });
     }
 
     function initProperties() {
-        // Load default values and saved overlays.
-        if (!py.ready)
-            return py.onReadyChanged.connect(map.initProperties);
+        // Initialize map properties and restore saved overlays.
+        if (!py.ready) return py.onReadyChanged.connect(map.initProperties);
         map.setScale(app.conf.get("map_scale"));
         map.setBasemap();
         map.setZoomLevel(app.conf.get("zoom"));
@@ -393,7 +363,6 @@ MapboxMap {
         map.autoRotate = app.conf.get("auto_rotate");
         var center = app.conf.get("center");
         map.setCenter(center[0], center[1]);
-        app.updateKeepAlive();
         map.loadPois();
         map.loadRoute();
         map.loadManeuvers();
@@ -401,14 +370,14 @@ MapboxMap {
     }
 
     function initSources() {
-        // Initialize map overlay sources with blank data.
-        map.addSourcePoints(map.sourcePois, []);
-        map.addSourceLine(map.sourceRoute, []);
-        map.addSourcePoints(map.sourceManeuvers, []);
+        // Initialize sources for map overlays.
+        map.addSourcePoints(map.sources.pois, []);
+        map.addSourceLine(map.sources.route, []);
+        map.addSourcePoints(map.sources.maneuvers, []);
     }
 
     function initVoiceNavigation() {
-        // Initialize TTS engine for the current route.
+        // Initialize a TTS engine for the current routing instructions.
         if (app.conf.get("voice_navigation")) {
             var args = [map.route.language, app.conf.get("voice_gender")];
             py.call_sync("poor.app.narrative.set_voice", args);
@@ -419,91 +388,52 @@ MapboxMap {
     }
 
     function loadManeuvers() {
-        // Load maneuvers from JSON file.
+        // Restore maneuver markers from JSON file.
         if (!py.ready) return;
         py.call("poor.storage.read_maneuvers", [], function(data) {
-            if (data && data.length > 0)
-                map.addManeuvers(data);
+            data && data.length > 0 && map.addManeuvers(data);
         });
     }
 
     function loadPois() {
-        // Load POIs from JSON file.
+        // Restore POI markers from JSON file.
         if (!py.ready) return;
         py.call("poor.storage.read_pois", [], function(data) {
-            if (data && data.length > 0)
-                map.addPois(data);
+            data && data.length > 0 && map.addPois(data);
         });
     }
 
     function loadRoute() {
-        // Load route from JSON file.
+        // Restore route polyline from JSON file.
         if (!py.ready) return;
         py.call("poor.storage.read_route", [], function(data) {
-            if (data.x && data.x.length > 0 &&
-                data.y && data.y.length > 0)
-                map.addRoute(data);
+            data.x && data.x.length > 0 && map.addRoute(data);
         });
-    }
-
-    function showPoiBubble(poi) {
-        // Show a detail bubble for the given POI.
-        if (poi.bubble) return;
-        var component = Qt.createComponent("PoiBubble.qml");
-        var bubble = component.createObject(map, {
-            "poi": poi,
-        });
-        poi.trackerId = "poi-%1".arg(++map.counter);
-        map.trackLocation(poi.trackerId, poi.coordinate);
-        poi.bubble = bubble;
     }
 
     function saveManeuvers() {
-        // Save maneuvers to JSON file.
+        // Save maneuver markers to JSON file.
         if (!py.ready) return;
-        var data = [];
-        for (var i = 0; i < map.maneuvers.length; i++) {
-            var maneuver = {};
-            maneuver.duration = map.maneuvers[i].duration;
-            maneuver.icon = map.maneuvers[i].icon;
-            maneuver.narrative = map.maneuvers[i].narrative;
-            maneuver.passive = map.maneuvers[i].passive;
-            maneuver.verbal_alert = map.maneuvers[i].verbalAlert;
-            maneuver.verbal_post = map.maneuvers[i].verbalPost;
-            maneuver.verbal_pre = map.maneuvers[i].verbalPre;
-            maneuver.x = map.maneuvers[i].coordinate.longitude;
-            maneuver.y = map.maneuvers[i].coordinate.latitude;
-            data.push(maneuver);
-        }
+        var data = Util.pointsToJson(map.maneuvers);
         py.call_sync("poor.storage.write_maneuvers", [data]);
     }
 
     function savePois() {
-        // Save POIs to JSON file.
+        // Save POI markers to JSON file.
         if (!py.ready) return;
-        var data = [];
-        for (var i = 0; i < map.pois.length; i++) {
-            var poi = {};
-            poi.link = map.pois[i].link;
-            poi.provider = map.pois[i].provider;
-            poi.text = map.pois[i].text;
-            poi.title = map.pois[i].title;
-            poi.type = map.pois[i].type;
-            poi.x = map.pois[i].coordinate.longitude;
-            poi.y = map.pois[i].coordinate.latitude;
-            data.push(poi);
-        }
+        var data = Util.pointsToJson(map.pois);
         py.call_sync("poor.storage.write_pois", [data]);
     }
 
     function saveRoute() {
-        // Save route to JSON file.
+        // Save route polyline to JSON file.
         if (!py.ready) return;
-        py.call_sync("poor.storage.write_route", [map.route]);
+        var data = Util.polylineToJson(map.route);
+        py.call_sync("poor.storage.write_route", [data]);
     }
 
     function setBasemap() {
-        // Set basemap to use and related properties.
+        // Set the basemap to use and related properties.
         if (!py.ready) return;
         map.firstLabelLayer = py.evaluate("poor.app.basemap.first_label_layer");
         map.format = py.evaluate("poor.app.basemap.format");
@@ -515,20 +445,35 @@ MapboxMap {
     }
 
     function setCenter(x, y) {
-        // Set the current center position.
-        // Create a new object to trigger animation.
+        // Center on the given coordinates.
         if (!x || !y) return;
         map.center = QtPositioning.coordinate(y, x);
     }
 
     function setScale(scale) {
+        // Set the map scaling via its pixel ratio.
         map.pixelRatio = Theme.pixelRatio * 1.5 * scale;
         map.configureLayers();
         positionMarker.configureLayers();
     }
 
+    function showPoiBubble(poi) {
+        // Show a bubble for the given POI.
+        if (poi.bubble) return;
+        var component = Qt.createComponent("PoiBubble.qml");
+        var bubble = component.createObject(map, {
+            "coordinate": poi.coordinate,
+            "link": poi.link,
+            "text": poi.text,
+            "title": poi.title,
+            "trackerId": "poi-%1".arg(++map.counter),
+        });
+        map.trackLocation(bubble.trackerId, bubble.coordinate);
+        poi.bubble = bubble;
+    }
+
     function toggleAutoCenter() {
-        // Toggle auto-center with a visible notification.
+        // Turn auto-center on or off.
         if (map.autoCenter) {
             map.autoCenter = false;
             notification.flash(app.tr("Auto-center off"));
@@ -540,19 +485,15 @@ MapboxMap {
     }
 
     function togglePoiBubble(poi) {
-        // Show or hide a detail bubble for the given POI.
+        // Show or hide a bubble for the given POI.
         poi.bubble ? map.hidePoiBubble(poi) : map.showPoiBubble(poi);
     }
 
     function updateManeuvers() {
-        // Update maneuver marker source.
-        var coords = [];
-        var names = [];
-        for (var i = 0; i < map.maneuvers.length; i++) {
-            coords.push(map.maneuvers[i].coordinate);
-            names.push(map.maneuvers[i].passive ? "passive" : "active");
-        }
-        map.updateSourcePoints(map.sourceManeuvers, coords, names);
+        // Update maneuver marker on the map.
+        var coords = Util.pluck(map.maneuvers, "coordinate");
+        var names  = Util.pluck(map.maneuvers, "name");
+        map.updateSourcePoints(map.sources.maneuvers, coords, names);
     }
 
     function updateMargins() {
@@ -569,20 +510,14 @@ MapboxMap {
     }
 
     function updatePois() {
-        // Update POI marker source.
-        var pois = [];
-        for (var i = 0; i < map.pois.length; i++)
-            pois.push(map.pois[i].coordinate);
-        map.updateSourcePoints(map.sourcePois, pois);
+        // Update POI markers on the map.
+        var coords = Util.pluck(map.pois, "coordinate");
+        map.updateSourcePoints(map.sources.pois, coords);
     }
 
     function updateRoute() {
-        // Update route polyline source.
-        var route = [];
-        if (map.route.x)
-            for (var i = 0; i < map.route.x.length; i++)
-                route.push(QtPositioning.coordinate(map.route.y[i], map.route.x[i]));
-        map.updateSourceLine(map.sourceRoute, route);
+        // Update route polyline on the map.
+        map.updateSourceLine(map.sources.route, map.route.coordinates);
     }
 
 }
