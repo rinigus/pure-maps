@@ -18,7 +18,7 @@ BuildRequires: qt5-qttools-linguist
 Requires: libkeepalive
 Requires: libsailfishapp-launcher
 Requires: mapboxgl-qml >= 1.2.0
-Requires: pyotherside-qml-plugin-python3-qt5 >= 1.2
+Requires: pyotherside-qml-plugin-python3-qt5 >= 1.5.1
 Requires: qt5-qtdeclarative-import-multimedia >= 5.2
 Requires: qt5-qtdeclarative-import-positioning >= 5.2
 Requires: sailfishsilica-qt5

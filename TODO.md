@@ -10,3 +10,4 @@ WhoGo Maps 0.1
 * [x] Show time, not distance remaining to destination in the top right
       corner of the navigation maneuver block (#6)
 * [x] Fix broken share position by SMS button
+* [x] Bump PyOtherSide dependency to 1.5.1
