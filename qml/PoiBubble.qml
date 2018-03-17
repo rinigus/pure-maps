@@ -44,7 +44,11 @@ Item {
             (anchor.link.length > 0 ? webButton.width : 0) +
             (anchor.link.length > 0 ? 3 : 2) * Theme.paddingMedium
         text: anchor.text.replace(/Theme.highlightColor/g, Theme.highlightColor)
-        onClicked: map.hidePoiBubble(anchor);
+        onClicked: {
+            for (var i = 0; i < map.pois.length; i++)
+                if (map.pois[i].bubble.trackerId === anchor.trackerId)
+                    map.hidePoiBubble(map.pois[i]);
+        }
 
         BubbleButton {
             id: routeButton
