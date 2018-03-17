@@ -46,7 +46,6 @@ ApplicationWindow {
     property var  narrativePageSeen: false
     property bool navigationActive: false
     property var  navigationBlock: null
-    property var  navigationDirection: null
     property var  navigationPageSeen: false
     property var  navigationStatus: NavigationStatus {}
     property bool navigationStarted: false

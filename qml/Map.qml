@@ -40,7 +40,7 @@ MapboxMap {
     property bool   autoCenter: false
     property bool   autoRotate: false
     property int    counter: 0
-    property var    direction: app.navigationDirection || gps.direction
+    property var    direction: app.navigationStatus.direction || gps.direction
     property string firstLabelLayer: ""
     property string format: ""
     property bool   hasRoute: false
@@ -124,6 +124,13 @@ MapboxMap {
         // Update map rotation to match travel direction.
         map.bearing = map.autoRotate && map.direction ? map.direction : 0;
         map.updateMargins();
+    }
+
+    onDirectionChanged: {
+        // Update map rotation to match travel direction.
+        var direction = map.direction || 0;
+        if (map.autoRotate && Math.abs(direction - map.bearing) > 10)
+            map.bearing = direction;
     }
 
     onHeightChanged: {
