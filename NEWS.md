@@ -1,3 +1,17 @@
+2018-03-18: WhoGo Maps 0.91
+===========================
+
+* Switch map component from QtLocation to Mapbox GL (rinigus)
+* Tilt the map when navigating (only vector maps)
+* Remove Mapzen geocoder and router due to shutdown of services
+* Zoom in instead of centering on position on double-tap
+* Add button to center on position
+* Add attribution button and associated page
+* Show time, not distance remaining to destination in the top right
+  corner of the navigation maneuver block (#6)
+* Fix broken share position by SMS button
+* Bump PyOtherSide dependency to 1.5.1
+
 2017-12-24: Poor Maps 0.34
 ==========================
 
