@@ -231,6 +231,7 @@ MapboxMap {
 
     function clear() {
         // Remove all markers from the map.
+        app.navigationActive = false;
         map.clearPois();
         map.clearRoute();
     }
@@ -249,7 +250,6 @@ MapboxMap {
         map.route = {};
         py.call("poor.app.narrative.unset", [], null);
         app.navigationStatus.clear();
-        app.navigationActive = false;
         map.hasRoute = false;
         map.updateManeuvers();
         map.updateRoute();
