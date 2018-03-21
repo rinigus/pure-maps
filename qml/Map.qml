@@ -249,6 +249,7 @@ MapboxMap {
         map.route = {};
         py.call("poor.app.narrative.unset", [], null);
         app.navigationStatus.clear();
+        app.navigationActive = false;
         map.hasRoute = false;
         map.updateManeuvers();
         map.updateRoute();
