@@ -1,5 +1,5 @@
 {
-    "description": "Search using a priority list of providers",
-    "hidden": true,
-    "name": "Default"
+  "description": "Search using a priority list of providers",
+  "hidden": true,
+  "name": "Default"
 }

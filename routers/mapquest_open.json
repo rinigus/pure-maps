@@ -1,9 +1,9 @@
 {
-    "attribution": {
-        "MapQuest Open": "http://open.mapquest.com/",
-        "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
-    },
-    "_description": "Routing based on OpenStreetMap data",
-    "_modes": ["car", "bicycle", "foot"],
-    "name": "MapQuest Open"
+  "attribution": {
+    "MapQuest Open": "http://open.mapquest.com/",
+    "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+  },
+  "_description": "Routing based on OpenStreetMap data",
+  "_modes": ["car", "bicycle", "foot"],
+  "name": "MapQuest Open"
 }

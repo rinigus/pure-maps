@@ -1,10 +1,10 @@
 {
-    "attribution": {
-        "Digitransit": "https://digitransit.fi/",
-        "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
-    },
-    "format": "raster",
-    "name": "HSL",
-    "tile_size": 512,
-    "tile_url": "https://cdn.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}@2x.png"
+  "attribution": {
+    "Digitransit": "https://digitransit.fi/",
+    "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+  },
+  "format": "raster",
+  "name": "HSL",
+  "tile_size": 512,
+  "tile_url": "https://cdn.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}@2x.png"
 }

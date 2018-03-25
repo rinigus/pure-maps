@@ -1,8 +1,8 @@
 {
-    "attribution": {
-        "Nominatim": "https://nominatim.openstreetmap.org/",
-        "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
-    },
-    "_description": "Points of interest from OpenStreetMap data",
-    "name": "MapQuest Nominatim"
+  "attribution": {
+    "Nominatim": "https://nominatim.openstreetmap.org/",
+    "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+  },
+  "_description": "Points of interest from OpenStreetMap data",
+  "name": "MapQuest Nominatim"
 }

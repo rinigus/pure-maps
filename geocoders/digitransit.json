@@ -1,12 +1,12 @@
 {
-    "attribution": {
-        "Digitransit": "https://digitransit.fi/",
-        "© OpenStreetMap": "https://www.openstreetmap.org/copyright",
-        "© OpenAddresses": "https://openaddresses.io/",
-        "© Who’s on First": "https://whosonfirst.mapzen.com/",
-        "© GeoNames": "http://www.geonames.org/",
-        "© MML": "https://www.maanmittauslaitos.fi/"
-    },
-    "_description": "Search in Finland",
-    "name": "Digitransit"
+  "attribution": {
+    "Digitransit": "https://digitransit.fi/",
+    "© OpenStreetMap": "https://www.openstreetmap.org/copyright",
+    "© OpenAddresses": "https://openaddresses.io/",
+    "© Who’s on First": "https://whosonfirst.mapzen.com/",
+    "© GeoNames": "http://www.geonames.org/",
+    "© MML": "https://www.maanmittauslaitos.fi/"
+  },
+  "_description": "Search in Finland",
+  "name": "Digitransit"
 }

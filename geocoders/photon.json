@@ -1,8 +1,8 @@
 {
-    "attribution": {
-        "Photon": "https://photon.komoot.de/",
-        "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
-    },
-    "_description": "Search based on OpenStreetMap data",
-    "name": "Photon"
+  "attribution": {
+    "Photon": "https://photon.komoot.de/",
+    "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+  },
+  "_description": "Search based on OpenStreetMap data",
+  "name": "Photon"
 }
