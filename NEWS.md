@@ -1,3 +1,10 @@
+2018-03-25: WhoGo Maps 0.92
+===========================
+
+* Fix clear in main menu to also end navigating (#25)
+* Add German, Spanish, Finnish, French, Italian, Dutch, Polish and
+  Swedish translations
+
 2018-03-18: WhoGo Maps 0.91
 ===========================
 
