@@ -23,7 +23,7 @@ class TestMap(poor.test.TestCase):
     def test___new____no(self):
         a = poor.Map("mapbox_streets")
         b = poor.Map("mapbox_outdoors")
-        assert not a is b
+        assert a is not b
 
     def test___new____yes(self):
         a = poor.Map("mapbox_streets")

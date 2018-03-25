@@ -23,7 +23,7 @@ class TestRouter(poor.test.TestCase):
     def test___new____no(self):
         a = poor.Router("mapquest_open")
         b = poor.Router("osrm")
-        assert not a is b
+        assert a is not b
 
     def test___new____yes(self):
         a = poor.Router("mapquest_open")

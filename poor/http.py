@@ -64,7 +64,7 @@ class ConnectionPool:
     def get(self, url):
         """Return an HTTP connection to `url`."""
         key = self._get_key(url)
-        if not key in self._queue:
+        if key not in self._queue:
             self._allocate(url)
         while True:
             # Make sure no Queue.get call is left blocking

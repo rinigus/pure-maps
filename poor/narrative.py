@@ -451,7 +451,7 @@ class Narrative:
         for i in reversed(range(len(maneuvers))):
             if maneuvers[i].get("passive", False): continue
             maneuver = Maneuver(**maneuvers[i])
-            maneuver.node = self._get_closest_node(maneuver.x, maneuver.y);
+            maneuver.node = self._get_closest_node(maneuver.x, maneuver.y)
             self.maneuver[maneuver.node] = maneuver
             # Assign maneuver to preceding nodes as well.
             for j in reversed(range(maneuver.node)):

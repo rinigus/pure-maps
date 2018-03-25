@@ -41,7 +41,7 @@ def __(message, language):
     # for German try "de" and "de_DE" in addition to the requested.
     plain = language.split("_")[0]
     origin = "{}_{}".format(plain, plain.upper())
-    if not language in _foreign_translations:
+    if language not in _foreign_translations:
         _foreign_translations[language] = gettext.translation(
             "whogo-maps",
             localedir=poor.LOCALE_DIR,

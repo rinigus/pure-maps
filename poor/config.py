@@ -139,7 +139,7 @@ class ConfigurationStore(poor.AttrDict):
     def remove(self, option, item):
         """Remove `item` from the value of `option`."""
         root, name = self._split_option(option)
-        if not item in root[name]: return
+        if item not in root[name]: return
         root[name].remove(item)
 
     def set(self, option, value):
@@ -151,7 +151,7 @@ class ConfigurationStore(poor.AttrDict):
         """Split dotted option to dictionary and option name."""
         root = self
         for section in option.split(".")[:-1]:
-            if create and not section in root:
+            if create and section not in root:
                 # Create missing hierarchies.
                 root[section] = poor.AttrDict()
             root = root[section]
@@ -187,7 +187,7 @@ class ConfigurationStore(poor.AttrDict):
         # Make sure no obsolete top-level options remain.
         names = list(DEFAULTS.keys()) + ["guides", "routers"]
         for name in list(out.keys()):
-            if not name in names:
+            if name not in names:
                 del out[name]
         out["version"] = poor.__version__
         with poor.util.silent(Exception, tb=True):

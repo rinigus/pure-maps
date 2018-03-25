@@ -39,7 +39,7 @@ class Router:
         """Return possibly existing instance for `id`."""
         if not hasattr(cls, "_instances"):
             cls._instances = {}
-        if not id in cls._instances:
+        if id not in cls._instances:
             cls._instances[id] = object.__new__(cls)
         return cls._instances[id]
 

@@ -31,23 +31,48 @@ except ImportError:
         def send(*args): pass
     sys.modules["pyotherside"] = pyotherside()
 
-from poor.paths import *
+from poor.paths import CACHE_HOME_DIR
+from poor.paths import CONFIG_HOME_DIR
+from poor.paths import DATA_DIR
+from poor.paths import DATA_HOME_DIR
+from poor.paths import LOCALE_DIR
 from poor import i18n
 from poor import util
 from poor import http
 from poor import polysimp
 from poor import storage
-from poor.attrdict import *
-from poor.config import *
+from poor.attrdict import AttrDict
+from poor.config import ConfigurationStore
 conf = ConfigurationStore()
-from poor.map import *
-from poor.geocoder import *
-from poor.guide import *
-from poor.history import *
-from poor.router import *
-from poor.voice import *
-from poor.narrative import *
-from poor.application import *
+from poor.map import Map
+from poor.geocoder import Geocoder
+from poor.guide import Guide
+from poor.history import HistoryManager
+from poor.router import Router
+from poor.voice import VoiceGenerator
+from poor.narrative import Narrative
+from poor.application import Application
+
+assert Application
+assert AttrDict
+assert CACHE_HOME_DIR
+assert CONFIG_HOME_DIR
+assert ConfigurationStore
+assert DATA_DIR
+assert DATA_HOME_DIR
+assert Geocoder
+assert Guide
+assert HistoryManager
+assert http
+assert i18n
+assert LOCALE_DIR
+assert Map
+assert Narrative
+assert polysimp
+assert Router
+assert storage
+assert util
+assert VoiceGenerator
 
 def main():
     """Initialize application."""

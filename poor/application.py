@@ -47,7 +47,7 @@ class Application:
         for provider in providers:
             with poor.util.silent(Exception):
                 for item in cls(provider).attribution:
-                    if not item["text"] in (x["text"] for x in items):
+                    if item["text"] not in (x["text"] for x in items):
                         items.append(item)
         return items
 

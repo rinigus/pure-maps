@@ -36,7 +36,7 @@ class TestAttrDict(poor.test.TestCase):
     def test___delattr__(self):
         del self.dct.a
         assert not hasattr(self.dct, "a")
-        assert not "a" in self.dct
+        assert "a" not in self.dct
 
     def test___getattr__(self):
         assert self.dct.a is self.dct["a"]

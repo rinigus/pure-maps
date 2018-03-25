@@ -16,7 +16,7 @@ git add po/*.po po/*.pot; git status
 git commit -m "Update translations"
 
 # Check, test, do final edits and release.
-make check; make test
+make check test
 emacs poor/__init__.py rpm/*.spec Makefile
 emacs NEWS.md TODO.md
 make rpm

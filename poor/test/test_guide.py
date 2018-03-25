@@ -23,7 +23,7 @@ class TestGeocoder(poor.test.TestCase):
     def test___new____no(self):
         a = poor.Guide("foursquare")
         b = poor.Guide("nominatim")
-        assert not a is b
+        assert a is not b
 
     def test___new____yes(self):
         a = poor.Guide("foursquare")

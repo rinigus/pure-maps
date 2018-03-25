@@ -22,7 +22,7 @@ define install-translation =
 endef
 
 check:
-	pyflakes geocoders guides poor routers || true
+	pyflakes geocoders guides poor routers
 	find . -name "*.json" -exec jsonlint -qc {} \;
 
 clean:

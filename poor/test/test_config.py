@@ -77,7 +77,7 @@ class TestConfigurationStore(poor.test.TestCase):
         poor.conf.set("foo.bar", 2)
         poor.conf.write(self.path)
         del poor.conf.foo
-        assert not "foo" in poor.conf
+        assert "foo" not in poor.conf
         poor.conf.read(self.path)
         assert poor.conf.foo.bar == 2
 
