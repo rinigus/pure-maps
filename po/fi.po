@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-21 22:33+0200\n"
-"PO-Revision-Date: 2018-03-21 22:48+0200\n"
+"POT-Creation-Date: 2018-03-25 20:20+0300\n"
+"PO-Revision-Date: 2018-03-25 20:20+0300\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2016\n"
 "Language-Team: Finnish (https://www.transifex.com/otsaloma/teams/70314/fi/)\n"
 "Language: fi\n"
@@ -243,7 +243,9 @@ msgstr "GitHub-sivu"
 msgid ""
 "WhoGo Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
-msgstr "WhoGo Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public License, versio 3 tai uudempi."
+msgstr ""
+"WhoGo Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public "
+"License, versio 3 tai uudempi."
 
 #: qml/AboutPage.qml:74
 msgid "Donate via PayPal"
@@ -342,15 +344,15 @@ msgstr "%1 tulosta"
 msgid "No results"
 msgstr "Ei tuloksia"
 
-#: qml/Map.qml:391
+#: qml/Map.qml:392
 msgid "Voice navigation on"
 msgstr "Ääninavigointi päällä"
 
-#: qml/Map.qml:486
+#: qml/Map.qml:487
 msgid "Auto-center off"
 msgstr "Automaattinen keskitys pois"
 
-#: qml/Map.qml:489
+#: qml/Map.qml:490
 msgid "Auto-center on"
 msgstr "Automaattinen keskitys päällä"
 
@@ -539,7 +541,9 @@ msgstr "Nainen"
 msgid ""
 "Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
-msgstr "Pätee vain, kun WhoGo Maps on aktiivisena. Kun minimoituna, lepotilaan siirrytään laitteen normaalien asetusten mukaan."
+msgstr ""
+"Pätee vain, kun WhoGo Maps on aktiivisena. Kun minimoituna, lepotilaan "
+"siirrytään laitteen normaalien asetusten mukaan."
 
 #: qml/PreferencesPage.qml:86
 msgid "Prevent sleep"
