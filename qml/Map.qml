@@ -54,7 +54,9 @@ MapboxMap {
         readonly property string maneuvers: "whogo-layer-maneuvers-active"
         readonly property string nodes:     "whogo-layer-maneuvers-passive"
         readonly property string pois:      "whogo-layer-pois"
-        readonly property string route:     "whogo-layer-route"
+        readonly property string route_case: "whogo-layer-route-case"
+        readonly property string route_main: "whogo-layer-route-main"
+        readonly property string route_line: "whogo-layer-route-line"
     }
 
     readonly property var sources: QtObject {
@@ -265,11 +267,18 @@ MapboxMap {
         map.setPaintProperty(map.layers.pois, "circle-stroke-opacity", 0.5);
         map.setPaintProperty(map.layers.pois, "circle-stroke-width", 13 / map.pixelRatio);
         // Configure layer for route polyline.
-        map.setLayoutProperty(map.layers.route, "line-cap", "round");
-        map.setLayoutProperty(map.layers.route, "line-join", "round");
-        map.setPaintProperty(map.layers.route, "line-color", "#0540ff");
-        map.setPaintProperty(map.layers.route, "line-opacity", 0.5);
-        map.setPaintProperty(map.layers.route, "line-width", 22 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.route_case, "line-cap", "round");
+        map.setLayoutProperty(map.layers.route_case, "line-join", "round");
+        map.setLayoutProperty(map.layers.route_main, "line-cap", "round");
+        map.setLayoutProperty(map.layers.route_main, "line-join", "round");
+        map.setLayoutProperty(map.layers.route_line, "line-cap", "round");
+        map.setLayoutProperty(map.layers.route_line, "line-join", "round");
+        map.setPaintProperty(map.layers.route_case, "line-color", "#FFFFFF");
+        map.setPaintProperty(map.layers.route_case, "line-width", 22 / map.pixelRatio);
+        map.setPaintProperty(map.layers.route_main, "line-color", "#5981FF");
+        map.setPaintProperty(map.layers.route_main, "line-width", 18 / map.pixelRatio);
+        map.setPaintProperty(map.layers.route_line, "line-color", "#FFFFFF");
+        map.setPaintProperty(map.layers.route_line, "line-width", 3 / map.pixelRatio);
         // Configure layer for active maneuver markers.
         map.setPaintProperty(map.layers.maneuvers, "circle-color", "white");
         map.setPaintProperty(map.layers.maneuvers, "circle-pitch-alignment", "map");
@@ -348,7 +357,12 @@ MapboxMap {
     function initLayers() {
         // Initialize layers for POI markers, route polyline and maneuver markers.
         map.addLayer(map.layers.pois, {"type": "circle", "source": map.sources.pois});
-        map.addLayer(map.layers.route, {"type": "line", "source": map.sources.route});
+        map.addLayer(map.layers.route_case, {"type": "line", "source": map.sources.route},
+                     map.firstLabelLayer);
+        map.addLayer(map.layers.route_main, {"type": "line", "source": map.sources.route},
+                     map.firstLabelLayer);
+        map.addLayer(map.layers.route_line, {"type": "line", "source": map.sources.route},
+                     map.firstLabelLayer);
         map.addLayer(map.layers.maneuvers, {
             "type": "circle",
             "source": map.sources.maneuvers,
@@ -450,6 +464,7 @@ MapboxMap {
             (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
         app.attributionButton.logo = py.evaluate("poor.app.basemap.logo");
+        map.initLayers();
     }
 
     function setCenter(x, y) {
