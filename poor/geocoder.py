@@ -30,8 +30,8 @@ from poor.i18n import _
 
 __all__ = ("Geocoder",)
 
-RE_GEO_URI = re.compile(r"\bgeo:([\d.]+),([\d.]+)\b", re.IGNORECASE)
-RE_LAT_LON = re.compile(r"^\s*(\d+(\.\d+)?)\W+(\d+(\.\d+)?)\s*")
+RE_GEO_URI = re.compile(r"\bgeo:(-?[\d.]+),(-?[\d.]+)\b", re.IGNORECASE)
+RE_LAT_LON = re.compile(r"^\s*(-?\d+(\.\d+)?)[^\w\-]+(-?\d+(\.\d+)?)\s*")
 
 
 class Geocoder:
