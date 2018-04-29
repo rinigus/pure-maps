@@ -24,8 +24,8 @@ class TestConnectionPool(poor.test.TestCase):
 
     def setup_method(self, method):
         self.pool = poor.http.ConnectionPool(2)
-        self.http_url = "http://httpbin.org/get"
-        self.https_url = "https://httpbin.org/get"
+        self.http_url = "http://otsaloma.io/"
+        self.https_url = "https://otsaloma.io/"
 
     def teardown_method(self, method):
         self.pool.terminate()
@@ -82,7 +82,7 @@ class TestConnectionPool(poor.test.TestCase):
 class TestModule(poor.test.TestCase):
 
     def test_get(self):
-        url = "https://httpbin.org/html"
+        url = "https://otsaloma.io/"
         blob = poor.http.get(url, encoding="utf_8")
         assert blob.strip().startswith("<!DOCTYPE html>")
 
@@ -91,21 +91,13 @@ class TestModule(poor.test.TestCase):
         self.assert_raises(Exception, poor.http.get, url)
 
     def test_get__non_200(self):
-        url = "https://www.google.com/xxx/yyy/zzz"
+        url = "https://otsaloma.io/xxx/yyy/zzz"
         self.assert_raises(Exception, poor.http.get, url)
 
     def test_get_json(self):
-        url = "https://httpbin.org/get"
+        url = "https://otsaloma.io/pub/test.json"
         assert isinstance(poor.http.get_json(url), dict)
 
     def test_get_json__error(self):
-        url = "https://httpbin.org/html"
+        url = "https://otsaloma.io/pub/test.xml"
         self.assert_raises(Exception, poor.http.get_json, url)
-
-    def test_post(self):
-        blob = poor.http.post("http://httpbin.org/post", "Hello!")
-        assert isinstance(blob, bytes)
-
-    def test_post_json(self):
-        blob = poor.http.post_json("http://httpbin.org/post", "Hello!")
-        assert blob["data"] == "Hello!"
