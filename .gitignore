@@ -1,6 +1,5 @@
 *~
 .cache
-.tern-port
 __pycache__
 dist
 rpm/*.rpm
