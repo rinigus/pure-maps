@@ -74,6 +74,7 @@ Item {
                 lines[0] = Math.round(gps.position.speed * 2.23694);
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy * 3.28084, 2);
+            lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
             values.doLayout();
 
@@ -84,6 +85,7 @@ Item {
                 lines[0] = Math.round(gps.position.speed * 2.23694);
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy * 1.09361, 2);
+            lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
             values.doLayout();
 
@@ -94,6 +96,7 @@ Item {
                 lines[0] = Math.round(gps.position.speed * 3.6);
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy, 2);
+            lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
             values.doLayout();
 
