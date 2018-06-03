@@ -18,7 +18,8 @@
 """
 Listing nearby places using Foursquare.
 
-http://developer.foursquare.com/docs/venues/explore
+https://developer.foursquare.com/docs/api/venues/explore
+https://developer.foursquare.com/docs/api/venues/details
 """
 
 import copy
@@ -30,90 +31,112 @@ import urllib.parse
 CONF_DEFAULTS = {"sort_by_distance": False}
 
 CLIENT_ID = "BP3KCWJXGQDXWVMYSVLWWRITMVZTG5XANJ43D2ZD0D5JMKCX"
+CLIENT_SECRET = "JTINTTCK4S5V4RTZ40IJB0GIKDX1XT0LJVNRH2EZXNVLNZ2T"
 
-URL = ("https://api.foursquare.com/v2/venues/explore"
-       "?client_id={CLIENT_ID}"
-       "&client_secret=JTINTTCK4S5V4RTZ40IJB0GIKDX1XT0LJVNRH2EZXNVLNZ2T"
-       "&v=20140912"
-       "&m=foursquare"
-       "&query={query}"
-       "&ll={y:.5f},{x:.5f}"
-       "&limit=50"
-       "&radius={radius:.0f}"
-       "&sortByDistance={sort_by_distance}")
+EXPLORE_URL = "".join((
+    "https://api.foursquare.com/v2/venues/explore",
+    "?client_id={}".format(CLIENT_ID),
+    "&client_secret={}".format(CLIENT_SECRET),
+    "&v=20180603",
+    "&ll={y:.6f},{x:.6f}",
+    "&radius={radius:.0f}",
+    "&query={query}",
+    "&limit=20",
+    "&sortByDistance={sort_by_distance}",
+))
+
+VENUE_URL = "".join((
+    "https://api.foursquare.com/v2/venues/{id}",
+    "?client_id={}".format(CLIENT_ID),
+    "&client_secret={}".format(CLIENT_SECRET),
+    "&v=20180603",
+))
 
 cache = {}
+
+def get_link(id):
+    """Return hyperlink for venue with given `id`."""
+    return "https://foursquare.com/v/{}?ref={}".format(id, CLIENT_ID)
 
 def nearby(query, near, radius, params):
     """Return X, Y and a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     sort_by_distance = str(int(poor.conf.guides.foursquare.sort_by_distance))
     x, y = prepare_point(near)
-    url = URL.format(CLIENT_ID=CLIENT_ID, **locals())
+    url = EXPLORE_URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)
     results = poor.AttrDict(results)
-    results = [dict(
+    results = [poor.AttrDict(
+        id=item.venue.id,
         title=item.venue.name,
-        description=parse_description(item),
-        text=parse_text(item),
-        link=parse_link(item),
+        link=get_link(item.venue.id),
         x=float(item.venue.location.lng),
         y=float(item.venue.location.lat),
     ) for item in itertools.chain.from_iterable(
         group["items"] for group in
         results.response.get("groups", [])
     )]
+    for result in results:
+        # We need separate API calls to get venue details.
+        url = VENUE_URL.format(id=result.id)
+        details = poor.http.get_json(url)
+        details = poor.AttrDict(details)
+        result.description = parse_description(details.response.venue)
+        result.text = parse_text(details.response.venue)
     if results and results[0]:
         cache[url] = copy.deepcopy((x, y, results))
     return x, y, results
 
-def parse_description(item):
-    """Parse description from search result `item`."""
+def parse_description(venue):
+    """Parse description from venue details."""
     description = []
     with poor.util.silent(Exception):
-        rating = float(item.venue.rating)
-        description.append("{:.1f}/10".format(rating))
+        description.append("{:.1f}/10".format(venue.rating))
     with poor.util.silent(Exception):
-        description.append(item.venue.categories[0].name)
+        description.append(venue.categories[0].name)
     with poor.util.silent(Exception):
-        description.append(item.venue.location.address)
+        description.append(venue.location.address)
     description = ", ".join(description)
-    with poor.util.silent(Exception):
-        description += "\n“{}”".format(item.tips[0].text)
-    return description
+    tip = parse_tip(venue) or venue.get("description") or ""
+    return "{}\n{}".format(description, tip).strip()
 
-def parse_link(item):
-    """Parse hyperlink from search result `item`."""
-    return ("http://foursquare.com/v/{}?ref={}"
-            .format(item.venue.id, CLIENT_ID))
-
-def parse_text(item):
-    """Parse blurb text from search result `item`."""
+def parse_text(venue):
+    """Parse blurb text from venue details."""
     lines = []
     with poor.util.silent(Exception):
-        lines.append('<font color="Theme.highlightColor">'
-                     '<big>{}</big>'
-                     '</font>'
-                     .format(html.escape(item.venue.name)))
-
+        lines.append((
+            '<font color="Theme.highlightColor">'
+            '<big>{}</big>'
+            '</font>'
+        ).format(html.escape(venue.name)))
     subtitle = []
     with poor.util.silent(Exception):
-        subtitle.append('<font color="Theme.highlightColor">'
-                        '<big>{:.1f}</big>'
-                        '</font>'
-                        '<small>&nbsp;/&nbsp;10</small>'
-                        .format(float(item.venue.rating)))
-
+        subtitle.append((
+            '<font color="Theme.highlightColor">'
+            '<big>{:.1f}</big>'
+            '</font>'
+            '<small>&nbsp;/&nbsp;10</small>'
+        ).format(venue.rating))
     with poor.util.silent(Exception):
-        category = html.escape(item.venue.categories[0].name)
+        category = html.escape(venue.categories[0].name)
         subtitle.append("<small>{}</small>".format(category))
     lines.append("&nbsp;&nbsp;".join(subtitle))
     with poor.util.silent(Exception):
-        quote = html.escape(item.tips[0].text)
-        lines.append("<small>“{}”</small>".format(quote))
+        tip = parse_tip(venue) or venue.get("description") or ""
+        if not tip: raise ValueError("No tip")
+        lines.append("<small>{}</small>".format(html.escape(tip)))
     return "<br>".join(lines)
+
+def parse_tip(venue):
+    """Return the top tip for `venue`."""
+    langs = [poor.util.get_default_language(), "en", ""]
+    for lang in langs:
+        for group in venue.tips.groups:
+            for item in group["items"]:
+                if item.lang == (lang or item.lang):
+                    return "“{}”".format(item.text)
 
 def prepare_point(point):
     """Return geocoded coordinates for `point`."""
