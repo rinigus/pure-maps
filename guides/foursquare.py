@@ -80,6 +80,7 @@ def nearby(query, near, radius, params):
     )]
     for result in results:
         # We need separate API calls to get venue details.
+        # TODO: Use ThreadPoolExecutor for concurrency.
         url = VENUE_URL.format(id=result.id)
         details = poor.http.get_json(url)
         details = poor.AttrDict(details)
