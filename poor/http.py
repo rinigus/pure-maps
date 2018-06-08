@@ -130,7 +130,7 @@ class ConnectionPool:
         self._alive = False
 
 
-pool = ConnectionPool(1)
+pool = ConnectionPool(10)
 
 
 def get(url, encoding=None, retry=1, headers=None):
