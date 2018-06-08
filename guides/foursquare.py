@@ -28,6 +28,8 @@ import itertools
 import poor
 import urllib.parse
 
+from concurrent.futures import ThreadPoolExecutor
+
 CONF_DEFAULTS = {"sort_by_distance": False}
 
 CLIENT_ID = "BP3KCWJXGQDXWVMYSVLWWRITMVZTG5XANJ43D2ZD0D5JMKCX"
@@ -58,6 +60,21 @@ def get_link(id):
     """Return hyperlink for venue with given `id`."""
     return "https://foursquare.com/v/{}?ref={}".format(id, CLIENT_ID)
 
+def inject_venue_details(results):
+    """Edit details of venues in-place to `results`."""
+    # We need separate API calls to get venue details.
+    # These are "premium" calls, aggressively rate-limited,
+    # returning HTTP 403 once the limit has been exhausted.
+    # https://developer.foursquare.com/docs/api/troubleshooting/rate-limits
+    with ThreadPoolExecutor(10) as executor:
+        urls = [VENUE_URL.format(id=x.id) for x in results]
+        details = executor.map(poor.http.get_json, urls)
+        details = list(map(poor.AttrDict, details))
+        venues = [x.response.venue for x in details]
+        for i in range(len(results)):
+            results[i].description = parse_description(venues[i])
+            results[i].text = parse_text(venues[i])
+
 def nearby(query, near, radius, params):
     """Return X, Y and a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
@@ -71,6 +88,8 @@ def nearby(query, near, radius, params):
     results = [poor.AttrDict(
         id=item.venue.id,
         title=item.venue.name,
+        description=parse_description(item.venue),
+        text=parse_text(item.venue),
         link=get_link(item.venue.id),
         x=float(item.venue.location.lng),
         y=float(item.venue.location.lat),
@@ -78,14 +97,8 @@ def nearby(query, near, radius, params):
         group["items"] for group in
         results.response.get("groups", [])
     )]
-    for result in results:
-        # We need separate API calls to get venue details.
-        # TODO: Use ThreadPoolExecutor for concurrency.
-        url = VENUE_URL.format(id=result.id)
-        details = poor.http.get_json(url)
-        details = poor.AttrDict(details)
-        result.description = parse_description(details.response.venue)
-        result.text = parse_text(details.response.venue)
+    with poor.util.silent(Exception, tb=True):
+        inject_venue_details(results)
     if results and results[0]:
         cache[url] = copy.deepcopy((x, y, results))
     return x, y, results
@@ -132,6 +145,8 @@ def parse_text(venue):
 
 def parse_tip(venue):
     """Return the top tip for `venue`."""
+    if not venue.get("tips"): return None
+    if not venue.tips.get("groups"): return None
     langs = [poor.util.get_default_language(), "en", ""]
     for lang in langs:
         for group in venue.tips.groups:
