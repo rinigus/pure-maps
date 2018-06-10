@@ -216,7 +216,7 @@ Page {
             TextSwitch {
                 id: rerouteSwitch
                 checked: enabled && app.conf.get("reroute")
-                enabled: map.route.mode === "car"
+                enabled: map.route.mode !== "transit"
                 text: app.tr("Reroute automatically")
                 onCheckedChanged: {
                     if (!rerouteSwitch.enabled) return;
