@@ -414,12 +414,12 @@ def round_distance(meters, n=2):
         if meters >= mile:
             return siground(meters/mile, n) * mile
         n = min(n, math.ceil(math.log10(meters/foot)))
-        return siground(meters/foot, n) * mile
+        return siground(meters/foot, n) * foot
     elif poor.conf.units == "british":
         if meters >= mile:
             return siground(meters/mile, n) * mile
         n = min(n, math.ceil(math.log10(meters/yard)))
-        return siground(meters/yard, n) * mile
+        return siground(meters/yard, n) * yard
     else: # Metric
         if meters >= 1000:
             return siground(meters/1000, n) * 1000
