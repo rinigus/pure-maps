@@ -34,6 +34,7 @@ class HistoryManager:
     def __init__(self):
         """Initialize a :class:`HistoryManager` instance."""
         self._path = os.path.join(poor.CONFIG_HOME_DIR, "search-history.json")
+        self._place_names = []
         self._place_types = []
         self._places = []
         self._read()
@@ -46,12 +47,24 @@ class HistoryManager:
         self.remove_place(place)
         self._places.insert(0, place)
 
+    def add_place_name(self, place_name):
+        """Add `place_name` to the list of place names."""
+        place_name = place_name.strip()
+        if not place_name: return
+        self.remove_place_name(place_name)
+        self._place_names.insert(0, place_name)
+
     def add_place_type(self, place_type):
         """Add `place_type` to the list of place types."""
         place_type = place_type.strip()
         if not place_type: return
         self.remove_place_type(place_type)
         self._place_types.insert(0, place_type)
+
+    @property
+    def place_names(self):
+        """Return a list of place names."""
+        return self._place_names[:]
 
     @property
     def place_types(self):
@@ -69,6 +82,7 @@ class HistoryManager:
             if os.path.isfile(self._path):
                 history = poor.util.read_json(self._path)
                 self._places = history.get("places", [])
+                self._place_names = history.get("place_names", [])
                 self._place_types = history.get("place_types", [])
         for place in self._places_blacklist:
             self.remove_place(place)
@@ -89,6 +103,13 @@ class HistoryManager:
             if self._places[i].lower() == place:
                 del self._places[i]
 
+    def remove_place_name(self, place_name):
+        """Remove `place_name` from the list of place names."""
+        place_name = place_name.strip().lower()
+        for i in reversed(range(len(self._place_names))):
+            if self._place_names[i].lower() == place_name:
+                del self._place_names[i]
+
     def remove_place_type(self, place_type):
         """Remove `place_type` from the list of place types."""
         place_type = place_type.strip().lower()
@@ -101,5 +122,6 @@ class HistoryManager:
         with poor.util.silent(Exception, tb=True):
             poor.util.write_json({
                 "places": self._places[:1000],
+                "place_names": self._place_names[:1000],
                 "place_types": self._place_types[:1000],
             }, self._path)

@@ -28,12 +28,14 @@ import urllib.parse
 URL_SEARCH = ("http://localhost:8553/v1/guide"
               "?limit={limit}"
               "&poitype={query}"
+              "&name={name}"
               "&radius={radius}"
               "&search={search}")
 
 URL_XY = ("http://localhost:8553/v1/guide"
           "?limit={limit}"
           "&poitype={query}"
+          "&name={name}"
           "&radius={radius}"
           "&lng={x}"
           "&lat={y}")
@@ -44,6 +46,8 @@ def nearby(query, near, radius, params):
     """Return X, Y and a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 50)
+    name = params.get("name", "")
+    name = urllib.parse.quote_plus(name)
     if isinstance(near, (list, tuple)):
         x, y = near[0], near[1]
         url = URL_XY.format(**locals())
