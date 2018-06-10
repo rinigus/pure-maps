@@ -245,7 +245,7 @@ ApplicationWindow {
         if (app.showNarrative === null)
             app.showNarrative = app.conf.get("show_narrative");
         app.navigationStatus.update(status);
-        if (app.navigationStatus.voiceUri)
+        if (app.navigationStatus.voiceUri && app.conf.get("voice_navigation"))
             sound.source = app.navigationStatus.voiceUri;
         app.navigationStatus.reroute && app.rerouteMaybe();
     }

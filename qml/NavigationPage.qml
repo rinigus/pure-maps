@@ -203,7 +203,7 @@ Page {
             TextSwitch {
                 id: voiceNavigationSwitch
                 checked: app.conf.get("voice_navigation")
-                enabled: !app.navigationActive
+                enabled: map.route.mode === "car"
                 text: app.tr("Voice navigation instructions")
                 onCheckedChanged: enabled && app.conf.set("voice_navigation", voiceNavigationSwitch.checked);
             }

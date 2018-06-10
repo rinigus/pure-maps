@@ -6,5 +6,6 @@ WhoGo Maps 0.93
 * [x] Raise maximum map scale to 2
 * [x] Adapt Foursquare provider to API changes
 * [x] Prioritise understandable languages in Foursquare tips (#24)
+* [x] Allow toggling voice navigation while navigation is active (#32)
 * [x] Fix display of non-metric distances in navigation (#29)
 * [x] Fix parsing negative coordinates in search query
