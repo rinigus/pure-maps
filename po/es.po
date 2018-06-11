@@ -418,7 +418,7 @@ msgstr "Iniciar"
 
 #: qml/NavigationPage.qml:66
 msgid "Reroute"
-msgstr "Recalcular ruta"
+msgstr "Recalcular"
 
 #: qml/NavigationPage.qml:78
 msgid "Clear"
