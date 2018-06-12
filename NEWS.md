@@ -1,3 +1,15 @@
+2018-06-12: WhoGo Maps 1.0
+==========================
+
+* Add Cartago Car map styles
+* Render the route polyline below map labels and symbols
+* Raise maximum map scale to 2
+* Adapt Foursquare provider to API changes
+* Prioritise understandable languages in Foursquare tips (#24)
+* Allow toggling voice navigation while navigation is active (#32)
+* Fix display of non-metric distances in navigation (#29)
+* Fix parsing negative coordinates in search query
+
 2018-03-25: WhoGo Maps 0.92
 ===========================
 

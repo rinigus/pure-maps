@@ -5,7 +5,7 @@
 %define __provides_exclude_from ^%{_datadir}/.*$
 
 Name: harbour-whogo-maps
-Version: 0.92
+Version: 1.0
 Release: 1
 Summary: Maps and navigation
 License: GPLv3+
