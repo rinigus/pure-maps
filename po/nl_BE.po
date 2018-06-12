@@ -10,25 +10,25 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-12 22:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Ricardo Breitkopf, 2018\n"
-"Language-Team: German (Germany) (https://www.transifex.com/otsaloma/teams/70314/de_DE/)\n"
+"Last-Translator: Nathan Follens, 2018\n"
+"Language-Team: Dutch (Belgium) (https://www.transifex.com/otsaloma/teams/70314/nl_BE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
+"Language: nl_BE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: poor/geocoder.py:85
 msgid "Point from geo link"
-msgstr "Punkt aus Geo-Link"
+msgstr "Punt van geolink"
 
 #: poor/geocoder.py:97
 msgid "Point from coordinates"
-msgstr "Punkt aus Koordinaten"
+msgstr "Punt van coördinaten"
 
 #: poor/geocoder.py:107 poor/guide.py:98 poor/router.py:101
 msgid "Connection timed out"
-msgstr "Zeitüberschreitung bei der Verbindung"
+msgstr "Time-out bij verbinding"
 
 #: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
 #: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
@@ -37,202 +37,204 @@ msgstr "Zeitüberschreitung bei der Verbindung"
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
 #: qml/RoutePointPage.qml:88 qml/RoutePointPage.qml:91
 msgid "Current position"
-msgstr "Derzeitige Position"
+msgstr "Huidige positie"
 
 #: poor/narrative.py:124
 #, python-brace-format
 msgid "In {distance}, {direction}"
-msgstr "In {distance}, {direction}"
+msgstr "Over {distance}, {direction}"
 
 #: poor/narrative.py:391 qml/whogo-maps.qml:142
 msgid "Rerouting"
-msgstr "Neuberechnung"
+msgstr "Route wordt herberekend"
 
 #: poor/narrative.py:392 qml/whogo-maps.qml:164
 msgid "Rerouting failed"
-msgstr "Neuberechnung fehlgeschlagen"
+msgstr "Routeherberekening mislukt"
 
 #: poor/narrative.py:393 qml/whogo-maps.qml:158
 msgid "New route found"
-msgstr "Neue Route gefunden"
+msgstr "Nieuwe route gevonden"
 
 #: poor/util.py:190 poor/util.py:209
 msgid "miles"
-msgstr "Meilen"
+msgstr "mijl"
 
 #: poor/util.py:191
 msgid "feet"
-msgstr "Fuß"
+msgstr "voet"
 
 #: poor/util.py:210
 msgid "yards"
-msgstr "Yards"
+msgstr "yard"
 
 #: poor/util.py:228
 msgid "meters"
-msgstr "Meter"
+msgstr "meter"
 
 #: poor/util.py:229
 msgid "kilometers"
-msgstr "Kilometer"
+msgstr "kilometer"
 
 #: poor/util.py:239 poor/util.py:247
 #, python-brace-format
 msgid "{distance} north"
-msgstr "{distance} nördlich"
+msgstr "{distance} noord"
 
 #: poor/util.py:240
 #, python-brace-format
 msgid "{distance} north-east"
-msgstr "{distance} nordöstlich"
+msgstr "{distance} noordoost"
 
 #: poor/util.py:241
 #, python-brace-format
 msgid "{distance} east"
-msgstr "{distance} östlich"
+msgstr "{distance} oost"
 
 #: poor/util.py:242
 #, python-brace-format
 msgid "{distance} south-east"
-msgstr "{distance} südöstlich"
+msgstr "{distance} zuidoost"
 
 #: poor/util.py:243
 #, python-brace-format
 msgid "{distance} south"
-msgstr "{distance} südlich"
+msgstr "{distance} zuid"
 
 #: poor/util.py:244
 #, python-brace-format
 msgid "{distance} south-west"
-msgstr "{distance} südwestlich"
+msgstr "{distance} zuidwest"
 
 #: poor/util.py:245
 #, python-brace-format
 msgid "{distance} west"
-msgstr "{distance} westlich"
+msgstr "{distance} west"
 
 #: poor/util.py:246
 #, python-brace-format
 msgid "{distance} north-west"
-msgstr "{distance} nordwestlich"
+msgstr "{distance} noordwest"
 
 #: poor/util.py:268
 msgid "{:d} min"
-msgstr "{:d} Min."
+msgstr "{:d} min"
 
 #: poor/util.py:269
 msgid "{:d} h {:d} min"
-msgstr "{:d} Std. {:d} Min."
+msgstr "{:d} u {:d} min"
 
 #: routers/digitransit.py:58
 msgid "airplane"
-msgstr "Flugzeug"
+msgstr "vliegtuig"
 
 #: routers/digitransit.py:59 standard input:11 standard input:13
 msgid "bicycle"
-msgstr "Fahrrad"
+msgstr "fiets"
 
 #: routers/digitransit.py:60
 msgid "bus"
-msgstr "Bus"
+msgstr "bus"
 
 #: routers/digitransit.py:61
 msgid "ferry"
-msgstr "Fähre"
+msgstr "veerboot"
 
 #: routers/digitransit.py:62
 msgid "train"
-msgstr "Zug"
+msgstr "trein"
 
 #: routers/digitransit.py:63
 msgid "metro"
-msgstr "U-Bahn"
+msgstr "metro"
 
 #: routers/digitransit.py:64
 msgid "tram"
-msgstr "Straßenbahn"
+msgstr "tram"
 
 #: routers/digitransit.py:65
 msgid "walk"
-msgstr "Zu Fuß"
+msgstr "te voet"
 
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr "Gehe in Richtung {arr_name}."
+msgstr "Wandel naar {arr_name}."
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get a city bike at {dep_name}."
-msgstr "Hol dir ein Leihrad bei {dep_name}."
+msgstr "Haal ne stadsfiets bij {dep_name}."
 
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "Nimm {mode_name} {line_desc} bei {dep_name} um {dep_time}."
+msgstr "Stap in op {mode_name} {line_desc} te {dep_name} om {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr "Gehe in Richtung deines Zielorts."
+msgstr "Wandel naar uw bestemming."
 
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "Gib das Leihrad bei {dep_name} ab und gehe in Richtung {arr_name}."
+msgstr "Laat de stadsfiets achter bij {dep_name} en wandel naar {arr_name}."
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr "Gib das Leihrad bei {dep_name} ab und gehe zu deinem Ziel."
+msgstr ""
+"Laat de stadsfiets achter bij {dep_name} en wandel naar uw bestemming."
 
 #: routers/digitransit.py:76
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Steige bei {dep_name} aus und gehe in Richtung {arr_name}."
+msgstr "Stap uit te {dep_name} en wandel naar {arr_name}."
 
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Steige bei {dep_name} aus und radle in Richtung {arr_name}."
+msgstr "Stap uit te {dep_name} en fiets naar {arr_name}."
 
 #: routers/digitransit.py:78
 #, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr ""
-"Steige bei {dep_name} um in {mode_name} {line_desc} , Abfahrt {dep_time}."
+"Stap uit te {dep_name} en stap over op {mode_name} {line_desc} om "
+"{dep_time}."
 
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Steige bei {dep_name} aus und gehe in Richtung Zielort."
+msgstr "Stap uit te {dep_name} en wandel naar uw bestemming."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
-msgstr "Ziel erreicht."
+msgstr "Kom aan op uw bestemming."
 
 #: guides/foursquare_settings.qml:26
 msgid "Prefer"
-msgstr "Bevorzuge"
+msgstr "Verkiezen"
 
 #: guides/foursquare_settings.qml:28
 msgid "Closest"
-msgstr "Nächste"
+msgstr "Dichtstbij"
 
 #: guides/foursquare_settings.qml:29
 msgid "Best"
-msgstr "Beste"
+msgstr "Best"
 
 #: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
 #: qml/RoutePointPage.qml:55
 msgid "Remove"
-msgstr "Entferne"
+msgstr "Verwijderen"
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
 #: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
 #: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
 msgid "Search"
-msgstr "Suche"
+msgstr "Zoeken"
 
 #: guides/osmscout_name.qml:102
 msgid "You can search for venues by name."
@@ -244,31 +246,31 @@ msgstr ""
 
 #: qml/AboutPage.qml:36
 msgid "About WhoGo Maps"
-msgstr "Über WhoGo Maps"
+msgstr "Over WhoGo Maps"
 
 #: qml/AboutPage.qml:42
 msgid "version %1"
-msgstr "Version %1"
+msgstr "versie %1"
 
 #: qml/AboutPage.qml:49
 msgid "GitHub page"
-msgstr "GitHub Seite"
+msgstr "GitHub-pagina"
 
 #: qml/AboutPage.qml:66
 msgid ""
 "WhoGo Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
-"WhoGo Maps ist eine kostenlose Software, die unter der GNU General Public "
-"License (GPL), Version 3 oder später veröffentlicht wird."
+"WhoGo Maps is vrije software, uitgebracht onder de GNU General Public "
+"License (GPL), versie 3 of later."
 
 #: qml/AboutPage.qml:74
 msgid "Donate via PayPal"
-msgstr "Spenden über PayPal"
+msgstr "Doneren via PayPal"
 
 #: qml/AboutPage.qml:79
 msgid "Translated by"
-msgstr "Übersetzt von"
+msgstr "Vertaald door"
 
 #. TRANSLATORS: This is a special message that shouldn't be translated
 #. literally. It is used in the about page to give credits to the translators.
@@ -277,162 +279,162 @@ msgstr "Übersetzt von"
 #. write them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:91
 msgid "translator-credits"
-msgstr "Übersetzer"
+msgstr "Nathan Follens"
 
 #: qml/AboutPage.qml:101
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
-"Du kannst über Transifex neue Übersetzungen hinzufügen oder zu vorhandenen "
-"beitragen."
+"Ge kunt vertalingen voor de gebruikersinterface toevoegen of bijwerken op "
+"Transifex."
 
 #: qml/AboutPage.qml:109
 msgid "Transifex page"
-msgstr "Transifex Seite"
+msgstr "Transifex-pagina"
 
 #: qml/AttributionPage.qml:36
 msgid "Attribution"
-msgstr "Zuordnung"
+msgstr "Naamsvermelding"
 
 #: qml/AttributionPage.qml:40 qml/BasemapPage.qml:29 qml/MenuPage.qml:107
 msgid "Maps"
-msgstr "Karten"
+msgstr "Kaarten"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
-msgstr "Orte"
+msgstr "Plaatsen"
 
 #: qml/AttributionPage.qml:116 qml/MenuPage.qml:55 qml/NavigationPage.qml:39
 #: qml/RoutePage.qml:48
 msgid "Navigation"
-msgstr "Navigation"
+msgstr "Navigatie"
 
 #: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
-msgstr "Benutze"
+msgstr "Gebruikt"
 
 #: qml/GeocodePage.qml:119 qml/RoutePointPage.qml:119
 msgid ""
 "You can search by address, locality, landmark and many other terms. For best"
 " results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
-"Du kannst nach Adressen, Orten, Wahrzeichen und vielen anderen Begriffen "
-"suchen. Für die besten Ergebnisse gibt eine Region mit an, z.B. \"Adresse, "
-"Stadt\" oder \"Stadt, Land\"."
+"Ge kunt zoeken op adres, plaats, oriëntatiepunt, en vele andere termen. Voor"
+" de beste resultaten kunt ge een regio toevoegen, bv. “adres, stad” of "
+"“stad, land”."
 
 #: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
 #: routers/digitransit_settings.qml:181
 msgid "Default"
-msgstr "Voreinstellung"
+msgstr "Standaard"
 
 #: qml/GeocoderPage.qml:75 qml/GuidePage.qml:75 qml/RouterPage.qml:75
 msgid "Alternatives"
-msgstr "Alternativen"
+msgstr "Alternatieven"
 
 #: qml/GeocodingResultsPage.qml:94 qml/NearbyResultsPage.qml:94
 msgid "Show all"
-msgstr "Zeige alle"
+msgstr "Toon alles"
 
 #: qml/GeocodingResultsPage.qml:132 qml/NearbyResultsPage.qml:132
 #: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
 #: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
 msgid "Searching"
-msgstr "Am Suchen"
+msgstr "Bezig met zoeken"
 
 #: qml/GeocodingResultsPage.qml:154 qml/NearbyResultsPage.qml:151
 msgid "%1 Results"
-msgstr "%1 Ergebnisse"
+msgstr "%1 resultaten"
 
 #: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
 #: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
 #: routers/osmscout_results.qml:58 routers/osrm_results.qml:58
 msgid "No results"
-msgstr "Keine Ergebnisse"
+msgstr "Geen resultaten"
 
 #: qml/Map.qml:406
 msgid "Voice navigation on"
-msgstr "Sprachnavigation an"
+msgstr "Stemnavigatie aan"
 
 #: qml/Map.qml:502
 msgid "Auto-center off"
-msgstr "Autozentrierung aus"
+msgstr "Automatisch centreren uit"
 
 #: qml/Map.qml:505
 msgid "Auto-center on"
-msgstr "Autozentrierung an"
+msgstr "Automatisch centreren aan"
 
 #: qml/MapGestureArea.qml:53 qml/MapGestureArea.qml:54
 msgid "Unnamed point"
-msgstr "Namenloser Punkt"
+msgstr "Punt zonder naam"
 
 #: qml/MenuPage.qml:61
 msgid "Nearby venues"
-msgstr "Nahegelegene Orte"
+msgstr "Plaatsen dichtbij"
 
 #: qml/MenuPage.qml:67
 msgid "Share current position"
-msgstr "Teile derzeitige Position"
+msgstr "Huidige positie delen"
 
 #: qml/MenuPage.qml:82
 msgid "Share Current Position"
-msgstr "Teile derzeitige Position"
+msgstr "Huidige positie delen"
 
 #: qml/MenuPage.qml:89
 msgid "Center on current position"
-msgstr "Zentriere auf derzeitige Position"
+msgstr "Centreren op huidige locatie"
 
 #: qml/MenuPage.qml:98
 msgid "Clear map"
-msgstr "Karte leeren"
+msgstr "Kaart wissen"
 
 #: qml/MenuPage.qml:116
 msgid "Auto-center on position"
-msgstr "Zentriere Position automatisch"
+msgstr "Automatisch centreren op positie"
 
 #: qml/MenuPage.qml:133
 msgid "Auto-rotate on direction"
-msgstr "Drehe Ansicht je nach Richtung"
+msgstr "Automatisch meedraaien op richting"
 
 #: qml/MenuPage.qml:148
 msgid "About"
-msgstr "Über"
+msgstr "Over"
 
 #: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
 msgid "Preferences"
-msgstr "Einstellungen"
+msgstr "Voorkeuren"
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."
-msgstr "Weiter zu %1."
+msgstr "Ga door voor %1."
 
 #: qml/NarrativePage.qml:103
 msgid "Maneuvers"
-msgstr "Manövrieren"
+msgstr "Maneuvers"
 
 #: qml/NavigationBlock.qml:88
 msgid "Tap to review maneuvers or begin navigating"
-msgstr "Tippen, um Einstellungen anzupassen oder die Navigation zu starten"
+msgstr "Tik om maneuvers na te kijken of navigatie te beginnen"
 
 #: qml/NavigationPage.qml:54
 msgid "Pause"
-msgstr "Pause"
+msgstr "Pauzeren"
 
 #: qml/NavigationPage.qml:55
 msgid "Resume"
-msgstr "Fortsetzen"
+msgstr "Hervatten"
 
 #: qml/NavigationPage.qml:55
 msgid "Begin"
-msgstr "Beginne"
+msgstr "Beginnen"
 
 #: qml/NavigationPage.qml:66
 msgid "Reroute"
-msgstr "Umleiten"
+msgstr "Herberekenen"
 
 #: qml/NavigationPage.qml:78
 msgid "Clear"
-msgstr "Route löschen"
+msgstr "Wissen"
 
 #: qml/NavigationPage.qml:89
 msgid "Status"
@@ -440,72 +442,72 @@ msgstr "Status"
 
 #: qml/NavigationPage.qml:137
 msgid "Remaining"
-msgstr "Verbleibend"
+msgstr "Resterend"
 
 #: qml/NavigationPage.qml:168
 msgid "Total"
-msgstr "Gesamt"
+msgstr "Totaal"
 
 #: qml/NavigationPage.qml:190
 msgid "Options"
-msgstr "Optionen"
+msgstr "Opties"
 
 #: qml/NavigationPage.qml:196
 msgid "Show navigation instructions"
-msgstr "Zeige Navigationsanweisungen"
+msgstr "Navigatie-instructies weergeven"
 
 #: qml/NavigationPage.qml:207
 msgid "Voice navigation instructions"
-msgstr "Sprachausgabe"
+msgstr "Stemnavigatie-instructies"
 
 #: qml/NavigationPage.qml:220
 msgid "Reroute automatically"
-msgstr "Automatisch neuberechnen"
+msgstr "Route automatisch herberekenen"
 
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
-msgstr "Nahegelegene Orte"
+msgstr "Plaatsen dichtbij"
 
 #: qml/NearbyPage.qml:78
 msgid "Near"
-msgstr "Nähe"
+msgstr "Dichtbij"
 
 #: qml/NearbyPage.qml:111 routers/mapquest_open_settings.qml:26
 #: routers/osmscout_settings.qml:26
 msgid "Type"
-msgstr "Typ"
+msgstr "Type"
 
 #: qml/NearbyPage.qml:126
 msgid "Radius"
-msgstr "Radius"
+msgstr "Straal"
 
 #: qml/NorthArrow.qml:53
 msgid "Auto-rotate on"
-msgstr "Automatische Drehung an"
+msgstr "Automatisch draaien aan"
 
 #: qml/NorthArrow.qml:54
 msgid "Auto-rotate off"
-msgstr "Automatische Drehung aus"
+msgstr "Automatisch draaien uit"
 
 #: qml/PlaceTypePage.qml:104
 msgid "You can search for venues by type or name."
-msgstr "Du kannst nach dem Typ oder dem Namen eines Orts suchen."
+msgstr "Ge kunt zoeken naar ontmoetingsplaatsen op type of naam."
 
 #: qml/PoiBubble.qml:60
 msgid "Navigate"
-msgstr "Navigiere"
+msgstr "Navigeren"
 
 #: qml/PoiBubble.qml:77
 msgid "Nearby"
-msgstr "In der Nähe"
+msgstr "Dichtbij"
 
 #: qml/PoiBubble.qml:94
 msgid "Share"
-msgstr "Teilen"
+msgstr "Delen"
 
 #: qml/PoiBubble.qml:100
 msgid "Share Location"
-msgstr "Ort teilen"
+msgstr "Locatie delen"
 
 #: qml/PoiBubble.qml:111
 msgid "Web"
@@ -513,63 +515,63 @@ msgstr "Web"
 
 #: qml/PreferencesPage.qml:42
 msgid "Only applies to vector maps."
-msgstr "Gilt nur für Vektorkarten."
+msgstr "Enkel van toepassing op vectorkaarten."
 
 #: qml/PreferencesPage.qml:43
 msgid "Tilt map when navigating"
-msgstr "Neige die Karte beim Navigieren"
+msgstr "Kaart kantelen tijdens navigatie"
 
 #: qml/PreferencesPage.qml:51
 msgid "Map scale"
-msgstr "Kartenskalierung"
+msgstr "Kaartschaal"
 
 #: qml/PreferencesPage.qml:66
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
-"Bevorzugtes Geschlecht für die Sprachnavigation. Nur von einigen Engines und"
-" Sprachen unterstützt."
+"Voorkeursgeslacht voor stemnavigatie. Wordt niet door alle machines en talen"
+" ondersteund."
 
 #: qml/PreferencesPage.qml:67
 msgid "Voice gender"
-msgstr "Stimme"
+msgstr "Geslacht van stem"
 
 #: qml/PreferencesPage.qml:69
 msgid "Male"
-msgstr "Männlich"
+msgstr "Man"
 
 #: qml/PreferencesPage.qml:70
 msgid "Female"
-msgstr "Weiblich"
+msgstr "Vrouw"
 
 #: qml/PreferencesPage.qml:85
 msgid ""
 "Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
-"Nur wirksam, wenn WhoGo Maps aktiv ist. Im Hintergrundbetrieb gelten die "
-"normalen geräteweiten einstellungen."
+"Geldt enkel wanneer WhoGo Maps actief is. Wanneer geminimaliseerd hangt "
+"slaapmodus af van normale apparaatsvoorkeuren."
 
 #: qml/PreferencesPage.qml:86
 msgid "Prevent sleep"
-msgstr "Verhindere Ruhemodus"
+msgstr "Slaap verhinderen"
 
 #: qml/PreferencesPage.qml:88
 msgid "Never"
-msgstr "Nie"
+msgstr "Nooit"
 
 #: qml/PreferencesPage.qml:89
 msgid "When navigating"
-msgstr "Während Navigation"
+msgstr "Tijdens navigatie"
 
 #: qml/PreferencesPage.qml:90
 msgid "Always"
-msgstr "Immer"
+msgstr "Altijd"
 
 #: qml/PreferencesPage.qml:106
 msgid "Units"
-msgstr "Einheiten"
+msgstr "Eenheden"
 
 #: qml/PreferencesPage.qml:108
 msgid "Metric"
@@ -577,67 +579,67 @@ msgstr "Metrisch"
 
 #: qml/PreferencesPage.qml:109
 msgid "American"
-msgstr "Amerikanisch"
+msgstr "Amerikaans"
 
 #: qml/PreferencesPage.qml:110
 msgid "British"
-msgstr "Britisch"
+msgstr "Brits"
 
 #: qml/PreferencesPage.qml:131
 msgid "Clear cache"
-msgstr "Cache leeren"
+msgstr "Cachegeheugen wissen"
 
 #: qml/RoutePage.qml:68
 msgid "From"
-msgstr "Von"
+msgstr "Van"
 
 #: qml/RoutePage.qml:101
 msgid "To"
-msgstr "Nach"
+msgstr "Naar"
 
 #: qml/RoutePage.qml:151
 msgid "Reverse endpoints"
-msgstr "Tausche Endpunkte"
+msgstr "Eindpunten wisselen"
 
 #: qml/RouterPage.qml:66
 msgid "Modes: %1"
-msgstr "Arten: %1"
+msgstr "Modi: %1"
 
 #: qml/SharePage.qml:53
 msgid "SMS"
-msgstr "SMS"
+msgstr "Sms"
 
 #: qml/SharePage.qml:59 qml/SharePage.qml:91
 msgid "Message copied to the clipboard"
-msgstr "Nachricht in Zwischenablage kopiert"
+msgstr "Bericht gekopieerd naar klembord"
 
 #: qml/SharePage.qml:60
 msgid "Launching the Messages application"
-msgstr "Öffne das Nachrichtenprogramm"
+msgstr "Berichten wordt gestart"
 
 #: qml/SharePage.qml:75
 msgid "Email"
-msgstr "E-Mail"
+msgstr "E-mail"
 
 #: qml/SharePage.qml:78
 msgid "Launching the Email application"
-msgstr "Öffne das E-Mail Programm"
+msgstr "E-mail wordt gestart"
 
 #: qml/SharePage.qml:88
 msgid "Other"
-msgstr "Sonstiges"
+msgstr "Andere"
 
 #: qml/whogo-maps.qml:154
 msgid "Rerouting failed: %1"
-msgstr "Neuberechnung fehlgeschlagen: %1"
+msgstr "Routeherberekening mislukt: %1"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
-msgstr "Route %1. Gesamt %2"
+msgstr "Route %1. totaal %2"
 
 #: routers/digitransit_results.qml:155
 msgid "Walk %1"
-msgstr "Gehen %1"
+msgstr "Wandel voor %1"
 
 #: routers/digitransit_results.qml:156
 msgid "%1 → %2"
@@ -645,11 +647,11 @@ msgstr "%1 → %2"
 
 #: routers/digitransit_results.qml:239
 msgid "Results"
-msgstr "Ergebnisse"
+msgstr "Resultaten"
 
 #: routers/digitransit_settings.qml:28
 msgid "Region"
-msgstr "Region"
+msgstr "Regio"
 
 #: routers/digitransit_settings.qml:30
 msgid "HSL"
@@ -661,36 +663,36 @@ msgstr "Waltti"
 
 #: routers/digitransit_settings.qml:32
 msgid "Finland"
-msgstr "Finnland"
+msgstr "Finland"
 
 #: routers/digitransit_settings.qml:70 routers/digitransit_settings.qml:75
 #: routers/digitransit_settings.qml:80
 msgid "Depart"
-msgstr "Abreise"
+msgstr "Vertrek"
 
 #: routers/digitransit_settings.qml:76
 msgid "Arrive"
-msgstr "Ankunft"
+msgstr "Aankomst"
 
 #: routers/digitransit_settings.qml:107
 msgid "Today"
-msgstr "Heute"
+msgstr "Vandaag"
 
 #: routers/digitransit_settings.qml:150
 msgid "Now"
-msgstr "Jetzt"
+msgstr "Nu"
 
 #: routers/digitransit_settings.qml:179
 msgid "Criterion"
-msgstr "Kriterium"
+msgstr "Criterium"
 
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
-msgstr "Möglichst wenige Umstiege"
+msgstr "Minst overstappen"
 
 #: routers/digitransit_settings.qml:183
 msgid "Least walking"
-msgstr "Möglichst wenig laufen"
+msgstr "Minst wandelen"
 
 #: routers/mapquest_open_settings.qml:28 routers/osmscout_settings.qml:28
 msgid "Car"
@@ -698,39 +700,39 @@ msgstr "Auto"
 
 #: routers/mapquest_open_settings.qml:29 routers/osmscout_settings.qml:29
 msgid "Bicycle"
-msgstr "Fahrrad"
+msgstr "Fiets"
 
 #: routers/mapquest_open_settings.qml:30 routers/osmscout_settings.qml:30
 msgid "Foot"
-msgstr "Zu Fuß"
+msgstr "Te voet"
 
 #: routers/mapquest_open_settings.qml:48
 msgid "Try to avoid tolls"
-msgstr "Versuche, Mautstrecken zu vermeiden"
+msgstr "Probeer tol te vermijden"
 
 #: routers/mapquest_open_settings.qml:57 routers/osmscout_settings.qml:45
 msgid "Language"
-msgstr "Sprache"
+msgstr "Taal"
 
 #: routers/mapquest_open_settings.qml:61
 msgid "English (UK)"
-msgstr "Englisch (UK)"
+msgstr "Engels (VK)"
 
 #: routers/mapquest_open_settings.qml:62
 msgid "English (US)"
-msgstr "Englisch (US)"
+msgstr "Engels (VS)"
 
 #: routers/mapquest_open_settings.qml:63
 msgid "French (Canada)"
-msgstr "Fränzösisch (Kanada)"
+msgstr "Frans (Canada)"
 
 #: routers/mapquest_open_settings.qml:64
 msgid "French (France)"
-msgstr "Französisch (Frankreich)"
+msgstr "Frans (Frankrijk)"
 
 #: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:52
 msgid "German"
-msgstr "Deutsch"
+msgstr "Duits"
 
 #: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:55
 msgid "Russian"
@@ -738,23 +740,23 @@ msgstr "Russisch"
 
 #: routers/mapquest_open_settings.qml:67
 msgid "Spanish (Mexico)"
-msgstr "Spanisch (Mexiko)"
+msgstr "Spaans (Mexico)"
 
 #: routers/mapquest_open_settings.qml:68
 msgid "Spanish (Spain)"
-msgstr "Spanisch (Spanien)"
+msgstr "Spaans (Spanje)"
 
 #: routers/osmscout_settings.qml:49
 msgid "Catalan"
-msgstr "Katalanisch"
+msgstr "Catalaans"
 
 #: routers/osmscout_settings.qml:50
 msgid "Czech"
-msgstr "Tchechisch"
+msgstr "Tsjechisch"
 
 #: routers/osmscout_settings.qml:51
 msgid "English"
-msgstr "Englisch"
+msgstr "Engels"
 
 #: routers/osmscout_settings.qml:53
 msgid "Hindi"
@@ -762,60 +764,60 @@ msgstr "Hindi"
 
 #: routers/osmscout_settings.qml:54
 msgid "Italian"
-msgstr "Italienisch"
+msgstr "Italiaans"
 
 #: routers/osmscout_settings.qml:56
 msgid "Slovenian"
-msgstr "Slowenisch"
+msgstr "Sloveens"
 
 #: routers/osmscout_settings.qml:57
 msgid "Spanish"
-msgstr "Spanisch"
+msgstr "Spaans"
 
 #: routers/osmscout_settings.qml:58
 msgid "Swedish"
-msgstr "Schwedisch"
+msgstr "Zweeds"
 
 #: qml/js/util.js:79
 msgid "%1 (default)"
-msgstr "%1 (Voreinstellung)"
+msgstr "%1 (standaard)"
 
 #: standard input:1
 msgid "Search in Finland"
-msgstr "Suche in Finnland"
+msgstr "Zoeken in Finland"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr "Suche nach offenen Datenquellen"
+msgstr "Zoeken gebaseerd op opengegevensbronnen"
 
 #: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
-msgstr "Suche nach OpenStreetMap-Daten"
+msgstr "Zoeken gebaseerd op OpenStreetMap-gegevens"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr "Von Foursquare-Nutzern eingetragene und geprüfte Orte "
+msgstr "Plaatsen opgelijst en beoordeeld door Foursquare-gebruikers"
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
-msgstr "Sehenswürdigkeiten aus OpenStreetMap"
+msgstr "Bezienswaardigheden uit OpenStreetMap-gegevens"
 
 #: standard input:8
 msgid "Public transport routing in Finland"
-msgstr "ÖPNV-Routing in Finnland"
+msgstr "Routering voor openbaar vervoer in Finland"
 
 #: standard input:9
 msgid "public transport"
-msgstr "ÖPNV"
+msgstr "openbaar vervoer"
 
 #: standard input:10 standard input:12 standard input:14
 msgid "Routing based on OpenStreetMap data"
-msgstr "Wegberechnung mit OpenStreetMap-Daten"
+msgstr "Routering gebaseerd op OpenStreetMap-gegevens"
 
 #: standard input:11 standard input:13 standard input:15
 msgid "car"
-msgstr "Auto"
+msgstr "auto"
 
 #: standard input:11 standard input:13
 msgid "foot"
-msgstr "Fuß"
+msgstr "te voet"

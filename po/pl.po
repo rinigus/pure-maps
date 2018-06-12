@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-25 20:20+0300\n"
+"POT-Creation-Date: 2018-06-12 22:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: A <hucul@o2.pl>, 2018\n"
 "Language-Team: Polish (https://www.transifex.com/otsaloma/teams/70314/pl/)\n"
@@ -31,7 +31,7 @@ msgid "Connection timed out"
 msgstr "Czas połączenia przekroczony"
 
 #: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
-#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:170 qml/NearbyPage.qml:180
+#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
 #: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:78
 #: qml/RoutePage.qml:86 qml/RoutePage.qml:111 qml/RoutePage.qml:119
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
@@ -225,6 +225,25 @@ msgstr "Najkrótsza"
 msgid "Best"
 msgstr "Najlepsza"
 
+#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
+#: qml/RoutePointPage.qml:55
+msgid "Remove"
+msgstr "Usuń"
+
+#: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
+#: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
+#: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
+msgid "Search"
+msgstr "Wyszukaj"
+
+#: guides/osmscout_name.qml:102
+msgid "You can search for venues by name."
+msgstr ""
+
+#: guides/osmscout_settings.qml:25
+msgid "Name"
+msgstr ""
+
 #: qml/AboutPage.qml:36
 msgid "About WhoGo Maps"
 msgstr "O WhoGo Maps"
@@ -282,11 +301,6 @@ msgstr "Przypisanie"
 msgid "Maps"
 msgstr "Mapy"
 
-#: qml/AttributionPage.qml:64 qml/GeocodePage.qml:79 qml/GeocodePage.qml:98
-#: qml/MenuPage.qml:46 qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
-msgid "Search"
-msgstr "Wyszukaj"
-
 #: qml/AttributionPage.qml:90
 msgid "Venues"
 msgstr "Miejsca"
@@ -295,10 +309,6 @@ msgstr "Miejsca"
 #: qml/RoutePage.qml:48
 msgid "Navigation"
 msgstr "Nawigacja"
-
-#: qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55 qml/RoutePointPage.qml:55
-msgid "Remove"
-msgstr "Usuń"
 
 #: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
@@ -342,15 +352,15 @@ msgstr "%1 Wyniki"
 msgid "No results"
 msgstr "Brak wyników"
 
-#: qml/Map.qml:392
+#: qml/Map.qml:406
 msgid "Voice navigation on"
 msgstr "Nawigacja głosowa włączona"
 
-#: qml/Map.qml:487
+#: qml/Map.qml:502
 msgid "Auto-center off"
 msgstr "Automatyczne wyśrodkowanie wyłączone"
 
-#: qml/Map.qml:490
+#: qml/Map.qml:505
 msgid "Auto-center on"
 msgstr "Automatyczne wyśrodkowanie włączone"
 
@@ -450,7 +460,7 @@ msgstr "Pokaż instrukcje nawigacji"
 msgid "Voice navigation instructions"
 msgstr "Instrukcje nawigacji głosowej"
 
-#: qml/NavigationPage.qml:215
+#: qml/NavigationPage.qml:220
 msgid "Reroute automatically"
 msgstr "Zmieniaj trasę automatycznie"
 

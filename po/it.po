@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-25 20:20+0300\n"
+"POT-Creation-Date: 2018-06-12 22:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Michele Claus <claus.miki@hotmail.it>, 2018\n"
+"Last-Translator: Watchmaker <alessandro.pra@gmail.com>, 2018\n"
 "Language-Team: Italian (https://www.transifex.com/otsaloma/teams/70314/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +31,7 @@ msgid "Connection timed out"
 msgstr "Time-out connessione"
 
 #: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
-#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:170 qml/NearbyPage.qml:180
+#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
 #: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:78
 #: qml/RoutePage.qml:86 qml/RoutePage.qml:111 qml/RoutePage.qml:119
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
@@ -225,6 +225,25 @@ msgstr "Più vicino"
 msgid "Best"
 msgstr "Migliore"
 
+#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
+#: qml/RoutePointPage.qml:55
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
+#: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
+#: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
+msgid "Search"
+msgstr "Cerca"
+
+#: guides/osmscout_name.qml:102
+msgid "You can search for venues by name."
+msgstr ""
+
+#: guides/osmscout_settings.qml:25
+msgid "Name"
+msgstr ""
+
 #: qml/AboutPage.qml:36
 msgid "About WhoGo Maps"
 msgstr "Informazioni su WhoGo Maps"
@@ -276,16 +295,11 @@ msgstr "Pagina Transifex"
 
 #: qml/AttributionPage.qml:36
 msgid "Attribution"
-msgstr ""
+msgstr "Attribuzione"
 
 #: qml/AttributionPage.qml:40 qml/BasemapPage.qml:29 qml/MenuPage.qml:107
 msgid "Maps"
 msgstr "Mappe"
-
-#: qml/AttributionPage.qml:64 qml/GeocodePage.qml:79 qml/GeocodePage.qml:98
-#: qml/MenuPage.qml:46 qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
-msgid "Search"
-msgstr "Cerca"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
@@ -295,10 +309,6 @@ msgstr "Luoghi"
 #: qml/RoutePage.qml:48
 msgid "Navigation"
 msgstr "Navigazione"
-
-#: qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55 qml/RoutePointPage.qml:55
-msgid "Remove"
-msgstr "Rimuovi"
 
 #: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
@@ -342,15 +352,15 @@ msgstr "%1 Risultati"
 msgid "No results"
 msgstr "Nessun risultato"
 
-#: qml/Map.qml:392
+#: qml/Map.qml:406
 msgid "Voice navigation on"
 msgstr "Navigazione vocale attiva"
 
-#: qml/Map.qml:487
+#: qml/Map.qml:502
 msgid "Auto-center off"
 msgstr "Centra automaticamente attivo"
 
-#: qml/Map.qml:490
+#: qml/Map.qml:505
 msgid "Auto-center on"
 msgstr "Centra automaticamente disattivo"
 
@@ -450,7 +460,7 @@ msgstr "Mostra indicazioni"
 msgid "Voice navigation instructions"
 msgstr "Indicazioni vocali"
 
-#: qml/NavigationPage.qml:215
+#: qml/NavigationPage.qml:220
 msgid "Reroute automatically"
 msgstr "Ricalcola automaticamente"
 
@@ -734,39 +744,39 @@ msgstr "Spagnolo (Messico)"
 
 #: routers/mapquest_open_settings.qml:68
 msgid "Spanish (Spain)"
-msgstr ""
+msgstr "Spagnolo (Spagna)"
 
 #: routers/osmscout_settings.qml:49
 msgid "Catalan"
-msgstr ""
+msgstr "Catalano"
 
 #: routers/osmscout_settings.qml:50
 msgid "Czech"
-msgstr ""
+msgstr "Ceco"
 
 #: routers/osmscout_settings.qml:51
 msgid "English"
-msgstr ""
+msgstr "Inglese"
 
 #: routers/osmscout_settings.qml:53
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: routers/osmscout_settings.qml:54
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 #: routers/osmscout_settings.qml:56
 msgid "Slovenian"
-msgstr ""
+msgstr "Sloveno"
 
 #: routers/osmscout_settings.qml:57
 msgid "Spanish"
-msgstr ""
+msgstr "Spagnolo"
 
 #: routers/osmscout_settings.qml:58
 msgid "Swedish"
-msgstr ""
+msgstr "Svedese"
 
 #: qml/js/util.js:79
 msgid "%1 (default)"
@@ -774,15 +784,15 @@ msgstr "%1 (default)"
 
 #: standard input:1
 msgid "Search in Finland"
-msgstr ""
+msgstr "Cerca in Finlandia"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr ""
+msgstr "Cerca tra sorgenti di dati aperte"
 
 #: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
-msgstr ""
+msgstr "Cerca tra dati OpenStreetMap"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
@@ -810,4 +820,4 @@ msgstr "auto"
 
 #: standard input:11 standard input:13
 msgid "foot"
-msgstr ""
+msgstr "piede"

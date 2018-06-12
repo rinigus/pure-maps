@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-25 20:20+0300\n"
+"POT-Creation-Date: 2018-06-12 22:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2018\n"
+"Last-Translator: Jordi, 2018\n"
 "Language-Team: French (https://www.transifex.com/otsaloma/teams/70314/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +31,7 @@ msgid "Connection timed out"
 msgstr "Délai de connexion dépassé"
 
 #: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
-#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:170 qml/NearbyPage.qml:180
+#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
 #: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:78
 #: qml/RoutePage.qml:86 qml/RoutePage.qml:111 qml/RoutePage.qml:119
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
@@ -154,7 +154,7 @@ msgstr "tram"
 
 #: routers/digitransit.py:65
 msgid "walk"
-msgstr "marche"
+msgstr "marche à pied"
 
 #: routers/digitransit.py:69
 #, python-brace-format
@@ -178,36 +178,37 @@ msgstr "Marchez en direction de votre destination."
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "Déposez le vélo à {dep_name} et marchez en direction de {arr_name}."
+msgstr "Déposez le vélo à {dep_name} puis marchez en direction de {arr_name}."
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
 msgstr ""
-"Déposez le vélo à {dep_name} et marchez en direction de votre destination."
+"Déposez le vélo à {dep_name} puis marchez en direction de votre destination."
 
 #: routers/digitransit.py:76
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Descendez à {dep_name} et marchez en direction de {arr_name}."
+msgstr "Descendez à {dep_name} puis marchez en direction de {arr_name}."
 
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Descendez à {dep_name} et roulez à vélo en direction de {arr_name}."
+msgstr "Descendez à {dep_name} puis roulez à vélo en direction de {arr_name}."
 
 #: routers/digitransit.py:78
 #, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr ""
-"Descendez à {dep_name} et changez pour le {mode_name} {line_desc} à "
+"Descendez à {dep_name} puis changez pour le {mode_name} {line_desc} à "
 "{dep_time}."
 
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Descendez à {dep_name} et marchez en direction de votre destination."
+msgstr ""
+"Descendez à {dep_name} puis marchez en direction de votre destination."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
@@ -215,19 +216,38 @@ msgstr "Arrivée imminente."
 
 #: guides/foursquare_settings.qml:26
 msgid "Prefer"
-msgstr "Préférer"
+msgstr "Filtre"
 
 #: guides/foursquare_settings.qml:28
 msgid "Closest"
-msgstr "Plus proche"
+msgstr "Le plus proche"
 
 #: guides/foursquare_settings.qml:29
 msgid "Best"
-msgstr "Meilleur"
+msgstr "Le meilleur"
+
+#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
+#: qml/RoutePointPage.qml:55
+msgid "Remove"
+msgstr "Supprimer"
+
+#: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
+#: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
+#: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
+msgid "Search"
+msgstr "Rechercher"
+
+#: guides/osmscout_name.qml:102
+msgid "You can search for venues by name."
+msgstr ""
+
+#: guides/osmscout_settings.qml:25
+msgid "Name"
+msgstr ""
 
 #: qml/AboutPage.qml:36
 msgid "About WhoGo Maps"
-msgstr ""
+msgstr "À propos de WhoGo Maps"
 
 #: qml/AboutPage.qml:42
 msgid "version %1"
@@ -242,6 +262,8 @@ msgid ""
 "WhoGo Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
+"WhoGo Maps est un logiciel libre publié sous Licence Publique Générale (GPL)"
+" GNU, version 3 ou ultérieure."
 
 #: qml/AboutPage.qml:74
 msgid "Donate via PayPal"
@@ -274,29 +296,20 @@ msgstr "Page Transifex"
 
 #: qml/AttributionPage.qml:36
 msgid "Attribution"
-msgstr ""
+msgstr "Attribution"
 
 #: qml/AttributionPage.qml:40 qml/BasemapPage.qml:29 qml/MenuPage.qml:107
 msgid "Maps"
-msgstr ""
-
-#: qml/AttributionPage.qml:64 qml/GeocodePage.qml:79 qml/GeocodePage.qml:98
-#: qml/MenuPage.qml:46 qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
-msgid "Search"
-msgstr "Recherche"
+msgstr "Cartes"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
-msgstr ""
+msgstr "Lieux"
 
 #: qml/AttributionPage.qml:116 qml/MenuPage.qml:55 qml/NavigationPage.qml:39
 #: qml/RoutePage.qml:48
 msgid "Navigation"
 msgstr "Navigation"
-
-#: qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55 qml/RoutePointPage.qml:55
-msgid "Remove"
-msgstr "Supprimer"
 
 #: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
@@ -308,7 +321,7 @@ msgid ""
 " results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
 "Vous pouvez effectuer une recherche par adresse, localité, point de "
-"repère... et bien d'autres manières encore. Pour de meilleurs résultats, "
+"repère... ou bien d'autres manières encore. Pour de meilleurs résultats, "
 "pensez à inclure une localisation bien précise, par ex. \"adresse, ville\" "
 "ou \"ville, pays\"."
 
@@ -329,7 +342,7 @@ msgstr "Tout afficher"
 #: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
 #: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
 msgid "Searching"
-msgstr "Recherche"
+msgstr "Recherche en cours"
 
 #: qml/GeocodingResultsPage.qml:154 qml/NearbyResultsPage.qml:151
 msgid "%1 Results"
@@ -341,15 +354,15 @@ msgstr "%1 résultats"
 msgid "No results"
 msgstr "Aucun résultat"
 
-#: qml/Map.qml:392
+#: qml/Map.qml:406
 msgid "Voice navigation on"
 msgstr "Instructions vocales activées"
 
-#: qml/Map.qml:487
+#: qml/Map.qml:502
 msgid "Auto-center off"
 msgstr "Centrage automatique désactivé"
 
-#: qml/Map.qml:490
+#: qml/Map.qml:505
 msgid "Auto-center on"
 msgstr "Centrage automatique activé"
 
@@ -383,7 +396,7 @@ msgstr "Centrer sur la position"
 
 #: qml/MenuPage.qml:133
 msgid "Auto-rotate on direction"
-msgstr "Rotation auto sur la direction"
+msgstr "Rotation auto vers la direction"
 
 #: qml/MenuPage.qml:148
 msgid "About"
@@ -395,7 +408,7 @@ msgstr "Préférences"
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."
-msgstr "Continuer sur %1."
+msgstr "Continuez sur %1."
 
 #: qml/NarrativePage.qml:103
 msgid "Maneuvers"
@@ -449,7 +462,7 @@ msgstr "Afficher les instructions de navigation"
 msgid "Voice navigation instructions"
 msgstr "Voix des instructions vocales"
 
-#: qml/NavigationPage.qml:215
+#: qml/NavigationPage.qml:220
 msgid "Reroute automatically"
 msgstr "Dérouter automatiquement"
 
@@ -504,15 +517,15 @@ msgstr "Web"
 
 #: qml/PreferencesPage.qml:42
 msgid "Only applies to vector maps."
-msgstr ""
+msgstr "S'applique uniquement aux cartes vectorielles"
 
 #: qml/PreferencesPage.qml:43
 msgid "Tilt map when navigating"
-msgstr ""
+msgstr "Incliner la carte durant la navigation"
 
 #: qml/PreferencesPage.qml:51
 msgid "Map scale"
-msgstr ""
+msgstr "Echelle de la carte"
 
 #: qml/PreferencesPage.qml:66
 msgid ""
@@ -539,6 +552,8 @@ msgid ""
 "Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
+"S'applique uniquement lorsque WhoGo est actif. Une fois l'appli réduite, la "
+"veille est contrôlée par les préférences de l'appareil."
 
 #: qml/PreferencesPage.qml:86
 msgid "Prevent sleep"
@@ -558,7 +573,7 @@ msgstr "Toujours"
 
 #: qml/PreferencesPage.qml:106
 msgid "Units"
-msgstr "Unités"
+msgstr "Unité"
 
 #: qml/PreferencesPage.qml:108
 msgid "Metric"
@@ -574,7 +589,7 @@ msgstr "Anglaise"
 
 #: qml/PreferencesPage.qml:131
 msgid "Clear cache"
-msgstr ""
+msgstr "Vider le cache"
 
 #: qml/RoutePage.qml:68
 msgid "From"
@@ -586,7 +601,7 @@ msgstr "à"
 
 #: qml/RoutePage.qml:151
 msgid "Reverse endpoints"
-msgstr "Inverser Départ / Arrivée"
+msgstr "Inverser départ / arrivée"
 
 #: qml/RouterPage.qml:66
 msgid "Modes: %1"
@@ -610,7 +625,7 @@ msgstr "E-mail"
 
 #: qml/SharePage.qml:78
 msgid "Launching the Email application"
-msgstr "Démarrer l'application E-mail"
+msgstr "Démarrage de l'application E-mail"
 
 #: qml/SharePage.qml:88
 msgid "Other"
@@ -679,7 +694,7 @@ msgstr "Le moins de changements"
 
 #: routers/digitransit_settings.qml:183
 msgid "Least walking"
-msgstr "Le moins de marche"
+msgstr "Le moins de marche à pied"
 
 #: routers/mapquest_open_settings.qml:28 routers/osmscout_settings.qml:28
 msgid "Car"
@@ -775,7 +790,7 @@ msgstr "Rechercher en Finlande"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr "Recherche basée sur des données open sources"
+msgstr "Recherche basée sur des données open source"
 
 #: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
@@ -791,15 +806,15 @@ msgstr "Points d’intérêt issus de données OpenStreetmap"
 
 #: standard input:8
 msgid "Public transport routing in Finland"
-msgstr "Itinéraire de transports publics en Finlande"
+msgstr "Itinéraires des transports en commun finlandais"
 
 #: standard input:9
 msgid "public transport"
-msgstr "transport public"
+msgstr "transports en commun"
 
 #: standard input:10 standard input:12 standard input:14
 msgid "Routing based on OpenStreetMap data"
-msgstr "Itinéraire basé sur les données OpenStreetMap"
+msgstr "Itinéraires basés sur des données OpenStreetMap"
 
 #: standard input:11 standard input:13 standard input:15
 msgid "car"
