@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-12 22:34+0300\n"
+"POT-Creation-Date: 2018-06-16 16:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ricardo Breitkopf, 2018\n"
 "Language-Team: German (Germany) (https://www.transifex.com/otsaloma/teams/70314/de_DE/)\n"
@@ -56,71 +56,91 @@ msgstr "Neuberechnung fehlgeschlagen"
 msgid "New route found"
 msgstr "Neue Route gefunden"
 
-#: poor/util.py:190 poor/util.py:209
+#: poor/util.py:182 poor/util.py:200
+msgid "mi"
+msgstr ""
+
+#: poor/util.py:182 poor/util.py:200
 msgid "miles"
 msgstr "Meilen"
 
-#: poor/util.py:191
+#: poor/util.py:190
+msgid "ft"
+msgstr ""
+
+#: poor/util.py:190
 msgid "feet"
 msgstr "Fuß"
 
-#: poor/util.py:210
+#: poor/util.py:208
+msgid "yd"
+msgstr ""
+
+#: poor/util.py:208
 msgid "yards"
 msgstr "Yards"
 
-#: poor/util.py:228
-msgid "meters"
-msgstr "Meter"
+#: poor/util.py:218
+msgid "km"
+msgstr ""
 
-#: poor/util.py:229
+#: poor/util.py:218
 msgid "kilometers"
 msgstr "Kilometer"
 
-#: poor/util.py:239 poor/util.py:247
+#: poor/util.py:226
+msgid "m"
+msgstr ""
+
+#: poor/util.py:226
+msgid "meters"
+msgstr "Meter"
+
+#: poor/util.py:235 poor/util.py:243
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} nördlich"
 
-#: poor/util.py:240
+#: poor/util.py:236
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} nordöstlich"
 
-#: poor/util.py:241
+#: poor/util.py:237
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} östlich"
 
-#: poor/util.py:242
+#: poor/util.py:238
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} südöstlich"
 
-#: poor/util.py:243
+#: poor/util.py:239
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} südlich"
 
-#: poor/util.py:244
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} südwestlich"
 
-#: poor/util.py:245
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} westlich"
 
-#: poor/util.py:246
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} nordwestlich"
 
-#: poor/util.py:268
+#: poor/util.py:264
 msgid "{:d} min"
 msgstr "{:d} Min."
 
-#: poor/util.py:269
+#: poor/util.py:265
 msgid "{:d} h {:d} min"
 msgstr "{:d} Std. {:d} Min."
 
