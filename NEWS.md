@@ -1,3 +1,9 @@
+2018-06-18: WhoGo Maps 1.0.1
+============================
+
+* Make distance units translatable (#39)
+* Update translations
+
 2018-06-12: WhoGo Maps 1.0
 ==========================
 
