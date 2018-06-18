@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-16 16:41+0300\n"
+"POT-Creation-Date: 2018-06-18 23:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Вячеслав Диконов <sdiconov@mail.ru>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/otsaloma/teams/70314/ru/)\n"
@@ -64,7 +64,7 @@ msgstr "миль"
 msgid "miles"
 msgstr "миль"
 
-#: poor/util.py:190
+#: poor/util.py:190 qml/Meters.qml:71
 msgid "ft"
 msgstr "фт"
 
@@ -72,7 +72,7 @@ msgstr "фт"
 msgid "feet"
 msgstr "футов"
 
-#: poor/util.py:208
+#: poor/util.py:208 qml/Meters.qml:82
 msgid "yd"
 msgstr "ярд."
 
@@ -88,7 +88,7 @@ msgstr "км"
 msgid "kilometers"
 msgstr "километров"
 
-#: poor/util.py:226
+#: poor/util.py:226 qml/Meters.qml:93
 msgid "m"
 msgstr "м"
 
@@ -421,6 +421,14 @@ msgstr "О программе"
 #: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
 msgid "Preferences"
 msgstr "Настройка"
+
+#: qml/Meters.qml:71 qml/Meters.qml:82
+msgid "mph"
+msgstr ""
+
+#: qml/Meters.qml:93
+msgid "km/h"
+msgstr ""
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."

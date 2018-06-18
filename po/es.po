@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-16 16:41+0300\n"
+"POT-Creation-Date: 2018-06-18 23:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Carmen Fernández B., 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/otsaloma/teams/70314/es/)\n"
@@ -58,23 +58,23 @@ msgstr "Nueva ruta encontrada"
 
 #: poor/util.py:182 poor/util.py:200
 msgid "mi"
-msgstr ""
+msgstr "mi"
 
 #: poor/util.py:182 poor/util.py:200
 msgid "miles"
 msgstr "millas"
 
-#: poor/util.py:190
+#: poor/util.py:190 qml/Meters.qml:71
 msgid "ft"
-msgstr ""
+msgstr "ft"
 
 #: poor/util.py:190
 msgid "feet"
 msgstr "pies"
 
-#: poor/util.py:208
+#: poor/util.py:208 qml/Meters.qml:82
 msgid "yd"
-msgstr ""
+msgstr "yd"
 
 #: poor/util.py:208
 msgid "yards"
@@ -82,15 +82,15 @@ msgstr "yardas"
 
 #: poor/util.py:218
 msgid "km"
-msgstr ""
+msgstr "km"
 
 #: poor/util.py:218
 msgid "kilometers"
 msgstr "kilómetros"
 
-#: poor/util.py:226
+#: poor/util.py:226 qml/Meters.qml:93
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: poor/util.py:226
 msgid "meters"
@@ -421,6 +421,14 @@ msgstr "Acerca de"
 #: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
 msgid "Preferences"
 msgstr "Preferencias"
+
+#: qml/Meters.qml:71 qml/Meters.qml:82
+msgid "mph"
+msgstr "mph"
+
+#: qml/Meters.qml:93
+msgid "km/h"
+msgstr "km/h"
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."

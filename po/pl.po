@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-16 16:41+0300\n"
+"POT-Creation-Date: 2018-06-18 23:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: A <hucul@o2.pl>, 2018\n"
 "Language-Team: Polish (https://www.transifex.com/otsaloma/teams/70314/pl/)\n"
@@ -64,7 +64,7 @@ msgstr ""
 msgid "miles"
 msgstr "mile"
 
-#: poor/util.py:190
+#: poor/util.py:190 qml/Meters.qml:71
 msgid "ft"
 msgstr ""
 
@@ -72,7 +72,7 @@ msgstr ""
 msgid "feet"
 msgstr "stopy"
 
-#: poor/util.py:208
+#: poor/util.py:208 qml/Meters.qml:82
 msgid "yd"
 msgstr ""
 
@@ -88,7 +88,7 @@ msgstr ""
 msgid "kilometers"
 msgstr "kilometry"
 
-#: poor/util.py:226
+#: poor/util.py:226 qml/Meters.qml:93
 msgid "m"
 msgstr ""
 
@@ -423,6 +423,14 @@ msgstr "O Poor Maps"
 #: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
 msgid "Preferences"
 msgstr "Preferencje"
+
+#: qml/Meters.qml:71 qml/Meters.qml:82
+msgid "mph"
+msgstr ""
+
+#: qml/Meters.qml:93
+msgid "km/h"
+msgstr ""
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."

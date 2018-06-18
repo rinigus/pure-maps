@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-16 16:41+0300\n"
-"PO-Revision-Date: 2018-06-16 16:42+0300\n"
+"POT-Creation-Date: 2018-06-17 17:52+0300\n"
+"PO-Revision-Date: 2018-06-18 23:35+0300\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2016\n"
 "Language-Team: Finnish (https://www.transifex.com/otsaloma/teams/70314/fi/)\n"
 "Language: fi\n"
@@ -64,7 +64,7 @@ msgstr "mi"
 msgid "miles"
 msgstr "mailia"
 
-#: poor/util.py:190
+#: poor/util.py:190 qml/Meters.qml:71
 msgid "ft"
 msgstr "ft"
 
@@ -72,7 +72,7 @@ msgstr "ft"
 msgid "feet"
 msgstr "jalkaa"
 
-#: poor/util.py:208
+#: poor/util.py:208 qml/Meters.qml:82
 msgid "yd"
 msgstr "yd"
 
@@ -88,7 +88,7 @@ msgstr "km"
 msgid "kilometers"
 msgstr "kilometriä"
 
-#: poor/util.py:226
+#: poor/util.py:226 qml/Meters.qml:93
 msgid "m"
 msgstr "m"
 
@@ -425,6 +425,14 @@ msgstr "Tietoja"
 #: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
 msgid "Preferences"
 msgstr "Asetukset"
+
+#: qml/Meters.qml:71 qml/Meters.qml:82
+msgid "mph"
+msgstr "mph"
+
+#: qml/Meters.qml:93
+msgid "km/h"
+msgstr "km/h"
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."
