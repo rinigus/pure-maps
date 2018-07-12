@@ -27,7 +27,6 @@ import math
 import os
 import poor
 import random
-import re
 import shutil
 import stat
 import subprocess
@@ -177,58 +176,55 @@ def format_distance_american(feet, n=2, short=True):
     """Format `feet` to `n` significant digits and unit label."""
     if (n > 1 and feet >= 1000) or feet >= 5280:
         distance = feet / 5280
-        units = "mi"
+        ndigits = n - get_ndigits(distance)
+        distance = round(distance, ndigits)
+        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        units = _("mi") if short else _("miles")
+        return "{distance} {units}".format(**locals())
     else:
-        # Let's not use units less than a foot.
         distance = feet
-        units = "ft"
-    ndigits = n - math.ceil(math.log10(abs(max(1, distance)) + 1/1000000))
-    if units == "ft":
+        ndigits = n - get_ndigits(distance)
         ndigits = min(0, ndigits)
-    distance = round(distance, ndigits)
-    if not short:
-        units = re.sub("^mi$", _("miles"), units)
-        units = re.sub("^ft$", _("feet"), units)
-    fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
-    return fstring.format(distance, units)
+        distance = round(distance, ndigits)
+        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        units = _("ft") if short else _("feet")
+        return "{distance} {units}".format(**locals())
 
 def format_distance_british(yards, n=2, short=True):
     """Format `yards` to `n` significant digits and unit label."""
     if (n > 1 and yards >= 400) or yards >= 1760:
         distance = yards / 1760
-        units = "mi"
+        ndigits = n - get_ndigits(distance)
+        distance = round(distance, ndigits)
+        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        units = _("mi") if short else _("miles")
+        return "{distance} {units}".format(**locals())
     else:
-        # Let's not use units less than a yard.
         distance = yards
-        units = "yd"
-    ndigits = n - math.ceil(math.log10(abs(max(1, distance)) + 1/1000000))
-    if units == "yd":
+        ndigits = n - get_ndigits(distance)
         ndigits = min(0, ndigits)
-    distance = round(distance, ndigits)
-    if not short:
-        units = re.sub("^mi$", _("miles"), units)
-        units = re.sub("^yd$", _("yards"), units)
-    fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
-    return fstring.format(distance, units)
+        distance = round(distance, ndigits)
+        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        units = _("yd") if short else _("yards")
+        return "{distance} {units}".format(**locals())
 
 def format_distance_metric(meters, n=2, short=True):
     """Format `meters` to `n` significant digits and unit label."""
     if meters >= 1000:
         distance = meters / 1000
-        units = "km"
+        ndigits = n - get_ndigits(distance)
+        distance = round(distance, ndigits)
+        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        units = _("km") if short else _("kilometers")
+        return "{distance} {units}".format(**locals())
     else:
-        # Let's not use units less than a meter.
         distance = meters
-        units = "m"
-    ndigits = n - math.ceil(math.log10(abs(max(1, distance)) + 1/1000000))
-    if units == "m":
+        ndigits = n - get_ndigits(distance)
         ndigits = min(0, ndigits)
-    distance = round(distance, ndigits)
-    if not short:
-        units = re.sub("^m$", _("meters"), units)
-        units = re.sub("^km$", _("kilometers"), units)
-    fstring = "{{:.{:d}f}} {{}}".format(max(0, ndigits))
-    return fstring.format(distance, units)
+        distance = round(distance, ndigits)
+        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        units = _("m") if short else _("meters")
+        return "{distance} {units}".format(**locals())
 
 def format_distance_and_bearing(meters, bearing, n=2, short=True):
     """Format `meters` and `bearing` to a human readable string."""
@@ -293,6 +289,10 @@ def get_guides():
     return _get_providers("guides",
                           poor.conf.get_default("guide"),
                           poor.conf.guide)
+
+def get_ndigits(x):
+    """Return the amount of digits left of the decimal point in `x`."""
+    return math.ceil(math.log10(abs(max(1, x)) + 1/1000000))
 
 def get_provider_class(type):
     """Return provider class of given type."""
@@ -414,12 +414,12 @@ def round_distance(meters, n=2):
         if meters >= mile:
             return siground(meters/mile, n) * mile
         n = min(n, math.ceil(math.log10(meters/foot)))
-        return siground(meters/foot, n) * mile
+        return siground(meters/foot, n) * foot
     elif poor.conf.units == "british":
         if meters >= mile:
             return siground(meters/mile, n) * mile
         n = min(n, math.ceil(math.log10(meters/yard)))
-        return siground(meters/yard, n) * mile
+        return siground(meters/yard, n) * yard
     else: # Metric
         if meters >= 1000:
             return siground(meters/1000, n) * 1000

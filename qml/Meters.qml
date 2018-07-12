@@ -68,32 +68,35 @@ Item {
         // Update speed and positioning accuracy values in user's preferred units.
         if (!py.ready) return;
         if (app.conf.get("units") === "american") {
-            labels.text = " mph\n ft"
+            labels.text = " %1\n %2".arg(app.tr("mph")).arg(app.tr("ft"))
             var lines = ["—", "—"];
             if (gps.position.speedValid)
                 lines[0] = Math.round(gps.position.speed * 2.23694);
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy * 3.28084, 2);
+            lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
             values.doLayout();
 
         } else if (app.conf.get("units") === "british") {
-            labels.text = " mph\n yd"
+            labels.text = " %1\n %2".arg(app.tr("mph")).arg(app.tr("yd"))
             var lines = ["—", "—"];
             if (gps.position.speedValid)
                 lines[0] = Math.round(gps.position.speed * 2.23694);
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy * 1.09361, 2);
+            lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
             values.doLayout();
 
         } else {
-            labels.text = " km/h\n m"
+            labels.text = " %1\n %2".arg(app.tr("km/h")).arg(app.tr("m"))
             var lines = ["—", "—"];
             if (gps.position.speedValid)
                 lines[0] = Math.round(gps.position.speed * 3.6);
             if (gps.position.horizontalAccuracyValid)
                 lines[1] = Util.siground(gps.position.horizontalAccuracy, 2);
+            lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
             values.doLayout();
 

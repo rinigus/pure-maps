@@ -1,6 +1,6 @@
 *~
 .cache
-.tern-port
+.pytest_cache
 __pycache__
 dist
 rpm/*.rpm

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-25 20:20+0300\n"
-"PO-Revision-Date: 2018-03-25 20:20+0300\n"
+"POT-Creation-Date: 2018-06-17 17:52+0300\n"
+"PO-Revision-Date: 2018-06-18 23:35+0300\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2016\n"
 "Language-Team: Finnish (https://www.transifex.com/otsaloma/teams/70314/fi/)\n"
 "Language: fi\n"
@@ -31,7 +31,7 @@ msgid "Connection timed out"
 msgstr "Yhteys aikakatkaistiin"
 
 #: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
-#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:170 qml/NearbyPage.qml:180
+#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
 #: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:78
 #: qml/RoutePage.qml:86 qml/RoutePage.qml:111 qml/RoutePage.qml:119
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
@@ -56,71 +56,91 @@ msgstr "Uudelleenreititys epäonnistui"
 msgid "New route found"
 msgstr "Uusi reitti löydetty"
 
-#: poor/util.py:190 poor/util.py:209
+#: poor/util.py:182 poor/util.py:200
+msgid "mi"
+msgstr "mi"
+
+#: poor/util.py:182 poor/util.py:200
 msgid "miles"
 msgstr "mailia"
 
-#: poor/util.py:191
+#: poor/util.py:190 qml/Meters.qml:71
+msgid "ft"
+msgstr "ft"
+
+#: poor/util.py:190
 msgid "feet"
 msgstr "jalkaa"
 
-#: poor/util.py:210
+#: poor/util.py:208 qml/Meters.qml:82
+msgid "yd"
+msgstr "yd"
+
+#: poor/util.py:208
 msgid "yards"
 msgstr "jaardia"
 
-#: poor/util.py:228
-msgid "meters"
-msgstr "metriä"
+#: poor/util.py:218
+msgid "km"
+msgstr "km"
 
-#: poor/util.py:229
+#: poor/util.py:218
 msgid "kilometers"
 msgstr "kilometriä"
 
-#: poor/util.py:239 poor/util.py:247
+#: poor/util.py:226 qml/Meters.qml:93
+msgid "m"
+msgstr "m"
+
+#: poor/util.py:226
+msgid "meters"
+msgstr "metriä"
+
+#: poor/util.py:235 poor/util.py:243
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} pohjoiseen"
 
-#: poor/util.py:240
+#: poor/util.py:236
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} koilliseen"
 
-#: poor/util.py:241
+#: poor/util.py:237
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} itään"
 
-#: poor/util.py:242
+#: poor/util.py:238
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} kaakkoon"
 
-#: poor/util.py:243
+#: poor/util.py:239
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} etelään"
 
-#: poor/util.py:244
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} lounaaseen"
 
-#: poor/util.py:245
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} länteen"
 
-#: poor/util.py:246
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} luoteeseen"
 
-#: poor/util.py:268
+#: poor/util.py:264
 msgid "{:d} min"
 msgstr "{:d} min"
 
-#: poor/util.py:269
+#: poor/util.py:265
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
@@ -227,6 +247,25 @@ msgstr "Lähimpiä"
 msgid "Best"
 msgstr "Parhaita"
 
+#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
+#: qml/RoutePointPage.qml:55
+msgid "Remove"
+msgstr "Poista"
+
+#: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
+#: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
+#: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
+msgid "Search"
+msgstr "Haku"
+
+#: guides/osmscout_name.qml:102
+msgid "You can search for venues by name."
+msgstr "Voit etsiä paikkoja nimen perusteella."
+
+#: guides/osmscout_settings.qml:25
+msgid "Name"
+msgstr "Nimi"
+
 #: qml/AboutPage.qml:36
 msgid "About WhoGo Maps"
 msgstr "Tietoja Whogo Mapsista"
@@ -284,11 +323,6 @@ msgstr "Lähteet"
 msgid "Maps"
 msgstr "Kartat"
 
-#: qml/AttributionPage.qml:64 qml/GeocodePage.qml:79 qml/GeocodePage.qml:98
-#: qml/MenuPage.qml:46 qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
-msgid "Search"
-msgstr "Haku"
-
 #: qml/AttributionPage.qml:90
 msgid "Venues"
 msgstr "Paikat"
@@ -297,10 +331,6 @@ msgstr "Paikat"
 #: qml/RoutePage.qml:48
 msgid "Navigation"
 msgstr "Navigointi"
-
-#: qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55 qml/RoutePointPage.qml:55
-msgid "Remove"
-msgstr "Poista"
 
 #: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
@@ -344,15 +374,15 @@ msgstr "%1 tulosta"
 msgid "No results"
 msgstr "Ei tuloksia"
 
-#: qml/Map.qml:392
+#: qml/Map.qml:406
 msgid "Voice navigation on"
 msgstr "Ääninavigointi päällä"
 
-#: qml/Map.qml:487
+#: qml/Map.qml:502
 msgid "Auto-center off"
 msgstr "Automaattinen keskitys pois"
 
-#: qml/Map.qml:490
+#: qml/Map.qml:505
 msgid "Auto-center on"
 msgstr "Automaattinen keskitys päällä"
 
@@ -395,6 +425,14 @@ msgstr "Tietoja"
 #: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
 msgid "Preferences"
 msgstr "Asetukset"
+
+#: qml/Meters.qml:71 qml/Meters.qml:82
+msgid "mph"
+msgstr "mph"
+
+#: qml/Meters.qml:93
+msgid "km/h"
+msgstr "km/h"
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."
@@ -452,7 +490,7 @@ msgstr "Näytä navigointiohjeet"
 msgid "Voice navigation instructions"
 msgstr "Lausu navigointiohjeet"
 
-#: qml/NavigationPage.qml:215
+#: qml/NavigationPage.qml:220
 msgid "Reroute automatically"
 msgstr "Uudelleenreititä automaattisesti"
 

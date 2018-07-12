@@ -1,0 +1,11 @@
+{
+  "attribution": {
+    "OSM Scout Server": "https://github.com/rinigus/osmscout-server",
+    "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+  },
+  "first_label_layer": "waterway-name",
+  "format": "mapbox-gl",
+  "name": "OSM Scout Car Day",
+  "requires": ["harbour-osmscout-server"],
+  "style_url": "http://localhost:8553/v1/mbgl/style?style=osmbright-car"
+}

@@ -134,16 +134,16 @@ Page {
             listView.visible = true;
             if (page.populated) return;
             var nearbyPage = app.pageStack.previousPage();
-            page.populate(nearbyPage.query, nearbyPage.near, nearbyPage.radius);
+            page.populate(nearbyPage.query, nearbyPage.near, nearbyPage.radius, nearbyPage.params);
         } else if (page.status === PageStatus.Inactive) {
             listView.visible = false;
         }
     }
 
-    function populate(query, near, radius) {
+    function populate(query, near, radius, params) {
         // Load nearby results from the Python backend.
         listView.model.clear();
-        py.call("poor.app.guide.nearby", [query, near, radius], function(results) {
+        py.call("poor.app.guide.nearby", [query, near, radius, params], function(results) {
             if (results && results.error && results.message) {
                 page.title = "";
                 busy.error = results.message;

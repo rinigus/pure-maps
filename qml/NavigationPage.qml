@@ -203,17 +203,25 @@ Page {
             TextSwitch {
                 id: voiceNavigationSwitch
                 checked: app.conf.get("voice_navigation")
-                enabled: !app.navigationActive
+                enabled: map.route.mode !== "transit"
                 text: app.tr("Voice navigation instructions")
-                onCheckedChanged: enabled && app.conf.set("voice_navigation", voiceNavigationSwitch.checked);
+                onCheckedChanged: {
+                    if (!voiceNavigationSwitch.enabled) return;
+                    if (voiceNavigationSwitch.checked === app.conf.get("voice_navigation")) return;
+                    app.conf.set("voice_navigation", voiceNavigationSwitch.checked);
+                    app.navigationActive && map.initVoiceNavigation();
+                }
             }
 
             TextSwitch {
                 id: rerouteSwitch
                 checked: enabled && app.conf.get("reroute")
-                enabled: map.route.mode === "car"
+                enabled: map.route.mode !== "transit"
                 text: app.tr("Reroute automatically")
-                onCheckedChanged: enabled && app.conf.set("reroute", rerouteSwitch.checked);
+                onCheckedChanged: {
+                    if (!rerouteSwitch.enabled) return;
+                    app.conf.set("reroute", rerouteSwitch.checked);
+                }
             }
 
             Spacer {

@@ -50,7 +50,12 @@ MapboxMap {
     property bool   ready: false
     property var    route: {}
 
+    readonly property var images: QtObject {
+        readonly property string pixel: "whogo-image-pixel"
+    }
+
     readonly property var layers: QtObject {
+        readonly property string dummies:   "whogo-layer-dummies"
         readonly property string maneuvers: "whogo-layer-maneuvers-active"
         readonly property string nodes:     "whogo-layer-maneuvers-passive"
         readonly property string pois:      "whogo-layer-pois"
@@ -293,6 +298,11 @@ MapboxMap {
         map.setPaintProperty(map.layers.nodes, "circle-stroke-color", "#0540ff");
         map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", 0.5);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 8 / map.pixelRatio);
+        // Configure layer for dummy symbols that knock out road shields etc.
+        map.setLayoutProperty(map.layers.dummies, "icon-image", map.images.pixel);
+        map.setLayoutProperty(map.layers.dummies, "icon-padding", 20 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.dummies, "icon-rotation-alignment", "map");
+        map.setLayoutProperty(map.layers.dummies, "visibility", "visible");
     }
 
     function endNavigating() {
@@ -367,12 +377,16 @@ MapboxMap {
             "type": "circle",
             "source": map.sources.maneuvers,
             "filter": ["==", "name", "active"],
-        });
+        }, map.firstLabelLayer);
         map.addLayer(map.layers.nodes, {
             "type": "circle",
             "source": map.sources.maneuvers,
             "filter": ["==", "name", "passive"],
-        });
+        }, map.firstLabelLayer);
+        // Add transparent 1x1 pixels at maneuver points to knock out road shields etc.
+        // that would otherwise overlap with the above maneuver and node circles.
+        map.addImagePath(map.images.pixel, Qt.resolvedUrl("icons/pixel.png"));
+        map.addLayer(map.layers.dummies, {"type": "symbol", "source": map.sources.maneuvers});
     }
 
     function initProperties() {

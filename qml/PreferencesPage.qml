@@ -49,7 +49,7 @@ Page {
             Slider {
                 id: scaleSlider
                 label: app.tr("Map scale")
-                maximumValue: 1.5
+                maximumValue: 2.0
                 minimumValue: 0.5
                 stepSize: 0.1
                 value: app.conf.get("map_scale")

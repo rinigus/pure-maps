@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,24 +10,25 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-18 23:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Last-Translator: Boštjan Štrumbelj <sponka@gmail.com>, 2018\n"
+"Language-Team: Slovenian (Slovenia) (https://www.transifex.com/otsaloma/teams/70314/sl_SI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sl_SI\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: poor/geocoder.py:85
 msgid "Point from geo link"
-msgstr ""
+msgstr "Točka iz geo povezave"
 
 #: poor/geocoder.py:97
 msgid "Point from coordinates"
-msgstr ""
+msgstr "Točka iz koodinat"
 
 #: poor/geocoder.py:107 poor/guide.py:98 poor/router.py:101
 msgid "Connection timed out"
-msgstr ""
+msgstr "Čas za povezavo je potekel"
 
 #: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
 #: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
@@ -36,24 +37,24 @@ msgstr ""
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
 #: qml/RoutePointPage.qml:88 qml/RoutePointPage.qml:91
 msgid "Current position"
-msgstr ""
+msgstr "Trenuten položaj"
 
 #: poor/narrative.py:124
 #, python-brace-format
 msgid "In {distance}, {direction}"
-msgstr ""
+msgstr "V {distance}, {direction}"
 
 #: poor/narrative.py:391 qml/whogo-maps.qml:142
 msgid "Rerouting"
-msgstr ""
+msgstr "Preusmerjanje"
 
 #: poor/narrative.py:392 qml/whogo-maps.qml:164
 msgid "Rerouting failed"
-msgstr ""
+msgstr "Preusmerjanje ni uspelo"
 
 #: poor/narrative.py:393 qml/whogo-maps.qml:158
 msgid "New route found"
-msgstr ""
+msgstr "Najdena nova pot"
 
 #: poor/util.py:182 poor/util.py:200
 msgid "mi"
@@ -61,7 +62,7 @@ msgstr ""
 
 #: poor/util.py:182 poor/util.py:200
 msgid "miles"
-msgstr ""
+msgstr "milje"
 
 #: poor/util.py:190 qml/Meters.qml:71
 msgid "ft"
@@ -69,7 +70,7 @@ msgstr ""
 
 #: poor/util.py:190
 msgid "feet"
-msgstr ""
+msgstr "čevlji"
 
 #: poor/util.py:208 qml/Meters.qml:82
 msgid "yd"
@@ -77,7 +78,7 @@ msgstr ""
 
 #: poor/util.py:208
 msgid "yards"
-msgstr ""
+msgstr "jardi"
 
 #: poor/util.py:218
 msgid "km"
@@ -85,7 +86,7 @@ msgstr ""
 
 #: poor/util.py:218
 msgid "kilometers"
-msgstr ""
+msgstr "kilometri"
 
 #: poor/util.py:226 qml/Meters.qml:93
 msgid "m"
@@ -93,164 +94,167 @@ msgstr ""
 
 #: poor/util.py:226
 msgid "meters"
-msgstr ""
+msgstr "metri"
 
 #: poor/util.py:235 poor/util.py:243
 #, python-brace-format
 msgid "{distance} north"
-msgstr ""
+msgstr "{distance} sever"
 
 #: poor/util.py:236
 #, python-brace-format
 msgid "{distance} north-east"
-msgstr ""
+msgstr "{distance} severo-vzhod"
 
 #: poor/util.py:237
 #, python-brace-format
 msgid "{distance} east"
-msgstr ""
+msgstr "{distance} vzhod"
 
 #: poor/util.py:238
 #, python-brace-format
 msgid "{distance} south-east"
-msgstr ""
+msgstr "{distance} jugo-vzhod"
 
 #: poor/util.py:239
 #, python-brace-format
 msgid "{distance} south"
-msgstr ""
+msgstr "{distance} jug"
 
 #: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south-west"
-msgstr ""
+msgstr "{distance} jugo-zahod"
 
 #: poor/util.py:241
 #, python-brace-format
 msgid "{distance} west"
-msgstr ""
+msgstr "{distance} zahod"
 
 #: poor/util.py:242
 #, python-brace-format
 msgid "{distance} north-west"
-msgstr ""
+msgstr "{distance} severo-zahod"
 
 #: poor/util.py:264
 msgid "{:d} min"
-msgstr ""
+msgstr "{:d} min"
 
 #: poor/util.py:265
 msgid "{:d} h {:d} min"
-msgstr ""
+msgstr "{:d} h {:d} min"
 
 #: routers/digitransit.py:58
 msgid "airplane"
-msgstr ""
+msgstr "letalo"
 
 #: routers/digitransit.py:59 standard input:11 standard input:13
 msgid "bicycle"
-msgstr ""
+msgstr "kolo"
 
 #: routers/digitransit.py:60
 msgid "bus"
-msgstr ""
+msgstr "avtobus"
 
 #: routers/digitransit.py:61
 msgid "ferry"
-msgstr ""
+msgstr "trajekt"
 
 #: routers/digitransit.py:62
 msgid "train"
-msgstr ""
+msgstr "vlak"
 
 #: routers/digitransit.py:63
 msgid "metro"
-msgstr ""
+msgstr "metro"
 
 #: routers/digitransit.py:64
 msgid "tram"
-msgstr ""
+msgstr "tramvaj"
 
 #: routers/digitransit.py:65
 msgid "walk"
-msgstr ""
+msgstr "hoja"
 
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr ""
+msgstr "Hodite proti {arr_name}."
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get a city bike at {dep_name}."
-msgstr ""
+msgstr "Vzemite kolo pri {dep_name}."
 
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr ""
+msgstr "Uporabite {mode_name} {line_desc} ob {dep_name} ob {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr ""
+msgstr "Hodite proti cilju."
 
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
 msgstr ""
+"Parkirajte mestno kolo pri {dep_name} in pojdite peš proti {arr_name}."
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr ""
+msgstr "Parkirajte mestno kolo pri {dep_name} in pojdite peš proti cilju."
 
 #: routers/digitransit.py:76
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr ""
+msgstr "Izstopite pri {dep_name} in hodite proti {arr_name}."
 
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr ""
+msgstr "Izstopite pri {dep_name} in pojdite s kolesom proti {arr_name}."
 
 #: routers/digitransit.py:78
 #, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr ""
+"Izstopite pri {dep_name} in prestopite na {mode_name} {line_desc} ob "
+"{dep_time}."
 
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr ""
+msgstr "Izstopite pri {dep_name} in hodite proti cilju."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
-msgstr ""
+msgstr "Prihod na cilj."
 
 #: guides/foursquare_settings.qml:26
 msgid "Prefer"
-msgstr ""
+msgstr "Želeno"
 
 #: guides/foursquare_settings.qml:28
 msgid "Closest"
-msgstr ""
+msgstr "Najbližje"
 
 #: guides/foursquare_settings.qml:29
 msgid "Best"
-msgstr ""
+msgstr "Najboljše"
 
 #: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
 #: qml/RoutePointPage.qml:55
 msgid "Remove"
-msgstr ""
+msgstr "Odstrani"
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
 #: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
 #: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
 msgid "Search"
-msgstr ""
+msgstr "Iskanje"
 
 #: guides/osmscout_name.qml:102
 msgid "You can search for venues by name."
@@ -262,29 +266,31 @@ msgstr ""
 
 #: qml/AboutPage.qml:36
 msgid "About WhoGo Maps"
-msgstr ""
+msgstr "O programu WhoGo Maps"
 
 #: qml/AboutPage.qml:42
 msgid "version %1"
-msgstr ""
+msgstr "Različica %1"
 
 #: qml/AboutPage.qml:49
 msgid "GitHub page"
-msgstr ""
+msgstr "GitHub spletna stran"
 
 #: qml/AboutPage.qml:66
 msgid ""
 "WhoGo Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
+"WhoGo Maps je brezplačen program, izdan pod GNU General Public License "
+"(GPL), verzija 3 ali kasnejše."
 
 #: qml/AboutPage.qml:74
 msgid "Donate via PayPal"
-msgstr ""
+msgstr "Prispevajte preko PayPal"
 
 #: qml/AboutPage.qml:79
 msgid "Translated by"
-msgstr ""
+msgstr "Prevod"
 
 #. TRANSLATORS: This is a special message that shouldn't be translated
 #. literally. It is used in the about page to give credits to the translators.
@@ -293,125 +299,129 @@ msgstr ""
 #. write them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:91
 msgid "translator-credits"
-msgstr ""
+msgstr "sponka"
 
 #: qml/AboutPage.qml:101
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
+"Za nove prevode ali prispevanje k obstoječim prevodom uporabite Transifex."
 
 #: qml/AboutPage.qml:109
 msgid "Transifex page"
-msgstr ""
+msgstr "Transifex spletna stran"
 
 #: qml/AttributionPage.qml:36
 msgid "Attribution"
-msgstr ""
+msgstr "Dodelitev"
 
 #: qml/AttributionPage.qml:40 qml/BasemapPage.qml:29 qml/MenuPage.qml:107
 msgid "Maps"
-msgstr ""
+msgstr "Zemljevidi"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
-msgstr ""
+msgstr "Prizorišča"
 
 #: qml/AttributionPage.qml:116 qml/MenuPage.qml:55 qml/NavigationPage.qml:39
 #: qml/RoutePage.qml:48
 msgid "Navigation"
-msgstr ""
+msgstr "Navigacija"
 
 #: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
-msgstr ""
+msgstr "Uporabi"
 
 #: qml/GeocodePage.qml:119 qml/RoutePointPage.qml:119
 msgid ""
-"You can search by address, locality, landmark and many other terms. For best "
-"results, include a region, e.g. “address, city” or “city, country”."
+"You can search by address, locality, landmark and many other terms. For best"
+" results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
+"Iščete lahko po naslovu, kraju, lokalnih znamenitostih ter še mnogo čem. Za "
+"boljše rezultate lahko uporabite kombinacije, kot so \"naslov, mesto\" ali "
+"\"mesto, država\"."
 
 #: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
 #: routers/digitransit_settings.qml:181
 msgid "Default"
-msgstr ""
+msgstr "Privzeto"
 
 #: qml/GeocoderPage.qml:75 qml/GuidePage.qml:75 qml/RouterPage.qml:75
 msgid "Alternatives"
-msgstr ""
+msgstr "Alternative"
 
 #: qml/GeocodingResultsPage.qml:94 qml/NearbyResultsPage.qml:94
 msgid "Show all"
-msgstr ""
+msgstr "Prikaži vse"
 
 #: qml/GeocodingResultsPage.qml:132 qml/NearbyResultsPage.qml:132
 #: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
 #: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
 msgid "Searching"
-msgstr ""
+msgstr "Iščem"
 
 #: qml/GeocodingResultsPage.qml:154 qml/NearbyResultsPage.qml:151
 msgid "%1 Results"
-msgstr ""
+msgstr "%1 zadetkov"
 
 #: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
 #: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
 #: routers/osmscout_results.qml:58 routers/osrm_results.qml:58
 msgid "No results"
-msgstr ""
+msgstr "Ni zadetkov"
 
 #: qml/Map.qml:406
 msgid "Voice navigation on"
-msgstr ""
+msgstr "Glasovno vodenje vključeno"
 
 #: qml/Map.qml:502
 msgid "Auto-center off"
-msgstr ""
+msgstr "Samodejni center izključen"
 
 #: qml/Map.qml:505
 msgid "Auto-center on"
-msgstr ""
+msgstr "Samodejni center vključen"
 
 #: qml/MapGestureArea.qml:53 qml/MapGestureArea.qml:54
 msgid "Unnamed point"
-msgstr ""
+msgstr "Neimenovana točka"
 
 #: qml/MenuPage.qml:61
 msgid "Nearby venues"
-msgstr ""
+msgstr "Bližnja prizorišča"
 
 #: qml/MenuPage.qml:67
 msgid "Share current position"
-msgstr ""
+msgstr "Deli svoj trenutni položaj"
 
 #: qml/MenuPage.qml:82
 msgid "Share Current Position"
-msgstr ""
+msgstr "Deli svoj trenutni položaj"
 
 #: qml/MenuPage.qml:89
 msgid "Center on current position"
-msgstr ""
+msgstr "Centriraj glede na trenuten položaj"
 
 #: qml/MenuPage.qml:98
 msgid "Clear map"
-msgstr ""
+msgstr "Počisti zemljevid"
 
 #: qml/MenuPage.qml:116
 msgid "Auto-center on position"
-msgstr ""
+msgstr "Samodejno centriraj glede na trenuten položaj"
 
 #: qml/MenuPage.qml:133
 msgid "Auto-rotate on direction"
-msgstr ""
+msgstr "Samodejno obračanje v smeri poti"
 
 #: qml/MenuPage.qml:148
 msgid "About"
-msgstr ""
+msgstr "O programu"
 
 #: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
 msgid "Preferences"
-msgstr ""
+msgstr "Nastavitve"
 
 #: qml/Meters.qml:71 qml/Meters.qml:82
 msgid "mph"
@@ -423,414 +433,418 @@ msgstr ""
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."
-msgstr ""
+msgstr "Nadaljuj do %1."
 
 #: qml/NarrativePage.qml:103
 msgid "Maneuvers"
-msgstr ""
+msgstr "Razporejanje"
 
 #: qml/NavigationBlock.qml:88
 msgid "Tap to review maneuvers or begin navigating"
-msgstr ""
+msgstr "Pritisni za ogled razporejanja ali prični z navigacijo"
 
 #: qml/NavigationPage.qml:54
 msgid "Pause"
-msgstr ""
+msgstr "Pavza"
 
 #: qml/NavigationPage.qml:55
 msgid "Resume"
-msgstr ""
+msgstr "Nadaljuj"
 
 #: qml/NavigationPage.qml:55
 msgid "Begin"
-msgstr ""
+msgstr "Začni"
 
 #: qml/NavigationPage.qml:66
 msgid "Reroute"
-msgstr ""
+msgstr "Preusmeri"
 
 #: qml/NavigationPage.qml:78
 msgid "Clear"
-msgstr ""
+msgstr "Počisti"
 
 #: qml/NavigationPage.qml:89
 msgid "Status"
-msgstr ""
+msgstr "Stanje"
 
 #: qml/NavigationPage.qml:137
 msgid "Remaining"
-msgstr ""
+msgstr "Preostanek"
 
 #: qml/NavigationPage.qml:168
 msgid "Total"
-msgstr ""
+msgstr "Skupaj"
 
 #: qml/NavigationPage.qml:190
 msgid "Options"
-msgstr ""
+msgstr "Možnosti"
 
 #: qml/NavigationPage.qml:196
 msgid "Show navigation instructions"
-msgstr ""
+msgstr "Prikaži navodila za vodenje"
 
 #: qml/NavigationPage.qml:207
 msgid "Voice navigation instructions"
-msgstr ""
+msgstr "Navodila za glasovno vodenje"
 
 #: qml/NavigationPage.qml:220
 msgid "Reroute automatically"
-msgstr ""
+msgstr "Samodejno preusmeri"
 
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
-msgstr ""
+msgstr "Bližnja prizorišča"
 
 #: qml/NearbyPage.qml:78
 msgid "Near"
-msgstr ""
+msgstr "V bližini"
 
 #: qml/NearbyPage.qml:111 routers/mapquest_open_settings.qml:26
 #: routers/osmscout_settings.qml:26
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #: qml/NearbyPage.qml:126
 msgid "Radius"
-msgstr ""
+msgstr "Radij"
 
 #: qml/NorthArrow.qml:53
 msgid "Auto-rotate on"
-msgstr ""
+msgstr "Samodejno obračanje vklopljeno"
 
 #: qml/NorthArrow.qml:54
 msgid "Auto-rotate off"
-msgstr ""
+msgstr "Samodejno obračanje izklopljeno"
 
 #: qml/PlaceTypePage.qml:104
 msgid "You can search for venues by type or name."
-msgstr ""
+msgstr "Prizorišča lahko iščete po imenu ali vrsti"
 
 #: qml/PoiBubble.qml:60
 msgid "Navigate"
-msgstr ""
+msgstr "Navigiraj"
 
 #: qml/PoiBubble.qml:77
 msgid "Nearby"
-msgstr ""
+msgstr "V bližini"
 
 #: qml/PoiBubble.qml:94
 msgid "Share"
-msgstr ""
+msgstr "Deli"
 
 #: qml/PoiBubble.qml:100
 msgid "Share Location"
-msgstr ""
+msgstr "Deli svoj trenutni položaj"
 
 #: qml/PoiBubble.qml:111
 msgid "Web"
-msgstr ""
+msgstr "Splet"
 
 #: qml/PreferencesPage.qml:42
 msgid "Only applies to vector maps."
-msgstr ""
+msgstr "Velja le za vektorske zemljevide"
 
 #: qml/PreferencesPage.qml:43
 msgid "Tilt map when navigating"
-msgstr ""
+msgstr "Med navigiranjem obračaj zemljevid"
 
 #: qml/PreferencesPage.qml:51
 msgid "Map scale"
-msgstr ""
+msgstr "Merilo zemljevida"
 
 #: qml/PreferencesPage.qml:66
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
+"Želeni spol govora za glasovno navigacijo. Podprto le pri določenih pogonih "
+"in jezikih."
 
 #: qml/PreferencesPage.qml:67
 msgid "Voice gender"
-msgstr ""
+msgstr "Spol govorečega"
 
 #: qml/PreferencesPage.qml:69
 msgid "Male"
-msgstr ""
+msgstr "Moški"
 
 #: qml/PreferencesPage.qml:70
 msgid "Female"
-msgstr ""
+msgstr "Ženski"
 
 #: qml/PreferencesPage.qml:85
 msgid ""
 "Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
+"Velja le, ko je aplikacija WhoGo Maps aktivna. Ko je pomanjšana, veljajo "
+"sistemske nastavitve spanja."
 
 #: qml/PreferencesPage.qml:86
 msgid "Prevent sleep"
-msgstr ""
+msgstr "Prepreči prehod v spanje"
 
 #: qml/PreferencesPage.qml:88
 msgid "Never"
-msgstr ""
+msgstr "Nikoli"
 
 #: qml/PreferencesPage.qml:89
 msgid "When navigating"
-msgstr ""
+msgstr "Med navigiranjem"
 
 #: qml/PreferencesPage.qml:90
 msgid "Always"
-msgstr ""
+msgstr "Vedno"
 
 #: qml/PreferencesPage.qml:106
 msgid "Units"
-msgstr ""
+msgstr "Enote"
 
 #: qml/PreferencesPage.qml:108
 msgid "Metric"
-msgstr ""
+msgstr "Metrične"
 
 #: qml/PreferencesPage.qml:109
 msgid "American"
-msgstr ""
+msgstr "Ameriško"
 
 #: qml/PreferencesPage.qml:110
 msgid "British"
-msgstr ""
+msgstr "Britansko"
 
 #: qml/PreferencesPage.qml:131
 msgid "Clear cache"
-msgstr ""
+msgstr "Počisti predpomnilnik"
 
 #: qml/RoutePage.qml:68
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 #: qml/RoutePage.qml:101
 msgid "To"
-msgstr ""
+msgstr "Do"
 
 #: qml/RoutePage.qml:151
 msgid "Reverse endpoints"
-msgstr ""
+msgstr "Obrni začetno in kočno točko"
 
 #: qml/RouterPage.qml:66
 msgid "Modes: %1"
-msgstr ""
+msgstr "Načini: %1"
 
 #: qml/SharePage.qml:53
 msgid "SMS"
-msgstr ""
+msgstr "SMS"
 
 #: qml/SharePage.qml:59 qml/SharePage.qml:91
 msgid "Message copied to the clipboard"
-msgstr ""
+msgstr "Sporočilo kopirano v odložišče"
 
 #: qml/SharePage.qml:60
 msgid "Launching the Messages application"
-msgstr ""
+msgstr "Zaganjam aplikacijo za sporočila"
 
 #: qml/SharePage.qml:75
 msgid "Email"
-msgstr ""
+msgstr "E-pošta"
 
 #: qml/SharePage.qml:78
 msgid "Launching the Email application"
-msgstr ""
+msgstr "Zaganjam aplikacijo za e-pošto"
 
 #: qml/SharePage.qml:88
 msgid "Other"
-msgstr ""
+msgstr "Ostalo"
 
 #: qml/whogo-maps.qml:154
 msgid "Rerouting failed: %1"
-msgstr ""
+msgstr "Preusmerjanje ni uspelo: %1"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
-msgstr ""
+msgstr "Preusmeri %1. od skupno %2"
 
 #: routers/digitransit_results.qml:155
 msgid "Walk %1"
-msgstr ""
+msgstr "Hoja %1"
 
 #: routers/digitransit_results.qml:156
 msgid "%1 → %2"
-msgstr ""
+msgstr "%1 → %2"
 
 #: routers/digitransit_results.qml:239
 msgid "Results"
-msgstr ""
+msgstr "Rezultati"
 
 #: routers/digitransit_settings.qml:28
 msgid "Region"
-msgstr ""
+msgstr "Regija"
 
 #: routers/digitransit_settings.qml:30
 msgid "HSL"
-msgstr ""
+msgstr "HSL"
 
 #: routers/digitransit_settings.qml:31
 msgid "Waltti"
-msgstr ""
+msgstr "Waltti"
 
 #: routers/digitransit_settings.qml:32
 msgid "Finland"
-msgstr ""
+msgstr "Finska"
 
 #: routers/digitransit_settings.qml:70 routers/digitransit_settings.qml:75
 #: routers/digitransit_settings.qml:80
 msgid "Depart"
-msgstr ""
+msgstr "Odhod"
 
 #: routers/digitransit_settings.qml:76
 msgid "Arrive"
-msgstr ""
+msgstr "Prihod"
 
 #: routers/digitransit_settings.qml:107
 msgid "Today"
-msgstr ""
+msgstr "Danes"
 
 #: routers/digitransit_settings.qml:150
 msgid "Now"
-msgstr ""
+msgstr "Zdaj"
 
 #: routers/digitransit_settings.qml:179
 msgid "Criterion"
-msgstr ""
+msgstr "Pogoji"
 
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
-msgstr ""
+msgstr "Najmanj prestopov"
 
 #: routers/digitransit_settings.qml:183
 msgid "Least walking"
-msgstr ""
+msgstr "Najmanj hoje"
 
 #: routers/mapquest_open_settings.qml:28 routers/osmscout_settings.qml:28
 msgid "Car"
-msgstr ""
+msgstr "Avto"
 
 #: routers/mapquest_open_settings.qml:29 routers/osmscout_settings.qml:29
 msgid "Bicycle"
-msgstr ""
+msgstr "Kolo"
 
 #: routers/mapquest_open_settings.qml:30 routers/osmscout_settings.qml:30
 msgid "Foot"
-msgstr ""
+msgstr "Hoja"
 
 #: routers/mapquest_open_settings.qml:48
 msgid "Try to avoid tolls"
-msgstr ""
+msgstr "Izogibanje cestnin"
 
 #: routers/mapquest_open_settings.qml:57 routers/osmscout_settings.qml:45
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: routers/mapquest_open_settings.qml:61
 msgid "English (UK)"
-msgstr ""
+msgstr "Angleščina (VB)"
 
 #: routers/mapquest_open_settings.qml:62
 msgid "English (US)"
-msgstr ""
+msgstr "Angleščina (ZDA)"
 
 #: routers/mapquest_open_settings.qml:63
 msgid "French (Canada)"
-msgstr ""
+msgstr "Francoščina (Kanada)"
 
 #: routers/mapquest_open_settings.qml:64
 msgid "French (France)"
-msgstr ""
+msgstr "Francoščina (Francija)"
 
 #: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:52
 msgid "German"
-msgstr ""
+msgstr "Nemščina"
 
 #: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:55
 msgid "Russian"
-msgstr ""
+msgstr "Ruščina"
 
 #: routers/mapquest_open_settings.qml:67
 msgid "Spanish (Mexico)"
-msgstr ""
+msgstr "Španščina (Mehika)"
 
 #: routers/mapquest_open_settings.qml:68
 msgid "Spanish (Spain)"
-msgstr ""
+msgstr "Španščina (Španija)"
 
 #: routers/osmscout_settings.qml:49
 msgid "Catalan"
-msgstr ""
+msgstr "Katalonščina"
 
 #: routers/osmscout_settings.qml:50
 msgid "Czech"
-msgstr ""
+msgstr "Češčina"
 
 #: routers/osmscout_settings.qml:51
 msgid "English"
-msgstr ""
+msgstr "Angleščina"
 
 #: routers/osmscout_settings.qml:53
 msgid "Hindi"
-msgstr ""
+msgstr "Hindujščina"
 
 #: routers/osmscout_settings.qml:54
 msgid "Italian"
-msgstr ""
+msgstr "Italijanščina"
 
 #: routers/osmscout_settings.qml:56
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovenščina"
 
 #: routers/osmscout_settings.qml:57
 msgid "Spanish"
-msgstr ""
+msgstr "Španščina"
 
 #: routers/osmscout_settings.qml:58
 msgid "Swedish"
-msgstr ""
+msgstr "Švedščina"
 
 #: qml/js/util.js:79
 msgid "%1 (default)"
-msgstr ""
+msgstr "%1 (privzeto)"
 
 #: standard input:1
 msgid "Search in Finland"
-msgstr ""
+msgstr "Iskanje na Finskem"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr ""
+msgstr "Vir podatkov za iskanje so odprtokodni viri"
 
 #: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
-msgstr ""
+msgstr "Vir podatkov za iskanje je OpenStreetMap"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr ""
+msgstr "Prizorišča, predstavljena in ocenjena s strani Foursquare uporabnikov"
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
-msgstr ""
+msgstr "Vir podatkov za zanimive točke je OpenStreetMap"
 
 #: standard input:8
 msgid "Public transport routing in Finland"
-msgstr ""
+msgstr "Javni prevoz na Finskem"
 
 #: standard input:9
 msgid "public transport"
-msgstr ""
+msgstr "javni prevoz"
 
 #: standard input:10 standard input:12 standard input:14
 msgid "Routing based on OpenStreetMap data"
-msgstr ""
+msgstr "Vir podatkov za preusmerjanje je OpenStreetMap"
 
 #: standard input:11 standard input:13 standard input:15
 msgid "car"
-msgstr ""
+msgstr "avto"
 
 #: standard input:11 standard input:13
 msgid "foot"
-msgstr ""
+msgstr "peš"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-25 20:20+0300\n"
+"POT-Creation-Date: 2018-06-18 23:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ricardo Breitkopf, 2018\n"
 "Language-Team: German (Germany) (https://www.transifex.com/otsaloma/teams/70314/de_DE/)\n"
@@ -28,10 +28,10 @@ msgstr "Punkt aus Koordinaten"
 
 #: poor/geocoder.py:107 poor/guide.py:98 poor/router.py:101
 msgid "Connection timed out"
-msgstr "Zeitüberschreitung der Verbindung"
+msgstr "Zeitüberschreitung bei der Verbindung"
 
 #: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
-#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:170 qml/NearbyPage.qml:180
+#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
 #: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:78
 #: qml/RoutePage.qml:86 qml/RoutePage.qml:111 qml/RoutePage.qml:119
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
@@ -46,81 +46,101 @@ msgstr "In {distance}, {direction}"
 
 #: poor/narrative.py:391 qml/whogo-maps.qml:142
 msgid "Rerouting"
-msgstr "Umleitung"
+msgstr "Neuberechnung"
 
 #: poor/narrative.py:392 qml/whogo-maps.qml:164
 msgid "Rerouting failed"
-msgstr "Umleitung fehlgeschlagen"
+msgstr "Neuberechnung fehlgeschlagen"
 
 #: poor/narrative.py:393 qml/whogo-maps.qml:158
 msgid "New route found"
 msgstr "Neue Route gefunden"
 
-#: poor/util.py:190 poor/util.py:209
+#: poor/util.py:182 poor/util.py:200
+msgid "mi"
+msgstr ""
+
+#: poor/util.py:182 poor/util.py:200
 msgid "miles"
 msgstr "Meilen"
 
-#: poor/util.py:191
-msgid "feet"
-msgstr "Fuss"
+#: poor/util.py:190 qml/Meters.qml:71
+msgid "ft"
+msgstr ""
 
-#: poor/util.py:210
+#: poor/util.py:190
+msgid "feet"
+msgstr "Fuß"
+
+#: poor/util.py:208 qml/Meters.qml:82
+msgid "yd"
+msgstr ""
+
+#: poor/util.py:208
 msgid "yards"
 msgstr "Yards"
 
-#: poor/util.py:228
-msgid "meters"
-msgstr "Meter"
+#: poor/util.py:218
+msgid "km"
+msgstr ""
 
-#: poor/util.py:229
+#: poor/util.py:218
 msgid "kilometers"
 msgstr "Kilometer"
 
-#: poor/util.py:239 poor/util.py:247
+#: poor/util.py:226 qml/Meters.qml:93
+msgid "m"
+msgstr ""
+
+#: poor/util.py:226
+msgid "meters"
+msgstr "Meter"
+
+#: poor/util.py:235 poor/util.py:243
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} nördlich"
 
-#: poor/util.py:240
+#: poor/util.py:236
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} nordöstlich"
 
-#: poor/util.py:241
+#: poor/util.py:237
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} östlich"
 
-#: poor/util.py:242
+#: poor/util.py:238
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} südöstlich"
 
-#: poor/util.py:243
+#: poor/util.py:239
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} südlich"
 
-#: poor/util.py:244
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} südwestlich"
 
-#: poor/util.py:245
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} westlich"
 
-#: poor/util.py:246
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} nordwestlich"
 
-#: poor/util.py:268
+#: poor/util.py:264
 msgid "{:d} min"
 msgstr "{:d} Min."
 
-#: poor/util.py:269
+#: poor/util.py:265
 msgid "{:d} h {:d} min"
 msgstr "{:d} Std. {:d} Min."
 
@@ -159,12 +179,12 @@ msgstr "Zu Fuß"
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr "Gehen Sie in Richtung {arr_name}."
+msgstr "Gehe in Richtung {arr_name}."
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get a city bike at {dep_name}."
-msgstr "Holen Sie sich ein Leihrad hier {dep_name}."
+msgstr "Hol dir ein Leihrad bei {dep_name}."
 
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
@@ -173,40 +193,39 @@ msgstr "Nimm {mode_name} {line_desc} bei {dep_name} um {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr "Gehen Sie zu Ihrem Ziel."
+msgstr "Gehe in Richtung deines Zielorts."
 
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr ""
-"Geben Sie das Leihrad ab {dep_name} und gehen Sie in Richtung {arr_name}."
+msgstr "Gib das Leihrad bei {dep_name} ab und gehe in Richtung {arr_name}."
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr "Geben Sie das Leihrad ab {dep_name} und gehen Sie zu Ihrem Ziel."
+msgstr "Gib das Leihrad bei {dep_name} ab und gehe zu deinem Ziel."
 
 #: routers/digitransit.py:76
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Steigen Sie bei {dep_name} aus und gehen Sie Richtung {arr_name}."
+msgstr "Steige bei {dep_name} aus und gehe in Richtung {arr_name}."
 
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Steigen Sie aus {dep_name} and radeln Sie zu {arr_name}."
+msgstr "Steige bei {dep_name} aus und radle in Richtung {arr_name}."
 
 #: routers/digitransit.py:78
 #, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr ""
-"Steigen Sie bei {dep_name} um in {mode_name} {line_desc} um {dep_time}."
+"Steige bei {dep_name} um in {mode_name} {line_desc} , Abfahrt {dep_time}."
 
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Steigen Sie bei {dep_name} aus und gehen Sie in Richtung des Ziels."
+msgstr "Steige bei {dep_name} aus und gehe in Richtung Zielort."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
@@ -223,6 +242,25 @@ msgstr "Nächste"
 #: guides/foursquare_settings.qml:29
 msgid "Best"
 msgstr "Beste"
+
+#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
+#: qml/RoutePointPage.qml:55
+msgid "Remove"
+msgstr "Entferne"
+
+#: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
+#: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
+#: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
+msgid "Search"
+msgstr "Suche"
+
+#: guides/osmscout_name.qml:102
+msgid "You can search for venues by name."
+msgstr ""
+
+#: guides/osmscout_settings.qml:25
+msgid "Name"
+msgstr ""
 
 #: qml/AboutPage.qml:36
 msgid "About WhoGo Maps"
@@ -281,11 +319,6 @@ msgstr "Zuordnung"
 msgid "Maps"
 msgstr "Karten"
 
-#: qml/AttributionPage.qml:64 qml/GeocodePage.qml:79 qml/GeocodePage.qml:98
-#: qml/MenuPage.qml:46 qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
-msgid "Search"
-msgstr "Suche"
-
 #: qml/AttributionPage.qml:90
 msgid "Venues"
 msgstr "Orte"
@@ -294,10 +327,6 @@ msgstr "Orte"
 #: qml/RoutePage.qml:48
 msgid "Navigation"
 msgstr "Navigation"
-
-#: qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55 qml/RoutePointPage.qml:55
-msgid "Remove"
-msgstr "Entferne"
 
 #: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
@@ -308,8 +337,8 @@ msgid ""
 "You can search by address, locality, landmark and many other terms. For best"
 " results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
-"Sie können nach Adresse, Ort, Wahrzeichen und vielen anderen Begriffen "
-"suchen. Für beste Ergebnisse schließen Sie eine Region ein, z.B. \"Adresse, "
+"Du kannst nach Adressen, Orten, Wahrzeichen und vielen anderen Begriffen "
+"suchen. Für die besten Ergebnisse gibt eine Region mit an, z.B. \"Adresse, "
 "Stadt\" oder \"Stadt, Land\"."
 
 #: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
@@ -341,15 +370,15 @@ msgstr "%1 Ergebnisse"
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
-#: qml/Map.qml:392
+#: qml/Map.qml:406
 msgid "Voice navigation on"
 msgstr "Sprachnavigation an"
 
-#: qml/Map.qml:487
+#: qml/Map.qml:502
 msgid "Auto-center off"
 msgstr "Autozentrierung aus"
 
-#: qml/Map.qml:490
+#: qml/Map.qml:505
 msgid "Auto-center on"
 msgstr "Autozentrierung an"
 
@@ -375,7 +404,7 @@ msgstr "Zentriere auf derzeitige Position"
 
 #: qml/MenuPage.qml:98
 msgid "Clear map"
-msgstr "Leere Karte"
+msgstr "Karte leeren"
 
 #: qml/MenuPage.qml:116
 msgid "Auto-center on position"
@@ -393,6 +422,14 @@ msgstr "Über"
 msgid "Preferences"
 msgstr "Einstellungen"
 
+#: qml/Meters.qml:71 qml/Meters.qml:82
+msgid "mph"
+msgstr ""
+
+#: qml/Meters.qml:93
+msgid "km/h"
+msgstr ""
+
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."
 msgstr "Weiter zu %1."
@@ -403,7 +440,7 @@ msgstr "Manövrieren"
 
 #: qml/NavigationBlock.qml:88
 msgid "Tap to review maneuvers or begin navigating"
-msgstr "Tippen Sie, um Anweisungen zu prüfen oder die Navigation zu starten"
+msgstr "Tippen, um Einstellungen anzupassen oder die Navigation zu starten"
 
 #: qml/NavigationPage.qml:54
 msgid "Pause"
@@ -423,7 +460,7 @@ msgstr "Umleiten"
 
 #: qml/NavigationPage.qml:78
 msgid "Clear"
-msgstr "Leere"
+msgstr "Route löschen"
 
 #: qml/NavigationPage.qml:89
 msgid "Status"
@@ -447,11 +484,11 @@ msgstr "Zeige Navigationsanweisungen"
 
 #: qml/NavigationPage.qml:207
 msgid "Voice navigation instructions"
-msgstr "Sprachnavigationsanweisungen"
+msgstr "Sprachausgabe"
 
-#: qml/NavigationPage.qml:215
+#: qml/NavigationPage.qml:220
 msgid "Reroute automatically"
-msgstr "Automatisch umleiten"
+msgstr "Automatisch neuberechnen"
 
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
@@ -480,7 +517,7 @@ msgstr "Automatische Drehung aus"
 
 #: qml/PlaceTypePage.qml:104
 msgid "You can search for venues by type or name."
-msgstr "Sie können nach dem Typ oder Namen eines Orts suchen."
+msgstr "Du kannst nach dem Typ oder dem Namen eines Orts suchen."
 
 #: qml/PoiBubble.qml:60
 msgid "Navigate"
@@ -492,11 +529,11 @@ msgstr "In der Nähe"
 
 #: qml/PoiBubble.qml:94
 msgid "Share"
-msgstr "Teile"
+msgstr "Teilen"
 
 #: qml/PoiBubble.qml:100
 msgid "Share Location"
-msgstr "Teile Ort"
+msgstr "Ort teilen"
 
 #: qml/PoiBubble.qml:111
 msgid "Web"
@@ -524,7 +561,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:67
 msgid "Voice gender"
-msgstr "Stimme Geschlecht"
+msgstr "Stimme"
 
 #: qml/PreferencesPage.qml:69
 msgid "Male"
@@ -539,8 +576,8 @@ msgid ""
 "Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
-"Nur wirksam wenn WhoGo Maps aktiv ist. Die Einstellungen für den Ruhezustand"
-" bei MInimierung können in den Geräteeinstellungen festgelegt werden. "
+"Nur wirksam, wenn WhoGo Maps aktiv ist. Im Hintergrundbetrieb gelten die "
+"normalen geräteweiten einstellungen."
 
 #: qml/PreferencesPage.qml:86
 msgid "Prevent sleep"
@@ -616,11 +653,11 @@ msgstr "Öffne das E-Mail Programm"
 
 #: qml/SharePage.qml:88
 msgid "Other"
-msgstr "Anderes"
+msgstr "Sonstiges"
 
 #: qml/whogo-maps.qml:154
 msgid "Rerouting failed: %1"
-msgstr "Umleitung fehlgeschlagen: %1"
+msgstr "Neuberechnung fehlgeschlagen: %1"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
@@ -628,7 +665,7 @@ msgstr "Route %1. Gesamt %2"
 
 #: routers/digitransit_results.qml:155
 msgid "Walk %1"
-msgstr "Gehe %1"
+msgstr "Gehen %1"
 
 #: routers/digitransit_results.qml:156
 msgid "%1 → %2"
@@ -677,7 +714,7 @@ msgstr "Kriterium"
 
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
-msgstr "Möglichst wenig Umsteigen"
+msgstr "Möglichst wenige Umstiege"
 
 #: routers/digitransit_settings.qml:183
 msgid "Least walking"
@@ -789,7 +826,7 @@ msgstr "Von Foursquare-Nutzern eingetragene und geprüfte Orte "
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
-msgstr "Sehenswürdigkeiten aus OpenStreetMap-Daten"
+msgstr "Sehenswürdigkeiten aus OpenStreetMap"
 
 #: standard input:8
 msgid "Public transport routing in Finland"

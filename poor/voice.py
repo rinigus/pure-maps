@@ -241,7 +241,7 @@ class VoiceGenerator:
         """Terminate the worker thread."""
         if self._worker_thread is None: return
         self._task_queue.put(None)
-        self._worker_thread.join()
+        self._worker_thread.join(timeout=0)
         self._worker_thread = None
         # Ensure that we have all items.
         self._update_cache()

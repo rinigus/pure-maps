@@ -37,12 +37,12 @@ Page {
     // preferred length units, but keep values as meters.
 
     property var radiusLabels: app.conf.get("units") === "metric" ?
-        ["1 km", "2 km", "5 km", "10 km", "20 km", "50 km"] :
-        ["½ mi", "1 mi", "2 mi",  "5 mi", "10 mi", "20 mi"]
+        ["500 m", "1 km", "2 km", "5 km", "10 km", "20 km", "50 km", "100 km"] :
+        [ "¼ mi", "½ mi", "1 mi", "2 mi",  "5 mi", "10 mi", "20 mi",  "40 mi"]
 
     property var radiusValues: app.conf.get("units") === "metric" ?
-        [1000, 2000, 5000, 10000, 20000, 50000] :
-        [ 805, 1609, 3219,  8047, 16093, 32187]
+        [500, 1000, 2000, 5000, 10000, 20000, 50000, 100000] :
+        [402,  805, 1609, 3219,  8047, 16093, 32187,  64374]
 
     SilicaFlickable {
         anchors.fill: parent
@@ -131,6 +131,8 @@ Page {
                     MenuItem { text: page.radiusLabels[3] }
                     MenuItem { text: page.radiusLabels[4] }
                     MenuItem { text: page.radiusLabels[5] }
+                    MenuItem { text: page.radiusLabels[6] }
+                    MenuItem { text: page.radiusLabels[7] }
                 }
                 Component.onCompleted: {
                     for (var i = 0; i < page.radiusValues.length; i++) {

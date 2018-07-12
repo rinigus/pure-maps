@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,24 +10,25 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-18 23:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Last-Translator: Szabó G. <leo.kanak@yahoo.com>, 2018\n"
+"Language-Team: Hungarian (Hungary) (https://www.transifex.com/otsaloma/teams/70314/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu_HU\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: poor/geocoder.py:85
 msgid "Point from geo link"
-msgstr ""
+msgstr "Pont geo linkből"
 
 #: poor/geocoder.py:97
 msgid "Point from coordinates"
-msgstr ""
+msgstr "Pont koordinátákból"
 
 #: poor/geocoder.py:107 poor/guide.py:98 poor/router.py:101
 msgid "Connection timed out"
-msgstr ""
+msgstr "Kapcsolat időtúllépés"
 
 #: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
 #: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
@@ -36,24 +37,24 @@ msgstr ""
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
 #: qml/RoutePointPage.qml:88 qml/RoutePointPage.qml:91
 msgid "Current position"
-msgstr ""
+msgstr "Jelenlegi helyzet"
 
 #: poor/narrative.py:124
 #, python-brace-format
 msgid "In {distance}, {direction}"
-msgstr ""
+msgstr "Ennyi: {distance}, erre: {direction}"
 
 #: poor/narrative.py:391 qml/whogo-maps.qml:142
 msgid "Rerouting"
-msgstr ""
+msgstr "Újratervezés"
 
 #: poor/narrative.py:392 qml/whogo-maps.qml:164
 msgid "Rerouting failed"
-msgstr ""
+msgstr "Az újratervezés sikertelen"
 
 #: poor/narrative.py:393 qml/whogo-maps.qml:158
 msgid "New route found"
-msgstr ""
+msgstr "Új útvonal megtalálva"
 
 #: poor/util.py:182 poor/util.py:200
 msgid "mi"
@@ -61,7 +62,7 @@ msgstr ""
 
 #: poor/util.py:182 poor/util.py:200
 msgid "miles"
-msgstr ""
+msgstr "mérföld"
 
 #: poor/util.py:190 qml/Meters.qml:71
 msgid "ft"
@@ -69,7 +70,7 @@ msgstr ""
 
 #: poor/util.py:190
 msgid "feet"
-msgstr ""
+msgstr "láb"
 
 #: poor/util.py:208 qml/Meters.qml:82
 msgid "yd"
@@ -77,7 +78,7 @@ msgstr ""
 
 #: poor/util.py:208
 msgid "yards"
-msgstr ""
+msgstr "yard"
 
 #: poor/util.py:218
 msgid "km"
@@ -85,7 +86,7 @@ msgstr ""
 
 #: poor/util.py:218
 msgid "kilometers"
-msgstr ""
+msgstr "kilométer"
 
 #: poor/util.py:226 qml/Meters.qml:93
 msgid "m"
@@ -93,164 +94,169 @@ msgstr ""
 
 #: poor/util.py:226
 msgid "meters"
-msgstr ""
+msgstr "méter"
 
 #: poor/util.py:235 poor/util.py:243
 #, python-brace-format
 msgid "{distance} north"
-msgstr ""
+msgstr "{distance} észak"
 
 #: poor/util.py:236
 #, python-brace-format
 msgid "{distance} north-east"
-msgstr ""
+msgstr "{distance} északkelet"
 
 #: poor/util.py:237
 #, python-brace-format
 msgid "{distance} east"
-msgstr ""
+msgstr "{distance} kelet"
 
 #: poor/util.py:238
 #, python-brace-format
 msgid "{distance} south-east"
-msgstr ""
+msgstr "{distance} délkelet"
 
 #: poor/util.py:239
 #, python-brace-format
 msgid "{distance} south"
-msgstr ""
+msgstr "{distance} dél"
 
 #: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south-west"
-msgstr ""
+msgstr "{distance}délnyugat"
 
 #: poor/util.py:241
 #, python-brace-format
 msgid "{distance} west"
-msgstr ""
+msgstr "{distance} nyugat"
 
 #: poor/util.py:242
 #, python-brace-format
 msgid "{distance} north-west"
-msgstr ""
+msgstr "{distance} északnyugat"
 
 #: poor/util.py:264
 msgid "{:d} min"
-msgstr ""
+msgstr "{:d} p"
 
 #: poor/util.py:265
 msgid "{:d} h {:d} min"
-msgstr ""
+msgstr "{:d} ó {:d} p"
 
 #: routers/digitransit.py:58
 msgid "airplane"
-msgstr ""
+msgstr "repülő"
 
 #: routers/digitransit.py:59 standard input:11 standard input:13
 msgid "bicycle"
-msgstr ""
+msgstr "kerékpár"
 
 #: routers/digitransit.py:60
 msgid "bus"
-msgstr ""
+msgstr "busz"
 
 #: routers/digitransit.py:61
 msgid "ferry"
-msgstr ""
+msgstr "komp"
 
 #: routers/digitransit.py:62
 msgid "train"
-msgstr ""
+msgstr "vonat"
 
 #: routers/digitransit.py:63
 msgid "metro"
-msgstr ""
+msgstr "metró"
 
 #: routers/digitransit.py:64
 msgid "tram"
-msgstr ""
+msgstr "villamos"
 
 #: routers/digitransit.py:65
 msgid "walk"
-msgstr ""
+msgstr "gyalog"
 
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr ""
+msgstr "Sétáljon {arr_name} felé."
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get a city bike at {dep_name}."
-msgstr ""
+msgstr "Itt talál városi biciklit: {dep_name}."
 
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
 msgstr ""
+"Beszállás erre: {mode_name} {line_desc} itt: {dep_name} ekkor: {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr ""
+msgstr "Sétáljon a célja felé."
 
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
 msgstr ""
+"Hagyja a közösségi biciklit itt: {dep_name}, majd sétáljon {arr_name} felé."
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
 msgstr ""
+"Hagyja a közösségi biciklit itt: {dep_name}, majd sétáljon a célja felé."
 
 #: routers/digitransit.py:76
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr ""
+msgstr "Kiszállás itt: {dep_name}, majd sétáljon {arr_name} felé."
 
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr ""
+msgstr "Kiszállás itt: {dep_name}, majd biciklizzen {arr_name} felé."
 
 #: routers/digitransit.py:78
 #, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr ""
+"Kiszállás itt: {dep_name}, majd átszállás erre: {mode_name} {line_desc} "
+"ekkor: {dep_time}."
 
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr ""
+msgstr "Kiszállás itt: {dep_name}, majd sétáljon a célja felé."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
-msgstr ""
+msgstr "Megérkezik a céljához."
 
 #: guides/foursquare_settings.qml:26
 msgid "Prefer"
-msgstr ""
+msgstr "Előnyben"
 
 #: guides/foursquare_settings.qml:28
 msgid "Closest"
-msgstr ""
+msgstr "Legközelebbi"
 
 #: guides/foursquare_settings.qml:29
 msgid "Best"
-msgstr ""
+msgstr "Legjobb"
 
 #: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
 #: qml/RoutePointPage.qml:55
 msgid "Remove"
-msgstr ""
+msgstr "Eltávolítás"
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
 #: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
 #: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
 msgid "Search"
-msgstr ""
+msgstr "Keresés"
 
 #: guides/osmscout_name.qml:102
 msgid "You can search for venues by name."
@@ -262,29 +268,31 @@ msgstr ""
 
 #: qml/AboutPage.qml:36
 msgid "About WhoGo Maps"
-msgstr ""
+msgstr "A WhoGo Maps névjegye"
 
 #: qml/AboutPage.qml:42
 msgid "version %1"
-msgstr ""
+msgstr "%1 verzió"
 
 #: qml/AboutPage.qml:49
 msgid "GitHub page"
-msgstr ""
+msgstr "GitHub oldal"
 
 #: qml/AboutPage.qml:66
 msgid ""
 "WhoGo Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
+"A WhoGo Maps szabad szoftver, kiadva a GNU General Public License (GPL) 3-as"
+" vagy későbbi verziója alapján."
 
 #: qml/AboutPage.qml:74
 msgid "Donate via PayPal"
-msgstr ""
+msgstr "Adományozz PayPal-on keresztül"
 
 #: qml/AboutPage.qml:79
 msgid "Translated by"
-msgstr ""
+msgstr "Fordította"
 
 #. TRANSLATORS: This is a special message that shouldn't be translated
 #. literally. It is used in the about page to give credits to the translators.
@@ -293,125 +301,130 @@ msgstr ""
 #. write them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:91
 msgid "translator-credits"
-msgstr ""
+msgstr "Szabó G."
 
 #: qml/AboutPage.qml:101
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
+"Új fordítást adhatsz hozzá, vagy közreműködhetsz a meglévők javításában a "
+"Transifex-en."
 
 #: qml/AboutPage.qml:109
 msgid "Transifex page"
-msgstr ""
+msgstr "Transifex oldal"
 
 #: qml/AttributionPage.qml:36
 msgid "Attribution"
-msgstr ""
+msgstr "Jellemző"
 
 #: qml/AttributionPage.qml:40 qml/BasemapPage.qml:29 qml/MenuPage.qml:107
 msgid "Maps"
-msgstr ""
+msgstr "Térképek"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
-msgstr ""
+msgstr "Helyek"
 
 #: qml/AttributionPage.qml:116 qml/MenuPage.qml:55 qml/NavigationPage.qml:39
 #: qml/RoutePage.qml:48
 msgid "Navigation"
-msgstr ""
+msgstr "Navigáció"
 
 #: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
-msgstr ""
+msgstr "Használatban"
 
 #: qml/GeocodePage.qml:119 qml/RoutePointPage.qml:119
 msgid ""
-"You can search by address, locality, landmark and many other terms. For best "
-"results, include a region, e.g. “address, city” or “city, country”."
+"You can search by address, locality, landmark and many other terms. For best"
+" results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
+"Kereshet cím, település, tereptárgy, és sok más kifejezésre. A legjobb "
+"eredmények érdekében foglaljon bele egy régiót, pl. \"cím, város\" vagy "
+"\"város, ország\"."
 
 #: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
 #: routers/digitransit_settings.qml:181
 msgid "Default"
-msgstr ""
+msgstr "Alapértelmezett"
 
 #: qml/GeocoderPage.qml:75 qml/GuidePage.qml:75 qml/RouterPage.qml:75
 msgid "Alternatives"
-msgstr ""
+msgstr "Alternatívák"
 
 #: qml/GeocodingResultsPage.qml:94 qml/NearbyResultsPage.qml:94
 msgid "Show all"
-msgstr ""
+msgstr "Az összes megjelenítése"
 
 #: qml/GeocodingResultsPage.qml:132 qml/NearbyResultsPage.qml:132
 #: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
 #: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
 msgid "Searching"
-msgstr ""
+msgstr "Keresés"
 
 #: qml/GeocodingResultsPage.qml:154 qml/NearbyResultsPage.qml:151
 msgid "%1 Results"
-msgstr ""
+msgstr "%1 Találat"
 
 #: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
 #: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
 #: routers/osmscout_results.qml:58 routers/osrm_results.qml:58
 msgid "No results"
-msgstr ""
+msgstr "Nincs találat"
 
 #: qml/Map.qml:406
 msgid "Voice navigation on"
-msgstr ""
+msgstr "Hangos navigáció be"
 
 #: qml/Map.qml:502
 msgid "Auto-center off"
-msgstr ""
+msgstr "Automatikus középre igazítás ki"
 
 #: qml/Map.qml:505
 msgid "Auto-center on"
-msgstr ""
+msgstr "Automatikus középre igazítás be"
 
 #: qml/MapGestureArea.qml:53 qml/MapGestureArea.qml:54
 msgid "Unnamed point"
-msgstr ""
+msgstr "Névtelen pont"
 
 #: qml/MenuPage.qml:61
 msgid "Nearby venues"
-msgstr ""
+msgstr "Közeli helyszínek"
 
 #: qml/MenuPage.qml:67
 msgid "Share current position"
-msgstr ""
+msgstr "Jelenlegi helyzet megosztása"
 
 #: qml/MenuPage.qml:82
 msgid "Share Current Position"
-msgstr ""
+msgstr "Jelenlegi helyzet megosztása"
 
 #: qml/MenuPage.qml:89
 msgid "Center on current position"
-msgstr ""
+msgstr "Jelenlegi helyzet legyen középen"
 
 #: qml/MenuPage.qml:98
 msgid "Clear map"
-msgstr ""
+msgstr "Térkép törlése"
 
 #: qml/MenuPage.qml:116
 msgid "Auto-center on position"
-msgstr ""
+msgstr "A helyzet automatikus középre igazítása"
 
 #: qml/MenuPage.qml:133
 msgid "Auto-rotate on direction"
-msgstr ""
+msgstr "Automatikus irányra forgatás"
 
 #: qml/MenuPage.qml:148
 msgid "About"
-msgstr ""
+msgstr "Névjegy"
 
 #: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
 msgid "Preferences"
-msgstr ""
+msgstr "Beállítások"
 
 #: qml/Meters.qml:71 qml/Meters.qml:82
 msgid "mph"
@@ -423,414 +436,418 @@ msgstr ""
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."
-msgstr ""
+msgstr "Folytasd %1-n keresztül."
 
 #: qml/NarrativePage.qml:103
 msgid "Maneuvers"
-msgstr ""
+msgstr "Manőverek"
 
 #: qml/NavigationBlock.qml:88
 msgid "Tap to review maneuvers or begin navigating"
-msgstr ""
+msgstr "Érintsd meg a manőverek kiértékeléséhez, vagy a navigáció kezdéséhez"
 
 #: qml/NavigationPage.qml:54
 msgid "Pause"
-msgstr ""
+msgstr "Szünet"
 
 #: qml/NavigationPage.qml:55
 msgid "Resume"
-msgstr ""
+msgstr "Folytatás"
 
 #: qml/NavigationPage.qml:55
 msgid "Begin"
-msgstr ""
+msgstr "Indítás"
 
 #: qml/NavigationPage.qml:66
 msgid "Reroute"
-msgstr ""
+msgstr "Újratervezés"
 
 #: qml/NavigationPage.qml:78
 msgid "Clear"
-msgstr ""
+msgstr "Törlés"
 
 #: qml/NavigationPage.qml:89
 msgid "Status"
-msgstr ""
+msgstr "Állapot"
 
 #: qml/NavigationPage.qml:137
 msgid "Remaining"
-msgstr ""
+msgstr "Hátralévő"
 
 #: qml/NavigationPage.qml:168
 msgid "Total"
-msgstr ""
+msgstr "Összes"
 
 #: qml/NavigationPage.qml:190
 msgid "Options"
-msgstr ""
+msgstr "Lehetőségek"
 
 #: qml/NavigationPage.qml:196
 msgid "Show navigation instructions"
-msgstr ""
+msgstr "Navigációs utasítások megjelenítése"
 
 #: qml/NavigationPage.qml:207
 msgid "Voice navigation instructions"
-msgstr ""
+msgstr "Hangos navigációs utasítások"
 
 #: qml/NavigationPage.qml:220
 msgid "Reroute automatically"
-msgstr ""
+msgstr "Automatikus újratervezés"
 
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
-msgstr ""
+msgstr "Közeli helyek"
 
 #: qml/NearbyPage.qml:78
 msgid "Near"
-msgstr ""
+msgstr "Közel"
 
 #: qml/NearbyPage.qml:111 routers/mapquest_open_settings.qml:26
 #: routers/osmscout_settings.qml:26
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 #: qml/NearbyPage.qml:126
 msgid "Radius"
-msgstr ""
+msgstr "Sugár"
 
 #: qml/NorthArrow.qml:53
 msgid "Auto-rotate on"
-msgstr ""
+msgstr "Automatikus forgatás be"
 
 #: qml/NorthArrow.qml:54
 msgid "Auto-rotate off"
-msgstr ""
+msgstr "Automatikus forgatás ki"
 
 #: qml/PlaceTypePage.qml:104
 msgid "You can search for venues by type or name."
-msgstr ""
+msgstr "A helyszínekre típus vagy név alapján kereshetsz rá"
 
 #: qml/PoiBubble.qml:60
 msgid "Navigate"
-msgstr ""
+msgstr "Navigálás"
 
 #: qml/PoiBubble.qml:77
 msgid "Nearby"
-msgstr ""
+msgstr "A közelben"
 
 #: qml/PoiBubble.qml:94
 msgid "Share"
-msgstr ""
+msgstr "Megosztás"
 
 #: qml/PoiBubble.qml:100
 msgid "Share Location"
-msgstr ""
+msgstr "Helyzet Megosztása"
 
 #: qml/PoiBubble.qml:111
 msgid "Web"
-msgstr ""
+msgstr "Web"
 
 #: qml/PreferencesPage.qml:42
 msgid "Only applies to vector maps."
-msgstr ""
+msgstr "Csak a vektoros térképekre vonatkozik."
 
 #: qml/PreferencesPage.qml:43
 msgid "Tilt map when navigating"
-msgstr ""
+msgstr "Térkép megdöntése navigációkor"
 
 #: qml/PreferencesPage.qml:51
 msgid "Map scale"
-msgstr ""
+msgstr "Térkép méretarány"
 
 #: qml/PreferencesPage.qml:66
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
+"A navigáció hangjának preferált neme. Csak néhány motor és nyelv esetében "
+"támogatott."
 
 #: qml/PreferencesPage.qml:67
 msgid "Voice gender"
-msgstr ""
+msgstr "Hang neme"
 
 #: qml/PreferencesPage.qml:69
 msgid "Male"
-msgstr ""
+msgstr "Férfi"
 
 #: qml/PreferencesPage.qml:70
 msgid "Female"
-msgstr ""
+msgstr "Női"
 
 #: qml/PreferencesPage.qml:85
 msgid ""
 "Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
+"Csak akkor érvényes, ha a WhoGo Maps aktív. Miniatűr állapotban a "
+"készülékbeállítások szabályozzák az elalvást."
 
 #: qml/PreferencesPage.qml:86
 msgid "Prevent sleep"
-msgstr ""
+msgstr "Elalvás megakadályozása"
 
 #: qml/PreferencesPage.qml:88
 msgid "Never"
-msgstr ""
+msgstr "Soha"
 
 #: qml/PreferencesPage.qml:89
 msgid "When navigating"
-msgstr ""
+msgstr "Navigálás közben"
 
 #: qml/PreferencesPage.qml:90
 msgid "Always"
-msgstr ""
+msgstr "Mindig"
 
 #: qml/PreferencesPage.qml:106
 msgid "Units"
-msgstr ""
+msgstr "Mértékegységek"
 
 #: qml/PreferencesPage.qml:108
 msgid "Metric"
-msgstr ""
+msgstr "Metrikus"
 
 #: qml/PreferencesPage.qml:109
 msgid "American"
-msgstr ""
+msgstr "Amerikai"
 
 #: qml/PreferencesPage.qml:110
 msgid "British"
-msgstr ""
+msgstr "Brit"
 
 #: qml/PreferencesPage.qml:131
 msgid "Clear cache"
-msgstr ""
+msgstr "Gyorsítótár ürítése"
 
 #: qml/RoutePage.qml:68
 msgid "From"
-msgstr ""
+msgstr "Innen"
 
 #: qml/RoutePage.qml:101
 msgid "To"
-msgstr ""
+msgstr "Ide"
 
 #: qml/RoutePage.qml:151
 msgid "Reverse endpoints"
-msgstr ""
+msgstr "Végpontok megfordítása"
 
 #: qml/RouterPage.qml:66
 msgid "Modes: %1"
-msgstr ""
+msgstr "Módok: %1"
 
 #: qml/SharePage.qml:53
 msgid "SMS"
-msgstr ""
+msgstr "SMS"
 
 #: qml/SharePage.qml:59 qml/SharePage.qml:91
 msgid "Message copied to the clipboard"
-msgstr ""
+msgstr "Üzenet a vágólapra másolva"
 
 #: qml/SharePage.qml:60
 msgid "Launching the Messages application"
-msgstr ""
+msgstr "Az Üzenetek alkalmazás indítása"
 
 #: qml/SharePage.qml:75
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: qml/SharePage.qml:78
 msgid "Launching the Email application"
-msgstr ""
+msgstr "Az E-mail alkalmazás indítása"
 
 #: qml/SharePage.qml:88
 msgid "Other"
-msgstr ""
+msgstr "Más"
 
 #: qml/whogo-maps.qml:154
 msgid "Rerouting failed: %1"
-msgstr ""
+msgstr "Az újratervezés sikertelen: %1"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
-msgstr ""
+msgstr "Útvonal %1. összesen %2"
 
 #: routers/digitransit_results.qml:155
 msgid "Walk %1"
-msgstr ""
+msgstr "Gyalog: %1"
 
 #: routers/digitransit_results.qml:156
 msgid "%1 → %2"
-msgstr ""
+msgstr "%1 → %2"
 
 #: routers/digitransit_results.qml:239
 msgid "Results"
-msgstr ""
+msgstr "Eredmények"
 
 #: routers/digitransit_settings.qml:28
 msgid "Region"
-msgstr ""
+msgstr "Régió"
 
 #: routers/digitransit_settings.qml:30
 msgid "HSL"
-msgstr ""
+msgstr "HSL"
 
 #: routers/digitransit_settings.qml:31
 msgid "Waltti"
-msgstr ""
+msgstr "Waltti"
 
 #: routers/digitransit_settings.qml:32
 msgid "Finland"
-msgstr ""
+msgstr "Finnország"
 
 #: routers/digitransit_settings.qml:70 routers/digitransit_settings.qml:75
 #: routers/digitransit_settings.qml:80
 msgid "Depart"
-msgstr ""
+msgstr "Indulás"
 
 #: routers/digitransit_settings.qml:76
 msgid "Arrive"
-msgstr ""
+msgstr "Érkezés"
 
 #: routers/digitransit_settings.qml:107
 msgid "Today"
-msgstr ""
+msgstr "Ma"
 
 #: routers/digitransit_settings.qml:150
 msgid "Now"
-msgstr ""
+msgstr "Most"
 
 #: routers/digitransit_settings.qml:179
 msgid "Criterion"
-msgstr ""
+msgstr "Feltétel"
 
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
-msgstr ""
+msgstr "Kevesebb átszállás"
 
 #: routers/digitransit_settings.qml:183
 msgid "Least walking"
-msgstr ""
+msgstr "Kevesebb gyaloglás"
 
 #: routers/mapquest_open_settings.qml:28 routers/osmscout_settings.qml:28
 msgid "Car"
-msgstr ""
+msgstr "Autó"
 
 #: routers/mapquest_open_settings.qml:29 routers/osmscout_settings.qml:29
 msgid "Bicycle"
-msgstr ""
+msgstr "Kerékpár"
 
 #: routers/mapquest_open_settings.qml:30 routers/osmscout_settings.qml:30
 msgid "Foot"
-msgstr ""
+msgstr "Gyalog"
 
 #: routers/mapquest_open_settings.qml:48
 msgid "Try to avoid tolls"
-msgstr ""
+msgstr "Útdíjak elkerülése"
 
 #: routers/mapquest_open_settings.qml:57 routers/osmscout_settings.qml:45
 msgid "Language"
-msgstr ""
+msgstr "Nyelv"
 
 #: routers/mapquest_open_settings.qml:61
 msgid "English (UK)"
-msgstr ""
+msgstr "Angol (UK)"
 
 #: routers/mapquest_open_settings.qml:62
 msgid "English (US)"
-msgstr ""
+msgstr "Angol (US)"
 
 #: routers/mapquest_open_settings.qml:63
 msgid "French (Canada)"
-msgstr ""
+msgstr "Francia (Kanada)"
 
 #: routers/mapquest_open_settings.qml:64
 msgid "French (France)"
-msgstr ""
+msgstr "Francia (Franciaország)"
 
 #: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:52
 msgid "German"
-msgstr ""
+msgstr "Német"
 
 #: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:55
 msgid "Russian"
-msgstr ""
+msgstr "Orosz"
 
 #: routers/mapquest_open_settings.qml:67
 msgid "Spanish (Mexico)"
-msgstr ""
+msgstr "Spanyol (Mexikó)"
 
 #: routers/mapquest_open_settings.qml:68
 msgid "Spanish (Spain)"
-msgstr ""
+msgstr "Spanyol (Spanyolország)"
 
 #: routers/osmscout_settings.qml:49
 msgid "Catalan"
-msgstr ""
+msgstr "Katalán"
 
 #: routers/osmscout_settings.qml:50
 msgid "Czech"
-msgstr ""
+msgstr "Cseh"
 
 #: routers/osmscout_settings.qml:51
 msgid "English"
-msgstr ""
+msgstr "Angol"
 
 #: routers/osmscout_settings.qml:53
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: routers/osmscout_settings.qml:54
 msgid "Italian"
-msgstr ""
+msgstr "Olasz"
 
 #: routers/osmscout_settings.qml:56
 msgid "Slovenian"
-msgstr ""
+msgstr "Szlovén"
 
 #: routers/osmscout_settings.qml:57
 msgid "Spanish"
-msgstr ""
+msgstr "Spanyol"
 
 #: routers/osmscout_settings.qml:58
 msgid "Swedish"
-msgstr ""
+msgstr "Svéd"
 
 #: qml/js/util.js:79
 msgid "%1 (default)"
-msgstr ""
+msgstr "%1 (alapértelmezett)"
 
 #: standard input:1
 msgid "Search in Finland"
-msgstr ""
+msgstr "Keresés Finnországban"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr ""
+msgstr "Keresés nyílt adatforrások alapján"
 
 #: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
-msgstr ""
+msgstr "Keresés az OpenStreetMap adatok alapján"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr ""
+msgstr "A helyek Forsquare felhasználók által felsoroltak és értékeltek"
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
-msgstr ""
+msgstr "Az érdekes pontok az OpenStreetMap adatokon alapulnak"
 
 #: standard input:8
 msgid "Public transport routing in Finland"
-msgstr ""
+msgstr "Útvonaltervezés tömegközlekedéssel Finnországban"
 
 #: standard input:9
 msgid "public transport"
-msgstr ""
+msgstr "tömegközlekedés"
 
 #: standard input:10 standard input:12 standard input:14
 msgid "Routing based on OpenStreetMap data"
-msgstr ""
+msgstr "Az útvonaltervezés az OpenStreetMap adatokon alapul"
 
 #: standard input:11 standard input:13 standard input:15
 msgid "car"
-msgstr ""
+msgstr "autóval"
 
 #: standard input:11 standard input:13
 msgid "foot"
-msgstr ""
+msgstr "gyalog"
