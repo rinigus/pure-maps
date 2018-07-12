@@ -181,6 +181,35 @@ class VoiceEnginePicoTTS(VoiceEngine):
                           text]) == 0
 
 
+class VoiceEngineMimicEnUsPirate(VoiceEngine):
+
+    """Text-to-speech (TTS) using Mimic (The Mycroft TTS Engine) tuned for en_US-x-pirate locale"""
+
+    commands = ["mimic", "harbour-mimic"]
+    voices = {
+        "en_US-x-pirate": {"male": "ap", "female": "slt"},
+    }
+    phonemes = { "Arrr": "aa r ah0 r r .",
+                 "Cap'n": "k ae1 p n",
+                 "head'n": "hh eh1 d ah0 n",
+                 "th'": "dh" }
+
+    def make_wav(self, text, fname):
+        """Generate voice output to WAV file `fname`."""
+        text = self.transform_text(text)
+        # preprocess to catch few words in Pirate's dictionary
+        for word, ph in self.phonemes.items():
+            if word == "th'":
+                text = text.replace(" %s " % word, ' <phoneme ph="%s">phonemes-given</phoneme> ' % ph)
+            else:
+                text = re.sub(r"\b%s\b" % word, '<phoneme ph="%s">phonemes-given</phoneme>' % ph, text)
+        return self.call([self.command,
+                          '-ssml',
+                          "-t", text,
+                          "-o", fname,
+                          "-voice", self.voice_name]) == 0
+
+
 def voice_worker(task_queue, result_queue, engine, tmpdir):
     """Worker thread to generate WAV files in `task_queue`."""
     while True:
@@ -203,6 +232,7 @@ class VoiceGenerator:
         VoiceEngineFlite,
         VoiceEnginePicoTTS,
         VoiceEngineEspeak,
+        VoiceEngineMimicEnUsPirate,
     ]
 
     def __init__(self):
