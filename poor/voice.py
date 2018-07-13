@@ -20,6 +20,7 @@
 import atexit
 import os
 import poor
+import re
 import queue
 import shutil
 import subprocess
@@ -187,7 +188,7 @@ class VoiceEngineMimicEnUsPirate(VoiceEngine):
 
     commands = ["mimic", "harbour-mimic"]
     voices = {
-        "en_US-x-pirate": {"male": "ap", "female": "slt"},
+        "en-US-x-pirate": {"male": "awb", "female": "slt"},
     }
     phonemes = { "Arrr": "aa r ah0 r r .",
                  "Cap'n": "k ae1 p n",

@@ -58,7 +58,7 @@ Column {
             MenuItem { text: app.tr("Spanish") }
             MenuItem { text: app.tr("Swedish") }
         }
-        property var keys: ["ca", "cs", "en", "en_US-x-pirate", "de", "hi", "it", "ru", "sl", "es", "sv"]
+        property var keys: ["ca", "cs", "en", "en-US-x-pirate", "de", "hi", "it", "ru", "sl", "es", "sv"]
         Component.onCompleted: {
             var key = app.conf.get("routers.osmscout.language");
             var index = langComboBox.keys.indexOf(key);

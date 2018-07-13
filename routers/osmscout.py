@@ -108,7 +108,6 @@ def route(fm, to, heading, params):
     if heading is not None:
         fm["heading"] = heading
     language = poor.conf.routers.osmscout.language
-    if language=="en_US-x-pirate": language="en-US-x-pirate"
     units = "kilometers" if poor.conf.units == "metric" else "miles"
     input = dict(locations=[fm, to],
                  costing=poor.conf.routers.osmscout.type,
