@@ -62,6 +62,29 @@ class Geocoder:
         """Return a list of attribution dictionaries."""
         return [{"text": k, "url": v} for k, v in self._attribution.items()]
 
+    def autocomplete(self, query, x=0, y=0, params=None):
+        """
+        Return a list of autocomplete dictionaries matching `query`.
+
+        `params` can be used to specify a dictionary of geocoder-specific
+        parameters.
+        """
+        params = params or {}
+        if (not hasattr(self._provider, "autocomplete") or
+            not callable(self._provider.autocomplete) or
+            RE_GEO_URI.search(query) or
+            RE_LAT_LON.search(query)):
+            return []
+        try:
+            results = self._provider.autocomplete(query, x, y, params)
+        except Exception:
+            print("Autocomplete failed:", file=sys.stderr)
+            traceback.print_exc()
+            return []
+        for result in results:
+            result["provider"] = self.id
+        return results
+
     def _format_distance(self, x1, y1, x2, y2):
         """Calculate and format a human readable distance string."""
         distance = poor.util.calculate_distance(x1, y1, x2, y2)
