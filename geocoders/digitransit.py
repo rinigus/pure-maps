@@ -44,6 +44,7 @@ def autocomplete(query, x, y, params):
     results = list(map(poor.AttrDict, results))
     results = [dict(
         label=result.properties.label,
+        title=result.properties.name,
         x=float(result.geometry.coordinates[0]),
         y=float(result.geometry.coordinates[1]),
     ) for result in results]

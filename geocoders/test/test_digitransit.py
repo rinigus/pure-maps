@@ -29,6 +29,7 @@ class TestModule(poor.test.TestCase):
         assert results
         for result in results:
             assert result.label
+            assert result.title
             assert result.x
             assert result.y
 
