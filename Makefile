@@ -29,6 +29,8 @@ clean:
 	rm -rf dist
 	rm -rf */.cache
 	rm -rf */*/.cache
+	rm -rf */.pytest_cache
+	rm -rf */*/.pytest_cache
 	rm -rf */__pycache__
 	rm -rf */*/__pycache__
 	rm -f po/*~
