@@ -25,7 +25,7 @@ import copy
 import poor
 import urllib.parse
 
-AUTOCOMPLETE_URL = "http://api.digitransit.fi/geocoding/v1/autocomplete?text={query}&layers=address,street,venue"
+AUTOCOMPLETE_URL = "http://api.digitransit.fi/geocoding/v1/autocomplete?text={query}&layers=venue,address,street,macroregion,region,county,locality,localadmin,borough,neighbourhood"
 SEARCH_URL = "http://api.digitransit.fi/geocoding/v1/search?text={query}&size={limit}&lang={lang}"
 
 cache = {}
@@ -43,7 +43,7 @@ def autocomplete(query, x, y, params):
     results = poor.http.get_json(url)["features"]
     results = list(map(poor.AttrDict, results))
     results = [dict(
-        label=parse_autocomplete_label(result.properties),
+        label=result.properties.label,
         x=float(result.geometry.coordinates[0]),
         y=float(result.geometry.coordinates[1]),
     ) for result in results]
@@ -70,13 +70,6 @@ def geocode(query, params):
     if results and results[0]:
         cache[url] = copy.deepcopy(results)
     return results
-
-def parse_autocomplete_label(props):
-    """Parse autocomplete query label from result properties."""
-    for area in ("locality", "localadmin", "region"):
-        if props.get("name") and props.get(area):
-            return "{}, {}".format(props["name"], props[area])
-    return props["label"]
 
 def parse_description(props):
     """Parse description from geocoding result properties."""
