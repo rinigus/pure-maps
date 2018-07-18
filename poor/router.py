@@ -49,6 +49,7 @@ class Router:
         if hasattr(self, "id"): return
         path, values = self._load_attributes(id)
         self._attribution = values.get("attribution", {})
+        self.geocoder = poor.Geocoder(values.get("geocoder", "default"))
         self.id = id
         self.name = values["name"]
         self._path = path

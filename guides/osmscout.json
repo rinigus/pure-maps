@@ -4,6 +4,7 @@
     "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
   },
   "_description": "Points of interest from OpenStreetMap data",
+  "geocoder": "osmscout",
   "name": "OSM Scout",
   "requires": ["harbour-osmscout-server"]
 }

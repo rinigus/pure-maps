@@ -27,6 +27,9 @@ Dialog {
     allowedOrientations: app.defaultAllowedOrientations
     canAccept: dialog.query.length > 0
 
+    property bool   autocompletePending: false
+    property var    autocompletions: []
+    property var    completionDetails: []
     property var    history: []
     property string query: ""
 
@@ -64,6 +67,7 @@ Dialog {
             ListView.onRemove: animateRemoval(listItem);
 
             onClicked: {
+                listItem.focus = true;
                 dialog.query = model.place;
                 dialog.accept();
             }
@@ -97,11 +101,15 @@ Dialog {
                 id: searchField
                 placeholderText: app.tr("Search")
                 width: parent.width
+                property string prevText: ""
                 EnterKey.enabled: text.length > 0
                 EnterKey.onClicked: dialog.accept();
                 onTextChanged: {
-                    dialog.query = searchField.text;
-                    dialog.filterHistory();
+                    var newText = searchField.text.trim();
+                    if (newText === searchField.prevText) return;
+                    dialog.query = newText;
+                    searchField.prevText = newText;
+                    dialog.filterCompletions();
                 }
             }
 
@@ -112,6 +120,15 @@ Dialog {
         model: ListModel {}
 
         property var searchField: undefined
+
+        Timer {
+            id: autocompleteTimer
+            interval: 1000
+            repeat: true
+            running: dialog.status === PageStatus.Active
+            triggeredOnStart: true
+            onTriggered: dialog.fetchCompletions();
+        }
 
         ViewPlaceholder {
             id: viewPlaceholder
@@ -125,15 +142,41 @@ Dialog {
 
     onStatusChanged: {
         if (dialog.status === PageStatus.Activating) {
+            dialog.autocompletePending = false;
             dialog.loadHistory();
-            dialog.filterHistory();
+            dialog.filterCompletions();
         }
     }
 
-    function filterHistory() {
-        // Filter search history for current search field text.
-        var query = listView.searchField.text;
-        var found = Util.findMatches(query, dialog.history, listView.model.count);
+    function fetchCompletions() {
+        // Fetch completions for a partial search query.
+        if (dialog.autocompletePending) return;
+        dialog.autocompletePending = true;
+        var query = listView.searchField.text.trim();
+        var x = map.position.coordinate.longitude || 0;
+        var y = map.position.coordinate.latitude || 0;
+        py.call("poor.app.router.geocoder.autocomplete", [query, x, y], function(results) {
+            dialog.autocompletePending = false;
+            if (dialog.status !== PageStatus.Active) return;
+            results = results || [];
+            dialog.autocompletions = [];
+            for (var i = 0; i < results.length; i++) {
+                dialog.autocompletions.push(results[i].label);
+                dialog.completionDetails[results[i].label.toLowerCase()] = results[i];
+                // Use auto-completion results to fix history item letter case.
+                for (var j = 0; j < dialog.history.length; j++)
+                    if (results[i].label.toLowerCase() === dialog.history[j].toLowerCase())
+                        dialog.history[j] = results[i].label;
+            }
+            dialog.filterCompletions();
+        });
+    }
+
+    function filterCompletions() {
+        // Filter completions for the current search query.
+        var query = listView.searchField.text.trim();
+        var candidates = dialog.history.concat(dialog.autocompletions);
+        var found = Util.findMatches(query, candidates, listView.model.count);
         Util.injectMatches(listView.model, found, "place", "text");
         viewPlaceholder.enabled = found.length === 0;
     }

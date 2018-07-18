@@ -4,6 +4,7 @@
     "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
   },
   "_description": "Routing based on OpenStreetMap data",
+  "geocoder": "osmscout",
   "_modes": ["car", "bicycle", "foot"],
   "name": "OSM Scout",
   "offline": true,
