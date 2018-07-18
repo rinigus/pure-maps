@@ -187,6 +187,10 @@ Page {
             for (var i = 0; i < results.length; i++) {
                 page.autocompletions.push(results[i].label);
                 page.completionDetails[results[i].label.toLowerCase()] = results[i];
+                // Use auto-completion results to fix history item letter case.
+                for (var j = 0; j < page.history.length; j++)
+                    if (results[i].label.toLowerCase() === page.history[j].toLowerCase())
+                        page.history[j] = results[i].label;
             }
             page.filterCompletions();
         });
