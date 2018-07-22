@@ -97,6 +97,7 @@ def calculate_segment_distance(x, y, x1, y1, x2, y2):
     # given sufficiently short segments.
     med_dist_deg = math.sqrt((x - (x1 + x2)/2)**2 + (y - (y1 + y2)/2)**2)
     med_dist_m = calculate_distance(x, y, (x1 + x2)/2, (y1 + y2)/2)
+    if med_dist_deg == 0 or med_dist_m == 0: return 0
     seg_dist_deg = math.sqrt(poor.polysimp.get_sq_seg_dist(x, y, x1, y1, x2, y2))
     return seg_dist_deg * (med_dist_m / med_dist_deg)
 
