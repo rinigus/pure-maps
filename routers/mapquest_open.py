@@ -53,6 +53,12 @@ ICONS = {
     18: "fork-straight",
 }
 
+MODE = {
+    "fastest": "car",
+    "bicycle": "bicycle",
+    "pedestrian": "foot"
+}
+
 SUPPORTED_LOCALES = [
     "en_US",
     "en_GB",
@@ -116,7 +122,8 @@ def route(fm, to, heading, params):
     if len(maneuvers) > 1:
         maneuvers[ 0]["icon"] = "depart"
         maneuvers[-1]["icon"] = "arrive"
-    route = dict(x=x, y=y, maneuvers=maneuvers, mode="car")
+    mode = MODE.get(type,"car")
+    route = dict(x=x, y=y, maneuvers=maneuvers, mode=mode)
     route["language"] = locale
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
