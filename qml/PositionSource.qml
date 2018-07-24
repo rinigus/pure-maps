@@ -18,10 +18,11 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
+import "."
 
 import "js/util.js" as Util
 
-PositionSource {
+PositionSourceMapMatched {
     id: gps
 
     // If application is no longer active, turn positioning off immediately
@@ -29,8 +30,16 @@ PositionSource {
     // and give up if we still don't gain that lock.
     active: app.running || (coordHistory.length === 0 && timePosition - timeActivate < 180000)
 
+    mapMatchingMode: {
+        if (app.mapMatchingMode == "none") return 0;
+        else if (app.mapMatchingMode == "car") return 2;
+        else if (app.mapMatchingMode == "bicycle") return 3;
+        else if (app.mapMatchingMode == "foot") return 5;
+        return 0;
+    }
+
     property var coordHistory: []
-    property var direction: undefined
+    property bool directionCalculated: false
     property var directionHistory: []
     property var ready: false
     property var timeActivate:  Date.now()
@@ -43,6 +52,8 @@ PositionSource {
     }
 
     onPositionChanged: {
+        // proceed only if map matching does not provide direction
+        if (directionValid) return;
         // Calculate direction as a median of individual direction values
         // calculated after significant changes in position. This should be
         // more stable than any direct value and usable with map.autoRotate.
@@ -70,13 +81,21 @@ PositionSource {
             if (gps.directionHistory.length >= 3) {
                 gps.direction = Util.median(gps.directionHistory);
                 gps.timeDirection = Date.now();
+                gps.directionCalculated = true;
             }
         } else if (gps.direction && Date.now() - gps.timeDirection > 300000) {
             // Clear direction if we have not seen any valid updates in a while.
             gps.coordHistory = [];
-            gps.direction = undefined;
+            gps.directionCalculated = false;
             gps.directionHistory = [];
         }
     }
 
+    onDirectionValidChanged: {
+        // Clear direction if we switchid to map matched directions
+        if (!directionValid) return;
+        gps.coordHistory = [];
+        gps.directionCalculated = false;
+        gps.directionHistory = [];
+    }
 }

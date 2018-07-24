@@ -40,7 +40,14 @@ MapboxMap {
     property bool   autoCenter: false
     property bool   autoRotate: false
     property int    counter: 0
-    property var    direction: app.navigationStatus.direction || gps.direction
+    property var    direction: {
+        // prefer map matched direction, if available
+        if (gps.directionValid) return gps.direction;
+        if (app.navigationStatus.direction!==undefined && app.navigationStatus.direction!==null)
+            return app.navigationStatus.direction;
+        if (gps.directionCalculated) return gps.direction;
+        return undefined;
+    }
     property string firstLabelLayer: ""
     property string format: ""
     property bool   hasRoute: false

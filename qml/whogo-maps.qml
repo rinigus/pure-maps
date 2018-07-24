@@ -40,7 +40,15 @@ ApplicationWindow {
     property var  attributionButton: null
     property var  centerButton: null
     property var  conf: Config {}
+    property bool hasMapMatching: false
     property var  map: null
+    property string mapMatchingMode: {
+        if (!hasMapMatching) return "none";
+        if (navigationActive) return mapMatchingModeNavigation;
+        return mapMatchingModeIdle;
+    }
+    property string mapMatchingModeIdle: "none"
+    property string mapMatchingModeNavigation: "none"
     property var  menuButton: null
     property var  meters: null
     property var  narrativePageSeen: false
@@ -75,6 +83,10 @@ ApplicationWindow {
         autoLoad: true
         autoPlay: true
         loops: 1
+    }
+
+    Component.onCompleted: {
+        updateMapMatching()
     }
 
     Component.onDestruction: {
@@ -238,6 +250,13 @@ ApplicationWindow {
         var prevent = app.conf.get("keep_alive");
         DisplayBlanking.preventBlanking = app.applicationActive &&
             (prevent === "always" || (prevent === "navigating" && app.navigationActive));
+    }
+
+    function updateMapMatching() {
+        if (!py.ready) return py.onReadyChanged.connect(app.updateMapMatching);
+        app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
+        app.mapMatchingModeIdle = app.conf.get("map_matching_when_idle");
+        // app.mapMatchingModeNavigation is set on Navigation page
     }
 
     function updateNavigationStatus(status) {

@@ -224,6 +224,20 @@ Page {
                 }
             }
 
+            TextSwitch {
+                id: mapmatchingSwitch
+                checked: enabled && app.conf.get("map_matching_when_navigating")
+                enabled: map.route.mode !== "transit"
+                text: app.tr("Snap position to road")
+                visible: app.hasMapMatching
+                onCheckedChanged: {
+                    if (!mapmatchingSwitch.enabled) return;
+                    app.conf.set("map_matching_when_navigating", mapmatchingSwitch.checked);
+                    if (mapmatchingSwitch.checked) app.mapMatchingModeNavigation=map.route.mode;
+                    else app.mapMatchingModeNavigation="none";
+                }
+            }
+
             Spacer {
                 height: Theme.paddingMedium
             }
