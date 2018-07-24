@@ -49,6 +49,7 @@ class Guide:
         if hasattr(self, "id"): return
         path, values = self._load_attributes(id)
         self._attribution = values.get("attribution", {})
+        self.geocoder = poor.Geocoder(values.get("geocoder", "default"))
         self.id = id
         self.name = values["name"]
         self._path = path
@@ -59,6 +60,27 @@ class Guide:
     def attribution(self):
         """Return a list of attribution dictionaries."""
         return [{"text": k, "url": v} for k, v in self._attribution.items()]
+
+    def autocomplete_type(self, query, params=None):
+        """
+        Return a list of autocomplete dictionaries matching `query`.
+
+        `params` can be used to specify a dictionary of guide-specific
+        parameters.
+        """
+        params = params or {}
+        if (not hasattr(self._provider, "autocomplete_type") or
+            not callable(self._provider.autocomplete_type)):
+            return []
+        try:
+            results = self._provider.autocomplete_type(query, params)
+        except Exception:
+            print("Autocomplete failed:", file=sys.stderr)
+            traceback.print_exc()
+            return []
+        for result in results:
+            result["provider"] = self.id
+        return results
 
     def _format_distance(self, x1, y1, x2, y2):
         """Calculate and format a human readable distance string."""

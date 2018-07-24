@@ -23,7 +23,14 @@ class TestModule(poor.test.TestCase):
     def setup_method(self, method):
         self.guide = poor.Guide("foursquare")
 
-    def test_geocode(self):
+    def test_autocomplete_type(self):
+        results = self.guide.autocomplete_type("rest")
+        results = list(map(poor.AttrDict, results))
+        assert results
+        for result in results:
+            assert result.label
+
+    def test_nearby(self):
         results = self.guide.nearby("restaurant", "tapiola, espoo", 1000)
         results = list(map(poor.AttrDict, results))
         assert results

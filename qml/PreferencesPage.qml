@@ -43,6 +43,7 @@ Page {
                 text: app.tr("Tilt map when navigating")
                 onCheckedChanged: {
                     app.conf.set("tilt_when_navigating", tiltSwitch.checked);
+                    map.tiltEnabled = tiltSwitch.checked;
                 }
             }
 

@@ -23,6 +23,16 @@ class TestModule(poor.test.TestCase):
     def setup_method(self, method):
         self.geocoder = poor.Geocoder("digitransit")
 
+    def test_autocomplete(self):
+        results = self.geocoder.autocomplete("apollonk", x=24.941, y=60.169)
+        results = list(map(poor.AttrDict, results))
+        assert results
+        for result in results:
+            assert result.label
+            assert result.title
+            assert result.x
+            assert result.y
+
     def test_geocode(self):
         results = self.geocoder.geocode("kasarmitori, helsinki")
         results = list(map(poor.AttrDict, results))

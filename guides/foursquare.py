@@ -23,6 +23,7 @@ https://developer.foursquare.com/docs/api/venues/details
 """
 
 import copy
+import functools
 import html
 import itertools
 import poor
@@ -34,6 +35,13 @@ CONF_DEFAULTS = {"sort_by_distance": False}
 
 CLIENT_ID = "BP3KCWJXGQDXWVMYSVLWWRITMVZTG5XANJ43D2ZD0D5JMKCX"
 CLIENT_SECRET = "JTINTTCK4S5V4RTZ40IJB0GIKDX1XT0LJVNRH2EZXNVLNZ2T"
+
+CATEGORIES_URL = "".join((
+    "https://api.foursquare.com/v2/venues/categories",
+    "?client_id={}".format(CLIENT_ID),
+    "&client_secret={}".format(CLIENT_SECRET),
+    "&v=20180603",
+))
 
 EXPLORE_URL = "".join((
     "https://api.foursquare.com/v2/venues/explore",
@@ -55,6 +63,35 @@ VENUE_URL = "".join((
 ))
 
 cache = {}
+
+def autocomplete_type(query, params=None):
+    """Return a list of autocomplete dictionaries matching `query`."""
+    if len(query) < 1: return []
+    query = query.lower()
+    results = []
+    for i, type in enumerate(get_types()):
+        pos = type.label.lower().find(query)
+        if pos < 0: continue
+        results.append(poor.AttrDict(
+            label=type.label,
+            order=(pos, type.level, type.label),
+        ))
+    results.sort(key=lambda x: x.order)
+    results = [{"label": x["label"]} for x in results]
+    return results[:100]
+
+@functools.lru_cache(1)
+def get_types():
+    """Return a list of available venue types."""
+    results = poor.http.get_json(CATEGORIES_URL)
+    results = poor.AttrDict(results)
+    def get_recursive(item, level=1):
+        children = item.get("categories", [])
+        children = list(itertools.chain.from_iterable(
+            get_recursive(x, level=level+1) for x in children))
+        return [poor.AttrDict(label=item.get("name"), level=level)] + children
+    types = list(get_recursive(results.response))
+    return list(filter(lambda x: x.label, types))
 
 def get_link(id):
     """Return hyperlink for venue with given `id`."""

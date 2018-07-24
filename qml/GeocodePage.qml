@@ -27,6 +27,9 @@ Page {
     allowedOrientations: app.defaultAllowedOrientations
     canNavigateForward: query.length > 0
 
+    property bool   autocompletePending: false
+    property var    autocompletions: []
+    property var    completionDetails: []
     property var    history: []
     property string query: ""
 
@@ -64,8 +67,30 @@ Page {
             ListView.onRemove: animateRemoval(listItem);
 
             onClicked: {
-                page.query = model.place;
-                app.pageStack.navigateForward();
+                listItem.focus = true;
+                var details = page.completionDetails[model.place.toLowerCase()];
+                if (details && details.x && details.y) {
+                    // Autocompletion result with known coordinates, open directly.
+                    py.call_sync("poor.app.history.add_place", [model.place]);
+                    app.hideMenu();
+                    map.addPois([{
+                        "link": details.link || "",
+                        "provider": details.provider || "",
+                        "text": details.text || details.title || model.place,
+                        "title": details.title || model.place,
+                        "type": "geocode",
+                        "x": details.x,
+                        "y": details.y,
+                    }]);
+                    map.hidePoiBubbles();
+                    map.showPoiBubble(map.pois[map.pois.length-1]);
+                    map.autoCenter = false;
+                    map.setCenter(details.x, details.y);
+                } else {
+                    // No autocompletion, open results page.
+                    page.query = model.place;
+                    app.pageStack.navigateForward();
+                }
             }
 
         }
@@ -97,11 +122,15 @@ Page {
                 id: searchField
                 placeholderText: app.tr("Search")
                 width: parent.width
+                property string prevText: ""
                 EnterKey.enabled: text.length > 0
                 EnterKey.onClicked: app.pageStack.navigateForward();
                 onTextChanged: {
-                    page.query = searchField.text;
-                    page.filterHistory();
+                    var newText = searchField.text.trim();
+                    if (newText === searchField.prevText) return;
+                    page.query = newText;
+                    searchField.prevText = newText;
+                    page.filterCompletions();
                 }
             }
 
@@ -112,6 +141,15 @@ Page {
         model: ListModel {}
 
         property var searchField: undefined
+
+        Timer {
+            id: autocompleteTimer
+            interval: 1000
+            repeat: true
+            running: page.status === PageStatus.Active
+            triggeredOnStart: true
+            onTriggered: page.fetchCompletions();
+        }
 
         ViewPlaceholder {
             id: viewPlaceholder
@@ -125,18 +163,44 @@ Page {
 
     onStatusChanged: {
         if (page.status === PageStatus.Activating) {
+            page.autocompletePending = false;
             page.loadHistory();
-            page.filterHistory();
+            page.filterCompletions();
         } else if (page.status === PageStatus.Active) {
             var resultPage = app.pageStack.nextPage();
             resultPage.populated = false;
         }
     }
 
-    function filterHistory() {
-        // Filter search history for current search field text.
-        var query = listView.searchField.text;
-        var found = Util.findMatches(query, page.history, listView.model.count);
+    function fetchCompletions() {
+        // Fetch completions for a partial search query.
+        if (page.autocompletePending) return;
+        page.autocompletePending = true;
+        var query = listView.searchField.text.trim();
+        var x = map.position.coordinate.longitude || 0;
+        var y = map.position.coordinate.latitude || 0;
+        py.call("poor.app.geocoder.autocomplete", [query, x, y], function(results) {
+            page.autocompletePending = false;
+            if (page.status !== PageStatus.Active) return;
+            results = results || [];
+            page.autocompletions = [];
+            for (var i = 0; i < results.length; i++) {
+                page.autocompletions.push(results[i].label);
+                page.completionDetails[results[i].label.toLowerCase()] = results[i];
+                // Use auto-completion results to fix history item letter case.
+                for (var j = 0; j < page.history.length; j++)
+                    if (results[i].label.toLowerCase() === page.history[j].toLowerCase())
+                        page.history[j] = results[i].label;
+            }
+            page.filterCompletions();
+        });
+    }
+
+    function filterCompletions() {
+        // Filter completions for the current search query.
+        var query = listView.searchField.text.trim();
+        var candidates = page.history.concat(page.autocompletions);
+        var found = Util.findMatches(query, candidates, listView.model.count);
         Util.injectMatches(listView.model, found, "place", "text");
         viewPlaceholder.enabled = found.length === 0;
     }

@@ -25,8 +25,31 @@ import copy
 import poor
 import urllib.parse
 
-URL = "http://api.digitransit.fi/geocoding/v1/search?text={query}&size={limit}&lang={lang}"
+AUTOCOMPLETE_URL = "http://api.digitransit.fi/geocoding/v1/autocomplete?text={query}&layers=venue,address,street,macroregion,region,county,locality,localadmin,borough,neighbourhood"
+SEARCH_URL = "http://api.digitransit.fi/geocoding/v1/search?text={query}&size={limit}&lang={lang}"
+
 cache = {}
+
+def autocomplete(query, x, y, params):
+    """Return a list of autocomplete dictionaries matching `query`."""
+    if len(query) < 3: return []
+    query = urllib.parse.quote_plus(query)
+    url = key = AUTOCOMPLETE_URL.format(**locals())
+    if x and y:
+        url += "&focus.point.lon={:.3f}".format(x)
+        url += "&focus.point.lat={:.3f}".format(y)
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[key])
+    results = poor.http.get_json(url)["features"]
+    results = list(map(poor.AttrDict, results))
+    results = [dict(
+        label=result.properties.label,
+        title=result.properties.name,
+        x=float(result.geometry.coordinates[0]),
+        y=float(result.geometry.coordinates[1]),
+    ) for result in results]
+    cache[key] = copy.deepcopy(results)
+    return results
 
 def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
@@ -34,7 +57,7 @@ def geocode(query, params):
     limit = params.get("limit", 10)
     lang = poor.util.get_default_language("fi")
     lang = (lang if lang in ("fi", "sv") else "fi")
-    url = URL.format(**locals())
+    url = SEARCH_URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)["features"]

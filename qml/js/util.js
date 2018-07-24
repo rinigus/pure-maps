@@ -37,22 +37,25 @@ function appendAll(model, items) {
 function findMatches(query, candidates, max) {
     // Return an array of matches from among candidates.
     query = query.toLowerCase();
-    var found = [];
+    var components = query.split(/ +/);
+    var foundBeginning = [], foundLater = [];
     for (var i = 0; i < candidates.length; i++) {
-        // Match at the start of candidate strings.
-        var candidate = candidates[i].toLowerCase();
-        if (query && candidate.indexOf(query) === 0)
-            found.push(candidates[i]);
+        // Find indices of all query components in given candidate.
+        // Require that all components be found and make a distinction
+        // between matches at the start of the string vs. later.
+        var indices = components.map(function(x) {
+            return candidates[i].toLowerCase().indexOf(x);
+        });
+        var minIndex = Math.min.apply(Math, indices);
+        if (minIndex == 0) foundBeginning.push(candidates[i]);
+        if (minIndex >= 1) foundLater.push(candidates[i]);
     }
-    for (var i = 0; i < candidates.length; i++) {
-        // Match later in the candidate strings.
-        var candidate = candidates[i].toLowerCase();
-        if (query.length === 0 || candidate.indexOf(query) > 0)
-            found.push(candidates[i]);
-    }
+    var found = foundBeginning.concat(foundLater);
+    found = uniqueCaseInsensitive(found);
     found = found.slice(0, max);
     for (var i = 0; i < found.length; i++) {
         // Highlight matching portion in markup field.
+        // XXX: This is not component-wise.
         found[i] = {"text": found[i]};
         found[i].markup = Theme.highlightText(
             found[i].text, query, Theme.highlightColor);
@@ -144,4 +147,17 @@ function sortDefaultFirst(providers) {
         providers[i]["default"] &&
             providers.splice(0, 0, providers.splice(i, 1)[0]);
     }
+}
+
+function uniqueCaseInsensitive(x) {
+    // Return an array with the case insensitive unique values of x.
+    // http://stackoverflow.com/a/1961068
+    var u = {}, a = [];
+    for (var i = 0; i < x.length; i++) {
+        var key = x[i].toLowerCase();
+        if (u.hasOwnProperty(key)) continue;
+        u[key] = 1;
+        a.push(x[i]);
+    }
+    return a;
 }
