@@ -23,7 +23,7 @@ QtObject {
 
     property string destDist:  ""
     property string destTime:  ""
-    property var    direction: null
+    property var    direction: undefined
     property string icon:      ""
     property string manDist:   ""
     property string manTime:   ""
@@ -39,7 +39,7 @@ QtObject {
         // Reset all navigation status properties.
         status.destDist  = "";
         status.destTime  = "";
-        status.direction = null;
+        status.direction = undefined;
         status.icon      = "";
         status.manDist   = "";
         status.manTime   = "";
@@ -56,7 +56,8 @@ QtObject {
         if (!data) return;
         status.destDist  = data.dest_dist  || "";
         status.destTime  = data.dest_time  || "";
-        status.direction = data.direction  || null;
+        if (data.direction !== undefined && data.direction !== null) status.direction = data.direction;
+        else status.direction = undefined;
         status.icon      = data.icon       || "";
         status.manDist   = data.man_dist   || "";
         status.manTime   = data.man_time   || "";
