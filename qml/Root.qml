@@ -52,9 +52,12 @@ Item {
         MenuButton { id: menuButton }
         Meters { id: meters }
         NavigationBlock { id: navigationBlock }
+        NavigationInfoBlock { id: navigationInfoBlock }
         NorthArrow { id: northArrow }
         Notification { id: notification }
         ScaleBar { id: scaleBar }
+        SpeedLimit { id: speedLimit }
+        StreetName { id: streetName }
 
         Component.onCompleted: {
             revolver.updateOrientation();

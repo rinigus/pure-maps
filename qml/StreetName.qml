@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2015 Osmo Salomaa
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,16 +19,21 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-IconButton {
-    anchors.bottom: parent.bottom
+Text {
+    id: streetname
+    anchors.bottom: app.navigationActive ? navigationInfoBlock.top : menuButton.top
     anchors.horizontalCenter: parent.horizontalCenter
-    height: icon.height
-    icon.height: icon.sourceSize.height
-    icon.smooth: false
-    icon.source: app.getIcon("icons/menu")
-    icon.width: icon.sourceSize.width
-    width: icon.width
-    visible: py.ready && !app.navigationActive
-    z: 900
-    onClicked: app.showMenu();
+    anchors.bottomMargin: app.navigationActive ? Theme.paddingSmall : 0
+    color: "black"
+    elide: Text.ElideRight
+    //font.bold: true
+    font.pixelSize: Theme.fontSizeLarge
+    horizontalAlignment: Text.AlignHCenter
+    maximumLineCount: 1
+    style: Text.Outline
+    styleColor: "white"
+    text: gps.streetName
+    visible: app.navigationActive && (text !== undefined && text !== null && text.length>0)
+    width: parent.width - 2*Theme.paddingLarge
+    z: 400
 }
