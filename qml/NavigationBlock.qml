@@ -69,7 +69,7 @@ Rectangle {
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeLarge
         height: manLabel.height
-        text: block.destEta
+        text: block.notify ? block.destEta : block.destTime
     }
 
     Label {
@@ -82,6 +82,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeMedium
         height: manLabel.height
         text: app.tr("ETA")
+        visible: block.notify
     }
 
     Label {
