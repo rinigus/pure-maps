@@ -37,6 +37,7 @@ Rectangle {
     z: 500
 
     property string destDist:  app.navigationStatus.destDist
+    property string destEta:   app.navigationStatus.destEta
     property string destTime:  app.navigationStatus.destTime
     property string icon:      app.navigationStatus.icon
     property string manDist:   app.navigationStatus.manDist
@@ -60,15 +61,27 @@ Rectangle {
     }
 
     Label {
-        // Time remaining to destination
+        // Estimated time of arrival
         id: destLabel
         anchors.baseline: manLabel.baseline
         anchors.right: parent.right
         anchors.rightMargin: Theme.paddingLarge
+        color: Theme.primaryColor
+        font.pixelSize: Theme.fontSizeLarge
+        height: manLabel.height
+        text: block.destEta
+    }
+
+    Label {
+        // Estimated time of arrival: ETA label
+        id: destEta
+        anchors.baseline: manLabel.baseline
+        anchors.right: destLabel.left
+        anchors.rightMargin: Theme.paddingSmall
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeMedium
         height: manLabel.height
-        text: block.destTime
+        text: app.tr("ETA")
     }
 
     Label {

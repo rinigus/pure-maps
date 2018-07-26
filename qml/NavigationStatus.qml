@@ -22,6 +22,7 @@ QtObject {
     id: status
 
     property string destDist:  ""
+    property string destEta:  ""
     property string destTime:  ""
     property var    direction: undefined
     property string icon:      ""
@@ -55,6 +56,7 @@ QtObject {
         // Update navigation status with data from Python backend.
         if (!data) return;
         status.destDist  = data.dest_dist  || "";
+        status.destEta   = data.dest_eta   || "";
         status.destTime  = data.dest_time  || "";
         if (data.direction !== undefined && data.direction !== null) status.direction = data.direction;
         else status.direction = undefined;
