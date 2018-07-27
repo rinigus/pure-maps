@@ -31,7 +31,7 @@ Rectangle {
         var h2 = manLabel.height + Theme.paddingSmall + narrativeLabel.height;
         // If far off route, manLabel defines the height of the block,
         // but we need padding to make a sufficiently large tap target.
-        var h3 = 1.3 * manLabel.height;
+        var h3 = manLabel.height + (block.destDist ? Theme.paddingMedium : 0);
         return Math.max(h1, h2, h3);
     }
     z: 500
@@ -68,19 +68,17 @@ Rectangle {
         anchors.rightMargin: Theme.paddingLarge
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeLarge
-        height: manLabel.height
         text: block.notify ? block.destEta : block.destTime
     }
 
     Label {
         // Estimated time of arrival: ETA label
         id: destEta
-        anchors.baseline: manLabel.baseline
+        anchors.baseline: destLabel.baseline
         anchors.right: destLabel.left
         anchors.rightMargin: Theme.paddingSmall
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeMedium
-        height: manLabel.height
         text: app.tr("ETA")
         visible: block.notify
     }
@@ -96,7 +94,7 @@ Rectangle {
         anchors.topMargin: Theme.paddingSmall
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeMedium
-        height: text ? implicitHeight + 0.3 * manLabel.height : 0
+        height: text ? implicitHeight + Theme.paddingMedium : 0
         text: app.navigationPageSeen ?
             (block.notify ? block.narrative : "") :
             (block.notify ? app.tr("Tap to review maneuvers or begin navigating") : "")
