@@ -38,7 +38,7 @@ Rectangle {
         id: speed
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.leftMargin: Theme.paddingMedium
+        anchors.leftMargin: Theme.horizontalPageMargin
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeHuge
 
@@ -96,7 +96,7 @@ Rectangle {
         id: distSpace
         anchors.baseline: speed.baseline
         anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingMedium
+        anchors.rightMargin: Theme.horizontalPageMargin
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeLarge
         text: block.destDist

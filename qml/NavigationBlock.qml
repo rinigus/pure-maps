@@ -65,7 +65,7 @@ Rectangle {
         id: destLabel
         anchors.baseline: manLabel.baseline
         anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingLarge
+        anchors.rightMargin: Theme.horizontalPageMargin
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeLarge
         text: block.notify ? block.destEta : block.destTime
@@ -89,7 +89,7 @@ Rectangle {
         anchors.left: iconImage.right
         anchors.leftMargin: iconImage.width > 0 ? Theme.paddingLarge : 0
         anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingLarge
+        anchors.rightMargin: Theme.horizontalPageMargin
         anchors.top: manLabel.bottom
         anchors.topMargin: Theme.paddingSmall
         color: Theme.primaryColor
@@ -106,7 +106,7 @@ Rectangle {
         // Icon for the next maneuver
         id: iconImage
         anchors.left: parent.left
-        anchors.leftMargin: Theme.paddingLarge
+        anchors.leftMargin: Theme.horizontalPageMargin
         anchors.top: parent.top
         anchors.topMargin: Theme.paddingLarge
         fillMode: Image.Pad
