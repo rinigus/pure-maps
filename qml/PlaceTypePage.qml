@@ -30,7 +30,7 @@ Dialog {
     property bool   autocompletePending: false
     property var    autocompletions: []
     property var    history: []
-    property string prevAutocompleteQuery: ""
+    property string prevAutocompleteQuery: "."
     property string query: ""
 
     SilicaListView {
@@ -50,6 +50,7 @@ Dialog {
                 color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
                 text: model.text
+                textFormat: Text.RichText
             }
 
             ContextMenu {
@@ -161,7 +162,8 @@ Dialog {
     function filterCompletions() {
         // Filter completions for the current search query.
         var query = listView.searchField.text.trim();
-        var candidates = dialog.history.concat(dialog.autocompletions);
+        var candidates = py.evaluate("poor.app.guide.autocomplete_type_supported") ?
+            dialog.autocompletions : dialog.history;
         var found = Util.findMatches(query, candidates, listView.model.count);
         Util.injectMatches(listView.model, found, "type", "text");
         viewPlaceholder.enabled = found.length === 0;

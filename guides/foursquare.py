@@ -69,7 +69,6 @@ def autocomplete_type(query, params=None):
     def normalize(x):
         # Relax matching for the common case of cafe vs. café.
         return x.lower().replace("é", "e")
-    if len(query) < 1: return []
     query = normalize(query)
     results = []
     for i, type in enumerate(get_types()):

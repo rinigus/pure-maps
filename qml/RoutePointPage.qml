@@ -31,7 +31,7 @@ Dialog {
     property var    autocompletions: []
     property var    completionDetails: []
     property var    history: []
-    property string prevAutocompleteQuery: ""
+    property string prevAutocompleteQuery: "."
     property string query: ""
 
     SilicaListView {
@@ -51,6 +51,7 @@ Dialog {
                 color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
                 text: model.text
+                textFormat: Text.RichText
             }
 
             ContextMenu {
