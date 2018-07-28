@@ -31,6 +31,7 @@ Page {
     property var    autocompletions: []
     property var    completionDetails: []
     property var    history: []
+    property string prevAutocompleteQuery: ""
     property string query: ""
 
     SilicaListView {
@@ -175,8 +176,10 @@ Page {
     function fetchCompletions() {
         // Fetch completions for a partial search query.
         if (page.autocompletePending) return;
-        page.autocompletePending = true;
         var query = listView.searchField.text.trim();
+        if (query === page.prevAutocompleteQuery) return;
+        page.autocompletePending = true;
+        page.prevAutocompleteQuery = query;
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
         py.call("poor.app.geocoder.autocomplete", [query, x, y], function(results) {

@@ -30,6 +30,7 @@ Dialog {
     property bool   autocompletePending: false
     property var    autocompletions: []
     property var    history: []
+    property string prevAutocompleteQuery: ""
     property string query: ""
 
     SilicaListView {
@@ -135,8 +136,10 @@ Dialog {
     function fetchCompletions() {
         // Fetch completions for a partial search query.
         if (dialog.autocompletePending) return;
-        dialog.autocompletePending = true;
         var query = listView.searchField.text.trim();
+        if (query === dialog.prevAutocompleteQuery) return;
+        dialog.autocompletePending = true;
+        dialog.prevAutocompleteQuery = query;
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
         py.call("poor.app.guide.autocomplete_type", [query], function(results) {
