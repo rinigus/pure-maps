@@ -38,6 +38,8 @@ PositionSourceMapMatched {
         return 0;
     }
 
+    // testingCoordinate: map.center
+
     property var coordHistory: []
     property bool directionCalculated: false
     property var directionHistory: []

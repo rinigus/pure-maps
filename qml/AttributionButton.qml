@@ -35,4 +35,13 @@ IconButton {
     onLogoChanged: attributionButton.icon.source = logo ?
         app.getIcon("icons/attribution/%1".arg(logo)) : "";
 
+    states: [
+        State {
+            when: !app.portrait && navigationBlockLandscapeLeftShield.height > 0
+            AnchorChanges {
+                target: attributionButton
+                anchors.top: navigationBlockLandscapeLeftShield.bottom
+            }
+        }
+    ]
 }

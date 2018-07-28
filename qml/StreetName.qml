@@ -21,9 +21,13 @@ import Sailfish.Silica 1.0
 
 Text {
     id: streetname
-    anchors.bottom: app.navigationActive ? navigationInfoBlock.top : menuButton.top
+    anchors.bottom: app.navigationActive ? (app.portrait ? navigationInfoBlock.top : parent.bottom) : menuButton.top
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottomMargin: app.navigationActive ? Theme.paddingSmall : 0
+    anchors.left: parent.left
+    anchors.leftMargin: theme.paddingLarge
+    anchors.right: parent.right
+    anchors.rightMargin: theme.paddingLarge
     color: "black"
     elide: Text.ElideRight
     //font.bold: true
@@ -34,6 +38,14 @@ Text {
     styleColor: "white"
     text: gps.streetName
     visible: app.navigationActive && (text !== undefined && text !== null && text.length>0)
-    width: parent.width - 2*Theme.paddingLarge
     z: 400
+    states: [
+        State {
+            when: app.navigationActive && !app.portrait
+            AnchorChanges {
+                anchors.left: navigationBlockLandscapeLeftShield.right
+                anchors.right: navigationBlockLandscapeRightShield.left
+            }
+        }
+    ]
 }

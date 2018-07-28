@@ -29,11 +29,22 @@ Item {
     anchors.left: parent.left
     anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
     anchors.topMargin: Theme.paddingLarge + Theme.paddingSmall
+    anchors.rightMargin:  Theme.paddingLarge + Theme.paddingSmall
     height: app.navigationActive ? scaleBar.width : scaleBar.height
     width: app.navigationActive ? scaleBar.height : scaleBar.width
     z: 400
 
     states: [
+        State {
+            when: app.navigationActive && !app.portrait
+            AnchorChanges {
+                target: master
+                anchors.bottom: navigationInfoBlockLandscapeRightShield.top
+                anchors.left: undefined
+                anchors.right: parent.right
+            }
+        },
+
         State {
             when: app.navigationActive
             AnchorChanges {
@@ -53,11 +64,19 @@ Item {
         visible: scaleWidth > 0
 
         transform: Rotation {
-            angle: app.navigationActive ? 90 : 0
+            angle: app.navigationActive ? (app.portrait ? 90 : -90) : 0
             origin.x: scaleBar.width/2
             origin.y: scaleBar.height/2
         }
 
+        property int    scaleBarMaxLengthDefault: Math.min(map.height,map.width) / 4
+        property int    scaleBarMaxLength: {
+            if (app.navigationActive && !app.portrait) {
+                var v = navigationInfoBlockLandscapeRightShield.y - (northArrow.y+northArrow.height) - 2*Theme.paddingLarge
+                return Math.min(scaleBarMaxLengthDefault, v);
+            }
+            return scaleBarMaxLengthDefault;
+        }
         property real   scaleWidth: 0
         property string text: ""
 
@@ -129,7 +148,7 @@ Item {
 
         function update() {
             if (!py.ready) return;
-            var dist = map.metersPerPixel * Math.min(map.height,map.width) / 4;
+            var dist = map.metersPerPixel * scaleBarMaxLength;
             dist = scaleBar.roundedDistace(dist);
             scaleBar.scaleWidth = dist / map.metersPerPixel;
             scaleBar.text = py.call_sync("poor.util.format_distance", [dist, 1]);

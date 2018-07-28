@@ -52,7 +52,11 @@ Item {
         MenuButton { id: menuButton }
         Meters { id: meters }
         NavigationBlock { id: navigationBlock }
+        NavigationBlockLandscapeLeftShield { id: navigationBlockLandscapeLeftShield }
+        NavigationBlockLandscapeRightShield { id: navigationBlockLandscapeRightShield }
         NavigationInfoBlock { id: navigationInfoBlock }
+        NavigationInfoBlockLandscapeLeftShield { id: navigationInfoBlockLandscapeLeftShield }
+        NavigationInfoBlockLandscapeRightShield { id: navigationInfoBlockLandscapeRightShield }
         NorthArrow { id: northArrow }
         Notification { id: notification }
         ScaleBar { id: scaleBar }

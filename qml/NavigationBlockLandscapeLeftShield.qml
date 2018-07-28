@@ -19,26 +19,18 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-IconButton {
-    id: button
-    anchors.right: parent.right
-    anchors.top: navigationBlock.bottom
-    height: icon.height
-    icon.height: icon.sourceSize.height
-    icon.smooth: false
-    icon.source: app.getIcon("icons/center")
-    icon.width: icon.sourceSize.width
-    width: icon.width
-    z: 500
-    onClicked: map.centerOnPosition();
-
-    states: [
-        State {
-            when: !app.portrait && navigationBlockLandscapeRightShield.height > 0
-            AnchorChanges {
-                target: button
-                anchors.top: navigationBlockLandscapeRightShield.bottom
-            }
-        }
-    ]
+// used to cover manDist and manIcon in navigation block in landscape
+// dimesions are set in NavigationBlock
+Rectangle {
+    x: -radius
+    y: -radius
+    color: navigationBlock.color
+    height: navigationBlock.shieldLeftHeight > 0 ? navigationBlock.shieldLeftHeight - y : 0
+    radius: Theme.paddingLarge
+    width: navigationBlock.shieldLeftWidth > 0 ? navigationBlock.shieldLeftWidth - x : 0
+    MouseArea {
+        anchors.fill: parent
+        onClicked: !app.portrait && app.showNavigationPages();
+    }
+    z: 400
 }

@@ -35,6 +35,16 @@ Rectangle {
     visible: /*app.navigationActive &&*/ limit.text.length > 0
     z: 400
 
+    states: [
+        State {
+            when: !app.portrait && navigationInfoBlockLandscapeLeftShield.height > 0
+            AnchorChanges {
+                target: ring
+                anchors.bottom: navigationInfoBlockLandscapeLeftShield.top
+            }
+        }
+    ]
+
     Text {
         id: limit
         anchors.centerIn: parent
@@ -46,7 +56,7 @@ Rectangle {
         styleColor: "white"
 
         function update() {
-            // Update speed and positioning accuracy values in user's preferred units.
+            // Update speed limit in user's preferred units.
             if (!py.ready || !app.navigationActive) {
                 if (text.length > 0) text = "";
                 return;

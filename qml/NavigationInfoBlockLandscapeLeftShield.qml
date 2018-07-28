@@ -19,26 +19,18 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-IconButton {
-    id: button
-    anchors.right: parent.right
-    anchors.top: navigationBlock.bottom
-    height: icon.height
-    icon.height: icon.sourceSize.height
-    icon.smooth: false
-    icon.source: app.getIcon("icons/center")
-    icon.width: icon.sourceSize.width
-    width: icon.width
-    z: 500
-    onClicked: map.centerOnPosition();
-
-    states: [
-        State {
-            when: !app.portrait && navigationBlockLandscapeRightShield.height > 0
-            AnchorChanges {
-                target: button
-                anchors.top: navigationBlockLandscapeRightShield.bottom
-            }
-        }
-    ]
+// used to cover speed in navigation info block in landscape
+// dimesions are set in NavigationInfoBlock
+Rectangle {
+    x: -radius
+    y: app.screenHeight - (height - radius)
+    color: navigationInfoBlock.color
+    height: navigationInfoBlock.shieldLeftHeight > 0 ? navigationInfoBlock.shieldLeftHeight + radius : 0
+    radius: Theme.paddingLarge
+    width: navigationInfoBlock.shieldLeftWidth > 0 ? navigationInfoBlock.shieldLeftWidth + radius : 0
+    MouseArea {
+        anchors.fill: parent
+        onClicked: !app.portrait && app.showMenu();
+    }
+    z: 400
 }

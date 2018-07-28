@@ -25,13 +25,16 @@ Rectangle {
     anchors.right: parent.right
     anchors.bottom: parent.bottom
     color: "#e6000000"
-    height: Theme.paddingSmall + speed.height
+    height: app.navigationActive && app.portrait ? Theme.paddingSmall + (app.portrait ? speed.height : timeDest.height) : 0
     visible: app.navigationActive
-
     z: 500
 
     property string destDist:  app.navigationStatus.destDist
     property string destTime:  app.navigationStatus.destTime
+    property int    shieldLeftHeight: !app.portrait && app.navigationActive ? speed.height + Theme.paddingMedium : 0
+    property int    shieldLeftWidth:  !app.portrait && app.navigationActive ? speed.width + Theme.horizontalPageMargin + speedUnit.width + Theme.paddingSmall + Theme.paddingLarge : 0
+    property int    shieldRightHeight: !app.portrait && app.navigationActive ? timeDest.height + distDest.height + Theme.paddingMedium : 0
+    property int    shieldRightWidth:  !app.portrait && app.navigationActive ? Math.max(timeDest.width, distDest.width) + Theme.horizontalPageMargin+ Theme.paddingLarge : 0
 
     Label {
         // speed
@@ -85,15 +88,38 @@ Rectangle {
         // Time remaining to destination
         id: timeDest
         anchors.baseline: speed.baseline
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.left: speedUnit.right
+        anchors.leftMargin: Theme.paddingLarge
+        anchors.right: distDest.left
+        anchors.rightMargin: Theme.paddingLarge
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeLarge
+        fontSizeMode: Text.HorizontalFit
+        horizontalAlignment: Text.AlignHCenter
         text: block.destTime
+        states: [
+            State {
+                when: !app.portrait
+                AnchorChanges {
+                    target: timeDest
+                    anchors.baseline: undefined
+                    anchors.bottom: distDest.top
+                    anchors.left: undefined
+                    anchors.right: parent.right
+                }
+                PropertyChanges {
+                    target: timeDest
+                    anchors.bottomMargin: Theme.padiingLarge
+                    anchors.rightMargin: Theme.horizontalPageMargin
+                    width: implicitWidth
+                }
+            }
+        ]
     }
 
     Label {
         // Distance remaining to destination
-        id: distSpace
+        id: distDest
         anchors.baseline: speed.baseline
         anchors.right: parent.right
         anchors.rightMargin: Theme.horizontalPageMargin
