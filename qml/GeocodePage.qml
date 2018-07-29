@@ -202,9 +202,11 @@ Page {
 
     function filterCompletions() {
         // Filter completions for the current search query.
-        var query = listView.searchField.text.trim();
-        var candidates = page.history.concat(page.autocompletions);
-        var found = Util.findMatches(query, candidates, listView.model.count);
+        var found = Util.findMatches(listView.searchField.text.trim(),
+                                     page.history,
+                                     page.autocompletions,
+                                     listView.model.count);
+
         Util.injectMatches(listView.model, found, "place", "text");
         viewPlaceholder.enabled = found.length === 0;
     }

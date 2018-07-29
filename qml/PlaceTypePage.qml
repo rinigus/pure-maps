@@ -161,10 +161,12 @@ Dialog {
 
     function filterCompletions() {
         // Filter completions for the current search query.
-        var query = listView.searchField.text.trim();
-        var candidates = py.evaluate("poor.app.guide.autocomplete_type_supported") ?
-            dialog.autocompletions : dialog.history;
-        var found = Util.findMatches(query, candidates, listView.model.count);
+        var ac = py.evaluate("poor.app.guide.autocomplete_type_supported");
+        var found = Util.findMatches(listView.searchField.text.trim(),
+                                     ac ? [] : dialog.history,
+                                     ac ? dialog.autocompletions : [],
+                                     listView.model.count);
+
         Util.injectMatches(listView.model, found, "type", "text");
         viewPlaceholder.enabled = found.length === 0;
     }

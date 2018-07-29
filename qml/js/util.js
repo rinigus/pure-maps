@@ -34,10 +34,12 @@ function appendAll(model, items) {
         model.append(items[i]);
 }
 
-function findMatches(query, candidates, max) {
-    // Return an array of matches from among candidates.
+function findMatches(query, candidates, completions, max) {
+    // Return an array of matches from among candidates and completions.
+    // candidates might contain matches, completions are known to match.
     query = query.toLowerCase();
     var components = query.split(/ +/);
+    candidates = candidates.concat(completions);
     var foundBeginning = [], foundLater = [];
     for (var i = 0; i < candidates.length; i++) {
         // Find indices of all query components in given candidate.
@@ -51,6 +53,8 @@ function findMatches(query, candidates, max) {
         if (minIndex >= 1) foundLater.push(candidates[i]);
     }
     var found = foundBeginning.concat(foundLater);
+    // Add non-matching completions to the end.
+    found = found.concat(completions);
     found = uniqueCaseInsensitive(found);
     found = found.slice(0, max);
     for (var i = 0; i < found.length; i++) {

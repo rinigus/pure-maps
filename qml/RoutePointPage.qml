@@ -178,9 +178,11 @@ Dialog {
 
     function filterCompletions() {
         // Filter completions for the current search query.
-        var query = listView.searchField.text.trim();
-        var candidates = dialog.history.concat(dialog.autocompletions);
-        var found = Util.findMatches(query, candidates, listView.model.count);
+        var found = Util.findMatches(listView.searchField.text.trim(),
+                                     dialog.history,
+                                     dialog.autocompletions,
+                                     listView.model.count);
+
         Util.injectMatches(listView.model, found, "place", "text");
         viewPlaceholder.enabled = found.length === 0;
     }
