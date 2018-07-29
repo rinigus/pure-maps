@@ -32,7 +32,7 @@ PositionSourceMapMatched {
 
     mapMatchingMode: {
         if (app.mapMatchingMode == "none") return 0;
-        else if (app.mapMatchingMode == "car") return 2;
+        else if (app.mapMatchingMode == "car") return 1;
         else if (app.mapMatchingMode == "bicycle") return 3;
         else if (app.mapMatchingMode == "foot") return 5;
         return 0;
