@@ -61,7 +61,7 @@ def get_types():
     """Get list of types"""
     types = []
     for t in poor.http.get_json("http://localhost:8553/v1/poi_types"):
-        types.append( { "original": t, "normalized": normalize(t) } )
+        types.append({"original": t, "normalized": normalize(t)})
     return types
 
 def nearby(query, near, radius, params):
