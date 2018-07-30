@@ -43,8 +43,8 @@ Text {
         State {
             when: app.navigationActive && !app.portrait
             AnchorChanges {
-                anchors.left: navigationBlockLandscapeLeftShield.right
-                anchors.right: navigationBlockLandscapeRightShield.left
+                anchors.left: navigationInfoBlockLandscapeLeftShield.right
+                anchors.right: navigationInfoBlockLandscapeRightShield.left
             }
         }
     ]
