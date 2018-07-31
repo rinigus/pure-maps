@@ -71,9 +71,11 @@ Item {
             app.menuButton = menuButton;
             app.meters = meters;
             app.navigationBlock = navigationBlock;
+            app.navigationInfoBlock = navigationInfoBlock;
             app.northArrow = northArrow;
             app.notification = notification;
             app.scaleBar = scaleBar;
+            app.streetName = streetName;
         }
 
         function updateOrientation() {

@@ -54,6 +54,7 @@ ApplicationWindow {
     property var  narrativePageSeen: false
     property bool navigationActive: false
     property var  navigationBlock: null
+    property var  navigationInfoBlock: null
     property var  navigationPageSeen: false
     property var  navigationStatus: NavigationStatus {}
     property bool navigationStarted: false
@@ -69,6 +70,7 @@ ApplicationWindow {
     property int  screenHeight: Screen.height
     property int  screenWidth: Screen.width
     property var  showNarrative: null
+    property var  streetName: null
 
     // Default vertical margin for various multiline list items
     // such that it would be consistent with single-line list items

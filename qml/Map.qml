@@ -125,6 +125,21 @@ MapboxMap {
         onHeightChanged: map.updateMargins();
     }
 
+    Connections {
+        target: app.navigationInfoBlock
+        onHeightChanged: map.updateMargins();
+    }
+
+    Connections {
+        target: app.streetName
+        onHeightChanged: map.updateMargins();
+    }
+
+    Connections {
+        target: app
+        onPortraitChanged: map.updateMargins();
+    }
+
     Component.onCompleted: {
         map.initSources();
         map.initLayers();
@@ -222,7 +237,10 @@ MapboxMap {
 
     function beginNavigating() {
         // Set UI to navigation mode.
-        map.zoomLevel < 15 && map.setZoomLevel(15);
+        var scale = app.conf.get("map_scale_navigation_" + route.mode);
+        var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
+        map.setScale(scale);
+        map.zoomLevel < zoom && map.setZoomLevel(zoom);
         map.centerOnPosition();
         map.autoCenter = true;
         map.autoRotate = true;
@@ -311,6 +329,7 @@ MapboxMap {
         map.autoRotate = false;
         map.tiltEnabled = app.conf.get("tilt_when_navigating");
         map.zoomLevel > 14 && map.setZoomLevel(14);
+        map.setScale(app.conf.get("map_scale"));
         app.navigationActive = false;
     }
 
@@ -533,6 +552,10 @@ MapboxMap {
         // Calculate new margins and set them for the map.
         var header = app.navigationBlock ? app.navigationBlock.height : 0;
         var footer = app.menuButton ? app.menuButton.height : 0;
+        if (app.navigationActive) {
+            footer = app.portrait && app.navigationInfoBlock ? app.navigationInfoBlock.height : 0;
+            footer += app.streetName ? app.streetName.height : 0
+        }
         // If auto-rotate is on, the user is always heading up
         // on the screen and should see more ahead than behind.
         var marginY = map.autoRotate ? footer/map.height : 0.05;

@@ -238,6 +238,21 @@ Page {
                 }
             }
 
+            Slider {
+                id: scaleSlider
+                label: app.tr("Map scale")
+                maximumValue: 4.0
+                minimumValue: 0.5
+                stepSize: 0.1
+                value: app.conf.get("map_scale_navigation_" + map.route.mode)
+                valueText: value
+                width: parent.width
+                onValueChanged: {
+                    app.conf.set("map_scale_navigation_" + map.route.mode, scaleSlider.value);
+                    app.navigationActive && map.setScale(scaleSlider.value);
+                }
+            }
+
             Spacer {
                 height: Theme.paddingMedium
             }
