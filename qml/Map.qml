@@ -86,7 +86,7 @@ MapboxMap {
 
     Behavior on center {
         CoordinateAnimation {
-            duration: map.ready ? 500 : 0
+            duration: map.ready && !app.navigationActive ? 500 : 0
             easing.type: Easing.InOutQuad
         }
     }
