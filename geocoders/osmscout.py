@@ -28,6 +28,16 @@ import urllib.parse
 URL = "http://localhost:8553/v1/search?limit={limit}&search={query}"
 cache = {}
 
+def autocomplete(query, x, y, params):
+    """Return a list of autocomplete dictionaries matching `query`."""
+    if len(query) < 3: return []
+    key = "autocomplete:{}".format(query)
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[key])
+    results = geocode(query, params)
+    cache[key] = copy.deepcopy(results)
+    return results
+
 def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
@@ -38,6 +48,7 @@ def geocode(query, params):
     results = poor.http.get_json(url)
     results = list(map(poor.AttrDict, results))
     results = [dict(
+        label=parse_label(result),
         title=result.title,
         description=parse_description(result),
         x=float(result.lng),
@@ -58,3 +69,10 @@ def parse_description(result):
     with poor.util.silent(Exception):
         items.append(result.admin_region)
     return ", ".join(items) or "–"
+
+def parse_label(result):
+    """Parse description from geocoding result."""
+    label = result.title
+    with poor.util.silent(Exception):
+        label = result.admin_region
+    return label

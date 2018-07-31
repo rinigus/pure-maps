@@ -49,6 +49,15 @@ class TestModule(poor.test.TestCase):
         dist = poor.util.calculate_distance(24.94, 60.17, -9.14, 38.72)
         assert round(dist/1000) == 3361
 
+    def test_calculate_segment_distance(self):
+        dist1 = poor.util.calculate_segment_distance(0, 0, -1, 1, 1, 1)
+        dist2 = poor.util.calculate_distance(0, 0, 0, 1)
+        assert dist1 == dist2
+
+    def test_calculate_segment_distance__zero(self):
+        dist = poor.util.calculate_segment_distance(0, 0, -1, 0, 1, 0)
+        assert dist == 0
+
     def test_decode_epl(self):
         # Values from the official example.
         # http://developers.google.com/maps/documentation/utilities/polylinealgorithm

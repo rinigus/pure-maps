@@ -69,9 +69,7 @@ class Guide:
         parameters.
         """
         params = params or {}
-        if (not hasattr(self._provider, "autocomplete_type") or
-            not callable(self._provider.autocomplete_type)):
-            return []
+        if not self.autocomplete_type_supported: return []
         try:
             results = self._provider.autocomplete_type(query, params)
         except Exception:
@@ -81,6 +79,12 @@ class Guide:
         for result in results:
             result["provider"] = self.id
         return results
+
+    @property
+    def autocomplete_type_supported(self):
+        """Return ``True`` if provider implements venue type autocompletion."""
+        return (hasattr(self._provider, "autocomplete_type") and
+                callable(self._provider.autocomplete_type))
 
     def _format_distance(self, x1, y1, x2, y2):
         """Calculate and format a human readable distance string."""

@@ -66,11 +66,13 @@ cache = {}
 
 def autocomplete_type(query, params=None):
     """Return a list of autocomplete dictionaries matching `query`."""
-    if len(query) < 1: return []
-    query = query.lower()
+    def normalize(x):
+        # Relax matching for the common case of cafe vs. café.
+        return x.lower().replace("é", "e")
+    query = normalize(query)
     results = []
     for i, type in enumerate(get_types()):
-        pos = type.label.lower().find(query)
+        pos = normalize(type.label).find(query)
         if pos < 0: continue
         results.append(poor.AttrDict(
             label=type.label,
