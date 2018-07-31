@@ -82,7 +82,7 @@ Rectangle {
         verticalAlignment: Text.AlignBottom
         states: [
             State {
-                when: !app.portrait
+                when: !app.portrait && block.destDist && block.notify
                 AnchorChanges {
                     target: manLabel
                     anchors.left: undefined
@@ -180,7 +180,7 @@ Rectangle {
         width: block.notify ? sourceSize.width : 0
         states: [
             State {
-                when: !app.portrait && iconImage.width < manLabel.width
+                when: !app.portrait && block.destDist && block.notify && iconImage.width < manLabel.width
                 AnchorChanges {
                     target: iconImage
                     anchors.left: undefined
@@ -188,7 +188,7 @@ Rectangle {
                 }
             },
             State {
-                when: !app.portrait
+                when: !app.portrait && block.destDist && block.notify
                 AnchorChanges {
                     target: iconImage
                     anchors.left: undefined
