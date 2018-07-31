@@ -116,7 +116,7 @@ Dialog {
     function filterHistory() {
         // Filter search history for current search field text.
         var query = listView.searchField.text;
-        var found = Util.findMatches(query, dialog.history, listView.model.count);
+        var found = Util.findMatches(query, dialog.history, [], listView.model.count);
         Util.injectMatches(listView.model, found, "name", "text");
         viewPlaceholder.enabled = found.length === 0;
     }

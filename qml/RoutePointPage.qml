@@ -31,6 +31,7 @@ Dialog {
     property var    autocompletions: []
     property var    completionDetails: []
     property var    history: []
+    property string prevAutocompleteQuery: "."
     property string query: ""
 
     SilicaListView {
@@ -50,6 +51,7 @@ Dialog {
                 color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 height: Theme.itemSizeSmall
                 text: model.text
+                textFormat: Text.RichText
             }
 
             ContextMenu {
@@ -151,8 +153,10 @@ Dialog {
     function fetchCompletions() {
         // Fetch completions for a partial search query.
         if (dialog.autocompletePending) return;
-        dialog.autocompletePending = true;
         var query = listView.searchField.text.trim();
+        if (query === dialog.prevAutocompleteQuery) return;
+        dialog.autocompletePending = true;
+        dialog.prevAutocompleteQuery = query;
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
         py.call("poor.app.router.geocoder.autocomplete", [query, x, y], function(results) {
@@ -174,9 +178,11 @@ Dialog {
 
     function filterCompletions() {
         // Filter completions for the current search query.
-        var query = listView.searchField.text.trim();
-        var candidates = dialog.history.concat(dialog.autocompletions);
-        var found = Util.findMatches(query, candidates, listView.model.count);
+        var found = Util.findMatches(listView.searchField.text.trim(),
+                                     dialog.history,
+                                     dialog.autocompletions,
+                                     listView.model.count);
+
         Util.injectMatches(listView.model, found, "place", "text");
         viewPlaceholder.enabled = found.length === 0;
     }

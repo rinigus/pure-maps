@@ -22,7 +22,9 @@ https://github.com/rinigus/osmscout-server
 """
 
 import copy
+import functools
 import poor
+import unicodedata
 import urllib.parse
 
 URL_SEARCH = ("http://localhost:8553/v1/guide"
@@ -41,6 +43,26 @@ URL_XY = ("http://localhost:8553/v1/guide"
           "&lat={y}")
 
 cache = {}
+
+def autocomplete_type(query, params=None):
+    """Return a list of autocomplete dictionaries matching `query`."""
+    query = normalize(query)
+    results = []
+    for t in get_types():
+        pos = t["normalized"].find(query)
+        if pos < 0: continue
+        results.append({"label": t["original"]})
+        if len(results) > 100:
+            break
+    return results
+
+@functools.lru_cache(1)
+def get_types():
+    """Get list of types"""
+    types = []
+    for t in poor.http.get_json("http://localhost:8553/v1/poi_types"):
+        types.append({"original": t, "normalized": normalize(t)})
+    return types
 
 def nearby(query, near, radius, params):
     """Return X, Y and a list of dictionaries of places matching `query`."""
@@ -70,6 +92,10 @@ def nearby(query, near, radius, params):
         results = poor.util.sorted_by_distance(results, x, y)
         cache[url] = copy.deepcopy((x, y, results))
     return x, y, results
+
+def normalize(t):
+    """Normalize the string"""
+    return unicodedata.normalize("NFKC", t).casefold()
 
 def parse_description(result):
     """Parse description from search result."""
