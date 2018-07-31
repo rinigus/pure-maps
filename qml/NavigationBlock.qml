@@ -26,15 +26,35 @@ Rectangle {
     anchors.top: parent.top
     color: "#e6000000"
     height: {
-        if ( (!app.portrait && notify) || !destDist) return 0;
-        var h1 = iconImage.height + 2 * Theme.paddingLarge;
-        var h2 = manLabel.height + Theme.paddingSmall + narrativeLabel.height;
-        // If far off route, manLabel defines the height of the block,
-        // but we need padding to make a sufficiently large tap target.
-        var h3 = notify ? 0 : manLabel.height + Theme.paddingMedium;
-        return Math.max(h1, h2, h3);
+        if (!destDist) return 0;
+        if (!app.portrait && notify) {
+            var h1 = Theme.paddingMedium + Theme.fontSizeLarge - Theme.fontSizeMedium + narrativeLabel.height;
+            var h2 = Theme.paddingMedium + destLabel.height;
+            return Math.max(h1, h2);
+        } else {
+            var h1 = iconImage.height + 2 * Theme.paddingLarge;
+            var h2 = manLabel.height + Theme.paddingSmall + narrativeLabel.height;
+            // If far off route, manLabel defines the height of the block,
+            // but we need padding to make a sufficiently large tap target.
+            var h3 = notify ? 0 : manLabel.height + Theme.paddingMedium;
+            return Math.max(h1, h2, h3);
+        }
     }
     z: 500
+
+    states: [
+        State {
+            when: !app.portrait && destDist && notify
+            AnchorChanges {
+                target: block
+                anchors.left: undefined
+            }
+            PropertyChanges {
+                target: block
+                width: parent.width - shieldLeftWidth
+            }
+        }
+    ]
 
     property string destDist:  app.navigationStatus.destDist
     property string destEta:   app.navigationStatus.destEta
@@ -46,19 +66,13 @@ Rectangle {
     property bool   notify:    app.navigationStatus.notify
     property int    shieldLeftHeight: !app.portrait && destDist && notify ? manLabel.height + Theme.paddingMedium + iconImage.height + iconImage.anchors.topMargin : 0
     property int    shieldLeftWidth:  !app.portrait && destDist && notify ? manLabel.anchors.leftMargin + Theme.paddingLarge + Math.max(manLabel.width, iconImage.width) : 0
-    property int    shieldRightHeight: {
-        if (app.portrait || !destDist || !notify) return 0;
-        var h1 = Theme.paddingMedium + Theme.fontSizeLarge - Theme.fontSizeMedium + narrativeLabel.height;
-        var h2 = Theme.paddingMedium + destLabel.height;
-        return Math.max(h1, h2);
-    }
-    property int    shieldRightWidth: !app.portrait && destDist && notify ? parent.width - shieldLeftWidth : 0
 
     Label {
         // Distance remaining to the next maneuver
         id: manLabel
         anchors.left: iconImage.right
         anchors.leftMargin: iconImage.width > 0 || !app.portrait ? (app.portrait ? Theme.paddingLarge : Theme.horizontalPageMargin) : 0
+        anchors.rightMargin: Theme.paddingLarge
         anchors.top: parent.top
         color: block.notify ? Theme.highlightColor : "white"
         font.family: block.notify ? Theme.fontFamilyHeading : Theme.fontFamily
@@ -71,7 +85,8 @@ Rectangle {
                 when: !app.portrait
                 AnchorChanges {
                     target: manLabel
-                    anchors.left: parent.left
+                    anchors.left: undefined
+                    anchors.right: parent.left
                     anchors.top: iconImage.bottom
                 }
             }
@@ -152,6 +167,7 @@ Rectangle {
         id: iconImage
         anchors.left: parent.left
         anchors.leftMargin: Theme.horizontalPageMargin
+        anchors.rightMargin: Theme.paddingLarge
         anchors.top: parent.top
         anchors.topMargin: height ? Theme.paddingLarge : 0
         fillMode: Image.Pad
@@ -169,6 +185,14 @@ Rectangle {
                     target: iconImage
                     anchors.left: undefined
                     anchors.horizontalCenter: manLabel.horizontalCenter
+                }
+            },
+            State {
+                when: !app.portrait
+                AnchorChanges {
+                    target: iconImage
+                    anchors.left: undefined
+                    anchors.right: parent.right
                 }
             }
         ]

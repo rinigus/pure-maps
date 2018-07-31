@@ -53,7 +53,6 @@ Item {
         Meters { id: meters }
         NavigationBlock { id: navigationBlock }
         NavigationBlockLandscapeLeftShield { id: navigationBlockLandscapeLeftShield }
-        NavigationBlockLandscapeRightShield { id: navigationBlockLandscapeRightShield }
         NavigationInfoBlock { id: navigationInfoBlock }
         NavigationInfoBlockLandscapeLeftShield { id: navigationInfoBlockLandscapeLeftShield }
         NavigationInfoBlockLandscapeRightShield { id: navigationInfoBlockLandscapeRightShield }

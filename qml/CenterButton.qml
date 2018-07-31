@@ -31,14 +31,4 @@ IconButton {
     width: icon.width
     z: 500
     onClicked: map.centerOnPosition();
-
-    states: [
-        State {
-            when: !app.portrait && navigationBlockLandscapeRightShield.height > 0
-            AnchorChanges {
-                target: button
-                anchors.top: navigationBlockLandscapeRightShield.bottom
-            }
-        }
-    ]
 }
