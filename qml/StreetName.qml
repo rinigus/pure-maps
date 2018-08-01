@@ -22,12 +22,11 @@ import Sailfish.Silica 1.0
 Text {
     id: streetname
     anchors.bottom: app.navigationActive ? (app.portrait ? navigationInfoBlock.top : parent.bottom) : menuButton.top
-    anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottomMargin: app.navigationActive ? Theme.paddingSmall : 0
     anchors.left: parent.left
-    anchors.leftMargin: theme.paddingLarge
+    anchors.leftMargin: Theme.paddingLarge
     anchors.right: parent.right
-    anchors.rightMargin: theme.paddingLarge
+    anchors.rightMargin: Theme.paddingLarge
     color: "black"
     elide: Text.ElideRight
     //font.bold: true
