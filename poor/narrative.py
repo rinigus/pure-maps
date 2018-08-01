@@ -18,6 +18,7 @@
 """Narration of routing maneuvers."""
 
 import bisect
+import datetime
 import poor
 import statistics
 
@@ -202,6 +203,7 @@ class Narrative:
             x, y, node, seg_dist)
         progress  = (max(self.time) - dest_time) / max(self.time)
         dest_dist = poor.util.format_distance(dest_dist)
+        dest_eta = (datetime.datetime.now()+datetime.timedelta(seconds=dest_time)).strftime("%H:%M")
         dest_time = poor.util.format_time(dest_time)
         man = self._get_display_maneuver(x, y, node, seg_dists)
         man_node, man_dist, man_time, icon, narrative = man
@@ -221,6 +223,7 @@ class Narrative:
         return dict(total_dist=poor.util.format_distance(max(self.dist)),
                     total_time=poor.util.format_time(max(self.time)),
                     dest_dist=dest_dist,
+                    dest_eta=dest_eta,
                     dest_time=dest_time,
                     man_dist=man_dist,
                     man_time=man_time,
@@ -274,6 +277,7 @@ class Narrative:
             x, y, node, seg_dist)
         progress  = (max(self.time) - dest_time) / max(self.time)
         dest_dist = poor.util.format_distance(dest_dist)
+        dest_eta = (datetime.datetime.now()+datetime.timedelta(seconds=dest_time)).strftime("%H:%M")
         dest_time = poor.util.format_time(dest_time)
         man_node  = self._get_closest_maneuver_node(x, y, node)
         if man_node > node + 1:
@@ -306,6 +310,7 @@ class Narrative:
         return dict(total_dist=poor.util.format_distance(max(self.dist)),
                     total_time=poor.util.format_time(max(self.time)),
                     dest_dist=dest_dist,
+                    dest_eta=dest_eta,
                     dest_time=dest_time,
                     man_dist=man_dist,
                     man_time=man_time,

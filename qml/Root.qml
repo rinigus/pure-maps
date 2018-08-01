@@ -52,9 +52,15 @@ Item {
         MenuButton { id: menuButton }
         Meters { id: meters }
         NavigationBlock { id: navigationBlock }
+        NavigationBlockLandscapeLeftShield { id: navigationBlockLandscapeLeftShield }
+        NavigationInfoBlock { id: navigationInfoBlock }
+        NavigationInfoBlockLandscapeLeftShield { id: navigationInfoBlockLandscapeLeftShield }
+        NavigationInfoBlockLandscapeRightShield { id: navigationInfoBlockLandscapeRightShield }
         NorthArrow { id: northArrow }
         Notification { id: notification }
         ScaleBar { id: scaleBar }
+        SpeedLimit { id: speedLimit }
+        StreetName { id: streetName }
         Styler { id: styler }
 
         Component.onCompleted: {
@@ -66,9 +72,11 @@ Item {
             app.menuButton = menuButton;
             app.meters = meters;
             app.navigationBlock = navigationBlock;
+            app.navigationInfoBlock = navigationInfoBlock;
             app.northArrow = northArrow;
             app.notification = notification;
             app.scaleBar = scaleBar;
+            app.streetName = streetName;
             app.styler = styler;
         }
 

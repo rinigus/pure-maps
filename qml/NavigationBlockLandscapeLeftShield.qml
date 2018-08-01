@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2018 Osmo Salomaa
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,16 +19,18 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-IconButton {
-    anchors.bottom: parent.bottom
-    anchors.horizontalCenter: parent.horizontalCenter
-    height: icon.height
-    icon.height: icon.sourceSize.height
-    icon.smooth: false
-    icon.source: app.getIcon("icons/menu")
-    icon.width: icon.sourceSize.width
-    width: icon.width
-    visible: py.ready && !app.navigationActive
-    z: 900
-    onClicked: app.showMenu();
+// used to cover manDist and manIcon in navigation block in landscape
+// dimesions are set in NavigationBlock
+Rectangle {
+    x: -radius
+    y: -radius
+    color: navigationBlock.color
+    height: navigationBlock.shieldLeftHeight > 0 ? navigationBlock.shieldLeftHeight - y : 0
+    radius: Theme.paddingLarge
+    width: navigationBlock.shieldLeftWidth > 0 ? navigationBlock.shieldLeftWidth - x : 0
+    MouseArea {
+        anchors.fill: parent
+        onClicked: !app.portrait && app.showNavigationPages();
+    }
+    z: 400
 }

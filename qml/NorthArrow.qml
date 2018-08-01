@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "."
 
 IconButton {
+    id: master
     anchors.bottom: parent.bottom
     anchors.right: parent.right
     height: icon.height
@@ -32,11 +33,22 @@ IconButton {
     width: icon.width
     z: 500
 
+    states: [
+        State {
+            when: app.navigationActive
+            AnchorChanges {
+                target: master
+                anchors.bottom: undefined
+                anchors.top: centerButton.bottom
+            }
+        }
+    ]
+
     Bubble {
         id: bubble
         anchorItem: parent
         showArrow: false
-        state: "top-left"
+        state: app.navigationActive ? "bottom-left" : "top-left"
         visible: false
     }
 

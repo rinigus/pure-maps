@@ -103,6 +103,29 @@ Page {
             }
 
             ComboBox {
+                id: mapmatchingComboBox
+                description: app.tr("Select mode of transportation. Only applies when WhoGo Maps is not navigating.")
+                label: app.tr("Snap position to road")
+                menu: ContextMenu {
+                    MenuItem { text: app.tr("None") }
+                    MenuItem { text: app.tr("Car") }
+                    MenuItem { text: app.tr("Bicycle") }
+                    MenuItem { text: app.tr("Foot") }
+                }
+                visible: app.hasMapMatching
+                property var values: ["none", "car", "bicycle", "foot"]
+                Component.onCompleted: {
+                    var value = app.conf.get("map_matching_when_idle");
+                    mapmatchingComboBox.currentIndex = mapmatchingComboBox.values.indexOf(value);
+                }
+                onCurrentIndexChanged: {
+                    var index = mapmatchingComboBox.currentIndex;
+                    app.conf.set("map_matching_when_idle", mapmatchingComboBox.values[index]);
+                    app.updateMapMatching();
+                }
+            }
+
+            ComboBox {
                 id: unitsComboBox
                 label: app.tr("Units")
                 menu: ContextMenu {

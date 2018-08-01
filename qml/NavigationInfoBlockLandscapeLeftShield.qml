@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2018 Osmo Salomaa
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,16 +19,18 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-IconButton {
-    anchors.bottom: parent.bottom
-    anchors.horizontalCenter: parent.horizontalCenter
-    height: icon.height
-    icon.height: icon.sourceSize.height
-    icon.smooth: false
-    icon.source: app.getIcon("icons/menu")
-    icon.width: icon.sourceSize.width
-    width: icon.width
-    visible: py.ready && !app.navigationActive
-    z: 900
-    onClicked: app.showMenu();
+// used to cover speed in navigation info block in landscape
+// dimesions are set in NavigationInfoBlock
+Rectangle {
+    x: -radius
+    y: app.screenHeight - (height - radius)
+    color: navigationInfoBlock.color
+    height: navigationInfoBlock.shieldLeftHeight > 0 ? navigationInfoBlock.shieldLeftHeight + radius : 0
+    radius: Theme.paddingLarge
+    width: navigationInfoBlock.shieldLeftWidth > 0 ? navigationInfoBlock.shieldLeftWidth + radius : 0
+    MouseArea {
+        anchors.fill: parent
+        onClicked: !app.portrait && app.showMenu();
+    }
+    z: 400
 }

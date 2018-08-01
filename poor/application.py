@@ -51,6 +51,10 @@ class Application:
                         items.append(item)
         return items
 
+    def has_mapmatching(self):
+        """Return True if map matching requirements are met"""
+        return poor.util.requirement_found("harbour-osmscout-server")
+
     def quit(self):
         """Quit the application."""
         poor.http.pool.terminate()
