@@ -39,7 +39,7 @@ Item {
     Rectangle {
         id: base
         anchors.bottom: scaleBar.bottom
-        color: "black"
+        color: app.styler.fg
         height: Math.floor(Theme.pixelRatio * 3)
         width: scaleBar.scaleWidth
     }
@@ -47,7 +47,7 @@ Item {
     Rectangle {
         anchors.bottom: base.top
         anchors.left: base.left
-        color: "black"
+        color: app.styler.fg
         height: Math.floor(Theme.pixelRatio * 10)
         width: Math.floor(Theme.pixelRatio * 3)
     }
@@ -55,7 +55,7 @@ Item {
     Rectangle {
         anchors.bottom: base.top
         anchors.right: base.right
-        color: "black"
+        color: app.styler.fg
         height: Math.floor(Theme.pixelRatio * 10)
         width: Math.floor(Theme.pixelRatio * 3)
     }
@@ -65,7 +65,7 @@ Item {
         anchors.bottom: base.top
         anchors.bottomMargin: Math.floor(Theme.pixelRatio * 4)
         anchors.horizontalCenter: base.horizontalCenter
-        color: "black"
+        color: app.styler.fg
         font.bold: true
         font.family: "sans-serif"
         font.pixelSize: Math.round(Theme.pixelRatio * 18)

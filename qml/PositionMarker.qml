@@ -44,6 +44,7 @@ Item {
     }
 
     Component.onCompleted: {
+        marker.initIcons();
         marker.initLayers();
         marker.configureLayers();
         marker.updateDirection();
@@ -62,10 +63,15 @@ Item {
         map.setLayoutProperty(marker.layers.moving, "visibility", "none");
     }
 
+    function initIcons() {
+        var suffix = "";
+        if (app.styler.position) suffix = "-" + app.styler.position;
+        map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIcon("icons/position" + suffix, true)));
+        map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIcon("icons/position-direction" + suffix, true)));
+    }
+
     function initLayers() {
         map.addSourcePoint(marker.source, map.position.coordinate);
-        map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIcon("icons/position")));
-        map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIcon("icons/position-direction")));
         map.addLayer(marker.layers.still, {"type": "symbol", "source": marker.source});
         map.addLayer(marker.layers.moving, {"type": "symbol", "source": marker.source});
     }

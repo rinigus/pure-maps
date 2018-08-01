@@ -55,6 +55,7 @@ Item {
         NorthArrow { id: northArrow }
         Notification { id: notification }
         ScaleBar { id: scaleBar }
+        Styler { id: styler }
 
         Component.onCompleted: {
             revolver.updateOrientation();
@@ -68,6 +69,7 @@ Item {
             app.northArrow = northArrow;
             app.notification = notification;
             app.scaleBar = scaleBar;
+            app.styler = styler;
         }
 
         function updateOrientation() {

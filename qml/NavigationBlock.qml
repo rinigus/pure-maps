@@ -51,7 +51,7 @@ Rectangle {
         anchors.leftMargin: iconImage.width > 0 ? Theme.paddingLarge : 0
         anchors.right: parent.right
         anchors.top: parent.top
-        color: block.notify ? Theme.highlightColor : "white"
+        color: block.notify ? Theme.highlightColor : Theme.primaryColor
         font.family: block.notify ? Theme.fontFamilyHeading : Theme.fontFamily
         font.pixelSize: block.notify ? Theme.fontSizeHuge : Theme.fontSizeMedium
         height: block.destDist ? implicitHeight + Theme.paddingMedium : 0

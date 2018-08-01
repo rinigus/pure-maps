@@ -60,6 +60,7 @@ ApplicationWindow {
     property int  screenHeight: Screen.height
     property int  screenWidth: Screen.width
     property var  showNarrative: null
+    property var  styler: null
 
     // Default vertical margin for various multiline list items
     // such that it would be consistent with single-line list items
@@ -108,7 +109,7 @@ ApplicationWindow {
         app.hideMenu();
     }
 
-    function getIcon(name) {
+    function getIcon(name, no_variant) {
         // Return path to icon suitable for user's screen,
         // finding the closest match to Theme.pixelRatio.
         var ratios = [1.00, 1.25, 1.50, 1.75, 2.00];
@@ -119,6 +120,7 @@ ApplicationWindow {
             minDiff = Math.min(minDiff, diff);
         }
         var ratio = ratios[minIndex].toFixed(2);
+        if (!no_variant && app.styler.iconVariant) return "%1-%2@%3.png".arg(name).arg(app.styler.iconVariant).arg(ratio);
         return "%1@%2.png".arg(name).arg(ratio);
     }
 

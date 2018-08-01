@@ -268,28 +268,28 @@ MapboxMap {
         // Configure layer for POI markers.
         map.setPaintProperty(map.layers.pois, "circle-opacity", 0);
         map.setPaintProperty(map.layers.pois, "circle-radius", 32 / map.pixelRatio);
-        map.setPaintProperty(map.layers.pois, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layers.pois, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layers.pois, "circle-stroke-color", app.styler.route);
+        map.setPaintProperty(map.layers.pois, "circle-stroke-opacity", app.styler.routeOpacity);
         map.setPaintProperty(map.layers.pois, "circle-stroke-width", 13 / map.pixelRatio);
         // Configure layer for route polyline.
         map.setLayoutProperty(map.layers.route, "line-cap", "round");
         map.setLayoutProperty(map.layers.route, "line-join", "round");
-        map.setPaintProperty(map.layers.route, "line-color", "#0540ff");
-        map.setPaintProperty(map.layers.route, "line-opacity", 0.5);
+        map.setPaintProperty(map.layers.route, "line-color", app.styler.route);
+        map.setPaintProperty(map.layers.route, "line-opacity", app.styler.routeOpacity);
         map.setPaintProperty(map.layers.route, "line-width", 22 / map.pixelRatio);
         // Configure layer for active maneuver markers.
-        map.setPaintProperty(map.layers.maneuvers, "circle-color", "white");
+        map.setPaintProperty(map.layers.maneuvers, "circle-color", app.styler.maneuver);
         map.setPaintProperty(map.layers.maneuvers, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layers.maneuvers, "circle-radius", 11 / map.pixelRatio);
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", app.styler.route);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-opacity", app.styler.routeOpacity);
         map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 8 / map.pixelRatio);
         // Configure layer for passive maneuver markers.
-        map.setPaintProperty(map.layers.nodes, "circle-color", "white");
+        map.setPaintProperty(map.layers.nodes, "circle-color", app.styler.maneuver);
         map.setPaintProperty(map.layers.nodes, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layers.nodes, "circle-radius", 5 / map.pixelRatio);
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-color", app.styler.route);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", app.styler.routeOpacity);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 8 / map.pixelRatio);
         // Configure layer for dummy symbols that knock out road shields etc.
         map.setLayoutProperty(map.layers.dummies, "icon-image", map.images.pixel);
@@ -467,7 +467,10 @@ MapboxMap {
             (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
         app.attributionButton.logo = py.evaluate("poor.app.basemap.logo");
+        app.styler.apply(py.evaluate("poor.app.basemap.style_gui"))
         map.initLayers();
+        map.configureLayers();
+        positionMarker.initIcons();
     }
 
     function setCenter(x, y) {
