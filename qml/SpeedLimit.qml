@@ -32,7 +32,7 @@ Rectangle {
     height: width
     radius: width/2
     width: Math.round(Math.max(limit.width,limit.height) + 1.6*Theme.paddingLarge + Theme.paddingSmall)
-    visible: /*app.navigationActive &&*/ limit.text.length > 0
+    visible: app.navigationActive && map.route.mode === "car" && limit.text.length > 0
     z: 400
 
     states: [
