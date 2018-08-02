@@ -28,6 +28,8 @@ QtObject {
     property string position      // variant of position marker, set to "" for default
     property string route         // route color on the map. also used for maneuver markers
     property real   routeOpacity  // opacity of route
+    property string streetFg        // street name foreground
+    property string streetOutline   // street name outline
 
     function apply(guistyle) {
         defaults();
@@ -46,5 +48,7 @@ QtObject {
         position = "";
         route = "#0540ff";
         routeOpacity = 0.5;
+        streetFg = "black";
+        streetOutline = "white";
     }
 }

@@ -15,6 +15,8 @@
      "maneuver": "#050505",
      "position": "white",
      "route": "#ffffff",
-     "routeOpacity": 0.5
+     "routeOpacity": 0.5,
+     "streetFg": "white",
+     "streetOutline": "black"
   }
 }

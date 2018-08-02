@@ -27,14 +27,14 @@ Text {
     anchors.leftMargin: Theme.paddingLarge
     anchors.right: parent.right
     anchors.rightMargin: Theme.paddingLarge
-    color: "black"
+    color: app.styler.streetFg
     elide: Text.ElideRight
     //font.bold: true
     font.pixelSize: Theme.fontSizeLarge
     horizontalAlignment: Text.AlignHCenter
     maximumLineCount: 1
     style: Text.Outline
-    styleColor: "white"
+    styleColor: app.styler.streetOutline
     text: gps.streetName
     visible: app.navigationActive && (text !== undefined && text !== null && text.length>0)
     z: 400
