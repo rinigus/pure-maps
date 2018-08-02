@@ -40,7 +40,14 @@ MapboxMap {
     property bool   autoCenter: false
     property bool   autoRotate: false
     property int    counter: 0
-    property var    direction: app.navigationStatus.direction || gps.direction
+    property var    direction: {
+        // prefer map matched direction, if available
+        if (gps.directionValid) return gps.direction;
+        if (app.navigationStatus.direction!==undefined && app.navigationStatus.direction!==null)
+            return app.navigationStatus.direction;
+        if (gps.directionCalculated) return gps.direction;
+        return undefined;
+    }
     property string firstLabelLayer: ""
     property string format: ""
     property bool   hasRoute: false
@@ -81,7 +88,7 @@ MapboxMap {
 
     Behavior on center {
         CoordinateAnimation {
-            duration: map.ready ? 500 : 0
+            duration: map.ready && !app.navigationActive ? 500 : 0
             easing.type: Easing.InOutQuad
         }
     }
@@ -118,6 +125,21 @@ MapboxMap {
     Connections {
         target: app.navigationBlock
         onHeightChanged: map.updateMargins();
+    }
+
+    Connections {
+        target: app.navigationInfoBlock
+        onHeightChanged: map.updateMargins();
+    }
+
+    Connections {
+        target: app.streetName
+        onHeightChanged: map.updateMargins();
+    }
+
+    Connections {
+        target: app
+        onPortraitChanged: map.updateMargins();
     }
 
     Component.onCompleted: {
@@ -217,7 +239,10 @@ MapboxMap {
 
     function beginNavigating() {
         // Set UI to navigation mode.
-        map.zoomLevel < 15 && map.setZoomLevel(15);
+        var scale = app.conf.get("map_scale_navigation_" + route.mode);
+        var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
+        map.setScale(scale);
+        map.zoomLevel < zoom && map.setZoomLevel(zoom);
         map.centerOnPosition();
         map.autoCenter = true;
         map.autoRotate = true;
@@ -270,35 +295,28 @@ MapboxMap {
         // Configure layer for POI markers.
         map.setPaintProperty(map.layers.pois, "circle-opacity", 0);
         map.setPaintProperty(map.layers.pois, "circle-radius", 32 / map.pixelRatio);
-        map.setPaintProperty(map.layers.pois, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layers.pois, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layers.pois, "circle-stroke-color", app.styler.route);
+        map.setPaintProperty(map.layers.pois, "circle-stroke-opacity", app.styler.routeOpacity);
         map.setPaintProperty(map.layers.pois, "circle-stroke-width", 13 / map.pixelRatio);
         // Configure layer for route polyline.
-        map.setLayoutProperty(map.layers.route_case, "line-cap", "round");
-        map.setLayoutProperty(map.layers.route_case, "line-join", "round");
-        map.setLayoutProperty(map.layers.route_main, "line-cap", "round");
-        map.setLayoutProperty(map.layers.route_main, "line-join", "round");
-        map.setLayoutProperty(map.layers.route_line, "line-cap", "round");
-        map.setLayoutProperty(map.layers.route_line, "line-join", "round");
-        map.setPaintProperty(map.layers.route_case, "line-color", "#FFFFFF");
-        map.setPaintProperty(map.layers.route_case, "line-width", 22 / map.pixelRatio);
-        map.setPaintProperty(map.layers.route_main, "line-color", "#5981FF");
-        map.setPaintProperty(map.layers.route_main, "line-width", 18 / map.pixelRatio);
-        map.setPaintProperty(map.layers.route_line, "line-color", "#FFFFFF");
-        map.setPaintProperty(map.layers.route_line, "line-width", 3 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.route, "line-cap", "round");
+        map.setLayoutProperty(map.layers.route, "line-join", "round");
+        map.setPaintProperty(map.layers.route, "line-color", app.styler.route);
+        map.setPaintProperty(map.layers.route, "line-opacity", app.styler.routeOpacity);
+        map.setPaintProperty(map.layers.route, "line-width", 22 / map.pixelRatio);
         // Configure layer for active maneuver markers.
-        map.setPaintProperty(map.layers.maneuvers, "circle-color", "white");
+        map.setPaintProperty(map.layers.maneuvers, "circle-color", app.styler.maneuver);
         map.setPaintProperty(map.layers.maneuvers, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layers.maneuvers, "circle-radius", 11 / map.pixelRatio);
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", app.styler.route);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-opacity", app.styler.routeOpacity);
         map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 8 / map.pixelRatio);
         // Configure layer for passive maneuver markers.
-        map.setPaintProperty(map.layers.nodes, "circle-color", "white");
+        map.setPaintProperty(map.layers.nodes, "circle-color", app.styler.maneuver);
         map.setPaintProperty(map.layers.nodes, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layers.nodes, "circle-radius", 5 / map.pixelRatio);
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-color", "#0540ff");
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", 0.5);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-color", app.styler.route);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", app.styler.routeOpacity);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 8 / map.pixelRatio);
         // Configure layer for dummy symbols that knock out road shields etc.
         map.setLayoutProperty(map.layers.dummies, "icon-image", map.images.pixel);
@@ -313,6 +331,7 @@ MapboxMap {
         map.autoRotate = false;
         map.tiltEnabled = app.conf.get("tilt_when_navigating");
         map.zoomLevel > 14 && map.setZoomLevel(14);
+        map.setScale(app.conf.get("map_scale"));
         app.navigationActive = false;
     }
 
@@ -481,7 +500,10 @@ MapboxMap {
             (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
         app.attributionButton.logo = py.evaluate("poor.app.basemap.logo");
+        app.styler.apply(py.evaluate("poor.app.basemap.style_gui"))
         map.initLayers();
+        map.configureLayers();
+        positionMarker.initIcons();
     }
 
     function setCenter(x, y) {
@@ -540,6 +562,10 @@ MapboxMap {
         // Calculate new margins and set them for the map.
         var header = app.navigationBlock ? app.navigationBlock.height : 0;
         var footer = app.menuButton ? app.menuButton.height : 0;
+        if (app.navigationActive) {
+            footer = app.portrait && app.navigationInfoBlock ? app.navigationInfoBlock.height : 0;
+            footer += app.streetName ? app.streetName.height : 0
+        }
         // If auto-rotate is on, the user is always heading up
         // on the screen and should see more ahead than behind.
         var marginY = map.autoRotate ? footer/map.height : 0.05;

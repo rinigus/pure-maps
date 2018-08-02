@@ -35,4 +35,19 @@ IconButton {
     onLogoChanged: attributionButton.icon.source = logo ?
         app.getIcon("icons/attribution/%1".arg(logo)) : "";
 
+    Connections {
+        target: app.styler
+        onIconVariantChanged: attributionButton.icon.source = attributionButton.logo ?
+                                  app.getIcon("icons/attribution/%1".arg(attributionButton.logo)) : "";
+    }
+
+    states: [
+        State {
+            when: !app.portrait && navigationBlockLandscapeLeftShield.height > 0
+            AnchorChanges {
+                target: attributionButton
+                anchors.top: navigationBlockLandscapeLeftShield.bottom
+            }
+        }
+    ]
 }

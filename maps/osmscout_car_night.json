@@ -7,5 +7,15 @@
   "format": "mapbox-gl",
   "name": "OSM Scout Car Night",
   "requires": ["harbour-osmscout-server"],
-  "style_url": "http://localhost:8553/v1/mbgl/style?style=mc-car"
+  "style_url": "http://localhost:8553/v1/mbgl/style?style=mc-car",
+  "style_gui": {
+     "fg": "white",
+     "iconVariant": "white",
+     "maneuver": "black",
+     "position": "magenta",
+     "route": "#ff00ff",
+     "routeOpacity": 0.5,
+     "streetFg": "white",
+     "streetOutline": "black"
+  }
 }

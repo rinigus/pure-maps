@@ -49,6 +49,7 @@ class Map:
         self.logo = values.get("logo", "default")
         self.name = values["name"]
         self.style_dict = values.get("style_json", {})
+        self.style_gui = values.get("style_gui", {})
         self.style_url = values.get("style_url", "")
         self.tile_size = values.get("tile_size", 256)
         self.tile_url = values.get("tile_url", "")

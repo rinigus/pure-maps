@@ -91,6 +91,12 @@ ICONS_OSMSCOUT = {
     "turn-slight-right": "turn-slight-right",
 }
 
+MODE = {
+    "auto": "car",
+    "bicycle": "bicycle",
+    "pedestrian": "foot"
+}
+
 URL = "http://localhost:8553/v2/route?json={input}"
 cache = {}
 
@@ -119,11 +125,12 @@ def route(fm, to, heading, params):
         return copy.deepcopy(cache[url])
     result = poor.http.get_json(url)
     result = poor.AttrDict(result)
+    mode = MODE.get(poor.conf.routers.osmscout.type,"car")
     if result.get("API version", "") == "libosmscout V1":
-        return parse_result_libosmscout(url, result)
-    return parse_result_valhalla(url, result)
+        return parse_result_libosmscout(url, result, mode)
+    return parse_result_valhalla(url, result, mode)
 
-def parse_result_libosmscout(url, result):
+def parse_result_libosmscout(url, result, mode):
     """Parse and return route from libosmscout engine."""
     x, y = result.lng, result.lat
     maneuvers = [dict(
@@ -134,13 +141,13 @@ def parse_result_libosmscout(url, result):
         duration=float(maneuver.time),
         length=float(maneuver.length),
     ) for maneuver in result.maneuvers]
-    route = dict(x=x, y=y, maneuvers=maneuvers)
+    route = dict(x=x, y=y, maneuvers=maneuvers, mode=mode)
     route["language"] = result.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route
 
-def parse_result_valhalla(url, result):
+def parse_result_valhalla(url, result, mode):
     """Parse and return route from Valhalla engine."""
     legs = result.trip.legs[0]
     x, y = poor.util.decode_epl(legs.shape, precision=6)
@@ -154,7 +161,7 @@ def parse_result_valhalla(url, result):
         verbal_post=maneuver.get("verbal_post_transition_instruction", None),
         duration=float(maneuver.time),
     ) for maneuver in legs.maneuvers]
-    route = dict(x=x, y=y, maneuvers=maneuvers, mode="car")
+    route = dict(x=x, y=y, maneuvers=maneuvers, mode=mode)
     route["language"] = result.trip.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)

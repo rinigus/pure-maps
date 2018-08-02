@@ -28,7 +28,7 @@ IconButton {
     icon.source: app.getIcon("icons/menu")
     icon.width: icon.sourceSize.width
     width: icon.width
-    visible: py.ready
+    visible: py.ready && !app.navigationActive
     z: 900
     onClicked: app.showMenu();
 }

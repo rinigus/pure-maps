@@ -44,6 +44,7 @@ Item {
     }
 
     Component.onCompleted: {
+        marker.initIcons();
         marker.initLayers();
         marker.configureLayers();
         marker.updateDirection();
@@ -54,28 +55,44 @@ Item {
         map.setLayoutProperty(marker.layers.still, "icon-image", marker.images.still);
         map.setLayoutProperty(marker.layers.still, "icon-rotation-alignment", "map");
         map.setLayoutProperty(marker.layers.still, "icon-size", 1 / map.pixelRatio);
-        map.setLayoutProperty(marker.layers.still, "visibility", "visible");
         map.setLayoutProperty(marker.layers.moving, "icon-allow-overlap", true);
         map.setLayoutProperty(marker.layers.moving, "icon-image", marker.images.moving);
         map.setLayoutProperty(marker.layers.moving, "icon-rotation-alignment", "map");
         map.setLayoutProperty(marker.layers.moving, "icon-size", 1 / map.pixelRatio);
-        map.setLayoutProperty(marker.layers.moving, "visibility", "none");
+        // set the layer immediately in accordence with the direction availibility.
+        // there seems to be a corner case in interaction with mapbox-gl qml when the layer
+        // visibility is changed in two consecutive calls before the changes are applied by
+        // the widget
+        if (map.direction!==undefined) {
+            map.setLayoutProperty(marker.layers.still, "visibility", "none");
+            map.setLayoutProperty(marker.layers.moving, "visibility", "visible");
+            marker.directionVisible = true;
+        } else if (map.direction===undefined) {
+            map.setLayoutProperty(marker.layers.still, "visibility", "visible");
+            map.setLayoutProperty(marker.layers.moving, "visibility", "none");
+            marker.directionVisible = false;
+        }
+    }
+
+    function initIcons() {
+        var suffix = "";
+        if (app.styler.position) suffix = "-" + app.styler.position;
+        map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIcon("icons/position" + suffix, true)));
+        map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIcon("icons/position-direction" + suffix, true)));
     }
 
     function initLayers() {
         map.addSourcePoint(marker.source, map.position.coordinate);
-        map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIcon("icons/position")));
-        map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIcon("icons/position-direction")));
         map.addLayer(marker.layers.still, {"type": "symbol", "source": marker.source});
         map.addLayer(marker.layers.moving, {"type": "symbol", "source": marker.source});
     }
 
     function updateDirection() {
-        if (map.direction && !marker.directionVisible) {
+        if (map.direction!==undefined && !marker.directionVisible) {
             map.setLayoutProperty(marker.layers.still, "visibility", "none");
             map.setLayoutProperty(marker.layers.moving, "visibility", "visible");
             marker.directionVisible = true;
-        } else if (!map.direction && marker.directionVisible) {
+        } else if (map.direction===undefined && marker.directionVisible) {
             map.setLayoutProperty(marker.layers.still, "visibility", "visible");
             map.setLayoutProperty(marker.layers.moving, "visibility", "none");
             marker.directionVisible = false;

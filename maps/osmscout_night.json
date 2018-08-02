@@ -7,5 +7,15 @@
   "format": "mapbox-gl",
   "name": "OSM Scout Night",
   "requires": ["harbour-osmscout-server"],
-  "style_url": "http://localhost:8553/v1/mbgl/style?style=mc"
+  "style_url": "http://localhost:8553/v1/mbgl/style?style=mc",
+  "style_gui": {
+     "fg": "white",
+     "iconVariant": "white",
+     "maneuver": "black",
+     "position": "magenta",
+     "route": "#ff00ff",
+     "routeOpacity": 0.5,
+     "streetFg": "white",
+     "streetOutline": "black"
+  }
 }

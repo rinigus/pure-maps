@@ -29,13 +29,14 @@ Item {
     height: labels.implicitHeight
     opacity: 0.9
     width: parent.width
+    visible: !app.navigationActive
     z: 400
 
     Text {
         id: values
         anchors.bottom: parent.bottom
         anchors.right: labels.left
-        color: "black"
+        color: app.styler.fg
         font.bold: true
         font.family: "sans-serif"
         font.pixelSize: Math.round(Theme.pixelRatio * 18)
@@ -47,7 +48,7 @@ Item {
         id: labels
         anchors.bottom: parent.bottom
         anchors.right: parent.right
-        color: "black"
+        color: app.styler.fg
         font.bold: true
         font.family: "sans-serif"
         font.pixelSize: Math.round(Theme.pixelRatio * 18)

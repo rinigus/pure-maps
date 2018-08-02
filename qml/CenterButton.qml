@@ -20,6 +20,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 IconButton {
+    id: button
     anchors.right: parent.right
     anchors.top: navigationBlock.bottom
     height: icon.height

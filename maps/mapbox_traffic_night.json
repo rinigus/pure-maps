@@ -8,5 +8,15 @@
   "format": "mapbox-gl",
   "logo": "mapbox",
   "name": "Mapbox Traffic Night",
-  "style_url": "mapbox://styles/mapbox/traffic-night-v2"
+  "style_url": "mapbox://styles/mapbox/traffic-night-v2",
+  "style_gui": {
+     "fg": "white",
+     "iconVariant": "white",
+     "maneuver": "#050505",
+     "position": "white",
+     "route": "#ffffff",
+     "routeOpacity": 0.5,
+     "streetFg": "white",
+     "streetOutline": "black"
+  }
 }
