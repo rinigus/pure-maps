@@ -150,7 +150,7 @@ Rectangle {
         anchors.rightMargin: app.portrait ? Theme.horizontalPageMargin : Theme.paddingLarge
         anchors.top: manLabel.bottom
         color: Theme.primaryColor
-        font.pixelSize: Theme.fontSizeHuge
+        font.pixelSize: Theme.fontSizeExtraLarge
         height: text ? implicitHeight + Theme.paddingMedium : 0
         maximumLineCount: 1
         text: app.navigationPageSeen && block.notify ? streetName : ""

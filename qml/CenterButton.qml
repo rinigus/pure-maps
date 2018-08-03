@@ -22,7 +22,7 @@ import Sailfish.Silica 1.0
 IconButton {
     id: button
     anchors.right: parent.right
-    anchors.top: navigationBlock.bottom
+    anchors.top: app.navigationSign.bottom
     height: icon.height
     icon.height: icon.sourceSize.height
     icon.smooth: false

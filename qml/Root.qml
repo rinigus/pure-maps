@@ -56,6 +56,7 @@ Item {
         NavigationInfoBlock { id: navigationInfoBlock }
         NavigationInfoBlockLandscapeLeftShield { id: navigationInfoBlockLandscapeLeftShield }
         NavigationInfoBlockLandscapeRightShield { id: navigationInfoBlockLandscapeRightShield }
+        NavigationSign { id: navigationSign }
         NorthArrow { id: northArrow }
         Notification { id: notification }
         ScaleBar { id: scaleBar }
@@ -72,6 +73,7 @@ Item {
             app.meters = meters;
             app.navigationBlock = navigationBlock;
             app.navigationInfoBlock = navigationInfoBlock;
+            app.navigationSign = navigationSign;
             app.northArrow = northArrow;
             app.notification = notification;
             app.scaleBar = scaleBar;
