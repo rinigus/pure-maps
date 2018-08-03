@@ -30,14 +30,16 @@ Rectangle {
         if (!app.portrait && notify) {
             var h1 = Theme.paddingMedium + Theme.fontSizeLarge - Theme.fontSizeMedium + narrativeLabel.height;
             var h2 = Theme.paddingMedium + destLabel.height;
-            return Math.max(h1, h2);
+            var h3 = streetLabel.height;
+            return Math.max(h1, h2, h3);
         } else {
             var h1 = iconImage.height + 2 * Theme.paddingLarge;
             var h2 = manLabel.height + Theme.paddingSmall + narrativeLabel.height;
+            var h3 = manLabel.height + streetLabel.height;
             // If far off route, manLabel defines the height of the block,
             // but we need padding to make a sufficiently large tap target.
-            var h3 = notify ? 0 : manLabel.height + Theme.paddingMedium;
-            return Math.max(h1, h2, h3);
+            var h4 = notify ? 0 : manLabel.height + Theme.paddingMedium;
+            return Math.max(h1, h2, h3, h4);
         }
     }
     z: 500
@@ -64,6 +66,7 @@ Rectangle {
     property string manTime:   app.navigationStatus.manTime
     property string narrative: app.navigationStatus.narrative
     property bool   notify:    app.navigationStatus.notify
+    property var    street:    app.navigationStatus.street
     property int    shieldLeftHeight: !app.portrait && destDist && notify ? manLabel.height + Theme.paddingMedium + iconImage.height + iconImage.anchors.topMargin : 0
     property int    shieldLeftWidth:  !app.portrait && destDist && notify ? manLabel.anchors.leftMargin + Theme.paddingLarge + Math.max(manLabel.width, iconImage.width) : 0
 
@@ -105,6 +108,13 @@ Rectangle {
         text: block.notify ? block.destEta : ""
         states: [
             State {
+                when: !app.portrait && streetLabel.text
+                AnchorChanges {
+                    target: destLabel
+                    anchors.baseline: streetLabel.baseline
+                }
+            },
+            State {
                 when: !app.portrait
                 AnchorChanges {
                     target: destLabel
@@ -132,6 +142,44 @@ Rectangle {
     }
 
     Label {
+        // Street name
+        id: streetLabel
+        anchors.left: iconImage.right
+        anchors.leftMargin: iconImage.width > 0 ? Theme.paddingLarge : 0
+        anchors.right: parent.right
+        anchors.rightMargin: app.portrait ? Theme.horizontalPageMargin : Theme.paddingLarge
+        anchors.top: manLabel.bottom
+        color: Theme.primaryColor
+        font.pixelSize: Theme.fontSizeHuge
+        height: text ? implicitHeight + Theme.paddingMedium : 0
+        maximumLineCount: 1
+        text: app.navigationPageSeen && block.notify ? streetName : ""
+        truncationMode: TruncationMode.Fade
+        verticalAlignment: Text.AlignTop
+        states: [
+            State {
+                when: !app.portrait
+                AnchorChanges {
+                    target: streetLabel
+                    anchors.left: iconImage.width > manLabel.width ? iconImage.right : manLabel.right
+                    anchors.right: destEta.left
+                    anchors.top: parent.top
+                }
+            }
+        ]
+
+        property string streetName: {
+            if (!block.street) return "";
+            var s = "";
+            for (var i in block.street) {
+                if (s != "") s += "; "
+                s += block.street[i];
+            }
+            return s;
+        }
+    }
+
+    Label {
         // Instruction text for the next maneuver
         id: narrativeLabel
         anchors.left: iconImage.right
@@ -144,7 +192,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeMedium
         height: text ? implicitHeight + Theme.paddingMedium : 0
         text: app.navigationPageSeen ?
-            (block.notify ? block.narrative : "") :
+            (block.notify && !streetLabel.text ? block.narrative : "") :
             (block.notify ? app.tr("Tap to review maneuvers or begin navigating") : "")
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
