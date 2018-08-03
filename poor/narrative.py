@@ -38,6 +38,8 @@ class Maneuver:
         self.length = 0
         self.narrative = ""
         self.node = None
+        self.sign = None
+        self.street = None
         self.verbal_alert = ""
         self.verbal_post = ""
         self.verbal_pre = ""
@@ -206,7 +208,9 @@ class Narrative:
         dest_eta = (datetime.datetime.now()+datetime.timedelta(seconds=dest_time)).strftime("%H:%M")
         dest_time = poor.util.format_time(dest_time)
         man = self._get_display_maneuver(x, y, node, seg_dists)
-        man_node, man_dist, man_time, icon, narrative = man
+        man_node, man_dist, man_time, icon, narrative, sign, street = man
+        sign = (
+            sign if seg_dist < 100 and navigating and (man_dist < 500 or man_time < 300) else None)
         voice_uri = (
             self._get_voice_uri(man_node, man_dist, man_time)
             if seg_dist < 100 and navigating else None)
@@ -215,7 +219,7 @@ class Narrative:
         if seg_dist > 100:
             # Don't show the narrative or details calculated
             # from nodes along the route if far off route.
-            dest_time = man_time = icon = narrative = None
+            dest_time = man_time = icon = narrative = sign = street = None
         # Don't provide route direction to auto-rotate by if off route.
         direction = self._get_direction(x, y, node) if seg_dist < 50 else None
         # Trigger rerouting if off route (usually after missed a turn).
@@ -232,7 +236,9 @@ class Narrative:
                     narrative=narrative,
                     direction=direction,
                     voice_uri=voice_uri,
-                    reroute=reroute)
+                    reroute=reroute,
+                    sign=sign,
+                    street=street)
 
     def _get_display_destination(self, x, y, node, seg_dist):
         """Return destination details to display."""
@@ -264,7 +270,7 @@ class Narrative:
             # Use exact straight-line value at the very end.
             man_dist = poor.util.calculate_distance(
                 x, y, maneuver.x, maneuver.y)
-        return man_node, man_dist, man_time, maneuver.icon, maneuver.narrative
+        return man_node, man_dist, man_time, maneuver.icon, maneuver.narrative, maneuver.sign, maneuver.street
 
     def _get_display_transit(self, x, y):
         """Return a dictionary of status details to display."""
@@ -319,7 +325,9 @@ class Narrative:
                     narrative=narrative,
                     direction=direction,
                     voice_uri=None,
-                    reroute=False)
+                    reroute=False,
+                    sign=None,
+                    street=None)
 
     def _get_distance_from_route(self, x, y, node):
         """Return distance in meters from the route polyline."""
@@ -354,6 +362,8 @@ class Narrative:
             icon=maneuver.icon,
             length=poor.util.format_distance(maneuver.length),
             narrative=maneuver.narrative,
+            sign=maneuver.sign,
+            street=maneuver.street,
             verbal_alert=maneuver.verbal_alert,
             verbal_post=maneuver.verbal_post,
             verbal_pre=maneuver.verbal_pre,

@@ -56,6 +56,7 @@ ApplicationWindow {
     property var  navigationBlock: null
     property var  navigationInfoBlock: null
     property var  navigationPageSeen: false
+    property var  navigationSign: null
     property var  navigationStatus: NavigationStatus {}
     property bool navigationStarted: false
     property var  northArrow: null
