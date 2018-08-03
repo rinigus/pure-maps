@@ -32,6 +32,8 @@ QtObject {
     property bool   notify:    app.showNarrative && (icon || narrative)
     property real   progress:  0
     property bool   reroute:   false
+    property var    sign: undefined
+    property var    street: undefined
     property string totalDist: ""
     property string totalTime: ""
     property string voiceUri:  ""
@@ -47,6 +49,8 @@ QtObject {
         status.narrative = "";
         status.progress  = 0;
         status.reroute   = false;
+        status.sign      = undefined;
+        status.street    = undefined;
         status.totalDist = "";
         status.totalTime = "";
         status.voiceUri  = "";
@@ -65,7 +69,9 @@ QtObject {
         status.manTime   = data.man_time   || "";
         status.narrative = data.narrative  || "";
         status.progress  = data.progress   || 0;
-        status.reroute   = data.reroute    || false
+        status.reroute   = data.reroute    || false;
+        status.sign      = data.sign       || undefined;
+        status.street    = data.street     || undefined;
         status.totalDist = data.total_dist || "";
         status.totalTime = data.total_time || "";
         status.voiceUri  = data.voice_uri  || "";

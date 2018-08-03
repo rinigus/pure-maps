@@ -147,6 +147,12 @@ def parse_result_libosmscout(url, result, mode):
         cache[url] = copy.deepcopy(route)
     return route
 
+def parse_exit(maneuver, key):
+    if "sign" not in maneuver or key not in maneuver["sign"]:
+        return None
+    e = maneuver["sign"][key]
+    return [i.get("text", "") for i in e]
+
 def parse_result_valhalla(url, result, mode):
     """Parse and return route from Valhalla engine."""
     legs = result.trip.legs[0]
@@ -156,6 +162,13 @@ def parse_result_valhalla(url, result, mode):
         y=float(y[maneuver.begin_shape_index]),
         icon=ICONS.get(maneuver.type, "flag"),
         narrative=maneuver.instruction,
+        sign=dict(
+            exit_branch=parse_exit(maneuver, "exit_branch_elements"),
+            exit_name=parse_exit(maneuver, "exit_name_elements"),
+            exit_number=parse_exit(maneuver, "exit_number_elements"),
+            exit_toward=parse_exit(maneuver, "exit_toward_elements")
+        ),
+        street=maneuver.get("begin_street_names", maneuver.get("street_names", None)),
         verbal_alert=maneuver.get("verbal_transition_alert_instruction", None),
         verbal_pre=maneuver.get("verbal_pre_transition_instruction", None),
         verbal_post=maneuver.get("verbal_post_transition_instruction", None),

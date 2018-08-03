@@ -179,6 +179,8 @@ MapboxMap {
             "name": maneuver.passive ? "passive" : "active",
             "narrative": maneuver.narrative || "",
             "passive": maneuver.passive || false,
+            "sign": maneuver.sign || undefined,
+            "street": maneuver.street|| undefined,
             "verbal_alert": maneuver.verbal_alert || "",
             "verbal_post": maneuver.verbal_post || "",
             "verbal_pre": maneuver.verbal_pre || "",
