@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-17 17:52+0300\n"
-"PO-Revision-Date: 2018-06-18 23:35+0300\n"
+"POT-Creation-Date: 2018-08-04 15:28+0300\n"
+"PO-Revision-Date: 2018-08-04 15:29+0300\n"
 "Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2016\n"
 "Language-Team: Finnish (https://www.transifex.com/otsaloma/teams/70314/fi/)\n"
 "Language: fi\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: poor/geocoder.py:85
+#: poor/geocoder.py:108
 msgid "Point from geo link"
 msgstr "Piste geolinkistä"
 
-#: poor/geocoder.py:97
+#: poor/geocoder.py:120
 msgid "Point from coordinates"
 msgstr "Piste koordinaateista"
 
-#: poor/geocoder.py:107 poor/guide.py:98 poor/router.py:101
+#: poor/geocoder.py:130 poor/guide.py:124 poor/router.py:102
 msgid "Connection timed out"
 msgstr "Yhteys aikakatkaistiin"
 
@@ -35,7 +35,7 @@ msgstr "Yhteys aikakatkaistiin"
 #: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:78
 #: qml/RoutePage.qml:86 qml/RoutePage.qml:111 qml/RoutePage.qml:119
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
-#: qml/RoutePointPage.qml:88 qml/RoutePointPage.qml:91
+#: qml/RoutePointPage.qml:94 qml/RoutePointPage.qml:97
 msgid "Current position"
 msgstr "Nykyinen sijainti"
 
@@ -56,91 +56,91 @@ msgstr "Uudelleenreititys epäonnistui"
 msgid "New route found"
 msgstr "Uusi reitti löydetty"
 
-#: poor/util.py:182 poor/util.py:200
+#: poor/util.py:183 poor/util.py:201
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:182 poor/util.py:200
+#: poor/util.py:183 poor/util.py:201
 msgid "miles"
 msgstr "mailia"
 
-#: poor/util.py:190 qml/Meters.qml:71
+#: poor/util.py:191 qml/Meters.qml:71
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:190
+#: poor/util.py:191
 msgid "feet"
 msgstr "jalkaa"
 
-#: poor/util.py:208 qml/Meters.qml:82
+#: poor/util.py:209 qml/Meters.qml:82
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:208
+#: poor/util.py:209
 msgid "yards"
 msgstr "jaardia"
 
-#: poor/util.py:218
+#: poor/util.py:219
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:218
+#: poor/util.py:219
 msgid "kilometers"
 msgstr "kilometriä"
 
-#: poor/util.py:226 qml/Meters.qml:93
+#: poor/util.py:227 qml/Meters.qml:93
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:226
+#: poor/util.py:227
 msgid "meters"
 msgstr "metriä"
 
-#: poor/util.py:235 poor/util.py:243
+#: poor/util.py:236 poor/util.py:244
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} pohjoiseen"
 
-#: poor/util.py:236
+#: poor/util.py:237
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} koilliseen"
 
-#: poor/util.py:237
+#: poor/util.py:238
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} itään"
 
-#: poor/util.py:238
+#: poor/util.py:239
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} kaakkoon"
 
-#: poor/util.py:239
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} etelään"
 
-#: poor/util.py:240
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} lounaaseen"
 
-#: poor/util.py:241
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} länteen"
 
-#: poor/util.py:242
+#: poor/util.py:243
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} luoteeseen"
 
-#: poor/util.py:264
+#: poor/util.py:265
 msgid "{:d} min"
 msgstr "{:d} min"
 
-#: poor/util.py:265
+#: poor/util.py:266
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
@@ -247,14 +247,14 @@ msgstr "Lähimpiä"
 msgid "Best"
 msgstr "Parhaita"
 
-#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
-#: qml/RoutePointPage.qml:55
+#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:60 qml/PlaceTypePage.qml:59
+#: qml/RoutePointPage.qml:60
 msgid "Remove"
 msgstr "Poista"
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
-#: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
-#: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
+#: qml/GeocodePage.qml:106 qml/GeocodePage.qml:125 qml/MenuPage.qml:46
+#: qml/PlaceTypePage.qml:88 qml/RoutePointPage.qml:104
 msgid "Search"
 msgstr "Haku"
 
@@ -332,11 +332,11 @@ msgstr "Paikat"
 msgid "Navigation"
 msgstr "Navigointi"
 
-#: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
+#: qml/GeocodePage.qml:112 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
 msgstr "Käyttäen"
 
-#: qml/GeocodePage.qml:119 qml/RoutePointPage.qml:119
+#: qml/GeocodePage.qml:159 qml/RoutePointPage.qml:138
 msgid ""
 "You can search by address, locality, landmark and many other terms. For best "
 "results, include a region, e.g. “address, city” or “city, country”."
@@ -374,15 +374,15 @@ msgstr "%1 tulosta"
 msgid "No results"
 msgstr "Ei tuloksia"
 
-#: qml/Map.qml:406
+#: qml/Map.qml:409
 msgid "Voice navigation on"
 msgstr "Ääninavigointi päällä"
 
-#: qml/Map.qml:502
+#: qml/Map.qml:505
 msgid "Auto-center off"
 msgstr "Automaattinen keskitys pois"
 
-#: qml/Map.qml:505
+#: qml/Map.qml:508
 msgid "Auto-center on"
 msgstr "Automaattinen keskitys päällä"
 
@@ -519,7 +519,7 @@ msgstr "Automaattinen kierto päällä"
 msgid "Auto-rotate off"
 msgstr "Automaattinen kierto pois"
 
-#: qml/PlaceTypePage.qml:104
+#: qml/PlaceTypePage.qml:122
 msgid "You can search for venues by type or name."
 msgstr "Voit etsiä paikkoja tyypin tai nimen perusteella."
 
@@ -551,11 +551,11 @@ msgstr "Koskee vain vektorikarttoja."
 msgid "Tilt map when navigating"
 msgstr "Kallista kartta navigoidessa"
 
-#: qml/PreferencesPage.qml:51
+#: qml/PreferencesPage.qml:52
 msgid "Map scale"
 msgstr "Kartan skaalaus"
 
-#: qml/PreferencesPage.qml:66
+#: qml/PreferencesPage.qml:67
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
@@ -563,19 +563,19 @@ msgstr ""
 "Mieluisin sukupuoli navigoinnin ääniohjeisiin. Tuettu vain osassa "
 "äänikoneita ja kieliä."
 
-#: qml/PreferencesPage.qml:67
+#: qml/PreferencesPage.qml:68
 msgid "Voice gender"
 msgstr "Äänen sukupuoli"
 
-#: qml/PreferencesPage.qml:69
+#: qml/PreferencesPage.qml:70
 msgid "Male"
 msgstr "Mies"
 
-#: qml/PreferencesPage.qml:70
+#: qml/PreferencesPage.qml:71
 msgid "Female"
 msgstr "Nainen"
 
-#: qml/PreferencesPage.qml:85
+#: qml/PreferencesPage.qml:86
 msgid ""
 "Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
@@ -583,39 +583,39 @@ msgstr ""
 "Pätee vain, kun WhoGo Maps on aktiivisena. Kun minimoituna, lepotilaan "
 "siirrytään laitteen normaalien asetusten mukaan."
 
-#: qml/PreferencesPage.qml:86
+#: qml/PreferencesPage.qml:87
 msgid "Prevent sleep"
 msgstr "Estä lepotila"
 
-#: qml/PreferencesPage.qml:88
+#: qml/PreferencesPage.qml:89
 msgid "Never"
 msgstr "Ei koskaan"
 
-#: qml/PreferencesPage.qml:89
+#: qml/PreferencesPage.qml:90
 msgid "When navigating"
 msgstr "Navigoidessa"
 
-#: qml/PreferencesPage.qml:90
+#: qml/PreferencesPage.qml:91
 msgid "Always"
 msgstr "Aina"
 
-#: qml/PreferencesPage.qml:106
+#: qml/PreferencesPage.qml:107
 msgid "Units"
 msgstr "Yksiköt"
 
-#: qml/PreferencesPage.qml:108
+#: qml/PreferencesPage.qml:109
 msgid "Metric"
 msgstr "Metrinen"
 
-#: qml/PreferencesPage.qml:109
+#: qml/PreferencesPage.qml:110
 msgid "American"
 msgstr "Amerikkalainen"
 
-#: qml/PreferencesPage.qml:110
+#: qml/PreferencesPage.qml:111
 msgid "British"
 msgstr "Brittiläinen"
 
-#: qml/PreferencesPage.qml:131
+#: qml/PreferencesPage.qml:132
 msgid "Clear cache"
 msgstr "Tyhjennä välimuisti"
 
@@ -760,11 +760,11 @@ msgstr "Ranska (Kanada)"
 msgid "French (France)"
 msgstr "Ranska (Ranska)"
 
-#: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:52
+#: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:53
 msgid "German"
 msgstr "Saksa"
 
-#: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:55
+#: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:57
 msgid "Russian"
 msgstr "Venäjä"
 
@@ -788,27 +788,35 @@ msgstr "Tšekki"
 msgid "English"
 msgstr "Englanti"
 
-#: routers/osmscout_settings.qml:53
+#: routers/osmscout_settings.qml:52
+msgid "French"
+msgstr "Ranska"
+
+#: routers/osmscout_settings.qml:54
 msgid "Hindi"
 msgstr "Hindi"
 
-#: routers/osmscout_settings.qml:54
+#: routers/osmscout_settings.qml:55
 msgid "Italian"
 msgstr "Italia"
 
 #: routers/osmscout_settings.qml:56
+msgid "Portuguese"
+msgstr "Portugali"
+
+#: routers/osmscout_settings.qml:58
 msgid "Slovenian"
 msgstr "Slovenia"
 
-#: routers/osmscout_settings.qml:57
+#: routers/osmscout_settings.qml:59
 msgid "Spanish"
 msgstr "Espanja"
 
-#: routers/osmscout_settings.qml:58
+#: routers/osmscout_settings.qml:60
 msgid "Swedish"
 msgstr "Ruotsi"
 
-#: qml/js/util.js:79
+#: qml/js/util.js:86
 msgid "%1 (default)"
 msgstr "%1 (oletus)"
 
