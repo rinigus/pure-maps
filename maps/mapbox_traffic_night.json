@@ -17,6 +17,6 @@
      "route": "#ffffff",
      "routeOpacity": 0.5,
      "streetFg": "white",
-     "streetOutline": "black"
+     "streetBg": "black"
   }
 }

@@ -1,3 +1,16 @@
+2018-08-04: WhoGo Maps 1.1
+==========================
+
+* Add autocomplete support to Digitransit geocoder (#2)
+* Add autocomplete support to OSM Scout geocoder (#47)
+* Add autocomplete support to Foursquare venue types
+* Add autocomplete support to OSM Scout venue types (#40)
+* Add OSM Scout car styles (#43)
+* Remove obsolete OSM Scout router module requirement (#45)
+* Fix tilt when navigating setting
+* Add Brazilian Portuguese translation
+* Update translations
+
 2018-06-18: WhoGo Maps 1.0.1
 ============================
 

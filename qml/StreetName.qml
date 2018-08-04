@@ -19,32 +19,52 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Text {
-    id: streetname
+Rectangle {
+    id: master
     anchors.bottom: app.navigationActive ? (app.portrait ? navigationInfoBlock.top : parent.bottom) : menuButton.top
     anchors.bottomMargin: app.navigationActive ? Theme.paddingSmall : 0
     anchors.left: parent.left
     anchors.leftMargin: Theme.paddingLarge
     anchors.right: parent.right
     anchors.rightMargin: Theme.paddingLarge
-    color: app.styler.streetFg
-    elide: Text.ElideRight
-    //font.bold: true
-    font.pixelSize: Theme.fontSizeLarge
-    horizontalAlignment: Text.AlignHCenter
-    maximumLineCount: 1
-    style: Text.Outline
-    styleColor: app.styler.streetOutline
-    text: gps.streetName
-    visible: app.navigationActive && (text !== undefined && text !== null && text.length>0)
+    color: "transparent"
+    height: cover.height
     z: 400
+
     states: [
         State {
             when: app.navigationActive && !app.portrait
             AnchorChanges {
+                target: master
                 anchors.left: navigationInfoBlockLandscapeLeftShield.right
                 anchors.right: navigationInfoBlockLandscapeRightShield.left
             }
         }
     ]
+
+    Rectangle {
+        id: cover
+        anchors.centerIn: streetname
+        color: app.styler.streetBg
+        height: streetname.height
+        opacity: 0.75
+        radius: Theme.paddingMedium
+        visible: streetname.visible
+        width: streetname.width + 2*Theme.paddingMedium
+        z: 450
+    }
+
+    Label {
+        id: streetname
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: app.styler.streetFg
+        font.pixelSize: Theme.fontSizeLarge
+        maximumLineCount: 1
+        text: gps.streetName
+        truncationMode: TruncationMode.Fade
+        visible: app.navigationActive && (text !== undefined && text !== null && text.length>0)
+        width: implicitWidth > master.width - 4*Theme.paddingMedium ? master.width-4*Theme.paddingMedium : implicitWidth
+        z: 500
+    }
 }

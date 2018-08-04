@@ -35,6 +35,14 @@ IconButton {
 
     states: [
         State {
+            when: app.navigationActive && !app.portrait
+            AnchorChanges {
+                target: master
+                anchors.bottom: undefined
+                anchors.top: app.navigationSign.bottom
+            }
+        },
+        State {
             when: app.navigationActive
             AnchorChanges {
                 target: master
