@@ -45,6 +45,9 @@ DEFAULTS = {
     "reroute": True,
     "router": "mapquest_open",
     "show_narrative": True,
+    "show_navigation_sign": True,
+    # "always", "exceeding", "never"
+    "show_speed_limit": "always",
     "tilt_when_navigating": True,
     # "metric", "american" or "british".
     "units": "metric",

@@ -255,6 +255,38 @@ Page {
                 }
             }
 
+            TextSwitch {
+                id: directionsSwitch
+                checked: app.conf.get("show_navigation_sign")
+                text: app.tr("Show direction signs")
+                onCheckedChanged: {
+                    app.conf.set("show_navigation_sign", directionsSwitch.checked);
+                    app.showNavigationSign = directionsSwitch.checked;
+                }
+            }
+
+            ComboBox {
+                id: speedLimitComboBox
+                description: app.tr("Show speed limit sign")
+                label: app.tr("Speed limit")
+                menu: ContextMenu {
+                    MenuItem { text: app.tr("Always") }
+                    MenuItem { text: app.tr("Only when exceeding") }
+                    MenuItem { text: app.tr("Never") }
+                }
+                property var values: ["always", "exceeding", "never"]
+                Component.onCompleted: {
+                    var value = app.conf.get("show_speed_limit");
+                    speedLimitComboBox.currentIndex = speedLimitComboBox.values.indexOf(value);
+                }
+                onCurrentIndexChanged: {
+                    var index = speedLimitComboBox.currentIndex;
+                    var v = speedLimitComboBox.values[index];
+                    app.conf.set("show_speed_limit", v);
+                    app.showSpeedLimit = v;
+                }
+            }
+
             Spacer {
                 height: Theme.paddingMedium
             }

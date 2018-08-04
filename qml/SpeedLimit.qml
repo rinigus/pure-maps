@@ -32,7 +32,17 @@ Rectangle {
     height: width
     radius: width/2
     width: Math.round(Math.max(limit.width,limit.height) + 1.6*Theme.paddingLarge + Theme.paddingSmall)
-    visible: app.navigationActive && map.route.mode === "car" && limit.text.length > 0
+    visible: {
+        if (!app.navigationActive || map.route.mode !== "car" || app.showSpeedLimit==="never")
+            return false;
+        if (app.showSpeedLimit==="exceeding") {
+            if (!gps.position.speedValid || gps.streetSpeedLimit==null || gps.streetSpeedLimit < 0)
+                return false;
+            if (gps.position.speed <= gps.streetSpeedLimit)
+                return false;
+        }
+        return limit.text.length > 0
+    }
     z: 400
 
     states: [
