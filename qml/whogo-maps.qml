@@ -56,6 +56,7 @@ ApplicationWindow {
     property var  navigationBlock: null
     property var  navigationInfoBlock: null
     property var  navigationPageSeen: false
+    property var  navigationSign: null
     property var  navigationStatus: NavigationStatus {}
     property bool navigationStarted: false
     property var  northArrow: null
@@ -70,6 +71,8 @@ ApplicationWindow {
     property int  screenHeight: Screen.height
     property int  screenWidth: Screen.width
     property var  showNarrative: null
+    property var  showNavigationSign: null
+    property var  showSpeedLimit: null
     property var  styler: null
     property var  streetName: null
 
@@ -90,7 +93,8 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        updateMapMatching()
+        updateMapMatching();
+        updateNavigationSettings();
     }
 
     Component.onDestruction: {
@@ -264,10 +268,18 @@ ApplicationWindow {
         // app.mapMatchingModeNavigation is set on Navigation page
     }
 
-    function updateNavigationStatus(status) {
-        // Update navigation status with data from Python backend.
+    function updateNavigationSettings() {
+        if (!py.ready) return py.onReadyChanged.connect(app.updateNavigationSettings);
         if (app.showNarrative === null)
             app.showNarrative = app.conf.get("show_narrative");
+        if (app.showNavigationSign === null)
+            app.showNavigationSign = app.conf.get("show_navigation_sign");
+        if (app.showSpeedLimit === null)
+            app.showSpeedLimit = app.conf.get("show_speed_limit");
+    }
+
+    function updateNavigationStatus(status) {
+        // Update navigation status with data from Python backend.
         app.navigationStatus.update(status);
         if (app.navigationStatus.voiceUri && app.conf.get("voice_navigation"))
             sound.source = app.navigationStatus.voiceUri;

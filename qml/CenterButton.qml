@@ -22,7 +22,7 @@ import Sailfish.Silica 1.0
 IconButton {
     id: button
     anchors.right: parent.right
-    anchors.top: navigationBlock.bottom
+    anchors.top: app.navigationSign.bottom
     height: icon.height
     icon.height: icon.sourceSize.height
     icon.smooth: false
@@ -30,5 +30,26 @@ IconButton {
     icon.width: icon.sourceSize.width
     width: icon.width
     z: 500
+
+    states: [
+        State {
+            when: app.navigationActive && app.portrait
+            AnchorChanges {
+                target: button
+                anchors.right: undefined
+                anchors.horizontalCenter: app.northArrow.horizontalCenter
+            }
+        },
+        State {
+            when: app.navigationActive && !app.portrait
+            AnchorChanges {
+                target: button
+                anchors.right: app.northArrow.left
+                anchors.top: undefined
+                anchors.verticalCenter: app.northArrow.verticalCenter
+            }
+        }
+    ]
+
     onClicked: map.centerOnPosition();
 }

@@ -22,8 +22,8 @@ import Sailfish.Silica 1.0
 // used to cover speed in navigation info block in landscape
 // dimesions are set in NavigationInfoBlock
 Rectangle {
-    x: app.screenWidth - (width - radius)
-    y: app.screenHeight - (height - radius)
+    x: width > 0 ? app.screenWidth - (width - radius) : app.screenWidth
+    y: height > 0 ? app.screenHeight - (height - radius) : app.screenHeight
     color: navigationInfoBlock.color
     height: navigationInfoBlock.shieldRightHeight > 0 ? navigationInfoBlock.shieldRightHeight + radius : 0
     radius: Theme.paddingLarge

@@ -31,9 +31,14 @@ Rectangle {
 
     property string destDist:  app.navigationStatus.destDist
     property string destTime:  app.navigationStatus.destTime
+    // used to track whether there are already too many elements on the
+    // right side in landscape mode while navigating. this can happen when
+    // rather large sign with directions shows up. by setting this property to false,
+    // the right side data is temporarly not shown until the sign goes away
+    property bool   rightSideTooBusy: false
     property int    shieldLeftHeight: !app.portrait && app.navigationActive ? speed.height + Theme.paddingMedium : 0
     property int    shieldLeftWidth:  !app.portrait && app.navigationActive ? speed.width + Theme.horizontalPageMargin + speedUnit.width + Theme.paddingSmall + Theme.paddingLarge : 0
-    property int    shieldRightHeight: !app.portrait && app.navigationActive ? timeDest.height + distDest.height + Theme.paddingMedium : 0
+    property int    shieldRightHeight: !app.portrait && app.navigationActive && !rightSideTooBusy ? timeDest.height + distDest.height + Theme.paddingMedium : 0
     property int    shieldRightWidth:  !app.portrait && app.navigationActive ? Math.max(timeDest.width, distDest.width) + Theme.horizontalPageMargin+ Theme.paddingLarge : 0
 
     Label {
@@ -96,7 +101,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeLarge
         fontSizeMode: Text.HorizontalFit
         horizontalAlignment: Text.AlignHCenter
-        text: block.destTime
+        text: !rightSideTooBusy ? block.destTime : ""
         states: [
             State {
                 when: !app.portrait
@@ -125,7 +130,7 @@ Rectangle {
         anchors.rightMargin: Theme.horizontalPageMargin
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeLarge
-        text: block.destDist
+        text: !rightSideTooBusy ? block.destDist : ""
     }
 
     MouseArea {
@@ -133,20 +138,43 @@ Rectangle {
         onClicked: app.showMenu();
     }
 
+    function checkIfBusy() {
+        if (!app.navigationActive || app.portrait) {
+            block.rightSideTooBusy = false;
+            return;
+        }
+        var top = app.northArrow.y+app.northArrow.height;
+        var tofit = app.scaleBar.height + timeDest.height + distDest.height + Theme.paddingMedium + 2*Theme.paddingLarge;
+        var bottom = app.screenHeight - tofit;
+        block.rightSideTooBusy = bottom - top < 0;
+    }
+
     function update() {
         speed.update();
         speedUnit.update();
     }
 
-    Component.onCompleted: block.update()
+    Component.onCompleted: {
+        block.update();
+        block.checkIfBusy();
+    }
 
     Connections {
         target: app
         onNavigationActiveChanged: block.update()
+        onPortraitChanged: block.checkIfBusy();
+        onScreenHeightChanged: block.checkIfBusy();
     }
 
     Connections {
         target: gps
         onPositionChanged: block.update()
     }
+
+    Connections {
+        target: app.northArrow
+        onYChanged: block.checkIfBusy();
+        onHeightChanged: block.checkIfBusy();
+    }
+
 }
