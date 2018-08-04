@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-18 23:35+0300\n"
+"POT-Creation-Date: 2018-08-04 15:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: poor/geocoder.py:85
+#: poor/geocoder.py:108
 msgid "Point from geo link"
 msgstr ""
 
-#: poor/geocoder.py:97
+#: poor/geocoder.py:120
 msgid "Point from coordinates"
 msgstr ""
 
-#: poor/geocoder.py:107 poor/guide.py:98 poor/router.py:101
+#: poor/geocoder.py:130 poor/guide.py:124 poor/router.py:102
 msgid "Connection timed out"
 msgstr ""
 
@@ -34,7 +34,7 @@ msgstr ""
 #: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:78
 #: qml/RoutePage.qml:86 qml/RoutePage.qml:111 qml/RoutePage.qml:119
 #: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
-#: qml/RoutePointPage.qml:88 qml/RoutePointPage.qml:91
+#: qml/RoutePointPage.qml:94 qml/RoutePointPage.qml:97
 msgid "Current position"
 msgstr ""
 
@@ -55,91 +55,91 @@ msgstr ""
 msgid "New route found"
 msgstr ""
 
-#: poor/util.py:182 poor/util.py:200
+#: poor/util.py:183 poor/util.py:201
 msgid "mi"
 msgstr ""
 
-#: poor/util.py:182 poor/util.py:200
+#: poor/util.py:183 poor/util.py:201
 msgid "miles"
 msgstr ""
 
-#: poor/util.py:190 qml/Meters.qml:71
+#: poor/util.py:191 qml/Meters.qml:71
 msgid "ft"
 msgstr ""
 
-#: poor/util.py:190
+#: poor/util.py:191
 msgid "feet"
 msgstr ""
 
-#: poor/util.py:208 qml/Meters.qml:82
+#: poor/util.py:209 qml/Meters.qml:82
 msgid "yd"
 msgstr ""
 
-#: poor/util.py:208
+#: poor/util.py:209
 msgid "yards"
 msgstr ""
 
-#: poor/util.py:218
+#: poor/util.py:219
 msgid "km"
 msgstr ""
 
-#: poor/util.py:218
+#: poor/util.py:219
 msgid "kilometers"
 msgstr ""
 
-#: poor/util.py:226 qml/Meters.qml:93
+#: poor/util.py:227 qml/Meters.qml:93
 msgid "m"
 msgstr ""
 
-#: poor/util.py:226
+#: poor/util.py:227
 msgid "meters"
 msgstr ""
 
-#: poor/util.py:235 poor/util.py:243
+#: poor/util.py:236 poor/util.py:244
 #, python-brace-format
 msgid "{distance} north"
 msgstr ""
 
-#: poor/util.py:236
+#: poor/util.py:237
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr ""
 
-#: poor/util.py:237
+#: poor/util.py:238
 #, python-brace-format
 msgid "{distance} east"
 msgstr ""
 
-#: poor/util.py:238
+#: poor/util.py:239
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr ""
 
-#: poor/util.py:239
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south"
 msgstr ""
 
-#: poor/util.py:240
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr ""
 
-#: poor/util.py:241
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} west"
 msgstr ""
 
-#: poor/util.py:242
+#: poor/util.py:243
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr ""
 
-#: poor/util.py:264
+#: poor/util.py:265
 msgid "{:d} min"
 msgstr ""
 
-#: poor/util.py:265
+#: poor/util.py:266
 msgid "{:d} h {:d} min"
 msgstr ""
 
@@ -241,14 +241,14 @@ msgstr ""
 msgid "Best"
 msgstr ""
 
-#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:55 qml/PlaceTypePage.qml:55
-#: qml/RoutePointPage.qml:55
+#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:60 qml/PlaceTypePage.qml:59
+#: qml/RoutePointPage.qml:60
 msgid "Remove"
 msgstr ""
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
-#: qml/GeocodePage.qml:79 qml/GeocodePage.qml:98 qml/MenuPage.qml:46
-#: qml/PlaceTypePage.qml:83 qml/RoutePointPage.qml:98
+#: qml/GeocodePage.qml:106 qml/GeocodePage.qml:125 qml/MenuPage.qml:46
+#: qml/PlaceTypePage.qml:88 qml/RoutePointPage.qml:104
 msgid "Search"
 msgstr ""
 
@@ -322,11 +322,11 @@ msgstr ""
 msgid "Navigation"
 msgstr ""
 
-#: qml/GeocodePage.qml:85 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
+#: qml/GeocodePage.qml:112 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
 msgid "Using"
 msgstr ""
 
-#: qml/GeocodePage.qml:119 qml/RoutePointPage.qml:119
+#: qml/GeocodePage.qml:159 qml/RoutePointPage.qml:138
 msgid ""
 "You can search by address, locality, landmark and many other terms. For best "
 "results, include a region, e.g. “address, city” or “city, country”."
@@ -361,15 +361,15 @@ msgstr ""
 msgid "No results"
 msgstr ""
 
-#: qml/Map.qml:406
+#: qml/Map.qml:409
 msgid "Voice navigation on"
 msgstr ""
 
-#: qml/Map.qml:502
+#: qml/Map.qml:505
 msgid "Auto-center off"
 msgstr ""
 
-#: qml/Map.qml:505
+#: qml/Map.qml:508
 msgid "Auto-center on"
 msgstr ""
 
@@ -506,7 +506,7 @@ msgstr ""
 msgid "Auto-rotate off"
 msgstr ""
 
-#: qml/PlaceTypePage.qml:104
+#: qml/PlaceTypePage.qml:122
 msgid "You can search for venues by type or name."
 msgstr ""
 
@@ -538,67 +538,67 @@ msgstr ""
 msgid "Tilt map when navigating"
 msgstr ""
 
-#: qml/PreferencesPage.qml:51
+#: qml/PreferencesPage.qml:52
 msgid "Map scale"
 msgstr ""
 
-#: qml/PreferencesPage.qml:66
+#: qml/PreferencesPage.qml:67
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
 
-#: qml/PreferencesPage.qml:67
+#: qml/PreferencesPage.qml:68
 msgid "Voice gender"
 msgstr ""
 
-#: qml/PreferencesPage.qml:69
+#: qml/PreferencesPage.qml:70
 msgid "Male"
 msgstr ""
 
-#: qml/PreferencesPage.qml:70
+#: qml/PreferencesPage.qml:71
 msgid "Female"
 msgstr ""
 
-#: qml/PreferencesPage.qml:85
+#: qml/PreferencesPage.qml:86
 msgid ""
 "Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
 
-#: qml/PreferencesPage.qml:86
+#: qml/PreferencesPage.qml:87
 msgid "Prevent sleep"
 msgstr ""
 
-#: qml/PreferencesPage.qml:88
+#: qml/PreferencesPage.qml:89
 msgid "Never"
 msgstr ""
 
-#: qml/PreferencesPage.qml:89
+#: qml/PreferencesPage.qml:90
 msgid "When navigating"
 msgstr ""
 
-#: qml/PreferencesPage.qml:90
+#: qml/PreferencesPage.qml:91
 msgid "Always"
 msgstr ""
 
-#: qml/PreferencesPage.qml:106
+#: qml/PreferencesPage.qml:107
 msgid "Units"
 msgstr ""
 
-#: qml/PreferencesPage.qml:108
+#: qml/PreferencesPage.qml:109
 msgid "Metric"
 msgstr ""
 
-#: qml/PreferencesPage.qml:109
+#: qml/PreferencesPage.qml:110
 msgid "American"
 msgstr ""
 
-#: qml/PreferencesPage.qml:110
+#: qml/PreferencesPage.qml:111
 msgid "British"
 msgstr ""
 
-#: qml/PreferencesPage.qml:131
+#: qml/PreferencesPage.qml:132
 msgid "Clear cache"
 msgstr ""
 
@@ -743,11 +743,11 @@ msgstr ""
 msgid "French (France)"
 msgstr ""
 
-#: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:52
+#: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:53
 msgid "German"
 msgstr ""
 
-#: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:55
+#: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:57
 msgid "Russian"
 msgstr ""
 
@@ -771,27 +771,35 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: routers/osmscout_settings.qml:53
-msgid "Hindi"
+#: routers/osmscout_settings.qml:52
+msgid "French"
 msgstr ""
 
 #: routers/osmscout_settings.qml:54
+msgid "Hindi"
+msgstr ""
+
+#: routers/osmscout_settings.qml:55
 msgid "Italian"
 msgstr ""
 
 #: routers/osmscout_settings.qml:56
-msgid "Slovenian"
-msgstr ""
-
-#: routers/osmscout_settings.qml:57
-msgid "Spanish"
+msgid "Portuguese"
 msgstr ""
 
 #: routers/osmscout_settings.qml:58
+msgid "Slovenian"
+msgstr ""
+
+#: routers/osmscout_settings.qml:59
+msgid "Spanish"
+msgstr ""
+
+#: routers/osmscout_settings.qml:60
 msgid "Swedish"
 msgstr ""
 
-#: qml/js/util.js:79
+#: qml/js/util.js:86
 msgid "%1 (default)"
 msgstr ""
 
