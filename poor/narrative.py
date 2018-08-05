@@ -22,7 +22,7 @@ import datetime
 import poor
 import statistics
 
-from poor.i18n import __
+from poor.i18n import _, __
 
 __all__ = ("Narrative",)
 
@@ -209,9 +209,15 @@ class Narrative:
         dest_time = poor.util.format_time(dest_time)
         man = self._get_display_maneuver(x, y, node, seg_dists)
         man_node, man_dist, man_time, icon, narrative, sign, street = man
-        if street is None or len(street)==0:
-            if sign is not None and "exit_toward" in sign and sign["exit_toward"] is not None and len(sign["exit_toward"]) > 0:
+        if (street is None or len(street)==0) and sign is not None:
+            if "exit_toward" in sign and sign["exit_toward"] is not None and len(sign["exit_toward"]) > 0:
                 street = ["⇨ " + ("; ".join(sign["exit_toward"]))]
+            elif "exit_branch"  in sign and sign["exit_branch"] is not None and len(sign["exit_branch"]) > 0:
+                street = ["⇨ " + ("; ".join(sign["exit_branch"]))]
+            elif "exit_number"  in sign and sign["exit_number"] is not None and len(sign["exit_number"]) > 0:
+                street = [_("Exit: ") + ("; ".join(sign["exit_number"]))]
+            elif "exit_name"  in sign and sign["exit_name"] is not None and len(sign["exit_name"]) > 0:
+                street = [_("Exit: ") + ("; ".join(sign["exit_name"]))]
         sign = (
             sign if seg_dist < 100 and navigating and (man_dist < 500 or man_time < 300) else None)
         voice_uri = (
