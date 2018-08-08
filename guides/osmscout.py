@@ -23,6 +23,7 @@ https://github.com/rinigus/osmscout-server
 
 import copy
 import functools
+import json
 import poor
 import unicodedata
 import urllib.parse
@@ -41,6 +42,12 @@ URL_XY = ("http://localhost:8553/v1/guide"
           "&radius={radius}"
           "&lng={x}"
           "&lat={y}")
+
+URL_ROUTEONLY = ("http://localhost:8553/v1/guide"
+                 "?limit={limit}"
+                 "&poitype={query}"
+                 "&name={name}"
+                 "&radius={radius}")
 
 cache = {}
 
@@ -70,27 +77,35 @@ def nearby(query, near, radius, params):
     limit = params.get("limit", 50)
     name = params.get("name", "")
     name = urllib.parse.quote_plus(name)
-    if isinstance(near, (list, tuple)):
+    route_search = params.get("alongRoute", False)
+    route = params.get("route", {})
+    use_reference = params.get("fromReference", True)
+    if route_search and not use_reference:
+        url = URL_ROUTEONLY.format(**locals())
+    elif isinstance(near, (list, tuple)):
         x, y = near[0], near[1]
         url = URL_XY.format(**locals())
     else:
         search = urllib.parse.quote_plus(near)
         url = URL_SEARCH.format(**locals())
-    with poor.util.silent(KeyError):
-        return copy.deepcopy(cache[url])
-    results = poor.http.get_json(url)
+    # with poor.util.silent(KeyError):
+    #     return copy.deepcopy(cache[url])
+    if route_search:
+        results = poor.http.post_json(url, json.dumps(route))
+    else:
+        results = poor.http.get_json(url)
     results = poor.AttrDict(results)
     x = float(results.origin.lng)
     y = float(results.origin.lat)
     results = [dict(
         title=result.title,
         description=parse_description(result),
+        distance=float(result.distance),
         x=float(result.lng),
         y=float(result.lat),
     ) for result in results.results]
-    if results and results[0]:
-        results = poor.util.sorted_by_distance(results, x, y)
-        cache[url] = copy.deepcopy((x, y, results))
+    # if results and results[0]:
+    #     cache[url] = copy.deepcopy((x, y, results))
     return x, y, results
 
 def normalize(t):

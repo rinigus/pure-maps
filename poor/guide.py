@@ -86,9 +86,8 @@ class Guide:
         return (hasattr(self._provider, "autocomplete_type") and
                 callable(self._provider.autocomplete_type))
 
-    def _format_distance(self, x1, y1, x2, y2):
-        """Calculate and format a human readable distance string."""
-        distance = poor.util.calculate_distance(x1, y1, x2, y2)
+    def _format_distance(self, x1, y1, x2, y2, distance):
+        """Format distance in a human readable distance string."""
         bearing  = poor.util.calculate_bearing(x1, y1, x2, y2)
         return poor.util.format_distance_and_bearing(distance, bearing)
 
@@ -127,14 +126,13 @@ class Guide:
             traceback.print_exc()
             return []
         for result in results:
-            result["distance"] = poor.util.calculate_distance(
-                x, y, result["x"], result["y"])
+            if "distance" not in result:
+                result["distance"] = poor.util.calculate_distance(
+                    x, y, result["x"], result["y"])
             result["provider"] = self.id
-        # Enforce radius in case the provider didn't.
-        results = [z for z in results if z["distance"] <= radius]
         for result in results:
             result["distance"] = self._format_distance(
-                x, y, result["x"], result["y"])
+                x, y, result["x"], result["y"], result["distance"])
         return results
 
     @property

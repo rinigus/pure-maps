@@ -226,6 +226,8 @@ MapboxMap {
             "language": route.language || "en",
             "mode": route.mode || "car",
             "provider": route.provider || "",
+            "x": route.x,
+            "y": route.y
         };
         py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);
         py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
