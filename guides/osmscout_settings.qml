@@ -43,7 +43,7 @@ Column {
         id: routeSwitch
         anchors.left: parent.left
         anchors.right: parent.right
-        checked: page.params.alongRoute
+        checked: page.params.alongRoute!==undefined && page.params.alongRoute
         text: app.tr("Search along the route")
         visible: map.hasRoute
 
@@ -67,7 +67,8 @@ Column {
         id: fromRefSwitch
         anchors.left: parent.left
         anchors.right: parent.right
-        checked: page.params.fromReference
+        checked: page.params.fromReference!==undefined && page.params.fromReference
+        description: app.tr("When set, the search along the route is performed starting from the point specified by 'Near' on this page") 
         text: app.tr("Search starting from the reference point")
         visible: map.hasRoute && routeSwitch.checked
 
