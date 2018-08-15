@@ -41,10 +41,10 @@ Rectangle {
     width: {
         if (!app.showNavigationSign) return 0;
         var w1 = numLabel.text ? numLabel.width + exitLabel.width + Theme.paddingSmall : 0;
-        var w2 = nameLabel.width;
-        var w3 = towardLabel.width;
-        var w4 = branchLabel.width;
-        var w  = Math.max(w1, w2, w3, w4);
+        var w2 = nameLabel.implicitWidth;
+        var w3 = towardLabel.implicitWidth;
+        var w4 = branchLabel.implicitWidth;
+        var w  = Math.max(w1, Math.min(parent.width/3, Math.max(w2, w3, w4)));
         if (w) return w + 2*Theme.paddingLarge;
         return 0;
     }
@@ -59,11 +59,15 @@ Rectangle {
         var data = block.sign[data_id];
         var s = "";
         for (var i in data) {
-            if (!maxnr && i >= maxnr) return s;
+            if (maxnr!==undefined && i >= maxnr) return s;
             if (s != "") s += conn;
             s += data[i];
         }
         return s;
+    }
+
+    function elementWidth() {
+        return block.width - 2*Theme.paddingLarge;
     }
 
     Rectangle {
@@ -119,13 +123,7 @@ Rectangle {
         text: block.getstr("exit_name", "\n", 1)
         truncationMode: TruncationMode.Fade
         verticalAlignment: Text.AlignBottom
-        width: {
-            if (!text) return 0;
-            // restrict width if we have exit_toward on the sign
-            if (towardLabel.text.length>0 && towardLabel.width < implicitWidth)
-                return towardLabel.width;
-            return implicitWidth;
-        }
+        width: text ? elementWidth() : 0
     }
 
     Label {
@@ -139,9 +137,10 @@ Rectangle {
         font.capitalization: Font.AllUppercase
         font.pixelSize: Theme.fontSizeMedium
         height: text ? implicitHeight + 0*Theme.paddingSmall: 0
-        text: block.getstr("exit_toward", "\n", 2)
+        text: block.getstr("exit_toward", "\n", 3)
+        truncationMode: TruncationMode.Fade
         verticalAlignment: Text.AlignBottom
-        width: text ? implicitWidth : 0
+        width: text ? elementWidth() : 0
     }
 
     Label {
@@ -155,8 +154,9 @@ Rectangle {
         font.pixelSize: Theme.fontSizeMedium
         height: text ? implicitHeight + 0*Theme.paddingSmall: 0
         text: block.getstr("exit_branch", " ", 2)
+        truncationMode: TruncationMode.Fade
         verticalAlignment: Text.AlignBottom
-        width: text ? implicitWidth : 0
+        width: text ? Math.min(implicitWidth,elementWidth()) : 0
     }
 
 }
