@@ -27,6 +27,7 @@ Timer {
     triggeredOnStart: true
 
     property var coordPrev: QtPositioning.coordinate(0, 0)
+    property var timePrev: 0
 
     onRunningChanged: {
         // Always update after changing timer state.
@@ -38,7 +39,8 @@ Timer {
         // Query maneuver narrative from Python and update status.
         if (!py.ready) return;
         var coord = map.position.coordinate;
-        if (coord.distanceTo(timer.coordPrev) < 10) return;
+        var now = Date.now() / 1000;
+        if (now - timePrev < 60 && coord.distanceTo(timer.coordPrev) < 10) return;
         var accuracy = map.position.horizontalAccuracyValid ?
             map.position.horizontalAccuracy : null;
         var args = [coord.longitude, coord.latitude, accuracy, app.navigationActive];
@@ -46,6 +48,7 @@ Timer {
             app.updateNavigationStatus(status);
             timer.coordPrev.longitude = coord.longitude;
             timer.coordPrev.latitude = coord.latitude;
+            timer.timePrev = now;
         });
     }
 
