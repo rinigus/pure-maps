@@ -4,12 +4,12 @@
 # "Harbour RPM packages should not provide anything."
 %define __provides_exclude_from ^%{_datadir}/.*$
 
-Name: harbour-whogo-maps
+Name: harbour-whogo-fork
 Version: 1.1
 Release: 1
 Summary: Maps and navigation
 License: GPLv3+
-URL: https://github.com/otsaloma/whogo-maps
+URL: https://github.com/rinigus/whogo-maps
 Source: %{name}-%{version}.tar.xz
 BuildArch: noarch
 BuildRequires: gettext

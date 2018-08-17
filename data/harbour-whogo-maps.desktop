@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=WhoGo Maps
-Exec=sailfish-qml harbour-whogo-maps
-Icon=harbour-whogo-maps
-Type=Application
-X-Nemo-Application-Type=silica-qt5

@@ -1,6 +1,6 @@
 # -*- coding: us-ascii-unix -*-
 
-NAME       = harbour-whogo-maps
+NAME       = harbour-whogo-fork
 VERSION    = 1.1
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
@@ -92,10 +92,10 @@ install:
 	mkdir -p $(ICONDIR)/108x108/apps
 	mkdir -p $(ICONDIR)/128x128/apps
 	mkdir -p $(ICONDIR)/256x256/apps
-	cp data/whogo-maps-86.png  $(ICONDIR)/86x86/apps/$(NAME).png
-	cp data/whogo-maps-108.png $(ICONDIR)/108x108/apps/$(NAME).png
-	cp data/whogo-maps-128.png $(ICONDIR)/128x128/apps/$(NAME).png
-	cp data/whogo-maps-256.png $(ICONDIR)/256x256/apps/$(NAME).png
+	cp data/whogo-fork-86.png  $(ICONDIR)/86x86/apps/$(NAME).png
+	cp data/whogo-fork-108.png $(ICONDIR)/108x108/apps/$(NAME).png
+	cp data/whogo-fork-128.png $(ICONDIR)/128x128/apps/$(NAME).png
+	cp data/whogo-fork-256.png $(ICONDIR)/256x256/apps/$(NAME).png
 
 pot:
 	tools/update-translations

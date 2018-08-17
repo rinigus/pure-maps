@@ -25,8 +25,8 @@ XDG_CACHE_HOME = os.path.expanduser(os.getenv("XDG_CACHE_HOME", "~/.cache"))
 XDG_CONFIG_HOME = os.path.expanduser(os.getenv("XDG_CONFIG_HOME", "~/.config"))
 XDG_DATA_HOME = os.path.expanduser(os.getenv("XDG_DATA_HOME", "~/.local/share"))
 
-CACHE_HOME_DIR = os.path.join(XDG_CACHE_HOME, "harbour-whogo-maps")
-CONFIG_HOME_DIR = os.path.join(XDG_CONFIG_HOME, "harbour-whogo-maps")
+CACHE_HOME_DIR = os.path.join(XDG_CACHE_HOME, "harbour-whogo-fork")
+CONFIG_HOME_DIR = os.path.join(XDG_CONFIG_HOME, "harbour-whogo-fork")
 DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DATA_HOME_DIR = os.path.join(XDG_DATA_HOME, "harbour-whogo-maps")
+DATA_HOME_DIR = os.path.join(XDG_DATA_HOME, "harbour-whogo-fork")
 LOCALE_DIR = "/usr/share/harbour-whogo-maps/locale"
