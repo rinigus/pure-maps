@@ -38,7 +38,7 @@ Page {
             anchors.fill: parent
 
             PageHeader {
-                title: "WhoGo Maps"
+                title: "WhoGo Fork"
             }
 
             IconListItem {

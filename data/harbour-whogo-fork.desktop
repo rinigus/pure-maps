@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=WhoGo Fork
+Exec=sailfish-qml harbour-whogo-fork
+Icon=harbour-whogo-fork
+Type=Application
+X-Nemo-Application-Type=silica-qt5

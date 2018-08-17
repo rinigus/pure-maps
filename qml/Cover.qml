@@ -46,7 +46,7 @@ CoverBackground {
         font.pixelSize: Theme.fontSizeLarge
         horizontalAlignment: Text.AlignHCenter
         lineHeight: 1.25
-        text: "WhoGo\nMaps"
+        text: "WhoGo\nFork"
         visible: !cover.showNarrative
     }
 

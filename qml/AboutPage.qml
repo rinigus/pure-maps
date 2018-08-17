@@ -33,13 +33,21 @@ Page {
             width: parent.width
 
             PageHeader {
-                title: app.tr("About WhoGo Maps")
+                title: app.tr("About WhoGo Fork")
             }
 
             ListItemLabel {
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
                 text: app.tr("version %1", py.evaluate("poor.__version__"))
+            }
+
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: Theme.itemSizeLarge
+                preferredWidth: Theme.buttonWidthMedium
+                text: app.tr("GitHub page of the fork")
+                onClicked: Qt.openUrlExternally("https://github.com/rinigus/whogo-maps");
             }
 
             Button {
@@ -64,6 +72,16 @@ Page {
                     parent.width - anchors.leftMargin - anchors.rightMargin ?
                     Text.AlignLeft : Text.AlignHCenter
                 text: app.tr("WhoGo Maps is free software released under the GNU General Public License (GPL), version 3 or later.")
+                wrapMode: Text.WordWrap
+            }
+
+            ListItemLabel {
+                font.pixelSize: Theme.fontSizeSmall
+                height: implicitHeight + Theme.paddingLarge
+                horizontalAlignment: implicitWidth >
+                    parent.width - anchors.leftMargin - anchors.rightMargin ?
+                    Text.AlignLeft : Text.AlignHCenter
+                text: app.tr("This is a fork of WhoGo Maps for testing the features I have been working on that are not incorporated into the upstream yet. /rinigus")
                 wrapMode: Text.WordWrap
             }
 
