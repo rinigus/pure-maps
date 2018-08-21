@@ -6,5 +6,5 @@
   "format": "raster",
   "name": "Thunderforest Transport",
   "tile_size": 256,
-  "tile_url": "https://tile.thunderforest.com/transport/{z}/{x}/{y}@2x.png?apikey=0890777c70cf4966a624a99e258ef9a8"
+  "tile_url": "https://tile.thunderforest.com/transport/{z}/{x}/{y}@2x.png?apikey=9a913f34956945b494e3b9f5159968ad"
 }
