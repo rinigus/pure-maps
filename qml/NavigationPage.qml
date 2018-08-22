@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2017 Osmo Salomaa
+ * Copyright (C) 2017 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -274,11 +274,14 @@ Page {
                     MenuItem { text: app.tr("Only when exceeding") }
                     MenuItem { text: app.tr("Never") }
                 }
+
                 property var values: ["always", "exceeding", "never"]
+
                 Component.onCompleted: {
                     var value = app.conf.get("show_speed_limit");
                     speedLimitComboBox.currentIndex = speedLimitComboBox.values.indexOf(value);
                 }
+
                 onCurrentIndexChanged: {
                     var index = speedLimitComboBox.currentIndex;
                     var v = speedLimitComboBox.values[index];

@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018 Osmo Salomaa
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,22 +53,6 @@ Rectangle {
     property var    sign:   app.navigationStatus.sign
     property var    street: app.navigationStatus.street
     property bool   signActive: app.navigationActive && sign!=null && (sign.exit_number!=null || sign.exit_name!=null || sign.exit_toward!=null || sign.exit_branch!=null)
-
-    function getstr(data_id, conn, maxnr) {
-        if (!block.signActive || !block.sign || !block.sign[data_id]) return "";
-        var data = block.sign[data_id];
-        var s = "";
-        for (var i in data) {
-            if (maxnr!==undefined && i >= maxnr) return s;
-            if (s != "") s += conn;
-            s += data[i];
-        }
-        return s;
-    }
-
-    function elementWidth() {
-        return block.width - 2*Theme.paddingLarge;
-    }
 
     Rectangle {
         id: signBorder
@@ -157,6 +141,22 @@ Rectangle {
         truncationMode: TruncationMode.Fade
         verticalAlignment: Text.AlignBottom
         width: text ? Math.min(implicitWidth,elementWidth()) : 0
+    }
+
+    function elementWidth() {
+        return block.width - 2*Theme.paddingLarge;
+    }
+
+    function getstr(data_id, conn, maxnr) {
+        if (!block.signActive || !block.sign || !block.sign[data_id]) return "";
+        var data = block.sign[data_id];
+        var s = "";
+        for (var i in data) {
+            if (maxnr!==undefined && i >= maxnr) return s;
+            if (s != "") s += conn;
+            s += data[i];
+        }
+        return s;
     }
 
 }

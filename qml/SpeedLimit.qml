@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2015 Osmo Salomaa
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,15 @@ Rectangle {
     color: "white"
     height: width
     radius: width/2
+    states: [
+        State {
+            when: !app.portrait && navigationInfoBlockLandscapeLeftShield.height > 0
+            AnchorChanges {
+                target: ring
+                anchors.bottom: navigationInfoBlockLandscapeLeftShield.top
+            }
+        }
+    ]
     width: Math.round(Math.max(limit.width,limit.height) + 1.6*Theme.paddingLarge + Theme.paddingSmall)
     visible: {
         if (!app.navigationActive || map.route.mode !== "car" || app.showSpeedLimit==="never")
@@ -45,16 +54,6 @@ Rectangle {
     }
     z: 400
 
-    states: [
-        State {
-            when: !app.portrait && navigationInfoBlockLandscapeLeftShield.height > 0
-            AnchorChanges {
-                target: ring
-                anchors.bottom: navigationInfoBlockLandscapeLeftShield.top
-            }
-        }
-    ]
-
     Text {
         id: limit
         anchors.centerIn: parent
@@ -64,6 +63,18 @@ Rectangle {
         font.pixelSize: Theme.fontSizeLarge
         style: Text.Outline
         styleColor: "white"
+
+        Connections {
+            target: app
+            onNavigationActiveChanged: limit.update()
+        }
+
+        Connections {
+            target: gps
+            onStreetSpeedLimitChanged: limit.update()
+        }
+
+        Component.onCompleted: limit.update()
 
         function update() {
             // Update speed limit in user's preferred units.
@@ -86,17 +97,6 @@ Rectangle {
                 text = "%1".arg(gps.streetSpeedLimit * 3.6)
             }
         }
-
-        Connections {
-            target: app
-            onNavigationActiveChanged: limit.update()
-        }
-
-        Connections {
-            target: gps
-            onStreetSpeedLimitChanged: limit.update()
-        }
-
-        Component.onCompleted: limit.update()
     }
+
 }

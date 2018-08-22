@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,14 +46,6 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: Theme.itemSizeLarge
                 preferredWidth: Theme.buttonWidthMedium
-                text: app.tr("GitHub page of the fork")
-                onClicked: Qt.openUrlExternally("https://github.com/rinigus/whogo-maps");
-            }
-
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                height: Theme.itemSizeLarge
-                preferredWidth: Theme.buttonWidthMedium
                 text: app.tr("GitHub page")
                 onClicked: Qt.openUrlExternally("https://github.com/otsaloma/whogo-maps");
             }
@@ -62,7 +54,8 @@ Page {
                 font.pixelSize: Theme.fontSizeSmall
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
-                text: "Copyright © 2014–2018 Osmo Salomaa"
+                text: "Copyright © 2014–2018 Osmo Salomaa, 2018 Rinigus"
+                wrapMode: Text.WordWrap
             }
 
             ListItemLabel {
@@ -73,24 +66,6 @@ Page {
                     Text.AlignLeft : Text.AlignHCenter
                 text: app.tr("WhoGo Maps is free software released under the GNU General Public License (GPL), version 3 or later.")
                 wrapMode: Text.WordWrap
-            }
-
-            ListItemLabel {
-                font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingLarge
-                horizontalAlignment: implicitWidth >
-                    parent.width - anchors.leftMargin - anchors.rightMargin ?
-                    Text.AlignLeft : Text.AlignHCenter
-                text: app.tr("This is a fork of WhoGo Maps for testing the features I have been working on that are not incorporated into the upstream yet. /rinigus")
-                wrapMode: Text.WordWrap
-            }
-
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                height: Theme.itemSizeLarge
-                preferredWidth: Theme.buttonWidthMedium
-                text: app.tr("Donate via PayPal")
-                onClicked: Qt.openUrlExternally("https://www.paypal.me/otsaloma");
             }
 
             SectionHeader {

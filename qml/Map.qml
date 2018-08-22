@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -116,6 +116,11 @@ MapboxMap {
     PositionMarker { id: positionMarker }
 
     Connections {
+        target: app
+        onPortraitChanged: map.updateMargins();
+    }
+
+    Connections {
         target: app.menuButton
         onYChanged: map.updateMargins();
     }
@@ -133,11 +138,6 @@ MapboxMap {
     Connections {
         target: app.streetName
         onHeightChanged: map.updateMargins();
-    }
-
-    Connections {
-        target: app
-        onPortraitChanged: map.updateMargins();
     }
 
     Component.onCompleted: {

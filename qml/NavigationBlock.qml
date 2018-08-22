@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,8 +42,6 @@ Rectangle {
             return Math.max(h1, h2, h3, h4);
         }
     }
-    z: 500
-
     states: [
         State {
             when: !app.portrait && destDist && notify
@@ -57,6 +55,7 @@ Rectangle {
             }
         }
     ]
+    z: 500
 
     property string destDist:  app.navigationStatus.destDist
     property string destEta:   app.navigationStatus.destEta
@@ -153,9 +152,6 @@ Rectangle {
         font.pixelSize: Theme.fontSizeExtraLarge
         height: text ? implicitHeight + Theme.paddingMedium : 0
         maximumLineCount: 1
-        text: app.navigationPageSeen && block.notify ? streetName : ""
-        truncationMode: TruncationMode.Fade
-        verticalAlignment: Text.AlignTop
         states: [
             State {
                 when: !app.portrait
@@ -167,6 +163,9 @@ Rectangle {
                 }
             }
         ]
+        text: app.navigationPageSeen && block.notify ? streetName : ""
+        truncationMode: TruncationMode.Fade
+        verticalAlignment: Text.AlignTop
 
         property string streetName: {
             if (!block.street) return "";
@@ -191,11 +190,6 @@ Rectangle {
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeMedium
         height: text ? implicitHeight + Theme.paddingMedium : 0
-        text: app.navigationPageSeen ?
-            (block.notify && !streetLabel.text ? block.narrative : "") :
-            (block.notify ? app.tr("Tap to review maneuvers or begin navigating") : "")
-        verticalAlignment: Text.AlignTop
-        wrapMode: Text.WordWrap
         states: [
             State {
                 when: !app.portrait
@@ -208,6 +202,11 @@ Rectangle {
                 }
             }
         ]
+        text: app.navigationPageSeen ?
+            (block.notify && !streetLabel.text ? block.narrative : "") :
+            (block.notify ? app.tr("Tap to review maneuvers or begin navigating") : "")
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.WordWrap
     }
 
     Image {
@@ -225,7 +224,6 @@ Rectangle {
         source: block.notify ? "icons/navigation/%1.svg".arg(block.icon || "flag") : ""
         sourceSize.height: (Screen.sizeCategory >= Screen.Large ? 1.7 : 1) * Theme.iconSizeLarge
         sourceSize.width: (Screen.sizeCategory >= Screen.Large ? 1.7 : 1) * Theme.iconSizeLarge
-        width: block.notify ? sourceSize.width : 0
         states: [
             State {
                 when: !app.portrait && block.destDist && block.notify && iconImage.width < manLabel.width
@@ -244,6 +242,7 @@ Rectangle {
                 }
             }
         ]
+        width: block.notify ? sourceSize.width : 0
     }
 
     MouseArea {

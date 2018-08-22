@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018 Osmo Salomaa
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,9 +28,11 @@ Rectangle {
     height: navigationBlock.shieldLeftHeight > 0 ? navigationBlock.shieldLeftHeight - y : 0
     radius: Theme.paddingLarge
     width: navigationBlock.shieldLeftWidth > 0 ? navigationBlock.shieldLeftWidth - x : 0
+    z: 400
+
     MouseArea {
         anchors.fill: parent
         onClicked: !app.portrait && app.showNavigationPages();
     }
-    z: 400
+
 }

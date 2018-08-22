@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,9 +30,6 @@ IconButton {
     icon.smooth: true
     icon.source: app.getIcon("icons/north")
     icon.width: icon.sourceSize.width
-    width: icon.width
-    z: 500
-
     states: [
         State {
             when: app.navigationActive && !app.portrait
@@ -51,6 +48,8 @@ IconButton {
             }
         }
     ]
+    width: icon.width
+    z: 500
 
     Bubble {
         id: bubble

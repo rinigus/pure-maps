@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -101,7 +101,6 @@ Rectangle {
         font.pixelSize: Theme.fontSizeLarge
         fontSizeMode: Text.HorizontalFit
         horizontalAlignment: Text.AlignHCenter
-        text: !rightSideTooBusy ? block.destTime : ""
         states: [
             State {
                 when: !app.portrait
@@ -120,6 +119,7 @@ Rectangle {
                 }
             }
         ]
+        text: !rightSideTooBusy ? block.destTime : ""
     }
 
     Label {
@@ -138,27 +138,6 @@ Rectangle {
         onClicked: app.showMenu();
     }
 
-    function checkIfBusy() {
-        if (!app.navigationActive || app.portrait) {
-            block.rightSideTooBusy = false;
-            return;
-        }
-        var top = app.northArrow.y+app.northArrow.height;
-        var tofit = app.scaleBar.height + timeDest.height + distDest.height + Theme.paddingMedium + 2*Theme.paddingLarge;
-        var bottom = app.screenHeight - tofit;
-        block.rightSideTooBusy = bottom - top < 0;
-    }
-
-    function update() {
-        speed.update();
-        speedUnit.update();
-    }
-
-    Component.onCompleted: {
-        block.update();
-        block.checkIfBusy();
-    }
-
     Connections {
         target: app
         onNavigationActiveChanged: block.update()
@@ -175,6 +154,27 @@ Rectangle {
         target: app.northArrow
         onYChanged: block.checkIfBusy();
         onHeightChanged: block.checkIfBusy();
+    }
+
+    Component.onCompleted: {
+        block.update();
+        block.checkIfBusy();
+    }
+
+    function checkIfBusy() {
+        if (!app.navigationActive || app.portrait) {
+            block.rightSideTooBusy = false;
+            return;
+        }
+        var top = app.northArrow.y+app.northArrow.height;
+        var tofit = app.scaleBar.height + timeDest.height + distDest.height + Theme.paddingMedium + 2*Theme.paddingLarge;
+        var bottom = app.screenHeight - tofit;
+        block.rightSideTooBusy = bottom - top < 0;
+    }
+
+    function update() {
+        speed.update();
+        speedUnit.update();
     }
 
 }
