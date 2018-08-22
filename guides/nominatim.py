@@ -27,7 +27,7 @@ import poor
 import urllib.parse
 
 URL = ("http://open.mapquestapi.com/nominatim/v1/search.php"
-       "?key="
+       "?key=2aHt8JcDObJZhGHZ9EPv99F1N5JNp1RI"
        "&format=json"
        "&q={query}"
        "&addressdetails=1"
