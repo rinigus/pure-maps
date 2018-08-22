@@ -33,7 +33,7 @@ Page {
             width: parent.width
 
             PageHeader {
-                title: app.tr("About WhoGo Fork")
+                title: app.tr("About Pure Maps")
             }
 
             ListItemLabel {
@@ -47,14 +47,14 @@ Page {
                 height: Theme.itemSizeLarge
                 preferredWidth: Theme.buttonWidthMedium
                 text: app.tr("GitHub page")
-                onClicked: Qt.openUrlExternally("https://github.com/otsaloma/whogo-maps");
+                onClicked: Qt.openUrlExternally("https://github.com/rinigus/pure-maps");
             }
 
             ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall
-                height: Theme.itemSizeExtraSmall
+                height: implicitHeight + Theme.paddingLarge
                 horizontalAlignment: Text.AlignHCenter
-                text: "Copyright © 2014–2018 Osmo Salomaa, 2018 Rinigus"
+                text: "Copyright ©\n2014–2018 Osmo Salomaa,\n2018 Rinigus"
                 wrapMode: Text.WordWrap
             }
 
@@ -64,7 +64,7 @@ Page {
                 horizontalAlignment: implicitWidth >
                     parent.width - anchors.leftMargin - anchors.rightMargin ?
                     Text.AlignLeft : Text.AlignHCenter
-                text: app.tr("WhoGo Maps is free software released under the GNU General Public License (GPL), version 3 or later.")
+                text: app.tr("Pure Maps is free software released under the GNU General Public License (GPL), version 3 or later.")
                 wrapMode: Text.WordWrap
             }
 
@@ -100,7 +100,7 @@ Page {
                 height: Theme.itemSizeLarge
                 preferredWidth: Theme.buttonWidthMedium
                 text: app.tr("Transifex page")
-                onClicked: Qt.openUrlExternally("https://www.transifex.com/otsaloma/whogo-maps/");
+                onClicked: Qt.openUrlExternally("https://www.transifex.com/rinigus/pure-maps/");
             }
 
         }

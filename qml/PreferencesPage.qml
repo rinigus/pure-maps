@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -83,7 +83,7 @@ Page {
 
             ComboBox {
                 id: sleepComboBox
-                description: app.tr("Only applies when WhoGo Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
+                description: app.tr("Only applies when Pure Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
                 label: app.tr("Prevent sleep")
                 menu: ContextMenu {
                     MenuItem { text: app.tr("Never") }
@@ -104,7 +104,7 @@ Page {
 
             ComboBox {
                 id: mapmatchingComboBox
-                description: app.tr("Select mode of transportation. Only applies when WhoGo Maps is not navigating.")
+                description: app.tr("Select mode of transportation. Only applies when Pure Maps is not navigating.")
                 label: app.tr("Snap position to road")
                 menu: ContextMenu {
                     MenuItem { text: app.tr("None") }

@@ -34,7 +34,7 @@ BROKEN_CONNECTION_ERRORS = [
 
 HEADERS = {
     "Connection": "Keep-Alive",
-    "User-Agent": "whogo-maps/{}".format(poor.__version__),
+    "User-Agent": "pure-maps/{}".format(poor.__version__),
 }
 
 RE_LOCALHOST = re.compile(r"://(127.0.0.1|localhost)\b")

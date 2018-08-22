@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Pure Maps
+Exec=sailfish-qml harbour-pure-maps
+Icon=harbour-pure-maps
+Type=Application
+X-Nemo-Application-Type=silica-qt5

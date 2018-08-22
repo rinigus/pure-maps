@@ -43,10 +43,11 @@ CoverBackground {
     Label {
         // Title
         anchors.centerIn: parent
+        color: Theme.highlightColor
         font.pixelSize: Theme.fontSizeLarge
         horizontalAlignment: Text.AlignHCenter
         lineHeight: 1.25
-        text: "WhoGo\nFork"
+        text: "Pure\nMaps"
         visible: !cover.showNarrative
     }
 

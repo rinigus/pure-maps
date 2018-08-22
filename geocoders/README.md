@@ -24,15 +24,15 @@ dictionaries of geocoding results, with each dictionary having keys
 ## Tips
 
 To download data you should always use `poor.http.get` or
-`poor.http.get_json` in order to use WhoGo's user-agent and default
+`poor.http.get_json` in order to use Pure's user-agent and default
 timeout and error handling. You might also find `poor.AttrDict`, a
 dictionary with attribute access to keys, convenient when working with
 JSON data.
 
-Use `~/.local/share/harbour-whogo-maps/geocoders` as a local
-installation directory in which to place your files. Restart WhoGo Maps,
+Use `~/.local/share/harbour-pure-maps/geocoders` as a local
+installation directory in which to place your files. Restart Pure Maps,
 and your geocoder should be loaded, listed and available for use. During
-development, consider keeping your files under the WhoGo Maps source
+development, consider keeping your files under the Pure Maps source
 tree and using the Python interpreter or a test script, e.g.
 
 ```python
@@ -41,4 +41,4 @@ tree and using the Python interpreter or a test script, e.g.
 >>> geocoder.geocode("erottaja, helsinki")
 ```
 
-and qmlscene (`qmlscene qml/whogo-maps.qml`) for testing.
+and qmlscene (`qmlscene qml/pure-maps.qml`) for testing.

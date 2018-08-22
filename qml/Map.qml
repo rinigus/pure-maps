@@ -59,21 +59,21 @@ MapboxMap {
     property bool   tiltEnabled: false
 
     readonly property var images: QtObject {
-        readonly property string pixel: "whogo-image-pixel"
+        readonly property string pixel: "pure-image-pixel"
     }
 
     readonly property var layers: QtObject {
-        readonly property string dummies:   "whogo-layer-dummies"
-        readonly property string maneuvers: "whogo-layer-maneuvers-active"
-        readonly property string nodes:     "whogo-layer-maneuvers-passive"
-        readonly property string pois:      "whogo-layer-pois"
-        readonly property string route:     "whogo-layer-route"
+        readonly property string dummies:   "pure-layer-dummies"
+        readonly property string maneuvers: "pure-layer-maneuvers-active"
+        readonly property string nodes:     "pure-layer-maneuvers-passive"
+        readonly property string pois:      "pure-layer-pois"
+        readonly property string route:     "pure-layer-route"
     }
 
     readonly property var sources: QtObject {
-        readonly property string maneuvers: "whogo-source-maneuvers"
-        readonly property string pois:      "whogo-source-pois"
-        readonly property string route:     "whogo-source-route"
+        readonly property string maneuvers: "pure-source-maneuvers"
+        readonly property string pois:      "pure-source-pois"
+        readonly property string route:     "pure-source-route"
     }
 
     Behavior on bearing {

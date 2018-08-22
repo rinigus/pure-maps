@@ -4,7 +4,7 @@ Releasing a New Version
 ```bash
 # Update translations.
 make pot
-msgmerge -UN po/fi.po po/whogo-maps.pot
+msgmerge -UN po/fi.po po/pure-maps.pot
 emacs po/fi.po
 tx push -s
 tx push -tf --no-interactive -l fi

@@ -26,16 +26,16 @@ Item {
     property bool directionVisible: false
 
     readonly property var images: QtObject {
-        readonly property string moving: "whogo-position-moving"
-        readonly property string still:  "whogo-position-still"
+        readonly property string moving: "pure-position-moving"
+        readonly property string still:  "pure-position-still"
     }
 
     readonly property var layers: QtObject {
-        readonly property string moving: "whogo-position-moving"
-        readonly property string still:  "whogo-position-still"
+        readonly property string moving: "pure-position-moving"
+        readonly property string still:  "pure-position-still"
     }
 
-    readonly property string source: "whogo-position"
+    readonly property string source: "pure-position"
 
     Connections {
         target: map

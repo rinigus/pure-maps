@@ -115,7 +115,7 @@ class ConfigurationStore(poor.AttrDict):
 
     def read(self, path=None):
         """Read values of options from JSON file at `path`."""
-        path = path or os.path.join(poor.CONFIG_HOME_DIR, "whogo-maps.json")
+        path = path or os.path.join(poor.CONFIG_HOME_DIR, "pure-maps.json")
         if not os.path.isfile(path): return
         values = {}
         with poor.util.silent(Exception, tb=True):
@@ -192,7 +192,7 @@ class ConfigurationStore(poor.AttrDict):
 
     def write(self, path=None):
         """Write values of options to JSON file at `path`."""
-        path = path or os.path.join(poor.CONFIG_HOME_DIR, "whogo-maps.json")
+        path = path or os.path.join(poor.CONFIG_HOME_DIR, "pure-maps.json")
         out = copy.deepcopy(self)
         # Make sure no obsolete top-level options remain.
         names = list(DEFAULTS.keys()) + ["guides", "routers"]

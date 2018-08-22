@@ -242,7 +242,7 @@ class VoiceGenerator:
         self._engine = None
         self._result_queue = None
         self._task_queue = None
-        self._tmpdir = tempfile.mkdtemp(prefix="whogo-maps-")
+        self._tmpdir = tempfile.mkdtemp(prefix="pure-maps-")
         self._worker_thread = None
         # Normally quit is called from Application,
         # but e.g. when running unit tests we need atexit.

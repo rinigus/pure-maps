@@ -1,6 +1,6 @@
 # -*- coding: us-ascii-unix -*-
 
-NAME       = harbour-whogo-fork
+NAME       = harbour-pure-maps
 VERSION    = 1.1
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
@@ -15,7 +15,7 @@ LCONVERT   = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
 define install-translation =
     # GNU gettext translations for Python use.
     mkdir -p $(DATADIR)/locale/$(1)/LC_MESSAGES
-    msgfmt po/$(1).po -o $(DATADIR)/locale/$(1)/LC_MESSAGES/whogo-maps.mo
+    msgfmt po/$(1).po -o $(DATADIR)/locale/$(1)/LC_MESSAGES/pure-maps.mo
     # Qt linguist translations for QML use.
     mkdir -p $(DATADIR)/translations
     $(LCONVERT) -o $(DATADIR)/translations/$(NAME)-$(1).qm po/$(1).po
@@ -48,7 +48,7 @@ install:
 	cp poor/*.py $(DATADIR)/poor
 	@echo "Installing QML files..."
 	mkdir -p $(DATADIR)/qml
-	cp qml/whogo-maps.qml $(DATADIR)/qml/$(NAME).qml
+	cp qml/pure-maps.qml $(DATADIR)/qml/$(NAME).qml
 	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(DATADIR)/qml
 	mkdir -p $(DATADIR)/qml/icons
 	cp qml/icons/*.png $(DATADIR)/qml/icons
@@ -92,10 +92,10 @@ install:
 	mkdir -p $(ICONDIR)/108x108/apps
 	mkdir -p $(ICONDIR)/128x128/apps
 	mkdir -p $(ICONDIR)/256x256/apps
-	cp data/whogo-fork-86.png  $(ICONDIR)/86x86/apps/$(NAME).png
-	cp data/whogo-fork-108.png $(ICONDIR)/108x108/apps/$(NAME).png
-	cp data/whogo-fork-128.png $(ICONDIR)/128x128/apps/$(NAME).png
-	cp data/whogo-fork-256.png $(ICONDIR)/256x256/apps/$(NAME).png
+	cp data/pure-maps-86.png  $(ICONDIR)/86x86/apps/$(NAME).png
+	cp data/pure-maps-108.png $(ICONDIR)/108x108/apps/$(NAME).png
+	cp data/pure-maps-128.png $(ICONDIR)/128x128/apps/$(NAME).png
+	cp data/pure-maps-256.png $(ICONDIR)/256x256/apps/$(NAME).png
 
 pot:
 	tools/update-translations

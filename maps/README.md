@@ -13,8 +13,8 @@ keys are explained below, format-specific keys in following sections.
 
 * **`name`**: Name of the map source shown in listings.
 
-Use `~/.local/share/harbour-whogo-maps/maps` as a local installation
-directory in which to place your JSON file. Restart WhoGo Maps, and your
+Use `~/.local/share/harbour-pure-maps/maps` as a local installation
+directory in which to place your JSON file. Restart Pure Maps, and your
 map source should be loaded, listed and available for use.
 
 ## Mapbox GL Vector Map Format
