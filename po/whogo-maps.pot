@@ -1,0 +1,903 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-22 16:48+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: poor/geocoder.py:108
+msgid "Point from geo link"
+msgstr ""
+
+#: poor/geocoder.py:120
+msgid "Point from coordinates"
+msgstr ""
+
+#: poor/geocoder.py:130 poor/guide.py:123 poor/router.py:102
+msgid "Connection timed out"
+msgstr ""
+
+#: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
+#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
+#: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:78
+#: qml/RoutePage.qml:86 qml/RoutePage.qml:111 qml/RoutePage.qml:119
+#: qml/RoutePage.qml:169 qml/RoutePage.qml:174 qml/RoutePage.qml:176
+#: qml/RoutePointPage.qml:94 qml/RoutePointPage.qml:97
+msgid "Current position"
+msgstr ""
+
+#: poor/narrative.py:127
+#, python-brace-format
+msgid "In {distance}, {direction}"
+msgstr ""
+
+#: poor/narrative.py:218 poor/narrative.py:220
+msgid "Exit: "
+msgstr ""
+
+#: poor/narrative.py:415 qml/pure-maps.qml:163
+msgid "Rerouting"
+msgstr ""
+
+#: poor/narrative.py:416 qml/pure-maps.qml:185
+msgid "Rerouting failed"
+msgstr ""
+
+#: poor/narrative.py:417 qml/pure-maps.qml:179
+msgid "New route found"
+msgstr ""
+
+#: poor/util.py:183 poor/util.py:201
+msgid "mi"
+msgstr ""
+
+#: poor/util.py:183 poor/util.py:201
+msgid "miles"
+msgstr ""
+
+#: poor/util.py:191 qml/Meters.qml:72
+msgid "ft"
+msgstr ""
+
+#: poor/util.py:191
+msgid "feet"
+msgstr ""
+
+#: poor/util.py:209 qml/Meters.qml:83
+msgid "yd"
+msgstr ""
+
+#: poor/util.py:209
+msgid "yards"
+msgstr ""
+
+#: poor/util.py:219
+msgid "km"
+msgstr ""
+
+#: poor/util.py:219
+msgid "kilometers"
+msgstr ""
+
+#: poor/util.py:227 qml/Meters.qml:94
+msgid "m"
+msgstr ""
+
+#: poor/util.py:227
+msgid "meters"
+msgstr ""
+
+#: poor/util.py:236 poor/util.py:244
+#, python-brace-format
+msgid "{distance} north"
+msgstr ""
+
+#: poor/util.py:237
+#, python-brace-format
+msgid "{distance} north-east"
+msgstr ""
+
+#: poor/util.py:238
+#, python-brace-format
+msgid "{distance} east"
+msgstr ""
+
+#: poor/util.py:239
+#, python-brace-format
+msgid "{distance} south-east"
+msgstr ""
+
+#: poor/util.py:240
+#, python-brace-format
+msgid "{distance} south"
+msgstr ""
+
+#: poor/util.py:241
+#, python-brace-format
+msgid "{distance} south-west"
+msgstr ""
+
+#: poor/util.py:242
+#, python-brace-format
+msgid "{distance} west"
+msgstr ""
+
+#: poor/util.py:243
+#, python-brace-format
+msgid "{distance} north-west"
+msgstr ""
+
+#: poor/util.py:265
+msgid "{:d} min"
+msgstr ""
+
+#: poor/util.py:266
+msgid "{:d} h {:d} min"
+msgstr ""
+
+#: routers/digitransit.py:58
+msgid "airplane"
+msgstr ""
+
+#: routers/digitransit.py:59 standard input:11 standard input:13
+msgid "bicycle"
+msgstr ""
+
+#: routers/digitransit.py:60
+msgid "bus"
+msgstr ""
+
+#: routers/digitransit.py:61
+msgid "ferry"
+msgstr ""
+
+#: routers/digitransit.py:62
+msgid "train"
+msgstr ""
+
+#: routers/digitransit.py:63
+msgid "metro"
+msgstr ""
+
+#: routers/digitransit.py:64
+msgid "tram"
+msgstr ""
+
+#: routers/digitransit.py:65
+msgid "walk"
+msgstr ""
+
+#: routers/digitransit.py:69
+#, python-brace-format
+msgid "Walk towards {arr_name}."
+msgstr ""
+
+#: routers/digitransit.py:70
+#, python-brace-format
+msgid "Get a city bike at {dep_name}."
+msgstr ""
+
+#: routers/digitransit.py:71 routers/digitransit.py:74
+#, python-brace-format
+msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
+msgstr ""
+
+#: routers/digitransit.py:72
+msgid "Walk towards your destination."
+msgstr ""
+
+#: routers/digitransit.py:73
+#, python-brace-format
+msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
+msgstr ""
+
+#: routers/digitransit.py:75
+#, python-brace-format
+msgid "Leave the city bike at {dep_name} and walk towards your destination."
+msgstr ""
+
+#: routers/digitransit.py:76
+#, python-brace-format
+msgid "Get off at {dep_name} and walk towards {arr_name}."
+msgstr ""
+
+#: routers/digitransit.py:77
+#, python-brace-format
+msgid "Get off at {dep_name} and bike towards {arr_name}."
+msgstr ""
+
+#: routers/digitransit.py:78
+#, python-brace-format
+msgid ""
+"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+msgstr ""
+
+#: routers/digitransit.py:79
+#, python-brace-format
+msgid "Get off at {dep_name} and walk towards your destination."
+msgstr ""
+
+#: routers/digitransit.py:204
+msgid "Arrive at your destination."
+msgstr ""
+
+#: guides/foursquare_settings.qml:26
+msgid "Prefer"
+msgstr ""
+
+#: guides/foursquare_settings.qml:28
+msgid "Closest"
+msgstr ""
+
+#: guides/foursquare_settings.qml:29
+msgid "Best"
+msgstr ""
+
+#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:60 qml/PlaceTypePage.qml:59
+#: qml/RoutePointPage.qml:60
+msgid "Remove"
+msgstr ""
+
+#: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
+#: qml/GeocodePage.qml:106 qml/GeocodePage.qml:125 qml/MenuPage.qml:46
+#: qml/PlaceTypePage.qml:88 qml/RoutePointPage.qml:104
+msgid "Search"
+msgstr ""
+
+#: guides/osmscout_name.qml:102
+msgid "You can search for venues by name."
+msgstr ""
+
+#: guides/osmscout_settings.qml:25
+msgid "Name"
+msgstr ""
+
+#: guides/osmscout_settings.qml:47
+msgid "Search along the route"
+msgstr ""
+
+#: guides/osmscout_settings.qml:71
+msgid ""
+"When set, the search along the route is performed starting from the point "
+"specified by 'Near' on this page"
+msgstr ""
+
+#: guides/osmscout_settings.qml:72
+msgid "Search starting from the reference point"
+msgstr ""
+
+#: qml/AboutPage.qml:36
+msgid "About Pure Maps"
+msgstr ""
+
+#: qml/AboutPage.qml:42
+msgid "version %1"
+msgstr ""
+
+#: qml/AboutPage.qml:49
+msgid "GitHub page"
+msgstr ""
+
+#: qml/AboutPage.qml:67
+msgid ""
+"Pure Maps is free software released under the GNU General Public License "
+"(GPL), version 3 or later."
+msgstr ""
+
+#: qml/AboutPage.qml:72
+msgid "Translated by"
+msgstr ""
+
+#. TRANSLATORS: This is a special message that shouldn't be translated
+#. literally. It is used in the about page to give credits to the translators.
+#. Thus, you should translate it to your name. You can also include other
+#. translators who have contributed to this translation; in that case, please
+#. write them on separate lines seperated by newlines (\n).
+#: qml/AboutPage.qml:84
+msgid "translator-credits"
+msgstr ""
+
+#: qml/AboutPage.qml:94
+msgid ""
+"You can add new user interface translations or contribute to existing ones "
+"at Transifex."
+msgstr ""
+
+#: qml/AboutPage.qml:102
+msgid "Transifex page"
+msgstr ""
+
+#: qml/AttributionPage.qml:36
+msgid "Attribution"
+msgstr ""
+
+#: qml/AttributionPage.qml:40 qml/BasemapPage.qml:29 qml/MenuPage.qml:107
+msgid "Maps"
+msgstr ""
+
+#: qml/AttributionPage.qml:90
+msgid "Venues"
+msgstr ""
+
+#: qml/AttributionPage.qml:116 qml/MenuPage.qml:55 qml/NavigationPage.qml:39
+#: qml/RoutePage.qml:48
+msgid "Navigation"
+msgstr ""
+
+#: qml/GeocodePage.qml:112 qml/NearbyPage.qml:63 qml/RoutePage.qml:53
+msgid "Using"
+msgstr ""
+
+#: qml/GeocodePage.qml:159 qml/RoutePointPage.qml:138
+msgid ""
+"You can search by address, locality, landmark and many other terms. For best "
+"results, include a region, e.g. “address, city” or “city, country”."
+msgstr ""
+
+#: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
+#: routers/digitransit_settings.qml:181
+msgid "Default"
+msgstr ""
+
+#: qml/GeocoderPage.qml:75 qml/GuidePage.qml:75 qml/RouterPage.qml:75
+msgid "Alternatives"
+msgstr ""
+
+#: qml/GeocodingResultsPage.qml:94 qml/NearbyResultsPage.qml:94
+msgid "Show all"
+msgstr ""
+
+#: qml/GeocodingResultsPage.qml:132 qml/NearbyResultsPage.qml:132
+#: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
+#: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
+msgid "Searching"
+msgstr ""
+
+#: qml/GeocodingResultsPage.qml:154 qml/NearbyResultsPage.qml:151
+msgid "%1 Results"
+msgstr ""
+
+#: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
+#: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
+#: routers/osmscout_results.qml:58 routers/osrm_results.qml:58
+msgid "No results"
+msgstr ""
+
+#: qml/MapGestureArea.qml:53 qml/MapGestureArea.qml:54
+msgid "Unnamed point"
+msgstr ""
+
+#: qml/Map.qml:439
+msgid "Voice navigation on"
+msgstr ""
+
+#: qml/Map.qml:538
+msgid "Auto-center off"
+msgstr ""
+
+#: qml/Map.qml:541
+msgid "Auto-center on"
+msgstr ""
+
+#: qml/MenuPage.qml:61
+msgid "Nearby venues"
+msgstr ""
+
+#: qml/MenuPage.qml:67
+msgid "Share current position"
+msgstr ""
+
+#: qml/MenuPage.qml:82
+msgid "Share Current Position"
+msgstr ""
+
+#: qml/MenuPage.qml:89
+msgid "Center on current position"
+msgstr ""
+
+#: qml/MenuPage.qml:98
+msgid "Clear map"
+msgstr ""
+
+#: qml/MenuPage.qml:116
+msgid "Auto-center on position"
+msgstr ""
+
+#: qml/MenuPage.qml:133
+msgid "Auto-rotate on direction"
+msgstr ""
+
+#: qml/MenuPage.qml:148
+msgid "About"
+msgstr ""
+
+#: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
+msgid "Preferences"
+msgstr ""
+
+#: qml/Meters.qml:72 qml/Meters.qml:83 qml/NavigationInfoBlock.qml:83
+#: qml/NavigationInfoBlock.qml:85
+msgid "mph"
+msgstr ""
+
+#: qml/Meters.qml:94 qml/NavigationInfoBlock.qml:87
+msgid "km/h"
+msgstr ""
+
+#: qml/NarrativePage.qml:84
+msgid "Continue for %1."
+msgstr ""
+
+#: qml/NarrativePage.qml:103
+msgid "Maneuvers"
+msgstr ""
+
+#: qml/NavigationBlock.qml:139
+msgid "ETA"
+msgstr ""
+
+#: qml/NavigationBlock.qml:207
+msgid "Tap to review maneuvers or begin navigating"
+msgstr ""
+
+#: qml/NavigationPage.qml:54
+msgid "Pause"
+msgstr ""
+
+#: qml/NavigationPage.qml:55
+msgid "Resume"
+msgstr ""
+
+#: qml/NavigationPage.qml:55
+msgid "Begin"
+msgstr ""
+
+#: qml/NavigationPage.qml:66
+msgid "Reroute"
+msgstr ""
+
+#: qml/NavigationPage.qml:78
+msgid "Clear"
+msgstr ""
+
+#: qml/NavigationPage.qml:89
+msgid "Status"
+msgstr ""
+
+#: qml/NavigationPage.qml:137
+msgid "Remaining"
+msgstr ""
+
+#: qml/NavigationPage.qml:168
+msgid "Total"
+msgstr ""
+
+#: qml/NavigationPage.qml:190
+msgid "Options"
+msgstr ""
+
+#: qml/NavigationPage.qml:196
+msgid "Show navigation instructions"
+msgstr ""
+
+#: qml/NavigationPage.qml:207
+msgid "Voice navigation instructions"
+msgstr ""
+
+#: qml/NavigationPage.qml:220
+msgid "Reroute automatically"
+msgstr ""
+
+#: qml/NavigationPage.qml:231 qml/PreferencesPage.qml:108
+msgid "Snap position to road"
+msgstr ""
+
+#: qml/NavigationPage.qml:243 qml/PreferencesPage.qml:52
+msgid "Map scale"
+msgstr ""
+
+#: qml/NavigationPage.qml:261
+msgid "Show direction signs"
+msgstr ""
+
+#: qml/NavigationPage.qml:270
+msgid "Show speed limit sign"
+msgstr ""
+
+#: qml/NavigationPage.qml:271
+msgid "Speed limit"
+msgstr ""
+
+#: qml/NavigationPage.qml:273 qml/PreferencesPage.qml:91
+msgid "Always"
+msgstr ""
+
+#: qml/NavigationPage.qml:274
+msgid "Only when exceeding"
+msgstr ""
+
+#: qml/NavigationPage.qml:275 qml/PreferencesPage.qml:89
+msgid "Never"
+msgstr ""
+
+#: qml/NavigationSign.qml:92
+msgid "EXIT"
+msgstr ""
+
+#: qml/NearbyPage.qml:58
+msgid "Nearby Venues"
+msgstr ""
+
+#: qml/NearbyPage.qml:78
+msgid "Near"
+msgstr ""
+
+#: qml/NearbyPage.qml:111 routers/mapquest_open_settings.qml:26
+#: routers/osmscout_settings.qml:26
+msgid "Type"
+msgstr ""
+
+#: qml/NearbyPage.qml:126
+msgid "Radius"
+msgstr ""
+
+#: qml/NorthArrow.qml:72
+msgid "Auto-rotate on"
+msgstr ""
+
+#: qml/NorthArrow.qml:73
+msgid "Auto-rotate off"
+msgstr ""
+
+#: qml/PlaceTypePage.qml:122
+msgid "You can search for venues by type or name."
+msgstr ""
+
+#: qml/PoiBubble.qml:60
+msgid "Navigate"
+msgstr ""
+
+#: qml/PoiBubble.qml:77
+msgid "Nearby"
+msgstr ""
+
+#: qml/PoiBubble.qml:94
+msgid "Share"
+msgstr ""
+
+#: qml/PoiBubble.qml:100
+msgid "Share Location"
+msgstr ""
+
+#: qml/PoiBubble.qml:111
+msgid "Web"
+msgstr ""
+
+#: qml/PreferencesPage.qml:42
+msgid "Only applies to vector maps."
+msgstr ""
+
+#: qml/PreferencesPage.qml:43
+msgid "Tilt map when navigating"
+msgstr ""
+
+#: qml/PreferencesPage.qml:67
+msgid ""
+"Preferred gender for voice navigation. Only supported by some engines and "
+"languages."
+msgstr ""
+
+#: qml/PreferencesPage.qml:68
+msgid "Voice gender"
+msgstr ""
+
+#: qml/PreferencesPage.qml:70
+msgid "Male"
+msgstr ""
+
+#: qml/PreferencesPage.qml:71
+msgid "Female"
+msgstr ""
+
+#: qml/PreferencesPage.qml:86
+msgid ""
+"Only applies when Pure Maps is active. When minimized, sleep is controlled "
+"by normal device-level preferences."
+msgstr ""
+
+#: qml/PreferencesPage.qml:87
+msgid "Prevent sleep"
+msgstr ""
+
+#: qml/PreferencesPage.qml:90
+msgid "When navigating"
+msgstr ""
+
+#: qml/PreferencesPage.qml:107
+msgid ""
+"Select mode of transportation. Only applies when Pure Maps is not navigating."
+msgstr ""
+
+#: qml/PreferencesPage.qml:110
+msgid "None"
+msgstr ""
+
+#: qml/PreferencesPage.qml:111 routers/mapquest_open_settings.qml:28
+#: routers/osmscout_settings.qml:28
+msgid "Car"
+msgstr ""
+
+#: qml/PreferencesPage.qml:112 routers/mapquest_open_settings.qml:29
+#: routers/osmscout_settings.qml:29
+msgid "Bicycle"
+msgstr ""
+
+#: qml/PreferencesPage.qml:113 routers/mapquest_open_settings.qml:30
+#: routers/osmscout_settings.qml:30
+msgid "Foot"
+msgstr ""
+
+#: qml/PreferencesPage.qml:130
+msgid "Units"
+msgstr ""
+
+#: qml/PreferencesPage.qml:132
+msgid "Metric"
+msgstr ""
+
+#: qml/PreferencesPage.qml:133
+msgid "American"
+msgstr ""
+
+#: qml/PreferencesPage.qml:134
+msgid "British"
+msgstr ""
+
+#: qml/PreferencesPage.qml:155
+msgid "Clear cache"
+msgstr ""
+
+#: qml/pure-maps.qml:175
+msgid "Rerouting failed: %1"
+msgstr ""
+
+#: qml/RoutePage.qml:68
+msgid "From"
+msgstr ""
+
+#: qml/RoutePage.qml:101
+msgid "To"
+msgstr ""
+
+#: qml/RoutePage.qml:151
+msgid "Reverse endpoints"
+msgstr ""
+
+#: qml/RouterPage.qml:66
+msgid "Modes: %1"
+msgstr ""
+
+#: qml/SharePage.qml:53
+msgid "SMS"
+msgstr ""
+
+#: qml/SharePage.qml:59 qml/SharePage.qml:91
+msgid "Message copied to the clipboard"
+msgstr ""
+
+#: qml/SharePage.qml:60
+msgid "Launching the Messages application"
+msgstr ""
+
+#: qml/SharePage.qml:75
+msgid "Email"
+msgstr ""
+
+#: qml/SharePage.qml:78
+msgid "Launching the Email application"
+msgstr ""
+
+#: qml/SharePage.qml:88
+msgid "Other"
+msgstr ""
+
+#: routers/digitransit_results.qml:60
+msgid "Route %1. total %2"
+msgstr ""
+
+#: routers/digitransit_results.qml:155
+msgid "Walk %1"
+msgstr ""
+
+#: routers/digitransit_results.qml:156
+msgid "%1 → %2"
+msgstr ""
+
+#: routers/digitransit_results.qml:239
+msgid "Results"
+msgstr ""
+
+#: routers/digitransit_settings.qml:28
+msgid "Region"
+msgstr ""
+
+#: routers/digitransit_settings.qml:30
+msgid "HSL"
+msgstr ""
+
+#: routers/digitransit_settings.qml:31
+msgid "Waltti"
+msgstr ""
+
+#: routers/digitransit_settings.qml:32
+msgid "Finland"
+msgstr ""
+
+#: routers/digitransit_settings.qml:70 routers/digitransit_settings.qml:75
+#: routers/digitransit_settings.qml:80
+msgid "Depart"
+msgstr ""
+
+#: routers/digitransit_settings.qml:76
+msgid "Arrive"
+msgstr ""
+
+#: routers/digitransit_settings.qml:107
+msgid "Today"
+msgstr ""
+
+#: routers/digitransit_settings.qml:150
+msgid "Now"
+msgstr ""
+
+#: routers/digitransit_settings.qml:179
+msgid "Criterion"
+msgstr ""
+
+#: routers/digitransit_settings.qml:182
+msgid "Least transfers"
+msgstr ""
+
+#: routers/digitransit_settings.qml:183
+msgid "Least walking"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:48
+msgid "Try to avoid tolls"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:57 routers/osmscout_settings.qml:45
+msgid "Language"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:61
+msgid "English (UK)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:62
+msgid "English (US)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:63
+msgid "French (Canada)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:64
+msgid "French (France)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:54
+msgid "German"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:58
+msgid "Russian"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:67
+msgid "Spanish (Mexico)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:68
+msgid "Spanish (Spain)"
+msgstr ""
+
+#: routers/osmscout_settings.qml:49
+msgid "Catalan"
+msgstr ""
+
+#: routers/osmscout_settings.qml:50
+msgid "Czech"
+msgstr ""
+
+#: routers/osmscout_settings.qml:51
+msgid "English"
+msgstr ""
+
+#: routers/osmscout_settings.qml:52
+msgid "English Pirate"
+msgstr ""
+
+#: routers/osmscout_settings.qml:53
+msgid "French"
+msgstr ""
+
+#: routers/osmscout_settings.qml:55
+msgid "Hindi"
+msgstr ""
+
+#: routers/osmscout_settings.qml:56
+msgid "Italian"
+msgstr ""
+
+#: routers/osmscout_settings.qml:57
+msgid "Portuguese"
+msgstr ""
+
+#: routers/osmscout_settings.qml:59
+msgid "Slovenian"
+msgstr ""
+
+#: routers/osmscout_settings.qml:60
+msgid "Spanish"
+msgstr ""
+
+#: routers/osmscout_settings.qml:61
+msgid "Swedish"
+msgstr ""
+
+#: qml/js/util.js:86
+msgid "%1 (default)"
+msgstr ""
+
+#: standard input:1
+msgid "Search in Finland"
+msgstr ""
+
+#: standard input:2
+msgid "Search based on open data sources"
+msgstr ""
+
+#: standard input:3 standard input:4
+msgid "Search based on OpenStreetMap data"
+msgstr ""
+
+#: standard input:5
+msgid "Venues listed and reviewed by Foursquare users"
+msgstr ""
+
+#: standard input:6 standard input:7
+msgid "Points of interest from OpenStreetMap data"
+msgstr ""
+
+#: standard input:8
+msgid "Public transport routing in Finland"
+msgstr ""
+
+#: standard input:9
+msgid "public transport"
+msgstr ""
+
+#: standard input:10 standard input:12 standard input:14
+msgid "Routing based on OpenStreetMap data"
+msgstr ""
+
+#: standard input:11 standard input:13 standard input:15
+msgid "car"
+msgstr ""
+
+#: standard input:11 standard input:13
+msgid "foot"
+msgstr ""
