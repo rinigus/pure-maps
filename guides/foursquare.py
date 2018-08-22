@@ -33,8 +33,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 CONF_DEFAULTS = {"sort_by_distance": False}
 
-CLIENT_ID = "BP3KCWJXGQDXWVMYSVLWWRITMVZTG5XANJ43D2ZD0D5JMKCX"
-CLIENT_SECRET = "JTINTTCK4S5V4RTZ40IJB0GIKDX1XT0LJVNRH2EZXNVLNZ2T"
+CLIENT_ID = ""
+CLIENT_SECRET = ""
 
 CATEGORIES_URL = "".join((
     "https://api.foursquare.com/v2/venues/categories",
