@@ -1,8 +1,8 @@
 [main]
 host = https://www.transifex.com
 
-[whogo-maps.whogo-mapspot]
+[pure-maps.pure-mapspot]
 file_filter = po/<lang>.po
-source_file = po/whogo-maps.pot
+source_file = po/pure-maps.pot
 source_lang = en
 type = PO
