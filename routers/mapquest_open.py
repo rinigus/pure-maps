@@ -118,6 +118,7 @@ def route(fm, to, heading, params):
         icon=ICONS.get(maneuver.turnType, "flag"),
         narrative=maneuver.narrative,
         duration=float(maneuver.time),
+        street=maneuver.get("streets", None),
     ) for maneuver in maneuvers]
     if len(maneuvers) > 1:
         maneuvers[ 0]["icon"] = "depart"
