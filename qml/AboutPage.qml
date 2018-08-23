@@ -36,6 +36,15 @@ Page {
                 title: app.tr("About Pure Maps")
             }
 
+            Image {
+                // Logo
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: width/sourceSize.width * sourceSize.height
+                smooth: true
+                source: "icons/pure-maps-512.png"
+                width: 0.25 * Math.min(page.height,page.width)
+            }
+
             ListItemLabel {
                 height: Theme.itemSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
