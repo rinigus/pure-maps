@@ -1,4 +1,4 @@
-2018-08-: Pure Maps 1.2
+2018-08-23: Pure Maps 1.2
 =========================
 
 * Add support for map matching via OSM Scout Server

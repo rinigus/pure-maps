@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
 NAME       = harbour-pure-maps
-VERSION    = 1.1
+VERSION    = 1.2.0
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
 PREFIX     = /usr
@@ -23,7 +23,7 @@ endef
 
 check:
 	pyflakes geocoders guides poor routers
-	find . -name "*.json" -exec jsonlint -qc {} \;
+	find . -name "*.json" -exec jsonlint -q {} \;
 
 clean:
 	rm -rf dist
