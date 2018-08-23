@@ -1,3 +1,19 @@
+2018-08-: Pure Maps 1.2
+=========================
+
+* Add support for map matching via OSM Scout Server
+* Add support for styling GUI in accordance with the map
+* Rearrange controls in navigation mode and add new controls
+* Add support for landscape orientation
+* If provided by router, show street name of the upcoming maneuver and signs
+* Set configuration for map zoom during navigation 
+* Add support for a search along the current route (OSM Scout Server, Nearby search)
+* Add Stadia Maps as an online Valhalla router provider
+* New application icon and graphics used for cover page (Fellfrosch / popanz)
+* Remove Cartago maps due to the expected shutdown of the service
+* Add English Pirate voice instructions for Valhalla routers (OSM Scout Server and Stadia Maps)
+
+
 2018-08-04: WhoGo Maps 1.1
 ==========================
 
