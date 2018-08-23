@@ -30,6 +30,8 @@ Page {
 
         Column {
             id: column
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: Theme.paddingLarge
             width: parent.width
 
             PageHeader {
@@ -59,17 +61,35 @@ Page {
                 onClicked: Qt.openUrlExternally("https://github.com/rinigus/pure-maps");
             }
 
-            ListItemLabel {
-                font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingLarge
-                horizontalAlignment: Text.AlignHCenter
-                text: "Copyright ©\n2014–2018 Osmo Salomaa,\n2018 Rinigus"
-                wrapMode: Text.WordWrap
+            Column {
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: Theme.paddingSmall
+                width: Math.min(page.height,page.width)
+
+                ListItemLabel {
+                    font.pixelSize: Theme.fontSizeSmall
+                    height: implicitHeight
+                    text: "Copyright ©"
+                }
+
+                ListItemLabel {
+                    font.pixelSize: Theme.fontSizeSmall
+                    height: implicitHeight
+                    horizontalAlignment: Text.AlignRight
+                    text: "2014–2018 Osmo Salomaa\n2018 Rinigus"
+                }
+
+                ListItemLabel {
+                    font.pixelSize: Theme.fontSizeSmall
+                    height: implicitHeight
+                    horizontalAlignment: Text.AlignRight
+                    text: app.tr("Logo by %1", "Fellfrosch")
+                }
             }
 
             ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingLarge
+                height: implicitHeight
                 horizontalAlignment: implicitWidth >
                     parent.width - anchors.leftMargin - anchors.rightMargin ?
                     Text.AlignLeft : Text.AlignHCenter
@@ -96,7 +116,7 @@ Page {
 
             ListItemLabel {
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingLarge
+                height: implicitHeight
                 horizontalAlignment: implicitWidth >
                     parent.width - anchors.leftMargin - anchors.rightMargin ?
                     Text.AlignLeft : Text.AlignHCenter
