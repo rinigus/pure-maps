@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-04 15:28+0300\n"
+"POT-Creation-Date: 2018-08-23 12:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Point from coordinates"
 msgstr ""
 
-#: poor/geocoder.py:130 poor/guide.py:124 poor/router.py:102
+#: poor/geocoder.py:130 poor/guide.py:123 poor/router.py:102
 msgid "Connection timed out"
 msgstr ""
 
@@ -38,20 +38,24 @@ msgstr ""
 msgid "Current position"
 msgstr ""
 
-#: poor/narrative.py:124
+#: poor/narrative.py:127
 #, python-brace-format
 msgid "In {distance}, {direction}"
 msgstr ""
 
-#: poor/narrative.py:391 qml/whogo-maps.qml:142
+#: poor/narrative.py:218 poor/narrative.py:220
+msgid "Exit: "
+msgstr ""
+
+#: poor/narrative.py:415 qml/pure-maps.qml:163
 msgid "Rerouting"
 msgstr ""
 
-#: poor/narrative.py:392 qml/whogo-maps.qml:164
+#: poor/narrative.py:416 qml/pure-maps.qml:185
 msgid "Rerouting failed"
 msgstr ""
 
-#: poor/narrative.py:393 qml/whogo-maps.qml:158
+#: poor/narrative.py:417 qml/pure-maps.qml:179
 msgid "New route found"
 msgstr ""
 
@@ -63,7 +67,7 @@ msgstr ""
 msgid "miles"
 msgstr ""
 
-#: poor/util.py:191 qml/Meters.qml:71
+#: poor/util.py:191 qml/Meters.qml:72
 msgid "ft"
 msgstr ""
 
@@ -71,7 +75,7 @@ msgstr ""
 msgid "feet"
 msgstr ""
 
-#: poor/util.py:209 qml/Meters.qml:82
+#: poor/util.py:209 qml/Meters.qml:83
 msgid "yd"
 msgstr ""
 
@@ -87,7 +91,7 @@ msgstr ""
 msgid "kilometers"
 msgstr ""
 
-#: poor/util.py:227 qml/Meters.qml:93
+#: poor/util.py:227 qml/Meters.qml:94
 msgid "m"
 msgstr ""
 
@@ -148,6 +152,7 @@ msgid "airplane"
 msgstr ""
 
 #: routers/digitransit.py:59 standard input:11 standard input:13
+#: standard input:17
 msgid "bicycle"
 msgstr ""
 
@@ -260,29 +265,43 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: qml/AboutPage.qml:36
-msgid "About WhoGo Maps"
+#: guides/osmscout_settings.qml:47
+msgid "Search along the route"
 msgstr ""
 
-#: qml/AboutPage.qml:42
+#: guides/osmscout_settings.qml:71
+msgid ""
+"When set, the search along the route is performed starting from the point "
+"specified by 'Near' on this page"
+msgstr ""
+
+#: guides/osmscout_settings.qml:72
+msgid "Search starting from the reference point"
+msgstr ""
+
+#: qml/AboutPage.qml:38
+msgid "About Pure Maps"
+msgstr ""
+
+#: qml/AboutPage.qml:53
 msgid "version %1"
 msgstr ""
 
-#: qml/AboutPage.qml:49
+#: qml/AboutPage.qml:60
 msgid "GitHub page"
 msgstr ""
 
-#: qml/AboutPage.qml:66
+#: qml/AboutPage.qml:86
+msgid "Logo by %1"
+msgstr ""
+
+#: qml/AboutPage.qml:96
 msgid ""
-"WhoGo Maps is free software released under the GNU General Public License "
+"Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
 
-#: qml/AboutPage.qml:74
-msgid "Donate via PayPal"
-msgstr ""
-
-#: qml/AboutPage.qml:79
+#: qml/AboutPage.qml:101
 msgid "Translated by"
 msgstr ""
 
@@ -291,17 +310,17 @@ msgstr ""
 #. Thus, you should translate it to your name. You can also include other
 #. translators who have contributed to this translation; in that case, please
 #. write them on separate lines seperated by newlines (\n).
-#: qml/AboutPage.qml:91
+#: qml/AboutPage.qml:113
 msgid "translator-credits"
 msgstr ""
 
-#: qml/AboutPage.qml:101
+#: qml/AboutPage.qml:123
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
 
-#: qml/AboutPage.qml:109
+#: qml/AboutPage.qml:131
 msgid "Transifex page"
 msgstr ""
 
@@ -348,6 +367,7 @@ msgstr ""
 #: qml/GeocodingResultsPage.qml:132 qml/NearbyResultsPage.qml:132
 #: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
 #: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
+#: routers/stadiamaps_results.qml:36
 msgid "Searching"
 msgstr ""
 
@@ -358,23 +378,24 @@ msgstr ""
 #: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
 #: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
 #: routers/osmscout_results.qml:58 routers/osrm_results.qml:58
+#: routers/stadiamaps_results.qml:58
 msgid "No results"
-msgstr ""
-
-#: qml/Map.qml:409
-msgid "Voice navigation on"
-msgstr ""
-
-#: qml/Map.qml:505
-msgid "Auto-center off"
-msgstr ""
-
-#: qml/Map.qml:508
-msgid "Auto-center on"
 msgstr ""
 
 #: qml/MapGestureArea.qml:53 qml/MapGestureArea.qml:54
 msgid "Unnamed point"
+msgstr ""
+
+#: qml/Map.qml:439
+msgid "Voice navigation on"
+msgstr ""
+
+#: qml/Map.qml:538
+msgid "Auto-center off"
+msgstr ""
+
+#: qml/Map.qml:541
+msgid "Auto-center on"
 msgstr ""
 
 #: qml/MenuPage.qml:61
@@ -413,11 +434,12 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#: qml/Meters.qml:71 qml/Meters.qml:82
+#: qml/Meters.qml:72 qml/Meters.qml:83 qml/NavigationInfoBlock.qml:83
+#: qml/NavigationInfoBlock.qml:85
 msgid "mph"
 msgstr ""
 
-#: qml/Meters.qml:93
+#: qml/Meters.qml:94 qml/NavigationInfoBlock.qml:87
 msgid "km/h"
 msgstr ""
 
@@ -429,7 +451,11 @@ msgstr ""
 msgid "Maneuvers"
 msgstr ""
 
-#: qml/NavigationBlock.qml:88
+#: qml/NavigationBlock.qml:139
+msgid "ETA"
+msgstr ""
+
+#: qml/NavigationBlock.qml:207
 msgid "Tap to review maneuvers or begin navigating"
 msgstr ""
 
@@ -481,6 +507,42 @@ msgstr ""
 msgid "Reroute automatically"
 msgstr ""
 
+#: qml/NavigationPage.qml:231 qml/PreferencesPage.qml:108
+msgid "Snap position to road"
+msgstr ""
+
+#: qml/NavigationPage.qml:243 qml/PreferencesPage.qml:52
+msgid "Map scale"
+msgstr ""
+
+#: qml/NavigationPage.qml:261
+msgid "Show direction signs"
+msgstr ""
+
+#: qml/NavigationPage.qml:270
+msgid "Show speed limit sign"
+msgstr ""
+
+#: qml/NavigationPage.qml:271
+msgid "Speed limit"
+msgstr ""
+
+#: qml/NavigationPage.qml:273 qml/PreferencesPage.qml:91
+msgid "Always"
+msgstr ""
+
+#: qml/NavigationPage.qml:274
+msgid "Only when exceeding"
+msgstr ""
+
+#: qml/NavigationPage.qml:275 qml/PreferencesPage.qml:89
+msgid "Never"
+msgstr ""
+
+#: qml/NavigationSign.qml:92
+msgid "EXIT"
+msgstr ""
+
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
 msgstr ""
@@ -490,7 +552,7 @@ msgid "Near"
 msgstr ""
 
 #: qml/NearbyPage.qml:111 routers/mapquest_open_settings.qml:26
-#: routers/osmscout_settings.qml:26
+#: routers/osmscout_settings.qml:26 routers/stadiamaps_settings.qml:26
 msgid "Type"
 msgstr ""
 
@@ -498,11 +560,11 @@ msgstr ""
 msgid "Radius"
 msgstr ""
 
-#: qml/NorthArrow.qml:53
+#: qml/NorthArrow.qml:72
 msgid "Auto-rotate on"
 msgstr ""
 
-#: qml/NorthArrow.qml:54
+#: qml/NorthArrow.qml:73
 msgid "Auto-rotate off"
 msgstr ""
 
@@ -538,10 +600,6 @@ msgstr ""
 msgid "Tilt map when navigating"
 msgstr ""
 
-#: qml/PreferencesPage.qml:52
-msgid "Map scale"
-msgstr ""
-
 #: qml/PreferencesPage.qml:67
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
@@ -562,7 +620,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:86
 msgid ""
-"Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
+"Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
 
@@ -570,36 +628,56 @@ msgstr ""
 msgid "Prevent sleep"
 msgstr ""
 
-#: qml/PreferencesPage.qml:89
-msgid "Never"
-msgstr ""
-
 #: qml/PreferencesPage.qml:90
 msgid "When navigating"
 msgstr ""
 
-#: qml/PreferencesPage.qml:91
-msgid "Always"
-msgstr ""
-
 #: qml/PreferencesPage.qml:107
-msgid "Units"
-msgstr ""
-
-#: qml/PreferencesPage.qml:109
-msgid "Metric"
+msgid ""
+"Select mode of transportation. Only applies when Pure Maps is not navigating."
 msgstr ""
 
 #: qml/PreferencesPage.qml:110
-msgid "American"
+msgid "None"
 msgstr ""
 
-#: qml/PreferencesPage.qml:111
-msgid "British"
+#: qml/PreferencesPage.qml:111 routers/mapquest_open_settings.qml:28
+#: routers/osmscout_settings.qml:28 routers/stadiamaps_settings.qml:28
+msgid "Car"
+msgstr ""
+
+#: qml/PreferencesPage.qml:112 routers/mapquest_open_settings.qml:29
+#: routers/osmscout_settings.qml:29 routers/stadiamaps_settings.qml:29
+msgid "Bicycle"
+msgstr ""
+
+#: qml/PreferencesPage.qml:113 routers/mapquest_open_settings.qml:30
+#: routers/osmscout_settings.qml:30 routers/stadiamaps_settings.qml:30
+msgid "Foot"
+msgstr ""
+
+#: qml/PreferencesPage.qml:130
+msgid "Units"
 msgstr ""
 
 #: qml/PreferencesPage.qml:132
+msgid "Metric"
+msgstr ""
+
+#: qml/PreferencesPage.qml:133
+msgid "American"
+msgstr ""
+
+#: qml/PreferencesPage.qml:134
+msgid "British"
+msgstr ""
+
+#: qml/PreferencesPage.qml:155
 msgid "Clear cache"
+msgstr ""
+
+#: qml/pure-maps.qml:175
+msgid "Rerouting failed: %1"
 msgstr ""
 
 #: qml/RoutePage.qml:68
@@ -640,10 +718,6 @@ msgstr ""
 
 #: qml/SharePage.qml:88
 msgid "Other"
-msgstr ""
-
-#: qml/whogo-maps.qml:154
-msgid "Rerouting failed: %1"
 msgstr ""
 
 #: routers/digitransit_results.qml:60
@@ -707,23 +781,12 @@ msgstr ""
 msgid "Least walking"
 msgstr ""
 
-#: routers/mapquest_open_settings.qml:28 routers/osmscout_settings.qml:28
-msgid "Car"
-msgstr ""
-
-#: routers/mapquest_open_settings.qml:29 routers/osmscout_settings.qml:29
-msgid "Bicycle"
-msgstr ""
-
-#: routers/mapquest_open_settings.qml:30 routers/osmscout_settings.qml:30
-msgid "Foot"
-msgstr ""
-
 #: routers/mapquest_open_settings.qml:48
 msgid "Try to avoid tolls"
 msgstr ""
 
 #: routers/mapquest_open_settings.qml:57 routers/osmscout_settings.qml:45
+#: routers/stadiamaps_settings.qml:45
 msgid "Language"
 msgstr ""
 
@@ -743,11 +806,13 @@ msgstr ""
 msgid "French (France)"
 msgstr ""
 
-#: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:53
+#: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:54
+#: routers/stadiamaps_settings.qml:52
 msgid "German"
 msgstr ""
 
-#: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:57
+#: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:58
+#: routers/stadiamaps_settings.qml:56
 msgid "Russian"
 msgstr ""
 
@@ -759,43 +824,47 @@ msgstr ""
 msgid "Spanish (Spain)"
 msgstr ""
 
-#: routers/osmscout_settings.qml:49
+#: routers/osmscout_settings.qml:49 routers/stadiamaps_settings.qml:47
 msgid "Catalan"
 msgstr ""
 
-#: routers/osmscout_settings.qml:50
+#: routers/osmscout_settings.qml:50 routers/stadiamaps_settings.qml:48
 msgid "Czech"
 msgstr ""
 
-#: routers/osmscout_settings.qml:51
+#: routers/osmscout_settings.qml:51 routers/stadiamaps_settings.qml:49
 msgid "English"
 msgstr ""
 
-#: routers/osmscout_settings.qml:52
+#: routers/osmscout_settings.qml:52 routers/stadiamaps_settings.qml:50
+msgid "English Pirate"
+msgstr ""
+
+#: routers/osmscout_settings.qml:53 routers/stadiamaps_settings.qml:51
 msgid "French"
 msgstr ""
 
-#: routers/osmscout_settings.qml:54
+#: routers/osmscout_settings.qml:55 routers/stadiamaps_settings.qml:53
 msgid "Hindi"
 msgstr ""
 
-#: routers/osmscout_settings.qml:55
+#: routers/osmscout_settings.qml:56 routers/stadiamaps_settings.qml:54
 msgid "Italian"
 msgstr ""
 
-#: routers/osmscout_settings.qml:56
+#: routers/osmscout_settings.qml:57 routers/stadiamaps_settings.qml:55
 msgid "Portuguese"
 msgstr ""
 
-#: routers/osmscout_settings.qml:58
+#: routers/osmscout_settings.qml:59 routers/stadiamaps_settings.qml:57
 msgid "Slovenian"
 msgstr ""
 
-#: routers/osmscout_settings.qml:59
+#: routers/osmscout_settings.qml:60 routers/stadiamaps_settings.qml:58
 msgid "Spanish"
 msgstr ""
 
-#: routers/osmscout_settings.qml:60
+#: routers/osmscout_settings.qml:61 routers/stadiamaps_settings.qml:59
 msgid "Swedish"
 msgstr ""
 
@@ -835,10 +904,14 @@ msgstr ""
 msgid "Routing based on OpenStreetMap data"
 msgstr ""
 
-#: standard input:11 standard input:13 standard input:15
+#: standard input:11 standard input:13 standard input:15 standard input:17
 msgid "car"
 msgstr ""
 
-#: standard input:11 standard input:13
+#: standard input:11 standard input:13 standard input:17
 msgid "foot"
+msgstr ""
+
+#: standard input:16
+msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr ""

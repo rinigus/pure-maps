@@ -1,8 +1,8 @@
 #!/bin/sh
 cd "$(dirname "$0")/.." || exit 1
-truncate -s0 po/whogo-maps.pot
+truncate -s0 po/pure-maps.pot
 # Python code
-xgettext --output=po/whogo-maps.pot \
+xgettext --output=po/pure-maps.pot \
          --join-existing \
          --from-code=UTF-8 \
          --language=Python \
@@ -12,7 +12,7 @@ xgettext --output=po/whogo-maps.pot \
          */*.py
 
 # QML and JavaScript code
-xgettext --output=po/whogo-maps.pot \
+xgettext --output=po/pure-maps.pot \
          --join-existing \
          --from-code=UTF-8 \
          --language=JavaScript \
@@ -26,7 +26,7 @@ cat */*.json \
     | grep '^ *"_' \
     | sed 's/: *\("[^"]*"\)/: _(\1)/' \
     | sed 's/\("[^"]*"\)\(,\|]\)/_(\1)\2/g' \
-    | xgettext --output=po/whogo-maps.pot \
+    | xgettext --output=po/pure-maps.pot \
                --join-existing \
                --from-code=UTF-8 \
                --language=JavaScript \

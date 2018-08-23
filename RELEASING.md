@@ -4,10 +4,7 @@ Releasing a New Version
 ```bash
 # Update translations.
 make pot
-msgmerge -UN po/fi.po po/pure-maps.pot
-emacs po/fi.po
 tx push -s
-tx push -tf --no-interactive -l fi
 tx pull -a --minimum-perc=95
 sed -i "s/charset=CHARSET/charset=UTF-8/" po/*.po
 tools/check-translations

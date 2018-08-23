@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-04 15:28+0300\n"
-"PO-Revision-Date: 2018-08-04 15:29+0300\n"
-"Last-Translator: Osmo Salomaa <otsaloma@iki.fi>, 2016\n"
-"Language-Team: Finnish (https://www.transifex.com/otsaloma/teams/70314/fi/)\n"
-"Language: fi\n"
+"POT-Creation-Date: 2018-08-23 12:48+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: rinigus github, 2018\n"
+"Language-Team: Finnish (https://www.transifex.com/rinigus/teams/89597/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: poor/geocoder.py:108
@@ -26,7 +26,7 @@ msgstr "Piste geolinkistä"
 msgid "Point from coordinates"
 msgstr "Piste koordinaateista"
 
-#: poor/geocoder.py:130 poor/guide.py:124 poor/router.py:102
+#: poor/geocoder.py:130 poor/guide.py:123 poor/router.py:102
 msgid "Connection timed out"
 msgstr "Yhteys aikakatkaistiin"
 
@@ -39,20 +39,24 @@ msgstr "Yhteys aikakatkaistiin"
 msgid "Current position"
 msgstr "Nykyinen sijainti"
 
-#: poor/narrative.py:124
+#: poor/narrative.py:127
 #, python-brace-format
 msgid "In {distance}, {direction}"
 msgstr "{distance} päästä, {direction}"
 
-#: poor/narrative.py:391 qml/whogo-maps.qml:142
+#: poor/narrative.py:218 poor/narrative.py:220
+msgid "Exit: "
+msgstr ""
+
+#: poor/narrative.py:415 qml/pure-maps.qml:163
 msgid "Rerouting"
 msgstr "Uudelleenreititetään"
 
-#: poor/narrative.py:392 qml/whogo-maps.qml:164
+#: poor/narrative.py:416 qml/pure-maps.qml:185
 msgid "Rerouting failed"
 msgstr "Uudelleenreititys epäonnistui"
 
-#: poor/narrative.py:393 qml/whogo-maps.qml:158
+#: poor/narrative.py:417 qml/pure-maps.qml:179
 msgid "New route found"
 msgstr "Uusi reitti löydetty"
 
@@ -64,7 +68,7 @@ msgstr "mi"
 msgid "miles"
 msgstr "mailia"
 
-#: poor/util.py:191 qml/Meters.qml:71
+#: poor/util.py:191 qml/Meters.qml:72
 msgid "ft"
 msgstr "ft"
 
@@ -72,7 +76,7 @@ msgstr "ft"
 msgid "feet"
 msgstr "jalkaa"
 
-#: poor/util.py:209 qml/Meters.qml:82
+#: poor/util.py:209 qml/Meters.qml:83
 msgid "yd"
 msgstr "yd"
 
@@ -88,7 +92,7 @@ msgstr "km"
 msgid "kilometers"
 msgstr "kilometriä"
 
-#: poor/util.py:227 qml/Meters.qml:93
+#: poor/util.py:227 qml/Meters.qml:94
 msgid "m"
 msgstr "m"
 
@@ -148,7 +152,8 @@ msgstr "{:d} h {:d} min"
 msgid "airplane"
 msgstr "lentokone"
 
-#: routers/digitransit.py:59 standard input:11 input:13
+#: routers/digitransit.py:59 standard input:11 standard input:13 standard
+#: input:17
 msgid "bicycle"
 msgstr "polkupyörä"
 
@@ -190,8 +195,8 @@ msgstr "Ota kaupunkipyörä asemalta {dep_name}."
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
 msgstr ""
-"Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} "
-"klo. {dep_time}."
+"Nouse välineeseen {mode_name} {line_desc} pysäkiltä {dep_name} klo. "
+"{dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
@@ -206,7 +211,8 @@ msgstr ""
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr "Jätä kaupunkipyörä asemalle {dep_name} ja kävele kohti määräpaikkaasi."
+msgstr ""
+"Jätä kaupunkipyörä asemalle {dep_name} ja kävele kohti määräpaikkaasi."
 
 #: routers/digitransit.py:76
 #, python-brace-format
@@ -266,31 +272,43 @@ msgstr "Voit etsiä paikkoja nimen perusteella."
 msgid "Name"
 msgstr "Nimi"
 
-#: qml/AboutPage.qml:36
-msgid "About WhoGo Maps"
-msgstr "Tietoja Whogo Mapsista"
+#: guides/osmscout_settings.qml:47
+msgid "Search along the route"
+msgstr ""
 
-#: qml/AboutPage.qml:42
+#: guides/osmscout_settings.qml:71
+msgid ""
+"When set, the search along the route is performed starting from the point "
+"specified by 'Near' on this page"
+msgstr ""
+
+#: guides/osmscout_settings.qml:72
+msgid "Search starting from the reference point"
+msgstr ""
+
+#: qml/AboutPage.qml:38
+msgid "About Pure Maps"
+msgstr ""
+
+#: qml/AboutPage.qml:53
 msgid "version %1"
 msgstr "versio %1"
 
-#: qml/AboutPage.qml:49
+#: qml/AboutPage.qml:60
 msgid "GitHub page"
 msgstr "GitHub-sivu"
 
-#: qml/AboutPage.qml:66
+#: qml/AboutPage.qml:86
+msgid "Logo by %1"
+msgstr ""
+
+#: qml/AboutPage.qml:96
 msgid ""
-"WhoGo Maps is free software released under the GNU General Public License "
+"Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
-"WhoGo Maps on vapaa ohjelmisto julkaistu lisenssillä GNU General Public "
-"License, versio 3 tai uudempi."
 
-#: qml/AboutPage.qml:74
-msgid "Donate via PayPal"
-msgstr "Lahjoita PayPalin kautta"
-
-#: qml/AboutPage.qml:79
+#: qml/AboutPage.qml:101
 msgid "Translated by"
 msgstr "Käännös"
 
@@ -299,11 +317,11 @@ msgstr "Käännös"
 #. Thus, you should translate it to your name. You can also include other
 #. translators who have contributed to this translation; in that case, please
 #. write them on separate lines seperated by newlines (\n).
-#: qml/AboutPage.qml:91
+#: qml/AboutPage.qml:113
 msgid "translator-credits"
 msgstr "Osmo Salomaa"
 
-#: qml/AboutPage.qml:101
+#: qml/AboutPage.qml:123
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
@@ -311,7 +329,7 @@ msgstr ""
 "Voit lisätä uusia käyttöliittymäkäännöksiä tai osallistua nykyisten "
 "käännösten parantamiseen Transifexissa."
 
-#: qml/AboutPage.qml:109
+#: qml/AboutPage.qml:131
 msgid "Transifex page"
 msgstr "Transifex-sivu"
 
@@ -338,8 +356,8 @@ msgstr "Käyttäen"
 
 #: qml/GeocodePage.qml:159 qml/RoutePointPage.qml:138
 msgid ""
-"You can search by address, locality, landmark and many other terms. For best "
-"results, include a region, e.g. “address, city” or “city, country”."
+"You can search by address, locality, landmark and many other terms. For best"
+" results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
 "Voit etsiä osoitteen, alueen, maamerkin ja monen muun tekijän perusteella. "
 "Parhaat tulokset saat, kun sisällytät alueen, esim. “osoite, kaupunki” tai "
@@ -361,6 +379,7 @@ msgstr "Näytä kaikki"
 #: qml/GeocodingResultsPage.qml:132 qml/NearbyResultsPage.qml:132
 #: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
 #: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
+#: routers/stadiamaps_results.qml:36
 msgid "Searching"
 msgstr "Haetaan"
 
@@ -371,24 +390,25 @@ msgstr "%1 tulosta"
 #: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
 #: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
 #: routers/osmscout_results.qml:58 routers/osrm_results.qml:58
+#: routers/stadiamaps_results.qml:58
 msgid "No results"
 msgstr "Ei tuloksia"
-
-#: qml/Map.qml:409
-msgid "Voice navigation on"
-msgstr "Ääninavigointi päällä"
-
-#: qml/Map.qml:505
-msgid "Auto-center off"
-msgstr "Automaattinen keskitys pois"
-
-#: qml/Map.qml:508
-msgid "Auto-center on"
-msgstr "Automaattinen keskitys päällä"
 
 #: qml/MapGestureArea.qml:53 qml/MapGestureArea.qml:54
 msgid "Unnamed point"
 msgstr "Nimetön piste"
+
+#: qml/Map.qml:439
+msgid "Voice navigation on"
+msgstr "Ääninavigointi päällä"
+
+#: qml/Map.qml:538
+msgid "Auto-center off"
+msgstr "Automaattinen keskitys pois"
+
+#: qml/Map.qml:541
+msgid "Auto-center on"
+msgstr "Automaattinen keskitys päällä"
 
 #: qml/MenuPage.qml:61
 msgid "Nearby venues"
@@ -426,11 +446,12 @@ msgstr "Tietoja"
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: qml/Meters.qml:71 qml/Meters.qml:82
+#: qml/Meters.qml:72 qml/Meters.qml:83 qml/NavigationInfoBlock.qml:83
+#: qml/NavigationInfoBlock.qml:85
 msgid "mph"
 msgstr "mph"
 
-#: qml/Meters.qml:93
+#: qml/Meters.qml:94 qml/NavigationInfoBlock.qml:87
 msgid "km/h"
 msgstr "km/h"
 
@@ -442,9 +463,14 @@ msgstr "Jatka %1."
 msgid "Maneuvers"
 msgstr "Vaiheet"
 
-#: qml/NavigationBlock.qml:88
+#: qml/NavigationBlock.qml:139
+msgid "ETA"
+msgstr ""
+
+#: qml/NavigationBlock.qml:207
 msgid "Tap to review maneuvers or begin navigating"
-msgstr "Napauta tarkastellaksesi reitin vaiheita tai aloittaaksesi navigoinnin"
+msgstr ""
+"Napauta tarkastellaksesi reitin vaiheita tai aloittaaksesi navigoinnin"
 
 #: qml/NavigationPage.qml:54
 msgid "Pause"
@@ -494,6 +520,42 @@ msgstr "Lausu navigointiohjeet"
 msgid "Reroute automatically"
 msgstr "Uudelleenreititä automaattisesti"
 
+#: qml/NavigationPage.qml:231 qml/PreferencesPage.qml:108
+msgid "Snap position to road"
+msgstr ""
+
+#: qml/NavigationPage.qml:243 qml/PreferencesPage.qml:52
+msgid "Map scale"
+msgstr "Kartan skaalaus"
+
+#: qml/NavigationPage.qml:261
+msgid "Show direction signs"
+msgstr ""
+
+#: qml/NavigationPage.qml:270
+msgid "Show speed limit sign"
+msgstr ""
+
+#: qml/NavigationPage.qml:271
+msgid "Speed limit"
+msgstr ""
+
+#: qml/NavigationPage.qml:273 qml/PreferencesPage.qml:91
+msgid "Always"
+msgstr "Aina"
+
+#: qml/NavigationPage.qml:274
+msgid "Only when exceeding"
+msgstr ""
+
+#: qml/NavigationPage.qml:275 qml/PreferencesPage.qml:89
+msgid "Never"
+msgstr "Ei koskaan"
+
+#: qml/NavigationSign.qml:92
+msgid "EXIT"
+msgstr ""
+
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
 msgstr "Läheiset paikat"
@@ -503,7 +565,7 @@ msgid "Near"
 msgstr "Lähtöpaikka"
 
 #: qml/NearbyPage.qml:111 routers/mapquest_open_settings.qml:26
-#: routers/osmscout_settings.qml:26
+#: routers/osmscout_settings.qml:26 routers/stadiamaps_settings.qml:26
 msgid "Type"
 msgstr "Tyyppi"
 
@@ -511,11 +573,11 @@ msgstr "Tyyppi"
 msgid "Radius"
 msgstr "Säde"
 
-#: qml/NorthArrow.qml:53
+#: qml/NorthArrow.qml:72
 msgid "Auto-rotate on"
 msgstr "Automaattinen kierto päällä"
 
-#: qml/NorthArrow.qml:54
+#: qml/NorthArrow.qml:73
 msgid "Auto-rotate off"
 msgstr "Automaattinen kierto pois"
 
@@ -551,10 +613,6 @@ msgstr "Koskee vain vektorikarttoja."
 msgid "Tilt map when navigating"
 msgstr "Kallista kartta navigoidessa"
 
-#: qml/PreferencesPage.qml:52
-msgid "Map scale"
-msgstr "Kartan skaalaus"
-
 #: qml/PreferencesPage.qml:67
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
@@ -577,47 +635,66 @@ msgstr "Nainen"
 
 #: qml/PreferencesPage.qml:86
 msgid ""
-"Only applies when WhoGo Maps is active. When minimized, sleep is controlled "
+"Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
-"Pätee vain, kun WhoGo Maps on aktiivisena. Kun minimoituna, lepotilaan "
-"siirrytään laitteen normaalien asetusten mukaan."
 
 #: qml/PreferencesPage.qml:87
 msgid "Prevent sleep"
 msgstr "Estä lepotila"
 
-#: qml/PreferencesPage.qml:89
-msgid "Never"
-msgstr "Ei koskaan"
-
 #: qml/PreferencesPage.qml:90
 msgid "When navigating"
 msgstr "Navigoidessa"
 
-#: qml/PreferencesPage.qml:91
-msgid "Always"
-msgstr "Aina"
-
 #: qml/PreferencesPage.qml:107
+msgid ""
+"Select mode of transportation. Only applies when Pure Maps is not "
+"navigating."
+msgstr ""
+
+#: qml/PreferencesPage.qml:110
+msgid "None"
+msgstr ""
+
+#: qml/PreferencesPage.qml:111 routers/mapquest_open_settings.qml:28
+#: routers/osmscout_settings.qml:28 routers/stadiamaps_settings.qml:28
+msgid "Car"
+msgstr "Auto"
+
+#: qml/PreferencesPage.qml:112 routers/mapquest_open_settings.qml:29
+#: routers/osmscout_settings.qml:29 routers/stadiamaps_settings.qml:29
+msgid "Bicycle"
+msgstr "Polkupyörä"
+
+#: qml/PreferencesPage.qml:113 routers/mapquest_open_settings.qml:30
+#: routers/osmscout_settings.qml:30 routers/stadiamaps_settings.qml:30
+msgid "Foot"
+msgstr "Kävely"
+
+#: qml/PreferencesPage.qml:130
 msgid "Units"
 msgstr "Yksiköt"
 
-#: qml/PreferencesPage.qml:109
+#: qml/PreferencesPage.qml:132
 msgid "Metric"
 msgstr "Metrinen"
 
-#: qml/PreferencesPage.qml:110
+#: qml/PreferencesPage.qml:133
 msgid "American"
 msgstr "Amerikkalainen"
 
-#: qml/PreferencesPage.qml:111
+#: qml/PreferencesPage.qml:134
 msgid "British"
 msgstr "Brittiläinen"
 
-#: qml/PreferencesPage.qml:132
+#: qml/PreferencesPage.qml:155
 msgid "Clear cache"
 msgstr "Tyhjennä välimuisti"
+
+#: qml/pure-maps.qml:175
+msgid "Rerouting failed: %1"
+msgstr "Uudelleenreititys epäonnistui: %1"
 
 #: qml/RoutePage.qml:68
 msgid "From"
@@ -658,10 +735,6 @@ msgstr "Käynnistetään sähköpostisovellus"
 #: qml/SharePage.qml:88
 msgid "Other"
 msgstr "Muu"
-
-#: qml/whogo-maps.qml:154
-msgid "Rerouting failed: %1"
-msgstr "Uudelleenreititys epäonnistui: %1"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
@@ -724,23 +797,12 @@ msgstr "Vähiten vaihtoja"
 msgid "Least walking"
 msgstr "Vähiten kävelyä"
 
-#: routers/mapquest_open_settings.qml:28 routers/osmscout_settings.qml:28
-msgid "Car"
-msgstr "Auto"
-
-#: routers/mapquest_open_settings.qml:29 routers/osmscout_settings.qml:29
-msgid "Bicycle"
-msgstr "Polkupyörä"
-
-#: routers/mapquest_open_settings.qml:30 routers/osmscout_settings.qml:30
-msgid "Foot"
-msgstr "Kävely"
-
 #: routers/mapquest_open_settings.qml:48
 msgid "Try to avoid tolls"
 msgstr "Yritä välttää tiemaksuja"
 
 #: routers/mapquest_open_settings.qml:57 routers/osmscout_settings.qml:45
+#: routers/stadiamaps_settings.qml:45
 msgid "Language"
 msgstr "Kieli"
 
@@ -760,11 +822,13 @@ msgstr "Ranska (Kanada)"
 msgid "French (France)"
 msgstr "Ranska (Ranska)"
 
-#: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:53
+#: routers/mapquest_open_settings.qml:65 routers/osmscout_settings.qml:54
+#: routers/stadiamaps_settings.qml:52
 msgid "German"
 msgstr "Saksa"
 
-#: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:57
+#: routers/mapquest_open_settings.qml:66 routers/osmscout_settings.qml:58
+#: routers/stadiamaps_settings.qml:56
 msgid "Russian"
 msgstr "Venäjä"
 
@@ -776,43 +840,47 @@ msgstr "Espanja (Meksiko)"
 msgid "Spanish (Spain)"
 msgstr "Espanja (Espanja)"
 
-#: routers/osmscout_settings.qml:49
+#: routers/osmscout_settings.qml:49 routers/stadiamaps_settings.qml:47
 msgid "Catalan"
 msgstr "Katalaani"
 
-#: routers/osmscout_settings.qml:50
+#: routers/osmscout_settings.qml:50 routers/stadiamaps_settings.qml:48
 msgid "Czech"
 msgstr "Tšekki"
 
-#: routers/osmscout_settings.qml:51
+#: routers/osmscout_settings.qml:51 routers/stadiamaps_settings.qml:49
 msgid "English"
 msgstr "Englanti"
 
-#: routers/osmscout_settings.qml:52
+#: routers/osmscout_settings.qml:52 routers/stadiamaps_settings.qml:50
+msgid "English Pirate"
+msgstr ""
+
+#: routers/osmscout_settings.qml:53 routers/stadiamaps_settings.qml:51
 msgid "French"
 msgstr "Ranska"
 
-#: routers/osmscout_settings.qml:54
+#: routers/osmscout_settings.qml:55 routers/stadiamaps_settings.qml:53
 msgid "Hindi"
 msgstr "Hindi"
 
-#: routers/osmscout_settings.qml:55
+#: routers/osmscout_settings.qml:56 routers/stadiamaps_settings.qml:54
 msgid "Italian"
 msgstr "Italia"
 
-#: routers/osmscout_settings.qml:56
+#: routers/osmscout_settings.qml:57 routers/stadiamaps_settings.qml:55
 msgid "Portuguese"
 msgstr "Portugali"
 
-#: routers/osmscout_settings.qml:58
+#: routers/osmscout_settings.qml:59 routers/stadiamaps_settings.qml:57
 msgid "Slovenian"
 msgstr "Slovenia"
 
-#: routers/osmscout_settings.qml:59
+#: routers/osmscout_settings.qml:60 routers/stadiamaps_settings.qml:58
 msgid "Spanish"
 msgstr "Espanja"
 
-#: routers/osmscout_settings.qml:60
+#: routers/osmscout_settings.qml:61 routers/stadiamaps_settings.qml:59
 msgid "Swedish"
 msgstr "Ruotsi"
 
@@ -828,7 +896,7 @@ msgstr "Haku Suomessa"
 msgid "Search based on open data sources"
 msgstr "Haku perustuen avoimiin tietolähteisiin"
 
-#: standard input:3 input:4
+#: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
 msgstr "Haku perustuen OpenStreetMap-aineistoon"
 
@@ -836,7 +904,7 @@ msgstr "Haku perustuen OpenStreetMap-aineistoon"
 msgid "Venues listed and reviewed by Foursquare users"
 msgstr "Foursquaren käyttäjien lisäämät ja arvioimat paikat"
 
-#: standard input:6 input:7
+#: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
 msgstr "Paikkapisteet OpenStreetMap-aineistosta"
 
@@ -848,14 +916,18 @@ msgstr "Reititys joukkoliikenteellä Suomessa"
 msgid "public transport"
 msgstr "joukkoliikenne"
 
-#: standard input:10 input:12 input:14
+#: standard input:10 standard input:12 standard input:14
 msgid "Routing based on OpenStreetMap data"
 msgstr "Reititys pohjautuen OpenStreetMap-aineistoon"
 
-#: standard input:11 input:13 input:15
+#: standard input:11 standard input:13 standard input:15 standard input:17
 msgid "car"
 msgstr "auto"
 
-#: standard input:11 input:13
+#: standard input:11 standard input:13 standard input:17
 msgid "foot"
 msgstr "kävely"
+
+#: standard input:16
+msgid "Routing by Valhalla based on OpenStreetMap data"
+msgstr ""

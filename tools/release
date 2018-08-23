@@ -12,6 +12,6 @@ git push
 git push --tags
 echo ""
 echo "Add release notes and possible downloads:"
-echo "https://github.com/otsaloma/whogo-maps/tags"
+echo "https://github.com/otsaloma/pure-maps/tags"
 echo ""
 egrep -B 999 -m2 "==+" NEWS.md
