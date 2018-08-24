@@ -46,10 +46,6 @@ Slippy is a raster tile format based on Spherical Mercator. It is used
 by most global providers of raster tiles, such as Google and
 OpenStreetMap. For documentation, see e.g. [OpenStreetMap Wiki][slippy].
 
-* **`background_color`**: Background color used behind actual tiles,
-  visible before tiles are loaded. Optional, defaults to "#e6e6e6".
-  Useful to change to a dark color for night styles.
-
 * **`tile_size`**: The minimum visual size at which to display tiles.
   Note that this is not necessarily the pixel dimension of the actual
   tiles, try values 256, 512 and 1024 and use which one looks best.

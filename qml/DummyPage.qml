@@ -32,13 +32,11 @@ Page {
     Rectangle {
         id: background
         anchors.fill: parent
-        color: "#e6e6e6"
+        color: app.styler.bg
     }
 
     onStatusChanged: {
-        if (page.status === PageStatus.Activating && py.ready) {
-            background.color = py.evaluate("poor.app.basemap.background_color");
-        } else if (page.status === PageStatus.Active) {
+        if (page.status === PageStatus.Active) {
             // Clear and hide menu if navigated backwards to this page.
             // This gets fired on application startup as well!
             app.clearMenu();

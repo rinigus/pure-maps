@@ -10,6 +10,7 @@
   "name": "Mapbox Traffic Night",
   "style_url": "mapbox://styles/mapbox/traffic-night-v2",
   "style_gui": {
+     "bg": "#101114",
      "fg": "white",
      "iconVariant": "white",
      "maneuver": "#050505",

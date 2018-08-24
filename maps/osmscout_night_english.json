@@ -9,6 +9,7 @@
   "requires": ["harbour-osmscout-server"],
   "style_url": "http://localhost:8553/v1/mbgl/style?style=mc-en",
   "style_gui": {
+     "bg": "#00415F",
      "fg": "white",
      "iconVariant": "white",
      "maneuver": "black",

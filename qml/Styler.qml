@@ -22,6 +22,7 @@ import Sailfish.Silica 1.0
 QtObject {
     id: styler
 
+    property string bg            // main foreground color (scale bar, metrics)
     property string fg            // main foreground color (scale bar, metrics)
     property string iconVariant   // type of icons, let empty for default version, "white" for white icons
     property string maneuver      // maneuver circle inner color
@@ -42,7 +43,8 @@ QtObject {
     }
 
     function defaults() {
-        fg = "black"
+        bg = "#e6e6e6";
+        fg = "black";
         iconVariant = "";
         maneuver = "white";
         position = "";
