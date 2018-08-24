@@ -13,6 +13,11 @@ keys are explained below, format-specific keys in following sections.
 
 * **`name`**: Name of the map source shown in listings.
 
+* **`style_gui`**: JSON object that can be used to alter GUI elements
+ in agreement with the used map style. For example, see OSM Scout
+ night styles. For the list of available keys and their meaning, see
+ `qml/Styler.qml`.
+
 Use `~/.local/share/harbour-pure-maps/maps` as a local installation
 directory in which to place your JSON file. Restart Pure Maps, and your
 map source should be loaded, listed and available for use.
