@@ -268,6 +268,7 @@ Page {
             ComboBox {
                 id: speedLimitComboBox
                 description: app.tr("Show speed limit sign")
+                enabled: mapmatchingSwitch.checked
                 label: app.tr("Speed limit")
                 menu: ContextMenu {
                     MenuItem { text: app.tr("Always") }
