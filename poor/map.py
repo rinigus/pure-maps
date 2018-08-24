@@ -42,6 +42,7 @@ class Map:
         if hasattr(self, "id"): return
         values = self._load_attributes(id)
         self._attribution = values.get("attribution", {})
+        self.background_color = values.get("background_color", "#e6e6e6")
         self.first_label_layer = values.get("first_label_layer", "")
         self.id = id
         self.format = values["format"]
