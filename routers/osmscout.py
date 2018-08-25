@@ -28,8 +28,16 @@ import poor
 import urllib.parse
 
 CONF_DEFAULTS = {
+    "bicycle_type": "Hybrid",
     "language": poor.util.get_default_language("en"),
+    "max_hiking_difficulty": 1,
+    "shorter": 0,
     "type": "auto",
+    "use_ferry": 0.5,
+    "use_highways": 1.0,
+    "use_hills": 0.5,
+    "use_roads": 0.5,
+    "use_tolls": 0.5
 }
 
 ICONS = {
@@ -93,8 +101,16 @@ ICONS_OSMSCOUT = {
 
 MODE = {
     "auto": "car",
+    "auto_shorter": "car",
     "bicycle": "bicycle",
     "pedestrian": "foot"
+}
+
+MODEOPTIONS = {
+    "auto": ["use_ferry", "use_highways", "use_tolls"],
+    "auto_shorter": ["use_ferry", "use_highways", "use_tolls"],
+    "bicycle": ["bicycle_type", "use_ferry", "use_hills", "use_roads"],
+    "pedestrian": ["use_ferry", "max_hiking_difficulty"]
 }
 
 URL = "http://localhost:8553/v2/route?json={input}"
@@ -115,8 +131,14 @@ def route(fm, to, heading, params):
         fm["heading"] = heading
     language = poor.conf.routers.osmscout.language
     units = "kilometers" if poor.conf.units == "metric" else "miles"
+    ctype = poor.conf.routers.osmscout.type
+    if ctype == "auto" and poor.conf.routers.osmscout.shorter: ctype = "auto_shorter"
+    co = {key: poor.conf.routers.osmscout[key] for key in MODEOPTIONS[ctype]}
+    costing_options = {}
+    costing_options[ctype] = co
     input = dict(locations=[fm, to],
-                 costing=poor.conf.routers.osmscout.type,
+                 costing=ctype,
+                 costing_options=costing_options,
                  directions_options=dict(language=language, units=units))
 
     input = urllib.parse.quote(json.dumps(input))
@@ -125,7 +147,7 @@ def route(fm, to, heading, params):
         return copy.deepcopy(cache[url])
     result = poor.http.get_json(url)
     result = poor.AttrDict(result)
-    mode = MODE.get(poor.conf.routers.osmscout.type,"car")
+    mode = MODE.get(ctype,"car")
     if result.get("API version", "") == "libosmscout V1":
         return parse_result_libosmscout(url, result, mode)
     return parse_result_valhalla(url, result, mode)

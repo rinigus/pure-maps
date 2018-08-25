@@ -20,6 +20,11 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Column {
+    id: settingsBlock
+
+    SectionHeader {
+        text: app.tr("General options")
+    }
 
     ComboBox {
         id: typeComboBox
@@ -29,13 +34,16 @@ Column {
             MenuItem { text: app.tr("Bicycle") }
             MenuItem { text: app.tr("Foot") }
         }
+        property string current_key
         property var keys: ["auto", "bicycle", "pedestrian"]
         Component.onCompleted: {
             var key = app.conf.get("routers.osmscout.type");
+            current_key = key;
             typeComboBox.currentIndex = typeComboBox.keys.indexOf(key);
         }
         onCurrentIndexChanged: {
             var key = typeComboBox.keys[typeComboBox.currentIndex]
+            current_key = key;
             app.conf.set("routers.osmscout.type", key);
         }
     }
@@ -70,6 +78,188 @@ Column {
             var key = langComboBox.keys[langComboBox.currentIndex]
             app.conf.set("routers.osmscout.language", key);
         }
+    }
+
+    SectionHeader {
+        text: app.tr("Advanced options")
+    }
+
+    TextSwitch {
+        id: autoShorterSwitch
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: app.tr("Prefer shorter path")
+        visible: typeComboBox.current_key == "auto"
+        Component.onCompleted: checked = app.conf.get("routers.osmscout.shorter")
+        onCheckedChanged: {
+            if (!autoShorterSwitch.visible) return;
+            app.conf.set("routers.osmscout.shorter", checked ? 1 : 0);
+        }
+    }
+
+    ComboBox {
+        id: bicycleTypeComboBox
+        label: app.tr("Bicycle type")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Road") }
+            MenuItem { text: app.tr("Hybrid or City (default)") }
+            MenuItem { text: app.tr("Cross") }
+            MenuItem { text: app.tr("Mountain") }
+        }
+        visible: typeComboBox.current_key == "bicycle"
+        property var keys: ["Road", "Hybrid", "Cross", "Mountain"]
+        Component.onCompleted: {
+            var key = app.conf.get("routers.osmscout.bicycle_type");
+            var index = bicycleTypeComboBox.keys.indexOf(key);
+            bicycleTypeComboBox.currentIndex = index > -1 ? index : 1;
+        }
+        onCurrentIndexChanged: {
+            var key = bicycleTypeComboBox.keys[bicycleTypeComboBox.currentIndex]
+            app.conf.set("routers.osmscout.bicycle_type", key);
+        }
+    }
+
+    ComboBox {
+        id: maxHikingDifficultyComboBox
+        description: app.tr("The maximum difficulty of hiking trails that is allowed.")
+        label: app.tr("Hiking difficulty")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Hiking (default)") }
+            MenuItem { text: app.tr("Mountain hiking") }
+            MenuItem { text: app.tr("Demanding mountain hiking") }
+            MenuItem { text: app.tr("Alpine hiking") }
+            MenuItem { text: app.tr("Demanding alpine hiking") }
+        }
+        visible: typeComboBox.current_key == "pedestrian"
+        property var keys: [1, 2, 3, 4, 5]
+        Component.onCompleted: {
+            var key = app.conf.get("routers.osmscout.max_hiking_difficulty");
+            var index = maxHikingDifficultyComboBox.keys.indexOf(key);
+            maxHikingDifficultyComboBox.currentIndex = index > -1 ? index : 1;
+        }
+        onCurrentIndexChanged: {
+            var key = maxHikingDifficultyComboBox.keys[maxHikingDifficultyComboBox.currentIndex]
+            app.conf.set("routers.osmscout.max_hiking_difficulty", key);
+        }
+    }
+
+    ComboBox {
+        id: useFerryComboBox
+        label: app.tr("Ferries")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Avoid") }
+            MenuItem { text: app.tr("Prefer to avoid") }
+            MenuItem { text: app.tr("No preference (default)") }
+            MenuItem { text: app.tr("Incline") }
+            MenuItem { text: app.tr("Prefer") }
+        }
+        visible: typeComboBox.current_key == "auto" || typeComboBox.current_key == "bicycle" || typeComboBox.current_key == "pedestrian"
+        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
+        Component.onCompleted: {
+            var key = app.conf.get("routers.osmscout.use_ferry");
+            useFerryComboBox.currentIndex = settingsBlock.getIndex(useFerryComboBox.keys,key);
+        }
+        onCurrentIndexChanged: {
+            var key = useFerryComboBox.keys[useFerryComboBox.currentIndex]
+            app.conf.set("routers.osmscout.use_ferry", key);
+        }
+    }
+
+    ComboBox {
+        id: useHighwaysComboBox
+        label: app.tr("Highways")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Avoid") }
+            MenuItem { text: app.tr("Prefer to avoid") }
+            MenuItem { text: app.tr("No preference") }
+            MenuItem { text: app.tr("Incline") }
+            MenuItem { text: app.tr("Prefer (default)") }
+        }
+        visible: typeComboBox.current_key == "auto"
+        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
+        Component.onCompleted: {
+            var key = app.conf.get("routers.osmscout.use_highways");
+            useHighwaysComboBox.currentIndex = settingsBlock.getIndex(useHighwaysComboBox.keys,key);
+        }
+        onCurrentIndexChanged: {
+            var key = useHighwaysComboBox.keys[useHighwaysComboBox.currentIndex]
+            app.conf.set("routers.osmscout.use_highways", key);
+        }
+    }
+
+    ComboBox {
+        id: useHillsComboBox
+        label: app.tr("Hills")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Avoid") }
+            MenuItem { text: app.tr("Prefer to avoid (default)") }
+            MenuItem { text: app.tr("Allow") }
+        }
+        visible: typeComboBox.current_key == "bicycle"
+        property var keys: [0.0, 0.5, 1.0]
+        Component.onCompleted: {
+            var key = app.conf.get("routers.osmscout.use_hills");
+            useHillsComboBox.currentIndex = settingsBlock.getIndex(useHillsComboBox.keys,key);
+        }
+        onCurrentIndexChanged: {
+            var key = useHillsComboBox.keys[useHillsComboBox.currentIndex]
+            app.conf.set("routers.osmscout.use_hills", key);
+        }
+    }
+
+    ComboBox {
+        id: useRoadsComboBox
+        description: app.tr("Your propensity to use roads alongside other vehicles")
+        label: app.tr("Roads")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Avoid") }
+            MenuItem { text: app.tr("Prefer to avoid (default)") }
+            MenuItem { text: app.tr("Allow") }
+        }
+        visible: typeComboBox.current_key == "bicycle"
+        property var keys: [0.0, 0.5, 1.0]
+        Component.onCompleted: {
+            var key = app.conf.get("routers.osmscout.use_roads");
+            useRoadsComboBox.currentIndex = settingsBlock.getIndex(useRoadsComboBox.keys,key);
+        }
+        onCurrentIndexChanged: {
+            var key = useRoadsComboBox.keys[useRoadsComboBox.currentIndex]
+            app.conf.set("routers.osmscout.use_roads", key);
+        }
+    }
+
+    ComboBox {
+        id: useTollsComboBox
+        label: app.tr("Tolls")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Avoid") }
+            MenuItem { text: app.tr("Prefer to avoid (default)") }
+            MenuItem { text: app.tr("Allow") }
+        }
+        visible: typeComboBox.current_key == "auto"
+        property var keys: [0.0, 0.5, 1.0]
+        Component.onCompleted: {
+            var key = app.conf.get("routers.osmscout.use_tolls");
+            useTollsComboBox.currentIndex = settingsBlock.getIndex(useTollsComboBox.keys,key);
+        }
+        onCurrentIndexChanged: {
+            var key = useTollsComboBox.keys[useTollsComboBox.currentIndex]
+            app.conf.set("routers.osmscout.use_tolls", key);
+        }
+    }
+
+    function getIndex(arr, val) {
+        // for sorted short arrays
+        if (arr==null || arr.length <= 1)
+            return 0;
+        for (var i = 1; i < arr.length; i++) {
+            if (arr[i] > val) {
+                var p = arr[i-1];
+                var c = arr[i]
+                return Math.abs( p-val ) < Math.abs( c-val ) ? i-1 : i;
+            }
+        }
+        return arr.length-1;
     }
 
 }
