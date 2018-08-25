@@ -42,7 +42,8 @@ Page {
             id: column
             anchors.fill: parent
 
-            property var settings: null
+            property var  settings: null
+            property bool settingsChecked: false
 
             PageHeader {
                 title: app.tr("Navigation")
@@ -57,8 +58,9 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RouterPage.qml");
                     dialog.accepted.connect(function() {
+                        column.settingsChecked = false;
                         usingButton.value = py.evaluate("poor.app.router.name");
-                        column.addSetttings();
+                        column.addSettings();
                     });
                 }
             }
@@ -129,9 +131,16 @@ Page {
 
             }
 
-            Component.onCompleted: column.addSetttings();
+            Connections {
+                target: page
+                onFromChanged: column.addSettings();
+                onToChanged: column.addSettings();
+            }
 
-            function addSetttings() {
+            Component.onCompleted: column.addSettings();
+
+            function addSettings() {
+                if (column.settingsChecked || page.from==null || page.to==null) return;
                 // Add router-specific settings from router's own QML file.
                 page.params = {};
                 column.settings && column.settings.destroy();
@@ -142,6 +151,7 @@ Page {
                 column.settings.anchors.left = column.left;
                 column.settings.anchors.right = column.right;
                 column.settings.width = column.width;
+                column.settingsChecked = true;
             }
 
         }
