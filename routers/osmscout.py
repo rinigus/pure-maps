@@ -36,8 +36,10 @@ CONF_DEFAULTS = {
     "use_ferry": 0.5,
     "use_highways": 1.0,
     "use_hills": 0.5,
+    "use_primary": 0.5,
     "use_roads": 0.5,
-    "use_tolls": 0.5
+    "use_tolls": 0.5,
+    "use_trails": 0.0
 }
 
 ICONS = {
@@ -103,6 +105,10 @@ MODE = {
     "auto": "car",
     "auto_shorter": "car",
     "bicycle": "bicycle",
+    "bus": "car",
+    "hov": "car",
+    "motorcycle": "car",
+    "motor_scooter": "car",
     "pedestrian": "foot"
 }
 
@@ -110,6 +116,10 @@ MODEOPTIONS = {
     "auto": ["use_ferry", "use_highways", "use_tolls"],
     "auto_shorter": ["use_ferry", "use_highways", "use_tolls"],
     "bicycle": ["bicycle_type", "use_ferry", "use_hills", "use_roads"],
+    "bus": ["use_ferry", "use_highways", "use_tolls"],
+    "hov": ["use_ferry", "use_highways", "use_tolls"],
+    "motorcycle": ["use_ferry", "use_highways", "use_tolls", "use_trails"],
+    "motor_scooter": ["use_ferry", "use_highways", "use_hills", "use_primary", "use_tolls"],
     "pedestrian": ["use_ferry", "max_hiking_difficulty"]
 }
 
