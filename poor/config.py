@@ -43,7 +43,7 @@ DEFAULTS = {
     "map_scale_navigation_foot": 1.0,
     "map_scale_navigation_transit": 1.0,
     "reroute": True,
-    "router": "mapquest_open",
+    "router": "stadiamaps",
     "show_narrative": True,
     "show_navigation_sign": True,
     # "always", "exceeding", "never"
