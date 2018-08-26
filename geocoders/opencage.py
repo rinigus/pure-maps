@@ -27,7 +27,7 @@ import re
 import urllib.parse
 
 URL = ("http://api.opencagedata.com/geocode/v1/json"
-       "?key=0039dc979e2c48a09149d49c24937074"
+       "?key=#OPENCAGE_KEY#"
        "&q={query}"
        "&limit={limit}"
        "&no_annotations=1"
