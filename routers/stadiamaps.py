@@ -27,8 +27,16 @@ import poor
 import urllib.parse
 
 CONF_DEFAULTS = {
+    "bicycle_type": "Hybrid",
     "language": poor.util.get_default_language("en"),
+    "max_hiking_difficulty": 1,
+    "shorter": 0,
     "type": "auto",
+    "use_ferry": 0.5,
+    "use_highways": 1.0,
+    "use_hills": 0.5,
+    "use_roads": 0.5,
+    "use_tolls": 0.5
 }
 
 ICONS = {
@@ -73,8 +81,16 @@ ICONS = {
 
 MODE = {
     "auto": "car",
+    "auto_shorter": "car",
     "bicycle": "bicycle",
     "pedestrian": "foot"
+}
+
+MODEOPTIONS = {
+    "auto": ["use_ferry", "use_highways", "use_tolls"],
+    "auto_shorter": ["use_ferry", "use_highways", "use_tolls"],
+    "bicycle": ["bicycle_type", "use_ferry", "use_hills", "use_roads"],
+    "pedestrian": ["use_ferry", "max_hiking_difficulty"]
 }
 
 URL = "https://route.stadiamaps.com/route?api_key=da5114fe-7c47-46ae-ac43-b90d2f3df9e8&json={input}"
@@ -101,8 +117,14 @@ def route(fm, to, heading, params):
         fm["heading"] = heading
     language = poor.conf.routers.stadiamaps.language
     units = "kilometers" if poor.conf.units == "metric" else "miles"
+    ctype = poor.conf.routers.stadiamaps.type
+    if ctype == "auto" and poor.conf.routers.stadiamaps.shorter: ctype = "auto_shorter"
+    co = {key: poor.conf.routers.stadiamaps[key] for key in MODEOPTIONS[ctype]}
+    costing_options = {}
+    costing_options[ctype] = co
     input = dict(locations=[fm, to],
-                 costing=poor.conf.routers.stadiamaps.type,
+                 costing=ctype,
+                 costing_options=costing_options,
                  directions_options=dict(language=language, units=units))
 
     input = urllib.parse.quote(json.dumps(input))
@@ -130,7 +152,7 @@ def route(fm, to, heading, params):
         verbal_post=maneuver.get("verbal_post_transition_instruction", None),
         duration=float(maneuver.time),
     ) for maneuver in legs.maneuvers]
-    route = dict(x=x, y=y, maneuvers=maneuvers, mode=MODE.get(poor.conf.routers.stadiamaps.type,"car"))
+    route = dict(x=x, y=y, maneuvers=maneuvers, mode=MODE.get(ctype,"car"))
     route["language"] = result.trip.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
