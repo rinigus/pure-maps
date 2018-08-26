@@ -1,3 +1,13 @@
+2018-08-26: Pure Maps 1.3
+=========================
+
+* Show routing options only after destination and origin are available
+* Support for Valhalla's options
+* Set Stadia Maps router as a default
+* adjust route layer on Mapbox Traffic styles
+* Update translations
+* Other small changes
+
 2018-08-23: Pure Maps 1.2
 =========================
 
@@ -12,7 +22,6 @@
 * New application icon and graphics used for cover page (Fellfrosch / popanz)
 * Remove Cartago maps due to the expected shutdown of the service
 * Add English Pirate voice instructions for Valhalla routers (OSM Scout Server and Stadia Maps)
-
 
 2018-08-04: WhoGo Maps 1.1
 ==========================
