@@ -40,6 +40,7 @@ dist:
 	$(MAKE) clean
 	mkdir -p dist/$(RELEASE)
 	cp -r `cat MANIFEST` dist/$(RELEASE)
+	tools/manage-keys inject dist/$(RELEASE)
 	tar -C dist -cJf dist/$(RELEASE).tar.xz $(RELEASE)
 
 install:
