@@ -375,6 +375,10 @@ MapboxMap {
         return [map.position.coordinate.longitude, map.position.coordinate.latitude];
     }
 
+    function hidePoi() {
+        app.poiPanel && app.poiPanel.hide();
+    }
+
     function hidePoiBubble(poi) {
         // Hide the bubble of given POI.
         if (!poi.bubble) return;
@@ -514,6 +518,10 @@ MapboxMap {
         map.pixelRatio = Theme.pixelRatio * 1.5 * scale;
         map.configureLayers();
         positionMarker.configureLayers();
+    }
+
+    function showPoi(poi) {
+        app.poiPanel && app.poiPanel.show(poi);
     }
 
     function showPoiBubble(poi) {

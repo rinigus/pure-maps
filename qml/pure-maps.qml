@@ -61,6 +61,7 @@ ApplicationWindow {
     property bool navigationStarted: false
     property var  northArrow: null
     property var  notification: null
+    property var  poiPanel: null
     property bool portrait: screenHeight >= screenWidth
     property int  rerouteConsecutiveErrors: 0
     property var  reroutePreviousTime: -1
@@ -73,8 +74,17 @@ ApplicationWindow {
     property var  showNarrative: null
     property var  showNavigationSign: null
     property var  showSpeedLimit: null
+    property int  state: states.explore
     property var  styler: null
     property var  streetName: null
+
+    // possible values of the application state
+    readonly property var states: QtObject {
+        readonly property int explore:    1  // regular state for browsing map
+        readonly property int explorePoi: 2  // show selected poi
+        readonly property int navigate:   3  // active navigation
+        readonly property int followMe:   4  // follow me state
+    }
 
     // Default vertical margin for various multiline list items
     // such that it would be consistent with single-line list items
@@ -95,6 +105,7 @@ ApplicationWindow {
     Component.onCompleted: {
         updateMapMatching();
         updateNavigationSettings();
+        panel.show();
     }
 
     Component.onDestruction: {

@@ -59,6 +59,7 @@ Item {
         NavigationSign { id: navigationSign }
         NorthArrow { id: northArrow }
         Notification { id: notification }
+        PoiPanel { id: poiPanel }
         ScaleBar { id: scaleBar }
         SpeedLimit { id: speedLimit }
         StreetName { id: streetName }
@@ -77,6 +78,7 @@ Item {
             app.navigationSign = navigationSign;
             app.northArrow = northArrow;
             app.notification = notification;
+            app.poiPanel = poiPanel;
             app.scaleBar = scaleBar;
             app.streetName = streetName;
             app.styler = styler;
