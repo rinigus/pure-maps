@@ -24,7 +24,7 @@ Rectangle {
     anchors.left: parent.left
     anchors.right: parent.right
     anchors.top: parent.top
-    color: "#e6000000"
+    color: app.styler.blockBg
     height: {
         if (!destDist) return 0;
         if (!app.portrait && notify) {

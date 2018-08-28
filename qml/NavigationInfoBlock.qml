@@ -24,7 +24,7 @@ Rectangle {
     anchors.left: parent.left
     anchors.right: parent.right
     anchors.bottom: parent.bottom
-    color: "#e6000000"
+    color: app.styler.blockBg
     height: app.navigationActive && app.portrait ? Theme.paddingSmall + (app.portrait ? speed.height : timeDest.height) : 0
     visible: app.navigationActive
     z: 500
