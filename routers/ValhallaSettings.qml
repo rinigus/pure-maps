@@ -37,12 +37,12 @@ Column {
             MenuItem { text: app.tr("Foot") }
             MenuItem { text: app.tr("Bus") }
             MenuItem { text: app.tr("High-occupancy vehicle (HOV)") }
-//            MenuItem { text: app.tr("Motorcycle") }
-//            MenuItem { text: app.tr("Motor Scooter") }
+            MenuItem { text: app.tr("Motorcycle") }
+            MenuItem { text: app.tr("Motor Scooter") }
         }
         property string current_key
-        //property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov", "motorcycle", "motor_scooter"]
-        property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov"]
+        property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov", "motorcycle", "motor_scooter"]
+        //property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov"]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".type");
             var index = typeComboBox.keys.indexOf(key);
@@ -96,7 +96,7 @@ Column {
         id: autoShorterSwitch
         anchors.left: parent.left
         anchors.right: parent.right
-        text: app.tr("Prefer shorter path")
+        text: app.tr("Prefer shorter route")
         visible: typeComboBox.current_key == "auto"
         Component.onCompleted: checked = app.conf.get("routers." + settingsBlock.router + ".shorter")
         onCheckedChanged: {
