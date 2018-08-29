@@ -105,7 +105,6 @@ ApplicationWindow {
     Component.onCompleted: {
         updateMapMatching();
         updateNavigationSettings();
-        panel.show();
     }
 
     Component.onDestruction: {

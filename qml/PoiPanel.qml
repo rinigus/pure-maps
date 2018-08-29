@@ -27,7 +27,7 @@ Rectangle {
     height: contentHeight >= parent.height - y ? contentHeight : parent.height - y
     width: parent.width
     y: parent.height
-    z: 500
+    z: 1000
 
     property int contentHeight: column.height > 0 ? column.height + 2*Theme.paddingLarge : 0
     property string link
@@ -36,7 +36,7 @@ Rectangle {
 
     Behavior on y {
         NumberAnimation {
-            duration: mouse.drag.active ? 0 : 500
+            duration: mouse.drag.active && !mouse.dragDone ? 0 : 100
             easing.type: Easing.Linear
         }
     }
@@ -88,8 +88,15 @@ Rectangle {
         drag.minimumY: panel.parent.height - panel.height
         drag.maximumY: panel.parent.height
 
+        property bool dragDone: true
+
+        onPressed: {
+            dragDone=false;
+        }
+
         onReleased: {
-            var t = panel.height * 0.1;
+            dragDone = true;
+            var t = Math.min(panel.parent.height*0.1, panel.height * 0.5);
             var d = panel.y - drag.minimumY;
             if (d > t)
                 panel.hide();
