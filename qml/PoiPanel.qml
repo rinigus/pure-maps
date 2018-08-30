@@ -158,6 +158,13 @@ Rectangle {
 
         IconButton {
             enabled: coordinate !== undefined
+            icon.source: "image://theme/icon-m-about"
+            onClicked: {
+                console.log("Open POI information page")
+            }
+        }
+
+        IconButton {
             icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
             onClicked: bookmarked = !bookmarked;
         }
@@ -186,17 +193,17 @@ Rectangle {
             }
         }
 
-        IconButton {
-            enabled: coordinate !== undefined
-            icon.source: "image://theme/icon-m-share"
-            onClicked: {
-                if (coordinate === undefined) return;
-                app.showMenu("SharePage.qml", {
-                                 "coordinate": coordinate,
-                                 "title": title,
-                             });
-            }
-        }
+//        IconButton {
+//            enabled: coordinate !== undefined
+//            icon.source: "image://theme/icon-m-share"
+//            onClicked: {
+//                if (coordinate === undefined) return;
+//                app.showMenu("SharePage.qml", {
+//                                 "coordinate": coordinate,
+//                                 "title": title,
+//                             });
+//            }
+//        }
 
         IconButton {
             enabled: coordinate !== undefined
@@ -210,6 +217,7 @@ Rectangle {
                                     });
             }
         }
+
     }
 
     IconButton {
@@ -219,7 +227,10 @@ Rectangle {
         anchors.top: splitterItem.bottom
         icon.source: panel.showMenu ? "image://theme/icon-m-menu" : ""
         visible: panel.showMenu
-        onClicked: app.showMenu();
+        onClicked: {
+            app.showMenu();
+            hide();
+        }
     }
 
     Connections {
