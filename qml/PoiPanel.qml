@@ -29,64 +29,76 @@ Rectangle {
     y: parent.height
     z: 910
 
-    property int contentHeight: column.height > 0 ? Math.max(column.height, actionColumn.height) + 2*Theme.paddingLarge : 0
-    //property int contentHeight: column.height > 0 ? column.height + 2*Theme.paddingLarge : 0
-    property bool bookmarked: false
+    // interanal properties
+    property int  contentHeight: {
+        if (!hasData) return 0;
+        var h = 2*Theme.paddingLarge;
+        h += titleItem.height;
+        h += textItem.height;
+        h += splitterItem.height;
+        h += linkItem.height;
+        h += Math.max(mainButtons.height, menuButton.height);
+        return h;
+    }
+    property bool hasData: false
+    property bool noAnimation: false
+
+    // poi properties
+    property bool   bookmarked: false
+    property var    coordinate
     property string link
+    property string poiId
     property string text
     property string title
     property bool showMenu: false
 
     Behavior on y {
+        enabled: !noAnimation && (!mouse.drag.active || mouse.dragDone)
         NumberAnimation {
-            duration: mouse.drag.active && !mouse.dragDone ? 0 : 100
+            duration: 100
             easing.type: Easing.Linear
+            onRunningChanged: panel.noAnimation = !panel.hasData;
         }
     }
 
-    Column {
-        id: column
+    // Declare non-interactive elements before MouseArea
+    // and all interactive elements after MouseArea
+    // This will preserve dragging and interaction with
+    // the elements. Use anchors to position the elements
+
+    ListItemLabel {
+        // title and overall anchor to the top
+        id: titleItem
         anchors.top: panel.top
         anchors.topMargin: Theme.paddingLarge
+        color: Theme.highlightColor
+        font.pixelSize: Theme.fontSizeLarge
+        height: text ? implicitHeight + Theme.paddingLarge: 0
+        text: panel.title
+        truncationMode: TruncationMode.None
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.WordWrap
+    }
+
+    ListItemLabel {
+        id: textItem
+        anchors.top: titleItem.bottom
+        color: Theme.highlightColor
+        height: text ? implicitHeight + Theme.paddingMedium: 0
+        text: panel.text
+        textFormat: Text.RichText
+        truncationMode: TruncationMode.None
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.WordWrap
+    }
+
+    Rectangle {
+        id: splitterItem
         anchors.left: parent.left
-        anchors.right: actionColumn.left
-        //anchors.right: parent.right
-
-        Label {
-            anchors.left: parent.left
-            anchors.leftMargin: Theme.horizontalPageMargin
-            anchors.right: parent.right
-            anchors.rightMargin: Theme.horizontalPageMargin
-            color: Theme.highlightColor
-            font.pixelSize: Theme.fontSizeLarge
-            height: text ? implicitHeight + Theme.paddingLarge: 0
-            text: panel.title
-            verticalAlignment: Text.AlignTop
-            wrapMode: Text.WordWrap
-        }
-
-        Label {
-            anchors.left: parent.left
-            anchors.leftMargin: Theme.horizontalPageMargin
-            anchors.right: parent.right
-            anchors.rightMargin: Theme.horizontalPageMargin
-            color: Theme.highlightColor
-            height: text ? implicitHeight + Theme.paddingMedium: 0
-            text: panel.text.replace(/Theme.highlightColor/g, Theme.primaryColor)
-            textFormat: Text.RichText
-            verticalAlignment: Text.AlignTop
-            wrapMode: Text.WordWrap
-        }
-
-        IconListItem {
-            height: panel.link ? implicitHeight + Theme.paddingMedium : 0
-            icon: panel.link ? "image://theme/icon-m-link" : ""
-            label: panel.link
-            MouseArea {
-                anchors.fill: parent
-                onClicked: Qt.openUrlExternally(panel.link)
-            }
-        }
+        anchors.right: parent.right
+        anchors.top: linkItem.bottom
+        color: "transparent"
+        height: Theme.paddingLarge - Theme.paddingMedium
     }
 
     MouseArea {
@@ -114,33 +126,100 @@ Rectangle {
         }
     }
 
-    Column {
-        id: actionColumn
-        anchors.top: panel.top
-        anchors.topMargin: Theme.paddingLarge
-        anchors.right: panel.right
-        anchors.rightMargin: Theme.horizontalPageMargin
-        width: Math.max(menuButton.width, bookmarkButton.width)
-
-        IconButton {
-            id: menuButton
-            //height: panel.showMenu ? implicitHeight + Theme.paddingLarge : 0
-            icon.source: panel.showMenu ? "image://theme/icon-m-menu" : 0
-            visible: panel.showMenu
-            //width: panel.showMenu ? implicitWidth : 0
-            onClicked: app.showMenu();
-        }
-
-        IconButton {
-            id: bookmarkButton
-            icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
-            onClicked: bookmarked = !bookmarked;
+    IconListItem {
+        id: linkItem
+        anchors.top: textItem.bottom
+        height: panel.link ? implicitHeight + Theme.paddingMedium : 0
+        icon: panel.link ? "image://theme/icon-m-link" : ""
+        label: panel.link
+        MouseArea {
+            anchors.fill: parent
+            onClicked: Qt.openUrlExternally(panel.link)
         }
     }
 
+    Row {
+        id: mainButtons
+        anchors.leftMargin: Theme.horizontalPageMargin
+        anchors.top: splitterItem.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: Theme.paddingLarge
+        states: [
+            State {
+                // make space for the menu button if needed
+                when: panel.showMenu && parent.width/2-mainButtons.width-Theme.horizontalPageMargin < menuButton.width
+                AnchorChanges {
+                    target: mainButtons
+                    anchors.left: parent.left
+                    anchors.horizontalCenter: undefined
+                }
+            }
+        ]
+
+        IconButton {
+            enabled: coordinate !== undefined
+            icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
+            onClicked: bookmarked = !bookmarked;
+        }
+
+        IconButton {
+            enabled: coordinate !== undefined
+            icon.source: "image://theme/icon-m-car"
+            onClicked: {
+                if (coordinate === undefined) return;
+                app.showMenu("RoutePage.qml", {
+                                 "to": [coordinate.longitude, coordinate.latitude],
+                                 "toText": title,
+                             });
+            }
+        }
+
+        IconButton {
+            enabled: coordinate !== undefined
+            icon.source: "image://theme/icon-m-whereami"
+            onClicked: {
+                if (coordinate === undefined) return;
+                app.showMenu("NearbyPage.qml", {
+                                 "near": [coordinate.longitude, coordinate.latitude],
+                                 "nearText": title,
+                             });
+            }
+        }
+
+        IconButton {
+            enabled: coordinate !== undefined
+            icon.source: "image://theme/icon-m-share"
+            onClicked: {
+                if (coordinate === undefined) return;
+                app.showMenu("SharePage.qml", {
+                                 "coordinate": coordinate,
+                                 "title": title,
+                             });
+            }
+        }
+    }
+
+    IconButton {
+        id: menuButton
+        anchors.right: parent.right
+        anchors.rightMargin: Theme.horizontalPageMargin
+        anchors.top: splitterItem.bottom
+        icon.source: panel.showMenu ? "image://theme/icon-m-menu" : ""
+        visible: panel.showMenu
+        onClicked: app.showMenu();
+    }
+
     Connections {
-        target: column
-        onHeightChanged: panel._show()
+        target: panel
+        onContentHeightChanged: panel.hasData && panel._show()
+    }
+
+    Connections {
+        target: parent
+        onHeightChanged: {
+            if (panel.hasData) panel._show();
+            else panel._hide();
+        }
     }
 
     function _hide() {
@@ -150,7 +229,10 @@ Rectangle {
     function hide() {
         _hide();
         panel.bookmarked = false;
+        panel.coordinate = undefined;
+        panel.hasData = false;
         panel.link = "";
+        panel.poiId = "";
         panel.text = "";
         panel.title = "";
         panel.showMenu = false;
@@ -163,11 +245,16 @@ Rectangle {
 
     function show(poi, menu) {
         app.poiActive = true;
+        panel.noAnimation = panel.hasData;
         panel.bookmarked = poi.bookmarked || false;
+        panel.coordinate = poi.coordinate || undefined;
+        panel.hasData = true;
         panel.link = poi.link || "";
+        panel.poiId = poi.poiId || "";
         panel.text = poi.text || "";
         panel.title = poi.title || "";
         panel.showMenu = !!menu;
         _show();
+        panel.noAnimation = false;
     }
 }

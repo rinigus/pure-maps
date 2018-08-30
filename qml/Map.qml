@@ -136,6 +136,11 @@ MapboxMap {
     }
 
     Connections {
+        target: app.poiPanel
+        onHeightChanged: map.updateMargins();
+    }
+
+    Connections {
         target: app.streetName
         onHeightChanged: map.updateMargins();
     }
@@ -532,18 +537,21 @@ MapboxMap {
 
     function updateMargins() {
         // Calculate new margins and set them for the map.
-        var header = app.navigationBlock ? app.navigationBlock.height : 0;
-        var footer = app.menuButton ? app.menuButton.height : 0;
+        var header = app.navigationBlock && app.navigationBlock.height > 0 ? app.navigationBlock.height : map.height*0.05;
+        var footer = !app.poiActive && !app.navigationActive && app.menuButton ? map.height*0.05 : 0;
         footer += !app.poiActive && app.navigationActive && app.portrait && app.navigationInfoBlock ? app.navigationInfoBlock.height : 0;
         footer += !app.poiActive && app.navigationActive && app.streetName ? app.streetName.height : 0
         footer += app.poiActive && app.poiPanel ? app.poiPanel.height : 0
 
+        footer = Math.min(footer, map.height / 2.0);
+
         // If auto-rotate is on, the user is always heading up
         // on the screen and should see more ahead than behind.
-        var marginY = map.autoRotate ? footer/map.height : 0.05;
-        var marginHeight = map.autoRotate ?
-            0.2 * (map.height - header - footer) / map.height :
-            0.9 * (map.height - header) / map.height;
+        var marginY = (footer*1.0)/map.height;
+        var marginHeight = (map.autoRotate ? 0.2 : 1.0) * (1.0*(map.height - header - footer)) / map.height;
+
+        // console.log("M " + footer + " " + marginY + " " + header + " " + marginHeight + " ")
+
         map.margins = Qt.rect(0.05, marginY, 0.9, marginHeight);
     }
 

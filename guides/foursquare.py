@@ -160,16 +160,12 @@ def parse_text(venue):
     lines = []
     with poor.util.silent(Exception):
         lines.append((
-            '<font color="Theme.highlightColor">'
             '<big>{}</big>'
-            '</font>'
         ).format(html.escape(venue.name)))
     subtitle = []
     with poor.util.silent(Exception):
         subtitle.append((
-            '<font color="Theme.highlightColor">'
             '<big>{:.1f}</big>'
-            '</font>'
             '<small>&nbsp;/&nbsp;10</small>'
         ).format(venue.rating))
     with poor.util.silent(Exception):
