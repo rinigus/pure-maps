@@ -97,7 +97,7 @@ Page {
                 icon: "image://theme/icon-m-clear"
                 label: app.tr("Clear map")
                 onClicked: {
-                    map.clear();
+                    map.clear(true);
                     app.clearMenu();
                 }
             }

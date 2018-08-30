@@ -270,7 +270,15 @@ MapboxMap {
             map.position.coordinate.latitude);
     }
 
-    function clear() {
+    function clear(confirm) {
+        if (confirm) {
+            app.remorse.execute(app.tr("Clearing map"),
+                                function() {
+                                    map.clear();
+                                });
+            return;
+        }
+
         // Remove all markers from the map.
         app.navigationActive = false;
         map.clearPois();
