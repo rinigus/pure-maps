@@ -13,7 +13,10 @@ git add po/*.po po/*.pot; git status
 git commit -m "Update translations"
 
 # Check, test, do final edits and release.
+tools/manage-keys inject .
 make check test
+tools/manage-keys strip .
+git status
 emacs poor/__init__.py rpm/*.spec Makefile
 emacs NEWS.md TODO.md
 make rpm

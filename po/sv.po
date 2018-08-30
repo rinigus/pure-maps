@@ -839,15 +839,15 @@ msgstr "Spanska (Spanien)"
 
 #: routers/ValhallaSettings.qml:28
 msgid "General options"
-msgstr ""
+msgstr "Generella alternativ"
 
 #: routers/ValhallaSettings.qml:38
 msgid "Bus"
-msgstr ""
+msgstr "Buss"
 
 #: routers/ValhallaSettings.qml:39
 msgid "High-occupancy vehicle (HOV)"
-msgstr ""
+msgstr "Fordon med hög beläggning (HOV)"
 
 #: routers/ValhallaSettings.qml:65
 msgid "Catalan"
@@ -895,101 +895,101 @@ msgstr "Svenska"
 
 #: routers/ValhallaSettings.qml:92
 msgid "Advanced options"
-msgstr ""
+msgstr "Avancerade alternativ"
 
 #: routers/ValhallaSettings.qml:99
 msgid "Prefer shorter path"
-msgstr ""
+msgstr "Föredra kortare väg"
 
 #: routers/ValhallaSettings.qml:110
 msgid "Bicycle type"
-msgstr ""
+msgstr "Cykeltyp"
 
 #: routers/ValhallaSettings.qml:112
 msgid "Road"
-msgstr ""
+msgstr "Landsväg"
 
 #: routers/ValhallaSettings.qml:113
 msgid "Hybrid or City (default)"
-msgstr ""
+msgstr "Hybrid eller stad (standard)"
 
 #: routers/ValhallaSettings.qml:114
 msgid "Cross"
-msgstr ""
+msgstr "Kross"
 
 #: routers/ValhallaSettings.qml:115
 msgid "Mountain"
-msgstr ""
+msgstr "Mountain"
 
 #: routers/ValhallaSettings.qml:132
 msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr ""
+msgstr "Högsta tillåtna svårighetsgrad för vandringsleder."
 
 #: routers/ValhallaSettings.qml:133
 msgid "Hiking difficulty"
-msgstr ""
+msgstr "Svårighetsgrad för vandringsled"
 
 #: routers/ValhallaSettings.qml:135
 msgid "Walking"
-msgstr ""
+msgstr "Gång"
 
 #: routers/ValhallaSettings.qml:136
 msgid "Hiking (default)"
-msgstr ""
+msgstr "Vandring (standard)"
 
 #: routers/ValhallaSettings.qml:137
 msgid "Mountain hiking"
-msgstr ""
+msgstr "Bergsvandring"
 
 #: routers/ValhallaSettings.qml:138
 msgid "Demanding mountain hiking"
-msgstr ""
+msgstr "Krävande bergsvandring"
 
 #: routers/ValhallaSettings.qml:139
 msgid "Alpine hiking"
-msgstr ""
+msgstr "Alpin vandring"
 
 #: routers/ValhallaSettings.qml:140
 msgid "Demanding alpine hiking"
-msgstr ""
+msgstr "Krävande alpin vandring"
 
 #: routers/ValhallaSettings.qml:157
 msgid "Ferries"
-msgstr ""
+msgstr "Färjor"
 
 #: routers/ValhallaSettings.qml:159 routers/ValhallaSettings.qml:181
 #: routers/ValhallaSettings.qml:204 routers/ValhallaSettings.qml:224
 #: routers/ValhallaSettings.qml:247 routers/ValhallaSettings.qml:267
 msgid "Avoid"
-msgstr ""
+msgstr "Undvik"
 
 #: routers/ValhallaSettings.qml:160 routers/ValhallaSettings.qml:182
 #: routers/ValhallaSettings.qml:225 routers/ValhallaSettings.qml:289
 msgid "Prefer to avoid"
-msgstr ""
+msgstr "Föredra att undvika"
 
 #: routers/ValhallaSettings.qml:161 routers/ValhallaSettings.qml:205
 #: routers/ValhallaSettings.qml:226 routers/ValhallaSettings.qml:248
 #: routers/ValhallaSettings.qml:268
 msgid "No preference (default)"
-msgstr ""
+msgstr "Ingen preferens (standard)"
 
 #: routers/ValhallaSettings.qml:162 routers/ValhallaSettings.qml:184
 #: routers/ValhallaSettings.qml:227 routers/ValhallaSettings.qml:291
 msgid "Incline"
-msgstr ""
+msgstr "Lutning"
 
 #: routers/ValhallaSettings.qml:179
 msgid "Highways"
-msgstr ""
+msgstr "Motorvägar"
 
 #: routers/ValhallaSettings.qml:183 routers/ValhallaSettings.qml:290
 msgid "No preference"
-msgstr ""
+msgstr "Ingen preferens"
 
 #: routers/ValhallaSettings.qml:185
 msgid "Prefer (default)"
-msgstr ""
+msgstr "Föredra (standard)"
 
 #: routers/ValhallaSettings.qml:201
 msgid ""
@@ -997,31 +997,34 @@ msgid ""
 "(time and distance) routes can be selected. By allowing hills, it indicates "
 "you do not fear hills and steeper grades."
 msgstr ""
+"Din önskan att ta itu med kullar. När man undviker kullar och branta "
+"lutningar kan längre (tid och distans) rutter väljas. Genom att tillåta "
+"kullar indikerar du att du inte fruktar berg och brantare lutningar."
 
 #: routers/ValhallaSettings.qml:202
 msgid "Hills"
-msgstr ""
+msgstr "Kullar"
 
 #: routers/ValhallaSettings.qml:206 routers/ValhallaSettings.qml:249
 #: routers/ValhallaSettings.qml:269
 msgid "Allow"
-msgstr ""
+msgstr "Tillåt"
 
 #: routers/ValhallaSettings.qml:222
 msgid "Primary roads"
-msgstr ""
+msgstr "Huvudleder"
 
 #: routers/ValhallaSettings.qml:244
 msgid "Your propensity to use roads alongside other vehicles."
-msgstr ""
+msgstr "Din benägenhet att använda vägar tillsammans med andra fordon."
 
 #: routers/ValhallaSettings.qml:245
 msgid "Roads"
-msgstr ""
+msgstr "Vägar"
 
 #: routers/ValhallaSettings.qml:265
 msgid "Tolls"
-msgstr ""
+msgstr "Vägtullar"
 
 #: routers/ValhallaSettings.qml:285
 msgid ""
@@ -1029,14 +1032,17 @@ msgid ""
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
 msgstr ""
+"Din önskan om äventyr. När det föredras, tenderar ruttberäkningen att "
+"undvika större och sekundära vägar, ibland för att istället använda spår, "
+"oklassificerade vägar eller vägar med dåliga ytor."
 
 #: routers/ValhallaSettings.qml:286
 msgid "Trails"
-msgstr ""
+msgstr "Spår"
 
 #: routers/ValhallaSettings.qml:288
 msgid "Avoid (default)"
-msgstr ""
+msgstr "Undvik (standard)"
 
 #: qml/js/util.js:86
 msgid "%1 (default)"
