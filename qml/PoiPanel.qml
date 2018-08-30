@@ -197,6 +197,19 @@ Rectangle {
                              });
             }
         }
+
+        IconButton {
+            enabled: coordinate !== undefined
+            icon.source: !panel.showMenu ? "image://theme/icon-m-delete" : ""
+            visible: !panel.showMenu
+            onClicked: {
+                if (coordinate === undefined) return;
+                app.remorse.execute(app.tr("Deleting POI"),
+                                    function() {
+                                        console.log("Delete POI");
+                                    });
+            }
+        }
     }
 
     IconButton {
