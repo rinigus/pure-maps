@@ -51,7 +51,7 @@ Item {
             }
         }
     ]
-    visible: app.state !== app.states.explorePoi
+    visible: !app.poiActive
     width: app.navigationActive && app.portrait ? scaleBar.height : scaleBar.width
     z: 400
 

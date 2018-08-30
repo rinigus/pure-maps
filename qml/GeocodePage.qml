@@ -84,8 +84,7 @@ Page {
                         "x": details.x,
                         "y": details.y,
                     }]);
-                    map.hidePoiBubbles();
-                    map.showPoiBubble(map.pois[map.pois.length-1]);
+                    map.showPoi(map.pois[map.pois.length-1], true);
                     map.autoCenter = false;
                     map.setCenter(details.x, details.y);
                 } else {

@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,12 +27,15 @@ Rectangle {
     height: contentHeight >= parent.height - y ? contentHeight : parent.height - y
     width: parent.width
     y: parent.height
-    z: 1000
+    z: 910
 
-    property int contentHeight: column.height > 0 ? column.height + 2*Theme.paddingLarge : 0
+    property int contentHeight: column.height > 0 ? Math.max(column.height, actionColumn.height) + 2*Theme.paddingLarge : 0
+    //property int contentHeight: column.height > 0 ? column.height + 2*Theme.paddingLarge : 0
+    property bool bookmarked: false
     property string link
     property string text
     property string title
+    property bool showMenu: false
 
     Behavior on y {
         NumberAnimation {
@@ -45,7 +48,9 @@ Rectangle {
         id: column
         anchors.top: panel.top
         anchors.topMargin: Theme.paddingLarge
-        width: parent.width
+        anchors.left: parent.left
+        anchors.right: actionColumn.left
+        //anchors.right: parent.right
 
         Label {
             anchors.left: parent.left
@@ -67,7 +72,8 @@ Rectangle {
             anchors.rightMargin: Theme.horizontalPageMargin
             color: Theme.highlightColor
             height: text ? implicitHeight + Theme.paddingMedium: 0
-            text: panel.text
+            text: panel.text.replace(/Theme.highlightColor/g, Theme.primaryColor)
+            textFormat: Text.RichText
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
         }
@@ -76,7 +82,10 @@ Rectangle {
             height: panel.link ? implicitHeight + Theme.paddingMedium : 0
             icon: panel.link ? "image://theme/icon-m-link" : ""
             label: panel.link
-            onClicked: Qt.openUrlExternally(panel.link)
+            MouseArea {
+                anchors.fill: parent
+                onClicked: Qt.openUrlExternally(panel.link)
+            }
         }
     }
 
@@ -105,6 +114,30 @@ Rectangle {
         }
     }
 
+    Column {
+        id: actionColumn
+        anchors.top: panel.top
+        anchors.topMargin: Theme.paddingLarge
+        anchors.right: panel.right
+        anchors.rightMargin: Theme.horizontalPageMargin
+        width: Math.max(menuButton.width, bookmarkButton.width)
+
+        IconButton {
+            id: menuButton
+            //height: panel.showMenu ? implicitHeight + Theme.paddingLarge : 0
+            icon.source: panel.showMenu ? "image://theme/icon-m-menu" : 0
+            visible: panel.showMenu
+            //width: panel.showMenu ? implicitWidth : 0
+            onClicked: app.showMenu();
+        }
+
+        IconButton {
+            id: bookmarkButton
+            icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
+            onClicked: bookmarked = !bookmarked;
+        }
+    }
+
     Connections {
         target: column
         onHeightChanged: panel._show()
@@ -116,21 +149,25 @@ Rectangle {
 
     function hide() {
         _hide();
+        panel.bookmarked = false;
         panel.link = "";
         panel.text = "";
         panel.title = "";
-        app.state = app.states.explore;
+        panel.showMenu = false;
+        app.poiActive = false;
     }
 
     function _show() {
         y = parent.height - panel.contentHeight;
     }
 
-    function show(poi) {
-        app.state = app.states.explorePoi;
+    function show(poi, menu) {
+        app.poiActive = true;
+        panel.bookmarked = poi.bookmarked || false;
         panel.link = poi.link || "";
         panel.text = poi.text || "";
         panel.title = poi.title || "";
+        panel.showMenu = !!menu;
         _show();
     }
 }

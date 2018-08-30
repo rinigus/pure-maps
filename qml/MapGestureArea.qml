@@ -41,7 +41,7 @@ MapboxMapGestureArea {
             if (area.coordinatesMatch(geocoordinate, map.pois[i].coordinate))
                 return map.showPoi(map.pois[i]);
         // Hide any POI bubbles if background map clicked.
-        if (app.state === app.states.explorePoi)
+        if (app.poiActive)
             map.hidePoi();
     }
 

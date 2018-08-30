@@ -273,8 +273,8 @@ MapboxMap {
     }
 
     function clearPois() {
-        // Remove all POI markers from the map.
-        hidePoiBubbles();
+        // Remove POI panel if its active
+        hidePoi();
         map.pois = [];
         map.updatePois();
         map.savePois();
@@ -377,19 +377,6 @@ MapboxMap {
 
     function hidePoi() {
         app.poiPanel && app.poiPanel.hide();
-    }
-
-    function hidePoiBubble(poi) {
-        // Hide the bubble of given POI.
-        if (!poi.bubble) return;
-        map.removeLocationTracking(poi.bubble.trackerId);
-        poi.bubble.destroy();
-        poi.bubble = null;
-    }
-
-    function hidePoiBubbles() {
-        // Hide label bubbles of all POI markers.
-        map.pois.map(hidePoiBubble);
     }
 
     function initLayers() {
@@ -520,23 +507,8 @@ MapboxMap {
         positionMarker.configureLayers();
     }
 
-    function showPoi(poi) {
-        app.poiPanel && app.poiPanel.show(poi);
-    }
-
-    function showPoiBubble(poi) {
-        // Show a bubble for the given POI.
-        if (poi.bubble) return;
-        var component = Qt.createComponent("PoiBubble.qml");
-        var bubble = component.createObject(map, {
-            "coordinate": poi.coordinate,
-            "link": poi.link,
-            "text": poi.text,
-            "title": poi.title,
-            "trackerId": "poi-%1".arg(++map.counter),
-        });
-        map.trackLocation(bubble.trackerId, bubble.coordinate);
-        poi.bubble = bubble;
+    function showPoi(poi, showMenu) {
+        app.poiPanel && app.poiPanel.show(poi, showMenu);
     }
 
     function toggleAutoCenter() {
@@ -551,11 +523,6 @@ MapboxMap {
         }
     }
 
-    function togglePoiBubble(poi) {
-        // Show or hide a bubble for the given POI.
-        poi.bubble ? map.hidePoiBubble(poi) : map.showPoiBubble(poi);
-    }
-
     function updateManeuvers() {
         // Update maneuver marker on the map.
         var coords = Util.pluck(map.maneuvers, "coordinate");
@@ -567,10 +534,10 @@ MapboxMap {
         // Calculate new margins and set them for the map.
         var header = app.navigationBlock ? app.navigationBlock.height : 0;
         var footer = app.menuButton ? app.menuButton.height : 0;
-        if (app.navigationActive) {
-            footer = app.portrait && app.navigationInfoBlock ? app.navigationInfoBlock.height : 0;
-            footer += app.streetName ? app.streetName.height : 0
-        }
+        footer += !app.poiActive && app.navigationActive && app.portrait && app.navigationInfoBlock ? app.navigationInfoBlock.height : 0;
+        footer += !app.poiActive && app.navigationActive && app.streetName ? app.streetName.height : 0
+        footer += app.poiActive && app.poiPanel ? app.poiPanel.height : 0
+
         // If auto-rotate is on, the user is always heading up
         // on the screen and should see more ahead than behind.
         var marginY = map.autoRotate ? footer/map.height : 0.05;

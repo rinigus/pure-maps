@@ -50,7 +50,7 @@ Page {
             } else if (route && route.x && route.x.length > 0) {
                 app.hideMenu();
                 map.addRoute(route);
-                map.hidePoiBubbles();
+                map.hidePoi();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
                 app.pageStack.navigateBack(PageStackAction.Immediate);

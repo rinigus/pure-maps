@@ -48,7 +48,7 @@ IconButton {
             }
         }
     ]
-    visible: app.state !== app.states.explorePoi
+    visible: !app.poiActive || app.navigationActive
     width: icon.width
     z: 500
 
