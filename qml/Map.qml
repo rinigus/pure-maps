@@ -201,10 +201,13 @@ MapboxMap {
     }
 
     function _addPoi(poi) {
-        // Add new POI marker to the map.
+        if (hasPoi(poi)) return; // avoid duplicates
+        // Add new POI marker to the map.        
         map.pois.push({
+            "bookmarked": poi.bookmarked || false,
             "coordinate": QtPositioning.coordinate(poi.y, poi.x),
             "link": poi.link || "",
+            "poiId": poi.poiId || Util.uuidv4(),
             "provider": poi.provider || "",
             "text": poi.text || "",
             "title": poi.title || "",
@@ -263,6 +266,17 @@ MapboxMap {
         app.rerouteTotalCalls = 0;
     }
 
+    function bookmarkPoi(poiId, bookmark) {
+        if (poiId == null) return;
+        map.pois = map.pois.map(function(p) {
+            if (p.poiId != poiId) return p;
+            p.bookmarked = bookmark;
+            return p;
+        } );
+        map.updatePois();
+        map.savePois();
+    }
+
     function centerOnPosition() {
         // Center on the current position.
         map.setCenter(
@@ -288,7 +302,9 @@ MapboxMap {
     function clearPois() {
         // Remove POI panel if its active
         hidePoi();
-        map.pois = [];
+        map.pois = map.pois.filter(function(p) {
+            return p.bookmarked;
+        });
         map.updatePois();
         map.savePois();
     }
@@ -340,6 +356,15 @@ MapboxMap {
         map.setLayoutProperty(map.layers.dummies, "visibility", "visible");
     }
 
+    function deletePoi(poiId) {
+        if (poiId == null) return;
+        map.pois = map.pois.filter(function(p) {
+            return p.poiId != poiId;
+        } );
+        map.updatePois();
+        map.savePois();
+    }
+
     function endNavigating() {
         // Restore UI from navigation mode.
         map.autoCenter = false;
@@ -386,6 +411,17 @@ MapboxMap {
     function getPosition() {
         // Return the coordinates of the current position.
         return [map.position.coordinate.longitude, map.position.coordinate.latitude];
+    }
+
+    function hasPoi(poi) {
+        // check if such poi exists already
+        var longitude = poi.coordinate ? poi.coordinate.longitude : poi.x;
+        var latitude = poi.coordinate ? poi.coordinate.latitude : poi.y;
+        for (var i = 0; i < map.pois.length; i++)
+            if (Math.abs(longitude - map.pois[i].coordinate.longitude) < 1e-6 &&
+                    Math.abs(latitude - map.pois[i].coordinate.latitude) < 1e-6)
+                return true;
+        return false;
     }
 
     function hidePoi() {

@@ -166,7 +166,10 @@ Rectangle {
 
         IconButton {
             icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
-            onClicked: bookmarked = !bookmarked;
+            onClicked: {
+                bookmarked = !bookmarked;
+                app.map.bookmarkPoi(poiId, bookmarked);
+            }
         }
 
         IconButton {
@@ -213,7 +216,8 @@ Rectangle {
                 if (coordinate === undefined) return;
                 app.remorse.execute(app.tr("Deleting POI"),
                                     function() {
-                                        console.log("Delete POI");
+                                        app.map.deletePoi(poiId);
+                                        panel.hide();
                                     });
             }
         }
