@@ -160,6 +160,7 @@ Rectangle {
             enabled: coordinate !== undefined
             icon.source: "image://theme/icon-m-about"
             onClicked: {
+                panel.showMenu = false;
                 console.log("Open POI information page")
             }
         }
@@ -177,6 +178,7 @@ Rectangle {
             icon.source: "image://theme/icon-m-car"
             onClicked: {
                 if (coordinate === undefined) return;
+                panel.showMenu = false;
                 app.showMenu("RoutePage.qml", {
                                  "to": [coordinate.longitude, coordinate.latitude],
                                  "toText": title,
@@ -189,6 +191,7 @@ Rectangle {
             icon.source: "image://theme/icon-m-whereami"
             onClicked: {
                 if (coordinate === undefined) return;
+                panel.showMenu = false;
                 app.showMenu("NearbyPage.qml", {
                                  "near": [coordinate.longitude, coordinate.latitude],
                                  "nearText": title,
