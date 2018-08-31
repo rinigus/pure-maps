@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtPositioning 5.3
 import Sailfish.Silica 1.0
 import "."
 
@@ -29,7 +30,8 @@ Rectangle {
     y: parent.height
     z: 910
 
-    // interanal properties
+    // internal properties
+    property bool active: false
     property int  contentHeight: {
         if (!hasData) return 0;
         var h = 2*Theme.paddingLarge;
@@ -39,7 +41,7 @@ Rectangle {
         h += linkItem.height;
         h += Math.max(mainButtons.height, menuButton.height);
         return h;
-    }
+    }        
     property bool hasData: false
     property bool noAnimation: false
 
@@ -157,7 +159,7 @@ Rectangle {
         ]
 
         IconButton {
-            enabled: coordinate !== undefined
+            enabled: panel.active
             icon.source: "image://theme/icon-m-about"
             onClicked: {
                 panel.showMenu = false;
@@ -166,6 +168,7 @@ Rectangle {
         }
 
         IconButton {
+            enabled: panel.active
             icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
             onClicked: {
                 bookmarked = !bookmarked;
@@ -174,7 +177,7 @@ Rectangle {
         }
 
         IconButton {
-            enabled: coordinate !== undefined
+            enabled: panel.active
             icon.source: "image://theme/icon-m-car"
             onClicked: {
                 if (coordinate === undefined) return;
@@ -187,7 +190,7 @@ Rectangle {
         }
 
         IconButton {
-            enabled: coordinate !== undefined
+            enabled: panel.active
             icon.source: "image://theme/icon-m-whereami"
             onClicked: {
                 if (coordinate === undefined) return;
@@ -200,7 +203,7 @@ Rectangle {
         }
 
 //        IconButton {
-//            enabled: coordinate !== undefined
+//            enabled: panel.active
 //            icon.source: "image://theme/icon-m-share"
 //            onClicked: {
 //                if (coordinate === undefined) return;
@@ -212,7 +215,7 @@ Rectangle {
 //        }
 
         IconButton {
-            enabled: coordinate !== undefined
+            enabled: panel.active
             icon.source: !panel.showMenu ? "image://theme/icon-m-delete" : ""
             visible: !panel.showMenu
             onClicked: {
@@ -259,6 +262,7 @@ Rectangle {
 
     function hide() {
         _hide();
+        panel.active = false;
         panel.bookmarked = false;
         panel.coordinate = undefined;
         panel.hasData = false;
@@ -279,13 +283,14 @@ Rectangle {
         app.poiActive = true;
         panel.noAnimation = panel.hasData;
         panel.bookmarked = poi.bookmarked || false;
-        panel.coordinate = poi.coordinate || undefined;
+        panel.coordinate = poi.coordinate || QtPositioning.coordinate(poi.y, poi.x);
         panel.hasData = true;
         panel.link = poi.link || "";
         panel.poiId = poi.poiId || "";
         panel.text = poi.text || "";
         panel.title = poi.title || "";
         panel.showMenu = !!menu;
+        panel.active = (panel.poiId.length > 0);
         _show();
         panel.noAnimation = false;
         app.map.setSelectedPoi(panel.coordinate)

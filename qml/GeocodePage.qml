@@ -75,7 +75,7 @@ Page {
                     // Autocompletion result with known coordinates, open directly.
                     py.call_sync("poor.app.history.add_place", [model.place]);
                     app.hideMenu();
-                    map.addPois([{
+                    var p = {
                         "link": details.link || "",
                         "provider": details.provider || "",
                         "text": details.text || details.title || model.place,
@@ -83,8 +83,10 @@ Page {
                         "type": "geocode",
                         "x": details.x,
                         "y": details.y,
-                    }]);
-                    map.showPoi(map.pois[map.pois.length-1], true);
+                    };
+                    if (map.addPoi(p)) p = map.pois[map.pois.length-1];
+                    else p.title = app.tr("%1 [duplicate]", p.title);
+                    map.showPoi(p, true);
                     map.autoCenter = false;
                     map.setCenter(details.x, details.y);
                 } else {

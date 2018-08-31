@@ -64,7 +64,7 @@ Page {
 
             onClicked: {
                 app.hideMenu();
-                map.addPois([{
+                var p = {
                     "link": model.link || "",
                     "provider": model.provider || "",
                     "text": model.text || model.title,
@@ -72,8 +72,10 @@ Page {
                     "type": "geocode",
                     "x": model.x,
                     "y": model.y,
-                }]);
-                map.showPoi(map.pois[map.pois.length-1], true);
+                };
+                if (map.addPoi(p)) p = map.pois[map.pois.length-1];
+                else p.title = app.tr("%1 [duplicate]", p.title);
+                map.showPoi(p, true);
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
                 listItem.visited = true;

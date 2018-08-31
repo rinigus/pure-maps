@@ -208,7 +208,7 @@ MapboxMap {
     }
 
     function _addPoi(poi) {
-        if (hasPoi(poi)) return; // avoid duplicates
+        if (hasPoi(poi)) return false; // avoid duplicates
         // Add new POI marker to the map.        
         map.pois.push({
             "bookmarked": poi.bookmarked || false,
@@ -220,6 +220,18 @@ MapboxMap {
             "title": poi.title || "",
             "type": poi.type || "",
         });
+        return true;
+    }
+
+    function addPoi(poi) {
+        // Add a new POI marker and return if it was
+        // added successfully
+        var r=_addPoi(poi);
+        if (r) {
+            map.updatePois();
+            map.savePois();
+        }
+        return r;
     }
 
     function addPois(pois) {
