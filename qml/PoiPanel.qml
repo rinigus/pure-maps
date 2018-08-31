@@ -268,6 +268,7 @@ Rectangle {
         panel.title = "";
         panel.showMenu = false;
         app.poiActive = false;
+        app.map.setSelectedPoi()
     }
 
     function _show() {
@@ -287,5 +288,6 @@ Rectangle {
         panel.showMenu = !!menu;
         _show();
         panel.noAnimation = false;
+        app.map.setSelectedPoi(panel.coordinate)
     }
 }

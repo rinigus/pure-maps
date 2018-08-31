@@ -59,21 +59,27 @@ MapboxMap {
     property bool   tiltEnabled: false
 
     readonly property var images: QtObject {
-        readonly property string pixel: "pure-image-pixel"
+        readonly property string pixel:         "pure-image-pixel"
+        readonly property string poi:           "pure-image-poi"
+        readonly property string poiBookmarked: "pure-image-poi-bookmarked"
     }
 
     readonly property var layers: QtObject {
-        readonly property string dummies:   "pure-layer-dummies"
-        readonly property string maneuvers: "pure-layer-maneuvers-active"
-        readonly property string nodes:     "pure-layer-maneuvers-passive"
-        readonly property string pois:      "pure-layer-pois"
-        readonly property string route:     "pure-layer-route"
+        readonly property string dummies:         "pure-layer-dummies"
+        readonly property string maneuvers:       "pure-layer-maneuvers-active"
+        readonly property string nodes:           "pure-layer-maneuvers-passive"
+        readonly property string pois:            "pure-layer-pois"
+        readonly property string poisBookmarked:  "pure-layer-pois-bookmarked"
+        readonly property string poisSelected:    "pure-layer-pois-selected"
+        readonly property string route:           "pure-layer-route"
     }
 
     readonly property var sources: QtObject {
-        readonly property string maneuvers: "pure-source-maneuvers"
-        readonly property string pois:      "pure-source-pois"
-        readonly property string route:     "pure-source-route"
+        readonly property string maneuvers:      "pure-source-maneuvers"
+        readonly property string pois:           "pure-source-pois"
+        readonly property string poisBookmarked: "pure-source-pois-bookmarked"
+        readonly property string poisSelected:   "pure-source-pois-selected"
+        readonly property string route:          "pure-source-route"
     }
 
     Behavior on bearing {
@@ -147,6 +153,7 @@ MapboxMap {
 
     Component.onCompleted: {
         map.initSources();
+        map.initIcons();
         map.initLayers();
         map.configureLayers();
         map.initProperties();
@@ -323,12 +330,36 @@ MapboxMap {
     }
 
     function configureLayers() {
-        // Configure layer for POI markers.
-        map.setPaintProperty(map.layers.pois, "circle-opacity", 0);
-        map.setPaintProperty(map.layers.pois, "circle-radius", 32 / map.pixelRatio);
-        map.setPaintProperty(map.layers.pois, "circle-stroke-color", app.styler.route);
-        map.setPaintProperty(map.layers.pois, "circle-stroke-opacity", app.styler.routeOpacity);
-        map.setPaintProperty(map.layers.pois, "circle-stroke-width", 13 / map.pixelRatio);
+        // Configure layer for selected POI markers.
+        map.setPaintProperty(map.layers.poisSelected, "circle-opacity", 0);
+        map.setPaintProperty(map.layers.poisSelected, "circle-radius", 16 / map.pixelRatio);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-color", app.styler.route);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-opacity", app.styler.routeOpacity);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-width", 13 / map.pixelRatio);
+        // Configure layer for non-bookmarked POI markers.
+        map.setLayoutProperty(map.layers.pois, "icon-allow-overlap", true);
+        map.setLayoutProperty(map.layers.pois, "icon-anchor", "bottom");
+        map.setLayoutProperty(map.layers.pois, "icon-image", map.images.poi);
+        map.setLayoutProperty(map.layers.pois, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.pois, "text-anchor", "top");
+        map.setLayoutProperty(map.layers.pois, "text-field", "{name}");
+        map.setLayoutProperty(map.layers.pois, "text-optional", true);
+        map.setLayoutProperty(map.layers.pois, "text-size", 12);
+        map.setPaintProperty(map.layers.pois, "text-color", app.styler.streetFg);
+        map.setPaintProperty(map.layers.pois, "text-halo-color", app.styler.streetBg);
+        map.setPaintProperty(map.layers.pois, "text-halo-width", 2);
+        // Configure layer for bookmarked POI markers.
+        map.setLayoutProperty(map.layers.poisBookmarked, "icon-allow-overlap", true);
+        map.setLayoutProperty(map.layers.poisBookmarked, "icon-anchor", "bottom");
+        map.setLayoutProperty(map.layers.poisBookmarked, "icon-image", map.images.poiBookmarked);
+        map.setLayoutProperty(map.layers.poisBookmarked, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.poisBookmarked, "text-anchor", "top");
+        map.setLayoutProperty(map.layers.poisBookmarked, "text-field", "{name}");
+        map.setLayoutProperty(map.layers.poisBookmarked, "text-optional", true);
+        map.setLayoutProperty(map.layers.poisBookmarked, "text-size", 12);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-color", app.styler.streetFg);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-halo-color", app.styler.streetBg);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-halo-width", 2);
         // Configure layer for route polyline.
         map.setLayoutProperty(map.layers.route, "line-cap", "round");
         map.setLayoutProperty(map.layers.route, "line-join", "round");
@@ -428,9 +459,18 @@ MapboxMap {
         app.poiPanel && app.poiPanel.hide();
     }
 
+    function initIcons() {
+        var suffix = "";
+        if (app.styler.position) suffix = "-" + app.styler.position;
+        map.addImagePath(map.images.poi, Qt.resolvedUrl(app.getIcon("icons/marker-stroked" + suffix, true)));
+        map.addImagePath(map.images.poiBookmarked, Qt.resolvedUrl(app.getIcon("icons/marker" + suffix, true)));
+    }
+
     function initLayers() {
         // Initialize layers for POI markers, route polyline and maneuver markers.
-        map.addLayer(map.layers.pois, {"type": "circle", "source": map.sources.pois});
+        map.addLayer(map.layers.poisSelected, {"type": "circle", "source": map.sources.poisSelected});
+        map.addLayer(map.layers.pois, {"type": "symbol", "source": map.sources.pois});
+        map.addLayer(map.layers.poisBookmarked, {"type": "symbol", "source": map.sources.poisBookmarked});
         map.addLayer(map.layers.route, {"type": "line", "source": map.sources.route}, map.firstLabelLayer);
         map.addLayer(map.layers.maneuvers, {
             "type": "circle",
@@ -466,7 +506,9 @@ MapboxMap {
 
     function initSources() {
         // Initialize sources for map overlays.
+        map.addSourcePoints(map.sources.poisSelected, []);
         map.addSourcePoints(map.sources.pois, []);
+        map.addSourcePoints(map.sources.poisBookmarked, []);
         map.addSourceLine(map.sources.route, []);
         map.addSourcePoints(map.sources.maneuvers, []);
     }
@@ -538,6 +580,7 @@ MapboxMap {
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
         app.attributionButton.logo = py.evaluate("poor.app.basemap.logo");
         app.styler.apply(py.evaluate("poor.app.basemap.style_gui"))
+        map.initIcons();
         map.initLayers();
         map.configureLayers();
         positionMarker.initIcons();
@@ -554,6 +597,13 @@ MapboxMap {
         map.pixelRatio = Theme.pixelRatio * 1.5 * scale;
         map.configureLayers();
         positionMarker.configureLayers();
+    }
+
+    function setSelectedPoi(coordinate) {
+        if (coordinate===undefined)
+            map.updateSourcePoints(map.sources.poisSelected, []);
+        else
+            map.updateSourcePoints(map.sources.poisSelected, [coordinate]);
     }
 
     function showPoi(poi, showMenu) {
@@ -601,8 +651,21 @@ MapboxMap {
 
     function updatePois() {
         // Update POI markers on the map.
-        var coords = Util.pluck(map.pois, "coordinate");
-        map.updateSourcePoints(map.sources.pois, coords);
+        var regCoor = [];
+        var regName = [];
+        var bookmarkedCoor = [];
+        var bookmarkedName = [];
+        for (var i = 0; i < map.pois.length; i++) {
+            if (map.pois[i].bookmarked) {
+                bookmarkedCoor.push(map.pois[i].coordinate);
+                bookmarkedName.push(map.pois[i].title);
+            } else {
+                regCoor.push(map.pois[i].coordinate);
+                regName.push(map.pois[i].title);
+            }
+        }
+        map.updateSourcePoints(map.sources.pois, regCoor, regName);
+        map.updateSourcePoints(map.sources.poisBookmarked, bookmarkedCoor, bookmarkedName);
     }
 
     function updateRoute() {
