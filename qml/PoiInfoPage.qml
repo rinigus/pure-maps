@@ -83,6 +83,71 @@ Page {
             }
 
             SectionHeader {
+                height: implicitHeight + Theme.paddingMedium
+                text: app.tr("Actions")
+            }
+
+            IconListItem {
+                enabled: poi.coordinate
+                icon: "image://theme/icon-m-share"
+                label: app.tr("Share location")
+                onClicked: {
+                    app.pageStack.push("SharePage.qml", {
+                                           "coordinate": poi.coordinate,
+                                           "title": poi.title,
+                                       });
+                }
+            }
+
+            IconListItem {
+                enabled: poi.coordinate
+                icon: "image://theme/icon-m-dot"
+                label: app.tr("Center on location")
+                onClicked: {
+                    map.setCenter(
+                        poi.coordinate.longitude,
+                        poi.coordinate.latitude);
+                    app.clearMenu();
+                }
+            }
+
+            IconListItem {
+                enabled: poi.coordinate
+                icon: "image://theme/icon-m-car"
+                label: app.tr("Navigate To")
+                onClicked: {
+                    app.pageStack.push("RoutePage.qml", {
+                                           "to": [poi.coordinate.longitude, poi.coordinate.latitude],
+                                           "toText": poi.title,
+                                       });
+                }
+            }
+
+            IconListItem {
+                enabled: poi.coordinate
+                icon: "image://theme/icon-m-car"
+                label: app.tr("Navigate From")
+                onClicked: {
+                    app.pageStack.push("RoutePage.qml", {
+                                           "from": [poi.coordinate.longitude, poi.coordinate.latitude],
+                                           "fromText": poi.title,
+                                       });
+                }
+            }
+
+            IconListItem {
+                enabled: poi.coordinate
+                icon: "image://theme/icon-m-whereami"
+                label: app.tr("Nearby")
+                onClicked: {
+                    app.pageStack.push("NearbyPage.qml", {
+                                           "near": [poi.coordinate.longitude, poi.coordinate.latitude],
+                                           "nearText": poi.title,
+                                       });
+                }
+            }
+
+            SectionHeader {
                 height: text ? implicitHeight + Theme.paddingMedium : 0
                 text: poi.phone || poi.link ? app.tr("Contact") : ""
             }

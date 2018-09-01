@@ -175,8 +175,10 @@ Page {
     }
 
     Component.onCompleted: {
-        page.from = map.getPosition();
-        page.fromText = app.tr("Current position");
+        if (!page.from) {
+            page.from = map.getPosition();
+            page.fromText = app.tr("Current position");
+        }
     }
 
     onStatusChanged: {
