@@ -127,7 +127,10 @@ def nearby(query, near, radius, params):
     results = [poor.AttrDict(
         id=item.venue.id,
         title=item.venue.name,
+        address=parse_address(item.venue),
         description=parse_description(item.venue),
+        poi_type=parse_type(item.venue),
+        postcode=parse_postcode(item.venue),
         text=parse_text(item.venue),
         link=get_link(item.venue.id),
         x=float(item.venue.location.lng),
@@ -141,6 +144,11 @@ def nearby(query, near, radius, params):
     if results and results[0]:
         cache[url] = copy.deepcopy((x, y, results))
     return x, y, results
+
+def parse_address(venue):
+    with poor.util.silent(Exception):
+        return ", ".join(venue.location.formattedAddress).strip()
+    return ""
 
 def parse_description(venue):
     """Parse description from venue details."""
@@ -158,24 +166,16 @@ def parse_description(venue):
 def parse_text(venue):
     """Parse blurb text from venue details."""
     lines = []
-    with poor.util.silent(Exception):
-        lines.append((
-            '<big>{}</big>'
-        ).format(html.escape(venue.name)))
     subtitle = []
     with poor.util.silent(Exception):
         subtitle.append((
-            '<big>{:.1f}</big>'
-            '<small>&nbsp;/&nbsp;10</small>'
+            '<b>{:.1f}</b> / 10'
         ).format(venue.rating))
-    with poor.util.silent(Exception):
-        category = html.escape(venue.categories[0].name)
-        subtitle.append("<small>{}</small>".format(category))
-    lines.append("&nbsp;&nbsp;".join(subtitle))
+    lines.append("  ".join(subtitle))
     with poor.util.silent(Exception):
         tip = parse_tip(venue) or venue.get("description") or ""
         if not tip: raise ValueError("No tip")
-        lines.append("<small>{}</small>".format(html.escape(tip)))
+        lines.append("{}".format(tip))
     return "<br>".join(lines)
 
 def parse_tip(venue):
@@ -189,6 +189,12 @@ def parse_tip(venue):
                 if item.lang == (lang or item.lang):
                     return "“{}”".format(item.text)
 
+def parse_type(venue):
+    with poor.util.silent(Exception):
+        types=[i.name for i in venue.categories]
+        return ", ".join(types).strip()
+    return ""
+
 def prepare_point(point):
     """Return geocoded coordinates for `point`."""
     # Foursquare does geocoding too, but not that well.
@@ -197,3 +203,8 @@ def prepare_point(point):
     geocoder = poor.Geocoder("default")
     results = geocoder.geocode(point, dict(limit=1))
     return results[0]["x"], results[0]["y"]
+
+def parse_postcode(venue):
+    with poor.util.silent(Exception):
+        return venue.location.postalCode
+    return ""

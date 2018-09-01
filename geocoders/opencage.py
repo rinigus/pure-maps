@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2016 Osmo Salomaa
+# Copyright (C) 2016 Osmo Salomaa, 2018 Rinigus
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -46,6 +46,9 @@ def geocode(query, params):
     results = poor.http.get_json(url)["results"]
     results = list(map(poor.AttrDict, results))
     results = [dict(
+        address=result.formatted,
+        poi_type=parse_type(result),
+        postcode=parse_postcode(result),
         title=parse_title(result),
         description=parse_description(result),
         x=float(result.geometry.lng),
@@ -59,9 +62,15 @@ def parse_description(result):
     """Parse description from geocoding result."""
     title = parse_title(result)
     description = result.formatted
+    type = parse_type(result)
     if description.startswith(title):
         description = description[len(title):]
-    return re.sub("^[, ]+", "", description)
+    return type + ", " + re.sub("^[, ]+", "", description)
+
+def parse_postcode(result):
+    with poor.util.silent(Exception):
+        return result.components.postcode
+    return ""
 
 def parse_title(result):
     """Parse title from geocoding result."""
@@ -69,3 +78,10 @@ def parse_title(result):
         type = result.components._type
         return str(result.components[type])
     return result.formatted.split(",")[0]
+
+def parse_type(result):
+    """Parse title from geocoding result"""
+    with poor.util.silent(KeyError):
+        type = result.components._type
+        return type.capitalize()
+    return ""

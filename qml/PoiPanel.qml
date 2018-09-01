@@ -36,23 +36,32 @@ Rectangle {
         if (!hasData) return 0;
         var h = 2*Theme.paddingLarge;
         h += titleItem.height;
+        h += typeAddressItem.height;
+        h += coorItem.height;
         h += textItem.height;
+        h += additionalInfoItem.height;
         h += splitterItem.height;
-        h += linkItem.height;
+//        h += phoneItem.height;
+//        h += linkItem.height;
         h += Math.max(mainButtons.height, menuButton.height);
         return h;
-    }        
+    }
     property bool hasData: false
     property bool noAnimation: false
+    property bool showMenu: false
 
     // poi properties
+    property string address
     property bool   bookmarked: false
     property var    coordinate
     property string link
+    property string phone
     property string poiId
+    property string poiType
+    property string postcode
     property string text
     property string title
-    property bool showMenu: false
+    property var    poi
 
     Behavior on y {
         enabled: !noAnimation && (!mouse.drag.active || mouse.dragDone)
@@ -75,7 +84,7 @@ Rectangle {
         anchors.topMargin: Theme.paddingLarge
         color: Theme.highlightColor
         font.pixelSize: Theme.fontSizeLarge
-        height: text ? implicitHeight + Theme.paddingLarge: 0
+        height: text ? implicitHeight + Theme.paddingMedium: 0
         text: panel.title
         truncationMode: TruncationMode.None
         verticalAlignment: Text.AlignTop
@@ -83,24 +92,78 @@ Rectangle {
     }
 
     ListItemLabel {
-        id: textItem
+        id: typeAddressItem
         anchors.top: titleItem.bottom
         color: Theme.highlightColor
-        height: text ? implicitHeight + Theme.paddingMedium: 0
-        text: panel.text
-        textFormat: Text.RichText
+        height: text ? implicitHeight + Theme.paddingSmall: 0
+        font.pixelSize: Theme.fontSizeSmall
+        text: {
+            if (panel.poiType && panel.address)
+                return app.tr("%1; %2", panel.poiType, panel.address);
+            else if (panel.poiType)
+                return panel.poiType;
+            else if (panel.address)
+                return panel.address;
+            return "";
+        }
         truncationMode: TruncationMode.None
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
+    }
+
+    ListItemLabel {
+        id: coorItem
+        anchors.top: typeAddressItem.bottom
+        color: Theme.secondaryHighlightColor
+        font.pixelSize: Theme.fontSizeSmall
+        height: text ? implicitHeight + Theme.paddingSmall: 0
+        text: app.portrait && panel.coordinate? app.tr("Latitude: %1; Longitude: %2", panel.coordinate.latitude, panel.coordinate.longitude) : ""
+        truncationMode: TruncationMode.Fade
+        verticalAlignment: Text.AlignTop
+    }
+
+    ListItemLabel {
+        id: textItem
+        anchors.top: coorItem.bottom
+        color: Theme.highlightColor
+        font.pixelSize: Theme.fontSizeSmall
+        height: text ? implicitHeight + Theme.paddingSmall: 0
+        maximumLineCount: app.portrait ? 3 : 1;
+        text: panel.text
+        textFormat: Text.StyledText
+        truncationMode: TruncationMode.Elide
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.WordWrap
+    }
+
+    ListItemLabel {
+        id: additionalInfoItem
+        anchors.top: textItem.bottom
+        color: Theme.secondaryHighlightColor
+        font.pixelSize: Theme.fontSizeSmall
+        height: text ? implicitHeight + Theme.paddingSmall: 0
+        horizontalAlignment: Text.AlignRight
+        text: {
+            var info = "";
+            if (panel.postcode) info += app.tr("Postcode") + "  ";
+            if (panel.link) info += app.tr("Web") + "  ";
+            if (panel.phone) info += app.tr("Phone") + "  ";
+            if (panel.text && textItem.truncated) info += app.tr("Text") + "  ";
+            if (info)
+                return app.tr("More info: %1", info);
+            return "";
+        }
+        truncationMode: TruncationMode.Fade
+        verticalAlignment: Text.AlignTop
     }
 
     Rectangle {
         id: splitterItem
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.top: linkItem.bottom
+        anchors.top: additionalInfoItem.bottom
         color: "transparent"
-        height: Theme.paddingLarge - Theme.paddingMedium
+        height: Theme.paddingLarge - Theme.paddingSmall
     }
 
     MouseArea {
@@ -128,17 +191,53 @@ Rectangle {
         }
     }
 
-    IconListItem {
-        id: linkItem
-        anchors.top: textItem.bottom
-        height: panel.link ? implicitHeight + Theme.paddingMedium : 0
-        icon: panel.link ? "image://theme/icon-m-link" : ""
-        label: panel.link
-        MouseArea {
-            anchors.fill: parent
-            onClicked: Qt.openUrlExternally(panel.link)
-        }
-    }
+
+//    Item {
+//        // phone number is usually short and does not fill the whole line
+//        // since the rest of the line can be used for dragging the panel,
+//        // this arrangement minimizes the area used to show the phone
+//        id: phoneItem
+//        anchors.left: parent.left
+//        anchors.leftMargin: Theme.horizontalPageMargin
+//        anchors.top: textItem.bottom
+//        height: panel.phone ? Math.max(phoneIcon.height, phoneText.height) + Theme.paddingSmall : 0
+//        width: phoneIcon.width + phoneText.width + Theme.paddingSmall
+
+//        Image {
+//            id: phoneIcon
+//            anchors.left: parent.left
+//            fillMode: Image.Pad
+//            height: panel.phone ? implicitHeight : 0
+//            source: panel.phone ? "image://theme/icon-m-phone" : ""
+//        }
+
+//        Label {
+//            id: phoneText
+//            anchors.left: phoneIcon.right
+//            anchors.leftMargin: Theme.paddingSmall
+//            anchors.verticalCenter: phoneIcon.verticalCenter
+//            text: panel.phone
+//            truncationMode: TruncationMode.Fade
+//            width: Math.min(implicitWidth, panel.width-phoneIcon.width-2*Theme.horizontalPageMargin-Theme.paddingSmall)
+//        }
+
+//        MouseArea {
+//            anchors.fill: parent
+//            onClicked: Qt.openUrlExternally("tel:" + panel.phone)
+//        }
+//    }
+
+//    IconListItem {
+//        id: linkItem
+//        anchors.top: phoneItem.bottom
+//        height: panel.link ? implicitHeight + Theme.paddingSmall : 0
+//        icon: panel.link ? "image://theme/icon-m-link" : ""
+//        label: panel.link
+//        MouseArea {
+//            anchors.fill: parent
+//            onClicked: Qt.openUrlExternally(panel.link)
+//        }
+//    }
 
     Row {
         id: mainButtons
@@ -202,17 +301,17 @@ Rectangle {
             }
         }
 
-//        IconButton {
-//            enabled: panel.active
-//            icon.source: "image://theme/icon-m-share"
-//            onClicked: {
-//                if (coordinate === undefined) return;
-//                app.showMenu("SharePage.qml", {
-//                                 "coordinate": coordinate,
-//                                 "title": title,
-//                             });
-//            }
-//        }
+        //        IconButton {
+        //            enabled: panel.active
+        //            icon.source: "image://theme/icon-m-share"
+        //            onClicked: {
+        //                if (coordinate === undefined) return;
+        //                app.showMenu("SharePage.qml", {
+        //                                 "coordinate": coordinate,
+        //                                 "title": title,
+        //                             });
+        //            }
+        //        }
 
         IconButton {
             enabled: panel.active
@@ -263,14 +362,8 @@ Rectangle {
     function hide() {
         _hide();
         panel.active = false;
-        panel.bookmarked = false;
-        panel.coordinate = undefined;
         panel.hasData = false;
-        panel.link = "";
         panel.poiId = "";
-        panel.text = "";
-        panel.title = "";
-        panel.showMenu = false;
         app.poiActive = false;
         app.map.setSelectedPoi()
     }
@@ -282,15 +375,22 @@ Rectangle {
     function show(poi, menu) {
         app.poiActive = true;
         panel.noAnimation = panel.hasData;
+        // fill poi data
+        panel.address = poi.address || "";
         panel.bookmarked = poi.bookmarked || false;
         panel.coordinate = poi.coordinate || QtPositioning.coordinate(poi.y, poi.x);
-        panel.hasData = true;
         panel.link = poi.link || "";
+        panel.phone = poi.phone || "";
         panel.poiId = poi.poiId || "";
+        panel.poiType = poi.poiType || "";
+        panel.postcode = poi.postcode || "";
         panel.text = poi.text || "";
-        panel.title = poi.title || "";
+        panel.title = poi.title || app.tr("Unnamed point");
+        panel.poi = poi;
+        // fill panel vars
         panel.showMenu = !!menu;
         panel.active = (panel.poiId.length > 0);
+        panel.hasData = true;
         _show();
         panel.noAnimation = false;
         app.map.setSelectedPoi(panel.coordinate)

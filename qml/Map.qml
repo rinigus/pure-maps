@@ -211,10 +211,14 @@ MapboxMap {
         if (hasPoi(poi)) return false; // avoid duplicates
         // Add new POI marker to the map.        
         map.pois.push({
+            "address": poi.address || "",
             "bookmarked": poi.bookmarked || false,
             "coordinate": QtPositioning.coordinate(poi.y, poi.x),
             "link": poi.link || "",
+            "phone": poi.phone || "",
             "poiId": poi.poiId || Util.uuidv4(),
+            "poiType": poi.poiType || "",
+            "postcode": poi.postcode || "",
             "provider": poi.provider || "",
             "text": poi.text || "",
             "title": poi.title || "",

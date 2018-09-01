@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2016 Osmo Salomaa
+# Copyright (C) 2016 Osmo Salomaa, 2018 Rinigus
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,6 +28,16 @@ import urllib.parse
 URL = "http://photon.komoot.de/api/?q={query}&limit={limit}&lang={lang}"
 cache = {}
 
+def autocomplete(query, x, y, params):
+    """Return a list of autocomplete dictionaries matching `query`."""
+    if len(query) < 3: return []
+    key = "autocomplete:{}".format(query)
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[key])
+    results = geocode(query, params)
+    cache[key] = copy.deepcopy(results)
+    return results
+
 def geocode(query, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
@@ -40,6 +50,10 @@ def geocode(query, params):
     results = poor.http.get_json(url)["features"]
     results = list(map(poor.AttrDict, results))
     results = [dict(
+        address=parse_address_full(result),
+        label=parse_address_full(result),
+        poi_type=parse_type(result),
+        postcode=parse_postcode(result),
         title=parse_title(result),
         description=parse_description(result),
         x=float(result.geometry.coordinates[0]),
@@ -59,6 +73,14 @@ def parse_address(props):
     if not items:
         raise ValueError
     return " ".join(items)
+
+def parse_address_full(result):
+    """Parse full address from geocoding result."""
+    description = parse_components(result.properties)
+    title = parse_title(result)
+    if description[0] != title:
+        description.insert(0, title)
+    return ", ".join(description).strip()
 
 def parse_components(props):
     """Parse location components from geocoding result properties."""
@@ -80,8 +102,24 @@ def parse_description(result):
         del description[0]
     return ", ".join(description).strip()
 
+def parse_postcode(result):
+    with poor.util.silent(Exception):
+        return result.properties.postcode
+    return ""
+
 def parse_title(result):
     """Parse title from geocoding result."""
     with poor.util.silent(Exception):
         return result.properties.name
     return parse_components(result.properties)[0]
+
+def parse_type(result):
+    """Parse OSM type from geocoding result"""
+    items = []
+    with poor.util.silent(Exception):
+        if result.properties.osm_key not in ["amenity"]: 
+            items.append(result.properties.osm_key.capitalize())
+    with poor.util.silent(Exception):
+        if result.properties.osm_value not in ["", "yes", "1"]: 
+            items.append(result.properties.osm_value.capitalize())
+    return ", ".join(items).strip()

@@ -98,6 +98,8 @@ def nearby(query, near, radius, params):
     x = float(results.origin.lng)
     y = float(results.origin.lat)
     results = [dict(
+        address=parse_address(result),
+        poi_type=parse_type(result),
         title=result.title,
         description=parse_description(result),
         distance=float(result.distance),
@@ -112,6 +114,11 @@ def normalize(t):
     """Normalize the string"""
     return unicodedata.normalize("NFKC", t).casefold()
 
+def parse_address(result):
+    with poor.util.silent(Exception):
+        return result.admin_region
+    return ""
+
 def parse_description(result):
     """Parse description from search result."""
     items = []
@@ -123,3 +130,11 @@ def parse_description(result):
     with poor.util.silent(Exception):
         items.append(result.admin_region)
     return ", ".join(items) or "–"
+
+def parse_type(result):
+    with poor.util.silent(Exception):
+        type = result.type
+        type = type.replace("amenity", "")
+        type = type.replace("_", " ").strip()
+        return type.capitalize()
+    return ""

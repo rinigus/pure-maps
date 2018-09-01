@@ -51,8 +51,6 @@ MapboxMapGestureArea {
 
     onPressAndHoldGeo: {
         map.addPois([{
-            "text": app.tr("Unnamed point"),
-            "title": app.tr("Unnamed point"),
             "x": geocoordinate.longitude,
             "y": geocoordinate.latitude,
         }]);

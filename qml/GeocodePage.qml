@@ -76,9 +76,13 @@ Page {
                     py.call_sync("poor.app.history.add_place", [model.place]);
                     app.hideMenu();
                     var p = {
+                        "address": details.address || "",
                         "link": details.link || "",
+                        "phone": details.phone || "",
+                        "poiType": details.poi_type || "",
+                        "postcode": details.postcode || "",
                         "provider": details.provider || "",
-                        "text": details.text || details.title || model.place,
+                        "text": details.text || "",
                         "title": details.title || model.place,
                         "type": "geocode",
                         "x": details.x,
