@@ -145,7 +145,7 @@ Rectangle {
         horizontalAlignment: Text.AlignRight
         text: {
             var info = "";
-            if (panel.postcode) info += app.tr("Postcode") + "  ";
+            if (panel.postcode) info += app.tr("Postal code") + "  ";
             if (panel.link) info += app.tr("Web") + "  ";
             if (panel.phone) info += app.tr("Phone") + "  ";
             if (panel.text && textItem.truncated) info += app.tr("Text") + "  ";
@@ -262,7 +262,9 @@ Rectangle {
             icon.source: "image://theme/icon-m-about"
             onClicked: {
                 panel.showMenu = false;
-                console.log("Open POI information page")
+                app.showMenu("PoiInfoPage.qml", {
+                                 "poi": panel.poi,
+                             });
             }
         }
 
