@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Osmo Salomaa
+# Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,6 +30,7 @@ import poor
 import urllib.parse
 
 from concurrent.futures import ThreadPoolExecutor
+from poor.i18n import _
 
 CONF_DEFAULTS = {"sort_by_distance": False}
 
@@ -112,7 +113,9 @@ def inject_venue_details(results):
         venues = [x.response.venue for x in details]
         for i in range(len(results)):
             results[i].description = parse_description(venues[i])
+            results[i].link = parse_url(venues[i], results[i].link)
             results[i].text = parse_text(venues[i])
+            results[i].phone = parse_phone(venues[i])
 
 def nearby(query, near, radius, params):
     """Return X, Y and a list of dictionaries of places matching `query`."""
@@ -176,6 +179,26 @@ def parse_text(venue):
         tip = parse_tip(venue) or venue.get("description") or ""
         if not tip: raise ValueError("No tip")
         lines.append("{}".format(tip))
+        lines.append("")
+    with poor.util.silent(Exception):
+        hours = venue.hours
+        open_lines = []
+        for i in hours.timeframes:
+            s = i.days + ": "
+            for j in i.open:
+                s += j.renderedTime + " "
+            open_lines.append(s.strip())
+        if len(open_lines) > 0:
+            lines.append(_("Opening hours:"))
+            lines.extend(open_lines)
+        lines.append("")
+    with poor.util.silent(Exception):
+        for i in venue.attributes.groups:
+            for j in i['items']:
+                if j.displayName!=j.displayValue:
+                    lines.append("{}: {}".format(j.displayName, j.displayValue))
+                else:
+                    lines.append(j.displayName)
     return "<br>".join(lines)
 
 def parse_tip(venue):
@@ -195,6 +218,13 @@ def parse_type(venue):
         return ", ".join(types).strip()
     return ""
 
+def parse_phone(venue):
+    with poor.util.silent(Exception):
+        return venue.contact.formattedPhone
+    with poor.util.silent(Exception):
+        return venue.contact.phone
+    return ""
+
 def prepare_point(point):
     """Return geocoded coordinates for `point`."""
     # Foursquare does geocoding too, but not that well.
@@ -208,3 +238,8 @@ def parse_postcode(venue):
     with poor.util.silent(Exception):
         return venue.location.postalCode
     return ""
+
+def parse_url(venue, default=""):
+    with poor.util.silent(Exception):
+        return venue.url
+    return default
