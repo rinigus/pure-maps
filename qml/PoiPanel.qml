@@ -191,54 +191,6 @@ Rectangle {
         }
     }
 
-
-//    Item {
-//        // phone number is usually short and does not fill the whole line
-//        // since the rest of the line can be used for dragging the panel,
-//        // this arrangement minimizes the area used to show the phone
-//        id: phoneItem
-//        anchors.left: parent.left
-//        anchors.leftMargin: Theme.horizontalPageMargin
-//        anchors.top: textItem.bottom
-//        height: panel.phone ? Math.max(phoneIcon.height, phoneText.height) + Theme.paddingSmall : 0
-//        width: phoneIcon.width + phoneText.width + Theme.paddingSmall
-
-//        Image {
-//            id: phoneIcon
-//            anchors.left: parent.left
-//            fillMode: Image.Pad
-//            height: panel.phone ? implicitHeight : 0
-//            source: panel.phone ? "image://theme/icon-m-phone" : ""
-//        }
-
-//        Label {
-//            id: phoneText
-//            anchors.left: phoneIcon.right
-//            anchors.leftMargin: Theme.paddingSmall
-//            anchors.verticalCenter: phoneIcon.verticalCenter
-//            text: panel.phone
-//            truncationMode: TruncationMode.Fade
-//            width: Math.min(implicitWidth, panel.width-phoneIcon.width-2*Theme.horizontalPageMargin-Theme.paddingSmall)
-//        }
-
-//        MouseArea {
-//            anchors.fill: parent
-//            onClicked: Qt.openUrlExternally("tel:" + panel.phone)
-//        }
-//    }
-
-//    IconListItem {
-//        id: linkItem
-//        anchors.top: phoneItem.bottom
-//        height: panel.link ? implicitHeight + Theme.paddingSmall : 0
-//        icon: panel.link ? "image://theme/icon-m-link" : ""
-//        label: panel.link
-//        MouseArea {
-//            anchors.fill: parent
-//            onClicked: Qt.openUrlExternally(panel.link)
-//        }
-//    }
-
     Row {
         id: mainButtons
         anchors.leftMargin: Theme.horizontalPageMargin
@@ -258,11 +210,11 @@ Rectangle {
         ]
 
         IconButton {
-            enabled: panel.active
             icon.source: "image://theme/icon-m-about"
             onClicked: {
                 panel.showMenu = false;
                 app.showMenu("PoiInfoPage.qml", {
+                                 "active": active,
                                  "poi": panel.poi,
                              });
             }
@@ -302,18 +254,6 @@ Rectangle {
                              });
             }
         }
-
-        //        IconButton {
-        //            enabled: panel.active
-        //            icon.source: "image://theme/icon-m-share"
-        //            onClicked: {
-        //                if (coordinate === undefined) return;
-        //                app.showMenu("SharePage.qml", {
-        //                                 "coordinate": coordinate,
-        //                                 "title": title,
-        //                             });
-        //            }
-        //        }
 
         IconButton {
             enabled: panel.active

@@ -24,12 +24,28 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
-    property var poi
+    property bool active: false
+    property var  poi
 
     SilicaFlickable {
-
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
+
+        PullDownMenu {
+            MenuItem {
+                enabled: page.active
+                text: app.tr("Edit")
+                onClicked: {
+                    var dialog = app.pageStack.push("PoiEditPage.qml",
+                                                    {"poi": poi});
+                    dialog.accepted.connect(function() {
+                        map.updatePoi(dialog.poi);
+                        app.clearMenu();
+                        map.showPoi(dialog.poi);
+                    })
+                }
+            }
+        }
 
         Column {
             id: column
@@ -105,8 +121,8 @@ Page {
                 label: app.tr("Center on location")
                 onClicked: {
                     map.setCenter(
-                        poi.coordinate.longitude,
-                        poi.coordinate.latitude);
+                                poi.coordinate.longitude,
+                                poi.coordinate.latitude);
                     app.clearMenu();
                 }
             }

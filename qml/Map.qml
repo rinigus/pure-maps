@@ -665,6 +665,17 @@ MapboxMap {
         map.margins = Qt.rect(0.05, marginY, 0.9, marginHeight);
     }
 
+    function updatePoi(poi) {
+        // update a POI with new data
+        if (poi.poiId == null) return;
+        map.pois = map.pois.map(function(p) {
+            if (p.poiId != poi.poiId) return p;
+            return poi;
+        } );
+        map.updatePois();
+        map.savePois();
+    }
+
     function updatePois() {
         // Update POI markers on the map.
         var regCoor = [];
