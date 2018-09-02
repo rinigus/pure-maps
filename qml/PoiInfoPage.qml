@@ -221,7 +221,6 @@ Page {
                 color: Theme.highlightColor
                 height: text ? implicitHeight + Theme.paddingMedium: 0
                 text: poi.text
-                textFormat: Text.StyledText
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap

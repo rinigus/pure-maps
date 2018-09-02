@@ -172,7 +172,7 @@ def parse_text(venue):
     subtitle = []
     with poor.util.silent(Exception):
         subtitle.append((
-            '<b>{:.1f}</b> / 10'
+            '{:.1f} / 10'
         ).format(venue.rating))
     lines.append("  ".join(subtitle))
     with poor.util.silent(Exception):
@@ -199,7 +199,7 @@ def parse_text(venue):
                     lines.append("{}: {}".format(j.displayName, j.displayValue))
                 else:
                     lines.append(j.displayName)
-    return "<br>".join(lines)
+    return "\n".join(lines)
 
 def parse_tip(venue):
     """Return the top tip for `venue`."""

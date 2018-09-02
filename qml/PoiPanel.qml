@@ -130,7 +130,6 @@ Rectangle {
         height: text ? implicitHeight + Theme.paddingSmall: 0
         maximumLineCount: app.portrait ? 3 : 1;
         text: panel.text
-        textFormat: Text.StyledText
         truncationMode: TruncationMode.Elide
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
