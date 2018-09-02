@@ -31,8 +31,10 @@ Dialog {
     property var    autocompletions: []
     property var    completionDetails: []
     property var    history: []
+    property var    poiCompletionDetails: []
     property string prevAutocompleteQuery: "."
     property string query: ""
+    property var    selectedPoi: undefined
 
     SilicaListView {
         id: listView
@@ -70,6 +72,8 @@ Dialog {
 
             onClicked: {
                 listItem.focus = true;
+                var poi = dialog.poiCompletionDetails[model.place.toLowerCase()];
+                if (poi) dialog.selectedPoi = poi;
                 dialog.query = model.place;
                 dialog.accept();
             }
@@ -160,6 +164,7 @@ Dialog {
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
         py.call("poor.app.router.geocoder.autocomplete", [query, x, y], function(results) {
+            if (!dialog) return;
             dialog.autocompletePending = false;
             if (dialog.status !== PageStatus.Active) return;
             results = results || [];
@@ -183,6 +188,23 @@ Dialog {
                                      dialog.autocompletions,
                                      listView.model.count);
 
+        // Find POIs matching the completions
+        var searchKeys = ["title", "poiType", "address", "postcode", "text", "phone", "link"];
+        var s = Util.findMatchesInObjects(query, map.pois, searchKeys);
+        var jointResults = [];
+        // Limit to max 10 POIs if there are many completions
+        if (found.length > 20 && s.length > 10)
+            s = s.slice(0, 9);
+        // save poi completions details
+        dialog.poiCompletionDetails = [];
+        s.map(function (p) {
+            var txt = p.title || s.address || app.tr("Unnamed point");
+            dialog.poiCompletionDetails[txt.toLowerCase()] = p;
+            jointResults.push({"text": txt, "markup": txt});
+        });
+
+        // Merge all completions
+        found = jointResults.concat(found);
         Util.injectMatches(listView.model, found, "place", "text");
         viewPlaceholder.enabled = found.length === 0;
     }

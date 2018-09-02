@@ -93,7 +93,10 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        if (dialog.page === app.tr("Current position")) {
+                        if (dialog.selectedPoi && dialog.selectedPoi.coordinate) {
+                            page.near = [dialog.selectedPoi.coordinate.longitude, dialog.selectedPoi.coordinate.latitude];
+                            page.nearText = dialog.selectedPoi.title || app.tr("Unnamed point");
+                        } else if (dialog.page === app.tr("Current position")) {
                             page.near = map.getPosition();
                             page.nearText = dialog.query;
                         } else {

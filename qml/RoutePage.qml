@@ -85,7 +85,10 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        if (dialog.query === app.tr("Current position")) {
+                        if (dialog.selectedPoi && dialog.selectedPoi.coordinate) {
+                            page.from = [dialog.selectedPoi.coordinate.longitude, dialog.selectedPoi.coordinate.latitude];
+                            page.fromText = dialog.selectedPoi.title || app.tr("Unnamed point");
+                        } else if (dialog.query === app.tr("Current position")) {
                             page.from = map.getPosition();
                             page.fromText = dialog.query;
                         } else {
@@ -118,7 +121,10 @@ Page {
                 onClicked: {
                     var dialog = app.pageStack.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
-                        if (dialog.query === app.tr("Current position")) {
+                        if (dialog.selectedPoi && dialog.selectedPoi.coordinate) {
+                            page.to = [dialog.selectedPoi.coordinate.longitude, dialog.selectedPoi.coordinate.latitude];
+                            page.toText = dialog.selectedPoi.title || app.tr("Unnamed point");
+                        } else if (dialog.query === app.tr("Current position")) {
                             page.to = map.getPosition();
                             page.toText = dialog.query;
                         } else {
