@@ -444,6 +444,12 @@ MapboxMap {
         return [destination.longitude, destination.latitude];
     }
 
+    function getPoiById(poiId) {
+        for (var i = 0; i < map.pois.length; i++)
+            if (map.pois[i].poiId === poiId)
+                return map.pois[i];
+    }
+
     function getPoiProviders(type) {
         // Return list of providers for POIs of given type.
         return map.pois.filter(function(poi) {

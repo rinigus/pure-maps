@@ -63,6 +63,12 @@ Page {
             }
 
             IconListItem {
+                icon: "image://theme/icon-m-favorite"
+                label: app.tr("Points of interest")
+                onClicked: app.pageStack.push("PoiPage.qml");
+            }
+
+            IconListItem {
                 icon: "image://theme/icon-m-share"
                 label: app.tr("Share current position")
                 BusyIndicator {

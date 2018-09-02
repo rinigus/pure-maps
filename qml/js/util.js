@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -65,6 +65,45 @@ function findMatches(query, candidates, completions, max) {
             found[i].text, query, Theme.highlightColor);
     }
     return found;
+}
+
+function findMatchesInObjects(query, candidates, keys) {
+    // Return an array of objects from candidates that
+    // have at match among values of the object. The returned
+    // array is sorted on return
+    var d = Array.apply(null, {"length": candidates.length}).map(Number.call, Number);
+    if (query) {
+        query = query.toLowerCase();
+        var components = query.split(/ +/);
+        d = d.filter(function (index) {
+            var p = candidates[index];
+            var s = "";
+            for (var i=0; i < keys.length; i++)
+                s = s + " " + p[ keys[i] ].toLowerCase();
+            var found = true;
+            for (var i=0; i < components.length && found; i++) {
+                if (s.indexOf(components[i]) < 0)
+                    found = false;
+            }
+            return found;
+        });
+    }
+    d.sort(function (ai, bi){
+        var a = candidates[ai];
+        var b = candidates[bi];
+        for (var i=0; i < keys.length; i++) {
+            var va = a[ keys[i] ];
+            var vb = b[ keys[i] ];
+            if (va != null && vb == null) return -1;
+            if (va == null && vb != null) return  1;
+            if (va < vb) return -1;
+            if (va > vb) return  1;
+        }
+        return 0;
+    });
+    var result = [];
+    d.map(function (i){ result.push(candidates[i]); });
+    return result;
 }
 
 function injectMatches(model, found, text, markup) {
