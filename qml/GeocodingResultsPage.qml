@@ -64,17 +64,22 @@ Page {
 
             onClicked: {
                 app.hideMenu();
-                map.addPois([{
+                var p = {
+                    "address": model.address || "",
                     "link": model.link || "",
+                    "phone": model.phone || "",
+                    "poiType": model.poi_type || "",
+                    "postcode": model.postcode || "",
                     "provider": model.provider || "",
-                    "text": model.text || model.title,
+                    "text": model.text || "",
                     "title": model.title,
                     "type": "geocode",
                     "x": model.x,
                     "y": model.y,
-                }]);
-                map.hidePoiBubbles();
-                map.showPoiBubble(map.pois[map.pois.length-1]);
+                };
+                if (map.addPoi(p)) p = map.pois[map.pois.length-1];
+                else p.title = app.tr("%1 [duplicate]", p.title);
+                map.showPoi(p, true);
                 map.autoCenter = false;
                 map.setCenter(model.x, model.y);
                 listItem.visited = true;
@@ -97,9 +102,13 @@ Page {
                     for (var i = 0; i < listView.model.count; i++) {
                         var item = listView.model.get(i);
                         pois.push({
+                            "address": item.address || "",
                             "link": item.link || "",
+                            "phone": item.phone || "",
+                            "poiType": item.poi_type || "",
+                            "postcode": item.postcode || "",
                             "provider": item.provider || "",
-                            "text": item.text || item.title,
+                            "text": item.text || "",
                             "title": item.title,
                             "type": "geocode",
                             "x": item.x,

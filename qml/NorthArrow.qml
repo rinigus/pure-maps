@@ -48,6 +48,7 @@ IconButton {
             }
         }
     ]
+    visible: !app.poiActive || app.navigationActive
     width: icon.width
     z: 500
 

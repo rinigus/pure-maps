@@ -1,10 +1,17 @@
+2018-09-XX: Pure Maps 1.4
+=========================
+
+* Support for storing and editing POIs
+* POI details are shown by panel and info page
+* Updated scripts for geocoders and guides
+
 2018-08-26: Pure Maps 1.3
 =========================
 
 * Show routing options only after destination and origin are available
 * Support for Valhalla's options
 * Set Stadia Maps router as a default
-* adjust route layer on Mapbox Traffic styles
+* Adjust route layer on Mapbox Traffic styles
 * Update translations
 * Other small changes
 

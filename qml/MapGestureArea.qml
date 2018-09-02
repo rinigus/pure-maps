@@ -39,9 +39,10 @@ MapboxMapGestureArea {
         // Show information bubble if POI marker clicked.
         for (var i = 0; i < map.pois.length; i++)
             if (area.coordinatesMatch(geocoordinate, map.pois[i].coordinate))
-                return map.togglePoiBubble(map.pois[i]);
+                return map.showPoi(map.pois[i]);
         // Hide any POI bubbles if background map clicked.
-        map.hidePoiBubbles();
+        if (app.poiActive)
+            map.hidePoi();
     }
 
     onDoubleClicked: {
@@ -50,8 +51,6 @@ MapboxMapGestureArea {
 
     onPressAndHoldGeo: {
         map.addPois([{
-            "text": app.tr("Unnamed point"),
-            "title": app.tr("Unnamed point"),
             "x": geocoordinate.longitude,
             "y": geocoordinate.latitude,
         }]);

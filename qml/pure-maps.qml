@@ -61,7 +61,10 @@ ApplicationWindow {
     property bool navigationStarted: false
     property var  northArrow: null
     property var  notification: null
+    property bool poiActive: false
+    property var  poiPanel: null
     property bool portrait: screenHeight >= screenWidth
+    property var  remorse: null
     property int  rerouteConsecutiveErrors: 0
     property var  reroutePreviousTime: -1
     property int  rerouteTotalCalls: 0

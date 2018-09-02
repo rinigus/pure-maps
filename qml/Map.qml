@@ -59,21 +59,27 @@ MapboxMap {
     property bool   tiltEnabled: false
 
     readonly property var images: QtObject {
-        readonly property string pixel: "pure-image-pixel"
+        readonly property string pixel:         "pure-image-pixel"
+        readonly property string poi:           "pure-image-poi"
+        readonly property string poiBookmarked: "pure-image-poi-bookmarked"
     }
 
     readonly property var layers: QtObject {
-        readonly property string dummies:   "pure-layer-dummies"
-        readonly property string maneuvers: "pure-layer-maneuvers-active"
-        readonly property string nodes:     "pure-layer-maneuvers-passive"
-        readonly property string pois:      "pure-layer-pois"
-        readonly property string route:     "pure-layer-route"
+        readonly property string dummies:         "pure-layer-dummies"
+        readonly property string maneuvers:       "pure-layer-maneuvers-active"
+        readonly property string nodes:           "pure-layer-maneuvers-passive"
+        readonly property string pois:            "pure-layer-pois"
+        readonly property string poisBookmarked:  "pure-layer-pois-bookmarked"
+        readonly property string poisSelected:    "pure-layer-pois-selected"
+        readonly property string route:           "pure-layer-route"
     }
 
     readonly property var sources: QtObject {
-        readonly property string maneuvers: "pure-source-maneuvers"
-        readonly property string pois:      "pure-source-pois"
-        readonly property string route:     "pure-source-route"
+        readonly property string maneuvers:      "pure-source-maneuvers"
+        readonly property string pois:           "pure-source-pois"
+        readonly property string poisBookmarked: "pure-source-pois-bookmarked"
+        readonly property string poisSelected:   "pure-source-pois-selected"
+        readonly property string route:          "pure-source-route"
     }
 
     Behavior on bearing {
@@ -136,12 +142,18 @@ MapboxMap {
     }
 
     Connections {
+        target: app.poiPanel
+        onHeightChanged: map.updateMargins();
+    }
+
+    Connections {
         target: app.streetName
         onHeightChanged: map.updateMargins();
     }
 
     Component.onCompleted: {
         map.initSources();
+        map.initIcons();
         map.initLayers();
         map.configureLayers();
         map.initProperties();
@@ -196,15 +208,34 @@ MapboxMap {
     }
 
     function _addPoi(poi) {
-        // Add new POI marker to the map.
+        if (hasPoi(poi)) return false; // avoid duplicates
+        // Add new POI marker to the map.        
         map.pois.push({
+            "address": poi.address || "",
+            "bookmarked": poi.bookmarked || false,
             "coordinate": QtPositioning.coordinate(poi.y, poi.x),
             "link": poi.link || "",
+            "phone": poi.phone || "",
+            "poiId": poi.poiId || Util.uuidv4(),
+            "poiType": poi.poiType || "",
+            "postcode": poi.postcode || "",
             "provider": poi.provider || "",
             "text": poi.text || "",
             "title": poi.title || "",
             "type": poi.type || "",
         });
+        return true;
+    }
+
+    function addPoi(poi) {
+        // Add a new POI marker and return if it was
+        // added successfully
+        var r=_addPoi(poi);
+        if (r) {
+            map.updatePois();
+            map.savePois();
+        }
+        return r;
     }
 
     function addPois(pois) {
@@ -258,6 +289,17 @@ MapboxMap {
         app.rerouteTotalCalls = 0;
     }
 
+    function bookmarkPoi(poiId, bookmark) {
+        if (poiId == null) return;
+        map.pois = map.pois.map(function(p) {
+            if (p.poiId != poiId) return p;
+            p.bookmarked = bookmark;
+            return p;
+        } );
+        map.updatePois();
+        map.savePois();
+    }
+
     function centerOnPosition() {
         // Center on the current position.
         map.setCenter(
@@ -265,7 +307,15 @@ MapboxMap {
             map.position.coordinate.latitude);
     }
 
-    function clear() {
+    function clear(confirm) {
+        if (confirm) {
+            app.remorse.execute(app.tr("Clearing map"),
+                                function() {
+                                    map.clear();
+                                });
+            return;
+        }
+
         // Remove all markers from the map.
         app.navigationActive = false;
         map.clearPois();
@@ -273,9 +323,11 @@ MapboxMap {
     }
 
     function clearPois() {
-        // Remove all POI markers from the map.
-        hidePoiBubbles();
-        map.pois = [];
+        // Remove POI panel if its active
+        hidePoi();
+        map.pois = map.pois.filter(function(p) {
+            return p.bookmarked;
+        });
         map.updatePois();
         map.savePois();
     }
@@ -294,12 +346,36 @@ MapboxMap {
     }
 
     function configureLayers() {
-        // Configure layer for POI markers.
-        map.setPaintProperty(map.layers.pois, "circle-opacity", 0);
-        map.setPaintProperty(map.layers.pois, "circle-radius", 32 / map.pixelRatio);
-        map.setPaintProperty(map.layers.pois, "circle-stroke-color", app.styler.route);
-        map.setPaintProperty(map.layers.pois, "circle-stroke-opacity", app.styler.routeOpacity);
-        map.setPaintProperty(map.layers.pois, "circle-stroke-width", 13 / map.pixelRatio);
+        // Configure layer for selected POI markers.
+        map.setPaintProperty(map.layers.poisSelected, "circle-opacity", 0);
+        map.setPaintProperty(map.layers.poisSelected, "circle-radius", 16 / map.pixelRatio);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-color", app.styler.route);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-opacity", app.styler.routeOpacity);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-width", 13 / map.pixelRatio);
+        // Configure layer for non-bookmarked POI markers.
+        map.setLayoutProperty(map.layers.pois, "icon-allow-overlap", true);
+        map.setLayoutProperty(map.layers.pois, "icon-anchor", "bottom");
+        map.setLayoutProperty(map.layers.pois, "icon-image", map.images.poi);
+        map.setLayoutProperty(map.layers.pois, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.pois, "text-anchor", "top");
+        map.setLayoutProperty(map.layers.pois, "text-field", "{name}");
+        map.setLayoutProperty(map.layers.pois, "text-optional", true);
+        map.setLayoutProperty(map.layers.pois, "text-size", 12);
+        map.setPaintProperty(map.layers.pois, "text-color", app.styler.streetFg);
+        map.setPaintProperty(map.layers.pois, "text-halo-color", app.styler.streetBg);
+        map.setPaintProperty(map.layers.pois, "text-halo-width", 2);
+        // Configure layer for bookmarked POI markers.
+        map.setLayoutProperty(map.layers.poisBookmarked, "icon-allow-overlap", true);
+        map.setLayoutProperty(map.layers.poisBookmarked, "icon-anchor", "bottom");
+        map.setLayoutProperty(map.layers.poisBookmarked, "icon-image", map.images.poiBookmarked);
+        map.setLayoutProperty(map.layers.poisBookmarked, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.poisBookmarked, "text-anchor", "top");
+        map.setLayoutProperty(map.layers.poisBookmarked, "text-field", "{name}");
+        map.setLayoutProperty(map.layers.poisBookmarked, "text-optional", true);
+        map.setLayoutProperty(map.layers.poisBookmarked, "text-size", 12);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-color", app.styler.streetFg);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-halo-color", app.styler.streetBg);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-halo-width", 2);
         // Configure layer for route polyline.
         map.setLayoutProperty(map.layers.route, "line-cap", "round");
         map.setLayoutProperty(map.layers.route, "line-join", "round");
@@ -325,6 +401,15 @@ MapboxMap {
         map.setLayoutProperty(map.layers.dummies, "icon-padding", 20 / map.pixelRatio);
         map.setLayoutProperty(map.layers.dummies, "icon-rotation-alignment", "map");
         map.setLayoutProperty(map.layers.dummies, "visibility", "visible");
+    }
+
+    function deletePoi(poiId) {
+        if (poiId == null) return;
+        map.pois = map.pois.filter(function(p) {
+            return p.poiId != poiId;
+        } );
+        map.updatePois();
+        map.savePois();
     }
 
     function endNavigating() {
@@ -375,22 +460,33 @@ MapboxMap {
         return [map.position.coordinate.longitude, map.position.coordinate.latitude];
     }
 
-    function hidePoiBubble(poi) {
-        // Hide the bubble of given POI.
-        if (!poi.bubble) return;
-        map.removeLocationTracking(poi.bubble.trackerId);
-        poi.bubble.destroy();
-        poi.bubble = null;
+    function hasPoi(poi) {
+        // check if such poi exists already
+        var longitude = poi.coordinate ? poi.coordinate.longitude : poi.x;
+        var latitude = poi.coordinate ? poi.coordinate.latitude : poi.y;
+        for (var i = 0; i < map.pois.length; i++)
+            if (Math.abs(longitude - map.pois[i].coordinate.longitude) < 1e-6 &&
+                    Math.abs(latitude - map.pois[i].coordinate.latitude) < 1e-6)
+                return true;
+        return false;
     }
 
-    function hidePoiBubbles() {
-        // Hide label bubbles of all POI markers.
-        map.pois.map(hidePoiBubble);
+    function hidePoi() {
+        app.poiPanel && app.poiPanel.hide();
+    }
+
+    function initIcons() {
+        var suffix = "";
+        if (app.styler.position) suffix = "-" + app.styler.position;
+        map.addImagePath(map.images.poi, Qt.resolvedUrl(app.getIcon("icons/marker-stroked" + suffix, true)));
+        map.addImagePath(map.images.poiBookmarked, Qt.resolvedUrl(app.getIcon("icons/marker" + suffix, true)));
     }
 
     function initLayers() {
         // Initialize layers for POI markers, route polyline and maneuver markers.
-        map.addLayer(map.layers.pois, {"type": "circle", "source": map.sources.pois});
+        map.addLayer(map.layers.poisSelected, {"type": "circle", "source": map.sources.poisSelected});
+        map.addLayer(map.layers.pois, {"type": "symbol", "source": map.sources.pois});
+        map.addLayer(map.layers.poisBookmarked, {"type": "symbol", "source": map.sources.poisBookmarked});
         map.addLayer(map.layers.route, {"type": "line", "source": map.sources.route}, map.firstLabelLayer);
         map.addLayer(map.layers.maneuvers, {
             "type": "circle",
@@ -426,7 +522,9 @@ MapboxMap {
 
     function initSources() {
         // Initialize sources for map overlays.
+        map.addSourcePoints(map.sources.poisSelected, []);
         map.addSourcePoints(map.sources.pois, []);
+        map.addSourcePoints(map.sources.poisBookmarked, []);
         map.addSourceLine(map.sources.route, []);
         map.addSourcePoints(map.sources.maneuvers, []);
     }
@@ -498,6 +596,7 @@ MapboxMap {
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
         app.attributionButton.logo = py.evaluate("poor.app.basemap.logo");
         app.styler.apply(py.evaluate("poor.app.basemap.style_gui"))
+        map.initIcons();
         map.initLayers();
         map.configureLayers();
         positionMarker.initIcons();
@@ -516,19 +615,15 @@ MapboxMap {
         positionMarker.configureLayers();
     }
 
-    function showPoiBubble(poi) {
-        // Show a bubble for the given POI.
-        if (poi.bubble) return;
-        var component = Qt.createComponent("PoiBubble.qml");
-        var bubble = component.createObject(map, {
-            "coordinate": poi.coordinate,
-            "link": poi.link,
-            "text": poi.text,
-            "title": poi.title,
-            "trackerId": "poi-%1".arg(++map.counter),
-        });
-        map.trackLocation(bubble.trackerId, bubble.coordinate);
-        poi.bubble = bubble;
+    function setSelectedPoi(coordinate) {
+        if (coordinate===undefined)
+            map.updateSourcePoints(map.sources.poisSelected, []);
+        else
+            map.updateSourcePoints(map.sources.poisSelected, [coordinate]);
+    }
+
+    function showPoi(poi, showMenu) {
+        app.poiPanel && app.poiPanel.show(poi, showMenu);
     }
 
     function toggleAutoCenter() {
@@ -543,11 +638,6 @@ MapboxMap {
         }
     }
 
-    function togglePoiBubble(poi) {
-        // Show or hide a bubble for the given POI.
-        poi.bubble ? map.hidePoiBubble(poi) : map.showPoiBubble(poi);
-    }
-
     function updateManeuvers() {
         // Update maneuver marker on the map.
         var coords = Util.pluck(map.maneuvers, "coordinate");
@@ -557,25 +647,52 @@ MapboxMap {
 
     function updateMargins() {
         // Calculate new margins and set them for the map.
-        var header = app.navigationBlock ? app.navigationBlock.height : 0;
-        var footer = app.menuButton ? app.menuButton.height : 0;
-        if (app.navigationActive) {
-            footer = app.portrait && app.navigationInfoBlock ? app.navigationInfoBlock.height : 0;
-            footer += app.streetName ? app.streetName.height : 0
-        }
+        var header = app.navigationBlock && app.navigationBlock.height > 0 ? app.navigationBlock.height : map.height*0.05;
+        var footer = !app.poiActive && !app.navigationActive && app.menuButton ? map.height*0.05 : 0;
+        footer += !app.poiActive && app.navigationActive && app.portrait && app.navigationInfoBlock ? app.navigationInfoBlock.height : 0;
+        footer += !app.poiActive && app.navigationActive && app.streetName ? app.streetName.height : 0
+        footer += app.poiActive && app.poiPanel ? app.poiPanel.height : 0
+
+        footer = Math.min(footer, map.height / 2.0);
+
         // If auto-rotate is on, the user is always heading up
         // on the screen and should see more ahead than behind.
-        var marginY = map.autoRotate ? footer/map.height : 0.05;
-        var marginHeight = map.autoRotate ?
-            0.2 * (map.height - header - footer) / map.height :
-            0.9 * (map.height - header) / map.height;
+        var marginY = (footer*1.0)/map.height;
+        var marginHeight = (map.autoRotate ? 0.2 : 1.0) * (1.0*(map.height - header - footer)) / map.height;
+
+        // console.log("M " + footer + " " + marginY + " " + header + " " + marginHeight + " ")
+
         map.margins = Qt.rect(0.05, marginY, 0.9, marginHeight);
+    }
+
+    function updatePoi(poi) {
+        // update a POI with new data
+        if (poi.poiId == null) return;
+        map.pois = map.pois.map(function(p) {
+            if (p.poiId != poi.poiId) return p;
+            return poi;
+        } );
+        map.updatePois();
+        map.savePois();
     }
 
     function updatePois() {
         // Update POI markers on the map.
-        var coords = Util.pluck(map.pois, "coordinate");
-        map.updateSourcePoints(map.sources.pois, coords);
+        var regCoor = [];
+        var regName = [];
+        var bookmarkedCoor = [];
+        var bookmarkedName = [];
+        for (var i = 0; i < map.pois.length; i++) {
+            if (map.pois[i].bookmarked) {
+                bookmarkedCoor.push(map.pois[i].coordinate);
+                bookmarkedName.push(map.pois[i].title);
+            } else {
+                regCoor.push(map.pois[i].coordinate);
+                regName.push(map.pois[i].title);
+            }
+        }
+        map.updateSourcePoints(map.sources.pois, regCoor, regName);
+        map.updateSourcePoints(map.sources.poisBookmarked, bookmarkedCoor, bookmarkedName);
     }
 
     function updateRoute() {
