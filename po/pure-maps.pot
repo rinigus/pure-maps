@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-26 13:00+0300\n"
+"POT-Creation-Date: 2018-09-02 13:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: guides/foursquare.py:192
+msgid "Opening hours:"
+msgstr ""
 
 #: poor/geocoder.py:108
 msgid "Point from geo link"
@@ -33,7 +37,7 @@ msgstr ""
 #: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
 #: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:80
 #: qml/RoutePage.qml:88 qml/RoutePage.qml:113 qml/RoutePage.qml:121
-#: qml/RoutePage.qml:179 qml/RoutePage.qml:184 qml/RoutePage.qml:186
+#: qml/RoutePage.qml:180 qml/RoutePage.qml:186 qml/RoutePage.qml:188
 #: qml/RoutePointPage.qml:94 qml/RoutePointPage.qml:97
 msgid "Current position"
 msgstr ""
@@ -47,15 +51,15 @@ msgstr ""
 msgid "Exit: "
 msgstr ""
 
-#: poor/narrative.py:415 qml/pure-maps.qml:163
+#: poor/narrative.py:415 qml/pure-maps.qml:166
 msgid "Rerouting"
 msgstr ""
 
-#: poor/narrative.py:416 qml/pure-maps.qml:185
+#: poor/narrative.py:416 qml/pure-maps.qml:188
 msgid "Rerouting failed"
 msgstr ""
 
-#: poor/narrative.py:417 qml/pure-maps.qml:179
+#: poor/narrative.py:417 qml/pure-maps.qml:182
 msgid "New route found"
 msgstr ""
 
@@ -253,7 +257,7 @@ msgid "Remove"
 msgstr ""
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
-#: qml/GeocodePage.qml:106 qml/GeocodePage.qml:125 qml/MenuPage.qml:46
+#: qml/GeocodePage.qml:111 qml/GeocodePage.qml:130 qml/MenuPage.qml:46
 #: qml/PlaceTypePage.qml:88 qml/RoutePointPage.qml:104
 msgid "Search"
 msgstr ""
@@ -342,11 +346,16 @@ msgstr ""
 msgid "Navigation"
 msgstr ""
 
-#: qml/GeocodePage.qml:112 qml/NearbyPage.qml:63 qml/RoutePage.qml:54
+#: qml/GeocodePage.qml:92 qml/GeocodingResultsPage.qml:81
+#: qml/NearbyResultsPage.qml:81
+msgid "%1 [duplicate]"
+msgstr ""
+
+#: qml/GeocodePage.qml:117 qml/NearbyPage.qml:63 qml/RoutePage.qml:54
 msgid "Using"
 msgstr ""
 
-#: qml/GeocodePage.qml:159 qml/RoutePointPage.qml:138
+#: qml/GeocodePage.qml:164 qml/RoutePointPage.qml:138
 msgid ""
 "You can search by address, locality, landmark and many other terms. For best "
 "results, include a region, e.g. “address, city” or “city, country”."
@@ -361,41 +370,41 @@ msgstr ""
 msgid "Alternatives"
 msgstr ""
 
-#: qml/GeocodingResultsPage.qml:94 qml/NearbyResultsPage.qml:94
+#: qml/GeocodingResultsPage.qml:99 qml/NearbyResultsPage.qml:99
 msgid "Show all"
 msgstr ""
 
-#: qml/GeocodingResultsPage.qml:132 qml/NearbyResultsPage.qml:132
+#: qml/GeocodingResultsPage.qml:141 qml/NearbyResultsPage.qml:141
 #: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
 #: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
 #: routers/stadiamaps_results.qml:36
 msgid "Searching"
 msgstr ""
 
-#: qml/GeocodingResultsPage.qml:154 qml/NearbyResultsPage.qml:151
+#: qml/GeocodingResultsPage.qml:163 qml/NearbyResultsPage.qml:160
 msgid "%1 Results"
 msgstr ""
 
-#: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
+#: qml/GeocodingResultsPage.qml:167 qml/NearbyResultsPage.qml:164
 #: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
 #: routers/osmscout_results.qml:58 routers/osrm_results.qml:58
 #: routers/stadiamaps_results.qml:58
 msgid "No results"
 msgstr ""
 
-#: qml/MapGestureArea.qml:53 qml/MapGestureArea.qml:54
-msgid "Unnamed point"
+#: qml/Map.qml:312
+msgid "Clearing map"
 msgstr ""
 
-#: qml/Map.qml:439
+#: qml/Map.qml:537
 msgid "Voice navigation on"
 msgstr ""
 
-#: qml/Map.qml:538
+#: qml/Map.qml:633
 msgid "Auto-center off"
 msgstr ""
 
-#: qml/Map.qml:541
+#: qml/Map.qml:636
 msgid "Auto-center on"
 msgstr ""
 
@@ -552,8 +561,8 @@ msgstr ""
 msgid "Near"
 msgstr ""
 
-#: qml/NearbyPage.qml:111 routers/mapquest_open_settings.qml:26
-#: routers/ValhallaSettings.qml:33
+#: qml/NearbyPage.qml:111 qml/PoiEditPage.qml:59
+#: routers/mapquest_open_settings.qml:26 routers/ValhallaSettings.qml:33
 msgid "Type"
 msgstr ""
 
@@ -561,11 +570,11 @@ msgstr ""
 msgid "Radius"
 msgstr ""
 
-#: qml/NorthArrow.qml:72
+#: qml/NorthArrow.qml:73
 msgid "Auto-rotate on"
 msgstr ""
 
-#: qml/NorthArrow.qml:73
+#: qml/NorthArrow.qml:74
 msgid "Auto-rotate off"
 msgstr ""
 
@@ -573,24 +582,144 @@ msgstr ""
 msgid "You can search for venues by type or name."
 msgstr ""
 
-#: qml/PoiBubble.qml:60
-msgid "Navigate"
+#: qml/PoiEditPage.qml:38
+msgid "Save"
 msgstr ""
 
-#: qml/PoiBubble.qml:77
+#: qml/PoiEditPage.qml:39
+msgid "Edit POI"
+msgstr ""
+
+#: qml/PoiEditPage.qml:43
+msgid "General"
+msgstr ""
+
+#: qml/PoiEditPage.qml:49
+msgid "Title"
+msgstr ""
+
+#: qml/PoiEditPage.qml:50
+msgid "Enter title"
+msgstr ""
+
+#: qml/PoiEditPage.qml:60
+msgid "Enter type, such as Restaurant"
+msgstr ""
+
+#: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:80
+msgid "Address"
+msgstr ""
+
+#: qml/PoiEditPage.qml:74
+msgid "Enter address"
+msgstr ""
+
+#: qml/PoiEditPage.qml:83 qml/PoiPanel.qml:147
+msgid "Postal code"
+msgstr ""
+
+#: qml/PoiEditPage.qml:84
+msgid "Enter postal code"
+msgstr ""
+
+#: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:168
+msgid "Contact"
+msgstr ""
+
+#: qml/PoiEditPage.qml:99
+msgid "Phone number"
+msgstr ""
+
+#: qml/PoiEditPage.qml:101
+msgid "Enter phone number"
+msgstr ""
+
+#: qml/PoiEditPage.qml:110
+msgid "URL"
+msgstr ""
+
+#: qml/PoiEditPage.qml:111
+msgid "Enter URL"
+msgstr ""
+
+#: qml/PoiEditPage.qml:119 qml/PoiEditPage.qml:124 qml/PoiInfoPage.qml:217
+msgid "Additional info"
+msgstr ""
+
+#: qml/PoiEditPage.qml:125
+msgid "Enter additional info"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:37
+msgid "Edit"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:56 qml/PoiPanel.qml:329
+msgid "Unnamed point"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:72
+msgid "Latitude: %1"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:72
+msgid "Longitude: %2"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:95
+msgid "Postal code: %1"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:103
+msgid "Actions"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:109
+msgid "Share location"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:121
+msgid "Center on location"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:133
+msgid "Navigate To"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:145
+msgid "Navigate From"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:157
 msgid "Nearby"
 msgstr ""
 
-#: qml/PoiBubble.qml:94
-msgid "Share"
+#: qml/PoiPanel.qml:102
+msgid "%1; %2"
 msgstr ""
 
-#: qml/PoiBubble.qml:100
-msgid "Share Location"
+#: qml/PoiPanel.qml:120
+msgid "Latitude: %1; Longitude: %2"
 msgstr ""
 
-#: qml/PoiBubble.qml:111
+#: qml/PoiPanel.qml:148
 msgid "Web"
+msgstr ""
+
+#: qml/PoiPanel.qml:149
+msgid "Phone"
+msgstr ""
+
+#: qml/PoiPanel.qml:150
+msgid "Text"
+msgstr ""
+
+#: qml/PoiPanel.qml:152
+msgid "More info: %1"
+msgstr ""
+
+#: qml/PoiPanel.qml:263
+msgid "Deleting POI"
 msgstr ""
 
 #: qml/PreferencesPage.qml:42
@@ -677,7 +806,7 @@ msgstr ""
 msgid "Clear cache"
 msgstr ""
 
-#: qml/pure-maps.qml:175
+#: qml/pure-maps.qml:178
 msgid "Rerouting failed: %1"
 msgstr ""
 
@@ -834,6 +963,14 @@ msgstr ""
 msgid "High-occupancy vehicle (HOV)"
 msgstr ""
 
+#: routers/ValhallaSettings.qml:40
+msgid "Motorcycle"
+msgstr ""
+
+#: routers/ValhallaSettings.qml:41
+msgid "Motor Scooter"
+msgstr ""
+
 #: routers/ValhallaSettings.qml:65
 msgid "Catalan"
 msgstr ""
@@ -883,7 +1020,7 @@ msgid "Advanced options"
 msgstr ""
 
 #: routers/ValhallaSettings.qml:99
-msgid "Prefer shorter path"
+msgid "Prefer shorter route"
 msgstr ""
 
 #: routers/ValhallaSettings.qml:110
