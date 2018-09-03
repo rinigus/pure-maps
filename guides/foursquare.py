@@ -24,7 +24,6 @@ https://developer.foursquare.com/docs/api/venues/details
 
 import copy
 import functools
-import html
 import itertools
 import poor
 import urllib.parse
