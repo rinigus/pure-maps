@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
 NAME       = harbour-pure-maps
-VERSION    = 1.3.1
+VERSION    = 1.4.0
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
 PREFIX     = /usr

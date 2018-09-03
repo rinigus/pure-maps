@@ -1,9 +1,16 @@
-2018-09-XX: Pure Maps 1.4
+2018-09-03: Pure Maps 1.4
 =========================
 
 * Support for storing and editing POIs
 * POI details are shown by panel and info page
+* Extend data stored for each POI
 * Updated scripts for geocoders and guides
+* POI information text is in plain text only
+* Allow only one POI per location
+* List POIs on dedicated page
+* Allow using POIs as routing points and nearby reference
+* Updated translations
+* Bugfix: restore map scale if navigation is stopped via clearing the map
 
 2018-08-26: Pure Maps 1.3
 =========================
@@ -23,7 +30,7 @@
 * Rearrange controls in navigation mode and add new controls
 * Add support for landscape orientation
 * If provided by router, show street name of the upcoming maneuver and signs
-* Set configuration for map zoom during navigation 
+* Set configuration for map zoom during navigation
 * Add support for a search along the current route (OSM Scout Server, Nearby search)
 * Add Stadia Maps as an online Valhalla router provider
 * New application icon and graphics used for cover page (Fellfrosch / popanz)
