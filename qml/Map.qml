@@ -272,9 +272,9 @@ MapboxMap {
 
     function beginNavigating() {
         // Set UI to navigation mode.
+        setModeNavigate();
         var scale = app.conf.get("map_scale_navigation_" + route.mode);
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
-        map.setScale(scale);
         map.zoomLevel < zoom && map.setZoomLevel(zoom);
         map.centerOnPosition();
         map.autoCenter = true;
@@ -320,6 +320,7 @@ MapboxMap {
         app.navigationActive = false;
         map.clearPois();
         map.clearRoute();
+        map.setModeExplore();
     }
 
     function clearPois() {
@@ -418,7 +419,7 @@ MapboxMap {
         map.autoRotate = false;
         map.tiltEnabled = app.conf.get("tilt_when_navigating");
         map.zoomLevel > 14 && map.setZoomLevel(14);
-        map.setScale(app.conf.get("map_scale"));
+        map.setModeExplore();
         app.navigationActive = false;
     }
 
@@ -513,8 +514,8 @@ MapboxMap {
     function initProperties() {
         // Initialize map properties and restore saved overlays.
         if (!py.ready) return py.onReadyChanged.connect(map.initProperties);
-        map.setScale(app.conf.get("map_scale"));
         map.setBasemap();
+        map.setModeExplore();
         map.setZoomLevel(app.conf.get("zoom"));
         map.autoCenter = app.conf.get("auto_center");
         map.autoRotate = app.conf.get("auto_rotate");
@@ -612,6 +613,22 @@ MapboxMap {
         // Center on the given coordinates.
         if (!x || !y) return;
         map.center = QtPositioning.coordinate(y, x);
+    }
+
+    function setModeExplore() {
+        // map used to explore it
+        map.setScale(app.conf.get("map_scale"));
+    }
+
+    function setModeNavigate() {
+        // map during navigation
+        var scale = app.conf.get("map_scale_navigation_" + route.mode);
+        map.setScale(scale);
+    }
+
+    function setModeExamineRoute() {
+        // map before nevigation, used to examine route
+        setModeExplore(); // currently the same as explore
     }
 
     function setScale(scale) {

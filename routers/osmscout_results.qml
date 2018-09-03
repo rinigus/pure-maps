@@ -53,6 +53,7 @@ Page {
                 map.addRoute(route);
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
+                map.setModeExamineRoute();
                 app.pageStack.navigateBack(PageStackAction.Immediate);
             } else {
                 busy.error = app.tr("No results");
