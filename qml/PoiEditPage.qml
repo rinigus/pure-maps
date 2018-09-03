@@ -49,9 +49,9 @@ Dialog {
                 label: app.tr("Title")
                 placeholderText: app.tr("Enter title")
                 text: poi.title ? poi.title : ""
+                width: parent.width
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: typeField.focus = true
-                width: parent.width
             }
 
             TextField {
@@ -59,9 +59,9 @@ Dialog {
                 label: app.tr("Type")
                 placeholderText: app.tr("Enter type, such as Restaurant")
                 text: poi.poiType ? poi.poiType : ""
+                width: parent.width
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: addressField.focus = true
-                width: parent.width
             }
 
             SectionHeader {
@@ -73,9 +73,9 @@ Dialog {
                 label: app.tr("Address")
                 placeholderText: app.tr("Enter address")
                 text: poi.address ? poi.address : ""
+                width: parent.width
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: postcodeField.focus = true
-                width: parent.width
             }
 
             TextField {
@@ -83,9 +83,9 @@ Dialog {
                 label: app.tr("Postal code")
                 placeholderText: app.tr("Enter postal code")
                 text: poi.postcode ? poi.postcode : ""
+                width: parent.width
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: phoneField.focus = true
-                width: parent.width
             }
 
             SectionHeader {
@@ -97,12 +97,11 @@ Dialog {
                 color: Theme.highlightColor
                 inputMethodHints: Qt.ImhDialableCharactersOnly
                 label: app.tr("Phone number")
-                placeholderColor: Theme.highlightColor
                 placeholderText: app.tr("Enter phone number")
                 text: poi.phone ? poi.phone : ""
+                width: parent.width
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: focus = false
-                width: parent.width
             }
 
             TextField {
@@ -110,9 +109,9 @@ Dialog {
                 label: app.tr("URL")
                 placeholderText: app.tr("Enter URL")
                 text: poi.link ? poi.link : ""
+                width: parent.width
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: textArea.focus = true
-                width: parent.width
             }
 
             SectionHeader {
