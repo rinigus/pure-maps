@@ -42,6 +42,7 @@ DEFAULTS = {
     "map_scale_navigation_car": 2.0,
     "map_scale_navigation_foot": 1.0,
     "map_scale_navigation_transit": 1.0,
+    "poi_list_show_bookmarked": False,
     "reroute": True,
     "router": "stadiamaps",
     "show_narrative": True,

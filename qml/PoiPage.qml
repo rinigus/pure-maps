@@ -23,18 +23,30 @@ import "."
 
 import "js/util.js" as Util
 
-Dialog {
+Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property bool   bookmarkedOnly: false
     property string lastQuery: ""
-    property var searchKeys: ["title", "poiType", "address", "postcode", "text", "phone", "link"]
+    property var    searchKeys: ["title", "poiType", "address", "postcode", "text", "phone", "link"]
 
     SilicaListView {
         id: listView
         anchors.fill: parent
         // Prevent list items from stealing focus.
         currentIndex: -1
+
+        PullDownMenu {
+            MenuItem {
+                text: bookmarkedOnly ? app.tr("Show all") : app.tr("Show bookmarked")
+                onClicked: {
+                    bookmarkedOnly = !bookmarkedOnly;
+                    app.conf.set("poi_list_show_bookmarked", bookmarkedOnly);
+                    fillModel(lastQuery);
+                }
+            }
+        }
 
         delegate: ListItem {
             id: listItem
@@ -169,11 +181,14 @@ Dialog {
     }
 
     Component.onCompleted: {
+        bookmarkedOnly = app.conf.get("poi_list_show_bookmarked");
         fillModel("");
     }
 
     function fillModel(query) {
-        var s = Util.findMatchesInObjects(query, map.pois, searchKeys);
+        var data = map.pois;
+        if (bookmarkedOnly) data = map.pois.filter(function (p) { return p.bookmarked; });
+        var s = Util.findMatchesInObjects(query, data, searchKeys);
         listView.model.clear();
         s.map(function (p){ listView.model.append(p); });
     }
