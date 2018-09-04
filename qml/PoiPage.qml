@@ -79,6 +79,39 @@ Dialog {
                 verticalAlignment: Text.AlignTop
             }
 
+            menu: ContextMenu {
+                id: contextMenu
+                MenuItem {
+                    text: app.tr("View")
+                    onClicked: {
+                        var poi = map.getPoiById(model.poiId);
+                        if (!poi) return;
+                        app.pageStack.push("PoiInfoPage.qml",
+                                           {"poi": poi});
+                    }
+                }
+                MenuItem {
+                    text: app.tr("Edit")
+                    onClicked: {
+                        var poi = map.getPoiById(model.poiId);
+                        if (!poi) return;
+                        var dialog = app.pageStack.push("PoiEditPage.qml",
+                                                        {"poi": poi});
+                        dialog.accepted.connect(function() {
+                            map.updatePoi(dialog.poi);
+                            fillModel(lastQuery);
+                        })
+                    }
+                }
+                MenuItem {
+                    text: app.tr("Remove")
+                    onClicked: {
+                        app.map.deletePoi(model.poiId);
+                        listView.model.remove(index);
+                    }
+                }
+            }
+
             onClicked: {
                 var p = map.getPoiById(model.poiId);
                 if (!p) {
