@@ -714,11 +714,11 @@ msgstr "I närheten"
 
 #: qml/PoiPage.qml:42
 msgid "Show bookmarked"
-msgstr ""
+msgstr "Visa bokmärkta"
 
 #: qml/PoiPage.qml:97
 msgid "View"
-msgstr ""
+msgstr "Visa"
 
 #: qml/PoiPage.qml:149
 msgid "Points of Interest"
