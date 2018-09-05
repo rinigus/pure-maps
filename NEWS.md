@@ -11,6 +11,8 @@
 * Allow using POIs as routing points and nearby reference
 * Updated translations
 * Bugfix: restore map scale if navigation is stopped via clearing the map
+* [1.4.2] Added Greek translation
+* [1.4.2] Handle HTTP connections in dedicated threads 
 
 2018-08-26: Pure Maps 1.3
 =========================
