@@ -11,28 +11,28 @@ msgstr ""
 "POT-Creation-Date: 2018-09-05 17:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: rinigus github, 2018\n"
-"Language-Team: Italian (https://www.transifex.com/rinigus/teams/89597/it/)\n"
+"Language-Team: Greek (https://www.transifex.com/rinigus/teams/89597/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: guides/foursquare.py:191
 msgid "Opening hours:"
-msgstr "Orari di apertura:"
+msgstr "Ώρες λειτουργίας:"
 
 #: poor/geocoder.py:108
 msgid "Point from geo link"
-msgstr "Punto da geo link"
+msgstr "Σημείο από γεωγραφικό σύνδεσμο"
 
 #: poor/geocoder.py:120
 msgid "Point from coordinates"
-msgstr "Punto da coordinate"
+msgstr "Σημείο από συντεταγμένες"
 
 #: poor/geocoder.py:130 poor/guide.py:123 poor/router.py:102
 msgid "Connection timed out"
-msgstr "Connessione scaduta"
+msgstr "Λήξη χρονικού ορίου σύνδεσης"
 
 #: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
 #: qml/NearbyPage.qml:99 qml/NearbyPage.qml:175 qml/NearbyPage.qml:185
@@ -41,281 +41,285 @@ msgstr "Connessione scaduta"
 #: qml/RoutePage.qml:186 qml/RoutePage.qml:192 qml/RoutePage.qml:194
 #: qml/RoutePointPage.qml:98 qml/RoutePointPage.qml:101
 msgid "Current position"
-msgstr "Posizione attuale"
+msgstr "Παρούσα θέση"
 
 #: poor/narrative.py:127
 #, python-brace-format
 msgid "In {distance}, {direction}"
-msgstr "Tra {distance}, {direction}"
+msgstr "Σε {distance}, {direction}"
 
 #: poor/narrative.py:218 poor/narrative.py:220
 msgid "Exit: "
-msgstr "Uscita: "
+msgstr "Έξοδος"
 
 #: poor/narrative.py:415 qml/pure-maps.qml:166
 msgid "Rerouting"
-msgstr "Ricalcolo"
+msgstr "Επαναπροσδιορισμός δρομολόγησης"
 
 #: poor/narrative.py:416 qml/pure-maps.qml:188
 msgid "Rerouting failed"
-msgstr "Ricalcolo fallito"
+msgstr "Αποτυχία επαναπροσδιορισμού δρομολόγησης"
 
 #: poor/narrative.py:417 qml/pure-maps.qml:182
 msgid "New route found"
-msgstr "Nuovo percorso trovato"
+msgstr "Βρέθηκε νέα διαδρομή"
 
 #: poor/util.py:183 poor/util.py:201
 msgid "mi"
-msgstr "mi"
+msgstr "μι"
 
 #: poor/util.py:183 poor/util.py:201
 msgid "miles"
-msgstr "miglia"
+msgstr "μίλια"
 
 #: poor/util.py:191 qml/Meters.qml:72
 msgid "ft"
-msgstr "ft"
+msgstr "πδ"
 
 #: poor/util.py:191
 msgid "feet"
-msgstr "piedi"
+msgstr "πόδια"
 
 #: poor/util.py:209 qml/Meters.qml:83
 msgid "yd"
-msgstr "yd"
+msgstr "γδ"
 
 #: poor/util.py:209
 msgid "yards"
-msgstr "iarde"
+msgstr "γιάρδες"
 
 #: poor/util.py:219
 msgid "km"
-msgstr "km"
+msgstr "χλ"
 
 #: poor/util.py:219
 msgid "kilometers"
-msgstr "chilometri"
+msgstr "χιλιόμετρα"
 
 #: poor/util.py:227 qml/Meters.qml:94
 msgid "m"
-msgstr "m"
+msgstr "μ"
 
 #: poor/util.py:227
 msgid "meters"
-msgstr "metri"
+msgstr "μέτρα"
 
 #: poor/util.py:236 poor/util.py:244
 #, python-brace-format
 msgid "{distance} north"
-msgstr "{distance} nord"
+msgstr "{distance} βόρεια"
 
 #: poor/util.py:237
 #, python-brace-format
 msgid "{distance} north-east"
-msgstr "{distance} nord-est"
+msgstr "{distance} βόρειο-ανατολικά"
 
 #: poor/util.py:238
 #, python-brace-format
 msgid "{distance} east"
-msgstr "{distance} est"
+msgstr "{distance} ανατολικά"
 
 #: poor/util.py:239
 #, python-brace-format
 msgid "{distance} south-east"
-msgstr "{distance} sud-est"
+msgstr "{distance} νότιο-ανατολικά"
 
 #: poor/util.py:240
 #, python-brace-format
 msgid "{distance} south"
-msgstr "{distance} sud"
+msgstr "{distance} νότια"
 
 #: poor/util.py:241
 #, python-brace-format
 msgid "{distance} south-west"
-msgstr "{distance} sud-ovest"
+msgstr "{distance} νότιο-δυτικά"
 
 #: poor/util.py:242
 #, python-brace-format
 msgid "{distance} west"
-msgstr "{distance}  ovest"
+msgstr "{distance} δυτικά"
 
 #: poor/util.py:243
 #, python-brace-format
 msgid "{distance} north-west"
-msgstr "{distance} nord-ovest"
+msgstr "{distance} βόρειοδυτικά"
 
 #: poor/util.py:265
 msgid "{:d} min"
-msgstr "{:d} min"
+msgstr "{:d} λπτ"
 
 #: poor/util.py:266
 msgid "{:d} h {:d} min"
-msgstr "{:d} h {:d} min"
+msgstr "{:d} ω {:d} λπτ"
 
 #: routers/digitransit.py:58
 msgid "airplane"
-msgstr "aeroplano"
+msgstr "αεροπλάνο"
 
 #: routers/digitransit.py:59 standard input:11 standard input:13 standard
 #: input:17
 msgid "bicycle"
-msgstr "bicicletta"
+msgstr "ποδήλατο"
 
 #: routers/digitransit.py:60
 msgid "bus"
-msgstr "bus"
+msgstr "λεωφορείο "
 
 #: routers/digitransit.py:61
 msgid "ferry"
-msgstr "traghetto"
+msgstr "πλοίο"
 
 #: routers/digitransit.py:62
 msgid "train"
-msgstr "treno"
+msgstr "τραίνο"
 
 #: routers/digitransit.py:63
 msgid "metro"
-msgstr "metropolitana"
+msgstr "μετρό"
 
 #: routers/digitransit.py:64
 msgid "tram"
-msgstr "tram"
+msgstr "τραμ"
 
 #: routers/digitransit.py:65
 msgid "walk"
-msgstr "a piedi"
+msgstr "βαδίζοντας"
 
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr "A piedi verso {arr_name}."
+msgstr "Βαδίστε προς  {arr_name}."
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get a city bike at {dep_name}."
-msgstr "Prendi una city bike presso {dep_name}."
+msgstr "Πάρτε ένα ποδήλατο πόλης στο {dep_name}."
 
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "Sali su {mode_name} {line_desc} a {dep_name} alle {dep_time}."
+msgstr "Επιγραφή {mode_name} {line_desc} στο {dep_name} στις {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr "Cammina verso la tua destinazione."
+msgstr "Περπατήστε προς τον προορισμό σας."
 
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "Lascia la city bike presso {dep_name} e cammina verso {arr_name}."
+msgstr ""
+"Αφήστε το ποδήλατο της πόλης στο {dep_name} και περπατήστε προς το "
+"{arr_name}."
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
 msgstr ""
-"Lascia la city bike presso {dep_name} e cammina verso la tua destinazione."
+"Αφήστε το ποδήλατο της πόλης στο {dep_name} και περπατήστε προς τον "
+"προορισμό σας."
 
 #: routers/digitransit.py:76
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Scendi a {dep_name} e vai a piedi verso {arr_name}."
+msgstr "Κατεβείτε στο {dep_name} και βαδίστε προς {arr_name}."
 
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Scendi a {dep_name}e pedala fino a {arr_name}."
+msgstr "Κατεβείτε στο {dep_name} και οδηγήστε το ποδήλατο προς {arr_name}."
 
 #: routers/digitransit.py:78
 #, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr ""
-"Scendi a {dep_name} e cambia a {mode_name} {line_desc} alle {dep_time}."
+"Βγείτε στο {dep_name} και μεταβείτε στο {mode_name} {line_desc} στις "
+"{dep_time}."
 
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Scendi a {dep_name} e vai a piedi verso la tua destinazione."
+msgstr "Βγειτε στο {dep_name} και περπατήστε προς τον προορισμό σας."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
-msgstr "Arrivato a destinazione."
+msgstr "Φτάσατε στον προορισμό σας"
 
 #: guides/foursquare_settings.qml:26 routers/ValhallaSettings.qml:163
 #: routers/ValhallaSettings.qml:228 routers/ValhallaSettings.qml:292
 msgid "Prefer"
-msgstr "Preferisci"
+msgstr "Προτιμώ"
 
 #: guides/foursquare_settings.qml:28
 msgid "Closest"
-msgstr "Più vicino"
+msgstr "Πλησιέστερο"
 
 #: guides/foursquare_settings.qml:29
 msgid "Best"
-msgstr "Migliore"
+msgstr "Καλύτερο"
 
 #: guides/osmscout_name.qml:53 qml/GeocodePage.qml:60 qml/PlaceTypePage.qml:59
 #: qml/PoiPage.qml:119 qml/RoutePointPage.qml:62
 msgid "Remove"
-msgstr "Rimuovi"
+msgstr "Αφαίρεση"
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
 #: qml/GeocodePage.qml:111 qml/GeocodePage.qml:130 qml/MenuPage.qml:46
 #: qml/PlaceTypePage.qml:88 qml/PoiPage.qml:154 qml/RoutePointPage.qml:108
 msgid "Search"
-msgstr "Cerca"
+msgstr "Αναζήτηση"
 
 #: guides/osmscout_name.qml:102
 msgid "You can search for venues by name."
-msgstr "Puoi cercare luoghi per nome."
+msgstr "Μπορείτε να αναζητήστε χώρους με την ονομασία"
 
 #: guides/osmscout_settings.qml:25
 msgid "Name"
-msgstr "Nome"
+msgstr "Όνομα "
 
 #: guides/osmscout_settings.qml:47
 msgid "Search along the route"
-msgstr "Cerca lungo il percorso"
+msgstr "Αναζήτηση κατά μήκος της διαδρομής"
 
 #: guides/osmscout_settings.qml:71
 msgid ""
 "When set, the search along the route is performed starting from the point "
 "specified by 'Near' on this page"
 msgstr ""
-"Quando impostata, la ricerca lungo il percorso viene eseguita a partire dal "
-"punto specificato in 'Vicino' su questa pagina"
+"Όταν έχει οριστεί, η αναζήτηση κατά μήκος της διαδρομής εκτελείται "
+"ξεκινώντας από το σημείο που καθορίζεται από το 'Κοντά' στη σελίδα αυτή"
 
 #: guides/osmscout_settings.qml:72
 msgid "Search starting from the reference point"
-msgstr "Rierca a partire dal punto di riferimento"
+msgstr "Αναζήτηση ξεκινώντας από το σημείο αναφοράς"
 
 #: qml/AboutPage.qml:38
 msgid "About Pure Maps"
-msgstr "Info su Pure Maps"
+msgstr "Σχετικά με Pure Maps"
 
 #: qml/AboutPage.qml:53
 msgid "version %1"
-msgstr "versione %1"
+msgstr "έκδοση %1"
 
 #: qml/AboutPage.qml:60
 msgid "GitHub page"
-msgstr "Pagina GitHub"
+msgstr "GitHub σελίδα"
 
 #: qml/AboutPage.qml:86
 msgid "Logo by %1"
-msgstr "Logo di %1"
+msgstr "Λογότυπος από %1"
 
 #: qml/AboutPage.qml:96
 msgid ""
 "Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
-"Pure Maps è software libero realizzato sotto la GNU General Public License "
-"(GPL), versione 3 o successiva."
+"Το Pure Maps είναι ελεύθερο λογισμικό που εκδίδεται με την άδεια GNU General"
+" Public License (GPL), έκδοση 3 ή νεότερη."
 
 #: qml/AboutPage.qml:101
 msgid "Translated by"
-msgstr "Tradotto da"
+msgstr "Μετάφραση από"
 
 #. TRANSLATORS: This is a special message that shouldn't be translated
 #. literally. It is used in the about page to give credits to the translators.
@@ -324,340 +328,339 @@ msgstr "Tradotto da"
 #. write them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:113
 msgid "translator-credits"
-msgstr ""
-"Michele Claus\n"
-"Alessandro Pra'"
+msgstr "μεταφραστικά"
 
 #: qml/AboutPage.qml:123
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
-"Puoi aggiungere nuove traduzioni dell'interfaccia o contribuire a quelle "
-"esistenti su Transifex."
+"Μπορείτε να προσθέσετε νέες μεταφράσεις διεπαφής ή να συνεισφέρετε σε "
+"υπάρχουσες μεταφράσεις στο Transifex."
 
 #: qml/AboutPage.qml:131
 msgid "Transifex page"
-msgstr "Pagina Transifex"
+msgstr "Transifex σελίδα"
 
 #: qml/AttributionPage.qml:36
 msgid "Attribution"
-msgstr "Attribuzione"
+msgstr "Απόδοση"
 
 #: qml/AttributionPage.qml:40 qml/BasemapPage.qml:29 qml/MenuPage.qml:114
 msgid "Maps"
-msgstr "Mappe"
+msgstr "Χάρτες"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
-msgstr "Luoghi"
+msgstr "Χώροι"
 
 #: qml/AttributionPage.qml:116 qml/MenuPage.qml:55 qml/NavigationPage.qml:39
 #: qml/RoutePage.qml:49
 msgid "Navigation"
-msgstr "Navigazione"
+msgstr "Πλοήγηση"
 
 #: qml/GeocodePage.qml:92 qml/GeocodingResultsPage.qml:81
 #: qml/NearbyResultsPage.qml:81
 msgid "%1 [duplicate]"
-msgstr "%1 [duplicato]"
+msgstr "%1 [διπλότυπο]"
 
 #: qml/GeocodePage.qml:117 qml/NearbyPage.qml:63 qml/RoutePage.qml:54
 msgid "Using"
-msgstr "Usa"
+msgstr "Χρησιμοποιώντας"
 
 #: qml/GeocodePage.qml:164 qml/RoutePointPage.qml:142
 msgid ""
 "You can search by address, locality, landmark and many other terms. For best"
 " results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
-"Puoi cercare per indirizzo, località, punto di riferimento e molti altri "
-"termini. Per risultati ottimali, includi una regione, ad es. \"Indirizzo, "
-"città\" o \"città, paese\"."
+"Μπορείτε να αναζητήσετε ανά διεύθυνση, τοποθεσία, ορόσημο και πολλούς άλλους"
+" όρους. Για καλύτερα αποτελέσματα, συμπεριλάβετε μια περιοχή, π.χ. "
+"\"Διεύθυνση, πόλη\" ή \"πόλη, χώρα\"."
 
 #: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
 #: routers/digitransit_settings.qml:181
 msgid "Default"
-msgstr "Predefinito"
+msgstr "Προκαθορισμένο"
 
 #: qml/GeocoderPage.qml:75 qml/GuidePage.qml:75 qml/RouterPage.qml:75
 msgid "Alternatives"
-msgstr "Alternative"
+msgstr "Εναλλακτικά"
 
 #: qml/GeocodingResultsPage.qml:99 qml/NearbyResultsPage.qml:99
 #: qml/PoiPage.qml:42
 msgid "Show all"
-msgstr "Mostra tutto"
+msgstr "Εμφάνιση όλων"
 
 #: qml/GeocodingResultsPage.qml:141 qml/NearbyResultsPage.qml:141
 #: routers/digitransit_results.qml:216 routers/mapquest_open_results.qml:36
 #: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
 #: routers/stadiamaps_results.qml:36
 msgid "Searching"
-msgstr "Ricerca"
+msgstr "Αναζητώντας"
 
 #: qml/GeocodingResultsPage.qml:163 qml/NearbyResultsPage.qml:160
 msgid "%1 Results"
-msgstr "%1 risultati"
+msgstr "%1 Αποτελέσματα"
 
 #: qml/GeocodingResultsPage.qml:167 qml/NearbyResultsPage.qml:164
 #: routers/digitransit_results.qml:245 routers/mapquest_open_results.qml:59
 #: routers/osmscout_results.qml:59 routers/osrm_results.qml:59
 #: routers/stadiamaps_results.qml:59
 msgid "No results"
-msgstr "Nessun risultato"
+msgstr "Χωρίς αποτέλεσμα"
 
 #: qml/Map.qml:312
 msgid "Clearing map"
-msgstr "Pulizia mappa"
+msgstr "Εκκαθάριση χάρτη"
 
 #: qml/Map.qml:544
 msgid "Voice navigation on"
-msgstr "Navigazione vocale attiva"
+msgstr "Φωνητική πλοήγηση ενεργοποιημένη"
 
 #: qml/Map.qml:656
 msgid "Auto-center off"
-msgstr "Centramento automatico disattivo"
+msgstr "Απενεργοποίηση αυτόματου κεντραρίσματος"
 
 #: qml/Map.qml:659
 msgid "Auto-center on"
-msgstr "Centramento automatico attivo"
+msgstr "Ενεργοποίηση αυτόματου κεντραρίσματος"
 
 #: qml/MenuPage.qml:61
 msgid "Nearby venues"
-msgstr "Località nelle vicinanze"
+msgstr "Κοντινά μέρη"
 
 #: qml/MenuPage.qml:67
 msgid "Points of interest"
-msgstr "Punti di interesse"
+msgstr "Σημείο ενδιαφέροντος"
 
 #: qml/MenuPage.qml:73
 msgid "Share current position"
-msgstr "Condividi posizione attuale"
+msgstr "Κοινοποίηση παρούσης τοποθεσίας"
 
 #: qml/MenuPage.qml:88
 msgid "Share Current Position"
-msgstr "Condividi posizione attuale"
+msgstr "Κοινοποίηση Παρούσας Τοποθεσίας"
 
 #: qml/MenuPage.qml:95
 msgid "Center on current position"
-msgstr "Centra su posizione attuale"
+msgstr "Κεντράρισμα παρούσας τοποθεσίας"
 
 #: qml/MenuPage.qml:104
 msgid "Clear map"
-msgstr "Cancella mappa"
+msgstr "Εκκαθάριση χάρτη"
 
 #: qml/MenuPage.qml:123
 msgid "Auto-center on position"
-msgstr "Centra sulla posizione"
+msgstr "Αυτόματη εστίαση στη θέση"
 
 #: qml/MenuPage.qml:140
 msgid "Auto-rotate on direction"
-msgstr "Ruota verso la direzione"
+msgstr "Αυτόματη περιστροφή στην κατεύθυνση"
 
 #: qml/MenuPage.qml:155
 msgid "About"
-msgstr "Crediti"
+msgstr "Σχετικά"
 
 #: qml/MenuPage.qml:159 qml/PreferencesPage.qml:36
 msgid "Preferences"
-msgstr "Impostazioni"
+msgstr "Προτιμήσεις"
 
 #: qml/Meters.qml:72 qml/Meters.qml:83 qml/NavigationInfoBlock.qml:83
 #: qml/NavigationInfoBlock.qml:85
 msgid "mph"
-msgstr "mph"
+msgstr "μαω"
 
 #: qml/Meters.qml:94 qml/NavigationInfoBlock.qml:87
 msgid "km/h"
-msgstr "km/h"
+msgstr "χμ/ω"
 
 #: qml/NarrativePage.qml:84
 msgid "Continue for %1."
-msgstr "Continua per %1."
+msgstr "Συνεχίστε για %1"
 
 #: qml/NarrativePage.qml:103
 msgid "Maneuvers"
-msgstr "Manovre"
+msgstr "Ελιγμούς "
 
 #: qml/NavigationBlock.qml:139
 msgid "ETA"
-msgstr "Arrivo"
+msgstr "ΑΩΑ"
 
 #: qml/NavigationBlock.qml:207
 msgid "Tap to review maneuvers or begin navigating"
-msgstr "Tocca per rivedere le manovre o inizia la navigazione"
+msgstr ""
+"Πατήστε για να ελέγξετε τους ελιγμούς ή για να ξεκινήσετε την πλοήγηση"
 
 #: qml/NavigationPage.qml:54
 msgid "Pause"
-msgstr "Pausa"
+msgstr "Παύση"
 
 #: qml/NavigationPage.qml:55
 msgid "Resume"
-msgstr "Riprendi"
+msgstr "Επανεκκίνηση"
 
 #: qml/NavigationPage.qml:55
 msgid "Begin"
-msgstr "Inizia"
+msgstr "Αρχίστε"
 
 #: qml/NavigationPage.qml:66
 msgid "Reroute"
-msgstr "Ricalcola"
+msgstr "Επαναπροσδιορισμός διαδρομής"
 
 #: qml/NavigationPage.qml:78
 msgid "Clear"
-msgstr "Cancella"
+msgstr "Εκκαθάριση"
 
 #: qml/NavigationPage.qml:89
 msgid "Status"
-msgstr "Stato"
+msgstr "Κατάσταση"
 
 #: qml/NavigationPage.qml:137
 msgid "Remaining"
-msgstr "Rimanenti"
+msgstr "Παραμένων"
 
 #: qml/NavigationPage.qml:168
 msgid "Total"
-msgstr "Totale"
+msgstr "Σύνολο"
 
 #: qml/NavigationPage.qml:190
 msgid "Options"
-msgstr "Opzioni"
+msgstr "Επιλογές"
 
 #: qml/NavigationPage.qml:196
 msgid "Show navigation instructions"
-msgstr "Mostra indicazioni"
+msgstr "Εμφάνιση οδηγιών πλοήγησης"
 
 #: qml/NavigationPage.qml:207
 msgid "Voice navigation instructions"
-msgstr "Indicazioni vocali"
+msgstr "Οδηγίες φωνητικής πλοήγησης"
 
 #: qml/NavigationPage.qml:220
 msgid "Reroute automatically"
-msgstr "Ricalcola automaticamente"
+msgstr "Αυτόματος επαναπροσδιορισμός πλοήγησης "
 
 #: qml/NavigationPage.qml:231 qml/PreferencesPage.qml:108
 msgid "Snap position to road"
-msgstr "Aggancia posizione alla strada"
+msgstr "Κλείδωμα θέσης στον δρόμο"
 
 #: qml/NavigationPage.qml:243 qml/PreferencesPage.qml:52
 msgid "Map scale"
-msgstr "Scala della mappa"
+msgstr "Κλίμακα χάρτου"
 
 #: qml/NavigationPage.qml:261
 msgid "Show direction signs"
-msgstr "Mostra segnali stradali"
+msgstr "Εμφάνιση σημάτων κατεύθυνσης"
 
 #: qml/NavigationPage.qml:270
 msgid "Show speed limit sign"
-msgstr "Mostra limiti di velocità"
+msgstr "Εμφάνιση σημάτων ορίου ταχύτητας"
 
 #: qml/NavigationPage.qml:272
 msgid "Speed limit"
-msgstr "Limite di velocità"
+msgstr "Όριο ταχύτητας "
 
 #: qml/NavigationPage.qml:274 qml/PreferencesPage.qml:91
 msgid "Always"
-msgstr "Sempre"
+msgstr "Πάντοτε"
 
 #: qml/NavigationPage.qml:275
 msgid "Only when exceeding"
-msgstr "Solo quando superato"
+msgstr "Μόνο όταν υπερβαίνει"
 
 #: qml/NavigationPage.qml:276 qml/PreferencesPage.qml:89
 msgid "Never"
-msgstr "Mai"
+msgstr "Ποτέ"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
-msgstr "USCITA"
+msgstr "ΕΞΟΔΟΣ"
 
 #: qml/NearbyPage.qml:58
 msgid "Nearby Venues"
-msgstr "Località nelle vicinanze"
+msgstr "Κοντινές τοποθεσίες"
 
 #: qml/NearbyPage.qml:78
 msgid "Near"
-msgstr "Vicino"
+msgstr "Πλησίον"
 
 #: qml/NearbyPage.qml:98 qml/PoiInfoPage.qml:56 qml/PoiPage.qml:60
 #: qml/PoiPanel.qml:329 qml/RoutePage.qml:90 qml/RoutePage.qml:126
 #: qml/RoutePointPage.qml:201
 msgid "Unnamed point"
-msgstr "Punto senza nome"
+msgstr "Ανώνημο σημείο"
 
 #: qml/NearbyPage.qml:114 qml/PoiEditPage.qml:59
 #: routers/mapquest_open_settings.qml:26 routers/ValhallaSettings.qml:33
 msgid "Type"
-msgstr "Tipo"
+msgstr "Τύπος"
 
 #: qml/NearbyPage.qml:129
 msgid "Radius"
-msgstr "Raggio"
+msgstr "Ακτίνα"
 
 #: qml/NorthArrow.qml:73
 msgid "Auto-rotate on"
-msgstr "Autorotazione attiva"
+msgstr "Ενεργοποίηση αυτόματης περιστροφής"
 
 #: qml/NorthArrow.qml:74
 msgid "Auto-rotate off"
-msgstr "Autorotazione disattiva"
+msgstr "Απενεργοποίηση αυτόματης περιστροφής"
 
 #: qml/PlaceTypePage.qml:122
 msgid "You can search for venues by type or name."
-msgstr "Puoi cercare luoghi per tipo o per nome."
+msgstr "Μπορείτε να αναζητήσετε χώρους ανά τύπο ή όνομα."
 
 #: qml/PoiEditPage.qml:38
 msgid "Save"
-msgstr "Salva"
+msgstr "Αποθηκεύσετε"
 
 #: qml/PoiEditPage.qml:39
 msgid "Edit POI"
-msgstr "Modifica PDI"
+msgstr "Επεξεργασία ΣΕ"
 
 #: qml/PoiEditPage.qml:43
 msgid "General"
-msgstr "Generale"
+msgstr "Γενικά"
 
 #: qml/PoiEditPage.qml:49
 msgid "Title"
-msgstr "Titolo"
+msgstr "Τίτλος"
 
 #: qml/PoiEditPage.qml:50
 msgid "Enter title"
-msgstr "Inserisci titolo"
+msgstr "Εισαγωγή τίτλου"
 
 #: qml/PoiEditPage.qml:60
 msgid "Enter type, such as Restaurant"
-msgstr "Inserisci tipo, ad es. Ristorante"
+msgstr "Εισαγωγή τύπου, όπως Εστιατόριο"
 
 #: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:80
 msgid "Address"
-msgstr "Indirizzo"
+msgstr "Διεύθυνση"
 
 #: qml/PoiEditPage.qml:74
 msgid "Enter address"
-msgstr "Inserisci indirizzo"
+msgstr "Εισαγωγή διεύθυνσης"
 
 #: qml/PoiEditPage.qml:83 qml/PoiPanel.qml:147
 msgid "Postal code"
-msgstr "Codice postale"
+msgstr "Ταχυδρομικός κώδικας"
 
 #: qml/PoiEditPage.qml:84
 msgid "Enter postal code"
-msgstr "Inserisci codice postale"
+msgstr "Εισαγωγή ταχυδρομικού κώδικα"
 
 #: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:168
 msgid "Contact"
-msgstr "Contatto"
+msgstr "Επαφή"
 
 #: qml/PoiEditPage.qml:99
 msgid "Phone number"
-msgstr "Numero di telefono"
+msgstr "Τηλεφωνικός αριθμός"
 
 #: qml/PoiEditPage.qml:100
 msgid "Enter phone number"
-msgstr "Inserisci numero di telefono"
+msgstr "Εισαγωγή τηλεφωνικού αριθμού"
 
 #: qml/PoiEditPage.qml:109
 msgid "URL"
@@ -665,55 +668,55 @@ msgstr "URL"
 
 #: qml/PoiEditPage.qml:110
 msgid "Enter URL"
-msgstr "Inserisci URL"
+msgstr "Εισαγωγή URL"
 
 #: qml/PoiEditPage.qml:118 qml/PoiEditPage.qml:123 qml/PoiInfoPage.qml:217
 msgid "Additional info"
-msgstr "Informazioni aggiuntive"
+msgstr "Πρόσθετες πληροφορίες"
 
 #: qml/PoiEditPage.qml:124
 msgid "Enter additional info"
-msgstr "Inserisci informazioni aggiuntive"
+msgstr "Εισαγωγή πρόσθετων πληροφοριών"
 
 #: qml/PoiInfoPage.qml:37 qml/PoiPage.qml:106
 msgid "Edit"
-msgstr "Modifica"
+msgstr "Επεξεργασία"
 
 #: qml/PoiInfoPage.qml:72
 msgid "Latitude: %1"
-msgstr "Latitudine: %1"
+msgstr "Γεωγραφικό πλάτος: %1"
 
 #: qml/PoiInfoPage.qml:72
 msgid "Longitude: %2"
-msgstr "Longitudine: %2"
+msgstr "Γεωγραφικό μήκος: %2"
 
 #: qml/PoiInfoPage.qml:95
 msgid "Postal code: %1"
-msgstr "Codice postale: %1"
+msgstr "Ταχυδρομικός κώδικας: %1"
 
 #: qml/PoiInfoPage.qml:103
 msgid "Actions"
-msgstr "Azioni"
+msgstr "Ενέργειες"
 
 #: qml/PoiInfoPage.qml:109
 msgid "Share location"
-msgstr "Condividi luogo"
+msgstr "Κοινοποίηση τοποθεσίας"
 
 #: qml/PoiInfoPage.qml:121
 msgid "Center on location"
-msgstr "Centra sul luogo"
+msgstr "Επικέντρωση στην τοποθεσία"
 
 #: qml/PoiInfoPage.qml:133
 msgid "Navigate To"
-msgstr "Naviga fin qui"
+msgstr "Πλοήγηση Πρός"
 
 #: qml/PoiInfoPage.qml:145
 msgid "Navigate From"
-msgstr "Naviga da qui"
+msgstr "Πλοήγηση Από"
 
 #: qml/PoiInfoPage.qml:157
 msgid "Nearby"
-msgstr "Vicino"
+msgstr "Κοντινά"
 
 #: qml/PoiPage.qml:42
 msgid "Show bookmarked"
@@ -725,15 +728,16 @@ msgstr ""
 
 #: qml/PoiPage.qml:149
 msgid "Points of Interest"
-msgstr "Punti di interesse"
+msgstr "Σημεία ενδιαφέροντος"
 
 #: qml/PoiPage.qml:176
 msgid ""
 "No points of interests defined yet. You can create and bookmark points of "
 "interest using map and search."
 msgstr ""
-"Nessun punto di interesse ancora definito. Puoi creare e salvare nei "
-"segnalibri punti di interesse usando la mappa e la ricerca."
+"Δεν έχουν καθοριστεί ακόμα σημεία ενδιαφέροντος. Μπορείτε να δημιουργήσετε "
+"και να προσθέσετε σελιδοδείκτες σε σημεία ενδιαφέροντος χρησιμοποιώντας τον "
+"χάρτη και την αναζήτηση."
 
 #: qml/PoiPanel.qml:102
 msgid "%1; %2"
@@ -741,138 +745,139 @@ msgstr "%1; %2"
 
 #: qml/PoiPanel.qml:120
 msgid "Latitude: %1; Longitude: %2"
-msgstr "Latitudine: %1; Longitudine: %2"
+msgstr "Γεωγραφικό πλάτος: %1; Γεωγραφικό μήκος: %2"
 
 #: qml/PoiPanel.qml:148
 msgid "Web"
-msgstr "Web"
+msgstr "Ιστός"
 
 #: qml/PoiPanel.qml:149
 msgid "Phone"
-msgstr "Telefono"
+msgstr "Τηλέφωνο"
 
 #: qml/PoiPanel.qml:150
 msgid "Text"
-msgstr "Testo"
+msgstr "Κείμενο"
 
 #: qml/PoiPanel.qml:152
 msgid "More info: %1"
-msgstr "Maggiori info: %1"
+msgstr ""
 
 #: qml/PoiPanel.qml:263
 msgid "Deleting POI"
-msgstr "Rimozione PDI"
+msgstr "Διαγραφή ΣΕ"
 
 #: qml/PreferencesPage.qml:42
 msgid "Only applies to vector maps."
-msgstr "Si applica solo a mappe vettoriali."
+msgstr "Ισχύει μόνο για διανυσματικούς χάρτες."
 
 #: qml/PreferencesPage.qml:43
 msgid "Tilt map when navigating"
-msgstr "Ruota mappa durante la navigazione"
+msgstr "Επίκληση χάρτη κατά την πλοήγηση"
 
 #: qml/PreferencesPage.qml:67
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
-"Genere preferito per la navigazione vocale. Supportato solo da alcuni "
-"sintetizzatori e lingue."
+"Προτιμώμενο φύλο για φωνητική πλοήγηση. Υποστηρίζεται μόνο από ορισμένες "
+"μηχανές και γλώσσες."
 
 #: qml/PreferencesPage.qml:68
 msgid "Voice gender"
-msgstr "Genere della voce"
+msgstr "Φύλο φωνής"
 
 #: qml/PreferencesPage.qml:70
 msgid "Male"
-msgstr "Maschile"
+msgstr "Άνδρας "
 
 #: qml/PreferencesPage.qml:71
 msgid "Female"
-msgstr "Femminile"
+msgstr "Γυναίκα"
 
 #: qml/PreferencesPage.qml:86
 msgid ""
 "Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
-"Si applica solo quando Pure Maps è attivo. Quando minimizzato, lo standby è "
-"controllato tramite le normali impostazioni di sistema."
+"Ισχύει μόνο όταν ο Pure Maps είναι ενεργός. Όταν ελαχιστοποιείται, η "
+"καταστολή της εφαρμογής ελέγχεται από τις κανονικές προτιμήσεις σε επίπεδο "
+"συσκευής."
 
 #: qml/PreferencesPage.qml:87
 msgid "Prevent sleep"
-msgstr "Previeni stand-by"
+msgstr "Αποφυγή καταστολής"
 
 #: qml/PreferencesPage.qml:90
 msgid "When navigating"
-msgstr "Durante navigazione"
+msgstr "Κατά την πλοήγηση"
 
 #: qml/PreferencesPage.qml:107
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating."
 msgstr ""
-"Seleziona modalità di trasporto. Si applica solo quando Pure Maps non è in "
-"modalità navigazione."
+"Επιλέξτε τρόπο μεταφοράς. Ισχύει μόνο όταν το Pure Maps δεν είναι σε "
+"λειτουργία πλοήγησης."
 
 #: qml/PreferencesPage.qml:110
 msgid "None"
-msgstr "Nessuno"
+msgstr "Κανένα"
 
 #: qml/PreferencesPage.qml:111 routers/mapquest_open_settings.qml:28
 #: routers/ValhallaSettings.qml:35
 msgid "Car"
-msgstr "In auto"
+msgstr "Αυτοκίνητο"
 
 #: qml/PreferencesPage.qml:112 routers/mapquest_open_settings.qml:29
 #: routers/ValhallaSettings.qml:36
 msgid "Bicycle"
-msgstr "In bici"
+msgstr "Ποδήλατο"
 
 #: qml/PreferencesPage.qml:113 routers/mapquest_open_settings.qml:30
 #: routers/ValhallaSettings.qml:37
 msgid "Foot"
-msgstr "A piedi"
+msgstr "Με τα πόδια"
 
 #: qml/PreferencesPage.qml:130
 msgid "Units"
-msgstr "Unità"
+msgstr "Μονάδες"
 
 #: qml/PreferencesPage.qml:132
 msgid "Metric"
-msgstr "Metrico"
+msgstr "Μετρικό"
 
 #: qml/PreferencesPage.qml:133
 msgid "American"
-msgstr "Americano"
+msgstr "Αμερικανικό"
 
 #: qml/PreferencesPage.qml:134
 msgid "British"
-msgstr "Britannico"
+msgstr "Βρετανικό "
 
 #: qml/PreferencesPage.qml:155
 msgid "Clear cache"
-msgstr "Svuota la cache"
+msgstr "Εκκαθάριση προσωρινής μνήμης"
 
 #: qml/pure-maps.qml:178
 msgid "Rerouting failed: %1"
-msgstr "Ricalcolo fallito: %1"
+msgstr "Ο επαναπροσδιορισμός της διαδρομής απέτυχε: %1"
 
 #: qml/RoutePage.qml:70
 msgid "From"
-msgstr "Da"
+msgstr "Από"
 
 #: qml/RoutePage.qml:106
 msgid "To"
-msgstr "A"
+msgstr "Προς"
 
 #: qml/RoutePage.qml:167
 msgid "Reverse endpoints"
-msgstr "Inverti destinazione/arrivo"
+msgstr "Αντίστροφή τελικών σημείων"
 
 #: qml/RouterPage.qml:66
 msgid "Modes: %1"
-msgstr "Modalità: %1"
+msgstr "Τρόποι λειτουργίας: %1"
 
 #: qml/SharePage.qml:53
 msgid "SMS"
@@ -880,31 +885,31 @@ msgstr "SMS"
 
 #: qml/SharePage.qml:59 qml/SharePage.qml:91
 msgid "Message copied to the clipboard"
-msgstr "Messaggio copiato negli appunti"
+msgstr "Το μήνυμα αντιγράφηκε στο πρόχειρο"
 
 #: qml/SharePage.qml:60
 msgid "Launching the Messages application"
-msgstr "Apertura dell'applicazione Messaggi"
+msgstr "Εκκίνηση της εφαρμογής Μηνυμάτων"
 
 #: qml/SharePage.qml:75
 msgid "Email"
-msgstr "Email"
+msgstr "Ηλεκτρονικό ταχυδρομείο"
 
 #: qml/SharePage.qml:78
 msgid "Launching the Email application"
-msgstr "Apertura dell'applicazione Email"
+msgstr "Εκκίνηση της εφαρμογής Ηλεκτρονικού Ταχυδρομείου"
 
 #: qml/SharePage.qml:88
 msgid "Other"
-msgstr "Altro"
+msgstr "Άλλα "
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
-msgstr "Percorso %1. totale %2"
+msgstr "Διαδρομή %1. σύνολο %2"
 
 #: routers/digitransit_results.qml:155
 msgid "Walk %1"
-msgstr "A piedi %1"
+msgstr "Βαδίστε %1"
 
 #: routers/digitransit_results.qml:156
 msgid "%1 → %2"
@@ -912,11 +917,11 @@ msgstr "%1 → %2"
 
 #: routers/digitransit_results.qml:240
 msgid "Results"
-msgstr "Risultati"
+msgstr "Αποτελέσματα"
 
 #: routers/digitransit_settings.qml:28
 msgid "Region"
-msgstr "Regione"
+msgstr "Περιοχή"
 
 #: routers/digitransit_settings.qml:30
 msgid "HSL"
@@ -928,238 +933,238 @@ msgstr "Waltti"
 
 #: routers/digitransit_settings.qml:32
 msgid "Finland"
-msgstr "Finlandia"
+msgstr "Φιλανδία"
 
 #: routers/digitransit_settings.qml:70 routers/digitransit_settings.qml:75
 #: routers/digitransit_settings.qml:80
 msgid "Depart"
-msgstr "Partenza"
+msgstr "Αναχώρηση "
 
 #: routers/digitransit_settings.qml:76
 msgid "Arrive"
-msgstr "Arrivo"
+msgstr "Άφιξη "
 
 #: routers/digitransit_settings.qml:107
 msgid "Today"
-msgstr "Oggi"
+msgstr "Σήμερα"
 
 #: routers/digitransit_settings.qml:150
 msgid "Now"
-msgstr "Ora"
+msgstr "Τώρα"
 
 #: routers/digitransit_settings.qml:179
 msgid "Criterion"
-msgstr "Criterio"
+msgstr "Κριτήρια"
 
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
-msgstr "Meno cambi"
+msgstr "Λιγότερες μεταφορές"
 
 #: routers/digitransit_settings.qml:183
 msgid "Least walking"
-msgstr "Meno tratti a piedi"
+msgstr "Λιγότερο περπάτημα"
 
 #: routers/mapquest_open_settings.qml:48
 msgid "Try to avoid tolls"
-msgstr "Cerca di evitare pedaggi"
+msgstr "Αποφυγή διοδίων"
 
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:61
 msgid "Language"
-msgstr "Lingua"
+msgstr "Γλώσσα"
 
 #: routers/mapquest_open_settings.qml:61
 msgid "English (UK)"
-msgstr "Inglese (UK)"
+msgstr "Αγγλικά (ΗΒ)"
 
 #: routers/mapquest_open_settings.qml:62
 msgid "English (US)"
-msgstr "Inglese (US)"
+msgstr "Αγγλικά (ΗΠΑ)"
 
 #: routers/mapquest_open_settings.qml:63
 msgid "French (Canada)"
-msgstr "Francese (Canada)"
+msgstr "Γαλλικά (Καναδά)"
 
 #: routers/mapquest_open_settings.qml:64
 msgid "French (France)"
-msgstr "Francese (Francia)"
+msgstr "Γαλλικά (Γαλλία)"
 
 #: routers/mapquest_open_settings.qml:65 routers/ValhallaSettings.qml:70
 msgid "German"
-msgstr "Tedesco"
+msgstr "Γερμανικά"
 
 #: routers/mapquest_open_settings.qml:66 routers/ValhallaSettings.qml:74
 msgid "Russian"
-msgstr "Russo"
+msgstr "Ρωσικά "
 
 #: routers/mapquest_open_settings.qml:67
 msgid "Spanish (Mexico)"
-msgstr "Spagnolo (Messico)"
+msgstr "Ισπανικά (Μεξικό)"
 
 #: routers/mapquest_open_settings.qml:68
 msgid "Spanish (Spain)"
-msgstr "Spagnolo (Spagna)"
+msgstr "Ισπανικά (Ισπανία)"
 
 #: routers/ValhallaSettings.qml:28
 msgid "General options"
-msgstr "Opzioni generali"
+msgstr "Γενικές επιλογές"
 
 #: routers/ValhallaSettings.qml:38
 msgid "Bus"
-msgstr "Bus"
+msgstr "Λεοφωρείο"
 
 #: routers/ValhallaSettings.qml:39
 msgid "High-occupancy vehicle (HOV)"
-msgstr "Veicoli ad alta occupazione (HOV)"
+msgstr "Υψηλής πληρώματος αυτοκίνητο (ΥΠΑ)"
 
 #: routers/ValhallaSettings.qml:40
 msgid "Motorcycle"
-msgstr "Motocicli"
+msgstr "Μοτοσυκλέτα"
 
 #: routers/ValhallaSettings.qml:41
 msgid "Motor Scooter"
-msgstr "Scooter"
+msgstr "Μοτοποδήλατο"
 
 #: routers/ValhallaSettings.qml:65
 msgid "Catalan"
-msgstr "Catalano"
+msgstr "Καταλανικά"
 
 #: routers/ValhallaSettings.qml:66
 msgid "Czech"
-msgstr "Ceco"
+msgstr "Τσέχικα"
 
 #: routers/ValhallaSettings.qml:67
 msgid "English"
-msgstr "Inglese"
+msgstr "Αγγλικά"
 
 #: routers/ValhallaSettings.qml:68
 msgid "English Pirate"
-msgstr "Inglese pirata"
+msgstr "Αγγλικός Pirate"
 
 #: routers/ValhallaSettings.qml:69
 msgid "French"
-msgstr "Francese"
+msgstr "Γαλλικά"
 
 #: routers/ValhallaSettings.qml:71
 msgid "Hindi"
-msgstr "Hindi"
+msgstr "Χίντι"
 
 #: routers/ValhallaSettings.qml:72
 msgid "Italian"
-msgstr "Italiano"
+msgstr "Ιταλικά"
 
 #: routers/ValhallaSettings.qml:73
 msgid "Portuguese"
-msgstr "Portoghese"
+msgstr "Πορτογαλικά"
 
 #: routers/ValhallaSettings.qml:75
 msgid "Slovenian"
-msgstr "Sloveno"
+msgstr "Σλοβενικά"
 
 #: routers/ValhallaSettings.qml:76
 msgid "Spanish"
-msgstr "Spagnolo"
+msgstr "Ισπανικά"
 
 #: routers/ValhallaSettings.qml:77
 msgid "Swedish"
-msgstr "Svedese"
+msgstr "Σουηδικά"
 
 #: routers/ValhallaSettings.qml:92
 msgid "Advanced options"
-msgstr "Opzioni avanzate"
+msgstr "Προηγμένες επιλογές"
 
 #: routers/ValhallaSettings.qml:99
 msgid "Prefer shorter route"
-msgstr "Preferisci percorso più breve"
+msgstr "Προτίμηση συντομότερης διαδρομής"
 
 #: routers/ValhallaSettings.qml:110
 msgid "Bicycle type"
-msgstr "Tipo di bicicletta"
+msgstr "Τύπος ποδηλάτου"
 
 #: routers/ValhallaSettings.qml:112
 msgid "Road"
-msgstr "Strada"
+msgstr "Δρόμος"
 
 #: routers/ValhallaSettings.qml:113
 msgid "Hybrid or City (default)"
-msgstr "Ibrida o City (predefinito)"
+msgstr "Υβριδική ή Πόλης (προεπιλογή)"
 
 #: routers/ValhallaSettings.qml:114
 msgid "Cross"
-msgstr "Cross"
+msgstr "Διασταύρωση"
 
 #: routers/ValhallaSettings.qml:115
 msgid "Mountain"
-msgstr "Mountain"
+msgstr "Βουνού"
 
 #: routers/ValhallaSettings.qml:132
 msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr "La difficoltà massima permessa per i percorsi escursionistici."
+msgstr "Η μέγιστη δυσκολία των μονοπατιών πεζοπορίας που επιτρέπονται."
 
 #: routers/ValhallaSettings.qml:133
 msgid "Hiking difficulty"
-msgstr "Difficoltà escursione"
+msgstr "Δυσκολία πεζοπορίας"
 
 #: routers/ValhallaSettings.qml:135
 msgid "Walking"
-msgstr "Camminata"
+msgstr "Περπάτημα"
 
 #: routers/ValhallaSettings.qml:136
 msgid "Hiking (default)"
-msgstr "Escursione a piedi (predefinita)"
+msgstr "Πεζοπορία (προεπιλογή)"
 
 #: routers/ValhallaSettings.qml:137
 msgid "Mountain hiking"
-msgstr "Escursione di montagna"
+msgstr "Ορεινή πεζοπορία"
 
 #: routers/ValhallaSettings.qml:138
 msgid "Demanding mountain hiking"
-msgstr "Escursione di montagna impegnativa"
+msgstr "Απαιτητική ορεινή πεζοπορία"
 
 #: routers/ValhallaSettings.qml:139
 msgid "Alpine hiking"
-msgstr "Escursione alpina"
+msgstr "Αλπική πεζοπορία"
 
 #: routers/ValhallaSettings.qml:140
 msgid "Demanding alpine hiking"
-msgstr "Escursione alpina impegnativa"
+msgstr "Απαιτητική αλπική πεζοπορία"
 
 #: routers/ValhallaSettings.qml:157
 msgid "Ferries"
-msgstr "Ferrata"
+msgstr "Πλοία"
 
 #: routers/ValhallaSettings.qml:159 routers/ValhallaSettings.qml:181
 #: routers/ValhallaSettings.qml:204 routers/ValhallaSettings.qml:224
 #: routers/ValhallaSettings.qml:247 routers/ValhallaSettings.qml:267
 msgid "Avoid"
-msgstr "Evita"
+msgstr "Αποφυγή"
 
 #: routers/ValhallaSettings.qml:160 routers/ValhallaSettings.qml:182
 #: routers/ValhallaSettings.qml:225 routers/ValhallaSettings.qml:289
 msgid "Prefer to avoid"
-msgstr "Preferisci evitare"
+msgstr "Προτιμήστε να αποφύγετε"
 
 #: routers/ValhallaSettings.qml:161 routers/ValhallaSettings.qml:205
 #: routers/ValhallaSettings.qml:226 routers/ValhallaSettings.qml:248
 #: routers/ValhallaSettings.qml:268
 msgid "No preference (default)"
-msgstr "Nessuna preferenza (predefinito)"
+msgstr "Καμία προτίμηση (προεπιλογή)"
 
 #: routers/ValhallaSettings.qml:162 routers/ValhallaSettings.qml:184
 #: routers/ValhallaSettings.qml:227 routers/ValhallaSettings.qml:291
 msgid "Incline"
-msgstr "Pendenza"
+msgstr "Προτίμηση"
 
 #: routers/ValhallaSettings.qml:179
 msgid "Highways"
-msgstr "Autostrade"
+msgstr "Αυτοκινητόδρομοι"
 
 #: routers/ValhallaSettings.qml:183 routers/ValhallaSettings.qml:290
 msgid "No preference"
-msgstr "Nessuna preferenza"
+msgstr "Καμία προτίμηση"
 
 #: routers/ValhallaSettings.qml:185
 msgid "Prefer (default)"
-msgstr "Preferisci (predefinito)"
+msgstr "Προτίμηση (προεπιλογή)"
 
 #: routers/ValhallaSettings.qml:201
 msgid ""
@@ -1167,35 +1172,35 @@ msgid ""
 "(time and distance) routes can be selected. By allowing hills, it indicates "
 "you do not fear hills and steeper grades."
 msgstr ""
-"Il tuo desiderio di affrontare colline. Quando eviti colline e pendenze "
-"elevate, potrebbero essere selezionati percorsi più lunghi (per tempo e "
-"distanza). Permettendo le colline, indichi di non temere colline e pendenze "
-"elevate."
+"Η επιθυμία σας να αποφύγετε τους λόφους. Όταν αποφεύγετε τους λόφους και τις"
+" απότομες πλαγιές, μπορεί να επιλεγούν μεγαλύτερες διαδρομές (χρόνος και "
+"απόσταση). Επιτρέποντας λόφους, δείχνει ότι δεν φοβάστε τους λόφους και "
+"απότομες πλαγίες."
 
 #: routers/ValhallaSettings.qml:202
 msgid "Hills"
-msgstr "Colline"
+msgstr "Λόφοι"
 
 #: routers/ValhallaSettings.qml:206 routers/ValhallaSettings.qml:249
 #: routers/ValhallaSettings.qml:269
 msgid "Allow"
-msgstr "Permetti"
+msgstr "Επιτρέπω"
 
 #: routers/ValhallaSettings.qml:222
 msgid "Primary roads"
-msgstr "Strade principali"
+msgstr "Κύριοι δρόμοι"
 
 #: routers/ValhallaSettings.qml:244
 msgid "Your propensity to use roads alongside other vehicles."
-msgstr "La tua propensione a percorrere strade assieme ad altri veicoli."
+msgstr "Η πρόθεση σας να χρησιμοποιείτε δρόμους μαζί με άλλα οχήματα."
 
 #: routers/ValhallaSettings.qml:245
 msgid "Roads"
-msgstr "Strade"
+msgstr "Δρόμοι"
 
 #: routers/ValhallaSettings.qml:265
 msgid "Tolls"
-msgstr "Pedaggi"
+msgstr "Διόδια"
 
 #: routers/ValhallaSettings.qml:285
 msgid ""
@@ -1203,63 +1208,63 @@ msgid ""
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
 msgstr ""
-"Il tuo desiderio d'avventura. Quando preferito, il calcolatore di percorsi "
-"tenderà ad evitare strade maggiori e ti indirizzerà su strade secondarie, "
-"talvolta utilizzando sentieri, piste e strade non classificate o con "
-"superfici sconnesse."
+"Η επιθυμία σας για περιπέτεια. Όταν προτιμάται, ο δρομολογητής θα έχει την "
+"τάση να αποφεύγει μεγάλους δρόμους και να ταξιδεύει σε δευτερεύοντες "
+"δρόμους, μερικές φορές χρησιμοποιώντας μονοπάτια, διαδρομές, μη "
+"ταξινομημένους δρόμους ή δρόμους με κακές επιφάνειες."
 
 #: routers/ValhallaSettings.qml:286
 msgid "Trails"
-msgstr "Sentieri"
+msgstr "Διαδρομές"
 
 #: routers/ValhallaSettings.qml:288
 msgid "Avoid (default)"
-msgstr "Evita (predefinito)"
+msgstr "Αποφυγή (προεπιλογή)"
 
 #: qml/js/util.js:125
 msgid "%1 (default)"
-msgstr "%1 (predefinito)"
+msgstr "%1 (προκαθορισμένο)"
 
 #: standard input:1
 msgid "Search in Finland"
-msgstr "Cerca in Finlandia"
+msgstr "Αναζήτηση στην Φινλανδία"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr "Ricerca basata su sorgenti di dati aperte"
+msgstr "Αναζήτηση βάσει ανοιχτών πηγών δεδομένων"
 
 #: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
-msgstr "Ricerca basata su dati OpenStreetMap"
+msgstr "Αναζήτηση βάσει δεδομένων OpenStreetMap"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr "Località elencate e recensite da utenti Foursquare."
+msgstr "Οι χώροι που αναγράφονται και εξετάζονται από χρήστες του Foursquare"
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
-msgstr "Punti di interesse da dati OpenStreetMap"
+msgstr "Σημεία ενδιαφέροντος από τα δεδομένα του OpenStreetMap"
 
 #: standard input:8
 msgid "Public transport routing in Finland"
-msgstr "Indicazioni per trasporto pubblico in Filandia"
+msgstr "Δρομολόγηση με τη δημόσια συγκοινωνία στη Φινλανδία"
 
 #: standard input:9
 msgid "public transport"
-msgstr "trasporto pubblico"
+msgstr "δημόσια συγκοινωνία"
 
 #: standard input:10 standard input:12 standard input:14
 msgid "Routing based on OpenStreetMap data"
-msgstr "Navigazione basata su dati OpenStreetMaps"
+msgstr "Δρομολόγηση βάσει δεδομένων του OpenStreetMap"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 msgid "car"
-msgstr "in auto"
+msgstr "αυτοκίνητο"
 
 #: standard input:11 standard input:13 standard input:17
 msgid "foot"
-msgstr "a piedi"
+msgstr "με τα πόδια"
 
 #: standard input:16
 msgid "Routing by Valhalla based on OpenStreetMap data"
-msgstr "Navigazione tramite Valhalla basata su dati OpenStreetMap"
+msgstr "Δρομολόγηση από τη Valhalla βάσει OpenStreetMap δεδομένων"

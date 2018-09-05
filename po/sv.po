@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-03 14:06+0300\n"
+"POT-Creation-Date: 2018-09-05 17:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: rinigus github, 2018\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -18,9 +18,9 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: guides/foursquare.py:192
+#: guides/foursquare.py:191
 msgid "Opening hours:"
-msgstr ""
+msgstr "Öppettider:"
 
 #: poor/geocoder.py:108
 msgid "Point from geo link"
@@ -254,13 +254,13 @@ msgid "Best"
 msgstr "Bäst"
 
 #: guides/osmscout_name.qml:53 qml/GeocodePage.qml:60 qml/PlaceTypePage.qml:59
-#: qml/RoutePointPage.qml:62
+#: qml/PoiPage.qml:119 qml/RoutePointPage.qml:62
 msgid "Remove"
 msgstr "Ta bort"
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
 #: qml/GeocodePage.qml:111 qml/GeocodePage.qml:130 qml/MenuPage.qml:46
-#: qml/PlaceTypePage.qml:88 qml/PoiPage.qml:109 qml/RoutePointPage.qml:108
+#: qml/PlaceTypePage.qml:88 qml/PoiPage.qml:154 qml/RoutePointPage.qml:108
 msgid "Search"
 msgstr "Sök"
 
@@ -357,7 +357,7 @@ msgstr "Navigation"
 #: qml/GeocodePage.qml:92 qml/GeocodingResultsPage.qml:81
 #: qml/NearbyResultsPage.qml:81
 msgid "%1 [duplicate]"
-msgstr ""
+msgstr "%1 [kopia]"
 
 #: qml/GeocodePage.qml:117 qml/NearbyPage.qml:63 qml/RoutePage.qml:54
 msgid "Using"
@@ -382,6 +382,7 @@ msgid "Alternatives"
 msgstr "Alternativ"
 
 #: qml/GeocodingResultsPage.qml:99 qml/NearbyResultsPage.qml:99
+#: qml/PoiPage.qml:42
 msgid "Show all"
 msgstr "Visa alla"
 
@@ -405,7 +406,7 @@ msgstr "Inga resultat"
 
 #: qml/Map.qml:312
 msgid "Clearing map"
-msgstr ""
+msgstr "Rensar kartan"
 
 #: qml/Map.qml:544
 msgid "Voice navigation on"
@@ -425,7 +426,7 @@ msgstr "Närliggande platser"
 
 #: qml/MenuPage.qml:67
 msgid "Points of interest"
-msgstr ""
+msgstr "Platser av intresse (POI)"
 
 #: qml/MenuPage.qml:73
 msgid "Share current position"
@@ -576,7 +577,7 @@ msgstr "Närliggande platser"
 msgid "Near"
 msgstr "Nära"
 
-#: qml/NearbyPage.qml:98 qml/PoiInfoPage.qml:56 qml/PoiPage.qml:48
+#: qml/NearbyPage.qml:98 qml/PoiInfoPage.qml:56 qml/PoiPage.qml:60
 #: qml/PoiPanel.qml:329 qml/RoutePage.qml:90 qml/RoutePage.qml:126
 #: qml/RoutePointPage.qml:201
 msgid "Unnamed point"
@@ -605,129 +606,139 @@ msgstr "Du kan söka platser efter typ eller namn."
 
 #: qml/PoiEditPage.qml:38
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 #: qml/PoiEditPage.qml:39
 msgid "Edit POI"
-msgstr ""
+msgstr "Redigera POI"
 
 #: qml/PoiEditPage.qml:43
 msgid "General"
-msgstr ""
+msgstr "Allmänt"
 
 #: qml/PoiEditPage.qml:49
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: qml/PoiEditPage.qml:50
 msgid "Enter title"
-msgstr ""
+msgstr "Ange titel"
 
 #: qml/PoiEditPage.qml:60
 msgid "Enter type, such as Restaurant"
-msgstr ""
+msgstr "Ange typ, t.ex. Restaurang"
 
 #: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:80
 msgid "Address"
-msgstr ""
+msgstr "Adress"
 
 #: qml/PoiEditPage.qml:74
 msgid "Enter address"
-msgstr ""
+msgstr "Ange adress"
 
 #: qml/PoiEditPage.qml:83 qml/PoiPanel.qml:147
 msgid "Postal code"
-msgstr ""
+msgstr "Postnummer"
 
 #: qml/PoiEditPage.qml:84
 msgid "Enter postal code"
-msgstr ""
+msgstr "Ange postnummer"
 
 #: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:168
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #: qml/PoiEditPage.qml:99
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonnummer"
 
-#: qml/PoiEditPage.qml:101
+#: qml/PoiEditPage.qml:100
 msgid "Enter phone number"
-msgstr ""
+msgstr "Ange telefonnummer"
+
+#: qml/PoiEditPage.qml:109
+msgid "URL"
+msgstr "URL"
 
 #: qml/PoiEditPage.qml:110
-msgid "URL"
-msgstr ""
-
-#: qml/PoiEditPage.qml:111
 msgid "Enter URL"
-msgstr ""
+msgstr "Ange webbadress"
 
-#: qml/PoiEditPage.qml:119 qml/PoiEditPage.qml:124 qml/PoiInfoPage.qml:217
+#: qml/PoiEditPage.qml:118 qml/PoiEditPage.qml:123 qml/PoiInfoPage.qml:217
 msgid "Additional info"
-msgstr ""
+msgstr "Tilläggsinformation"
 
-#: qml/PoiEditPage.qml:125
+#: qml/PoiEditPage.qml:124
 msgid "Enter additional info"
-msgstr ""
+msgstr "Ange mer information"
 
-#: qml/PoiInfoPage.qml:37
+#: qml/PoiInfoPage.qml:37 qml/PoiPage.qml:106
 msgid "Edit"
-msgstr ""
+msgstr "Redigera"
 
 #: qml/PoiInfoPage.qml:72
 msgid "Latitude: %1"
-msgstr ""
+msgstr "Latitud: %1"
 
 #: qml/PoiInfoPage.qml:72
 msgid "Longitude: %2"
-msgstr ""
+msgstr "Longitud: %2"
 
 #: qml/PoiInfoPage.qml:95
 msgid "Postal code: %1"
-msgstr ""
+msgstr "Postnummer: %1"
 
 #: qml/PoiInfoPage.qml:103
 msgid "Actions"
-msgstr ""
+msgstr "Åtgärder"
 
 #: qml/PoiInfoPage.qml:109
 msgid "Share location"
-msgstr ""
+msgstr "Dela platsinformation"
 
 #: qml/PoiInfoPage.qml:121
 msgid "Center on location"
-msgstr ""
+msgstr "Centrera på aktuell plats"
 
 #: qml/PoiInfoPage.qml:133
 msgid "Navigate To"
-msgstr ""
+msgstr "Navigera till"
 
 #: qml/PoiInfoPage.qml:145
 msgid "Navigate From"
-msgstr ""
+msgstr "Navigera från"
 
 #: qml/PoiInfoPage.qml:157
 msgid "Nearby"
 msgstr "I närheten"
 
-#: qml/PoiPage.qml:104
-msgid "Points of Interest"
+#: qml/PoiPage.qml:42
+msgid "Show bookmarked"
 msgstr ""
 
-#: qml/PoiPage.qml:131
+#: qml/PoiPage.qml:97
+msgid "View"
+msgstr ""
+
+#: qml/PoiPage.qml:149
+msgid "Points of Interest"
+msgstr "Plats av intresse"
+
+#: qml/PoiPage.qml:176
 msgid ""
 "No points of interests defined yet. You can create and bookmark points of "
 "interest using map and search."
 msgstr ""
+"Inga intressanta platser har definierats än. Du kan skapa och bokmärka "
+"intressanta platser med hjälp av karta och sökfunktion."
 
 #: qml/PoiPanel.qml:102
 msgid "%1; %2"
-msgstr ""
+msgstr "%1; %2"
 
 #: qml/PoiPanel.qml:120
 msgid "Latitude: %1; Longitude: %2"
-msgstr ""
+msgstr "Latitud: %1; Longitud: %2"
 
 #: qml/PoiPanel.qml:148
 msgid "Web"
@@ -735,19 +746,19 @@ msgstr "Webb"
 
 #: qml/PoiPanel.qml:149
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: qml/PoiPanel.qml:150
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: qml/PoiPanel.qml:152
 msgid "More info: %1"
-msgstr ""
+msgstr "Mer info: %1"
 
 #: qml/PoiPanel.qml:263
 msgid "Deleting POI"
-msgstr ""
+msgstr "Tar bort POI"
 
 #: qml/PreferencesPage.qml:42
 msgid "Only applies to vector maps."
@@ -996,11 +1007,11 @@ msgstr "Fordon med hög beläggning (HOV)"
 
 #: routers/ValhallaSettings.qml:40
 msgid "Motorcycle"
-msgstr ""
+msgstr "Motorcykel"
 
 #: routers/ValhallaSettings.qml:41
 msgid "Motor Scooter"
-msgstr ""
+msgstr "Skoter"
 
 #: routers/ValhallaSettings.qml:65
 msgid "Catalan"
@@ -1052,7 +1063,7 @@ msgstr "Avancerade alternativ"
 
 #: routers/ValhallaSettings.qml:99
 msgid "Prefer shorter route"
-msgstr ""
+msgstr "Föredra kortare rutt"
 
 #: routers/ValhallaSettings.qml:110
 msgid "Bicycle type"

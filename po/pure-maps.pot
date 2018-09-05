@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-03 14:06+0300\n"
+"POT-Creation-Date: 2018-09-05 17:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: guides/foursquare.py:192
+#: guides/foursquare.py:191
 msgid "Opening hours:"
 msgstr ""
 
@@ -252,13 +252,13 @@ msgid "Best"
 msgstr ""
 
 #: guides/osmscout_name.qml:53 qml/GeocodePage.qml:60 qml/PlaceTypePage.qml:59
-#: qml/RoutePointPage.qml:62
+#: qml/PoiPage.qml:119 qml/RoutePointPage.qml:62
 msgid "Remove"
 msgstr ""
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
 #: qml/GeocodePage.qml:111 qml/GeocodePage.qml:130 qml/MenuPage.qml:46
-#: qml/PlaceTypePage.qml:88 qml/PoiPage.qml:109 qml/RoutePointPage.qml:108
+#: qml/PlaceTypePage.qml:88 qml/PoiPage.qml:154 qml/RoutePointPage.qml:108
 msgid "Search"
 msgstr ""
 
@@ -371,6 +371,7 @@ msgid "Alternatives"
 msgstr ""
 
 #: qml/GeocodingResultsPage.qml:99 qml/NearbyResultsPage.qml:99
+#: qml/PoiPage.qml:42
 msgid "Show all"
 msgstr ""
 
@@ -565,7 +566,7 @@ msgstr ""
 msgid "Near"
 msgstr ""
 
-#: qml/NearbyPage.qml:98 qml/PoiInfoPage.qml:56 qml/PoiPage.qml:48
+#: qml/NearbyPage.qml:98 qml/PoiInfoPage.qml:56 qml/PoiPage.qml:60
 #: qml/PoiPanel.qml:329 qml/RoutePage.qml:90 qml/RoutePage.qml:126
 #: qml/RoutePointPage.qml:201
 msgid "Unnamed point"
@@ -640,27 +641,27 @@ msgstr ""
 msgid "Phone number"
 msgstr ""
 
-#: qml/PoiEditPage.qml:101
+#: qml/PoiEditPage.qml:100
 msgid "Enter phone number"
 msgstr ""
 
-#: qml/PoiEditPage.qml:110
+#: qml/PoiEditPage.qml:109
 msgid "URL"
 msgstr ""
 
-#: qml/PoiEditPage.qml:111
+#: qml/PoiEditPage.qml:110
 msgid "Enter URL"
 msgstr ""
 
-#: qml/PoiEditPage.qml:119 qml/PoiEditPage.qml:124 qml/PoiInfoPage.qml:217
+#: qml/PoiEditPage.qml:118 qml/PoiEditPage.qml:123 qml/PoiInfoPage.qml:217
 msgid "Additional info"
 msgstr ""
 
-#: qml/PoiEditPage.qml:125
+#: qml/PoiEditPage.qml:124
 msgid "Enter additional info"
 msgstr ""
 
-#: qml/PoiInfoPage.qml:37
+#: qml/PoiInfoPage.qml:37 qml/PoiPage.qml:106
 msgid "Edit"
 msgstr ""
 
@@ -700,11 +701,19 @@ msgstr ""
 msgid "Nearby"
 msgstr ""
 
-#: qml/PoiPage.qml:104
+#: qml/PoiPage.qml:42
+msgid "Show bookmarked"
+msgstr ""
+
+#: qml/PoiPage.qml:97
+msgid "View"
+msgstr ""
+
+#: qml/PoiPage.qml:149
 msgid "Points of Interest"
 msgstr ""
 
-#: qml/PoiPage.qml:131
+#: qml/PoiPage.qml:176
 msgid ""
 "No points of interests defined yet. You can create and bookmark points of "
 "interest using map and search."

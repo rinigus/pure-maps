@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-03 14:06+0300\n"
+"POT-Creation-Date: 2018-09-05 17:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Carmen Fernández B., 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -18,9 +18,9 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: guides/foursquare.py:192
+#: guides/foursquare.py:191
 msgid "Opening hours:"
-msgstr ""
+msgstr "Horario:"
 
 #: poor/geocoder.py:108
 msgid "Point from geo link"
@@ -254,13 +254,13 @@ msgid "Best"
 msgstr "Mejor"
 
 #: guides/osmscout_name.qml:53 qml/GeocodePage.qml:60 qml/PlaceTypePage.qml:59
-#: qml/RoutePointPage.qml:62
+#: qml/PoiPage.qml:119 qml/RoutePointPage.qml:62
 msgid "Remove"
 msgstr "Borrar"
 
 #: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
 #: qml/GeocodePage.qml:111 qml/GeocodePage.qml:130 qml/MenuPage.qml:46
-#: qml/PlaceTypePage.qml:88 qml/PoiPage.qml:109 qml/RoutePointPage.qml:108
+#: qml/PlaceTypePage.qml:88 qml/PoiPage.qml:154 qml/RoutePointPage.qml:108
 msgid "Search"
 msgstr "Buscar"
 
@@ -357,7 +357,7 @@ msgstr "Navegación"
 #: qml/GeocodePage.qml:92 qml/GeocodingResultsPage.qml:81
 #: qml/NearbyResultsPage.qml:81
 msgid "%1 [duplicate]"
-msgstr ""
+msgstr "%1 [duplicado]"
 
 #: qml/GeocodePage.qml:117 qml/NearbyPage.qml:63 qml/RoutePage.qml:54
 msgid "Using"
@@ -382,6 +382,7 @@ msgid "Alternatives"
 msgstr "Alternativas"
 
 #: qml/GeocodingResultsPage.qml:99 qml/NearbyResultsPage.qml:99
+#: qml/PoiPage.qml:42
 msgid "Show all"
 msgstr "Mostar todo"
 
@@ -405,7 +406,7 @@ msgstr "No hay resultados"
 
 #: qml/Map.qml:312
 msgid "Clearing map"
-msgstr ""
+msgstr "Limpiando mapa"
 
 #: qml/Map.qml:544
 msgid "Voice navigation on"
@@ -425,7 +426,7 @@ msgstr "Lugares cercanos"
 
 #: qml/MenuPage.qml:67
 msgid "Points of interest"
-msgstr ""
+msgstr "Puntos de interés"
 
 #: qml/MenuPage.qml:73
 msgid "Share current position"
@@ -576,7 +577,7 @@ msgstr "Lugares cercanos"
 msgid "Near"
 msgstr "Cerca de"
 
-#: qml/NearbyPage.qml:98 qml/PoiInfoPage.qml:56 qml/PoiPage.qml:48
+#: qml/NearbyPage.qml:98 qml/PoiInfoPage.qml:56 qml/PoiPage.qml:60
 #: qml/PoiPanel.qml:329 qml/RoutePage.qml:90 qml/RoutePage.qml:126
 #: qml/RoutePointPage.qml:201
 msgid "Unnamed point"
@@ -605,129 +606,139 @@ msgstr "Puedes buscar lugares por tipo o nombre."
 
 #: qml/PoiEditPage.qml:38
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: qml/PoiEditPage.qml:39
 msgid "Edit POI"
-msgstr ""
+msgstr "Editar POI"
 
 #: qml/PoiEditPage.qml:43
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: qml/PoiEditPage.qml:49
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: qml/PoiEditPage.qml:50
 msgid "Enter title"
-msgstr ""
+msgstr "Introduce título"
 
 #: qml/PoiEditPage.qml:60
 msgid "Enter type, such as Restaurant"
-msgstr ""
+msgstr "Introduce tipo, p.e. Restaurante"
 
 #: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:80
 msgid "Address"
-msgstr ""
+msgstr "Dirección"
 
 #: qml/PoiEditPage.qml:74
 msgid "Enter address"
-msgstr ""
+msgstr "Introduce dirección"
 
 #: qml/PoiEditPage.qml:83 qml/PoiPanel.qml:147
 msgid "Postal code"
-msgstr ""
+msgstr "Código postal"
 
 #: qml/PoiEditPage.qml:84
 msgid "Enter postal code"
-msgstr ""
+msgstr "Introduce código postal"
 
 #: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:168
 msgid "Contact"
-msgstr ""
+msgstr "Contacto"
 
 #: qml/PoiEditPage.qml:99
 msgid "Phone number"
-msgstr ""
+msgstr "Número de teléfono"
 
-#: qml/PoiEditPage.qml:101
+#: qml/PoiEditPage.qml:100
 msgid "Enter phone number"
-msgstr ""
+msgstr "Introduce número de teléfono"
+
+#: qml/PoiEditPage.qml:109
+msgid "URL"
+msgstr "URL"
 
 #: qml/PoiEditPage.qml:110
-msgid "URL"
-msgstr ""
-
-#: qml/PoiEditPage.qml:111
 msgid "Enter URL"
-msgstr ""
+msgstr "Introduce URL"
 
-#: qml/PoiEditPage.qml:119 qml/PoiEditPage.qml:124 qml/PoiInfoPage.qml:217
+#: qml/PoiEditPage.qml:118 qml/PoiEditPage.qml:123 qml/PoiInfoPage.qml:217
 msgid "Additional info"
-msgstr ""
+msgstr "Info adicional"
 
-#: qml/PoiEditPage.qml:125
+#: qml/PoiEditPage.qml:124
 msgid "Enter additional info"
-msgstr ""
+msgstr "Introduce info adicional"
 
-#: qml/PoiInfoPage.qml:37
+#: qml/PoiInfoPage.qml:37 qml/PoiPage.qml:106
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: qml/PoiInfoPage.qml:72
 msgid "Latitude: %1"
-msgstr ""
+msgstr "Latitud: %1"
 
 #: qml/PoiInfoPage.qml:72
 msgid "Longitude: %2"
-msgstr ""
+msgstr "Longitud: %2"
 
 #: qml/PoiInfoPage.qml:95
 msgid "Postal code: %1"
-msgstr ""
+msgstr "Código postal: %1"
 
 #: qml/PoiInfoPage.qml:103
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 #: qml/PoiInfoPage.qml:109
 msgid "Share location"
-msgstr ""
+msgstr "Compartir ubicación"
 
 #: qml/PoiInfoPage.qml:121
 msgid "Center on location"
-msgstr ""
+msgstr "Centrar en ubicación"
 
 #: qml/PoiInfoPage.qml:133
 msgid "Navigate To"
-msgstr ""
+msgstr "Navegar a"
 
 #: qml/PoiInfoPage.qml:145
 msgid "Navigate From"
-msgstr ""
+msgstr "Navegar desde"
 
 #: qml/PoiInfoPage.qml:157
 msgid "Nearby"
 msgstr "Cerca"
 
-#: qml/PoiPage.qml:104
-msgid "Points of Interest"
+#: qml/PoiPage.qml:42
+msgid "Show bookmarked"
 msgstr ""
 
-#: qml/PoiPage.qml:131
+#: qml/PoiPage.qml:97
+msgid "View"
+msgstr ""
+
+#: qml/PoiPage.qml:149
+msgid "Points of Interest"
+msgstr "Puntos de interés"
+
+#: qml/PoiPage.qml:176
 msgid ""
 "No points of interests defined yet. You can create and bookmark points of "
 "interest using map and search."
 msgstr ""
+"No se han definido puntos de interés aún. Puedes crear y marcar puntos de "
+"interés usando el mapa y la búsqueda."
 
 #: qml/PoiPanel.qml:102
 msgid "%1; %2"
-msgstr ""
+msgstr "%1; %2"
 
 #: qml/PoiPanel.qml:120
 msgid "Latitude: %1; Longitude: %2"
-msgstr ""
+msgstr "Latitud: %1; Longitud: %2"
 
 #: qml/PoiPanel.qml:148
 msgid "Web"
@@ -735,19 +746,19 @@ msgstr "Web"
 
 #: qml/PoiPanel.qml:149
 msgid "Phone"
-msgstr ""
+msgstr "Teléfono"
 
 #: qml/PoiPanel.qml:150
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: qml/PoiPanel.qml:152
 msgid "More info: %1"
-msgstr ""
+msgstr "Más info: %1"
 
 #: qml/PoiPanel.qml:263
 msgid "Deleting POI"
-msgstr ""
+msgstr "Borrando POI"
 
 #: qml/PreferencesPage.qml:42
 msgid "Only applies to vector maps."
@@ -999,11 +1010,11 @@ msgstr "Vehículo de alta ocupación (VAO)"
 
 #: routers/ValhallaSettings.qml:40
 msgid "Motorcycle"
-msgstr ""
+msgstr "Motocicleta"
 
 #: routers/ValhallaSettings.qml:41
 msgid "Motor Scooter"
-msgstr ""
+msgstr "Escúter"
 
 #: routers/ValhallaSettings.qml:65
 msgid "Catalan"
@@ -1055,7 +1066,7 @@ msgstr "Opciones avanzadas"
 
 #: routers/ValhallaSettings.qml:99
 msgid "Prefer shorter route"
-msgstr ""
+msgstr "Preferir ruta más corta"
 
 #: routers/ValhallaSettings.qml:110
 msgid "Bicycle type"
