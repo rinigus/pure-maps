@@ -1,3 +1,8 @@
+2018-XX-XX: Pure Maps
+=========================
+
+* Switch share link to openstreetmaps.org
+
 2018-09-03: Pure Maps 1.4
 =========================
 
@@ -11,6 +16,7 @@
 * Allow using POIs as routing points and nearby reference
 * Updated translations
 * Bugfix: restore map scale if navigation is stopped via clearing the map
+* [1.4.2] Allow to view, edit, and delete POIs from their list
 * [1.4.2] Added Greek translation
 * [1.4.2] Handle HTTP connections in dedicated threads 
 
