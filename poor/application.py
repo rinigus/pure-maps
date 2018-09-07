@@ -57,10 +57,16 @@ class Application:
 
     def quit(self):
         """Quit the application."""
+        print("Quitting")
+        print("Calling http.pool.terminate")
         poor.http.pool.terminate()
+        print("Calling poor.conf.write")
         poor.conf.write()
+        print("Calling self.history.write")
         self.history.write()
+        print("Calling self.narrative.quit")
         self.narrative.quit()
+        print("All quit methods called")
 
     def set_basemap(self, basemap):
         """Set basemap from string `basemap`."""
