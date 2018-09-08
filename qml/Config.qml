@@ -65,7 +65,6 @@ Item {
     function _update() {
         if (!py.ready) return;
         conf.units = get("units");
-        console.log("Config updated");
     }
 
 }
