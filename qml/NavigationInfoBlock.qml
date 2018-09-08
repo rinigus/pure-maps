@@ -58,9 +58,9 @@ Rectangle {
                 return;
             }
 
-            if (app.conf.get("units") === "american") {
+            if (app.conf.units === "american") {
                 text = "%1".arg(Math.round(gps.position.speed * 2.23694))
-            } else if (app.conf.get("units") === "british") {
+            } else if (app.conf.units === "british") {
                 text = "%1".arg(Math.round(gps.position.speed * 2.23694))
             } else {
                 text = "%1".arg(Math.round(gps.position.speed * 3.6))
@@ -79,9 +79,9 @@ Rectangle {
 
         function update() {
             if (!py.ready || !app.navigationActive) return;
-            if (app.conf.get("units") === "american") {
+            if (app.conf.units === "american") {
                 text = app.tr("mph")
-            } else if (app.conf.get("units") === "british") {
+            } else if (app.conf.units === "british") {
                 text = app.tr("mph")
             } else {
                 text = app.tr("km/h")
@@ -146,8 +146,13 @@ Rectangle {
     }
 
     Connections {
+        target: app.conf
+        onUnitsChanged: block.update()
+    }
+
+    Connections {
         target: gps
-        onPositionChanged: block.update()
+        onPositionChanged: speed.update()
     }
 
     Connections {

@@ -18,7 +18,19 @@
 
 import QtQuick 2.0
 
-QtObject {
+Item {
+    id: conf
+
+    // cache certain frequently used properties locally
+    property string units
+
+    Component.onCompleted: _update()
+
+    Connections {
+        target: py
+        onConfigurationChanged: conf._update()
+        onReadyChanged: conf._update()
+    }
 
     function add(option, item) {
         // Add item to the value of option.
@@ -48,6 +60,12 @@ QtObject {
     function set(option, value) {
         // Set the value of option.
         return py.call_sync("poor.conf.set", [option, value]);
+    }
+
+    function _update() {
+        if (!py.ready) return;
+        conf.units = get("units");
+        console.log("Config updated");
     }
 
 }

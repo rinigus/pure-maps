@@ -24,6 +24,8 @@ Python {
 
     property bool ready: false
 
+    signal configurationChanged
+
     Component.onCompleted: {
         addImportPath(Qt.resolvedUrl(".."));
         importModule("poor", function() {
@@ -35,4 +37,8 @@ Python {
 
     onError: console.log("Error: %1".arg(traceback));
 
+    onReceived: {
+        if (!data.length) return;
+        if (data[0] === "config.changed") py.configurationChanged();
+    }
 }

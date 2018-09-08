@@ -67,10 +67,9 @@ Item {
 
     function update() {
         // Update speed and positioning accuracy values in user's preferred units.
-        if (!py.ready) return;
-        if (app.conf.get("units") === "american") {
+        var lines = ["—", "—"];
+        if (app.conf.units === "american") {
             labels.text = " %1\n %2".arg(app.tr("mph")).arg(app.tr("ft"))
-            var lines = ["—", "—"];
             if (gps.position.speedValid)
                 lines[0] = Math.round(gps.position.speed * 2.23694);
             if (gps.position.horizontalAccuracyValid)
@@ -79,9 +78,8 @@ Item {
             values.text = lines.join("\n");
             values.doLayout();
 
-        } else if (app.conf.get("units") === "british") {
+        } else if (app.conf.units === "british") {
             labels.text = " %1\n %2".arg(app.tr("mph")).arg(app.tr("yd"))
-            var lines = ["—", "—"];
             if (gps.position.speedValid)
                 lines[0] = Math.round(gps.position.speed * 2.23694);
             if (gps.position.horizontalAccuracyValid)
@@ -92,7 +90,6 @@ Item {
 
         } else {
             labels.text = " %1\n %2".arg(app.tr("km/h")).arg(app.tr("m"))
-            var lines = ["—", "—"];
             if (gps.position.speedValid)
                 lines[0] = Math.round(gps.position.speed * 3.6);
             if (gps.position.horizontalAccuracyValid)

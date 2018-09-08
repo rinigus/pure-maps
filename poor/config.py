@@ -22,6 +22,7 @@ import os
 import poor
 import sys
 import traceback
+import pyotherside
 
 __all__ = ("ConfigurationStore",)
 
@@ -72,6 +73,7 @@ class ConfigurationStore(poor.AttrDict):
         root, name = self._split_option(option)
         if item in root[name]: return
         root[name].append(copy.deepcopy(item))
+        self._emit()
 
     def _coerce(self, value, ref):
         """Coerce type of `value` to match `ref`."""
@@ -83,6 +85,9 @@ class ConfigurationStore(poor.AttrDict):
         """Return ``True`` if the value of `option` contains `item`."""
         root, name = self._split_option(option)
         return item in root[name]
+
+    def _emit(self):
+        pyotherside.send('config.changed')
 
     def get(self, option):
         """Return the value of `option`."""
@@ -152,11 +157,13 @@ class ConfigurationStore(poor.AttrDict):
         root, name = self._split_option(option)
         if item not in root[name]: return
         root[name].remove(item)
+        self._emit()
 
     def set(self, option, value):
         """Set the value of `option`."""
         root, name = self._split_option(option, create=True)
         root[name] = copy.deepcopy(value)
+        self._emit()
 
     def _split_option(self, option, create=False):
         """Split dotted option to dictionary and option name."""
@@ -190,6 +197,7 @@ class ConfigurationStore(poor.AttrDict):
                 print("Discarding bad option-value pair {}, {}: {}"
                       .format(repr(full_name), repr(value), str(error)),
                       file=sys.stderr)
+        self._emit()
 
     def write(self, path=None):
         """Write values of options to JSON file at `path`."""

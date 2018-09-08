@@ -89,9 +89,9 @@ Rectangle {
             }
 
             // speed limit in m/s
-            if (app.conf.get("units") === "american") {
+            if (app.conf.units === "american") {
                 text = "%1".arg(Math.round(gps.streetSpeedLimit * 2.23694))
-            } else if (app.conf.get("units") === "british") {
+            } else if (app.conf.units === "british") {
                 text = "%1".arg(Math.round(gps.streetSpeedLimit * 2.23694))
             } else {
                 text = "%1".arg(gps.streetSpeedLimit * 3.6)

@@ -36,11 +36,11 @@ Page {
     // Offer a different selection of radii depending on the user's
     // preferred length units, but keep values as meters.
 
-    property var radiusLabels: app.conf.get("units") === "metric" ?
+    property var radiusLabels: app.conf.units === "metric" ?
         ["500 m", "1 km", "2 km", "5 km", "10 km", "20 km", "50 km", "100 km"] :
         [ "¼ mi", "½ mi", "1 mi", "2 mi",  "5 mi", "10 mi", "20 mi",  "40 mi"]
 
-    property var radiusValues: app.conf.get("units") === "metric" ?
+    property var radiusValues: app.conf.units === "metric" ?
         [500, 1000, 2000, 5000, 10000, 20000, 50000, 100000] :
         [402,  805, 1609, 3219,  8047, 16093, 32187,  64374]
 
