@@ -35,14 +35,15 @@ Column {
             MenuItem { text: app.tr("Car") }
             MenuItem { text: app.tr("Bicycle") }
             MenuItem { text: app.tr("Foot") }
+            //MenuItem { text: app.tr("Public transport") }
             MenuItem { text: app.tr("Bus") }
             MenuItem { text: app.tr("High-occupancy vehicle (HOV)") }
             MenuItem { text: app.tr("Motorcycle") }
             MenuItem { text: app.tr("Motor Scooter") }
         }
         property string current_key
+        //property var keys: ["auto", "bicycle", "pedestrian", "multimodal", "bus", "hov", "motorcycle", "motor_scooter"]
         property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov", "motorcycle", "motor_scooter"]
-        //property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov"]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".type");
             var index = typeComboBox.keys.indexOf(key);

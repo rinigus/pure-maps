@@ -109,7 +109,8 @@ MODE = {
     "hov": "car",
     "motorcycle": "car",
     "motor_scooter": "car",
-    "pedestrian": "foot"
+    "pedestrian": "foot",
+    "multimodal": "transit"
 }
 
 MODEOPTIONS = {
@@ -120,7 +121,8 @@ MODEOPTIONS = {
     "hov": ["use_ferry", "use_highways", "use_tolls"],
     "motorcycle": ["use_ferry", "use_highways", "use_tolls", "use_trails"],
     "motor_scooter": ["use_ferry", "use_highways", "use_hills", "use_primary", "use_tolls"],
-    "pedestrian": ["use_ferry", "max_hiking_difficulty"]
+    "pedestrian": ["use_ferry", "max_hiking_difficulty"],
+    "multimodal": []
 }
 
 URL = "http://localhost:8553/v2/route?json={input}"
