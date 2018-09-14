@@ -36,6 +36,10 @@ Page {
                 title: app.tr("Preferences")
             }
 
+            SectionHeader {
+                text: app.tr("General")
+            }
+
             TextSwitch {
                 id: autocompleteSwitch
                 checked: app.conf.get("auto_complete_geo")
@@ -43,28 +47,6 @@ Page {
                 text: app.tr("Autocomplete while searching")
                 onCheckedChanged: {
                     app.conf.set("auto_complete_geo", autocompleteSwitch.checked);
-                }
-            }
-
-            TextSwitch {
-                id: autorotateSwitch
-                checked: app.conf.get("auto_rotate_when_navigating")
-                description: app.tr("Set rotation of the map in the direction of movement when starting navigation.")
-                text: app.tr("Rotate map when navigating")
-                onCheckedChanged: {
-                    app.conf.set("auto_rotate_when_navigating", autorotateSwitch.checked);
-                }
-            }
-
-            TextSwitch {
-                id: tiltSwitch
-                checked: app.conf.get("tilt_when_navigating")
-                description: app.tr("Only applies to vector maps.")
-                enabled: autorotateSwitch.checked
-                text: app.tr("Tilt map when navigating")
-                onCheckedChanged: {
-                    app.conf.set("tilt_when_navigating", tiltSwitch.checked);
-                    map.tiltEnabled = tiltSwitch.checked;
                 }
             }
 
@@ -80,25 +62,6 @@ Page {
                 onValueChanged: {
                     app.conf.set("map_scale", scaleSlider.value);
                     !app.navigationActive && map.setScale(scaleSlider.value);
-                }
-            }
-
-            ComboBox {
-                id: voiceGenderComboBox
-                description: app.tr("Preferred gender for voice navigation. Only supported by some engines and languages.")
-                label: app.tr("Voice gender")
-                menu: ContextMenu {
-                    MenuItem { text: app.tr("Male") }
-                    MenuItem { text: app.tr("Female") }
-                }
-                property var values: ["male", "female"]
-                Component.onCompleted: {
-                    var value = app.conf.get("voice_gender");
-                    voiceGenderComboBox.currentIndex = voiceGenderComboBox.values.indexOf(value);
-                }
-                onCurrentIndexChanged: {
-                    var index = voiceGenderComboBox.currentIndex;
-                    app.conf.set("voice_gender", voiceGenderComboBox.values[index]);
                 }
             }
 
@@ -163,6 +126,51 @@ Page {
                     var index = unitsComboBox.currentIndex;
                     app.conf.set("units", unitsComboBox.values[index]);
                     app.scaleBar.update();
+                }
+            }
+
+            SectionHeader {
+                text: app.tr("Navigation")
+            }
+
+            TextSwitch {
+                id: autorotateSwitch
+                checked: app.conf.get("auto_rotate_when_navigating")
+                description: app.tr("Set rotation of the map in the direction of movement when starting navigation.")
+                text: app.tr("Rotate map when navigating")
+                onCheckedChanged: {
+                    app.conf.set("auto_rotate_when_navigating", autorotateSwitch.checked);
+                }
+            }
+
+            TextSwitch {
+                id: tiltSwitch
+                checked: app.conf.get("tilt_when_navigating")
+                description: app.tr("Only applies to vector maps.")
+                enabled: autorotateSwitch.checked
+                text: app.tr("Tilt map when navigating")
+                onCheckedChanged: {
+                    app.conf.set("tilt_when_navigating", tiltSwitch.checked);
+                    map.tiltEnabled = tiltSwitch.checked;
+                }
+            }
+
+            ComboBox {
+                id: voiceGenderComboBox
+                description: app.tr("Preferred gender for voice navigation. Only supported by some engines and languages.")
+                label: app.tr("Voice gender")
+                menu: ContextMenu {
+                    MenuItem { text: app.tr("Male") }
+                    MenuItem { text: app.tr("Female") }
+                }
+                property var values: ["male", "female"]
+                Component.onCompleted: {
+                    var value = app.conf.get("voice_gender");
+                    voiceGenderComboBox.currentIndex = voiceGenderComboBox.values.indexOf(value);
+                }
+                onCurrentIndexChanged: {
+                    var index = voiceGenderComboBox.currentIndex;
+                    app.conf.set("voice_gender", voiceGenderComboBox.values[index]);
                 }
             }
 
