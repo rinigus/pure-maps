@@ -28,6 +28,7 @@ __all__ = ("ConfigurationStore",)
 
 DEFAULTS = {
     "auto_center": False,
+    "auto_complete_geo": True,
     "auto_rotate": False,
     "basemap": "mapbox_streets",
     "center": [13.0, 49.0],

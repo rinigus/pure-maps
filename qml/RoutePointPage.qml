@@ -131,7 +131,7 @@ Dialog {
             id: autocompleteTimer
             interval: 1000
             repeat: true
-            running: dialog.status === PageStatus.Active
+            running: dialog.status === PageStatus.Active && app.conf.autoCompleteGeo
             triggeredOnStart: true
             onTriggered: dialog.fetchCompletions();
         }
@@ -156,7 +156,7 @@ Dialog {
 
     function fetchCompletions() {
         // Fetch completions for a partial search query.
-        if (dialog.autocompletePending) return;
+        if (!app.conf.autoCompleteGeo || dialog.autocompletePending) return;
         var query = listView.searchField.text.trim();
         if (query === dialog.prevAutocompleteQuery) return;
         dialog.autocompletePending = true;

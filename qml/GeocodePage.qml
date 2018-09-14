@@ -153,7 +153,7 @@ Page {
             id: autocompleteTimer
             interval: 1000
             repeat: true
-            running: page.status === PageStatus.Active
+            running: page.status === PageStatus.Active && app.conf.autoCompleteGeo
             triggeredOnStart: true
             onTriggered: page.fetchCompletions();
         }
@@ -181,7 +181,7 @@ Page {
 
     function fetchCompletions() {
         // Fetch completions for a partial search query.
-        if (page.autocompletePending) return;
+        if (!app.conf.autoCompleteGeo || page.autocompletePending) return;
         var query = listView.searchField.text.trim();
         if (query === page.prevAutocompleteQuery) return;
         page.autocompletePending = true;

@@ -37,6 +37,16 @@ Page {
             }
 
             TextSwitch {
+                id: autocompleteSwitch
+                checked: app.conf.get("auto_complete_geo")
+                description: app.tr("Fetch autocompleted search results while typing a search string.")
+                text: app.tr("Autocomplete while searching")
+                onCheckedChanged: {
+                    app.conf.set("auto_complete_geo", autocompleteSwitch.checked);
+                }
+            }
+
+            TextSwitch {
                 id: tiltSwitch
                 checked: app.conf.get("tilt_when_navigating")
                 description: app.tr("Only applies to vector maps.")

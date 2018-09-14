@@ -22,7 +22,8 @@ Item {
     id: conf
 
     // cache certain frequently used properties locally
-    property string units
+    property bool   autoCompleteGeo
+    property string units    
 
     Component.onCompleted: _update()
 
@@ -64,6 +65,7 @@ Item {
 
     function _update() {
         if (!py.ready) return;
+        conf.autoCompleteGeo = get("auto_complete_geo");
         conf.units = get("units");
     }
 
