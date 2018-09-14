@@ -30,6 +30,7 @@ DEFAULTS = {
     "auto_center": False,
     "auto_complete_geo": True,
     "auto_rotate": False,
+    "auto_rotate_when_navigating": True,
     "basemap": "mapbox_streets",
     "center": [13.0, 49.0],
     "geocoder": "opencage",

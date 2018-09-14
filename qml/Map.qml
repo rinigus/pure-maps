@@ -278,8 +278,8 @@ MapboxMap {
         map.zoomLevel < zoom && map.setZoomLevel(zoom);
         map.centerOnPosition();
         map.autoCenter = true;
-        map.autoRotate = true;
-        map.tiltEnabled = app.conf.get("tilt_when_navigating");
+        map.autoRotate = app.conf.get("auto_rotate_when_navigating");
+        map.tiltEnabled = map.autoRotate && app.conf.get("tilt_when_navigating");
         map.initVoiceNavigation();
         app.navigationActive = true;
         app.navigationPageSeen = true;

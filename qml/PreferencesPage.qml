@@ -47,9 +47,20 @@ Page {
             }
 
             TextSwitch {
+                id: autorotateSwitch
+                checked: app.conf.get("auto_rotate_when_navigating")
+                description: app.tr("Set rotation of the map in the direction of movement when starting navigation.")
+                text: app.tr("Rotate map when navigating")
+                onCheckedChanged: {
+                    app.conf.set("auto_rotate_when_navigating", autorotateSwitch.checked);
+                }
+            }
+
+            TextSwitch {
                 id: tiltSwitch
                 checked: app.conf.get("tilt_when_navigating")
                 description: app.tr("Only applies to vector maps.")
+                enabled: autorotateSwitch.checked
                 text: app.tr("Tilt map when navigating")
                 onCheckedChanged: {
                     app.conf.set("tilt_when_navigating", tiltSwitch.checked);
