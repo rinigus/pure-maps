@@ -68,13 +68,13 @@ Page {
                 color: listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: text ? implicitHeight + Theme.paddingSmall : 0
-                maximumLineCount: 1
                 text: {
                     if (model.poiType && model.address) return model.poiType + ", " + model.address;
                     if (model.poiType) return model.poiType;
                     return model.address;
                 }
                 verticalAlignment: Text.AlignTop
+                wrapMode: Text.WordWrap
             }
 
             ListItemLabel {
