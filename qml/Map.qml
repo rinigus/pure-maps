@@ -30,6 +30,7 @@ MapboxMap {
     cacheDatabaseDefaultPath: true
     cacheDatabaseStoreSettings: false
     center: QtPositioning.coordinate(49, 13)
+    metersPerPixelTolerance: Math.max(0.001, metersPerPixel*0.01) // 1 percent from the current value
     pitch: app.navigationActive && format !== "raster" && tiltEnabled ? 60 : 0
     pixelRatio: Theme.pixelRatio * 1.5
     zoomLevel: 4.0
