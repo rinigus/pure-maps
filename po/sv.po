@@ -762,11 +762,11 @@ msgstr "Tar bort POI"
 
 #: qml/PreferencesPage.qml:46
 msgid "Fetch autocompleted search results while typing a search string."
-msgstr ""
+msgstr "Hämta autokompletterade sökresultat under tiden söksträngen skrivs."
 
 #: qml/PreferencesPage.qml:47
 msgid "Autocomplete while searching"
-msgstr ""
+msgstr "Komplettera automatiskt vid sökning"
 
 #: qml/PreferencesPage.qml:70
 msgid ""
@@ -829,11 +829,11 @@ msgstr "Brittisk"
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
-msgstr ""
+msgstr "Rotera kartan i rörelsens riktning när navigering påbörjas."
 
 #: qml/PreferencesPage.qml:140
 msgid "Rotate map when navigating"
-msgstr ""
+msgstr "Rotera kartan vid navigering"
 
 #: qml/PreferencesPage.qml:149
 msgid "Only applies to vector maps."
@@ -868,31 +868,35 @@ msgstr "Rensa cache"
 
 #: qml/PreferencesPage.qml:193
 msgid "Development"
-msgstr ""
+msgstr "Utveckling"
 
 #: qml/PreferencesPage.qml:199
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
 msgstr ""
+"Följande alternativ är endast för utveckling. Ändra dem bara om du vet vad "
+"du gör."
 
 #: qml/PreferencesPage.qml:206
 msgid "Show development options"
-msgstr ""
+msgstr "Visa utvecklingsalternativ"
 
 #: qml/PreferencesPage.qml:212
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
 msgstr ""
+"Centrera aktuell position i aktuell kartvy. Kom ihåg att inaktivera GPS-"
+"positionering när detta alternativ används."
 
 #: qml/PreferencesPage.qml:213
 msgid "Set position to the map center"
-msgstr ""
+msgstr "Centrera positionen på kartan"
 
 #: qml/PreferencesPage.qml:223
 msgid "Show current zoom level"
-msgstr ""
+msgstr "Visa aktuell zoomnivå"
 
 #: qml/pure-maps.qml:178
 msgid "Rerouting failed: %1"
