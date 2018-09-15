@@ -1,7 +1,16 @@
-2018-XX-XX: Pure Maps
+2018-09-XX: Pure Maps
 =========================
 
 * Switch share link to openstreetmaps.org
+* Prepare for adding public transport by Valhalla
+* Show full address in POI list
+* Allow disabling autocomplete
+* Make map rotation optional on start of navigation
+* Show route and markers in yellow for osm scout night styles
+* Update OSM Scout geocoder data parsing
+* Update translations
+* Add HERE Maps: traffic and satellite 
+* Other changes
 
 2018-09-03: Pure Maps 1.4
 =========================
