@@ -1,0 +1,21 @@
+{
+  "attribution": {
+      "© HERE": "https://legal.here.com",
+      "© HERE. All rights reserved.": "https://legal.here.com/en-gb/terms/general-content-supplier-terms-and-notices"
+  },
+  "format": "raster",
+  "name": "HERE Traffic Night",
+  "tile_size": 512,
+    "tile_url": "https://3.traffic.maps.api.here.com/maptile/2.1/traffictile/newest/normal.traffic.night/{z}/{x}/{y}/512/png8?app_id=#HERE_APP_ID#&app_code=#HERE_APP_CODE#&ppi=250",
+  "style_gui": {
+     "bg": "#101114",
+     "fg": "white",
+     "iconVariant": "white",
+     "maneuver": "#050505",
+     "position": "white",
+     "route": "#ffffff",
+     "routeOpacity": 0.5,
+     "streetFg": "white",
+     "streetBg": "black"
+  }
+}
