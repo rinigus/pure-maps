@@ -14,8 +14,8 @@ root = sys.argv[2]
 if inject: print('Injecting keys into %s' % root)
 else: print( 'Stripping keys from %s' % root)
 
-for dname in ['qml', 'geocoders', 'guides', 'routers']:
-    for ext in ["py", "qml"]:
+for dname in ['qml', 'geocoders', 'guides', 'maps', 'routers']:
+    for ext in ["py", "qml", "json"]:
         for fname in glob.glob(os.path.join(root, dname, "*." + ext)):
             with open(fname, 'r') as f:
                 s = f.read()
