@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-05 17:37+0300\n"
+"POT-Creation-Date: 2018-09-15 17:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Roman Meier <meierrom@gmail.com>, 2018\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rinigus/teams/89597/de_DE/)\n"
@@ -80,7 +80,7 @@ msgstr "ft"
 msgid "feet"
 msgstr "Fuß"
 
-#: poor/util.py:209 qml/Meters.qml:83
+#: poor/util.py:209 qml/Meters.qml:82
 msgid "yd"
 msgstr "yd"
 
@@ -96,7 +96,7 @@ msgstr "km"
 msgid "kilometers"
 msgstr "Kilometer"
 
-#: poor/util.py:227 qml/Meters.qml:94
+#: poor/util.py:227 qml/Meters.qml:92
 msgid "m"
 msgstr "m"
 
@@ -144,11 +144,11 @@ msgstr "{distance} westlich"
 msgid "{distance} north-west"
 msgstr "{distance} nordwestlich"
 
-#: poor/util.py:265
+#: poor/util.py:266
 msgid "{:d} min"
 msgstr "{:d} Min."
 
-#: poor/util.py:266
+#: poor/util.py:267
 msgid "{:d} h {:d} min"
 msgstr "{:d} Std. {:d} Min."
 
@@ -240,8 +240,8 @@ msgstr "Steige bei {dep_name} aus und gehe in Richtung Zielort."
 msgid "Arrive at your destination."
 msgstr "Ziel erreicht."
 
-#: guides/foursquare_settings.qml:26 routers/ValhallaSettings.qml:163
-#: routers/ValhallaSettings.qml:228 routers/ValhallaSettings.qml:292
+#: guides/foursquare_settings.qml:26 routers/ValhallaSettings.qml:164
+#: routers/ValhallaSettings.qml:229 routers/ValhallaSettings.qml:293
 msgid "Prefer"
 msgstr "Bevorzuge"
 
@@ -350,7 +350,7 @@ msgid "Venues"
 msgstr "Orte"
 
 #: qml/AttributionPage.qml:116 qml/MenuPage.qml:55 qml/NavigationPage.qml:39
-#: qml/RoutePage.qml:49
+#: qml/PreferencesPage.qml:133 qml/RoutePage.qml:49
 msgid "Navigation"
 msgstr "Navigation"
 
@@ -404,19 +404,19 @@ msgstr "%1 Ergebnisse"
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
-#: qml/Map.qml:312
+#: qml/Map.qml:313
 msgid "Clearing map"
 msgstr "Karte leeren"
 
-#: qml/Map.qml:544
+#: qml/Map.qml:545
 msgid "Voice navigation on"
 msgstr "Sprachnavigation an"
 
-#: qml/Map.qml:656
+#: qml/Map.qml:657
 msgid "Auto-center off"
 msgstr "Autozentrierung aus"
 
-#: qml/Map.qml:659
+#: qml/Map.qml:660
 msgid "Auto-center on"
 msgstr "Autozentrierung an"
 
@@ -426,7 +426,7 @@ msgstr "Nahegelegene Orte"
 
 #: qml/MenuPage.qml:67
 msgid "Points of interest"
-msgstr ""
+msgstr "Punkte von Interesse"
 
 #: qml/MenuPage.qml:73
 msgid "Share current position"
@@ -460,12 +460,12 @@ msgstr "Über"
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: qml/Meters.qml:72 qml/Meters.qml:83 qml/NavigationInfoBlock.qml:83
+#: qml/Meters.qml:72 qml/Meters.qml:82 qml/NavigationInfoBlock.qml:83
 #: qml/NavigationInfoBlock.qml:85
 msgid "mph"
 msgstr "mph"
 
-#: qml/Meters.qml:94 qml/NavigationInfoBlock.qml:87
+#: qml/Meters.qml:92 qml/NavigationInfoBlock.qml:87
 msgid "km/h"
 msgstr "km/h"
 
@@ -533,11 +533,11 @@ msgstr "Sprachausgabe"
 msgid "Reroute automatically"
 msgstr "Automatisch neuberechnen"
 
-#: qml/NavigationPage.qml:231 qml/PreferencesPage.qml:108
+#: qml/NavigationPage.qml:231 qml/PreferencesPage.qml:92
 msgid "Snap position to road"
 msgstr "Position auf der Straße ausrichten"
 
-#: qml/NavigationPage.qml:243 qml/PreferencesPage.qml:52
+#: qml/NavigationPage.qml:243 qml/PreferencesPage.qml:55
 msgid "Map scale"
 msgstr "Kartenskalierung"
 
@@ -553,7 +553,7 @@ msgstr "Tempolimit anzeigen"
 msgid "Speed limit"
 msgstr "Tempolimit"
 
-#: qml/NavigationPage.qml:274 qml/PreferencesPage.qml:91
+#: qml/NavigationPage.qml:274 qml/PreferencesPage.qml:75
 msgid "Always"
 msgstr "Immer"
 
@@ -561,7 +561,7 @@ msgstr "Immer"
 msgid "Only when exceeding"
 msgstr "Nur beim Überschreiten"
 
-#: qml/NavigationPage.qml:276 qml/PreferencesPage.qml:89
+#: qml/NavigationPage.qml:276 qml/PreferencesPage.qml:73
 msgid "Never"
 msgstr "Nie"
 
@@ -612,7 +612,7 @@ msgstr "Speichern"
 msgid "Edit POI"
 msgstr "Bearbeite POI"
 
-#: qml/PoiEditPage.qml:43
+#: qml/PoiEditPage.qml:43 qml/PreferencesPage.qml:40
 msgid "General"
 msgstr "Allgemeines"
 
@@ -674,7 +674,7 @@ msgstr "Zusätzliche Informationen eingeben"
 
 #: qml/PoiInfoPage.qml:37 qml/PoiPage.qml:106
 msgid "Edit"
-msgstr "Bearbeiten"
+msgstr "Bearbeite"
 
 #: qml/PoiInfoPage.qml:72
 msgid "Latitude: %1"
@@ -714,21 +714,23 @@ msgstr "In der Nähe"
 
 #: qml/PoiPage.qml:42
 msgid "Show bookmarked"
-msgstr ""
+msgstr "Zeige Lesezeichen"
 
 #: qml/PoiPage.qml:97
 msgid "View"
-msgstr ""
+msgstr "Zeige"
 
 #: qml/PoiPage.qml:149
 msgid "Points of Interest"
-msgstr ""
+msgstr "Punkte von Interesse"
 
 #: qml/PoiPage.qml:176
 msgid ""
 "No points of interests defined yet. You can create and bookmark points of "
 "interest using map and search."
 msgstr ""
+"Bisher sind keine POI definiert. Du kannst POI mithilfe von Karte und Suche "
+"erstellen und als Lesezeichen verwenden."
 
 #: qml/PoiPanel.qml:102
 msgid "%1; %2"
@@ -758,35 +760,15 @@ msgstr "Weitere Informationen: %1"
 msgid "Deleting POI"
 msgstr "POI löschen"
 
-#: qml/PreferencesPage.qml:42
-msgid "Only applies to vector maps."
-msgstr "Gilt nur für Vektorkarten."
-
-#: qml/PreferencesPage.qml:43
-msgid "Tilt map when navigating"
-msgstr "Neige die Karte beim Navigieren"
-
-#: qml/PreferencesPage.qml:67
-msgid ""
-"Preferred gender for voice navigation. Only supported by some engines and "
-"languages."
+#: qml/PreferencesPage.qml:46
+msgid "Fetch autocompleted search results while typing a search string."
 msgstr ""
-"Bevorzugtes Geschlecht für die Sprachnavigation. Wird nur für einzelne "
-"Engines und Sprachen unterstützt."
 
-#: qml/PreferencesPage.qml:68
-msgid "Voice gender"
-msgstr "Stimme"
+#: qml/PreferencesPage.qml:47
+msgid "Autocomplete while searching"
+msgstr ""
 
 #: qml/PreferencesPage.qml:70
-msgid "Male"
-msgstr "Männlich"
-
-#: qml/PreferencesPage.qml:71
-msgid "Female"
-msgstr "Weiblich"
-
-#: qml/PreferencesPage.qml:86
 msgid ""
 "Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
@@ -794,59 +776,125 @@ msgstr ""
 "Gilt nur, wenn Pure Maps aktiv ist. Wenn minimiert, wird der Ruhezustand "
 "durch normale Einstellungen auf Geräteebene gesteuert."
 
-#: qml/PreferencesPage.qml:87
+#: qml/PreferencesPage.qml:71
 msgid "Prevent sleep"
 msgstr "Verhindere Ruhemodus"
 
-#: qml/PreferencesPage.qml:90
+#: qml/PreferencesPage.qml:74
 msgid "When navigating"
 msgstr "Während Navigation"
 
-#: qml/PreferencesPage.qml:107
+#: qml/PreferencesPage.qml:91
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating."
 msgstr ""
 "Wählen Sie die Transportart. Gilt nur, wenn Pure Maps nicht navigiert."
 
-#: qml/PreferencesPage.qml:110
+#: qml/PreferencesPage.qml:94
 msgid "None"
 msgstr "Nichts"
 
-#: qml/PreferencesPage.qml:111 routers/mapquest_open_settings.qml:28
+#: qml/PreferencesPage.qml:95 routers/mapquest_open_settings.qml:28
 #: routers/ValhallaSettings.qml:35
 msgid "Car"
 msgstr "Auto"
 
-#: qml/PreferencesPage.qml:112 routers/mapquest_open_settings.qml:29
+#: qml/PreferencesPage.qml:96 routers/mapquest_open_settings.qml:29
 #: routers/ValhallaSettings.qml:36
 msgid "Bicycle"
 msgstr "Fahrrad"
 
-#: qml/PreferencesPage.qml:113 routers/mapquest_open_settings.qml:30
+#: qml/PreferencesPage.qml:97 routers/mapquest_open_settings.qml:30
 #: routers/ValhallaSettings.qml:37
 msgid "Foot"
 msgstr "Zu Fuß"
 
-#: qml/PreferencesPage.qml:130
+#: qml/PreferencesPage.qml:114
 msgid "Units"
 msgstr "Einheiten"
 
-#: qml/PreferencesPage.qml:132
+#: qml/PreferencesPage.qml:116
 msgid "Metric"
 msgstr "Metrisch"
 
-#: qml/PreferencesPage.qml:133
+#: qml/PreferencesPage.qml:117
 msgid "American"
 msgstr "Amerikanisch"
 
-#: qml/PreferencesPage.qml:134
+#: qml/PreferencesPage.qml:118
 msgid "British"
 msgstr "Britisch"
 
-#: qml/PreferencesPage.qml:155
+#: qml/PreferencesPage.qml:139
+msgid ""
+"Set rotation of the map in the direction of movement when starting "
+"navigation."
+msgstr ""
+
+#: qml/PreferencesPage.qml:140
+msgid "Rotate map when navigating"
+msgstr ""
+
+#: qml/PreferencesPage.qml:149
+msgid "Only applies to vector maps."
+msgstr "Gilt nur für Vektorkarten."
+
+#: qml/PreferencesPage.qml:151
+msgid "Tilt map when navigating"
+msgstr "Neige die Karte beim Navigieren"
+
+#: qml/PreferencesPage.qml:160
+msgid ""
+"Preferred gender for voice navigation. Only supported by some engines and "
+"languages."
+msgstr ""
+"Bevorzugtes Geschlecht für die Sprachnavigation. Wird nur für einzelne "
+"Engines und Sprachen unterstützt."
+
+#: qml/PreferencesPage.qml:161
+msgid "Voice gender"
+msgstr "Stimme"
+
+#: qml/PreferencesPage.qml:163
+msgid "Male"
+msgstr "Männlich"
+
+#: qml/PreferencesPage.qml:164
+msgid "Female"
+msgstr "Weiblich"
+
+#: qml/PreferencesPage.qml:184
 msgid "Clear cache"
 msgstr "Cache leeren"
+
+#: qml/PreferencesPage.qml:193
+msgid "Development"
+msgstr ""
+
+#: qml/PreferencesPage.qml:199
+msgid ""
+"The following options are for development only. Please don't change them "
+"unless you know what you are doing."
+msgstr ""
+
+#: qml/PreferencesPage.qml:206
+msgid "Show development options"
+msgstr ""
+
+#: qml/PreferencesPage.qml:212
+msgid ""
+"Sets current position to the center of the current map view. Remember to "
+"disable GPS positioning when using this option."
+msgstr ""
+
+#: qml/PreferencesPage.qml:213
+msgid "Set position to the map center"
+msgstr ""
+
+#: qml/PreferencesPage.qml:223
+msgid "Show current zoom level"
+msgstr ""
 
 #: qml/pure-maps.qml:178
 msgid "Rerouting failed: %1"
@@ -957,7 +1005,7 @@ msgstr "Möglichst wenig laufen"
 msgid "Try to avoid tolls"
 msgstr "Versuche, Mautstrecken zu vermeiden"
 
-#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:61
+#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:62
 msgid "Language"
 msgstr "Sprache"
 
@@ -977,11 +1025,11 @@ msgstr "Fränzösisch (Kanada)"
 msgid "French (France)"
 msgstr "Französisch (Frankreich)"
 
-#: routers/mapquest_open_settings.qml:65 routers/ValhallaSettings.qml:70
+#: routers/mapquest_open_settings.qml:65 routers/ValhallaSettings.qml:71
 msgid "German"
 msgstr "Deutsch"
 
-#: routers/mapquest_open_settings.qml:66 routers/ValhallaSettings.qml:74
+#: routers/mapquest_open_settings.qml:66 routers/ValhallaSettings.qml:75
 msgid "Russian"
 msgstr "Russisch"
 
@@ -997,165 +1045,165 @@ msgstr "Spanisch (Spanien)"
 msgid "General options"
 msgstr "Optionen"
 
-#: routers/ValhallaSettings.qml:38
+#: routers/ValhallaSettings.qml:39
 msgid "Bus"
 msgstr "Bus"
 
-#: routers/ValhallaSettings.qml:39
+#: routers/ValhallaSettings.qml:40
 msgid "High-occupancy vehicle (HOV)"
 msgstr "Fahrgemeinschaft (HOV)"
 
-#: routers/ValhallaSettings.qml:40
+#: routers/ValhallaSettings.qml:41
 msgid "Motorcycle"
 msgstr "Motorrad"
 
-#: routers/ValhallaSettings.qml:41
+#: routers/ValhallaSettings.qml:42
 msgid "Motor Scooter"
 msgstr "Motorroller"
 
-#: routers/ValhallaSettings.qml:65
+#: routers/ValhallaSettings.qml:66
 msgid "Catalan"
 msgstr "Katalanisch"
 
-#: routers/ValhallaSettings.qml:66
+#: routers/ValhallaSettings.qml:67
 msgid "Czech"
 msgstr "Tchechisch"
 
-#: routers/ValhallaSettings.qml:67
+#: routers/ValhallaSettings.qml:68
 msgid "English"
 msgstr "Englisch"
 
-#: routers/ValhallaSettings.qml:68
+#: routers/ValhallaSettings.qml:69
 msgid "English Pirate"
 msgstr "Englisch Pirat"
 
-#: routers/ValhallaSettings.qml:69
+#: routers/ValhallaSettings.qml:70
 msgid "French"
 msgstr "Französisch"
 
-#: routers/ValhallaSettings.qml:71
+#: routers/ValhallaSettings.qml:72
 msgid "Hindi"
 msgstr "Hindi"
 
-#: routers/ValhallaSettings.qml:72
+#: routers/ValhallaSettings.qml:73
 msgid "Italian"
 msgstr "Italienisch"
 
-#: routers/ValhallaSettings.qml:73
+#: routers/ValhallaSettings.qml:74
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: routers/ValhallaSettings.qml:75
+#: routers/ValhallaSettings.qml:76
 msgid "Slovenian"
 msgstr "Slowenisch"
 
-#: routers/ValhallaSettings.qml:76
+#: routers/ValhallaSettings.qml:77
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: routers/ValhallaSettings.qml:77
+#: routers/ValhallaSettings.qml:78
 msgid "Swedish"
 msgstr "Schwedisch"
 
-#: routers/ValhallaSettings.qml:92
+#: routers/ValhallaSettings.qml:93
 msgid "Advanced options"
 msgstr "Erweiterte Optionen"
 
-#: routers/ValhallaSettings.qml:99
+#: routers/ValhallaSettings.qml:100
 msgid "Prefer shorter route"
 msgstr "Kürzere Route bevorzugen"
 
-#: routers/ValhallaSettings.qml:110
+#: routers/ValhallaSettings.qml:111
 msgid "Bicycle type"
 msgstr "Fahrradtyp"
 
-#: routers/ValhallaSettings.qml:112
+#: routers/ValhallaSettings.qml:113
 msgid "Road"
 msgstr "Straße"
 
-#: routers/ValhallaSettings.qml:113
+#: routers/ValhallaSettings.qml:114
 msgid "Hybrid or City (default)"
 msgstr "Hybrid oder Stadt (Standard)"
 
-#: routers/ValhallaSettings.qml:114
+#: routers/ValhallaSettings.qml:115
 msgid "Cross"
 msgstr "Kreuz"
 
-#: routers/ValhallaSettings.qml:115
+#: routers/ValhallaSettings.qml:116
 msgid "Mountain"
 msgstr "Berg"
 
-#: routers/ValhallaSettings.qml:132
+#: routers/ValhallaSettings.qml:133
 msgid "The maximum difficulty of hiking trails that is allowed."
 msgstr "Die maximale Schwierigkeit der Wanderwege die erlaubt ist."
 
-#: routers/ValhallaSettings.qml:133
+#: routers/ValhallaSettings.qml:134
 msgid "Hiking difficulty"
 msgstr "Wanderschwierigkeit"
 
-#: routers/ValhallaSettings.qml:135
+#: routers/ValhallaSettings.qml:136
 msgid "Walking"
 msgstr "Gehen"
 
-#: routers/ValhallaSettings.qml:136
+#: routers/ValhallaSettings.qml:137
 msgid "Hiking (default)"
 msgstr "Wandern (Standard)"
 
-#: routers/ValhallaSettings.qml:137
+#: routers/ValhallaSettings.qml:138
 msgid "Mountain hiking"
 msgstr "Bergwandern"
 
-#: routers/ValhallaSettings.qml:138
+#: routers/ValhallaSettings.qml:139
 msgid "Demanding mountain hiking"
 msgstr "Anspruchsvolles Bergwandern"
 
-#: routers/ValhallaSettings.qml:139
+#: routers/ValhallaSettings.qml:140
 msgid "Alpine hiking"
 msgstr "Alpines Wandern"
 
-#: routers/ValhallaSettings.qml:140
+#: routers/ValhallaSettings.qml:141
 msgid "Demanding alpine hiking"
 msgstr "Anspruchsvolles alpines Wandern"
 
-#: routers/ValhallaSettings.qml:157
+#: routers/ValhallaSettings.qml:158
 msgid "Ferries"
 msgstr "Fähren"
 
-#: routers/ValhallaSettings.qml:159 routers/ValhallaSettings.qml:181
-#: routers/ValhallaSettings.qml:204 routers/ValhallaSettings.qml:224
-#: routers/ValhallaSettings.qml:247 routers/ValhallaSettings.qml:267
+#: routers/ValhallaSettings.qml:160 routers/ValhallaSettings.qml:182
+#: routers/ValhallaSettings.qml:205 routers/ValhallaSettings.qml:225
+#: routers/ValhallaSettings.qml:248 routers/ValhallaSettings.qml:268
 msgid "Avoid"
 msgstr "Vermeiden"
 
-#: routers/ValhallaSettings.qml:160 routers/ValhallaSettings.qml:182
-#: routers/ValhallaSettings.qml:225 routers/ValhallaSettings.qml:289
+#: routers/ValhallaSettings.qml:161 routers/ValhallaSettings.qml:183
+#: routers/ValhallaSettings.qml:226 routers/ValhallaSettings.qml:290
 msgid "Prefer to avoid"
 msgstr "Lieber vermeiden"
 
-#: routers/ValhallaSettings.qml:161 routers/ValhallaSettings.qml:205
-#: routers/ValhallaSettings.qml:226 routers/ValhallaSettings.qml:248
-#: routers/ValhallaSettings.qml:268
+#: routers/ValhallaSettings.qml:162 routers/ValhallaSettings.qml:206
+#: routers/ValhallaSettings.qml:227 routers/ValhallaSettings.qml:249
+#: routers/ValhallaSettings.qml:269
 msgid "No preference (default)"
 msgstr "Keine Voreinstellung (Standard)"
 
-#: routers/ValhallaSettings.qml:162 routers/ValhallaSettings.qml:184
-#: routers/ValhallaSettings.qml:227 routers/ValhallaSettings.qml:291
+#: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:185
+#: routers/ValhallaSettings.qml:228 routers/ValhallaSettings.qml:292
 msgid "Incline"
 msgstr "Neigung"
 
-#: routers/ValhallaSettings.qml:179
+#: routers/ValhallaSettings.qml:180
 msgid "Highways"
 msgstr "Autobahnen"
 
-#: routers/ValhallaSettings.qml:183 routers/ValhallaSettings.qml:290
+#: routers/ValhallaSettings.qml:184 routers/ValhallaSettings.qml:291
 msgid "No preference"
 msgstr "Keine Voreinstellung"
 
-#: routers/ValhallaSettings.qml:185
+#: routers/ValhallaSettings.qml:186
 msgid "Prefer (default)"
 msgstr "Bevorzugen (Standard)"
 
-#: routers/ValhallaSettings.qml:201
+#: routers/ValhallaSettings.qml:202
 msgid ""
 "Your desire to tackle hills. When avoiding hills and steep grades, longer "
 "(time and distance) routes can be selected. By allowing hills, it indicates "
@@ -1166,32 +1214,32 @@ msgstr ""
 " Die Option Berge zulassen, bedeutet, dass man keine Höhen und steile "
 "Anstiege fürchtet."
 
-#: routers/ValhallaSettings.qml:202
+#: routers/ValhallaSettings.qml:203
 msgid "Hills"
 msgstr "Hügel"
 
-#: routers/ValhallaSettings.qml:206 routers/ValhallaSettings.qml:249
-#: routers/ValhallaSettings.qml:269
+#: routers/ValhallaSettings.qml:207 routers/ValhallaSettings.qml:250
+#: routers/ValhallaSettings.qml:270
 msgid "Allow"
 msgstr "Erlauben"
 
-#: routers/ValhallaSettings.qml:222
+#: routers/ValhallaSettings.qml:223
 msgid "Primary roads"
 msgstr "Hauptstraßen"
 
-#: routers/ValhallaSettings.qml:244
+#: routers/ValhallaSettings.qml:245
 msgid "Your propensity to use roads alongside other vehicles."
 msgstr "Ihre Neigung, Straßen neben anderen Fahrzeugen zu benutzen."
 
-#: routers/ValhallaSettings.qml:245
+#: routers/ValhallaSettings.qml:246
 msgid "Roads"
 msgstr "Straßen"
 
-#: routers/ValhallaSettings.qml:265
+#: routers/ValhallaSettings.qml:266
 msgid "Tolls"
 msgstr "Maut"
 
-#: routers/ValhallaSettings.qml:285
+#: routers/ValhallaSettings.qml:286
 msgid ""
 "Your desire for adventure. When preferred, router will tend to avoid major "
 "roads and route on secondary roads, sometimes on using trails, tracks, "
@@ -1202,11 +1250,11 @@ msgstr ""
 "manchmal nicht klassifizierte Straßen oder Straßen mit schlechten "
 "Oberflächen gewählt."
 
-#: routers/ValhallaSettings.qml:286
+#: routers/ValhallaSettings.qml:287
 msgid "Trails"
 msgstr "Pfade"
 
-#: routers/ValhallaSettings.qml:288
+#: routers/ValhallaSettings.qml:289
 msgid "Avoid (default)"
 msgstr "Vermeiden (Standard)"
 
