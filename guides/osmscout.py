@@ -99,7 +99,10 @@ def nearby(query, near, radius, params):
     y = float(results.origin.lat)
     results = [dict(
         address=parse_address(result),
+        link=result.get("website", ""),
+        phone=result.get("phone", ""),
         poi_type=parse_type(result),
+        postcode=result.get("postal_code", ""),
         title=result.title,
         description=parse_description(result),
         distance=float(result.distance),

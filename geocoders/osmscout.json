@@ -1,7 +1,8 @@
 {
   "attribution": {
     "OSM Scout Server": "https://github.com/rinigus/osmscout-server",
-    "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+    "© OpenStreetMap": "https://www.openstreetmap.org/copyright",
+    "UK Postal Codes from FreeMapTools. Contain Ordnance Survey data, National Statistics data © Crown copyright and database right 2017; Royal Mail data © Royal Mail copyright and database right.": "https://www.freemaptools.com/download-uk-postcode-lat-lng.htm"
   },
   "_description": "Search based on OpenStreetMap data",
   "name": "OSM Scout",

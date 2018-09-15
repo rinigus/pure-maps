@@ -50,7 +50,10 @@ def geocode(query, params):
     results = [dict(
         address=parse_address(result),
         label=parse_label(result),
+        link=result.get("website", ""),
+        phone=result.get("phone", ""),
         poi_type=parse_type(result),
+        postcode=result.get("postal_code", ""),
         title=result.title,
         description=parse_description(result),
         x=float(result.lng),
