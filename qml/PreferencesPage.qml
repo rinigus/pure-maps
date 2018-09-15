@@ -186,9 +186,50 @@ Page {
             }
 
             Spacer {
-                height: 2 * Theme.paddingLarge
+                height: Theme.paddingLarge
             }
 
+            SectionHeader {
+                text: app.tr("Development")
+            }
+
+            ListItemLabel {
+                font.pixelSize: Theme.fontSizeSmall
+                height: implicitHeight
+                text: app.tr("The following options are for development only. Please don't change them unless you know what you are doing.")
+                wrapMode: Text.WordWrap
+            }
+
+            TextSwitch {
+                id: develSwitch
+                checked: false
+                text: app.tr("Show development options")
+            }
+
+            TextSwitch {
+                id: develCoorSwitch
+                checked: app.conf.get("devel_coordinate_center")
+                description: app.tr("Sets current position to the center of the current map view. Remember to disable GPS positioning when using this option.")
+                text: app.tr("Set position to the map center")
+                visible: develSwitch.checked
+                onCheckedChanged: {
+                    app.conf.set("devel_coordinate_center", develCoorSwitch.checked);
+                }
+            }
+
+            TextSwitch {
+                id: develShowZSwitch
+                checked: app.conf.get("devel_show_z")
+                text: app.tr("Show current zoom level")
+                visible: develSwitch.checked
+                onCheckedChanged: {
+                    app.conf.set("devel_show_z", develShowZSwitch.checked);
+                }
+            }
+
+            Spacer {
+                height: 2 * Theme.paddingLarge
+            }
         }
 
         VerticalScrollDecorator {}

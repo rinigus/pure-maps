@@ -33,6 +33,8 @@ DEFAULTS = {
     "auto_rotate_when_navigating": True,
     "basemap": "mapbox_streets",
     "center": [13.0, 49.0],
+    "devel_coordinate_center": False,
+    "devel_show_z": False,
     "geocoder": "opencage",
     "guide": "foursquare",
     # "always", "navigating" or "never".

@@ -23,7 +23,9 @@ Item {
 
     // cache certain frequently used properties locally
     property bool   autoCompleteGeo
-    property string units    
+    property bool   developmentCoordinateCenter: false
+    property bool   developmentShowZ: false
+    property string units
 
     Component.onCompleted: _update()
 
@@ -66,6 +68,8 @@ Item {
     function _update() {
         if (!py.ready) return;
         conf.autoCompleteGeo = get("auto_complete_geo");
+        conf.developmentCoordinateCenter = get("devel_coordinate_center");
+        conf.developmentShowZ = get("devel_show_z");
         conf.units = get("units");
     }
 

@@ -65,6 +65,7 @@ Item {
         SpeedLimit { id: speedLimit }
         StreetName { id: streetName }
         Styler { id: styler }
+        ZoomLevel { id: zoomLevel }
 
         Component.onCompleted: {
             revolver.updateOrientation();

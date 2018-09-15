@@ -38,7 +38,7 @@ PositionSourceMapMatched {
         return 0;
     }
 
-    // testingCoordinate: map.center
+    testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
 
     property var coordHistory: []
     property bool directionCalculated: false
