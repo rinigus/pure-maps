@@ -13,8 +13,8 @@
      "fg": "white",
      "iconVariant": "white",
      "maneuver": "black",
-     "position": "magenta",
-     "route": "#ff00ff",
+     "position": "yellow",
+     "route": "#ffff00",
      "routeOpacity": 0.5,
      "streetFg": "white",
      "streetBg": "black"
