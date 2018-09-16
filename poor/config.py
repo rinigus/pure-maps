@@ -50,6 +50,8 @@ DEFAULTS = {
     "poi_list_show_bookmarked": False,
     "reroute": True,
     "router": "stadiamaps",
+    "share_osm": True,
+    "share_googlemaps": False,
     "show_narrative": True,
     "show_navigation_sign": True,
     # "always", "exceeding", "never"
