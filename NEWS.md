@@ -1,4 +1,4 @@
-2018-09-XX: Pure Maps
+2018-09-16: Pure Maps
 =========================
 
 * Switch share link to openstreetmaps.org
