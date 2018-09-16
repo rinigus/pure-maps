@@ -23,7 +23,7 @@ Rectangle {
     id: block
     anchors.right: parent.right
     anchors.rightMargin: -Theme.paddingMedium
-    anchors.top: app.navigationBlock.bottom
+    anchors.top: navigationBlock.bottom
     anchors.topMargin: Theme.paddingSmall
     color: "#3768B7"
     height: {

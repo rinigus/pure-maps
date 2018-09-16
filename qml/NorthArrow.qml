@@ -36,7 +36,7 @@ IconButton {
             AnchorChanges {
                 target: master
                 anchors.bottom: undefined
-                anchors.top: app.navigationSign.bottom
+                anchors.top: navigationSign.bottom
             }
         },
         State {

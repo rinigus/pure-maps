@@ -94,7 +94,7 @@ Page {
                 icon: "image://theme/icon-m-dot"
                 label: app.tr("Center on current position")
                 onClicked: {
-                    map.centerOnPosition();
+                    app.map.centerOnPosition();
                     app.clearMenu();
                 }
             }
@@ -103,8 +103,8 @@ Page {
                 icon: "image://theme/icon-m-clear"
                 label: app.tr("Clear map")
                 onClicked: {
-                    app.navigationActive && map.endNavigating();
-                    map.clear(true);
+                    app.navigationActive && app.map.endNavigating();
+                    app.map.clear(true);
                     app.clearMenu();
                 }
             }
@@ -117,34 +117,34 @@ Page {
 
             TextSwitch {
                 id: autoCenterItem
-                checked: map.autoCenter
+                checked: app.map.autoCenter
                 height: Theme.itemSizeSmall
                 leftMargin: page.switchLeftMargin
                 text: app.tr("Auto-center on position")
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
-                        autoCenterItem.checked = map.autoCenter;
+                        autoCenterItem.checked = app.map.autoCenter;
                     });
                 }
                 onCheckedChanged: {
-                    map.autoCenter = autoCenterItem.checked;
-                    map.autoCenter && map.centerOnPosition();
+                    app.map.autoCenter = autoCenterItem.checked;
+                    app.map.autoCenter && app.map.centerOnPosition();
                 }
             }
 
             TextSwitch {
                 id: autoRotateItem
-                checked: map.autoRotate
+                checked: app.map.autoRotate
                 height: Theme.itemSizeSmall
                 leftMargin: page.switchLeftMargin
                 text: app.tr("Auto-rotate on direction")
                 Component.onCompleted: {
                     page.onStatusChanged.connect(function() {
-                        autoRotateItem.checked = map.autoRotate;
+                        autoRotateItem.checked = app.map.autoRotate;
                     });
                 }
                 onCheckedChanged: {
-                    map.autoRotate = autoRotateItem.checked;
+                    app.map.autoRotate = autoRotateItem.checked;
                 }
             }
 

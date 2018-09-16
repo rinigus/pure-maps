@@ -128,27 +128,27 @@ MapboxMap {
     }
 
     Connections {
-        target: app.menuButton
+        target: menuButton
         onYChanged: map.updateMargins();
     }
 
     Connections {
-        target: app.navigationBlock
+        target: navigationBlock
         onHeightChanged: map.updateMargins();
     }
 
     Connections {
-        target: app.navigationInfoBlock
+        target: navigationInfoBlock
         onHeightChanged: map.updateMargins();
     }
 
     Connections {
-        target: app.poiPanel
+        target: poiPanel
         onHeightChanged: map.updateMargins();
     }
 
     Connections {
-        target: app.streetName
+        target: streetName
         onHeightChanged: map.updateMargins();
     }
 
@@ -480,7 +480,7 @@ MapboxMap {
     }
 
     function hidePoi() {
-        app.poiPanel && app.poiPanel.hide();
+        poiPanel && poiPanel.hide();
     }
 
     function initIcons() {
@@ -542,7 +542,7 @@ MapboxMap {
         if (app.conf.get("voice_navigation")) {
             var args = [map.route.language, app.conf.get("voice_gender")];
             py.call_sync("poor.app.narrative.set_voice", args);
-            app.notification.flash(app.tr("Voice navigation on"));
+            notification.flash(app.tr("Voice navigation on"));
         } else {
             py.call_sync("poor.app.narrative.set_voice", [null, null]);
         }
@@ -602,7 +602,7 @@ MapboxMap {
         py.evaluate("poor.app.basemap.style_url") ?
             (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
-        app.attributionButton.logo = py.evaluate("poor.app.basemap.logo");
+        attributionButton.logo = py.evaluate("poor.app.basemap.logo");
         app.styler.apply(py.evaluate("poor.app.basemap.style_gui"))
         map.initIcons();
         map.initLayers();
@@ -647,7 +647,7 @@ MapboxMap {
     }
 
     function showPoi(poi, showMenu) {
-        app.poiPanel && app.poiPanel.show(poi, showMenu);
+        poiPanel && poiPanel.show(poi, showMenu);
     }
 
     function toggleAutoCenter() {
@@ -671,11 +671,11 @@ MapboxMap {
 
     function updateMargins() {
         // Calculate new margins and set them for the map.
-        var header = app.navigationBlock && app.navigationBlock.height > 0 ? app.navigationBlock.height : map.height*0.05;
-        var footer = !app.poiActive && !app.navigationActive && app.menuButton ? map.height*0.05 : 0;
-        footer += !app.poiActive && app.navigationActive && app.portrait && app.navigationInfoBlock ? app.navigationInfoBlock.height : 0;
-        footer += !app.poiActive && app.navigationActive && app.streetName ? app.streetName.height : 0
-        footer += app.poiActive && app.poiPanel ? app.poiPanel.height : 0
+        var header = navigationBlock && navigationBlock.height > 0 ? navigationBlock.height : map.height*0.05;
+        var footer = !app.poiActive && !app.navigationActive && menuButton ? map.height*0.05 : 0;
+        footer += !app.poiActive && app.navigationActive && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
+        footer += !app.poiActive && app.navigationActive && streetName ? streetName.height : 0
+        footer += app.poiActive && poiPanel ? poiPanel.height : 0
 
         footer = Math.min(footer, map.height / 2.0);
 

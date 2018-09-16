@@ -34,16 +34,16 @@ IconButton {
             AnchorChanges {
                 target: button
                 anchors.right: undefined
-                anchors.horizontalCenter: app.northArrow.horizontalCenter
+                anchors.horizontalCenter: northArrow.horizontalCenter
             }
         },
         State {
             when: app.navigationActive && !app.portrait
             AnchorChanges {
                 target: button
-                anchors.right: app.northArrow.left
+                anchors.right: northArrow.left
                 anchors.top: undefined
-                anchors.verticalCenter: app.northArrow.verticalCenter
+                anchors.verticalCenter: northArrow.verticalCenter
             }
         }
     ]

@@ -35,7 +35,7 @@ ApplicationWindow {
     id: app
     allowedOrientations: defaultAllowedOrientations
     cover: Cover {}
-    initialPage: InitPage { id: init }
+    initialPage: RootPage {}
 
     property var  attributionButton: null
     property var  centerButton: null
@@ -78,7 +78,7 @@ ApplicationWindow {
     property var  showNarrative: null
     property var  showNavigationSign: null
     property var  showSpeedLimit: null
-    property var  styler: null
+    property var  styler: Styler {}
     property var  streetName: null
 
     // Default vertical margin for various multiline list items
@@ -97,6 +97,7 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
+        updateOrientation();
         updateMapMatching();
         updateNavigationSettings();
     }
@@ -121,6 +122,8 @@ ApplicationWindow {
             return py.onReadyChanged.connect(app.updateKeepAlive);
         app.updateKeepAlive();
     }
+
+    onDeviceOrientationChanged: updateOrientation()
 
     onNavigationActiveChanged: {
         app.updateKeepAlive();
@@ -150,6 +153,28 @@ ApplicationWindow {
     function hideMenu() {
         // Immediately hide the menu, keeping pages intact.
         root.visible = true;
+    }
+
+    function updateOrientation() {
+        if (!(app.deviceOrientation & app.allowedOrientations)) return;
+        switch (app.deviceOrientation) {
+        case Orientation.Portrait:
+            app.screenWidth = Screen.width;
+            app.screenHeight = Screen.height;
+            break;
+        case Orientation.PortraitInverted:
+            app.screenWidth = Screen.width;
+            app.screenHeight = Screen.height;
+            break;
+        case Orientation.Landscape:
+            app.screenWidth = Screen.height;
+            app.screenHeight = Screen.width;
+            break;
+        case Orientation.LandscapeInverted:
+            app.screenWidth = Screen.height;
+            app.screenHeight = Screen.width;
+            break;
+        }
     }
 
     function playMaybe(message) {
@@ -245,7 +270,6 @@ ApplicationWindow {
         } else if (app.pageStack.depth < 2) {
             app.pageStack.push("MenuPage.qml");
         }
-        root.visible = false;
     }
 
     function tr(message) {
