@@ -13,4 +13,7 @@ Pure Maps is free software released under the GNU General Public License
 For testing purposes you can just run `qmlscene qml/pure-maps.qml`. For
 installation, you can build the RPM package with command `make rpm`. You
 don't need an SDK to build the RPM, only basic tools: `make`,
-`rpmbuild`, `gettext` and `qttools`.
+`rpmbuild`, `gettext` and `qttools`. 
+
+For building RPMs, please copy `tools/apikeys_dummy.py` to `tools/apikeys.py`
+and fill missing API keys for the services that you plan to use.

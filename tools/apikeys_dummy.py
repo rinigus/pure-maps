@@ -15,4 +15,8 @@ Keys = {
 
     # https://docs.stadiamaps.com/
     "#STADIAMAPS_KEY#": "REPLACE WITH STADIAMAPS KEY",
+
+    # here.com
+    "#HERE_APP_ID#": "REPLACE WITH HERE APP ID",
+    "#HERE_APP_CODE#": "REPLACE WITH HERE APP CODE",
 }
