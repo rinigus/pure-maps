@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-15 17:36+0300\n"
+"POT-Creation-Date: 2018-09-16 19:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: rinigus github, 2018\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
@@ -43,24 +43,24 @@ msgstr "Time-out bij verbinding"
 msgid "Current position"
 msgstr "Huidige positie"
 
-#: poor/narrative.py:127
+#: poor/narrative.py:130
 #, python-brace-format
 msgid "In {distance}, {direction}"
 msgstr "Over {distance}, {direction}"
 
-#: poor/narrative.py:218 poor/narrative.py:220
+#: poor/narrative.py:221 poor/narrative.py:223
 msgid "Exit: "
 msgstr "Uitrit:"
 
-#: poor/narrative.py:415 qml/pure-maps.qml:166
+#: poor/narrative.py:421 qml/pure-maps.qml:166
 msgid "Rerouting"
 msgstr "Route wordt herberekend"
 
-#: poor/narrative.py:416 qml/pure-maps.qml:188
+#: poor/narrative.py:422 qml/pure-maps.qml:188
 msgid "Rerouting failed"
 msgstr "Routeherberekening mislukt"
 
-#: poor/narrative.py:417 qml/pure-maps.qml:182
+#: poor/narrative.py:423 qml/pure-maps.qml:182
 msgid "New route found"
 msgstr "Nieuwe route gevonden"
 
@@ -144,11 +144,11 @@ msgstr "{distance} west"
 msgid "{distance} north-west"
 msgstr "{distance} noordwest"
 
-#: poor/util.py:266
+#: poor/util.py:273
 msgid "{:d} min"
 msgstr "{:d} min"
 
-#: poor/util.py:267
+#: poor/util.py:274
 msgid "{:d} h {:d} min"
 msgstr "{:d} u {:d} min"
 
@@ -242,8 +242,9 @@ msgstr "Stap uit te {dep_name} en wandel naar je bestemming."
 msgid "Arrive at your destination."
 msgstr "Kom aan op je bestemming."
 
-#: guides/foursquare_settings.qml:26 routers/ValhallaSettings.qml:164
-#: routers/ValhallaSettings.qml:229 routers/ValhallaSettings.qml:293
+#: guides/foursquare_settings.qml:26 routers/ValhallaSettings.qml:140
+#: routers/ValhallaSettings.qml:187 routers/ValhallaSettings.qml:252
+#: routers/ValhallaSettings.qml:275 routers/ValhallaSettings.qml:339
 msgid "Prefer"
 msgstr "Verkiezen"
 
@@ -406,19 +407,19 @@ msgstr "%1 resultaten"
 msgid "No results"
 msgstr "Geen resultaten"
 
-#: qml/Map.qml:313
+#: qml/Map.qml:316
 msgid "Clearing map"
 msgstr "Kaart wordt gewist"
 
-#: qml/Map.qml:545
+#: qml/Map.qml:548
 msgid "Voice navigation on"
 msgstr "Stemnavigatie aan"
 
-#: qml/Map.qml:657
+#: qml/Map.qml:660
 msgid "Auto-center off"
 msgstr "Automatisch centreren uit"
 
-#: qml/Map.qml:660
+#: qml/Map.qml:663
 msgid "Auto-center on"
 msgstr "Automatisch centreren aan"
 
@@ -471,11 +472,11 @@ msgstr "mph"
 msgid "km/h"
 msgstr "km/u"
 
-#: qml/NarrativePage.qml:84
+#: qml/NarrativePage.qml:121
 msgid "Continue for %1."
 msgstr "Ga door voor %1."
 
-#: qml/NarrativePage.qml:103
+#: qml/NarrativePage.qml:140
 msgid "Maneuvers"
 msgstr "Manoeuvres"
 
@@ -543,27 +544,27 @@ msgstr "Positie vastklemmen aan wegen"
 msgid "Map scale"
 msgstr "Kaartschaal"
 
-#: qml/NavigationPage.qml:261
+#: qml/NavigationPage.qml:262
 msgid "Show direction signs"
 msgstr "Richtingstekens tonen"
 
-#: qml/NavigationPage.qml:270
+#: qml/NavigationPage.qml:272
 msgid "Show speed limit sign"
 msgstr "Snelheidslimietteken tonen"
 
-#: qml/NavigationPage.qml:272
+#: qml/NavigationPage.qml:274
 msgid "Speed limit"
 msgstr "Snelheidlimiet"
 
-#: qml/NavigationPage.qml:274 qml/PreferencesPage.qml:75
+#: qml/NavigationPage.qml:276 qml/PreferencesPage.qml:75
 msgid "Always"
 msgstr "Altijd"
 
-#: qml/NavigationPage.qml:275
+#: qml/NavigationPage.qml:277
 msgid "Only when exceeding"
 msgstr "Enkel bij overschrijden"
 
-#: qml/NavigationPage.qml:276 qml/PreferencesPage.qml:73
+#: qml/NavigationPage.qml:278 qml/PreferencesPage.qml:73
 msgid "Never"
 msgstr "Nooit"
 
@@ -943,6 +944,14 @@ msgstr "E-mail wordt gestart"
 msgid "Other"
 msgstr "Andere"
 
+#: qml/SharePage.qml:108
+msgid "Add link to OpenStreetMaps"
+msgstr ""
+
+#: qml/SharePage.qml:119
+msgid "Add link to Google Maps"
+msgstr ""
+
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
 msgstr "Route %1. totaal %2"
@@ -1048,7 +1057,11 @@ msgstr "Spaans (Spanje)"
 msgid "General options"
 msgstr "Algemene opties"
 
-#: routers/ValhallaSettings.qml:39
+#: routers/ValhallaSettings.qml:38
+msgid "Public transport"
+msgstr ""
+
+#: routers/ValhallaSettings.qml:39 routers/ValhallaSettings.qml:134
 msgid "Bus"
 msgstr "Bus"
 
@@ -1137,76 +1150,85 @@ msgid "Mountain"
 msgstr "Berg"
 
 #: routers/ValhallaSettings.qml:133
-msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr "De maximaal toegestane moeilijkheidsgraad van wandelpaden."
+msgid "Your desire to use buses."
+msgstr ""
 
-#: routers/ValhallaSettings.qml:134
-msgid "Hiking difficulty"
-msgstr "Wandelmoeilijkheid"
-
-#: routers/ValhallaSettings.qml:136
-msgid "Walking"
-msgstr "Lopen"
-
-#: routers/ValhallaSettings.qml:137
-msgid "Hiking (default)"
-msgstr "Wandelen (standaard)"
-
-#: routers/ValhallaSettings.qml:138
-msgid "Mountain hiking"
-msgstr "Wandelen door de bergen"
-
-#: routers/ValhallaSettings.qml:139
-msgid "Demanding mountain hiking"
-msgstr "Wandelen door de bergen aanvragen"
-
-#: routers/ValhallaSettings.qml:140
-msgid "Alpine hiking"
-msgstr "Alpinewandelen"
-
-#: routers/ValhallaSettings.qml:141
-msgid "Demanding alpine hiking"
-msgstr "Alpinewandelen aanvragen"
-
-#: routers/ValhallaSettings.qml:158
-msgid "Ferries"
-msgstr "Veerboten"
-
-#: routers/ValhallaSettings.qml:160 routers/ValhallaSettings.qml:182
-#: routers/ValhallaSettings.qml:205 routers/ValhallaSettings.qml:225
-#: routers/ValhallaSettings.qml:248 routers/ValhallaSettings.qml:268
+#: routers/ValhallaSettings.qml:136 routers/ValhallaSettings.qml:183
+#: routers/ValhallaSettings.qml:205 routers/ValhallaSettings.qml:228
+#: routers/ValhallaSettings.qml:248 routers/ValhallaSettings.qml:271
+#: routers/ValhallaSettings.qml:294 routers/ValhallaSettings.qml:314
+#: routers/ValhallaSettings.qml:357
 msgid "Avoid"
 msgstr "Vermijden"
 
-#: routers/ValhallaSettings.qml:161 routers/ValhallaSettings.qml:183
-#: routers/ValhallaSettings.qml:226 routers/ValhallaSettings.qml:290
+#: routers/ValhallaSettings.qml:137 routers/ValhallaSettings.qml:184
+#: routers/ValhallaSettings.qml:206 routers/ValhallaSettings.qml:249
+#: routers/ValhallaSettings.qml:272 routers/ValhallaSettings.qml:336
 msgid "Prefer to avoid"
 msgstr "Bij voorkeur vermijden"
 
-#: routers/ValhallaSettings.qml:162 routers/ValhallaSettings.qml:206
-#: routers/ValhallaSettings.qml:227 routers/ValhallaSettings.qml:249
-#: routers/ValhallaSettings.qml:269
+#: routers/ValhallaSettings.qml:138 routers/ValhallaSettings.qml:185
+#: routers/ValhallaSettings.qml:229 routers/ValhallaSettings.qml:250
+#: routers/ValhallaSettings.qml:273 routers/ValhallaSettings.qml:295
+#: routers/ValhallaSettings.qml:315 routers/ValhallaSettings.qml:358
 msgid "No preference (default)"
 msgstr "Geen voorkeur (standaard)"
 
-#: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:185
-#: routers/ValhallaSettings.qml:228 routers/ValhallaSettings.qml:292
+#: routers/ValhallaSettings.qml:139 routers/ValhallaSettings.qml:186
+#: routers/ValhallaSettings.qml:208 routers/ValhallaSettings.qml:251
+#: routers/ValhallaSettings.qml:274 routers/ValhallaSettings.qml:338
 msgid "Incline"
 msgstr "Helling"
 
-#: routers/ValhallaSettings.qml:180
+#: routers/ValhallaSettings.qml:156
+msgid "The maximum difficulty of hiking trails that is allowed."
+msgstr "De maximaal toegestane moeilijkheidsgraad van wandelpaden."
+
+#: routers/ValhallaSettings.qml:157
+msgid "Hiking difficulty"
+msgstr "Wandelmoeilijkheid"
+
+#: routers/ValhallaSettings.qml:159
+msgid "Walking"
+msgstr "Lopen"
+
+#: routers/ValhallaSettings.qml:160
+msgid "Hiking (default)"
+msgstr "Wandelen (standaard)"
+
+#: routers/ValhallaSettings.qml:161
+msgid "Mountain hiking"
+msgstr "Wandelen door de bergen"
+
+#: routers/ValhallaSettings.qml:162
+msgid "Demanding mountain hiking"
+msgstr "Wandelen door de bergen aanvragen"
+
+#: routers/ValhallaSettings.qml:163
+msgid "Alpine hiking"
+msgstr "Alpinewandelen"
+
+#: routers/ValhallaSettings.qml:164
+msgid "Demanding alpine hiking"
+msgstr "Alpinewandelen aanvragen"
+
+#: routers/ValhallaSettings.qml:181
+msgid "Ferries"
+msgstr "Veerboten"
+
+#: routers/ValhallaSettings.qml:203
 msgid "Highways"
 msgstr "Snelwegen"
 
-#: routers/ValhallaSettings.qml:184 routers/ValhallaSettings.qml:291
+#: routers/ValhallaSettings.qml:207 routers/ValhallaSettings.qml:337
 msgid "No preference"
 msgstr "Geen voorkeur"
 
-#: routers/ValhallaSettings.qml:186
+#: routers/ValhallaSettings.qml:209
 msgid "Prefer (default)"
 msgstr "Verkiezen (standaard)"
 
-#: routers/ValhallaSettings.qml:202
+#: routers/ValhallaSettings.qml:225
 msgid ""
 "Your desire to tackle hills. When avoiding hills and steep grades, longer "
 "(time and distance) routes can be selected. By allowing hills, it indicates "
@@ -1217,32 +1239,40 @@ msgstr ""
 "hellingen. Door heuvels toe te staan, geef je aan dat je niet bang bent van "
 "heuvels en steile hellingen."
 
-#: routers/ValhallaSettings.qml:203
+#: routers/ValhallaSettings.qml:226
 msgid "Hills"
 msgstr "Heuvels"
 
-#: routers/ValhallaSettings.qml:207 routers/ValhallaSettings.qml:250
-#: routers/ValhallaSettings.qml:270
+#: routers/ValhallaSettings.qml:230 routers/ValhallaSettings.qml:296
+#: routers/ValhallaSettings.qml:316 routers/ValhallaSettings.qml:359
 msgid "Allow"
 msgstr "Toestaan"
 
-#: routers/ValhallaSettings.qml:223
+#: routers/ValhallaSettings.qml:246
 msgid "Primary roads"
 msgstr "Primaire wegen"
 
-#: routers/ValhallaSettings.qml:245
+#: routers/ValhallaSettings.qml:268
+msgid "Your desire to use rail/subway/metro."
+msgstr ""
+
+#: routers/ValhallaSettings.qml:269
+msgid "Rail"
+msgstr ""
+
+#: routers/ValhallaSettings.qml:291
 msgid "Your propensity to use roads alongside other vehicles."
 msgstr "Je neiging om wegen naast andere voertuigen te gebruiken."
 
-#: routers/ValhallaSettings.qml:246
+#: routers/ValhallaSettings.qml:292
 msgid "Roads"
 msgstr "Wegen"
 
-#: routers/ValhallaSettings.qml:266
+#: routers/ValhallaSettings.qml:312
 msgid "Tolls"
 msgstr "Tol"
 
-#: routers/ValhallaSettings.qml:286
+#: routers/ValhallaSettings.qml:332
 msgid ""
 "Your desire for adventure. When preferred, router will tend to avoid major "
 "roads and route on secondary roads, sometimes on using trails, tracks, "
@@ -1252,13 +1282,17 @@ msgstr ""
 "wegen proberen vermijden en je langs secundaire wegen sturen, soms op paden,"
 " sporen, niet-geclassificeerde wegen of wegen met een slechte wegdek."
 
-#: routers/ValhallaSettings.qml:287
+#: routers/ValhallaSettings.qml:333
 msgid "Trails"
 msgstr "Paden"
 
-#: routers/ValhallaSettings.qml:289
+#: routers/ValhallaSettings.qml:335
 msgid "Avoid (default)"
 msgstr "Vermijden (standaard)"
+
+#: routers/ValhallaSettings.qml:355
+msgid "Transfers"
+msgstr ""
 
 #: qml/js/util.js:125
 msgid "%1 (default)"
