@@ -36,21 +36,27 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: narrativeLabel.height + lengthLabel.height
+            contentHeight: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height + 2.0*Theme.paddingLarge
 
             Image {
                 id: icon
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.horizontalPageMargin
+                anchors.top: spacer.bottom
                 fillMode: Image.Pad
-                height: narrativeLabel.height + lengthLabel.height
+                height: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height
                 horizontalAlignment: Image.AlignRight
                 opacity: 0.9
                 smooth: true
                 source: "icons/navigation/%1.svg".arg(model.icon)
                 sourceSize.height: Theme.iconSizeMedium
                 sourceSize.width: Theme.iconSizeMedium
-                verticalAlignment: Image.AlignVCenter
+                verticalAlignment: Image.AlignTop
+            }
+
+            Spacer {
+                id: spacer
+                height: Theme.paddingLarge
             }
 
             Label {
@@ -59,12 +65,43 @@ Page {
                 anchors.leftMargin: Theme.paddingMedium
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.top: spacer.bottom
                 color: (model.active || listItem.highlighted) ?
                     Theme.highlightColor : Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + app.listItemVerticalMargin
+                height: implicitHeight + Theme.paddingSmall
                 text: model.narrative
-                verticalAlignment: Text.AlignBottom
+                verticalAlignment: Text.AlignTop
+                wrapMode: Text.WordWrap
+            }
+
+            Label {
+                id: departLabel
+                anchors.left: icon.right
+                anchors.leftMargin: Theme.paddingMedium
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.top: narrativeLabel.bottom
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeSmall
+                height: text ? implicitHeight + Theme.paddingSmall : 0
+                text: model.depart_instruction ? model.depart_instruction : ""
+                verticalAlignment: Text.AlignTop
+                wrapMode: Text.WordWrap
+            }
+
+            Label {
+                id: arriveLabel
+                anchors.left: icon.right
+                anchors.leftMargin: Theme.paddingMedium
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.top: departLabel.bottom
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeSmall
+                height: text ? implicitHeight + Theme.paddingSmall : 0
+                text: model.arrive_instruction ? model.arrive_instruction : ""
+                verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
             }
 
@@ -74,11 +111,11 @@ Page {
                 anchors.leftMargin: Theme.paddingMedium
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.horizontalPageMargin
-                anchors.top: narrativeLabel.bottom
+                anchors.top: arriveLabel.bottom
                 anchors.topMargin: Theme.paddingSmall
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + app.listItemVerticalMargin
+                height: implicitHeight + Theme.paddingSmall
                 lineHeight: 1.15
                 text: model.index < listView.count - 1 ?
                     app.tr("Continue for %1.", model.length) : ""

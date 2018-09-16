@@ -257,13 +257,15 @@ Page {
 
             TextSwitch {
                 id: directionsSwitch
-                checked: app.conf.get("show_navigation_sign")
+                checked: enabled && app.conf.get("show_navigation_sign")
+                enabled: map.route.mode !== "transit"
                 text: app.tr("Show direction signs")
                 onCheckedChanged: {
+                    if (!enabled) return;
                     app.conf.set("show_navigation_sign", directionsSwitch.checked);
                     app.showNavigationSign = directionsSwitch.checked;
                 }
-            }
+                Component.onCompleted: app.showNavigationSign = checked            }
 
             ComboBox {
                 id: speedLimitComboBox

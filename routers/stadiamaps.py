@@ -32,13 +32,16 @@ CONF_DEFAULTS = {
     "max_hiking_difficulty": 1,
     "shorter": 0,
     "type": "auto",
+    "use_bus": 0.5,
     "use_ferry": 0.5,
     "use_highways": 1.0,
     "use_hills": 0.5,
     "use_primary": 0.5,
+    "use_rail": 0.5,
     "use_roads": 0.5,
     "use_tolls": 0.5,
-    "use_trails": 0.0
+    "use_trails": 0.0,
+    "use_transfers": 0.5,
 }
 
 ICONS = {
@@ -90,7 +93,7 @@ MODE = {
     "motorcycle": "car",
     "motor_scooter": "car",
     "pedestrian": "foot",
-    "multimodal": "transit"
+    "transit": "transit"
 }
 
 MODEOPTIONS = {
@@ -102,7 +105,7 @@ MODEOPTIONS = {
     "motorcycle": ["use_ferry", "use_highways", "use_tolls", "use_trails"],
     "motor_scooter": ["use_ferry", "use_highways", "use_hills", "use_primary", "use_tolls"],
     "pedestrian": ["use_ferry", "max_hiking_difficulty"],
-    "multimodal": []
+    "transit": ["use_bus", "use_rail", "use_transfers"]
 }
 
 URL = "https://route.stadiamaps.com/route?api_key=#STADIAMAPS_KEY#&json={input}"
@@ -159,6 +162,9 @@ def route(fm, to, heading, params):
             exit_toward=parse_exit(maneuver, "exit_toward_elements")
         ),
         street=maneuver.get("begin_street_names", maneuver.get("street_names", None)),
+        arrive_instruction=maneuver.get("arrive_instruction", None),
+        depart_instruction=maneuver.get("depart_instruction", None),
+        travel_type=maneuver.get("travel_type", None),
         verbal_alert=maneuver.get("verbal_transition_alert_instruction", None),
         verbal_pre=maneuver.get("verbal_pre_transition_instruction", None),
         verbal_post=maneuver.get("verbal_post_transition_instruction", None),
