@@ -35,12 +35,14 @@ ApplicationWindow {
     id: app
     allowedOrientations: defaultAllowedOrientations
     cover: Cover {}
-    initialPage: DummyPage { id: dummy }
+    initialPage: InitPage { id: init }
 
     property var  attributionButton: null
     property var  centerButton: null
     property var  conf: Config {}
     property bool hasMapMatching: false
+    property bool initialized: false
+    property var  mainPage: null
     property var  map: null
     property string mapMatchingMode: {
         if (!hasMapMatching) return "none";
@@ -84,7 +86,6 @@ ApplicationWindow {
     // and the associated constant Theme.itemSizeSmall.
     property real listItemVerticalMargin: (Theme.itemSizeSmall - 1.125 * Theme.fontSizeMedium) / 2
 
-    Root { id: root }
     PositionSource { id: gps }
     Python { id: py }
 

@@ -23,7 +23,7 @@ CoverBackground {
     id: cover
 
     property bool active: status === Cover.Active
-    property bool showNarrative: map.hasRoute && app.showNarrative
+    property bool showNarrative: app.initialized && app.showNarrative && map.hasRoute
 
     Image {
         // Background icon
