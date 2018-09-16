@@ -1,4 +1,4 @@
-2018-09-XX: Pure Maps
+2018-09-16: Pure Maps 1.5
 =========================
 
 * Switch share link to openstreetmaps.org
@@ -11,6 +11,9 @@
 * Update translations
 * Add HERE Maps: traffic and satellite 
 * Other changes
+* [1.5.1] Bugfix: Sharing position
+* [1.5.1] Allow selecting maps service on sharing
+* [1.5.1] Add support for public transport routing by Valhalla routers
 
 2018-09-03: Pure Maps 1.4
 =========================

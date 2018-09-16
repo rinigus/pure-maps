@@ -2,7 +2,8 @@
     "attribution": {
         "Stadia Maps": "https://stadiamaps.com",
         "Valhalla": "https://github.com/valhalla/valhalla",
-        "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+        "© OpenStreetMap": "https://www.openstreetmap.org/copyright",
+        "Public transport data from Transitland": "https://transit.land/"
     },
     "_description": "Routing by Valhalla based on OpenStreetMap data",
     "_modes": ["car", "bicycle", "foot"],

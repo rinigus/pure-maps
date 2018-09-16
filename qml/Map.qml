@@ -185,6 +185,8 @@ MapboxMap {
     function _addManeuver(maneuver) {
         // Add new maneuver marker to the map.
         map.maneuvers.push({
+            "arrive_instruction": maneuver.arrive_instruction || "",
+            "depart_instruction": maneuver.depart_instruction || "",
             "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
             "duration": maneuver.duration || 0,
             "icon": maneuver.icon || "flag",
@@ -194,6 +196,7 @@ MapboxMap {
             "passive": maneuver.passive || false,
             "sign": maneuver.sign || undefined,
             "street": maneuver.street|| undefined,
+            "travel_type": maneuver.travel_type || "",
             "verbal_alert": maneuver.verbal_alert || "",
             "verbal_post": maneuver.verbal_post || "",
             "verbal_pre": maneuver.verbal_pre || "",

@@ -100,11 +100,35 @@ Page {
         horizontalAlignment: Text.AlignHCenter
     }
 
+    TextSwitch {
+        id: shareOsmSwitch
+        anchors.top: infoLabel.bottom
+        anchors.topMargin: 2 * Theme.paddingLarge
+        checked: app.conf.get("share_osm")
+        text: app.tr("Add link to OpenStreetMaps")
+        onCheckedChanged: {
+            app.conf.set("share_osm", shareOsmSwitch.checked);
+        }
+    }
+
+    TextSwitch {
+        id: shareGoogleSwitch
+        anchors.top: shareOsmSwitch.bottom
+        anchors.topMargin: Theme.paddingMedium
+        checked: app.conf.get("share_googlemaps")
+        text: app.tr("Add link to Google Maps")
+        onCheckedChanged: {
+            app.conf.set("share_googlemaps", shareGoogleSwitch.checked);
+        }
+    }
+
     function formatMessage(html) {
         return py.call_sync("poor.util.format_location_message", [
             page.coordinate.longitude,
             page.coordinate.latitude,
             html,
+            shareOsmSwitch.checked,
+            shareGoogleSwitch.checked,
         ]);
     }
 

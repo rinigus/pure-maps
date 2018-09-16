@@ -35,15 +35,15 @@ Column {
             MenuItem { text: app.tr("Car") }
             MenuItem { text: app.tr("Bicycle") }
             MenuItem { text: app.tr("Foot") }
-            //MenuItem { text: app.tr("Public transport") }
+            MenuItem { text: app.tr("Public transport") }
             MenuItem { text: app.tr("Bus") }
             MenuItem { text: app.tr("High-occupancy vehicle (HOV)") }
             MenuItem { text: app.tr("Motorcycle") }
             MenuItem { text: app.tr("Motor Scooter") }
         }
         property string current_key
-        //property var keys: ["auto", "bicycle", "pedestrian", "multimodal", "bus", "hov", "motorcycle", "motor_scooter"]
-        property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov", "motorcycle", "motor_scooter"]
+        property var keys: ["auto", "bicycle", "pedestrian", "transit", "bus", "hov", "motorcycle", "motor_scooter"]
+        //property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov", "motorcycle", "motor_scooter"]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".type");
             var index = typeComboBox.keys.indexOf(key);
@@ -129,6 +129,29 @@ Column {
     }
 
     ComboBox {
+        id: useBusComboBox
+        description: app.tr("Your desire to use buses.")
+        label: app.tr("Bus")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Avoid") }
+            MenuItem { text: app.tr("Prefer to avoid") }
+            MenuItem { text: app.tr("No preference (default)") }
+            MenuItem { text: app.tr("Incline") }
+            MenuItem { text: app.tr("Prefer") }
+        }
+        visible: typeComboBox.current_key == "transit"
+        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
+        Component.onCompleted: {
+            var key = app.conf.get("routers." + settingsBlock.router + ".use_bus");
+            useBusComboBox.currentIndex = settingsBlock.getIndex(useBusComboBox.keys,key);
+        }
+        onCurrentIndexChanged: {
+            var key = useBusComboBox.keys[useBusComboBox.currentIndex]
+            app.conf.set("routers." + settingsBlock.router + ".use_bus", key);
+        }
+    }
+
+    ComboBox {
         id: maxHikingDifficultyComboBox
         description: app.tr("The maximum difficulty of hiking trails that is allowed.")
         label: app.tr("Hiking difficulty")
@@ -163,7 +186,7 @@ Column {
             MenuItem { text: app.tr("Incline") }
             MenuItem { text: app.tr("Prefer") }
         }
-        visible: true
+        visible: typeComboBox.current_key != "transit"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_ferry");
@@ -241,6 +264,29 @@ Column {
     }
 
     ComboBox {
+        id: useRailComboBox
+        description: app.tr("Your desire to use rail/subway/metro.")
+        label: app.tr("Rail")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Avoid") }
+            MenuItem { text: app.tr("Prefer to avoid") }
+            MenuItem { text: app.tr("No preference (default)") }
+            MenuItem { text: app.tr("Incline") }
+            MenuItem { text: app.tr("Prefer") }
+        }
+        visible: typeComboBox.current_key == "transit"
+        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
+        Component.onCompleted: {
+            var key = app.conf.get("routers." + settingsBlock.router + ".use_rail");
+            useRailComboBox.currentIndex = settingsBlock.getIndex(useRailComboBox.keys,key);
+        }
+        onCurrentIndexChanged: {
+            var key = useRailComboBox.keys[useRailComboBox.currentIndex]
+            app.conf.set("routers." + settingsBlock.router + ".use_rail", key);
+        }
+    }
+
+    ComboBox {
         id: useRoadsComboBox
         description: app.tr("Your propensity to use roads alongside other vehicles.")
         label: app.tr("Roads")
@@ -301,6 +347,26 @@ Column {
         onCurrentIndexChanged: {
             var key = useTrailsComboBox.keys[useTrailsComboBox.currentIndex]
             app.conf.set("routers." + settingsBlock.router + ".use_trails", key);
+        }
+    }
+
+    ComboBox {
+        id: useTransfersComboBox
+        label: app.tr("Transfers")
+        menu: ContextMenu {
+            MenuItem { text: app.tr("Avoid") }
+            MenuItem { text: app.tr("No preference (default)") }
+            MenuItem { text: app.tr("Allow") }
+        }
+        visible: typeComboBox.current_key == "transit"
+        property var keys: [0.0, 0.5, 1.0]
+        Component.onCompleted: {
+            var key = app.conf.get("routers." + settingsBlock.router + ".use_transfers");
+            useTransfersComboBox.currentIndex = settingsBlock.getIndex(useTransfersComboBox.keys,key);
+        }
+        onCurrentIndexChanged: {
+            var key = useTransfersComboBox.keys[useTransfersComboBox.currentIndex]
+            app.conf.set("routers." + settingsBlock.router + ".use_transfers", key);
         }
     }
 
