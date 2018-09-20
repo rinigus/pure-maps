@@ -408,7 +408,15 @@ MapboxMap {
         map.setLayoutProperty(map.layers.dummies, "visibility", "visible");
     }
 
-    function deletePoi(poiId) {
+    function deletePoi(poiId, confirm) {
+        if (confirm) {
+            app.remorse.execute(app.tr("Clearing map"),
+                                function() {
+                                    map.deletePoi(poiId);
+                                });
+            return;
+        }
+
         if (poiId == null) return;
         map.pois = map.pois.filter(function(p) {
             return p.poiId != poiId;

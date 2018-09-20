@@ -56,7 +56,7 @@ Page {
                 value: py.evaluate("poor.app.router.name")
                 width: parent.width
                 onClicked: {
-                    var dialog = app.pageStack.push("RouterPage.qml");
+                    var dialog = app.push("RouterPage.qml");
                     dialog.accepted.connect(function() {
                         column.settingsChecked = false;
                         usingButton.value = py.evaluate("poor.app.router.name");
@@ -83,7 +83,7 @@ Page {
                 }
 
                 onClicked: {
-                    var dialog = app.pageStack.push("RoutePointPage.qml");
+                    var dialog = app.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
                         if (dialog.selectedPoi && dialog.selectedPoi.coordinate) {
                             page.from = [dialog.selectedPoi.coordinate.longitude, dialog.selectedPoi.coordinate.latitude];
@@ -119,7 +119,7 @@ Page {
                 }
 
                 onClicked: {
-                    var dialog = app.pageStack.push("RoutePointPage.qml");
+                    var dialog = app.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
                         if (dialog.selectedPoi && dialog.selectedPoi.coordinate) {
                             page.to = [dialog.selectedPoi.coordinate.longitude, dialog.selectedPoi.coordinate.latitude];
@@ -194,7 +194,7 @@ Page {
             if (page.toText === app.tr("Current position"))
                 page.to = map.getPosition();
             var uri = py.evaluate("poor.app.router.results_qml_uri");
-            app.pageStack.pushAttached(uri);
+            app.pushAttached(uri);
         }
     }
 

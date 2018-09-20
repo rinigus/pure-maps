@@ -36,11 +36,11 @@ Page {
                 enabled: page.active
                 text: app.tr("Edit")
                 onClicked: {
-                    var dialog = app.pageStack.push("PoiEditPage.qml",
-                                                    {"poi": poi});
+                    var dialog = app.push("PoiEditPage.qml",
+                                          {"poi": poi});
                     dialog.accepted.connect(function() {
                         map.updatePoi(dialog.poi);
-                        app.clearMenu();
+                        app.showMap();
                         map.showPoi(dialog.poi);
                     })
                 }
@@ -108,10 +108,10 @@ Page {
                 icon: "image://theme/icon-m-share"
                 label: app.tr("Share location")
                 onClicked: {
-                    app.pageStack.push("SharePage.qml", {
-                                           "coordinate": poi.coordinate,
-                                           "title": poi.title,
-                                       });
+                    app.push("SharePage.qml", {
+                                 "coordinate": poi.coordinate,
+                                 "title": poi.title,
+                             });
                 }
             }
 
@@ -123,7 +123,7 @@ Page {
                     map.setCenter(
                                 poi.coordinate.longitude,
                                 poi.coordinate.latitude);
-                    app.clearMenu();
+                    app.showMap();
                 }
             }
 
@@ -132,10 +132,10 @@ Page {
                 icon: "image://theme/icon-m-car"
                 label: app.tr("Navigate To")
                 onClicked: {
-                    app.pageStack.push("RoutePage.qml", {
-                                           "to": [poi.coordinate.longitude, poi.coordinate.latitude],
-                                           "toText": poi.title,
-                                       });
+                    app.showMenu("RoutePage.qml", {
+                                     "to": [poi.coordinate.longitude, poi.coordinate.latitude],
+                                     "toText": poi.title,
+                                 });
                 }
             }
 
@@ -144,10 +144,10 @@ Page {
                 icon: "image://theme/icon-m-car"
                 label: app.tr("Navigate From")
                 onClicked: {
-                    app.pageStack.push("RoutePage.qml", {
-                                           "from": [poi.coordinate.longitude, poi.coordinate.latitude],
-                                           "fromText": poi.title,
-                                       });
+                    app.showMenu("RoutePage.qml", {
+                                     "from": [poi.coordinate.longitude, poi.coordinate.latitude],
+                                     "fromText": poi.title,
+                                 });
                 }
             }
 
@@ -156,10 +156,10 @@ Page {
                 icon: "image://theme/icon-m-whereami"
                 label: app.tr("Nearby")
                 onClicked: {
-                    app.pageStack.push("NearbyPage.qml", {
-                                           "near": [poi.coordinate.longitude, poi.coordinate.latitude],
-                                           "nearText": poi.title,
-                                       });
+                    app.showMenu("NearbyPage.qml", {
+                                     "near": [poi.coordinate.longitude, poi.coordinate.latitude],
+                                     "nearText": poi.title,
+                                 });
                 }
             }
 

@@ -118,7 +118,7 @@ Page {
                 value: py.evaluate("poor.app.geocoder.name")
                 width: parent.width
                 onClicked: {
-                    var dialog = app.pageStack.push("GeocoderPage.qml");
+                    var dialog = app.push("GeocoderPage.qml");
                     dialog.accepted.connect(function() {
                         usingButton.value = py.evaluate("poor.app.geocoder.name");
                     });
@@ -175,7 +175,7 @@ Page {
             page.filterCompletions();
         } else if (page.status === PageStatus.Active) {
             var resultPage = app.pageStack.nextPage();
-            resultPage.populated = false;
+            if (resultPage) resultPage.populated = false;
         }
     }
 
