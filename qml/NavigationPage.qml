@@ -55,7 +55,7 @@ Page {
                         (app.navigationStarted ? app.tr("Resume") : app.tr("Begin"))
                     onClicked: {
                         app.navigationActive ? map.endNavigating() : map.beginNavigating();
-                        app.hideMenu();
+                        app.hideNavigationPages();
                     }
                 }
 
@@ -67,7 +67,7 @@ Page {
                     onClicked: {
                         app.reroute();
                         map.beginNavigating();
-                        app.hideMenu();
+                        app.hideNavigationPages();
                     }
                 }
 
@@ -79,7 +79,7 @@ Page {
                     onClicked: {
                         map.endNavigating();
                         map.clearRoute();
-                        app.hideMenu();
+                        app.showMap();
                     }
                 }
 

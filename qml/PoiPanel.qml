@@ -211,11 +211,10 @@ Rectangle {
         IconButton {
             icon.source: "image://theme/icon-m-about"
             onClicked: {
-                panel.showMenu = false;
-                app.showMenu("PoiInfoPage.qml", {
-                                 "active": active,
-                                 "poi": panel.poi,
-                             });
+                app.push("PoiInfoPage.qml", {
+                             "active": active,
+                             "poi": panel.poi,
+                         });
             }
         }
 
@@ -260,11 +259,8 @@ Rectangle {
             visible: !panel.showMenu
             onClicked: {
                 if (coordinate === undefined) return;
-                remorse.execute(app.tr("Deleting POI"),
-                                    function() {
-                                        map.deletePoi(poiId);
-                                        panel.hide();
-                                    });
+                map.deletePoi(poiId, true);
+                hide();
             }
         }
 

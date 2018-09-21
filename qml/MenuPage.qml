@@ -45,27 +45,27 @@ Page {
                 icon: "image://theme/icon-m-search"
                 label: app.tr("Search")
                 onClicked: {
-                    app.pageStack.push("GeocodePage.qml");
-                    app.pageStack.pushAttached("GeocodingResultsPage.qml");
+                    app.pushMain("GeocodePage.qml");
+                    app.pushAttachedMain("GeocodingResultsPage.qml");
                 }
             }
 
             IconListItem {
                 icon: "image://theme/icon-m-car"
                 label: app.tr("Navigation")
-                onClicked: app.pageStack.push("RoutePage.qml");
+                onClicked: app.pushMain("RoutePage.qml");
             }
 
             IconListItem {
                 icon: "image://theme/icon-m-whereami"
                 label: app.tr("Nearby venues")
-                onClicked: app.pageStack.push("NearbyPage.qml");
+                onClicked: app.pushMain("NearbyPage.qml");
             }
 
             IconListItem {
                 icon: "image://theme/icon-m-favorite"
                 label: app.tr("Points of interest")
-                onClicked: app.pageStack.push("PoiPage.qml");
+                onClicked: app.pushMain("PoiPage.qml");
             }
 
             IconListItem {
@@ -83,7 +83,7 @@ Page {
                     if (!gps.ready) return;
                     var y = gps.position.coordinate.latitude;
                     var x = gps.position.coordinate.longitude;
-                    app.pageStack.push("SharePage.qml", {
+                    app.push("SharePage.qml", {
                         "coordinate": QtPositioning.coordinate(y, x),
                         "title": app.tr("Share Current Position"),
                     });
@@ -95,7 +95,7 @@ Page {
                 label: app.tr("Center on current position")
                 onClicked: {
                     app.map.centerOnPosition();
-                    app.clearMenu();
+                    app.showMap();
                 }
             }
 
@@ -105,14 +105,14 @@ Page {
                 onClicked: {
                     app.navigationActive && app.map.endNavigating();
                     app.map.clear(true);
-                    app.clearMenu();
+                    app.showMap();
                 }
             }
 
             IconListItem {
                 icon: "image://theme/icon-m-levels"
                 label: app.tr("Maps")
-                onClicked: app.pageStack.push("BasemapPage.qml");
+                onClicked: app.pushMain("BasemapPage.qml");
             }
 
             TextSwitch {
@@ -153,11 +153,11 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: app.tr("About")
-                onClicked: app.pageStack.push("AboutPage.qml");
+                onClicked: app.push("AboutPage.qml");
             }
             MenuItem {
                 text: app.tr("Preferences")
-                onClicked: app.pageStack.push("PreferencesPage.qml");
+                onClicked: app.push("PreferencesPage.qml");
             }
         }
 

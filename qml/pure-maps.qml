@@ -35,14 +35,13 @@ ApplicationWindow {
     id: app
     allowedOrientations: defaultAllowedOrientations
     cover: Cover {}
-    initialPage: RootPage {}
+    initialPage: InitPage { }
 
     property var  attributionButton: null
     property var  centerButton: null
     property var  conf: Config {}
     property bool hasMapMatching: false
     property bool initialized: false
-    property var  mainPage: null
     property var  map: null
     property string mapMatchingMode: {
         if (!hasMapMatching) return "none";
@@ -71,6 +70,7 @@ ApplicationWindow {
     property var  reroutePreviousTime: -1
     property int  rerouteTotalCalls: 0
     property bool rerouting: false
+    property var  rootPage: null
     property bool running: applicationActive || cover.active
     property var  scaleBar: null
     property int  screenHeight: Screen.height
@@ -78,8 +78,11 @@ ApplicationWindow {
     property var  showNarrative: null
     property var  showNavigationSign: null
     property var  showSpeedLimit: null
+    property var  stack: null
     property var  styler: Styler {}
     property var  streetName: null
+    property var  _stackMain: Stack {}
+    property var  _stackNavigation: Stack {}
 
     // Default vertical margin for various multiline list items
     // such that it would be consistent with single-line list items
@@ -129,12 +132,6 @@ ApplicationWindow {
         app.updateKeepAlive();
     }
 
-    function clearMenu() {
-        // Clear the page stack and hide the menu.
-        app.pageStack.pop(dummy, PageStackAction.Immediate);
-        app.hideMenu();
-    }
-
     function getIcon(name, no_variant) {
         // Return path to icon suitable for user's screen,
         // finding the closest match to Theme.pixelRatio.
@@ -151,8 +148,15 @@ ApplicationWindow {
     }
 
     function hideMenu() {
-        // Immediately hide the menu, keeping pages intact.
-        root.visible = true;
+        app._stackMain.keep = true;
+        app._stackMain.setCurrent(app.pageStack.currentPage);
+        app.showMap();
+    }
+
+    function hideNavigationPages() {
+        app._stackNavigation.keep = true;
+        app._stackNavigation.setCurrent(app.pageStack.currentPage);
+        app.showMap();
     }
 
     function updateOrientation() {
@@ -184,6 +188,25 @@ ApplicationWindow {
         py.call(fun, [message], function(uri) {
             if (uri) sound.source = uri;
         });
+    }
+
+    function push(pagefile, options) {
+        return app.pageStack.push(pagefile, options ? options : {});
+    }
+
+    function pushAttached(pagefile, options) {
+        return app.pageStack.pushAttached(pagefile, options ? options : {});
+    }
+
+    function pushMain(pagefile, options) {
+        // replace the current main with the new stack
+        app._stackMain.clear();
+        return app._stackMain.push(pagefile, options);
+    }
+
+    function pushAttachedMain(pagefile, options) {
+        // attach pages to the current main
+        return app._stackMain.pushAttached(pagefile, options);
     }
 
     function reroute() {
@@ -242,33 +265,36 @@ ApplicationWindow {
         }
     }
 
-    function showNavigationPages() {
-        // Show NavigationPage and NarrativePage.
-        if (!app.pageStack.currentPage ||
-            !app.pageStack.currentPage.partOfNavigationStack) {
-            app.pageStack.pop(dummy, PageStackAction.Immediate);
-            app.pageStack.push("NavigationPage.qml");
-            app.pageStack.pushAttached("NarrativePage.qml");
-        }
-        // If the narrative page is already active, we don't get the page status
-        // change signal and must request repopulation to scroll the list.
-        var narrativePage = app.pageStack.nextPage(app.pageStack.nextPage(dummy));
-        app.pageStack.currentPage === narrativePage && narrativePage.populate();
-        root.visible = false;
+    function showMap() {
+        // Clear the page stack and hide the menu.
+        app.pageStack.completeAnimation();
+        app.pageStack.pop(app.rootPage);
     }
 
-    function showMenu(page, params) {
-        // Show a menu page, either given, last viewed, or the main menu.
+    function showMenu(page, options) {
         if (page) {
-            app.pageStack.pop(dummy, PageStackAction.Immediate);
-            app.pageStack.push(page, params || {});
-        } else if (app.pageStack.currentPage &&
-                   app.pageStack.currentPage.partOfNavigationStack) {
-            // Clear NavigationPage and NarrativePage from the stack.
-            app.pageStack.pop(dummy, PageStackAction.Immediate);
-            app.pageStack.push("MenuPage.qml");
-        } else if (app.pageStack.depth < 2) {
-            app.pageStack.push("MenuPage.qml");
+            app.showMap();
+            app.pushMain(page, options);
+        } else if (app._stackMain.keep) {
+            // restore former menu stack
+            app._stackMain.keep = false;
+            app._stackMain.restore();
+        } else {
+            // start a new call
+            app._stackMain.clear();
+            app.push("MenuPage.qml");
+        }
+    }
+
+    function showNavigationPages() {
+        if (app._stackNavigation.keep) {
+            // restore former navigation pages stack
+            app._stackNavigation.keep = false;
+            app._stackNavigation.restore();
+        } else {
+            app._stackNavigation.clear();
+            app._stackNavigation.push("NavigationPage.qml")
+            app._stackNavigation.pushAttached("NarrativePage.qml");
         }
     }
 
