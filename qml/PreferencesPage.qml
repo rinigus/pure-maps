@@ -125,7 +125,6 @@ Page {
                 onCurrentIndexChanged: {
                     var index = unitsComboBox.currentIndex;
                     app.conf.set("units", unitsComboBox.values[index]);
-                    app.scaleBar.update();
                 }
             }
 

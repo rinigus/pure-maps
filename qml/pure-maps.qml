@@ -37,8 +37,6 @@ ApplicationWindow {
     cover: Cover {}
     initialPage: InitPage { }
 
-    property var  attributionButton: null
-    property var  centerButton: null
     property var  conf: Config {}
     property bool hasMapMatching: false
     property bool initialized: false
@@ -50,20 +48,13 @@ ApplicationWindow {
     }
     property string mapMatchingModeIdle: "none"
     property string mapMatchingModeNavigation: "none"
-    property var  menuButton: null
-    property var  meters: null
     property var  narrativePageSeen: false
     property bool navigationActive: false
-    property var  navigationBlock: null
-    property var  navigationInfoBlock: null
     property var  navigationPageSeen: false
-    property var  navigationSign: null
     property var  navigationStatus: NavigationStatus {}
     property bool navigationStarted: false
-    property var  northArrow: null
     property var  notification: null
     property bool poiActive: false
-    property var  poiPanel: null
     property bool portrait: screenHeight >= screenWidth
     property var  remorse: null
     property int  rerouteConsecutiveErrors: 0
@@ -72,7 +63,6 @@ ApplicationWindow {
     property bool rerouting: false
     property var  rootPage: null
     property bool running: applicationActive || cover.active
-    property var  scaleBar: null
     property int  screenHeight: Screen.height
     property int  screenWidth: Screen.width
     property var  showNarrative: null
@@ -80,7 +70,6 @@ ApplicationWindow {
     property var  showSpeedLimit: null
     property var  stack: null
     property var  styler: Styler {}
-    property var  streetName: null
     property var  _stackMain: Stack {}
     property var  _stackNavigation: Stack {}
 

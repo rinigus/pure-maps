@@ -44,22 +44,9 @@ Page {
     ZoomLevel { id: zoomLevel }
 
     Component.onCompleted: {
-//        app.onDeviceOrientationChanged.connect(revolver.updateOrientation);
-//        app.attributionButton = attributionButton;
-//        app.centerButton = centerButton;
         app.map = map;
-//        app.menuButton = menuButton;
-//        app.meters = meters;
-//        app.navigationBlock = navigationBlock;
-//        app.navigationInfoBlock = navigationInfoBlock;
-//        app.navigationSign = navigationSign;
-//        app.northArrow = northArrow;
         app.notification = notification;
-//        app.poiPanel = poiPanel;
         app.remorse = remorse;
-//        app.scaleBar = scaleBar;
-//        app.streetName = streetName;
-//        app.styler = styler;
     }
 
 }
