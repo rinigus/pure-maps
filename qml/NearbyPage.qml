@@ -27,7 +27,7 @@ Page {
         (page.nearText !== app.tr("Current position") || gps.ready) &&
         page.query.length > 0
 
-    property bool initialized: false
+    property bool   initialized: false
     property var    near: null
     property string nearText: ""
     property string query: ""
@@ -182,7 +182,7 @@ Page {
     }
 
     onStatusChanged: {
-        if (!initialized) {
+        if (!initialized && page.status === PageStatus.Active) {
             var resultPage = app.pushAttachedMain("NearbyResultsPage.qml");
             resultPage.populated = false;
             initialized = true;

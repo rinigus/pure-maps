@@ -48,30 +48,26 @@ ApplicationWindow {
     }
     property string mapMatchingModeIdle: "none"
     property string mapMatchingModeNavigation: "none"
-    property var  narrativePageSeen: false
-    property bool navigationActive: false
-    property var  navigationPageSeen: false
-    property var  navigationStatus: NavigationStatus {}
-    property bool navigationStarted: false
-    property var  notification: null
-    property bool poiActive: false
-    property bool portrait: screenHeight >= screenWidth
-    property var  remorse: null
-    property int  rerouteConsecutiveErrors: 0
-    property var  reroutePreviousTime: -1
-    property int  rerouteTotalCalls: 0
-    property bool rerouting: false
-    property var  rootPage: null
-    property bool running: applicationActive || cover.active
-    property int  screenHeight: Screen.height
-    property int  screenWidth: Screen.width
-    property var  showNarrative: null
-    property var  showNavigationSign: null
-    property var  showSpeedLimit: null
-    property var  stack: null
-    property var  styler: Styler {}
-    property var  _stackMain: Stack {}
-    property var  _stackNavigation: Stack {}
+    property bool   narrativePageSeen: false
+    property bool   navigationActive: false
+    property bool   navigationPageSeen: false
+    property var    navigationStatus: NavigationStatus {}
+    property bool   navigationStarted: false
+    property var    notification: null
+    property bool   poiActive: false
+    property bool   portrait: screenHeight >= screenWidth
+    property var    remorse: null
+    property int    rerouteConsecutiveErrors: 0
+    property real   reroutePreviousTime: -1
+    property int    rerouteTotalCalls: 0
+    property bool   rerouting: false
+    property var    rootPage: null
+    property bool   running: applicationActive || cover.active
+    property int    screenHeight: Screen.height
+    property int    screenWidth: Screen.width
+    property var    styler: Styler {}
+    property var    _stackMain: Stack {}
+    property var    _stackNavigation: Stack {}
 
     // Default vertical margin for various multiline list items
     // such that it would be consistent with single-line list items
@@ -145,9 +141,6 @@ ApplicationWindow {
     function initialize() {
         app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
         app.mapMatchingModeIdle = app.conf.get("map_matching_when_idle");
-        app.showNarrative = app.conf.get("show_narrative");
-        app.showNavigationSign = app.conf.get("show_navigation_sign");
-        app.showSpeedLimit = app.conf.get("show_speed_limit");
         updateOrientation();
         initialized = true;
     }

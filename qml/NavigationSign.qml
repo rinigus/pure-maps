@@ -27,7 +27,7 @@ Rectangle {
     anchors.topMargin: Theme.paddingSmall
     color: "#3768B7"
     height: {
-        if (!app.showNavigationSign) return 0;
+        if (!app.conf.showNavigationSign) return 0;
         var h1 = numLabel.height;
         var h2 = nameLabel.height;
         var h3 = towardLabel.height;
@@ -37,9 +37,9 @@ Rectangle {
         return 0;
     }
     radius: Theme.paddingMedium
-    visible: app.showNavigationSign
+    visible: app.conf.showNavigationSign
     width: {
-        if (!app.showNavigationSign) return 0;
+        if (!app.conf.showNavigationSign) return 0;
         var w1 = numLabel.text ? numLabel.width + exitLabel.width + Theme.paddingSmall : 0;
         var w2 = nameLabel.implicitWidth;
         var w3 = towardLabel.implicitWidth;

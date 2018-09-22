@@ -192,11 +192,10 @@ Page {
 
             TextSwitch {
                 id: showNarrativeSwitch
-                checked: app.conf.get("show_narrative")
+                checked: app.conf.showNarrative
                 text: app.tr("Show navigation instructions")
                 onCheckedChanged: {
                     app.conf.set("show_narrative", showNarrativeSwitch.checked);
-                    app.showNarrative = showNarrativeSwitch.checked;
                 }
             }
 
@@ -257,15 +256,14 @@ Page {
 
             TextSwitch {
                 id: directionsSwitch
-                checked: enabled && app.conf.get("show_navigation_sign")
+                checked: enabled && app.conf.showNavigationSign
                 enabled: map.route.mode !== "transit"
                 text: app.tr("Show direction signs")
                 onCheckedChanged: {
                     if (!enabled) return;
                     app.conf.set("show_navigation_sign", directionsSwitch.checked);
-                    app.showNavigationSign = directionsSwitch.checked;
                 }
-                Component.onCompleted: app.showNavigationSign = checked            }
+            }
 
             ComboBox {
                 id: speedLimitComboBox
@@ -281,7 +279,7 @@ Page {
                 property var values: ["always", "exceeding", "never"]
 
                 Component.onCompleted: {
-                    var value = app.conf.get("show_speed_limit");
+                    var value = app.conf.showSpeedLimit;
                     speedLimitComboBox.currentIndex = speedLimitComboBox.values.indexOf(value);
                 }
 
@@ -289,7 +287,6 @@ Page {
                     var index = speedLimitComboBox.currentIndex;
                     var v = speedLimitComboBox.values[index];
                     app.conf.set("show_speed_limit", v);
-                    app.showSpeedLimit = v;
                 }
             }
 

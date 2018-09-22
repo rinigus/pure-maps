@@ -25,6 +25,9 @@ Item {
     property bool   autoCompleteGeo
     property bool   developmentCoordinateCenter: false
     property bool   developmentShowZ: false
+    property bool   showNarrative: false
+    property bool   showNavigationSign: false
+    property string showSpeedLimit
     property string units
 
     Component.onCompleted: _update()
@@ -70,6 +73,9 @@ Item {
         conf.autoCompleteGeo = get("auto_complete_geo");
         conf.developmentCoordinateCenter = get("devel_coordinate_center");
         conf.developmentShowZ = get("devel_show_z");
+        conf.showNarrative = app.conf.get("show_narrative");
+        conf.showNavigationSign = app.conf.get("show_navigation_sign");
+        conf.showSpeedLimit = app.conf.get("show_speed_limit");
         conf.units = get("units");
     }
 
