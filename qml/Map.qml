@@ -31,7 +31,7 @@ MapboxMap {
     cacheDatabaseStoreSettings: false
     center: QtPositioning.coordinate(49, 13)
     metersPerPixelTolerance: Math.max(0.001, metersPerPixel*0.01) // 1 percent from the current value
-    pitch: app.navigationActive && format !== "raster" && tiltEnabled ? 60 : 0
+    pitch: app.navigationActive && format !== "raster" && map.autoRotate && app.conf.tiltWhenNavigating ? 60 : 0
     pixelRatio: Theme.pixelRatio * 1.5
     zoomLevel: 4.0
 
@@ -57,7 +57,6 @@ MapboxMap {
     property var    position: gps.position
     property bool   ready: false
     property var    route: {}
-    property bool   tiltEnabled: false
 
     readonly property var images: QtObject {
         readonly property string pixel:         "pure-image-pixel"
@@ -282,8 +281,7 @@ MapboxMap {
         map.zoomLevel < zoom && map.setZoomLevel(zoom);
         map.centerOnPosition();
         map.autoCenter = true;
-        map.autoRotate = app.conf.get("auto_rotate_when_navigating");
-        map.tiltEnabled = map.autoRotate && app.conf.get("tilt_when_navigating");
+        map.autoRotate = app.conf.autoRotateWhenNavigating;
         map.initVoiceNavigation();
         app.navigationActive = true;
         app.navigationPageSeen = true;
@@ -429,7 +427,6 @@ MapboxMap {
         // Restore UI from navigation mode.
         map.autoCenter = false;
         map.autoRotate = false;
-        map.tiltEnabled = app.conf.get("tilt_when_navigating");
         map.zoomLevel > 14 && map.setZoomLevel(14);
         map.setModeExplore();
         app.navigationActive = false;
@@ -549,8 +546,8 @@ MapboxMap {
 
     function initVoiceNavigation() {
         // Initialize a TTS engine for the current routing instructions.
-        if (app.conf.get("voice_navigation")) {
-            var args = [map.route.language, app.conf.get("voice_gender")];
+        if (app.conf.voiceNavigation) {
+            var args = [map.route.language, app.conf.voiceGender];
             py.call_sync("poor.app.narrative.set_voice", args);
             notification.flash(app.tr("Voice navigation on"));
         } else {

@@ -195,18 +195,19 @@ Page {
                 checked: app.conf.showNarrative
                 text: app.tr("Show navigation instructions")
                 onCheckedChanged: {
-                    app.conf.set("show_narrative", showNarrativeSwitch.checked);
+                    if (app.conf.showNarrative!==showNarrativeSwitch.checked)
+                        app.conf.set("show_narrative", showNarrativeSwitch.checked);
                 }
             }
 
             TextSwitch {
                 id: voiceNavigationSwitch
-                checked: app.conf.get("voice_navigation")
+                checked: app.conf.voiceNavigation
                 enabled: map.route.mode !== "transit"
                 text: app.tr("Voice navigation instructions")
                 onCheckedChanged: {
                     if (!voiceNavigationSwitch.enabled) return;
-                    if (voiceNavigationSwitch.checked === app.conf.get("voice_navigation")) return;
+                    if (voiceNavigationSwitch.checked === app.conf.voiceNavigation) return;
                     app.conf.set("voice_navigation", voiceNavigationSwitch.checked);
                     app.navigationActive && map.initVoiceNavigation();
                 }
@@ -214,24 +215,25 @@ Page {
 
             TextSwitch {
                 id: rerouteSwitch
-                checked: enabled && app.conf.get("reroute")
+                checked: enabled && app.conf.reroute
                 enabled: map.route.mode !== "transit"
                 text: app.tr("Reroute automatically")
                 onCheckedChanged: {
-                    if (!rerouteSwitch.enabled) return;
+                    if (!rerouteSwitch.enabled || rerouteSwitch.checked===app.conf.reroute) return;
                     app.conf.set("reroute", rerouteSwitch.checked);
                 }
             }
 
             TextSwitch {
                 id: mapmatchingSwitch
-                checked: enabled && app.conf.get("map_matching_when_navigating")
+                checked: enabled && app.conf.mapMatchingWhenNavigating
                 enabled: map.route.mode !== "transit"
                 text: app.tr("Snap position to road")
                 visible: app.hasMapMatching
                 onCheckedChanged: {
                     if (!mapmatchingSwitch.enabled) return;
-                    app.conf.set("map_matching_when_navigating", mapmatchingSwitch.checked);
+                    if (mapmatchingSwitch.checked !== app.conf.mapMatchingWhenNavigating)
+                        app.conf.set("map_matching_when_navigating", mapmatchingSwitch.checked);
                     if (mapmatchingSwitch.checked) app.mapMatchingModeNavigation=map.route.mode;
                     else app.mapMatchingModeNavigation="none";
                 }
@@ -260,7 +262,7 @@ Page {
                 enabled: map.route.mode !== "transit"
                 text: app.tr("Show direction signs")
                 onCheckedChanged: {
-                    if (!enabled) return;
+                    if (!enabled || directionsSwitch.checked===app.conf.showNavigationSign) return;
                     app.conf.set("show_navigation_sign", directionsSwitch.checked);
                 }
             }
@@ -286,7 +288,8 @@ Page {
                 onCurrentIndexChanged: {
                     var index = speedLimitComboBox.currentIndex;
                     var v = speedLimitComboBox.values[index];
-                    app.conf.set("show_speed_limit", v);
+                    if (v !== app.conf.showSpeedLimit)
+                        app.conf.set("show_speed_limit", v);
                 }
             }
 

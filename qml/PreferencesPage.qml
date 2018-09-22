@@ -42,7 +42,7 @@ Page {
 
             TextSwitch {
                 id: autocompleteSwitch
-                checked: app.conf.get("auto_complete_geo")
+                checked: app.conf.autoCompleteGeo
                 description: app.tr("Fetch autocompleted search results while typing a search string.")
                 text: app.tr("Autocomplete while searching")
                 onCheckedChanged: {
@@ -99,7 +99,7 @@ Page {
                 visible: app.hasMapMatching
                 property var values: ["none", "car", "bicycle", "foot"]
                 Component.onCompleted: {
-                    var value = app.conf.get("map_matching_when_idle");
+                    var value = app.conf.mapMatchingWhenIdle;
                     mapmatchingComboBox.currentIndex = mapmatchingComboBox.values.indexOf(value);
                 }
                 onCurrentIndexChanged: {
@@ -119,7 +119,7 @@ Page {
                 }
                 property var values: ["metric", "american", "british"]
                 Component.onCompleted: {
-                    var value = app.conf.get("units");
+                    var value = app.conf.units;
                     unitsComboBox.currentIndex = unitsComboBox.values.indexOf(value);
                 }
                 onCurrentIndexChanged: {
@@ -134,7 +134,7 @@ Page {
 
             TextSwitch {
                 id: autorotateSwitch
-                checked: app.conf.get("auto_rotate_when_navigating")
+                checked: app.conf.autoRotateWhenNavigating
                 description: app.tr("Set rotation of the map in the direction of movement when starting navigation.")
                 text: app.tr("Rotate map when navigating")
                 onCheckedChanged: {
@@ -144,7 +144,7 @@ Page {
 
             TextSwitch {
                 id: tiltSwitch
-                checked: app.conf.get("tilt_when_navigating")
+                checked: app.conf.tiltWhenNavigating
                 description: app.tr("Only applies to vector maps.")
                 enabled: autorotateSwitch.checked
                 text: app.tr("Tilt map when navigating")
@@ -164,7 +164,7 @@ Page {
                 }
                 property var values: ["male", "female"]
                 Component.onCompleted: {
-                    var value = app.conf.get("voice_gender");
+                    var value = app.conf.voiceGender;
                     voiceGenderComboBox.currentIndex = voiceGenderComboBox.values.indexOf(value);
                 }
                 onCurrentIndexChanged: {
@@ -207,7 +207,7 @@ Page {
 
             TextSwitch {
                 id: develCoorSwitch
-                checked: app.conf.get("devel_coordinate_center")
+                checked: app.conf.developmentCoordinateCenter
                 description: app.tr("Sets current position to the center of the current map view. Remember to disable GPS positioning when using this option.")
                 text: app.tr("Set position to the map center")
                 visible: develSwitch.checked
@@ -218,7 +218,7 @@ Page {
 
             TextSwitch {
                 id: develShowZSwitch
-                checked: app.conf.get("devel_show_z")
+                checked: app.conf.developmentShowZ
                 text: app.tr("Show current zoom level")
                 visible: develSwitch.checked
                 onCheckedChanged: {

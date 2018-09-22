@@ -23,12 +23,19 @@ Item {
 
     // cache certain frequently used properties locally
     property bool   autoCompleteGeo
+    property bool   autoRotateWhenNavigating
     property bool   developmentCoordinateCenter: false
     property bool   developmentShowZ: false
+    property string mapMatchingWhenIdle
+    property bool   mapMatchingWhenNavigating
+    property bool   reroute
     property bool   showNarrative: false
     property bool   showNavigationSign: false
     property string showSpeedLimit
+    property bool   tiltWhenNavigating
     property string units
+    property string voiceGender
+    property bool   voiceNavigation
 
     Component.onCompleted: _update()
 
@@ -70,13 +77,21 @@ Item {
 
     function _update() {
         if (!py.ready) return;
-        conf.autoCompleteGeo = get("auto_complete_geo");
-        conf.developmentCoordinateCenter = get("devel_coordinate_center");
-        conf.developmentShowZ = get("devel_show_z");
-        conf.showNarrative = app.conf.get("show_narrative");
-        conf.showNavigationSign = app.conf.get("show_navigation_sign");
-        conf.showSpeedLimit = app.conf.get("show_speed_limit");
-        conf.units = get("units");
+        var c = py.call_sync("poor.conf.get_all", []);
+        conf.autoCompleteGeo = c.auto_complete_geo;
+        conf.autoRotateWhenNavigating = c.auto_rotate_when_navigating;
+        conf.developmentCoordinateCenter = c.devel_coordinate_center;
+        conf.developmentShowZ = c.devel_show_z;
+        conf.mapMatchingWhenIdle = c.map_matching_when_idle;
+        conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
+        conf.reroute = c.reroute;
+        conf.showNarrative = c.show_narrative;
+        conf.showNavigationSign = c.show_navigation_sign;
+        conf.showSpeedLimit = c.show_speed_limit;
+        conf.tiltWhenNavigating = c.tilt_when_navigating;
+        conf.units = c.units;
+        conf.voiceGender = c.voice_gender;
+        conf.voiceNavigation = c.voice_navigation;
     }
 
 }

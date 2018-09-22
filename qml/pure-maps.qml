@@ -100,8 +100,7 @@ ApplicationWindow {
     }
 
     onApplicationActiveChanged: {
-        if (!py.ready)
-            return py.onReadyChanged.connect(app.updateKeepAlive);
+        if (!initialized) return;
         app.updateKeepAlive();
     }
 
@@ -140,8 +139,9 @@ ApplicationWindow {
 
     function initialize() {
         app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
-        app.mapMatchingModeIdle = app.conf.get("map_matching_when_idle");
+        app.mapMatchingModeIdle = app.conf.mapMatchingWhenIdle;
         updateOrientation();
+        updateKeepAlive();
         initialized = true;
     }
 
@@ -169,7 +169,7 @@ ApplicationWindow {
 
     function playMaybe(message) {
         // Play message via TTS engine if applicable.
-        if (!app.conf.get("voice_navigation")) return;
+        if (!app.conf.voiceNavigation) return;
         var fun = "poor.app.narrative.get_message_voice_uri";
         py.call(fun, [message], function(uri) {
             if (uri) sound.source = uri;
@@ -232,7 +232,7 @@ ApplicationWindow {
 
     function rerouteMaybe() {
         // Find a new route if conditions are met.
-        if (!app.conf.get("reroute")) return;
+        if (!app.conf.reroute) return;
         if (!app.navigationActive) return;
         if (!gps.position.horizontalAccuracyValid) return;
         if (gps.position.horizontalAccuracy > 100) return;
@@ -304,7 +304,7 @@ ApplicationWindow {
     function updateNavigationStatus(status) {
         // Update navigation status with data from Python backend.
         app.navigationStatus.update(status);
-        if (app.navigationStatus.voiceUri && app.conf.get("voice_navigation"))
+        if (app.navigationStatus.voiceUri && app.conf.voiceNavigation)
             sound.source = app.navigationStatus.voiceUri;
         app.navigationStatus.reroute && app.rerouteMaybe();
     }
