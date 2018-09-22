@@ -88,12 +88,6 @@ ApplicationWindow {
         loops: 1
     }
 
-    Component.onCompleted: {
-        updateOrientation();
-        updateMapMatching();
-        updateNavigationSettings();
-    }
-
     Component.onDestruction: {
         if (!py.ready) return;
         app.conf.set("auto_center", map.autoCenter);
@@ -146,6 +140,16 @@ ApplicationWindow {
         app._stackNavigation.keep = true;
         app._stackNavigation.setCurrent(app.pageStack.currentPage);
         app.showMap();
+    }
+
+    function initialize() {
+        app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
+        app.mapMatchingModeIdle = app.conf.get("map_matching_when_idle");
+        app.showNarrative = app.conf.get("show_narrative");
+        app.showNavigationSign = app.conf.get("show_navigation_sign");
+        app.showSpeedLimit = app.conf.get("show_speed_limit");
+        updateOrientation();
+        initialized = true;
     }
 
     function updateOrientation() {
@@ -302,23 +306,6 @@ ApplicationWindow {
         var prevent = app.conf.get("keep_alive");
         DisplayBlanking.preventBlanking = app.applicationActive &&
             (prevent === "always" || (prevent === "navigating" && app.navigationActive));
-    }
-
-    function updateMapMatching() {
-        if (!py.ready) return py.onReadyChanged.connect(app.updateMapMatching);
-        app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
-        app.mapMatchingModeIdle = app.conf.get("map_matching_when_idle");
-        // app.mapMatchingModeNavigation is set on Navigation page
-    }
-
-    function updateNavigationSettings() {
-        if (!py.ready) return py.onReadyChanged.connect(app.updateNavigationSettings);
-        if (app.showNarrative === null)
-            app.showNarrative = app.conf.get("show_narrative");
-        if (app.showNavigationSign === null)
-            app.showNavigationSign = app.conf.get("show_navigation_sign");
-        if (app.showSpeedLimit === null)
-            app.showSpeedLimit = app.conf.get("show_speed_limit");
     }
 
     function updateNavigationStatus(status) {

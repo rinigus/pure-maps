@@ -37,7 +37,6 @@ Timer {
 
     onTriggered: {
         // Query maneuver narrative from Python and update status.
-        if (!py.ready) return;
         var coord = map.position.coordinate;
         var now = Date.now() / 1000;
         if (now - timePrev < 60 && coord.distanceTo(timer.coordPrev) < 10) return;

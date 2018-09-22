@@ -78,7 +78,7 @@ Rectangle {
 
         function update() {
             // Update speed limit in user's preferred units.
-            if (!py.ready || !app.navigationActive) {
+            if (!app.navigationActive) {
                 if (text.length > 0) text = "";
                 return;
             }

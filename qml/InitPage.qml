@@ -43,7 +43,7 @@ Page {
         onReadyChanged: {
             if (!py.ready) return;
             app.rootPage = app.pageStack.replace("RootPage.qml");
-            app.initialized = true;
+            app.initialize();
         }
     }
 

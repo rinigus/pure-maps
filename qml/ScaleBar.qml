@@ -124,10 +124,7 @@ Item {
             onWidthChanged: scaleBar.update();
         }
 
-        Connections {
-            target: py
-            onReadyChanged: scaleBar.update();
-        }
+        Component.onCompleted: scaleBar.update()
 
         function roundedDistace(dist) {
             // Return dist rounded to an even amount of user-visible units,
@@ -147,7 +144,6 @@ Item {
         }
 
         function update() {
-            if (!py.ready) return;
             var dist = map.metersPerPixel * scaleBarMaxLength;
             dist = scaleBar.roundedDistace(dist);
             scaleBar.scaleWidth = dist / map.metersPerPixel;

@@ -525,7 +525,6 @@ MapboxMap {
 
     function initProperties() {
         // Initialize map properties and restore saved overlays.
-        if (!py.ready) return py.onReadyChanged.connect(map.initProperties);
         map.setBasemap();
         map.setModeExplore();
         map.setZoomLevel(app.conf.get("zoom"));
@@ -561,7 +560,6 @@ MapboxMap {
 
     function loadManeuvers() {
         // Restore maneuver markers from JSON file.
-        if (!py.ready) return;
         py.call("poor.storage.read_maneuvers", [], function(data) {
             data && data.length > 0 && map.addManeuvers(data);
         });
@@ -569,7 +567,6 @@ MapboxMap {
 
     function loadPois() {
         // Restore POI markers from JSON file.
-        if (!py.ready) return;
         py.call("poor.storage.read_pois", [], function(data) {
             data && data.length > 0 && map.addPois(data);
         });
@@ -577,7 +574,6 @@ MapboxMap {
 
     function loadRoute() {
         // Restore route polyline from JSON file.
-        if (!py.ready) return;
         py.call("poor.storage.read_route", [], function(data) {
             data.x && data.x.length > 0 && map.addRoute(data);
         });
@@ -585,28 +581,24 @@ MapboxMap {
 
     function saveManeuvers() {
         // Save maneuver markers to JSON file.
-        if (!py.ready) return;
         var data = Util.pointsToJson(map.maneuvers);
         py.call_sync("poor.storage.write_maneuvers", [data]);
     }
 
     function savePois() {
         // Save POI markers to JSON file.
-        if (!py.ready) return;
         var data = Util.pointsToJson(map.pois);
         py.call_sync("poor.storage.write_pois", [data]);
     }
 
     function saveRoute() {
         // Save route polyline to JSON file.
-        if (!py.ready) return;
         var data = Util.polylineToJson(map.route);
         py.call_sync("poor.storage.write_route", [data]);
     }
 
     function setBasemap() {
         // Set the basemap to use and related properties.
-        if (!py.ready) return;
         map.firstLabelLayer = py.evaluate("poor.app.basemap.first_label_layer");
         map.format = py.evaluate("poor.app.basemap.format");
         map.urlSuffix = py.evaluate("poor.app.basemap.url_suffix");

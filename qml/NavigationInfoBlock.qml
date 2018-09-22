@@ -51,7 +51,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeHuge
 
         function update() {
-            if (!py.ready || !app.navigationActive) return;
+            if (!app.navigationActive) return;
             // Update speed and positioning accuracy values in user's preferred units.
             if (!gps.position.speedValid) {
                 text = ""
@@ -78,7 +78,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeMedium
 
         function update() {
-            if (!py.ready || !app.navigationActive) return;
+            if (!app.navigationActive) return;
             if (app.conf.units === "american") {
                 text = app.tr("mph")
             } else if (app.conf.units === "british") {
