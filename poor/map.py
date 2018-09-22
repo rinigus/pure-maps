@@ -75,6 +75,7 @@ class Map:
             return json.dumps(self.style_dict, ensure_ascii=False)
         return json.dumps({
             "id": "raster",
+            "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
             "sources": {
                 "raster": {
                     "type": "raster",
