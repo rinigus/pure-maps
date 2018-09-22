@@ -31,7 +31,7 @@ MapboxMap {
     cacheDatabaseStoreSettings: false
     center: QtPositioning.coordinate(49, 13)
     metersPerPixelTolerance: Math.max(0.001, metersPerPixel*0.01) // 1 percent from the current value
-    pitch: app.navigationActive && format !== "raster" && tiltEnabled ? 60 : 0
+    pitch: app.navigationActive && format !== "raster" && map.autoRotate && app.conf.tiltWhenNavigating ? 60 : 0
     pixelRatio: Theme.pixelRatio * 1.5
     zoomLevel: 4.0
 
@@ -57,7 +57,6 @@ MapboxMap {
     property var    position: gps.position
     property bool   ready: false
     property var    route: {}
-    property bool   tiltEnabled: false
 
     readonly property var images: QtObject {
         readonly property string pixel:         "pure-image-pixel"
@@ -128,27 +127,27 @@ MapboxMap {
     }
 
     Connections {
-        target: app.menuButton
+        target: menuButton
         onYChanged: map.updateMargins();
     }
 
     Connections {
-        target: app.navigationBlock
+        target: navigationBlock
         onHeightChanged: map.updateMargins();
     }
 
     Connections {
-        target: app.navigationInfoBlock
+        target: navigationInfoBlock
         onHeightChanged: map.updateMargins();
     }
 
     Connections {
-        target: app.poiPanel
+        target: poiPanel
         onHeightChanged: map.updateMargins();
     }
 
     Connections {
-        target: app.streetName
+        target: streetName
         onHeightChanged: map.updateMargins();
     }
 
@@ -282,8 +281,7 @@ MapboxMap {
         map.zoomLevel < zoom && map.setZoomLevel(zoom);
         map.centerOnPosition();
         map.autoCenter = true;
-        map.autoRotate = app.conf.get("auto_rotate_when_navigating");
-        map.tiltEnabled = map.autoRotate && app.conf.get("tilt_when_navigating");
+        map.autoRotate = app.conf.autoRotateWhenNavigating;
         map.initVoiceNavigation();
         app.navigationActive = true;
         app.navigationPageSeen = true;
@@ -408,7 +406,15 @@ MapboxMap {
         map.setLayoutProperty(map.layers.dummies, "visibility", "visible");
     }
 
-    function deletePoi(poiId) {
+    function deletePoi(poiId, confirm) {
+        if (confirm) {
+            app.remorse.execute(app.tr("Clearing map"),
+                                function() {
+                                    map.deletePoi(poiId);
+                                });
+            return;
+        }
+
         if (poiId == null) return;
         map.pois = map.pois.filter(function(p) {
             return p.poiId != poiId;
@@ -421,7 +427,6 @@ MapboxMap {
         // Restore UI from navigation mode.
         map.autoCenter = false;
         map.autoRotate = false;
-        map.tiltEnabled = app.conf.get("tilt_when_navigating");
         map.zoomLevel > 14 && map.setZoomLevel(14);
         map.setModeExplore();
         app.navigationActive = false;
@@ -483,7 +488,7 @@ MapboxMap {
     }
 
     function hidePoi() {
-        app.poiPanel && app.poiPanel.hide();
+        poiPanel && poiPanel.hide();
     }
 
     function initIcons() {
@@ -517,7 +522,6 @@ MapboxMap {
 
     function initProperties() {
         // Initialize map properties and restore saved overlays.
-        if (!py.ready) return py.onReadyChanged.connect(map.initProperties);
         map.setBasemap();
         map.setModeExplore();
         map.setZoomLevel(app.conf.get("zoom"));
@@ -542,10 +546,10 @@ MapboxMap {
 
     function initVoiceNavigation() {
         // Initialize a TTS engine for the current routing instructions.
-        if (app.conf.get("voice_navigation")) {
-            var args = [map.route.language, app.conf.get("voice_gender")];
+        if (app.conf.voiceNavigation) {
+            var args = [map.route.language, app.conf.voiceGender];
             py.call_sync("poor.app.narrative.set_voice", args);
-            app.notification.flash(app.tr("Voice navigation on"));
+            notification.flash(app.tr("Voice navigation on"));
         } else {
             py.call_sync("poor.app.narrative.set_voice", [null, null]);
         }
@@ -553,7 +557,6 @@ MapboxMap {
 
     function loadManeuvers() {
         // Restore maneuver markers from JSON file.
-        if (!py.ready) return;
         py.call("poor.storage.read_maneuvers", [], function(data) {
             data && data.length > 0 && map.addManeuvers(data);
         });
@@ -561,7 +564,6 @@ MapboxMap {
 
     function loadPois() {
         // Restore POI markers from JSON file.
-        if (!py.ready) return;
         py.call("poor.storage.read_pois", [], function(data) {
             data && data.length > 0 && map.addPois(data);
         });
@@ -569,7 +571,6 @@ MapboxMap {
 
     function loadRoute() {
         // Restore route polyline from JSON file.
-        if (!py.ready) return;
         py.call("poor.storage.read_route", [], function(data) {
             data.x && data.x.length > 0 && map.addRoute(data);
         });
@@ -577,35 +578,31 @@ MapboxMap {
 
     function saveManeuvers() {
         // Save maneuver markers to JSON file.
-        if (!py.ready) return;
         var data = Util.pointsToJson(map.maneuvers);
         py.call_sync("poor.storage.write_maneuvers", [data]);
     }
 
     function savePois() {
         // Save POI markers to JSON file.
-        if (!py.ready) return;
         var data = Util.pointsToJson(map.pois);
         py.call_sync("poor.storage.write_pois", [data]);
     }
 
     function saveRoute() {
         // Save route polyline to JSON file.
-        if (!py.ready) return;
         var data = Util.polylineToJson(map.route);
         py.call_sync("poor.storage.write_route", [data]);
     }
 
     function setBasemap() {
         // Set the basemap to use and related properties.
-        if (!py.ready) return;
         map.firstLabelLayer = py.evaluate("poor.app.basemap.first_label_layer");
         map.format = py.evaluate("poor.app.basemap.format");
         map.urlSuffix = py.evaluate("poor.app.basemap.url_suffix");
         py.evaluate("poor.app.basemap.style_url") ?
             (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
-        app.attributionButton.logo = py.evaluate("poor.app.basemap.logo");
+        attributionButton.logo = py.evaluate("poor.app.basemap.logo");
         app.styler.apply(py.evaluate("poor.app.basemap.style_gui"))
         map.initIcons();
         map.initLayers();
@@ -650,7 +647,7 @@ MapboxMap {
     }
 
     function showPoi(poi, showMenu) {
-        app.poiPanel && app.poiPanel.show(poi, showMenu);
+        poiPanel && poiPanel.show(poi, showMenu);
     }
 
     function toggleAutoCenter() {
@@ -674,11 +671,11 @@ MapboxMap {
 
     function updateMargins() {
         // Calculate new margins and set them for the map.
-        var header = app.navigationBlock && app.navigationBlock.height > 0 ? app.navigationBlock.height : map.height*0.05;
-        var footer = !app.poiActive && !app.navigationActive && app.menuButton ? map.height*0.05 : 0;
-        footer += !app.poiActive && app.navigationActive && app.portrait && app.navigationInfoBlock ? app.navigationInfoBlock.height : 0;
-        footer += !app.poiActive && app.navigationActive && app.streetName ? app.streetName.height : 0
-        footer += app.poiActive && app.poiPanel ? app.poiPanel.height : 0
+        var header = navigationBlock && navigationBlock.height > 0 ? navigationBlock.height : map.height*0.05;
+        var footer = !app.poiActive && !app.navigationActive && menuButton ? map.height*0.05 : 0;
+        footer += !app.poiActive && app.navigationActive && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
+        footer += !app.poiActive && app.navigationActive && streetName ? streetName.height : 0
+        footer += app.poiActive && poiPanel ? poiPanel.height : 0
 
         footer = Math.min(footer, map.height / 2.0);
 

@@ -111,6 +111,9 @@ class ConfigurationStore(poor.AttrDict):
         name = option.split(".")[-1]
         return copy.deepcopy(root[name])
 
+    def get_all(self):
+        return self
+    
     def _migrate(self, values):
         """Migrate configuration values from earlier versions."""
         values = copy.deepcopy(values)

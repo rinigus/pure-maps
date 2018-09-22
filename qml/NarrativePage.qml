@@ -127,7 +127,7 @@ Page {
                 map.endNavigating();
                 map.setCenter(model.x, model.y);
                 map.zoomLevel < 15 && map.setZoomLevel(15);
-                app.hideMenu();
+                app.hideNavigationPages();
             }
 
         }

@@ -22,7 +22,7 @@ import "."
 
 Bubble {
     id: bubble
-    anchorItem: app.navigationBlock
+    anchorItem: navigationBlock
     anchors.topMargin: Theme.paddingLarge
     opacity: 0
     showArrow: false

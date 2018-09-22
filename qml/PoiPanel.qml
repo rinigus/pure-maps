@@ -211,11 +211,10 @@ Rectangle {
         IconButton {
             icon.source: "image://theme/icon-m-about"
             onClicked: {
-                panel.showMenu = false;
-                app.showMenu("PoiInfoPage.qml", {
-                                 "active": active,
-                                 "poi": panel.poi,
-                             });
+                app.push("PoiInfoPage.qml", {
+                             "active": active,
+                             "poi": panel.poi,
+                         });
             }
         }
 
@@ -224,7 +223,7 @@ Rectangle {
             icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
             onClicked: {
                 bookmarked = !bookmarked;
-                app.map.bookmarkPoi(poiId, bookmarked);
+                map.bookmarkPoi(poiId, bookmarked);
             }
         }
 
@@ -260,11 +259,8 @@ Rectangle {
             visible: !panel.showMenu
             onClicked: {
                 if (coordinate === undefined) return;
-                app.remorse.execute(app.tr("Deleting POI"),
-                                    function() {
-                                        app.map.deletePoi(poiId);
-                                        panel.hide();
-                                    });
+                map.deletePoi(poiId, true);
+                hide();
             }
         }
 
@@ -306,7 +302,7 @@ Rectangle {
         panel.hasData = false;
         panel.poiId = "";
         app.poiActive = false;
-        app.map.setSelectedPoi()
+        map.setSelectedPoi()
     }
 
     function _show() {
@@ -334,6 +330,6 @@ Rectangle {
         panel.hasData = true;
         _show();
         panel.noAnimation = false;
-        app.map.setSelectedPoi(panel.coordinate)
+        map.setSelectedPoi(panel.coordinate)
     }
 }

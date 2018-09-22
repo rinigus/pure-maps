@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ CoverBackground {
     id: cover
 
     property bool active: status === Cover.Active
-    property bool showNarrative: map.hasRoute && app.showNarrative
+    property bool showNarrative: app.initialized && app.conf.showNarrative && map.hasRoute
 
     Image {
         // Background icon
@@ -62,7 +62,7 @@ CoverBackground {
         anchors.horizontalCenter: parent.horizontalCenter
         opacity: 0.9
         smooth: true
-        source: "icons/navigation/%1.svg".arg(app.navigationBlock.icon || "flag")
+        source: "icons/navigation/%1.svg".arg(app.navigationStatus.icon || "flag")
         sourceSize.height: cover.width / 2
         sourceSize.width: cover.width / 2
         visible: cover.showNarrative
@@ -74,7 +74,7 @@ CoverBackground {
         anchors.top: parent.verticalCenter
         font.family: Theme.fontFamilyHeading
         font.pixelSize: Theme.fontSizeExtraLarge
-        text: app.navigationBlock.manDist
+        text: app.navigationStatus.manDist
         visible: cover.showNarrative
     }
 
@@ -86,7 +86,7 @@ CoverBackground {
         anchors.leftMargin: Theme.paddingLarge
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeExtraSmall
-        text: app.navigationBlock.destDist
+        text: app.navigationStatus.destDist
         visible: cover.showNarrative
     }
 
@@ -98,7 +98,7 @@ CoverBackground {
         anchors.rightMargin: Theme.paddingLarge
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeExtraSmall
-        text: app.navigationBlock.destTime
+        text: app.navigationStatus.destTime
         visible: cover.showNarrative
     }
 

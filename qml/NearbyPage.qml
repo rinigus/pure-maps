@@ -27,6 +27,7 @@ Page {
         (page.nearText !== app.tr("Current position") || gps.ready) &&
         page.query.length > 0
 
+    property bool   initialized: false
     property var    near: null
     property string nearText: ""
     property string query: ""
@@ -65,7 +66,7 @@ Page {
                 value: py.evaluate("poor.app.guide.name")
                 width: parent.width
                 onClicked: {
-                    var dialog = app.pageStack.push("GuidePage.qml");
+                    var dialog = app.push("GuidePage.qml");
                     dialog.accepted.connect(function() {
                         usingButton.value = py.evaluate("poor.app.guide.name");
                         column.addSetttings();
@@ -91,7 +92,7 @@ Page {
                 }
 
                 onClicked: {
-                    var dialog = app.pageStack.push("RoutePointPage.qml");
+                    var dialog = app.push("RoutePointPage.qml");
                     dialog.accepted.connect(function() {
                         if (dialog.selectedPoi && dialog.selectedPoi.coordinate) {
                             page.near = [dialog.selectedPoi.coordinate.longitude, dialog.selectedPoi.coordinate.latitude];
@@ -117,7 +118,7 @@ Page {
                 // Avoid putting label and value on different lines.
                 width: 3 * parent.width
                 onClicked: {
-                    var dialog = app.pageStack.push("PlaceTypePage.qml");
+                    var dialog = app.push("PlaceTypePage.qml");
                     dialog.accepted.connect(function() {
                         page.query = dialog.query;
                     });
@@ -181,11 +182,16 @@ Page {
     }
 
     onStatusChanged: {
+        if (!initialized && page.status === PageStatus.Active) {
+            var resultPage = app.pushAttachedMain("NearbyResultsPage.qml");
+            resultPage.populated = false;
+            initialized = true;
+        }
         if (page.status === PageStatus.Active) {
             if (page.nearText === app.tr("Current position"))
                 page.near = map.getPosition();
-            var resultPage = app.pageStack.pushAttached("NearbyResultsPage.qml");
-            resultPage.populated = false;
+            var resultPage = app.pageStack.nextPage();
+            if (resultPage) resultPage.populated = false;
         }
     }
 

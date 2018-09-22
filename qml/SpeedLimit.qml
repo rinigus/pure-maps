@@ -42,9 +42,9 @@ Rectangle {
     ]
     width: Math.round(Math.max(limit.width,limit.height) + 1.6*Theme.paddingLarge + Theme.paddingSmall)
     visible: {
-        if (!app.navigationActive || map.route.mode !== "car" || app.showSpeedLimit==="never")
+        if (!app.navigationActive || map.route.mode !== "car" || app.conf.showSpeedLimit==="never")
             return false;
-        if (app.showSpeedLimit==="exceeding") {
+        if (app.conf.showSpeedLimit==="exceeding") {
             if (!gps.position.speedValid || gps.streetSpeedLimit==null || gps.streetSpeedLimit < 0)
                 return false;
             if (gps.position.speed <= gps.streetSpeedLimit)
@@ -78,7 +78,7 @@ Rectangle {
 
         function update() {
             // Update speed limit in user's preferred units.
-            if (!py.ready || !app.navigationActive) {
+            if (!app.navigationActive) {
                 if (text.length > 0) text = "";
                 return;
             }

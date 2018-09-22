@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtPositioning 5.3
 import Sailfish.Silica 1.0
 import "."
 
@@ -26,6 +27,7 @@ Page {
 
     property bool active: false
     property var  poi
+    property bool hasCoordinate: poi && poi.coordinate ? true : false
 
     SilicaFlickable {
         anchors.fill: parent
@@ -36,11 +38,11 @@ Page {
                 enabled: page.active
                 text: app.tr("Edit")
                 onClicked: {
-                    var dialog = app.pageStack.push("PoiEditPage.qml",
-                                                    {"poi": poi});
+                    var dialog = app.push("PoiEditPage.qml",
+                                          {"poi": poi});
                     dialog.accepted.connect(function() {
                         map.updatePoi(dialog.poi);
-                        app.clearMenu();
+                        page.poi = dialog.poi;
                         map.showPoi(dialog.poi);
                     })
                 }
@@ -69,7 +71,7 @@ Page {
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
                 height: text ? implicitHeight + Theme.paddingMedium: 0
-                text: poi.coordinate ? app.tr("Latitude: %1", poi.coordinate.latitude) + "\n" + app.tr("Longitude: %2", poi.coordinate.longitude) : ""
+                text: hasCoordinate ? app.tr("Latitude: %1", poi.coordinate.latitude) + "\n" + app.tr("Longitude: %2", poi.coordinate.longitude) : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
@@ -104,62 +106,62 @@ Page {
             }
 
             IconListItem {
-                enabled: poi.coordinate
+                enabled: hasCoordinate
                 icon: "image://theme/icon-m-share"
                 label: app.tr("Share location")
                 onClicked: {
-                    app.pageStack.push("SharePage.qml", {
-                                           "coordinate": poi.coordinate,
-                                           "title": poi.title,
-                                       });
+                    app.push("SharePage.qml", {
+                                 "coordinate": poi.coordinate,
+                                 "title": poi.title,
+                             });
                 }
             }
 
             IconListItem {
-                enabled: poi.coordinate
+                enabled: hasCoordinate
                 icon: "image://theme/icon-m-dot"
                 label: app.tr("Center on location")
                 onClicked: {
                     map.setCenter(
                                 poi.coordinate.longitude,
                                 poi.coordinate.latitude);
-                    app.clearMenu();
+                    app.showMap();
                 }
             }
 
             IconListItem {
-                enabled: poi.coordinate
+                enabled: hasCoordinate
                 icon: "image://theme/icon-m-car"
                 label: app.tr("Navigate To")
                 onClicked: {
-                    app.pageStack.push("RoutePage.qml", {
-                                           "to": [poi.coordinate.longitude, poi.coordinate.latitude],
-                                           "toText": poi.title,
-                                       });
+                    app.showMenu("RoutePage.qml", {
+                                     "to": [poi.coordinate.longitude, poi.coordinate.latitude],
+                                     "toText": poi.title,
+                                 });
                 }
             }
 
             IconListItem {
-                enabled: poi.coordinate
+                enabled: hasCoordinate
                 icon: "image://theme/icon-m-car"
                 label: app.tr("Navigate From")
                 onClicked: {
-                    app.pageStack.push("RoutePage.qml", {
-                                           "from": [poi.coordinate.longitude, poi.coordinate.latitude],
-                                           "fromText": poi.title,
-                                       });
+                    app.showMenu("RoutePage.qml", {
+                                     "from": [poi.coordinate.longitude, poi.coordinate.latitude],
+                                     "fromText": poi.title,
+                                 });
                 }
             }
 
             IconListItem {
-                enabled: poi.coordinate
+                enabled: hasCoordinate
                 icon: "image://theme/icon-m-whereami"
                 label: app.tr("Nearby")
                 onClicked: {
-                    app.pageStack.push("NearbyPage.qml", {
-                                           "near": [poi.coordinate.longitude, poi.coordinate.latitude],
-                                           "nearText": poi.title,
-                                       });
+                    app.showMenu("NearbyPage.qml", {
+                                     "near": [poi.coordinate.longitude, poi.coordinate.latitude],
+                                     "nearText": poi.title,
+                                 });
                 }
             }
 

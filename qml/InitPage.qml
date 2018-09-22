@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,27 +19,31 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-/*
- * Ideally we'd replicate the map here to make the transition from the map to
- * the menu page stack smooth, but for now, let's just use a background color
- * that matches the background color of the current map.
- */
-
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
-    Rectangle {
-        id: background
-        anchors.fill: parent
-        color: app.styler.bg
+    BusyIndicator {
+        id: busy
+        size: BusyIndicatorSize.Large
+        anchors.centerIn: parent
+        running: !py.ready
     }
 
-    onStatusChanged: {
-        if (page.status === PageStatus.Active) {
-            // Clear and hide menu if navigated backwards to this page.
-            // This gets fired on application startup as well!
-            app.clearMenu();
+    Label {
+        anchors.horizontalCenter: busy.horizontalCenter
+        anchors.top: busy.bottom
+        anchors.topMargin: Theme.paddingLarge
+        color: Theme.highlightColor
+        text: !py.ready ? app.tr("Initializing") : ""
+    }
+
+    Connections {
+        target: py
+        onReadyChanged: {
+            if (!py.ready) return;
+            app.rootPage = app.pageStack.replace("RootPage.qml");
+            app.initialize();
         }
     }
 

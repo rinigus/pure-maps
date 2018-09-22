@@ -51,7 +51,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeHuge
 
         function update() {
-            if (!py.ready || !app.navigationActive) return;
+            if (!app.navigationActive) return;
             // Update speed and positioning accuracy values in user's preferred units.
             if (!gps.position.speedValid) {
                 text = ""
@@ -78,7 +78,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeMedium
 
         function update() {
-            if (!py.ready || !app.navigationActive) return;
+            if (!app.navigationActive) return;
             if (app.conf.units === "american") {
                 text = app.tr("mph")
             } else if (app.conf.units === "british") {
@@ -156,7 +156,7 @@ Rectangle {
     }
 
     Connections {
-        target: app.northArrow
+        target: northArrow
         onYChanged: block.checkIfBusy();
         onHeightChanged: block.checkIfBusy();
     }
@@ -171,8 +171,8 @@ Rectangle {
             block.rightSideTooBusy = false;
             return;
         }
-        var top = app.northArrow.y+app.northArrow.height;
-        var tofit = app.scaleBar.height + timeDest.height + distDest.height + Theme.paddingMedium + 2*Theme.paddingLarge;
+        var top = northArrow.y+northArrow.height;
+        var tofit = scaleBar.height + timeDest.height + distDest.height + Theme.paddingMedium + 2*Theme.paddingLarge;
         var bottom = app.screenHeight - tofit;
         block.rightSideTooBusy = bottom - top < 0;
     }
