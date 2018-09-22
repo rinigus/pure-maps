@@ -231,11 +231,8 @@ Page {
                 text: app.tr("Snap position to road")
                 visible: app.hasMapMatching
                 onCheckedChanged: {
-                    if (!mapmatchingSwitch.enabled) return;
-                    if (mapmatchingSwitch.checked !== app.conf.mapMatchingWhenNavigating)
-                        app.conf.set("map_matching_when_navigating", mapmatchingSwitch.checked);
-                    if (mapmatchingSwitch.checked) app.mapMatchingModeNavigation=map.route.mode;
-                    else app.mapMatchingModeNavigation="none";
+                    if (!mapmatchingSwitch.enabled || mapmatchingSwitch.checked===app.conf.mapMatchingWhenNavigating) return;
+                    app.conf.set("map_matching_when_navigating", mapmatchingSwitch.checked);
                 }
             }
 

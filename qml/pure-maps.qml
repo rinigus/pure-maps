@@ -46,8 +46,8 @@ ApplicationWindow {
         if (navigationActive) return mapMatchingModeNavigation;
         return mapMatchingModeIdle;
     }
-    property string mapMatchingModeIdle: "none"
-    property string mapMatchingModeNavigation: "none"
+    property string mapMatchingModeIdle: app.conf.mapMatchingWhenIdle
+    property string mapMatchingModeNavigation: app.conf.mapMatchingWhenNavigating && map && map.route && map.route.mode ? map.route.mode : "none"
     property bool   narrativePageSeen: false
     property bool   navigationActive: false
     property bool   navigationPageSeen: false
@@ -139,7 +139,6 @@ ApplicationWindow {
 
     function initialize() {
         app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
-        app.mapMatchingModeIdle = app.conf.mapMatchingWhenIdle;
         updateOrientation();
         updateKeepAlive();
         initialized = true;
