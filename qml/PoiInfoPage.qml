@@ -42,7 +42,7 @@ Page {
                                           {"poi": poi});
                     dialog.accepted.connect(function() {
                         map.updatePoi(dialog.poi);
-                        app.showMap();
+                        page.poi = dialog.poi;
                         map.showPoi(dialog.poi);
                     })
                 }
