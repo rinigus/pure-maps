@@ -458,7 +458,7 @@ class Narrative:
             if i >= len(self.verbals) - 1: break
             end = self.verbals[i].time - self.verbals[i].duration
             next_start = self.verbals[i+1].time
-            while end < next_start:
+            while end < next_start and i+1 < len(self.verbals):
                 iw = self.verbals[i].importance
                 jw = self.verbals[i+1].importance
                 remove = i if iw < jw else i + 1
