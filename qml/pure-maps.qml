@@ -250,6 +250,10 @@ ApplicationWindow {
         }
     }
 
+    function resetMenu() {
+        app._stackMain.keep = false;
+    }
+
     function showMap() {
         // Clear the page stack and hide the menu.
         app.pageStack.completeAnimation();

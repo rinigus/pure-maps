@@ -289,6 +289,7 @@ MapboxMap {
         app.rerouteConsecutiveErrors = 0;
         app.reroutePreviousTime = -1;
         app.rerouteTotalCalls = 0;
+        app.resetMenu();
     }
 
     function bookmarkPoi(poiId, bookmark) {
