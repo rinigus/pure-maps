@@ -407,7 +407,7 @@ msgstr "Inga resultat"
 
 #: qml/InitPage.qml:38
 msgid "Initializing"
-msgstr ""
+msgstr "Startar"
 
 #: qml/Map.qml:316 qml/Map.qml:413
 msgid "Clearing map"
