@@ -262,7 +262,7 @@ ApplicationWindow {
 
     function showMenu(page, options) {
         if (page) {
-            app.showMap();
+            app._stackMain.clear();
             app.pushMain(page, options);
         } else if (app._stackMain.keep) {
             // restore former menu stack

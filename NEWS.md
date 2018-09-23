@@ -5,6 +5,7 @@
 * Specify font provider for raster maps
 * Update translations
 * Other changes
+* [1.6.1] Bugfix: Starting operations from PoiInfoPage
 
 2018-09-16: Pure Maps 1.5
 =========================
