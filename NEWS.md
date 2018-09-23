@@ -1,3 +1,11 @@
+2018-09-23: Pure Maps 1.6
+=========================
+
+* Reworked page stack implementation
+* Specify font provider for raster maps
+* Update translations
+* Other changes
+
 2018-09-16: Pure Maps 1.5
 =========================
 
