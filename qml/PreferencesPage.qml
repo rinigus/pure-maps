@@ -227,6 +227,8 @@ Page {
             Spacer {
                 height: 2 * Theme.paddingLarge
             }
+
+            Component.onCompleted: develSwitch.checked = (develCoorSwitch.checked || develShowZSwitch.checked)
         }
 
         VerticalScrollDecorator {}
