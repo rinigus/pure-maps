@@ -67,8 +67,11 @@ def nearby(query, near, radius, params):
     results = poor.http.get_json(url)
     results = list(map(poor.AttrDict, results))
     results = [dict(
+        address=parse_description(result),
         title=parse_title(result),
         description=parse_description(result),
+        poi_type=result.get('type', '').capitalize(),
+        postcode=result.get('address', {}).get('postcode', ''),
         x=float(result.lon),
         y=float(result.lat),
     ) for result in results]
