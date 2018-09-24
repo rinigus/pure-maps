@@ -21,7 +21,7 @@ import QtPositioning 5.3
 
 Timer {
     id: timer
-    interval: app.navigationActive ? 1000 : 3000
+    interval: app.mode === modes.navigate ? 1000 : 3000
     repeat: true
     running: app.running && map.hasRoute
     triggeredOnStart: true
@@ -42,7 +42,7 @@ Timer {
         if (now - timePrev < 60 && coord.distanceTo(timer.coordPrev) < 10) return;
         var accuracy = map.position.horizontalAccuracyValid ?
             map.position.horizontalAccuracy : null;
-        var args = [coord.longitude, coord.latitude, accuracy, app.navigationActive];
+        var args = [coord.longitude, coord.latitude, accuracy, app.mode === modes.navigate];
         py.call("poor.app.narrative.get_display", args, function(status) {
             app.updateNavigationStatus(status);
             timer.coordPrev.longitude = coord.longitude;

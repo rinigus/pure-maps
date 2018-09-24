@@ -25,8 +25,8 @@ Rectangle {
     anchors.right: parent.right
     anchors.bottom: parent.bottom
     color: app.styler.blockBg
-    height: app.navigationActive && app.portrait ? Theme.paddingSmall + (app.portrait ? speed.height : timeDest.height) : 0
-    visible: app.navigationActive
+    height: app.mode === modes.navigate && app.portrait ? Theme.paddingSmall + (app.portrait ? speed.height : timeDest.height) : 0
+    visible: app.mode === modes.navigate
     z: 500
 
     property string destDist:  app.navigationStatus.destDist
@@ -36,10 +36,10 @@ Rectangle {
     // rather large sign with directions shows up. by setting this property to false,
     // the right side data is temporarly not shown until the sign goes away
     property bool   rightSideTooBusy: false
-    property int    shieldLeftHeight: !app.portrait && app.navigationActive ? speed.height + Theme.paddingMedium : 0
-    property int    shieldLeftWidth:  !app.portrait && app.navigationActive ? speed.width + Theme.horizontalPageMargin + speedUnit.width + Theme.paddingSmall + Theme.paddingLarge : 0
-    property int    shieldRightHeight: !app.portrait && app.navigationActive && !rightSideTooBusy ? timeDest.height + distDest.height + Theme.paddingMedium : 0
-    property int    shieldRightWidth:  !app.portrait && app.navigationActive ? Math.max(timeDest.width, distDest.width) + Theme.horizontalPageMargin+ Theme.paddingLarge : 0
+    property int    shieldLeftHeight: !app.portrait && app.mode === modes.navigate ? speed.height + Theme.paddingMedium : 0
+    property int    shieldLeftWidth:  !app.portrait && app.mode === modes.navigate ? speed.width + Theme.horizontalPageMargin + speedUnit.width + Theme.paddingSmall + Theme.paddingLarge : 0
+    property int    shieldRightHeight: !app.portrait && app.mode === modes.navigate && !rightSideTooBusy ? timeDest.height + distDest.height + Theme.paddingMedium : 0
+    property int    shieldRightWidth:  !app.portrait && app.mode === modes.navigate ? Math.max(timeDest.width, distDest.width) + Theme.horizontalPageMargin+ Theme.paddingLarge : 0
 
     Label {
         // speed
@@ -51,7 +51,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeHuge
 
         function update() {
-            if (!app.navigationActive) return;
+            if (app.mode !== modes.navigate) return;
             // Update speed and positioning accuracy values in user's preferred units.
             if (!gps.position.speedValid) {
                 text = ""
@@ -78,7 +78,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeMedium
 
         function update() {
-            if (!app.navigationActive) return;
+            if (app.mode !== modes.navigate) return;
             if (app.conf.units === "american") {
                 text = app.tr("mph")
             } else if (app.conf.units === "british") {
@@ -140,7 +140,7 @@ Rectangle {
 
     Connections {
         target: app
-        onNavigationActiveChanged: block.update()
+        onModeChanged: block.update()
         onPortraitChanged: block.checkIfBusy();
         onScreenHeightChanged: block.checkIfBusy();
     }
@@ -167,7 +167,7 @@ Rectangle {
     }
 
     function checkIfBusy() {
-        if (!app.navigationActive || app.portrait) {
+        if (app.mode !== modes.navigate || app.portrait) {
             block.rightSideTooBusy = false;
             return;
         }

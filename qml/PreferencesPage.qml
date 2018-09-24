@@ -61,7 +61,7 @@ Page {
                 width: parent.width
                 onValueChanged: {
                     app.conf.set("map_scale", scaleSlider.value);
-                    !app.navigationActive && map.setScale(scaleSlider.value);
+                    app.mode !== modes.navigate && map.setScale(scaleSlider.value);
                 }
             }
 

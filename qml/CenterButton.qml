@@ -30,7 +30,7 @@ IconButton {
     icon.width: icon.sourceSize.width
     states: [
         State {
-            when: app.navigationActive && app.portrait
+            when: app.mode === modes.navigate && app.portrait
             AnchorChanges {
                 target: button
                 anchors.right: undefined
@@ -38,7 +38,7 @@ IconButton {
             }
         },
         State {
-            when: app.navigationActive && !app.portrait
+            when: app.mode === modes.navigate && !app.portrait
             AnchorChanges {
                 target: button
                 anchors.right: northArrow.left

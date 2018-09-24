@@ -31,7 +31,7 @@ MapboxMap {
     cacheDatabaseStoreSettings: false
     center: QtPositioning.coordinate(49, 13)
     metersPerPixelTolerance: Math.max(0.001, metersPerPixel*0.01) // 1 percent from the current value
-    pitch: app.navigationActive && format !== "raster" && map.autoRotate && app.conf.tiltWhenNavigating ? 60 : 0
+    pitch: (app.mode === modes.navigate || app.mode === modes.followMe) && format !== "raster" && map.autoRotate && app.conf.tiltWhenNavigating ? 60 : 0
     pixelRatio: Theme.pixelRatio * 1.5
     zoomLevel: 4.0
 
@@ -92,7 +92,7 @@ MapboxMap {
 
     Behavior on center {
         CoordinateAnimation {
-            duration: map.ready && !app.navigationActive ? 500 : 0
+            duration: map.ready && app.mode === modes.explore ? 500 : 0
             easing.type: Easing.InOutQuad
         }
     }
@@ -123,6 +123,7 @@ MapboxMap {
 
     Connections {
         target: app
+        onModeChanged: setMode()
         onPortraitChanged: map.updateMargins();
     }
 
@@ -158,6 +159,7 @@ MapboxMap {
         map.configureLayers();
         map.initProperties();
         map.updateMargins();
+        map.setMode();
     }
 
     onAutoRotateChanged: {
@@ -250,7 +252,7 @@ MapboxMap {
 
     function addRoute(route, amend) {
         // Add new route polyline to the map.
-        amend || map.endNavigating();
+        if (!amend) app.setModeExplore();
         map.clearRoute();
         route.coordinates = route.x.map(function(value, i) {
             return QtPositioning.coordinate(route.y[i], route.x[i]);
@@ -271,25 +273,6 @@ MapboxMap {
         map.saveRoute();
         map.saveManeuvers();
         app.navigationStarted = !!amend;
-    }
-
-    function beginNavigating() {
-        // Set UI to navigation mode.
-        setModeNavigate();
-        var scale = app.conf.get("map_scale_navigation_" + route.mode);
-        var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
-        map.zoomLevel < zoom && map.setZoomLevel(zoom);
-        map.centerOnPosition();
-        map.autoCenter = true;
-        map.autoRotate = app.conf.autoRotateWhenNavigating;
-        map.initVoiceNavigation();
-        app.navigationActive = true;
-        app.navigationPageSeen = true;
-        app.navigationStarted = true;
-        app.rerouteConsecutiveErrors = 0;
-        app.reroutePreviousTime = -1;
-        app.rerouteTotalCalls = 0;
-        app.resetMenu();
     }
 
     function bookmarkPoi(poiId, bookmark) {
@@ -320,10 +303,8 @@ MapboxMap {
         }
 
         // Remove all markers from the map.
-        app.navigationActive = false;
         map.clearPois();
         map.clearRoute();
-        map.setModeExplore();
     }
 
     function clearPois() {
@@ -422,15 +403,6 @@ MapboxMap {
         } );
         map.updatePois();
         map.savePois();
-    }
-
-    function endNavigating() {
-        // Restore UI from navigation mode.
-        map.autoCenter = false;
-        map.autoRotate = false;
-        map.zoomLevel > 14 && map.setZoomLevel(14);
-        map.setModeExplore();
-        app.navigationActive = false;
     }
 
     function fitViewToPois(pois) {
@@ -617,20 +589,46 @@ MapboxMap {
         map.center = QtPositioning.coordinate(y, x);
     }
 
+    function setMode() {
+        if (app.mode === modes.explore) setModeExplore();
+        else if (app.mode === modes.followMe) setModeFollowMe();
+        else if (app.mode === modes.navigate) setModeNavigate();
+        else console.log("Something is terribly wrong - unknown mode in Map.setMode: " + app.mode);
+    }
+
     function setModeExplore() {
         // map used to explore it
+        map.autoCenter = false;
+        map.autoRotate = false;
+        if (map.zoomLevel > 14) map.setZoomLevel(14);
         map.setScale(app.conf.get("map_scale"));
+    }
+
+    function setModeFollowMe() {
+        console.log("FOLLOW ME NOT IMPLEMENTED")
+//        //
+//        map.route.mode = transport_mode;
+//        var mapscale = app.conf.get("map_scale_navigation_" + transport_mode);
+//        map.setScale(mapscale);
+//        var scale = app.conf.get("map_scale_navigation_" + route.mode);
+//        var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
+//        if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
+//        map.centerOnPosition();
+//        map.autoCenter = true;
+//        map.autoRotate = app.conf.autoRotateWhenNavigating;
     }
 
     function setModeNavigate() {
         // map during navigation
+        var mapscale = app.conf.get("map_scale_navigation_" + route.mode);
+        map.setScale(mapscale);
         var scale = app.conf.get("map_scale_navigation_" + route.mode);
-        map.setScale(scale);
-    }
-
-    function setModeExamineRoute() {
-        // map before nevigation, used to examine route
-        setModeExplore(); // currently the same as explore
+        var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
+        if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
+        map.centerOnPosition();
+        map.autoCenter = true;
+        map.autoRotate = app.conf.autoRotateWhenNavigating;
+        map.initVoiceNavigation();
     }
 
     function setScale(scale) {
@@ -673,9 +671,9 @@ MapboxMap {
     function updateMargins() {
         // Calculate new margins and set them for the map.
         var header = navigationBlock && navigationBlock.height > 0 ? navigationBlock.height : map.height*0.05;
-        var footer = !app.poiActive && !app.navigationActive && menuButton ? map.height*0.05 : 0;
-        footer += !app.poiActive && app.navigationActive && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
-        footer += !app.poiActive && app.navigationActive && streetName ? streetName.height : 0
+        var footer = !app.poiActive && app.mode !== modes.navigate && menuButton ? map.height*0.05 : 0;
+        footer += !app.poiActive && app.mode === modes.navigate && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
+        footer += !app.poiActive && app.mode === modes.navigate && streetName ? streetName.height : 0
         footer += app.poiActive && poiPanel ? poiPanel.height : 0
 
         footer = Math.min(footer, map.height / 2.0);

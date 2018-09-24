@@ -29,7 +29,7 @@ Item {
     height: labels.implicitHeight
     opacity: 0.9
     width: parent.width
-    visible: !app.navigationActive && !app.poiActive
+    visible: app.mode !== modes.navigate && !app.poiActive
     z: 400
 
     Text {

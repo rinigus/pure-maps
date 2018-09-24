@@ -53,7 +53,7 @@ Page {
                 map.hidePoi();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
-                map.setModeExamineRoute();
+                app.setModeExplore();
             } else {
                 busy.error = app.tr("No results");
                 page.loading = false;

@@ -124,7 +124,7 @@ Page {
             }
 
             onClicked: {
-                map.endNavigating();
+                app.setModeExplore();
                 map.setCenter(model.x, model.y);
                 map.zoomLevel < 15 && map.setZoomLevel(15);
                 app.hideNavigationPages();

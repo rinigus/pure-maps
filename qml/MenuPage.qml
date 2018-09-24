@@ -103,7 +103,7 @@ Page {
                 icon: "image://theme/icon-m-clear"
                 label: app.tr("Clear map")
                 onClicked: {
-                    app.navigationActive && app.map.endNavigating();
+                    if (app.mode !== modes.explore) app.setModeExplore();
                     app.map.clear(true);
                     app.showMap();
                 }

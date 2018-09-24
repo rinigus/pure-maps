@@ -50,11 +50,12 @@ Page {
                 ToolItem {
                     id: beginItem
                     width: row.itemWidth + Theme.horizontalPageMargin
-                    icon: app.navigationActive ? "image://theme/icon-m-pause" : "image://theme/icon-m-play"
-                    text: app.navigationActive ? app.tr("Pause") :
+                    icon: app.mode === modes.navigate ? "image://theme/icon-m-pause" : "image://theme/icon-m-play"
+                    text: app.mode === modes.navigate ? app.tr("Pause") :
                         (app.navigationStarted ? app.tr("Resume") : app.tr("Begin"))
                     onClicked: {
-                        app.navigationActive ? map.endNavigating() : map.beginNavigating();
+                        if (app.mode === modes.navigate) app.setModeExplore();
+                        else app.setModeNavigate();
                         app.hideNavigationPages();
                     }
                 }
@@ -66,7 +67,6 @@ Page {
                     text: app.tr("Reroute")
                     onClicked: {
                         app.reroute();
-                        map.beginNavigating();
                         app.hideNavigationPages();
                     }
                 }
@@ -77,7 +77,7 @@ Page {
                     icon: "image://theme/icon-m-clear"
                     text: app.tr("Clear")
                     onClicked: {
-                        map.endNavigating();
+                        app.setModeExplore();
                         map.clearRoute();
                         app.showMap();
                     }
@@ -209,7 +209,7 @@ Page {
                     if (!voiceNavigationSwitch.enabled) return;
                     if (voiceNavigationSwitch.checked === app.conf.voiceNavigation) return;
                     app.conf.set("voice_navigation", voiceNavigationSwitch.checked);
-                    app.navigationActive && map.initVoiceNavigation();
+                    if (app.mode === modes.navigate) map.initVoiceNavigation();
                 }
             }
 
@@ -249,7 +249,7 @@ Page {
                 onValueChanged: {
                     if (map.route.mode == null) return;
                     app.conf.set("map_scale_navigation_" + map.route.mode, scaleSlider.value);
-                    app.navigationActive && map.setScale(scaleSlider.value);
+                    if (app.mode === modes.navigate) map.setScale(scaleSlider.value);
                 }
             }
 

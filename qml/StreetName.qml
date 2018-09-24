@@ -21,8 +21,8 @@ import Sailfish.Silica 1.0
 
 Rectangle {
     id: master
-    anchors.bottom: app.navigationActive ? (app.portrait ? navigationInfoBlock.top : parent.bottom) : menuButton.top
-    anchors.bottomMargin: app.navigationActive ? Theme.paddingSmall : 0
+    anchors.bottom: app.mode === modes.navigate ? (app.portrait ? navigationInfoBlock.top : parent.bottom) : menuButton.top
+    anchors.bottomMargin: app.mode === modes.navigate ? Theme.paddingSmall : 0
     anchors.left: parent.left
     anchors.leftMargin: Theme.paddingLarge
     anchors.right: parent.right
@@ -31,7 +31,7 @@ Rectangle {
     height: cover.height
     states: [
         State {
-            when: app.navigationActive && !app.portrait
+            when: app.mode === modes.navigate && !app.portrait
             AnchorChanges {
                 target: master
                 anchors.left: navigationInfoBlockLandscapeLeftShield.right
@@ -62,7 +62,7 @@ Rectangle {
         maximumLineCount: 1
         text: gps.streetName
         truncationMode: TruncationMode.Fade
-        visible: app.navigationActive && (text !== undefined && text !== null && text.length>0)
+        visible: app.mode === modes.navigate && (text !== undefined && text !== null && text.length>0)
         width: implicitWidth > master.width - 4*Theme.paddingMedium ? master.width-4*Theme.paddingMedium : implicitWidth
         z: 500
     }

@@ -43,13 +43,13 @@ ApplicationWindow {
     property var  map: null
     property string mapMatchingMode: {
         if (!hasMapMatching) return "none";
-        if (navigationActive) return mapMatchingModeNavigation;
+        if (app.mode === modes.navigate) return mapMatchingModeNavigation;
         return mapMatchingModeIdle;
     }
     property string mapMatchingModeIdle: app.conf.mapMatchingWhenIdle
     property string mapMatchingModeNavigation: app.conf.mapMatchingWhenNavigating && map && map.route && map.route.mode ? map.route.mode : "none"
+    property int    mode: modes.explore
     property bool   narrativePageSeen: false
-    property bool   navigationActive: false
     property bool   navigationPageSeen: false
     property var    navigationStatus: NavigationStatus {}
     property bool   navigationStarted: false
@@ -84,12 +84,16 @@ ApplicationWindow {
         loops: 1
     }
 
+    Modes {
+        id: modes
+    }
+
     Component.onDestruction: {
-        if (!py.ready) return;
-        app.conf.set("auto_center", map.autoCenter);
-        app.conf.set("auto_rotate", map.autoRotate);
-        app.conf.set("center", [map.center.longitude, map.center.latitude]);
-        app.conf.set("zoom", map.zoomLevel);
+        if (!py.ready || !app.map) return;
+        app.conf.set("auto_center", app.map.autoCenter);
+        app.conf.set("auto_rotate", app.map.autoRotate);
+        app.conf.set("center", [app.map.center.longitude, app.map.center.latitude]);
+        app.conf.set("zoom", app.map.zoomLevel);
         py.call_sync("poor.app.quit", []);
     }
 
@@ -106,7 +110,20 @@ ApplicationWindow {
 
     onDeviceOrientationChanged: updateOrientation()
 
-    onNavigationActiveChanged: {
+    onModeChanged: {
+        if (!initialized) return;
+        if (app.mode === modes.explore) {
+
+        } else if (app.mode === modes.followMe) {
+
+        } else if (app.mode === modes.navigate) {
+            app.navigationPageSeen = true;
+            app.navigationStarted = true;
+            app.rerouteConsecutiveErrors = 0;
+            app.reroutePreviousTime = -1;
+            app.rerouteTotalCalls = 0;
+            app.resetMenu();
+        }
         app.updateKeepAlive();
     }
 
@@ -232,7 +249,7 @@ ApplicationWindow {
     function rerouteMaybe() {
         // Find a new route if conditions are met.
         if (!app.conf.reroute) return;
-        if (!app.navigationActive) return;
+        if (app.mode !== modes.navigate) return;
         if (!gps.position.horizontalAccuracyValid) return;
         if (gps.position.horizontalAccuracy > 100) return;
         if (py.evaluate("poor.app.router.offline")) {
@@ -252,6 +269,18 @@ ApplicationWindow {
 
     function resetMenu() {
         app._stackMain.keep = false;
+    }
+
+    function setModeExplore() {
+        app.mode = modes.explore;
+    }
+
+    function setModeFollowMe() {
+        app.mode = modes.followMe;
+    }
+
+    function setModeNavigate() {
+        app.mode = modes.navigate;
     }
 
     function showMap() {
@@ -301,7 +330,7 @@ ApplicationWindow {
         // Update state of keep-alive, i.e. display blanking prevention.
         var prevent = app.conf.get("keep_alive");
         DisplayBlanking.preventBlanking = app.applicationActive &&
-            (prevent === "always" || (prevent === "navigating" && app.navigationActive));
+            (prevent === "always" || (prevent === "navigating" && app.mode === modes.navigate));
     }
 
     function updateNavigationStatus(status) {

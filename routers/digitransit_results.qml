@@ -187,7 +187,7 @@ Page {
                 map.hidePoi();
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);
-                map.setModeExamineRoute();
+                app.setModeExplore();
             }
 
         }
