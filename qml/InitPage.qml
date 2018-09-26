@@ -18,23 +18,15 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "."
 
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
-    BusyIndicator {
+    BusyModal {
         id: busy
-        size: BusyIndicatorSize.Large
-        anchors.centerIn: parent
         running: !py.ready
-    }
-
-    Label {
-        anchors.horizontalCenter: busy.horizontalCenter
-        anchors.top: busy.bottom
-        anchors.topMargin: Theme.paddingLarge
-        color: Theme.highlightColor
         text: !py.ready ? app.tr("Initializing") : ""
     }
 
