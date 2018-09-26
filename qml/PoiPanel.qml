@@ -228,7 +228,6 @@ Rectangle {
         }
 
         IconButton {
-            enabled: panel.active
             icon.source: "image://theme/icon-m-car"
             onClicked: {
                 if (coordinate === undefined) return;
@@ -241,7 +240,6 @@ Rectangle {
         }
 
         IconButton {
-            enabled: panel.active
             icon.source: "image://theme/icon-m-whereami"
             onClicked: {
                 if (coordinate === undefined) return;
