@@ -43,11 +43,13 @@ ApplicationWindow {
     property var  map: null
     property string mapMatchingMode: {
         if (!hasMapMatching) return "none";
-        if (app.mode === modes.navigate) return mapMatchingModeNavigation;
+        if (app.mode === modes.navigate) return mapMatchingModeNavigate;
+        if (app.mode === modes.followMe) return mapMatchingModeFollowMe;
         return mapMatchingModeIdle;
     }
+    property string mapMatchingModeFollowMe: app.conf.mapMatchingWhenFollowing
     property string mapMatchingModeIdle: app.conf.mapMatchingWhenIdle
-    property string mapMatchingModeNavigation: app.conf.mapMatchingWhenNavigating && map && map.route && map.route.mode ? map.route.mode : "none"
+    property string mapMatchingModeNavigate: app.conf.mapMatchingWhenNavigating && map && map.route && map.route.mode ? map.route.mode : "none"
     property int    mode: modes.explore
     property bool   narrativePageSeen: false
     property bool   navigationPageSeen: false
@@ -330,7 +332,7 @@ ApplicationWindow {
         // Update state of keep-alive, i.e. display blanking prevention.
         var prevent = app.conf.get("keep_alive");
         DisplayBlanking.preventBlanking = app.applicationActive &&
-            (prevent === "always" || (prevent === "navigating" && app.mode === modes.navigate));
+            (prevent === "always" || (prevent === "navigating" && (app.mode === modes.navigate || app.mode === modes.followMe)));
     }
 
     function updateNavigationStatus(status) {

@@ -48,12 +48,12 @@ Page {
                 busy.error = route.message;
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
+                app.setModeExplore();
                 app.hideMenu();
                 map.addRoute(route);
                 map.hidePoi();
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
-                app.setModeExplore();
             } else {
                 busy.error = app.tr("No results");
                 page.loading = false;

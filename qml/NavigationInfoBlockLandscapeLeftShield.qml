@@ -32,7 +32,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: !app.portrait && app.showMenu();
+        onClicked: app.showMenu();
     }
 
 }

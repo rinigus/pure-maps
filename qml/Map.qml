@@ -31,7 +31,12 @@ MapboxMap {
     cacheDatabaseStoreSettings: false
     center: QtPositioning.coordinate(49, 13)
     metersPerPixelTolerance: Math.max(0.001, metersPerPixel*0.01) // 1 percent from the current value
-    pitch: (app.mode === modes.navigate || app.mode === modes.followMe) && format !== "raster" && map.autoRotate && app.conf.tiltWhenNavigating ? 60 : 0
+    pitch: {
+        if (app.mode === modes.explore || format === "raster" || !map.autoRotate || !app.conf.tiltWhenNavigating) return 0;
+        if (app.mode === modes.navigate) return 60;
+        if (app.mode === modes.followMe) return 60;
+        return 0; // should never get here
+    }
     pixelRatio: Theme.pixelRatio * 1.5
     zoomLevel: 4.0
 
@@ -605,26 +610,23 @@ MapboxMap {
     }
 
     function setModeFollowMe() {
-        console.log("FOLLOW ME NOT IMPLEMENTED")
-//        //
-//        map.route.mode = transport_mode;
-//        var mapscale = app.conf.get("map_scale_navigation_" + transport_mode);
-//        map.setScale(mapscale);
-//        var scale = app.conf.get("map_scale_navigation_" + route.mode);
-//        var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
-//        if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
-//        map.centerOnPosition();
-//        map.autoCenter = true;
-//        map.autoRotate = app.conf.autoRotateWhenNavigating;
+        // follow me mode
+        map.route = { mode: app.conf.mapMatchingWhenFollowing !== "none" ? app.conf.mapMatchingWhenFollowing : "car" };
+        var scale = app.conf.get("map_scale_navigation_" + map.route.mode);
+        var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
+        if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
+        map.setScale(scale);
+        map.centerOnPosition();
+        map.autoCenter = true;
+        map.autoRotate = app.conf.autoRotateWhenNavigating;
     }
 
     function setModeNavigate() {
         // map during navigation
-        var mapscale = app.conf.get("map_scale_navigation_" + route.mode);
-        map.setScale(mapscale);
         var scale = app.conf.get("map_scale_navigation_" + route.mode);
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
+        map.setScale(scale);
         map.centerOnPosition();
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
@@ -671,9 +673,9 @@ MapboxMap {
     function updateMargins() {
         // Calculate new margins and set them for the map.
         var header = navigationBlock && navigationBlock.height > 0 ? navigationBlock.height : map.height*0.05;
-        var footer = !app.poiActive && app.mode !== modes.navigate && menuButton ? map.height*0.05 : 0;
-        footer += !app.poiActive && app.mode === modes.navigate && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
-        footer += !app.poiActive && app.mode === modes.navigate && streetName ? streetName.height : 0
+        var footer = !app.poiActive && app.mode === modes.explore && menuButton ? map.height*0.05 : 0;
+        footer += !app.poiActive && (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
+        footer += !app.poiActive && (app.mode === modes.navigate || app.mode === modes.followMe) && streetName ? streetName.height : 0
         footer += app.poiActive && poiPanel ? poiPanel.height : 0
 
         footer = Math.min(footer, map.height / 2.0);

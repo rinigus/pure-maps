@@ -26,6 +26,7 @@ Item {
     property bool   autoRotateWhenNavigating
     property bool   developmentCoordinateCenter: false
     property bool   developmentShowZ: false
+    property string mapMatchingWhenFollowing
     property string mapMatchingWhenIdle
     property bool   mapMatchingWhenNavigating
     property bool   reroute
@@ -82,6 +83,7 @@ Item {
         conf.autoRotateWhenNavigating = c.auto_rotate_when_navigating;
         conf.developmentCoordinateCenter = c.devel_coordinate_center;
         conf.developmentShowZ = c.devel_show_z;
+        conf.mapMatchingWhenFollowing = c.map_matching_when_following;
         conf.mapMatchingWhenIdle = c.map_matching_when_idle;
         conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
         conf.reroute = c.reroute;

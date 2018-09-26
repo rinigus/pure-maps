@@ -137,17 +137,71 @@ Page {
 
             }
 
+            TextSwitch {
+                id: followMe
+                checked: false
+                description: app.tr("Follow the movement and show just in time information")
+                text: app.tr("Follow me")
+                Component.onCompleted: {
+                    checked = (app.mode === modes.followMe);
+                }
+            }
+
+            ToolItem {
+                id: beginFollowMeItem
+                icon: app.mode === modes.followMe ? "image://theme/icon-m-clear" : "image://theme/icon-m-play"
+                text: app.mode === modes.followMe ? app.tr("Stop") : app.tr("Begin")
+                visible: followMe.checked
+                width: column.width
+                onClicked: {
+                    if (app.mode === modes.followMe) {
+                        app.setModeExplore();
+                        app.showMap();
+                    } else {
+                        app.setModeFollowMe();
+                        app.hideMenu();
+                    }
+                }
+            }
+
+            ComboBox {
+                id: mapmatchingComboBox
+                description: app.tr("Select mode of transportation. Only applies when Pure Maps is in follow me mode.")
+                label: app.tr("Mode of transportation")
+                menu: ContextMenu {
+                    MenuItem { text: app.tr("Car") }
+                    MenuItem { text: app.tr("Bicycle") }
+                    MenuItem { text: app.tr("Foot") }
+                }
+                visible: app.hasMapMatching && followMe.checked
+                property var values: ["car", "bicycle", "foot"]
+                Component.onCompleted: {
+                    var value = app.conf.mapMatchingWhenFollowing;
+                    mapmatchingComboBox.currentIndex = Math.max(0, mapmatchingComboBox.values.indexOf(value));
+                }
+                onCurrentIndexChanged: {
+                    var index = mapmatchingComboBox.currentIndex;
+                    app.conf.set("map_matching_when_following", mapmatchingComboBox.values[index]);
+                }
+            }
+
             Connections {
                 target: page
                 onFromChanged: column.addSettings();
                 onToChanged: column.addSettings();
             }
 
+            Connections {
+                target: followMe
+                onCheckedChanged: column.addSettings();
+            }
+
             Component.onCompleted: column.addSettings();
 
             function addSettings() {
-                if (column.settingsChecked || page.from==null || page.to==null) return;
+                if (column.settingsChecked || page.from==null || page.to==null || followMe.checked) return;
                 // Add router-specific settings from router's own QML file.
+                followMe.visible = false;
                 page.params = {};
                 column.settings && column.settings.destroy();
                 var uri = py.evaluate("poor.app.router.settings_qml_uri");
@@ -163,6 +217,17 @@ Page {
         }
 
         PullDownMenu {
+            MenuItem {
+                text: app.tr("Follow me")
+                onClicked: {
+                    followMe.checked = true;
+                    followMe.visible = true;
+                    column.settingsChecked = false;
+                    page.params = {};
+                    column.settings && column.settings.destroy();
+                    column.settings = null;
+                }
+            }
             MenuItem {
                 text: app.tr("Reverse endpoints")
                 onClicked: {

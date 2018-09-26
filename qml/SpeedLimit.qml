@@ -33,7 +33,7 @@ Rectangle {
     radius: width/2
     states: [
         State {
-            when: !app.portrait && navigationInfoBlockLandscapeLeftShield.height > 0
+            when: (!app.portrait || app.mode === modes.followMe) && navigationInfoBlockLandscapeLeftShield.height > 0
             AnchorChanges {
                 target: ring
                 anchors.bottom: navigationInfoBlockLandscapeLeftShield.top
@@ -42,7 +42,7 @@ Rectangle {
     ]
     width: Math.round(Math.max(limit.width,limit.height) + 1.6*Theme.paddingLarge + Theme.paddingSmall)
     visible: {
-        if (app.mode === modes.explore || map.route.mode !== "car" || app.conf.showSpeedLimit==="never")
+        if (app.mode === modes.explore || !map.route || map.route.mode !== "car" || app.conf.showSpeedLimit==="never")
             return false;
         if (app.conf.showSpeedLimit==="exceeding") {
             if (!gps.position.speedValid || gps.streetSpeedLimit==null || gps.streetSpeedLimit < 0)

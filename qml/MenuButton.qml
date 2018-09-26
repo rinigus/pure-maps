@@ -28,7 +28,7 @@ IconButton {
     icon.source: app.getIcon("icons/menu")
     icon.width: icon.sourceSize.width
     width: icon.width
-    visible: app.mode !== modes.navigate && !app.poiActive
+    visible: app.mode === modes.explore && !app.poiActive
     z: 900
     onClicked: app.showMenu();
 }

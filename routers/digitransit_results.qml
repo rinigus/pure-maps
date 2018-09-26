@@ -182,12 +182,12 @@ Page {
             }
 
             onClicked: {
+                app.setModeExplore();
                 app.hideMenu();
                 map.addRoute(listItem.result);
                 map.hidePoi();
                 map.fitViewToRoute();
                 map.addManeuvers(listItem.result.maneuvers);
-                app.setModeExplore();
             }
 
         }

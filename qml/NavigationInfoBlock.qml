@@ -26,7 +26,7 @@ Rectangle {
     anchors.bottom: parent.bottom
     color: app.styler.blockBg
     height: app.mode === modes.navigate && app.portrait ? Theme.paddingSmall + (app.portrait ? speed.height : timeDest.height) : 0
-    visible: app.mode === modes.navigate
+    visible: app.mode === modes.navigate || app.mode === modes.followMe
     z: 500
 
     property string destDist:  app.navigationStatus.destDist
@@ -36,8 +36,8 @@ Rectangle {
     // rather large sign with directions shows up. by setting this property to false,
     // the right side data is temporarly not shown until the sign goes away
     property bool   rightSideTooBusy: false
-    property int    shieldLeftHeight: !app.portrait && app.mode === modes.navigate ? speed.height + Theme.paddingMedium : 0
-    property int    shieldLeftWidth:  !app.portrait && app.mode === modes.navigate ? speed.width + Theme.horizontalPageMargin + speedUnit.width + Theme.paddingSmall + Theme.paddingLarge : 0
+    property int    shieldLeftHeight: (!app.portrait && app.mode === modes.navigate) || app.mode === modes.followMe ? speed.height + Theme.paddingMedium : 0
+    property int    shieldLeftWidth:  (!app.portrait && app.mode === modes.navigate) || app.mode === modes.followMe ? speed.width + Theme.horizontalPageMargin + speedUnit.width + Theme.paddingSmall + Theme.paddingLarge : 0
     property int    shieldRightHeight: !app.portrait && app.mode === modes.navigate && !rightSideTooBusy ? timeDest.height + distDest.height + Theme.paddingMedium : 0
     property int    shieldRightWidth:  !app.portrait && app.mode === modes.navigate ? Math.max(timeDest.width, distDest.width) + Theme.horizontalPageMargin+ Theme.paddingLarge : 0
 
@@ -51,7 +51,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeHuge
 
         function update() {
-            if (app.mode !== modes.navigate) return;
+            if (app.mode === modes.explore) return;
             // Update speed and positioning accuracy values in user's preferred units.
             if (!gps.position.speedValid) {
                 text = ""
@@ -78,7 +78,7 @@ Rectangle {
         font.pixelSize: Theme.fontSizeMedium
 
         function update() {
-            if (app.mode !== modes.navigate) return;
+            if (app.mode === modes.explore) return;
             if (app.conf.units === "american") {
                 text = app.tr("mph")
             } else if (app.conf.units === "british") {
@@ -120,6 +120,7 @@ Rectangle {
             }
         ]
         text: !rightSideTooBusy ? block.destTime : ""
+        visible: app.mode === modes.navigate
     }
 
     Label {
@@ -131,6 +132,7 @@ Rectangle {
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeLarge
         text: !rightSideTooBusy ? block.destDist : ""
+        visible: app.mode === modes.navigate
     }
 
     MouseArea {

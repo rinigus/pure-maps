@@ -175,6 +175,10 @@ Page {
                 height: Theme.paddingLarge
             }
 
+            SectionHeader {
+                text: app.tr("Miscellaneous")
+            }
+
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 preferredWidth: Theme.buttonWidthLarge

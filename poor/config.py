@@ -40,6 +40,7 @@ DEFAULTS = {
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
     # "none", "car", "bicycle", "foot"
+    "map_matching_when_following": "none",
     "map_matching_when_idle": "none",
     "map_matching_when_navigating": False,
     "map_scale": 1.0,
