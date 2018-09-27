@@ -673,10 +673,14 @@ MapboxMap {
     function updateMargins() {
         // Calculate new margins and set them for the map.
         var header = navigationBlock && navigationBlock.height > 0 ? navigationBlock.height : map.height*0.05;
-        var footer = !app.poiActive && app.mode === modes.explore && menuButton ? map.height*0.05 : 0;
+        var footer = !app.poiActive && app.mode === modes.explore && menuButton ? (map.height-menuButton.y) : 0;
+        console.log("MM 1 " + footer)
         footer += !app.poiActive && (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
+        console.log("MM 2 " + footer)
         footer += !app.poiActive && (app.mode === modes.navigate || app.mode === modes.followMe) && streetName ? streetName.height : 0
+        console.log("MM 3 " + footer)
         footer += app.poiActive && poiPanel ? poiPanel.height : 0
+        console.log("MM 4 " + footer)
 
         footer = Math.min(footer, map.height / 2.0);
 
