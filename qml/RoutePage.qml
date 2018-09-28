@@ -141,6 +141,7 @@ Page {
                 id: followMe
                 checked: false
                 description: app.tr("Follow the movement and show just in time information")
+                enabled: app.mode !== modes.followMe
                 text: app.tr("Follow me")
                 Component.onCompleted: {
                     checked = (app.mode === modes.followMe);
@@ -174,14 +175,33 @@ Page {
                     MenuItem { text: app.tr("Foot") }
                 }
                 visible: app.hasMapMatching && followMe.checked
-                property var values: ["car", "bicycle", "foot"]
+                property string  value: "car"
+                property var     values: ["car", "bicycle", "foot"]
                 Component.onCompleted: {
-                    var value = app.conf.mapMatchingWhenFollowing;
+                    value = app.conf.mapMatchingWhenFollowing;
                     mapmatchingComboBox.currentIndex = Math.max(0, mapmatchingComboBox.values.indexOf(value));
                 }
                 onCurrentIndexChanged: {
-                    var index = mapmatchingComboBox.currentIndex;
-                    app.conf.set("map_matching_when_following", mapmatchingComboBox.values[index]);
+                    mapmatchingComboBox.value = values[mapmatchingComboBox.currentIndex]
+                    app.conf.set("map_matching_when_following", mapmatchingComboBox.value);
+                    scaleSlider.value = app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
+                }
+            }
+
+            Slider {
+                id: scaleSlider
+                label: app.tr("Map scale")
+                maximumValue: 4.0
+                minimumValue: 0.5
+                stepSize: 0.1
+                value: app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
+                valueText: value
+                visible: app.hasMapMatching && followMe.checked
+                width: parent.width
+                onValueChanged: {
+                    if (!mapmatchingComboBox.value) return;
+                    app.conf.set("map_scale_navigation_" + mapmatchingComboBox.value, scaleSlider.value);
+                    if (app.mode === modes.followMe) map.setScale(scaleSlider.value);
                 }
             }
 
