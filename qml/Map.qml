@@ -683,9 +683,6 @@ MapboxMap {
         // on the screen and should see more ahead than behind.
         var marginY = (footer*1.0)/map.height;
         var marginHeight = (map.autoRotate ? 0.2 : 1.0) * (1.0*(map.height - header - footer)) / map.height;
-
-        // console.log("M " + footer + " " + marginY + " " + header + " " + marginHeight + " ")
-
         map.margins = Qt.rect(0.05, marginY, 0.9, marginHeight);
     }
 

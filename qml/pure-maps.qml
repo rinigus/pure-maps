@@ -43,13 +43,11 @@ ApplicationWindow {
     property var  map: null
     property string mapMatchingMode: {
         if (!hasMapMatching) return "none";
-        if (app.mode === modes.navigate) return mapMatchingModeNavigate;
-        if (app.mode === modes.followMe) return mapMatchingModeFollowMe;
-        return mapMatchingModeIdle;
+        if (app.mode === modes.navigate)
+            return app.conf.mapMatchingWhenNavigating ? map.route.mode : "none"
+        if (app.mode === modes.followMe) return app.conf.mapMatchingWhenFollowing;
+        return app.conf.mapMatchingWhenIdle;
     }
-    property string mapMatchingModeFollowMe: app.conf.mapMatchingWhenFollowing
-    property string mapMatchingModeIdle: app.conf.mapMatchingWhenIdle
-    property string mapMatchingModeNavigate: app.conf.mapMatchingWhenNavigating && map && map.route && map.route.mode ? map.route.mode : "none"
     property int    mode: modes.explore
     property bool   narrativePageSeen: false
     property bool   navigationPageSeen: false
