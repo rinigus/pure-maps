@@ -23,14 +23,16 @@ import "."
 Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
-    canNavigateForward: page.from && page.to &&
-        (page.fromText !== app.tr("Current position") || gps.ready) &&
-        (page.toText   !== app.tr("Current position") || gps.ready)
+    canNavigateForward:
+        (!page.fromNeeded || (page.from && (page.fromText !== app.tr("Current position") || gps.ready))) &&
+        (!page.toNeeded   || (page.to   && (page.toText   !== app.tr("Current position") || gps.ready)))
 
     property var    from: null
+    property bool   fromNeeded: true
     property string fromText: ""
     property var    params: {}
     property var    to: null
+    property bool   toNeeded: true
     property string toText: ""
 
     SilicaFlickable {
@@ -60,6 +62,10 @@ Page {
                     dialog.accepted.connect(function() {
                         column.settingsChecked = false;
                         usingButton.value = py.evaluate("poor.app.router.name");
+                        page.fromNeeded = py.evaluate("poor.app.router.from_needed");
+                        page.toNeeded = py.evaluate("poor.app.router.to_needed");
+                        if (column.settings) column.settings.destroy();
+                        column.settings = null;
                         column.addSettings();
                     });
                 }
@@ -70,6 +76,7 @@ Page {
                 label: app.tr("From")
                 height: Theme.itemSizeSmall
                 value: page.fromText
+                visible: page.fromNeeded
                 // Avoid putting label and value on different lines.
                 width: 3 * parent.width
 
@@ -106,6 +113,7 @@ Page {
                 label: app.tr("To")
                 height: Theme.itemSizeSmall
                 value: page.toText
+                visible: page.toNeeded
                 // Avoid putting label and value on different lines.
                 width: 3 * parent.width
 
@@ -137,6 +145,8 @@ Page {
 
             }
 
+            /////////////////
+            // Follow Me mode
             TextSwitch {
                 id: followMe
                 checked: false
@@ -205,6 +215,8 @@ Page {
                     if (app.mode === modes.followMe) map.setScale(scaleSlider.value);
                 }
             }
+            // Follow Me mode: done
+            ///////////////////////
 
             Connections {
                 target: page
@@ -220,7 +232,7 @@ Page {
             Component.onCompleted: column.addSettings();
 
             function addSettings() {
-                if (column.settingsChecked || page.from==null || page.to==null || followMe.checked) return;
+                if (column.settingsChecked || (page.from==null && page.fromNeeded) || (page.to==null && page.toNeeded) || followMe.checked) return;
                 // Add router-specific settings from router's own QML file.
                 followMe.visible = false;
                 page.params = {};
@@ -271,6 +283,9 @@ Page {
             page.from = map.getPosition();
             page.fromText = app.tr("Current position");
         }
+        page.fromNeeded = py.evaluate("poor.app.router.from_needed");
+        page.toNeeded = py.evaluate("poor.app.router.to_needed");
+        column.addSettings();
     }
 
     onStatusChanged: {

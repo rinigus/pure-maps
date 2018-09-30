@@ -1,0 +1,10 @@
+{
+  "attribution": {
+  },
+  "_description": "Routing along GPX track",
+  "_modes": ["car", "bicycle", "foot"],
+  "name": "GPX",
+  "offline": true,
+  "from_needed": false,
+  "to_needed": false
+}

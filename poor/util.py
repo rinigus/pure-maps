@@ -21,6 +21,7 @@ import collections
 import contextlib
 import functools
 import glob
+import poor.gpxpy.parser
 import json
 import locale
 import math
@@ -433,6 +434,24 @@ def popen(*args):
     """Run command `args` without waiting for it to complete."""
     subprocess.Popen(args)
 
+def read_gpx(path):
+    """Read and join tracks from GPX file at `path`."""
+    try:
+        with open(path, "r", encoding="utf_8") as f:
+            gpx = poor.gpxpy.parser.GPXParser(f).parse()
+            x, y = [], []
+            for track in gpx.tracks:
+                for segment in track.segments:
+                    for point in segment.points:
+                        x.append(point.longitude)
+                        y.append(point.latitude)
+    except Exception as error:
+        print("Failed to read file {}: {}"
+              .format(repr(path), str(error)),
+              file=sys.stderr)
+        raise # Exception
+    return x, y
+    
 def read_json(path):
     """Read data from JSON file at `path`."""
     try:
