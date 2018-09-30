@@ -178,8 +178,9 @@ Page {
                 property string  value: "car"
                 property var     values: ["car", "bicycle", "foot"]
                 Component.onCompleted: {
-                    value = app.conf.mapMatchingWhenFollowing;
-                    mapmatchingComboBox.currentIndex = Math.max(0, mapmatchingComboBox.values.indexOf(value));
+                    var v = app.conf.mapMatchingWhenFollowing;
+                    mapmatchingComboBox.currentIndex = Math.max(0, mapmatchingComboBox.values.indexOf(v));
+                    value = values[mapmatchingComboBox.currentIndex];
                 }
                 onCurrentIndexChanged: {
                     mapmatchingComboBox.value = values[mapmatchingComboBox.currentIndex]
