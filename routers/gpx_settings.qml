@@ -25,6 +25,24 @@ Column {
 
     property string selectedFile
 
+    ValueButton {
+        anchors.horizontalCenter: parent.horizontalCenter
+        label: app.tr("File")
+        value: selectedFile ? selectedFile : app.tr("None")
+        onClicked: pageStack.push(filePickerPage)
+    }
+
+    Component {
+        id: filePickerPage
+        FilePickerPage {
+            nameFilters: [ '*.gpx' ]
+            onSelectedContentPropertiesChanged: {
+                settingsBlock.selectedFile = selectedContentProperties.filePath
+                app.conf.set("routers.gpx.file", settingsBlock.selectedFile);
+            }
+        }
+    }
+
     ComboBox {
         id: typeComboBox
         label: app.tr("Type")
@@ -45,24 +63,6 @@ Column {
             var key = typeComboBox.keys[typeComboBox.currentIndex]
             current_key = key;
             app.conf.set("routers.gpx.type", key);
-        }
-    }
-
-    ValueButton {
-        anchors.horizontalCenter: parent.horizontalCenter
-        label: app.tr("File")
-        value: selectedFile ? selectedFile : app.tr("None")
-        onClicked: pageStack.push(filePickerPage)
-    }
-
-    Component {
-        id: filePickerPage
-        FilePickerPage {
-            nameFilters: [ '*.gpx' ]
-            onSelectedContentPropertiesChanged: {
-                settingsBlock.selectedFile = selectedContentProperties.filePath
-                app.conf.set("routers.gpx.file", settingsBlock.selectedFile);
-            }
         }
     }
 

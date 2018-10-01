@@ -19,8 +19,6 @@
 Routing using GPX track
 """
 
-import copy
-import json
 import poor
 
 CONF_DEFAULTS = {
