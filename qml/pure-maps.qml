@@ -252,6 +252,7 @@ ApplicationWindow {
         if (app.mode !== modes.navigate) return;
         if (!gps.position.horizontalAccuracyValid) return;
         if (gps.position.horizontalAccuracy > 100) return;
+        if (!py.evaluate("poor.app.router.can_reroute")) return;
         if (py.evaluate("poor.app.router.offline")) {
             if (Date.now() - app.reroutePreviousTime < 5000) return;
             return app.reroute();

@@ -53,6 +53,7 @@ class Router:
         self.id = id
         self.name = values["name"]
         self._path = path
+        self._can_reroute = values.get("can_reroute", True)
         self.offline = values.get("offline", False)
         self._from_needed = values.get("from_needed", True)
         self._to_needed = values.get("to_needed", True)
@@ -63,6 +64,11 @@ class Router:
     def attribution(self):
         """Return a list of attribution dictionaries."""
         return [{"text": k, "url": v} for k, v in self._attribution.items()]
+
+    @property
+    def can_reroute(self):
+        """Return whether the router allows rerouting."""
+        return self.can_reroute
 
     @property
     def from_needed(self):
