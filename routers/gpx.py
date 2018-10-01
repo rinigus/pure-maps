@@ -38,6 +38,6 @@ def route(fm, to, heading, params):
         dict( x=x[-1], y=y[-1],
               icon="arrive",
               narrative="")
-    ]    
+    ]
     route = dict(x=x, y=y, maneuvers=maneuvers, mode=ctype)
     return route
