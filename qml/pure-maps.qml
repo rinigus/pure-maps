@@ -44,7 +44,7 @@ ApplicationWindow {
     property string mapMatchingMode: {
         if (!hasMapMatching) return "none";
         if (app.mode === modes.navigate)
-            return app.conf.mapMatchingWhenNavigating ? map.route.mode : "none"
+            return app.conf.mapMatchingWhenNavigating && map && map.route && map.route.mode ? map.route.mode : "none"
         if (app.mode === modes.followMe) return app.conf.mapMatchingWhenFollowing;
         return app.conf.mapMatchingWhenIdle;
     }

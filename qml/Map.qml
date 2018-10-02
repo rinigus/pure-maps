@@ -611,8 +611,7 @@ MapboxMap {
 
     function setModeFollowMe() {
         // follow me mode
-        map.route = { mode: app.conf.mapMatchingWhenFollowing !== "none" ? app.conf.mapMatchingWhenFollowing : "car" };
-        var scale = app.conf.get("map_scale_navigation_" + map.route.mode);
+        var scale = app.conf.get("map_scale_navigation_" + (app.conf.mapMatchingWhenFollowing !== "none" ? app.conf.mapMatchingWhenFollowing : "car") );
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
         map.setScale(scale);

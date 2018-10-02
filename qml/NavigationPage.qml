@@ -77,7 +77,7 @@ Page {
                     icon: "image://theme/icon-m-clear"
                     text: app.tr("Clear")
                     onClicked: {
-                        app.setModeExplore();
+                        if (app.mode === modes.navigate) app.setModeExplore();
                         map.clearRoute();
                         app.showMap();
                     }

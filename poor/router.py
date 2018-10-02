@@ -68,7 +68,7 @@ class Router:
     @property
     def can_reroute(self):
         """Return whether the router allows rerouting."""
-        return self.can_reroute
+        return self._can_reroute
 
     @property
     def from_needed(self):
