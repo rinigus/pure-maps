@@ -41,13 +41,7 @@ ApplicationWindow {
     property bool hasMapMatching: false
     property bool initialized: false
     property var  map: null
-    property string mapMatchingMode: {
-        if (!hasMapMatching) return "none";
-        if (app.mode === modes.navigate)
-            return app.conf.mapMatchingWhenNavigating && map && map.route && map.route.mode ? map.route.mode : "none"
-        if (app.mode === modes.followMe) return app.conf.mapMatchingWhenFollowing;
-        return app.conf.mapMatchingWhenIdle;
-    }
+    property string mapMatchingMode: "none"
     property int    mode: modes.explore
     property bool   narrativePageSeen: false
     property bool   navigationPageSeen: false
@@ -88,6 +82,13 @@ ApplicationWindow {
         id: modes
     }
 
+    Connections {
+        target: app.conf
+        onMapMatchingWhenNavigatingChanged: app.updateMapMatching()
+        onMapMatchingWhenFollowingChanged: app.updateMapMatching()
+        onMapMatchingWhenIdleChanged: app.updateMapMatching()
+   }
+
     Component.onDestruction: {
         if (!py.ready || !app.map) return;
         app.conf.set("auto_center", app.map.autoCenter);
@@ -110,6 +111,8 @@ ApplicationWindow {
 
     onDeviceOrientationChanged: updateOrientation()
 
+    onHasMapMatchingChanged: updateMapMatching()
+
     onModeChanged: {
         if (!initialized) return;
         if (app.mode === modes.explore) {
@@ -125,6 +128,7 @@ ApplicationWindow {
             app.resetMenu();
         }
         app.updateKeepAlive();
+        app.updateMapMatching();
     }
 
     function getIcon(name, no_variant) {
@@ -310,6 +314,14 @@ ApplicationWindow {
         var prevent = app.conf.get("keep_alive");
         DisplayBlanking.preventBlanking = app.applicationActive &&
             (prevent === "always" || (prevent === "navigating" && (app.mode === modes.navigate || app.mode === modes.followMe)));
+    }
+
+    function updateMapMatching() {
+        if (!hasMapMatching) mapMatchingMode = "none";
+        else if (app.mode === modes.navigate)
+            mapMatchingMode = (app.conf.mapMatchingWhenNavigating && map && map.route && map.route.mode ? map.route.mode : "none");
+        else if (app.mode === modes.followMe) mapMatchingMode = app.conf.mapMatchingWhenFollowing;
+        else mapMatchingMode = app.conf.mapMatchingWhenIdle;
     }
 
     function updateNavigationStatus(status) {
