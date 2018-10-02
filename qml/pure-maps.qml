@@ -161,28 +161,6 @@ ApplicationWindow {
         initialized = true;
     }
 
-    function updateOrientation() {
-        if (!(app.deviceOrientation & app.allowedOrientations)) return;
-        switch (app.deviceOrientation) {
-        case Orientation.Portrait:
-            app.screenWidth = Screen.width;
-            app.screenHeight = Screen.height;
-            break;
-        case Orientation.PortraitInverted:
-            app.screenWidth = Screen.width;
-            app.screenHeight = Screen.height;
-            break;
-        case Orientation.Landscape:
-            app.screenWidth = Screen.height;
-            app.screenHeight = Screen.width;
-            break;
-        case Orientation.LandscapeInverted:
-            app.screenWidth = Screen.height;
-            app.screenHeight = Screen.width;
-            break;
-        }
-    }
-
     function playMaybe(message) {
         // Play message via TTS engine if applicable.
         if (!app.conf.voiceNavigation) return;
@@ -340,6 +318,28 @@ ApplicationWindow {
         if (app.navigationStatus.voiceUri && app.conf.voiceNavigation)
             sound.source = app.navigationStatus.voiceUri;
         app.navigationStatus.reroute && app.rerouteMaybe();
+    }
+
+    function updateOrientation() {
+        if (!(app.deviceOrientation & app.allowedOrientations)) return;
+        switch (app.deviceOrientation) {
+        case Orientation.Portrait:
+            app.screenWidth = Screen.width;
+            app.screenHeight = Screen.height;
+            break;
+        case Orientation.PortraitInverted:
+            app.screenWidth = Screen.width;
+            app.screenHeight = Screen.height;
+            break;
+        case Orientation.Landscape:
+            app.screenWidth = Screen.height;
+            app.screenHeight = Screen.width;
+            break;
+        case Orientation.LandscapeInverted:
+            app.screenWidth = Screen.height;
+            app.screenHeight = Screen.width;
+            break;
+        }
     }
 
 }
