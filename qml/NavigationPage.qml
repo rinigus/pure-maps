@@ -190,52 +190,6 @@ Page {
                 text: app.tr("Options")
             }
 
-            TextSwitch {
-                id: showNarrativeSwitch
-                checked: app.conf.showNarrative
-                text: app.tr("Show navigation instructions")
-                onCheckedChanged: {
-                    if (app.conf.showNarrative!==showNarrativeSwitch.checked)
-                        app.conf.set("show_narrative", showNarrativeSwitch.checked);
-                }
-            }
-
-            TextSwitch {
-                id: voiceNavigationSwitch
-                checked: app.conf.voiceNavigation
-                enabled: map.route.mode !== "transit"
-                text: app.tr("Voice navigation instructions")
-                onCheckedChanged: {
-                    if (!voiceNavigationSwitch.enabled) return;
-                    if (voiceNavigationSwitch.checked === app.conf.voiceNavigation) return;
-                    app.conf.set("voice_navigation", voiceNavigationSwitch.checked);
-                    if (app.mode === modes.navigate) map.initVoiceNavigation();
-                }
-            }
-
-            TextSwitch {
-                id: rerouteSwitch
-                checked: enabled && app.conf.reroute
-                enabled: map.route.mode !== "transit"
-                text: app.tr("Reroute automatically")
-                onCheckedChanged: {
-                    if (!rerouteSwitch.enabled || rerouteSwitch.checked===app.conf.reroute) return;
-                    app.conf.set("reroute", rerouteSwitch.checked);
-                }
-            }
-
-            TextSwitch {
-                id: mapmatchingSwitch
-                checked: enabled && app.conf.mapMatchingWhenNavigating
-                enabled: map.route.mode !== "transit"
-                text: app.tr("Snap position to road")
-                visible: app.hasMapMatching
-                onCheckedChanged: {
-                    if (!mapmatchingSwitch.enabled || mapmatchingSwitch.checked===app.conf.mapMatchingWhenNavigating) return;
-                    app.conf.set("map_matching_when_navigating", mapmatchingSwitch.checked);
-                }
-            }
-
             Slider {
                 id: scaleSlider
                 label: app.tr("Map scale")
@@ -250,43 +204,6 @@ Page {
                     if (map.route.mode == null) return;
                     app.conf.set("map_scale_navigation_" + map.route.mode, scaleSlider.value);
                     if (app.mode === modes.navigate) map.setScale(scaleSlider.value);
-                }
-            }
-
-            TextSwitch {
-                id: directionsSwitch
-                checked: enabled && app.conf.showNavigationSign
-                enabled: map.route.mode !== "transit"
-                text: app.tr("Show direction signs")
-                onCheckedChanged: {
-                    if (!enabled || directionsSwitch.checked===app.conf.showNavigationSign) return;
-                    app.conf.set("show_navigation_sign", directionsSwitch.checked);
-                }
-            }
-
-            ComboBox {
-                id: speedLimitComboBox
-                description: app.tr("Show speed limit sign")
-                enabled: mapmatchingSwitch.checked
-                label: app.tr("Speed limit")
-                menu: ContextMenu {
-                    MenuItem { text: app.tr("Always") }
-                    MenuItem { text: app.tr("Only when exceeding") }
-                    MenuItem { text: app.tr("Never") }
-                }
-
-                property var values: ["always", "exceeding", "never"]
-
-                Component.onCompleted: {
-                    var value = app.conf.showSpeedLimit;
-                    speedLimitComboBox.currentIndex = speedLimitComboBox.values.indexOf(value);
-                }
-
-                onCurrentIndexChanged: {
-                    var index = speedLimitComboBox.currentIndex;
-                    var v = speedLimitComboBox.values[index];
-                    if (v !== app.conf.showSpeedLimit)
-                        app.conf.set("show_speed_limit", v);
                 }
             }
 
