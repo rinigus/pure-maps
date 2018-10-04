@@ -440,11 +440,17 @@ def read_gpx(path):
         with open(path, "r", encoding="utf_8") as f:
             gpx = poor.gpxpy.parser.GPXParser(f).parse()
             x, y = [], []
-            for track in gpx.tracks:
-                for segment in track.segments:
-                    for point in segment.points:
-                        x.append(point.longitude)
-                        y.append(point.latitude)
+            # prefer route to recorded track if the both are available
+            for route in gpx.routes:
+                for point in route.points:
+                    x.append(point.longitude)
+                    y.append(point.latitude)
+            if len(x) < 1:
+                for track in gpx.tracks:
+                    for segment in track.segments:
+                        for point in segment.points:
+                            x.append(point.longitude)
+                            y.append(point.latitude)
     except Exception as error:
         print("Failed to read file {}: {}"
               .format(repr(path), str(error)),
