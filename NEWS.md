@@ -1,3 +1,14 @@
+
+2018-09-23: Pure Maps 1.7
+=========================
+
+* Add "follow me" mode
+* Add support for routing along GPX (raw and processed)
+* Consolidate navigation and other settings in Preferences
+* Allow navigation and nearby search to duplicate POIs
+* Update translations
+* Bugfixes
+
 2018-09-23: Pure Maps 1.6
 =========================
 
