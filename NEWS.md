@@ -1,5 +1,5 @@
 
-2018-09-23: Pure Maps 1.7
+2018-10-04: Pure Maps 1.7
 =========================
 
 * Add "follow me" mode
