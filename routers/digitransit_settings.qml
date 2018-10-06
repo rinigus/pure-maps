@@ -109,7 +109,7 @@ Column {
             }
 
             onClicked: {
-                var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {
+                var dialog = pages.push("Sailfish.Silica.DatePickerDialog", {
                     "date": dateItem.date
                 });
                 dialog.accepted.connect(function() {
@@ -152,7 +152,7 @@ Column {
             }
 
             onClicked: {
-                var dialog = pageStack.push("Sailfish.Silica.TimePickerDialog", {
+                var dialog = app.pages.push("Sailfish.Silica.TimePickerDialog", {
                     "hourMode": DateTime.TwentyFourHours,
                     "hour": timeItem.time.getHours(),
                     "minute": timeItem.time.getMinutes(),

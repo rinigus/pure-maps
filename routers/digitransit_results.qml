@@ -230,7 +230,7 @@ Page {
 
     function populate() {
         // Load routing results from the Python backend.
-        var routePage = app.pageStack.previousPage();
+        var routePage = app.pages.previousPage();
         var args = [routePage.from, routePage.to, null, routePage.params];
         py.call("poor.app.router.route", args, function(results) {
             if (results && results.error && results.message) {

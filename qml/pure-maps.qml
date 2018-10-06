@@ -18,29 +18,19 @@
 
 import QtQuick 2.0
 import QtMultimedia 5.2
-import Sailfish.Silica 1.0
-import org.nemomobile.keepalive 1.0
 import "."
+import "platform"
 
-/*
- * We need to keep the map outside of the page stack so that we can easily
- * flip between the map and a particular page in a retained state.
- * To allow swiping back from the menu to the map, we need the first page
- * in the stack to be a dummy that upon activation hides the page stack.
- * To make transitions smooth and animated, we can make the dummy look like
- * the actual map, thus providing the smooth built-in page stack transition.
- */
-
-ApplicationWindow {
+ApplicationWindowPL {
     id: app
-    allowedOrientations: defaultAllowedOrientations
     cover: Cover {}
     initialPage: InitPage { }
+    pages: StackPL { }
 
-    property var  conf: Config {}
-    property bool hasMapMatching: false
-    property bool initialized: false
-    property var  map: null
+    property var    conf: Config {}
+    property bool   hasMapMatching: false
+    property bool   initialized: false
+    property var    map: null
     property string mapMatchingMode: "none"
     property int    mode: modes.explore
     property bool   narrativePageSeen: false
@@ -56,17 +46,9 @@ ApplicationWindow {
     property int    rerouteTotalCalls: 0
     property bool   rerouting: false
     property var    rootPage: null
-    property bool   running: applicationActive || cover.active
-    property int    screenHeight: Screen.height
-    property int    screenWidth: Screen.width
     property var    styler: Styler {}
     property var    _stackMain: Stack {}
     property var    _stackNavigation: Stack {}
-
-    // Default vertical margin for various multiline list items
-    // such that it would be consistent with single-line list items
-    // and the associated constant Theme.itemSizeSmall.
-    property real listItemVerticalMargin: (Theme.itemSizeSmall - 1.125 * Theme.fontSizeMedium) / 2
 
     PositionSource { id: gps }
     Python { id: py }
@@ -84,10 +66,13 @@ ApplicationWindow {
 
     Connections {
         target: app.conf
+        onKeepAliveChanged: app.updateKeepAlive()
         onMapMatchingWhenNavigatingChanged: app.updateMapMatching()
         onMapMatchingWhenFollowingChanged: app.updateMapMatching()
         onMapMatchingWhenIdleChanged: app.updateMapMatching()
-   }
+    }
+
+    Component.onCompleted: initPages()
 
     Component.onDestruction: {
         if (!py.ready || !app.map) return;
@@ -104,12 +89,10 @@ ApplicationWindow {
         (event.key === Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
     }
 
-    onApplicationActiveChanged: {
+    onCheckKeepAlive: {
         if (!initialized) return;
         app.updateKeepAlive();
     }
-
-    onDeviceOrientationChanged: updateOrientation()
 
     onHasMapMatchingChanged: updateMapMatching()
 
@@ -133,11 +116,11 @@ ApplicationWindow {
 
     function getIcon(name, no_variant) {
         // Return path to icon suitable for user's screen,
-        // finding the closest match to Theme.pixelRatio.
+        // finding the closest match to pixelRatio.
         var ratios = [1.00, 1.25, 1.50, 1.75, 2.00];
         var minIndex = -1, minDiff = 1000, diff;
         for (var i = 0; i < ratios.length; i++) {
-            diff = Math.abs(Theme.pixelRatio - ratios[i]);
+            diff = Math.abs(pixelRatio - ratios[i]);
             minIndex = diff < minDiff ? i : minIndex;
             minDiff = Math.min(minDiff, diff);
         }
@@ -148,19 +131,18 @@ ApplicationWindow {
 
     function hideMenu() {
         app._stackMain.keep = true;
-        app._stackMain.setCurrent(app.pageStack.currentPage);
+        app._stackMain.setCurrent(app.pages.currentPage());
         app.showMap();
     }
 
     function hideNavigationPages() {
         app._stackNavigation.keep = true;
-        app._stackNavigation.setCurrent(app.pageStack.currentPage);
+        app._stackNavigation.setCurrent(app.pages.currentPage());
         app.showMap();
     }
 
     function initialize() {
         app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
-        updateOrientation();
         updateKeepAlive();
         initialized = true;
     }
@@ -175,11 +157,11 @@ ApplicationWindow {
     }
 
     function push(pagefile, options) {
-        return app.pageStack.push(pagefile, options ? options : {});
+        return app.pages.push(pagefile, options);
     }
 
     function pushAttached(pagefile, options) {
-        return app.pageStack.pushAttached(pagefile, options ? options : {});
+        return app.pages.pushAttached(pagefile, options);
     }
 
     function pushMain(pagefile, options) {
@@ -268,8 +250,8 @@ ApplicationWindow {
 
     function showMap() {
         // Clear the page stack and hide the menu.
-        app.pageStack.completeAnimation();
-        app.pageStack.pop(app.rootPage);
+        app.pages.completeAnimation();
+        app.pages.pop(app.rootPage);
     }
 
     function showMenu(page, options) {
@@ -311,9 +293,8 @@ ApplicationWindow {
 
     function updateKeepAlive() {
         // Update state of keep-alive, i.e. display blanking prevention.
-        var prevent = app.conf.get("keep_alive");
-        DisplayBlanking.preventBlanking = app.applicationActive &&
-            (prevent === "always" || (prevent === "navigating" && (app.mode === modes.navigate || app.mode === modes.followMe)));
+        var alive = app.conf.keepAlive;
+        app.keepAlive(alive === "always" || (alive === "navigating" && (app.mode === modes.navigate || app.mode === modes.followMe)));
     }
 
     function updateMapMatching() {
@@ -330,28 +311,6 @@ ApplicationWindow {
         if (app.navigationStatus.voiceUri && app.conf.voiceNavigation)
             sound.source = app.navigationStatus.voiceUri;
         app.navigationStatus.reroute && app.rerouteMaybe();
-    }
-
-    function updateOrientation() {
-        if (!(app.deviceOrientation & app.allowedOrientations)) return;
-        switch (app.deviceOrientation) {
-        case Orientation.Portrait:
-            app.screenWidth = Screen.width;
-            app.screenHeight = Screen.height;
-            break;
-        case Orientation.PortraitInverted:
-            app.screenWidth = Screen.width;
-            app.screenHeight = Screen.height;
-            break;
-        case Orientation.Landscape:
-            app.screenWidth = Screen.height;
-            app.screenHeight = Screen.width;
-            break;
-        case Orientation.LandscapeInverted:
-            app.screenWidth = Screen.height;
-            app.screenHeight = Screen.width;
-            break;
-        }
     }
 
 }

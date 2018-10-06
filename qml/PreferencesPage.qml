@@ -81,7 +81,6 @@ Page {
                             onCurrentIndexChanged: {
                                 var index = sleepComboBox.currentIndex;
                                 app.conf.set("keep_alive", sleepComboBox.values[index]);
-                                app.updateKeepAlive();
                             }
                         }
 

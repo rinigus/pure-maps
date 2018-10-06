@@ -29,7 +29,7 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         label: app.tr("File")
         value: selectedFile ? selectedFile : app.tr("None")
-        onClicked: pageStack.push(filePickerPage)
+        onClicked: app.pages.push(filePickerPage)
     }
 
     Component {

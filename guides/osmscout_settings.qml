@@ -26,7 +26,7 @@ Column {
         height: Theme.itemSizeSmall
         value: ""
         onClicked: {
-            var dialog = app.pageStack.push("osmscout_name.qml");
+            var dialog = app.pages.push("osmscout_name.qml");
             dialog.accepted.connect(function() {
                 nameButton.value = dialog.query;
                 page.params.name = dialog.query;

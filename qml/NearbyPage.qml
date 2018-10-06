@@ -190,7 +190,7 @@ Page {
         if (page.status === PageStatus.Active) {
             if (page.nearText === app.tr("Current position"))
                 page.near = map.getPosition();
-            var resultPage = app.pageStack.nextPage();
+            var resultPage = app.pages.nextPage();
             if (resultPage) resultPage.populated = false;
         }
     }

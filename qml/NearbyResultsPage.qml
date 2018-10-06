@@ -142,7 +142,7 @@ Page {
         } else if (page.status === PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
-            var nearbyPage = app.pageStack.previousPage();
+            var nearbyPage = app.pages.previousPage();
             page.populate(nearbyPage.query, nearbyPage.near, nearbyPage.radius, nearbyPage.params);
         } else if (page.status === PageStatus.Inactive) {
             listView.visible = false;

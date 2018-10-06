@@ -96,7 +96,7 @@ Page {
                 } else {
                     // No autocompletion, open results page.
                     page.query = model.place;
-                    app.pageStack.navigateForward();
+                    app.pages.navigateForward();
                 }
             }
 
@@ -131,7 +131,7 @@ Page {
                 width: parent.width
                 property string prevText: ""
                 EnterKey.enabled: text.length > 0
-                EnterKey.onClicked: app.pageStack.navigateForward();
+                EnterKey.onClicked: app.pages.navigateForward();
                 onTextChanged: {
                     var newText = searchField.text.trim();
                     if (newText === searchField.prevText) return;
@@ -174,7 +174,7 @@ Page {
             page.loadHistory();
             page.filterCompletions();
         } else if (page.status === PageStatus.Active) {
-            var resultPage = app.pageStack.nextPage();
+            var resultPage = app.pages.nextPage();
             if (resultPage) resultPage.populated = false;
         }
     }

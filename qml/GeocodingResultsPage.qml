@@ -142,7 +142,7 @@ Page {
         } else if (page.status === PageStatus.Active) {
             listView.visible = true;
             if (page.populated) return;
-            var geocodePage = app.pageStack.previousPage();
+            var geocodePage = app.pages.previousPage();
             page.populate(geocodePage.query);
         } else if (page.status === PageStatus.Inactive) {
             listView.visible = false;
