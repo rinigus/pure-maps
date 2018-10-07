@@ -411,7 +411,7 @@ msgstr "Brak wyników"
 
 #: qml/InitPage.qml:30
 msgid "Initializing"
-msgstr ""
+msgstr "Uruchamianie"
 
 #: qml/Map.qml:303 qml/Map.qml:398
 msgid "Clearing map"
@@ -585,7 +585,7 @@ msgstr "Edytuj POI"
 
 #: qml/PoiEditPage.qml:43 qml/PreferencesPage.qml:44
 msgid "General"
-msgstr "Ogólny"
+msgstr "Ogólne"
 
 #: qml/PoiEditPage.qml:49
 msgid "Title"
@@ -783,7 +783,7 @@ msgstr "Wyczyść pamięć podręczną"
 
 #: qml/PreferencesPage.qml:115
 msgid "Map view"
-msgstr ""
+msgstr "Widok mapy"
 
 #: qml/PreferencesPage.qml:121
 msgid ""
@@ -927,25 +927,27 @@ msgstr "Do"
 
 #: qml/RoutePage.qml:195
 msgid "Follow the movement and show just in time information"
-msgstr ""
+msgstr "Śledź ruch i pokaż informacje w czasie"
 
 #: qml/RoutePage.qml:197 qml/RoutePage.qml:269
 msgid "Follow me"
-msgstr ""
+msgstr "Podążaj za mną"
 
 #: qml/RoutePage.qml:206
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: qml/RoutePage.qml:222
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
+"Wybierz tryb transportu. Działa jedynie kiedy Pure Maps jest w trybie "
+"\"podążaj za mną\"."
 
 #: qml/RoutePage.qml:223
 msgid "Mode of transportation"
-msgstr ""
+msgstr "Tryb transportu"
 
 #: qml/RoutePage.qml:281
 msgid "Reverse endpoints"
@@ -1050,7 +1052,7 @@ msgstr "Najmniej chodzenia"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
-msgstr ""
+msgstr "Plik"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:39
 #: routers/ValhallaSettings.qml:134
@@ -1371,7 +1373,7 @@ msgstr "transport publiczny"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr ""
+msgstr "Wytyczanie trasy wzdłuż śladu GPX"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
@@ -1385,7 +1387,7 @@ msgstr "pieszo"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr ""
+msgstr "Wytyczanie trasy wzdłuż śladu GPX poprzez OSM Scout Server"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"

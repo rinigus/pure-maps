@@ -20,7 +20,7 @@ msgstr ""
 
 #: guides/foursquare.py:191
 msgid "Opening hours:"
-msgstr "Heures d'ouverture"
+msgstr "Heures d'ouverture :"
 
 #: poor/geocoder.py:108
 msgid "Point from geo link"
@@ -202,7 +202,7 @@ msgstr "Embarquez {mode_name} {line_desc} à {dep_name}, à {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr "Marchez en direction de votre destination."
+msgstr "Marchez vers votre destination."
 
 #: routers/digitransit.py:73
 #, python-brace-format
@@ -212,8 +212,7 @@ msgstr "Déposez le vélo à {dep_name} puis marchez en direction de {arr_name}.
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr ""
-"Déposez le vélo à {dep_name} puis marchez en direction de votre destination."
+msgstr "Déposez le vélo à {dep_name} puis marchez vers votre destination."
 
 #: routers/digitransit.py:76
 #, python-brace-format
@@ -236,8 +235,7 @@ msgstr ""
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr ""
-"Descendez à {dep_name} puis marchez en direction de votre destination."
+msgstr "Descendez à {dep_name} puis marchez vers votre destination."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
@@ -286,7 +284,7 @@ msgid ""
 "specified by 'Near' on this page"
 msgstr ""
 "Lorsque définie, la recherche le long de la route est effectuée à partir du "
-"point spécifié par 'Proche' sur cette page"
+"point spécifié \"proche\" sur cette page"
 
 #: guides/osmscout_settings.qml:72
 msgid "Search starting from the reference point"
@@ -373,9 +371,9 @@ msgid ""
 " results, include a region, e.g. “address, city” or “city, country”."
 msgstr ""
 "Vous pouvez effectuer une recherche par adresse, localité, point de "
-"repère... ou bien d'autres manières encore. Pour de meilleurs résultats, "
-"pensez à inclure une localisation bien précise, par ex. \"adresse, ville\" "
-"ou \"ville, pays\"."
+"repère... et bien d'autres manières encore. Pour de meilleurs résultats, "
+"pensez à inclure une localisation précise, par ex. \"adresse, ville\" ou "
+"\"ville, pays\"."
 
 #: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
 #: routers/digitransit_settings.qml:181
@@ -413,11 +411,11 @@ msgstr "Aucun résultat"
 
 #: qml/InitPage.qml:30
 msgid "Initializing"
-msgstr ""
+msgstr "Initialisation"
 
 #: qml/Map.qml:303 qml/Map.qml:398
 msgid "Clearing map"
-msgstr "Vider la carte"
+msgstr "Réinitialisation"
 
 #: qml/Map.qml:530
 msgid "Voice navigation on"
@@ -535,7 +533,7 @@ msgstr "Options"
 #: qml/NavigationPage.qml:195 qml/PreferencesPage.qml:143
 #: qml/RoutePage.qml:246
 msgid "Map scale"
-msgstr "Echelle de la carte"
+msgstr "Échelle de la carte"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
@@ -599,7 +597,7 @@ msgstr "Saisir le titre"
 
 #: qml/PoiEditPage.qml:60
 msgid "Enter type, such as Restaurant"
-msgstr "Saisissez le type, tel que Restaurant"
+msgstr "Saisissez le type, tel que \"Restaurant\""
 
 #: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:82
 msgid "Address"
@@ -611,7 +609,7 @@ msgstr "Saisir l'adresse"
 
 #: qml/PoiEditPage.qml:83 qml/PoiPanel.qml:147
 msgid "Postal code"
-msgstr "Code postale"
+msgstr "Code postal"
 
 #: qml/PoiEditPage.qml:84
 msgid "Enter postal code"
@@ -639,7 +637,7 @@ msgstr "Saisir l'URL"
 
 #: qml/PoiEditPage.qml:118 qml/PoiEditPage.qml:123 qml/PoiInfoPage.qml:219
 msgid "Additional info"
-msgstr "Info supplémentaire"
+msgstr "Infos supplémentaires"
 
 #: qml/PoiEditPage.qml:124
 msgid "Enter additional info"
@@ -785,7 +783,7 @@ msgstr "Vider le cache"
 
 #: qml/PreferencesPage.qml:115
 msgid "Map view"
-msgstr ""
+msgstr "Type de carte"
 
 #: qml/PreferencesPage.qml:121
 msgid ""
@@ -932,25 +930,27 @@ msgstr "à"
 
 #: qml/RoutePage.qml:195
 msgid "Follow the movement and show just in time information"
-msgstr ""
+msgstr "Suivre le mouvement et ne montrer que les infos sur le vif"
 
 #: qml/RoutePage.qml:197 qml/RoutePage.qml:269
 msgid "Follow me"
-msgstr ""
+msgstr "Suivez-moi"
 
 #: qml/RoutePage.qml:206
 msgid "Stop"
-msgstr ""
+msgstr "Arrêt"
 
 #: qml/RoutePage.qml:222
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
+"Choisissez le mode de transport. Ne s'applique que lorsque Pure Maps est en "
+"mode \"Suivez-moi\"."
 
 #: qml/RoutePage.qml:223
 msgid "Mode of transportation"
-msgstr ""
+msgstr "Mode de transport"
 
 #: qml/RoutePage.qml:281
 msgid "Reverse endpoints"
@@ -986,11 +986,11 @@ msgstr "Autre"
 
 #: qml/SharePage.qml:108
 msgid "Add link to OpenStreetMaps"
-msgstr ""
+msgstr "Ajouter un lien vers OpenStreetMaps"
 
 #: qml/SharePage.qml:119
 msgid "Add link to Google Maps"
-msgstr ""
+msgstr "Ajouter un lien vers Google Maps"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
@@ -1055,7 +1055,7 @@ msgstr "Le moins de marche à pied"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
-msgstr ""
+msgstr "Fichier"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:39
 #: routers/ValhallaSettings.qml:134
@@ -1167,7 +1167,7 @@ msgstr "Options générales"
 
 #: routers/ValhallaSettings.qml:38
 msgid "Public transport"
-msgstr ""
+msgstr "Transports en commun"
 
 #: routers/ValhallaSettings.qml:93
 msgid "Advanced options"
@@ -1179,7 +1179,7 @@ msgstr "Préférer un itinéraire plus court"
 
 #: routers/ValhallaSettings.qml:111
 msgid "Bicycle type"
-msgstr "Type de bicyclette"
+msgstr "Type de vélo"
 
 #: routers/ValhallaSettings.qml:113
 msgid "Road"
@@ -1191,7 +1191,7 @@ msgstr "Hybride ou Ville (par défaut)"
 
 #: routers/ValhallaSettings.qml:115
 msgid "Cross"
-msgstr "Croix"
+msgstr "VTT"
 
 #: routers/ValhallaSettings.qml:116
 msgid "Mountain"
@@ -1199,7 +1199,7 @@ msgstr "Montagne"
 
 #: routers/ValhallaSettings.qml:133
 msgid "Your desire to use buses."
-msgstr ""
+msgstr "Votre désir de prendre le bus"
 
 #: routers/ValhallaSettings.qml:136 routers/ValhallaSettings.qml:183
 #: routers/ValhallaSettings.qml:205 routers/ValhallaSettings.qml:228
@@ -1213,7 +1213,7 @@ msgstr "Éviter"
 #: routers/ValhallaSettings.qml:206 routers/ValhallaSettings.qml:249
 #: routers/ValhallaSettings.qml:272 routers/ValhallaSettings.qml:336
 msgid "Prefer to avoid"
-msgstr "Préfère d'éviter"
+msgstr "Essayer d'éviter"
 
 #: routers/ValhallaSettings.qml:138 routers/ValhallaSettings.qml:185
 #: routers/ValhallaSettings.qml:229 routers/ValhallaSettings.qml:250
@@ -1226,11 +1226,13 @@ msgstr "Aucune préférence (par défaut)"
 #: routers/ValhallaSettings.qml:208 routers/ValhallaSettings.qml:251
 #: routers/ValhallaSettings.qml:274 routers/ValhallaSettings.qml:338
 msgid "Incline"
-msgstr "Inclinaison"
+msgstr "Pas contre"
 
 #: routers/ValhallaSettings.qml:156
 msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr "La difficulté maximale autorisée des sentiers de randonnée."
+msgstr ""
+"La difficulté maximale autorisée en ce qui concerne les sentiers de "
+"randonnée."
 
 #: routers/ValhallaSettings.qml:157
 msgid "Hiking difficulty"
@@ -1238,7 +1240,7 @@ msgstr "Difficulté de randonnée"
 
 #: routers/ValhallaSettings.qml:159
 msgid "Walking"
-msgstr "Marcher"
+msgstr "Marche"
 
 #: routers/ValhallaSettings.qml:160
 msgid "Hiking (default)"
@@ -1262,7 +1264,7 @@ msgstr "Randonnée alpine exigeante"
 
 #: routers/ValhallaSettings.qml:181
 msgid "Ferries"
-msgstr "Traversier"
+msgstr "Ferrys"
 
 #: routers/ValhallaSettings.qml:203
 msgid "Highways"
@@ -1282,8 +1284,8 @@ msgid ""
 "(time and distance) routes can be selected. By allowing hills, it indicates "
 "you do not fear hills and steeper grades."
 msgstr ""
-"Votre préference de s'attaquer aux collines. Si vous évitez les collines des"
-" routes plus longs (temps et distance) peuvent être selectionnées. En "
+"Votre préférence en ce qui concerne les collines. Si celles-ci sont évitées,"
+" des routes plus longs (temps et distance) peuvent être sélectionnées. En "
 "autorisant les collines, cela signifie que vous ne craignez pas les pentes."
 
 #: routers/ValhallaSettings.qml:226
@@ -1293,19 +1295,19 @@ msgstr "Collines"
 #: routers/ValhallaSettings.qml:230 routers/ValhallaSettings.qml:296
 #: routers/ValhallaSettings.qml:316 routers/ValhallaSettings.qml:359
 msgid "Allow"
-msgstr "Permettre"
+msgstr "Autoriser"
 
 #: routers/ValhallaSettings.qml:246
 msgid "Primary roads"
-msgstr "Routes primaires"
+msgstr "Routes principales"
 
 #: routers/ValhallaSettings.qml:268
 msgid "Your desire to use rail/subway/metro."
-msgstr ""
+msgstr "Votre désir de prendre le rail/tram/métro"
 
 #: routers/ValhallaSettings.qml:269
 msgid "Rail"
-msgstr ""
+msgstr "Rail"
 
 #: routers/ValhallaSettings.qml:291
 msgid "Your propensity to use roads alongside other vehicles."
@@ -1325,10 +1327,10 @@ msgid ""
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
 msgstr ""
-"Votre préference d'aventure. En autorisant, le routeur aura tendance à "
-"éviter les routes principales en préférance des routes secondaires, parfois "
-"en empruntant des sentiers, des pistes, des routes non classées ou des "
-"routes avec mauvaises courvertures."
+"Votre goût pour l'aventure. En activant ce paramètre, le routeur aura "
+"tendance à éviter les routes principales au profit des routes secondaires, "
+"empruntant parfois des sentiers, des pistes, des routes non classées ou des "
+"routes avec mauvaises couvertures."
 
 #: routers/ValhallaSettings.qml:333
 msgid "Trails"
@@ -1340,7 +1342,7 @@ msgstr "Éviter (par défaut)"
 
 #: routers/ValhallaSettings.qml:355
 msgid "Transfers"
-msgstr ""
+msgstr "Transferts"
 
 #: qml/js/util.js:125
 msgid "%1 (default)"
@@ -1376,7 +1378,7 @@ msgstr "transports en commun"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr ""
+msgstr "Routage avec le traqueur GPX"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
@@ -1390,7 +1392,7 @@ msgstr "piéton"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr ""
+msgstr "Routage avec le traqueur GPX, propulsé par OSM Scout Server"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"

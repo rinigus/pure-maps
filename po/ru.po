@@ -781,7 +781,7 @@ msgstr "Очистить кэш"
 
 #: qml/PreferencesPage.qml:115
 msgid "Map view"
-msgstr ""
+msgstr "вид \"Карта\""
 
 #: qml/PreferencesPage.qml:121
 msgid ""
@@ -927,25 +927,27 @@ msgstr "До"
 
 #: qml/RoutePage.qml:195
 msgid "Follow the movement and show just in time information"
-msgstr ""
+msgstr "Следить за движением и вовремя показывать информацию"
 
 #: qml/RoutePage.qml:197 qml/RoutePage.qml:269
 msgid "Follow me"
-msgstr ""
+msgstr "Следовать за мной"
 
 #: qml/RoutePage.qml:206
 msgid "Stop"
-msgstr ""
+msgstr "Стоп"
 
 #: qml/RoutePage.qml:222
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
+"Выбор способа передвижения. Применяется, только когда Pure Maps находится в "
+"режиме \"следовать за мной\"."
 
 #: qml/RoutePage.qml:223
 msgid "Mode of transportation"
-msgstr ""
+msgstr "Способ передвижения"
 
 #: qml/RoutePage.qml:281
 msgid "Reverse endpoints"
@@ -1050,7 +1052,7 @@ msgstr "Меньше идти пешком"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:39
 #: routers/ValhallaSettings.qml:134
@@ -1374,7 +1376,7 @@ msgstr "Общественный транспорт"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr ""
+msgstr "Маршрутизация по GPX треку"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
@@ -1388,7 +1390,7 @@ msgstr "пешком"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr ""
+msgstr "Маршрутизация по GPX треку, выполненная OSM Scout Server-ом"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"
