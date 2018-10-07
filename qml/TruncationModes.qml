@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,13 +17,10 @@
  */
 
 import QtQuick 2.0
-import "platform"
 
-LabelPL {
-    anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
-    anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
-    truncMode: truncModes.fade
-    verticalAlignment: Text.AlignVCenter
+QtObject {
+    // possible text truncation modes
+    readonly property int none: 1
+    readonly property int elide: 2
+    readonly property int fade: 3
 }

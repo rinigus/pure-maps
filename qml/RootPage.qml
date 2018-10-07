@@ -17,11 +17,11 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
-Page {
+PagePL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
+    empty: true
 
     AttributionButton { id: attributionButton }
     CenterButton { id: centerButton }

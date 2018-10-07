@@ -17,7 +17,6 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
 import "platform"
 
@@ -30,7 +29,7 @@ Item {
     property bool   running: false
     property string text: ""
 
-    BusyIndicatorPL {
+    BusyIndicator {
         id: indicator
         running: busy.running
         visible: busy.running

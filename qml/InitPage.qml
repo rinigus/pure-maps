@@ -22,6 +22,7 @@ import "platform"
 
 PagePL {
     id: page
+    title: app.tr("Initializing")
 
     BusyModal {
         id: busy

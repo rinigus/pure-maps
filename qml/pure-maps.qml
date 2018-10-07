@@ -68,6 +68,10 @@ ApplicationWindowPL {
         id: modes
     }
 
+    TruncationModes {
+        id: truncModes
+    }
+
     Connections {
         target: app.conf
         onKeepAliveChanged: app.updateKeepAlive()
