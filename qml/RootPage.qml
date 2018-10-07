@@ -37,7 +37,7 @@ PagePL {
     NorthArrow { id: northArrow }
     Notification { id: notification }
     PoiPanel { id: poiPanel }
-    RemorsePopup { id: remorse; z: 1000 }
+    RemorsePopupPL { id: remorse; z: 1000 }
     ScaleBar { id: scaleBar }
     SpeedLimit { id: speedLimit }
     StreetName { id: streetName }

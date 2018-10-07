@@ -20,8 +20,36 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    allowedOrientations : Orientation.All
+    id: page
+    allowedOrientations: app.defaultAllowedOrientations
 
+    property alias  content: loader
     property bool   empty: false
     property string title
+
+    SilicaFlickable {
+        id: flickable
+        anchors.fill: parent
+        contentHeight: column.height
+
+        Column {
+            id: column
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: app.styler.themePaddingLarge
+            width: parent.width
+
+            PageHeader {
+                title: page.title
+                visible: !page.empty
+            }
+
+            Loader {
+                id: loader
+                active: !page.empty
+                width: parent.width
+            }
+        }
+
+        VerticalScrollDecorator { flickable: flickable }
+    }
 }

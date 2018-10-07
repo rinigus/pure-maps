@@ -29,13 +29,13 @@ Item {
     property bool   running: false
     property string text: ""
 
-    BusyIndicator {
+    BusyIndicatorPL {
         id: indicator
         running: busy.running
         visible: busy.running
     }
 
-    Label {
+    LabelPL {
         anchors.bottom: indicator.top
         anchors.bottomMargin: Math.round(indicator.height/4)
         color: app.styler.themeHighlightColor

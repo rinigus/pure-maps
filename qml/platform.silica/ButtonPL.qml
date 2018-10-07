@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,27 +17,7 @@
  */
 
 import QtQuick 2.0
-import "."
-import "platform"
+import Sailfish.Silica 1.0
 
-PagePL {
-    id: page
-    empty: true
-    title: app.tr("Initializing")
-
-    BusyModal {
-        id: busy
-        running: !py.ready
-        text: !py.ready ? app.tr("Initializing") : ""
-    }
-
-    Connections {
-        target: py
-        onReadyChanged: {
-            if (!py.ready) return;
-            app.rootPage = app.pages.replace("RootPage.qml");
-            app.initialize();
-        }
-    }
-
+Button {
 }
