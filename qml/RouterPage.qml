@@ -49,7 +49,7 @@ Dialog {
                 id: nameLabel
                 anchors.top: defaultHeader.bottom
                 color: (model.active || listItem.highlighted) ?
-                    Theme.highlightColor : Theme.primaryColor;
+                    app.styler.themeHighlightColor : app.styler.themePrimaryColor;
                 height: implicitHeight + app.listItemVerticalMargin
                 text: model.name
                 verticalAlignment: Text.AlignBottom
@@ -58,9 +58,9 @@ Dialog {
             ListItemLabel {
                 id: descriptionLabel
                 anchors.top: nameLabel.bottom
-                anchors.topMargin: Theme.paddingSmall
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
+                anchors.topMargin: app.styler.themePaddingSmall
+                color: app.styler.themeSecondaryColor
+                font.pixelSize: app.styler.themeFontSizeExtraSmall
                 height: implicitHeight + app.listItemVerticalMargin
                 lineHeight: 1.15
                 text: model.description + "\n" + app.tr("Modes: %1", model.modes)

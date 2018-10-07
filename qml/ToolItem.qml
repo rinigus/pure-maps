@@ -30,7 +30,7 @@ BackgroundItem {
     Image {
         id: image
         fillMode: Image.Pad
-        height: sourceSize.height + Theme.paddingLarge + Theme.paddingMedium
+        height: sourceSize.height + app.styler.themePaddingLarge + app.styler.themePaddingMedium
         source: item.icon
         width: item.width
     }
@@ -38,12 +38,12 @@ BackgroundItem {
     Label {
         id: label
         anchors.left: parent.left
-        anchors.leftMargin: Theme.paddingSmall
+        anchors.leftMargin: app.styler.themePaddingSmall
         anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingSmall
+        anchors.rightMargin: app.styler.themePaddingSmall
         anchors.top: image.bottom
-        color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
-        height: implicitHeight + Theme.paddingLarge
+        color: item.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+        height: implicitHeight + app.styler.themePaddingLarge
         horizontalAlignment: Text.AlignHCenter
         text: item.text
         wrapMode: Text.WordWrap

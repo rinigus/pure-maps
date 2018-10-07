@@ -44,12 +44,12 @@ Page {
                 height: Math.max(beginItem.height, rerouteItem.height, clearItem.height)
                 width: parent.width
 
-                property real contentWidth: width - 2 * Theme.horizontalPageMargin
+                property real contentWidth: width - 2 * app.styler.themeHorizontalPageMargin
                 property real itemWidth: contentWidth / 3
 
                 ToolItem {
                     id: beginItem
-                    width: row.itemWidth + Theme.horizontalPageMargin
+                    width: row.itemWidth + app.styler.themeHorizontalPageMargin
                     icon: app.mode === modes.navigate ? "image://theme/icon-m-pause" : "image://theme/icon-m-play"
                     text: app.mode === modes.navigate ? app.tr("Pause") :
                         (app.navigationStarted ? app.tr("Resume") : app.tr("Begin"))
@@ -73,7 +73,7 @@ Page {
 
                 ToolItem {
                     id: clearItem
-                    width: row.itemWidth + Theme.horizontalPageMargin
+                    width: row.itemWidth + app.styler.themeHorizontalPageMargin
                     icon: "image://theme/icon-m-clear"
                     text: app.tr("Clear")
                     onClicked: {
@@ -90,50 +90,50 @@ Page {
             }
 
             Spacer {
-                height: Theme.paddingLarge
+                height: app.styler.themePaddingLarge
             }
 
             Item {
                 id: progress
                 anchors.left: parent.left
                 anchors.right: parent.right
-                height: Theme.paddingSmall
+                height: app.styler.themePaddingSmall
                 Rectangle {
                     id: progressTotal
                     anchors.left: parent.left
-                    anchors.leftMargin: Theme.horizontalPageMargin
+                    anchors.leftMargin: app.styler.themeHorizontalPageMargin
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.horizontalPageMargin
-                    color: Theme.primaryColor
-                    height: Theme.paddingSmall
+                    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                    color: app.styler.themePrimaryColor
+                    height: app.styler.themePaddingSmall
                     opacity: 0.15
                     radius: height / 2
                 }
                 Rectangle {
                     id: progressComplete
                     anchors.left: parent.left
-                    anchors.leftMargin: Theme.horizontalPageMargin
-                    color: Theme.highlightColor
-                    height: Theme.paddingSmall
+                    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                    color: app.styler.themeHighlightColor
+                    height: app.styler.themePaddingSmall
                     radius: height / 2
                     width: app.navigationStatus.progress * progressTotal.width
                 }
             }
 
             Spacer {
-                height: Theme.paddingLarge + Theme.paddingSmall
+                height: app.styler.themePaddingLarge + app.styler.themePaddingSmall
             }
 
             Row {
                 // Distance and time remaining
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin
+                anchors.leftMargin: app.styler.themeHorizontalPageMargin
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
-                height: Theme.itemSizeExtraSmall
+                anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                height: app.styler.themeItemSizeExtraSmall
                 Label {
                     id: remaining1
-                    height: Theme.itemSizeExtraSmall
+                    height: app.styler.themeItemSizeExtraSmall
                     text: app.tr("Remaining")
                     truncationMode: TruncationMode.Fade
                     verticalAlignment: Text.AlignVCenter
@@ -158,13 +158,13 @@ Page {
             Row {
                 // Total distance and time
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin
+                anchors.leftMargin: app.styler.themeHorizontalPageMargin
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
-                height: Theme.itemSizeExtraSmall
+                anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                height: app.styler.themeItemSizeExtraSmall
                 Label {
                     id: total1
-                    height: Theme.itemSizeExtraSmall
+                    height: app.styler.themeItemSizeExtraSmall
                     text: app.tr("Total")
                     truncationMode: TruncationMode.Fade
                     verticalAlignment: Text.AlignVCenter
@@ -208,7 +208,7 @@ Page {
             }
 
             Spacer {
-                height: Theme.paddingMedium
+                height: app.styler.themePaddingMedium
             }
 
         }

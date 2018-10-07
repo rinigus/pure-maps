@@ -17,10 +17,9 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Controls 1.4
 
-QtObject {
-    // possible program modes
-    readonly property int explore: 1
-    readonly property int followMe: 2
-    readonly property int navigate: 3
+BusyIndicator {
+    anchors.centerIn: parent
 }
+

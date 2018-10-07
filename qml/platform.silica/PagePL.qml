@@ -17,10 +17,8 @@
  */
 
 import QtQuick 2.0
+import Sailfish.Silica 1.0
 
-QtObject {
-    // possible program modes
-    readonly property int explore: 1
-    readonly property int followMe: 2
-    readonly property int navigate: 3
+Page {
+    allowedOrientations : Orientation.All
 }

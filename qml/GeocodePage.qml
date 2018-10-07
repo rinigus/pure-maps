@@ -42,14 +42,14 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: visible ? Theme.itemSizeSmall : 0
+            contentHeight: visible ? app.styler.themeItemSizeSmall : 0
             menu: contextMenu
             visible: model.visible
 
             ListItemLabel {
                 anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                height: Theme.itemSizeSmall
+                color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+                height: app.styler.themeItemSizeSmall
                 text: model.text
                 textFormat: Text.RichText
             }
@@ -113,7 +113,7 @@ Page {
 
             ValueButton {
                 id: usingButton
-                height: Theme.itemSizeSmall
+                height: app.styler.themeItemSizeSmall
                 label: app.tr("Using")
                 value: py.evaluate("poor.app.geocoder.name")
                 width: parent.width

@@ -60,7 +60,7 @@ Page {
                 ValueButton {
                     id: usingButton
                     label: app.tr("Using")
-                    height: Theme.itemSizeSmall
+                    height: app.styler.themeItemSizeSmall
                     value: py.evaluate("poor.app.router.name")
                     width: parent.width
                     onClicked: {
@@ -80,7 +80,7 @@ Page {
                 ValueButton {
                     id: fromButton
                     label: app.tr("From")
-                    height: Theme.itemSizeSmall
+                    height: app.styler.themeItemSizeSmall
                     value: page.fromText
                     visible: page.fromNeeded
                     // Avoid putting label and value on different lines.
@@ -88,7 +88,7 @@ Page {
 
                     BusyIndicator {
                         anchors.right: parent.right
-                        anchors.rightMargin: Theme.horizontalPageMargin + (parent.width - page.width)
+                        anchors.rightMargin: app.styler.themeHorizontalPageMargin + (parent.width - page.width)
                         anchors.verticalCenter: parent.verticalCenter
                         running: page.fromText === app.tr("Current position") && !gps.ready
                         size: BusyIndicatorSize.Small
@@ -117,7 +117,7 @@ Page {
                 ValueButton {
                     id: toButton
                     label: app.tr("To")
-                    height: Theme.itemSizeSmall
+                    height: app.styler.themeItemSizeSmall
                     value: page.toText
                     visible: page.toNeeded
                     // Avoid putting label and value on different lines.
@@ -125,7 +125,7 @@ Page {
 
                     BusyIndicator {
                         anchors.right: parent.right
-                        anchors.rightMargin: Theme.horizontalPageMargin + (parent.width - page.width)
+                        anchors.rightMargin: app.styler.themeHorizontalPageMargin + (parent.width - page.width)
                         anchors.verticalCenter: parent.verticalCenter
                         running: page.toText === app.tr("Current position") && !gps.ready
                         size: BusyIndicatorSize.Small

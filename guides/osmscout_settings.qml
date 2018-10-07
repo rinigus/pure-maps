@@ -23,7 +23,7 @@ Column {
     ValueButton {
         id: nameButton
         label: app.tr("Name")
-        height: Theme.itemSizeSmall
+        height: app.styler.themeItemSizeSmall
         value: ""
         onClicked: {
             var dialog = app.pages.push("osmscout_name.qml");

@@ -22,11 +22,11 @@ import Sailfish.Silica 1.0
 Rectangle {
     id: master
     anchors.bottom: (app.mode === modes.navigate || app.mode === modes.followMe) ? (app.portrait && app.mode === modes.navigate ? navigationInfoBlock.top : parent.bottom) : menuButton.top
-    anchors.bottomMargin: (app.mode === modes.navigate || app.mode === modes.followMe) ? Theme.paddingSmall : 0
+    anchors.bottomMargin: (app.mode === modes.navigate || app.mode === modes.followMe) ? app.styler.themePaddingSmall : 0
     anchors.left: parent.left
-    anchors.leftMargin: Theme.paddingLarge
+    anchors.leftMargin: app.styler.themePaddingLarge
     anchors.right: parent.right
-    anchors.rightMargin: Theme.paddingLarge
+    anchors.rightMargin: app.styler.themePaddingLarge
     color: "transparent"
     height: cover.height
     states: [
@@ -47,9 +47,9 @@ Rectangle {
         color: app.styler.streetBg
         height: streetname.height
         opacity: 0.75
-        radius: Theme.paddingMedium
+        radius: app.styler.themePaddingMedium
         visible: streetname.visible
-        width: streetname.width + 2*Theme.paddingMedium
+        width: streetname.width + 2*app.styler.themePaddingMedium
         z: 450
     }
 
@@ -58,12 +58,12 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         color: app.styler.streetFg
-        font.pixelSize: Theme.fontSizeLarge
+        font.pixelSize: app.styler.themeFontSizeLarge
         maximumLineCount: 1
         text: gps.streetName
         truncationMode: TruncationMode.Fade
         visible: (app.mode === modes.navigate || app.mode === modes.followMe) && (text !== undefined && text !== null && text.length>0)
-        width: implicitWidth > master.width - 4*Theme.paddingMedium ? master.width-4*Theme.paddingMedium : implicitWidth
+        width: implicitWidth > master.width - 4*app.styler.themePaddingMedium ? master.width-4*app.styler.themePaddingMedium : implicitWidth
         z: 500
     }
 }

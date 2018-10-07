@@ -31,7 +31,7 @@ Page {
 
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: column.height + Theme.paddingLarge
+        contentHeight: column.height + app.styler.themePaddingLarge
 
         PullDownMenu {
             MenuItem {
@@ -59,8 +59,8 @@ Page {
             }
 
             ListItemLabel {
-                color: Theme.highlightColor
-                height: text ? implicitHeight + Theme.paddingMedium: 0
+                color: app.styler.themeHighlightColor
+                height: text ? implicitHeight + app.styler.themePaddingMedium: 0
                 text: poi.poiType ? poi.poiType : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
@@ -68,9 +68,9 @@ Page {
             }
 
             ListItemLabel {
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: text ? implicitHeight + Theme.paddingMedium: 0
+                color: app.styler.themeHighlightColor
+                font.pixelSize: app.styler.themeFontSizeSmall
+                height: text ? implicitHeight + app.styler.themePaddingMedium: 0
                 text: hasCoordinate ? app.tr("Latitude: %1", poi.coordinate.latitude) + "\n" + app.tr("Longitude: %2", poi.coordinate.longitude) : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
@@ -78,13 +78,13 @@ Page {
             }
 
             SectionHeader {
-                height: text ? implicitHeight + Theme.paddingMedium : 0
+                height: text ? implicitHeight + app.styler.themePaddingMedium : 0
                 text: poi.address || poi.postcode ? app.tr("Address") : ""
             }
 
             ListItemLabel {
-                color: Theme.highlightColor
-                height: text ? implicitHeight + Theme.paddingMedium: 0
+                color: app.styler.themeHighlightColor
+                height: text ? implicitHeight + app.styler.themePaddingMedium: 0
                 text: poi.address ? poi.address : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
@@ -92,8 +92,8 @@ Page {
             }
 
             ListItemLabel {
-                color: Theme.highlightColor
-                height: text ? implicitHeight + Theme.paddingMedium: 0
+                color: app.styler.themeHighlightColor
+                height: text ? implicitHeight + app.styler.themePaddingMedium: 0
                 text: poi.postcode ? app.tr("Postal code: %1", poi.postcode) : ""
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop
@@ -101,7 +101,7 @@ Page {
             }
 
             SectionHeader {
-                height: implicitHeight + Theme.paddingMedium
+                height: implicitHeight + app.styler.themePaddingMedium
                 text: app.tr("Actions")
             }
 
@@ -166,7 +166,7 @@ Page {
             }
 
             SectionHeader {
-                height: text ? implicitHeight + Theme.paddingMedium : 0
+                height: text ? implicitHeight + app.styler.themePaddingMedium : 0
                 text: poi.phone || poi.link ? app.tr("Contact") : ""
             }
 
@@ -175,9 +175,9 @@ Page {
                 // since the rest of the line can be used for dragging the panel,
                 // this arrangement minimizes the area used to show the phone
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin
-                height: poi.phone ? Math.max(phoneIcon.height, phoneText.height) + Theme.paddingMedium : 0
-                width: phoneIcon.width + phoneText.width + Theme.paddingMedium
+                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                height: poi.phone ? Math.max(phoneIcon.height, phoneText.height) + app.styler.themePaddingMedium : 0
+                width: phoneIcon.width + phoneText.width + app.styler.themePaddingMedium
 
                 Image {
                     id: phoneIcon
@@ -191,11 +191,11 @@ Page {
                 Label {
                     id: phoneText
                     anchors.left: phoneIcon.right
-                    anchors.leftMargin: Theme.paddingMedium
+                    anchors.leftMargin: app.styler.themePaddingMedium
                     anchors.verticalCenter: phoneIcon.verticalCenter
                     text: poi.phone
                     truncationMode: TruncationMode.Fade
-                    width: Math.min(implicitWidth, poi.width-phoneIcon.width-2*Theme.horizontalPageMargin-Theme.paddingMedium)
+                    width: Math.min(implicitWidth, poi.width-phoneIcon.width-2*app.styler.themeHorizontalPageMargin-app.styler.themePaddingMedium)
                 }
 
                 MouseArea {
@@ -205,7 +205,7 @@ Page {
             }
 
             IconListItem {
-                height: poi.link ? implicitHeight + Theme.paddingLarge : 0
+                height: poi.link ? implicitHeight + app.styler.themePaddingLarge : 0
                 icon: poi.link ? "image://theme/icon-m-link" : ""
                 label: poi.link
                 MouseArea {
@@ -215,13 +215,13 @@ Page {
             }
 
             SectionHeader {
-                height: text ? implicitHeight + Theme.paddingMedium : 0
+                height: text ? implicitHeight + app.styler.themePaddingMedium : 0
                 text: poi.text ? app.tr("Additional info") : ""
             }
 
             ListItemLabel {
-                color: Theme.highlightColor
-                height: text ? implicitHeight + Theme.paddingMedium: 0
+                color: app.styler.themeHighlightColor
+                height: text ? implicitHeight + app.styler.themePaddingMedium: 0
                 text: poi.text
                 truncationMode: TruncationMode.None
                 verticalAlignment: Text.AlignTop

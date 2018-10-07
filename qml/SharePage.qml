@@ -36,10 +36,10 @@ Page {
     ListItemLabel {
         id: messageLabel
         anchors.top: header.bottom
-        anchors.topMargin: Theme.paddingLarge
+        anchors.topMargin: app.styler.themePaddingLarge
         horizontalAlignment: Text.AlignHCenter
         lineHeight: 1.15
-        linkColor: Theme.highlightColor
+        linkColor: app.styler.themeHighlightColor
         text: page.formatMessage(true);
         wrapMode: TextEdit.Wrap
         onLinkActivated: Qt.openUrlExternally(link);
@@ -49,7 +49,7 @@ Page {
         id: smsButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: messageLabel.bottom
-        anchors.topMargin: 2 * Theme.paddingLarge
+        anchors.topMargin: 2 * app.styler.themePaddingLarge
         text: app.tr("SMS")
         onClicked: {
             // XXX: SMS links don't work without a recipient.
@@ -71,7 +71,7 @@ Page {
         id: emailButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: smsButton.bottom
-        anchors.topMargin: Theme.paddingLarge
+        anchors.topMargin: app.styler.themePaddingLarge
         text: app.tr("Email")
         onClicked: {
             var link = "mailto:?body=%1".arg(page.formatMessage(false));
@@ -84,7 +84,7 @@ Page {
         id: clipboardButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: emailButton.bottom
-        anchors.topMargin: Theme.paddingLarge
+        anchors.topMargin: app.styler.themePaddingLarge
         text: app.tr("Other")
         onClicked: {
             Clipboard.text = page.formatMessage(false);
@@ -95,15 +95,15 @@ Page {
     ListItemLabel {
         id: infoLabel
         anchors.top: clipboardButton.bottom
-        anchors.topMargin: 2 * Theme.paddingLarge
-        color: Theme.highlightColor
+        anchors.topMargin: 2 * app.styler.themePaddingLarge
+        color: app.styler.themeHighlightColor
         horizontalAlignment: Text.AlignHCenter
     }
 
     TextSwitch {
         id: shareOsmSwitch
         anchors.top: infoLabel.bottom
-        anchors.topMargin: 2 * Theme.paddingLarge
+        anchors.topMargin: 2 * app.styler.themePaddingLarge
         checked: app.conf.get("share_osm")
         text: app.tr("Add link to OpenStreetMaps")
         onCheckedChanged: {
@@ -114,7 +114,7 @@ Page {
     TextSwitch {
         id: shareGoogleSwitch
         anchors.top: shareOsmSwitch.bottom
-        anchors.topMargin: Theme.paddingMedium
+        anchors.topMargin: app.styler.themePaddingMedium
         checked: app.conf.get("share_googlemaps")
         text: app.tr("Add link to Google Maps")
         onCheckedChanged: {

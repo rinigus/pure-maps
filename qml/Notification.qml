@@ -23,7 +23,7 @@ import "."
 Bubble {
     id: bubble
     anchorItem: navigationBlock
-    anchors.topMargin: Theme.paddingLarge
+    anchors.topMargin: app.styler.themePaddingLarge
     opacity: 0
     showArrow: false
     state: "bottom-center"

@@ -23,10 +23,10 @@ Rectangle {
     id: ring
 
     anchors.left: parent.left
-    anchors.leftMargin: Theme.paddingLarge
-    anchors.bottomMargin: Theme.paddingLarge
+    anchors.leftMargin: app.styler.themePaddingLarge
+    anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.bottom: streetName.top
-    border.width: 0.7*Theme.paddingLarge
+    border.width: 0.7*app.styler.themePaddingLarge
     border.color: "red"
     color: "white"
     height: width
@@ -40,7 +40,7 @@ Rectangle {
             }
         }
     ]
-    width: Math.round(Math.max(limit.width,limit.height) + 1.6*Theme.paddingLarge + Theme.paddingSmall)
+    width: Math.round(Math.max(limit.width,limit.height) + 1.6*app.styler.themePaddingLarge + app.styler.themePaddingSmall)
     visible: {
         if (app.mode === modes.explore || !map.route || map.route.mode !== "car" || app.conf.showSpeedLimit==="never")
             return false;
@@ -60,7 +60,7 @@ Rectangle {
         color: "black"
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: Theme.fontSizeLarge
+        font.pixelSize: app.styler.themeFontSizeLarge
         style: Text.Outline
         styleColor: "white"
 

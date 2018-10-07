@@ -34,7 +34,7 @@ Rectangle {
     property bool active: false
     property int  contentHeight: {
         if (!hasData) return 0;
-        var h = 2*Theme.paddingLarge;
+        var h = 2*app.styler.themePaddingLarge;
         h += titleItem.height;
         h += typeAddressItem.height;
         h += coorItem.height;
@@ -81,10 +81,10 @@ Rectangle {
         // title and overall anchor to the top
         id: titleItem
         anchors.top: panel.top
-        anchors.topMargin: Theme.paddingLarge
-        color: Theme.highlightColor
-        font.pixelSize: Theme.fontSizeLarge
-        height: text ? implicitHeight + Theme.paddingMedium: 0
+        anchors.topMargin: app.styler.themePaddingLarge
+        color: app.styler.themeHighlightColor
+        font.pixelSize: app.styler.themeFontSizeLarge
+        height: text ? implicitHeight + app.styler.themePaddingMedium: 0
         text: panel.title
         truncationMode: TruncationMode.None
         verticalAlignment: Text.AlignTop
@@ -94,9 +94,9 @@ Rectangle {
     ListItemLabel {
         id: typeAddressItem
         anchors.top: titleItem.bottom
-        color: Theme.highlightColor
-        height: text ? implicitHeight + Theme.paddingSmall: 0
-        font.pixelSize: Theme.fontSizeSmall
+        color: app.styler.themeHighlightColor
+        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
+        font.pixelSize: app.styler.themeFontSizeSmall
         text: {
             if (panel.poiType && panel.address)
                 return app.tr("%1; %2", panel.poiType, panel.address);
@@ -114,9 +114,9 @@ Rectangle {
     ListItemLabel {
         id: coorItem
         anchors.top: typeAddressItem.bottom
-        color: Theme.secondaryHighlightColor
-        font.pixelSize: Theme.fontSizeSmall
-        height: text ? implicitHeight + Theme.paddingSmall: 0
+        color: app.styler.themeSecondaryHighlightColor
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         text: app.portrait && panel.coordinate? app.tr("Latitude: %1; Longitude: %2", panel.coordinate.latitude, panel.coordinate.longitude) : ""
         truncationMode: TruncationMode.Fade
         verticalAlignment: Text.AlignTop
@@ -125,9 +125,9 @@ Rectangle {
     ListItemLabel {
         id: textItem
         anchors.top: coorItem.bottom
-        color: Theme.highlightColor
-        font.pixelSize: Theme.fontSizeSmall
-        height: text ? implicitHeight + Theme.paddingSmall: 0
+        color: app.styler.themeHighlightColor
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         maximumLineCount: app.portrait ? 3 : 1;
         text: panel.text
         truncationMode: TruncationMode.Elide
@@ -138,9 +138,9 @@ Rectangle {
     ListItemLabel {
         id: additionalInfoItem
         anchors.top: textItem.bottom
-        color: Theme.secondaryHighlightColor
-        font.pixelSize: Theme.fontSizeSmall
-        height: text ? implicitHeight + Theme.paddingSmall: 0
+        color: app.styler.themeSecondaryHighlightColor
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         horizontalAlignment: Text.AlignRight
         text: {
             var info = "";
@@ -162,7 +162,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: additionalInfoItem.bottom
         color: "transparent"
-        height: Theme.paddingLarge - Theme.paddingSmall
+        height: app.styler.themePaddingLarge - app.styler.themePaddingSmall
     }
 
     MouseArea {
@@ -192,14 +192,14 @@ Rectangle {
 
     Row {
         id: mainButtons
-        anchors.leftMargin: Theme.horizontalPageMargin
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
         anchors.top: splitterItem.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        spacing: Theme.paddingLarge
+        spacing: app.styler.themePaddingLarge
         states: [
             State {
                 // make space for the menu button if needed
-                when: panel.showMenu && parent.width/2-mainButtons.width-Theme.horizontalPageMargin < menuButton.width
+                when: panel.showMenu && parent.width/2-mainButtons.width-app.styler.themeHorizontalPageMargin < menuButton.width
                 AnchorChanges {
                     target: mainButtons
                     anchors.left: parent.left
@@ -267,7 +267,7 @@ Rectangle {
     IconButton {
         id: menuButton
         anchors.right: parent.right
-        anchors.rightMargin: Theme.horizontalPageMargin
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: splitterItem.bottom
         icon.source: panel.showMenu ? "image://theme/icon-m-menu" : ""
         visible: panel.showMenu

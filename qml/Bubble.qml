@@ -21,8 +21,8 @@ import Sailfish.Silica 1.0
 
 Rectangle {
     id: bubble
-    anchors.bottomMargin: showArrow * arrow.height + Theme.paddingSmall
-    anchors.topMargin: showArrow * arrow.height + Theme.paddingSmall
+    anchors.bottomMargin: showArrow * arrow.height + app.styler.themePaddingSmall
+    anchors.topMargin: showArrow * arrow.height + app.styler.themePaddingSmall
     color: app.styler.blockBg
     height: controls.height + label.height +
         (controlHeight > 0 ? 3 : 2) * padding
@@ -114,7 +114,7 @@ Rectangle {
         var w = label.implicitWidth;
         w = Math.min(w, 0.65 * app.screenWidth);
         w = Math.min(w, 0.65 * app.screenHeight);
-        w = Math.min(w,  500 * Theme.pixelRatio);
+        w = Math.min(w,  500 * app.styler.themePixelRatio);
         return Math.max(w, bubble.controlWidth) + 2 * padding;
     }
 
@@ -127,7 +127,7 @@ Rectangle {
     property real controlHeight: 0
 
     // Padding on the edges of the bubble.
-    property real padding: 1.5 * Theme.paddingMedium
+    property real padding: 1.5 * app.styler.themePaddingMedium
 
     // HTML-format text to display in the bubble.
     property string text: ""
@@ -166,8 +166,8 @@ Rectangle {
         anchors.right: bubble.right
         anchors.rightMargin: bubble.padding
         color: "white"
-        font.family: Theme.fontFamily
-        font.pixelSize: Theme.fontSizeSmall
+        font.family: app.styler.themeFontFamily
+        font.pixelSize: app.styler.themeFontSizeSmall
         lineHeight: 1.1
         text: bubble.text
         textFormat: Text.RichText

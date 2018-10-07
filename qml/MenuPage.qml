@@ -26,7 +26,7 @@ Page {
     allowedOrientations: app.defaultAllowedOrientations
 
     // To make TextSwitch text line up with IconListItem's text label.
-    property real switchLeftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
+    property real switchLeftMargin: app.styler.themeHorizontalPageMargin + app.styler.themePaddingLarge + app.styler.themePaddingSmall
 
     SilicaFlickable {
         anchors.fill: parent
@@ -73,7 +73,7 @@ Page {
                 label: app.tr("Share current position")
                 BusyIndicator {
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.horizontalPageMargin
+                    anchors.rightMargin: app.styler.themeHorizontalPageMargin
                     anchors.verticalCenter: parent.verticalCenter
                     running: !gps.ready
                     size: BusyIndicatorSize.Small
@@ -118,7 +118,7 @@ Page {
             TextSwitch {
                 id: autoCenterItem
                 checked: app.map.autoCenter
-                height: Theme.itemSizeSmall
+                height: app.styler.themeItemSizeSmall
                 leftMargin: page.switchLeftMargin
                 text: app.tr("Auto-center on position")
                 Component.onCompleted: {
@@ -135,7 +135,7 @@ Page {
             TextSwitch {
                 id: autoRotateItem
                 checked: app.map.autoRotate
-                height: Theme.itemSizeSmall
+                height: app.styler.themeItemSizeSmall
                 leftMargin: page.switchLeftMargin
                 text: app.tr("Auto-rotate on direction")
                 Component.onCompleted: {

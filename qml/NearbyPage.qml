@@ -62,7 +62,7 @@ Page {
             ValueButton {
                 id: usingButton
                 label: app.tr("Using")
-                height: Theme.itemSizeSmall
+                height: app.styler.themeItemSizeSmall
                 value: py.evaluate("poor.app.guide.name")
                 width: parent.width
                 onClicked: {
@@ -77,14 +77,14 @@ Page {
             ValueButton {
                 id: nearButton
                 label: app.tr("Near")
-                height: Theme.itemSizeSmall
+                height: app.styler.themeItemSizeSmall
                 value: page.nearText
                 // Avoid putting label and value on different lines.
                 width: 3 * parent.width
 
                 BusyIndicator {
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.horizontalPageMargin + (parent.width - page.width)
+                    anchors.rightMargin: app.styler.themeHorizontalPageMargin + (parent.width - page.width)
                     anchors.verticalCenter: parent.verticalCenter
                     running: page.nearText === app.tr("Current position") && !gps.ready
                     size: BusyIndicatorSize.Small
@@ -113,7 +113,7 @@ Page {
             ValueButton {
                 id: typeButton
                 label: app.tr("Type")
-                height: Theme.itemSizeSmall
+                height: app.styler.themeItemSizeSmall
                 value: page.query
                 // Avoid putting label and value on different lines.
                 width: 3 * parent.width

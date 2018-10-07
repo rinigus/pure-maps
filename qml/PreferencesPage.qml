@@ -93,18 +93,18 @@ Page {
                         }
 
                         Spacer {
-                            height: Theme.paddingLarge
+                            height: app.styler.themePaddingLarge
                         }
 
                         Button {
                             anchors.horizontalCenter: parent.horizontalCenter
-                            preferredWidth: Theme.buttonWidthLarge
+                            preferredWidth: app.styler.themeButtonWidthLarge
                             text: app.tr("Clear cache")
                             onClicked: map.clearCache();
                         }
 
                         Spacer {
-                            height: Theme.paddingLarge
+                            height: app.styler.themePaddingLarge
                         }
                     }
                 }
@@ -153,7 +153,7 @@ Page {
                         }
 
                         Spacer {
-                            height: Theme.paddingLarge
+                            height: app.styler.themePaddingLarge
                         }
                     }
                 }
@@ -283,7 +283,7 @@ Page {
                         }
 
                         Spacer {
-                            height: Theme.paddingLarge
+                            height: app.styler.themePaddingLarge
                         }
                     }
                 }
@@ -295,7 +295,7 @@ Page {
                         width: sectionDevelop.width
 
                         ListItemLabel {
-                            font.pixelSize: Theme.fontSizeSmall
+                            font.pixelSize: app.styler.themeFontSizeSmall
                             height: implicitHeight
                             text: app.tr("The following options are for development only. Please don't change them unless you know what you are doing.")
                             wrapMode: Text.WordWrap
@@ -317,7 +317,7 @@ Page {
                         }
 
                         Spacer {
-                            height: Theme.paddingLarge
+                            height: app.styler.themePaddingLarge
                         }
                     }
                 }

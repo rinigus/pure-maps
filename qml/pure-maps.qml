@@ -23,13 +23,17 @@ import "platform"
 
 ApplicationWindowPL {
     id: app
-    cover: Cover {}
     initialPage: InitPage { }
     pages: StackPL { }
+    title: app.tr("Pure Maps")
 
     property var    conf: Config {}
     property bool   hasMapMatching: false
     property bool   initialized: false
+    // Default vertical margin for various multiline list items
+    // such that it would be consistent with single-line list items
+    // and the associated constant Theme.itemSizeSmall.
+    property real   listItemVerticalMargin: (styler.themeItemSizeSmall - 1.125 * styler.themeFontSizeMedium) / 2
     property var    map: null
     property string mapMatchingMode: "none"
     property int    mode: modes.explore

@@ -36,12 +36,12 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height + 2.0*Theme.paddingLarge
+            contentHeight: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height + 2.0*app.styler.themePaddingLarge
 
             Image {
                 id: icon
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin
+                anchors.leftMargin: app.styler.themeHorizontalPageMargin
                 anchors.top: spacer.bottom
                 fillMode: Image.Pad
                 height: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height
@@ -49,27 +49,27 @@ Page {
                 opacity: 0.9
                 smooth: true
                 source: "icons/navigation/%1.svg".arg(model.icon)
-                sourceSize.height: Theme.iconSizeMedium
-                sourceSize.width: Theme.iconSizeMedium
+                sourceSize.height: app.styler.themeIconSizeMedium
+                sourceSize.width: app.styler.themeIconSizeMedium
                 verticalAlignment: Image.AlignTop
             }
 
             Spacer {
                 id: spacer
-                height: Theme.paddingLarge
+                height: app.styler.themePaddingLarge
             }
 
             Label {
                 id: narrativeLabel
                 anchors.left: icon.right
-                anchors.leftMargin: Theme.paddingMedium
+                anchors.leftMargin: app.styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.rightMargin: app.styler.themeHorizontalPageMargin
                 anchors.top: spacer.bottom
                 color: (model.active || listItem.highlighted) ?
-                    Theme.highlightColor : Theme.primaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingSmall
+                    app.styler.themeHighlightColor : app.styler.themePrimaryColor
+                font.pixelSize: app.styler.themeFontSizeSmall
+                height: implicitHeight + app.styler.themePaddingSmall
                 text: model.narrative
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
@@ -78,13 +78,13 @@ Page {
             Label {
                 id: departLabel
                 anchors.left: icon.right
-                anchors.leftMargin: Theme.paddingMedium
+                anchors.leftMargin: app.styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.rightMargin: app.styler.themeHorizontalPageMargin
                 anchors.top: narrativeLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: text ? implicitHeight + Theme.paddingSmall : 0
+                color: app.styler.themeSecondaryColor
+                font.pixelSize: app.styler.themeFontSizeSmall
+                height: text ? implicitHeight + app.styler.themePaddingSmall : 0
                 text: model.depart_instruction ? model.depart_instruction : ""
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
@@ -93,13 +93,13 @@ Page {
             Label {
                 id: arriveLabel
                 anchors.left: icon.right
-                anchors.leftMargin: Theme.paddingMedium
+                anchors.leftMargin: app.styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.rightMargin: app.styler.themeHorizontalPageMargin
                 anchors.top: departLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: text ? implicitHeight + Theme.paddingSmall : 0
+                color: app.styler.themeSecondaryColor
+                font.pixelSize: app.styler.themeFontSizeSmall
+                height: text ? implicitHeight + app.styler.themePaddingSmall : 0
                 text: model.arrive_instruction ? model.arrive_instruction : ""
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
@@ -108,14 +108,14 @@ Page {
             Label {
                 id: lengthLabel
                 anchors.left: icon.right
-                anchors.leftMargin: Theme.paddingMedium
+                anchors.leftMargin: app.styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.rightMargin: app.styler.themeHorizontalPageMargin
                 anchors.top: arriveLabel.bottom
-                anchors.topMargin: Theme.paddingSmall
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingSmall
+                anchors.topMargin: app.styler.themePaddingSmall
+                color: app.styler.themeSecondaryColor
+                font.pixelSize: app.styler.themeFontSizeSmall
+                height: implicitHeight + app.styler.themePaddingSmall
                 lineHeight: 1.15
                 text: model.index < listView.count - 1 ?
                     app.tr("Continue for %1.", model.length) : ""
@@ -133,7 +133,7 @@ Page {
         }
 
         footer: Spacer {
-            height: Theme.paddingMedium
+            height: app.styler.themePaddingMedium
         }
 
         header: PageHeader {

@@ -50,13 +50,13 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: titleItem.height + detailsItem.height + textItem.height + Theme.paddingLarge
+            contentHeight: titleItem.height + detailsItem.height + textItem.height + app.styler.themePaddingLarge
 
             ListItemLabel {
                 id: titleItem
                 anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                height: implicitHeight + Theme.paddingSmall
+                color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+                height: implicitHeight + app.styler.themePaddingSmall
                 text: (model.title ? model.title : app.tr("Unnamed point")) + (model.bookmarked ? " ☆" : "")
                 verticalAlignment: Text.AlignTop
             }
@@ -65,9 +65,9 @@ Page {
                 id: detailsItem
                 anchors.top: titleItem.bottom
                 anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: text ? implicitHeight + Theme.paddingSmall : 0
+                color: listItem.highlighted ? app.styler.themeSecondaryHighlightColor : app.styler.themeSecondaryColor
+                font.pixelSize: app.styler.themeFontSizeSmall
+                height: text ? implicitHeight + app.styler.themePaddingSmall : 0
                 text: {
                     if (model.poiType && model.address) return model.poiType + ", " + model.address;
                     if (model.poiType) return model.poiType;
@@ -80,10 +80,10 @@ Page {
             ListItemLabel {
                 id: textItem
                 anchors.top: detailsItem.bottom
-                anchors.topMargin: Theme.paddingSmall
+                anchors.topMargin: app.styler.themePaddingSmall
                 anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
+                color: listItem.highlighted ? app.styler.themeSecondaryHighlightColor : app.styler.themeSecondaryColor
+                font.pixelSize: app.styler.themeFontSizeExtraSmall
                 height: text ? implicitHeight : 0
                 maximumLineCount: 1
                 text: model.text

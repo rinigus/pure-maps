@@ -23,7 +23,7 @@ Rectangle {
     id: master
     anchors.verticalCenter: attributionButton.verticalCenter
     anchors.left: attributionButton.right
-    anchors.leftMargin: Theme.paddingLarge
+    anchors.leftMargin: app.styler.themePaddingLarge
     color: "transparent"
     height: visible ? cover.height : 0
     visible: app.conf.developmentShowZ
@@ -35,9 +35,9 @@ Rectangle {
         color: app.styler.streetBg
         height: ztxt.height
         opacity: 0.75
-        radius: Theme.paddingMedium
+        radius: app.styler.themePaddingMedium
         visible: parent.visible
-        width: ztxt.width + 2*Theme.paddingMedium
+        width: ztxt.width + 2*app.styler.themePaddingMedium
         z: 450
     }
 
@@ -46,7 +46,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         color: app.styler.streetFg
-        font.pixelSize: Theme.fontSizeLarge
+        font.pixelSize: app.styler.themeFontSizeLarge
         maximumLineCount: 1
         text: "z=%1".arg(map.zoomLevel.toFixed(2))
         z: 500

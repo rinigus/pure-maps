@@ -22,9 +22,9 @@ import Sailfish.Silica 1.0
 Rectangle {
     id: button
     color: "#bbffffff"
-    height: label.height + 1.5 * Theme.paddingMedium
-    radius: Theme.paddingSmall
-    width: label.width + 2.5 * Theme.paddingMedium
+    height: label.height + 1.5 * app.styler.themePaddingMedium
+    radius: app.styler.themePaddingSmall
+    width: label.width + 2.5 * app.styler.themePaddingMedium
 
     property string text: ""
 
@@ -38,7 +38,7 @@ Rectangle {
         id: label
         anchors.centerIn: parent
         color: "black"
-        font.pixelSize: Theme.fontSizeExtraSmall
+        font.pixelSize: app.styler.themeFontSizeExtraSmall
         text: button.text
     }
 
@@ -46,7 +46,7 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             if (button.useHighlight) {
-                button.color = Theme.highlightColor;
+                button.color = app.styler.themeHighlightColor;
                 timer.restart();
             }
             button.clicked();

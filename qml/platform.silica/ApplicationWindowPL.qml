@@ -23,18 +23,15 @@ import "."
 
 ApplicationWindow {
     allowedOrientations: defaultAllowedOrientations
-    cover: null
+    cover: Cover {}
     initialPage: null
 
-    // Default vertical margin for various multiline list items
-    // such that it would be consistent with single-line list items
-    // and the associated constant Theme.itemSizeSmall.
-    property real   listItemVerticalMargin: (Theme.itemSizeSmall - 1.125 * Theme.fontSizeMedium) / 2
     property var    pages: null // initialized later to ensure the same path for object creation
     property real   pixelRatio: Theme.pixelRatio
     property bool   running: applicationActive || (cover && cover.active)
     property int    screenHeight: Screen.height
     property int    screenWidth: Screen.width
+    property string title
 
     // Emitted when keep alive requirements could have changed
     signal checkKeepAlive

@@ -43,7 +43,7 @@ Page {
             ListItemLabel {
                 id: titleLabel
                 color: (listItem.highlighted || listItem.visited) ?
-                    Theme.highlightColor : Theme.primaryColor;
+                    app.styler.themeHighlightColor : app.styler.themePrimaryColor;
                 height: implicitHeight + app.listItemVerticalMargin
                 text: model.title
                 verticalAlignment: Text.AlignBottom
@@ -52,9 +52,9 @@ Page {
             ListItemLabel {
                 id: descriptionLabel
                 anchors.top: titleLabel.bottom
-                anchors.topMargin: Theme.paddingSmall
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
+                anchors.topMargin: app.styler.themePaddingSmall
+                color: app.styler.themeSecondaryColor
+                font.pixelSize: app.styler.themeFontSizeExtraSmall
                 height: implicitHeight + app.listItemVerticalMargin
                 lineHeight: 1.15
                 text: model.description + "\n" + model.distance

@@ -17,8 +17,9 @@
  */
 
 import QtQuick 2.0
+import "platform"
 
-QtObject {
+StylerPL {
     id: styler
 
     property string bg            // main background color (scale bar, metrics)

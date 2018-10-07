@@ -28,7 +28,7 @@ Dialog {
 
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: column.height + Theme.paddingLarge
+        contentHeight: column.height + app.styler.themePaddingLarge
 
         Column {
             id: column
@@ -94,7 +94,7 @@ Dialog {
 
             TextField {
                 id: phoneField
-                color: Theme.highlightColor
+                color: app.styler.themeHighlightColor
                 inputMethodHints: Qt.ImhDialableCharactersOnly
                 label: app.tr("Phone number")
                 placeholderText: app.tr("Enter phone number")

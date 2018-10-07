@@ -44,14 +44,14 @@ Dialog {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: visible ? Theme.itemSizeSmall : 0
+            contentHeight: visible ? app.styler.themeItemSizeSmall : 0
             menu: contextMenu
             visible: model.visible
 
             ListItemLabel {
                 anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                height: Theme.itemSizeSmall
+                color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+                height: app.styler.themeItemSizeSmall
                 text: model.text
                 textFormat: Text.RichText
             }
@@ -90,11 +90,11 @@ Dialog {
 
             ListItem {
                 id: gpsItem
-                contentHeight: Theme.itemSizeSmall
+                contentHeight: app.styler.themeItemSizeSmall
                 ListItemLabel {
                     anchors.leftMargin: listView.searchField.textLeftMargin
-                    color: Theme.highlightColor
-                    height: Theme.itemSizeSmall
+                    color: app.styler.themeHighlightColor
+                    height: app.styler.themeItemSizeSmall
                     text: app.tr("Current position")
                 }
                 onClicked: {

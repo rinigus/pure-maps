@@ -34,13 +34,13 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: Theme.itemSizeSmall
+            contentHeight: app.styler.themeItemSizeSmall
 
             ListItemLabel {
                 id: nameLabel
                 color: (model.active || listItem.highlighted) ?
-                    Theme.highlightColor : Theme.primaryColor;
-                height: Theme.itemSizeSmall
+                    app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                height: app.styler.themeItemSizeSmall
                 text: model.name
             }
 

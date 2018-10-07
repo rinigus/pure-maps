@@ -24,7 +24,7 @@ import "js/util.js" as Util
 Item {
     id: meters
     anchors.right: northArrow.left
-    anchors.rightMargin: Theme.paddingSmall
+    anchors.rightMargin: app.styler.themePaddingSmall
     anchors.verticalCenter: northArrow.verticalCenter
     height: labels.implicitHeight
     opacity: 0.9
@@ -39,7 +39,7 @@ Item {
         color: app.styler.fg
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: Math.round(Theme.pixelRatio * 18)
+        font.pixelSize: Math.round(app.styler.themePixelRatio * 18)
         horizontalAlignment: Text.AlignRight
         lineHeight: 1.25
     }
@@ -51,7 +51,7 @@ Item {
         color: app.styler.fg
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: Math.round(Theme.pixelRatio * 18)
+        font.pixelSize: Math.round(app.styler.themePixelRatio * 18)
         horizontalAlignment: Text.AlignLeft
         lineHeight: 1.25
         text: "\n"
