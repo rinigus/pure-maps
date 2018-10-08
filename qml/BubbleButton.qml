@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
 Rectangle {
     id: button
@@ -34,7 +34,7 @@ Rectangle {
 
     signal clicked()
 
-    Label {
+    LabelPL {
         id: label
         anchors.centerIn: parent
         color: "black"

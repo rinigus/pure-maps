@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2015 Osmo Salomaa
+ * Copyright (C) 2015 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
 Rectangle {
     id: bubble
@@ -157,7 +157,7 @@ Rectangle {
         height: bubble.controlHeight
     }
 
-    Label {
+    LabelPL {
         id: label
         anchors.bottom: controls.top
         anchors.bottomMargin: bubble.controlHeight > 0 ? bubble.padding : 0

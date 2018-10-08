@@ -57,12 +57,13 @@ function findMatches(query, candidates, completions, max) {
     found = found.concat(completions);
     found = uniqueCaseInsensitive(found);
     found = found.slice(0, max);
+    var queryEscaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var regex = new RegExp(queryEscaped, 'gi');
     for (var i = 0; i < found.length; i++) {
         // Highlight matching portion in markup field.
         // XXX: This is not component-wise.
         found[i] = {"text": found[i]};
-        found[i].markup = Theme.highlightText(
-            found[i].text, query, Theme.highlightColor);
+        found[i].markup = (queryEscaped.length > 0 ? found[i].text.replace(regex, '<font color="' + app.styler.themeHighlightColor + '">$&</font>') : found[i].text);
     }
     return found;
 }

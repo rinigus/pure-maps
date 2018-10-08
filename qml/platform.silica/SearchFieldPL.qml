@@ -19,10 +19,9 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-ListItem {
-    // required properties:
-    //    contentHeight
-    //    menu
-    //
-    // signals: clicked
+SearchField {
+    EnterKey.enabled: text.length > 0
+    EnterKey.onClicked: search()
+
+    signal search
 }

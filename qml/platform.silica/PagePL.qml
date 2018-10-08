@@ -23,7 +23,7 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
-    property alias  content: loader
+    property alias  content: loader.sourceComponent
     property bool   empty: false
     property string title
 
@@ -45,7 +45,7 @@ Page {
 
             Loader {
                 id: loader
-                active: !page.empty
+                active: !page.empty && sourceComponent
                 width: parent.width
             }
         }
