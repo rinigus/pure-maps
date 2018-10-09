@@ -17,9 +17,9 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
-ListItem {
+ListItemPL {
     id: item
     anchors.left: parent.left
     anchors.right: parent.right
@@ -37,7 +37,7 @@ ListItem {
         source: item.icon
     }
 
-    Label {
+    LabelPL {
         id: label
         anchors.left: icon.right
         anchors.leftMargin: app.styler.themePaddingMedium
@@ -46,7 +46,7 @@ ListItem {
         color: item.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
         height: app.styler.themeItemSizeSmall
         text: item.label
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignVCenter
     }
 

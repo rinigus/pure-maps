@@ -25,12 +25,13 @@ Page {
 
     property alias  content: loader.sourceComponent
     property bool   empty: false
+    property alias  pageMenu: menuLoader.sourceComponent
     property string title
 
     SilicaFlickable {
         id: flickable
         anchors.fill: parent
-        contentHeight: column.height
+        contentHeight: column.height + app.styler.themePaddingLarge
 
         Column {
             id: column
@@ -48,6 +49,12 @@ Page {
                 active: !page.empty && sourceComponent
                 width: parent.width
             }
+        }
+
+        Loader {
+            id: menuLoader
+            active: sourceComponent
+            width: parent.width
         }
 
         VerticalScrollDecorator { flickable: flickable }

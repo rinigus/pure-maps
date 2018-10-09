@@ -22,6 +22,7 @@ import Sailfish.Silica 1.0
 QtObject {
     // font sizes and family
     property string themeFontFamily: Theme.fontFamily
+    property string themeFontFamilyHeading: Theme.fontFamilyHeading
     property int  themeFontSizeHuge: Theme.fontSizeHuge
     property int  themeFontSizeExtraLarge: Theme.fontSizeExtraLarge
     property int  themeFontSizeLarge: Theme.fontSizeLarge

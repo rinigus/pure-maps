@@ -44,7 +44,7 @@ Page {
         anchors.fill: parent
 
         header: Column {
-            height: header.height + headerExtraLoader.height
+            height: header.height + headerExtraLoader.height + app.styler.themePaddingLarge
             width: parent.width
 
             PageHeader {
@@ -70,13 +70,17 @@ Page {
             id: viewPlaceholder
         }
 
-        VerticalScrollDecorator {}
+        VerticalScrollDecorator { flickable: listView }
     }
 
     onStatusChanged: {
         if (page.status === PageStatus.Activating) pageStatusActivating();
         else if (page.status === PageStatus.Active) pageStatusActive();
         else if (page.status === PageStatus.Inactive) pageStatusInactive()
+    }
+
+    function positionViewAtIndex(i) {
+        listView.positionViewAtIndex(i, ListView.Center);
     }
 
 }

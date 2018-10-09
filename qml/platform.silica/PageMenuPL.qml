@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,18 +17,7 @@
  */
 
 import QtQuick 2.0
-import "platform"
+import Sailfish.Silica 1.0
 
-IconButtonPL {
-    anchors.bottom: parent.bottom
-    anchors.horizontalCenter: parent.horizontalCenter
-    height: icon.height
-    icon.height: icon.sourceSize.height
-    icon.smooth: false
-    icon.source: app.getIcon("icons/menu")
-    icon.width: icon.sourceSize.width
-    width: icon.width
-    visible: app.mode === modes.explore && !app.poiActive
-    z: 900
-    onClicked: app.showMenu();
+PullDownMenu {
 }
