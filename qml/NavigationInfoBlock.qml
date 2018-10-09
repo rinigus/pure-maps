@@ -38,8 +38,8 @@ Rectangle {
     property bool   rightSideTooBusy: false
     property int    shieldLeftHeight: (!app.portrait && app.mode === modes.navigate) || app.mode === modes.followMe ? speed.height + app.styler.themePaddingMedium : 0
     property int    shieldLeftWidth:  (!app.portrait && app.mode === modes.navigate) || app.mode === modes.followMe ? speed.width + app.styler.themeHorizontalPageMargin + speedUnit.width + app.styler.themePaddingSmall + app.styler.themePaddingLarge : 0
-    property int    shieldRightHeight: !app.portrait && app.mode === modes.navigate && !rightSideTooBusy ? timeDest.height + distDest.height + app.styler.themePaddingMedium : 0
-    property int    shieldRightWidth:  !app.portrait && app.mode === modes.navigate ? Math.max(timeDest.width, distDest.width) + app.styler.themeHorizontalPageMargin+ app.styler.themePaddingLarge : 0
+    property int    shieldRightHeight: !app.portrait && app.mode === modes.navigate && !rightSideTooBusy ? timeDest.height + distDest.height + app.styler.themePaddingSmall + app.styler.themePaddingMedium : 0
+    property int    shieldRightWidth:  !app.portrait && app.mode === modes.navigate ? Math.max(timeDest.width, distDest.width) + app.styler.themeHorizontalPageMargin + app.styler.themePaddingLarge : 0
 
     Label {
         // speed
@@ -113,7 +113,7 @@ Rectangle {
                 }
                 PropertyChanges {
                     target: timeDest
-                    anchors.bottomMargin: app.styler.themePaddingLarge
+                    anchors.bottomMargin: app.styler.themePaddingSmall
                     anchors.rightMargin: app.styler.themeHorizontalPageMargin
                     width: implicitWidth
                 }
