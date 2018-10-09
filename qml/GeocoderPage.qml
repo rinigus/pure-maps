@@ -17,85 +17,74 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
 import "js/util.js" as Util
 
-Dialog {
+DialogListPL {
     id: dialog
-    allowedOrientations: app.defaultAllowedOrientations
 
     property string pid: py.evaluate("poor.app.geocoder.id")
 
-    SilicaListView {
-        id: listView
-        anchors.fill: parent
+    delegate: ListItemPL {
+        id: listItem
+        contentHeight: defaultHeader.height + nameLabel.height +
+                       descriptionLabel.anchors.topMargin + descriptionLabel.height +
+                       alternativesHeader.height
 
-        delegate: ListItem {
-            id: listItem
-            contentHeight: defaultHeader.height + nameLabel.height +
-                descriptionLabel.anchors.topMargin + descriptionLabel.height +
-                alternativesHeader.height
-
-            SectionHeader {
-                id: defaultHeader
-                height: model.default ? implicitHeight : 0
-                text: app.tr("Default")
-                visible: model.default && !listItem.highlighted
-            }
-
-            ListItemLabel {
-                id: nameLabel
-                anchors.top: defaultHeader.bottom
-                color: (model.active || listItem.highlighted) ?
-                    app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-                height: implicitHeight + app.listItemVerticalMargin
-                text: model.name
-                verticalAlignment: Text.AlignBottom
-            }
-
-            ListItemLabel {
-                id: descriptionLabel
-                anchors.top: nameLabel.bottom
-                anchors.topMargin: app.styler.themePaddingSmall
-                color: app.styler.themeSecondaryColor
-                font.pixelSize: app.styler.themeFontSizeExtraSmall
-                height: implicitHeight + app.listItemVerticalMargin
-                lineHeight: 1.15
-                text: model.description
-                verticalAlignment: Text.AlignTop
-                wrapMode: Text.WordWrap
-            }
-
-            SectionHeader {
-                id: alternativesHeader
-                anchors.top: descriptionLabel.bottom
-                height: model.default ? implicitHeight : 0
-                text: app.tr("Alternatives")
-                visible: model.default && !listItem.highlighted
-            }
-
-            onClicked: {
-                dialog.pid = model.pid;
-                dialog.accept();
-            }
-
+        SectionHeaderPL {
+            id: defaultHeader
+            height: model.default ? implicitHeight : 0
+            text: app.tr("Default")
+            visible: model.default && !listItem.highlighted
         }
 
-        header: DialogHeader {}
-        model: ListModel {}
-
-        VerticalScrollDecorator {}
-
-        Component.onCompleted: {
-            // Load geocoder model items from the Python backend.
-            py.call("poor.util.get_geocoders", [], function(geocoders) {
-                Util.sortDefaultFirst(geocoders);
-                Util.appendAll(listView.model, geocoders);
-            });
+        ListItemLabel {
+            id: nameLabel
+            anchors.top: defaultHeader.bottom
+            color: (model.active || listItem.highlighted) ?
+                       app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+            height: implicitHeight + app.listItemVerticalMargin
+            text: model.name
+            verticalAlignment: Text.AlignBottom
         }
 
+        ListItemLabel {
+            id: descriptionLabel
+            anchors.top: nameLabel.bottom
+            anchors.topMargin: app.styler.themePaddingSmall
+            color: app.styler.themeSecondaryColor
+            font.pixelSize: app.styler.themeFontSizeExtraSmall
+            height: implicitHeight + app.listItemVerticalMargin
+            lineHeight: 1.15
+            text: model.description
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.WordWrap
+        }
+
+        SectionHeaderPL {
+            id: alternativesHeader
+            anchors.top: descriptionLabel.bottom
+            height: model.default ? implicitHeight : 0
+            text: app.tr("Alternatives")
+            visible: model.default && !listItem.highlighted
+        }
+
+        onClicked: {
+            dialog.pid = model.pid;
+            dialog.accept();
+        }
+    }
+
+    model: ListModel {}
+
+    Component.onCompleted: {
+        // Load geocoder model items from the Python backend.
+        py.call("poor.util.get_geocoders", [], function(geocoders) {
+            Util.sortDefaultFirst(geocoders);
+            Util.appendAll(dialog.model, geocoders);
+        });
     }
 
     onAccepted: {

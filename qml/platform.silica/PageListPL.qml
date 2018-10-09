@@ -30,12 +30,14 @@ Page {
     // has to be Component, so wrap it as Component { Item {} }
     property var    headerExtra
     property alias  model: listView.model
+    property alias  pageMenu: menuLoader.sourceComponent
     property alias  placeholderEnabled: viewPlaceholder.enabled
     property alias  placeholderText: viewPlaceholder.hintText
     property string title
 
     signal pageStatusActivating
     signal pageStatusActive
+    signal pageStatusInactive
 
     SilicaListView {
         id: listView
@@ -58,6 +60,12 @@ Page {
             }
         }
 
+        Loader {
+            id: menuLoader
+            active: sourceComponent
+            width: parent.width
+        }
+
         ViewPlaceholder {
             id: viewPlaceholder
         }
@@ -68,6 +76,7 @@ Page {
     onStatusChanged: {
         if (page.status === PageStatus.Activating) pageStatusActivating();
         else if (page.status === PageStatus.Active) pageStatusActive();
+        else if (page.status === PageStatus.Inactive) pageStatusInactive()
     }
 
 }

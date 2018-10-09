@@ -45,8 +45,10 @@ Page {
                 icon: "image://theme/icon-m-search"
                 label: app.tr("Search")
                 onClicked: {
-                    app.pushMain("GeocodePage.qml");
-                    app.pushAttachedMain("GeocodingResultsPage.qml");
+//                    app.pushMain("GeocodePage.qml");
+//                    app.pushAttachedMain("GeocodingResultsPage.qml");
+                    app.push("GeocodePage.qml");
+                    app.pushAttached("GeocodingResultsPage.qml");
                 }
             }
 
