@@ -17,10 +17,10 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
-IconButton {
+IconButtonPL {
     id: master
     anchors.bottom: parent.bottom
     anchors.right: parent.right

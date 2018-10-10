@@ -19,13 +19,12 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Page {
+Dialog {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property string acceptText
     property alias  content: loader.sourceComponent
-    property bool   empty: false
-    property alias  pageMenu: menuLoader.sourceComponent
     property string title
 
     signal pageStatusActivating
@@ -43,22 +42,18 @@ Page {
             spacing: app.styler.themePaddingLarge
             width: parent.width
 
-            PageHeader {
+            DialogHeader {
                 title: page.title
-                visible: !page.empty
+                Component.onCompleted: {
+                    if (page.acceptText) acceptText = page.acceptText;
+                }
             }
 
             Loader {
                 id: loader
-                active: !page.empty && sourceComponent
+                active: sourceComponent
                 width: parent.width
             }
-        }
-
-        Loader {
-            id: menuLoader
-            active: sourceComponent
-            width: parent.width
         }
 
         VerticalScrollDecorator { flickable: flickable }

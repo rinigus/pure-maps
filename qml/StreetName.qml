@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
 Rectangle {
     id: master
@@ -53,7 +53,7 @@ Rectangle {
         z: 450
     }
 
-    Label {
+    LabelPL {
         id: streetname
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
@@ -61,7 +61,7 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeLarge
         maximumLineCount: 1
         text: gps.streetName
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         visible: (app.mode === modes.navigate || app.mode === modes.followMe) && (text !== undefined && text !== null && text.length>0)
         width: implicitWidth > master.width - 4*app.styler.themePaddingMedium ? master.width-4*app.styler.themePaddingMedium : implicitWidth
         z: 500

@@ -18,8 +18,8 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
 Rectangle {
     id: panel
@@ -86,7 +86,7 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeLarge
         height: text ? implicitHeight + app.styler.themePaddingMedium: 0
         text: panel.title
-        truncationMode: TruncationMode.None
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
@@ -106,7 +106,7 @@ Rectangle {
                 return panel.address;
             return "";
         }
-        truncationMode: TruncationMode.None
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
@@ -118,7 +118,7 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeSmall
         height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         text: app.portrait && panel.coordinate? app.tr("Latitude: %1; Longitude: %2", panel.coordinate.latitude, panel.coordinate.longitude) : ""
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
     }
 
@@ -130,7 +130,7 @@ Rectangle {
         height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         maximumLineCount: app.portrait ? 3 : 1;
         text: panel.text
-        truncationMode: TruncationMode.Elide
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
@@ -152,7 +152,7 @@ Rectangle {
                 return app.tr("More info: %1", info);
             return "";
         }
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
     }
 
@@ -208,7 +208,7 @@ Rectangle {
             }
         ]
 
-        IconButton {
+        IconButtonPL {
             icon.source: "image://theme/icon-m-about"
             onClicked: {
                 app.push("PoiInfoPage.qml", {
@@ -218,7 +218,7 @@ Rectangle {
             }
         }
 
-        IconButton {
+        IconButtonPL {
             enabled: panel.active
             icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
             onClicked: {
@@ -227,7 +227,7 @@ Rectangle {
             }
         }
 
-        IconButton {
+        IconButtonPL {
             icon.source: "image://theme/icon-m-car"
             onClicked: {
                 if (coordinate === undefined) return;
@@ -239,7 +239,7 @@ Rectangle {
             }
         }
 
-        IconButton {
+        IconButtonPL {
             icon.source: "image://theme/icon-m-whereami"
             onClicked: {
                 if (coordinate === undefined) return;
@@ -251,7 +251,7 @@ Rectangle {
             }
         }
 
-        IconButton {
+        IconButtonPL {
             enabled: panel.active
             icon.source: !panel.showMenu ? "image://theme/icon-m-delete" : ""
             visible: !panel.showMenu
@@ -264,7 +264,7 @@ Rectangle {
 
     }
 
-    IconButton {
+    IconButtonPL {
         id: menuButton
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin

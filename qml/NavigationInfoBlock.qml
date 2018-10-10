@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
 Rectangle {
     id: block
@@ -41,7 +41,7 @@ Rectangle {
     property int    shieldRightHeight: !app.portrait && app.mode === modes.navigate && !rightSideTooBusy ? timeDest.height + distDest.height + app.styler.themePaddingSmall + app.styler.themePaddingMedium : 0
     property int    shieldRightWidth:  !app.portrait && app.mode === modes.navigate ? Math.max(timeDest.width, distDest.width) + app.styler.themeHorizontalPageMargin + app.styler.themePaddingLarge : 0
 
-    Label {
+    LabelPL {
         // speed
         id: speed
         anchors.left: parent.left
@@ -68,7 +68,7 @@ Rectangle {
         }
     }
 
-    Label {
+    LabelPL {
         // speed unit
         id: speedUnit
         anchors.left: speed.right
@@ -89,7 +89,7 @@ Rectangle {
         }
     }
 
-    Label {
+    LabelPL {
         // Time remaining to destination
         id: timeDest
         anchors.baseline: speed.baseline
@@ -123,7 +123,7 @@ Rectangle {
         visible: app.mode === modes.navigate
     }
 
-    Label {
+    LabelPL {
         // Distance remaining to destination
         id: distDest
         anchors.baseline: speed.baseline

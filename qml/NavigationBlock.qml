@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
 Rectangle {
     id: block
@@ -69,7 +69,7 @@ Rectangle {
     property int    shieldLeftHeight: !app.portrait && destDist && notify ? manLabel.height + app.styler.themePaddingMedium + iconImage.height + iconImage.anchors.topMargin : 0
     property int    shieldLeftWidth:  !app.portrait && destDist && notify ? manLabel.anchors.leftMargin + app.styler.themePaddingLarge + Math.max(manLabel.width, iconImage.width) : 0
 
-    Label {
+    LabelPL {
         // Distance remaining to the next maneuver
         id: manLabel
         anchors.left: iconImage.right
@@ -95,7 +95,7 @@ Rectangle {
         ]
     }
 
-    Label {
+    LabelPL {
         // Estimated time of arrival
         id: destLabel
         anchors.baseline: manLabel.baseline
@@ -128,7 +128,7 @@ Rectangle {
         ]
     }
 
-    Label {
+    LabelPL {
         // Estimated time of arrival: ETA label
         id: destEta
         anchors.baseline: destLabel.baseline
@@ -140,7 +140,7 @@ Rectangle {
         visible: block.notify
     }
 
-    Label {
+    LabelPL {
         // Street name
         id: streetLabel
         anchors.left: iconImage.right
@@ -164,7 +164,7 @@ Rectangle {
             }
         ]
         text: app.navigationPageSeen && block.notify ? streetName : ""
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
 
         property string streetName: {
@@ -178,7 +178,7 @@ Rectangle {
         }
     }
 
-    Label {
+    LabelPL {
         // Instruction text for the next maneuver
         id: narrativeLabel
         anchors.left: iconImage.right
@@ -222,8 +222,8 @@ Rectangle {
         opacity: 0.9
         smooth: true
         source: block.notify ? "icons/navigation/%1.svg".arg(block.icon || "flag") : ""
-        sourceSize.height: (Screen.sizeCategory >= Screen.Large ? 1.7 : 1) * app.styler.themeIconSizeLarge
-        sourceSize.width: (Screen.sizeCategory >= Screen.Large ? 1.7 : 1) * app.styler.themeIconSizeLarge
+        sourceSize.height: (app.screenLarge ? 1.7 : 1) * app.styler.themeIconSizeLarge
+        sourceSize.width: (app.screenLarge ? 1.7 : 1) * app.styler.themeIconSizeLarge
         states: [
             State {
                 when: !app.portrait && block.destDist && block.notify && iconImage.width < manLabel.width

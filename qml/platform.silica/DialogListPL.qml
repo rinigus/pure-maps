@@ -23,20 +23,48 @@ Dialog {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property bool   active: page.status === PageStatus.Active
     property alias  currentIndex: listView.currentIndex
     property alias  delegate: listView.delegate
+    property var    headerExtra
     property alias  model: listView.model
+    property alias  placeholderEnabled: viewPlaceholder.enabled
+    property alias  placeholderText: viewPlaceholder.hintText
 
     signal pageStatusActivating
     signal pageStatusActive
+    signal pageStatusInactive
 
     SilicaListView {
         id: listView
         anchors.fill: parent
 
-        header: DialogHeader {
+        header: Column {
+            height: header.height + headerExtraLoader.height + app.styler.themePaddingLarge
+            width: parent.width
+
+            DialogHeader {
+                id: header
+            }
+
+            Loader {
+                id: headerExtraLoader
+                active: sourceComponent ? true : false
+                width: parent.width
+                sourceComponent: page.headerExtra
+            }
+        }
+
+        ViewPlaceholder {
+            id: viewPlaceholder
         }
 
         VerticalScrollDecorator { flickable: listView }
+    }
+
+    onStatusChanged: {
+        if (page.status === PageStatus.Activating) pageStatusActivating();
+        else if (page.status === PageStatus.Active) pageStatusActive();
+        else if (page.status === PageStatus.Inactive) pageStatusInactive()
     }
 }

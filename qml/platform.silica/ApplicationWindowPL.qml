@@ -30,6 +30,7 @@ ApplicationWindow {
     property real   pixelRatio: Theme.pixelRatio
     property bool   running: applicationActive || (cover && cover.active)
     property int    screenHeight: Screen.height
+    property bool   screenLarge: Screen.sizeCategory >= Screen.Large
     property int    screenWidth: Screen.width
     property string title
 

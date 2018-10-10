@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
 Rectangle {
     id: block
@@ -64,7 +64,7 @@ Rectangle {
         radius: app.styler.themePaddingMedium
     }
     
-    Label {
+    LabelPL {
         // Exit number
         id: numLabel
         anchors.right: parent.right
@@ -80,7 +80,7 @@ Rectangle {
         width: text ? implicitWidth : 0
     }
 
-    Label {
+    LabelPL {
         // Word "Exit"
         id: exitLabel
         anchors.baseline: numLabel.baseline
@@ -94,7 +94,7 @@ Rectangle {
         width: numLabel.text ? implicitWidth : 0
     }
 
-    Label {
+    LabelPL {
         // Exit name
         id: nameLabel
         anchors.right: parent.right
@@ -105,12 +105,12 @@ Rectangle {
         height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
         maximumLineCount: 1
         text: block.getstr("exit_name", "\n", 1)
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignBottom
         width: text ? elementWidth() : 0
     }
 
-    Label {
+    LabelPL {
         // Exit towards
         id: towardLabel
         anchors.right: parent.right
@@ -122,12 +122,12 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeMedium
         height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
         text: block.getstr("exit_toward", "\n", 3)
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignBottom
         width: text ? elementWidth() : 0
     }
 
-    Label {
+    LabelPL {
         // Exit branch
         id: branchLabel
         anchors.right: parent.right
@@ -138,7 +138,7 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeMedium
         height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
         text: block.getstr("exit_branch", " ", 2)
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignBottom
         width: text ? Math.min(implicitWidth,elementWidth()) : 0
     }
