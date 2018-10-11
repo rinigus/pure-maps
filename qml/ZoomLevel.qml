@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
 Rectangle {
     id: master
@@ -41,7 +41,7 @@ Rectangle {
         z: 450
     }
 
-    Label {
+    LabelPL {
         id: ztxt
         anchors.bottom: parent.bottom
         anchors.left: parent.left

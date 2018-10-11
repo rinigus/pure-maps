@@ -86,7 +86,7 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeLarge
         height: text ? implicitHeight + app.styler.themePaddingMedium: 0
         text: panel.title
-        truncMode: truncModes.fade
+        truncMode: truncModes.none
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
@@ -106,7 +106,7 @@ Rectangle {
                 return panel.address;
             return "";
         }
-        truncMode: truncModes.fade
+        truncMode: truncModes.none
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
@@ -130,7 +130,7 @@ Rectangle {
         height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         maximumLineCount: app.portrait ? 3 : 1;
         text: panel.text
-        truncMode: truncModes.fade
+        truncMode: truncModes.elide
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }

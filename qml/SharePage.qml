@@ -17,119 +17,121 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
-Page {
+PagePL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
+
+    content: Column {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        spacing: app.styler.themePaddingLarge
+
+        ListItemLabel {
+            id: messageLabel
+            horizontalAlignment: Text.AlignHCenter
+            lineHeight: 1.15
+            linkColor: app.styler.themeHighlightColor
+            text: page.formatMessage(true);
+            truncMode: truncModes.none
+            wrapMode: TextEdit.Wrap
+            onLinkActivated: Qt.openUrlExternally(link);
+        }
+
+        Spacer {
+            height: app.styler.themePaddingLarge
+        }
+
+        ButtonPL {
+            id: smsButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: app.tr("SMS")
+            onClicked: {
+                // XXX: SMS links don't work without a recipient.
+                // https://together.jolla.com/question/84134/
+                Clipboard.text = page.formatMessage(false);
+                infoLabel.text = [
+                            app.tr("Message copied to the clipboard"),
+                            app.tr("Launching the Messages application"),
+                        ].join("\n");
+                py.call("poor.util.popen", [
+                            "/usr/bin/invoker",
+                            "--type=silica-qt5",
+                            "/usr/bin/jolla-messages",
+                        ], null);
+            }
+        }
+
+        ButtonPL {
+            id: emailButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: app.tr("Email")
+            onClicked: {
+                var link = "mailto:?body=%1".arg(page.formatMessage(false));
+                infoLabel.text = app.tr("Launching the Email application");
+                Qt.openUrlExternally(link);
+            }
+        }
+
+        ButtonPL {
+            id: clipboardButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: app.tr("Other")
+            onClicked: {
+                Clipboard.text = page.formatMessage(false);
+                infoLabel.text = app.tr("Message copied to the clipboard");
+            }
+        }
+
+        Spacer {
+            height: app.styler.themePaddingLarge
+        }
+
+        ListItemLabel {
+            id: infoLabel
+            color: app.styler.themeHighlightColor
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        TextSwitchPL {
+            id: shareOsmSwitch
+            checked: app.conf.get("share_osm")
+            text: app.tr("Add link to OpenStreetMaps")
+            onCheckedChanged: {
+                app.conf.set("share_osm", shareOsmSwitch.checked);
+            }
+        }
+
+        TextSwitchPL {
+            id: shareGoogleSwitch
+            checked: app.conf.get("share_googlemaps")
+            text: app.tr("Add link to Google Maps")
+            onCheckedChanged: {
+                app.conf.set("share_googlemaps", shareGoogleSwitch.checked);
+            }
+        }
+
+        Component.onCompleted: {
+            page.shareOsmSwitch = shareOsmSwitch;
+            page.shareGoogleSwitch = shareGoogleSwitch;
+        }
+    }
 
     // Required to be set by caller.
-    property var    coordinate: undefined
-    property string title: ""
+    property var coordinate: undefined
 
-    PageHeader {
-        id: header
-        title: page.title
-    }
-
-    ListItemLabel {
-        id: messageLabel
-        anchors.top: header.bottom
-        anchors.topMargin: app.styler.themePaddingLarge
-        horizontalAlignment: Text.AlignHCenter
-        lineHeight: 1.15
-        linkColor: app.styler.themeHighlightColor
-        text: page.formatMessage(true);
-        wrapMode: TextEdit.Wrap
-        onLinkActivated: Qt.openUrlExternally(link);
-    }
-
-    Button {
-        id: smsButton
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: messageLabel.bottom
-        anchors.topMargin: 2 * app.styler.themePaddingLarge
-        text: app.tr("SMS")
-        onClicked: {
-            // XXX: SMS links don't work without a recipient.
-            // https://together.jolla.com/question/84134/
-            Clipboard.text = page.formatMessage(false);
-            infoLabel.text = [
-                app.tr("Message copied to the clipboard"),
-                app.tr("Launching the Messages application"),
-            ].join("\n");
-            py.call("poor.util.popen", [
-                "/usr/bin/invoker",
-                "--type=silica-qt5",
-                "/usr/bin/jolla-messages",
-            ], null);
-        }
-    }
-
-    Button {
-        id: emailButton
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: smsButton.bottom
-        anchors.topMargin: app.styler.themePaddingLarge
-        text: app.tr("Email")
-        onClicked: {
-            var link = "mailto:?body=%1".arg(page.formatMessage(false));
-            infoLabel.text = app.tr("Launching the Email application");
-            Qt.openUrlExternally(link);
-        }
-    }
-
-    Button {
-        id: clipboardButton
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: emailButton.bottom
-        anchors.topMargin: app.styler.themePaddingLarge
-        text: app.tr("Other")
-        onClicked: {
-            Clipboard.text = page.formatMessage(false);
-            infoLabel.text = app.tr("Message copied to the clipboard");
-        }
-    }
-
-    ListItemLabel {
-        id: infoLabel
-        anchors.top: clipboardButton.bottom
-        anchors.topMargin: 2 * app.styler.themePaddingLarge
-        color: app.styler.themeHighlightColor
-        horizontalAlignment: Text.AlignHCenter
-    }
-
-    TextSwitch {
-        id: shareOsmSwitch
-        anchors.top: infoLabel.bottom
-        anchors.topMargin: 2 * app.styler.themePaddingLarge
-        checked: app.conf.get("share_osm")
-        text: app.tr("Add link to OpenStreetMaps")
-        onCheckedChanged: {
-            app.conf.set("share_osm", shareOsmSwitch.checked);
-        }
-    }
-
-    TextSwitch {
-        id: shareGoogleSwitch
-        anchors.top: shareOsmSwitch.bottom
-        anchors.topMargin: app.styler.themePaddingMedium
-        checked: app.conf.get("share_googlemaps")
-        text: app.tr("Add link to Google Maps")
-        onCheckedChanged: {
-            app.conf.set("share_googlemaps", shareGoogleSwitch.checked);
-        }
-    }
+    property var shareOsmSwitch: undefined
+    property var shareGoogleSwitch: undefined
 
     function formatMessage(html) {
         return py.call_sync("poor.util.format_location_message", [
-            page.coordinate.longitude,
-            page.coordinate.latitude,
-            html,
-            shareOsmSwitch.checked,
-            shareGoogleSwitch.checked,
-        ]);
+                                page.coordinate.longitude,
+                                page.coordinate.latitude,
+                                html,
+                                shareOsmSwitch.checked,
+                                shareGoogleSwitch.checked,
+                            ]);
     }
 
 }
