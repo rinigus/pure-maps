@@ -17,17 +17,14 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "../qml/platform"
 
 Column {
 
-    ComboBox {
+    ComboBoxPL {
         id: closestComboBox
         label: app.tr("Prefer")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Closest") }
-            MenuItem { text: app.tr("Best") }
-        }
+        model: [ app.tr("Closest"), app.tr("Best") ]
         Component.onCompleted: {
             var closest = app.conf.get("guides.foursquare.sort_by_distance");
             closestComboBox.currentIndex = closest ? 0 : 1;
