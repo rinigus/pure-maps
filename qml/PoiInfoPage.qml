@@ -25,7 +25,27 @@ PagePL {
     id: page
     title: poi.title || app.tr("Unnamed point")
 
-    content: Column {
+    pageMenu: PageMenuPL {
+        MenuItemPL {
+            enabled: page.active
+            text: app.tr("Edit")
+            onClicked: {
+                var dialog = app.push("PoiEditPage.qml",
+                                      {"poi": poi});
+                dialog.accepted.connect(function() {
+                    map.updatePoi(dialog.poi);
+                    page.poi = dialog.poi;
+                    map.showPoi(dialog.poi);
+                })
+            }
+        }
+    }
+
+    property bool active: false
+    property var  poi
+    property bool hasCoordinate: poi && poi.coordinate ? true : false
+
+    Column {
         id: column
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
@@ -200,26 +220,6 @@ PagePL {
             wrapMode: Text.WordWrap
         }
     }
-
-    pageMenu: PageMenuPL {
-        MenuItemPL {
-            enabled: page.active
-            text: app.tr("Edit")
-            onClicked: {
-                var dialog = app.push("PoiEditPage.qml",
-                                      {"poi": poi});
-                dialog.accepted.connect(function() {
-                    map.updatePoi(dialog.poi);
-                    page.poi = dialog.poi;
-                    map.showPoi(dialog.poi);
-                })
-            }
-        }
-    }
-
-    property bool active: false
-    property var  poi
-    property bool hasCoordinate: poi && poi.coordinate ? true : false
 
     Component.onCompleted: {
         if (!poi.coordinate)

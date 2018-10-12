@@ -22,7 +22,8 @@ import "platform"
 
 PagePL {
     title: app.tr("Attribution")
-    content: Column {
+
+    Column {
         id: column
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width

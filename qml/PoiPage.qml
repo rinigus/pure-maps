@@ -25,6 +25,7 @@ import "js/util.js" as Util
 
 PageListPL {
     id: page
+    title: app.tr("Points of Interest")
 
     currentIndex: -1
 

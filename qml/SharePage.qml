@@ -23,7 +23,7 @@ import "platform"
 PagePL {
     id: page
 
-    content: Column {
+    Column {
         anchors.left: parent.left
         anchors.right: parent.right
         spacing: app.styler.themePaddingLarge

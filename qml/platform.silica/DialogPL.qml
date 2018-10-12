@@ -24,7 +24,7 @@ Dialog {
     allowedOrientations: app.defaultAllowedOrientations
 
     property string acceptText
-    property alias  content: loader.sourceComponent
+    default property alias content: itemCont.data
     property string title
 
     signal pageStatusActivating
@@ -34,26 +34,23 @@ Dialog {
     SilicaFlickable {
         id: flickable
         anchors.fill: parent
-        contentHeight: column.height + app.styler.themePaddingLarge
+        contentHeight: title.height + 2 * app.styler.themePaddingLarge + itemCont.height
 
-        Column {
-            id: column
+        DialogHeader {
+            id: title
+            title: page.title
+            Component.onCompleted: {
+                if (page.acceptText) acceptText = page.acceptText;
+            }
+        }
+
+        Item {
+            id: itemCont
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: app.styler.themePaddingLarge
+            anchors.top: title.bottom
+            anchors.topMargin: app.styler.themePaddingLarge
+            height: childrenRect.height
             width: parent.width
-
-            DialogHeader {
-                title: page.title
-                Component.onCompleted: {
-                    if (page.acceptText) acceptText = page.acceptText;
-                }
-            }
-
-            Loader {
-                id: loader
-                active: sourceComponent
-                width: parent.width
-            }
         }
 
         VerticalScrollDecorator { flickable: flickable }

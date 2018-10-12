@@ -20,7 +20,7 @@ import QtQuick 2.0
 import "../qml"
 import "../qml/platform"
 
-PagePL {
+PageEmptyPL {
     id: page
 
     property bool loading: true

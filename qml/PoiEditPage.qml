@@ -25,7 +25,10 @@ DialogPL {
     title: app.tr("Edit POI")
 
     acceptText: app.tr("Save")
-    content: Column {
+
+    property var poi
+
+    Column {
         id: column
         width: page.width
 
@@ -110,8 +113,6 @@ DialogPL {
             width: parent.width
         }
 
-        Component.onCompleted: page.column = column
-
         function accepted() {
             poi.address = addressField.text;
             poi.link = linkField.text;
@@ -124,7 +125,4 @@ DialogPL {
     }
 
     onAccepted: column.accepted()
-
-    property var column
-    property var poi
 }

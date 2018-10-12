@@ -20,10 +20,8 @@ import QtQuick 2.0
 import "."
 import "platform"
 
-PagePL {
+PageEmptyPL {
     id: page
-    empty: true
-    title: app.tr("Initializing")
 
     BusyModal {
         id: busy

@@ -23,7 +23,7 @@ import "platform"
 PagePL {
     title: app.tr("Preferences")
 
-    content: Column {
+    Column {
         id: column
         anchors.left: parent.left
         anchors.right: parent.right

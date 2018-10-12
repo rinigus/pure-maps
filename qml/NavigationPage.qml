@@ -24,7 +24,11 @@ PagePL {
     id: page
     title: app.tr("Navigation")
 
-    content: Column {
+    onPageStatusActive: app.navigationPageSeen = true;
+
+    property bool partOfNavigationStack: true
+
+    Column {
         id: column
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
@@ -202,9 +206,5 @@ PagePL {
         }
 
     }
-
-    onPageStatusActive: app.navigationPageSeen = true;
-
-    property bool partOfNavigationStack: true
 
 }

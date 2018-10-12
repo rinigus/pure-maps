@@ -25,7 +25,21 @@ PagePL {
     id: page
     title: "Pure Maps"
 
-    content: Column {
+    pageMenu: PageMenuPL {
+        MenuItemPL {
+            text: app.tr("About")
+            onClicked: app.push("AboutPage.qml");
+        }
+        MenuItemPL {
+            text: app.tr("Preferences")
+            onClicked: app.push("PreferencesPage.qml");
+        }
+    }
+
+    // To make TextSwitch text line up with IconListItem's text label.
+    property real switchLeftMargin: app.styler.themeHorizontalPageMargin + app.styler.themePaddingLarge + app.styler.themePaddingSmall
+
+    Column {
         id: column
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
@@ -137,19 +151,4 @@ PagePL {
         }
 
     }
-
-    pageMenu: PageMenuPL {
-        MenuItemPL {
-            text: app.tr("About")
-            onClicked: app.push("AboutPage.qml");
-        }
-        MenuItemPL {
-            text: app.tr("Preferences")
-            onClicked: app.push("PreferencesPage.qml");
-        }
-    }
-
-    // To make TextSwitch text line up with IconListItem's text label.
-    property real switchLeftMargin: app.styler.themeHorizontalPageMargin + app.styler.themePaddingLarge + app.styler.themePaddingSmall
-
 }

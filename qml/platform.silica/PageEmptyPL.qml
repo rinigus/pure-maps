@@ -25,40 +25,15 @@ Page {
 
     default property alias content: itemCont.data
     readonly property bool empty: false
-    property alias         pageMenu: menuLoader.sourceComponent
     property string        title
 
     signal pageStatusActivating
     signal pageStatusActive
     signal pageStatusInactive
 
-    SilicaFlickable {
-        id: flickable
-        anchors.fill: parent
-        contentHeight: title.height + 2 * app.styler.themePaddingLarge + itemCont.height
-
-        PageHeader {
-            id: title
-            title: page.title
-            visible: page.title
-        }
-
-        Item {
-            id: itemCont
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: title.bottom
-            anchors.topMargin: app.styler.themePaddingLarge
-            height: childrenRect.height
-            width: parent.width
-        }
-
-        Loader {
-            id: menuLoader
-            active: sourceComponent
-            width: parent.width
-        }
-
-        VerticalScrollDecorator { flickable: flickable }
+    Item {
+        id: itemCont
+        anchors.fill: page
     }
 
     onStatusChanged: {

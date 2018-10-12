@@ -28,7 +28,42 @@ PagePL {
         (!page.fromNeeded || (page.from && (page.fromText !== app.tr("Current position") || gps.ready))) &&
         (!page.toNeeded   || (page.to   && (page.toText   !== app.tr("Current position") || gps.ready)))
 
-    content: Column {
+    pageMenu: PageMenuPL {
+        MenuItemPL {
+            text: app.tr("Follow me")
+            onClicked: {
+                followMe.checked = !followMe.checked;
+                columnFollow.visible = true;
+                columnRouter.settingsChecked = false;
+                page.params = {};
+                columnRouter.settings && columnRouter.settings.destroy();
+                columnRouter.settings = null;
+                columnRouter.addSettings();
+            }
+        }
+        MenuItemPL {
+            text: app.tr("Reverse endpoints")
+            onClicked: {
+                var from = page.from;
+                var fromText = page.fromText;
+                page.from = page.to;
+                page.fromText = page.toText;
+                page.to = from;
+                page.toText = fromText;
+            }
+        }
+    }
+
+    property var    columnRouter
+    property var    from: null
+    property bool   fromNeeded: true
+    property string fromText: ""
+    property var    params: {}
+    property var    to: null
+    property bool   toNeeded: true
+    property string toText: ""
+
+    Column {
         id: column
         anchors.left: parent.left
         anchors.right: parent.right
@@ -243,43 +278,7 @@ PagePL {
             ///////////////////////
 
         }
-
     }
-
-    pageMenu: PageMenuPL {
-        MenuItemPL {
-            text: app.tr("Follow me")
-            onClicked: {
-                followMe.checked = !followMe.checked;
-                columnFollow.visible = true;
-                columnRouter.settingsChecked = false;
-                page.params = {};
-                columnRouter.settings && columnRouter.settings.destroy();
-                columnRouter.settings = null;
-                columnRouter.addSettings();
-            }
-        }
-        MenuItemPL {
-            text: app.tr("Reverse endpoints")
-            onClicked: {
-                var from = page.from;
-                var fromText = page.fromText;
-                page.from = page.to;
-                page.fromText = page.toText;
-                page.to = from;
-                page.toText = fromText;
-            }
-        }
-    }
-
-    property var    columnRouter
-    property var    from: null
-    property bool   fromNeeded: true
-    property string fromText: ""
-    property var    params: {}
-    property var    to: null
-    property bool   toNeeded: true
-    property string toText: ""
 
     Component.onCompleted: {
         if (!page.from) {

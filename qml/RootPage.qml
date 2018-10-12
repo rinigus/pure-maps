@@ -19,9 +19,8 @@
 import QtQuick 2.0
 import "platform"
 
-PagePL {
+PageEmptyPL {
     id: page
-    empty: true
 
     AttributionButton { id: attributionButton }
     CenterButton { id: centerButton }

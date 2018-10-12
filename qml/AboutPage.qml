@@ -23,7 +23,8 @@ import "platform"
 PagePL {
     id: page
     title: app.tr("About Pure Maps")
-    content: Column {
+
+    Column {
         id: column
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: app.styler.themePaddingLarge
