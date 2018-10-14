@@ -27,7 +27,6 @@ ApplicationWindow {
     initialPage: null
 
     property var    pages: null // initialized later to ensure the same path for object creation
-    property real   pixelRatio: Theme.pixelRatio
     property bool   running: applicationActive || (cover && cover.active)
     property int    screenHeight: Screen.height
     property bool   screenLarge: Screen.sizeCategory >= Screen.Large
@@ -38,6 +37,12 @@ ApplicationWindow {
     signal checkKeepAlive
 
     Component.onCompleted: updateOrientation()
+
+    Keys.onPressed: {
+        // Allow zooming with plus and minus keys on the emulator.
+        (event.key === Qt.Key_Plus)  && map.setZoomLevel(map.zoomLevel+1);
+        (event.key === Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
+    }
 
     onApplicationActiveChanged: checkKeepAlive()
 

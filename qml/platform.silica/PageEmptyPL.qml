@@ -24,7 +24,7 @@ Page {
     allowedOrientations: app.defaultAllowedOrientations
 
     default property alias content: itemCont.data
-    readonly property bool empty: false
+    readonly property bool empty: true
     property string        title
 
     signal pageStatusActivating

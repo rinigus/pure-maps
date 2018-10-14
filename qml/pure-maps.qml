@@ -91,12 +91,6 @@ ApplicationWindowPL {
         py.call_sync("poor.app.quit", []);
     }
 
-    Keys.onPressed: {
-        // Allow zooming with plus and minus keys on the emulator.
-        (event.key === Qt.Key_Plus)  && map.setZoomLevel(map.zoomLevel+1);
-        (event.key === Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
-    }
-
     onCheckKeepAlive: {
         if (!initialized) return;
         app.updateKeepAlive();
@@ -128,7 +122,7 @@ ApplicationWindowPL {
         var ratios = [1.00, 1.25, 1.50, 1.75, 2.00];
         var minIndex = -1, minDiff = 1000, diff;
         for (var i = 0; i < ratios.length; i++) {
-            diff = Math.abs(pixelRatio - ratios[i]);
+            diff = Math.abs(styler.themePixelRatio - ratios[i]);
             minIndex = diff < minDiff ? i : minIndex;
             minDiff = Math.min(minDiff, diff);
         }
