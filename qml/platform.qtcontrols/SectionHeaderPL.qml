@@ -17,9 +17,11 @@
  */
 
 import QtQuick 2.9
-import QtQuick.Controls 2.2
 
-BusyIndicator {
-    anchors.centerIn: parent
+Text {
+    anchors.horizontalCenter: parent.horizontalCenter
+    horizontalAlignment: Text.AlignRight
+    font.bold: true
+    font.pixelSize: app.styler.themeFontSizeLarge
+    width: parent.width - 2*app.styler.themeHorizontalPageMargin
 }
-

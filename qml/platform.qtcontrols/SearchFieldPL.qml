@@ -19,7 +19,23 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-BusyIndicator {
-    anchors.centerIn: parent
-}
+Row {
+    id: row
 
+    property alias placeholderText: field.placeholderText
+    property alias text: field.text
+    property real  textLeftMargin: row.x + field.x
+
+    signal search
+
+//    Image {
+//    }
+
+    TextField {
+        id: field
+
+        focus: true
+        width: parent.width
+        Keys.onReturnPressed: row.search()
+    }
+}

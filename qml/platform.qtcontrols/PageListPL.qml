@@ -24,33 +24,50 @@ Page {
     id: page
     header: HeaderBarImpl { page: page }
 
-    default property alias content: itemCont.data
-    readonly property bool empty: false
-    property alias         pageMenu: page.footer
-    property int           status: StackView.status
+    property bool   active: page.status === StackView.Active
+    property bool   canNavigateForward: true
+    property alias  currentIndex: listView.currentIndex
+    property alias  delegate: listView.delegate
+    // has to be Component, so wrap it as Component { Item {} }
+    property var    headerExtra
+    property alias  model: listView.model
+    property alias  pageMenu: page.footer
+    property alias  placeholderEnabled: viewPlaceholder.visible
+    property alias  placeholderText: viewPlaceholder.text
+    property int    status: StackView.status
 
     signal pageStatusActivating
     signal pageStatusActive
     signal pageStatusInactive
 
-    ScrollView {
-        id: flickable        
+    ListView {
+        id: listView
+
         anchors.bottomMargin: app.styler.themePaddingLarge
         anchors.fill: parent
         anchors.topMargin: app.styler.themePaddingLarge
-        contentHeight: itemCont.height
-        contentWidth: page.width
-        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-        ScrollBar.vertical.policy: ScrollBar.AsNeeded
+        ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
-        Item {
-            id: itemCont
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: title.bottom
-            anchors.topMargin: app.styler.themePaddingLarge
-            height: childrenRect.height
+        header: Column {
+            height: headerExtraLoader.height + app.styler.themePaddingLarge
             width: parent.width
+
+            Loader {
+                id: headerExtraLoader
+                active: sourceComponent ? true : false
+                width: parent.width
+                sourceComponent: page.headerExtra
+            }
         }
+    }
+
+    Label {
+        id: viewPlaceholder
+        anchors.fill: parent
+        anchors.margins: app.styler.themeHorizontalPageMargin
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WordWrap
     }
 
     onStatusChanged: {
@@ -58,4 +75,9 @@ Page {
         else if (page.status === StackView.Active) pageStatusActive();
         else if (page.status === StackView.Inactive) pageStatusInactive()
     }
+
+    function positionViewAtIndex(i) {
+        listView.positionViewAtIndex(i, ListView.Center);
+    }
+
 }

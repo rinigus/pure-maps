@@ -19,7 +19,13 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-BusyIndicator {
-    anchors.centerIn: parent
-}
+Label {
+    elide: {
+        if (truncMode === truncModes.elide) return Text.ElideRight;
+        if (truncMode === truncModes.fade) return Text.ElideRight;
+        return Text.ElideNone;
+    }
+    font.pixelSize: app.styler.themeFontSizeMedium
 
+    property int truncMode: truncModes.none
+}

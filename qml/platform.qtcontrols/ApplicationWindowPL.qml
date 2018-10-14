@@ -18,7 +18,6 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import QtQuick.Layouts 1.3
 import Qt.labs.settings 1.0
 import "."
 
@@ -27,21 +26,22 @@ ApplicationWindow {
     width: 640
     height: 480
 
-    property var cover: null
-    property var initialPage: null
+    property alias initialPage: pageStack.initialItem
 
-    // Default vertical margin for various multiline list items
-    // such that it would be consistent with single-line list items
-    // and the associated constant Theme.itemSizeSmall.
-    property real   listItemVerticalMargin: (Theme.itemSizeSmall - 1.125 * Theme.fontSizeMedium) / 2
-    property var    pages: null // initialized later to ensure the same path for object creation
-    property real   pixelRatio: 1
-    property bool   running: visible
-    property int    screenHeight: height
-    property int    screenWidth: width
+    property var   pages: null // initialized later to ensure the same path for object creation
+    property bool  running: visible
+    property int   screenHeight: height
+    property bool  screenLarge: true
+    property int   screenWidth: width
 
     // Emitted when keep alive requirements could have changed
     signal checkKeepAlive
+
+    StackView {
+        id: pageStack
+        initialItem: appWindow.initialPage
+        anchors.fill: parent
+    }
 
     Component.onCompleted: updateOrientation()
 

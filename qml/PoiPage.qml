@@ -124,9 +124,11 @@ PageListPL {
     headerExtra: Component {
         SearchFieldPL {
             id: searchField
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: app.styler.themeHorizontalPageMargin
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themeHorizontalPageMargin
             placeholderText: app.tr("Search")
-            width: parent.width - 2*app.styler.themeHorizontalPageMargin
             property string prevText: ""
             onTextChanged: {
                 var newText = searchField.text.trim().toLowerCase();

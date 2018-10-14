@@ -19,7 +19,15 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-BusyIndicator {
-    anchors.centerIn: parent
-}
+ToolBar {
+    contentHeight: visible ? footerBar.implicitHeight : 0
+    visible: !(parent.empty) && footerBar.children.length > 0
 
+    default property alias _content: footerBar.data
+
+    Row {
+        id: footerBar
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: app.styler.themePaddingMedium
+    }
+}

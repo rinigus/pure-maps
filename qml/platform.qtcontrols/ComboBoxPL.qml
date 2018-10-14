@@ -16,10 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.9
-import QtQuick.Controls 2.2
+import QtQuick 2.0
+import Sailfish.Silica 1.0
 
-BusyIndicator {
-    anchors.centerIn: parent
+ComboBox {
+    id: box
+
+    menu: ContextMenu {
+        Repeater {
+            model: box.model.length
+            MenuItem { text: box.model[index] }
+        }
+    }
+
+    property var model
 }
-

@@ -16,7 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.9
+import QtQuick.Controls 2.2
 
 // This file has to be symlinked from main QML path
 // as StackPL.qml -> platform/StackImplamentationPL.qml
@@ -27,10 +28,11 @@ import QtQuick 2.0
 // will be looked from platform subfolder.
 
 QtObject {
+    property var attached
+    property int currentIndex: ps.depth
     property var ps: null
 
     function completeAnimation() {
-        ps.completeAnimation();
     }
 
     function currentPage() {
@@ -38,31 +40,48 @@ QtObject {
     }
 
     function navigateForward(immediate) {
-        return ps.navigateForward(immediate ? PageStackAction.Immediate : PageStackAction.Animated)
+        if (attached && (!ps.currentItem || ps.currentItem.canNavigateForward)) return push(attached);
+        console.log("There is no page attached to the stack or navigation forward is not allowed, cannot navigateForward");
     }
 
     function nextPage() {
-        return ps.nextPage();
+        return attached;
     }
 
     function pop(page) {
-        if (page) ps.pop(page);
-        else ps.pop();
+        var last;
+        if (page) last = ps.pop(page);
+        else last = ps.pop();
+        if (attached && attached !== last && !last.isDialog)
+            attached = undefined;
     }
 
     function previousPage() {
-        return ps.previousPage();
+        return ps.get(currentIndex-2);
     }
 
     function push(page, options, immediate) {
-        return ps.push(page, options ? options : {}, immediate ? PageStackAction.Immediate : PageStackAction.Animated);
+        var p = ps.push(page, options ? options : {}, immediate ? StackView.Immediate.Immediate : StackView.Animated);
+        if (attached !== page && !p.isDialog) attached = undefined;
+        return p;
     }
 
     function pushAttached(page, options) {
-        return ps.pushAttached(page, options ? options : {});
+        attached = page;
+        if (typeof page === 'string') {
+            var pc = Qt.createComponent(pagefile);
+            if (pc.status === Component.Error) {
+                console.log('Error while creating component');
+                console.log(pc.errorString());
+                return null;
+            }
+            attached = pc.createObject(app, options ? options : {})
+        }
+        attached.visible = false;
+        return attached;
     }
 
     function replace(page, options) {
-        return ps.replace(page, options ? options : {})
+        return ps.replace(page, options ? options : {});
     }
 }

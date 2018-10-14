@@ -19,7 +19,18 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-BusyIndicator {
-    anchors.centerIn: parent
-}
+Item {
+    id: item
+    property alias icon: image
 
+    signal clicked
+
+    Image {
+        id: image
+    }
+
+    MouseArea {
+        anchors.fill: image
+        onClicked: item.clicked()
+    }
+}

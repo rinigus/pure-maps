@@ -18,39 +18,22 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import "."
 
-Page {
+Item {
     id: page
-    header: HeaderBarImpl { page: page }
 
     default property alias content: itemCont.data
-    readonly property bool empty: false
-    property alias         pageMenu: page.footer
+    readonly property bool empty: true
     property int           status: StackView.status
+    property string        title
 
     signal pageStatusActivating
     signal pageStatusActive
     signal pageStatusInactive
 
-    ScrollView {
-        id: flickable        
-        anchors.bottomMargin: app.styler.themePaddingLarge
-        anchors.fill: parent
-        anchors.topMargin: app.styler.themePaddingLarge
-        contentHeight: itemCont.height
-        contentWidth: page.width
-        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-        ScrollBar.vertical.policy: ScrollBar.AsNeeded
-
-        Item {
-            id: itemCont
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: title.bottom
-            anchors.topMargin: app.styler.themePaddingLarge
-            height: childrenRect.height
-            width: parent.width
-        }
+    Item {
+        id: itemCont
+        anchors.fill: page
     }
 
     onStatusChanged: {

@@ -18,8 +18,22 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import "."
 
-BusyIndicator {
-    anchors.centerIn: parent
+PageListPL {
+    id: page
+    header: HeaderBarImpl {
+        page: page
+        acceptDescription: app.tr("Accept")
+        onAccepted: page.accepted();
+    }
+
+    property bool isDialog: true
+    signal accepted
+
+    onAccepted: app.pages.pop()
+
+    function accept() {
+        accepted();
+    }
 }
-

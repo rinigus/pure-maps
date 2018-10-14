@@ -31,6 +31,10 @@ PageListPL {
 
     delegate: ListItemPL {
         id: listItem
+        anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         contentHeight: visible ? app.styler.themeItemSizeSmall : 0
         menu: ContextMenuPL {
             id: contextMenu
@@ -91,7 +95,11 @@ PageListPL {
 
     headerExtra: Component {
         Column {
-            width: page.width
+            spacing: app.styler.themePaddingLarge
+            anchors.left: parent.left
+            anchors.leftMargin: app.styler.themeHorizontalPageMargin
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themeHorizontalPageMargin
 
             ValueButtonPL {
                 id: usingButton

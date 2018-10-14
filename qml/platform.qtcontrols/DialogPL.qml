@@ -16,32 +16,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.9
-import QtQuick.Controls 2.2
-import "."
+import QtQuick 2.0
+import Sailfish.Silica 1.0
 
-Page {
+Dialog {
     id: page
-    header: HeaderBarImpl { page: page }
+    allowedOrientations: app.defaultAllowedOrientations
 
+    property string acceptText
     default property alias content: itemCont.data
-    readonly property bool empty: false
-    property alias         pageMenu: page.footer
-    property int           status: StackView.status
+    property string title
 
     signal pageStatusActivating
     signal pageStatusActive
     signal pageStatusInactive
 
-    ScrollView {
-        id: flickable        
-        anchors.bottomMargin: app.styler.themePaddingLarge
+    SilicaFlickable {
+        id: flickable
         anchors.fill: parent
-        anchors.topMargin: app.styler.themePaddingLarge
-        contentHeight: itemCont.height
-        contentWidth: page.width
-        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-        ScrollBar.vertical.policy: ScrollBar.AsNeeded
+        contentHeight: title.height + 2 * app.styler.themePaddingLarge + itemCont.height
+
+        DialogHeader {
+            id: title
+            title: page.title
+            Component.onCompleted: {
+                if (page.acceptText) acceptText = page.acceptText;
+            }
+        }
 
         Item {
             id: itemCont
@@ -51,11 +52,13 @@ Page {
             height: childrenRect.height
             width: parent.width
         }
+
+        VerticalScrollDecorator { flickable: flickable }
     }
 
     onStatusChanged: {
-        if (page.status === StackView.Activating) pageStatusActivating();
-        else if (page.status === StackView.Active) pageStatusActive();
-        else if (page.status === StackView.Inactive) pageStatusInactive()
+        if (page.status === PageStatus.Activating) pageStatusActivating();
+        else if (page.status === PageStatus.Active) pageStatusActive();
+        else if (page.status === PageStatus.Inactive) pageStatusInactive()
     }
 }

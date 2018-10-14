@@ -19,7 +19,29 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-BusyIndicator {
-    anchors.centerIn: parent
-}
+// required properties:
+//    contentHeight
+//    highlighted
+//    menu
+//
+// signals: clicked
+ItemDelegate {
+    id: item
 
+    height: contentHeight
+    width: parent.width
+
+    property real contentHeight
+    property var  menu
+
+    MouseArea {
+        anchors.fill: parent
+        acceptedButtons: Qt.RightButton
+        onClicked: {
+            if (!menu) return
+            menu.x = mouse.x
+            menu.y = mouse.y
+            menu.open();
+        }
+    }
+}
