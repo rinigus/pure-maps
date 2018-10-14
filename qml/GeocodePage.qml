@@ -34,7 +34,7 @@ PageListPL {
         contentHeight: visible ? app.styler.themeItemSizeSmall : 0
         menu: ContextMenuPL {
             id: contextMenu
-            MenuItemPL {
+            ContextMenuItemPL {
                 text: app.tr("Remove")
                 onClicked: {
                     py.call_sync("poor.app.history.remove_place", [model.place]);

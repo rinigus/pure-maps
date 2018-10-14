@@ -82,7 +82,7 @@ PageListPL {
 
     pageMenu: PageMenuPL {
         visible: page.model.count > 1
-        MenuItemPL {
+        PageMenuItemPL {
             text: app.tr("Show all")
             onClicked: {
                 var pois = [];

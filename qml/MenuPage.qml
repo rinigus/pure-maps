@@ -26,11 +26,11 @@ PagePL {
     title: "Pure Maps"
 
     pageMenu: PageMenuPL {
-        MenuItemPL {
+        PageMenuItemPL {
             text: app.tr("About")
             onClicked: app.push("AboutPage.qml");
         }
-        MenuItemPL {
+        PageMenuItemPL {
             text: app.tr("Preferences")
             onClicked: app.push("PreferencesPage.qml");
         }

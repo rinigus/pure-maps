@@ -29,7 +29,7 @@ PagePL {
         (!page.toNeeded   || (page.to   && (page.toText   !== app.tr("Current position") || gps.ready)))
 
     pageMenu: PageMenuPL {
-        MenuItemPL {
+        PageMenuItemPL {
             text: app.tr("Follow me")
             onClicked: {
                 followMe.checked = !followMe.checked;
@@ -41,7 +41,7 @@ PagePL {
                 columnRouter.addSettings();
             }
         }
-        MenuItemPL {
+        PageMenuItemPL {
             text: app.tr("Reverse endpoints")
             onClicked: {
                 var from = page.from;

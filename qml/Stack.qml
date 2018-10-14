@@ -27,7 +27,7 @@ QtObject {
         for (var i=0; i < _stack.length; i++)
             for (var j=0; j < _stack[i].length; j++) {
                 // console.log("Destroying: " + _stack[i][j]);
-                _stack[i][j].destroy();
+                _stack[i][j] && _stack[i][j].destroy();
             }
         keep = false;
         _stack = [];
@@ -35,6 +35,11 @@ QtObject {
 
     function push(pagefile, options) {
         var pc = Qt.createComponent(pagefile);
+        if (pc.status === Component.Error) {
+            console.log('Error while creating component');
+            console.log(pc.errorString());
+            return null;
+        }
         var p = pc.createObject(app, options ? options : {})
         app.pages.push(p);
         _stack.push([p]);
@@ -44,6 +49,11 @@ QtObject {
 
     function pushAttached(pagefile, options) {
         var pc = Qt.createComponent(pagefile);
+        if (pc.status === Component.Error) {
+            console.log('Error while creating component');
+            console.log(pc.errorString());
+            return null;
+        }
         var p = pc.createObject(app, options ? options : {})
         app.pages.pushAttached(p);
         _stack[_stack.length-1].push(p);

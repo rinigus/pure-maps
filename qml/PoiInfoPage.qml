@@ -26,7 +26,7 @@ PagePL {
     title: poi.title || app.tr("Unnamed point")
 
     pageMenu: PageMenuPL {
-        MenuItemPL {
+        PageMenuItemPL {
             enabled: page.active
             text: app.tr("Edit")
             onClicked: {

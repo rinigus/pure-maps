@@ -74,7 +74,7 @@ PageListPL {
 
         menu: ContextMenuPL {
             id: contextMenu
-            MenuItemPL {
+            ContextMenuItemPL {
                 text: app.tr("View")
                 onClicked: {
                     var poi = map.getPoiById(model.poiId);
@@ -83,7 +83,7 @@ PageListPL {
                              {"poi": poi});
                 }
             }
-            MenuItemPL {
+            ContextMenuItemPL {
                 text: app.tr("Edit")
                 onClicked: {
                     var poi = map.getPoiById(model.poiId);
@@ -96,7 +96,7 @@ PageListPL {
                     })
                 }
             }
-            MenuItemPL {
+            ContextMenuItemPL {
                 text: app.tr("Remove")
                 onClicked: {
                     app.map.deletePoi(model.poiId);
@@ -124,8 +124,9 @@ PageListPL {
     headerExtra: Component {
         SearchFieldPL {
             id: searchField
+            anchors.horizontalCenter: parent.horizontalCenter
             placeholderText: app.tr("Search")
-            width: parent.width
+            width: parent.width - 2*app.styler.themeHorizontalPageMargin
             property string prevText: ""
             onTextChanged: {
                 var newText = searchField.text.trim().toLowerCase();
@@ -141,7 +142,7 @@ PageListPL {
     model: ListModel {}
 
     pageMenu: PageMenuPL {
-        MenuItemPL {
+        PageMenuItemPL {
             text: bookmarkedOnly ? app.tr("Show all") : app.tr("Show bookmarked")
             onClicked: {
                 bookmarkedOnly = !bookmarkedOnly;
