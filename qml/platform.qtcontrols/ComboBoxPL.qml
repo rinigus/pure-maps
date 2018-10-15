@@ -16,18 +16,52 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Sailfish.Silica 1.0
+import QtQuick 2.9
+import QtQuick.Controls 2.2
 
-ComboBox {
-    id: box
+Item {
+    id: item
+    height: Math.max(lab.height, val.height) + desc.height + desc.anchors.topMargin
+    width: parent.width
 
-    menu: ContextMenu {
-        Repeater {
-            model: box.model.length
-            MenuItem { text: box.model[index] }
+    property int   currentIndex
+    property alias description: desc.text
+    property alias model: val.model
+    property alias label: lab.text
+    property alias value: val.currentText
+
+    Label {
+        id: lab
+        anchors.baseline: val.baseline
+        anchors.left: parent.left
+    }
+
+    ComboBox {
+        id: val
+        anchors.left: lab.right
+        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.top: parent.top
+        font.pixelSize: app.styler.themeFontSizeMedium
+        property bool initialized: false
+        onCurrentIndexChanged: {
+            if (initialized && currentIndex != item.currentIndex)
+                item.currentIndex = currentIndex;
+        }
+        Component.onCompleted: {
+            currentIndex = item.currentIndex;
+            initialized = true;
         }
     }
 
-    property var model
+    Label {
+        id: desc
+        anchors.left: lab.right
+        anchors.right: parent.right
+        anchors.top: val.bottom
+        anchors.topMargin: text ? app.styler.themePaddingMedium : 0
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight : 0
+        visible: text
+        wrapMode: Text.WordWrap
+    }
 }

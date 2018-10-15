@@ -22,8 +22,12 @@ import "."
 
 Page {
     id: page
-    header: HeaderBarImpl { page: page }
+    header: HeaderBarImpl {
+        page: page
+        onAccepted: app.pages.navigateForward();
+    }
 
+    property bool          canNavigateForward: true
     default property alias content: itemCont.data
     readonly property bool empty: false
     property alias         pageMenu: page.footer

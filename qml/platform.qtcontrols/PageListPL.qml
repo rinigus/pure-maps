@@ -22,7 +22,10 @@ import "."
 
 Page {
     id: page
-    header: HeaderBarImpl { page: page }
+    header: HeaderBarImpl {
+        page: page
+        onAccepted: app.pages.navigateForward();
+    }
 
     property bool   active: page.status === StackView.Active
     property bool   canNavigateForward: true

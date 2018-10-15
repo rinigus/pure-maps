@@ -19,7 +19,35 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-Switch {
-    font.pixelSize: app.styler.themeFontSizeMedium
+Item {
+    id: item
+    height: sw.height + desc.height + desc.anchors.topMargin
+    width: parent.width
+
+    property alias checked: sw.checked
+    property alias description: desc.text
+    property alias text: sw.text
+
     property real leftMargin // ignoring this property
+
+    Switch {
+        id: sw
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        font.pixelSize: app.styler.themeFontSizeMedium
+        property real leftMargin // ignoring this property
+    }
+
+    Label {
+        id: desc
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: sw.bottom
+        anchors.topMargin: text ? app.styler.themePaddingMedium : 0
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight : 0
+        visible: text
+        wrapMode: Text.WordWrap
+    }
 }

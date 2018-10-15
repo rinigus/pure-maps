@@ -53,8 +53,8 @@ QtObject {
     property real themeItemSizeExtraSmall: themeFontSizeSmall * 3
 
     // paddings and page margins
-    property real themeHorizontalPageMargin: themeFontSizeExtraLarge
-    property real themePaddingLarge: themeFontSizeExtraLarge
+    property real themeHorizontalPageMargin: 1.25*themeFontSizeExtraLarge
+    property real themePaddingLarge: 0.75*themeFontSizeExtraLarge
     property real themePaddingMedium: 0.5*themeFontSizeLarge
     property real themePaddingSmall: 0.25*themeFontSizeSmall
 

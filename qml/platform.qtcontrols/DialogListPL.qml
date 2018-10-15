@@ -28,7 +28,9 @@ PageListPL {
         onAccepted: page.accepted();
     }
 
-    property bool isDialog: true
+    property alias canAccept: page.canNavigateForward
+    property bool  isDialog: true
+
     signal accepted
 
     onAccepted: app.pages.pop()

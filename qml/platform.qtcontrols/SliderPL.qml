@@ -16,8 +16,45 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Sailfish.Silica 1.0
+import QtQuick 2.9
+import QtQuick.Controls 2.2
 
-Slider {
+Item {
+    height: childrenRect.height
+    width: parent.width
+
+    property string description
+    property alias  label: lab.text
+    property alias  maximumValue: val.to
+    property alias  minimumValue: val.from
+    property alias  stepSize: val.stepSize
+    property alias  value: val.value
+    property string valueText
+
+    Label {
+        id: lab
+        anchors.left: parent.left
+        anchors.top: parent.top
+    }
+
+    Slider {
+        id: val
+        anchors.left: lab.right
+        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.verticalCenter: lab.verticalCenter
+        font.pixelSize: app.styler.themeFontSizeMedium
+    }
+
+    Label {
+        id: desc
+        anchors.left: lab.right
+        anchors.right: parent.right
+        anchors.top: val.bottom
+        anchors.topMargin: text ? app.styler.themePaddingMedium : 0
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight : 0
+        text: (valueText ? "[ " + valueText + " ] " : "") + description
+        visible: text
+        wrapMode: Text.WordWrap
+    }
 }

@@ -28,9 +28,10 @@ import QtQuick.Controls 2.2
 // will be looked from platform subfolder.
 
 QtObject {
-    property var attached
-    property int currentIndex: ps.depth
-    property var ps: null
+    property var  attached
+    property bool hasAttached: false
+    property int  currentIndex: ps.depth
+    property var  ps: null
 
     function completeAnimation() {
     }
@@ -54,6 +55,8 @@ QtObject {
         else last = ps.pop();
         if (attached && attached !== last && !last.isDialog)
             attached = undefined;
+        hasAttached = !!attached;
+        return last;
     }
 
     function previousPage() {
@@ -63,13 +66,15 @@ QtObject {
     function push(page, options, immediate) {
         var p = ps.push(page, options ? options : {}, immediate ? StackView.Immediate.Immediate : StackView.Animated);
         if (attached !== page && !p.isDialog) attached = undefined;
+        if (attached === page) hasAttached = false;
+        else hasAttached = !!attached;
         return p;
     }
 
     function pushAttached(page, options) {
         attached = page;
         if (typeof page === 'string') {
-            var pc = Qt.createComponent(pagefile);
+            var pc = Qt.createComponent(page);
             if (pc.status === Component.Error) {
                 console.log('Error while creating component');
                 console.log(pc.errorString());
@@ -78,6 +83,7 @@ QtObject {
             attached = pc.createObject(app, options ? options : {})
         }
         attached.visible = false;
+        hasAttached = true;
         return attached;
     }
 

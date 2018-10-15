@@ -28,8 +28,8 @@ ToolBar {
     id: bar
     visible: page && !(page.empty)
 
-    property alias acceptDescription: acceptButton.text
-    property var   page
+    property string acceptDescription
+    property var    page
 
     signal accepted
 
@@ -56,6 +56,7 @@ ToolBar {
         ToolButton {
             id: acceptButton
             font.pixelSize: app.styler.themeFontSizeExtraLarge
+            text: bar.acceptDescription + (app.pages.hasAttached ? "\u25b6" : "")
             visible: text
             enabled: page.canNavigateForward === true
             onClicked: {

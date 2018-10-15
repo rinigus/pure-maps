@@ -16,49 +16,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Sailfish.Silica 1.0
+import QtQuick 2.9
+import QtQuick.Controls 2.2
+import "."
 
-Dialog {
+PagePL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
-
-    property string acceptText
-    default property alias content: itemCont.data
-    property string title
-
-    signal pageStatusActivating
-    signal pageStatusActive
-    signal pageStatusInactive
-
-    SilicaFlickable {
-        id: flickable
-        anchors.fill: parent
-        contentHeight: title.height + 2 * app.styler.themePaddingLarge + itemCont.height
-
-        DialogHeader {
-            id: title
-            title: page.title
-            Component.onCompleted: {
-                if (page.acceptText) acceptText = page.acceptText;
-            }
-        }
-
-        Item {
-            id: itemCont
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: title.bottom
-            anchors.topMargin: app.styler.themePaddingLarge
-            height: childrenRect.height
-            width: parent.width
-        }
-
-        VerticalScrollDecorator { flickable: flickable }
+    header: HeaderBarImpl {
+        page: page
+        acceptDescription: page.acceptText
+        onAccepted: page.accepted();
     }
 
-    onStatusChanged: {
-        if (page.status === PageStatus.Activating) pageStatusActivating();
-        else if (page.status === PageStatus.Active) pageStatusActive();
-        else if (page.status === PageStatus.Inactive) pageStatusInactive()
+    property string acceptText: app.tr("Accept")
+    property alias canAccept: page.canNavigateForward
+    property bool  isDialog: true
+
+    signal accepted
+
+    onAccepted: app.pages.pop()
+
+    function accept() {
+        accepted();
     }
 }
