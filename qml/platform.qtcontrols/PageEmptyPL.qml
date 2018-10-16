@@ -21,6 +21,7 @@ import QtQuick.Controls 2.2
 
 Item {
     id: page
+    width: parent.width
 
     default property alias content: itemCont.data
     readonly property bool empty: true

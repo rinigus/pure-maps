@@ -16,8 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Sailfish.Silica 1.0
+import QtQuick 2.9
 
-ExpandingSectionGroup {
+Column {
+    width: parent.width
+    spacing: app.styler.themePaddingLarge
+
+    property int currentIndex // ignored
 }

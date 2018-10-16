@@ -26,6 +26,7 @@ Page {
         page: page
         onAccepted: app.pages.navigateForward();
     }
+    width: parent.width
 
     property bool   active: page.status === StackView.Active
     property bool   canNavigateForward: true
