@@ -20,11 +20,14 @@ import QtQuick 2.0
 import "../qml/platform"
 
 Column {
+    width: parent.width
+
     ValueButtonPL {
         id: nameButton
         label: app.tr("Name")
         height: app.styler.themeItemSizeSmall
         value: ""
+        width: parent.width
         onClicked: {
             var dialog = app.pages.push("../guides/osmscout_name.qml");
             dialog.accepted.connect(function() {

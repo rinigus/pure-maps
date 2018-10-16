@@ -27,7 +27,6 @@ PageListPL {
 
     property bool   loading: true
     property bool   populated: false
-    property string title: ""
 
     delegate: ListItemPL {
         id: listItem

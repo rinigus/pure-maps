@@ -124,10 +124,7 @@ PageListPL {
     headerExtra: Component {
         SearchFieldPL {
             id: searchField
-            anchors.left: parent.left
-            anchors.leftMargin: app.styler.themeHorizontalPageMargin
-            anchors.right: parent.right
-            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+            width: parent.width
             placeholderText: app.tr("Search")
             property string prevText: ""
             onTextChanged: {
