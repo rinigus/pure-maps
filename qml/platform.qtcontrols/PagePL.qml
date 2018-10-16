@@ -26,7 +26,7 @@ Page {
         page: page
         onAccepted: app.pages.navigateForward();
     }
-    width: parent.width
+    width: parent ? parent.width : undefined
 
     property bool          canNavigateForward: true
     default property alias content: itemCont.data
