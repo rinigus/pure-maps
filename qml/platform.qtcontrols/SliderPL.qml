@@ -23,13 +23,14 @@ Item {
     height: childrenRect.height
     width: parent.width
 
-    property string description
-    property alias  label: lab.text
-    property alias  maximumValue: val.to
-    property alias  minimumValue: val.from
-    property alias  stepSize: val.stepSize
-    property alias  value: val.value
-    property string valueText
+    property alias description: desc.text
+    property alias label: lab.text
+    property alias maximumValue: val.to
+    property alias minimumValue: val.from
+    property alias stepSize: val.stepSize
+    property alias value: val.value
+    property real  valueText
+    property int   valueTextDecimalPlaces: stepSize > 1 ? 0 : Math.round( Math.log(1.0 / stepSize) / Math.LN10 )
 
     Label {
         id: lab
@@ -46,6 +47,15 @@ Item {
     }
 
     Label {
+        id: valTxt
+        anchors.left: val.right
+        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.right: parent.right
+        anchors.baseline: lab.baseline
+        text: valueText.toFixed(valueTextDecimalPlaces)
+    }
+
+    Label {
         id: desc
         anchors.left: lab.right
         anchors.right: parent.right
@@ -53,7 +63,6 @@ Item {
         anchors.topMargin: text ? app.styler.themePaddingMedium : 0
         font.pixelSize: app.styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
-        text: (valueText ? "[ " + valueText + " ] " : "") + description
         visible: text
         wrapMode: Text.WordWrap
     }

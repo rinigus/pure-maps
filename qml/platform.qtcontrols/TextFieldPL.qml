@@ -19,9 +19,33 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-TextField {
+Item {
+    id: row
+
+    anchors.left: parent.left
+    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    anchors.right: parent.right
+    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    height: childrenRect.height
+
+    property alias inputMethodHints: entry.inputMethodHints
+    property alias label: lab.text
+    property alias placeholderText: entry.placeholderText
+    property alias text: entry.text
+
     signal enter
 
-//    EnterKey.iconSource: "image://theme/icon-m-enter-next"
-//    EnterKey.onClicked: enter();
+    Label {
+        id: lab
+        anchors.left: parent.left
+        anchors.top: parent.top
+    }
+
+    TextField {
+        id: entry
+        anchors.left: lab.right
+        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.right: parent.right
+        Keys.onReturnPressed: row.enter()
+    }
 }

@@ -83,7 +83,6 @@ DialogPL {
 
         TextFieldPL {
             id: phoneField
-            color: app.styler.themeHighlightColor
             inputMethodHints: Qt.ImhDialableCharactersOnly
             label: app.tr("Phone number")
             placeholderText: app.tr("Enter phone number")
@@ -107,7 +106,6 @@ DialogPL {
 
         TextAreaPL {
             id: textArea
-            label: app.tr("Additional info")
             placeholderText: app.tr("Enter additional info")
             text: poi.text ? poi.text : ""
             width: parent.width
