@@ -16,18 +16,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Sailfish.Silica 1.0
-import Sailfish.Pickers 1.0
+import QtQuick 2.9
+import QtQuick.Controls 2.2
+import QtQuick.Dialogs 1.2
+import "."
 
-FilePickerPage {
-    id: page
-
+PageEmptyPL {
+    property alias  nameFilters: dialog.nameFilters
     property string selectedFilepath
 
-    onSelectedContentPropertiesChanged: selectedFilepath = selectedContentProperties.filePath
-
-    function open() {
-        app.pages.push(page);
+    Label {
+        id: viewPlaceholder
+        anchors.fill: parent
+        anchors.margins: app.styler.themeHorizontalPageMargin
+        horizontalAlignment: Text.AlignHCenter
+        text: app.tr("Please select a file")
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WordWrap
     }
+
+    FileDialog {
+        id: dialog
+
+        onAccepted: {
+            var path = fileUrl.toString();
+            // remove prefixed "file://"
+            path = path.replace(/^(file:\/{2})/,"");
+            // unescape html codes like '%23' for '#'
+            selectedFilepath = decodeURIComponent(path);
+            app.pages.pop();
+        }
+
+        onRejected: app.pages.pop()
+    }
+
+    onPageStatusActive: dialog.open()
 }
