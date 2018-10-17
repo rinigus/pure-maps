@@ -21,12 +21,14 @@ import "../qml/platform"
 
 Column {
     id: settingsBlock
+    width: parent.width
 
     property string selectedFile
 
     ValueButtonPL {
         label: app.tr("File")
         value: selectedFile ? selectedFile : app.tr("None")
+        width: parent.width
         onClicked: app.pages.push(filePickerPage)
     }
 

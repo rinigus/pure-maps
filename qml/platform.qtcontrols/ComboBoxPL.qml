@@ -21,8 +21,11 @@ import QtQuick.Controls 2.2
 
 Item {
     id: item
+    anchors.left: parent.left
+    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    anchors.right: parent.right
+    anchors.rightMargin: app.styler.themeHorizontalPageMargin
     height: Math.max(lab.height, val.height) + desc.height + desc.anchors.topMargin
-    width: parent.width
 
     property int   currentIndex
     property alias description: desc.text

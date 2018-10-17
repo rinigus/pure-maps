@@ -33,6 +33,7 @@ Item {
         id: lab
         anchors.baseline: val.baseline
         anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
     }
 
     ItemDelegate {

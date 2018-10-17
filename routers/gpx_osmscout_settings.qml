@@ -28,6 +28,7 @@ Column {
     ValueButtonPL {
         label: app.tr("File")
         value: selectedFile ? selectedFile : app.tr("None")
+        width: parent.width
         onClicked: app.pages.push(filePickerPage)
     }
 
