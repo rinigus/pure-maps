@@ -21,11 +21,11 @@ import "../qml/platform"
 
 Column {
     id: settingsBlock
+    width: parent.width
 
     property string selectedFile
 
     ValueButtonPL {
-        anchors.horizontalCenter: parent.horizontalCenter
         label: app.tr("File")
         value: selectedFile ? selectedFile : app.tr("None")
         onClicked: app.pages.push(filePickerPage)
@@ -34,10 +34,10 @@ Column {
     Component {
         id: filePickerPage
         FilePickerPL {
-            id: pickler
+            id: picker
             nameFilters: [ '*.gpx' ]
             onSelectedFilepathChanged: {
-                settingsBlock.selectedFile = pickler.selectedFilepath
+                settingsBlock.selectedFile = picker.selectedFilepath
                 app.conf.set("routers.gpx_osmscout.file", settingsBlock.selectedFile);
             }
         }
