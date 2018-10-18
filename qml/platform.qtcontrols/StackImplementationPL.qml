@@ -37,7 +37,7 @@ QtObject {
     }
 
     function currentPage() {
-        return ps.currentPage;
+        return ps.currentItem;
     }
 
     function navigateForward(immediate) {
