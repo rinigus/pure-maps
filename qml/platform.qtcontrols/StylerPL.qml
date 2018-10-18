@@ -33,7 +33,7 @@ QtObject {
     // descriptive items
     property color themeHighlightColor: "black"
     // navigation items (to be clicked)
-    property color themePrimaryColor: "blue"
+    property color themePrimaryColor: "#020280"
     // navigation items, secondary
     property color themeSecondaryColor: "#4E4EFF"
     // descriptive items, secondary
