@@ -53,7 +53,7 @@ class Application:
 
     def has_mapmatching(self):
         """Return True if map matching requirements are met"""
-        return poor.util.requirement_found("harbour-osmscout-server")
+        return (poor.util.requirement_found("harbour-osmscout-server") or poor.util.requirement_found("osmscout-server"))
 
     def quit(self):
         """Quit the application."""
