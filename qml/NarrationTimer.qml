@@ -39,9 +39,11 @@ Timer {
         // Query maneuver narrative from Python and update status.
         var coord = map.position.coordinate;
         var now = Date.now() / 1000;
+        // avoid updating with invalid coordinate
+        if (coord === QtPositioning.coordinate()) return;
         if (now - timePrev < 60 && coord.distanceTo(timer.coordPrev) < 10) return;
         var accuracy = map.position.horizontalAccuracyValid ?
-            map.position.horizontalAccuracy : null;
+                    map.position.horizontalAccuracy : null;
         var args = [coord.longitude, coord.latitude, accuracy, app.mode === modes.navigate];
         py.call("poor.app.narrative.get_display", args, function(status) {
             app.updateNavigationStatus(status);
