@@ -108,7 +108,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: "image://theme/icon-m-share"
+            icon: app.styler.iconShare
             label: app.tr("Share location")
             onClicked: {
                 app.push("SharePage.qml", {
@@ -120,7 +120,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: "image://theme/icon-m-dot"
+            icon: app.styler.iconDot
             label: app.tr("Center on location")
             onClicked: {
                 map.setCenter(
@@ -132,7 +132,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: "image://theme/icon-m-car"
+            icon: app.styler.iconNavigate
             label: app.tr("Navigate To")
             onClicked: {
                 app.showMenu("RoutePage.qml", {
@@ -144,7 +144,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: "image://theme/icon-m-car"
+            icon: app.styler.iconNavigate
             label: app.tr("Navigate From")
             onClicked: {
                 app.showMenu("RoutePage.qml", {
@@ -156,7 +156,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: "image://theme/icon-m-whereami"
+            icon: app.styler.iconNearby
             label: app.tr("Nearby")
             onClicked: {
                 app.showMenu("NearbyPage.qml", {
@@ -186,7 +186,7 @@ PagePL {
                 anchors.top: parent.top
                 fillMode: Image.Pad
                 height: poi.phone ? implicitHeight : 0
-                source: poi.phone ? "image://theme/icon-m-phone" : ""
+                source: poi.phone ? app.styler.iconPhone : ""
             }
 
             LabelPL {
@@ -207,7 +207,7 @@ PagePL {
 
         IconListItem {
             height: poi.link ? implicitHeight + app.styler.themePaddingLarge : 0
-            icon: poi.link ? "image://theme/icon-m-link" : ""
+            icon: poi.link ? app.styler.iconWebLink : ""
             label: poi.link
             MouseArea {
                 anchors.fill: parent

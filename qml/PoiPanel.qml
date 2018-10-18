@@ -209,7 +209,7 @@ Rectangle {
         ]
 
         IconButtonPL {
-            icon.source: "image://theme/icon-m-about"
+            icon.source: app.styler.iconAbout
             onClicked: {
                 app.push("PoiInfoPage.qml", {
                              "active": active,
@@ -220,7 +220,7 @@ Rectangle {
 
         IconButtonPL {
             enabled: panel.active
-            icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
+            icon.source: bookmarked ? app.styler.iconFavoriteSelected  : app.styler.iconFavorite
             onClicked: {
                 bookmarked = !bookmarked;
                 map.bookmarkPoi(poiId, bookmarked);
@@ -228,7 +228,7 @@ Rectangle {
         }
 
         IconButtonPL {
-            icon.source: "image://theme/icon-m-car"
+            icon.source: app.styler.iconNavigate
             onClicked: {
                 if (coordinate === undefined) return;
                 panel.showMenu = false;
@@ -240,7 +240,7 @@ Rectangle {
         }
 
         IconButtonPL {
-            icon.source: "image://theme/icon-m-whereami"
+            icon.source: app.styler.iconNearby
             onClicked: {
                 if (coordinate === undefined) return;
                 panel.showMenu = false;
@@ -253,7 +253,7 @@ Rectangle {
 
         IconButtonPL {
             enabled: panel.active
-            icon.source: !panel.showMenu ? "image://theme/icon-m-delete" : ""
+            icon.source: !panel.showMenu ? app.styler.iconDelete : ""
             visible: !panel.showMenu
             onClicked: {
                 if (coordinate === undefined) return;
@@ -269,7 +269,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: splitterItem.bottom
-        icon.source: panel.showMenu ? "image://theme/icon-m-menu" : ""
+        icon.source: panel.showMenu ? app.styler.iconMenu : ""
         visible: panel.showMenu
         onClicked: {
             app.showMenu();

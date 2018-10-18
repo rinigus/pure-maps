@@ -45,7 +45,7 @@ PagePL {
         width: parent.width
 
         IconListItem {
-            icon: "image://theme/icon-m-search"
+            icon: app.styler.iconSearch
             label: app.tr("Search")
             onClicked: {
                 app.pushMain("GeocodePage.qml");
@@ -54,25 +54,25 @@ PagePL {
         }
 
         IconListItem {
-            icon: "image://theme/icon-m-car"
+            icon: app.styler.iconNavigate
             label: app.tr("Navigation")
             onClicked: app.pushMain("RoutePage.qml");
         }
 
         IconListItem {
-            icon: "image://theme/icon-m-whereami"
+            icon: app.styler.iconNearby
             label: app.tr("Nearby venues")
             onClicked: app.pushMain("NearbyPage.qml");
         }
 
         IconListItem {
-            icon: "image://theme/icon-m-favorite"
+            icon: app.styler.iconFavorite
             label: app.tr("Points of interest")
             onClicked: app.pushMain("PoiPage.qml");
         }
 
         IconListItem {
-            icon: "image://theme/icon-m-share"
+            icon: app.styler.iconShare
             label: app.tr("Share current position")
             BusyIndicatorSmallPL {
                 anchors.right: parent.right
@@ -93,7 +93,7 @@ PagePL {
         }
 
         IconListItem {
-            icon: "image://theme/icon-m-dot"
+            icon: app.styler.iconDot
             label: app.tr("Center on current position")
             onClicked: {
                 app.map.centerOnPosition();
@@ -102,7 +102,7 @@ PagePL {
         }
 
         IconListItem {
-            icon: "image://theme/icon-m-clear"
+            icon: app.styler.iconClear
             label: app.tr("Clear map")
             onClicked: {
                 if (app.mode !== modes.explore) app.setModeExplore();
@@ -112,7 +112,7 @@ PagePL {
         }
 
         IconListItem {
-            icon: "image://theme/icon-m-levels"
+            icon: app.styler.iconMaps
             label: app.tr("Maps")
             onClicked: app.pushMain("BasemapPage.qml");
         }

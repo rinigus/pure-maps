@@ -231,7 +231,7 @@ PagePL {
 
             ToolItemPL {
                 id: beginFollowMeItem
-                icon: app.mode === modes.followMe ? "image://theme/icon-m-clear" : "image://theme/icon-m-play"
+                icon: app.mode === modes.followMe ? app.styler.iconStop : app.styler.iconStart
                 text: app.mode === modes.followMe ? app.tr("Stop") : app.tr("Begin")
                 visible: followMe.checked
                 width: columnFollow.width

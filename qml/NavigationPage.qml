@@ -44,7 +44,7 @@ PagePL {
             ToolItemPL {
                 id: beginItem
                 width: row.itemWidth + app.styler.themeHorizontalPageMargin
-                icon: app.mode === modes.navigate ? "image://theme/icon-m-pause" : "image://theme/icon-m-play"
+                icon: app.mode === modes.navigate ? app.styler.iconPause : app.styler.iconStart
                 text: app.mode === modes.navigate ? app.tr("Pause") :
                                                     (app.navigationStarted ? app.tr("Resume") : app.tr("Begin"))
                 onClicked: {
@@ -57,7 +57,7 @@ PagePL {
             ToolItemPL {
                 id: rerouteItem
                 width: row.itemWidth
-                icon: "image://theme/icon-m-refresh"
+                icon: app.styler.iconRefresh
                 text: app.tr("Reroute")
                 onClicked: {
                     app.reroute();
@@ -68,7 +68,7 @@ PagePL {
             ToolItemPL {
                 id: clearItem
                 width: row.itemWidth + app.styler.themeHorizontalPageMargin
-                icon: "image://theme/icon-m-clear"
+                icon: app.styler.iconClear
                 text: app.tr("Clear")
                 onClicked: {
                     if (app.mode === modes.navigate) app.setModeExplore();
