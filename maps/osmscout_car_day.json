@@ -6,6 +6,6 @@
   "first_label_layer": "waterway-name",
   "format": "mapbox-gl",
   "name": "OSM Scout Car Day",
-  "requires": ["harbour-osmscout-server"],
+  "requires": ["harbour-osmscout-server", "osmscout-server"],
   "style_url": "http://localhost:8553/v1/mbgl/style?style=osmbright-car"
 }

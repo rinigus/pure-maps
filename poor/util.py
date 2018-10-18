@@ -330,7 +330,7 @@ def _get_providers(directory, default, active):
             provider = read_json(path)
             if provider.get("hidden", False): continue
             requires = provider.get("requires", [])
-            if not all(map(requirement_found, requires)): continue
+            if len(requires) and not any(map(requirement_found, requires)): continue
             provider["pid"] = pid
             provider["default"] = matches(pid, default)
             provider["active"] = matches(pid, active)
@@ -490,6 +490,7 @@ def requirement_found(name):
     """
     if os.path.isabs(name):
         return os.path.exists(name)
+    print("R:", name, shutil.which(name))
     return shutil.which(name) is not None
 
 def round_distance(meters, n=2):
