@@ -251,7 +251,7 @@ PagePL {
                 description: app.tr("Select mode of transportation. Only applies when Pure Maps is in follow me mode.")
                 label: app.tr("Mode of transportation")
                 model: [ app.tr("Car"), app.tr("Bicycle"), app.tr("Foot") ]
-                visible: app.hasMapMatching && followMe.checked
+                visible: followMe.checked
                 property string  value: "car"
                 property var     values: ["car", "bicycle", "foot"]
                 Component.onCompleted: {
@@ -274,7 +274,7 @@ PagePL {
                 stepSize: 0.1
                 value: app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
                 valueText: value
-                visible: app.hasMapMatching && followMe.checked
+                visible: followMe.checked
                 width: parent.width
                 onValueChanged: {
                     if (!mapmatchingComboBox.value) return;
