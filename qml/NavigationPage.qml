@@ -79,6 +79,10 @@ PagePL {
 
         }
 
+        Spacer {
+            height: app.styler.themePaddingLarge
+        }
+
         SectionHeaderPL {
             text: app.tr("Status")
         }
@@ -180,8 +184,16 @@ PagePL {
             }
         }
 
+        Spacer {
+            height: app.styler.themePaddingLarge
+        }
+
         SectionHeaderPL {
             text: app.tr("Options")
+        }
+
+        Spacer {
+            height: app.styler.themePaddingLarge
         }
 
         SliderPL {
