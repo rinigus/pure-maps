@@ -490,7 +490,6 @@ def requirement_found(name):
     """
     if os.path.isabs(name):
         return os.path.exists(name)
-    print("R:", name, shutil.which(name))
     return shutil.which(name) is not None
 
 def round_distance(meters, n=2):
