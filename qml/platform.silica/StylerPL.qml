@@ -35,6 +35,7 @@ QtObject {
     property color themePrimaryColor: Theme.primaryColor
     property color themeSecondaryColor: Theme.secondaryColor
     property color themeSecondaryHighlightColor: Theme.secondaryHighlightColor
+    property color blockBg: "#e6000000"
 
     // button sizes
     property real themeButtonWidthLarge: Theme.buttonWidthLarge

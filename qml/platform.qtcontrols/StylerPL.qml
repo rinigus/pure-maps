@@ -38,6 +38,9 @@ QtObject {
     property color themeSecondaryColor: "#4E4EFF"
     // descriptive items, secondary
     property color themeSecondaryHighlightColor: "#3E3E3E"
+    // block background (navigation, poi panel, bubble)
+    property color blockBg: "grey"
+
 
     // button sizes
     property real themeButtonWidthLarge: 256

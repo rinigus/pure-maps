@@ -23,7 +23,6 @@ StylerPL {
     id: styler
 
     property string bg            // main background color (scale bar, metrics)
-    property string blockBg       // background color for navigation, poi, bubble
     property string fg            // main foreground color (scale bar, metrics)
     property string iconVariant   // type of icons, let empty for default version, "white" for white icons
     property string maneuver      // maneuver circle inner color
@@ -44,7 +43,6 @@ StylerPL {
     }
 
     function defaults() {
-        blockBg = "#e6000000";
         bg = "#e6e6e6";
         fg = "black";
         iconVariant = "";
