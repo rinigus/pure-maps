@@ -24,108 +24,125 @@ PagePL {
     title: app.tr("Attribution")
 
     Column {
-        id: column
-        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: app.styler.themePaddingLarge
         width: parent.width
 
-        SectionHeaderPL {
-            text: app.tr("Maps")
-            visible: mapRepeater.model > 0
-        }
+        Column {
+            spacing: app.styler.themePaddingMedium
+            width: parent.width
 
-        Repeater {
-            id: mapRepeater
-            model: items.length
-            property var items: py.evaluate("poor.app.basemap.attribution")
-            delegate: ListItemPL {
-                id: listItem
-                contentHeight: app.styler.themeItemSizeSmall
-                property var item: mapRepeater.items[index]
-                ListItemLabel {
-                    color: listItem.highlighted ?
-                               app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-                    height: app.styler.themeItemSizeSmall
-                    text: item.text || ""
+            SectionHeaderPL {
+                text: app.tr("Maps")
+                visible: mapRepeater.model > 0
+            }
+
+            Repeater {
+                id: mapRepeater
+                model: items.length
+                property var items: py.evaluate("poor.app.basemap.attribution")
+                delegate: ListItemPL {
+                    id: listItem
+                    contentHeight: app.styler.themeItemSizeSmall
+                    property var item: mapRepeater.items[index]
+                    ListItemLabel {
+                        id: li
+                        color: listItem.highlighted ?
+                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                        height: app.styler.themeItemSizeSmall
+                        text: item.text || ""
+                    }
+                    onClicked: item.url &&
+                               Qt.openUrlExternally(item.url);
                 }
-                onClicked: item.url &&
-                           Qt.openUrlExternally(item.url);
             }
         }
 
-        SectionHeaderPL {
-            text: app.tr("Search")
-            visible: geocodeRepeater.model > 0
-        }
+        Column {
+            spacing: app.styler.themePaddingMedium
+            width: parent.width
+            SectionHeaderPL {
+                text: app.tr("Search")
+                visible: geocodeRepeater.model > 0
+            }
 
-        Repeater {
-            id: geocodeRepeater
-            model: items.length
-            property var items: py.call_sync(
-                                    "poor.app.get_attribution",
-                                    ["geocoder", map.getPoiProviders("geocode")])
-            delegate: ListItemPL {
-                id: listItem
-                contentHeight: app.styler.themeItemSizeSmall
-                property var item: geocodeRepeater.items[index]
-                ListItemLabel {
-                    color: listItem.highlighted ?
-                               app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-                    height: app.styler.themeItemSizeSmall
-                    text: item.text || ""
+            Repeater {
+                id: geocodeRepeater
+                model: items.length
+                property var items: py.call_sync(
+                                        "poor.app.get_attribution",
+                                        ["geocoder", map.getPoiProviders("geocode")])
+                delegate: ListItemPL {
+                    id: listItem
+                    contentHeight: app.styler.themeItemSizeSmall
+                    property var item: geocodeRepeater.items[index]
+                    ListItemLabel {
+                        color: listItem.highlighted ?
+                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                        height: app.styler.themeItemSizeSmall
+                        text: item.text || ""
+                    }
+                    onClicked: item.url &&
+                               Qt.openUrlExternally(item.url);
                 }
-                onClicked: item.url &&
-                           Qt.openUrlExternally(item.url);
             }
         }
 
-        SectionHeaderPL {
-            text: app.tr("Venues")
-            visible: venueRepeater.model > 0
-        }
+        Column {
+            spacing: app.styler.themePaddingMedium
+            width: parent.width
+            SectionHeaderPL {
+                text: app.tr("Venues")
+                visible: venueRepeater.model > 0
+            }
 
-        Repeater {
-            id: venueRepeater
-            model: items.length
-            property var items: py.call_sync(
-                                    "poor.app.get_attribution",
-                                    ["guide", map.getPoiProviders("venue")])
-            delegate: ListItemPL {
-                id: listItem
-                contentHeight: app.styler.themeItemSizeSmall
-                property var item: venueRepeater.items[index]
-                ListItemLabel {
-                    color: listItem.highlighted ?
-                               app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-                    height: app.styler.themeItemSizeSmall
-                    text: item.text || ""
+            Repeater {
+                id: venueRepeater
+                model: items.length
+                property var items: py.call_sync(
+                                        "poor.app.get_attribution",
+                                        ["guide", map.getPoiProviders("venue")])
+                delegate: ListItemPL {
+                    id: listItem
+                    contentHeight: app.styler.themeItemSizeSmall
+                    property var item: venueRepeater.items[index]
+                    ListItemLabel {
+                        color: listItem.highlighted ?
+                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                        height: app.styler.themeItemSizeSmall
+                        text: item.text || ""
+                    }
+                    onClicked: item.url &&
+                               Qt.openUrlExternally(item.url);
                 }
-                onClicked: item.url &&
-                           Qt.openUrlExternally(item.url);
             }
         }
 
-        SectionHeaderPL {
-            text: app.tr("Navigation")
-            visible: routeRepeater.model > 0
-        }
+        Column {
+            spacing: app.styler.themePaddingMedium
+            width: parent.width
+            SectionHeaderPL {
+                text: app.tr("Navigation")
+                visible: routeRepeater.model > 0
+            }
 
-        Repeater {
-            id: routeRepeater
-            model: items.length
-            property var items: map.route && map.route.provider ?
-                                    py.call_sync("poor.app.get_attribution", ["router", [map.route.provider]]) : []
-            delegate: ListItemPL {
-                id: listItem
-                contentHeight: app.styler.themeItemSizeSmall
-                property var item: routeRepeater.items[index]
-                ListItemLabel {
-                    color: listItem.highlighted ?
-                               app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-                    height: app.styler.themeItemSizeSmall
-                    text: item.text || ""
+            Repeater {
+                id: routeRepeater
+                model: items.length
+                property var items: map.route && map.route.provider ?
+                                        py.call_sync("poor.app.get_attribution", ["router", [map.route.provider]]) : []
+                delegate: ListItemPL {
+                    id: listItem
+                    contentHeight: app.styler.themeItemSizeSmall
+                    property var item: routeRepeater.items[index]
+                    ListItemLabel {
+                        color: listItem.highlighted ?
+                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                        height: app.styler.themeItemSizeSmall
+                        text: item.text || ""
+                    }
+                    onClicked: item.url &&
+                               Qt.openUrlExternally(item.url);
                 }
-                onClicked: item.url &&
-                           Qt.openUrlExternally(item.url);
             }
         }
     }

@@ -30,6 +30,7 @@ DialogPL {
 
     Column {
         id: column
+        spacing: app.styler.themePaddingMedium
         width: page.width
 
         SectionHeaderPL {
@@ -55,6 +56,10 @@ DialogPL {
             onEnter: addressField.focus = true
         }
 
+        Spacer {
+            height: app.styler.themePaddingMedium
+        }
+
         SectionHeaderPL {
             text: app.tr("Address")
         }
@@ -75,6 +80,10 @@ DialogPL {
             text: poi.postcode ? poi.postcode : ""
             width: parent.width
             onEnter: phoneField.focus = true
+        }
+
+        Spacer {
+            height: app.styler.themePaddingMedium
         }
 
         SectionHeaderPL {
@@ -100,6 +109,10 @@ DialogPL {
             onEnter: textArea.focus = true
         }
 
+        Spacer {
+            height: app.styler.themePaddingMedium
+        }
+
         SectionHeaderPL {
             text: app.tr("Additional info")
         }
@@ -108,7 +121,6 @@ DialogPL {
             id: textArea
             placeholderText: app.tr("Enter additional info")
             text: poi.text ? poi.text : ""
-            width: parent.width
         }
 
         function accepted() {

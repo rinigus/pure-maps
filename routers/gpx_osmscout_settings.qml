@@ -21,6 +21,7 @@ import "../qml/platform"
 
 Column {
     id: settingsBlock
+    spacing: app.styler.themePaddingLarge
     width: parent.width
 
     property string selectedFile

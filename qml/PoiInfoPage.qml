@@ -48,6 +48,7 @@ PagePL {
     Column {
         id: column
         anchors.horizontalCenter: parent.horizontalCenter
+        spacing: app.styler.themePaddingMedium
         width: parent.width
 
         ListItemLabel {
@@ -67,6 +68,10 @@ PagePL {
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
+        }
+
+        Spacer {
+            height: app.styler.themePaddingMedium
         }
 
         SectionHeaderPL {
@@ -90,6 +95,10 @@ PagePL {
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
+        }
+
+        Spacer {
+            height: app.styler.themePaddingMedium
         }
 
         SectionHeaderPL {

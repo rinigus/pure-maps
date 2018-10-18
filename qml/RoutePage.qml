@@ -67,11 +67,13 @@ PagePL {
         id: column
         anchors.left: parent.left
         anchors.right: parent.right
+        spacing: app.styler.themePaddingLarge
 
         Column {
             id: columnRouter
             anchors.left: parent.left
             anchors.right: parent.right
+            spacing: app.styler.themePaddingMedium
             visible: !followMe.checked
 
             property var  settings: null
@@ -212,6 +214,7 @@ PagePL {
             id: columnFollow
             anchors.left: parent.left
             anchors.right: parent.right
+            spacing: app.styler.themePaddingMedium
 
             /////////////////
             // Follow Me mode

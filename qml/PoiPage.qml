@@ -31,11 +31,17 @@ PageListPL {
 
     delegate: ListItemPL {
         id: listItem
-        contentHeight: titleItem.height + detailsItem.height + textItem.height + app.styler.themePaddingLarge
+        contentHeight: titleItem.height + detailsItem.height + textItem.height + spacer.height*2
+
+        Spacer {
+            id: spacer
+            height: app.styler.themePaddingLarge/2
+        }
 
         ListItemLabel {
             id: titleItem
             anchors.leftMargin: page.searchField.textLeftMargin
+            anchors.top: spacer.bottom
             color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
             height: implicitHeight + app.styler.themePaddingSmall
             text: (model.title ? model.title : app.tr("Unnamed point")) + (model.bookmarked ? " ☆" : "")

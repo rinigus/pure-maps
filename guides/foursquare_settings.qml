@@ -20,7 +20,9 @@ import QtQuick 2.0
 import "../qml/platform"
 
 Column {
-
+    spacing: app.styler.themePaddingLarge
+    width: parent.width
+    
     ComboBoxPL {
         id: closestComboBox
         label: app.tr("Prefer")

@@ -22,10 +22,6 @@ import QtQuick.Controls 2.2
 Item {
     id: row
 
-    anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
-    anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
     height: childrenRect.height
 
     property alias inputMethodHints: entry.inputMethodHints
@@ -38,7 +34,8 @@ Item {
     Label {
         id: lab
         anchors.left: parent.left
-        anchors.top: parent.top
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.baseline: entry.baseline
     }
 
     TextField {
@@ -46,6 +43,7 @@ Item {
         anchors.left: lab.right
         anchors.leftMargin: app.styler.themePaddingMedium
         anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         Keys.onReturnPressed: row.enter()
     }
 }

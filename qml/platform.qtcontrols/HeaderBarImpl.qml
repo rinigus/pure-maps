@@ -35,10 +35,11 @@ ToolBar {
 
     RowLayout {
         anchors.fill: parent
+        spacing: app.styler.themePaddingLarge
 
         ToolButton {
             id: toolButton
-            text: "\u25C0"
+            text: "\u25C0 "
             font.pointSize: app.styler.themeFontSizeExtraLarge
             onClicked: app.pages.pop()
         }

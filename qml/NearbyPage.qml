@@ -50,6 +50,7 @@ PagePL {
         id: column
         anchors.left: parent.left
         anchors.right: parent.right
+        spacing: app.styler.themePaddingMedium
 
         property var settings: null
 

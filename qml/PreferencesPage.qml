@@ -35,6 +35,7 @@ PagePL {
                 id: sectionGeneral
                 title: app.tr("General")
                 content.sourceComponent: Column {
+                    spacing: app.styler.themePaddingMedium
                     width: sectionGeneral.width
 
                     ComboBoxPL {
@@ -97,6 +98,7 @@ PagePL {
                 id: sectionExplore
                 title: app.tr("Map view")
                 content.sourceComponent: Column {
+                    spacing: app.styler.themePaddingMedium
                     width: sectionExplore.width
 
                     ComboBoxPL {
@@ -141,6 +143,7 @@ PagePL {
                 id: sectionNavigate
                 title: app.tr("Navigation")
                 content.sourceComponent: Column {
+                    spacing: app.styler.themePaddingMedium
                     width: sectionNavigate.width
 
                     TextSwitchPL {
@@ -261,6 +264,7 @@ PagePL {
                 id: sectionDevelop
                 title: app.tr("Development")
                 content.sourceComponent: Column {
+                    spacing: app.styler.themePaddingMedium
                     width: sectionDevelop.width
 
                     ListItemLabel {
