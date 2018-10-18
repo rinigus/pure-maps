@@ -30,6 +30,10 @@ QtObject {
     property int  themeFontSizeExtraSmall: Math.round(themeFontSizeMedium*0.7)
 
     // colors
+    // block background (navigation, poi panel, bubble)
+    property color blockBg: "#CCCCCC"
+    // variant of navigation icons
+    property string navigationIconsVariant: "black"
     // descriptive items
     property color themeHighlightColor: "black"
     // navigation items (to be clicked)
@@ -38,8 +42,6 @@ QtObject {
     property color themeSecondaryColor: "#4E4EFF"
     // descriptive items, secondary
     property color themeSecondaryHighlightColor: "#3E3E3E"
-    // block background (navigation, poi panel, bubble)
-    property color blockBg: "grey"
 
 
     // button sizes
@@ -47,8 +49,8 @@ QtObject {
     property real themeButtonWidthMedium: 180
 
     // icon sizes
-    property real themeIconSizeLarge: themeFontSizeExtraLarge
-    property real themeIconSizeMedium: themeFontSizeLarge
+    property real themeIconSizeLarge: 2.5*themeFontSizeLarge
+    property real themeIconSizeMedium: 2*themeFontSizeLarge
 
     // item sizes
     property real themeItemSizeLarge: themeFontSizeLarge * 3

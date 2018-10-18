@@ -221,7 +221,7 @@ Rectangle {
         height: block.notify ? sourceSize.height : 0
         opacity: 0.9
         smooth: true
-        source: block.notify ? "icons/navigation/%1.svg".arg(block.icon || "flag") : ""
+        source: block.notify ? "icons/navigation/%1-%2.svg".arg(block.icon || "flag").arg(app.styler.navigationIconsVariant) : ""
         sourceSize.height: (app.screenLarge ? 1.7 : 1) * app.styler.themeIconSizeLarge
         sourceSize.width: (app.screenLarge ? 1.7 : 1) * app.styler.themeIconSizeLarge
         states: [

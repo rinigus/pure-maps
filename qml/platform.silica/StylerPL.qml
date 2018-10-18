@@ -31,11 +31,18 @@ QtObject {
     property int  themeFontSizeExtraSmall: Theme.fontSizeExtraSmall
 
     // colors
-    property color themeHighlightColor: Theme.highlightColor
-    property color themePrimaryColor: Theme.primaryColor
-    property color themeSecondaryColor: Theme.secondaryColor
-    property color themeSecondaryHighlightColor: Theme.secondaryHighlightColor
+    // block background (navigation, poi panel, bubble)
     property color blockBg: "#e6000000"
+    // variant of navigation icons
+    property string navigationIconsVariant: "white"
+    // descriptive items
+    property color themeHighlightColor: Theme.highlightColor
+    // navigation items (to be clicked)
+    property color themePrimaryColor: Theme.primaryColor
+    // navigation items, secondary
+    property color themeSecondaryColor: Theme.secondaryColor
+    // descriptive items, secondary
+    property color themeSecondaryHighlightColor: Theme.secondaryHighlightColor
 
     // button sizes
     property real themeButtonWidthLarge: Theme.buttonWidthLarge

@@ -45,7 +45,7 @@ PageListPL {
             horizontalAlignment: Image.AlignRight
             opacity: 0.9
             smooth: true
-            source: "icons/navigation/%1.svg".arg(model.icon)
+            source: "icons/navigation/%1-%2.svg".arg(model.icon).arg(app.styler.navigationIconsVariant)
             sourceSize.height: app.styler.themeIconSizeMedium
             sourceSize.width: app.styler.themeIconSizeMedium
             verticalAlignment: Image.AlignTop
