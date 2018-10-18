@@ -62,7 +62,7 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: val.bottom
-        anchors.topMargin: text ? app.styler.themePaddingMedium : 0
+        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
         font.pixelSize: app.styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
         visible: text
