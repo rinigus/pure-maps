@@ -25,29 +25,38 @@ import QtQuick.Controls 2.2
 //    menu
 //
 // signals: clicked
-ItemDelegate {
-    id: item
-
-    height: contentHeight
+Item {
+    height: item.height
     width: parent.width
 
     property real contentHeight
     property var  menu
 
-    MouseArea {
-        anchors.fill: parent
-        acceptedButtons: Qt.RightButton
-        propagateComposedEvents: true
-        onClicked: {
-            if (!menu) return
-            menu.x = mouse.x
-            menu.y = mouse.y
-            menu.visibleChanged.connect(function (){
-                item.highlighted = menu.visible;
-            })
-            menu.open();
+    signal clicked
+
+    ItemDelegate {
+        id: item
+
+        height: contentHeight
+        width: parent.width
+
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.RightButton
+            propagateComposedEvents: true
+            onClicked: {
+                if (!menu) return
+                menu.x = mouse.x
+                menu.y = mouse.y
+                menu.visibleChanged.connect(function (){
+                    item.highlighted = menu.visible;
+                })
+                menu.open();
+            }
+            onPressed: item.highlighted = pressed
+            onReleased: item.highlighted = pressed || (!!menu && menu.visible)
         }
-        onPressed: item.highlighted = pressed
-        onReleased: item.highlighted = pressed || (!!menu && menu.visible)
+
+        onClicked: parent.clicked()
     }
 }
