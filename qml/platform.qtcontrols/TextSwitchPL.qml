@@ -33,7 +33,9 @@ Item {
     Switch {
         id: sw
         anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
         anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: parent.top
         font.pixelSize: app.styler.themeFontSizeMedium
         property real leftMargin // ignoring this property
@@ -42,7 +44,9 @@ Item {
     Label {
         id: desc
         anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
         anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: sw.bottom
         anchors.topMargin: text ? app.styler.themePaddingMedium : 0
         font.pixelSize: app.styler.themeFontSizeSmall

@@ -21,7 +21,6 @@ import QtQuick.Controls 2.2
 
 Item {
     height: childrenRect.height
-    width: parent.width
 
     property alias description: desc.text
     property alias label: lab.text
@@ -35,6 +34,7 @@ Item {
     Label {
         id: lab
         anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
         anchors.top: parent.top
     }
 
@@ -51,6 +51,7 @@ Item {
         anchors.left: val.right
         anchors.leftMargin: app.styler.themePaddingMedium
         anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.baseline: lab.baseline
         text: valueText.toFixed(valueTextDecimalPlaces)
     }
@@ -59,6 +60,7 @@ Item {
         id: desc
         anchors.left: lab.right
         anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: val.bottom
         anchors.topMargin: text ? app.styler.themePaddingMedium : 0
         font.pixelSize: app.styler.themeFontSizeSmall

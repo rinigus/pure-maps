@@ -19,7 +19,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-Row {
+Item {
     id: row
 
     property alias placeholderText: field.placeholderText
@@ -28,12 +28,12 @@ Row {
 
     signal search
 
-//    Image {
-//    }
-
     TextField {
         id: field
-
+        anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         focus: true
         width: parent.width
         Keys.onReturnPressed: row.search()
