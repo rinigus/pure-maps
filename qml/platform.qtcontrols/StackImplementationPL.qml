@@ -30,7 +30,7 @@ import QtQuick.Controls 2.2
 QtObject {
     property var  attached
     property bool hasAttached: false
-    property int  currentIndex: ps.depth
+    property int  currentIndex: ps.depth-1
     property var  ps: null
 
     function completeAnimation() {
@@ -60,7 +60,7 @@ QtObject {
     }
 
     function previousPage() {
-        return ps.get(currentIndex-2);
+        return ps.get(currentIndex-1);
     }
 
     function push(page, options, immediate) {

@@ -56,7 +56,7 @@ ToolBar {
         ToolButton {
             id: acceptButton
             font.pixelSize: app.styler.themeFontSizeExtraLarge
-            text: bar.acceptDescription + (app.pages.hasAttached ? "\u25b6" : "")
+            text: bar.acceptDescription + (app.pages.hasAttached ? " \u25b6" : "")
             visible: text
             enabled: page.canNavigateForward === true
             onClicked: {
