@@ -21,6 +21,7 @@ import QtQuick.Controls 2.2
 
 Item {
     id: row
+    height: childrenRect.height
 
     property alias placeholderText: field.placeholderText
     property alias text: field.text

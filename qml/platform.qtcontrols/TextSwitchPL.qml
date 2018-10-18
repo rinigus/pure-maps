@@ -38,7 +38,6 @@ Item {
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: parent.top
         font.pixelSize: app.styler.themeFontSizeMedium
-        property real leftMargin // ignoring this property
     }
 
     Label {

@@ -49,8 +49,12 @@ Item {
     Label {
         id: desc
         anchors.left: lab.right
+        anchors.top: val.bottom
+        anchors.topMargin: app.styler.themePaddingSmall
         anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         font.pixelSize: app.styler.themeFontSizeSmall
+        visible: text
         wrapMode: Text.WordWrap
     }
 }
