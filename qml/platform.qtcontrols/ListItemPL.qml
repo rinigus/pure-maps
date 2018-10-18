@@ -37,11 +37,17 @@ ItemDelegate {
     MouseArea {
         anchors.fill: parent
         acceptedButtons: Qt.RightButton
+        propagateComposedEvents: true
         onClicked: {
             if (!menu) return
             menu.x = mouse.x
             menu.y = mouse.y
+            menu.visibleChanged.connect(function (){
+                item.highlighted = menu.visible;
+            })
             menu.open();
         }
+        onPressed: item.highlighted = pressed
+        onReleased: item.highlighted = pressed || (!!menu && menu.visible)
     }
 }
