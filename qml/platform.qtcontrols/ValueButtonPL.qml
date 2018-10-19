@@ -31,7 +31,7 @@ Item {
 
     Label {
         id: lab
-        anchors.baseline: val.baseline
+        anchors.verticalCenter: val.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
     }
