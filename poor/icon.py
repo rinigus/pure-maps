@@ -30,11 +30,13 @@ class IconFinder:
         """Initialize a :class:`IconFinder` instance."""
         self.themes = set()
         f = []
-        for b in os.path.expanduser(os.getenv("XDG_DATA_DIRS")).split(":"):
-            d = os.path.join(b, "icons")
-            if os.path.exists(d):
-                for t in glob.glob(d + "/*"):
-                    self.themes.add(os.path.basename(t))
+        xdg = os.getenv("XDG_DATA_DIRS")
+        if xdg is not None:
+            for b in os.path.expanduser(xdg).split(":"):
+                d = os.path.join(b, "icons")
+                if os.path.exists(d):
+                    for t in glob.glob(d + "/*"):
+                        self.themes.add(os.path.basename(t))
         self.themes = list(self.themes)
         self.themes.sort()
         self.set_theme()
