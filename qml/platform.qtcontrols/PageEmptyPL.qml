@@ -21,6 +21,7 @@ import QtQuick.Controls 2.2
 
 Item {
     id: page
+    height: parent ? parent.height : undefined
     width: parent ? parent.width : undefined
 
     default property alias content: itemCont.data
@@ -32,9 +33,18 @@ Item {
     signal pageStatusActive
     signal pageStatusInactive
 
+    HeaderBarImpl {
+        id: header
+        anchors.top: parent.top
+        page: page
+        onAccepted: app.pages.navigateForward();
+    }
+
     Item {
         id: itemCont
-        anchors.fill: page
+        anchors.bottom: parent.bottom
+        anchors.top: header.bottom
+        width: parent.width
     }
 
     onStatusChanged: {

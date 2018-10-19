@@ -26,7 +26,9 @@ import QtQuick.Layouts 1.3
 
 ToolBar {
     id: bar
-    visible: page && !(page.empty)
+    height: visible ? implicitHeight : 0
+    width: page.width
+    visible: page && (!(page.empty) || app.pages.currentIndex > 0)
 
     property string acceptDescription
     property var    page
