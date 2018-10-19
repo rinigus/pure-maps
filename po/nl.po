@@ -783,7 +783,7 @@ msgstr "Cachegeheugen wissen"
 
 #: qml/PreferencesPage.qml:115
 msgid "Map view"
-msgstr ""
+msgstr "Kaartweergave"
 
 #: qml/PreferencesPage.qml:121
 msgid ""

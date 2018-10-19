@@ -414,7 +414,7 @@ msgstr "Χωρίς αποτέλεσμα"
 
 #: qml/InitPage.qml:30
 msgid "Initializing"
-msgstr ""
+msgstr "Προετοιμασία εκκίνησης"
 
 #: qml/Map.qml:303 qml/Map.qml:398
 msgid "Clearing map"
@@ -790,7 +790,7 @@ msgstr "Εκκαθάριση προσωρινής μνήμης"
 
 #: qml/PreferencesPage.qml:115
 msgid "Map view"
-msgstr ""
+msgstr "Εμφάνιση χάρτη"
 
 #: qml/PreferencesPage.qml:121
 msgid ""
@@ -938,25 +938,27 @@ msgstr "Προς"
 
 #: qml/RoutePage.qml:195
 msgid "Follow the movement and show just in time information"
-msgstr ""
+msgstr "Ακολουθήστε την κίνηση και εμφανίστε πληροφορίες της στιγμής"
 
 #: qml/RoutePage.qml:197 qml/RoutePage.qml:269
 msgid "Follow me"
-msgstr ""
+msgstr "Ακολούθα με"
 
 #: qml/RoutePage.qml:206
 msgid "Stop"
-msgstr ""
+msgstr "Τερματισμός"
 
 #: qml/RoutePage.qml:222
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
+"Επιλέξετε τον τρόπο μεταφοράς. Εφαρμόζεται μόνο αν το Pure Maps είναι σε "
+"λειτουργία ακολούθησης."
 
 #: qml/RoutePage.qml:223
 msgid "Mode of transportation"
-msgstr ""
+msgstr "Τρόπος μεταφοράς"
 
 #: qml/RoutePage.qml:281
 msgid "Reverse endpoints"
@@ -1061,7 +1063,7 @@ msgstr "Λιγότερο περπάτημα"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
-msgstr ""
+msgstr "Αρχείο"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:39
 #: routers/ValhallaSettings.qml:134
@@ -1383,7 +1385,7 @@ msgstr "δημόσια συγκοινωνία"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr ""
+msgstr "Δρομολόγηση κατά μήκος GPX ίχνους  "
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
@@ -1397,7 +1399,7 @@ msgstr "με τα πόδια"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr ""
+msgstr "Δρομολόγηση κατά μήκος GPX ίχνους επεξεργασμένο από OSM Scout Server"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"

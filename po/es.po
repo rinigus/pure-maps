@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-03 20:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Carmen Fernández B., 2018\n"
+"Last-Translator: rinigus github, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -780,14 +780,14 @@ msgstr "Eliminar caché"
 
 #: qml/PreferencesPage.qml:115
 msgid "Map view"
-msgstr ""
+msgstr "Vista del mapa"
 
 #: qml/PreferencesPage.qml:121
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating."
 msgstr ""
-"Selecciona el modo de transporte. Sólo se aplica cuando Pure Maps no está "
+"Selecciona el medio de transporte. Sólo se aplica cuando Pure Maps no está "
 "navegando."
 
 #: qml/PreferencesPage.qml:122 qml/PreferencesPage.qml:202
@@ -927,25 +927,27 @@ msgstr "A"
 
 #: qml/RoutePage.qml:195
 msgid "Follow the movement and show just in time information"
-msgstr ""
+msgstr "Sigue el movimiento y muestra la información del momento"
 
 #: qml/RoutePage.qml:197 qml/RoutePage.qml:269
 msgid "Follow me"
-msgstr ""
+msgstr "Sígueme"
 
 #: qml/RoutePage.qml:206
 msgid "Stop"
-msgstr ""
+msgstr "Detener"
 
 #: qml/RoutePage.qml:222
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
+"Selecciona el medio de transporte. Sólo se aplica cuando Pure Maps está en "
+"modo sígueme."
 
 #: qml/RoutePage.qml:223
 msgid "Mode of transportation"
-msgstr ""
+msgstr "Medio de transporte"
 
 #: qml/RoutePage.qml:281
 msgid "Reverse endpoints"
@@ -1050,7 +1052,7 @@ msgstr "Menos caminar"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
-msgstr ""
+msgstr "Archivo"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:39
 #: routers/ValhallaSettings.qml:134
@@ -1371,7 +1373,7 @@ msgstr "transporte público"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr ""
+msgstr "Rutas en trayectos GPX"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
@@ -1385,12 +1387,12 @@ msgstr "a pie"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr ""
+msgstr "Rutas en trayectos GPX procesadas por OSM Scout Server"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"
-msgstr "Ruta basada en datos OpenStreetMap"
+msgstr "Rutas basadas en datos OpenStreetMap"
 
 #: standard input:20
 msgid "Routing by Valhalla based on OpenStreetMap data"
-msgstr "Cálculo de rutas con Valhalla basado en datos de OpenStreetMap"
+msgstr "Rutas con Valhalla basadas en datos de OpenStreetMap"
