@@ -17,13 +17,13 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
-ListItem {
+ListItemPL {
     id: item
     anchors.left: parent.left
     anchors.right: parent.right
-    contentHeight: Theme.itemSizeSmall
+    contentHeight: app.styler.themeItemSizeSmall
 
     property string icon: ""
     property string label: ""
@@ -31,22 +31,22 @@ ListItem {
     Image {
         id: icon
         anchors.left: parent.left
-        anchors.leftMargin: Theme.horizontalPageMargin
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
         fillMode: Image.Pad
-        height: Theme.itemSizeSmall
+        height: app.styler.themeItemSizeSmall
         source: item.icon
     }
 
-    Label {
+    LabelPL {
         id: label
         anchors.left: icon.right
-        anchors.leftMargin: Theme.paddingMedium
+        anchors.leftMargin: app.styler.themePaddingMedium
         anchors.right: parent.right
-        anchors.rightMargin: Theme.horizontalPageMargin
-        color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
-        height: Theme.itemSizeSmall
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        color: item.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+        height: app.styler.themeItemSizeSmall
         text: item.label
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignVCenter
     }
 

@@ -17,13 +17,13 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
-Label {
+LabelPL {
     anchors.left: parent.left
-    anchors.leftMargin: Theme.horizontalPageMargin
+    anchors.leftMargin: app.styler.themeHorizontalPageMargin
     anchors.right: parent.right
-    anchors.rightMargin: Theme.horizontalPageMargin
-    truncationMode: TruncationMode.Fade
+    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    truncMode: truncModes.fade
     verticalAlignment: Text.AlignVCenter
 }

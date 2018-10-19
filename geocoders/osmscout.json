@@ -6,5 +6,5 @@
   },
   "_description": "Search based on OpenStreetMap data",
   "name": "OSM Scout",
-  "requires": ["harbour-osmscout-server"]
+  "requires": ["harbour-osmscout-server", "osmscout-server"]
 }

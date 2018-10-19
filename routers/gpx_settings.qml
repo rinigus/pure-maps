@@ -17,40 +17,38 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
-import Sailfish.Pickers 1.0
+import "../qml/platform"
 
 Column {
     id: settingsBlock
+    spacing: app.styler.themePaddingLarge
+    width: parent.width
 
     property string selectedFile
 
-    ValueButton {
-        anchors.horizontalCenter: parent.horizontalCenter
+    ValueButtonPL {
         label: app.tr("File")
         value: selectedFile ? selectedFile : app.tr("None")
-        onClicked: pageStack.push(filePickerPage)
+        width: parent.width
+        onClicked: app.pages.push(filePickerPage)
     }
 
     Component {
         id: filePickerPage
-        FilePickerPage {
+        FilePickerPL {
+            id: picker
             nameFilters: [ '*.gpx' ]
-            onSelectedContentPropertiesChanged: {
-                settingsBlock.selectedFile = selectedContentProperties.filePath
+            onSelectedFilepathChanged: {
+                settingsBlock.selectedFile = picker.selectedFilepath
                 app.conf.set("routers.gpx.file", settingsBlock.selectedFile);
             }
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: typeComboBox
         label: app.tr("Type")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Car") }
-            MenuItem { text: app.tr("Bicycle") }
-            MenuItem { text: app.tr("Foot") }
-        }
+        model: [ app.tr("Car"), app.tr("Bicycle"), app.tr("Foot") ]
         property string current_key
         property var keys: ["car", "bicycle", "foot"]
         Component.onCompleted: {

@@ -17,33 +17,26 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "../qml/platform"
 
 Column {
     id: settingsBlock
+    spacing: app.styler.themePaddingLarge
+    width: parent.width
 
     property string router
 
-    SectionHeader {
+    SectionHeaderPL {
         text: app.tr("General options")
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: typeComboBox
         label: app.tr("Type")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Car") }
-            MenuItem { text: app.tr("Bicycle") }
-            MenuItem { text: app.tr("Foot") }
-            MenuItem { text: app.tr("Public transport") }
-            MenuItem { text: app.tr("Bus") }
-            MenuItem { text: app.tr("High-occupancy vehicle (HOV)") }
-            MenuItem { text: app.tr("Motorcycle") }
-            MenuItem { text: app.tr("Motor Scooter") }
-        }
+        model: [ app.tr("Car"), app.tr("Bicycle"), app.tr("Foot"), app.tr("Public transport"),
+                 app.tr("Bus"), app.tr("High-occupancy vehicle (HOV)"), app.tr("Motorcycle"), app.tr("Motor Scooter") ]
         property string current_key
         property var keys: ["auto", "bicycle", "pedestrian", "transit", "bus", "hov", "motorcycle", "motor_scooter"]
-        //property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov", "motorcycle", "motor_scooter"]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".type");
             var index = typeComboBox.keys.indexOf(key);
@@ -57,26 +50,14 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: langComboBox
         label: app.tr("Language")
-        menu: ContextMenu {
-            // XXX: We need something more complicated here in order to
-            // have the languages in alphabetical order after translation.
-            MenuItem { text: app.tr("Catalan") }
-            MenuItem { text: app.tr("Czech") }
-            MenuItem { text: app.tr("English") }
-            MenuItem { text: app.tr("English Pirate") }
-            MenuItem { text: app.tr("French") }
-            MenuItem { text: app.tr("German") }
-            MenuItem { text: app.tr("Hindi") }
-            MenuItem { text: app.tr("Italian") }
-            MenuItem { text: app.tr("Portuguese") }
-            MenuItem { text: app.tr("Russian") }
-            MenuItem { text: app.tr("Slovenian") }
-            MenuItem { text: app.tr("Spanish") }
-            MenuItem { text: app.tr("Swedish") }
-        }
+        // XXX: We need something more complicated here in order to
+        // have the languages in alphabetical order after translation.
+        model: [ app.tr("Catalan"), app.tr("Czech"), app.tr("English"), app.tr("English Pirate"),
+            app.tr("French"), app.tr("German"), app.tr("Hindi"), app.tr("Italian"), app.tr("Portuguese"),
+            app.tr("Russian"), app.tr("Slovenian"), app.tr("Spanish"), app.tr("Swedish") ]
         property var keys: ["ca", "cs", "en", "en-US-x-pirate", "fr", "de", "hi", "it", "pt", "ru", "sl", "es", "sv"]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".language");
@@ -89,11 +70,11 @@ Column {
         }
     }
 
-    SectionHeader {
+    SectionHeaderPL {
         text: app.tr("Advanced options")
     }
 
-    TextSwitch {
+    TextSwitchPL {
         id: autoShorterSwitch
         anchors.left: parent.left
         anchors.right: parent.right
@@ -106,15 +87,10 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: bicycleTypeComboBox
         label: app.tr("Bicycle type")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Road") }
-            MenuItem { text: app.tr("Hybrid or City (default)") }
-            MenuItem { text: app.tr("Cross") }
-            MenuItem { text: app.tr("Mountain") }
-        }
+        model: [ app.tr("Road"), app.tr("Hybrid or City (default)"), app.tr("Cross"), app.tr("Mountain") ]
         visible: typeComboBox.current_key == "bicycle"
         property var keys: ["Road", "Hybrid", "Cross", "Mountain"]
         Component.onCompleted: {
@@ -128,17 +104,11 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: useBusComboBox
         description: app.tr("Your desire to use buses.")
         label: app.tr("Bus")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid") }
-            MenuItem { text: app.tr("Prefer to avoid") }
-            MenuItem { text: app.tr("No preference (default)") }
-            MenuItem { text: app.tr("Incline") }
-            MenuItem { text: app.tr("Prefer") }
-        }
+        model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"), app.tr("Incline"), app.tr("Prefer") ]
         visible: typeComboBox.current_key == "transit"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
@@ -151,18 +121,12 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: maxHikingDifficultyComboBox
         description: app.tr("The maximum difficulty of hiking trails that is allowed.")
         label: app.tr("Hiking difficulty")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Walking") }
-            MenuItem { text: app.tr("Hiking (default)") }
-            MenuItem { text: app.tr("Mountain hiking") }
-            MenuItem { text: app.tr("Demanding mountain hiking") }
-            MenuItem { text: app.tr("Alpine hiking") }
-            MenuItem { text: app.tr("Demanding alpine hiking") }
-        }
+        model: [ app.tr("Walking"), app.tr("Hiking (default)"), app.tr("Mountain hiking"),
+            app.tr("Demanding mountain hiking"), app.tr("Alpine hiking"), app.tr("Demanding alpine hiking") ]
         visible: typeComboBox.current_key == "pedestrian"
         property var keys: [0, 1, 2, 3, 4, 5]
         Component.onCompleted: {
@@ -176,16 +140,11 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: useFerryComboBox
         label: app.tr("Ferries")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid") }
-            MenuItem { text: app.tr("Prefer to avoid") }
-            MenuItem { text: app.tr("No preference (default)") }
-            MenuItem { text: app.tr("Incline") }
-            MenuItem { text: app.tr("Prefer") }
-        }
+        model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"),
+            app.tr("Incline"), app.tr("Prefer") ]
         visible: typeComboBox.current_key != "transit"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
@@ -198,16 +157,11 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: useHighwaysComboBox
         label: app.tr("Highways")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid") }
-            MenuItem { text: app.tr("Prefer to avoid") }
-            MenuItem { text: app.tr("No preference") }
-            MenuItem { text: app.tr("Incline") }
-            MenuItem { text: app.tr("Prefer (default)") }
-        }
+        model: [app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference"),
+            app.tr("Incline"), app.tr("Prefer (default)") ]
         visible: typeComboBox.current_key == "auto" || typeComboBox.current_key == "bus" || typeComboBox.current_key == "hov" || typeComboBox.current_key == "motorcycle" || typeComboBox.current_key == "motor_scooter"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
@@ -220,15 +174,11 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: useHillsComboBox
         description: app.tr("Your desire to tackle hills. When avoiding hills and steep grades, longer (time and distance) routes can be selected. By allowing hills, it indicates you do not fear hills and steeper grades.")
         label: app.tr("Hills")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid") }
-            MenuItem { text: app.tr("No preference (default)") }
-            MenuItem { text: app.tr("Allow") }
-        }
+        model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Allow") ]
         visible: typeComboBox.current_key == "bicycle" || typeComboBox.current_key == "motor_scooter"
         property var keys: [0.0, 0.5, 1.0]
         Component.onCompleted: {
@@ -241,16 +191,11 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: usePrimaryComboBox
         label: app.tr("Primary roads")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid") }
-            MenuItem { text: app.tr("Prefer to avoid") }
-            MenuItem { text: app.tr("No preference (default)") }
-            MenuItem { text: app.tr("Incline") }
-            MenuItem { text: app.tr("Prefer") }
-        }
+        model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"),
+            app.tr("Incline"), app.tr("Prefer") ]
         visible: typeComboBox.current_key == "motor_scooter"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
@@ -263,17 +208,12 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: useRailComboBox
         description: app.tr("Your desire to use rail/subway/metro.")
         label: app.tr("Rail")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid") }
-            MenuItem { text: app.tr("Prefer to avoid") }
-            MenuItem { text: app.tr("No preference (default)") }
-            MenuItem { text: app.tr("Incline") }
-            MenuItem { text: app.tr("Prefer") }
-        }
+        model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"),
+            app.tr("Incline"), app.tr("Prefer") ]
         visible: typeComboBox.current_key == "transit"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
@@ -286,15 +226,11 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: useRoadsComboBox
         description: app.tr("Your propensity to use roads alongside other vehicles.")
         label: app.tr("Roads")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid") }
-            MenuItem { text: app.tr("No preference (default)") }
-            MenuItem { text: app.tr("Allow") }
-        }
+        model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Prefer") ]
         visible: typeComboBox.current_key == "bicycle"
         property var keys: [0.0, 0.5, 1.0]
         Component.onCompleted: {
@@ -307,14 +243,10 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: useTollsComboBox
         label: app.tr("Tolls")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid") }
-            MenuItem { text: app.tr("No preference (default)") }
-            MenuItem { text: app.tr("Allow") }
-        }
+        model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Prefer") ]
         visible: typeComboBox.current_key == "auto" || typeComboBox.current_key == "bus" || typeComboBox.current_key == "hov" || typeComboBox.current_key == "motorcycle" || typeComboBox.current_key == "motor_scooter"
         property var keys: [0.0, 0.5, 1.0]
         Component.onCompleted: {
@@ -327,17 +259,12 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: useTrailsComboBox
         description: app.tr("Your desire for adventure. When preferred, router will tend to avoid major roads and route on secondary roads, sometimes on using trails, tracks, unclassified roads or roads with bad surfaces.")
         label: app.tr("Trails")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid (default)") }
-            MenuItem { text: app.tr("Prefer to avoid") }
-            MenuItem { text: app.tr("No preference") }
-            MenuItem { text: app.tr("Incline") }
-            MenuItem { text: app.tr("Prefer") }
-        }
+        model: [ app.tr("Avoid (default)"), app.tr("Prefer to avoid"), app.tr("No preference"),
+            app.tr("Incline"), app.tr("Prefer") ]
         visible: typeComboBox.current_key == "motorcycle"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
@@ -350,14 +277,10 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: useTransfersComboBox
         label: app.tr("Transfers")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Avoid") }
-            MenuItem { text: app.tr("No preference (default)") }
-            MenuItem { text: app.tr("Allow") }
-        }
+        model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Prefer") ]
         visible: typeComboBox.current_key == "transit"
         property var keys: [0.0, 0.5, 1.0]
         Component.onCompleted: {

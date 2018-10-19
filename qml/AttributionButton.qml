@@ -17,9 +17,9 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
-IconButton {
+IconButtonPL {
     id: attributionButton
     anchors.left: parent.left
     anchors.top: navigationBlock.bottom

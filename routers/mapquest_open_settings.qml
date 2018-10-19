@@ -17,18 +17,14 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "../qml/platform"
 
 Column {
 
-    ComboBox {
+    ComboBoxPL {
         id: typeComboBox
         label: app.tr("Type")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Car") }
-            MenuItem { text: app.tr("Bicycle") }
-            MenuItem { text: app.tr("Foot") }
-        }
+        model: [ app.tr("Car"), app.tr("Bicycle"), app.tr("Foot") ]
         property var keys: ["fastest", "bicycle", "pedestrian"]
         Component.onCompleted: {
             var key = app.conf.get("routers.mapquest_open.type");
@@ -40,7 +36,7 @@ Column {
         }
     }
 
-    TextSwitch {
+    TextSwitchPL {
         id: tollSwitch
         anchors.left: parent.left
         anchors.right: parent.right
@@ -52,21 +48,14 @@ Column {
             app.conf.remove("routers.mapquest_open.avoids", "Toll Road");
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: langComboBox
         label: app.tr("Language")
-        menu: ContextMenu {
-            // XXX: We need something more complicated here in order to
-            // have the languages in alphabetical order after translation.
-            MenuItem { text: app.tr("English (UK)") }
-            MenuItem { text: app.tr("English (US)") }
-            MenuItem { text: app.tr("French (Canada)") }
-            MenuItem { text: app.tr("French (France)") }
-            MenuItem { text: app.tr("German") }
-            MenuItem { text: app.tr("Russian") }
-            MenuItem { text: app.tr("Spanish (Mexico)") }
-            MenuItem { text: app.tr("Spanish (Spain)") }
-        }
+        // XXX: We need something more complicated here in order to
+        // have the languages in alphabetical order after translation.
+        model: [ app.tr("English (UK)"), app.tr("English (US)"), app.tr("French (Canada)"),
+            app.tr("French (France)"), app.tr("German"), app.tr("Russian"), app.tr("Spanish (Mexico)"),
+            app.tr("Spanish (Spain)") ]
         property var keys: ["en_GB", "en_US", "fr_CA", "fr_FR", "de_DE", "ru_RU", "es_MX", "es_ES"]
         Component.onCompleted: {
             var key = app.conf.get("routers.mapquest_open.language");

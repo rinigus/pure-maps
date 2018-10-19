@@ -17,44 +17,39 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
-import Sailfish.Pickers 1.0
+import "../qml/platform"
 
 Column {
     id: settingsBlock
+    spacing: app.styler.themePaddingLarge
+    width: parent.width
 
     property string selectedFile
 
-    ValueButton {
-        anchors.horizontalCenter: parent.horizontalCenter
+    ValueButtonPL {
         label: app.tr("File")
         value: selectedFile ? selectedFile : app.tr("None")
-        onClicked: pageStack.push(filePickerPage)
+        width: parent.width
+        onClicked: app.pages.push(filePickerPage)
     }
 
     Component {
         id: filePickerPage
-        FilePickerPage {
+        FilePickerPL {
+            id: picker
             nameFilters: [ '*.gpx' ]
-            onSelectedContentPropertiesChanged: {
-                settingsBlock.selectedFile = selectedContentProperties.filePath
+            onSelectedFilepathChanged: {
+                settingsBlock.selectedFile = picker.selectedFilepath
                 app.conf.set("routers.gpx_osmscout.file", settingsBlock.selectedFile);
             }
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: typeComboBox
         label: app.tr("Type")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Car") }
-            MenuItem { text: app.tr("Bicycle") }
-            MenuItem { text: app.tr("Foot") }
-            MenuItem { text: app.tr("Bus") }
-            MenuItem { text: app.tr("High-occupancy vehicle (HOV)") }
-            MenuItem { text: app.tr("Motorcycle") }
-            MenuItem { text: app.tr("Motor Scooter") }
-        }
+        model: [ app.tr("Car"), app.tr("Bicycle"), app.tr("Foot"), app.tr("Bus"),
+            app.tr("High-occupancy vehicle (HOV)"), app.tr("Motorcycle"), app.tr("Motor Scooter") ]
         property string current_key
         property var keys: ["auto", "bicycle", "pedestrian", "bus", "hov", "motorcycle", "motor_scooter"]
         Component.onCompleted: {
@@ -70,26 +65,12 @@ Column {
         }
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: langComboBox
         label: app.tr("Language")
-        menu: ContextMenu {
-            // XXX: We need something more complicated here in order to
-            // have the languages in alphabetical order after translation.
-            MenuItem { text: app.tr("Catalan") }
-            MenuItem { text: app.tr("Czech") }
-            MenuItem { text: app.tr("English") }
-            MenuItem { text: app.tr("English Pirate") }
-            MenuItem { text: app.tr("French") }
-            MenuItem { text: app.tr("German") }
-            MenuItem { text: app.tr("Hindi") }
-            MenuItem { text: app.tr("Italian") }
-            MenuItem { text: app.tr("Portuguese") }
-            MenuItem { text: app.tr("Russian") }
-            MenuItem { text: app.tr("Slovenian") }
-            MenuItem { text: app.tr("Spanish") }
-            MenuItem { text: app.tr("Swedish") }
-        }
+        model: [ app.tr("Catalan"), app.tr("Czech"), app.tr("English"), app.tr("English Pirate"),
+            app.tr("French"), app.tr("German"), app.tr("Hindi"), app.tr("Italian"), app.tr("Portuguese"),
+            app.tr("Russian"), app.tr("Slovenian"), app.tr("Spanish"), app.tr("Swedish") ]
         property var keys: ["ca", "cs", "en", "en-US-x-pirate", "fr", "de", "hi", "it", "pt", "ru", "sl", "es", "sv"]
         Component.onCompleted: {
             var key = app.conf.get("routers.gpx_osmscout.language");

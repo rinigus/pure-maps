@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,146 +17,128 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
 import "js/util.js" as Util
 
-Page {
+PageListPL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
+    title: app.tr("Maneuvers")
 
     property bool partOfNavigationStack: true
 
-    SilicaListView {
-        id: listView
-        anchors.fill: parent
-        // Prevent list items from stealing focus.
-        currentIndex: -1
+    // Prevent list items from stealing focus.
+    currentIndex: -1
 
-        delegate: ListItem {
-            id: listItem
-            contentHeight: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height + 2.0*Theme.paddingLarge
+    delegate: ListItemPL {
+        id: listItem
+        contentHeight: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height + 2.0*app.styler.themePaddingLarge
 
-            Image {
-                id: icon
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin
-                anchors.top: spacer.bottom
-                fillMode: Image.Pad
-                height: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height
-                horizontalAlignment: Image.AlignRight
-                opacity: 0.9
-                smooth: true
-                source: "icons/navigation/%1.svg".arg(model.icon)
-                sourceSize.height: Theme.iconSizeMedium
-                sourceSize.width: Theme.iconSizeMedium
-                verticalAlignment: Image.AlignTop
-            }
-
-            Spacer {
-                id: spacer
-                height: Theme.paddingLarge
-            }
-
-            Label {
-                id: narrativeLabel
-                anchors.left: icon.right
-                anchors.leftMargin: Theme.paddingMedium
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
-                anchors.top: spacer.bottom
-                color: (model.active || listItem.highlighted) ?
-                    Theme.highlightColor : Theme.primaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingSmall
-                text: model.narrative
-                verticalAlignment: Text.AlignTop
-                wrapMode: Text.WordWrap
-            }
-
-            Label {
-                id: departLabel
-                anchors.left: icon.right
-                anchors.leftMargin: Theme.paddingMedium
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
-                anchors.top: narrativeLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: text ? implicitHeight + Theme.paddingSmall : 0
-                text: model.depart_instruction ? model.depart_instruction : ""
-                verticalAlignment: Text.AlignTop
-                wrapMode: Text.WordWrap
-            }
-
-            Label {
-                id: arriveLabel
-                anchors.left: icon.right
-                anchors.leftMargin: Theme.paddingMedium
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
-                anchors.top: departLabel.bottom
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: text ? implicitHeight + Theme.paddingSmall : 0
-                text: model.arrive_instruction ? model.arrive_instruction : ""
-                verticalAlignment: Text.AlignTop
-                wrapMode: Text.WordWrap
-            }
-
-            Label {
-                id: lengthLabel
-                anchors.left: icon.right
-                anchors.leftMargin: Theme.paddingMedium
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
-                anchors.top: arriveLabel.bottom
-                anchors.topMargin: Theme.paddingSmall
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingSmall
-                lineHeight: 1.15
-                text: model.index < listView.count - 1 ?
-                    app.tr("Continue for %1.", model.length) : ""
-                truncationMode: TruncationMode.Fade
-                verticalAlignment: Text.AlignTop
-            }
-
-            onClicked: {
-                app.setModeExplore();
-                map.setCenter(model.x, model.y);
-                map.zoomLevel < 15 && map.setZoomLevel(15);
-                app.hideNavigationPages();
-            }
-
+        Image {
+            id: icon
+            anchors.left: parent.left
+            anchors.leftMargin: app.styler.themeHorizontalPageMargin
+            anchors.top: spacer.bottom
+            fillMode: Image.Pad
+            height: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height
+            horizontalAlignment: Image.AlignRight
+            opacity: 0.9
+            smooth: true
+            source: "icons/navigation/%1-%2.svg".arg(model.icon).arg(app.styler.navigationIconsVariant)
+            sourceSize.height: app.styler.themeIconSizeMedium
+            sourceSize.width: app.styler.themeIconSizeMedium
+            verticalAlignment: Image.AlignTop
         }
 
-        footer: Spacer {
-            height: Theme.paddingMedium
+        Item {
+            id: spacer
+            height: app.styler.themePaddingLarge
         }
 
-        header: PageHeader {
-            title: app.tr("Maneuvers")
+        LabelPL {
+            id: narrativeLabel
+            anchors.left: icon.right
+            anchors.leftMargin: app.styler.themePaddingMedium
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+            anchors.top: spacer.bottom
+            color: (model.active || listItem.highlighted) ?
+                       app.styler.themeHighlightColor : app.styler.themePrimaryColor
+            font.pixelSize: app.styler.themeFontSizeSmall
+            height: implicitHeight + app.styler.themePaddingSmall
+            text: model.narrative
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.WordWrap
         }
 
-        model: ListModel {}
+        LabelPL {
+            id: departLabel
+            anchors.left: icon.right
+            anchors.leftMargin: app.styler.themePaddingMedium
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+            anchors.top: narrativeLabel.bottom
+            color: app.styler.themeSecondaryColor
+            font.pixelSize: app.styler.themeFontSizeSmall
+            height: text ? implicitHeight + app.styler.themePaddingSmall : 0
+            text: model.depart_instruction ? model.depart_instruction : ""
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.WordWrap
+        }
 
-        VerticalScrollDecorator {}
+        LabelPL {
+            id: arriveLabel
+            anchors.left: icon.right
+            anchors.leftMargin: app.styler.themePaddingMedium
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+            anchors.top: departLabel.bottom
+            color: app.styler.themeSecondaryColor
+            font.pixelSize: app.styler.themeFontSizeSmall
+            height: text ? implicitHeight + app.styler.themePaddingSmall : 0
+            text: model.arrive_instruction ? model.arrive_instruction : ""
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.WordWrap
+        }
+
+        LabelPL {
+            id: lengthLabel
+            anchors.left: icon.right
+            anchors.leftMargin: app.styler.themePaddingMedium
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+            anchors.top: arriveLabel.bottom
+            anchors.topMargin: app.styler.themePaddingSmall
+            color: app.styler.themeSecondaryColor
+            font.pixelSize: app.styler.themeFontSizeSmall
+            height: implicitHeight + app.styler.themePaddingSmall
+            lineHeight: 1.15
+            text: model.index < page.model.count - 1 ?
+                      app.tr("Continue for %1.", model.length) : ""
+            truncMode: truncModes.fade
+            verticalAlignment: Text.AlignTop
+        }
+
+        onClicked: {
+            app.setModeExplore();
+            map.setCenter(model.x, model.y);
+            map.zoomLevel < 15 && map.setZoomLevel(15);
+            app.hideNavigationPages();
+        }
 
     }
 
-    onStatusChanged: {
-        if (page.status === PageStatus.Activating)
-            page.populate();
-    }
+    model: ListModel {}
+
+    onPageStatusActivating: page.populate();
 
     function populate() {
         // Load narrative from the Python backend.
-        listView.model.clear();
+        page.model.clear();
         var args = [map.center.longitude, map.center.latitude];
         py.call("poor.app.narrative.get_maneuvers", args, function(maneuvers) {
-            Util.appendAll(listView.model, maneuvers);
+            Util.appendAll(page.model, maneuvers);
             app.narrativePageSeen && page.scrollToActive();
             app.narrativePageSeen = true;
         });
@@ -164,9 +146,9 @@ Page {
 
     function scrollToActive() {
         // Scroll view to the active maneuver.
-        for (var i = 0; i < listView.model.count; i++) {
-            listView.model.get(i).active &&
-                listView.positionViewAtIndex(i, ListView.Center);
+        for (var i = 0; i < page.model.count; i++) {
+            page.model.get(i).active &&
+                    page.positionViewAtIndex(i);
         }
     }
 

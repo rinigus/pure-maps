@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,15 +17,16 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
 import "js/util.js" as Util
 
-Dialog {
+DialogListPL {
     id: dialog
-    allowedOrientations: app.defaultAllowedOrientations
+
     canAccept: dialog.query.length > 0
+    currentIndex: -1
 
     property bool   autocompletePending: false
     property var    autocompletions: []
@@ -33,63 +34,52 @@ Dialog {
     property string prevAutocompleteQuery: "."
     property string query: ""
 
-    SilicaListView {
-        id: listView
-        anchors.fill: parent
-        // Prevent list items from stealing focus.
-        currentIndex: -1
+    delegate: ListItemPL {
+        id: listItem
+        contentHeight: visible ? app.styler.themeItemSizeSmall : 0
 
-        delegate: ListItem {
-            id: listItem
-            contentHeight: visible ? Theme.itemSizeSmall : 0
-            menu: contextMenu
-            visible: model.visible
-
-            ListItemLabel {
-                anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                height: Theme.itemSizeSmall
-                text: model.text
-                textFormat: Text.RichText
-            }
-
-            ContextMenu {
-                id: contextMenu
-                MenuItem {
-                    text: app.tr("Remove")
-                    onClicked: {
-                        py.call_sync("poor.app.history.remove_place_type", [model.type]);
-                        dialog.history = py.evaluate("poor.app.history.place_types");
-                        listView.model.remove(index);
-                    }
+        menu: ContextMenuPL {
+            id: contextMenu
+            ContextMenuItemPL {
+                text: app.tr("Remove")
+                onClicked: {
+                    py.call_sync("poor.app.history.remove_place_type", [model.type]);
+                    dialog.history = py.evaluate("poor.app.history.place_types");
+                    dialog.model.remove(index);
                 }
             }
-
-            ListView.onRemove: animateRemoval(listItem);
-
-            onClicked: {
-                listItem.focus = true;
-                dialog.query = model.type;
-                dialog.accept();
-            }
-
         }
 
-        header: Column {
-            height: dialogHeader.height + searchField.height
-            width: parent.width
+        visible: model.visible
 
-            DialogHeader {
-                id: dialogHeader
-            }
+        ListItemLabel {
+            anchors.leftMargin: dialog.searchField.textLeftMargin
+            color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+            height: app.styler.themeItemSizeSmall
+            text: model.text
+            textFormat: Text.RichText
+        }
 
-            SearchField {
+        ListView.onRemove: animateRemoval(listItem);
+
+        onClicked: {
+            listItem.focus = true;
+            dialog.query = model.type;
+            dialog.accept();
+        }
+
+    }
+
+    headerExtra: Component {
+        Column {
+            width: dialog.width
+
+            SearchFieldPL {
                 id: searchField
                 placeholderText: app.tr("Search")
                 width: parent.width
                 property string prevText: ""
-                EnterKey.enabled: text.length > 0
-                EnterKey.onClicked: dialog.accept();
+                onSearch: dialog.accept();
                 onTextChanged: {
                     var newText = searchField.text.trim();
                     if (newText === searchField.prevText) return;
@@ -99,45 +89,36 @@ Dialog {
                 }
             }
 
-            Component.onCompleted: listView.searchField = searchField;
+            Component.onCompleted: dialog.searchField = searchField;
 
         }
-
-        model: ListModel {}
-
-        property var searchField: undefined
-
-        Timer {
-            id: autocompleteTimer
-            interval: 1000
-            repeat: true
-            running: dialog.status === PageStatus.Active
-            triggeredOnStart: true
-            onTriggered: dialog.fetchCompletions();
-        }
-
-        ViewPlaceholder {
-            id: viewPlaceholder
-            enabled: false
-            hintText: app.tr("You can search for venues by type or name.")
-        }
-
-        VerticalScrollDecorator {}
-
     }
 
-    onStatusChanged: {
-        if (dialog.status === PageStatus.Activating) {
-            dialog.autocompletePending = false;
-            dialog.loadHistory();
-            dialog.filterCompletions();
-        }
+    model: ListModel {}
+
+    placeholderText: app.tr("You can search for venues by type or name.")
+
+    property var searchField: undefined
+
+    Timer {
+        id: autocompleteTimer
+        interval: 1000
+        repeat: true
+        running: dialog.active
+        triggeredOnStart: true
+        onTriggered: dialog.fetchCompletions();
+    }
+
+    onPageStatusActivating: {
+        dialog.autocompletePending = false;
+        dialog.loadHistory();
+        dialog.filterCompletions();
     }
 
     function fetchCompletions() {
         // Fetch completions for a partial search query.
         if (dialog.autocompletePending) return;
-        var query = listView.searchField.text.trim();
+        var query = dialog.searchField.text.trim();
         if (query === dialog.prevAutocompleteQuery) return;
         dialog.autocompletePending = true;
         dialog.prevAutocompleteQuery = query;
@@ -145,7 +126,7 @@ Dialog {
         var y = map.position.coordinate.latitude || 0;
         py.call("poor.app.guide.autocomplete_type", [query], function(results) {
             dialog.autocompletePending = false;
-            if (dialog.status !== PageStatus.Active) return;
+            if (!dialog.active) return;
             results = results || [];
             dialog.autocompletions = [];
             for (var i = 0; i < results.length; i++) {
@@ -162,22 +143,22 @@ Dialog {
     function filterCompletions() {
         // Filter completions for the current search query.
         var ac = py.evaluate("poor.app.guide.autocomplete_type_supported");
-        var found = Util.findMatches(listView.searchField.text.trim(),
+        var found = Util.findMatches(dialog.searchField.text.trim(),
                                      ac ? [] : dialog.history,
-                                     ac ? dialog.autocompletions : [],
-                                     listView.model.count);
+                                          ac ? dialog.autocompletions : [],
+                                               dialog.model.count);
 
-        Util.injectMatches(listView.model, found, "type", "text");
-        viewPlaceholder.enabled = found.length === 0;
+        Util.injectMatches(dialog.model, found, "type", "text");
+        dialog.placeholderEnabled = found.length === 0;
     }
 
     function loadHistory() {
         // Load search history and preallocate list items.
         dialog.history = py.evaluate("poor.app.history.place_types");
-        while (listView.model.count < 100)
-            listView.model.append({"type": "",
-                                   "text": "",
-                                   "visible": false});
+        while (dialog.model.count < 100)
+            dialog.model.append({"type": "",
+                                  "text": "",
+                                  "visible": false});
 
     }
 

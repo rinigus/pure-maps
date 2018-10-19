@@ -17,26 +17,21 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
-Page {
-    allowedOrientations: app.defaultAllowedOrientations
+PagePL {
+    title: app.tr("Attribution")
 
-    SilicaFlickable {
-        anchors.fill: parent
-        contentHeight: column.implicitHeight
-        contentWidth: parent.width
+    Column {
+        spacing: app.styler.themePaddingLarge
+        width: parent.width
 
         Column {
-            id: column
-            anchors.fill: parent
+            spacing: app.styler.themePaddingMedium
+            width: parent.width
 
-            PageHeader {
-                title: app.tr("Attribution")
-            }
-
-            SectionHeader {
+            SectionHeaderPL {
                 text: app.tr("Maps")
                 visible: mapRepeater.model > 0
             }
@@ -45,22 +40,27 @@ Page {
                 id: mapRepeater
                 model: items.length
                 property var items: py.evaluate("poor.app.basemap.attribution")
-                delegate: ListItem {
+                delegate: ListItemPL {
                     id: listItem
-                    contentHeight: Theme.itemSizeSmall
+                    contentHeight: app.styler.themeItemSizeSmall
                     property var item: mapRepeater.items[index]
                     ListItemLabel {
+                        id: li
                         color: listItem.highlighted ?
-                            Theme.highlightColor : Theme.primaryColor;
-                        height: Theme.itemSizeSmall
+                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                        height: app.styler.themeItemSizeSmall
                         text: item.text || ""
                     }
                     onClicked: item.url &&
-                        Qt.openUrlExternally(item.url);
+                               Qt.openUrlExternally(item.url);
                 }
             }
+        }
 
-            SectionHeader {
+        Column {
+            spacing: app.styler.themePaddingMedium
+            width: parent.width
+            SectionHeaderPL {
                 text: app.tr("Search")
                 visible: geocodeRepeater.model > 0
             }
@@ -69,24 +69,28 @@ Page {
                 id: geocodeRepeater
                 model: items.length
                 property var items: py.call_sync(
-                    "poor.app.get_attribution",
-                    ["geocoder", map.getPoiProviders("geocode")])
-                delegate: ListItem {
+                                        "poor.app.get_attribution",
+                                        ["geocoder", map.getPoiProviders("geocode")])
+                delegate: ListItemPL {
                     id: listItem
-                    contentHeight: Theme.itemSizeSmall
+                    contentHeight: app.styler.themeItemSizeSmall
                     property var item: geocodeRepeater.items[index]
                     ListItemLabel {
                         color: listItem.highlighted ?
-                            Theme.highlightColor : Theme.primaryColor;
-                        height: Theme.itemSizeSmall
+                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                        height: app.styler.themeItemSizeSmall
                         text: item.text || ""
                     }
                     onClicked: item.url &&
-                        Qt.openUrlExternally(item.url);
+                               Qt.openUrlExternally(item.url);
                 }
             }
+        }
 
-            SectionHeader {
+        Column {
+            spacing: app.styler.themePaddingMedium
+            width: parent.width
+            SectionHeaderPL {
                 text: app.tr("Venues")
                 visible: venueRepeater.model > 0
             }
@@ -95,24 +99,28 @@ Page {
                 id: venueRepeater
                 model: items.length
                 property var items: py.call_sync(
-                    "poor.app.get_attribution",
-                    ["guide", map.getPoiProviders("venue")])
-                delegate: ListItem {
+                                        "poor.app.get_attribution",
+                                        ["guide", map.getPoiProviders("venue")])
+                delegate: ListItemPL {
                     id: listItem
-                    contentHeight: Theme.itemSizeSmall
+                    contentHeight: app.styler.themeItemSizeSmall
                     property var item: venueRepeater.items[index]
                     ListItemLabel {
                         color: listItem.highlighted ?
-                            Theme.highlightColor : Theme.primaryColor;
-                        height: Theme.itemSizeSmall
+                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                        height: app.styler.themeItemSizeSmall
                         text: item.text || ""
                     }
                     onClicked: item.url &&
-                        Qt.openUrlExternally(item.url);
+                               Qt.openUrlExternally(item.url);
                 }
             }
+        }
 
-            SectionHeader {
+        Column {
+            spacing: app.styler.themePaddingMedium
+            width: parent.width
+            SectionHeaderPL {
                 text: app.tr("Navigation")
                 visible: routeRepeater.model > 0
             }
@@ -121,26 +129,21 @@ Page {
                 id: routeRepeater
                 model: items.length
                 property var items: map.route && map.route.provider ?
-                    py.call_sync("poor.app.get_attribution", ["router", [map.route.provider]]) : []
-                delegate: ListItem {
+                                        py.call_sync("poor.app.get_attribution", ["router", [map.route.provider]]) : []
+                delegate: ListItemPL {
                     id: listItem
-                    contentHeight: Theme.itemSizeSmall
+                    contentHeight: app.styler.themeItemSizeSmall
                     property var item: routeRepeater.items[index]
                     ListItemLabel {
                         color: listItem.highlighted ?
-                            Theme.highlightColor : Theme.primaryColor;
-                        height: Theme.itemSizeSmall
+                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                        height: app.styler.themeItemSizeSmall
                         text: item.text || ""
                     }
                     onClicked: item.url &&
-                        Qt.openUrlExternally(item.url);
+                               Qt.openUrlExternally(item.url);
                 }
             }
-
         }
-
-        VerticalScrollDecorator {}
-
     }
-
 }

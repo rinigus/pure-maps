@@ -330,7 +330,7 @@ def _get_providers(directory, default, active):
             provider = read_json(path)
             if provider.get("hidden", False): continue
             requires = provider.get("requires", [])
-            if not all(map(requirement_found, requires)): continue
+            if len(requires) and not any(map(requirement_found, requires)): continue
             provider["pid"] = pid
             provider["default"] = matches(pid, default)
             provider["active"] = matches(pid, active)

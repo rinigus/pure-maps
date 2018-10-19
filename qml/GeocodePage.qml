@@ -17,103 +17,86 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
 import "js/util.js" as Util
 
-Page {
+PageListPL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
+    title: app.tr("Search")
+
     canNavigateForward: query.length > 0
+    currentIndex: -1
 
-    property bool   autocompletePending: false
-    property var    autocompletions: []
-    property var    completionDetails: []
-    property var    history: []
-    property string prevAutocompleteQuery: "."
-    property string query: ""
-
-    SilicaListView {
-        id: listView
-        anchors.fill: parent
-        // Prevent list items from stealing focus.
-        currentIndex: -1
-
-        delegate: ListItem {
-            id: listItem
-            contentHeight: visible ? Theme.itemSizeSmall : 0
-            menu: contextMenu
-            visible: model.visible
-
-            ListItemLabel {
-                anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                height: Theme.itemSizeSmall
-                text: model.text
-                textFormat: Text.RichText
-            }
-
-            ContextMenu {
-                id: contextMenu
-                MenuItem {
-                    text: app.tr("Remove")
-                    onClicked: {
-                        py.call_sync("poor.app.history.remove_place", [model.place]);
-                        page.history = py.evaluate("poor.app.history.places");
-                        listView.model.remove(index);
-                    }
+    delegate: ListItemPL {
+        id: listItem
+        contentHeight: visible ? app.styler.themeItemSizeSmall : 0
+        menu: ContextMenuPL {
+            id: contextMenu
+            ContextMenuItemPL {
+                text: app.tr("Remove")
+                onClicked: {
+                    py.call_sync("poor.app.history.remove_place", [model.place]);
+                    page.history = py.evaluate("poor.app.history.places");
+                    page.model.remove(index);
                 }
             }
-
-            ListView.onRemove: animateRemoval(listItem);
-
-            onClicked: {
-                listItem.focus = true;
-                var details = page.completionDetails[model.place.toLowerCase()];
-                if (details && details.x && details.y) {
-                    // Autocompletion result with known coordinates, open directly.
-                    py.call_sync("poor.app.history.add_place", [model.place]);
-                    app.hideMenu();
-                    var p = {
-                        "address": details.address || "",
-                        "link": details.link || "",
-                        "phone": details.phone || "",
-                        "poiType": details.poi_type || "",
-                        "postcode": details.postcode || "",
-                        "provider": details.provider || "",
-                        "text": details.text || "",
-                        "title": details.title || model.place,
-                        "type": "geocode",
-                        "x": details.x,
-                        "y": details.y,
-                    };
-                    if (map.addPoi(p)) p = map.pois[map.pois.length-1];
-                    else p.title = app.tr("%1 [duplicate]", p.title);
-                    map.showPoi(p, true);
-                    map.autoCenter = false;
-                    map.setCenter(details.x, details.y);
-                } else {
-                    // No autocompletion, open results page.
-                    page.query = model.place;
-                    app.pageStack.navigateForward();
-                }
-            }
-
         }
 
-        header: Column {
-            height: header.height + usingButton.height + searchField.height
+        visible: model.visible
+
+        ListItemLabel {
+            anchors.leftMargin: page.searchField.textLeftMargin
+            color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+            height: app.styler.themeItemSizeSmall
+            text: model.text
+            textFormat: Text.RichText
+        }
+
+        ListView.onRemove: animateRemoval(listItem);
+
+        onClicked: {
+            listItem.focus = true;
+            var details = page.completionDetails[model.place.toLowerCase()];
+            if (details && details.x && details.y) {
+                // Autocompletion result with known coordinates, open directly.
+                py.call_sync("poor.app.history.add_place", [model.place]);
+                app.hideMenu();
+                var p = {
+                    "address": details.address || "",
+                    "link": details.link || "",
+                    "phone": details.phone || "",
+                    "poiType": details.poi_type || "",
+                    "postcode": details.postcode || "",
+                    "provider": details.provider || "",
+                    "text": details.text || "",
+                    "title": details.title || model.place,
+                    "type": "geocode",
+                    "x": details.x,
+                    "y": details.y,
+                };
+                if (map.addPoi(p)) p = map.pois[map.pois.length-1];
+                else p.title = app.tr("%1 [duplicate]", p.title);
+                map.showPoi(p, true);
+                map.autoCenter = false;
+                map.setCenter(details.x, details.y);
+            } else {
+                // No autocompletion, open results page.
+                page.query = model.place;
+                app.pages.navigateForward();
+            }
+        }
+    }
+
+    headerExtra: Component {
+        Column {
+            spacing: app.styler.themePaddingLarge
             width: parent.width
 
-            PageHeader {
-                id: header
-                title: app.tr("Search")
-            }
-
-            ValueButton {
+            ValueButtonPL {
                 id: usingButton
-                height: Theme.itemSizeSmall
+                height: app.styler.themeItemSizeSmall
                 label: app.tr("Using")
                 value: py.evaluate("poor.app.geocoder.name")
                 width: parent.width
@@ -125,13 +108,12 @@ Page {
                 }
             }
 
-            SearchField {
+            SearchFieldPL {
                 id: searchField
                 placeholderText: app.tr("Search")
                 width: parent.width
                 property string prevText: ""
-                EnterKey.enabled: text.length > 0
-                EnterKey.onClicked: app.pageStack.navigateForward();
+                onSearch: app.pages.navigateForward();
                 onTextChanged: {
                     var newText = searchField.text.trim();
                     if (newText === searchField.prevText) return;
@@ -141,48 +123,46 @@ Page {
                 }
             }
 
-            Component.onCompleted: listView.searchField = searchField;
-
+            Component.onCompleted: page.searchField = searchField;
         }
-
-        model: ListModel {}
-
-        property var searchField: undefined
-
-        Timer {
-            id: autocompleteTimer
-            interval: 1000
-            repeat: true
-            running: page.status === PageStatus.Active && app.conf.autoCompleteGeo
-            triggeredOnStart: true
-            onTriggered: page.fetchCompletions();
-        }
-
-        ViewPlaceholder {
-            id: viewPlaceholder
-            enabled: false
-            hintText: app.tr("You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. “address, city” or “city, country”.")
-        }
-
-        VerticalScrollDecorator {}
-
     }
 
-    onStatusChanged: {
-        if (page.status === PageStatus.Activating) {
-            page.autocompletePending = false;
-            page.loadHistory();
-            page.filterCompletions();
-        } else if (page.status === PageStatus.Active) {
-            var resultPage = app.pageStack.nextPage();
-            if (resultPage) resultPage.populated = false;
-        }
+    model: ListModel {}
+
+    placeholderText: app.tr("You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. “address, city” or “city, country”.")
+
+    property bool   autocompletePending: false
+    property var    autocompletions: []
+    property var    completionDetails: []
+    property var    history: []
+    property string prevAutocompleteQuery: "."
+    property var    searchField: undefined
+    property string query: ""
+
+    Timer {
+        id: autocompleteTimer
+        interval: 1000
+        repeat: true
+        running: page.active && app.conf.autoCompleteGeo
+        triggeredOnStart: true
+        onTriggered: page.fetchCompletions();
+    }
+
+    onPageStatusActivating: {
+        page.autocompletePending = false;
+        page.loadHistory();
+        page.filterCompletions();
+    }
+
+    onPageStatusActive: {
+        var resultPage = app.pages.nextPage();
+        if (resultPage) resultPage.populated = false;
     }
 
     function fetchCompletions() {
         // Fetch completions for a partial search query.
         if (!app.conf.autoCompleteGeo || page.autocompletePending) return;
-        var query = listView.searchField.text.trim();
+        var query = page.searchField.text.trim();
         if (query === page.prevAutocompleteQuery) return;
         page.autocompletePending = true;
         page.prevAutocompleteQuery = query;
@@ -190,7 +170,7 @@ Page {
         var y = map.position.coordinate.latitude || 0;
         py.call("poor.app.geocoder.autocomplete", [query, x, y], function(results) {
             page.autocompletePending = false;
-            if (page.status !== PageStatus.Active) return;
+            if (!page.active) return;
             results = results || [];
             page.autocompletions = [];
             for (var i = 0; i < results.length; i++) {
@@ -207,22 +187,22 @@ Page {
 
     function filterCompletions() {
         // Filter completions for the current search query.
-        var found = Util.findMatches(listView.searchField.text.trim(),
+        var found = Util.findMatches(page.searchField.text.trim(),
                                      page.history,
                                      page.autocompletions,
-                                     listView.model.count);
+                                     page.model.count);
 
-        Util.injectMatches(listView.model, found, "place", "text");
-        viewPlaceholder.enabled = found.length === 0;
+        Util.injectMatches(page.model, found, "place", "text");
+        page.placeholderEnabled = found.length === 0;
     }
 
     function loadHistory() {
         // Load search history and preallocate list items.
         page.history = py.evaluate("poor.app.history.places");
-        while (listView.model.count < 100)
-            listView.model.append({"place": "",
-                                   "text": "",
-                                   "visible": false});
+        while (page.model.count < 100)
+            page.model.append({"place": "",
+                                  "text": "",
+                                  "visible": false});
 
     }
 

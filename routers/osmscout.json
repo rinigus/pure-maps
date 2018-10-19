@@ -9,5 +9,5 @@
   "_modes": ["car", "bicycle", "foot"],
   "name": "OSM Scout",
   "offline": true,
-  "requires": ["harbour-osmscout-server"]
+  "requires": ["harbour-osmscout-server", "osmscout-server"]
 }

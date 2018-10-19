@@ -17,84 +17,67 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
 import "js/util.js" as Util
 
-Dialog {
+DialogListPL {
     id: dialog
-    allowedOrientations: app.defaultAllowedOrientations
+
     canAccept: dialog.query.length > 0
+    currentIndex: -1
 
-    property bool   autocompletePending: false
-    property var    autocompletions: []
-    property var    completionDetails: []
-    property var    history: []
-    property var    poiCompletionDetails: []
-    property string prevAutocompleteQuery: "."
-    property string query: ""
-    property var    selectedPoi: undefined
+    delegate: ListItemPL {
+        id: listItem
+        contentHeight: visible ? app.styler.themeItemSizeSmall : 0
+        menu: contextMenu
+        visible: model.visible
 
-    SilicaListView {
-        id: listView
-        anchors.fill: parent
-        // Prevent list items from stealing focus.
-        currentIndex: -1
-
-        delegate: ListItem {
-            id: listItem
-            contentHeight: visible ? Theme.itemSizeSmall : 0
-            menu: contextMenu
-            visible: model.visible
-
-            ListItemLabel {
-                anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                height: Theme.itemSizeSmall
-                text: model.text
-                textFormat: Text.RichText
-            }
-
-            ContextMenu {
-                id: contextMenu
-                MenuItem {
-                    text: app.tr("Remove")
-                    onClicked: {
-                        py.call_sync("poor.app.history.remove_place", [model.place]);
-                        dialog.history = py.evaluate("poor.app.history.places");
-                        listView.model.remove(index);
-                    }
-                }
-            }
-
-            ListView.onRemove: animateRemoval(listItem);
-
-            onClicked: {
-                listItem.focus = true;
-                var poi = dialog.poiCompletionDetails[model.place.toLowerCase()];
-                if (poi) dialog.selectedPoi = poi;
-                dialog.query = model.place;
-                dialog.accept();
-            }
-
+        ListItemLabel {
+            anchors.leftMargin: dialog.searchField.textLeftMargin
+            color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+            height: app.styler.themeItemSizeSmall
+            text: model.text
+            textFormat: Text.RichText
         }
 
-        header: Column {
-            height: dialogHeader.height + gpsItem.height + searchField.height
+        ContextMenuPL {
+            id: contextMenu
+            ContextMenuItemPL {
+                text: app.tr("Remove")
+                onClicked: {
+                    py.call_sync("poor.app.history.remove_place", [model.place]);
+                    dialog.history = py.evaluate("poor.app.history.places");
+                    dialog.model.remove(index);
+                }
+            }
+        }
+
+        ListView.onRemove: animateRemoval(listItem);
+
+        onClicked: {
+            listItem.focus = true;
+            var poi = dialog.poiCompletionDetails[model.place.toLowerCase()];
+            if (poi) dialog.selectedPoi = poi;
+            dialog.query = model.place;
+            dialog.accept();
+        }
+
+    }
+
+    headerExtra: Component {
+        Column {
+            height: gpsItem.height + searchField.height
             width: parent.width
 
-            DialogHeader {
-                id: dialogHeader
-            }
-
-            ListItem {
+            ListItemPL {
                 id: gpsItem
-                contentHeight: Theme.itemSizeSmall
+                contentHeight: app.styler.themeItemSizeSmall
                 ListItemLabel {
-                    anchors.leftMargin: listView.searchField.textLeftMargin
-                    color: Theme.highlightColor
-                    height: Theme.itemSizeSmall
+                    anchors.leftMargin: dialog.searchField.textLeftMargin
+                    color: app.styler.themeHighlightColor
+                    height: app.styler.themeItemSizeSmall
                     text: app.tr("Current position")
                 }
                 onClicked: {
@@ -103,13 +86,12 @@ Dialog {
                 }
             }
 
-            SearchField {
+            SearchFieldPL {
                 id: searchField
                 placeholderText: app.tr("Search")
                 width: parent.width
                 property string prevText: ""
-                EnterKey.enabled: text.length > 0
-                EnterKey.onClicked: dialog.accept();
+                onSearch: dialog.accept();
                 onTextChanged: {
                     var newText = searchField.text.trim();
                     if (newText === searchField.prevText) return;
@@ -119,45 +101,43 @@ Dialog {
                 }
             }
 
-            Component.onCompleted: listView.searchField = searchField;
-
+            Component.onCompleted: dialog.searchField = searchField;
         }
-
-        model: ListModel {}
-
-        property var searchField: undefined
-
-        Timer {
-            id: autocompleteTimer
-            interval: 1000
-            repeat: true
-            running: dialog.status === PageStatus.Active && app.conf.autoCompleteGeo
-            triggeredOnStart: true
-            onTriggered: dialog.fetchCompletions();
-        }
-
-        ViewPlaceholder {
-            id: viewPlaceholder
-            enabled: false
-            hintText: app.tr("You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. “address, city” or “city, country”.")
-        }
-
-        VerticalScrollDecorator {}
-
     }
 
-    onStatusChanged: {
-        if (dialog.status === PageStatus.Activating) {
-            dialog.autocompletePending = false;
-            dialog.loadHistory();
-            dialog.filterCompletions();
-        }
+    model: ListModel {}
+
+    placeholderText: app.tr("You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. “address, city” or “city, country”.")
+
+    property bool   autocompletePending: false
+    property var    autocompletions: []
+    property var    completionDetails: []
+    property var    history: []
+    property var    poiCompletionDetails: []
+    property string prevAutocompleteQuery: "."
+    property string query: ""
+    property var    searchField: undefined
+    property var    selectedPoi: undefined
+
+    onPageStatusActivating: {
+        dialog.autocompletePending = false;
+        dialog.loadHistory();
+        dialog.filterCompletions();
+    }
+
+    Timer {
+        id: autocompleteTimer
+        interval: 1000
+        repeat: true
+        running: dialog.active && app.conf.autoCompleteGeo
+        triggeredOnStart: true
+        onTriggered: dialog.fetchCompletions();
     }
 
     function fetchCompletions() {
         // Fetch completions for a partial search query.
         if (!app.conf.autoCompleteGeo || dialog.autocompletePending) return;
-        var query = listView.searchField.text.trim();
+        var query = dialog.searchField.text.trim();
         if (query === dialog.prevAutocompleteQuery) return;
         dialog.autocompletePending = true;
         dialog.prevAutocompleteQuery = query;
@@ -166,7 +146,7 @@ Dialog {
         py.call("poor.app.router.geocoder.autocomplete", [query, x, y], function(results) {
             if (!dialog) return;
             dialog.autocompletePending = false;
-            if (dialog.status !== PageStatus.Active) return;
+            if (!dialog.active) return;
             results = results || [];
             dialog.autocompletions = [];
             for (var i = 0; i < results.length; i++) {
@@ -183,10 +163,10 @@ Dialog {
 
     function filterCompletions() {
         // Filter completions for the current search query.
-        var found = Util.findMatches(listView.searchField.text.trim(),
+        var found = Util.findMatches(dialog.searchField.text.trim(),
                                      dialog.history,
                                      dialog.autocompletions,
-                                     listView.model.count);
+                                     dialog.model.count);
 
         // Find POIs matching the completions
         var searchKeys = ["title", "poiType", "address", "postcode", "text", "phone", "link"];
@@ -205,17 +185,17 @@ Dialog {
 
         // Merge all completions
         found = jointResults.concat(found);
-        Util.injectMatches(listView.model, found, "place", "text");
-        viewPlaceholder.enabled = found.length === 0;
+        Util.injectMatches(dialog.model, found, "place", "text");
+        dialog.placeholderEnabled = found.length === 0;
     }
 
     function loadHistory() {
         // Load search history and preallocate list items.
         dialog.history = py.evaluate("poor.app.history.places");
-        while (listView.model.count < 100)
-            listView.model.append({"place": "",
-                                   "text": "",
-                                   "visible": false});
+        while (dialog.model.count < 100)
+            dialog.model.append({"place": "",
+                                    "text": "",
+                                    "visible": false});
 
     }
 

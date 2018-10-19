@@ -18,151 +18,137 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
-Page {
+PagePL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
+    title: "Pure Maps"
 
-    // To make TextSwitch text line up with IconListItem's text label.
-    property real switchLeftMargin: Theme.horizontalPageMargin + Theme.paddingLarge + Theme.paddingSmall
-
-    SilicaFlickable {
-        anchors.fill: parent
-        contentHeight: column.implicitHeight
-        contentWidth: parent.width
-
-        Column {
-            id: column
-            anchors.fill: parent
-
-            PageHeader {
-                title: "Pure Maps"
-            }
-
-            IconListItem {
-                icon: "image://theme/icon-m-search"
-                label: app.tr("Search")
-                onClicked: {
-                    app.pushMain("GeocodePage.qml");
-                    app.pushAttachedMain("GeocodingResultsPage.qml");
-                }
-            }
-
-            IconListItem {
-                icon: "image://theme/icon-m-car"
-                label: app.tr("Navigation")
-                onClicked: app.pushMain("RoutePage.qml");
-            }
-
-            IconListItem {
-                icon: "image://theme/icon-m-whereami"
-                label: app.tr("Nearby venues")
-                onClicked: app.pushMain("NearbyPage.qml");
-            }
-
-            IconListItem {
-                icon: "image://theme/icon-m-favorite"
-                label: app.tr("Points of interest")
-                onClicked: app.pushMain("PoiPage.qml");
-            }
-
-            IconListItem {
-                icon: "image://theme/icon-m-share"
-                label: app.tr("Share current position")
-                BusyIndicator {
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.horizontalPageMargin
-                    anchors.verticalCenter: parent.verticalCenter
-                    running: !gps.ready
-                    size: BusyIndicatorSize.Small
-                    z: parent.z + 1
-                }
-                onClicked: {
-                    if (!gps.ready) return;
-                    var y = gps.position.coordinate.latitude;
-                    var x = gps.position.coordinate.longitude;
-                    app.push("SharePage.qml", {
-                        "coordinate": QtPositioning.coordinate(y, x),
-                        "title": app.tr("Share Current Position"),
-                    });
-                }
-            }
-
-            IconListItem {
-                icon: "image://theme/icon-m-dot"
-                label: app.tr("Center on current position")
-                onClicked: {
-                    app.map.centerOnPosition();
-                    app.showMap();
-                }
-            }
-
-            IconListItem {
-                icon: "image://theme/icon-m-clear"
-                label: app.tr("Clear map")
-                onClicked: {
-                    if (app.mode !== modes.explore) app.setModeExplore();
-                    app.map.clear(true);
-                    app.showMap();
-                }
-            }
-
-            IconListItem {
-                icon: "image://theme/icon-m-levels"
-                label: app.tr("Maps")
-                onClicked: app.pushMain("BasemapPage.qml");
-            }
-
-            TextSwitch {
-                id: autoCenterItem
-                checked: app.map.autoCenter
-                height: Theme.itemSizeSmall
-                leftMargin: page.switchLeftMargin
-                text: app.tr("Auto-center on position")
-                Component.onCompleted: {
-                    page.onStatusChanged.connect(function() {
-                        autoCenterItem.checked = app.map.autoCenter;
-                    });
-                }
-                onCheckedChanged: {
-                    app.map.autoCenter = autoCenterItem.checked;
-                    app.map.autoCenter && app.map.centerOnPosition();
-                }
-            }
-
-            TextSwitch {
-                id: autoRotateItem
-                checked: app.map.autoRotate
-                height: Theme.itemSizeSmall
-                leftMargin: page.switchLeftMargin
-                text: app.tr("Auto-rotate on direction")
-                Component.onCompleted: {
-                    page.onStatusChanged.connect(function() {
-                        autoRotateItem.checked = app.map.autoRotate;
-                    });
-                }
-                onCheckedChanged: {
-                    app.map.autoRotate = autoRotateItem.checked;
-                }
-            }
-
+    pageMenu: PageMenuPL {
+        PageMenuItemPL {
+            text: app.tr("About")
+            onClicked: app.push("AboutPage.qml");
         }
-
-        PullDownMenu {
-            MenuItem {
-                text: app.tr("About")
-                onClicked: app.push("AboutPage.qml");
-            }
-            MenuItem {
-                text: app.tr("Preferences")
-                onClicked: app.push("PreferencesPage.qml");
-            }
+        PageMenuItemPL {
+            text: app.tr("Preferences")
+            onClicked: app.push("PreferencesPage.qml");
         }
-
-        VerticalScrollDecorator {}
-
     }
 
+    // To make TextSwitch text line up with IconListItem's text label.
+    property real switchLeftMargin: app.styler.themeHorizontalPageMargin + app.styler.themePaddingLarge + app.styler.themePaddingSmall
+
+    Column {
+        id: column
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: parent.width
+
+        IconListItem {
+            icon: app.styler.iconSearch
+            label: app.tr("Search")
+            onClicked: {
+                app.pushMain("GeocodePage.qml");
+                app.pushAttachedMain("GeocodingResultsPage.qml");
+            }
+        }
+
+        IconListItem {
+            icon: app.styler.iconNavigate
+            label: app.tr("Navigation")
+            onClicked: app.pushMain("RoutePage.qml");
+        }
+
+        IconListItem {
+            icon: app.styler.iconNearby
+            label: app.tr("Nearby venues")
+            onClicked: app.pushMain("NearbyPage.qml");
+        }
+
+        IconListItem {
+            icon: app.styler.iconFavorite
+            label: app.tr("Points of interest")
+            onClicked: app.pushMain("PoiPage.qml");
+        }
+
+        IconListItem {
+            icon: app.styler.iconShare
+            label: app.tr("Share current position")
+            BusyIndicatorSmallPL {
+                anchors.right: parent.right
+                anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                anchors.verticalCenter: parent.verticalCenter
+                running: !gps.ready
+                z: parent.z + 1
+            }
+            onClicked: {
+                if (!gps.ready) return;
+                var y = gps.position.coordinate.latitude;
+                var x = gps.position.coordinate.longitude;
+                app.push("SharePage.qml", {
+                             "coordinate": QtPositioning.coordinate(y, x),
+                             "title": app.tr("Share Current Position"),
+                         });
+            }
+        }
+
+        IconListItem {
+            icon: app.styler.iconDot
+            label: app.tr("Center on current position")
+            onClicked: {
+                app.map.centerOnPosition();
+                app.showMap();
+            }
+        }
+
+        IconListItem {
+            icon: app.styler.iconClear
+            label: app.tr("Clear map")
+            onClicked: {
+                if (app.mode !== modes.explore) app.setModeExplore();
+                app.map.clear(true);
+                app.showMap();
+            }
+        }
+
+        IconListItem {
+            icon: app.styler.iconMaps
+            label: app.tr("Maps")
+            onClicked: app.pushMain("BasemapPage.qml");
+        }
+
+        TextSwitchPL {
+            id: autoCenterItem
+            checked: app.map.autoCenter
+            height: app.styler.themeItemSizeSmall
+            leftMargin: page.switchLeftMargin
+            text: app.tr("Auto-center on position")
+            Component.onCompleted: {
+                page.onStatusChanged.connect(function() {
+                    autoCenterItem.checked = app.map.autoCenter;
+                });
+            }
+            onCheckedChanged: {
+                app.map.autoCenter = autoCenterItem.checked;
+                app.map.autoCenter && app.map.centerOnPosition();
+            }
+        }
+
+        TextSwitchPL {
+            id: autoRotateItem
+            checked: app.map.autoRotate
+            height: app.styler.themeItemSizeSmall
+            leftMargin: page.switchLeftMargin
+            text: app.tr("Auto-rotate on direction")
+            Component.onCompleted: {
+                page.onStatusChanged.connect(function() {
+                    autoRotateItem.checked = app.map.autoRotate;
+                });
+            }
+            onCheckedChanged: {
+                app.map.autoRotate = autoRotateItem.checked;
+            }
+        }
+
+    }
 }

@@ -48,6 +48,7 @@ from poor.map import Map
 from poor.geocoder import Geocoder
 from poor.guide import Guide
 from poor.history import HistoryManager
+from poor.icon import IconFinder
 from poor.router import Router
 from poor.voice import VoiceGenerator
 from poor.narrative import Narrative
@@ -63,6 +64,7 @@ assert DATA_HOME_DIR
 assert Geocoder
 assert Guide
 assert HistoryManager
+assert IconFinder
 assert http
 assert i18n
 assert LOCALE_DIR

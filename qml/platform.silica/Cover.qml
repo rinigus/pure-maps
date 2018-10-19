@@ -19,6 +19,9 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+// Cover is Sailfish OS specific and, as a result,
+// is implemented here.
+
 CoverBackground {
     id: cover
 
@@ -31,7 +34,7 @@ CoverBackground {
         height: width/sourceSize.width * sourceSize.height
         opacity: 0.1
         smooth: true
-        source: "icons/cover.png"
+        source: "../icons/cover.png"
         visible: !cover.showNarrative
         width: 1.5 * parent.width
     }
@@ -62,7 +65,7 @@ CoverBackground {
         anchors.horizontalCenter: parent.horizontalCenter
         opacity: 0.9
         smooth: true
-        source: "icons/navigation/%1.svg".arg(app.navigationStatus.icon || "flag")
+        source: "../icons/navigation/%1.svg".arg(app.navigationStatus.icon || "flag")
         sourceSize.height: cover.width / 2
         sourceSize.width: cover.width / 2
         visible: cover.showNarrative

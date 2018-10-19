@@ -17,11 +17,10 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
-Page {
+PageEmptyPL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
 
     AttributionButton { id: attributionButton }
     CenterButton { id: centerButton }
@@ -37,7 +36,7 @@ Page {
     NorthArrow { id: northArrow }
     Notification { id: notification }
     PoiPanel { id: poiPanel }
-    RemorsePopup { id: remorse; z: 1000 }
+    RemorsePopupPL { id: remorse; z: 1000 }
     ScaleBar { id: scaleBar }
     SpeedLimit { id: speedLimit }
     StreetName { id: streetName }

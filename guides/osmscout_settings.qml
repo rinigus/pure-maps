@@ -17,16 +17,20 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "../qml/platform"
 
 Column {
-    ValueButton {
+    spacing: app.styler.themePaddingLarge
+    width: parent.width
+
+    ValueButtonPL {
         id: nameButton
         label: app.tr("Name")
-        height: Theme.itemSizeSmall
+        height: app.styler.themeItemSizeSmall
         value: ""
+        width: parent.width
         onClicked: {
-            var dialog = app.pageStack.push("osmscout_name.qml");
+            var dialog = app.pages.push("../guides/osmscout_name.qml");
             dialog.accepted.connect(function() {
                 nameButton.value = dialog.query;
                 page.params.name = dialog.query;
@@ -39,7 +43,7 @@ Column {
         }
     }
 
-    TextSwitch {
+    TextSwitchPL {
         id: routeSwitch
         anchors.left: parent.left
         anchors.right: parent.right
@@ -63,7 +67,7 @@ Column {
         Component.onCompleted: routeSwitch.update()
     }
 
-    TextSwitch {
+    TextSwitchPL {
         id: fromRefSwitch
         anchors.left: parent.left
         anchors.right: parent.right

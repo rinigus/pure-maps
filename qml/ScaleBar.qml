@@ -18,18 +18,17 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
-import Sailfish.Silica 1.0
 
 import "js/util.js" as Util
 
 Item {
     id: master
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: Theme.paddingLarge + Theme.paddingSmall
+    anchors.bottomMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
     anchors.left: parent.left
-    anchors.leftMargin: Theme.paddingLarge + Theme.paddingSmall
-    anchors.topMargin: Theme.paddingLarge + Theme.paddingSmall
-    anchors.rightMargin:  Theme.paddingLarge + Theme.paddingSmall
+    anchors.leftMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
+    anchors.topMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
+    anchors.rightMargin:  app.styler.themePaddingLarge + app.styler.themePaddingSmall
     height: (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait ? scaleBar.width : scaleBar.height
     states: [
         State {
@@ -79,7 +78,7 @@ Item {
             id: base
             anchors.bottom: scaleBar.bottom
             color: app.styler.fg
-            height: Math.floor(Theme.pixelRatio * 3)
+            height: Math.floor(app.styler.themePixelRatio * 3)
             width: scaleBar.scaleWidth
         }
 
@@ -87,27 +86,27 @@ Item {
             anchors.bottom: base.top
             anchors.left: base.left
             color: app.styler.fg
-            height: Math.floor(Theme.pixelRatio * 10)
-            width: Math.floor(Theme.pixelRatio * 3)
+            height: Math.floor(app.styler.themePixelRatio * 10)
+            width: Math.floor(app.styler.themePixelRatio * 3)
         }
 
         Rectangle {
             anchors.bottom: base.top
             anchors.right: base.right
             color: app.styler.fg
-            height: Math.floor(Theme.pixelRatio * 10)
-            width: Math.floor(Theme.pixelRatio * 3)
+            height: Math.floor(app.styler.themePixelRatio * 10)
+            width: Math.floor(app.styler.themePixelRatio * 3)
         }
 
         Text {
             id: text
             anchors.bottom: base.top
-            anchors.bottomMargin: Math.floor(Theme.pixelRatio * 4)
+            anchors.bottomMargin: Math.floor(app.styler.themePixelRatio * 4)
             anchors.horizontalCenter: base.horizontalCenter
             color: app.styler.fg
             font.bold: true
             font.family: "sans-serif"
-            font.pixelSize: Math.round(Theme.pixelRatio * 18)
+            font.pixelSize: Math.round(app.styler.themePixelRatio * 18)
             horizontalAlignment: Text.AlignHCenter
             text: scaleBar.text
         }

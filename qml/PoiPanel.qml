@@ -18,8 +18,8 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
 Rectangle {
     id: panel
@@ -34,7 +34,7 @@ Rectangle {
     property bool active: false
     property int  contentHeight: {
         if (!hasData) return 0;
-        var h = 2*Theme.paddingLarge;
+        var h = 2*app.styler.themePaddingLarge;
         h += titleItem.height;
         h += typeAddressItem.height;
         h += coorItem.height;
@@ -81,12 +81,12 @@ Rectangle {
         // title and overall anchor to the top
         id: titleItem
         anchors.top: panel.top
-        anchors.topMargin: Theme.paddingLarge
-        color: Theme.highlightColor
-        font.pixelSize: Theme.fontSizeLarge
-        height: text ? implicitHeight + Theme.paddingMedium: 0
+        anchors.topMargin: app.styler.themePaddingLarge
+        color: app.styler.themeHighlightColor
+        font.pixelSize: app.styler.themeFontSizeLarge
+        height: text ? implicitHeight + app.styler.themePaddingMedium: 0
         text: panel.title
-        truncationMode: TruncationMode.None
+        truncMode: truncModes.none
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
@@ -94,9 +94,9 @@ Rectangle {
     ListItemLabel {
         id: typeAddressItem
         anchors.top: titleItem.bottom
-        color: Theme.highlightColor
-        height: text ? implicitHeight + Theme.paddingSmall: 0
-        font.pixelSize: Theme.fontSizeSmall
+        color: app.styler.themeHighlightColor
+        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
+        font.pixelSize: app.styler.themeFontSizeSmall
         text: {
             if (panel.poiType && panel.address)
                 return app.tr("%1; %2", panel.poiType, panel.address);
@@ -106,7 +106,7 @@ Rectangle {
                 return panel.address;
             return "";
         }
-        truncationMode: TruncationMode.None
+        truncMode: truncModes.none
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
@@ -114,23 +114,23 @@ Rectangle {
     ListItemLabel {
         id: coorItem
         anchors.top: typeAddressItem.bottom
-        color: Theme.secondaryHighlightColor
-        font.pixelSize: Theme.fontSizeSmall
-        height: text ? implicitHeight + Theme.paddingSmall: 0
+        color: app.styler.themeSecondaryHighlightColor
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         text: app.portrait && panel.coordinate? app.tr("Latitude: %1; Longitude: %2", panel.coordinate.latitude, panel.coordinate.longitude) : ""
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
     }
 
     ListItemLabel {
         id: textItem
         anchors.top: coorItem.bottom
-        color: Theme.highlightColor
-        font.pixelSize: Theme.fontSizeSmall
-        height: text ? implicitHeight + Theme.paddingSmall: 0
+        color: app.styler.themeHighlightColor
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         maximumLineCount: app.portrait ? 3 : 1;
         text: panel.text
-        truncationMode: TruncationMode.Elide
+        truncMode: truncModes.elide
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
@@ -138,9 +138,9 @@ Rectangle {
     ListItemLabel {
         id: additionalInfoItem
         anchors.top: textItem.bottom
-        color: Theme.secondaryHighlightColor
-        font.pixelSize: Theme.fontSizeSmall
-        height: text ? implicitHeight + Theme.paddingSmall: 0
+        color: app.styler.themeSecondaryHighlightColor
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         horizontalAlignment: Text.AlignRight
         text: {
             var info = "";
@@ -152,7 +152,7 @@ Rectangle {
                 return app.tr("More info: %1", info);
             return "";
         }
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
     }
 
@@ -162,7 +162,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: additionalInfoItem.bottom
         color: "transparent"
-        height: Theme.paddingLarge - Theme.paddingSmall
+        height: app.styler.themePaddingLarge - app.styler.themePaddingSmall
     }
 
     MouseArea {
@@ -192,14 +192,14 @@ Rectangle {
 
     Row {
         id: mainButtons
-        anchors.leftMargin: Theme.horizontalPageMargin
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
         anchors.top: splitterItem.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        spacing: Theme.paddingLarge
+        spacing: app.styler.themePaddingLarge
         states: [
             State {
                 // make space for the menu button if needed
-                when: panel.showMenu && parent.width/2-mainButtons.width-Theme.horizontalPageMargin < menuButton.width
+                when: panel.showMenu && parent.width/2-mainButtons.width-app.styler.themeHorizontalPageMargin < menuButton.width
                 AnchorChanges {
                     target: mainButtons
                     anchors.left: parent.left
@@ -208,8 +208,9 @@ Rectangle {
             }
         ]
 
-        IconButton {
-            icon.source: "image://theme/icon-m-about"
+        IconButtonPL {
+            icon.source: app.styler.iconAbout
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 app.push("PoiInfoPage.qml", {
                              "active": active,
@@ -218,17 +219,19 @@ Rectangle {
             }
         }
 
-        IconButton {
+        IconButtonPL {
             enabled: panel.active
-            icon.source: bookmarked ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
+            icon.source: bookmarked ? app.styler.iconFavoriteSelected  : app.styler.iconFavorite
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 bookmarked = !bookmarked;
                 map.bookmarkPoi(poiId, bookmarked);
             }
         }
 
-        IconButton {
-            icon.source: "image://theme/icon-m-car"
+        IconButtonPL {
+            icon.source: app.styler.iconNavigate
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
                 panel.showMenu = false;
@@ -239,8 +242,9 @@ Rectangle {
             }
         }
 
-        IconButton {
-            icon.source: "image://theme/icon-m-whereami"
+        IconButtonPL {
+            icon.source: app.styler.iconNearby
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
                 panel.showMenu = false;
@@ -251,9 +255,10 @@ Rectangle {
             }
         }
 
-        IconButton {
+        IconButtonPL {
             enabled: panel.active
-            icon.source: !panel.showMenu ? "image://theme/icon-m-delete" : ""
+            icon.source: !panel.showMenu ? app.styler.iconDelete : ""
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             visible: !panel.showMenu
             onClicked: {
                 if (coordinate === undefined) return;
@@ -264,12 +269,13 @@ Rectangle {
 
     }
 
-    IconButton {
+    IconButtonPL {
         id: menuButton
         anchors.right: parent.right
-        anchors.rightMargin: Theme.horizontalPageMargin
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: splitterItem.bottom
-        icon.source: panel.showMenu ? "image://theme/icon-m-menu" : ""
+        icon.source: panel.showMenu ? app.styler.iconMenu : ""
+        icon.sourceSize.height: app.styler.themeIconSizeMedium
         visible: panel.showMenu
         onClicked: {
             app.showMenu();

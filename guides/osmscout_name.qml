@@ -17,117 +17,91 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "../qml"
+import "../qml/platform"
+
 import "../qml/js/util.js" as Util
 
-Dialog {
+DialogListPL {
     id: dialog
-    allowedOrientations: app.defaultAllowedOrientations
 
-    property var    history: []
-    property string query: ""
+    currentIndex: -1
 
-    SilicaListView {
-        id: listView
-        anchors.fill: parent
-        // Prevent list items from stealing focus.
-        currentIndex: -1
+    delegate: ListItemPL {
+        id: listItem
+        contentHeight: visible ? app.styler.themeItemSizeSmall : 0
+        menu: contextMenu
+        visible: model.visible
 
-        delegate: ListItem {
-            id: listItem
-            contentHeight: visible ? Theme.itemSizeSmall : 0
-            menu: contextMenu
-            visible: model.visible
+        ListItemLabel {
+            anchors.leftMargin: dialog.searchField.textLeftMargin
+            color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+            height: app.styler.themeItemSizeSmall
+            text: model.text
+        }
 
-            ListItemLabel {
-                anchors.leftMargin: listView.searchField.textLeftMargin
-                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                height: Theme.itemSizeSmall
-                text: model.text
-            }
-
-            ContextMenu {
-                id: contextMenu
-                MenuItem {
-                    text: app.tr("Remove")
-                    onClicked: {
-                        py.call_sync("poor.app.history.remove_place_name", [model.name]);
-                        dialog.history = py.evaluate("poor.app.history.place_names");
-                        listView.model.remove(index);
-                    }
+        ContextMenuPL {
+            id: contextMenu
+            ContextMenuItemPL {
+                text: app.tr("Remove")
+                onClicked: {
+                    py.call_sync("poor.app.history.remove_place_name", [model.name]);
+                    dialog.history = py.evaluate("poor.app.history.place_names");
+                    dialog.model.remove(index);
                 }
             }
-
-            ListView.onRemove: animateRemoval(listItem);
-
-            onClicked: {
-                dialog.query = model.name;
-                dialog.accept();
-            }
-
         }
 
-        header: Column {
-            height: dialogHeader.height + searchField.height
-            width: parent.width
+        ListView.onRemove: animateRemoval(listItem);
 
-            DialogHeader {
-                id: dialogHeader
-            }
-
-            SearchField {
-                id: searchField
-                placeholderText: app.tr("Search")
-                width: parent.width
-                EnterKey.enabled: text.length > 0
-                EnterKey.onClicked: dialog.accept();
-                onTextChanged: {
-                    dialog.query = searchField.text;
-                    dialog.filterHistory();
-                }
-            }
-
-            Component.onCompleted: listView.searchField = searchField;
-
+        onClicked: {
+            dialog.query = model.name;
+            dialog.accept();
         }
-
-        model: ListModel {}
-
-        property var searchField: undefined
-
-        ViewPlaceholder {
-            id: viewPlaceholder
-            enabled: false
-            hintText: app.tr("You can search for venues by name.")
-        }
-
-        VerticalScrollDecorator {}
 
     }
 
-    onStatusChanged: {
-        if (dialog.status === PageStatus.Activating) {
-            dialog.loadHistory();
-            dialog.filterHistory();
+    headerExtra: Component {
+        SearchFieldPL {
+            id: searchField
+            placeholderText: app.tr("Search")
+            width: parent.width
+            onSearch: dialog.accept();
+            onTextChanged: {
+                dialog.query = searchField.text;
+                dialog.filterHistory();
+            }
+            Component.onCompleted: dialog.searchField = searchField;
         }
+    }
+
+    model: ListModel {}
+    placeholderText: app.tr("You can search for venues by name.")
+
+    property var    history: []
+    property string query: ""
+    property var searchField: undefined
+
+    onPageStatusActivating: {
+        dialog.loadHistory();
+        dialog.filterHistory();
     }
 
     function filterHistory() {
         // Filter search history for current search field text.
-        var query = listView.searchField.text;
-        var found = Util.findMatches(query, dialog.history, [], listView.model.count);
-        Util.injectMatches(listView.model, found, "name", "text");
-        viewPlaceholder.enabled = found.length === 0;
+        var query = dialog.searchField.text;
+        var found = Util.findMatches(query, dialog.history, [], dialog.model.count);
+        Util.injectMatches(dialog.model, found, "name", "text");
+        placeholderEnabled = found.length === 0;
     }
 
     function loadHistory() {
         // Load search history and preallocate list items.
         dialog.history = py.evaluate("poor.app.history.place_names");
-        while (listView.model.count < 100)
-            listView.model.append({"name": "",
-                                   "text": "",
-                                   "visible": false});
+        while (dialog.model.count < 100)
+            dialog.model.append({"name": "",
+                                    "text": "",
+                                    "visible": false});
 
     }
 

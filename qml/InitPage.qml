@@ -17,12 +17,11 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
-Page {
+PageEmptyPL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
 
     BusyModal {
         id: busy
@@ -34,7 +33,7 @@ Page {
         target: py
         onReadyChanged: {
             if (!py.ready) return;
-            app.rootPage = app.pageStack.replace("RootPage.qml");
+            app.rootPage = app.pages.replace("RootPage.qml");
             app.initialize();
         }
     }

@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
 Item {
     id: busy
@@ -29,19 +29,17 @@ Item {
     property bool   running: false
     property string text: ""
 
-    BusyIndicator {
+    BusyIndicatorPL {
         id: indicator
-        anchors.centerIn: parent
         running: busy.running
-        size: BusyIndicatorSize.Large
         visible: busy.running
     }
 
-    Label {
+    LabelPL {
         anchors.bottom: indicator.top
         anchors.bottomMargin: Math.round(indicator.height/4)
-        color: Theme.highlightColor
-        font.pixelSize: Theme.fontSizeLarge
+        color: app.styler.themeHighlightColor
+        font.pixelSize: app.styler.themeFontSizeLarge
         horizontalAlignment: Text.AlignHCenter
         text: busy.error || busy.text
         visible: busy.running || busy.error
@@ -51,7 +49,7 @@ Item {
     ListItemLabel {
         anchors.top: indicator.bottom
         anchors.topMargin: Math.round(indicator.height/4)
-        color: Theme.secondaryColor
+        color: app.styler.themeSecondaryColor
         horizontalAlignment: Text.AlignHCenter
         text: busy.error ? "" : busy.description
         visible: busy.running

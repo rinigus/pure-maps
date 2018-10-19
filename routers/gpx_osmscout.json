@@ -12,5 +12,5 @@
   "can_reroute": false,
   "from_needed": false,
   "to_needed": false,
-  "requires": ["harbour-osmscout-server"]
+  "requires": ["harbour-osmscout-server", "osmscout-server"]
 }

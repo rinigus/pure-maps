@@ -17,142 +17,131 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "."
+import "platform"
 
 import "js/util.js" as Util
 
-Page {
+PageListPL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
+
+    delegate: ListItemPL {
+        id: listItem
+        contentHeight: titleLabel.height + descriptionLabel.height
+
+        property bool visited: false
+
+        ListItemLabel {
+            id: titleLabel
+            color: (listItem.highlighted || listItem.visited) ?
+                       app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+            height: implicitHeight + app.listItemVerticalMargin
+            text: model.title
+            verticalAlignment: Text.AlignBottom
+        }
+
+        ListItemLabel {
+            id: descriptionLabel
+            anchors.top: titleLabel.bottom
+            anchors.topMargin: app.styler.themePaddingSmall
+            color: app.styler.themeSecondaryColor
+            font.pixelSize: app.styler.themeFontSizeExtraSmall
+            height: implicitHeight + app.listItemVerticalMargin
+            lineHeight: 1.15
+            text: model.description + "\n" + model.distance
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.WordWrap
+        }
+
+        onClicked: {
+            app.hideMenu();
+            var p = {
+                "address": model.address || "",
+                "link": model.link || "",
+                "phone": model.phone || "",
+                "poiType": model.poi_type || "",
+                "postcode": model.postcode || "",
+                "provider": model.provider || "",
+                "text": model.text || "",
+                "title": model.title,
+                "type": "geocode",
+                "x": model.x,
+                "y": model.y,
+            };
+            if (map.addPoi(p)) p = map.pois[map.pois.length-1];
+            else p.title = app.tr("%1 [duplicate]", p.title);
+            map.showPoi(p, true);
+            map.autoCenter = false;
+            map.setCenter(model.x, model.y);
+            listItem.visited = true;
+        }
+
+    }
+
+    model: ListModel {}
+
+    pageMenu: PageMenuPL {
+        visible: page.model.count > 1
+        PageMenuItemPL {
+            text: app.tr("Show all")
+            onClicked: {
+                var pois = [];
+                for (var i = 0; i < page.model.count; i++) {
+                    var item = page.model.get(i);
+                    pois.push({
+                                  "address": item.address || "",
+                                  "link": item.link || "",
+                                  "phone": item.phone || "",
+                                  "poiType": item.poi_type || "",
+                                  "postcode": item.postcode || "",
+                                  "provider": item.provider || "",
+                                  "text": item.text || "",
+                                  "title": item.title,
+                                  "type": "geocode",
+                                  "x": item.x,
+                                  "y": item.y,
+                              });
+                }
+                app.hideMenu();
+                map.clearPois();
+                map.addPois(pois);
+                map.fitViewToPois(pois);
+            }
+        }
+    }
+
 
     property bool   loading: true
     property bool   populated: false
-    property string title: ""
-
-    SilicaListView {
-        id: listView
-        anchors.fill: parent
-
-        delegate: ListItem {
-            id: listItem
-            contentHeight: titleLabel.height + descriptionLabel.height
-
-            property bool visited: false
-
-            ListItemLabel {
-                id: titleLabel
-                color: (listItem.highlighted || listItem.visited) ?
-                    Theme.highlightColor : Theme.primaryColor;
-                height: implicitHeight + app.listItemVerticalMargin
-                text: model.title
-                verticalAlignment: Text.AlignBottom
-            }
-
-            ListItemLabel {
-                id: descriptionLabel
-                anchors.top: titleLabel.bottom
-                anchors.topMargin: Theme.paddingSmall
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                height: implicitHeight + app.listItemVerticalMargin
-                lineHeight: 1.15
-                text: model.description + "\n" + model.distance
-                verticalAlignment: Text.AlignTop
-                wrapMode: Text.WordWrap
-            }
-
-            onClicked: {
-                app.hideMenu();
-                var p = {
-                    "address": model.address || "",
-                    "link": model.link || "",
-                    "phone": model.phone || "",
-                    "poiType": model.poi_type || "",
-                    "postcode": model.postcode || "",
-                    "provider": model.provider || "",
-                    "text": model.text || "",
-                    "title": model.title,
-                    "type": "geocode",
-                    "x": model.x,
-                    "y": model.y,
-                };
-                if (map.addPoi(p)) p = map.pois[map.pois.length-1];
-                else p.title = app.tr("%1 [duplicate]", p.title);
-                map.showPoi(p, true);
-                map.autoCenter = false;
-                map.setCenter(model.x, model.y);
-                listItem.visited = true;
-            }
-
-        }
-
-        header: PageHeader {
-            title: page.title
-        }
-
-        model: ListModel {}
-
-        PullDownMenu {
-            visible: listView.model.count > 1
-            MenuItem {
-                text: app.tr("Show all")
-                onClicked: {
-                    var pois = [];
-                    for (var i = 0; i < listView.model.count; i++) {
-                        var item = listView.model.get(i);
-                        pois.push({
-                            "address": item.address || "",
-                            "link": item.link || "",
-                            "phone": item.phone || "",
-                            "poiType": item.poi_type || "",
-                            "postcode": item.postcode || "",
-                            "provider": item.provider || "",
-                            "text": item.text || "",
-                            "title": item.title,
-                            "type": "geocode",
-                            "x": item.x,
-                            "y": item.y,
-                        });
-                    }
-                    app.hideMenu();
-                    map.clearPois();
-                    map.addPois(pois);
-                    map.fitViewToPois(pois);
-                }
-            }
-        }
-
-        VerticalScrollDecorator {}
-
-    }
 
     BusyModal {
         id: busy
         running: page.loading
     }
 
-    onStatusChanged: {
-        if (page.status === PageStatus.Activating) {
-            if (page.populated) return;
-            listView.model.clear();
-            page.loading = true;
-            page.title = "";
-            busy.text = app.tr("Searching");
-        } else if (page.status === PageStatus.Active) {
-            listView.visible = true;
-            if (page.populated) return;
-            var geocodePage = app.pageStack.previousPage();
-            page.populate(geocodePage.query);
-        } else if (page.status === PageStatus.Inactive) {
-            listView.visible = false;
-        }
+    onPageStatusActivating: {
+        if (page.populated) return;
+        page.model.clear();
+        page.loading = true;
+        page.title = "";
+        busy.text = app.tr("Searching");
+    }
+
+    onPageStatusActive: {
+        //listView.visible = true;
+        if (page.populated) return;
+        var geocodePage = app.pages.previousPage();
+        page.populate(geocodePage.query);
+    }
+
+    onPageStatusInactive: {
+        //listView.visible = false;
     }
 
     function populate(query) {
         // Load geocoding results from the Python backend.
         py.call_sync("poor.app.history.add_place", [query]);
-        listView.model.clear();
+        page.model.clear();
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
         py.call("poor.app.geocoder.geocode", [query, null, x, y], function(results) {
@@ -161,7 +150,7 @@ Page {
                 busy.error = results.message;
             } else if (results.length > 0) {
                 page.title = app.tr("%1 Results", results.length);
-                Util.appendAll(listView.model, results);
+                Util.appendAll(page.model, results);
             } else {
                 page.title = "";
                 busy.error = app.tr("No results");

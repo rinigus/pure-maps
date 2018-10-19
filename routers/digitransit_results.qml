@@ -45,18 +45,18 @@ Page {
 
         delegate: ListItem {
             id: listItem
-            contentHeight: titleLabel.height + Theme.paddingMedium + bar.height +
-                Theme.paddingMedium + repeater.height + finalLabel.height + Theme.paddingMedium
+            contentHeight: titleLabel.height + app.styler.themePaddingMedium + bar.height +
+                app.styler.themePaddingMedium + repeater.height + finalLabel.height + app.styler.themePaddingMedium
 
-            property real barGap: Math.round(3 * Theme.pixelRatio)
-            property real barMargin: Theme.horizontalPageMargin - barGap
+            property real barGap: Math.round(3 * app.styler.themePixelRatio)
+            property real barMargin: app.styler.themeHorizontalPageMargin - barGap
             property var  result: page.results[model.alternative-1]
 
             ListItemLabel {
                 id: titleLabel
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeSmall
-                height: implicitHeight + Theme.paddingMedium
+                color: app.styler.themeHighlightColor
+                font.pixelSize: app.styler.themeFontSizeSmall
+                height: implicitHeight + app.styler.themePaddingMedium
                 text: app.tr("Route %1. total %2",
                              listItem.result.alternative,
                              py.call_sync("poor.util.format_time",
@@ -72,9 +72,9 @@ Page {
                 anchors.right: parent.right
                 anchors.rightMargin: listItem.barMargin
                 anchors.top: titleLabel.bottom
-                anchors.topMargin: Theme.paddingMedium
+                anchors.topMargin: app.styler.themePaddingMedium
                 color: "#00000000"
-                height: 0.65 * Theme.itemSizeSmall
+                height: 0.65 * app.styler.themeItemSizeSmall
             }
 
             /*
@@ -84,7 +84,7 @@ Page {
             Repeater {
                 id: repeater
                 anchors.top: bar.bottom
-                anchors.topMargin: Theme.paddingMedium
+                anchors.topMargin: app.styler.themePaddingMedium
                 height: 0
                 model: listItem.result.legs.length
                 width: parent.width
@@ -124,12 +124,12 @@ Page {
 
                     Label {
                         id: timeLabel
-                        height: implicitHeight + Theme.paddingSmall
+                        height: implicitHeight + app.styler.themePaddingSmall
                         horizontalAlignment: Text.AlignRight
                         text: leg.dep_time
                         verticalAlignment: Text.AlignVCenter
                         width: page.timeWidth
-                        x: parent.x + Theme.horizontalPageMargin
+                        x: parent.x + app.styler.themeHorizontalPageMargin
                         y: repeater.y + index * row.height
                         Component.onCompleted: page.timeWidth = Math.max(
                             page.timeWidth, timeLabel.implicitWidth);
@@ -137,12 +137,12 @@ Page {
 
                     Label {
                         id: lineLabel
-                        height: implicitHeight + Theme.paddingSmall
+                        height: implicitHeight + app.styler.themePaddingSmall
                         horizontalAlignment: Text.AlignRight
                         text: leg.line
                         verticalAlignment: Text.AlignVCenter
                         width: page.lineWidth
-                        x: timeLabel.x + page.timeWidth + Theme.paddingMedium
+                        x: timeLabel.x + page.timeWidth + app.styler.themePaddingMedium
                         y: repeater.y + index * row.height
                         Component.onCompleted: page.lineWidth = Math.max(
                             page.lineWidth, lineLabel.implicitWidth);
@@ -150,14 +150,14 @@ Page {
 
                     Label {
                         id: nameLabel
-                        height: implicitHeight + Theme.paddingSmall
+                        height: implicitHeight + app.styler.themePaddingSmall
                         text: leg.mode === "WALK" ?
                             app.tr("Walk %1", page.formatLength(leg.length)) :
                             app.tr("%1 → %2", leg.dep_name, leg.arr_name)
                         truncationMode: TruncationMode.Fade
                         verticalAlignment: Text.AlignVCenter
-                        width: parent.width - x - Theme.horizontalPageMargin
-                        x: lineLabel.x + page.lineWidth + Theme.paddingMedium
+                        width: parent.width - x - app.styler.themeHorizontalPageMargin
+                        x: lineLabel.x + page.lineWidth + app.styler.themePaddingMedium
                         y: repeater.y + index * row.height
                     }
 
@@ -171,12 +171,12 @@ Page {
                 // Not a real leg, needed to show arrival time.
                 id: finalLabel
                 anchors.top: repeater.bottom
-                height: implicitHeight + Theme.paddingSmall
+                height: implicitHeight + app.styler.themePaddingSmall
                 horizontalAlignment: Text.AlignRight
                 text: listItem.result.legs[listItem.result.legs.length-1].arr_time
                 verticalAlignment: Text.AlignVCenter
                 width: page.timeWidth
-                x: parent.x + Theme.horizontalPageMargin
+                x: parent.x + app.styler.themeHorizontalPageMargin
                 Component.onCompleted: page.timeWidth = Math.max(
                     page.timeWidth, finalLabel.implicitWidth);
             }
@@ -230,7 +230,7 @@ Page {
 
     function populate() {
         // Load routing results from the Python backend.
-        var routePage = app.pageStack.previousPage();
+        var routePage = app.pages.previousPage();
         var args = [routePage.from, routePage.to, null, routePage.params];
         py.call("poor.app.router.route", args, function(results) {
             if (results && results.error && results.message) {

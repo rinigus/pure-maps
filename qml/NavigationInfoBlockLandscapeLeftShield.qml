@@ -17,7 +17,6 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 
 // used to cover speed in navigation info block in landscape
 // dimesions are set in NavigationInfoBlock
@@ -26,7 +25,7 @@ Rectangle {
     y: app.screenHeight - (height - radius)
     color: navigationInfoBlock.color
     height: navigationInfoBlock.shieldLeftHeight > 0 ? navigationInfoBlock.shieldLeftHeight + radius : 0
-    radius: Theme.paddingLarge
+    radius: app.styler.themePaddingLarge
     width: navigationInfoBlock.shieldLeftWidth > 0 ? navigationInfoBlock.shieldLeftWidth + radius : 0
     z: 400
 

@@ -17,14 +17,14 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
 Rectangle {
     id: block
     anchors.right: parent.right
-    anchors.rightMargin: -Theme.paddingMedium
+    anchors.rightMargin: -app.styler.themePaddingMedium
     anchors.top: navigationBlock.bottom
-    anchors.topMargin: Theme.paddingSmall
+    anchors.topMargin: app.styler.themePaddingSmall
     color: "#3768B7"
     height: {
         if (!app.conf.showNavigationSign) return 0;
@@ -33,19 +33,19 @@ Rectangle {
         var h3 = towardLabel.height;
         var h4 = branchLabel.height;
         var h = h1 + h2 + h3 + h4;
-        if (h) return h + 2*Theme.paddingMedium;
+        if (h) return h + 2*app.styler.themePaddingMedium;
         return 0;
     }
-    radius: Theme.paddingMedium
+    radius: app.styler.themePaddingMedium
     visible: app.conf.showNavigationSign
     width: {
         if (!app.conf.showNavigationSign) return 0;
-        var w1 = numLabel.text ? numLabel.width + exitLabel.width + Theme.paddingSmall : 0;
+        var w1 = numLabel.text ? numLabel.width + exitLabel.width + app.styler.themePaddingSmall : 0;
         var w2 = nameLabel.implicitWidth;
         var w3 = towardLabel.implicitWidth;
         var w4 = branchLabel.implicitWidth;
         var w  = Math.max(w1, Math.min(parent.width/3, Math.max(w2, w3, w4)));
-        if (w) return w + 2*Theme.paddingLarge;
+        if (w) return w + 2*app.styler.themePaddingLarge;
         return 0;
     }
     z: 500
@@ -57,94 +57,94 @@ Rectangle {
     Rectangle {
         id: signBorder
         anchors.fill: parent
-        anchors.margins: Theme.paddingSmall/2
+        anchors.margins: app.styler.themePaddingSmall/2
         border.color: "white"
-        border.width: Theme.paddingSmall/2
+        border.width: app.styler.themePaddingSmall/2
         color: "transparent"
-        radius: Theme.paddingMedium
+        radius: app.styler.themePaddingMedium
     }
     
-    Label {
+    LabelPL {
         // Exit number
         id: numLabel
         anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingLarge
+        anchors.rightMargin: app.styler.themePaddingLarge
         anchors.top: parent.top
-        anchors.topMargin: block.signActive ? Theme.paddingMedium : 0
+        anchors.topMargin: block.signActive ? app.styler.themePaddingMedium : 0
         color: "white"
         font.bold: true
-        font.pixelSize: Theme.fontSizeLarge
-        height: text ? implicitHeight + 0*Theme.paddingSmall: 0
+        font.pixelSize: app.styler.themeFontSizeLarge
+        height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
         text: block.getstr("exit_number", " ")
         verticalAlignment: Text.AlignBottom
         width: text ? implicitWidth : 0
     }
 
-    Label {
+    LabelPL {
         // Word "Exit"
         id: exitLabel
         anchors.baseline: numLabel.baseline
         anchors.right: numLabel.left
-        anchors.rightMargin: Theme.paddingSmall
+        anchors.rightMargin: app.styler.themePaddingSmall
         color: "white"
         height: numLabel.text ? implicitHeight : 0
-        font.pixelSize: Theme.fontSizeMedium
+        font.pixelSize: app.styler.themeFontSizeMedium
         text: app.tr("EXIT")
         visible: numLabel.text
         width: numLabel.text ? implicitWidth : 0
     }
 
-    Label {
+    LabelPL {
         // Exit name
         id: nameLabel
         anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingLarge
+        anchors.rightMargin: app.styler.themePaddingLarge
         anchors.top: numLabel.bottom
         color: "white"
-        font.pixelSize: Theme.fontSizeMedium
-        height: text ? implicitHeight + 0*Theme.paddingSmall: 0
+        font.pixelSize: app.styler.themeFontSizeMedium
+        height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
         maximumLineCount: 1
         text: block.getstr("exit_name", "\n", 1)
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignBottom
         width: text ? elementWidth() : 0
     }
 
-    Label {
+    LabelPL {
         // Exit towards
         id: towardLabel
         anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingLarge
+        anchors.rightMargin: app.styler.themePaddingLarge
         anchors.top: nameLabel.bottom
         color: "white"
         font.bold: true
         font.capitalization: Font.AllUppercase
-        font.pixelSize: Theme.fontSizeMedium
-        height: text ? implicitHeight + 0*Theme.paddingSmall: 0
+        font.pixelSize: app.styler.themeFontSizeMedium
+        height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
         text: block.getstr("exit_toward", "\n", 3)
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignBottom
         width: text ? elementWidth() : 0
     }
 
-    Label {
+    LabelPL {
         // Exit branch
         id: branchLabel
         anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingLarge
+        anchors.rightMargin: app.styler.themePaddingLarge
         anchors.top: towardLabel.bottom
         color: "white"
         font.bold: true
-        font.pixelSize: Theme.fontSizeMedium
-        height: text ? implicitHeight + 0*Theme.paddingSmall: 0
+        font.pixelSize: app.styler.themeFontSizeMedium
+        height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
         text: block.getstr("exit_branch", " ", 2)
-        truncationMode: TruncationMode.Fade
+        truncMode: truncModes.fade
         verticalAlignment: Text.AlignBottom
         width: text ? Math.min(implicitWidth,elementWidth()) : 0
     }
 
     function elementWidth() {
-        return block.width - 2*Theme.paddingLarge;
+        return block.width - 2*app.styler.themePaddingLarge;
     }
 
     function getstr(data_id, conn, maxnr) {

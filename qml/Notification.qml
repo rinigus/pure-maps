@@ -16,20 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Sailfish.Silica 1.0
+import QtQuick 2.2
 import "."
 
 Bubble {
     id: bubble
     anchorItem: navigationBlock
-    anchors.topMargin: Theme.paddingLarge
+    anchors.topMargin: app.styler.themePaddingLarge
     opacity: 0
     showArrow: false
     state: "bottom-center"
     visible: opacity > 0
 
-    Behavior on opacity { FadeAnimator {} }
+    Behavior on opacity {
+        OpacityAnimator {
+            duration: 200
+            easing.type: Easing.InOutQuad
+        }
+    }
 
     Timer {
         id: timer

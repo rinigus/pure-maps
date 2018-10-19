@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import "platform"
 
 Rectangle {
     id: block
@@ -25,7 +25,7 @@ Rectangle {
     anchors.right: parent.right
     anchors.bottom: parent.bottom
     color: app.styler.blockBg
-    height: app.mode === modes.navigate && app.portrait ? Theme.paddingSmall + (app.portrait ? speed.height : timeDest.height) : 0
+    height: app.mode === modes.navigate && app.portrait ? app.styler.themePaddingSmall + (app.portrait ? speed.height : timeDest.height) : 0
     visible: app.mode === modes.navigate || app.mode === modes.followMe
     z: 500
 
@@ -36,19 +36,19 @@ Rectangle {
     // rather large sign with directions shows up. by setting this property to false,
     // the right side data is temporarly not shown until the sign goes away
     property bool   rightSideTooBusy: false
-    property int    shieldLeftHeight: (!app.portrait && app.mode === modes.navigate) || app.mode === modes.followMe ? speed.height + Theme.paddingMedium : 0
-    property int    shieldLeftWidth:  (!app.portrait && app.mode === modes.navigate) || app.mode === modes.followMe ? speed.width + Theme.horizontalPageMargin + speedUnit.width + Theme.paddingSmall + Theme.paddingLarge : 0
-    property int    shieldRightHeight: !app.portrait && app.mode === modes.navigate && !rightSideTooBusy ? timeDest.height + distDest.height + Theme.paddingMedium : 0
-    property int    shieldRightWidth:  !app.portrait && app.mode === modes.navigate ? Math.max(timeDest.width, distDest.width) + Theme.horizontalPageMargin+ Theme.paddingLarge : 0
+    property int    shieldLeftHeight: (!app.portrait && app.mode === modes.navigate) || app.mode === modes.followMe ? speed.height + app.styler.themePaddingMedium : 0
+    property int    shieldLeftWidth:  (!app.portrait && app.mode === modes.navigate) || app.mode === modes.followMe ? speed.width + app.styler.themeHorizontalPageMargin + speedUnit.width + app.styler.themePaddingSmall + app.styler.themePaddingLarge : 0
+    property int    shieldRightHeight: !app.portrait && app.mode === modes.navigate && !rightSideTooBusy ? timeDest.height + distDest.height + app.styler.themePaddingSmall + app.styler.themePaddingMedium : 0
+    property int    shieldRightWidth:  !app.portrait && app.mode === modes.navigate ? Math.max(timeDest.width, distDest.width) + app.styler.themeHorizontalPageMargin + app.styler.themePaddingLarge : 0
 
-    Label {
+    LabelPL {
         // speed
         id: speed
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.leftMargin: Theme.horizontalPageMargin
-        color: Theme.primaryColor
-        font.pixelSize: Theme.fontSizeHuge
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        color: app.styler.themePrimaryColor
+        font.pixelSize: app.styler.themeFontSizeHuge
 
         function update() {
             if (app.mode === modes.explore) return;
@@ -68,14 +68,14 @@ Rectangle {
         }
     }
 
-    Label {
+    LabelPL {
         // speed unit
         id: speedUnit
         anchors.left: speed.right
         anchors.baseline: speed.baseline
-        anchors.leftMargin: Theme.paddingSmall
-        color: Theme.secondaryColor
-        font.pixelSize: Theme.fontSizeMedium
+        anchors.leftMargin: app.styler.themePaddingSmall
+        color: app.styler.themeSecondaryColor
+        font.pixelSize: app.styler.themeFontSizeMedium
 
         function update() {
             if (app.mode === modes.explore) return;
@@ -89,16 +89,16 @@ Rectangle {
         }
     }
 
-    Label {
+    LabelPL {
         // Time remaining to destination
         id: timeDest
         anchors.baseline: speed.baseline
         anchors.left: speedUnit.right
-        anchors.leftMargin: Theme.paddingLarge
+        anchors.leftMargin: app.styler.themePaddingLarge
         anchors.right: distDest.left
-        anchors.rightMargin: Theme.paddingLarge
-        color: Theme.primaryColor
-        font.pixelSize: Theme.fontSizeLarge
+        anchors.rightMargin: app.styler.themePaddingLarge
+        color: app.styler.themePrimaryColor
+        font.pixelSize: app.styler.themeFontSizeLarge
         fontSizeMode: Text.HorizontalFit
         horizontalAlignment: Text.AlignHCenter
         states: [
@@ -113,8 +113,8 @@ Rectangle {
                 }
                 PropertyChanges {
                     target: timeDest
-                    anchors.bottomMargin: Theme.padiingLarge
-                    anchors.rightMargin: Theme.horizontalPageMargin
+                    anchors.bottomMargin: app.styler.themePaddingSmall
+                    anchors.rightMargin: app.styler.themeHorizontalPageMargin
                     width: implicitWidth
                 }
             }
@@ -123,14 +123,14 @@ Rectangle {
         visible: app.mode === modes.navigate
     }
 
-    Label {
+    LabelPL {
         // Distance remaining to destination
         id: distDest
         anchors.baseline: speed.baseline
         anchors.right: parent.right
-        anchors.rightMargin: Theme.horizontalPageMargin
-        color: Theme.primaryColor
-        font.pixelSize: Theme.fontSizeLarge
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        color: app.styler.themePrimaryColor
+        font.pixelSize: app.styler.themeFontSizeLarge
         text: !rightSideTooBusy ? block.destDist : ""
         visible: app.mode === modes.navigate
     }
@@ -174,7 +174,7 @@ Rectangle {
             return;
         }
         var top = northArrow.y+northArrow.height;
-        var tofit = scaleBar.height + timeDest.height + distDest.height + Theme.paddingMedium + 2*Theme.paddingLarge;
+        var tofit = scaleBar.height + timeDest.height + distDest.height + app.styler.themePaddingMedium + 2*app.styler.themePaddingLarge;
         var bottom = app.screenHeight - tofit;
         block.rightSideTooBusy = bottom - top < 0;
     }

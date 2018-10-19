@@ -17,7 +17,6 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 
 // used to cover manDist and manIcon in navigation block in landscape
 // dimesions are set in NavigationBlock
@@ -26,7 +25,7 @@ Rectangle {
     y: -radius
     color: navigationBlock.color
     height: navigationBlock.shieldLeftHeight > 0 ? navigationBlock.shieldLeftHeight - y : 0
-    radius: Theme.paddingLarge
+    radius: app.styler.themePaddingLarge
     width: navigationBlock.shieldLeftWidth > 0 ? navigationBlock.shieldLeftWidth - x : 0
     z: 400
 
