@@ -210,6 +210,7 @@ Rectangle {
 
         IconButtonPL {
             icon.source: app.styler.iconAbout
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 app.push("PoiInfoPage.qml", {
                              "active": active,
@@ -221,6 +222,7 @@ Rectangle {
         IconButtonPL {
             enabled: panel.active
             icon.source: bookmarked ? app.styler.iconFavoriteSelected  : app.styler.iconFavorite
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 bookmarked = !bookmarked;
                 map.bookmarkPoi(poiId, bookmarked);
@@ -229,6 +231,7 @@ Rectangle {
 
         IconButtonPL {
             icon.source: app.styler.iconNavigate
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
                 panel.showMenu = false;
@@ -241,6 +244,7 @@ Rectangle {
 
         IconButtonPL {
             icon.source: app.styler.iconNearby
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
                 panel.showMenu = false;
@@ -254,6 +258,7 @@ Rectangle {
         IconButtonPL {
             enabled: panel.active
             icon.source: !panel.showMenu ? app.styler.iconDelete : ""
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
             visible: !panel.showMenu
             onClicked: {
                 if (coordinate === undefined) return;
@@ -270,6 +275,7 @@ Rectangle {
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: splitterItem.bottom
         icon.source: panel.showMenu ? app.styler.iconMenu : ""
+        icon.sourceSize.height: app.styler.themeIconSizeMedium
         visible: panel.showMenu
         onClicked: {
             app.showMenu();

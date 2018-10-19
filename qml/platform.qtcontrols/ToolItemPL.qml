@@ -19,33 +19,41 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-ItemDelegate {
-    id: item
-    height: image.height + label.height
-    width: image.width
+Item {
+    id: host
+    height: childrenRect.height
 
-    property string icon: ""
+    property alias icon: image
+    property alias text: label.text
 
-    Image {
-        id: image
-        fillMode: Image.Pad
-        height: sourceSize.height + app.styler.themePaddingLarge + app.styler.themePaddingMedium
-        source: item.icon
-        width: item.width
+    signal clicked
+
+    ItemDelegate {
+        id: item
+        height: image.height + label.height + 2*app.styler.themePaddingLarge
+        width: parent.width
+
+        Image {
+            id: image
+            anchors.horizontalCenter: item.horizontalCenter
+            anchors.top: item.top
+            anchors.topMargin: app.styler.themePaddingLarge
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Label {
+            id: label
+            anchors.left: parent.left
+            anchors.leftMargin: app.styler.themePaddingLarge
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themePaddingLarge
+            anchors.top: image.bottom
+            anchors.topMargin: app.styler.themePaddingMedium
+            color: item.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
+        }
+
+        onClicked: host.clicked()
     }
-
-    Label {
-        id: label
-        anchors.left: parent.left
-        anchors.leftMargin: app.styler.themePaddingSmall
-        anchors.right: parent.right
-        anchors.rightMargin: app.styler.themePaddingSmall
-        anchors.top: image.bottom
-        color: item.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
-        height: implicitHeight + app.styler.themePaddingLarge
-        horizontalAlignment: Text.AlignHCenter
-        text: item.text
-        wrapMode: Text.WordWrap
-    }
-
 }

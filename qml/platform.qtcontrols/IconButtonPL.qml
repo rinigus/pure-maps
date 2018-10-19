@@ -21,12 +21,16 @@ import QtQuick.Controls 2.2
 
 Item {
     id: item
+    height: childrenRect.height
+    width: childrenRect.width
+
     property alias icon: image
 
     signal clicked
 
     Image {
         id: image
+        fillMode: Image.PreserveAspectFit
     }
 
     MouseArea {

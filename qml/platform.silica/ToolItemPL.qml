@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2017 Osmo Salomaa
+ * Copyright (C) 2017 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,31 +21,29 @@ import Sailfish.Silica 1.0
 
 BackgroundItem {
     id: item
-    height: image.height + label.height
-    width: image.width
+    height: image.height + label.height + 2*app.styler.themePaddingLarge
 
-    property string icon: ""
-    property string text: ""
+    property alias icon: image
+    property alias text: label.text
 
     Image {
         id: image
-        fillMode: Image.Pad
-        height: sourceSize.height + app.styler.themePaddingLarge + app.styler.themePaddingMedium
-        source: item.icon
-        width: item.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: app.styler.themePaddingLarge
+        fillMode: Image.PreserveAspectFit
     }
 
     Label {
         id: label
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themePaddingSmall
+        anchors.leftMargin: app.styler.themePaddingLarge
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themePaddingSmall
+        anchors.rightMargin: app.styler.themePaddingLarge
         anchors.top: image.bottom
+        anchors.topMargin: app.styler.themePaddingMedium
         color: item.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
-        height: implicitHeight + app.styler.themePaddingLarge
         horizontalAlignment: Text.AlignHCenter
-        text: item.text
         wrapMode: Text.WordWrap
     }
 

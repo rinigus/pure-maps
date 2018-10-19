@@ -31,7 +31,7 @@ QtObject {
 
     // colors
     // block background (navigation, poi panel, bubble)
-    property color blockBg: "#CCCCCC"
+    property color blockBg: "#F2F2F2"
     // variant of navigation icons
     property string navigationIconsVariant: "black"
     // descriptive items
