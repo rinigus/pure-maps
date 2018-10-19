@@ -144,6 +144,7 @@ ApplicationWindowPL {
     }
 
     function initialize() {
+        styler.initStyle();
         app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
         updateKeepAlive();
         initialized = true;

@@ -43,7 +43,6 @@ QtObject {
     // descriptive items, secondary
     property color themeSecondaryHighlightColor: "#3E3E3E"
 
-
     // button sizes
     property real themeButtonWidthLarge: 256
     property real themeButtonWidthMedium: 180
@@ -51,6 +50,26 @@ QtObject {
     // icon sizes
     property real themeIconSizeLarge: 2.5*themeFontSizeLarge
     property real themeIconSizeMedium: 2*themeFontSizeLarge
+
+    // used icons
+    property string iconAbout: "image://theme/icon-m-about"
+    property string iconClear: "image://theme/icon-m-clear"
+    property string iconDelete: "image://theme/icon-m-delete"
+    property string iconDot: "find-location-symbolic"
+    property string iconFavorite: "image://theme/icon-m-favorite"
+    property string iconFavoriteSelected: "image://theme/icon-m-favorite-selected"
+    property string iconMaps: "image://theme/icon-m-levels"
+    property string iconMenu: "image://theme/icon-m-menu"
+    property string iconNavigate: "image://theme/icon-m-car"
+    property string iconNearby: "image://theme/icon-m-whereami"
+    property string iconPause: "image://theme/icon-m-pause"
+    property string iconPhone: "image://theme/icon-m-phone"
+    property string iconRefresh: "image://theme/icon-m-refresh"
+    property string iconSearch: "image://theme/icon-m-search"
+    property string iconShare: "image://theme/icon-m-share"
+    property string iconStart: "image://theme/icon-m-play"
+    property string iconStop: "image://theme/icon-m-clear"
+    property string iconWebLink: "image://theme/icon-m-link"
 
     // item sizes
     property real themeItemSizeLarge: themeFontSizeLarge * 3
@@ -64,4 +83,29 @@ QtObject {
     property real themePaddingSmall: 0.25*themeFontSizeSmall
 
     property real themePixelRatio: 1
+
+    function getIcon(name) {
+        return py.call_sync("poor.app.icon.get_icon", [name]);
+    }
+
+    function initStyle() {
+        iconAbout = getIcon("help-about-symbolic");
+        iconClear = getIcon("edit-clear-all-symbolic");
+        iconDelete = getIcon("edit-delete-symbolic");
+        iconDot = getIcon("find-location-symbolic");
+        iconFavorite = getIcon("bookmark-new-symbolic");
+        iconFavoriteSelected = getIcon("user-bookmarks-symbolic");
+        iconMaps = getIcon("view-paged-symbolic");
+        iconMenu = getIcon("open-menu-symbolic");
+        iconNavigate = getIcon("send-to-symbolic");
+        iconNearby = getIcon("zoom-fit-best-symbolic");
+        iconPause = getIcon("media-playback-pause-symbolic");
+        iconPhone = getIcon("call-start-symbolic");
+        iconRefresh = getIcon("view-refresh-symbolic");
+        iconSearch = getIcon("edit-find-symbolic");
+        iconShare = getIcon("emblem-shared-symbolic");
+        iconStart = getIcon("media-playback-start-symbolic");
+        iconStop = getIcon("media-playback-stop-symbolic");
+        iconWebLink = getIcon("web-browser-symbolic");
+    }
 }

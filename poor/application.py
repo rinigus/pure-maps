@@ -33,6 +33,7 @@ class Application:
         self.geocoder = None
         self.guide = None
         self.history = poor.HistoryManager()
+        self.icon = poor.IconFinder()
         self.narrative = poor.Narrative()
         self.router = None
         self.set_basemap(poor.conf.basemap)

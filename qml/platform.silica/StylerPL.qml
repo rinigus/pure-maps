@@ -84,4 +84,8 @@ QtObject {
     property real themePaddingSmall: Theme.paddingSmall
 
     property real themePixelRatio: Theme.pixelRatio
+
+    function initStyle() {
+        // dummy function added for compatibility
+    }
 }
