@@ -50,7 +50,7 @@ PagePL {
             onClicked: {
                 // XXX: SMS links don't work without a recipient.
                 // https://together.jolla.com/question/84134/
-                Clipboard.text = page.formatMessage(false);
+                clipboard.copy(page.formatMessage(false));
                 infoLabel.text = [
                             app.tr("Message copied to the clipboard"),
                             app.tr("Launching the Messages application"),
@@ -79,7 +79,7 @@ PagePL {
             anchors.horizontalCenter: parent.horizontalCenter
             text: app.tr("Other")
             onClicked: {
-                Clipboard.text = page.formatMessage(false);
+                clipboard.copy(page.formatMessage(false));
                 infoLabel.text = app.tr("Message copied to the clipboard");
             }
         }
