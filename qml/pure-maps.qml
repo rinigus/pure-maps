@@ -64,6 +64,10 @@ ApplicationWindowPL {
         loops: 1
     }
 
+    ClipboardPL {
+        id: clipboard
+    }
+
     Modes {
         id: modes
     }
