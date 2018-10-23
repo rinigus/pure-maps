@@ -22,13 +22,25 @@ QtObject {
     property bool keep: false
     property var  _current: null
     property var  _stack: []
+    property var  _garbage: []
 
     function clear() {
         for (var i=0; i < _stack.length; i++)
             for (var j=0; j < _stack[i].length; j++) {
-                // console.log("Destroying: " + _stack[i][j]);
-                _stack[i][j] && _stack[i][j].destroy();
+                if (_stack[i][j])
+                    _garbage.push(_stack[i][j]);
             }
+        // cleanup _garbage
+        var _new_garbage = [];
+        for (var i=0; i < _garbage.length; i++)
+            if (_garbage[i].stack_index <= app.pages.currentIndex)
+                _new_garbage.push(_garbage[i]);
+            else {
+                // console.log("Destroy: " + _garbage[i].page + " " + _garbage[i].stack_index + " " + app.pages.currentIndex);
+                _garbage[i].page && _garbage[i].page.destroy();
+            }
+        _garbage = _new_garbage;
+
         keep = false;
         _stack = [];
     }
@@ -41,8 +53,8 @@ QtObject {
             return null;
         }
         var p = pc.createObject(app, options ? options : {})
+        _stack.push([{"stack_index": app.pages.currentIndex + 1, "page": p}]);
         app.pages.push(p);
-        _stack.push([p]);
         // console.log('Pushed: ' + p);
         return p;
     }
@@ -55,8 +67,8 @@ QtObject {
             return null;
         }
         var p = pc.createObject(app, options ? options : {})
+        _stack[_stack.length-1].push({"stack_index": app.pages.currentIndex + 1, "page": p});
         app.pages.pushAttached(p);
-        _stack[_stack.length-1].push(p);
         // console.log('Pushed attached: ' + p);
         return p;
     }
@@ -65,13 +77,13 @@ QtObject {
         var found = false;
         for (var i=0; i < _stack.length; i++) {
             // console.log('Restoring: ' + _stack[i][0] + ' current ' + _current);
-            app.pages.push(_stack[i][0], {}, true);
-            if (_stack[i][0] === _current) found = true;
+            app.pages.push(_stack[i][0]["page"], {}, true);
+            if (_stack[i][0]["page"] === _current) found = true;
             for (var j=1; j < _stack[i].length; j++) {
                 // console.log('Restoring attached: ' + _stack[i][j]);
-                app.pages.pushAttached(_stack[i][j], {});
+                app.pages.pushAttached(_stack[i][j]["page"], {});
                 if (!found) app.pages.navigateForward(true);
-                if (!found && _stack[i][j] === _current) found = true;
+                if (!found && _stack[i][j]["page"] === _current) found = true;
                 // console.log('Current page found ' + found)
             }
         }

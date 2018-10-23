@@ -28,6 +28,7 @@ import Sailfish.Silica 1.0
 // will be looked from platform subfolder.
 
 QtObject {
+    property int currentIndex: ps.depth - 1
     property var ps: null
 
     function completeAnimation() {
