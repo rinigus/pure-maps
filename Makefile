@@ -12,6 +12,7 @@ DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
 LANGS      = $(basename $(notdir $(wildcard po/*.po)))
 LCONVERT   = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
+                  $(wildcard /bin/lconvert),\
                   $(wildcard /usr/lib/*/qt5/bin/lconvert))
 
 define install-translation =
