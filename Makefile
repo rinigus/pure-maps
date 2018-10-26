@@ -5,6 +5,8 @@ VERSION    = 1.7.1
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
 PREFIX     = /usr
+EXEDIR     = $(DESTDIR)$(PREFIX)/bin
+EXE        = $(EXEDIR)/$(NAME)
 DATADIR    = $(DESTDIR)$(PREFIX)/share/$(NAME)
 DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
@@ -61,6 +63,8 @@ install:
 	cp qml/icons/navigation/*.svg $(DATADIR)/qml/icons/navigation
 	mkdir -p $(DATADIR)/qml/js
 	cp qml/js/*.js $(DATADIR)/qml/js
+	mkdir -p $(DATADIR)/qml/platform
+	cp qml/platform/*.qml $(DATADIR)/qml/platform
 	@echo "Installing maps..."
 	mkdir -p $(DATADIR)/maps
 	cp maps/*.json $(DATADIR)/maps
@@ -89,7 +93,12 @@ install:
 	$(foreach lang,$(LANGS),$(call install-translation,$(lang)))
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
-	cp data/$(NAME).desktop $(DESKTOPDIR)
+	cp data/$(NAME).desktop $(DESKTOPDIR) || true
+	@echo "Generating executable..."
+	mkdir -p $(EXEDIR)
+	echo \#!/bin/bash > $(EXE)
+	echo qmlscene $(PREFIX)/share/$(NAME)/qml/$(NAME).qml >> $(EXE)
+	chmod +x $(EXE)
 	@echo "Installing icons..."
 	mkdir -p $(ICONDIR)/86x86/apps
 	mkdir -p $(ICONDIR)/108x108/apps
@@ -99,6 +108,14 @@ install:
 	cp data/pure-maps-108.png $(ICONDIR)/108x108/apps/$(NAME).png
 	cp data/pure-maps-128.png $(ICONDIR)/128x128/apps/$(NAME).png
 	cp data/pure-maps-256.png $(ICONDIR)/256x256/apps/$(NAME).png
+
+platform-qtcontrols:
+	rm qml/platform
+	ln -s platform.qtcontrols qml/platform
+
+platform-silica:
+	rm qml/platform
+	ln -s platform.silica qml/platform
 
 pot:
 	tools/update-translations
