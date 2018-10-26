@@ -110,11 +110,11 @@ install:
 	cp data/pure-maps-256.png $(ICONDIR)/256x256/apps/$(NAME).png
 
 platform-qtcontrols:
-	rm qml/platform
+	rm qml/platform || true
 	ln -s platform.qtcontrols qml/platform
 
 platform-silica:
-	rm qml/platform
+	rm qml/platform || true
 	ln -s platform.silica qml/platform
 
 pot:
