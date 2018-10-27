@@ -25,6 +25,7 @@ ApplicationWindow {
     id: appWindow
     width: 640
     height: 480
+    visible: true
 
     property alias initialPage: pageStack.initialItem
 
