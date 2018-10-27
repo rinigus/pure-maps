@@ -98,7 +98,7 @@ install:
 	@echo "Generating executable..."
 	mkdir -p $(EXEDIR)
 	echo \#!/bin/bash > $(EXE)
-	echo qmlscene $(PREFIX)/share/$(NAME)/qml/$(NAME).qml >> $(EXE)
+	echo qmlrunner $(NAME) >> $(EXE)
 	chmod +x $(EXE)
 	@echo "Installing icons..."
 	mkdir -p $(ICONDIR)/86x86/apps
