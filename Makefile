@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
 NAME       = harbour-pure-maps
-VERSION    = 1.7.1
+VERSION    = 1.8.0
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
 PREFIX     = /usr
@@ -99,11 +99,6 @@ install:
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
 	cp data/$(NAME).desktop $(DESKTOPDIR) || true
-	@echo "Generating executable..."
-	mkdir -p $(EXEDIR)
-	echo \#!/bin/bash > $(EXE)
-	echo qmlrunner $(NAME) >> $(EXE)
-	chmod +x $(EXE)
 	@echo "Installing icons..."
 	mkdir -p $(ICONDIR)/86x86/apps
 	mkdir -p $(ICONDIR)/108x108/apps
@@ -125,7 +120,8 @@ platform-silica:
 pot:
 	tools/update-translations
 
-rpm:
+rpm-silica:
+	$(MAKE) platform-silica
 	$(MAKE) dist
 	mkdir -p $$HOME/rpmbuild/SOURCES
 	cp dist/$(RELEASE).tar.xz $$HOME/rpmbuild/SOURCES

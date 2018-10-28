@@ -110,7 +110,6 @@
                 "make platform-qtcontrols",
                 "tools/manage-keys inject . || true",
                 "make PREFIX=/app NAME=pure-maps install",
-                "rm /app/bin/pure-maps || true",
                 "mkdir -p /app/share/applications",
                 "install -D packaging/flatpak/pure-maps /app/bin/pure-maps",
                 "install -D packaging/flatpak/osmscout-server /app/bin/osmscout-server",
