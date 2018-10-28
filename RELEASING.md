@@ -20,7 +20,5 @@ git status
 emacs poor/__init__.py rpm/*.spec Makefile
 emacs NEWS.md TODO.md
 make rpm
-rpmvalidation.sh rpm/*.noarch.rpm
-install-rpm-on-jolla rpm/*.noarch.rpm
-tools/release
+make flatpak
 ```

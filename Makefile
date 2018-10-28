@@ -46,6 +46,10 @@ dist:
 	tools/manage-keys inject dist/$(RELEASE)
 	tar -C dist -cJf dist/$(RELEASE).tar.xz $(RELEASE)
 
+flatpak:
+	flatpak-builder --repo=../flatpak --force-clean ../build-dir packaging/flatpak/io.github.rinigus.PureMaps.json
+	flatpak build-bundle ../flatpak pure-maps.flatpak io.github.rinigus.PureMaps
+
 install:
 	@echo "Installing Python files..."
 	mkdir -p $(DATADIR)/poor
