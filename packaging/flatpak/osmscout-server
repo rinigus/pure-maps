@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "Fake OSM Scout Server executable to make autodetection happy, while giving 'false positives'"
