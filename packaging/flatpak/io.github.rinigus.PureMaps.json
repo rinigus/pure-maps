@@ -8,8 +8,11 @@
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland",
-        "--share=network"
+        "--share=network",
+        "--talk-name=org.osm.scout.server1",
+        "--talk-name=org.freedesktop.DBus"
     ],
+    "cleanup": ["/usr/include", "/usr/tests", "/usr/lib/libqmapboxgl.a", "/usr/lib/pkgconfig", "/opt"],
     "modules": [
         {
             "name": "nemodbus",
