@@ -19,6 +19,7 @@ tools/manage-keys strip .
 git status
 emacs poor/__init__.py rpm/*.spec Makefile
 emacs NEWS.md TODO.md
-make rpm
+make rpm-silica
 make flatpak
+git status
 ```

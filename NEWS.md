@@ -1,3 +1,11 @@
+2018-10-28: Pure Maps 1.8
+=========================
+
+* Separate QML code into platform-dependent and platform-independent parts
+* Add support for Qt Quick Controls 2
+* Add support for packaging using Flatpak
+* Fix page stack wrapper bug
+* Updated translations
 
 2018-10-04: Pure Maps 1.7
 =========================
