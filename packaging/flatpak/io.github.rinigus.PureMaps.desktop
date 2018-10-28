@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Pure Maps
+Exec=pure-maps
+Type=Application
+Icon=io.github.rinigus.PureMaps
+Categories=Science;Maps;Qt;

@@ -14,6 +14,7 @@
         "--talk-name=org.freedesktop.DBus"
     ],
     "cleanup": ["/usr/include", "/usr/tests", "/usr/lib/libqmapboxgl.a", "/usr/lib/pkgconfig", "/opt"],
+    "rename-icon": "pure-maps", 
     "modules": [
         {
             "name": "nemodbus",
@@ -110,8 +111,10 @@
                 "tools/manage-keys inject . || true",
                 "make PREFIX=/app NAME=pure-maps install",
                 "rm /app/bin/pure-maps || true",
+                "mkdir -p /app/share/applications",
                 "install -D packaging/flatpak/pure-maps /app/bin/pure-maps",
-                "install -D packaging/flatpak/osmscout-server /app/bin/osmscout-server"
+                "install -D packaging/flatpak/osmscout-server /app/bin/osmscout-server",
+                "install -D packaging/flatpak/io.github.rinigus.PureMaps.desktop /app/share/applications"
             ],
             "sources": [
                 {
