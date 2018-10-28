@@ -29,7 +29,6 @@ class IconFinder:
     def __init__(self):
         """Initialize a :class:`IconFinder` instance."""
         self.themes = set()
-        f = []
         xdg = os.getenv("XDG_DATA_DIRS")
         if xdg is not None:
             for b in os.path.expanduser(xdg).split(":"):
