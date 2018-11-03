@@ -32,9 +32,9 @@ ApplicationWindow {
     property bool   screenLarge: Screen.sizeCategory >= Screen.Large
     property int    screenWidth: Screen.width
     property string title
+    property bool   keepAlive: false
 
-    // Emitted when keep alive requirements could have changed
-    signal checkKeepAlive
+    DisplayBlanking.preventBlanking: applicationActive && keepAlive
 
     Component.onCompleted: updateOrientation()
 
@@ -44,16 +44,10 @@ ApplicationWindow {
         (event.key === Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
     }
 
-    onApplicationActiveChanged: checkKeepAlive()
-
     onDeviceOrientationChanged: updateOrientation()
 
     function initPages() {
         pages.ps = pageStack;
-    }
-
-    function keepAlive(alive) {
-        DisplayBlanking.preventBlanking = app.applicationActive && alive;
     }
 
     function updateOrientation() {

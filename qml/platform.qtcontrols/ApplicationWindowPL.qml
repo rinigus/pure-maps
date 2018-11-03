@@ -34,9 +34,7 @@ ApplicationWindow {
     property int   screenHeight: height
     property bool  screenLarge: true
     property int   screenWidth: width
-
-    // Emitted when keep alive requirements could have changed
-    signal checkKeepAlive
+    property bool  keepAlive: false // not used - desktop is not expected to be falling asleep
 
     StackView {
         id: pageStack
@@ -48,10 +46,6 @@ ApplicationWindow {
 
     function initPages() {
         pages.ps = pageStack;
-    }
-
-    function keepAlive(alive) {
-        // blank - desktop is not expected to be falling asleep
     }
 
     function updateOrientation() {
