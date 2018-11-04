@@ -27,6 +27,9 @@ ApplicationWindowPL {
     pages: StackPL { }
     title: app.tr("Pure Maps")
 
+    keepAlive: app.conf.keepAlive === "always"
+               || (app.conf.keepAlive === "navigating" && (app.mode === modes.navigate || app.mode === modes.followMe))
+
     property var    conf: Config {}
     property bool   hasMapMatching: false
     property bool   initialized: false
@@ -78,7 +81,6 @@ ApplicationWindowPL {
 
     Connections {
         target: app.conf
-        onKeepAliveChanged: app.updateKeepAlive()
         onMapMatchingWhenNavigatingChanged: app.updateMapMatching()
         onMapMatchingWhenFollowingChanged: app.updateMapMatching()
         onMapMatchingWhenIdleChanged: app.updateMapMatching()
@@ -93,11 +95,6 @@ ApplicationWindowPL {
         app.conf.set("center", [app.map.center.longitude, app.map.center.latitude]);
         app.conf.set("zoom", app.map.zoomLevel);
         py.call_sync("poor.app.quit", []);
-    }
-
-    onCheckKeepAlive: {
-        if (!initialized) return;
-        app.updateKeepAlive();
     }
 
     onHasMapMatchingChanged: updateMapMatching()
@@ -116,7 +113,6 @@ ApplicationWindowPL {
             app.rerouteTotalCalls = 0;
             app.resetMenu();
         }
-        app.updateKeepAlive();
         app.updateMapMatching();
     }
 
@@ -150,7 +146,6 @@ ApplicationWindowPL {
     function initialize() {
         styler.initStyle();
         app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
-        updateKeepAlive();
         initialized = true;
     }
 
@@ -296,12 +291,6 @@ ApplicationWindowPL {
         for (var i = 1; i < arguments.length; i++)
             message = message.arg(arguments[i]);
         return message;
-    }
-
-    function updateKeepAlive() {
-        // Update state of keep-alive, i.e. display blanking prevention.
-        var alive = app.conf.keepAlive;
-        app.keepAlive(alive === "always" || (alive === "navigating" && (app.mode === modes.navigate || app.mode === modes.followMe)));
     }
 
     function updateMapMatching() {
