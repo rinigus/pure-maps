@@ -34,11 +34,10 @@ ApplicationWindow {
     property string title
     property bool   keepAlive: false
 
-    KeepAlive {
-        enabled: applicationActive && keepAlive
+    Component.onCompleted: {
+        updateOrientation()
+        DisplayBlanking.preventBlanking = Qt.binding(function() { return applicationActive && keepAlive })
     }
-
-    Component.onCompleted: updateOrientation()
 
     Keys.onPressed: {
         // Allow zooming with plus and minus keys on the emulator.
