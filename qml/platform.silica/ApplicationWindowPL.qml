@@ -34,8 +34,8 @@ ApplicationWindow {
     property string title
     property bool   keepAlive: false
 
-    DisplayBlanking {
-        preventBlanking: applicationActive && keepAlive
+    KeepAlive {
+        enabled: applicationActive && keepAlive
     }
 
     Component.onCompleted: updateOrientation()
