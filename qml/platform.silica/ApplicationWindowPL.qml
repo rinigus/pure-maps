@@ -28,14 +28,15 @@ ApplicationWindow {
 
     property var    pages: null // initialized later to ensure the same path for object creation
     property bool   running: applicationActive || (cover && cover.active)
-    property int    screenHeight: Screen.height
+    property int    screenHeight: deviceOrientation === Orientation.Portrait || deviceOrientation === Orientation.PortraitInverted
+                                  ? Screen.height : Screen.width
+    property int    screenWidth: deviceOrientation === Orientation.Portrait || deviceOrientation === Orientation.PortraitInverted
+                                 ? Screen.width : Screen.height
     property bool   screenLarge: Screen.sizeCategory >= Screen.Large
-    property int    screenWidth: Screen.width
     property string title
     property bool   keepAlive: false
 
     Component.onCompleted: {
-        updateOrientation()
         DisplayBlanking.preventBlanking = Qt.binding(function() { return applicationActive && keepAlive })
     }
 
@@ -45,32 +46,8 @@ ApplicationWindow {
         (event.key === Qt.Key_Minus) && map.setZoomLevel(map.zoomLevel-1);
     }
 
-    onDeviceOrientationChanged: updateOrientation()
-
     function initPages() {
         pages.ps = pageStack;
-    }
-
-    function updateOrientation() {
-        if (!(deviceOrientation & allowedOrientations)) return;
-        switch (deviceOrientation) {
-        case Orientation.Portrait:
-            screenWidth = Screen.width;
-            screenHeight = Screen.height;
-            break;
-        case Orientation.PortraitInverted:
-            screenWidth = Screen.width;
-            screenHeight = Screen.height;
-            break;
-        case Orientation.Landscape:
-            screenWidth = Screen.height;
-            screenHeight = Screen.width;
-            break;
-        case Orientation.LandscapeInverted:
-            screenWidth = Screen.height;
-            screenHeight = Screen.width;
-            break;
-        }
     }
 
 }

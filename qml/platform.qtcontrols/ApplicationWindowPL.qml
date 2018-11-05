@@ -32,8 +32,8 @@ ApplicationWindow {
     property var   pages: null // initialized later to ensure the same path for object creation
     property bool  running: visible
     property int   screenHeight: height
-    property bool  screenLarge: true
     property int   screenWidth: width
+    property bool  screenLarge: true
     property bool  keepAlive: false // not used - desktop is not expected to be falling asleep
 
     StackView {
@@ -42,14 +42,8 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-    Component.onCompleted: updateOrientation()
-
     function initPages() {
         pages.ps = pageStack;
-    }
-
-    function updateOrientation() {
-        // blank - desktop is not expected to be changing screen orientation
     }
 
     Settings {
