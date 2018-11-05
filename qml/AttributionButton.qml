@@ -21,13 +21,23 @@ import "platform"
 
 IconButtonPL {
     id: attributionButton
+
+    property string logo: undefined
+
     anchors.left: parent.left
     anchors.top: navigationBlock.bottom
+
     height: icon.height
-    icon.height: icon.sourceSize.height
+    width: icon.width
+    z: 500
+
     icon.smooth: false
-    icon.source: app.getIcon("icons/attribution/default")
+    icon.source: logo === undefined ? app.getIcon("icons/attribution/default")
+                                    : logo === "" ? ""
+                                                  : app.getIcon("icons/attribution/%1".arg(logo))
+    icon.height: icon.sourceSize.height
     icon.width: icon.sourceSize.width
+
     states: [
         State {
             when: !app.portrait && navigationBlockLandscapeLeftShield.height > 0
@@ -37,19 +47,6 @@ IconButtonPL {
             }
         }
     ]
-    width: icon.width
-    z: 500
-
-    property string logo: ""
 
     onClicked: app.showMenu("AttributionPage.qml");
-    onLogoChanged: attributionButton.icon.source = logo ?
-        app.getIcon("icons/attribution/%1".arg(logo)) : "";
-
-    Connections {
-        target: app.styler
-        onIconVariantChanged: attributionButton.icon.source = attributionButton.logo ?
-                                  app.getIcon("icons/attribution/%1".arg(attributionButton.logo)) : "";
-    }
-
 }
