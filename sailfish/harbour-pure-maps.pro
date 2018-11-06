@@ -12,6 +12,8 @@
 # The name of your application
 TARGET = harbour-pure-maps
 
+# Adding 'CONFIG += sailfishapp_qml' is enough for the SDK, but we want to build without SDK too.
+# if building without SDK, run qmake with QMAKEFEATURES=. environment variable to use the provided feature file.
 CONFIG += sailfishapp_qml
 
 DISTFILES += \
