@@ -28,14 +28,12 @@ IconButtonPL {
     anchors.top: navigationBlock.bottom
 
     height: icon.height
-    width: icon.width
-    z: 500
+    icon.height: icon.sourceSize.height
 
     icon.smooth: false
     icon.source: logo === undefined ? app.getIcon("icons/attribution/default")
                                     : logo === "" ? ""
                                                   : app.getIcon("icons/attribution/%1".arg(logo))
-    icon.height: icon.sourceSize.height
     icon.width: icon.sourceSize.width
 
     states: [
@@ -47,6 +45,8 @@ IconButtonPL {
             }
         }
     ]
+    width: icon.width
+    z: 500
 
     onClicked: app.showMenu("AttributionPage.qml");
 }

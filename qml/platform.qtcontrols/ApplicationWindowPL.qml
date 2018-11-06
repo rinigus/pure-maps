@@ -29,12 +29,12 @@ ApplicationWindow {
 
     property alias initialPage: pageStack.initialItem
 
+    property bool  keepAlive: false // not used - desktop is not expected to be falling asleep
     property var   pages: null // initialized later to ensure the same path for object creation
     property bool  running: visible
     property int   screenHeight: height
-    property int   screenWidth: width
     property bool  screenLarge: true
-    property bool  keepAlive: false // not used - desktop is not expected to be falling asleep
+    property int   screenWidth: width
 
     StackView {
         id: pageStack

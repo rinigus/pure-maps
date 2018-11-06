@@ -26,15 +26,15 @@ ApplicationWindow {
     cover: Cover {}
     initialPage: null
 
+    property bool   keepAlive: false
     property var    pages: null // initialized later to ensure the same path for object creation
     property bool   running: applicationActive || (cover && cover.active)
     property int    screenHeight: deviceOrientation === Orientation.Portrait || deviceOrientation === Orientation.PortraitInverted
                                   ? Screen.height : Screen.width
+    property bool   screenLarge: Screen.sizeCategory >= Screen.Large
     property int    screenWidth: deviceOrientation === Orientation.Portrait || deviceOrientation === Orientation.PortraitInverted
                                  ? Screen.width : Screen.height
-    property bool   screenLarge: Screen.sizeCategory >= Screen.Large
     property string title
-    property bool   keepAlive: false
 
     Component.onCompleted: {
         DisplayBlanking.preventBlanking = Qt.binding(function() { return applicationActive && keepAlive })
