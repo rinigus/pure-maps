@@ -34,10 +34,8 @@ INSTALLS += routers routers-digitransit
 # Extra targets. These will be available in the generated Makefile
 checktarget.target = check
 checktarget.commands = cd .. && \
-    pyflakes3 geocoders guides poor routers \
+    pyflakes geocoders guides poor routers \
     && find . -name "*.json" -exec jsonlint -q {} \;
-
-QMAKE_EXTRA_TARGETS += checktarget
 
 extraclean.target = extraclean
 extraclean.commands = cd .. && \
@@ -51,26 +49,20 @@ extraclean.commands = cd .. && \
     rm -f po/.*~
 clean.depends = extraclean
 
-QMAKE_EXTRA_TARGETS += clean extraclean
-
 realdist.target = realdist
 realdist.commands = cd .. && \
         mkdir -p dist/$${TARGET}-$${VERSION} && \
         cp -r `cat MANIFEST` dist/$${TARGET}-$${VERSION} && \
+        tools/manage-keys inject dist/$${TARGET}-$${VERSION} && \
         tar -C dist -cJf dist/$${TARGET}-$${VERSION}.tar.xz $${TARGET}-$${VERSION}
-        #tools/manage-keys inject dist/$${TARGET}-$${VERSION} && \
 realdist.depends = clean
-
-QMAKE_EXTRA_TARGETS += realdist
 
 pot.target = pot
 pot.commands = cd .. && \
     tools/update-translations
 
-QMAKE_EXTRA_TARGETS += pot
-
 test.target = test
 test.commands = cd .. && \
     py.test geocoders guides poor routers
 
-QMAKE_EXTRA_TARGETS += test
+QMAKE_EXTRA_TARGETS += checktarget clean extraclean realdist pot test
