@@ -12,6 +12,8 @@
 # The name of your application
 TARGET = harbour-pure-maps
 
+include(../common.pri)
+
 # Adding 'CONFIG += sailfishapp_qml' is enough for the SDK, but we want to build without SDK too.
 # if building without SDK, run qmake with QMAKEFEATURES=. environment variable to use the provided feature file.
 CONFIG += sailfishapp_qml
@@ -21,36 +23,6 @@ DISTFILES += \
     harbour-pure-maps.desktop
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
-
-# install section for additional QML sources not in sailfishapp_qml profile
-qml-common.files = ../qml
-qml-common.path = /usr/share/$${TARGET}
-INSTALLS += qml-common
-
-geocoders.files = ../geocoders/[a-z]*.py ../geocoders/*.json
-geocoders.path = /usr/share/$${TARGET}/geocoders
-INSTALLS += geocoders
-
-guides.files = ../guides/[a-z]*.py ../guides/*.json ../guides/*.qml
-guides.path = /usr/share/$${TARGET}/guides
-INSTALLS += guides
-
-maps.files = ../maps/*.json
-maps.path = /usr/share/$${TARGET}/maps
-INSTALLS += maps
-
-poor.files = ../poor/*.py
-poor.path = /usr/share/$${TARGET}/poor
-poor-gpxpy.files = ../poor/gpxpy/*.py
-poor-gpxpy.path = /usr/share/$${TARGET}/poor/gpxpy
-INSTALLS += poor poor-gpxpy
-
-routers.files = ../routers/[a-z]*.py ../routers/*.json ../routers/*.qml ../routers/*.graphql
-routers.path = /usr/share/$${TARGET}/routers
-routers-digitransit.files = ../routers/digitransit/*.png
-routers-digitransit.path = /usr/share/$${TARGET}/routers/digitransit
-INSTALLS += routers routers-digitransit
-# end install section
 
 # for the IDE
 OTHER_FILES += \
