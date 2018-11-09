@@ -24,7 +24,7 @@ import "platform"
 ApplicationWindowPL {
     id: app
     initialPage: InitPage { }
-    pages: StackPL { }
+    pages: StackImplementationPL { }
     title: app.tr("Pure Maps")
 
     keepAlive: app.conf.keepAlive === "always"

@@ -33,7 +33,7 @@ PageEmptyPL {
         target: py
         onReadyChanged: {
             if (!py.ready) return;
-            app.rootPage = app.pages.replace("RootPage.qml");
+            app.rootPage = app.pages.replace(Qt.resolvedUrl("RootPage.qml"));
             app.initialize();
         }
     }
