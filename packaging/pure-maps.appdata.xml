@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+ <id>io.github.rinigus.PureMaps</id>
+ <name>Pure Maps</name>
+ <summary>Maps and navigation</summary>
+ <description>
+   <p>Pure Maps is an application to display vector and raster maps, places, routes, and provide navigation instructions with a flexible selection of data and service providers.</p>
+   <p>Depending on the used service provider, Pure Maps can rely fully either on online services or, together with OSM Scout Server, provide fully offline maps</p>
+ </description>
+ <categories>
+  <category>Science</category>
+  <category>Maps</category>
+  <category>Qt</category>
+ </categories>
+ <url type="homepage">https://github.com/rinigus/pure-maps</url>
+ <url type="bugtracker">https://github.com/rinigus/pure-maps/issues</url>
+ <url type="donation">https://rinigus.github.io/donate</url>
+ <url type="translate">https://www.transifex.com/rinigus/pure-maps</url>
+ <launchable desktop-id="io.github.rinigus.PureMaps"/>
+ <provides>
+  <binary>pure-maps</binary>
+ </provides>
+ <project_license>GPL-3.0+</project_license>
+ <screenshots>
+  <screenshot type="default">
+   <caption>Main screen of the application</caption>
+   <image>https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/main.png</image>
+  </screenshot>
+  <screenshot>
+   <caption>Selection of profiles</caption>
+   <image>https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/menu.png</image>
+  </screenshot>
+  <screenshot>
+   <capion>Support for languages by address parser</capion>
+   <image>https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/navigation.png</image>
+  </screenshot>
+ </screenshots>
+ <metadata_license>CC-BY-SA-3.0</metadata_license>
+ <releases>
+  <release version="1.8.0" date="2018-10-28"/>
+ </releases>
+</component>

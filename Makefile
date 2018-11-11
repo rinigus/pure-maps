@@ -10,6 +10,7 @@ EXE        = $(EXEDIR)/$(NAME)
 DATADIR    = $(DESTDIR)$(PREFIX)/share/$(NAME)
 DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
+METADIR    = $(DESTDIR)$(PREFIX)/share/metainfo
 LANGS      = $(basename $(notdir $(wildcard po/*.po)))
 LCONVERT   = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
                   $(wildcard /bin/lconvert),\
@@ -99,6 +100,9 @@ install:
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
 	cp data/$(NAME).desktop $(DESKTOPDIR) || true
+	@echo "Installing appdata file..."
+	mkdir -p $(METADIR)
+	cp packaging/pure-maps.appdata.xml $(METADIR)/$(NAME).appdata.xml || true
 	@echo "Installing icons..."
 	mkdir -p $(ICONDIR)/86x86/apps
 	mkdir -p $(ICONDIR)/108x108/apps
