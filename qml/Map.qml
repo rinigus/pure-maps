@@ -40,7 +40,7 @@ MapboxMap {
     zoomLevel: 4.0
 
     // Token for Mapbox.com-hosted maps, i.e. sources with mapbox:// URLs.
-    accessToken: "#MAPBOX_KEY#"
+    // accessToken is specified on loading Map in RootPage
 
     property bool   autoCenter: false
     property bool   autoRotate: false

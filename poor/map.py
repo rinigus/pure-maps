@@ -46,6 +46,7 @@ class Map:
         self.first_label_layer = values.get("first_label_layer", "")
         self.id = id
         self.format = values["format"]
+        self.keys = values.get("keys", [])
         self.logo = values.get("logo", "default")
         self.name = values["name"]
         self.style_dict = values.get("style_json", {})
@@ -54,6 +55,10 @@ class Map:
         self.tile_size = values.get("tile_size", 256)
         self.tile_url = values.get("tile_url", "")
         self.url_suffix = values.get("url_suffix", "")
+        for k in self.keys:
+            v = poor.key.get(k)
+            self.style_url = self.style_url.replace("#" + k + "#", v)
+            self.tile_url = self.tile_url.replace("#" + k + "#", v)
 
     @property
     def attribution(self):

@@ -6,7 +6,10 @@ keys are explained below, format-specific keys in following sections.
 
 * **`attribution`**: Key-value pairs of attribution text and URL.
 
-* **`format`**: Either "mapbox-gl" or "slippy", see below.
+* **`format`**: Either "mapbox-gl" or "raster", see below.
+
+* **`keys`**: List of API keys that are managed through
+  `poor/keystore.py`. See HERE map layers for example of its use.
 
 * **`logo`**: Name of logo file found under `qml/icons/attribution` to
   display in a corner of the map. Optional, defaults to "default.svg".
@@ -47,7 +50,7 @@ into the JSON metadata file itself.
 
 ## Slippy Raster Tile Format
 
-Slippy is a raster tile format based on Spherical Mercator. It is used
+Raster is a raster tile format based on Spherical Mercator. It is used
 by most global providers of raster tiles, such as Google and
 OpenStreetMap. For documentation, see e.g. [OpenStreetMap Wiki][slippy].
 

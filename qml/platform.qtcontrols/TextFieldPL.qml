@@ -24,6 +24,7 @@ Item {
 
     height: childrenRect.height
 
+    property alias description: desc.text
     property alias inputMethodHints: entry.inputMethodHints
     property alias label: lab.text
     property alias placeholderText: entry.placeholderText
@@ -45,5 +46,20 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         Keys.onReturnPressed: row.enter()
+        onTextChanged: row.enter()
+    }
+
+    Label {
+        id: desc
+        anchors.left: lab.right
+        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.top: entry.bottom
+        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight : 0
+        visible: text
+        wrapMode: Text.WordWrap
     }
 }

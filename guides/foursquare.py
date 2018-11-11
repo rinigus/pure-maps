@@ -33,8 +33,8 @@ from poor.i18n import _
 
 CONF_DEFAULTS = {"sort_by_distance": False}
 
-CLIENT_ID = "#FOURSQUARE_CLIENT#"
-CLIENT_SECRET = "#FOURSQUARE_SECRET#"
+CLIENT_ID = poor.key.get("FOURSQUARE_CLIENT")
+CLIENT_SECRET = poor.key.get("FOURSQUARE_SECRET")
 
 CATEGORIES_URL = "".join((
     "https://api.foursquare.com/v2/venues/categories",

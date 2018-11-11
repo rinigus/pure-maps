@@ -19,9 +19,41 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-TextField {
+Item {
+
+    id: row
+
+    height: childrenRect.height
+    width: parent.width
+
+    property alias description: desc.text
+    property alias inputMethodHints: entry.inputMethodHints
+    property alias label: entry.label
+    property alias placeholderText: entry.placeholderText
+    property alias text: entry.text
+
     signal enter
 
-    EnterKey.iconSource: "image://theme/icon-m-enter-next"
-    EnterKey.onClicked: enter();
+    TextField {
+        id: entry
+        labelVisible: !description
+        width: parent.width
+        EnterKey.iconSource: "image://theme/icon-m-enter-next"
+        EnterKey.onClicked: row.enter();
+        onTextChanged: row.enter()
+    }
+
+    Label {
+        id: desc
+        anchors.left: entry.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.top: entry.bottom
+        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight : 0
+        visible: text
+        wrapMode: Text.WordWrap
+    }
 }

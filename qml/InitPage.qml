@@ -23,6 +23,8 @@ import "platform"
 PageEmptyPL {
     id: page
 
+    property bool ready: false
+
     BusyModal {
         id: busy
         running: !py.ready
@@ -33,9 +35,24 @@ PageEmptyPL {
         target: py
         onReadyChanged: {
             if (!py.ready) return;
-            app.rootPage = app.pages.replace("RootPage.qml");
-            app.initialize();
+            page.ready = true
+            if (!py.call_sync("poor.key.get", ["MAPBOX_KEY"])) {
+                var d = app.push("MessagePage.qml", {
+                                     "acceptText": app.tr("Dismiss"),
+                                     "title": app.tr("Missing Mapbox key"),
+                                     "message": app.tr("Your installation is missing Mapbox API key. " +
+                                                       "Please register at Mapbox and fill in your personal API key " +
+                                                       "in Preferences. This key is not needed if you plan to use " +
+                                                       "Pure Maps with the offline map provider.")
+                                 });
+            } else start();
         }
     }
 
+    onPageStatusActive: if (page.ready) start()
+
+    function start() {
+        app.rootPage = app.pages.replace("RootPage.qml");
+        app.initialize();
+    }
 }

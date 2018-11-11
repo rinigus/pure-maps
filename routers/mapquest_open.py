@@ -71,7 +71,7 @@ SUPPORTED_LOCALES = [
 ]
 
 URL = ("http://open.mapquestapi.com/directions/v2/route"
-       "?key=#MAPQUEST_KEY#"
+       "?key=" + poor.key.get("MAPQUEST_KEY") +
        "&ambiguities=ignore"
        "&from={fm}"
        "&to={to}"

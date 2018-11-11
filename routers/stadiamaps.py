@@ -108,7 +108,7 @@ MODEOPTIONS = {
     "transit": ["use_bus", "use_rail", "use_transfers"]
 }
 
-URL = "https://route.stadiamaps.com/route?api_key=#STADIAMAPS_KEY#&json={input}"
+URL = "https://route.stadiamaps.com/route?api_key=" + poor.key.get("STADIAMAPS_KEY") + "&json={input}"
 cache = {}
 
 def prepare_endpoint(point):

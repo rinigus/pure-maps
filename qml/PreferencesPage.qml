@@ -95,6 +95,59 @@ PagePL {
             }
 
             ExpandingSectionPL {
+                id: sectionKeys
+                title: app.tr("API keys")
+                content.sourceComponent: Column {
+                    spacing: app.styler.themePaddingMedium
+                    width: sectionKeys.width
+
+                    ListItemLabel {
+                        text: app.tr("You can specify personal keys for online services " +
+                                     "in these settings. Please check the conditions for each of the " +
+                                     "services that you want to use to ensure that you comply with them.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    ListItemLabel {
+                        text: app.tr("Please restart application after changing API keys.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    Repeater {
+                        delegate: TextFieldPL {
+                            description: model.description
+                            label: model.label
+                            placeholderText: model.label
+                            text: model.value
+                            width: sectionKeys.width
+                            onEnter: py.call_sync("poor.key.set",
+                                                  [model.key, text])
+                        }
+                        model: ListModel {}
+
+                        Component.onCompleted: {
+                            // Load router model items from the Python backend.
+                            py.call("poor.key.list", [], function(keys) {
+                                for (var i = 0; i < keys.length; i++)
+                                    model.append({
+                                                     "key": keys[i].id,
+                                                     "description": keys[i].description,
+                                                     "label": keys[i].label,
+                                                     "value": keys[i].value
+                                                 });
+                            });
+                        }
+                    }
+
+                    Spacer {
+                        height: app.styler.themePaddingLarge
+                    }
+                }
+            }
+
+            ExpandingSectionPL {
                 id: sectionExplore
                 title: app.tr("Map view")
                 content.sourceComponent: Column {

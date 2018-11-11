@@ -24,7 +24,10 @@ PageEmptyPL {
 
     AttributionButton { id: attributionButton }
     CenterButton { id: centerButton }
-    Map { id: map }
+    Map {
+        id: map
+        accessToken: py.call_sync("poor.key.get", ["MAPBOX_KEY"])
+    }
     MenuButton { id: menuButton }
     Meters { id: meters }
     NavigationBlock { id: navigationBlock }
