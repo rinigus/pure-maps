@@ -43,6 +43,11 @@ MapboxMapGestureArea {
         // Hide any POI bubbles if background map clicked.
         if (app.poiActive)
             map.hidePoi();
+        else // Create a new POI on click
+            map.addPois([{
+                "x": geocoordinate.longitude,
+                "y": geocoordinate.latitude,
+            }]);
     }
 
     onDoubleClicked: {
