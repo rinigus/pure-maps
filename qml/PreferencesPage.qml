@@ -122,8 +122,8 @@ PagePL {
                             placeholderText: model.label
                             text: model.value
                             width: sectionKeys.width
-                            onEnter: py.call_sync("poor.key.set",
-                                                  [model.key, text])
+                            onTextChanged: py.call_sync("poor.key.set",
+                                                        [model.key, text])
                         }
                         model: ListModel {}
 

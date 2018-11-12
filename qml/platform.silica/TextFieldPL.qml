@@ -40,7 +40,6 @@ Item {
         width: parent.width
         EnterKey.iconSource: "image://theme/icon-m-enter-next"
         EnterKey.onClicked: row.enter();
-        onTextChanged: row.enter()
     }
 
     Label {

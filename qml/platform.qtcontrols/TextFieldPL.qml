@@ -46,7 +46,6 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         Keys.onReturnPressed: row.enter()
-        onTextChanged: row.enter()
     }
 
     Label {
