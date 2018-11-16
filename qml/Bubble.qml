@@ -165,7 +165,7 @@ Rectangle {
         anchors.leftMargin: bubble.padding
         anchors.right: bubble.right
         anchors.rightMargin: bubble.padding
-        color: "white"
+        color: app.styler.themeHighlightColor
         font.family: app.styler.themeFontFamily
         font.pixelSize: app.styler.themeFontSizeSmall
         lineHeight: 1.1
