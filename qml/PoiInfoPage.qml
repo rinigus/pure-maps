@@ -34,8 +34,6 @@ PagePL {
                                       {"poi": poi});
                 dialog.accepted.connect(function() {
                     map.updatePoi(dialog.poi);
-                    page.setPoi(dialog.poi);
-                    map.showPoi(dialog.poi);
                 })
             }
         }
@@ -117,8 +115,6 @@ PagePL {
                 bookmarked = !bookmarked;
                 poi.bookmarked = bookmarked;
                 map.bookmarkPoi(poi.poiId, bookmarked);
-                map.showPoi(poi);
-                setPoi(map.getPoiById(poi.poiId));
             }
         }
 
@@ -133,7 +129,6 @@ PagePL {
                 if (poi.shortlisted === shortlisted) return;
                 poi.shortlisted = shortlisted;
                 map.shortlistPoi(poi.poiId, shortlisted);
-                map.showPoi(poi);
             }
         }
 
@@ -258,6 +253,14 @@ PagePL {
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
+        }
+    }
+
+    Connections {
+        target: map
+        onPoiChanged: {
+            if (poi.poiId !== poiId) return;
+            page.setPoi(map.getPoiById(poiId));
         }
     }
 

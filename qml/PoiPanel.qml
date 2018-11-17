@@ -228,7 +228,6 @@ Rectangle {
             onClicked: {
                 bookmarked = !bookmarked;
                 map.bookmarkPoi(poiId, bookmarked);
-                map.showPoi(poi);
             }
         }
 
@@ -283,6 +282,14 @@ Rectangle {
         onClicked: {
             app.showMenu();
             hide();
+        }
+    }
+
+    Connections {
+        target: map
+        onPoiChanged: {
+            if (poi.poiId !== poiId) return;
+            panel.show(map.getPoiById(poiId), panel.showMenu);
         }
     }
 

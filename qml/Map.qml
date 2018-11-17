@@ -86,6 +86,8 @@ MapboxMap {
         readonly property string route:          "pure-source-route"
     }
 
+    signal poiChanged(string poiId)
+
     Behavior on bearing {
         RotationAnimation {
             direction: RotationAnimation.Shortest
@@ -282,14 +284,18 @@ MapboxMap {
 
     function bookmarkPoi(poiId, bookmark) {
         if (poiId == null) return;
+        var changed = [];
         map.pois = map.pois.map(function(p) {
             if (p.poiId != poiId) return p;
             p.bookmarked = bookmark;
             if (!bookmark) p.shortlisted = false;
+            changed.push(p.poiId);
             return p;
         } );
         map.updatePois();
         map.savePois();
+        for (var i = 0; i < changed.length; i++)
+            map.poiChanged(changed[i]);
     }
 
     function centerOnPosition() {
@@ -409,6 +415,7 @@ MapboxMap {
         } );
         map.updatePois();
         map.savePois();
+        map.poiChanged(poiId);
     }
 
     function fitViewToPois(pois) {
@@ -649,13 +656,17 @@ MapboxMap {
 
     function shortlistPoi(poiId, shortlist) {
         if (poiId == null) return;
+        var changed = [];
         map.pois = map.pois.map(function(p) {
             if (p.poiId != poiId) return p;
             p.shortlisted = shortlist;
+            changed.push(p.poiId);
             return p;
         } );
         map.updatePois();
         map.savePois();
+        for (var i = 0; i < changed.length; i++)
+            map.poiChanged(changed[i]);
     }
 
     function showPoi(poi, showMenu) {
@@ -706,6 +717,7 @@ MapboxMap {
         } );
         map.updatePois();
         map.savePois();
+        poiChanged(poi.poiId);
     }
 
     function updatePois() {
