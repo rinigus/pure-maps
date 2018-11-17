@@ -68,6 +68,8 @@ QtObject {
     property string iconRefresh: "image://theme/icon-m-refresh"
     property string iconSearch: "image://theme/icon-m-search"
     property string iconShare: "image://theme/icon-m-share"
+    property string iconShortlisted: "image://theme/icon-m-annotation"
+    property string iconShortlistedSelected: "image://theme/icon-m-annotation-selected"
     property string iconStart: "image://theme/icon-m-play"
     property string iconStop: "image://theme/icon-m-clear"
     property string iconWebLink: "image://theme/icon-m-link"

@@ -44,7 +44,7 @@ PageListPL {
             anchors.top: spacer.bottom
             color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
             height: implicitHeight + app.styler.themePaddingSmall
-            text: (model.title ? model.title : app.tr("Unnamed point")) + (model.bookmarked ? " ☆" : "")
+            text: (model.title ? model.title : app.tr("Unnamed point")) + (model.bookmarked ? " ☆" : "") + (model.shortlisted ? " ☰" : "")
             verticalAlignment: Text.AlignTop
         }
 
@@ -167,8 +167,10 @@ PageListPL {
 
     Component.onCompleted: {
         bookmarkedOnly = app.conf.get("poi_list_show_bookmarked");
-        fillModel("");
+        fillModel(lastQuery);
     }
+
+    onPageStatusActive: fillModel(lastQuery)
 
     function fillModel(query) {
         var data = map.pois;

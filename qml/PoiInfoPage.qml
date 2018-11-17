@@ -34,7 +34,7 @@ PagePL {
                                       {"poi": poi});
                 dialog.accepted.connect(function() {
                     map.updatePoi(dialog.poi);
-                    page.poi = dialog.poi;
+                    page.setPoi(dialog.poi);
                     map.showPoi(dialog.poi);
                 })
             }
@@ -42,8 +42,10 @@ PagePL {
     }
 
     property bool active: false
-    property var  poi
+    property bool bookmarked: false
     property bool hasCoordinate: poi && poi.coordinate ? true : false
+    property var  poi
+    property bool shortlisted: false
 
     Column {
         id: column
@@ -104,6 +106,35 @@ PagePL {
         SectionHeaderPL {
             height: implicitHeight + app.styler.themePaddingMedium
             text: app.tr("Actions")
+        }
+
+        IconListItem {
+            enabled: page.active
+            icon: bookmarked ? app.styler.iconFavoriteSelected  : app.styler.iconFavorite
+            label: app.tr("Bookmark")
+            onClicked: {
+                if (!active) return;
+                bookmarked = !bookmarked;
+                poi.bookmarked = bookmarked;
+                map.bookmarkPoi(poi.poiId, bookmarked);
+                map.showPoi(poi);
+                setPoi(map.getPoiById(poi.poiId));
+            }
+        }
+
+        IconListItem {
+            id: shortlistItem
+            enabled: page.active && bookmarked
+            icon: shortlisted ? app.styler.iconShortlistedSelected  : app.styler.iconShortlisted
+            label: app.tr("Shortlist")
+            onClicked: {
+                if (!active) return;
+                shortlisted = !shortlisted;
+                if (poi.shortlisted === shortlisted) return;
+                poi.shortlisted = shortlisted;
+                map.shortlistPoi(poi.poiId, shortlisted);
+                map.showPoi(poi);
+            }
         }
 
         IconListItem {
@@ -233,6 +264,13 @@ PagePL {
     Component.onCompleted: {
         if (!poi.coordinate)
             poi.coordinate = QtPositioning.coordinate(poi.y, poi.x);
+        setPoi(poi);
+    }
+
+    function setPoi(p) {
+        page.poi = p;
+        page.bookmarked = p.bookmarked;
+        page.shortlisted = p.shortlisted;
     }
 
 }

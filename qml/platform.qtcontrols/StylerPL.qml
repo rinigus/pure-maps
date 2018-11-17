@@ -67,6 +67,8 @@ QtObject {
     property string iconRefresh: "image://theme/icon-m-refresh"
     property string iconSearch: "image://theme/icon-m-search"
     property string iconShare: "image://theme/icon-m-share"
+    property string iconShortlisted: "image://theme/icon-m-annotation"
+    property string iconShortlistedSelected: "image://theme/icon-m-annotation-selected"
     property string iconStart: "image://theme/icon-m-play"
     property string iconStop: "image://theme/icon-m-clear"
     property string iconWebLink: "image://theme/icon-m-link"
@@ -104,6 +106,8 @@ QtObject {
         iconRefresh = getIcon("view-refresh-symbolic");
         iconSearch = getIcon("edit-find-symbolic");
         iconShare = getIcon("emblem-shared-symbolic");
+        iconShortlisted = getIcon("checkbox-symbolic");
+        iconShortlistedSelected = getIcon("checkbox-checked-symbolic");
         iconStart = getIcon("media-playback-start-symbolic");
         iconStop = getIcon("media-playback-stop-symbolic");
         iconWebLink = getIcon("web-browser-symbolic");

@@ -229,6 +229,7 @@ MapboxMap {
             "poiType": poi.poiType || "",
             "postcode": poi.postcode || "",
             "provider": poi.provider || "",
+            "shortlisted": poi.shortlisted || false,
             "text": poi.text || "",
             "title": poi.title || "",
             "type": poi.type || "",
@@ -284,6 +285,7 @@ MapboxMap {
         map.pois = map.pois.map(function(p) {
             if (p.poiId != poiId) return p;
             p.bookmarked = bookmark;
+            if (!bookmark) p.shortlisted = false;
             return p;
         } );
         map.updatePois();
@@ -643,6 +645,17 @@ MapboxMap {
             map.updateSourcePoints(map.sources.poisSelected, []);
         else
             map.updateSourcePoints(map.sources.poisSelected, [coordinate]);
+    }
+
+    function shortlistPoi(poiId, shortlist) {
+        if (poiId == null) return;
+        map.pois = map.pois.map(function(p) {
+            if (p.poiId != poiId) return p;
+            p.shortlisted = shortlist;
+            return p;
+        } );
+        map.updatePois();
+        map.savePois();
     }
 
     function showPoi(poi, showMenu) {

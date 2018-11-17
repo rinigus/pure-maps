@@ -43,7 +43,11 @@ ListItemPL {
         anchors.leftMargin: app.styler.themePaddingMedium
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        color: item.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+        color: {
+            if (!item.enabled) return app.styler.themeSecondaryHighlightColor;
+            if (item.highlighted) return app.styler.themeHighlightColor;
+            return app.styler.themePrimaryColor;
+        }
         height: app.styler.themeItemSizeSmall
         text: item.label
         truncMode: truncModes.fade
