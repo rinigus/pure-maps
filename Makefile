@@ -1,6 +1,6 @@
 # -*- coding: us-ascii-unix -*-
 
-NAME       = harbour-pure-maps
+NAME       = pure-maps
 VERSION    = 1.8.0
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
@@ -46,6 +46,20 @@ dist:
 	cp -r `cat MANIFEST` dist/$(RELEASE)
 	tools/manage-keys inject dist/$(RELEASE)
 	tar -C dist -cJf dist/$(RELEASE).tar.xz $(RELEASE)
+
+flathub-install:
+	$(MAKE) platform-qtcontrols
+	tools/manage-keys inject . || true
+	$(MAKE) install
+	mkdir -p $(PREFIX)/share/applications
+	mkdir -p $(PREFIX)/share/appdata
+	mkdir -p $(PREFIX)/usr
+	install -D packaging/flatpak/pure-maps $(PREFIX)/bin/pure-maps
+	install -D packaging/flatpak/osmscout-server $(PREFIX)/bin/osmscout-server
+	install -D packaging/flatpak/io.github.rinigus.PureMaps.desktop $(PREFIX)/share/applications
+	install -D packaging/pure-maps.appdata.xml $(PREFIX)/share/appdata/io.github.rinigus.PureMaps.appdata.xml
+        # workaround https://github.com/hughsie/appstream-glib/issues/271
+	ln -s $(PREFIX)/share $(PREFIX)/usr
 
 flatpak:
 	flatpak-builder --repo=../flatpak --force-clean ../build-dir packaging/flatpak/io.github.rinigus.PureMaps.json
@@ -125,6 +139,9 @@ pot:
 	tools/update-translations
 
 rpm-silica:
+	$(MAKE) NAME=harbour-pure-maps .rpm-silica-imp
+
+.rpm-silica-imp:
 	$(MAKE) platform-silica
 	$(MAKE) dist
 	mkdir -p $$HOME/rpmbuild/SOURCES
