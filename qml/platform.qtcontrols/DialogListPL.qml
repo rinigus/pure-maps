@@ -36,6 +36,6 @@ PageListPL {
     onAccepted: app.pages.pop()
 
     function accept() {
-        accepted();
+        if (canAccept) accepted();
     }
 }

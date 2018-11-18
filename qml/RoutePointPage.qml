@@ -25,7 +25,7 @@ import "js/util.js" as Util
 DialogListPL {
     id: dialog
 
-    canAccept: dialog.query.length > 0
+    canAccept: dialog.query.length > 0 || selectedPoi
     currentIndex: -1
 
     delegate: ListItemPL {
@@ -68,7 +68,7 @@ DialogListPL {
 
     headerExtra: Component {
         Column {
-            height: gpsItem.height + searchField.height
+            height: gpsItem.height + shortItems.model.count*app.styler.themeItemSizeSmall + searchField.height
             width: parent.width
 
             ListItemPL {
@@ -83,6 +83,51 @@ DialogListPL {
                 onClicked: {
                     dialog.query = app.tr("Current position");
                     dialog.accept();
+                }
+            }
+
+            Repeater {
+                id: shortItems
+
+                delegate: ListItemPL {
+                    id: listItem
+                    contentHeight: app.styler.themeItemSizeSmall
+
+                    ListItemLabel {
+                        anchors.leftMargin: dialog.searchField.textLeftMargin
+                        color: app.styler.themeHighlightColor
+                        height: app.styler.themeItemSizeSmall
+                        text: model.text
+                    }
+                    onClicked: {
+                        listItem.focus = true;
+                        var poi = model.poi;
+                        if (poi) dialog.selectedPoi = poi;
+                        dialog.accept();
+                    }
+                }
+
+                model: ListModel{}
+
+                Component.onCompleted: {
+                    var slist = map.pois.filter(function (p) {
+                        return p.shortlisted;
+                    }).map(function (p) {
+                        return {
+                            "text": p.title || p.address || app.tr("Unnamed point"),
+                            "poi": p
+                        };
+                    });
+                    slist.sort(function (a, b) {
+                        var x = a.text.toLowerCase();
+                        var y = b.text.toLowerCase();
+                        if (x < y) {return -1;}
+                        if (x > y) {return 1;}
+                        return 0;
+                    });
+                    slist.forEach(function (p) {
+                        shortItems.model.append(p);
+                    })
                 }
             }
 
@@ -177,8 +222,8 @@ DialogListPL {
             s = s.slice(0, 9);
         // save poi completions details
         dialog.poiCompletionDetails = [];
-        s.map(function (p) {
-            var txt = p.title || s.address || app.tr("Unnamed point");
+        s.forEach(function (p) {
+            var txt = p.title || p.address || app.tr("Unnamed point");
             dialog.poiCompletionDetails[txt.toLowerCase()] = p;
             jointResults.push({"text": txt, "markup": txt});
         });

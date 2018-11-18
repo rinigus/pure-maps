@@ -59,6 +59,7 @@ Rectangle {
     property string poiId
     property string poiType
     property string postcode
+    property bool   shortlisted: false
     property string text
     property string title
     property var    poi
@@ -147,6 +148,7 @@ Rectangle {
             if (panel.postcode) info += app.tr("Postal code") + "  ";
             if (panel.link) info += app.tr("Web") + "  ";
             if (panel.phone) info += app.tr("Phone") + "  ";
+            if (panel.shortlisted) info += app.tr("Shortlisted") + "  ";
             if (panel.text && textItem.truncated) info += app.tr("Text") + "  ";
             if (info)
                 return app.tr("More info: %1", info);
@@ -284,6 +286,14 @@ Rectangle {
     }
 
     Connections {
+        target: map
+        onPoiChanged: {
+            if (!poi || poi.poiId !== poiId) return;
+            panel.show(map.getPoiById(poiId), panel.showMenu);
+        }
+    }
+
+    Connections {
         target: panel
         onContentHeightChanged: panel.hasData && panel._show()
     }
@@ -314,6 +324,10 @@ Rectangle {
     }
 
     function show(poi, menu) {
+        if (!poi) {
+            hide();
+            return;
+        }
         app.poiActive = true;
         panel.noAnimation = panel.hasData;
         // fill poi data
@@ -325,6 +339,7 @@ Rectangle {
         panel.poiId = poi.poiId || "";
         panel.poiType = poi.poiType || "";
         panel.postcode = poi.postcode || "";
+        panel.shortlisted = poi.shortlisted || false;
         panel.text = poi.text || "";
         panel.title = poi.title || app.tr("Unnamed point");
         panel.poi = poi;

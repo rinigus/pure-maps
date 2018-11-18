@@ -44,7 +44,7 @@ PageListPL {
             anchors.top: spacer.bottom
             color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
             height: implicitHeight + app.styler.themePaddingSmall
-            text: (model.title ? model.title : app.tr("Unnamed point")) + (model.bookmarked ? " ☆" : "")
+            text: (model.title ? model.title : app.tr("Unnamed point")) + (model.bookmarked ? " ☆" : "") + (model.shortlisted ? " ☰" : "")
             verticalAlignment: Text.AlignTop
         }
 
@@ -86,7 +86,7 @@ PageListPL {
                     var poi = map.getPoiById(model.poiId);
                     if (!poi) return;
                     app.push("PoiInfoPage.qml",
-                             {"poi": poi});
+                             {"active": true, "poi": poi});
                 }
             }
             ContextMenuItemPL {
@@ -98,7 +98,6 @@ PageListPL {
                                           {"poi": poi});
                     dialog.accepted.connect(function() {
                         map.updatePoi(dialog.poi);
-                        fillModel(lastQuery);
                     })
                 }
             }
@@ -167,7 +166,12 @@ PageListPL {
 
     Component.onCompleted: {
         bookmarkedOnly = app.conf.get("poi_list_show_bookmarked");
-        fillModel("");
+        fillModel(lastQuery);
+    }
+
+    Connections {
+        target: map
+        onPoiChanged: fillModel(lastQuery)
     }
 
     function fillModel(query) {
