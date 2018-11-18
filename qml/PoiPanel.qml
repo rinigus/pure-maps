@@ -288,7 +288,7 @@ Rectangle {
     Connections {
         target: map
         onPoiChanged: {
-            if (poi.poiId !== poiId) return;
+            if (!poi || poi.poiId !== poiId) return;
             panel.show(map.getPoiById(poiId), panel.showMenu);
         }
     }
@@ -324,6 +324,10 @@ Rectangle {
     }
 
     function show(poi, menu) {
+        if (!poi) {
+            hide();
+            return;
+        }
         app.poiActive = true;
         panel.noAnimation = panel.hasData;
         // fill poi data

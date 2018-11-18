@@ -86,7 +86,7 @@ PageListPL {
                     var poi = map.getPoiById(model.poiId);
                     if (!poi) return;
                     app.push("PoiInfoPage.qml",
-                             {"poi": poi});
+                             {"active": true, "poi": poi});
                 }
             }
             ContextMenuItemPL {
@@ -98,7 +98,6 @@ PageListPL {
                                           {"poi": poi});
                     dialog.accepted.connect(function() {
                         map.updatePoi(dialog.poi);
-                        fillModel(lastQuery);
                     })
                 }
             }
@@ -170,7 +169,10 @@ PageListPL {
         fillModel(lastQuery);
     }
 
-    onPageStatusActive: fillModel(lastQuery)
+    Connections {
+        target: map
+        onPoiChanged: fillModel(lastQuery)
+    }
 
     function fillModel(query) {
         var data = map.pois;

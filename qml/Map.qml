@@ -246,6 +246,7 @@ MapboxMap {
         if (r) {
             map.updatePois();
             map.savePois();
+            map.poiChanged(r.poiId);
         }
         return r;
     }
@@ -327,6 +328,8 @@ MapboxMap {
         });
         map.updatePois();
         map.savePois();
+        // emit to reinit poi lists if shown
+        map.poiChanged("");
     }
 
     function clearRoute() {
@@ -717,7 +720,7 @@ MapboxMap {
         } );
         map.updatePois();
         map.savePois();
-        poiChanged(poi.poiId);
+        map.poiChanged(poi.poiId);
     }
 
     function updatePois() {
