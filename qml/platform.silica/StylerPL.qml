@@ -32,9 +32,9 @@ QtObject {
 
     // colors
     // block background (navigation, poi panel, bubble)
-    property color blockBg: "#e6000000"
+    property color blockBg: Theme.overlayBackgroundColor || "#e6000000"
     // variant of navigation icons
-    property string navigationIconsVariant: "white"
+    property string navigationIconsVariant: Theme.colorScheme ? "black" : "white"
     // descriptive items
     property color themeHighlightColor: Theme.highlightColor
     // navigation items (to be clicked)
