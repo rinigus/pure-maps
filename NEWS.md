@@ -1,3 +1,16 @@
+2018-11-20: Pure Maps 1.9
+=========================
+
+* Fix navigation icon in cover (accumulator)
+* Replace explicit event handlers with property binding (accumulator)
+* Add platform and SDK download instructions to flatpak docs (M4rtinK)
+* Add support for personal API keys
+* Add shortlisted POIs for fast selection in navigation
+* [silica] Add support for light ambiences
+* Update POIs in the list on its changes
+* Update translations
+* Prepare for Flathub release
+
 2018-10-28: Pure Maps 1.8
 =========================
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Osmo Salomaa
+# Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 
 """An application to display maps and stuff."""
 
-__version__ = "1.8.0"
+__version__ = "1.9.0"
 
 try:
     import pyotherside
@@ -69,6 +69,7 @@ assert HistoryManager
 assert IconFinder
 assert http
 assert i18n
+assert KeyStore
 assert LOCALE_DIR
 assert Map
 assert Narrative
