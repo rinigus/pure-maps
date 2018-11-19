@@ -3,13 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# rinigus github, 2018
+# Gustavo Martins <gustavo737@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-28 14:26+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2018-11-19 21:48+0200\n"
+"PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Gustavo Martins <gustavo737@gmail.com>, 2018\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rinigus/teams/89597/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -43,6 +47,74 @@ msgstr "Não foi possível se conectar"
 msgid "Current position"
 msgstr "Posição atual"
 
+#: poor/keystore.py:50
+msgid ""
+"Foursquare Client ID. Register at https://developer.foursquare.com and "
+"create your own Client ID and Client Secret keys"
+msgstr ""
+
+#: poor/keystore.py:51
+msgid "Foursquare Client ID"
+msgstr ""
+
+#: poor/keystore.py:52
+msgid "Foursquare Client Secret"
+msgstr ""
+
+#: poor/keystore.py:55
+msgid ""
+"Mapbox API key. Register at https://www.mapbox.com and create your own API "
+"key"
+msgstr ""
+
+#: poor/keystore.py:56
+msgid "Mapbox API key"
+msgstr ""
+
+#: poor/keystore.py:59
+msgid ""
+"MapQuest API key. Register at https://developer.mapquest.com/ and create "
+"your own API key"
+msgstr ""
+
+#: poor/keystore.py:60
+msgid "MapQuest API key"
+msgstr ""
+
+#: poor/keystore.py:63
+msgid ""
+"OpenCage API key. Register at https://opencagedata.com/ and create your own "
+"API key"
+msgstr ""
+
+#: poor/keystore.py:64
+msgid "OpenCage API key"
+msgstr ""
+
+#: poor/keystore.py:67
+msgid ""
+"Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
+" API key"
+msgstr ""
+
+#: poor/keystore.py:68
+msgid "Stadia Maps API key"
+msgstr ""
+
+#: poor/keystore.py:71
+msgid ""
+"HERE App ID. Register at https://developer.here.com and create your own App "
+"ID and Code"
+msgstr ""
+
+#: poor/keystore.py:72
+msgid "HERE App ID"
+msgstr ""
+
+#: poor/keystore.py:73 poor/keystore.py:74
+msgid "HERE App Code"
+msgstr ""
+
 #: poor/narrative.py:130
 #, python-brace-format
 msgid "In {distance}, {direction}"
@@ -52,15 +124,15 @@ msgstr "Em {distance}, {direction}"
 msgid "Exit: "
 msgstr "Saída:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:188
+#: poor/narrative.py:421 qml/pure-maps.qml:183
 msgid "Rerouting"
 msgstr "Recalculando rota"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:210
+#: poor/narrative.py:422 qml/pure-maps.qml:205
 msgid "Rerouting failed"
 msgstr "Não foi possível recalcular rota"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:204
+#: poor/narrative.py:423 qml/pure-maps.qml:199
 msgid "New route found"
 msgstr "Nova rota encontrada"
 
@@ -259,13 +331,13 @@ msgid "Best"
 msgstr "Melhor"
 
 #: guides/osmscout_name.qml:46 qml/GeocodePage.qml:38 qml/PlaceTypePage.qml:44
-#: qml/PoiPage.qml:106 qml/RoutePointPage.qml:48
+#: qml/PoiPage.qml:105 qml/RoutePointPage.qml:48
 msgid "Remove"
 msgstr "Remover"
 
 #: guides/osmscout_name.qml:67 qml/AttributionPage.qml:64
 #: qml/GeocodePage.qml:27 qml/GeocodePage.qml:113 qml/MenuPage.qml:49
-#: qml/PlaceTypePage.qml:79 qml/PoiPage.qml:134 qml/RoutePointPage.qml:91
+#: qml/PlaceTypePage.qml:79 qml/PoiPage.qml:133 qml/RoutePointPage.qml:136
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -355,7 +427,7 @@ msgid "Venues"
 msgstr "Locais"
 
 #: qml/AttributionPage.qml:124 qml/MenuPage.qml:58 qml/NavigationPage.qml:25
-#: qml/PreferencesPage.qml:144 qml/RoutePage.qml:25
+#: qml/PreferencesPage.qml:197 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Navegação"
 
@@ -368,7 +440,7 @@ msgstr "%1 [duplicado]"
 msgid "Using"
 msgstr "Fonte"
 
-#: qml/GeocodePage.qml:132 qml/RoutePointPage.qml:110
+#: qml/GeocodePage.qml:132 qml/RoutePointPage.qml:155
 msgid ""
 "You can search by address, locality, landmark and many other terms. For best"
 " results, include a region, e.g. “address, city” or “city, country”."
@@ -387,7 +459,7 @@ msgid "Alternatives"
 msgstr "Alternativas"
 
 #: qml/GeocodingResultsPage.qml:86 qml/NearbyResultsPage.qml:89
-#: qml/PoiPage.qml:151
+#: qml/PoiPage.qml:150
 msgid "Show all"
 msgstr "Mostrat tudo"
 
@@ -411,23 +483,38 @@ msgstr "%1 Resultados"
 msgid "No results"
 msgstr "Nenhum resultado encontrado"
 
-#: qml/InitPage.qml:29
+#: qml/InitPage.qml:31
 msgid "Initializing"
 msgstr "Iniciando"
 
-#: qml/Map.qml:302 qml/Map.qml:397
+#: qml/InitPage.qml:41
+msgid "Dismiss"
+msgstr ""
+
+#: qml/InitPage.qml:42
+msgid "Missing Mapbox key"
+msgstr ""
+
+#: qml/InitPage.qml:43
+msgid ""
+"Your installation is missing Mapbox API key. Please register at Mapbox and "
+"fill in your personal API key in Preferences. This key is not needed if you "
+"plan to use Pure Maps with the offline map provider."
+msgstr ""
+
+#: qml/Map.qml:311 qml/Map.qml:408
 msgid "Clearing map"
 msgstr "Limpando o mapa"
 
-#: qml/Map.qml:529
+#: qml/Map.qml:541
 msgid "Voice navigation on"
 msgstr "Navegação por voz ativada"
 
-#: qml/Map.qml:656
+#: qml/Map.qml:683
 msgid "Auto-center off"
 msgstr "Centralização automática desativada"
 
-#: qml/Map.qml:659
+#: qml/Map.qml:686
 msgid "Auto-center on"
 msgstr "Centralização automática ativa"
 
@@ -532,7 +619,7 @@ msgstr "Total"
 msgid "Options"
 msgstr "Opções"
 
-#: qml/NavigationPage.qml:204 qml/PreferencesPage.qml:123
+#: qml/NavigationPage.qml:204 qml/PreferencesPage.qml:176
 #: qml/RoutePage.qml:272
 msgid "Map scale"
 msgstr "Escala do mapa"
@@ -550,8 +637,8 @@ msgid "Near"
 msgstr "Próximo a"
 
 #: qml/NearbyPage.qml:93 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
-#: qml/PoiPanel.qml:329 qml/RoutePage.qml:124 qml/RoutePage.qml:160
-#: qml/RoutePointPage.qml:181
+#: qml/PoiPanel.qml:344 qml/RoutePage.qml:124 qml/RoutePage.qml:160
+#: qml/RoutePointPage.qml:117 qml/RoutePointPage.qml:226
 msgid "Unnamed point"
 msgstr "Ponto desconhecido"
 
@@ -609,7 +696,7 @@ msgstr "Endereço"
 msgid "Enter address"
 msgstr "Digite o endereço"
 
-#: qml/PoiEditPage.qml:78 qml/PoiPanel.qml:147
+#: qml/PoiEditPage.qml:78 qml/PoiPanel.qml:148
 msgid "Postal code"
 msgstr "CEP"
 
@@ -617,7 +704,7 @@ msgstr "CEP"
 msgid "Enter postal code"
 msgstr "Digite o CEP"
 
-#: qml/PoiEditPage.qml:90 qml/PoiInfoPage.qml:171
+#: qml/PoiEditPage.qml:90 qml/PoiInfoPage.qml:197
 msgid "Contact"
 msgstr "Contato"
 
@@ -637,7 +724,7 @@ msgstr "URL"
 msgid "Enter URL"
 msgstr "Digite a URL"
 
-#: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:220
+#: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:246
 msgid "Additional info"
 msgstr "Informações adicionais"
 
@@ -666,22 +753,30 @@ msgid "Actions"
 msgstr "Ações"
 
 #: qml/PoiInfoPage.qml:112
+msgid "Bookmark"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:125
+msgid "Shortlist"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:138
 msgid "Share location"
 msgstr "Compartilhar localização"
 
-#: qml/PoiInfoPage.qml:124
+#: qml/PoiInfoPage.qml:150
 msgid "Center on location"
 msgstr "Centralizar na localização"
 
-#: qml/PoiInfoPage.qml:136
+#: qml/PoiInfoPage.qml:162
 msgid "Navigate To"
 msgstr "Navegar Para"
 
-#: qml/PoiInfoPage.qml:148
+#: qml/PoiInfoPage.qml:174
 msgid "Navigate From"
 msgstr "Navegar De"
 
-#: qml/PoiInfoPage.qml:160
+#: qml/PoiInfoPage.qml:186
 msgid "Nearby"
 msgstr "Próximo"
 
@@ -693,11 +788,11 @@ msgstr "Pontos de Interesse"
 msgid "View"
 msgstr "Ver"
 
-#: qml/PoiPage.qml:151
+#: qml/PoiPage.qml:150
 msgid "Show bookmarked"
 msgstr "Mostrar locais salvos"
 
-#: qml/PoiPage.qml:161
+#: qml/PoiPage.qml:160
 msgid ""
 "No points of interests defined yet. You can create and bookmark points of "
 "interest using map and search."
@@ -705,27 +800,31 @@ msgstr ""
 "Nenhum ponto de interesse definido. Você pode criar locais salvos e pontos "
 "de interesse usando o mapa e a pesquisa."
 
-#: qml/PoiPanel.qml:102
+#: qml/PoiPanel.qml:103
 msgid "%1; %2"
 msgstr "%1; %2"
 
-#: qml/PoiPanel.qml:120
+#: qml/PoiPanel.qml:121
 msgid "Latitude: %1; Longitude: %2"
 msgstr "Latitude: %1; Longitude: %2"
 
-#: qml/PoiPanel.qml:148
+#: qml/PoiPanel.qml:149
 msgid "Web"
 msgstr "Web"
 
-#: qml/PoiPanel.qml:149
+#: qml/PoiPanel.qml:150
 msgid "Phone"
 msgstr "Telefone"
 
-#: qml/PoiPanel.qml:150
+#: qml/PoiPanel.qml:151
+msgid "Shortlisted"
+msgstr ""
+
+#: qml/PoiPanel.qml:152
 msgid "Text"
 msgstr "Texto"
 
-#: qml/PoiPanel.qml:152
+#: qml/PoiPanel.qml:154
 msgid "More info: %1"
 msgstr "Mais informações: %1"
 
@@ -757,7 +856,7 @@ msgstr ""
 msgid "Prevent sleep"
 msgstr "Manter tela ligada"
 
-#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:243
+#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:296
 msgid "Never"
 msgstr "Nunca"
 
@@ -765,7 +864,7 @@ msgstr "Nunca"
 msgid "When navigating"
 msgstr "Ao navegar"
 
-#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:243
+#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:296
 msgid "Always"
 msgstr "Sempre"
 
@@ -783,10 +882,25 @@ msgid "Clear cache"
 msgstr "Limpar cache"
 
 #: qml/PreferencesPage.qml:99
+msgid "API keys"
+msgstr ""
+
+#: qml/PreferencesPage.qml:105
+msgid ""
+"You can specify personal keys for online services in these settings. Please "
+"check the conditions for each of the services that you want to use to ensure"
+" that you comply with them."
+msgstr ""
+
+#: qml/PreferencesPage.qml:113
+msgid "Please restart application after changing API keys."
+msgstr ""
+
+#: qml/PreferencesPage.qml:152
 msgid "Map view"
 msgstr "Vista do Mapa"
 
-#: qml/PreferencesPage.qml:106
+#: qml/PreferencesPage.qml:159
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating."
@@ -794,104 +908,104 @@ msgstr ""
 "Selecionar modo de transporte. Somente aplicado quando o Pure Maps não "
 "estiver navegando."
 
-#: qml/PreferencesPage.qml:107 qml/PreferencesPage.qml:183
+#: qml/PreferencesPage.qml:160 qml/PreferencesPage.qml:236
 msgid "Snap position to road"
 msgstr "Ir para posição na estrada"
 
-#: qml/PreferencesPage.qml:108 routers/gpx_osmscout_settings.qml:31
+#: qml/PreferencesPage.qml:161 routers/gpx_osmscout_settings.qml:31
 #: routers/gpx_settings.qml:31
 msgid "None"
 msgstr "Nenhum"
 
-#: qml/PreferencesPage.qml:108 qml/RoutePage.qml:254
+#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:254
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Car"
 msgstr "Carro"
 
-#: qml/PreferencesPage.qml:108 qml/RoutePage.qml:254
+#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:254
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Bicycle"
 msgstr "Bicicleta"
 
-#: qml/PreferencesPage.qml:108 qml/RoutePage.qml:254
+#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:254
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Foot"
 msgstr "A pé"
 
-#: qml/PreferencesPage.qml:152
+#: qml/PreferencesPage.qml:205
 msgid "Show navigation instructions"
 msgstr "Mostrar instruções de navegação"
 
-#: qml/PreferencesPage.qml:162
+#: qml/PreferencesPage.qml:215
 msgid "Voice navigation instructions"
 msgstr "Navegação por voz"
 
-#: qml/PreferencesPage.qml:173
+#: qml/PreferencesPage.qml:226
 msgid "Reroute automatically"
 msgstr "Recalcular rota automaticamente"
 
-#: qml/PreferencesPage.qml:194
+#: qml/PreferencesPage.qml:247
 msgid "Show direction signs"
 msgstr "Mostrar sinalização de direção"
 
-#: qml/PreferencesPage.qml:204
+#: qml/PreferencesPage.qml:257
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr ""
 "Ajustar rotação do mapa para a direção do movimento ao iniciar a navegação."
 
-#: qml/PreferencesPage.qml:205
+#: qml/PreferencesPage.qml:258
 msgid "Rotate map when navigating"
 msgstr "Girar o mapa ao navegar"
 
-#: qml/PreferencesPage.qml:214
+#: qml/PreferencesPage.qml:267
 msgid "Only applies to vector maps."
 msgstr "Aplicável apenas a mapas vetorizados."
 
-#: qml/PreferencesPage.qml:216
+#: qml/PreferencesPage.qml:269
 msgid "Tilt map when navigating"
 msgstr "Inclinar mapa ao navegar"
 
-#: qml/PreferencesPage.qml:224
+#: qml/PreferencesPage.qml:277
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
 "Voz preferida para navegação por voz. Apenas algumas línguas são suportadas."
 
-#: qml/PreferencesPage.qml:225
+#: qml/PreferencesPage.qml:278
 msgid "Voice gender"
 msgstr "Voz"
 
-#: qml/PreferencesPage.qml:226
+#: qml/PreferencesPage.qml:279
 msgid "Male"
 msgstr "Masculina"
 
-#: qml/PreferencesPage.qml:226
+#: qml/PreferencesPage.qml:279
 msgid "Female"
 msgstr "Feminina"
 
-#: qml/PreferencesPage.qml:240
+#: qml/PreferencesPage.qml:293
 msgid "Show speed limit sign"
 msgstr "Mostrar sinalização de limite de velocidade"
 
-#: qml/PreferencesPage.qml:242
+#: qml/PreferencesPage.qml:295
 msgid "Speed limit"
 msgstr "Limite de velocidade"
 
-#: qml/PreferencesPage.qml:243
+#: qml/PreferencesPage.qml:296
 msgid "Only when exceeding"
 msgstr "Somente quando excedendo"
 
-#: qml/PreferencesPage.qml:265
+#: qml/PreferencesPage.qml:318
 msgid "Development"
 msgstr "Desenvolvimento"
 
-#: qml/PreferencesPage.qml:273
+#: qml/PreferencesPage.qml:326
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -899,7 +1013,7 @@ msgstr ""
 "As seguintes opções são para desenvolvimento somente. Por favor, não as "
 "altere a menos que saiba o que está fazendo."
 
-#: qml/PreferencesPage.qml:280
+#: qml/PreferencesPage.qml:333
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -907,11 +1021,11 @@ msgstr ""
 "Colocar posição no centro da vista atual do mapa. Lembre-se de desabilitar o"
 " posicionamento por GPS ao utilizar essa opção."
 
-#: qml/PreferencesPage.qml:281
+#: qml/PreferencesPage.qml:334
 msgid "Set position to the map center"
 msgstr "Colocar posição no centro do mapa"
 
-#: qml/PreferencesPage.qml:288
+#: qml/PreferencesPage.qml:341
 msgid "Show current zoom level"
 msgstr "Mostrar nível atual de zoom"
 
@@ -919,7 +1033,7 @@ msgstr "Mostrar nível atual de zoom"
 msgid "Pure Maps"
 msgstr ""
 
-#: qml/pure-maps.qml:200
+#: qml/pure-maps.qml:195
 msgid "Rerouting failed: %1"
 msgstr "Não foi possível recalcular rota: %1"
 
