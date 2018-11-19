@@ -25,7 +25,7 @@ import "js/util.js" as Util
 DialogListPL {
     id: dialog
 
-    canAccept: dialog.query.length > 0 || selectedPoi
+    canAccept: dialog.query.length > 0 || selectedPoi!=null
     currentIndex: -1
 
     delegate: ListItemPL {
