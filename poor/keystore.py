@@ -87,6 +87,14 @@ class KeyStore:
         """Return API key with the preference of the personal one"""
         return poor.conf.get("keys." + key) or DEFAULTS.get(key, "")
 
+    def get_mapbox_key(self):
+        """Return Mapbox access key with the preference of the personal one"""
+        p = poor.conf.get("keys.MAPBOX_KEY")
+        if p: return p
+        p = DEFAULTS.get("MAPBOX_KEY", "")
+        if p: return p
+        return "EMPTY"
+
     def list(self):
         """Return a list of dictionaries of API key properties"""
         keys = list(DEFAULTS.keys())

@@ -2,7 +2,16 @@
 # -*- coding: utf-8 -*-
 
 import os, sys, glob
-from apikeys import Keys
+
+strip_allowed = True
+
+try:
+    from apikeys import Keys
+except:
+    from apikeys_dummy import Keys
+    strip_allowed = False
+    plain = {key: "" for key in Keys}
+    Keys = plain
 
 if len(sys.argv) != 3 or sys.argv[1] not in ["inject", "strip"]:
     print('Usage: %s inject|strip dirname\nwhere dirname is a root of a project and either strip or inject should be given\n' % sys.argv[0])
@@ -10,6 +19,10 @@ if len(sys.argv) != 3 or sys.argv[1] not in ["inject", "strip"]:
 
 inject = (sys.argv[1] == "inject")
 root = sys.argv[2]
+
+if not inject and not strip_allowed:
+    print("Stripping empty keys is not allowed")
+    sys.exit(-1)
 
 if inject: print('Injecting keys into %s' % root)
 else: print( 'Stripping keys from %s' % root)

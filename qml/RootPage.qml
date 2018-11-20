@@ -26,7 +26,7 @@ PageEmptyPL {
     CenterButton { id: centerButton }
     Map {
         id: map
-        accessToken: py.call_sync("poor.key.get", ["MAPBOX_KEY"])
+        accessToken: py.call_sync("poor.key.get_mapbox_key", [])
     }
     MenuButton { id: menuButton }
     Meters { id: meters }

@@ -23,6 +23,7 @@ import "platform"
 PageEmptyPL {
     id: page
 
+    property bool mapboxKeyMissing: false
     property bool ready: false
 
     BusyModal {
@@ -36,7 +37,8 @@ PageEmptyPL {
         onReadyChanged: {
             if (!py.ready) return;
             page.ready = true
-            if (!py.call_sync("poor.key.get", ["MAPBOX_KEY"])) {
+            var k = py.call_sync("poor.key.get_mapbox_key", [])
+            if (k == "EMPTY") {
                 var d = app.push("MessagePage.qml", {
                                      "acceptText": app.tr("Dismiss"),
                                      "title": app.tr("Missing Mapbox key"),
@@ -45,6 +47,7 @@ PageEmptyPL {
                                                        "in Preferences. This key is not needed if you plan to use " +
                                                        "Pure Maps with the offline map provider.")
                                  });
+                mapboxKeyMissing = true;
             } else start();
         }
     }
@@ -54,5 +57,6 @@ PageEmptyPL {
     function start() {
         app.rootPage = app.pages.replace("RootPage.qml");
         app.initialize();
+        if (mapboxKeyMissing) app.showMenu();
     }
 }
