@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-19 21:48+0200\n"
+"POT-Creation-Date: 2018-11-20 22:41+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2018\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -52,68 +52,80 @@ msgid ""
 "Foursquare Client ID. Register at https://developer.foursquare.com and "
 "create your own Client ID and Client Secret keys"
 msgstr ""
+"Foursquare klient-ID. Registrera dig på https://developer.foursquare.com och"
+" skapa ditt eget klient-ID och klienthemlighet"
 
 #: poor/keystore.py:51
 msgid "Foursquare Client ID"
-msgstr ""
+msgstr "Foursquare klient-ID"
 
 #: poor/keystore.py:52
 msgid "Foursquare Client Secret"
-msgstr ""
+msgstr "Foursquare klienthemlighet"
 
 #: poor/keystore.py:55
 msgid ""
 "Mapbox API key. Register at https://www.mapbox.com and create your own API "
 "key"
 msgstr ""
+"Mapbox API-nyckel. Registrera dig på https://www.mapbox.com och skapa din "
+"egen API-nyckel"
 
 #: poor/keystore.py:56
 msgid "Mapbox API key"
-msgstr ""
+msgstr "Mapbox API-nyckel"
 
 #: poor/keystore.py:59
 msgid ""
 "MapQuest API key. Register at https://developer.mapquest.com/ and create "
 "your own API key"
 msgstr ""
+"MapQuest API-nyckel. Registrera dig på https://developer.mapquest.com/ och "
+"skapa din egen API-nyckel"
 
 #: poor/keystore.py:60
 msgid "MapQuest API key"
-msgstr ""
+msgstr "MapQuest API-nyckel"
 
 #: poor/keystore.py:63
 msgid ""
 "OpenCage API key. Register at https://opencagedata.com/ and create your own "
 "API key"
 msgstr ""
+"OpenCage API-nyckel. Registrera dig på https://opencagedata.com/  och skapa "
+"din egen API-nyckel"
 
 #: poor/keystore.py:64
 msgid "OpenCage API key"
-msgstr ""
+msgstr "OpenCage API-nyckel"
 
 #: poor/keystore.py:67
 msgid ""
 "Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
 " API key"
 msgstr ""
+"Stadia Maps API-nyckel. Registrera dig på https://stadiamaps.com/ och skapa "
+"din egen API-nyckel"
 
 #: poor/keystore.py:68
 msgid "Stadia Maps API key"
-msgstr ""
+msgstr "Stadia Maps API-nyckel"
 
 #: poor/keystore.py:71
 msgid ""
 "HERE App ID. Register at https://developer.here.com and create your own App "
 "ID and Code"
 msgstr ""
+"HERE app-ID. Registrera dig på https://developer.here.com och skapa ditt "
+"eget app-ID och kod"
 
 #: poor/keystore.py:72
 msgid "HERE App ID"
-msgstr ""
+msgstr "HERE app-ID"
 
 #: poor/keystore.py:73 poor/keystore.py:74
 msgid "HERE App Code"
-msgstr ""
+msgstr "HERE app-kod"
 
 #: poor/narrative.py:130
 #, python-brace-format
@@ -481,24 +493,27 @@ msgstr "%1 Resultat"
 msgid "No results"
 msgstr "Inga resultat"
 
-#: qml/InitPage.qml:31
+#: qml/InitPage.qml:32
 msgid "Initializing"
 msgstr "Startar"
 
-#: qml/InitPage.qml:41
-msgid "Dismiss"
-msgstr ""
-
-#: qml/InitPage.qml:42
-msgid "Missing Mapbox key"
-msgstr ""
-
 #: qml/InitPage.qml:43
+msgid "Dismiss"
+msgstr "Avfärda"
+
+#: qml/InitPage.qml:44
+msgid "Missing Mapbox key"
+msgstr "Saknad Mapbox-nyckel"
+
+#: qml/InitPage.qml:45
 msgid ""
 "Your installation is missing Mapbox API key. Please register at Mapbox and "
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
+"Din installation saknar Mapbox API-nyckel. Registrera dig på Mapbox och fyll"
+" i din personliga API-nyckel i Inställningar. Denna nyckel behövs om du "
+"tänker använda Pure Maps med offline-kartleverantören."
 
 #: qml/Map.qml:311 qml/Map.qml:408
 msgid "Clearing map"
@@ -752,11 +767,11 @@ msgstr "Åtgärder"
 
 #: qml/PoiInfoPage.qml:112
 msgid "Bookmark"
-msgstr ""
+msgstr "Bokmärk"
 
 #: qml/PoiInfoPage.qml:125
 msgid "Shortlist"
-msgstr ""
+msgstr "Kortlista"
 
 #: qml/PoiInfoPage.qml:138
 msgid "Share location"
@@ -816,7 +831,7 @@ msgstr "Telefon"
 
 #: qml/PoiPanel.qml:151
 msgid "Shortlisted"
-msgstr ""
+msgstr "Kortlistad"
 
 #: qml/PoiPanel.qml:152
 msgid "Text"
@@ -880,7 +895,7 @@ msgstr "Rensa cache"
 
 #: qml/PreferencesPage.qml:99
 msgid "API keys"
-msgstr ""
+msgstr "API-nycklar"
 
 #: qml/PreferencesPage.qml:105
 msgid ""
@@ -888,10 +903,13 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
+"Du kan specificera personliga nycklar för online-tjänster i dessa "
+"inställningar. Kontrollera villkoren för var och en av de tjänster du vill "
+"använda, för att säkerställa att du tillämpar dem."
 
 #: qml/PreferencesPage.qml:113
 msgid "Please restart application after changing API keys."
-msgstr ""
+msgstr "Starta om appen efter ändring av API-nycklar."
 
 #: qml/PreferencesPage.qml:152
 msgid "Map view"
