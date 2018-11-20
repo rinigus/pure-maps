@@ -18,8 +18,9 @@ make check test
 tools/manage-keys strip .
 git status
 emacs poor/__init__.py rpm/*.spec Makefile
-emacs NEWS.md TODO.md
+emacs NEWS.md packaging/pure-maps.appdata.xml
 make rpm-silica
-make flatpak
 git status
 ```
+
+After that, trigger update at Flathub.
