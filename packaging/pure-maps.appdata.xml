@@ -37,6 +37,16 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
-  <release version="1.8.0" date="2018-10-28"/>
+   <release version="1.9.0" date="2018-11-20">
+     <description>
+       <p>Replace explicit event handlers with property binding (accumulator)</p>
+       <p>Add platform and SDK download instructions to flatpak docs (M4rtinK)</p>
+       <p>Add support for personal API keys</p>
+       <p>Add shortlisted POIs for fast selection in navigation</p>
+       <p>Update translations</p>
+       <p>Flathub release</p>
+     </description>
+   </release>
+   <release version="1.8.0" date="2018-10-28"/>
  </releases>
 </component>
