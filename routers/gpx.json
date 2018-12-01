@@ -7,5 +7,6 @@
   "offline": true,
   "can_reroute": false,
   "from_needed": false,
-  "to_needed": false
+  "to_needed": false,
+  "profiles": ["mixed", "offline", "online"]
 }

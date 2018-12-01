@@ -8,6 +8,7 @@
   "format": "mapbox-gl",
   "logo": "mapbox",
   "name": "Mapbox Traffic Night",
+  "profiles": ["mixed", "online"],
   "style_url": "mapbox://styles/mapbox/traffic-night-v2",
   "style_gui": {
      "bg": "#101114",

@@ -7,5 +7,6 @@
   "_description": "Public transport routing in Finland",
   "geocoder": "digitransit",
   "_modes": ["public transport"],
-  "name": "Digitransit"
+  "name": "Digitransit",
+  "profiles": ["mixed", "online"]
 }

@@ -12,5 +12,6 @@
     "© Yahoo GeoPlanet": "https://developer.yahoo.com/geo/geoplanet/data/"
   },
   "_description": "Search based on open data sources",
-  "name": "OpenCage"
+  "name": "OpenCage",
+  "profiles": ["mixed", "online"]
 }

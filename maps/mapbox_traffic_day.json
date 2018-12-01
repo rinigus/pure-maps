@@ -8,5 +8,6 @@
   "format": "mapbox-gl",
   "logo": "mapbox",
   "name": "Mapbox Traffic Day",
+  "profiles": ["mixed", "online"],
   "style_url": "mapbox://styles/mapbox/traffic-day-v2"
 }

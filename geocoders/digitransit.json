@@ -8,5 +8,6 @@
     "© MML": "https://www.maanmittauslaitos.fi/"
   },
   "_description": "Search in Finland",
-  "name": "Digitransit"
+  "name": "Digitransit",
+  "profiles": ["mixed", "online"]
 }

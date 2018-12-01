@@ -7,5 +7,6 @@
   "_description": "Points of interest from OpenStreetMap data",
   "geocoder": "osmscout",
   "name": "OSM Scout",
+  "profiles": ["mixed", "offline"],
   "requires": ["harbour-osmscout-server", "osmscout-server"]
 }

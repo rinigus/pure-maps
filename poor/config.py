@@ -48,6 +48,12 @@ DEFAULTS = {
     "poi_list_show_bookmarked": False,
     "profile": "online",
     "profiles": {
+        "mixed": {
+            "basemap": "mapbox_streets",
+            "geocoder": "photon",
+            "guide": "foursquare",
+            "router": "stadiamaps"
+        },
         "online": {
             "basemap": "mapbox_streets",
             "geocoder": "photon",

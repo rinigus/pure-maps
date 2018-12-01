@@ -171,46 +171,6 @@ PagePL {
             onClicked: profileComboBox.activate()
         }
 
-
-//        Item {
-//            anchors.left: parent.left
-//            anchors.leftMargin: app.styler.themeHorizontalPageMargin
-//            anchors.right: parent.right
-//            anchors.rightMargin: app.styler.themeHorizontalPageMargin
-
-//            height: Math.max(icon.height, profileComboBox.height)
-
-//            IconButtonPL {
-//                id: icon
-//                anchors.left: parent.left
-//                anchors.leftMargin: 0
-//                anchors.top: parent.top
-//                icon.height: app.styler.themeItemSizeSmall
-//                icon.source: app.styler.iconProfile
-//                onClicked: profileComboBox.clicked(mouse)
-//            }
-
-//            ComboBoxPL {
-//                id: profileComboBox
-//                anchors.left: icon.right
-//                anchors.leftMargin: 0 //app.styler.themePaddingMedium
-//                anchors.right: parent.right
-//                anchors.rightMargin: 0
-//                anchors.top: parent.top
-//                label: app.tr("Profile")
-//                model: [ app.tr("Online"), app.tr("Offline"), app.tr("Mixed") ]
-//                property var values: ["online", "offline", "mixed"]
-//                Component.onCompleted: {
-//                    var value = app.conf.profile;
-//                    profileComboBox.currentIndex = profileComboBox.values.indexOf(value);
-//                }
-//                onCurrentIndexChanged: {
-//                    var index = profileComboBox.currentIndex;
-//                    py.call_sync("poor.app.set_profile", [profileComboBox.values[index]]);
-//                }
-//            }
-//        }
-
         TextSwitchPL {
             id: autoCenterItem
             checked: app.map.autoCenter

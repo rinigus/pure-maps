@@ -278,7 +278,8 @@ def get_basemaps():
     """Return a list of dictionaries of basemap attributes."""
     return _get_providers("maps",
                           poor.conf.get_default("basemap"),
-                          poor.conf.basemap)
+                          poor.conf.basemap,
+                          poor.conf.profile)
 
 def get_default_language(fallback="en"):
     """Return the system default language code or `fallback`."""
@@ -292,13 +293,15 @@ def get_geocoders():
     """Return a list of dictionaries of geocoder attributes."""
     return _get_providers("geocoders",
                           poor.conf.get_default("geocoder"),
-                          poor.conf.geocoder)
+                          poor.conf.geocoder,
+                          poor.conf.profile)
 
 def get_guides():
     """Return a list of dictionaries of guide attributes."""
     return _get_providers("guides",
                           poor.conf.get_default("guide"),
-                          poor.conf.guide)
+                          poor.conf.guide,
+                          poor.conf.profile)
 
 def get_ndigits(x):
     """Return the amount of digits left of the decimal point in `x`."""
@@ -316,7 +319,7 @@ def get_provider_class(type):
         return poor.Router
     raise ValueError("Bad type: {}".format(repr(type)))
 
-def _get_providers(directory, default, active):
+def _get_providers(directory, default, active, profile):
     """Return a list of dictionaries of provider attributes."""
     def matches(pid, ref):
         # Allow default and active to be either strings or lists of strings.
@@ -329,6 +332,7 @@ def _get_providers(directory, default, active):
             if pid in (x["pid"] for x in providers): continue
             provider = read_json(path)
             if provider.get("hidden", False): continue
+            if profile not in provider.get("profiles", []): continue
             requires = provider.get("requires", [])
             if len(requires) and not any(map(requirement_found, requires)): continue
             provider["pid"] = pid
@@ -342,7 +346,8 @@ def get_routers():
     """Return a list of dictionaries of router attributes."""
     return _get_providers("routers",
                           poor.conf.get_default("router"),
-                          poor.conf.router)
+                          poor.conf.router,
+                          poor.conf.profile)
 
 def locked_method(function):
     """
