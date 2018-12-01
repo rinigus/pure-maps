@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-19 21:48+0200\n"
+"POT-Creation-Date: 2018-11-20 22:41+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Gustavo Martins <gustavo737@gmail.com>, 2018\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rinigus/teams/89597/pt_BR/)\n"
@@ -52,68 +52,80 @@ msgid ""
 "Foursquare Client ID. Register at https://developer.foursquare.com and "
 "create your own Client ID and Client Secret keys"
 msgstr ""
+"ID do cliente Foursquare. Registre em https://developer.foursquare.com e "
+"cria sua própria ID de Cliente e Chaves secretas de Cliente."
 
 #: poor/keystore.py:51
 msgid "Foursquare Client ID"
-msgstr ""
+msgstr "ID de Cliente do Foursquare"
 
 #: poor/keystore.py:52
 msgid "Foursquare Client Secret"
-msgstr ""
+msgstr "Segredo de Cliente do Foursquare"
 
 #: poor/keystore.py:55
 msgid ""
 "Mapbox API key. Register at https://www.mapbox.com and create your own API "
 "key"
 msgstr ""
+"Chave de API do Mapbox. Registre em https://www.mapbox.com e crie sua "
+"própria chave de API"
 
 #: poor/keystore.py:56
 msgid "Mapbox API key"
-msgstr ""
+msgstr "Chave de API do Mapbox"
 
 #: poor/keystore.py:59
 msgid ""
 "MapQuest API key. Register at https://developer.mapquest.com/ and create "
 "your own API key"
 msgstr ""
+"Chave de API do MapQuest. Registre em https://developer.mapquest.com/ e crie"
+" sua própria chave de API"
 
 #: poor/keystore.py:60
 msgid "MapQuest API key"
-msgstr ""
+msgstr "Chave de API do MapQuest"
 
 #: poor/keystore.py:63
 msgid ""
 "OpenCage API key. Register at https://opencagedata.com/ and create your own "
 "API key"
 msgstr ""
+"Chave de API do OpenCage Registre em https://opencagedata.com/  e crie sua "
+"própria chave de API"
 
 #: poor/keystore.py:64
 msgid "OpenCage API key"
-msgstr ""
+msgstr "Chave de API do OpenCage"
 
 #: poor/keystore.py:67
 msgid ""
 "Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
 " API key"
 msgstr ""
+"Chave de API do Stadia Maps. Registre em https://stadiamaps.com/ e crie sua "
+"própria chave de API"
 
 #: poor/keystore.py:68
 msgid "Stadia Maps API key"
-msgstr ""
+msgstr "Chave de API do Stadia Maps"
 
 #: poor/keystore.py:71
 msgid ""
 "HERE App ID. Register at https://developer.here.com and create your own App "
 "ID and Code"
 msgstr ""
+"Chave de API do HERE. Registre em https://developer.here.com E crie sua "
+"própria ID do App e Código"
 
 #: poor/keystore.py:72
 msgid "HERE App ID"
-msgstr ""
+msgstr "ID de App do HERE"
 
 #: poor/keystore.py:73 poor/keystore.py:74
 msgid "HERE App Code"
-msgstr ""
+msgstr "Código de App do HERE"
 
 #: poor/narrative.py:130
 #, python-brace-format
@@ -483,24 +495,28 @@ msgstr "%1 Resultados"
 msgid "No results"
 msgstr "Nenhum resultado encontrado"
 
-#: qml/InitPage.qml:31
+#: qml/InitPage.qml:32
 msgid "Initializing"
 msgstr "Iniciando"
 
-#: qml/InitPage.qml:41
-msgid "Dismiss"
-msgstr ""
-
-#: qml/InitPage.qml:42
-msgid "Missing Mapbox key"
-msgstr ""
-
 #: qml/InitPage.qml:43
+msgid "Dismiss"
+msgstr "Dispensar"
+
+#: qml/InitPage.qml:44
+msgid "Missing Mapbox key"
+msgstr "Faltando chave do Mapbox"
+
+#: qml/InitPage.qml:45
 msgid ""
 "Your installation is missing Mapbox API key. Please register at Mapbox and "
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
+"Está faltando uma chave de API do Mapbox na sua instalação. Por favor, "
+"registre no Mapbox e preencha suas preferências de chave de API em "
+"Preferências. Essa chave não é necessária se não pretende usar o Pure Maps "
+"com o provedor de mapas offline."
 
 #: qml/Map.qml:311 qml/Map.qml:408
 msgid "Clearing map"
@@ -754,11 +770,11 @@ msgstr "Ações"
 
 #: qml/PoiInfoPage.qml:112
 msgid "Bookmark"
-msgstr ""
+msgstr "Marcação"
 
 #: qml/PoiInfoPage.qml:125
 msgid "Shortlist"
-msgstr ""
+msgstr "Lista curta"
 
 #: qml/PoiInfoPage.qml:138
 msgid "Share location"
@@ -818,7 +834,7 @@ msgstr "Telefone"
 
 #: qml/PoiPanel.qml:151
 msgid "Shortlisted"
-msgstr ""
+msgstr "Adicionado para a lista curta"
 
 #: qml/PoiPanel.qml:152
 msgid "Text"
@@ -883,7 +899,7 @@ msgstr "Limpar cache"
 
 #: qml/PreferencesPage.qml:99
 msgid "API keys"
-msgstr ""
+msgstr "Chaves de API"
 
 #: qml/PreferencesPage.qml:105
 msgid ""
@@ -891,10 +907,13 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
+"Você pode especificar chaves pessoais para serviços online nas "
+"configurações. Por favor, verifique as condições de cada serviço que "
+"pretende usar para assegurar-se que concorda com seus termos de uso."
 
 #: qml/PreferencesPage.qml:113
 msgid "Please restart application after changing API keys."
-msgstr ""
+msgstr "Por favor, reinicie o aplicativo após alterar as chaves de API."
 
 #: qml/PreferencesPage.qml:152
 msgid "Map view"
@@ -1031,7 +1050,7 @@ msgstr "Mostrar nível atual de zoom"
 
 #: qml/pure-maps.qml:28
 msgid "Pure Maps"
-msgstr ""
+msgstr "Pure Maps"
 
 #: qml/pure-maps.qml:195
 msgid "Rerouting failed: %1"
