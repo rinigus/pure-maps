@@ -30,4 +30,8 @@ ComboBox {
     }
 
     property var model
+
+    function activate() {
+        if (!box.menu.active) box.menu.open(box)
+    }
 }

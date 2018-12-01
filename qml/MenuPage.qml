@@ -30,10 +30,6 @@ PagePL {
             text: app.tr("About")
             onClicked: app.push("AboutPage.qml");
         }
-        PageMenuItemPL {
-            text: app.tr("Preferences")
-            onClicked: app.push("PreferencesPage.qml");
-        }
     }
 
     // To make TextSwitch text line up with IconListItem's text label.
@@ -116,6 +112,104 @@ PagePL {
             label: app.tr("Maps")
             onClicked: app.pushMain("BasemapPage.qml");
         }
+
+        IconListItem {
+            icon: app.styler.iconPreferences
+            label: app.tr("Preferences")
+            onClicked: app.push("PreferencesPage.qml");
+        }
+
+        // We use icon+combobox only here, hence no separate class
+        ListItemPL {
+            id: item
+            anchors.left: parent.left
+            anchors.right: parent.right
+            contentHeight: Math.max(app.styler.themeItemSizeSmall, profileComboBox.height)
+
+            Image {
+                id: icon
+                anchors.left: parent.left
+                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                fillMode: Image.Pad
+                height: app.styler.themeItemSizeSmall
+                source: app.styler.iconProfile
+            }
+
+            LabelPL {
+                id: label
+                anchors.left: icon.right
+                anchors.leftMargin: app.styler.themePaddingMedium
+                color: {
+                    if (!item.enabled) return app.styler.themeSecondaryHighlightColor;
+                    if (item.highlighted) return app.styler.themeHighlightColor;
+                    return app.styler.themePrimaryColor;
+                }
+                height: app.styler.themeItemSizeSmall
+                text: app.tr("Profile")
+                truncMode: truncModes.fade
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            ComboBoxPL {
+                id: profileComboBox
+                anchors.left: label.right
+                anchors.leftMargin: app.styler.themePaddingMedium
+                anchors.right: parent.right
+                anchors.top: parent.top
+                model: [ app.tr("Online"), app.tr("Offline"), app.tr("Mixed") ]
+                property var values: ["online", "offline", "mixed"]
+                Component.onCompleted: {
+                    var value = app.conf.profile;
+                    profileComboBox.currentIndex = profileComboBox.values.indexOf(value);
+                }
+                onCurrentIndexChanged: {
+                    var index = profileComboBox.currentIndex;
+                    py.call_sync("poor.app.set_profile", [profileComboBox.values[index]]);
+                }
+            }
+
+            onClicked: profileComboBox.activate()
+        }
+
+
+//        Item {
+//            anchors.left: parent.left
+//            anchors.leftMargin: app.styler.themeHorizontalPageMargin
+//            anchors.right: parent.right
+//            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+
+//            height: Math.max(icon.height, profileComboBox.height)
+
+//            IconButtonPL {
+//                id: icon
+//                anchors.left: parent.left
+//                anchors.leftMargin: 0
+//                anchors.top: parent.top
+//                icon.height: app.styler.themeItemSizeSmall
+//                icon.source: app.styler.iconProfile
+//                onClicked: profileComboBox.clicked(mouse)
+//            }
+
+//            ComboBoxPL {
+//                id: profileComboBox
+//                anchors.left: icon.right
+//                anchors.leftMargin: 0 //app.styler.themePaddingMedium
+//                anchors.right: parent.right
+//                anchors.rightMargin: 0
+//                anchors.top: parent.top
+//                label: app.tr("Profile")
+//                model: [ app.tr("Online"), app.tr("Offline"), app.tr("Mixed") ]
+//                property var values: ["online", "offline", "mixed"]
+//                Component.onCompleted: {
+//                    var value = app.conf.profile;
+//                    profileComboBox.currentIndex = profileComboBox.values.indexOf(value);
+//                }
+//                onCurrentIndexChanged: {
+//                    var index = profileComboBox.currentIndex;
+//                    py.call_sync("poor.app.set_profile", [profileComboBox.values[index]]);
+//                }
+//            }
+//        }
 
         TextSwitchPL {
             id: autoCenterItem

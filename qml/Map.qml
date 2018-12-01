@@ -154,6 +154,11 @@ MapboxMap {
     }
 
     Connections {
+        target: py
+        onBasemapChanged: map.setBasemap();
+    }
+
+    Connections {
         target: streetName
         onHeightChanged: map.updateMargins();
     }

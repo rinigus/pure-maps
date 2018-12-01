@@ -30,6 +30,7 @@ Item {
     property string mapMatchingWhenFollowing
     property string mapMatchingWhenIdle
     property bool   mapMatchingWhenNavigating
+    property string profile
     property bool   reroute
     property bool   showNarrative: false
     property bool   showNavigationSign: false
@@ -77,6 +78,11 @@ Item {
         return py.call_sync("poor.conf.set", [option, value]);
     }
 
+    function setProfile(value) {
+        // Set current profile
+        return py.call_sync("poor.app.set_profile", [value]);
+    }
+
     function _update() {
         if (!py.ready) return;
         var c = py.call_sync("poor.conf.get_all", []);
@@ -89,6 +95,7 @@ Item {
         conf.mapMatchingWhenIdle = c.map_matching_when_idle;
         conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
         conf.reroute = c.reroute;
+        conf.profile = c.profile;
         conf.showNarrative = c.show_narrative;
         conf.showNavigationSign = c.show_navigation_sign;
         conf.showSpeedLimit = c.show_speed_limit;

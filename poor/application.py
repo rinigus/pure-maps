@@ -18,6 +18,7 @@
 """An application to display maps and stuff."""
 
 import poor
+import pyotherside
 import sys
 
 __all__ = ("Application",)
@@ -72,8 +73,10 @@ class Application:
     def set_basemap(self, basemap):
         """Set basemap from string `basemap`."""
         try:
+            newmap = (self.basemap is None or basemap != self.basemap.id)
             self.basemap = poor.Map(basemap)
-            poor.conf.basemap = basemap
+            poor.conf.set_basemap(basemap)
+            if newmap: pyotherside.send('basemap.changed')
         except Exception as error:
             print("Failed to load basemap '{}': {}"
                   .format(basemap, str(error)),
@@ -87,7 +90,7 @@ class Application:
         """Set geocoding provider from string `geocoder`."""
         try:
             self.geocoder = poor.Geocoder(geocoder)
-            poor.conf.geocoder = geocoder
+            poor.conf.set_geocoder(geocoder)
         except Exception as error:
             print("Failed to load geocoder '{}': {}"
                   .format(geocoder, str(error)),
@@ -101,7 +104,7 @@ class Application:
         """Set place guide provider from string `guide`."""
         try:
             self.guide = poor.Guide(guide)
-            poor.conf.guide = guide
+            poor.conf.set_guide(guide)
         except Exception as error:
             print("Failed to load guide '{}': {}"
                   .format(guide, str(error)),
@@ -111,11 +114,20 @@ class Application:
                 if default != guide:
                     self.set_guide(default)
 
+    def set_profile(self, profile):
+        """Set current profile."""
+        if poor.conf.profile == profile: return
+        poor.conf.set_profile(profile)
+        self.set_basemap(poor.conf.basemap)
+        self.set_geocoder(poor.conf.geocoder)
+        self.set_guide(poor.conf.guide)
+        self.set_router(poor.conf.router)
+
     def set_router(self, router):
         """Set routing provider from string `router`."""
         try:
             self.router = poor.Router(router)
-            poor.conf.router = router
+            poor.conf.set_router(router)
         except Exception as error:
             print("Failed to load router '{}': {}"
                   .format(router, str(error)),

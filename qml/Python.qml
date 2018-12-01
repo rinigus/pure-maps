@@ -24,6 +24,7 @@ Python {
 
     property bool ready: false
 
+    signal basemapChanged
     signal configurationChanged
 
     Component.onCompleted: {
@@ -40,5 +41,6 @@ Python {
     onReceived: {
         if (!data.length) return;
         if (data[0] === "config.changed") py.configurationChanged();
+        if (data[0] === "basemap.changed") py.basemapChanged();
     }
 }

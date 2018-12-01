@@ -65,6 +65,8 @@ QtObject {
     property string iconNearby: "image://theme/icon-m-whereami"
     property string iconPause: "image://theme/icon-m-pause"
     property string iconPhone: "image://theme/icon-m-phone"
+    property string iconPreferences: "image://theme/icon-m-developer-mode"
+    property string iconProfile: "image://theme/icon-m-transfer"
     property string iconRefresh: "image://theme/icon-m-refresh"
     property string iconSearch: "image://theme/icon-m-search"
     property string iconShare: "image://theme/icon-m-share"

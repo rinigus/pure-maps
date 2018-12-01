@@ -67,4 +67,8 @@ Item {
         visible: text
         wrapMode: Text.WordWrap
     }
+
+    function activate() {
+        // pass
+    }
 }

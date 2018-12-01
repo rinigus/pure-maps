@@ -31,12 +31,9 @@ DEFAULTS = {
     "auto_complete_geo": True,
     "auto_rotate": False,
     "auto_rotate_when_navigating": True,
-    "basemap": "mapbox_streets",
     "center": [13.0, 49.0],
     "devel_coordinate_center": False,
     "devel_show_z": False,
-    "geocoder": "opencage",
-    "guide": "foursquare",
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
     # "none", "car", "bicycle", "foot"
@@ -49,8 +46,22 @@ DEFAULTS = {
     "map_scale_navigation_foot": 1.0,
     "map_scale_navigation_transit": 1.0,
     "poi_list_show_bookmarked": False,
+    "profile": "online",
+    "profiles": {
+        "online": {
+            "basemap": "mapbox_streets",
+            "geocoder": "photon",
+            "guide": "foursquare",
+            "router": "stadiamaps"
+        },
+        "offline": {
+            "basemap": "osmscout_day",
+            "geocoder": "osmscout",
+            "guide": "osmscout",
+            "router": "osmscout"
+            }
+        },
     "reroute": True,
-    "router": "stadiamaps",
     "share_osm": True,
     "share_googlemaps": False,
     "show_narrative": True,
@@ -82,6 +93,11 @@ class ConfigurationStore(poor.AttrDict):
         root[name].append(copy.deepcopy(item))
         self._emit()
 
+    @property
+    def basemap(self):
+        """Return `basemap` corresponding to the current profile"""
+        return self.profiles[self.profile].basemap
+
     def _coerce(self, value, ref):
         """Coerce type of `value` to match `ref`."""
         if isinstance(value, list) and ref:
@@ -96,6 +112,11 @@ class ConfigurationStore(poor.AttrDict):
     def _emit(self):
         pyotherside.send('config.changed')
 
+    @property
+    def geocoder(self):
+        """Return `geocoder` corresponding to the current profile"""
+        return self.profiles[self.profile].geocoder
+
     def get(self, option):
         """Return the value of `option`."""
         root = self
@@ -107,6 +128,8 @@ class ConfigurationStore(poor.AttrDict):
     def get_default(self, option):
         """Return the default value of `option`."""
         root = DEFAULTS
+        if option in ("basemap", "geocoder", "guide", "router"):
+            return copy.deepcopy(root["profiles"][self.profile][option])
         for section in option.split(".")[:-1]:
             root = root[section]
         name = option.split(".")[-1]
@@ -115,6 +138,11 @@ class ConfigurationStore(poor.AttrDict):
     def get_all(self):
         return self
     
+    @property
+    def guide(self):
+        """Return `guide` corresponding to the current profile"""
+        return self.profiles[self.profile].guide
+
     def _migrate(self, values):
         """Migrate configuration values from earlier versions."""
         values = copy.deepcopy(values)
@@ -127,6 +155,9 @@ class ConfigurationStore(poor.AttrDict):
             version = (0, 0)
         # See Poor Maps for examples of migrations and their unit tests.
         # https://github.com/otsaloma/poor-maps/blob/master/poor/config.py
+        if version < (1, 10):
+            for k in ["basemap", "geocoder", "guide", "router"]:
+                if k in values: del values[k]
         return values
 
     def read(self, path=None):
@@ -173,11 +204,42 @@ class ConfigurationStore(poor.AttrDict):
         root[name].remove(item)
         self._emit()
 
+    @property
+    def router(self):
+        """Return `router` corresponding to the current profile"""
+        return self.profiles[self.profile].router
+
     def set(self, option, value):
         """Set the value of `option`."""
         root, name = self._split_option(option, create=True)
         root[name] = copy.deepcopy(value)
         self._emit()
+
+    def set_basemap(self, value):
+        """Set basemap corresponding to the current profile"""
+        self._set_profiled("basemap", value)
+
+    def set_geocoder(self, value):
+        """Set geocoder corresponding to the current profile"""
+        self._set_profiled("geocoder", value)
+
+    def set_guide(self, value):
+        """Set guide corresponding to the current profile"""
+        self._set_profiled("guide", value)
+
+    def set_profile(self, value):
+        """Set guide corresponding to the current profile"""
+        if value not in DEFAULTS["profiles"]:
+            raise ValueError("Profile not supported", value)
+        self.set("profile", value)
+        
+    def set_router(self, value):
+        """Set `router` corresponding to the current profile"""
+        self._set_profiled("router", value)
+
+    def _set_profiled(self, option, value):
+        """Set the value of `option` in the current profile."""
+        self.profiles[self.profile][option] = copy.deepcopy(value)
 
     def _split_option(self, option, create=False):
         """Split dotted option to dictionary and option name."""
