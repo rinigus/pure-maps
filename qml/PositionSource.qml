@@ -51,6 +51,7 @@ PositionSourceMapMatched {
     onActiveChanged: {
         // Keep track of when positioning was (re)activated.
         if (gps.active) gps.timeActivate = Date.now();
+        else gps.ready = false;
     }
 
     onDirectionValidChanged: {

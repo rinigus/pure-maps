@@ -22,15 +22,16 @@ import "platform"
 StylerPL {
     id: styler
 
-    property string bg            // main background color (scale bar, metrics)
-    property string fg            // main foreground color (scale bar, metrics)
-    property string iconVariant   // type of icons, let empty for default version, "white" for white icons
-    property string maneuver      // maneuver circle inner color
-    property string position      // variant of position marker, set to "" for default
-    property string route         // route color on the map. also used for maneuver markers
-    property real   routeOpacity  // opacity of route
-    property string streetFg      // street name foreground
-    property string streetBg      // street name outline
+    property string bg                   // main background color (scale bar, metrics)
+    property string fg                   // main foreground color (scale bar, metrics)
+    property string iconVariant          // type of icons, let empty for default version, "white" for white icons
+    property string maneuver             // maneuver circle inner color
+    property string position             // variant of position marker, set to "" for default
+    property string positionUncertainty  // position marker uncertainty
+    property string route                // route color on the map. also used for maneuver markers
+    property real   routeOpacity         // opacity of route
+    property string streetFg             // street name foreground
+    property string streetBg             // street name outline
 
     function apply(guistyle) {
         defaults();
@@ -48,6 +49,7 @@ StylerPL {
         iconVariant = "";
         maneuver = "white";
         position = "";
+        positionUncertainty = "#87cefa";
         route = "#0540ff";
         routeOpacity = 0.5;
         streetFg = "black";

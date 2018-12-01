@@ -31,6 +31,7 @@ Item {
 
     readonly property var layers: QtObject {
         readonly property string moving: "pure-position-moving"
+        readonly property string uncertainty:  "pure-position-uncertainty"
         readonly property string still:  "pure-position-still"
     }
 
@@ -39,7 +40,11 @@ Item {
     Connections {
         target: map
         onDirectionChanged: marker.updateDirection();
-        onPositionChanged: map.updateSourcePoint(marker.source, map.position.coordinate);
+        onMetersPerPixelChanged: marker.updateUncertainty()
+        onPositionChanged: {
+            map.updateSourcePoint(marker.source, map.position.coordinate);
+            marker.updateUncertainty();
+        }
     }
 
     Component.onCompleted: {
@@ -47,6 +52,7 @@ Item {
         marker.initLayers();
         marker.configureLayers();
         marker.updateDirection();
+        marker.updateUncertainty();
     }
 
     function configureLayers() {
@@ -84,6 +90,12 @@ Item {
         map.addSourcePoint(marker.source, map.position.coordinate);
         map.addLayer(marker.layers.still, {"type": "symbol", "source": marker.source});
         map.addLayer(marker.layers.moving, {"type": "symbol", "source": marker.source});
+        map.addLayer(marker.layers.layerUncertainty,
+                     {"type": "circle", "source": marker.source},
+                     map.styleReferenceLayer);
+        map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius", 0);
+        map.setPaintProperty(marker.layers.layerUncertainty, "circle-color", app.styler.positionUncertainty);
+        map.setPaintProperty(marker.layers.layerUncertainty, "circle-opacity", 0.15);
     }
 
     function updateDirection() {
@@ -100,4 +112,11 @@ Item {
             map.setLayoutProperty(marker.layers.moving, "icon-rotate", map.direction);
     }
 
+    function updateUncertainty() {
+        if (map.position.horizontalAccuracyValid)
+            map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius",
+                                 map.position.horizontalAccuracy / map.metersPerPixel / map.pixelRatio);
+        else
+            map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius", 0);
+    }
 }
