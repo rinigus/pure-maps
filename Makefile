@@ -153,5 +153,6 @@ rpm-silica:
 
 test:
 	py.test geocoders guides poor routers
+	py.test poor/test/delayed_test_config.py
 
 .PHONY: check clean dist install pot rpm test
