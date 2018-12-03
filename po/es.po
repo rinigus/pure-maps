@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-19 21:48+0200\n"
+"POT-Creation-Date: 2018-12-03 18:40+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Carmen Fernández B., 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -52,68 +52,80 @@ msgid ""
 "Foursquare Client ID. Register at https://developer.foursquare.com and "
 "create your own Client ID and Client Secret keys"
 msgstr ""
+"ID de cliente Foursquare. Regístrate en https://developer.foursquare.com y "
+"crea tu propio ID de cliente y claves de cliente secreto"
 
 #: poor/keystore.py:51
 msgid "Foursquare Client ID"
-msgstr ""
+msgstr "ID de cliente Foursquare"
 
 #: poor/keystore.py:52
 msgid "Foursquare Client Secret"
-msgstr ""
+msgstr "Cliente secreto Foursquare"
 
 #: poor/keystore.py:55
 msgid ""
 "Mapbox API key. Register at https://www.mapbox.com and create your own API "
 "key"
 msgstr ""
+"Clave API de Mapbox. Regístrate en https://www.mapbox.com y crea tu propia "
+"clave API"
 
 #: poor/keystore.py:56
 msgid "Mapbox API key"
-msgstr ""
+msgstr "Clave API de Mapbox"
 
 #: poor/keystore.py:59
 msgid ""
 "MapQuest API key. Register at https://developer.mapquest.com/ and create "
 "your own API key"
 msgstr ""
+"Clave API de MapQuest. Regístrate en https://developer.mapquest.com/ y crea "
+"tu propia clave API"
 
 #: poor/keystore.py:60
 msgid "MapQuest API key"
-msgstr ""
+msgstr "Clave API de MapQuest"
 
 #: poor/keystore.py:63
 msgid ""
 "OpenCage API key. Register at https://opencagedata.com/ and create your own "
 "API key"
 msgstr ""
+"Clave API de OpenCage. Regístrate en https://opencagedata.com/ y crea tu "
+"propia clave API"
 
 #: poor/keystore.py:64
 msgid "OpenCage API key"
-msgstr ""
+msgstr "Clave API de OpenCage"
 
 #: poor/keystore.py:67
 msgid ""
 "Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
 " API key"
 msgstr ""
+"Clave API de Stadia Maps. Regístrate en https://stadiamaps.com/ y crea tu "
+"propia clave API"
 
 #: poor/keystore.py:68
 msgid "Stadia Maps API key"
-msgstr ""
+msgstr "Clave API de Stadia Map"
 
 #: poor/keystore.py:71
 msgid ""
 "HERE App ID. Register at https://developer.here.com and create your own App "
 "ID and Code"
 msgstr ""
+"ID de HERE. Regístrate en https://developer.here.com y crea tu propio id de "
+"aplicación y código"
 
 #: poor/keystore.py:72
 msgid "HERE App ID"
-msgstr ""
+msgstr "ID de HERE"
 
 #: poor/keystore.py:73 poor/keystore.py:74
 msgid "HERE App Code"
-msgstr ""
+msgstr "Código de HERE"
 
 #: poor/narrative.py:130
 #, python-brace-format
@@ -124,15 +136,15 @@ msgstr "A {distance}, {direction}"
 msgid "Exit: "
 msgstr "Salida: "
 
-#: poor/narrative.py:421 qml/pure-maps.qml:183
+#: poor/narrative.py:421 qml/pure-maps.qml:185
 msgid "Rerouting"
 msgstr "Recalculando"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:205
+#: poor/narrative.py:422 qml/pure-maps.qml:207
 msgid "Rerouting failed"
 msgstr "Error al recalcular"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:199
+#: poor/narrative.py:423 qml/pure-maps.qml:201
 msgid "New route found"
 msgstr "Nueva ruta encontrada"
 
@@ -223,6 +235,10 @@ msgstr "{:d} min"
 #: poor/util.py:275
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
+
+#: poor/voice.py:303
+msgid "No engine available for selected language"
+msgstr ""
 
 #: routers/digitransit.py:58
 msgid "airplane"
@@ -334,7 +350,7 @@ msgid "Remove"
 msgstr "Borrar"
 
 #: guides/osmscout_name.qml:67 qml/AttributionPage.qml:64
-#: qml/GeocodePage.qml:27 qml/GeocodePage.qml:113 qml/MenuPage.qml:49
+#: qml/GeocodePage.qml:27 qml/GeocodePage.qml:113 qml/MenuPage.qml:45
 #: qml/PlaceTypePage.qml:79 qml/PoiPage.qml:133 qml/RoutePointPage.qml:136
 msgid "Search"
 msgstr "Buscar"
@@ -416,7 +432,7 @@ msgstr "Página de Transifex"
 msgid "Attribution"
 msgstr "Atribución"
 
-#: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:116
+#: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:112
 msgid "Maps"
 msgstr "Mapas"
 
@@ -424,7 +440,7 @@ msgstr "Mapas"
 msgid "Venues"
 msgstr "Lugares"
 
-#: qml/AttributionPage.qml:124 qml/MenuPage.qml:58 qml/NavigationPage.qml:25
+#: qml/AttributionPage.qml:124 qml/MenuPage.qml:54 qml/NavigationPage.qml:25
 #: qml/PreferencesPage.qml:197 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Navegación"
@@ -481,38 +497,41 @@ msgstr "%1 Resultados"
 msgid "No results"
 msgstr "No hay resultados"
 
-#: qml/InitPage.qml:31
+#: qml/InitPage.qml:32
 msgid "Initializing"
 msgstr "Inicializando"
 
-#: qml/InitPage.qml:41
-msgid "Dismiss"
-msgstr ""
-
-#: qml/InitPage.qml:42
-msgid "Missing Mapbox key"
-msgstr ""
-
 #: qml/InitPage.qml:43
+msgid "Dismiss"
+msgstr "Descartar"
+
+#: qml/InitPage.qml:44
+msgid "Missing Mapbox key"
+msgstr "Falta clave de Mapbox"
+
+#: qml/InitPage.qml:45
 msgid ""
 "Your installation is missing Mapbox API key. Please register at Mapbox and "
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
+"En tu instalación falta la clave API de Mapbox. Por favor, regístrate en "
+"Mapbox y cumplimenta tu clave API personal en Preferencias. Esta clave no es"
+" necesaria si planeas usar Pure Maps con el proveedor de mapas sin conexión."
 
-#: qml/Map.qml:311 qml/Map.qml:408
+#: qml/Map.qml:316 qml/Map.qml:413
 msgid "Clearing map"
 msgstr "Limpiando mapa"
 
-#: qml/Map.qml:541
+#: qml/Map.qml:546
 msgid "Voice navigation on"
 msgstr "Navegación por voz activado"
 
-#: qml/Map.qml:683
+#: qml/Map.qml:688
 msgid "Auto-center off"
 msgstr "Auto-centrado desactivado"
 
-#: qml/Map.qml:686
+#: qml/Map.qml:691
 msgid "Auto-center on"
 msgstr "Auto-centrado activado"
 
@@ -520,39 +539,55 @@ msgstr "Auto-centrado activado"
 msgid "About"
 msgstr "Acerca de"
 
-#: qml/MenuPage.qml:34 qml/PreferencesPage.qml:24
-msgid "Preferences"
-msgstr "Preferencias"
-
-#: qml/MenuPage.qml:64
+#: qml/MenuPage.qml:60
 msgid "Nearby venues"
 msgstr "Lugares cercanos"
 
-#: qml/MenuPage.qml:70
+#: qml/MenuPage.qml:66
 msgid "Points of interest"
 msgstr "Puntos de interés"
 
-#: qml/MenuPage.qml:76
+#: qml/MenuPage.qml:72
 msgid "Share current position"
 msgstr "Compartir posición actual"
 
-#: qml/MenuPage.qml:90
+#: qml/MenuPage.qml:86
 msgid "Share Current Position"
 msgstr "Compartir posición actual"
 
-#: qml/MenuPage.qml:97
+#: qml/MenuPage.qml:93
 msgid "Center on current position"
 msgstr "Centrar en la posición actual"
 
-#: qml/MenuPage.qml:106
+#: qml/MenuPage.qml:102
 msgid "Clear map"
 msgstr "Limpiar mapa"
 
-#: qml/MenuPage.qml:125
+#: qml/MenuPage.qml:118 qml/PreferencesPage.qml:24
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: qml/MenuPage.qml:148
+msgid "Profile"
+msgstr "Perfil"
+
+#: qml/MenuPage.qml:159
+msgid "Online"
+msgstr "Con conexión"
+
+#: qml/MenuPage.qml:159
+msgid "Offline"
+msgstr "Sin conexión"
+
+#: qml/MenuPage.qml:159
+msgid "Mixed"
+msgstr "Mixto"
+
+#: qml/MenuPage.qml:179
 msgid "Auto-center on position"
 msgstr "Auto-centrado en la posición"
 
-#: qml/MenuPage.qml:142
+#: qml/MenuPage.qml:196
 msgid "Auto-rotate on direction"
 msgstr "Auto-giro según dirección"
 
@@ -752,11 +787,11 @@ msgstr "Acciones"
 
 #: qml/PoiInfoPage.qml:112
 msgid "Bookmark"
-msgstr ""
+msgstr "Favorito"
 
 #: qml/PoiInfoPage.qml:125
 msgid "Shortlist"
-msgstr ""
+msgstr "Lista de seleccionados"
 
 #: qml/PoiInfoPage.qml:138
 msgid "Share location"
@@ -816,7 +851,7 @@ msgstr "Teléfono"
 
 #: qml/PoiPanel.qml:151
 msgid "Shortlisted"
-msgstr ""
+msgstr "Seleccionado"
 
 #: qml/PoiPanel.qml:152
 msgid "Text"
@@ -881,7 +916,7 @@ msgstr "Eliminar caché"
 
 #: qml/PreferencesPage.qml:99
 msgid "API keys"
-msgstr ""
+msgstr "Claves API"
 
 #: qml/PreferencesPage.qml:105
 msgid ""
@@ -889,10 +924,13 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
+"En esta configuración puedes especificar claves personales para servicios "
+"con conexión. Por favor, comprueba las condiciones de cada servicio que "
+"quieras usar y asegúrate de que las cumple."
 
 #: qml/PreferencesPage.qml:113
 msgid "Please restart application after changing API keys."
-msgstr ""
+msgstr "Por favor, reinicia la aplicación después de cambiar las claves API."
 
 #: qml/PreferencesPage.qml:152
 msgid "Map view"
@@ -977,15 +1015,15 @@ msgstr ""
 "Género preferido en la navegación por voz. Sólo es compatible con algunos "
 "motores e idiomas."
 
-#: qml/PreferencesPage.qml:278
+#: qml/PreferencesPage.qml:278 qml/PreferencesPage.qml:371
 msgid "Voice gender"
 msgstr "Género de la voz"
 
-#: qml/PreferencesPage.qml:279
+#: qml/PreferencesPage.qml:279 qml/PreferencesPage.qml:372
 msgid "Male"
 msgstr "Masculino"
 
-#: qml/PreferencesPage.qml:279
+#: qml/PreferencesPage.qml:279 qml/PreferencesPage.qml:372
 msgid "Female"
 msgstr "Femenino"
 
@@ -1002,10 +1040,91 @@ msgid "Only when exceeding"
 msgstr "Sólo al exceder"
 
 #: qml/PreferencesPage.qml:318
+msgid "Testing"
+msgstr ""
+
+#: qml/PreferencesPage.qml:327
+msgid ""
+"Testing of text to speach (TTS) engine. Select the same language as used for"
+" navigation, preferred gender, and press the button below for testing."
+msgstr ""
+
+#: qml/PreferencesPage.qml:337 routers/gpx_osmscout_settings.qml:70
+#: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
+msgid "Language"
+msgstr "Idioma"
+
+#: qml/PreferencesPage.qml:339 routers/gpx_osmscout_settings.qml:71
+#: routers/ValhallaSettings.qml:58
+msgid "English"
+msgstr "Inglés"
+
+#: qml/PreferencesPage.qml:340 routers/gpx_osmscout_settings.qml:71
+#: routers/ValhallaSettings.qml:58
+msgid "Catalan"
+msgstr "Catalán"
+
+#: qml/PreferencesPage.qml:341 routers/gpx_osmscout_settings.qml:71
+#: routers/ValhallaSettings.qml:58
+msgid "Czech"
+msgstr "Checo"
+
+#: qml/PreferencesPage.qml:342 routers/gpx_osmscout_settings.qml:72
+#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:59
+msgid "German"
+msgstr "Alemán"
+
+#: qml/PreferencesPage.qml:343 routers/gpx_osmscout_settings.qml:73
+#: routers/ValhallaSettings.qml:60
+msgid "Spanish"
+msgstr "Español"
+
+#: qml/PreferencesPage.qml:344 routers/gpx_osmscout_settings.qml:72
+#: routers/ValhallaSettings.qml:59
+msgid "French"
+msgstr "Francés"
+
+#: qml/PreferencesPage.qml:345 routers/gpx_osmscout_settings.qml:72
+#: routers/ValhallaSettings.qml:59
+msgid "Hindi"
+msgstr "Hindi"
+
+#: qml/PreferencesPage.qml:346 routers/gpx_osmscout_settings.qml:72
+#: routers/ValhallaSettings.qml:59
+msgid "Italian"
+msgstr "Italiano"
+
+#: qml/PreferencesPage.qml:347 routers/gpx_osmscout_settings.qml:73
+#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:60
+msgid "Russian"
+msgstr "Ruso"
+
+#: qml/PreferencesPage.qml:348
+msgid "Slovak"
+msgstr ""
+
+#: qml/PreferencesPage.qml:349 routers/gpx_osmscout_settings.qml:73
+#: routers/ValhallaSettings.qml:60
+msgid "Swedish"
+msgstr "Sueco"
+
+#: qml/PreferencesPage.qml:370
+msgid "Preferred gender. Only supported by some engines and languages."
+msgstr ""
+
+#: qml/PreferencesPage.qml:383
+msgid "Test"
+msgstr ""
+
+#: qml/PreferencesPage.qml:422
+msgid "Selected voice engine: %1"
+msgstr ""
+
+#: qml/PreferencesPage.qml:433
 msgid "Development"
 msgstr "Desarrollo"
 
-#: qml/PreferencesPage.qml:326
+#: qml/PreferencesPage.qml:439
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1013,7 +1132,7 @@ msgstr ""
 "Las siguientes opciones son sólo para el desarrollo. Por favor, no las "
 "cambies salvo que sepas lo que estás haciendo."
 
-#: qml/PreferencesPage.qml:333
+#: qml/PreferencesPage.qml:447
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1021,11 +1140,11 @@ msgstr ""
 "Ajusta la posición actual en el centro de la vista del mapa actual. No "
 "olvides desactivar el posicionamiento GPS cuando uses esta opción."
 
-#: qml/PreferencesPage.qml:334
+#: qml/PreferencesPage.qml:448
 msgid "Set position to the map center"
 msgstr "Ajustar posición al centro del mapa"
 
-#: qml/PreferencesPage.qml:341
+#: qml/PreferencesPage.qml:455
 msgid "Show current zoom level"
 msgstr "Mostrar nivel de zoom actual"
 
@@ -1033,7 +1152,7 @@ msgstr "Mostrar nivel de zoom actual"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:195
+#: qml/pure-maps.qml:197
 msgid "Rerouting failed: %1"
 msgstr "Error al recalcular: %1"
 
@@ -1191,64 +1310,17 @@ msgstr "Motocicleta"
 msgid "Motor Scooter"
 msgstr "Escúter"
 
-#: routers/gpx_osmscout_settings.qml:70 routers/mapquest_open_settings.qml:53
-#: routers/ValhallaSettings.qml:55
-msgid "Language"
-msgstr "Idioma"
-
-#: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
-msgid "Catalan"
-msgstr "Catalán"
-
-#: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
-msgid "Czech"
-msgstr "Checo"
-
-#: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
-msgid "English"
-msgstr "Inglés"
-
 #: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
 msgid "English Pirate"
 msgstr "Inglés pirata"
 
 #: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
-msgid "French"
-msgstr "Francés"
-
-#: routers/gpx_osmscout_settings.qml:72 routers/mapquest_open_settings.qml:57
-#: routers/ValhallaSettings.qml:59
-msgid "German"
-msgstr "Alemán"
-
-#: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
-msgid "Hindi"
-msgstr "Hindi"
-
-#: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
-msgid "Italian"
-msgstr "Italiano"
-
-#: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
 msgid "Portuguese"
 msgstr "Portugués"
-
-#: routers/gpx_osmscout_settings.qml:73 routers/mapquest_open_settings.qml:57
-#: routers/ValhallaSettings.qml:60
-msgid "Russian"
-msgstr "Ruso"
 
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:60
 msgid "Slovenian"
 msgstr "Esloveno"
-
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:60
-msgid "Spanish"
-msgstr "Español"
-
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:60
-msgid "Swedish"
-msgstr "Sueco"
 
 #: routers/mapquest_open_settings.qml:44
 msgid "Try to avoid tolls"
