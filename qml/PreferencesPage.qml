@@ -324,7 +324,7 @@ PagePL {
                     property string message
 
                     ListItemLabel {
-                        text: app.tr("Testing of text to speach (TTS) engine. " +
+                        text: app.tr("Testing of text to speech (TTS) engine. " +
                                      "Select the same language as used for navigation, preferred gender, and press " +
                                      "the button below for testing.")
                         truncMode: truncModes.none
