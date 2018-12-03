@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-03 18:40+0200\n"
+"POT-Creation-Date: 2018-12-03 22:04+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Carmen Fernández B., 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -1045,7 +1045,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:327
 msgid ""
-"Testing of text to speach (TTS) engine. Select the same language as used for"
+"Testing of text to speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
 

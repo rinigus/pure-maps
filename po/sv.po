@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-03 18:40+0200\n"
+"POT-Creation-Date: 2018-12-03 22:04+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2018\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -238,7 +238,7 @@ msgstr "{:d} t {:d} min"
 
 #: poor/voice.py:303
 msgid "No engine available for selected language"
-msgstr ""
+msgstr "Ingen motor tillgänglig för det valda språket "
 
 #: routers/digitransit.py:58
 msgid "airplane"
@@ -1035,13 +1035,15 @@ msgstr "Endast vid överskridande"
 
 #: qml/PreferencesPage.qml:318
 msgid "Testing"
-msgstr ""
+msgstr "Testar"
 
 #: qml/PreferencesPage.qml:327
 msgid ""
-"Testing of text to speach (TTS) engine. Select the same language as used for"
+"Testing of text to speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
+"Test av text-to-speech (TTS). Välj samma språk som vid navigering samt "
+"önskat kön, och tryck på knappen nedan, för att testa."
 
 #: qml/PreferencesPage.qml:337 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
@@ -1095,7 +1097,7 @@ msgstr "Ryska"
 
 #: qml/PreferencesPage.qml:348
 msgid "Slovak"
-msgstr ""
+msgstr "Slovakiska"
 
 #: qml/PreferencesPage.qml:349 routers/gpx_osmscout_settings.qml:73
 #: routers/ValhallaSettings.qml:60
@@ -1104,15 +1106,15 @@ msgstr "Svenska"
 
 #: qml/PreferencesPage.qml:370
 msgid "Preferred gender. Only supported by some engines and languages."
-msgstr ""
+msgstr "Önskat kön, Stöds endast av vissa motorer och språk."
 
 #: qml/PreferencesPage.qml:383
 msgid "Test"
-msgstr ""
+msgstr "Testa"
 
 #: qml/PreferencesPage.qml:422
 msgid "Selected voice engine: %1"
-msgstr ""
+msgstr "Vald röstmotor: %1"
 
 #: qml/PreferencesPage.qml:433
 msgid "Development"

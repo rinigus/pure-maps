@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-19 21:48+0200\n"
+"POT-Creation-Date: 2018-12-03 22:04+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Panagiotis Melas <pmelas@gmail.com>, 2018\n"
 "Language-Team: Greek (https://www.transifex.com/rinigus/teams/89597/el/)\n"
@@ -124,15 +124,15 @@ msgstr "Σε {distance}, {direction}"
 msgid "Exit: "
 msgstr "Έξοδος"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:183
+#: poor/narrative.py:421 qml/pure-maps.qml:185
 msgid "Rerouting"
 msgstr "Επαναπροσδιορισμός δρομολόγησης"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:205
+#: poor/narrative.py:422 qml/pure-maps.qml:207
 msgid "Rerouting failed"
 msgstr "Αποτυχία επαναπροσδιορισμού δρομολόγησης"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:199
+#: poor/narrative.py:423 qml/pure-maps.qml:201
 msgid "New route found"
 msgstr "Βρέθηκε νέα διαδρομή"
 
@@ -223,6 +223,10 @@ msgstr "{:d} λπτ"
 #: poor/util.py:275
 msgid "{:d} h {:d} min"
 msgstr "{:d} ω {:d} λπτ"
+
+#: poor/voice.py:303
+msgid "No engine available for selected language"
+msgstr ""
 
 #: routers/digitransit.py:58
 msgid "airplane"
@@ -339,7 +343,7 @@ msgid "Remove"
 msgstr "Αφαίρεση"
 
 #: guides/osmscout_name.qml:67 qml/AttributionPage.qml:64
-#: qml/GeocodePage.qml:27 qml/GeocodePage.qml:113 qml/MenuPage.qml:49
+#: qml/GeocodePage.qml:27 qml/GeocodePage.qml:113 qml/MenuPage.qml:45
 #: qml/PlaceTypePage.qml:79 qml/PoiPage.qml:133 qml/RoutePointPage.qml:136
 msgid "Search"
 msgstr "Αναζήτηση"
@@ -421,7 +425,7 @@ msgstr "Transifex σελίδα"
 msgid "Attribution"
 msgstr "Απόδοση"
 
-#: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:116
+#: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:112
 msgid "Maps"
 msgstr "Χάρτες"
 
@@ -429,7 +433,7 @@ msgstr "Χάρτες"
 msgid "Venues"
 msgstr "Χώροι"
 
-#: qml/AttributionPage.qml:124 qml/MenuPage.qml:58 qml/NavigationPage.qml:25
+#: qml/AttributionPage.qml:124 qml/MenuPage.qml:54 qml/NavigationPage.qml:25
 #: qml/PreferencesPage.qml:197 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Πλοήγηση"
@@ -486,38 +490,38 @@ msgstr "%1 Αποτελέσματα"
 msgid "No results"
 msgstr "Χωρίς αποτέλεσμα"
 
-#: qml/InitPage.qml:31
+#: qml/InitPage.qml:32
 msgid "Initializing"
 msgstr "Προετοιμασία εκκίνησης"
 
-#: qml/InitPage.qml:41
+#: qml/InitPage.qml:43
 msgid "Dismiss"
 msgstr ""
 
-#: qml/InitPage.qml:42
+#: qml/InitPage.qml:44
 msgid "Missing Mapbox key"
 msgstr ""
 
-#: qml/InitPage.qml:43
+#: qml/InitPage.qml:45
 msgid ""
 "Your installation is missing Mapbox API key. Please register at Mapbox and "
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
 
-#: qml/Map.qml:311 qml/Map.qml:408
+#: qml/Map.qml:316 qml/Map.qml:413
 msgid "Clearing map"
 msgstr "Εκκαθάριση χάρτη"
 
-#: qml/Map.qml:541
+#: qml/Map.qml:546
 msgid "Voice navigation on"
 msgstr "Φωνητική πλοήγηση ενεργοποιημένη"
 
-#: qml/Map.qml:683
+#: qml/Map.qml:688
 msgid "Auto-center off"
 msgstr "Απενεργοποίηση αυτόματου κεντραρίσματος"
 
-#: qml/Map.qml:686
+#: qml/Map.qml:691
 msgid "Auto-center on"
 msgstr "Ενεργοποίηση αυτόματου κεντραρίσματος"
 
@@ -525,39 +529,55 @@ msgstr "Ενεργοποίηση αυτόματου κεντραρίσματος
 msgid "About"
 msgstr "Σχετικά"
 
-#: qml/MenuPage.qml:34 qml/PreferencesPage.qml:24
-msgid "Preferences"
-msgstr "Προτιμήσεις"
-
-#: qml/MenuPage.qml:64
+#: qml/MenuPage.qml:60
 msgid "Nearby venues"
 msgstr "Κοντινά μέρη"
 
-#: qml/MenuPage.qml:70
+#: qml/MenuPage.qml:66
 msgid "Points of interest"
 msgstr "Σημείο ενδιαφέροντος"
 
-#: qml/MenuPage.qml:76
+#: qml/MenuPage.qml:72
 msgid "Share current position"
 msgstr "Κοινοποίηση παρούσας θέσης"
 
-#: qml/MenuPage.qml:90
+#: qml/MenuPage.qml:86
 msgid "Share Current Position"
 msgstr "Κοινοποίηση Παρούσας Θέσης"
 
-#: qml/MenuPage.qml:97
+#: qml/MenuPage.qml:93
 msgid "Center on current position"
 msgstr "Κεντράρισμα παρούσας θέσης"
 
-#: qml/MenuPage.qml:106
+#: qml/MenuPage.qml:102
 msgid "Clear map"
 msgstr "Εκκαθάριση χάρτη"
 
-#: qml/MenuPage.qml:125
+#: qml/MenuPage.qml:118 qml/PreferencesPage.qml:24
+msgid "Preferences"
+msgstr "Προτιμήσεις"
+
+#: qml/MenuPage.qml:148
+msgid "Profile"
+msgstr ""
+
+#: qml/MenuPage.qml:159
+msgid "Online"
+msgstr ""
+
+#: qml/MenuPage.qml:159
+msgid "Offline"
+msgstr ""
+
+#: qml/MenuPage.qml:159
+msgid "Mixed"
+msgstr ""
+
+#: qml/MenuPage.qml:179
 msgid "Auto-center on position"
 msgstr "Αυτόματη εστίαση στη θέση"
 
-#: qml/MenuPage.qml:142
+#: qml/MenuPage.qml:196
 msgid "Auto-rotate on direction"
 msgstr "Αυτόματη περιστροφή στην κατεύθυνση"
 
@@ -987,15 +1007,15 @@ msgstr ""
 "Προτιμώμενο φύλο για φωνητική πλοήγηση. Υποστηρίζεται μόνο από ορισμένες "
 "μηχανές και γλώσσες."
 
-#: qml/PreferencesPage.qml:278
+#: qml/PreferencesPage.qml:278 qml/PreferencesPage.qml:371
 msgid "Voice gender"
 msgstr "Φύλο φωνής"
 
-#: qml/PreferencesPage.qml:279
+#: qml/PreferencesPage.qml:279 qml/PreferencesPage.qml:372
 msgid "Male"
 msgstr "Άνδρας "
 
-#: qml/PreferencesPage.qml:279
+#: qml/PreferencesPage.qml:279 qml/PreferencesPage.qml:372
 msgid "Female"
 msgstr "Γυναίκα"
 
@@ -1012,10 +1032,91 @@ msgid "Only when exceeding"
 msgstr "Μόνο όταν υπερβαίνει"
 
 #: qml/PreferencesPage.qml:318
+msgid "Testing"
+msgstr ""
+
+#: qml/PreferencesPage.qml:327
+msgid ""
+"Testing of text to speech (TTS) engine. Select the same language as used for"
+" navigation, preferred gender, and press the button below for testing."
+msgstr ""
+
+#: qml/PreferencesPage.qml:337 routers/gpx_osmscout_settings.qml:70
+#: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
+msgid "Language"
+msgstr "Γλώσσα"
+
+#: qml/PreferencesPage.qml:339 routers/gpx_osmscout_settings.qml:71
+#: routers/ValhallaSettings.qml:58
+msgid "English"
+msgstr "Αγγλικά"
+
+#: qml/PreferencesPage.qml:340 routers/gpx_osmscout_settings.qml:71
+#: routers/ValhallaSettings.qml:58
+msgid "Catalan"
+msgstr "Καταλανική"
+
+#: qml/PreferencesPage.qml:341 routers/gpx_osmscout_settings.qml:71
+#: routers/ValhallaSettings.qml:58
+msgid "Czech"
+msgstr "Τσέχικη"
+
+#: qml/PreferencesPage.qml:342 routers/gpx_osmscout_settings.qml:72
+#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:59
+msgid "German"
+msgstr "Γερμανική"
+
+#: qml/PreferencesPage.qml:343 routers/gpx_osmscout_settings.qml:73
+#: routers/ValhallaSettings.qml:60
+msgid "Spanish"
+msgstr "Ισπανική"
+
+#: qml/PreferencesPage.qml:344 routers/gpx_osmscout_settings.qml:72
+#: routers/ValhallaSettings.qml:59
+msgid "French"
+msgstr "Γαλλική"
+
+#: qml/PreferencesPage.qml:345 routers/gpx_osmscout_settings.qml:72
+#: routers/ValhallaSettings.qml:59
+msgid "Hindi"
+msgstr "Χίντι"
+
+#: qml/PreferencesPage.qml:346 routers/gpx_osmscout_settings.qml:72
+#: routers/ValhallaSettings.qml:59
+msgid "Italian"
+msgstr "Ιταλική"
+
+#: qml/PreferencesPage.qml:347 routers/gpx_osmscout_settings.qml:73
+#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:60
+msgid "Russian"
+msgstr "Ρωσική"
+
+#: qml/PreferencesPage.qml:348
+msgid "Slovak"
+msgstr ""
+
+#: qml/PreferencesPage.qml:349 routers/gpx_osmscout_settings.qml:73
+#: routers/ValhallaSettings.qml:60
+msgid "Swedish"
+msgstr "Σουηδική"
+
+#: qml/PreferencesPage.qml:370
+msgid "Preferred gender. Only supported by some engines and languages."
+msgstr ""
+
+#: qml/PreferencesPage.qml:383
+msgid "Test"
+msgstr ""
+
+#: qml/PreferencesPage.qml:422
+msgid "Selected voice engine: %1"
+msgstr ""
+
+#: qml/PreferencesPage.qml:433
 msgid "Development"
 msgstr "Πειραματικό"
 
-#: qml/PreferencesPage.qml:326
+#: qml/PreferencesPage.qml:439
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1023,7 +1124,7 @@ msgstr ""
 "Οι παρακάτω επιλογές είναι πειραματικές. Παρακαλώ μην τις αλλάξετε αν δεν "
 "ξέρετε τι κάνετε."
 
-#: qml/PreferencesPage.qml:333
+#: qml/PreferencesPage.qml:447
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1032,11 +1133,11 @@ msgstr ""
 "να απενεργοποιήσετε την εύρεση τοποθεσίας του GPS όταν χρησιμοποιείτε αυτήν "
 "την επιλογή."
 
-#: qml/PreferencesPage.qml:334
+#: qml/PreferencesPage.qml:448
 msgid "Set position to the map center"
 msgstr "Ρυθμίστε τη θέση στο κέντρο του χάρτη"
 
-#: qml/PreferencesPage.qml:341
+#: qml/PreferencesPage.qml:455
 msgid "Show current zoom level"
 msgstr "Εμφάνιση επιπέδου ζουμ"
 
@@ -1044,7 +1145,7 @@ msgstr "Εμφάνιση επιπέδου ζουμ"
 msgid "Pure Maps"
 msgstr ""
 
-#: qml/pure-maps.qml:195
+#: qml/pure-maps.qml:197
 msgid "Rerouting failed: %1"
 msgstr "Ο επαναπροσδιορισμός της διαδρομής απέτυχε: %1"
 
@@ -1202,64 +1303,17 @@ msgstr "Μοτοσυκλέτα"
 msgid "Motor Scooter"
 msgstr "Μοτοποδήλατο"
 
-#: routers/gpx_osmscout_settings.qml:70 routers/mapquest_open_settings.qml:53
-#: routers/ValhallaSettings.qml:55
-msgid "Language"
-msgstr "Γλώσσα"
-
-#: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
-msgid "Catalan"
-msgstr "Καταλανική"
-
-#: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
-msgid "Czech"
-msgstr "Τσέχικη"
-
-#: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
-msgid "English"
-msgstr "Αγγλικά"
-
 #: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
 msgid "English Pirate"
 msgstr "Αγγλική Pirate"
 
 #: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
-msgid "French"
-msgstr "Γαλλική"
-
-#: routers/gpx_osmscout_settings.qml:72 routers/mapquest_open_settings.qml:57
-#: routers/ValhallaSettings.qml:59
-msgid "German"
-msgstr "Γερμανική"
-
-#: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
-msgid "Hindi"
-msgstr "Χίντι"
-
-#: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
-msgid "Italian"
-msgstr "Ιταλική"
-
-#: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
 msgid "Portuguese"
 msgstr "Πορτογαλική"
-
-#: routers/gpx_osmscout_settings.qml:73 routers/mapquest_open_settings.qml:57
-#: routers/ValhallaSettings.qml:60
-msgid "Russian"
-msgstr "Ρωσική"
 
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:60
 msgid "Slovenian"
 msgstr "Σλοβενική"
-
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:60
-msgid "Spanish"
-msgstr "Ισπανική"
-
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:60
-msgid "Swedish"
-msgstr "Σουηδική"
 
 #: routers/mapquest_open_settings.qml:44
 msgid "Try to avoid tolls"
