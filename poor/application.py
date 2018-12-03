@@ -37,6 +37,7 @@ class Application:
         self.icon = poor.IconFinder()
         self.narrative = poor.Narrative()
         self.router = None
+        self.voice_tester = None
         self.set_basemap(poor.conf.basemap)
         self.set_geocoder(poor.conf.geocoder)
         self.set_guide(poor.conf.guide)
@@ -136,3 +137,13 @@ class Application:
                 default = poor.conf.get_default("router")
                 if default != router:
                     self.set_router(default)
+
+    def voice_tester_start(self):
+        if self.voice_tester is not None: return
+        self.voice_tester = poor.VoiceGenerator()
+        return True
+
+    def voice_tester_stop(self):
+        if self.voice_tester is not None:
+            self.voice_tester.quit()
+            self.voice_tester = None

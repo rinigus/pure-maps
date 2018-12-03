@@ -314,6 +314,121 @@ PagePL {
             }
 
             ExpandingSectionPL {
+                id: sectionTesting
+                title: app.tr("Testing")
+                content.sourceComponent: Column {
+                    id: testingColumn
+                    spacing: app.styler.themePaddingMedium
+                    width: sectionTesting.width
+
+                    property string message
+
+                    ListItemLabel {
+                        text: app.tr("Testing of text to speach (TTS) engine. " +
+                                     "Select the same language as used for navigation, preferred gender, and press " +
+                                     "the button below for testing.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    ComboBoxPL {
+                        id: languageComboBox
+                        currentIndex: 0
+                        label: app.tr("Language")
+                        model: [
+                            app.tr("English"),
+                            app.tr("Catalan"),
+                            app.tr("Czech"),
+                            app.tr("German"),
+                            app.tr("Spanish"),
+                            app.tr("French"),
+                            app.tr("Hindi"),
+                            app.tr("Italian"),
+                            app.tr("Russian"),
+                            app.tr("Slovak"),
+                            app.tr("Swedish")
+                        ]
+                        property var values: ["en", "ca", "cz", "de", "es", "fr", "hi", "it", "ru", "sl", "sv"]
+                        // from https://www.omniglot.com/language/phrases/hovercraft.htm
+                        property var phrases: [
+                            "My hovercraft is full of eels", // en
+                            "El meu aerolliscador està ple d'anguiles", // ca
+                            "Moje vznášedlo je plné úhořů", // cz
+                            "Mein Luftkissenfahrzeug ist voller Aale", // de
+                            "Mi aerodeslizador está lleno de anguilas", // es
+                            "Mon aéroglisseur est plein d'anguilles", // fr
+                            "मेरी मँडराने वाली नाव सर्पमीनों से भरी हैं", // hi
+                            "Il mio hovercraft è pieno di anguille", // it
+                            "Моё судно на воздушной подушке полно угрей", // ru
+                            "Moje vznášadlo je plné úhorov", // sl
+                            "Min svävare är full med ål" // sv
+                        ]
+                    }
+
+                    ComboBoxPL {
+                        id: genderComboBox
+                        description: app.tr("Preferred gender. Only supported by some engines and languages.")
+                        label: app.tr("Voice gender")
+                        model: [ app.tr("Male"), app.tr("Female") ]
+                        property var values: ["male", "female"]
+                    }
+
+                    Spacer {
+                        height: app.styler.themePaddingLarge
+                    }
+
+                    ButtonPL {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        preferredWidth: app.styler.themeButtonWidthLarge
+                        text: app.tr("Test")
+                        onClicked: testingColumn.test()
+                    }
+
+                    Spacer {
+                        height: app.styler.themePaddingLarge
+                    }
+
+                    LabelPL {
+                        id: description
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                    }
+
+                    Spacer {
+                        height: app.styler.themePaddingLarge
+                    }
+
+                    Timer {
+                        interval: 500
+                        running: testingColumn.message
+                        repeat: true
+                        onTriggered: {
+                            console.log("Waiting for WAV file")
+                            py.call("poor.app.voice_tester.get_uri", [testingColumn.message], function(uri) {
+                                if (uri) {
+                                    sound.source = uri;
+                                    sound.play();
+                                    testingColumn.message = "";
+                                }
+                            });
+                        }
+                    }
+
+                    function test() {
+                        py.call_sync("poor.app.voice_tester_start", []);
+                        py.call_sync("poor.app.voice_tester.set_voice",
+                                     [ languageComboBox.values[languageComboBox.currentIndex],
+                                       genderComboBox.values[genderComboBox.currentIndex] ]);
+                        description.text = app.tr("Selected voice engine: %1").arg(py.evaluate("poor.app.voice_tester.current_engine"));
+                        if (!py.evaluate("poor.app.voice_tester.active")) return;
+                        testingColumn.message = languageComboBox.phrases[languageComboBox.currentIndex];
+                        py.call_sync("poor.app.voice_tester.make",
+                                     [testingColumn.message]);
+                    }
+                }
+            }
+
+            ExpandingSectionPL {
                 id: sectionDevelop
                 title: app.tr("Development")
                 content.sourceComponent: Column {
@@ -321,9 +436,8 @@ PagePL {
                     width: sectionDevelop.width
 
                     ListItemLabel {
-                        font.pixelSize: app.styler.themeFontSizeSmall
-                        height: implicitHeight
                         text: app.tr("The following options are for development only. Please don't change them unless you know what you are doing.")
+                        truncMode: truncModes.none
                         wrapMode: Text.WordWrap
                     }
 

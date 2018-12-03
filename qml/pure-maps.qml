@@ -63,7 +63,6 @@ ApplicationWindowPL {
     Audio {
         id: sound
         autoLoad: true
-        autoPlay: true
         loops: 1
     }
 
@@ -154,7 +153,10 @@ ApplicationWindowPL {
         if (!app.conf.voiceNavigation) return;
         var fun = "poor.app.narrative.get_message_voice_uri";
         py.call(fun, [message], function(uri) {
-            if (uri) sound.source = uri;
+            if (uri) {
+                sound.source = uri;
+                sound.play();
+            }
         });
     }
 
@@ -304,8 +306,10 @@ ApplicationWindowPL {
     function updateNavigationStatus(status) {
         // Update navigation status with data from Python backend.
         app.navigationStatus.update(status);
-        if (app.navigationStatus.voiceUri && app.conf.voiceNavigation)
+        if (app.navigationStatus.voiceUri && app.conf.voiceNavigation) {
             sound.source = app.navigationStatus.voiceUri;
+            sound.play();
+        }
         app.navigationStatus.reroute && app.rerouteMaybe();
     }
 

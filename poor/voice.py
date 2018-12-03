@@ -27,6 +27,8 @@ import subprocess
 import tempfile
 import threading
 
+from poor.i18n import _
+
 __all__ = ("VoiceGenerator",)
 
 
@@ -35,6 +37,7 @@ class VoiceEngine:
     """Base class for text-to-speech (TTS) engines."""
 
     commands = []
+    description = "None"
     voices = {}
 
     def __init__(self, language, gender="male"):
@@ -95,6 +98,7 @@ class VoiceEngineEspeak(VoiceEngine):
     """Text-to-speech (TTS) using eSpeak."""
 
     commands = ["espeak", "harbour-espeak"]
+    description = "Espeak"
     voices = {
         "ca":    {"male": "catalan"},
         "cz":    {"male": "czech"},
@@ -125,6 +129,7 @@ class VoiceEngineFlite(VoiceEngine):
     """Text-to-speech (TTS) using CMU Flite (festival-lite)."""
 
     commands = ["flite", "harbour-flite"]
+    description = "Flite"
     voices = {
         "en":    {"male": "kal16", "female": "slt"},
         "en_US": {"male": "kal16", "female": "slt"},
@@ -144,6 +149,7 @@ class VoiceEngineMimic(VoiceEngine):
     """Text-to-speech (TTS) using Mimic (The Mycroft TTS Engine)."""
 
     commands = ["mimic", "harbour-mimic"]
+    description = "Mimic"
     voices = {
         "en":    {"male": "ap", "female": "slt"},
         "en_US": {"male": "ap", "female": "slt"},
@@ -163,6 +169,7 @@ class VoiceEnginePicoTTS(VoiceEngine):
     """Text-to-speech (TTS) using PicoTTS."""
 
     commands = ["pico2wave", "harbour-pico2wave"]
+    description = "PicoTTS"
     voices = {
         "de":    {"female": "de-DE"},
         "en":    {"female": "en-US"},
@@ -187,6 +194,7 @@ class VoiceEngineMimicEnUsPirate(VoiceEngine):
     """Text-to-speech (TTS) using Mimic (The Mycroft TTS Engine) tuned for en_US-x-pirate locale"""
 
     commands = ["mimic", "harbour-mimic"]
+    description = "Mimic Pirate"
     voices = {
         "en-US-x-pirate": {"male": "awb", "female": "slt"},
     }
@@ -288,6 +296,12 @@ class VoiceGenerator:
             language = language.split("_")[0]
             return self._find_engine(language, gender)
         return None
+
+    @property
+    def current_engine(self):
+        """Return text description of the current TTS engine."""
+        if self._engine is None: return _("No engine available for selected language")
+        return self._engine.description
 
     def get(self, text):
         """Return the WAV filename for `text`."""
