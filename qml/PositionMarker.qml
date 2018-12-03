@@ -77,6 +77,10 @@ Item {
             map.setLayoutProperty(marker.layers.moving, "visibility", "none");
             marker.directionVisible = false;
         }
+        map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius", 0);
+        map.setPaintProperty(marker.layers.layerUncertainty, "circle-color", app.styler.positionUncertainty);
+        map.setPaintProperty(marker.layers.layerUncertainty, "circle-opacity", 0.15);
+        map.setPaintProperty(marker.layers.layerUncertainty, "circle-pitch-alignment", "map");
     }
 
     function initIcons() {
@@ -88,14 +92,11 @@ Item {
 
     function initLayers() {
         map.addSourcePoint(marker.source, map.position.coordinate);
-        map.addLayer(marker.layers.still, {"type": "symbol", "source": marker.source});
-        map.addLayer(marker.layers.moving, {"type": "symbol", "source": marker.source});
         map.addLayer(marker.layers.layerUncertainty,
                      {"type": "circle", "source": marker.source},
-                     map.styleReferenceLayer);
-        map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius", 0);
-        map.setPaintProperty(marker.layers.layerUncertainty, "circle-color", app.styler.positionUncertainty);
-        map.setPaintProperty(marker.layers.layerUncertainty, "circle-opacity", 0.15);
+                     map.firstLabelLayer);
+        map.addLayer(marker.layers.still, {"type": "symbol", "source": marker.source});
+        map.addLayer(marker.layers.moving, {"type": "symbol", "source": marker.source});
     }
 
     function updateDirection() {
