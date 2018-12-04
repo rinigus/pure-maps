@@ -1,3 +1,10 @@
+2018-12-04: Pure Maps 1.10
+=========================
+
+* Add support for online and offline profiles
+* Add position uncertainty indicator
+* Add facility for TTS testing in Preferences
+
 2018-11-20: Pure Maps 1.9
 =========================
 
