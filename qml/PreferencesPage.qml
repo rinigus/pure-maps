@@ -388,10 +388,10 @@ PagePL {
                         height: app.styler.themePaddingLarge
                     }
 
-                    LabelPL {
+                    ListItemLabel {
                         id: description
-                        anchors.left: parent.left
-                        anchors.right: parent.right
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
                     }
 
                     Spacer {
