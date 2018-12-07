@@ -5,18 +5,19 @@
 # 
 # Translators:
 # rinigus github, 2018
+# Thomas Gabelmann <thomas@gabelmann.org>, 2018
 # Roman Meier <meierrom@gmail.com>, 2018
-# Uli M <popanz@online.de>, 2018
 # Ricardo Breitkopf, 2018
+# Uli M <popanz@online.de>, 2018
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-03 22:04+0200\n"
+"POT-Creation-Date: 2018-12-04 23:16+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Ricardo Breitkopf, 2018\n"
+"Last-Translator: Uli M <popanz@online.de>, 2018\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rinigus/teams/89597/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,68 +55,80 @@ msgid ""
 "Foursquare Client ID. Register at https://developer.foursquare.com and "
 "create your own Client ID and Client Secret keys"
 msgstr ""
+"Foursquare Client ID. Registriere Dich auf https://developer.foursquare.com "
+"und erzeuge Deine eigene Client ID und Client Secret keys"
 
 #: poor/keystore.py:51
 msgid "Foursquare Client ID"
-msgstr ""
+msgstr "Foursquare Client ID"
 
 #: poor/keystore.py:52
 msgid "Foursquare Client Secret"
-msgstr ""
+msgstr "Foursquare Client Secret"
 
 #: poor/keystore.py:55
 msgid ""
 "Mapbox API key. Register at https://www.mapbox.com and create your own API "
 "key"
 msgstr ""
+"Mapbox API key. Registriere Dich auf https://www.mapbox.com und erzeuge "
+"Deinen eigenen API key"
 
 #: poor/keystore.py:56
 msgid "Mapbox API key"
-msgstr ""
+msgstr "Mapbox API key"
 
 #: poor/keystore.py:59
 msgid ""
 "MapQuest API key. Register at https://developer.mapquest.com/ and create "
 "your own API key"
 msgstr ""
+"MapQuest API key. Registriere Dich auf https://developer.mapquest.com/ und "
+"erzeuge Deinen eigenen API key"
 
 #: poor/keystore.py:60
 msgid "MapQuest API key"
-msgstr ""
+msgstr "MapQuest API key"
 
 #: poor/keystore.py:63
 msgid ""
 "OpenCage API key. Register at https://opencagedata.com/ and create your own "
 "API key"
 msgstr ""
+"OpenCage API key. Registriere Dich auf https://opencagedata.com/ und erzeuge"
+" Deinen eigenen API key"
 
 #: poor/keystore.py:64
 msgid "OpenCage API key"
-msgstr ""
+msgstr "OpenCage API key"
 
 #: poor/keystore.py:67
 msgid ""
 "Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
 " API key"
 msgstr ""
+"Stadia Maps API key. Registriere Dich auf https://stadiamaps.com/ und "
+"erzeuge Deinen eigenen API key"
 
 #: poor/keystore.py:68
 msgid "Stadia Maps API key"
-msgstr ""
+msgstr "Stadia Maps API key"
 
 #: poor/keystore.py:71
 msgid ""
 "HERE App ID. Register at https://developer.here.com and create your own App "
 "ID and Code"
 msgstr ""
+"HERE App ID. Registriere Dich auf https://developer.here.com und erzeuge "
+"Deinen eigenen App ID and Code"
 
 #: poor/keystore.py:72
 msgid "HERE App ID"
-msgstr ""
+msgstr "HERE App ID"
 
 #: poor/keystore.py:73 poor/keystore.py:74
 msgid "HERE App Code"
-msgstr ""
+msgstr "HERE App Code"
 
 #: poor/narrative.py:130
 #, python-brace-format
@@ -228,7 +241,7 @@ msgstr "{:d} Std. {:d} Min."
 
 #: poor/voice.py:303
 msgid "No engine available for selected language"
-msgstr ""
+msgstr "Keine Engine für die gewählte Sprache verfügbar"
 
 #: routers/digitransit.py:58
 msgid "airplane"
@@ -493,11 +506,11 @@ msgstr "Initialisiere"
 
 #: qml/InitPage.qml:43
 msgid "Dismiss"
-msgstr ""
+msgstr "Abbrechen"
 
 #: qml/InitPage.qml:44
 msgid "Missing Mapbox key"
-msgstr ""
+msgstr "Fehlender Mapbox key"
 
 #: qml/InitPage.qml:45
 msgid ""
@@ -505,6 +518,10 @@ msgid ""
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
+"Deiner Installation fehlt die Mapbox API. Bitte registriere Dich bei Mapbox "
+"und trage Deinen persönlichen API key unter Einstellungen ein. Dieser "
+"Schlüssel wird nicht benötigt, wenn Du Pure Maps mit Offline Karten benutzen"
+" möchtest. "
 
 #: qml/Map.qml:316 qml/Map.qml:413
 msgid "Clearing map"
@@ -556,19 +573,19 @@ msgstr "Einstellungen"
 
 #: qml/MenuPage.qml:148
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: qml/MenuPage.qml:159
 msgid "Online"
-msgstr ""
+msgstr "Online"
 
 #: qml/MenuPage.qml:159
 msgid "Offline"
-msgstr ""
+msgstr "Offline"
 
 #: qml/MenuPage.qml:159
 msgid "Mixed"
-msgstr ""
+msgstr "Gemischt"
 
 #: qml/MenuPage.qml:179
 msgid "Auto-center on position"
@@ -646,7 +663,7 @@ msgstr "Kartenskalierung"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
-msgstr "Beenden"
+msgstr "Ausfahrt"
 
 #: qml/NearbyPage.qml:25
 msgid "Nearby Venues"
@@ -774,11 +791,11 @@ msgstr "Aktivitäten"
 
 #: qml/PoiInfoPage.qml:112
 msgid "Bookmark"
-msgstr ""
+msgstr "Lesezeichen"
 
 #: qml/PoiInfoPage.qml:125
 msgid "Shortlist"
-msgstr ""
+msgstr "Auswahlliste"
 
 #: qml/PoiInfoPage.qml:138
 msgid "Share location"
@@ -838,7 +855,7 @@ msgstr "Telefon"
 
 #: qml/PoiPanel.qml:151
 msgid "Shortlisted"
-msgstr ""
+msgstr "ausgewählt"
 
 #: qml/PoiPanel.qml:152
 msgid "Text"
@@ -904,7 +921,7 @@ msgstr "Cache leeren"
 
 #: qml/PreferencesPage.qml:99
 msgid "API keys"
-msgstr ""
+msgstr "API keys"
 
 #: qml/PreferencesPage.qml:105
 msgid ""
@@ -912,10 +929,13 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
+"Du kannst persönliche Schlüssel für die Online Dienste in den Einstellungen "
+"spezifizieren. Bitte überprüfe, ob Du mit den Nutzungsbedingungen der "
+"Services die Du nutzen möchtest, einverstanden bist."
 
 #: qml/PreferencesPage.qml:113
 msgid "Please restart application after changing API keys."
-msgstr ""
+msgstr "Bitte starte die Anwendung nach dem Wechsel der API keys neu."
 
 #: qml/PreferencesPage.qml:152
 msgid "Map view"
@@ -1025,13 +1045,16 @@ msgstr "Nur beim Überschreiten"
 
 #: qml/PreferencesPage.qml:318
 msgid "Testing"
-msgstr ""
+msgstr "Teste"
 
 #: qml/PreferencesPage.qml:327
 msgid ""
 "Testing of text to speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
+"Testen der Text-to-speech (TTS) Engine. Wähle die selbe Sprache und das "
+"Geschlecht aus, welches Du auch für die Navigation benutzt. Klicke "
+"anschließend den Knopf zum Testen."
 
 #: qml/PreferencesPage.qml:337 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
@@ -1085,7 +1108,7 @@ msgstr "Russisch"
 
 #: qml/PreferencesPage.qml:348
 msgid "Slovak"
-msgstr ""
+msgstr "Slowakisch"
 
 #: qml/PreferencesPage.qml:349 routers/gpx_osmscout_settings.qml:73
 #: routers/ValhallaSettings.qml:60
@@ -1095,14 +1118,16 @@ msgstr "Schwedisch"
 #: qml/PreferencesPage.qml:370
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr ""
+"Bevorzugtes Geschlecht. Wird nur von wenigen Engines und Sprachen "
+"unterstützt."
 
 #: qml/PreferencesPage.qml:383
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: qml/PreferencesPage.qml:422
 msgid "Selected voice engine: %1"
-msgstr ""
+msgstr "Wähle Sprach-Engine: %1"
 
 #: qml/PreferencesPage.qml:433
 msgid "Development"

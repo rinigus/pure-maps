@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-03 22:04+0200\n"
+"POT-Creation-Date: 2018-12-04 23:16+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2018\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -134,7 +134,7 @@ msgstr "{distance}, {direction}"
 
 #: poor/narrative.py:221 poor/narrative.py:223
 msgid "Exit: "
-msgstr "Avfart:"
+msgstr "Avfart: "
 
 #: poor/narrative.py:421 qml/pure-maps.qml:185
 msgid "Rerouting"
@@ -238,7 +238,7 @@ msgstr "{:d} t {:d} min"
 
 #: poor/voice.py:303
 msgid "No engine available for selected language"
-msgstr "Ingen motor tillgänglig för det valda språket "
+msgstr "Ingen motor tillgänglig för det valda språket"
 
 #: routers/digitransit.py:58
 msgid "airplane"
