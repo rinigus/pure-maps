@@ -4,6 +4,8 @@
 * Add support for online and offline profiles
 * Add position uncertainty indicator
 * Add facility for TTS testing in Preferences
+* [1.10.1] Updated translations
+* [1.10.1] Small bugfix
 
 2018-11-20: Pure Maps 1.9
 =========================
