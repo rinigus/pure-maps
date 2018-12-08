@@ -151,3 +151,30 @@ class Geocoder:
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
         return path, poor.util.read_json(path)
+    
+    def reverse(self, x, y, radius, limit=1, params=None):
+        """
+        Return a closest object near given coordinates.
+
+        `params` can be used to specify a dictionary of geocoder-specific
+        parameters.
+        """
+        params = params or {}
+
+        try:
+            results = self._provider.reverse(x, y, radius, limit, params)
+        except socket.timeout:
+            return dict(error=True, message=_("Connection timed out"))
+        except Exception:
+            print("Geocoding failed:", file=sys.stderr)
+            traceback.print_exc()
+            return []
+        results_filtered = []
+        for result in results:
+            if "distance" not in result:
+                result["distance"] = poor.util.calculate_distance(x, y, result["x"], result["y"])
+            if result["distance"] < radius:
+                result["provider"] = self.id
+                results_filtered.append(result)
+        return results_filtered
+

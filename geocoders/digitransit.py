@@ -27,6 +27,7 @@ import urllib.parse
 
 AUTOCOMPLETE_URL = "http://api.digitransit.fi/geocoding/v1/autocomplete?text={query}&layers=venue,address,street,macroregion,region,county,locality,localadmin,borough,neighbourhood"
 SEARCH_URL = "http://api.digitransit.fi/geocoding/v1/search?text={query}&size={limit}&lang={lang}"
+REVERSE_URL = "http://api.digitransit.fi/geocoding/v1/reverse?point.lat={lat}&point.lon={lon}&boundary.circle.radius={radius}&size={limit}&lang={lang}"
 
 cache = {}
 
@@ -82,3 +83,25 @@ def parse_description(props):
     with poor.util.silent(Exception):
         items.append(props.country)
     return ", ".join(items)
+
+def reverse(x, y, radius, limit, params):
+    """Return a list of dictionaries of places nearby given coordinates."""
+    # Not implemented due to the lack of 
+    lon = x
+    lat = y
+    lang = poor.util.get_default_language("fi")
+    lang = (lang if lang in ("fi", "sv") else "fi")
+    url = REVERSE_URL.format(**locals())
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[url])
+    results = poor.http.get_json(url)["features"]
+    results = list(map(poor.AttrDict, results))
+    results = [dict(
+        title=result.properties.name,
+        description=parse_description(result.properties),
+        x=float(result.geometry.coordinates[0]),
+        y=float(result.geometry.coordinates[1]),
+    ) for result in results]
+    if results and results[0]:
+        cache[url] = copy.deepcopy(results)
+    return results

@@ -26,6 +26,7 @@ import poor
 import urllib.parse
 
 URL = "http://photon.komoot.de/api/?q={query}&limit={limit}&lang={lang}"
+URL_REVERSE = "http://photon.komoot.de/reverse?lon={lon}&lat={lat}&limit={limit}&lang={lang}&distance_sort=true"
 cache = {}
 
 def autocomplete(query, x, y, params):
@@ -123,3 +124,29 @@ def parse_type(result):
         if result.properties.osm_value not in ["", "yes", "1"]: 
             items.append(result.properties.osm_value.capitalize())
     return ", ".join(items).strip()
+
+def reverse(x, y, radius, limit, params):
+    """Return a list of dictionaries of places nearby given coordinates."""
+    lon = x
+    lat = y
+    lang = poor.util.get_default_language("en")
+    lang = (lang if lang in ("de", "en", "it", "fr") else "en")
+    url = URL_REVERSE.format(**locals())
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[url])
+    results = poor.http.get_json(url)["features"]
+    results = list(map(poor.AttrDict, results))
+    results = [dict(
+        address=parse_address_full(result),
+        label=parse_address_full(result),
+        poi_type=parse_type(result),
+        postcode=parse_postcode(result),
+        title=parse_title(result),
+        description=parse_description(result),
+        x=float(result.geometry.coordinates[0]),
+        y=float(result.geometry.coordinates[1]),
+    ) for result in results]
+    if results and results[0]:
+        cache[url] = copy.deepcopy(results)
+    return results
+

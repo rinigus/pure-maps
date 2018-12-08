@@ -26,6 +26,7 @@ import poor
 import urllib.parse
 
 URL = "http://localhost:8553/v1/search?limit={limit}&search={query}"
+URL_REVERSE = "http://localhost:8553/v1/guide?radius={radius}&limit={limit}&lng={lng}&lat={lat}&poitype=any"
 cache = {}
 
 def autocomplete(query, x, y, params):
@@ -94,3 +95,29 @@ def parse_type(result):
         type = type.replace("_", " ").strip()
         return type.capitalize()
     return ""
+
+def reverse(x, y, radius, limit, params):
+    """Return a list of dictionaries of places nearby given coordinates."""
+    lng = x
+    lat = y
+    url = URL_REVERSE.format(**locals())
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[url])
+    results = poor.http.get_json(url)
+    results = poor.AttrDict(results)
+    results = [dict(
+        address=parse_address(result),
+        link=result.get("website", ""),
+        phone=result.get("phone", ""),
+        poi_type=parse_type(result),
+        postcode=result.get("postal_code", ""),
+        title=result.title,
+        description=parse_description(result),
+        distance=float(result.distance),
+        x=float(result.lng),
+        y=float(result.lat),
+    ) for result in results.results]
+    if results and results[0]:
+        cache[url] = copy.deepcopy(results)
+    return results
+

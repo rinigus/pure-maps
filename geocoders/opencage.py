@@ -33,6 +33,13 @@ URL = ("http://api.opencagedata.com/geocode/v1/json"
        "&no_annotations=1"
        "&language={lang}")
 
+URL_REVERSE = ("http://api.opencagedata.com/geocode/v1/json"
+               "?key=" + poor.key.get("OPENCAGE_KEY") +
+               "&q={lat}+{lng}"
+               "&limit={limit}"
+               "&no_annotations=1"
+               "&language={lang}")
+
 cache = {}
 
 def geocode(query, params):
@@ -85,3 +92,26 @@ def parse_type(result):
         type = result.components._type
         return type.capitalize()
     return ""
+
+def reverse(x, y, radius, limit, params):
+    """Return a list of dictionaries of places nearby given coordinates."""
+    lng = x
+    lat = y
+    lang = poor.util.get_default_language("en")
+    url = URL_REVERSE.format(**locals())
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[url])
+    results = poor.http.get_json(url)["results"]
+    results = list(map(poor.AttrDict, results))
+    results = [dict(
+        address=result.formatted,
+        poi_type=parse_type(result),
+        postcode=parse_postcode(result),
+        title=parse_title(result),
+        description=parse_description(result),
+        x=float(result.geometry.lng),
+        y=float(result.geometry.lat),
+    ) for result in results]
+    if results and results[0]:
+        cache[url] = copy.deepcopy(results)
+    return results

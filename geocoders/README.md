@@ -4,8 +4,10 @@ Implementing a Geocoder
 ## API
 
 To implement a geocoder, you need to write two files: a JSON metadata
-file and a Python file that implements the `geocode` function. The
-`geocode` function should given a string query return a list of
+file and a Python file that implements the `geocode` and `reverse`
+functions. 
+
+The `geocode` function should given a string query return a list of
 dictionaries of geocoding results, with each dictionary having keys
 `title`, `description`, `x` and `y`, example below.
 
@@ -20,6 +22,11 @@ dictionaries of geocoding results, with each dictionary having keys
     ...
 ]
 ```
+
+The `reverse` function should given a coordinates return a list of
+dictionaries of reverse geocoding results, with each dictionary having
+keys `title`, `description`, `x` and `y`, same as for the forward
+geocoding.
 
 ## Tips
 
