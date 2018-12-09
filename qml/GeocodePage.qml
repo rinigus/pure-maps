@@ -110,6 +110,7 @@ PageListPL {
 
             SearchFieldPL {
                 id: searchField
+                focus: true
                 placeholderText: app.tr("Search")
                 width: parent.width
                 property string prevText: ""
@@ -152,6 +153,7 @@ PageListPL {
         page.autocompletePending = false;
         page.loadHistory();
         page.filterCompletions();
+        page.searchField.forceActiveFocus();
     }
 
     onPageStatusActive: {

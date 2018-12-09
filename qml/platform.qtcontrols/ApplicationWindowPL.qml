@@ -43,6 +43,7 @@ ApplicationWindow {
     }
 
     Component.onCompleted: updateOrientation()
+    //onActiveFocusItemChanged: print("activeFocusItem", activeFocusItem)
 
     function initPages() {
         pages.ps = pageStack;
