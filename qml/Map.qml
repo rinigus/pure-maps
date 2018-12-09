@@ -226,7 +226,7 @@ MapboxMap {
     function _addPoi(poi) {
         if (hasPoi(poi)) return false; // avoid duplicates
         // Add new POI marker to the map.        
-        map.pois.push({
+        var p = {
             "address": poi.address || "",
             "bookmarked": poi.bookmarked || false,
             "coordinate": QtPositioning.coordinate(poi.y, poi.x),
@@ -240,8 +240,9 @@ MapboxMap {
             "text": poi.text || "",
             "title": poi.title || "",
             "type": poi.type || "",
-        });
-        return true;
+        };
+        map.pois.push(p);
+        return p;
     }
 
     function addPoi(poi) {
@@ -678,7 +679,7 @@ MapboxMap {
     }
 
     function showPoi(poi, showMenu) {
-        poiPanel && poiPanel.show(poi, showMenu);
+        if (poiPanel) poiPanel.show(poi, showMenu);
     }
 
     function toggleAutoCenter() {

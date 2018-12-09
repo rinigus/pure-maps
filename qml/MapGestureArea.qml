@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtPositioning 5.3
 import MapboxMap 1.0
 
 MapboxMapGestureArea {
@@ -50,10 +51,20 @@ MapboxMapGestureArea {
     }
 
     onPressAndHoldGeo: {
-        map.addPois([{
-            "x": geocoordinate.longitude,
-            "y": geocoordinate.latitude,
-        }]);
+        var p = map.addPoi({ "x": geocoordinate.longitude,
+                             "y": geocoordinate.latitude });
+        if (!p) return;
+        map.showPoi(p);
+        var radius = Math.max(0.1*0.5*(map.height + map.width), 30)*map.metersPerPixel;
+        py.call("poor.app.geocoder.reverse",
+                [geocoordinate.longitude, geocoordinate.latitude, radius, 1],
+                function(result) {
+                    if (!result || !result.length) return;
+                    var r = result[0];
+                    r.poiId = p.poiId;
+                    r.coordinate = QtPositioning.coordinate(r.y, r.x);
+                    map.updatePoi(r);
+                });
     }
 
     function coordinatesMatch(a, b) {
