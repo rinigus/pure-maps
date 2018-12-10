@@ -28,6 +28,20 @@ PagePL {
                         (page.nearText !== app.tr("Current position") || gps.ready) &&
                         page.query.length > 0
 
+    pageMenu: PageMenuPL {
+        PageMenuItemPL {
+            text: app.tr("Using %1").arg(name)
+            property string name: py.evaluate("poor.app.guide.name")
+            onClicked: {
+                var dialog = app.push("GuidePage.qml");
+                dialog.accepted.connect(function() {
+                    name = py.evaluate("poor.app.guide.name");
+                    column.addSetttings();
+                });
+            }
+        }
+    }
+
     property bool   initialized: false
     property var    near: null
     property string nearText: ""
@@ -53,21 +67,6 @@ PagePL {
         spacing: app.styler.themePaddingMedium
 
         property var settings: null
-
-        ValueButtonPL {
-            id: usingButton
-            label: app.tr("Using")
-            height: app.styler.themeItemSizeSmall
-            value: py.evaluate("poor.app.guide.name")
-            width: parent.width
-            onClicked: {
-                var dialog = app.push("GuidePage.qml");
-                dialog.accepted.connect(function() {
-                    usingButton.value = py.evaluate("poor.app.guide.name");
-                    column.addSetttings();
-                });
-            }
-        }
 
         ValueButtonPL {
             id: nearButton

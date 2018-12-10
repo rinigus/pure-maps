@@ -90,45 +90,38 @@ PageListPL {
     }
 
     headerExtra: Component {
-        Column {
-            spacing: app.styler.themePaddingLarge
+        SearchFieldPL {
+            id: searchField
+            focus: true
+            placeholderText: app.tr("Search")
             width: parent.width
-
-            ValueButtonPL {
-                id: usingButton
-                height: app.styler.themeItemSizeSmall
-                label: app.tr("Using")
-                value: py.evaluate("poor.app.geocoder.name")
-                width: parent.width
-                onClicked: {
-                    var dialog = app.push("GeocoderPage.qml");
-                    dialog.accepted.connect(function() {
-                        usingButton.value = py.evaluate("poor.app.geocoder.name");
-                    });
-                }
+            property string prevText: ""
+            onSearch: app.pages.navigateForward();
+            onTextChanged: {
+                var newText = searchField.text.trim();
+                if (newText === searchField.prevText) return;
+                page.query = newText;
+                searchField.prevText = newText;
+                page.filterCompletions();
             }
-
-            SearchFieldPL {
-                id: searchField
-                focus: true
-                placeholderText: app.tr("Search")
-                width: parent.width
-                property string prevText: ""
-                onSearch: app.pages.navigateForward();
-                onTextChanged: {
-                    var newText = searchField.text.trim();
-                    if (newText === searchField.prevText) return;
-                    page.query = newText;
-                    searchField.prevText = newText;
-                    page.filterCompletions();
-                }
-            }
-
             Component.onCompleted: page.searchField = searchField;
         }
     }
 
     model: ListModel {}
+
+    pageMenu: PageMenuPL {
+        PageMenuItemPL {
+            text: app.tr("Using %1").arg(name)
+            property string name: py.evaluate("poor.app.geocoder.name")
+            onClicked: {
+                var dialog = app.push("GeocoderPage.qml");
+                dialog.accepted.connect(function() {
+                    name = py.evaluate("poor.app.geocoder.name");
+                });
+            }
+        }
+    }
 
     placeholderText: app.tr("You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. “address, city” or “city, country”.")
 

@@ -30,6 +30,23 @@ PagePL {
 
     pageMenu: PageMenuPL {
         PageMenuItemPL {
+            text: app.tr("Using %1").arg(name)
+            property string name: py.evaluate("poor.app.router.name")
+            onClicked: {
+                var dialog = app.push("RouterPage.qml");
+                dialog.accepted.connect(function() {
+                    columnRouter.settingsChecked = false;
+                    name = py.evaluate("poor.app.router.name");
+                    page.fromNeeded = py.evaluate("poor.app.router.from_needed");
+                    page.toNeeded = py.evaluate("poor.app.router.to_needed");
+                    if (columnRouter.settings) columnRouter.settings.destroy();
+                    columnRouter.settings = null;
+                    columnRouter.addSettings();
+                });
+            }
+        }
+
+        PageMenuItemPL {
             text: app.tr("Follow me")
             onClicked: {
                 followMe.checked = !followMe.checked;
@@ -41,6 +58,7 @@ PagePL {
                 columnRouter.addSettings();
             }
         }
+
         PageMenuItemPL {
             text: app.tr("Reverse endpoints")
             onClicked: {
@@ -78,26 +96,6 @@ PagePL {
 
             property var  settings: null
             property bool settingsChecked: false
-
-            ValueButtonPL {
-                id: usingButton
-                label: app.tr("Using")
-                height: app.styler.themeItemSizeSmall
-                value: py.evaluate("poor.app.router.name")
-                width: parent.width
-                onClicked: {
-                    var dialog = app.push("RouterPage.qml");
-                    dialog.accepted.connect(function() {
-                        columnRouter.settingsChecked = false;
-                        usingButton.value = py.evaluate("poor.app.router.name");
-                        page.fromNeeded = py.evaluate("poor.app.router.from_needed");
-                        page.toNeeded = py.evaluate("poor.app.router.to_needed");
-                        if (columnRouter.settings) columnRouter.settings.destroy();
-                        columnRouter.settings = null;
-                        columnRouter.addSettings();
-                    });
-                }
-            }
 
             ValueButtonPL {
                 id: fromButton
