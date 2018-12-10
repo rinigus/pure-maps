@@ -47,10 +47,9 @@ PagePL {
         }
 
         PageMenuItemPL {
-            text: app.tr("Follow me")
+            text: followMe ? app.tr("Navigate") : app.tr("Follow me")
             onClicked: {
-                followMe.checked = !followMe.checked;
-                columnFollow.visible = true;
+                followMe = !followMe;
                 columnRouter.settingsChecked = false;
                 page.params = {};
                 columnRouter.settings && columnRouter.settings.destroy();
@@ -73,6 +72,7 @@ PagePL {
     }
 
     property var    columnRouter
+    property bool   followMe: false
     property var    from: null
     property bool   fromNeeded: true
     property string fromText: ""
@@ -92,7 +92,7 @@ PagePL {
             anchors.left: parent.left
             anchors.right: parent.right
             spacing: app.styler.themePaddingMedium
-            visible: !followMe.checked
+            visible: !followMe
 
             property var  settings: null
             property bool settingsChecked: false
@@ -176,20 +176,14 @@ PagePL {
                 onToChanged: columnRouter.addSettings();
             }
 
-            Connections {
-                target: followMe
-                onCheckedChanged: columnRouter.addSettings();
-            }
-
             Component.onCompleted: {
                 columnRouter.addSettings();
                 page.columnRouter = columnRouter;
             }
 
             function addSettings() {
-                if (columnRouter.settingsChecked || (page.from==null && page.fromNeeded) || (page.to==null && page.toNeeded) || followMe.checked) return;
+                if (columnRouter.settingsChecked || (page.from==null && page.fromNeeded) || (page.to==null && page.toNeeded) || followMe) return;
                 // Add router-specific settings from router's own QML file.
-                columnFollow.visible = !(page.fromNeeded && page.toNeeded);
                 page.params = {};
                 columnRouter.settings && columnRouter.settings.destroy();
                 var uri = py.evaluate("poor.app.router.settings_qml_uri");
@@ -213,18 +207,15 @@ PagePL {
             anchors.left: parent.left
             anchors.right: parent.right
             spacing: app.styler.themePaddingMedium
+            visible: followMe
 
             /////////////////
             // Follow Me mode
-            TextSwitchPL {
-                id: followMe
-                checked: false
-                description: app.tr("Follow the movement and show just in time information")
-                enabled: app.mode !== modes.followMe
-                text: app.tr("Follow me")
-                Component.onCompleted: {
-                    checked = (app.mode === modes.followMe);
-                }
+            ListItemLabel {
+                color: app.styler.themeHighlightColor
+                text: app.tr("Follow the movement and show just in time information")
+                truncMode: truncModes.none
+                wrapMode: Text.WordWrap
             }
 
             ToolItemPL {
@@ -232,7 +223,6 @@ PagePL {
                 icon.source: app.mode === modes.followMe ? app.styler.iconStop : app.styler.iconStart
                 icon.sourceSize.height: app.styler.themeIconSizeMedium
                 text: app.mode === modes.followMe ? app.tr("Stop") : app.tr("Begin")
-                visible: followMe.checked
                 width: columnFollow.width
                 onClicked: {
                     if (app.mode === modes.followMe) {
@@ -250,7 +240,6 @@ PagePL {
                 description: app.tr("Select mode of transportation. Only applies when Pure Maps is in follow me mode.")
                 label: app.tr("Mode of transportation")
                 model: [ app.tr("Car"), app.tr("Bicycle"), app.tr("Foot") ]
-                visible: followMe.checked
                 property string  value: "car"
                 property var     values: ["car", "bicycle", "foot"]
                 Component.onCompleted: {
@@ -273,7 +262,6 @@ PagePL {
                 stepSize: 0.1
                 value: app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
                 valueText: value
-                visible: followMe.checked
                 width: parent.width
                 onValueChanged: {
                     if (!mapmatchingComboBox.value) return;
@@ -288,6 +276,7 @@ PagePL {
     }
 
     Component.onCompleted: {
+        followMe = (app.mode === modes.followMe)
         if (!page.from) {
             page.from = map.getPosition();
             page.fromText = app.tr("Current position");
@@ -296,6 +285,8 @@ PagePL {
         page.toNeeded = py.evaluate("poor.app.router.to_needed");
         columnRouter.addSettings();
     }
+
+    onFollowMeChanged: columnRouter.addSettings();
 
     onPageStatusActive: {
         if (page.fromText === app.tr("Current position"))
