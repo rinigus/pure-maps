@@ -103,21 +103,6 @@ PagePL {
 
         }
 
-        ValueButtonPL {
-            id: typeButton
-            label: app.tr("Type")
-            height: app.styler.themeItemSizeSmall
-            value: page.query
-            // Avoid putting label and value on different lines.
-            width: 3 * parent.width
-            onClicked: {
-                var dialog = app.push("PlaceTypePage.qml");
-                dialog.accepted.connect(function() {
-                    page.query = dialog.query;
-                });
-            }
-        }
-
         ComboBoxPL {
             id: radiusComboBox
             label: app.tr("Radius")
@@ -138,6 +123,21 @@ PagePL {
             }
             onCurrentIndexChanged: {
                 page.radius = page.radiusValues[radiusComboBox.currentIndex];
+            }
+        }
+
+        ValueButtonPL {
+            id: typeButton
+            label: app.tr("Type")
+            height: app.styler.themeItemSizeSmall
+            value: page.query
+            // Avoid putting label and value on different lines.
+            width: 3 * parent.width
+            onClicked: {
+                var dialog = app.push("PlaceTypePage.qml");
+                dialog.accepted.connect(function() {
+                    page.query = dialog.query;
+                });
             }
         }
 
