@@ -105,7 +105,6 @@ PageListPL {
                 text: app.tr("Remove")
                 onClicked: {
                     app.map.deletePoi(model.poiId);
-                    page.model.remove(index);
                 }
             }
         }
@@ -162,7 +161,7 @@ PageListPL {
     property bool   bookmarkedOnly: false
     property string lastQuery: ""
     property var    searchField: undefined
-    property var    searchKeys: ["title", "poiType", "address", "postcode", "text", "phone", "link"]
+    property var    searchKeys: ["shortlisted", "bookmarked", "title", "poiType", "address", "postcode", "text", "phone", "link"]
 
     Component.onCompleted: {
         bookmarkedOnly = app.conf.get("poi_list_show_bookmarked");
@@ -179,7 +178,7 @@ PageListPL {
         if (bookmarkedOnly) data = map.pois.filter(function (p) { return p.bookmarked; });
         var s = Util.findMatchesInObjects(query, data, searchKeys);
         page.model.clear();
-        s.map(function (p){ page.model.append(p); });
+        s.forEach(function (p){ page.model.append(p); });
     }
 
 }

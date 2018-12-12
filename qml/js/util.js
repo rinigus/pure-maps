@@ -37,9 +37,9 @@ function appendAll(model, items) {
 function findMatches(query, candidates, completions, max) {
     // Return an array of matches from among candidates and completions.
     // candidates might contain matches, completions are known to match.
+    if (max < 1) return [];
     query = query.toLowerCase();
     var components = query.split(/ +/);
-    candidates = candidates.concat(completions);
     var foundBeginning = [], foundLater = [];
     for (var i = 0; i < candidates.length; i++) {
         // Find indices of all query components in given candidate.
@@ -80,7 +80,8 @@ function findMatchesInObjects(query, candidates, keys) {
             var p = candidates[index];
             var s = "";
             for (var i=0; i < keys.length; i++)
-                s = s + " " + p[ keys[i] ].toLowerCase();
+                if (typeof p[ keys[i] ] === 'string')
+                    s = s + " " + p[ keys[i] ].toLowerCase();
             var found = true;
             for (var i=0; i < components.length && found; i++) {
                 if (s.indexOf(components[i]) < 0)
@@ -95,8 +96,10 @@ function findMatchesInObjects(query, candidates, keys) {
         for (var i=0; i < keys.length; i++) {
             var va = a[ keys[i] ];
             var vb = b[ keys[i] ];
-            if (va != null && vb == null) return -1;
-            if (va == null && vb != null) return  1;
+            //if (va != null && vb == null) return -1;
+            //if (va == null && vb != null) return 1;
+            if (va && !vb) return -1;
+            if (!va && vb) return 1;
             if (va < vb) return -1;
             if (va > vb) return  1;
         }
@@ -107,13 +110,22 @@ function findMatchesInObjects(query, candidates, keys) {
     return result;
 }
 
-function injectMatches(model, found, text, markup) {
+function injectMatches(model, found, text, markup, properties) {
     // Set array of matches into existing ListView model items.
     found = found.slice(0, model.count);
     for (var i = 0; i < found.length; i++) {
         model.setProperty(i, text, found[i].text);
         model.setProperty(i, markup, found[i].markup);
         model.setProperty(i, "visible", true);
+        if (properties) {
+            for (var j = 0; j < properties.length; j++) {
+                if (properties[j] in found[i]) {
+                    model.setProperty(i, properties[j], found[i][properties[j]]);
+                } else {
+                    model.setProperty(i, properties[j], "");
+                }
+            }
+        }
     }
     for (var i = found.length; i < model.count; i++)
         model.setProperty(i, "visible", false);
