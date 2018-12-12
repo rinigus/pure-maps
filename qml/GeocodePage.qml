@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,8 +35,10 @@ PageListPL {
         menu: ContextMenuPL {
             id: contextMenu
             ContextMenuItemPL {
+                enabled: model.type == ""
                 text: app.tr("Remove")
                 onClicked: {
+                    if (model.type != "") return;
                     py.call_sync("poor.app.history.remove_place", [model.place]);
                     page.history = py.evaluate("poor.app.history.places");
                     page.model.remove(index);
@@ -46,43 +48,66 @@ PageListPL {
 
         visible: model.visible
 
+        property bool header: model.type === "header"
+
+        SectionHeaderPL {
+            visible: listItem.header
+            text: model.text
+        }
+
         ListItemLabel {
             anchors.leftMargin: page.searchField.textLeftMargin
             color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
             height: app.styler.themeItemSizeSmall
             text: model.text
             textFormat: Text.RichText
+            visible: !listItem.header
         }
 
         ListView.onRemove: animateRemoval(listItem);
 
         onClicked: {
+            if (listItem.header) return;
             listItem.focus = true;
-            var details = page.completionDetails[model.place.toLowerCase()];
-            if (details && details.x && details.y) {
-                // Autocompletion result with known coordinates, open directly.
-                py.call_sync("poor.app.history.add_place", [model.place]);
-                app.hideMenu();
-                var p = {
-                    "address": details.address || "",
-                    "link": details.link || "",
-                    "phone": details.phone || "",
-                    "poiType": details.poi_type || "",
-                    "postcode": details.postcode || "",
-                    "provider": details.provider || "",
-                    "text": details.text || "",
-                    "title": details.title || model.place,
-                    "type": "geocode",
-                    "x": details.x,
-                    "y": details.y,
-                };
-                if (map.addPoi(p)) p = map.pois[map.pois.length-1];
-                else p.title = app.tr("%1 [duplicate]", p.title);
-                map.showPoi(p, true);
-                map.autoCenter = false;
-                map.setCenter(details.x, details.y);
+            if (model.type === "autocomplete") {
+                var details = page.completionDetails[model.place];
+                if (details && details.x && details.y) {
+                    // Autocompletion result with known coordinates, open directly.
+                    py.call_sync("poor.app.history.add_place", [page.prevAutocompleteQuery]);
+                    app.hideMenu();
+                    var p = {
+                        "address": details.address || "",
+                        "link": details.link || "",
+                        "phone": details.phone || "",
+                        "poiType": details.poi_type || "",
+                        "postcode": details.postcode || "",
+                        "provider": details.provider || "",
+                        "text": details.text || "",
+                        "title": details.title || model.place,
+                        "type": "geocode",
+                        "x": details.x,
+                        "y": details.y,
+                    };
+                    var new_poi = map.addPoi(p);
+                    if (new_poi) {
+                        p = new_poi;
+                        page.poiBlacklisted.push(p.poiId);
+                    } else
+                        p.title = app.tr("%1 [duplicate]", p.title);
+                    map.showPoi(p, true);
+                    map.autoCenter = false;
+                    map.setCenter(details.x, details.y);
+                }
+            } else if (model.type === "poi") {
+                var poi = page.poiDetails[model.place];
+                if (poi) {
+                    app.hideMenu();
+                    map.showPoi(poi, true);
+                    map.autoCenter = false;
+                    map.setCenter(poi.coordinate.longitude, poi.coordinate.latitude);
+                }
             } else {
-                // No autocompletion, open results page.
+                // No autocompletion, no POI, open results page.
                 page.query = model.place;
                 app.pages.navigateForward();
             }
@@ -129,6 +154,8 @@ PageListPL {
     property var    autocompletions: []
     property var    completionDetails: []
     property var    history: []
+    property var    poiBlacklisted: [] // POIs that were created as a part of this search
+    property var    poiDetails: []
     property string prevAutocompleteQuery: "."
     property var    searchField: undefined
     property string query: ""
@@ -168,13 +195,10 @@ PageListPL {
             if (!page.active) return;
             results = results || [];
             page.autocompletions = [];
-            for (var i = 0; i < results.length; i++) {
+            page.completionDetails = [];
+            for (var i = 0; i < results.length && i < 10; i++) {
                 page.autocompletions.push(results[i].label);
-                page.completionDetails[results[i].label.toLowerCase()] = results[i];
-                // Use auto-completion results to fix history item letter case.
-                for (var j = 0; j < page.history.length; j++)
-                    if (results[i].label.toLowerCase() === page.history[j].toLowerCase())
-                        page.history[j] = results[i].label;
+                page.completionDetails[results[i].label] = results[i];
             }
             page.filterCompletions();
         });
@@ -182,19 +206,75 @@ PageListPL {
 
     function filterCompletions() {
         // Filter completions for the current search query.
-        var found = Util.findMatches(page.searchField.text.trim(),
-                                     page.history,
-                                     page.autocompletions,
-                                     page.model.count);
+        var found = [];
+        var query = page.searchField.text.trim();
 
-        Util.injectMatches(page.model, found, "place", "text");
+        // POIs
+        if (query) {
+            var searchKeys = ["shortlisted", "bookmarked", "title", "poiType", "address", "postcode", "text", "phone", "link"];
+            var pois = map.pois.filter(function (p) {
+               return (page.poiBlacklisted.indexOf(p.poiId) < 0);
+            });
+            var s = Util.findMatchesInObjects(query, pois, searchKeys);
+            if (s.length > 0) {
+                found.push({
+                               "markup": app.tr("Points of Interest"),
+                               "text": "",
+                               "type": "header"
+                           });
+                page.poiDetails = [];
+                s = s.slice(0, 10);
+                s.forEach(function (p){
+                    var t = (p.title ? p.title : app.tr("Unnamed point")) +
+                            (p.bookmarked ? " ☆" : "") + (p.shortlisted ? " ☰" : "");
+                    found.push({
+                        "markup": t,
+                        "text": p.poiId,
+                        "type": "poi"
+                    });
+                    page.poiDetails[p.poiId] = p;
+                });
+            }
+        }
+
+        // Autocompletions
+        if (query && page.autocompletions && page.autocompletions.length > 0) {
+            found.push({
+                           "markup": app.tr("Suggestions"),
+                           "text": "",
+                           "type": "header"
+                       });
+            autocompletions.forEach(function (p){
+                found.push({
+                               "markup": p,
+                               "text": p,
+                               "type": "autocomplete"
+                           });
+            });
+        }
+
+        // Recent searches
+        var f = Util.findMatches(page.searchField.text.trim(),
+                                 page.history,
+                                 [],
+                                 page.model.count - found.length);
+        if (f.length > 0) {
+            found.push({
+                           "markup": app.tr("Recent searches"),
+                           "text": "",
+                           "type": "header"
+                       });
+            found = found.concat(f);
+        }
+
+        Util.injectMatches(page.model, found, "place", "text", ["type"]);
         page.placeholderEnabled = found.length === 0;
     }
 
     function loadHistory() {
         // Load search history and preallocate list items.
         page.history = py.evaluate("poor.app.history.places");
-        while (page.model.count < 100)
+        while (page.model.count < 40)
             page.model.append({"place": "",
                                   "text": "",
                                   "visible": false});
