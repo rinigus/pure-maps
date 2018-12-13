@@ -1,10 +1,19 @@
+2018-12-13: Pure Maps 1.11
+=========================
+
+* Add reverse geocoding
+* Move geocoder, guide, and router selection into menus
+* Redesign Search page
+* Follow Me and Navigation are switched through menus
+* Update translations
+
 2018-12-04: Pure Maps 1.10
 =========================
 
 * Add support for online and offline profiles
 * Add position uncertainty indicator
 * Add facility for TTS testing in Preferences
-* [1.10.1] Updated translations
+* [1.10.1] Update translations
 * [1.10.1] Small bugfix
 
 2018-11-20: Pure Maps 1.9

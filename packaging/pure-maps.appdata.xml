@@ -37,6 +37,15 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release version="1.11.0" date="2018-12-13">
+     <description>
+       <p>Add reverse geocoding</p>
+       <p>Move geocoder, guide, and router selection into menus</p>
+       <p>Redesign Search page</p>
+       <p>Follow Me and Navigation are switched through menus</p>
+       <p>Update translations</p>
+     </description>
+   </release>
    <release version="1.10.0" date="2018-12-04">
      <description>
        <p>Add support for online and offline profiles</p>
