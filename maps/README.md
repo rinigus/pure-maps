@@ -16,6 +16,11 @@ keys are explained below, format-specific keys in following sections.
 
 * **`name`**: Name of the map source shown in listings.
 
+* **`profiles`**: List of profiles at which the map source should
+  appear. Currently supported profiles are "offline", "online" and
+  "mixed". For profiles that use some online server to pull the tiles
+  from, it is recommended to set this property to `["mixed", "online"]`.
+
 * **`style_gui`**: JSON object that can be used to alter GUI elements
  in agreement with the used map style. For example, see OSM Scout
  night styles. For the list of available keys and their meaning, see
