@@ -230,7 +230,7 @@ PagePL {
                         app.showMap();
                     } else {
                         app.setModeFollowMe();
-                        app.hideMenu();
+                        app.hideMenu(); // there is no info panel, follow me mode starts and is using hidden menu
                     }
                 }
             }

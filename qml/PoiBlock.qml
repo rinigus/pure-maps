@@ -44,7 +44,6 @@ Item {
     property bool active: false
     property int  contentHeight: hasData ? height : 0
     property bool hasData: false // triggers addition or removal of the element
-    property bool showMenu: false
 
     // poi properties
     property string address
@@ -154,17 +153,6 @@ Item {
         anchors.top: splitterItem.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: app.styler.themePaddingLarge
-        states: [
-            State {
-                // make space for the menu button if needed
-                when: item.showMenu && parent.width/2-mainButtons.width-app.styler.themeHorizontalPageMargin < menuButton.width
-                AnchorChanges {
-                    target: mainButtons
-                    anchors.left: parent.left
-                    anchors.horizontalCenter: undefined
-                }
-            }
-        ]
 
         IconButtonPL {
             icon.source: app.styler.iconAbout
@@ -192,7 +180,6 @@ Item {
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
-                item.showMenu = false;
                 app.showMenu("RoutePage.qml", {
                                  "to": [coordinate.longitude, coordinate.latitude],
                                  "toText": title,
@@ -205,7 +192,6 @@ Item {
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
-                item.showMenu = false;
                 app.showMenu("NearbyPage.qml", {
                                  "near": [coordinate.longitude, coordinate.latitude],
                                  "nearText": title,
@@ -215,9 +201,8 @@ Item {
 
         IconButtonPL {
             enabled: item.active
-            icon.source: !item.showMenu ? app.styler.iconDelete : ""
+            icon.source: app.styler.iconDelete
             icon.sourceSize.height: app.styler.themeIconSizeMedium
-            visible: !item.showMenu
             onClicked: {
                 if (coordinate === undefined) return;
                 map.deletePoi(poiId, true);
@@ -227,25 +212,11 @@ Item {
 
     }
 
-    IconButtonPL {
-        id: menuButton
-        anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        anchors.top: splitterItem.bottom
-        icon.source: item.showMenu ? app.styler.iconMenu : ""
-        icon.sourceSize.height: app.styler.themeIconSizeMedium
-        visible: item.showMenu
-        onClicked: {
-            app.showMenu();
-            hide();
-        }
-    }
-
     Connections {
         target: map
         onPoiChanged: {
             if (!poi || poi.poiId !== poiId) return;
-            item.show(map.getPoiById(poiId), item.showMenu);
+            item.show(map.getPoiById(poiId));
         }
     }
 
@@ -258,7 +229,7 @@ Item {
         map.setSelectedPoi()
     }
 
-    function show(poi, menu) {
+    function show(poi) {
         if (!poi) {
             hide();
             return;
@@ -278,7 +249,6 @@ Item {
         item.title = poi.title || app.tr("Unnamed point");
         item.poi = poi;
         // fill item vars
-        item.showMenu = !!menu;
         item.active = (item.poiId.length > 0);
         item.visible = true;
         item.hasData = true;

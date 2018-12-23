@@ -43,7 +43,7 @@ PageEmptyPL {
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
                 app.setModeExplore();
-                app.hideMenu();
+                app.hideMenu(app.tr("Navigation"));
                 map.hidePoi();
                 map.addRoute(route);
                 map.fitViewToRoute();

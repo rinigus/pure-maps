@@ -54,7 +54,7 @@ PageListPL {
         }
 
         onClicked: {
-            app.hideMenu();
+            app.hideMenu(app.tr("Search: %1").arg(page.query));
             var p = {
                 "address": model.address || "",
                 "link": model.link || "",
@@ -102,7 +102,7 @@ PageListPL {
                                   "y": item.y,
                               });
                 }
-                app.hideMenu();
+                app.hideMenu(app.tr("Search: %1").arg(page.query));
                 map.clearPois();
                 map.addPois(pois);
                 map.fitViewToPois(pois);
@@ -113,6 +113,7 @@ PageListPL {
 
     property bool   loading: true
     property bool   populated: false
+    property string query
 
     BusyModal {
         id: busy
@@ -131,7 +132,8 @@ PageListPL {
         //listView.visible = true;
         if (page.populated) return;
         var geocodePage = app.pages.previousPage();
-        page.populate(geocodePage.query);
+        page.query = geocodePage.query
+        page.populate(query);
     }
 
     onPageStatusInactive: {

@@ -38,7 +38,7 @@ PageEmptyPL {
     NavigationSign { id: navigationSign }
     NorthArrow { id: northArrow }
     Notification { id: notification }
-    InfoPanel { id: infoPanel; infoText: "Search: abc" }
+    InfoPanel { id: infoPanel }
     RemorsePopupPL { id: remorse; z: 1000 }
     ScaleBar { id: scaleBar }
     SpeedLimit { id: speedLimit }
@@ -46,6 +46,7 @@ PageEmptyPL {
     ZoomLevel { id: zoomLevel }
 
     Component.onCompleted: {
+        app.infoPanel = infoPanel;
         app.map = map;
         app.notification = notification;
         app.remorse = remorse;

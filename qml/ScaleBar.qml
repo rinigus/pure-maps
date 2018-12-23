@@ -50,7 +50,7 @@ Item {
             }
         }
     ]
-    visible: !app.poiActive
+    visible: !app.infoActive
     width: (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait ? scaleBar.height : scaleBar.width
     z: 400
 

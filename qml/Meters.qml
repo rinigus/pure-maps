@@ -28,7 +28,7 @@ Item {
     height: labels.implicitHeight
     opacity: 0.9
     width: parent.width
-    visible: app.mode === modes.explore && !app.poiActive
+    visible: app.mode === modes.explore && !app.infoActive
     z: 400
 
     Text {

@@ -74,7 +74,7 @@ PageListPL {
                 if (details && details.x && details.y) {
                     // Autocompletion result with known coordinates, open directly.
                     py.call_sync("poor.app.history.add_place", [page.prevAutocompleteQuery]);
-                    app.hideMenu();
+                    app.hideMenu(app.tr("Search: %1").arg(page.query));
                     var p = {
                         "address": details.address || "",
                         "link": details.link || "",
@@ -101,7 +101,7 @@ PageListPL {
             } else if (model.type === "poi") {
                 var poi = page.poiDetails[model.place];
                 if (poi) {
-                    app.hideMenu();
+                    app.hideMenu(app.tr("Search: %1").arg(page.query));
                     map.showPoi(poi, true);
                     map.autoCenter = false;
                     map.setCenter(poi.coordinate.longitude, poi.coordinate.latitude);

@@ -50,19 +50,18 @@ Panel {
         anchors.left: parent.left
         anchors.right: parent.right
         color: app.styler.blockBg
-        //height: hasInfo ? Math.max(infoLabel.height, menuButton.height) + 2*app.styler.themePaddingLarge : 0
-        height: hasInfo ? infoLabel.height + 2*app.styler.themePaddingLarge : 0
+        height: hasInfo ? Math.max(infoLabel.height, menuButton.height) + 2*app.styler.themePaddingLarge : 0
+        //height: hasInfo ? infoLabel.height + 2*app.styler.themePaddingLarge : 0
         z: parent.z + 20
     }
 
     ListItemLabel {
         id: infoLabel
-        anchors.bottom: panel.bottom
-        anchors.bottomMargin: app.styler.themePaddingLarge
         anchors.left: parent.left
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
         anchors.right: menuButton.left
         anchors.rightMargin: app.styler.themePaddingLarge
+        anchors.verticalCenter: infoBg.verticalCenter
         color: app.styler.themeHighlightColor
         font.pixelSize: app.styler.themeFontSizeLarge
         height: text ? implicitHeight: 0
@@ -73,16 +72,16 @@ Panel {
 
     IconButtonPL {
         id: menuButton
-        anchors.verticalCenter: infoLabel.verticalCenter
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.verticalCenter: infoBg.verticalCenter
         icon.source: showMenu ? app.styler.iconMenu : ""
         icon.sourceSize.height: app.styler.themeIconSizeMedium
         visible: showMenu
         z: infoLabel.z
         onClicked: {
-            _hide();
             app.showMenu();
+            _hide();
         }
     }
 
@@ -91,19 +90,20 @@ Panel {
     function _hide() {
         poiBlock.hide();
         infoText = "";
+        app.resetMenu();
     }
 
     function hidePoi() {
         poiBlock.hide();
     }
 
-    function showPoi(poi, menu) {
+    function showPoi(poi) {
         if (!poi) {
             hide();
             return;
         }
         panel.noAnimation = panel.hasData;
-        poiBlock.show(poi, menu);
+        poiBlock.show(poi);
         panel.noAnimation = false;
     }
 }
