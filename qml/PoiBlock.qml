@@ -21,33 +21,29 @@ import QtPositioning 5.3
 import "."
 import "platform"
 
-Rectangle {
-    id: panel
+// POI information shown in a panel under the map
+Item {
+    id: item
     anchors.left: parent.left
-    color: app.styler.blockBg
-    height: contentHeight >= parent.height - y ? contentHeight : parent.height - y
-    width: parent.width
-    y: parent.height
-    z: 910
-
-    // internal properties
-    property bool active: false
-    property int  contentHeight: {
-        if (!hasData) return 0;
-        var h = 2*app.styler.themePaddingLarge;
+    anchors.right: parent.right
+    height: {
+        if (!visible) return 0;
+        var h = 0;
         h += titleItem.height;
         h += typeAddressItem.height;
         h += coorItem.height;
         h += textItem.height;
         h += additionalInfoItem.height;
         h += splitterItem.height;
-//        h += phoneItem.height;
-//        h += linkItem.height;
-        h += Math.max(mainButtons.height, menuButton.height);
+        h += mainButtons.height;
         return h;
     }
-    property bool hasData: false
-    property bool noAnimation: false
+    visible: false
+
+    // properties of the item
+    property bool active: false
+    property int  contentHeight: hasData ? height : 0
+    property bool hasData: false // triggers addition or removal of the element
     property bool showMenu: false
 
     // poi properties
@@ -64,29 +60,14 @@ Rectangle {
     property string title
     property var    poi
 
-    Behavior on y {
-        enabled: !noAnimation && (!mouse.drag.active || mouse.dragDone)
-        NumberAnimation {
-            duration: 100
-            easing.type: Easing.Linear
-            onRunningChanged: panel.noAnimation = !panel.hasData;
-        }
-    }
-
-    // Declare non-interactive elements before MouseArea
-    // and all interactive elements after MouseArea
-    // This will preserve dragging and interaction with
-    // the elements. Use anchors to position the elements
-
     ListItemLabel {
         // title and overall anchor to the top
         id: titleItem
-        anchors.top: panel.top
-        anchors.topMargin: app.styler.themePaddingLarge
+        anchors.top: item.top
         color: app.styler.themeHighlightColor
         font.pixelSize: app.styler.themeFontSizeLarge
         height: text ? implicitHeight + app.styler.themePaddingMedium: 0
-        text: panel.title
+        text: item.title
         truncMode: truncModes.none
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
@@ -99,12 +80,12 @@ Rectangle {
         height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         font.pixelSize: app.styler.themeFontSizeSmall
         text: {
-            if (panel.poiType && panel.address)
-                return app.tr("%1; %2", panel.poiType, panel.address);
-            else if (panel.poiType)
-                return panel.poiType;
-            else if (panel.address)
-                return panel.address;
+            if (item.poiType && item.address)
+                return app.tr("%1; %2", item.poiType, item.address);
+            else if (item.poiType)
+                return item.poiType;
+            else if (item.address)
+                return item.address;
             return "";
         }
         truncMode: truncModes.none
@@ -118,7 +99,7 @@ Rectangle {
         color: app.styler.themeSecondaryHighlightColor
         font.pixelSize: app.styler.themeFontSizeSmall
         height: text ? implicitHeight + app.styler.themePaddingSmall: 0
-        text: app.portrait && panel.coordinate? app.tr("Latitude: %1; Longitude: %2", panel.coordinate.latitude, panel.coordinate.longitude) : ""
+        text: app.portrait && item.coordinate? app.tr("Latitude: %1; Longitude: %2", item.coordinate.latitude, item.coordinate.longitude) : ""
         truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
     }
@@ -130,7 +111,7 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeSmall
         height: text ? implicitHeight + app.styler.themePaddingSmall: 0
         maximumLineCount: app.portrait ? 3 : 1;
-        text: panel.text
+        text: item.text
         truncMode: truncModes.elide
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
@@ -145,11 +126,11 @@ Rectangle {
         horizontalAlignment: Text.AlignRight
         text: {
             var info = "";
-            if (panel.postcode) info += app.tr("Postal code") + "  ";
-            if (panel.link) info += app.tr("Web") + "  ";
-            if (panel.phone) info += app.tr("Phone") + "  ";
-            if (panel.shortlisted) info += app.tr("Shortlisted") + "  ";
-            if (panel.text && textItem.truncated) info += app.tr("Text") + "  ";
+            if (item.postcode) info += app.tr("Postal code") + "  ";
+            if (item.link) info += app.tr("Web") + "  ";
+            if (item.phone) info += app.tr("Phone") + "  ";
+            if (item.shortlisted) info += app.tr("Shortlisted") + "  ";
+            if (item.text && textItem.truncated) info += app.tr("Text") + "  ";
             if (info)
                 return app.tr("More info: %1", info);
             return "";
@@ -167,31 +148,6 @@ Rectangle {
         height: app.styler.themePaddingLarge - app.styler.themePaddingSmall
     }
 
-    MouseArea {
-        id: mouse
-        anchors.fill: parent
-        drag.target: panel
-        drag.axis: Drag.YAxis
-        drag.minimumY: panel.parent.height - panel.height
-        drag.maximumY: panel.parent.height
-
-        property bool dragDone: true
-
-        onPressed: {
-            dragDone=false;
-        }
-
-        onReleased: {
-            dragDone = true;
-            var t = Math.min(panel.parent.height*0.1, panel.height * 0.5);
-            var d = panel.y - drag.minimumY;
-            if (d > t)
-                panel.hide();
-            else
-                panel._show();
-        }
-    }
-
     Row {
         id: mainButtons
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
@@ -201,7 +157,7 @@ Rectangle {
         states: [
             State {
                 // make space for the menu button if needed
-                when: panel.showMenu && parent.width/2-mainButtons.width-app.styler.themeHorizontalPageMargin < menuButton.width
+                when: item.showMenu && parent.width/2-mainButtons.width-app.styler.themeHorizontalPageMargin < menuButton.width
                 AnchorChanges {
                     target: mainButtons
                     anchors.left: parent.left
@@ -216,13 +172,13 @@ Rectangle {
             onClicked: {
                 app.push("PoiInfoPage.qml", {
                              "active": active,
-                             "poi": panel.poi,
+                             "poi": item.poi,
                          });
             }
         }
 
         IconButtonPL {
-            enabled: panel.active
+            enabled: item.active
             icon.source: bookmarked ? app.styler.iconFavoriteSelected  : app.styler.iconFavorite
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
@@ -236,7 +192,7 @@ Rectangle {
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
-                panel.showMenu = false;
+                item.showMenu = false;
                 app.showMenu("RoutePage.qml", {
                                  "to": [coordinate.longitude, coordinate.latitude],
                                  "toText": title,
@@ -249,7 +205,7 @@ Rectangle {
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
-                panel.showMenu = false;
+                item.showMenu = false;
                 app.showMenu("NearbyPage.qml", {
                                  "near": [coordinate.longitude, coordinate.latitude],
                                  "nearText": title,
@@ -258,10 +214,10 @@ Rectangle {
         }
 
         IconButtonPL {
-            enabled: panel.active
-            icon.source: !panel.showMenu ? app.styler.iconDelete : ""
+            enabled: item.active
+            icon.source: !item.showMenu ? app.styler.iconDelete : ""
             icon.sourceSize.height: app.styler.themeIconSizeMedium
-            visible: !panel.showMenu
+            visible: !item.showMenu
             onClicked: {
                 if (coordinate === undefined) return;
                 map.deletePoi(poiId, true);
@@ -276,9 +232,9 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: splitterItem.bottom
-        icon.source: panel.showMenu ? app.styler.iconMenu : ""
+        icon.source: item.showMenu ? app.styler.iconMenu : ""
         icon.sourceSize.height: app.styler.themeIconSizeMedium
-        visible: panel.showMenu
+        visible: item.showMenu
         onClicked: {
             app.showMenu();
             hide();
@@ -289,38 +245,17 @@ Rectangle {
         target: map
         onPoiChanged: {
             if (!poi || poi.poiId !== poiId) return;
-            panel.show(map.getPoiById(poiId), panel.showMenu);
+            item.show(map.getPoiById(poiId), item.showMenu);
         }
-    }
-
-    Connections {
-        target: panel
-        onContentHeightChanged: panel.hasData && panel._show()
-    }
-
-    Connections {
-        target: parent
-        onHeightChanged: {
-            if (panel.hasData) panel._show();
-            else panel._hide();
-        }
-    }
-
-    function _hide() {
-        y = parent.height;
     }
 
     function hide() {
-        _hide();
-        panel.active = false;
-        panel.hasData = false;
-        panel.poiId = "";
+        item.visible = false;
+        item.active = false;
+        item.hasData = false;
+        item.poiId = "";
         app.poiActive = false;
         map.setSelectedPoi()
-    }
-
-    function _show() {
-        y = parent.height - panel.contentHeight;
     }
 
     function show(poi, menu) {
@@ -329,26 +264,24 @@ Rectangle {
             return;
         }
         app.poiActive = true;
-        panel.noAnimation = panel.hasData;
         // fill poi data
-        panel.address = poi.address || "";
-        panel.bookmarked = poi.bookmarked || false;
-        panel.coordinate = poi.coordinate || QtPositioning.coordinate(poi.y, poi.x);
-        panel.link = poi.link || "";
-        panel.phone = poi.phone || "";
-        panel.poiId = poi.poiId || "";
-        panel.poiType = poi.poiType || "";
-        panel.postcode = poi.postcode || "";
-        panel.shortlisted = poi.shortlisted || false;
-        panel.text = poi.text || "";
-        panel.title = poi.title || app.tr("Unnamed point");
-        panel.poi = poi;
-        // fill panel vars
-        panel.showMenu = !!menu;
-        panel.active = (panel.poiId.length > 0);
-        panel.hasData = true;
-        _show();
-        panel.noAnimation = false;
-        map.setSelectedPoi(panel.coordinate)
+        item.address = poi.address || "";
+        item.bookmarked = poi.bookmarked || false;
+        item.coordinate = poi.coordinate || QtPositioning.coordinate(poi.y, poi.x);
+        item.link = poi.link || "";
+        item.phone = poi.phone || "";
+        item.poiId = poi.poiId || "";
+        item.poiType = poi.poiType || "";
+        item.postcode = poi.postcode || "";
+        item.shortlisted = poi.shortlisted || false;
+        item.text = poi.text || "";
+        item.title = poi.title || app.tr("Unnamed point");
+        item.poi = poi;
+        // fill item vars
+        item.showMenu = !!menu;
+        item.active = (item.poiId.length > 0);
+        item.visible = true;
+        item.hasData = true;
+        map.setSelectedPoi(item.coordinate)
     }
 }

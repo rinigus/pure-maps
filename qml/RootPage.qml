@@ -38,7 +38,7 @@ PageEmptyPL {
     NavigationSign { id: navigationSign }
     NorthArrow { id: northArrow }
     Notification { id: notification }
-    PoiPanel { id: poiPanel }
+    InfoPanel { id: infoPanel; infoText: "Search: abc" }
     RemorsePopupPL { id: remorse; z: 1000 }
     ScaleBar { id: scaleBar }
     SpeedLimit { id: speedLimit }
@@ -50,5 +50,4 @@ PageEmptyPL {
         app.notification = notification;
         app.remorse = remorse;
     }
-
 }

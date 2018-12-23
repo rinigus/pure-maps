@@ -149,7 +149,7 @@ MapboxMap {
     }
 
     Connections {
-        target: poiPanel
+        target: infoPanel
         onHeightChanged: map.updateMargins();
     }
 
@@ -483,7 +483,7 @@ MapboxMap {
     }
 
     function hidePoi() {
-        poiPanel && poiPanel.hide();
+        infoPanel && infoPanel.hidePoi();
     }
 
     function initIcons() {
@@ -679,7 +679,7 @@ MapboxMap {
     }
 
     function showPoi(poi, showMenu) {
-        if (poiPanel) poiPanel.show(poi, showMenu);
+        if (infoPanel) infoPanel.showPoi(poi, showMenu);
     }
 
     function toggleAutoCenter() {
@@ -707,7 +707,7 @@ MapboxMap {
         var footer = !app.poiActive && app.mode === modes.explore && menuButton ? (map.height-menuButton.y) : 0;
         footer += !app.poiActive && (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
         footer += !app.poiActive && (app.mode === modes.navigate || app.mode === modes.followMe) && streetName ? streetName.height : 0
-        footer += app.poiActive && poiPanel ? poiPanel.height : 0
+        footer += app.poiActive && infoPanel ? infoPanel.height : 0
         footer = Math.min(footer, map.height / 2.0);
 
         // If auto-rotate is on, the user is always heading up
