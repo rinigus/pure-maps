@@ -120,7 +120,7 @@ PageListPL {
             map.setCenter(
                         p.coordinate.longitude,
                         p.coordinate.latitude);
-            app.hideMenu();
+            app.hideMenu(app.tr("Points of Interest"));
         }
 
     }

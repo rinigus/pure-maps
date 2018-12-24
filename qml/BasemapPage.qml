@@ -39,7 +39,7 @@ PageListPL {
         }
 
         onClicked: {
-            app.hideMenu();
+            app.hideMenu(app.tr("Map: %1").arg(model.name));
             py.call_sync("poor.app.set_basemap", [model.pid]);
             //map.setBasemap();
             for (var i = 0; i < page.model.count; i++)

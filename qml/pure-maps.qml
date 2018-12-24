@@ -33,6 +33,10 @@ ApplicationWindowPL {
     property var    conf: Config {}
     property bool   hasMapMatching: false
     property bool   initialized: false
+    property bool   infoActive: infoPanel && infoPanel.infoText
+    property var    infoPanel: null
+    // infoPanelOpen is true if either info or poi (or both) are shown.
+    property bool   infoPanelOpen: infoActive || poiActive
     // Default vertical margin for various multiline list items
     // such that it would be consistent with single-line list items
     // and the associated constant Theme.itemSizeSmall.
@@ -130,9 +134,10 @@ ApplicationWindowPL {
         return "%1@%2.png".arg(name).arg(ratio);
     }
 
-    function hideMenu() {
+    function hideMenu(menutext) {
         app._stackMain.keep = true;
         app._stackMain.setCurrent(app.pages.currentPage());
+        app.infoPanel.infoText = menutext ? menutext : "";
         app.showMap();
     }
 
@@ -250,6 +255,8 @@ ApplicationWindowPL {
 
     function setModeNavigate() {
         app.mode = modes.navigate;
+        resetMenu();
+        app.infoPanel.infoText = "";
     }
 
     function showMap() {

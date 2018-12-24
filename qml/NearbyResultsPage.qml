@@ -57,7 +57,7 @@ PageListPL {
         }
 
         onClicked: {
-            app.hideMenu();
+            app.hideMenu(querySummary);
             var p = {
                 "address": model.address || "",
                 "link": model.link || "",
@@ -105,13 +105,15 @@ PageListPL {
                                   "y": item.y,
                               });
                 }
-                app.hideMenu();
+                app.hideMenu(querySummary);
                 map.clearPois();
                 map.addPois(pois);
                 map.fitViewToPois(pois);
             }
         }
     }
+
+    property string querySummary
 
     BusyModal {
         id: busy
@@ -131,6 +133,7 @@ PageListPL {
         if (page.populated) return;
         var nearbyPage = app.pages.previousPage();
         page.populate(nearbyPage.query, nearbyPage.near, nearbyPage.radius, nearbyPage.params);
+        querySummary = app.tr("Nearby venues: %1").arg(nearbyPage.query)
     }
 
     onPageStatusInactive: {
