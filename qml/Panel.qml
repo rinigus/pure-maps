@@ -59,10 +59,10 @@ Rectangle {
     MouseArea {
         id: mouse
         anchors.fill: parent
-        drag.target: panel
         drag.axis: Drag.YAxis
         drag.minimumY: panel.parent.height - panel.height
         drag.maximumY: panel.parent.height
+        drag.target: panel
 
         property bool dragDone: true
 

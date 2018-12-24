@@ -41,7 +41,6 @@ Panel {
         id: poiBlock
         anchors.top: parent.top
         anchors.topMargin: app.styler.themePaddingLarge
-        z: parent.z + 10
     }
 
     Rectangle {
@@ -50,38 +49,45 @@ Panel {
         anchors.left: parent.left
         anchors.right: parent.right
         color: app.styler.blockBg
-        height: hasInfo ? Math.max(infoLabel.height, menuButton.height) + 2*app.styler.themePaddingLarge : 0
-        //height: hasInfo ? infoLabel.height + 2*app.styler.themePaddingLarge : 0
-        z: parent.z + 20
-    }
+        height: hasInfo ? Math.max(backButton.height, infoLabel.height, menuButton.height) + 2*app.styler.themePaddingLarge : 0
 
-    ListItemLabel {
-        id: infoLabel
-        anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
-        anchors.right: menuButton.left
-        anchors.rightMargin: app.styler.themePaddingLarge
-        anchors.verticalCenter: infoBg.verticalCenter
-        color: app.styler.themeHighlightColor
-        font.pixelSize: app.styler.themeFontSizeLarge
-        height: text ? implicitHeight: 0
-        truncMode: truncModes.fade
-        verticalAlignment: Text.AlignTop
-        z: infoBg.z + 10
-    }
+        IconButtonPL {
+            id: backButton
+            anchors.left: parent.left
+            anchors.leftMargin: app.styler.themeHorizontalPageMargin
+            anchors.verticalCenter: infoBg.verticalCenter
+            icon.source: showMenu ? app.styler.iconBack : ""
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
+            visible: showMenu
+            onClicked: _hide()
+        }
 
-    IconButtonPL {
-        id: menuButton
-        anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        anchors.verticalCenter: infoBg.verticalCenter
-        icon.source: showMenu ? app.styler.iconMenu : ""
-        icon.sourceSize.height: app.styler.themeIconSizeMedium
-        visible: showMenu
-        z: infoLabel.z
-        onClicked: {
-            app.showMenu();
-            _hide();
+        ListItemLabel {
+            id: infoLabel
+            anchors.left: backButton.right
+            anchors.leftMargin: app.styler.themePaddingLarge
+            anchors.right: menuButton.left
+            anchors.rightMargin: app.styler.themePaddingLarge
+            anchors.verticalCenter: infoBg.verticalCenter
+            color: app.styler.themeHighlightColor
+            font.pixelSize: app.styler.themeFontSizeLarge
+            height: text ? implicitHeight: 0
+            truncMode: truncModes.fade
+            verticalAlignment: Text.AlignTop
+        }
+
+        IconButtonPL {
+            id: menuButton
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+            anchors.verticalCenter: infoBg.verticalCenter
+            icon.source: showMenu ? app.styler.iconMenu : ""
+            icon.sourceSize.height: app.styler.themeIconSizeMedium
+            visible: showMenu
+            onClicked: {
+                app.showMenu();
+                _hide();
+            }
         }
     }
 

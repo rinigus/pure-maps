@@ -53,6 +53,7 @@ QtObject {
 
     // used icons
     property string iconAbout: "image://theme/icon-m-about"
+    property string iconBack: "image://theme/icon-m-back"
     property string iconClear: "image://theme/icon-m-clear"
     property string iconDelete: "image://theme/icon-m-delete"
     property string iconDot: "find-location-symbolic"
@@ -94,6 +95,7 @@ QtObject {
 
     function initStyle() {
         iconAbout = getIcon("help-about-symbolic");
+        iconBack = getIcon("go-previous-symbolic");
         iconClear = getIcon("edit-clear-all-symbolic");
         iconDelete = getIcon("edit-delete-symbolic");
         iconDot = getIcon("find-location-symbolic");
