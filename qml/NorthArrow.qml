@@ -48,7 +48,7 @@ IconButtonPL {
             }
         }
     ]
-    visible: !app.infoActive || app.mode === modes.navigate || app.mode === modes.followMe
+    visible: !app.infoPanelOpen || app.mode === modes.navigate || app.mode === modes.followMe
     width: icon.width
     z: 500
 

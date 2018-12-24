@@ -35,6 +35,8 @@ ApplicationWindowPL {
     property bool   initialized: false
     property bool   infoActive: infoPanel && infoPanel.infoText
     property var    infoPanel: null
+    // infoPanelOpen is true if either info or poi (or both) are shown.
+    property bool   infoPanelOpen: infoActive || poiActive
     // Default vertical margin for various multiline list items
     // such that it would be consistent with single-line list items
     // and the associated constant Theme.itemSizeSmall.
