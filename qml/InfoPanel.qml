@@ -43,12 +43,11 @@ Panel {
         anchors.topMargin: app.styler.themePaddingLarge
     }
 
-    Rectangle {
+    Item {
         id: infoBg
-        anchors.bottom: panel.bottom
+        anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        color: app.styler.blockBg
         height: hasInfo ? Math.max(backButton.height, infoLabel.height, menuButton.height) + 2*app.styler.themePaddingLarge : 0
 
         IconButtonPL {

@@ -21,9 +21,9 @@ import QtQuick 2.0
 Rectangle {
     id: panel
     anchors.left: parent.left
+    anchors.right: parent.right
     color: app.styler.blockBg
     height: contentHeight >= parent.height - y ? contentHeight : parent.height - y
-    width: parent.width
     y: parent.height - _offset
     z: 910
 
@@ -33,6 +33,7 @@ Rectangle {
     property bool noAnimation: false
 
     // internal properties
+    default property alias _content: itemCont.data
     property bool _hiding: false
     property int  _offset: 0
 
@@ -60,11 +61,19 @@ Rectangle {
         id: mouse
         anchors.fill: parent
         drag.axis: Drag.YAxis
+        // "filterChildren" makes sometimes parts of the panel transparent to
+        // drag events. probably some bug in either my implementation or qml
+        // drag.filterChildren: true
         drag.minimumY: panel.parent.height - panel.height
         drag.maximumY: panel.parent.height
         drag.target: panel
 
         property bool dragDone: true
+
+        Item {
+            id: itemCont
+            anchors.fill: parent
+        }
 
         onPressed: {
             dragDone=false;
