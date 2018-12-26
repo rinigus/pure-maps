@@ -26,16 +26,17 @@ Panel {
     contentHeight: {
         if (!hasData) return 0;
         var h = 0;
-        if (poiBlock.contentHeight) h += poiBlock.contentHeight + app.styler.themePaddingLarge;
-        if (hasInfo) h += infoBg.height;
-        else h += app.styler.themePaddingLarge;
+        if (poiBlock.hasData && poiBlock.contentHeight) h += poiBlock.contentHeight + app.styler.themePaddingLarge;
+        if (infoText) h += infoBg.height;
+        else if (poiBlock.hasData) h += app.styler.themePaddingLarge;
         return h;
     }
-    hasData: hasInfo || poiBlock.hasData
+    hasData: infoText || poiBlock.hasData
 
     property alias infoText: infoLabel.text
-    property bool  hasInfo: infoText
-    property bool  showMenu: hasInfo
+    property bool  showMenu: infoText
+
+    signal poiHidden(string poiId);
 
     PoiBlock {
         id: poiBlock
@@ -48,7 +49,7 @@ Panel {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        height: hasInfo ? Math.max(backButton.height, infoLabel.height, menuButton.height) + 2*app.styler.themePaddingLarge : 0
+        height: infoText ? Math.max(backButton.height, infoLabel.height, menuButton.height) + 2*app.styler.themePaddingLarge : 0
 
         IconButtonPL {
             id: backButton
@@ -58,7 +59,10 @@ Panel {
             icon.source: showMenu ? app.styler.iconBack : ""
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             visible: showMenu
-            onClicked: _hide()
+            onClicked: {
+                app.resetMenu();
+                _hide();
+            }
         }
 
         ListItemLabel {
@@ -92,22 +96,32 @@ Panel {
 
     onHidden: _hide()
 
+    onSwipedOut: app.resetMenu()
+
     function _hide() {
-        poiBlock.hide();
+        if (poiBlock.hasData) {
+            var pid = poiBlock.poiId;
+            poiBlock.hide();
+            poiHidden(pid);
+        }
         infoText = "";
-        app.resetMenu();
     }
 
     function hidePoi() {
+        if (!poiBlock.hasData) return;
+        var pid = poiBlock.poiId;
         poiBlock.hide();
+        poiHidden(pid);
     }
 
     function showPoi(poi) {
         if (!poi) {
-            hide();
+            hidePoi();
             return;
         }
         panel.noAnimation = panel.hasData;
+        if (poiBlock.hasData && poi.poiId !== poiBlock.poiId)
+            poiHidden(poiBlock.poiId);
         poiBlock.show(poi);
         panel.noAnimation = false;
     }

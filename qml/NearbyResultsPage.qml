@@ -71,7 +71,9 @@ PageListPL {
                 "x": model.x,
                 "y": model.y,
             };
-            if (map.addPoi(p)) p = map.pois[map.pois.length-1];
+            app.stateId = stateId;
+            var new_poi = map.addPoi(p, stateId);
+            if (new_poi) p = new_poi;
             else p.title = app.tr("%1 [duplicate]", p.title);
             map.showPoi(p, true);
             map.autoCenter = false;
@@ -106,14 +108,15 @@ PageListPL {
                               });
                 }
                 app.hideMenu(querySummary);
-                map.clearPois();
-                map.addPois(pois);
+                app.stateId = stateId;
+                map.addPois(pois, stateId);
                 map.fitViewToPois(pois);
             }
         }
     }
 
     property string querySummary
+    property string stateId: "Reverse geocoder: " + querySummary
 
     BusyModal {
         id: busy

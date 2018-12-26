@@ -68,7 +68,9 @@ PageListPL {
                 "x": model.x,
                 "y": model.y,
             };
-            if (map.addPoi(p)) p = map.pois[map.pois.length-1];
+            app.stateId = stateId;
+            var new_poi = map.addPoi(p, stateId);
+            if (new_poi) p = new_poi;
             else p.title = app.tr("%1 [duplicate]", p.title);
             map.showPoi(p, true);
             map.autoCenter = false;
@@ -103,8 +105,8 @@ PageListPL {
                               });
                 }
                 app.hideMenu(app.tr("Search: %1").arg(page.query));
-                map.clearPois();
-                map.addPois(pois);
+                app.stateId = stateId;
+                map.addPois(pois, stateId);
                 map.fitViewToPois(pois);
             }
         }
@@ -113,6 +115,7 @@ PageListPL {
 
     property bool   loading: true
     property bool   populated: false
+    property string stateId: "Geocoder: " + query
     property string query
 
     BusyModal {

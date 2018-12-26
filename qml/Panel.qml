@@ -38,7 +38,8 @@ Rectangle {
     property int  _offset: 0
 
     // signals
-    signal hidden;
+    signal hidden
+    signal swipedOut
 
     Behavior on _offset {
         id: movementBehavior
@@ -84,8 +85,10 @@ Rectangle {
             dragDone = true;
             var t = Math.min(panel.parent.height*0.1, panel.height * 0.25);
             var d = panel.y - drag.minimumY;
-            if (d > t)
+            if (d > t) {
                 panel._hidePanel();
+                swipedOut();
+            }
             else
                 panel._showPanel();
         }
@@ -93,10 +96,10 @@ Rectangle {
 
     Connections {
         target: panel
-        onContentHeightChanged: panel.hasData && panel._showPanel()
+        onContentHeightChanged: panel.hasData && panel.contentHeight > 0 && !panel._hiding && panel._showPanel()
         onHasDataChanged: {
             if (hasData) panel._showPanel();
-            else panel._hidePanel();
+            else if (_offset) panel._hidePanel();
         }
     }
 
@@ -104,14 +107,13 @@ Rectangle {
         target: parent
         onHeightChanged: {
             if (panel.hasData) panel._showPanel();
-            else panel._hidePanel();
+            else if (_offset > 0) panel._hidePanel();
         }
     }
 
     function _hidePanel() {
         if (movementBehavior.enabled)
             panel._hiding = true;
-        //y = parent.height;
         _offset = 0;
         if (!panel._hiding)
             hidden();
@@ -119,7 +121,6 @@ Rectangle {
 
     function _showPanel() {
         panel._hiding = false;
-        //y = parent.height - panel.contentHeight;
         _offset = panel.contentHeight;
     }
 }

@@ -58,6 +58,11 @@ MapboxMap {
     property bool   hasRoute: false
     property var    maneuvers: []
     property var    pois: []
+    property var    _poisKeep: QtObject {
+        // keeps a list of current temporary POIs that are kept on a map
+        property string stateId
+        property var    poiIds: []
+    }
     property var    position: gps.position
     property bool   ready: false
     property var    route: {}
@@ -130,7 +135,14 @@ MapboxMap {
     Connections {
         target: app
         onModeChanged: setMode()
-        onPortraitChanged: map.updateMargins();
+        onPortraitChanged: map.updateMargins()
+        onStateIdChanged: map.clearPois(true)
+    }
+
+    Connections {
+        target: infoPanel
+        onHeightChanged: map.updateMargins()
+        onPoiHidden: map.clearPois(true, poiId)
     }
 
     Connections {
@@ -145,11 +157,6 @@ MapboxMap {
 
     Connections {
         target: navigationInfoBlock
-        onHeightChanged: map.updateMargins();
-    }
-
-    Connections {
-        target: infoPanel
         onHeightChanged: map.updateMargins();
     }
 
@@ -217,13 +224,13 @@ MapboxMap {
 
     function addManeuvers(maneuvers) {
         // Add new maneuver markers to the map.
-        maneuvers.map(map._addManeuver);
+        maneuvers.forEach(map._addManeuver);
         py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
         map.updateManeuvers();
         map.saveManeuvers();
     }
 
-    function _addPoi(poi) {
+    function _addPoi(poi, stateId) {
         if (hasPoi(poi)) return false; // avoid duplicates
         // Add new POI marker to the map.        
         var p = {
@@ -242,13 +249,19 @@ MapboxMap {
             "type": poi.type || "",
         };
         map.pois.push(p);
+        if (stateId) {
+            if (stateId !== map._poisKeep.stateId)
+                map._poisKeep.poiIds = [];
+            map._poisKeep.stateId = stateId;
+            map._poisKeep.poiIds.push(p["poiId"]);
+        }
         return p;
     }
 
-    function addPoi(poi) {
+    function addPoi(poi, stateId) {
         // Add a new POI marker and return if it was
         // added successfully
-        var r=_addPoi(poi);
+        var r=_addPoi(poi, stateId);
         if (r) {
             map.updatePois();
             map.savePois();
@@ -257,9 +270,11 @@ MapboxMap {
         return r;
     }
 
-    function addPois(pois) {
+    function addPois(pois, stateId) {
         // Add new POI markers to the map.
-        pois.map(map._addPoi);
+        pois.forEach(function (p) {
+            map._addPoi(p, stateId)
+        });
         map.updatePois();
         map.savePois();
     }
@@ -326,11 +341,15 @@ MapboxMap {
         map.clearRoute();
     }
 
-    function clearPois() {
-        // Remove POI panel if its active
-        hidePoi();
+    function clearPois(ignoreWhitelisted, poiId) {
+        // Hide POI panel if its active
+        if (app.poiActive) hidePoi();
         map.pois = map.pois.filter(function(p) {
-            return p.bookmarked;
+            return (p.bookmarked ||
+                    (poiId!=null && p.poiId!=poiId) ||
+                    (ignoreWhitelisted &&
+                     app.stateId === map._poisKeep.stateId &&
+                     map._poisKeep.poiIds.indexOf(p["poiId"]) >= 0));
         });
         map.updatePois();
         map.savePois();
@@ -579,7 +598,10 @@ MapboxMap {
 
     function savePois() {
         // Save POI markers to JSON file.
-        var data = Util.pointsToJson(map.pois);
+        var pois = map.pois.filter(function (p) {
+            return p.bookmarked;
+        })
+        var data = Util.pointsToJson(pois);
         py.call_sync("poor.storage.write_pois", [data]);
     }
 

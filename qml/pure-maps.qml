@@ -57,6 +57,8 @@ ApplicationWindowPL {
     property int    rerouteTotalCalls: 0
     property bool   rerouting: false
     property var    rootPage: null
+    // used to track current search and other operations with kept states (temp pois, for example)
+    property string stateId
     property var    styler: Styler {}
     property var    _stackMain: Stack {}
     property var    _stackNavigation: Stack {}
@@ -243,6 +245,7 @@ ApplicationWindowPL {
 
     function resetMenu() {
         app._stackMain.keep = false;
+        app.stateId = "";
     }
 
     function setModeExplore() {

@@ -88,7 +88,8 @@ PageListPL {
                         "x": details.x,
                         "y": details.y,
                     };
-                    var new_poi = map.addPoi(p);
+                    app.stateId = stateId;
+                    var new_poi = map.addPoi(p, stateId);
                     if (new_poi) {
                         p = new_poi;
                         page.poiBlacklisted.push(p.poiId);
@@ -158,6 +159,7 @@ PageListPL {
     property var    poiDetails: []
     property string prevAutocompleteQuery: "."
     property var    searchField: undefined
+    property string stateId
     property string query: ""
 
     Timer {
@@ -208,6 +210,8 @@ PageListPL {
         // Filter completions for the current search query.
         var found = [];
         var query = page.searchField.text.trim();
+
+        stateId = "Geocoder: " + query;
 
         // POIs
         if (query) {

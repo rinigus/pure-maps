@@ -51,4 +51,8 @@ PageEmptyPL {
         app.notification = notification;
         app.remorse = remorse;
     }
+
+    onPageStatusActive: {
+        if (!app.infoActive) app.stateId = "";
+    }
 }
