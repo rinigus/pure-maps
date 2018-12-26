@@ -29,7 +29,6 @@ Rectangle {
 
     // properties
     property int  contentHeight: 0
-    property bool hasData: false
     property bool noAnimation: false
 
     // internal properties
@@ -49,7 +48,7 @@ Rectangle {
             easing.type: Easing.Linear
             onRunningChanged: {
                 if (running) return;
-                panel.noAnimation = !panel.hasData;
+                panel.noAnimation = (panel.contentHeight===0);
                 if (panel._hiding) {
                     panel._hiding = false;
                     panel.hidden();
@@ -95,20 +94,16 @@ Rectangle {
     }
 
     Connections {
-        target: panel
-        onContentHeightChanged: panel.hasData && panel.contentHeight > 0 && !panel._hiding && panel._showPanel()
-        onHasDataChanged: {
-            if (hasData) panel._showPanel();
-            else if (_offset) panel._hidePanel();
+        target: parent
+        onHeightChanged: {
+            if (contentHeight > 0) panel._showPanel();
+            else if (_offset > 0) panel._hidePanel();
         }
     }
 
-    Connections {
-        target: parent
-        onHeightChanged: {
-            if (panel.hasData) panel._showPanel();
-            else if (_offset > 0) panel._hidePanel();
-        }
+    onContentHeightChanged: {
+        if (contentHeight > 0) panel._showPanel();
+        else if (_offset > 0) panel._hidePanel();
     }
 
     function _hidePanel() {
@@ -120,6 +115,7 @@ Rectangle {
     }
 
     function _showPanel() {
+        if (!contentHeight || _hiding) return;
         panel._hiding = false;
         _offset = panel.contentHeight;
     }

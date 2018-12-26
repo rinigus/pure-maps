@@ -42,8 +42,7 @@ Item {
 
     // properties of the item
     property bool active: false
-    property int  contentHeight: hasData ? height : 0
-    property bool hasData: false // triggers addition or removal of the element
+    property int  contentHeight: height
 
     // poi properties
     property string address
@@ -223,7 +222,6 @@ Item {
     function hide() {
         item.visible = false;
         item.active = false;
-        item.hasData = false;
         item.poiId = "";
         app.poiActive = false;
         map.setSelectedPoi()
@@ -251,7 +249,6 @@ Item {
         // fill item vars
         item.active = (item.poiId.length > 0);
         item.visible = true;
-        item.hasData = true;
         map.setSelectedPoi(item.coordinate)
     }
 }

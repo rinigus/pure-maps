@@ -24,14 +24,12 @@ Panel {
     id: panel
 
     contentHeight: {
-        if (!hasData) return 0;
         var h = 0;
-        if (poiBlock.hasData && poiBlock.contentHeight) h += poiBlock.contentHeight + app.styler.themePaddingLarge;
+        if (poiBlock.contentHeight > 0) h += poiBlock.contentHeight + app.styler.themePaddingLarge;
         if (infoText) h += infoBg.height;
-        else if (poiBlock.hasData) h += app.styler.themePaddingLarge;
+        else if (h > 0) h += app.styler.themePaddingLarge;
         return h;
     }
-    hasData: infoText || poiBlock.hasData
 
     property alias infoText: infoLabel.text
     property bool  showMenu: infoText
@@ -99,7 +97,7 @@ Panel {
     onSwipedOut: app.resetMenu()
 
     function _hide() {
-        if (poiBlock.hasData) {
+        if (poiBlock.contentHeight > 0) {
             var pid = poiBlock.poiId;
             poiBlock.hide();
             poiHidden(pid);
@@ -108,7 +106,7 @@ Panel {
     }
 
     function hidePoi() {
-        if (!poiBlock.hasData) return;
+        if (!poiBlock.contentHeight) return;
         var pid = poiBlock.poiId;
         poiBlock.hide();
         poiHidden(pid);
@@ -119,8 +117,8 @@ Panel {
             hidePoi();
             return;
         }
-        panel.noAnimation = panel.hasData;
-        if (poiBlock.hasData && poi.poiId !== poiBlock.poiId)
+        panel.noAnimation = (panel.contentHeight > 0);
+        if (poiBlock.contentHeight > 0 && poi.poiId !== poiBlock.poiId)
             poiHidden(poiBlock.poiId);
         poiBlock.show(poi);
         panel.noAnimation = false;
