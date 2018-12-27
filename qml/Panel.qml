@@ -37,6 +37,7 @@ Rectangle {
     property int  _offset: 0
 
     // signals
+    signal clicked(var mouse)
     signal hidden
     signal swipedOut
 
@@ -75,6 +76,8 @@ Rectangle {
             anchors.fill: parent
         }
 
+        onClicked: panel.clicked(mouse)
+
         onPressed: {
             dragDone=false;
         }
@@ -97,21 +100,21 @@ Rectangle {
         target: parent
         onHeightChanged: {
             if (contentHeight > 0) panel._showPanel();
-            else if (_offset > 0) panel._hidePanel();
+            else panel._hidePanel();
         }
     }
 
     onContentHeightChanged: {
         if (contentHeight > 0) panel._showPanel();
-        else if (_offset > 0) panel._hidePanel();
+        else panel._hidePanel();
     }
 
     function _hidePanel() {
-        if (movementBehavior.enabled)
+        if (movementBehavior.enabled && _offset > 0)
             panel._hiding = true;
-        _offset = 0;
-        if (!panel._hiding)
+        if (!panel._hiding && _offset > 0)
             hidden();
+        _offset = 0;
     }
 
     function _showPanel() {

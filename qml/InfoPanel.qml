@@ -70,7 +70,7 @@ Panel {
             anchors.right: menuButton.left
             anchors.rightMargin: app.styler.themePaddingLarge
             anchors.verticalCenter: infoBg.verticalCenter
-            color: app.styler.themeHighlightColor
+            color: app.styler.themePrimaryColor
             font.pixelSize: app.styler.themeFontSizeLarge
             height: text ? implicitHeight: 0
             truncMode: truncModes.fade
@@ -89,6 +89,17 @@ Panel {
                 app.showMenu();
                 _hide();
             }
+        }
+    }
+
+    onClicked: {
+        if (!infoText) return;
+        if (mouse.y >= infoBg.y && mouse.y <= infoBg.y + infoBg.height
+                && mouse.x >= infoBg.x + infoLabel.x
+                && mouse.x <= infoBg.x + infoLabel.x + infoLabel.width) {
+            // consider as a click on menu button
+            app.showMenu();
+            _hide();
         }
     }
 
