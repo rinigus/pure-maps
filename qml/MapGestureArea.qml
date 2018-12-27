@@ -61,9 +61,22 @@ MapboxMapGestureArea {
                 function(result) {
                     if (!result || !result.length) return;
                     var r = result[0];
-                    r.poiId = p.poiId;
-                    r.coordinate = QtPositioning.coordinate(r.y, r.x);
-                    map.updatePoi(r);
+                    var rpoi = {
+                        "address": r.address || "",
+                        "link": r.link || "",
+                        "phone": r.phone || "",
+                        "poiType": r.poi_type || "",
+                        "postcode": r.postcode || "",
+                        "provider": r.provider || "",
+                        "text": r.text || "",
+                        "title": r.title,
+                        "type": "geocode",
+                        "x": r.x,
+                        "y": r.y,
+                    };
+                    rpoi.poiId = p.poiId;
+                    rpoi.coordinate = QtPositioning.coordinate(rpoi.y, rpoi.x);
+                    map.updatePoi(rpoi);
                 });
     }
 
