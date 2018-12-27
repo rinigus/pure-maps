@@ -214,7 +214,7 @@ Item {
     Connections {
         target: map
         onPoiChanged: {
-            if (!poi || poi.poiId !== poiId) return;
+            if (!poiId || item.poiId !== poiId) return;
             item.show(map.getPoiById(poiId));
         }
     }

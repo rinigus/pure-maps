@@ -343,7 +343,7 @@ MapboxMap {
 
     function clearPois(ignoreWhitelisted, poiId) {
         // Hide POI panel if its active
-        if (app.poiActive) hidePoi();
+        if (app.poiActive && !poiId) hidePoi();
         map.pois = map.pois.filter(function(p) {
             return (p.bookmarked ||
                     (poiId!=null && p.poiId!=poiId) ||
@@ -354,7 +354,8 @@ MapboxMap {
         map.updatePois();
         map.savePois();
         // emit to reinit poi lists if shown
-        map.poiChanged("");
+        if (poiId) map.poiChanged(poiId);
+        else map.poiChanged("");
     }
 
     function clearRoute() {

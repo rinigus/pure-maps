@@ -128,10 +128,10 @@ Panel {
             hidePoi();
             return;
         }
-        panel.noAnimation = (panel.contentHeight > 0);
+        var old_poi = "";
         if (poiBlock.contentHeight > 0 && poi.poiId !== poiBlock.poiId)
-            poiHidden(poiBlock.poiId);
+            old_poi = poiBlock.poiId;
         poiBlock.show(poi);
-        panel.noAnimation = false;
+        if (old_poi) poiHidden(old_poi);
     }
 }

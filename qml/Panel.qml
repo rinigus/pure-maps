@@ -45,11 +45,10 @@ Rectangle {
         id: movementBehavior
         enabled: !noAnimation && (!mouse.drag.active || mouse.dragDone)
         NumberAnimation {
-            duration: 100
+            duration: 150
             easing.type: Easing.Linear
             onRunningChanged: {
                 if (running) return;
-                panel.noAnimation = (panel.contentHeight===0);
                 if (panel._hiding) {
                     panel._hiding = false;
                     panel.hidden();
@@ -120,6 +119,8 @@ Rectangle {
     function _showPanel() {
         if (!contentHeight || _hiding) return;
         panel._hiding = false;
+        if (_offset > 0) noAnimation = true;
         _offset = panel.contentHeight;
+        noAnimation = false;
     }
 }
