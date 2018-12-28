@@ -74,7 +74,7 @@ PagePL {
                 icon.sourceSize.height: app.styler.themeIconSizeMedium
                 text: app.tr("Clear")
                 onClicked: {
-                    if (app.mode === modes.navigate) app.setModeExplore();
+                    app.setModeExplore();
                     map.clearRoute();
                     app.showMap();
                 }

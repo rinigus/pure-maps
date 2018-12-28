@@ -110,6 +110,8 @@ Rectangle {
 
     onContentHeightChanged: _updatePanel()
 
+    Component.onCompleted: _updatePanel()
+
     function _hidePanel() {
         if (movementBehavior.enabled && _offset > 0)
             panel._hiding = true;

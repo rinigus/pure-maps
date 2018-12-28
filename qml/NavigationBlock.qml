@@ -18,14 +18,13 @@
 
 import QtQuick 2.0
 import "platform"
+import "."
 
-Rectangle {
+Panel {
     id: block
     anchors.left: parent.left
     anchors.right: parent.right
-    anchors.top: parent.top
-    color: app.styler.blockBg
-    height: {
+    contentHeight: {
         if (!destDist) return 0;
         if (!app.portrait && notify) {
             var h1 = app.styler.themePaddingMedium + app.styler.themeFontSizeLarge - app.styler.themeFontSizeMedium + narrativeLabel.height;
@@ -42,6 +41,7 @@ Rectangle {
             return Math.max(h1, h2, h3, h4);
         }
     }
+    mode: modes.top
     states: [
         State {
             when: !app.portrait && destDist && notify
@@ -55,7 +55,6 @@ Rectangle {
             }
         }
     ]
-    z: 500
 
     property string destDist:  app.navigationStatus.destDist
     property string destEta:   app.navigationStatus.destEta
@@ -245,9 +244,10 @@ Rectangle {
         width: block.notify ? sourceSize.width : 0
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: app.showNavigationPages();
-    }
+    onClicked: app.showNavigationPages();
 
+    onSwipedOut: {
+        app.setModeExplore();
+        map.clearRoute();
+    }
 }
