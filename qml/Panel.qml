@@ -23,13 +23,19 @@ Rectangle {
     anchors.left: parent.left
     anchors.right: parent.right
     color: app.styler.blockBg
-    height: contentHeight >= parent.height - y ? contentHeight : parent.height - y
-    y: parent.height - _offset
+    height: 0
+    y: mode === modes.bottom ? parent.height - _offset : -height + _offset
     z: 910
 
     // properties
     property int  contentHeight: 0
+    property int  mode: modes.bottom
     property bool noAnimation: false
+
+    readonly property var modes: QtObject {
+        readonly property int bottom: 1
+        readonly property int top: 2
+    }
 
     // internal properties
     default property alias _content: itemCont.data
@@ -53,6 +59,7 @@ Rectangle {
                     panel._hiding = false;
                     panel.hidden();
                 }
+                _updatePanel();
             }
         }
     }
@@ -64,8 +71,8 @@ Rectangle {
         // "filterChildren" makes sometimes parts of the panel transparent to
         // drag events. probably some bug in either my implementation or qml
         // drag.filterChildren: true
-        drag.minimumY: panel.parent.height - panel.height
-        drag.maximumY: panel.parent.height
+        drag.minimumY: panel.mode === panel.modes.bottom ? panel.parent.height - panel.height : -panel.height
+        drag.maximumY: panel.mode === panel.modes.bottom ? panel.parent.height : 0
         drag.target: panel
 
         property bool dragDone: true
@@ -82,31 +89,26 @@ Rectangle {
         }
 
         onReleased: {
-            _offset = panel.parent.height - panel.y;
+            if (panel.mode === panel.modes.bottom) _offset = panel.parent.height - panel.y;
+            else _offset = panel.y + panel.height;
             dragDone = true;
             var t = Math.min(panel.parent.height*0.1, panel.height * 0.25);
-            var d = panel.y - drag.minimumY;
+            var d = panel.height - _offset; //panel.y - drag.minimumY;
             if (d > t) {
                 panel._hidePanel();
                 swipedOut();
             }
             else
-                panel._showPanel();
+                panel._showPanel(true);
         }
     }
 
     Connections {
         target: parent
-        onHeightChanged: {
-            if (contentHeight > 0) panel._showPanel();
-            else panel._hidePanel();
-        }
+        onHeightChanged: _updatePanel()
     }
 
-    onContentHeightChanged: {
-        if (contentHeight > 0) panel._showPanel();
-        else panel._hidePanel();
-    }
+    onContentHeightChanged: _updatePanel()
 
     function _hidePanel() {
         if (movementBehavior.enabled && _offset > 0)
@@ -116,10 +118,16 @@ Rectangle {
         _offset = 0;
     }
 
-    function _showPanel() {
+    function _updatePanel() {
+        if (contentHeight > 0) panel._showPanel();
+        else panel._hidePanel();
+    }
+
+    function _showPanel(animate) {
         if (!contentHeight || _hiding) return;
         panel._hiding = false;
-        if (_offset > 0) noAnimation = true;
+        panel.height = contentHeight;
+        if (_offset > 0) noAnimation = !animate;
         _offset = panel.contentHeight;
         noAnimation = false;
     }

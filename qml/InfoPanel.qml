@@ -30,6 +30,7 @@ Panel {
         else if (h > 0) h += app.styler.themePaddingLarge;
         return h;
     }
+    mode: modes.bottom
 
     property alias infoText: infoLabel.text
     property bool  showMenu: infoText
