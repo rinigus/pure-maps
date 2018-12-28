@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-13 21:55+0200\n"
+"POT-Creation-Date: 2018-12-28 18:49+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Nathan Follens, 2018\n"
 "Language-Team: Dutch (Belgium) (https://www.transifex.com/rinigus/teams/89597/nl_BE/)\n"
@@ -125,15 +125,15 @@ msgstr "Over {distance}, {direction}"
 msgid "Exit: "
 msgstr "Afslag:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:185
+#: poor/narrative.py:421 qml/pure-maps.qml:192
 msgid "Rerouting"
 msgstr "Route wordt herberekend"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:207
+#: poor/narrative.py:422 qml/pure-maps.qml:214
 msgid "Rerouting failed"
 msgstr "Routeherberekening mislukt"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:201
+#: poor/narrative.py:423 qml/pure-maps.qml:208
 msgid "New route found"
 msgstr "Nieuwe route gevonden"
 
@@ -341,7 +341,7 @@ msgid "Remove"
 msgstr "Verwijderen"
 
 #: guides/osmscout_name.qml:67 qml/AttributionPage.qml:64
-#: qml/GeocodePage.qml:27 qml/GeocodePage.qml:121 qml/MenuPage.qml:45
+#: qml/GeocodePage.qml:27 qml/GeocodePage.qml:122 qml/MenuPage.qml:45
 #: qml/PlaceTypePage.qml:79 qml/PoiPage.qml:132 qml/RoutePointPage.qml:136
 msgid "Search"
 msgstr "Zoeken"
@@ -433,19 +433,32 @@ msgstr "Plaatsen"
 
 #: qml/AttributionPage.qml:124 qml/MenuPage.qml:54 qml/NavigationPage.qml:25
 #: qml/PreferencesPage.qml:197 qml/RoutePage.qml:25
+#: routers/default_results.qml:46 routers/digitransit_results.qml:186
+#: routers/gpx_osmscout_results.qml:46 routers/gpx_results.qml:46
+#: routers/mapquest_open_results.qml:46 routers/osmscout_results.qml:46
+#: routers/osrm_results.qml:46 routers/stadiamaps_results.qml:46
 msgid "Navigation"
 msgstr "Navigatie"
 
-#: qml/GeocodePage.qml:96 qml/GeocodingResultsPage.qml:72
-#: qml/NearbyResultsPage.qml:75
+#: qml/BasemapPage.qml:42
+msgid "Map: %1"
+msgstr ""
+
+#: qml/GeocodePage.qml:77 qml/GeocodePage.qml:105
+#: qml/GeocodingResultsPage.qml:57 qml/GeocodingResultsPage.qml:107
+msgid "Search: %1"
+msgstr ""
+
+#: qml/GeocodePage.qml:97 qml/GeocodingResultsPage.qml:74
+#: qml/NearbyResultsPage.qml:77
 msgid "%1 [duplicate]"
 msgstr "%1 [duplicaat]"
 
-#: qml/GeocodePage.qml:140 qml/NearbyPage.qml:33 qml/RoutePage.qml:33
+#: qml/GeocodePage.qml:141 qml/NearbyPage.qml:33 qml/RoutePage.qml:33
 msgid "Using %1"
 msgstr ""
 
-#: qml/GeocodePage.qml:151 qml/RoutePointPage.qml:155
+#: qml/GeocodePage.qml:152 qml/RoutePointPage.qml:155
 msgid ""
 "You can search by address, locality, landmark and many other terms. For best"
 " results, include a region, e.g. “address, city” or “city, country”."
@@ -454,21 +467,21 @@ msgstr ""
 " de beste resultaten kunt ge een regio toevoegen, bv. “adres, stad” of "
 "“stad, land”."
 
-#: qml/GeocodePage.qml:221 qml/PoiPage.qml:28
+#: qml/GeocodePage.qml:225 qml/PoiPage.qml:28 qml/PoiPage.qml:123
 msgid "Points of Interest"
 msgstr "Nuttige plekken"
 
-#: qml/GeocodePage.qml:228 qml/NearbyPage.qml:92 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/PoiPanel.qml:344 qml/RoutePage.qml:122
+#: qml/GeocodePage.qml:232 qml/NearbyPage.qml:92 qml/PoiBlock.qml:247
+#: qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47 qml/RoutePage.qml:122
 #: qml/RoutePage.qml:158 qml/RoutePointPage.qml:117 qml/RoutePointPage.qml:226
 msgid "Unnamed point"
 msgstr "Punt zonder naam"
 
-#: qml/GeocodePage.qml:243
+#: qml/GeocodePage.qml:247
 msgid "Suggestions"
 msgstr ""
 
-#: qml/GeocodePage.qml:263
+#: qml/GeocodePage.qml:267
 msgid "Recent searches"
 msgstr ""
 
@@ -481,12 +494,12 @@ msgstr "Standaard"
 msgid "Alternatives"
 msgstr "Alternatieven"
 
-#: qml/GeocodingResultsPage.qml:86 qml/NearbyResultsPage.qml:89
+#: qml/GeocodingResultsPage.qml:88 qml/NearbyResultsPage.qml:91
 #: qml/PoiPage.qml:149
 msgid "Show all"
 msgstr "Alles weergeven"
 
-#: qml/GeocodingResultsPage.qml:127 qml/NearbyResultsPage.qml:126
+#: qml/GeocodingResultsPage.qml:131 qml/NearbyResultsPage.qml:131
 #: routers/default_results.qml:33 routers/digitransit_results.qml:216
 #: routers/gpx_osmscout_results.qml:33 routers/gpx_results.qml:33
 #: routers/mapquest_open_results.qml:33 routers/osmscout_results.qml:33
@@ -494,11 +507,11 @@ msgstr "Alles weergeven"
 msgid "Searching"
 msgstr "Bezig met zoeken"
 
-#: qml/GeocodingResultsPage.qml:152 qml/NearbyResultsPage.qml:148
+#: qml/GeocodingResultsPage.qml:157 qml/NearbyResultsPage.qml:154
 msgid "%1 Results"
 msgstr "%1 resultaten"
 
-#: qml/GeocodingResultsPage.qml:156 qml/NearbyResultsPage.qml:152
+#: qml/GeocodingResultsPage.qml:161 qml/NearbyResultsPage.qml:158
 #: routers/default_results.qml:52 routers/digitransit_results.qml:245
 #: routers/gpx_osmscout_results.qml:52 routers/gpx_results.qml:52
 #: routers/mapquest_open_results.qml:52 routers/osmscout_results.qml:52
@@ -525,19 +538,19 @@ msgid ""
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
 
-#: qml/Map.qml:317 qml/Map.qml:414
+#: qml/Map.qml:332 qml/Map.qml:434
 msgid "Clearing map"
 msgstr "Kaart wordt gewist"
 
-#: qml/Map.qml:547
+#: qml/Map.qml:567
 msgid "Voice navigation on"
 msgstr "Stemnavigatie aan"
 
-#: qml/Map.qml:689
+#: qml/Map.qml:712
 msgid "Auto-center off"
 msgstr "Automatisch centreren uit"
 
-#: qml/Map.qml:692
+#: qml/Map.qml:715
 msgid "Auto-center on"
 msgstr "Automatisch centreren aan"
 
@@ -614,11 +627,11 @@ msgstr "Maneuvers"
 msgid "Continue for %1."
 msgstr "Gaat door voor %1."
 
-#: qml/NavigationBlock.qml:139
+#: qml/NavigationBlock.qml:138
 msgid "ETA"
 msgstr "Geschatte aankomsttijd"
 
-#: qml/NavigationBlock.qml:207
+#: qml/NavigationBlock.qml:206
 msgid "Tap to review maneuvers or begin navigating"
 msgstr "Tikt voor maneuvers na te kijken of navigatie te beginnen"
 
@@ -685,6 +698,10 @@ msgstr "Straal"
 msgid "Type"
 msgstr "Type"
 
+#: qml/NearbyResultsPage.qml:139
+msgid "Nearby venues: %1"
+msgstr ""
+
 #: qml/NorthArrow.qml:73
 msgid "Auto-rotate on"
 msgstr "Automatisch draaien aan"
@@ -696,6 +713,38 @@ msgstr "Automatisch draaien uit"
 #: qml/PlaceTypePage.qml:99
 msgid "You can search for venues by type or name."
 msgstr "Ge kunt zoeken naar ontmoetingsplaatsen op type of naam."
+
+#: qml/PoiBlock.qml:82
+msgid "%1; %2"
+msgstr "%1; %2"
+
+#: qml/PoiBlock.qml:100
+msgid "Latitude: %1; Longitude: %2"
+msgstr "Breedtegraad: %1; Lengtegraad: %2"
+
+#: qml/PoiBlock.qml:127 qml/PoiEditPage.qml:78
+msgid "Postal code"
+msgstr "Postcode"
+
+#: qml/PoiBlock.qml:128
+msgid "Web"
+msgstr "Web"
+
+#: qml/PoiBlock.qml:129
+msgid "Phone"
+msgstr "Telefoon"
+
+#: qml/PoiBlock.qml:130
+msgid "Shortlisted"
+msgstr ""
+
+#: qml/PoiBlock.qml:131
+msgid "Text"
+msgstr "Tekst"
+
+#: qml/PoiBlock.qml:133
+msgid "More info: %1"
+msgstr "Meer informatie: %1"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit POI"
@@ -728,10 +777,6 @@ msgstr "Adres"
 #: qml/PoiEditPage.qml:70
 msgid "Enter address"
 msgstr "Voert een adres in"
-
-#: qml/PoiEditPage.qml:78 qml/PoiPanel.qml:148
-msgid "Postal code"
-msgstr "Postcode"
 
 #: qml/PoiEditPage.qml:79
 msgid "Enter postal code"
@@ -828,34 +873,6 @@ msgid ""
 msgstr ""
 "Nog geen nuttige plekken ingevoerd. Ge kunt nuttige plekken toevoegen (ook "
 "aan uw bladwijzers) met de kaart en via zoeken."
-
-#: qml/PoiPanel.qml:103
-msgid "%1; %2"
-msgstr "%1; %2"
-
-#: qml/PoiPanel.qml:121
-msgid "Latitude: %1; Longitude: %2"
-msgstr "Breedtegraad: %1; Lengtegraad: %2"
-
-#: qml/PoiPanel.qml:149
-msgid "Web"
-msgstr "Web"
-
-#: qml/PoiPanel.qml:150
-msgid "Phone"
-msgstr "Telefoon"
-
-#: qml/PoiPanel.qml:151
-msgid "Shortlisted"
-msgstr ""
-
-#: qml/PoiPanel.qml:152
-msgid "Text"
-msgstr "Tekst"
-
-#: qml/PoiPanel.qml:154
-msgid "More info: %1"
-msgstr "Meer informatie: %1"
 
 #: qml/PreferencesPage.qml:43
 msgid "Units"
@@ -1146,7 +1163,7 @@ msgstr "Huidig zoomniveau weergeven"
 msgid "Pure Maps"
 msgstr ""
 
-#: qml/pure-maps.qml:197
+#: qml/pure-maps.qml:204
 msgid "Rerouting failed: %1"
 msgstr "Routeherberekening mislukt: %1"
 

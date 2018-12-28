@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-13 21:55+0200\n"
+"POT-Creation-Date: 2018-12-28 18:49+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Carmen Fernández B., 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -137,15 +137,15 @@ msgstr "A {distance}, {direction}"
 msgid "Exit: "
 msgstr "Salida: "
 
-#: poor/narrative.py:421 qml/pure-maps.qml:185
+#: poor/narrative.py:421 qml/pure-maps.qml:192
 msgid "Rerouting"
 msgstr "Recalculando"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:207
+#: poor/narrative.py:422 qml/pure-maps.qml:214
 msgid "Rerouting failed"
 msgstr "Error al recalcular"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:201
+#: poor/narrative.py:423 qml/pure-maps.qml:208
 msgid "New route found"
 msgstr "Nueva ruta encontrada"
 
@@ -351,7 +351,7 @@ msgid "Remove"
 msgstr "Borrar"
 
 #: guides/osmscout_name.qml:67 qml/AttributionPage.qml:64
-#: qml/GeocodePage.qml:27 qml/GeocodePage.qml:121 qml/MenuPage.qml:45
+#: qml/GeocodePage.qml:27 qml/GeocodePage.qml:122 qml/MenuPage.qml:45
 #: qml/PlaceTypePage.qml:79 qml/PoiPage.qml:132 qml/RoutePointPage.qml:136
 msgid "Search"
 msgstr "Buscar"
@@ -443,19 +443,32 @@ msgstr "Lugares"
 
 #: qml/AttributionPage.qml:124 qml/MenuPage.qml:54 qml/NavigationPage.qml:25
 #: qml/PreferencesPage.qml:197 qml/RoutePage.qml:25
+#: routers/default_results.qml:46 routers/digitransit_results.qml:186
+#: routers/gpx_osmscout_results.qml:46 routers/gpx_results.qml:46
+#: routers/mapquest_open_results.qml:46 routers/osmscout_results.qml:46
+#: routers/osrm_results.qml:46 routers/stadiamaps_results.qml:46
 msgid "Navigation"
 msgstr "Navegación"
 
-#: qml/GeocodePage.qml:96 qml/GeocodingResultsPage.qml:72
-#: qml/NearbyResultsPage.qml:75
+#: qml/BasemapPage.qml:42
+msgid "Map: %1"
+msgstr ""
+
+#: qml/GeocodePage.qml:77 qml/GeocodePage.qml:105
+#: qml/GeocodingResultsPage.qml:57 qml/GeocodingResultsPage.qml:107
+msgid "Search: %1"
+msgstr ""
+
+#: qml/GeocodePage.qml:97 qml/GeocodingResultsPage.qml:74
+#: qml/NearbyResultsPage.qml:77
 msgid "%1 [duplicate]"
 msgstr "%1 [duplicado]"
 
-#: qml/GeocodePage.qml:140 qml/NearbyPage.qml:33 qml/RoutePage.qml:33
+#: qml/GeocodePage.qml:141 qml/NearbyPage.qml:33 qml/RoutePage.qml:33
 msgid "Using %1"
-msgstr ""
+msgstr "Usando %1"
 
-#: qml/GeocodePage.qml:151 qml/RoutePointPage.qml:155
+#: qml/GeocodePage.qml:152 qml/RoutePointPage.qml:155
 msgid ""
 "You can search by address, locality, landmark and many other terms. For best"
 " results, include a region, e.g. “address, city” or “city, country”."
@@ -464,23 +477,23 @@ msgstr ""
 "muchos términos. Para obtener mejores resultados incluye una región, p. ej. "
 "\"dirección, ciudad\" o \"ciudad, país\"."
 
-#: qml/GeocodePage.qml:221 qml/PoiPage.qml:28
+#: qml/GeocodePage.qml:225 qml/PoiPage.qml:28 qml/PoiPage.qml:123
 msgid "Points of Interest"
 msgstr "Puntos de interés"
 
-#: qml/GeocodePage.qml:228 qml/NearbyPage.qml:92 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/PoiPanel.qml:344 qml/RoutePage.qml:122
+#: qml/GeocodePage.qml:232 qml/NearbyPage.qml:92 qml/PoiBlock.qml:247
+#: qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47 qml/RoutePage.qml:122
 #: qml/RoutePage.qml:158 qml/RoutePointPage.qml:117 qml/RoutePointPage.qml:226
 msgid "Unnamed point"
 msgstr "Punto sin nombre"
 
-#: qml/GeocodePage.qml:243
+#: qml/GeocodePage.qml:247
 msgid "Suggestions"
-msgstr ""
+msgstr "Sugerencias"
 
-#: qml/GeocodePage.qml:263
+#: qml/GeocodePage.qml:267
 msgid "Recent searches"
-msgstr ""
+msgstr "Búsquedas recientes"
 
 #: qml/GeocoderPage.qml:39 qml/GuidePage.qml:39 qml/RouterPage.qml:37
 #: routers/digitransit_settings.qml:181
@@ -491,12 +504,12 @@ msgstr "Por defecto"
 msgid "Alternatives"
 msgstr "Alternativas"
 
-#: qml/GeocodingResultsPage.qml:86 qml/NearbyResultsPage.qml:89
+#: qml/GeocodingResultsPage.qml:88 qml/NearbyResultsPage.qml:91
 #: qml/PoiPage.qml:149
 msgid "Show all"
 msgstr "Mostar todo"
 
-#: qml/GeocodingResultsPage.qml:127 qml/NearbyResultsPage.qml:126
+#: qml/GeocodingResultsPage.qml:131 qml/NearbyResultsPage.qml:131
 #: routers/default_results.qml:33 routers/digitransit_results.qml:216
 #: routers/gpx_osmscout_results.qml:33 routers/gpx_results.qml:33
 #: routers/mapquest_open_results.qml:33 routers/osmscout_results.qml:33
@@ -504,11 +517,11 @@ msgstr "Mostar todo"
 msgid "Searching"
 msgstr "Buscando"
 
-#: qml/GeocodingResultsPage.qml:152 qml/NearbyResultsPage.qml:148
+#: qml/GeocodingResultsPage.qml:157 qml/NearbyResultsPage.qml:154
 msgid "%1 Results"
 msgstr "%1 Resultados"
 
-#: qml/GeocodingResultsPage.qml:156 qml/NearbyResultsPage.qml:152
+#: qml/GeocodingResultsPage.qml:161 qml/NearbyResultsPage.qml:158
 #: routers/default_results.qml:52 routers/digitransit_results.qml:245
 #: routers/gpx_osmscout_results.qml:52 routers/gpx_results.qml:52
 #: routers/mapquest_open_results.qml:52 routers/osmscout_results.qml:52
@@ -538,19 +551,19 @@ msgstr ""
 "Mapbox y cumplimenta tu clave API personal en Preferencias. Esta clave no es"
 " necesaria si planeas usar Pure Maps con el proveedor de mapas sin conexión."
 
-#: qml/Map.qml:317 qml/Map.qml:414
+#: qml/Map.qml:332 qml/Map.qml:434
 msgid "Clearing map"
 msgstr "Limpiando mapa"
 
-#: qml/Map.qml:547
+#: qml/Map.qml:567
 msgid "Voice navigation on"
 msgstr "Navegación por voz activado"
 
-#: qml/Map.qml:689
+#: qml/Map.qml:712
 msgid "Auto-center off"
 msgstr "Auto-centrado desactivado"
 
-#: qml/Map.qml:692
+#: qml/Map.qml:715
 msgid "Auto-center on"
 msgstr "Auto-centrado activado"
 
@@ -627,11 +640,11 @@ msgstr "Indicaciones"
 msgid "Continue for %1."
 msgstr "Sigue durante %1."
 
-#: qml/NavigationBlock.qml:139
+#: qml/NavigationBlock.qml:138
 msgid "ETA"
 msgstr "ETA"
 
-#: qml/NavigationBlock.qml:207
+#: qml/NavigationBlock.qml:206
 msgid "Tap to review maneuvers or begin navigating"
 msgstr "Da un toque para revisar indicaciones o iniciar navegación"
 
@@ -698,6 +711,10 @@ msgstr "Radio"
 msgid "Type"
 msgstr "Tipo"
 
+#: qml/NearbyResultsPage.qml:139
+msgid "Nearby venues: %1"
+msgstr ""
+
 #: qml/NorthArrow.qml:73
 msgid "Auto-rotate on"
 msgstr "Auto-giro activado"
@@ -709,6 +726,38 @@ msgstr "Auto-giro desactivado"
 #: qml/PlaceTypePage.qml:99
 msgid "You can search for venues by type or name."
 msgstr "Puedes buscar lugares por tipo o nombre."
+
+#: qml/PoiBlock.qml:82
+msgid "%1; %2"
+msgstr "%1; %2"
+
+#: qml/PoiBlock.qml:100
+msgid "Latitude: %1; Longitude: %2"
+msgstr "Latitud: %1; Longitud: %2"
+
+#: qml/PoiBlock.qml:127 qml/PoiEditPage.qml:78
+msgid "Postal code"
+msgstr "Código postal"
+
+#: qml/PoiBlock.qml:128
+msgid "Web"
+msgstr "Web"
+
+#: qml/PoiBlock.qml:129
+msgid "Phone"
+msgstr "Teléfono"
+
+#: qml/PoiBlock.qml:130
+msgid "Shortlisted"
+msgstr "Seleccionado"
+
+#: qml/PoiBlock.qml:131
+msgid "Text"
+msgstr "Texto"
+
+#: qml/PoiBlock.qml:133
+msgid "More info: %1"
+msgstr "Más info: %1"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit POI"
@@ -741,10 +790,6 @@ msgstr "Dirección"
 #: qml/PoiEditPage.qml:70
 msgid "Enter address"
 msgstr "Introduce dirección"
-
-#: qml/PoiEditPage.qml:78 qml/PoiPanel.qml:148
-msgid "Postal code"
-msgstr "Código postal"
 
 #: qml/PoiEditPage.qml:79
 msgid "Enter postal code"
@@ -841,34 +886,6 @@ msgid ""
 msgstr ""
 "No se han definido puntos de interés aún. Puedes crear y marcar como "
 "favorito los puntos de interés usando el mapa y la búsqueda."
-
-#: qml/PoiPanel.qml:103
-msgid "%1; %2"
-msgstr "%1; %2"
-
-#: qml/PoiPanel.qml:121
-msgid "Latitude: %1; Longitude: %2"
-msgstr "Latitud: %1; Longitud: %2"
-
-#: qml/PoiPanel.qml:149
-msgid "Web"
-msgstr "Web"
-
-#: qml/PoiPanel.qml:150
-msgid "Phone"
-msgstr "Teléfono"
-
-#: qml/PoiPanel.qml:151
-msgid "Shortlisted"
-msgstr "Seleccionado"
-
-#: qml/PoiPanel.qml:152
-msgid "Text"
-msgstr "Texto"
-
-#: qml/PoiPanel.qml:154
-msgid "More info: %1"
-msgstr "Más info: %1"
 
 #: qml/PreferencesPage.qml:43
 msgid "Units"
@@ -1163,13 +1180,13 @@ msgstr "Mostrar nivel de zoom actual"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:197
+#: qml/pure-maps.qml:204
 msgid "Rerouting failed: %1"
 msgstr "Error al recalcular: %1"
 
 #: qml/RoutePage.qml:50
 msgid "Navigate"
-msgstr ""
+msgstr "Navegar"
 
 #: qml/RoutePage.qml:50
 msgid "Follow me"
