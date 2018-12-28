@@ -1,13 +1,13 @@
 # Pure Maps
 
-Pure Maps is a fork of [WhoGo Maps](https://github.com/otsaloma/whogo-maps) 
-that was made to continue its development. Pure Maps is an application
-for Sailfish OS and Linux to display vector and raster maps, places,
-routes, and provide navigation instructions with a flexible selection
-of data and service providers.
+Pure Maps is an application for Sailfish OS and Linux to display
+vector and raster maps, places, routes, and provide navigation
+instructions with a flexible selection of data and service providers.
 
-Pure Maps is free software released under the GNU General Public License
-(GPL), see the file [`COPYING`](COPYING) for details.
+Pure Maps is free software released under the GNU General Public
+License (GPL), see the file [`COPYING`](COPYING) for details. Pure
+Maps is a fork of [WhoGo Maps](https://github.com/otsaloma/whogo-maps)
+that was made to continue its development.
 
 
 ## Platforms
@@ -68,3 +68,15 @@ command `make rpm`. You don't need an SDK to build the RPM, only basic
 tools: `make`, `rpmbuild`, `gettext` and `qttools`.
 
 Flatpak specific instructions are available under `packaging/flatpak`.
+
+
+## User feedback
+
+There are two main communication channels with the users: Github and a
+thread at
+[TMO](https://talk.maemo.org/showthread.php?t=100442). 
+
+Please use Github issues to address specific problems and development
+requests. General discussion is expected either through corresponding
+issues opened by maintainer or TMO thread. Please note that users from
+all platforms are welcome at TMO, not only current Sailfish OS users.
