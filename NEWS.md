@@ -1,5 +1,15 @@
+2018-12-28: Pure Maps 1.12
+==========================
+
+* Keep non-bookmarked POIs only until current operation is finished
+* Refactor POI panel into generic info panel
+* Show current state (such as map selection, search) on info panel
+* Allow to finish navigation by swiping navigation bar out
+* Update translations
+* Bugfix: Fill reverse geocoding result properly
+
 2018-12-13: Pure Maps 1.11
-=========================
+==========================
 
 * Add reverse geocoding
 * Move geocoder, guide, and router selection into menus
@@ -8,7 +18,7 @@
 * Update translations
 
 2018-12-04: Pure Maps 1.10
-=========================
+==========================
 
 * Add support for online and offline profiles
 * Add position uncertainty indicator
