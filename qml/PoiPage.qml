@@ -116,6 +116,7 @@ PageListPL {
                 fillModel(lastQuery);
                 return;
             }
+            app.stateId = "Points of Interest";
             map.showPoi(p, true);
             map.setCenter(
                         p.coordinate.longitude,
