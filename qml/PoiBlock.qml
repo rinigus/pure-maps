@@ -170,7 +170,7 @@ Item {
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 bookmarked = !bookmarked;
-                map.bookmarkPoi(poiId, bookmarked);
+                pois.bookmark(poiId, bookmarked);
             }
         }
 
@@ -204,7 +204,7 @@ Item {
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
-                map.deletePoi(poiId, true);
+                pois.remove(poiId, true);
                 hide();
             }
         }
@@ -212,10 +212,10 @@ Item {
     }
 
     Connections {
-        target: map
+        target: pois
         onPoiChanged: {
             if (!poiId || item.poiId !== poiId) return;
-            item.show(map.getPoiById(poiId));
+            item.show(pois.getById(poiId));
         }
     }
 

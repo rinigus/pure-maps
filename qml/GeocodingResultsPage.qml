@@ -69,10 +69,10 @@ PageListPL {
                 "y": model.y,
             };
             app.stateId = stateId;
-            var new_poi = map.addPoi(p, stateId);
+            var new_poi = pois.add(p, stateId);
             if (new_poi) p = new_poi;
             else p.title = app.tr("%1 [duplicate]", p.title);
-            map.showPoi(p, true);
+            pois.show(p, true);
             map.autoCenter = false;
             map.setCenter(model.x, model.y);
             listItem.visited = true;
@@ -106,7 +106,7 @@ PageListPL {
                 }
                 app.hideMenu(app.tr("Search: %1").arg(page.query));
                 app.stateId = stateId;
-                map.addPois(pois, stateId);
+                app.pois.addList(pois, stateId);
                 map.fitViewToPois(pois);
             }
         }

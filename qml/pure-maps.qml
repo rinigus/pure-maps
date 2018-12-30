@@ -49,6 +49,7 @@ ApplicationWindowPL {
     property var    navigationStatus: NavigationStatus {}
     property bool   navigationStarted: false
     property var    notification: null
+    property var    pois: null
     property bool   poiActive: false
     property bool   portrait: screenHeight >= screenWidth
     property var    remorse: null
@@ -119,6 +120,20 @@ ApplicationWindowPL {
             app.resetMenu();
         }
         app.updateMapMatching();
+    }
+
+    function clear(confirm) {
+        if (confirm) {
+            app.remorse.execute(app.tr("Clearing map"),
+                                function() {
+                                    app.clear();
+                                });
+            return;
+        }
+
+        // Remove all markers from the map.
+        pois.clear();
+        map.clearRoute();
     }
 
     function getIcon(name, no_variant) {
@@ -246,6 +261,7 @@ ApplicationWindowPL {
     function resetMenu() {
         app._stackMain.keep = false;
         app.stateId = "";
+        app.infoPanel.infoText = "";
     }
 
     function setModeExplore() {
@@ -259,7 +275,6 @@ ApplicationWindowPL {
     function setModeNavigate() {
         app.mode = modes.navigate;
         resetMenu();
-        app.infoPanel.infoText = "";
     }
 
     function showMap() {

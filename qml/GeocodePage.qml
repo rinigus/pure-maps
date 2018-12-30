@@ -89,13 +89,13 @@ PageListPL {
                         "y": details.y,
                     };
                     app.stateId = stateId;
-                    var new_poi = map.addPoi(p, stateId);
+                    var new_poi = app.pois.add(p, stateId);
                     if (new_poi) {
                         p = new_poi;
                         page.poiBlacklisted.push(p.poiId);
                     } else
                         p.title = app.tr("%1 [duplicate]", p.title);
-                    map.showPoi(p, true);
+                    app.pois.show(p, true);
                     map.autoCenter = false;
                     map.setCenter(details.x, details.y);
                 }
@@ -103,7 +103,7 @@ PageListPL {
                 var poi = page.poiDetails[model.place];
                 if (poi) {
                     app.hideMenu(app.tr("Search: %1").arg(page.query));
-                    map.showPoi(poi, true);
+                    app.pois.show(poi, true);
                     map.autoCenter = false;
                     map.setCenter(poi.coordinate.longitude, poi.coordinate.latitude);
                 }
@@ -216,7 +216,7 @@ PageListPL {
         // POIs
         if (query) {
             var searchKeys = ["shortlisted", "bookmarked", "title", "poiType", "address", "postcode", "text", "phone", "link"];
-            var pois = map.pois.filter(function (p) {
+            var pois = app.pois.pois.filter(function (p) {
                return (page.poiBlacklisted.indexOf(p.poiId) < 0);
             });
             var s = Util.findMatchesInObjects(query, pois, searchKeys);

@@ -57,12 +57,6 @@ MapboxMap {
     property string format: ""
     property bool   hasRoute: false
     property var    maneuvers: []
-    property var    pois: []
-    property var    _poisKeep: QtObject {
-        // keeps a list of current temporary POIs that are kept on a map
-        property string stateId
-        property var    poiIds: []
-    }
     property var    position: gps.position
     property bool   ready: false
     property var    route: {}
@@ -90,8 +84,6 @@ MapboxMap {
         readonly property string poisSelected:   "pure-source-pois-selected"
         readonly property string route:          "pure-source-route"
     }
-
-    signal poiChanged(string poiId)
 
     Behavior on bearing {
         RotationAnimation {
@@ -136,13 +128,11 @@ MapboxMap {
         target: app
         onModeChanged: setMode()
         onPortraitChanged: map.updateMargins()
-        onStateIdChanged: map.clearPois(true)
     }
 
     Connections {
         target: infoPanel
         onHeightChanged: map.updateMargins()
-        onPoiHidden: map.clearPois(true, poiId)
     }
 
     Connections {
@@ -161,6 +151,11 @@ MapboxMap {
     }
 
     Connections {
+        target: pois
+        onPoiChanged: map.updatePois()
+    }
+
+    Connections {
         target: py
         onBasemapChanged: map.setBasemap();
     }
@@ -176,6 +171,7 @@ MapboxMap {
         map.initLayers();
         map.configureLayers();
         map.initProperties();
+        map.updatePois();
         map.updateMargins();
         map.setMode();
     }
@@ -230,55 +226,6 @@ MapboxMap {
         map.saveManeuvers();
     }
 
-    function _addPoi(poi, stateId) {
-        if (hasPoi(poi)) return false; // avoid duplicates
-        // Add new POI marker to the map.        
-        var p = {
-            "address": poi.address || "",
-            "bookmarked": poi.bookmarked || false,
-            "coordinate": QtPositioning.coordinate(poi.y, poi.x),
-            "link": poi.link || "",
-            "phone": poi.phone || "",
-            "poiId": poi.poiId || Util.uuidv4(),
-            "poiType": poi.poiType || "",
-            "postcode": poi.postcode || "",
-            "provider": poi.provider || "",
-            "shortlisted": poi.shortlisted || false,
-            "text": poi.text || "",
-            "title": poi.title || "",
-            "type": poi.type || "",
-        };
-        map.pois.push(p);
-        if (stateId) {
-            if (stateId !== map._poisKeep.stateId)
-                map._poisKeep.poiIds = [];
-            map._poisKeep.stateId = stateId;
-            map._poisKeep.poiIds.push(p["poiId"]);
-        }
-        return p;
-    }
-
-    function addPoi(poi, stateId) {
-        // Add a new POI marker and return if it was
-        // added successfully
-        var r=_addPoi(poi, stateId);
-        if (r) {
-            map.updatePois();
-            map.savePois();
-            map.poiChanged(r.poiId);
-        }
-        return r;
-    }
-
-    function addPois(pois, stateId) {
-        // Add new POI markers to the map.
-        pois.forEach(function (p) {
-            map._addPoi(p, stateId)
-        });
-        map.updatePois();
-        map.savePois();
-    }
-
     function addRoute(route, amend) {
         // Add new route polyline to the map.
         if (!amend) app.setModeExplore();
@@ -304,58 +251,11 @@ MapboxMap {
         app.navigationStarted = !!amend;
     }
 
-    function bookmarkPoi(poiId, bookmark) {
-        if (poiId == null) return;
-        var changed = [];
-        map.pois = map.pois.map(function(p) {
-            if (p.poiId != poiId) return p;
-            p.bookmarked = bookmark;
-            if (!bookmark) p.shortlisted = false;
-            changed.push(p.poiId);
-            return p;
-        } );
-        map.updatePois();
-        map.savePois();
-        for (var i = 0; i < changed.length; i++)
-            map.poiChanged(changed[i]);
-    }
-
     function centerOnPosition() {
         // Center on the current position.
         map.setCenter(
             map.position.coordinate.longitude,
             map.position.coordinate.latitude);
-    }
-
-    function clear(confirm) {
-        if (confirm) {
-            app.remorse.execute(app.tr("Clearing map"),
-                                function() {
-                                    map.clear();
-                                });
-            return;
-        }
-
-        // Remove all markers from the map.
-        map.clearPois();
-        map.clearRoute();
-    }
-
-    function clearPois(ignoreWhitelisted, poiId) {
-        // Hide POI panel if its active
-        if (app.poiActive && !poiId) hidePoi();
-        map.pois = map.pois.filter(function(p) {
-            return (p.bookmarked ||
-                    (poiId!=null && p.poiId!=poiId) ||
-                    (ignoreWhitelisted &&
-                     app.stateId === map._poisKeep.stateId &&
-                     map._poisKeep.poiIds.indexOf(p["poiId"]) >= 0));
-        });
-        map.updatePois();
-        map.savePois();
-        // emit to reinit poi lists if shown
-        if (poiId) map.poiChanged(poiId);
-        else map.poiChanged("");
     }
 
     function clearRoute() {
@@ -429,24 +329,6 @@ MapboxMap {
         map.setLayoutProperty(map.layers.dummies, "visibility", "visible");
     }
 
-    function deletePoi(poiId, confirm) {
-        if (confirm) {
-            app.remorse.execute(app.tr("Clearing map"),
-                                function() {
-                                    map.deletePoi(poiId);
-                                });
-            return;
-        }
-
-        if (poiId == null) return;
-        map.pois = map.pois.filter(function(p) {
-            return p.poiId != poiId;
-        } );
-        map.updatePois();
-        map.savePois();
-        map.poiChanged(poiId);
-    }
-
     function fitViewToPois(pois) {
         // Set center and zoom so that given POIs are visible.
         map.autoCenter = false;
@@ -469,41 +351,9 @@ MapboxMap {
         return [destination.longitude, destination.latitude];
     }
 
-    function getPoiById(poiId) {
-        for (var i = 0; i < map.pois.length; i++)
-            if (map.pois[i].poiId === poiId)
-                return map.pois[i];
-    }
-
-    function getPoiProviders(type) {
-        // Return list of providers for POIs of given type.
-        return map.pois.filter(function(poi) {
-            return poi.type === type && poi.provider;
-        }).map(function(poi) {
-            return poi.provider;
-        }).filter(function(provider, index, self) {
-            return self.indexOf(provider) === index;
-        });
-    }
-
     function getPosition() {
         // Return the coordinates of the current position.
         return [map.position.coordinate.longitude, map.position.coordinate.latitude];
-    }
-
-    function hasPoi(poi) {
-        // check if such poi exists already
-        var longitude = poi.coordinate ? poi.coordinate.longitude : poi.x;
-        var latitude = poi.coordinate ? poi.coordinate.latitude : poi.y;
-        for (var i = 0; i < map.pois.length; i++)
-            if (Math.abs(longitude - map.pois[i].coordinate.longitude) < 1e-6 &&
-                    Math.abs(latitude - map.pois[i].coordinate.latitude) < 1e-6)
-                return true;
-        return false;
-    }
-
-    function hidePoi() {
-        infoPanel && infoPanel.hidePoi();
     }
 
     function initIcons() {
@@ -544,7 +394,6 @@ MapboxMap {
         map.autoRotate = app.conf.get("auto_rotate");
         var center = app.conf.get("center");
         map.setCenter(center[0], center[1]);
-        map.loadPois();
         map.loadRoute();
         map.loadManeuvers();
         map.ready = true;
@@ -577,13 +426,6 @@ MapboxMap {
         });
     }
 
-    function loadPois() {
-        // Restore POI markers from JSON file.
-        py.call("poor.storage.read_pois", [], function(data) {
-            data && data.length > 0 && map.addPois(data);
-        });
-    }
-
     function loadRoute() {
         // Restore route polyline from JSON file.
         py.call("poor.storage.read_route", [], function(data) {
@@ -595,15 +437,6 @@ MapboxMap {
         // Save maneuver markers to JSON file.
         var data = Util.pointsToJson(map.maneuvers);
         py.call_sync("poor.storage.write_maneuvers", [data]);
-    }
-
-    function savePois() {
-        // Save POI markers to JSON file.
-        var pois = map.pois.filter(function (p) {
-            return p.bookmarked;
-        })
-        var data = Util.pointsToJson(pois);
-        py.call_sync("poor.storage.write_pois", [data]);
     }
 
     function saveRoute() {
@@ -686,25 +519,6 @@ MapboxMap {
             map.updateSourcePoints(map.sources.poisSelected, [coordinate]);
     }
 
-    function shortlistPoi(poiId, shortlist) {
-        if (poiId == null) return;
-        var changed = [];
-        map.pois = map.pois.map(function(p) {
-            if (p.poiId != poiId) return p;
-            p.shortlisted = shortlist;
-            changed.push(p.poiId);
-            return p;
-        } );
-        map.updatePois();
-        map.savePois();
-        for (var i = 0; i < changed.length; i++)
-            map.poiChanged(changed[i]);
-    }
-
-    function showPoi(poi) {
-        if (infoPanel) infoPanel.showPoi(poi);
-    }
-
     function toggleAutoCenter() {
         // Turn auto-center on or off.
         if (map.autoCenter) {
@@ -740,31 +554,19 @@ MapboxMap {
         map.margins = Qt.rect(0.05, marginY, 0.9, marginHeight);
     }
 
-    function updatePoi(poi) {
-        // update a POI with new data
-        if (poi.poiId == null) return;
-        map.pois = map.pois.map(function(p) {
-            if (p.poiId != poi.poiId) return p;
-            return poi;
-        } );
-        map.updatePois();
-        map.savePois();
-        map.poiChanged(poi.poiId);
-    }
-
     function updatePois() {
         // Update POI markers on the map.
         var regCoor = [];
         var regName = [];
         var bookmarkedCoor = [];
         var bookmarkedName = [];
-        for (var i = 0; i < map.pois.length; i++) {
-            if (map.pois[i].bookmarked) {
-                bookmarkedCoor.push(map.pois[i].coordinate);
-                bookmarkedName.push(map.pois[i].title);
+        for (var i = 0; i < pois.pois.length; i++) {
+            if (pois.pois[i].bookmarked) {
+                bookmarkedCoor.push(pois.pois[i].coordinate);
+                bookmarkedName.push(pois.pois[i].title);
             } else {
-                regCoor.push(map.pois[i].coordinate);
-                regName.push(map.pois[i].title);
+                regCoor.push(pois.pois[i].coordinate);
+                regName.push(pois.pois[i].title);
             }
         }
         map.updateSourcePoints(map.sources.pois, regCoor, regName);

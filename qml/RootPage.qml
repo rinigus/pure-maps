@@ -39,6 +39,7 @@ PageEmptyPL {
     NorthArrow { id: northArrow }
     Notification { id: notification }
     InfoPanel { id: infoPanel }
+    Poi { id: pois }
     RemorsePopupPL { id: remorse; z: 1000 }
     ScaleBar { id: scaleBar }
     SpeedLimit { id: speedLimit }
@@ -49,6 +50,7 @@ PageEmptyPL {
         app.infoPanel = infoPanel;
         app.map = map;
         app.notification = notification;
+        app.pois = pois;
         app.remorse = remorse;
     }
 

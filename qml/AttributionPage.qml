@@ -70,7 +70,7 @@ PagePL {
                 model: items.length
                 property var items: py.call_sync(
                                         "poor.app.get_attribution",
-                                        ["geocoder", map.getPoiProviders("geocode")])
+                                        ["geocoder", pois.getProviders("geocode")])
                 delegate: ListItemPL {
                     id: listItem
                     contentHeight: app.styler.themeItemSizeSmall
@@ -100,7 +100,7 @@ PagePL {
                 model: items.length
                 property var items: py.call_sync(
                                         "poor.app.get_attribution",
-                                        ["guide", map.getPoiProviders("venue")])
+                                        ["guide", pois.getProviders("venue")])
                 delegate: ListItemPL {
                     id: listItem
                     contentHeight: app.styler.themeItemSizeSmall

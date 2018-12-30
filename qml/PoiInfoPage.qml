@@ -33,7 +33,7 @@ PagePL {
                 var dialog = app.push("PoiEditPage.qml",
                                       {"poi": poi});
                 dialog.accepted.connect(function() {
-                    map.updatePoi(dialog.poi);
+                    pois.update(dialog.poi);
                 })
             }
         }
@@ -114,7 +114,7 @@ PagePL {
                 if (!active) return;
                 bookmarked = !bookmarked;
                 poi.bookmarked = bookmarked;
-                map.bookmarkPoi(poi.poiId, bookmarked);
+                pois.bookmark(poi.poiId, bookmarked);
             }
         }
 
@@ -128,7 +128,7 @@ PagePL {
                 shortlisted = !shortlisted;
                 if (poi.shortlisted === shortlisted) return;
                 poi.shortlisted = shortlisted;
-                map.shortlistPoi(poi.poiId, shortlisted);
+                pois.shortlist(poi.poiId, shortlisted);
             }
         }
 
@@ -257,10 +257,10 @@ PagePL {
     }
 
     Connections {
-        target: map
+        target: pois
         onPoiChanged: {
             if (poi.poiId !== poiId) return;
-            page.setPoi(map.getPoiById(poiId));
+            page.setPoi(pois.getById(poiId));
         }
     }
 

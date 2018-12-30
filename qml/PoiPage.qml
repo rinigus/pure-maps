@@ -83,7 +83,7 @@ PageListPL {
             ContextMenuItemPL {
                 text: app.tr("View")
                 onClicked: {
-                    var poi = map.getPoiById(model.poiId);
+                    var poi = pois.getById(model.poiId);
                     if (!poi) return;
                     app.push("PoiInfoPage.qml",
                              {"active": true, "poi": poi});
@@ -92,32 +92,32 @@ PageListPL {
             ContextMenuItemPL {
                 text: app.tr("Edit")
                 onClicked: {
-                    var poi = map.getPoiById(model.poiId);
+                    var poi = pois.getById(model.poiId);
                     if (!poi) return;
                     var dialog = app.push("PoiEditPage.qml",
                                           {"poi": poi});
                     dialog.accepted.connect(function() {
-                        map.updatePoi(dialog.poi);
+                        pois.update(dialog.poi);
                     })
                 }
             }
             ContextMenuItemPL {
                 text: app.tr("Remove")
                 onClicked: {
-                    app.map.deletePoi(model.poiId);
+                    pois.remove(model.poiId);
                 }
             }
         }
 
         onClicked: {
-            var p = map.getPoiById(model.poiId);
+            var p = pois.getById(model.poiId);
             if (!p) {
                 // poi got missing, let's refill
                 fillModel(lastQuery);
                 return;
             }
             app.stateId = "Points of Interest";
-            map.showPoi(p, true);
+            pois.show(p, true);
             map.setCenter(
                         p.coordinate.longitude,
                         p.coordinate.latitude);
@@ -156,7 +156,7 @@ PageListPL {
         }
     }
 
-    placeholderEnabled: map.pois.length === 0
+    placeholderEnabled: pois.pois.length === 0
     placeholderText: app.tr("No points of interests defined yet. You can create and bookmark points of interest using map and search.")
 
     property bool   bookmarkedOnly: false
@@ -170,13 +170,13 @@ PageListPL {
     }
 
     Connections {
-        target: map
+        target: pois
         onPoiChanged: fillModel(lastQuery)
     }
 
     function fillModel(query) {
-        var data = map.pois;
-        if (bookmarkedOnly) data = map.pois.filter(function (p) { return p.bookmarked; });
+        var data = pois.pois;
+        if (bookmarkedOnly) data = pois.pois.filter(function (p) { return p.bookmarked; });
         var s = Util.findMatchesInObjects(query, data, searchKeys);
         page.model.clear();
         s.forEach(function (p){ page.model.append(p); });

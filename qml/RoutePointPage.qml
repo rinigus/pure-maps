@@ -110,7 +110,7 @@ DialogListPL {
                 model: ListModel{}
 
                 Component.onCompleted: {
-                    var slist = map.pois.filter(function (p) {
+                    var slist = pois.pois.filter(function (p) {
                         return p.shortlisted;
                     }).map(function (p) {
                         return {
@@ -215,7 +215,7 @@ DialogListPL {
 
         // Find POIs matching the completions
         var searchKeys = ["title", "poiType", "address", "postcode", "text", "phone", "link"];
-        var s = Util.findMatchesInObjects(query, map.pois, searchKeys);
+        var s = Util.findMatchesInObjects(query, pois.pois, searchKeys);
         var jointResults = [];
         // Limit to max 10 POIs if there are many completions
         if (found.length > 20 && s.length > 10)

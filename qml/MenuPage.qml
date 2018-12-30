@@ -102,7 +102,7 @@ PagePL {
             label: app.tr("Clear map")
             onClicked: {
                 if (app.mode !== modes.explore) app.setModeExplore();
-                app.map.clear(true);
+                app.clear(true);
                 app.showMap();
             }
         }

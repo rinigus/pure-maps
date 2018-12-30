@@ -38,12 +38,12 @@ MapboxMapGestureArea {
         if (area.coordinatesMatch(geocoordinate, map.position.coordinate))
             return map.toggleAutoCenter();
         // Show information bubble if POI marker clicked.
-        for (var i = 0; i < map.pois.length; i++)
-            if (area.coordinatesMatch(geocoordinate, map.pois[i].coordinate))
-                return map.showPoi(map.pois[i]);
+        for (var i = 0; i < pois.pois.length; i++)
+            if (area.coordinatesMatch(geocoordinate, pois.pois[i].coordinate))
+                return pois.show(pois.pois[i]);
         // Hide any POI bubbles if background map clicked.
         if (app.poiActive)
-            map.hidePoi();
+            pois.hide();
     }
 
     onDoubleClicked: {
@@ -51,10 +51,10 @@ MapboxMapGestureArea {
     }
 
     onPressAndHoldGeo: {
-        var p = map.addPoi({ "x": geocoordinate.longitude,
-                             "y": geocoordinate.latitude });
+        var p = pois.add({ "x": geocoordinate.longitude,
+                           "y": geocoordinate.latitude });
         if (!p) return;
-        map.showPoi(p);
+        pois.show(p);
         var radius = Math.max(0.1*0.5*(map.height + map.width), 30)*map.metersPerPixel;
         py.call("poor.app.geocoder.reverse",
                 [geocoordinate.longitude, geocoordinate.latitude, radius, 1],
@@ -76,7 +76,7 @@ MapboxMapGestureArea {
                     };
                     rpoi.poiId = p.poiId;
                     rpoi.coordinate = QtPositioning.coordinate(rpoi.y, rpoi.x);
-                    map.updatePoi(rpoi);
+                    pois.update(rpoi);
                 });
     }
 
