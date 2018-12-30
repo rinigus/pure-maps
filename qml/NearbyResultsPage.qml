@@ -58,19 +58,7 @@ PageListPL {
 
         onClicked: {
             app.hideMenu(querySummary);
-            var p = {
-                "address": model.address || "",
-                "link": model.link || "",
-                "phone": model.phone || "",
-                "poiType": model.poi_type || "",
-                "postcode": model.postcode || "",
-                "provider": model.provider || "",
-                "text": model.text || "",
-                "title": model.title,
-                "type": "venue",
-                "x": model.x,
-                "y": model.y,
-            };
+            var p = pois.convertFromPython(model);
             app.stateId = stateId;
             var new_poi = pois.add(p, stateId);
             if (new_poi) p = new_poi;
@@ -93,19 +81,7 @@ PageListPL {
                 var pois = [];
                 for (var i = 0; i < page.model.count; i++) {
                     var item = page.model.get(i);
-                    pois.push({
-                                  "address": item.address || "",
-                                  "link": item.link || "",
-                                  "phone": item.phone || "",
-                                  "poiType": item.poi_type || "",
-                                  "postcode": item.postcode || "",
-                                  "provider": item.provider || "",
-                                  "text": item.text || "",
-                                  "title": item.title,
-                                  "type": "venue",
-                                  "x": item.x,
-                                  "y": item.y,
-                              });
+                    pois.push(app.pois.convertFromPython(item));
                 }
                 app.hideMenu(querySummary);
                 app.stateId = stateId;

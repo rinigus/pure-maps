@@ -55,19 +55,7 @@ PageListPL {
 
         onClicked: {
             app.hideMenu(app.tr("Search: %1").arg(page.query));
-            var p = {
-                "address": model.address || "",
-                "link": model.link || "",
-                "phone": model.phone || "",
-                "poiType": model.poi_type || "",
-                "postcode": model.postcode || "",
-                "provider": model.provider || "",
-                "text": model.text || "",
-                "title": model.title,
-                "type": "geocode",
-                "x": model.x,
-                "y": model.y,
-            };
+            var p = app.pois.convertFromPython(model);
             app.stateId = stateId;
             var new_poi = pois.add(p, stateId);
             if (new_poi) p = new_poi;
@@ -90,19 +78,7 @@ PageListPL {
                 var pois = [];
                 for (var i = 0; i < page.model.count; i++) {
                     var item = page.model.get(i);
-                    pois.push({
-                                  "address": item.address || "",
-                                  "link": item.link || "",
-                                  "phone": item.phone || "",
-                                  "poiType": item.poi_type || "",
-                                  "postcode": item.postcode || "",
-                                  "provider": item.provider || "",
-                                  "text": item.text || "",
-                                  "title": item.title,
-                                  "type": "geocode",
-                                  "x": item.x,
-                                  "y": item.y,
-                              });
+                    pois.push(app.pois.convertFromPython(item));
                 }
                 app.hideMenu(app.tr("Search: %1").arg(page.query));
                 app.stateId = stateId;

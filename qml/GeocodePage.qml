@@ -75,19 +75,7 @@ PageListPL {
                     // Autocompletion result with known coordinates, open directly.
                     py.call_sync("poor.app.history.add_place", [page.prevAutocompleteQuery]);
                     app.hideMenu(app.tr("Search: %1").arg(page.query));
-                    var p = {
-                        "address": details.address || "",
-                        "link": details.link || "",
-                        "phone": details.phone || "",
-                        "poiType": details.poi_type || "",
-                        "postcode": details.postcode || "",
-                        "provider": details.provider || "",
-                        "text": details.text || "",
-                        "title": details.title || model.place,
-                        "type": "geocode",
-                        "x": details.x,
-                        "y": details.y,
-                    };
+                    var p = pois.convertFromPython(details);
                     app.stateId = stateId;
                     var new_poi = app.pois.add(p, stateId);
                     if (new_poi) {

@@ -130,6 +130,24 @@ Item {
         else poiChanged("");
     }
 
+    function convertFromPython(pyPoi) {
+        // convert POI dict as returned by Python
+        // methods into JS representation
+        return {
+            "address": pyPoi.address || "",
+            "link": pyPoi.link || "",
+            "phone": pyPoi.phone || "",
+            "poiType": pyPoi.poi_type || "",
+            "postcode": pyPoi.postcode || "",
+            "provider": pyPoi.provider || "",
+            "text": pyPoi.text || "",
+            "title": pyPoi.title || model.place,
+            "type": "geocode",
+            "x": pyPoi.x,
+            "y": pyPoi.y,
+        };
+    }
+
     function getById(poiId) {
         for (var i = 0; i < holder.pois.length; i++)
             if (holder.pois[i].poiId === poiId)
