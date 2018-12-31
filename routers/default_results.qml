@@ -44,7 +44,7 @@ PageEmptyPL {
             } else if (route && route.x && route.x.length > 0) {
                 app.setModeExplore();
                 app.hideMenu(app.tr("Navigation"));
-                map.hidePoi();
+                pois.hide();
                 map.addRoute(route);
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
