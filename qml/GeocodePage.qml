@@ -43,6 +43,7 @@ PagePL {
     GeocodeItem {
         id: geo
         active: true
+        fillModel: false
         selectionPlaceholderText: ""
 
         onSelectionChanged: {
@@ -66,5 +67,8 @@ PagePL {
         }
     }
 
-    onPageStatusActive: if (!browsingQuery || browsingQuery!==geo.query) geo.activate()
+    onPageStatusActive: {
+        geo.fillModel = true;
+        if (!browsingQuery || browsingQuery!==geo.query) geo.activate();
+    }
 }

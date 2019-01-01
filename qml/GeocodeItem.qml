@@ -35,6 +35,7 @@ Item {
     property bool   active: false
     property bool   autocompletePending: false
     property var    autocompletions: []
+    property bool   fillModel: true
     property bool   highlightSelected: true
     property var    history: []
     property var    poiBlacklisted: [] // POIs that were created as a part of this search
@@ -217,6 +218,39 @@ Item {
         onTriggered: geo.fetchCompletions();
     }
 
+    Timer {
+        id: fillModelTimer
+        interval: 250
+        repeat: true
+        running: geo.active && geo.fillModel && results.model.count < targetCount
+        property var  empty: null
+        property int  targetCount: 100
+        onRunningChanged: {
+            cache.reset();
+            geo.update();
+        }
+        onTriggered: {
+            // init model
+            if (!empty) return;
+            var first = (!results.model.count);
+            var n = 10;
+            for (var i=0; i < n && results.model.count < targetCount; ++i)
+                results.model.append(empty);
+            // update on the first call and on the half way
+            if (first || (targetCount/2 > results.model.count-n && targetCount/2 <= results.model.count)) {
+                cache.reset();
+                geo.update();
+            }
+        }
+        Component.onCompleted: {
+            var e = {"visible": true};
+            _listDataKeys.forEach(function (k){
+                e[k] = "";
+            });
+            empty = e;
+        }
+    }
+
     QtObject {
         id: cache
         property var c: null
@@ -224,6 +258,10 @@ Item {
         function get(type, key) {
             if (c && c[type] && c[type].key===key) return c[type].data;
             return undefined;
+        }
+
+        function reset() {
+            c = null;
         }
 
         function set(type, key, data) {
@@ -235,15 +273,6 @@ Item {
 
     Component.onCompleted: {
         geo.loadHistory();
-
-        // init model
-        var empty = {"visible": true};
-        _listDataKeys.forEach(function (k){
-            empty[k] = "";
-        })
-        while (results.model.count < 100)
-            results.model.append(empty);
-
         geo.update();
         if (active) activate();
     }
