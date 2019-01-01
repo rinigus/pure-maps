@@ -51,7 +51,8 @@ Item {
     property string query: ""
 
     // internal properties
-    readonly property var _listDataKeys: ["description", "detailId", "distance", "markup", "text", "title", "type"]
+    readonly property var _listDataKeys:
+        ["description", "detailId", "distance", "markup", "text", "title", "type", "visited"]
     property int          _searchIndex: 0
 
     ListItemPL {
@@ -115,7 +116,7 @@ Item {
                         text: app.tr("Remove")
                         onClicked: {
                             if (model.type !== "recent search") return;
-                            py.call_sync("poor.app.history.remove_place", [model.place]);
+                            py.call_sync("poor.app.history.remove_place", [model.text]);
                             geo.history = py.evaluate("poor.app.history.places");
                             model.visible = false;
                         }
@@ -124,7 +125,7 @@ Item {
                 visible: model.visible
 
                 property bool header: model.type === "header"
-                property bool visited: false
+                property bool visited: model.visited
 
                 Column {
                     id: itemColumn
@@ -189,7 +190,7 @@ Item {
                         }
                         details.selection_type = "search result";
                         selection = details;
-                        listItem.visited = highlightSelected;
+                        model.visited = highlightSelected ? "Yes" : "";
                     } else if (model.type === "poi") {
                         var poi = geo.resultDetails[model.detailId];
                         poi.selection_type = "poi";
