@@ -43,10 +43,7 @@ PagePL {
         IconListItem {
             icon: app.styler.iconSearch
             label: app.tr("Search")
-            onClicked: {
-                app.pushMain("GeocodePage.qml");
-                app.pushAttachedMain("GeocodingResultsPage.qml");
-            }
+            onClicked: app.pushMain("GeocodePage.qml")
         }
 
         IconListItem {

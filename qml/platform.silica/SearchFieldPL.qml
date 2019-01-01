@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 
 SearchField {
     EnterKey.enabled: text.length > 0
+    EnterKey.iconSource: "image://theme/icon-m-enter-accept"
     EnterKey.onClicked: search()
 
     signal search

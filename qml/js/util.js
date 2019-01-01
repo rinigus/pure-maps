@@ -110,6 +110,25 @@ function findMatchesInObjects(query, candidates, keys) {
     return result;
 }
 
+function injectData(model, found, properties) {
+    // Set array of data from found into existing ListView model items.
+    found = found.slice(0, model.count);
+    for (var i = 0; i < found.length; i++) {
+        model.setProperty(i, "visible", true);
+        if (properties) {
+            for (var j = 0; j < properties.length; j++) {
+                if (properties[j] in found[i]) {
+                    model.setProperty(i, properties[j], found[i][properties[j]]);
+                } else {
+                    model.setProperty(i, properties[j], "");
+                }
+            }
+        }
+    }
+    for (var i = found.length; i < model.count; i++)
+        model.setProperty(i, "visible", false);
+}
+
 function injectMatches(model, found, text, markup, properties) {
     // Set array of matches into existing ListView model items.
     found = found.slice(0, model.count);
