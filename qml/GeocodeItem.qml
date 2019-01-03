@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtPositioning 5.3
 import "."
 import "platform"
 
@@ -46,6 +47,7 @@ Item {
     property bool   searchPending: false
     property string searchPlaceholderText: app.tr("Search")
     property var    searchResults: []
+    property bool   showCurrentPosition: false
     property var    selection: null // current selection is kept here
     property string selectionPlaceholderText: app.tr("No selection")
     property string stateId
@@ -126,6 +128,7 @@ Item {
                 visible: model.visible
 
                 property bool header: model.type === "header"
+                property bool currentPosition: model.type === "current position"
                 property bool visited: model.visited
 
                 Column {
@@ -148,7 +151,7 @@ Item {
 
                     ListItemLabel {
                         //anchors.leftMargin: searchField.textLeftMargin
-                        color: (listItem.highlighted || listItem.visited) ?
+                        color: (listItem.highlighted || listItem.visited || !listItem.enabled) ?
                                    app.styler.themeHighlightColor : app.styler.themePrimaryColor
                         height: visible ? implicitHeight : 0
                         text: model.markup ? model.markup : model.title
@@ -183,18 +186,28 @@ Item {
                 onClicked: {
                     if (listItem.header) return;
                     listItem.focus = true;
-                    if (model.type === "autocomplete" || model.type === "result") {
+                    if (currentPosition) {
+                        var pos = {
+                            "title": app.tr("Current position"),
+                            "selection_type": "current position"
+                        };
+                        selection = pos;
+                    } else if (model.type === "autocomplete" || model.type === "result") {
                         var details = geo.resultDetails[model.detailId];
                         if (!details) {
                             console.log("GeocoderItem Unexpected result: " + model.detailId);
                             return;
                         }
                         details.selection_type = "search result";
+                        if (!details.coordinate)
+                            details.coordinate = QtPositioning.coordinate(details.y, details.x);
                         selection = details;
                         model.visited = highlightSelected ? "Yes" : "";
                     } else if (model.type === "poi") {
                         var poi = geo.resultDetails[model.detailId];
                         poi.selection_type = "poi";
+                        if (!poi.coordinate)
+                            poi.coordinate = QtPositioning.coordinate(poi.y, poi.x);
                         selection = poi;
                     } else if (model.type === "recent search"){
                         // No autocompletion, no POI, open results geo.
@@ -476,6 +489,15 @@ Item {
         var found = [];
         stateId = "Geocoder: " + query;
         resultDetails = []
+
+        // add current location if its requested and there
+        // is no query
+        if (!query && showCurrentPosition) {
+            found.push({
+                           "markup": app.tr("Current position"),
+                           "type": "current position"
+                       });
+        }
 
         // use a long form to avoid crashes in JS
         // while calling free on the tmp variables

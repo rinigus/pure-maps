@@ -47,7 +47,7 @@ PagePL {
         selectionPlaceholderText: ""
 
         onSelectionChanged: {
-            if (!selection) return;
+            if (!selection || !selection.coordinate) return;
             var poi = Util.shallowCopy(selection);
             if (selection.selection_type === "search result") {
                 py.call_sync("poor.app.history.add_place", [geo.query]);
@@ -63,7 +63,7 @@ PagePL {
             app.hideMenu(app.tr("Search: %1").arg(geo.query));
             app.pois.show(poi, true);
             map.autoCenter = false;
-            map.setCenter(poi.x || poi.coordinate.longitude, poi.y || poi.coordinate.latitude);
+            map.setCenter(poi.coordinate.longitude, poi.coordinate.latitude);
         }
     }
 

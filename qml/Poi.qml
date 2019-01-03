@@ -57,7 +57,7 @@ Item {
         var p = {
             "address": poi.address || "",
             "bookmarked": poi.bookmarked || false,
-            "coordinate": QtPositioning.coordinate(poi.y, poi.x),
+            "coordinate": poi.coordinate || QtPositioning.coordinate(poi.y, poi.x),
             "link": poi.link || "",
             "phone": poi.phone || "",
             "poiId": poi.poiId || Util.uuidv4(),
