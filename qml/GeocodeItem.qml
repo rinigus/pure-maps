@@ -189,7 +189,7 @@ Item {
                     if (currentPosition) {
                         var pos = {
                             "title": app.tr("Current position"),
-                            "selection_type": "current position"
+                            "selectionType": "current position"
                         };
                         selection = pos;
                     } else if (model.type === "autocomplete" || model.type === "result") {
@@ -198,14 +198,14 @@ Item {
                             console.log("GeocoderItem Unexpected result: " + model.detailId);
                             return;
                         }
-                        details.selection_type = "search result";
+                        details.selectionType = "search result";
                         if (!details.coordinate)
                             details.coordinate = QtPositioning.coordinate(details.y, details.x);
                         selection = details;
                         model.visited = highlightSelected ? "Yes" : "";
                     } else if (model.type === "poi") {
                         var poi = geo.resultDetails[model.detailId];
-                        poi.selection_type = "poi";
+                        poi.selectionType = "poi";
                         if (!poi.coordinate)
                             poi.coordinate = QtPositioning.coordinate(poi.y, poi.x);
                         selection = poi;
