@@ -121,6 +121,8 @@ Item {
                 id: listItem
                 contentHeight: {
                     if (!visible) return 0;
+                    if (setHeightToSmall && app.styler.themeItemSizeSmall > itemColumn.height)
+                        return app.styler.themeItemSizeSmall;
                     return itemColumn.height
                 }
                 menu: ContextMenuPL {
@@ -140,12 +142,16 @@ Item {
 
                 property bool header: model.type === "header"
                 property bool currentPosition: model.type === "current position"
+                property bool setHeightToSmall: model.type === "poi" ||
+                                                model.type === "recent search" ||
+                                                model.type === "autocomplete"
                 property bool visited: model.visited
 
                 Column {
                     id: itemColumn
                     anchors.left: parent.left
                     anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
                     spacing: app.styler.themePaddingSmall
 
                     Spacer {
