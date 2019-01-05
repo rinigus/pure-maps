@@ -59,7 +59,7 @@ ToolBar {
             id: acceptButton
             font.pixelSize: app.styler.themeFontSizeExtraLarge
             text: bar.acceptDescription + (app.pages.hasAttached ? " \u25b6" : "")
-            visible: text
+            visible: !page.hideAcceptButton && text
             enabled: page.canNavigateForward === true
             onClicked: {
                 bar.accepted();

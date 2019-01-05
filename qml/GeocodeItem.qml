@@ -44,9 +44,11 @@ Item {
     property string stateId
     property string query: ""
 
-    // internal properties: readonly
-    readonly property var _listDataKeys:
-        ["description", "detailId", "distance", "markup", "text", "title", "type", "visited"]
+    readonly property var selectionTypes: QtObject {
+        readonly property int currentPosition: 1
+        readonly property int searchResult: 2
+        readonly property int poi: 3
+    }
 
     // internal properties
     property bool   _autocompletePending: false
@@ -60,6 +62,9 @@ Item {
     property bool   _searchPending: false
     property var    _searchResults: []
 
+    // internal properties: readonly
+    readonly property var _listDataKeys:
+        ["description", "detailId", "distance", "markup", "text", "title", "type", "visited"]
 
     // Components
 
@@ -88,6 +93,7 @@ Item {
             id: searchField
             focus: true
             placeholderText: searchPlaceholderText
+            text: query
             width: parent.width
             property string prevText: ""
             onSearch: fetchResults();
@@ -194,7 +200,7 @@ Item {
                     if (currentPosition) {
                         var pos = {
                             "title": app.tr("Current position"),
-                            "selectionType": "current position"
+                            "selectionType": selectionTypes.currentPosition
                         };
                         selection = pos;
                     } else if (model.type === "autocomplete" || model.type === "result") {
@@ -203,14 +209,14 @@ Item {
                             console.log("GeocoderItem Unexpected result: " + model.detailId);
                             return;
                         }
-                        details.selectionType = "search result";
+                        details.selectionType = selectionTypes.searchResult;
                         if (!details.coordinate)
                             details.coordinate = QtPositioning.coordinate(details.y, details.x);
                         selection = details;
                         model.visited = highlightSelected ? "Yes" : "";
                     } else if (model.type === "poi") {
                         var poi = geo._resultDetails[model.detailId];
-                        poi.selectionType = "poi";
+                        poi.selectionType = selectionTypes.poi;
                         if (!poi.coordinate)
                             poi.coordinate = QtPositioning.coordinate(poi.y, poi.x);
                         selection = poi;
@@ -292,7 +298,10 @@ Item {
     Component.onCompleted: {
         geo.loadHistory();
         geo.update();
-        if (active) activate();
+        if (active) {
+            activate();
+            if (query) fetchResults();
+        }
     }
 
     onActiveChanged: if (active) activate();

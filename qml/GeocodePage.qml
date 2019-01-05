@@ -49,7 +49,7 @@ PagePL {
         onSelectionChanged: {
             if (!selection || !selection.coordinate) return;
             var poi = Util.shallowCopy(selection);
-            if (selection.selectionType === "search result") {
+            if (selection.selectionType === selectionTypes.searchResult) {
                 py.call_sync("poor.app.history.add_place", [geo.query]);
                 var new_poi = app.pois.add(poi, geo.stateId);
                 if (new_poi) {

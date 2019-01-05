@@ -73,13 +73,13 @@ PagePL {
 
     property var    columnRouter
     property bool   followMe: false
-    property var    from: null
+    property alias  from: fromButton.coordinates
     property bool   fromNeeded: true
-    property string fromText: ""
+    property alias  fromText: fromButton.text
     property var    params: {}
-    property var    to: null
+    property alias  to: toButton.coordinates
     property bool   toNeeded: true
-    property string toText: ""
+    property alias  toText: toButton.text
 
     Column {
         id: column
@@ -97,78 +97,19 @@ PagePL {
             property var  settings: null
             property bool settingsChecked: false
 
-            ValueButtonPL {
+            RoutePoint {
                 id: fromButton
                 label: app.tr("From")
-                height: app.styler.themeItemSizeSmall
-                value: page.fromText
+                title: app.tr("Origin")
                 visible: page.fromNeeded
-                // Avoid putting label and value on different lines.
-                width: 3 * parent.width
-
-                BusyIndicatorSmallPL {
-                    anchors.right: parent.right
-                    anchors.rightMargin: app.styler.themeHorizontalPageMargin + (parent.width - page.width)
-                    anchors.verticalCenter: parent.verticalCenter
-                    running: page.fromText === app.tr("Current position") && !gps.ready
-                    z: parent.z + 1
-                }
-
-                onClicked: {
-                    var dialog = app.push("RoutePointPage.qml");
-                    dialog.accepted.connect(function() {
-                        if (dialog.selectedPoi && dialog.selectedPoi.coordinate) {
-                            page.from = [dialog.selectedPoi.coordinate.longitude, dialog.selectedPoi.coordinate.latitude];
-                            page.fromText = dialog.selectedPoi.title || app.tr("Unnamed point");
-                        } else if (dialog.query === app.tr("Current position")) {
-                            page.from = map.getPosition();
-                            page.fromText = dialog.query;
-                        } else {
-                            page.from = dialog.query;
-                            page.fromText = dialog.query;
-                            py.call_sync("poor.app.history.add_place", [dialog.query]);
-                        }
-                    });
-                }
-
             }
 
-            ValueButtonPL {
+            RoutePoint {
                 id: toButton
                 label: app.tr("To")
-                height: app.styler.themeItemSizeSmall
-                value: page.toText
+                title: app.tr("Destination")
                 visible: page.toNeeded
-                // Avoid putting label and value on different lines.
-                width: 3 * parent.width
-
-                BusyIndicatorSmallPL {
-                    anchors.right: parent.right
-                    anchors.rightMargin: app.styler.themeHorizontalPageMargin + (parent.width - page.width)
-                    anchors.verticalCenter: parent.verticalCenter
-                    running: page.toText === app.tr("Current position") && !gps.ready
-                    z: parent.z + 1
-                }
-
-                onClicked: {
-                    var dialog = app.push("RoutePointPage.qml");
-                    dialog.accepted.connect(function() {
-                        if (dialog.selectedPoi && dialog.selectedPoi.coordinate) {
-                            page.to = [dialog.selectedPoi.coordinate.longitude, dialog.selectedPoi.coordinate.latitude];
-                            page.toText = dialog.selectedPoi.title || app.tr("Unnamed point");
-                        } else if (dialog.query === app.tr("Current position")) {
-                            page.to = map.getPosition();
-                            page.toText = dialog.query;
-                        } else {
-                            page.to = dialog.query;
-                            page.toText = dialog.query;
-                            py.call_sync("poor.app.history.add_place", [dialog.query]);
-                        }
-                    });
-                }
-
             }
-
 
             Connections {
                 target: page

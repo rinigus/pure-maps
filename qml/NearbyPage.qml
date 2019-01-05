@@ -43,8 +43,8 @@ PagePL {
     }
 
     property bool   initialized: false
-    property var    near: null
-    property string nearText: ""
+    property alias  near: nearButton.coordinates
+    property alias  nearText: nearButton.text
     property string query: ""
     property var    params: {}
     property real   radius: 1000
@@ -68,39 +68,11 @@ PagePL {
 
         property var settings: null
 
-        ValueButtonPL {
+        RoutePoint {
             id: nearButton
+            comment: app.tr("Select a reference location next to which you want to perform the search.")
             label: app.tr("Near")
-            height: app.styler.themeItemSizeSmall
-            value: page.nearText
-            // Avoid putting label and value on different lines.
-            width: 3 * parent.width
-
-            BusyIndicatorSmallPL {
-                anchors.right: parent.right
-                anchors.rightMargin: app.styler.themeHorizontalPageMargin + (parent.width - page.width)
-                anchors.verticalCenter: parent.verticalCenter
-                running: page.nearText === app.tr("Current position") && !gps.ready
-                z: parent.z + 1
-            }
-
-            onClicked: {
-                var dialog = app.push("RoutePointPage.qml");
-                dialog.accepted.connect(function() {
-                    if (dialog.selectedPoi && dialog.selectedPoi.coordinate) {
-                        page.near = [dialog.selectedPoi.coordinate.longitude, dialog.selectedPoi.coordinate.latitude];
-                        page.nearText = dialog.selectedPoi.title || app.tr("Unnamed point");
-                    } else if (dialog.page === app.tr("Current position")) {
-                        page.near = map.getPosition();
-                        page.nearText = dialog.query;
-                    } else {
-                        page.near = dialog.query;
-                        page.nearText = dialog.query;
-                        py.call_sync("poor.app.history.add_place", [dialog.query]);
-                    }
-                });
-            }
-
+            title: app.tr("Near location")
         }
 
         ComboBoxPL {
@@ -146,7 +118,7 @@ PagePL {
         function addSetttings() {
             // Add guide-specific settings from guide's own QML file.
             page.params = {};
-            column.settings && column.settings.destroy();
+            if (column.settings) column.settings.destroy();
             var uri = py.evaluate("poor.app.guide.settings_qml_uri");
             if (!uri) return;
             var component = Qt.createComponent(uri);

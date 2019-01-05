@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2019 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,226 +22,71 @@ import "platform"
 
 import "js/util.js" as Util
 
-DialogListPL {
+DialogAutoPL {
     id: dialog
 
-    canAccept: dialog.query.length > 0 || selectedPoi!=null
-    currentIndex: -1
+    pageMenu: PageMenuPL {
+        PageMenuItemPL {
+            text: app.tr("Using %1").arg(name)
+            property string name: py.evaluate("poor.app.geocoder.name")
+            onClicked: {
+                var dialog = app.push("GeocoderPage.qml");
+                dialog.accepted.connect(function() {
+                    name = py.evaluate("poor.app.geocoder.name");
+                });
+            }
+        }
+    }
 
-    delegate: ListItemPL {
-        id: listItem
-        contentHeight: visible ? app.styler.themeItemSizeSmall : 0
-        menu: contextMenu
-        visible: model.visible
+    property alias  comment: commentLabel.text
+    property string currentSelection
+    property alias  searchPlaceholderText: geo.searchPlaceholderText
+    property alias  selection: geo.selection
+    property alias  selectionTypes: geo.selectionTypes
+    property alias  query: geo.query
+
+    Column {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        spacing: app.styler.themePaddingMedium
 
         ListItemLabel {
-            anchors.leftMargin: dialog.searchField.textLeftMargin
-            color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
-            height: app.styler.themeItemSizeSmall
-            text: model.text
-            textFormat: Text.RichText
+            id: commentLabel
+            color: app.styler.themeHighlightColor
+            font.pixelSize: app.styler.themeFontSizeSmall
+            visible: text
+            wrapMode: Text.WordWrap
         }
 
-        ContextMenuPL {
-            id: contextMenu
-            ContextMenuItemPL {
-                text: app.tr("Remove")
-                onClicked: {
-                    py.call_sync("poor.app.history.remove_place", [model.place]);
-                    dialog.history = py.evaluate("poor.app.history.places");
-                    dialog.model.remove(index);
-                }
-            }
+        ListItemLabel {
+            font.pixelSize: app.styler.themeFontSizeSmall
+            color: app.styler.themeHighlightColor
+            horizontalAlignment: Text.AlignRight
+            text: app.tr("Current selection: %1").arg(currentSelection)
+            visible: currentSelection
+            wrapMode: Text.WordWrap
         }
 
-        ListView.onRemove: animateRemoval(listItem);
-
-        onClicked: {
-            listItem.focus = true;
-            var poi = dialog.poiCompletionDetails[model.place.toLowerCase()];
-            if (poi) dialog.selectedPoi = poi;
-            dialog.query = model.place;
-            dialog.accept();
+        Spacer {
+            height: 0
         }
 
-    }
+        GeocodeItem {
+            id: geo
+            active: true
+            fillModel: false
+            showCurrentPosition: true
 
-    headerExtra: Component {
-        Column {
-            height: gpsItem.height + shortItems.model.count*app.styler.themeItemSizeSmall + searchField.height
-            width: parent.width
-
-            ListItemPL {
-                id: gpsItem
-                contentHeight: app.styler.themeItemSizeSmall
-                ListItemLabel {
-                    anchors.leftMargin: dialog.searchField.textLeftMargin
-                    color: app.styler.themeHighlightColor
-                    height: app.styler.themeItemSizeSmall
-                    text: app.tr("Current position")
-                }
-                onClicked: {
-                    dialog.query = app.tr("Current position");
-                    dialog.accept();
+            onSelectionChanged: {
+                if (selection) {
+                    accept();
                 }
             }
-
-            Repeater {
-                id: shortItems
-
-                delegate: ListItemPL {
-                    id: listItem
-                    contentHeight: app.styler.themeItemSizeSmall
-
-                    ListItemLabel {
-                        anchors.leftMargin: dialog.searchField.textLeftMargin
-                        color: app.styler.themeHighlightColor
-                        height: app.styler.themeItemSizeSmall
-                        text: model.text
-                    }
-                    onClicked: {
-                        listItem.focus = true;
-                        var poi = model.poi;
-                        if (poi) dialog.selectedPoi = poi;
-                        dialog.accept();
-                    }
-                }
-
-                model: ListModel{}
-
-                Component.onCompleted: {
-                    var slist = pois.pois.filter(function (p) {
-                        return p.shortlisted;
-                    }).map(function (p) {
-                        return {
-                            "text": p.title || p.address || app.tr("Unnamed point"),
-                            "poi": p
-                        };
-                    });
-                    slist.sort(function (a, b) {
-                        var x = a.text.toLowerCase();
-                        var y = b.text.toLowerCase();
-                        if (x < y) {return -1;}
-                        if (x > y) {return 1;}
-                        return 0;
-                    });
-                    slist.forEach(function (p) {
-                        shortItems.model.append(p);
-                    })
-                }
-            }
-
-            SearchFieldPL {
-                id: searchField
-                placeholderText: app.tr("Search")
-                width: parent.width
-                property string prevText: ""
-                onSearch: dialog.accept();
-                onTextChanged: {
-                    var newText = searchField.text.trim();
-                    if (newText === searchField.prevText) return;
-                    dialog.query = newText;
-                    searchField.prevText = newText;
-                    dialog.filterCompletions();
-                }
-            }
-
-            Component.onCompleted: dialog.searchField = searchField;
         }
     }
 
-    model: ListModel {}
-
-    placeholderText: app.tr("You can search by address, locality, landmark and many other terms. For best results, include a region, e.g. “address, city” or “city, country”.")
-
-    property bool   autocompletePending: false
-    property var    autocompletions: []
-    property var    completionDetails: []
-    property var    history: []
-    property var    poiCompletionDetails: []
-    property string prevAutocompleteQuery: "."
-    property string query: ""
-    property var    searchField: undefined
-    property var    selectedPoi: undefined
-
-    onPageStatusActivating: {
-        dialog.autocompletePending = false;
-        dialog.loadHistory();
-        dialog.filterCompletions();
+    onPageStatusActive: {
+        geo.fillModel = true;
+        if (!query) geo.activate();
     }
-
-    Timer {
-        id: autocompleteTimer
-        interval: 1000
-        repeat: true
-        running: dialog.active && app.conf.autoCompleteGeo
-        triggeredOnStart: true
-        onTriggered: dialog.fetchCompletions();
-    }
-
-    function fetchCompletions() {
-        // Fetch completions for a partial search query.
-        if (!app.conf.autoCompleteGeo || dialog.autocompletePending) return;
-        var query = dialog.searchField.text.trim();
-        if (query === dialog.prevAutocompleteQuery) return;
-        dialog.autocompletePending = true;
-        dialog.prevAutocompleteQuery = query;
-        var x = map.position.coordinate.longitude || 0;
-        var y = map.position.coordinate.latitude || 0;
-        py.call("poor.app.router.geocoder.autocomplete", [query, x, y], function(results) {
-            if (!dialog) return;
-            dialog.autocompletePending = false;
-            if (!dialog.active) return;
-            results = results || [];
-            dialog.autocompletions = [];
-            for (var i = 0; i < results.length; i++) {
-                dialog.autocompletions.push(results[i].label);
-                dialog.completionDetails[results[i].label.toLowerCase()] = results[i];
-                // Use auto-completion results to fix history item letter case.
-                for (var j = 0; j < dialog.history.length; j++)
-                    if (results[i].label.toLowerCase() === dialog.history[j].toLowerCase())
-                        dialog.history[j] = results[i].label;
-            }
-            dialog.filterCompletions();
-        });
-    }
-
-    function filterCompletions() {
-        // Filter completions for the current search query.
-        var found = Util.findMatches(dialog.searchField.text.trim(),
-                                     dialog.history,
-                                     dialog.autocompletions,
-                                     dialog.model.count);
-
-        // Find POIs matching the completions
-        var searchKeys = ["title", "poiType", "address", "postcode", "text", "phone", "link"];
-        var s = Util.findMatchesInObjects(query, pois.pois, searchKeys);
-        var jointResults = [];
-        // Limit to max 10 POIs if there are many completions
-        if (found.length > 20 && s.length > 10)
-            s = s.slice(0, 9);
-        // save poi completions details
-        dialog.poiCompletionDetails = [];
-        s.forEach(function (p) {
-            var txt = p.title || p.address || app.tr("Unnamed point");
-            dialog.poiCompletionDetails[txt.toLowerCase()] = p;
-            jointResults.push({"text": txt, "markup": txt});
-        });
-
-        // Merge all completions
-        found = jointResults.concat(found);
-        Util.injectMatches(dialog.model, found, "place", "text");
-        dialog.placeholderEnabled = found.length === 0;
-    }
-
-    function loadHistory() {
-        // Load search history and preallocate list items.
-        dialog.history = py.evaluate("poor.app.history.places");
-        while (dialog.model.count < 100)
-            dialog.model.append({"place": "",
-                                    "text": "",
-                                    "visible": false});
-
-    }
-
 }
