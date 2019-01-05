@@ -36,6 +36,18 @@ PagePL {
                 });
             }
         }
+
+        PageMenuItemPL {
+            enabled: geo.searchResults.length
+            text: app.tr("Show all")
+            onClicked: {
+                var pois = geo.searchResults;
+                app.hideMenu(app.tr("Search: %1").arg(geo.query));
+                app.stateId = stateId;
+                app.pois.addList(pois, stateId);
+                map.fitViewToPois(pois);
+            }
+        }
     }
 
     property string browsingQuery

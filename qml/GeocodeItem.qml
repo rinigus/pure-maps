@@ -39,6 +39,7 @@ Item {
     property var    poiBlacklisted: [] // POIs that were created as a part of this search
     property string searchPlaceholderText: app.tr("Search")
     property bool   showCurrentPosition: false
+    property var    searchResults: []
     property var    selection: null
     property string selectionPlaceholderText: app.tr("No selection")
     property string stateId
@@ -60,7 +61,6 @@ Item {
     property string _searchError: ""
     property int    _searchIndex: 0
     property bool   _searchPending: false
-    property var    _searchResults: []
 
     // internal properties: readonly
     readonly property var _listDataKeys:
@@ -338,7 +338,7 @@ Item {
         var mySearchIndex = _searchIndex;
         _searchPending = true;
         _searchDone = false;
-        _searchResults = [];
+        searchResults = [];
         _autocompletePending = false; // skip any ongoing autocomplete search
         py.call_sync("poor.app.history.add_place", [query]);
         var x = map.position.coordinate.longitude || 0;
@@ -352,9 +352,9 @@ Item {
             _searchDone = true;
             if (results && results.error && results.message) {
                 _searchError = results.message;
-                _searchResults = [];
+                searchResults = [];
             } else {
-                _searchResults = results.map(function (p){
+                searchResults = results.map(function (p){
                     var n = pois.convertFromPython(p);
                     n.description = p.description;
                     n.distance = p.distance;
@@ -404,18 +404,18 @@ Item {
                            "markup": app.tr("Searching ..."),
                            "type": "header"
                        });
-        } else if (_searchResults.length === 0) {
+        } else if (searchResults.length === 0) {
             found.push({
                            "markup": app.tr("No results"),
                            "type": "header"
                        });
         } else {
             found.push({
-                           "markup": app.tr("Results (%1)").arg(_searchResults.length),
+                           "markup": app.tr("Results (%1)").arg(searchResults.length),
                            "type": "header"
                        });
             var index = 0;
-            _searchResults.forEach(function (p){
+            searchResults.forEach(function (p){
                 index += 1;
                 var k = "search results - %1".arg(index);
                 found.push({
