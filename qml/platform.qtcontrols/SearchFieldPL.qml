@@ -18,8 +18,9 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import "."
 
-FocusScope {
+Item {
     id: row
     height: childrenRect.height
 
@@ -29,14 +30,32 @@ FocusScope {
 
     signal search
 
-    TextField {
-        id: field
+    Image {
+        id: searchImage
         anchors.left: parent.left
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
-        anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        fillMode: Image.PreserveAspectFit
+        source: app.styler.iconSearch
+        sourceSize.height: app.styler.themeIconSizeMedium
+    }
+
+    TextField {
+        id: field
+        anchors.left: searchImage.right
+        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.right: clearButton.left
+        anchors.rightMargin: app.styler.themePaddingMedium
         focus: true
         width: parent.width
         Keys.onReturnPressed: row.search()
+    }
+
+    IconButtonPL {
+        id: clearButton
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        icon.source: app.styler.iconDelete
+        icon.sourceSize.height: app.styler.themeIconSizeMedium
+        onClicked: field.text = ""
     }
 }
