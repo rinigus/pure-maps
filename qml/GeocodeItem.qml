@@ -91,7 +91,6 @@ Item {
 
         SearchFieldPL {
             id: searchField
-            focus: true
             placeholderText: searchPlaceholderText
             text: query
             width: parent.width
@@ -305,8 +304,8 @@ Item {
         geo.loadHistory();
         geo.update();
         if (active) {
-            activate();
             if (query) fetchResults();
+            else activate();
         }
     }
 
