@@ -62,10 +62,13 @@ PagePL {
             text: app.tr("Reverse endpoints")
             onClicked: {
                 var from = page.from;
+                var fromQuery = page.fromQuery;
                 var fromText = page.fromText;
                 page.from = page.to;
+                page.fromQuery = page.toQuery;
                 page.fromText = page.toText;
                 page.to = from;
+                page.toQuery = fromQuery;
                 page.toText = fromText;
             }
         }
@@ -75,10 +78,12 @@ PagePL {
     property bool   followMe: false
     property alias  from: fromButton.coordinates
     property bool   fromNeeded: true
+    property alias  fromQuery: fromButton.query
     property alias  fromText: fromButton.text
     property var    params: {}
     property alias  to: toButton.coordinates
     property bool   toNeeded: true
+    property alias  toQuery: toButton.query
     property alias  toText: toButton.text
 
     Column {

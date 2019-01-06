@@ -31,11 +31,9 @@ ValueButtonPL {
     property string comment
     property var    coordinates: null
 
+    property string query
     property string text
     property string title
-
-    // internal properties
-    property string _query
 
     BusyIndicatorSmallPL {
         anchors.right: parent.right
@@ -49,12 +47,12 @@ ValueButtonPL {
         var dialog = app.push("RoutePointPage.qml", {
                                   "comment": comment,
                                   "currentSelection": text,
-                                  "query": _query,
+                                  "query": query,
                                   "title": title,
                                   "searchPlaceholderText": label
                               });
         dialog.accepted.connect(function() {
-            _query = dialog.query;
+            query = dialog.query;
             if (dialog.selection.selectionType === dialog.selectionTypes.currentPosition) {
                 coordinates = map.getPosition();
                 text = app.tr("Current position");
