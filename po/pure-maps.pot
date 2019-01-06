@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-06 12:28+0200\n"
+"POT-Creation-Date: 2019-01-06 20:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,9 +36,9 @@ msgstr ""
 
 #: poor/history.py:32 qml/GeocodeItem.qml:207 qml/GeocodeItem.qml:516
 #: qml/NearbyPage.qml:28 qml/NearbyPage.qml:135 qml/NearbyPage.qml:150
-#: qml/RoutePage.qml:28 qml/RoutePage.qml:29 qml/RoutePage.qml:223
-#: qml/RoutePage.qml:233 qml/RoutePage.qml:235 qml/RoutePoint.qml:44
-#: qml/RoutePoint.qml:60
+#: qml/RoutePage.qml:28 qml/RoutePage.qml:29 qml/RoutePage.qml:228
+#: qml/RoutePage.qml:238 qml/RoutePage.qml:240 qml/RoutePoint.qml:42
+#: qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr ""
 
@@ -462,7 +462,7 @@ msgid "Points of Interest (%1)"
 msgstr ""
 
 #: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePoint.qml:64
+#: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr ""
 
@@ -616,7 +616,7 @@ msgstr ""
 msgid "Resume"
 msgstr ""
 
-#: qml/NavigationPage.qml:50 qml/RoutePage.qml:166
+#: qml/NavigationPage.qml:50 qml/RoutePage.qml:171
 msgid "Begin"
 msgstr ""
 
@@ -644,7 +644,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: qml/NavigationPage.qml:204 qml/PreferencesPage.qml:176 qml/RoutePage.qml:200
+#: qml/NavigationPage.qml:204 qml/PreferencesPage.qml:176 qml/RoutePage.qml:205
 msgid "Map scale"
 msgstr ""
 
@@ -956,19 +956,19 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:183
+#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:188
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Car"
 msgstr ""
 
-#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:183
+#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:188
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Bicycle"
 msgstr ""
 
-#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:183
+#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:188
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Foot"
@@ -1163,37 +1163,37 @@ msgstr ""
 msgid "Reverse endpoints"
 msgstr ""
 
-#: qml/RoutePage.qml:102
+#: qml/RoutePage.qml:107
 msgid "From"
 msgstr ""
 
-#: qml/RoutePage.qml:103
+#: qml/RoutePage.qml:108
 msgid "Origin"
 msgstr ""
 
-#: qml/RoutePage.qml:109
+#: qml/RoutePage.qml:114
 msgid "To"
 msgstr ""
 
-#: qml/RoutePage.qml:110
+#: qml/RoutePage.qml:115
 msgid "Destination"
 msgstr ""
 
-#: qml/RoutePage.qml:157
+#: qml/RoutePage.qml:162
 msgid "Follow the movement and show just in time information"
 msgstr ""
 
-#: qml/RoutePage.qml:166
+#: qml/RoutePage.qml:171
 msgid "Stop"
 msgstr ""
 
-#: qml/RoutePage.qml:181
+#: qml/RoutePage.qml:186
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
 
-#: qml/RoutePage.qml:182
+#: qml/RoutePage.qml:187
 msgid "Mode of transportation"
 msgstr ""
 
