@@ -1,3 +1,14 @@
+2019-01-06: Pure Maps 1.13
+==========================
+
+* Refactor search functionality
+* Provide search functionality while entering locations in navigation and nearby search
+* Update translations
+* Internal restructuring of POI handling
+* qtcontrols: revise search field
+* Bugfix: restore ability to see all search results
+* Bugfix: remove temporary POIs while browsing them
+
 2018-12-28: Pure Maps 1.12
 ==========================
 
