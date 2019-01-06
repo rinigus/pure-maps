@@ -5,7 +5,7 @@
 # 
 # Translators:
 # rinigus github, 2018
-# Åke Engelbrektson, 2018
+# Åke Engelbrektson, 2019
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-06 12:28+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Åke Engelbrektson, 2018\n"
+"Last-Translator: Åke Engelbrektson, 2019\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -455,19 +455,19 @@ msgstr "Karta: %1"
 
 #: qml/GeocodeItem.qml:44
 msgid "No selection"
-msgstr ""
+msgstr "Inget val"
 
 #: qml/GeocodeItem.qml:379
 msgid "Suggestions (%1)"
-msgstr ""
+msgstr "Förslag (%1)"
 
 #: qml/GeocodeItem.qml:400
 msgid "Error while fetching results"
-msgstr ""
+msgstr "Kunde inte hämta resultat"
 
 #: qml/GeocodeItem.qml:409
 msgid "Searching ..."
-msgstr ""
+msgstr "Söker ..."
 
 #: qml/GeocodeItem.qml:414 qml/NearbyResultsPage.qml:134
 #: routers/default_results.qml:52 routers/digitransit_results.qml:245
@@ -479,11 +479,11 @@ msgstr "Inga resultat"
 
 #: qml/GeocodeItem.qml:419
 msgid "Results (%1)"
-msgstr ""
+msgstr "Resultat (%1)"
 
 #: qml/GeocodeItem.qml:455
 msgid "Points of Interest (%1)"
-msgstr ""
+msgstr "Platser av intresse (%1)"
 
 #: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:64
@@ -492,7 +492,7 @@ msgstr "Namnlös punkt"
 
 #: qml/GeocodeItem.qml:486
 msgid "Recent searches (%1)"
-msgstr ""
+msgstr "Tidigare sökningar (%1)"
 
 #: qml/GeocodePage.qml:30 qml/NearbyPage.qml:33 qml/RoutePage.qml:33
 #: qml/RoutePointPage.qml:30
@@ -687,7 +687,7 @@ msgstr "Närliggande platser"
 #: qml/NearbyPage.qml:73
 msgid ""
 "Select a reference location next to which you want to perform the search."
-msgstr ""
+msgstr "Välj en referensplats i närheten av där du vill söka."
 
 #: qml/NearbyPage.qml:74
 msgid "Near"
@@ -695,7 +695,7 @@ msgstr "Nära"
 
 #: qml/NearbyPage.qml:75
 msgid "Near location"
-msgstr ""
+msgstr "Plats i närheten"
 
 #: qml/NearbyPage.qml:80
 msgid "Radius"
@@ -1212,7 +1212,7 @@ msgstr "Från"
 
 #: qml/RoutePage.qml:103
 msgid "Origin"
-msgstr ""
+msgstr "Ursprung"
 
 #: qml/RoutePage.qml:109
 msgid "To"
@@ -1220,7 +1220,7 @@ msgstr "Till"
 
 #: qml/RoutePage.qml:110
 msgid "Destination"
-msgstr ""
+msgstr "Destination"
 
 #: qml/RoutePage.qml:157
 msgid "Follow the movement and show just in time information"
@@ -1243,7 +1243,7 @@ msgstr "Transportsätt"
 
 #: qml/RoutePointPage.qml:65
 msgid "Current selection: %1"
-msgstr ""
+msgstr "Aktuellt val: %1"
 
 #: qml/RouterPage.qml:59
 msgid "Modes: %1"
