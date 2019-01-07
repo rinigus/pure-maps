@@ -20,8 +20,7 @@ import QtQuick 2.9
 
 Text {
     anchors.horizontalCenter: parent.horizontalCenter
-    horizontalAlignment: Text.AlignRight
+    horizontalAlignment: Text.AlignLeft
     font.bold: true
-    font.pixelSize: app.styler.themeFontSizeLarge
     width: parent.width - 2*app.styler.themeHorizontalPageMargin
 }

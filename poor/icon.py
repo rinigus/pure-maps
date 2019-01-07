@@ -47,4 +47,4 @@ class IconFinder:
     def get_icon(self, icon):
         """Return icon filename"""
         from xdg.IconTheme import getIconPath
-        return getIconPath(icon, theme=self.theme, extensions=["svg"])
+        return getIconPath(icon, theme=self.theme, extensions=["png", "svg"])

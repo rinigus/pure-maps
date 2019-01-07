@@ -32,8 +32,9 @@ ListItemPL {
         id: icon
         anchors.left: parent.left
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
-        fillMode: Image.Pad
-        height: app.styler.themeItemSizeSmall
+        anchors.verticalCenter: parent.verticalCenter
+        fillMode: Image.PreserveAspectFit
+        height: app.styler.themeItemSizeSmall*0.8
         source: item.icon
     }
 

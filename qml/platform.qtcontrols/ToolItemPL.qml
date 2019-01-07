@@ -39,6 +39,7 @@ Item {
             anchors.top: item.top
             anchors.topMargin: app.styler.themePaddingLarge
             fillMode: Image.PreserveAspectFit
+            height: app.styler.themeItemSizeSmall
         }
 
         Label {

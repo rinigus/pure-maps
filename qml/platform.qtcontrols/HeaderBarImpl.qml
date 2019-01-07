@@ -26,44 +26,57 @@ import QtQuick.Layouts 1.3
 
 ToolBar {
     id: bar
-    height: visible ? implicitHeight : 0
+    height: visible ? app.styler.themeItemSizeSmall : 0
     width: page.width
     visible: page && (!(page.empty) || app.pages.currentIndex > 0)
 
     property string acceptDescription
     property var    page
 
+    property int _buttonWidth: Math.max(toolButton.width, acceptButton.width)
+
     signal accepted
 
-    RowLayout {
-        anchors.fill: parent
-        spacing: app.styler.themePaddingLarge
+    Button {
+        id: toolButton
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.verticalCenter: label.verticalCenter
+        height: app.styler.themeItemSizeSmall
+        icon.height: label.height
+        icon.source: app.styler.iconBack
+        onClicked: app.pages.pop()
+    }
 
-        ToolButton {
-            id: toolButton
-            text: "\u25C0 "
-            font.pointSize: app.styler.themeFontSizeExtraLarge
-            onClicked: app.pages.pop()
-        }
+    Label {
+        id: label
+        anchors.left: parent.left
+        anchors.leftMargin: toolButton.anchors.leftMargin + _buttonWidth + app.styler.themePaddingLarge
+        anchors.right: parent.right
+        anchors.rightMargin: acceptButton.anchors.rightMargin + _buttonWidth + app.styler.themePaddingLarge
+        anchors.verticalCenter: parent.verticalCenter
+        text: page.title
+        elide: Label.ElideRight
+        horizontalAlignment: Qt.AlignHCenter
+        verticalAlignment: Qt.AlignVCenter
+        Layout.fillWidth: true
+        font.pointSize: app.styler.themeFontSizeMedium
+        font.bold: true
+    }
 
-        Label {
-            text: page.title
-            elide: Label.ElideRight
-            horizontalAlignment: Qt.AlignHCenter
-            verticalAlignment: Qt.AlignVCenter
-            Layout.fillWidth: true
-            font.pointSize: app.styler.themeFontSizeExtraLarge
-        }
-
-        ToolButton {
-            id: acceptButton
-            font.pixelSize: app.styler.themeFontSizeExtraLarge
-            text: bar.acceptDescription + (app.pages.hasAttached ? " \u25b6" : "")
-            visible: !page.hideAcceptButton && text
-            enabled: page.canNavigateForward === true
-            onClicked: {
-                bar.accepted();
-            }
+    Button {
+        id: acceptButton
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.verticalCenter: label.verticalCenter
+        height: app.styler.themeItemSizeSmall
+        icon.height: label.height
+        icon.source: app.styler.iconForward
+        Layout.minimumWidth: toolButton.width
+        visible: !page.hideAcceptButton && app.pages.hasAttached
+        enabled: page.canNavigateForward === true
+        onClicked: {
+            bar.accepted();
         }
     }
 }

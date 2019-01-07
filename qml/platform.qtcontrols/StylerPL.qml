@@ -59,6 +59,7 @@ QtObject {
     property string iconDot: "find-location-symbolic"
     property string iconFavorite: "image://theme/icon-m-favorite"
     property string iconFavoriteSelected: "image://theme/icon-m-favorite-selected"
+    property string iconForward
     property string iconMaps: "image://theme/icon-m-levels"
     property string iconMenu: "image://theme/icon-m-menu"
     property string iconNavigate: "image://theme/icon-m-car"
@@ -94,28 +95,29 @@ QtObject {
     }
 
     function initStyle() {
-        iconAbout = getIcon("help-about-symbolic");
-        iconBack = getIcon("go-previous-symbolic");
-        iconClear = getIcon("edit-clear-all-symbolic");
-        iconDelete = getIcon("edit-delete-symbolic");
-        iconDot = getIcon("find-location-symbolic");
-        iconFavorite = getIcon("bookmark-new-symbolic");
-        iconFavoriteSelected = getIcon("user-bookmarks-symbolic");
-        iconMaps = getIcon("view-paged-symbolic");
-        iconMenu = getIcon("open-menu-symbolic");
-        iconNavigate = getIcon("send-to-symbolic");
-        iconNearby = getIcon("zoom-fit-best-symbolic");
-        iconPause = getIcon("media-playback-pause-symbolic");
-        iconPhone = getIcon("call-start-symbolic");
-        iconPreferences = getIcon("preferences-system-symbolic");
-        iconProfile = getIcon("network-server-symbolic");
-        iconRefresh = getIcon("view-refresh-symbolic");
-        iconSearch = getIcon("edit-find-symbolic");
-        iconShare = getIcon("emblem-shared-symbolic");
-        iconShortlisted = getIcon("checkbox-symbolic");
-        iconShortlistedSelected = getIcon("checkbox-checked-symbolic");
-        iconStart = getIcon("media-playback-start-symbolic");
-        iconStop = getIcon("media-playback-stop-symbolic");
-        iconWebLink = getIcon("web-browser-symbolic");
+        iconAbout = getIcon("help-about-symbolic.symbolic");
+        iconBack = getIcon("go-previous-symbolic.symbolic");
+        iconClear = getIcon("edit-clear-all-symbolic.symbolic");
+        iconDelete = getIcon("edit-delete-symbolic.symbolic");
+        iconDot = getIcon("find-location-symbolic.symbolic");
+        iconFavorite = getIcon("bookmark-new-symbolic.symbolic");
+        iconFavoriteSelected = getIcon("user-bookmarks-symbolic.symbolic");
+        iconForward = getIcon("go-next-symbolic.symbolic");
+        iconMaps = getIcon("view-paged-symbolic.symbolic");
+        iconMenu = getIcon("open-menu-symbolic.symbolic");
+        iconNavigate = getIcon("send-to-symbolic.symbolic");
+        iconNearby = getIcon("zoom-fit-best-symbolic.symbolic");
+        iconPause = getIcon("media-playback-pause-symbolic.symbolic");
+        iconPhone = getIcon("call-start-symbolic.symbolic");
+        iconPreferences = getIcon("preferences-system-symbolic.symbolic");
+        iconProfile = getIcon("network-server-symbolic.symbolic");
+        iconRefresh = getIcon("view-refresh-symbolic.symbolic");
+        iconSearch = getIcon("edit-find-symbolic.symbolic");
+        iconShare = getIcon("emblem-shared-symbolic.symbolic");
+        iconShortlisted = getIcon("checkbox-symbolic.symbolic");
+        iconShortlistedSelected = getIcon("checkbox-checked-symbolic.symbolic");
+        iconStart = getIcon("media-playback-start-symbolic.symbolic");
+        iconStop = getIcon("media-playback-stop-symbolic.symbolic");
+        iconWebLink = getIcon("web-browser-symbolic.symbolic");
     }
 }

@@ -127,8 +127,8 @@ PagePL {
                 id: icon
                 anchors.left: parent.left
                 anchors.leftMargin: app.styler.themeHorizontalPageMargin
-                fillMode: Image.Pad
-                height: app.styler.themeItemSizeSmall
+                fillMode: Image.PreserveAspectFit
+                height: app.styler.themeItemSizeSmall*0.8
                 source: app.styler.iconProfile
             }
 
