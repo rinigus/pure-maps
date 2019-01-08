@@ -43,7 +43,7 @@ PagePL {
             onClicked: {
                 var pois = geo.searchResults;
                 app.hideMenu(app.tr("Search: %1").arg(geo.query));
-                app.stateId = stateId;
+                app.stateId = geo.stateId;
                 app.pois.addList(pois, stateId);
                 map.fitViewToPois(pois);
             }
