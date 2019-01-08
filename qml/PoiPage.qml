@@ -25,7 +25,7 @@ import "js/util.js" as Util
 
 PageListPL {
     id: page
-    title: app.tr("Points of Interest")
+    title: app.tr("Bookmarks")
 
     currentIndex: -1
 
@@ -116,12 +116,12 @@ PageListPL {
                 fillModel(lastQuery);
                 return;
             }
-            app.stateId = "Points of Interest";
+            app.stateId = "pois";
             pois.show(p, true);
             map.setCenter(
                         p.coordinate.longitude,
                         p.coordinate.latitude);
-            app.hideMenu(app.tr("Points of Interest"));
+            app.hideMenu(app.tr("Bookmarks"));
         }
 
     }
@@ -145,27 +145,14 @@ PageListPL {
 
     model: ListModel {}
 
-    pageMenu: PageMenuPL {
-        PageMenuItemPL {
-            text: bookmarkedOnly ? app.tr("Show all") : app.tr("Show bookmarked")
-            onClicked: {
-                bookmarkedOnly = !bookmarkedOnly;
-                app.conf.set("poi_list_show_bookmarked", bookmarkedOnly);
-                fillModel(lastQuery);
-            }
-        }
-    }
-
     placeholderEnabled: pois.pois.length === 0
-    placeholderText: app.tr("No points of interests defined yet. You can create and bookmark points of interest using map and search.")
+    placeholderText: app.tr("No points of bookmarks defined yet. You can bookmark locations using map and search.")
 
-    property bool   bookmarkedOnly: false
     property string lastQuery: ""
     property var    searchField: undefined
     property var    searchKeys: ["shortlisted", "bookmarked", "title", "poiType", "address", "postcode", "text", "phone", "link"]
 
     Component.onCompleted: {
-        bookmarkedOnly = app.conf.get("poi_list_show_bookmarked");
         fillModel(lastQuery);
     }
 
@@ -176,7 +163,6 @@ PageListPL {
 
     function fillModel(query) {
         var data = pois.pois;
-        if (bookmarkedOnly) data = pois.pois.filter(function (p) { return p.bookmarked; });
         var s = Util.findMatchesInObjects(query, data, searchKeys);
         page.model.clear();
         s.forEach(function (p){ page.model.append(p); });

@@ -60,7 +60,7 @@ PagePL {
 
         IconListItem {
             icon: app.styler.iconFavorite
-            label: app.tr("Points of interest")
+            label: app.tr("Bookmarks")
             onClicked: app.pushMain("PoiPage.qml");
         }
 

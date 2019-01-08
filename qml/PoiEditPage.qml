@@ -22,7 +22,7 @@ import "platform"
 
 DialogPL {
     id: page
-    title: app.tr("Edit POI")
+    title: app.tr("Edit bookmark")
 
     acceptText: app.tr("Save")
 
