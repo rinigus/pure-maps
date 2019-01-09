@@ -28,7 +28,7 @@ Item {
     height: labels.implicitHeight
     opacity: 0.9
     width: parent.width
-    visible: app.mode === modes.explore && !app.infoPanelOpen
+    visible: (app.mode === modes.explore || app.mode === modes.exploreRoute) && !app.infoPanelOpen
     z: 400
 
     Text {

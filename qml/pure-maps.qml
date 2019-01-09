@@ -268,6 +268,10 @@ ApplicationWindowPL {
         app.mode = modes.explore;
     }
 
+    function setModeExploreRoute() {
+        app.mode = modes.exploreRoute;
+    }
+
     function setModeFollowMe() {
         app.mode = modes.followMe;
     }

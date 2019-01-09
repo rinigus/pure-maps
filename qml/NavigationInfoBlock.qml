@@ -51,7 +51,7 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeHuge
 
         function update() {
-            if (app.mode === modes.explore) return;
+            if (app.mode === modes.explore || app.mode === modes.exploreRoute) return;
             // Update speed and positioning accuracy values in user's preferred units.
             if (!gps.position.speedValid) {
                 text = ""
@@ -78,7 +78,7 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeMedium
 
         function update() {
-            if (app.mode === modes.explore) return;
+            if (app.mode === modes.explore || app.mode === modes.exploreRoute) return;
             if (app.conf.units === "american") {
                 text = app.tr("mph")
             } else if (app.conf.units === "british") {

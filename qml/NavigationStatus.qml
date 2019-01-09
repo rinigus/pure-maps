@@ -29,7 +29,7 @@ QtObject {
     property string manDist:   ""
     property string manTime:   ""
     property string narrative: ""
-    property bool   notify:    app.conf.showNarrative && (icon || narrative)
+    property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
     property real   progress:  0
     property bool   reroute:   false
     property var    sign: undefined

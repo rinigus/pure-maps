@@ -49,7 +49,7 @@ PagePL {
                 text: app.mode === modes.navigate ? app.tr("Pause") :
                                                     (app.navigationStarted ? app.tr("Resume") : app.tr("Begin"))
                 onClicked: {
-                    if (app.mode === modes.navigate) app.setModeExplore();
+                    if (app.mode === modes.navigate) app.setModeExploreRoute();
                     else app.setModeNavigate();
                     app.hideNavigationPages();
                 }

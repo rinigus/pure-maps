@@ -182,7 +182,7 @@ Page {
             }
 
             onClicked: {
-                app.setModeExplore();
+                app.setModeExploreRoute();
                 app.hideMenu(app.tr("Navigation"));
                 map.addRoute(listItem.result);
                 pois.hide();

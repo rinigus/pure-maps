@@ -23,4 +23,5 @@ QtObject {
     readonly property int explore: 1
     readonly property int followMe: 2
     readonly property int navigate: 3
+    readonly property int exploreRoute: 4
 }

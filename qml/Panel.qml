@@ -24,15 +24,15 @@ Rectangle {
     anchors.right: parent.right
     color: app.styler.blockBg
     height: 0
-    y: mode === modes.bottom ? parent.height - _offset : -height + _offset
+    y: mode === panelModes.bottom ? parent.height - _offset : -height + _offset
     z: 910
 
     // properties
     property int  contentHeight: 0
-    property int  mode: modes.bottom
+    property int  mode: panelModes.bottom
     property bool noAnimation: false
 
-    readonly property var modes: QtObject {
+    readonly property var panelModes: QtObject {
         readonly property int bottom: 1
         readonly property int top: 2
     }
@@ -71,8 +71,8 @@ Rectangle {
         // "filterChildren" makes sometimes parts of the panel transparent to
         // drag events. probably some bug in either my implementation or qml
         // drag.filterChildren: true
-        drag.minimumY: panel.mode === panel.modes.bottom ? panel.parent.height - panel.height : -panel.height
-        drag.maximumY: panel.mode === panel.modes.bottom ? panel.parent.height : 0
+        drag.minimumY: panel.mode === panel.panelModes.bottom ? panel.parent.height - panel.height : -panel.height
+        drag.maximumY: panel.mode === panel.panelModes.bottom ? panel.parent.height : 0
         drag.target: panel
 
         property bool dragDone: true
@@ -89,7 +89,7 @@ Rectangle {
         }
 
         onReleased: {
-            if (panel.mode === panel.modes.bottom) _offset = panel.parent.height - panel.y;
+            if (panel.mode === panel.panelModes.bottom) _offset = panel.parent.height - panel.y;
             else _offset = panel.y + panel.height;
             dragDone = true;
             var t = Math.min(panel.parent.height*0.1, panel.height * 0.25);

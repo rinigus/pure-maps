@@ -42,7 +42,7 @@ PageEmptyPL {
                 busy.error = route.message;
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
-                app.setModeExplore();
+                app.setModeExploreRoute();
                 app.hideMenu(app.tr("Navigation"));
                 pois.hide();
                 map.addRoute(route);

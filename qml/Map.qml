@@ -31,7 +31,7 @@ MapboxMap {
     center: QtPositioning.coordinate(49, 13)
     metersPerPixelTolerance: Math.max(0.001, metersPerPixel*0.01) // 1 percent from the current value
     pitch: {
-        if (app.mode === modes.explore || format === "raster" || !map.autoRotate || !app.conf.tiltWhenNavigating) return 0;
+        if (app.mode === modes.explore || app.mode === modes.exploreRoute || format === "raster" || !map.autoRotate || !app.conf.tiltWhenNavigating) return 0;
         if (app.mode === modes.navigate) return 60;
         if (app.mode === modes.followMe) return 60;
         return 0; // should never get here
@@ -95,7 +95,7 @@ MapboxMap {
 
     Behavior on center {
         CoordinateAnimation {
-            duration: map.ready && app.mode === modes.explore ? 500 : 0
+            duration: map.ready && (app.mode === modes.explore || app.mode === modes.exploreRoute) ? 500 : 0
             easing.type: Easing.InOutQuad
         }
     }
@@ -228,7 +228,7 @@ MapboxMap {
 
     function addRoute(route, amend) {
         // Add new route polyline to the map.
-        if (!amend) app.setModeExplore();
+        if (!amend) app.setModeExploreRoute();
         map.clearRoute();
         route.coordinates = route.x.map(function(value, i) {
             return QtPositioning.coordinate(route.y[i], route.x[i]);
@@ -468,7 +468,7 @@ MapboxMap {
     }
 
     function setMode() {
-        if (app.mode === modes.explore) setModeExplore();
+        if (app.mode === modes.explore || app.mode === modes.exploreRoute) setModeExplore();
         else if (app.mode === modes.followMe) setModeFollowMe();
         else if (app.mode === modes.navigate) setModeNavigate();
         else console.log("Something is terribly wrong - unknown mode in Map.setMode: " + app.mode);
@@ -541,7 +541,7 @@ MapboxMap {
     function updateMargins() {
         // Calculate new margins and set them for the map.
         var header = navigationBlock && navigationBlock.height > 0 ? navigationBlock.height : map.height*0.05;
-        var footer = !app.infoPanelOpen && app.mode === modes.explore && menuButton ? (map.height-menuButton.y) : 0;
+        var footer = !app.infoPanelOpen && (app.mode === modes.explore || app.mode === modes.exploreRoute) && menuButton ? (map.height-menuButton.y) : 0;
         footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
         footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && streetName ? streetName.height : 0
         footer += app.infoPanelOpen && infoPanel ? infoPanel.height : 0

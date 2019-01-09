@@ -25,11 +25,16 @@ Panel {
     anchors.left: parent.left
     anchors.right: parent.right
     contentHeight: {
+        if (app.mode === modes.exploreRoute) {
+            var h1 = app.styler.themePaddingMedium + totalDistLabel.height + totalTimeLabel.height + helpLabel.height;
+            var h2 = app.styler.themePaddingMedium + destLabel.height;
+            return Math.max(h1, h2);
+        }
         if (!destDist) return 0;
         if (!app.portrait && notify) {
             var h1 = app.styler.themePaddingMedium + app.styler.themeFontSizeLarge - app.styler.themeFontSizeMedium + narrativeLabel.height;
             var h2 = app.styler.themePaddingMedium + destLabel.height;
-            var h3 = streetLabel.height;
+            var h3 = app.styler.themePaddingMedium + streetLabel.height;
             return Math.max(h1, h2, h3);
         } else {
             var h1 = iconImage.height + 2 * app.styler.themePaddingLarge;
@@ -41,7 +46,7 @@ Panel {
             return Math.max(h1, h2, h3, h4);
         }
     }
-    mode: modes.top
+    mode: panelModes.top
     states: [
         State {
             when: !app.portrait && destDist && notify
@@ -67,7 +72,80 @@ Panel {
     property var    street:    app.navigationStatus.street
     property int    shieldLeftHeight: !app.portrait && destDist && notify ? manLabel.height + app.styler.themePaddingMedium + iconImage.height + iconImage.anchors.topMargin : 0
     property int    shieldLeftWidth:  !app.portrait && destDist && notify ? manLabel.anchors.leftMargin + app.styler.themePaddingLarge + Math.max(manLabel.width, iconImage.width) : 0
+    property string totalDist: app.navigationStatus.totalDist
+    property string totalTime: app.navigationStatus.totalTime
 
+    // information about route displayed while exploreRoute is active
+    LabelPL {
+        // label for total distance
+        id: totalDistLabelTxt
+        anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.baseline: totalDistLabel.baseline
+        color: app.styler.themeSecondaryColor
+        font.pixelSize: app.styler.themeFontSizeMedium
+        text: totalDist ? app.tr("Distance") : ""
+        visible: totalDistLabel.text
+    }
+
+    LabelPL {
+        // total distance
+        id: totalDistLabel
+        anchors.left: totalDistLabelTxt.right
+        anchors.leftMargin: app.styler.themePaddingSmall
+        anchors.top: parent.top
+        anchors.topMargin: app.styler.themePaddingMedium
+        color: app.styler.themePrimaryColor
+        font.pixelSize: app.styler.themeFontSizeLarge
+        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        text: app.mode === modes.exploreRoute ?
+                  (totalDist ? totalDist : app.tr("Processing route")) : ""
+        verticalAlignment: Text.AlignTop
+    }
+
+    LabelPL {
+        // label for total time
+        id: totalTimeLabelTxt
+        anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.baseline: totalTimeLabel.baseline
+        color: app.styler.themeSecondaryColor
+        font.pixelSize: app.styler.themeFontSizeMedium
+        text: app.tr("Duration")
+        visible: totalTimeLabel.text
+    }
+
+    LabelPL {
+        // total time
+        id: totalTimeLabel
+        anchors.left: totalTimeLabelTxt.right
+        anchors.leftMargin: app.styler.themePaddingSmall
+        anchors.top: totalDistLabel.bottom
+        color: app.styler.themePrimaryColor
+        font.pixelSize: app.styler.themeFontSizeLarge
+        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        text: app.mode === modes.exploreRoute ? totalTime : ""
+        verticalAlignment: Text.AlignTop
+    }
+
+    LabelPL {
+        // help label
+        id: helpLabel
+        anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.top: totalTimeLabel.bottom
+        color: app.styler.themePrimaryColor
+        font.pixelSize: app.styler.themeFontSizeMedium
+        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        text: !app.navigationPageSeen && app.mode === modes.exploreRoute ? app.tr("Tap to review maneuvers or begin navigating") : ""
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.WordWrap
+    }
+
+
+    // information displayed while navigating
     LabelPL {
         // Distance remaining to the next maneuver
         id: manLabel
@@ -77,9 +155,9 @@ Panel {
         anchors.top: parent.top
         color: block.notify ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
         font.family: block.notify ? app.styler.themeFontFamilyHeading : app.styler.themeFontFamily
-        font.pixelSize: block.notify ? app.styler.themeFontSizeHuge : app.styler.themeFontSizeMedium
-        height: block.destDist ? implicitHeight + app.styler.themePaddingMedium : 0
-        text: block.manDist
+        font.pixelSize: block.notify ? app.styler.themeFontSizeHuge : app.styler.themeFontSizeLarge
+        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        text: app.mode === modes.navigate ? block.manDist : ""
         verticalAlignment: Text.AlignBottom
         states: [
             State {
@@ -95,16 +173,23 @@ Panel {
     }
 
     LabelPL {
-        // Estimated time of arrival
+        // Estimated time of arrival: shown in during navigation and exploreRoute
         id: destLabel
         anchors.baseline: manLabel.baseline
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         color: app.styler.themePrimaryColor
         font.pixelSize: app.styler.themeFontSizeLarge
-        height: block.destDist ? implicitHeight + app.styler.themePaddingMedium : 0
-        text: block.notify ? block.destEta : ""
+        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        text: block.notify || app.mode === modes.exploreRoute ? block.destEta : ""
         states: [
+            State {
+                when: app.mode === modes.exploreRoute
+                AnchorChanges {
+                    target: destLabel
+                    anchors.baseline: totalDistLabel.baseline
+                }
+            },
             State {
                 when: !app.portrait && streetLabel.text
                 AnchorChanges {
@@ -136,7 +221,7 @@ Panel {
         color: app.styler.themeSecondaryColor
         font.pixelSize: app.styler.themeFontSizeMedium
         text: app.tr("ETA")
-        visible: block.notify
+        visible: destLabel.height
     }
 
     LabelPL {
@@ -159,6 +244,10 @@ Panel {
                     anchors.left: iconImage.width > manLabel.width ? iconImage.right : manLabel.right
                     anchors.right: destEta.left
                     anchors.top: parent.top
+                }
+                PropertyChanges {
+                    target: streetLabel
+                    verticalAlignment: Text.AlignBottom
                 }
             }
         ]
@@ -191,6 +280,15 @@ Panel {
         height: text ? implicitHeight + app.styler.themePaddingMedium : 0
         states: [
             State {
+                when: !app.navigationPageSeen && app.modes === modes.exploreRoute
+                AnchorChanges {
+                    target: narrativeLabel
+                    anchors.left: parent.left
+                    anchors.right: destEta.left
+                    anchors.top: totalTimeLabel.bottom
+                }
+            },
+            State {
                 when: !app.portrait
                 AnchorChanges {
                     target: narrativeLabel
@@ -201,9 +299,7 @@ Panel {
                 }
             }
         ]
-        text: app.navigationPageSeen ?
-            (block.notify && !streetLabel.text ? block.narrative : "") :
-            (block.notify ? app.tr("Tap to review maneuvers or begin navigating") : "")
+        text: block.notify && !streetLabel.text ? block.narrative : ""
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
