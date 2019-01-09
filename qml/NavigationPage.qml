@@ -157,6 +157,30 @@ PagePL {
         }
 
         Row {
+            // ETA
+            anchors.left: parent.left
+            anchors.leftMargin: app.styler.themeHorizontalPageMargin
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+            height: app.styler.themeItemSizeExtraSmall
+            LabelPL {
+                id: eta
+                height: app.styler.themeItemSizeExtraSmall
+                text: app.tr("Estimated time of arrival")
+                truncMode: truncModes.fade
+                verticalAlignment: Text.AlignVCenter
+                width: parent.width * 2 / 3
+            }
+            LabelPL {
+                anchors.baseline: eta.baseline
+                horizontalAlignment: Text.AlignRight
+                text: app.navigationStatus.destEta
+                truncMode: truncModes.fade
+                width: parent.width / 3
+            }
+        }
+
+        Row {
             // Total distance and time
             anchors.left: parent.left
             anchors.leftMargin: app.styler.themeHorizontalPageMargin

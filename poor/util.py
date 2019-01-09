@@ -166,6 +166,8 @@ def find_closest(xs, ys, x, y, subset=None):
 
 def format_distance(meters, n=2, short=True):
     """Format `meters` to `n` significant digits and unit label."""
+    if not math.isfinite(meters):
+        return ""
     if poor.conf.units == "american":
         feet = 3.28084 * meters
         return format_distance_american(feet, n, short)

@@ -26,11 +26,10 @@ Panel {
     anchors.right: parent.right
     contentHeight: {
         if (app.mode === modes.exploreRoute) {
-            var h1 = app.styler.themePaddingMedium + totalDistLabel.height + totalTimeLabel.height + helpLabel.height;
-            var h2 = app.styler.themePaddingMedium + destLabel.height;
-            return Math.max(h1, h2);
+            var h1 = app.styler.themePaddingMedium + remainingRow.height + totalRow.height + helpLabel.height;
+            return h1;
         }
-        if (!destDist) return 0;
+        if (app.mode !== modes.navigate) return 0;
         if (!app.portrait && notify) {
             var h1 = app.styler.themePaddingMedium + app.styler.themeFontSizeLarge - app.styler.themeFontSizeMedium + narrativeLabel.height;
             var h2 = app.styler.themePaddingMedium + destLabel.height;
@@ -76,57 +75,138 @@ Panel {
     property string totalTime: app.navigationStatus.totalTime
 
     // information about route displayed while exploreRoute is active
-    LabelPL {
-        // label for total distance
-        id: totalDistLabelTxt
+    Row {
+        // Distance and time remaining
+        id: remainingRow
         anchors.left: parent.left
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
-        anchors.baseline: totalDistLabel.baseline
-        color: app.styler.themeSecondaryColor
-        font.pixelSize: app.styler.themeFontSizeMedium
-        text: totalDist ? app.tr("Distance") : ""
-        visible: totalDistLabel.text
-    }
-
-    LabelPL {
-        // total distance
-        id: totalDistLabel
-        anchors.left: totalDistLabelTxt.right
-        anchors.leftMargin: app.styler.themePaddingSmall
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: parent.top
         anchors.topMargin: app.styler.themePaddingMedium
-        color: app.styler.themePrimaryColor
-        font.pixelSize: app.styler.themeFontSizeLarge
-        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
-        text: app.mode === modes.exploreRoute ?
-                  (totalDist ? totalDist : app.tr("Processing route")) : ""
-        verticalAlignment: Text.AlignTop
+        height: visible ? remaining1.height + app.styler.themePaddingMedium : 0
+        visible: app.mode === modes.exploreRoute
+        LabelPL {
+            anchors.baseline: remaining1.baseline
+            color: app.styler.themeSecondaryColor
+            font.pixelSize: app.styler.themeFontSizeMedium
+            text: app.tr("Remaining")
+            truncMode: truncModes.fade
+            width: parent.width / 3
+        }
+        LabelPL {
+            id: remaining1
+            anchors.top: parent.top
+            color: app.styler.themePrimaryColor
+            font.pixelSize: app.styler.themeFontSizeMedium
+            horizontalAlignment: Text.AlignRight
+            text: app.navigationStatus.destDist
+            truncMode: truncModes.fade
+            verticalAlignment: Text.AlignTop
+            width: parent.width / 3
+        }
+        LabelPL {
+            anchors.baseline: remaining1.baseline
+            color: app.styler.themePrimaryColor
+            font.pixelSize: app.styler.themeFontSizeMedium
+            horizontalAlignment: Text.AlignRight
+            text: app.navigationStatus.destTime
+            truncMode: truncModes.fade
+            width: parent.width / 3
+        }
     }
 
-    LabelPL {
-        // label for total time
-        id: totalTimeLabelTxt
+    Row {
+        // Total distance and time
+        id: totalRow
         anchors.left: parent.left
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
-        anchors.baseline: totalTimeLabel.baseline
-        color: app.styler.themeSecondaryColor
-        font.pixelSize: app.styler.themeFontSizeMedium
-        text: app.tr("Duration")
-        visible: totalTimeLabel.text
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.top: remainingRow.bottom
+        height: visible ? total.height + app.styler.themePaddingMedium : 0
+        visible: app.mode === modes.exploreRoute
+        LabelPL {
+            anchors.baseline: total.baseline
+            color: app.styler.themeSecondaryColor
+            font.pixelSize: app.styler.themeFontSizeMedium
+            text: app.tr("Total")
+            truncMode: truncModes.fade
+            width: parent.width / 3
+        }
+        LabelPL {
+            id: total
+            anchors.top: parent.top
+            color: app.styler.themePrimaryColor
+            font.pixelSize: app.styler.themeFontSizeMedium
+            horizontalAlignment: Text.AlignRight
+            text: app.navigationStatus.totalDist
+            truncMode: truncModes.fade
+            verticalAlignment: Text.AlignTop
+            width: parent.width / 3
+        }
+        LabelPL {
+            anchors.baseline: total.baseline
+            color: app.styler.themePrimaryColor
+            font.pixelSize: app.styler.themeFontSizeMedium
+            horizontalAlignment: Text.AlignRight
+            text: app.navigationStatus.totalTime
+            truncMode: truncModes.fade
+            width: parent.width / 3
+        }
     }
 
-    LabelPL {
-        // total time
-        id: totalTimeLabel
-        anchors.left: totalTimeLabelTxt.right
-        anchors.leftMargin: app.styler.themePaddingSmall
-        anchors.top: totalDistLabel.bottom
-        color: app.styler.themePrimaryColor
-        font.pixelSize: app.styler.themeFontSizeLarge
-        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
-        text: app.mode === modes.exploreRoute ? totalTime : ""
-        verticalAlignment: Text.AlignTop
-    }
+    //    LabelPL {
+//        // label for total distance
+//        id: totalDistLabelTxt
+//        anchors.left: parent.left
+//        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+//        anchors.baseline: totalDistLabel.baseline
+//        color: app.styler.themeSecondaryColor
+//        font.pixelSize: app.styler.themeFontSizeMedium
+//        text: totalDist ? app.tr("Distance") : ""
+//        visible: totalDistLabel.text
+//    }
+
+//    LabelPL {
+//        // total distance
+//        id: totalDistLabel
+//        anchors.left: totalDistLabelTxt.right
+//        anchors.leftMargin: app.styler.themePaddingSmall
+//        anchors.top: parent.top
+//        anchors.topMargin: app.styler.themePaddingMedium
+//        color: app.styler.themePrimaryColor
+//        font.pixelSize: app.styler.themeFontSizeLarge
+//        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+//        text: app.mode === modes.exploreRoute ?
+//                  (totalDist ? totalDist : app.tr("Processing route")) : ""
+//        verticalAlignment: Text.AlignTop
+//    }
+
+//    LabelPL {
+//        // label for total time
+//        id: totalTimeLabelTxt
+//        anchors.left: parent.left
+//        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+//        anchors.baseline: totalTimeLabel.baseline
+//        color: app.styler.themeSecondaryColor
+//        font.pixelSize: app.styler.themeFontSizeMedium
+//        text: app.tr("Duration")
+//        visible: totalTimeLabel.text
+//    }
+
+//    LabelPL {
+//        // total time
+//        id: totalTimeLabel
+//        anchors.left: totalTimeLabelTxt.right
+//        anchors.leftMargin: app.styler.themePaddingSmall
+//        anchors.top: totalDistLabel.bottom
+//        color: app.styler.themePrimaryColor
+//        font.pixelSize: app.styler.themeFontSizeLarge
+//        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+//        text: app.mode === modes.exploreRoute ? totalTime : ""
+//        verticalAlignment: Text.AlignTop
+//    }
 
     LabelPL {
         // help label
@@ -135,11 +215,18 @@ Panel {
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        anchors.top: totalTimeLabel.bottom
+        anchors.top: totalRow.bottom
         color: app.styler.themePrimaryColor
         font.pixelSize: app.styler.themeFontSizeMedium
         height: text ? implicitHeight + app.styler.themePaddingMedium : 0
-        text: !app.navigationPageSeen && app.mode === modes.exploreRoute ? app.tr("Tap to review maneuvers or begin navigating") : ""
+        text: {
+            if (app.mode !== modes.exploreRoute) return "";
+            if (!totalDist)
+                return app.tr("Processing route");
+            if (!app.navigationPageSeen)
+                return app.tr("Tap to review maneuvers or begin navigating");
+            return "";
+        }
         verticalAlignment: Text.AlignTop
         wrapMode: Text.WordWrap
     }
@@ -173,7 +260,7 @@ Panel {
     }
 
     LabelPL {
-        // Estimated time of arrival: shown in during navigation and exploreRoute
+        // Estimated time of arrival: shown during navigation and exploreRoute
         id: destLabel
         anchors.baseline: manLabel.baseline
         anchors.right: parent.right
@@ -181,15 +268,8 @@ Panel {
         color: app.styler.themePrimaryColor
         font.pixelSize: app.styler.themeFontSizeLarge
         height: text ? implicitHeight + app.styler.themePaddingMedium : 0
-        text: block.notify || app.mode === modes.exploreRoute ? block.destEta : ""
+        text: block.notify ? block.destEta : ""
         states: [
-            State {
-                when: app.mode === modes.exploreRoute
-                AnchorChanges {
-                    target: destLabel
-                    anchors.baseline: totalDistLabel.baseline
-                }
-            },
             State {
                 when: !app.portrait && streetLabel.text
                 AnchorChanges {
