@@ -26,8 +26,10 @@ Timer {
     running: app.running && map.hasRoute
     triggeredOnStart: true
 
-    property var coordPrev: QtPositioning.coordinate(0, 0)
+    property var coordPrev: QtPositioning.coordinate()
     property var timePrev: 0
+
+    property bool _callRunning: false
 
     onRunningChanged: {
         // Always update after changing timer state.
@@ -37,11 +39,16 @@ Timer {
 
     onTriggered: {
         // Query maneuver narrative from Python and update status.
+        if (_callRunning) return;
         var coord = map.position.coordinate;
         var now = Date.now() / 1000;
-        // avoid updating with invalid coordinate
-        if (coord === QtPositioning.coordinate()) return;
-        if (now - timePrev < 60 && coord.distanceTo(timer.coordPrev) < 10) return;
+        // avoid updating with invalid coordinate or too soon unless we don't have total data
+        if (app.navigationStatus.totalDist) {
+            if (now - timePrev < 60 &&
+                    ( (timer.coordPrev !== QtPositioning.coordinate() && coord.distanceTo(timer.coordPrev) < 10) ||
+                      coord === QtPositioning.coordinate() )) return;
+        }
+        _callRunning = true;
         var accuracy = map.position.horizontalAccuracyValid ?
                     map.position.horizontalAccuracy : null;
         var args = [coord.longitude, coord.latitude, accuracy, app.mode === modes.navigate];
@@ -50,6 +57,7 @@ Timer {
             timer.coordPrev.longitude = coord.longitude;
             timer.coordPrev.latitude = coord.latitude;
             timer.timePrev = now;
+            _callRunning = false;
         });
     }
 
