@@ -156,58 +156,6 @@ Panel {
         }
     }
 
-    //    LabelPL {
-//        // label for total distance
-//        id: totalDistLabelTxt
-//        anchors.left: parent.left
-//        anchors.leftMargin: app.styler.themeHorizontalPageMargin
-//        anchors.baseline: totalDistLabel.baseline
-//        color: app.styler.themeSecondaryColor
-//        font.pixelSize: app.styler.themeFontSizeMedium
-//        text: totalDist ? app.tr("Distance") : ""
-//        visible: totalDistLabel.text
-//    }
-
-//    LabelPL {
-//        // total distance
-//        id: totalDistLabel
-//        anchors.left: totalDistLabelTxt.right
-//        anchors.leftMargin: app.styler.themePaddingSmall
-//        anchors.top: parent.top
-//        anchors.topMargin: app.styler.themePaddingMedium
-//        color: app.styler.themePrimaryColor
-//        font.pixelSize: app.styler.themeFontSizeLarge
-//        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
-//        text: app.mode === modes.exploreRoute ?
-//                  (totalDist ? totalDist : app.tr("Processing route")) : ""
-//        verticalAlignment: Text.AlignTop
-//    }
-
-//    LabelPL {
-//        // label for total time
-//        id: totalTimeLabelTxt
-//        anchors.left: parent.left
-//        anchors.leftMargin: app.styler.themeHorizontalPageMargin
-//        anchors.baseline: totalTimeLabel.baseline
-//        color: app.styler.themeSecondaryColor
-//        font.pixelSize: app.styler.themeFontSizeMedium
-//        text: app.tr("Duration")
-//        visible: totalTimeLabel.text
-//    }
-
-//    LabelPL {
-//        // total time
-//        id: totalTimeLabel
-//        anchors.left: totalTimeLabelTxt.right
-//        anchors.leftMargin: app.styler.themePaddingSmall
-//        anchors.top: totalDistLabel.bottom
-//        color: app.styler.themePrimaryColor
-//        font.pixelSize: app.styler.themeFontSizeLarge
-//        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
-//        text: app.mode === modes.exploreRoute ? totalTime : ""
-//        verticalAlignment: Text.AlignTop
-//    }
-
     LabelPL {
         // help label
         id: helpLabel

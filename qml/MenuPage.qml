@@ -95,16 +95,6 @@ PagePL {
         }
 
         IconListItem {
-            icon: app.styler.iconClear
-            label: app.tr("Clear map")
-            onClicked: {
-                if (app.mode !== modes.explore) app.setModeExplore();
-                app.clear(true);
-                app.showMap();
-            }
-        }
-
-        IconListItem {
             icon: app.styler.iconMaps
             label: app.tr("Maps")
             onClicked: app.pushMain("BasemapPage.qml");
