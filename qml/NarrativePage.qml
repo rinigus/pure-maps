@@ -121,7 +121,7 @@ PageListPL {
         }
 
         onClicked: {
-            app.setModeExplore();
+            app.setModeExploreRoute();
             map.setCenter(model.x, model.y);
             map.zoomLevel < 15 && map.setZoomLevel(15);
             app.hideNavigationPages();
