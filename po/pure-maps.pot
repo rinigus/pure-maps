@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-06 20:46+0200\n"
+"POT-Creation-Date: 2019-01-13 13:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,91 +131,91 @@ msgstr ""
 msgid "New route found"
 msgstr ""
 
-#: poor/util.py:184 poor/util.py:202
+#: poor/util.py:186 poor/util.py:204
 msgid "mi"
 msgstr ""
 
-#: poor/util.py:184 poor/util.py:202
+#: poor/util.py:186 poor/util.py:204
 msgid "miles"
 msgstr ""
 
-#: poor/util.py:192 qml/Meters.qml:71
+#: poor/util.py:194 qml/Meters.qml:71
 msgid "ft"
 msgstr ""
 
-#: poor/util.py:192
+#: poor/util.py:194
 msgid "feet"
 msgstr ""
 
-#: poor/util.py:210 qml/Meters.qml:81
+#: poor/util.py:212 qml/Meters.qml:81
 msgid "yd"
 msgstr ""
 
-#: poor/util.py:210
+#: poor/util.py:212
 msgid "yards"
 msgstr ""
 
-#: poor/util.py:220
+#: poor/util.py:222
 msgid "km"
 msgstr ""
 
-#: poor/util.py:220
+#: poor/util.py:222
 msgid "kilometers"
 msgstr ""
 
-#: poor/util.py:228 qml/Meters.qml:91
+#: poor/util.py:230 qml/Meters.qml:91
 msgid "m"
 msgstr ""
 
-#: poor/util.py:228
+#: poor/util.py:230
 msgid "meters"
 msgstr ""
 
-#: poor/util.py:237 poor/util.py:245
+#: poor/util.py:239 poor/util.py:247
 #, python-brace-format
 msgid "{distance} north"
 msgstr ""
 
-#: poor/util.py:238
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr ""
 
-#: poor/util.py:239
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} east"
 msgstr ""
 
-#: poor/util.py:240
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr ""
 
-#: poor/util.py:241
+#: poor/util.py:243
 #, python-brace-format
 msgid "{distance} south"
 msgstr ""
 
-#: poor/util.py:242
+#: poor/util.py:244
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr ""
 
-#: poor/util.py:243
+#: poor/util.py:245
 #, python-brace-format
 msgid "{distance} west"
 msgstr ""
 
-#: poor/util.py:244
+#: poor/util.py:246
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr ""
 
-#: poor/util.py:274
+#: poor/util.py:276
 msgid "{:d} min"
 msgstr ""
 
-#: poor/util.py:275
+#: poor/util.py:277
 msgid "{:d} h {:d} min"
 msgstr ""
 
@@ -408,7 +408,7 @@ msgstr ""
 msgid "Attribution"
 msgstr ""
 
-#: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:109
+#: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:99
 msgid "Maps"
 msgstr ""
 
@@ -475,7 +475,7 @@ msgstr ""
 msgid "Using %1"
 msgstr ""
 
-#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79 qml/PoiPage.qml:150
+#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79
 msgid "Show all"
 msgstr ""
 
@@ -535,8 +535,8 @@ msgstr ""
 msgid "Nearby venues"
 msgstr ""
 
-#: qml/MenuPage.qml:63
-msgid "Points of interest"
+#: qml/MenuPage.qml:63 qml/PoiPage.qml:28 qml/PoiPage.qml:124
+msgid "Bookmarks"
 msgstr ""
 
 #: qml/MenuPage.qml:69
@@ -551,35 +551,31 @@ msgstr ""
 msgid "Center on current position"
 msgstr ""
 
-#: qml/MenuPage.qml:99
-msgid "Clear map"
-msgstr ""
-
-#: qml/MenuPage.qml:115 qml/PreferencesPage.qml:24
+#: qml/MenuPage.qml:105 qml/PreferencesPage.qml:24
 msgid "Preferences"
 msgstr ""
 
-#: qml/MenuPage.qml:145
+#: qml/MenuPage.qml:136
 msgid "Profile"
 msgstr ""
 
-#: qml/MenuPage.qml:156
+#: qml/MenuPage.qml:147
 msgid "Online"
 msgstr ""
 
-#: qml/MenuPage.qml:156
+#: qml/MenuPage.qml:147
 msgid "Offline"
 msgstr ""
 
-#: qml/MenuPage.qml:156
+#: qml/MenuPage.qml:147
 msgid "Mixed"
 msgstr ""
 
-#: qml/MenuPage.qml:176
+#: qml/MenuPage.qml:167
 msgid "Auto-center on position"
 msgstr ""
 
-#: qml/MenuPage.qml:193
+#: qml/MenuPage.qml:184
 msgid "Auto-rotate on direction"
 msgstr ""
 
@@ -600,12 +596,24 @@ msgstr ""
 msgid "Continue for %1."
 msgstr ""
 
-#: qml/NavigationBlock.qml:138
-msgid "ETA"
+#: qml/NavigationBlock.qml:93 qml/NavigationPage.qml:138
+msgid "Remaining"
 msgstr ""
 
-#: qml/NavigationBlock.qml:206
+#: qml/NavigationBlock.qml:133 qml/NavigationPage.qml:193
+msgid "Total"
+msgstr ""
+
+#: qml/NavigationBlock.qml:173
+msgid "Processing route"
+msgstr ""
+
+#: qml/NavigationBlock.qml:175
 msgid "Tap to review maneuvers or begin navigating"
+msgstr ""
+
+#: qml/NavigationBlock.qml:251
+msgid "ETA"
 msgstr ""
 
 #: qml/NavigationPage.qml:49
@@ -632,19 +640,15 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: qml/NavigationPage.qml:138
-msgid "Remaining"
-msgstr ""
-
 #: qml/NavigationPage.qml:169
-msgid "Total"
+msgid "Estimated time of arrival"
 msgstr ""
 
-#: qml/NavigationPage.qml:195
+#: qml/NavigationPage.qml:219
 msgid "Options"
 msgstr ""
 
-#: qml/NavigationPage.qml:204 qml/PreferencesPage.qml:176 qml/RoutePage.qml:205
+#: qml/NavigationPage.qml:228 qml/PreferencesPage.qml:176 qml/RoutePage.qml:205
 msgid "Map scale"
 msgstr ""
 
@@ -740,7 +744,7 @@ msgid "More info: %1"
 msgstr ""
 
 #: qml/PoiEditPage.qml:25
-msgid "Edit POI"
+msgid "Edit bookmark"
 msgstr ""
 
 #: qml/PoiEditPage.qml:27
@@ -851,22 +855,14 @@ msgstr ""
 msgid "Nearby"
 msgstr ""
 
-#: qml/PoiPage.qml:28 qml/PoiPage.qml:124
-msgid "Points of Interest"
-msgstr ""
-
 #: qml/PoiPage.qml:84
 msgid "View"
 msgstr ""
 
-#: qml/PoiPage.qml:150
-msgid "Show bookmarked"
-msgstr ""
-
-#: qml/PoiPage.qml:160
+#: qml/PoiPage.qml:149
 msgid ""
-"No points of interests defined yet. You can create and bookmark points of "
-"interest using map and search."
+"No points of bookmarks defined yet. You can bookmark locations using map and "
+"search."
 msgstr ""
 
 #: qml/Poi.qml:192 qml/pure-maps.qml:127

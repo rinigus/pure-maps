@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec /app/bin/qmlrunner -P /app/share io.github.rinigus.PureMaps

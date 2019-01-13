@@ -37,6 +37,17 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release version="1.14.0" date="2019-01-13">
+     <description>
+       <p>Rename POIs to bookmarks</p>
+       <p>Show overall navigation information on top of the map before navigating</p>
+       <p>Adjust main menu</p>
+       <p>Update translations</p>
+       <p>qtcontrols: Adjust style</p>
+       <p>qtcontrols: Add support to geolocation when packaged as Flatpak</p>
+       <p>Bugfixes</p>
+     </description>
+   </release>
    <release version="1.13.0" date="2019-01-06">
      <description>
        <p>Refactor search functionality</p>
