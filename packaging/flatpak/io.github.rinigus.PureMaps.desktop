@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Pure Maps
-Exec=pure-maps
+Exec=io.github.rinigus.PureMaps
 Type=Application
 Icon=io.github.rinigus.PureMaps
 Categories=Science;Maps;Qt;

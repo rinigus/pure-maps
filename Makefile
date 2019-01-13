@@ -54,12 +54,14 @@ flathub-install:
 	mkdir -p $(PREFIX)/share/applications
 	mkdir -p $(PREFIX)/share/appdata
 	mkdir -p $(PREFIX)/usr
-	install -D packaging/flatpak/pure-maps $(PREFIX)/bin/pure-maps
+	install -D packaging/flatpak/io.github.rinigus.PureMaps $(PREFIX)/bin/io.github.rinigus.PureMaps
 	install -D packaging/flatpak/osmscout-server $(PREFIX)/bin/osmscout-server
 	install -D packaging/flatpak/io.github.rinigus.PureMaps.desktop $(PREFIX)/share/applications
-	install -D packaging/pure-maps.appdata.xml $(PREFIX)/share/appdata/io.github.rinigus.PureMaps.appdata.xml
+	sed 's/binary>pure-maps/binary>io.github.rinigus.PureMaps/' packaging/pure-maps.appdata.xml > $(PREFIX)/share/appdata/io.github.rinigus.PureMaps.appdata.xml
         # workaround https://github.com/hughsie/appstream-glib/issues/271
 	ln -s $(PREFIX)/share $(PREFIX)/usr
+	mv $(PREFIX)/share/pure-maps/qml/pure-maps.qml $(PREFIX)/share/pure-maps/qml/io.github.rinigus.PureMaps.qml
+	mv $(PREFIX)/share/pure-maps $(PREFIX)/share/io.github.rinigus.PureMaps
 
 flatpak:
 	flatpak-builder --repo=../flatpak --force-clean ../build-dir packaging/flatpak/io.github.rinigus.PureMaps.json
