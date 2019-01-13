@@ -27,9 +27,22 @@ Item {
     anchors.verticalCenter: northArrow.verticalCenter
     height: labels.implicitHeight
     opacity: 0.9
+    states: State {
+        when: hidden
+        AnchorChanges {
+            target: meters
+            anchors.top: parent.bottom
+            anchors.verticalCenter: undefined
+        }
+    }
+    transitions: Transition {
+        AnchorAnimation { duration: 250 }
+    }
     width: parent.width
     visible: (app.mode === modes.explore || app.mode === modes.exploreRoute) && !app.infoPanelOpen
     z: 400
+
+    property bool hidden: map.cleanMode
 
     Text {
         id: values

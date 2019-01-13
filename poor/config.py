@@ -40,6 +40,7 @@ DEFAULTS = {
     "map_matching_when_following": "none",
     "map_matching_when_idle": "none",
     "map_matching_when_navigating": False,
+    "map_mode_clean_on_start": True,
     "map_scale": 1.0,
     "map_scale_navigation_bicycle": 2.0,
     "map_scale_navigation_car": 2.0,

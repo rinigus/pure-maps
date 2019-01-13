@@ -43,7 +43,9 @@ MapboxMapGestureArea {
                 return pois.show(pois.pois[i]);
         // Hide any POI bubbles if background map clicked.
         if (app.poiActive)
-            pois.hide();
+            return pois.hide();
+        // Change map mode
+        map.cleanMode = !map.cleanMode;
     }
 
     onDoubleClicked: {

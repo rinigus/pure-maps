@@ -30,6 +30,7 @@ Item {
     property string mapMatchingWhenFollowing
     property string mapMatchingWhenIdle
     property bool   mapMatchingWhenNavigating
+    property bool   mapModeCleanOnStart
     property string profile
     property bool   reroute
     property bool   showNarrative: false
@@ -94,6 +95,7 @@ Item {
         conf.mapMatchingWhenFollowing = c.map_matching_when_following;
         conf.mapMatchingWhenIdle = c.map_matching_when_idle;
         conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
+        conf.mapModeCleanOnStart = c.map_mode_clean_on_start;
         conf.reroute = c.reroute;
         conf.profile = c.profile;
         conf.showNarrative = c.show_narrative;

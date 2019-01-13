@@ -44,6 +44,7 @@ MapboxMap {
 
     property bool   autoCenter: false
     property bool   autoRotate: false
+    property bool   cleanMode: app.conf.mapModeCleanOnStart
     property int    counter: 0
     property var    direction: {
         // prefer map matched direction, if available
