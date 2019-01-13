@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-06 12:28+0200\n"
+"POT-Creation-Date: 2019-01-13 13:52+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Panagiotis Melas <pmelas@gmail.com>, 2018\n"
 "Language-Team: Greek (https://www.transifex.com/rinigus/teams/89597/el/)\n"
@@ -41,9 +41,9 @@ msgstr "Λήξη χρονικού ορίου σύνδεσης"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:207 qml/GeocodeItem.qml:516
 #: qml/NearbyPage.qml:28 qml/NearbyPage.qml:135 qml/NearbyPage.qml:150
-#: qml/RoutePage.qml:28 qml/RoutePage.qml:29 qml/RoutePage.qml:223
-#: qml/RoutePage.qml:233 qml/RoutePage.qml:235 qml/RoutePoint.qml:44
-#: qml/RoutePoint.qml:60
+#: qml/RoutePage.qml:28 qml/RoutePage.qml:29 qml/RoutePage.qml:228
+#: qml/RoutePage.qml:238 qml/RoutePage.qml:240 qml/RoutePoint.qml:42
+#: qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr "Παρούσα θέση"
 
@@ -136,91 +136,91 @@ msgstr "Αποτυχία επαναπροσδιορισμού δρομολόγη
 msgid "New route found"
 msgstr "Βρέθηκε νέα διαδρομή"
 
-#: poor/util.py:184 poor/util.py:202
+#: poor/util.py:186 poor/util.py:204
 msgid "mi"
 msgstr "μι"
 
-#: poor/util.py:184 poor/util.py:202
+#: poor/util.py:186 poor/util.py:204
 msgid "miles"
 msgstr "μίλια"
 
-#: poor/util.py:192 qml/Meters.qml:71
+#: poor/util.py:194 qml/Meters.qml:71
 msgid "ft"
 msgstr "πδ"
 
-#: poor/util.py:192
+#: poor/util.py:194
 msgid "feet"
 msgstr "πόδια"
 
-#: poor/util.py:210 qml/Meters.qml:81
+#: poor/util.py:212 qml/Meters.qml:81
 msgid "yd"
 msgstr "γδ"
 
-#: poor/util.py:210
+#: poor/util.py:212
 msgid "yards"
 msgstr "γιάρδες"
 
-#: poor/util.py:220
+#: poor/util.py:222
 msgid "km"
 msgstr "χλ"
 
-#: poor/util.py:220
+#: poor/util.py:222
 msgid "kilometers"
 msgstr "χιλιόμετρα"
 
-#: poor/util.py:228 qml/Meters.qml:91
+#: poor/util.py:230 qml/Meters.qml:91
 msgid "m"
 msgstr "μ"
 
-#: poor/util.py:228
+#: poor/util.py:230
 msgid "meters"
 msgstr "μέτρα"
 
-#: poor/util.py:237 poor/util.py:245
+#: poor/util.py:239 poor/util.py:247
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} βόρεια"
 
-#: poor/util.py:238
+#: poor/util.py:240
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} βόρειο-ανατολικά"
 
-#: poor/util.py:239
+#: poor/util.py:241
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} ανατολικά"
 
-#: poor/util.py:240
+#: poor/util.py:242
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} νότιο-ανατολικά"
 
-#: poor/util.py:241
+#: poor/util.py:243
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} νότια"
 
-#: poor/util.py:242
+#: poor/util.py:244
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} νότιο-δυτικά"
 
-#: poor/util.py:243
+#: poor/util.py:245
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} δυτικά"
 
-#: poor/util.py:244
+#: poor/util.py:246
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} βόρειοδυτικά"
 
-#: poor/util.py:274
+#: poor/util.py:276
 msgid "{:d} min"
 msgstr "{:d} λπτ"
 
-#: poor/util.py:275
+#: poor/util.py:277
 msgid "{:d} h {:d} min"
 msgstr "{:d} ω {:d} λπτ"
 
@@ -425,7 +425,7 @@ msgstr "Transifex σελίδα"
 msgid "Attribution"
 msgstr "Απόδοση"
 
-#: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:109
+#: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:99
 msgid "Maps"
 msgstr "Χάρτες"
 
@@ -479,7 +479,7 @@ msgid "Points of Interest (%1)"
 msgstr ""
 
 #: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePoint.qml:64
+#: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Ανώνημο σημείο"
 
@@ -492,7 +492,7 @@ msgstr ""
 msgid "Using %1"
 msgstr ""
 
-#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79 qml/PoiPage.qml:150
+#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79
 msgid "Show all"
 msgstr "Εμφάνιση όλων"
 
@@ -552,9 +552,9 @@ msgstr "Σχετικά"
 msgid "Nearby venues"
 msgstr "Κοντινά μέρη"
 
-#: qml/MenuPage.qml:63
-msgid "Points of interest"
-msgstr "Σημείο ενδιαφέροντος"
+#: qml/MenuPage.qml:63 qml/PoiPage.qml:28 qml/PoiPage.qml:124
+msgid "Bookmarks"
+msgstr ""
 
 #: qml/MenuPage.qml:69
 msgid "Share current position"
@@ -568,35 +568,31 @@ msgstr "Κοινοποίηση Παρούσας Θέσης"
 msgid "Center on current position"
 msgstr "Κεντράρισμα παρούσας θέσης"
 
-#: qml/MenuPage.qml:99
-msgid "Clear map"
-msgstr "Εκκαθάριση χάρτη"
-
-#: qml/MenuPage.qml:115 qml/PreferencesPage.qml:24
+#: qml/MenuPage.qml:105 qml/PreferencesPage.qml:24
 msgid "Preferences"
 msgstr "Προτιμήσεις"
 
-#: qml/MenuPage.qml:145
+#: qml/MenuPage.qml:136
 msgid "Profile"
 msgstr ""
 
-#: qml/MenuPage.qml:156
+#: qml/MenuPage.qml:147
 msgid "Online"
 msgstr ""
 
-#: qml/MenuPage.qml:156
+#: qml/MenuPage.qml:147
 msgid "Offline"
 msgstr ""
 
-#: qml/MenuPage.qml:156
+#: qml/MenuPage.qml:147
 msgid "Mixed"
 msgstr ""
 
-#: qml/MenuPage.qml:176
+#: qml/MenuPage.qml:167
 msgid "Auto-center on position"
 msgstr "Αυτόματη εστίαση στη θέση"
 
-#: qml/MenuPage.qml:193
+#: qml/MenuPage.qml:184
 msgid "Auto-rotate on direction"
 msgstr "Αυτόματη περιστροφή στην κατεύθυνση"
 
@@ -617,15 +613,27 @@ msgstr "Ελιγμούς "
 msgid "Continue for %1."
 msgstr "Συνεχίστε για %1"
 
-#: qml/NavigationBlock.qml:138
-msgid "ETA"
-msgstr "ΑΩΑ"
+#: qml/NavigationBlock.qml:93 qml/NavigationPage.qml:138
+msgid "Remaining"
+msgstr "Υπόλοιπον "
 
-#: qml/NavigationBlock.qml:206
+#: qml/NavigationBlock.qml:133 qml/NavigationPage.qml:193
+msgid "Total"
+msgstr "Σύνολο"
+
+#: qml/NavigationBlock.qml:173
+msgid "Processing route"
+msgstr ""
+
+#: qml/NavigationBlock.qml:175
 msgid "Tap to review maneuvers or begin navigating"
 msgstr ""
 "Πατήστε για να ελέγξετε τις οδηγίες πλοήγησης ή για να ξεκινήσετε την "
 "πλοήγηση"
+
+#: qml/NavigationBlock.qml:251
+msgid "ETA"
+msgstr "ΑΩΑ"
 
 #: qml/NavigationPage.qml:49
 msgid "Pause"
@@ -635,7 +643,7 @@ msgstr "Παύση"
 msgid "Resume"
 msgstr "Επανεκκίνηση"
 
-#: qml/NavigationPage.qml:50 qml/RoutePage.qml:166
+#: qml/NavigationPage.qml:50 qml/RoutePage.qml:171
 msgid "Begin"
 msgstr "Αρχίστε"
 
@@ -651,20 +659,16 @@ msgstr "Εκκαθάριση"
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: qml/NavigationPage.qml:138
-msgid "Remaining"
-msgstr "Υπόλοιπον "
-
 #: qml/NavigationPage.qml:169
-msgid "Total"
-msgstr "Σύνολο"
+msgid "Estimated time of arrival"
+msgstr ""
 
-#: qml/NavigationPage.qml:195
+#: qml/NavigationPage.qml:219
 msgid "Options"
 msgstr "Επιλογές"
 
-#: qml/NavigationPage.qml:204 qml/PreferencesPage.qml:176
-#: qml/RoutePage.qml:200
+#: qml/NavigationPage.qml:228 qml/PreferencesPage.qml:176
+#: qml/RoutePage.qml:205
 msgid "Map scale"
 msgstr "Κλίμακα χάρτου"
 
@@ -760,8 +764,8 @@ msgid "More info: %1"
 msgstr "Περισσότερες πληροφορίες: %1"
 
 #: qml/PoiEditPage.qml:25
-msgid "Edit POI"
-msgstr "Επεξεργασία ΣΕ"
+msgid "Edit bookmark"
+msgstr ""
 
 #: qml/PoiEditPage.qml:27
 msgid "Save"
@@ -871,26 +875,15 @@ msgstr "Πλοήγηση Από"
 msgid "Nearby"
 msgstr "Κοντινά"
 
-#: qml/PoiPage.qml:28 qml/PoiPage.qml:124
-msgid "Points of Interest"
-msgstr "Σημεία ενδιαφέροντος"
-
 #: qml/PoiPage.qml:84
 msgid "View"
 msgstr "Εμφάνιση"
 
-#: qml/PoiPage.qml:150
-msgid "Show bookmarked"
-msgstr "Εμφάνιση σελιδοδεικτουμένων"
-
-#: qml/PoiPage.qml:160
+#: qml/PoiPage.qml:149
 msgid ""
-"No points of interests defined yet. You can create and bookmark points of "
-"interest using map and search."
+"No points of bookmarks defined yet. You can bookmark locations using map and"
+" search."
 msgstr ""
-"Δεν έχουν καθοριστεί ακόμα σημεία ενδιαφέροντος. Μπορείτε να δημιουργήσετε "
-"και να προσθέσετε σελιδοδείκτες σε σημεία ενδιαφέροντος χρησιμοποιώντας τον "
-"χάρτη και την αναζήτηση."
 
 #: qml/Poi.qml:192 qml/pure-maps.qml:127
 msgid "Clearing map"
@@ -987,19 +980,19 @@ msgstr "Κλείδωμα θέσης στον δρόμο"
 msgid "None"
 msgstr "Κανένα"
 
-#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:183
+#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:188
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Car"
 msgstr "Αυτοκίνητο"
 
-#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:183
+#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:188
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Bicycle"
 msgstr "Ποδήλατο"
 
-#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:183
+#: qml/PreferencesPage.qml:161 qml/RoutePage.qml:188
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Foot"
@@ -1203,31 +1196,31 @@ msgstr "Ακολούθα με"
 msgid "Reverse endpoints"
 msgstr "Αντίστροφή τελικών σημείων"
 
-#: qml/RoutePage.qml:102
+#: qml/RoutePage.qml:107
 msgid "From"
 msgstr "Από"
 
-#: qml/RoutePage.qml:103
+#: qml/RoutePage.qml:108
 msgid "Origin"
 msgstr ""
 
-#: qml/RoutePage.qml:109
+#: qml/RoutePage.qml:114
 msgid "To"
 msgstr "Προς"
 
-#: qml/RoutePage.qml:110
+#: qml/RoutePage.qml:115
 msgid "Destination"
 msgstr ""
 
-#: qml/RoutePage.qml:157
+#: qml/RoutePage.qml:162
 msgid "Follow the movement and show just in time information"
 msgstr "Ακολουθήστε την κίνηση και εμφανίστε πληροφορίες της στιγμής"
 
-#: qml/RoutePage.qml:166
+#: qml/RoutePage.qml:171
 msgid "Stop"
 msgstr "Τερματισμός"
 
-#: qml/RoutePage.qml:181
+#: qml/RoutePage.qml:186
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
@@ -1235,7 +1228,7 @@ msgstr ""
 "Επιλέξετε τον τρόπο μεταφοράς. Εφαρμόζεται μόνο αν το Pure Maps είναι σε "
 "λειτουργία ακολούθησης."
 
-#: qml/RoutePage.qml:182
+#: qml/RoutePage.qml:187
 msgid "Mode of transportation"
 msgstr "Τρόπος μεταφοράς"
 
