@@ -1,3 +1,14 @@
+2019-01-13: Pure Maps 1.14
+==========================
+
+* Rename POIs to bookmarks
+* Show overall navigation information on top of the map before navigating
+* Adjust main menu
+* Update translations
+* qtcontrols: Adjust style
+* qtcontrols: Add support to geolocation when packaged as Flatpak
+* Bugfixes
+
 2019-01-06: Pure Maps 1.13
 ==========================
 
