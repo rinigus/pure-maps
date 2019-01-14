@@ -30,7 +30,13 @@ Item {
     property string mapMatchingWhenFollowing
     property string mapMatchingWhenIdle
     property bool   mapMatchingWhenNavigating
+    property int    mapModeAutoSwitchTime: -1
     property bool   mapModeCleanOnStart
+    property bool   mapModeCleanShowCenter
+    property bool   mapModeCleanShowCompass
+    property bool   mapModeCleanShowMenuButton
+    property bool   mapModeCleanShowMeters
+    property bool   mapModeCleanShowScale
     property string profile
     property bool   reroute
     property bool   showNarrative: false
@@ -40,6 +46,8 @@ Item {
     property string units
     property string voiceGender
     property bool   voiceNavigation
+
+    readonly property int animationDuration: 150
 
     Component.onCompleted: _update()
 
@@ -95,7 +103,13 @@ Item {
         conf.mapMatchingWhenFollowing = c.map_matching_when_following;
         conf.mapMatchingWhenIdle = c.map_matching_when_idle;
         conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
+        conf.mapModeAutoSwitchTime = c.map_mode_auto_switch_time;
         conf.mapModeCleanOnStart = c.map_mode_clean_on_start;
+        conf.mapModeCleanShowCenter = c.map_mode_clean_show_center;
+        conf.mapModeCleanShowCompass = c.map_mode_clean_show_compass;
+        conf.mapModeCleanShowMeters = c.map_mode_clean_show_meters;
+        conf.mapModeCleanShowMenuButton = c.map_mode_clean_show_menu_button;
+        conf.mapModeCleanShowScale = c.map_mode_clean_show_scale;
         conf.reroute = c.reroute;
         conf.profile = c.profile;
         conf.showNarrative = c.show_narrative;

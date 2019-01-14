@@ -20,6 +20,7 @@ import QtQuick 2.0
 import "platform"
 
 IconButtonPL {
+    id: button
     anchors.bottom: parent.bottom
     anchors.horizontalCenter: parent.horizontalCenter
     height: icon.height
@@ -27,8 +28,21 @@ IconButtonPL {
     icon.smooth: false
     icon.source: app.getIcon("icons/menu")
     icon.width: icon.sourceSize.width
+    states: State {
+        when: hidden
+        AnchorChanges {
+            target: button
+            anchors.bottom: undefined
+            anchors.top: parent.bottom
+        }
+    }
+    transitions: Transition {
+        AnchorAnimation { duration: app.conf.animationDuration; }
+    }
     width: icon.width
     visible: (app.mode === modes.explore || app.mode === modes.exploreRoute) && !app.infoPanelOpen
     z: 900
     onClicked: app.showMenu();
+
+    property bool hidden: map.cleanMode && !app.conf.mapModeCleanShowMenuButton
 }

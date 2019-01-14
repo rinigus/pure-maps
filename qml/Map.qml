@@ -125,6 +125,16 @@ MapboxMap {
 
     PositionMarker { id: positionMarker }
 
+    Timer {
+        interval: app.conf.mapModeAutoSwitchTime > 0 ? app.conf.mapModeAutoSwitchTime*1000 : 1000
+        repeat: true
+        running: !cleanMode && app.conf.mapModeAutoSwitchTime > 0
+        onTriggered: {
+            if (!cleanMode && app.conf.mapModeAutoSwitchTime > 0)
+                cleanMode = true;
+        }
+    }
+
     Connections {
         target: app
         onModeChanged: setMode()
@@ -138,7 +148,7 @@ MapboxMap {
 
     Connections {
         target: menuButton
-        onYChanged: map.updateMargins();
+        onHeightChanged: map.updateMargins();
     }
 
     Connections {
@@ -542,7 +552,7 @@ MapboxMap {
     function updateMargins() {
         // Calculate new margins and set them for the map.
         var header = navigationBlock && navigationBlock.height > 0 ? navigationBlock.height : map.height*0.05;
-        var footer = !app.infoPanelOpen && (app.mode === modes.explore || app.mode === modes.exploreRoute) && menuButton ? (map.height-menuButton.y) : 0;
+        var footer = !app.infoPanelOpen && (app.mode === modes.explore || app.mode === modes.exploreRoute) && menuButton ? menuButton.height : 0;
         footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
         footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && streetName ? streetName.height : 0
         footer += app.infoPanelOpen && infoPanel ? infoPanel.height : 0

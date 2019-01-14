@@ -24,6 +24,7 @@ IconButtonPL {
     id: master
     anchors.bottom: parent.bottom
     anchors.right: parent.right
+    enabled: !hidden
     height: icon.height
     icon.height: icon.sourceSize.height
     icon.rotation: -map.bearing
@@ -48,9 +49,14 @@ IconButtonPL {
             }
         }
     ]
+    opacity: hidden ? 0 : 1
     visible: !app.infoPanelOpen || app.mode === modes.navigate || app.mode === modes.followMe
     width: icon.width
     z: 500
+
+    property bool hidden: Math.abs(icon.rotation) < 0.01 && map.cleanMode && !app.conf.mapModeCleanShowCompass
+
+    Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 
     Bubble {
         id: bubble
@@ -70,8 +76,8 @@ IconButtonPL {
     onClicked: {
         map.autoRotate = !map.autoRotate;
         bubble.text = map.autoRotate ?
-            app.tr("Auto-rotate on") :
-            app.tr("Auto-rotate off");
+                    app.tr("Auto-rotate on") :
+                    app.tr("Auto-rotate off");
         bubble.visible = true;
         timer.restart();
     }

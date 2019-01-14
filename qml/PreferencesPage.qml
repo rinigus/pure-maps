@@ -186,6 +186,102 @@ PagePL {
                         }
                     }
 
+                    SectionHeaderPL {
+                        text: app.tr("Map view modes")
+                    }
+
+                    ListItemLabel {
+                        text: app.tr("Map view can be shown with either all applicable controls in full view mode " +
+                                     "or with a smaller selected set of controls in minimal view mode. To switch between " +
+                                     "the modes, click on a map.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanOnStart
+                        text: app.tr("Set map view to minimal mode on start")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanOnStart!==checked)
+                                app.conf.set("map_mode_clean_on_start", checked);
+                        }
+                    }
+
+                    ComboBoxPL {
+                        description: app.tr("Automatically switch to minimal view mode after given delay or " +
+                                            "disable automatic switch between map view modes.")
+                        label: app.tr("Switch to minimal view")
+                        model: [
+                            app.tr("Never"), app.tr("10 seconds"), app.tr("20 seconds"),
+                            app.tr("30 seconds"), app.tr("1 minute") ]
+                        property var values: [-1, 10, 20, 30, 60]
+                        Component.onCompleted: {
+                            var value = app.conf.mapModeAutoSwitchTime;
+                            currentIndex = values.indexOf(value);
+                        }
+                        onCurrentIndexChanged: {
+                            var index = currentIndex;
+                            app.conf.set("map_mode_auto_switch_time", values[index]);
+                        }
+                    }
+
+
+                    SectionHeaderPL {
+                        text: app.tr("Always show")
+                    }
+
+                    ListItemLabel {
+                        text: app.tr("Always show the selected controls regardless of whether " +
+                                     "map view is in the minimal or in the full mode.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowMenuButton
+                        text: app.tr("Menu")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowMenuButton!==checked)
+                                app.conf.set("map_mode_clean_show_menu_button", checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowCenter
+                        text: app.tr("Center on current location")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowCenter!==checked)
+                                app.conf.set("map_mode_clean_show_center", checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowCompass
+                        text: app.tr("Compass")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowCompass!==checked)
+                                app.conf.set("map_mode_clean_show_compass", checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowMeters
+                        text: app.tr("Speed and location precision")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowMeters!==checked)
+                                app.conf.set("map_mode_clean_show_meters", checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowScale
+                        text: app.tr("Scale")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowScale!==checked)
+                                app.conf.set("map_mode_clean_show_scale", checked);
+                        }
+                    }
+
                     Spacer {
                         height: app.styler.themePaddingLarge
                     }

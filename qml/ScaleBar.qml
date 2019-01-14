@@ -50,9 +50,27 @@ Item {
             }
         }
     ]
+    opacity: hidden ? 0 : 1
     visible: !app.infoPanelOpen
     width: (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait ? scaleBar.height : scaleBar.width
     z: 400
+
+    property bool hidden: !_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale
+
+    property bool _recentlyUpdated: false
+
+    Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
+
+    Timer {
+        id: updateTimer
+        interval: 3000
+        repeat: true
+        running: _recentlyUpdated
+        onTriggered: {
+            if (_recentlyUpdated)
+                _recentlyUpdated = false;
+        }
+    }
 
     Item {
         id: scaleBar
@@ -149,6 +167,8 @@ Item {
             if (Math.abs(dist - _prevDist) < 1e-1) return;
             scaleBar.text = py.call_sync("poor.util.format_distance", [dist, 1]);
             _prevDist = dist;
+            _recentlyUpdated = true;
+            updateTimer.restart(); // restart as needed
         }
 
     }

@@ -30,25 +30,40 @@ IconButtonPL {
     icon.width: icon.sourceSize.width
     states: [
         State {
-            when: app.mode !== modes.explore && app.mode !== modes.exploreRoute && app.portrait
+            when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
             AnchorChanges {
                 target: button
-                anchors.right: undefined
-                anchors.horizontalCenter: northArrow.horizontalCenter
+                anchors.bottom: navigationSign.bottom
+                anchors.right: northArrow.left
+                anchors.top: undefined
             }
         },
         State {
-            when: app.mode !== modes.explore && app.mode !== modes.exploreRoute && !app.portrait
+            when: hidden
             AnchorChanges {
                 target: button
-                anchors.right: northArrow.left
+                anchors.bottom: navigationSign.bottom
                 anchors.top: undefined
-                anchors.verticalCenter: northArrow.verticalCenter
+                anchors.right: parent.right
+            }
+        },
+        State {
+            when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
+            AnchorChanges {
+                target: button
+                anchors.bottom: undefined
+                anchors.right: northArrow.left
+                anchors.top: navigationSign.bottom
             }
         }
     ]
+    transitions: Transition {
+        AnchorAnimation { duration: app.conf.animationDuration; }
+    }
     width: icon.width
     z: 500
+
+    property bool hidden: map.cleanMode && !app.conf.mapModeCleanShowCenter
 
     onClicked: map.centerOnPosition();
 }
