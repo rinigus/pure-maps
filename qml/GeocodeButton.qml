@@ -21,30 +21,31 @@ import "platform"
 
 IconButtonPL {
     id: button
-    anchors.left: parent.left
-    anchors.leftMargin: app.styler.themePaddingLarge
-    anchors.verticalCenter: parent.verticalCenter
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: app.styler.themePaddingLarge
+    anchors.right: menuButton.left
+    anchors.rightMargin: Math.max(app.styler.themePaddingLarge*2, menuButton.width*1)
     icon.source: app.getIcon("icons/search")
     icon.sourceSize.height: app.styler.themeIconSizeMedium
-    opacity: 0.5
+    opacity: 0.75
     states: [
         State {
             when: hidden
             AnchorChanges {
                 target: button
-                anchors.left: undefined
-                anchors.right: parent.left
+                anchors.bottom: undefined
+                anchors.top: parent.bottom
             }
         }
     ]
     transitions: Transition {
         AnchorAnimation { duration: app.conf.animationDuration; }
     }
-    visible: (app.mode === modes.explore || app.mode === modes.exploreRoute) && !app.infoPanelOpen
+    visible: app.mode === modes.explore || app.mode === modes.exploreRoute
     width: icon.width
     z: 500
 
-    property bool hidden: map.cleanMode && !app.conf.mapModeCleanShowGeocode
+    property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowGeocode)
 
     onClicked: app.pushMain("GeocodePage.qml")
 }

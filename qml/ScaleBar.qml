@@ -23,13 +23,14 @@ import "js/util.js" as Util
 
 Item {
     id: master
-    anchors.bottom: parent.bottom
+    //anchors.bottom: parent.bottom
     anchors.bottomMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
     anchors.left: parent.left
     anchors.leftMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
+    anchors.top: attributionButton.bottom
     anchors.topMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
     anchors.rightMargin:  app.styler.themePaddingLarge + app.styler.themePaddingSmall
-    height: (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait ? scaleBar.width : scaleBar.height
+    height: _rotate ? scaleBar.width : scaleBar.height
     states: [
         State {
             when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
@@ -38,26 +39,19 @@ Item {
                 anchors.bottom: navigationInfoBlockLandscapeRightShield.top
                 anchors.left: undefined
                 anchors.right: parent.right
-            }
-        },
-
-        State {
-            when: app.mode === modes.navigate || app.mode === modes.followMe
-            AnchorChanges {
-                target: master
-                anchors.bottom: undefined
-                anchors.top: attributionButton.bottom
+                anchors.top: undefined
             }
         }
     ]
     opacity: hidden ? 0 : 1
-    visible: !app.infoPanelOpen
-    width: (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait ? scaleBar.height : scaleBar.width
+    width: _rotate ? scaleBar.height : scaleBar.width
     z: 400
 
-    property bool hidden: !_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale
+    property bool hidden: app.infoPanelOpen ||
+                          (!_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale)
 
     property bool _recentlyUpdated: false
+    property bool _rotate: !((app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait)
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 
@@ -81,7 +75,7 @@ Item {
         visible: scaleWidth > 0
 
         transform: Rotation {
-            angle: (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait ? 90 : 0
+            angle: _rotate ? 90 : 0
             origin.x: scaleBar.width/2
             origin.y: scaleBar.height/2
         }

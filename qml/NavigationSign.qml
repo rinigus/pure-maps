@@ -24,7 +24,7 @@ Rectangle {
     anchors.right: parent.right
     anchors.rightMargin: -app.styler.themePaddingMedium
     anchors.top: navigationBlock.bottom
-    anchors.topMargin: app.styler.themePaddingSmall
+    anchors.topMargin: height > 0 ? app.styler.themePaddingSmall : 0
     color: "#3768B7"
     height: {
         if (!app.conf.showNavigationSign) return 0;

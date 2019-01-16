@@ -21,10 +21,10 @@ import "platform"
 
 IconButtonPL {
     id: button
-    anchors.bottomMargin: app.styler.themePaddingLarge
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: app.styler.themePaddingLarge + menuButton.height/2 - height/2
     anchors.horizontalCenter: northArrow.horizontalCenter
     anchors.rightMargin: app.styler.themePaddingLarge
-    anchors.top: navigationSign.bottom
     anchors.topMargin: app.styler.themePaddingLarge
     height: icon.height
     icon.source: app.getIcon("icons/center")
@@ -41,13 +41,31 @@ IconButtonPL {
             }
         },
         State {
-            when: hidden
+            when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe)
             AnchorChanges {
                 target: button
                 anchors.bottom: navigationSign.bottom
                 anchors.horizontalCenter: undefined
+                anchors.right: undefined
                 anchors.top: undefined
-                anchors.right: parent.right
+            }
+            PropertyChanges {
+                target: button
+                anchors.bottomMargin: 0
+            }
+        },
+        State {
+            when: hidden
+            AnchorChanges {
+                target: button
+                anchors.bottom: undefined
+                anchors.horizontalCenter: northArrow.horizontalCenter
+                anchors.right: undefined
+                anchors.top: parent.bottom
+            }
+            PropertyChanges {
+                target: button
+                anchors.topMargin: 0
             }
         },
         State {
@@ -59,6 +77,16 @@ IconButtonPL {
                 anchors.right: northArrow.left
                 anchors.top: navigationSign.bottom
             }
+        },
+        State {
+            when: (app.mode === modes.navigate || app.mode === modes.followMe)
+            AnchorChanges {
+                target: button
+                anchors.bottom: undefined
+                anchors.horizontalCenter: northArrow.horizontalCenter
+                anchors.right: undefined
+                anchors.top: navigationSign.bottom
+            }
         }
     ]
     transitions: Transition {
@@ -67,7 +95,7 @@ IconButtonPL {
     width: icon.width
     z: 500
 
-    property bool hidden: map.cleanMode && !app.conf.mapModeCleanShowCenter
+    property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowCenter)
 
     onClicked: map.centerOnPosition();
 }

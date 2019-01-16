@@ -22,28 +22,28 @@ import "js/util.js" as Util
 
 Item {
     id: meters
-    anchors.bottom: parent.bottom
-    anchors.bottomMargin: app.styler.themePaddingLarge
-    anchors.right: northArrow.left
-    anchors.rightMargin: app.styler.themePaddingSmall
+    anchors.right: parent.right
+    anchors.rightMargin: app.styler.themePaddingLarge
+    anchors.top: navigationSign.bottom
+    anchors.topMargin: app.styler.themePaddingLarge
     height: labels.implicitHeight
     opacity: 0.9
     states: State {
         when: hidden
         AnchorChanges {
             target: meters
-            anchors.bottom: undefined
-            anchors.top: parent.bottom
+            anchors.bottom: navigationSign.bottom
+            anchors.top: undefined
         }
     }
     transitions: Transition {
         AnchorAnimation { duration: app.conf.animationDuration; }
     }
     width: parent.width
-    visible: (app.mode === modes.explore || app.mode === modes.exploreRoute) && !app.infoPanelOpen
+    visible: app.mode === modes.explore || app.mode === modes.exploreRoute
     z: 400
 
-    property bool hidden: map.cleanMode && !app.conf.mapModeCleanShowMeters
+    property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowMeters)
 
     Text {
         id: values

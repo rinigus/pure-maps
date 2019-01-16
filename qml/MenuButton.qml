@@ -25,7 +25,6 @@ IconButtonPL {
     anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.topMargin: app.styler.themePaddingLarge
-    height: icon.height
     icon.source: app.getIcon("icons/menu")
     icon.sourceSize.height: app.styler.themeIconSizeMedium
     states: State {

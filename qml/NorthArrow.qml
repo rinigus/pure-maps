@@ -22,7 +22,7 @@ import "platform"
 
 IconButtonPL {
     id: master
-    anchors.bottom: parent.bottom
+    anchors.bottom: centerButton.top
     anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.right: parent.right
     anchors.rightMargin: app.styler.themePaddingLarge
@@ -51,11 +51,10 @@ IconButtonPL {
         }
     ]
     opacity: hidden ? 0 : 1
-    visible: !app.infoPanelOpen || app.mode === modes.navigate || app.mode === modes.followMe
     width: icon.width
     z: 500
 
-    property bool hidden: Math.abs(icon.rotation) < 0.01 && map.cleanMode && !app.conf.mapModeCleanShowCompass
+    property bool hidden: app.infoPanelOpen || (Math.abs(icon.rotation) < 0.01 && map.cleanMode && !app.conf.mapModeCleanShowCompass)
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 
