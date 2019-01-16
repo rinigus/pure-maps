@@ -22,12 +22,12 @@ import "platform"
 IconButtonPL {
     id: attributionButton
     anchors.left: parent.left
+    anchors.leftMargin: app.styler.themePaddingLarge
     anchors.top: navigationBlock.bottom
+    anchors.topMargin: app.styler.themePaddingLarge
     height: icon.height
-    icon.height: icon.sourceSize.height
-    icon.smooth: false
     icon.source: app.getIcon("icons/attribution/default")
-    icon.width: icon.sourceSize.width
+    icon.sourceSize.height: app.styler.themeIconSizeSmall
     states: [
         State {
             when: !app.portrait && navigationBlockLandscapeLeftShield.height > 0
@@ -42,7 +42,7 @@ IconButtonPL {
 
     property string logo: ""
 
-    onClicked: app.showMenu("AttributionPage.qml");
+    onClicked: app.showMenu("AttributionPage.qml")
     onLogoChanged: attributionButton.icon.source = logo ?
         app.getIcon("icons/attribution/%1".arg(logo)) : "";
 

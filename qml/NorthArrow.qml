@@ -23,14 +23,15 @@ import "platform"
 IconButtonPL {
     id: master
     anchors.bottom: parent.bottom
+    anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.right: parent.right
+    anchors.rightMargin: app.styler.themePaddingLarge
+    anchors.topMargin: app.styler.themePaddingLarge
     enabled: !hidden
     height: icon.height
-    icon.height: icon.sourceSize.height
     icon.rotation: -map.bearing
-    icon.smooth: true
     icon.source: app.getIcon("icons/north")
-    icon.width: icon.sourceSize.width
+    icon.sourceSize.height: app.styler.themeIconSizeMedium
     states: [
         State {
             when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait

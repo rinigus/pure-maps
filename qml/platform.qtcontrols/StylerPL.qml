@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Window 2.2
 
 QtObject {
     // font sizes and family
@@ -50,7 +51,7 @@ QtObject {
     // icon sizes
     property real themeIconSizeLarge: 2.5*themeFontSizeLarge
     property real themeIconSizeMedium: 2*themeFontSizeLarge
-
+    property real themeIconSizeSmall: 1.5*themeFontSizeLarge
     // used icons
     property string iconAbout: "image://theme/icon-m-about"
     property string iconBack: "image://theme/icon-m-back"
@@ -88,7 +89,7 @@ QtObject {
     property real themePaddingMedium: 0.5*themeFontSizeLarge
     property real themePaddingSmall: 0.25*themeFontSizeSmall
 
-    property real themePixelRatio: 1
+    property real themePixelRatio: Screen.devicePixelRatio
 
     function getIcon(name) {
         return py.call_sync("poor.app.icon.get_icon", [name]);

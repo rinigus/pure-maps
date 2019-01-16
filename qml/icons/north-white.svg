@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="96"
-   height="96"
+   width="64"
+   height="63.999996"
    id="svg1901"
    sodipodi:version="0.32"
    inkscape:version="0.92.2 2405546, 2018-03-11"
@@ -28,8 +28,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="8.1607143"
-     inkscape:cx="29.715536"
-     inkscape:cy="56"
+     inkscape:cx="-35.567365"
+     inkscape:cy="39.999995"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="2560"
@@ -47,14 +47,21 @@
      inkscape:snap-smooth-nodes="true"
      inkscape:snap-midpoints="true"
      inkscape:object-paths="true"
-     inkscape:document-rotation="0">
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
     <inkscape:grid
        type="xygrid"
        id="grid10137"
        empspacing="16"
        visible="true"
        enabled="true"
-       snapvisiblegridlinesonly="true" />
+       snapvisiblegridlinesonly="true"
+       originx="-41.142857"
+       originy="-16.000005" />
   </sodipodi:namedview>
   <metadata
      id="metadata1906">
@@ -72,10 +79,10 @@
      inkscape:label="Taso 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-956.3622)">
+     transform="translate(-41.142857,-972.3622)">
     <g
        id="g10395"
-       transform="matrix(1.1428571,0,0,1.1428571,6.8571444,-157.19456)">
+       transform="matrix(1.1428571,0,0,1.1428571,32.000001,-157.19456)">
       <path
          sodipodi:nodetypes="cccccc"
          inkscape:connector-curvature="0"

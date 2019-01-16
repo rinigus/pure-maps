@@ -22,12 +22,12 @@ import "platform"
 IconButtonPL {
     id: button
     anchors.bottom: parent.bottom
+    anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.horizontalCenter: parent.horizontalCenter
+    anchors.topMargin: app.styler.themePaddingLarge
     height: icon.height
-    icon.height: icon.sourceSize.height
-    icon.smooth: false
     icon.source: app.getIcon("icons/menu")
-    icon.width: icon.sourceSize.width
+    icon.sourceSize.height: app.styler.themeIconSizeMedium
     states: State {
         when: hidden
         AnchorChanges {

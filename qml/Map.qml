@@ -370,8 +370,8 @@ MapboxMap {
     function initIcons() {
         var suffix = "";
         if (app.styler.position) suffix = "-" + app.styler.position;
-        map.addImagePath(map.images.poi, Qt.resolvedUrl(app.getIcon("icons/marker-stroked" + suffix, true)));
-        map.addImagePath(map.images.poiBookmarked, Qt.resolvedUrl(app.getIcon("icons/marker" + suffix, true)));
+        map.addImagePath(map.images.poi, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker-stroked" + suffix, true)));
+        map.addImagePath(map.images.poiBookmarked, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker" + suffix, true)));
     }
 
     function initLayers() {
@@ -552,7 +552,7 @@ MapboxMap {
     function updateMargins() {
         // Calculate new margins and set them for the map.
         var header = navigationBlock && navigationBlock.height > 0 ? navigationBlock.height : map.height*0.05;
-        var footer = !app.infoPanelOpen && (app.mode === modes.explore || app.mode === modes.exploreRoute) && menuButton ? menuButton.height : 0;
+        var footer = !app.infoPanelOpen && (app.mode === modes.explore || app.mode === modes.exploreRoute) && menuButton ? menuButton.height + menuButton.anchors.bottomMargin : 0;
         footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
         footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && streetName ? streetName.height : 0
         footer += app.infoPanelOpen && infoPanel ? infoPanel.height : 0

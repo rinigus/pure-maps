@@ -21,19 +21,21 @@ import "platform"
 
 IconButtonPL {
     id: button
-    anchors.right: parent.right
+    anchors.bottomMargin: app.styler.themePaddingLarge
+    anchors.horizontalCenter: northArrow.horizontalCenter
+    anchors.rightMargin: app.styler.themePaddingLarge
     anchors.top: navigationSign.bottom
+    anchors.topMargin: app.styler.themePaddingLarge
     height: icon.height
-    icon.height: icon.sourceSize.height
-    icon.smooth: false
     icon.source: app.getIcon("icons/center")
-    icon.width: icon.sourceSize.width
+    icon.sourceSize.height: app.styler.themeIconSizeSmall
     states: [
         State {
             when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
             AnchorChanges {
                 target: button
                 anchors.bottom: navigationSign.bottom
+                anchors.horizontalCenter: undefined
                 anchors.right: northArrow.left
                 anchors.top: undefined
             }
@@ -43,6 +45,7 @@ IconButtonPL {
             AnchorChanges {
                 target: button
                 anchors.bottom: navigationSign.bottom
+                anchors.horizontalCenter: undefined
                 anchors.top: undefined
                 anchors.right: parent.right
             }
@@ -52,6 +55,7 @@ IconButtonPL {
             AnchorChanges {
                 target: button
                 anchors.bottom: undefined
+                anchors.horizontalCenter: undefined
                 anchors.right: northArrow.left
                 anchors.top: navigationSign.bottom
             }

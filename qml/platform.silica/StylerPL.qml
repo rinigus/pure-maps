@@ -51,6 +51,7 @@ QtObject {
     // icon sizes
     property real themeIconSizeLarge: Theme.iconSizeLarge
     property real themeIconSizeMedium: Theme.iconSizeMedium
+    property real themeIconSizeSmall: Theme.iconSizeSmallPlus
 
     // used icons
     property string iconAbout: "image://theme/icon-m-about"

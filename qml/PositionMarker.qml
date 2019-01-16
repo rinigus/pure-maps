@@ -86,8 +86,8 @@ Item {
     function initIcons() {
         var suffix = "";
         if (app.styler.position) suffix = "-" + app.styler.position;
-        map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIcon("icons/position" + suffix, true)));
-        map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIcon("icons/position-direction" + suffix, true)));
+        map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIconScaled("icons/position/position" + suffix, true)));
+        map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIconScaled("icons/position/position-direction" + suffix, true)));
     }
 
     function initLayers() {

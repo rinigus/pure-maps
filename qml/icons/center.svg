@@ -9,11 +9,11 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="96"
-   height="96"
+   width="48"
+   height="48"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.92+devel (177a8e8, 2017-12-08)"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
    sodipodi:docname="center.svg"
    version="1.1"
    inkscape:export-xdpi="90"
@@ -28,12 +28,12 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="9.5208333"
-     inkscape:cx="48"
-     inkscape:cy="48"
+     inkscape:cx="3.3085338"
+     inkscape:cy="24"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     inkscape:window-width="1920"
-     inkscape:window-height="1136"
+     inkscape:window-width="2560"
+     inkscape:window-height="1376"
      inkscape:window-x="0"
      inkscape:window-y="27"
      showgrid="true"
@@ -47,14 +47,20 @@
      inkscape:snap-smooth-nodes="true"
      inkscape:snap-midpoints="true"
      inkscape:object-paths="true"
-     inkscape:document-rotation="0">
+     inkscape:document-rotation="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
     <inkscape:grid
        type="xygrid"
        id="grid10137"
        empspacing="16"
        visible="true"
        enabled="true"
-       snapvisiblegridlinesonly="true" />
+       snapvisiblegridlinesonly="true"
+       originx="-24"
+       originy="-24" />
   </sodipodi:namedview>
   <metadata
      id="metadata1906">
@@ -64,7 +70,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -72,7 +78,7 @@
      inkscape:label="Taso 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-956.3622)">
+     transform="translate(-24,-980.3622)">
     <path
        style="opacity:1;fill:#000000;fill-opacity:0.25098039;stroke-width:1.45454538;stroke-linecap:round;stroke-linejoin:round"
        d="m 48,980.3622 c -13.254834,0 -24,10.74517 -24,24 0,13.2548 10.745166,24 24,24 13.254834,0 24,-10.7452 24,-24 0,-13.25483 -10.745166,-24 -24,-24 z m 0,12 a 12,12 0 0 1 12,12 12,12 0 0 1 -12,12 12,12 0 0 1 -12,-12 12,12 0 0 1 12,-12 z"

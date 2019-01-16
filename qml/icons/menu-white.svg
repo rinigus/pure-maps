@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="112"
-   height="112"
+   width="64"
+   height="64"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.92+devel (177a8e8, 2017-12-08)"
-   sodipodi:docname="menu.svg"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
+   sodipodi:docname="menu-white.svg"
    version="1.1"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -28,25 +28,32 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="8.1607143"
-     inkscape:cx="56"
-     inkscape:cy="56"
+     inkscape:cx="7.8599553"
+     inkscape:cy="31.999979"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     inkscape:window-width="1920"
-     inkscape:window-height="1136"
+     inkscape:window-width="2560"
+     inkscape:window-height="1376"
      inkscape:window-x="0"
      inkscape:window-y="27"
      showgrid="true"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
-     inkscape:document-rotation="0">
+     inkscape:document-rotation="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:pagecheckerboard="true">
     <inkscape:grid
        type="xygrid"
        id="grid10137"
        empspacing="4"
        visible="true"
        enabled="true"
-       snapvisiblegridlinesonly="true" />
+       snapvisiblegridlinesonly="true"
+       originx="-24.000001"
+       originy="-24.000021" />
   </sodipodi:namedview>
   <metadata
      id="metadata1906">
@@ -64,11 +71,11 @@
      inkscape:label="Taso 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-940.3622)">
+     transform="translate(-24.000001,-964.36218)">
     <g
        id="g10147"
        style="fill:#ffffff;fill-opacity:0.9"
-       transform="matrix(1.3333333,0,0,1.3333333,24.000001,-374.78735)">
+       transform="matrix(1.3333333,0,0,1.3333333,24.000002,-374.78737)">
       <ellipse
          transform="matrix(1.1666667,0,0,1.2727273,28.666667,1008.6349)"
          id="path10142"

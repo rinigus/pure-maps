@@ -34,8 +34,10 @@ Item {
     property bool   mapModeCleanOnStart
     property bool   mapModeCleanShowCenter
     property bool   mapModeCleanShowCompass
+    property bool   mapModeCleanShowGeocode
     property bool   mapModeCleanShowMenuButton
     property bool   mapModeCleanShowMeters
+    property bool   mapModeCleanShowNavigate
     property bool   mapModeCleanShowScale
     property string profile
     property bool   reroute
@@ -107,8 +109,10 @@ Item {
         conf.mapModeCleanOnStart = c.map_mode_clean_on_start;
         conf.mapModeCleanShowCenter = c.map_mode_clean_show_center;
         conf.mapModeCleanShowCompass = c.map_mode_clean_show_compass;
+        conf.mapModeCleanShowGeocode = c.map_mode_clean_show_geocode;
         conf.mapModeCleanShowMeters = c.map_mode_clean_show_meters;
         conf.mapModeCleanShowMenuButton = c.map_mode_clean_show_menu_button;
+        conf.mapModeCleanShowNavigate = c.map_mode_clean_show_navigate;
         conf.mapModeCleanShowScale = c.map_mode_clean_show_scale;
         conf.reroute = c.reroute;
         conf.profile = c.profile;
