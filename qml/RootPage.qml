@@ -24,12 +24,14 @@ PageEmptyPL {
 
     AttributionButton { id: attributionButton }
     CenterButton { id: centerButton }
+    GeocodeButton { id: geocodeButton }
     Map {
         id: map
         accessToken: py.call_sync("poor.key.get_mapbox_key", [])
     }
     MenuButton { id: menuButton }
     Meters { id: meters }
+    NavigateButton { id: navigateButton }
     NavigationBlock { id: navigationBlock }
     NavigationBlockLandscapeLeftShield { id: navigationBlockLandscapeLeftShield }
     NavigationInfoBlock { id: navigationInfoBlock }

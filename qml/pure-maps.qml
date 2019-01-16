@@ -137,6 +137,11 @@ ApplicationWindowPL {
     }
 
     function getIcon(name, no_variant) {
+        if (!no_variant && app.styler.iconVariant) return "%1-%2.svg".arg(name).arg(app.styler.iconVariant);
+        return "%1.svg".arg(name);
+    }
+
+    function getIconScaled(name, no_variant) {
         // Return path to icon suitable for user's screen,
         // finding the closest match to pixelRatio.
         var ratios = [1.00, 1.25, 1.50, 1.75, 2.00];

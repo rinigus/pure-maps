@@ -282,6 +282,24 @@ PagePL {
                         }
                     }
 
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowGeocode
+                        text: app.tr("Search")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowGeocode!==checked)
+                                app.conf.set("map_mode_clean_show_geocode", checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowNavigate
+                        text: app.tr("Navigate")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowNavigate!==checked)
+                                app.conf.set("map_mode_clean_show_navigate", checked);
+                        }
+                    }
+
                     Spacer {
                         height: app.styler.themePaddingLarge
                     }
