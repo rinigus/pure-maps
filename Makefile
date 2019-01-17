@@ -78,11 +78,15 @@ install:
 	cp qml/pure-maps.qml $(DATADIR)/qml/$(NAME).qml
 	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(DATADIR)/qml
 	mkdir -p $(DATADIR)/qml/icons
-	cp qml/icons/*.png $(DATADIR)/qml/icons
+	cp qml/icons/*.svg qml/icons/*.png $(DATADIR)/qml/icons
 	mkdir -p $(DATADIR)/qml/icons/attribution
-	cp qml/icons/attribution/*.png $(DATADIR)/qml/icons/attribution
+	cp qml/icons/attribution/*.svg $(DATADIR)/qml/icons/attribution
+	mkdir -p $(DATADIR)/qml/icons/marker
+	cp qml/icons/marker/*.png $(DATADIR)/qml/icons/marker
 	mkdir -p $(DATADIR)/qml/icons/navigation
 	cp qml/icons/navigation/*.svg $(DATADIR)/qml/icons/navigation
+	mkdir -p $(DATADIR)/qml/icons/position
+	cp qml/icons/position/*.png $(DATADIR)/qml/icons/position
 	mkdir -p $(DATADIR)/qml/js
 	cp qml/js/*.js $(DATADIR)/qml/js
 	mkdir -p $(DATADIR)/qml/platform
