@@ -303,7 +303,7 @@ ApplicationWindowPL {
         } else {
             // start a new call
             app._stackMain.clear();
-            app.push("MenuPage.qml");
+            app.push(Qt.resolvedUrl("MenuPage.qml"));
         }
     }
 
@@ -314,8 +314,8 @@ ApplicationWindowPL {
             app._stackNavigation.restore();
         } else {
             app._stackNavigation.clear();
-            app._stackNavigation.push("NavigationPage.qml")
-            app._stackNavigation.pushAttached("NarrativePage.qml");
+            app._stackNavigation.push(Qt.resolvedUrl("NavigationPage.qml"));
+            app._stackNavigation.pushAttached(Qt.resolvedUrl("NarrativePage.qml"));
         }
     }
 

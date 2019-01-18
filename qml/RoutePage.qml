@@ -33,7 +33,7 @@ PagePL {
             text: app.tr("Using %1").arg(name)
             property string name: py.evaluate("poor.app.router.name")
             onClicked: {
-                var dialog = app.push("RouterPage.qml");
+                var dialog = app.push(Qt.resolvedUrl("RouterPage.qml"));
                 dialog.accepted.connect(function() {
                     columnRouter.settingsChecked = false;
                     name = py.evaluate("poor.app.router.name");

@@ -47,5 +47,5 @@ IconButtonPL {
 
     property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowNavigate)
 
-    onClicked: app.pushMain("RoutePage.qml")
+    onClicked: app.pushMain(Qt.resolvedUrl("RoutePage.qml"))
 }

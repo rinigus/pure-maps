@@ -85,7 +85,7 @@ PageListPL {
                 onClicked: {
                     var poi = pois.getById(model.poiId);
                     if (!poi) return;
-                    app.push("PoiInfoPage.qml",
+                    app.push(Qt.resolvedUrl("PoiInfoPage.qml"),
                              {"active": true, "poi": poi});
                 }
             }
@@ -94,7 +94,7 @@ PageListPL {
                 onClicked: {
                     var poi = pois.getById(model.poiId);
                     if (!poi) return;
-                    var dialog = app.push("PoiEditPage.qml",
+                    var dialog = app.push(Qt.resolvedUrl("PoiEditPage.qml"),
                                           {"poi": poi});
                     dialog.accepted.connect(function() {
                         pois.update(dialog.poi);

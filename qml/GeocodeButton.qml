@@ -47,5 +47,5 @@ IconButtonPL {
 
     property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowGeocode)
 
-    onClicked: app.pushMain("GeocodePage.qml")
+    onClicked: app.pushMain(Qt.resolvedUrl("GeocodePage.qml"))
 }

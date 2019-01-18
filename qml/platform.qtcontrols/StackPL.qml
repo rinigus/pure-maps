@@ -19,14 +19,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-// This file has to be symlinked from main QML path
-// as StackPL.qml -> platform/StackImplamentationPL.qml
-//
-// This will allow to use the same path for object creation
-// as from the calling functions. When moved to platform,
-// such pages, as MenuPage will be not resolved since they
-// will be looked from platform subfolder.
-
 QtObject {
     property var  attached
     property bool hasAttached: false

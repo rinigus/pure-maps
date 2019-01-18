@@ -33,7 +33,7 @@ PagePL {
             text: app.tr("Using %1").arg(name)
             property string name: py.evaluate("poor.app.guide.name")
             onClicked: {
-                var dialog = app.push("GuidePage.qml");
+                var dialog = app.push(Qt.resolvedUrl("GuidePage.qml"));
                 dialog.accepted.connect(function() {
                     name = py.evaluate("poor.app.guide.name");
                     column.addSetttings();
@@ -106,7 +106,7 @@ PagePL {
             // Avoid putting label and value on different lines.
             width: 3 * parent.width
             onClicked: {
-                var dialog = app.push("PlaceTypePage.qml");
+                var dialog = app.push(Qt.resolvedUrl("PlaceTypePage.qml"));
                 dialog.accepted.connect(function() {
                     page.query = dialog.query;
                 });
@@ -142,7 +142,7 @@ PagePL {
 
     onPageStatusActive: {
         if (!initialized) {
-            var resultPage = app.pushAttachedMain("NearbyResultsPage.qml");
+            var resultPage = app.pushAttachedMain(Qt.resolvedUrl("NearbyResultsPage.qml"));
             resultPage.populated = false;
             initialized = true;
         }

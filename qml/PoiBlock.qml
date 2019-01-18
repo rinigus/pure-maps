@@ -157,7 +157,7 @@ Item {
             icon.source: app.styler.iconAbout
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
-                app.push("PoiInfoPage.qml", {
+                app.push(Qt.resolvedUrl("PoiInfoPage.qml"), {
                              "active": active,
                              "poi": item.poi,
                          });
@@ -179,7 +179,7 @@ Item {
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
-                app.showMenu("RoutePage.qml", {
+                app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
                                  "to": [coordinate.longitude, coordinate.latitude],
                                  "toText": title,
                              });
@@ -191,7 +191,7 @@ Item {
             icon.sourceSize.height: app.styler.themeIconSizeMedium
             onClicked: {
                 if (coordinate === undefined) return;
-                app.showMenu("NearbyPage.qml", {
+                app.showMenu(Qt.resolvedUrl("NearbyPage.qml"), {
                                  "near": [coordinate.longitude, coordinate.latitude],
                                  "nearText": title,
                              });

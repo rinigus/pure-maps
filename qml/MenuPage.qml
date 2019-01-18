@@ -28,7 +28,7 @@ PagePL {
     pageMenu: PageMenuPL {
         PageMenuItemPL {
             text: app.tr("About")
-            onClicked: app.push("AboutPage.qml");
+            onClicked: app.push(Qt.resolvedUrl("AboutPage.qml"))
         }
     }
 
@@ -43,25 +43,25 @@ PagePL {
         IconListItem {
             icon: app.styler.iconSearch
             label: app.tr("Search")
-            onClicked: app.pushMain("GeocodePage.qml")
+            onClicked: app.pushMain(Qt.resolvedUrl("GeocodePage.qml"))
         }
 
         IconListItem {
             icon: app.styler.iconNavigate
             label: app.tr("Navigation")
-            onClicked: app.pushMain("RoutePage.qml");
+            onClicked: app.pushMain(Qt.resolvedUrl("RoutePage.qml"))
         }
 
         IconListItem {
             icon: app.styler.iconNearby
             label: app.tr("Nearby venues")
-            onClicked: app.pushMain("NearbyPage.qml");
+            onClicked: app.pushMain(Qt.resolvedUrl("NearbyPage.qml"))
         }
 
         IconListItem {
             icon: app.styler.iconFavorite
             label: app.tr("Bookmarks")
-            onClicked: app.pushMain("PoiPage.qml");
+            onClicked: app.pushMain(Qt.resolvedUrl("PoiPage.qml"))
         }
 
         IconListItem {
@@ -78,7 +78,7 @@ PagePL {
                 if (!gps.ready) return;
                 var y = gps.position.coordinate.latitude;
                 var x = gps.position.coordinate.longitude;
-                app.push("SharePage.qml", {
+                app.push(Qt.resolvedUrl("SharePage.qml"), {
                              "coordinate": QtPositioning.coordinate(y, x),
                              "title": app.tr("Share Current Position"),
                          });
@@ -97,13 +97,13 @@ PagePL {
         IconListItem {
             icon: app.styler.iconMaps
             label: app.tr("Maps")
-            onClicked: app.pushMain("BasemapPage.qml");
+            onClicked: app.pushMain(Qt.resolvedUrl("BasemapPage.qml"))
         }
 
         IconListItem {
             icon: app.styler.iconPreferences
             label: app.tr("Preferences")
-            onClicked: app.push("PreferencesPage.qml");
+            onClicked: app.push(Qt.resolvedUrl("PreferencesPage.qml"))
         }
 
         // We use icon+combobox only here, hence no separate class

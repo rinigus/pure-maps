@@ -19,14 +19,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-// This file has to be symlinked from main QML path
-// as StackPL.qml -> platform/StackImplamentationPL.qml
-//
-// This will allow to use the same path for object creation
-// as from the calling functions. When moved to platform,
-// such pages, as MenuPage will be not resolved since they
-// will be looked from platform subfolder.
-
 QtObject {
     property int currentIndex: ps.depth - 1
     property var ps: null

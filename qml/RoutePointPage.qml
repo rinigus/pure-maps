@@ -30,7 +30,7 @@ DialogAutoPL {
             text: app.tr("Using %1").arg(name)
             property string name: py.evaluate("poor.app.geocoder.name")
             onClicked: {
-                var dialog = app.push("GeocoderPage.qml");
+                var dialog = app.push(Qt.resolvedUrl("GeocoderPage.qml"));
                 dialog.accepted.connect(function() {
                     name = py.evaluate("poor.app.geocoder.name");
                 });

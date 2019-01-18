@@ -39,7 +39,7 @@ PageEmptyPL {
             page.ready = true
             var k = py.call_sync("poor.key.get_mapbox_key", [])
             if (k == "EMPTY") {
-                var d = app.push("MessagePage.qml", {
+                var d = app.push(Qt.resolvedUrl("MessagePage.qml"), {
                                      "acceptText": app.tr("Dismiss"),
                                      "title": app.tr("Missing Mapbox key"),
                                      "message": app.tr("Your installation is missing Mapbox API key. " +
@@ -55,7 +55,7 @@ PageEmptyPL {
     onPageStatusActive: if (page.ready) start()
 
     function start() {
-        app.rootPage = app.pages.replace("RootPage.qml");
+        app.rootPage = app.pages.replace(Qt.resolvedUrl("RootPage.qml"));
         app.initialize();
         if (mapboxKeyMissing) app.showMenu();
     }

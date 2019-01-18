@@ -44,7 +44,7 @@ ValueButtonPL {
     }
 
     onClicked: {
-        var dialog = app.push("RoutePointPage.qml", {
+        var dialog = app.push(Qt.resolvedUrl("RoutePointPage.qml"), {
                                   "comment": comment,
                                   "currentSelection": text,
                                   "query": query,

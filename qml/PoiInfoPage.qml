@@ -30,7 +30,7 @@ PagePL {
             enabled: page.active
             text: app.tr("Edit")
             onClicked: {
-                var dialog = app.push("PoiEditPage.qml",
+                var dialog = app.push(Qt.resolvedUrl("PoiEditPage.qml"),
                                       {"poi": poi});
                 dialog.accepted.connect(function() {
                     pois.update(dialog.poi);
@@ -137,7 +137,7 @@ PagePL {
             icon: app.styler.iconShare
             label: app.tr("Share location")
             onClicked: {
-                app.push("SharePage.qml", {
+                app.push(Qt.resolvedUrl("SharePage.qml"), {
                              "coordinate": poi.coordinate,
                              "title": poi.title,
                          });
@@ -161,7 +161,7 @@ PagePL {
             icon: app.styler.iconNavigate
             label: app.tr("Navigate To")
             onClicked: {
-                app.showMenu("RoutePage.qml", {
+                app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
                                  "to": [poi.coordinate.longitude, poi.coordinate.latitude],
                                  "toText": poi.title,
                              });
@@ -173,7 +173,7 @@ PagePL {
             icon: app.styler.iconNavigate
             label: app.tr("Navigate From")
             onClicked: {
-                app.showMenu("RoutePage.qml", {
+                app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
                                  "from": [poi.coordinate.longitude, poi.coordinate.latitude],
                                  "fromText": poi.title,
                              });
@@ -185,7 +185,7 @@ PagePL {
             icon: app.styler.iconNearby
             label: app.tr("Nearby")
             onClicked: {
-                app.showMenu("NearbyPage.qml", {
+                app.showMenu(Qt.resolvedUrl("NearbyPage.qml"), {
                                  "near": [poi.coordinate.longitude, poi.coordinate.latitude],
                                  "nearText": poi.title,
                              });
