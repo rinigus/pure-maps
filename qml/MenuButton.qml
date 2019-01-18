@@ -39,9 +39,9 @@ IconButtonPL {
         AnchorAnimation { duration: app.conf.animationDuration; }
     }
     width: icon.width
-    visible: (app.mode === modes.explore || app.mode === modes.exploreRoute) && !app.infoPanelOpen
+    visible: app.mode === modes.explore || app.mode === modes.exploreRoute
     z: 900
     onClicked: app.showMenu();
 
-    property bool hidden: map.cleanMode && !app.conf.mapModeCleanShowMenuButton
+    property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowMenuButton)
 }
