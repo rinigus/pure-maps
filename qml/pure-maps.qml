@@ -23,7 +23,7 @@ import "platform"
 
 ApplicationWindowPL {
     id: app
-    initialPage: InitPage { }
+    initialPage: initPage
     pages: StackPL { }
     title: app.tr("Pure Maps")
 
@@ -64,6 +64,7 @@ ApplicationWindowPL {
     property var    _stackMain: Stack {}
     property var    _stackNavigation: Stack {}
 
+    InitPage { id: initPage }
     PositionSource { id: gps }
     Python { id: py }
 

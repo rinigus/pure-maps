@@ -23,7 +23,7 @@ import "platform"
 
 PagePL {
     id: page
-    title: "Pure Maps"
+    title: app.tr("Main Menu")
 
     pageMenu: PageMenuPL {
         PageMenuItemPL {
@@ -165,10 +165,12 @@ PagePL {
             height: app.styler.themeItemSizeSmall
             leftMargin: page.switchLeftMargin
             text: app.tr("Auto-center on position")
-            Component.onCompleted: {
-                page.onStatusChanged.connect(function() {
-                    autoCenterItem.checked = app.map.autoCenter;
-                });
+            Connections {
+                target: map
+                onAutoCenterChanged: {
+                    if (autoCenterItem.checked !== app.map.autoCenter)
+                       autoCenterItem.checked = app.map.autoCenter;
+                }
             }
             onCheckedChanged: {
                 app.map.autoCenter = autoCenterItem.checked;
@@ -182,10 +184,12 @@ PagePL {
             height: app.styler.themeItemSizeSmall
             leftMargin: page.switchLeftMargin
             text: app.tr("Auto-rotate on direction")
-            Component.onCompleted: {
-                page.onStatusChanged.connect(function() {
-                    autoRotateItem.checked = app.map.autoRotate;
-                });
+            Connections {
+                target: map
+                onAutoRotateChanged: {
+                    if (autoRotateItem.checked !== app.map.autoRotate)
+                       autoRotateItem.checked = app.map.autoRotate;
+                }
             }
             onCheckedChanged: {
                 app.map.autoRotate = autoRotateItem.checked;
