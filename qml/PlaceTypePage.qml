@@ -24,6 +24,7 @@ import "js/util.js" as Util
 
 DialogListPL {
     id: dialog
+    title: app.tr("Venue type")
 
     canAccept: dialog.query.length > 0
     currentIndex: -1

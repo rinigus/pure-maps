@@ -22,6 +22,7 @@ import "platform"
 
 PageEmptyPL {
     id: page
+    title: "Pure Maps"
 
     property bool mapboxKeyMissing: false
     property bool ready: false

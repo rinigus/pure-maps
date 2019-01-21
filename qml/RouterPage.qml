@@ -24,6 +24,7 @@ import "js/util.js" as Util
 
 DialogListPL {
     id: dialog
+    title: app.tr("Routing engine")
 
     delegate: ListItemPL {
         id: listItem

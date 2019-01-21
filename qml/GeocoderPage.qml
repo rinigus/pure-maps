@@ -24,6 +24,7 @@ import "js/util.js" as Util
 
 DialogListPL {
     id: dialog
+    title: app.tr("Search engine")
 
     property string pid: py.evaluate("poor.app.geocoder.id")
 

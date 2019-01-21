@@ -24,6 +24,7 @@ import "../qml/js/util.js" as Util
 
 DialogListPL {
     id: dialog
+    title: app.tr("Venue name")
 
     currentIndex: -1
 
