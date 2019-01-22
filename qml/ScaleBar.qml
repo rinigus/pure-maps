@@ -47,8 +47,7 @@ Item {
     width: _rotate ? scaleBar.height : scaleBar.width
     z: 400
 
-    property bool hidden: app.infoPanelOpen ||
-                          (!_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale)
+    property bool hidden: !_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale
 
     property bool _recentlyUpdated: false
     property bool _rotate: !((app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait)
