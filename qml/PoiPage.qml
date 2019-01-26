@@ -152,13 +152,13 @@ PageListPL {
     property var    searchField: undefined
     property var    searchKeys: ["shortlisted", "bookmarked", "title", "poiType", "address", "postcode", "text", "phone", "link"]
 
-    Component.onCompleted: {
-        fillModel(lastQuery);
-    }
-
     Connections {
         target: pois
         onPoiChanged: fillModel(lastQuery)
+    }
+
+    Component.onCompleted: {
+        fillModel(lastQuery);
     }
 
     function fillModel(query) {
