@@ -114,6 +114,7 @@ DialogListPL {
         dialog.autocompletePending = false;
         dialog.loadHistory();
         dialog.filterCompletions();
+        dialog.searchField.forceActiveFocus();
     }
 
     function fetchCompletions() {
