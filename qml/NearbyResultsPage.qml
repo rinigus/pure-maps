@@ -30,7 +30,7 @@ PageListPL {
 
     delegate: ListItemPL {
         id: listItem
-        contentHeight: titleLabel.height + descriptionLabel.height
+        contentHeight: titleLabel.height + descriptionLabel.height + descriptionLabel.anchors.topMargin
 
         property bool visited: false
 

@@ -26,7 +26,6 @@ PagePL {
 
     Column {
         id: column
-        anchors.horizontalCenter: parent.horizontalCenter
         spacing: app.styler.themePaddingLarge
         width: parent.width
 

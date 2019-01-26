@@ -119,7 +119,7 @@ PagePL {
             // Add guide-specific settings from guide's own QML file.
             page.params = {};
             if (column.settings) column.settings.destroy();
-            var uri = py.evaluate("poor.app.guide.settings_qml_uri");
+            var uri = Qt.resolvedUrl(py.evaluate("poor.app.guide.settings_qml_uri"));
             if (!uri) return;
             var component = Qt.createComponent(uri);
             column.settings = component.createObject(column);

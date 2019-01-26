@@ -30,7 +30,7 @@ Column {
         value: ""
         width: parent.width
         onClicked: {
-            var dialog = app.pages.push("../guides/osmscout_name.qml");
+            var dialog = app.pages.push(Qt.resolvedUrl("../guides/osmscout_name.qml"));
             dialog.accepted.connect(function() {
                 nameButton.value = dialog.query;
                 page.params.name = dialog.query;

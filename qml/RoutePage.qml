@@ -88,9 +88,8 @@ PagePL {
 
     Column {
         id: column
-        anchors.left: parent.left
-        anchors.right: parent.right
         spacing: app.styler.themePaddingLarge
+        width: parent.width
 
         Column {
             id: columnRouter
@@ -132,7 +131,7 @@ PagePL {
                 // Add router-specific settings from router's own QML file.
                 page.params = {};
                 columnRouter.settings && columnRouter.settings.destroy();
-                var uri = py.evaluate("poor.app.router.settings_qml_uri");
+                var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.settings_qml_uri"));
                 if (!uri) return;
                 var component = Qt.createComponent(uri);
                 if (component.status === Component.Error) {
@@ -239,7 +238,7 @@ PagePL {
             page.from = map.getPosition();
         if (page.toText === app.tr("Current position"))
             page.to = map.getPosition();
-        var uri = py.evaluate("poor.app.router.results_qml_uri");
+        var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.results_qml_uri"));
         app.pushAttached(uri);
     }
 
