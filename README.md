@@ -118,7 +118,7 @@ To simplify development, there are few simple rules regarding QML file
 organization. QML files are organized as follows (use the needed
 components):
 
-```json
+```
 import A
 import B
 import "."
