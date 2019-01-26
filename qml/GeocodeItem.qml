@@ -56,7 +56,7 @@ Item {
     property var    _autocompletions: []
     property var    _history: []
     property string _prevAutocompleteQuery: "."
-    property var    _resultDetails: []
+    property var    _resultDetails: {}
     property bool   _searchDone: false
     property string _searchError: ""
     property int    _searchIndex: 0
@@ -507,7 +507,7 @@ Item {
         if (!results.model.count) return; // too early, hasn't initialized yet
         var found = [];
         stateId = "Geocoder: " + query;
-        _resultDetails = []
+        _resultDetails = {}
 
         // add current location if its requested and there
         // is no query
