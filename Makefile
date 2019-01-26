@@ -47,8 +47,7 @@ dist:
 	tools/manage-keys inject dist/$(RELEASE)
 	tar -C dist -cJf dist/$(RELEASE).tar.xz $(RELEASE)
 
-flathub-install:
-	$(MAKE) platform-qtcontrols
+flathub-install-general:
 	tools/manage-keys inject . || true
 	$(MAKE) install
 	mkdir -p $(PREFIX)/share/applications
@@ -63,9 +62,20 @@ flathub-install:
 	mv $(PREFIX)/share/pure-maps/qml/pure-maps.qml $(PREFIX)/share/pure-maps/qml/io.github.rinigus.PureMaps.qml
 	mv $(PREFIX)/share/pure-maps $(PREFIX)/share/io.github.rinigus.PureMaps
 
-flatpak:
-	flatpak-builder --repo=../flatpak --force-clean ../build-dir packaging/flatpak/io.github.rinigus.PureMaps.json
+flathub-install-kirigami: platform-kirigami flathub-install-general
+	echo "Kirigami flathub install done"
+
+flathub-install-qtcontrols: platform-qtcontrols flathub-install-general
+	echo "QtControls flathub install done"
+
+flatpak-build:
+	flatpak-builder --repo=../flatpak --force-clean ../flatpak-build-desktop packaging/flatpak/io.github.rinigus.PureMaps.json
+
+flatpak-bundle:
 	flatpak build-bundle ../flatpak pure-maps.flatpak io.github.rinigus.PureMaps
+
+flatpak-run:
+	QT_QUICK_CONTROLS_STYLE=org.kde.desktop flatpak-builder --run ../flatpak-build-desktop packaging/flatpak/io.github.rinigus.PureMaps.json io.github.rinigus.PureMaps
 
 install:
 	@echo "Installing Python files..."
@@ -136,6 +146,10 @@ install:
 platform-qtcontrols:
 	rm qml/platform || true
 	ln -s platform.qtcontrols qml/platform
+
+platform-kirigami:
+	rm qml/platform || true
+	ln -s platform.kirigami qml/platform
 
 platform-silica:
 	rm qml/platform || true
