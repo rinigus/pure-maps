@@ -25,6 +25,7 @@ make platform-qtcontrols
 
 for example. Current platforms are 
 
+* platform.kirigami -> make target `platform-kirigami`
 * platform.qtcontrols -> make target `platform-qtcontrols`
 * platform.silica -> make target `platform-silica`
 
@@ -53,6 +54,10 @@ are needed:
 * Mapbox GL QML, unofficial QML bindings, https://github.com/rinigus/mapbox-gl-qml
 * [flatpak only] QML runner https://github.com/rinigus/qmlrunner
 
+When developing with Kirigami using flatpak builder, dependencies will
+be pulled and installed in flatpak. See instructions regarding
+Kirigami below.
+
 
 ## Packaging
 
@@ -80,3 +85,95 @@ Please use Github issues to address specific problems and development
 requests. General discussion is expected either through corresponding
 issues opened by maintainer or TMO thread. Please note that users from
 all platforms are welcome at TMO, not only current Sailfish OS users.
+
+
+## Platform specific notes
+
+### Kirigami
+
+Kirigami platform may require latest platform SDK available as
+flatpaks. See instructions at
+https://docs.plasma-mobile.org/AppDevelopment.html for local
+development. From these instructions, only SDK install is
+needed. After that, building and running can be performed by
+
+```
+make flatpak-build flatpak-run
+```
+
+
+## Development
+
+### General
+
+Throughout QML and Python code, all the same type items (properties,
+signals, functions), are ordered alphabetically. 
+
+Its possible that some of the implemented code does not fully comply
+with the outlined order. Then it should be fixed eventually.
+
+### QML
+
+To simplify development, there are few simple rules regarding QML file
+organization. QML files are organized as follows (use the needed
+components):
+
+```json
+import A
+import B
+import "."
+
+import "js/util.js" as Util
+
+Item {
+    id: item
+    
+    // base class defined properties in alphabetic order
+    prop_a: val_a
+    prop_b: val_b
+    
+    // new properties in alphabetic order
+    property         var  np_a: default_a
+    default property bool np_b: default_b
+    
+    // readonly properties
+    readonly property var images: QtObject {
+        readonly property string pixel:         "pure-image-pixel"
+        readonly property string poi:           "pure-image-poi"
+        readonly property string poiBookmarked: "pure-image-poi-bookmarked"
+    }
+    
+    // signals
+    signal mySignal
+
+    // local unexported properties
+    property bool _locked: false
+
+    // behavior
+    Behavior on bearing {
+        RotationAnimation {
+            direction: RotationAnimation.Shortest
+            duration: map.ready ? 500 : 0
+            easing.type: Easing.Linear
+        }
+    }
+    
+    // new sub-items following the same principles
+    Item {
+        id: subitem
+    }
+    
+    // connections
+    Connections {
+    }
+
+    // signal handlers
+    Component.onCompleted: init()
+    onActivated: doSomething()
+    
+    // functions 
+    function a() {
+        return 10;
+    }
+}
+```
