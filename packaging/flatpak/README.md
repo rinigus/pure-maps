@@ -6,7 +6,8 @@ If you wish to use Pure Maps without API keys, you could just avoid
 filling the keys.
 
 For up to date Flatpak JSON build configuration, please obtain it from
-https://github.com/flathub/io.github.rinigus.PureMaps . 
+https://github.com/flathub/io.github.rinigus.PureMaps . The build script 
+in this directory is for the development purposes.
 
 For building the Pure Maps flatpak package first make sure you have the [Flathub repository installed](https://flatpak.org/setup/).
 
