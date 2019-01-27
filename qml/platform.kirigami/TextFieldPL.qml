@@ -29,7 +29,7 @@ Item {
     Layout.fillWidth: true
     Layout.preferredWidth: parent.width
 
-    //property alias  description: desc.text
+    property alias  description: desc.text
     property bool   inForm: parent.isFormLayout ? true : false
     property alias  inputMethodHints: entry.inputMethodHints
     property string label

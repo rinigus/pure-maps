@@ -21,8 +21,8 @@ import QtQuick.Window 2.2
 
 QtObject {
     // font sizes and family
-    property string themeFontFamily: Math.round(Qt.application.font.family)
-    property string themeFontFamilyHeading: Math.round(Qt.application.font.family)
+    property string themeFontFamily: Qt.application.font.family
+    property string themeFontFamilyHeading: Qt.application.font.family
     property int  themeFontSizeHuge: Math.round(themeFontSizeMedium*3.0)
     property int  themeFontSizeExtraLarge: Math.round(themeFontSizeMedium*2.0)
     property int  themeFontSizeLarge: Math.round(themeFontSizeMedium*1.5)
