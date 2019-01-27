@@ -21,12 +21,12 @@ import "."
 import "platform"
 
 PagePL {
+    id: page
     title: app.tr("Preferences")
 
     Column {
         id: column
-        anchors.left: parent.left
-        anchors.right: parent.right
+        width: page.width
 
         ExpandingSectionGroupPL {
             currentIndex: -1

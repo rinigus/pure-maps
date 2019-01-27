@@ -142,7 +142,7 @@ PagePL {
                 anchors.left: label.right
                 anchors.leftMargin: app.styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.top: parent.top
+                anchors.verticalCenter: label.verticalCenter
                 model: [ app.tr("Online"), app.tr("Offline"), app.tr("Mixed") ]
                 property var values: ["online", "offline", "mixed"]
                 Component.onCompleted: {
