@@ -37,7 +37,6 @@ PagePL {
 
     Column {
         id: column
-        anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
 
         IconListItem {

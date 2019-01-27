@@ -47,7 +47,6 @@ PagePL {
 
     Column {
         id: column
-        anchors.horizontalCenter: parent.horizontalCenter
         spacing: app.styler.themePaddingMedium
         width: parent.width
 
@@ -254,13 +253,13 @@ PagePL {
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
         }
-    }
 
-    Connections {
-        target: pois
-        onPoiChanged: {
-            if (poi.poiId !== poiId) return;
-            page.setPoi(pois.getById(poiId));
+        Connections {
+            target: pois
+            onPoiChanged: {
+                if (poi.poiId !== poiId) return;
+                page.setPoi(pois.getById(poiId));
+            }
         }
     }
 

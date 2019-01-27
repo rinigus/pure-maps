@@ -46,9 +46,8 @@ DialogAutoPL {
     property alias  query: geo.query
 
     Column {
-        anchors.left: parent.left
-        anchors.right: parent.right
         spacing: app.styler.themePaddingMedium
+        width: dialog.width
 
         ListItemLabel {
             id: commentLabel

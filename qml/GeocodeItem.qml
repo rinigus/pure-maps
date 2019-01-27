@@ -29,9 +29,8 @@ import "js/util.js" as Util
 Item {
     id: geo
 
-    anchors.left: parent.left
-    anchors.right: parent.right
     height: active ? column.height : selectionItem.height
+    width: parent.width
 
     property bool   active: false
     property bool   fillModel: true

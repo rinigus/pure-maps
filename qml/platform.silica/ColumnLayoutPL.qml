@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2016 Osmo Salomaa
+ * Copyright (C) 2019 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,6 @@
 
 import QtQuick 2.0
 
-Rectangle {
-    height: 0
-    opacity: 0
-    width: 1
+Column {
+    width: parent.width
 }

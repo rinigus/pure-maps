@@ -28,93 +28,90 @@ DialogPL {
 
     property var poi
 
-    Column {
+    ColumnLayoutPL {
         id: column
         spacing: app.styler.themePaddingMedium
-        width: page.width
 
-        SectionHeaderPL {
-            text: app.tr("General")
-        }
+        FormLayoutPL {
+            spacing: app.styler.themePaddingMedium
 
-        TextFieldPL {
-            id: titleField
-            focus: true
-            label: app.tr("Title")
-            placeholderText: app.tr("Enter title")
-            text: poi.title ? poi.title : ""
-            width: parent.width
-            onEnter: typeField.focus = true
-        }
+            SectionHeaderPL {
+                text: app.tr("General")
+            }
 
-        TextFieldPL {
-            id: typeField
-            label: app.tr("Type")
-            placeholderText: app.tr("Enter type, such as Restaurant")
-            text: poi.poiType ? poi.poiType : ""
-            width: parent.width
-            onEnter: addressField.focus = true
-        }
+            TextFieldPL {
+                id: titleField
+                focus: true
+                label: app.tr("Title")
+                placeholderText: app.tr("Enter title")
+                text: poi.title ? poi.title : ""
+                onEnter: typeField.focus = true
+            }
 
-        Spacer {
-            height: app.styler.themePaddingMedium
-        }
+            TextFieldPL {
+                id: typeField
+                label: app.tr("Type")
+                placeholderText: app.tr("Enter type, such as Restaurant")
+                text: poi.poiType ? poi.poiType : ""
+                onEnter: addressField.focus = true
+            }
 
-        SectionHeaderPL {
-            text: app.tr("Address")
-        }
+            Spacer {
+                height: app.styler.themePaddingMedium
+            }
 
-        TextFieldPL {
-            id: addressField
-            label: app.tr("Address")
-            placeholderText: app.tr("Enter address")
-            text: poi.address ? poi.address : ""
-            width: parent.width
-            onEnter: postcodeField.focus = true
-        }
+            SectionHeaderPL {
+                text: app.tr("Address")
+            }
 
-        TextFieldPL {
-            id: postcodeField
-            label: app.tr("Postal code")
-            placeholderText: app.tr("Enter postal code")
-            text: poi.postcode ? poi.postcode : ""
-            width: parent.width
-            onEnter: phoneField.focus = true
-        }
+            TextFieldPL {
+                id: addressField
+                label: app.tr("Address")
+                placeholderText: app.tr("Enter address")
+                text: poi.address ? poi.address : ""
+                onEnter: postcodeField.focus = true
+            }
 
-        Spacer {
-            height: app.styler.themePaddingMedium
-        }
+            TextFieldPL {
+                id: postcodeField
+                label: app.tr("Postal code")
+                placeholderText: app.tr("Enter postal code")
+                text: poi.postcode ? poi.postcode : ""
+                onEnter: phoneField.focus = true
+            }
 
-        SectionHeaderPL {
-            text: app.tr("Contact")
-        }
+            Spacer {
+                height: app.styler.themePaddingMedium
+            }
 
-        TextFieldPL {
-            id: phoneField
-            inputMethodHints: Qt.ImhDialableCharactersOnly
-            label: app.tr("Phone number")
-            placeholderText: app.tr("Enter phone number")
-            text: poi.phone ? poi.phone : ""
-            width: parent.width
-            onEnter: focus = false
-        }
+            SectionHeaderPL {
+                text: app.tr("Contact")
+            }
 
-        TextFieldPL {
-            id: linkField
-            label: app.tr("URL")
-            placeholderText: app.tr("Enter URL")
-            text: poi.link ? poi.link : ""
-            width: parent.width
-            onEnter: textArea.focus = true
-        }
+            TextFieldPL {
+                id: phoneField
+                inputMethodHints: Qt.ImhDialableCharactersOnly
+                label: app.tr("Phone number")
+                placeholderText: app.tr("Enter phone number")
+                text: poi.phone ? poi.phone : ""
+                onEnter: focus = false
+            }
 
-        Spacer {
-            height: app.styler.themePaddingMedium
-        }
+            TextFieldPL {
+                id: linkField
+                label: app.tr("URL")
+                placeholderText: app.tr("Enter URL")
+                text: poi.link ? poi.link : ""
+                onEnter: textArea.focus = true
+            }
 
-        SectionHeaderPL {
-            text: app.tr("Additional info")
+            Spacer {
+                height: app.styler.themePaddingMedium
+            }
+
+            SectionHeaderPL {
+                text: app.tr("Additional info")
+            }
         }
 
         TextAreaPL {

@@ -23,6 +23,7 @@ Item {
     id: row
 
     height: childrenRect.height
+    width: parent.width
 
     property alias description: desc.text
     property alias inputMethodHints: entry.inputMethodHints

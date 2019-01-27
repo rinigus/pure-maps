@@ -24,9 +24,8 @@ PagePL {
     id: page
 
     Column {
-        anchors.left: parent.left
-        anchors.right: parent.right
         spacing: app.styler.themePaddingLarge
+        width: page.width
 
         ListItemLabel {
             id: messageLabel
