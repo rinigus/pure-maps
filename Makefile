@@ -39,6 +39,7 @@ clean:
 	rm -rf */*/__pycache__
 	rm -f po/*~
 	rm -f rpm/*.rpm
+	rm -f */*.qmlc */*/*.qmlc
 
 dist:
 	$(MAKE) clean
@@ -100,7 +101,7 @@ install:
 	mkdir -p $(DATADIR)/qml/js
 	cp qml/js/*.js $(DATADIR)/qml/js
 	mkdir -p $(DATADIR)/qml/platform
-	cp qml/platform/*.qml $(DATADIR)/qml/platform
+	cp -L qml/platform/*.qml $(DATADIR)/qml/platform
 	@echo "Installing maps..."
 	mkdir -p $(DATADIR)/maps
 	cp maps/*.json $(DATADIR)/maps
