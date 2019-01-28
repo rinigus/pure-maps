@@ -20,6 +20,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 QtObject {
+    readonly property bool isSilica: true
+    
     // font sizes and family
     property string themeFontFamily: Theme.fontFamily
     property string themeFontFamilyHeading: Theme.fontFamilyHeading
