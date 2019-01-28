@@ -34,7 +34,7 @@ PagePL {
             ExpandingSectionPL {
                 id: sectionGeneral
                 title: app.tr("General")
-                content.sourceComponent: Column {
+                content.sourceComponent: FormLayoutPL {
                     spacing: app.styler.themePaddingMedium
                     width: sectionGeneral.width
 
@@ -115,29 +115,32 @@ PagePL {
                         wrapMode: Text.WordWrap
                     }
 
-                    Repeater {
-                        delegate: TextFieldPL {
-                            description: model.description
-                            label: model.label
-                            placeholderText: model.label
-                            text: model.value
-                            width: sectionKeys.width
-                            onTextChanged: py.call_sync("poor.key.set",
-                                                        [model.key, text])
-                        }
-                        model: ListModel {}
+                    FormLayoutPL {
+                        spacing: app.styler.themePaddingMedium
+                        width: parent.width
+                        Repeater {
+                            delegate: TextFieldPL {
+                                description: model.description
+                                label: model.label
+                                placeholderText: model.label
+                                text: model.value
+                                onTextChanged: py.call_sync("poor.key.set",
+                                                            [model.key, text])
+                            }
+                            model: ListModel {}
 
-                        Component.onCompleted: {
-                            // Load router model items from the Python backend.
-                            py.call("poor.key.list", [], function(keys) {
-                                for (var i = 0; i < keys.length; i++)
-                                    model.append({
-                                                     "key": keys[i].id,
-                                                     "description": keys[i].description,
-                                                     "label": keys[i].label,
-                                                     "value": keys[i].value
-                                                 });
-                            });
+                            Component.onCompleted: {
+                                // Load router model items from the Python backend.
+                                py.call("poor.key.list", [], function(keys) {
+                                    for (var i = 0; i < keys.length; i++)
+                                        model.append({
+                                                         "key": keys[i].id,
+                                                         "description": keys[i].description,
+                                                         "label": keys[i].label,
+                                                         "value": keys[i].value
+                                                     });
+                                });
+                            }
                         }
                     }
 
@@ -386,38 +389,42 @@ PagePL {
                         }
                     }
 
-                    ComboBoxPL {
-                        id: voiceGenderComboBox
-                        description: app.tr("Preferred gender for voice navigation. Only supported by some engines and languages.")
-                        label: app.tr("Voice gender")
-                        model: [ app.tr("Male"), app.tr("Female") ]
-                        property var values: ["male", "female"]
-                        Component.onCompleted: {
-                            var value = app.conf.voiceGender;
-                            voiceGenderComboBox.currentIndex = voiceGenderComboBox.values.indexOf(value);
+                    FormLayoutPL {
+                        spacing: app.styler.themePaddingMedium
+                        width: parent.width
+                        ComboBoxPL {
+                            id: voiceGenderComboBox
+                            description: app.tr("Preferred gender for voice navigation. Only supported by some engines and languages.")
+                            label: app.tr("Voice gender")
+                            model: [ app.tr("Male"), app.tr("Female") ]
+                            property var values: ["male", "female"]
+                            Component.onCompleted: {
+                                var value = app.conf.voiceGender;
+                                voiceGenderComboBox.currentIndex = voiceGenderComboBox.values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = voiceGenderComboBox.currentIndex;
+                                app.conf.set("voice_gender", voiceGenderComboBox.values[index]);
+                            }
                         }
-                        onCurrentIndexChanged: {
-                            var index = voiceGenderComboBox.currentIndex;
-                            app.conf.set("voice_gender", voiceGenderComboBox.values[index]);
-                        }
-                    }
 
-                    ComboBoxPL {
-                        id: speedLimitComboBox
-                        description: app.tr("Show speed limit sign")
-                        enabled: mapmatchingSwitch.checked
-                        label: app.tr("Speed limit")
-                        model: [ app.tr("Always"), app.tr("Only when exceeding"), app.tr("Never") ]
-                        property var values: ["always", "exceeding", "never"]
-                        Component.onCompleted: {
-                            var value = app.conf.showSpeedLimit;
-                            speedLimitComboBox.currentIndex = speedLimitComboBox.values.indexOf(value);
-                        }
-                        onCurrentIndexChanged: {
-                            var index = speedLimitComboBox.currentIndex;
-                            var v = speedLimitComboBox.values[index];
-                            if (v !== app.conf.showSpeedLimit)
-                                app.conf.set("show_speed_limit", v);
+                        ComboBoxPL {
+                            id: speedLimitComboBox
+                            description: app.tr("Show speed limit sign")
+                            enabled: mapmatchingSwitch.checked
+                            label: app.tr("Speed limit")
+                            model: [ app.tr("Always"), app.tr("Only when exceeding"), app.tr("Never") ]
+                            property var values: ["always", "exceeding", "never"]
+                            Component.onCompleted: {
+                                var value = app.conf.showSpeedLimit;
+                                speedLimitComboBox.currentIndex = speedLimitComboBox.values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = speedLimitComboBox.currentIndex;
+                                var v = speedLimitComboBox.values[index];
+                                if (v !== app.conf.showSpeedLimit)
+                                    app.conf.set("show_speed_limit", v);
+                            }
                         }
                     }
 
@@ -445,46 +452,50 @@ PagePL {
                         wrapMode: Text.WordWrap
                     }
 
-                    ComboBoxPL {
-                        id: languageComboBox
-                        currentIndex: 0
-                        label: app.tr("Language")
-                        model: [
-                            app.tr("English"),
-                            app.tr("Catalan"),
-                            app.tr("Czech"),
-                            app.tr("German"),
-                            app.tr("Spanish"),
-                            app.tr("French"),
-                            app.tr("Hindi"),
-                            app.tr("Italian"),
-                            app.tr("Russian"),
-                            app.tr("Slovak"),
-                            app.tr("Swedish")
-                        ]
-                        property var values: ["en", "ca", "cz", "de", "es", "fr", "hi", "it", "ru", "sl", "sv"]
-                        // from https://www.omniglot.com/language/phrases/hovercraft.htm
-                        property var phrases: [
-                            "My hovercraft is full of eels", // en
-                            "El meu aerolliscador està ple d'anguiles", // ca
-                            "Moje vznášedlo je plné úhořů", // cz
-                            "Mein Luftkissenfahrzeug ist voller Aale", // de
-                            "Mi aerodeslizador está lleno de anguilas", // es
-                            "Mon aéroglisseur est plein d'anguilles", // fr
-                            "मेरी मँडराने वाली नाव सर्पमीनों से भरी हैं", // hi
-                            "Il mio hovercraft è pieno di anguille", // it
-                            "Моё судно на воздушной подушке полно угрей", // ru
-                            "Moje vznášadlo je plné úhorov", // sl
-                            "Min svävare är full med ål" // sv
-                        ]
-                    }
+                    FormLayoutPL {
+                        spacing: app.styler.themePaddingMedium
+                        width: parent.width
+                        ComboBoxPL {
+                            id: languageComboBox
+                            currentIndex: 0
+                            label: app.tr("Language")
+                            model: [
+                                app.tr("English"),
+                                app.tr("Catalan"),
+                                app.tr("Czech"),
+                                app.tr("German"),
+                                app.tr("Spanish"),
+                                app.tr("French"),
+                                app.tr("Hindi"),
+                                app.tr("Italian"),
+                                app.tr("Russian"),
+                                app.tr("Slovak"),
+                                app.tr("Swedish")
+                            ]
+                            property var values: ["en", "ca", "cz", "de", "es", "fr", "hi", "it", "ru", "sl", "sv"]
+                            // from https://www.omniglot.com/language/phrases/hovercraft.htm
+                            property var phrases: [
+                                "My hovercraft is full of eels", // en
+                                "El meu aerolliscador està ple d'anguiles", // ca
+                                "Moje vznášedlo je plné úhořů", // cz
+                                "Mein Luftkissenfahrzeug ist voller Aale", // de
+                                "Mi aerodeslizador está lleno de anguilas", // es
+                                "Mon aéroglisseur est plein d'anguilles", // fr
+                                "मेरी मँडराने वाली नाव सर्पमीनों से भरी हैं", // hi
+                                "Il mio hovercraft è pieno di anguille", // it
+                                "Моё судно на воздушной подушке полно угрей", // ru
+                                "Moje vznášadlo je plné úhorov", // sl
+                                "Min svävare är full med ål" // sv
+                            ]
+                        }
 
-                    ComboBoxPL {
-                        id: genderComboBox
-                        description: app.tr("Preferred gender. Only supported by some engines and languages.")
-                        label: app.tr("Voice gender")
-                        model: [ app.tr("Male"), app.tr("Female") ]
-                        property var values: ["male", "female"]
+                        ComboBoxPL {
+                            id: genderComboBox
+                            description: app.tr("Preferred gender. Only supported by some engines and languages.")
+                            label: app.tr("Voice gender")
+                            model: [ app.tr("Male"), app.tr("Female") ]
+                            property var values: ["male", "female"]
+                        }
                     }
 
                     Spacer {
@@ -532,7 +543,7 @@ PagePL {
                         py.call_sync("poor.app.voice_tester_start", []);
                         py.call_sync("poor.app.voice_tester.set_voice",
                                      [ languageComboBox.values[languageComboBox.currentIndex],
-                                       genderComboBox.values[genderComboBox.currentIndex] ]);
+                                      genderComboBox.values[genderComboBox.currentIndex] ]);
                         description.text = app.tr("Selected voice engine: %1").arg(py.evaluate("poor.app.voice_tester.current_engine"));
                         if (!py.evaluate("poor.app.voice_tester.active")) return;
                         testingColumn.message = languageComboBox.phrases[languageComboBox.currentIndex];

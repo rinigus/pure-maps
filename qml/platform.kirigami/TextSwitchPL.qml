@@ -18,26 +18,32 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import QtQuick.Layouts 1.2
+import org.kde.kirigami 2.5 as Kirigami
 
 Item {
     id: item
-    height: sw.height + desc.height + desc.anchors.topMargin
+    implicitHeight: sw.height + desc.height + desc.anchors.topMargin
     width: parent.width
+    Layout.fillWidth: true
+    Layout.preferredWidth: parent.width
 
-    property alias checked: sw.checked
-    property alias description: desc.text
-    property alias text: sw.text
+    property alias  checked: sw.checked
+    property alias  description: desc.text
+    property bool   inForm: parent.isFormLayout ? true : false
+    property string text
 
     property real leftMargin // ignoring this property
 
     Switch {
         id: sw
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: !inForm ? app.styler.themeHorizontalPageMargin : undefined
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.rightMargin: !inForm ? app.styler.themeHorizontalPageMargin : undefined
         anchors.top: parent.top
         font.pixelSize: app.styler.themeFontSizeMedium
+        text: item.text
     }
 
     Label {

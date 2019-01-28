@@ -97,7 +97,6 @@ QtObject {
     }
 
     function initStyle() {
-        py.call_sync("poor.app.icon.set_theme", ["breeze"]);
         iconAbout = getIcon("help-about-symbolic");
         iconBack = getIcon("go-previous-symbolic");
         iconClear = getIcon("edit-clear-all-symbolic");

@@ -30,6 +30,7 @@ Item {
     implicitHeight: (inForm ? val.height : Math.max(lab.height, val.height)) + desc.height + desc.anchors.topMargin
     Kirigami.FormData.label: label
     Layout.fillWidth: true
+    Layout.preferredWidth: parent.width
 
     property int    currentIndex
     property alias  description: desc.text
