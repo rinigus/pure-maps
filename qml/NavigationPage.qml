@@ -24,6 +24,8 @@ PagePL {
     id: page
     title: app.tr("Navigation")
 
+    acceptText: app.tr("Maneuvers")
+
     onPageStatusActive: app.navigationPageSeen = true;
 
     property bool partOfNavigationStack: true
