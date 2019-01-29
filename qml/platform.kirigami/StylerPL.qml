@@ -54,30 +54,30 @@ QtObject {
     property real themeIconSizeMedium: 2*themeFontSizeLarge
     property real themeIconSizeSmall: 1.5*themeFontSizeLarge
     // used icons
-    property string iconAbout: "image://theme/icon-m-about"
-    property string iconBack: "image://theme/icon-m-back"
-    property string iconClear: "image://theme/icon-m-clear"
-    property string iconDelete: "image://theme/icon-m-delete"
-    property string iconDot: "find-location-symbolic"
-    property string iconFavorite: "image://theme/icon-m-favorite"
-    property string iconFavoriteSelected: "image://theme/icon-m-favorite-selected"
+    property string iconAbout
+    property string iconBack
+    property string iconClear
+    property string iconDelete
+    property string iconDot
+    property string iconFavorite
+    property string iconFavoriteSelected
     property string iconForward
-    property string iconMaps: "image://theme/icon-m-levels"
-    property string iconMenu: "image://theme/icon-m-menu"
-    property string iconNavigate: "image://theme/icon-m-car"
-    property string iconNearby: "image://theme/icon-m-whereami"
-    property string iconPause: "image://theme/icon-m-pause"
-    property string iconPhone: "image://theme/icon-m-phone"
-    property string iconPreferences: "image://theme/icon-m-preferences"
-    property string iconProfile: "image://theme/icon-m-profile"
-    property string iconRefresh: "image://theme/icon-m-refresh"
-    property string iconSearch: "image://theme/icon-m-search"
-    property string iconShare: "image://theme/icon-m-share"
-    property string iconShortlisted: "image://theme/icon-m-annotation"
-    property string iconShortlistedSelected: "image://theme/icon-m-annotation-selected"
-    property string iconStart: "image://theme/icon-m-play"
-    property string iconStop: "image://theme/icon-m-clear"
-    property string iconWebLink: "image://theme/icon-m-link"
+    property string iconMaps
+    property string iconMenu
+    property string iconNavigate
+    property string iconNearby
+    property string iconPause
+    property string iconPhone
+    property string iconPreferences
+    property string iconProfile
+    property string iconRefresh
+    property string iconSearch
+    property string iconShare
+    property string iconShortlisted
+    property string iconShortlistedSelected
+    property string iconStart
+    property string iconStop
+    property string iconWebLink
 
     // item sizes
     property real themeItemSizeLarge: themeFontSizeLarge * 3
