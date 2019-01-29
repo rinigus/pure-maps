@@ -27,7 +27,8 @@ Kirigami.ApplicationWindow {
     width: 640
     height: 480
     visible: true
-    pageStack.initialPage: initialPage
+    // until Kirigami will include corresponding bug fix
+    //pageStack.initialPage: initialPage
 
     property var   initialPage
 
