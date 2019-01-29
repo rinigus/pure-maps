@@ -28,6 +28,7 @@ Item {
     anchors.right: inForm ? undefined : parent.right
     anchors.rightMargin: inForm ? undefined : app.styler.themeHorizontalPageMargin
     implicitHeight: (inForm ? val.height : Math.max(lab.height, val.height)) + desc.height + desc.anchors.topMargin
+    Kirigami.FormData.buddyFor: val
     Kirigami.FormData.label: label
     Layout.fillWidth: true
     Layout.preferredWidth: parent.width

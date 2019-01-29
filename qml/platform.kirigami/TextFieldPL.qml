@@ -25,6 +25,7 @@ Item {
     id: row
 
     implicitHeight: childrenRect.height
+    Kirigami.FormData.buddyFor: entry
     Kirigami.FormData.label: label
     Layout.fillWidth: true
     Layout.preferredWidth: parent.width
