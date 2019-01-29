@@ -48,7 +48,7 @@ PagePL {
     Column {
         id: column
         spacing: app.styler.themePaddingMedium
-        width: parent.width
+        width: page.width
 
         ListItemLabel {
             color: app.styler.themeHighlightColor
@@ -194,50 +194,21 @@ PagePL {
         SectionHeaderPL {
             height: text ? implicitHeight + app.styler.themePaddingMedium : 0
             text: poi.phone || poi.link ? app.tr("Contact") : ""
-        }
-
-        Item {
-            // phone number is usually short and does not fill the whole line
-            // since the rest of the line can be used for dragging the panel,
-            // this arrangement minimizes the area used to show the phone
-            anchors.left: parent.left
-            anchors.leftMargin: app.styler.themeHorizontalPageMargin
-            height: poi.phone ? Math.max(phoneIcon.height, phoneText.height) + app.styler.themePaddingMedium : 0
-            width: phoneIcon.width + phoneText.width + app.styler.themePaddingMedium
-
-            Image {
-                id: phoneIcon
-                anchors.left: parent.left
-                anchors.top: parent.top
-                fillMode: Image.Pad
-                height: poi.phone ? implicitHeight : 0
-                source: poi.phone ? app.styler.iconPhone : ""
-            }
-
-            LabelPL {
-                id: phoneText
-                anchors.left: phoneIcon.right
-                anchors.leftMargin: app.styler.themePaddingMedium
-                anchors.verticalCenter: phoneIcon.verticalCenter
-                text: poi.phone
-                truncMode: truncModes.fade
-                width: Math.min(implicitWidth, poi.width-phoneIcon.width-2*app.styler.themeHorizontalPageMargin-app.styler.themePaddingMedium)
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: Qt.openUrlExternally("tel:" + poi.phone)
-            }
+            visible: text
         }
 
         IconListItem {
-            height: poi.link ? implicitHeight + app.styler.themePaddingLarge : 0
+            height: poi.phone ? app.styler.themeItemSizeSmall : 0
+            icon: poi.phone ? app.styler.iconPhone : ""
+            label: poi.phone
+            onClicked: Qt.openUrlExternally("tel:" + poi.phone)
+        }
+
+        IconListItem {
+            height: poi.link ? app.styler.themeItemSizeSmall : 0
             icon: poi.link ? app.styler.iconWebLink : ""
             label: poi.link
-            MouseArea {
-                anchors.fill: parent
-                onClicked: Qt.openUrlExternally(poi.link)
-            }
+            onClicked: Qt.openUrlExternally(poi.link)
         }
 
         SectionHeaderPL {
