@@ -23,6 +23,7 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property string        acceptText // for compatibility
     default property alias content: itemCont.data
     readonly property bool empty: false
     property alias         pageMenu: menuLoader.sourceComponent

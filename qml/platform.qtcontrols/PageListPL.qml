@@ -28,6 +28,7 @@ Page {
     }
     width: parent ? parent.width : undefined
 
+    property string acceptText // for compatibility
     property bool   active: page.status === StackView.Active
     property bool   canNavigateForward: true
     property alias  currentIndex: listView.currentIndex
