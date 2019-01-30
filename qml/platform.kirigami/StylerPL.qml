@@ -80,17 +80,17 @@ QtObject {
     property string iconWebLink
 
     // item sizes
-    property real themeItemSizeLarge: themeFontSizeLarge * 3
-    property real themeItemSizeSmall: themeFontSizeMedium * 3
-    property real themeItemSizeExtraSmall: themeFontSizeSmall * 3
+    property real themeItemSizeLarge: themeItemSizeSmall * 2
+    property real themeItemSizeSmall: Kirigami.Units.gridUnit * 2.5
+    property real themeItemSizeExtraSmall: themeItemSizeSmall * 0.75
 
     // paddings and page margins
-    property real themeHorizontalPageMargin: 1.25*themeFontSizeExtraLarge
-    property real themePaddingLarge: 0.75*themeFontSizeExtraLarge
-    property real themePaddingMedium: 0.5*themeFontSizeLarge
-    property real themePaddingSmall: 0.25*themeFontSizeSmall
+    property real themeHorizontalPageMargin: Kirigami.Units.largeSpacing * 2
+    property real themePaddingLarge: Kirigami.Units.largeSpacing * 2
+    property real themePaddingMedium: Kirigami.Units.largeSpacing * 1
+    property real themePaddingSmall: Kirigami.Units.smallSpacing
 
-    property real themePixelRatio: Screen.devicePixelRatio
+    property real themePixelRatio: 1 //Screen.devicePixelRatio
 
     function getIcon(name) {
         return py.call_sync("poor.app.icon.get_icon", [name]);
