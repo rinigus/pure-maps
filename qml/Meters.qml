@@ -52,7 +52,7 @@ Item {
         color: app.styler.fg
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: Math.round(app.styler.themePixelRatio * 18)
+        font.pixelSize: app.styler.themeFontSizeSmall
         horizontalAlignment: Text.AlignRight
         lineHeight: 1.25
     }
@@ -64,7 +64,7 @@ Item {
         color: app.styler.fg
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: Math.round(app.styler.themePixelRatio * 18)
+        font.pixelSize: app.styler.themeFontSizeSmall
         horizontalAlignment: Text.AlignLeft
         lineHeight: 1.25
         text: "\n"

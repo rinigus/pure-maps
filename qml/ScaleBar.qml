@@ -80,6 +80,7 @@ Item {
         }
 
         property real   _prevDist: 0
+        property real   _thickness: app.styler.themeFontSizeSmall / 8.0
         property int    scaleBarMaxLengthDefault: Math.min(map.height,map.width) / 4
         property int    scaleBarMaxLength: scaleBarMaxLengthDefault
         property real   scaleWidth: 0
@@ -89,7 +90,7 @@ Item {
             id: base
             anchors.bottom: scaleBar.bottom
             color: app.styler.fg
-            height: Math.floor(app.styler.themePixelRatio * 3)
+            height: scaleBar._thickness
             width: scaleBar.scaleWidth
         }
 
@@ -97,27 +98,27 @@ Item {
             anchors.bottom: base.top
             anchors.left: base.left
             color: app.styler.fg
-            height: Math.floor(app.styler.themePixelRatio * 10)
-            width: Math.floor(app.styler.themePixelRatio * 3)
+            height: scaleBar._thickness * 3
+            width: scaleBar._thickness
         }
 
         Rectangle {
             anchors.bottom: base.top
             anchors.right: base.right
             color: app.styler.fg
-            height: Math.floor(app.styler.themePixelRatio * 10)
-            width: Math.floor(app.styler.themePixelRatio * 3)
+            height: scaleBar._thickness * 3
+            width: scaleBar._thickness
         }
 
         Text {
             id: text
             anchors.bottom: base.top
-            anchors.bottomMargin: Math.floor(app.styler.themePixelRatio * 4)
+            anchors.bottomMargin: _thickness
             anchors.horizontalCenter: base.horizontalCenter
             color: app.styler.fg
             font.bold: true
             font.family: "sans-serif"
-            font.pixelSize: Math.round(app.styler.themePixelRatio * 18)
+            font.pixelSize: app.styler.themeFontSizeSmall
             horizontalAlignment: Text.AlignHCenter
             text: scaleBar.text
         }
