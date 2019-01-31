@@ -23,6 +23,7 @@ Dialog {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property string acceptText
     property bool   active: page.status === PageStatus.Active
     property alias  currentIndex: listView.currentIndex
     property alias  delegate: listView.delegate
@@ -30,6 +31,7 @@ Dialog {
     property alias  model: listView.model
     property alias  placeholderEnabled: viewPlaceholder.enabled
     property alias  placeholderText: viewPlaceholder.hintText
+    property string title
 
     signal pageStatusActivating
     signal pageStatusActive
