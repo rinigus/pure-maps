@@ -80,7 +80,7 @@ Item {
         }
 
         property real   _prevDist: 0
-        property real   _thickness: app.styler.themeFontSizeSmall / 8.0
+        property real   _thickness: app.styler.themeFontSizeOnMap / 8.0
         property int    scaleBarMaxLengthDefault: Math.min(map.height,map.width) / 4
         property int    scaleBarMaxLength: scaleBarMaxLengthDefault
         property real   scaleWidth: 0
@@ -118,7 +118,7 @@ Item {
             color: app.styler.fg
             font.bold: true
             font.family: "sans-serif"
-            font.pixelSize: app.styler.themeFontSizeSmall
+            font.pixelSize: app.styler.themeFontSizeOnMap
             horizontalAlignment: Text.AlignHCenter
             text: scaleBar.text
         }

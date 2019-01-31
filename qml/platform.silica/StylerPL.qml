@@ -31,6 +31,7 @@ QtObject {
     property int  themeFontSizeMedium: Theme.fontSizeMedium
     property int  themeFontSizeSmall: Theme.fontSizeSmall
     property int  themeFontSizeExtraSmall: Theme.fontSizeExtraSmall
+    property real themeFontSizeOnMap: themeFontSizeExtraSmall * 0.75
 
     // colors
     // block background (navigation, poi panel, bubble)

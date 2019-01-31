@@ -30,6 +30,7 @@ QtObject {
     property int  themeFontSizeMedium: Math.round(Qt.application.font.pixelSize*1.0)
     property int  themeFontSizeSmall: Math.round(themeFontSizeMedium*0.9)
     property int  themeFontSizeExtraSmall: Math.round(themeFontSizeMedium*0.7)
+    property real themeFontSizeOnMap: themeFontSizeSmall
 
     // colors
     // block background (navigation, poi panel, bubble)
