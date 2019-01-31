@@ -19,5 +19,30 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-IconButton {
+Item {
+    id: item
+    height: image.height*(1 + padding)
+    width: image.width*(1 + padding)
+
+    property alias icon: image.icon
+    property real  padding: 0.2
+
+    signal clicked
+
+    Rectangle {
+        color: "transparent"
+        anchors.fill: parent
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: item.clicked()
+
+            IconButton {
+                id: image
+                anchors.centerIn: parent
+                down: pressed || parent.pressed
+                onClicked: item.clicked()
+            }
+        }
+    }
 }

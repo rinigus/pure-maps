@@ -26,7 +26,6 @@ IconButtonPL {
     anchors.horizontalCenter: northArrow.horizontalCenter
     anchors.rightMargin: app.styler.themePaddingLarge
     anchors.topMargin: app.styler.themePaddingLarge
-    height: icon.height
     icon.source: app.getIcon("icons/center")
     icon.sourceSize.height: app.styler.themeIconSizeSmall
     states: [
@@ -92,7 +91,6 @@ IconButtonPL {
     transitions: Transition {
         AnchorAnimation { duration: app.conf.animationDuration; }
     }
-    width: icon.width
     z: 500
 
     property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowCenter)

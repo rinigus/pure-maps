@@ -21,20 +21,27 @@ import QtQuick.Controls 2.2
 
 Item {
     id: item
-    height: childrenRect.height
-    width: childrenRect.width
+    height: image.height*(1 + padding)
+    width: image.width*(1 + padding)
 
     property alias icon: image
+    property real  padding: 0.5
 
     signal clicked
 
-    Image {
-        id: image
-        fillMode: Image.PreserveAspectFit
-    }
+    Rectangle {
+        color: "transparent"
+        anchors.fill: parent
 
-    MouseArea {
-        anchors.fill: image
-        onClicked: item.clicked()
+        Image {
+            id: image
+            anchors.centerIn: parent
+            fillMode: Image.PreserveAspectFit
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: item.clicked()
+        }
     }
 }

@@ -24,7 +24,7 @@ IconButtonPL {
     anchors.bottom: parent.bottom
     anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.left: menuButton.right
-    anchors.leftMargin: Math.max(app.styler.themePaddingLarge*2, menuButton.width*1)
+    anchors.leftMargin: app.styler.themePaddingLarge
     icon.source: app.getIcon("icons/navigation/fork-straight")
     icon.sourceSize.height: app.styler.themeIconSizeMedium
     opacity: 0.75
@@ -42,7 +42,6 @@ IconButtonPL {
         AnchorAnimation { duration: app.conf.animationDuration; }
     }
     visible: app.mode === modes.explore || app.mode === modes.exploreRoute
-    width: icon.width
     z: 500
 
     property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowNavigate)

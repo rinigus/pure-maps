@@ -28,7 +28,6 @@ IconButtonPL {
     anchors.rightMargin: app.styler.themePaddingLarge
     anchors.topMargin: app.styler.themePaddingLarge
     enabled: !hidden
-    height: icon.height
     icon.rotation: -map.bearing
     icon.source: app.getIcon("icons/north")
     icon.sourceSize.height: app.styler.themeIconSizeMedium
@@ -51,7 +50,6 @@ IconButtonPL {
         }
     ]
     opacity: hidden ? 0 : 1
-    width: icon.width
     z: 500
 
     property bool hidden: app.infoPanelOpen || (Math.abs(icon.rotation) < 0.01 && map.cleanMode && !app.conf.mapModeCleanShowCompass)

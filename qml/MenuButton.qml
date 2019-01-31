@@ -38,7 +38,6 @@ IconButtonPL {
     transitions: Transition {
         AnchorAnimation { duration: app.conf.animationDuration; }
     }
-    width: icon.width
     visible: app.mode === modes.explore || app.mode === modes.exploreRoute
     z: 900
     onClicked: app.showMenu();
