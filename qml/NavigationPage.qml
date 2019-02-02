@@ -17,7 +17,6 @@
  */
 
 import QtQuick 2.0
-import QtQuick.Layouts 1.1
 import "."
 import "platform"
 
@@ -136,6 +135,7 @@ PagePL {
             height: app.styler.themeItemSizeExtraSmall
             LabelPL {
                 id: eta
+                color: app.styler.themeSecondaryHighlightColor
                 height: app.styler.themeItemSizeExtraSmall
                 text: app.tr("Estimated time of arrival")
                 truncMode: truncModes.fade
@@ -144,6 +144,7 @@ PagePL {
             }
             LabelPL {
                 anchors.baseline: eta.baseline
+                color: app.styler.themeHighlightColor
                 horizontalAlignment: Text.AlignRight
                 text: app.navigationStatus.destEta
                 truncMode: truncModes.fade
@@ -151,60 +152,7 @@ PagePL {
             }
         }
 
-        GridLayout {
-            // Distance and time remaining
-            id: infoLayout
-            anchors.left: parent.left
-            anchors.leftMargin: app.styler.themeHorizontalPageMargin
-            anchors.right: parent.right
-            anchors.rightMargin: app.styler.themeHorizontalPageMargin
-            columns: 3
-            columnSpacing: app.styler.themePaddingLarge
-            flow: GridLayout.LeftToRight
-            rowSpacing: app.styler.themePaddingMedium
-
-            LabelPL {
-                font.pixelSize: app.styler.themeFontSizeMedium
-                text: app.tr("Remaining")
-                truncMode: truncModes.fade
-            }
-            LabelPL {
-                horizontalAlignment: Text.AlignRight
-                font.pixelSize: app.styler.themeFontSizeMedium
-                text: app.navigationStatus.destDist
-                truncMode: truncModes.fade
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                Layout.fillWidth: true
-            }
-            LabelPL {
-                horizontalAlignment: Text.AlignRight
-                font.pixelSize: app.styler.themeFontSizeMedium
-                text: app.navigationStatus.destTime
-                truncMode: truncModes.fade
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            }
-
-            // Row 2
-            LabelPL {
-                font.pixelSize: app.styler.themeFontSizeMedium
-                text: app.tr("Total")
-                truncMode: truncModes.fade
-            }
-            LabelPL {
-                horizontalAlignment: Text.AlignRight
-                font.pixelSize: app.styler.themeFontSizeMedium
-                text: app.navigationStatus.totalDist
-                truncMode: truncModes.fade
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                Layout.fillWidth: true
-            }
-            LabelPL {
-                horizontalAlignment: Text.AlignRight
-                font.pixelSize: app.styler.themeFontSizeMedium
-                text: app.navigationStatus.totalTime
-                truncMode: truncModes.fade
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            }
+        RouteOverallInfo {
         }
 
         Spacer {
