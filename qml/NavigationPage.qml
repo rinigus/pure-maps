@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 import "."
 import "platform"
 
@@ -127,37 +128,6 @@ PagePL {
         }
 
         Row {
-            // Distance and time remaining
-            anchors.left: parent.left
-            anchors.leftMargin: app.styler.themeHorizontalPageMargin
-            anchors.right: parent.right
-            anchors.rightMargin: app.styler.themeHorizontalPageMargin
-            height: app.styler.themeItemSizeExtraSmall
-            LabelPL {
-                id: remaining1
-                height: app.styler.themeItemSizeExtraSmall
-                text: app.tr("Remaining")
-                truncMode: truncModes.fade
-                verticalAlignment: Text.AlignVCenter
-                width: parent.width / 3
-            }
-            LabelPL {
-                anchors.baseline: remaining1.baseline
-                horizontalAlignment: Text.AlignRight
-                text: app.navigationStatus.destDist
-                truncMode: truncModes.fade
-                width: parent.width / 3
-            }
-            LabelPL {
-                anchors.baseline: remaining1.baseline
-                horizontalAlignment: Text.AlignRight
-                text: app.navigationStatus.destTime
-                truncMode: truncModes.fade
-                width: parent.width / 3
-            }
-        }
-
-        Row {
             // ETA
             anchors.left: parent.left
             anchors.leftMargin: app.styler.themeHorizontalPageMargin
@@ -181,34 +151,59 @@ PagePL {
             }
         }
 
-        Row {
-            // Total distance and time
+        GridLayout {
+            // Distance and time remaining
+            id: infoLayout
             anchors.left: parent.left
             anchors.leftMargin: app.styler.themeHorizontalPageMargin
             anchors.right: parent.right
             anchors.rightMargin: app.styler.themeHorizontalPageMargin
-            height: app.styler.themeItemSizeExtraSmall
+            columns: 3
+            columnSpacing: app.styler.themePaddingLarge
+            flow: GridLayout.LeftToRight
+            rowSpacing: app.styler.themePaddingMedium
+
             LabelPL {
-                id: total1
-                height: app.styler.themeItemSizeExtraSmall
+                font.pixelSize: app.styler.themeFontSizeMedium
+                text: app.tr("Remaining")
+                truncMode: truncModes.fade
+            }
+            LabelPL {
+                horizontalAlignment: Text.AlignRight
+                font.pixelSize: app.styler.themeFontSizeMedium
+                text: app.navigationStatus.destDist
+                truncMode: truncModes.fade
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                Layout.fillWidth: true
+            }
+            LabelPL {
+                horizontalAlignment: Text.AlignRight
+                font.pixelSize: app.styler.themeFontSizeMedium
+                text: app.navigationStatus.destTime
+                truncMode: truncModes.fade
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+            }
+
+            // Row 2
+            LabelPL {
+                font.pixelSize: app.styler.themeFontSizeMedium
                 text: app.tr("Total")
                 truncMode: truncModes.fade
-                verticalAlignment: Text.AlignVCenter
-                width: parent.width / 3
             }
             LabelPL {
-                anchors.baseline: total1.baseline
                 horizontalAlignment: Text.AlignRight
+                font.pixelSize: app.styler.themeFontSizeMedium
                 text: app.navigationStatus.totalDist
                 truncMode: truncModes.fade
-                width: parent.width / 3
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                Layout.fillWidth: true
             }
             LabelPL {
-                anchors.baseline: total1.baseline
                 horizontalAlignment: Text.AlignRight
+                font.pixelSize: app.styler.themeFontSizeMedium
                 text: app.navigationStatus.totalTime
                 truncMode: truncModes.fade
-                width: parent.width / 3
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
             }
         }
 
