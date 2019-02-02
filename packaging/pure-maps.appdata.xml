@@ -37,6 +37,14 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release version="1.15.0" date="2019-02-02">
+     <description>
+       <p>Introduce minimal and full controls mode for maps view</p>
+       <p>Rearrange buttons on the map view</p>
+       <p>Increase position icon contrast [mosen]</p>
+       <p>Update translations</p>
+     </description>
+   </release>
    <release version="1.14.0" date="2019-01-13">
      <description>
        <p>Rename POIs to bookmarks</p>

@@ -1,3 +1,11 @@
+2019-02-02: Pure Maps 1.15
+==========================
+
+* Introduce minimal and full controls mode for maps view
+* Rearrange buttons on the map view
+* Increase position icon contrast [mosen]
+* Update translations
+
 2019-01-13: Pure Maps 1.14
 ==========================
 
