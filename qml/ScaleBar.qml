@@ -113,7 +113,7 @@ Item {
         Text {
             id: text
             anchors.bottom: base.top
-            anchors.bottomMargin: _thickness
+            anchors.bottomMargin: scaleBar._thickness
             anchors.horizontalCenter: base.horizontalCenter
             color: app.styler.fg
             font.bold: true
