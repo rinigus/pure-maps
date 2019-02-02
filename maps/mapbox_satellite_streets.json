@@ -9,5 +9,5 @@
   "logo": "mapbox",
   "name": "Mapbox Satellite Streets",
   "profiles": ["mixed", "online"],
-  "style_url": "mapbox://styles/mapbox/satellite-streets-v10"
+  "style_url": "mapbox://styles/mapbox/satellite-streets-v11"
 }
