@@ -57,6 +57,7 @@ Panel {
             anchors.verticalCenter: infoBg.verticalCenter
             icon.source: showMenu ? app.styler.iconBack : ""
             icon.sourceSize.height: app.styler.themeIconSizeMedium
+            padding: 0
             visible: showMenu
             onClicked: {
                 app.resetMenu();
@@ -85,6 +86,7 @@ Panel {
             anchors.verticalCenter: infoBg.verticalCenter
             icon.source: showMenu ? app.styler.iconMenu : ""
             icon.sourceSize.height: app.styler.themeIconSizeMedium
+            padding: 0
             visible: showMenu
             onClicked: {
                 app.showMenu();
