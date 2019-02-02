@@ -5,7 +5,7 @@
 # 
 # Translators:
 # rinigus github, 2018
-# Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2019
+# rui kon <facebookmail@qq.com>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -14,30 +14,30 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-02 11:22+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2019\n"
-"Language-Team: Russian (https://www.transifex.com/rinigus/teams/89597/ru/)\n"
+"Last-Translator: rui kon <facebookmail@qq.com>, 2019\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: guides/foursquare.py:191
 msgid "Opening hours:"
-msgstr "Часы работы:"
+msgstr "营业时间 :"
 
 #: poor/geocoder.py:108
 msgid "Point from geo link"
-msgstr "Местоположение от geo link"
+msgstr "从地理链接指向"
 
 #: poor/geocoder.py:120
 msgid "Point from coordinates"
-msgstr "Местоположение по координатам"
+msgstr "从坐标指向"
 
 #: poor/geocoder.py:130 poor/geocoder.py:167 poor/guide.py:123
 #: poor/router.py:115
 msgid "Connection timed out"
-msgstr "Время ожидания соединения истекло"
+msgstr "连接超时"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:206 qml/GeocodeItem.qml:515
 #: qml/NearbyPage.qml:29 qml/NearbyPage.qml:135 qml/NearbyPage.qml:150
@@ -45,290 +45,275 @@ msgstr "Время ожидания соединения истекло"
 #: qml/RoutePage.qml:238 qml/RoutePage.qml:240 qml/RoutePoint.qml:42
 #: qml/RoutePoint.qml:58
 msgid "Current position"
-msgstr "Текущая позиция"
+msgstr "当前位置"
 
 #: poor/keystore.py:50
 msgid ""
 "Foursquare Client ID. Register at https://developer.foursquare.com and "
 "create your own Client ID and Client Secret keys"
-msgstr ""
-"Идентификатор клиента Foursquare. Зарегистрироваться на "
-"https://developer.foursquare.com и создать Ваши личные Идентификатор и "
-"Секретный ключ клиента"
+msgstr "Foursquare 客户端账号。在 https://developer.foursquare.com 注册和创建你的客户端账号和密码。"
 
 #: poor/keystore.py:51
 msgid "Foursquare Client ID"
-msgstr "Идентификатор клиента Foursquare"
+msgstr "Foursquare 客户端账号"
 
 #: poor/keystore.py:52
 msgid "Foursquare Client Secret"
-msgstr "Секретный ключ клиента Foursquare"
+msgstr "Foursquare 客户端密码"
 
 #: poor/keystore.py:55
 msgid ""
 "Mapbox API key. Register at https://www.mapbox.com and create your own API "
 "key"
-msgstr ""
-"Ключ Mapbox API. Зарегистрироваться на https://www.mapbox.com и создать Ваш "
-"личный ключ API"
+msgstr "Mapbox API 秘钥，在https://www.mapbox.com 注册和创建你的API秘钥"
 
 #: poor/keystore.py:56
 msgid "Mapbox API key"
-msgstr "Ключ Mapbox API"
+msgstr "Mapbox API 秘钥"
 
 #: poor/keystore.py:59
 msgid ""
 "MapQuest API key. Register at https://developer.mapquest.com/ and create "
 "your own API key"
-msgstr ""
-"Ключ MapQuest API. Зарегистрироваться на https://developer.mapquest.com/ и "
-"создать Ваш личный ключ API"
+msgstr "MapQuest API 秘钥. 在https://developer.mapquest.com/ 注册和创建你的API 秘钥"
 
 #: poor/keystore.py:60
 msgid "MapQuest API key"
-msgstr "Ключ MapQuest API"
+msgstr "MapQuest API 秘钥"
 
 #: poor/keystore.py:63
 msgid ""
 "OpenCage API key. Register at https://opencagedata.com/ and create your own "
 "API key"
-msgstr ""
-"Ключ OpenCage API. Зарегистрироваться на https://opencagedata.com/ и создать"
-" Ваш личный ключ API"
+msgstr "OpenCageAPI 秘钥. 在https://opencagedata.com/ 和创建你的API 秘钥"
 
 #: poor/keystore.py:64
 msgid "OpenCage API key"
-msgstr "Ключ OpenCage API"
+msgstr "OpenCage API 秘钥"
 
 #: poor/keystore.py:67
 msgid ""
 "Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
 " API key"
-msgstr ""
-"Ключ Stadia Maps API. Зарегистрироваться на https://stadiamaps.com/ и "
-"создать Ваш личный ключ API"
+msgstr "Stadia Maps API 秘钥， 在 https://stadiamaps.com/ 注册和创建你的 API key"
 
 #: poor/keystore.py:68
 msgid "Stadia Maps API key"
-msgstr "Ключ Stadia Maps API"
+msgstr "Stadia Maps API 秘钥"
 
 #: poor/keystore.py:71
 msgid ""
 "HERE App ID. Register at https://developer.here.com and create your own App "
 "ID and Code"
-msgstr ""
-"Идентификатор Приложения HERE . Зарегистрироваться на "
-"https://developer.here.com и создать Ваши личные Идентификатор Приложения и "
-"Код"
+msgstr "HERE 地图账号. 在https://developer.here.com 注册和创建你的账号和密码"
 
 #: poor/keystore.py:72
 msgid "HERE App ID"
-msgstr "Идентификатор Приложения HERE"
+msgstr "HERE 软件账号"
 
 #: poor/keystore.py:73 poor/keystore.py:74
 msgid "HERE App Code"
-msgstr "Код Приложения HERE"
+msgstr "HERE 软件密码"
 
 #: poor/narrative.py:130
 #, python-brace-format
 msgid "In {distance}, {direction}"
-msgstr "В {distance} на {direction}"
+msgstr "在 {distance}, {direction}"
 
 #: poor/narrative.py:221 poor/narrative.py:223
 msgid "Exit: "
-msgstr "Выход:"
+msgstr "退出: "
 
 #: poor/narrative.py:421 qml/pure-maps.qml:213
 msgid "Rerouting"
-msgstr "Перестроение маршрута"
+msgstr "改变线路"
 
 #: poor/narrative.py:422 qml/pure-maps.qml:235
 msgid "Rerouting failed"
-msgstr "Перестроение маршрута не удалось"
+msgstr "改变线路失败"
 
 #: poor/narrative.py:423 qml/pure-maps.qml:229
 msgid "New route found"
-msgstr "Найден новый маршрут"
+msgstr "发现新路线"
 
 #: poor/util.py:186 poor/util.py:204
 msgid "mi"
-msgstr "миль"
+msgstr "米"
 
 #: poor/util.py:186 poor/util.py:204
 msgid "miles"
-msgstr "миль"
+msgstr "英里"
 
 #: poor/util.py:194 qml/Meters.qml:85
 msgid "ft"
-msgstr "фт"
+msgstr "英尺"
 
 #: poor/util.py:194
 msgid "feet"
-msgstr "футов"
+msgstr "英尺"
 
 #: poor/util.py:212 qml/Meters.qml:95
 msgid "yd"
-msgstr "ярд."
+msgstr "码"
 
 #: poor/util.py:212
 msgid "yards"
-msgstr "ярдов"
+msgstr "码"
 
 #: poor/util.py:222
 msgid "km"
-msgstr "км"
+msgstr "千米"
 
 #: poor/util.py:222
 msgid "kilometers"
-msgstr "километров"
+msgstr "千米"
 
 #: poor/util.py:230 qml/Meters.qml:105
 msgid "m"
-msgstr "м"
+msgstr "米"
 
 #: poor/util.py:230
 msgid "meters"
-msgstr "метров"
+msgstr "米"
 
 #: poor/util.py:239 poor/util.py:247
 #, python-brace-format
 msgid "{distance} north"
-msgstr "{distance} север"
+msgstr "{distance}  北"
 
 #: poor/util.py:240
 #, python-brace-format
 msgid "{distance} north-east"
-msgstr "{distance} северо-восток"
+msgstr "{distance} 东北"
 
 #: poor/util.py:241
 #, python-brace-format
 msgid "{distance} east"
-msgstr "{distance} восток"
+msgstr "{distance} 东"
 
 #: poor/util.py:242
 #, python-brace-format
 msgid "{distance} south-east"
-msgstr "{distance} юго-восток"
+msgstr "{distance} 东南"
 
 #: poor/util.py:243
 #, python-brace-format
 msgid "{distance} south"
-msgstr "{distance} юг"
+msgstr "{distance} 南"
 
 #: poor/util.py:244
 #, python-brace-format
 msgid "{distance} south-west"
-msgstr "{distance} юго-запад"
+msgstr "{distance} 西南"
 
 #: poor/util.py:245
 #, python-brace-format
 msgid "{distance} west"
-msgstr "{distance} запад"
+msgstr "{distance} 西"
 
 #: poor/util.py:246
 #, python-brace-format
 msgid "{distance} north-west"
-msgstr "{distance} северо-запад"
+msgstr "{distance} 西北"
 
 #: poor/util.py:276
 msgid "{:d} min"
-msgstr "{:d} мин"
+msgstr "{:d} 分钟"
 
 #: poor/util.py:277
 msgid "{:d} h {:d} min"
-msgstr "{:d} ч {:d} мин"
+msgstr "{:d} 小时 {:d} 分钟"
 
 #: poor/voice.py:303
 msgid "No engine available for selected language"
-msgstr "Нет доступного движка для выбранного языка"
+msgstr "没有可供选择语言的引擎"
 
 #: routers/digitransit.py:58
 msgid "airplane"
-msgstr "самолет"
+msgstr "飞机"
 
 #: routers/digitransit.py:59 standard input:11 standard input:13 standard
 #: input:15 standard input:17 standard input:21
 msgid "bicycle"
-msgstr "велосипед"
+msgstr "自行车"
 
 #: routers/digitransit.py:60
 msgid "bus"
-msgstr "автобус"
+msgstr "公交车"
 
 #: routers/digitransit.py:61
 msgid "ferry"
-msgstr "паром"
+msgstr "渡轮"
 
 #: routers/digitransit.py:62
 msgid "train"
-msgstr "поезд"
+msgstr "火车"
 
 #: routers/digitransit.py:63
 msgid "metro"
-msgstr "метро"
+msgstr "地铁"
 
 #: routers/digitransit.py:64
 msgid "tram"
-msgstr "трамвай"
+msgstr "电车"
 
 #: routers/digitransit.py:65
 msgid "walk"
-msgstr "пешком"
+msgstr "步行"
 
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr "Идите в сторону {arr_name}."
+msgstr "向 {arr_name} 方向走去。"
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get a city bike at {dep_name}."
-msgstr "Возьмите велосипед в {dep_name}"
+msgstr "在  {dep_name}  处获取一辆城市自行车。"
 
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "Сядьте на {mode_name} в {dep_name} ({line_desc}) в {dep_time}."
+msgstr "搭乘 {mode_name} {line_desc} 在 {dep_name} 在 {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr "Идите к пункту назначения."
+msgstr "走向你的目的地。"
 
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "Оставьте велосипед в {dep_name} и идите к {arr_name}"
+msgstr "将城市自行车停在 {dep_name} , 然后走向 {arr_name} 。"
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr "Оставьте велосипед в {dep_name} и идите к пункту назначения"
+msgstr "将城市自行车停在 {dep_name} , 然后走向你的目的地。"
 
 #: routers/digitransit.py:76
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Сойдите на {dep_name} и идите к {arr_name}"
+msgstr "在 {dep_name} 下车, 然后走向 {arr_name} 。"
 
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Сойдите на {dep_name} и двигайтесь на велосипеде к {arr_name}"
+msgstr "在 {dep_name} 下车, 骑自行车向 {arr_name} 前进 。"
 
 #: routers/digitransit.py:78
 #, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
-msgstr ""
-"Сойдите на {dep_name} и пересядьте на {line_desc} {mode_name} в {dep_time}"
+msgstr "在 {dep_name} 下车然后走向 {mode_name} {line_desc} 在 {dep_time} 。"
 
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Сойдите на {dep_name} и идите к пункту назначения"
+msgstr "在 {dep_name} 下车, 然后走向你的目的地。"
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
-msgstr "Прибытие в пункт назначения."
+msgstr "已抵达你的目的地。"
 
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:111
 #: routers/ValhallaSettings.qml:147 routers/ValhallaSettings.qml:198
@@ -336,83 +321,79 @@ msgstr "Прибытие в пункт назначения."
 #: routers/ValhallaSettings.qml:249 routers/ValhallaSettings.qml:267
 #: routers/ValhallaSettings.qml:283
 msgid "Prefer"
-msgstr "Настройка"
+msgstr "偏好"
 
 #: guides/foursquare_settings.qml:29
 msgid "Closest"
-msgstr "Ближайшие"
+msgstr "最近"
 
 #: guides/foursquare_settings.qml:29
 msgid "Best"
-msgstr "Лучшие"
+msgstr "最佳"
 
 #: guides/osmscout_name.qml:27
 msgid "Venue name"
-msgstr "Название объекта"
+msgstr "街道名称"
 
 #: guides/osmscout_name.qml:47 qml/GeocodeItem.qml:130
 #: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:105
 msgid "Remove"
-msgstr "Удалить"
+msgstr "移除"
 
 #: guides/osmscout_name.qml:68 qml/AttributionPage.qml:64
 #: qml/GeocodeItem.qml:39 qml/GeocodePage.qml:27 qml/MenuPage.qml:44
 #: qml/NearbyPage.qml:27 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:133
 #: qml/PreferencesPage.qml:290
 msgid "Search"
-msgstr "Поиск"
+msgstr "搜索"
 
 #: guides/osmscout_name.qml:80
 msgid "You can search for venues by name."
-msgstr "Можно искать по названию заведения."
+msgstr "您可以按名称搜索场地。"
 
 #: guides/osmscout_settings.qml:28
 msgid "Name"
-msgstr "Название"
+msgstr "名称"
 
 #: guides/osmscout_settings.qml:51
 msgid "Search along the route"
-msgstr "Поиск по маршруту"
+msgstr "沿路线搜索"
 
 #: guides/osmscout_settings.qml:75
 msgid ""
 "When set, the search along the route is performed starting from the point "
 "specified by 'Near' on this page"
-msgstr ""
-"Если задан, то поиск по маршруту выполняется от точки, указанной как 'Рядом'"
-" на этой странице"
+msgstr "设置后，将从此页面上按“近”指定的点开始沿路径搜索"
 
 #: guides/osmscout_settings.qml:76
 msgid "Search starting from the reference point"
-msgstr "Поиск от контрольной точки"
+msgstr "从参考点开始搜索"
 
 #: qml/AboutPage.qml:25
 msgid "About Pure Maps"
-msgstr "О Pure Maps"
+msgstr "关于 Pure Maps"
 
 #: qml/AboutPage.qml:44
 msgid "version %1"
-msgstr "версия %1"
+msgstr "版本 %1"
 
 #: qml/AboutPage.qml:51
 msgid "GitHub page"
-msgstr "Страница GitHub"
+msgstr "GitHub 页面"
 
 #: qml/AboutPage.qml:77
 msgid "Logo by %1"
-msgstr "Лого от %1"
+msgstr "标志设计者为 %1"
 
 #: qml/AboutPage.qml:87
 msgid ""
 "Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
-msgstr ""
-"Pure Maps это свободное ПО, выпускаемое под GNU General Public License (GPL)"
-" версии 3 и выше."
+msgstr "Pure Maps 是在 GNU 通用公共许可证 (GPL) 版本3或更高版本下发布的自由软件。"
 
 #: qml/AboutPage.qml:92
 msgid "Translated by"
-msgstr "Перевод:"
+msgstr "由以下人士翻译"
 
 #. TRANSLATORS: This is a special message that shouldn't be translated
 #. literally. It is used in the about page to give credits to the translators.
@@ -421,31 +402,29 @@ msgstr "Перевод:"
 #. write them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:104
 msgid "translator-credits"
-msgstr "aa13q, bootyper, lewa, neochapay, sdiconov, vovaplushkin"
+msgstr "译者荣誉"
 
 #: qml/AboutPage.qml:114
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
-msgstr ""
-"Вы можете добавить новые переводы пользовательского интерфейса или принять "
-"участие в существующих на сайте Transifex.com."
+msgstr "您可以在Transifex添加新的应用翻译或对现有的翻译作贡献"
 
 #: qml/AboutPage.qml:122
 msgid "Transifex page"
-msgstr "Страница на Transifex"
+msgstr "Transifex 页面"
 
 #: qml/AttributionPage.qml:24
 msgid "Attribution"
-msgstr "Принадлежность"
+msgstr "归属"
 
 #: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:98
 msgid "Maps"
-msgstr "Карты"
+msgstr "地图"
 
 #: qml/AttributionPage.qml:94
 msgid "Venues"
-msgstr "Заведения"
+msgstr "场地"
 
 #: qml/AttributionPage.qml:124 qml/MenuPage.qml:50 qml/NavigationPage.qml:25
 #: qml/PreferencesPage.qml:314 qml/RoutePage.qml:25
@@ -454,27 +433,27 @@ msgstr "Заведения"
 #: routers/mapquest_open_results.qml:46 routers/osmscout_results.qml:46
 #: routers/osrm_results.qml:46 routers/stadiamaps_results.qml:46
 msgid "Navigation"
-msgstr "Навигация"
+msgstr "导航"
 
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
-msgstr "Карта: %1"
+msgstr "地图 : %1"
 
 #: qml/GeocodeItem.qml:43
 msgid "No selection"
-msgstr "Нет выбора"
+msgstr "无选择"
 
 #: qml/GeocodeItem.qml:378
 msgid "Suggestions (%1)"
-msgstr "Предлагаемые варианты (%1)"
+msgstr "建议 (%1)"
 
 #: qml/GeocodeItem.qml:399
 msgid "Error while fetching results"
-msgstr "Ошибка при получении результатов"
+msgstr "获取搜索结果出错"
 
 #: qml/GeocodeItem.qml:408
 msgid "Searching ..."
-msgstr "Поиск..."
+msgstr "搜索中……"
 
 #: qml/GeocodeItem.qml:413 qml/NearbyResultsPage.qml:134
 #: routers/default_results.qml:52 routers/digitransit_results.qml:245
@@ -482,66 +461,66 @@ msgstr "Поиск..."
 #: routers/mapquest_open_results.qml:52 routers/osmscout_results.qml:52
 #: routers/osrm_results.qml:52 routers/stadiamaps_results.qml:52
 msgid "No results"
-msgstr "Нет результатов"
+msgstr "无结果"
 
 #: qml/GeocodeItem.qml:418
 msgid "Results (%1)"
-msgstr "Результаты (%1)"
+msgstr "结果 (%1)"
 
 #: qml/GeocodeItem.qml:454
 msgid "Points of Interest (%1)"
-msgstr "Интересные места (%1)"
+msgstr "兴趣点 (%1)"
 
 #: qml/GeocodeItem.qml:459 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
-msgstr "Безымянное местоположение"
+msgstr "未命名地点"
 
 #: qml/GeocodeItem.qml:485
 msgid "Recent searches (%1)"
-msgstr "Недавние поиски (%1)"
+msgstr "最近搜索 (%1)"
 
 #: qml/GeocodePage.qml:30 qml/NearbyPage.qml:34 qml/RoutePage.qml:34
 #: qml/RoutePointPage.qml:30
 msgid "Using %1"
-msgstr "С помощью %1"
+msgstr "使用 %1"
 
 #: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79
 msgid "Show all"
-msgstr "Показать все"
+msgstr "展示所有"
 
 #: qml/GeocodePage.qml:45 qml/GeocodePage.qml:75
 msgid "Search: %1"
-msgstr "Поиск: %1"
+msgstr "搜索: %1"
 
 #: qml/GeocodePage.qml:71 qml/NearbyResultsPage.qml:65
 msgid "%1 [duplicate]"
-msgstr "%1 [копия]"
+msgstr "%1 [duplicate]"
 
 #: qml/GeocoderPage.qml:27 qml/GuidePage.qml:27
 msgid "Search engine"
-msgstr "Поисковый движок"
+msgstr "搜索引擎"
 
 #: qml/GeocoderPage.qml:40 qml/GuidePage.qml:40 qml/RouterPage.qml:38
 #: routers/digitransit_settings.qml:181
 msgid "Default"
-msgstr "По умолчанию"
+msgstr "默认"
 
 #: qml/GeocoderPage.qml:71 qml/GuidePage.qml:71 qml/RouterPage.qml:69
 msgid "Alternatives"
-msgstr "Альтернативы"
+msgstr "选择"
 
 #: qml/InitPage.qml:33
 msgid "Initializing"
-msgstr "Инициализация"
+msgstr "初始化"
 
 #: qml/InitPage.qml:44
 msgid "Dismiss"
-msgstr "Отклонить"
+msgstr "搁置"
 
 #: qml/InitPage.qml:45
 msgid "Missing Mapbox key"
-msgstr "Отсутствует ключ Mapbox"
+msgstr "丢失 Mapbox 秘钥"
 
 #: qml/InitPage.qml:46
 msgid ""
@@ -549,183 +528,181 @@ msgid ""
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
-"В инсталляции отсутствует ключ Mapbox API. Необходимо зарегистрироваться на "
-"Mapbox и записать личный ключ API в Персональных настройках. Этот ключ не "
-"требуется, если планируется использовать Pure Maps с провайдером оффлайн "
-"карт."
+"您的安装缺少Mapbox API秘钥。请在 Mapbox 注册, 并在 \"首选项\" 中填写您的个人 API 密钥。如果计划以脱机地图方式使用Pure"
+" Maps 使用, 则不需要此键。"
 
 #: qml/Map.qml:427
 msgid "Voice navigation on"
-msgstr "Голосовая подсказка включена"
+msgstr "语音导航开启"
 
 #: qml/Map.qml:537
 msgid "Auto-center off"
-msgstr "Автоматическое центрирование карты выключено"
+msgstr "自动居中关闭"
 
 #: qml/Map.qml:540
 msgid "Auto-center on"
-msgstr "Автоматическое центрирование карты включено"
+msgstr "自动居中开启"
 
 #: qml/MenuPage.qml:26
 msgid "Main Menu"
-msgstr "Главное меню"
+msgstr "主菜单"
 
 #: qml/MenuPage.qml:30
 msgid "About"
-msgstr "О программе"
+msgstr "关于"
 
 #: qml/MenuPage.qml:56
 msgid "Nearby venues"
-msgstr "Ближайшие заведения"
+msgstr "附近场地"
 
 #: qml/MenuPage.qml:62 qml/PoiPage.qml:28 qml/PoiPage.qml:124
 msgid "Bookmarks"
-msgstr "Закладки"
+msgstr "收藏"
 
 #: qml/MenuPage.qml:68
 msgid "Share current position"
-msgstr "Сообщить свою позицию"
+msgstr "分享当前位置"
 
 #: qml/MenuPage.qml:82
 msgid "Share Current Position"
-msgstr "Сообщить свою позицию"
+msgstr "分享当前位置"
 
 #: qml/MenuPage.qml:89
 msgid "Center on current position"
-msgstr "Перейти к текущей позиции"
+msgstr "以当前位置为中心"
 
 #: qml/MenuPage.qml:104 qml/PreferencesPage.qml:25
 msgid "Preferences"
-msgstr "Персональные настройки"
+msgstr "偏好"
 
 #: qml/MenuPage.qml:135
 msgid "Profile"
-msgstr "Профиль"
+msgstr "配置文件"
 
 #: qml/MenuPage.qml:147
 msgid "Online"
-msgstr "Интерактивный"
+msgstr "在线"
 
 #: qml/MenuPage.qml:147
 msgid "Offline"
-msgstr "Автономный"
+msgstr "离线"
 
 #: qml/MenuPage.qml:147
 msgid "Mixed"
-msgstr "Смешанный"
+msgstr "混合"
 
 #: qml/MenuPage.qml:167
 msgid "Auto-center on position"
-msgstr "Центрировать карту на текущей позиции"
+msgstr "位置上的自动中心"
 
 #: qml/MenuPage.qml:186
 msgid "Auto-rotate on direction"
-msgstr "Поворачивать карту по направлению движения"
+msgstr "方向上的自动旋转"
 
 #: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationInfoBlock.qml:83
 #: qml/NavigationInfoBlock.qml:85
 msgid "mph"
-msgstr "миль/ч"
+msgstr "英里/小时"
 
 #: qml/Meters.qml:105 qml/NavigationInfoBlock.qml:87
 msgid "km/h"
-msgstr "км/ч"
+msgstr "千米/小时"
 
 #: qml/NarrativePage.qml:27 qml/NavigationPage.qml:27
 msgid "Maneuvers"
-msgstr "Маневры"
+msgstr "策略"
 
 #: qml/NarrativePage.qml:118
 msgid "Continue for %1."
-msgstr "Продолжайте в течение %1"
+msgstr " 继续 %1 "
 
 #: qml/NavigationBlock.qml:93 qml/NavigationPage.qml:139
 msgid "Remaining"
-msgstr "Осталось"
+msgstr "停留"
 
 #: qml/NavigationBlock.qml:133 qml/NavigationPage.qml:194
 msgid "Total"
-msgstr "Всего"
+msgstr "总共"
 
 #: qml/NavigationBlock.qml:173
 msgid "Processing route"
-msgstr "Технологический маршрут"
+msgstr "处理路线"
 
 #: qml/NavigationBlock.qml:175
 msgid "Tap to review maneuvers or begin navigating"
-msgstr "Нажмите, чтобы просмотреть маршрут или начать навигацию"
+msgstr "点击以查看策略或开始导航"
 
 #: qml/NavigationBlock.qml:251
 msgid "ETA"
-msgstr "Расчетное время прибытия"
+msgstr "预计抵达时间"
 
 #: qml/NavigationPage.qml:50
 msgid "Pause"
-msgstr "Пауза"
+msgstr "停止"
 
 #: qml/NavigationPage.qml:51
 msgid "Resume"
-msgstr "Продолжить"
+msgstr "继续"
 
 #: qml/NavigationPage.qml:51 qml/RoutePage.qml:171
 msgid "Begin"
-msgstr "Начать"
+msgstr "开始"
 
 #: qml/NavigationPage.qml:64
 msgid "Reroute"
-msgstr "Перестроить маршрут"
+msgstr "变更路程"
 
 #: qml/NavigationPage.qml:76
 msgid "Clear"
-msgstr "Очистить"
+msgstr "清除"
 
 #: qml/NavigationPage.qml:91
 msgid "Status"
-msgstr "Статус"
+msgstr "状态"
 
 #: qml/NavigationPage.qml:170
 msgid "Estimated time of arrival"
-msgstr "Предполагаемое время прибытия"
+msgstr "预计抵达时间"
 
 #: qml/NavigationPage.qml:220
 msgid "Options"
-msgstr "Настройки"
+msgstr "操作"
 
 #: qml/NavigationPage.qml:229 qml/PreferencesPage.qml:179
 #: qml/RoutePage.qml:205
 msgid "Map scale"
-msgstr "Масштаб карты"
+msgstr "地图比例尺"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
-msgstr "ВЫХОД"
+msgstr "退出"
 
 #: qml/NearbyPage.qml:25
 msgid "Nearby Venues"
-msgstr "Ближайшие заведения"
+msgstr "附近场地"
 
 #: qml/NearbyPage.qml:73
 msgid ""
 "Select a reference location next to which you want to perform the search."
-msgstr "Выбрать контрольную точку, рядом с которой необходимо выполнить поиск"
+msgstr "选择一个接近你想要执行搜索的参考地址。"
 
 #: qml/NearbyPage.qml:74
 msgid "Near"
-msgstr "Рядом с"
+msgstr "附近"
 
 #: qml/NearbyPage.qml:75
 msgid "Near location"
-msgstr "Ближайшее месторасположение"
+msgstr "附近位置 "
 
 #: qml/NearbyPage.qml:80
 msgid "Radius"
-msgstr "Расстояние"
+msgstr "半径"
 
 #: qml/NearbyPage.qml:103 qml/PoiEditPage.qml:53
 #: routers/gpx_osmscout_settings.qml:50 routers/gpx_settings.qml:50
 #: routers/mapquest_open_settings.qml:26 routers/ValhallaSettings.qml:35
 msgid "Type"
-msgstr "Тип"
+msgstr "类型"
 
 #: qml/NearbyResultsPage.qml:107 routers/default_results.qml:33
 #: routers/digitransit_results.qml:216 routers/gpx_osmscout_results.qml:33
@@ -733,31 +710,31 @@ msgstr "Тип"
 #: routers/osmscout_results.qml:33 routers/osrm_results.qml:33
 #: routers/stadiamaps_results.qml:33
 msgid "Searching"
-msgstr "Идет поиск"
+msgstr "搜索中"
 
 #: qml/NearbyResultsPage.qml:115
 msgid "Nearby venues: %1"
-msgstr "Близлежащие объекты: %1"
+msgstr "附近场地: %1"
 
 #: qml/NearbyResultsPage.qml:130
 msgid "%1 Results"
-msgstr "%1 результат(ов)"
+msgstr "%1  结果"
 
 #: qml/NorthArrow.qml:77
 msgid "Auto-rotate on"
-msgstr "Авто-поворот вкл."
+msgstr "自动旋转开启"
 
 #: qml/NorthArrow.qml:78
 msgid "Auto-rotate off"
-msgstr "Авто-поворот выкл."
+msgstr "自动旋转关闭"
 
 #: qml/PlaceTypePage.qml:27
 msgid "Venue type"
-msgstr "Тип объекта"
+msgstr "街道类型"
 
 #: qml/PlaceTypePage.qml:100
 msgid "You can search for venues by type or name."
-msgstr "Заведения можно фильтровать по типу или названию"
+msgstr "您可以按类型或名称搜索场地。"
 
 #: qml/PoiBlock.qml:82
 msgid "%1; %2"
@@ -765,535 +742,504 @@ msgstr "%1; %2"
 
 #: qml/PoiBlock.qml:100
 msgid "Latitude: %1; Longitude: %2"
-msgstr "Широта: %1; Долгота: %2"
+msgstr "纬度: %1 ; 经度: %2"
 
 #: qml/PoiBlock.qml:127 qml/PoiEditPage.qml:77
 msgid "Postal code"
-msgstr "Почтовый индекс"
+msgstr "邮政编码"
 
 #: qml/PoiBlock.qml:128
 msgid "Web"
-msgstr "Интернет"
+msgstr "网站"
 
 #: qml/PoiBlock.qml:129
 msgid "Phone"
-msgstr "Телефон"
+msgstr "手机"
 
 #: qml/PoiBlock.qml:130
 msgid "Shortlisted"
-msgstr "Отобранные"
+msgstr "候选名单"
 
 #: qml/PoiBlock.qml:131
 msgid "Text"
-msgstr "Текст"
+msgstr "文本"
 
 #: qml/PoiBlock.qml:133
 msgid "More info: %1"
-msgstr "Больше информации: %1"
+msgstr "更多信息: %1"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
-msgstr "Изменить закладку"
+msgstr "编辑收藏"
 
 #: qml/PoiEditPage.qml:27
 msgid "Save"
-msgstr "Сохранить"
+msgstr "保存"
 
 #: qml/PoiEditPage.qml:39 qml/PreferencesPage.qml:36
 msgid "General"
-msgstr "Общее"
+msgstr "全部"
 
 #: qml/PoiEditPage.qml:45
 msgid "Title"
-msgstr "Заголовок"
+msgstr "名称"
 
 #: qml/PoiEditPage.qml:46
 msgid "Enter title"
-msgstr "Ввести заголовок"
+msgstr "输入名称"
 
 #: qml/PoiEditPage.qml:54
 msgid "Enter type, such as Restaurant"
-msgstr "Ввести тип, например Ресторан"
+msgstr "输入类型, 比如餐厅"
 
 #: qml/PoiEditPage.qml:64 qml/PoiEditPage.qml:69 qml/PoiInfoPage.qml:78
 msgid "Address"
-msgstr "Адрес"
+msgstr "地址"
 
 #: qml/PoiEditPage.qml:70
 msgid "Enter address"
-msgstr "Ввести адрес"
+msgstr "输入地址"
 
 #: qml/PoiEditPage.qml:78
 msgid "Enter postal code"
-msgstr "Ввести почтовый индекс"
+msgstr "输入邮政编码"
 
 #: qml/PoiEditPage.qml:88 qml/PoiInfoPage.qml:196
 msgid "Contact"
-msgstr "Контакты"
+msgstr "联系"
 
 #: qml/PoiEditPage.qml:94
 msgid "Phone number"
-msgstr "Номер телефона"
+msgstr "电话号码"
 
 #: qml/PoiEditPage.qml:95
 msgid "Enter phone number"
-msgstr "Ввести номер телефона"
+msgstr "输入电话号码"
 
 #: qml/PoiEditPage.qml:102
 msgid "URL"
-msgstr "Сайт"
+msgstr "网址"
 
 #: qml/PoiEditPage.qml:103
 msgid "Enter URL"
-msgstr "Ввести адрес сайта"
+msgstr "输入网址"
 
 #: qml/PoiEditPage.qml:113 qml/PoiInfoPage.qml:216
 msgid "Additional info"
-msgstr "Дополнительная информация"
+msgstr "附加信息"
 
 #: qml/PoiEditPage.qml:119
 msgid "Enter additional info"
-msgstr "Ввести дополнительную информацию"
+msgstr "输入附加信息"
 
 #: qml/PoiInfoPage.qml:31 qml/PoiPage.qml:93
 msgid "Edit"
-msgstr "Изменить"
+msgstr "编辑"
 
 #: qml/PoiInfoPage.qml:66
 msgid "Latitude: %1"
-msgstr "Широта: %1"
+msgstr "纬度: %1"
 
 #: qml/PoiInfoPage.qml:66
 msgid "Longitude: %2"
-msgstr "Долгота: %2"
+msgstr "经度: %2"
 
 #: qml/PoiInfoPage.qml:93
 msgid "Postal code: %1"
-msgstr "Почтовый индекс: %1"
+msgstr "邮政编码: %1"
 
 #: qml/PoiInfoPage.qml:105
 msgid "Actions"
-msgstr "Действия"
+msgstr "操作"
 
 #: qml/PoiInfoPage.qml:111
 msgid "Bookmark"
-msgstr "Закладка"
+msgstr "收藏"
 
 #: qml/PoiInfoPage.qml:124
 msgid "Shortlist"
-msgstr "Краткий список"
+msgstr "名单"
 
 #: qml/PoiInfoPage.qml:137
 msgid "Share location"
-msgstr "Поделиться местоположением"
+msgstr "分享位置"
 
 #: qml/PoiInfoPage.qml:149
 msgid "Center on location"
-msgstr "Центрировать местоположение"
+msgstr "集中于位置"
 
 #: qml/PoiInfoPage.qml:161
 msgid "Navigate To"
-msgstr "Переместиться К"
+msgstr "导航至"
 
 #: qml/PoiInfoPage.qml:173
 msgid "Navigate From"
-msgstr "Переместиться Из"
+msgstr "导航自"
 
 #: qml/PoiInfoPage.qml:185
 msgid "Nearby"
-msgstr "Рядом"
+msgstr "附近"
 
 #: qml/PoiPage.qml:84
 msgid "View"
-msgstr "Вид"
+msgstr "查看"
 
 #: qml/PoiPage.qml:149
 msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
-msgstr ""
-"Точки закладок еще не определены. Сделать отметки можно с помощью карты и "
-"поиска."
+msgstr "尚无确定的收藏地点，你可以使用地图和搜索收藏位置。"
 
 #: qml/Poi.qml:192 qml/pure-maps.qml:128
 msgid "Clearing map"
-msgstr "Очистка карты"
+msgstr "清理地图中"
 
 #: qml/PreferencesPage.qml:43
 msgid "Units"
-msgstr "Единицы:"
+msgstr "装置"
 
 #: qml/PreferencesPage.qml:44
 msgid "Metric"
-msgstr "метрические"
+msgstr "度量标准"
 
 #: qml/PreferencesPage.qml:44
 msgid "American"
-msgstr "американские"
+msgstr "美制"
 
 #: qml/PreferencesPage.qml:44
 msgid "British"
-msgstr "британские"
+msgstr "英制"
 
 #: qml/PreferencesPage.qml:58
 msgid ""
 "Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
-msgstr ""
-"Применяется только при активности Pure Maps. При минимизации сон управляется"
-" обычными привилегиями на уровне устройства."
+msgstr "仅在 \"Pure Maps\" 活跃时应用。当最小化时, 睡眠由正常的设备级别偏好控制。"
 
 #: qml/PreferencesPage.qml:59
 msgid "Prevent sleep"
-msgstr "Не допускать перехода экрана в спящий режим"
+msgstr "阻止睡眠"
 
 #: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:218
 #: qml/PreferencesPage.qml:416
 msgid "Never"
-msgstr "Никогда"
+msgstr "绝不"
 
 #: qml/PreferencesPage.qml:60
 msgid "When navigating"
-msgstr "Во время навигации"
+msgstr "导航时"
 
 #: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:416
 msgid "Always"
-msgstr "Всегда"
+msgstr "总是"
 
 #: qml/PreferencesPage.qml:75
 msgid "Fetch autocompleted search results while typing a search string."
-msgstr ""
-"Получение результатов поиска с учетом автозаполнения при вводе строки "
-"поиска."
+msgstr "在键入搜索字符串时获取自动完成的搜索结果。"
 
 #: qml/PreferencesPage.qml:76
 msgid "Autocomplete while searching"
-msgstr "Автозаполнение при поиске"
+msgstr "搜索时自动完成"
 
 #: qml/PreferencesPage.qml:87
 msgid "Clear cache"
-msgstr "Очистить кэш"
+msgstr "清除缓存"
 
 #: qml/PreferencesPage.qml:99
 msgid "API keys"
-msgstr "Ключи API"
+msgstr "API 密钥"
 
 #: qml/PreferencesPage.qml:105
 msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
-msgstr ""
-"В этих настройках можно указать личные ключи для онлайн сервисов. Для "
-"каждого из используемых сервисов необходимо проверить условия, чтобы "
-"убедиться в их соблюдении."
+msgstr "您可以在这些设置中指定联机服务的个人密钥。请检查您要使用的每个服务的条件, 以确保您遵守这些条件你"
 
 #: qml/PreferencesPage.qml:113
 msgid "Please restart application after changing API keys."
-msgstr "Перезапустить приложение после изменения ключей API."
+msgstr "请在更改 APi密钥后重新启动应用程序。"
 
 #: qml/PreferencesPage.qml:155
 msgid "Map view"
-msgstr "вид \"Карта\""
+msgstr "地图视图"
 
 #: qml/PreferencesPage.qml:162
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating."
-msgstr ""
-"Выбор режима транспортировки. Применяется только в случае, когда Pure Maps "
-"не выполняет навигацию."
+msgstr "仅当 \"Pure Maps\" 未导航时选择交通方式。"
 
 #: qml/PreferencesPage.qml:163 qml/PreferencesPage.qml:353
 msgid "Snap position to road"
-msgstr "Привязать положение к дороге"
+msgstr "捕捉道路方位"
 
 #: qml/PreferencesPage.qml:164 routers/gpx_osmscout_settings.qml:31
 #: routers/gpx_settings.qml:31
 msgid "None"
-msgstr "Нет"
+msgstr "无"
 
 #: qml/PreferencesPage.qml:164 qml/RoutePage.qml:188
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Car"
-msgstr "Автомобиль"
+msgstr "汽车"
 
 #: qml/PreferencesPage.qml:164 qml/RoutePage.qml:188
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Bicycle"
-msgstr "Велосипед"
+msgstr "自行车"
 
 #: qml/PreferencesPage.qml:164 qml/RoutePage.qml:188
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Foot"
-msgstr "Пешком"
+msgstr "步行"
 
 #: qml/PreferencesPage.qml:193
 msgid "Map view modes"
-msgstr "Режимы просмотра карты"
+msgstr "地图视图模式"
 
 #: qml/PreferencesPage.qml:197
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
-msgstr ""
-"Вид карты может отображаться либо со всеми применимыми элементами управления"
-" в режиме полного просмотра, либо с меньшим выбранным набором элементов "
-"управления в режиме минимального просмотра. Для переключения между режимами "
-"нажмите на карту."
+msgstr "地图视图可以在全视图模式下显示所有可用的控件, 也可以在最小视图模式下显示较小的选定控件集。要在模式之间切换, 请单击地图。"
 
 #: qml/PreferencesPage.qml:206
 msgid "Set map view to minimal mode on start"
-msgstr "Установить минимальный режим отображения при запуске"
+msgstr "设置打开时的地图视图为最小模式"
 
 #: qml/PreferencesPage.qml:214
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
-msgstr ""
-"Автоматическое переключение в режим минимального просмотра после заданной "
-"задержки или отключение автоматического переключения между режимами "
-"просмотра карты."
+msgstr "在设定延迟后自动切换到最小视图模式, 或禁用地图视图模式之间的自动切换。"
 
 #: qml/PreferencesPage.qml:216
 msgid "Switch to minimal view"
-msgstr "Переключиться на минимальный вид"
+msgstr "切换到最小视图"
 
 #: qml/PreferencesPage.qml:218
 msgid "10 seconds"
-msgstr "10 секунд"
+msgstr "10 秒"
 
 #: qml/PreferencesPage.qml:218
 msgid "20 seconds"
-msgstr "20 секунд"
+msgstr "20 秒"
 
 #: qml/PreferencesPage.qml:219
 msgid "30 seconds"
-msgstr "30 секунд"
+msgstr "30 秒"
 
 #: qml/PreferencesPage.qml:219
 msgid "1 minute"
-msgstr "1 минута"
+msgstr "1 分钟"
 
 #: qml/PreferencesPage.qml:233
 msgid "Always show"
-msgstr "Показывать всегда"
+msgstr "总是显示"
 
 #: qml/PreferencesPage.qml:237
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
-msgstr ""
-"Всегда показывать выбранные элементы управления, независимо от того, "
-"находится ли карта в минимальном или полном режиме отображения."
+msgstr "不管地图视图是在最小模式还是在完整模式下，始终显示选定的控件"
 
 #: qml/PreferencesPage.qml:245
 msgid "Menu"
-msgstr "Меню"
+msgstr "菜单"
 
 #: qml/PreferencesPage.qml:254
 msgid "Center on current location"
-msgstr "Центрировать текущее местоположение"
+msgstr "集中于当前位置"
 
 #: qml/PreferencesPage.qml:263
 msgid "Compass"
-msgstr "Компас"
+msgstr "指南针"
 
 #: qml/PreferencesPage.qml:272
 msgid "Speed and location precision"
-msgstr "Скорость и точность положения"
+msgstr "速度和位置精度"
 
 #: qml/PreferencesPage.qml:281
 msgid "Scale"
-msgstr "Масштаб"
+msgstr "比例尺"
 
 #: qml/PreferencesPage.qml:299 qml/RoutePage.qml:51
 msgid "Navigate"
-msgstr "Осуществить навигацию"
+msgstr "导航"
 
 #: qml/PreferencesPage.qml:322
 msgid "Show navigation instructions"
-msgstr "Показывать подсказки навигации"
+msgstr "显示导航说明"
 
 #: qml/PreferencesPage.qml:332
 msgid "Voice navigation instructions"
-msgstr "Навигационные подсказки"
+msgstr "语音导航说明"
 
 #: qml/PreferencesPage.qml:343
 msgid "Reroute automatically"
-msgstr "Перестраивать маршрут автоматически"
+msgstr "自动重新规划路线"
 
 #: qml/PreferencesPage.qml:364
 msgid "Show direction signs"
-msgstr "Показать дорожные указатели"
+msgstr "显示方向标志"
 
 #: qml/PreferencesPage.qml:374
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
-msgstr ""
-"Установить поворот карты в направлении движения при запуске навигации."
+msgstr "当开始导航时, 按移动方向设置地图旋转。"
 
 #: qml/PreferencesPage.qml:375
 msgid "Rotate map when navigating"
-msgstr "Поворот карты при навигации"
+msgstr "导航时旋转地图"
 
 #: qml/PreferencesPage.qml:384
 msgid "Only applies to vector maps."
-msgstr "Только для векторных карт"
+msgstr "仅应用到矢量地图"
 
 #: qml/PreferencesPage.qml:386
 msgid "Tilt map when navigating"
-msgstr "Наклонять карту во время движения по маршруту"
+msgstr "导航时倾斜地图"
 
 #: qml/PreferencesPage.qml:397
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
-msgstr ""
-"Выбрать мужской или женский голос для подсказок. Это доступно не для всех "
-"программ синтеза речи и языков."
+msgstr "语音导航的性别偏好。仅支持某些引擎和语言。"
 
 #: qml/PreferencesPage.qml:398 qml/PreferencesPage.qml:495
 msgid "Voice gender"
-msgstr "Голос"
+msgstr "语音性别"
 
 #: qml/PreferencesPage.qml:399 qml/PreferencesPage.qml:496
 msgid "Male"
-msgstr "мужской"
+msgstr "男性"
 
 #: qml/PreferencesPage.qml:399 qml/PreferencesPage.qml:496
 msgid "Female"
-msgstr "женский"
+msgstr "女性"
 
 #: qml/PreferencesPage.qml:413
 msgid "Show speed limit sign"
-msgstr "Показать знак ограничения скорости"
+msgstr "显示限速标志"
 
 #: qml/PreferencesPage.qml:415
 msgid "Speed limit"
-msgstr "Ограничение скорости"
+msgstr "限速"
 
 #: qml/PreferencesPage.qml:416
 msgid "Only when exceeding"
-msgstr "Только превышение"
+msgstr "仅在超速时"
 
 #: qml/PreferencesPage.qml:439
 msgid "Testing"
-msgstr "Тестирование"
+msgstr "测试"
 
 #: qml/PreferencesPage.qml:448
 msgid ""
 "Testing of text to speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
-msgstr ""
-"Тестирование движка преобразования текста в речь (TTS). Выбрать язык "
-"используемый для навигации, предпочитаемый пол и нажать кнопку ниже для "
-"тестирования,"
+msgstr "测试语音转文本 (TTS) 引擎。选择与导航相同语言, 性别偏好, 然后按下面的按钮进行测试。"
 
 #: qml/PreferencesPage.qml:461 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
 msgid "Language"
-msgstr "Язык"
+msgstr "语言"
 
 #: qml/PreferencesPage.qml:463 routers/gpx_osmscout_settings.qml:71
 #: routers/ValhallaSettings.qml:58
 msgid "English"
-msgstr "Английский"
+msgstr "英语"
 
 #: qml/PreferencesPage.qml:464 routers/gpx_osmscout_settings.qml:71
 #: routers/ValhallaSettings.qml:58
 msgid "Catalan"
-msgstr "Каталонский"
+msgstr "加泰罗尼亚语"
 
 #: qml/PreferencesPage.qml:465 routers/gpx_osmscout_settings.qml:71
 #: routers/ValhallaSettings.qml:58
 msgid "Czech"
-msgstr "Чешский"
+msgstr "捷克语"
 
 #: qml/PreferencesPage.qml:466 routers/gpx_osmscout_settings.qml:72
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:59
 msgid "German"
-msgstr "Немецкий"
+msgstr "德语"
 
 #: qml/PreferencesPage.qml:467 routers/gpx_osmscout_settings.qml:73
 #: routers/ValhallaSettings.qml:60
 msgid "Spanish"
-msgstr "Испанский"
+msgstr "西班牙语"
 
 #: qml/PreferencesPage.qml:468 routers/gpx_osmscout_settings.qml:72
 #: routers/ValhallaSettings.qml:59
 msgid "French"
-msgstr "Французский"
+msgstr "法语"
 
 #: qml/PreferencesPage.qml:469 routers/gpx_osmscout_settings.qml:72
 #: routers/ValhallaSettings.qml:59
 msgid "Hindi"
-msgstr "Хинди"
+msgstr "印地语"
 
 #: qml/PreferencesPage.qml:470 routers/gpx_osmscout_settings.qml:72
 #: routers/ValhallaSettings.qml:59
 msgid "Italian"
-msgstr "Итальянский"
+msgstr "意大利语"
 
 #: qml/PreferencesPage.qml:471 routers/gpx_osmscout_settings.qml:73
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:60
 msgid "Russian"
-msgstr "Русский"
+msgstr "俄语"
 
 #: qml/PreferencesPage.qml:472
 msgid "Slovak"
-msgstr "Словацкий"
+msgstr "斯斯洛伐克语"
 
 #: qml/PreferencesPage.qml:473 routers/gpx_osmscout_settings.qml:73
 #: routers/ValhallaSettings.qml:60
 msgid "Swedish"
-msgstr "Шведский"
+msgstr "瑞典语"
 
 #: qml/PreferencesPage.qml:494
 msgid "Preferred gender. Only supported by some engines and languages."
-msgstr ""
-"Предпочитаемый пол. Поддерживается только некоторыми движками и языками."
+msgstr "偏好性别仅支持某些引擎和语言，"
 
 #: qml/PreferencesPage.qml:508
 msgid "Test"
-msgstr "Тест"
+msgstr "测试"
 
 #: qml/PreferencesPage.qml:547
 msgid "Selected voice engine: %1"
-msgstr "Выбранный голосовой движок: %1"
+msgstr "选择语音引擎: %1"
 
 #: qml/PreferencesPage.qml:558
 msgid "Development"
-msgstr "Режим разработки"
+msgstr "开发"
 
 #: qml/PreferencesPage.qml:564
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
-msgstr ""
-"Следующие параметры предназначены только для режима разработки. Пожалуйста, "
-"не изменяйте их, если вы не знаете, что делаете."
+msgstr "以下选项仅适用于开发。除非你知道自己在做什么, 否则请不要改变它们。"
 
 #: qml/PreferencesPage.qml:572
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
-msgstr ""
-"Устанавливает текущее положение центром текущего вида карты. Необходимо "
-"отключить GPS позиционирование при использовании этой опции."
+msgstr "将当前位置设置为当前地图视图的中心。使用此选项时, 请记住禁用GPS定位。"
 
 #: qml/PreferencesPage.qml:573
 msgid "Set position to the map center"
-msgstr "Установить местоположение центром карты"
+msgstr "将位置设置为地图中心"
 
 #: qml/PreferencesPage.qml:580
 msgid "Show current zoom level"
-msgstr "Показать текущий масштаб"
+msgstr "显示当前缩放级别"
 
 #: qml/pure-maps.qml:28
 msgid "Pure Maps"
@@ -1301,107 +1247,105 @@ msgstr "Pure Maps"
 
 #: qml/pure-maps.qml:225
 msgid "Rerouting failed: %1"
-msgstr "Перестроение маршрута не удалось: %1"
+msgstr "重新规划路线失败: %1"
 
 #: qml/RoutePage.qml:27
 msgid "Route"
-msgstr "Маршрут"
+msgstr "路线"
 
 #: qml/RoutePage.qml:51
 msgid "Follow me"
-msgstr "Следовать за мной"
+msgstr "关注我"
 
 #: qml/RoutePage.qml:63
 msgid "Reverse endpoints"
-msgstr "Поменять начальную и конечную точки местами"
+msgstr "颠倒端点"
 
 #: qml/RoutePage.qml:107
 msgid "From"
-msgstr "От"
+msgstr "从"
 
 #: qml/RoutePage.qml:108
 msgid "Origin"
-msgstr "Пункт отправления"
+msgstr "起点"
 
 #: qml/RoutePage.qml:114
 msgid "To"
-msgstr "До"
+msgstr "到"
 
 #: qml/RoutePage.qml:115
 msgid "Destination"
-msgstr "Пункт назначения"
+msgstr "目的地"
 
 #: qml/RoutePage.qml:162
 msgid "Follow the movement and show just in time information"
-msgstr "Следить за движением и вовремя показывать информацию"
+msgstr "跟踪运动并及时显示信息"
 
 #: qml/RoutePage.qml:171
 msgid "Stop"
-msgstr "Стоп"
+msgstr "停止"
 
 #: qml/RoutePage.qml:186
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
-msgstr ""
-"Выбор способа передвижения. Применяется, только когда Pure Maps находится в "
-"режиме \"следовать за мной\"."
+msgstr "仅当 \"Pure Maps\" 跟随我的模式时，选择交通方式。"
 
 #: qml/RoutePage.qml:187
 msgid "Mode of transportation"
-msgstr "Способ передвижения"
+msgstr "交通方式"
 
 #: qml/RoutePointPage.qml:64
 msgid "Current selection: %1"
-msgstr "Текущий выбор: %1"
+msgstr "当前位置 : %1"
 
 #: qml/RouterPage.qml:27
 msgid "Routing engine"
-msgstr "Движок маршрутизации"
+msgstr "导航引擎"
 
 #: qml/RouterPage.qml:60
 msgid "Modes: %1"
-msgstr "Режимы: %1"
+msgstr "模式: %1"
 
 #: qml/SharePage.qml:48
 msgid "SMS"
-msgstr "СМС"
+msgstr "消息"
 
 #: qml/SharePage.qml:54 qml/SharePage.qml:82
 msgid "Message copied to the clipboard"
-msgstr "Текст скопирован в буфер обмена"
+msgstr "短信已复制到剪贴板"
 
 #: qml/SharePage.qml:55
 msgid "Launching the Messages application"
-msgstr "Запуск приложения \"Сообщения\""
+msgstr "打开短信应用"
 
 #: qml/SharePage.qml:68
 msgid "Email"
-msgstr "Email"
+msgstr "电子邮件"
 
 #: qml/SharePage.qml:71
 msgid "Launching the Email application"
-msgstr "Запуск приложения \"Почта\""
+msgstr "打开电子邮件应用"
 
 #: qml/SharePage.qml:79
 msgid "Other"
-msgstr "Прочее"
+msgstr "其它"
 
 #: qml/SharePage.qml:99
 msgid "Add link to OpenStreetMaps"
-msgstr "Добавить ссылку на OpenStreetMaps"
+msgstr "添加到OpenStreetMaps的链接"
 
 #: qml/SharePage.qml:108
 msgid "Add link to Google Maps"
-msgstr "Добавить ссылку на Google Maps"
+msgstr "添加到Google Maps的链接"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
-msgstr "Маршрут %1. Всего %2"
+msgstr "路程 %1. 总计 %2"
 
 #: routers/digitransit_results.qml:155
 msgid "Walk %1"
-msgstr "Идти %1"
+msgstr "步行 %1"
 
 #: routers/digitransit_results.qml:156
 msgid "%1 → %2"
@@ -1409,15 +1353,15 @@ msgstr "%1 → %2"
 
 #: routers/digitransit_results.qml:240
 msgid "Results"
-msgstr "Результаты"
+msgstr "结果"
 
 #: routers/digitransit_settings.qml:28
 msgid "Region"
-msgstr "Область"
+msgstr "区域"
 
 #: routers/digitransit_settings.qml:30
 msgid "HSL"
-msgstr "HLS"
+msgstr "高速快艇"
 
 #: routers/digitransit_settings.qml:31
 msgid "Waltti"
@@ -1425,137 +1369,137 @@ msgstr "Waltti"
 
 #: routers/digitransit_settings.qml:32
 msgid "Finland"
-msgstr "Финляндия"
+msgstr "芬兰"
 
 #: routers/digitransit_settings.qml:70 routers/digitransit_settings.qml:75
 #: routers/digitransit_settings.qml:80
 msgid "Depart"
-msgstr "Отправление"
+msgstr "出发"
 
 #: routers/digitransit_settings.qml:76
 msgid "Arrive"
-msgstr "Прибытие"
+msgstr "抵达"
 
 #: routers/digitransit_settings.qml:107
 msgid "Today"
-msgstr "Сегодня"
+msgstr "今日"
 
 #: routers/digitransit_settings.qml:150
 msgid "Now"
-msgstr "Сейчас"
+msgstr "目前"
 
 #: routers/digitransit_settings.qml:179
 msgid "Criterion"
-msgstr "Критерий"
+msgstr "标准"
 
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
-msgstr "Меньше пересадок"
+msgstr "最少转换方式"
 
 #: routers/digitransit_settings.qml:183
 msgid "Least walking"
-msgstr "Меньше идти пешком"
+msgstr "最少步行"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
-msgstr "Файл"
+msgstr "纵列"
 
 #: routers/gpx_osmscout_settings.qml:51 routers/ValhallaSettings.qml:37
 #: routers/ValhallaSettings.qml:110
 msgid "Bus"
-msgstr "Автобус"
+msgstr "公交车"
 
 #: routers/gpx_osmscout_settings.qml:52 routers/ValhallaSettings.qml:37
 msgid "High-occupancy vehicle (HOV)"
-msgstr "Автомобиль повышенной вместимости (HOV)"
+msgstr "高占用率汽车 (HOV)"
 
 #: routers/gpx_osmscout_settings.qml:52 routers/ValhallaSettings.qml:37
 msgid "Motorcycle"
-msgstr "Мотоцикл"
+msgstr "摩托车"
 
 #: routers/gpx_osmscout_settings.qml:52 routers/ValhallaSettings.qml:37
 msgid "Motor Scooter"
-msgstr "Мотоскутер"
+msgstr "电机滑板车"
 
 #: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
 msgid "English Pirate"
-msgstr "Английский пиратский"
+msgstr "英国海盗"
 
 #: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
 msgid "Portuguese"
-msgstr "Португальский"
+msgstr "葡萄牙语"
 
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:60
 msgid "Slovenian"
-msgstr "Словенский"
+msgstr "斯洛文尼亚语"
 
 #: routers/mapquest_open_settings.qml:44
 msgid "Try to avoid tolls"
-msgstr "Избегать платных дорог"
+msgstr "尽量避免道路收费"
 
 #: routers/mapquest_open_settings.qml:56
 msgid "English (UK)"
-msgstr "Английский (Британия)"
+msgstr "英语 (英国)"
 
 #: routers/mapquest_open_settings.qml:56
 msgid "English (US)"
-msgstr "Английский (США)"
+msgstr "英语(美国)"
 
 #: routers/mapquest_open_settings.qml:56
 msgid "French (Canada)"
-msgstr "Французский (Канада)"
+msgstr "法语（加拿大）"
 
 #: routers/mapquest_open_settings.qml:57
 msgid "French (France)"
-msgstr "Французский (Франция)"
+msgstr "法语（法国）"
 
 #: routers/mapquest_open_settings.qml:57
 msgid "Spanish (Mexico)"
-msgstr "Испанский (Мексика)"
+msgstr "西班牙语（墨西哥）"
 
 #: routers/mapquest_open_settings.qml:58
 msgid "Spanish (Spain)"
-msgstr "Испанский (Испания)"
+msgstr "西班牙语（西班牙）"
 
 #: routers/ValhallaSettings.qml:30
 msgid "General options"
-msgstr "Общие параметры"
+msgstr "常规选项"
 
 #: routers/ValhallaSettings.qml:36
 msgid "Public transport"
-msgstr "Общественный транспорт"
+msgstr "公共交通"
 
 #: routers/ValhallaSettings.qml:74
 msgid "Advanced options"
-msgstr "Расширенные настройки"
+msgstr "高级选项"
 
 #: routers/ValhallaSettings.qml:81
 msgid "Prefer shorter route"
-msgstr "Предпочесть более короткий маршрут"
+msgstr "偏好较短路线"
 
 #: routers/ValhallaSettings.qml:92
 msgid "Bicycle type"
-msgstr "Тип велосипеда"
+msgstr "自行车类型"
 
 #: routers/ValhallaSettings.qml:93
 msgid "Road"
-msgstr "Шоссе"
+msgstr "道路"
 
 #: routers/ValhallaSettings.qml:93
 msgid "Hybrid or City (default)"
-msgstr "Гибридный или городской (по умолчанию)"
+msgstr "混合或城市 (默认)"
 
 #: routers/ValhallaSettings.qml:93
 msgid "Cross"
-msgstr "Пересеченная местность"
+msgstr "十字路"
 
 #: routers/ValhallaSettings.qml:93
 msgid "Mountain"
-msgstr "Гора"
+msgstr "山脉"
 
 #: routers/ValhallaSettings.qml:109
 msgid "Your desire to use buses."
-msgstr "Вы желаете воспользоваться автобусами."
+msgstr "你选择公交车的意愿。"
 
 #: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:146
 #: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:181
@@ -1563,197 +1507,187 @@ msgstr "Вы желаете воспользоваться автобусами.
 #: routers/ValhallaSettings.qml:233 routers/ValhallaSettings.qml:249
 #: routers/ValhallaSettings.qml:283
 msgid "Avoid"
-msgstr "Избегать"
+msgstr "避开"
 
 #: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:146
 #: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:197
 #: routers/ValhallaSettings.qml:215 routers/ValhallaSettings.qml:266
 msgid "Prefer to avoid"
-msgstr "Желательно избегать"
+msgstr "偏好避免"
 
 #: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:146
 #: routers/ValhallaSettings.qml:181 routers/ValhallaSettings.qml:197
 #: routers/ValhallaSettings.qml:215 routers/ValhallaSettings.qml:233
 #: routers/ValhallaSettings.qml:249 routers/ValhallaSettings.qml:283
 msgid "No preference (default)"
-msgstr "Нет предпочтений (по умолчанию)"
+msgstr "无偏好 (默认)"
 
 #: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:147
 #: routers/ValhallaSettings.qml:164 routers/ValhallaSettings.qml:198
 #: routers/ValhallaSettings.qml:216 routers/ValhallaSettings.qml:267
 msgid "Incline"
-msgstr "Склон"
+msgstr "斜坡"
 
 #: routers/ValhallaSettings.qml:126
 msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr "Максимальная разрешенная сложность пешеходного маршрута."
+msgstr "允许的徒步旅行线路的最大难度。"
 
 #: routers/ValhallaSettings.qml:127
 msgid "Hiking difficulty"
-msgstr "Сложность пешего туризма"
+msgstr "徒步旅行难度"
 
 #: routers/ValhallaSettings.qml:128
 msgid "Walking"
-msgstr "Ходьба"
+msgstr "步行"
 
 #: routers/ValhallaSettings.qml:128
 msgid "Hiking (default)"
-msgstr "Пешая прогулка (по умолчанию)"
+msgstr "徒步旅行（默认）"
 
 #: routers/ValhallaSettings.qml:128
 msgid "Mountain hiking"
-msgstr "Горный пеший туризм"
+msgstr "登山"
 
 #: routers/ValhallaSettings.qml:129
 msgid "Demanding mountain hiking"
-msgstr "Жесткий горный пеший туризм"
+msgstr "徒步登山需求"
 
 #: routers/ValhallaSettings.qml:129
 msgid "Alpine hiking"
-msgstr "Высокогорный туризм"
+msgstr "高山徒步旅行"
 
 #: routers/ValhallaSettings.qml:129
 msgid "Demanding alpine hiking"
-msgstr "Жесткий высокогорный туризм"
+msgstr "高山徒步旅行需求"
 
 #: routers/ValhallaSettings.qml:145
 msgid "Ferries"
-msgstr "Паромы"
+msgstr "渡轮"
 
 #: routers/ValhallaSettings.qml:162
 msgid "Highways"
-msgstr "Автомагистраль"
+msgstr "公路"
 
 #: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:266
 msgid "No preference"
-msgstr "Нет предпочтений"
+msgstr "无偏好"
 
 #: routers/ValhallaSettings.qml:164
 msgid "Prefer (default)"
-msgstr "Предпочитать (по умолчанию)"
+msgstr "偏好（默认）"
 
 #: routers/ValhallaSettings.qml:179
 msgid ""
 "Your desire to tackle hills. When avoiding hills and steep grades, longer "
 "(time and distance) routes can be selected. By allowing hills, it indicates "
 "you do not fear hills and steeper grades."
-msgstr ""
-"Вы желаете преодолеть холмы. Для объезда холмов и крутых склонов будет "
-"выбран более длинный (по времени и дистанции) путь. Разрешение пересечь "
-"холмы указывает на то, что Вы не боитесь холмов и крутых склонов."
+msgstr "你选择山地的意愿。当避开丘陵和陡坡时, 可以更长的路线（时间和距离上）。允许山地表明了你不害怕丘陵地带和更陡的坡度。"
 
 #: routers/ValhallaSettings.qml:180
 msgid "Hills"
-msgstr "Горный массив"
+msgstr "山地地带"
 
 #: routers/ValhallaSettings.qml:181
 msgid "Allow"
-msgstr "Разрешить"
+msgstr "允许"
 
 #: routers/ValhallaSettings.qml:196
 msgid "Primary roads"
-msgstr "Основные дороги"
+msgstr "主要道路"
 
 #: routers/ValhallaSettings.qml:213
 msgid "Your desire to use rail/subway/metro."
-msgstr ""
-"Вы желаете воспользоваться железнодорожным транспортом/трамваем/метро."
+msgstr "你选择铁路或地铁的意愿。"
 
 #: routers/ValhallaSettings.qml:214
 msgid "Rail"
-msgstr "Железнодорожный транспорт"
+msgstr "铁路"
 
 #: routers/ValhallaSettings.qml:231
 msgid "Your propensity to use roads alongside other vehicles."
-msgstr ""
-"Ваша предрасположенность к использованию дорог наряду с другими "
-"автомобилями."
+msgstr "你对于和其他车辆共用道路的倾向。"
 
 #: routers/ValhallaSettings.qml:232
 msgid "Roads"
-msgstr "Дорожные магистрали"
+msgstr "道路"
 
 #: routers/ValhallaSettings.qml:248
 msgid "Tolls"
-msgstr "Дорожные пошлины"
+msgstr "道路收费"
 
 #: routers/ValhallaSettings.qml:264
 msgid ""
 "Your desire for adventure. When preferred, router will tend to avoid major "
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
-msgstr ""
-"Ваше стремление к приключениям. Если указано в предпочтениях, то "
-"трассировщик будет пытаться избегать основных дорог и проложит маршрут по "
-"второстепенным дорогам, иногда используя тропы, дорожки, "
-"неклассифицированные дороги или дороги с плохим покрытием."
+msgstr "你对冒险的意愿。如果愿意, 线路规划往往会倾向于避开主要道路和二级道路上的路线, 有时是使用小道、未分类的道路或路面不好的道路。"
 
 #: routers/ValhallaSettings.qml:265
 msgid "Trails"
-msgstr "Тропы"
+msgstr "小径"
 
 #: routers/ValhallaSettings.qml:266
 msgid "Avoid (default)"
-msgstr "Избегать (по умолчанию)"
+msgstr "避开（默认）"
 
 #: routers/ValhallaSettings.qml:282
 msgid "Transfers"
-msgstr "Трансферы"
+msgstr "转换"
 
 #: qml/js/util.js:157
 msgid "%1 (default)"
-msgstr "%1 (по умолчанию)"
+msgstr "%1  (默认)"
 
 #: standard input:1
 msgid "Search in Finland"
-msgstr "Поиск в Финляндии"
+msgstr "在芬兰搜索"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr "Поиск с использованием открытых ресурсов"
+msgstr "基于开放数据源的搜索"
 
 #: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
-msgstr "Поиск с использованием данных OpenStreetMap"
+msgstr "搜索数据基于OpenStreetMap数据"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr "Заведения, указанные и оценённые пользователями Foursquare"
+msgstr "场所由Foursquare用户列举和评论"
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
-msgstr "Интересные места по данным OpenStreetMap"
+msgstr "OpenStreetMap数据中的兴趣点"
 
 #: standard input:8
 msgid "Public transport routing in Finland"
-msgstr "Маршруты общественного транспорта в Финляндии"
+msgstr "芬兰的公共交通路线"
 
 #: standard input:9
 msgid "public transport"
-msgstr "Общественный транспорт"
+msgstr "公共交通"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr "Маршрутизация по GPX треку"
+msgstr "沿 GPX轨道的路线"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
 msgid "car"
-msgstr "автомобиль"
+msgstr "汽车"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:21
 msgid "foot"
-msgstr "пешком"
+msgstr "步行"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr "Маршрутизация по GPX треку, выполненная OSM Scout Server-ом"
+msgstr "沿GPX轨道的路线由 OSM Scout服务器处理"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"
-msgstr "Построение маршрута с использованием OpenStreetMap"
+msgstr "路线规划基于OpenStreetMap数据"
 
 #: standard input:20
 msgid "Routing by Valhalla based on OpenStreetMap data"
-msgstr "Прокладка маршрута с помощью Valhalla на базе данных OpenStreetMap"
+msgstr "英灵殿路线基于OpenStreetMap数据"

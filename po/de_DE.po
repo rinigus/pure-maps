@@ -10,17 +10,17 @@
 # Uli M <popanz@online.de>, 2018
 # Peter Feldbaum, 2018
 # PawelSpoon <pawel@ich-habe-fertig.com>, 2018
-# Ricardo Breitkopf, 2019
 # happykraut, 2019
+# Ricardo Breitkopf, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-31 20:58+0200\n"
+"POT-Creation-Date: 2019-02-02 11:22+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: happykraut, 2019\n"
+"Last-Translator: Ricardo Breitkopf, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rinigus/teams/89597/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -572,7 +572,7 @@ msgstr "Autozentrierung an"
 
 #: qml/MenuPage.qml:26
 msgid "Main Menu"
-msgstr ""
+msgstr "Haupt Menu"
 
 #: qml/MenuPage.qml:30
 msgid "About"
@@ -1038,7 +1038,7 @@ msgstr "Zu Fuß"
 
 #: qml/PreferencesPage.qml:193
 msgid "Map view modes"
-msgstr ""
+msgstr "Kartenansicht"
 
 #: qml/PreferencesPage.qml:197
 msgid ""
@@ -1046,66 +1046,74 @@ msgid ""
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
 msgstr ""
+"Die Kartenansicht kann entweder mit allen entsprechenden Steuerelementen im "
+"Vollansichtmodus oder mit einem kleineren ausgewählten Steuerelementsatz im "
+"Minimalansichtmodus angezeigt werden. Um zwischen den Modi zu wechseln, "
+"klicken Sie auf eine Karte."
 
 #: qml/PreferencesPage.qml:206
 msgid "Set map view to minimal mode on start"
-msgstr ""
+msgstr "Setzt die Kartenansicht beim Start auf den Minimalmodus"
 
 #: qml/PreferencesPage.qml:214
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
 msgstr ""
+"Wechselt nach einer bestimmten Verzögerung automatisch in die Minimalansicht"
+" oder deaktiviert den automatischen Wechsel zwischen den Kartenansichten."
 
 #: qml/PreferencesPage.qml:216
 msgid "Switch to minimal view"
-msgstr ""
+msgstr "Wechseln zur Minimalansicht"
 
 #: qml/PreferencesPage.qml:218
 msgid "10 seconds"
-msgstr ""
+msgstr "10 Sekunden"
 
 #: qml/PreferencesPage.qml:218
 msgid "20 seconds"
-msgstr ""
+msgstr "20 Sekunden"
 
 #: qml/PreferencesPage.qml:219
 msgid "30 seconds"
-msgstr ""
+msgstr "30 Sekunden"
 
 #: qml/PreferencesPage.qml:219
 msgid "1 minute"
-msgstr ""
+msgstr "1 Minute"
 
 #: qml/PreferencesPage.qml:233
 msgid "Always show"
-msgstr ""
+msgstr "Immer anzeigen"
 
 #: qml/PreferencesPage.qml:237
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
 msgstr ""
+"Zeigt die ausgewählten Steuerelemente immer an, unabhängig davon, ob die "
+"Kartenansicht im minimalen oder im vollständigen Modus ist."
 
 #: qml/PreferencesPage.qml:245
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: qml/PreferencesPage.qml:254
 msgid "Center on current location"
-msgstr ""
+msgstr "Am"
 
 #: qml/PreferencesPage.qml:263
 msgid "Compass"
-msgstr ""
+msgstr "Kompass"
 
 #: qml/PreferencesPage.qml:272
 msgid "Speed and location precision"
-msgstr ""
+msgstr "Geschwindigkeit und Standortgenauigkeit"
 
 #: qml/PreferencesPage.qml:281
 msgid "Scale"
-msgstr ""
+msgstr "Maßstab"
 
 #: qml/PreferencesPage.qml:299 qml/RoutePage.qml:51
 msgid "Navigate"
