@@ -30,14 +30,13 @@ FocusScope {
 
     signal search
 
-    Image {
+    IconPL {
         id: searchImage
         anchors.left: parent.left
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
         anchors.verticalCenter: field.verticalCenter
-        fillMode: Image.PreserveAspectFit
-        source: app.styler.iconSearch
-        sourceSize.height: field.height * 0.8
+        iconName: app.styler.iconSearch
+        iconHeight: field.height * 0.8
     }
 
     TextField {
@@ -56,8 +55,8 @@ FocusScope {
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.verticalCenter: field.verticalCenter
-        icon.source: app.styler.iconDelete
-        icon.sourceSize.height: field.height * 0.8
+        iconName: app.styler.iconDelete
+        iconHeight: field.height * 0.8
         onClicked: field.text = ""
     }
 }

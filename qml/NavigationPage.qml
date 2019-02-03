@@ -45,8 +45,8 @@ PagePL {
             ToolItemPL {
                 id: beginItem
                 width: row.itemWidth + app.styler.themeHorizontalPageMargin
-                icon.source: app.mode === modes.navigate ? app.styler.iconPause : app.styler.iconStart
-                icon.sourceSize.height: app.styler.themeIconSizeMedium
+                icon.iconHeight: app.styler.themeIconSizeMedium
+                icon.iconName: app.mode === modes.navigate ? app.styler.iconPause : app.styler.iconStart
                 text: app.mode === modes.navigate ? app.tr("Pause") :
                                                     (app.navigationStarted ? app.tr("Resume") : app.tr("Begin"))
                 onClicked: {
@@ -59,8 +59,8 @@ PagePL {
             ToolItemPL {
                 id: rerouteItem
                 width: row.itemWidth
-                icon.source: app.styler.iconRefresh
-                icon.sourceSize.height: app.styler.themeIconSizeMedium
+                icon.iconHeight: app.styler.themeIconSizeMedium
+                icon.iconName: app.styler.iconRefresh
                 text: app.tr("Reroute")
                 onClicked: {
                     app.reroute();
@@ -71,8 +71,8 @@ PagePL {
             ToolItemPL {
                 id: clearItem
                 width: row.itemWidth + app.styler.themeHorizontalPageMargin
-                icon.source: app.styler.iconClear
-                icon.sourceSize.height: app.styler.themeIconSizeMedium
+                icon.iconHeight: app.styler.themeIconSizeMedium
+                icon.iconName: app.styler.iconClear
                 text: app.tr("Clear")
                 onClicked: {
                     app.setModeExplore();

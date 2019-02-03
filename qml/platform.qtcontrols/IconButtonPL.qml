@@ -16,16 +16,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.9
-import QtQuick.Controls 2.2
+import QtQuick 2.11
+import QtQuick.Controls 2.4
+// for IconImage, see https://bugreports.qt.io/browse/QTBUG-66829
+import QtQuick.Controls.impl 2.4
 
 Item {
     id: item
     height: image.height*(1 + padding)
     width: image.width*(1 + padding)
 
-    property alias icon: image
-    property real  padding: 0.5
+    property int    iconHeight: 0
+    property string iconName
+    property alias  iconRotation: image.rotation
+    property string iconSource
+    property int    iconWidth: 0
+    property real   padding: 0.5
 
     signal clicked
 
@@ -33,10 +39,13 @@ Item {
         color: "transparent"
         anchors.fill: parent
 
-        Image {
+        IconImage {
             id: image
             anchors.centerIn: parent
-            fillMode: Image.PreserveAspectFit
+            name: iconName
+            source: iconSource
+            sourceSize.height: iconHeight
+            sourceSize.width: iconWidth
         }
 
         MouseArea {

@@ -25,8 +25,8 @@ IconButtonPL {
     anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.right: menuButton.left
     anchors.rightMargin: app.styler.themePaddingLarge
-    icon.source: app.getIcon("icons/search")
-    icon.sourceSize.height: app.styler.themeIconSizeMedium
+    iconHeight: app.styler.themeIconSizeMedium
+    iconSource: app.getIcon("icons/search")
     opacity: 0.75
     states: [
         State {

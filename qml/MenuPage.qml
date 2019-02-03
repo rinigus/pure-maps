@@ -112,14 +112,13 @@ PagePL {
             anchors.right: parent.right
             contentHeight: Math.max(app.styler.themeItemSizeSmall, profileComboBox.height)
 
-            Image {
+            IconPL {
                 id: icon
                 anchors.left: parent.left
                 anchors.leftMargin: app.styler.themeHorizontalPageMargin
                 anchors.verticalCenter: label.verticalCenter
-                fillMode: Image.PreserveAspectFit
-                height: app.styler.themeItemSizeSmall*0.8
-                source: app.styler.iconProfile
+                iconHeight: app.styler.themeItemSizeSmall*0.8
+                iconName: app.styler.iconProfile
             }
 
             LabelPL {

@@ -138,8 +138,9 @@ ApplicationWindowPL {
     }
 
     function getIcon(name, no_variant) {
-        if (!no_variant && app.styler.iconVariant) return "%1-%2.svg".arg(name).arg(app.styler.iconVariant);
-        return "%1.svg".arg(name);
+        if (!no_variant && app.styler.iconVariant)
+            return Qt.resolvedUrl("%1-%2.svg".arg(name).arg(app.styler.iconVariant));
+        return Qt.resolvedUrl("%1.svg".arg(name));
     }
 
     function getIconScaled(name, no_variant) {

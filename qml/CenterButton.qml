@@ -26,8 +26,8 @@ IconButtonPL {
     anchors.horizontalCenter: northArrow.horizontalCenter
     anchors.rightMargin: app.styler.themePaddingLarge
     anchors.topMargin: app.styler.themePaddingLarge
-    icon.source: app.getIcon("icons/center")
-    icon.sourceSize.height: app.styler.themeIconSizeSmall
+    iconHeight: app.styler.themeIconSizeSmall
+    iconSource: app.getIcon("icons/center")
     states: [
         State {
             when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait

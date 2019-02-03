@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018-2019 Rinigus
+ * Copyright (C) 2018-2019 Rinigus, 2019 Purism SPC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,40 +16,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Sailfish.Silica 1.0
+import QtQuick 2.11
+import QtQuick.Controls 2.4
+// for IconImage, see https://bugreports.qt.io/browse/QTBUG-66829
+import QtQuick.Controls.impl 2.4
 
-Item {
-    id: item
-    height: image.height*(1 + padding)
-    width: image.width*(1 + padding)
+IconImage {
+    id: image
+    name: iconName
+    source: iconSource
+    sourceSize.height: iconHeight
+    sourceSize.width: iconWidth
 
     property int    iconHeight: 0
     property string iconName
-    property alias  iconRotation: image.rotation
     property string iconSource
     property int    iconWidth: 0
-    property real   padding: 0.2
-
-    signal clicked
-
-    Rectangle {
-        color: "transparent"
-        anchors.fill: parent
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: item.clicked()
-
-            IconButton {
-                id: image
-                anchors.centerIn: parent
-                down: pressed || parent.pressed
-                icon.source: iconName || iconSource
-                icon.sourceSize.height: iconHeight
-                icon.sourceSize.width: iconWidth
-                onClicked: item.clicked()
-            }
-        }
-    }
 }

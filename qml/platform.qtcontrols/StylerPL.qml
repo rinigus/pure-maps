@@ -97,29 +97,29 @@ QtObject {
     }
 
     function initStyle() {
-        iconAbout = getIcon("help-about-symbolic.symbolic");
-        iconBack = getIcon("go-previous-symbolic.symbolic");
-        iconClear = getIcon("edit-clear-all-symbolic.symbolic");
-        iconDelete = getIcon("edit-delete-symbolic.symbolic");
-        iconDot = getIcon("find-location-symbolic.symbolic");
-        iconFavorite = getIcon("bookmark-new-symbolic.symbolic");
-        iconFavoriteSelected = getIcon("user-bookmarks-symbolic.symbolic");
-        iconForward = getIcon("go-next-symbolic.symbolic");
-        iconMaps = getIcon("view-paged-symbolic.symbolic");
-        iconMenu = getIcon("open-menu-symbolic.symbolic");
-        iconNavigate = getIcon("send-to-symbolic.symbolic");
-        iconNearby = getIcon("zoom-fit-best-symbolic.symbolic");
-        iconPause = getIcon("media-playback-pause-symbolic.symbolic");
-        iconPhone = getIcon("call-start-symbolic.symbolic");
-        iconPreferences = getIcon("preferences-system-symbolic.symbolic");
-        iconProfile = getIcon("network-server-symbolic.symbolic");
-        iconRefresh = getIcon("view-refresh-symbolic.symbolic");
-        iconSearch = getIcon("edit-find-symbolic.symbolic");
-        iconShare = getIcon("emblem-shared-symbolic.symbolic");
-        iconShortlisted = getIcon("checkbox-symbolic.symbolic");
-        iconShortlistedSelected = getIcon("checkbox-checked-symbolic.symbolic");
-        iconStart = getIcon("media-playback-start-symbolic.symbolic");
-        iconStop = getIcon("media-playback-stop-symbolic.symbolic");
-        iconWebLink = getIcon("web-browser-symbolic.symbolic");
+        iconAbout = "help-about-symbolic";
+        iconBack = "go-previous-symbolic";
+        iconClear = "edit-clear-all-symbolic";
+        iconDelete = "edit-delete-symbolic";
+        iconDot = "find-location-symbolic";
+        iconFavorite = "bookmark-new-symbolic";
+        iconFavoriteSelected = "user-bookmarks-symbolic";
+        iconForward = "go-next-symbolic";
+        iconMaps = "view-paged-symbolic";
+        iconMenu = "open-menu-symbolic";
+        iconNavigate = "send-to-symbolic";
+        iconNearby = "zoom-fit-best-symbolic";
+        iconPause = "media-playback-pause-symbolic";
+        iconPhone = "call-start-symbolic";
+        iconPreferences = "preferences-system-symbolic";
+        iconProfile = "network-server-symbolic";
+        iconRefresh = "view-refresh-symbolic";
+        iconSearch = "edit-find-symbolic";
+        iconShare = "emblem-shared-symbolic";
+        iconShortlisted = "checkbox-symbolic";
+        iconShortlistedSelected = "checkbox-checked-symbolic";
+        iconStart = "media-playback-start-symbolic";
+        iconStop = "media-playback-stop-symbolic";
+        iconWebLink = "web-browser-symbolic";
     }
 }

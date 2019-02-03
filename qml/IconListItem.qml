@@ -28,14 +28,13 @@ ListItemPL {
     property string icon: ""
     property string label: ""
 
-    Image {
+    IconPL {
         id: icon
         anchors.left: parent.left
         anchors.leftMargin: app.styler.themeHorizontalPageMargin
         anchors.verticalCenter: parent.verticalCenter
-        fillMode: Image.PreserveAspectFit
-        height: app.styler.themeItemSizeSmall*0.8
-        source: item.icon
+        iconHeight: app.styler.themeItemSizeSmall*0.8
+        iconName: item.icon
     }
 
     LabelPL {

@@ -18,6 +18,7 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import "."
 
 Item {
     id: host
@@ -33,7 +34,7 @@ Item {
         height: image.height + label.height + 2*app.styler.themePaddingLarge
         width: parent.width
 
-        Image {
+        IconPL {
             id: image
             anchors.horizontalCenter: item.horizontalCenter
             anchors.top: item.top

@@ -44,7 +44,7 @@ ToolBar {
         anchors.verticalCenter: label.verticalCenter
         height: app.styler.themeItemSizeSmall
         icon.height: label.height
-        icon.source: app.styler.iconBack
+        icon.name: app.styler.iconBack
         onClicked: app.pages.pop()
     }
 
@@ -71,7 +71,7 @@ ToolBar {
         anchors.verticalCenter: label.verticalCenter
         height: app.styler.themeItemSizeSmall
         icon.height: label.height
-        icon.source: app.styler.iconForward
+        icon.name: app.styler.iconForward
         Layout.minimumWidth: toolButton.width
         visible: !page.hideAcceptButton && app.pages.hasAttached
         enabled: page.canNavigateForward === true

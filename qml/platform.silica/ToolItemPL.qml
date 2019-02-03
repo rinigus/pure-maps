@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "."
 
 BackgroundItem {
     id: item
@@ -26,7 +27,7 @@ BackgroundItem {
     property alias icon: image
     property alias text: label.text
 
-    Image {
+    IconPL {
         id: image
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top

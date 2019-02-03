@@ -25,9 +25,9 @@ IconButtonPL {
     anchors.leftMargin: app.styler.themePaddingLarge
     anchors.top: navigationBlock.bottom
     anchors.topMargin: app.styler.themePaddingLarge
-    height: icon.height
-    icon.source: app.getIcon("icons/attribution/default")
-    icon.sourceSize.height: app.styler.themeIconSizeSmall
+    iconHeight: app.styler.themeIconSizeSmall
+    iconSource: app.getIcon("icons/attribution/default")
+    padding: 0
     states: [
         State {
             when: !app.portrait && navigationBlockLandscapeLeftShield.height > 0
@@ -37,18 +37,17 @@ IconButtonPL {
             }
         }
     ]
-    width: icon.width
     z: 500
 
     property string logo: ""
 
     onClicked: app.push(Qt.resolvedUrl("AttributionPage.qml"))
-    onLogoChanged: attributionButton.icon.source = logo ?
+    onLogoChanged: attributionButton.iconSource = logo ?
         app.getIcon("icons/attribution/%1".arg(logo)) : "";
 
     Connections {
         target: app.styler
-        onIconVariantChanged: attributionButton.icon.source = attributionButton.logo ?
+        onIconVariantChanged: attributionButton.iconSource = attributionButton.logo ?
                                   app.getIcon("icons/attribution/%1".arg(attributionButton.logo)) : "";
     }
 

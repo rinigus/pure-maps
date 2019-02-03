@@ -154,8 +154,8 @@ Item {
         spacing: app.styler.themePaddingLarge
 
         IconButtonPL {
-            icon.source: app.styler.iconAbout
-            icon.sourceSize.height: app.styler.themeIconSizeMedium
+            iconHeight: app.styler.themeIconSizeMedium
+            iconName: app.styler.iconAbout
             onClicked: {
                 app.push(Qt.resolvedUrl("PoiInfoPage.qml"), {
                              "active": active,
@@ -166,8 +166,8 @@ Item {
 
         IconButtonPL {
             enabled: item.active
-            icon.source: bookmarked ? app.styler.iconFavoriteSelected  : app.styler.iconFavorite
-            icon.sourceSize.height: app.styler.themeIconSizeMedium
+            iconHeight: app.styler.themeIconSizeMedium
+            iconName: bookmarked ? app.styler.iconFavoriteSelected  : app.styler.iconFavorite
             onClicked: {
                 bookmarked = !bookmarked;
                 pois.bookmark(poiId, bookmarked);
@@ -175,8 +175,8 @@ Item {
         }
 
         IconButtonPL {
-            icon.source: app.styler.iconNavigate
-            icon.sourceSize.height: app.styler.themeIconSizeMedium
+            iconHeight: app.styler.themeIconSizeMedium
+            iconName: app.styler.iconNavigate
             onClicked: {
                 if (coordinate === undefined) return;
                 app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
@@ -187,8 +187,8 @@ Item {
         }
 
         IconButtonPL {
-            icon.source: app.styler.iconNearby
-            icon.sourceSize.height: app.styler.themeIconSizeMedium
+            iconHeight: app.styler.themeIconSizeMedium
+            iconName: app.styler.iconNearby
             onClicked: {
                 if (coordinate === undefined) return;
                 app.showMenu(Qt.resolvedUrl("NearbyPage.qml"), {
@@ -200,8 +200,8 @@ Item {
 
         IconButtonPL {
             enabled: item.active
-            icon.source: app.styler.iconDelete
-            icon.sourceSize.height: app.styler.themeIconSizeMedium
+            iconHeight: app.styler.themeIconSizeMedium
+            iconName: app.styler.iconDelete
             onClicked: {
                 if (coordinate === undefined) return;
                 pois.remove(poiId, true);

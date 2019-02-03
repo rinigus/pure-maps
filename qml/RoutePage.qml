@@ -166,8 +166,8 @@ PagePL {
 
             ToolItemPL {
                 id: beginFollowMeItem
-                icon.source: app.mode === modes.followMe ? app.styler.iconStop : app.styler.iconStart
-                icon.sourceSize.height: app.styler.themeIconSizeMedium
+                icon.iconHeight: app.styler.themeIconSizeMedium
+                icon.iconName: app.mode === modes.followMe ? app.styler.iconStop : app.styler.iconStart
                 text: app.mode === modes.followMe ? app.tr("Stop") : app.tr("Begin")
                 width: columnFollow.width
                 onClicked: {

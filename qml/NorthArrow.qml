@@ -28,9 +28,9 @@ IconButtonPL {
     anchors.rightMargin: app.styler.themePaddingLarge
     anchors.topMargin: app.styler.themePaddingLarge
     enabled: !hidden
-    icon.rotation: -map.bearing
-    icon.source: app.getIcon("icons/north")
-    icon.sourceSize.height: app.styler.themeIconSizeMedium
+    iconHeight: app.styler.themeIconSizeMedium
+    iconRotation: -map.bearing
+    iconSource: app.getIcon("icons/north")
     states: [
         State {
             when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
@@ -52,7 +52,7 @@ IconButtonPL {
     opacity: hidden ? 0 : 1
     z: 500
 
-    property bool hidden: app.infoPanelOpen || (Math.abs(icon.rotation) < 0.01 && map.cleanMode && !app.conf.mapModeCleanShowCompass)
+    property bool hidden: app.infoPanelOpen || (Math.abs(master.iconRotation) < 0.01 && map.cleanMode && !app.conf.mapModeCleanShowCompass)
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 

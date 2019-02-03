@@ -93,34 +93,30 @@ QtObject {
 
     property real themePixelRatio: 1 //Screen.devicePixelRatio
 
-    function getIcon(name) {
-        return py.call_sync("poor.app.icon.get_icon", [name]);
-    }
-
     function initStyle() {
-        iconAbout = getIcon("help-about-symbolic");
-        iconBack = getIcon("go-previous-symbolic");
-        iconClear = getIcon("edit-clear-all-symbolic");
-        iconDelete = getIcon("edit-delete-symbolic");
-        iconDot = getIcon("find-location-symbolic");
-        iconFavorite = getIcon("bookmark-new-symbolic");
-        iconFavoriteSelected = getIcon("user-bookmarks-symbolic");
-        iconForward = getIcon("go-next-symbolic");
-        iconMaps = getIcon("view-paged-symbolic") || getIcon("map-mercator");
-        iconMenu = getIcon("open-menu-symbolic");
-        iconNavigate = getIcon("send-to-symbolic");
-        iconNearby = getIcon("zoom-fit-best-symbolic");
-        iconPause = getIcon("media-playback-pause-symbolic");
-        iconPhone = getIcon("call-start-symbolic");
-        iconPreferences = getIcon("preferences-system-symbolic") || getIcon("settings-configure");
-        iconProfile = getIcon("network-server-symbolic");
-        iconRefresh = getIcon("view-refresh-symbolic");
-        iconSearch = getIcon("edit-find-symbolic");
-        iconShare = getIcon("emblem-shared-symbolic");
-        iconShortlisted = getIcon("checkbox-symbolic") || getIcon("rectangle-shape");
-        iconShortlistedSelected = getIcon("checkbox-checked-symbolic") || getIcon("checkbox");
-        iconStart = getIcon("media-playback-start-symbolic");
-        iconStop = getIcon("media-playback-stop-symbolic");
-        iconWebLink = getIcon("web-browser-symbolic") || getIcon("plasma-browser-integration");
+        iconAbout = "help-about-symbolic";
+        iconBack = "go-previous-symbolic";
+        iconClear = "edit-clear-all-symbolic";
+        iconDelete = "edit-delete-symbolic";
+        iconDot = "find-location-symbolic";
+        iconFavorite = "bookmark-new-symbolic";
+        iconFavoriteSelected = "user-bookmarks-symbolic";
+        iconForward = "go-next-symbolic";
+        iconMaps = "view-paged-symbolic";
+        iconMenu = "open-menu-symbolic";
+        iconNavigate = "send-to-symbolic";
+        iconNearby = "zoom-fit-best-symbolic";
+        iconPause = "media-playback-pause-symbolic";
+        iconPhone = "call-start-symbolic";
+        iconPreferences = "preferences-system-symbolic";
+        iconProfile = "network-server-symbolic";
+        iconRefresh = "view-refresh-symbolic";
+        iconSearch = "edit-find-symbolic";
+        iconShare = "emblem-shared-symbolic";
+        iconShortlisted = "checkbox-symbolic";
+        iconShortlistedSelected = "checkbox-checked-symbolic";
+        iconStart = "media-playback-start-symbolic";
+        iconStop = "media-playback-stop-symbolic";
+        iconWebLink = "web-browser-symbolic";
     }
 }

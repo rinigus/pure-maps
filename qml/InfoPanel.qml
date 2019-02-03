@@ -55,8 +55,8 @@ Panel {
             anchors.left: parent.left
             anchors.leftMargin: app.styler.themeHorizontalPageMargin
             anchors.verticalCenter: infoBg.verticalCenter
-            icon.source: showMenu ? app.styler.iconBack : ""
-            icon.sourceSize.height: app.styler.themeIconSizeMedium
+            iconHeight: app.styler.themeIconSizeMedium
+            iconName: showMenu ? app.styler.iconBack : ""
             padding: 0
             visible: showMenu
             onClicked: {
@@ -84,8 +84,8 @@ Panel {
             anchors.right: parent.right
             anchors.rightMargin: app.styler.themeHorizontalPageMargin
             anchors.verticalCenter: infoBg.verticalCenter
-            icon.source: showMenu ? app.styler.iconMenu : ""
-            icon.sourceSize.height: app.styler.themeIconSizeMedium
+            iconHeight: app.styler.themeIconSizeMedium
+            iconName: showMenu ? app.styler.iconMenu : ""
             padding: 0
             visible: showMenu
             onClicked: {
