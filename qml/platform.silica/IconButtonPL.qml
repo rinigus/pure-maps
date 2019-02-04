@@ -21,8 +21,8 @@ import Sailfish.Silica 1.0
 
 Item {
     id: item
-    height: image.height*(1 + padding)
-    width: image.width*(1 + padding)
+    height: image.icon.height*(1 + padding)
+    width: image.icon.width*(1 + padding)
 
     property int    iconHeight: 0
     property string iconName
