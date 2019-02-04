@@ -48,7 +48,6 @@ from poor.map import Map
 from poor.geocoder import Geocoder
 from poor.guide import Guide
 from poor.history import HistoryManager
-from poor.icon import IconFinder
 from poor.keystore import KeyStore
 key = KeyStore()
 from poor.router import Router
@@ -66,7 +65,6 @@ assert DATA_HOME_DIR
 assert Geocoder
 assert Guide
 assert HistoryManager
-assert IconFinder
 assert http
 assert i18n
 assert KeyStore

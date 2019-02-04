@@ -92,10 +92,6 @@ QtObject {
 
     property real themePixelRatio: Screen.devicePixelRatio
 
-    function getIcon(name) {
-        return py.call_sync("poor.app.icon.get_icon", [name]);
-    }
-
     function initStyle() {
         iconAbout = "help-about-symbolic";
         iconBack = "go-previous-symbolic";
