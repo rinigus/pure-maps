@@ -126,6 +126,9 @@ install:
 	cp routers/README.md $(DATADIR)/routers
 	mkdir -p $(DATADIR)/routers/digitransit
 	cp routers/digitransit/*.png $(DATADIR)/routers/digitransit
+	@echo "Installing fallback icons..."
+	mkdir -p $(DATADIR)/icons
+	cp -r qml/icons/fallback/*.svg $(DATADIR)/icons
 	@echo "Installing translations..."
 	$(foreach lang,$(LANGS),$(call install-translation,$(lang)))
 	@echo "Installing desktop file..."

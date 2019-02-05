@@ -120,7 +120,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/rinigus/qmlrunner.git",
-                    "commit": "d5b1dd3c4085adf1e8fd2e498cfacfc08b2da037"
+                    "commit": "0d856db7ce59e7dbb5ab38486952ee1fb5be6021"
                 }
             ]
         },
