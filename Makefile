@@ -61,6 +61,7 @@ flathub-install-general:
         # workaround https://github.com/hughsie/appstream-glib/issues/271
 	ln -s $(PREFIX)/share $(PREFIX)/usr
 	mv $(PREFIX)/share/pure-maps/qml/pure-maps.qml $(PREFIX)/share/pure-maps/qml/io.github.rinigus.PureMaps.qml
+	rename pure-maps io.github.rinigus.PureMaps $(PREFIX)/share/pure-maps/translations/*.qm
 	mv $(PREFIX)/share/pure-maps $(PREFIX)/share/io.github.rinigus.PureMaps
 
 flathub-install-kirigami: platform-kirigami flathub-install-general

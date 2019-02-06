@@ -29,4 +29,4 @@ CACHE_HOME_DIR = os.path.join(XDG_CACHE_HOME, "harbour-pure-maps")
 CONFIG_HOME_DIR = os.path.join(XDG_CONFIG_HOME, "harbour-pure-maps")
 DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DATA_HOME_DIR = os.path.join(XDG_DATA_HOME, "harbour-pure-maps")
-LOCALE_DIR = "/usr/share/harbour-pure-maps/locale"
+LOCALE_DIR = os.path.abspath(os.path.join(DATA_DIR, "locale"))
