@@ -28,6 +28,7 @@ IconButtonPL {
     anchors.rightMargin: app.styler.themePaddingLarge
     anchors.topMargin: app.styler.themePaddingLarge
     enabled: !hidden
+    iconColorize: false
     iconHeight: app.styler.themeIconSizeMedium
     iconRotation: -map.bearing
     iconSource: app.getIcon("icons/north")

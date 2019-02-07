@@ -24,6 +24,7 @@ Item {
     height: image.icon.height*(1 + padding)
     width: image.icon.width*(1 + padding)
 
+    property bool   iconColorize: true // for compatibility, not used
     property int    iconHeight: 0
     property string iconName
     property alias  iconRotation: image.rotation

@@ -23,11 +23,14 @@ import QtQuick.Controls.impl 2.4
 
 IconImage {
     id: image
+
+    color: iconColorize ? app.styler.themeHighlightColor : "transparent"
     name: iconName
     source: iconSource
     sourceSize.height: iconHeight
     sourceSize.width: iconWidth
 
+    property bool   iconColorize: true
     property int    iconHeight: 0
     property string iconName
     property string iconSource

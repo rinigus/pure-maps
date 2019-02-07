@@ -26,6 +26,7 @@ Item {
     height: image.height*(1 + padding)
     width: image.width*(1 + padding)
 
+    property bool   iconColorize: true
     property int    iconHeight: 0
     property string iconName
     property alias  iconRotation: image.rotation
@@ -42,6 +43,7 @@ Item {
         IconImage {
             id: image
             anchors.centerIn: parent
+            color: iconColorize ? app.styler.themeHighlightColor : "transparent"
             name: iconName
             source: iconSource
             sourceSize.height: iconHeight

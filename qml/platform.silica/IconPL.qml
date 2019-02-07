@@ -25,6 +25,7 @@ Image {
     sourceSize.height: iconHeight
     sourceSize.width: iconWidth
 
+    property bool   iconColorize: true // for compatibility, not used
     property int    iconHeight: 0
     property string iconName
     property string iconSource
