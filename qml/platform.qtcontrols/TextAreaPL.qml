@@ -18,10 +18,10 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import QtQuick.Layouts 1.2
 
 TextArea {
-    anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
-    anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    wrapMode: TextEdit.Wrap
+    Layout.fillWidth: true
+    Layout.preferredWidth: parent.width
 }
