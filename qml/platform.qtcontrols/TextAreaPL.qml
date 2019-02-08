@@ -21,7 +21,6 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.2
 
 TextArea {
+    width: parent.width
     wrapMode: TextEdit.Wrap
-    Layout.fillWidth: true
-    Layout.preferredWidth: parent.width
 }
