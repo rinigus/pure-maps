@@ -37,7 +37,7 @@ DialogListPL {
             id: defaultHeader
             height: model.header ? implicitHeight : 0
             text: model.name
-            visible: model.header
+            visible: !!model.header
         }
 
         ListItemLabel {
