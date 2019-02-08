@@ -218,9 +218,16 @@ function siground(x, n) {
 
 function sortDefaultFirst(providers) {
     // Sort providers in-place, placing the default first.
+    var hasDefault = false;
     for (var i = 0; i < providers.length; i++) {
-        providers[i]["default"] &&
+        if (providers[i]["default"]) {
             providers.splice(0, 0, providers.splice(i, 1)[0]);
+            hasDefault = true;
+        }
+    }
+    if (providers.length > 1 && hasDefault) {
+        providers.splice(1, 0, {"description": "", "name": app.tr("Alternatives"), "header": true, "modes": []});
+        providers.splice(0, 0, {"description": "", "name": app.tr("Default"), "header": true, "modes": []});
     }
 }
 

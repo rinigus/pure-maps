@@ -31,14 +31,13 @@ DialogListPL {
     delegate: ListItemPL {
         id: listItem
         contentHeight: defaultHeader.height + nameLabel.height +
-                       descriptionLabel.anchors.topMargin + descriptionLabel.height +
-                       alternativesHeader.height
+                       descriptionLabel.anchors.topMargin + descriptionLabel.height
 
         SectionHeaderPL {
             id: defaultHeader
-            height: model.default ? implicitHeight : 0
-            text: app.tr("Default")
-            visible: model.default && !listItem.highlighted
+            height: model.header ? implicitHeight : 0
+            text: model.name
+            visible: model.header
         }
 
         ListItemLabel {
@@ -46,33 +45,28 @@ DialogListPL {
             anchors.top: defaultHeader.bottom
             color: (model.active || listItem.highlighted) ?
                        app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-            height: implicitHeight + app.listItemVerticalMargin
+            height: text && visible ? implicitHeight + app.listItemVerticalMargin : 0
             text: model.name
             verticalAlignment: Text.AlignBottom
+            visible: !model.header
         }
 
         ListItemLabel {
             id: descriptionLabel
             anchors.top: nameLabel.bottom
-            anchors.topMargin: app.styler.themePaddingSmall
+            anchors.topMargin: height > 0 ? app.styler.themePaddingSmall : 0
             color: app.styler.themeSecondaryColor
             font.pixelSize: app.styler.themeFontSizeExtraSmall
-            height: implicitHeight + app.listItemVerticalMargin
+            height: text && visible ? implicitHeight + app.listItemVerticalMargin : 0
             lineHeight: 1.15
             text: model.description
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
-        }
-
-        SectionHeaderPL {
-            id: alternativesHeader
-            anchors.top: descriptionLabel.bottom
-            height: model.default ? implicitHeight : 0
-            text: app.tr("Alternatives")
-            visible: model.default && !listItem.highlighted
+            visible: !model.header
         }
 
         onClicked: {
+            if (model.header) return;
             dialog.pid = model.pid;
             dialog.accept();
         }
