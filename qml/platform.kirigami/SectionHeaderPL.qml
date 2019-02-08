@@ -39,12 +39,15 @@ Item {
 
     Kirigami.Heading {
         id: txt
+        anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.top: sep.bottom
         anchors.topMargin: app.styler.themePaddingSmall
         height: inForm ? 0 : implicitHeight
         horizontalAlignment: Text.AlignLeft
         level: 3
-        width: parent.parent.width
         text: inForm ? "" : parent.text
         visible: text
     }

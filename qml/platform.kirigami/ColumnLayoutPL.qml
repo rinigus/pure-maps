@@ -20,4 +20,6 @@ import QtQuick.Layouts 1.2
 
 ColumnLayout {
     Layout.fillWidth: true
+    Layout.leftMargin: app.styler.themeHorizontalPageMargin
+    Layout.rightMargin: app.styler.themeHorizontalPageMargin
 }
