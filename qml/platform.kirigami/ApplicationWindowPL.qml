@@ -32,7 +32,8 @@ Kirigami.ApplicationWindow {
 
     property var   initialPage
 
-    default property var aaa
+    // hide from Kirigami
+    default property var _content
 
     property var   pages: null // initialized later to ensure the same path for object creation
     property bool  running: visible

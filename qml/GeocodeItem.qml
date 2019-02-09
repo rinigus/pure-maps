@@ -125,9 +125,11 @@ Item {
                 }
                 menu: ContextMenuPL {
                     id: contextMenu
+                    enabled: model.type === "recent search"
                     ContextMenuItemPL {
                         enabled: model.type === "recent search"
-                        text: app.tr("Remove")
+                        iconName: enabled ? app.styler.iconDelete : ""
+                        text: enabled ? app.tr("Remove") : ""
                         onClicked: {
                             if (model.type !== "recent search") return;
                             py.call_sync("poor.app.history.remove_place", [model.text]);

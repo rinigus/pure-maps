@@ -62,6 +62,7 @@ QtObject {
     property string iconClear: "image://theme/icon-m-clear"
     property string iconDelete: "image://theme/icon-m-delete"
     property string iconDot: "image://theme/icon-m-dot"
+    property string iconEdit: "image://theme/icon-m-edit"
     property string iconFavorite: "image://theme/icon-m-favorite"
     property string iconFavoriteSelected: "image://theme/icon-m-favorite-selected"
     property string iconMaps: "image://theme/icon-m-levels"

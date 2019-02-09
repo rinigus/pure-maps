@@ -23,5 +23,5 @@ import org.kde.kirigami 2.5 as Kirigami
 Item {
     id: menu
     property list<Kirigami.Action> items
-    default property alias screensProperty: menu.items
+    default property alias content: menu.items
 }

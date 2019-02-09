@@ -40,7 +40,7 @@ Kirigami.ScrollablePage {
         main: Kirigami.Action {
             id: mainAction
             enabled: page.canNavigateForward === true
-            icon.source: app.styler.iconForward
+            icon.name: app.styler.iconForward
             visible: !page.hideAcceptButton && (page.isDialog || app.pages.hasAttached(page))
             text: app.tr("Accept")
             onTriggered: {

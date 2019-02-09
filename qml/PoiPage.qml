@@ -81,6 +81,7 @@ PageListPL {
         menu: ContextMenuPL {
             id: contextMenu
             ContextMenuItemPL {
+                iconName: app.styler.iconAbout
                 text: app.tr("View")
                 onClicked: {
                     var poi = pois.getById(model.poiId);
@@ -90,6 +91,7 @@ PageListPL {
                 }
             }
             ContextMenuItemPL {
+                iconName: app.styler.iconEdit
                 text: app.tr("Edit")
                 onClicked: {
                     var poi = pois.getById(model.poiId);
@@ -102,6 +104,7 @@ PageListPL {
                 }
             }
             ContextMenuItemPL {
+                iconName: app.styler.iconDelete
                 text: app.tr("Remove")
                 onClicked: {
                     pois.remove(model.poiId);

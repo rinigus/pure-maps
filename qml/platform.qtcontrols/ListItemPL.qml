@@ -21,15 +21,20 @@ import QtQuick.Controls 2.2
 
 // required properties:
 //    contentHeight
-//    highlighted
 //    menu
 //
+// highlighted can be used, if available, to give a feedback that an item is pressed
+//
 // signals: clicked
+//
 Item {
+    id: main
+
     height: item.height
     width: parent.width
 
     property real contentHeight
+    property bool highlighted: false
     property var  menu
 
     signal clicked
@@ -49,12 +54,12 @@ Item {
                 menu.x = mouse.x
                 menu.y = mouse.y
                 menu.visibleChanged.connect(function (){
-                    item.highlighted = menu.visible;
+                    main.highlighted = menu.visible;
                 })
                 menu.open();
             }
-            onPressed: item.highlighted = pressed
-            onReleased: item.highlighted = pressed || (!!menu && menu.visible)
+            onPressed: main.highlighted = pressed
+            onReleased: main.highlighted = pressed || (!!menu && menu.visible)
         }
 
         onClicked: parent.clicked()

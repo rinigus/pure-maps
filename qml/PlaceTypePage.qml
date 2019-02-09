@@ -42,6 +42,7 @@ DialogListPL {
         menu: ContextMenuPL {
             id: contextMenu
             ContextMenuItemPL {
+                iconName: app.styler.iconDelete
                 text: app.tr("Remove")
                 onClicked: {
                     py.call_sync("poor.app.history.remove_place_type", [model.type]);
