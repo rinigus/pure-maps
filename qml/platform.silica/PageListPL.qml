@@ -23,6 +23,7 @@ Page {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property string acceptIconName // for compatibility
     property string acceptText // for compatibility
     property bool   active: page.status === PageStatus.Active
     property bool   canNavigateForward: true

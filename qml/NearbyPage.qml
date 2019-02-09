@@ -24,6 +24,7 @@ PagePL {
     id: page
     title: app.tr("Nearby Venues")
 
+    acceptIconName: app.styler.iconSearch
     acceptText: app.tr("Search")
     canNavigateForward: page.near &&
                         (page.nearText !== app.tr("Current position") || gps.ready) &&

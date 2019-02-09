@@ -23,6 +23,7 @@ Dialog {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property string acceptIconName // for compatibility
     property string acceptText
     default property alias content: itemCont.data
     property string title

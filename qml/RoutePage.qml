@@ -24,6 +24,7 @@ PagePL {
     id: page
     title: app.tr("Navigation")
 
+    acceptIconName: app.styler.iconNavigate
     acceptText: app.tr("Route")
     canNavigateForward:
         (!page.fromNeeded || (page.from && (page.fromText !== app.tr("Current position") || gps.ready))) &&

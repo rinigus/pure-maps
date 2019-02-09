@@ -23,6 +23,7 @@ Dialog {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property string acceptIconName // for compatibility
     property string acceptText
     property bool   active: page.status === PageStatus.Active
     property alias  currentIndex: listView.currentIndex

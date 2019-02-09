@@ -65,6 +65,7 @@ QtObject {
     property string iconEdit: "image://theme/icon-m-edit"
     property string iconFavorite: "image://theme/icon-m-favorite"
     property string iconFavoriteSelected: "image://theme/icon-m-favorite-selected"
+    property string iconManeuvers: "image://theme/icon-m-shuffle"
     property string iconMaps: "image://theme/icon-m-levels"
     property string iconMenu: "image://theme/icon-m-menu"
     property string iconNavigate: "image://theme/icon-m-car"

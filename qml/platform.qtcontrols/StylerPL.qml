@@ -63,6 +63,7 @@ QtObject {
     property string iconFavorite: "bookmark-new-symbolic"
     property string iconFavoriteSelected: "user-bookmarks-symbolic"
     property string iconForward: "go-next-symbolic"
+    property string iconManeuvers: "maneuvers-symbolic"
     property string iconMaps: "view-paged-symbolic"
     property string iconMenu: "open-menu-symbolic"
     property string iconNavigate: "send-to-symbolic"

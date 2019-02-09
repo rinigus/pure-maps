@@ -28,6 +28,7 @@ Page {
     }
     width: parent ? parent.width : undefined
 
+    property string acceptIconName // for compatibility
     property string acceptText // for compatibility
     property bool   active: page.status === StackView.Active
     property bool   canNavigateForward: true

@@ -27,6 +27,7 @@ PagePL {
 
     pageMenu: PageMenuPL {
         PageMenuItemPL {
+            iconName: app.styler.iconName
             text: app.tr("About")
             onClicked: app.push(Qt.resolvedUrl("AboutPage.qml"))
         }

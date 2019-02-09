@@ -28,6 +28,7 @@ Page {
     }
     width: parent ? parent.width : undefined
 
+    property string        acceptIconName // for compatibility
     property string        acceptText // for compatibility
     property bool          canNavigateForward: true
     default property alias content: itemCont.data

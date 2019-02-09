@@ -24,6 +24,7 @@ PagePL {
     id: page
     title: app.tr("Navigation")
 
+    acceptIconName: app.styler.iconManeuvers
     acceptText: app.tr("Maneuvers")
 
     onPageStatusActive: app.navigationPageSeen = true;

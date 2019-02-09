@@ -27,6 +27,7 @@ Kirigami.ScrollablePage {
     flickable: listView
     mainItem: listView
 
+    property string acceptIconName: app.styler.iconForward
     property alias  acceptText: mainAction.text
     property var    acceptCallback
     property bool   active: page.isCurrentPage
@@ -53,7 +54,7 @@ Kirigami.ScrollablePage {
         main: Kirigami.Action {
             id: mainAction
             enabled: page.canNavigateForward === true
-            icon.name: app.styler.iconForward
+            icon.name: page.acceptIconName
             visible: !page.hideAcceptButton && (page.isDialog || app.pages.hasAttached(page))
             text: app.tr("Accept")
             onTriggered: {
