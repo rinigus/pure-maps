@@ -59,7 +59,7 @@ DialogListPL {
             color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
             height: app.styler.themeItemSizeSmall
             text: model.text
-            textFormat: Text.RichText
+            textFormat: Text.StyledText
         }
 
         ListView.onRemove: animateRemoval(listItem);

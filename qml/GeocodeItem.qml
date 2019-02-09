@@ -172,7 +172,7 @@ Item {
                                    app.styler.themeHighlightColor : app.styler.themePrimaryColor
                         height: visible ? implicitHeight : 0
                         text: model.markup ? model.markup : model.title
-                        textFormat: Text.RichText
+                        textFormat: Text.StyledText
                         visible: !listItem.header && text
                     }
 
