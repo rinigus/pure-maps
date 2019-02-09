@@ -54,30 +54,30 @@ QtObject {
     property real themeIconSizeMedium: 2*themeFontSizeLarge
     property real themeIconSizeSmall: 1.5*themeFontSizeLarge
     // used icons
-    property string iconAbout
-    property string iconBack
-    property string iconClear
-    property string iconDelete
-    property string iconDot
-    property string iconFavorite
-    property string iconFavoriteSelected
-    property string iconForward
-    property string iconMaps
-    property string iconMenu
-    property string iconNavigate
-    property string iconNearby
-    property string iconPause
-    property string iconPhone
-    property string iconPreferences
-    property string iconProfile
-    property string iconRefresh
-    property string iconSearch
-    property string iconShare
-    property string iconShortlisted
-    property string iconShortlistedSelected
-    property string iconStart
-    property string iconStop
-    property string iconWebLink
+    property string iconAbout: "help-about-symbolic"
+    property string iconBack: "go-previous-symbolic"
+    property string iconClear: "edit-clear-all-symbolic"
+    property string iconDelete: "edit-delete-symbolic"
+    property string iconDot: "find-location-symbolic"
+    property string iconFavorite: "bookmark-new-symbolic"
+    property string iconFavoriteSelected: "user-bookmarks-symbolic"
+    property string iconForward: "go-next-symbolic"
+    property string iconMaps: "view-paged-symbolic"
+    property string iconMenu: "open-menu-symbolic"
+    property string iconNavigate: "send-to-symbolic"
+    property string iconNearby: "zoom-fit-best-symbolic"
+    property string iconPause: "media-playback-pause-symbolic"
+    property string iconPhone: "call-start-symbolic"
+    property string iconPreferences: "preferences-system-symbolic"
+    property string iconProfile: "network-server-symbolic"
+    property string iconRefresh: "view-refresh-symbolic"
+    property string iconSearch: "edit-find-symbolic"
+    property string iconShare: "emblem-shared-symbolic"
+    property string iconShortlisted: "checkbox-symbolic"
+    property string iconShortlistedSelected: "checkbox-checked-symbolic"
+    property string iconStart: "media-playback-start-symbolic"
+    property string iconStop: "media-playback-stop-symbolic"
+    property string iconWebLink: "web-browser-symbolic"
 
     // item sizes
     property real themeItemSizeLarge: themeFontSizeLarge * 3
@@ -91,31 +91,4 @@ QtObject {
     property real themePaddingSmall: 0.25*themeFontSizeSmall
 
     property real themePixelRatio: Screen.devicePixelRatio
-
-    function initStyle() {
-        iconAbout = "help-about-symbolic";
-        iconBack = "go-previous-symbolic";
-        iconClear = "edit-clear-all-symbolic";
-        iconDelete = "edit-delete-symbolic";
-        iconDot = "find-location-symbolic";
-        iconFavorite = "bookmark-new-symbolic";
-        iconFavoriteSelected = "user-bookmarks-symbolic";
-        iconForward = "go-next-symbolic";
-        iconMaps = "view-paged-symbolic";
-        iconMenu = "open-menu-symbolic";
-        iconNavigate = "send-to-symbolic";
-        iconNearby = "zoom-fit-best-symbolic";
-        iconPause = "media-playback-pause-symbolic";
-        iconPhone = "call-start-symbolic";
-        iconPreferences = "preferences-system-symbolic";
-        iconProfile = "network-server-symbolic";
-        iconRefresh = "view-refresh-symbolic";
-        iconSearch = "edit-find-symbolic";
-        iconShare = "emblem-shared-symbolic";
-        iconShortlisted = "checkbox-symbolic";
-        iconShortlistedSelected = "checkbox-checked-symbolic";
-        iconStart = "media-playback-start-symbolic";
-        iconStop = "media-playback-stop-symbolic";
-        iconWebLink = "web-browser-symbolic";
-    }
 }
