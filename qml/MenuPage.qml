@@ -41,6 +41,17 @@ PagePL {
         width: parent.width
 
         IconListItem {
+            icon: app.styler.iconStop
+            label: app.tr("Stop following the movement")
+            visible: app.mode === modes.followMe
+            onClicked: {
+                if (app.mode !== modes.followMe) return;
+                app.setModeExplore();
+                app.showMap();
+            }
+        }
+
+        IconListItem {
             icon: app.styler.iconSearch
             label: app.tr("Search")
             onClicked: app.pushMain(Qt.resolvedUrl("GeocodePage.qml"))
