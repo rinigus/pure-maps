@@ -41,7 +41,7 @@ IconButtonPL {
 
     property string logo: ""
 
-    onClicked: app.push(Qt.resolvedUrl("AttributionPage.qml"))
+    onClicked: app.push(Qt.resolvedUrl("AttributionPage.qml"), {}, true)
     onLogoChanged: attributionButton.iconSource = logo ?
         app.getIcon("icons/attribution/%1".arg(logo)) : "";
 

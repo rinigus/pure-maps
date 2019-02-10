@@ -16,12 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.9
-import QtQuick.Controls 2.2
-import org.kde.kirigami 2.5 as Kirigami
+import QtQuick 2.0
+import "."
 
-Kirigami.Action {
-    property bool isAction: true
-    signal clicked
-    onTriggered: clicked()
+PagePL {
+    id: menu
+
+    property string         banner // added for compatibility
+    default property alias  content: column.data
+    property string         titleIcon // added for compatibility
+
+    Column {
+        id: column
+        width: parent.width
+    }
 }

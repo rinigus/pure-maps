@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018-2019 Rinigus, 2019 Purism SPC
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,12 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.9
-import QtQuick.Controls 2.2
-import org.kde.kirigami 2.5 as Kirigami
+import QtQuick 2.0
 
-Kirigami.Action {
-    property bool isAction: true
+Item {
+    property bool   checked
+    property string text
     signal clicked
-    onTriggered: clicked()
 }

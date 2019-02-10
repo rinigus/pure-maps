@@ -26,6 +26,7 @@ ApplicationWindow {
     cover: Cover {}
     initialPage: null
 
+    property string menuPageUrl
     property var    pages: null // initialized later to ensure the same path for object creation
     property bool   running: applicationActive || (cover && cover.active)
     property int    screenHeight: Screen.height
@@ -35,6 +36,7 @@ ApplicationWindow {
     property bool   keepAlive: false
 
     Component.onCompleted: {
+        pages.ps = pageStack;
         updateOrientation()
         DisplayBlanking.preventBlanking = Qt.binding(function() { return applicationActive && keepAlive })
     }
@@ -47,8 +49,16 @@ ApplicationWindow {
 
     onDeviceOrientationChanged: updateOrientation()
 
+    function clearPages() {
+        // not used in the platforms with menu shown
+        // as a page in a stack
+    }
+
     function initPages() {
-        pages.ps = pageStack;
+    }
+
+    function showMainMenu() {
+        app.push(menuPageUrl);
     }
 
     function updateOrientation() {

@@ -24,6 +24,7 @@ import "platform"
 ApplicationWindowPL {
     id: app
     initialPage: initPage
+    menuPageUrl: Qt.resolvedUrl("MenuPage.qml")
     pages: StackPL { }
     title: app.tr("Pure Maps")
 
@@ -92,8 +93,6 @@ ApplicationWindowPL {
         onMapMatchingWhenFollowingChanged: app.updateMapMatching()
         onMapMatchingWhenIdleChanged: app.updateMapMatching()
     }
-
-    Component.onCompleted: initPages()
 
     Component.onDestruction: {
         if (!py.ready || !app.map) return;
@@ -172,6 +171,7 @@ ApplicationWindowPL {
     }
 
     function initialize() {
+        initPages();
         app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
         initialized = true;
     }
@@ -188,7 +188,8 @@ ApplicationWindowPL {
         });
     }
 
-    function push(pagefile, options) {
+    function push(pagefile, options, clearAll) {
+        if (clearAll) app.clearPages();
         return app.pages.push(pagefile, options);
     }
 
@@ -199,6 +200,7 @@ ApplicationWindowPL {
     function pushMain(pagefile, options) {
         // replace the current main with the new stack
         app._stackMain.clear();
+        app.clearPages();
         return app._stackMain.push(pagefile, options);
     }
 
@@ -304,7 +306,7 @@ ApplicationWindowPL {
         } else {
             // start a new call
             app._stackMain.clear();
-            app.push(Qt.resolvedUrl("MenuPage.qml"));
+            app.showMainMenu();
         }
     }
 

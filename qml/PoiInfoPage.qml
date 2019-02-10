@@ -47,7 +47,6 @@ PagePL {
 
     Column {
         id: column
-        spacing: app.styler.themePaddingMedium
         width: page.width
 
         ListItemLabel {

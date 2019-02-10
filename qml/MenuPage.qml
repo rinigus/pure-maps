@@ -21,191 +21,156 @@ import QtPositioning 5.3
 import "."
 import "platform"
 
-PagePL {
+MenuDrawerPL {
     id: page
-    title: app.tr("Main Menu")
 
+    banner: "icons/banner.png"
+    title: "Pure Maps"
+    titleIcon: "pure-maps"
     pageMenu: PageMenuPL {
         PageMenuItemPL {
-            iconName: app.styler.iconName
+            iconName: app.styler.iconAbout
             text: app.tr("About")
-            onClicked: app.push(Qt.resolvedUrl("AboutPage.qml"))
+            onClicked: app.push(Qt.resolvedUrl("AboutPage.qml"), {}, true)
         }
     }
 
     // To make TextSwitch text line up with IconListItem's text label.
     property real switchLeftMargin: app.styler.themeHorizontalPageMargin + app.styler.themePaddingLarge + app.styler.themePaddingSmall
 
-    Column {
-        id: column
-        width: parent.width
+    MenuDrawerItemPL {
+        iconName: app.styler.iconStop
+        text: app.tr("Stop following the movement")
+        visible: app.mode === modes.followMe
+        onClicked: {
+            if (app.mode !== modes.followMe) return;
+            app.setModeExplore();
+            app.showMap();
+        }
+    }
 
-        IconListItem {
-            icon: app.styler.iconStop
-            label: app.tr("Stop following the movement")
-            visible: app.mode === modes.followMe
-            onClicked: {
-                if (app.mode !== modes.followMe) return;
-                app.setModeExplore();
-                app.showMap();
+    MenuDrawerItemPL {
+        iconName: app.styler.iconSearch
+        text: app.tr("Search")
+        onClicked: app.pushMain(Qt.resolvedUrl("GeocodePage.qml"))
+    }
+
+    MenuDrawerItemPL {
+        iconName: app.styler.iconNavigate
+        text: app.tr("Navigation")
+        onClicked: app.pushMain(Qt.resolvedUrl("RoutePage.qml"))
+    }
+
+    MenuDrawerItemPL {
+        iconName: app.styler.iconNearby
+        text: app.tr("Nearby venues")
+        onClicked: app.pushMain(Qt.resolvedUrl("NearbyPage.qml"))
+    }
+
+    MenuDrawerItemPL {
+        iconName: app.styler.iconFavorite
+        text: app.tr("Bookmarks")
+        onClicked: app.pushMain(Qt.resolvedUrl("PoiPage.qml"))
+    }
+
+    MenuDrawerItemPL {
+        enabled: gps.ready
+        iconName: app.styler.iconShare
+        text: gps.ready ? app.tr("Share current position") : app.tr("Share current position (not ready)")
+        onClicked: {
+            if (!gps.ready) return;
+            var y = gps.position.coordinate.latitude;
+            var x = gps.position.coordinate.longitude;
+            app.push(Qt.resolvedUrl("SharePage.qml"), {
+                         "coordinate": QtPositioning.coordinate(y, x),
+                         "title": app.tr("Share Current Position"),
+                     }, true);
+        }
+    }
+
+    MenuDrawerItemPL {
+        iconName: app.styler.iconDot
+        text: app.tr("Center on current position")
+        onClicked: {
+            app.map.centerOnPosition();
+            app.showMap();
+        }
+    }
+
+    MenuDrawerItemPL {
+        iconName: app.styler.iconMaps
+        text: app.tr("Maps")
+        onClicked: app.pushMain(Qt.resolvedUrl("BasemapPage.qml"))
+    }
+
+    MenuDrawerItemPL {
+        iconName: app.styler.iconPreferences
+        text: app.tr("Preferences")
+        onClicked: app.push(Qt.resolvedUrl("PreferencesPage.qml"), {}, true)
+    }
+
+    MenuDrawerSubmenuPL {
+        id: profiles
+        iconName: app.styler.iconProfile
+        text: app.tr("Profile")
+
+        MenuDrawerSubmenuItemPL {
+            checked: app.conf.profile === "online"
+            text: app.tr("Online")
+            onClicked: profiles.set("online")
+        }
+
+        MenuDrawerSubmenuItemPL {
+            checked: app.conf.profile === "offline"
+            text: app.tr("Offline")
+            onClicked: profiles.set("offline")
+        }
+
+        MenuDrawerSubmenuItemPL {
+            checked: app.conf.profile === "mixed"
+            text: app.tr("Mixed")
+            onClicked: profiles.set("mixed")
+        }
+
+        function set(p) {
+            py.call_sync("poor.app.set_profile", [p]);
+        }
+    }
+
+    TextSwitchPL {
+        id: autoCenterItem
+        checked: app.map.autoCenter
+        height: app.styler.themeItemSizeSmall
+        leftMargin: page.switchLeftMargin
+        text: app.tr("Auto-center on position")
+        Connections {
+            target: map
+            onAutoCenterChanged: {
+                if (autoCenterItem.checked !== app.map.autoCenter)
+                    autoCenterItem.checked = app.map.autoCenter;
             }
         }
-
-        IconListItem {
-            icon: app.styler.iconSearch
-            label: app.tr("Search")
-            onClicked: app.pushMain(Qt.resolvedUrl("GeocodePage.qml"))
+        onCheckedChanged: {
+            app.map.autoCenter = autoCenterItem.checked;
+            app.map.autoCenter && app.map.centerOnPosition();
         }
+    }
 
-        IconListItem {
-            icon: app.styler.iconNavigate
-            label: app.tr("Navigation")
-            onClicked: app.pushMain(Qt.resolvedUrl("RoutePage.qml"))
-        }
-
-        IconListItem {
-            icon: app.styler.iconNearby
-            label: app.tr("Nearby venues")
-            onClicked: app.pushMain(Qt.resolvedUrl("NearbyPage.qml"))
-        }
-
-        IconListItem {
-            icon: app.styler.iconFavorite
-            label: app.tr("Bookmarks")
-            onClicked: app.pushMain(Qt.resolvedUrl("PoiPage.qml"))
-        }
-
-        IconListItem {
-            icon: app.styler.iconShare
-            label: app.tr("Share current position")
-            BusyIndicatorSmallPL {
-                anchors.right: parent.right
-                anchors.rightMargin: app.styler.themeHorizontalPageMargin
-                anchors.verticalCenter: parent.verticalCenter
-                running: !gps.ready
-                z: parent.z + 1
-            }
-            onClicked: {
-                if (!gps.ready) return;
-                var y = gps.position.coordinate.latitude;
-                var x = gps.position.coordinate.longitude;
-                app.push(Qt.resolvedUrl("SharePage.qml"), {
-                             "coordinate": QtPositioning.coordinate(y, x),
-                             "title": app.tr("Share Current Position"),
-                         });
+    TextSwitchPL {
+        id: autoRotateItem
+        checked: app.map.autoRotate
+        height: app.styler.themeItemSizeSmall
+        leftMargin: page.switchLeftMargin
+        text: app.tr("Auto-rotate on direction")
+        Connections {
+            target: map
+            onAutoRotateChanged: {
+                if (autoRotateItem.checked !== app.map.autoRotate)
+                    autoRotateItem.checked = app.map.autoRotate;
             }
         }
-
-        IconListItem {
-            icon: app.styler.iconDot
-            label: app.tr("Center on current position")
-            onClicked: {
-                app.map.centerOnPosition();
-                app.showMap();
-            }
+        onCheckedChanged: {
+            app.map.autoRotate = autoRotateItem.checked;
         }
-
-        IconListItem {
-            icon: app.styler.iconMaps
-            label: app.tr("Maps")
-            onClicked: app.pushMain(Qt.resolvedUrl("BasemapPage.qml"))
-        }
-
-        IconListItem {
-            icon: app.styler.iconPreferences
-            label: app.tr("Preferences")
-            onClicked: app.push(Qt.resolvedUrl("PreferencesPage.qml"))
-        }
-
-        // We use icon+combobox only here, hence no separate class
-        ListItemPL {
-            id: item
-            anchors.left: parent.left
-            anchors.right: parent.right
-            contentHeight: Math.max(app.styler.themeItemSizeSmall, profileComboBox.height)
-
-            IconPL {
-                id: icon
-                anchors.left: parent.left
-                anchors.leftMargin: app.styler.themeHorizontalPageMargin
-                anchors.verticalCenter: label.verticalCenter
-                iconHeight: app.styler.themeItemSizeSmall*0.8
-                iconName: app.styler.iconProfile
-            }
-
-            LabelPL {
-                id: label
-                anchors.left: icon.right
-                anchors.leftMargin: app.styler.themePaddingMedium
-                color: {
-                    if (!item.enabled) return app.styler.themeSecondaryHighlightColor;
-                    if (item.highlighted) return app.styler.themeHighlightColor;
-                    return app.styler.themePrimaryColor;
-                }
-                height: app.styler.themeItemSizeSmall
-                text: app.tr("Profile")
-                truncMode: truncModes.fade
-                verticalAlignment: Text.AlignVCenter
-            }
-
-            ComboBoxPL {
-                id: profileComboBox
-                anchors.left: label.right
-                anchors.leftMargin: app.styler.themePaddingMedium
-                anchors.right: parent.right
-                anchors.top: app.styler.isSilica ? parent.top : undefined
-                anchors.verticalCenter: app.styler.isSilica ? undefined : label.verticalCenter
-                model: [ app.tr("Online"), app.tr("Offline"), app.tr("Mixed") ]
-                property var values: ["online", "offline", "mixed"]
-                Component.onCompleted: {
-                    var value = app.conf.profile;
-                    profileComboBox.currentIndex = profileComboBox.values.indexOf(value);
-                }
-                onCurrentIndexChanged: {
-                    var index = profileComboBox.currentIndex;
-                    py.call_sync("poor.app.set_profile", [profileComboBox.values[index]]);
-                }
-            }
-
-            onClicked: profileComboBox.activate()
-        }
-
-        TextSwitchPL {
-            id: autoCenterItem
-            checked: app.map.autoCenter
-            height: app.styler.themeItemSizeSmall
-            leftMargin: page.switchLeftMargin
-            text: app.tr("Auto-center on position")
-            Connections {
-                target: map
-                onAutoCenterChanged: {
-                    if (autoCenterItem.checked !== app.map.autoCenter)
-                       autoCenterItem.checked = app.map.autoCenter;
-                }
-            }
-            onCheckedChanged: {
-                app.map.autoCenter = autoCenterItem.checked;
-                app.map.autoCenter && app.map.centerOnPosition();
-            }
-        }
-
-        TextSwitchPL {
-            id: autoRotateItem
-            checked: app.map.autoRotate
-            height: app.styler.themeItemSizeSmall
-            leftMargin: page.switchLeftMargin
-            text: app.tr("Auto-rotate on direction")
-            Connections {
-                target: map
-                onAutoRotateChanged: {
-                    if (autoRotateItem.checked !== app.map.autoRotate)
-                       autoRotateItem.checked = app.map.autoRotate;
-                }
-            }
-            onCheckedChanged: {
-                app.map.autoRotate = autoRotateItem.checked;
-            }
-        }
-
     }
 }

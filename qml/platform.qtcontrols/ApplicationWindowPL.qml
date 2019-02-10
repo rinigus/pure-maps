@@ -27,14 +27,14 @@ ApplicationWindow {
     height: 480
     visible: true
 
-    property alias initialPage: pageStack.initialItem
-
-    property var   pages: null // initialized later to ensure the same path for object creation
-    property bool  running: visible
-    property int   screenHeight: height
-    property bool  screenLarge: true
-    property int   screenWidth: width
-    property bool  keepAlive: false // not used - desktop is not expected to be falling asleep
+    property alias  initialPage: pageStack.initialItem
+    property string menuPageUrl
+    property var    pages: null // initialized later to ensure the same path for object creation
+    property bool   running: visible
+    property int    screenHeight: height
+    property bool   screenLarge: true
+    property int    screenWidth: width
+    property bool   keepAlive: false // not used - desktop is not expected to be falling asleep
 
     StackView {
         id: pageStack
@@ -42,11 +42,21 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-    Component.onCompleted: updateOrientation()
-    //onActiveFocusItemChanged: print("activeFocusItem", activeFocusItem)
+    Component.onCompleted: {
+        pages.ps = pageStack;
+        updateOrientation();
+    }
+
+    function clearPages() {
+        // not used in the platforms with menu shown
+        // as a page in a stack
+    }
 
     function initPages() {
-        pages.ps = pageStack;
+    }
+
+    function showMainMenu() {
+        app.push(menuPageUrl);
     }
 
     function updateOrientation() {

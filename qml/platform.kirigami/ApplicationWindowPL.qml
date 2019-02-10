@@ -30,22 +30,48 @@ Kirigami.ApplicationWindow {
     // until Kirigami will include corresponding bug fix
     //pageStack.initialPage: initialPage
 
-    property var   initialPage
+    property var    initialPage
+    property string menuPageUrl
+    property var    pages: null // initialized later to ensure the same path for object creation
+    property bool   running: visible
+    property int    screenHeight: height
+    property bool   screenLarge: true
+    property int    screenWidth: width
+    property bool   keepAlive: false // not used - desktop is not expected to be falling asleep
 
     // hide from Kirigami
     default property var _content
 
-    property var   pages: null // initialized later to ensure the same path for object creation
-    property bool  running: visible
-    property int   screenHeight: height
-    property bool  screenLarge: true
-    property int   screenWidth: width
-    property bool  keepAlive: false // not used - desktop is not expected to be falling asleep
+    Component.onCompleted: {
+        pages.ps = pageStack;
+        updateOrientation();
+    }
 
-    Component.onCompleted: updateOrientation()
+    function clearPages() {
+        // called when we need to drop all pages
+        // except the page with a map and start
+        // adding new ones
+
+        // this implementation takes into account
+        // we clear pages when we get to page 0
+        app.pages.ps.currentIndex = 0;
+    }
 
     function initPages() {
-        pages.ps = pageStack;
+        if (menuPageUrl) {
+            var pc = Qt.createComponent(menuPageUrl);
+            if (pc.status === Component.Error) {
+                console.log('Error while creating component');
+                console.log(pc.errorString());
+                return null;
+            }
+            var p = pc.createObject(appWindow);
+            globalDrawer =p;
+        }
+    }
+
+    function showMainMenu() {
+        globalDrawer.open();
     }
 
     function updateOrientation() {

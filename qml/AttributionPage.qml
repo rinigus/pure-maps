@@ -24,11 +24,9 @@ PagePL {
     title: app.tr("Attribution")
 
     Column {
-        spacing: app.styler.themePaddingLarge
         width: parent.width
 
         Column {
-            spacing: app.styler.themePaddingMedium
             width: parent.width
 
             SectionHeaderPL {
@@ -58,7 +56,6 @@ PagePL {
         }
 
         Column {
-            spacing: app.styler.themePaddingMedium
             width: parent.width
             SectionHeaderPL {
                 text: app.tr("Search")
@@ -88,7 +85,6 @@ PagePL {
         }
 
         Column {
-            spacing: app.styler.themePaddingMedium
             width: parent.width
             SectionHeaderPL {
                 text: app.tr("Venues")
@@ -118,7 +114,6 @@ PagePL {
         }
 
         Column {
-            spacing: app.styler.themePaddingMedium
             width: parent.width
             SectionHeaderPL {
                 text: app.tr("Navigation")

@@ -18,10 +18,35 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.5 as Kirigami
+import "."
 
-Kirigami.Action {
-    property bool isAction: true
-    signal clicked
-    onTriggered: clicked()
+Kirigami.GlobalDrawer {
+    id: menu
+
+    property alias          banner: menu.bannerImageSource
+    default property alias  content: menu.items
+    property list<QtObject> items
+    property var            pageMenu
+
+    Column {
+        id: column
+        width: parent.width
+    }
+
+    Component.onCompleted: {
+        for (var i=0; i < items.length; i++) {
+            if (items[i].isAction)
+                actions.push(items[i]);
+            else {
+                column.data.push(items[i]);
+            }
+        }
+
+        if (pageMenu) {
+            for (var i=0; i < pageMenu.items.length; i++)
+                actions.push(pageMenu.items[i]);
+        }
+    }
 }
