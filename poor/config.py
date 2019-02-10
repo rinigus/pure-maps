@@ -245,7 +245,9 @@ class ConfigurationStore(poor.AttrDict):
     def set_profile(self, value):
         """Set guide corresponding to the current profile"""
         if value not in DEFAULTS["profiles"]:
-            raise ValueError("Profile not supported", value)
+            print("Trying to set profile to unavailable value", value, ". Using the default profile instead")
+            value = DEFAULTS["profile"]
+            #raise ValueError("Profile not supported", value)
         self.set("profile", value)
         
     def set_router(self, value):
