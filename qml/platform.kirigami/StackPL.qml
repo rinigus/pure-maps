@@ -31,20 +31,14 @@ Item {
     property bool _locked: false
 
     Connections {
+        target: app
+        onInfoActive: stack.processCurrentIndex()
+    }
+
+    Connections {
         target: ps
-        onCurrentIndexChanged: {
-            if (ps.currentIndex === 0 && ps.depth > 1) {
-                ps.pop(ps.get(0));
-                attached = undefined;
-                attachedTo = undefined;
-            } else if (ps.currentIndex+1 < ps.depth && ps.get(ps.currentIndex+1)===attached) {
-                // remove attached page from stack when navigaing away from it
-                ps.pop(ps.get(ps.currentIndex));
-            }
-        }
-
+        onCurrentIndexChanged: stack.processCurrentIndex()
         onCurrentItemChanged: stack.processCurrentItem()
-
         onDepthChanged: {
             applicationWindow().controlsVisible = (ps.depth !== 1);
         }
@@ -101,6 +95,18 @@ Item {
             currentItem = ps.currentItem
     }
 
+    function processCurrentIndex() {
+        if (ps.currentIndex === 0 && ps.depth > 1) {
+            if (app.infoActive) return;
+            ps.pop(ps.get(0));
+            attached = undefined;
+            attachedTo = undefined;
+        } else if (ps.currentIndex+1 < ps.depth && ps.get(ps.currentIndex+1)===attached) {
+            // remove attached page from stack when navigaing away from it
+            ps.pop(ps.get(ps.currentIndex));
+        }
+    }
+
     function push(page, options, immediate) {
         _locked = true;
         if (ps.currentIndex !== ps.depth-1 && ps.currentIndex > 0) {
@@ -135,5 +141,9 @@ Item {
 
     function replace(page, options) {
         return ps.replace(page, options ? options : {});
+    }
+
+    function showRoot() {
+        ps.currentIndex = 0;
     }
 }

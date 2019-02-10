@@ -30,6 +30,7 @@ Kirigami.ApplicationWindow {
     // until Kirigami will include corresponding bug fix
     //pageStack.initialPage: initialPage
 
+    property bool   isConvergent: true
     property var    initialPage
     property string menuPageUrl
     property var    pages: StackPL { }

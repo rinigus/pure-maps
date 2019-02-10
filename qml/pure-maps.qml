@@ -188,7 +188,10 @@ ApplicationWindowPL {
     }
 
     function push(pagefile, options, clearAll) {
-        if (clearAll) app.clearPages();
+        if (clearAll) {
+            app.resetMenu();
+            app.clearPages();
+        }
         return app.pages.push(pagefile, options);
     }
 
@@ -199,6 +202,7 @@ ApplicationWindowPL {
     function pushMain(pagefile, options) {
         // replace the current main with the new stack
         app._stackMain.clear();
+        app.resetMenu();
         app.clearPages();
         return app._stackMain.push(pagefile, options);
     }
@@ -269,6 +273,7 @@ ApplicationWindowPL {
         app._stackMain.keep = false;
         app.stateId = "";
         app.infoPanel.infoText = "";
+        app.showMap();
     }
 
     function setModeExplore() {
@@ -291,7 +296,10 @@ ApplicationWindowPL {
     function showMap() {
         // Clear the page stack and hide the menu.
         app.pages.completeAnimation();
-        app.pages.pop(app.rootPage);
+        if (app.isConvergent && app.infoActive)
+            app.pages.showRoot();
+        else
+            app.pages.pop(app.rootPage);
     }
 
     function showMenu(page, options) {

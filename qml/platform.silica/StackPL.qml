@@ -59,4 +59,8 @@ QtObject {
     function replace(page, options) {
         return ps.replace(page, options ? options : {})
     }
+
+    function showRoot() {
+        ps.currentIndex = 0;
+    }
 }
