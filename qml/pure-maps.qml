@@ -25,7 +25,6 @@ ApplicationWindowPL {
     id: app
     initialPage: initPage
     menuPageUrl: Qt.resolvedUrl("MenuPage.qml")
-    pages: StackPL { }
     title: app.tr("Pure Maps")
 
     keepAlive: app.conf.keepAlive === "always"

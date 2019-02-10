@@ -29,7 +29,7 @@ ApplicationWindow {
 
     property alias  initialPage: pageStack.initialItem
     property string menuPageUrl
-    property var    pages: null // initialized later to ensure the same path for object creation
+    property var    pages: StackPL { }
     property bool   running: visible
     property int    screenHeight: height
     property bool   screenLarge: true

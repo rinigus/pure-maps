@@ -27,7 +27,7 @@ ApplicationWindow {
     initialPage: null
 
     property string menuPageUrl
-    property var    pages: null // initialized later to ensure the same path for object creation
+    property var    pages: StackPL { }
     property bool   running: applicationActive || (cover && cover.active)
     property int    screenHeight: Screen.height
     property bool   screenLarge: Screen.sizeCategory >= Screen.Large
