@@ -202,7 +202,6 @@ Item {
 
                 onClicked: {
                     if (listItem.header) return;
-                    listItem.focus = true;
                     if (currentPosition) {
                         var pos = {
                             "title": app.tr("Current position"),

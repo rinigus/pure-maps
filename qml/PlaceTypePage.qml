@@ -65,7 +65,6 @@ DialogListPL {
         ListView.onRemove: animateRemoval(listItem);
 
         onClicked: {
-            listItem.focus = true;
             dialog.query = model.type;
             dialog.accept();
         }
