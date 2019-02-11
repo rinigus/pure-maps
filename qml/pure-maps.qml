@@ -188,7 +188,7 @@ ApplicationWindowPL {
     }
 
     function push(pagefile, options, clearAll) {
-        if (clearAll) {
+        if (app.isConvergent && clearAll) {
             app.resetMenu();
             app.clearPages();
         }
@@ -202,8 +202,10 @@ ApplicationWindowPL {
     function pushMain(pagefile, options) {
         // replace the current main with the new stack
         app._stackMain.clear();
-        app.resetMenu();
-        app.clearPages();
+        if (app.isConvergent) {
+            app.resetMenu();
+            app.clearPages();
+        }
         return app._stackMain.push(pagefile, options);
     }
 
