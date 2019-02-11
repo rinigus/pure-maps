@@ -27,10 +27,6 @@ PagePL {
     acceptIconName: app.styler.iconManeuvers
     acceptText: app.tr("Maneuvers")
 
-    onPageStatusActive: app.navigationPageSeen = true;
-
-    property bool partOfNavigationStack: true
-
     Column {
         id: column
         width: parent.width
@@ -191,4 +187,5 @@ PagePL {
 
     }
 
+    onPageStatusActive: app.navigationPageSeen = true
 }

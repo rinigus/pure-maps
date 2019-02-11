@@ -20,21 +20,41 @@ import QtQuick 2.0
 import "../qml"
 import "../qml/platform"
 
-PageEmptyPL {
+PagePL {
     id: page
+    title: app.tr("Route")
 
     property bool loading: true
 
-    BusyModal {
-        id: busy
-        running: page.loading
+    Item {
+        height: page.height
+        width: page.width
+
+        BusyModal {
+            id: busy
+            anchors.centerIn: parent
+            running: page.loading
+        }
+
+        NarrativeItem {
+            id: narrative
+            visible: false
+        }
     }
 
-    onPageStatusActivating: busy.text = app.tr("Searching");
-    onPageStatusActive: page.findRoute();
+    onPageStatusActivating: {
+        if (loading) busy.text = app.tr("Searching");
+    }
+    onPageStatusActive: {
+        if (loading) page.findRoute();
+    }
 
     function findRoute() {
         // Load routing results from the Python backend.
+        page.loading = true;
+        narrative.clear();
+        narrative.visible = false;
+        busy.visible = true;
         var routePage = app.pages.previousPage();
         var args = [routePage.from, routePage.to];
         py.call("poor.app.router.route", args, function(route) {
@@ -48,6 +68,12 @@ PageEmptyPL {
                 map.addRoute(route);
                 map.fitViewToRoute();
                 map.addManeuvers(route.maneuvers);
+                if (app.isConvergent) {
+                    page.loading = false;
+                    busy.visible = false;
+                    narrative.visible = true;
+                    narrative.populate();
+                }
             } else {
                 busy.error = app.tr("No results");
                 page.loading = false;

@@ -547,6 +547,7 @@ MapboxMap {
         var coords = Util.pluck(map.maneuvers, "coordinate");
         var names  = Util.pluck(map.maneuvers, "name");
         map.updateSourcePoints(map.sources.maneuvers, coords, names);
+        app.narrativePageSeen = false;
     }
 
     function updateMargins() {
