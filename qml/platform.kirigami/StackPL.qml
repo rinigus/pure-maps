@@ -32,7 +32,7 @@ Item {
 
     Connections {
         target: app
-        onInfoActive: stack.processCurrentIndex()
+        onInfoActiveChanged: stack.processCurrentIndex()
     }
 
     Connections {
