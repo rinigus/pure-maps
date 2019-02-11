@@ -9,5 +9,5 @@
   "logo": "mapbox",
   "name": "Mapbox Outdoors",
   "profiles": ["mixed", "online"],
-  "style_url": "mapbox://styles/mapbox/outdoors-v11"
+  "style_url": "mapbox://styles/mapbox/outdoors-v10"
 }
