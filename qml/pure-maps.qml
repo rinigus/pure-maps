@@ -326,6 +326,7 @@ ApplicationWindowPL {
             app._stackNavigation.restore();
         } else {
             app._stackNavigation.clear();
+            app.narrativePageSeen = false;
             app._stackNavigation.push(Qt.resolvedUrl("NavigationPage.qml"));
             app._stackNavigation.pushAttached(Qt.resolvedUrl("NarrativePage.qml"));
         }
