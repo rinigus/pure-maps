@@ -23,14 +23,14 @@ import QtQuick.Controls.impl 2.4
 
 Item {
     id: item
-    height: image.height*(1 + padding)
-    width: image.width*(1 + padding)
+    height: (iconName ? iconimage.height : image.height)*(1 + padding)
+    width: (iconName ? iconimage.width : image.width)*(1 + padding)
 
     property bool   iconColorize: true
     property int    iconHeight: 0
-    property string iconName
-    property alias  iconRotation: image.rotation
-    property string iconSource
+    property alias  iconName: iconimage.name
+    property real   iconRotation
+    property alias  iconSource: image.source
     property int    iconWidth: 0
     property real   padding: 0.5
 
@@ -41,13 +41,23 @@ Item {
         anchors.fill: parent
 
         IconImage {
-            id: image
+            id: iconimage
             anchors.centerIn: parent
             color: iconColorize ? app.styler.themeHighlightColor : "transparent"
-            name: iconName
-            source: iconSource
+            rotation: iconRotation
             sourceSize.height: iconHeight
             sourceSize.width: iconWidth
+            visible: name
+        }
+
+        Image {
+            id: image
+            anchors.centerIn: parent
+            fillMode: Image.PreserveAspectFit
+            rotation: iconRotation
+            sourceSize.height: iconHeight
+            sourceSize.width: iconWidth
+            visible: source && !iconName
         }
 
         MouseArea {
