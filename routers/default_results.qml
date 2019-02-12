@@ -27,19 +27,17 @@ PagePL {
     property bool loading: true
 
     Item {
-        height: page.height
+        height: busy.visible ? page.height*3.0/4.0 : 0
         width: page.width
-
         BusyModal {
             id: busy
-            anchors.centerIn: parent
             running: page.loading
         }
+    }
 
-        NarrativeItem {
-            id: narrative
-            visible: false
-        }
+    NarrativeItem {
+        id: narrative
+        visible: false
     }
 
     onPageStatusActivating: {
