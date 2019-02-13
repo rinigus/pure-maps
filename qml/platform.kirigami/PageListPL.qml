@@ -26,6 +26,7 @@ Kirigami.ScrollablePage {
     id: page
     flickable: listView
     mainItem: listView
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
 
     property string acceptIconName: app.styler.iconForward
     property alias  acceptText: mainAction.text
