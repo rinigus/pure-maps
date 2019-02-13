@@ -60,6 +60,7 @@ QtObject {
     property string iconDelete: "edit-delete-symbolic"
     property string iconDot: "find-location-symbolic"
     property string iconEdit: "document-edit-symbolic"
+    property string iconEditClear: "edit-clear-symbolic"
     property string iconFavorite: "bookmark-new-symbolic"
     property string iconFavoriteSelected: "user-bookmarks-symbolic"
     property string iconForward: "go-next-symbolic"

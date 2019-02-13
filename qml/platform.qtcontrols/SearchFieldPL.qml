@@ -55,7 +55,7 @@ FocusScope {
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         anchors.verticalCenter: field.verticalCenter
-        iconName: app.styler.iconDelete
+        iconName: app.styler.iconEditClear
         iconHeight: field.height * 0.8
         onClicked: field.text = ""
     }
