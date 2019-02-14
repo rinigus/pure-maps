@@ -28,6 +28,7 @@ PagePL {
     pageMenu: PageMenuPL {
         PageMenuItemPL {
             enabled: page.active
+            iconName: app.styler.iconEdit
             text: app.tr("Edit")
             onClicked: {
                 var dialog = app.push(Qt.resolvedUrl("PoiEditPage.qml"),
@@ -51,20 +52,22 @@ PagePL {
 
         ListItemLabel {
             color: app.styler.themeHighlightColor
-            height: text ? implicitHeight + app.styler.themePaddingMedium: 0
+            height: implicitHeight + app.styler.themePaddingMedium
             text: poi.poiType ? poi.poiType : ""
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
+            visible: text
             wrapMode: Text.WordWrap
         }
 
         ListItemLabel {
             color: app.styler.themeHighlightColor
             font.pixelSize: app.styler.themeFontSizeSmall
-            height: text ? implicitHeight + app.styler.themePaddingMedium: 0
+            height: implicitHeight + app.styler.themePaddingMedium
             text: hasCoordinate ? app.tr("Latitude: %1", poi.coordinate.latitude) + "\n" + app.tr("Longitude: %2", poi.coordinate.longitude) : ""
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
+            visible: text
             wrapMode: Text.WordWrap
         }
 
@@ -73,25 +76,28 @@ PagePL {
         }
 
         SectionHeaderPL {
-            height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+            height: implicitHeight + app.styler.themePaddingMedium
             text: poi.address || poi.postcode ? app.tr("Address") : ""
+            visible: text
         }
 
         ListItemLabel {
             color: app.styler.themeHighlightColor
-            height: text ? implicitHeight + app.styler.themePaddingMedium: 0
+            height: implicitHeight + app.styler.themePaddingMedium
             text: poi.address ? poi.address : ""
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
+            visible: text
             wrapMode: Text.WordWrap
         }
 
         ListItemLabel {
             color: app.styler.themeHighlightColor
-            height: text ? implicitHeight + app.styler.themePaddingMedium: 0
+            height: implicitHeight + app.styler.themePaddingMedium
             text: poi.postcode ? app.tr("Postal code: %1", poi.postcode) : ""
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
+            visible: text
             wrapMode: Text.WordWrap
         }
 
@@ -197,30 +203,38 @@ PagePL {
         }
 
         IconListItem {
-            height: poi.phone ? app.styler.themeItemSizeSmall : 0
+            height: app.styler.themeItemSizeSmall
             icon: poi.phone ? app.styler.iconPhone : ""
             label: poi.phone
+            visible: poi.phone
             onClicked: Qt.openUrlExternally("tel:" + poi.phone)
         }
 
         IconListItem {
-            height: poi.link ? app.styler.themeItemSizeSmall : 0
+            height: app.styler.themeItemSizeSmall
             icon: poi.link ? app.styler.iconWebLink : ""
             label: poi.link
+            visible: poi.link
             onClicked: Qt.openUrlExternally(poi.link)
+        }
+
+        Spacer {
+            height: app.styler.themePaddingMedium
         }
 
         SectionHeaderPL {
             height: text ? implicitHeight + app.styler.themePaddingMedium : 0
             text: poi.text ? app.tr("Additional info") : ""
+            visible: text
         }
 
         ListItemLabel {
             color: app.styler.themeHighlightColor
-            height: text ? implicitHeight + app.styler.themePaddingMedium: 0
+            height: implicitHeight + app.styler.themePaddingMedium
             text: poi.text
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
+            visible: text
             wrapMode: Text.WordWrap
         }
 
