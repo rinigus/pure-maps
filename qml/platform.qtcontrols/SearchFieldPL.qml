@@ -20,65 +20,39 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import "."
 
-FocusScope {
-    id: row
-    height: field.height
+TextField {
+    id: field
+    anchors.left: parent.left
+    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    anchors.right: parent.right
+    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    focus: true
+    leftPadding: searchButton.width + searchButton.anchors.leftMargin + app.styler.themePaddingMedium
+    rightPadding: clearButton.width + clearButton.anchors.leftMargin + app.styler.themePaddingMedium
+    Keys.onReturnPressed: field.search()
 
-    property alias placeholderText: field.placeholderText
-    property alias text: field.text
-    property real  textLeftMargin: row.x + field.x
+    property real  textLeftMargin: field.x + leftPadding
 
     signal search
 
-    SystemPalette {
-        id: palette
-        colorGroup: SystemPalette.Active
+    IconButtonPL {
+        id: searchButton
+        anchors.left: parent.left
+        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.verticalCenter: field.verticalCenter
+        iconName: app.styler.iconSearch
+        iconHeight: app.style.themeFontSizeMedium //field.height * 0.7
+        onClicked: field.search()
     }
 
-    Rectangle {
-        anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    IconButtonPL {
+        id: clearButton
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        color: palette.base
-        border.color: field.activeFocus ? palette.highlight : palette.midlight
-        border.width: field.activeFocus ? 2 : 1
-        height: 2*2 + field.height
-
-        IconPL {
-            id: searchImage
-            anchors.left: parent.left
-            anchors.leftMargin: app.styler.themePaddingMedium
-            anchors.verticalCenter: field.verticalCenter
-            iconName: app.styler.iconSearch
-            iconHeight: app.style.themeFontSizeMedium //field.height * 0.7
-        }
-
-        TextField {
-            id: field
-            anchors.left: searchImage.right
-            anchors.leftMargin: app.styler.themePaddingSmall
-            anchors.right: clearButton.left
-            anchors.rightMargin: app.styler.themePaddingSmall
-            anchors.verticalCenter: parent.verticalCenter
-            background: Rectangle {
-                color: palette.base
-                border.color: "transparent"
-            }
-            focus: true
-            width: parent.width
-            Keys.onReturnPressed: row.search()
-        }
-
-        IconButtonPL {
-            id: clearButton
-            anchors.right: parent.right
-            anchors.rightMargin: app.styler.themePaddingMedium
-            anchors.verticalCenter: field.verticalCenter
-            iconName: app.styler.iconEditClear
-            iconHeight: app.style.themeFontSizeMedium //field.height * 0.7
-            visible: field.text
-            onClicked: field.text = ""
-        }
+        anchors.rightMargin: app.styler.themePaddingMedium
+        anchors.verticalCenter: field.verticalCenter
+        iconName: app.styler.iconEditClear
+        iconHeight: app.style.themeFontSizeMedium //field.height * 0.7
+        visible: field.text
+        onClicked: field.text = ""
     }
 }
