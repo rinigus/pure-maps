@@ -24,6 +24,8 @@ import "."
 
 Kirigami.ScrollablePage {
     id: page
+    leftPadding: 0
+    rightPadding: 0
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
 
     property string        acceptIconName: app.styler.iconForward
