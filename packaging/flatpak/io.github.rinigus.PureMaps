@@ -1,4 +1,4 @@
 #!/bin/bash
 
-QT_QUICK_CONTROLS_STYLE="${QT_QUICK_CONTROLS_STYLE:-org.kde.desktop}"
+export QT_QUICK_CONTROLS_STYLE="${QT_QUICK_CONTROLS_STYLE:-org.kde.desktop}"
 exec /app/bin/qmlrunner -P /app/share io.github.rinigus.PureMaps
