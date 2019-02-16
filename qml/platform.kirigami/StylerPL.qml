@@ -75,6 +75,7 @@ QtObject {
     property string iconPreferences: "preferences-system-symbolic"
     property string iconProfile: "network-server-symbolic"
     property string iconRefresh: "view-refresh-symbolic"
+    property string iconSave: "document-save-symbolic"
     property string iconSearch: "edit-find-symbolic"
     property string iconShare: "emblem-shared-symbolic"
     property string iconShortlisted: "checkbox-symbolic"

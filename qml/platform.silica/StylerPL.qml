@@ -76,6 +76,7 @@ QtObject {
     property string iconPreferences: "image://theme/icon-m-developer-mode"
     property string iconProfile: "image://theme/icon-m-transfer"
     property string iconRefresh: "image://theme/icon-m-refresh"
+    property string iconSave: "image://theme/icon-m-acknowledge"
     property string iconSearch: "image://theme/icon-m-search"
     property string iconShare: "image://theme/icon-m-share"
     property string iconShortlisted: "image://theme/icon-m-annotation"

@@ -24,6 +24,7 @@ DialogPL {
     id: page
     title: app.tr("Edit bookmark")
 
+    acceptIconName: app.styler.iconSave
     acceptText: app.tr("Save")
 
     property var poi
