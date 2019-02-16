@@ -9,18 +9,18 @@
 # Roman Meier <meierrom@gmail.com>, 2018
 # Uli M <popanz@online.de>, 2018
 # Peter Feldbaum, 2018
-# PawelSpoon <pawel@ich-habe-fertig.com>, 2018
 # happykraut, 2019
 # Ricardo Breitkopf, 2019
+# Pawel Spoon, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-02 11:22+0200\n"
+"POT-Creation-Date: 2019-02-16 11:01+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Ricardo Breitkopf, 2019\n"
+"Last-Translator: Pawel Spoon, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rinigus/teams/89597/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,10 +45,10 @@ msgstr "Punkt aus Koordinaten"
 msgid "Connection timed out"
 msgstr "Zeitüberschreitung bei der Verbindung"
 
-#: poor/history.py:32 qml/GeocodeItem.qml:206 qml/GeocodeItem.qml:515
-#: qml/NearbyPage.qml:29 qml/NearbyPage.qml:135 qml/NearbyPage.qml:150
-#: qml/RoutePage.qml:29 qml/RoutePage.qml:30 qml/RoutePage.qml:228
-#: qml/RoutePage.qml:238 qml/RoutePage.qml:240 qml/RoutePoint.qml:42
+#: poor/history.py:32 qml/GeocodeItem.qml:207 qml/GeocodeItem.qml:516
+#: qml/NearbyPage.qml:30 qml/NearbyPage.qml:136 qml/NearbyPage.qml:151
+#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:229
+#: qml/RoutePage.qml:239 qml/RoutePage.qml:241 qml/RoutePoint.qml:42
 #: qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr "Aktuelle Position"
@@ -142,15 +142,15 @@ msgstr "In {distance}, {direction}"
 msgid "Exit: "
 msgstr "Beenden:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:213
+#: poor/narrative.py:421 qml/pure-maps.qml:220
 msgid "Rerouting"
 msgstr "Neuberechnung"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:235
+#: poor/narrative.py:422 qml/pure-maps.qml:242
 msgid "Rerouting failed"
 msgstr "Neuberechnung fehlgeschlagen"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:229
+#: poor/narrative.py:423 qml/pure-maps.qml:236
 msgid "New route found"
 msgstr "Neue Route gefunden"
 
@@ -352,21 +352,21 @@ msgstr "Beste"
 
 #: guides/osmscout_name.qml:27
 msgid "Venue name"
-msgstr ""
+msgstr "Austragungsort"
 
-#: guides/osmscout_name.qml:47 qml/GeocodeItem.qml:130
-#: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:105
+#: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:132
+#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
 msgid "Remove"
 msgstr "Entferne"
 
-#: guides/osmscout_name.qml:68 qml/AttributionPage.qml:64
-#: qml/GeocodeItem.qml:39 qml/GeocodePage.qml:27 qml/MenuPage.qml:44
-#: qml/NearbyPage.qml:27 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:133
+#: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
+#: qml/GeocodeItem.qml:39 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
+#: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
 #: qml/PreferencesPage.qml:290
 msgid "Search"
 msgstr "Suchen"
 
-#: guides/osmscout_name.qml:80
+#: guides/osmscout_name.qml:81
 msgid "You can search for venues by name."
 msgstr "Sie können nach Veranstaltungsorten nach Namen suchen"
 
@@ -443,20 +443,20 @@ msgstr "Transifex Seite"
 msgid "Attribution"
 msgstr "Zuordnung"
 
-#: qml/AttributionPage.qml:35 qml/BasemapPage.qml:27 qml/MenuPage.qml:98
+#: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MenuPage.qml:102
 msgid "Maps"
 msgstr "Karten"
 
-#: qml/AttributionPage.qml:94
+#: qml/AttributionPage.qml:90
 msgid "Venues"
-msgstr "Orte"
+msgstr "Austragungsort"
 
-#: qml/AttributionPage.qml:124 qml/MenuPage.qml:50 qml/NavigationPage.qml:25
+#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:25
 #: qml/PreferencesPage.qml:314 qml/RoutePage.qml:25
-#: routers/default_results.qml:46 routers/digitransit_results.qml:186
-#: routers/gpx_osmscout_results.qml:46 routers/gpx_results.qml:46
-#: routers/mapquest_open_results.qml:46 routers/osmscout_results.qml:46
-#: routers/osrm_results.qml:46 routers/stadiamaps_results.qml:46
+#: routers/default_results.qml:64 routers/digitransit_results.qml:186
+#: routers/gpx_osmscout_results.qml:64 routers/gpx_results.qml:64
+#: routers/mapquest_open_results.qml:64 routers/osmscout_results.qml:64
+#: routers/osrm_results.qml:64 routers/stadiamaps_results.qml:64
 msgid "Navigation"
 msgstr "Navigation"
 
@@ -468,44 +468,44 @@ msgstr "Karte: %1"
 msgid "No selection"
 msgstr "keine Auswahl"
 
-#: qml/GeocodeItem.qml:378
+#: qml/GeocodeItem.qml:379
 msgid "Suggestions (%1)"
 msgstr "Vorschläge (%1)"
 
-#: qml/GeocodeItem.qml:399
+#: qml/GeocodeItem.qml:400
 msgid "Error while fetching results"
 msgstr "Fehler beim Abrufen der Ergebnisse"
 
-#: qml/GeocodeItem.qml:408
+#: qml/GeocodeItem.qml:409
 msgid "Searching ..."
 msgstr "Suche"
 
-#: qml/GeocodeItem.qml:413 qml/NearbyResultsPage.qml:134
-#: routers/default_results.qml:52 routers/digitransit_results.qml:245
-#: routers/gpx_osmscout_results.qml:52 routers/gpx_results.qml:52
-#: routers/mapquest_open_results.qml:52 routers/osmscout_results.qml:52
-#: routers/osrm_results.qml:52 routers/stadiamaps_results.qml:52
+#: qml/GeocodeItem.qml:414 qml/NearbyResultsPage.qml:134
+#: routers/default_results.qml:76 routers/digitransit_results.qml:245
+#: routers/gpx_osmscout_results.qml:76 routers/gpx_results.qml:76
+#: routers/mapquest_open_results.qml:76 routers/osmscout_results.qml:76
+#: routers/osrm_results.qml:76 routers/stadiamaps_results.qml:76
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
-#: qml/GeocodeItem.qml:418
+#: qml/GeocodeItem.qml:419
 msgid "Results (%1)"
 msgstr "Ergebnisse (%1)"
 
-#: qml/GeocodeItem.qml:454
+#: qml/GeocodeItem.qml:455
 msgid "Points of Interest (%1)"
 msgstr "Punkte von Interesse (%1)"
 
-#: qml/GeocodeItem.qml:459 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
+#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Namenloser Punkt"
 
-#: qml/GeocodeItem.qml:485
+#: qml/GeocodeItem.qml:486
 msgid "Recent searches (%1)"
 msgstr "Letzte Suchanfragen (%1)"
 
-#: qml/GeocodePage.qml:30 qml/NearbyPage.qml:34 qml/RoutePage.qml:34
+#: qml/GeocodePage.qml:30 qml/NearbyPage.qml:35 qml/RoutePage.qml:35
 #: qml/RoutePointPage.qml:30
 msgid "Using %1"
 msgstr "Benutze %1"
@@ -524,16 +524,7 @@ msgstr "%1 [duplicate]"
 
 #: qml/GeocoderPage.qml:27 qml/GuidePage.qml:27
 msgid "Search engine"
-msgstr ""
-
-#: qml/GeocoderPage.qml:40 qml/GuidePage.qml:40 qml/RouterPage.qml:38
-#: routers/digitransit_settings.qml:181
-msgid "Default"
-msgstr "Voreinstellung"
-
-#: qml/GeocoderPage.qml:71 qml/GuidePage.qml:71 qml/RouterPage.qml:69
-msgid "Alternatives"
-msgstr "Alternativen"
+msgstr "Suchmaschine"
 
 #: qml/InitPage.qml:33
 msgid "Initializing"
@@ -570,59 +561,63 @@ msgstr "Autozentrierung aus"
 msgid "Auto-center on"
 msgstr "Autozentrierung an"
 
-#: qml/MenuPage.qml:26
-msgid "Main Menu"
-msgstr "Haupt Menu"
-
-#: qml/MenuPage.qml:30
+#: qml/MenuPage.qml:33
 msgid "About"
 msgstr "Über"
 
-#: qml/MenuPage.qml:56
-msgid "Nearby venues"
-msgstr "Nahegelegene Orte"
+#: qml/MenuPage.qml:43
+msgid "Stop following the movement"
+msgstr ""
 
-#: qml/MenuPage.qml:62 qml/PoiPage.qml:28 qml/PoiPage.qml:124
+#: qml/MenuPage.qml:66
+msgid "Nearby venues"
+msgstr "Nahegelegene Austragungsorte"
+
+#: qml/MenuPage.qml:72 qml/PoiPage.qml:28 qml/PoiPage.qml:127
 msgid "Bookmarks"
 msgstr "Lesezeichen"
 
-#: qml/MenuPage.qml:68
+#: qml/MenuPage.qml:79
 msgid "Share current position"
 msgstr "Teile aktuelle Position"
 
-#: qml/MenuPage.qml:82
+#: qml/MenuPage.qml:79
+msgid "Share current position (not ready)"
+msgstr ""
+
+#: qml/MenuPage.qml:86
 msgid "Share Current Position"
 msgstr "Teile aktuelle Position"
 
-#: qml/MenuPage.qml:89
+#: qml/MenuPage.qml:93
 msgid "Center on current position"
 msgstr "Zentriere auf aktuelle Position"
 
-#: qml/MenuPage.qml:104 qml/PreferencesPage.qml:25
+#: qml/MenuPage.qml:108 qml/PreferencesPage.qml:25
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: qml/MenuPage.qml:135
+#: qml/MenuPage.qml:115
 msgid "Profile"
 msgstr "Profil"
 
-#: qml/MenuPage.qml:147
+#: qml/MenuPage.qml:119
 msgid "Online"
 msgstr "Online"
 
-#: qml/MenuPage.qml:147
+#: qml/MenuPage.qml:125
 msgid "Offline"
 msgstr "Offline"
 
-#: qml/MenuPage.qml:147
+#: qml/MenuPage.qml:131
 msgid "Mixed"
 msgstr "Gemischt"
 
-#: qml/MenuPage.qml:167
+#: qml/MenuPage.qml:145
 msgid "Auto-center on position"
 msgstr "Zentriere Position automatisch"
 
-#: qml/MenuPage.qml:186
+#: qml/MenuPage.qml:164
 msgid "Auto-rotate on direction"
 msgstr "Drehe Ansicht je nach Richtung"
 
@@ -635,68 +630,60 @@ msgstr "mph"
 msgid "km/h"
 msgstr "km/h"
 
-#: qml/NarrativePage.qml:27 qml/NavigationPage.qml:27
-msgid "Maneuvers"
-msgstr "Manövrieren"
-
-#: qml/NarrativePage.qml:118
+#: qml/NarrativeItem.qml:117
 msgid "Continue for %1."
 msgstr "Weiter zu %1."
 
-#: qml/NavigationBlock.qml:93 qml/NavigationPage.qml:139
-msgid "Remaining"
-msgstr "Verbleibend"
+#: qml/NarrativePage.qml:27 qml/NavigationPage.qml:28
+msgid "Maneuvers"
+msgstr "Manövrieren"
 
-#: qml/NavigationBlock.qml:133 qml/NavigationPage.qml:194
-msgid "Total"
-msgstr "Gesamt"
-
-#: qml/NavigationBlock.qml:173
+#: qml/NavigationBlock.qml:101
 msgid "Processing route"
 msgstr "Berechne Route"
 
-#: qml/NavigationBlock.qml:175
+#: qml/NavigationBlock.qml:103
 msgid "Tap to review maneuvers or begin navigating"
 msgstr "Tippen, um Einstellungen anzupassen oder die Navigation zu starten"
 
-#: qml/NavigationBlock.qml:251
+#: qml/NavigationBlock.qml:179
 msgid "ETA"
 msgstr "ETA"
 
-#: qml/NavigationPage.qml:50
+#: qml/NavigationPage.qml:47
 msgid "Pause"
 msgstr "Pause"
 
-#: qml/NavigationPage.qml:51
+#: qml/NavigationPage.qml:48
 msgid "Resume"
 msgstr "Fortsetzen"
 
-#: qml/NavigationPage.qml:51 qml/RoutePage.qml:171
+#: qml/NavigationPage.qml:48 qml/RoutePage.qml:172
 msgid "Begin"
 msgstr "Beginne"
 
-#: qml/NavigationPage.qml:64
+#: qml/NavigationPage.qml:61
 msgid "Reroute"
 msgstr "Umleiten"
 
-#: qml/NavigationPage.qml:76
+#: qml/NavigationPage.qml:73
 msgid "Clear"
 msgstr "Route löschen"
 
-#: qml/NavigationPage.qml:91
+#: qml/NavigationPage.qml:88
 msgid "Status"
 msgstr "Status"
 
-#: qml/NavigationPage.qml:170
+#: qml/NavigationPage.qml:137
 msgid "Estimated time of arrival"
 msgstr "Geschätzte Ankunft"
 
-#: qml/NavigationPage.qml:220
+#: qml/NavigationPage.qml:160
 msgid "Options"
 msgstr "Optionen"
 
-#: qml/NavigationPage.qml:229 qml/PreferencesPage.qml:179
-#: qml/RoutePage.qml:205
+#: qml/NavigationPage.qml:169 qml/PreferencesPage.qml:179
+#: qml/RoutePage.qml:206
 msgid "Map scale"
 msgstr "Kartenskalierung"
 
@@ -708,36 +695,36 @@ msgstr "Ausfahrt"
 msgid "Nearby Venues"
 msgstr "Nahegelegene Orte"
 
-#: qml/NearbyPage.qml:73
+#: qml/NearbyPage.qml:74
 msgid ""
 "Select a reference location next to which you want to perform the search."
 msgstr ""
 "Wählen Sie einen Referenzort aus, neben dem Sie die Suche durchführen "
 "möchten."
 
-#: qml/NearbyPage.qml:74
+#: qml/NearbyPage.qml:75
 msgid "Near"
 msgstr "Nähe"
 
-#: qml/NearbyPage.qml:75
+#: qml/NearbyPage.qml:76
 msgid "Near location"
 msgstr "In der Nähe des Ortes"
 
-#: qml/NearbyPage.qml:80
+#: qml/NearbyPage.qml:81
 msgid "Radius"
 msgstr "Radius"
 
-#: qml/NearbyPage.qml:103 qml/PoiEditPage.qml:53
+#: qml/NearbyPage.qml:104 qml/PoiEditPage.qml:54
 #: routers/gpx_osmscout_settings.qml:50 routers/gpx_settings.qml:50
 #: routers/mapquest_open_settings.qml:26 routers/ValhallaSettings.qml:35
 msgid "Type"
 msgstr "Typ"
 
-#: qml/NearbyResultsPage.qml:107 routers/default_results.qml:33
-#: routers/digitransit_results.qml:216 routers/gpx_osmscout_results.qml:33
-#: routers/gpx_results.qml:33 routers/mapquest_open_results.qml:33
-#: routers/osmscout_results.qml:33 routers/osrm_results.qml:33
-#: routers/stadiamaps_results.qml:33
+#: qml/NearbyResultsPage.qml:107 routers/default_results.qml:44
+#: routers/digitransit_results.qml:216 routers/gpx_osmscout_results.qml:44
+#: routers/gpx_results.qml:44 routers/mapquest_open_results.qml:44
+#: routers/osmscout_results.qml:44 routers/osrm_results.qml:44
+#: routers/stadiamaps_results.qml:44
 msgid "Searching"
 msgstr "Suchen"
 
@@ -749,17 +736,17 @@ msgstr "Nahegelegene Orte: %1"
 msgid "%1 Results"
 msgstr "%1 Ergebnisse"
 
-#: qml/NorthArrow.qml:77
+#: qml/NorthArrow.qml:78
 msgid "Auto-rotate on"
 msgstr "Automatische Drehung an"
 
-#: qml/NorthArrow.qml:78
+#: qml/NorthArrow.qml:79
 msgid "Auto-rotate off"
 msgstr "Automatische Drehung aus"
 
 #: qml/PlaceTypePage.qml:27
 msgid "Venue type"
-msgstr ""
+msgstr "Typ des Austragungsortes"
 
 #: qml/PlaceTypePage.qml:100
 msgid "You can search for venues by type or name."
@@ -773,7 +760,7 @@ msgstr "%1; %2"
 msgid "Latitude: %1; Longitude: %2"
 msgstr "Breitengrad: %1; Längengrad: %2"
 
-#: qml/PoiBlock.qml:127 qml/PoiEditPage.qml:77
+#: qml/PoiBlock.qml:127 qml/PoiEditPage.qml:78
 msgid "Postal code"
 msgstr "Postleitzahl"
 
@@ -801,119 +788,119 @@ msgstr "Weitere Informationen: %1"
 msgid "Edit bookmark"
 msgstr "Lesezeichen bearbeiten"
 
-#: qml/PoiEditPage.qml:27
+#: qml/PoiEditPage.qml:28
 msgid "Save"
 msgstr "Speichern"
 
-#: qml/PoiEditPage.qml:39 qml/PreferencesPage.qml:36
+#: qml/PoiEditPage.qml:40 qml/PreferencesPage.qml:36
 msgid "General"
 msgstr "Allgemeines"
 
-#: qml/PoiEditPage.qml:45
+#: qml/PoiEditPage.qml:46
 msgid "Title"
 msgstr "Titel"
 
-#: qml/PoiEditPage.qml:46
+#: qml/PoiEditPage.qml:47
 msgid "Enter title"
 msgstr "Titel eingeben"
 
-#: qml/PoiEditPage.qml:54
+#: qml/PoiEditPage.qml:55
 msgid "Enter type, such as Restaurant"
 msgstr "Gib einen Typ ein, z.B. Restaurant"
 
-#: qml/PoiEditPage.qml:64 qml/PoiEditPage.qml:69 qml/PoiInfoPage.qml:78
+#: qml/PoiEditPage.qml:65 qml/PoiEditPage.qml:70 qml/PoiInfoPage.qml:80
 msgid "Address"
 msgstr "Adresse"
 
-#: qml/PoiEditPage.qml:70
+#: qml/PoiEditPage.qml:71
 msgid "Enter address"
 msgstr "Adresse eingeben"
 
-#: qml/PoiEditPage.qml:78
+#: qml/PoiEditPage.qml:79
 msgid "Enter postal code"
 msgstr "Postleitzahl eingeben "
 
-#: qml/PoiEditPage.qml:88 qml/PoiInfoPage.qml:196
+#: qml/PoiEditPage.qml:89 qml/PoiInfoPage.qml:201
 msgid "Contact"
 msgstr "Kontakt"
 
-#: qml/PoiEditPage.qml:94
+#: qml/PoiEditPage.qml:95
 msgid "Phone number"
 msgstr "Telefonnummer"
 
-#: qml/PoiEditPage.qml:95
+#: qml/PoiEditPage.qml:96
 msgid "Enter phone number"
 msgstr "Telefonnummer eingeben"
 
-#: qml/PoiEditPage.qml:102
+#: qml/PoiEditPage.qml:103
 msgid "URL"
 msgstr "URL"
 
-#: qml/PoiEditPage.qml:103
+#: qml/PoiEditPage.qml:104
 msgid "Enter URL"
 msgstr "URL eingeben"
 
-#: qml/PoiEditPage.qml:113 qml/PoiInfoPage.qml:216
+#: qml/PoiEditPage.qml:114 qml/PoiInfoPage.qml:227
 msgid "Additional info"
 msgstr "Zusätzliche Informationen"
 
-#: qml/PoiEditPage.qml:119
+#: qml/PoiEditPage.qml:120
 msgid "Enter additional info"
 msgstr "Zusätzliche Informationen eingeben"
 
-#: qml/PoiInfoPage.qml:31 qml/PoiPage.qml:93
+#: qml/PoiInfoPage.qml:32 qml/PoiPage.qml:95
 msgid "Edit"
 msgstr "Bearbeite"
 
-#: qml/PoiInfoPage.qml:66
+#: qml/PoiInfoPage.qml:67
 msgid "Latitude: %1"
 msgstr "Breitengrad: %1"
 
-#: qml/PoiInfoPage.qml:66
+#: qml/PoiInfoPage.qml:67
 msgid "Longitude: %2"
 msgstr "Längengrad: %2"
 
-#: qml/PoiInfoPage.qml:93
+#: qml/PoiInfoPage.qml:97
 msgid "Postal code: %1"
 msgstr "Postleitzahl: %1"
 
-#: qml/PoiInfoPage.qml:105
+#: qml/PoiInfoPage.qml:110
 msgid "Actions"
 msgstr "Aktivitäten"
 
-#: qml/PoiInfoPage.qml:111
+#: qml/PoiInfoPage.qml:116
 msgid "Bookmark"
 msgstr "Lesezeichen"
 
-#: qml/PoiInfoPage.qml:124
+#: qml/PoiInfoPage.qml:129
 msgid "Shortlist"
 msgstr "Auswahlliste"
 
-#: qml/PoiInfoPage.qml:137
+#: qml/PoiInfoPage.qml:142
 msgid "Share location"
 msgstr "Ort teilen"
 
-#: qml/PoiInfoPage.qml:149
+#: qml/PoiInfoPage.qml:154
 msgid "Center on location"
 msgstr "Auf Ort zentrieren "
 
-#: qml/PoiInfoPage.qml:161
+#: qml/PoiInfoPage.qml:166
 msgid "Navigate To"
 msgstr "Navigiere nach"
 
-#: qml/PoiInfoPage.qml:173
+#: qml/PoiInfoPage.qml:178
 msgid "Navigate From"
 msgstr "Navigiere von"
 
-#: qml/PoiInfoPage.qml:185
+#: qml/PoiInfoPage.qml:190
 msgid "Nearby"
 msgstr "In der Nähe"
 
-#: qml/PoiPage.qml:84
+#: qml/PoiPage.qml:85
 msgid "View"
 msgstr "Zeige"
 
-#: qml/PoiPage.qml:149
+#: qml/PoiPage.qml:152
 msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
@@ -921,7 +908,7 @@ msgstr ""
 "Bisher sind keine POI definiert. Du kannst POI mithilfe von Karte und Suche "
 "erstellen und als Lesezeichen verwenden."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:128
+#: qml/Poi.qml:192 qml/pure-maps.qml:126
 msgid "Clearing map"
 msgstr "Karte leeren"
 
@@ -1018,19 +1005,19 @@ msgstr "Position auf der Straße ausrichten"
 msgid "None"
 msgstr "Nichts"
 
-#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:188
+#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:189
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Car"
 msgstr "Auto"
 
-#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:188
+#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:189
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Bicycle"
 msgstr "Fahrrad"
 
-#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:188
+#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:189
 #: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Foot"
@@ -1115,7 +1102,7 @@ msgstr "Geschwindigkeit und Standortgenauigkeit"
 msgid "Scale"
 msgstr "Maßstab"
 
-#: qml/PreferencesPage.qml:299 qml/RoutePage.qml:51
+#: qml/PreferencesPage.qml:299 qml/RoutePage.qml:52
 msgid "Navigate"
 msgstr "Navigiere"
 
@@ -1306,47 +1293,58 @@ msgstr "Zeigt die aktuelle Zoomstufe an"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:225
+#: qml/pure-maps.qml:232
 msgid "Rerouting failed: %1"
 msgstr "Neuberechnung fehlgeschlagen: %1"
 
-#: qml/RoutePage.qml:27
-msgid "Route"
-msgstr ""
+#: qml/RouteOverallInfo.qml:95
+msgid "Remaining"
+msgstr "Verbleibend"
 
-#: qml/RoutePage.qml:51
+#: qml/RouteOverallInfo.qml:129
+msgid "Total"
+msgstr "Gesamt"
+
+#: qml/RoutePage.qml:28 routers/default_results.qml:25
+#: routers/gpx_osmscout_results.qml:25 routers/gpx_results.qml:25
+#: routers/mapquest_open_results.qml:25 routers/osmscout_results.qml:25
+#: routers/osrm_results.qml:25 routers/stadiamaps_results.qml:25
+msgid "Route"
+msgstr "Route"
+
+#: qml/RoutePage.qml:52
 msgid "Follow me"
 msgstr "Folge mir"
 
-#: qml/RoutePage.qml:63
+#: qml/RoutePage.qml:64
 msgid "Reverse endpoints"
 msgstr "Tausche Endpunkte"
 
-#: qml/RoutePage.qml:107
+#: qml/RoutePage.qml:108
 msgid "From"
 msgstr "Von"
 
-#: qml/RoutePage.qml:108
+#: qml/RoutePage.qml:109
 msgid "Origin"
 msgstr "Start"
 
-#: qml/RoutePage.qml:114
+#: qml/RoutePage.qml:115
 msgid "To"
 msgstr "Nach"
 
-#: qml/RoutePage.qml:115
+#: qml/RoutePage.qml:116
 msgid "Destination"
 msgstr "Ziel"
 
-#: qml/RoutePage.qml:162
+#: qml/RoutePage.qml:163
 msgid "Follow the movement and show just in time information"
 msgstr "Verfolgt die Bewegung und zeigt Informationen an"
 
-#: qml/RoutePage.qml:171
+#: qml/RoutePage.qml:172
 msgid "Stop"
 msgstr "Beenden"
 
-#: qml/RoutePage.qml:186
+#: qml/RoutePage.qml:187
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
@@ -1354,7 +1352,7 @@ msgstr ""
 "Transportart auswählen. Trifft nur zu, wenn sich Pure Maps im Follow-Me-"
 "Modus befindet."
 
-#: qml/RoutePage.qml:187
+#: qml/RoutePage.qml:188
 msgid "Mode of transportation"
 msgstr "Transportmittel"
 
@@ -1364,7 +1362,7 @@ msgstr "Aktuelle Auswahl: %1"
 
 #: qml/RouterPage.qml:27
 msgid "Routing engine"
-msgstr ""
+msgstr "Routing-Engine"
 
 #: qml/RouterPage.qml:60
 msgid "Modes: %1"
@@ -1454,6 +1452,10 @@ msgstr "Jetzt"
 #: routers/digitransit_settings.qml:179
 msgid "Criterion"
 msgstr "Kriterium"
+
+#: routers/digitransit_settings.qml:181 qml/js/util.js:230
+msgid "Default"
+msgstr "Voreinstellung"
 
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
@@ -1708,6 +1710,10 @@ msgstr "Umstiege"
 #: qml/js/util.js:157
 msgid "%1 (default)"
 msgstr "%1 (Voreinstellung)"
+
+#: qml/js/util.js:229
+msgid "Alternatives"
+msgstr "Alternativen"
 
 #: standard input:1
 msgid "Search in Finland"
