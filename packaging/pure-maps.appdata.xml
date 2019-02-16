@@ -37,6 +37,18 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release version="1.16.0" date="2019-02-16">
+     <description>
+       <p>Add Kirigami platform</p>
+       <p>Make Kirigami default platform for Linux Desktop</p>
+       <p>Update Mapbox map styles</p>
+       <p>Adjust overall information route layout</p>
+       <p>[kirigami, qtcontrols] Load icons using Qt icon</p>
+       <p>[kirigami, qtcontrols] Add support for translations</p>
+       <p>Bugfixes, code cleanup</p>
+       <p>Update translations</p>
+     </description>
+   </release>
    <release version="1.15.0" date="2019-02-02">
      <description>
        <p>Introduce minimal and full controls mode for maps view</p>

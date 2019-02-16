@@ -1,3 +1,16 @@
+2019-02-16: Pure Maps 1.16
+==========================
+
+* Add Kirigami platform
+* Make Kirigami default platform for Linux Desktop
+* Update Mapbox map styles
+* Adjust overall information route layout
+* [kirigami, qtcontrols] Load icons using Qt icon
+* [kirigami, qtcontrols] Add support for translations
+* Bugfixes, code cleanup
+* Update translations 
+
+
 2019-02-02: Pure Maps 1.15
 ==========================
 
