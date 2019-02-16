@@ -24,12 +24,13 @@ import "."
 
 Kirigami.ApplicationWindow {
     id: appWindow
-    width: 640
-    height: 480
-    visible: true
+
     contextDrawer: Kirigami.ContextDrawer {
         id: contextDrawer
     }
+    height: 480
+    width: 640
+    visible: true
     // until Kirigami will include corresponding bug fix
     //pageStack.initialPage: initialPage
 
