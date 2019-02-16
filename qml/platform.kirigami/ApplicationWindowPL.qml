@@ -27,6 +27,9 @@ Kirigami.ApplicationWindow {
     width: 640
     height: 480
     visible: true
+    contextDrawer: Kirigami.ContextDrawer {
+        id: contextDrawer
+    }
     // until Kirigami will include corresponding bug fix
     //pageStack.initialPage: initialPage
 
@@ -67,7 +70,7 @@ Kirigami.ApplicationWindow {
                 return null;
             }
             var p = pc.createObject(appWindow);
-            globalDrawer =p;
+            globalDrawer = p;
         }
     }
 
