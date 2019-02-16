@@ -24,6 +24,7 @@ import "."
 
 Kirigami.GlobalDrawer {
     id: menu
+    handleVisible: false
 
     property alias          banner: menu.bannerImageSource
     default property alias  content: menu.items
