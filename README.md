@@ -101,6 +101,14 @@ needed. After that, building and running can be performed by
 make flatpak-build flatpak-run
 ```
 
+If you wish to install development version for testing, you could use
+the following command instead (will build the package, bundle it,
+uninstall current version of Pure Maps, and install the freshly built
+one):
+```
+make flatpak-dev-install
+```
+
 
 ## Development
 

@@ -73,11 +73,15 @@ flathub-install-qtcontrols: platform-qtcontrols flathub-install-general
 flatpak-build:
 	flatpak-builder --repo=../flatpak --force-clean ../flatpak-build-desktop packaging/flatpak/io.github.rinigus.PureMaps.json
 
-flatpak-bundle:
+flatpak-bundle: flatpak-build
 	flatpak build-bundle ../flatpak pure-maps.flatpak io.github.rinigus.PureMaps
 
+flatpak-dev-install: flatpak-bundle
+	flatpak uninstall --user -y io.github.rinigus.PureMaps/x86_64/master || true
+	flatpak install --user -y pure-maps.flatpak
+
 flatpak-run:
-	QT_QUICK_CONTROLS_STYLE=org.kde.desktop flatpak-builder --run ../flatpak-build-desktop packaging/flatpak/io.github.rinigus.PureMaps.json io.github.rinigus.PureMaps
+	flatpak-builder --run ../flatpak-build-desktop packaging/flatpak/io.github.rinigus.PureMaps.json io.github.rinigus.PureMaps
 
 install:
 	@echo "Installing Python files..."
