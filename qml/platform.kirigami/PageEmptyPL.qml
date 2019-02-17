@@ -24,6 +24,7 @@ import org.kde.kirigami 2.5 as Kirigami
 Kirigami.Page {
     id: page
     bottomPadding: 0
+    globalToolBarStyle: Kirigami.ApplicationHeaderStyle.None
     leftPadding: 0
     rightPadding: 0
     topPadding: 0
