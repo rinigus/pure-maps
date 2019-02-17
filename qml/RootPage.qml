@@ -21,7 +21,7 @@ import "platform"
 
 PageEmptyPL {
     id: page
-    title: "Pure Maps"
+    title: app.tr("Map")
 
     AttributionButton { id: attributionButton }
     CenterButton { id: centerButton }
