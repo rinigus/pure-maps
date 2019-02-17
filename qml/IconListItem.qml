@@ -26,7 +26,9 @@ ListItemPL {
     contentHeight: app.styler.themeItemSizeSmall
 
     property string icon: ""
+    property alias  iconHeight: icon.iconHeight
     property string label: ""
+    property alias  labelBold: label.font.bold
 
     IconPL {
         id: icon
