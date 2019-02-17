@@ -23,7 +23,7 @@ import "platform"
 
 ApplicationWindowPL {
     id: app
-    initialPage: initPage
+    initialPage: InitPage { }
     menuPageUrl: Qt.resolvedUrl("MenuPage.qml")
     title: app.tr("Pure Maps")
 
@@ -64,7 +64,6 @@ ApplicationWindowPL {
     property var    _stackMain: Stack {}
     property var    _stackNavigation: Stack {}
 
-    InitPage { id: initPage }
     PositionSource { id: gps }
     Python { id: py }
 

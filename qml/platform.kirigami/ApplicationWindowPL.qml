@@ -31,8 +31,7 @@ Kirigami.ApplicationWindow {
     height: 480
     width: 640
     visible: true
-    // until Kirigami will include corresponding bug fix
-    //pageStack.initialPage: initialPage
+    pageStack.initialPage: initialPage
 
     property bool   isConvergent: true
     property var    initialPage
