@@ -39,9 +39,6 @@ Item {
         target: ps
         onCurrentIndexChanged: stack.processCurrentIndex()
         onCurrentItemChanged: stack.processCurrentItem()
-        onDepthChanged: {
-            applicationWindow().controlsVisible = (ps.depth !== 1);
-        }
     }
 
     on_LockedChanged: stack.processCurrentItem()

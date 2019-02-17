@@ -32,6 +32,7 @@ Kirigami.ApplicationWindow {
     width: 640
     visible: true
     pageStack.initialPage: initialPage
+    pageStack.globalToolBar.showNavigationButtons: pages && pages.currentIndex > 0
 
     property bool   isConvergent: true
     property var    initialPage
