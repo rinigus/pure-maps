@@ -8,7 +8,7 @@
 * [kirigami, qtcontrols] Load icons using Qt icon
 * [kirigami, qtcontrols] Add support for translations
 * Bugfixes, code cleanup
-* Update translations 
+* [1.16.0, 1.16.1] Update translations 
 
 
 2019-02-02: Pure Maps 1.15
