@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-16 11:01+0200\n"
+"POT-Creation-Date: 2019-02-17 19:37+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: lutinotmalin, 2019\n"
 "Language-Team: French (https://www.transifex.com/rinigus/teams/89597/fr/)\n"
@@ -139,15 +139,15 @@ msgstr "En {distance}, {direction}"
 msgid "Exit: "
 msgstr "Sortie :"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:220
+#: poor/narrative.py:421 qml/pure-maps.qml:219
 msgid "Rerouting"
 msgstr "Déroutement"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:242
+#: poor/narrative.py:422 qml/pure-maps.qml:241
 msgid "Rerouting failed"
 msgstr "Nouvel itinéraire introuvable"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:236
+#: poor/narrative.py:423 qml/pure-maps.qml:235
 msgid "New route found"
 msgstr "Nouvel itinéraire trouvé"
 
@@ -905,7 +905,7 @@ msgstr ""
 "marquer vos lieux favoris en utilisant la carte ou les différents modes de "
 "recherche."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:125
 msgid "Clearing map"
 msgstr "Réinitialisation"
 
@@ -1282,9 +1282,13 @@ msgstr "Afficher le niveau de zoom actuel"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:232
+#: qml/pure-maps.qml:231
 msgid "Rerouting failed: %1"
 msgstr "Nouvel itinéraire introuvable : %1"
+
+#: qml/RootPage.qml:24
+msgid "Map"
+msgstr ""
 
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"

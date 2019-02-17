@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-16 11:01+0200\n"
+"POT-Creation-Date: 2019-02-17 19:37+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: A <hucul@o2.pl>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rinigus/teams/89597/pl/)\n"
@@ -136,15 +136,15 @@ msgstr "W{distance},{direction}"
 msgid "Exit: "
 msgstr "Zjazd:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:220
+#: poor/narrative.py:421 qml/pure-maps.qml:219
 msgid "Rerouting"
 msgstr "Zmiana trasy"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:242
+#: poor/narrative.py:422 qml/pure-maps.qml:241
 msgid "Rerouting failed"
 msgstr "Zmiana trasy nie powiodła się"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:236
+#: poor/narrative.py:423 qml/pure-maps.qml:235
 msgid "New route found"
 msgstr "Znaleziono nową trasę"
 
@@ -562,7 +562,7 @@ msgstr "O Pure Maps"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
-msgstr ""
+msgstr "Przestań podążać za ruchem"
 
 #: qml/MenuPage.qml:66
 msgid "Nearby venues"
@@ -578,7 +578,7 @@ msgstr "Udostępnij obecną pozycję"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position (not ready)"
-msgstr ""
+msgstr "Udostępnij aktualną pozycję (niegotowe)"
 
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
@@ -903,7 +903,7 @@ msgstr ""
 "Nie zdefiniowano jeszcze punktów zakładek. Możesz dodawać do zakładek "
 "lokalizacje, korzystając z mapy i wyszukiwania."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:125
 msgid "Clearing map"
 msgstr "Czyszczenie mapy"
 
@@ -1281,9 +1281,13 @@ msgstr "Pokaż aktualny poziom powiększenia"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:232
+#: qml/pure-maps.qml:231
 msgid "Rerouting failed: %1"
 msgstr "Zmiana trasy nie powiodła się: %1"
+
+#: qml/RootPage.qml:24
+msgid "Map"
+msgstr ""
 
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"

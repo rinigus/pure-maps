@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-16 11:01+0200\n"
+"POT-Creation-Date: 2019-02-17 19:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,15 +119,15 @@ msgstr ""
 msgid "Exit: "
 msgstr ""
 
-#: poor/narrative.py:421 qml/pure-maps.qml:220
+#: poor/narrative.py:421 qml/pure-maps.qml:219
 msgid "Rerouting"
 msgstr ""
 
-#: poor/narrative.py:422 qml/pure-maps.qml:242
+#: poor/narrative.py:422 qml/pure-maps.qml:241
 msgid "Rerouting failed"
 msgstr ""
 
-#: poor/narrative.py:423 qml/pure-maps.qml:236
+#: poor/narrative.py:423 qml/pure-maps.qml:235
 msgid "New route found"
 msgstr ""
 
@@ -869,7 +869,7 @@ msgid ""
 "search."
 msgstr ""
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:125
 msgid "Clearing map"
 msgstr ""
 
@@ -1223,8 +1223,12 @@ msgstr ""
 msgid "Pure Maps"
 msgstr ""
 
-#: qml/pure-maps.qml:232
+#: qml/pure-maps.qml:231
 msgid "Rerouting failed: %1"
+msgstr ""
+
+#: qml/RootPage.qml:24
+msgid "Map"
 msgstr ""
 
 #: qml/RouteOverallInfo.qml:95

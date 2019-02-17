@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-16 11:01+0200\n"
+"POT-Creation-Date: 2019-02-17 19:37+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Gustavo Martins <gustavo737@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rinigus/teams/89597/pt_BR/)\n"
@@ -136,15 +136,15 @@ msgstr "Em {distance}, {direction}"
 msgid "Exit: "
 msgstr "Saída:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:220
+#: poor/narrative.py:421 qml/pure-maps.qml:219
 msgid "Rerouting"
 msgstr "Recalculando rota"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:242
+#: poor/narrative.py:422 qml/pure-maps.qml:241
 msgid "Rerouting failed"
 msgstr "Não foi possível recalcular rota"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:236
+#: poor/narrative.py:423 qml/pure-maps.qml:235
 msgid "New route found"
 msgstr "Nova rota encontrada"
 
@@ -902,7 +902,7 @@ msgstr ""
 "Nenhum marcador definido ainda. Você pode marcar locais usando o mapa e a "
 "pesquisa."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:125
 msgid "Clearing map"
 msgstr "Limpando o mapa"
 
@@ -1281,9 +1281,13 @@ msgstr "Mostrar nível atual de zoom"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:232
+#: qml/pure-maps.qml:231
 msgid "Rerouting failed: %1"
 msgstr "Não foi possível recalcular rota: %1"
+
+#: qml/RootPage.qml:24
+msgid "Map"
+msgstr ""
 
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"

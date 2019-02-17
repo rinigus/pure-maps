@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-16 11:01+0200\n"
+"POT-Creation-Date: 2019-02-17 19:37+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/rinigus/teams/89597/ru/)\n"
@@ -138,15 +138,15 @@ msgstr "В {distance} на {direction}"
 msgid "Exit: "
 msgstr "Выход:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:220
+#: poor/narrative.py:421 qml/pure-maps.qml:219
 msgid "Rerouting"
 msgstr "Перестроение маршрута"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:242
+#: poor/narrative.py:422 qml/pure-maps.qml:241
 msgid "Rerouting failed"
 msgstr "Перестроение маршрута не удалось"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:236
+#: poor/narrative.py:423 qml/pure-maps.qml:235
 msgid "New route found"
 msgstr "Найден новый маршрут"
 
@@ -563,7 +563,7 @@ msgstr "О программе"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
-msgstr ""
+msgstr "Остановка после передвижения"
 
 #: qml/MenuPage.qml:66
 msgid "Nearby venues"
@@ -579,7 +579,7 @@ msgstr "Сообщить свою позицию"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position (not ready)"
-msgstr ""
+msgstr "Поделиться текущей позицией (не готово)"
 
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
@@ -902,7 +902,7 @@ msgstr ""
 "Точки закладок еще не определены. Сделать отметки можно с помощью карты и "
 "поиска."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:125
 msgid "Clearing map"
 msgstr "Очистка карты"
 
@@ -1286,9 +1286,13 @@ msgstr "Показать текущий масштаб"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:232
+#: qml/pure-maps.qml:231
 msgid "Rerouting failed: %1"
 msgstr "Перестроение маршрута не удалось: %1"
+
+#: qml/RootPage.qml:24
+msgid "Map"
+msgstr ""
 
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"

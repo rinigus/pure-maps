@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-16 11:01+0200\n"
+"POT-Creation-Date: 2019-02-17 19:37+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Nathan Follens, 2019\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
@@ -136,15 +136,15 @@ msgstr "Over {distance}, {direction}"
 msgid "Exit: "
 msgstr "Uitrit:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:220
+#: poor/narrative.py:421 qml/pure-maps.qml:219
 msgid "Rerouting"
 msgstr "Route wordt herberekend"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:242
+#: poor/narrative.py:422 qml/pure-maps.qml:241
 msgid "Rerouting failed"
 msgstr "Routeherberekening mislukt"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:236
+#: poor/narrative.py:423 qml/pure-maps.qml:235
 msgid "New route found"
 msgstr "Nieuwe route gevonden"
 
@@ -563,7 +563,7 @@ msgstr "Over"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
-msgstr ""
+msgstr "Beweging niet meer volgen"
 
 #: qml/MenuPage.qml:66
 msgid "Nearby venues"
@@ -579,7 +579,7 @@ msgstr "Huidige positie delen"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position (not ready)"
-msgstr ""
+msgstr "Huidige positie delen (nog niet klaar)"
 
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
@@ -903,7 +903,7 @@ msgstr ""
 "Nog geen bladwijzers ingesteld. Je kan locaties toevoegen aan je bladwijzers"
 " via de kaart en via zoeken."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:125
 msgid "Clearing map"
 msgstr "Kaart wordt gewist"
 
@@ -1286,9 +1286,13 @@ msgstr "Huidig zoomniveau tonen"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:232
+#: qml/pure-maps.qml:231
 msgid "Rerouting failed: %1"
 msgstr "Routeherberekening mislukt: %1"
+
+#: qml/RootPage.qml:24
+msgid "Map"
+msgstr ""
 
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"

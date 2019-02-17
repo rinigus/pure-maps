@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-16 11:01+0200\n"
+"POT-Creation-Date: 2019-02-17 19:37+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rui kon <facebookmail@qq.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -28,11 +28,11 @@ msgstr "营业时间 :"
 
 #: poor/geocoder.py:108
 msgid "Point from geo link"
-msgstr "从地理链接指向"
+msgstr "地理链接位置"
 
 #: poor/geocoder.py:120
 msgid "Point from coordinates"
-msgstr "从坐标指向"
+msgstr "按坐标划分的位置"
 
 #: poor/geocoder.py:130 poor/geocoder.py:167 poor/guide.py:123
 #: poor/router.py:115
@@ -124,15 +124,15 @@ msgstr "在 {distance}, {direction}"
 msgid "Exit: "
 msgstr "退出: "
 
-#: poor/narrative.py:421 qml/pure-maps.qml:220
+#: poor/narrative.py:421 qml/pure-maps.qml:219
 msgid "Rerouting"
-msgstr "改变线路"
+msgstr "重新规划"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:242
+#: poor/narrative.py:422 qml/pure-maps.qml:241
 msgid "Rerouting failed"
-msgstr "改变线路失败"
+msgstr "重新规划线路失败"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:236
+#: poor/narrative.py:423 qml/pure-maps.qml:235
 msgid "New route found"
 msgstr "发现新路线"
 
@@ -264,56 +264,56 @@ msgstr "步行"
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr "向 {arr_name} 方向走去。"
+msgstr "向 {arr_name} 方向走去"
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get a city bike at {dep_name}."
-msgstr "在  {dep_name}  处获取一辆城市自行车。"
+msgstr "在  {dep_name}  处获取一辆城市自行车"
 
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "搭乘 {mode_name} {line_desc} 在 {dep_name} 在 {dep_time}."
+msgstr "搭乘 {mode_name} {line_desc} 在 {dep_name} 在 {dep_time}"
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr "走向你的目的地。"
+msgstr "走向你的目的地"
 
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "将城市自行车停在 {dep_name} , 然后走向 {arr_name} 。"
+msgstr "将城市自行车停在 {dep_name} , 然后走向 {arr_name} "
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr "将城市自行车停在 {dep_name} , 然后走向你的目的地。"
+msgstr "将城市自行车停在 {dep_name} , 然后走向你的目的地"
 
 #: routers/digitransit.py:76
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "在 {dep_name} 下车, 然后走向 {arr_name} 。"
+msgstr "在 {dep_name} 下车, 然后走向 {arr_name} "
 
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "在 {dep_name} 下车, 骑自行车向 {arr_name} 前进 。"
+msgstr "在 {dep_name} 下车, 骑自行车向 {arr_name} 前进 "
 
 #: routers/digitransit.py:78
 #, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
-msgstr "在 {dep_name} 下车然后走向 {mode_name} {line_desc} 在 {dep_time} 。"
+msgstr "在 {dep_name} 下车然后走向 {mode_name} {line_desc} 在 {dep_time}"
 
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "在 {dep_name} 下车, 然后走向你的目的地。"
+msgstr "在 {dep_name} 下车, 然后走向你的目的地"
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
-msgstr "已抵达你的目的地。"
+msgstr "已抵达你的目的地"
 
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:111
 #: routers/ValhallaSettings.qml:147 routers/ValhallaSettings.qml:198
@@ -325,20 +325,20 @@ msgstr "偏好"
 
 #: guides/foursquare_settings.qml:29
 msgid "Closest"
-msgstr "最近"
+msgstr "最近的"
 
 #: guides/foursquare_settings.qml:29
 msgid "Best"
-msgstr "最佳"
+msgstr "最佳的"
 
 #: guides/osmscout_name.qml:27
 msgid "Venue name"
-msgstr "街道名称"
+msgstr "场所名称"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:132
 #: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
 msgid "Remove"
-msgstr "移除"
+msgstr "删除"
 
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
 #: qml/GeocodeItem.qml:39 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
@@ -349,7 +349,7 @@ msgstr "搜索"
 
 #: guides/osmscout_name.qml:81
 msgid "You can search for venues by name."
-msgstr "您可以按名称搜索场地。"
+msgstr "您可以按名称搜索场所"
 
 #: guides/osmscout_settings.qml:28
 msgid "Name"
@@ -357,17 +357,17 @@ msgstr "名称"
 
 #: guides/osmscout_settings.qml:51
 msgid "Search along the route"
-msgstr "沿路线搜索"
+msgstr "按路线搜索"
 
 #: guides/osmscout_settings.qml:75
 msgid ""
 "When set, the search along the route is performed starting from the point "
 "specified by 'Near' on this page"
-msgstr "设置后，将从此页面上按“近”指定的点开始沿路径搜索"
+msgstr "设置后，将开始在此页面沿路线搜索指定的点附近"
 
 #: guides/osmscout_settings.qml:76
 msgid "Search starting from the reference point"
-msgstr "从参考点开始搜索"
+msgstr "从参考地点开始搜索"
 
 #: qml/AboutPage.qml:25
 msgid "About Pure Maps"
@@ -383,7 +383,7 @@ msgstr "GitHub 页面"
 
 #: qml/AboutPage.qml:77
 msgid "Logo by %1"
-msgstr "标志设计者为 %1"
+msgstr "图标设计者 %1"
 
 #: qml/AboutPage.qml:87
 msgid ""
@@ -393,7 +393,7 @@ msgstr "Pure Maps 是在 GNU 通用公共许可证 (GPL) 版本3或更高版本�
 
 #: qml/AboutPage.qml:92
 msgid "Translated by"
-msgstr "由以下人士翻译"
+msgstr "译者"
 
 #. TRANSLATORS: This is a special message that shouldn't be translated
 #. literally. It is used in the about page to give credits to the translators.
@@ -424,7 +424,7 @@ msgstr "地图"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
-msgstr "场地"
+msgstr "场所"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:25
 #: qml/PreferencesPage.qml:314 qml/RoutePage.qml:25
@@ -461,7 +461,7 @@ msgstr "搜索中……"
 #: routers/mapquest_open_results.qml:76 routers/osmscout_results.qml:76
 #: routers/osrm_results.qml:76 routers/stadiamaps_results.qml:76
 msgid "No results"
-msgstr "无结果"
+msgstr "未找到结果"
 
 #: qml/GeocodeItem.qml:419
 msgid "Results (%1)"
@@ -469,12 +469,12 @@ msgstr "结果 (%1)"
 
 #: qml/GeocodeItem.qml:455
 msgid "Points of Interest (%1)"
-msgstr "兴趣点 (%1)"
+msgstr "有趣的地点 (%1)"
 
 #: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
-msgstr "未命名地点"
+msgstr "无名地点"
 
 #: qml/GeocodeItem.qml:486
 msgid "Recent searches (%1)"
@@ -487,7 +487,7 @@ msgstr "使用 %1"
 
 #: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79
 msgid "Show all"
-msgstr "展示所有"
+msgstr "显示所有"
 
 #: qml/GeocodePage.qml:45 qml/GeocodePage.qml:75
 msgid "Search: %1"
@@ -503,15 +503,15 @@ msgstr "搜索引擎"
 
 #: qml/InitPage.qml:33
 msgid "Initializing"
-msgstr "初始化"
+msgstr "正在加载"
 
 #: qml/InitPage.qml:44
 msgid "Dismiss"
-msgstr "搁置"
+msgstr "拒绝"
 
 #: qml/InitPage.qml:45
 msgid "Missing Mapbox key"
-msgstr "丢失 Mapbox 秘钥"
+msgstr "缺失 Mapbox 秘钥"
 
 #: qml/InitPage.qml:46
 msgid ""
@@ -519,8 +519,8 @@ msgid ""
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
-"您的安装缺少Mapbox API秘钥。请在 Mapbox 注册, 并在 \"首选项\" 中填写您的个人 API 密钥。如果计划以脱机地图方式使用Pure"
-" Maps 使用, 则不需要此键。"
+"安装缺失 Mapbox API 秘钥。请在 Mapbox 注册, 并在 \"偏好\" 中填写您的私人 API 密钥。如果想以脱机地图方式使用 Pure "
+"Maps  则无需进行设置。"
 
 #: qml/Map.qml:427
 msgid "Voice navigation on"
@@ -528,11 +528,11 @@ msgstr "语音导航开启"
 
 #: qml/Map.qml:537
 msgid "Auto-center off"
-msgstr "自动居中关闭"
+msgstr "已关闭自动居中"
 
 #: qml/Map.qml:540
 msgid "Auto-center on"
-msgstr "自动居中开启"
+msgstr "已开启自动居中"
 
 #: qml/MenuPage.qml:33
 msgid "About"
@@ -540,11 +540,11 @@ msgstr "关于"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
-msgstr ""
+msgstr "停止跟随位置移动"
 
 #: qml/MenuPage.qml:66
 msgid "Nearby venues"
-msgstr "附近场地"
+msgstr "附近场所"
 
 #: qml/MenuPage.qml:72 qml/PoiPage.qml:28 qml/PoiPage.qml:127
 msgid "Bookmarks"
@@ -556,7 +556,7 @@ msgstr "分享当前位置"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position (not ready)"
-msgstr ""
+msgstr "分享当前位置 (尚未准备好)"
 
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
@@ -588,11 +588,11 @@ msgstr "混合"
 
 #: qml/MenuPage.qml:145
 msgid "Auto-center on position"
-msgstr "位置上的自动中心"
+msgstr "自动集中于位置"
 
 #: qml/MenuPage.qml:164
 msgid "Auto-rotate on direction"
-msgstr "方向上的自动旋转"
+msgstr "自动旋转方向"
 
 #: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationInfoBlock.qml:83
 #: qml/NavigationInfoBlock.qml:85
@@ -609,7 +609,7 @@ msgstr " 继续 %1 "
 
 #: qml/NarrativePage.qml:27 qml/NavigationPage.qml:28
 msgid "Maneuvers"
-msgstr "策略"
+msgstr "导航规划"
 
 #: qml/NavigationBlock.qml:101
 msgid "Processing route"
@@ -617,7 +617,7 @@ msgstr "处理路线"
 
 #: qml/NavigationBlock.qml:103
 msgid "Tap to review maneuvers or begin navigating"
-msgstr "点击以查看策略或开始导航"
+msgstr "点击以查看导航规划或开始导航"
 
 #: qml/NavigationBlock.qml:179
 msgid "ETA"
@@ -637,7 +637,7 @@ msgstr "开始"
 
 #: qml/NavigationPage.qml:61
 msgid "Reroute"
-msgstr "变更路程"
+msgstr "重新规划路线"
 
 #: qml/NavigationPage.qml:73
 msgid "Clear"
@@ -666,12 +666,12 @@ msgstr "退出"
 
 #: qml/NearbyPage.qml:25
 msgid "Nearby Venues"
-msgstr "附近场地"
+msgstr "附近场所"
 
 #: qml/NearbyPage.qml:74
 msgid ""
 "Select a reference location next to which you want to perform the search."
-msgstr "选择一个接近你想要执行搜索的参考地址。"
+msgstr "选择一个接近你想搜索的地点的参考位置"
 
 #: qml/NearbyPage.qml:75
 msgid "Near"
@@ -701,7 +701,7 @@ msgstr "搜索中"
 
 #: qml/NearbyResultsPage.qml:115
 msgid "Nearby venues: %1"
-msgstr "附近场地: %1"
+msgstr "附近场所: %1"
 
 #: qml/NearbyResultsPage.qml:130
 msgid "%1 Results"
@@ -717,11 +717,11 @@ msgstr "自动旋转关闭"
 
 #: qml/PlaceTypePage.qml:27
 msgid "Venue type"
-msgstr "街道类型"
+msgstr "场所类型"
 
 #: qml/PlaceTypePage.qml:100
 msgid "You can search for venues by type or name."
-msgstr "您可以按类型或名称搜索场地。"
+msgstr "您可以按类型或名称搜索场所"
 
 #: qml/PoiBlock.qml:82
 msgid "%1; %2"
@@ -777,7 +777,7 @@ msgstr "输入名称"
 
 #: qml/PoiEditPage.qml:55
 msgid "Enter type, such as Restaurant"
-msgstr "输入类型, 比如餐厅"
+msgstr "输入类型, 例如餐厅"
 
 #: qml/PoiEditPage.qml:65 qml/PoiEditPage.qml:70 qml/PoiInfoPage.qml:80
 msgid "Address"
@@ -857,7 +857,7 @@ msgstr "集中于位置"
 
 #: qml/PoiInfoPage.qml:166
 msgid "Navigate To"
-msgstr "导航至"
+msgstr "导航到"
 
 #: qml/PoiInfoPage.qml:178
 msgid "Navigate From"
@@ -875,19 +875,19 @@ msgstr "查看"
 msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
-msgstr "尚无确定的收藏地点，你可以使用地图和搜索收藏位置。"
+msgstr "暂无收藏地点，你可以使用地图和搜索收藏位置。"
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:125
 msgid "Clearing map"
-msgstr "清理地图中"
+msgstr "清理地图"
 
 #: qml/PreferencesPage.qml:43
 msgid "Units"
-msgstr "装置"
+msgstr "度量单位"
 
 #: qml/PreferencesPage.qml:44
 msgid "Metric"
-msgstr "度量标准"
+msgstr "公制"
 
 #: qml/PreferencesPage.qml:44
 msgid "American"
@@ -901,7 +901,7 @@ msgstr "英制"
 msgid ""
 "Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
-msgstr "仅在 \"Pure Maps\" 活跃时应用。当最小化时, 睡眠由正常的设备级别偏好控制。"
+msgstr "仅当 \"Pure Maps\" 活动时启用。当应用最小化时, 睡眠由正常的设备级别偏好控制。"
 
 #: qml/PreferencesPage.qml:59
 msgid "Prevent sleep"
@@ -922,11 +922,11 @@ msgstr "总是"
 
 #: qml/PreferencesPage.qml:75
 msgid "Fetch autocompleted search results while typing a search string."
-msgstr "在键入搜索字符串时获取自动完成的搜索结果。"
+msgstr "在输入搜索文本时实时显示搜索结果"
 
 #: qml/PreferencesPage.qml:76
 msgid "Autocomplete while searching"
-msgstr "搜索时自动完成"
+msgstr "搜索时实时显示结果"
 
 #: qml/PreferencesPage.qml:87
 msgid "Clear cache"
@@ -941,11 +941,11 @@ msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
-msgstr "您可以在这些设置中指定联机服务的个人密钥。请检查您要使用的每个服务的条件, 以确保您遵守这些条件你"
+msgstr "您可以在下列选项中指定联机服务的私人密钥。请检查您要使用的各项服务的条款, 以确保您遵守它们"
 
 #: qml/PreferencesPage.qml:113
 msgid "Please restart application after changing API keys."
-msgstr "请在更改 APi密钥后重新启动应用程序。"
+msgstr "请在更改 API密钥后重新启动应用程序"
 
 #: qml/PreferencesPage.qml:155
 msgid "Map view"
@@ -955,11 +955,11 @@ msgstr "地图视图"
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating."
-msgstr "仅当 \"Pure Maps\" 未导航时选择交通方式。"
+msgstr "选择交通方式，仅在 \"Pure Maps\" 未导航时启用"
 
 #: qml/PreferencesPage.qml:163 qml/PreferencesPage.qml:353
 msgid "Snap position to road"
-msgstr "捕捉道路方位"
+msgstr "快速走到路上"
 
 #: qml/PreferencesPage.qml:164 routers/gpx_osmscout_settings.qml:31
 #: routers/gpx_settings.qml:31
@@ -993,11 +993,11 @@ msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
-msgstr "地图视图可以在全视图模式下显示所有可用的控件, 也可以在最小视图模式下显示较小的选定控件集。要在模式之间切换, 请单击地图。"
+msgstr "地图视图可以在全视图模式下显示所有可用的控件, 也可以在最小视图模式下显示较少的选定控件集。要在模式之间切换, 请点击地图。"
 
 #: qml/PreferencesPage.qml:206
 msgid "Set map view to minimal mode on start"
-msgstr "设置打开时的地图视图为最小模式"
+msgstr "设置启动时的地图视图·为最小模式"
 
 #: qml/PreferencesPage.qml:214
 msgid ""
@@ -1033,7 +1033,7 @@ msgstr "总是显示"
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
-msgstr "不管地图视图是在最小模式还是在完整模式下，始终显示选定的控件"
+msgstr "无论地图视图是在最小模式还是在完整模式下，始终显示选定的控件"
 
 #: qml/PreferencesPage.qml:245
 msgid "Menu"
@@ -1061,11 +1061,11 @@ msgstr "导航"
 
 #: qml/PreferencesPage.qml:322
 msgid "Show navigation instructions"
-msgstr "显示导航说明"
+msgstr "显示导航指引"
 
 #: qml/PreferencesPage.qml:332
 msgid "Voice navigation instructions"
-msgstr "语音导航说明"
+msgstr "语音导航指引"
 
 #: qml/PreferencesPage.qml:343
 msgid "Reroute automatically"
@@ -1079,7 +1079,7 @@ msgstr "显示方向标志"
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
-msgstr "当开始导航时, 按移动方向设置地图旋转。"
+msgstr "导航时, 按移动方向旋转地图"
 
 #: qml/PreferencesPage.qml:375
 msgid "Rotate map when navigating"
@@ -1097,7 +1097,7 @@ msgstr "导航时倾斜地图"
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
-msgstr "语音导航的性别偏好。仅支持某些引擎和语言。"
+msgstr "语音导航的性别偏好，仅支持某些引擎和语言"
 
 #: qml/PreferencesPage.qml:398 qml/PreferencesPage.qml:495
 msgid "Voice gender"
@@ -1131,7 +1131,7 @@ msgstr "测试"
 msgid ""
 "Testing of text to speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
-msgstr "测试语音转文本 (TTS) 引擎。选择与导航相同语言, 性别偏好, 然后按下面的按钮进行测试。"
+msgstr "测试语音转文本 (TTS) 引擎。选择与导航相同语言及性别偏好, 然后按下面的按钮进行测试"
 
 #: qml/PreferencesPage.qml:461 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
@@ -1185,7 +1185,7 @@ msgstr "俄语"
 
 #: qml/PreferencesPage.qml:472
 msgid "Slovak"
-msgstr "斯斯洛伐克语"
+msgstr "斯洛伐克语"
 
 #: qml/PreferencesPage.qml:473 routers/gpx_osmscout_settings.qml:73
 #: routers/ValhallaSettings.qml:60
@@ -1194,7 +1194,7 @@ msgstr "瑞典语"
 
 #: qml/PreferencesPage.qml:494
 msgid "Preferred gender. Only supported by some engines and languages."
-msgstr "偏好性别仅支持某些引擎和语言，"
+msgstr "性别偏好设置仅支持特定引擎及语言"
 
 #: qml/PreferencesPage.qml:508
 msgid "Test"
@@ -1206,13 +1206,13 @@ msgstr "选择语音引擎: %1"
 
 #: qml/PreferencesPage.qml:558
 msgid "Development"
-msgstr "开发"
+msgstr "开发选项"
 
 #: qml/PreferencesPage.qml:564
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
-msgstr "以下选项仅适用于开发。除非你知道自己在做什么, 否则请不要改变它们。"
+msgstr "以下选项仅适用于开发。除非你知道自己在做什么, 否则请勿更改"
 
 #: qml/PreferencesPage.qml:572
 msgid ""
@@ -1232,17 +1232,21 @@ msgstr "显示当前缩放级别"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:232
+#: qml/pure-maps.qml:231
 msgid "Rerouting failed: %1"
 msgstr "重新规划路线失败: %1"
 
+#: qml/RootPage.qml:24
+msgid "Map"
+msgstr ""
+
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"
-msgstr "停留"
+msgstr "剩余里程"
 
 #: qml/RouteOverallInfo.qml:129
 msgid "Total"
-msgstr "总共"
+msgstr "总计里程"
 
 #: qml/RoutePage.qml:28 routers/default_results.qml:25
 #: routers/gpx_osmscout_results.qml:25 routers/gpx_results.qml:25
@@ -1253,7 +1257,7 @@ msgstr "路线"
 
 #: qml/RoutePage.qml:52
 msgid "Follow me"
-msgstr "关注我"
+msgstr "跟随我"
 
 #: qml/RoutePage.qml:64
 msgid "Reverse endpoints"
@@ -1277,7 +1281,7 @@ msgstr "目的地"
 
 #: qml/RoutePage.qml:163
 msgid "Follow the movement and show just in time information"
-msgstr "跟踪运动并及时显示信息"
+msgstr "跟踪位置移动并实时显示信息"
 
 #: qml/RoutePage.qml:172
 msgid "Stop"
@@ -1287,7 +1291,7 @@ msgstr "停止"
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
-msgstr "仅当 \"Pure Maps\" 跟随我的模式时，选择交通方式。"
+msgstr "仅当 \"Pure Maps\" 处于跟我走模式时，选取交通方式"
 
 #: qml/RoutePage.qml:188
 msgid "Mode of transportation"
@@ -1307,7 +1311,7 @@ msgstr "模式: %1"
 
 #: qml/SharePage.qml:48
 msgid "SMS"
-msgstr "消息"
+msgstr "短信"
 
 #: qml/SharePage.qml:54 qml/SharePage.qml:82
 msgid "Message copied to the clipboard"
@@ -1331,11 +1335,11 @@ msgstr "其它"
 
 #: qml/SharePage.qml:99
 msgid "Add link to OpenStreetMaps"
-msgstr "添加到OpenStreetMaps的链接"
+msgstr "添加 OpenStreetMaps 链接"
 
 #: qml/SharePage.qml:108
 msgid "Add link to Google Maps"
-msgstr "添加到Google Maps的链接"
+msgstr "添加 Google Maps 链接"
 
 #: routers/digitransit_results.qml:60
 msgid "Route %1. total %2"
@@ -1359,7 +1363,7 @@ msgstr "区域"
 
 #: routers/digitransit_settings.qml:30
 msgid "HSL"
-msgstr "高速快艇"
+msgstr "HSL"
 
 #: routers/digitransit_settings.qml:31
 msgid "Waltti"
@@ -1380,7 +1384,7 @@ msgstr "抵达"
 
 #: routers/digitransit_settings.qml:107
 msgid "Today"
-msgstr "今日"
+msgstr "今天"
 
 #: routers/digitransit_settings.qml:150
 msgid "Now"
@@ -1388,7 +1392,7 @@ msgstr "目前"
 
 #: routers/digitransit_settings.qml:179
 msgid "Criterion"
-msgstr "标准"
+msgstr "选择标准"
 
 #: routers/digitransit_settings.qml:181 qml/js/util.js:230
 msgid "Default"
@@ -1396,7 +1400,7 @@ msgstr "默认"
 
 #: routers/digitransit_settings.qml:182
 msgid "Least transfers"
-msgstr "最少转换方式"
+msgstr "最少转乘"
 
 #: routers/digitransit_settings.qml:183
 msgid "Least walking"
@@ -1404,16 +1408,16 @@ msgstr "最少步行"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
-msgstr "纵列"
+msgstr "文件"
 
 #: routers/gpx_osmscout_settings.qml:51 routers/ValhallaSettings.qml:37
 #: routers/ValhallaSettings.qml:110
 msgid "Bus"
-msgstr "公交车"
+msgstr "公共汽车"
 
 #: routers/gpx_osmscout_settings.qml:52 routers/ValhallaSettings.qml:37
 msgid "High-occupancy vehicle (HOV)"
-msgstr "高占用率汽车 (HOV)"
+msgstr "高速公路驾车 (HOV)"
 
 #: routers/gpx_osmscout_settings.qml:52 routers/ValhallaSettings.qml:37
 msgid "Motorcycle"
@@ -1421,7 +1425,7 @@ msgstr "摩托车"
 
 #: routers/gpx_osmscout_settings.qml:52 routers/ValhallaSettings.qml:37
 msgid "Motor Scooter"
-msgstr "电机滑板车"
+msgstr "小型摩托车"
 
 #: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
 msgid "English Pirate"
@@ -1441,11 +1445,11 @@ msgstr "尽量避免道路收费"
 
 #: routers/mapquest_open_settings.qml:56
 msgid "English (UK)"
-msgstr "英语 (英国)"
+msgstr "英语  (英国)"
 
 #: routers/mapquest_open_settings.qml:56
 msgid "English (US)"
-msgstr "英语(美国)"
+msgstr "英语  (美国)"
 
 #: routers/mapquest_open_settings.qml:56
 msgid "French (Canada)"
@@ -1477,7 +1481,7 @@ msgstr "高级选项"
 
 #: routers/ValhallaSettings.qml:81
 msgid "Prefer shorter route"
-msgstr "偏好较短路线"
+msgstr "偏好较短的路线"
 
 #: routers/ValhallaSettings.qml:92
 msgid "Bicycle type"
@@ -1501,7 +1505,7 @@ msgstr "山脉"
 
 #: routers/ValhallaSettings.qml:109
 msgid "Your desire to use buses."
-msgstr "你选择公交车的意愿。"
+msgstr "你选则乘公共汽车的意愿"
 
 #: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:146
 #: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:181
@@ -1515,7 +1519,7 @@ msgstr "避开"
 #: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:197
 #: routers/ValhallaSettings.qml:215 routers/ValhallaSettings.qml:266
 msgid "Prefer to avoid"
-msgstr "偏好避免"
+msgstr "倾向于避开"
 
 #: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:146
 #: routers/ValhallaSettings.qml:181 routers/ValhallaSettings.qml:197
@@ -1528,11 +1532,11 @@ msgstr "无偏好 (默认)"
 #: routers/ValhallaSettings.qml:164 routers/ValhallaSettings.qml:198
 #: routers/ValhallaSettings.qml:216 routers/ValhallaSettings.qml:267
 msgid "Incline"
-msgstr "斜坡"
+msgstr "倾向"
 
 #: routers/ValhallaSettings.qml:126
 msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr "允许的徒步旅行线路的最大难度。"
+msgstr "接受的徒步旅行线路最大难度"
 
 #: routers/ValhallaSettings.qml:127
 msgid "Hiking difficulty"
@@ -1583,15 +1587,15 @@ msgid ""
 "Your desire to tackle hills. When avoiding hills and steep grades, longer "
 "(time and distance) routes can be selected. By allowing hills, it indicates "
 "you do not fear hills and steeper grades."
-msgstr "你选择山地的意愿。当避开丘陵和陡坡时, 可以更长的路线（时间和距离上）。允许山地表明了你不害怕丘陵地带和更陡的坡度。"
+msgstr "你选择山地的意愿。如果避开丘陵和陡坡, 可能会选择更长的路线（时间和距离上）。接受山地表示你不害怕丘陵地带和更陡的坡度。"
 
 #: routers/ValhallaSettings.qml:180
 msgid "Hills"
-msgstr "山地地带"
+msgstr "山地丘陵"
 
 #: routers/ValhallaSettings.qml:181
 msgid "Allow"
-msgstr "允许"
+msgstr "接受"
 
 #: routers/ValhallaSettings.qml:196
 msgid "Primary roads"
@@ -1599,7 +1603,7 @@ msgstr "主要道路"
 
 #: routers/ValhallaSettings.qml:213
 msgid "Your desire to use rail/subway/metro."
-msgstr "你选择铁路或地铁的意愿。"
+msgstr "你选择铁路和地铁的意愿"
 
 #: routers/ValhallaSettings.qml:214
 msgid "Rail"
@@ -1607,7 +1611,7 @@ msgstr "铁路"
 
 #: routers/ValhallaSettings.qml:231
 msgid "Your propensity to use roads alongside other vehicles."
-msgstr "你对于和其他车辆共用道路的倾向。"
+msgstr "您对于驾车时与其他车辆共用道路的倾向"
 
 #: routers/ValhallaSettings.qml:232
 msgid "Roads"
@@ -1622,7 +1626,8 @@ msgid ""
 "Your desire for adventure. When preferred, router will tend to avoid major "
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
-msgstr "你对冒险的意愿。如果愿意, 线路规划往往会倾向于避开主要道路和二级道路上的路线, 有时是使用小道、未分类的道路或路面不好的道路。"
+msgstr ""
+"你想要来一场冒险的意愿。如果你愿意, 线路规划往往会倾向于避开主要道路和二级道路等路线, 有时会选择使用小道、未分类的道路或路面不好的道路。"
 
 #: routers/ValhallaSettings.qml:265
 msgid "Trails"
@@ -1650,23 +1655,23 @@ msgstr "在芬兰搜索"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr "基于开放数据源的搜索"
+msgstr "基于开放数据源搜索"
 
 #: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
-msgstr "搜索数据基于OpenStreetMap数据"
+msgstr "基于OpenStreetMap数据搜索"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr "场所由Foursquare用户列举和评论"
+msgstr "场所由 Foursquare 用户列入和评论"
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
-msgstr "OpenStreetMap数据中的兴趣点"
+msgstr "OpenStreetMap 数据中的有趣地点"
 
 #: standard input:8
 msgid "Public transport routing in Finland"
-msgstr "芬兰的公共交通路线"
+msgstr "芬兰的公共交通规划服务"
 
 #: standard input:9
 msgid "public transport"
@@ -1674,7 +1679,7 @@ msgstr "公共交通"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr "沿 GPX轨道的路线"
+msgstr "GPX track 导航"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
@@ -1688,12 +1693,12 @@ msgstr "步行"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr "沿GPX轨道的路线由 OSM Scout服务器处理"
+msgstr "GPX track 导航由 OSM Scout 服务器提供"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"
-msgstr "路线规划基于OpenStreetMap数据"
+msgstr "路线规划基于 OpenStreetMap 数据"
 
 #: standard input:20
 msgid "Routing by Valhalla based on OpenStreetMap data"
-msgstr "英灵殿路线基于OpenStreetMap数据"
+msgstr "基于OpenStreetMap数据的Valhalla导航"

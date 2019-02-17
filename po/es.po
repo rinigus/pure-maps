@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-16 11:01+0200\n"
+"POT-Creation-Date: 2019-02-17 19:37+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Carmen Fernández B., 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -136,15 +136,15 @@ msgstr "A {distance}, {direction}"
 msgid "Exit: "
 msgstr "Salida: "
 
-#: poor/narrative.py:421 qml/pure-maps.qml:220
+#: poor/narrative.py:421 qml/pure-maps.qml:219
 msgid "Rerouting"
 msgstr "Recalculando"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:242
+#: poor/narrative.py:422 qml/pure-maps.qml:241
 msgid "Rerouting failed"
 msgstr "Error al recalcular"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:236
+#: poor/narrative.py:423 qml/pure-maps.qml:235
 msgid "New route found"
 msgstr "Nueva ruta encontrada"
 
@@ -560,7 +560,7 @@ msgstr "Acerca de"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
-msgstr ""
+msgstr "Dejar de seguir el movimiento"
 
 #: qml/MenuPage.qml:66
 msgid "Nearby venues"
@@ -576,7 +576,7 @@ msgstr "Compartir posición actual"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position (not ready)"
-msgstr ""
+msgstr "Compartir posición actual (no está listo)"
 
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
@@ -637,7 +637,7 @@ msgstr "Procesando ruta"
 
 #: qml/NavigationBlock.qml:103
 msgid "Tap to review maneuvers or begin navigating"
-msgstr "Da un toque para revisar indicaciones o iniciar navegación"
+msgstr "Pulsa para revisar indicaciones o iniciar navegación"
 
 #: qml/NavigationBlock.qml:179
 msgid "ETA"
@@ -900,7 +900,7 @@ msgstr ""
 "No se han definido marcadores aún. Puedes marcar ubicaciones usando el mapa "
 "y la búsqueda."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:125
 msgid "Clearing map"
 msgstr "Limpiando mapa"
 
@@ -1280,9 +1280,13 @@ msgstr "Mostrar nivel de zoom actual"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:232
+#: qml/pure-maps.qml:231
 msgid "Rerouting failed: %1"
 msgstr "Error al recalcular: %1"
+
+#: qml/RootPage.qml:24
+msgid "Map"
+msgstr ""
 
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"
