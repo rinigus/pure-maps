@@ -200,6 +200,8 @@ MapboxMap {
             map.bearing = direction;
     }
 
+    onErrorStringChanged: app.openMapErrorMessage(map.errorString)
+
     onHeightChanged: {
         map.updateMargins();
     }

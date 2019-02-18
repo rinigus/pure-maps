@@ -31,6 +31,7 @@ ApplicationWindowPL {
                || (app.conf.keepAlive === "navigating" && (app.mode === modes.navigate || app.mode === modes.followMe))
 
     property var    conf: Config {}
+    property bool   errorPageOpen: false
     property bool   hasMapMatching: false
     property bool   initialized: false
     property bool   infoActive: infoPanel && infoPanel.infoText
@@ -172,6 +173,11 @@ ApplicationWindowPL {
         initPages();
         app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
         initialized = true;
+    }
+
+    function openMapErrorMessage(error) {
+        if (errorPageOpen) return;
+        app.push(Qt.resolvedUrl("MapErrorPage.qml"), { "lastError": error } )
     }
 
     function playMaybe(message) {
