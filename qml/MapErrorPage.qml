@@ -125,9 +125,6 @@ PagePL {
     }
 
     Component.onCompleted: app.errorPageOpen = true;
-    Component.onDestruction: {
-        console.log("Closing error page");
-        app.errorPageOpen = false;
-    }
+    Component.onDestruction: app.errorPageOpen = false;
 
 }
