@@ -47,7 +47,7 @@ Item {
         anchors.topMargin: app.styler.themePaddingSmall
         height: inForm ? 0 : implicitHeight
         horizontalAlignment: Text.AlignLeft
-        level: 3
+        level: 4
         text: inForm ? "" : parent.text
         visible: text
     }

@@ -52,8 +52,10 @@ Item {
 
     ComboBox {
         id: val
-        anchors.left: inForm ? undefined : lab.right
-        anchors.leftMargin: inForm ? undefined : app.styler.themePaddingMedium
+        anchors.left: inForm ? parent.left : lab.right
+        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themePaddingMedium
         anchors.top: parent.top
         font.pixelSize: app.styler.themeFontSizeMedium
         property bool initialized: false
