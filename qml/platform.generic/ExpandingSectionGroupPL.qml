@@ -31,6 +31,8 @@ Column {
     property list<QtObject> selections
     default property alias  content: section.selections
 
+    signal closeAll
+
     Repeater {
         delegate: Column {
             id: del
@@ -45,7 +47,10 @@ Column {
                 iconHeight: app.styler.themeItemSizeSmall*0.5
                 label: selections[model.index].title
                 labelBold: expanded
-                onClicked: del.expanded = !del.expanded
+                onClicked: {
+                    if (!del.expanded) closeAll();
+                    del.expanded = !del.expanded;
+                }
             }
 
             Item {
@@ -62,6 +67,11 @@ Column {
             Spacer {
                 height: app.styler.themePaddingLarge
                 visible: expanded
+            }
+
+            Connections {
+                target: section
+                onCloseAll: del.expanded = false
             }
         }
 
