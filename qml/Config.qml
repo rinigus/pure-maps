@@ -39,6 +39,9 @@ Item {
     property bool   mapModeCleanShowMeters
     property bool   mapModeCleanShowNavigate
     property bool   mapModeCleanShowScale
+    property real   mapZoomAutoTime
+    property bool   mapZoomAutoWhenNavigating: false
+    property real   mapZoomAutoZeroSpeedZ
     property string profile
     property bool   reroute
     property bool   showNarrative: false
@@ -114,6 +117,9 @@ Item {
         conf.mapModeCleanShowMenuButton = c.map_mode_clean_show_menu_button;
         conf.mapModeCleanShowNavigate = c.map_mode_clean_show_navigate;
         conf.mapModeCleanShowScale = c.map_mode_clean_show_scale;
+        conf.mapZoomAutoTime = c.map_zoom_auto_time;
+        conf.mapZoomAutoWhenNavigating = c.map_zoom_auto_when_navigating;
+        conf.mapZoomAutoZeroSpeedZ = c.map_zoom_auto_zero_speed_z;
         conf.reroute = c.reroute;
         conf.profile = c.profile;
         conf.showNarrative = c.show_narrative;

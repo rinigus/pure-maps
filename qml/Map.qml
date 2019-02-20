@@ -44,8 +44,10 @@ MapboxMap {
 
     property bool   autoCenter: false
     property bool   autoRotate: false
+    property bool   autoZoom: false
     property bool   cleanMode: app.conf.mapModeCleanOnStart
     property int    counter: 0
+    property real   diagonal: Math.sqrt(height*height + width*width)
     property var    direction: {
         // prefer map matched direction, if available
         if (gps.directionValid) return gps.direction;
@@ -126,12 +128,40 @@ MapboxMap {
     PositionMarker { id: positionMarker }
 
     Timer {
+        // map view mode switch timer
         interval: app.conf.mapModeAutoSwitchTime > 0 ? app.conf.mapModeAutoSwitchTime*1000 : 1000
         repeat: true
         running: !cleanMode && app.conf.mapModeAutoSwitchTime > 0
         onTriggered: {
             if (!cleanMode && app.conf.mapModeAutoSwitchTime > 0)
                 cleanMode = true;
+        }
+    }
+
+    Timer {
+        // auto zoom
+        interval: 1000
+        repeat: true
+        running: map.autoZoom
+
+        // keeping reference metersPerPixel and zoomLevel. Map does
+        // update metersPerPixel with some tolerance to avoid too many
+        // updates. So, for calculations, we have to keep reference zoom
+        // level and metersPerPixel
+        property real mpp: map.metersPerPixel
+        property real zmref: map.zoomLevel
+
+        onMppChanged: zmref = map.zoomLevel
+
+        onTriggered: {
+            if (!gps.position.speedValid) return;
+            var diag = mpp * diagonal;
+            var speed = gps.position.speed;
+            var newZoom = zmref;
+            if (speed > 0) newZoom -= Math.log(speed*app.conf.mapZoomAutoTime / diag) / Math.log(2);
+            else newZoom = app.conf.mapZoomAutoZeroSpeedZ;
+            if (newZoom > app.conf.mapZoomAutoZeroSpeedZ) newZoom = app.conf.mapZoomAutoZeroSpeedZ;
+            map.setZoomLevel(newZoom);
         }
     }
 
@@ -491,6 +521,7 @@ MapboxMap {
         // map used to explore it
         map.autoCenter = false;
         map.autoRotate = false;
+        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = false;
         if (map.zoomLevel > 14) map.setZoomLevel(14);
         map.setScale(app.conf.get("map_scale"));
     }
@@ -500,6 +531,7 @@ MapboxMap {
         var scale = app.conf.get("map_scale_navigation_" + (app.conf.mapMatchingWhenFollowing !== "none" ? app.conf.mapMatchingWhenFollowing : "car") );
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
+        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
         map.setScale(scale);
         map.centerOnPosition();
         map.autoCenter = true;
@@ -511,6 +543,7 @@ MapboxMap {
         var scale = app.conf.get("map_scale_navigation_" + route.mode);
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
+        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
         map.setScale(scale);
         map.centerOnPosition();
         map.autoCenter = true;

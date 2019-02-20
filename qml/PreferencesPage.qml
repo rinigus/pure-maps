@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
+ * Copyright (C) 2014 Osmo Salomaa, 2018-2019 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -190,6 +190,36 @@ PagePL {
                     }
 
                     SectionHeaderPL {
+                        text: app.tr("Automatic zoom")
+                    }
+
+                    SliderPL {
+                        description: app.tr("Map zoom level while standing. This is the largest zoom level that is going to be used in the automatic adjustment of the map zoom.")
+                        label: app.tr("Zoom level at still")
+                        maximumValue: 20.0
+                        minimumValue: 10.0
+                        stepSize: 0.1
+                        value: app.conf.get("map_zoom_auto_zero_speed_z")
+                        valueText: value
+                        width: parent.width
+                        onValueChanged: app.conf.set("map_zoom_auto_zero_speed_z", value)
+                    }
+
+                    SliderPL {
+                        description: app.tr("Map zoom level will be adjusted to have the same " +
+                                            "distance in diagonal as the distance that is " +
+                                            "covered by you in the given amount of seconds.")
+                        label: app.tr("Time range, s")
+                        maximumValue: 60.0
+                        minimumValue: 5.0
+                        stepSize: 1.0
+                        value: app.conf.get("map_zoom_auto_time")
+                        valueText: value
+                        width: parent.width
+                        onValueChanged: app.conf.set("map_zoom_auto_time", value)
+                    }
+
+                    SectionHeaderPL {
                         text: app.tr("Map view modes")
                     }
 
@@ -344,6 +374,15 @@ PagePL {
                         onCheckedChanged: {
                             if (rerouteSwitch.checked===app.conf.reroute) return;
                             app.conf.set("reroute", rerouteSwitch.checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapZoomAutoWhenNavigating
+                        text: app.tr("Automatic zoom on start")
+                        onCheckedChanged: {
+                            if (checked===app.conf.mapZoomAutoWhenNavigating) return;
+                            app.conf.set("map_zoom_auto_when_navigating", checked);
                         }
                     }
 

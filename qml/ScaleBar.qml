@@ -21,7 +21,7 @@ import QtPositioning 5.3
 
 import "js/util.js" as Util
 
-Item {
+MouseArea {
     id: master
     //anchors.bottom: parent.bottom
     anchors.bottomMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
@@ -53,6 +53,22 @@ Item {
     property bool _rotate: !((app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait)
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
+
+    Bubble {
+        id: bubble
+        anchorItem: parent
+        showArrow: false
+        state: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait ?
+                   "top-center" : "bottom-right"
+        visible: false
+    }
+
+    Timer {
+        id: timerBubble
+        interval: 2000
+        repeat: false
+        onTriggered: bubble.visible = false;
+    }
 
     Timer {
         id: updateTimer
@@ -165,6 +181,16 @@ Item {
             updateTimer.restart(); // restart as needed
         }
 
+    }
+
+    onClicked: {
+        map.autoZoom = !map.autoZoom;
+        console.log("SZ: " + map.autoZoom)
+        bubble.text = map.autoZoom ?
+                    app.tr("Auto-zoom on") :
+                    app.tr("Auto-zoom off");
+        bubble.visible = true;
+        timerBubble.restart();
     }
 
 }

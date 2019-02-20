@@ -164,20 +164,54 @@ PagePL {
             height: app.styler.themePaddingLarge
         }
 
-        SliderPL {
-            id: scaleSlider
-            label: app.tr("Map scale")
-            maximumValue: 4.0
-            minimumValue: 0.5
-            stepSize: 0.1
-            value: map.route.mode != null ? app.conf.get("map_scale_navigation_" + map.route.mode) : 1
-            valueText: value
-            visible: map.route.mode != null
-            width: parent.width
-            onValueChanged: {
-                if (map.route.mode == null) return;
-                app.conf.set("map_scale_navigation_" + map.route.mode, scaleSlider.value);
-                if (app.mode === modes.navigate) map.setScale(scaleSlider.value);
+        FormLayoutPL {
+            spacing: app.styler.themePaddingLarge
+            anchors.left: parent.left
+            anchors.leftMargin: app.styler.themeHorizontalPageMargin
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+
+            SliderPL {
+                id: scaleSlider
+                label: app.tr("Map scale")
+                maximumValue: 4.0
+                minimumValue: 0.5
+                stepSize: 0.1
+                value: map.route.mode != null ? app.conf.get("map_scale_navigation_" + map.route.mode) : 1
+                valueText: value
+                visible: map.route.mode != null
+                width: parent.width
+                onValueChanged: {
+                    if (map.route.mode == null) return;
+                    app.conf.set("map_scale_navigation_" + map.route.mode, scaleSlider.value);
+                    if (app.mode === modes.navigate) map.setScale(scaleSlider.value);
+                }
+            }
+
+            SliderPL {
+                description: app.tr("Map zoom level while standing. This is the largest zoom level that is going to be used in the automatic adjustment of the map zoom.")
+                label: app.tr("Zoom level at still")
+                maximumValue: 20.0
+                minimumValue: 10.0
+                stepSize: 0.1
+                value: app.conf.get("map_zoom_auto_zero_speed_z")
+                valueText: value
+                width: parent.width
+                onValueChanged: app.conf.set("map_zoom_auto_zero_speed_z", value)
+            }
+
+            SliderPL {
+                description: app.tr("Map zoom level will be adjusted to have the same " +
+                                    "distance in diagonal as the distance that is " +
+                                    "covered by you in the given amount of seconds.")
+                label: app.tr("Time range, s")
+                maximumValue: 60.0
+                minimumValue: 5.0
+                stepSize: 1.0
+                value: app.conf.get("map_zoom_auto_time")
+                valueText: value
+                width: parent.width
+                onValueChanged: app.conf.set("map_zoom_auto_time", value)
             }
         }
 
