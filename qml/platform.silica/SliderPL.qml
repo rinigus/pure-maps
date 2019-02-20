@@ -18,6 +18,35 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "."
 
-Slider {
+Item {
+    height: childrenRect.height
+
+    property alias description: desc.text
+    property alias label: val.label
+    property alias maximumValue: val.maximumValue
+    property alias minimumValue: val.minimumValue
+    property alias stepSize: val.stepSize
+    property alias value: val.value
+    property alias valueText: val.valueText
+
+    Slider {
+        id: val
+        width: parent.width
+    }
+
+    LabelPL {
+        id: desc
+        anchors.top: val.bottom
+        anchors.topMargin: text ? app.styler.themePaddingMedium : 0
+        anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.right: parent.right
+        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight : 0
+        visible: text
+        wrapMode: Text.WordWrap
+    }
 }
