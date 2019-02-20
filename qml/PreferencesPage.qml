@@ -153,7 +153,7 @@ PagePL {
             ExpandingSectionPL {
                 id: sectionExplore
                 title: app.tr("Map view")
-                content.sourceComponent: Column {
+                content.sourceComponent: FormLayoutPL {
                     spacing: app.styler.themePaddingMedium
                     width: sectionExplore.width
 
@@ -189,9 +189,18 @@ PagePL {
                         }
                     }
 
-                    SectionHeaderPL {
-                        text: app.tr("Automatic zoom")
+                    Spacer {
+                        height: app.styler.themePaddingLarge
                     }
+                }
+            }
+
+            ExpandingSectionPL {
+                id: sectionAutoZoom
+                title: app.tr("Automatic zoom")
+                content.sourceComponent: FormLayoutPL {
+                    spacing: app.styler.themePaddingMedium
+                    width: sectionAutoZoom.width
 
                     SliderPL {
                         description: app.tr("Map zoom level while standing. This is the largest zoom level that is going to be used in the automatic adjustment of the map zoom.")
@@ -219,9 +228,18 @@ PagePL {
                         onValueChanged: app.conf.set("map_zoom_auto_time", value)
                     }
 
-                    SectionHeaderPL {
-                        text: app.tr("Map view modes")
+                    Spacer {
+                        height: app.styler.themePaddingLarge
                     }
+                }
+            }
+
+            ExpandingSectionPL {
+                id: sectionControls
+                title: app.tr("Controls")
+                content.sourceComponent: Column {
+                    spacing: app.styler.themePaddingMedium
+                    width: sectionControls.width
 
                     ListItemLabel {
                         text: app.tr("Map view can be shown with either all applicable controls in full view mode " +
