@@ -173,4 +173,22 @@ MenuDrawerPL {
             app.map.autoRotate = autoRotateItem.checked;
         }
     }
+
+    TextSwitchPL {
+        id: autoZoomItem
+        checked: app.map.autoZoom
+        height: app.styler.themeItemSizeSmall
+        leftMargin: page.switchLeftMargin
+        text: app.tr("Auto-zoom map")
+        Connections {
+            target: map
+            onAutoZoomChanged: {
+                if (autoZoomItem.checked !== app.map.autoZoom)
+                    autoZoomItem.checked = app.map.autoZoom;
+            }
+        }
+        onCheckedChanged: {
+            app.map.autoZoom = autoZoomItem.checked;
+        }
+    }
 }
