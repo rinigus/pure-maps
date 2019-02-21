@@ -189,7 +189,9 @@ PagePL {
             }
 
             SliderPL {
-                description: app.tr("Map zoom level while standing. This is the largest zoom level that is going to be used in the automatic adjustment of the map zoom.")
+                description: app.tr("Zoom level while standing. " +
+                                    "This is the largest zoom level that is going to be used " +
+                                    "in the automatic adjustment of the zoom.")
                 label: app.tr("Zoom level at still")
                 maximumValue: 20.0
                 minimumValue: 10.0
@@ -201,11 +203,11 @@ PagePL {
             }
 
             SliderPL {
-                description: app.tr("Map zoom level will be adjusted to have the same " +
-                                    "distance in diagonal as the distance that is " +
+                description: app.tr("Zoom level will be adjusted to have the same " +
+                                    "map height as the distance that is " +
                                     "covered by you in the given amount of seconds.")
                 label: app.tr("Time range, s")
-                maximumValue: 60.0
+                maximumValue: 120.0
                 minimumValue: 5.0
                 stepSize: 1.0
                 value: app.conf.get("map_zoom_auto_time")

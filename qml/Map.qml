@@ -47,7 +47,6 @@ MapboxMap {
     property bool   autoZoom: false
     property bool   cleanMode: app.conf.mapModeCleanOnStart
     property int    counter: 0
-    property real   diagonal: Math.sqrt(height*height + width*width)
     property var    direction: {
         // prefer map matched direction, if available
         if (gps.directionValid) return gps.direction;
@@ -155,13 +154,16 @@ MapboxMap {
 
         onTriggered: {
             if (!gps.position.speedValid) return;
-            var diag = mpp * diagonal;
+            var dist = mpp * map.height;
             var speed = gps.position.speed;
             var newZoom = zmref;
             if (speed > 0) newZoom -= Math.log(speed*app.conf.mapZoomAutoTime / diag) / Math.log(2);
             else newZoom = app.conf.mapZoomAutoZeroSpeedZ;
-            if (newZoom > app.conf.mapZoomAutoZeroSpeedZ) newZoom = app.conf.mapZoomAutoZeroSpeedZ;
-            map.setZoomLevel(newZoom);
+
+            if (newZoom > app.conf.mapZoomAutoZeroSpeedZ && map.zoomLevel < app.conf.mapZoomAutoZeroSpeedZ)
+                map.setZoomLevel(app.conf.mapZoomAutoZeroSpeedZ);
+            else if (Math.abs(map.zoomLevel - newZoom) > 0.1)
+                map.setZoomLevel(newZoom);
         }
     }
 
