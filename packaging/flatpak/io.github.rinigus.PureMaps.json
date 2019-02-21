@@ -135,7 +135,7 @@
                 {
                     "type": "git",
                     "url": "git://anongit.kde.org/kirigami.git",
-                    "branch": "master"
+                    "branch": "mart/columnsView"
                 }
             ]
         },
