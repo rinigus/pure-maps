@@ -55,7 +55,7 @@ DEFAULTS = {
     "map_scale_navigation_foot": 1.0,
     "map_scale_navigation_transit": 1.0,
     "map_zoom_auto_time": 10.0,
-    "map_zoom_auto_when_navigating": True,
+    "map_zoom_auto_when_navigating": False,
     "map_zoom_auto_zero_speed_z": 17.0,
     "poi_list_show_bookmarked": False,
     "profile": "online",
