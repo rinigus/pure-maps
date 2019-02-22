@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Osmo Salomaa
+# Copyright (C) 2014 Osmo Salomaa, 2019 Rinigus
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ import sys
 import traceback
 
 from poor.i18n import _
+from poor.openlocationcode.openlocationcode import isFull as olc_isFull, decode as olc_decode
 
 __all__ = ("Geocoder",)
 
@@ -73,7 +74,8 @@ class Geocoder:
         if (not hasattr(self._provider, "autocomplete") or
             not callable(self._provider.autocomplete) or
             RE_GEO_URI.search(query) or
-            RE_LAT_LON.search(query)):
+            RE_LAT_LON.search(query) or
+            olc_isFull(query.strip())):
             return []
         try:
             results = self._provider.autocomplete(query, x, y, params)
@@ -124,6 +126,17 @@ class Geocoder:
                          distance=self._format_distance(x, y, qx, qy),
                          provider=self.id)]
 
+        # Parse if query is a Plus code
+        qtrimmed = query.strip()
+        if olc_isFull(qtrimmed):
+            latlng = olc_decode(qtrimmed).latlng()
+            return [dict(title=_("Point from Plus code"),
+                         description=qtrimmed.upper(),
+                         x=latlng[1],
+                         y=latlng[0],
+                         distance=self._format_distance(x, y, latlng[1], latlng[0]),
+                         provider=self.id)]
+
         try:
             results = self._provider.geocode(query, params)
         except socket.timeout:
@@ -151,7 +164,7 @@ class Geocoder:
         if not os.path.isfile(path):
             path = os.path.join(poor.DATA_DIR, leaf)
         return path, poor.util.read_json(path)
-    
+
     def reverse(self, x, y, radius, limit=1, params=None):
         """
         Return a closest object near given coordinates.
@@ -177,4 +190,3 @@ class Geocoder:
                 result["provider"] = self.id
                 results_filtered.append(result)
         return results_filtered
-
