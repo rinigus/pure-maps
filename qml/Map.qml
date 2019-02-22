@@ -157,12 +157,15 @@ MapboxMap {
             var dist = mpp * map.height;
             var speed = gps.position.speed;
             var newZoom = zmref;
-            if (speed > 0) newZoom -= Math.log(speed*app.conf.mapZoomAutoTime / diag) / Math.log(2);
+            var zstep = 0.1;
+            if (speed > 0) newZoom -= Math.log(speed*app.conf.mapZoomAutoTime / dist) / Math.log(2);
             else newZoom = app.conf.mapZoomAutoZeroSpeedZ;
+            newZoom = Math.round(newZoom / zstep) * zstep;
 
-            if (newZoom > app.conf.mapZoomAutoZeroSpeedZ && map.zoomLevel < app.conf.mapZoomAutoZeroSpeedZ)
-                map.setZoomLevel(app.conf.mapZoomAutoZeroSpeedZ);
-            else if (Math.abs(map.zoomLevel - newZoom) > 0.1)
+            if (newZoom > app.conf.mapZoomAutoZeroSpeedZ) {
+                if (map.zoomLevel < app.conf.mapZoomAutoZeroSpeedZ)
+                    map.setZoomLevel(app.conf.mapZoomAutoZeroSpeedZ);
+            } else if (Math.abs(map.zoomLevel - newZoom) > zstep*0.5)
                 map.setZoomLevel(newZoom);
         }
     }
