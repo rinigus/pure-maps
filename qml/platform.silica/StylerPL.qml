@@ -71,6 +71,8 @@ QtObject {
     property string iconMaps: "image://theme/icon-m-levels"
     property string iconMenu: "image://theme/icon-m-menu"
     property string iconNavigate: "image://theme/icon-m-car"
+    property string iconNavigateTo: "image://theme/icon-m-car"
+    property string iconNavigateFrom: "image://theme/icon-m-car"
     property string iconNearby: "image://theme/icon-m-whereami"
     property string iconPause: "image://theme/icon-m-pause"
     property string iconPhone: "image://theme/icon-m-phone"

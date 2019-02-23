@@ -177,7 +177,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: app.styler.iconNavigate
+            icon: app.styler.iconNavigateTo
             label: app.tr("Navigate To")
             onClicked: {
                 app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
@@ -189,7 +189,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: app.styler.iconNavigate
+            icon: app.styler.iconNavigateFrom
             label: app.tr("Navigate From")
             onClicked: {
                 app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
