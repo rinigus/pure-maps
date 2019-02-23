@@ -223,34 +223,6 @@ PagePL {
                         if (app.mode === modes.followMe) map.setScale(scaleSlider.value);
                     }
                 }
-
-                SliderPL {
-                    description: app.tr("Zoom level while standing. " +
-                                        "This is the largest zoom level that is going to be used " +
-                                        "in the automatic adjustment of the zoom.")
-                    label: app.tr("Zoom level at still")
-                    maximumValue: 20.0
-                    minimumValue: 10.0
-                    stepSize: 0.1
-                    value: app.conf.get("map_zoom_auto_zero_speed_z")
-                    valueText: value
-                    width: parent.width
-                    onValueChanged: app.conf.set("map_zoom_auto_zero_speed_z", value)
-                }
-
-                SliderPL {
-                    description: app.tr("Zoom level will be adjusted to have the same " +
-                                        "map height as the distance that is " +
-                                        "covered by you in the given amount of seconds.")
-                    label: app.tr("Time range, s")
-                    maximumValue: 120.0
-                    minimumValue: 5.0
-                    stepSize: 1.0
-                    value: app.conf.get("map_zoom_auto_time")
-                    valueText: value
-                    width: parent.width
-                    onValueChanged: app.conf.set("map_zoom_auto_time", value)
-                }
             }
 
             // Follow Me mode: done

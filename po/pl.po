@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 19:45+0200\n"
+"POT-Creation-Date: 2019-02-23 22:49+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: A <hucul@o2.pl>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rinigus/teams/89597/pl/)\n"
@@ -45,8 +45,8 @@ msgstr "Czas połączenia przekroczony"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:207 qml/GeocodeItem.qml:516
 #: qml/NearbyPage.qml:30 qml/NearbyPage.qml:136 qml/NearbyPage.qml:151
-#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:266
-#: qml/RoutePage.qml:276 qml/RoutePage.qml:278 qml/RoutePoint.qml:42
+#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:238
+#: qml/RoutePage.qml:248 qml/RoutePage.qml:250 qml/RoutePoint.qml:42
 #: qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr "Obecna pozycja"
@@ -362,7 +362,7 @@ msgstr "Usuń"
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
 #: qml/GeocodeItem.qml:39 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
-#: qml/PreferencesPage.qml:340
+#: qml/PreferencesPage.qml:339
 msgid "Search"
 msgstr "Wyszukaj"
 
@@ -453,7 +453,7 @@ msgid "Venues"
 msgstr "Miejsca"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:25
-#: qml/PreferencesPage.qml:364 qml/RoutePage.qml:25
+#: qml/PreferencesPage.qml:363 qml/RoutePage.qml:25
 #: routers/default_results.qml:64 routers/digitransit_results.qml:186
 #: routers/gpx_osmscout_results.qml:64 routers/gpx_results.qml:64
 #: routers/mapquest_open_results.qml:64 routers/osmscout_results.qml:64
@@ -706,34 +706,10 @@ msgstr "Przewidywany czas przybycia"
 msgid "Options"
 msgstr "Opcje"
 
-#: qml/NavigationPage.qml:176 qml/PreferencesPage.qml:179
+#: qml/NavigationPage.qml:169 qml/PreferencesPage.qml:179
 #: qml/RoutePage.qml:213
 msgid "Map scale"
 msgstr "Skala mapy"
-
-#: qml/NavigationPage.qml:192 qml/PreferencesPage.qml:206
-#: qml/RoutePage.qml:228
-msgid ""
-"Zoom level while standing. This is the largest zoom level that is going to "
-"be used in the automatic adjustment of the zoom."
-msgstr ""
-
-#: qml/NavigationPage.qml:195 qml/PreferencesPage.qml:209
-#: qml/RoutePage.qml:231
-msgid "Zoom level at still"
-msgstr ""
-
-#: qml/NavigationPage.qml:206 qml/PreferencesPage.qml:220
-#: qml/RoutePage.qml:242
-msgid ""
-"Zoom level will be adjusted to have the same map height as the distance that"
-" is covered by you in the given amount of seconds."
-msgstr ""
-
-#: qml/NavigationPage.qml:209 qml/PreferencesPage.qml:223
-#: qml/RoutePage.qml:245
-msgid "Time range, s"
-msgstr ""
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
@@ -992,8 +968,8 @@ msgstr ""
 msgid "Prevent sleep"
 msgstr "Zapobiegaj zasypianu"
 
-#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:268
-#: qml/PreferencesPage.qml:475
+#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:267
+#: qml/PreferencesPage.qml:474
 msgid "Never"
 msgstr "Nigdy"
 
@@ -1001,7 +977,7 @@ msgstr "Nigdy"
 msgid "When navigating"
 msgstr "Podczas nawigacji"
 
-#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:475
+#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:474
 msgid "Always"
 msgstr "Zawsze"
 
@@ -1046,7 +1022,7 @@ msgid ""
 "navigating."
 msgstr "Wybierz tryb transportu. Działa tylko, kiedy Pure Maps nie nawiguje."
 
-#: qml/PreferencesPage.qml:163 qml/PreferencesPage.qml:412
+#: qml/PreferencesPage.qml:163 qml/PreferencesPage.qml:411
 msgid "Snap position to road"
 msgstr "Przyciągnij pozycję do drogi"
 
@@ -1077,11 +1053,31 @@ msgstr "Pieszo"
 msgid "Automatic zoom"
 msgstr ""
 
-#: qml/PreferencesPage.qml:241
+#: qml/PreferencesPage.qml:206
+msgid ""
+"Maximal zoom level that is going to be used in the automatic adjustment of "
+"the zoom."
+msgstr ""
+
+#: qml/PreferencesPage.qml:208
+msgid "Maximal zoom level"
+msgstr ""
+
+#: qml/PreferencesPage.qml:219
+msgid ""
+"Zoom level will be adjusted to have the same map height as the distance that"
+" is covered by you in the given amount of seconds."
+msgstr ""
+
+#: qml/PreferencesPage.qml:222
+msgid "Time range, s"
+msgstr ""
+
+#: qml/PreferencesPage.qml:240
 msgid "Controls"
 msgstr ""
 
-#: qml/PreferencesPage.qml:247
+#: qml/PreferencesPage.qml:246
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
@@ -1091,11 +1087,11 @@ msgstr ""
 " pełnego widoku lub z mniejszym wybranym zestawem kontrolek w trybie widoku "
 "minimalnego. Aby przełączać tryby, kliknij mapę."
 
-#: qml/PreferencesPage.qml:256
+#: qml/PreferencesPage.qml:255
 msgid "Set map view to minimal mode on start"
 msgstr "Ustaw widok mapy na tryb minimalny na starcie"
 
-#: qml/PreferencesPage.qml:264
+#: qml/PreferencesPage.qml:263
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
@@ -1103,31 +1099,31 @@ msgstr ""
 "Automatycznie przełącz się na minimalny tryb widoku po określonym opóźnieniu"
 " lub wyłącz automatyczne przełączanie pomiędzy trybami widoku mapy."
 
-#: qml/PreferencesPage.qml:266
+#: qml/PreferencesPage.qml:265
 msgid "Switch to minimal view"
 msgstr "Przełącz na minimalny widok"
 
-#: qml/PreferencesPage.qml:268
+#: qml/PreferencesPage.qml:267
 msgid "10 seconds"
 msgstr "10 sekund"
 
-#: qml/PreferencesPage.qml:268
+#: qml/PreferencesPage.qml:267
 msgid "20 seconds"
 msgstr "20 sekund"
 
-#: qml/PreferencesPage.qml:269
+#: qml/PreferencesPage.qml:268
 msgid "30 seconds"
 msgstr "30 sekund"
 
-#: qml/PreferencesPage.qml:269
+#: qml/PreferencesPage.qml:268
 msgid "1 minute"
 msgstr "1 minuta"
 
-#: qml/PreferencesPage.qml:283
+#: qml/PreferencesPage.qml:282
 msgid "Always show"
 msgstr "Zawsze pokazuj"
 
-#: qml/PreferencesPage.qml:287
+#: qml/PreferencesPage.qml:286
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
@@ -1135,70 +1131,70 @@ msgstr ""
 "Zawsze pokazuj wybrane kontrolki, niezależnie od tego, czy widok mapy jest w"
 " trybie minimalnym, czy pełnym."
 
-#: qml/PreferencesPage.qml:295
+#: qml/PreferencesPage.qml:294
 msgid "Menu"
 msgstr "Menu"
 
-#: qml/PreferencesPage.qml:304
+#: qml/PreferencesPage.qml:303
 msgid "Center on current location"
 msgstr "Środek w obecnej lokalizacji"
 
-#: qml/PreferencesPage.qml:313
+#: qml/PreferencesPage.qml:312
 msgid "Compass"
 msgstr "Kompas"
 
-#: qml/PreferencesPage.qml:322
+#: qml/PreferencesPage.qml:321
 msgid "Speed and location precision"
 msgstr "Prędkość i dokładność lokalizacji"
 
-#: qml/PreferencesPage.qml:331
+#: qml/PreferencesPage.qml:330
 msgid "Scale"
 msgstr "Skala"
 
-#: qml/PreferencesPage.qml:349 qml/RoutePage.qml:52
+#: qml/PreferencesPage.qml:348 qml/RoutePage.qml:52
 msgid "Navigate"
 msgstr "Nawiguj"
 
-#: qml/PreferencesPage.qml:372
+#: qml/PreferencesPage.qml:371
 msgid "Show navigation instructions"
 msgstr "Pokaż instrukcje nawigacji"
 
-#: qml/PreferencesPage.qml:382
+#: qml/PreferencesPage.qml:381
 msgid "Voice navigation instructions"
 msgstr "Instrukcje nawigacji głosowej"
 
-#: qml/PreferencesPage.qml:393
+#: qml/PreferencesPage.qml:392
 msgid "Reroute automatically"
 msgstr "Zmieniaj trasę automatycznie"
 
-#: qml/PreferencesPage.qml:402
+#: qml/PreferencesPage.qml:401
 msgid "Automatic zoom on start"
 msgstr ""
 
-#: qml/PreferencesPage.qml:423
+#: qml/PreferencesPage.qml:422
 msgid "Show direction signs"
 msgstr "Pokaż znaki kierunku"
 
-#: qml/PreferencesPage.qml:433
+#: qml/PreferencesPage.qml:432
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr ""
 "Ustaw obracanie mapy w kierunku ruchu, podczas uruchamiania nawigacji."
 
-#: qml/PreferencesPage.qml:434
+#: qml/PreferencesPage.qml:433
 msgid "Rotate map when navigating"
 msgstr "Obracaj mape podczas nawigacji"
 
-#: qml/PreferencesPage.qml:443
+#: qml/PreferencesPage.qml:442
 msgid "Only applies to vector maps."
 msgstr "Dotyczy tylko map wektorowych"
 
-#: qml/PreferencesPage.qml:445
+#: qml/PreferencesPage.qml:444
 msgid "Tilt map when navigating"
 msgstr "Przechyl mapę podczas nawigacji"
 
-#: qml/PreferencesPage.qml:456
+#: qml/PreferencesPage.qml:455
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
@@ -1206,35 +1202,35 @@ msgstr ""
 "Preferowana płeć dla głosu nawigacji. Dostępna tylko dla wybranych silników "
 "oraz języków."
 
-#: qml/PreferencesPage.qml:457 qml/PreferencesPage.qml:554
+#: qml/PreferencesPage.qml:456 qml/PreferencesPage.qml:553
 msgid "Voice gender"
 msgstr "Płeć głosu"
 
-#: qml/PreferencesPage.qml:458 qml/PreferencesPage.qml:555
+#: qml/PreferencesPage.qml:457 qml/PreferencesPage.qml:554
 msgid "Male"
 msgstr "Męska"
 
-#: qml/PreferencesPage.qml:458 qml/PreferencesPage.qml:555
+#: qml/PreferencesPage.qml:457 qml/PreferencesPage.qml:554
 msgid "Female"
 msgstr "Żeńska"
 
-#: qml/PreferencesPage.qml:472
+#: qml/PreferencesPage.qml:471
 msgid "Show speed limit sign"
 msgstr "Pokaż znak ograniczenia prędkości"
 
-#: qml/PreferencesPage.qml:474
+#: qml/PreferencesPage.qml:473
 msgid "Speed limit"
 msgstr "Ograniczenie prędkości"
 
-#: qml/PreferencesPage.qml:475
+#: qml/PreferencesPage.qml:474
 msgid "Only when exceeding"
 msgstr "Dopiero po przekroczeniu"
 
-#: qml/PreferencesPage.qml:498
+#: qml/PreferencesPage.qml:497
 msgid "Testing"
 msgstr "Testowanie"
 
-#: qml/PreferencesPage.qml:507
+#: qml/PreferencesPage.qml:506
 msgid ""
 "Testing of text to speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
@@ -1243,89 +1239,89 @@ msgstr ""
 "jakiego używasz do nawigacji, preferowaną płeć, i naciśnij przycisk poniżej,"
 " aby przetestować."
 
-#: qml/PreferencesPage.qml:520 routers/gpx_osmscout_settings.qml:70
+#: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
 msgid "Language"
 msgstr "Język"
 
-#: qml/PreferencesPage.qml:522 routers/gpx_osmscout_settings.qml:71
+#: qml/PreferencesPage.qml:521 routers/gpx_osmscout_settings.qml:71
 #: routers/ValhallaSettings.qml:58
 msgid "English"
 msgstr "Angielski"
 
-#: qml/PreferencesPage.qml:523 routers/gpx_osmscout_settings.qml:71
+#: qml/PreferencesPage.qml:522 routers/gpx_osmscout_settings.qml:71
 #: routers/ValhallaSettings.qml:58
 msgid "Catalan"
 msgstr "Kataloński"
 
-#: qml/PreferencesPage.qml:524 routers/gpx_osmscout_settings.qml:71
+#: qml/PreferencesPage.qml:523 routers/gpx_osmscout_settings.qml:71
 #: routers/ValhallaSettings.qml:58
 msgid "Czech"
 msgstr "Czeski"
 
-#: qml/PreferencesPage.qml:525 routers/gpx_osmscout_settings.qml:72
+#: qml/PreferencesPage.qml:524 routers/gpx_osmscout_settings.qml:72
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:59
 msgid "German"
 msgstr "Niemiecki"
 
-#: qml/PreferencesPage.qml:526 routers/gpx_osmscout_settings.qml:73
+#: qml/PreferencesPage.qml:525 routers/gpx_osmscout_settings.qml:73
 #: routers/ValhallaSettings.qml:60
 msgid "Spanish"
 msgstr "Hiszpański"
 
-#: qml/PreferencesPage.qml:527 routers/gpx_osmscout_settings.qml:72
+#: qml/PreferencesPage.qml:526 routers/gpx_osmscout_settings.qml:72
 #: routers/ValhallaSettings.qml:59
 msgid "French"
 msgstr "francuski"
 
-#: qml/PreferencesPage.qml:528 routers/gpx_osmscout_settings.qml:72
+#: qml/PreferencesPage.qml:527 routers/gpx_osmscout_settings.qml:72
 #: routers/ValhallaSettings.qml:59
 msgid "Hindi"
 msgstr "Hindi"
 
-#: qml/PreferencesPage.qml:529 routers/gpx_osmscout_settings.qml:72
+#: qml/PreferencesPage.qml:528 routers/gpx_osmscout_settings.qml:72
 #: routers/ValhallaSettings.qml:59
 msgid "Italian"
 msgstr "Włoski"
 
-#: qml/PreferencesPage.qml:530 routers/gpx_osmscout_settings.qml:73
+#: qml/PreferencesPage.qml:529 routers/gpx_osmscout_settings.qml:73
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:60
 msgid "Russian"
 msgstr "Rosyjski"
 
-#: qml/PreferencesPage.qml:531
+#: qml/PreferencesPage.qml:530
 msgid "Slovak"
 msgstr "słowacki"
 
-#: qml/PreferencesPage.qml:532 routers/gpx_osmscout_settings.qml:73
+#: qml/PreferencesPage.qml:531 routers/gpx_osmscout_settings.qml:73
 #: routers/ValhallaSettings.qml:60
 msgid "Swedish"
 msgstr "Szwedzki"
 
-#: qml/PreferencesPage.qml:553
+#: qml/PreferencesPage.qml:552
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "Preferowana płeć. Obsługiwane tylko przez niektóre silniki i języki."
 
-#: qml/PreferencesPage.qml:567
+#: qml/PreferencesPage.qml:566
 msgid "Test"
 msgstr "Test"
 
-#: qml/PreferencesPage.qml:607
+#: qml/PreferencesPage.qml:606
 msgid "Selected voice engine: %1"
 msgstr "Wybierz silnik głosu: %1"
 
-#: qml/PreferencesPage.qml:609
+#: qml/PreferencesPage.qml:608
 msgid ""
 "No engine available for selected language.\n"
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
 msgstr ""
 
-#: qml/PreferencesPage.qml:627
+#: qml/PreferencesPage.qml:626
 msgid "Development"
 msgstr "Rozwój aplikacji"
 
-#: qml/PreferencesPage.qml:633
+#: qml/PreferencesPage.qml:632
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1333,7 +1329,7 @@ msgstr ""
 "Ta opcja jest tylko do celów rozwou aplikacji. Proszę, nie włączaj jej jesli"
 " nie wiesz co robisz."
 
-#: qml/PreferencesPage.qml:641
+#: qml/PreferencesPage.qml:640
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1341,11 +1337,11 @@ msgstr ""
 "Ustawia bieżącą pozycję na środek bieżącego widoku mapy. Pamiętaj, aby "
 "wyłączyć funkcję pozycjonowania GPS podczas korzystania z tej opcji."
 
-#: qml/PreferencesPage.qml:642
+#: qml/PreferencesPage.qml:641
 msgid "Set position to the map center"
 msgstr "Ustaw pozycję na środku mapy"
 
-#: qml/PreferencesPage.qml:649
+#: qml/PreferencesPage.qml:648
 msgid "Show current zoom level"
 msgstr "Pokaż aktualny poziom powiększenia"
 

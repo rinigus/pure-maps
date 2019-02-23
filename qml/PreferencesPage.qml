@@ -203,10 +203,9 @@ PagePL {
                     width: sectionAutoZoom.width
 
                     SliderPL {
-                        description: app.tr("Zoom level while standing. " +
-                                            "This is the largest zoom level that is going to be used " +
+                        description: app.tr("Maximal zoom level that is going to be used " +
                                             "in the automatic adjustment of the zoom.")
-                        label: app.tr("Zoom level at still")
+                        label: app.tr("Maximal zoom level")
                         maximumValue: 20.0
                         minimumValue: 10.0
                         stepSize: 0.1
