@@ -247,6 +247,9 @@ def format_distance_and_bearing(meters, bearing, n=2, short=True):
     if bearing == 360: return f(_("{distance} north"))
     raise ValueError("Unexpected bearing: {}".format(repr(bearing)))
 
+def format_location_olc(x, y):
+    return olc_encode(y,x)
+
 def format_location_message(x, y, html=False, osm=True, gmaps=False):
     """Format coordinates of a point into a location message."""
     if osm: osm_url = short_osm(y,x)

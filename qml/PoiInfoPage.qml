@@ -64,7 +64,22 @@ PagePL {
             color: app.styler.themeHighlightColor
             font.pixelSize: app.styler.themeFontSizeSmall
             height: implicitHeight + app.styler.themePaddingMedium
-            text: hasCoordinate ? app.tr("Latitude: %1", poi.coordinate.latitude) + "\n" + app.tr("Longitude: %2", poi.coordinate.longitude) : ""
+            text: hasCoordinate ? app.tr("Latitude: %1", poi.coordinate.latitude) + "\n" +
+                                  app.tr("Longitude: %2", poi.coordinate.longitude) : ""
+            truncMode: truncModes.none
+            verticalAlignment: Text.AlignTop
+            visible: text
+            wrapMode: Text.WordWrap
+        }
+
+        ListItemLabel {
+            color: app.styler.themeHighlightColor
+            font.pixelSize: app.styler.themeFontSizeSmall
+            height: implicitHeight + app.styler.themePaddingMedium
+            text: hasCoordinate ? app.tr("Plus code: %1",
+                                         py.call_sync("poor.util.format_location_olc",
+                                                      [poi.coordinate.longitude,
+                                                       poi.coordinate.latitude])) : ""
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
             visible: text
