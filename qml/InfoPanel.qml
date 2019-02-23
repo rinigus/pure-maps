@@ -56,7 +56,7 @@ Panel {
             anchors.leftMargin: app.styler.themeHorizontalPageMargin
             anchors.verticalCenter: infoBg.verticalCenter
             iconHeight: app.styler.themeIconSizeMedium
-            iconName: showMenu ? app.styler.iconBack : ""
+            iconName: showMenu ? app.styler.iconClose : ""
             padding: 0
             visible: showMenu
             onClicked: {
