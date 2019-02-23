@@ -130,8 +130,8 @@ class Geocoder:
         qtrimmed = query.strip()
         if olc_isFull(qtrimmed):
             latlng = olc_decode(qtrimmed).latlng()
-            return [dict(title=_("Point from Plus code"),
-                         description=qtrimmed.upper(),
+            return [dict(title=qtrimmed.upper(),
+                         description=_("Point from Plus code"),
                          x=latlng[1],
                          y=latlng[0],
                          distance=self._format_distance(x, y, latlng[1], latlng[0]),

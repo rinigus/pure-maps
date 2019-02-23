@@ -60,7 +60,7 @@ QtObject {
     property string iconAbout: "image://theme/icon-m-about"
     property string iconBack: "image://theme/icon-m-back"
     property string iconClear: "image://theme/icon-m-clear"
-    property string iconClose: "image://theme/icon-m-close"
+    property string iconClose: "image://theme/icon-m-dismiss"
     property string iconDelete: "image://theme/icon-m-delete"
     property string iconDot: "image://theme/icon-m-dot"
     property string iconEdit: "image://theme/icon-m-edit"
