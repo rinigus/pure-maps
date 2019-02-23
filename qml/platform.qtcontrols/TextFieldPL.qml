@@ -46,7 +46,19 @@ Item {
         anchors.leftMargin: app.styler.themePaddingMedium
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        rightPadding: clearButton.width + clearButton.anchors.leftMargin + app.styler.themePaddingMedium
         Keys.onReturnPressed: row.enter()
+
+        IconButtonPL {
+            id: clearButton
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themePaddingMedium
+            anchors.verticalCenter: parent.verticalCenter
+            iconName: app.styler.iconEditClear
+            iconHeight: app.style.themeFontSizeMedium
+            visible: parent.text
+            onClicked: parent.text = ""
+        }
     }
 
     Label {

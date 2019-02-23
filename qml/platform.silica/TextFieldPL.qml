@@ -36,10 +36,22 @@ Item {
 
     TextField {
         id: entry
+        anchors.left: parent.left
+        anchors.right: clearButton.left
         labelVisible: !description
-        width: parent.width
         EnterKey.iconSource: "image://theme/icon-m-enter-next"
         EnterKey.onClicked: row.enter();
+    }
+
+    IconButtonPL {
+        id: clearButton
+        anchors.right: parent.right
+        anchors.rightMargin: visible ? app.styler.themePaddingMedium : 0
+        anchors.verticalCenter: entry.verticalCenter
+        iconName: app.styler.iconEditClear
+        iconHeight: app.style.themeFontSizeMedium
+        visible: entry.text
+        onClicked: entry.text = ""
     }
 
     Label {
