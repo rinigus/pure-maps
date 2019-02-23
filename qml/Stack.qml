@@ -25,19 +25,24 @@ QtObject {
     property var  _garbage: []
 
     function clear() {
-        for (var i=0; i < _garbage.length; i++) {
-            // console.log("Destroy: " + _garbage[i].page + " " + _garbage[i].stack_index + " " + app.pages.currentIndex);
-            if (_garbage[i].page) _garbage[i].page.destroy();
-        }
-        _garbage = [];
         for (var i=0; i < _stack.length; i++)
             for (var j=0; j < _stack[i].length; j++) {
                 if (_stack[i][j])
                     _garbage.push(_stack[i][j]);
             }
+        // cleanup _garbage
+        var _new_garbage = [];
+        for (var i=0; i < _garbage.length; i++)
+            if (_garbage[i].stack_index <= app.pages.currentIndex)
+                _new_garbage.push(_garbage[i]);
+            else {
+                // console.log("Destroy: " + _garbage[i].page + " " + _garbage[i].stack_index + " " + app.pages.currentIndex);
+                _garbage[i].page && _garbage[i].page.destroy();
+            }
+        _garbage = _new_garbage;
 
-        _stack = [];
         keep = false;
+        _stack = [];
     }
 
     function push(pagefile, options) {
