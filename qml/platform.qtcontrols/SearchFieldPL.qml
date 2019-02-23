@@ -41,7 +41,7 @@ TextField {
         anchors.leftMargin: app.styler.themePaddingMedium
         anchors.verticalCenter: field.verticalCenter
         iconName: app.styler.iconSearch
-        iconHeight: app.style.themeFontSizeMedium //field.height * 0.7
+        iconHeight: app.styler.themeFontSizeMedium
         onClicked: field.search()
     }
 
@@ -51,7 +51,7 @@ TextField {
         anchors.rightMargin: app.styler.themePaddingMedium
         anchors.verticalCenter: field.verticalCenter
         iconName: app.styler.iconEditClear
-        iconHeight: app.style.themeFontSizeMedium //field.height * 0.7
+        iconHeight: app.styler.themeFontSizeMedium
         visible: field.text
         onClicked: field.text = ""
     }

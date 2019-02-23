@@ -66,7 +66,7 @@ Item {
             anchors.rightMargin: app.styler.themePaddingMedium
             anchors.verticalCenter: parent.verticalCenter
             iconName: app.styler.iconEditClear
-            iconHeight: app.style.themeFontSizeMedium
+            iconHeight: app.styler.themeFontSizeMedium
             visible: parent.text
             onClicked: parent.text = ""
         }
