@@ -49,7 +49,7 @@ Item {
         anchors.rightMargin: visible ? app.styler.themePaddingMedium : 0
         anchors.verticalCenter: entry.verticalCenter
         iconName: app.styler.iconEditClear
-        iconHeight: app.style.themeFontSizeMedium
+        iconHeight: app.styler.themeFontSizeMedium
         visible: entry.text
         onClicked: entry.text = ""
     }
