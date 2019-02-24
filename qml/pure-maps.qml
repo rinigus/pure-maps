@@ -121,6 +121,11 @@ ApplicationWindowPL {
         app.updateMapMatching();
     }
 
+    onNarrativePageSeenChanged: {
+        if (!narrativePageSeen)
+            app._stackNavigation.keep = false; // drops navigation pagestack if a new route is obtained
+    }
+
     function clear(confirm) {
         if (confirm) {
             app.remorse.execute(app.tr("Clearing map"),
