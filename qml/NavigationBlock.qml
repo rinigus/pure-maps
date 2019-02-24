@@ -296,7 +296,7 @@ Panel {
         width: block.notify ? sourceSize.width : 0
     }
 
-    onClicked: app.showNavigationPages();
+    onClicked: if (contentHeight) app.showNavigationPages()
 
     onSwipedOut: {
         app.setModeExplore();
