@@ -207,7 +207,7 @@ ApplicationWindowPL {
     function pushMain(pagefile, options) {
         // replace the current main with the new stack
         app._stackMain.clear();
-        app.resetMenu(true);
+        app.resetMenu();
         if (app.isConvergent) {
             app.clearPages();
         }
@@ -276,11 +276,10 @@ ApplicationWindowPL {
         }
     }
 
-    function resetMenu(skipmap) {
+    function resetMenu() {
         app._stackMain.keep = false;
         app.stateId = "";
         app.infoPanel.infoText = "";
-        if (!skipmap) app.showMap();
     }
 
     function setModeExplore() {
@@ -297,7 +296,6 @@ ApplicationWindowPL {
 
     function setModeNavigate() {
         app.mode = modes.navigate;
-        resetMenu(true);
     }
 
     function showMap() {
@@ -325,6 +323,7 @@ ApplicationWindowPL {
     }
 
     function showNavigationPages() {
+        resetMenu();
         if (app._stackNavigation.keep) {
             // restore former navigation pages stack
             app._stackNavigation.keep = false;
