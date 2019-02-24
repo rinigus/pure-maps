@@ -42,6 +42,7 @@ Item {
         anchors.leftMargin: app.styler.themePaddingMedium
         anchors.right: parent.right
         anchors.top: parent.top
+        height: Math.max(app.styler.themeItemSizeSmall, implicitHeight)
         font.pixelSize: app.styler.themeFontSizeMedium
         onClicked: row.clicked()
     }
