@@ -77,8 +77,8 @@ QtObject {
         var found = false;
         for (var i=0; i < _stack.length; i++) {
             // console.log('Restoring: ' + _stack[i][0] + ' current ' + _current);
-            app.pages.push(_stack[i][0]["page"], {}, true);
             if (_stack[i][0]["page"] === _current) found = true;
+            app.pages.push(_stack[i][0]["page"], {}, !found);
             for (var j=1; j < _stack[i].length; j++) {
                 // console.log('Restoring attached: ' + _stack[i][j]);
                 app.pages.pushAttached(_stack[i][j]["page"], {});
