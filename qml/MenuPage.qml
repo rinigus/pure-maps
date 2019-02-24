@@ -146,8 +146,13 @@ MenuDrawerPL {
         Connections {
             target: map
             onAutoCenterChanged: {
-                if (autoCenterItem.checked !== app.map.autoCenter)
+                if (autoCenterItem.checked !== app.map.autoCenter) {
                     autoCenterItem.checked = app.map.autoCenter;
+                    if (!app.map.autoCenter && app.map.autoZoom) {
+                        app.map.autoZoom = false;
+                        autoZoomItem.checked = false;
+                    }
+                }
             }
         }
         onCheckedChanged: {
@@ -177,6 +182,7 @@ MenuDrawerPL {
     TextSwitchPL {
         id: autoZoomItem
         checked: app.map.autoZoom
+        enabled: app.map.autoCenter
         height: app.styler.themeItemSizeSmall
         leftMargin: page.switchLeftMargin
         text: app.tr("Auto-zoom map")

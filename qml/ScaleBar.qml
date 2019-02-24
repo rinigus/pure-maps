@@ -23,14 +23,10 @@ import "js/util.js" as Util
 
 MouseArea {
     id: master
-    //anchors.bottom: parent.bottom
-    anchors.bottomMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
     anchors.top: attributionButton.bottom
-    anchors.topMargin: app.styler.themePaddingLarge + app.styler.themePaddingSmall
-    anchors.rightMargin:  app.styler.themePaddingLarge + app.styler.themePaddingSmall
-    height: _rotate ? scaleBar.width : scaleBar.height
+    height: 2*(app.styler.themePaddingLarge + app.styler.themePaddingSmall) +
+            (_rotate ? scaleBar.width : scaleBar.height)
     states: [
         State {
             when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
@@ -44,7 +40,8 @@ MouseArea {
         }
     ]
     opacity: hidden ? 0 : 1
-    width: _rotate ? scaleBar.height : scaleBar.width
+    width: 2*(app.styler.themePaddingLarge + app.styler.themePaddingSmall) +
+           (_rotate ? scaleBar.height : scaleBar.width)
     z: 400
 
     property bool hidden: !_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale
@@ -139,18 +136,6 @@ MouseArea {
             text: scaleBar.text
         }
 
-        Connections {
-            target: app.conf
-            onUnitsChanged: scaleBar.update()
-        }
-
-        Connections {
-            target: map
-            onMetersPerPixelChanged: scaleBar.update();
-            onHeightChanged: scaleBar.update();
-            onWidthChanged: scaleBar.update();
-        }
-
         Component.onCompleted: scaleBar.update()
 
         function roundedDistace(dist) {
@@ -183,14 +168,31 @@ MouseArea {
 
     }
 
+    Connections {
+        target: app.conf
+        onUnitsChanged: scaleBar.update()
+    }
+
+    Connections {
+        target: map
+        onAutoCenterChanged: if (!map.autoCenter) setAutoZoom(false)
+        onMetersPerPixelChanged: scaleBar.update();
+        onHeightChanged: scaleBar.update();
+        onWidthChanged: scaleBar.update();
+    }
+
     onClicked: {
-        map.autoZoom = !map.autoZoom;
-        console.log("SZ: " + map.autoZoom)
+        if (!map.autoCenter || hidden) return;
+        setAutoZoom(!map.autoZoom)
+    }
+
+    function setAutoZoom(az) {
+        if (map.autoZoom === az) return;
+        map.autoZoom = az;
         bubble.text = map.autoZoom ?
                     app.tr("Auto-zoom on") :
                     app.tr("Auto-zoom off");
         bubble.visible = true;
         timerBubble.restart();
     }
-
 }
