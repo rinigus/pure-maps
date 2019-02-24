@@ -461,7 +461,9 @@ MapboxMap {
         if (app.conf.voiceNavigation) {
             var args = [map.route.language, app.conf.voiceGender];
             py.call_sync("poor.app.narrative.set_voice", args);
-            notification.flash(app.tr("Voice navigation on"));
+            var engine = py.evaluate("poor.app.narrative.voice_engine");
+            if (engine) notification.flash(app.tr("Voice navigation on"));
+            else notification.flash(app.tr("Voice navigation unavailable: missing text to speach engine for selected language"));
         } else {
             py.call_sync("poor.app.narrative.set_voice", [null, null]);
         }
@@ -524,9 +526,9 @@ MapboxMap {
 
     function setModeExplore() {
         // map used to explore it
+        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = false;
         map.autoCenter = false;
         map.autoRotate = false;
-        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = false;
         if (map.zoomLevel > 14) map.setZoomLevel(14);
         map.setScale(app.conf.get("map_scale"));
     }
@@ -536,11 +538,11 @@ MapboxMap {
         var scale = app.conf.get("map_scale_navigation_" + (app.conf.mapMatchingWhenFollowing !== "none" ? app.conf.mapMatchingWhenFollowing : "car") );
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
-        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
         map.setScale(scale);
         map.centerOnPosition();
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
+        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
     }
 
     function setModeNavigate() {
@@ -548,11 +550,11 @@ MapboxMap {
         var scale = app.conf.get("map_scale_navigation_" + route.mode);
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
-        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
         map.setScale(scale);
         map.centerOnPosition();
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
+        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
         map.initVoiceNavigation();
     }
 
