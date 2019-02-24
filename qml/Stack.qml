@@ -79,17 +79,19 @@ QtObject {
             // console.log('Restoring: ' + _stack[i][0] + ' current ' + _current);
             if (_stack[i][0]["page"] === _current) found = true;
             app.pages.push(_stack[i][0]["page"], {}, !found);
+            // console.log('Current page found ' + found)
             for (var j=1; j < _stack[i].length; j++) {
                 // console.log('Restoring attached: ' + _stack[i][j]);
                 app.pages.pushAttached(_stack[i][j]["page"], {});
                 if (!found) app.pages.navigateForward(true);
                 if (!found && _stack[i][j]["page"] === _current) found = true;
-                // console.log('Current page found ' + found)
+                // console.log('Current attached or nonattached page found ' + found)
             }
         }
     }
 
     function setCurrent(p) {
+        // console.log('set current: ' + p);
         _current = p;
     }
 

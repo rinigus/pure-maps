@@ -297,7 +297,7 @@ ApplicationWindowPL {
 
     function setModeNavigate() {
         app.mode = modes.navigate;
-        resetMenu();
+        resetMenu(true);
     }
 
     function showMap() {
