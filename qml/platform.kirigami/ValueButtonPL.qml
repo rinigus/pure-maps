@@ -18,43 +18,59 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import QtQuick.Layouts 1.2
+import org.kde.kirigami 2.5 as Kirigami
 
 Item {
     id: row
-    height: childrenRect.height
 
-    property alias description: desc.text
-    property alias label: lab.text
-    property alias value: val.text
+    anchors.left: inForm ? undefined : parent.left
+    anchors.right: inForm ? undefined : parent.right
+    implicitHeight: childrenRect.height
+    Kirigami.FormData.buddyFor: val
+    Kirigami.FormData.label: label
+    Layout.fillWidth: true
+    Layout.preferredWidth: parent.width
+
+    property alias  description: desc.text
+    property bool   inForm: parent.isFormLayout ? true : false
+    property string label
+    property alias  value: val.text
 
     signal clicked
 
-    Label {
-        id: lab
-        anchors.verticalCenter: val.verticalCenter
-        anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
-    }
-
     ItemDelegate {
         id: val
-        anchors.left: lab.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
         height: Math.max(app.styler.themeItemSizeSmall, implicitHeight)
         font.pixelSize: app.styler.themeFontSizeMedium
+        leftPadding: lab.width + lab.anchors.leftMargin + app.styler.themePaddingMedium
         onClicked: row.clicked()
+
+        Label {
+            id: lab
+            anchors.left: parent.left
+            anchors.leftMargin: inForm ? 0 : app.styler.themeHorizontalPageMargin
+            anchors.verticalCenter: val.verticalCenter
+            height: inForm ? 0 : implicitHeight
+            width: inForm ? 0 : implicitWidth
+            text: !inForm ? label : ""
+            visible: text
+        }
     }
 
     Label {
         id: desc
-        anchors.left: lab.right
+        anchors.left: parent.left
+        anchors.leftMargin: lab.anchors.leftMargin + lab.width
         anchors.top: val.bottom
-        anchors.topMargin: app.styler.themePaddingSmall
+        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap
     }

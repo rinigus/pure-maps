@@ -21,7 +21,10 @@ import QtQuick.Controls 2.2
 
 Item {
     id: row
-    height: childrenRect.height
+
+    anchors.left: parent.left
+    anchors.right: parent.right
+    implicitHeight: childrenRect.height
 
     property alias description: desc.text
     property alias label: lab.text
@@ -29,31 +32,34 @@ Item {
 
     signal clicked
 
-    Label {
-        id: lab
-        anchors.verticalCenter: val.verticalCenter
-        anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
-    }
-
     ItemDelegate {
         id: val
-        anchors.left: lab.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
+        height: Math.max(app.styler.themeItemSizeSmall, implicitHeight)
         font.pixelSize: app.styler.themeFontSizeMedium
+        leftPadding: lab.width + lab.anchors.leftMargin + app.styler.themePaddingMedium
         onClicked: row.clicked()
+
+        Label {
+            id: lab
+            anchors.left: parent.left
+            anchors.leftMargin: app.styler.themeHorizontalPageMargin
+            anchors.verticalCenter: val.verticalCenter
+        }
     }
 
     Label {
         id: desc
-        anchors.left: lab.right
+        anchors.left: parent.left
+        anchors.leftMargin: app.styler.themeHorizontalPageMargin + lab.width
         anchors.top: val.bottom
-        anchors.topMargin: app.styler.themePaddingSmall
+        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
         anchors.right: parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
         font.pixelSize: app.styler.themeFontSizeSmall
+        height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap
     }
