@@ -56,7 +56,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             iconName: app.styler.iconEditClear
             iconHeight: app.styler.themeFontSizeMedium
-            visible: parent.text
+            visible: parent.text && entry.activeFocus
             onClicked: parent.text = ""
         }
     }

@@ -50,7 +50,7 @@ Item {
         anchors.verticalCenter: entry.verticalCenter
         iconName: app.styler.iconEditClear
         iconHeight: app.styler.themeFontSizeMedium
-        visible: entry.text
+        visible: entry.text && entry.activeFocus
         onClicked: entry.text = ""
     }
 
