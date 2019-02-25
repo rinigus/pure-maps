@@ -300,7 +300,7 @@ class VoiceGenerator:
     @property
     def current_engine(self):
         """Return text description of the current TTS engine."""
-        if self._engine is None: return _("No engine available for selected language")
+        if self._engine is None: return ""
         return self._engine.description
 
     def get(self, text):

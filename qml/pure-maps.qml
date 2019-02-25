@@ -121,6 +121,11 @@ ApplicationWindowPL {
         app.updateMapMatching();
     }
 
+    onNarrativePageSeenChanged: {
+        if (!narrativePageSeen)
+            app._stackNavigation.keep = false; // drops navigation pagestack if a new route is obtained
+    }
+
     function clear(confirm) {
         if (confirm) {
             app.remorse.execute(app.tr("Clearing map"),
@@ -207,8 +212,8 @@ ApplicationWindowPL {
     function pushMain(pagefile, options) {
         // replace the current main with the new stack
         app._stackMain.clear();
+        app.resetMenu();
         if (app.isConvergent) {
-            app.resetMenu();
             app.clearPages();
         }
         return app._stackMain.push(pagefile, options);
@@ -280,7 +285,6 @@ ApplicationWindowPL {
         app._stackMain.keep = false;
         app.stateId = "";
         app.infoPanel.infoText = "";
-        app.showMap();
     }
 
     function setModeExplore() {
@@ -297,7 +301,6 @@ ApplicationWindowPL {
 
     function setModeNavigate() {
         app.mode = modes.navigate;
-        resetMenu();
     }
 
     function showMap() {
@@ -325,6 +328,7 @@ ApplicationWindowPL {
     }
 
     function showNavigationPages() {
+        resetMenu();
         if (app._stackNavigation.keep) {
             // restore former navigation pages stack
             app._stackNavigation.keep = false;

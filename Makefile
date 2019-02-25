@@ -89,6 +89,8 @@ install:
 	cp poor/*.py $(DATADIR)/poor
 	mkdir -p $(DATADIR)/poor/gpxpy
 	cp thirdparty/gpxpy/gpxpy/*.py $(DATADIR)/poor/gpxpy
+	mkdir -p $(DATADIR)/poor/openlocationcode
+	cp thirdparty/open-location-code/*.py $(DATADIR)/poor/openlocationcode
 	@echo "Installing QML files..."
 	mkdir -p $(DATADIR)/qml
 	cp qml/pure-maps.qml $(DATADIR)/qml/$(NAME).qml

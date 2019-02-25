@@ -203,8 +203,9 @@ PagePL {
                     width: sectionAutoZoom.width
 
                     SliderPL {
-                        description: app.tr("Map zoom level while standing. This is the largest zoom level that is going to be used in the automatic adjustment of the map zoom.")
-                        label: app.tr("Zoom level at still")
+                        description: app.tr("Maximal zoom level that is going to be used " +
+                                            "in the automatic adjustment of the zoom.")
+                        label: app.tr("Maximal zoom level")
                         maximumValue: 20.0
                         minimumValue: 10.0
                         stepSize: 0.1
@@ -215,11 +216,11 @@ PagePL {
                     }
 
                     SliderPL {
-                        description: app.tr("Map zoom level will be adjusted to have the same " +
-                                            "distance in diagonal as the distance that is " +
+                        description: app.tr("Zoom level will be adjusted to have the same " +
+                                            "map height as the distance that is " +
                                             "covered by you in the given amount of seconds.")
                         label: app.tr("Time range, s")
-                        maximumValue: 60.0
+                        maximumValue: 120.0
                         minimumValue: 5.0
                         stepSize: 1.0
                         value: app.conf.get("map_zoom_auto_time")
@@ -601,7 +602,17 @@ PagePL {
                         py.call_sync("poor.app.voice_tester.set_voice",
                                      [ languageComboBox.values[languageComboBox.currentIndex],
                                       genderComboBox.values[genderComboBox.currentIndex] ]);
-                        description.text = app.tr("Selected voice engine: %1").arg(py.evaluate("poor.app.voice_tester.current_engine"));
+                        var engine = py.evaluate("poor.app.voice_tester.current_engine");
+                        if (engine) description.text = app.tr("Selected voice engine: %1", engine);
+                        else {
+                            description.text = app.tr("No engine available for selected language.\n\n" +
+                                                      "Pure Maps supports Mimic, Flite, PicoTTS, and " +
+                                                      "Espeak TTS engines. Unless you are using Pure Maps " +
+                                                      "through Flatpak, the engines have to be installed " +
+                                                      "separately. Sailfish OS users can find the engines " +
+                                                      "at OpenRepos.");
+                        }
+
                         if (!py.evaluate("poor.app.voice_tester.active")) return;
                         testingColumn.message = languageComboBox.phrases[languageComboBox.currentIndex];
                         py.call_sync("poor.app.voice_tester.make",

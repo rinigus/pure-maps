@@ -31,7 +31,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: !app.portrait && app.showNavigationPages();
+        onClicked: if (!app.portrait && navigationBlock.shieldLeftHeight > 0) app.showNavigationPages()
     }
 
 }

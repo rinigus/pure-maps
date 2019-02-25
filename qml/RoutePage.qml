@@ -182,40 +182,49 @@ PagePL {
                 }
             }
 
-            ComboBoxPL {
-                id: mapmatchingComboBox
-                description: app.tr("Select mode of transportation. Only applies when Pure Maps is in follow me mode.")
-                label: app.tr("Mode of transportation")
-                model: [ app.tr("Car"), app.tr("Bicycle"), app.tr("Foot") ]
-                property string  value: "car"
-                property var     values: ["car", "bicycle", "foot"]
-                Component.onCompleted: {
-                    var v = app.conf.mapMatchingWhenFollowing;
-                    mapmatchingComboBox.currentIndex = Math.max(0, mapmatchingComboBox.values.indexOf(v));
-                    value = values[mapmatchingComboBox.currentIndex];
+            FormLayoutPL {
+                anchors.left: parent.left
+                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                anchors.right: parent.right
+                anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                spacing: app.styler.themePaddingMedium
+
+                ComboBoxPL {
+                    id: mapmatchingComboBox
+                    description: app.tr("Select mode of transportation. Only applies when Pure Maps is in follow me mode.")
+                    label: app.tr("Mode of transportation")
+                    model: [ app.tr("Car"), app.tr("Bicycle"), app.tr("Foot") ]
+                    property string  value: "car"
+                    property var     values: ["car", "bicycle", "foot"]
+                    Component.onCompleted: {
+                        var v = app.conf.mapMatchingWhenFollowing;
+                        mapmatchingComboBox.currentIndex = Math.max(0, mapmatchingComboBox.values.indexOf(v));
+                        value = values[mapmatchingComboBox.currentIndex];
+                    }
+                    onCurrentIndexChanged: {
+                        mapmatchingComboBox.value = values[mapmatchingComboBox.currentIndex]
+                        app.conf.set("map_matching_when_following", mapmatchingComboBox.value);
+                        scaleSlider.value = app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
+                    }
                 }
-                onCurrentIndexChanged: {
-                    mapmatchingComboBox.value = values[mapmatchingComboBox.currentIndex]
-                    app.conf.set("map_matching_when_following", mapmatchingComboBox.value);
-                    scaleSlider.value = app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
+
+                SliderPL {
+                    id: scaleSlider
+                    label: app.tr("Map scale")
+                    maximumValue: 4.0
+                    minimumValue: 0.5
+                    stepSize: 0.1
+                    value: app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
+                    valueText: value
+                    width: parent.width
+                    onValueChanged: {
+                        if (!mapmatchingComboBox.value) return;
+                        app.conf.set("map_scale_navigation_" + mapmatchingComboBox.value, scaleSlider.value);
+                        if (app.mode === modes.followMe) map.setScale(scaleSlider.value);
+                    }
                 }
             }
 
-            SliderPL {
-                id: scaleSlider
-                label: app.tr("Map scale")
-                maximumValue: 4.0
-                minimumValue: 0.5
-                stepSize: 0.1
-                value: app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
-                valueText: value
-                width: parent.width
-                onValueChanged: {
-                    if (!mapmatchingComboBox.value) return;
-                    app.conf.set("map_scale_navigation_" + mapmatchingComboBox.value, scaleSlider.value);
-                    if (app.mode === modes.followMe) map.setScale(scaleSlider.value);
-                }
-            }
             // Follow Me mode: done
             ///////////////////////
 

@@ -42,7 +42,6 @@ Item {
 
     // properties of the item
     property bool active: false
-    property int  contentHeight: height
 
     // poi properties
     property string address

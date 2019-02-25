@@ -26,7 +26,7 @@ IconButtonPL {
     anchors.left: menuButton.right
     anchors.leftMargin: app.styler.themePaddingLarge
     iconHeight: app.styler.themeIconSizeMedium
-    iconSource: app.getIcon("icons/navigation/fork-straight")
+    iconSource: app.getIcon("icons/route")
     opacity: 0.75
     states: [
         State {

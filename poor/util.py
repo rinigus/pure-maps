@@ -37,7 +37,7 @@ import traceback
 import urllib.parse
 
 from poor.i18n import _
-
+from poor.openlocationcode.openlocationcode import encode as olc_encode
 
 @contextlib.contextmanager
 def atomic_open(path, mode="w", *args, **kwargs):
@@ -247,13 +247,18 @@ def format_distance_and_bearing(meters, bearing, n=2, short=True):
     if bearing == 360: return f(_("{distance} north"))
     raise ValueError("Unexpected bearing: {}".format(repr(bearing)))
 
+def format_location_olc(x, y):
+    return olc_encode(y,x)
+
 def format_location_message(x, y, html=False, osm=True, gmaps=False):
     """Format coordinates of a point into a location message."""
     if osm: osm_url = short_osm(y,x)
     if gmaps: gm = 'http://maps.google.com/?q={y:.5f},{x:.5f}'.format(x=x, y=y)
+    plus = olc_encode(y,x)
     if html:
         r = ('<a href="geo:{y:.5f},{x:.5f}">geo:{y:.5f},{x:.5f}</a>'
              .format(x=x, y=y))
+        r += ('<br>{desc}: {plus}'.format(desc=_("plus code"), plus=plus))
         if osm: r += ('<br><a href="{osm}">{osm}</a>'
                       .format(osm=osm_url))
         if gmaps: r += ('<br><a href="{gm}">{gm}</a>'
@@ -261,6 +266,7 @@ def format_location_message(x, y, html=False, osm=True, gmaps=False):
     else:
         r = ('geo:{y:.5f},{x:.5f}'
                 .format(x=x, y=y))
+        r += (' {desc}: {plus}'.format(desc=_("plus code"), plus=plus))
         if osm: r += (' {osm}'
                       .format(osm=osm_url))
         if gmaps: r += (' {gm}'

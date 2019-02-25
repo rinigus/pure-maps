@@ -624,3 +624,7 @@ class Narrative:
         self.verbals = []
         self.x = []
         self.y = []
+
+    @property
+    def voice_engine(self):
+        return self.voice_generator.current_engine

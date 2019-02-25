@@ -56,8 +56,20 @@ Item {
         anchors.leftMargin: app.styler.themePaddingMedium
         anchors.right: inForm ? undefined : parent.right
         anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        Keys.onReturnPressed: row.enter()
+        rightPadding: clearButton.width + clearButton.anchors.leftMargin + app.styler.themePaddingMedium
         width: parent.width
+        Keys.onReturnPressed: row.enter()
+
+        IconButtonPL {
+            id: clearButton
+            anchors.right: parent.right
+            anchors.rightMargin: app.styler.themePaddingMedium
+            anchors.verticalCenter: parent.verticalCenter
+            iconName: app.styler.iconEditClear
+            iconHeight: app.styler.themeFontSizeMedium
+            visible: parent.text && entry.activeFocus
+            onClicked: parent.text = ""
+        }
     }
 
     Label {

@@ -25,7 +25,7 @@ Panel {
 
     contentHeight: {
         var h = 0;
-        if (poiBlock.contentHeight > 0) h += poiBlock.contentHeight + app.styler.themePaddingLarge;
+        if (poiBlock.height > 0) h += poiBlock.height + app.styler.themePaddingLarge;
         if (infoText) h += infoBg.height;
         else if (h > 0) h += app.styler.themePaddingLarge;
         return h;
@@ -56,7 +56,7 @@ Panel {
             anchors.leftMargin: app.styler.themeHorizontalPageMargin
             anchors.verticalCenter: infoBg.verticalCenter
             iconHeight: app.styler.themeIconSizeMedium
-            iconName: showMenu ? app.styler.iconBack : ""
+            iconName: showMenu ? app.styler.iconClose : ""
             padding: 0
             visible: showMenu
             onClicked: {
@@ -111,7 +111,7 @@ Panel {
     onSwipedOut: app.resetMenu()
 
     function _hide() {
-        if (poiBlock.contentHeight > 0) {
+        if (poiBlock.height > 0) {
             var pid = poiBlock.poiId;
             poiBlock.hide();
             poiHidden(pid);
@@ -120,7 +120,7 @@ Panel {
     }
 
     function hidePoi() {
-        if (!poiBlock.contentHeight) return;
+        if (!poiBlock.height) return;
         var pid = poiBlock.poiId;
         poiBlock.hide();
         poiHidden(pid);
@@ -132,7 +132,7 @@ Panel {
             return;
         }
         var old_poi = "";
-        if (poiBlock.contentHeight > 0 && poi.poiId !== poiBlock.poiId)
+        if (poiBlock.height > 0 && poi.poiId !== poiBlock.poiId)
             old_poi = poiBlock.poiId;
         poiBlock.show(poi);
         if (old_poi) poiHidden(old_poi);

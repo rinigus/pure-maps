@@ -43,6 +43,33 @@ Kirigami.Page {
         anchors.fill: parent
     }
 
+    MouseArea {
+        // protect from interaction while not current. without
+        // this protection we will get in the wide mode:
+        // - when clicking navigation bar while in navigation or maneuver pages,
+        //   removal of pages associated with currentIndex==0 of stack can be
+        //   done after new pages are inserted. protection protects against the
+        //   race condition.
+        //
+        // - when clicking and making map active, map view will swap between minimal
+        //   and full view with corresponding changes in visibility of controls
+        id: protect
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        states: [
+            State {
+                when: page.currentPage
+                AnchorChanges {
+                    target: protect
+                    anchors.right: parent.left
+                    anchors.bottom: parent.top
+                }
+            }
+        ]
+    }
+
     onCurrentPageChanged: {
         if (page.currentPage) {
             pageStatusActivating();
