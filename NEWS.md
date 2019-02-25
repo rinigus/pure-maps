@@ -1,3 +1,21 @@
+2019-02-25: Pure Maps 1.17
+==========================
+
+* Provide feedback on map loading error
+* Add automatic zoom
+* Add support for full Open Location Code
+* Change some icons on information bar
+* Notify on missing TTS engine
+* Add clear text buttons in text fields
+* [kirigami] Updates of multiple controls
+* [kirigami,qtcontrols] Redesign preferences page
+* [kirigami,qtcontrols] Support hiDPI monitors
+* [kirigami] Protect against accidental clicks on map controls
+* [silica] Add description to slider control
+* [flatpak] Use Kirigami by default
+* Update translations
+* Bugfixes
+
 2019-02-16: Pure Maps 1.16
 ==========================
 
