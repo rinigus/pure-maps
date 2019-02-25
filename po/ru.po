@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 22:49+0200\n"
+"POT-Creation-Date: 2019-02-25 22:53+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/rinigus/teams/89597/ru/)\n"
@@ -142,15 +142,15 @@ msgstr "В {distance} на {direction}"
 msgid "Exit: "
 msgstr "Выход:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:225
+#: poor/narrative.py:421 qml/pure-maps.qml:230
 msgid "Rerouting"
 msgstr "Перестроение маршрута"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:247
+#: poor/narrative.py:422 qml/pure-maps.qml:252
 msgid "Rerouting failed"
 msgstr "Перестроение маршрута не удалось"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:241
+#: poor/narrative.py:423 qml/pure-maps.qml:246
 msgid "New route found"
 msgstr "Найден новый маршрут"
 
@@ -497,7 +497,7 @@ msgstr "Результаты (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Интересные места (%1)"
 
-#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
+#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Безымянное местоположение"
@@ -590,15 +590,21 @@ msgstr "Автономный"
 msgid "Mixed"
 msgstr "Смешанный"
 
-#: qml/Map.qml:464
+#: qml/Map.qml:465
 msgid "Voice navigation on"
 msgstr "Голосовая подсказка включена"
 
-#: qml/Map.qml:577
+#: qml/Map.qml:466
+msgid ""
+"Voice navigation unavailable: missing text to speach engine for selected "
+"language"
+msgstr ""
+
+#: qml/Map.qml:579
 msgid "Auto-center off"
 msgstr "Автоматическое центрирование карты выключено"
 
-#: qml/Map.qml:580
+#: qml/Map.qml:582
 msgid "Auto-center on"
 msgstr "Автоматическое центрирование карты включено"
 
@@ -638,11 +644,11 @@ msgstr "Перейти к текущей позиции"
 msgid "Auto-center on position"
 msgstr "Центрировать карту на текущей позиции"
 
-#: qml/MenuPage.qml:164
+#: qml/MenuPage.qml:169
 msgid "Auto-rotate on direction"
 msgstr "Поворачивать карту по направлению движения"
 
-#: qml/MenuPage.qml:182
+#: qml/MenuPage.qml:188
 msgid "Auto-zoom map"
 msgstr ""
 
@@ -775,35 +781,35 @@ msgstr "Тип объекта"
 msgid "You can search for venues by type or name."
 msgstr "Заведения можно фильтровать по типу или названию"
 
-#: qml/PoiBlock.qml:82
+#: qml/PoiBlock.qml:81
 msgid "%1; %2"
 msgstr "%1; %2"
 
-#: qml/PoiBlock.qml:100
+#: qml/PoiBlock.qml:99
 msgid "Latitude: %1; Longitude: %2"
 msgstr "Широта: %1; Долгота: %2"
 
-#: qml/PoiBlock.qml:127 qml/PoiEditPage.qml:78
+#: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:78
 msgid "Postal code"
 msgstr "Почтовый индекс"
 
-#: qml/PoiBlock.qml:128
+#: qml/PoiBlock.qml:127
 msgid "Web"
 msgstr "Интернет"
 
-#: qml/PoiBlock.qml:129
+#: qml/PoiBlock.qml:128
 msgid "Phone"
 msgstr "Телефон"
 
-#: qml/PoiBlock.qml:130
+#: qml/PoiBlock.qml:129
 msgid "Shortlisted"
 msgstr "Отобранные"
 
-#: qml/PoiBlock.qml:131
+#: qml/PoiBlock.qml:130
 msgid "Text"
 msgstr "Текст"
 
-#: qml/PoiBlock.qml:133
+#: qml/PoiBlock.qml:132
 msgid "More info: %1"
 msgstr "Больше информации: %1"
 
@@ -935,7 +941,7 @@ msgstr ""
 "Точки закладок еще не определены. Сделать отметки можно с помощью карты и "
 "поиска."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:131
 msgid "Clearing map"
 msgstr "Очистка карты"
 
@@ -1354,7 +1360,7 @@ msgstr "Показать текущий масштаб"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:237
+#: qml/pure-maps.qml:242
 msgid "Rerouting failed: %1"
 msgstr "Перестроение маршрута не удалось: %1"
 
@@ -1433,11 +1439,11 @@ msgstr "Движок маршрутизации"
 msgid "Modes: %1"
 msgstr "Режимы: %1"
 
-#: qml/ScaleBar.qml:190
+#: qml/ScaleBar.qml:193
 msgid "Auto-zoom on"
 msgstr ""
 
-#: qml/ScaleBar.qml:191
+#: qml/ScaleBar.qml:194
 msgid "Auto-zoom off"
 msgstr ""
 

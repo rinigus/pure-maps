@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 22:49+0200\n"
+"POT-Creation-Date: 2019-02-25 22:53+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Pawel Spoon, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rinigus/teams/89597/de_DE/)\n"
@@ -146,15 +146,15 @@ msgstr "In {distance}, {direction}"
 msgid "Exit: "
 msgstr "Beenden:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:225
+#: poor/narrative.py:421 qml/pure-maps.qml:230
 msgid "Rerouting"
 msgstr "Neuberechnung"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:247
+#: poor/narrative.py:422 qml/pure-maps.qml:252
 msgid "Rerouting failed"
 msgstr "Neuberechnung fehlgeschlagen"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:241
+#: poor/narrative.py:423 qml/pure-maps.qml:246
 msgid "New route found"
 msgstr "Neue Route gefunden"
 
@@ -501,7 +501,7 @@ msgstr "Ergebnisse (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Punkte von Interesse (%1)"
 
-#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
+#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Namenloser Punkt"
@@ -594,15 +594,21 @@ msgstr "Offline"
 msgid "Mixed"
 msgstr "Gemischt"
 
-#: qml/Map.qml:464
+#: qml/Map.qml:465
 msgid "Voice navigation on"
 msgstr "Sprachnavigation an"
 
-#: qml/Map.qml:577
+#: qml/Map.qml:466
+msgid ""
+"Voice navigation unavailable: missing text to speach engine for selected "
+"language"
+msgstr ""
+
+#: qml/Map.qml:579
 msgid "Auto-center off"
 msgstr "Autozentrierung aus"
 
-#: qml/Map.qml:580
+#: qml/Map.qml:582
 msgid "Auto-center on"
 msgstr "Autozentrierung an"
 
@@ -642,11 +648,11 @@ msgstr "Zentriere auf aktuelle Position"
 msgid "Auto-center on position"
 msgstr "Zentriere Position automatisch"
 
-#: qml/MenuPage.qml:164
+#: qml/MenuPage.qml:169
 msgid "Auto-rotate on direction"
 msgstr "Drehe Ansicht je nach Richtung"
 
-#: qml/MenuPage.qml:182
+#: qml/MenuPage.qml:188
 msgid "Auto-zoom map"
 msgstr ""
 
@@ -781,35 +787,35 @@ msgstr "Typ des Austragungsortes"
 msgid "You can search for venues by type or name."
 msgstr "Du kannst nach dem Typ oder dem Namen eines Orts suchen."
 
-#: qml/PoiBlock.qml:82
+#: qml/PoiBlock.qml:81
 msgid "%1; %2"
 msgstr "%1; %2"
 
-#: qml/PoiBlock.qml:100
+#: qml/PoiBlock.qml:99
 msgid "Latitude: %1; Longitude: %2"
 msgstr "Breitengrad: %1; Längengrad: %2"
 
-#: qml/PoiBlock.qml:127 qml/PoiEditPage.qml:78
+#: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:78
 msgid "Postal code"
 msgstr "Postleitzahl"
 
-#: qml/PoiBlock.qml:128
+#: qml/PoiBlock.qml:127
 msgid "Web"
 msgstr "Web"
 
-#: qml/PoiBlock.qml:129
+#: qml/PoiBlock.qml:128
 msgid "Phone"
 msgstr "Telefon"
 
-#: qml/PoiBlock.qml:130
+#: qml/PoiBlock.qml:129
 msgid "Shortlisted"
 msgstr "ausgewählt"
 
-#: qml/PoiBlock.qml:131
+#: qml/PoiBlock.qml:130
 msgid "Text"
 msgstr "SMS"
 
-#: qml/PoiBlock.qml:133
+#: qml/PoiBlock.qml:132
 msgid "More info: %1"
 msgstr "Weitere Informationen: %1"
 
@@ -941,7 +947,7 @@ msgstr ""
 "Bisher sind keine POI definiert. Du kannst POI mithilfe von Karte und Suche "
 "erstellen und als Lesezeichen verwenden."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:131
 msgid "Clearing map"
 msgstr "Karte leeren"
 
@@ -1361,7 +1367,7 @@ msgstr "Zeigt die aktuelle Zoomstufe an"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:237
+#: qml/pure-maps.qml:242
 msgid "Rerouting failed: %1"
 msgstr "Neuberechnung fehlgeschlagen: %1"
 
@@ -1440,11 +1446,11 @@ msgstr "Routing-Engine"
 msgid "Modes: %1"
 msgstr "Arten: %1"
 
-#: qml/ScaleBar.qml:190
+#: qml/ScaleBar.qml:193
 msgid "Auto-zoom on"
 msgstr ""
 
-#: qml/ScaleBar.qml:191
+#: qml/ScaleBar.qml:194
 msgid "Auto-zoom off"
 msgstr ""
 

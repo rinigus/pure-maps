@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 22:49+0200\n"
+"POT-Creation-Date: 2019-02-25 22:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,15 +123,15 @@ msgstr ""
 msgid "Exit: "
 msgstr ""
 
-#: poor/narrative.py:421 qml/pure-maps.qml:225
+#: poor/narrative.py:421 qml/pure-maps.qml:230
 msgid "Rerouting"
 msgstr ""
 
-#: poor/narrative.py:422 qml/pure-maps.qml:247
+#: poor/narrative.py:422 qml/pure-maps.qml:252
 msgid "Rerouting failed"
 msgstr ""
 
-#: poor/narrative.py:423 qml/pure-maps.qml:241
+#: poor/narrative.py:423 qml/pure-maps.qml:246
 msgid "New route found"
 msgstr ""
 
@@ -471,7 +471,7 @@ msgstr ""
 msgid "Points of Interest (%1)"
 msgstr ""
 
-#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:247 qml/PoiInfoPage.qml:26
+#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr ""
@@ -562,15 +562,21 @@ msgstr ""
 msgid "Mixed"
 msgstr ""
 
-#: qml/Map.qml:464
+#: qml/Map.qml:465
 msgid "Voice navigation on"
 msgstr ""
 
-#: qml/Map.qml:577
+#: qml/Map.qml:466
+msgid ""
+"Voice navigation unavailable: missing text to speach engine for selected "
+"language"
+msgstr ""
+
+#: qml/Map.qml:579
 msgid "Auto-center off"
 msgstr ""
 
-#: qml/Map.qml:580
+#: qml/Map.qml:582
 msgid "Auto-center on"
 msgstr ""
 
@@ -610,11 +616,11 @@ msgstr ""
 msgid "Auto-center on position"
 msgstr ""
 
-#: qml/MenuPage.qml:164
+#: qml/MenuPage.qml:169
 msgid "Auto-rotate on direction"
 msgstr ""
 
-#: qml/MenuPage.qml:182
+#: qml/MenuPage.qml:188
 msgid "Auto-zoom map"
 msgstr ""
 
@@ -746,35 +752,35 @@ msgstr ""
 msgid "You can search for venues by type or name."
 msgstr ""
 
-#: qml/PoiBlock.qml:82
+#: qml/PoiBlock.qml:81
 msgid "%1; %2"
 msgstr ""
 
-#: qml/PoiBlock.qml:100
+#: qml/PoiBlock.qml:99
 msgid "Latitude: %1; Longitude: %2"
 msgstr ""
 
-#: qml/PoiBlock.qml:127 qml/PoiEditPage.qml:78
+#: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:78
 msgid "Postal code"
 msgstr ""
 
-#: qml/PoiBlock.qml:128
+#: qml/PoiBlock.qml:127
 msgid "Web"
 msgstr ""
 
-#: qml/PoiBlock.qml:129
+#: qml/PoiBlock.qml:128
 msgid "Phone"
 msgstr ""
 
-#: qml/PoiBlock.qml:130
+#: qml/PoiBlock.qml:129
 msgid "Shortlisted"
 msgstr ""
 
-#: qml/PoiBlock.qml:131
+#: qml/PoiBlock.qml:130
 msgid "Text"
 msgstr ""
 
-#: qml/PoiBlock.qml:133
+#: qml/PoiBlock.qml:132
 msgid "More info: %1"
 msgstr ""
 
@@ -904,7 +910,7 @@ msgid ""
 "search."
 msgstr ""
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:126
+#: qml/Poi.qml:192 qml/pure-maps.qml:131
 msgid "Clearing map"
 msgstr ""
 
@@ -1295,7 +1301,7 @@ msgstr ""
 msgid "Pure Maps"
 msgstr ""
 
-#: qml/pure-maps.qml:237
+#: qml/pure-maps.qml:242
 msgid "Rerouting failed: %1"
 msgstr ""
 
@@ -1372,11 +1378,11 @@ msgstr ""
 msgid "Modes: %1"
 msgstr ""
 
-#: qml/ScaleBar.qml:190
+#: qml/ScaleBar.qml:193
 msgid "Auto-zoom on"
 msgstr ""
 
-#: qml/ScaleBar.qml:191
+#: qml/ScaleBar.qml:194
 msgid "Auto-zoom off"
 msgstr ""
 
