@@ -76,6 +76,15 @@ flatpak-build:
 flatpak-bundle: flatpak-build
 	flatpak build-bundle ../flatpak pure-maps.flatpak io.github.rinigus.PureMaps
 
+flatpak-debug:
+	@echo
+	@echo
+	@echo "Starting GDB in Flatpak. In GDB, type 'run', all arguments have been taken care of"
+	@echo "On crash, GDB may be suspended. Just run 'fg' in your shell to continue"
+	@echo
+	@echo
+	flatpak-builder --run ../flatpak-build-desktop packaging/flatpak/io.github.rinigus.PureMaps.json gdb --args /app/bin/qmlrunner -P /app/share io.github.rinigus.PureMaps
+
 flatpak-dev-install: flatpak-bundle
 	flatpak uninstall --user -y io.github.rinigus.PureMaps/x86_64/master || true
 	flatpak install --user -y pure-maps.flatpak
