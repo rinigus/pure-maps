@@ -27,8 +27,6 @@ import subprocess
 import tempfile
 import threading
 
-from poor.i18n import _
-
 __all__ = ("VoiceGenerator",)
 
 

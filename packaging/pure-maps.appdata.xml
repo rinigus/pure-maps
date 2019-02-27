@@ -37,6 +37,24 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.17.0" date="2019-02-25">
+     <description>
+       <p>Provide feedback on map loading error</p>
+       <p>Add automatic zoom</p>
+       <p>Add support for full Open Location Code</p>
+       <p>Change some icons on information bar</p>
+       <p>Notify on missing TTS engine</p>
+       <p>Add clear text buttons in text fields</p>
+       <p>[kirigami] Updates of multiple controls</p>
+       <p>[kirigami,qtcontrols] Redesign preferences page</p>
+       <p>[kirigami,qtcontrols] Support hiDPI monitors</p>
+       <p>[kirigami] Protect against accidental clicks on map controls</p>
+       <p>[silica] Add description to slider control</p>
+       <p>[flatpak] Use Kirigami by default</p>
+       <p>Update translations</p>
+       <p>Bugfixes</p>
+     </description>
+   </release>
    <release version="1.16.0" date="2019-02-16">
      <description>
        <p>Add Kirigami platform</p>
