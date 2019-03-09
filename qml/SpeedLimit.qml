@@ -41,8 +41,7 @@ Rectangle {
     ]
     width: Math.round(Math.max(limit.width,limit.height) + 1.6*app.styler.themePaddingLarge + app.styler.themePaddingSmall)
     visible: {
-        if (app.mode === modes.explore || app.mode === modes.exploreRoute ||
-                !map.route || map.route.mode !== "car" || app.conf.showSpeedLimit==="never")
+        if (app.mapMatchingMode !== "car" || app.conf.showSpeedLimit==="never")
             return false;
         if (app.conf.showSpeedLimit==="exceeding") {
             if (!gps.position.speedValid || gps.streetSpeedLimit==null || gps.streetSpeedLimit < 0)
@@ -63,40 +62,22 @@ Rectangle {
         font.pixelSize: app.styler.themeFontSizeLarge
         style: Text.Outline
         styleColor: "white"
-
-        Connections {
-            target: app
-            onModeChanged: limit.update()
-        }
-
-        Connections {
-            target: gps
-            onStreetSpeedLimitChanged: limit.update()
-        }
-
-        Component.onCompleted: limit.update()
-
-        function update() {
+        text: {
             // Update speed limit in user's preferred units.
-            if (app.mode === modes.explore || app.mode === modes.exploreRoute) {
-                if (text.length > 0) text = "";
-                return;
-            }
+            if (app.mapMatchingMode !== "car")
+                return "";
 
-            if (gps.streetSpeedLimit==null || gps.streetSpeedLimit < 0) {
-                text = "";
-                return;
-            }
+            if (gps.streetSpeedLimit==null || gps.streetSpeedLimit < 0)
+                return "";
 
             // speed limit in m/s
             if (app.conf.units === "american") {
-                text = "%1".arg(Math.round(gps.streetSpeedLimit * 2.23694))
+                return "%1".arg(Math.round(gps.streetSpeedLimit * 2.23694))
             } else if (app.conf.units === "british") {
-                text = "%1".arg(Math.round(gps.streetSpeedLimit * 2.23694))
+                return "%1".arg(Math.round(gps.streetSpeedLimit * 2.23694))
             } else {
-                text = "%1".arg(gps.streetSpeedLimit * 3.6)
+                return "%1".arg(gps.streetSpeedLimit * 3.6)
             }
         }
     }
-
 }
