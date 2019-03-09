@@ -20,7 +20,7 @@ import QtQuick 2.0
 import "."
 import "platform"
 
-IconButtonPL {
+MapButton {
     id: master
     anchors.bottom: centerButton.top
     anchors.bottomMargin: app.styler.themePaddingLarge
@@ -29,7 +29,7 @@ IconButtonPL {
     anchors.topMargin: app.styler.themePaddingLarge
     enabled: !hidden
     iconColorize: false
-    iconHeight: app.styler.themeIconSizeMedium
+    iconHeight: app.styler.themeIconSizeSmall
     iconRotation: -map.bearing
     iconSource: app.getIcon("icons/north")
     states: [

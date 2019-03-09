@@ -19,7 +19,7 @@
 import QtQuick 2.0
 import "platform"
 
-IconButtonPL {
+MapButton {
     id: button
     anchors.bottom: parent.bottom
     anchors.bottomMargin: app.styler.themePaddingLarge + menuButton.height/2 - height/2

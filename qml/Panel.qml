@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 
 Rectangle {
     id: panel
@@ -24,6 +25,13 @@ Rectangle {
     anchors.right: parent.right
     color: app.styler.blockBg
     height: 0
+    layer.enabled: contentHeight ? true : false
+    layer.effect: DropShadow {
+        color: app.styler.shadowColor
+        opacity: app.styler.shadowOpacity
+        radius: app.styler.shadowRadius
+        samples: 1 + radius*2
+    }
     y: mode === panelModes.bottom ? parent.height - _offset : -height + _offset
     z: 910
 
