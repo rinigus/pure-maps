@@ -23,10 +23,7 @@ import "platform"
 MapButton {
     id: master
     anchors.bottom: centerButton.top
-    anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themePaddingLarge
-    anchors.topMargin: app.styler.themePaddingLarge
     enabled: !hidden
     iconColorize: false
     iconHeight: app.styler.themeIconSizeSmall

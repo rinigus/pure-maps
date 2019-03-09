@@ -22,10 +22,7 @@ import "platform"
 MapButton {
     id: button
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: app.styler.themePaddingLarge + menuButton.height/2 - height/2
     anchors.horizontalCenter: northArrow.horizontalCenter
-    anchors.rightMargin: app.styler.themePaddingLarge
-    anchors.topMargin: app.styler.themePaddingLarge
     iconHeight: app.styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/center")
     states: [
