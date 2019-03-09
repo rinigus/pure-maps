@@ -111,6 +111,18 @@ Rectangle {
         }
     }
 
+    Rectangle {
+        // drag element on the border
+        anchors.horizontalCenter: panel.horizontalCenter
+        anchors.verticalCenter: (panel.mode === panelModes.bottom) ? panel.top : panel.bottom
+        color: app.styler.themeHighlightColor
+        height: app.styler.themePaddingSmall * 2
+        opacity: 0.35
+        radius: height / 2
+        visible: contentHeight > 0
+        width: app.styler.themePaddingLarge * 4
+    }
+
     Connections {
         target: parent
         onHeightChanged: _updatePanel()
