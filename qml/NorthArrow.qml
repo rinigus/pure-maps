@@ -22,8 +22,8 @@ import "platform"
 
 MapButton {
     id: master
-    anchors.bottom: centerButton.top
     anchors.right: parent.right
+    anchors.top: parent.verticalCenter
     enabled: !hidden
     iconColorize: false
     iconHeight: app.styler.themeIconSizeSmall
@@ -34,7 +34,6 @@ MapButton {
             when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
             AnchorChanges {
                 target: master
-                anchors.bottom: undefined
                 anchors.top: navigationSign.bottom
             }
         },
@@ -42,7 +41,6 @@ MapButton {
             when: app.mode === modes.navigate || app.mode === modes.followMe
             AnchorChanges {
                 target: master
-                anchors.bottom: undefined
                 anchors.top: centerButton.bottom
             }
         }
