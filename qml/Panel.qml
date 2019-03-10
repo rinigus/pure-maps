@@ -115,12 +115,18 @@ Rectangle {
         // drag element on the border
         anchors.horizontalCenter: panel.horizontalCenter
         anchors.verticalCenter: (panel.mode === panelModes.bottom) ? panel.top : panel.bottom
-        color: app.styler.themeHighlightColor
+        color: Qt.rgba((_bg.r+_fg.r)/2,
+                       (_bg.g+_fg.g)/2,
+                       (_bg.b+_fg.b)/2,
+                       (_bg.a+_fg.a)/2)
         height: app.styler.themePaddingSmall * 2
-        opacity: 0.35
+        opacity: 0.75
         radius: height / 2
         visible: contentHeight > 0
-        width: app.styler.themePaddingLarge * 4
+        width: app.styler.themePaddingLarge * 5
+
+        property color _bg: app.styler.blockBg
+        property color _fg: app.styler.themePrimaryColor
     }
 
     Connections {
