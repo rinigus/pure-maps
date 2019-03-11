@@ -117,18 +117,18 @@
             "name": "extra-cmake-modules",
             "cleanup-platform": ["*"],
             "buildsystem": "cmake-ninja",
-            "config-opts": [ "-DENABLE_TESTING=OFF" ],
+            "config-opts": [ "-DCMAKE_BUILD_TYPE=Debug", "-DENABLE_TESTING=OFF" ],
             "sources": [
                 {
                     "type": "git",
                     "url": "git://anongit.kde.org/extra-cmake-modules.git",
-                    "branch": "v5.55.0"
+                    "branch": "v5.56.0-rc1"
                 }
             ]
         },
         {
             "name": "kirigami",
-            "config-opts": ["-DENABLE_TESTING=OFF", "-DPLASMA_ENABLED=OFF"],
+            "config-opts": ["-DCMAKE_BUILD_TYPE=Debug", "-DENABLE_TESTING=OFF", "-DPLASMA_ENABLED=OFF"],
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "sources": [
@@ -141,6 +141,7 @@
         },
         {
             "name": "qmlrunner",
+            "config-opts": ["CONFIG+=debug"],
             "buildsystem": "qmake",
             "sources": [
                 {
