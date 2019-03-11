@@ -73,7 +73,7 @@ ToolBar {
         icon.height: label.height
         icon.name: page.acceptIconName ? page.acceptIconName : app.styler.iconForward
         Layout.minimumWidth: toolButton.width
-        visible: !page.hideAcceptButton && app.pages.hasAttached
+        visible: !page.hideAcceptButton && (app.pages.hasAttached || !!page.isDialog)
         enabled: page.canNavigateForward === true
         onClicked: {
             bar.accepted();
