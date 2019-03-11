@@ -32,10 +32,12 @@ PagePL {
         Image {
             // Logo
             anchors.horizontalCenter: parent.horizontalCenter
-            height: width/sourceSize.width * sourceSize.height
+            height: sourceSize.height
             smooth: true
-            source: "icons/pure-maps-512.png"
-            width: 0.25 * Math.min(page.height,page.width)
+            source: "icons/pure-maps.svg"
+            sourceSize.height: 0.25 * Math.min(page.height,page.width)
+            sourceSize.width: 0.25 * Math.min(page.height,page.width)
+            width: sourceSize.width
         }
 
         ListItemLabel {
@@ -74,7 +76,7 @@ PagePL {
                 font.pixelSize: app.styler.themeFontSizeSmall
                 height: implicitHeight
                 horizontalAlignment: Text.AlignRight
-                text: app.tr("Logo by %1", "Fellfrosch")
+                text: app.tr("Artwork by %1 and %2", "Fellfrosch", "Mosen")
             }
         }
 

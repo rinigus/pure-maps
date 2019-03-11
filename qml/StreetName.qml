@@ -44,7 +44,7 @@ Rectangle {
     Rectangle {
         id: cover
         anchors.centerIn: streetname
-        color: app.styler.streetBg
+        color: app.styler.itemBg
         height: streetname.height
         opacity: 0.75
         radius: app.styler.themePaddingMedium
@@ -57,7 +57,7 @@ Rectangle {
         id: streetname
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        color: app.styler.streetFg
+        color: app.styler.itemFg
         font.pixelSize: app.styler.themeFontSizeLarge
         maximumLineCount: 1
         text: gps.streetName

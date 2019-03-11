@@ -33,36 +33,39 @@ Item {
     property alias  iconSource: image.source
     property int    iconWidth: 0
     property real   padding: 0.5
+    property alias  pressed: mouse.pressed
 
     signal clicked
 
+    IconImage {
+        id: iconimage
+        anchors.centerIn: parent
+        color: iconColorize ? app.styler.themeHighlightColor : "transparent"
+        rotation: iconRotation
+        sourceSize.height: iconHeight
+        sourceSize.width: iconWidth
+        visible: name
+    }
+
+    Image {
+        id: image
+        anchors.centerIn: parent
+        fillMode: Image.PreserveAspectFit
+        rotation: iconRotation
+        sourceSize.height: iconHeight
+        sourceSize.width: iconWidth
+        visible: source && !iconName
+    }
+
     Rectangle {
-        color: "transparent"
         anchors.fill: parent
+        color: mouse.pressed ? app.styler.themePrimaryColor : "transparent"
+        opacity: 0.2
+    }
 
-        IconImage {
-            id: iconimage
-            anchors.centerIn: parent
-            color: iconColorize ? app.styler.themeHighlightColor : "transparent"
-            rotation: iconRotation
-            sourceSize.height: iconHeight
-            sourceSize.width: iconWidth
-            visible: name
-        }
-
-        Image {
-            id: image
-            anchors.centerIn: parent
-            fillMode: Image.PreserveAspectFit
-            rotation: iconRotation
-            sourceSize.height: iconHeight
-            sourceSize.width: iconWidth
-            visible: source && !iconName
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: item.clicked()
-        }
+    MouseArea {
+        id: mouse
+        anchors.fill: parent
+        onClicked: item.clicked()
     }
 }

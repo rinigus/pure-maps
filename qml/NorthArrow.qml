@@ -20,16 +20,13 @@ import QtQuick 2.0
 import "."
 import "platform"
 
-IconButtonPL {
+MapButton {
     id: master
-    anchors.bottom: centerButton.top
-    anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themePaddingLarge
-    anchors.topMargin: app.styler.themePaddingLarge
+    anchors.top: parent.verticalCenter
     enabled: !hidden
     iconColorize: false
-    iconHeight: app.styler.themeIconSizeMedium
+    iconHeight: app.styler.themeIconSizeSmall
     iconRotation: -map.bearing
     iconSource: app.getIcon("icons/north")
     states: [
@@ -37,7 +34,6 @@ IconButtonPL {
             when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
             AnchorChanges {
                 target: master
-                anchors.bottom: undefined
                 anchors.top: navigationSign.bottom
             }
         },
@@ -45,7 +41,6 @@ IconButtonPL {
             when: app.mode === modes.navigate || app.mode === modes.followMe
             AnchorChanges {
                 target: master
-                anchors.bottom: undefined
                 anchors.top: centerButton.bottom
             }
         }

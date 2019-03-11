@@ -22,16 +22,27 @@ import "platform"
 StylerPL {
     id: styler
 
-    property string bg                   // main background color (scale bar, metrics)
-    property string fg                   // main foreground color (scale bar, metrics)
+    property string fg                   // foreground color (scale bar, metrics)
     property string iconVariant          // type of icons, let empty for default version, "white" for white icons
+    property string itemBg               // map item (buttons, street name) outline
+    property string itemFg               // map item (buttons, street name) foreground
+    // itemPressed should never be specified in style nor defaults
+    property color  itemPressed: Qt.rgba( (_itemColBg.r*3+_itemColFg.r)/4,
+                                          (_itemColBg.g*3+_itemColFg.g)/4,
+                                          (_itemColBg.b*3+_itemColFg.b)/4,
+                                          (_itemColBg.a*3+_itemColFg.a)/4)
     property string maneuver             // maneuver circle inner color
     property string position             // variant of position marker, set to "" for default
     property string positionUncertainty  // position marker uncertainty
     property string route                // route color on the map. also used for maneuver markers
     property real   routeOpacity         // opacity of route
-    property string streetFg             // street name foreground
-    property string streetBg             // street name outline
+    property string shadowColor          // shadow color used on map buttons and panels
+    property real   shadowOpacity: 0.35  // shadow opacity - do not change in defaults or style
+    property int    shadowRadius: 10     // shadow radius - do not change in defaults or style
+
+    // private properties
+    property color  _itemColBg: itemBg
+    property color  _itemColFg: itemFg
 
     function apply(guistyle) {
         defaults();
@@ -44,7 +55,6 @@ StylerPL {
     }
 
     function defaults() {
-        bg = "#e6e6e6";
         fg = "black";
         iconVariant = "";
         maneuver = "white";
@@ -52,7 +62,9 @@ StylerPL {
         positionUncertainty = "#87cefa";
         route = "#0540ff";
         routeOpacity = 0.5;
-        streetFg = "black";
-        streetBg = "white";
+        itemFg = "black";
+        itemBg = "white";
+        shadowColor = "black";
+
     }
 }

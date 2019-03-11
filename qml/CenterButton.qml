@@ -19,13 +19,10 @@
 import QtQuick 2.0
 import "platform"
 
-IconButtonPL {
+MapButton {
     id: button
-    anchors.bottom: parent.bottom
-    anchors.bottomMargin: app.styler.themePaddingLarge + menuButton.height/2 - height/2
-    anchors.horizontalCenter: northArrow.horizontalCenter
-    anchors.rightMargin: app.styler.themePaddingLarge
-    anchors.topMargin: app.styler.themePaddingLarge
+    anchors.bottom: parent.verticalCenter
+    anchors.right: parent.right
     iconHeight: app.styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/center")
     states: [
@@ -35,8 +32,13 @@ IconButtonPL {
                 target: button
                 anchors.bottom: navigationSign.bottom
                 anchors.horizontalCenter: undefined
+                anchors.left: undefined
                 anchors.right: northArrow.left
                 anchors.top: undefined
+            }
+            PropertyChanges {
+                target: button
+                anchors.bottomMargin: 0
             }
         },
         State {
@@ -44,7 +46,8 @@ IconButtonPL {
             AnchorChanges {
                 target: button
                 anchors.bottom: navigationSign.bottom
-                anchors.horizontalCenter: undefined
+                anchors.horizontalCenter: northArrow.horizontalCenter
+                anchors.left: undefined
                 anchors.right: undefined
                 anchors.top: undefined
             }
@@ -57,10 +60,11 @@ IconButtonPL {
             when: hidden
             AnchorChanges {
                 target: button
-                anchors.bottom: undefined
-                anchors.horizontalCenter: northArrow.horizontalCenter
+                anchors.bottom: parent.verticalCenter
+                anchors.horizontalCenter: undefined
+                anchors.left: parent.right
                 anchors.right: undefined
-                anchors.top: parent.bottom
+                anchors.top: undefined
             }
             PropertyChanges {
                 target: button
@@ -73,6 +77,7 @@ IconButtonPL {
                 target: button
                 anchors.bottom: undefined
                 anchors.horizontalCenter: undefined
+                anchors.left: undefined
                 anchors.right: northArrow.left
                 anchors.top: navigationSign.bottom
             }
@@ -83,6 +88,7 @@ IconButtonPL {
                 target: button
                 anchors.bottom: undefined
                 anchors.horizontalCenter: northArrow.horizontalCenter
+                anchors.left: undefined
                 anchors.right: undefined
                 anchors.top: navigationSign.bottom
             }
@@ -90,6 +96,11 @@ IconButtonPL {
     ]
     transitions: Transition {
         AnchorAnimation { duration: app.conf.animationDuration; }
+        onRunningChanged: {
+            if (running) button.visible = true;
+            else if (hidden) button.visible = false;
+            else button.visible = true;
+        }
     }
     z: 500
 
