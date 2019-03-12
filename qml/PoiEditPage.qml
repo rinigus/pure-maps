@@ -26,12 +26,14 @@ DialogPL {
 
     acceptIconName: app.styler.iconSave
     acceptText: app.tr("Save")
+    canAccept: true
 
     property var poi
 
-    ColumnLayoutPL {
+    Column {
         id: column
         spacing: app.styler.themePaddingMedium
+        width: page.width
 
         FormLayoutPL {
             spacing: app.styler.themePaddingMedium
@@ -46,6 +48,7 @@ DialogPL {
                 label: app.tr("Title")
                 placeholderText: app.tr("Enter title")
                 text: poi.title ? poi.title : ""
+                width: parent.width
                 onEnter: typeField.focus = true
             }
 

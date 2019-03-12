@@ -21,8 +21,8 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.5 as Kirigami
 
 Item {
-    implicitHeight: inForm ? undefined : txt.height + sep.height + app.styler.themePaddingSmall
-    width: inForm ? undefined : parent.width
+    implicitHeight: txt.height + sep.height + app.styler.themePaddingSmall
+    width: parent.width
     Kirigami.FormData.isSection: true
     Kirigami.FormData.label: text
     Layout.preferredWidth: sep.Layout.preferredWidth

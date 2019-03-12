@@ -20,16 +20,15 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 
 Column {
+    id: column
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
 
     default property alias content: load
     property string        title
 
     Loader {
         id: load
-        width: parent.width
+        width: column.width
     }
 }
