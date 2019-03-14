@@ -111,7 +111,21 @@ Item {
             pop(ci);
             _locked = true;
         }
-        var p = ps.push(page, options ? options : {});
+        // check if we have this page already
+        var pi = -1;
+        for (var i=0; i < ps.depth && pi < 0; i++){
+            if (ps.get(i) === page)
+                pi = i;
+        }
+        var p = null;
+        if (pi < 0) p = ps.push(page, options ? options : {});
+        else {
+            console.log("PPP " + page + " " + pi)
+            _locked = false;
+            ps.currentIndex = pi;
+            _locked = true;
+        }
+//        var p = ps.push(page, options ? options : {});
         if (attached !== page && (p && !p.isDialog)) {
             attached = undefined;
             attachedTo = undefined;
