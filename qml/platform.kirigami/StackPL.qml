@@ -120,12 +120,10 @@ Item {
         var p = null;
         if (pi < 0) p = ps.push(page, options ? options : {});
         else {
-            console.log("PPP " + page + " " + pi)
             _locked = false;
             ps.currentIndex = pi;
             _locked = true;
         }
-//        var p = ps.push(page, options ? options : {});
         if (attached !== page && (p && !p.isDialog)) {
             attached = undefined;
             attachedTo = undefined;
