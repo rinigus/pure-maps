@@ -70,10 +70,10 @@ QtObject {
     property string iconManeuvers: "image://theme/icon-m-shuffle"
     property string iconMaps: "image://theme/icon-m-levels"
     property string iconMenu: "image://theme/icon-m-menu"
-    property string iconNavigate: "image://theme/icon-m-car"
-    property string iconNavigateTo: "image://theme/icon-m-car"
-    property string iconNavigateFrom: "image://theme/icon-m-car"
-    property string iconNearby: "image://theme/icon-m-whereami"
+    property string iconNavigate: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/route-to-black.svg") : Qt.resolvedUrl("../icons/sailfishos/route-to-white.svg")
+    property string iconNavigateTo: iconNavigate
+    property string iconNavigateFrom: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/route-from-black.svg") : Qt.resolvedUrl("../icons/sailfishos/route-from-white.svg")
+    property string iconNearby: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/nearby-black.svg") : Qt.resolvedUrl("../icons/sailfishos/nearby-white.svg")
     property string iconPause: "image://theme/icon-m-pause"
     property string iconPhone: "image://theme/icon-m-phone"
     property string iconPreferences: "image://theme/icon-m-developer-mode"

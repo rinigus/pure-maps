@@ -13,8 +13,8 @@
    height="64"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14"
-   sodipodi:docname="route_to_sfos.svg"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
+   sodipodi:docname="route-from.svg"
    version="1.1"
    inkscape:export-xdpi="132"
    inkscape:export-ydpi="132"
@@ -106,20 +106,20 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#000000"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.313709"
-     inkscape:cx="61.387787"
-     inkscape:cy="19.516024"
+     inkscape:cx="43.268177"
+     inkscape:cy="19.162471"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     inkscape:window-width="2880"
-     inkscape:window-height="1506"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="27"
      showgrid="true"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
@@ -132,7 +132,8 @@
      inkscape:guide-bbox="true"
      guidetolerance="5"
      objecttolerance="5"
-     gridtolerance="15">
+     gridtolerance="15"
+     inkscape:pagecheckerboard="true">
     <inkscape:grid
        type="xygrid"
        id="grid10137"
@@ -196,7 +197,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -206,9 +207,8 @@
      id="layer1"
      transform="translate(-24.000001,-964.36218)">
     <path
-       style="opacity:0.6;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
-       d="m 24.507812,16.5 c -3.032438,0 -5.85978,1.629953 -7.375,4.251953 C 16.358858,22.091343 16.001455,23.55442 16.003906,25 H 16 v 9.644531 l 1,-1.064453 1,1.064453 V 25 l -1e-6,2.1e-5 c -0.0018,-1.10533 0.275311,-2.223668 0.867189,-3.248068 C 20.02512,19.746953 22.188947,18.5 24.507812,18.5 c 1.134913,0 2.254393,0.300094 3.242188,0.871094 1.505211,0.868 2.581889,2.270265 3.03125,3.947265 0.149486,0.55663 0.216024,1.120441 0.217387,1.401041 L 31,40 c 0.0063,2.9328 1.521969,5.786469 4.242188,7.355469 1.293337,0.746 2.761558,1.140625 4.246093,1.140625 3.035138,0 5.860434,-1.629 7.375,-4.25 C 47.621844,42.933494 48.001511,41.4761 48,40 V 25.455078 c -0.33021,0.026 -0.663096,0.04492 -1,0.04492 -0.334773,0 -0.668687,-0.01677 -1,-0.04297 V 40 l -10e-7,2.1e-5 c 8.68e-4,1.1282 -0.291317,2.242473 -0.87114,3.246073 -1.158197,2.005 -3.320226,3.25 -5.640625,3.25 -1.134173,0 -2.255117,-0.300094 -3.24414,-0.871094 C 34.164257,44.4258 33.003036,42.2426 32.998047,40 H 33 V 25 C 32.9989,24.26646 32.912038,23.528011 32.716797,22.800781 32.129324,20.607781 30.718583,18.774625 28.75,17.640625 27.457961,16.894625 25.993008,16.5 24.507812,16.5 Z"
-       transform="translate(24.000001,964.36218)"
+       style="opacity:0.6;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 62.240048,1014.3704 c 3.032438,0 5.85978,-1.63 7.375,-4.252 0.773954,-1.3394 1.131357,-2.8024 1.128906,-4.248 h 0.0039 v -9.64454 l -1,1.06445 -1,-1.06445 v 9.64454 h 10e-7 c 0.0018,1.1053 -0.275311,2.2236 -0.867189,3.248 -1.157932,2.005 -3.321759,3.252 -5.640624,3.252 -1.134913,0 -2.254393,-0.3001 -3.242188,-0.8711 -1.505211,-0.868 -2.581889,-2.2703 -3.03125,-3.9473 -0.149486,-0.5566 -0.216024,-1.1204 -0.217387,-1.401 l -0.0014,-15.28061 c -0.0063,-2.9328 -1.521969,-5.78647 -4.242188,-7.35547 -1.293337,-0.746 -2.761558,-1.14062 -4.246093,-1.14062 -3.035138,0 -5.860434,1.629 -7.375,4.25 -0.758563,1.3126 -1.13823,2.76999 -1.136719,4.24609 v 14.54491 c 0.33021,-0.026 0.663096,-0.045 1,-0.045 0.334773,0 0.668687,0.017 1,0.043 v -14.54301 l 1e-6,-2e-5 c -8.68e-4,-1.1282 0.291317,-2.24247 0.87114,-3.24607 1.158197,-2.005 3.320226,-3.25 5.640625,-3.25 1.134173,0 2.255117,0.30009 3.24414,0.87109 2.079837,1.1992 3.241058,3.3824 3.246047,5.625 h -0.002 v 15.00001 c 0.0011,0.7335 0.08796,1.472 0.283203,2.1992 0.587473,2.193 1.998214,4.0262 3.966797,5.1602 1.292039,0.746 2.756992,1.1406 4.242188,1.1406 z"
        id="rect1017"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="scccccccccscccccscccsccccsccccccs"
@@ -217,17 +217,18 @@
        inkscape:export-ydpi="132" />
     <circle
        r="3.6608713"
-       cy="1012.585"
-       cx="41.000004"
-       style="opacity:0.6;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       cy="-982.64752"
+       cx="-69.747856"
+       style="opacity:0.6;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
        id="path10139"
        inkscape:export-filename="/home/mo/Dokumente/Pure Maps/allover/route_to_sfos.png"
        inkscape:export-xdpi="132"
-       inkscape:export-ydpi="132" />
+       inkscape:export-ydpi="132"
+       transform="scale(-1)" />
     <path
        sodipodi:nodetypes="cssscsssss"
-       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
-       d="m 41,997.94142 c -5.694689,6.10158 -9.762324,9.25198 -9.762324,14.64368 0,5.3914 4.370741,9.7622 9.762324,9.7622 5.391582,0 9.762323,-4.3708 9.762323,-9.7622 0,-5.3917 -4.067635,-8.5421 -9.762323,-14.64368 z m 0,7.93198 c 3.706713,0 6.711598,3.0049 6.711598,6.7117 0,3.7066 -3.004885,6.7115 -6.711598,6.7115 -3.706714,0 -6.711598,-3.0049 -6.711598,-6.7115 0,-3.7068 3.004884,-6.7117 6.711598,-6.7117 z"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       d="m 69.747861,997.29115 c 5.694689,-6.10158 9.762324,-9.25198 9.762324,-14.64368 0,-5.3914 -4.370741,-9.7622 -9.762324,-9.7622 -5.391582,0 -9.762323,4.3708 -9.762323,9.7622 0,5.3917 4.067635,8.5421 9.762323,14.64368 z m 0,-7.93198 c -3.706713,0 -6.711598,-3.0049 -6.711598,-6.7117 0,-3.7066 3.004885,-6.7115 6.711598,-6.7115 3.706714,0 6.711598,3.0049 6.711598,6.7115 0,3.7068 -3.004884,6.7117 -6.711598,6.7117 z"
        id="path10143"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/mo/Dokumente/Pure Maps/allover/route_to_sfos.png"
@@ -235,8 +236,8 @@
        inkscape:export-ydpi="132" />
     <path
        id="path7"
-       d="m 71,989.88527 c -1.483,0 -2.95,-0.394 -4.242,-1.14 -4.058,-2.343 -5.453,-7.551 -3.11,-11.609 1.514,-2.622 4.336,-4.251 7.366,-4.251 1.484,0 2.951,0.395 4.242,1.141 1.967,1.134 3.374,2.967 3.961,5.16 0.588,2.192 0.285,4.483 -0.85,6.449 -1.513,2.621 -4.335,4.25 -7.367,4.25 z m 0.014,-15 c -2.317,0 -4.477,1.246 -5.634,3.251 -1.792,3.104 -0.725,7.086 2.378,8.877 0.988,0.571 2.109,0.872 3.242,0.872 2.318,0 4.478,-1.245 5.635,-3.25 0.868,-1.504 1.1,-3.255 0.65,-4.932 -0.449,-1.677 -1.525,-3.078 -3.029,-3.946 -0.987,-0.571 -2.108,-0.872 -3.242,-0.872 z"
-       style="opacity:1;fill:#ffffff"
+       d="m 39.747861,1005.3473 c 1.483,0 2.95,0.394 4.242,1.14 4.058,2.343 5.453,7.551 3.11,11.609 -1.514,2.622 -4.336,4.251 -7.366,4.251 -1.484,0 -2.951,-0.395 -4.242,-1.141 -1.967,-1.134 -3.374,-2.967 -3.961,-5.16 -0.588,-2.192 -0.285,-4.483 0.85,-6.449 1.513,-2.621 4.335,-4.25 7.367,-4.25 z m -0.014,15 c 2.317,0 4.477,-1.246 5.634,-3.251 1.792,-3.104 0.725,-7.086 -2.378,-8.877 -0.988,-0.571 -2.109,-0.872 -3.242,-0.872 -2.318,0 -4.478,1.245 -5.635,3.25 -0.868,1.504 -1.1,3.255 -0.65,4.932 0.449,1.677 1.525,3.078 3.029,3.946 0.987,0.571 2.108,0.872 3.242,0.872 z"
+       style="opacity:1;fill:#000000"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/mo/Dokumente/Pure Maps/allover/route_to_sfos.png"
        inkscape:export-xdpi="132"
