@@ -30,14 +30,26 @@ PagePL {
         width: parent.width
 
         Image {
-            // Logo
+            // Banner
             anchors.horizontalCenter: parent.horizontalCenter
-            height: sourceSize.height
+            fillMode: Image.PreserveAspectFit
             smooth: true
-            source: "icons/pure-maps.svg"
-            sourceSize.height: 0.25 * Math.min(page.height,page.width)
-            sourceSize.width: 0.25 * Math.min(page.height,page.width)
-            width: sourceSize.width
+            source: "icons/banner.png"
+            width: column.width
+
+            Image {
+                // Logo
+                anchors.left: parent.left
+                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                anchors.top: parent.top
+                anchors.topMargin: Math.min(parent.height/4, app.styler.themePaddingMedium)
+                height: parent.height / 2
+                smooth: true
+                source: "icons/pure-maps.svg"
+                sourceSize.height: height
+                sourceSize.width: height
+                width: height
+            }
         }
 
         ListItemLabel {
@@ -76,7 +88,8 @@ PagePL {
                 font.pixelSize: app.styler.themeFontSizeSmall
                 height: implicitHeight
                 horizontalAlignment: Text.AlignRight
-                text: app.tr("Artwork by %1 and %2", "Fellfrosch", "Mosen")
+                text: app.tr("Artwork by %1 and %2\nBanner photo by %3 (Pexels License)", "Fellfrosch", "Mosen", "Yaroslav Shuraev")
+                wrapMode: Text.WordWrap
             }
         }
 

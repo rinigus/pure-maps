@@ -72,7 +72,7 @@ QtObject {
     property string iconNavigate: "route-symbolic"
     property string iconNavigateTo: "route-to-symbolic"
     property string iconNavigateFrom: "route-from-symbolic"
-    property string iconNearby: "zoom-fit-best-symbolic"
+    property string iconNearby: "nearby-symbolic"
     property string iconPause: "media-playback-pause-symbolic"
     property string iconPhone: "call-start-symbolic"
     property string iconPreferences: "preferences-system-symbolic"
