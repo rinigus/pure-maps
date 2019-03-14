@@ -112,7 +112,7 @@ Item {
             _locked = true;
         }
         var p = ps.push(page, options ? options : {});
-        if (attached !== page && !p.isDialog) {
+        if (attached !== page && (p && !p.isDialog)) {
             attached = undefined;
             attachedTo = undefined;
         }
