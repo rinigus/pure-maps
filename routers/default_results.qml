@@ -35,11 +35,6 @@ PagePL {
         }
     }
 
-    NarrativeItem {
-        id: narrative
-        visible: false
-    }
-
     onPageStatusActivating: {
         if (loading) busy.text = app.tr("Searching");
     }
@@ -50,8 +45,6 @@ PagePL {
     function findRoute() {
         // Load routing results from the Python backend.
         page.loading = true;
-        narrative.clear();
-        narrative.visible = false;
         busy.visible = true;
         var routePage = app.pages.previousPage();
         var args = [routePage.from, routePage.to];
@@ -69,8 +62,6 @@ PagePL {
                 if (app.isConvergent) {
                     page.loading = false;
                     busy.visible = false;
-                    narrative.visible = true;
-                    narrative.populate();
                 }
             } else {
                 busy.error = app.tr("No results");
