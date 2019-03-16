@@ -122,7 +122,7 @@
                 {
                     "type": "git",
                     "url": "git://anongit.kde.org/extra-cmake-modules.git",
-                    "branch": "v5.56.0-rc1"
+                    "branch": "v5.56.0"
                 }
             ]
         },
