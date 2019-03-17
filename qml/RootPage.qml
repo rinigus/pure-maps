@@ -25,6 +25,7 @@ PageEmptyPL {
 
     AttributionButton { id: attributionButton }
     CenterButton { id: centerButton }
+    Commander { id: commander }
     GeocodeButton { id: geocodeButton }
     Map {
         id: map
@@ -55,6 +56,8 @@ PageEmptyPL {
         app.notification = notification;
         app.pois = pois;
         app.remorse = remorse;
+        // after all objects are initialized
+        commander.parseCommandLine();
     }
 
     onPageStatusActive: {

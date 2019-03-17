@@ -52,6 +52,10 @@ Kirigami.ApplicationWindow {
         updateOrientation();
     }
 
+    function activate() {
+        appWindow.raise();
+    }
+
     function clearPages() {
         // called when we need to drop all pages
         // except the page with a map and start

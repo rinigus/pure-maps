@@ -82,6 +82,10 @@ Item {
         return py.call_sync("poor.conf.get_default", [option]);
     }
 
+    function initialize() {
+        conf._update();
+    }
+
     function remove(option, item) {
         // Remove item from the value of option.
         return py.call_sync("poor.conf.remove", [option, item]);
