@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Pure Maps
-Exec=sailfish-qml harbour-pure-maps
+Exec=harbour-pure-maps %u
 Icon=harbour-pure-maps
 Type=Application
-X-Nemo-Application-Type=silica-qt5
+MimeType=x-scheme-handler/geo
+# X-Nemo-Single-Instance=no

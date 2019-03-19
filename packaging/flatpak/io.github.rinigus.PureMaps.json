@@ -20,7 +20,7 @@
     "cleanup": ["/usr/include", "/usr/tests", "/usr/lib/*/libqmapboxgl.a",
                 "/usr/lib/libqmapboxgl.a", "/usr/lib/pkgconfig", "/opt",
                 "/lib/*.a", "/lib/*.la"],
-    "rename-icon": "pure-maps", 
+    "rename-icon": "pure-maps",
     "modules": [
         {
             "name": "nemodbus",
@@ -147,7 +147,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/rinigus/qmlrunner.git",
-                    "commit": "490244ebd7c7e2d13d00218b9a5e9f10fa9f5e18"
+                    "commit": "9b48bb0f6e3cf6a5e1e29541cf4ab17477775845"
                 }
             ]
         },

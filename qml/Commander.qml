@@ -44,13 +44,18 @@ Item {
              '  </interface>\n'
 
         function command(options) {
-            commander.parser(options);
+            var escaped = options.map(function(s) {
+                return s.replace(".COMMA.", ",")
+            })
+            commander.parser(escaped);
+            app.activate();
             return "OK";
         }
 
         function showPoi(latitude, longitude) {
             if (isFinite(latitude) && isFinite(longitude)) {
                 commander.showPoi(QtPositioning.coordinate(latitude, longitude));
+                app.activate();
                 return "OK";
             }
             return "Error: Coordinates are not numbers";
@@ -59,20 +64,19 @@ Item {
 
     function parseCommandLine() {
         if( Qt.application.arguments.length > 2 ) {
-            // Pure Maps options are listed after --puremaps option.
+            // Pure Maps options are listed after -- option.
             //
-            // The last option is executed QML (qmlscene) or folder name
-            // for application (qmlrunner)
-            var idx = Qt.application.arguments.indexOf('--puremaps');
+            var idx = Qt.application.arguments.indexOf('--');
             if (idx > 0)
                 parser(Qt.application.arguments.slice(idx+1,
-                                                      Qt.application.arguments.length-1));
+                                                      Qt.application.arguments.length));
         }
     }
 
     function parseGeo(str) {
+        var coors = str.split(';', 1)[0] || "";
         var geoUriExpr = /geo:(-?[\d.]+),(-?[\d.]+)*/;
-        var match = geoUriExpr.exec(str);
+        var match = geoUriExpr.exec(coors);
         if (match != null && match.length >= 3) {
             var latitude = parseFloat(match[1]);
             var longitude = parseFloat(match[2]);
@@ -111,6 +115,5 @@ Item {
                 });
         map.autoCenter = false;
         map.setCenter(geocoordinate.longitude, geocoordinate.latitude);
-        app.activate();
     }
 }
