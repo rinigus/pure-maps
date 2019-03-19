@@ -34,7 +34,7 @@ PagePL {
             anchors.horizontalCenter: parent.horizontalCenter
             fillMode: Image.PreserveAspectFit
             smooth: true
-            source: "icons/banner.png"
+            source: "icons/banner.jpg"
             width: column.width
 
             Image {

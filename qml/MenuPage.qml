@@ -24,7 +24,7 @@ import "platform"
 MenuDrawerPL {
     id: page
 
-    banner: "icons/banner.png"
+    banner: "icons/banner.jpg"
     title: "Pure Maps"
     titleIcon: "pure-maps"
     pageMenu: PageMenuPL {
