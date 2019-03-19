@@ -114,19 +114,6 @@
             ]
         },
         {
-            "name": "extra-cmake-modules",
-            "cleanup-platform": ["*"],
-            "buildsystem": "cmake-ninja",
-            "config-opts": [ "-DCMAKE_BUILD_TYPE=Debug", "-DENABLE_TESTING=OFF" ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "git://anongit.kde.org/extra-cmake-modules.git",
-                    "branch": "v5.56.0"
-                }
-            ]
-        },
-        {
             "name": "kirigami",
             "config-opts": ["-DCMAKE_BUILD_TYPE=Debug", "-DENABLE_TESTING=OFF", "-DPLASMA_ENABLED=OFF"],
             "buildsystem": "cmake-ninja",
