@@ -34,13 +34,25 @@ MapboxMapGestureArea {
         // activate the associated action.
         area.degLonPerPixel = degLonPerPixel;
         area.degLatPerPixel = degLatPerPixel;
+
         // Toggle auto-center if position marker clicked.
         if (area.coordinatesMatch(geocoordinate, map.position.coordinate))
             return map.toggleAutoCenter();
+
         // Show information bubble if POI marker clicked.
-        for (var i = 0; i < pois.pois.length; i++)
-            if (area.coordinatesMatch(geocoordinate, pois.pois[i].coordinate))
-                return pois.show(pois.pois[i]);
+        var selectedPoi = null;
+        pois.pois.forEach(function (poi){
+            var dlon = (geocoordinate.longitude - poi.coordinate.longitude) / area.degLonPerPixel;
+            var dlat = (geocoordinate.latitude - poi.coordinate.latitude) / area.degLatPerPixel;
+            var dist2 = dlon*dlon + dlat*dlat;
+            // select only if poi is closer than 30 pixels (dist2 is square of that)
+            if (dist2 < map.pixelRatio*map.pixelRatio*900 && (selectedPoi == null || selectedPoi.dist2 > dist2)) {
+                selectedPoi = { 'poi': poi, 'dist2': dist2 };
+            }
+        });
+        if (selectedPoi)
+            return pois.show(selectedPoi.poi);
+
         // Hide any POI bubbles if background map clicked.
         if (app.poiActive)
             return pois.hide();
