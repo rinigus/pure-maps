@@ -13,8 +13,8 @@
    height="64"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.92.2 2405546, 2018-03-11"
-   sodipodi:docname="route-to.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="route_to_sfos_black.svg"
    version="1.1"
    inkscape:export-xdpi="132"
    inkscape:export-ydpi="132"
@@ -106,20 +106,20 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#000000"
+     pagecolor="#bdbdbd"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.313709"
-     inkscape:cx="43.268177"
-     inkscape:cy="19.162471"
+     inkscape:cx="-16.823642"
+     inkscape:cy="19.516024"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-width="2880"
+     inkscape:window-height="1506"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="1050"
      showgrid="true"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
@@ -132,8 +132,7 @@
      inkscape:guide-bbox="true"
      guidetolerance="5"
      objecttolerance="5"
-     gridtolerance="15"
-     inkscape:pagecheckerboard="true">
+     gridtolerance="15">
     <inkscape:grid
        type="xygrid"
        id="grid10137"
@@ -149,44 +148,9 @@
        id="guide1355"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="-0.4238536,45.498901"
-       orientation="0,1"
-       id="guide1359"
-       inkscape:locked="false" />
-    <sodipodi:guide
        position="31.999999,26.999979"
        orientation="1,0"
        id="guide956"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="1.3789062,47.5"
-       orientation="0,1"
-       id="guide886"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="46.999999,16.495716"
-       orientation="0,1"
-       id="guide914"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="40.761719,48.5"
-       orientation="0,1"
-       id="guide857"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="29.046635,52.46399"
-       orientation="0,1"
-       id="guide919"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="29.093222,11.51008"
-       orientation="0,1"
-       id="guide921"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="39.986809,55.485573"
-       orientation="0,1"
-       id="guide1003"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
@@ -220,14 +184,14 @@
        r="3.6608713"
        cy="1012.585"
        cx="41.000004"
-       style="opacity:0.6;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
        id="path10139"
        inkscape:export-filename="/home/mo/Dokumente/Pure Maps/allover/route_to_sfos.png"
        inkscape:export-xdpi="132"
        inkscape:export-ydpi="132" />
     <path
        sodipodi:nodetypes="cssscsssss"
-       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
        d="m 41,997.94142 c -5.694689,6.10158 -9.762324,9.25198 -9.762324,14.64368 0,5.3914 4.370741,9.7622 9.762324,9.7622 5.391582,0 9.762323,-4.3708 9.762323,-9.7622 0,-5.3917 -4.067635,-8.5421 -9.762323,-14.64368 z m 0,7.93198 c 3.706713,0 6.711598,3.0049 6.711598,6.7117 0,3.7066 -3.004885,6.7115 -6.711598,6.7115 -3.706714,0 -6.711598,-3.0049 -6.711598,-6.7115 0,-3.7068 3.004884,-6.7117 6.711598,-6.7117 z"
        id="path10143"
        inkscape:connector-curvature="0"
