@@ -1,3 +1,18 @@
+2019-03-XX: Pure Maps 1.18
+==========================
+
+* Redesign of icons and banner [mosen and Fellfrosch]
+* Map controls shown as buttons
+* Add drag indicator to panels
+* Add command line support
+* Add DBus interface
+* Select closest POI when clicking on a map
+* [kirigami] Set map as an expanding page
+* [flatpak] Update packaging scripts
+* [silica] workaround to show combobox in landscape
+* Update translations
+* Bugfixes and smaller adjustments
+
 2019-02-25: Pure Maps 1.17
 ==========================
 
