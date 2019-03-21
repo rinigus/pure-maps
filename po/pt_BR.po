@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-25 22:53+0200\n"
+"POT-Creation-Date: 2019-03-21 10:33+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Gustavo Martins <gustavo737@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rinigus/teams/89597/pt_BR/)\n"
@@ -394,19 +394,21 @@ msgstr "Pesquisar a partir do ponto de referência"
 msgid "About Pure Maps"
 msgstr "Sobre o Pure Maps"
 
-#: qml/AboutPage.qml:44
+#: qml/AboutPage.qml:58
 msgid "version %1"
 msgstr "versão %1"
 
-#: qml/AboutPage.qml:51
+#: qml/AboutPage.qml:65
 msgid "GitHub page"
 msgstr "Página GitHub"
 
-#: qml/AboutPage.qml:77
-msgid "Logo by %1"
-msgstr "Logo por %1"
+#: qml/AboutPage.qml:91
+msgid ""
+"Artwork by %1 and %2\n"
+"Banner photo by %3 (Pexels License)"
+msgstr ""
 
-#: qml/AboutPage.qml:87
+#: qml/AboutPage.qml:102
 msgid ""
 "Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
@@ -414,7 +416,7 @@ msgstr ""
 "O Pure Maps é software livre publicado sob a Licença Pública Geral GNU "
 "(GPL), versão 3 ou mais recente."
 
-#: qml/AboutPage.qml:92
+#: qml/AboutPage.qml:107
 msgid "Translated by"
 msgstr "Traduzido por"
 
@@ -423,11 +425,11 @@ msgstr "Traduzido por"
 #. Thus, you should translate it to your name. You can also include other
 #. translators who have contributed to this translation; in that case, please
 #. write them on separate lines seperated by newlines (\n).
-#: qml/AboutPage.qml:104
+#: qml/AboutPage.qml:119
 msgid "translator-credits"
 msgstr "caio2k"
 
-#: qml/AboutPage.qml:114
+#: qml/AboutPage.qml:129
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
@@ -435,7 +437,7 @@ msgstr ""
 "Você pode adicionar tradução para uma língua não suportada ou melhorar as "
 "traduções existentes no site Transifex."
 
-#: qml/AboutPage.qml:122
+#: qml/AboutPage.qml:137
 msgid "Transifex page"
 msgstr "Navegar para Transifex"
 
@@ -454,10 +456,10 @@ msgstr "Locais"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:25
 #: qml/PreferencesPage.qml:363 qml/RoutePage.qml:25
-#: routers/default_results.qml:64 routers/digitransit_results.qml:186
-#: routers/gpx_osmscout_results.qml:64 routers/gpx_results.qml:64
-#: routers/mapquest_open_results.qml:64 routers/osmscout_results.qml:64
-#: routers/osrm_results.qml:64 routers/stadiamaps_results.qml:64
+#: routers/default_results.qml:57 routers/digitransit_results.qml:186
+#: routers/gpx_osmscout_results.qml:57 routers/gpx_results.qml:57
+#: routers/mapquest_open_results.qml:57 routers/osmscout_results.qml:57
+#: routers/osrm_results.qml:57 routers/stadiamaps_results.qml:57
 msgid "Navigation"
 msgstr "Navegação"
 
@@ -482,10 +484,10 @@ msgid "Searching ..."
 msgstr "Pesquisando..."
 
 #: qml/GeocodeItem.qml:414 qml/NearbyResultsPage.qml:134
-#: routers/default_results.qml:76 routers/digitransit_results.qml:245
-#: routers/gpx_osmscout_results.qml:76 routers/gpx_results.qml:76
-#: routers/mapquest_open_results.qml:76 routers/osmscout_results.qml:76
-#: routers/osrm_results.qml:76 routers/stadiamaps_results.qml:76
+#: routers/default_results.qml:67 routers/digitransit_results.qml:245
+#: routers/gpx_osmscout_results.qml:67 routers/gpx_results.qml:67
+#: routers/mapquest_open_results.qml:67 routers/osmscout_results.qml:67
+#: routers/osrm_results.qml:67 routers/stadiamaps_results.qml:67
 msgid "No results"
 msgstr "Nenhum resultado encontrado"
 
@@ -531,15 +533,15 @@ msgstr "Motor de busca"
 msgid "Initializing"
 msgstr "Iniciando"
 
-#: qml/InitPage.qml:44
+#: qml/InitPage.qml:46
 msgid "Dismiss"
 msgstr "Dispensar"
 
-#: qml/InitPage.qml:45
+#: qml/InitPage.qml:47
 msgid "Missing Mapbox key"
 msgstr "Faltando chave do Mapbox"
 
-#: qml/InitPage.qml:46
+#: qml/InitPage.qml:48
 msgid ""
 "Your installation is missing Mapbox API key. Please register at Mapbox and "
 "fill in your personal API key in Preferences. This key is not needed if you "
@@ -743,17 +745,17 @@ msgstr "Local próximo"
 msgid "Radius"
 msgstr "Raio"
 
-#: qml/NearbyPage.qml:104 qml/PoiEditPage.qml:54
+#: qml/NearbyPage.qml:104 qml/PoiEditPage.qml:57
 #: routers/gpx_osmscout_settings.qml:50 routers/gpx_settings.qml:50
 #: routers/mapquest_open_settings.qml:26 routers/ValhallaSettings.qml:35
 msgid "Type"
 msgstr "Tipo"
 
-#: qml/NearbyResultsPage.qml:107 routers/default_results.qml:44
-#: routers/digitransit_results.qml:216 routers/gpx_osmscout_results.qml:44
-#: routers/gpx_results.qml:44 routers/mapquest_open_results.qml:44
-#: routers/osmscout_results.qml:44 routers/osrm_results.qml:44
-#: routers/stadiamaps_results.qml:44
+#: qml/NearbyResultsPage.qml:107 routers/default_results.qml:39
+#: routers/digitransit_results.qml:216 routers/gpx_osmscout_results.qml:39
+#: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
+#: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
+#: routers/stadiamaps_results.qml:39
 msgid "Searching"
 msgstr "Buscando"
 
@@ -765,11 +767,11 @@ msgstr "Locais próximos: %1"
 msgid "%1 Results"
 msgstr "%1 Resultados"
 
-#: qml/NorthArrow.qml:78
+#: qml/NorthArrow.qml:73
 msgid "Auto-rotate on"
 msgstr "Rotação automática da tela ativa"
 
-#: qml/NorthArrow.qml:79
+#: qml/NorthArrow.qml:74
 msgid "Auto-rotate off"
 msgstr "Rotação automática da tela desativada"
 
@@ -789,7 +791,7 @@ msgstr "%1; %2"
 msgid "Latitude: %1; Longitude: %2"
 msgstr "Latitude: %1; Longitude: %2"
 
-#: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:78
+#: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:81
 msgid "Postal code"
 msgstr "CEP"
 
@@ -821,59 +823,59 @@ msgstr "Editar marcador"
 msgid "Save"
 msgstr "Salvar"
 
-#: qml/PoiEditPage.qml:40 qml/PreferencesPage.qml:36
+#: qml/PoiEditPage.qml:42 qml/PreferencesPage.qml:36
 msgid "General"
 msgstr "Geral"
 
-#: qml/PoiEditPage.qml:46
+#: qml/PoiEditPage.qml:48
 msgid "Title"
 msgstr "Título"
 
-#: qml/PoiEditPage.qml:47
+#: qml/PoiEditPage.qml:49
 msgid "Enter title"
 msgstr "Digite o título"
 
-#: qml/PoiEditPage.qml:55
+#: qml/PoiEditPage.qml:58
 msgid "Enter type, such as Restaurant"
 msgstr "Digite o tipo, como por exemplo, Restaurante"
 
-#: qml/PoiEditPage.qml:65 qml/PoiEditPage.qml:70 qml/PoiInfoPage.qml:95
+#: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:95
 msgid "Address"
 msgstr "Endereço"
 
-#: qml/PoiEditPage.qml:71
+#: qml/PoiEditPage.qml:74
 msgid "Enter address"
 msgstr "Digite o endereço"
 
-#: qml/PoiEditPage.qml:79
+#: qml/PoiEditPage.qml:82
 msgid "Enter postal code"
 msgstr "Digite o CEP"
 
-#: qml/PoiEditPage.qml:89 qml/PoiInfoPage.qml:216
+#: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:216
 msgid "Contact"
 msgstr "Contato"
 
-#: qml/PoiEditPage.qml:95
+#: qml/PoiEditPage.qml:98
 msgid "Phone number"
 msgstr "Número de telefone"
 
-#: qml/PoiEditPage.qml:96
+#: qml/PoiEditPage.qml:99
 msgid "Enter phone number"
 msgstr "Digite o número de telefone"
 
-#: qml/PoiEditPage.qml:103
+#: qml/PoiEditPage.qml:106
 msgid "URL"
 msgstr "URL"
 
-#: qml/PoiEditPage.qml:104
+#: qml/PoiEditPage.qml:107
 msgid "Enter URL"
 msgstr "Digite a URL"
 
-#: qml/PoiEditPage.qml:114 qml/PoiInfoPage.qml:242
+#: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:242
 msgid "Additional info"
 msgstr "Informações adicionais"
 
-#: qml/PoiEditPage.qml:120
+#: qml/PoiEditPage.qml:123
 msgid "Enter additional info"
 msgstr "Digite as informações adicionais"
 
