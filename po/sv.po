@@ -405,6 +405,8 @@ msgid ""
 "Artwork by %1 and %2\n"
 "Banner photo by %3 (Pexels License)"
 msgstr ""
+"Grafisk konst av %1 och %2\n"
+"Banerfoto av %3 (Pexels Licens)"
 
 #: qml/AboutPage.qml:102
 msgid ""
@@ -1382,7 +1384,7 @@ msgstr "Totalt"
 #: routers/mapquest_open_results.qml:25 routers/osmscout_results.qml:25
 #: routers/osrm_results.qml:25 routers/stadiamaps_results.qml:25
 msgid "Route"
-msgstr "Navigation"
+msgstr "Rutt"
 
 #: qml/RoutePage.qml:52
 msgid "Follow me"

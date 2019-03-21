@@ -407,6 +407,8 @@ msgid ""
 "Artwork by %1 and %2\n"
 "Banner photo by %3 (Pexels License)"
 msgstr ""
+"Grafisch werk door %1 en %2\n"
+"Foto van banier door %3 (Pexels-licentie)"
 
 #: qml/AboutPage.qml:102
 msgid ""

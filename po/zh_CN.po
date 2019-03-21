@@ -390,6 +390,8 @@ msgid ""
 "Artwork by %1 and %2\n"
 "Banner photo by %3 (Pexels License)"
 msgstr ""
+"艺术图 %1 and %2\n"
+"横幅照片 %3 (Pexels 许可协议）"
 
 #: qml/AboutPage.qml:102
 msgid ""
