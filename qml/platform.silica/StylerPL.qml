@@ -77,7 +77,9 @@ QtObject {
     property string iconPause: "image://theme/icon-m-pause"
     property string iconPhone: "image://theme/icon-m-phone"
     property string iconPreferences: "image://theme/icon-m-developer-mode"
-    property string iconProfile: "image://theme/icon-m-transfer"
+    property string iconProfileMixed: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/profile-mixed-black.svg") : Qt.resolvedUrl("../icons/sailfishos/profile-mixed-white.svg")
+    property string iconProfileOffline: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/profile-offline-black.svg") : Qt.resolvedUrl("../icons/sailfishos/profile-offline-white.svg")
+    property string iconProfileOnline: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/profile-online-black.svg") : Qt.resolvedUrl("../icons/sailfishos/profile-online-white.svg")
     property string iconRefresh: "image://theme/icon-m-refresh"
     property string iconSave: "image://theme/icon-m-acknowledge"
     property string iconSearch: "image://theme/icon-m-search"

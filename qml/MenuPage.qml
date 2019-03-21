@@ -111,7 +111,11 @@ MenuDrawerPL {
 
     MenuDrawerSubmenuPL {
         id: profiles
-        iconName: app.styler.iconProfile
+        iconName: {
+            if (app.conf.profile === "online") return app.styler.iconProfileOnline;
+            if (app.conf.profile === "offline") return app.styler.iconProfileOffline;
+            return app.styler.iconProfileMixed;
+        }
         text: app.tr("Profile")
 
         MenuDrawerSubmenuItemPL {
