@@ -73,7 +73,7 @@ QtObject {
     property string iconNavigate: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/route-to-black.svg") : Qt.resolvedUrl("../icons/sailfishos/route-to-white.svg")
     property string iconNavigateTo: iconNavigate
     property string iconNavigateFrom: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/route-from-black.svg") : Qt.resolvedUrl("../icons/sailfishos/route-from-white.svg")
-    property string iconNearby: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/nearby-black.svg") : Qt.resolvedUrl("../icons/sailfishos/nearby-white.svg")
+    property string iconNearby: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/nearby-search-black.svg") : Qt.resolvedUrl("../icons/sailfishos/nearby-search-white.svg")
     property string iconPause: "image://theme/icon-m-pause"
     property string iconPhone: "image://theme/icon-m-phone"
     property string iconPreferences: "image://theme/icon-m-developer-mode"

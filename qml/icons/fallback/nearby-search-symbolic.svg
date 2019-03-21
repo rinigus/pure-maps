@@ -14,11 +14,11 @@
    id="svg1901"
    sodipodi:version="0.32"
    inkscape:version="0.92.4 5da689c313, 2019-01-14"
-   sodipodi:docname="search_kirigami.svg"
+   sodipodi:docname="nearby_search_kirigami.svg"
    version="1.1"
    inkscape:export-xdpi="67.5"
    inkscape:export-ydpi="67.5"
-   inkscape:export-filename="/home/mo/Dokumente/Pure Maps/missing/search_kirigami.png">
+   inkscape:export-filename="/home/mo/Dokumente/Pure Maps/all/nearby_search_kirigami.png">
   <defs
      id="defs1903" />
   <sodipodi:namedview
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="13.464492"
-     inkscape:cx="-12.597729"
-     inkscape:cy="29.409243"
+     inkscape:zoom="13.86215"
+     inkscape:cx="-2.1056542"
+     inkscape:cy="30.847533"
      inkscape:document-units="px"
      inkscape:current-layer="g825"
      inkscape:window-width="2880"
@@ -67,6 +67,26 @@
        orientation="1,0"
        id="guide868"
        inkscape:locked="false" />
+    <sodipodi:guide
+       position="36,54"
+       orientation="0,1"
+       id="guide879"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="30,57"
+       orientation="0,1"
+       id="guide822"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="15.496094,15.15625"
+       orientation="1,0"
+       id="guide840"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="74,15"
+       orientation="0,1"
+       id="guide919"
+       inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata1906">
@@ -90,9 +110,14 @@
        transform="translate(-0.8572132,0.17178455)">
       <path
          style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
-         d="M 25.5 0 C 11.416739 0 0 11.416739 0 25.5 C 0 39.583261 11.416739 51 25.5 51 C 30.494379 51 35.142897 49.54807 39.076172 47.066406 L 56.005859 63.996094 C 57.987031 63.604094 59.814021 62.626772 61.242188 61.201172 C 62.668532 59.774872 63.64523 57.943391 64.037109 55.962891 L 47.097656 39.023438 C 49.559284 35.101162 51 30.472395 51 25.5 C 51 11.416739 39.583261 0 25.5 0 z M 25.496094 9.6386719 C 34.210705 9.6386719 41.353516 16.780341 41.353516 25.494141 C 41.353516 34.207741 34.210717 41.347656 25.496094 41.347656 C 16.781444 41.347656 9.640625 34.207741 9.640625 25.494141 C 9.640625 16.780341 16.781444 9.6386719 25.496094 9.6386719 z "
+         d="m 17.594948,1022.0929 c -9.950513,2.7183 -16.73337171,7.9851 -16.7377348,14.0697 0.006298,8.8652 14.3308128,16.0504 31.9999998,16.0504 17.669191,0 31.993643,-7.1852 32,-16.0504 -0.0042,-6.0427 -6.694295,-11.2755 -16.532807,-14.0097 -1.661483,2.3269 -3.32617,4.6096 -4.984434,6.8657 4.438337,1.6246 7.34896,4.2359 7.348965,7.2042 -7.5e-5,0.032 -0.0083,0.065 -0.0095,0.098 0.0014,0.033 0.0095,0.067 0.0095,0.1004 -7e-6,4.9409 -7.984261,8.9475 -17.831724,8.9475 -9.847459,0 -17.828563,-4.0066 -17.828572,-8.9475 7.6e-5,-0.033 0.0051,-0.068 0.0064,-0.1004 -0.0014,-0.032 -0.0064,-0.064 -0.0064,-0.098 6e-6,-2.962 2.897873,-5.5693 7.320592,-7.1947 -1.502282,-2.1246 -3.112232,-4.4724 -4.754285,-6.9352 z"
+         id="path847"
+         inkscape:connector-curvature="0" />
+      <path
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.27363765;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.50196078"
+         d="M 32 0 C 21.867961 0 14.777344 7.0935694 14.777344 17.224609 C 14.777344 25.697909 27.531151 43.152484 30.697266 47.021484 L 32 48.632812 L 33.917969 46.015625 C 40.4552 37.099725 49.414908 25.878809 49.222656 17.224609 C 49.222656 7.0935694 42.132041 -1.1368684e-13 32 0 z M 32 11.445312 C 36.52146 11.445312 39.6875 14.611813 39.6875 19.132812 C 39.773293 22.994813 35.774685 28.001769 32.857422 31.980469 L 32 33.148438 L 31.419922 32.429688 C 30.007032 30.703188 24.314453 22.914112 24.314453 19.132812 C 24.314453 14.611812 27.478541 11.445312 32 11.445312 z "
          transform="translate(0.8572132,988.19042)"
-         id="path822" />
+         id="path915" />
     </g>
   </g>
 </svg>
