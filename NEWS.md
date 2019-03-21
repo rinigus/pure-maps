@@ -1,4 +1,4 @@
-2019-03-XX: Pure Maps 1.18
+2019-03-21: Pure Maps 1.18
 ==========================
 
 * Redesign of icons and banner [mosen and Fellfrosch]
