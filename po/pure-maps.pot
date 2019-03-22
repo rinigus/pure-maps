@@ -570,7 +570,7 @@ msgstr ""
 
 #: qml/Map.qml:466
 msgid ""
-"Voice navigation unavailable: missing text to speach engine for selected "
+"Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected "
 "language"
 msgstr ""
 
@@ -1191,7 +1191,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:506
 msgid ""
-"Testing of text to speech (TTS) engine. Select the same language as used for "
+"Testing of Text-to-Speech (TTS) engine. Select the same language as used for "
 "navigation, preferred gender, and press the button below for testing."
 msgstr ""
 
