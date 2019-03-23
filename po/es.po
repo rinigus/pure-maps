@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 10:33+0200\n"
+"POT-Creation-Date: 2019-03-22 20:55+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Carmen Fernández B., 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -579,19 +579,19 @@ msgstr ""
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:115
+#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:119
 msgid "Profile"
 msgstr "Perfil"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:119
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:123
 msgid "Online"
 msgstr "Con conexión"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:125
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:129
 msgid "Offline"
 msgstr "Sin conexión"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:131
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:135
 msgid "Mixed"
 msgstr "Mixto"
 
@@ -601,11 +601,9 @@ msgstr "Navegación por voz activado"
 
 #: qml/Map.qml:466
 msgid ""
-"Voice navigation unavailable: missing text to speach engine for selected "
-"language"
+"Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
+"selected language"
 msgstr ""
-"Navegación por voz no disponible: falta motor de conversiṕn texto-voz para "
-"el idioma seleccionado"
 
 #: qml/Map.qml:579
 msgid "Auto-center off"
@@ -647,15 +645,15 @@ msgstr "Compartir posición actual"
 msgid "Center on current position"
 msgstr "Centrar en la posición actual"
 
-#: qml/MenuPage.qml:145
+#: qml/MenuPage.qml:149
 msgid "Auto-center on position"
 msgstr "Auto-centrado en la posición"
 
-#: qml/MenuPage.qml:169
+#: qml/MenuPage.qml:173
 msgid "Auto-rotate on direction"
 msgstr "Auto-giro según dirección"
 
-#: qml/MenuPage.qml:188
+#: qml/MenuPage.qml:192
 msgid "Auto-zoom map"
 msgstr "Auto-zoom del mapa"
 
@@ -1251,11 +1249,9 @@ msgstr "Pruebas"
 
 #: qml/PreferencesPage.qml:506
 msgid ""
-"Testing of text to speech (TTS) engine. Select the same language as used for"
+"Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
-"Pruebas del motor de conversión texto-voz (TTS). Selecciona el mismo idioma "
-"que el usado para navegar, género preferido, y presiona el botón de abajo."
 
 #: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55

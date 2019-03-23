@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 10:33+0200\n"
+"POT-Creation-Date: 2019-03-22 20:55+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Gustavo Martins <gustavo737@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rinigus/teams/89597/pt_BR/)\n"
@@ -576,19 +576,19 @@ msgstr ""
 msgid "Preferences"
 msgstr "Configurações"
 
-#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:115
+#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:119
 msgid "Profile"
 msgstr "Perfil"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:119
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:123
 msgid "Online"
 msgstr "Online"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:125
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:129
 msgid "Offline"
 msgstr "Offline"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:131
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:135
 msgid "Mixed"
 msgstr "MIsto"
 
@@ -598,8 +598,8 @@ msgstr "Navegação por voz ativada"
 
 #: qml/Map.qml:466
 msgid ""
-"Voice navigation unavailable: missing text to speach engine for selected "
-"language"
+"Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
+"selected language"
 msgstr ""
 
 #: qml/Map.qml:579
@@ -642,15 +642,15 @@ msgstr "Compartilhar posição atual"
 msgid "Center on current position"
 msgstr "Centralizar na posição atual"
 
-#: qml/MenuPage.qml:145
+#: qml/MenuPage.qml:149
 msgid "Auto-center on position"
 msgstr "Centralizar automaticamente na posição"
 
-#: qml/MenuPage.qml:169
+#: qml/MenuPage.qml:173
 msgid "Auto-rotate on direction"
 msgstr "Rotacionar mapa ao deslocar"
 
-#: qml/MenuPage.qml:188
+#: qml/MenuPage.qml:192
 msgid "Auto-zoom map"
 msgstr ""
 
@@ -1240,12 +1240,9 @@ msgstr "Testando"
 
 #: qml/PreferencesPage.qml:506
 msgid ""
-"Testing of text to speech (TTS) engine. Select the same language as used for"
+"Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
-"Testando o motor de fala para texto (TTS). Selecione o mesmo idioma "
-"utilizado para navegação, gênero preferido, e pressione o botão abaixo para "
-"testar."
 
 #: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55

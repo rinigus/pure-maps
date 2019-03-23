@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 10:33+0200\n"
+"POT-Creation-Date: 2019-03-22 20:55+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rui kon <facebookmail@qq.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -559,19 +559,19 @@ msgstr ""
 msgid "Preferences"
 msgstr "偏好"
 
-#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:115
+#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:119
 msgid "Profile"
 msgstr "配置文件"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:119
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:123
 msgid "Online"
 msgstr "在线"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:125
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:129
 msgid "Offline"
 msgstr "离线"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:131
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:135
 msgid "Mixed"
 msgstr "混合"
 
@@ -581,9 +581,9 @@ msgstr "语音导航开启"
 
 #: qml/Map.qml:466
 msgid ""
-"Voice navigation unavailable: missing text to speach engine for selected "
-"language"
-msgstr "无法使用语音导航:所选语言发音引擎缺失文本"
+"Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
+"selected language"
+msgstr ""
 
 #: qml/Map.qml:579
 msgid "Auto-center off"
@@ -625,15 +625,15 @@ msgstr "分享当前位置"
 msgid "Center on current position"
 msgstr "以当前位置为中心"
 
-#: qml/MenuPage.qml:145
+#: qml/MenuPage.qml:149
 msgid "Auto-center on position"
 msgstr "自动集中于位置"
 
-#: qml/MenuPage.qml:169
+#: qml/MenuPage.qml:173
 msgid "Auto-rotate on direction"
 msgstr "自动旋转方向"
 
-#: qml/MenuPage.qml:188
+#: qml/MenuPage.qml:192
 msgid "Auto-zoom map"
 msgstr "自动缩放地图"
 
@@ -1204,9 +1204,9 @@ msgstr "测试"
 
 #: qml/PreferencesPage.qml:506
 msgid ""
-"Testing of text to speech (TTS) engine. Select the same language as used for"
+"Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
-msgstr "测试语音转文本 (TTS) 引擎。选择与导航相同语言及性别偏好, 然后按下面的按钮进行测试"
+msgstr ""
 
 #: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
