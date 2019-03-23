@@ -13,7 +13,7 @@
    height="63.999996"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.92.2 2405546, 2018-03-11"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
    sodipodi:docname="north-white.svg"
    version="1.1"
    inkscape:export-xdpi="90"
@@ -28,14 +28,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="8.1607143"
-     inkscape:cx="-35.567365"
+     inkscape:cx="-51.129728"
      inkscape:cy="39.999995"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     inkscape:window-width="2560"
-     inkscape:window-height="1376"
+     inkscape:current-layer="g10395"
+     inkscape:window-width="2880"
+     inkscape:window-height="1506"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="0"
      showgrid="true"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
@@ -71,7 +71,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -88,13 +88,13 @@
          inkscape:connector-curvature="0"
          id="path10403"
          d="m 30,1016.3622 h 12 v -22 l -6,-6 -6,6 z"
-         style="fill:#ff0000;fill-opacity:0.9;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cccccc"
          inkscape:connector-curvature="0"
          id="path10403-8"
          d="m 30,1016.3622 h 12 v 22 l -6,6 -6,-6 z"
-         style="fill:#ffffff;fill-opacity:0.9;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
   </g>
 </svg>
