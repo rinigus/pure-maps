@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# rinigus github, 2018
 # Watchmaker <alessandro.pra@gmail.com>, 2018
+# rinigus github, 2019
 # albanobattistella <albano_battistella@hotmail.com>, 2019
 # 
 #, fuzzy
@@ -407,8 +407,8 @@ msgid ""
 "Artwork by %1 and %2\n"
 "Banner photo by %3 (Pexels License)"
 msgstr ""
-"Opera di% 1 e% 2\n"
-"Foto banner di% 3 (licenza Pexels)"
+"Opera di %1 e %2\n"
+"Foto banner di %3 (licenza Pexels)"
 
 #: qml/AboutPage.qml:102
 msgid ""
@@ -469,7 +469,7 @@ msgstr "Navigazione"
 
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
-msgstr "Mappa:% 1"
+msgstr "Mappa: %1"
 
 #: qml/GeocodeItem.qml:43
 msgid "No selection"
@@ -477,7 +477,7 @@ msgstr "Nessuna selezione"
 
 #: qml/GeocodeItem.qml:379
 msgid "Suggestions (%1)"
-msgstr "Suggerimenti (% 1)"
+msgstr "Suggerimenti (%1)"
 
 #: qml/GeocodeItem.qml:400
 msgid "Error while fetching results"
@@ -497,11 +497,11 @@ msgstr "Nessun risultato"
 
 #: qml/GeocodeItem.qml:419
 msgid "Results (%1)"
-msgstr "Risultati (% 1)"
+msgstr "Risultati (%1)"
 
 #: qml/GeocodeItem.qml:455
 msgid "Points of Interest (%1)"
-msgstr "Punti di interesse (% 1)"
+msgstr "Punti di interesse (%1)"
 
 #: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
@@ -510,12 +510,12 @@ msgstr "Punto senza nome"
 
 #: qml/GeocodeItem.qml:486
 msgid "Recent searches (%1)"
-msgstr "Ricerche recenti (% 1)"
+msgstr "Ricerche recenti (%1)"
 
 #: qml/GeocodePage.qml:30 qml/NearbyPage.qml:35 qml/RoutePage.qml:35
 #: qml/RoutePointPage.qml:30
 msgid "Using %1"
-msgstr "Utilizzando% 1"
+msgstr "Utilizzando %1"
 
 #: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79
 msgid "Show all"
@@ -523,7 +523,7 @@ msgstr "Mostra tutto"
 
 #: qml/GeocodePage.qml:45 qml/GeocodePage.qml:75
 msgid "Search: %1"
-msgstr "Cerca:% 1"
+msgstr "Cerca: %1"
 
 #: qml/GeocodePage.qml:71 qml/NearbyResultsPage.qml:65
 msgid "%1 [duplicate]"
@@ -577,7 +577,7 @@ msgstr ""
 msgid ""
 "Last error:\n"
 "%1"
-msgstr "Ultimo errore: % 1"
+msgstr "Ultimo errore: %1"
 
 #: qml/MapErrorPage.qml:63 qml/MenuPage.qml:108 qml/PreferencesPage.qml:25
 msgid "Preferences"
@@ -1332,7 +1332,7 @@ msgstr "Test"
 
 #: qml/PreferencesPage.qml:606
 msgid "Selected voice engine: %1"
-msgstr "Motore vocale selezionato:% 1"
+msgstr "Motore vocale selezionato: %1"
 
 #: qml/PreferencesPage.qml:608
 msgid ""
@@ -1446,7 +1446,7 @@ msgstr "Modalità di trasporto"
 
 #: qml/RoutePointPage.qml:64
 msgid "Current selection: %1"
-msgstr "Selezione corrente:% 1"
+msgstr "Selezione corrente: %1"
 
 #: qml/RouterPage.qml:27
 msgid "Routing engine"

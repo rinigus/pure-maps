@@ -607,6 +607,8 @@ msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
+"Stemnavigatie niet beschikbaar: spraakmotor (TTS) voor geselecteerde taal is"
+" niet geïnstalleerd"
 
 #: qml/Map.qml:579
 msgid "Auto-center off"
@@ -1259,6 +1261,9 @@ msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
+"Testen van tekst-naar-spraakmotor (TTS). Selecteert dezelfste taal als die "
+"gebruikt voor navigatie, en het voorkeursgeslacht, en tikt op de knop "
+"hieronder voor deze te testen."
 
 #: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
