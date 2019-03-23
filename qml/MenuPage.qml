@@ -24,7 +24,7 @@ import "platform"
 MenuDrawerPL {
     id: page
 
-    banner: "icons/banner.png"
+    banner: "icons/banner.jpg"
     title: "Pure Maps"
     titleIcon: "pure-maps"
     pageMenu: PageMenuPL {
@@ -111,7 +111,11 @@ MenuDrawerPL {
 
     MenuDrawerSubmenuPL {
         id: profiles
-        iconName: app.styler.iconProfile
+        iconName: {
+            if (app.conf.profile === "online") return app.styler.iconProfileOnline;
+            if (app.conf.profile === "offline") return app.styler.iconProfileOffline;
+            return app.styler.iconProfileMixed;
+        }
         text: app.tr("Profile")
 
         MenuDrawerSubmenuItemPL {

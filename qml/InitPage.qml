@@ -38,6 +38,8 @@ PageEmptyPL {
         onReadyChanged: {
             if (!py.ready) return;
             page.ready = true
+            // initialize conf before anything else
+            app.conf.initialize();
             var k = py.call_sync("poor.key.get_mapbox_key", [])
             if (k == "EMPTY") {
                 var d = app.push(Qt.resolvedUrl("MessagePage.qml"), {

@@ -37,6 +37,21 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.18.0" date="2019-03-21">
+     <description>
+       <p>Redesign of icons and banner [mosen and Fellfrosch]</p>
+       <p>Map controls shown as buttons</p>
+       <p>Add drag indicator to panels</p>
+       <p>Add command line support</p>
+       <p>Add DBus interface</p>
+       <p>Select closest POI when clicking on a map</p>
+       <p>[kirigami] Set map as an expanding page</p>
+       <p>[flatpak] Update packaging scripts</p>
+       <p>[silica] workaround to show combobox in landscape</p>
+       <p>Update translations</p>
+       <p>Bugfixes</p>
+     </description>
+   </release>
    <release  version="1.17.0" date="2019-02-25">
      <description>
        <p>Provide feedback on map loading error</p>

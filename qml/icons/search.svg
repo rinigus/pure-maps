@@ -13,11 +13,12 @@
    height="64"
    id="svg1901"
    sodipodi:version="0.32"
-   inkscape:version="0.92.2 2405546, 2018-03-11"
-   sodipodi:docname="search.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="search_grey.svg"
    version="1.1"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-xdpi="132"
+   inkscape:export-ydpi="132"
+   inkscape:export-filename="/home/mo/Dokumente/Pure Maps/missing/search_grey.png">
   <defs
      id="defs1903" />
   <sodipodi:namedview
@@ -27,19 +28,19 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="9.5208333"
-     inkscape:cx="6.6170678"
-     inkscape:cy="48"
+     inkscape:zoom="19.041667"
+     inkscape:cx="23.535211"
+     inkscape:cy="35.025794"
      inkscape:document-units="px"
      inkscape:current-layer="g825"
-     inkscape:window-width="2560"
-     inkscape:window-height="1376"
+     inkscape:window-width="2880"
+     inkscape:window-height="1506"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="0"
      showgrid="true"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
-     showguides="false"
+     showguides="true"
      inkscape:snap-grids="true"
      inkscape:snap-global="true"
      inkscape:snap-intersection-paths="true"
@@ -47,7 +48,8 @@
      inkscape:snap-smooth-nodes="true"
      inkscape:snap-midpoints="true"
      inkscape:object-paths="true"
-     inkscape:document-rotation="0">
+     inkscape:document-rotation="0"
+     inkscape:guide-bbox="true">
     <inkscape:grid
        type="xygrid"
        id="grid10137"
@@ -55,6 +57,16 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true" />
+    <sodipodi:guide
+       position="10,35"
+       orientation="1,0"
+       id="guide866"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="5,38"
+       orientation="1,0"
+       id="guide868"
+       inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata1906">
@@ -77,15 +89,19 @@
        id="g825"
        transform="translate(-0.8572132,0.17178455)">
       <path
-         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;stroke:none;stroke-width:7.09830999;marker:none;enable-background:new"
-         id="path27918"
-         d="m 26,988.1853 c -13.822099,0 -25.148028,11.3243 -25.148028,25.1452 0,13.8204 11.325929,25.1448 25.148028,25.1448 13.822053,0 25.147982,-11.3244 25.147982,-25.1448 0,-13.8209 -11.325929,-25.1452 -25.147982,-25.1452 z m 0,9.1769 c 8.886665,0 15.969894,7.0824 15.969894,15.9683 0,8.8855 -7.083229,15.9679 -15.969894,15.9679 -8.886711,0 -15.96994,-7.0824 -15.96994,-15.9679 0,-8.8859 7.083229,-15.9683 15.96994,-15.9683 z"
-         inkscape:connector-curvature="0" />
+         style="opacity:0.6;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         d="M 25.5,0 C 11.416739,0 0,11.416739 0,25.5 0,39.583261 11.416739,51 25.5,51 39.583261,51 51,39.583261 51,25.5 51,11.416739 39.583261,0 25.5,0 Z m -0.0039,8.9921875 C 34.566415,8.9921875 42,16.424641 42,25.494141 c 0,9.0693 -7.433585,16.5 -16.503906,16.5 -9.07035,0 -16.5019534,-7.4307 -16.5019534,-16.5 0,-9.0695 7.4316034,-16.5019535 16.5019534,-16.5019535 z"
+         transform="translate(0.8572132,988.19042)"
+         id="path829"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ssssssssss"
+         inkscape:export-xdpi="67.5"
+         inkscape:export-ydpi="67.5" />
       <path
-         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;stroke:none;stroke-width:9.13158798;marker:none;enable-background:new"
-         id="path27941"
-         d="m 41.081753,1024.7508 a 4.5639221,4.5685803 0 0 0 -2.281733,7.8512 l 18.253863,18.2725 a 4.5884654,4.5931486 0 1 0 6.417374,-6.5666 l -18.253864,-18.2725 a 4.5639221,4.5685803 0 0 0 -4.13564,-1.2846 z"
-         inkscape:connector-curvature="0" />
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.56872988"
+         d="m 47.566197,1027.8154 a 25.5,25.5 0 0 1 -7.064453,7.0781 l 17.28711,17.2871 c 1.744195,-0.3451 3.352038,-1.2058 4.609375,-2.4609 1.255734,-1.2557 2.115932,-2.8677 2.460937,-4.6113 z"
+         id="ellipse870" />
     </g>
   </g>
 </svg>

@@ -32,7 +32,7 @@ Rectangle {
     Rectangle {
         id: cover
         anchors.centerIn: ztxt
-        color: app.styler.streetBg
+        color: app.styler.itemBg
         height: ztxt.height
         opacity: 0.75
         radius: app.styler.themePaddingMedium
@@ -45,7 +45,7 @@ Rectangle {
         id: ztxt
         anchors.bottom: parent.bottom
         anchors.left: parent.left
-        color: app.styler.streetFg
+        color: app.styler.itemFg
         font.pixelSize: app.styler.themeFontSizeLarge
         maximumLineCount: 1
         text: "z=%1".arg(map.zoomLevel.toFixed(2))

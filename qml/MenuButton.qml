@@ -19,13 +19,11 @@
 import QtQuick 2.0
 import "platform"
 
-IconButtonPL {
+MapButton {
     id: button
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: app.styler.themePaddingLarge
     anchors.horizontalCenter: parent.horizontalCenter
-    anchors.topMargin: app.styler.themePaddingLarge
-    iconHeight: app.styler.themeIconSizeMedium
+    iconHeight: app.styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/menu")
     states: State {
         when: hidden

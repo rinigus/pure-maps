@@ -23,6 +23,7 @@ import "."
 
 ApplicationWindow {
     allowedOrientations: defaultAllowedOrientations
+    _defaultPageOrientations: defaultAllowedOrientations // required to fix issue #219
     cover: Cover {}
     initialPage: null
 

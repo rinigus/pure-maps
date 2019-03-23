@@ -335,8 +335,8 @@ MapboxMap {
         map.setLayoutProperty(map.layers.pois, "text-field", "{name}");
         map.setLayoutProperty(map.layers.pois, "text-optional", true);
         map.setLayoutProperty(map.layers.pois, "text-size", 12);
-        map.setPaintProperty(map.layers.pois, "text-color", app.styler.streetFg);
-        map.setPaintProperty(map.layers.pois, "text-halo-color", app.styler.streetBg);
+        map.setPaintProperty(map.layers.pois, "text-color", app.styler.itemFg);
+        map.setPaintProperty(map.layers.pois, "text-halo-color", app.styler.itemBg);
         map.setPaintProperty(map.layers.pois, "text-halo-width", 2);
         // Configure layer for bookmarked POI markers.
         map.setLayoutProperty(map.layers.poisBookmarked, "icon-allow-overlap", true);
@@ -347,8 +347,8 @@ MapboxMap {
         map.setLayoutProperty(map.layers.poisBookmarked, "text-field", "{name}");
         map.setLayoutProperty(map.layers.poisBookmarked, "text-optional", true);
         map.setLayoutProperty(map.layers.poisBookmarked, "text-size", 12);
-        map.setPaintProperty(map.layers.poisBookmarked, "text-color", app.styler.streetFg);
-        map.setPaintProperty(map.layers.poisBookmarked, "text-halo-color", app.styler.streetBg);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-color", app.styler.itemFg);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-halo-color", app.styler.itemBg);
         map.setPaintProperty(map.layers.poisBookmarked, "text-halo-width", 2);
         // Configure layer for route polyline.
         map.setLayoutProperty(map.layers.route, "line-cap", "round");
@@ -463,7 +463,7 @@ MapboxMap {
             py.call_sync("poor.app.narrative.set_voice", args);
             var engine = py.evaluate("poor.app.narrative.voice_engine");
             if (engine) notification.flash(app.tr("Voice navigation on"));
-            else notification.flash(app.tr("Voice navigation unavailable: missing text to speach engine for selected language"));
+            else notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"));
         } else {
             py.call_sync("poor.app.narrative.set_voice", [null, null]);
         }

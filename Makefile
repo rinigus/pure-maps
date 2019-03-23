@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
 NAME       = pure-maps
-VERSION    = 1.17.0
+VERSION    = 1.18.0
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
 PREFIX     = /usr
@@ -76,6 +76,15 @@ flatpak-build:
 flatpak-bundle: flatpak-build
 	flatpak build-bundle ../flatpak pure-maps.flatpak io.github.rinigus.PureMaps
 
+flatpak-debug:
+	@echo
+	@echo
+	@echo "Starting GDB in Flatpak. In GDB, type 'run', all arguments have been taken care of"
+	@echo "On crash, GDB may be suspended. Just run 'fg' in your shell to continue"
+	@echo
+	@echo
+	flatpak-builder --run ../flatpak-build-desktop packaging/flatpak/io.github.rinigus.PureMaps.json gdb --args /app/bin/qmlrunner -P /app/share io.github.rinigus.PureMaps
+
 flatpak-dev-install: flatpak-bundle
 	flatpak uninstall --user -y io.github.rinigus.PureMaps/x86_64/master || true
 	flatpak install --user -y pure-maps.flatpak
@@ -96,7 +105,7 @@ install:
 	cp qml/pure-maps.qml $(DATADIR)/qml/$(NAME).qml
 	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(DATADIR)/qml
 	mkdir -p $(DATADIR)/qml/icons
-	cp qml/icons/*.svg qml/icons/*.png $(DATADIR)/qml/icons
+	cp qml/icons/*.svg qml/icons/*.png qml/icons/*.jpg $(DATADIR)/qml/icons
 	mkdir -p $(DATADIR)/qml/icons/attribution
 	cp qml/icons/attribution/*.svg $(DATADIR)/qml/icons/attribution
 	mkdir -p $(DATADIR)/qml/icons/marker
@@ -105,6 +114,8 @@ install:
 	cp qml/icons/navigation/*.svg $(DATADIR)/qml/icons/navigation
 	mkdir -p $(DATADIR)/qml/icons/position
 	cp qml/icons/position/*.png $(DATADIR)/qml/icons/position
+	mkdir -p $(DATADIR)/qml/icons/sailfishos
+	cp qml/icons/sailfishos/*.svg $(DATADIR)/qml/icons/sailfishos
 	mkdir -p $(DATADIR)/qml/js
 	cp qml/js/*.js $(DATADIR)/qml/js
 	mkdir -p $(DATADIR)/qml/platform
@@ -141,6 +152,9 @@ install:
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
 	cp data/$(NAME).desktop $(DESKTOPDIR) || true
+	@echo "Installing executable file..."
+	mkdir -p $(EXEDIR)
+	cp data/$(NAME) $(EXE) || true
 	@echo "Installing appdata file..."
 	mkdir -p $(METADIR)
 	cp packaging/pure-maps.appdata.xml $(METADIR)/$(NAME).appdata.xml || true

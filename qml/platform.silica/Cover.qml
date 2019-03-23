@@ -46,7 +46,7 @@ CoverBackground {
     Label {
         // Title
         anchors.centerIn: parent
-        color: Theme.highlightColor
+        color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeLarge
         horizontalAlignment: Text.AlignHCenter
         lineHeight: 1.25

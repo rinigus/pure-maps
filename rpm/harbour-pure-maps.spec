@@ -5,7 +5,7 @@
 %define __provides_exclude_from ^%{_datadir}/.*$
 
 Name: harbour-pure-maps
-Version: 1.17.0
+Version: 1.18.0
 Release: 1
 Summary: Maps and navigation
 License: GPLv3+
@@ -35,6 +35,7 @@ make DESTDIR=%{buildroot} PREFIX=/usr install
 
 %files
 %defattr(-,root,root,-)
+%{_bindir}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png

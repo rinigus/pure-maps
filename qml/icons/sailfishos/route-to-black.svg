@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg1901"
+   sodipodi:version="0.32"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="route_to_sfos_black.svg"
+   version="1.1"
+   inkscape:export-xdpi="132"
+   inkscape:export-ydpi="132"
+   inkscape:export-filename="/home/mo/Dokumente/Pure Maps/all/route_to_sfos.png">
+  <defs
+     id="defs1903">
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect1141"
+       is_visible="true"
+       pattern="m 34.689574,969.36218 h 5.555213 v 5.55521 h -5.555213 z"
+       copytype="single_stretched"
+       prop_scale="0.19650566"
+       scale_y_rel="false"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       fuse_tolerance="0" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect1133"
+       is_visible="true"
+       steps="1"
+       threshold="0.000408163"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false"
+       simplifyindividualpaths="false"
+       simplifyJustCoalesce="false" />
+    <inkscape:path-effect
+       effect="bend_path"
+       id="path-effect1097"
+       is_visible="true"
+       bendpath="m 30.649422,981.81624 c 0.312594,0.74365 1.174823,1.05751 1.483128,2.00628 0.647207,0.92962 1.711419,1.49782 2.263486,2.51236 0.717765,1.07184 1.270794,2.29192 2.304098,3.1099 0.331187,1.0145 1.224004,1.63822 1.982144,2.34029 0.691547,0.76838 0.936689,1.9828 1.950857,2.46065 0.779493,0.30467 1.335918,0.95064 1.670423,1.70203 0.511807,0.90176 1.09316,1.77004 1.752947,2.56368 0.374467,0.66001 0.819506,1.26401 1.374905,1.76257 0.438183,0.7554 0.931309,1.4647 1.445652,2.1613 0.177785,0.5193 0.479365,0.8656 0.690506,1.1809"
+       prop_scale="1"
+       scale_y_rel="false"
+       vertical="false" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect1095"
+       is_visible="true"
+       steps="1"
+       threshold="0.000408163"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false"
+       simplifyindividualpaths="false"
+       simplifyJustCoalesce="false" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect1046"
+       is_visible="true"
+       steps="1"
+       threshold="0.000408163"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false"
+       simplifyindividualpaths="false"
+       simplifyJustCoalesce="false" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect1042"
+       is_visible="true"
+       steps="1"
+       threshold="0.000408163"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false"
+       simplifyindividualpaths="false"
+       simplifyJustCoalesce="false" />
+    <inkscape:path-effect
+       effect="powerstroke"
+       id="path-effect943"
+       is_visible="true"
+       offset_points="0.013484154,0.39250367"
+       sort_points="true"
+       interpolator_type="CubicBezierJohan"
+       interpolator_beta="0.2"
+       start_linecap_type="zerowidth"
+       linejoin_type="extrp_arc"
+       miter_limit="4"
+       end_linecap_type="zerowidth" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#bdbdbd"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.313709"
+     inkscape:cx="-16.823642"
+     inkscape:cy="19.516024"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="2880"
+     inkscape:window-height="1506"
+     inkscape:window-x="0"
+     inkscape:window-y="1050"
+     showgrid="true"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="false"
+     inkscape:document-rotation="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     guidetolerance="5"
+     objecttolerance="5"
+     gridtolerance="15">
+    <inkscape:grid
+       type="xygrid"
+       id="grid10137"
+       empspacing="4"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-24.000001"
+       originy="-24.000021" />
+    <sodipodi:guide
+       position="21.999999,31.999979"
+       orientation="0,1"
+       id="guide1355"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="31.999999,26.999979"
+       orientation="1,0"
+       id="guide956"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata1906">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Taso 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-24.000001,-964.36218)">
+    <path
+       style="opacity:0.6;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 24.507812,16.5 c -3.032438,0 -5.85978,1.629953 -7.375,4.251953 C 16.358858,22.091343 16.001455,23.55442 16.003906,25 H 16 v 9.644531 l 1,-1.064453 1,1.064453 V 25 l -1e-6,2.1e-5 c -0.0018,-1.10533 0.275311,-2.223668 0.867189,-3.248068 C 20.02512,19.746953 22.188947,18.5 24.507812,18.5 c 1.134913,0 2.254393,0.300094 3.242188,0.871094 1.505211,0.868 2.581889,2.270265 3.03125,3.947265 0.149486,0.55663 0.216024,1.120441 0.217387,1.401041 L 31,40 c 0.0063,2.9328 1.521969,5.786469 4.242188,7.355469 1.293337,0.746 2.761558,1.140625 4.246093,1.140625 3.035138,0 5.860434,-1.629 7.375,-4.25 C 47.621844,42.933494 48.001511,41.4761 48,40 V 25.455078 c -0.33021,0.026 -0.663096,0.04492 -1,0.04492 -0.334773,0 -0.668687,-0.01677 -1,-0.04297 V 40 l -10e-7,2.1e-5 c 8.68e-4,1.1282 -0.291317,2.242473 -0.87114,3.246073 -1.158197,2.005 -3.320226,3.25 -5.640625,3.25 -1.134173,0 -2.255117,-0.300094 -3.24414,-0.871094 C 34.164257,44.4258 33.003036,42.2426 32.998047,40 H 33 V 25 C 32.9989,24.26646 32.912038,23.528011 32.716797,22.800781 32.129324,20.607781 30.718583,18.774625 28.75,17.640625 27.457961,16.894625 25.993008,16.5 24.507812,16.5 Z"
+       transform="translate(24.000001,964.36218)"
+       id="rect1017"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccccccscccccscccsccccsccccccs"
+       inkscape:export-filename="/home/mo/Dokumente/Pure Maps/allover/route_to_sfos.png"
+       inkscape:export-xdpi="132"
+       inkscape:export-ydpi="132" />
+    <circle
+       r="3.6608713"
+       cy="1012.585"
+       cx="41.000004"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       id="path10139"
+       inkscape:export-filename="/home/mo/Dokumente/Pure Maps/allover/route_to_sfos.png"
+       inkscape:export-xdpi="132"
+       inkscape:export-ydpi="132" />
+    <path
+       sodipodi:nodetypes="cssscsssss"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       d="m 41,997.94142 c -5.694689,6.10158 -9.762324,9.25198 -9.762324,14.64368 0,5.3914 4.370741,9.7622 9.762324,9.7622 5.391582,0 9.762323,-4.3708 9.762323,-9.7622 0,-5.3917 -4.067635,-8.5421 -9.762323,-14.64368 z m 0,7.93198 c 3.706713,0 6.711598,3.0049 6.711598,6.7117 0,3.7066 -3.004885,6.7115 -6.711598,6.7115 -3.706714,0 -6.711598,-3.0049 -6.711598,-6.7115 0,-3.7068 3.004884,-6.7117 6.711598,-6.7117 z"
+       id="path10143"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mo/Dokumente/Pure Maps/allover/route_to_sfos.png"
+       inkscape:export-xdpi="132"
+       inkscape:export-ydpi="132" />
+    <path
+       id="path7"
+       d="m 71,989.88527 c -1.483,0 -2.95,-0.394 -4.242,-1.14 -4.058,-2.343 -5.453,-7.551 -3.11,-11.609 1.514,-2.622 4.336,-4.251 7.366,-4.251 1.484,0 2.951,0.395 4.242,1.141 1.967,1.134 3.374,2.967 3.961,5.16 0.588,2.192 0.285,4.483 -0.85,6.449 -1.513,2.621 -4.335,4.25 -7.367,4.25 z m 0.014,-15 c -2.317,0 -4.477,1.246 -5.634,3.251 -1.792,3.104 -0.725,7.086 2.378,8.877 0.988,0.571 2.109,0.872 3.242,0.872 2.318,0 4.478,-1.245 5.635,-3.25 0.868,-1.504 1.1,-3.255 0.65,-4.932 -0.449,-1.677 -1.525,-3.078 -3.029,-3.946 -0.987,-0.571 -2.108,-0.872 -3.242,-0.872 z"
+       style="opacity:1;fill:#000000"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mo/Dokumente/Pure Maps/allover/route_to_sfos.png"
+       inkscape:export-xdpi="132"
+       inkscape:export-ydpi="132" />
+  </g>
+</svg>

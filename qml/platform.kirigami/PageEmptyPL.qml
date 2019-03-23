@@ -19,7 +19,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.2
-import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kirigami 2.7 as Kirigami
 
 Kirigami.Page {
     id: page
@@ -28,6 +28,8 @@ Kirigami.Page {
     leftPadding: 0
     rightPadding: 0
     topPadding: 0
+    Kirigami.ColumnView.fillWidth: true
+    Kirigami.ColumnView.preventStealing: true
 
     default property alias content: itemCont.data
     readonly property bool empty: true
