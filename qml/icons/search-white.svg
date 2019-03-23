@@ -14,7 +14,7 @@
    id="svg1901"
    sodipodi:version="0.32"
    inkscape:version="0.92.4 5da689c313, 2019-01-14"
-   sodipodi:docname="search_grey.svg"
+   sodipodi:docname="search-white.svg"
    version="1.1"
    inkscape:export-xdpi="132"
    inkscape:export-ydpi="132"
@@ -23,13 +23,13 @@
      id="defs1903" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#000000"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="19.041667"
-     inkscape:cx="23.535211"
+     inkscape:cx="8.0953865"
      inkscape:cy="35.025794"
      inkscape:document-units="px"
      inkscape:current-layer="g825"
@@ -57,16 +57,6 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true" />
-    <sodipodi:guide
-       position="10,35"
-       orientation="1,0"
-       id="guide866"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="5,38"
-       orientation="1,0"
-       id="guide868"
-       inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata1906">
@@ -89,7 +79,7 @@
        id="g825"
        transform="translate(-0.8572132,0.17178455)">
       <path
-         style="opacity:0.6;fill:#FFFFFF;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         style="opacity:1;fill:#ffffff;fill-opacity:0.36000001;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
          d="M 25.5,0 C 11.416739,0 0,11.416739 0,25.5 0,39.583261 11.416739,51 25.5,51 39.583261,51 51,39.583261 51,25.5 51,11.416739 39.583261,0 25.5,0 Z m -0.0039,8.9921875 C 34.566415,8.9921875 42,16.424641 42,25.494141 c 0,9.0693 -7.433585,16.5 -16.503906,16.5 -9.07035,0 -16.5019534,-7.4307 -16.5019534,-16.5 0,-9.0695 7.4316034,-16.5019535 16.5019534,-16.5019535 z"
          transform="translate(0.8572132,988.19042)"
          id="path829"
