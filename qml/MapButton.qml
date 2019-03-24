@@ -31,6 +31,7 @@ Item {
     property alias  iconRotation: button.iconRotation
     property alias  iconSource: button.iconSource
     property alias  iconWidth: button.iconWidth
+    property bool   indicator: false
     property alias  pressed: mouse.pressed
 
     signal clicked
@@ -50,13 +51,25 @@ Item {
         radius: wh/2
         width: wh
 
-        property real wh: Math.max(button.height, button.width) * 1.42*(1 + 0.2)
+        property real wh: Math.max(button.height, button.width) * 1.4142*(1 + 0.2)
 
         IconButtonPL {
             id: button
             anchors.centerIn: parent
             padding: 0
             onClicked: item.clicked()
+        }
+
+        Image {
+            height: sourceSize.height
+            smooth: true
+            source: app.getIcon("icons/indicator", true)
+            sourceSize.height: app.styler.indicatorSize
+            sourceSize.width: app.styler.indicatorSize
+            visible: item.indicator
+            width: sourceSize.width
+            x: bg.width/2 + bg.wh/2*0.70711 - width/2
+            y: bg.width/2 - bg.wh/2*0.70711 - height/2
         }
     }
 

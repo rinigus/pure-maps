@@ -29,6 +29,7 @@ MapButton {
     iconHeight: app.styler.themeIconSizeSmall
     iconRotation: -map.bearing
     iconSource: app.getIcon("icons/north")
+    indicator: map.autoRotate
     states: [
         State {
             when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait

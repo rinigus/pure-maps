@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
+import QtGraphicalEffects 1.0
 
 import "js/util.js" as Util
 
@@ -108,6 +109,7 @@ MouseArea {
         }
 
         Rectangle {
+            id: left
             anchors.bottom: base.top
             anchors.left: base.left
             color: app.styler.fg
@@ -116,6 +118,7 @@ MouseArea {
         }
 
         Rectangle {
+            id: right
             anchors.bottom: base.top
             anchors.right: base.right
             color: app.styler.fg
@@ -135,6 +138,29 @@ MouseArea {
             horizontalAlignment: Text.AlignHCenter
             text: scaleBar.text
         }
+
+        Image {
+            anchors.bottom: right.top
+            anchors.bottomMargin: app.styler.themePaddingMedium
+            anchors.horizontalCenter: _rotate ? left.horizontalCenter : right.horizontalCenter
+            height: sourceSize.height
+            layer.enabled: true
+            layer.effect: DropShadow {
+                color: app.styler.shadowColor
+                opacity: app.styler.shadowOpacity
+                radius: app.styler.shadowRadius
+                samples: 1 + radius*2
+            }
+            smooth: true
+            source: app.getIcon("icons/indicator", true)
+            sourceSize.height: app.styler.indicatorSize
+            sourceSize.width: app.styler.indicatorSize
+            visible: map.autoZoom
+            width: sourceSize.width
+            x: bg.width/2 + bg.wh/2*0.70711 - width/2
+            y: bg.width/2 - bg.wh/2*0.70711 - height/2
+        }
+
 
         Component.onCompleted: scaleBar.update()
 
