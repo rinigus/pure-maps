@@ -43,8 +43,8 @@ PagePL {
             onClicked: {
                 var pois = geo.searchResults;
                 app.hideMenu(app.tr("Search: %1").arg(geo.query));
-                app.stateId = geo.stateId;
-                app.pois.addList(pois, stateId);
+//                app.stateId = geo.stateId;
+//                app.pois.addList(pois, stateId);
                 map.fitViewToPois(pois);
             }
         }
@@ -76,6 +76,11 @@ PagePL {
             app.pois.show(poi, true);
             map.autoCenter = false;
             map.setCenter(poi.coordinate.longitude, poi.coordinate.latitude);
+        }
+
+        onSearchResultsChanged: {
+            app.stateId = geo.stateId;
+            app.pois.addList(geo.searchResults, stateId);
         }
     }
 
