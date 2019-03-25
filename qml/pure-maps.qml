@@ -227,7 +227,8 @@ ApplicationWindowPL {
     function reroute() {
         // Find a new route from the current position to the existing destination.
         if (app.rerouting) return;
-        app.notification.hold(app.tr("Rerouting"));
+        var notifyId = "app reroute";
+        app.notification.hold(app.tr("Rerouting"), notifyId);
         app.playMaybe("Rerouting");
         app.rerouting = true;
         // Note that rerouting does not allow us to relay params to the router,
@@ -239,17 +240,17 @@ ApplicationWindowPL {
                 // always reroute using the first one.
                 route = route[0];
             if (route && route.error && route.message) {
-                app.notification.flash(app.tr("Rerouting failed: %1").arg(route.message));
+                app.notification.flash(app.tr("Rerouting failed: %1").arg(route.message), notifyId);
                 app.playMaybe("Rerouting failed");
                 app.rerouteConsecutiveErrors++;
             } else if (route && route.x && route.x.length > 0) {
-                app.notification.flash(app.tr("New route found"));
+                app.notification.flash(app.tr("New route found"), notifyId);
                 app.playMaybe("New route found");
                 map.addRoute(route, true);
                 map.addManeuvers(route.maneuvers);
                 app.rerouteConsecutiveErrors = 0;
             } else {
-                app.notification.flash(app.tr("Rerouting failed"));
+                app.notification.flash(app.tr("Rerouting failed"), notifyId);
                 app.playMaybe("Rerouting failed");
                 app.rerouteConsecutiveErrors++;
             }

@@ -36,8 +36,14 @@ MapboxMapGestureArea {
         area.degLatPerPixel = degLatPerPixel;
 
         // Toggle auto-center if position marker clicked.
-        if (area.coordinatesMatch(geocoordinate, map.position.coordinate))
-            return map.toggleAutoCenter();
+        if (area.coordinatesMatch(geocoordinate, map.position.coordinate)) {
+            map.autoCenter = !map.autoCenter;
+            notification.flash(map.autoCenter ?
+                                   app.tr("Auto-center on") :
+                                   app.tr("Auto-center off"),
+                               "centerButton"); // same ID as in CenterButton
+            return;
+        }
 
         // Show information bubble if POI marker clicked.
         var selectedPoi = null;

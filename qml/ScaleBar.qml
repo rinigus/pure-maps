@@ -52,22 +52,6 @@ MouseArea {
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 
-    Bubble {
-        id: bubble
-        anchorItem: parent
-        showArrow: false
-        state: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait ?
-                   "top-center" : "bottom-right"
-        visible: false
-    }
-
-    Timer {
-        id: timerBubble
-        interval: 2000
-        repeat: false
-        onTriggered: bubble.visible = false;
-    }
-
     Timer {
         id: updateTimer
         interval: 3000
@@ -157,8 +141,6 @@ MouseArea {
             sourceSize.width: app.styler.indicatorSize
             visible: map.autoZoom
             width: sourceSize.width
-            x: bg.width/2 + bg.wh/2*0.70711 - width/2
-            y: bg.width/2 - bg.wh/2*0.70711 - height/2
         }
 
 
@@ -215,10 +197,9 @@ MouseArea {
     function setAutoZoom(az) {
         if (map.autoZoom === az) return;
         map.autoZoom = az;
-        bubble.text = map.autoZoom ?
-                    app.tr("Auto-zoom on") :
-                    app.tr("Auto-zoom off");
-        bubble.visible = true;
-        timerBubble.restart();
+        notification.flash(map.autoZoom ?
+                               app.tr("Auto-zoom on") :
+                               app.tr("Auto-zoom off"),
+                           'scale');
     }
 }

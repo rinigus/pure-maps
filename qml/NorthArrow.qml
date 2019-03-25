@@ -53,28 +53,12 @@ MapButton {
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 
-    Bubble {
-        id: bubble
-        anchorItem: parent
-        showArrow: false
-        state: (app.mode === modes.navigate || app.mode === modes.followMe) ? "bottom-left" : "top-left"
-        visible: false
-    }
-
-    Timer {
-        id: timer
-        interval: 2000
-        repeat: false
-        onTriggered: bubble.visible = false;
-    }
-
     onClicked: {
         map.autoRotate = !map.autoRotate;
-        bubble.text = map.autoRotate ?
-                    app.tr("Auto-rotate on") :
-                    app.tr("Auto-rotate off");
-        bubble.visible = true;
-        timer.restart();
+        notification.flash(map.autoRotate ?
+                               app.tr("Auto-rotate on") :
+                               app.tr("Auto-rotate off"),
+                           "northArrow");
     }
 
 }
