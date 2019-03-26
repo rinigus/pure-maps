@@ -190,7 +190,12 @@ MouseArea {
     }
 
     onClicked: {
-        if (!map.autoCenter || hidden) return;
+        if (hidden) return;
+        if (!map.autoCenter) {
+            notification.flash(app.tr("Auto-zoom requires auto-centering to be enabled"),
+                               'scale');
+            return;
+        }
         setAutoZoom(!map.autoZoom)
     }
 
