@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-22 20:55+0200\n"
+"POT-Creation-Date: 2019-03-27 08:53+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rui kon <facebookmail@qq.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -128,15 +128,15 @@ msgstr "在 {distance}, {direction}"
 msgid "Exit: "
 msgstr "退出: "
 
-#: poor/narrative.py:421 qml/pure-maps.qml:230
+#: poor/narrative.py:421 qml/pure-maps.qml:231
 msgid "Rerouting"
 msgstr "重新规划"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:252
+#: poor/narrative.py:422 qml/pure-maps.qml:253
 msgid "Rerouting failed"
 msgstr "重新规划线路失败"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:246
+#: poor/narrative.py:423 qml/pure-maps.qml:247
 msgid "New route found"
 msgstr "发现新路线"
 
@@ -427,7 +427,7 @@ msgid "Attribution"
 msgstr "归属"
 
 #: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:57
-#: qml/MenuPage.qml:102
+#: qml/MenuPage.qml:93
 msgid "Maps"
 msgstr "地图"
 
@@ -447,6 +447,18 @@ msgstr "导航"
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
 msgstr "地图 : %1"
+
+#: qml/CenterButton.qml:123 qml/MapGestureArea.qml:43
+msgid "Auto-center off"
+msgstr "已关闭自动居中"
+
+#: qml/CenterButton.qml:131 qml/MapGestureArea.qml:42
+msgid "Auto-center on"
+msgstr "已开启自动居中"
+
+#: qml/CenterButton.qml:137
+msgid "Tap center button again for auto-center"
+msgstr ""
 
 #: qml/GeocodeItem.qml:43
 msgid "No selection"
@@ -555,23 +567,23 @@ msgstr ""
 "上个错误:\n"
 "%1"
 
-#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:108 qml/PreferencesPage.qml:25
+#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:99 qml/PreferencesPage.qml:25
 msgid "Preferences"
 msgstr "偏好"
 
-#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:119
+#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:110
 msgid "Profile"
 msgstr "配置文件"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:123
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:114
 msgid "Online"
 msgstr "在线"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:129
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:120
 msgid "Offline"
 msgstr "离线"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:135
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:126
 msgid "Mixed"
 msgstr "混合"
 
@@ -584,14 +596,6 @@ msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
-
-#: qml/Map.qml:579
-msgid "Auto-center off"
-msgstr "已关闭自动居中"
-
-#: qml/Map.qml:582
-msgid "Auto-center on"
-msgstr "已开启自动居中"
 
 #: qml/MenuPage.qml:33
 msgid "About"
@@ -620,22 +624,6 @@ msgstr "分享当前位置 (尚未准备好)"
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
 msgstr "分享当前位置"
-
-#: qml/MenuPage.qml:93
-msgid "Center on current position"
-msgstr "以当前位置为中心"
-
-#: qml/MenuPage.qml:149
-msgid "Auto-center on position"
-msgstr "自动集中于位置"
-
-#: qml/MenuPage.qml:173
-msgid "Auto-rotate on direction"
-msgstr "自动旋转方向"
-
-#: qml/MenuPage.qml:192
-msgid "Auto-zoom map"
-msgstr "自动缩放地图"
 
 #: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationInfoBlock.qml:83
 #: qml/NavigationInfoBlock.qml:85
@@ -750,11 +738,11 @@ msgstr "附近场所: %1"
 msgid "%1 Results"
 msgstr "%1  结果"
 
-#: qml/NorthArrow.qml:73
+#: qml/NorthArrow.qml:59
 msgid "Auto-rotate on"
 msgstr "自动旋转开启"
 
-#: qml/NorthArrow.qml:74
+#: qml/NorthArrow.qml:60
 msgid "Auto-rotate off"
 msgstr "自动旋转关闭"
 
@@ -1316,7 +1304,7 @@ msgstr "显示当前缩放级别"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:242
+#: qml/pure-maps.qml:243
 msgid "Rerouting failed: %1"
 msgstr "重新规划路线失败: %1"
 
@@ -1393,11 +1381,15 @@ msgstr "导航引擎"
 msgid "Modes: %1"
 msgstr "模式: %1"
 
-#: qml/ScaleBar.qml:193
+#: qml/ScaleBar.qml:195
+msgid "Auto-zoom requires auto-centering to be enabled"
+msgstr ""
+
+#: qml/ScaleBar.qml:206
 msgid "Auto-zoom on"
 msgstr "自动缩放开启"
 
-#: qml/ScaleBar.qml:194
+#: qml/ScaleBar.qml:207
 msgid "Auto-zoom off"
 msgstr "自动缩放关闭"
 

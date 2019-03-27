@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-22 20:55+0200\n"
+"POT-Creation-Date: 2019-03-27 08:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,15 +123,15 @@ msgstr ""
 msgid "Exit: "
 msgstr ""
 
-#: poor/narrative.py:421 qml/pure-maps.qml:230
+#: poor/narrative.py:421 qml/pure-maps.qml:231
 msgid "Rerouting"
 msgstr ""
 
-#: poor/narrative.py:422 qml/pure-maps.qml:252
+#: poor/narrative.py:422 qml/pure-maps.qml:253
 msgid "Rerouting failed"
 msgstr ""
 
-#: poor/narrative.py:423 qml/pure-maps.qml:246
+#: poor/narrative.py:423 qml/pure-maps.qml:247
 msgid "New route found"
 msgstr ""
 
@@ -420,7 +420,7 @@ msgid "Attribution"
 msgstr ""
 
 #: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:57
-#: qml/MenuPage.qml:102
+#: qml/MenuPage.qml:93
 msgid "Maps"
 msgstr ""
 
@@ -439,6 +439,18 @@ msgstr ""
 
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
+msgstr ""
+
+#: qml/CenterButton.qml:123 qml/MapGestureArea.qml:43
+msgid "Auto-center off"
+msgstr ""
+
+#: qml/CenterButton.qml:131 qml/MapGestureArea.qml:42
+msgid "Auto-center on"
+msgstr ""
+
+#: qml/CenterButton.qml:137
+msgid "Tap center button again for auto-center"
 msgstr ""
 
 #: qml/GeocodeItem.qml:43
@@ -544,23 +556,23 @@ msgid ""
 "%1"
 msgstr ""
 
-#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:108 qml/PreferencesPage.qml:25
+#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:99 qml/PreferencesPage.qml:25
 msgid "Preferences"
 msgstr ""
 
-#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:119
+#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:110
 msgid "Profile"
 msgstr ""
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:123
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:114
 msgid "Online"
 msgstr ""
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:129
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:120
 msgid "Offline"
 msgstr ""
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:135
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:126
 msgid "Mixed"
 msgstr ""
 
@@ -572,14 +584,6 @@ msgstr ""
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
-msgstr ""
-
-#: qml/Map.qml:579
-msgid "Auto-center off"
-msgstr ""
-
-#: qml/Map.qml:582
-msgid "Auto-center on"
 msgstr ""
 
 #: qml/MenuPage.qml:33
@@ -608,22 +612,6 @@ msgstr ""
 
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
-msgstr ""
-
-#: qml/MenuPage.qml:93
-msgid "Center on current position"
-msgstr ""
-
-#: qml/MenuPage.qml:149
-msgid "Auto-center on position"
-msgstr ""
-
-#: qml/MenuPage.qml:173
-msgid "Auto-rotate on direction"
-msgstr ""
-
-#: qml/MenuPage.qml:192
-msgid "Auto-zoom map"
 msgstr ""
 
 #: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationInfoBlock.qml:83
@@ -738,11 +726,11 @@ msgstr ""
 msgid "%1 Results"
 msgstr ""
 
-#: qml/NorthArrow.qml:73
+#: qml/NorthArrow.qml:59
 msgid "Auto-rotate on"
 msgstr ""
 
-#: qml/NorthArrow.qml:74
+#: qml/NorthArrow.qml:60
 msgid "Auto-rotate off"
 msgstr ""
 
@@ -1303,7 +1291,7 @@ msgstr ""
 msgid "Pure Maps"
 msgstr ""
 
-#: qml/pure-maps.qml:242
+#: qml/pure-maps.qml:243
 msgid "Rerouting failed: %1"
 msgstr ""
 
@@ -1380,11 +1368,15 @@ msgstr ""
 msgid "Modes: %1"
 msgstr ""
 
-#: qml/ScaleBar.qml:193
+#: qml/ScaleBar.qml:195
+msgid "Auto-zoom requires auto-centering to be enabled"
+msgstr ""
+
+#: qml/ScaleBar.qml:206
 msgid "Auto-zoom on"
 msgstr ""
 
-#: qml/ScaleBar.qml:194
+#: qml/ScaleBar.qml:207
 msgid "Auto-zoom off"
 msgstr ""
 

@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-22 20:55+0200\n"
+"POT-Creation-Date: 2019-03-27 08:53+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Timo <koennecke@mosushi.com>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rinigus/teams/89597/de_DE/)\n"
@@ -63,8 +63,8 @@ msgid ""
 "Foursquare Client ID. Register at https://developer.foursquare.com and "
 "create your own Client ID and Client Secret keys"
 msgstr ""
-"Foursquare Client ID. Registriere Dich auf https://developer.foursquare.com "
-"und erzeuge Deine eigene Client ID und Client Secret keys"
+"Foursquare Client ID. Registriere dich auf https://developer.foursquare.com "
+"und erzeuge deine eigene Client ID und Secret Keys"
 
 #: poor/keystore.py:51
 msgid "Foursquare Client ID"
@@ -79,56 +79,56 @@ msgid ""
 "Mapbox API key. Register at https://www.mapbox.com and create your own API "
 "key"
 msgstr ""
-"Mapbox API key. Registriere Dich auf https://www.mapbox.com und erzeuge "
-"Deinen eigenen API key"
+"Mapbox API-Key. Registriere dich auf https://www.mapbox.com und erzeuge "
+"deinen eigenen API-Key"
 
 #: poor/keystore.py:56
 msgid "Mapbox API key"
-msgstr "Mapbox API key"
+msgstr "Mapbox API-Key"
 
 #: poor/keystore.py:59
 msgid ""
 "MapQuest API key. Register at https://developer.mapquest.com/ and create "
 "your own API key"
 msgstr ""
-"MapQuest API key. Registriere Dich auf https://developer.mapquest.com/ und "
-"erzeuge Deinen eigenen API key"
+"MapQuest API-Key. Registriere dich auf https://developer.mapquest.com/ und "
+"erzeuge deinen eigenen API-Key"
 
 #: poor/keystore.py:60
 msgid "MapQuest API key"
-msgstr "MapQuest API key"
+msgstr "MapQuest API-Key"
 
 #: poor/keystore.py:63
 msgid ""
 "OpenCage API key. Register at https://opencagedata.com/ and create your own "
 "API key"
 msgstr ""
-"OpenCage API key. Registriere Dich auf https://opencagedata.com/ und erzeuge"
-" Deinen eigenen API key"
+"OpenCage API-Key. Registriere dich auf https://opencagedata.com/ und erzeuge"
+" deinen eigenen API-Key"
 
 #: poor/keystore.py:64
 msgid "OpenCage API key"
-msgstr "OpenCage API key"
+msgstr "OpenCage API-Key"
 
 #: poor/keystore.py:67
 msgid ""
 "Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
 " API key"
 msgstr ""
-"Stadia Maps API key. Registriere Dich auf https://stadiamaps.com/ und "
-"erzeuge Deinen eigenen API key"
+"Stadia Maps API-Key. Registriere dich auf https://stadiamaps.com/ und "
+"erzeuge deinen eigenen API-Key"
 
 #: poor/keystore.py:68
 msgid "Stadia Maps API key"
-msgstr "Stadia Maps API key"
+msgstr "Stadia Maps API-Key"
 
 #: poor/keystore.py:71
 msgid ""
 "HERE App ID. Register at https://developer.here.com and create your own App "
 "ID and Code"
 msgstr ""
-"HERE App ID. Registriere Dich auf https://developer.here.com und erzeuge "
-"Deinen eigenen App ID and Code"
+"HERE App ID. Registriere dich auf https://developer.here.com und erzeuge "
+"deine eigene App ID und Code"
 
 #: poor/keystore.py:72
 msgid "HERE App ID"
@@ -147,15 +147,15 @@ msgstr "In {distance}, {direction}"
 msgid "Exit: "
 msgstr "Ausfahrt:"
 
-#: poor/narrative.py:421 qml/pure-maps.qml:230
+#: poor/narrative.py:421 qml/pure-maps.qml:231
 msgid "Rerouting"
 msgstr "Neuberechnung"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:252
+#: poor/narrative.py:422 qml/pure-maps.qml:253
 msgid "Rerouting failed"
 msgstr "Neuberechnung fehlgeschlagen"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:246
+#: poor/narrative.py:423 qml/pure-maps.qml:247
 msgid "New route found"
 msgstr "Neue Route gefunden"
 
@@ -357,7 +357,7 @@ msgstr "Beste"
 
 #: guides/osmscout_name.qml:27
 msgid "Venue name"
-msgstr "Name des Ortes"
+msgstr "Name des Orts"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:132
 #: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
@@ -441,7 +441,7 @@ msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
-"Du kannst über Transifex neue Übersetzungen hinzufügen oder vorhandene "
+"Du kannst bei Transifex neue Übersetzungen hinzufügen oder vorhandene "
 "überarbeiten."
 
 #: qml/AboutPage.qml:137
@@ -453,7 +453,7 @@ msgid "Attribution"
 msgstr "Namensnennung"
 
 #: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:57
-#: qml/MenuPage.qml:102
+#: qml/MenuPage.qml:93
 msgid "Maps"
 msgstr "Karten"
 
@@ -473,6 +473,18 @@ msgstr "Navigation"
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
 msgstr "Karte: %1"
+
+#: qml/CenterButton.qml:123 qml/MapGestureArea.qml:43
+msgid "Auto-center off"
+msgstr "Autozentrierung aus"
+
+#: qml/CenterButton.qml:131 qml/MapGestureArea.qml:42
+msgid "Auto-center on"
+msgstr "Autozentrierung an"
+
+#: qml/CenterButton.qml:137
+msgid "Tap center button again for auto-center"
+msgstr ""
 
 #: qml/GeocodeItem.qml:43
 msgid "No selection"
@@ -554,10 +566,10 @@ msgid ""
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
-"Deiner Installation fehlt der Mapbox API Schlüssel. Bitte registriere Dich "
-"bei Mapbox und trage Deinen persönlichen \"API key\" unter Einstellungen "
-"ein. Dieser Schlüssel wird nicht benötigt wenn du Pure Maps mit Offline "
-"Karten benutzen möchtest. "
+"Deiner Installation fehlt der Mapbox API-Key. Bitte registriere dich bei "
+"Mapbox und trage deinen persönlichen API-Key unter Einstellungen ein. Dieser"
+" Schlüssel wird nicht benötigt wenn du Pure Maps mit Offline Karten benutzen"
+" möchtest. "
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
@@ -572,8 +584,8 @@ msgid ""
 "Depending on the used map provider, error could be caused by network failure, expired API access key, absence of offline server. Try to address the issue and/or change your map provider, preferences, or profile.\n"
 "If you change API access key, you may have to restart Pure Maps."
 msgstr ""
-"Abhängig vom gewählten Kartenanbieter, kann der Fehler durch Netzwerkprobleme, einen abgelaufenen API Schlüssel oder das Fehlen eine Offline-Servers verursacht sein. Versuche die Ursache herauszufinden und/oder ändere den Kartenanbieter, die Einstellungen oder das Profil.\n"
-"Wenn du den API Schlüssel änderst, starte Pure Maps bitte neu. "
+"Abhängig vom gewählten Kartenanbieter, kann der Fehler durch Netzwerkprobleme, einen abgelaufenen API-Key oder das Fehlen eine Offline-Servers verursacht sein. Versuche die Ursache herauszufinden und/oder ändere den Kartenanbieter, die Einstellungen oder das Profil.\n"
+"Wenn du API-Keys änderst, starte Pure Maps bitte neu. "
 
 #: qml/MapErrorPage.qml:50
 msgid ""
@@ -583,23 +595,23 @@ msgstr ""
 "Letzter Fehler:\n"
 "%1"
 
-#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:108 qml/PreferencesPage.qml:25
+#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:99 qml/PreferencesPage.qml:25
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:119
+#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:110
 msgid "Profile"
 msgstr "Profil"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:123
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:114
 msgid "Online"
 msgstr "Online"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:129
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:120
 msgid "Offline"
 msgstr "Offline"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:135
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:126
 msgid "Mixed"
 msgstr "Gemischt"
 
@@ -614,14 +626,6 @@ msgid ""
 msgstr ""
 "Sprachnavigation nicht verfügbar: Text-to-Speech (TTS) Engine für die "
 "ausgewählte Sprache fehlt"
-
-#: qml/Map.qml:579
-msgid "Auto-center off"
-msgstr "Autozentrierung aus"
-
-#: qml/Map.qml:582
-msgid "Auto-center on"
-msgstr "Autozentrierung an"
 
 #: qml/MenuPage.qml:33
 msgid "About"
@@ -650,22 +654,6 @@ msgstr "Teile aktuelle Position (nicht fertig)"
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
 msgstr "Teile aktuelle Position"
-
-#: qml/MenuPage.qml:93
-msgid "Center on current position"
-msgstr "Zentriere auf aktuelle Position"
-
-#: qml/MenuPage.qml:149
-msgid "Auto-center on position"
-msgstr "Zentriere Position automatisch"
-
-#: qml/MenuPage.qml:173
-msgid "Auto-rotate on direction"
-msgstr "Drehe Karte je nach Richtung"
-
-#: qml/MenuPage.qml:192
-msgid "Auto-zoom map"
-msgstr "Autozoom Karte"
 
 #: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationInfoBlock.qml:83
 #: qml/NavigationInfoBlock.qml:85
@@ -752,7 +740,7 @@ msgstr "Nähe"
 
 #: qml/NearbyPage.qml:76
 msgid "Near location"
-msgstr "In der Nähe des Ortes"
+msgstr "Nahe des Orts"
 
 #: qml/NearbyPage.qml:81
 msgid "Radius"
@@ -780,17 +768,17 @@ msgstr "Nahegelegene Orte: %1"
 msgid "%1 Results"
 msgstr "%1 Ergebnisse"
 
-#: qml/NorthArrow.qml:73
+#: qml/NorthArrow.qml:59
 msgid "Auto-rotate on"
 msgstr "Automatische Drehung an"
 
-#: qml/NorthArrow.qml:74
+#: qml/NorthArrow.qml:60
 msgid "Auto-rotate off"
 msgstr "Automatische Drehung aus"
 
 #: qml/PlaceTypePage.qml:27
 msgid "Venue type"
-msgstr "Typ des Austragungsortes"
+msgstr "Typ des Orts"
 
 #: qml/PlaceTypePage.qml:100
 msgid "You can search for venues by type or name."
@@ -953,8 +941,8 @@ msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
 msgstr ""
-"Bisher sind keine POI definiert. Du kannst POI auf der Karte und in der "
-"Suche erstellen und als Lesezeichen verwenden."
+"Bisher sind keine POI Lesezeichen definiert. Du kannst POI auf der Karte und"
+" in der Suche erstellen."
 
 #: qml/Poi.qml:192 qml/pure-maps.qml:131
 msgid "Clearing map"
@@ -1017,7 +1005,7 @@ msgstr "Cache leeren"
 
 #: qml/PreferencesPage.qml:99
 msgid "API keys"
-msgstr "API keys"
+msgstr "API-Keys"
 
 #: qml/PreferencesPage.qml:105
 msgid ""
@@ -1025,13 +1013,13 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
-"Du kannst persönliche Schlüssel für die Online Dienste in den Einstellungen "
-"spezifizieren. Bitte überprüfe, ob du mit den Nutzungsbedingungen der "
-"Services die du nutzen möchtest einverstanden bist."
+"Du kannst persönliche Schlüssel für Online Dienste in den Einstellungen "
+"spezifizieren. Bitte prüfe, ob du mit den Nutzungsbedingungen der Dienste "
+"die du nutzen möchtest einverstanden bist."
 
 #: qml/PreferencesPage.qml:113
 msgid "Please restart application after changing API keys."
-msgstr "Bitte starte Pure Maps nach Änderung der API keys neu."
+msgstr "Bitte starte Pure Maps nach Änderung von API-Keys neu."
 
 #: qml/PreferencesPage.qml:155
 msgid "Map view"
@@ -1078,19 +1066,19 @@ msgstr "Automatischer Zoom"
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
-msgstr "Maximaler Zoom Level der beim automatischen Zoomen verwendet wird."
+msgstr "Maximale beim Autozoom verwendete Zoomstufe."
 
 #: qml/PreferencesPage.qml:208
 msgid "Maximal zoom level"
-msgstr "Maximaler Zoom Level"
+msgstr "Maximale Zoomstufe"
 
 #: qml/PreferencesPage.qml:219
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
 msgstr ""
-"Der Zoom Level wird auf die gleiche Kartenhöhe gesetzt, wie die "
-"zurückgelegte Distanz in der vorgegeben Anzahl an Sekunden ."
+"Die Zoomstufe wird auf die gleiche Kartenhöhe gesetzt, wie die zurückgelegte"
+" Distanz in der vorgegeben Anzahl an Sekunden ."
 
 #: qml/PreferencesPage.qml:222
 msgid "Time range, s"
@@ -1259,9 +1247,9 @@ msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
-"Test der Text-to-Speech (TTS) Engine. Wählen Sie die gleiche Sprache wie bei"
-" der Navigation, das bevorzugte Geschlecht und drücken Sie die untere Taste "
-"zum Testen."
+"Test der Text-to-Speech (TTS) Engine. Wähle die gleiche Sprache wie bei der "
+"Navigation und das bevorzugte Geschlecht. Drücke dann die untere Taste zum "
+"Testen."
 
 #: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:70
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
@@ -1344,7 +1332,7 @@ msgid ""
 msgstr ""
 "Keine Engine für die gewählte Sprache vorhanden.\n"
 "\n"
-"Pure Maps unterstützt Mimic, Flite, PicoTTS, and Espeak TTS. Wenn Du Pure Maps nicht über Flatpak installiert hast, müssen die Sprach Engines separat installiert werden. Sailfish OS users finden die entsprechenden Pakete auf OpenRepos."
+"Pure Maps unterstützt Mimic, Flite, PicoTTS und Espeak TTS. Wenn du Pure Maps nicht über Flatpak installiert hast, müssen die Sprach Engines separat installiert werden. Sailfish OS Nutzer finden entsprechende Pakete auf OpenRepos."
 
 #: qml/PreferencesPage.qml:626
 msgid "Development"
@@ -1379,7 +1367,7 @@ msgstr "Zeigt die aktuelle Zoomstufe an"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:242
+#: qml/pure-maps.qml:243
 msgid "Rerouting failed: %1"
 msgstr "Neuberechnung fehlgeschlagen: %1"
 
@@ -1458,11 +1446,15 @@ msgstr "Routing-Engine"
 msgid "Modes: %1"
 msgstr "Arten: %1"
 
-#: qml/ScaleBar.qml:193
+#: qml/ScaleBar.qml:195
+msgid "Auto-zoom requires auto-centering to be enabled"
+msgstr ""
+
+#: qml/ScaleBar.qml:206
 msgid "Auto-zoom on"
 msgstr "Autozoom an"
 
-#: qml/ScaleBar.qml:194
+#: qml/ScaleBar.qml:207
 msgid "Auto-zoom off"
 msgstr "Autozoom aus"
 
@@ -1747,8 +1739,8 @@ msgid ""
 msgstr ""
 "Du willst Berge in Angriff nehmen? Durch die Vermeidung von Bergen und "
 "steilen Steigungen können längere (Dauer und Entfernung) Routen resultieren."
-" Die Option Berge zulassen bedeutet, dass man keine Höhen und steile "
-"Anstiege fürchtet."
+" Die Option Berge zulassen bedeutet, keine Höhen und steile Anstiege zu "
+"fürchten."
 
 #: routers/ValhallaSettings.qml:180
 msgid "Hills"
@@ -1788,10 +1780,9 @@ msgid ""
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
 msgstr ""
-"Du sehnst Dich nach Abenteuer? Wenn ja, tendiert der Router dazu, "
-"Hauptstraßen zu meiden. Stattdessen werden Straßen, Nebenstraßen, Wege, "
-"manchmal nicht klassifizierte Straßen oder Straßen mit schlechten "
-"Oberflächen gewählt."
+"Du sehnst dich nach Abenteuer? Wenn ja, tendiert der Router dazu "
+"Hauptstraßen zu meiden. Stattdessen werden Nebenstraßen, Wege, nicht "
+"klassifizierte oder Straßen mit schlechten Oberflächen gewählt."
 
 #: routers/ValhallaSettings.qml:265
 msgid "Trails"
@@ -1819,15 +1810,15 @@ msgstr "Suche in Finnland"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr "Suche nach offenen Datenquellen"
+msgstr "Suche basierend auf offenen Datenquellen"
 
 #: standard input:3 standard input:4
 msgid "Search based on OpenStreetMap data"
-msgstr "Suche nach OpenStreetMap-Daten"
+msgstr "Suche basierend auf OpenStreetMap Daten"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr "Von Foursquare-Nutzern eingetragene und geprüfte Orte "
+msgstr "Von Foursquare Nutzern eingetragene und geprüfte Orte "
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
@@ -1843,7 +1834,7 @@ msgstr "ÖPNV"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr "Wegberechnung mit GPX"
+msgstr "Wegberechnung entlang GPX Strecke"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
@@ -1857,7 +1848,7 @@ msgstr "Fuß"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr "Wegberechnung mit GPX, die von OSM Scout Server bereitgestellt wird"
+msgstr "Wegberechnung entlang von OSM Scout Server errechneter GPX Strecke"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-22 20:55+0200\n"
+"POT-Creation-Date: 2019-03-27 08:53+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Carmen Fernández B., 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -140,15 +140,15 @@ msgstr "A {distance}, {direction}"
 msgid "Exit: "
 msgstr "Salida: "
 
-#: poor/narrative.py:421 qml/pure-maps.qml:230
+#: poor/narrative.py:421 qml/pure-maps.qml:231
 msgid "Rerouting"
 msgstr "Recalculando"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:252
+#: poor/narrative.py:422 qml/pure-maps.qml:253
 msgid "Rerouting failed"
 msgstr "Error al recalcular"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:246
+#: poor/narrative.py:423 qml/pure-maps.qml:247
 msgid "New route found"
 msgstr "Nueva ruta encontrada"
 
@@ -446,7 +446,7 @@ msgid "Attribution"
 msgstr "Atribución"
 
 #: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:57
-#: qml/MenuPage.qml:102
+#: qml/MenuPage.qml:93
 msgid "Maps"
 msgstr "Mapas"
 
@@ -466,6 +466,18 @@ msgstr "Navegación"
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
 msgstr "Mapa: %1"
+
+#: qml/CenterButton.qml:123 qml/MapGestureArea.qml:43
+msgid "Auto-center off"
+msgstr "Auto-centrado desactivado"
+
+#: qml/CenterButton.qml:131 qml/MapGestureArea.qml:42
+msgid "Auto-center on"
+msgstr "Auto-centrado activado"
+
+#: qml/CenterButton.qml:137
+msgid "Tap center button again for auto-center"
+msgstr ""
 
 #: qml/GeocodeItem.qml:43
 msgid "No selection"
@@ -575,23 +587,23 @@ msgstr ""
 "Último error:\n"
 "%1"
 
-#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:108 qml/PreferencesPage.qml:25
+#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:99 qml/PreferencesPage.qml:25
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:119
+#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:110
 msgid "Profile"
 msgstr "Perfil"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:123
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:114
 msgid "Online"
 msgstr "Con conexión"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:129
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:120
 msgid "Offline"
 msgstr "Sin conexión"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:135
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:126
 msgid "Mixed"
 msgstr "Mixto"
 
@@ -606,14 +618,6 @@ msgid ""
 msgstr ""
 "Navegación por voz no disponible: falta motor de conversión texto-voz (TTS) "
 "para el idioma seleccionado"
-
-#: qml/Map.qml:579
-msgid "Auto-center off"
-msgstr "Auto-centrado desactivado"
-
-#: qml/Map.qml:582
-msgid "Auto-center on"
-msgstr "Auto-centrado activado"
 
 #: qml/MenuPage.qml:33
 msgid "About"
@@ -642,22 +646,6 @@ msgstr "Compartir posición actual (no está listo)"
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
 msgstr "Compartir posición actual"
-
-#: qml/MenuPage.qml:93
-msgid "Center on current position"
-msgstr "Centrar en la posición actual"
-
-#: qml/MenuPage.qml:149
-msgid "Auto-center on position"
-msgstr "Auto-centrado en la posición"
-
-#: qml/MenuPage.qml:173
-msgid "Auto-rotate on direction"
-msgstr "Auto-giro según dirección"
-
-#: qml/MenuPage.qml:192
-msgid "Auto-zoom map"
-msgstr "Auto-zoom del mapa"
 
 #: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationInfoBlock.qml:83
 #: qml/NavigationInfoBlock.qml:85
@@ -773,11 +761,11 @@ msgstr "Lugares cercanos: %1"
 msgid "%1 Results"
 msgstr "%1 Resultados"
 
-#: qml/NorthArrow.qml:73
+#: qml/NorthArrow.qml:59
 msgid "Auto-rotate on"
 msgstr "Auto-giro activado"
 
-#: qml/NorthArrow.qml:74
+#: qml/NorthArrow.qml:60
 msgid "Auto-rotate off"
 msgstr "Auto-giro desactivado"
 
@@ -1371,7 +1359,7 @@ msgstr "Mostrar nivel de zoom actual"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:242
+#: qml/pure-maps.qml:243
 msgid "Rerouting failed: %1"
 msgstr "Error al recalcular: %1"
 
@@ -1450,11 +1438,15 @@ msgstr "Motor de cálculo de rutas"
 msgid "Modes: %1"
 msgstr "Modos: %1"
 
-#: qml/ScaleBar.qml:193
+#: qml/ScaleBar.qml:195
+msgid "Auto-zoom requires auto-centering to be enabled"
+msgstr ""
+
+#: qml/ScaleBar.qml:206
 msgid "Auto-zoom on"
 msgstr "Auto-zoom activado"
 
-#: qml/ScaleBar.qml:194
+#: qml/ScaleBar.qml:207
 msgid "Auto-zoom off"
 msgstr "Auto-zoom desactivado"
 
