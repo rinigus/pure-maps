@@ -25,6 +25,7 @@ MapButton {
     anchors.right: parent.right
     iconHeight: app.styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/center")
+    indicator: map.autoCenter
     states: [
         State {
             when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
@@ -105,6 +106,37 @@ MapButton {
     z: 500
 
     property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowCenter)
+    property bool nextClickToAuto: false
 
-    onClicked: map.centerOnPosition();
+    Timer {
+        id: timer
+        interval: 5000
+        repeat: false
+        onTriggered: button.nextClickToAuto = false;
+    }
+
+    onClicked: {
+        // same ID is used as in MapGestureArea
+        var notifyId = "centerButton";
+        if (app.map.autoCenter) {
+            app.map.autoCenter = false;
+            notification.flash(app.tr("Auto-center off"),
+                               notifyId);
+            return;
+        }
+
+        map.centerOnPosition();
+        if (nextClickToAuto) {
+            map.autoCenter = true;
+            notification.flash(app.tr("Auto-center on"),
+                               notifyId);
+        }
+        else {
+            nextClickToAuto = true;
+            timer.restart();
+            notification.flash(app.tr("Tap center button again for auto-center"),
+                               notifyId,
+                               timer.interval / 1000);
+        }
+    }
 }

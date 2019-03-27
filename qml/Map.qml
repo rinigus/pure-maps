@@ -462,8 +462,8 @@ MapboxMap {
             var args = [map.route.language, app.conf.voiceGender];
             py.call_sync("poor.app.narrative.set_voice", args);
             var engine = py.evaluate("poor.app.narrative.voice_engine");
-            if (engine) notification.flash(app.tr("Voice navigation on"));
-            else notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"));
+            if (engine) notification.flash(app.tr("Voice navigation on"), "mapVoice");
+            else notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"), "mapVoice");
         } else {
             py.call_sync("poor.app.narrative.set_voice", [null, null]);
         }
@@ -570,18 +570,6 @@ MapboxMap {
             map.updateSourcePoints(map.sources.poisSelected, []);
         else
             map.updateSourcePoints(map.sources.poisSelected, [coordinate]);
-    }
-
-    function toggleAutoCenter() {
-        // Turn auto-center on or off.
-        if (map.autoCenter) {
-            map.autoCenter = false;
-            notification.flash(app.tr("Auto-center off"));
-        } else {
-            map.autoCenter = true;
-            notification.flash(app.tr("Auto-center on"));
-            map.centerOnPosition();
-        }
     }
 
     function updateManeuvers() {

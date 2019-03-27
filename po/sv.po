@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-22 20:55+0200\n"
+"POT-Creation-Date: 2019-03-27 08:53+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2019\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -140,15 +140,15 @@ msgstr "{distance}, {direction}"
 msgid "Exit: "
 msgstr "Avfart: "
 
-#: poor/narrative.py:421 qml/pure-maps.qml:230
+#: poor/narrative.py:421 qml/pure-maps.qml:231
 msgid "Rerouting"
 msgstr "Beräknar om"
 
-#: poor/narrative.py:422 qml/pure-maps.qml:252
+#: poor/narrative.py:422 qml/pure-maps.qml:253
 msgid "Rerouting failed"
 msgstr "Omberäkning misslyckades"
 
-#: poor/narrative.py:423 qml/pure-maps.qml:246
+#: poor/narrative.py:423 qml/pure-maps.qml:247
 msgid "New route found"
 msgstr "Ny rutt hittad"
 
@@ -446,7 +446,7 @@ msgid "Attribution"
 msgstr "Tillskrivning"
 
 #: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:57
-#: qml/MenuPage.qml:102
+#: qml/MenuPage.qml:93
 msgid "Maps"
 msgstr "Kartor"
 
@@ -466,6 +466,18 @@ msgstr "Navigation"
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
 msgstr "Karta: %1"
+
+#: qml/CenterButton.qml:123 qml/MapGestureArea.qml:43
+msgid "Auto-center off"
+msgstr "Autocentrering av"
+
+#: qml/CenterButton.qml:131 qml/MapGestureArea.qml:42
+msgid "Auto-center on"
+msgstr "Autocentrering på"
+
+#: qml/CenterButton.qml:137
+msgid "Tap center button again for auto-center"
+msgstr ""
 
 #: qml/GeocodeItem.qml:43
 msgid "No selection"
@@ -575,23 +587,23 @@ msgstr ""
 "Senaste fel:\n"
 "%1"
 
-#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:108 qml/PreferencesPage.qml:25
+#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:99 qml/PreferencesPage.qml:25
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:119
+#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:110
 msgid "Profile"
 msgstr "Profil"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:123
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:114
 msgid "Online"
 msgstr "Online"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:129
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:120
 msgid "Offline"
 msgstr "Offline"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:135
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:126
 msgid "Mixed"
 msgstr "Blandat"
 
@@ -606,14 +618,6 @@ msgid ""
 msgstr ""
 "Röstnavigering är inte tillgänglig. Text-till-tal-motor (TTS) saknas, för "
 "det önskade språket."
-
-#: qml/Map.qml:579
-msgid "Auto-center off"
-msgstr "Autocentrering av"
-
-#: qml/Map.qml:582
-msgid "Auto-center on"
-msgstr "Autocentrering på"
 
 #: qml/MenuPage.qml:33
 msgid "About"
@@ -642,22 +646,6 @@ msgstr "Dela aktuell position (inte klar)"
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
 msgstr "Dela aktuell position"
-
-#: qml/MenuPage.qml:93
-msgid "Center on current position"
-msgstr "Centrera på aktuell position"
-
-#: qml/MenuPage.qml:149
-msgid "Auto-center on position"
-msgstr "Autocentrera på positionen"
-
-#: qml/MenuPage.qml:173
-msgid "Auto-rotate on direction"
-msgstr "Autorotera i riktningen"
-
-#: qml/MenuPage.qml:192
-msgid "Auto-zoom map"
-msgstr "Zooma kartan automatiskt"
 
 #: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationInfoBlock.qml:83
 #: qml/NavigationInfoBlock.qml:85
@@ -772,11 +760,11 @@ msgstr "Närliggande platser: %1"
 msgid "%1 Results"
 msgstr "%1 Resultat"
 
-#: qml/NorthArrow.qml:73
+#: qml/NorthArrow.qml:59
 msgid "Auto-rotate on"
 msgstr "Autorotation på"
 
-#: qml/NorthArrow.qml:74
+#: qml/NorthArrow.qml:60
 msgid "Auto-rotate off"
 msgstr "Autorotation av"
 
@@ -1363,7 +1351,7 @@ msgstr "Visa aktuell zoomnivå"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:242
+#: qml/pure-maps.qml:243
 msgid "Rerouting failed: %1"
 msgstr "Omberäkning misslyckades: %1"
 
@@ -1441,11 +1429,15 @@ msgstr "Ruttberäkningsmotor"
 msgid "Modes: %1"
 msgstr "Lägen: %1"
 
-#: qml/ScaleBar.qml:193
+#: qml/ScaleBar.qml:195
+msgid "Auto-zoom requires auto-centering to be enabled"
+msgstr ""
+
+#: qml/ScaleBar.qml:206
 msgid "Auto-zoom on"
 msgstr "Auto-zoom på"
 
-#: qml/ScaleBar.qml:194
+#: qml/ScaleBar.qml:207
 msgid "Auto-zoom off"
 msgstr "Auto-zoom av"
 

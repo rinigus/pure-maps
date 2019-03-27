@@ -89,15 +89,6 @@ MenuDrawerPL {
     }
 
     MenuDrawerItemPL {
-        iconName: app.styler.iconDot
-        text: app.tr("Center on current position")
-        onClicked: {
-            app.map.centerOnPosition();
-            app.showMap();
-        }
-    }
-
-    MenuDrawerItemPL {
         iconName: app.styler.iconMaps
         text: app.tr("Maps")
         onClicked: app.pushMain(Qt.resolvedUrl("BasemapPage.qml"))
@@ -138,67 +129,6 @@ MenuDrawerPL {
 
         function set(p) {
             py.call_sync("poor.app.set_profile", [p]);
-        }
-    }
-
-    TextSwitchPL {
-        id: autoCenterItem
-        checked: app.map.autoCenter
-        height: app.styler.themeItemSizeSmall
-        leftMargin: page.switchLeftMargin
-        text: app.tr("Auto-center on position")
-        Connections {
-            target: map
-            onAutoCenterChanged: {
-                if (autoCenterItem.checked !== app.map.autoCenter) {
-                    autoCenterItem.checked = app.map.autoCenter;
-                    if (!app.map.autoCenter && app.map.autoZoom) {
-                        app.map.autoZoom = false;
-                        autoZoomItem.checked = false;
-                    }
-                }
-            }
-        }
-        onCheckedChanged: {
-            app.map.autoCenter = autoCenterItem.checked;
-            app.map.autoCenter && app.map.centerOnPosition();
-        }
-    }
-
-    TextSwitchPL {
-        id: autoRotateItem
-        checked: app.map.autoRotate
-        height: app.styler.themeItemSizeSmall
-        leftMargin: page.switchLeftMargin
-        text: app.tr("Auto-rotate on direction")
-        Connections {
-            target: map
-            onAutoRotateChanged: {
-                if (autoRotateItem.checked !== app.map.autoRotate)
-                    autoRotateItem.checked = app.map.autoRotate;
-            }
-        }
-        onCheckedChanged: {
-            app.map.autoRotate = autoRotateItem.checked;
-        }
-    }
-
-    TextSwitchPL {
-        id: autoZoomItem
-        checked: app.map.autoZoom
-        enabled: app.map.autoCenter
-        height: app.styler.themeItemSizeSmall
-        leftMargin: page.switchLeftMargin
-        text: app.tr("Auto-zoom map")
-        Connections {
-            target: map
-            onAutoZoomChanged: {
-                if (autoZoomItem.checked !== app.map.autoZoom)
-                    autoZoomItem.checked = app.map.autoZoom;
-            }
-        }
-        onCheckedChanged: {
-            app.map.autoZoom = autoZoomItem.checked;
         }
     }
 }

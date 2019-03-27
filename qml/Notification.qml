@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2017 Osmo Salomaa
+ * Copyright (C) 2017 Osmo Salomaa, 2019 Rinigus, 2019 Purism SPC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,46 +17,98 @@
  */
 
 import QtQuick 2.2
-import "."
+import "platform"
 
-Bubble {
-    id: bubble
-    anchorItem: navigationBlock
+Rectangle {
+    id: rect
+    anchors.top: navigationBlock.bottom
     anchors.topMargin: app.styler.themePaddingLarge
-    opacity: 0
-    showArrow: false
-    state: "bottom-center"
-    visible: opacity > 0
+    anchors.horizontalCenter: parent.horizontalCenter
+    color: app.styler.blockBg
+    height: label.height + 2*padding
+    opacity: currentText ? 1 : 0
+    radius: 0.85 * padding
+    visible: label.text
+    width: label.width + 2*padding
+
+    property string currentText: {
+        if (stack.length)
+            return stack.reduce(function (a,b) {
+                if (a) return a + '\n' + b.text;
+                return b.text;
+            }, '');
+        return '';
+    }
+    property string lastText
+    // Padding on the edges
+    property real   padding: 1.5 * app.styler.themePaddingMedium
+    property var    stack: []
+    property real   widthLimit: parent.width / 2
 
     Behavior on opacity {
         OpacityAnimator {
             duration: 200
             easing.type: Easing.InOutQuad
+            onRunningChanged: if (!currentText && !running) lastText = ''
         }
+    }
+
+    LabelPL {
+        id: label
+        anchors.centerIn: rect
+        color: app.styler.themeHighlightColor
+        font.family: app.styler.themeFontFamily
+        font.pixelSize: app.styler.themeFontSizeSmall
+        horizontalAlignment: Text.AlignHCenter
+        lineHeight: 1.1
+        text: currentText ? currentText : lastText
+        wrapMode: Text.WordWrap
+        width: Math.min(implicitWidth, rect.widthLimit)
     }
 
     Timer {
         id: timer
-        interval: 5000
-        repeat: false
-        onTriggered: bubble.opacity = 0;
+        interval: 1000
+        repeat: stack.length > 0
+        running: stack.length > 0
+        onTriggered: {
+            var t = Date.now();
+            stack = stack.filter(function (txt) {
+                return txt.timeout < 0 || txt.timeout > t;
+            });
+        }
     }
 
-    function clear(text) {
-        bubble.opacity = 0;
-        timer.stop();
+    onCurrentTextChanged: if (currentText) lastText = currentText
+
+    function clear(textId) {
+        textId = textId || 'none';
+        stack = stack.filter(function (txt) {
+            return txt.id !== textId;
+        });
     }
 
-    function flash(text) {
-        bubble.text = text;
-        bubble.opacity = 1;
-        timer.restart();
+    function flash(text, textId, timeout) {
+        var tout = Date.now();
+        if (timeout > 0) tout += timeout*1000;
+        else if (timeout < 0) tout = -1;
+        else tout += 5000; // default
+        var t = { 'text': text,
+            'id': textId || 'none',
+            'timeout': tout };
+        var ns = stack;
+        if (ns.length > 0) {
+            ns = ns.filter(function (i) {
+                return i.id !== t.id;
+            });
+            ns.push(t);
+        } else
+            ns = [t];
+        stack = ns;
     }
 
-    function hold(text) {
-        bubble.text = text;
-        bubble.opacity = 1;
-        timer.stop();
+    function hold(text, textId) {
+        flash(text, textId, -1);
     }
 
 }
