@@ -5,7 +5,7 @@ Releasing a New Version
 # Update translations.
 make pot
 tx push -s
-tx pull -a --minimum-perc=95
+tx pull -a --minimum-perc=85
 sed -i "s/charset=CHARSET/charset=UTF-8/" po/*.po
 tools/check-translations
 tools/check-translations | grep %
