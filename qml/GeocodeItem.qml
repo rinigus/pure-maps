@@ -100,6 +100,7 @@ Item {
             onTextChanged: {
                 var newText = searchField.text.trim();
                 if (!newText && selection) selection = null;
+                if (!newText && searchResults) searchResults = [];
                 if (newText === searchField.prevText) return;
                 selection = null;
                 geo._searchPending = false;
@@ -338,8 +339,7 @@ Item {
                 n.label = p.label;
                 return n;
             });
-            searchResults = geo._autocompletions;
-            _stateIdCounter += 1;
+            setSearchResults(geo._autocompletions);
             geo.update();
         });
     }
@@ -350,8 +350,7 @@ Item {
         _searchPending = true;
         _searchDone = false;
         _searchHits = [];
-        searchResults = [];
-        _stateIdCounter += 1;
+        setSearchResults([]);
         _autocompletePending = false; // skip any ongoing autocomplete search
         py.call_sync("poor.app.history.add_place", [query]);
         var x = map.position.coordinate.longitude || 0;
@@ -374,7 +373,7 @@ Item {
                     return n;
                 });
             }
-            searchResults = _searchHits;
+            setSearchResults(_searchHits);
             _searchDone = true;
             geo.update();
         });
@@ -510,6 +509,11 @@ Item {
     function loadHistory() {
         // Load search history and preallocate list items.
         geo._history = py.evaluate("poor.app.history.places");
+    }
+
+    function setSearchResults(n) {
+        _stateIdCounter += 1;
+        searchResults = n;
     }
 
     function update() {
