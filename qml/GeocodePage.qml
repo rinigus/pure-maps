@@ -39,12 +39,10 @@ PagePL {
 
         PageMenuItemPL {
             enabled: geo.searchResults.length
-            text: app.tr("Show all")
+            text: app.tr("Map")
             onClicked: {
                 var pois = geo.searchResults;
                 app.hideMenu(app.tr("Search: %1").arg(geo.query));
-//                app.stateId = geo.stateId;
-//                app.pois.addList(pois, stateId);
                 map.fitViewToPois(pois);
             }
         }
@@ -63,12 +61,20 @@ PagePL {
             var poi = Util.shallowCopy(selection);
             if (selection.selectionType === selectionTypes.searchResult) {
                 py.call_sync("poor.app.history.add_place", [geo.query]);
-                var new_poi = app.pois.add(poi, geo.stateId);
-                if (new_poi) {
-                    poi = new_poi;
-                    geo.poiBlacklisted.push(poi.poiId);
-                } else
-                    poi.title = app.tr("%1 [duplicate]", poi.title);
+                var available_poi = app.pois.has(poi);
+                if (available_poi &&
+                        !available_poi.bookmarked)
+                    // assuming that if there is a temporary
+                    // poi its the same as the selected one
+                    poi = available_poi;
+                else {
+                    // either add if its missing or show as a duplicate
+                    var new_poi = app.pois.add(poi, geo.stateId);
+                    if (new_poi) {
+                        poi = new_poi;
+                    } else
+                        poi.title = app.tr("%1 [duplicate]", poi.title);
+                }
             }
             app.stateId = geo.stateId;
             browsingQuery = geo.query;

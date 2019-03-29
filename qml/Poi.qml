@@ -167,13 +167,14 @@ Item {
 
     function has(poi) {
         // check if such poi exists already
+        // return poi if found or null if not
         var longitude = poi.coordinate ? poi.coordinate.longitude : poi.x;
         var latitude = poi.coordinate ? poi.coordinate.latitude : poi.y;
         for (var i = 0; i < holder.pois.length; i++)
             if (Math.abs(longitude - holder.pois[i].coordinate.longitude) < 1e-6 &&
                     Math.abs(latitude - holder.pois[i].coordinate.latitude) < 1e-6)
-                return true;
-        return false;
+                return holder.pois[i];
+        return null;
     }
 
     function hide() {

@@ -35,7 +35,6 @@ Item {
     property bool   active: false
     property bool   fillModel: true
     property bool   highlightSelected: true
-    property var    poiBlacklisted: [] // POIs that were created as a part of this search
     property string searchPlaceholderText: app.tr("Search")
     property bool   showCurrentPosition: false
     property var    searchResults: [] // current list of found search or autocomplete results
@@ -452,7 +451,7 @@ Item {
             var searchKeys = ["shortlisted", "bookmarked", "title", "poiType",
                               "address", "postcode", "text", "phone", "link"];
             pois = app.pois.pois.filter(function (p) {
-                return (geo.poiBlacklisted.indexOf(p.poiId) < 0 &&
+                return (p.bookmarked &&
                         (query || p.shortlisted));
             });
             if (query) pois = Util.findMatchesInObjects(query, pois, searchKeys);
