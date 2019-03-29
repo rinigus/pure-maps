@@ -60,9 +60,17 @@ PageListPL {
             app.hideMenu(querySummary);
             var p = pois.convertFromPython(model);
             app.stateId = stateId;
-            var new_poi = pois.add(p, stateId);
-            if (new_poi) p = new_poi;
-            else p.title = app.tr("%1 [duplicate]", p.title);
+            var available_poi = app.pois.has(p);
+            if (available_poi &&
+                    !available_poi.bookmarked)
+                // assuming that if there is a temporary
+                // poi its the same as the selected one
+                p = available_poi;
+            else {
+                var new_poi = pois.add(p, stateId);
+                if (new_poi) p = new_poi;
+                else p.title = app.tr("%1 [duplicate]", p.title);
+            }
             pois.show(p, true);
             map.autoCenter = false;
             map.setCenter(model.x, model.y);
@@ -76,7 +84,7 @@ PageListPL {
     pageMenu: PageMenuPL {
         visible: page.model.count > 1
         PageMenuItemPL {
-            text: app.tr("Show all")
+            text: app.tr("Map")
             onClicked: {
                 var pois = [];
                 for (var i = 0; i < page.model.count; i++) {
@@ -84,15 +92,14 @@ PageListPL {
                     pois.push(app.pois.convertFromPython(item));
                 }
                 app.hideMenu(querySummary);
-                app.stateId = stateId;
-                app.pois.addList(pois, stateId);
                 map.fitViewToPois(pois);
             }
         }
     }
 
     property string querySummary
-    property string stateId: "Reverse geocoder: " + querySummary
+    property int    searchCounter: 0
+    property string stateId: "Nearby search: " + querySummary + searchCounter
 
     BusyModal {
         id: busy
@@ -122,6 +129,7 @@ PageListPL {
     function populate(query, near, radius, params) {
         // Load nearby results from the Python backend.
         page.model.clear();
+        searchCounter += 1;
         py.call("poor.app.guide.nearby", [query, near, radius, params], function(results) {
             if (results && results.error && results.message) {
                 page.title = "";
@@ -135,6 +143,13 @@ PageListPL {
             }
             page.loading = false;
             page.populated = true;
+            // put all results on a map
+            var pois = [];
+            for (var i = 0; i < results.length; i++) {
+                pois.push(app.pois.convertFromPython(results[i]));
+            }
+            app.stateId = stateId;
+            app.pois.addList(pois, stateId);
         });
     }
 
