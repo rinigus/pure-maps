@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="64"
+   height="64"
+   viewBox="0 0 64 64"
+   style="enable-background:new 0 0 64 64;"
+   xml:space="preserve"
+   sodipodi:docname="icon-m-annotation_plus.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"><metadata
+   id="metadata17"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs15" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2880"
+   inkscape:window-height="1506"
+   id="namedview13"
+   showgrid="true"
+   showguides="true"
+   inkscape:guide-bbox="true"
+   inkscape:zoom="11.504644"
+   inkscape:cx="66.500752"
+   inkscape:cy="15.160011"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1"><inkscape:grid
+     type="xygrid"
+     id="grid830" /><sodipodi:guide
+     position="15.507812,65.703125"
+     orientation="1,0"
+     id="guide832"
+     inkscape:locked="false" /></sodipodi:namedview>
+
+<path
+   style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+   d="M 19 4 L 19 4.0253906 C 10.673196 4.2917809 4 11.108475 4 19.5 L 3.9980469 19.5 L 3.9980469 39.902344 L 4.0195312 39.902344 C 4.2307781 48.10968 10.812212 54.716505 19.007812 54.974609 L 19.007812 55.005859 L 44.421875 55.005859 L 60 64 L 60 42 L 60 19 L 59.974609 19 C 59.70721 10.67411 52.890868 4.0019531 44.5 4.0019531 L 44.5 4 L 19.5 4 L 19 4 z M 19.5 14 L 44.5 14 L 44.5 14.001953 C 47.537566 14.001953 50 16.464387 50 19.501953 L 50 45.005859 L 35.283203 45.005859 C 35.284413 45.0047 35.2859 45.003112 35.287109 45.001953 L 19.5 45.001953 L 19.5 45 C 16.462434 45 14 42.537566 14 39.5 L 13.998047 39.5 L 13.998047 19.5 L 14 19.5 C 14 16.462434 16.462433 14 19.5 14 z "
+   id="rect890" /><rect
+   y="26"
+   x="20.520746"
+   height="7"
+   width="23"
+   id="rect849"
+   style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" /><rect
+   style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+   id="rect851"
+   width="23"
+   height="7"
+   x="-41"
+   y="28.520746"
+   transform="rotate(-90)" /></svg>

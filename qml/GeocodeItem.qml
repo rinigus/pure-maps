@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2017 Osmo Salomaa, 2018 Rinigus
+ * Copyright (C) 2017 Osmo Salomaa, 2018-2019 Rinigus, 2019 Purism SPC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,13 +35,12 @@ Item {
     property bool   active: false
     property bool   fillModel: true
     property bool   highlightSelected: true
-    property var    poiBlacklisted: [] // POIs that were created as a part of this search
     property string searchPlaceholderText: app.tr("Search")
     property bool   showCurrentPosition: false
-    property var    searchResults: []
+    property var    searchResults: [] // current list of found search or autocomplete results
     property var    selection: null
     property string selectionPlaceholderText: app.tr("No selection")
-    property string stateId
+    property string stateId: "Geocoder: " + query + _stateIdCounter
     property string query: ""
 
     readonly property var selectionTypes: QtObject {
@@ -58,8 +57,10 @@ Item {
     property var    _resultDetails: {}
     property bool   _searchDone: false
     property string _searchError: ""
+    property var    _searchHits: []
     property int    _searchIndex: 0
     property bool   _searchPending: false
+    property int    _stateIdCounter: 0
 
     // internal properties: readonly
     readonly property var _listDataKeys:
@@ -98,6 +99,7 @@ Item {
             onTextChanged: {
                 var newText = searchField.text.trim();
                 if (!newText && selection) selection = null;
+                if (!newText && searchResults) searchResults = [];
                 if (newText === searchField.prevText) return;
                 selection = null;
                 geo._searchPending = false;
@@ -326,6 +328,8 @@ Item {
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
         py.call("poor.app.geocoder.autocomplete", [query, x, y], function(results) {
+            if (!geo._autocompletePending) return;
+
             geo._autocompletePending = false;
             if (!geo.active || geo._searchPending || geo._searchDone) return;
             results = results || [];
@@ -334,6 +338,7 @@ Item {
                 n.label = p.label;
                 return n;
             });
+            setSearchResults(geo._autocompletions);
             geo.update();
         });
     }
@@ -343,7 +348,8 @@ Item {
         var mySearchIndex = _searchIndex;
         _searchPending = true;
         _searchDone = false;
-        searchResults = [];
+        _searchHits = [];
+        setSearchResults([]);
         _autocompletePending = false; // skip any ongoing autocomplete search
         py.call_sync("poor.app.history.add_place", [query]);
         var x = map.position.coordinate.longitude || 0;
@@ -357,15 +363,16 @@ Item {
             _searchDone = true;
             if (results && results.error && results.message) {
                 _searchError = results.message;
-                searchResults = [];
+                _searchHits = [];
             } else {
-                searchResults = results.map(function (p){
+                _searchHits = results.map(function (p){
                     var n = pois.convertFromPython(p);
                     n.description = p.description;
                     n.distance = p.distance;
                     return n;
                 });
             }
+            setSearchResults(_searchHits);
             _searchDone = true;
             geo.update();
         });
@@ -409,18 +416,18 @@ Item {
                            "markup": app.tr("Searching ..."),
                            "type": "header"
                        });
-        } else if (searchResults.length === 0) {
+        } else if (_searchHits.length === 0) {
             found.push({
                            "markup": app.tr("No results"),
                            "type": "header"
                        });
         } else {
             found.push({
-                           "markup": app.tr("Results (%1)").arg(searchResults.length),
+                           "markup": app.tr("Results (%1)").arg(_searchHits.length),
                            "type": "header"
                        });
             var index = 0;
-            searchResults.forEach(function (p){
+            _searchHits.forEach(function (p){
                 index += 1;
                 var k = "search results - %1".arg(index);
                 found.push({
@@ -444,7 +451,7 @@ Item {
             var searchKeys = ["shortlisted", "bookmarked", "title", "poiType",
                               "address", "postcode", "text", "phone", "link"];
             pois = app.pois.pois.filter(function (p) {
-                return (geo.poiBlacklisted.indexOf(p.poiId) < 0 &&
+                return (p.bookmarked &&
                         (query || p.shortlisted));
             });
             if (query) pois = Util.findMatchesInObjects(query, pois, searchKeys);
@@ -503,10 +510,14 @@ Item {
         geo._history = py.evaluate("poor.app.history.places");
     }
 
+    function setSearchResults(n) {
+        _stateIdCounter += 1;
+        searchResults = n;
+    }
+
     function update() {
         if (!results.model.count) return; // too early, hasn't initialized yet
         var found = [];
-        stateId = "Geocoder: " + query;
         _resultDetails = {}
 
         // add current location if its requested and there

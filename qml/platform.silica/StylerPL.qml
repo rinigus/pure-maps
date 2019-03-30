@@ -62,7 +62,7 @@ QtObject {
     property string iconClear: "image://theme/icon-m-clear"
     property string iconClose: "image://theme/icon-m-dismiss"
     property string iconDelete: "image://theme/icon-m-delete"
-    property string iconDot: "image://theme/icon-m-dot"
+    property string iconDot: Theme.colorScheme ? Qt.resolvedUrl("../icons/sailfishos/center-black.svg") : Qt.resolvedUrl("../icons/sailfishos/center-white.svg")
     property string iconEdit: "image://theme/icon-m-edit"
     property string iconEditClear: "image://theme/icon-m-clear"
     property string iconFavorite: "image://theme/icon-m-favorite"
