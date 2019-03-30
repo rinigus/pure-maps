@@ -27,7 +27,7 @@ endef
 
 check:
 	pyflakes geocoders guides poor routers
-	find . -name "*.json" -exec jsonlint -q {} \;
+	find . -type f -name "*.json" -exec jsonlint -q {} \;
 
 clean:
 	rm -rf dist
