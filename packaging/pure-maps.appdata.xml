@@ -37,6 +37,16 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.19.0" date="2019-03-30">
+     <description>
+       <p>Update icons [mosen]</p>
+       <p>Simplify main menu</p>
+       <p>Use indicators to show auto-centering, -zoom, and -rotation</p>
+       <p>Show current search results on map</p>
+       <p>Update translations</p>
+       <p>Bugfixes and corrections of strings</p>
+     </description>
+   </release>
    <release  version="1.18.0" date="2019-03-21">
      <description>
        <p>Redesign of icons and banner [mosen and Fellfrosch]</p>

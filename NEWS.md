@@ -1,3 +1,13 @@
+2019-03-30: Pure Maps 1.19 
+==========================
+
+* Update icons [mosen]
+* Simplify main menu
+* Use indicators to show auto-centering, -zoom, and -rotation
+* Show current search results on map
+* Update translations 
+* Bugfixes and corrections of strings
+
 2019-03-21: Pure Maps 1.18
 ==========================
 
