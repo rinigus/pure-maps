@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-27 08:53+0200\n"
+"POT-Creation-Date: 2019-03-30 10:35+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2019\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -43,7 +43,7 @@ msgstr "Punkt från Plus-kod"
 msgid "Connection timed out"
 msgstr "Tidsgränsen för anslutning överskreds"
 
-#: poor/history.py:32 qml/GeocodeItem.qml:207 qml/GeocodeItem.qml:516
+#: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/NearbyPage.qml:30 qml/NearbyPage.qml:136 qml/NearbyPage.qml:151
 #: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:238
 #: qml/RoutePage.qml:248 qml/RoutePage.qml:250 qml/RoutePoint.qml:42
@@ -352,13 +352,13 @@ msgstr "Bäst"
 msgid "Venue name"
 msgstr "Platsens namn"
 
-#: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:132
+#: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
 #: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
 msgid "Remove"
 msgstr "Ta bort"
 
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
-#: qml/GeocodeItem.qml:39 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
+#: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
 #: qml/PreferencesPage.qml:339
 msgid "Search"
@@ -477,25 +477,25 @@ msgstr "Autocentrering på"
 
 #: qml/CenterButton.qml:137
 msgid "Tap center button again for auto-center"
-msgstr ""
+msgstr "Tryck på centreringsknappen igen, för automatisk centrering"
 
-#: qml/GeocodeItem.qml:43
+#: qml/GeocodeItem.qml:42
 msgid "No selection"
 msgstr "Inget valt"
 
-#: qml/GeocodeItem.qml:379
+#: qml/GeocodeItem.qml:386
 msgid "Suggestions (%1)"
 msgstr "Förslag (%1)"
 
-#: qml/GeocodeItem.qml:400
+#: qml/GeocodeItem.qml:407
 msgid "Error while fetching results"
 msgstr "Kunde inte hämta resultat"
 
-#: qml/GeocodeItem.qml:409
+#: qml/GeocodeItem.qml:416
 msgid "Searching ..."
 msgstr "Söker ..."
 
-#: qml/GeocodeItem.qml:414 qml/NearbyResultsPage.qml:134
+#: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:142
 #: routers/default_results.qml:67 routers/digitransit_results.qml:245
 #: routers/gpx_osmscout_results.qml:67 routers/gpx_results.qml:67
 #: routers/mapquest_open_results.qml:67 routers/osmscout_results.qml:67
@@ -503,20 +503,20 @@ msgstr "Söker ..."
 msgid "No results"
 msgstr "Inga resultat"
 
-#: qml/GeocodeItem.qml:419
+#: qml/GeocodeItem.qml:426
 msgid "Results (%1)"
 msgstr "Resultat (%1)"
 
-#: qml/GeocodeItem.qml:455
+#: qml/GeocodeItem.qml:462
 msgid "Points of Interest (%1)"
 msgstr "Platser av intresse (%1)"
 
-#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
+#: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Namnlös punkt"
 
-#: qml/GeocodeItem.qml:486
+#: qml/GeocodeItem.qml:493
 msgid "Recent searches (%1)"
 msgstr "Tidigare sökningar (%1)"
 
@@ -525,15 +525,15 @@ msgstr "Tidigare sökningar (%1)"
 msgid "Using %1"
 msgstr "Använder %1"
 
-#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79
-msgid "Show all"
-msgstr "Visa alla"
+#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:87 qml/RootPage.qml:24
+msgid "Map"
+msgstr "Karta"
 
-#: qml/GeocodePage.qml:45 qml/GeocodePage.qml:75
+#: qml/GeocodePage.qml:45 qml/GeocodePage.qml:81
 msgid "Search: %1"
 msgstr "Sök: %1"
 
-#: qml/GeocodePage.qml:71 qml/NearbyResultsPage.qml:65
+#: qml/GeocodePage.qml:76 qml/NearbyResultsPage.qml:72
 msgid "%1 [duplicate]"
 msgstr "%1 [kopia]"
 
@@ -744,7 +744,7 @@ msgstr "Radie"
 msgid "Type"
 msgstr "Typ"
 
-#: qml/NearbyResultsPage.qml:107 routers/default_results.qml:39
+#: qml/NearbyResultsPage.qml:114 routers/default_results.qml:39
 #: routers/digitransit_results.qml:216 routers/gpx_osmscout_results.qml:39
 #: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
 #: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
@@ -752,11 +752,11 @@ msgstr "Typ"
 msgid "Searching"
 msgstr "Söker"
 
-#: qml/NearbyResultsPage.qml:115
+#: qml/NearbyResultsPage.qml:122
 msgid "Nearby venues: %1"
 msgstr "Närliggande platser: %1"
 
-#: qml/NearbyResultsPage.qml:130
+#: qml/NearbyResultsPage.qml:138
 msgid "%1 Results"
 msgstr "%1 Resultat"
 
@@ -936,7 +936,7 @@ msgstr ""
 "Inga bokmärkespunkter definierade ännu. Du kan bokmärka platser med hjälp av"
 " karta och sökfunktion."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:131
+#: qml/Poi.qml:193 qml/pure-maps.qml:131
 msgid "Clearing map"
 msgstr "Rensar kartan"
 
@@ -1355,10 +1355,6 @@ msgstr "Pure Maps"
 msgid "Rerouting failed: %1"
 msgstr "Omberäkning misslyckades: %1"
 
-#: qml/RootPage.qml:24
-msgid "Map"
-msgstr "Karta"
-
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"
 msgstr "Återstående"
@@ -1372,7 +1368,7 @@ msgstr "Totalt"
 #: routers/mapquest_open_results.qml:25 routers/osmscout_results.qml:25
 #: routers/osrm_results.qml:25 routers/stadiamaps_results.qml:25
 msgid "Route"
-msgstr "Rutt"
+msgstr "Beräkna"
 
 #: qml/RoutePage.qml:52
 msgid "Follow me"
@@ -1431,7 +1427,7 @@ msgstr "Lägen: %1"
 
 #: qml/ScaleBar.qml:195
 msgid "Auto-zoom requires auto-centering to be enabled"
-msgstr ""
+msgstr "Automatisk zoom kräver att automatisk centrering är aktiverat"
 
 #: qml/ScaleBar.qml:206
 msgid "Auto-zoom on"

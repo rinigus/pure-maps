@@ -5,8 +5,8 @@
 # 
 # Translators:
 # rinigus github, 2018
-# Thomas Gabelmann <thomas@gabelmann.org>, 2018
 # Roman Meier <meierrom@gmail.com>, 2018
+# Thomas Gabelmann <thomas@gabelmann.org>, 2018
 # Peter Feldbaum, 2018
 # happykraut, 2019
 # Ricardo Breitkopf, 2019
@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-27 08:53+0200\n"
+"POT-Creation-Date: 2019-03-30 10:35+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Timo <koennecke@mosushi.com>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rinigus/teams/89597/de_DE/)\n"
@@ -50,7 +50,7 @@ msgstr "Punkt aus Plus code"
 msgid "Connection timed out"
 msgstr "Zeitüberschreitung bei der Verbindung"
 
-#: poor/history.py:32 qml/GeocodeItem.qml:207 qml/GeocodeItem.qml:516
+#: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/NearbyPage.qml:30 qml/NearbyPage.qml:136 qml/NearbyPage.qml:151
 #: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:238
 #: qml/RoutePage.qml:248 qml/RoutePage.qml:250 qml/RoutePoint.qml:42
@@ -359,13 +359,13 @@ msgstr "Beste"
 msgid "Venue name"
 msgstr "Name des Orts"
 
-#: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:132
+#: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
 #: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
 msgid "Remove"
 msgstr "Entfernen"
 
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
-#: qml/GeocodeItem.qml:39 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
+#: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
 #: qml/PreferencesPage.qml:339
 msgid "Search"
@@ -484,25 +484,25 @@ msgstr "Autozentrierung an"
 
 #: qml/CenterButton.qml:137
 msgid "Tap center button again for auto-center"
-msgstr ""
+msgstr "Für Autozentrierung noch einmal den Zentrierknopf tippen "
 
-#: qml/GeocodeItem.qml:43
+#: qml/GeocodeItem.qml:42
 msgid "No selection"
 msgstr "keine Auswahl"
 
-#: qml/GeocodeItem.qml:379
+#: qml/GeocodeItem.qml:386
 msgid "Suggestions (%1)"
 msgstr "Vorschläge (%1)"
 
-#: qml/GeocodeItem.qml:400
+#: qml/GeocodeItem.qml:407
 msgid "Error while fetching results"
 msgstr "Fehler beim Abrufen der Ergebnisse"
 
-#: qml/GeocodeItem.qml:409
+#: qml/GeocodeItem.qml:416
 msgid "Searching ..."
 msgstr "Suche ..."
 
-#: qml/GeocodeItem.qml:414 qml/NearbyResultsPage.qml:134
+#: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:142
 #: routers/default_results.qml:67 routers/digitransit_results.qml:245
 #: routers/gpx_osmscout_results.qml:67 routers/gpx_results.qml:67
 #: routers/mapquest_open_results.qml:67 routers/osmscout_results.qml:67
@@ -510,20 +510,20 @@ msgstr "Suche ..."
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
-#: qml/GeocodeItem.qml:419
+#: qml/GeocodeItem.qml:426
 msgid "Results (%1)"
 msgstr "Ergebnisse (%1)"
 
-#: qml/GeocodeItem.qml:455
+#: qml/GeocodeItem.qml:462
 msgid "Points of Interest (%1)"
 msgstr "Punkte von Interesse (%1)"
 
-#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
+#: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Namenloser Punkt"
 
-#: qml/GeocodeItem.qml:486
+#: qml/GeocodeItem.qml:493
 msgid "Recent searches (%1)"
 msgstr "Letzte Suchanfragen (%1)"
 
@@ -532,15 +532,15 @@ msgstr "Letzte Suchanfragen (%1)"
 msgid "Using %1"
 msgstr "Benutze %1"
 
-#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79
-msgid "Show all"
-msgstr "Zeige alle"
+#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:87 qml/RootPage.qml:24
+msgid "Map"
+msgstr "Karte"
 
-#: qml/GeocodePage.qml:45 qml/GeocodePage.qml:75
+#: qml/GeocodePage.qml:45 qml/GeocodePage.qml:81
 msgid "Search: %1"
 msgstr "Suche: %1"
 
-#: qml/GeocodePage.qml:71 qml/NearbyResultsPage.qml:65
+#: qml/GeocodePage.qml:76 qml/NearbyResultsPage.qml:72
 msgid "%1 [duplicate]"
 msgstr "%1 [duplicate]"
 
@@ -558,7 +558,7 @@ msgstr "Abbrechen"
 
 #: qml/InitPage.qml:47
 msgid "Missing Mapbox key"
-msgstr "Fehlender Mapbox Schlüssel"
+msgstr "Fehlender Mapbox API-Key"
 
 #: qml/InitPage.qml:48
 msgid ""
@@ -752,7 +752,7 @@ msgstr "Umkreis"
 msgid "Type"
 msgstr "Typ"
 
-#: qml/NearbyResultsPage.qml:107 routers/default_results.qml:39
+#: qml/NearbyResultsPage.qml:114 routers/default_results.qml:39
 #: routers/digitransit_results.qml:216 routers/gpx_osmscout_results.qml:39
 #: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
 #: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
@@ -760,11 +760,11 @@ msgstr "Typ"
 msgid "Searching"
 msgstr "Suche nach"
 
-#: qml/NearbyResultsPage.qml:115
+#: qml/NearbyResultsPage.qml:122
 msgid "Nearby venues: %1"
 msgstr "Nahegelegene Orte: %1"
 
-#: qml/NearbyResultsPage.qml:130
+#: qml/NearbyResultsPage.qml:138
 msgid "%1 Results"
 msgstr "%1 Ergebnisse"
 
@@ -941,10 +941,10 @@ msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
 msgstr ""
-"Bisher sind keine POI Lesezeichen definiert. Du kannst POI auf der Karte und"
-" in der Suche erstellen."
+"Bisher sind für keine Orte Lesezeichen definiert. Du kannst Lesezeichen auf "
+"der Karte und in der Suche erstellen."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:131
+#: qml/Poi.qml:193 qml/pure-maps.qml:131
 msgid "Clearing map"
 msgstr "Karte leeren"
 
@@ -969,8 +969,8 @@ msgid ""
 "Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr ""
-"Nur wenn Pure Maps aktiv ist. Sonst wird der Ruhezustand durch normale "
-"Einstellungen auf Geräte ebene gesteuert."
+"Nur wenn Pure Maps aktiv ist. Sonst steuern die Einstellungen auf "
+"Geräteebene den Ruhezustand."
 
 #: qml/PreferencesPage.qml:59
 msgid "Prevent sleep"
@@ -1013,9 +1013,9 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
-"Du kannst persönliche Schlüssel für Online Dienste in den Einstellungen "
-"spezifizieren. Bitte prüfe, ob du mit den Nutzungsbedingungen der Dienste "
-"die du nutzen möchtest einverstanden bist."
+"Spezifiziere hier persönliche Schlüssel, sogenannte API-Keys für Online "
+"Dienste. Bitte prüfe, ob du mit den Nutzungsbedingungen der Dienste die du "
+"nutzen möchtest einverstanden bist."
 
 #: qml/PreferencesPage.qml:113
 msgid "Please restart application after changing API keys."
@@ -1077,8 +1077,8 @@ msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
 msgstr ""
-"Die Zoomstufe wird auf die gleiche Kartenhöhe gesetzt, wie die zurückgelegte"
-" Distanz in der vorgegeben Anzahl an Sekunden ."
+"Die Zoomstufe wird auf die gleiche Kartenhöhe gesetzt, wie die in bestimmter"
+" Anzahl an Sekunden  zurückgelegte Distanz."
 
 #: qml/PreferencesPage.qml:222
 msgid "Time range, s"
@@ -1108,7 +1108,7 @@ msgid ""
 "automatic switch between map view modes."
 msgstr ""
 "Wechselt nach bestimmter Verzögerung in die Minimalansicht oder deaktiviert "
-"den automatischen Wechsel der Kartenansichten."
+"diesen automatischen Wechsel."
 
 #: qml/PreferencesPage.qml:265
 msgid "Switch to minimal view"
@@ -1371,10 +1371,6 @@ msgstr "Pure Maps"
 msgid "Rerouting failed: %1"
 msgstr "Neuberechnung fehlgeschlagen: %1"
 
-#: qml/RootPage.qml:24
-msgid "Map"
-msgstr "Karte"
-
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"
 msgstr "Verbleibend"
@@ -1448,7 +1444,7 @@ msgstr "Arten: %1"
 
 #: qml/ScaleBar.qml:195
 msgid "Auto-zoom requires auto-centering to be enabled"
-msgstr ""
+msgstr "Autozoom benötigt aktivierte Autozentrierung"
 
 #: qml/ScaleBar.qml:206
 msgid "Auto-zoom on"

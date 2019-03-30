@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-27 08:53+0200\n"
+"POT-Creation-Date: 2019-03-30 10:35+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Carmen Fernández B., 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -43,7 +43,7 @@ msgstr "Punto código plus"
 msgid "Connection timed out"
 msgstr "Tiempo de conexión finalizado"
 
-#: poor/history.py:32 qml/GeocodeItem.qml:207 qml/GeocodeItem.qml:516
+#: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/NearbyPage.qml:30 qml/NearbyPage.qml:136 qml/NearbyPage.qml:151
 #: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:238
 #: qml/RoutePage.qml:248 qml/RoutePage.qml:250 qml/RoutePoint.qml:42
@@ -352,13 +352,13 @@ msgstr "Mejor"
 msgid "Venue name"
 msgstr "Nombre de lugar"
 
-#: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:132
+#: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
 #: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
 msgid "Remove"
 msgstr "Borrar"
 
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
-#: qml/GeocodeItem.qml:39 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
+#: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
 #: qml/PreferencesPage.qml:339
 msgid "Search"
@@ -477,25 +477,25 @@ msgstr "Auto-centrado activado"
 
 #: qml/CenterButton.qml:137
 msgid "Tap center button again for auto-center"
-msgstr ""
+msgstr "Pulsa de nuevo en el botón central para activar auto-centrado"
 
-#: qml/GeocodeItem.qml:43
+#: qml/GeocodeItem.qml:42
 msgid "No selection"
 msgstr "Sin seleccionar"
 
-#: qml/GeocodeItem.qml:379
+#: qml/GeocodeItem.qml:386
 msgid "Suggestions (%1)"
 msgstr "Sugerencias (%1)"
 
-#: qml/GeocodeItem.qml:400
+#: qml/GeocodeItem.qml:407
 msgid "Error while fetching results"
 msgstr "Error al obtener resultados"
 
-#: qml/GeocodeItem.qml:409
+#: qml/GeocodeItem.qml:416
 msgid "Searching ..."
 msgstr "Buscando..."
 
-#: qml/GeocodeItem.qml:414 qml/NearbyResultsPage.qml:134
+#: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:142
 #: routers/default_results.qml:67 routers/digitransit_results.qml:245
 #: routers/gpx_osmscout_results.qml:67 routers/gpx_results.qml:67
 #: routers/mapquest_open_results.qml:67 routers/osmscout_results.qml:67
@@ -503,20 +503,20 @@ msgstr "Buscando..."
 msgid "No results"
 msgstr "No hay resultados"
 
-#: qml/GeocodeItem.qml:419
+#: qml/GeocodeItem.qml:426
 msgid "Results (%1)"
 msgstr "Resultados (%1)"
 
-#: qml/GeocodeItem.qml:455
+#: qml/GeocodeItem.qml:462
 msgid "Points of Interest (%1)"
 msgstr "Puntos de interés (%1)"
 
-#: qml/GeocodeItem.qml:460 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
+#: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Punto sin nombre"
 
-#: qml/GeocodeItem.qml:486
+#: qml/GeocodeItem.qml:493
 msgid "Recent searches (%1)"
 msgstr "Búsquedas recientes (%1)"
 
@@ -525,15 +525,15 @@ msgstr "Búsquedas recientes (%1)"
 msgid "Using %1"
 msgstr "Usando %1"
 
-#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:79
-msgid "Show all"
-msgstr "Mostar todo"
+#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:87 qml/RootPage.qml:24
+msgid "Map"
+msgstr "Mapa"
 
-#: qml/GeocodePage.qml:45 qml/GeocodePage.qml:75
+#: qml/GeocodePage.qml:45 qml/GeocodePage.qml:81
 msgid "Search: %1"
 msgstr "Buscar: %1"
 
-#: qml/GeocodePage.qml:71 qml/NearbyResultsPage.qml:65
+#: qml/GeocodePage.qml:76 qml/NearbyResultsPage.qml:72
 msgid "%1 [duplicate]"
 msgstr "%1 [duplicado]"
 
@@ -745,7 +745,7 @@ msgstr "Radio"
 msgid "Type"
 msgstr "Tipo"
 
-#: qml/NearbyResultsPage.qml:107 routers/default_results.qml:39
+#: qml/NearbyResultsPage.qml:114 routers/default_results.qml:39
 #: routers/digitransit_results.qml:216 routers/gpx_osmscout_results.qml:39
 #: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
 #: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
@@ -753,11 +753,11 @@ msgstr "Tipo"
 msgid "Searching"
 msgstr "Buscando"
 
-#: qml/NearbyResultsPage.qml:115
+#: qml/NearbyResultsPage.qml:122
 msgid "Nearby venues: %1"
 msgstr "Lugares cercanos: %1"
 
-#: qml/NearbyResultsPage.qml:130
+#: qml/NearbyResultsPage.qml:138
 msgid "%1 Results"
 msgstr "%1 Resultados"
 
@@ -937,7 +937,7 @@ msgstr ""
 "No se han definido marcadores aún. Puedes marcar ubicaciones usando el mapa "
 "y la búsqueda."
 
-#: qml/Poi.qml:192 qml/pure-maps.qml:131
+#: qml/Poi.qml:193 qml/pure-maps.qml:131
 msgid "Clearing map"
 msgstr "Limpiando mapa"
 
@@ -1363,10 +1363,6 @@ msgstr "Pure Maps"
 msgid "Rerouting failed: %1"
 msgstr "Error al recalcular: %1"
 
-#: qml/RootPage.qml:24
-msgid "Map"
-msgstr "Mapa"
-
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"
 msgstr "Restante"
@@ -1440,7 +1436,7 @@ msgstr "Modos: %1"
 
 #: qml/ScaleBar.qml:195
 msgid "Auto-zoom requires auto-centering to be enabled"
-msgstr ""
+msgstr "Es necesario activar auto-centrado para activar el auto-zoom"
 
 #: qml/ScaleBar.qml:206
 msgid "Auto-zoom on"
