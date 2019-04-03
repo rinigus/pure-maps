@@ -60,7 +60,7 @@ ToolBar {
         horizontalAlignment: Qt.AlignHCenter
         verticalAlignment: Qt.AlignVCenter
         Layout.fillWidth: true
-        font.pointSize: app.styler.themeFontSizeMedium
+        font.pixelSize: app.styler.themeFontSizeMedium
         font.bold: true
     }
 
