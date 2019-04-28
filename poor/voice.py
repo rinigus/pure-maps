@@ -249,6 +249,7 @@ class VoiceGenerator:
         self._result_queue = None
         self._task_queue = None
         self._tmpdir = tempfile.mkdtemp(prefix="pure-maps-")
+        self._used_counter = 0 # counter that is used instead of time
         self._worker_thread = None
         # Normally quit is called from Application,
         # but e.g. when running unit tests we need atexit.
@@ -262,17 +263,18 @@ class VoiceGenerator:
     def clean(self):
         """Terminate the worker thread and purge generated files."""
         self._clean_worker()
-        for text in list(self._cache):
-            self._purge(text)
+        kk = list(self._cache)
+        for k in kk:
+            self._purge(k)
 
     def _clean_outdated_cache(self):
         """Remove oldest generated WAV files from cache."""
         # Minimizes RAM use on Sailfish OS where /tmp is in RAM.
-        items = list(self._cache.items())
-        items = [x for x in items if x[1] is not None]
-        items.sort(key=lambda x: os.path.getmtime(x[1]))
-        for text, fname in items[:-100]:
-            self._purge(text)
+        if len(self._cache) < 150: return # skip trimming if its small
+        items = [x for k,x in self._cache.items() if x.fname is not None and not x.preserve]
+        items.sort(key=lambda x: x.used)
+        for i in items[:-100]:
+            self._purge(i.text)
 
     def _clean_worker(self):
         """Terminate the worker thread."""
@@ -304,7 +306,13 @@ class VoiceGenerator:
     def get(self, text):
         """Return the WAV filename for `text`."""
         self._update_cache()
-        return self._cache.get(text, None)
+        print('Requesting', text)
+        i = self._cache.get(text, None)
+        if i is not None:
+            self._used_counter += 1
+            i.used = self._used_counter
+            return i.fname
+        return None
 
     def get_uri(self, text):
         """Return the WAV file URI for `text`."""
@@ -312,15 +320,16 @@ class VoiceGenerator:
         if fname is None: return None
         return poor.util.path2uri(fname)
 
-    def make(self, text):
+    def make(self, text, preserve=False):
         """Queue `text` for WAV file generation."""
         if self._engine is None: return
         self._update_cache()
+        self._used_counter += 1
         if text in self._cache:
             # WAV file already generated, just update
             # file modification time to prevent removal.
             if self._cache[text] is not None:
-                os.utime(self._cache[text])
+                self._cache[text].used = self._used_counter;
             return
         if self._worker_thread is None:
             self._result_queue = queue.Queue()
@@ -336,15 +345,19 @@ class VoiceGenerator:
             self._worker_thread.start()
         # Add an empty element into cache to ensure that we don't
         # run the same voice direction twice through the engine.
-        self._cache[text] = None
+        self._cache[text] = poor.AttrDict(fname=None,
+                                          preserve=preserve,
+                                          text=text,
+                                          used=self._used_counter)
         self._task_queue.put(text)
         self._clean_outdated_cache()
 
     def _purge(self, text):
         """Remove generated WAV file from cache."""
         with poor.util.silent(Exception, tb=True):
-            if self._cache[text] is not None:
-                os.remove(self._cache[text])
+            if self._cache[text].fname is not None:
+                os.remove(self._cache[text].fname)
+                print('Removed', self._cache[text].fname)
         with poor.util.silent(Exception, tb=True):
             del self._cache[text]
 
@@ -371,4 +384,5 @@ class VoiceGenerator:
         while not self._result_queue.empty():
             text, fname = self._result_queue.get_nowait()
             self._result_queue.task_done()
-            self._cache[text] = fname
+            self._cache[text].fname = fname
+            print('Add to cache', text, fname)

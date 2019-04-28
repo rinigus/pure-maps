@@ -462,8 +462,11 @@ MapboxMap {
             var args = [map.route.language, app.conf.voiceGender];
             py.call_sync("poor.app.narrative.set_voice", args);
             var engine = py.evaluate("poor.app.narrative.voice_engine");
-            if (engine) notification.flash(app.tr("Voice navigation on"), "mapVoice");
-            else notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"), "mapVoice");
+            if (engine) {
+                notification.flash(app.tr("Voice navigation on"), "mapVoice");
+                app.playMaybe("std:starting navigation");
+            } else
+                notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"), "mapVoice");
         } else {
             py.call_sync("poor.app.narrative.set_voice", [null, null]);
         }

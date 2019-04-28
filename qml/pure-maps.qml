@@ -229,7 +229,7 @@ ApplicationWindowPL {
         if (app.rerouting) return;
         var notifyId = "app reroute";
         app.notification.hold(app.tr("Rerouting"), notifyId);
-        app.playMaybe("Rerouting");
+        app.playMaybe("std:rerouting");
         app.rerouting = true;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
@@ -241,17 +241,17 @@ ApplicationWindowPL {
                 route = route[0];
             if (route && route.error && route.message) {
                 app.notification.flash(app.tr("Rerouting failed: %1").arg(route.message), notifyId);
-                app.playMaybe("Rerouting failed");
+                app.playMaybe("std:rerouting failed");
                 app.rerouteConsecutiveErrors++;
             } else if (route && route.x && route.x.length > 0) {
                 app.notification.flash(app.tr("New route found"), notifyId);
-                app.playMaybe("New route found");
+                app.playMaybe("std:new route found");
                 map.addRoute(route, true);
                 map.addManeuvers(route.maneuvers);
                 app.rerouteConsecutiveErrors = 0;
             } else {
                 app.notification.flash(app.tr("Rerouting failed"), notifyId);
-                app.playMaybe("Rerouting failed");
+                app.playMaybe("std:rerouting failed");
                 app.rerouteConsecutiveErrors++;
             }
             app.reroutePreviousTime = Date.now();

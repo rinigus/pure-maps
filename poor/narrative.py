@@ -109,6 +109,7 @@ class Narrative:
         self.time = []
         self.verbals = []
         self.voice_generator = poor.VoiceGenerator()
+        self.voice_std_prompts = {}
         self.x = []
         self.y = []
 
@@ -388,6 +389,9 @@ class Narrative:
 
     def get_message_voice_uri(self, message):
         """Return WAV file URI for `message` or ``None``."""
+        sm = self.voice_std_prompts.get(message, None)
+        if sm is not None:
+            return self.voice_generator.get(sm)
         return self.voice_generator.get(__(message, self.language))
 
     def _get_next_maneuver(self, maneuver):
@@ -417,10 +421,6 @@ class Narrative:
             if prompt.generated: continue
             if prompt.time < time - 300: break
             self.voice_generator.make(prompt.text)
-        # Generate and keep available standard messages.
-        self.voice_generator.make(__("Rerouting", self.language))
-        self.voice_generator.make(__("Rerouting failed", self.language))
-        self.voice_generator.make(__("New route found", self.language))
         for i, prompt in reversed(list(enumerate(self.verbals))):
             if prompt.passed: continue
             # Avoid being consistently late playing voice directions
@@ -613,6 +613,15 @@ class Narrative:
         """Set TTS engine and voice to use for directions."""
         self.language = language
         self.voice_generator.set_voice(language, gender)
+        # Generate standard messages.
+        self.voice_std_prompts = {
+            "std:new route found": __("New route found", self.language),
+            "std:rerouting": __("Rerouting", self.language),
+            "std:rerouting failed": __("Rerouting failed", self.language),
+            "std:starting navigation": __("Starting navigation", self.language),
+            }
+        for k, v in self.voice_std_prompts.items():
+            self.voice_generator.make(v, True)
 
     def unset(self):
         """Unset route and maneuvers."""
