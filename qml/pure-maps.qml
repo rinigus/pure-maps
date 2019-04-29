@@ -82,6 +82,22 @@ ApplicationWindowPL {
         id: modes
     }
 
+    Timer {
+        id: voicePromptRetry
+        interval: 500
+        running: false
+        repeat: false
+
+        property string message
+        property int tries
+
+        onMessageChanged: tries = 0
+        onTriggered: {
+            tries += 1;
+            app.playMaybe(message);
+        }
+    }
+
     TruncationModes {
         id: truncModes
     }
@@ -193,6 +209,11 @@ ApplicationWindowPL {
             if (uri) {
                 sound.source = uri;
                 sound.play();
+            } else {
+                if (voicePromptRetry.message !== message)
+                    voicePromptRetry.message = message;
+                if (voicePromptRetry.tries < 10)
+                    voicePromptRetry.start();
             }
         });
     }

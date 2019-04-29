@@ -306,7 +306,7 @@ class VoiceGenerator:
     def get(self, text):
         """Return the WAV filename for `text`."""
         self._update_cache()
-        print('Requesting', text)
+        #print('Requesting', text)
         i = self._cache.get(text, None)
         if i is not None:
             self._used_counter += 1
@@ -357,7 +357,7 @@ class VoiceGenerator:
         with poor.util.silent(Exception, tb=True):
             if self._cache[text].fname is not None:
                 os.remove(self._cache[text].fname)
-                print('Removed', self._cache[text].fname)
+                #print('Removed', text, self._cache[text].fname)
         with poor.util.silent(Exception, tb=True):
             del self._cache[text]
 
@@ -385,4 +385,4 @@ class VoiceGenerator:
             text, fname = self._result_queue.get_nowait()
             self._result_queue.task_done()
             self._cache[text].fname = fname
-            print('Add to cache', text, fname)
+            #print('Add to cache', text, fname)

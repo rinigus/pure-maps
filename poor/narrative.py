@@ -620,6 +620,10 @@ class Narrative:
             "std:rerouting failed": __("Rerouting failed", self.language),
             "std:starting navigation": __("Starting navigation", self.language),
             }
+        # Generate start message first and then the rest. If called
+        # with the same message multiple times, only the first call will
+        # initiate TTS generation
+        self.voice_generator.make(self.voice_std_prompts["std:starting navigation"], True)
         for k, v in self.voice_std_prompts.items():
             self.voice_generator.make(v, True)
 
