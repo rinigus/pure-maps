@@ -454,7 +454,7 @@ Item {
                 return (p.bookmarked &&
                         (query || p.shortlisted));
             });
-            if (query) pois = Util.findMatchesInObjects(query, pois, searchKeys);
+            pois = Util.findMatchesInObjects(query, pois, searchKeys);
             cache.set("poi", query, pois);
         }
         if (pois.length > 0) {
