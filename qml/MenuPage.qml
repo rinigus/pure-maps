@@ -30,7 +30,7 @@ MenuDrawerPL {
     pageMenu: PageMenuPL {
         PageMenuItemPL {
             iconName: app.styler.iconAbout
-            text: app.tr("About")
+            text: app.tr("About Pure Maps")
             onClicked: app.push(Qt.resolvedUrl("AboutPage.qml"), {}, true)
         }
     }
