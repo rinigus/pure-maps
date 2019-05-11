@@ -144,7 +144,6 @@ PagePL {
                 columnRouter.settings = component.createObject(columnRouter);
                 columnRouter.settings.anchors.left = columnRouter.left;
                 columnRouter.settings.anchors.right = columnRouter.right;
-                columnRouter.settings.width = columnRouter.width;
                 columnRouter.settingsChecked = true;
             }
         }

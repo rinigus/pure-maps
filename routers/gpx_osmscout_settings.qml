@@ -19,7 +19,7 @@
 import QtQuick 2.0
 import "../qml/platform"
 
-Column {
+FormLayoutPL {
     id: settingsBlock
     spacing: app.styler.themePaddingLarge
     width: parent.width
