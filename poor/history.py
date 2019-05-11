@@ -27,17 +27,27 @@ __all__ = ("HistoryManager",)
 
 class HistoryManager:
 
-    """Managing a history of search queries."""
+    """Managing a history of search queries and destinations."""
 
     _places_blacklist = ["Current position", _("Current position")]
 
     def __init__(self):
         """Initialize a :class:`HistoryManager` instance."""
+        self._destinations = []
         self._path = os.path.join(poor.CONFIG_HOME_DIR, "search-history.json")
         self._place_names = []
         self._place_types = []
         self._places = []
         self._read()
+
+    def add_destination(self, dest):
+        """Add `dest` to the history list of destinations."""
+        d = { 'text': dest['text'].strip(),
+              'x': dest['x'],
+              'y': dest['y'] }
+        if not d['text']: return
+        self.remove_destination(d['text'])
+        self._destinations.insert(0, d)
 
     def add_place(self, place):
         """Add `place` to the list of places."""
@@ -62,6 +72,11 @@ class HistoryManager:
         self._place_types.insert(0, place_type)
 
     @property
+    def destinations(self):
+        """Return a list of destinations."""
+        return self._destinations[:]
+
+    @property
     def place_names(self):
         """Return a list of place names."""
         return self._place_names[:]
@@ -77,10 +92,11 @@ class HistoryManager:
         return self._places[:]
 
     def _read(self):
-        """Read list of queries from file."""
+        """Read list of queries and destinations from file."""
         with poor.util.silent(Exception, tb=True):
             if os.path.isfile(self._path):
                 history = poor.util.read_json(self._path)
+                self._destinations = history.get("destinations", [])
                 self._places = history.get("places", [])
                 self._place_names = history.get("place_names", [])
                 self._place_types = history.get("place_types", [])
@@ -95,6 +111,13 @@ class HistoryManager:
                                  "Hotel",
                                  "Pub",
                                  "Restaurant"]
+
+    def remove_destination(self, dtxt):
+        """Remove destination with the text `dtxt` from the list of destinations."""
+        t = dtxt.strip()
+        for i in reversed(range(len(self._destinations))):
+            if self._destinations[i]['text'] == t:
+                del self._destinations[i]
 
     def remove_place(self, place):
         """Remove `place` from the list of places."""
@@ -121,6 +144,7 @@ class HistoryManager:
         """Write list of queries to file."""
         with poor.util.silent(Exception, tb=True):
             poor.util.write_json({
+                "destinations": self._destinations[:25],
                 "places": self._places[:1000],
                 "place_names": self._place_names[:1000],
                 "place_types": self._place_types[:1000],

@@ -231,6 +231,14 @@ Page {
     function populate() {
         // Load routing results from the Python backend.
         var routePage = app.pages.previousPage();
+        if (routePage.saveDestination()) {
+            var d = {
+                'text': routePage.toText,
+                'x': routePage.to[0],
+                'y': routePage.to[1]
+            };
+            py.call_sync("poor.app.history.add_destination", [d]);
+        }
         var args = [routePage.from, routePage.to, null, routePage.params];
         py.call("poor.app.router.route", args, function(results) {
             if (results && results.error && results.message) {

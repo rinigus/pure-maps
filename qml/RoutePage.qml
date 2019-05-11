@@ -88,6 +88,8 @@ PagePL {
     property alias  toQuery: toButton.query
     property alias  toText: toButton.text
 
+    property var    _destinationsNotForSave: []
+
     Column {
         id: column
         spacing: app.styler.themePaddingLarge
@@ -144,19 +146,113 @@ PagePL {
                 columnRouter.settings = component.createObject(columnRouter);
                 columnRouter.settings.anchors.left = columnRouter.left;
                 columnRouter.settings.anchors.right = columnRouter.right;
+                columnRouter.settings.width = columnRouter.width;
                 columnRouter.settingsChecked = true;
             }
         }
 
         Column {
+            /////////////////////////
+            // Suggested destinations
+            id: columnSuggested
+            anchors.left: parent.left
+            anchors.right: parent.right
+            visible: !page.to && page.toNeeded
+
+            SectionHeaderPL {
+                text: app.tr("Destinations")
+            }
+
+            Spacer {
+                height: app.styler.themePaddingMedium
+            }
+
+            Repeater {
+                id: destinations
+
+                delegate: ListItemPL {
+                    contentHeight: model.visible ? app.styler.themeItemSizeSmall : 0
+                    menu: ContextMenuPL {
+                        id: contextMenu
+                        enabled: model.type === "recent destination"
+                        ContextMenuItemPL {
+                            enabled: model.type === "recent destination"
+                            iconName: enabled ? app.styler.iconDelete : ""
+                            text: enabled ? app.tr("Remove") : ""
+                            onClicked: {
+                                if (model.type !== "recent destination") return;
+                                py.call_sync("poor.app.history.remove_destination", [model.text]);
+                                model.visible = false;
+                            }
+                        }
+                    }
+                    visible: model.visible
+
+                    ListItemLabel {
+                        id: label
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: app.styler.themePrimaryColor
+                        text: model.text
+                    }
+
+                    onClicked: {
+                        page.to = [model.x, model.y];
+                        page.toText = model.toText;
+                    }
+                }
+
+                model: ListModel {}
+            }
+
+            Component.onCompleted: {
+                // pois
+                _destinationsNotForSave = [];
+                var pois = app.pois.pois.filter(function (p) {
+                    return (p.bookmarked && p.shortlisted);
+                });
+                pois.sort(function (a, b){
+                    if (a.title < b.title) return -1;
+                    if (a.title > b.title) return 1;
+                    return 0;
+                })
+                pois.forEach(function (p) {
+                    var t = {
+                        "text": (p.title ? p.title : app.tr("Unnamed point")) +
+                                (p.shortlisted ? " ☰" : ""),
+                        "toText": p.title ? p.title : app.tr("Unnamed point"),
+                        "type": "poi",
+                        "visible": true,
+                        "x": p.coordinate.longitude,
+                        "y": p.coordinate.latitude
+                    };
+                    destinations.model.append(t);
+                    _destinationsNotForSave.push(t);
+                });
+
+                // recent destinations
+                var dest = py.evaluate("poor.app.history.destinations").slice(0, 10);
+                dest.forEach(function (p) {
+                    destinations.model.append({
+                                                  "text": p.text,
+                                                  "toText": p.text,
+                                                  "type": "recent destination",
+                                                  "visible": true,
+                                                  "x": p.x,
+                                                  "y": p.y
+                                              });
+                });
+            }
+        }
+
+        Column {
+            /////////////////
+            // Follow Me mode
             id: columnFollow
             anchors.left: parent.left
             anchors.right: parent.right
             spacing: app.styler.themePaddingMedium
             visible: followMe
 
-            /////////////////
-            // Follow Me mode
             ListItemLabel {
                 color: app.styler.themeHighlightColor
                 text: app.tr("Follow the movement and show just in time information")
@@ -250,6 +346,15 @@ PagePL {
             page.to = map.getPosition();
         var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.results_qml_uri"));
         app.pushAttached(uri);
+    }
+
+    function saveDestination() {
+        for (var i=0; i < _destinationsNotForSave.length; i++)
+            if (toText === _destinationsNotForSave[i].toText &&
+                    Math.abs(to[0]-_destinationsNotForSave[i].x) < 1e-8 &&
+                    Math.abs(to[1]-_destinationsNotForSave[i].y) < 1e-8)
+                return false;
+        return true;
     }
 
 }

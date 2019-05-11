@@ -47,6 +47,14 @@ PagePL {
         page.loading = true;
         busy.visible = true;
         var routePage = app.pages.previousPage();
+        if (routePage.saveDestination()) {
+            var d = {
+                'text': routePage.toText,
+                'x': routePage.to[0],
+                'y': routePage.to[1]
+            };
+            py.call_sync("poor.app.history.add_destination", [d]);
+        }
         var args = [routePage.from, routePage.to];
         py.call("poor.app.router.route", args, function(route) {
             if (route && route.error && route.message) {
