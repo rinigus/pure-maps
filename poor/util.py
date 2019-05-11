@@ -39,6 +39,12 @@ import urllib.parse
 from poor.i18n import _
 from poor.openlocationcode.openlocationcode import encode as olc_encode
 
+def angle_difference(a, b):
+    # calculate difference between angles
+    # from https://stackoverflow.com/a/7869457
+    da = a - b
+    return abs((a + 180) % 360 - 180)
+
 @contextlib.contextmanager
 def atomic_open(path, mode="w", *args, **kwargs):
     """A context manager for atomically writing a file."""
