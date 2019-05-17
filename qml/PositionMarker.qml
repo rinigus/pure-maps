@@ -17,12 +17,15 @@
  */
 
 import QtQuick 2.0
+import QtPositioning 5.3
 import "."
 
 Item {
     id: marker
 
     property bool directionVisible: false
+    property var  position: QtPositioning.coordinate(49, 13)
+    property var  positionShown
 
     readonly property var images: QtObject {
         readonly property string moving: "pure-position-moving"
@@ -37,13 +40,31 @@ Item {
 
     readonly property string source: "pure-position"
 
+    CoordinateAnimation {
+        id: animate
+        duration: map.animationTime
+        easing.type: Easing.Linear
+        target: marker
+        property: "positionShown"
+    }
+
     Connections {
         target: map
         onDirectionChanged: marker.updateDirection();
         onMetersPerPixelChanged: marker.updateUncertainty()
         onPositionChanged: {
-            map.updateSourcePoint(marker.source, map.position.coordinate);
-            marker.updateUncertainty();
+            if (!positionShown) {
+                positionShown = QtPositioning.coordinate(map.position.coordinate.latitude, map.position.coordinate.longitude);
+                marker.position = QtPositioning.coordinate(map.position.coordinate.latitude, map.position.coordinate.longitude);
+                animate.to = marker.position;
+            } else {
+                animate.complete();
+                marker.position = animate.to;
+                animate.from = QtPositioning.coordinate(marker.position.latitude, marker.position.longitude);
+                animate.to = QtPositioning.coordinate(map.position.coordinate.latitude, map.position.coordinate.longitude);
+                animate.start();
+                marker.position = QtPositioning.coordinate(map.position.coordinate.latitude, map.position.coordinate.longitude);
+            }
         }
     }
 
@@ -52,6 +73,12 @@ Item {
         marker.initLayers();
         marker.configureLayers();
         marker.updateDirection();
+        marker.updateUncertainty();
+    }
+
+    onPositionShownChanged: {
+        if (!positionShown) return;
+        map.updateSourcePoint(marker.source, marker.positionShown);
         marker.updateUncertainty();
     }
 

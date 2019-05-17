@@ -254,7 +254,7 @@ Item {
     // support for testing
     Timer {
         id: testingTimer
-        interval: Math.max(gps.updateInterval, 1)
+        interval: Math.max(gps.updateInterval, 1000)
         running: false
         repeat: true
         onTriggered: {

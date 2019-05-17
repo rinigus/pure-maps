@@ -47,6 +47,7 @@ PositionSourceMapMatched {
     property var timeActivate:  Date.now()
     property var timeDirection: Date.now()
     property var timePosition:  Date.now()
+    property int timePerUpdate: 1000
 
     onActiveChanged: {
         // Keep track of when positioning was (re)activated.
@@ -63,6 +64,9 @@ PositionSourceMapMatched {
     }
 
     onPositionChanged: {
+        gps.timePerUpdate = Math.round(Math.min(2000,
+                                                Math.max(500, Date.now()-gps.timePosition)) / 100)*100;
+        gps.timePosition = Date.now();
         // proceed only if map matching does not provide direction
         if (directionValid) return;
         // Calculate direction as a median of individual direction values
@@ -72,7 +76,6 @@ PositionSourceMapMatched {
             gps.position.longitudeValid &&
             gps.position.coordinate.latitude &&
             gps.position.coordinate.longitude;
-        gps.timePosition = Date.now();
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 40) return;
         var coord = gps.position.coordinate;

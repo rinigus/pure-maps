@@ -42,6 +42,12 @@ MapboxMap {
     // Token for Mapbox.com-hosted maps, i.e. sources with mapbox:// URLs.
     // accessToken is specified on loading Map in RootPage
 
+    property int    animationTime: {
+        if (!map.ready) return 0;
+        if (app.mode === modes.explore || app.mode === modes.exploreRoute)
+            return 1000;
+        return gps.timePerUpdate;
+    }
     property bool   autoCenter: false
     property bool   autoRotate: false
     property bool   autoZoom: false
@@ -97,8 +103,8 @@ MapboxMap {
 
     Behavior on center {
         CoordinateAnimation {
-            duration: map.ready && (app.mode === modes.explore || app.mode === modes.exploreRoute) ? 500 : 0
-            easing.type: Easing.InOutQuad
+            duration: map.ready ? animationTime : 0
+            easing.type: app.mode === modes.explore || app.mode === modes.exploreRoute ? Easing.InOutQuad : Easing.Linear
         }
     }
 
