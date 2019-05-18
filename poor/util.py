@@ -43,7 +43,7 @@ def angle_difference(a, b):
     # calculate difference between angles
     # from https://stackoverflow.com/a/7869457
     da = a - b
-    return abs((a + 180) % 360 - 180)
+    return abs((da + 180) % 360 - 180)
 
 @contextlib.contextmanager
 def atomic_open(path, mode="w", *args, **kwargs):
