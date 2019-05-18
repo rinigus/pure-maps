@@ -42,7 +42,7 @@ Item {
 
     CoordinateAnimation {
         id: animate
-        duration: map.animationTime
+        duration: (app.mode === modes.navigate || app.mode === modes.followMe) ? map.animationTime : 0
         easing.type: Easing.Linear
         target: marker
         property: "positionShown"
