@@ -24,10 +24,10 @@ FilePickerPage {
     id: page
 
     property string selectedFilepath
+    signal selected
 
-    onSelectedContentPropertiesChanged: selectedFilepath = selectedContentProperties.filePath
-
-    function open() {
-        app.pages.push(page);
+    onSelectedContentPropertiesChanged: {
+        selectedFilepath = selectedContentProperties.filePath;
+        selected();
     }
 }

@@ -30,18 +30,13 @@ FormLayoutPL {
         label: app.tr("File")
         value: selectedFile ? selectedFile : app.tr("None")
         width: parent.width
-        onClicked: app.pages.push(filePickerPage)
-    }
-
-    Component {
-        id: filePickerPage
-        FilePickerPL {
-            id: picker
-            nameFilters: [ '*.gpx' ]
-            onSelectedFilepathChanged: {
-                settingsBlock.selectedFile = picker.selectedFilepath
+        onClicked: {
+            var dialog = app.pages.push(Qt.resolvedUrl("../qml/platform/FileSelectorPL.qml"),
+                                        {"nameFilters": [ '*.gpx' ]});
+            dialog.selected.connect(function() {
+                selectedFile = dialog.selectedFilepath;
                 app.conf.set("routers.gpx.file", settingsBlock.selectedFile);
-            }
+            });
         }
     }
 
