@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-30 10:35+0200\n"
+"POT-Creation-Date: 2019-05-18 20:44+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rui kon <facebookmail@qq.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -45,8 +45,8 @@ msgstr "连接超时"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/NearbyPage.qml:30 qml/NearbyPage.qml:136 qml/NearbyPage.qml:151
-#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:238
-#: qml/RoutePage.qml:248 qml/RoutePage.qml:250 qml/RoutePoint.qml:42
+#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:333
+#: qml/RoutePage.qml:343 qml/RoutePage.qml:345 qml/RoutePoint.qml:42
 #: qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr "当前位置"
@@ -119,116 +119,120 @@ msgstr "HERE 软件账号"
 msgid "HERE App Code"
 msgstr "HERE 软件密码"
 
-#: poor/narrative.py:130
+#: poor/narrative.py:131
 #, python-brace-format
 msgid "In {distance}, {direction}"
 msgstr "在 {distance}, {direction}"
 
-#: poor/narrative.py:221 poor/narrative.py:223
+#: poor/narrative.py:222 poor/narrative.py:224
 msgid "Exit: "
 msgstr "退出: "
 
-#: poor/narrative.py:421 qml/pure-maps.qml:231
-msgid "Rerouting"
-msgstr "重新规划"
-
-#: poor/narrative.py:422 qml/pure-maps.qml:253
-msgid "Rerouting failed"
-msgstr "重新规划线路失败"
-
-#: poor/narrative.py:423 qml/pure-maps.qml:247
+#: poor/narrative.py:618 qml/pure-maps.qml:278
 msgid "New route found"
 msgstr "发现新路线"
 
-#: poor/util.py:186 poor/util.py:204
+#: poor/narrative.py:619 qml/pure-maps.qml:262
+msgid "Rerouting"
+msgstr "重新规划"
+
+#: poor/narrative.py:620 qml/pure-maps.qml:284
+msgid "Rerouting failed"
+msgstr "重新规划线路失败"
+
+#: poor/narrative.py:621
+msgid "Starting navigation"
+msgstr ""
+
+#: poor/util.py:192 poor/util.py:210
 msgid "mi"
 msgstr "米"
 
-#: poor/util.py:186 poor/util.py:204
+#: poor/util.py:192 poor/util.py:210
 msgid "miles"
 msgstr "英里"
 
-#: poor/util.py:194 qml/Meters.qml:85
+#: poor/util.py:200 qml/Meters.qml:85
 msgid "ft"
 msgstr "英尺"
 
-#: poor/util.py:194
+#: poor/util.py:200
 msgid "feet"
 msgstr "英尺"
 
-#: poor/util.py:212 qml/Meters.qml:95
+#: poor/util.py:218 qml/Meters.qml:95
 msgid "yd"
 msgstr "码"
 
-#: poor/util.py:212
+#: poor/util.py:218
 msgid "yards"
 msgstr "码"
 
-#: poor/util.py:222
+#: poor/util.py:228
 msgid "km"
 msgstr "千米"
 
-#: poor/util.py:222
+#: poor/util.py:228
 msgid "kilometers"
 msgstr "千米"
 
-#: poor/util.py:230 qml/Meters.qml:105
+#: poor/util.py:236 qml/Meters.qml:105
 msgid "m"
 msgstr "米"
 
-#: poor/util.py:230
+#: poor/util.py:236
 msgid "meters"
 msgstr "米"
 
-#: poor/util.py:239 poor/util.py:247
+#: poor/util.py:245 poor/util.py:253
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance}  北"
 
-#: poor/util.py:240
+#: poor/util.py:246
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} 东北"
 
-#: poor/util.py:241
+#: poor/util.py:247
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} 东"
 
-#: poor/util.py:242
+#: poor/util.py:248
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} 东南"
 
-#: poor/util.py:243
+#: poor/util.py:249
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} 南"
 
-#: poor/util.py:244
+#: poor/util.py:250
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} 西南"
 
-#: poor/util.py:245
+#: poor/util.py:251
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} 西"
 
-#: poor/util.py:246
+#: poor/util.py:252
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} 西北"
 
-#: poor/util.py:261 poor/util.py:269
+#: poor/util.py:267 poor/util.py:275
 msgid "plus code"
 msgstr "附加代码"
 
-#: poor/util.py:282
+#: poor/util.py:288
 msgid "{:d} min"
 msgstr "{:d} 分钟"
 
-#: poor/util.py:283
+#: poor/util.py:289
 msgid "{:d} h {:d} min"
 msgstr "{:d} 小时 {:d} 分钟"
 
@@ -340,7 +344,7 @@ msgid "Venue name"
 msgstr "场所名称"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
-#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
+#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:181
 msgid "Remove"
 msgstr "删除"
 
@@ -373,7 +377,7 @@ msgstr "设置后，将开始在此页面沿路线搜索指定的点附近"
 msgid "Search starting from the reference point"
 msgstr "从参考地点开始搜索"
 
-#: qml/AboutPage.qml:25
+#: qml/AboutPage.qml:25 qml/MenuPage.qml:33
 msgid "About Pure Maps"
 msgstr "关于 Pure Maps"
 
@@ -437,10 +441,10 @@ msgstr "场所"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:25
 #: qml/PreferencesPage.qml:363 qml/RoutePage.qml:25
-#: routers/default_results.qml:57 routers/digitransit_results.qml:186
-#: routers/gpx_osmscout_results.qml:57 routers/gpx_results.qml:57
-#: routers/mapquest_open_results.qml:57 routers/osmscout_results.qml:57
-#: routers/osrm_results.qml:57 routers/stadiamaps_results.qml:57
+#: routers/default_results.qml:65 routers/digitransit_results.qml:186
+#: routers/gpx_osmscout_results.qml:65 routers/gpx_results.qml:65
+#: routers/mapquest_open_results.qml:65 routers/osmscout_results.qml:65
+#: routers/osrm_results.qml:65 routers/stadiamaps_results.qml:65
 msgid "Navigation"
 msgstr "导航"
 
@@ -458,7 +462,7 @@ msgstr "已开启自动居中"
 
 #: qml/CenterButton.qml:137
 msgid "Tap center button again for auto-center"
-msgstr ""
+msgstr "再次点击集中按钮以自动集中"
 
 #: qml/GeocodeItem.qml:42
 msgid "No selection"
@@ -477,10 +481,10 @@ msgid "Searching ..."
 msgstr "搜索中……"
 
 #: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:142
-#: routers/default_results.qml:67 routers/digitransit_results.qml:245
-#: routers/gpx_osmscout_results.qml:67 routers/gpx_results.qml:67
-#: routers/mapquest_open_results.qml:67 routers/osmscout_results.qml:67
-#: routers/osrm_results.qml:67 routers/stadiamaps_results.qml:67
+#: routers/default_results.qml:75 routers/digitransit_results.qml:253
+#: routers/gpx_osmscout_results.qml:75 routers/gpx_results.qml:75
+#: routers/mapquest_open_results.qml:75 routers/osmscout_results.qml:75
+#: routers/osrm_results.qml:75 routers/stadiamaps_results.qml:75
 msgid "No results"
 msgstr "未找到结果"
 
@@ -493,7 +497,8 @@ msgid "Points of Interest (%1)"
 msgstr "兴趣地点 (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePoint.qml:62
+#: qml/PoiPage.qml:47 qml/RoutePage.qml:220 qml/RoutePage.qml:222
+#: qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "无名地点"
 
@@ -587,19 +592,15 @@ msgstr "离线"
 msgid "Mixed"
 msgstr "混合"
 
-#: qml/Map.qml:465
+#: qml/Map.qml:472
 msgid "Voice navigation on"
 msgstr "语音导航开启"
 
-#: qml/Map.qml:466
+#: qml/Map.qml:475
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
-msgstr ""
-
-#: qml/MenuPage.qml:33
-msgid "About"
-msgstr "关于"
+msgstr "语言导航引擎不可用：所选语言缺失文本转语音（TTS）引擎"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -662,7 +663,7 @@ msgstr "停止"
 msgid "Resume"
 msgstr "继续"
 
-#: qml/NavigationPage.qml:48 qml/RoutePage.qml:172
+#: qml/NavigationPage.qml:48 qml/RoutePage.qml:267
 msgid "Begin"
 msgstr "开始"
 
@@ -687,7 +688,7 @@ msgid "Options"
 msgstr "操作"
 
 #: qml/NavigationPage.qml:169 qml/PreferencesPage.qml:179
-#: qml/RoutePage.qml:213
+#: qml/RoutePage.qml:308
 msgid "Map scale"
 msgstr "地图比例尺"
 
@@ -717,7 +718,7 @@ msgid "Radius"
 msgstr "半径"
 
 #: qml/NearbyPage.qml:104 qml/PoiEditPage.qml:57
-#: routers/gpx_osmscout_settings.qml:50 routers/gpx_settings.qml:50
+#: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
 #: routers/mapquest_open_settings.qml:26 routers/ValhallaSettings.qml:35
 msgid "Type"
 msgstr "类型"
@@ -912,7 +913,7 @@ msgid ""
 " search."
 msgstr "暂无收藏地点，你可以使用地图和搜索收藏位置。"
 
-#: qml/Poi.qml:193 qml/pure-maps.qml:131
+#: qml/Poi.qml:193 qml/pure-maps.qml:147
 msgid "Clearing map"
 msgstr "清除地图"
 
@@ -1001,20 +1002,20 @@ msgstr "快速走到路上"
 msgid "None"
 msgstr "无"
 
-#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:196
-#: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
+#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:291
+#: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Car"
 msgstr "汽车"
 
-#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:196
-#: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
+#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:291
+#: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Bicycle"
 msgstr "自行车"
 
-#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:196
-#: routers/gpx_osmscout_settings.qml:51 routers/gpx_settings.qml:51
+#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:291
+#: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Foot"
 msgstr "步行"
@@ -1194,54 +1195,54 @@ msgstr "测试"
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
-msgstr ""
+msgstr "测试文字转语音（TTS）引擎。 选择与导航相同的语言，偏好性别，然后按下面的按钮进行测试。"
 
-#: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:70
+#: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:65
 #: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
 msgid "Language"
 msgstr "语言"
 
-#: qml/PreferencesPage.qml:521 routers/gpx_osmscout_settings.qml:71
+#: qml/PreferencesPage.qml:521 routers/gpx_osmscout_settings.qml:66
 #: routers/ValhallaSettings.qml:58
 msgid "English"
 msgstr "英语"
 
-#: qml/PreferencesPage.qml:522 routers/gpx_osmscout_settings.qml:71
+#: qml/PreferencesPage.qml:522 routers/gpx_osmscout_settings.qml:66
 #: routers/ValhallaSettings.qml:58
 msgid "Catalan"
 msgstr "加泰罗尼亚语"
 
-#: qml/PreferencesPage.qml:523 routers/gpx_osmscout_settings.qml:71
+#: qml/PreferencesPage.qml:523 routers/gpx_osmscout_settings.qml:66
 #: routers/ValhallaSettings.qml:58
 msgid "Czech"
 msgstr "捷克语"
 
-#: qml/PreferencesPage.qml:524 routers/gpx_osmscout_settings.qml:72
+#: qml/PreferencesPage.qml:524 routers/gpx_osmscout_settings.qml:67
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:59
 msgid "German"
 msgstr "德语"
 
-#: qml/PreferencesPage.qml:525 routers/gpx_osmscout_settings.qml:73
+#: qml/PreferencesPage.qml:525 routers/gpx_osmscout_settings.qml:68
 #: routers/ValhallaSettings.qml:60
 msgid "Spanish"
 msgstr "西班牙语"
 
-#: qml/PreferencesPage.qml:526 routers/gpx_osmscout_settings.qml:72
+#: qml/PreferencesPage.qml:526 routers/gpx_osmscout_settings.qml:67
 #: routers/ValhallaSettings.qml:59
 msgid "French"
 msgstr "法语"
 
-#: qml/PreferencesPage.qml:527 routers/gpx_osmscout_settings.qml:72
+#: qml/PreferencesPage.qml:527 routers/gpx_osmscout_settings.qml:67
 #: routers/ValhallaSettings.qml:59
 msgid "Hindi"
 msgstr "印地语"
 
-#: qml/PreferencesPage.qml:528 routers/gpx_osmscout_settings.qml:72
+#: qml/PreferencesPage.qml:528 routers/gpx_osmscout_settings.qml:67
 #: routers/ValhallaSettings.qml:59
 msgid "Italian"
 msgstr "意大利语"
 
-#: qml/PreferencesPage.qml:529 routers/gpx_osmscout_settings.qml:73
+#: qml/PreferencesPage.qml:529 routers/gpx_osmscout_settings.qml:68
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:60
 msgid "Russian"
 msgstr "俄语"
@@ -1250,7 +1251,7 @@ msgstr "俄语"
 msgid "Slovak"
 msgstr "斯洛伐克语"
 
-#: qml/PreferencesPage.qml:531 routers/gpx_osmscout_settings.qml:73
+#: qml/PreferencesPage.qml:531 routers/gpx_osmscout_settings.qml:68
 #: routers/ValhallaSettings.qml:60
 msgid "Swedish"
 msgstr "瑞典语"
@@ -1304,7 +1305,7 @@ msgstr "显示当前缩放级别"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:243
+#: qml/pure-maps.qml:274
 msgid "Rerouting failed: %1"
 msgstr "重新规划路线失败: %1"
 
@@ -1331,37 +1332,41 @@ msgstr "跟随我"
 msgid "Reverse endpoints"
 msgstr "颠倒端点"
 
-#: qml/RoutePage.qml:108
+#: qml/RoutePage.qml:110
 msgid "From"
 msgstr "从"
 
-#: qml/RoutePage.qml:109
+#: qml/RoutePage.qml:111
 msgid "Origin"
 msgstr "起点"
 
-#: qml/RoutePage.qml:115
+#: qml/RoutePage.qml:117
 msgid "To"
 msgstr "到"
 
-#: qml/RoutePage.qml:116
+#: qml/RoutePage.qml:118
 msgid "Destination"
 msgstr "目的地"
 
 #: qml/RoutePage.qml:163
+msgid "Destinations"
+msgstr ""
+
+#: qml/RoutePage.qml:258
 msgid "Follow the movement and show just in time information"
 msgstr "跟踪位置移动并实时显示信息"
 
-#: qml/RoutePage.qml:172
+#: qml/RoutePage.qml:267
 msgid "Stop"
 msgstr "停止"
 
-#: qml/RoutePage.qml:194
+#: qml/RoutePage.qml:289
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr "仅当 \"Pure Maps\" 处于跟我走模式时，选取交通方式"
 
-#: qml/RoutePage.qml:195
+#: qml/RoutePage.qml:290
 msgid "Mode of transportation"
 msgstr "交通方式"
 
@@ -1379,7 +1384,7 @@ msgstr "模式: %1"
 
 #: qml/ScaleBar.qml:195
 msgid "Auto-zoom requires auto-centering to be enabled"
-msgstr ""
+msgstr "自动缩放要求启动自动集中"
 
 #: qml/ScaleBar.qml:206
 msgid "Auto-zoom on"
@@ -1433,7 +1438,7 @@ msgstr "步行 %1"
 msgid "%1 → %2"
 msgstr "%1 → %2"
 
-#: routers/digitransit_results.qml:240
+#: routers/digitransit_results.qml:248
 msgid "Results"
 msgstr "结果"
 
@@ -1490,32 +1495,32 @@ msgstr "最少步行"
 msgid "File"
 msgstr "文件"
 
-#: routers/gpx_osmscout_settings.qml:51 routers/ValhallaSettings.qml:37
+#: routers/gpx_osmscout_settings.qml:46 routers/ValhallaSettings.qml:37
 #: routers/ValhallaSettings.qml:110
 msgid "Bus"
 msgstr "公共汽车"
 
-#: routers/gpx_osmscout_settings.qml:52 routers/ValhallaSettings.qml:37
+#: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:37
 msgid "High-occupancy vehicle (HOV)"
 msgstr "高速公路驾车 (HOV)"
 
-#: routers/gpx_osmscout_settings.qml:52 routers/ValhallaSettings.qml:37
+#: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:37
 msgid "Motorcycle"
 msgstr "摩托车"
 
-#: routers/gpx_osmscout_settings.qml:52 routers/ValhallaSettings.qml:37
+#: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:37
 msgid "Motor Scooter"
 msgstr "小型摩托车"
 
-#: routers/gpx_osmscout_settings.qml:71 routers/ValhallaSettings.qml:58
+#: routers/gpx_osmscout_settings.qml:66 routers/ValhallaSettings.qml:58
 msgid "English Pirate"
 msgstr "英国海盗"
 
-#: routers/gpx_osmscout_settings.qml:72 routers/ValhallaSettings.qml:59
+#: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:59
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:60
+#: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:60
 msgid "Slovenian"
 msgstr "斯洛文尼亚语"
 
