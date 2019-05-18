@@ -1,3 +1,12 @@
+2019-05-19: Pure Maps 1.20
+==========================
+
+* Add voice prompt at the beginning of navigation
+* Make transitions during navigation smooth
+* Update voice prompt cache code
+* Update translations 
+* Bugfixes
+
 2019-03-30: Pure Maps 1.19 
 ==========================
 

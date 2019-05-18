@@ -37,6 +37,15 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.20.0" date="2019-05-19">
+     <description>
+       <p>Add voice prompt at the beginning of navigation</p>
+       <p>Make transitions during navigation smooth</p>
+       <p>Update voice prompt cache code</p>
+       <p>Update translations</p>
+       <p>Bugfixes</p>
+     </description>
+   </release>
    <release  version="1.19.0" date="2019-03-30">
      <description>
        <p>Update icons [mosen]</p>
