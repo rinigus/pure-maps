@@ -68,14 +68,7 @@ Kirigami.ApplicationWindow {
 
     function initPages() {
         if (menuPageUrl) {
-            var pc = Qt.createComponent(menuPageUrl);
-            if (pc.status === Component.Error) {
-                console.log('Error while creating component');
-                console.log(pc.errorString());
-                return null;
-            }
-            var p = pc.createObject(appWindow);
-            globalDrawer = p;
+            globalDrawer = app.createObject(menuPageUrl);
         }
     }
 

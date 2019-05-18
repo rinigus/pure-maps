@@ -46,13 +46,8 @@ QtObject {
     }
 
     function push(pagefile, options) {
-        var pc = Qt.createComponent(pagefile);
-        if (pc.status === Component.Error) {
-            console.log('Error while creating component');
-            console.log(pc.errorString());
-            return null;
-        }
-        var p = pc.createObject(app, options ? options : {})
+        var p = app.createObject(pagefile, options ? options : {});
+        if (!p) return;
         _stack.push([{"stack_index": app.pages.currentIndex + 1, "page": p}]);
         app.pages.push(p);
         // console.log('Pushed: ' + p);
@@ -60,13 +55,8 @@ QtObject {
     }
 
     function pushAttached(pagefile, options) {
-        var pc = Qt.createComponent(pagefile);
-        if (pc.status === Component.Error) {
-            console.log('Error while creating component');
-            console.log(pc.errorString());
-            return null;
-        }
-        var p = pc.createObject(app, options ? options : {})
+        var p = app.createObject(pagefile, options ? options : {});
+        if (!p) return;
         _stack[_stack.length-1].push({"stack_index": app.pages.currentIndex + 1, "page": p});
         app.pages.pushAttached(p);
         // console.log('Pushed attached: ' + p);

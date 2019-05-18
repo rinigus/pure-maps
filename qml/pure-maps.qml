@@ -156,6 +156,16 @@ ApplicationWindowPL {
         map.clearRoute();
     }
 
+    function createObject(page, options, parent) {
+        var pc = Qt.createComponent(page);
+        if (pc.status === Component.Error) {
+            console.log('Error while creating component');
+            console.log(pc.errorString());
+            return null;
+        }
+        return pc.createObject(parent ? parent : app, options ? options : {})
+    }
+
     function getIcon(name, no_variant) {
         if (!no_variant && app.styler.iconVariant)
             return Qt.resolvedUrl("%1-%2.svg".arg(name).arg(app.styler.iconVariant));
