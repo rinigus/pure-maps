@@ -47,7 +47,7 @@ PagePL {
         page.loading = true;
         busy.visible = true;
         var routePage = app.pages.previousPage();
-        if (routePage.saveDestination()) {
+        if (routePage.saveDestination() && routePage.toText && routePage.to) {
             var d = {
                 'text': routePage.toText,
                 'x': routePage.to[0],
