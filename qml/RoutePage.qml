@@ -157,7 +157,7 @@ PagePL {
             id: columnSuggested
             anchors.left: parent.left
             anchors.right: parent.right
-            visible: !page.to && page.toNeeded
+            visible: !followMe && !page.to && page.toNeeded
 
             SectionHeaderPL {
                 text: app.tr("Destinations")
