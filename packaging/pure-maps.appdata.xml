@@ -12,6 +12,7 @@
   <category>Maps</category>
   <category>Qt</category>
  </categories>
+ <content_rating type="oars-1.0" />
  <url type="homepage">https://github.com/rinigus/pure-maps</url>
  <url type="bugtracker">https://github.com/rinigus/pure-maps/issues</url>
  <url type="donation">https://rinigus.github.io/donate</url>
