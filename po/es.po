@@ -154,7 +154,7 @@ msgstr "Error al recalcular"
 
 #: poor/narrative.py:621
 msgid "Starting navigation"
-msgstr ""
+msgstr "Iniciando navegación"
 
 #: poor/util.py:192 poor/util.py:210
 msgid "mi"
@@ -1405,7 +1405,7 @@ msgstr "Destino"
 
 #: qml/RoutePage.qml:163
 msgid "Destinations"
-msgstr ""
+msgstr "Destinos"
 
 #: qml/RoutePage.qml:258
 msgid "Follow the movement and show just in time information"
