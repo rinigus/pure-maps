@@ -40,134 +40,43 @@
  <releases>
    <release  version="1.20.0" date="2019-05-19">
      <description>
-       <p>Add voice prompt at the beginning of navigation</p>
-       <p>Make transitions during navigation smooth</p>
-       <p>Update voice prompt cache code</p>
-       <p>Update translations</p>
-       <p>Bugfixes</p>
+       <ul>
+         <li>Add voice prompt at the beginning of navigation</li>
+         <li>Make transitions during navigation smooth</li>
+         <li>Update voice prompt cache code</li>
+         <li>Update translations</li>
+         <li>Bugfixes</li>
+       </ul>
      </description>
    </release>
    <release  version="1.19.0" date="2019-03-30">
      <description>
-       <p>Update icons [mosen]</p>
-       <p>Simplify main menu</p>
-       <p>Use indicators to show auto-centering, -zoom, and -rotation</p>
-       <p>Show current search results on map</p>
-       <p>Update translations</p>
-       <p>Bugfixes and corrections of strings</p>
+       <ul>
+         <li>Update icons [mosen]</li>
+         <li>Simplify main menu</li>
+         <li>Use indicators to show auto-centering, -zoom, and -rotation</li>
+         <li>Show current search results on map</li>
+         <li>Update translations</li>
+         <li>Bugfixes and corrections of strings</li>
+       </ul>
      </description>
    </release>
    <release  version="1.18.0" date="2019-03-21">
      <description>
-       <p>Redesign of icons and banner [mosen and Fellfrosch]</p>
-       <p>Map controls shown as buttons</p>
-       <p>Add drag indicator to panels</p>
-       <p>Add command line support</p>
-       <p>Add DBus interface</p>
-       <p>Select closest POI when clicking on a map</p>
-       <p>[kirigami] Set map as an expanding page</p>
-       <p>[flatpak] Update packaging scripts</p>
-       <p>[silica] workaround to show combobox in landscape</p>
-       <p>Update translations</p>
-       <p>Bugfixes</p>
+       <ul>
+         <li>Redesign of icons and banner [mosen and Fellfrosch]</li>
+         <li>Map controls shown as buttons</li>
+         <li>Add drag indicator to panels</li>
+         <li>Add command line support</li>
+         <li>Add DBus interface</li>
+         <li>Select closest POI when clicking on a map</li>
+         <li>[kirigami] Set map as an expanding page</li>
+         <li>[flatpak] Update packaging scripts</li>
+         <li>[silica] workaround to show combobox in landscape</li>
+         <li>Update translations</li>
+         <li>Bugfixes</li>
+       </ul>
      </description>
    </release>
-   <release  version="1.17.0" date="2019-02-25">
-     <description>
-       <p>Provide feedback on map loading error</p>
-       <p>Add automatic zoom</p>
-       <p>Add support for full Open Location Code</p>
-       <p>Change some icons on information bar</p>
-       <p>Notify on missing TTS engine</p>
-       <p>Add clear text buttons in text fields</p>
-       <p>[kirigami] Updates of multiple controls</p>
-       <p>[kirigami,qtcontrols] Redesign preferences page</p>
-       <p>[kirigami,qtcontrols] Support hiDPI monitors</p>
-       <p>[kirigami] Protect against accidental clicks on map controls</p>
-       <p>[silica] Add description to slider control</p>
-       <p>[flatpak] Use Kirigami by default</p>
-       <p>Update translations</p>
-       <p>Bugfixes</p>
-     </description>
-   </release>
-   <release version="1.16.0" date="2019-02-16">
-     <description>
-       <p>Add Kirigami platform</p>
-       <p>Make Kirigami default platform for Linux Desktop</p>
-       <p>Update Mapbox map styles</p>
-       <p>Adjust overall information route layout</p>
-       <p>[kirigami, qtcontrols] Load icons using Qt icon</p>
-       <p>[kirigami, qtcontrols] Add support for translations</p>
-       <p>Bugfixes, code cleanup</p>
-       <p>Update translations</p>
-     </description>
-   </release>
-   <release version="1.15.0" date="2019-02-02">
-     <description>
-       <p>Introduce minimal and full controls mode for maps view</p>
-       <p>Rearrange buttons on the map view</p>
-       <p>Increase position icon contrast [mosen]</p>
-       <p>Update translations</p>
-     </description>
-   </release>
-   <release version="1.14.0" date="2019-01-13">
-     <description>
-       <p>Rename POIs to bookmarks</p>
-       <p>Show overall navigation information on top of the map before navigating</p>
-       <p>Adjust main menu</p>
-       <p>Update translations</p>
-       <p>qtcontrols: Adjust style</p>
-       <p>qtcontrols: Add support to geolocation when packaged as Flatpak</p>
-       <p>Bugfixes</p>
-     </description>
-   </release>
-   <release version="1.13.0" date="2019-01-06">
-     <description>
-       <p>Refactor search functionality</p>
-       <p>Provide search functionality while entering locations in navigation and nearby search</p>
-       <p>Update translations</p>
-       <p>Internal restructuring of POI handling</p>
-       <p>qtcontrols: revise search field</p>
-       <p>Bugfix: restore ability to see all search results</p>
-       <p>Bugfix: remove temporary POIs while browsing them</p>
-     </description>
-   </release>
-   <release version="1.12.0" date="2018-12-28">
-     <description>
-       <p>Keep non-bookmarked POIs only until current operation is finished</p>
-       <p>Refactor POI panel into generic info panel</p>
-       <p>Show current state (such as map selection, search) on info panel</p>
-       <p>Allow to finish navigation by swiping navigation bar out</p>
-       <p>Update translations</p>
-       <p>Bugfix: Fill reverse geocoding result properly</p>
-     </description>
-   </release>
-   <release version="1.11.0" date="2018-12-13">
-     <description>
-       <p>Add reverse geocoding</p>
-       <p>Move geocoder, guide, and router selection into menus</p>
-       <p>Redesign Search page</p>
-       <p>Follow Me and Navigation are switched through menus</p>
-       <p>Update translations</p>
-     </description>
-   </release>
-   <release version="1.10.0" date="2018-12-04">
-     <description>
-       <p>Add support for online and offline profiles</p>
-       <p>Add position uncertainty indicator</p>
-       <p>Add facility for TTS testing in Preferences</p>
-     </description>
-   </release>
-   <release version="1.9.0" date="2018-11-20">
-     <description>
-       <p>Replace explicit event handlers with property binding (accumulator)</p>
-       <p>Add platform and SDK download instructions to flatpak docs (M4rtinK)</p>
-       <p>Add support for personal API keys</p>
-       <p>Add shortlisted POIs for fast selection in navigation</p>
-       <p>Update translations</p>
-       <p>Flathub release</p>
-     </description>
-   </release>
-   <release version="1.8.0" date="2018-10-28"/>
  </releases>
 </component>
