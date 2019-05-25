@@ -626,7 +626,10 @@ MapboxMap {
 
     function updateRoute() {
         // Update route polyline on the map.
-        map.updateSourceLine(map.sources.route, map.route.coordinates);
+        if (map.route.coordinates)
+            map.updateSourceLine(map.sources.route, map.route.coordinates);
+        else
+            map.updateSourceLine(map.sources.route, []);
     }
 
 }
