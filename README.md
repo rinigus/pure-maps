@@ -125,6 +125,18 @@ signals, functions), are ordered alphabetically.
 Its possible that some of the implemented code does not fully comply
 with the outlined order. Then it should be fixed eventually.
 
+If you wish to run the code while developing, it is recommended to
+make a symbolic link (command run from Pure Maps source folder):
+
+```
+ln -s ../thirdparty/open-location-code poor/openlocationcode
+```
+
+If GPXPy is not installed in the system, but is pulled as a thirdparty
+module, Pure Maps will run when executed using `qmlscene`, `qmlrunner`
+or similar tool, but the automatic tests will fail. This is an expected
+behavior or the implementation.
+
 ### QML
 
 To simplify development, there are few simple rules regarding QML file
