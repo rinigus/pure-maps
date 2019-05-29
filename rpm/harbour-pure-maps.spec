@@ -31,7 +31,7 @@ search for nearby places by type and share your location.
 %setup -q
 
 %install
-make DESTDIR=%{buildroot} PREFIX=/usr install
+make DESTDIR=%{buildroot} PREFIX=/usr INCLUDE_GPXPY=yes install
 
 %files
 %defattr(-,root,root,-)

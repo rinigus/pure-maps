@@ -29,6 +29,7 @@ Python {
 
     Component.onCompleted: {
         addImportPath(Qt.resolvedUrl(".."));
+        addImportPath(Qt.resolvedUrl("../thirdparty/gpxpy"));
         importModule("poor", function() {
             py.call("poor.main", [], function() {
                 py.ready = true;

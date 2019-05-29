@@ -96,8 +96,10 @@ install:
 	@echo "Installing Python files..."
 	mkdir -p $(DATADIR)/poor
 	cp poor/*.py $(DATADIR)/poor
-	mkdir -p $(DATADIR)/poor/gpxpy
-	cp thirdparty/gpxpy/gpxpy/*.py $(DATADIR)/poor/gpxpy
+ifeq ($(INCLUDE_GPXPY),yes)
+	mkdir -p $(DATADIR)/thirdparty/gpxpy/gpxpy
+	cp thirdparty/gpxpy/gpxpy/*.py $(DATADIR)/thirdparty/gpxpy/gpxpy
+endif
 	mkdir -p $(DATADIR)/poor/openlocationcode
 	cp thirdparty/open-location-code/*.py $(DATADIR)/poor/openlocationcode
 	@echo "Installing QML files..."

@@ -21,7 +21,7 @@ import collections
 import contextlib
 import functools
 import glob
-import poor.gpxpy.parser
+import gpxpy.parser
 import json
 import locale
 import math
@@ -457,7 +457,7 @@ def read_gpx(path):
     """Read and join tracks from GPX file at `path`."""
     try:
         with open(path, "r", encoding="utf_8") as f:
-            gpx = poor.gpxpy.parser.GPXParser(f).parse()
+            gpx = gpxpy.parser.GPXParser(f).parse()
             x, y = [], []
             # prefer route to recorded track if the both are available
             for route in gpx.routes:

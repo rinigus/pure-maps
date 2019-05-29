@@ -52,11 +52,16 @@ are needed:
 * PyXDG https://www.freedesktop.org/wiki/Software/pyxdg/
 * Mapbox GL Native, Qt version, use the packaged version at https://github.com/rinigus/pkg-mapbox-gl-native
 * Mapbox GL QML, unofficial QML bindings, https://github.com/rinigus/mapbox-gl-qml
-* [flatpak only] QML runner https://github.com/rinigus/qmlrunner
+* [non-Sailfish] QML runner https://github.com/rinigus/qmlrunner
+* GPXPy, https://github.com/tkrajina/gpxpy
 
 When developing with Kirigami using flatpak builder, dependencies will
 be pulled and installed in flatpak. See instructions regarding
 Kirigami below.
+
+GPXPy is also provided as a thirdparty submodule and can be installed
+together with Pure Maps by setting `INCLUDE_GPXPY=yes` argument to
+`make install`. 
 
 
 ## Packaging
