@@ -157,6 +157,7 @@ endif
 	@echo "Installing executable file..."
 	mkdir -p $(EXEDIR)
 	cp data/$(NAME) $(EXE) || true
+	sed -i -e 's|INSTALL_PREFIX|$(PREFIX)|g' $(EXE) || true
 	@echo "Installing appdata file..."
 	mkdir -p $(METADIR)
 	cp packaging/pure-maps.appdata.xml $(METADIR)/$(NAME).appdata.xml || true
