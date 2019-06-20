@@ -95,10 +95,11 @@ dependencies. In the following examples, `/usr/local/lib64/qml`,
 please adjust if needed.
 
 To run Pure Maps from the folder containing source, make a symbolic
-link
+links
 
 ```
 ln -s qml/icons/fallback icons
+ln -s ../thirdparty/open-location-code poor/openlocationcode
 ```
 
 and then run with
