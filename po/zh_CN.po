@@ -142,7 +142,7 @@ msgstr "重新规划线路失败"
 
 #: poor/narrative.py:621
 msgid "Starting navigation"
-msgstr ""
+msgstr "开始导航"
 
 #: poor/util.py:192 poor/util.py:210
 msgid "mi"
@@ -1350,7 +1350,7 @@ msgstr "目的地"
 
 #: qml/RoutePage.qml:163
 msgid "Destinations"
-msgstr ""
+msgstr "目的地"
 
 #: qml/RoutePage.qml:258
 msgid "Follow the movement and show just in time information"

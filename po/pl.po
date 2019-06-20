@@ -154,7 +154,7 @@ msgstr "Zmiana trasy nie powiodła się"
 
 #: poor/narrative.py:621
 msgid "Starting navigation"
-msgstr ""
+msgstr "Uruchamianie nawigacji"
 
 #: poor/util.py:192 poor/util.py:210
 msgid "mi"
@@ -298,7 +298,7 @@ msgstr "Tablica {mode_name} {line_desc} na {dep_name} za {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr "Iść w kierunku miejsca przeznaczenia."
+msgstr "Iść w kierunku miejsca docelowego."
 
 #: routers/digitransit.py:73
 #, python-brace-format
@@ -309,7 +309,7 @@ msgstr "Zostaw rower miejski w {dep_name} i idź w kierunku {arr_name}."
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
 msgstr ""
-"Zostaw rower miejski w {dep_name} i idź w kierunku miejsca przeznaczenia"
+"Zostaw rower miejski w {dep_name} i idź w kierunku miejsca docelowego."
 
 #: routers/digitransit.py:76
 #, python-brace-format
@@ -332,7 +332,7 @@ msgstr ""
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Wysiądź {dep_name} i idź w kierunku swojego celu."
+msgstr "Wysiądź {dep_name} i idź w kierunku miejsca docelowego."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
@@ -803,7 +803,7 @@ msgstr "Telefon"
 
 #: qml/PoiBlock.qml:129
 msgid "Shortlisted"
-msgstr ""
+msgstr "Dodane do krótkiej listy"
 
 #: qml/PoiBlock.qml:130
 msgid "Text"
@@ -907,7 +907,7 @@ msgstr "Zakładka"
 
 #: qml/PoiInfoPage.qml:144
 msgid "Shortlist"
-msgstr ""
+msgstr "Dodaj do krótkiej listy"
 
 #: qml/PoiInfoPage.qml:157
 msgid "Share location"
@@ -1406,7 +1406,7 @@ msgstr "Miejsce docelowe"
 
 #: qml/RoutePage.qml:163
 msgid "Destinations"
-msgstr ""
+msgstr "Miejsca docelowe"
 
 #: qml/RoutePage.qml:258
 msgid "Follow the movement and show just in time information"

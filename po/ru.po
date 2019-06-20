@@ -156,7 +156,7 @@ msgstr "Перестроение маршрута не удалось"
 
 #: poor/narrative.py:621
 msgid "Starting navigation"
-msgstr ""
+msgstr "Начало навигации"
 
 #: poor/util.py:192 poor/util.py:210
 msgid "mi"
@@ -1403,7 +1403,7 @@ msgstr "Пункт назначения"
 
 #: qml/RoutePage.qml:163
 msgid "Destinations"
-msgstr ""
+msgstr "Пункты назначения"
 
 #: qml/RoutePage.qml:258
 msgid "Follow the movement and show just in time information"
