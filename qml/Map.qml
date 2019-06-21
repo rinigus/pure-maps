@@ -39,9 +39,6 @@ MapboxMap {
     pixelRatio: app.styler.themePixelRatio * 1.5
     zoomLevel: 4.0
 
-    // Token for Mapbox.com-hosted maps, i.e. sources with mapbox:// URLs.
-    // accessToken is specified on loading Map in RootPage
-
     property int    animationTime: {
         if (!map.ready) return 0;
         if (app.mode === modes.explore || app.mode === modes.exploreRoute)
