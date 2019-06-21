@@ -7,7 +7,7 @@
     "© GeoNames": "http://www.geonames.org/",
     "© MML": "https://www.maanmittauslaitos.fi/"
   },
-  "_description": "Search in Finland",
+  "_description": "Search in Finland. Supports autocomplete",
   "name": "Digitransit",
   "profiles": ["mixed", "online"]
 }

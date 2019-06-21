@@ -4,7 +4,7 @@
     "© OpenStreetMap": "https://www.openstreetmap.org/copyright",
     "UK Postal Codes from FreeMapTools. Contain Ordnance Survey data, National Statistics data © Crown copyright and database right 2017; Royal Mail data © Royal Mail copyright and database right.": "https://www.freemaptools.com/download-uk-postcode-lat-lng.htm"
   },
-  "_description": "Search based on OpenStreetMap data",
+  "_description": "Search based on open data sources. Supports autocomplete",
   "name": "OSM Scout",
   "profiles": ["mixed", "offline"],
   "requires": ["harbour-osmscout-server", "osmscout-server"]
