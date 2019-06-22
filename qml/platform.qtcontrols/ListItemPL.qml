@@ -50,7 +50,7 @@ Item {
             acceptedButtons: Qt.RightButton
             propagateComposedEvents: true
             onClicked: {
-                if (!menu) return
+                if (!menu || !menu.enabled) return
                 menu.x = mouse.x
                 menu.y = mouse.y
                 menu.visibleChanged.connect(function (){
