@@ -40,14 +40,18 @@ PositionSourceMapMatched {
 
     testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
 
-    property var coordHistory: []
+    property bool accurate: ready &&
+                            position.horizontalAccuracyValid &&
+                            position.horizontalAccuracy > 0 &&
+                            position.horizontalAccuracy < 25
+    property var  coordHistory: []
     property bool directionCalculated: false
-    property var directionHistory: []
-    property var ready: false
-    property var timeActivate:  Date.now()
-    property var timeDirection: Date.now()
-    property var timePosition:  Date.now()
-    property int timePerUpdate: 1000
+    property var  directionHistory: []
+    property var  ready: false
+    property var  timeActivate:  Date.now()
+    property var  timeDirection: Date.now()
+    property var  timePosition:  Date.now()
+    property int  timePerUpdate: 1000
 
     onActiveChanged: {
         // Keep track of when positioning was (re)activated.

@@ -43,7 +43,9 @@ MapboxMap {
         if (!map.ready) return 0;
         if (app.mode === modes.explore || app.mode === modes.exploreRoute)
             return 1000;
-        return gps.timePerUpdate;
+        // support smooth animations for position marker
+        // and map center only if GPS is accurate
+        return (gps.accurate ? gps.timePerUpdate : 0);
     }
     property bool   autoCenter: false
     property bool   autoRotate: false
