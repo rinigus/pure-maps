@@ -23,7 +23,7 @@ MapButton {
     id: button
     anchors.bottom: parent.bottom
     anchors.right: menuButton.left
-    iconHeight: app.styler.themeIconSizeSmall
+    iconHeight: styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/search")
     states: [
         State {

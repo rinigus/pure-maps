@@ -22,8 +22,8 @@ import "platform"
 
 Item {
     id: item
-    height: bg.height + 2*app.styler.themePaddingLarge
-    width: bg.width + 2*app.styler.themePaddingLarge
+    height: bg.height + 2*styler.themePaddingLarge
+    width: bg.width + 2*styler.themePaddingLarge
 
     property alias  iconColorize: button.iconColorize
     property alias  iconHeight: button.iconHeight
@@ -39,13 +39,13 @@ Item {
     Rectangle {
         id: bg
         anchors.centerIn: parent
-        color: item.pressed ? app.styler.itemPressed : app.styler.itemBg
+        color: item.pressed ? styler.itemPressed : styler.itemBg
         height: wh
         layer.enabled: item.pressed ? false : true
         layer.effect: DropShadow {
-            color: app.styler.shadowColor
-            opacity: app.styler.shadowOpacity
-            radius: app.styler.shadowRadius
+            color: styler.shadowColor
+            opacity: styler.shadowOpacity
+            radius: styler.shadowRadius
             samples: 1 + radius*2
         }
         radius: wh/2
@@ -64,8 +64,8 @@ Item {
             height: sourceSize.height
             smooth: true
             source: app.getIcon("icons/indicator", true)
-            sourceSize.height: app.styler.indicatorSize
-            sourceSize.width: app.styler.indicatorSize
+            sourceSize.height: styler.indicatorSize
+            sourceSize.width: styler.indicatorSize
             visible: item.indicator
             width: sourceSize.width
             x: bg.width/2 + bg.wh/2*0.70711 - width/2

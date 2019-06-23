@@ -23,7 +23,7 @@ MapButton {
     id: button
     anchors.bottom: parent.bottom
     anchors.horizontalCenter: parent.horizontalCenter
-    iconHeight: app.styler.themeIconSizeSmall
+    iconHeight: styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/menu")
     states: State {
         when: hidden

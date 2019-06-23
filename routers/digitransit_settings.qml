@@ -47,7 +47,7 @@ Column {
      */
 
     Item {
-        height: app.styler.themeItemSizeSmall
+        height: styler.themeItemSizeSmall
         width: parent.width
 
         /*
@@ -59,12 +59,12 @@ Column {
             anchors.left: parent.left
             anchors.top: parent.top
             height: parent.height
-            width: bindLabel.width + app.styler.themeHorizontalPageMargin + app.styler.themePaddingMedium
+            width: bindLabel.width + styler.themeHorizontalPageMargin + styler.themePaddingMedium
 
             Label {
                 id: bindLabel
                 anchors.left: parent.left
-                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                anchors.leftMargin: styler.themeHorizontalPageMargin
                 anchors.top: parent.top
                 height: parent.height
                 text: app.tr("Depart")
@@ -75,11 +75,11 @@ Column {
                 if (bindLabel.text === app.tr("Depart")) {
                     bindLabel.text = app.tr("Arrive");
                     page.params.arrive_by = "true";
-                    bindLabel.color = app.styler.themeHighlightColor;
+                    bindLabel.color = styler.themeHighlightColor;
                 } else {
                     bindLabel.text = app.tr("Depart");
                     page.params.arrive_by = "false";
-                    bindLabel.color = app.styler.themeHighlightColor;
+                    bindLabel.color = styler.themeHighlightColor;
                 }
             }
 
@@ -94,14 +94,14 @@ Column {
             anchors.left: bindItem.right
             anchors.top: parent.top
             height: parent.height
-            width: dateLabel.width + 2 * app.styler.themePaddingMedium
+            width: dateLabel.width + 2 * styler.themePaddingMedium
 
             property var date: new Date()
 
             Label {
                 id: dateLabel
                 anchors.left: parent.left
-                anchors.leftMargin: app.styler.themePaddingMedium
+                anchors.leftMargin: styler.themePaddingMedium
                 anchors.top: parent.top
                 height: parent.height
                 text: app.tr("Today")
@@ -115,7 +115,7 @@ Column {
                 dialog.accepted.connect(function() {
                     dateItem.date = dialog.date;
                     dateLabel.text = dialog.dateText;
-                    dateLabel.color = app.styler.themeHighlightColor;
+                    dateLabel.color = styler.themeHighlightColor;
                     // Format date as YYYY-MM-DD.
                     var year = dialog.year.toString();
                     var month = dialog.month.toString();
@@ -137,14 +137,14 @@ Column {
             anchors.left: dateItem.right
             anchors.top: parent.top
             height: parent.height
-            width: timeLabel.width + 2 * app.styler.themePaddingMedium
+            width: timeLabel.width + 2 * styler.themePaddingMedium
 
             property var time: new Date()
 
             Label {
                 id: timeLabel
                 anchors.left: parent.left
-                anchors.leftMargin: app.styler.themePaddingMedium
+                anchors.leftMargin: styler.themePaddingMedium
                 anchors.top: parent.top
                 height: parent.height
                 text: app.tr("Now")
@@ -160,7 +160,7 @@ Column {
                 dialog.accepted.connect(function() {
                     timeItem.time = dialog.time;
                     timeLabel.text = dialog.timeText;
-                    timeLabel.color = app.styler.themeHighlightColor;
+                    timeLabel.color = styler.themeHighlightColor;
                     // Format time as HH:MM:SS.
                     var hour = dialog.hour.toString();
                     var minute = dialog.minute.toString();
@@ -194,7 +194,7 @@ Column {
     }
 
     Spacer {
-        height: 1.25 * app.styler.themePaddingLarge
+        height: 1.25 * styler.themePaddingLarge
     }
 
     /*
@@ -204,18 +204,18 @@ Column {
     Grid {
         id: modeGrid
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.rightMargin: styler.themeHorizontalPageMargin
         columns: {
             // Use a dynamic column count based on available screen width.
-            var width = parent.width - 2 * app.styler.themeHorizontalPageMargin;
+            var width = parent.width - 2 * styler.themeHorizontalPageMargin;
             var cellWidth = busButton.width + spacing;
             return Math.floor(width/cellWidth);
         }
-        height: implicitHeight + app.styler.themePaddingLarge
+        height: implicitHeight + styler.themePaddingLarge
         rows: Math.ceil(6/columns)
-        spacing: app.styler.themePaddingMedium
+        spacing: styler.themePaddingMedium
 
         property string option: "routers.digitransit.modes"
 

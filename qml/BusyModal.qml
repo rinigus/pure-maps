@@ -38,8 +38,8 @@ Item {
     LabelPL {
         anchors.bottom: indicator.top
         anchors.bottomMargin: Math.round(indicator.height/4)
-        color: app.styler.themeHighlightColor
-        font.pixelSize: app.styler.themeFontSizeLarge
+        color: styler.themeHighlightColor
+        font.pixelSize: styler.themeFontSizeLarge
         horizontalAlignment: Text.AlignHCenter
         text: busy.error || busy.text
         visible: busy.running || busy.error
@@ -49,7 +49,7 @@ Item {
     ListItemLabel {
         anchors.top: indicator.bottom
         anchors.topMargin: Math.round(indicator.height/4)
-        color: app.styler.themeSecondaryColor
+        color: styler.themeSecondaryColor
         horizontalAlignment: Text.AlignHCenter
         text: busy.error ? "" : busy.description
         visible: busy.running

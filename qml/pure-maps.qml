@@ -61,25 +61,20 @@ ApplicationWindowPL {
     property var    rootPage: null
     // used to track current search and other operations with kept states (temp pois, for example)
     property string stateId
-    property var    styler: Styler {}
     property var    _stackMain: Stack {}
     property var    _stackNavigation: Stack {}
 
+    ClipboardPL { id: clipboard }
+    Modes { id: modes }
     PositionSource { id: gps }
     Python { id: py }
+    Styler { id: styler }
+    TruncationModes { id: truncModes }
 
     Audio {
         id: sound
         autoLoad: true
         loops: 1
-    }
-
-    ClipboardPL {
-        id: clipboard
-    }
-
-    Modes {
-        id: modes
     }
 
     Timer {
@@ -96,10 +91,6 @@ ApplicationWindowPL {
             tries += 1;
             app.playMaybe(message);
         }
-    }
-
-    TruncationModes {
-        id: truncModes
     }
 
     Connections {
@@ -167,8 +158,8 @@ ApplicationWindowPL {
     }
 
     function getIcon(name, no_variant) {
-        if (!no_variant && app.styler.iconVariant)
-            return Qt.resolvedUrl("%1-%2.svg".arg(name).arg(app.styler.iconVariant));
+        if (!no_variant && styler.iconVariant)
+            return Qt.resolvedUrl("%1-%2.svg".arg(name).arg(styler.iconVariant));
         return Qt.resolvedUrl("%1.svg".arg(name));
     }
 
@@ -183,7 +174,7 @@ ApplicationWindowPL {
             minDiff = Math.min(minDiff, diff);
         }
         var ratio = ratios[minIndex].toFixed(2);
-        if (!no_variant && app.styler.iconVariant) return "%1-%2@%3.png".arg(name).arg(app.styler.iconVariant).arg(ratio);
+        if (!no_variant && styler.iconVariant) return "%1-%2@%3.png".arg(name).arg(styler.iconVariant).arg(ratio);
         return "%1@%2.png".arg(name).arg(ratio);
     }
 

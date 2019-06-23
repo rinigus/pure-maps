@@ -28,6 +28,6 @@ ToolBar {
     Row {
         id: footerBar
         anchors.horizontalCenter: parent.horizontalCenter
-        spacing: app.styler.themePaddingMedium
+        spacing: styler.themePaddingMedium
     }
 }

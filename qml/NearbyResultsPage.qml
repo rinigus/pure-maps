@@ -37,7 +37,7 @@ PageListPL {
         ListItemLabel {
             id: titleLabel
             color: (listItem.highlighted || listItem.visited) ?
-                       app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                       styler.themeHighlightColor : styler.themePrimaryColor;
             height: implicitHeight + app.listItemVerticalMargin
             text: model.title
             verticalAlignment: Text.AlignBottom
@@ -46,9 +46,9 @@ PageListPL {
         ListItemLabel {
             id: descriptionLabel
             anchors.top: titleLabel.bottom
-            anchors.topMargin: app.styler.themePaddingSmall
-            color: app.styler.themeSecondaryColor
-            font.pixelSize: app.styler.themeFontSizeExtraSmall
+            anchors.topMargin: styler.themePaddingSmall
+            color: styler.themeSecondaryColor
+            font.pixelSize: styler.themeFontSizeExtraSmall
             height: implicitHeight + app.listItemVerticalMargin
             lineHeight: 1.15
             text: model.description + "\n" + model.distance

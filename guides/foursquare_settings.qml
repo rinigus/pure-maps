@@ -20,7 +20,7 @@ import QtQuick 2.0
 import "../qml/platform"
 
 Column {
-    spacing: app.styler.themePaddingLarge
+    spacing: styler.themePaddingLarge
     width: parent.width
     
     ComboBoxPL {

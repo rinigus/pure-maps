@@ -105,14 +105,14 @@ Item {
             marker.directionVisible = false;
         }
         map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius", 0);
-        map.setPaintProperty(marker.layers.layerUncertainty, "circle-color", app.styler.positionUncertainty);
+        map.setPaintProperty(marker.layers.layerUncertainty, "circle-color", styler.positionUncertainty);
         map.setPaintProperty(marker.layers.layerUncertainty, "circle-opacity", 0.15);
         map.setPaintProperty(marker.layers.layerUncertainty, "circle-pitch-alignment", "map");
     }
 
     function initIcons() {
         var suffix = "";
-        if (app.styler.position) suffix = "-" + app.styler.position;
+        if (styler.position) suffix = "-" + styler.position;
         map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIconScaled("icons/position/position" + suffix, true)));
         map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIconScaled("icons/position/position-direction" + suffix, true)));
     }

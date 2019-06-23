@@ -36,7 +36,7 @@ MapboxMap {
         if (app.mode === modes.followMe) return 60;
         return 0; // should never get here
     }
-    pixelRatio: app.styler.themePixelRatio * 1.5
+    pixelRatio: styler.themePixelRatio * 1.5
     zoomLevel: 4.0
 
     property int    animationTime: {
@@ -328,8 +328,8 @@ MapboxMap {
         // Configure layer for selected POI markers.
         map.setPaintProperty(map.layers.poisSelected, "circle-opacity", 0);
         map.setPaintProperty(map.layers.poisSelected, "circle-radius", 16 / map.pixelRatio);
-        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-color", app.styler.route);
-        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-opacity", app.styler.routeOpacity);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-color", styler.route);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-opacity", styler.routeOpacity);
         map.setPaintProperty(map.layers.poisSelected, "circle-stroke-width", 13 / map.pixelRatio);
         // Configure layer for non-bookmarked POI markers.
         map.setLayoutProperty(map.layers.pois, "icon-allow-overlap", true);
@@ -340,8 +340,8 @@ MapboxMap {
         map.setLayoutProperty(map.layers.pois, "text-field", "{name}");
         map.setLayoutProperty(map.layers.pois, "text-optional", true);
         map.setLayoutProperty(map.layers.pois, "text-size", 12);
-        map.setPaintProperty(map.layers.pois, "text-color", app.styler.itemFg);
-        map.setPaintProperty(map.layers.pois, "text-halo-color", app.styler.itemBg);
+        map.setPaintProperty(map.layers.pois, "text-color", styler.itemFg);
+        map.setPaintProperty(map.layers.pois, "text-halo-color", styler.itemBg);
         map.setPaintProperty(map.layers.pois, "text-halo-width", 2);
         // Configure layer for bookmarked POI markers.
         map.setLayoutProperty(map.layers.poisBookmarked, "icon-allow-overlap", true);
@@ -352,28 +352,28 @@ MapboxMap {
         map.setLayoutProperty(map.layers.poisBookmarked, "text-field", "{name}");
         map.setLayoutProperty(map.layers.poisBookmarked, "text-optional", true);
         map.setLayoutProperty(map.layers.poisBookmarked, "text-size", 12);
-        map.setPaintProperty(map.layers.poisBookmarked, "text-color", app.styler.itemFg);
-        map.setPaintProperty(map.layers.poisBookmarked, "text-halo-color", app.styler.itemBg);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-color", styler.itemFg);
+        map.setPaintProperty(map.layers.poisBookmarked, "text-halo-color", styler.itemBg);
         map.setPaintProperty(map.layers.poisBookmarked, "text-halo-width", 2);
         // Configure layer for route polyline.
         map.setLayoutProperty(map.layers.route, "line-cap", "round");
         map.setLayoutProperty(map.layers.route, "line-join", "round");
-        map.setPaintProperty(map.layers.route, "line-color", app.styler.route);
-        map.setPaintProperty(map.layers.route, "line-opacity", app.styler.routeOpacity);
+        map.setPaintProperty(map.layers.route, "line-color", styler.route);
+        map.setPaintProperty(map.layers.route, "line-opacity", styler.routeOpacity);
         map.setPaintProperty(map.layers.route, "line-width", 22 / map.pixelRatio);
         // Configure layer for active maneuver markers.
-        map.setPaintProperty(map.layers.maneuvers, "circle-color", app.styler.maneuver);
+        map.setPaintProperty(map.layers.maneuvers, "circle-color", styler.maneuver);
         map.setPaintProperty(map.layers.maneuvers, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layers.maneuvers, "circle-radius", 11 / map.pixelRatio);
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", app.styler.route);
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-opacity", app.styler.routeOpacity);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", styler.route);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-opacity", styler.routeOpacity);
         map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 8 / map.pixelRatio);
         // Configure layer for passive maneuver markers.
-        map.setPaintProperty(map.layers.nodes, "circle-color", app.styler.maneuver);
+        map.setPaintProperty(map.layers.nodes, "circle-color", styler.maneuver);
         map.setPaintProperty(map.layers.nodes, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layers.nodes, "circle-radius", 5 / map.pixelRatio);
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-color", app.styler.route);
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", app.styler.routeOpacity);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-color", styler.route);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", styler.routeOpacity);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 8 / map.pixelRatio);
         // Configure layer for dummy symbols that knock out road shields etc.
         map.setLayoutProperty(map.layers.dummies, "icon-image", map.images.pixel);
@@ -411,7 +411,7 @@ MapboxMap {
 
     function initIcons() {
         var suffix = "";
-        if (app.styler.position) suffix = "-" + app.styler.position;
+        if (styler.position) suffix = "-" + styler.position;
         map.addImagePath(map.images.poi, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker-stroked" + suffix, true)));
         map.addImagePath(map.images.poiBookmarked, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker" + suffix, true)));
     }
@@ -512,7 +512,7 @@ MapboxMap {
             (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
             (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
         attributionButton.logo = py.evaluate("poor.app.basemap.logo");
-        app.styler.apply(py.evaluate("poor.app.basemap.style_gui"))
+        styler.apply(py.evaluate("poor.app.basemap.style_gui"))
         map.initIcons();
         map.initLayers();
         map.configureLayers();
@@ -568,7 +568,7 @@ MapboxMap {
 
     function setScale(scale) {
         // Set the map scaling via its pixel ratio.
-        map.pixelRatio = app.styler.themePixelRatio * 1.5 * scale;
+        map.pixelRatio = styler.themePixelRatio * 1.5 * scale;
         map.configureLayers();
         positionMarker.configureLayers();
     }

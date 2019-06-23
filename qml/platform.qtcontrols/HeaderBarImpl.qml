@@ -26,7 +26,7 @@ import QtQuick.Layouts 1.3
 
 ToolBar {
     id: bar
-    height: visible ? app.styler.themeItemSizeSmall : 0
+    height: visible ? styler.themeItemSizeSmall : 0
     width: page.width
     visible: page && (!(page.empty) || app.pages.currentIndex > 0)
 
@@ -42,25 +42,25 @@ ToolBar {
         anchors.left: parent.left
         anchors.leftMargin: 0
         anchors.verticalCenter: label.verticalCenter
-        height: app.styler.themeItemSizeSmall
+        height: styler.themeItemSizeSmall
         icon.height: label.height
-        icon.name: app.styler.iconBack
+        icon.name: styler.iconBack
         onClicked: app.pages.pop()
     }
 
     Label {
         id: label
         anchors.left: parent.left
-        anchors.leftMargin: toolButton.anchors.leftMargin + _buttonWidth + app.styler.themePaddingLarge
+        anchors.leftMargin: toolButton.anchors.leftMargin + _buttonWidth + styler.themePaddingLarge
         anchors.right: parent.right
-        anchors.rightMargin: acceptButton.anchors.rightMargin + _buttonWidth + app.styler.themePaddingLarge
+        anchors.rightMargin: acceptButton.anchors.rightMargin + _buttonWidth + styler.themePaddingLarge
         anchors.verticalCenter: parent.verticalCenter
         text: page.title
         elide: Label.ElideRight
         horizontalAlignment: Qt.AlignHCenter
         verticalAlignment: Qt.AlignVCenter
         Layout.fillWidth: true
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         font.bold: true
     }
 
@@ -69,9 +69,9 @@ ToolBar {
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.verticalCenter: label.verticalCenter
-        height: app.styler.themeItemSizeSmall
+        height: styler.themeItemSizeSmall
         icon.height: label.height
-        icon.name: page.acceptIconName ? page.acceptIconName : app.styler.iconForward
+        icon.name: page.acceptIconName ? page.acceptIconName : styler.iconForward
         Layout.minimumWidth: toolButton.width
         visible: !page.hideAcceptButton && (app.pages.hasAttached || !!page.isDialog)
         enabled: page.canNavigateForward === true

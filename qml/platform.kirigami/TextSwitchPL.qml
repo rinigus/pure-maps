@@ -38,23 +38,23 @@ Item {
     Switch {
         id: sw
         anchors.left: parent.left
-        anchors.leftMargin: !inForm ? app.styler.themeHorizontalPageMargin : undefined
+        anchors.leftMargin: !inForm ? styler.themeHorizontalPageMargin : undefined
         anchors.right: parent.right
-        anchors.rightMargin: !inForm ? app.styler.themeHorizontalPageMargin : undefined
+        anchors.rightMargin: !inForm ? styler.themeHorizontalPageMargin : undefined
         anchors.top: parent.top
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         text: item.text
     }
 
     Label {
         id: desc
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.top: sw.bottom
-        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
-        font.pixelSize: app.styler.themeFontSizeSmall
+        anchors.topMargin: text ? styler.themePaddingSmall : 0
+        font.pixelSize: styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap

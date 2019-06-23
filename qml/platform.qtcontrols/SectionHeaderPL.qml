@@ -22,5 +22,5 @@ Text {
     anchors.horizontalCenter: parent.horizontalCenter
     horizontalAlignment: Text.AlignLeft
     font.bold: true
-    width: parent.width - 2*app.styler.themeHorizontalPageMargin
+    width: parent.width - 2*styler.themeHorizontalPageMargin
 }

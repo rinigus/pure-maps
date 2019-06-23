@@ -25,9 +25,9 @@ Panel {
 
     contentHeight: {
         var h = 0;
-        if (poiBlock.height > 0) h += poiBlock.height + app.styler.themePaddingLarge;
+        if (poiBlock.height > 0) h += poiBlock.height + styler.themePaddingLarge;
         if (infoText) h += infoBg.height;
-        else if (h > 0) h += app.styler.themePaddingLarge;
+        else if (h > 0) h += styler.themePaddingLarge;
         return h;
     }
     mode: panelModes.bottom
@@ -40,7 +40,7 @@ Panel {
     PoiBlock {
         id: poiBlock
         anchors.top: parent.top
-        anchors.topMargin: app.styler.themePaddingLarge
+        anchors.topMargin: styler.themePaddingLarge
     }
 
     Item {
@@ -48,15 +48,15 @@ Panel {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        height: infoText ? Math.max(backButton.height, infoLabel.height, menuButton.height) + 2*app.styler.themePaddingLarge : 0
+        height: infoText ? Math.max(backButton.height, infoLabel.height, menuButton.height) + 2*styler.themePaddingLarge : 0
 
         IconButtonPL {
             id: backButton
             anchors.left: parent.left
-            anchors.leftMargin: app.styler.themeHorizontalPageMargin
+            anchors.leftMargin: styler.themeHorizontalPageMargin
             anchors.verticalCenter: infoBg.verticalCenter
-            iconHeight: app.styler.themeIconSizeMedium
-            iconName: showMenu ? app.styler.iconClose : ""
+            iconHeight: styler.themeIconSizeMedium
+            iconName: showMenu ? styler.iconClose : ""
             padding: 0
             visible: showMenu
             onClicked: {
@@ -68,12 +68,12 @@ Panel {
         ListItemLabel {
             id: infoLabel
             anchors.left: backButton.right
-            anchors.leftMargin: app.styler.themePaddingLarge
+            anchors.leftMargin: styler.themePaddingLarge
             anchors.right: menuButton.left
-            anchors.rightMargin: app.styler.themePaddingLarge
+            anchors.rightMargin: styler.themePaddingLarge
             anchors.verticalCenter: infoBg.verticalCenter
-            color: app.styler.themePrimaryColor
-            font.pixelSize: app.styler.themeFontSizeLarge
+            color: styler.themePrimaryColor
+            font.pixelSize: styler.themeFontSizeLarge
             height: text ? implicitHeight: 0
             truncMode: truncModes.fade
             verticalAlignment: Text.AlignTop
@@ -82,10 +82,10 @@ Panel {
         IconButtonPL {
             id: menuButton
             anchors.right: parent.right
-            anchors.rightMargin: app.styler.themeHorizontalPageMargin
+            anchors.rightMargin: styler.themeHorizontalPageMargin
             anchors.verticalCenter: infoBg.verticalCenter
-            iconHeight: app.styler.themeIconSizeMedium
-            iconName: showMenu ? app.styler.iconMenu : ""
+            iconHeight: styler.themeIconSizeMedium
+            iconName: showMenu ? styler.iconMenu : ""
             padding: 0
             visible: showMenu
             onClicked: {

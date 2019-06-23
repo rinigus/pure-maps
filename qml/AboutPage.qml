@@ -26,7 +26,7 @@ PagePL {
 
     Column {
         id: column
-        spacing: app.styler.themePaddingLarge
+        spacing: styler.themePaddingLarge
         width: parent.width
 
         Image {
@@ -40,9 +40,9 @@ PagePL {
             Image {
                 // Logo
                 anchors.left: parent.left
-                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                anchors.leftMargin: styler.themeHorizontalPageMargin
                 anchors.top: parent.top
-                anchors.topMargin: Math.min(parent.height/4, app.styler.themePaddingMedium)
+                anchors.topMargin: Math.min(parent.height/4, styler.themePaddingMedium)
                 height: parent.height / 2
                 smooth: true
                 source: "icons/pure-maps.svg"
@@ -53,39 +53,39 @@ PagePL {
         }
 
         ListItemLabel {
-            height: app.styler.themeItemSizeExtraSmall
+            height: styler.themeItemSizeExtraSmall
             horizontalAlignment: Text.AlignHCenter
             text: app.tr("version %1", py.evaluate("poor.__version__"))
         }
 
         ButtonPL {
             anchors.horizontalCenter: parent.horizontalCenter
-            height: app.styler.themeItemSizeLarge
-            preferredWidth: app.styler.themeButtonWidthMedium
+            height: styler.themeItemSizeLarge
+            preferredWidth: styler.themeButtonWidthMedium
             text: app.tr("GitHub page")
             onClicked: Qt.openUrlExternally("https://github.com/rinigus/pure-maps");
         }
 
         Column {
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: app.styler.themePaddingSmall
+            spacing: styler.themePaddingSmall
             width: Math.min(page.height,page.width)
 
             ListItemLabel {
-                font.pixelSize: app.styler.themeFontSizeSmall
+                font.pixelSize: styler.themeFontSizeSmall
                 height: implicitHeight
                 text: "Copyright ©"
             }
 
             ListItemLabel {
-                font.pixelSize: app.styler.themeFontSizeSmall
+                font.pixelSize: styler.themeFontSizeSmall
                 height: implicitHeight
                 horizontalAlignment: Text.AlignRight
                 text: "2014–2018 Osmo Salomaa\n2018 Rinigus"
             }
 
             ListItemLabel {
-                font.pixelSize: app.styler.themeFontSizeSmall
+                font.pixelSize: styler.themeFontSizeSmall
                 height: implicitHeight
                 horizontalAlignment: Text.AlignRight
                 text: app.tr("Artwork by %1 and %2\nBanner photo by %3 (Pexels License)", "Fellfrosch", "Mosen", "Yaroslav Shuraev")
@@ -94,7 +94,7 @@ PagePL {
         }
 
         ListItemLabel {
-            font.pixelSize: app.styler.themeFontSizeSmall
+            font.pixelSize: styler.themeFontSizeSmall
             height: implicitHeight
             horizontalAlignment: implicitWidth >
                                  parent.width - anchors.leftMargin - anchors.rightMargin ?
@@ -108,8 +108,8 @@ PagePL {
         }
 
         ListItemLabel {
-            font.pixelSize: app.styler.themeFontSizeSmall
-            height: visible ? app.styler.themeItemSizeExtraSmall : 0
+            font.pixelSize: styler.themeFontSizeSmall
+            height: visible ? styler.themeItemSizeExtraSmall : 0
             horizontalAlignment: Text.AlignHCenter
             // TRANSLATORS: This is a special message that shouldn't be translated
             // literally. It is used in the about page to give credits to the translators.
@@ -121,7 +121,7 @@ PagePL {
         }
 
         ListItemLabel {
-            font.pixelSize: app.styler.themeFontSizeSmall
+            font.pixelSize: styler.themeFontSizeSmall
             height: implicitHeight
             horizontalAlignment: implicitWidth >
                                  parent.width - anchors.leftMargin - anchors.rightMargin ?
@@ -132,8 +132,8 @@ PagePL {
 
         ButtonPL {
             anchors.horizontalCenter: parent.horizontalCenter
-            height: app.styler.themeItemSizeLarge
-            preferredWidth: app.styler.themeButtonWidthMedium
+            height: styler.themeItemSizeLarge
+            preferredWidth: styler.themeButtonWidthMedium
             text: app.tr("Transifex page")
             onClicked: Qt.openUrlExternally("https://www.transifex.com/rinigus/pure-maps/");
         }

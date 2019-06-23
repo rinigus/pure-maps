@@ -28,7 +28,7 @@ PagePL {
     pageMenu: PageMenuPL {
         PageMenuItemPL {
             enabled: page.active
-            iconName: app.styler.iconEdit
+            iconName: styler.iconEdit
             text: app.tr("Edit")
             onClicked: {
                 var dialog = app.push(Qt.resolvedUrl("PoiEditPage.qml"),
@@ -51,8 +51,8 @@ PagePL {
         width: page.width
 
         ListItemLabel {
-            color: app.styler.themeHighlightColor
-            height: implicitHeight + app.styler.themePaddingMedium
+            color: styler.themeHighlightColor
+            height: implicitHeight + styler.themePaddingMedium
             text: poi.poiType ? poi.poiType : ""
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
@@ -61,9 +61,9 @@ PagePL {
         }
 
         ListItemLabel {
-            color: app.styler.themeHighlightColor
-            font.pixelSize: app.styler.themeFontSizeSmall
-            height: implicitHeight + app.styler.themePaddingMedium
+            color: styler.themeHighlightColor
+            font.pixelSize: styler.themeFontSizeSmall
+            height: implicitHeight + styler.themePaddingMedium
             text: hasCoordinate ? app.tr("Latitude: %1", poi.coordinate.latitude) + "\n" +
                                   app.tr("Longitude: %2", poi.coordinate.longitude) : ""
             truncMode: truncModes.none
@@ -73,9 +73,9 @@ PagePL {
         }
 
         ListItemLabel {
-            color: app.styler.themeHighlightColor
-            font.pixelSize: app.styler.themeFontSizeSmall
-            height: implicitHeight + app.styler.themePaddingMedium
+            color: styler.themeHighlightColor
+            font.pixelSize: styler.themeFontSizeSmall
+            height: implicitHeight + styler.themePaddingMedium
             text: hasCoordinate ? app.tr("Plus code: %1",
                                          py.call_sync("poor.util.format_location_olc",
                                                       [poi.coordinate.longitude,
@@ -87,18 +87,18 @@ PagePL {
         }
 
         Spacer {
-            height: app.styler.themePaddingMedium
+            height: styler.themePaddingMedium
         }
 
         SectionHeaderPL {
-            height: implicitHeight + app.styler.themePaddingMedium
+            height: implicitHeight + styler.themePaddingMedium
             text: poi.address || poi.postcode ? app.tr("Address") : ""
             visible: text
         }
 
         ListItemLabel {
-            color: app.styler.themeHighlightColor
-            height: implicitHeight + app.styler.themePaddingMedium
+            color: styler.themeHighlightColor
+            height: implicitHeight + styler.themePaddingMedium
             text: poi.address ? poi.address : ""
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
@@ -107,8 +107,8 @@ PagePL {
         }
 
         ListItemLabel {
-            color: app.styler.themeHighlightColor
-            height: implicitHeight + app.styler.themePaddingMedium
+            color: styler.themeHighlightColor
+            height: implicitHeight + styler.themePaddingMedium
             text: poi.postcode ? app.tr("Postal code: %1", poi.postcode) : ""
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop
@@ -117,17 +117,17 @@ PagePL {
         }
 
         Spacer {
-            height: app.styler.themePaddingMedium
+            height: styler.themePaddingMedium
         }
 
         SectionHeaderPL {
-            height: implicitHeight + app.styler.themePaddingMedium
+            height: implicitHeight + styler.themePaddingMedium
             text: app.tr("Actions")
         }
 
         IconListItem {
             enabled: page.active
-            icon: bookmarked ? app.styler.iconFavoriteSelected  : app.styler.iconFavorite
+            icon: bookmarked ? styler.iconFavoriteSelected  : styler.iconFavorite
             label: app.tr("Bookmark")
             onClicked: {
                 if (!active) return;
@@ -140,7 +140,7 @@ PagePL {
         IconListItem {
             id: shortlistItem
             enabled: page.active && bookmarked
-            icon: shortlisted ? app.styler.iconShortlistedSelected  : app.styler.iconShortlisted
+            icon: shortlisted ? styler.iconShortlistedSelected  : styler.iconShortlisted
             label: app.tr("Shortlist")
             onClicked: {
                 if (!active) return;
@@ -153,7 +153,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: app.styler.iconShare
+            icon: styler.iconShare
             label: app.tr("Share location")
             onClicked: {
                 app.push(Qt.resolvedUrl("SharePage.qml"), {
@@ -165,7 +165,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: app.styler.iconDot
+            icon: styler.iconDot
             label: app.tr("Center on location")
             onClicked: {
                 map.setCenter(
@@ -177,7 +177,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: app.styler.iconNavigateTo
+            icon: styler.iconNavigateTo
             label: app.tr("Navigate To")
             onClicked: {
                 app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
@@ -189,7 +189,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: app.styler.iconNavigateFrom
+            icon: styler.iconNavigateFrom
             label: app.tr("Navigate From")
             onClicked: {
                 app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
@@ -201,7 +201,7 @@ PagePL {
 
         IconListItem {
             enabled: hasCoordinate
-            icon: app.styler.iconNearby
+            icon: styler.iconNearby
             label: app.tr("Nearby")
             onClicked: {
                 app.showMenu(Qt.resolvedUrl("NearbyPage.qml"), {
@@ -212,40 +212,40 @@ PagePL {
         }
 
         SectionHeaderPL {
-            height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+            height: text ? implicitHeight + styler.themePaddingMedium : 0
             text: poi.phone || poi.link ? app.tr("Contact") : ""
             visible: text
         }
 
         IconListItem {
-            height: app.styler.themeItemSizeSmall
-            icon: poi.phone ? app.styler.iconPhone : ""
+            height: styler.themeItemSizeSmall
+            icon: poi.phone ? styler.iconPhone : ""
             label: poi.phone
             visible: poi.phone
             onClicked: Qt.openUrlExternally("tel:" + poi.phone)
         }
 
         IconListItem {
-            height: app.styler.themeItemSizeSmall
-            icon: poi.link ? app.styler.iconWebLink : ""
+            height: styler.themeItemSizeSmall
+            icon: poi.link ? styler.iconWebLink : ""
             label: poi.link
             visible: poi.link
             onClicked: Qt.openUrlExternally(poi.link)
         }
 
         Spacer {
-            height: app.styler.themePaddingMedium
+            height: styler.themePaddingMedium
         }
 
         SectionHeaderPL {
-            height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+            height: text ? implicitHeight + styler.themePaddingMedium : 0
             text: poi.text ? app.tr("Additional info") : ""
             visible: text
         }
 
         ListItemLabel {
-            color: app.styler.themeHighlightColor
-            height: implicitHeight + app.styler.themePaddingMedium
+            color: styler.themeHighlightColor
+            height: implicitHeight + styler.themePaddingMedium
             text: poi.text
             truncMode: truncModes.none
             verticalAlignment: Text.AlignTop

@@ -23,7 +23,7 @@ ListItemPL {
     id: item
     anchors.left: parent.left
     anchors.right: parent.right
-    contentHeight: app.styler.themeItemSizeSmall
+    contentHeight: styler.themeItemSizeSmall
 
     property string icon: ""
     property alias  iconHeight: icon.iconHeight
@@ -33,24 +33,24 @@ ListItemPL {
     IconPL {
         id: icon
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.verticalCenter: parent.verticalCenter
-        iconHeight: app.styler.themeItemSizeSmall*0.8
+        iconHeight: styler.themeItemSizeSmall*0.8
         iconName: item.icon
     }
 
     LabelPL {
         id: label
         anchors.left: icon.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.rightMargin: styler.themeHorizontalPageMargin
         color: {
-            if (!item.enabled) return app.styler.themeSecondaryHighlightColor;
-            if (item.highlighted) return app.styler.themeHighlightColor;
-            return app.styler.themePrimaryColor;
+            if (!item.enabled) return styler.themeSecondaryHighlightColor;
+            if (item.highlighted) return styler.themeHighlightColor;
+            return styler.themePrimaryColor;
         }
-        height: app.styler.themeItemSizeSmall
+        height: styler.themeItemSizeSmall
         text: item.label
         truncMode: truncModes.fade
         verticalAlignment: Text.AlignVCenter

@@ -40,7 +40,7 @@ Item {
     IconImage {
         id: iconimage
         anchors.centerIn: parent
-        color: iconColorize ? app.styler.themeHighlightColor : "transparent"
+        color: iconColorize ? styler.themeHighlightColor : "transparent"
         rotation: iconRotation
         sourceSize.height: iconHeight
         sourceSize.width: iconWidth
@@ -59,7 +59,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: mouse.pressed ? app.styler.themePrimaryColor : "transparent"
+        color: mouse.pressed ? styler.themePrimaryColor : "transparent"
         opacity: 0.2
     }
 

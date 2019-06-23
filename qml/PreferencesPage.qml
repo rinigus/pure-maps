@@ -35,7 +35,7 @@ PagePL {
                 id: sectionGeneral
                 title: app.tr("General")
                 content.sourceComponent: FormLayoutPL {
-                    spacing: app.styler.themePaddingMedium
+                    spacing: styler.themePaddingMedium
                     width: sectionGeneral.width
 
                     ComboBoxPL {
@@ -78,18 +78,18 @@ PagePL {
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
 
                     ButtonPL {
                         anchors.horizontalCenter: parent.horizontalCenter
-                        preferredWidth: app.styler.themeButtonWidthLarge
+                        preferredWidth: styler.themeButtonWidthLarge
                         text: app.tr("Clear cache")
                         onClicked: map.clearCache();
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
                 }
             }
@@ -98,7 +98,7 @@ PagePL {
                 id: sectionKeys
                 title: app.tr("API keys")
                 content.sourceComponent: Column {
-                    spacing: app.styler.themePaddingMedium
+                    spacing: styler.themePaddingMedium
                     width: sectionKeys.width
 
                     ListItemLabel {
@@ -116,7 +116,7 @@ PagePL {
                     }
 
                     FormLayoutPL {
-                        spacing: app.styler.themePaddingMedium
+                        spacing: styler.themePaddingMedium
                         width: parent.width
                         Repeater {
                             delegate: TextFieldPL {
@@ -145,7 +145,7 @@ PagePL {
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
                 }
             }
@@ -154,7 +154,7 @@ PagePL {
                 id: sectionExplore
                 title: app.tr("Map view")
                 content.sourceComponent: FormLayoutPL {
-                    spacing: app.styler.themePaddingMedium
+                    spacing: styler.themePaddingMedium
                     width: sectionExplore.width
 
                     ComboBoxPL {
@@ -190,7 +190,7 @@ PagePL {
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
                 }
             }
@@ -199,7 +199,7 @@ PagePL {
                 id: sectionAutoZoom
                 title: app.tr("Automatic zoom")
                 content.sourceComponent: FormLayoutPL {
-                    spacing: app.styler.themePaddingMedium
+                    spacing: styler.themePaddingMedium
                     width: sectionAutoZoom.width
 
                     SliderPL {
@@ -230,7 +230,7 @@ PagePL {
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
                 }
             }
@@ -239,7 +239,7 @@ PagePL {
                 id: sectionControls
                 title: app.tr("Controls")
                 content.sourceComponent: Column {
-                    spacing: app.styler.themePaddingMedium
+                    spacing: styler.themePaddingMedium
                     width: sectionControls.width
 
                     ListItemLabel {
@@ -353,7 +353,7 @@ PagePL {
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
                 }
             }
@@ -362,7 +362,7 @@ PagePL {
                 id: sectionNavigate
                 title: app.tr("Navigation")
                 content.sourceComponent: Column {
-                    spacing: app.styler.themePaddingMedium
+                    spacing: styler.themePaddingMedium
                     width: sectionNavigate.width
 
                     TextSwitchPL {
@@ -448,7 +448,7 @@ PagePL {
                     }
 
                     FormLayoutPL {
-                        spacing: app.styler.themePaddingMedium
+                        spacing: styler.themePaddingMedium
                         width: parent.width
                         ComboBoxPL {
                             id: voiceGenderComboBox
@@ -487,7 +487,7 @@ PagePL {
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
                 }
             }
@@ -497,7 +497,7 @@ PagePL {
                 title: app.tr("Testing")
                 content.sourceComponent: Column {
                     id: testingColumn
-                    spacing: app.styler.themePaddingMedium
+                    spacing: styler.themePaddingMedium
                     width: sectionTesting.width
 
                     property string message
@@ -511,7 +511,7 @@ PagePL {
                     }
 
                     FormLayoutPL {
-                        spacing: app.styler.themePaddingMedium
+                        spacing: styler.themePaddingMedium
                         width: parent.width
                         ComboBoxPL {
                             id: languageComboBox
@@ -557,18 +557,18 @@ PagePL {
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
 
                     ButtonPL {
                         anchors.horizontalCenter: parent.horizontalCenter
-                        preferredWidth: app.styler.themeButtonWidthLarge
+                        preferredWidth: styler.themeButtonWidthLarge
                         text: app.tr("Test")
                         onClicked: testingColumn.test()
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
 
                     ListItemLabel {
@@ -578,7 +578,7 @@ PagePL {
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
 
                     Timer {
@@ -625,7 +625,7 @@ PagePL {
                 id: sectionDevelop
                 title: app.tr("Development")
                 content.sourceComponent: Column {
-                    spacing: app.styler.themePaddingMedium
+                    spacing: styler.themePaddingMedium
                     width: sectionDevelop.width
 
                     ListItemLabel {
@@ -650,7 +650,7 @@ PagePL {
                     }
 
                     Spacer {
-                        height: app.styler.themePaddingLarge
+                        height: styler.themePaddingLarge
                     }
                 }
             }

@@ -29,17 +29,17 @@ MenuDrawerPL {
     titleIcon: "pure-maps"
     pageMenu: PageMenuPL {
         PageMenuItemPL {
-            iconName: app.styler.iconAbout
+            iconName: styler.iconAbout
             text: app.tr("About Pure Maps")
             onClicked: app.push(Qt.resolvedUrl("AboutPage.qml"), {}, true)
         }
     }
 
     // To make TextSwitch text line up with IconListItem's text label.
-    property real switchLeftMargin: app.styler.themeHorizontalPageMargin + app.styler.themePaddingLarge + app.styler.themePaddingSmall
+    property real switchLeftMargin: styler.themeHorizontalPageMargin + styler.themePaddingLarge + styler.themePaddingSmall
 
     MenuDrawerItemPL {
-        iconName: app.styler.iconStop
+        iconName: styler.iconStop
         text: app.tr("Stop following the movement")
         visible: app.mode === modes.followMe
         onClicked: {
@@ -50,32 +50,32 @@ MenuDrawerPL {
     }
 
     MenuDrawerItemPL {
-        iconName: app.styler.iconSearch
+        iconName: styler.iconSearch
         text: app.tr("Search")
         onClicked: app.pushMain(Qt.resolvedUrl("GeocodePage.qml"))
     }
 
     MenuDrawerItemPL {
-        iconName: app.styler.iconNavigate
+        iconName: styler.iconNavigate
         text: app.tr("Navigation")
         onClicked: app.pushMain(Qt.resolvedUrl("RoutePage.qml"))
     }
 
     MenuDrawerItemPL {
-        iconName: app.styler.iconNearby
+        iconName: styler.iconNearby
         text: app.tr("Nearby venues")
         onClicked: app.pushMain(Qt.resolvedUrl("NearbyPage.qml"))
     }
 
     MenuDrawerItemPL {
-        iconName: app.styler.iconFavorite
+        iconName: styler.iconFavorite
         text: app.tr("Bookmarks")
         onClicked: app.pushMain(Qt.resolvedUrl("PoiPage.qml"))
     }
 
     MenuDrawerItemPL {
         enabled: gps.ready
-        iconName: app.styler.iconShare
+        iconName: styler.iconShare
         text: gps.ready ? app.tr("Share current position") : app.tr("Share current position (not ready)")
         onClicked: {
             if (!gps.ready) return;
@@ -89,13 +89,13 @@ MenuDrawerPL {
     }
 
     MenuDrawerItemPL {
-        iconName: app.styler.iconMaps
+        iconName: styler.iconMaps
         text: app.tr("Maps")
         onClicked: app.pushMain(Qt.resolvedUrl("BasemapPage.qml"))
     }
 
     MenuDrawerItemPL {
-        iconName: app.styler.iconPreferences
+        iconName: styler.iconPreferences
         text: app.tr("Preferences")
         onClicked: app.push(Qt.resolvedUrl("PreferencesPage.qml"), {}, true)
     }
@@ -103,9 +103,9 @@ MenuDrawerPL {
     MenuDrawerSubmenuPL {
         id: profiles
         iconName: {
-            if (app.conf.profile === "online") return app.styler.iconProfileOnline;
-            if (app.conf.profile === "offline") return app.styler.iconProfileOffline;
-            return app.styler.iconProfileMixed;
+            if (app.conf.profile === "online") return styler.iconProfileOnline;
+            if (app.conf.profile === "offline") return styler.iconProfileOffline;
+            return styler.iconProfileMixed;
         }
         text: app.tr("Profile")
 

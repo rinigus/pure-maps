@@ -29,7 +29,7 @@ Kirigami.ScrollablePage {
     Kirigami.ColumnView.fillWidth: false
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
 
-    property string        acceptIconName: app.styler.iconForward
+    property string        acceptIconName: styler.iconForward
     property alias         acceptText: mainAction.text
     property var           acceptCallback
     property bool          canNavigateForward: true

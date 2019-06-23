@@ -44,7 +44,7 @@ DialogListPL {
             id: nameLabel
             anchors.top: defaultHeader.bottom
             color: (model.active || listItem.highlighted) ?
-                       app.styler.themeHighlightColor : app.styler.themePrimaryColor;
+                       styler.themeHighlightColor : styler.themePrimaryColor;
             height: text && visible ? implicitHeight + app.listItemVerticalMargin : 0
             text: model.name
             verticalAlignment: Text.AlignBottom
@@ -54,9 +54,9 @@ DialogListPL {
         ListItemLabel {
             id: descriptionLabel
             anchors.top: nameLabel.bottom
-            anchors.topMargin: height > 0 ? app.styler.themePaddingSmall : 0
-            color: app.styler.themeSecondaryColor
-            font.pixelSize: app.styler.themeFontSizeExtraSmall
+            anchors.topMargin: height > 0 ? styler.themePaddingSmall : 0
+            color: styler.themeSecondaryColor
+            font.pixelSize: styler.themeFontSizeExtraSmall
             height: text && visible ? implicitHeight + app.listItemVerticalMargin : 0
             lineHeight: 1.15
             text: model.description

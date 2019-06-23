@@ -65,7 +65,7 @@ CoverBackground {
         anchors.horizontalCenter: parent.horizontalCenter
         opacity: 0.9
         smooth: true
-        source: "../icons/navigation/%1-%2.svg".arg(app.navigationStatus.icon || "flag").arg(app.styler.navigationIconsVariant)
+        source: "../icons/navigation/%1-%2.svg".arg(app.navigationStatus.icon || "flag").arg(styler.navigationIconsVariant)
         sourceSize.height: cover.width / 2
         sourceSize.width: cover.width / 2
         visible: cover.showNarrative

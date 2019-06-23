@@ -24,9 +24,9 @@ import org.kde.kirigami 2.5 as Kirigami
 Item {
     id: item
     anchors.left: inForm ? undefined : parent.left
-    anchors.leftMargin: inForm ? undefined : app.styler.themeHorizontalPageMargin
+    anchors.leftMargin: inForm ? undefined : styler.themeHorizontalPageMargin
     anchors.right: inForm ? undefined : parent.right
-    anchors.rightMargin: inForm ? undefined : app.styler.themeHorizontalPageMargin
+    anchors.rightMargin: inForm ? undefined : styler.themeHorizontalPageMargin
     implicitHeight: (inForm ? val.height : Math.max(lab.height, val.height)) + desc.height + desc.anchors.topMargin
     Kirigami.FormData.buddyFor: val
     Kirigami.FormData.label: label
@@ -53,11 +53,11 @@ Item {
     ComboBox {
         id: val
         anchors.left: inForm ? parent.left : lab.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themePaddingMedium
+        anchors.rightMargin: styler.themePaddingMedium
         anchors.top: parent.top
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         property bool initialized: false
         onCurrentIndexChanged: {
             if (initialized && currentIndex != item.currentIndex)
@@ -74,8 +74,8 @@ Item {
         anchors.left: val.left
         anchors.right: parent.right
         anchors.top: val.bottom
-        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
-        font.pixelSize: app.styler.themeFontSizeSmall
+        anchors.topMargin: text ? styler.themePaddingSmall : 0
+        font.pixelSize: styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap

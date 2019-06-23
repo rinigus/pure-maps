@@ -29,6 +29,7 @@ Kirigami.Page {
     rightPadding: 0
     topPadding: 0
     Kirigami.ColumnView.fillWidth: true
+    Kirigami.ColumnView.pinned: true
     Kirigami.ColumnView.preventStealing: true
 
     default property alias content: itemCont.data

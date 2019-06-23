@@ -25,7 +25,7 @@ Label {
         if (truncMode === truncModes.fade) return Text.ElideRight;
         return Text.ElideNone;
     }
-    font.pixelSize: app.styler.themeFontSizeMedium
+    font.pixelSize: styler.themeFontSizeMedium
 
     property int truncMode: truncModes.none
 }

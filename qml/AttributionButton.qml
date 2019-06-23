@@ -22,10 +22,10 @@ import "platform"
 IconButtonPL {
     id: attributionButton
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themePaddingLarge
+    anchors.leftMargin: styler.themePaddingLarge
     anchors.top: navigationBlock.bottom
-    anchors.topMargin: app.styler.themePaddingLarge
-    iconHeight: app.styler.themeIconSizeSmall
+    anchors.topMargin: styler.themePaddingLarge
+    iconHeight: styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/attribution/default")
     padding: 0
     states: [
@@ -46,7 +46,7 @@ IconButtonPL {
         app.getIcon("icons/attribution/%1".arg(logo)) : "";
 
     Connections {
-        target: app.styler
+        target: styler
         onIconVariantChanged: attributionButton.iconSource = attributionButton.logo ?
                                   app.getIcon("icons/attribution/%1".arg(attributionButton.logo)) : "";
     }

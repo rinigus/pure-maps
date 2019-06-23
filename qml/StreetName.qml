@@ -22,11 +22,11 @@ import "platform"
 Rectangle {
     id: master
     anchors.bottom: (app.mode === modes.navigate || app.mode === modes.followMe) ? (app.portrait && app.mode === modes.navigate ? navigationInfoBlock.top : parent.bottom) : menuButton.top
-    anchors.bottomMargin: (app.mode === modes.navigate || app.mode === modes.followMe) ? app.styler.themePaddingSmall : 0
+    anchors.bottomMargin: (app.mode === modes.navigate || app.mode === modes.followMe) ? styler.themePaddingSmall : 0
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themePaddingLarge
+    anchors.leftMargin: styler.themePaddingLarge
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themePaddingLarge
+    anchors.rightMargin: styler.themePaddingLarge
     color: "transparent"
     height: cover.height
     states: [
@@ -44,12 +44,12 @@ Rectangle {
     Rectangle {
         id: cover
         anchors.centerIn: streetname
-        color: app.styler.itemBg
+        color: styler.itemBg
         height: streetname.height
         opacity: 0.75
-        radius: app.styler.themePaddingMedium
+        radius: styler.themePaddingMedium
         visible: streetname.visible
-        width: streetname.width + 2*app.styler.themePaddingMedium
+        width: streetname.width + 2*styler.themePaddingMedium
         z: 450
     }
 
@@ -57,13 +57,13 @@ Rectangle {
         id: streetname
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        color: app.styler.itemFg
-        font.pixelSize: app.styler.themeFontSizeLarge
+        color: styler.itemFg
+        font.pixelSize: styler.themeFontSizeLarge
         maximumLineCount: 1
         text: gps.streetName
         truncMode: truncModes.fade
         visible: (app.mode === modes.navigate || app.mode === modes.followMe) && (text !== undefined && text !== null && text.length>0)
-        width: implicitWidth > master.width - 4*app.styler.themePaddingMedium ? master.width-4*app.styler.themePaddingMedium : implicitWidth
+        width: implicitWidth > master.width - 4*styler.themePaddingMedium ? master.width-4*styler.themePaddingMedium : implicitWidth
         z: 500
     }
 }

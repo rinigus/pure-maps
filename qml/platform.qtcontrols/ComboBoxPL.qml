@@ -22,9 +22,9 @@ import QtQuick.Controls 2.2
 Item {
     id: item
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    anchors.leftMargin: styler.themeHorizontalPageMargin
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    anchors.rightMargin: styler.themeHorizontalPageMargin
     height: Math.max(lab.height, val.height) + desc.height + desc.anchors.topMargin
 
     property int   currentIndex
@@ -42,9 +42,9 @@ Item {
     ComboBox {
         id: val
         anchors.left: lab.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         anchors.top: parent.top
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         property bool initialized: false
         onCurrentIndexChanged: {
             if (initialized && currentIndex != item.currentIndex)
@@ -61,8 +61,8 @@ Item {
         anchors.left: lab.right
         anchors.right: parent.right
         anchors.top: val.bottom
-        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
-        font.pixelSize: app.styler.themeFontSizeSmall
+        anchors.topMargin: text ? styler.themePaddingSmall : 0
+        font.pixelSize: styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap

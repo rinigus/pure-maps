@@ -21,7 +21,7 @@ import "../qml/platform"
 
 FormLayoutPL {
     id: settingsBlock
-    spacing: app.styler.themePaddingLarge
+    spacing: styler.themePaddingLarge
     width: parent.width
 
     property string selectedFile

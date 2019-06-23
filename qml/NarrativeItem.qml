@@ -30,42 +30,42 @@ Column {
         width: parent.width
         delegate: ListItemPL {
             id: listItem
-            contentHeight: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height + 2.0*app.styler.themePaddingLarge
+            contentHeight: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height + 2.0*styler.themePaddingLarge
 
             Image {
                 id: icon
                 anchors.left: parent.left
-                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                anchors.leftMargin: styler.themeHorizontalPageMargin
                 anchors.top: spacer.bottom
                 fillMode: Image.Pad
                 height: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height
                 horizontalAlignment: Image.AlignRight
                 opacity: 0.9
                 smooth: true
-                source: "icons/navigation/%1-%2.svg".arg(model.icon).arg(app.styler.navigationIconsVariant)
-                sourceSize.height: app.styler.themeIconSizeMedium
-                sourceSize.width: app.styler.themeIconSizeMedium
+                source: "icons/navigation/%1-%2.svg".arg(model.icon).arg(styler.navigationIconsVariant)
+                sourceSize.height: styler.themeIconSizeMedium
+                sourceSize.width: styler.themeIconSizeMedium
                 verticalAlignment: Image.AlignTop
             }
 
             Item {
                 id: spacer
-                height: app.styler.themePaddingLarge
+                height: styler.themePaddingLarge
             }
 
             LabelPL {
                 id: narrativeLabel
                 anchors.left: icon.right
-                anchors.leftMargin: app.styler.themePaddingMedium
+                anchors.leftMargin: styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                anchors.rightMargin: styler.themeHorizontalPageMargin
                 anchors.top: spacer.bottom
                 color: ( (list.activeItem < 0 && model.active) ||
                          (list.activeItem === model.index) ||
                          listItem.highlighted) ?
-                           app.styler.themeHighlightColor : app.styler.themePrimaryColor
-                font.pixelSize: app.styler.themeFontSizeSmall
-                height: implicitHeight + app.styler.themePaddingSmall
+                           styler.themeHighlightColor : styler.themePrimaryColor
+                font.pixelSize: styler.themeFontSizeSmall
+                height: implicitHeight + styler.themePaddingSmall
                 text: model.narrative
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
@@ -74,13 +74,13 @@ Column {
             LabelPL {
                 id: departLabel
                 anchors.left: icon.right
-                anchors.leftMargin: app.styler.themePaddingMedium
+                anchors.leftMargin: styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                anchors.rightMargin: styler.themeHorizontalPageMargin
                 anchors.top: narrativeLabel.bottom
-                color: app.styler.themeSecondaryColor
-                font.pixelSize: app.styler.themeFontSizeSmall
-                height: text ? implicitHeight + app.styler.themePaddingSmall : 0
+                color: styler.themeSecondaryColor
+                font.pixelSize: styler.themeFontSizeSmall
+                height: text ? implicitHeight + styler.themePaddingSmall : 0
                 text: model.depart_instruction ? model.depart_instruction : ""
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
@@ -89,13 +89,13 @@ Column {
             LabelPL {
                 id: arriveLabel
                 anchors.left: icon.right
-                anchors.leftMargin: app.styler.themePaddingMedium
+                anchors.leftMargin: styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                anchors.rightMargin: styler.themeHorizontalPageMargin
                 anchors.top: departLabel.bottom
-                color: app.styler.themeSecondaryColor
-                font.pixelSize: app.styler.themeFontSizeSmall
-                height: text ? implicitHeight + app.styler.themePaddingSmall : 0
+                color: styler.themeSecondaryColor
+                font.pixelSize: styler.themeFontSizeSmall
+                height: text ? implicitHeight + styler.themePaddingSmall : 0
                 text: model.arrive_instruction ? model.arrive_instruction : ""
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
@@ -104,14 +104,14 @@ Column {
             LabelPL {
                 id: lengthLabel
                 anchors.left: icon.right
-                anchors.leftMargin: app.styler.themePaddingMedium
+                anchors.leftMargin: styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                anchors.rightMargin: styler.themeHorizontalPageMargin
                 anchors.top: arriveLabel.bottom
-                anchors.topMargin: app.styler.themePaddingSmall
-                color: app.styler.themeSecondaryColor
-                font.pixelSize: app.styler.themeFontSizeSmall
-                height: implicitHeight + app.styler.themePaddingSmall
+                anchors.topMargin: styler.themePaddingSmall
+                color: styler.themeSecondaryColor
+                font.pixelSize: styler.themeFontSizeSmall
+                height: implicitHeight + styler.themePaddingSmall
                 lineHeight: 1.15
                 text: model.index < list.model.count - 1 ?
                           app.tr("Continue for %1.", model.length) : ""

@@ -26,7 +26,7 @@ MouseArea {
     id: master
     anchors.left: parent.left
     anchors.top: attributionButton.bottom
-    height: 2*(app.styler.themePaddingLarge + app.styler.themePaddingSmall) +
+    height: 2*(styler.themePaddingLarge + styler.themePaddingSmall) +
             (_rotate ? scaleBar.width : scaleBar.height)
     states: [
         State {
@@ -41,7 +41,7 @@ MouseArea {
         }
     ]
     opacity: hidden ? 0 : 1
-    width: 2*(app.styler.themePaddingLarge + app.styler.themePaddingSmall) +
+    width: 2*(styler.themePaddingLarge + styler.themePaddingSmall) +
            (_rotate ? scaleBar.height : scaleBar.width)
     z: 400
 
@@ -78,7 +78,7 @@ MouseArea {
         }
 
         property real   _prevDist: 0
-        property real   _thickness: app.styler.themeFontSizeOnMap / 8.0
+        property real   _thickness: styler.themeFontSizeOnMap / 8.0
         property int    scaleBarMaxLengthDefault: Math.min(map.height,map.width) / 4
         property int    scaleBarMaxLength: scaleBarMaxLengthDefault
         property real   scaleWidth: 0
@@ -87,7 +87,7 @@ MouseArea {
         Rectangle {
             id: base
             anchors.bottom: scaleBar.bottom
-            color: app.styler.fg
+            color: styler.fg
             height: scaleBar._thickness
             width: scaleBar.scaleWidth
         }
@@ -96,7 +96,7 @@ MouseArea {
             id: left
             anchors.bottom: base.top
             anchors.left: base.left
-            color: app.styler.fg
+            color: styler.fg
             height: scaleBar._thickness * 3
             width: scaleBar._thickness
         }
@@ -105,7 +105,7 @@ MouseArea {
             id: right
             anchors.bottom: base.top
             anchors.right: base.right
-            color: app.styler.fg
+            color: styler.fg
             height: scaleBar._thickness * 3
             width: scaleBar._thickness
         }
@@ -115,30 +115,30 @@ MouseArea {
             anchors.bottom: base.top
             anchors.bottomMargin: scaleBar._thickness
             anchors.horizontalCenter: base.horizontalCenter
-            color: app.styler.fg
+            color: styler.fg
             font.bold: true
             font.family: "sans-serif"
-            font.pixelSize: app.styler.themeFontSizeOnMap
+            font.pixelSize: styler.themeFontSizeOnMap
             horizontalAlignment: Text.AlignHCenter
             text: scaleBar.text
         }
 
         Image {
             anchors.bottom: right.top
-            anchors.bottomMargin: app.styler.themePaddingMedium
+            anchors.bottomMargin: styler.themePaddingMedium
             anchors.horizontalCenter: _rotate ? left.horizontalCenter : right.horizontalCenter
             height: sourceSize.height
             layer.enabled: true
             layer.effect: DropShadow {
-                color: app.styler.shadowColor
-                opacity: app.styler.shadowOpacity
-                radius: app.styler.shadowRadius
+                color: styler.shadowColor
+                opacity: styler.shadowOpacity
+                radius: styler.shadowRadius
                 samples: 1 + radius*2
             }
             smooth: true
             source: app.getIcon("icons/indicator", true)
-            sourceSize.height: app.styler.indicatorSize
-            sourceSize.width: app.styler.indicatorSize
+            sourceSize.height: styler.indicatorSize
+            sourceSize.width: styler.indicatorSize
             visible: map.autoZoom
             width: sourceSize.width
         }

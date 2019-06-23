@@ -21,7 +21,7 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.5 as Kirigami
 
 Item {
-    implicitHeight: txt.height + sep.height + app.styler.themePaddingSmall
+    implicitHeight: txt.height + sep.height + styler.themePaddingSmall
     width: parent.width
     Kirigami.FormData.isSection: true
     Kirigami.FormData.label: text
@@ -40,11 +40,11 @@ Item {
     Kirigami.Heading {
         id: txt
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.top: sep.bottom
-        anchors.topMargin: app.styler.themePaddingSmall
+        anchors.topMargin: styler.themePaddingSmall
         height: inForm ? 0 : implicitHeight
         horizontalAlignment: Text.AlignLeft
         level: 4

@@ -23,13 +23,13 @@ Rectangle {
     id: panel
     anchors.left: parent.left
     anchors.right: parent.right
-    color: app.styler.blockBg
+    color: styler.blockBg
     height: 0
 //    layer.enabled: contentHeight ? true : false
 //    layer.effect: DropShadow {
-//        color: app.styler.shadowColor
-//        opacity: app.styler.shadowOpacity
-//        radius: app.styler.shadowRadius
+//        color: styler.shadowColor
+//        opacity: styler.shadowOpacity
+//        radius: styler.shadowRadius
 //        samples: 1 + radius*2
 //    }
     y: mode === panelModes.bottom ? parent.height - _offset : -height + _offset
@@ -119,14 +119,14 @@ Rectangle {
                        (_bg.g+_fg.g)/2,
                        (_bg.b+_fg.b)/2,
                        (_bg.a+_fg.a)/2)
-        height: app.styler.themePaddingSmall * 2
+        height: styler.themePaddingSmall * 2
         opacity: 0.75
         radius: height / 2
         visible: contentHeight > 0
-        width: app.styler.themePaddingLarge * 5
+        width: styler.themePaddingLarge * 5
 
-        property color _bg: app.styler.blockBg
-        property color _fg: app.styler.themePrimaryColor
+        property color _bg: styler.blockBg
+        property color _fg: styler.themePrimaryColor
     }
 
     Connections {

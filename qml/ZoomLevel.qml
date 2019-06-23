@@ -23,7 +23,7 @@ Rectangle {
     id: master
     anchors.verticalCenter: attributionButton.verticalCenter
     anchors.left: attributionButton.right
-    anchors.leftMargin: app.styler.themePaddingLarge
+    anchors.leftMargin: styler.themePaddingLarge
     color: "transparent"
     height: visible ? cover.height : 0
     visible: app.conf.developmentShowZ
@@ -32,12 +32,12 @@ Rectangle {
     Rectangle {
         id: cover
         anchors.centerIn: ztxt
-        color: app.styler.itemBg
+        color: styler.itemBg
         height: ztxt.height
         opacity: 0.75
-        radius: app.styler.themePaddingMedium
+        radius: styler.themePaddingMedium
         visible: parent.visible
-        width: ztxt.width + 2*app.styler.themePaddingMedium
+        width: ztxt.width + 2*styler.themePaddingMedium
         z: 450
     }
 
@@ -45,8 +45,8 @@ Rectangle {
         id: ztxt
         anchors.bottom: parent.bottom
         anchors.left: parent.left
-        color: app.styler.itemFg
-        font.pixelSize: app.styler.themeFontSizeLarge
+        color: styler.itemFg
+        font.pixelSize: styler.themeFontSizeLarge
         maximumLineCount: 1
         text: "z=%1".arg(map.zoomLevel.toFixed(2))
         z: 500

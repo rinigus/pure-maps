@@ -42,9 +42,9 @@ Page {
 
     ScrollView {
         id: flickable        
-        anchors.bottomMargin: app.styler.themePaddingLarge
+        anchors.bottomMargin: styler.themePaddingLarge
         anchors.fill: parent
-        anchors.topMargin: app.styler.themePaddingLarge
+        anchors.topMargin: styler.themePaddingLarge
         contentHeight: itemCont.height
         contentWidth: page.width
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
@@ -54,7 +54,7 @@ Page {
             id: itemCont
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: title.bottom
-            anchors.topMargin: app.styler.themePaddingLarge
+            anchors.topMargin: styler.themePaddingLarge
             height: childrenRect.height
             width: parent.width
         }

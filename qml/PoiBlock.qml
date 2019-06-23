@@ -61,9 +61,9 @@ Item {
         // title and overall anchor to the top
         id: titleItem
         anchors.top: item.top
-        color: app.styler.themeHighlightColor
-        font.pixelSize: app.styler.themeFontSizeLarge
-        height: text ? implicitHeight + app.styler.themePaddingMedium: 0
+        color: styler.themeHighlightColor
+        font.pixelSize: styler.themeFontSizeLarge
+        height: text ? implicitHeight + styler.themePaddingMedium: 0
         text: item.title
         truncMode: truncModes.none
         verticalAlignment: Text.AlignTop
@@ -73,9 +73,9 @@ Item {
     ListItemLabel {
         id: typeAddressItem
         anchors.top: titleItem.bottom
-        color: app.styler.themeHighlightColor
-        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
-        font.pixelSize: app.styler.themeFontSizeSmall
+        color: styler.themeHighlightColor
+        height: text ? implicitHeight + styler.themePaddingSmall: 0
+        font.pixelSize: styler.themeFontSizeSmall
         text: {
             if (item.poiType && item.address)
                 return app.tr("%1; %2", item.poiType, item.address);
@@ -93,9 +93,9 @@ Item {
     ListItemLabel {
         id: coorItem
         anchors.top: typeAddressItem.bottom
-        color: app.styler.themeSecondaryHighlightColor
-        font.pixelSize: app.styler.themeFontSizeSmall
-        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
+        color: styler.themeSecondaryHighlightColor
+        font.pixelSize: styler.themeFontSizeSmall
+        height: text ? implicitHeight + styler.themePaddingSmall: 0
         text: app.portrait && item.coordinate? app.tr("Latitude: %1; Longitude: %2", item.coordinate.latitude, item.coordinate.longitude) : ""
         truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
@@ -104,9 +104,9 @@ Item {
     ListItemLabel {
         id: textItem
         anchors.top: coorItem.bottom
-        color: app.styler.themeHighlightColor
-        font.pixelSize: app.styler.themeFontSizeSmall
-        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
+        color: styler.themeHighlightColor
+        font.pixelSize: styler.themeFontSizeSmall
+        height: text ? implicitHeight + styler.themePaddingSmall: 0
         maximumLineCount: app.portrait ? 3 : 1;
         text: item.text
         truncMode: truncModes.elide
@@ -117,9 +117,9 @@ Item {
     ListItemLabel {
         id: additionalInfoItem
         anchors.top: textItem.bottom
-        color: app.styler.themeSecondaryHighlightColor
-        font.pixelSize: app.styler.themeFontSizeSmall
-        height: text ? implicitHeight + app.styler.themePaddingSmall: 0
+        color: styler.themeSecondaryHighlightColor
+        font.pixelSize: styler.themeFontSizeSmall
+        height: text ? implicitHeight + styler.themePaddingSmall: 0
         horizontalAlignment: Text.AlignRight
         text: {
             var info = "";
@@ -142,19 +142,19 @@ Item {
         anchors.right: parent.right
         anchors.top: additionalInfoItem.bottom
         color: "transparent"
-        height: app.styler.themePaddingLarge - app.styler.themePaddingSmall
+        height: styler.themePaddingLarge - styler.themePaddingSmall
     }
 
     Row {
         id: mainButtons
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.top: splitterItem.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        spacing: app.styler.themePaddingLarge
+        spacing: styler.themePaddingLarge
 
         IconButtonPL {
-            iconHeight: app.styler.themeIconSizeMedium
-            iconName: app.styler.iconAbout
+            iconHeight: styler.themeIconSizeMedium
+            iconName: styler.iconAbout
             onClicked: {
                 app.push(Qt.resolvedUrl("PoiInfoPage.qml"), {
                              "active": active,
@@ -165,8 +165,8 @@ Item {
 
         IconButtonPL {
             enabled: item.active
-            iconHeight: app.styler.themeIconSizeMedium
-            iconName: bookmarked ? app.styler.iconFavoriteSelected  : app.styler.iconFavorite
+            iconHeight: styler.themeIconSizeMedium
+            iconName: bookmarked ? styler.iconFavoriteSelected  : styler.iconFavorite
             onClicked: {
                 bookmarked = !bookmarked;
                 pois.bookmark(poiId, bookmarked);
@@ -174,8 +174,8 @@ Item {
         }
 
         IconButtonPL {
-            iconHeight: app.styler.themeIconSizeMedium
-            iconName: app.styler.iconNavigate
+            iconHeight: styler.themeIconSizeMedium
+            iconName: styler.iconNavigate
             onClicked: {
                 if (coordinate === undefined) return;
                 app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
@@ -186,8 +186,8 @@ Item {
         }
 
         IconButtonPL {
-            iconHeight: app.styler.themeIconSizeMedium
-            iconName: app.styler.iconNearby
+            iconHeight: styler.themeIconSizeMedium
+            iconName: styler.iconNearby
             onClicked: {
                 if (coordinate === undefined) return;
                 app.showMenu(Qt.resolvedUrl("NearbyPage.qml"), {
@@ -199,8 +199,8 @@ Item {
 
         IconButtonPL {
             enabled: item.active
-            iconHeight: app.styler.themeIconSizeMedium
-            iconName: app.styler.iconDelete
+            iconHeight: styler.themeIconSizeMedium
+            iconName: styler.iconDelete
             onClicked: {
                 if (coordinate === undefined) return;
                 pois.remove(poiId, true);

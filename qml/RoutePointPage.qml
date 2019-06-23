@@ -46,20 +46,20 @@ DialogAutoPL {
     property alias  query: geo.query
 
     Column {
-        spacing: app.styler.themePaddingMedium
+        spacing: styler.themePaddingMedium
         width: dialog.width
 
         ListItemLabel {
             id: commentLabel
-            color: app.styler.themeHighlightColor
-            font.pixelSize: app.styler.themeFontSizeSmall
+            color: styler.themeHighlightColor
+            font.pixelSize: styler.themeFontSizeSmall
             visible: text
             wrapMode: Text.WordWrap
         }
 
         ListItemLabel {
-            font.pixelSize: app.styler.themeFontSizeSmall
-            color: app.styler.themeHighlightColor
+            font.pixelSize: styler.themeFontSizeSmall
+            color: styler.themeHighlightColor
             horizontalAlignment: Text.AlignRight
             text: app.tr("Current selection: %1").arg(currentSelection)
             visible: currentSelection

@@ -23,7 +23,7 @@ ListItemPL {
     id: item
     anchors.left: parent.left
     anchors.right: parent.right
-    contentHeight: Math.max(app.styler.themeItemSizeSmall, profileComboBox.height)
+    contentHeight: Math.max(styler.themeItemSizeSmall, profileComboBox.height)
 
     default property alias  content: item.items
     property alias          iconName: icon.iconName
@@ -33,21 +33,21 @@ ListItemPL {
     IconPL {
         id: icon
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.verticalCenter: label.verticalCenter
-        iconHeight: app.styler.themeItemSizeSmall*0.8
+        iconHeight: styler.themeItemSizeSmall*0.8
     }
 
     LabelPL {
         id: label
         anchors.left: icon.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         color: {
-            if (!item.enabled) return app.styler.themeSecondaryHighlightColor;
-            if (item.highlighted) return app.styler.themeHighlightColor;
-            return app.styler.themePrimaryColor;
+            if (!item.enabled) return styler.themeSecondaryHighlightColor;
+            if (item.highlighted) return styler.themeHighlightColor;
+            return styler.themePrimaryColor;
         }
-        height: app.styler.themeItemSizeSmall
+        height: styler.themeItemSizeSmall
         truncMode: truncModes.fade
         verticalAlignment: Text.AlignVCenter
     }
@@ -55,10 +55,10 @@ ListItemPL {
     ComboBoxPL {
         id: profileComboBox
         anchors.left: label.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         anchors.right: parent.right
-        anchors.top: app.styler.isSilica ? parent.top : undefined
-        anchors.verticalCenter: app.styler.isSilica ? undefined : label.verticalCenter
+        anchors.top: styler.isSilica ? parent.top : undefined
+        anchors.verticalCenter: styler.isSilica ? undefined : label.verticalCenter
         model: []
         onCurrentIndexChanged: {
             if (profileComboBox.currentIndex < 0 || profileComboBox.currentIndex >= items.length)

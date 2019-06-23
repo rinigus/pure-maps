@@ -44,15 +44,15 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        height: Math.max(app.styler.themeItemSizeSmall, implicitHeight)
-        font.pixelSize: app.styler.themeFontSizeMedium
-        leftPadding: lab.width + lab.anchors.leftMargin + app.styler.themePaddingMedium
+        height: Math.max(styler.themeItemSizeSmall, implicitHeight)
+        font.pixelSize: styler.themeFontSizeMedium
+        leftPadding: lab.width + lab.anchors.leftMargin + styler.themePaddingMedium
         onClicked: row.clicked()
 
         Label {
             id: lab
             anchors.left: parent.left
-            anchors.leftMargin: inForm ? 0 : app.styler.themeHorizontalPageMargin
+            anchors.leftMargin: inForm ? 0 : styler.themeHorizontalPageMargin
             anchors.verticalCenter: val.verticalCenter
             height: inForm ? 0 : implicitHeight
             width: inForm ? 0 : implicitWidth
@@ -66,10 +66,10 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: lab.anchors.leftMargin + lab.width
         anchors.top: val.bottom
-        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
+        anchors.topMargin: text ? styler.themePaddingSmall : 0
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        font.pixelSize: app.styler.themeFontSizeSmall
+        anchors.rightMargin: styler.themeHorizontalPageMargin
+        font.pixelSize: styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap

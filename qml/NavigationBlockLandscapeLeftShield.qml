@@ -25,7 +25,7 @@ Rectangle {
     y: -radius
     color: navigationBlock.color
     height: navigationBlock.shieldLeftHeight > 0 ? navigationBlock.shieldLeftHeight - y : 0
-    radius: app.styler.themePaddingLarge
+    radius: styler.themePaddingLarge
     width: navigationBlock.shieldLeftWidth > 0 ? navigationBlock.shieldLeftWidth - x : 0
     z: 400
 

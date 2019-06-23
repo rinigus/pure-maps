@@ -24,7 +24,7 @@ PagePL {
     id: page
     title: app.tr("Navigation")
 
-    acceptIconName: app.styler.iconNavigate
+    acceptIconName: styler.iconNavigate
     acceptText: app.tr("Route")
     canNavigateForward:
         (!page.fromNeeded || (page.from && (page.fromText !== app.tr("Current position") || gps.ready))) &&
@@ -92,14 +92,14 @@ PagePL {
 
     Column {
         id: column
-        spacing: app.styler.themePaddingLarge
+        spacing: styler.themePaddingLarge
         width: parent.width
 
         Column {
             id: columnRouter
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: app.styler.themePaddingMedium
+            spacing: styler.themePaddingMedium
             visible: !followMe
 
             property var  settings: null
@@ -164,20 +164,20 @@ PagePL {
             }
 
             Spacer {
-                height: app.styler.themePaddingMedium
+                height: styler.themePaddingMedium
             }
 
             Repeater {
                 id: destinations
 
                 delegate: ListItemPL {
-                    contentHeight: model.visible ? app.styler.themeItemSizeSmall : 0
+                    contentHeight: model.visible ? styler.themeItemSizeSmall : 0
                     menu: ContextMenuPL {
                         id: contextMenu
                         enabled: model.type === "recent destination"
                         ContextMenuItemPL {
                             enabled: model.type === "recent destination"
-                            iconName: enabled ? app.styler.iconDelete : ""
+                            iconName: enabled ? styler.iconDelete : ""
                             text: enabled ? app.tr("Remove") : ""
                             onClicked: {
                                 if (model.type !== "recent destination") return;
@@ -191,7 +191,7 @@ PagePL {
                     ListItemLabel {
                         id: label
                         anchors.verticalCenter: parent.verticalCenter
-                        color: app.styler.themePrimaryColor
+                        color: styler.themePrimaryColor
                         text: model.text
                     }
 
@@ -250,11 +250,11 @@ PagePL {
             id: columnFollow
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: app.styler.themePaddingMedium
+            spacing: styler.themePaddingMedium
             visible: followMe
 
             ListItemLabel {
-                color: app.styler.themeHighlightColor
+                color: styler.themeHighlightColor
                 text: app.tr("Follow the movement and show just in time information")
                 truncMode: truncModes.none
                 wrapMode: Text.WordWrap
@@ -262,8 +262,8 @@ PagePL {
 
             ToolItemPL {
                 id: beginFollowMeItem
-                icon.iconHeight: app.styler.themeIconSizeMedium
-                icon.iconName: app.mode === modes.followMe ? app.styler.iconStop : app.styler.iconStart
+                icon.iconHeight: styler.themeIconSizeMedium
+                icon.iconName: app.mode === modes.followMe ? styler.iconStop : styler.iconStart
                 text: app.mode === modes.followMe ? app.tr("Stop") : app.tr("Begin")
                 width: columnFollow.width
                 onClicked: {
@@ -279,10 +279,10 @@ PagePL {
 
             FormLayoutPL {
                 anchors.left: parent.left
-                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                anchors.leftMargin: styler.themeHorizontalPageMargin
                 anchors.right: parent.right
-                anchors.rightMargin: app.styler.themeHorizontalPageMargin
-                spacing: app.styler.themePaddingMedium
+                anchors.rightMargin: styler.themeHorizontalPageMargin
+                spacing: styler.themePaddingMedium
 
                 ComboBoxPL {
                     id: mapmatchingComboBox

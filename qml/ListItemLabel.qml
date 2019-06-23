@@ -21,9 +21,9 @@ import "platform"
 
 LabelPL {
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    anchors.leftMargin: styler.themeHorizontalPageMargin
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    anchors.rightMargin: styler.themeHorizontalPageMargin
     truncMode: truncModes.fade
     verticalAlignment: Text.AlignVCenter
 }

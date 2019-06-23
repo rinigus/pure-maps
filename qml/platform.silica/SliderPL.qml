@@ -39,12 +39,12 @@ Item {
     LabelPL {
         id: desc
         anchors.top: val.bottom
-        anchors.topMargin: text ? app.styler.themePaddingMedium : 0
+        anchors.topMargin: text ? styler.themePaddingMedium : 0
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        font.pixelSize: app.styler.themeFontSizeSmall
+        anchors.rightMargin: styler.themeHorizontalPageMargin
+        font.pixelSize: styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap

@@ -22,9 +22,9 @@ import "platform"
 Rectangle {
     id: button
     color: "#bbffffff"
-    height: label.height + 1.5 * app.styler.themePaddingMedium
-    radius: app.styler.themePaddingSmall
-    width: label.width + 2.5 * app.styler.themePaddingMedium
+    height: label.height + 1.5 * styler.themePaddingMedium
+    radius: styler.themePaddingSmall
+    width: label.width + 2.5 * styler.themePaddingMedium
 
     property string text: ""
 
@@ -38,7 +38,7 @@ Rectangle {
         id: label
         anchors.centerIn: parent
         color: "black"
-        font.pixelSize: app.styler.themeFontSizeExtraSmall
+        font.pixelSize: styler.themeFontSizeExtraSmall
         text: button.text
     }
 
@@ -46,7 +46,7 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             if (button.useHighlight) {
-                button.color = app.styler.themeHighlightColor;
+                button.color = styler.themeHighlightColor;
                 timer.restart();
             }
             button.clicked();

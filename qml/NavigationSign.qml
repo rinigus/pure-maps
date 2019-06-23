@@ -22,9 +22,9 @@ import "platform"
 Rectangle {
     id: block
     anchors.right: parent.right
-    anchors.rightMargin: -app.styler.themePaddingMedium
+    anchors.rightMargin: -styler.themePaddingMedium
     anchors.top: navigationBlock.bottom
-    anchors.topMargin: height > 0 ? app.styler.themePaddingSmall : 0
+    anchors.topMargin: height > 0 ? styler.themePaddingSmall : 0
     color: "#3768B7"
     height: {
         if (!app.conf.showNavigationSign) return 0;
@@ -33,19 +33,19 @@ Rectangle {
         var h3 = towardLabel.height;
         var h4 = branchLabel.height;
         var h = h1 + h2 + h3 + h4;
-        if (h) return h + 2*app.styler.themePaddingMedium;
+        if (h) return h + 2*styler.themePaddingMedium;
         return 0;
     }
-    radius: app.styler.themePaddingMedium
+    radius: styler.themePaddingMedium
     visible: app.conf.showNavigationSign
     width: {
         if (!app.conf.showNavigationSign) return 0;
-        var w1 = numLabel.text ? numLabel.width + exitLabel.width + app.styler.themePaddingSmall : 0;
+        var w1 = numLabel.text ? numLabel.width + exitLabel.width + styler.themePaddingSmall : 0;
         var w2 = nameLabel.implicitWidth;
         var w3 = towardLabel.implicitWidth;
         var w4 = branchLabel.implicitWidth;
         var w  = Math.max(w1, Math.min(parent.width/3, Math.max(w2, w3, w4)));
-        if (w) return w + 2*app.styler.themePaddingLarge;
+        if (w) return w + 2*styler.themePaddingLarge;
         return 0;
     }
     z: 500
@@ -57,24 +57,24 @@ Rectangle {
     Rectangle {
         id: signBorder
         anchors.fill: parent
-        anchors.margins: app.styler.themePaddingSmall/2
+        anchors.margins: styler.themePaddingSmall/2
         border.color: "white"
-        border.width: app.styler.themePaddingSmall/2
+        border.width: styler.themePaddingSmall/2
         color: "transparent"
-        radius: app.styler.themePaddingMedium
+        radius: styler.themePaddingMedium
     }
     
     LabelPL {
         // Exit number
         id: numLabel
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themePaddingLarge
+        anchors.rightMargin: styler.themePaddingLarge
         anchors.top: parent.top
-        anchors.topMargin: block.signActive ? app.styler.themePaddingMedium : 0
+        anchors.topMargin: block.signActive ? styler.themePaddingMedium : 0
         color: "white"
         font.bold: true
-        font.pixelSize: app.styler.themeFontSizeLarge
-        height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
+        font.pixelSize: styler.themeFontSizeLarge
+        height: text ? implicitHeight + 0*styler.themePaddingSmall: 0
         text: block.getstr("exit_number", " ")
         verticalAlignment: Text.AlignBottom
         width: text ? implicitWidth : 0
@@ -85,10 +85,10 @@ Rectangle {
         id: exitLabel
         anchors.baseline: numLabel.baseline
         anchors.right: numLabel.left
-        anchors.rightMargin: app.styler.themePaddingSmall
+        anchors.rightMargin: styler.themePaddingSmall
         color: "white"
         height: numLabel.text ? implicitHeight : 0
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         text: app.tr("EXIT")
         visible: numLabel.text
         width: numLabel.text ? implicitWidth : 0
@@ -98,11 +98,11 @@ Rectangle {
         // Exit name
         id: nameLabel
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themePaddingLarge
+        anchors.rightMargin: styler.themePaddingLarge
         anchors.top: numLabel.bottom
         color: "white"
-        font.pixelSize: app.styler.themeFontSizeMedium
-        height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
+        font.pixelSize: styler.themeFontSizeMedium
+        height: text ? implicitHeight + 0*styler.themePaddingSmall: 0
         maximumLineCount: 1
         text: block.getstr("exit_name", "\n", 1)
         truncMode: truncModes.fade
@@ -114,13 +114,13 @@ Rectangle {
         // Exit towards
         id: towardLabel
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themePaddingLarge
+        anchors.rightMargin: styler.themePaddingLarge
         anchors.top: nameLabel.bottom
         color: "white"
         font.bold: true
         font.capitalization: Font.AllUppercase
-        font.pixelSize: app.styler.themeFontSizeMedium
-        height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
+        font.pixelSize: styler.themeFontSizeMedium
+        height: text ? implicitHeight + 0*styler.themePaddingSmall: 0
         text: block.getstr("exit_toward", "\n", 3)
         truncMode: truncModes.fade
         verticalAlignment: Text.AlignBottom
@@ -131,12 +131,12 @@ Rectangle {
         // Exit branch
         id: branchLabel
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themePaddingLarge
+        anchors.rightMargin: styler.themePaddingLarge
         anchors.top: towardLabel.bottom
         color: "white"
         font.bold: true
-        font.pixelSize: app.styler.themeFontSizeMedium
-        height: text ? implicitHeight + 0*app.styler.themePaddingSmall: 0
+        font.pixelSize: styler.themeFontSizeMedium
+        height: text ? implicitHeight + 0*styler.themePaddingSmall: 0
         text: block.getstr("exit_branch", " ", 2)
         truncMode: truncModes.fade
         verticalAlignment: Text.AlignBottom
@@ -144,7 +144,7 @@ Rectangle {
     }
 
     function elementWidth() {
-        return block.width - 2*app.styler.themePaddingLarge;
+        return block.width - 2*styler.themePaddingLarge;
     }
 
     function getstr(data_id, conn, maxnr) {

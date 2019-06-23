@@ -26,22 +26,22 @@ Panel {
     anchors.right: parent.right
     contentHeight: {
         if (app.mode === modes.exploreRoute) {
-            var h1 = 2*app.styler.themePaddingMedium + infoLayout.height + helpLabel.height;
+            var h1 = 2*styler.themePaddingMedium + infoLayout.height + helpLabel.height;
             return h1;
         }
         if (app.mode !== modes.navigate) return 0;
         if (!app.portrait && notify) {
-            var h1 = app.styler.themePaddingMedium + app.styler.themeFontSizeLarge - app.styler.themeFontSizeMedium + narrativeLabel.height;
-            var h2 = app.styler.themePaddingMedium + destLabel.height;
-            var h3 = app.styler.themePaddingMedium + streetLabel.height;
+            var h1 = styler.themePaddingMedium + styler.themeFontSizeLarge - styler.themeFontSizeMedium + narrativeLabel.height;
+            var h2 = styler.themePaddingMedium + destLabel.height;
+            var h3 = styler.themePaddingMedium + streetLabel.height;
             return Math.max(h1, h2, h3);
         } else {
-            var h1 = iconImage.height + 2 * app.styler.themePaddingLarge;
-            var h2 = manLabel.height + app.styler.themePaddingSmall + narrativeLabel.height;
+            var h1 = iconImage.height + 2 * styler.themePaddingLarge;
+            var h2 = manLabel.height + styler.themePaddingSmall + narrativeLabel.height;
             var h3 = manLabel.height + streetLabel.height;
             // If far off route, manLabel defines the height of the block,
             // but we need padding to make a sufficiently large tap target.
-            var h4 = notify ? 0 : manLabel.height + app.styler.themePaddingMedium;
+            var h4 = notify ? 0 : manLabel.height + styler.themePaddingMedium;
             return Math.max(h1, h2, h3, h4);
         }
     }
@@ -69,8 +69,8 @@ Panel {
     property string narrative: app.navigationStatus.narrative
     property bool   notify:    app.navigationStatus.notify
     property var    street:    app.navigationStatus.street
-    property int    shieldLeftHeight: !app.portrait && destDist && notify ? manLabel.height + app.styler.themePaddingMedium + iconImage.height + iconImage.anchors.topMargin : 0
-    property int    shieldLeftWidth:  !app.portrait && destDist && notify ? manLabel.anchors.leftMargin + app.styler.themePaddingLarge + Math.max(manLabel.width, iconImage.width) : 0
+    property int    shieldLeftHeight: !app.portrait && destDist && notify ? manLabel.height + styler.themePaddingMedium + iconImage.height + iconImage.anchors.topMargin : 0
+    property int    shieldLeftWidth:  !app.portrait && destDist && notify ? manLabel.anchors.leftMargin + styler.themePaddingLarge + Math.max(manLabel.width, iconImage.width) : 0
     property string totalDist: app.navigationStatus.totalDist
     property string totalTime: app.navigationStatus.totalTime
 
@@ -78,7 +78,7 @@ Panel {
     RouteOverallInfo {
         id: infoLayout
         anchors.top: parent.top
-        anchors.topMargin: app.styler.themePaddingMedium
+        anchors.topMargin: styler.themePaddingMedium
         activeColors: true
         visible: app.mode === modes.exploreRoute
     }
@@ -87,14 +87,14 @@ Panel {
         // help label
         id: helpLabel
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.top: infoLayout.bottom
-        anchors.topMargin: app.styler.themePaddingMedium
-        color: app.styler.themePrimaryColor
-        font.pixelSize: app.styler.themeFontSizeMedium
-        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        anchors.topMargin: styler.themePaddingMedium
+        color: styler.themePrimaryColor
+        font.pixelSize: styler.themeFontSizeMedium
+        height: text ? implicitHeight + styler.themePaddingMedium : 0
         text: {
             if (app.mode !== modes.exploreRoute) return "";
             if (!totalDist)
@@ -113,13 +113,13 @@ Panel {
         // Distance remaining to the next maneuver
         id: manLabel
         anchors.left: iconImage.right
-        anchors.leftMargin: iconImage.width > 0 || !app.portrait ? (app.portrait ? app.styler.themePaddingLarge : app.styler.themeHorizontalPageMargin) : 0
-        anchors.rightMargin: app.styler.themePaddingLarge
+        anchors.leftMargin: iconImage.width > 0 || !app.portrait ? (app.portrait ? styler.themePaddingLarge : styler.themeHorizontalPageMargin) : 0
+        anchors.rightMargin: styler.themePaddingLarge
         anchors.top: parent.top
-        color: block.notify ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
-        font.family: block.notify ? app.styler.themeFontFamilyHeading : app.styler.themeFontFamily
-        font.pixelSize: block.notify ? app.styler.themeFontSizeHuge : app.styler.themeFontSizeLarge
-        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        color: block.notify ? styler.themeHighlightColor : styler.themePrimaryColor
+        font.family: block.notify ? styler.themeFontFamilyHeading : styler.themeFontFamily
+        font.pixelSize: block.notify ? styler.themeFontSizeHuge : styler.themeFontSizeLarge
+        height: text ? implicitHeight + styler.themePaddingMedium : 0
         text: app.mode === modes.navigate ? block.manDist : ""
         verticalAlignment: Text.AlignBottom
         states: [
@@ -140,10 +140,10 @@ Panel {
         id: destLabel
         anchors.baseline: manLabel.baseline
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        color: app.styler.themePrimaryColor
-        font.pixelSize: app.styler.themeFontSizeLarge
-        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        anchors.rightMargin: styler.themeHorizontalPageMargin
+        color: styler.themePrimaryColor
+        font.pixelSize: styler.themeFontSizeLarge
+        height: text ? implicitHeight + styler.themePaddingMedium : 0
         text: block.notify ? block.destEta : ""
         states: [
             State {
@@ -173,9 +173,9 @@ Panel {
         id: destEta
         anchors.baseline: destLabel.baseline
         anchors.right: destLabel.left
-        anchors.rightMargin: app.styler.themePaddingSmall
-        color: app.styler.themeSecondaryColor
-        font.pixelSize: app.styler.themeFontSizeMedium
+        anchors.rightMargin: styler.themePaddingSmall
+        color: styler.themeSecondaryColor
+        font.pixelSize: styler.themeFontSizeMedium
         text: app.tr("ETA")
         visible: destLabel.height
     }
@@ -184,13 +184,13 @@ Panel {
         // Street name
         id: streetLabel
         anchors.left: iconImage.right
-        anchors.leftMargin: iconImage.width > 0 ? app.styler.themePaddingLarge : 0
+        anchors.leftMargin: iconImage.width > 0 ? styler.themePaddingLarge : 0
         anchors.right: parent.right
-        anchors.rightMargin: app.portrait ? app.styler.themeHorizontalPageMargin : app.styler.themePaddingLarge
+        anchors.rightMargin: app.portrait ? styler.themeHorizontalPageMargin : styler.themePaddingLarge
         anchors.top: manLabel.bottom
-        color: app.styler.themePrimaryColor
-        font.pixelSize: app.styler.themeFontSizeExtraLarge
-        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        color: styler.themePrimaryColor
+        font.pixelSize: styler.themeFontSizeExtraLarge
+        height: text ? implicitHeight + styler.themePaddingMedium : 0
         maximumLineCount: 1
         states: [
             State {
@@ -226,14 +226,14 @@ Panel {
         // Instruction text for the next maneuver
         id: narrativeLabel
         anchors.left: iconImage.right
-        anchors.leftMargin: iconImage.width > 0 ? app.styler.themePaddingLarge : 0
+        anchors.leftMargin: iconImage.width > 0 ? styler.themePaddingLarge : 0
         anchors.right: parent.right
-        anchors.rightMargin: app.portrait ? app.styler.themeHorizontalPageMargin : app.styler.themePaddingLarge
+        anchors.rightMargin: app.portrait ? styler.themeHorizontalPageMargin : styler.themePaddingLarge
         anchors.top: manLabel.bottom
-        anchors.topMargin: app.styler.themePaddingSmall
-        color: app.styler.themePrimaryColor
-        font.pixelSize: app.styler.themeFontSizeMedium
-        height: text ? implicitHeight + app.styler.themePaddingMedium : 0
+        anchors.topMargin: styler.themePaddingSmall
+        color: styler.themePrimaryColor
+        font.pixelSize: styler.themeFontSizeMedium
+        height: text ? implicitHeight + styler.themePaddingMedium : 0
         states: [
             State {
                 when: !app.navigationPageSeen && app.modes === modes.exploreRoute
@@ -264,17 +264,17 @@ Panel {
         // Icon for the next maneuver
         id: iconImage
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
-        anchors.rightMargin: app.styler.themePaddingLarge
+        anchors.leftMargin: styler.themeHorizontalPageMargin
+        anchors.rightMargin: styler.themePaddingLarge
         anchors.top: parent.top
-        anchors.topMargin: height ? app.styler.themePaddingLarge : 0
+        anchors.topMargin: height ? styler.themePaddingLarge : 0
         fillMode: Image.Pad
         height: block.notify ? sourceSize.height : 0
         opacity: 0.9
         smooth: true
-        source: block.notify ? "icons/navigation/%1-%2.svg".arg(block.icon || "flag").arg(app.styler.navigationIconsVariant) : ""
-        sourceSize.height: (app.screenLarge ? 1.7 : 1) * app.styler.themeIconSizeLarge
-        sourceSize.width: (app.screenLarge ? 1.7 : 1) * app.styler.themeIconSizeLarge
+        source: block.notify ? "icons/navigation/%1-%2.svg".arg(block.icon || "flag").arg(styler.navigationIconsVariant) : ""
+        sourceSize.height: (app.screenLarge ? 1.7 : 1) * styler.themeIconSizeLarge
+        sourceSize.width: (app.screenLarge ? 1.7 : 1) * styler.themeIconSizeLarge
         states: [
             State {
                 when: !app.portrait && block.destDist && block.notify && iconImage.width < manLabel.width

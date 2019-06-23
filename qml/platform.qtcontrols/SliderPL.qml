@@ -34,24 +34,24 @@ Item {
     Label {
         id: lab
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.top: parent.top
     }
 
     Slider {
         id: val
         anchors.left: lab.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         anchors.verticalCenter: lab.verticalCenter
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
     }
 
     Label {
         id: valTxt
         anchors.left: val.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.baseline: lab.baseline
         text: valueText.toFixed(valueTextDecimalPlaces)
     }
@@ -60,10 +60,10 @@ Item {
         id: desc
         anchors.left: lab.right
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.top: val.bottom
-        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
-        font.pixelSize: app.styler.themeFontSizeSmall
+        anchors.topMargin: text ? styler.themePaddingSmall : 0
+        font.pixelSize: styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap

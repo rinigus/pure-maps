@@ -22,7 +22,7 @@ import "."
 
 BackgroundItem {
     id: item
-    height: image.height + label.height + 2*app.styler.themePaddingLarge
+    height: image.height + label.height + 2*styler.themePaddingLarge
 
     property alias icon: image
     property alias text: label.text
@@ -31,19 +31,19 @@ BackgroundItem {
         id: image
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: app.styler.themePaddingLarge
+        anchors.topMargin: styler.themePaddingLarge
         fillMode: Image.PreserveAspectFit
     }
 
     Label {
         id: label
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themePaddingLarge
+        anchors.leftMargin: styler.themePaddingLarge
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themePaddingLarge
+        anchors.rightMargin: styler.themePaddingLarge
         anchors.top: image.bottom
-        anchors.topMargin: app.styler.themePaddingMedium
-        color: item.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+        anchors.topMargin: styler.themePaddingMedium
+        color: item.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
         horizontalAlignment: Text.AlignHCenter
         wrapMode: Text.WordWrap
     }

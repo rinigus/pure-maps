@@ -24,14 +24,14 @@ PagePL {
     id: page
 
     Column {
-        spacing: app.styler.themePaddingLarge
+        spacing: styler.themePaddingLarge
         width: page.width
 
         ListItemLabel {
             id: messageLabel
             horizontalAlignment: Text.AlignHCenter
             lineHeight: 1.15
-            linkColor: app.styler.themeHighlightColor
+            linkColor: styler.themeHighlightColor
             text: page.formatMessage(true);
             truncMode: truncModes.none
             wrapMode: TextEdit.Wrap
@@ -39,7 +39,7 @@ PagePL {
         }
 
         Spacer {
-            height: app.styler.themePaddingLarge
+            height: styler.themePaddingLarge
         }
 
         ButtonPL {
@@ -84,12 +84,12 @@ PagePL {
         }
 
         Spacer {
-            height: app.styler.themePaddingLarge
+            height: styler.themePaddingLarge
         }
 
         ListItemLabel {
             id: infoLabel
-            color: app.styler.themeHighlightColor
+            color: styler.themeHighlightColor
             horizontalAlignment: Text.AlignHCenter
         }
 

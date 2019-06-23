@@ -23,9 +23,9 @@ import "js/util.js" as Util
 Item {
     id: meters
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themePaddingLarge
+    anchors.rightMargin: styler.themePaddingLarge
     anchors.top: navigationSign.bottom
-    anchors.topMargin: app.styler.themePaddingLarge
+    anchors.topMargin: styler.themePaddingLarge
     height: labels.implicitHeight
     opacity: 0.9
     states: State {
@@ -49,10 +49,10 @@ Item {
         id: values
         anchors.bottom: parent.bottom
         anchors.right: labels.left
-        color: app.styler.fg
+        color: styler.fg
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: app.styler.themeFontSizeOnMap
+        font.pixelSize: styler.themeFontSizeOnMap
         horizontalAlignment: Text.AlignRight
         lineHeight: 1.25
     }
@@ -61,10 +61,10 @@ Item {
         id: labels
         anchors.bottom: parent.bottom
         anchors.right: parent.right
-        color: app.styler.fg
+        color: styler.fg
         font.bold: true
         font.family: "sans-serif"
-        font.pixelSize: app.styler.themeFontSizeOnMap
+        font.pixelSize: styler.themeFontSizeOnMap
         horizontalAlignment: Text.AlignLeft
         lineHeight: 1.25
         text: "\n"

@@ -21,9 +21,9 @@ import "platform"
 
 Rectangle {
     id: bubble
-    anchors.bottomMargin: showArrow * arrow.height + app.styler.themePaddingSmall
-    anchors.topMargin: showArrow * arrow.height + app.styler.themePaddingSmall
-    color: app.styler.blockBg
+    anchors.bottomMargin: showArrow * arrow.height + styler.themePaddingSmall
+    anchors.topMargin: showArrow * arrow.height + styler.themePaddingSmall
+    color: styler.blockBg
     height: controls.height + label.height +
         (controlHeight > 0 ? 3 : 2) * padding
     radius: 0.85 * padding
@@ -114,7 +114,7 @@ Rectangle {
         var w = label.implicitWidth;
         w = Math.min(w, 0.65 * app.screenWidth);
         w = Math.min(w, 0.65 * app.screenHeight);
-        w = Math.min(w,  500 * app.styler.themePixelRatio);
+        w = Math.min(w,  500 * styler.themePixelRatio);
         return Math.max(w, bubble.controlWidth) + 2 * padding;
     }
 
@@ -127,7 +127,7 @@ Rectangle {
     property real controlHeight: 0
 
     // Padding on the edges of the bubble.
-    property real padding: 1.5 * app.styler.themePaddingMedium
+    property real padding: 1.5 * styler.themePaddingMedium
 
     // HTML-format text to display in the bubble.
     property string text: ""
@@ -165,9 +165,9 @@ Rectangle {
         anchors.leftMargin: bubble.padding
         anchors.right: bubble.right
         anchors.rightMargin: bubble.padding
-        color: app.styler.themeHighlightColor
-        font.family: app.styler.themeFontFamily
-        font.pixelSize: app.styler.themeFontSizeSmall
+        color: styler.themeHighlightColor
+        font.family: styler.themeFontFamily
+        font.pixelSize: styler.themeFontSizeSmall
         lineHeight: 1.1
         text: bubble.text
         textFormat: Text.RichText

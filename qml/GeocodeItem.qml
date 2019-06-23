@@ -70,13 +70,13 @@ Item {
 
     ListItemPL {
         id: selectionItem
-        contentHeight: visible? itemSel.height + app.styler.themePaddingLarge : 0
+        contentHeight: visible? itemSel.height + styler.themePaddingLarge : 0
         visible: !active
 
         ListItemLabel {
             id: itemSel
             anchors.verticalCenter: parent.verticalCenter
-            color: app.styler.themePrimaryColor
+            color: styler.themePrimaryColor
             text: selection ? selection.title : selectionPlaceholderText
         }
 
@@ -111,7 +111,7 @@ Item {
         }
 
         Spacer {
-            height: app.styler.themePaddingLarge
+            height: styler.themePaddingLarge
         }
 
         Repeater {
@@ -121,8 +121,8 @@ Item {
                 id: listItem
                 contentHeight: {
                     if (!visible) return 0;
-                    if (setHeightToSmall && app.styler.themeItemSizeSmall > itemColumn.height)
-                        return app.styler.themeItemSizeSmall;
+                    if (setHeightToSmall && styler.themeItemSizeSmall > itemColumn.height)
+                        return styler.themeItemSizeSmall;
                     return itemColumn.height
                 }
                 menu: ContextMenuPL {
@@ -130,7 +130,7 @@ Item {
                     enabled: model.type === "recent search"
                     ContextMenuItemPL {
                         enabled: model.type === "recent search"
-                        iconName: enabled ? app.styler.iconDelete : ""
+                        iconName: enabled ? styler.iconDelete : ""
                         text: enabled ? app.tr("Remove") : ""
                         onClicked: {
                             if (model.type !== "recent search") return;
@@ -154,11 +154,11 @@ Item {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: app.styler.themePaddingSmall
+                    spacing: styler.themePaddingSmall
 
                     Spacer {
                         id: extraSpacer
-                        height: Math.max(0, app.styler.themePaddingLarge / 2 - app.styler.themePaddingSmall)
+                        height: Math.max(0, styler.themePaddingLarge / 2 - styler.themePaddingSmall)
                     }
 
                     SectionHeaderPL {
@@ -171,7 +171,7 @@ Item {
                     ListItemLabel {
                         //anchors.leftMargin: searchField.textLeftMargin
                         color: (listItem.highlighted || listItem.visited || !listItem.enabled) ?
-                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor
+                                   styler.themeHighlightColor : styler.themePrimaryColor
                         height: visible ? implicitHeight : 0
                         text: model.markup ? model.markup : model.title
                         textFormat: Text.StyledText
@@ -180,8 +180,8 @@ Item {
 
                     ListItemLabel {
                         //anchors.leftMargin: searchField.textLeftMargin
-                        color: app.styler.themeSecondaryColor
-                        font.pixelSize: app.styler.themeFontSizeExtraSmall
+                        color: styler.themeSecondaryColor
+                        font.pixelSize: styler.themeFontSizeExtraSmall
                         height: visible ? implicitHeight : 0
                         text: {
                             if (model.distance && model.description)

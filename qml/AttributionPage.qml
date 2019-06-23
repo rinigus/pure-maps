@@ -40,13 +40,13 @@ PagePL {
                 property var items: py.evaluate("poor.app.basemap.attribution")
                 delegate: ListItemPL {
                     id: listItem
-                    contentHeight: app.styler.themeItemSizeSmall
+                    contentHeight: styler.themeItemSizeSmall
                     property var item: mapRepeater.items[index]
                     ListItemLabel {
                         id: li
                         color: listItem.highlighted ?
-                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-                        height: app.styler.themeItemSizeSmall
+                                   styler.themeHighlightColor : styler.themePrimaryColor;
+                        height: styler.themeItemSizeSmall
                         text: item.text || ""
                     }
                     onClicked: item.url &&
@@ -70,12 +70,12 @@ PagePL {
                                         ["geocoder", pois.getProviders("geocode")])
                 delegate: ListItemPL {
                     id: listItem
-                    contentHeight: app.styler.themeItemSizeSmall
+                    contentHeight: styler.themeItemSizeSmall
                     property var item: geocodeRepeater.items[index]
                     ListItemLabel {
                         color: listItem.highlighted ?
-                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-                        height: app.styler.themeItemSizeSmall
+                                   styler.themeHighlightColor : styler.themePrimaryColor;
+                        height: styler.themeItemSizeSmall
                         text: item.text || ""
                     }
                     onClicked: item.url &&
@@ -99,12 +99,12 @@ PagePL {
                                         ["guide", pois.getProviders("venue")])
                 delegate: ListItemPL {
                     id: listItem
-                    contentHeight: app.styler.themeItemSizeSmall
+                    contentHeight: styler.themeItemSizeSmall
                     property var item: venueRepeater.items[index]
                     ListItemLabel {
                         color: listItem.highlighted ?
-                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-                        height: app.styler.themeItemSizeSmall
+                                   styler.themeHighlightColor : styler.themePrimaryColor;
+                        height: styler.themeItemSizeSmall
                         text: item.text || ""
                     }
                     onClicked: item.url &&
@@ -127,12 +127,12 @@ PagePL {
                                         py.call_sync("poor.app.get_attribution", ["router", [map.route.provider]]) : []
                 delegate: ListItemPL {
                     id: listItem
-                    contentHeight: app.styler.themeItemSizeSmall
+                    contentHeight: styler.themeItemSizeSmall
                     property var item: routeRepeater.items[index]
                     ListItemLabel {
                         color: listItem.highlighted ?
-                                   app.styler.themeHighlightColor : app.styler.themePrimaryColor;
-                        height: app.styler.themeItemSizeSmall
+                                   styler.themeHighlightColor : styler.themePrimaryColor;
+                        height: styler.themeItemSizeSmall
                         text: item.text || ""
                     }
                     onClicked: item.url &&

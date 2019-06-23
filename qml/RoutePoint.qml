@@ -23,7 +23,7 @@ import "platform"
 import "js/util.js" as Util
 
 ValueButtonPL {
-    height: app.styler.themeItemSizeSmall
+    height: styler.themeItemSizeSmall
     value: text
     // Avoid putting label and value on different lines.
     width: 3 * parent.width
@@ -37,7 +37,7 @@ ValueButtonPL {
 
     BusyIndicatorSmallPL {
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin + (parent.width - page.width)
+        anchors.rightMargin: styler.themeHorizontalPageMargin + (parent.width - page.width)
         anchors.verticalCenter: parent.verticalCenter
         running: text === app.tr("Current position") && !gps.ready
         z: parent.z + 1

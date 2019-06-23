@@ -20,13 +20,13 @@ import QtQuick 2.0
 import "../qml/platform"
 
 Column {
-    spacing: app.styler.themePaddingLarge
+    spacing: styler.themePaddingLarge
     width: parent.width
 
     ValueButtonPL {
         id: nameButton
         label: app.tr("Name")
-        height: app.styler.themeItemSizeSmall
+        height: styler.themeItemSizeSmall
         value: ""
         width: parent.width
         onClicked: {

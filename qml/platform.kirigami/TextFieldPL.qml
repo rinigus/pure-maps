@@ -42,7 +42,7 @@ Item {
     Label {
         id: lab
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themeHorizontalPageMargin
+        anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.baseline: entry.baseline
         height: inForm ? 0 : implicitHeight
         width: inForm ? 0 : implicitWidth
@@ -53,20 +53,20 @@ Item {
     TextField {
         id: entry
         anchors.left: inForm ? undefined : lab.right
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         anchors.right: inForm ? undefined : parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
-        rightPadding: clearButton.width + clearButton.anchors.leftMargin + app.styler.themePaddingMedium
+        anchors.rightMargin: styler.themeHorizontalPageMargin
+        rightPadding: clearButton.width + clearButton.anchors.leftMargin + styler.themePaddingMedium
         width: parent.width
         Keys.onReturnPressed: row.enter()
 
         IconButtonPL {
             id: clearButton
             anchors.right: parent.right
-            anchors.rightMargin: app.styler.themePaddingMedium
+            anchors.rightMargin: styler.themePaddingMedium
             anchors.verticalCenter: parent.verticalCenter
-            iconName: app.styler.iconEditClear
-            iconHeight: app.styler.themeFontSizeMedium
+            iconName: styler.iconEditClear
+            iconHeight: styler.themeFontSizeMedium
             visible: parent.text && entry.activeFocus
             onClicked: parent.text = ""
         }
@@ -75,12 +75,12 @@ Item {
     Label {
         id: desc
         anchors.left: entry.left
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themeHorizontalPageMargin
+        anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.top: entry.bottom
-        anchors.topMargin: text ? app.styler.themePaddingSmall : 0
-        font.pixelSize: app.styler.themeFontSizeSmall
+        anchors.topMargin: text ? styler.themePaddingSmall : 0
+        font.pixelSize: styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap

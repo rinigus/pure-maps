@@ -23,7 +23,7 @@ MapButton {
     id: button
     anchors.bottom: parent.verticalCenter
     anchors.right: parent.right
-    iconHeight: app.styler.themeIconSizeSmall
+    iconHeight: styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/center")
     indicator: map.autoCenter
     states: [

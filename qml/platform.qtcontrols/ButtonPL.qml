@@ -20,7 +20,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 
 Button {
-    font.pixelSize: app.styler.themeFontSizeMedium
+    font.pixelSize: styler.themeFontSizeMedium
     width: Math.max(implicitWidth, preferredWidth)
     property real preferredWidth
 }

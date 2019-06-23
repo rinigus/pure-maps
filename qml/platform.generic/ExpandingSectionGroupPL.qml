@@ -44,7 +44,7 @@ Column {
 
             IconListItem {
                 icon: expanded ? "go-down-symbolic" : "go-next-symbolic"
-                iconHeight: app.styler.themeItemSizeSmall*0.5
+                iconHeight: styler.themeItemSizeSmall*0.5
                 label: selections[model.index].title
                 labelBold: expanded
                 onClicked: {
@@ -56,16 +56,16 @@ Column {
             Item {
                 id: item
                 anchors.left: parent.left
-                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                anchors.leftMargin: styler.themeHorizontalPageMargin
                 anchors.right: parent.right
-                anchors.rightMargin: app.styler.themeHorizontalPageMargin
+                anchors.rightMargin: styler.themeHorizontalPageMargin
                 data: selections[model.index]
                 height: childrenRect.height
                 visible: del.expanded
             }
 
             Spacer {
-                height: app.styler.themePaddingLarge
+                height: styler.themePaddingLarge
                 visible: expanded
             }
 

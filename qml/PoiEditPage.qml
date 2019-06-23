@@ -24,7 +24,7 @@ DialogPL {
     id: page
     title: app.tr("Edit bookmark")
 
-    acceptIconName: app.styler.iconSave
+    acceptIconName: styler.iconSave
     acceptText: app.tr("Save")
     canAccept: true
 
@@ -32,11 +32,11 @@ DialogPL {
 
     Column {
         id: column
-        spacing: app.styler.themePaddingMedium
+        spacing: styler.themePaddingMedium
         width: page.width
 
         FormLayoutPL {
-            spacing: app.styler.themePaddingMedium
+            spacing: styler.themePaddingMedium
 
             SectionHeaderPL {
                 text: app.tr("General")
@@ -61,7 +61,7 @@ DialogPL {
             }
 
             Spacer {
-                height: app.styler.themePaddingMedium
+                height: styler.themePaddingMedium
             }
 
             SectionHeaderPL {
@@ -85,7 +85,7 @@ DialogPL {
             }
 
             Spacer {
-                height: app.styler.themePaddingMedium
+                height: styler.themePaddingMedium
             }
 
             SectionHeaderPL {
@@ -110,7 +110,7 @@ DialogPL {
             }
 
             Spacer {
-                height: app.styler.themePaddingMedium
+                height: styler.themePaddingMedium
             }
 
             SectionHeaderPL {

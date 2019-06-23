@@ -21,11 +21,11 @@ import org.kde.kirigami 2.5 as Kirigami
 
 Kirigami.FormLayout {
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    anchors.leftMargin: styler.themeHorizontalPageMargin
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    anchors.rightMargin: styler.themeHorizontalPageMargin
     wideMode: width > Kirigami.Units.gridUnit * 25
-    Layout.preferredWidth: parent.width - 2*app.styler.themeHorizontalPageMargin
+    Layout.preferredWidth: parent.width - 2*styler.themeHorizontalPageMargin
     property bool isFormLayout: true
     property int  spacing // column compatibility
 }

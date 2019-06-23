@@ -29,7 +29,7 @@ Kirigami.ScrollablePage {
     Kirigami.ColumnView.fillWidth: false
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
 
-    property string acceptIconName: app.styler.iconForward
+    property string acceptIconName: styler.iconForward
     property alias  acceptText: mainAction.text
     property var    acceptCallback
     property bool   active: page.isCurrentPage
@@ -72,12 +72,12 @@ Kirigami.ScrollablePage {
         id: listView
 
         header: Column {
-            height: app.styler.themePaddingLarge +
-                    (headerExtraLoader.height > 0 ? headerExtraLoader.height + app.styler.themePaddingLarge : 0)
+            height: styler.themePaddingLarge +
+                    (headerExtraLoader.height > 0 ? headerExtraLoader.height + styler.themePaddingLarge : 0)
             width: listView.width
 
             Item {
-                height: app.styler.themePaddingLarge
+                height: styler.themePaddingLarge
                 width: parent.width
             }
 

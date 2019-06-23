@@ -23,12 +23,12 @@ import "."
 TextField {
     id: field
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    anchors.leftMargin: styler.themeHorizontalPageMargin
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    anchors.rightMargin: styler.themeHorizontalPageMargin
     focus: true
-    leftPadding: searchButton.width + searchButton.anchors.leftMargin + app.styler.themePaddingMedium
-    rightPadding: clearButton.width + clearButton.anchors.leftMargin + app.styler.themePaddingMedium
+    leftPadding: searchButton.width + searchButton.anchors.leftMargin + styler.themePaddingMedium
+    rightPadding: clearButton.width + clearButton.anchors.leftMargin + styler.themePaddingMedium
     Keys.onReturnPressed: field.search()
 
     property real  textLeftMargin: field.x + leftPadding
@@ -38,20 +38,20 @@ TextField {
     IconButtonPL {
         id: searchButton
         anchors.left: parent.left
-        anchors.leftMargin: app.styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingMedium
         anchors.verticalCenter: field.verticalCenter
-        iconName: app.styler.iconSearch
-        iconHeight: app.styler.themeFontSizeMedium
+        iconName: styler.iconSearch
+        iconHeight: styler.themeFontSizeMedium
         onClicked: field.search()
     }
 
     IconButtonPL {
         id: clearButton
         anchors.right: parent.right
-        anchors.rightMargin: app.styler.themePaddingMedium
+        anchors.rightMargin: styler.themePaddingMedium
         anchors.verticalCenter: field.verticalCenter
-        iconName: app.styler.iconEditClear
-        iconHeight: app.styler.themeFontSizeMedium
+        iconName: styler.iconEditClear
+        iconHeight: styler.themeFontSizeMedium
         visible: field.text
         onClicked: field.text = ""
     }

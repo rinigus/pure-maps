@@ -35,15 +35,15 @@ PageListPL {
 
         Spacer {
             id: spacer
-            height: app.styler.themePaddingLarge/2
+            height: styler.themePaddingLarge/2
         }
 
         ListItemLabel {
             id: titleItem
             anchors.leftMargin: page.searchField.textLeftMargin
             anchors.top: spacer.bottom
-            color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
-            height: implicitHeight + app.styler.themePaddingSmall
+            color: listItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
+            height: implicitHeight + styler.themePaddingSmall
             text: (model.title ? model.title : app.tr("Unnamed point")) + (model.bookmarked ? " ☆" : "") + (model.shortlisted ? " ☰" : "")
             verticalAlignment: Text.AlignTop
         }
@@ -52,9 +52,9 @@ PageListPL {
             id: detailsItem
             anchors.top: titleItem.bottom
             anchors.leftMargin: page.searchField.textLeftMargin
-            color: listItem.highlighted ? app.styler.themeSecondaryHighlightColor : app.styler.themeSecondaryColor
-            font.pixelSize: app.styler.themeFontSizeSmall
-            height: text ? implicitHeight + app.styler.themePaddingSmall : 0
+            color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
+            font.pixelSize: styler.themeFontSizeSmall
+            height: text ? implicitHeight + styler.themePaddingSmall : 0
             text: {
                 if (model.poiType && model.address) return model.poiType + ", " + model.address;
                 if (model.poiType) return model.poiType;
@@ -67,10 +67,10 @@ PageListPL {
         ListItemLabel {
             id: textItem
             anchors.top: detailsItem.bottom
-            anchors.topMargin: app.styler.themePaddingSmall
+            anchors.topMargin: styler.themePaddingSmall
             anchors.leftMargin: page.searchField.textLeftMargin
-            color: listItem.highlighted ? app.styler.themeSecondaryHighlightColor : app.styler.themeSecondaryColor
-            font.pixelSize: app.styler.themeFontSizeExtraSmall
+            color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
+            font.pixelSize: styler.themeFontSizeExtraSmall
             height: text ? implicitHeight : 0
             maximumLineCount: 1
             text: model.text
@@ -81,7 +81,7 @@ PageListPL {
         menu: ContextMenuPL {
             id: contextMenu
             ContextMenuItemPL {
-                iconName: app.styler.iconAbout
+                iconName: styler.iconAbout
                 text: app.tr("View")
                 onClicked: {
                     var poi = pois.getById(model.poiId);
@@ -91,7 +91,7 @@ PageListPL {
                 }
             }
             ContextMenuItemPL {
-                iconName: app.styler.iconEdit
+                iconName: styler.iconEdit
                 text: app.tr("Edit")
                 onClicked: {
                     var poi = pois.getById(model.poiId);
@@ -104,7 +104,7 @@ PageListPL {
                 }
             }
             ContextMenuItemPL {
-                iconName: app.styler.iconDelete
+                iconName: styler.iconDelete
                 text: app.tr("Remove")
                 onClicked: {
                     pois.remove(model.poiId);

@@ -43,7 +43,7 @@ Dialog {
         anchors.fill: parent
 
         header: Column {
-            height: header.height + headerExtraLoader.height + app.styler.themePaddingLarge
+            height: header.height + headerExtraLoader.height + styler.themePaddingLarge
             width: parent.width
 
             DialogHeader {

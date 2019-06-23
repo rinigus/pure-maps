@@ -24,13 +24,13 @@ Item {
     // Distance and time remaining + total
     id: infoLayout
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    anchors.leftMargin: styler.themeHorizontalPageMargin
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    anchors.rightMargin: styler.themeHorizontalPageMargin
     height: {
         if (!visible) return 0;
-        if (willFit) return lr1.height + lr2.height + app.styler.themePaddingMedium;
-        return lr1.height + lr2.height + t1.height + t2.height + 3*app.styler.themePaddingMedium;
+        if (willFit) return lr1.height + lr2.height + styler.themePaddingMedium;
+        return lr1.height + lr2.height + t1.height + t2.height + 3*styler.themePaddingMedium;
     }
     states: [
         State {
@@ -42,7 +42,7 @@ Item {
             PropertyChanges {
                 target: d1
                 anchors.rightMargin: 0
-                width: parent.width-infoLayout.col1w-app.styler.themePaddingLarge
+                width: parent.width-infoLayout.col1w-styler.themePaddingLarge
             }
             AnchorChanges {
                 target: t1
@@ -53,7 +53,7 @@ Item {
             PropertyChanges {
                 target: t1
                 width: parent.width
-                anchors.topMargin: app.styler.themePaddingMedium
+                anchors.topMargin: styler.themePaddingMedium
             }
             AnchorChanges {
                 target: d2
@@ -62,7 +62,7 @@ Item {
             PropertyChanges {
                 target: d2
                 anchors.rightMargin: 0
-                width: parent.width-infoLayout.col1w-app.styler.themePaddingLarge
+                width: parent.width-infoLayout.col1w-styler.themePaddingLarge
             }
             AnchorChanges {
                 target: t2
@@ -73,7 +73,7 @@ Item {
             PropertyChanges {
                 target: t2
                 width: parent.width
-                anchors.topMargin: app.styler.themePaddingMedium
+                anchors.topMargin: styler.themePaddingMedium
             }
         }
     ]
@@ -82,16 +82,16 @@ Item {
     property int  col1w: Math.max(lr1.implicitWidth, lr2.implicitWidth)
     property int  col2w: Math.max(d1.implicitWidth, d2.implicitWidth)
     property int  col3w: Math.max(t1.implicitWidth, t2.implicitWidth)
-    property bool willFit: width - app.styler.themePaddingLarge*2- col1w - col2w - col3w > 0
+    property bool willFit: width - styler.themePaddingLarge*2- col1w - col2w - col3w > 0
 
     // Row 1
     LabelPL {
         id: lr1
         anchors.left: parent.left
         anchors.top: parent.top
-        color: activeColors ? app.styler.themeSecondaryColor : app.styler.themeSecondaryHighlightColor
+        color: activeColors ? styler.themeSecondaryColor : styler.themeSecondaryHighlightColor
         horizontalAlignment: Text.AlignRight
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         text: app.tr("Remaining")
         width: infoLayout.col1w
     }
@@ -99,10 +99,10 @@ Item {
         id: d1
         anchors.baseline: lr1.baseline
         anchors.right: t1.left
-        anchors.rightMargin: app.styler.themePaddingLarge
-        color: activeColors ? app.styler.themePrimaryColor : app.styler.themeHighlightColor
+        anchors.rightMargin: styler.themePaddingLarge
+        color: activeColors ? styler.themePrimaryColor : styler.themeHighlightColor
         horizontalAlignment: Text.AlignRight
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         text: app.navigationStatus.destDist
         width: infoLayout.col2w
     }
@@ -110,9 +110,9 @@ Item {
         id: t1
         anchors.baseline: lr1.baseline
         anchors.right: parent.right
-        color: activeColors ? app.styler.themePrimaryColor : app.styler.themeHighlightColor
+        color: activeColors ? styler.themePrimaryColor : styler.themeHighlightColor
         horizontalAlignment: Text.AlignRight
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         text: app.navigationStatus.destTime
         width: infoLayout.col3w
     }
@@ -122,10 +122,10 @@ Item {
         id: lr2
         anchors.left: parent.left
         anchors.top: t1.bottom
-        anchors.topMargin: app.styler.themePaddingMedium
-        color: activeColors ? app.styler.themeSecondaryColor : app.styler.themeSecondaryHighlightColor
+        anchors.topMargin: styler.themePaddingMedium
+        color: activeColors ? styler.themeSecondaryColor : styler.themeSecondaryHighlightColor
         horizontalAlignment: Text.AlignRight
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         text: app.tr("Total")
         width: infoLayout.col1w
     }
@@ -133,10 +133,10 @@ Item {
         id: d2
         anchors.baseline: lr2.baseline
         anchors.right: t2.left
-        anchors.rightMargin: app.styler.themePaddingLarge
-        color: activeColors ? app.styler.themePrimaryColor : app.styler.themeHighlightColor
+        anchors.rightMargin: styler.themePaddingLarge
+        color: activeColors ? styler.themePrimaryColor : styler.themeHighlightColor
         horizontalAlignment: Text.AlignRight
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         text: app.navigationStatus.totalDist
         width: infoLayout.col2w
     }
@@ -144,9 +144,9 @@ Item {
         id: t2
         anchors.baseline: lr2.baseline
         anchors.right: parent.right
-        color: activeColors ? app.styler.themePrimaryColor : app.styler.themeHighlightColor
+        color: activeColors ? styler.themePrimaryColor : styler.themeHighlightColor
         horizontalAlignment: Text.AlignRight
-        font.pixelSize: app.styler.themeFontSizeMedium
+        font.pixelSize: styler.themeFontSizeMedium
         text: app.navigationStatus.totalTime
         width: infoLayout.col3w
     }

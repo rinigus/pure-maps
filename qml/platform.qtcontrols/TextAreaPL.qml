@@ -22,8 +22,8 @@ import QtQuick.Layouts 1.2
 
 TextArea {
     anchors.left: parent.left
-    anchors.leftMargin: app.styler.themeHorizontalPageMargin
+    anchors.leftMargin: styler.themeHorizontalPageMargin
     anchors.right: parent.right
-    anchors.rightMargin: app.styler.themeHorizontalPageMargin
+    anchors.rightMargin: styler.themeHorizontalPageMargin
     wrapMode: TextEdit.Wrap
 }

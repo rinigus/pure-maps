@@ -26,7 +26,7 @@ MapButton {
     anchors.top: parent.verticalCenter
     enabled: !hidden
     iconColorize: false
-    iconHeight: app.styler.themeIconSizeSmall
+    iconHeight: styler.themeIconSizeSmall
     iconRotation: -map.bearing
     iconSource: app.getIcon("icons/north")
     indicator: map.autoRotate

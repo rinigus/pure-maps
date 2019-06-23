@@ -24,7 +24,7 @@ StylerPL {
 
     property string fg                   // foreground color (scale bar, metrics)
     property string iconVariant          // type of icons, let empty for default version, "white" for white icons
-    property real   indicatorSize: app.styler.themeIconSizeSmall*1.4142*(1 + 0.2) / 4 // indicator height and width - do not change in defaults or style
+    property real   indicatorSize: styler.themeIconSizeSmall*1.4142*(1 + 0.2) / 4 // indicator height and width - do not change in defaults or style
     property string itemBg               // map item (buttons, street name) outline
     property string itemFg               // map item (buttons, street name) foreground
     // itemPressed should never be specified in style nor defaults

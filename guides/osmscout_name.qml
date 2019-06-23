@@ -30,21 +30,21 @@ DialogListPL {
 
     delegate: ListItemPL {
         id: listItem
-        contentHeight: visible ? app.styler.themeItemSizeSmall : 0
+        contentHeight: visible ? styler.themeItemSizeSmall : 0
         menu: contextMenu
         visible: model.visible
 
         ListItemLabel {
             anchors.leftMargin: dialog.searchField.textLeftMargin
-            color: listItem.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
-            height: app.styler.themeItemSizeSmall
+            color: listItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
+            height: styler.themeItemSizeSmall
             text: model.text
         }
 
         ContextMenuPL {
             id: contextMenu
             ContextMenuItemPL {
-                iconName: app.styler.iconDelete
+                iconName: styler.iconDelete
                 text: app.tr("Remove")
                 onClicked: {
                     py.call_sync("poor.app.history.remove_place_name", [model.name]);

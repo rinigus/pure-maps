@@ -28,7 +28,7 @@ PagePL {
 
     Column {
         width: page.width
-        spacing: app.styler.themePaddingLarge
+        spacing: styler.themePaddingLarge
 
         ListItemLabel {
             text: app.tr("Error occurred while loading current map.")
@@ -53,13 +53,13 @@ PagePL {
         }
 
         IconListItem {
-            icon: app.styler.iconMaps
+            icon: styler.iconMaps
             label: app.tr("Maps")
             onClicked: app.pushMain(Qt.resolvedUrl("BasemapPage.qml"))
         }
 
         IconListItem {
-            icon: app.styler.iconPreferences
+            icon: styler.iconPreferences
             label: app.tr("Preferences")
             onClicked: app.push(Qt.resolvedUrl("PreferencesPage.qml"))
         }
@@ -69,28 +69,28 @@ PagePL {
             id: item
             anchors.left: parent.left
             anchors.right: parent.right
-            contentHeight: Math.max(app.styler.themeItemSizeSmall, profileComboBox.height)
+            contentHeight: Math.max(styler.themeItemSizeSmall, profileComboBox.height)
 
             IconPL {
                 id: icon
                 anchors.left: parent.left
-                anchors.leftMargin: app.styler.themeHorizontalPageMargin
+                anchors.leftMargin: styler.themeHorizontalPageMargin
                 anchors.verticalCenter: label.verticalCenter
                 fillMode: Image.PreserveAspectFit
-                height: app.styler.themeItemSizeSmall*0.8
-                name: app.styler.iconProfile
+                height: styler.themeItemSizeSmall*0.8
+                name: styler.iconProfile
             }
 
             LabelPL {
                 id: label
                 anchors.left: icon.right
-                anchors.leftMargin: app.styler.themePaddingMedium
+                anchors.leftMargin: styler.themePaddingMedium
                 color: {
-                    if (!item.enabled) return app.styler.themeSecondaryHighlightColor;
-                    if (item.highlighted) return app.styler.themeHighlightColor;
-                    return app.styler.themePrimaryColor;
+                    if (!item.enabled) return styler.themeSecondaryHighlightColor;
+                    if (item.highlighted) return styler.themeHighlightColor;
+                    return styler.themePrimaryColor;
                 }
-                height: app.styler.themeItemSizeSmall
+                height: styler.themeItemSizeSmall
                 text: app.tr("Profile")
                 truncMode: truncModes.fade
                 verticalAlignment: Text.AlignVCenter
@@ -99,10 +99,10 @@ PagePL {
             ComboBoxPL {
                 id: profileComboBox
                 anchors.left: label.right
-                anchors.leftMargin: app.styler.themePaddingMedium
+                anchors.leftMargin: styler.themePaddingMedium
                 anchors.right: parent.right
-                anchors.topMargin: app.styler.isSilica ? parent.top : undefined
-                anchors.verticalCenter: app.styler.isSilica ? undefined : label.verticalCenter
+                anchors.topMargin: styler.isSilica ? parent.top : undefined
+                anchors.verticalCenter: styler.isSilica ? undefined : label.verticalCenter
                 model: [ app.tr("Online"), app.tr("Offline"), app.tr("Mixed") ]
                 property var values: ["online", "offline", "mixed"]
                 Component.onCompleted: {

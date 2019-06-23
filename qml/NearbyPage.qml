@@ -24,7 +24,7 @@ PagePL {
     id: page
     title: app.tr("Nearby Venues")
 
-    acceptIconName: app.styler.iconNearby
+    acceptIconName: styler.iconNearby
     acceptText: app.tr("Search")
     canNavigateForward: page.near &&
                         (page.nearText !== app.tr("Current position") || gps.ready) &&
@@ -64,7 +64,7 @@ PagePL {
 
     Column {
         id: column
-        spacing: app.styler.themePaddingMedium
+        spacing: styler.themePaddingMedium
         width: page.width
 
         property var settings: null
@@ -102,7 +102,7 @@ PagePL {
         ValueButtonPL {
             id: typeButton
             label: app.tr("Type")
-            height: app.styler.themeItemSizeSmall
+            height: styler.themeItemSizeSmall
             value: page.query
             // Avoid putting label and value on different lines.
             width: 3 * parent.width

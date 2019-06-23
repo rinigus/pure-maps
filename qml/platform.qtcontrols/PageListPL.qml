@@ -49,13 +49,13 @@ Page {
     ListView {
         id: listView
 
-        anchors.bottomMargin: app.styler.themePaddingLarge
+        anchors.bottomMargin: styler.themePaddingLarge
         anchors.fill: parent
-        anchors.topMargin: app.styler.themePaddingLarge
+        anchors.topMargin: styler.themePaddingLarge
         ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
         header: Column {
-            height: headerExtraLoader.height + app.styler.themePaddingLarge
+            height: headerExtraLoader.height + styler.themePaddingLarge
             width: parent.width
 
             Loader {
@@ -70,7 +70,7 @@ Page {
     Label {
         id: viewPlaceholder
         anchors.fill: parent
-        anchors.margins: app.styler.themeHorizontalPageMargin
+        anchors.margins: styler.themeHorizontalPageMargin
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap

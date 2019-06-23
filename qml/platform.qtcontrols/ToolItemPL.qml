@@ -31,27 +31,27 @@ Item {
 
     ItemDelegate {
         id: item
-        height: image.height + label.height + 2*app.styler.themePaddingLarge
+        height: image.height + label.height + 2*styler.themePaddingLarge
         width: parent.width
 
         IconPL {
             id: image
             anchors.horizontalCenter: item.horizontalCenter
             anchors.top: item.top
-            anchors.topMargin: app.styler.themePaddingLarge
+            anchors.topMargin: styler.themePaddingLarge
             fillMode: Image.PreserveAspectFit
-            height: app.styler.themeItemSizeSmall
+            height: styler.themeItemSizeSmall
         }
 
         Label {
             id: label
             anchors.left: parent.left
-            anchors.leftMargin: app.styler.themePaddingLarge
+            anchors.leftMargin: styler.themePaddingLarge
             anchors.right: parent.right
-            anchors.rightMargin: app.styler.themePaddingLarge
+            anchors.rightMargin: styler.themePaddingLarge
             anchors.top: image.bottom
-            anchors.topMargin: app.styler.themePaddingMedium
-            color: item.highlighted ? app.styler.themeHighlightColor : app.styler.themePrimaryColor
+            anchors.topMargin: styler.themePaddingMedium
+            color: item.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
         }
