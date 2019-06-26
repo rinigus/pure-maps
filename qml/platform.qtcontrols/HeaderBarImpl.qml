@@ -72,6 +72,7 @@ ToolBar {
         height: styler.themeItemSizeSmall
         icon.height: label.height
         icon.name: page.acceptIconName ? page.acceptIconName : styler.iconForward
+        text: acceptDescription
         Layout.minimumWidth: toolButton.width
         visible: !page.hideAcceptButton && (app.pages.hasAttached || !!page.isDialog)
         enabled: page.canNavigateForward === true

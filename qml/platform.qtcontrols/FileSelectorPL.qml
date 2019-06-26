@@ -2,7 +2,7 @@
  * Copyright (C) 2016-2019 Rinigus https://github.com/rinigus
  *                    2019 Purism SPC
  *
- * This file is part of OSM Scout Server.
+ * This file is part of Pure Maps.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

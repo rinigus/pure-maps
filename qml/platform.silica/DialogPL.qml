@@ -23,6 +23,7 @@ Dialog {
     id: page
     allowedOrientations: app.defaultAllowedOrientations
 
+    property bool   acceptDestinationPop: false
     property string acceptIconName // for compatibility
     property string acceptText
     default property alias content: itemCont.data
@@ -62,4 +63,6 @@ Dialog {
         else if (page.status === PageStatus.Active) pageStatusActive();
         else if (page.status === PageStatus.Inactive) pageStatusInactive()
     }
+
+    Component.onCompleted: if (acceptDestinationPop) acceptDestinationAction = PageStackAction.Pop
 }

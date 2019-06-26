@@ -43,6 +43,7 @@ Item {
         id: val
         anchors.left: lab.right
         anchors.leftMargin: styler.themePaddingMedium
+        anchors.right: item.right
         anchors.top: parent.top
         font.pixelSize: styler.themeFontSizeMedium
         property bool initialized: false

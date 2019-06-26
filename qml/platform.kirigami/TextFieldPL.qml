@@ -25,6 +25,8 @@ Item {
     id: row
 
     implicitHeight: childrenRect.height
+    width: parent.isFormLayout ? undefined : parent.width
+
     Kirigami.FormData.buddyFor: entry
     Kirigami.FormData.label: label
     Layout.fillWidth: true
@@ -36,6 +38,7 @@ Item {
     property string label
     property alias  placeholderText: entry.placeholderText
     property alias  text: entry.text
+    property alias  validator: entry.validator
 
     signal enter
 

@@ -65,4 +65,8 @@ Page {
         else if (page.status === StackView.Active) pageStatusActive();
         else if (page.status === StackView.Inactive) pageStatusInactive()
     }
+
+    function scrollToTop() {
+        flickable.contentY = 0;
+    }
 }

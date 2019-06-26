@@ -25,11 +25,13 @@ Item {
     height: childrenRect.height
     width: parent.width
 
+    property alias acceptableInput: entry.acceptableInput
     property alias description: desc.text
     property alias inputMethodHints: entry.inputMethodHints
     property alias label: lab.text
     property alias placeholderText: entry.placeholderText
     property alias text: entry.text
+    property alias validator: entry.validator
 
     signal enter
 

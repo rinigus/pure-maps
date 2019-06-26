@@ -47,6 +47,13 @@ Kirigami.ApplicationWindow {
     // hide from Kirigami
     default property var _content
 
+    Settings {
+        property alias x: appWindow.x
+        property alias y: appWindow.y
+        property alias width: appWindow.width
+        property alias height: appWindow.height
+    }
+
     Component.onCompleted: {
         pages.ps = pageStack;
         updateOrientation();
@@ -79,12 +86,4 @@ Kirigami.ApplicationWindow {
     function updateOrientation() {
         // blank - desktop is not expected to be changing screen orientation
     }
-
-    Settings {
-        property alias x: appWindow.x
-        property alias y: appWindow.y
-        property alias width: appWindow.width
-        property alias height: appWindow.height
-    }
-
 }

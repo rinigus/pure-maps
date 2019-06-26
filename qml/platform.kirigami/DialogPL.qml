@@ -26,12 +26,22 @@ PagePL {
     acceptText: app.tr("Accept")
     acceptCallback: function () { page.accepted(); }
 
+    property var    acceptDestination
+    property bool   acceptDestinationPop: false
     property alias  canAccept: page.canNavigateForward
     property bool   isDialog: true
 
     signal accepted
 
-    onAccepted: app.pages.pop()
+    onAccepted: {
+        if (acceptDestination) {
+            if (acceptDestinationPop)
+                app.pages.pop(acceptDestination);
+            else
+                app.push(acceptDestination);
+        } else
+            app.pages.pop();
+    }
 
     function accept() {
         if (canAccept) accepted();

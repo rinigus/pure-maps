@@ -42,6 +42,13 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
+    Settings {
+        property alias x: appWindow.x
+        property alias y: appWindow.y
+        property alias width: appWindow.width
+        property alias height: appWindow.height
+    }
+
     Component.onCompleted: {
         pages.ps = pageStack;
         updateOrientation();
@@ -66,12 +73,4 @@ ApplicationWindow {
     function updateOrientation() {
         // blank - desktop is not expected to be changing screen orientation
     }
-
-    Settings {
-        property alias x: appWindow.x
-        property alias y: appWindow.y
-        property alias width: appWindow.width
-        property alias height: appWindow.height
-    }
-
 }
