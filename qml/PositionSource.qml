@@ -71,8 +71,6 @@ PositionSourceMapMatched {
         gps.timePerUpdate = Math.round(Math.min(2000,
                                                 Math.max(500, Date.now()-gps.timePosition)) / 100)*100;
         gps.timePosition = Date.now();
-        // proceed only if map matching does not provide direction
-        if (directionValid) return;
         // Calculate direction as a median of individual direction values
         // calculated after significant changes in position. This should be
         // more stable than any direct value and usable with map.autoRotate.
@@ -80,6 +78,8 @@ PositionSourceMapMatched {
             gps.position.longitudeValid &&
             gps.position.coordinate.latitude &&
             gps.position.coordinate.longitude;
+        // proceed only if map matching does not provide direction
+        if (directionValid) return;
         var threshold = gps.position.horizontalAccuracy || 15;
         if (threshold < 0 || threshold > 40) return;
         var coord = gps.position.coordinate;
