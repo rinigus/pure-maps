@@ -37,11 +37,10 @@ PagePL {
             onClicked: {
                 var dialog = app.push(Qt.resolvedUrl("RouterPage.qml"));
                 dialog.accepted.connect(function() {
-                    columnRouter.settingsChecked = false;
                     name = py.evaluate("poor.app.router.name");
                     page.fromNeeded = py.evaluate("poor.app.router.from_needed");
                     page.toNeeded = py.evaluate("poor.app.router.to_needed");
-                    if (columnRouter.settings) columnRouter.settings.destroy();
+                    columnRouter.settings && columnRouter.settings.destroy();
                     columnRouter.settings = null;
                     columnRouter.addSettings();
                 });
@@ -52,7 +51,6 @@ PagePL {
             text: followMe ? app.tr("Navigate") : app.tr("Follow me")
             onClicked: {
                 followMe = !followMe;
-                columnRouter.settingsChecked = false;
                 page.params = {};
                 columnRouter.settings && columnRouter.settings.destroy();
                 columnRouter.settings = null;
@@ -103,7 +101,6 @@ PagePL {
             visible: !followMe
 
             property var  settings: null
-            property bool settingsChecked: false
 
             RoutePoint {
                 id: fromButton
@@ -131,7 +128,7 @@ PagePL {
             }
 
             function addSettings() {
-                if (columnRouter.settingsChecked || (page.from==null && page.fromNeeded) || (page.to==null && page.toNeeded) || followMe) return;
+                if (columnRouter.settings || (page.from==null && page.fromNeeded) || (page.to==null && page.toNeeded) || followMe) return;
                 // Add router-specific settings from router's own QML file.
                 page.params = {};
                 columnRouter.settings && columnRouter.settings.destroy();
@@ -147,7 +144,6 @@ PagePL {
                 columnRouter.settings.anchors.left = columnRouter.left;
                 columnRouter.settings.anchors.right = columnRouter.right;
                 columnRouter.settings.width = columnRouter.width;
-                columnRouter.settingsChecked = true;
             }
         }
 
