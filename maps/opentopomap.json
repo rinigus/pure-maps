@@ -1,0 +1,12 @@
+{
+  "attribution": {
+    "© OpenTopoMap": "https://opentopomap.org/",
+    "© SRTM": "http://viewfinderpanoramas.org/",
+    "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+  },
+  "format": "raster",
+  "name": "OpenTopoMap",
+  "profiles": ["mixed", "online"],
+  "tile_size": 256,
+  "tile_url": "https://a.tile.opentopomap.org/{z}/{x}/{y}.png"
+}
