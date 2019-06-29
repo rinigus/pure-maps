@@ -63,7 +63,7 @@ function findMatches(query, candidates, completions, max) {
         // Highlight matching portion in markup field.
         // XXX: This is not component-wise.
         found[i] = {"text": found[i]};
-        found[i].markup = (queryEscaped.length > 0 ? found[i].text.replace(regex, '<font color="' + app.styler.themeHighlightColor + '">$&</font>') : found[i].text);
+        found[i].markup = (queryEscaped.length > 0 ? found[i].text.replace(regex, '<font color="' + styler.themeHighlightColor + '">$&</font>') : found[i].text);
     }
     return found;
 }
