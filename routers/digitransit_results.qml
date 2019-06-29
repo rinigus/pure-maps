@@ -251,6 +251,11 @@ Page {
             } else {
                 page.title = "";
                 busy.error = app.tr("No results");
+                if (routePage.autoRoute) {
+                    console.log("AAAA")
+                    routePage.notify(app.tr("No results when searching for route"));
+                    app.pages.popAttached();
+                }
             }
             page.loading = false;
             page.populated = true;
