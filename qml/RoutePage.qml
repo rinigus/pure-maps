@@ -33,13 +33,11 @@ PagePL {
     pageMenu: PageMenuPL {
         PageMenuItemPL {
             text: app.tr("Using %1").arg(name)
-            property string name: py.evaluate("poor.app.router.name")
+            property string name: page.routerName
             onClicked: {
                 var dialog = app.push(Qt.resolvedUrl("RouterPage.qml"));
                 dialog.accepted.connect(function() {
-                    name = py.evaluate("poor.app.router.name");
-                    page.fromNeeded = py.evaluate("poor.app.router.from_needed");
-                    page.toNeeded = py.evaluate("poor.app.router.to_needed");
+                    page.updateRouter();
                     columnRouter.settings && columnRouter.settings.destroy();
                     columnRouter.settings = null;
                     columnRouter.addSettings();
@@ -74,6 +72,8 @@ PagePL {
         }
     }
 
+    property bool   autoRoute: false
+    property bool   autoRouteSupported: false
     property var    columnRouter
     property bool   followMe: false
     property alias  from: fromButton.coordinates
@@ -81,12 +81,16 @@ PagePL {
     property alias  fromQuery: fromButton.query
     property alias  fromText: fromButton.text
     property var    params: {}
+    property string routerName
     property alias  to: toButton.coordinates
     property bool   toNeeded: true
     property alias  toQuery: toButton.query
     property alias  toText: toButton.text
 
+    property int    _autoRouteFlag: 0
     property var    _destinationsNotForSave: []
+
+    signal notify(string notification)
 
     Column {
         id: column
@@ -101,6 +105,27 @@ PagePL {
             visible: !followMe
 
             property var  settings: null
+
+            ListItemLabel {
+                id: note
+                color: styler.themeHighlightColor
+                horizontalAlignment: Text.AlignHCenter
+                visible: text
+
+                Timer {
+                    id: nt
+                    interval: 3000; repeat: false; running: false;
+                    onTriggered: note.text = ""
+                }
+
+                Connections {
+                    target: page
+                    onNotify: {
+                        note.text = notification;
+                        nt.start();
+                    }
+                }
+            }
 
             RoutePoint {
                 id: fromButton
@@ -128,19 +153,17 @@ PagePL {
             }
 
             function addSettings() {
-                if (columnRouter.settings || (page.from==null && page.fromNeeded) || (page.to==null && page.toNeeded) || followMe) return;
+//                if (columnRouter.settings || (page.from==null && page.fromNeeded) ||
+//                        (page.to==null && page.toNeeded) || followMe) return;
+                if (columnRouter.settings || (page.from==null && page.fromNeeded) ||
+                        (page.to==null && page.toNeeded) || followMe) return;
                 // Add router-specific settings from router's own QML file.
                 page.params = {};
                 columnRouter.settings && columnRouter.settings.destroy();
                 var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.settings_qml_uri"));
                 if (!uri) return;
-                var component = Qt.createComponent(uri);
-                if (component.status === Component.Error) {
-                    console.log('Error while creating component');
-                    console.log(component.errorString());
-                    return null;
-                }
-                columnRouter.settings = component.createObject(columnRouter);
+                columnRouter.settings = app.createObject(uri, {}, columnRouter);
+                if (!columnRouter.settings) return;
                 columnRouter.settings.anchors.left = columnRouter.left;
                 columnRouter.settings.anchors.right = columnRouter.right;
                 columnRouter.settings.width = columnRouter.width;
@@ -320,6 +343,18 @@ PagePL {
             ///////////////////////
 
         }
+
+        Timer {
+            // timer is used to ensure that all property handlers by
+            // page stacks of different platforms are fully processed
+            // (such as canNavigateForward, for example) before trying
+            // to calculate the route
+            id: autoRouteTimer
+            interval: 1 // arbitrary small value (in ms)
+            running: false
+            repeat: false
+            onTriggered: app.pages.navigateForward()
+        }
     }
 
     Component.onCompleted: {
@@ -328,12 +363,17 @@ PagePL {
             page.from = map.getPosition();
             page.fromText = app.tr("Current position");
         }
-        page.fromNeeded = py.evaluate("poor.app.router.from_needed");
-        page.toNeeded = py.evaluate("poor.app.router.to_needed");
+        updateRouter();
         columnRouter.addSettings();
     }
 
-    onFollowMeChanged: columnRouter.addSettings();
+    on_AutoRouteFlagChanged: routeAutomatically()
+    onCanNavigateForwardChanged: routeAutomatically()
+
+    onFollowMeChanged: {
+        columnRouter.addSettings();
+        routeAutomatically();
+    }
 
     onPageStatusActive: {
         if (page.fromText === app.tr("Current position"))
@@ -342,6 +382,18 @@ PagePL {
             page.to = map.getPosition();
         var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.results_qml_uri"));
         app.pushAttached(uri);
+        // check if this page is made active for adjusting route settings
+        if (autoRoute) autoRoute = false;
+        if (_autoRouteFlag === 0) _autoRouteFlag = 1;
+    }
+
+    function routeAutomatically() {
+        if (followMe || !canNavigateForward || !autoRouteSupported) return;
+        if (_autoRouteFlag === 1) {
+            autoRoute = true;
+            _autoRouteFlag = 2;
+            autoRouteTimer.start();
+        }
     }
 
     function saveDestination() {
@@ -351,6 +403,13 @@ PagePL {
                     Math.abs(to[1]-_destinationsNotForSave[i].y) < 1e-8)
                 return false;
         return true;
+    }
+
+    function updateRouter() {
+        page.routerName = py.evaluate("poor.app.router.name");
+        page.autoRouteSupported = py.evaluate("poor.app.router.auto_route");
+        page.fromNeeded = py.evaluate("poor.app.router.from_needed");
+        page.toNeeded = py.evaluate("poor.app.router.to_needed");
     }
 
 }

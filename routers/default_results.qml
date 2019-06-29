@@ -74,6 +74,10 @@ PagePL {
             } else {
                 busy.error = app.tr("No results");
                 page.loading = false;
+                if (routePage.autoRoute) {
+                    routePage.notify(app.tr("No results when searching for route"));
+                    app.pages.popAttached();
+                }
             }
         });
     }

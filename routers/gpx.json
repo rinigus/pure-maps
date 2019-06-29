@@ -5,6 +5,7 @@
   "_modes": ["car", "bicycle", "foot"],
   "name": "GPX",
   "offline": true,
+  "auto_route": false,  
   "can_reroute": false,
   "from_needed": false,
   "to_needed": false,

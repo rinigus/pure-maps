@@ -53,10 +53,11 @@ class Router:
         self.id = id
         self.name = values["name"]
         self._path = path
+        self.auto_route = values.get("auto_route", True)
         self._can_reroute = values.get("can_reroute", True)
         self.offline = values.get("offline", False)
-        self._from_needed = values.get("from_needed", True)
-        self._to_needed = values.get("to_needed", True)
+        self.from_needed = values.get("from_needed", True)
+        self.to_needed = values.get("to_needed", True)
         self._provider = None
         self._init_provider(id, re.sub(r"\.json$", ".py", path))
 
@@ -69,11 +70,6 @@ class Router:
     def can_reroute(self):
         """Return whether the router allows rerouting."""
         return self._can_reroute
-
-    @property
-    def from_needed(self):
-        """Return whether the origin is needed."""
-        return self._from_needed
 
     def _init_provider(self, id, path):
         """Initialize routing provider module from `path`."""
@@ -131,9 +127,4 @@ class Router:
         path = re.sub(r"\.json$", "_settings.qml", self._path)
         if not os.path.isfile(path): return None
         return poor.util.path2uri(path)
-
-    @property
-    def to_needed(self):
-        """Return whether the target is needed."""
-        return self._to_needed
 
