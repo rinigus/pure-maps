@@ -44,6 +44,10 @@ Python code; it will be automatically passed to and available at
 `poor.conf`. For settings which shouldn't be saved across sessions, you
 can use `page.params` in your QML.
 
+If you provide settings file, you will have to ensure that QML object has
+`full` property. When this property is set to `false`, only minimal settings
+(if any) are expected. Show all settings when `full` is `true`.
+
 If your router supports multiple languages, provide the list of
 languages in `*_settings.qml` and use the user-given selection in the
 Python `route` function. When returning the narration language as a part

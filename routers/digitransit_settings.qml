@@ -23,6 +23,8 @@ import "../qml"
 Column {
     id: column
 
+    property bool full: true
+
     ComboBox {
         id: regionComboBox
         label: app.tr("Region")
@@ -31,6 +33,7 @@ Column {
             MenuItem { text: app.tr("Waltti") }
             MenuItem { text: app.tr("Finland") }
         }
+        visible: full
         property var keys: ["hsl", "waltti", "finland"]
         Component.onCompleted: {
             var key = app.conf.get("routers.digitransit.region");
@@ -182,6 +185,7 @@ Column {
             MenuItem { text: app.tr("Least transfers") }
             MenuItem { text: app.tr("Least walking") }
         }
+        visible: full
         property var keys: ["default", "least-transfers", "least-walking"]
         Component.onCompleted: {
             var key = app.conf.get("routers.digitransit.optimize");
@@ -195,6 +199,7 @@ Column {
 
     Spacer {
         height: 1.25 * styler.themePaddingLarge
+        visible: full
     }
 
     /*

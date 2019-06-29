@@ -24,10 +24,12 @@ FormLayoutPL {
     spacing: styler.themePaddingLarge
     width: parent.width
 
+    property bool   full: true
     property string router
 
     SectionHeaderPL {
         text: app.tr("General options")
+        visible: full
     }
 
     ComboBoxPL {
@@ -58,6 +60,7 @@ FormLayoutPL {
         model: [ app.tr("Catalan"), app.tr("Czech"), app.tr("English"), app.tr("English Pirate"),
             app.tr("French"), app.tr("German"), app.tr("Hindi"), app.tr("Italian"), app.tr("Portuguese"),
             app.tr("Russian"), app.tr("Slovenian"), app.tr("Spanish"), app.tr("Swedish") ]
+        visible: full
         property var keys: ["ca", "cs", "en", "en-US-x-pirate", "fr", "de", "hi", "it", "pt", "ru", "sl", "es", "sv"]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".language");
@@ -72,6 +75,7 @@ FormLayoutPL {
 
     SectionHeaderPL {
         text: app.tr("Advanced options")
+        visible: full
     }
 
     TextSwitchPL {
@@ -79,7 +83,7 @@ FormLayoutPL {
         anchors.left: parent.left
         anchors.right: parent.right
         text: app.tr("Prefer shorter route")
-        visible: typeComboBox.current_key == "auto"
+        visible: full && typeComboBox.current_key == "auto"
         Component.onCompleted: checked = app.conf.get("routers." + settingsBlock.router + ".shorter")
         onCheckedChanged: {
             if (!autoShorterSwitch.visible) return;
@@ -91,7 +95,7 @@ FormLayoutPL {
         id: bicycleTypeComboBox
         label: app.tr("Bicycle type")
         model: [ app.tr("Road"), app.tr("Hybrid or City (default)"), app.tr("Cross"), app.tr("Mountain") ]
-        visible: typeComboBox.current_key == "bicycle"
+        visible: full && typeComboBox.current_key == "bicycle"
         property var keys: ["Road", "Hybrid", "Cross", "Mountain"]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".bicycle_type");
@@ -109,7 +113,7 @@ FormLayoutPL {
         description: app.tr("Your desire to use buses.")
         label: app.tr("Bus")
         model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"), app.tr("Incline"), app.tr("Prefer") ]
-        visible: typeComboBox.current_key == "transit"
+        visible: full && typeComboBox.current_key == "transit"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_bus");
@@ -127,7 +131,7 @@ FormLayoutPL {
         label: app.tr("Hiking difficulty")
         model: [ app.tr("Walking"), app.tr("Hiking (default)"), app.tr("Mountain hiking"),
             app.tr("Demanding mountain hiking"), app.tr("Alpine hiking"), app.tr("Demanding alpine hiking") ]
-        visible: typeComboBox.current_key == "pedestrian"
+        visible: full && typeComboBox.current_key == "pedestrian"
         property var keys: [0, 1, 2, 3, 4, 5]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".max_hiking_difficulty");
@@ -145,7 +149,7 @@ FormLayoutPL {
         label: app.tr("Ferries")
         model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"),
             app.tr("Incline"), app.tr("Prefer") ]
-        visible: typeComboBox.current_key != "transit"
+        visible: full && typeComboBox.current_key != "transit"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_ferry");
@@ -162,7 +166,9 @@ FormLayoutPL {
         label: app.tr("Highways")
         model: [app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference"),
             app.tr("Incline"), app.tr("Prefer (default)") ]
-        visible: typeComboBox.current_key == "auto" || typeComboBox.current_key == "bus" || typeComboBox.current_key == "hov" || typeComboBox.current_key == "motorcycle" || typeComboBox.current_key == "motor_scooter"
+        visible: full && (typeComboBox.current_key == "auto" || typeComboBox.current_key == "bus" ||
+                          typeComboBox.current_key == "hov" || typeComboBox.current_key == "motorcycle" ||
+                          typeComboBox.current_key == "motor_scooter")
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_highways");
@@ -179,7 +185,7 @@ FormLayoutPL {
         description: app.tr("Your desire to tackle hills. When avoiding hills and steep grades, longer (time and distance) routes can be selected. By allowing hills, it indicates you do not fear hills and steeper grades.")
         label: app.tr("Hills")
         model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Allow") ]
-        visible: typeComboBox.current_key == "bicycle" || typeComboBox.current_key == "motor_scooter"
+        visible: full && (typeComboBox.current_key == "bicycle" || typeComboBox.current_key == "motor_scooter")
         property var keys: [0.0, 0.5, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_hills");
@@ -196,7 +202,7 @@ FormLayoutPL {
         label: app.tr("Primary roads")
         model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"),
             app.tr("Incline"), app.tr("Prefer") ]
-        visible: typeComboBox.current_key == "motor_scooter"
+        visible: full && typeComboBox.current_key == "motor_scooter"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_primary");
@@ -214,7 +220,7 @@ FormLayoutPL {
         label: app.tr("Rail")
         model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"),
             app.tr("Incline"), app.tr("Prefer") ]
-        visible: typeComboBox.current_key == "transit"
+        visible: full && typeComboBox.current_key == "transit"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_rail");
@@ -231,7 +237,7 @@ FormLayoutPL {
         description: app.tr("Your propensity to use roads alongside other vehicles.")
         label: app.tr("Roads")
         model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Prefer") ]
-        visible: typeComboBox.current_key == "bicycle"
+        visible: full && typeComboBox.current_key == "bicycle"
         property var keys: [0.0, 0.5, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_roads");
@@ -247,7 +253,9 @@ FormLayoutPL {
         id: useTollsComboBox
         label: app.tr("Tolls")
         model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Prefer") ]
-        visible: typeComboBox.current_key == "auto" || typeComboBox.current_key == "bus" || typeComboBox.current_key == "hov" || typeComboBox.current_key == "motorcycle" || typeComboBox.current_key == "motor_scooter"
+        visible: full && (typeComboBox.current_key == "auto" || typeComboBox.current_key == "bus" ||
+                          typeComboBox.current_key == "hov" || typeComboBox.current_key == "motorcycle" ||
+                          typeComboBox.current_key == "motor_scooter")
         property var keys: [0.0, 0.5, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_tolls");
@@ -265,7 +273,7 @@ FormLayoutPL {
         label: app.tr("Trails")
         model: [ app.tr("Avoid (default)"), app.tr("Prefer to avoid"), app.tr("No preference"),
             app.tr("Incline"), app.tr("Prefer") ]
-        visible: typeComboBox.current_key == "motorcycle"
+        visible: full && typeComboBox.current_key == "motorcycle"
         property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_trails");
@@ -281,7 +289,7 @@ FormLayoutPL {
         id: useTransfersComboBox
         label: app.tr("Transfers")
         model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Prefer") ]
-        visible: typeComboBox.current_key == "transit"
+        visible: full && typeComboBox.current_key == "transit"
         property var keys: [0.0, 0.5, 1.0]
         Component.onCompleted: {
             var key = app.conf.get("routers." + settingsBlock.router + ".use_transfers");

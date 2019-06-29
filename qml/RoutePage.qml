@@ -141,22 +141,13 @@ PagePL {
                 visible: page.toNeeded
             }
 
-            Connections {
-                target: page
-                onFromChanged: columnRouter.addSettings();
-                onToChanged: columnRouter.addSettings();
-            }
-
             Component.onCompleted: {
                 columnRouter.addSettings();
                 page.columnRouter = columnRouter;
             }
 
             function addSettings() {
-//                if (columnRouter.settings || (page.from==null && page.fromNeeded) ||
-//                        (page.to==null && page.toNeeded) || followMe) return;
-                if (columnRouter.settings || (page.from==null && page.fromNeeded) ||
-                        (page.to==null && page.toNeeded) || followMe) return;
+                if (columnRouter.settings || followMe) return;
                 // Add router-specific settings from router's own QML file.
                 page.params = {};
                 columnRouter.settings && columnRouter.settings.destroy();
@@ -167,6 +158,10 @@ PagePL {
                 columnRouter.settings.anchors.left = columnRouter.left;
                 columnRouter.settings.anchors.right = columnRouter.right;
                 columnRouter.settings.width = columnRouter.width;
+                columnRouter.settings.full = Qt.binding(function() {
+                    return !followMe && (page.from!=null || !page.fromNeeded) &&
+                            (page.to!=null || !page.toNeeded);
+                });
             }
         }
 

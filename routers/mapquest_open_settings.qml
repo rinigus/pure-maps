@@ -21,6 +21,8 @@ import "../qml/platform"
 
 FormLayoutPL {
 
+    property bool full: true
+
     ComboBoxPL {
         id: typeComboBox
         label: app.tr("Type")
@@ -42,7 +44,7 @@ FormLayoutPL {
         anchors.right: parent.right
         checked: app.conf.contains("routers.mapquest_open.avoids", "Toll Road")
         text: app.tr("Try to avoid tolls")
-        visible: typeComboBox.currentIndex === 0
+        visible: full && typeComboBox.currentIndex === 0
         onCheckedChanged: tollSwitch.checked ?
             app.conf.add("routers.mapquest_open.avoids", "Toll Road") :
             app.conf.remove("routers.mapquest_open.avoids", "Toll Road");
@@ -56,6 +58,7 @@ FormLayoutPL {
         model: [ app.tr("English (UK)"), app.tr("English (US)"), app.tr("French (Canada)"),
             app.tr("French (France)"), app.tr("German"), app.tr("Russian"), app.tr("Spanish (Mexico)"),
             app.tr("Spanish (Spain)") ]
+        visible: full
         property var keys: ["en_GB", "en_US", "fr_CA", "fr_FR", "de_DE", "ru_RU", "es_MX", "es_ES"]
         Component.onCompleted: {
             var key = app.conf.get("routers.mapquest_open.language");
