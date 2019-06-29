@@ -51,6 +51,11 @@ QtObject {
         return last;
     }
 
+    function popAttached() {
+        if (attached && ps.currentItem == attached) return pop();
+        console.log("Cannot popAttached if the current page is not attached");
+    }
+
     function previousPage() {
         return ps.get(currentIndex-1);
     }

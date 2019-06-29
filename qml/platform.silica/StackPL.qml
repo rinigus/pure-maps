@@ -44,6 +44,10 @@ QtObject {
         else ps.pop();
     }
 
+    function popAttached() {
+        ps.popAttached();
+    }
+
     function previousPage() {
         return ps.previousPage();
     }
