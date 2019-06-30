@@ -27,6 +27,7 @@ Item {
     property bool   iconColorize: true // for compatibility, not used
     property int    iconHeight: 0
     property string iconName
+    property real   iconOpacity: 1.0
     property alias  iconRotation: image.rotation
     property string iconSource
     property int    iconWidth: 0
@@ -46,6 +47,7 @@ Item {
                 id: image
                 anchors.centerIn: parent
                 down: pressed || parent.pressed
+                icon.opacity: iconOpacity
                 icon.source: iconName || iconSource
                 icon.sourceSize.height: iconHeight
                 icon.sourceSize.width: iconWidth

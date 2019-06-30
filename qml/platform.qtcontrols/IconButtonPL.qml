@@ -29,6 +29,7 @@ Item {
     property bool   iconColorize: true
     property int    iconHeight: 0
     property alias  iconName: iconimage.name
+    property real   iconOpacity: 1.0
     property real   iconRotation
     property alias  iconSource: image.source
     property int    iconWidth: 0
@@ -41,6 +42,7 @@ Item {
         id: iconimage
         anchors.centerIn: parent
         color: iconColorize ? styler.themeHighlightColor : "transparent"
+        opacity: iconOpacity
         rotation: iconRotation
         sourceSize.height: iconHeight
         sourceSize.width: iconWidth
@@ -51,6 +53,7 @@ Item {
         id: image
         anchors.centerIn: parent
         fillMode: Image.PreserveAspectFit
+        opacity: iconOpacity
         rotation: iconRotation
         sourceSize.height: iconHeight
         sourceSize.width: iconWidth
