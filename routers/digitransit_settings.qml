@@ -17,22 +17,18 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "../qml"
+import "../qml/platform"
 
 Column {
     id: column
 
     property bool full: true
 
-    ComboBox {
+    ComboBoxPL {
         id: regionComboBox
         label: app.tr("Region")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("HSL") }
-            MenuItem { text: app.tr("Waltti") }
-            MenuItem { text: app.tr("Finland") }
-        }
+        model: [app.tr("HSL"), app.tr("Waltti"), app.tr("Finland")]
         visible: full
         property var keys: ["hsl", "waltti", "finland"]
         Component.onCompleted: {
@@ -49,142 +45,104 @@ Column {
      * Depart/Arrive, Date, Time
      */
 
-    Item {
-        height: styler.themeItemSizeSmall
-        width: parent.width
+    Grid {
+        id: bholder
+
+        anchors.left: parent.left
+        anchors.leftMargin: styler.themeHorizontalPageMargin
+        anchors.right: parent.right
+        anchors.rightMargin: styler.themeHorizontalPageMargin
+        columns: {
+            if (bindItem.width + dateItem.width + timeItem.width + 2*styler.themePaddingMedium < bholder.width)
+                return 3;
+            return 1;
+        }
+        rows: columns > 1 ? 1 : 3
+        spacing: styler.themePaddingMedium
+        visible: full
 
         /*
          * Depart/Arrive
          */
 
-        BackgroundItem {
+        ButtonPL {
             id: bindItem
-            anchors.left: parent.left
-            anchors.top: parent.top
-            height: parent.height
-            width: bindLabel.width + styler.themeHorizontalPageMargin + styler.themePaddingMedium
-
-            Label {
-                id: bindLabel
-                anchors.left: parent.left
-                anchors.leftMargin: styler.themeHorizontalPageMargin
-                anchors.top: parent.top
-                height: parent.height
-                text: app.tr("Depart")
-                verticalAlignment: Text.AlignVCenter
-            }
-
+            height: styler.themeItemSizeSmall
+            text: app.tr("Depart")
             onClicked: {
-                if (bindLabel.text === app.tr("Depart")) {
-                    bindLabel.text = app.tr("Arrive");
+                if (text === app.tr("Depart")) {
+                    text = app.tr("Arrive");
                     page.params.arrive_by = "true";
-                    bindLabel.color = styler.themeHighlightColor;
                 } else {
-                    bindLabel.text = app.tr("Depart");
+                    text = app.tr("Depart");
                     page.params.arrive_by = "false";
-                    bindLabel.color = styler.themeHighlightColor;
                 }
             }
-
         }
 
         /*
          * Date
          */
 
-        BackgroundItem {
+        ButtonPL {
             id: dateItem
-            anchors.left: bindItem.right
-            anchors.top: parent.top
-            height: parent.height
-            width: dateLabel.width + 2 * styler.themePaddingMedium
+            height: styler.themeItemSizeSmall
+            text: app.tr("Today")
 
-            property var date: new Date()
-
-            Label {
-                id: dateLabel
-                anchors.left: parent.left
-                anchors.leftMargin: styler.themePaddingMedium
-                anchors.top: parent.top
-                height: parent.height
-                text: app.tr("Today")
-                verticalAlignment: Text.AlignVCenter
-            }
+            property var  date: new Date()
 
             onClicked: {
-                var dialog = pages.push("Sailfish.Silica.DatePickerDialog", {
-                    "date": dateItem.date
-                });
+                var dialog = pages.push(Qt.resolvedUrl("../qml/platform/DatePickerDialogPL.qml"), {
+                                            "date": dateItem.date,
+                                            "title": app.tr("Select date")
+                                        });
                 dialog.accepted.connect(function() {
                     dateItem.date = dialog.date;
-                    dateLabel.text = dialog.dateText;
-                    dateLabel.color = styler.themeHighlightColor;
+                    dateItem.text = dialog.date.toLocaleDateString();
                     // Format date as YYYY-MM-DD.
-                    var year = dialog.year.toString();
-                    var month = dialog.month.toString();
-                    var day = dialog.day.toString();
-                    if (month.length < 2) month = "0%1".arg(month);
-                    if (day.length < 2) day = "0%1".arg(day);
+                    var year = ("0000" + dialog.date.getFullYear()).substr(-4);
+                    var month = ("00" + (dialog.date.getMonth()+1)).substr(-2);
+                    var day = ("00" + dialog.date.getDate()).substr(-2);
                     page.params.date = "%1-%2-%3".arg(year).arg(month).arg(day);
                 });
             }
-
         }
 
         /*
          * Time
          */
 
-        BackgroundItem {
+        ButtonPL {
             id: timeItem
-            anchors.left: dateItem.right
-            anchors.top: parent.top
-            height: parent.height
-            width: timeLabel.width + 2 * styler.themePaddingMedium
+            height: styler.themeItemSizeSmall
+            text: app.tr("Now")
 
             property var time: new Date()
 
-            Label {
-                id: timeLabel
-                anchors.left: parent.left
-                anchors.leftMargin: styler.themePaddingMedium
-                anchors.top: parent.top
-                height: parent.height
-                text: app.tr("Now")
-                verticalAlignment: Text.AlignVCenter
-            }
-
             onClicked: {
-                var dialog = app.pages.push("Sailfish.Silica.TimePickerDialog", {
-                    "hourMode": DateTime.TwentyFourHours,
-                    "hour": timeItem.time.getHours(),
-                    "minute": timeItem.time.getMinutes(),
-                });
+                var dialog = pages.push(Qt.resolvedUrl("../qml/platform/TimePickerDialogPL.qml"), {
+                                            "hour": timeItem.time.getHours(),
+                                            "minute": timeItem.time.getMinutes(),
+                                            "title": app.tr("Select time")
+                                        });
                 dialog.accepted.connect(function() {
-                    timeItem.time = dialog.time;
-                    timeLabel.text = dialog.timeText;
-                    timeLabel.color = styler.themeHighlightColor;
-                    // Format time as HH:MM:SS.
-                    var hour = dialog.hour.toString();
-                    var minute = dialog.minute.toString();
-                    if (hour.length < 2) hour = "0%1".arg(hour);
-                    if (minute.length < 2) minute = "0%1".arg(minute);
+                    timeItem.time.setHours(dialog.hour);
+                    timeItem.time.setMinutes(dialog.minute);
+                    timeItem.time.setSeconds(0);
+                    timeItem.text = timeItem.time.toLocaleTimeString();
+                    // Format date as YYYY-MM-DD.
+                    var hour = ("00" + dialog.hour).substr(-2);
+                    var minute = ("00" + dialog.minute).substr(-2);
                     page.params.time = "%1:%2:00".arg(hour).arg(minute);
                 });
             }
-
         }
-
     }
 
-    ComboBox {
+    ComboBoxPL {
         id: prefComboBox
         label: app.tr("Criterion")
-        menu: ContextMenu {
-            MenuItem { text: app.tr("Default") }
-            MenuItem { text: app.tr("Least transfers") }
-            MenuItem { text: app.tr("Least walking") }
-        }
+        model: [ app.tr("Default"), app.tr("Least transfers"), app.tr("Least walking") ]
         visible: full
         property var keys: ["default", "least-transfers", "least-walking"]
         Component.onCompleted: {
@@ -225,95 +183,88 @@ Column {
         property int    iconSize: styler.themeIconSizeLarge
         property string option: "routers.digitransit.modes"
 
-        IconButton {
+        IconButtonPL {
             id: busButton
             height: modeGrid.iconSize
-            icon.opacity: checked ? 0.9 : 0.3
-            icon.source: "digitransit/bus.svg"
-            icon.sourceSize.width: modeGrid.iconSize
-            width: icon.sourceSize.width
+            iconOpacity: checked ? 0.9 : 0.3
+            iconSource: Qt.resolvedUrl("digitransit/bus.svg")
+            iconWidth: modeGrid.iconSize
             property bool checked: false
             Component.onCompleted: busButton.checked =
                 app.conf.contains(modeGrid.option, "BUS");
             onClicked: modeGrid.toggle(busButton, "BUS");
         }
 
-        IconButton {
+        IconButtonPL {
             id: tramButton
             height: modeGrid.iconSize
-            icon.opacity: checked ? 0.9 : 0.3
-            icon.source: "digitransit/tram.svg"
-            icon.sourceSize.width: modeGrid.iconSize
-            width: icon.sourceSize.width
+            iconOpacity: checked ? 0.9 : 0.3
+            iconSource: Qt.resolvedUrl("digitransit/tram.svg")
+            iconWidth: modeGrid.iconSize
             property bool checked: false
             Component.onCompleted: tramButton.checked =
                 app.conf.contains(modeGrid.option, "TRAM");
             onClicked: modeGrid.toggle(tramButton, "TRAM");
         }
 
-        IconButton {
+        IconButtonPL {
             id: trainButton
             height: modeGrid.iconSize
-            icon.opacity: checked ? 0.9 : 0.3
-            icon.source: "digitransit/train.svg"
-            icon.sourceSize.width: modeGrid.iconSize
-            width: icon.sourceSize.width
+            iconOpacity: checked ? 0.9 : 0.3
+            iconSource: Qt.resolvedUrl("digitransit/train.svg")
+            iconWidth: modeGrid.iconSize
             property bool checked: false
             Component.onCompleted: trainButton.checked =
                 app.conf.contains(modeGrid.option, "RAIL");
             onClicked: modeGrid.toggle(trainButton, "RAIL");
         }
 
-        IconButton {
+        IconButtonPL {
             id: metroButton
             height: modeGrid.iconSize
-            icon.opacity: checked ? 0.9 : 0.3
-            icon.source: "digitransit/metro.svg"
-            icon.sourceSize.width: modeGrid.iconSize
-            width: icon.sourceSize.width
+            iconOpacity: checked ? 0.9 : 0.3
+            iconSource: Qt.resolvedUrl("digitransit/metro.svg")
+            iconWidth: modeGrid.iconSize
             property bool checked: false
             Component.onCompleted: metroButton.checked =
                 app.conf.contains(modeGrid.option, "SUBWAY");
             onClicked: modeGrid.toggle(metroButton, "SUBWAY");
         }
 
-        IconButton {
+        IconButtonPL {
             id: ferryButton
             height: modeGrid.iconSize
-            icon.opacity: checked ? 0.9 : 0.3
-            icon.source: "digitransit/ferry.svg"
-            icon.sourceSize.width: modeGrid.iconSize
-            width: icon.sourceSize.width
+            iconOpacity: checked ? 0.9 : 0.3
+            iconSource: Qt.resolvedUrl("digitransit/ferry.svg")
+            iconWidth: modeGrid.iconSize
             property bool checked: false
             Component.onCompleted: ferryButton.checked =
                 app.conf.contains(modeGrid.option, "FERRY");
             onClicked: modeGrid.toggle(ferryButton, "FERRY");
         }
 
-        IconButton {
+        IconButtonPL {
             id: citybikeButton
             height: modeGrid.iconSize
-            icon.opacity: checked ? 0.9 : 0.3
-            icon.source: "digitransit/citybike.svg"
-            icon.sourceSize.width: modeGrid.iconSize
+            iconOpacity: checked ? 0.9 : 0.3
+            iconSource: Qt.resolvedUrl("digitransit/citybike.svg")
+            iconWidth: modeGrid.iconSize
             // Only visible in HSL region routing.
             visible: regionComboBox.currentIndex === 0
-            width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: citybikeButton.checked =
                 app.conf.contains(modeGrid.option, "BICYCLE_RENT");
             onClicked: modeGrid.toggle(citybikeButton, "BICYCLE_RENT");
         }
 
-        IconButton {
+        IconButtonPL {
             id: airplaneButton
             height: modeGrid.iconSize
-            icon.opacity: checked ? 0.9 : 0.3
-            icon.source: "digitransit/airplane.svg"
-            icon.sourceSize.width: modeGrid.iconSize
+            iconOpacity: checked ? 0.9 : 0.3
+            iconSource: Qt.resolvedUrl("digitransit/airplane.svg")
+            iconWidth: modeGrid.iconSize
             // Only visible in whole Finland routing.
             visible: regionComboBox.currentIndex === 2
-            width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: airplaneButton.checked =
                 app.conf.contains(modeGrid.option, "AIRPLANE");
