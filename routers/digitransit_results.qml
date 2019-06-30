@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa
+ * Copyright (C) 2014 Osmo Salomaa, 2019 Rinigus, 2019 Purism SPC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,210 +17,211 @@
  */
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
 import "../qml"
+import "../qml/platform"
 
 import "../qml/js/util.js" as Util
 
-Page {
+PagePL {
     id: page
-    allowedOrientations: app.defaultAllowedOrientations
 
     property bool   loading: true
     property bool   populated: false
     property var    results: {}
-    property string title: ""
 
     // Column widths to be set based on data.
     property int timeWidth: 0
     property int lineWidth: 0
 
-    SilicaListView {
-        id: listView
-        anchors.fill: parent
+    Column {
+        spacing: styler.themePaddingLarge
+        width: page.width
 
         /*
          * Single alternative route
          */
 
-        delegate: ListItem {
-            id: listItem
-            contentHeight: titleLabel.height + styler.themePaddingMedium + bar.height +
-                styler.themePaddingMedium + repeater.height + finalLabel.height + styler.themePaddingMedium
+        Repeater {
+            id: mainList
+            delegate: ListItemPL {
+                id: listItem
+                contentHeight: titleLabel.height + styler.themePaddingMedium + bar.height +
+                               styler.themePaddingMedium + repeater.height + finalLabel.height + styler.themePaddingMedium
 
-            property real barGap: Math.round(3 * styler.themePixelRatio)
-            property real barMargin: styler.themeHorizontalPageMargin - barGap
-            property var  result: page.results[model.alternative-1]
+                property real barGap: Math.round(3 * styler.themePixelRatio)
+                property real barMargin: styler.themeHorizontalPageMargin - barGap
+                property var  result: page.results[model.alternative-1]
 
-            ListItemLabel {
-                id: titleLabel
-                color: styler.themeHighlightColor
-                font.pixelSize: styler.themeFontSizeSmall
-                height: implicitHeight + styler.themePaddingMedium
-                text: app.tr("Route %1. total %2",
-                             listItem.result.alternative,
-                             py.call_sync("poor.util.format_time",
-                                          [listItem.result.duration]))
+                ListItemLabel {
+                    id: titleLabel
+                    color: styler.themeHighlightColor
+                    font.pixelSize: styler.themeFontSizeSmall
+                    height: implicitHeight + styler.themePaddingMedium
+                    text: app.tr("Route %1. total %2",
+                                 listItem.result.alternative,
+                                 py.call_sync("poor.util.format_time",
+                                              [listItem.result.duration]))
 
-                verticalAlignment: Text.AlignBottom
-            }
+                    verticalAlignment: Text.AlignBottom
+                }
 
-            Rectangle {
-                id: bar
-                anchors.left: parent.left
-                anchors.leftMargin: listItem.barMargin
-                anchors.right: parent.right
-                anchors.rightMargin: listItem.barMargin
-                anchors.top: titleLabel.bottom
-                anchors.topMargin: styler.themePaddingMedium
-                color: "#00000000"
-                height: 0.65 * styler.themeItemSizeSmall
-            }
+                Rectangle {
+                    id: bar
+                    anchors.left: parent.left
+                    anchors.leftMargin: listItem.barMargin
+                    anchors.right: parent.right
+                    anchors.rightMargin: listItem.barMargin
+                    anchors.top: titleLabel.bottom
+                    anchors.topMargin: styler.themePaddingMedium
+                    color: "#00000000"
+                    height: 0.65 * styler.themeItemSizeSmall
+                }
 
-            /*
+                /*
              * Table of route legs
              */
 
-            Repeater {
-                id: repeater
-                anchors.top: bar.bottom
-                anchors.topMargin: styler.themePaddingMedium
-                height: 0
-                model: listItem.result.legs.length
-                width: parent.width
+                Repeater {
+                    id: repeater
+                    anchors.top: bar.bottom
+                    anchors.topMargin: styler.themePaddingMedium
+                    height: 0
+                    model: listItem.result.legs.length
+                    width: parent.width
 
-                /*
+                    /*
                  * Single route leg
                  */
 
-                Item {
-                    id: row
-                    height: timeLabel.height
-                    width: parent.width
+                    Item {
+                        id: row
+                        height: timeLabel.height
+                        width: parent.width
 
-                    property real elapsed: leg.dep_unix - listItem.result.legs[0].dep_unix
-                    property var  leg: listItem.result.legs[index]
+                        property real elapsed: leg.dep_unix - listItem.result.legs[0].dep_unix
+                        property var  leg: listItem.result.legs[index]
 
-                    Rectangle {
-                        id: barChunk
-                        color: leg.color
-                        height: bar.height
-                        opacity: leg.mode === "WALK" ? 0.7 : 0.85
-                        width: leg.duration/listItem.result.duration * bar.width - listItem.barGap
-                        x: bar.x + row.elapsed/listItem.result.duration * bar.width + listItem.barGap
-                        y: bar.y
+                        Rectangle {
+                            id: barChunk
+                            color: leg.color
+                            height: bar.height
+                            opacity: leg.mode === "WALK" ? 0.7 : 0.85
+                            width: leg.duration/listItem.result.duration * bar.width - listItem.barGap
+                            x: bar.x + row.elapsed/listItem.result.duration * bar.width + listItem.barGap
+                            y: bar.y
+                        }
+
+                        LabelPL {
+                            id: barChunkLabel
+                            height: barChunk.height
+                            horizontalAlignment: Text.AlignHCenter
+                            text: leg.line
+                            verticalAlignment: Text.AlignVCenter
+                            width: barChunk.width
+                            x: barChunk.x
+                            y: barChunk.y
+                        }
+
+                        LabelPL {
+                            id: timeLabel
+                            height: implicitHeight + styler.themePaddingSmall
+                            horizontalAlignment: Text.AlignRight
+                            text: leg.dep_time
+                            verticalAlignment: Text.AlignVCenter
+                            width: page.timeWidth
+                            x: parent.x + styler.themeHorizontalPageMargin
+                            y: repeater.y + index * row.height
+                            Component.onCompleted: page.timeWidth = Math.max(
+                                                       page.timeWidth, timeLabel.implicitWidth);
+                        }
+
+                        LabelPL {
+                            id: lineLabel
+                            height: implicitHeight + styler.themePaddingSmall
+                            horizontalAlignment: Text.AlignRight
+                            text: leg.line
+                            verticalAlignment: Text.AlignVCenter
+                            width: page.lineWidth
+                            x: timeLabel.x + page.timeWidth + styler.themePaddingMedium
+                            y: repeater.y + index * row.height
+                            Component.onCompleted: page.lineWidth = Math.max(
+                                                       page.lineWidth, lineLabel.implicitWidth);
+                        }
+
+                        LabelPL {
+                            id: nameLabel
+                            height: implicitHeight + styler.themePaddingSmall
+                            text: leg.mode === "WALK" ?
+                                      app.tr("Walk %1", page.formatLength(leg.length)) :
+                                      app.tr("%1 → %2", leg.dep_name, leg.arr_name)
+                            truncMode: truncModes.fade
+                            verticalAlignment: Text.AlignVCenter
+                            width: parent.width - x - styler.themeHorizontalPageMargin
+                            x: lineLabel.x + page.lineWidth + styler.themePaddingMedium
+                            y: repeater.y + index * row.height
+                        }
+
+                        Component.onCompleted: repeater.height += row.height;
+
                     }
 
-                    Label {
-                        id: barChunkLabel
-                        height: barChunk.height
-                        horizontalAlignment: Text.AlignHCenter
-                        text: leg.line
-                        verticalAlignment: Text.AlignVCenter
-                        width: barChunk.width
-                        x: barChunk.x
-                        y: barChunk.y
-                    }
+                }
 
-                    Label {
-                        id: timeLabel
-                        height: implicitHeight + styler.themePaddingSmall
-                        horizontalAlignment: Text.AlignRight
-                        text: leg.dep_time
-                        verticalAlignment: Text.AlignVCenter
-                        width: page.timeWidth
-                        x: parent.x + styler.themeHorizontalPageMargin
-                        y: repeater.y + index * row.height
-                        Component.onCompleted: page.timeWidth = Math.max(
-                            page.timeWidth, timeLabel.implicitWidth);
-                    }
+                LabelPL {
+                    // Not a real leg, needed to show arrival time.
+                    id: finalLabel
+                    anchors.top: repeater.bottom
+                    height: implicitHeight + styler.themePaddingSmall
+                    horizontalAlignment: Text.AlignRight
+                    text: listItem.result.legs[listItem.result.legs.length-1].arr_time
+                    verticalAlignment: Text.AlignVCenter
+                    width: page.timeWidth
+                    x: parent.x + styler.themeHorizontalPageMargin
+                    Component.onCompleted: page.timeWidth = Math.max(
+                                               page.timeWidth, finalLabel.implicitWidth);
+                }
 
-                    Label {
-                        id: lineLabel
-                        height: implicitHeight + styler.themePaddingSmall
-                        horizontalAlignment: Text.AlignRight
-                        text: leg.line
-                        verticalAlignment: Text.AlignVCenter
-                        width: page.lineWidth
-                        x: timeLabel.x + page.timeWidth + styler.themePaddingMedium
-                        y: repeater.y + index * row.height
-                        Component.onCompleted: page.lineWidth = Math.max(
-                            page.lineWidth, lineLabel.implicitWidth);
-                    }
-
-                    Label {
-                        id: nameLabel
-                        height: implicitHeight + styler.themePaddingSmall
-                        text: leg.mode === "WALK" ?
-                            app.tr("Walk %1", page.formatLength(leg.length)) :
-                            app.tr("%1 → %2", leg.dep_name, leg.arr_name)
-                        truncationMode: TruncationMode.Fade
-                        verticalAlignment: Text.AlignVCenter
-                        width: parent.width - x - styler.themeHorizontalPageMargin
-                        x: lineLabel.x + page.lineWidth + styler.themePaddingMedium
-                        y: repeater.y + index * row.height
-                    }
-
-                    Component.onCompleted: repeater.height += row.height;
-
+                onClicked: {
+                    app.setModeExploreRoute();
+                    app.hideMenu(app.tr("Navigation"));
+                    map.addRoute(listItem.result);
+                    pois.hide();
+                    map.fitViewToRoute();
+                    map.addManeuvers(listItem.result.maneuvers);
                 }
 
             }
 
-            Label {
-                // Not a real leg, needed to show arrival time.
-                id: finalLabel
-                anchors.top: repeater.bottom
-                height: implicitHeight + styler.themePaddingSmall
-                horizontalAlignment: Text.AlignRight
-                text: listItem.result.legs[listItem.result.legs.length-1].arr_time
-                verticalAlignment: Text.AlignVCenter
-                width: page.timeWidth
-                x: parent.x + styler.themeHorizontalPageMargin
-                Component.onCompleted: page.timeWidth = Math.max(
-                    page.timeWidth, finalLabel.implicitWidth);
-            }
-
-            onClicked: {
-                app.setModeExploreRoute();
-                app.hideMenu(app.tr("Navigation"));
-                map.addRoute(listItem.result);
-                pois.hide();
-                map.fitViewToRoute();
-                map.addManeuvers(listItem.result.maneuvers);
-            }
-
+            model: ListModel {}
         }
 
-        header: PageHeader {
-            title: page.title
+        Item {
+            height: busy.visible ? page.height*3.0/4.0 : 0
+            width: page.width
+            BusyModal {
+                id: busy
+                running: page.loading
+                visible: running || error
+            }
         }
-
-        model: ListModel {}
-
-        VerticalScrollDecorator {}
-
     }
 
-    BusyModal {
-        id: busy
-        running: page.loading
+    onPageStatusActivating: {
+        if (page.populated) return;
+        mainList.model.clear();
+        page.loading = true;
+        page.title = "";
+        busy.text = app.tr("Searching");
     }
 
-    onStatusChanged: {
-        if (page.status === PageStatus.Activating) {
-            if (page.populated) return;
-            listView.model.clear();
-            page.loading = true;
-            page.title = "";
-            busy.text = app.tr("Searching");
-        } else if (page.status === PageStatus.Active) {
-            listView.visible = true;
-            if (page.populated) return;
-            page.populate();
-        } else if (page.status === PageStatus.Inactive) {
-            listView.visible = false;
-        }
+    onPageStatusActive: {
+        mainList.visible = true;
+        if (page.populated) return;
+        page.populate();
+    }
+
+    onPageStatusInactive: {
+        mainList.visible = false;
     }
 
     function formatLength(length) {
@@ -247,7 +248,7 @@ Page {
             } else if (results && results.length > 0) {
                 page.title = app.tr("Results");
                 page.results = results;
-                Util.appendAll(listView.model, results);
+                Util.appendAll(mainList.model, results);
             } else {
                 page.title = "";
                 busy.error = app.tr("No results");
