@@ -222,13 +222,15 @@ Column {
         rows: Math.ceil(6/columns)
         spacing: styler.themePaddingMedium
 
+        property int    iconSize: styler.themeIconSizeLarge
         property string option: "routers.digitransit.modes"
 
         IconButton {
             id: busButton
-            height: icon.sourceSize.height
+            height: modeGrid.iconSize
             icon.opacity: checked ? 0.9 : 0.3
-            icon.source: app.getIcon("digitransit/bus")
+            icon.source: "digitransit/bus.svg"
+            icon.sourceSize.width: modeGrid.iconSize
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: busButton.checked =
@@ -238,9 +240,10 @@ Column {
 
         IconButton {
             id: tramButton
-            height: icon.sourceSize.height
+            height: modeGrid.iconSize
             icon.opacity: checked ? 0.9 : 0.3
-            icon.source: app.getIcon("digitransit/tram")
+            icon.source: "digitransit/tram.svg"
+            icon.sourceSize.width: modeGrid.iconSize
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: tramButton.checked =
@@ -250,9 +253,10 @@ Column {
 
         IconButton {
             id: trainButton
-            height: icon.sourceSize.height
+            height: modeGrid.iconSize
             icon.opacity: checked ? 0.9 : 0.3
-            icon.source: app.getIcon("digitransit/train")
+            icon.source: "digitransit/train.svg"
+            icon.sourceSize.width: modeGrid.iconSize
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: trainButton.checked =
@@ -262,9 +266,10 @@ Column {
 
         IconButton {
             id: metroButton
-            height: icon.sourceSize.height
+            height: modeGrid.iconSize
             icon.opacity: checked ? 0.9 : 0.3
-            icon.source: app.getIcon("digitransit/metro")
+            icon.source: "digitransit/metro.svg"
+            icon.sourceSize.width: modeGrid.iconSize
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: metroButton.checked =
@@ -274,9 +279,10 @@ Column {
 
         IconButton {
             id: ferryButton
-            height: icon.sourceSize.height
+            height: modeGrid.iconSize
             icon.opacity: checked ? 0.9 : 0.3
-            icon.source: app.getIcon("digitransit/ferry")
+            icon.source: "digitransit/ferry.svg"
+            icon.sourceSize.width: modeGrid.iconSize
             width: icon.sourceSize.width
             property bool checked: false
             Component.onCompleted: ferryButton.checked =
@@ -286,9 +292,10 @@ Column {
 
         IconButton {
             id: citybikeButton
-            height: icon.sourceSize.height
+            height: modeGrid.iconSize
             icon.opacity: checked ? 0.9 : 0.3
-            icon.source: app.getIcon("digitransit/citybike")
+            icon.source: "digitransit/citybike.svg"
+            icon.sourceSize.width: modeGrid.iconSize
             // Only visible in HSL region routing.
             visible: regionComboBox.currentIndex === 0
             width: icon.sourceSize.width
@@ -300,9 +307,10 @@ Column {
 
         IconButton {
             id: airplaneButton
-            height: icon.sourceSize.height
+            height: modeGrid.iconSize
             icon.opacity: checked ? 0.9 : 0.3
-            icon.source: app.getIcon("digitransit/airplane")
+            icon.source: "digitransit/airplane.svg"
+            icon.sourceSize.width: modeGrid.iconSize
             // Only visible in whole Finland routing.
             visible: regionComboBox.currentIndex === 2
             width: icon.sourceSize.width

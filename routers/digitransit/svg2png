@@ -1,8 +1,0 @@
-#!/usr/bin/env python3
-import glob, os
-for svg in glob.glob("*.svg"):
-    width, height = 86, 86
-    for ratio in [1.00, 1.25, 1.50, 1.75, 2.00]:
-        png = "{}@{:.2f}.png".format(svg[:-4], ratio)
-        os.system("inkscape -f {} -e {} -C -w {:.0f} -h {:.0f}"
-                  .format(svg, png, ratio*width, ratio*height))
