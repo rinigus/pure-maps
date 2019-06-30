@@ -253,7 +253,7 @@ PagePL {
                 page.title = "";
                 busy.error = app.tr("No results");
                 if (routePage.autoRoute) {
-                    routePage.notify(app.tr("No results when searching for route"));
+                    routePage.notify(app.tr("No results"));
                     app.pages.popAttached();
                 }
             }
