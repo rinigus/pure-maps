@@ -5,7 +5,7 @@
 # 
 # Translators:
 # PawelSpoon, 2019
-# trendspotter <j.podhorecky@volny.cz>, 2019
+# Jiří Podhorecký <j.podhorecky@volny.cz>, 2019
 # Jan Straka <jstraka88@gmail.com>, 2019
 # Malakay X <Malakay.666@seznam.cz>, 2019
 # 
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-18 20:44+0300\n"
+"POT-Creation-Date: 2019-06-30 23:34+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Malakay X <Malakay.666@seznam.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rinigus/teams/89597/cs/)\n"
@@ -41,14 +41,14 @@ msgid "Point from Plus code"
 msgstr "Nasměrování pomocí Plus code"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:115
+#: poor/router.py:111
 msgid "Connection timed out"
 msgstr "Připojení vypršelo"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/NearbyPage.qml:30 qml/NearbyPage.qml:136 qml/NearbyPage.qml:151
-#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:333
-#: qml/RoutePage.qml:343 qml/RoutePage.qml:345 qml/RoutePoint.qml:42
+#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:365
+#: qml/RoutePage.qml:380 qml/RoutePage.qml:382 qml/RoutePoint.qml:42
 #: qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr "Aktuální pozice"
@@ -142,15 +142,15 @@ msgstr "V {distance}, {direction}"
 msgid "Exit: "
 msgstr "Výstup"
 
-#: poor/narrative.py:618 qml/pure-maps.qml:278
+#: poor/narrative.py:618 qml/pure-maps.qml:269
 msgid "New route found"
 msgstr "Nalezena nová trasa"
 
-#: poor/narrative.py:619 qml/pure-maps.qml:262
+#: poor/narrative.py:619 qml/pure-maps.qml:253
 msgid "Rerouting"
 msgstr "Přesměrování"
 
-#: poor/narrative.py:620 qml/pure-maps.qml:284
+#: poor/narrative.py:620 qml/pure-maps.qml:275
 msgid "Rerouting failed"
 msgstr "Přesměrování se nezdařilo"
 
@@ -158,95 +158,95 @@ msgstr "Přesměrování se nezdařilo"
 msgid "Starting navigation"
 msgstr "Spouští se navigace"
 
-#: poor/util.py:192 poor/util.py:210
+#: poor/util.py:193 poor/util.py:212
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:192 poor/util.py:210
+#: poor/util.py:193 poor/util.py:212
 msgid "miles"
 msgstr "míle"
 
-#: poor/util.py:200 qml/Meters.qml:85
+#: poor/util.py:201 qml/Meters.qml:85
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:200
+#: poor/util.py:201
 msgid "feet"
 msgstr "stop"
 
-#: poor/util.py:218 qml/Meters.qml:95
+#: poor/util.py:220 qml/Meters.qml:95
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:218
+#: poor/util.py:220
 msgid "yards"
 msgstr "yardů"
 
-#: poor/util.py:228
+#: poor/util.py:231
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:228
+#: poor/util.py:231
 msgid "kilometers"
 msgstr "kilometrů"
 
-#: poor/util.py:236 qml/Meters.qml:105
+#: poor/util.py:239 qml/Meters.qml:105
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:236
+#: poor/util.py:239
 msgid "meters"
 msgstr "metrů"
 
-#: poor/util.py:245 poor/util.py:253
+#: poor/util.py:248 poor/util.py:256
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} severně"
 
-#: poor/util.py:246
+#: poor/util.py:249
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} severovýchodně"
 
-#: poor/util.py:247
+#: poor/util.py:250
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} východně"
 
-#: poor/util.py:248
+#: poor/util.py:251
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} jihovýchodně"
 
-#: poor/util.py:249
+#: poor/util.py:252
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} jižně"
 
-#: poor/util.py:250
+#: poor/util.py:253
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance} jihozápadně"
 
-#: poor/util.py:251
+#: poor/util.py:254
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} západně"
 
-#: poor/util.py:252
+#: poor/util.py:255
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} jihozápadně"
 
-#: poor/util.py:267 poor/util.py:275
+#: poor/util.py:270 poor/util.py:278
 msgid "plus code"
 msgstr "plus code"
 
-#: poor/util.py:288
+#: poor/util.py:291
 msgid "{:d} min"
 msgstr "{:d} min"
 
-#: poor/util.py:289
+#: poor/util.py:292
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
@@ -339,11 +339,11 @@ msgstr "Vystupte v {dep_name} a jděte pěšky směrem k cíli."
 msgid "Arrive at your destination."
 msgstr "Přijíždíte na místo určení."
 
-#: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:111
-#: routers/ValhallaSettings.qml:147 routers/ValhallaSettings.qml:198
-#: routers/ValhallaSettings.qml:216 routers/ValhallaSettings.qml:233
-#: routers/ValhallaSettings.qml:249 routers/ValhallaSettings.qml:267
-#: routers/ValhallaSettings.qml:283
+#: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:115
+#: routers/ValhallaSettings.qml:151 routers/ValhallaSettings.qml:204
+#: routers/ValhallaSettings.qml:222 routers/ValhallaSettings.qml:239
+#: routers/ValhallaSettings.qml:255 routers/ValhallaSettings.qml:275
+#: routers/ValhallaSettings.qml:291
 msgid "Prefer"
 msgstr "Upřednostnit"
 
@@ -360,7 +360,7 @@ msgid "Venue name"
 msgstr "Název místa"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
-#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:181
+#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:201
 msgid "Remove"
 msgstr "Odstranit"
 
@@ -503,10 +503,14 @@ msgid "Searching ..."
 msgstr "Hledání ..."
 
 #: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:142
-#: routers/default_results.qml:75 routers/digitransit_results.qml:253
-#: routers/gpx_osmscout_results.qml:75 routers/gpx_results.qml:75
-#: routers/mapquest_open_results.qml:75 routers/osmscout_results.qml:75
-#: routers/osrm_results.qml:75 routers/stadiamaps_results.qml:75
+#: routers/default_results.qml:75 routers/default_results.qml:78
+#: routers/digitransit_results.qml:254 routers/digitransit_results.qml:256
+#: routers/gpx_osmscout_results.qml:75 routers/gpx_osmscout_results.qml:78
+#: routers/gpx_results.qml:75 routers/gpx_results.qml:78
+#: routers/mapquest_open_results.qml:75 routers/mapquest_open_results.qml:78
+#: routers/osmscout_results.qml:75 routers/osmscout_results.qml:78
+#: routers/osrm_results.qml:75 routers/osrm_results.qml:78
+#: routers/stadiamaps_results.qml:75 routers/stadiamaps_results.qml:78
 msgid "No results"
 msgstr "Žádné výsledky"
 
@@ -519,7 +523,7 @@ msgid "Points of Interest (%1)"
 msgstr "Body zájmu (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePage.qml:220 qml/RoutePage.qml:222
+#: qml/PoiPage.qml:47 qml/RoutePage.qml:240 qml/RoutePage.qml:242
 #: qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Nepojmenovaný bod"
@@ -615,11 +619,11 @@ msgstr "Offline"
 msgid "Mixed"
 msgstr "Smíšený"
 
-#: qml/Map.qml:472
+#: qml/Map.qml:471
 msgid "Voice navigation on"
 msgstr "Hlasová navigace zapnutá"
 
-#: qml/Map.qml:475
+#: qml/Map.qml:474
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -688,7 +692,7 @@ msgstr "Pauza"
 msgid "Resume"
 msgstr "Shrnutí"
 
-#: qml/NavigationPage.qml:48 qml/RoutePage.qml:267
+#: qml/NavigationPage.qml:48 qml/RoutePage.qml:287
 msgid "Begin"
 msgstr "Počátek"
 
@@ -713,7 +717,7 @@ msgid "Options"
 msgstr "Možnosti"
 
 #: qml/NavigationPage.qml:169 qml/PreferencesPage.qml:179
-#: qml/RoutePage.qml:308
+#: qml/RoutePage.qml:328
 msgid "Map scale"
 msgstr "Měřítko"
 
@@ -743,13 +747,13 @@ msgid "Radius"
 msgstr "Poloměr"
 
 #: qml/NearbyPage.qml:104 qml/PoiEditPage.qml:57
-#: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
-#: routers/mapquest_open_settings.qml:26 routers/ValhallaSettings.qml:35
+#: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
+#: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Type"
 msgstr "Typ"
 
 #: qml/NearbyResultsPage.qml:114 routers/default_results.qml:39
-#: routers/digitransit_results.qml:216 routers/gpx_osmscout_results.qml:39
+#: routers/digitransit_results.qml:214 routers/gpx_osmscout_results.qml:39
 #: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
 #: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
 #: routers/stadiamaps_results.qml:39
@@ -940,7 +944,7 @@ msgstr ""
 "Dosud nejsou definovány žádné záložky. Přidat záložky můžete pomocí mapy a "
 "vyhledávání."
 
-#: qml/Poi.qml:193 qml/pure-maps.qml:147
+#: qml/Poi.qml:193 qml/pure-maps.qml:138
 msgid "Clearing map"
 msgstr "Vymazání mapy"
 
@@ -1033,26 +1037,26 @@ msgstr ""
 msgid "Snap position to road"
 msgstr "Přichytávat k silnicím"
 
-#: qml/PreferencesPage.qml:164 routers/gpx_osmscout_settings.qml:31
-#: routers/gpx_settings.qml:31
+#: qml/PreferencesPage.qml:164 routers/gpx_osmscout_settings.qml:32
+#: routers/gpx_settings.qml:32
 msgid "None"
 msgstr "Nic"
 
-#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:291
-#: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
-#: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
+#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:311
+#: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
+#: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Car"
 msgstr "Vozidlo"
 
-#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:291
-#: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
-#: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
+#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:311
+#: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
+#: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Bicycle"
 msgstr "Kolo"
 
-#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:291
-#: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
-#: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
+#: qml/PreferencesPage.qml:164 qml/RoutePage.qml:311
+#: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
+#: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Foot"
 msgstr "Chůze"
 
@@ -1162,7 +1166,7 @@ msgstr "Rychlost a přesnost navedení na místo"
 msgid "Scale"
 msgstr "Měřítko"
 
-#: qml/PreferencesPage.qml:348 qml/RoutePage.qml:52
+#: qml/PreferencesPage.qml:348 qml/RoutePage.qml:49
 msgid "Navigate"
 msgstr "Navigovat"
 
@@ -1248,53 +1252,53 @@ msgstr ""
 "Test Text-to-Speech (TTS) enginu. Vyberte stejný jazyk jako pro navigaci, "
 "preferované pohlaví a pro spuštění testu stiskněte dolní tlačítko."
 
-#: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:65
-#: routers/mapquest_open_settings.qml:53 routers/ValhallaSettings.qml:55
+#: qml/PreferencesPage.qml:519 routers/gpx_osmscout_settings.qml:66
+#: routers/mapquest_open_settings.qml:55 routers/ValhallaSettings.qml:57
 msgid "Language"
 msgstr "Jazyk"
 
-#: qml/PreferencesPage.qml:521 routers/gpx_osmscout_settings.qml:66
-#: routers/ValhallaSettings.qml:58
+#: qml/PreferencesPage.qml:521 routers/gpx_osmscout_settings.qml:67
+#: routers/ValhallaSettings.qml:60
 msgid "English"
 msgstr "Angličtina"
 
-#: qml/PreferencesPage.qml:522 routers/gpx_osmscout_settings.qml:66
-#: routers/ValhallaSettings.qml:58
+#: qml/PreferencesPage.qml:522 routers/gpx_osmscout_settings.qml:67
+#: routers/ValhallaSettings.qml:60
 msgid "Catalan"
 msgstr "Katalánština"
 
-#: qml/PreferencesPage.qml:523 routers/gpx_osmscout_settings.qml:66
-#: routers/ValhallaSettings.qml:58
+#: qml/PreferencesPage.qml:523 routers/gpx_osmscout_settings.qml:67
+#: routers/ValhallaSettings.qml:60
 msgid "Czech"
 msgstr "Čeština"
 
-#: qml/PreferencesPage.qml:524 routers/gpx_osmscout_settings.qml:67
-#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:59
+#: qml/PreferencesPage.qml:524 routers/gpx_osmscout_settings.qml:68
+#: routers/mapquest_open_settings.qml:59 routers/ValhallaSettings.qml:61
 msgid "German"
 msgstr "Němčina"
 
-#: qml/PreferencesPage.qml:525 routers/gpx_osmscout_settings.qml:68
-#: routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:525 routers/gpx_osmscout_settings.qml:69
+#: routers/ValhallaSettings.qml:62
 msgid "Spanish"
 msgstr "Španělština"
 
-#: qml/PreferencesPage.qml:526 routers/gpx_osmscout_settings.qml:67
-#: routers/ValhallaSettings.qml:59
+#: qml/PreferencesPage.qml:526 routers/gpx_osmscout_settings.qml:68
+#: routers/ValhallaSettings.qml:61
 msgid "French"
 msgstr "Francouzština"
 
-#: qml/PreferencesPage.qml:527 routers/gpx_osmscout_settings.qml:67
-#: routers/ValhallaSettings.qml:59
+#: qml/PreferencesPage.qml:527 routers/gpx_osmscout_settings.qml:68
+#: routers/ValhallaSettings.qml:61
 msgid "Hindi"
 msgstr "Hindština"
 
-#: qml/PreferencesPage.qml:528 routers/gpx_osmscout_settings.qml:67
-#: routers/ValhallaSettings.qml:59
+#: qml/PreferencesPage.qml:528 routers/gpx_osmscout_settings.qml:68
+#: routers/ValhallaSettings.qml:61
 msgid "Italian"
 msgstr "Italština"
 
-#: qml/PreferencesPage.qml:529 routers/gpx_osmscout_settings.qml:68
-#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:529 routers/gpx_osmscout_settings.qml:69
+#: routers/mapquest_open_settings.qml:59 routers/ValhallaSettings.qml:62
 msgid "Russian"
 msgstr "Ruština"
 
@@ -1302,8 +1306,8 @@ msgstr "Ruština"
 msgid "Slovak"
 msgstr "Slovenština"
 
-#: qml/PreferencesPage.qml:531 routers/gpx_osmscout_settings.qml:68
-#: routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:531 routers/gpx_osmscout_settings.qml:69
+#: routers/ValhallaSettings.qml:62
 msgid "Swedish"
 msgstr "Švédština"
 
@@ -1362,7 +1366,7 @@ msgstr "Zobrazit aktuální úroveň zvětšení"
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
-#: qml/pure-maps.qml:274
+#: qml/pure-maps.qml:265
 msgid "Rerouting failed: %1"
 msgstr "Přepočítání trasy selhalo: %1"
 
@@ -1381,43 +1385,43 @@ msgstr "Celkem"
 msgid "Route"
 msgstr "Trasa"
 
-#: qml/RoutePage.qml:52
+#: qml/RoutePage.qml:49
 msgid "Follow me"
 msgstr "Následovat"
 
-#: qml/RoutePage.qml:64
+#: qml/RoutePage.qml:60
 msgid "Reverse endpoints"
 msgstr "Obrátit koncové body"
 
-#: qml/RoutePage.qml:110
+#: qml/RoutePage.qml:132
 msgid "From"
 msgstr "Z"
 
-#: qml/RoutePage.qml:111
+#: qml/RoutePage.qml:133
 msgid "Origin"
 msgstr "Počátek"
 
-#: qml/RoutePage.qml:117
+#: qml/RoutePage.qml:139
 msgid "To"
 msgstr "Do"
 
-#: qml/RoutePage.qml:118
+#: qml/RoutePage.qml:140
 msgid "Destination"
 msgstr "Cíl"
 
-#: qml/RoutePage.qml:163
+#: qml/RoutePage.qml:183
 msgid "Destinations"
 msgstr "Cíle"
 
-#: qml/RoutePage.qml:258
+#: qml/RoutePage.qml:278
 msgid "Follow the movement and show just in time information"
 msgstr "Postupujte podle pohybu a zobrazte informace včas"
 
-#: qml/RoutePage.qml:267
+#: qml/RoutePage.qml:287
 msgid "Stop"
 msgstr "Stop"
 
-#: qml/RoutePage.qml:289
+#: qml/RoutePage.qml:309
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
@@ -1425,7 +1429,7 @@ msgstr ""
 "Vyberte způsob dopravy. Platí pouze v případě, že aplikace Pure Maps je v "
 "režimu sledování."
 
-#: qml/RoutePage.qml:290
+#: qml/RoutePage.qml:310
 msgid "Mode of transportation"
 msgstr "Způsob dopravy"
 
@@ -1497,19 +1501,19 @@ msgstr "Chůze %1"
 msgid "%1 → %2"
 msgstr "%1 → %2"
 
-#: routers/digitransit_results.qml:248
+#: routers/digitransit_results.qml:249
 msgid "Results"
 msgstr "Výsledky"
 
-#: routers/digitransit_settings.qml:28
+#: routers/digitransit_settings.qml:31
 msgid "Region"
 msgstr "Region"
 
-#: routers/digitransit_settings.qml:30
+#: routers/digitransit_settings.qml:32
 msgid "HSL"
 msgstr "HSL"
 
-#: routers/digitransit_settings.qml:31
+#: routers/digitransit_settings.qml:32
 msgid "Waltti"
 msgstr "Cestovní karta Waltti"
 
@@ -1517,216 +1521,224 @@ msgstr "Cestovní karta Waltti"
 msgid "Finland"
 msgstr "Finsko"
 
-#: routers/digitransit_settings.qml:70 routers/digitransit_settings.qml:75
-#: routers/digitransit_settings.qml:80
+#: routers/digitransit_settings.qml:72 routers/digitransit_settings.qml:74
+#: routers/digitransit_settings.qml:78
 msgid "Depart"
 msgstr "Odjezd"
 
-#: routers/digitransit_settings.qml:76
+#: routers/digitransit_settings.qml:75
 msgid "Arrive"
 msgstr "Příjezd"
 
-#: routers/digitransit_settings.qml:107
+#: routers/digitransit_settings.qml:91
 msgid "Today"
 msgstr "Dnes"
 
-#: routers/digitransit_settings.qml:150
+#: routers/digitransit_settings.qml:98
+msgid "Select date"
+msgstr ""
+
+#: routers/digitransit_settings.qml:119
 msgid "Now"
 msgstr "Nyní"
 
-#: routers/digitransit_settings.qml:179
+#: routers/digitransit_settings.qml:127
+msgid "Select time"
+msgstr ""
+
+#: routers/digitransit_settings.qml:145
 msgid "Criterion"
 msgstr "Měřítko"
 
-#: routers/digitransit_settings.qml:181 qml/js/util.js:230
+#: routers/digitransit_settings.qml:146 qml/js/util.js:230
 msgid "Default"
 msgstr "Výchozí"
 
-#: routers/digitransit_settings.qml:182
+#: routers/digitransit_settings.qml:146
 msgid "Least transfers"
 msgstr "Minimum přesunů"
 
-#: routers/digitransit_settings.qml:183
+#: routers/digitransit_settings.qml:146
 msgid "Least walking"
 msgstr "Minimum chůze"
 
-#: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
+#: routers/gpx_osmscout_settings.qml:31 routers/gpx_settings.qml:31
 msgid "File"
 msgstr "Soubor"
 
-#: routers/gpx_osmscout_settings.qml:46 routers/ValhallaSettings.qml:37
-#: routers/ValhallaSettings.qml:110
+#: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:39
+#: routers/ValhallaSettings.qml:114
 msgid "Bus"
 msgstr "Bus"
 
-#: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:37
+#: routers/gpx_osmscout_settings.qml:48 routers/ValhallaSettings.qml:39
 msgid "High-occupancy vehicle (HOV)"
 msgstr "Vícemístné vozidlo (HOV)"
 
-#: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:37
+#: routers/gpx_osmscout_settings.qml:48 routers/ValhallaSettings.qml:39
 msgid "Motorcycle"
 msgstr "Motocykl"
 
-#: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:37
+#: routers/gpx_osmscout_settings.qml:48 routers/ValhallaSettings.qml:39
 msgid "Motor Scooter"
 msgstr "Moped"
 
-#: routers/gpx_osmscout_settings.qml:66 routers/ValhallaSettings.qml:58
+#: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "English Pirate"
 msgstr "Anglický pirát"
 
-#: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:59
+#: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Portuguese"
 msgstr "Portugalština"
 
-#: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:60
+#: routers/gpx_osmscout_settings.qml:69 routers/ValhallaSettings.qml:62
 msgid "Slovenian"
 msgstr "Slovinština"
 
-#: routers/mapquest_open_settings.qml:44
+#: routers/mapquest_open_settings.qml:46
 msgid "Try to avoid tolls"
 msgstr "Snažit se vyhnout placeným silnicím"
 
-#: routers/mapquest_open_settings.qml:56
+#: routers/mapquest_open_settings.qml:58
 msgid "English (UK)"
 msgstr "Angličtina (UK)"
 
-#: routers/mapquest_open_settings.qml:56
+#: routers/mapquest_open_settings.qml:58
 msgid "English (US)"
 msgstr "Angličtina (US)"
 
-#: routers/mapquest_open_settings.qml:56
+#: routers/mapquest_open_settings.qml:58
 msgid "French (Canada)"
 msgstr "Francouzština (Kanada)"
 
-#: routers/mapquest_open_settings.qml:57
+#: routers/mapquest_open_settings.qml:59
 msgid "French (France)"
 msgstr "Francouzština (Francie)"
 
-#: routers/mapquest_open_settings.qml:57
+#: routers/mapquest_open_settings.qml:59
 msgid "Spanish (Mexico)"
 msgstr "Španělština (Mexiko)"
 
-#: routers/mapquest_open_settings.qml:58
+#: routers/mapquest_open_settings.qml:60
 msgid "Spanish (Spain)"
 msgstr "Španělština (Španělsko)"
 
-#: routers/ValhallaSettings.qml:30
+#: routers/ValhallaSettings.qml:31
 msgid "General options"
 msgstr "Hlavní možnosti"
 
-#: routers/ValhallaSettings.qml:36
+#: routers/ValhallaSettings.qml:38
 msgid "Public transport"
 msgstr "Veřejná doprava"
 
-#: routers/ValhallaSettings.qml:74
+#: routers/ValhallaSettings.qml:77
 msgid "Advanced options"
 msgstr "Pokročilé možnosti"
 
-#: routers/ValhallaSettings.qml:81
+#: routers/ValhallaSettings.qml:85
 msgid "Prefer shorter route"
 msgstr "Preferovat kratší cestu"
 
-#: routers/ValhallaSettings.qml:92
+#: routers/ValhallaSettings.qml:96
 msgid "Bicycle type"
 msgstr "Cyklistický typ"
 
-#: routers/ValhallaSettings.qml:93
+#: routers/ValhallaSettings.qml:97
 msgid "Road"
 msgstr "Cesta"
 
-#: routers/ValhallaSettings.qml:93
+#: routers/ValhallaSettings.qml:97
 msgid "Hybrid or City (default)"
 msgstr "Hybridní nebo Městské (výchozí)"
 
-#: routers/ValhallaSettings.qml:93
+#: routers/ValhallaSettings.qml:97
 msgid "Cross"
 msgstr "Přechod"
 
-#: routers/ValhallaSettings.qml:93
+#: routers/ValhallaSettings.qml:97
 msgid "Mountain"
 msgstr "Kopce"
 
-#: routers/ValhallaSettings.qml:109
+#: routers/ValhallaSettings.qml:113
 msgid "Your desire to use buses."
 msgstr "Vaše touha využít autobusy."
 
-#: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:146
-#: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:181
-#: routers/ValhallaSettings.qml:197 routers/ValhallaSettings.qml:215
-#: routers/ValhallaSettings.qml:233 routers/ValhallaSettings.qml:249
-#: routers/ValhallaSettings.qml:283
+#: routers/ValhallaSettings.qml:115 routers/ValhallaSettings.qml:150
+#: routers/ValhallaSettings.qml:167 routers/ValhallaSettings.qml:187
+#: routers/ValhallaSettings.qml:203 routers/ValhallaSettings.qml:221
+#: routers/ValhallaSettings.qml:239 routers/ValhallaSettings.qml:255
+#: routers/ValhallaSettings.qml:291
 msgid "Avoid"
 msgstr "Vyhnout se"
 
-#: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:146
-#: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:197
-#: routers/ValhallaSettings.qml:215 routers/ValhallaSettings.qml:266
+#: routers/ValhallaSettings.qml:115 routers/ValhallaSettings.qml:150
+#: routers/ValhallaSettings.qml:167 routers/ValhallaSettings.qml:203
+#: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:274
 msgid "Prefer to avoid"
 msgstr "Snažit se vyhnout"
 
-#: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:146
-#: routers/ValhallaSettings.qml:181 routers/ValhallaSettings.qml:197
-#: routers/ValhallaSettings.qml:215 routers/ValhallaSettings.qml:233
-#: routers/ValhallaSettings.qml:249 routers/ValhallaSettings.qml:283
+#: routers/ValhallaSettings.qml:115 routers/ValhallaSettings.qml:150
+#: routers/ValhallaSettings.qml:187 routers/ValhallaSettings.qml:203
+#: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:239
+#: routers/ValhallaSettings.qml:255 routers/ValhallaSettings.qml:291
 msgid "No preference (default)"
 msgstr "Bez preference (výchozí)"
 
-#: routers/ValhallaSettings.qml:111 routers/ValhallaSettings.qml:147
-#: routers/ValhallaSettings.qml:164 routers/ValhallaSettings.qml:198
-#: routers/ValhallaSettings.qml:216 routers/ValhallaSettings.qml:267
+#: routers/ValhallaSettings.qml:115 routers/ValhallaSettings.qml:151
+#: routers/ValhallaSettings.qml:168 routers/ValhallaSettings.qml:204
+#: routers/ValhallaSettings.qml:222 routers/ValhallaSettings.qml:275
 msgid "Incline"
 msgstr "Snažit se použít"
 
-#: routers/ValhallaSettings.qml:126
+#: routers/ValhallaSettings.qml:130
 msgid "The maximum difficulty of hiking trails that is allowed."
 msgstr "Maximální povolená obtížnost turistických stezek."
 
-#: routers/ValhallaSettings.qml:127
+#: routers/ValhallaSettings.qml:131
 msgid "Hiking difficulty"
 msgstr "Turistická obtížnost"
 
-#: routers/ValhallaSettings.qml:128
+#: routers/ValhallaSettings.qml:132
 msgid "Walking"
 msgstr "Chůze"
 
-#: routers/ValhallaSettings.qml:128
+#: routers/ValhallaSettings.qml:132
 msgid "Hiking (default)"
 msgstr "Turistika (výchozí)"
 
-#: routers/ValhallaSettings.qml:128
+#: routers/ValhallaSettings.qml:132
 msgid "Mountain hiking"
 msgstr "Horská turistika"
 
-#: routers/ValhallaSettings.qml:129
+#: routers/ValhallaSettings.qml:133
 msgid "Demanding mountain hiking"
 msgstr "Požadovaná horská turistika"
 
-#: routers/ValhallaSettings.qml:129
+#: routers/ValhallaSettings.qml:133
 msgid "Alpine hiking"
 msgstr "Alpská turistika"
 
-#: routers/ValhallaSettings.qml:129
+#: routers/ValhallaSettings.qml:133
 msgid "Demanding alpine hiking"
 msgstr "Populární horská turistika"
 
-#: routers/ValhallaSettings.qml:145
+#: routers/ValhallaSettings.qml:149
 msgid "Ferries"
 msgstr "Trajekty"
 
-#: routers/ValhallaSettings.qml:162
+#: routers/ValhallaSettings.qml:166
 msgid "Highways"
 msgstr "Dálnice"
 
-#: routers/ValhallaSettings.qml:163 routers/ValhallaSettings.qml:266
+#: routers/ValhallaSettings.qml:167 routers/ValhallaSettings.qml:274
 msgid "No preference"
 msgstr "Bez preference"
 
-#: routers/ValhallaSettings.qml:164
+#: routers/ValhallaSettings.qml:168
 msgid "Prefer (default)"
 msgstr "Upřednostnit (výchozí)"
 
-#: routers/ValhallaSettings.qml:179
+#: routers/ValhallaSettings.qml:185
 msgid ""
 "Your desire to tackle hills. When avoiding hills and steep grades, longer "
 "(time and distance) routes can be selected. By allowing hills, it indicates "
@@ -1736,39 +1748,39 @@ msgstr ""
 "delší (časové a vzdálenosti) trasy. Povolením kopců naznačujete, že se "
 "nebojíte kopců a prudšího stoupání."
 
-#: routers/ValhallaSettings.qml:180
+#: routers/ValhallaSettings.qml:186
 msgid "Hills"
 msgstr "Kopce"
 
-#: routers/ValhallaSettings.qml:181
+#: routers/ValhallaSettings.qml:187
 msgid "Allow"
 msgstr "Povolit"
 
-#: routers/ValhallaSettings.qml:196
+#: routers/ValhallaSettings.qml:202
 msgid "Primary roads"
 msgstr "Hlavní silnice"
 
-#: routers/ValhallaSettings.qml:213
+#: routers/ValhallaSettings.qml:219
 msgid "Your desire to use rail/subway/metro."
 msgstr "Vaše touha používat železnici / metro / metro."
 
-#: routers/ValhallaSettings.qml:214
+#: routers/ValhallaSettings.qml:220
 msgid "Rail"
 msgstr "Železnice"
 
-#: routers/ValhallaSettings.qml:231
+#: routers/ValhallaSettings.qml:237
 msgid "Your propensity to use roads alongside other vehicles."
 msgstr "Váš sklon používat silnice s ostatními vozidly."
 
-#: routers/ValhallaSettings.qml:232
+#: routers/ValhallaSettings.qml:238
 msgid "Roads"
 msgstr "Silnice"
 
-#: routers/ValhallaSettings.qml:248
+#: routers/ValhallaSettings.qml:254
 msgid "Tolls"
 msgstr "Mýtné"
 
-#: routers/ValhallaSettings.qml:264
+#: routers/ValhallaSettings.qml:272
 msgid ""
 "Your desire for adventure. When preferred, router will tend to avoid major "
 "roads and route on secondary roads, sometimes on using trails, tracks, "
@@ -1779,15 +1791,15 @@ msgstr ""
 "někdy na stezkách, železnicích, neznačených silnicích nebo silnicích se "
 "špatnými povrchy."
 
-#: routers/ValhallaSettings.qml:265
+#: routers/ValhallaSettings.qml:273
 msgid "Trails"
 msgstr "Stezky"
 
-#: routers/ValhallaSettings.qml:266
+#: routers/ValhallaSettings.qml:274
 msgid "Avoid (default)"
 msgstr "Vyhnout se (výchozí)"
 
-#: routers/ValhallaSettings.qml:282
+#: routers/ValhallaSettings.qml:290
 msgid "Transfers"
 msgstr "Přesuny"
 
@@ -1800,16 +1812,20 @@ msgid "Alternatives"
 msgstr "Alternativy"
 
 #: standard input:1
-msgid "Search in Finland"
-msgstr "Hledat ve Finsku"
+msgid "Search in Finland. Supports autocomplete"
+msgstr ""
 
 #: standard input:2
 msgid "Search based on open data sources"
 msgstr "Hledání založené na otevřených zdrojích"
 
-#: standard input:3 standard input:4
-msgid "Search based on OpenStreetMap data"
-msgstr "Hledání založené na datech z OpenStreetMap"
+#: standard input:3
+msgid "Search based on open data sources. Supports autocomplete"
+msgstr ""
+
+#: standard input:4
+msgid "Search based on OpenStreetMap data. Supports autocomplete"
+msgstr ""
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
