@@ -1525,7 +1525,7 @@ msgstr "I dag"
 
 #: routers/digitransit_settings.qml:98
 msgid "Select date"
-msgstr ""
+msgstr "Välj datum"
 
 #: routers/digitransit_settings.qml:119
 msgid "Now"
@@ -1533,7 +1533,7 @@ msgstr "Nu"
 
 #: routers/digitransit_settings.qml:127
 msgid "Select time"
-msgstr ""
+msgstr "Välj tid"
 
 #: routers/digitransit_settings.qml:145
 msgid "Criterion"
@@ -1801,7 +1801,7 @@ msgstr "Alternativ"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
-msgstr ""
+msgstr "Sök i Finland. Stödjer automatisk komplettering."
 
 #: standard input:2
 msgid "Search based on open data sources"
@@ -1809,11 +1809,11 @@ msgstr "Sök baserat på öppna datakällor"
 
 #: standard input:3
 msgid "Search based on open data sources. Supports autocomplete"
-msgstr ""
+msgstr "Sök baserat på öppna datakällor. Stödjer automatisk komplettering."
 
 #: standard input:4
 msgid "Search based on OpenStreetMap data. Supports autocomplete"
-msgstr ""
+msgstr "Sök baserat på OpenStreetMap-data. Stödjer automatisk komplettering."
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
