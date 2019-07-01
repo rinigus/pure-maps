@@ -1,3 +1,17 @@
+2019-07-01: Pure Maps 1.21
+==========================
+
+* Add CS translation [CS translators team]
+* Calculate route automatically as soon as possible
+* Smooth transition only for high-precision positions
+* Add an online map from OpenTopoMap.org [jktjkt]
+* QML platform support updates
+* [qtcontrols,kirigami] Port Digitransit support
+* Smaller GUI changes and fixes
+* Packaging updates for Linux
+* Update translations 
+* Bugfixes
+
 2019-05-19: Pure Maps 1.20
 ==========================
 

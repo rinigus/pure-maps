@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
 NAME       = pure-maps
-VERSION    = 1.20.0
+VERSION    = 1.21.0
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
 PREFIX     = /usr
@@ -145,7 +145,7 @@ endif
 	cp routers/*.qml $(DATADIR)/routers
 	cp routers/README.md $(DATADIR)/routers
 	mkdir -p $(DATADIR)/routers/digitransit
-	cp routers/digitransit/*.png $(DATADIR)/routers/digitransit
+	cp routers/digitransit/*.svg $(DATADIR)/routers/digitransit
 	@echo "Installing fallback icons..."
 	mkdir -p $(DATADIR)/icons
 	cp -r qml/icons/fallback/*.svg $(DATADIR)/icons

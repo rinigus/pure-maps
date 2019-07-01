@@ -38,6 +38,22 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.21.0" date="2019-07-01">
+     <description>
+       <ul>
+         <li>Add CS translation [CS translators team]</li>
+         <li>Calculate route automatically as soon as possible</li>
+         <li>Smooth transition only for high-precision positions</li>
+         <li>Add an online map from OpenTopoMap.org [jktjkt]</li>
+         <li>QML platform support updates</li>
+         <li>[qtcontrols,kirigami] Port Digitransit support</li>
+         <li>Smaller GUI changes and fixes</li>
+         <li>Packaging updates for Linux</li>
+         <li>Update translations</li>
+         <li>Bugfixes</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.20.0" date="2019-05-19">
      <description>
        <ul>
