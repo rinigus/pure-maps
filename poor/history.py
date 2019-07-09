@@ -38,6 +38,7 @@ class HistoryManager:
         self._place_names = []
         self._place_types = []
         self._places = []
+        self._routes = []
         self._read()
 
     def add_destination(self, dest):
@@ -71,6 +72,14 @@ class HistoryManager:
         self.remove_place_type(place_type)
         self._place_types.insert(0, place_type)
 
+    def add_route(self, route):
+        """Add `route` to the list of routes."""
+        route['from']['text'] = route['from']['text'].strip()
+        route['to']['text'] = route['to']['text'].strip()
+        if not route['from']['text'] or not route['to']['text']: return
+        self.remove_route(route['from']['text'], route['to']['text'])
+        self._routes.insert(0, route)
+
     @property
     def destinations(self):
         """Return a list of destinations."""
@@ -92,7 +101,7 @@ class HistoryManager:
         return self._places[:]
 
     def _read(self):
-        """Read list of queries and destinations from file."""
+        """Read list of queries, destinations, and routes from file."""
         with poor.util.silent(Exception, tb=True):
             if os.path.isfile(self._path):
                 history = poor.util.read_json(self._path)
@@ -100,6 +109,7 @@ class HistoryManager:
                 self._places = history.get("places", [])
                 self._place_names = history.get("place_names", [])
                 self._place_types = history.get("place_types", [])
+                self._routes = history.get("routes", [])
         for place in self._places_blacklist:
             self.remove_place(place)
         if not self._place_types:
@@ -111,6 +121,11 @@ class HistoryManager:
                                  "Hotel",
                                  "Pub",
                                  "Restaurant"]
+
+    @property
+    def routes(self):
+        """Return a list of routes."""
+        return self._routes[:]
 
     def remove_destination(self, dtxt):
         """Remove destination with the text `dtxt` from the list of destinations."""
@@ -140,6 +155,14 @@ class HistoryManager:
             if self._place_types[i].lower() == place_type:
                 del self._place_types[i]
 
+    def remove_route(self, from_text, to_text):
+        """Remove route with the same text for origin and target from the list of routes."""
+        f_text = from_text.strip()
+        t_text = to_text.strip()
+        for i in reversed(range(len(self._routes))):
+            if self._routes[i]['from']['text'] == f_text and self._routes[i]['to']['text'] == t_text:
+                del self._routes[i]
+
     def write(self):
         """Write list of queries to file."""
         with poor.util.silent(Exception, tb=True):
@@ -148,4 +171,5 @@ class HistoryManager:
                 "places": self._places[:1000],
                 "place_names": self._place_names[:1000],
                 "place_types": self._place_types[:1000],
+                "routes": self._routes[:25]
             }, self._path)

@@ -21,4 +21,5 @@ import Sailfish.Silica 1.0
 
 ContextMenu {
     hasContent: enabled && children.length > 0
+    enabled: true
 }

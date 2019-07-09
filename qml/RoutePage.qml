@@ -173,6 +173,82 @@ PagePL {
 
         Column {
             /////////////////////////
+            // Recent routes
+            id: columnRoutes
+            anchors.left: parent.left
+            anchors.right: parent.right
+            visible: !followMe && !page.to && page.toNeeded && routes.model.count > 0
+
+            SectionHeaderPL {
+                text: app.tr("Routes")
+            }
+
+            Spacer {
+                height: styler.themePaddingMedium
+            }
+
+            Repeater {
+                id: routes
+
+                delegate: ListItemPL {
+                    contentHeight: styler.themeItemSizeSmall
+                    menu: ContextMenuPL {
+                        id: contextMenu
+                        ContextMenuItemPL {
+                            iconName: styler.iconDelete
+                            text: app.tr("Remove")
+                            onClicked: {
+                                py.call_sync("poor.app.history.remove_route", [model.fromText, model.toText]);
+                                columnRoutes.fillRoutes();
+                            }
+                        }
+                    }
+
+                    ListItemLabel {
+                        id: label
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: styler.themePrimaryColor
+                        text: "%1 ‒ %2".arg(model.fromText).arg(model.toText)
+                    }
+
+                    onClicked: {
+                        page.fromText = model.fromText;
+                        if (page.fromText === app.tr("Current position"))
+                            page.from = map.getPosition();
+                        else page.from = [model.fromX, model.fromY];
+
+                        page.toText = model.toText;
+                        if (page.toText === app.tr("Current position"))
+                            page.to = map.getPosition();
+                        else page.to = [model.toX, model.toY];
+                    }
+                }
+
+                model: ListModel {}
+            }
+
+            Component.onCompleted: columnRoutes.fillRoutes()
+
+            function fillRoutes() {
+                // recent destinations
+                routes.model.clear();
+                var rs = py.evaluate("poor.app.history.routes").slice(0, 2);
+                rs.forEach(function (p) {
+                    routes.model.append({
+                                            "fromText": p.from.text,
+                                            "fromX": p.from.x,
+                                            "fromY": p.from.y,
+                                            "toText": p.to.text,
+                                            "toX": p.to.x,
+                                            "toY": p.to.y,
+                                            "visible": true
+                                        });
+                });
+            }
+        }
+
+        Column {
+            /////////////////////////
             // Suggested destinations
             id: columnSuggested
             anchors.left: parent.left

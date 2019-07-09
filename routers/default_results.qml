@@ -61,8 +61,25 @@ PagePL {
                 busy.error = route.message;
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
+                // save found route
+                if (routePage.toText && routePage.to && routePage.fromText && routePage.from) {
+                    var r = {
+                        'to': {
+                            'text': routePage.toText,
+                            'x': routePage.to[0],
+                            'y': routePage.to[1]
+                        },
+                        'from': {
+                            'text': routePage.fromText,
+                            'x': routePage.from[0],
+                            'y': routePage.from[1]
+                        }
+                    };
+                    py.call_sync("poor.app.history.add_route", [r]);
+                }
+                // apply new route
                 app.setModeExploreRoute();
-                app.hideMenu(app.tr("Navigation"));
+                app.hideMenu(app.tr("Route to %1", routePage.toText));
                 pois.hide();
                 map.addRoute(route);
                 map.fitViewToRoute();

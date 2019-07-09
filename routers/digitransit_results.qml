@@ -28,6 +28,7 @@ PagePL {
     property bool   loading: true
     property bool   populated: false
     property var    results: {}
+    property string toText
 
     // Column widths to be set based on data.
     property int timeWidth: 0
@@ -183,7 +184,7 @@ PagePL {
 
                 onClicked: {
                     app.setModeExploreRoute();
-                    app.hideMenu(app.tr("Navigation"));
+                    app.hideMenu(app.tr("Route to %1", page.toText));
                     map.addRoute(listItem.result);
                     pois.hide();
                     map.fitViewToRoute();
@@ -240,12 +241,30 @@ PagePL {
             };
             py.call_sync("poor.app.history.add_destination", [d]);
         }
+        page.toText = routePage.toText;
         var args = [routePage.from, routePage.to, null, routePage.params];
         py.call("poor.app.router.route", args, function(results) {
             if (results && results.error && results.message) {
                 page.title = "";
                 busy.error = results.message;
             } else if (results && results.length > 0) {
+                // save found route
+                if (routePage.toText && routePage.to && routePage.fromText && routePage.from) {
+                    var r = {
+                        'to': {
+                            'text': routePage.toText,
+                            'x': routePage.to[0],
+                            'y': routePage.to[1]
+                        },
+                        'from': {
+                            'text': routePage.fromText,
+                            'x': routePage.from[0],
+                            'y': routePage.from[1]
+                        }
+                    };
+                    py.call_sync("poor.app.history.add_route", [r]);
+                }
+                // show results
                 page.title = app.tr("Results");
                 page.results = results;
                 Util.appendAll(mainList.model, results);
