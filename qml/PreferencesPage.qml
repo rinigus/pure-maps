@@ -81,6 +81,41 @@ PagePL {
                         height: styler.themePaddingLarge
                     }
 
+                    ListItemLabel {
+                        text: app.tr("Clear all history, including search, routes, and destinations. " +
+                                     "Please note that the bookmarks will be kept.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    ListItemLabel {
+                        id: historyClearedNote
+                        text: app.tr("History cleared")
+                        truncMode: truncModes.none
+                        visible: false
+                        wrapMode: Text.WordWrap
+                    }
+
+                    ButtonPL {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        preferredWidth: styler.themeButtonWidthLarge
+                        text: app.tr("Clear history")
+                        onClicked: {
+                            py.call_sync("poor.app.history.clear", []);
+                            historyClearedNote.visible = true;
+                        }
+                    }
+
+                    Spacer {
+                        height: styler.themePaddingLarge
+                    }
+
+                    ListItemLabel {
+                        text: app.tr("Clear map tiles stored in a cache")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
                     ButtonPL {
                         anchors.horizontalCenter: parent.horizontalCenter
                         preferredWidth: styler.themeButtonWidthLarge

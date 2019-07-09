@@ -80,6 +80,15 @@ class HistoryManager:
         self.remove_route(route['from']['text'], route['to']['text'])
         self._routes.insert(0, route)
 
+    def clear(self):
+        """Clear all history"""
+        self._destinations = []
+        self._place_names = []
+        self._place_types = []
+        self._places = []
+        self._routes = []
+        self.write()
+
     @property
     def destinations(self):
         """Return a list of destinations."""
