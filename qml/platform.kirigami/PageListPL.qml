@@ -71,6 +71,7 @@ Kirigami.ScrollablePage {
     ListView {
         id: listView
 
+        currentIndex: -1
         header: Column {
             height: styler.themePaddingLarge +
                     (headerExtraLoader.height > 0 ? headerExtraLoader.height + styler.themePaddingLarge : 0)
