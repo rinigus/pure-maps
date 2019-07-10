@@ -103,7 +103,8 @@ Item {
             ps.pop(ps.get(0));
             attached = undefined;
             attachedTo = undefined;
-        } else if (ps.currentIndex+1 < ps.depth && ps.get(ps.currentIndex+1)===attached) {
+        } else if (ps.currentIndex+1 < ps.depth && (ps.get(ps.currentIndex+1)===attached ||
+                                                    ps.get(ps.currentIndex+1).isDialog)) {
             // remove attached page from stack when navigaing away from it
             ps.pop(ps.get(ps.currentIndex));
         }
