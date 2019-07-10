@@ -34,7 +34,7 @@ Kirigami.ScrollablePage {
     property var    acceptCallback
     property bool   active: page.isCurrentPage
     property bool   canNavigateForward: true
-    property alias  currentIndex: listView.currentIndex
+    property int    currentIndex: listView.currentIndex
     property bool   currentPage: app.pages.currentItem === page
     property alias  delegate: listView.delegate
     // has to be Component, so wrap it as Component { Item {} }
@@ -99,6 +99,27 @@ Kirigami.ScrollablePage {
             width: placeholderEnabled ? listView.width : 0
             wrapMode: Text.WordWrap
         }
+
+        Timer {
+            // timer is used to ensure that all property handlers by
+            // listView, such as creation of delegates, is finished
+            // before application of new currentIndex
+            id: setCurrent
+            interval: 1 // arbitrary small value (in ms)
+            running: false
+            repeat: false
+            onTriggered: listView.currentIndex = page.currentIndex
+        }
+
+        onCurrentIndexChanged: {
+            if (page.currentIndex !== listView.currentIndex)
+               page.currentIndex = listView.currentIndex;
+        }
+    }
+
+    onCurrentIndexChanged: {
+        if (currentIndex !== listView.currentIndex)
+            setCurrent.start();
     }
 
     onCurrentPageChanged: {

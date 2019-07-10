@@ -63,6 +63,12 @@ DialogListPL {
             visible: !model.header
         }
 
+        Component.onCompleted: {
+            if (model.active) {
+                dialog.currentIndex = model.index;
+            }
+        }
+
         onClicked: {
             if (model.header) return;
             dialog.pid = model.pid;
