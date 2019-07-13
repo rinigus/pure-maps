@@ -39,12 +39,14 @@ QtObject {
     property string navigationIconsVariant: "black"
     // descriptive items
     property color themeHighlightColor: Kirigami.Theme.textColor
+    // due to https://bugreports.qt.io/browse/QTBUG-53189
+    // we cannot use Kirigami palette on links
     // navigation items (to be clicked)
-    property color themePrimaryColor: Qt.darker(Kirigami.Theme.linkColor, 2.0)
+    property color themePrimaryColor: applicationWindow().palette.link
     // navigation items, secondary
-    property color themeSecondaryColor: Qt.darker(Kirigami.Theme.visitedLinkColor, 2.0)
+    property color themeSecondaryColor: applicationWindow().palette.linkVisited
     // descriptive items, secondary
-    property color themeSecondaryHighlightColor: Qt.darker(Kirigami.Theme.disabledTextColor, 2.0)
+    property color themeSecondaryHighlightColor: Kirigami.Theme.disabledTextColor
 
     // button sizes
     property real themeButtonWidthLarge: 256
