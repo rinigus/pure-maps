@@ -100,17 +100,6 @@ Kirigami.ScrollablePage {
             wrapMode: Text.WordWrap
         }
 
-        Timer {
-            // timer is used to ensure that all property handlers by
-            // listView, such as creation of delegates, is finished
-            // before application of new currentIndex
-            id: setCurrent
-            interval: 1 // arbitrary small value (in ms)
-            running: false
-            repeat: false
-            onTriggered: listView.currentIndex = page.currentIndex
-        }
-
         onCurrentIndexChanged: {
             if (page.currentIndex !== listView.currentIndex)
                page.currentIndex = listView.currentIndex;
@@ -118,8 +107,12 @@ Kirigami.ScrollablePage {
     }
 
     onCurrentIndexChanged: {
-        if (currentIndex !== listView.currentIndex)
-            setCurrent.start();
+        // callLater is used to ensure that all property handlers by
+        // listView, such as creation of delegates, are finished
+        // before application of new currentIndex
+        Qt.callLater(function (){
+            listView.currentIndex = page.currentIndex;
+        });
     }
 
     onCurrentPageChanged: {
