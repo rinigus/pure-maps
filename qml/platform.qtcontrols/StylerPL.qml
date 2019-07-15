@@ -33,17 +33,17 @@ QtObject {
 
     // colors
     // block background (navigation, poi panel, bubble)
-    property color blockBg: "#F2F2F2"
+    property color blockBg: palette.window
     // variant of navigation icons
-    property string navigationIconsVariant: "black"
+    property string navigationIconsVariant: darkTheme ? "white" : "black"
     // descriptive items
-    property color themeHighlightColor: "black"
+    property color themeHighlightColor: palette.windowText
     // navigation items (to be clicked)
-    property color themePrimaryColor: "#020280"
+    property color themePrimaryColor: palette.text
     // navigation items, secondary
-    property color themeSecondaryColor: "#4E4EFF"
+    property color themeSecondaryColor: inactivePalette.text
     // descriptive items, secondary
-    property color themeSecondaryHighlightColor: "#3E3E3E"
+    property color themeSecondaryHighlightColor: inactivePalette.text
 
     // button sizes
     property real themeButtonWidthLarge: 256
@@ -100,4 +100,25 @@ QtObject {
     property real themePaddingSmall: 0.25*themeFontSizeSmall
 
     property real themePixelRatio: Screen.devicePixelRatio
+
+    property bool darkTheme: (blockBg.r + blockBg.g + blockBg.b) <
+                             (themePrimaryColor.r + themePrimaryColor.g +
+                              themePrimaryColor.b)
+
+    property list<QtObject> children: [
+        SystemPalette {
+            id: palette
+            colorGroup: SystemPalette.Active
+        },
+
+        SystemPalette {
+            id: disabledPalette
+            colorGroup: SystemPalette.Disabled
+        },
+
+        SystemPalette {
+            id: inactivePalette
+            colorGroup: SystemPalette.Inactive
+        }
+    ]
 }

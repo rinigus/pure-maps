@@ -36,15 +36,17 @@ QtObject {
     // block background (navigation, poi panel, bubble)
     property color blockBg: Kirigami.Theme.backgroundColor
     // variant of navigation icons
-    property string navigationIconsVariant: "black"
+    property string navigationIconsVariant: darkTheme ? "white" : "black"
     // descriptive items
     property color themeHighlightColor: Kirigami.Theme.textColor
     // due to https://bugreports.qt.io/browse/QTBUG-53189
     // we cannot use Kirigami palette on links
-    // navigation items (to be clicked)
-    property color themePrimaryColor: applicationWindow().palette.link
+    // navigation items (to be clicked). When getting link colors,
+    // those are rather pale and hard to see. Swapping to
+    // regular text color
+    property color themePrimaryColor: palette.text
     // navigation items, secondary
-    property color themeSecondaryColor: applicationWindow().palette.linkVisited
+    property color themeSecondaryColor: inactivePalette.text
     // descriptive items, secondary
     property color themeSecondaryHighlightColor: Kirigami.Theme.disabledTextColor
 
@@ -103,4 +105,26 @@ QtObject {
     property real themePaddingSmall: Kirigami.Units.smallSpacing
 
     property real themePixelRatio: 1 //Screen.devicePixelRatio
+
+    property bool darkTheme: (Kirigami.Theme.backgroundColor.r + Kirigami.Theme.backgroundColor.g +
+                              Kirigami.Theme.backgroundColor.b) <
+                             (Kirigami.Theme.textColor.r + Kirigami.Theme.textColor.g +
+                              Kirigami.Theme.textColor.b)
+
+    property list<QtObject> children: [
+        SystemPalette {
+            id: palette
+            colorGroup: SystemPalette.Active
+        },
+
+        SystemPalette {
+            id: disabledPalette
+            colorGroup: SystemPalette.Disabled
+        },
+
+        SystemPalette {
+            id: inactivePalette
+            colorGroup: SystemPalette.Inactive
+        }
+    ]
 }
