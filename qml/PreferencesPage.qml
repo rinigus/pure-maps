@@ -34,47 +34,51 @@ PagePL {
             ExpandingSectionPL {
                 id: sectionGeneral
                 title: app.tr("General")
-                content.sourceComponent: FormLayoutPL {
+                content.sourceComponent: Column {
                     spacing: styler.themePaddingMedium
-                    width: sectionGeneral.width
+                    width: sectionControls.width
+                    FormLayoutPL {
+                        spacing: styler.themePaddingMedium
+                        width: sectionGeneral.width
 
-                    ComboBoxPL {
-                        id: unitsComboBox
-                        label: app.tr("Units")
-                        model: [ app.tr("Metric"), app.tr("American"), app.tr("British") ]
-                        property var values: ["metric", "american", "british"]
-                        Component.onCompleted: {
-                            var value = app.conf.units;
-                            unitsComboBox.currentIndex = unitsComboBox.values.indexOf(value);
+                        ComboBoxPL {
+                            id: unitsComboBox
+                            label: app.tr("Units")
+                            model: [ app.tr("Metric"), app.tr("American"), app.tr("British") ]
+                            property var values: ["metric", "american", "british"]
+                            Component.onCompleted: {
+                                var value = app.conf.units;
+                                unitsComboBox.currentIndex = unitsComboBox.values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = unitsComboBox.currentIndex;
+                                app.conf.set("units", unitsComboBox.values[index]);
+                            }
                         }
-                        onCurrentIndexChanged: {
-                            var index = unitsComboBox.currentIndex;
-                            app.conf.set("units", unitsComboBox.values[index]);
-                        }
-                    }
 
-                    ComboBoxPL {
-                        id: sleepComboBox
-                        description: app.tr("Only applies when Pure Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
-                        label: app.tr("Prevent sleep")
-                        model: [ app.tr("Never"), app.tr("When navigating"), app.tr("Always") ]
-                        property var values: ["never", "navigating", "always"]
-                        Component.onCompleted: {
-                            var value = app.conf.get("keep_alive");
-                            sleepComboBox.currentIndex = sleepComboBox.values.indexOf(value);
+                        ComboBoxPL {
+                            id: sleepComboBox
+                            description: app.tr("Only applies when Pure Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
+                            label: app.tr("Prevent sleep")
+                            model: [ app.tr("Never"), app.tr("When navigating"), app.tr("Always") ]
+                            property var values: ["never", "navigating", "always"]
+                            Component.onCompleted: {
+                                var value = app.conf.get("keep_alive");
+                                sleepComboBox.currentIndex = sleepComboBox.values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = sleepComboBox.currentIndex;
+                                app.conf.set("keep_alive", sleepComboBox.values[index]);
+                            }
                         }
-                        onCurrentIndexChanged: {
-                            var index = sleepComboBox.currentIndex;
-                            app.conf.set("keep_alive", sleepComboBox.values[index]);
-                        }
-                    }
 
-                    TextSwitchPL {
-                        id: autocompleteSwitch
-                        checked: app.conf.autoCompleteGeo
-                        description: app.tr("Fetch autocompleted search results while typing a search string.")
-                        text: app.tr("Autocomplete while searching")
-                        onCheckedChanged: app.conf.set("auto_complete_geo", autocompleteSwitch.checked)
+                        TextSwitchPL {
+                            id: autocompleteSwitch
+                            checked: app.conf.autoCompleteGeo
+                            description: app.tr("Fetch autocompleted search results while typing a search string.")
+                            text: app.tr("Autocomplete while searching")
+                            onCheckedChanged: app.conf.set("auto_complete_geo", autocompleteSwitch.checked)
+                        }
                     }
 
                     Spacer {
