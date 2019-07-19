@@ -32,6 +32,7 @@ Item {
     property bool   mapMatchingWhenNavigating
     property int    mapModeAutoSwitchTime: -1
     property bool   mapModeCleanOnStart
+    property bool   mapModeCleanShowBasemap
     property bool   mapModeCleanShowCenter
     property bool   mapModeCleanShowCompass
     property bool   mapModeCleanShowGeocode
@@ -114,6 +115,7 @@ Item {
         conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
         conf.mapModeAutoSwitchTime = c.map_mode_auto_switch_time;
         conf.mapModeCleanOnStart = c.map_mode_clean_on_start;
+        conf.mapModeCleanShowBasemap = c.map_mode_clean_show_basemap;
         conf.mapModeCleanShowCenter = c.map_mode_clean_show_center;
         conf.mapModeCleanShowCompass = c.map_mode_clean_show_compass;
         conf.mapModeCleanShowGeocode = c.map_mode_clean_show_geocode;

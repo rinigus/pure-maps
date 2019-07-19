@@ -356,6 +356,15 @@ PagePL {
                     }
 
                     TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowBasemap
+                        text: app.tr("Map selection")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowBasemap!==checked)
+                                app.conf.set("map_mode_clean_show_basemap", checked);
+                        }
+                    }
+
+                    TextSwitchPL {
                         checked: app.conf.mapModeCleanShowMeters
                         text: app.tr("Speed and location precision")
                         onCheckedChanged: {

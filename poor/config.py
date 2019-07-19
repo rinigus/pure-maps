@@ -46,6 +46,7 @@ DEFAULTS = {
     "map_matching_when_navigating": False,
     "map_mode_auto_switch_time": -1,
     "map_mode_clean_on_start": False,
+    "map_mode_clean_show_basemap": False,
     "map_mode_clean_show_center": False,
     "map_mode_clean_show_compass": False,
     "map_mode_clean_show_geocode": False,

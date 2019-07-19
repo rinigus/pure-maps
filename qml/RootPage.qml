@@ -24,6 +24,7 @@ PageEmptyPL {
     title: app.tr("Map")
 
     AttributionButton { id: attributionButton }
+    BasemapButton { id: basemapButton }
     CenterButton { id: centerButton }
     Commander { id: commander }
     GeocodeButton { id: geocodeButton }
