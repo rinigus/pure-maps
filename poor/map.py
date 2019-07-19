@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2018 Osmo Salomaa, 2018 Rinigus
+# Copyright (C) 2018 Osmo Salomaa, 2018-2019 Rinigus, 2019 Purism SPC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 """Map data and style source."""
 
 import collections
+import copy
 import json
 import os
 import poor
@@ -60,7 +61,7 @@ class Map:
         self.tile_url = values.get("tile_url", "")
         self.type = values.get("type", "")
         self.url_suffix = values.get("url_suffix", "")
-        self.vehicle = values.get("vehicle", "").split(",")
+        self.vehicle = set(values.get("vehicle", "").split(","))
         for k in self.keys:
             v = poor.key.get(k)
             self.style_url = self.style_url.replace("#" + k + "#", v)
@@ -71,13 +72,13 @@ class Map:
         """Return a list of attribution dictionaries."""
         return [{"text": k, "url": v} for k, v in self._attribution.items()]
 
-    def complies(self, lang=None, light=None, type=None, vehicle=None):
+    def complies(self, lang=[], light='', type='', vehicle=[]):
         """Return True if the applied restrictions are met"""
         return \
-            (lang is None or lang==self.lang) and \
-            (light is None or light==self.light) and \
-            (type is None or type==self.type) and \
-            (vehicle is None or vehicle in self.vehicle)
+            (len(lang)==0 or lang in self.lang) and \
+            (light=='' or light==self.light) and \
+            (type=='' or type==self.type) and \
+            (len(vehicle)==0 or len(self.vehicle.intersection(vehicle)) > 0)
 
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
@@ -150,11 +151,7 @@ class MapManager:
         return self.current_map.attribution
 
     def _find_map(self):
-        restrictions = collections.OrderedDict(
-            [ ("type", poor.conf.basemap_type),
-              ("light", poor.conf.basemap_light),
-              ("lang", poor.conf.basemap_lang),
-              ("vehicle", poor.conf.basemap_vehicle) ] )
+        restrictions = self._restrictions()
         while True:
             for m in self._providers[self.basemap]:
                 if m.complies(**restrictions):
@@ -195,12 +192,54 @@ class MapManager:
     @property
     def logo(self):
         return self.current_map.logo
-        
+
+    def options(self):
+        def filler(v, l):
+            if isinstance(v, set):
+                for i in v:
+                    if i not in l: l.append(i)
+            else:
+                if v not in l: l.append(v)
+        restrictions = self._restrictions()
+        enabled = collections.defaultdict(list)
+        possible = collections.defaultdict(list)
+        res = copy.copy(restrictions)
+        keys = list(restrictions.keys())
+        while True:
+            k, v = restrictions.popitem(last=True)
+            for m in self._providers[self.basemap]:
+                if m.complies(**restrictions):
+                    filler(getattr(m, k), enabled[k])
+                filler(getattr(m, k), possible[k])
+            if len(restrictions.keys()) == 0:
+                break
+        result = {}
+        for k in keys:
+            result[k] = []
+            for v in possible[k]:
+                if v == '': continue
+                n = { 'name': v }
+                n['enabled'] = (v in enabled[k])
+                if isinstance(res[k],list):
+                    act = (v in res[k])
+                else:
+                    act = (v == res[k])
+                n['active'] = act
+                result[k].append(n)
+        return result
+                    
     @property
     def providers(self):
         p = [i for i in self._providers.keys()]
         p.sort()
         return p
+
+    def _restrictions(self):
+        return collections.OrderedDict(
+            [ ("type", poor.conf.basemap_type),
+              ("light", poor.conf.basemap_light),
+              ("lang", poor.conf.basemap_lang),
+              ("vehicle", poor.conf.basemap_vehicle) ] )
 
     def set_basemap(self, id):
         if self.basemap == id: return
@@ -222,6 +261,9 @@ class MapManager:
     def style_gui(self):
         return self.current_map.style_gui
 
+    def update(self):
+        self._find_map()
+    
     @property
     def url_suffix(self):
         return self.current_map.url_suffix        
