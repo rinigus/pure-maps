@@ -28,7 +28,7 @@ Rectangle {
     height: label.height + 2*padding
     opacity: currentText ? 1 : 0
     radius: 0.85 * padding
-    visible: label.text
+    visible: !app.modalDialog && label.text
     width: label.width + 2*padding
 
     property string currentText: {
