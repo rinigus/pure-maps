@@ -44,9 +44,10 @@ MouseArea {
     transitions: Transition {
         AnchorAnimation { duration: app.conf.animationDuration; }
         onRunningChanged: {
-            if (running) master.visible = true;
+            if (running && !_noanim) master.visible = true;
             else if (hidden) master.visible = false;
             else master.visible = true;
+            if (!running) _noanim = false;
         }
     }
 
@@ -55,6 +56,7 @@ MouseArea {
     property int  ypos: meters.height + styler.themePaddingLarge
 
     property bool _hide: (app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowBasemap))
+    property bool _noanim: false
 
     MapButton {
         id: button
@@ -83,9 +85,9 @@ MouseArea {
         radius: styler.themePaddingMedium
         visible: openMenu
         width: flick.width + 2*styler.themePaddingLarge
-        y: ypos + styler.themePaddingLarge
+        y: styler.themePaddingLarge
 
-        property int cellHeight: styler.themeIconSizeMedium + styler.themePaddingSmall + styler.themeFontSizeSmall
+        property int cellHeight: styler.themeIconSizeMedium + styler.themePaddingSmall + styler.themeFontSizeExtraSmall
         property int cellHeightFull: cellHeight + styler.themePaddingLarge
         property int cellWidth: styler.themeIconSizeMedium*1.5
         property int cellWidthFull: cellWidth + styler.themePaddingMedium
@@ -98,11 +100,12 @@ MouseArea {
             contentHeight: col.height
             contentWidth: width
 
-            height: Math.min(col.height, Math.round(map.height/2))
-            width: Math.min(Math.round(map.width/2),
+            height: Math.min(col.height, Math.round(map.height*0.6))
+            width: Math.min(Math.round(map.width*0.6),
                             menu.cellWidthFull*8,
                             menu.cellWidthFull*Math.max(Math.ceil(typeGrid.model.count/2),
-                                                        lightList.model.count))
+                                                        lightList.model.count,
+                                                        transList.model.count))
 
             Component {
                 id: selectionDelegate
@@ -143,7 +146,7 @@ MouseArea {
                         anchors.top: icon.bottom
                         anchors.topMargin: styler.themePaddingSmall
                         color: styler.itemFg
-                        font.pixelSize: styler.themeFontSizeSmall
+                        font.pixelSize: styler.themeFontSizeExtraSmall
                         horizontalAlignment: implicitWidth > width*0.99 ? Text.AlignLeft : Text.AlignHCenter
                         opacity: model.enabled ? 1 : 0.5
                         text: item.view.tr[model.name]
@@ -183,6 +186,7 @@ MouseArea {
                     flow: GridView.TopToBottom
                     height: Math.min(cellHeight * 2, model.count / Math.floor(width / cellWidth) * cellHeight)
                     model: ListModel {}
+                    visible: typeGrid.model.count > 0
                     width: parent.width
 
                     property var tr: {
@@ -218,6 +222,7 @@ MouseArea {
                     model: ListModel {}
                     orientation: ListView.Horizontal
                     height: menu.cellHeightFull
+                    visible: lightList.model.count > 0
                     width: parent.width
 
                     property var tr: {
@@ -249,6 +254,7 @@ MouseArea {
                     model: ListModel {}
                     orientation: ListView.Horizontal
                     height: menu.cellHeightFull
+                    visible: transList.model.count > 0
                     width: parent.width
 
                     property var tr: {
@@ -268,8 +274,10 @@ MouseArea {
     }
 
     onClicked: {
-        if (_hide)
+        if (_hide) {
+            master._noanim = true;
             master.visible = false;
+        }
         openMenu = false;
     }
 
