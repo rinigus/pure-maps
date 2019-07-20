@@ -18,7 +18,6 @@
 """An application to display maps and stuff."""
 
 import poor
-import pyotherside
 import sys
 
 __all__ = ("Application",)
