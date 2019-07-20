@@ -115,7 +115,7 @@ MouseArea {
             height: Math.min(col.height, Math.round((map.height-panel.height)*0.6))
             width: Math.min(Math.round(map.width*0.6),
                             menu.cellWidthFull*8,
-                            menu.cellWidthFull*Math.max(Math.ceil(typeGrid.model.count/2),
+                            menu.cellWidthFull*Math.max(Math.ceil(typeGrid.model.count/typeGrid.nrows),
                                                         lightList.model.count,
                                                         transList.model.count))
 
@@ -196,10 +196,12 @@ MouseArea {
                     clip: true
                     delegate: selectionDelegate
                     flow: GridView.TopToBottom
-                    height: Math.min(cellHeight * 2, model.count / Math.floor(width / cellWidth) * cellHeight)
+                    height: cellHeight * nrows
                     model: ListModel {}
                     visible: typeGrid.model.count > 0
                     width: parent.width
+
+                    property int nrows: model.count < 4? 1 : 2
 
                     property var tr: {
                         "default": app.tr("Default"),
@@ -271,12 +273,14 @@ MouseArea {
                     width: parent.width
 
                     property var tr: {
-                        "car": app.tr("Car")
+                        "car": app.tr("Car"),
+                        "public": app.tr("Public transport"),
+                        "walk": app.tr("Walking")
                     }
 
                     function apply(name, active, enabled) {
                         if (!enabled) return;
-                        app.conf.set("basemap_vehicle", active ? "" : name);
+                        app.conf.set("basemap_vehicle", active ? [""] : [name]);
                         py.call_sync("poor.app.basemap.update", []);
                         master.fillMenu();
                     }

@@ -42,7 +42,8 @@ keys are explained below, format-specific keys in following sections.
   
 * **`vehicle`**: optionally provide a list which would indicate
   transportations modes that this map has been designed for. List is
-  consisting of one or several of: car, walk
+  consisting of one or several of: car, walk, public. Each item should be 
+  separated by comma, no spaces in between.
 
 Use `~/.local/share/harbour-pure-maps/maps` as a local installation
 directory in which to place your JSON file. Restart Pure Maps, and your
