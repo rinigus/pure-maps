@@ -29,7 +29,19 @@ MouseArea {
     enabled: openMenu
     height: openMenu ? parent.height : button.height
     width: openMenu ? parent.width : button.width
-    y: openMenu ? 0 : meters.height + styler.themePaddingLarge
+    y: {
+        if (openMenu) return 0;
+        // navigation or follow me
+        if (app.mode === modes.navigate || app.mode === modes.followMe) {
+            if (!app.portrait)
+                return northArrow.y + northArrow.height;
+            return northArrow.y - height;
+        }
+        // (app.mode === modes.explore || app.mode === modes.exploreRoute)
+        return navigationSign.y + navigationSign.height + meters.anchors.topMargin +
+                meters.height + styler.themePaddingLarge;
+
+    }
     z: openMenu ? 9999 : 500
 
     states: [

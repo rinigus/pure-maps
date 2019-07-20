@@ -158,7 +158,7 @@ Rectangle {
     }
 
     Connections {
-        target: northArrow
+        target: basemapButton
         onYChanged: block.checkIfBusy();
         onHeightChanged: block.checkIfBusy();
     }
@@ -173,7 +173,7 @@ Rectangle {
             block.rightSideTooBusy = false;
             return;
         }
-        var top = northArrow.y+northArrow.height;
+        var top = basemapButton.y+basemapButton.height;
         var tofit = scaleBar.height + timeDest.height + distDest.height + styler.themePaddingMedium + 2*styler.themePaddingLarge;
         var bottom = app.screenHeight - tofit;
         block.rightSideTooBusy = bottom - top < 0;

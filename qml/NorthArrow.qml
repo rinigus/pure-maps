@@ -23,30 +23,24 @@ import "platform"
 MapButton {
     id: master
     anchors.right: parent.right
-    anchors.top: parent.verticalCenter
     enabled: !hidden
     iconColorize: false
     iconHeight: styler.themeIconSizeSmall
     iconRotation: -map.bearing
     iconSource: app.getIcon("icons/north")
     indicator: map.autoRotate
-    states: [
-        State {
-            when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
-            AnchorChanges {
-                target: master
-                anchors.top: navigationSign.bottom
-            }
-        },
-        State {
-            when: app.mode === modes.navigate || app.mode === modes.followMe
-            AnchorChanges {
-                target: master
-                anchors.top: centerButton.bottom
-            }
-        }
-    ]
     opacity: hidden ? 0 : 1
+    y: {
+        if (app.mode === modes.navigate || app.mode === modes.followMe) {
+            if (!app.portrait)
+                return navigationSign.y + navigationSign.height;
+            return (parent.height - height)/2;
+        }
+        var p = parent.height/2 - height;
+        if (p < basemapButton.y + basemapButton.height)
+            return basemapButton.y + basemapButton.height;
+        return p;
+    }
     z: 500
 
     property bool hidden: app.modalDialog || app.infoPanelOpen || (Math.abs(master.iconRotation) < 0.01 && map.cleanMode && !app.conf.mapModeCleanShowCompass)
