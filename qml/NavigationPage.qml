@@ -151,40 +151,6 @@ PagePL {
 
         RouteOverallInfo {
         }
-
-        Spacer {
-            height: styler.themePaddingLarge
-        }
-
-        SectionHeaderPL {
-            text: app.tr("Options")
-        }
-
-        Spacer {
-            height: styler.themePaddingLarge
-        }
-
-        SliderPL {
-            id: scaleSlider
-            label: app.tr("Map scale")
-            maximumValue: 4.0
-            minimumValue: 0.5
-            stepSize: 0.1
-            value: map.route.mode != null ? app.conf.get("map_scale_navigation_" + map.route.mode) : 1
-            valueText: value
-            visible: map.route.mode != null
-            width: parent.width
-            onValueChanged: {
-                if (map.route.mode == null) return;
-                app.conf.set("map_scale_navigation_" + map.route.mode, scaleSlider.value);
-                if (app.mode === modes.navigate) map.setScale(scaleSlider.value);
-            }
-        }
-
-        Spacer {
-            height: styler.themePaddingMedium
-        }
-
     }
 
     onPageStatusActive: app.navigationPageSeen = true
