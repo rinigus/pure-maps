@@ -224,7 +224,8 @@ PagePL {
                         width: parent.width
                         onValueChanged: {
                             app.conf.set("map_scale", scaleSlider.value);
-                            app.mode !== modes.navigate && map.setScale(scaleSlider.value);
+                            if (app.mode !== modes.followMe && app.mode !== modes.navigate)
+                                map.setScale(scaleSlider.value);
                         }
                     }
 

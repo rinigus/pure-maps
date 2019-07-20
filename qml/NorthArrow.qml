@@ -49,7 +49,7 @@ MapButton {
     opacity: hidden ? 0 : 1
     z: 500
 
-    property bool hidden: app.infoPanelOpen || (Math.abs(master.iconRotation) < 0.01 && map.cleanMode && !app.conf.mapModeCleanShowCompass)
+    property bool hidden: app.modalDialog || app.infoPanelOpen || (Math.abs(master.iconRotation) < 0.01 && map.cleanMode && !app.conf.mapModeCleanShowCompass)
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 

@@ -31,6 +31,7 @@ Panel {
         return h;
     }
     mode: panelModes.bottom
+    visible: !app.modalDialog
 
     property alias infoText: infoLabel.text
     property bool  showMenu: infoText

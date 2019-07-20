@@ -105,7 +105,7 @@ MapButton {
     }
     z: 500
 
-    property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowCenter)
+    property bool hidden: app.modalDialog || app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowCenter)
     property bool nextClickToAuto: false
 
     Timer {

@@ -26,9 +26,10 @@ MouseArea {
     id: master
 
     anchors.right: parent.right
+    enabled: openMenu
     height: openMenu ? parent.height : button.height
     width: openMenu ? parent.width : button.width
-    y: openMenu ? 0 : ypos
+    y: openMenu ? 0 : meters.height + styler.themePaddingLarge
     z: openMenu ? 9999 : 500
 
     states: [
@@ -53,9 +54,8 @@ MouseArea {
 
     property bool hidden: !openMenu && _hide
     property bool openMenu: false
-    property int  ypos: meters.height + styler.themePaddingLarge
 
-    property bool _hide: (app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowBasemap))
+    property bool _hide: (app.modalDialog && !app.modalDialogBasemap) || app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowBasemap)
     property bool _noanim: false
 
     MapButton {
@@ -100,7 +100,7 @@ MouseArea {
             contentHeight: col.height
             contentWidth: width
 
-            height: Math.min(col.height, Math.round(map.height*0.6))
+            height: Math.min(col.height, Math.round((map.height-panel.height)*0.6))
             width: Math.min(Math.round(map.width*0.6),
                             menu.cellWidthFull*8,
                             menu.cellWidthFull*Math.max(Math.ceil(typeGrid.model.count/2),
@@ -270,7 +270,59 @@ MouseArea {
                 }
             }
         }
+    }
 
+    Rectangle {
+        id: panel
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        color: styler.blockBg
+        height: colPanel.height + 2*styler.themePaddingLarge
+        visible: openMenu
+
+        FormLayoutPL {
+            id: colPanel
+            anchors.centerIn: parent
+            spacing: styler.themePaddingLarge
+            width: parent.width - 2*styler.themeHorizontalPageMargin
+
+            SliderPL {
+                id: scaleSlider
+                label: app.tr("Map scale")
+                maximumValue: 2.0
+                minimumValue: 0.5
+                stepSize: 0.1
+                value: app.conf.get("map_scale")
+                valueText: value
+                visible: !scaleSliderNav.visible
+                width: parent.width
+                onValueChanged: {
+                    app.conf.set("map_scale", value);
+                    if (app.mode !== modes.followMe && app.mode !== modes.navigate)
+                        map.setScale(value);
+                }
+            }
+
+            SliderPL {
+                id: scaleSliderNav
+                label: app.tr("Map scale during navigation")
+                maximumValue: 4.0
+                minimumValue: 0.5
+                stepSize: 0.1
+                value: map.route != null && map.route.mode != null ? app.conf.get("map_scale_navigation_" + map.route.mode) : 1
+                valueText: value
+                visible: (app.mode === modes.followMe || app.mode === modes.navigate) &&
+                         map.route != null && map.route.mode != null
+                width: parent.width
+                onValueChanged: {
+                    if (map.route == null || map.route.mode == null) return;
+                    app.conf.set("map_scale_navigation_" + map.route.mode, value);
+                    if (app.mode === modes.followMe || app.mode === modes.navigate)
+                        map.setScale(value);
+                }
+            }
+        }
     }
 
     onClicked: {

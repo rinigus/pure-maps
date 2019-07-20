@@ -26,7 +26,7 @@ Rectangle {
     anchors.bottom: parent.bottom
     color: styler.blockBg
     height: app.mode === modes.navigate && app.portrait ? styler.themePaddingSmall + (app.portrait ? speed.height : timeDest.height) : 0
-    visible: app.mode === modes.navigate || app.mode === modes.followMe
+    visible: !app.modalDialog && (app.mode === modes.navigate || app.mode === modes.followMe)
     z: 500
 
     property string destDist:  app.navigationStatus.destDist

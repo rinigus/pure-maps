@@ -43,7 +43,7 @@ Item {
     visible: app.mode === modes.explore || app.mode === modes.exploreRoute
     z: 400
 
-    property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowMeters)
+    property bool hidden: app.modalDialog || app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowMeters)
 
     Text {
         id: values

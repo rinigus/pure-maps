@@ -37,7 +37,7 @@ Rectangle {
         return 0;
     }
     radius: styler.themePaddingMedium
-    visible: app.conf.showNavigationSign
+    visible: !app.modalDialog && app.conf.showNavigationSign
     width: {
         if (!app.conf.showNavigationSign) return 0;
         var w1 = numLabel.text ? numLabel.width + exitLabel.width + styler.themePaddingSmall : 0;

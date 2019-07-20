@@ -40,5 +40,5 @@ MapButton {
     z: 900
     onClicked: app.showMenu();
 
-    property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowMenuButton)
+    property bool hidden: app.modalDialog || app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowMenuButton)
 }

@@ -26,7 +26,7 @@ Rectangle {
     anchors.leftMargin: styler.themePaddingLarge
     color: "transparent"
     height: visible ? cover.height : 0
-    visible: app.conf.developmentShowZ
+    visible: !app.modalDialog && app.conf.developmentShowZ
     z: 400
 
     Rectangle {

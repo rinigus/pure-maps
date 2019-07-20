@@ -41,6 +41,7 @@ MouseArea {
         }
     ]
     opacity: hidden ? 0 : 1
+    visible: !app.modalDialog
     width: 2*(styler.themePaddingLarge + styler.themePaddingSmall) +
            (_rotate ? scaleBar.height : scaleBar.width)
     z: 400
