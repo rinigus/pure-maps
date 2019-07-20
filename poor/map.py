@@ -77,7 +77,7 @@ class Map:
         return \
             (len(lang)==0 or lang in self.lang) and \
             (light=='' or light==self.light) and \
-            (type=='' or type==self.type) and \
+            (type=='' or type==self.type or (type=="preview" and self.type=="traffic")) and \
             (len(vehicle)==0 or len(self.vehicle.intersection(vehicle)) > 0)
 
     def _load_attributes(self, id):

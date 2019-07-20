@@ -195,7 +195,8 @@ MouseArea {
                         "hybrid": app.tr("Hybrid"),
                         "outdoors": app.tr("Outdoors"),
                         "preview": app.tr("Preview"),
-                        "satellite": app.tr("Satellite")
+                        "satellite": app.tr("Satellite"),
+                        "traffic": app.tr("Traffic")
                     }
 
                     function apply(name, active, enabled) {

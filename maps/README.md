@@ -37,7 +37,8 @@ keys are explained below, format-specific keys in following sections.
  
 * **`type`**: maps under the same `provider` should specify their type
   as one from the following list: default, outdoors, satellite, hybrid,
-  preview, guidance.
+  preview, traffic, guidance. Traffic should be used if it is intended for
+  preview of the road and contains traffic information.
   
 * **`vehicle`**: optionally provide a list which would indicate
   transportations modes that this map has been designed for. List is

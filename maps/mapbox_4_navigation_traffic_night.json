@@ -7,12 +7,22 @@
     "first_label_layer": "waterway-label",
     "format": "mapbox-gl",
     "lang": "local",
-    "light": "day",
+    "light": "night",
     "logo": "mapbox",
-    "name": "Mapbox Navigation Preview Day",
+    "name": "Mapbox Navigation Preview Night",
     "profiles": ["mixed", "online"],
     "provider": "Mapbox",
-    "style_url": "mapbox://styles/mapbox/navigation-preview-day-v4",
-    "type": "preview",
+    "style_url": "mapbox://styles/mapbox/navigation-preview-night-v4",
+    "style_gui": {
+        "fg": "white",
+        "iconVariant": "white",
+        "maneuver": "#050505",
+        "position": "white",
+        "route": "#ffffff",
+        "routeOpacity": 0.5,
+        "itemFg": "white",
+        "itemBg": "black"
+    },
+    "type": "traffic",
     "vehicle": "car"
 }
