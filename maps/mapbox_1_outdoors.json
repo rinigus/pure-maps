@@ -13,5 +13,5 @@
     "profiles": ["mixed", "online"],
     "provider": "Mapbox",
     "style_url": "mapbox://styles/mapbox/outdoors-v10",
-    "type": "outdoors"
+    "type": "terrain"
 }

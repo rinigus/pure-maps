@@ -12,5 +12,5 @@
     "provider": "HERE",
     "tile_size": 512,
     "tile_url": "https://3.aerial.maps.api.here.com/maptile/2.1/maptile/newest/terrain.day/{z}/{x}/{y}/512/png8?app_id=#HERE_APP_ID#&app_code=#HERE_APP_CODE#&ppi=250",
-    "type": "outdoors"
+    "type": "terrain"
 }

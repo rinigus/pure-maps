@@ -36,7 +36,7 @@ keys are explained below, format-specific keys in following sections.
  `qml/Styler.qml`.
  
 * **`type`**: maps under the same `provider` should specify their type
-  as one from the following list: default, outdoors, satellite, hybrid,
+  as one from the following list: default, terrain, satellite, hybrid,
   preview, traffic, guidance. Traffic should be used if it is intended for
   preview of the road and contains traffic information.
   

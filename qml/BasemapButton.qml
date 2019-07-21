@@ -201,15 +201,15 @@ MouseArea {
                     visible: typeGrid.model.count > 0
                     width: parent.width
 
-                    property int nrows: model.count < 4? 1 : 2
-
-                    property var tr: {
+                    property string iconPrefix: "type"
+                    property int    nrows: model.count < 4? 1 : 2
+                    property var    tr: {
                         "default": app.tr("Default"),
                         "guidance": app.tr("Guidance"),
                         "hybrid": app.tr("Hybrid"),
-                        "outdoors": app.tr("Outdoors"),
                         "preview": app.tr("Preview"),
                         "satellite": app.tr("Satellite"),
+                        "terrain": app.tr("Terrain"),
                         "traffic": app.tr("Traffic")
                     }
 
@@ -240,7 +240,8 @@ MouseArea {
                     visible: lightList.model.count > 0
                     width: parent.width
 
-                    property var tr: {
+                    property string iconPrefix: "light"
+                    property var    tr: {
                         "day": app.tr("Day"),
                         "night": app.tr("Night")
                     }
@@ -272,7 +273,8 @@ MouseArea {
                     visible: transList.model.count > 0
                     width: parent.width
 
-                    property var tr: {
+                    property string iconPrefix: "transport"
+                    property var    tr: {
                         "car": app.tr("Car"),
                         "public": app.tr("Public transport"),
                         "walk": app.tr("Walking")
