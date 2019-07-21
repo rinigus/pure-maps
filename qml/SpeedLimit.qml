@@ -41,6 +41,7 @@ Rectangle {
     ]
     width: Math.round(Math.max(limit.width,limit.height) + 1.6*styler.themePaddingLarge + styler.themePaddingSmall)
     visible: {
+        if (app.modalDialog) return false;
         if (app.mapMatchingMode !== "car" || app.conf.showSpeedLimit==="never")
             return false;
         if (app.conf.showSpeedLimit==="exceeding") {

@@ -26,7 +26,7 @@ Rectangle {
     anchors.bottom: parent.bottom
     color: styler.blockBg
     height: app.mode === modes.navigate && app.portrait ? styler.themePaddingSmall + (app.portrait ? speed.height : timeDest.height) : 0
-    visible: app.mode === modes.navigate || app.mode === modes.followMe
+    visible: !app.modalDialog && (app.mode === modes.navigate || app.mode === modes.followMe)
     z: 500
 
     property string destDist:  app.navigationStatus.destDist
@@ -158,7 +158,7 @@ Rectangle {
     }
 
     Connections {
-        target: northArrow
+        target: basemapButton
         onYChanged: block.checkIfBusy();
         onHeightChanged: block.checkIfBusy();
     }
@@ -173,7 +173,7 @@ Rectangle {
             block.rightSideTooBusy = false;
             return;
         }
-        var top = northArrow.y+northArrow.height;
+        var top = basemapButton.y+basemapButton.height;
         var tofit = scaleBar.height + timeDest.height + distDest.height + styler.themePaddingMedium + 2*styler.themePaddingLarge;
         var bottom = app.screenHeight - tofit;
         block.rightSideTooBusy = bottom - top < 0;

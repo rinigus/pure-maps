@@ -59,6 +59,7 @@ Panel {
             }
         }
     ]
+    visible: !app.modalDialog
 
     property string destDist:  app.navigationStatus.destDist
     property string destEta:   app.navigationStatus.destEta

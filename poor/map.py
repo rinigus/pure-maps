@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2018 Osmo Salomaa, 2018 Rinigus
+# Copyright (C) 2018 Osmo Salomaa, 2018-2019 Rinigus, 2019 Purism SPC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,18 +17,21 @@
 
 """Map data and style source."""
 
+import collections
+import copy
 import json
 import os
 import poor
+import pyotherside
 
-__all__ = ("Map",)
+__all__ = ("Map","MapManager")
 
 
 class Map:
 
     """Map data and style source."""
 
-    def __new__(cls, id):
+    def __new__(cls, id, values=None):
         """Return possibly existing instance for `id`."""
         if not hasattr(cls, "_instances"):
             cls._instances = {}
@@ -36,17 +39,19 @@ class Map:
             cls._instances[id] = object.__new__(cls)
         return cls._instances[id]
 
-    def __init__(self, id):
+    def __init__(self, id, values = None):
         """Initialize a :class:`Map` instance."""
         # Initialize properties only once.
         if hasattr(self, "id"): return
-        values = self._load_attributes(id)
+        if values is None: values = self._load_attributes(id)
         self._attribution = values.get("attribution", {})
         self.background_color = values.get("background_color", "#e6e6e6")
         self.first_label_layer = values.get("first_label_layer", "")
         self.id = id
         self.format = values["format"]
         self.keys = values.get("keys", [])
+        self.lang = values.get("lang", "local")
+        self.light = values.get("light", "day")
         self.logo = values.get("logo", "default")
         self.name = values["name"]
         self.style_dict = values.get("style_json", {})
@@ -54,7 +59,10 @@ class Map:
         self.style_url = values.get("style_url", "")
         self.tile_size = values.get("tile_size", 256)
         self.tile_url = values.get("tile_url", "")
+        self.type = values.get("type", "")
         self.url_suffix = values.get("url_suffix", "")
+        self.vehicle = set([v.strip() for v in values.get("vehicle", "").split(",")])
+        if '' in self.vehicle: self.vehicle.remove('')
         for k in self.keys:
             v = poor.key.get(k)
             self.style_url = self.style_url.replace("#" + k + "#", v)
@@ -64,6 +72,14 @@ class Map:
     def attribution(self):
         """Return a list of attribution dictionaries."""
         return [{"text": k, "url": v} for k, v in self._attribution.items()]
+
+    def complies(self, lang=[], light='', type='', vehicle=[]):
+        """Return True if the applied restrictions are met"""
+        return \
+            (len(lang)==0 or lang in self.lang) and \
+            (light=='' or light==self.light) and \
+            (type=='' or type==self.type or (type=="preview" and self.type=="traffic")) and \
+            (len(vehicle)==0 or len(self.vehicle.intersection(vehicle)) > 0)
 
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""
@@ -103,3 +119,152 @@ class Map:
                 },
             ],
         }, ensure_ascii=False)
+
+
+class MapManager:
+
+    """Collection of maps"""
+
+    def __new__(cls):
+        """Return possibly existing instance for current profile."""
+        if not hasattr(cls, "_instances"):
+            cls._instances = {}
+        profile = poor.conf.profile
+        if profile not in cls._instances:
+            cls._instances[profile] = object.__new__(cls)
+        return cls._instances[profile]
+
+    def __init__(self):
+        """Initialize a :class:`MapManager` instance."""
+        if hasattr(self, "profile"): return
+        self.basemap = None
+        self.current_map = None
+        # load map descriptions
+        maps = poor.util.get_basemaps()
+        maps.sort(key=lambda x: x["pid"])
+        self._providers = collections.defaultdict(list)
+        for m in maps:
+            provider = m.get("provider", m["name"])
+            self._providers[provider].append(Map(m["pid"], values=m))
+
+    @property
+    def attribution(self):
+        return self.current_map.attribution
+
+    def _find_map(self):
+        restrictions = self._restrictions()
+        while True:
+            for m in self._providers[self.basemap]:
+                if m.complies(**restrictions):
+                    if self.current_map is None or self.current_map.id != m.id:
+                        self.current_map = m
+                        pyotherside.send('basemap.changed')
+                    return
+            if len(restrictions.keys()) > 0:
+                restrictions.popitem(last=True)
+            else:
+                break
+        # nothing was found
+        self.current_map = None
+        raise ValueError('Error: could not find any map with provider %s' % self.basemap)
+
+    @property
+    def first_label_layer(self):
+        return self.current_map.first_label_layer
+
+    @property
+    def format(self):
+        return self.current_map.format
+
+    def list(self):
+        providers = []
+        default = poor.conf.get_default("basemap")
+        for i in self._providers:
+            provider = {
+                "pid": i,
+                "active": (i == self.basemap),
+                "default": (i == default),
+                "name": i
+            }
+            providers.append(provider)
+        providers.sort(key=lambda x: x["name"])
+        return providers
+
+    @property
+    def logo(self):
+        return self.current_map.logo
+
+    def options(self):
+        def filler(v, l):
+            if isinstance(v, set):
+                for i in v:
+                    if i not in l: l.append(i)
+            else:
+                if v not in l: l.append(v)
+        restrictions = self._restrictions()
+        enabled = collections.defaultdict(list)
+        possible = collections.defaultdict(list)
+        res = copy.copy(restrictions)
+        keys = list(restrictions.keys())
+        while True:
+            k, v = restrictions.popitem(last=True)
+            for m in self._providers[self.basemap]:
+                if m.complies(**restrictions):
+                    filler(getattr(m, k), enabled[k])
+                filler(getattr(m, k), possible[k])
+            if len(restrictions.keys()) == 0:
+                break
+        result = {}
+        for k in keys:
+            result[k] = []
+            for v in possible[k]:
+                if v == '': continue
+                n = { 'name': v }
+                n['enabled'] = (v in enabled[k])
+                if isinstance(res[k],list):
+                    act = (v in res[k])
+                else:
+                    act = (v == res[k])
+                n['active'] = act
+                result[k].append(n)
+        return result
+                    
+    @property
+    def providers(self):
+        p = [i for i in self._providers.keys()]
+        p.sort()
+        return p
+
+    def _restrictions(self):
+        return collections.OrderedDict(
+            [ ("type", poor.conf.basemap_type),
+              ("light", poor.conf.basemap_light),
+              ("lang", poor.conf.basemap_lang),
+              ("vehicle", poor.conf.basemap_vehicle) ] )
+
+    def set_basemap(self, id):
+        if self.basemap == id: return
+        self.basemap = id
+        if self.basemap not in self._providers.keys():
+            self.basemap = poor.conf.get_default("basemap")
+        self._find_map()
+        poor.conf.set_basemap(self.basemap)
+
+    @property
+    def style_json(self):
+        return self.current_map.style_json
+            
+    @property
+    def style_url(self):
+        return self.current_map.style_url
+
+    @property
+    def style_gui(self):
+        return self.current_map.style_gui
+
+    def update(self):
+        self._find_map()
+    
+    @property
+    def url_suffix(self):
+        return self.current_map.url_suffix        

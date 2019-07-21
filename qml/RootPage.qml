@@ -24,6 +24,7 @@ PageEmptyPL {
     title: app.tr("Map")
 
     AttributionButton { id: attributionButton }
+    BasemapButton { id: basemapButton }
     CenterButton { id: centerButton }
     Commander { id: commander }
     GeocodeButton { id: geocodeButton }
@@ -56,6 +57,8 @@ PageEmptyPL {
         app.notification = notification;
         app.pois = pois;
         app.remorse = remorse;
+        // connect modal dialog properties
+        app.modalDialogBasemap = Qt.binding(function () { return basemapButton.openMenu; });
         // after all objects are initialized
         commander.parseCommandLine();
     }

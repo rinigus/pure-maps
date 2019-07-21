@@ -31,6 +31,10 @@ DEFAULTS = {
     "auto_complete_geo": True,
     "auto_rotate": False,
     "auto_rotate_when_navigating": True,
+    "basemap_lang": [],
+    "basemap_light": "",
+    "basemap_type": "",
+    "basemap_vehicle": [],
     "center": [13.0, 49.0],
     "devel_coordinate_center": False,
     "devel_show_z": False,
@@ -42,6 +46,7 @@ DEFAULTS = {
     "map_matching_when_navigating": False,
     "map_mode_auto_switch_time": -1,
     "map_mode_clean_on_start": False,
+    "map_mode_clean_show_basemap": False,
     "map_mode_clean_show_center": False,
     "map_mode_clean_show_compass": False,
     "map_mode_clean_show_geocode": False,
@@ -61,19 +66,19 @@ DEFAULTS = {
     "profile": "online",
     "profiles": {
         "mixed": {
-            "basemap": "mapbox_streets",
+            "basemap": "Mapbox",
             "geocoder": "photon",
             "guide": "foursquare",
             "router": "stadiamaps"
         },
         "online": {
-            "basemap": "mapbox_streets",
+            "basemap": "Mapbox",
             "geocoder": "photon",
             "guide": "foursquare",
             "router": "stadiamaps"
         },
         "offline": {
-            "basemap": "osmscout_day",
+            "basemap": "OSM Scout",
             "geocoder": "osmscout",
             "guide": "osmscout",
             "router": "osmscout"

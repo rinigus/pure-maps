@@ -24,6 +24,7 @@ Item {
     // cache certain frequently used properties locally
     property bool   autoCompleteGeo
     property bool   autoRotateWhenNavigating
+    property var    basemapVehicle
     property bool   developmentCoordinateCenter: false
     property bool   developmentShowZ: false
     property string keepAlive
@@ -32,6 +33,7 @@ Item {
     property bool   mapMatchingWhenNavigating
     property int    mapModeAutoSwitchTime: -1
     property bool   mapModeCleanOnStart
+    property bool   mapModeCleanShowBasemap
     property bool   mapModeCleanShowCenter
     property bool   mapModeCleanShowCompass
     property bool   mapModeCleanShowGeocode
@@ -106,6 +108,7 @@ Item {
         var c = py.call_sync("poor.conf.get_all", []);
         conf.autoCompleteGeo = c.auto_complete_geo;
         conf.autoRotateWhenNavigating = c.auto_rotate_when_navigating;
+        conf.basemapVehicle = c.basemap_vehicle;
         conf.developmentCoordinateCenter = c.devel_coordinate_center;
         conf.developmentShowZ = c.devel_show_z;
         conf.keepAlive = c.keep_alive;
@@ -114,6 +117,7 @@ Item {
         conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
         conf.mapModeAutoSwitchTime = c.map_mode_auto_switch_time;
         conf.mapModeCleanOnStart = c.map_mode_clean_on_start;
+        conf.mapModeCleanShowBasemap = c.map_mode_clean_show_basemap;
         conf.mapModeCleanShowCenter = c.map_mode_clean_show_center;
         conf.mapModeCleanShowCompass = c.map_mode_clean_show_compass;
         conf.mapModeCleanShowGeocode = c.map_mode_clean_show_geocode;

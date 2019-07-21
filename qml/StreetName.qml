@@ -39,6 +39,7 @@ Rectangle {
             }
         }
     ]
+    visible: !app.modalDialog
     z: 400
 
     Rectangle {

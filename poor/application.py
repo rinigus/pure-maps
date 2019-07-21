@@ -18,7 +18,6 @@
 """An application to display maps and stuff."""
 
 import poor
-import pyotherside
 import sys
 
 __all__ = ("Application",)
@@ -30,7 +29,7 @@ class Application:
 
     def __init__(self):
         """Initialize an :class:`Application` instance."""
-        self.basemap = None
+        self.basemap = poor.MapManager()
         self.geocoder = None
         self.guide = None
         self.history = poor.HistoryManager()
@@ -72,19 +71,7 @@ class Application:
 
     def set_basemap(self, basemap):
         """Set basemap from string `basemap`."""
-        try:
-            newmap = (self.basemap is None or basemap != self.basemap.id)
-            self.basemap = poor.Map(basemap)
-            poor.conf.set_basemap(basemap)
-            if newmap: pyotherside.send('basemap.changed')
-        except Exception as error:
-            print("Failed to load basemap '{}': {}"
-                  .format(basemap, str(error)),
-                  file=sys.stderr)
-            if self.basemap is None:
-                default = poor.conf.get_default("basemap")
-                if default != basemap:
-                    self.set_basemap(default)
+        self.basemap.set_basemap(basemap)
 
     def set_geocoder(self, geocoder):
         """Set geocoding provider from string `geocoder`."""
@@ -118,6 +105,7 @@ class Application:
         """Set current profile."""
         if poor.conf.profile == profile: return
         poor.conf.set_profile(profile)
+        self.basemap = poor.MapManager()
         self.set_basemap(poor.conf.basemap)
         self.set_geocoder(poor.conf.geocoder)
         self.set_guide(poor.conf.guide)

@@ -44,6 +44,8 @@ ApplicationWindowPL {
     property real   listItemVerticalMargin: (styler.themeItemSizeSmall - 1.125 * styler.themeFontSizeMedium) / 2
     property var    map: null
     property string mapMatchingMode: "none"
+    property bool   modalDialog: modalDialogBasemap
+    property bool   modalDialogBasemap: false
     property int    mode: modes.explore
     property bool   narrativePageSeen: false
     property bool   navigationPageSeen: false

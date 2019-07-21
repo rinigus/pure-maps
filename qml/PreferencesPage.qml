@@ -224,7 +224,8 @@ PagePL {
                         width: parent.width
                         onValueChanged: {
                             app.conf.set("map_scale", scaleSlider.value);
-                            app.mode !== modes.navigate && map.setScale(scaleSlider.value);
+                            if (app.mode !== modes.followMe && app.mode !== modes.navigate)
+                                map.setScale(scaleSlider.value);
                         }
                     }
 
@@ -352,6 +353,15 @@ PagePL {
                         onCheckedChanged: {
                             if (app.conf.mapModeCleanShowCompass!==checked)
                                 app.conf.set("map_mode_clean_show_compass", checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowBasemap
+                        text: app.tr("Map selection")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowBasemap!==checked)
+                                app.conf.set("map_mode_clean_show_basemap", checked);
                         }
                     }
 

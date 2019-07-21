@@ -21,7 +21,7 @@ import "platform"
 
 MapButton {
     id: button
-    anchors.bottom: parent.verticalCenter
+    anchors.top: northArrow.bottom
     anchors.right: parent.right
     iconHeight: styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/center")
@@ -32,44 +32,29 @@ MapButton {
             AnchorChanges {
                 target: button
                 anchors.bottom: navigationSign.bottom
-                anchors.horizontalCenter: undefined
                 anchors.left: undefined
                 anchors.right: northArrow.left
                 anchors.top: undefined
-            }
-            PropertyChanges {
-                target: button
-                anchors.bottomMargin: 0
             }
         },
         State {
             when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe)
             AnchorChanges {
                 target: button
-                anchors.bottom: navigationSign.bottom
-                anchors.horizontalCenter: northArrow.horizontalCenter
-                anchors.left: undefined
+                anchors.bottom: undefined
+                anchors.left: parent.right
                 anchors.right: undefined
-                anchors.top: undefined
-            }
-            PropertyChanges {
-                target: button
-                anchors.bottomMargin: 0
+                anchors.top: northArrow.bottom
             }
         },
         State {
             when: hidden
             AnchorChanges {
                 target: button
-                anchors.bottom: parent.verticalCenter
-                anchors.horizontalCenter: undefined
+                anchors.bottom: undefined
                 anchors.left: parent.right
                 anchors.right: undefined
-                anchors.top: undefined
-            }
-            PropertyChanges {
-                target: button
-                anchors.topMargin: 0
+                anchors.top: northArrow.bottom
             }
         },
         State {
@@ -77,7 +62,6 @@ MapButton {
             AnchorChanges {
                 target: button
                 anchors.bottom: undefined
-                anchors.horizontalCenter: undefined
                 anchors.left: undefined
                 anchors.right: northArrow.left
                 anchors.top: navigationSign.bottom
@@ -88,24 +72,27 @@ MapButton {
             AnchorChanges {
                 target: button
                 anchors.bottom: undefined
-                anchors.horizontalCenter: northArrow.horizontalCenter
                 anchors.left: undefined
-                anchors.right: undefined
-                anchors.top: navigationSign.bottom
+                anchors.right: parent.right
+                anchors.top: northArrow.bottom
             }
         }
     ]
     transitions: Transition {
-        AnchorAnimation { duration: app.conf.animationDuration; }
+        AnchorAnimation {
+            id: animator
+            duration: 0
+        }
         onRunningChanged: {
             if (running) button.visible = true;
             else if (hidden) button.visible = false;
             else button.visible = true;
+            if (!running) animator.duration = 0;
         }
     }
     z: 500
 
-    property bool hidden: app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowCenter)
+    property bool hidden: app.modalDialog || app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowCenter)
     property bool nextClickToAuto: false
 
     Timer {
@@ -139,4 +126,6 @@ MapButton {
                                timer.interval / 1000);
         }
     }
+
+    onHiddenChanged: animator.duration = app.conf.animationDuration;
 }

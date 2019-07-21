@@ -44,7 +44,7 @@ from poor import storage
 from poor.attrdict import AttrDict
 from poor.config import ConfigurationStore
 conf = ConfigurationStore()
-from poor.map import Map
+from poor.map import Map, MapManager
 from poor.geocoder import Geocoder
 from poor.guide import Guide
 from poor.history import HistoryManager
@@ -70,6 +70,7 @@ assert i18n
 assert KeyStore
 assert LOCALE_DIR
 assert Map
+assert MapManager
 assert Narrative
 assert polysimp
 assert Router
