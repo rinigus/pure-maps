@@ -22,5 +22,6 @@
         "itemFg": "white",
         "itemBg": "black"
     },
-    "type": "traffic"
+    "type": "traffic",
+    "vehicle": "car"
 }

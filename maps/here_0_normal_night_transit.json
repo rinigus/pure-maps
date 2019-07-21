@@ -7,11 +7,11 @@
     "keys": ["HERE_APP_ID", "HERE_APP_CODE"],
     "lang": "local",
     "light": "night",
-    "name": "HERE Normal Night Pedestrian",
+    "name": "HERE Normal Night Transit",
     "profiles": ["mixed", "online"],
     "provider": "HERE",
     "tile_size": 512,
-    "tile_url": "https://3.base.maps.api.here.com/maptile/2.1/maptile/newest/pedestrian.night/{z}/{x}/{y}/512/png8?app_id=#HERE_APP_ID#&app_code=#HERE_APP_CODE#&ppi=250",
+    "tile_url": "https://3.base.maps.api.here.com/maptile/2.1/maptile/newest/normal.night.transit/{z}/{x}/{y}/512/png8?app_id=#HERE_APP_ID#&app_code=#HERE_APP_CODE#&ppi=250",
     "style_gui": {
         "fg": "white",
         "iconVariant": "white",
@@ -23,5 +23,5 @@
         "itemBg": "black"
     },
     "type": "default",
-    "vehicle": "walk"
+    "vehicle": "public"
 }

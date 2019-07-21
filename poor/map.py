@@ -61,7 +61,8 @@ class Map:
         self.tile_url = values.get("tile_url", "")
         self.type = values.get("type", "")
         self.url_suffix = values.get("url_suffix", "")
-        self.vehicle = set(values.get("vehicle", "").split(","))
+        self.vehicle = set([v.strip() for v in values.get("vehicle", "").split(",")])
+        if '' in self.vehicle: self.vehicle.remove('')
         for k in self.keys:
             v = poor.key.get(k)
             self.style_url = self.style_url.replace("#" + k + "#", v)

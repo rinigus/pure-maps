@@ -7,7 +7,7 @@
     "keys": ["HERE_APP_ID", "HERE_APP_CODE"],
     "lang": "local",
     "light": "day",
-    "name": "HERE Normal Day",
+    "name": "HERE Terrain",
     "profiles": ["mixed", "online"],
     "provider": "HERE",
     "tile_size": 512,
