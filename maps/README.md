@@ -12,7 +12,15 @@ keys are explained below, format-specific keys in following sections.
   `poor/keystore.py`. See HERE map layers for example of its use.
   
 * **`lang`**: Optionally provide a language this map has been designed
-  for. Language is one of: local, en
+  for. Language is one of: local, en, fr, de, ru. Alternatively,
+  `lang` could be filled with a dictionary with the keys specifying a
+  language and the values specifying some style-specific strings that
+  will be used to replace `lang_key` in `tile_url` (raster tiles) or
+  in vector style description.
+  
+* **`lang_key`**: If the map style `lang` is given by dictionary,
+  specify which string is expected to be replaced in style or
+  `tile_url`. See HERE maps sources for example.
   
 * **`light`**: whether the map corresponds to `day` or `night` light
   scheme.

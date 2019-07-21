@@ -51,6 +51,7 @@ class Map:
         self.format = values["format"]
         self.keys = values.get("keys", [])
         self.lang = values.get("lang", "local")
+        self.lang_key = values.get("lang_key", None)
         self.light = values.get("light", "day")
         self.logo = values.get("logo", "default")
         self.name = values["name"]
@@ -75,7 +76,8 @@ class Map:
     def complies(self, lang="", light="", type='', vehicle=""):
         """Return True if the applied restrictions are met"""
         return \
-            (lang=='' or lang==self.lang) and \
+            (lang=='' or ((isinstance(self.lang, str) and lang==self.lang) or \
+                          (isinstance(self.lang, dict) and lang in self.lang))) and \
             (light=='' or light==self.light) and \
             (type=='' or type==self.type or (type=="preview" and self.type=="traffic")) and \
             (vehicle=='' or self.vehicle==vehicle)
@@ -88,18 +90,25 @@ class Map:
             path = os.path.join(poor.DATA_DIR, leaf)
         return poor.util.read_json(path)
 
-    @property
-    def style_json(self):
+    def style_json(self, lang=None):
         """Return style JSON definition for raster sources."""
+        def process(s):
+            if isinstance(self.lang, dict) and self.lang_key is not None:
+                if lang in self.lang: r = self.lang[lang]
+                elif "local" in self.lang: r = self.lang["local"]
+                elif "en" in self.lang: r = self.lang["en"]
+                else: r = self.lang.values()[0]
+                s = s.replace(self.lang_key, r)
+            return s
         if self.style_dict:
-            return json.dumps(self.style_dict, ensure_ascii=False)
+            return process(json.dumps(self.style_dict, ensure_ascii=False))        
         return json.dumps({
             "id": "raster",
             "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
             "sources": {
                 "raster": {
                     "type": "raster",
-                    "tiles": [self.tile_url],
+                    "tiles": [process(self.tile_url)],
                     "tileSize": self.tile_size,
                 },
             },
@@ -137,6 +146,7 @@ class MapManager:
         """Initialize a :class:`MapManager` instance."""
         if hasattr(self, "profile"): return
         self.basemap = None
+        self.current_lang = None
         self.current_map = None
         # load map descriptions
         maps = poor.util.get_basemaps()
@@ -155,8 +165,10 @@ class MapManager:
         while True:
             for m in self._providers[self.basemap]:
                 if m.complies(**restrictions):
-                    if self.current_map is None or self.current_map.id != m.id:
+                    if self.current_map is None or self.current_map.id != m.id or \
+                       self.current_lang is None or self.current_lang != poor.conf.basemap_lang:
                         self.current_map = m
+                        self.current_lang = poor.conf.basemap_lang
                         pyotherside.send('basemap.changed')
                     return
             if len(restrictions.keys()) > 0:
@@ -251,7 +263,7 @@ class MapManager:
 
     @property
     def style_json(self):
-        return self.current_map.style_json
+        return self.current_map.style_json(lang=poor.conf.basemap_lang)
             
     @property
     def style_url(self):

@@ -57,6 +57,34 @@ PagePL {
                         }
 
                         ComboBoxPL {
+                            description: app.tr("Preferred map language.")
+                            label: app.tr("Language")
+                            model: [
+                                app.tr("Local"),
+                                app.tr("English"),
+                                app.tr("French"),
+                                app.tr("German"),
+                                app.tr("Russian")
+                            ]
+                            property var values: [
+                                "local",
+                                "en",
+                                "fr",
+                                "de",
+                                "ru"
+                            ]
+                            Component.onCompleted: {
+                                var value = app.conf.basemapLang;
+                                currentIndex = values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = currentIndex;
+                                app.conf.set("basemap_lang", values[index]);
+                                py.call_sync("poor.app.basemap.update", []);
+                            }
+                        }
+
+                        ComboBoxPL {
                             id: sleepComboBox
                             description: app.tr("Only applies when Pure Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
                             label: app.tr("Prevent sleep")
