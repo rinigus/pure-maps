@@ -61,8 +61,7 @@ class Map:
         self.tile_url = values.get("tile_url", "")
         self.type = values.get("type", "")
         self.url_suffix = values.get("url_suffix", "")
-        self.vehicle = set([v.strip() for v in values.get("vehicle", "").split(",")])
-        if '' in self.vehicle: self.vehicle.remove('')
+        self.vehicle = values.get("vehicle", "")
         for k in self.keys:
             v = poor.key.get(k)
             self.style_url = self.style_url.replace("#" + k + "#", v)
@@ -73,13 +72,13 @@ class Map:
         """Return a list of attribution dictionaries."""
         return [{"text": k, "url": v} for k, v in self._attribution.items()]
 
-    def complies(self, lang=[], light='', type='', vehicle=[]):
+    def complies(self, lang="", light="", type='', vehicle=""):
         """Return True if the applied restrictions are met"""
         return \
-            (len(lang)==0 or lang in self.lang) and \
+            (lang=='' or lang==self.lang) and \
             (light=='' or light==self.light) and \
             (type=='' or type==self.type or (type=="preview" and self.type=="traffic")) and \
-            (len(vehicle)==0 or len(self.vehicle.intersection(vehicle)) > 0)
+            (vehicle=='' or self.vehicle==vehicle)
 
     def _load_attributes(self, id):
         """Read and return attributes from JSON file."""

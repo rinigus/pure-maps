@@ -11,8 +11,8 @@ keys are explained below, format-specific keys in following sections.
 * **`keys`**: List of API keys that are managed through
   `poor/keystore.py`. See HERE map layers for example of its use.
   
-* **`lang`**: Optionally provide list of languages this map has been
-  designed for. Language is one of: local, en
+* **`lang`**: Optionally provide a language this map has been designed
+  for. Language is one of: local, en
   
 * **`light`**: whether the map corresponds to `day` or `night` light
   scheme.
@@ -40,10 +40,8 @@ keys are explained below, format-specific keys in following sections.
   preview, traffic, guidance. Traffic should be used if it is intended for
   preview of the road and contains traffic information.
   
-* **`vehicle`**: optionally provide a list which would indicate
-  transportations modes that this map has been designed for. List is
-  consisting of one or several of: car, walk, public. Each item should be 
-  separated by comma, no spaces in between.
+* **`vehicle`**: optionally provide a transportations mode that this
+  map has been designed for. Use on of: car, walk, public.
 
 Use `~/.local/share/harbour-pure-maps/maps` as a local installation
 directory in which to place your JSON file. Restart Pure Maps, and your

@@ -282,7 +282,7 @@ MouseArea {
 
                     function apply(name, active, enabled) {
                         if (!enabled) return;
-                        app.conf.set("basemap_vehicle", active ? [""] : [name]);
+                        app.conf.set("basemap_vehicle", active ? "" : name);
                         py.call_sync("poor.app.basemap.update", []);
                         master.fillMenu();
                     }
