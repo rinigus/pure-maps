@@ -136,7 +136,7 @@ MouseArea {
                         anchors.top: parent.top
                         anchors.topMargin: styler.themePaddingMedium/2
                         iconHeight: styler.themeIconSizeMedium
-                        iconSource: app.getIcon("icons/center")
+                        iconSource: app.getIcon("icons/basemap/%1-%2".arg(item.view.iconPrefix).arg(model.name))
                         opacity: model.enabled ? 1 : 0.5
 
                         Image {
@@ -342,6 +342,11 @@ MouseArea {
                 }
             }
         }
+    }
+
+    Connections {
+        target: py
+        onBasemapChanged: if (openMenu) fillMenu();
     }
 
     onClicked: {
