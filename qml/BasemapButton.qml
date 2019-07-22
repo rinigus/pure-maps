@@ -99,7 +99,7 @@ MouseArea {
         width: flick.width + 2*styler.themePaddingLarge
         y: styler.themePaddingLarge
 
-        property int cellHeight: styler.themeIconSizeMedium + styler.themePaddingSmall + styler.themeFontSizeExtraSmall
+        property int cellHeight: styler.themeIconSizeMedium + styler.themePaddingMedium + styler.themeFontSizeExtraSmall
         property int cellHeightFull: cellHeight + styler.themePaddingLarge
         property int cellWidth: styler.themeIconSizeMedium*1.5
         property int cellWidthFull: cellWidth + styler.themePaddingMedium
@@ -130,33 +130,46 @@ MouseArea {
 
                     property var view: GridView.view ? GridView.view : ListView.view
 
-                    IconPL {
-                        id: icon
+                    Rectangle {
+                        id: iconHolder
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.top: parent.top
-                        anchors.topMargin: styler.themePaddingMedium/2
-                        iconHeight: styler.themeIconSizeMedium
-                        iconSource: app.getIcon("icons/basemap/%1-%2".arg(item.view.iconPrefix).arg(model.name))
-                        opacity: model.enabled ? 1 : 0.5
+                        anchors.topMargin: styler.themePaddingMedium/2 - border.width
+                        border.color: model.current ? styler.itemHighlight : "transparent"
+                        border.width: Math.max(1,styler.themeFontSizeExtraSmall/5)
+                        color: "transparent"
+                        height: icon.height + 2*border.width
+                        radius: styler.themePaddingSmall
+                        width: icon.height + 2*border.width
 
-                        Image {
-                            anchors.right: icon.right
-                            anchors.top: icon.top
-                            height: sourceSize.height
-                            smooth: true
-                            source: app.getIcon("icons/indicator", true)
-                            sourceSize.height: styler.indicatorSize
-                            sourceSize.width: styler.indicatorSize
-                            visible: model.active
-                            width: sourceSize.width
+                        IconPL {
+                            id: icon
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.top: parent.top
+                            anchors.topMargin: iconHolder.border.width
+                            iconHeight: styler.themeIconSizeMedium
+                            iconSource: app.getIcon("icons/basemap/%1-%2".arg(item.view.iconPrefix).arg(model.name))
+                            opacity: model.enabled ? 1 : 0.5
+
+                            Image {
+                                anchors.right: icon.right
+                                anchors.top: icon.top
+                                height: sourceSize.height
+                                smooth: true
+                                source: app.getIcon("icons/indicator", true)
+                                sourceSize.height: styler.indicatorSize
+                                sourceSize.width: styler.indicatorSize
+                                visible: model.active
+                                width: sourceSize.width
+                            }
                         }
                     }
 
                     LabelPL {
                         id: label
                         anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: icon.bottom
-                        anchors.topMargin: styler.themePaddingSmall
+                        anchors.top: iconHolder.bottom
+                        anchors.topMargin: styler.themePaddingMedium/2
                         color: styler.itemFg
                         font.pixelSize: styler.themeFontSizeExtraSmall
                         horizontalAlignment: implicitWidth > width*0.99 ? Text.AlignLeft : Text.AlignHCenter

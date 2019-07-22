@@ -237,6 +237,7 @@ class MapManager:
                 else:
                     act = (v == res[k])
                 n['active'] = act
+                n['current'] = (self.current_map is not None and getattr(self.current_map,k)==v)
                 result[k].append(n)
         return result
                     

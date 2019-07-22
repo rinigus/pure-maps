@@ -27,6 +27,11 @@ StylerPL {
     property real   indicatorSize: styler.themeIconSizeSmall*1.4142*(1 + 0.2) / 4 // indicator height and width - do not change in defaults or style
     property string itemBg               // map item (buttons, street name) outline
     property string itemFg               // map item (buttons, street name) foreground
+    // itemHighlight should never be specified in style nor defaults
+    property color  itemHighlight: Qt.rgba( (_itemColBg.r*1+_itemColFg.r)/2,
+                                            (_itemColBg.g*1+_itemColFg.g)/2,
+                                            (_itemColBg.b*1+_itemColFg.b)/2,
+                                            (_itemColBg.a*1+_itemColFg.a)/2)
     // itemPressed should never be specified in style nor defaults
     property color  itemPressed: Qt.rgba( (_itemColBg.r*3+_itemColFg.r)/4,
                                           (_itemColBg.g*3+_itemColFg.g)/4,
