@@ -302,6 +302,20 @@ MouseArea {
                 }
             }
         }
+
+        Rectangle {
+            // scrollbar for flickable
+            anchors.right: parent.right
+            color: styler.itemPressed
+            height:  Math.max(flick.height / flick.contentHeight * flick.height - 2 * radius, flick.height/10)
+            opacity: flick.moving ? 1 : 0
+            radius: width / 2
+            visible: flick.height < flick.contentHeight
+            width: Math.max(1,styler.themeFontSizeExtraSmall/5)
+            y: flick.y + flick.contentY / flick.contentHeight * flick.height + radius;
+
+            Behavior on opacity { NumberAnimation { property: "opacity"; duration: 2*app.conf.animationDuration; } }
+        }
     }
 
     Rectangle {
