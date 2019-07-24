@@ -24,7 +24,11 @@ Item {
     // cache certain frequently used properties locally
     property bool   autoCompleteGeo
     property bool   autoRotateWhenNavigating
+    property string basemapAutoLight
+    property bool   basemapAutoMode
     property string basemapLang
+    property string basemapLight
+    property string basemapType
     property string basemapVehicle
     property bool   developmentCoordinateCenter: false
     property bool   developmentShowZ: false
@@ -109,7 +113,12 @@ Item {
         var c = py.call_sync("poor.conf.get_all", []);
         conf.autoCompleteGeo = c.auto_complete_geo;
         conf.autoRotateWhenNavigating = c.auto_rotate_when_navigating;
+        conf.basemapAutoLight = c.basemap_auto_light;
+        conf.basemapAutoMode = c.basemap_auto_mode;
+        conf.basemapLight = c.basemap_light;
         conf.basemapLang = c.basemap_lang;
+        conf.basemapLight = c.basemap_light;
+        conf.basemapType = c.basemap_type;
         conf.basemapVehicle = c.basemap_vehicle;
         conf.developmentCoordinateCenter = c.devel_coordinate_center;
         conf.developmentShowZ = c.devel_show_z;

@@ -49,7 +49,7 @@ keys are explained below, format-specific keys in following sections.
   preview of the road and contains traffic information.
   
 * **`vehicle`**: optionally provide a transportations mode that this
-  map has been designed for. Use on of: car, walk, public.
+  map has been designed for. Use on of: car, foot, bicycle, transit.
 
 Use `~/.local/share/harbour-pure-maps/maps` as a local installation
 directory in which to place your JSON file. Restart Pure Maps, and your

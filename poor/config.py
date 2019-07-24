@@ -31,6 +31,8 @@ DEFAULTS = {
     "auto_complete_geo": True,
     "auto_rotate": False,
     "auto_rotate_when_navigating": True,
+    "basemap_auto_light": "none",
+    "basemap_auto_mode": True,
     "basemap_lang": "local",
     "basemap_light": "",
     "basemap_type": "",

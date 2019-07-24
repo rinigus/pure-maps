@@ -84,6 +84,17 @@ PagePL {
                             }
                         }
 
+                        TextSwitchPL {
+                            checked: app.conf.basemapAutoMode
+                            description: app.tr("Automatically switch between map types of the provider according to the current task. " +
+                                                "For example, show map designed for navigation while routing.")
+                            text: app.tr("Switch map modes")
+                            onCheckedChanged: {
+                                app.conf.set("basemap_auto_mode", checked);
+                                py.call_sync("poor.app.basemap.update", []);
+                            }
+                        }
+
                         ComboBoxPL {
                             id: sleepComboBox
                             description: app.tr("Only applies when Pure Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
@@ -105,7 +116,7 @@ PagePL {
                             checked: app.conf.autoCompleteGeo
                             description: app.tr("Fetch autocompleted search results while typing a search string.")
                             text: app.tr("Autocomplete while searching")
-                            onCheckedChanged: app.conf.set("auto_complete_geo", autocompleteSwitch.checked)
+                            onCheckedChanged: app.conf.set("auto_complete_geo", checked)
                         }
                     }
 

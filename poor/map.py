@@ -73,7 +73,7 @@ class Map:
         """Return a list of attribution dictionaries."""
         return [{"text": k, "url": v} for k, v in self._attribution.items()]
 
-    def complies(self, lang="", light="", type='', vehicle=""):
+    def complies(self, lang="", light="", type="", vehicle=""):
         """Return True if the applied restrictions are met"""
         return \
             (lang=='' or ((isinstance(self.lang, str) and lang==self.lang) or \
@@ -146,6 +146,7 @@ class MapManager:
         """Initialize a :class:`MapManager` instance."""
         if hasattr(self, "profile"): return
         self.basemap = None
+        self.bias = {} # used for automatic switch applied for different map modes
         self.current_lang = None
         self.current_map = None
         # load map descriptions
@@ -162,6 +163,11 @@ class MapManager:
 
     def _find_map(self):
         restrictions = self._restrictions()
+        for k,v in self.bias.items():
+            if restrictions[k]=='' and \
+               (poor.conf.basemap_auto_mode or k not in ['type', 'vehicle']) and \
+               (poor.conf.basemap_auto_light or k not in ['light']):
+                restrictions[k] = v
         while True:
             for m in self._providers[self.basemap]:
                 if m.complies(**restrictions):
@@ -247,6 +253,10 @@ class MapManager:
         p.sort()
         return p
 
+    def reset_bias(self, key):
+        del self.bias[key]
+        self.update()
+    
     def _restrictions(self):
         return collections.OrderedDict(
             [ ("type", poor.conf.basemap_type),
@@ -261,6 +271,11 @@ class MapManager:
             self.basemap = poor.conf.get_default("basemap")
         self._find_map()
         poor.conf.set_basemap(self.basemap)
+
+    def set_bias(self, bias):
+        for k, v in bias.items():
+            self.bias[k] = v
+        self.update()
 
     @property
     def style_json(self):

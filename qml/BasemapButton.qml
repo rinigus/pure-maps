@@ -288,9 +288,10 @@ MouseArea {
 
                     property string iconPrefix: "transport"
                     property var    tr: {
+                        "bicycle": app.tr("Bicycle"),
                         "car": app.tr("Car"),
-                        "public": app.tr("Public transport"),
-                        "walk": app.tr("Walking")
+                        "foot": app.tr("Walking"),
+                        "transit": app.tr("Public transport")
                     }
 
                     function apply(name, active, enabled) {

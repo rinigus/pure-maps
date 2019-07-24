@@ -281,7 +281,6 @@ MapboxMap {
 
     function addRoute(route, amend) {
         // Add new route polyline to the map.
-        if (!amend) app.setModeExploreRoute();
         map.clearRoute();
         route.coordinates = route.x.map(function(value, i) {
             return QtPositioning.coordinate(route.y[i], route.x[i]);
@@ -301,6 +300,7 @@ MapboxMap {
         map.updateRoute();
         map.saveRoute();
         map.saveManeuvers();
+        if (!amend) app.setModeExploreRoute();
         app.navigationStarted = !!amend;
     }
 
@@ -526,7 +526,8 @@ MapboxMap {
     }
 
     function setMode() {
-        if (app.mode === modes.explore || app.mode === modes.exploreRoute) setModeExplore();
+        if (app.mode === modes.explore) setModeExplore();
+        else if (app.mode === modes.exploreRoute) setModeExploreRoute();
         else if (app.mode === modes.followMe) setModeFollowMe();
         else if (app.mode === modes.navigate) setModeNavigate();
         else console.log("Something is terribly wrong - unknown mode in Map.setMode: " + app.mode);
@@ -539,6 +540,18 @@ MapboxMap {
         map.autoRotate = false;
         if (map.zoomLevel > 14) map.setZoomLevel(14);
         map.setScale(app.conf.get("map_scale"));
+        py.call("poor.app.basemap.set_bias", [{'type': 'default', 'vehicle': ''}]);
+    }
+
+    function setModeExploreRoute() {
+        // map used to explore it
+        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = false;
+        map.autoCenter = false;
+        map.autoRotate = false;
+        if (map.zoomLevel > 14) map.setZoomLevel(14);
+        map.setScale(app.conf.get("map_scale"));
+        py.call("poor.app.basemap.set_bias", [{'type': 'preview',
+                                                  'vehicle': route && route.mode ? route.mode : ''}]);
     }
 
     function setModeFollowMe() {
@@ -551,6 +564,7 @@ MapboxMap {
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
         if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
+        py.call("poor.app.basemap.set_bias", [{'type': 'guidance', 'vehicle': route.mode}]);
     }
 
     function setModeNavigate() {
@@ -564,6 +578,7 @@ MapboxMap {
         map.autoRotate = app.conf.autoRotateWhenNavigating;
         if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
         map.initVoiceNavigation();
+        py.call("poor.app.basemap.set_bias", [{'type': 'guidance', 'vehicle': route.mode}]);
     }
 
     function setScale(scale) {
