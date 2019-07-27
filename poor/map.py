@@ -101,7 +101,7 @@ class Map:
                 s = s.replace(self.lang_key, r)
             return s
         if self.style_dict:
-            return process(json.dumps(self.style_dict, ensure_ascii=False))        
+            return process(json.dumps(self.style_dict, ensure_ascii=False))
         return json.dumps({
             "id": "raster",
             "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
@@ -246,7 +246,7 @@ class MapManager:
                 n['current'] = (self.current_map is not None and getattr(self.current_map,k)==v)
                 result[k].append(n)
         return result
-                    
+
     @property
     def providers(self):
         p = [i for i in self._providers.keys()]
@@ -256,7 +256,7 @@ class MapManager:
     def reset_bias(self, key):
         del self.bias[key]
         self.update()
-    
+
     def _restrictions(self):
         return collections.OrderedDict(
             [ ("type", poor.conf.basemap_type),
@@ -280,7 +280,7 @@ class MapManager:
     @property
     def style_json(self):
         return self.current_map.style_json(lang=poor.conf.basemap_lang)
-            
+
     @property
     def style_url(self):
         return self.current_map.style_url
@@ -291,7 +291,7 @@ class MapManager:
 
     def update(self):
         self._find_map()
-    
+
     @property
     def url_suffix(self):
-        return self.current_map.url_suffix        
+        return self.current_map.url_suffix
