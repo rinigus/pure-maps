@@ -35,6 +35,7 @@ class Application:
         self.history = poor.HistoryManager()
         self.narrative = poor.Narrative()
         self.router = None
+        self.sun = poor.Sun()
         self.voice_tester = None
         self.set_basemap(poor.conf.basemap)
         self.set_geocoder(poor.conf.geocoder)

@@ -103,6 +103,8 @@ ifeq ($(INCLUDE_GPXPY),yes)
 endif
 	mkdir -p $(DATADIR)/poor/openlocationcode
 	cp thirdparty/open-location-code/*.py $(DATADIR)/poor/openlocationcode
+	mkdir -p $(DATADIR)/poor/astral
+	cp thirdparty/astral/astral/*.py $(DATADIR)/poor/astral
 	@echo "Installing QML files..."
 	mkdir -p $(DATADIR)/qml
 	cp qml/pure-maps.qml $(DATADIR)/qml/$(NAME).qml

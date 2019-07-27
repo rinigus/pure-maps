@@ -51,6 +51,7 @@ from poor.history import HistoryManager
 from poor.keystore import KeyStore
 key = KeyStore()
 from poor.router import Router
+from poor.sun import Sun
 from poor.voice import VoiceGenerator
 from poor.narrative import Narrative
 from poor.application import Application
@@ -75,6 +76,7 @@ assert Narrative
 assert polysimp
 assert Router
 assert storage
+assert Sun
 assert util
 assert VoiceGenerator
 
