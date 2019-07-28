@@ -93,5 +93,5 @@ class Sun:
         # print("It is a day:", light, " next check at:", valid)
         self.clat, self.clon = latitude, longitude
         self.clight = light
-        self.ctime = now
+        self.ctime = valid
         return light
