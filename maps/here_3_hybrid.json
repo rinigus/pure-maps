@@ -5,7 +5,7 @@
     },
     "format": "raster",
     "keys": ["HERE_APP_ID", "HERE_APP_CODE"],
-    "lang": { "local": "mul", "en": "eng", "fr": "fre", "de": "ger", "ru": "rus" },
+    "lang": {"local": "mul", "ar": "ara", "eu": "baq", "ca": "cat", "zh-simpl": "chi", "zh": "cht", "cs": "cze", "da": "dan", "nl": "dut", "en": "eng", "fi": "fin", "fr": "fre", "de": "ger", "ga": "gle", "el": "gre", "he": "heb", "hi": "hin", "id": "ind", "it": "ita", "no": "nor", "fa": "per", "pl": "pol", "pt": "por", "ru": "rus", "si": "sin", "es": "spa", "sv": "swe", "th": "tha", "tr": "tur", "uk": "ukr", "ur": "urd", "vi": "vie", "cy": "wel"},
     "lang_key": "#LANG#",
     "light": "day",
     "name": "HERE Hybrid",
