@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-28 12:03+0300\n"
+"POT-Creation-Date: 2019-07-28 23:39+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rui kon <facebookmail@qq.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -352,7 +352,7 @@ msgstr "删除"
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
 #: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
-#: qml/PreferencesPage.qml:493
+#: qml/PreferencesPage.qml:495
 msgid "Search"
 msgstr "搜索"
 
@@ -441,7 +441,7 @@ msgid "Venues"
 msgstr "场所"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:25
-#: qml/PreferencesPage.qml:517 qml/RoutePage.qml:25
+#: qml/PreferencesPage.qml:519 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "导航"
 
@@ -496,13 +496,13 @@ msgstr ""
 msgid "Transport"
 msgstr ""
 
-#: qml/BasemapButton.qml:291 qml/PreferencesPage.qml:324 qml/RoutePage.qml:387
+#: qml/BasemapButton.qml:291 qml/PreferencesPage.qml:326 qml/RoutePage.qml:387
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Bicycle"
 msgstr "自行车"
 
-#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:324 qml/RoutePage.qml:387
+#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:326 qml/RoutePage.qml:387
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Car"
@@ -672,11 +672,11 @@ msgstr "离线"
 msgid "Mixed"
 msgstr "混合"
 
-#: qml/Map.qml:497
+#: qml/Map.qml:504
 msgid "Voice navigation on"
 msgstr "语音导航开启"
 
-#: qml/Map.qml:500
+#: qml/Map.qml:507
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -1002,7 +1002,7 @@ msgstr "英制"
 msgid "Preferred map language."
 msgstr ""
 
-#: qml/PreferencesPage.qml:61 qml/PreferencesPage.qml:673
+#: qml/PreferencesPage.qml:61 qml/PreferencesPage.qml:675
 #: routers/gpx_osmscout_settings.qml:66 routers/mapquest_open_settings.qml:55
 #: routers/ValhallaSettings.qml:57
 msgid "Language"
@@ -1020,7 +1020,7 @@ msgstr ""
 msgid "Basque"
 msgstr ""
 
-#: qml/PreferencesPage.qml:66 qml/PreferencesPage.qml:676
+#: qml/PreferencesPage.qml:66 qml/PreferencesPage.qml:678
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "Catalan"
 msgstr "加泰罗尼亚语"
@@ -1033,7 +1033,7 @@ msgstr ""
 msgid "Chinese (traditional)"
 msgstr ""
 
-#: qml/PreferencesPage.qml:69 qml/PreferencesPage.qml:677
+#: qml/PreferencesPage.qml:69 qml/PreferencesPage.qml:679
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "Czech"
 msgstr "捷克语"
@@ -1046,7 +1046,7 @@ msgstr ""
 msgid "Dutch"
 msgstr ""
 
-#: qml/PreferencesPage.qml:72 qml/PreferencesPage.qml:675
+#: qml/PreferencesPage.qml:72 qml/PreferencesPage.qml:677
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "English"
 msgstr "英语"
@@ -1055,12 +1055,12 @@ msgstr "英语"
 msgid "Finnish"
 msgstr ""
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:680
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:682
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "French"
 msgstr "法语"
 
-#: qml/PreferencesPage.qml:75 qml/PreferencesPage.qml:678
+#: qml/PreferencesPage.qml:75 qml/PreferencesPage.qml:680
 #: routers/gpx_osmscout_settings.qml:68 routers/mapquest_open_settings.qml:59
 #: routers/ValhallaSettings.qml:61
 msgid "German"
@@ -1078,7 +1078,7 @@ msgstr ""
 msgid "Hebrew"
 msgstr ""
 
-#: qml/PreferencesPage.qml:79 qml/PreferencesPage.qml:681
+#: qml/PreferencesPage.qml:79 qml/PreferencesPage.qml:683
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Hindi"
 msgstr "印地语"
@@ -1087,7 +1087,7 @@ msgstr "印地语"
 msgid "Indonesian"
 msgstr ""
 
-#: qml/PreferencesPage.qml:81 qml/PreferencesPage.qml:682
+#: qml/PreferencesPage.qml:81 qml/PreferencesPage.qml:684
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Italian"
 msgstr "意大利语"
@@ -1097,385 +1097,389 @@ msgid "Japanese"
 msgstr ""
 
 #: qml/PreferencesPage.qml:83
-msgid "Norwegian"
+msgid "Korean"
 msgstr ""
 
 #: qml/PreferencesPage.qml:84
-msgid "Persian"
+msgid "Norwegian"
 msgstr ""
 
 #: qml/PreferencesPage.qml:85
+msgid "Persian"
+msgstr ""
+
+#: qml/PreferencesPage.qml:86
 msgid "Polish"
 msgstr ""
 
-#: qml/PreferencesPage.qml:86 routers/gpx_osmscout_settings.qml:68
+#: qml/PreferencesPage.qml:87 routers/gpx_osmscout_settings.qml:68
 #: routers/ValhallaSettings.qml:61
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:683
+#: qml/PreferencesPage.qml:88 qml/PreferencesPage.qml:685
 #: routers/gpx_osmscout_settings.qml:69 routers/mapquest_open_settings.qml:59
 #: routers/ValhallaSettings.qml:62
 msgid "Russian"
 msgstr "俄语"
 
-#: qml/PreferencesPage.qml:88
+#: qml/PreferencesPage.qml:89
 msgid "Sinhalese"
 msgstr ""
 
-#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:679
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:681
 #: routers/gpx_osmscout_settings.qml:69 routers/ValhallaSettings.qml:62
 msgid "Spanish"
 msgstr "西班牙语"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:685
+#: qml/PreferencesPage.qml:91 qml/PreferencesPage.qml:687
 #: routers/gpx_osmscout_settings.qml:69 routers/ValhallaSettings.qml:62
 msgid "Swedish"
 msgstr "瑞典语"
 
-#: qml/PreferencesPage.qml:91
+#: qml/PreferencesPage.qml:92
 msgid "Thai"
 msgstr ""
 
-#: qml/PreferencesPage.qml:92
+#: qml/PreferencesPage.qml:93
 msgid "Turkish"
 msgstr ""
 
-#: qml/PreferencesPage.qml:93
+#: qml/PreferencesPage.qml:94
 msgid "Ukrainian"
 msgstr ""
 
-#: qml/PreferencesPage.qml:94
+#: qml/PreferencesPage.qml:95
 msgid "Urdu"
 msgstr ""
 
-#: qml/PreferencesPage.qml:95
+#: qml/PreferencesPage.qml:96
 msgid "Vietnamese"
 msgstr ""
 
-#: qml/PreferencesPage.qml:96
+#: qml/PreferencesPage.qml:97
 msgid "Welsh"
 msgstr ""
 
-#: qml/PreferencesPage.qml:147
+#: qml/PreferencesPage.qml:149
 msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
 msgstr ""
 
-#: qml/PreferencesPage.qml:150
+#: qml/PreferencesPage.qml:152
 msgid "Day/night mode"
 msgstr ""
 
-#: qml/PreferencesPage.qml:152
+#: qml/PreferencesPage.qml:154
 msgid "Manual"
 msgstr ""
 
-#: qml/PreferencesPage.qml:153
+#: qml/PreferencesPage.qml:155
 msgid "Sunrise and sunset"
 msgstr ""
 
-#: qml/PreferencesPage.qml:171
+#: qml/PreferencesPage.qml:173
 msgid ""
 "Automatically switch between map types of the provider according to the "
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
 
-#: qml/PreferencesPage.qml:173
+#: qml/PreferencesPage.qml:175
 msgid "Switch map modes"
 msgstr ""
 
-#: qml/PreferencesPage.qml:182
+#: qml/PreferencesPage.qml:184
 msgid ""
 "Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
 msgstr "仅当 \"Pure Maps\" 活动时启用。当应用最小化时, 睡眠由正常的设备级别偏好控制。"
 
-#: qml/PreferencesPage.qml:183
+#: qml/PreferencesPage.qml:185
 msgid "Prevent sleep"
 msgstr "阻止睡眠"
 
-#: qml/PreferencesPage.qml:184 qml/PreferencesPage.qml:412
-#: qml/PreferencesPage.qml:628
+#: qml/PreferencesPage.qml:186 qml/PreferencesPage.qml:414
+#: qml/PreferencesPage.qml:630
 msgid "Never"
 msgstr "绝不"
 
-#: qml/PreferencesPage.qml:184
+#: qml/PreferencesPage.qml:186
 msgid "When navigating"
 msgstr "导航时"
 
-#: qml/PreferencesPage.qml:184 qml/PreferencesPage.qml:628
+#: qml/PreferencesPage.qml:186 qml/PreferencesPage.qml:630
 msgid "Always"
 msgstr "总是"
 
-#: qml/PreferencesPage.qml:199
+#: qml/PreferencesPage.qml:201
 msgid "Fetch autocompleted search results while typing a search string."
 msgstr "在输入搜索文本时实时显示搜索结果"
 
-#: qml/PreferencesPage.qml:200
+#: qml/PreferencesPage.qml:202
 msgid "Autocomplete while searching"
 msgstr "搜索时实时显示结果"
 
-#: qml/PreferencesPage.qml:210
+#: qml/PreferencesPage.qml:212
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
 msgstr ""
 
-#: qml/PreferencesPage.qml:218
+#: qml/PreferencesPage.qml:220
 msgid "History cleared"
 msgstr ""
 
-#: qml/PreferencesPage.qml:227
+#: qml/PreferencesPage.qml:229
 msgid "Clear history"
 msgstr ""
 
-#: qml/PreferencesPage.qml:239
+#: qml/PreferencesPage.qml:241
 msgid "Clear map tiles stored in a cache"
 msgstr ""
 
-#: qml/PreferencesPage.qml:247
+#: qml/PreferencesPage.qml:249
 msgid "Clear cache"
 msgstr "清除缓存"
 
-#: qml/PreferencesPage.qml:259
+#: qml/PreferencesPage.qml:261
 msgid "API keys"
 msgstr "API 密钥"
 
-#: qml/PreferencesPage.qml:265
+#: qml/PreferencesPage.qml:267
 msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr "你可以在下列选项中指定联机服务的私人密钥。请检查你要使用的各项服务的条款, 以确保你遵守它们"
 
-#: qml/PreferencesPage.qml:273
+#: qml/PreferencesPage.qml:275
 msgid "Please restart application after changing API keys."
 msgstr "请在更改 API 密钥后重新启动应用程序"
 
-#: qml/PreferencesPage.qml:315
+#: qml/PreferencesPage.qml:317
 msgid "Exploring"
 msgstr ""
 
-#: qml/PreferencesPage.qml:322
+#: qml/PreferencesPage.qml:324
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating."
 msgstr "选择交通方式，仅在 \"Pure Maps\" 未导航时启用"
 
-#: qml/PreferencesPage.qml:323 qml/PreferencesPage.qml:565
+#: qml/PreferencesPage.qml:325 qml/PreferencesPage.qml:567
 msgid "Snap position to road"
 msgstr "快速走到路上"
 
-#: qml/PreferencesPage.qml:324 routers/gpx_osmscout_settings.qml:32
+#: qml/PreferencesPage.qml:326 routers/gpx_osmscout_settings.qml:32
 #: routers/gpx_settings.qml:32
 msgid "None"
 msgstr "无"
 
-#: qml/PreferencesPage.qml:324 qml/RoutePage.qml:387
+#: qml/PreferencesPage.qml:326 qml/RoutePage.qml:387
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Foot"
 msgstr "步行"
 
-#: qml/PreferencesPage.qml:345
+#: qml/PreferencesPage.qml:347
 msgid "Automatic zoom"
 msgstr "自动缩放"
 
-#: qml/PreferencesPage.qml:351
+#: qml/PreferencesPage.qml:353
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
 msgstr "最大缩放水平用于自动调整缩放"
 
-#: qml/PreferencesPage.qml:353
+#: qml/PreferencesPage.qml:355
 msgid "Maximal zoom level"
 msgstr "最大缩放水平"
 
-#: qml/PreferencesPage.qml:364
+#: qml/PreferencesPage.qml:366
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
 msgstr "缩放级别将调整为在给定的秒内与你所覆盖的距离相同的地图高度"
 
-#: qml/PreferencesPage.qml:367
+#: qml/PreferencesPage.qml:369
 msgid "Time range, s"
 msgstr "时间范围, 秒"
 
-#: qml/PreferencesPage.qml:385
+#: qml/PreferencesPage.qml:387
 msgid "Controls"
 msgstr "控件"
 
-#: qml/PreferencesPage.qml:391
+#: qml/PreferencesPage.qml:393
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
 msgstr "地图视图可以在全视图模式下显示所有可用的控件, 也可以在最小视图模式下显示较少的选定控件集。要在模式之间切换, 请点击地图。"
 
-#: qml/PreferencesPage.qml:400
+#: qml/PreferencesPage.qml:402
 msgid "Set map view to minimal mode on start"
 msgstr "设置启动时的地图视图为最小模式"
 
-#: qml/PreferencesPage.qml:408
+#: qml/PreferencesPage.qml:410
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
 msgstr "在设定延迟后自动切换到最小视图模式, 或禁用地图视图模式之间的自动切换。"
 
-#: qml/PreferencesPage.qml:410
+#: qml/PreferencesPage.qml:412
 msgid "Switch to minimal view"
 msgstr "切换到最小视图"
 
-#: qml/PreferencesPage.qml:412
+#: qml/PreferencesPage.qml:414
 msgid "10 seconds"
 msgstr "10 秒"
 
-#: qml/PreferencesPage.qml:412
+#: qml/PreferencesPage.qml:414
 msgid "20 seconds"
 msgstr "20 秒"
 
-#: qml/PreferencesPage.qml:413
+#: qml/PreferencesPage.qml:415
 msgid "30 seconds"
 msgstr "30 秒"
 
-#: qml/PreferencesPage.qml:413
+#: qml/PreferencesPage.qml:415
 msgid "1 minute"
 msgstr "1 分钟"
 
-#: qml/PreferencesPage.qml:427
+#: qml/PreferencesPage.qml:429
 msgid "Always show"
 msgstr "总是显示"
 
-#: qml/PreferencesPage.qml:431
+#: qml/PreferencesPage.qml:433
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
 msgstr "无论地图视图是在最小模式还是在完整模式下，始终显示选定的控件"
 
-#: qml/PreferencesPage.qml:439
+#: qml/PreferencesPage.qml:441
 msgid "Menu"
 msgstr "菜单"
 
-#: qml/PreferencesPage.qml:448
+#: qml/PreferencesPage.qml:450
 msgid "Center on current location"
 msgstr "集中于当前位置"
 
-#: qml/PreferencesPage.qml:457
+#: qml/PreferencesPage.qml:459
 msgid "Compass"
 msgstr "指南针"
 
-#: qml/PreferencesPage.qml:466
+#: qml/PreferencesPage.qml:468
 msgid "Map selection"
 msgstr ""
 
-#: qml/PreferencesPage.qml:475
+#: qml/PreferencesPage.qml:477
 msgid "Speed and location precision"
 msgstr "速度和位置精度"
 
-#: qml/PreferencesPage.qml:484
+#: qml/PreferencesPage.qml:486
 msgid "Scale"
 msgstr "比例尺"
 
-#: qml/PreferencesPage.qml:502 qml/RoutePage.qml:49
+#: qml/PreferencesPage.qml:504 qml/RoutePage.qml:49
 msgid "Navigate"
 msgstr "导航"
 
-#: qml/PreferencesPage.qml:525
+#: qml/PreferencesPage.qml:527
 msgid "Show navigation instructions"
 msgstr "显示导航指引"
 
-#: qml/PreferencesPage.qml:535
+#: qml/PreferencesPage.qml:537
 msgid "Voice navigation instructions"
 msgstr "语音导航指引"
 
-#: qml/PreferencesPage.qml:546
+#: qml/PreferencesPage.qml:548
 msgid "Reroute automatically"
 msgstr "自动重新规划路线"
 
-#: qml/PreferencesPage.qml:555
+#: qml/PreferencesPage.qml:557
 msgid "Automatic zoom on start"
 msgstr "启动时自动缩放"
 
-#: qml/PreferencesPage.qml:576
+#: qml/PreferencesPage.qml:578
 msgid "Show direction signs"
 msgstr "显示方向标志"
 
-#: qml/PreferencesPage.qml:586
+#: qml/PreferencesPage.qml:588
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr "导航时, 按移动方向旋转地图"
 
-#: qml/PreferencesPage.qml:587
+#: qml/PreferencesPage.qml:589
 msgid "Rotate map when navigating"
 msgstr "导航时旋转地图"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:598
 msgid "Only applies to vector maps."
 msgstr "仅应用到矢量地图"
 
-#: qml/PreferencesPage.qml:598
+#: qml/PreferencesPage.qml:600
 msgid "Tilt map when navigating"
 msgstr "导航时倾斜地图"
 
-#: qml/PreferencesPage.qml:609
+#: qml/PreferencesPage.qml:611
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr "语音导航的性别偏好，仅支持某些引擎和语言"
 
-#: qml/PreferencesPage.qml:610 qml/PreferencesPage.qml:707
+#: qml/PreferencesPage.qml:612 qml/PreferencesPage.qml:709
 msgid "Voice gender"
 msgstr "语音性别"
 
-#: qml/PreferencesPage.qml:611 qml/PreferencesPage.qml:708
+#: qml/PreferencesPage.qml:613 qml/PreferencesPage.qml:710
 msgid "Male"
 msgstr "男性"
 
-#: qml/PreferencesPage.qml:611 qml/PreferencesPage.qml:708
+#: qml/PreferencesPage.qml:613 qml/PreferencesPage.qml:710
 msgid "Female"
 msgstr "女性"
 
-#: qml/PreferencesPage.qml:625
+#: qml/PreferencesPage.qml:627
 msgid "Show speed limit sign"
 msgstr "显示限速标志"
 
-#: qml/PreferencesPage.qml:627
+#: qml/PreferencesPage.qml:629
 msgid "Speed limit"
 msgstr "限速"
 
-#: qml/PreferencesPage.qml:628
+#: qml/PreferencesPage.qml:630
 msgid "Only when exceeding"
 msgstr "仅在超速时"
 
-#: qml/PreferencesPage.qml:651
+#: qml/PreferencesPage.qml:653
 msgid "Testing"
 msgstr "测试"
 
-#: qml/PreferencesPage.qml:660
+#: qml/PreferencesPage.qml:662
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr "测试文字转语音（TTS）引擎。 选择与导航相同的语言，偏好性别，然后按下面的按钮进行测试。"
 
-#: qml/PreferencesPage.qml:684
+#: qml/PreferencesPage.qml:686
 msgid "Slovak"
 msgstr "斯洛伐克语"
 
-#: qml/PreferencesPage.qml:706
+#: qml/PreferencesPage.qml:708
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "性别偏好设置仅支持特定引擎及语言"
 
-#: qml/PreferencesPage.qml:720
+#: qml/PreferencesPage.qml:722
 msgid "Test"
 msgstr "测试"
 
-#: qml/PreferencesPage.qml:760
+#: qml/PreferencesPage.qml:762
 msgid "Selected voice engine: %1"
 msgstr "选择语音引擎: %1"
 
-#: qml/PreferencesPage.qml:762
+#: qml/PreferencesPage.qml:764
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1484,27 +1488,27 @@ msgstr ""
 "所选语言无可用引擎。\n"
 "Pure Maps 支持 Mimic、Flites、PicoTTS 及Espeak TTS 引擎。除非你通过 Flatpak 使用 Pure Maps ,你必须单独安装上述引擎。旗鱼系统用户可在 OpenRepos 找到它们。"
 
-#: qml/PreferencesPage.qml:780
+#: qml/PreferencesPage.qml:782
 msgid "Development"
 msgstr "开发选项"
 
-#: qml/PreferencesPage.qml:786
+#: qml/PreferencesPage.qml:788
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
 msgstr "以下选项仅适用于开发。除非你知道自己在做什么, 否则请勿更改"
 
-#: qml/PreferencesPage.qml:794
+#: qml/PreferencesPage.qml:796
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
 msgstr "将当前位置设为地图视图的中心。使用此选项时, 请记住禁用GPS定位。"
 
-#: qml/PreferencesPage.qml:795
+#: qml/PreferencesPage.qml:797
 msgid "Set position to the map center"
 msgstr "将位置设置为地图中心"
 
-#: qml/PreferencesPage.qml:802
+#: qml/PreferencesPage.qml:804
 msgid "Show current zoom level"
 msgstr "显示当前缩放级别"
 

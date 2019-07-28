@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-28 12:03+0300\n"
+"POT-Creation-Date: 2019-07-28 23:39+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2019\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -365,7 +365,7 @@ msgstr "Ta bort"
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
 #: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
-#: qml/PreferencesPage.qml:493
+#: qml/PreferencesPage.qml:495
 msgid "Search"
 msgstr "Sök"
 
@@ -460,7 +460,7 @@ msgid "Venues"
 msgstr "Platser"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:25
-#: qml/PreferencesPage.qml:517 qml/RoutePage.qml:25
+#: qml/PreferencesPage.qml:519 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Navigation"
 
@@ -477,51 +477,51 @@ msgstr "Standard"
 
 #: qml/BasemapButton.qml:221
 msgid "Guidance"
-msgstr ""
+msgstr "Vägledning"
 
 #: qml/BasemapButton.qml:222
 msgid "Hybrid"
-msgstr ""
+msgstr "Hybrid"
 
 #: qml/BasemapButton.qml:223
 msgid "Preview"
-msgstr ""
+msgstr "Förhandsgranskning"
 
 #: qml/BasemapButton.qml:224
 msgid "Satellite"
-msgstr ""
+msgstr "Satellit"
 
 #: qml/BasemapButton.qml:225
 msgid "Terrain"
-msgstr ""
+msgstr "Terräng"
 
 #: qml/BasemapButton.qml:226
 msgid "Traffic"
-msgstr ""
+msgstr "Trafik"
 
 #: qml/BasemapButton.qml:241
 msgid "Light"
-msgstr ""
+msgstr "Ljus"
 
 #: qml/BasemapButton.qml:258
 msgid "Day"
-msgstr ""
+msgstr "Dag"
 
 #: qml/BasemapButton.qml:259
 msgid "Night"
-msgstr ""
+msgstr "Natt"
 
 #: qml/BasemapButton.qml:274
 msgid "Transport"
-msgstr ""
+msgstr "Transport"
 
-#: qml/BasemapButton.qml:291 qml/PreferencesPage.qml:324 qml/RoutePage.qml:387
+#: qml/BasemapButton.qml:291 qml/PreferencesPage.qml:326 qml/RoutePage.qml:387
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Bicycle"
 msgstr "Cykel"
 
-#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:324 qml/RoutePage.qml:387
+#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:326 qml/RoutePage.qml:387
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Car"
@@ -541,7 +541,7 @@ msgstr "Kartskala"
 
 #: qml/BasemapButton.qml:356
 msgid "Map scale during navigation"
-msgstr ""
+msgstr "Kartskala under navigering"
 
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
@@ -692,11 +692,11 @@ msgstr "Offline"
 msgid "Mixed"
 msgstr "Blandat"
 
-#: qml/Map.qml:497
+#: qml/Map.qml:504
 msgid "Voice navigation on"
 msgstr "Röstnavigering på"
 
-#: qml/Map.qml:500
+#: qml/Map.qml:507
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -1024,9 +1024,9 @@ msgstr "Brittisk"
 
 #: qml/PreferencesPage.qml:60
 msgid "Preferred map language."
-msgstr ""
+msgstr "Föredraget kartspråk."
 
-#: qml/PreferencesPage.qml:61 qml/PreferencesPage.qml:673
+#: qml/PreferencesPage.qml:61 qml/PreferencesPage.qml:675
 #: routers/gpx_osmscout_settings.qml:66 routers/mapquest_open_settings.qml:55
 #: routers/ValhallaSettings.qml:57
 msgid "Language"
@@ -1034,57 +1034,57 @@ msgstr "Språk"
 
 #: qml/PreferencesPage.qml:63
 msgid "Local"
-msgstr ""
+msgstr "Lokalt"
 
 #: qml/PreferencesPage.qml:64
 msgid "Arabic"
-msgstr ""
+msgstr "Arabiska"
 
 #: qml/PreferencesPage.qml:65
 msgid "Basque"
-msgstr ""
+msgstr "Baskiska"
 
-#: qml/PreferencesPage.qml:66 qml/PreferencesPage.qml:676
+#: qml/PreferencesPage.qml:66 qml/PreferencesPage.qml:678
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "Catalan"
 msgstr "Katalanska"
 
 #: qml/PreferencesPage.qml:67
 msgid "Chinese (simplified)"
-msgstr ""
+msgstr "Kinesiska (förenklad)"
 
 #: qml/PreferencesPage.qml:68
 msgid "Chinese (traditional)"
-msgstr ""
+msgstr "Kinesiska (traditionell)"
 
-#: qml/PreferencesPage.qml:69 qml/PreferencesPage.qml:677
+#: qml/PreferencesPage.qml:69 qml/PreferencesPage.qml:679
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "Czech"
 msgstr "Tjeckiska"
 
 #: qml/PreferencesPage.qml:70
 msgid "Danish"
-msgstr ""
+msgstr "Danska"
 
 #: qml/PreferencesPage.qml:71
 msgid "Dutch"
-msgstr ""
+msgstr "Nederländska"
 
-#: qml/PreferencesPage.qml:72 qml/PreferencesPage.qml:675
+#: qml/PreferencesPage.qml:72 qml/PreferencesPage.qml:677
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "English"
 msgstr "Engelska"
 
 #: qml/PreferencesPage.qml:73
 msgid "Finnish"
-msgstr ""
+msgstr "Finska"
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:680
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:682
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "French"
 msgstr "Franska"
 
-#: qml/PreferencesPage.qml:75 qml/PreferencesPage.qml:678
+#: qml/PreferencesPage.qml:75 qml/PreferencesPage.qml:680
 #: routers/gpx_osmscout_settings.qml:68 routers/mapquest_open_settings.qml:59
 #: routers/ValhallaSettings.qml:61
 msgid "German"
@@ -1092,124 +1092,132 @@ msgstr "Tyska"
 
 #: qml/PreferencesPage.qml:76
 msgid "Gaelic"
-msgstr ""
+msgstr "Gaeliska"
 
 #: qml/PreferencesPage.qml:77
 msgid "Greek"
-msgstr ""
+msgstr "Grekiska"
 
 #: qml/PreferencesPage.qml:78
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebreiska"
 
-#: qml/PreferencesPage.qml:79 qml/PreferencesPage.qml:681
+#: qml/PreferencesPage.qml:79 qml/PreferencesPage.qml:683
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Hindi"
 msgstr "Hindi"
 
 #: qml/PreferencesPage.qml:80
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonesiska"
 
-#: qml/PreferencesPage.qml:81 qml/PreferencesPage.qml:682
+#: qml/PreferencesPage.qml:81 qml/PreferencesPage.qml:684
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Italian"
 msgstr "Italienska"
 
 #: qml/PreferencesPage.qml:82
 msgid "Japanese"
-msgstr ""
+msgstr "Japanska"
 
 #: qml/PreferencesPage.qml:83
-msgid "Norwegian"
+msgid "Korean"
 msgstr ""
 
 #: qml/PreferencesPage.qml:84
-msgid "Persian"
-msgstr ""
+msgid "Norwegian"
+msgstr "Norska"
 
 #: qml/PreferencesPage.qml:85
-msgid "Polish"
-msgstr ""
+msgid "Persian"
+msgstr "Persiska"
 
-#: qml/PreferencesPage.qml:86 routers/gpx_osmscout_settings.qml:68
+#: qml/PreferencesPage.qml:86
+msgid "Polish"
+msgstr "Polska"
+
+#: qml/PreferencesPage.qml:87 routers/gpx_osmscout_settings.qml:68
 #: routers/ValhallaSettings.qml:61
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:683
+#: qml/PreferencesPage.qml:88 qml/PreferencesPage.qml:685
 #: routers/gpx_osmscout_settings.qml:69 routers/mapquest_open_settings.qml:59
 #: routers/ValhallaSettings.qml:62
 msgid "Russian"
 msgstr "Ryska"
 
-#: qml/PreferencesPage.qml:88
+#: qml/PreferencesPage.qml:89
 msgid "Sinhalese"
-msgstr ""
+msgstr "Singalesiska"
 
-#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:679
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:681
 #: routers/gpx_osmscout_settings.qml:69 routers/ValhallaSettings.qml:62
 msgid "Spanish"
 msgstr "Spanska"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:685
+#: qml/PreferencesPage.qml:91 qml/PreferencesPage.qml:687
 #: routers/gpx_osmscout_settings.qml:69 routers/ValhallaSettings.qml:62
 msgid "Swedish"
 msgstr "Svenska"
 
-#: qml/PreferencesPage.qml:91
-msgid "Thai"
-msgstr ""
-
 #: qml/PreferencesPage.qml:92
-msgid "Turkish"
-msgstr ""
+msgid "Thai"
+msgstr "Thailändska"
 
 #: qml/PreferencesPage.qml:93
-msgid "Ukrainian"
-msgstr ""
+msgid "Turkish"
+msgstr "Turkiska"
 
 #: qml/PreferencesPage.qml:94
-msgid "Urdu"
-msgstr ""
+msgid "Ukrainian"
+msgstr "Ukrainska"
 
 #: qml/PreferencesPage.qml:95
-msgid "Vietnamese"
-msgstr ""
+msgid "Urdu"
+msgstr "Urdu"
 
 #: qml/PreferencesPage.qml:96
-msgid "Welsh"
-msgstr ""
+msgid "Vietnamese"
+msgstr "Vietnamesiska"
 
-#: qml/PreferencesPage.qml:147
+#: qml/PreferencesPage.qml:97
+msgid "Welsh"
+msgstr "Walesiska"
+
+#: qml/PreferencesPage.qml:149
 msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
 msgstr ""
-
-#: qml/PreferencesPage.qml:150
-msgid "Day/night mode"
-msgstr ""
+"Växlar mellan dag-/nattläge för kartan. Notera att inte alla leverantörer "
+"tillhandahåller alla kartor med dag/natt."
 
 #: qml/PreferencesPage.qml:152
+msgid "Day/night mode"
+msgstr "Dag-/Nattläge"
+
+#: qml/PreferencesPage.qml:154
 msgid "Manual"
-msgstr ""
+msgstr "Manuell"
 
-#: qml/PreferencesPage.qml:153
+#: qml/PreferencesPage.qml:155
 msgid "Sunrise and sunset"
-msgstr ""
+msgstr "Soluppgång och -nergång"
 
-#: qml/PreferencesPage.qml:171
+#: qml/PreferencesPage.qml:173
 msgid ""
 "Automatically switch between map types of the provider according to the "
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
+"Växla automatiskt mellan leverantörers karttyper, i för hållande till "
+"aktuell uppgift. Visa t.ex. karta designad för navigation vid navigering."
 
-#: qml/PreferencesPage.qml:173
+#: qml/PreferencesPage.qml:175
 msgid "Switch map modes"
-msgstr ""
+msgstr "Växla kartlägen"
 
-#: qml/PreferencesPage.qml:182
+#: qml/PreferencesPage.qml:184
 msgid ""
 "Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
@@ -1217,58 +1225,60 @@ msgstr ""
 "Tillämpas endast när Pure Maps är aktiv. Vid minimering, kontrolleras "
 "viloläget av normal inställning på enhetsnivå."
 
-#: qml/PreferencesPage.qml:183
+#: qml/PreferencesPage.qml:185
 msgid "Prevent sleep"
 msgstr "Förhindra viloläge"
 
-#: qml/PreferencesPage.qml:184 qml/PreferencesPage.qml:412
-#: qml/PreferencesPage.qml:628
+#: qml/PreferencesPage.qml:186 qml/PreferencesPage.qml:414
+#: qml/PreferencesPage.qml:630
 msgid "Never"
 msgstr "Aldrig"
 
-#: qml/PreferencesPage.qml:184
+#: qml/PreferencesPage.qml:186
 msgid "When navigating"
 msgstr "Vid navigering"
 
-#: qml/PreferencesPage.qml:184 qml/PreferencesPage.qml:628
+#: qml/PreferencesPage.qml:186 qml/PreferencesPage.qml:630
 msgid "Always"
 msgstr "Alltid"
 
-#: qml/PreferencesPage.qml:199
+#: qml/PreferencesPage.qml:201
 msgid "Fetch autocompleted search results while typing a search string."
 msgstr "Hämta autokompletterade sökresultat under tiden söksträngen skrivs."
 
-#: qml/PreferencesPage.qml:200
+#: qml/PreferencesPage.qml:202
 msgid "Autocomplete while searching"
 msgstr "Komplettera automatiskt vid sökning"
 
-#: qml/PreferencesPage.qml:210
+#: qml/PreferencesPage.qml:212
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
 msgstr ""
+"Ta bort all historik, inkl. sökning, ruttberäkning och destinationer. Notera"
+" att bokmärken kommer att bevaras."
 
-#: qml/PreferencesPage.qml:218
+#: qml/PreferencesPage.qml:220
 msgid "History cleared"
-msgstr ""
+msgstr "Historiken borttagen"
 
-#: qml/PreferencesPage.qml:227
+#: qml/PreferencesPage.qml:229
 msgid "Clear history"
-msgstr ""
+msgstr "Ta bort historik"
 
-#: qml/PreferencesPage.qml:239
+#: qml/PreferencesPage.qml:241
 msgid "Clear map tiles stored in a cache"
-msgstr ""
+msgstr "Ta bort cachelagrade kartrutor"
 
-#: qml/PreferencesPage.qml:247
+#: qml/PreferencesPage.qml:249
 msgid "Clear cache"
 msgstr "Rensa cache"
 
-#: qml/PreferencesPage.qml:259
+#: qml/PreferencesPage.qml:261
 msgid "API keys"
 msgstr "API-nycklar"
 
-#: qml/PreferencesPage.qml:265
+#: qml/PreferencesPage.qml:267
 msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
@@ -1278,51 +1288,51 @@ msgstr ""
 "inställningar. Kontrollera villkoren för var och en av de tjänster du vill "
 "använda, för att säkerställa att du tillämpar dem."
 
-#: qml/PreferencesPage.qml:273
+#: qml/PreferencesPage.qml:275
 msgid "Please restart application after changing API keys."
 msgstr "Starta om appen efter ändring av API-nycklar."
 
-#: qml/PreferencesPage.qml:315
+#: qml/PreferencesPage.qml:317
 msgid "Exploring"
-msgstr ""
+msgstr "Utforskning"
 
-#: qml/PreferencesPage.qml:322
+#: qml/PreferencesPage.qml:324
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating."
 msgstr "Välj transportsätt. Tillämpas endast när Pure Maps inte navigerar."
 
-#: qml/PreferencesPage.qml:323 qml/PreferencesPage.qml:565
+#: qml/PreferencesPage.qml:325 qml/PreferencesPage.qml:567
 msgid "Snap position to road"
 msgstr "Fäst positionen vid vägen"
 
-#: qml/PreferencesPage.qml:324 routers/gpx_osmscout_settings.qml:32
+#: qml/PreferencesPage.qml:326 routers/gpx_osmscout_settings.qml:32
 #: routers/gpx_settings.qml:32
 msgid "None"
 msgstr "Ingen"
 
-#: qml/PreferencesPage.qml:324 qml/RoutePage.qml:387
+#: qml/PreferencesPage.qml:326 qml/RoutePage.qml:387
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Foot"
 msgstr "Gång"
 
-#: qml/PreferencesPage.qml:345
+#: qml/PreferencesPage.qml:347
 msgid "Automatic zoom"
 msgstr "Automatisk zoom"
 
-#: qml/PreferencesPage.qml:351
+#: qml/PreferencesPage.qml:353
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
 msgstr ""
 "Maximal zoomnivå som kommer att användas i den automatiska zoomjusteringen."
 
-#: qml/PreferencesPage.qml:353
+#: qml/PreferencesPage.qml:355
 msgid "Maximal zoom level"
 msgstr "Maximal zoomnivå"
 
-#: qml/PreferencesPage.qml:364
+#: qml/PreferencesPage.qml:366
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
@@ -1330,15 +1340,15 @@ msgstr ""
 "Zoomnivån kommer att justeras till att ha samma karthöjd som avståndet du "
 "färdas, under den angivna tiden i sekunder."
 
-#: qml/PreferencesPage.qml:367
+#: qml/PreferencesPage.qml:369
 msgid "Time range, s"
 msgstr "Tidsintervall, s"
 
-#: qml/PreferencesPage.qml:385
+#: qml/PreferencesPage.qml:387
 msgid "Controls"
 msgstr "Kontroller"
 
-#: qml/PreferencesPage.qml:391
+#: qml/PreferencesPage.qml:393
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
@@ -1348,11 +1358,11 @@ msgstr ""
 "visningsläge, eller med ett mindre antal utvalda kontroller i minimalt "
 "visningsläge. Klicka på en karta för att växla mellan lägen."
 
-#: qml/PreferencesPage.qml:400
+#: qml/PreferencesPage.qml:402
 msgid "Set map view to minimal mode on start"
 msgstr "Sätt kartvyn i minimalt läge vid uppstart"
 
-#: qml/PreferencesPage.qml:408
+#: qml/PreferencesPage.qml:410
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
@@ -1360,31 +1370,31 @@ msgstr ""
 "Växla automatiskt till minimalt visningsläge efter angiven fördröjning, "
 "eller inaktivera automatisk växling mellan kartvisningslägen."
 
-#: qml/PreferencesPage.qml:410
+#: qml/PreferencesPage.qml:412
 msgid "Switch to minimal view"
 msgstr "Växla till minimal vy"
 
-#: qml/PreferencesPage.qml:412
+#: qml/PreferencesPage.qml:414
 msgid "10 seconds"
 msgstr "10 sekunder"
 
-#: qml/PreferencesPage.qml:412
+#: qml/PreferencesPage.qml:414
 msgid "20 seconds"
 msgstr "20 sekunder"
 
-#: qml/PreferencesPage.qml:413
+#: qml/PreferencesPage.qml:415
 msgid "30 seconds"
 msgstr "30 sekunder"
 
-#: qml/PreferencesPage.qml:413
+#: qml/PreferencesPage.qml:415
 msgid "1 minute"
 msgstr "1 minut"
 
-#: qml/PreferencesPage.qml:427
+#: qml/PreferencesPage.qml:429
 msgid "Always show"
 msgstr "Visa alltid"
 
-#: qml/PreferencesPage.qml:431
+#: qml/PreferencesPage.qml:433
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
@@ -1392,108 +1402,108 @@ msgstr ""
 "Visa alltid valda kontroller, oavsett om kartvyn är i minimalt eller fullt "
 "läge."
 
-#: qml/PreferencesPage.qml:439
+#: qml/PreferencesPage.qml:441
 msgid "Menu"
 msgstr "Meny"
 
-#: qml/PreferencesPage.qml:448
+#: qml/PreferencesPage.qml:450
 msgid "Center on current location"
 msgstr "Centrera på aktuell position"
 
-#: qml/PreferencesPage.qml:457
+#: qml/PreferencesPage.qml:459
 msgid "Compass"
 msgstr "Kompass"
 
-#: qml/PreferencesPage.qml:466
+#: qml/PreferencesPage.qml:468
 msgid "Map selection"
-msgstr ""
+msgstr "Kartval"
 
-#: qml/PreferencesPage.qml:475
+#: qml/PreferencesPage.qml:477
 msgid "Speed and location precision"
 msgstr "Hastighets- och platsprecision"
 
-#: qml/PreferencesPage.qml:484
+#: qml/PreferencesPage.qml:486
 msgid "Scale"
 msgstr "Skala"
 
-#: qml/PreferencesPage.qml:502 qml/RoutePage.qml:49
+#: qml/PreferencesPage.qml:504 qml/RoutePage.qml:49
 msgid "Navigate"
 msgstr "Navigera"
 
-#: qml/PreferencesPage.qml:525
+#: qml/PreferencesPage.qml:527
 msgid "Show navigation instructions"
 msgstr "Visa navigeringsinstruktioner"
 
-#: qml/PreferencesPage.qml:535
+#: qml/PreferencesPage.qml:537
 msgid "Voice navigation instructions"
 msgstr "Röstnavigering"
 
-#: qml/PreferencesPage.qml:546
+#: qml/PreferencesPage.qml:548
 msgid "Reroute automatically"
 msgstr "Beräkna om rutter automatiskt"
 
-#: qml/PreferencesPage.qml:555
+#: qml/PreferencesPage.qml:557
 msgid "Automatic zoom on start"
 msgstr "Automatisk zoom vid start"
 
-#: qml/PreferencesPage.qml:576
+#: qml/PreferencesPage.qml:578
 msgid "Show direction signs"
 msgstr "Visa riktningsskyltar"
 
-#: qml/PreferencesPage.qml:586
+#: qml/PreferencesPage.qml:588
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr "Rotera kartan i rörelsens riktning när navigering påbörjas."
 
-#: qml/PreferencesPage.qml:587
+#: qml/PreferencesPage.qml:589
 msgid "Rotate map when navigating"
 msgstr "Rotera kartan vid navigering"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:598
 msgid "Only applies to vector maps."
 msgstr "Gäller endast vektorkartor."
 
-#: qml/PreferencesPage.qml:598
+#: qml/PreferencesPage.qml:600
 msgid "Tilt map when navigating"
 msgstr "Luta kartan vid navigering"
 
-#: qml/PreferencesPage.qml:609
+#: qml/PreferencesPage.qml:611
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
 "Önskat kön för röstnavigering. Stöds endast av vissa motorer och språk."
 
-#: qml/PreferencesPage.qml:610 qml/PreferencesPage.qml:707
+#: qml/PreferencesPage.qml:612 qml/PreferencesPage.qml:709
 msgid "Voice gender"
 msgstr "Röst"
 
-#: qml/PreferencesPage.qml:611 qml/PreferencesPage.qml:708
+#: qml/PreferencesPage.qml:613 qml/PreferencesPage.qml:710
 msgid "Male"
 msgstr "Manlig"
 
-#: qml/PreferencesPage.qml:611 qml/PreferencesPage.qml:708
+#: qml/PreferencesPage.qml:613 qml/PreferencesPage.qml:710
 msgid "Female"
 msgstr "Kvinnlig"
 
-#: qml/PreferencesPage.qml:625
+#: qml/PreferencesPage.qml:627
 msgid "Show speed limit sign"
 msgstr "Visa hastighetsbegränsning"
 
-#: qml/PreferencesPage.qml:627
+#: qml/PreferencesPage.qml:629
 msgid "Speed limit"
 msgstr "Hastighetsgräns"
 
-#: qml/PreferencesPage.qml:628
+#: qml/PreferencesPage.qml:630
 msgid "Only when exceeding"
 msgstr "Endast vid överskridande"
 
-#: qml/PreferencesPage.qml:651
+#: qml/PreferencesPage.qml:653
 msgid "Testing"
 msgstr "Test"
 
-#: qml/PreferencesPage.qml:660
+#: qml/PreferencesPage.qml:662
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
@@ -1501,23 +1511,23 @@ msgstr ""
 "Test av text-to-speech (TTS). Välj samma språk som vid navigering samt "
 "önskat kön, och tryck på nedanstående knapp för att testa."
 
-#: qml/PreferencesPage.qml:684
+#: qml/PreferencesPage.qml:686
 msgid "Slovak"
 msgstr "Slovakiska"
 
-#: qml/PreferencesPage.qml:706
+#: qml/PreferencesPage.qml:708
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "Önskat kön, Stöds endast av vissa motorer och språk."
 
-#: qml/PreferencesPage.qml:720
+#: qml/PreferencesPage.qml:722
 msgid "Test"
 msgstr "Testa"
 
-#: qml/PreferencesPage.qml:760
+#: qml/PreferencesPage.qml:762
 msgid "Selected voice engine: %1"
 msgstr "Vald röstmotor: %1"
 
-#: qml/PreferencesPage.qml:762
+#: qml/PreferencesPage.qml:764
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1527,11 +1537,11 @@ msgstr ""
 "\n"
 "Pure Maps stödjer Mimic, Flite, PicoTTS, och Espeak TTS. Om du inte använder Pure Maps via Flatpak, måste motorerna installeras separat. Sailfish-användare kan hitta motorer på OpenRepos."
 
-#: qml/PreferencesPage.qml:780
+#: qml/PreferencesPage.qml:782
 msgid "Development"
 msgstr "Utveckling"
 
-#: qml/PreferencesPage.qml:786
+#: qml/PreferencesPage.qml:788
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1539,7 +1549,7 @@ msgstr ""
 "Följande alternativ är endast för utveckling. Ändra dem bara om du vet vad "
 "du gör."
 
-#: qml/PreferencesPage.qml:794
+#: qml/PreferencesPage.qml:796
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1547,11 +1557,11 @@ msgstr ""
 "Centrera aktuell position i aktuell kartvy. Kom ihåg att inaktivera GPS-"
 "positionering när detta alternativ används."
 
-#: qml/PreferencesPage.qml:795
+#: qml/PreferencesPage.qml:797
 msgid "Set position to the map center"
 msgstr "Centrera positionen på kartan"
 
-#: qml/PreferencesPage.qml:802
+#: qml/PreferencesPage.qml:804
 msgid "Show current zoom level"
 msgstr "Visa aktuell zoomnivå"
 
@@ -1604,7 +1614,7 @@ msgstr "Destination"
 
 #: qml/RoutePage.qml:183
 msgid "Routes"
-msgstr ""
+msgstr "Rutter"
 
 #: qml/RoutePage.qml:259
 msgid "Destinations"
@@ -1690,7 +1700,7 @@ msgstr "Lägg till länk till Google Maps"
 #: routers/mapquest_open_results.qml:82 routers/osmscout_results.qml:82
 #: routers/osrm_results.qml:82 routers/stadiamaps_results.qml:82
 msgid "Route to %1"
-msgstr ""
+msgstr "Beräkna rutt till %1"
 
 #: routers/digitransit_results.qml:61
 msgid "Route %1. total %2"
