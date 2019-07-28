@@ -175,6 +175,32 @@ MapboxMap {
         }
     }
 
+    Timer {
+        // daytime bias timer
+        interval: 1000*60
+        repeat: true
+        running: app.conf.basemapAutoLight==="sunrise/sunset" && position.latitudeValid && position.longitudeValid //false
+
+        property bool lastLight: false
+
+        Component.onCompleted: update(true)
+        onRunningChanged: update(true)
+        onTriggered: update()
+
+        function update(force) {
+            if (app.conf.basemapAutoLight!=="sunrise/sunset" || !position.latitudeValid || !position.longitudeValid)
+                return;
+            py.call("poor.app.sun.day", [position.coordinate.latitude,
+                                         position.coordinate.longitude],
+                    function(light) {
+                        if (force || lastLight !== light) {
+                            py.call("poor.app.basemap.set_bias", [{'light': light ? 'day' : 'night'}]);
+                            lastLight = light;
+                        }
+                    });
+        }
+    }
+
     Connections {
         target: app
         onModeChanged: setMode()
@@ -253,22 +279,22 @@ MapboxMap {
     function _addManeuver(maneuver) {
         // Add new maneuver marker to the map.
         map.maneuvers.push({
-            "arrive_instruction": maneuver.arrive_instruction || "",
-            "depart_instruction": maneuver.depart_instruction || "",
-            "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
-            "duration": maneuver.duration || 0,
-            "icon": maneuver.icon || "flag",
-            // Needed to have separate layers via filters.
-            "name": maneuver.passive ? "passive" : "active",
-            "narrative": maneuver.narrative || "",
-            "passive": maneuver.passive || false,
-            "sign": maneuver.sign || undefined,
-            "street": maneuver.street|| undefined,
-            "travel_type": maneuver.travel_type || "",
-            "verbal_alert": maneuver.verbal_alert || "",
-            "verbal_post": maneuver.verbal_post || "",
-            "verbal_pre": maneuver.verbal_pre || "",
-        });
+                               "arrive_instruction": maneuver.arrive_instruction || "",
+                               "depart_instruction": maneuver.depart_instruction || "",
+                               "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
+                               "duration": maneuver.duration || 0,
+                               "icon": maneuver.icon || "flag",
+                               // Needed to have separate layers via filters.
+                               "name": maneuver.passive ? "passive" : "active",
+                               "narrative": maneuver.narrative || "",
+                               "passive": maneuver.passive || false,
+                               "sign": maneuver.sign || undefined,
+                               "street": maneuver.street|| undefined,
+                               "travel_type": maneuver.travel_type || "",
+                               "verbal_alert": maneuver.verbal_alert || "",
+                               "verbal_post": maneuver.verbal_post || "",
+                               "verbal_pre": maneuver.verbal_pre || "",
+                           });
     }
 
     function addManeuvers(maneuvers) {
@@ -307,8 +333,8 @@ MapboxMap {
     function centerOnPosition() {
         // Center on the current position.
         map.setCenter(
-            map.position.coordinate.longitude,
-            map.position.coordinate.latitude);
+                    map.position.coordinate.longitude,
+                    map.position.coordinate.latitude);
     }
 
     function clearRoute() {
@@ -423,15 +449,15 @@ MapboxMap {
         map.addLayer(map.layers.poisBookmarked, {"type": "symbol", "source": map.sources.poisBookmarked});
         map.addLayer(map.layers.route, {"type": "line", "source": map.sources.route}, map.firstLabelLayer);
         map.addLayer(map.layers.maneuvers, {
-            "type": "circle",
-            "source": map.sources.maneuvers,
-            "filter": ["==", "name", "active"],
-        }, map.firstLabelLayer);
+                         "type": "circle",
+                         "source": map.sources.maneuvers,
+                         "filter": ["==", "name", "active"],
+                     }, map.firstLabelLayer);
         map.addLayer(map.layers.nodes, {
-            "type": "circle",
-            "source": map.sources.maneuvers,
-            "filter": ["==", "name", "passive"],
-        }, map.firstLabelLayer);
+                         "type": "circle",
+                         "source": map.sources.maneuvers,
+                         "filter": ["==", "name", "passive"],
+                     }, map.firstLabelLayer);
         // Add transparent 1x1 pixels at maneuver points to knock out road shields etc.
         // that would otherwise overlap with the above maneuver and node circles.
         map.addImagePath(map.images.pixel, Qt.resolvedUrl("icons/pixel.png"));
@@ -509,8 +535,8 @@ MapboxMap {
         map.format = py.evaluate("poor.app.basemap.format");
         map.urlSuffix = py.evaluate("poor.app.basemap.url_suffix");
         py.evaluate("poor.app.basemap.style_url") ?
-            (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
-            (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
+                    (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
+                    (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
         attributionButton.logo = py.evaluate("poor.app.basemap.logo");
         styler.apply(py.evaluate("poor.app.basemap.style_gui"))
         map.initIcons();

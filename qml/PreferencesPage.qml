@@ -84,6 +84,29 @@ PagePL {
                             }
                         }
 
+                        ComboBoxPL {
+                            description: app.tr("Switching between day/night modes of the map. " +
+                                                "Note that not all providers have all maps with day/night " +
+                                                "pairs available.")
+                            label: app.tr("Day/night mode")
+                            model: [
+                                app.tr("Manual"),
+                                app.tr("Sunrise and sunset")
+                            ]
+                            property var values: [
+                                "none",
+                                "sunrise/sunset"
+                            ]
+                            Component.onCompleted: {
+                                var value = app.conf.basemapAutoLight;
+                                currentIndex = values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = currentIndex;
+                                app.conf.set("basemap_auto_light", values[index]);
+                            }
+                        }
+
                         TextSwitchPL {
                             checked: app.conf.basemapAutoMode
                             description: app.tr("Automatically switch between map types of the provider according to the current task. " +
@@ -230,7 +253,7 @@ PagePL {
 
             ExpandingSectionPL {
                 id: sectionExplore
-                title: app.tr("Map view")
+                title: app.tr("Exploring")
                 content.sourceComponent: FormLayoutPL {
                     spacing: styler.themePaddingMedium
                     width: sectionExplore.width
@@ -249,22 +272,6 @@ PagePL {
                         onCurrentIndexChanged: {
                             var index = mapmatchingComboBox.currentIndex;
                             app.conf.set("map_matching_when_idle", mapmatchingComboBox.values[index]);
-                        }
-                    }
-
-                    SliderPL {
-                        id: scaleSlider
-                        label: app.tr("Map scale")
-                        maximumValue: 2.0
-                        minimumValue: 0.5
-                        stepSize: 0.1
-                        value: app.conf.get("map_scale")
-                        valueText: value
-                        width: parent.width
-                        onValueChanged: {
-                            app.conf.set("map_scale", scaleSlider.value);
-                            if (app.mode !== modes.followMe && app.mode !== modes.navigate)
-                                map.setScale(scaleSlider.value);
                         }
                     }
 
