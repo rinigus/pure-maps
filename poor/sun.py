@@ -60,7 +60,7 @@ class Sun:
                 if srise > now and sset > now:
                     if srise > sset: get_rise = -1
                     else: get_set = -1
-                print("Adjust:", srise, now, sset, get_rise, get_set)
+                # print("Adjust:", srise, now, sset, get_rise, get_set)
                 if get_rise is not None:
                     rref = rref + timedelta(days=get_rise)
                     srise = self.astral.sunrise_utc(rref, latitude, longitude, observer_elevation)
@@ -90,7 +90,7 @@ class Sun:
                 light = True
             valid = now + timedelta(hours=1)
 
-        print("It is a day:", light, " next check at:", valid)
+        # print("It is a day:", light, " next check at:", valid)
         self.clat, self.clon = latitude, longitude
         self.clight = light
         self.ctime = now
