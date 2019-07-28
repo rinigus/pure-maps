@@ -21,11 +21,11 @@ import poor.test
 class TestMap(poor.test.TestCase):
 
     def test___new____no(self):
-        a = poor.Map("mapbox_streets")
-        b = poor.Map("mapbox_outdoors")
+        a = poor.Map("mapbox_0_streets")
+        b = poor.Map("mapbox_1_outdoors")
         assert a is not b
 
     def test___new____yes(self):
-        a = poor.Map("mapbox_streets")
-        b = poor.Map("mapbox_streets")
+        a = poor.Map("mapbox_0_streets")
+        b = poor.Map("mapbox_0_streets")
         assert a is b
