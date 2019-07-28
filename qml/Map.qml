@@ -276,6 +276,13 @@ MapboxMap {
         map.autoCenter && map.centerOnPosition();
     }
 
+    onStyleJsonChanged: {
+        py.call("poor.app.basemap.process_style", [styleJson],
+                function (style) {
+                    if (style) styleJson = style;
+                });
+    }
+
     function _addManeuver(maneuver) {
         // Add new maneuver marker to the map.
         map.maneuvers.push({
@@ -534,9 +541,13 @@ MapboxMap {
         map.firstLabelLayer = py.evaluate("poor.app.basemap.first_label_layer");
         map.format = py.evaluate("poor.app.basemap.format");
         map.urlSuffix = py.evaluate("poor.app.basemap.url_suffix");
-        py.evaluate("poor.app.basemap.style_url") ?
-                    (map.styleUrl  = py.evaluate("poor.app.basemap.style_url")) :
-                    (map.styleJson = py.evaluate("poor.app.basemap.style_json"));
+        var processed = py.call_sync("poor.app.basemap.process_style", []);
+        if (processed) map.styleJson = processed;
+        else {
+            var url = py.evaluate("poor.app.basemap.style_url");
+            if (url) map.styleUrl  = url;
+            else map.styleJson = py.evaluate("poor.app.basemap.style_json");
+        }
         attributionButton.logo = py.evaluate("poor.app.basemap.logo");
         styler.apply(py.evaluate("poor.app.basemap.style_gui"))
         map.initIcons();

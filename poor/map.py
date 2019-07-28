@@ -57,6 +57,8 @@ class Map:
         self.name = values["name"]
         self.style_dict = values.get("style_json", {})
         self.style_gui = values.get("style_gui", {})
+        self.style_json_orig = None
+        self.style_json_processed = None
         self.style_url = values.get("style_url", "")
         self.tile_size = values.get("tile_size", 256)
         self.tile_url = values.get("tile_url", "")
@@ -90,8 +92,20 @@ class Map:
             path = os.path.join(poor.DATA_DIR, leaf)
         return poor.util.read_json(path)
 
+    def process_style(self, style, lang=None):
+        if self.format != "mapbox-gl":
+            return None
+        if self.style_json_orig is None and (style is None or len(style)==0):
+            return None
+        if isinstance(style, str) and self.style_json_processed != style:
+            self.style_json_orig = style
+        if not isinstance(self.lang, dict) or self.lang_key is None or lang not in self.lang:
+            return None
+        self.style_json_processed = self.style_json_orig.replace(self.lang_key, self.lang[lang])
+        return self.style_json_processed
+
     def style_json(self, lang=None):
-        """Return style JSON definition for raster sources."""
+        """Return style JSON definition for raster sources or sources with defined style."""
         def process(s):
             if isinstance(self.lang, dict) and self.lang_key is not None:
                 if lang in self.lang: r = self.lang[lang]
@@ -246,6 +260,9 @@ class MapManager:
                 n['current'] = (self.current_map is not None and getattr(self.current_map,k)==v)
                 result[k].append(n)
         return result
+
+    def process_style(self, style=None):
+        return self.current_map.process_style(style=style, lang=poor.conf.basemap_lang)
 
     @property
     def providers(self):
