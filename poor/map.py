@@ -148,6 +148,14 @@ class MapManager:
     """Collection of maps"""
 
     bias = {} # keeps bias available for all MapnManager instances
+    fallback = {
+        'hybrid': ['satellite', 'default'],
+        'guidance': ['traffic', 'preview', 'default'],
+        'preview': ['traffic', 'default'],
+        'satellite': ['hybrid', 'default'],
+        'terrain': ['default'],
+        'traffic': ['preview', 'default'],
+    }
 
     def __new__(cls):
         """Return possibly existing instance for current profile."""
@@ -162,6 +170,7 @@ class MapManager:
         """Initialize a :class:`MapManager` instance."""
         if hasattr(self, "profile"): return
         self.basemap = None
+        self.basemap_types = set()
         self.current_lang = None
         self.current_map = None
         # load map descriptions
@@ -177,12 +186,23 @@ class MapManager:
         return self.current_map.attribution
 
     def _find_map(self):
+        # fill restrictions
         restrictions = self._restrictions()
         for k,v in MapManager.bias.items():
             if restrictions[k]=='' and \
                (poor.conf.basemap_auto_mode or k not in ['type', 'vehicle']) and \
-               (poor.conf.basemap_auto_light or k not in ['light']):
+               (poor.conf.basemap_auto_light!='none' or k not in ['light']):
                 restrictions[k] = v
+        # find suitable replacements for type if needed
+        reqtype = restrictions.get('type', '')
+        if reqtype != '' and \
+           reqtype not in self.basemap_types and \
+           reqtype in MapManager.fallback:
+            for k in MapManager.fallback[reqtype]:
+                if k in self.basemap_types:
+                    restrictions['type'] = k
+                    break
+        # find specific map
         while True:
             for m in self._providers[self.basemap]:
                 if m.complies(**restrictions):
@@ -287,6 +307,7 @@ class MapManager:
         self.basemap = id
         if self.basemap not in self._providers.keys():
             self.basemap = poor.conf.get_default("basemap")
+        self.basemap_types = set([i.type for i in self._providers[self.basemap]])
         self._find_map()
         poor.conf.set_basemap(self.basemap)
 
