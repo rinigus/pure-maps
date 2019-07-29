@@ -1122,7 +1122,7 @@ msgstr "Japanska"
 
 #: qml/PreferencesPage.qml:83
 msgid "Korean"
-msgstr ""
+msgstr "Koreanska"
 
 #: qml/PreferencesPage.qml:84
 msgid "Norwegian"
