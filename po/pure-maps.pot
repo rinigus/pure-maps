@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-29 11:12+0300\n"
+"POT-Creation-Date: 2019-07-29 22:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -508,11 +508,11 @@ msgstr ""
 msgid "Public transport"
 msgstr ""
 
-#: qml/BasemapButton.qml:339 qml/RoutePage.qml:404
+#: qml/BasemapButton.qml:356 qml/RoutePage.qml:404
 msgid "Map scale"
 msgstr ""
 
-#: qml/BasemapButton.qml:356
+#: qml/BasemapButton.qml:373
 msgid "Map scale during navigation"
 msgstr ""
 
