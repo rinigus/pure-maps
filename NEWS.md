@@ -1,3 +1,19 @@
+2019-07-29: Pure Maps 1.22
+==========================
+
+* Group maps by provider
+* Allow to auto-select specific map based on task
+* Allow to auto-select light and dark maps based on sunset/sunrise
+* Add support for preferred map language
+* Support large selection of HERE maps types
+* List recent routes on navigation page
+* Move traffic layer above route on Mapbox preview maps
+* [kirigami] Stack pages on the right of the map in wide mode
+* [kirigami] Highlight selection in list views
+* [kirigami] GUI improvements
+* [qtcontrols,kirigami] Use system palette
+* Update translations
+
 2019-07-01: Pure Maps 1.21
 ==========================
 
@@ -9,7 +25,7 @@
 * [qtcontrols,kirigami] Port Digitransit support
 * Smaller GUI changes and fixes
 * Packaging updates for Linux
-* Update translations 
+* Update translations
 * Bugfixes
 
 2019-05-19: Pure Maps 1.20
@@ -18,17 +34,17 @@
 * Add voice prompt at the beginning of navigation
 * Make transitions during navigation smooth
 * Update voice prompt cache code
-* Update translations 
+* Update translations
 * Bugfixes
 
-2019-03-30: Pure Maps 1.19 
+2019-03-30: Pure Maps 1.19
 ==========================
 
 * Update icons [mosen]
 * Simplify main menu
 * Use indicators to show auto-centering, -zoom, and -rotation
 * Show current search results on map
-* Update translations 
+* Update translations
 * Bugfixes and corrections of strings
 
 2019-03-21: Pure Maps 1.18
@@ -74,7 +90,7 @@
 * [kirigami, qtcontrols] Load icons using Qt icon
 * [kirigami, qtcontrols] Add support for translations
 * Bugfixes, code cleanup
-* [1.16.0, 1.16.1] Update translations 
+* [1.16.0, 1.16.1] Update translations
 
 
 2019-02-02: Pure Maps 1.15
@@ -187,7 +203,7 @@
 * Show route and markers in yellow for osm scout night styles
 * Update OSM Scout geocoder data parsing
 * Update translations
-* Add HERE Maps: traffic and satellite 
+* Add HERE Maps: traffic and satellite
 * Other changes
 * [1.5.1] Bugfix: Sharing position
 * [1.5.1] Allow selecting maps service on sharing
@@ -208,7 +224,7 @@
 * Bugfix: restore map scale if navigation is stopped via clearing the map
 * [1.4.2] Allow to view, edit, and delete POIs from their list
 * [1.4.2] Added Greek translation
-* [1.4.2] Handle HTTP connections in dedicated threads 
+* [1.4.2] Handle HTTP connections in dedicated threads
 
 2018-08-26: Pure Maps 1.3
 =========================

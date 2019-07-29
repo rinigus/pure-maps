@@ -38,6 +38,25 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.22.0" date="2019-07-29">
+     <description>
+       <ul>
+         <li>Group maps by provider</li>
+         <li>Allow to auto-select specific map based on task</li>
+         <li>Allow to auto-select light and dark maps based on sunset/sunrise</li>
+         <li>Add support for preferred map language</li>
+         <li>Support large selection of HERE maps types</li>
+         <li>List recent routes on navigation page</li>
+         <li>Move traffic layer above route on Mapbox preview maps</li>
+         <li>[kirigami] Stack pages on the right of the map in wide mode</li>
+         <li>[kirigami] Highlight selection in list views</li>
+         <li>[kirigami] GUI improvements</li>
+         <li>[qtcontrols,kirigami] Use system palette</li>
+         <li>Update translations</li>
+         <li>Bugfixes</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.21.0" date="2019-07-01">
      <description>
        <ul>
