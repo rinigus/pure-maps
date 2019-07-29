@@ -147,6 +147,8 @@ class MapManager:
 
     """Collection of maps"""
 
+    bias = {} # keeps bias available for all MapnManager instances
+
     def __new__(cls):
         """Return possibly existing instance for current profile."""
         if not hasattr(cls, "_instances"):
@@ -160,7 +162,6 @@ class MapManager:
         """Initialize a :class:`MapManager` instance."""
         if hasattr(self, "profile"): return
         self.basemap = None
-        self.bias = {} # used for automatic switch applied for different map modes
         self.current_lang = None
         self.current_map = None
         # load map descriptions
@@ -177,7 +178,7 @@ class MapManager:
 
     def _find_map(self):
         restrictions = self._restrictions()
-        for k,v in self.bias.items():
+        for k,v in MapManager.bias.items():
             if restrictions[k]=='' and \
                (poor.conf.basemap_auto_mode or k not in ['type', 'vehicle']) and \
                (poor.conf.basemap_auto_light or k not in ['light']):
@@ -271,7 +272,7 @@ class MapManager:
         return p
 
     def reset_bias(self, key):
-        del self.bias[key]
+        del MapManager.bias[key]
         self.update()
 
     def _restrictions(self):
@@ -291,7 +292,7 @@ class MapManager:
 
     def set_bias(self, bias):
         for k, v in bias.items():
-            self.bias[k] = v
+            MapManager.bias[k] = v
         self.update()
 
     @property
