@@ -1,7 +1,7 @@
 # -*- coding: us-ascii-unix -*-
 
 NAME       = pure-maps
-VERSION    = 1.21.1
+VERSION    = 1.22.0
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
 PREFIX     = /usr
@@ -104,7 +104,7 @@ endif
 	mkdir -p $(DATADIR)/poor/openlocationcode
 	cp thirdparty/open-location-code/*.py $(DATADIR)/poor/openlocationcode
 	mkdir -p $(DATADIR)/poor/astral
-	cp thirdparty/astral/astral/*.py $(DATADIR)/poor/astral
+	cp thirdparty/astral/*.py $(DATADIR)/poor/astral
 	@echo "Installing QML files..."
 	mkdir -p $(DATADIR)/qml
 	cp qml/pure-maps.qml $(DATADIR)/qml/$(NAME).qml
@@ -113,6 +113,8 @@ endif
 	cp qml/icons/*.svg qml/icons/*.png qml/icons/*.jpg $(DATADIR)/qml/icons
 	mkdir -p $(DATADIR)/qml/icons/attribution
 	cp qml/icons/attribution/*.svg $(DATADIR)/qml/icons/attribution
+	mkdir -p $(DATADIR)/qml/icons/basemap
+	cp qml/icons/basemap/*.svg $(DATADIR)/qml/icons/basemap
 	mkdir -p $(DATADIR)/qml/icons/marker
 	cp qml/icons/marker/*.png $(DATADIR)/qml/icons/marker
 	mkdir -p $(DATADIR)/qml/icons/navigation
