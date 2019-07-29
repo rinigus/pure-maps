@@ -306,20 +306,37 @@ MouseArea {
 
         Rectangle {
             // scrollbar for flickable
+            id: scrollBar
             anchors.right: parent.right
             color: styler.itemPressed
             height:  Math.max(flick.height / flick.contentHeight * flick.height - 2 * radius, flick.height/10)
-            opacity: flick.moving ? 1 : 0
+            opacity: 1
             radius: width / 2
             visible: flick.height < flick.contentHeight
             width: Math.max(1,styler.themeFontSizeExtraSmall/5)
             y: flick.y + flick.contentY / flick.contentHeight * flick.height + radius;
 
-            Behavior on opacity { NumberAnimation { property: "opacity"; duration: 2*app.conf.animationDuration; } }
+            Behavior on opacity { NumberAnimation { id: anim; property: "opacity"; duration: 0; } }
+
+            Connections {
+                target: menu
+                onVisibleChanged: {
+                    if (menu.visible)
+                        scrollBar.opacity = Qt.binding(function () {
+                            anim.duration = flick.moving ? 0 : 3*app.conf.animationDuration;
+                            return flick.moving ? 1 : 0;
+                        })
+                    else {
+                        scrollBar.opacity = 1;
+                        anim.duration = 0;
+                    }
+                }
+            }
         }
     }
 
     Rectangle {
+        // panel shown at the bottom for zoom adjustments
         id: panel
         anchors.bottom: parent.bottom
         anchors.left: parent.left
