@@ -58,6 +58,29 @@ CoverBackground {
      * Navigation narrative cover
      */
 
+    CoverActionList {
+        enabled: app.initialized && app.conf.showNarrative && map.hasRoute
+
+        CoverAction {
+            iconSource: app.mode === modes.navigate ? "image://theme/icon-cover-pause" :
+                                                      "image://theme/icon-cover-play"
+            onTriggered: {
+                app.hideNavigationPages();
+                if (app.mode === modes.navigate) app.setModeExploreRoute();
+                else app.setModeNavigate();
+            }
+        }
+
+        CoverAction {
+            iconSource: "image://theme/icon-cover-cancel"
+            onTriggered: {
+                app.setModeExplore();
+                map.clearRoute();
+                app.showMap();
+            }
+        }
+    }
+
     Image {
         // Maneuver icon
         anchors.bottom: parent.verticalCenter
@@ -83,7 +106,7 @@ CoverBackground {
 
     Label {
         // Distance remaining to destination
-        anchors.bottom: parent.bottom
+        anchors.bottom: parent.coverActionArea.top
         anchors.bottomMargin: Theme.paddingLarge
         anchors.left: parent.left
         anchors.leftMargin: Theme.paddingLarge
@@ -95,7 +118,7 @@ CoverBackground {
 
     Label {
         // Time remaining to destination
-        anchors.bottom: parent.bottom
+        anchors.bottom: parent.coverActionArea.top
         anchors.bottomMargin: Theme.paddingLarge
         anchors.right: parent.right
         anchors.rightMargin: Theme.paddingLarge
@@ -104,5 +127,4 @@ CoverBackground {
         text: app.navigationStatus.destTime
         visible: cover.showNarrative
     }
-
 }
