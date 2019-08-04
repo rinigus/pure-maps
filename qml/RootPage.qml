@@ -22,6 +22,7 @@ import "platform"
 PageEmptyPL {
     id: page
     title: app.tr("Map")
+    clip: true
 
     AttributionButton { id: attributionButton }
     BasemapButton { id: basemapButton }
