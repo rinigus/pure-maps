@@ -26,7 +26,11 @@ all platforms are welcome at TMO, not only current Sailfish OS users.
 
 For development of Pure Maps and testing on desktop, you would have to
 choose platform for which you develop, install dependencies, and be
-able to run application. All this is covered below.
+able to run application. All this is covered below. 
+
+Alternative, is to use Flatpak-based environment and develop using
+that. For this approach, see separate
+[README](packaging/flatpak/README.md).
 
 
 ## Platforms
