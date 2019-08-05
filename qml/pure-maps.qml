@@ -103,6 +103,7 @@ ApplicationWindowPL {
     }
 
     Component.onDestruction: {
+        keepAlive = false;
         if (!py.ready || !app.map) return;
         app.conf.set("auto_center", app.map.autoCenter);
         app.conf.set("auto_rotate", app.map.autoRotate);
