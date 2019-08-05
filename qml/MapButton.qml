@@ -41,9 +41,9 @@ Item {
         anchors.centerIn: parent
         color: item.pressed ? styler.itemPressed : styler.itemBg
         height: wh
-        layer.enabled: item.pressed ? false : true
+        layer.enabled: true
         layer.effect: DropShadow {
-            color: styler.shadowColor
+            color: item.pressed ? "transparent" : styler.shadowColor
             opacity: styler.shadowOpacity
             radius: styler.shadowRadius
             samples: 1 + radius*2
