@@ -54,6 +54,7 @@ Item {
     property bool   showNarrative: false
     property bool   showNavigationSign: false
     property string showSpeedLimit
+    property bool   smoothPositionAnimationWhenNavigating: false
     property bool   tiltWhenNavigating
     property string units
     property string voiceGender
@@ -144,6 +145,7 @@ Item {
         conf.showNarrative = c.show_narrative;
         conf.showNavigationSign = c.show_navigation_sign;
         conf.showSpeedLimit = c.show_speed_limit;
+        conf.smoothPositionAnimationWhenNavigating = c.smooth_position_animation_when_navigating;
         conf.tiltWhenNavigating = c.tilt_when_navigating;
         conf.units = c.units;
         conf.voiceGender = c.voice_gender;

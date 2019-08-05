@@ -612,6 +612,14 @@ PagePL {
                         }
                     }
 
+                    TextSwitchPL {
+                        checked: app.conf.smoothPositionAnimationWhenNavigating
+                        text: app.tr("Smooth position animation")
+                        onCheckedChanged: {
+                            app.conf.set("smooth_position_animation_when_navigating", checked);
+                        }
+                    }
+
                     FormLayoutPL {
                         spacing: styler.themePaddingMedium
                         width: parent.width
