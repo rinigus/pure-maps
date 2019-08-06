@@ -104,6 +104,8 @@ ApplicationWindowPL {
 
     Component.onDestruction: {
         keepAlive = false;
+        gps.active = false;
+        app.running = false;
         if (!py.ready || !app.map) return;
         app.conf.set("auto_center", app.map.autoCenter);
         app.conf.set("auto_rotate", app.map.autoRotate);
