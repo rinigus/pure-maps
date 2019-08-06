@@ -56,6 +56,7 @@ Item {
         IconButtonPL {
             id: button
             anchors.centerIn: parent
+            iconColorize: false
             padding: 0
             onClicked: item.clicked()
         }

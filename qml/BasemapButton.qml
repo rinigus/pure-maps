@@ -147,6 +147,7 @@ MouseArea {
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.top: parent.top
                             anchors.topMargin: iconHolder.border.width
+                            iconColorize: false
                             iconHeight: styler.themeIconSizeMedium
                             iconSource: app.getIcon("icons/basemap/%1-%2".arg(item.view.iconPrefix).arg(model.name))
                             opacity: model.enabled ? 1 : 0.5
