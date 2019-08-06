@@ -1,0 +1,1 @@
+../platform.kirigami/ToolItemPL.qml

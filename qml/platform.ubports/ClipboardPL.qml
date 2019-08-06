@@ -1,0 +1,1 @@
+../platform.kirigami/ClipboardPL.qml

@@ -188,6 +188,10 @@ platform-silica:
 	rm qml/platform || true
 	ln -s platform.silica qml/platform
 
+platform-ubports:
+	rm qml/platform || true
+	ln -s platform.ubports qml/platform
+
 pot:
 	tools/update-translations
 
