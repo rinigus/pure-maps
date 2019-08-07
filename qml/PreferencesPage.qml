@@ -754,7 +754,7 @@ PagePL {
                         height: styler.themePaddingLarge
                     }
 
-                    Timer {
+                    TimerExt {
                         interval: 500
                         running: testingColumn.message
                         repeat: true

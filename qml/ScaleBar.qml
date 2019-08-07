@@ -53,7 +53,7 @@ MouseArea {
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 
-    Timer {
+    TimerExt {
         id: updateTimer
         interval: 3000
         repeat: true

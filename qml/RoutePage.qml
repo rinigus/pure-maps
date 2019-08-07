@@ -112,7 +112,7 @@ PagePL {
                 horizontalAlignment: Text.AlignHCenter
                 visible: text
 
-                Timer {
+                TimerExt {
                     id: nt
                     interval: 3000; repeat: false; running: false;
                     onTriggered: note.text = ""
@@ -421,7 +421,7 @@ PagePL {
 
         }
 
-        Timer {
+        TimerExt {
             // timer is used to ensure that all property handlers by
             // page stacks of different platforms are fully processed
             // (such as canNavigateForward, for example) before trying

@@ -131,7 +131,7 @@ MapboxMap {
 
     PositionMarker { id: positionMarker }
 
-    Timer {
+    TimerExt {
         // map view mode switch timer
         interval: app.conf.mapModeAutoSwitchTime > 0 ? app.conf.mapModeAutoSwitchTime*1000 : 1000
         repeat: true
@@ -142,7 +142,7 @@ MapboxMap {
         }
     }
 
-    Timer {
+    TimerExt {
         // auto zoom
         interval: 1000
         repeat: true
@@ -175,7 +175,7 @@ MapboxMap {
         }
     }
 
-    Timer {
+    TimerExt {
         // daytime bias timer
         interval: 1000*60
         repeat: true

@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import "platform"
+import "."
 
 Rectangle {
     id: button
@@ -53,7 +54,7 @@ Rectangle {
         }
     }
 
-    Timer {
+    TimerExt {
         id: timer
         interval: 3000
         repeat: false
