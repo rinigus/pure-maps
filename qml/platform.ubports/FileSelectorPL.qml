@@ -1,1 +1,1 @@
-../platform.kirigami/FileSelectorPL.qml
+../platform.qtcontrols/FileSelectorPL.qml

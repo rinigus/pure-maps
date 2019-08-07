@@ -1,1 +1,1 @@
-../platform.kirigami/MenuDrawerItemPL.qml
+PageMenuItemPL.qml

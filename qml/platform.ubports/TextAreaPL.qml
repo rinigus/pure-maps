@@ -1,1 +1,1 @@
-../platform.kirigami/TextAreaPL.qml
+../platform.qtcontrols/TextAreaPL.qml

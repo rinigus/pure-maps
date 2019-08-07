@@ -1,1 +1,1 @@
-../platform.kirigami/RemorsePopupPL.qml
+../platform.qtcontrols/RemorsePopupPL.qml

@@ -1,1 +1,1 @@
-../platform.kirigami/TimePickerDialogPL.qml
+../platform.qtcontrols/TimePickerDialogPL.qml

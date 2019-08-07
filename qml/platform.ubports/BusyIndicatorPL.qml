@@ -1,1 +1,1 @@
-../platform.kirigami/BusyIndicatorPL.qml
+../platform.qtcontrols/BusyIndicatorPL.qml

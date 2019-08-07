@@ -1,1 +1,1 @@
-../platform.kirigami/LabelPL.qml
+../platform.qtcontrols/LabelPL.qml
