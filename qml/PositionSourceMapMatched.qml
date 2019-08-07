@@ -29,7 +29,6 @@
 import QtQuick 2.0
 import QtPositioning 5.3
 import Nemo.DBus 2.0
-import "." as PM
 
 Item {
     id: master
@@ -236,7 +235,7 @@ Item {
 
     // start OSM Scout Server via systemd socket activation
     // if the server is not available, but needed
-    PM.TimerExt {
+    Timer {
         id: activationTimer
         interval: 5000
         repeat: true
@@ -253,7 +252,7 @@ Item {
     }
 
     // support for testing
-    PM.TimerExt {
+    Timer {
         id: testingTimer
         interval: Math.max(gps.updateInterval, 1000)
         running: false

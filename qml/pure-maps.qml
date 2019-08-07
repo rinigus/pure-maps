@@ -66,8 +66,6 @@ ApplicationWindowPL {
     property var    _stackMain: Stack {}
     property var    _stackNavigation: Stack {}
 
-    signal shutdown;
-
     ClipboardPL { id: clipboard }
     Modes { id: modes }
     PositionSource { id: gps }
@@ -81,7 +79,7 @@ ApplicationWindowPL {
         loops: 1
     }
 
-    TimerExt {
+    Timer {
         id: voicePromptRetry
         interval: 500
         running: false
@@ -105,7 +103,6 @@ ApplicationWindowPL {
     }
 
     Component.onDestruction: {
-        shutdown();
         keepAlive = false;
         gps.active = false;
         app.running = false;

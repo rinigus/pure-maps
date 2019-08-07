@@ -17,7 +17,6 @@
  */
 
 import QtQuick 2.0
-import "."
 import "platform"
 
 MapButton {
@@ -96,7 +95,7 @@ MapButton {
     property bool hidden: app.modalDialog || app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowCenter)
     property bool nextClickToAuto: false
 
-    TimerExt {
+    Timer {
         id: timer
         interval: 5000
         repeat: false

@@ -17,7 +17,6 @@
  */
 
 import QtQuick 2.2
-import "."
 import "platform"
 
 Rectangle {
@@ -67,7 +66,7 @@ Rectangle {
         width: Math.min(implicitWidth, rect.widthLimit)
     }
 
-    TimerExt {
+    Timer {
         id: timer
         interval: 1000
         repeat: stack.length > 0

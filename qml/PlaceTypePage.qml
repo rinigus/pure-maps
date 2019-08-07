@@ -101,7 +101,7 @@ DialogListPL {
 
     property var searchField: undefined
 
-    TimerExt {
+    Timer {
         id: autocompleteTimer
         interval: 1000
         repeat: true

@@ -240,7 +240,7 @@ Item {
         }
     }
 
-    TimerExt {
+    Timer {
         id: autocompleteTimer
         interval: 1000
         repeat: true
@@ -249,7 +249,7 @@ Item {
         onTriggered: geo.fetchCompletions();
     }
 
-    TimerExt {
+    Timer {
         id: fillModelTimer
         interval: 250
         repeat: true

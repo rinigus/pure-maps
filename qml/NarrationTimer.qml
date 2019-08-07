@@ -18,9 +18,8 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
-import "."
 
-TimerExt {
+Timer {
     id: timer
     interval: app.mode === modes.navigate ? 1000 : 3000
     repeat: true

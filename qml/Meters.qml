@@ -17,7 +17,6 @@
  */
 
 import QtQuick 2.0
-import "."
 
 import "js/util.js" as Util
 
@@ -71,7 +70,7 @@ Item {
         text: "\n"
     }
 
-    TimerExt {
+    Timer {
         interval: 3000
         repeat: true
         running: app.running
