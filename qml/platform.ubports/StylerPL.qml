@@ -65,6 +65,7 @@ QtObject {
     property string iconClose: Qt.resolvedUrl("../icons/fallback/window-close-symbolic.svg")
     property string iconDelete: Qt.resolvedUrl("../icons/fallback/edit-delete-symbolic.svg")
     property string iconDot: Qt.resolvedUrl("../icons/fallback/find-location-symbolic.svg")
+    property string iconDown: Qt.resolvedUrl("../icons/fallback/go-down-symbolic.svg")
     property string iconEdit: Qt.resolvedUrl("../icons/fallback/document-edit-symbolic.svg")
     property string iconEditClear: Qt.resolvedUrl("../icons/fallback/edit-clear-symbolic.svg")
     property string iconFavorite: Qt.resolvedUrl("../icons/fallback/bookmark-new-symbolic.svg")

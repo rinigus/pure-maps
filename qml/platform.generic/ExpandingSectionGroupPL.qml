@@ -43,7 +43,7 @@ Column {
             property bool expanded: false
 
             IconListItem {
-                icon: expanded ? "go-down-symbolic" : "go-next-symbolic"
+                icon: expanded ? styler.iconDown : styler.iconForward
                 iconHeight: styler.themeItemSizeSmall*0.5
                 label: selections[model.index].title
                 labelBold: expanded
