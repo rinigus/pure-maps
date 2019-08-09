@@ -1,0 +1,8 @@
+{
+  "template": "custom",
+  "build": "cd $ROOT && make platform-ubports && make PREFIX=$BUILD_DIR/click INCLUDE_GPXPY=yes install",
+  "postbuild": "cp $ROOT/packaging/ubports/manifest.json $BUILD_DIR/click && cp $ROOT/packaging/ubports/pure-maps.apparmor $BUILD_DIR/click && cp $BUILD_DIR/click/share/applications/pure-maps.desktop $BUILD_DIR/click && cp $BUILD_DIR/click/bin/pure-maps $BUILD_DIR/click",
+  "build_dir": "build/pure-maps",
+  "libraries": {
+  }
+}
