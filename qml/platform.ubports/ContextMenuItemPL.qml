@@ -1,1 +1,1 @@
-../platform.kirigami24/ContextMenuItemPL.qml
+PageMenuItemPL.qml

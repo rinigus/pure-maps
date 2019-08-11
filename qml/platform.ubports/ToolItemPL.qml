@@ -1,1 +1,1 @@
-../platform.kirigami24/ToolItemPL.qml
+../platform.qtcontrols/ToolItemPL.qml

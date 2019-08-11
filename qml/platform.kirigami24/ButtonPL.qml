@@ -1,1 +1,0 @@
-../platform.qtcontrols/ButtonPL.qml

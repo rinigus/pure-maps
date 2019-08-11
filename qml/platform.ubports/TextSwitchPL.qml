@@ -1,1 +1,1 @@
-../platform.kirigami24/TextSwitchPL.qml
+../platform.kirigami/TextSwitchPL.qml

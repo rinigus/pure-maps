@@ -1,1 +1,1 @@
-../platform.kirigami24/PageMenuItemPL.qml
+../platform.kirigami/PageMenuItemPL.qml

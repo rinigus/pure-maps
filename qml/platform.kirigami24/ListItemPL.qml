@@ -1,1 +1,0 @@
-../platform.kirigami/ListItemPL.qml

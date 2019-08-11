@@ -1,1 +1,1 @@
-../platform.kirigami24/ListItemPL.qml
+../platform.kirigami/ListItemPL.qml

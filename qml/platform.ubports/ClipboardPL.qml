@@ -1,1 +1,1 @@
-../platform.kirigami24/ClipboardPL.qml
+../platform.qtcontrols/ClipboardPL.qml

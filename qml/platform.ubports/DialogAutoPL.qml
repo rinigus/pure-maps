@@ -1,1 +1,1 @@
-../platform.kirigami24/DialogAutoPL.qml
+../platform.kirigami/DialogAutoPL.qml

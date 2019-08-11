@@ -1,1 +1,1 @@
-../platform.kirigami24/SearchFieldPL.qml
+../platform.qtcontrols/SearchFieldPL.qml

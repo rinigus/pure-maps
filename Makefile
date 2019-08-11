@@ -184,10 +184,6 @@ platform-kirigami:
 	rm qml/platform || true
 	ln -s platform.kirigami qml/platform
 
-platform-kirigami24:
-	rm qml/platform || true
-	ln -s platform.kirigami24 qml/platform
-
 platform-silica:
 	rm qml/platform || true
 	ln -s platform.silica qml/platform

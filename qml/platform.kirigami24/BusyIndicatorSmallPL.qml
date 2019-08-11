@@ -1,1 +1,0 @@
-../platform.qtcontrols/BusyIndicatorSmallPL.qml

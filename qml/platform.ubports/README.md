@@ -1,5 +1,5 @@
-UBPorts implementation. Its currently based on Kirigami24 platform which
-is fully compatible with UBPorts in terms of Kirigami and Qt versions.
+UBPorts implementation. Its currently based on Kirigami platform with 
+changes induced by Qt version available on this platform.
 
 Recommended imports are
 

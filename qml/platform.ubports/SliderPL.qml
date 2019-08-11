@@ -1,1 +1,1 @@
-../platform.kirigami24/SliderPL.qml
+../platform.kirigami/SliderPL.qml

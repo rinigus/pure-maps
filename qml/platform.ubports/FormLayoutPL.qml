@@ -1,1 +1,1 @@
-../platform.kirigami24/FormLayoutPL.qml
+../platform.kirigami/FormLayoutPL.qml

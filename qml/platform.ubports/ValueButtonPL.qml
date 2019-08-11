@@ -1,1 +1,1 @@
-../platform.kirigami24/ValueButtonPL.qml
+../platform.kirigami/ValueButtonPL.qml
