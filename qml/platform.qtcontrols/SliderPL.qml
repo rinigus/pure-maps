@@ -44,14 +44,15 @@ Item {
         anchors.leftMargin: styler.themePaddingMedium
         anchors.verticalCenter: lab.verticalCenter
         font.pixelSize: styler.themeFontSizeMedium
+        width: Math.max(valTxt.width*2,
+                        parent.width - 2*(styler.themePaddingMedium+styler.themeHorizontalPageMargin) -
+                        lab.width - valTxt.width)
     }
 
     Label {
         id: valTxt
         anchors.left: val.right
         anchors.leftMargin: styler.themePaddingMedium
-        anchors.right: parent.right
-        anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.baseline: lab.baseline
         text: valueText.toFixed(valueTextDecimalPlaces)
     }

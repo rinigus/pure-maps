@@ -346,11 +346,11 @@ MouseArea {
         height: colPanel.height + 2*styler.themePaddingLarge
         visible: openMenu
 
-        FormLayoutPL {
+        Column {
             id: colPanel
             anchors.centerIn: parent
             spacing: styler.themePaddingLarge
-            width: parent.width - 2*styler.themeHorizontalPageMargin
+            width: parent.width
 
             SliderPL {
                 id: scaleSlider
