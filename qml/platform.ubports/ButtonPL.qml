@@ -1,1 +1,1 @@
-../platform.qtcontrols/ButtonPL.qml
+../platform.kirigami24/ButtonPL.qml

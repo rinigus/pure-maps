@@ -1,1 +1,1 @@
-../platform.generic/ExpandingSectionGroupPL.qml
+../platform.kirigami24/ExpandingSectionGroupPL.qml

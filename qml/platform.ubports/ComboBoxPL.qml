@@ -1,1 +1,1 @@
-../platform.kirigami/ComboBoxPL.qml
+../platform.kirigami24/ComboBoxPL.qml

@@ -1,1 +1,1 @@
-../platform.kirigami/TextFieldPL.qml
+../platform.kirigami24/TextFieldPL.qml

@@ -1,0 +1,1 @@
+../platform.kirigami/DialogPL.qml

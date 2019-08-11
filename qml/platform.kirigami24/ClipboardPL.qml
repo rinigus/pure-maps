@@ -1,0 +1,1 @@
+../platform.qtcontrols/ClipboardPL.qml

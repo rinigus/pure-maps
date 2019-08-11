@@ -1,1 +1,1 @@
-PageMenuItemPL.qml
+../platform.kirigami24/MenuDrawerSubmenuItemPL.qml

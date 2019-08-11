@@ -1,1 +1,1 @@
-../platform.kirigami/SectionHeaderPL.qml
+../platform.kirigami24/SectionHeaderPL.qml
