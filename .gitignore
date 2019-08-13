@@ -6,5 +6,5 @@ __pycache__
 dist
 rpm/*.rpm
 tools/apikeys.py
-/build/
+/build_ubports/
 /qml/platform
