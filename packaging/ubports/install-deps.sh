@@ -14,6 +14,7 @@ BIN_INSTALL_DIR=$INSTALL_DIR/lib/$ARCH_TRIPLET/bin
 # Install meta data
 cp $ROOT/packaging/ubports/manifest.json $INSTALL_DIR
 cp $ROOT/packaging/ubports/pure-maps.apparmor $INSTALL_DIR
+cp $ROOT/packaging/ubports/pure-maps.svg $INSTALL_DIR/pure-maps
 mv $GENERAL_BUILD_DIR/pure-maps/click/share/applications/pure-maps.desktop $INSTALL_DIR
 
 # Install binaries
