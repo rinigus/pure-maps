@@ -1,1 +1,1 @@
-../platform.kirigami/TextFieldPL.qml
+../platform.qtcontrols/TextFieldPL.qml

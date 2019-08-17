@@ -1,1 +1,1 @@
-../platform.kirigami/DialogPL.qml
+../platform.qtcontrols/DialogPL.qml

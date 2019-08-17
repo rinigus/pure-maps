@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018-2019 Rinigus, 2019 Purism SPC
+ * Copyright (C) 2018 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,12 +18,11 @@
 
 import QtQuick 2.0
 import QtQuick.Window 2.2
-import org.kde.kirigami 2.4 as Kirigami
 
 QtObject {
     // font sizes and family
-    property string themeFontFamily: Kirigami.Theme.defaultFont
-    property string themeFontFamilyHeading: Kirigami.Theme.defaultFont
+    property string themeFontFamily: Qt.application.font.family
+    property string themeFontFamilyHeading: Qt.application.font.family
     property int  themeFontSizeHuge: Math.round(themeFontSizeMedium*3.0)
     property int  themeFontSizeExtraLarge: Math.round(themeFontSizeMedium*2.0)
     property int  themeFontSizeLarge: Math.round(themeFontSizeMedium*1.5)
@@ -34,21 +33,17 @@ QtObject {
 
     // colors
     // block background (navigation, poi panel, bubble)
-    property color blockBg: Kirigami.Theme.backgroundColor
+    property color blockBg: palette.window
     // variant of navigation icons
     property string navigationIconsVariant: darkTheme ? "white" : "black"
     // descriptive items
-    property color themeHighlightColor: Kirigami.Theme.textColor
-    // due to https://bugreports.qt.io/browse/QTBUG-53189
-    // we cannot use Kirigami palette on links
-    // navigation items (to be clicked). When getting link colors,
-    // those are rather pale and hard to see. Swapping to
-    // regular text color
+    property color themeHighlightColor: palette.windowText
+    // navigation items (to be clicked)
     property color themePrimaryColor: palette.text
     // navigation items, secondary
     property color themeSecondaryColor: inactivePalette.text
     // descriptive items, secondary
-    property color themeSecondaryHighlightColor: Kirigami.Theme.disabledTextColor
+    property color themeSecondaryHighlightColor: inactivePalette.text
 
     // button sizes
     property real themeButtonWidthLarge: 256
@@ -58,6 +53,7 @@ QtObject {
     property real themeIconSizeLarge: 2.5*themeFontSizeLarge
     property real themeIconSizeMedium: 2*themeFontSizeLarge
     property real themeIconSizeSmall: 1.5*themeFontSizeLarge
+    // used icons
     // used icons
     property string iconAbout: Qt.resolvedUrl("../../icons/help-about-symbolic.svg")
     property string iconBack: Qt.resolvedUrl("../../icons/go-previous-symbolic.svg")
@@ -95,22 +91,21 @@ QtObject {
     property string iconWebLink: Qt.resolvedUrl("../../icons/web-browser-symbolic.svg")
 
     // item sizes
-    property real themeItemSizeLarge: themeItemSizeSmall * 2
-    property real themeItemSizeSmall: Kirigami.Units.gridUnit * 2.5
-    property real themeItemSizeExtraSmall: themeItemSizeSmall * 0.75
+    property real themeItemSizeLarge: themeFontSizeLarge * 3
+    property real themeItemSizeSmall: themeFontSizeMedium * 3
+    property real themeItemSizeExtraSmall: themeFontSizeSmall * 3
 
     // paddings and page margins
-    property real themeHorizontalPageMargin: Kirigami.Units.largeSpacing * 2
-    property real themePaddingLarge: Kirigami.Units.largeSpacing * 2
-    property real themePaddingMedium: Kirigami.Units.largeSpacing * 1
-    property real themePaddingSmall: Kirigami.Units.smallSpacing
+    property real themeHorizontalPageMargin: 1.25*themeFontSizeExtraLarge
+    property real themePaddingLarge: 0.75*themeFontSizeExtraLarge
+    property real themePaddingMedium: 0.5*themeFontSizeLarge
+    property real themePaddingSmall: 0.25*themeFontSizeSmall
 
-    property real themePixelRatio: 1 //Screen.devicePixelRatio
+    property real themePixelRatio: Screen.devicePixelRatio
 
-    property bool darkTheme: (Kirigami.Theme.backgroundColor.r + Kirigami.Theme.backgroundColor.g +
-                              Kirigami.Theme.backgroundColor.b) <
-                             (Kirigami.Theme.textColor.r + Kirigami.Theme.textColor.g +
-                              Kirigami.Theme.textColor.b)
+    property bool darkTheme: (blockBg.r + blockBg.g + blockBg.b) <
+                             (themePrimaryColor.r + themePrimaryColor.g +
+                              themePrimaryColor.b)
 
     property list<QtObject> children: [
         SystemPalette {

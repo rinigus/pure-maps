@@ -1,1 +1,1 @@
-../platform.kirigami/StackPL.qml
+../platform.qtcontrols/StackPL.qml

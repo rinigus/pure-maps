@@ -1,1 +1,1 @@
-../platform.generic/ExpandingSectionPL.qml
+../platform.qtcontrols/ExpandingSectionPL.qml

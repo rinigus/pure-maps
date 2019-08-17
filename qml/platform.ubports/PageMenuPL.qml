@@ -1,1 +1,1 @@
-../platform.kirigami/PageMenuPL.qml
+../platform.qtcontrols/PageMenuPL.qml

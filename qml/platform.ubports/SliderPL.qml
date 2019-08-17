@@ -1,1 +1,1 @@
-../platform.kirigami/SliderPL.qml
+../platform.qtcontrols/SliderPL.qml

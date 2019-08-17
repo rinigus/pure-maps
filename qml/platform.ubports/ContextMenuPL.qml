@@ -1,1 +1,1 @@
-PageMenuPL.qml
+../platform.qtcontrols/ContextMenuPL.qml

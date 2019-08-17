@@ -1,1 +1,1 @@
-../platform.kirigami/ValueButtonPL.qml
+../platform.qtcontrols/ValueButtonPL.qml

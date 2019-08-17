@@ -1,1 +1,1 @@
-../platform.kirigami/SectionHeaderPL.qml
+../platform.qtcontrols/SectionHeaderPL.qml

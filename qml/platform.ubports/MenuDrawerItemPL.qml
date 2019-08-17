@@ -1,1 +1,1 @@
-PageMenuItemPL.qml
+../platform.qtcontrols/MenuDrawerItemPL.qml
