@@ -19,6 +19,8 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
+import QtGraphicalEffects 1.0
+import "."
 
 // QtQuick Controls 2 specific implementation
 // for header bar that is used to display page
@@ -42,9 +44,18 @@ ToolBar {
         anchors.left: parent.left
         anchors.leftMargin: 0
         anchors.verticalCenter: label.verticalCenter
-        height: styler.themeItemSizeSmall
-        icon.height: label.height
-        icon.source: styler.iconBack
+        height: bar.height
+        width: im.width + styler.themeHorizontalPageMargin + styler.themePaddingLarge
+
+        IconPL {
+            id: im
+            anchors.left: parent.left
+            anchors.leftMargin: styler.themeHorizontalPageMargin
+            anchors.verticalCenter: parent.verticalCenter
+            iconHeight: label.height
+            iconSource: styler.iconBack
+        }
+
         onClicked: app.pages.pop()
     }
 
@@ -69,13 +80,23 @@ ToolBar {
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.verticalCenter: label.verticalCenter
-        height: styler.themeItemSizeSmall
-        icon.height: label.height
-        icon.source: page.acceptIconName ? page.acceptIconName : styler.iconForward
-        text: acceptDescription
-        Layout.minimumWidth: toolButton.width
-        visible: !page.hideAcceptButton && (app.pages.hasAttached || !!page.isDialog)
         enabled: page.canNavigateForward === true
+        height: styler.themeItemSizeSmall
+        text: acceptDescription
+        rightPadding: imA.anchors.rightMargin + styler.themePaddingMedium + imA.width
+        visible: !page.hideAcceptButton && (app.pages.hasAttached || !!page.isDialog)
+        Layout.minimumWidth: toolButton.width
+
+        IconPL {
+            id: imA
+            anchors.right: parent.right
+            anchors.rightMargin: styler.themeHorizontalPageMargin
+            anchors.verticalCenter: parent.verticalCenter
+            iconHeight: label.height
+            iconSource: page.acceptIconName ? page.acceptIconName : styler.iconForward
+            opacity: enabled ? 1 : 0.25
+        }
+
         onClicked: {
             bar.accepted();
         }
