@@ -158,10 +158,10 @@ endif
 	$(foreach lang,$(LANGS),$(call install-translation,$(lang)))
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
-	cp data/$(NAME).desktop $(DESKTOPDIR) || true
+	cp data/$(NAME).desktop $(DESKTOPDIR) || (cp data/pure-maps.desktop $(DESKTOPDIR)/$(NAME).desktop && sed -i -e 's|pure-maps|$(NAME)|g' $(DESKTOPDIR)/$(NAME).desktop) || true
 	@echo "Installing executable file..."
 	mkdir -p $(EXEDIR)
-	cp data/$(NAME) $(EXE) || true
+	cp data/$(NAME) $(EXE) || (cp data/pure-maps $(EXE) && sed -i -e 's|pure-maps|$(NAME)|g' $(EXE)) || true
 	sed -i -e 's|INSTALL_PREFIX|$(PREFIX)|g' $(EXE) || true
 	@echo "Installing appdata file..."
 	mkdir -p $(METADIR)
