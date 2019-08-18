@@ -78,7 +78,7 @@ PagePL {
                 anchors.verticalCenter: label.verticalCenter
                 fillMode: Image.PreserveAspectFit
                 height: styler.themeItemSizeSmall*0.8
-                name: styler.iconProfile
+                iconName: styler.iconProfile
             }
 
             LabelPL {
