@@ -1,13 +1,14 @@
 # -*- coding: us-ascii-unix -*-
 
 NAME       = pure-maps
+FULLNAME   = $(NAME)
 VERSION    = 1.22.0
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
 PREFIX     = /usr
 EXEDIR     = $(DESTDIR)$(PREFIX)/bin
 EXE        = $(EXEDIR)/$(NAME)
-DATADIR    = $(DESTDIR)$(PREFIX)/share/$(NAME)
+DATADIR    = $(DESTDIR)$(PREFIX)/share/$(FULLNAME)
 DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
 METADIR    = $(DESTDIR)$(PREFIX)/share/metainfo
@@ -23,7 +24,7 @@ define install-translation =
     msgfmt po/$(1).po -o $(DATADIR)/locale/$(1)/LC_MESSAGES/pure-maps.mo
     # Qt linguist translations for QML use.
     mkdir -p $(DATADIR)/translations
-    $(LCONVERT) -o $(DATADIR)/translations/$(NAME)-$(1).qm po/$(1).po
+    $(LCONVERT) -o $(DATADIR)/translations/$(FULLNAME)-$(1).qm po/$(1).po
 endef
 
 check:
@@ -105,9 +106,11 @@ endif
 	cp thirdparty/open-location-code/*.py $(DATADIR)/poor/openlocationcode
 	mkdir -p $(DATADIR)/poor/astral
 	cp thirdparty/astral/*.py $(DATADIR)/poor/astral
+	@echo "Setting standard paths..."
+	sed -i -e 's|pure-maps|$(FULLNAME)|g' $(DATADIR)/poor/paths.py || true
 	@echo "Installing QML files..."
 	mkdir -p $(DATADIR)/qml
-	cp qml/pure-maps.qml $(DATADIR)/qml/$(NAME).qml
+	cp qml/pure-maps.qml $(DATADIR)/qml/$(FULLNAME).qml
 	cp qml/[ABCDEFGHIJKLMNOPQRSTUVXYZ]*.qml $(DATADIR)/qml
 	mkdir -p $(DATADIR)/qml/icons
 	cp qml/icons/*.svg qml/icons/*.png qml/icons/*.jpg $(DATADIR)/qml/icons
@@ -158,11 +161,12 @@ endif
 	$(foreach lang,$(LANGS),$(call install-translation,$(lang)))
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
-	cp data/$(NAME).desktop $(DESKTOPDIR) || (cp data/pure-maps.desktop $(DESKTOPDIR)/$(NAME).desktop && sed -i -e 's|pure-maps|$(NAME)|g' $(DESKTOPDIR)/$(NAME).desktop) || true
+	cp data/$(NAME).desktop $(DESKTOPDIR) || cp data/pure-maps.desktop $(DESKTOPDIR)/$(NAME).desktop || true
 	@echo "Installing executable file..."
 	mkdir -p $(EXEDIR)
-	cp data/$(NAME) $(EXE) || (cp data/pure-maps $(EXE) && sed -i -e 's|pure-maps|$(NAME)|g' $(EXE)) || true
+	cp data/$(NAME) $(EXE) || cp data/pure-maps $(EXE) || true
 	sed -i -e 's|INSTALL_PREFIX|$(PREFIX)|g' $(EXE) || true
+	sed -i -e 's|FULL_NAME|$(FULLNAME)|g' $(EXE) || true
 	@echo "Installing appdata file..."
 	mkdir -p $(METADIR)
 	cp packaging/pure-maps.appdata.xml $(METADIR)/$(NAME).appdata.xml || true
