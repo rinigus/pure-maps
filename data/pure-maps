@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script tries to send command to running Pure Maps
 # and starts new instance if it fails
