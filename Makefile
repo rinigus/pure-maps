@@ -10,6 +10,7 @@ EXEDIR     = $(DESTDIR)$(PREFIX)/bin
 EXE        = $(EXEDIR)/$(NAME)
 DATADIR    = $(DESTDIR)$(PREFIX)/share/$(FULLNAME)
 DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
+DBUSDIR    = $(DESTDIR)$(PREFIX)/share/dbus-1/services
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
 METADIR    = $(DESTDIR)$(PREFIX)/share/metainfo
 LANGS      = $(basename $(notdir $(wildcard po/*.po)))
@@ -161,7 +162,10 @@ endif
 	$(foreach lang,$(LANGS),$(call install-translation,$(lang)))
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
-	cp data/$(NAME).desktop $(DESKTOPDIR) || cp data/pure-maps.desktop $(DESKTOPDIR)/$(NAME).desktop || true
+	cp data/$(NAME).desktop $(DESKTOPDIR) || cp data/io.github.rinigus.PureMaps.desktop $(DESKTOPDIR)/io.github.rinigus.PureMaps.desktop || true
+	@echo "Installing dbus service file..."
+	mkdir -p $(DBUSDIR)
+	cp data/io.github.rinigus.PureMaps.service $(DBUSDIR) || true
 	@echo "Installing executable file..."
 	mkdir -p $(EXEDIR)
 	cp data/$(NAME) $(EXE) || cp data/pure-maps $(EXE) || true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pure Maps Uri Handler
+MimeType=x-scheme-handler/geo
+X-Maemo-Service=io.github.rinigus.PureMaps
+X-Maemo-Object-Path=/io/github/rinigus/PureMaps
+X-Maemo-Method=io.github.rinigus.PureMaps.Command
+Icon=harbour-pure-maps
+Type=Application
+NoDisplay=true

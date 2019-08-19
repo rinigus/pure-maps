@@ -32,11 +32,17 @@ search for nearby places by type and share your location.
 
 %install
 make DESTDIR=%{buildroot} PREFIX=/usr INCLUDE_GPXPY=yes install
+# Not needed for non silica
+cp data/harbour-pure-maps-open-uri.desktop %{buildroot}%{_datadir}/applications/%{name}-open-uri.desktop
+# Overwrites the non silica one
+cp data/io.github.rinigus.PureMaps-silica.service %{buildroot}%{_datadir}/dbus-1/services/io.github.rinigus.PureMaps.service
 
 %files
 %defattr(-,root,root,-)
 %{_bindir}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}-open-uri.desktop
+%{_datadir}/dbus-1/services/io.github.rinigus.PureMaps.service
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %exclude /usr/share/metainfo/harbour-pure-maps.appdata.xml

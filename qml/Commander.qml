@@ -31,34 +31,48 @@ Item {
         path: '/io/github/rinigus/PureMaps'
         service: 'io.github.rinigus.PureMaps'
 
-        xml: '  <interface name="io.github.rinigus.PureMaps">\n' +
-             '    <method name="command">\n' +
-             '       <arg name="options" direction="in" type="as"/>' +
-             '       <arg name="result" direction="out" type="s"/>' +
-             '    </method>\n' +
-             '    <method name="showPoi">\n' +
-             '       <arg name="latitude" direction="in" type="d"/>' +
-             '       <arg name="longitude" direction="in" type="d"/>' +
-             '       <arg name="result" direction="out" type="s"/>' +
-             '    </method>\n' +
-             '  </interface>\n'
+        xml: "<interface name='io.github.rinigus.PureMaps'>
+             <method name='Activate'>
+               <arg type='a{sv}' name='platform_data' direction='in'/>
+             </method>
+             <method name='Open'>
+               <arg type='as' name='uris' direction='in'/>
+             </method>
+             <method name='Command'>
+               <arg type='as' name='uris' direction='in'/>
+             </method>
+             <method name='ActivateAction'>
+               <arg type='s' name='action_name' direction='in'/>
+               <arg type='av' name='parameter' direction='in'/>
+               <arg type='a{sv}' name='platform_data' direction='in'/>
+             </method>
+           </interface>"
 
-        function command(options) {
-            var escaped = options.map(function(s) {
-                return s.replace(".COMMA.", ",")
-            })
-            commander.parser(escaped);
+        function rcActivate( platform_data ) {
             app.activate();
-            return "OK";
+            console.log( "DBUS METHOD CALLED: Activate" )
+            console.log( JSON.stringify(platform_data) )
         }
+        function rcOpen( uris, platform_data ) {
+            app.activate();
+            console.log( "DBUS METHOD CALLED: Open" )
+            console.log( JSON.stringify(uris) )
+            console.log( JSON.stringify(platform_data) )
+            parser( uris )
 
-        function showPoi(latitude, longitude) {
-            if (isFinite(latitude) && isFinite(longitude)) {
-                commander.showPoi(QtPositioning.coordinate(latitude, longitude));
-                app.activate();
-                return "OK";
-            }
-            return "Error: Coordinates are not numbers";
+        }
+        function rcActivateAction(action_name, parameter, platform_data ) {
+            app.activate();
+            console.log("DBUS METHOD CALLED: ActivateAction")
+            console.log( JSON.stringify(action_name) )
+            console.log( JSON.stringify(parameter) )
+            console.log( JSON.stringify(platform_data) )
+        }
+        function rcCommand( uris ) {
+            app.activate();
+            console.log( "DBUS METHOD CALLED: Command" )
+            console.log( JSON.stringify(uris) )
+            parser( uris )
         }
     }
 
