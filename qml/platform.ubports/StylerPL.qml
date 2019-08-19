@@ -18,6 +18,8 @@
 
 import QtQuick 2.0
 import QtQuick.Window 2.2
+import Ubuntu.Components 1.3
+import Ubuntu.Components.Themes 1.3
 
 QtObject {
     // font sizes and family
@@ -26,33 +28,33 @@ QtObject {
     property int  themeFontSizeHuge: Math.round(themeFontSizeMedium*3.0)
     property int  themeFontSizeExtraLarge: Math.round(themeFontSizeMedium*2.0)
     property int  themeFontSizeLarge: Math.round(themeFontSizeMedium*1.5)
-    property int  themeFontSizeMedium: Math.round(Qt.application.font.pixelSize*1.0)
+    property int  themeFontSizeMedium: units.gridUnit*2
     property int  themeFontSizeSmall: Math.round(themeFontSizeMedium*0.9)
     property int  themeFontSizeExtraSmall: Math.round(themeFontSizeMedium*0.7)
     property real themeFontSizeOnMap: themeFontSizeSmall
 
     // colors
     // block background (navigation, poi panel, bubble)
-    property color blockBg: palette.window
+    property color blockBg: theme.palette.normal.background
     // variant of navigation icons
     property string navigationIconsVariant: darkTheme ? "white" : "black"
     // descriptive items
-    property color themeHighlightColor: palette.windowText
+    property color themeHighlightColor: theme.palette.normal.backgroundText
     // navigation items (to be clicked)
-    property color themePrimaryColor: palette.text
+    property color themePrimaryColor: theme.palette.normal.baseText
     // navigation items, secondary
-    property color themeSecondaryColor: inactivePalette.text
+    property color themeSecondaryColor: theme.palette.normal.baseText
     // descriptive items, secondary
-    property color themeSecondaryHighlightColor: inactivePalette.text
+    property color themeSecondaryHighlightColor: theme.palette.normal.backgroundSecondaryText
 
     // button sizes
-    property real themeButtonWidthLarge: 256
-    property real themeButtonWidthMedium: 180
+    property real themeButtonWidthLarge: units.gridUnit*32
+    property real themeButtonWidthMedium: units.gridUnit*22
 
     // icon sizes
-    property real themeIconSizeLarge: 2.5*themeFontSizeLarge
-    property real themeIconSizeMedium: 2*themeFontSizeLarge
-    property real themeIconSizeSmall: 1.5*themeFontSizeLarge
+    property real themeIconSizeLarge: units.gridUnit*7
+    property real themeIconSizeMedium: units.gridUnit*5
+    property real themeIconSizeSmall: units.gridUnit*4
     // used icons
     // used icons
     property string iconAbout: Qt.resolvedUrl("../../icons/help-about-symbolic.svg")
@@ -101,26 +103,9 @@ QtObject {
     property real themePaddingMedium: 0.5*themeFontSizeLarge
     property real themePaddingSmall: 0.25*themeFontSizeSmall
 
-    property real themePixelRatio: Screen.devicePixelRatio
+    property real themePixelRatio: units.gridUnit / 8.0
 
     property bool darkTheme: (blockBg.r + blockBg.g + blockBg.b) <
                              (themePrimaryColor.r + themePrimaryColor.g +
                               themePrimaryColor.b)
-
-    property list<QtObject> children: [
-        SystemPalette {
-            id: palette
-            colorGroup: SystemPalette.Active
-        },
-
-        SystemPalette {
-            id: disabledPalette
-            colorGroup: SystemPalette.Disabled
-        },
-
-        SystemPalette {
-            id: inactivePalette
-            colorGroup: SystemPalette.Inactive
-        }
-    ]
 }
