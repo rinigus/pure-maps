@@ -10,7 +10,6 @@
     "name": "OSM Scout Day English",
     "profiles": ["mixed", "offline"],
     "provider": "OSM Scout",
-    "requires": ["harbour-osmscout-server", "osmscout-server"],
     "style_url": "http://localhost:8553/v1/mbgl/style?style=osmbright-en",
     "type": "default"
 }

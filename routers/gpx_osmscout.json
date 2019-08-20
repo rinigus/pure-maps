@@ -13,6 +13,5 @@
   "can_reroute": false,
   "from_needed": false,
   "to_needed": false,
-  "profiles": ["mixed", "offline", "online"],
-  "requires": ["harbour-osmscout-server", "osmscout-server"]
+  "profiles": ["mixed", "offline", "online"]
 }
