@@ -25,7 +25,7 @@
   <g inkscape:groupmode='layer' id='g71291' inkscape:label='emotes' style='display:inline' transform='translate(-100.0002,-747)'/>
   <g inkscape:groupmode='layer' id='g4953' inkscape:label='categories' style='display:inline' transform='translate(-100.0002,-747)'/>
   <g inkscape:groupmode='layer' id='layer12' inkscape:label='actions' style='display:inline' transform='translate(-100.0002,-747)'>
-    <path inkscape:connector-curvature='0' d='m 104.5627,755 5.71875,5.71875 C 110.47732,760.91462 110.74458,761 111.0002,761 l 1,0 0,-1 c 0,-0.25562 -0.0854,-0.52288 -0.28125,-0.71875 L 107.4377,755 l 4.28125,-4.28125 c 0.19587,-0.19587 0.28125,-0.46313 0.28125,-0.71875 l 0,-1 -1,0 c -0.25562,0 -0.52288,0.0854 -0.71875,0.28125 z' id='rect6014-2' sodipodi:nodetypes='ccscsccsscscc' style='fill:#bebebe;fill-opacity:1;stroke:none;display:inline'/>
+    <path inkscape:connector-curvature='0' d='m 104.5627,755 5.71875,5.71875 C 110.47732,760.91462 110.74458,761 111.0002,761 l 1,0 0,-1 c 0,-0.25562 -0.0854,-0.52288 -0.28125,-0.71875 L 107.4377,755 l 4.28125,-4.28125 c 0.19587,-0.19587 0.28125,-0.46313 0.28125,-0.71875 l 0,-1 -1,0 c -0.25562,0 -0.52288,0.0854 -0.71875,0.28125 z' id='rect6014-2' sodipodi:nodetypes='ccscsccsscscc' style='fill:#000000;fill-opacity:1;stroke:none;display:inline'/>
     
   </g>
 </svg>
