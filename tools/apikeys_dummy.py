@@ -6,7 +6,7 @@ Keys = {
 
     # mapbox.com
     "<MAPBOX_KEY>": "REPLACE WITH MAPBOX KEY",
-    
+
     # http://open.mapquestapi.com
     "<MAPQUEST_KEY>": "REPLACE WITH MAPQUEST KEY",
 
