@@ -72,8 +72,8 @@ QtObject {
     property string iconManeuvers: "image://theme/media-playlist-shuffle" //Qt.resolvedUrl("../../icons/maneuvers-symbolic.svg")
     property string iconMaps: Qt.resolvedUrl("../../icons/map-layers-symbolic.svg")
     property string iconMenu: "image://theme/navigation-menu" //Qt.resolvedUrl("../../icons/open-menu-symbolic.svg")
-    property string iconNavigate: Qt.resolvedUrl("../../icons/route-symbolic.svg")
-    property string iconNavigateTo: Qt.resolvedUrl("../icons/sailfishos/route-to-black.svg")
+    property string iconNavigate: Qt.resolvedUrl("../icons/sailfishos/route-to-black.svg")
+    property string iconNavigateTo: iconNavigate
     property string iconNavigateFrom: Qt.resolvedUrl("../icons/sailfishos/route-from-black.svg")
     property string iconNearby: Qt.resolvedUrl("../icons/sailfishos/nearby-search-black.svg")
     property string iconPause: "image://theme/media-playback-pause" //Qt.resolvedUrl("../../icons/media-playback-pause-symbolic.svg")
