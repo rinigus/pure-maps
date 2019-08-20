@@ -66,6 +66,10 @@ ApplicationWindow {
     function initPages() {
     }
 
+    function sendSms(text) {
+        console.log("Sending SMS is not implemented");
+    }
+
     function showMainMenu() {
         app.push(menuPageUrl);
     }

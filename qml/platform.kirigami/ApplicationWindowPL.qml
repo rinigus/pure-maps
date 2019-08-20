@@ -81,6 +81,10 @@ Kirigami.ApplicationWindow {
         }
     }
 
+    function sendSms(text) {
+        console.log("Sending SMS is not implemented");
+    }
+    
     function showMainMenu() {
         globalDrawer.open();
     }

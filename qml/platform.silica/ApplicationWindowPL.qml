@@ -58,6 +58,18 @@ ApplicationWindow {
     function initPages() {
     }
 
+    function sendSms(text) {
+        // XXX: SMS links don't work without a recipient.
+        // https://together.jolla.com/question/84134/
+        clipboard.copy(text);
+        py.call("poor.util.popen", [
+                    "/usr/bin/invoker",
+                    "--type=silica-qt5",
+                    "/usr/bin/jolla-messages",
+                ], null);
+        return true;
+    }
+
     function showMainMenu() {
         app.push(menuPageUrl);
     }
