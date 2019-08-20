@@ -17,41 +17,31 @@
  */
 
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
+import Ubuntu.Components 1.3
+import "."
 
 Item {
     id: item
     height: image.height*(1 + padding)
     width: image.width*(1 + padding)
 
-    property bool   iconColorize: true
-    property int    iconHeight: 0
-    property string iconName
+    property alias  iconColorize: image.iconColorize
+    property alias  iconHeight: image.iconHeight
+    property alias  iconName: image.iconName
     property real   iconOpacity: 1.0
     property real   iconRotation
-    property string iconSource
-    property int    iconWidth: 0
+    property alias  iconSource: image.iconSource
+    property alias  iconWidth: image.iconWidth
     property real   padding: 0.5
     property alias  pressed: mouse.pressed
 
     signal clicked
 
-    Image {
+    IconPL {
         id: image
         anchors.centerIn: parent
-        fillMode: Image.PreserveAspectFit
         opacity: iconOpacity
         rotation: iconRotation
-        source: iconName || iconSource
-        sourceSize.height: iconHeight
-        sourceSize.width: iconWidth
-        visible: source && !iconName
-    }
-
-    ColorOverlay {
-        anchors.fill: image
-        color: iconColorize ? styler.themeHighlightColor : "transparent"
-        source: image
     }
 
     Rectangle {

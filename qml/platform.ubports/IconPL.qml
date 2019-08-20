@@ -17,23 +17,23 @@
  */
 
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
+import Ubuntu.Components 1.3
 
-Image {
+Icon {
     id: image
+    height: iconHeight ? iconHeight : undefined
+    keyColor: source.indexOf("image://theme/") === 0 ? "#808080" : "#000000"
     source: iconName || iconSource
-    sourceSize.height: iconHeight
-    sourceSize.width: iconWidth
+    width: iconWidth ? iconWidth : undefined
 
+    property var    fillMode // unused, kept for compatibility
     property bool   iconColorize: true
     property int    iconHeight: 0
     property string iconName
     property string iconSource
     property int    iconWidth: 0
 
-    ColorOverlay {
-        anchors.fill: image
-        color: iconColorize ? styler.themeHighlightColor : "transparent"
-        source: image
+    Component.onCompleted: {
+        if (iconColorize) color = styler.themeHighlightColor;
     }
 }
