@@ -22,7 +22,7 @@ import Ubuntu.Components 1.3
 Icon {
     id: image
     height: iconHeight ? iconHeight : undefined
-    keyColor: source.indexOf("image://theme/") === 0 ? "#808080" : "#000000"
+    keyColor: (typeof source.indexOf !== 'function' || source.indexOf("image://theme/") === 0) ? "#808080" : "#000000"
     source: iconName || iconSource
     width: iconWidth ? iconWidth : undefined
 
