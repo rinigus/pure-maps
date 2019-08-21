@@ -25,12 +25,12 @@ QtObject {
     // font sizes and family
     property string themeFontFamily: Qt.application.font.family
     property string themeFontFamilyHeading: Qt.application.font.family
-    property int  themeFontSizeHuge: Math.round(themeFontSizeMedium*3.0)
-    property int  themeFontSizeExtraLarge: Math.round(themeFontSizeMedium*2.0)
-    property int  themeFontSizeLarge: Math.round(themeFontSizeMedium*1.5)
-    property int  themeFontSizeMedium: units.gridUnit*2
-    property int  themeFontSizeSmall: Math.round(themeFontSizeMedium*0.9)
-    property int  themeFontSizeExtraSmall: Math.round(themeFontSizeMedium*0.7)
+    property int  themeFontSizeHuge: themeFontSizeExtraLarge*1.2
+    property int  themeFontSizeExtraLarge: FontUtils.sizeToPixels("x-large")
+    property int  themeFontSizeLarge: FontUtils.sizeToPixels("large")
+    property int  themeFontSizeMedium: FontUtils.sizeToPixels("medium")
+    property int  themeFontSizeSmall: FontUtils.sizeToPixels("small")
+    property int  themeFontSizeExtraSmall: FontUtils.sizeToPixels("x-small")
     property real themeFontSizeOnMap: themeFontSizeSmall
 
     // colors
