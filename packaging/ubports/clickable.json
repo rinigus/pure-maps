@@ -31,6 +31,14 @@
     "nemo-qml-plugin-dbus": {
       "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
       "template": "qmake"
+    },
+    "flite": {
+      "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
+      "template": "custom",
+      "build": "cp -r $SRC_DIR $BUILD_DIR/$NAME && cd $BUILD_DIR/$NAME && ./configure --prefix=\"$INSTALL_DIR\" --exec-prefix=\"$INSTALL_DIR\" --host=$ARCH_TRIPLET && make && make get_voices && make install",
+      "dependencies_target": [
+        "libtool"
+      ]
     }
   }
 }

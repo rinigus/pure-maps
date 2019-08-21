@@ -22,6 +22,12 @@ mkdir -p $BIN_INSTALL_DIR
 
 mv $GENERAL_BUILD_DIR/pure-maps/click/bin/* $BIN_INSTALL_DIR
 cp $GENERAL_BUILD_DIR/qmlrunner/qmlrunner $BIN_INSTALL_DIR
+cp $GENERAL_BUILD_DIR/flite/install/bin/flite{,_cmu_us_kal16,_cmu_us_slt} $BIN_INSTALL_DIR
+
+# Strip binaries
+if [ "$ARCH_TRIPLET" == "arm-linux-gnueabihf" ]; then
+	arm-linux-gnueabihf-strip -s $BIN_INSTALL_DIR/flite*
+fi
 
 # Install libs
 mkdir -p $LIBS_INSTALL_DIR
