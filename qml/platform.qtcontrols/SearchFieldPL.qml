@@ -26,6 +26,7 @@ TextField {
     anchors.leftMargin: styler.themeHorizontalPageMargin
     anchors.right: parent.right
     anchors.rightMargin: styler.themeHorizontalPageMargin
+    inputMethodHints: Qt.ImhNoPredictiveText
     focus: true
     leftPadding: searchButton.width + searchButton.anchors.leftMargin + styler.themePaddingMedium
     rightPadding: clearButton.width + clearButton.anchors.leftMargin + styler.themePaddingMedium
