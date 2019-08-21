@@ -67,7 +67,7 @@ ApplicationWindow {
                     "--type=silica-qt5",
                     "/usr/bin/jolla-messages",
                 ], null);
-        return true;
+        return [1, 0];
     }
 
     function showMainMenu() {

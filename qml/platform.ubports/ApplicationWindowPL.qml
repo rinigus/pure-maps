@@ -72,7 +72,9 @@ ApplicationWindow {
     }
 
     function sendSms(text) {
-        console.log("Sending SMS is not implemented");
+        var link = "message:///?text=%1".arg(text)
+        Qt.openUrlExternally(link);
+        return [0];
     }
 
     function showMainMenu() {

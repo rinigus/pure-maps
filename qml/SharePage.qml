@@ -47,12 +47,15 @@ PagePL {
             anchors.horizontalCenter: parent.horizontalCenter
             text: app.tr("SMS")
             onClicked: {
-                if (app.sendSms(page.formatMessage(false)))
-                    infoLabel.text = [
-                                app.tr("Message copied to the clipboard"),
+                var m = app.sendSms(page.formatMessage(false));
+                if (m) {
+                    var msgs = [
                                 app.tr("Launching the Messages application"),
-                            ].join("\n");
-                else
+                                app.tr("Message copied to the clipboard")
+                            ];
+                    infoLabel.text =
+                            m.map(function (i) { return msgs[i]; }).join('\n');
+                } else
                     infoLabel.text = app.tr("Error sending message");
             }
         }
