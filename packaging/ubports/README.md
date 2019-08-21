@@ -18,6 +18,7 @@ clickable commands.
 
 ## Dependencies
 
+### Python >= 3.6
 Run the following command to download and compile the app dependencies:
 
     clickable prepare-deps build-libs
@@ -25,6 +26,23 @@ Run the following command to download and compile the app dependencies:
 If you'd like to debug on desktop, too, also compile the dependencies for amd64:
 
     clickable prepare-deps build-libs --arch amd64
+
+### Python < 3.6
+Run the following command to download and compile the app dependencies:
+
+    clickable prepare-deps
+    clickable build-libs mapbox-gl-native
+    clickable build-libs mapbox-gl-qml
+    clickable build-libs qmlrunner
+    clickable build-libs nemo-qml-plugin-dbus
+
+If you'd like to debug on desktop, too, also compile the dependencies for amd64:
+
+    clickable prepare-deps
+    clickable build-libs mapbox-gl-native --arch amd64
+    clickable build-libs mapbox-gl-qml --arch amd64
+    clickable build-libs qmlrunner --arch amd64
+    clickable build-libs nemo-qml-plugin-dbus --arch amd64
 
 ## Building
 
