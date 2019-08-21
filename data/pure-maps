@@ -23,4 +23,4 @@ dbus-send --session \
           /io/github/rinigus/PureMaps \
           io.github.rinigus.PureMaps.command \
           array:string:$options > /dev/null 2>&1 || \
-    exec qmlrunner -P INSTALL_PREFIX/share FULL_NAME -- "$@"
+    export QT_QUICK_CONTROLS_STYLE=suru && exec qmlrunner -P INSTALL_PREFIX/share FULL_NAME -- "$@"
