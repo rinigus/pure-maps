@@ -15,7 +15,8 @@ for i in $@; do
     options=$options'"'${i//,/.COMMA.}'"'
 done
 
-#export QT_QUICK_CONTROLS_STYLE="${QT_QUICK_CONTROLS_STYLE:-org.kde.desktop}"
+# INSERT_PLATFORM_STYLE
+# INSERT_PLATFORM_FALLBACK_STYLE
 dbus-send --session \
           --dest=io.github.rinigus.PureMaps \
           --type=method_call \

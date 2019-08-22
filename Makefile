@@ -14,9 +14,11 @@ ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
 METADIR    = $(DESTDIR)$(PREFIX)/share/metainfo
 LANGS      = $(basename $(notdir $(wildcard po/*.po)))
 LCONVERT   = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
-                  $(wildcard /bin/lconvert),\
-                  $(wildcard /usr/bin/lconvert),\
-                  $(wildcard /usr/lib/*/qt5/bin/lconvert))
+		  $(wildcard /bin/lconvert),\
+		  $(wildcard /usr/bin/lconvert),\
+		  $(wildcard /usr/lib/*/qt5/bin/lconvert))
+QT_PLATFORM_STYLE =
+QT_PLATFORM_FALLBACK_STYLE =
 
 define install-translation =
     # GNU gettext translations for Python use.
@@ -60,7 +62,7 @@ flathub-install-general:
 	install -D packaging/flatpak/osmscout-server $(PREFIX)/bin/osmscout-server
 	install -D packaging/flatpak/io.github.rinigus.PureMaps.desktop $(PREFIX)/share/applications
 	sed 's/binary>pure-maps/binary>io.github.rinigus.PureMaps/' packaging/pure-maps.appdata.xml > $(PREFIX)/share/appdata/io.github.rinigus.PureMaps.appdata.xml
-        # workaround https://github.com/hughsie/appstream-glib/issues/271
+	# workaround https://github.com/hughsie/appstream-glib/issues/271
 	ln -s $(PREFIX)/share $(PREFIX)/usr
 	mv $(PREFIX)/share/pure-maps/qml/pure-maps.qml $(PREFIX)/share/pure-maps/qml/io.github.rinigus.PureMaps.qml
 	rename pure-maps io.github.rinigus.PureMaps $(PREFIX)/share/pure-maps/translations/*.qm
@@ -167,6 +169,12 @@ endif
 	cp data/$(NAME) $(EXE) || cp data/pure-maps $(EXE) || true
 	sed -i -e 's|INSTALL_PREFIX|$(PREFIX)|g' $(EXE) || true
 	sed -i -e 's|FULL_NAME|$(FULLNAME)|g' $(EXE) || true
+ifdef QT_PLATFORM_STYLE
+	sed -i -e 's|# INSERT_PLATFORM_STYLE|export QT_QUICK_CONTROLS_STYLE="$$\{QT_QUICK_CONTROLS_STYLE:-$(QT_PLATFORM_STYLE)\}"|g' $(EXE) || true
+endif
+ifdef QT_PLATFORM_FALLBACK_STYLE
+	sed -i -e 's|# INSERT_PLATFORM_FALLBACK_STYLE|export QT_QUICK_CONTROLS_FALLBACK_STYLE="$$\{QT_QUICK_CONTROLS_FALLBACK_STYLE:-$(QT_PLATFORM_FALLBACK_STYLE)\}"|g' $(EXE) || true
+endif
 	@echo "Installing appdata file..."
 	mkdir -p $(METADIR)
 	cp packaging/pure-maps.appdata.xml $(METADIR)/$(NAME).appdata.xml || true
