@@ -38,7 +38,6 @@ ApplicationWindow {
 
     StackView {
         id: pageStack
-        initialItem: appWindow.initialPage
         anchors.fill: parent
     }
 
