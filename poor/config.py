@@ -93,7 +93,7 @@ DEFAULTS = {
     "show_navigation_sign": True,
     # "always", "exceeding", "never"
     "show_speed_limit": "always",
-    "smooth_position_animation_when_navigating": True,
+    "smooth_position_animation_when_navigating": False,
     "tilt_when_navigating": True,
     # "metric", "american" or "british".
     "units": "metric",
