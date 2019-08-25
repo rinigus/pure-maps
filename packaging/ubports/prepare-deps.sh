@@ -20,7 +20,7 @@ git clone https://github.com/rinigus/mapbox-gl-qml.git $MAPBOX_GL_QML_SRC_DIR
 git clone https://git.merproject.org/mer-core/nemo-qml-plugin-dbus.git $NEMO_QML_PLUGIN_DBUS_SRC_DIR 
 git clone https://github.com/rinigus/qmlrunner.git $QMLRUNNER_SRC_DIR
 wget -qO- https://github.com/MycroftAI/mimic1/archive/1.2.0.2.tar.gz  | tar -xzv && mv mimic1-1.2.0.2 $MIMIC_SRC_DIR
-git clone git@github.com:jonnius/pkg-picotts.git $PICOTTS_SRC_DIR
+git clone https://github.com/jonnius/pkg-picotts.git $PICOTTS_SRC_DIR
 
 # Replace mapbox-gl-native pro file
 rm $MAPBOX_GL_NATIVE_SRC_DIR/mapbox-gl-native/mapbox-gl-native.pro
