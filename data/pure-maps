@@ -20,6 +20,7 @@ done
 TMPINCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}"/FULL_NAME/tmp
 if [ "$USE_CACHE_AS_TMP" = "yes" ]; then
     TMPDIR=$TMPINCACHEDIR
+    mkdir -p "$TMPINCACHEDIR"
 fi
 
 # INSERT_PLATFORM_STYLE
