@@ -64,9 +64,6 @@ UC.PageHeader {
             for (var i=0; i < page.pageMenu.items.length; i++)
                 trail.push(page.pageMenu.items[i]);
 
-        console.log(title + " -> " + JSON.stringify(trail))
-//        console.log(JSON.stringify(trailingActionBar.delegate.style))
-
         trailingActionBar.actions = trail;
         trailingActionBar.numberOfSlots = _trailingVisible ? 2 : 1
     }
