@@ -32,6 +32,7 @@ PagePL {
 
     pageMenu: PageMenuPL {
         PageMenuItemPL {
+            iconName: styler.iconPreferences
             text: app.tr("Using %1").arg(name)
             property string name: py.evaluate("poor.app.guide.name")
             onClicked: {

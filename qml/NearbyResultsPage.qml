@@ -84,6 +84,7 @@ PageListPL {
     pageMenu: PageMenuPL {
         visible: page.model.count > 1
         PageMenuItemPL {
+            iconName: styler.iconMaps
             text: app.tr("Map")
             onClicked: {
                 var pois = [];

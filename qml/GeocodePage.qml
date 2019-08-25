@@ -27,6 +27,7 @@ PagePL {
     title: app.tr("Search")
     pageMenu: PageMenuPL {
         PageMenuItemPL {
+            iconName: styler.iconPreferences
             text: app.tr("Using %1").arg(name)
             property string name: py.evaluate("poor.app.geocoder.name")
             onClicked: {
@@ -39,6 +40,7 @@ PagePL {
 
         PageMenuItemPL {
             enabled: geo.searchResults.length
+            iconName: styler.iconMaps
             text: app.tr("Map")
             onClicked: {
                 var pois = geo.searchResults;

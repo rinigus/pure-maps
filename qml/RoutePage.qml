@@ -32,6 +32,7 @@ PagePL {
 
     pageMenu: PageMenuPL {
         PageMenuItemPL {
+            iconName: styler.iconPreferences
             text: app.tr("Using %1").arg(name)
             property string name: page.routerName
             onClicked: {
@@ -46,6 +47,7 @@ PagePL {
         }
 
         PageMenuItemPL {
+            iconName: styler.iconNavigate
             text: followMe ? app.tr("Navigate") : app.tr("Follow me")
             onClicked: {
                 followMe = !followMe;
@@ -57,6 +59,7 @@ PagePL {
         }
 
         PageMenuItemPL {
+            iconName: styler.iconNavigateTo
             text: app.tr("Reverse endpoints")
             onClicked: {
                 var from = page.from;
