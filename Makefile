@@ -129,6 +129,8 @@ endif
 	cp qml/icons/position/*.png $(DATADIR)/qml/icons/position
 	mkdir -p $(DATADIR)/qml/icons/sailfishos
 	cp qml/icons/sailfishos/*.svg $(DATADIR)/qml/icons/sailfishos
+	mkdir -p $(DATADIR)/qml/icons/ubports
+	cp qml/icons/ubports/*.svg $(DATADIR)/qml/icons/ubports
 	mkdir -p $(DATADIR)/qml/js
 	cp qml/js/*.js $(DATADIR)/qml/js
 	mkdir -p $(DATADIR)/qml/platform
