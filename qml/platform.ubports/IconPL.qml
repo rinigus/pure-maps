@@ -23,7 +23,7 @@ Icon {
     id: image
     height: iconHeight ? iconHeight : undefined
     keyColor: (typeof source.indexOf !== 'function' || source.indexOf("image://theme/") === 0) ? "#808080" : "#000000"
-    source: iconName || iconSource
+    source: iconName ? iconName : iconSource
     width: iconWidth ? iconWidth : undefined
 
     property var    fillMode // unused, kept for compatibility

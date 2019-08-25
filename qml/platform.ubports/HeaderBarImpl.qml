@@ -31,7 +31,6 @@ UC.PageHeader {
         onTriggered: app.pages.pop()
     }
     title: page.title
-    trailingActionBar.actions: _trailingVisible ? [ acceptButton ] : []
     width: page.width
     visible: page && (!(page.empty) || app.pages.currentIndex > 0)
 
@@ -50,4 +49,25 @@ UC.PageHeader {
     ]
 
     signal accepted
+
+    Component.onCompleted: fillTrailingActions()
+    on_TrailingVisibleChanged: fillTrailingActions()
+
+    function fillTrailingActions() {
+        if (!page) return;
+
+        var trail = [];
+        if (_trailingVisible)
+            trail.push(acceptButton);
+
+        if (page.pageMenu && page.pageMenu.items.length > 0)
+            for (var i=0; i < page.pageMenu.items.length; i++)
+                trail.push(page.pageMenu.items[i]);
+
+        console.log(title + " -> " + JSON.stringify(trail))
+//        console.log(JSON.stringify(trailingActionBar.delegate.style))
+
+        trailingActionBar.actions = trail;
+        trailingActionBar.numberOfSlots = _trailingVisible ? 2 : 1
+    }
 }
