@@ -15,6 +15,13 @@ for i in $@; do
     options=$options'"'${i//,/.COMMA.}'"'
 done
 
+# INSERT_TMP_AS_CACHE
+
+TMPINCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}"/FULL_NAME/tmp
+if [ "$USE_CACHE_AS_TMP" = "yes" ]; then
+    TMPDIR=$TMPINCACHEDIR
+fi
+
 # INSERT_PLATFORM_STYLE
 # INSERT_PLATFORM_FALLBACK_STYLE
 dbus-send --session \

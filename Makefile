@@ -19,6 +19,7 @@ LCONVERT   = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
 		  $(wildcard /usr/lib/*/qt5/bin/lconvert))
 QT_PLATFORM_STYLE =
 QT_PLATFORM_FALLBACK_STYLE =
+TMP_AS_CACHE =
 
 define install-translation =
     # GNU gettext translations for Python use.
@@ -174,6 +175,9 @@ ifdef QT_PLATFORM_STYLE
 endif
 ifdef QT_PLATFORM_FALLBACK_STYLE
 	sed -i -e 's|# INSERT_PLATFORM_FALLBACK_STYLE|export QT_QUICK_CONTROLS_FALLBACK_STYLE="$$\{QT_QUICK_CONTROLS_FALLBACK_STYLE:-$(QT_PLATFORM_FALLBACK_STYLE)\}"|g' $(EXE) || true
+endif
+ifdef TMP_AS_CACHE
+	sed -i -e 's|# INSERT_TMP_AS_CACHE|USE_CACHE_AS_TMP="yes"|g' $(EXE) || true
 endif
 	@echo "Installing appdata file..."
 	mkdir -p $(METADIR)
