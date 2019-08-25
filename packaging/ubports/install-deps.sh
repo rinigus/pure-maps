@@ -10,6 +10,7 @@ BUILD_DIR=$GENERAL_BUILD_DIR/pure-maps
 INSTALL_DIR=$BUILD_DIR/click
 LIBS_INSTALL_DIR=$INSTALL_DIR/lib/$ARCH_TRIPLET
 BIN_INSTALL_DIR=$INSTALL_DIR/lib/$ARCH_TRIPLET/bin
+SHARE_INSTALL_DIR=$INSTALL_DIR/usr/share
 
 # Install meta data
 cp $ROOT/packaging/ubports/manifest.json $INSTALL_DIR
@@ -23,11 +24,17 @@ mkdir -p $BIN_INSTALL_DIR
 mv $GENERAL_BUILD_DIR/pure-maps/click/bin/* $BIN_INSTALL_DIR
 cp $GENERAL_BUILD_DIR/qmlrunner/qmlrunner $BIN_INSTALL_DIR
 cp $GENERAL_BUILD_DIR/mimic/install/bin/mimic $BIN_INSTALL_DIR
+cp $GENERAL_BUILD_DIR/picotts/install/usr/bin/pico2wave $BIN_INSTALL_DIR
 
 # Strip binaries
 if [ "$ARCH_TRIPLET" == "arm-linux-gnueabihf" ]; then
 	arm-linux-gnueabihf-strip -s $BIN_INSTALL_DIR/mimic
 fi
+
+# Install data
+mkdir -p $SHARE_INSTALL_DIR
+
+cp -r $GENERAL_BUILD_DIR/picotts/install/usr/share/picotts $SHARE_INSTALL_DIR/
 
 # Install libs
 mkdir -p $LIBS_INSTALL_DIR

@@ -41,6 +41,15 @@
         "libasound2-dev",
 	"libpcre2-dev"
       ]
+    },
+    "picotts": {
+      "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
+      "template": "custom",
+      "build": "cp -r $SRC_DIR/* $BUILD_DIR && cd $BUILD_DIR && ARCH_TRIPLET=$ARCH_TRIPLET DESTDIR=$INSTALL_DIR LANG_DIR=./usr/share/picotts/lang make -j4 && DESTDIR=$INSTALL_DIR make install",
+      "dependencies_target": [
+        "libtool",
+        "libpopt-dev"
+      ]
     }
   }
 }
