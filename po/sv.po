@@ -1252,7 +1252,7 @@ msgstr "Komplettera automatiskt vid sökning"
 
 #: qml/PreferencesPage.qml:215
 msgid "Privacy"
-msgstr ""
+msgstr "Sekretess"
 
 #: qml/PreferencesPage.qml:221
 msgid ""
@@ -1474,7 +1474,7 @@ msgstr "Luta kartan vid navigering"
 
 #: qml/PreferencesPage.qml:617
 msgid "Smooth position animation"
-msgstr ""
+msgstr "Jämn positionsanimering"
 
 #: qml/PreferencesPage.qml:628
 msgid ""
@@ -1685,7 +1685,7 @@ msgstr "Meddelandet kopierat till urklipp"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr ""
+msgstr "Kunde inte skicka meddeklande"
 
 #: qml/SharePage.qml:66
 msgid "Email"

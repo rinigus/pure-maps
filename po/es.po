@@ -473,7 +473,7 @@ msgstr "Tipo"
 #: qml/BasemapButton.qml:221 routers/digitransit_settings.qml:146
 #: qml/js/util.js:230
 msgid "Default"
-msgstr "Por defecto"
+msgstr "Defecto"
 
 #: qml/BasemapButton.qml:222
 msgid "Guidance"
@@ -485,7 +485,7 @@ msgstr "Híbrido"
 
 #: qml/BasemapButton.qml:224
 msgid "Preview"
-msgstr "Vista previa"
+msgstr "Previo"
 
 #: qml/BasemapButton.qml:225
 msgid "Satellite"
@@ -529,11 +529,11 @@ msgstr "Coche"
 
 #: qml/BasemapButton.qml:294 routers/ValhallaSettings.qml:132
 msgid "Walking"
-msgstr "Caminar"
+msgstr "A pie"
 
 #: qml/BasemapButton.qml:295 routers/ValhallaSettings.qml:38
 msgid "Public transport"
-msgstr "Transporte público"
+msgstr "T. Público"
 
 #: qml/BasemapButton.qml:357 qml/RoutePage.qml:404
 msgid "Map scale"
@@ -1255,7 +1255,7 @@ msgstr "Autocompletar al buscar"
 
 #: qml/PreferencesPage.qml:215
 msgid "Privacy"
-msgstr ""
+msgstr "Privacidad"
 
 #: qml/PreferencesPage.qml:221
 msgid ""
@@ -1481,7 +1481,7 @@ msgstr "Inclinar mapa al navegar"
 
 #: qml/PreferencesPage.qml:617
 msgid "Smooth position animation"
-msgstr ""
+msgstr "Animación de posicionamiento suave"
 
 #: qml/PreferencesPage.qml:628
 msgid ""
@@ -1695,7 +1695,7 @@ msgstr "Mensaje copiado al portapapeles"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr ""
+msgstr "Error al enviar mensaje"
 
 #: qml/SharePage.qml:66
 msgid "Email"
@@ -1791,7 +1791,7 @@ msgstr "Menos transbordos"
 
 #: routers/digitransit_settings.qml:146
 msgid "Least walking"
-msgstr "Menos caminar"
+msgstr "Caminar menos"
 
 #: routers/gpx_osmscout_settings.qml:31 routers/gpx_settings.qml:31
 msgid "File"

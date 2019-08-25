@@ -1222,7 +1222,7 @@ msgstr "搜索时实时显示结果"
 
 #: qml/PreferencesPage.qml:215
 msgid "Privacy"
-msgstr ""
+msgstr "隐私政策"
 
 #: qml/PreferencesPage.qml:221
 msgid ""
@@ -1429,7 +1429,7 @@ msgstr "导航时倾斜地图"
 
 #: qml/PreferencesPage.qml:617
 msgid "Smooth position animation"
-msgstr ""
+msgstr "平滑定位动画"
 
 #: qml/PreferencesPage.qml:628
 msgid ""
@@ -1631,7 +1631,7 @@ msgstr "短信已复制到剪贴板"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr ""
+msgstr "发送信息出错"
 
 #: qml/SharePage.qml:66
 msgid "Email"

@@ -1263,7 +1263,7 @@ msgstr "Täydennä teksti automaattisesti haettaessa"
 
 #: qml/PreferencesPage.qml:215
 msgid "Privacy"
-msgstr ""
+msgstr "Yksityisyys"
 
 #: qml/PreferencesPage.qml:221
 msgid ""
@@ -1487,7 +1487,7 @@ msgstr "Kallista karttaa navigoidessa"
 
 #: qml/PreferencesPage.qml:617
 msgid "Smooth position animation"
-msgstr ""
+msgstr "Pehmeä liikeanimaatio"
 
 #: qml/PreferencesPage.qml:628
 msgid ""
@@ -1699,7 +1699,7 @@ msgstr "Viesti kopioitu leikepöydälle"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr ""
+msgstr "Virhe viestinlähetyksessä"
 
 #: qml/SharePage.qml:66
 msgid "Email"

@@ -3,9 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Peer-Atle Motland <PeerAtle@online.no>, 2019
-# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -13,12 +10,11 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-25 08:16+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Peer-Atle Motland <PeerAtle@online.no>, 2019\n"
-"Language-Team: Norwegian (https://www.transifex.com/rinigus/teams/89597/no/)\n"
+"Language-Team: Norwegian Bokmål (https://www.transifex.com/rinigus/teams/89597/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: no\n"
+"Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: guides/foursquare.py:191
