@@ -244,6 +244,12 @@ class VoiceGenerator:
 
     def __init__(self):
         """Initialize a :class:`VoiceGenerator` instance."""
+        # Make TMPDIR if it is missing
+        # For some reason, it cannot be made using
+        # mkdir in bash script
+        tmpdir = os.getenv("TMPDIR")
+        if tmpdir is not None: os.makedirs(tmpdir, exist_ok=True)
+        # initialize local vars
         self._cache = {}
         self._engine = None
         self._result_queue = None
