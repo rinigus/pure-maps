@@ -21,8 +21,8 @@ import Sailfish.Silica 1.0
 
 Item {
     id: item
-    height: image.icon.height*(1 + padding)
-    width: image.icon.width*(1 + padding)
+    height: image.height*(1 + padding)
+    width: image.width*(1 + padding)
 
     property bool   iconColorize: true // for compatibility, not used
     property int    iconHeight: 0
@@ -35,24 +35,23 @@ Item {
 
     signal clicked
 
+    Image {
+        id: image
+        anchors.centerIn: parent
+        source: iconName || iconSource
+        sourceSize.height: iconHeight
+        sourceSize.width: iconWidth
+    }
+
     Rectangle {
-        color: "transparent"
         anchors.fill: parent
+        color: mouse.pressed ? styler.themePrimaryColor : "transparent"
+        opacity: 0.2
+    }
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: item.clicked()
-
-            IconButton {
-                id: image
-                anchors.centerIn: parent
-                down: pressed || parent.pressed
-                icon.opacity: iconOpacity
-                icon.source: iconName || iconSource
-                icon.sourceSize.height: iconHeight
-                icon.sourceSize.width: iconWidth
-                onClicked: item.clicked()
-            }
-        }
+    MouseArea {
+        id: mouse
+        anchors.fill: parent
+        onClicked: item.clicked()
     }
 }
