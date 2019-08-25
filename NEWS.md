@@ -1,3 +1,16 @@
+2019-08-25: Pure Maps 1.23
+==========================
+
+* Allow to enable/disable smooth position animation
+* Add basemap icons [Mosen]
+* Stop keepalive, GPS, and timers on shutdown
+* [silica] Add cover actions for navigation
+* Allow to specify platform-specific mechanism for sending SMS
+* Update translations
+* Update documentation
+* Bugfixes
+
+
 2019-07-29: Pure Maps 1.22
 ==========================
 

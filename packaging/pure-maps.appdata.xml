@@ -38,6 +38,20 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.23.0" date="2019-08-25">
+     <description>
+       <ul>
+         <li>Allow to enable/disable smooth position animation</li>
+         <li>Add basemap icons [Mosen]</li>
+         <li>Stop keepalive, GPS, and timers on shutdown</li>
+         <li>[silica] Add cover actions for navigation</li>
+         <li>Allow to specify platform-specific mechanism for sending SMS</li>
+         <li>Update translations</li>
+         <li>Update documentation</li>
+         <li>Bugfixes</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.22.0" date="2019-07-29">
      <description>
        <ul>

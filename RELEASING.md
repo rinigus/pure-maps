@@ -17,7 +17,7 @@ tools/manage-keys inject .
 make check test
 tools/manage-keys strip .
 git status
-emacs poor/__init__.py rpm/*.spec Makefile
+emacs poor/__init__.py rpm/*.spec Makefile packaging/ubports/manifest.json
 emacs NEWS.md packaging/pure-maps.appdata.xml
 make rpm-silica
 git status
