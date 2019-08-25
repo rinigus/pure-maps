@@ -18,6 +18,8 @@ clickable commands.
 
 ## Dependencies
 
+**WARNING**: Dependencies may take hours to build (especially mimic).
+
 ### Python >= 3.6
 Run the following command to download and compile the app dependencies:
 
@@ -35,6 +37,7 @@ Run the following command to download and compile the app dependencies:
     clickable build-libs mapbox-gl-qml
     clickable build-libs qmlrunner
     clickable build-libs nemo-qml-plugin-dbus
+    clickable build-libs mimic
 
 If you'd like to debug on desktop, too, also compile the dependencies for amd64:
 
@@ -43,6 +46,7 @@ If you'd like to debug on desktop, too, also compile the dependencies for amd64:
     clickable build-libs mapbox-gl-qml --arch amd64
     clickable build-libs qmlrunner --arch amd64
     clickable build-libs nemo-qml-plugin-dbus --arch amd64
+    clickable build-libs mimic --arch amd64
 
 ## Building
 

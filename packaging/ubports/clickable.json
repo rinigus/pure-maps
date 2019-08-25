@@ -31,6 +31,16 @@
     "nemo-qml-plugin-dbus": {
       "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
       "template": "qmake"
+    },
+    "mimic": {
+      "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
+      "template": "custom",
+      "build": "cp -r $SRC_DIR/* $BUILD_DIR && cd $BUILD_DIR && ./autogen.sh && ./configure --with-audio=none --prefix=\"$INSTALL_DIR\" --exec-prefix=\"$INSTALL_DIR\" --host=$ARCH_TRIPLET && make -j4 &&  make install",
+      "dependencies_target": [
+        "libtool",
+        "libasound2-dev",
+	"libpcre2-dev"
+      ]
     }
   }
 }
