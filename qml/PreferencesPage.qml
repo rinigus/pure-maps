@@ -781,9 +781,9 @@ PagePL {
                             description.text = app.tr("No engine available for selected language.\n\n" +
                                                       "Pure Maps supports Mimic, Flite, PicoTTS, and " +
                                                       "Espeak TTS engines. Unless you are using Pure Maps " +
-                                                      "through Flatpak, the engines have to be installed " +
-                                                      "separately. Sailfish OS users can find the engines " +
-                                                      "at OpenRepos.");
+                                                      "through Flatpak or OpenStore, the engines have " +
+                                                      "to be installed separately. Sailfish OS users " +
+                                                      "can find the engines at OpenRepos.");
                         }
 
                         if (!py.evaluate("poor.app.voice_tester.active")) return;
