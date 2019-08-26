@@ -1,13 +1,9 @@
 {
     "policy_groups": [
-        "content_exchange",
-        "content_exchange_source",
         "audio",
-        "connectivity",
         "keep-display-on",
         "location",
-        "networking",
-        "sensors"
+        "networking"
     ],
     "policy_version": 16.04
 }
