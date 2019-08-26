@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 08:16+0300\n"
+"POT-Creation-Date: 2019-08-26 22:06+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/rinigus/teams/89597/ru/)\n"
@@ -45,10 +45,10 @@ msgid "Connection timed out"
 msgstr "Время ожидания соединения истекло"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
-#: qml/NearbyPage.qml:30 qml/NearbyPage.qml:136 qml/NearbyPage.qml:151
-#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:216
-#: qml/RoutePage.qml:221 qml/RoutePage.qml:441 qml/RoutePage.qml:456
-#: qml/RoutePage.qml:458 qml/RoutePoint.qml:42 qml/RoutePoint.qml:58
+#: qml/NearbyPage.qml:30 qml/NearbyPage.qml:137 qml/NearbyPage.qml:152
+#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:219
+#: qml/RoutePage.qml:224 qml/RoutePage.qml:444 qml/RoutePage.qml:459
+#: qml/RoutePage.qml:461 qml/RoutePoint.qml:42 qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr "Текущая позиция"
 
@@ -359,8 +359,8 @@ msgid "Venue name"
 msgstr "Название объекта"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
-#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:199
-#: qml/RoutePage.qml:277
+#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:202
+#: qml/RoutePage.qml:280
 msgid "Remove"
 msgstr "Удалить"
 
@@ -466,7 +466,7 @@ msgstr "Заведения"
 msgid "Navigation"
 msgstr "Навигация"
 
-#: qml/BasemapButton.qml:201 qml/NearbyPage.qml:104 qml/PoiEditPage.qml:57
+#: qml/BasemapButton.qml:201 qml/NearbyPage.qml:105 qml/PoiEditPage.qml:57
 #: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Type"
@@ -517,13 +517,13 @@ msgstr "Ночной"
 msgid "Transport"
 msgstr "Транспорт"
 
-#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:335 qml/RoutePage.qml:387
+#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:335 qml/RoutePage.qml:390
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Bicycle"
 msgstr "Велосипед"
 
-#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:335 qml/RoutePage.qml:387
+#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:335 qml/RoutePage.qml:390
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Car"
@@ -537,7 +537,7 @@ msgstr "Ходьба"
 msgid "Public transport"
 msgstr "Общественный транспорт"
 
-#: qml/BasemapButton.qml:357 qml/RoutePage.qml:404
+#: qml/BasemapButton.qml:357 qml/RoutePage.qml:407
 msgid "Map scale"
 msgstr "Увеличение карты"
 
@@ -577,7 +577,7 @@ msgstr "Ошибка при получении результатов"
 msgid "Searching ..."
 msgstr "Поиск..."
 
-#: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:142
+#: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:143
 #: routers/default_results.qml:92 routers/default_results.qml:95
 #: routers/digitransit_results.qml:273 routers/digitransit_results.qml:275
 #: routers/gpx_osmscout_results.qml:92 routers/gpx_osmscout_results.qml:95
@@ -598,7 +598,7 @@ msgid "Points of Interest (%1)"
 msgstr "Интересные места (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePage.qml:316 qml/RoutePage.qml:318
+#: qml/PoiPage.qml:47 qml/RoutePage.qml:319 qml/RoutePage.qml:321
 #: qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Безымянное местоположение"
@@ -607,20 +607,20 @@ msgstr "Безымянное местоположение"
 msgid "Recent searches (%1)"
 msgstr "Недавние запросы (%1)"
 
-#: qml/GeocodePage.qml:30 qml/NearbyPage.qml:35 qml/RoutePage.qml:35
-#: qml/RoutePointPage.qml:30
+#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
+#: qml/RoutePointPage.qml:31
 msgid "Using %1"
 msgstr "С помощью %1"
 
-#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:87 qml/RootPage.qml:24
+#: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:88 qml/RootPage.qml:24
 msgid "Map"
 msgstr "Карта"
 
-#: qml/GeocodePage.qml:45 qml/GeocodePage.qml:81
+#: qml/GeocodePage.qml:47 qml/GeocodePage.qml:83
 msgid "Search: %1"
 msgstr "Поиск: %1"
 
-#: qml/GeocodePage.qml:76 qml/NearbyResultsPage.qml:72
+#: qml/GeocodePage.qml:78 qml/NearbyResultsPage.qml:72
 msgid "%1 [duplicate]"
 msgstr "%1 [копия]"
 
@@ -767,7 +767,7 @@ msgstr "Пауза"
 msgid "Resume"
 msgstr "Продолжить"
 
-#: qml/NavigationPage.qml:48 qml/RoutePage.qml:363
+#: qml/NavigationPage.qml:48 qml/RoutePage.qml:366
 msgid "Begin"
 msgstr "Начать"
 
@@ -795,24 +795,24 @@ msgstr "ВЫХОД"
 msgid "Nearby Venues"
 msgstr "Ближайшие заведения"
 
-#: qml/NearbyPage.qml:74
+#: qml/NearbyPage.qml:75
 msgid ""
 "Select a reference location next to which you want to perform the search."
 msgstr "Выбрать контрольную точку, рядом с которой необходимо выполнить поиск"
 
-#: qml/NearbyPage.qml:75
+#: qml/NearbyPage.qml:76
 msgid "Near"
 msgstr "Рядом с"
 
-#: qml/NearbyPage.qml:76
+#: qml/NearbyPage.qml:77
 msgid "Near location"
 msgstr "Ближайшее месторасположение"
 
-#: qml/NearbyPage.qml:81
+#: qml/NearbyPage.qml:82
 msgid "Radius"
 msgstr "Расстояние"
 
-#: qml/NearbyResultsPage.qml:114 routers/default_results.qml:39
+#: qml/NearbyResultsPage.qml:115 routers/default_results.qml:39
 #: routers/digitransit_results.qml:215 routers/gpx_osmscout_results.qml:39
 #: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
 #: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
@@ -820,11 +820,11 @@ msgstr "Расстояние"
 msgid "Searching"
 msgstr "Идет поиск"
 
-#: qml/NearbyResultsPage.qml:122
+#: qml/NearbyResultsPage.qml:123
 msgid "Nearby venues: %1"
 msgstr "Близлежащие объекты: %1"
 
-#: qml/NearbyResultsPage.qml:138
+#: qml/NearbyResultsPage.qml:139
 msgid "%1 Results"
 msgstr "%1 результат(ов)"
 
@@ -1319,7 +1319,7 @@ msgstr "Привязывать положение к дороге"
 msgid "None"
 msgstr "Нет"
 
-#: qml/PreferencesPage.qml:335 qml/RoutePage.qml:387
+#: qml/PreferencesPage.qml:335 qml/RoutePage.qml:390
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Foot"
@@ -1434,7 +1434,7 @@ msgstr "Скорость и точность положения"
 msgid "Scale"
 msgstr "Индикатор масштаба"
 
-#: qml/PreferencesPage.qml:513 qml/RoutePage.qml:49
+#: qml/PreferencesPage.qml:513 qml/RoutePage.qml:51
 msgid "Navigate"
 msgstr "Прокладка маршрута"
 
@@ -1546,11 +1546,8 @@ msgstr "Выбранный голосовой движок: %1"
 msgid ""
 "No engine available for selected language.\n"
 "\n"
-"Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
+"Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
 msgstr ""
-"Для выбранного языка движок недоступен.\n"
-"\n"
-"Pure Maps поддерживает движки Mimic, Flite, PicoTTS, and Espeak TTS. Если используется Pure Maps через Flatpak, то движки должны устанавливаться отдельно. Пользователи Sailfish OS могут найти движки на OpenRepos."
 
 #: qml/PreferencesPage.qml:799
 msgid "Development"
@@ -1603,47 +1600,47 @@ msgstr "Всего"
 msgid "Route"
 msgstr "Маршрут"
 
-#: qml/RoutePage.qml:49
+#: qml/RoutePage.qml:51
 msgid "Follow me"
 msgstr "Следовать за мной"
 
-#: qml/RoutePage.qml:60
+#: qml/RoutePage.qml:63
 msgid "Reverse endpoints"
 msgstr "Поменять начальную и конечную точки местами"
 
-#: qml/RoutePage.qml:132
+#: qml/RoutePage.qml:135
 msgid "From"
 msgstr "От"
 
-#: qml/RoutePage.qml:133
+#: qml/RoutePage.qml:136
 msgid "Origin"
 msgstr "Пункт отправления"
 
-#: qml/RoutePage.qml:139
+#: qml/RoutePage.qml:142
 msgid "To"
 msgstr "До"
 
-#: qml/RoutePage.qml:140
+#: qml/RoutePage.qml:143
 msgid "Destination"
 msgstr "Пункт назначения"
 
-#: qml/RoutePage.qml:183
+#: qml/RoutePage.qml:186
 msgid "Routes"
 msgstr "Маршруты"
 
-#: qml/RoutePage.qml:259
+#: qml/RoutePage.qml:262
 msgid "Destinations"
 msgstr "Пункты назначения"
 
-#: qml/RoutePage.qml:354
+#: qml/RoutePage.qml:357
 msgid "Follow the movement and show just in time information"
 msgstr "Следить за движением и показывать актуальную информацию"
 
-#: qml/RoutePage.qml:363
+#: qml/RoutePage.qml:366
 msgid "Stop"
 msgstr "Стоп"
 
-#: qml/RoutePage.qml:385
+#: qml/RoutePage.qml:388
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
@@ -1651,11 +1648,11 @@ msgstr ""
 "Выбор способа передвижения. Применяется, только когда Pure Maps находится в "
 "режиме \"следовать за мной\"."
 
-#: qml/RoutePage.qml:386
+#: qml/RoutePage.qml:389
 msgid "Mode of transportation"
 msgstr "Способ передвижения"
 
-#: qml/RoutePointPage.qml:64
+#: qml/RoutePointPage.qml:65
 msgid "Current selection: %1"
 msgstr "Текущий выбор: %1"
 

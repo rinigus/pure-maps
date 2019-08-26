@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 08:16+0300\n"
+"POT-Creation-Date: 2019-08-26 22:06+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: JR Fi <juho@reivo.fi>, 2019\n"
 "Language-Team: Finnish (https://www.transifex.com/rinigus/teams/89597/fi/)\n"
@@ -44,10 +44,10 @@ msgid "Connection timed out"
 msgstr "Yhteys aikakatkaistiin"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
-#: qml/NearbyPage.qml:30 qml/NearbyPage.qml:136 qml/NearbyPage.qml:151
-#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:216
-#: qml/RoutePage.qml:221 qml/RoutePage.qml:441 qml/RoutePage.qml:456
-#: qml/RoutePage.qml:458 qml/RoutePoint.qml:42 qml/RoutePoint.qml:58
+#: qml/NearbyPage.qml:30 qml/NearbyPage.qml:137 qml/NearbyPage.qml:152
+#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:219
+#: qml/RoutePage.qml:224 qml/RoutePage.qml:444 qml/RoutePage.qml:459
+#: qml/RoutePage.qml:461 qml/RoutePoint.qml:42 qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr "Nykyinen sijainti"
 
@@ -362,8 +362,8 @@ msgid "Venue name"
 msgstr "Paikan nimi"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
-#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:199
-#: qml/RoutePage.qml:277
+#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:202
+#: qml/RoutePage.qml:280
 msgid "Remove"
 msgstr "Poista"
 
@@ -471,7 +471,7 @@ msgstr "Paikat"
 msgid "Navigation"
 msgstr "Navigointi"
 
-#: qml/BasemapButton.qml:201 qml/NearbyPage.qml:104 qml/PoiEditPage.qml:57
+#: qml/BasemapButton.qml:201 qml/NearbyPage.qml:105 qml/PoiEditPage.qml:57
 #: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Type"
@@ -522,13 +522,13 @@ msgstr "Yö"
 msgid "Transport"
 msgstr "Kulkutapa"
 
-#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:335 qml/RoutePage.qml:387
+#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:335 qml/RoutePage.qml:390
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Bicycle"
 msgstr "Polkupyörä"
 
-#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:335 qml/RoutePage.qml:387
+#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:335 qml/RoutePage.qml:390
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Car"
@@ -542,7 +542,7 @@ msgstr "Kävely"
 msgid "Public transport"
 msgstr "Julkinen liikenne"
 
-#: qml/BasemapButton.qml:357 qml/RoutePage.qml:404
+#: qml/BasemapButton.qml:357 qml/RoutePage.qml:407
 msgid "Map scale"
 msgstr "Kartan mittakaava"
 
@@ -582,7 +582,7 @@ msgstr "Virhe tuloksia haettaessa"
 msgid "Searching ..."
 msgstr "Hakee..."
 
-#: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:142
+#: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:143
 #: routers/default_results.qml:92 routers/default_results.qml:95
 #: routers/digitransit_results.qml:273 routers/digitransit_results.qml:275
 #: routers/gpx_osmscout_results.qml:92 routers/gpx_osmscout_results.qml:95
@@ -603,7 +603,7 @@ msgid "Points of Interest (%1)"
 msgstr "Kohdepisteet (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePage.qml:316 qml/RoutePage.qml:318
+#: qml/PoiPage.qml:47 qml/RoutePage.qml:319 qml/RoutePage.qml:321
 #: qml/RoutePoint.qml:62
 msgid "Unnamed point"
 msgstr "Nimetön piste"
@@ -612,20 +612,20 @@ msgstr "Nimetön piste"
 msgid "Recent searches (%1)"
 msgstr "Viimeiset haut (%1)"
 
-#: qml/GeocodePage.qml:30 qml/NearbyPage.qml:35 qml/RoutePage.qml:35
-#: qml/RoutePointPage.qml:30
+#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
+#: qml/RoutePointPage.qml:31
 msgid "Using %1"
 msgstr "Käytetään %1"
 
-#: qml/GeocodePage.qml:42 qml/NearbyResultsPage.qml:87 qml/RootPage.qml:24
+#: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:88 qml/RootPage.qml:24
 msgid "Map"
 msgstr "Kartta"
 
-#: qml/GeocodePage.qml:45 qml/GeocodePage.qml:81
+#: qml/GeocodePage.qml:47 qml/GeocodePage.qml:83
 msgid "Search: %1"
 msgstr "Haku: %1"
 
-#: qml/GeocodePage.qml:76 qml/NearbyResultsPage.qml:72
+#: qml/GeocodePage.qml:78 qml/NearbyResultsPage.qml:72
 msgid "%1 [duplicate]"
 msgstr "%1 [duplicate]"
 
@@ -774,7 +774,7 @@ msgstr "Tauko"
 msgid "Resume"
 msgstr "Jatka"
 
-#: qml/NavigationPage.qml:48 qml/RoutePage.qml:363
+#: qml/NavigationPage.qml:48 qml/RoutePage.qml:366
 msgid "Begin"
 msgstr "Aloita"
 
@@ -802,24 +802,24 @@ msgstr "Käännös pois"
 msgid "Nearby Venues"
 msgstr "Läheiset paikat"
 
-#: qml/NearbyPage.qml:74
+#: qml/NearbyPage.qml:75
 msgid ""
 "Select a reference location next to which you want to perform the search."
 msgstr "Valitse paikka, jonka vierestä haluat suorittaa haun"
 
-#: qml/NearbyPage.qml:75
+#: qml/NearbyPage.qml:76
 msgid "Near"
 msgstr "Lähellä"
 
-#: qml/NearbyPage.qml:76
+#: qml/NearbyPage.qml:77
 msgid "Near location"
 msgstr "Lähellä sijaintia"
 
-#: qml/NearbyPage.qml:81
+#: qml/NearbyPage.qml:82
 msgid "Radius"
 msgstr "Säde"
 
-#: qml/NearbyResultsPage.qml:114 routers/default_results.qml:39
+#: qml/NearbyResultsPage.qml:115 routers/default_results.qml:39
 #: routers/digitransit_results.qml:215 routers/gpx_osmscout_results.qml:39
 #: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
 #: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
@@ -827,11 +827,11 @@ msgstr "Säde"
 msgid "Searching"
 msgstr "Haetaan"
 
-#: qml/NearbyResultsPage.qml:122
+#: qml/NearbyResultsPage.qml:123
 msgid "Nearby venues: %1"
 msgstr "Lähellä olevat tapahtumapaikat %1"
 
-#: qml/NearbyResultsPage.qml:138
+#: qml/NearbyResultsPage.qml:139
 msgid "%1 Results"
 msgstr "%1 tulosta"
 
@@ -1327,7 +1327,7 @@ msgstr "Kohdista sijainti tiehen"
 msgid "None"
 msgstr "Ei mikään"
 
-#: qml/PreferencesPage.qml:335 qml/RoutePage.qml:387
+#: qml/PreferencesPage.qml:335 qml/RoutePage.qml:390
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:47
 #: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Foot"
@@ -1443,7 +1443,7 @@ msgstr "Nopeuden ja sijainnin tarkkuus"
 msgid "Scale"
 msgstr "Mittakaava"
 
-#: qml/PreferencesPage.qml:513 qml/RoutePage.qml:49
+#: qml/PreferencesPage.qml:513 qml/RoutePage.qml:51
 msgid "Navigate"
 msgstr "Navigoi"
 
@@ -1553,11 +1553,8 @@ msgstr "Valittu äänikone: %1"
 msgid ""
 "No engine available for selected language.\n"
 "\n"
-"Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
+"Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
 msgstr ""
-"Valitulle kielelle ei ole tarjolla äänikonetta.\n"
-"\n"
-"Pure Maps tukee Mimic, Flite, PicoTTS ja Espeak TTS äänikoneohjelmistoja. Ellet käytä Pure Maps ohjelman Flatpak-asennusta, äänikoneet on asennettava erikseen. SailfishOS:n käyttäjät löytävät äänikoneet OpenRepos:ta."
 
 #: qml/PreferencesPage.qml:799
 msgid "Development"
@@ -1610,58 +1607,58 @@ msgstr "Yhteensä"
 msgid "Route"
 msgstr "Reitti"
 
-#: qml/RoutePage.qml:49
+#: qml/RoutePage.qml:51
 msgid "Follow me"
 msgstr "Seuraa minua"
 
-#: qml/RoutePage.qml:60
+#: qml/RoutePage.qml:63
 msgid "Reverse endpoints"
 msgstr "Käännä päätepisteet"
 
-#: qml/RoutePage.qml:132
+#: qml/RoutePage.qml:135
 msgid "From"
 msgstr "Lähtöpaikka"
 
-#: qml/RoutePage.qml:133
+#: qml/RoutePage.qml:136
 msgid "Origin"
 msgstr "Alkupiste"
 
-#: qml/RoutePage.qml:139
+#: qml/RoutePage.qml:142
 msgid "To"
 msgstr "Määräpaikka"
 
-#: qml/RoutePage.qml:140
+#: qml/RoutePage.qml:143
 msgid "Destination"
 msgstr "Määränpää"
 
-#: qml/RoutePage.qml:183
+#: qml/RoutePage.qml:186
 msgid "Routes"
 msgstr "Reitit"
 
-#: qml/RoutePage.qml:259
+#: qml/RoutePage.qml:262
 msgid "Destinations"
 msgstr "Määränpäät"
 
-#: qml/RoutePage.qml:354
+#: qml/RoutePage.qml:357
 msgid "Follow the movement and show just in time information"
 msgstr "Seuraa liikettä ja näytä viimehetken tiedot"
 
-#: qml/RoutePage.qml:363
+#: qml/RoutePage.qml:366
 msgid "Stop"
 msgstr "Pysähdy"
 
-#: qml/RoutePage.qml:385
+#: qml/RoutePage.qml:388
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
 "Valitse kulkutapa. Käytössä vain, kun Pure Maps ei ole seurantatilassa."
 
-#: qml/RoutePage.qml:386
+#: qml/RoutePage.qml:389
 msgid "Mode of transportation"
 msgstr "Kulkutapa"
 
-#: qml/RoutePointPage.qml:64
+#: qml/RoutePointPage.qml:65
 msgid "Current selection: %1"
 msgstr "Nykyinen valinta: %1"
 
