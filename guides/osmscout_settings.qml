@@ -26,7 +26,7 @@ Column {
     ValueButtonPL {
         id: nameButton
         label: app.tr("Name")
-        height: styler.themeItemSizeSmall
+        height: Math.max(styler.themeItemSizeSmall, implicitHeight)
         value: ""
         width: parent.width
         onClicked: {

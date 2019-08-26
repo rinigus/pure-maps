@@ -23,7 +23,7 @@ import "platform"
 import "js/util.js" as Util
 
 ValueButtonPL {
-    height: styler.themeItemSizeSmall
+    height: Math.max(styler.themeItemSizeSmall, implicitHeight)
     value: text
     // Avoid putting label and value on different lines.
     width: 3 * parent.width

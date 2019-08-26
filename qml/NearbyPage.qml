@@ -103,7 +103,7 @@ PagePL {
         ValueButtonPL {
             id: typeButton
             label: app.tr("Type")
-            height: styler.themeItemSizeSmall
+            height: Math.max(styler.themeItemSizeSmall, implicitHeight)
             value: page.query
             // Avoid putting label and value on different lines.
             width: 3 * parent.width
