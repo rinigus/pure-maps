@@ -8,3 +8,4 @@ rpm/*.rpm
 tools/apikeys.py
 /build_ubports/
 /qml/platform
+/.clickable/
