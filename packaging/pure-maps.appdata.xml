@@ -38,6 +38,18 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.24.0" date="2019-08-26">
+     <description>
+       <ul>
+         <li>Add UBPorts platform</li>
+         <li>Package and bugfixes for UBPorts [jonnius, myii, mateosalta]</li>
+         <li>[silica] Use image instead of iconbutton</li>
+         <li>Update translations</li>
+         <li>Update documentation</li>
+         <li>Bugfixes</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.23.0" date="2019-08-25">
      <description>
        <ul>

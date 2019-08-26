@@ -1,3 +1,12 @@
+2019-08-26: Pure Maps 1.24
+==========================
+
+* Add UBPorts platform
+* Package and bugfixes for UBPorts [jonnius, myii, mateosalta]
+* [silica] Use image instead of iconbutton
+* Update translations
+* Bugfixes
+
 2019-08-25: Pure Maps 1.23
 ==========================
 
