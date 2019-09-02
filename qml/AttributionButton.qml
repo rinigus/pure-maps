@@ -19,15 +19,13 @@
 import QtQuick 2.0
 import "platform"
 
-IconButtonPL {
+MouseArea {
     id: attributionButton
     anchors.left: parent.left
     anchors.leftMargin: styler.themePaddingLarge
     anchors.top: navigationBlock.bottom
     anchors.topMargin: styler.themePaddingLarge
-    iconHeight: styler.themeIconSizeSmall
-    iconSource: app.getIcon("icons/attribution/default")
-    padding: 0
+    height: styler.themeIconSizeSmall
     states: [
         State {
             when: !app.portrait && navigationBlockLandscapeLeftShield.height > 0
@@ -37,18 +35,54 @@ IconButtonPL {
             }
         }
     ]
+    width: extra.width + main.width
     z: 500
 
     property string logo: ""
 
-    onClicked: app.push(Qt.resolvedUrl("AttributionPage.qml"), {}, true)
-    onLogoChanged: attributionButton.iconSource = logo ?
-        app.getIcon("icons/attribution/%1".arg(logo)) : "";
+    IconButtonPL {
+        id: extra
+        anchors.left: parent.left
+        anchors.top: parent.top
+        iconHeight: parent.height
+        padding: 0
+        visible: iconSource
 
-    Connections {
-        target: styler
-        onIconVariantChanged: attributionButton.iconSource = attributionButton.logo ?
-                                  app.getIcon("icons/attribution/%1".arg(attributionButton.logo)) : "";
+        Connections {
+            target: styler
+            onIconVariantChanged: extra.setSource()
+        }
+
+        Component.onCompleted: setSource()
+        onClicked: attributionButton.pushPage()
+
+        function setSource() {
+            if (logo && logo !== "default") extra.iconSource = app.getIcon("icons/attribution/%1".arg(logo));
+            else extra.iconSource = "";
+        }
     }
 
+    IconButtonPL {
+        id: main
+        anchors.left: extra.right
+        anchors.leftMargin: styler.themePaddingMedium
+        anchors.top: parent.top
+        iconHeight: parent.height
+        iconSource: app.getIcon("icons/attribution/default")
+        padding: 0
+
+        Connections {
+            target: styler
+            onIconVariantChanged: main.iconSource = app.getIcon("icons/attribution/default")
+        }
+
+        onClicked: attributionButton.pushPage()
+    }
+
+    onClicked: pushPage()
+    onLogoChanged: extra.setSource()
+
+    function pushPage() {
+        app.push(Qt.resolvedUrl("AttributionPage.qml"), {}, true);
+    }
 }
