@@ -15,12 +15,11 @@ for i in "$@"; do
     options=$options${i//,/.COMMA.}
 done
 
-export QT_QUICK_CONTROLS_STYLE="${QT_QUICK_CONTROLS_STYLE:-org.kde.desktop}"
 dbus-send --session \
           --dest=io.github.rinigus.PureMaps \
           --type=method_call \
           --print-reply \
           /io/github/rinigus/PureMaps \
-          io.github.rinigus.PureMaps.command \
+          io.github.rinigus.PureMaps.Command \
           array:string:"$options" > /dev/null 2>&1 || \
     exec sailfish-qml harbour-pure-maps -- "$@"

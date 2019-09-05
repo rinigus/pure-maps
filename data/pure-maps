@@ -30,6 +30,6 @@ dbus-send --session \
           --type=method_call \
           --print-reply \
           /io/github/rinigus/PureMaps \
-          io.github.rinigus.PureMaps.command \
+          io.github.rinigus.PureMaps.Command \
           array:string:"$options" > /dev/null 2>&1 || \
     exec qmlrunner -P INSTALL_PREFIX/share FULL_NAME -- "$@"
