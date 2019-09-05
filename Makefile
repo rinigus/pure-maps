@@ -161,7 +161,7 @@ endif
 	cp routers/digitransit/*.svg $(DATADIR)/routers/digitransit
 	@echo "Installing fallback icons..."
 	mkdir -p $(DATADIR)/icons
-	cp -r qml/icons/fallback/*.svg $(DATADIR)/icons
+	cp qml/icons/fallback/*.svg $(DATADIR)/icons
 	@echo "Installing translations..."
 	$(foreach lang,$(LANGS),$(call install-translation,$(lang)))
 	@echo "Installing desktop file..."
