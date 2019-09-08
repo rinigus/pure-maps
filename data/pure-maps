@@ -25,6 +25,14 @@ XDG_DATA_DIRS="${XDG_DATA_DIRS:-$HOME/.local/share}":INSTALL_PREFIX/share/FULL_N
 
 # INSERT_PLATFORM_STYLE
 # INSERT_PLATFORM_FALLBACK_STYLE
+
+# check if called from dbus activation
+if [[ $# -eq 1 && "$1" == "--start-directly" ]]; then
+    exec qmlrunner -P INSTALL_PREFIX/share FULL_NAME -- "$@"
+    exit 0 # never reached as previous call is exec, keeping for clarity
+fi
+
+# proceed to start and/or contact via dbus
 dbus-send --session \
           --dest=io.github.rinigus.PureMaps \
           --type=method_call \

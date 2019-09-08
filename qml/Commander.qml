@@ -31,18 +31,46 @@ Item {
         path: '/io/github/rinigus/PureMaps'
         service: 'io.github.rinigus.PureMaps'
 
-        xml: '  <interface name="io.github.rinigus.PureMaps">\n' +
-             '    <method name="Command">\n' +
-             '       <arg name="options" direction="in" type="as"/>' +
-             '       <arg name="result" direction="out" type="s"/>' +
-             '    </method>\n' +
-             '    <method name="ShowPoi">\n' +
-             '       <arg name="title" direction="in" type="s"/>' +
-             '       <arg name="latitude" direction="in" type="d"/>' +
-             '       <arg name="longitude" direction="in" type="d"/>' +
-             '       <arg name="result" direction="out" type="s"/>' +
-             '    </method>\n' +
-             '  </interface>\n'
+        xml:"
+<interface name='io.github.rinigus.PureMaps'>
+  <method name='Activate'>
+    <arg type='a{sv}' name='platform_data' direction='in'/>
+  </method>
+  <method name='ActivateAction'>
+    <arg type='s' name='action_name' direction='in'/>
+    <arg type='av' name='parameter' direction='in'/>
+    <arg type='a{sv}' name='platform_data' direction='in'/>
+  </method>
+  <method name='Command'>
+    <arg name='options' direction='in' type='as'/>
+    <arg name='result' direction='out' type='s'/>
+  </method>
+  <method name='Open'>
+    <arg type='as' name='uris' direction='in'/>
+  </method>
+  <method name='ShowPoi'>
+    <arg name='title' direction='in' type='s'/>
+    <arg name='latitude' direction='in' type='d'/>
+    <arg name='longitude' direction='in' type='d'/>
+    <arg name='result' direction='out' type='s'/>
+  </method>
+</interface>
+"
+        function rcActivate(platform_data) {
+            app.activate();
+            console.log( "DBUS METHOD CALLED: Open" )
+            console.log( JSON.stringify(platform_data) )
+            console.log()
+        }
+
+        function rcActivateAction(action_name, parameter, platform_data ) {
+            app.activate();
+            console.log("DBUS METHOD CALLED: ActivateAction")
+            console.log( JSON.stringify(action_name) )
+            console.log( JSON.stringify(parameter) )
+            console.log( JSON.stringify(platform_data) )
+            console.log()
+        }
 
         function rcCommand(options) {
             var escaped = options.map(function(s) {
@@ -51,6 +79,15 @@ Item {
             commander.parser(escaped);
             app.activate();
             return "OK";
+        }
+
+        function rcOpen( uris, platform_data ) {
+            app.activate();
+            console.log( "DBUS METHOD CALLED: Open" )
+            console.log( JSON.stringify(uris) )
+            console.log( JSON.stringify(platform_data) )
+            console.log()
+            parser( uris )
         }
 
         function rcShowPoi(title, latitude, longitude) {
