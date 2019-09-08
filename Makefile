@@ -10,6 +10,7 @@ EXEDIR     = $(DESTDIR)$(PREFIX)/bin
 EXE        = $(EXEDIR)/$(NAME)
 DATADIR    = $(DESTDIR)$(PREFIX)/share/$(FULLNAME)
 DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
+DBUSDIR    = $(DESTDIR)$(PREFIX)/share/dbus-1/services
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
 METADIR    = $(DESTDIR)$(PREFIX)/share/metainfo
 LANGS      = $(basename $(notdir $(wildcard po/*.po)))
@@ -21,6 +22,7 @@ QMLRUNNER = qmlrunner -P INSTALL_PREFIX/share FULL_NAME
 QT_PLATFORM_STYLE =
 QT_PLATFORM_FALLBACK_STYLE =
 TMP_AS_CACHE =
+INSTALL_DBUSACT = no
 
 define install-translation =
     # GNU gettext translations for Python use.
@@ -168,6 +170,16 @@ endif
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
 	cp data/$(NAME).desktop $(DESKTOPDIR) || cp data/pure-maps.desktop $(DESKTOPDIR)/$(NAME).desktop || true
+	sed -i -e 's|EXE|$(EXE)|g' $(DESKTOPDIR)/$(NAME).desktop || true
+	sed -i -e 's|NAME|$(NAME)|g' $(DESKTOPDIR)/$(NAME).desktop || true
+	@echo "Installing extra desktop files if available..."
+	cp data/$(NAME)-*.desktop $(DESKTOPDIR) || true
+ifeq ($(INSTALL_DBUSACT),yes)
+	@echo "Installing DBus service file..."
+	mkdir -p $(DBUSDIR)
+	cp data/io.github.rinigus.PureMaps.service $(DBUSDIR) || true
+	sed -i -e 's|EXE|$(EXE)|g' $(DBUSDIR)/io.github.rinigus.PureMaps.service || true
+endif
 	@echo "Installing executable file..."
 	mkdir -p $(EXEDIR)
 	cp data/$(NAME) $(EXE) || cp data/pure-maps $(EXE) || true

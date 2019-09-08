@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Pure Maps Uri Handler
+MimeType=x-scheme-handler/geo
+Exec=harbour-pure-maps %u
+X-Nemo-Application-Type=no-invoker
+Icon=harbour-pure-maps
+Type=Application
+NoDisplay=true

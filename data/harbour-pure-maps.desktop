@@ -1,7 +1,5 @@
 [Desktop Entry]
 Name=Pure Maps
-Exec=harbour-pure-maps %u
+Exec=harbour-pure-maps
 Icon=harbour-pure-maps
 Type=Application
-MimeType=x-scheme-handler/geo
-# X-Nemo-Single-Instance=no

@@ -38,5 +38,7 @@ make DESTDIR=%{buildroot} PREFIX=/usr INCLUDE_GPXPY=yes install
 %{_bindir}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}-uri-handler.desktop
+#%{_datadir}/dbus-1/services/io.github.rinigus.PureMaps.service
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %exclude /usr/share/metainfo/harbour-pure-maps.appdata.xml
