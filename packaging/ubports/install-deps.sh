@@ -18,8 +18,11 @@ SHARE_INSTALL_DIR=$INSTALL_DIR/usr/share
 # Install meta data
 cp $ROOT/packaging/ubports/manifest.json $INSTALL_DIR
 cp $ROOT/packaging/ubports/pure-maps.apparmor $INSTALL_DIR
-cp $ROOT/packaging/ubports/pure-maps.svg $INSTALL_DIR/pure-maps
+cp $ROOT/packaging/ubports/pure-maps.svg $INSTALL_DIR
 mv $GENERAL_BUILD_DIR/pure-maps/click/share/applications/pure-maps.desktop $INSTALL_DIR
+
+# Replace icon name in desktop file
+sed -i 's/Icon=pure-maps/Icon=pure-maps.svg/g' $INSTALL_DIR/pure-maps.desktop
 
 # Install binaries
 mkdir -p $BIN_INSTALL_DIR
