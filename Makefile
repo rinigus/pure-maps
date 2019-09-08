@@ -17,6 +17,7 @@ LCONVERT   = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
 		  $(wildcard /bin/lconvert),\
 		  $(wildcard /usr/bin/lconvert),\
 		  $(wildcard /usr/lib/*/qt5/bin/lconvert))
+QMLRUNNER = qmlrunner -P INSTALL_PREFIX/share FULL_NAME
 QT_PLATFORM_STYLE =
 QT_PLATFORM_FALLBACK_STYLE =
 TMP_AS_CACHE =
@@ -170,6 +171,7 @@ endif
 	@echo "Installing executable file..."
 	mkdir -p $(EXEDIR)
 	cp data/$(NAME) $(EXE) || cp data/pure-maps $(EXE) || true
+	sed -i -e 's|QMLRUNNER|$(QMLRUNNER)|g' $(EXE) || true
 	sed -i -e 's|INSTALL_PREFIX|$(PREFIX)|g' $(EXE) || true
 	sed -i -e 's|FULL_NAME|$(FULLNAME)|g' $(EXE) || true
 ifdef QT_PLATFORM_STYLE
@@ -214,7 +216,7 @@ pot:
 	tools/update-translations
 
 rpm-silica:
-	$(MAKE) NAME=harbour-pure-maps .rpm-silica-imp
+	$(MAKE) NAME=harbour-pure-maps QMLRUNNER="sailfish-qml FULL_NAME" .rpm-silica-imp
 
 .rpm-silica-imp:
 	$(MAKE) platform-silica

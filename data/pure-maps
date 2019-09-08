@@ -28,7 +28,7 @@ XDG_DATA_DIRS="${XDG_DATA_DIRS:-$HOME/.local/share}":INSTALL_PREFIX/share/FULL_N
 
 # check if called from dbus activation
 if [[ $# -eq 1 && "$1" == "--start-directly" ]]; then
-    exec qmlrunner -P INSTALL_PREFIX/share FULL_NAME -- "$@"
+    exec QMLRUNNER
     exit 0 # never reached as previous call is exec, keeping for clarity
 fi
 
@@ -40,4 +40,4 @@ dbus-send --session \
           /io/github/rinigus/PureMaps \
           io.github.rinigus.PureMaps.Command \
           array:string:"$options" > /dev/null 2>&1 || \
-    exec qmlrunner -P INSTALL_PREFIX/share FULL_NAME -- "$@"
+    exec QMLRUNNER -- "$@"
