@@ -33,7 +33,7 @@ ApplicationWindow {
     property var    pages: StackPL { }
     property bool   running: Qt.application.state === Qt.ApplicationActive
     property int    screenHeight: height
-    property bool   screenLarge: true
+    property bool   screenLarge: false
     property int    screenWidth: width
     property bool   keepAlive: false
 
