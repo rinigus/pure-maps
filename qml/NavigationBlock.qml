@@ -290,7 +290,7 @@ Panel {
                 AnchorChanges {
                     target: iconImage
                     anchors.left: undefined
-                    anchors.right: parent.right
+                    anchors.right: parent.left
                 }
             }
         ]
