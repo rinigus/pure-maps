@@ -39,7 +39,7 @@ def autocomplete(query, x, y, params):
     cache[key] = copy.deepcopy(results)
     return results
 
-def geocode(query, params):
+def geocode(query, x, y, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 25)

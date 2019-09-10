@@ -52,13 +52,16 @@ def autocomplete(query, x, y, params):
     cache[key] = copy.deepcopy(results)
     return results
 
-def geocode(query, params):
+def geocode(query, x, y, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 10)
     lang = poor.util.get_default_language("fi")
     lang = (lang if lang in ("fi", "sv") else "fi")
     url = SEARCH_URL.format(**locals())
+    if x and y:
+        url += "&focus.point.lon={:.3f}".format(x)
+        url += "&focus.point.lat={:.3f}".format(y)
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)["features"]

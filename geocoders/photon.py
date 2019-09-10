@@ -35,17 +35,20 @@ def autocomplete(query, x, y, params):
     key = "autocomplete:{}".format(query)
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[key])
-    results = geocode(query, params)
+    results = geocode(query, x, y, params)
     cache[key] = copy.deepcopy(results)
     return results
 
-def geocode(query, params):
+def geocode(query, x, y, params):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 10)
     lang = poor.util.get_default_language("en")
     lang = (lang if lang in ("de", "en", "it", "fr") else "en")
     url = URL.format(**locals())
+    if x and y:
+        url += "&lon={:.3f}".format(x)
+        url += "&lat={:.3f}".format(y)
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)["features"]

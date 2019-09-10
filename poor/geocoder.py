@@ -138,7 +138,7 @@ class Geocoder:
                          provider=self.id)]
 
         try:
-            results = self._provider.geocode(query, params)
+            results = self._provider.geocode(query, x=x, y=y, params=params)
         except socket.timeout:
             return dict(error=True, message=_("Connection timed out"))
         except Exception:
