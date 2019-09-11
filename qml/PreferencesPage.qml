@@ -330,7 +330,7 @@ PagePL {
 
                     ComboBoxPL {
                         id: mapmatchingComboBox
-                        description: app.tr("Select mode of transportation. Only applies when Pure Maps is not navigating.")
+                        description: app.tr("Select mode of transportation. Only applies when Pure Maps is not navigating. Uses OSM Scout Server for its operation.")
                         label: app.tr("Snap position to road")
                         model: [ app.tr("None"), app.tr("Car"), app.tr("Bicycle"), app.tr("Foot") ]
                         visible: app.hasMapMatching
@@ -573,6 +573,7 @@ PagePL {
                     TextSwitchPL {
                         id: mapmatchingSwitch
                         checked: app.conf.mapMatchingWhenNavigating
+                        description: app.tr("Uses OSM Scout Server for its operation.")
                         text: app.tr("Snap position to road")
                         visible: app.hasMapMatching
                         onCheckedChanged: {
@@ -641,7 +642,7 @@ PagePL {
 
                         ComboBoxPL {
                             id: speedLimitComboBox
-                            description: app.tr("Show speed limit sign")
+                            description: app.tr("Show speed limit sign. Requires snapping position to the road to find the speed limit.")
                             enabled: mapmatchingSwitch.checked
                             label: app.tr("Speed limit")
                             model: [ app.tr("Always"), app.tr("Only when exceeding"), app.tr("Never") ]
