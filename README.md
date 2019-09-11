@@ -77,6 +77,7 @@ are needed:
 * Mapbox GL Native, Qt version, use the packaged version at https://github.com/rinigus/pkg-mapbox-gl-native
 * Mapbox GL QML, unofficial QML bindings, https://github.com/rinigus/mapbox-gl-qml
 * [non-Sailfish] QML runner https://github.com/rinigus/qmlrunner
+* [qtcontrols, kirigami] QML Clipboard module https://github.com/rinigus/qml-module-clipboard
 * GPXPy, https://github.com/tkrajina/gpxpy
 
 When developing with Kirigami using flatpak builder, dependencies will
