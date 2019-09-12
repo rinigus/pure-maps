@@ -116,7 +116,7 @@ def prepare_endpoint(point):
     if isinstance(point, (list, tuple)):
         return dict(lat=point[1], lon=point[0])
     geocoder = poor.Geocoder("default")
-    results = geocoder.geocode(point, dict(limit=1))
+    results = geocoder.geocode(point, params=dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
 def parse_exit(maneuver, key):

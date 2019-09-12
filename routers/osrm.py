@@ -127,7 +127,7 @@ def prepare_endpoint(point):
     if isinstance(point, (list, tuple)):
         return "{:.5f},{:.5f}".format(point[0], point[1])
     geocoder = poor.Geocoder("default")
-    results = geocoder.geocode(point, dict(limit=1))
+    results = geocoder.geocode(point, params=dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
 def route(fm, to, heading, params):

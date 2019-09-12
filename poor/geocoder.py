@@ -93,7 +93,7 @@ class Geocoder:
         bearing  = poor.util.calculate_bearing(x1, y1, x2, y2)
         return poor.util.format_distance_and_bearing(distance, bearing)
 
-    def geocode(self, query, params=None, x=0, y=0):
+    def geocode(self, query, x=0, y=0, params=None):
         """
         Return a list of dictionaries of places matching `query`.
 

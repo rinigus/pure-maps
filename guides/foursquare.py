@@ -230,7 +230,7 @@ def prepare_point(point):
     if isinstance(point, (list, tuple)):
         return point[0], point[1]
     geocoder = poor.Geocoder("default")
-    results = geocoder.geocode(point, dict(limit=1))
+    results = geocoder.geocode(point, params=dict(limit=1))
     return results[0]["x"], results[0]["y"]
 
 def parse_postcode(venue):

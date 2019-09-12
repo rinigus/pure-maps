@@ -222,7 +222,7 @@ def prepare_endpoint(point):
         return "{{lat: {:.6f}, lon: {:.6f}}}".format(point[1], point[0])
     geocoder = poor.Geocoder("digitransit")
     # XXX: limit=1 sometimes returns no results!?
-    results = geocoder.geocode(point, dict(limit=3))
+    results = geocoder.geocode(point, params=dict(limit=3))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
 def route(fm, to, heading, params):
