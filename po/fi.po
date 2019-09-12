@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 22:06+0300\n"
+"POT-Creation-Date: 2019-09-12 20:30+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: JR Fi <juho@reivo.fi>, 2019\n"
 "Language-Team: Finnish (https://www.transifex.com/rinigus/teams/89597/fi/)\n"
@@ -709,8 +709,8 @@ msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
-"Ääninavigointi ei ole saatavissa: puuttuva teksti-ääneksi (TTS) kirjasto "
-"valitulle kielelle"
+"Ääninavigointi ei ole saatavissa: puuttuva teksti-ääneksi (TTS) "
+"puheentuottokone valitulle kielelle"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -1035,7 +1035,7 @@ msgstr "Brittiläinen"
 msgid "Preferred map language."
 msgstr "Haluttu kartan kieli"
 
-#: qml/PreferencesPage.qml:61 qml/PreferencesPage.qml:692
+#: qml/PreferencesPage.qml:61 qml/PreferencesPage.qml:693
 #: routers/gpx_osmscout_settings.qml:66 routers/mapquest_open_settings.qml:55
 #: routers/ValhallaSettings.qml:57
 msgid "Language"
@@ -1053,7 +1053,7 @@ msgstr "arabia"
 msgid "Basque"
 msgstr "baski"
 
-#: qml/PreferencesPage.qml:66 qml/PreferencesPage.qml:695
+#: qml/PreferencesPage.qml:66 qml/PreferencesPage.qml:696
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "Catalan"
 msgstr "katalaani"
@@ -1066,7 +1066,7 @@ msgstr "kiina (mandariini, yksink.)"
 msgid "Chinese (traditional)"
 msgstr "kiina (mandariini, perint.)"
 
-#: qml/PreferencesPage.qml:69 qml/PreferencesPage.qml:696
+#: qml/PreferencesPage.qml:69 qml/PreferencesPage.qml:697
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "Czech"
 msgstr "tšekki"
@@ -1079,7 +1079,7 @@ msgstr "tanska"
 msgid "Dutch"
 msgstr "hollanti"
 
-#: qml/PreferencesPage.qml:72 qml/PreferencesPage.qml:694
+#: qml/PreferencesPage.qml:72 qml/PreferencesPage.qml:695
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "English"
 msgstr "englanti"
@@ -1088,12 +1088,12 @@ msgstr "englanti"
 msgid "Finnish"
 msgstr "suomi"
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:699
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:700
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "French"
 msgstr "ranska"
 
-#: qml/PreferencesPage.qml:75 qml/PreferencesPage.qml:697
+#: qml/PreferencesPage.qml:75 qml/PreferencesPage.qml:698
 #: routers/gpx_osmscout_settings.qml:68 routers/mapquest_open_settings.qml:59
 #: routers/ValhallaSettings.qml:61
 msgid "German"
@@ -1111,7 +1111,7 @@ msgstr "kreikka"
 msgid "Hebrew"
 msgstr "heprea"
 
-#: qml/PreferencesPage.qml:79 qml/PreferencesPage.qml:700
+#: qml/PreferencesPage.qml:79 qml/PreferencesPage.qml:701
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Hindi"
 msgstr "hindi"
@@ -1120,7 +1120,7 @@ msgstr "hindi"
 msgid "Indonesian"
 msgstr "indonesia"
 
-#: qml/PreferencesPage.qml:81 qml/PreferencesPage.qml:701
+#: qml/PreferencesPage.qml:81 qml/PreferencesPage.qml:702
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Italian"
 msgstr "italia"
@@ -1150,7 +1150,7 @@ msgstr "puola"
 msgid "Portuguese"
 msgstr "portugali"
 
-#: qml/PreferencesPage.qml:88 qml/PreferencesPage.qml:702
+#: qml/PreferencesPage.qml:88 qml/PreferencesPage.qml:703
 #: routers/gpx_osmscout_settings.qml:69 routers/mapquest_open_settings.qml:59
 #: routers/ValhallaSettings.qml:62
 msgid "Russian"
@@ -1160,12 +1160,12 @@ msgstr "venäjä"
 msgid "Sinhalese"
 msgstr "sinhali"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:698
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:699
 #: routers/gpx_osmscout_settings.qml:69 routers/ValhallaSettings.qml:62
 msgid "Spanish"
 msgstr "espanja"
 
-#: qml/PreferencesPage.qml:91 qml/PreferencesPage.qml:704
+#: qml/PreferencesPage.qml:91 qml/PreferencesPage.qml:705
 #: routers/gpx_osmscout_settings.qml:69 routers/ValhallaSettings.qml:62
 msgid "Swedish"
 msgstr "ruotsi"
@@ -1240,7 +1240,7 @@ msgid "Prevent sleep"
 msgstr "Estä lepotila"
 
 #: qml/PreferencesPage.qml:186 qml/PreferencesPage.qml:423
-#: qml/PreferencesPage.qml:647
+#: qml/PreferencesPage.qml:648
 msgid "Never"
 msgstr "Ei koskaan"
 
@@ -1248,7 +1248,7 @@ msgstr "Ei koskaan"
 msgid "When navigating"
 msgstr "Navigoidessa"
 
-#: qml/PreferencesPage.qml:186 qml/PreferencesPage.qml:647
+#: qml/PreferencesPage.qml:186 qml/PreferencesPage.qml:648
 msgid "Always"
 msgstr "Aina"
 
@@ -1315,10 +1315,10 @@ msgstr "Tutustuminen"
 #: qml/PreferencesPage.qml:333
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
-"navigating."
-msgstr "Valitse kulkutapa. Käytössä vain, kun Pure Maps ei navigoi."
+"navigating. Uses OSM Scout Server for its operation."
+msgstr ""
 
-#: qml/PreferencesPage.qml:334 qml/PreferencesPage.qml:576
+#: qml/PreferencesPage.qml:334 qml/PreferencesPage.qml:577
 msgid "Snap position to road"
 msgstr "Kohdista sijainti tiehen"
 
@@ -1463,33 +1463,37 @@ msgstr "Uudelleenreititä automaattisesti"
 msgid "Automatic zoom on start"
 msgstr "Automaattinen mittakaava alussa"
 
-#: qml/PreferencesPage.qml:587
+#: qml/PreferencesPage.qml:576
+msgid "Uses OSM Scout Server for its operation."
+msgstr ""
+
+#: qml/PreferencesPage.qml:588
 msgid "Show direction signs"
 msgstr "Näytä suuntamerkit"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:598
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr "Käännä kartan suunta kulkusuuntaan, kun aloitetaan navigointi."
 
-#: qml/PreferencesPage.qml:598
+#: qml/PreferencesPage.qml:599
 msgid "Rotate map when navigating"
 msgstr "Käännä karttaa navigoidessa"
 
-#: qml/PreferencesPage.qml:607
+#: qml/PreferencesPage.qml:608
 msgid "Only applies to vector maps."
 msgstr "Koskee vain vektorikarttoja."
 
-#: qml/PreferencesPage.qml:609
+#: qml/PreferencesPage.qml:610
 msgid "Tilt map when navigating"
 msgstr "Kallista karttaa navigoidessa"
 
-#: qml/PreferencesPage.qml:617
+#: qml/PreferencesPage.qml:618
 msgid "Smooth position animation"
 msgstr "Pehmeä liikeanimaatio"
 
-#: qml/PreferencesPage.qml:628
+#: qml/PreferencesPage.qml:629
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
@@ -1497,70 +1501,76 @@ msgstr ""
 "Toivottu sukupuoli navigoinnin ääniohjeisiin. Tuettu vain osassa äänikoneita"
 " ja kieliä."
 
-#: qml/PreferencesPage.qml:629 qml/PreferencesPage.qml:726
+#: qml/PreferencesPage.qml:630 qml/PreferencesPage.qml:727
 msgid "Voice gender"
 msgstr "Äänen sukupuoli"
 
-#: qml/PreferencesPage.qml:630 qml/PreferencesPage.qml:727
+#: qml/PreferencesPage.qml:631 qml/PreferencesPage.qml:728
 msgid "Male"
 msgstr "Mies"
 
-#: qml/PreferencesPage.qml:630 qml/PreferencesPage.qml:727
+#: qml/PreferencesPage.qml:631 qml/PreferencesPage.qml:728
 msgid "Female"
 msgstr "Nainen"
 
-#: qml/PreferencesPage.qml:644
-msgid "Show speed limit sign"
-msgstr "Näytä nopeusrajoitusmerkki"
+#: qml/PreferencesPage.qml:645
+msgid ""
+"Show speed limit sign. Requires snapping position to the road to find the "
+"speed limit."
+msgstr ""
 
-#: qml/PreferencesPage.qml:646
+#: qml/PreferencesPage.qml:647
 msgid "Speed limit"
 msgstr "Nopeusrajoitus"
 
-#: qml/PreferencesPage.qml:647
+#: qml/PreferencesPage.qml:648
 msgid "Only when exceeding"
 msgstr "Vain, kun rajoitus ylitetään"
 
-#: qml/PreferencesPage.qml:670
+#: qml/PreferencesPage.qml:671
 msgid "Testing"
 msgstr "Koekäyttö"
 
-#: qml/PreferencesPage.qml:679
+#: qml/PreferencesPage.qml:680
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
-"Teksti ääneksi (TTS) koekäyttö. Valitse sama kieli kuin navigaatioon, "
-"toivottu sukupuoli ja paina alla olevaa näppäintä kokeillaksesi."
+"Teksti ääneksi (TTS) puheentuottokoneen koekäyttö. Valitse sama kieli kuin "
+"navigaatioon, toivottu sukupuoli ja paina alla olevaa näppäintä "
+"kokeillaksesi."
 
-#: qml/PreferencesPage.qml:703
+#: qml/PreferencesPage.qml:704
 msgid "Slovak"
 msgstr "slovakki"
 
-#: qml/PreferencesPage.qml:725
+#: qml/PreferencesPage.qml:726
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "Toivottu sukupuoli. Tuettu vain osassa äänikoneita ja kieliä."
 
-#: qml/PreferencesPage.qml:739
+#: qml/PreferencesPage.qml:740
 msgid "Test"
 msgstr "Koe"
 
-#: qml/PreferencesPage.qml:779
+#: qml/PreferencesPage.qml:780
 msgid "Selected voice engine: %1"
 msgstr "Valittu äänikone: %1"
 
-#: qml/PreferencesPage.qml:781
+#: qml/PreferencesPage.qml:782
 msgid ""
 "No engine available for selected language.\n"
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
 msgstr ""
+"Puheentuottokonetta ei ole tarjolla valitulle kielelle.\n"
+"\n"
+"Pure Maps tukemat TTS puheentuottokoneet: Mimic, Flite, PicoTTS sekä Espeak. Mikäli käytät Pure Maps:ia Flatpak:in tai OpenStore:n kautta, koneet on asennettava erikseen. Sailfish-järjestelmän käyttäjät löytävät koneet OpenRepos:ista."
 
-#: qml/PreferencesPage.qml:799
+#: qml/PreferencesPage.qml:800
 msgid "Development"
 msgstr "Kehitys"
 
-#: qml/PreferencesPage.qml:805
+#: qml/PreferencesPage.qml:806
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1568,7 +1578,7 @@ msgstr ""
 "Seuraavan valinnat ovat vain ohjelmiston kehitystyötä varten. Älä muuta "
 "niitä, ellet tiedä mitä teet."
 
-#: qml/PreferencesPage.qml:813
+#: qml/PreferencesPage.qml:814
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1576,11 +1586,11 @@ msgstr ""
 "Asettaa nykyisen sijainnin karttanäkymän keskelle. Muista estää GPS-"
 "sijainninmääritys käyttäessäsi tätä valintaa."
 
-#: qml/PreferencesPage.qml:814
+#: qml/PreferencesPage.qml:815
 msgid "Set position to the map center"
 msgstr "Aseta sijainti kartan keskelle"
 
-#: qml/PreferencesPage.qml:821
+#: qml/PreferencesPage.qml:822
 msgid "Show current zoom level"
 msgstr "Näytä mittasuhteen taso"
 
