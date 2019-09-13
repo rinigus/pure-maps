@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-12 20:30+0300\n"
+"POT-Creation-Date: 2019-09-13 19:08+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2019\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -1244,7 +1244,8 @@ msgstr "Alltid"
 
 #: qml/PreferencesPage.qml:201
 msgid "Fetch autocompleted search results while typing a search string."
-msgstr "Hämta autokompletterade sökresultat under tiden söksträngen skrivs."
+msgstr ""
+"Hämta automatiskt kompletterade sökresultat under tiden söksträngen skrivs."
 
 #: qml/PreferencesPage.qml:202
 msgid "Autocomplete while searching"
@@ -1305,6 +1306,8 @@ msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
+"Välj transportsätt. Gäller endast när Pure Maps inte navigerar. Använder OSM"
+" Scout Server för åtgärden."
 
 #: qml/PreferencesPage.qml:334 qml/PreferencesPage.qml:577
 msgid "Snap position to road"
@@ -1452,7 +1455,7 @@ msgstr "Automatisk zoom vid start"
 
 #: qml/PreferencesPage.qml:576
 msgid "Uses OSM Scout Server for its operation."
-msgstr ""
+msgstr "Använder OSM Scout Server för åtgärden."
 
 #: qml/PreferencesPage.qml:588
 msgid "Show direction signs"
@@ -1504,6 +1507,8 @@ msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr ""
+"Visa hastighetsbegränsning. Kräver att positionen fästs vid vägen för att "
+"hitta hastighetsbegränsningen."
 
 #: qml/PreferencesPage.qml:647
 msgid "Speed limit"
