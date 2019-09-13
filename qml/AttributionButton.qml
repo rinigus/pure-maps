@@ -46,7 +46,6 @@ MouseArea {
         anchors.top: parent.top
         iconHeight: parent.height
         padding: 0
-        visible: iconSource
 
         Connections {
             target: styler
@@ -57,15 +56,20 @@ MouseArea {
         onClicked: attributionButton.pushPage()
 
         function setSource() {
-            if (logo && logo !== "default") extra.iconSource = app.getIcon("icons/attribution/%1".arg(logo));
-            else extra.iconSource = "";
+            if (logo && logo !== "default") {
+                extra.iconSource = app.getIcon("icons/attribution/%1".arg(logo));
+                extra.visible = true;
+            } else {
+                extra.iconSource = "";
+                extra.visible = false;
+            }
         }
     }
 
     IconButtonPL {
         id: main
         anchors.left: extra.right
-        anchors.leftMargin: styler.themePaddingMedium
+        anchors.leftMargin: extra.visible ? styler.themePaddingMedium : 0
         anchors.top: parent.top
         iconHeight: parent.height
         iconSource: app.getIcon("icons/attribution/default")
