@@ -21,7 +21,7 @@
         "route": "#ffffff",
         "routeOpacity": 0.5,
         "itemFg": "white",
-        "itemBg": "black"
+        "itemBg": "#192530"
     },
     "type": "default"
 }
