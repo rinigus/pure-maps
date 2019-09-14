@@ -35,7 +35,7 @@ def autocomplete(query, x=0, y=0, params={}):
     key = "autocomplete:{}".format(query)
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[key])
-    results = geocode(query, x=x, y=y, params=params)
+    results = geocode(query=query, x=x, y=y, params=params)
     cache[key] = copy.deepcopy(results)
     return results
 
@@ -96,7 +96,7 @@ def parse_type(result):
         return type.capitalize()
     return ""
 
-def reverse(x, y, radius=100, limit=25, params={}):
+def reverse(x, y, radius, limit=25, params={}):
     """Return a list of dictionaries of places nearby given coordinates."""
     lng = x
     lat = y

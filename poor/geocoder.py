@@ -78,7 +78,7 @@ class Geocoder:
             olc_isFull(query.strip())):
             return []
         try:
-            results = self._provider.autocomplete(query, x, y, params)
+            results = self._provider.autocomplete(query=query, x=x, y=y, params=params)
         except Exception:
             print("Autocomplete failed:", file=sys.stderr)
             traceback.print_exc()
@@ -138,7 +138,7 @@ class Geocoder:
                          provider=self.id)]
 
         try:
-            results = self._provider.geocode(query, x=x, y=y, params=params)
+            results = self._provider.geocode(query=query, x=x, y=y, params=params)
         except socket.timeout:
             return dict(error=True, message=_("Connection timed out"))
         except Exception:
@@ -175,7 +175,7 @@ class Geocoder:
         params = params or {}
 
         try:
-            results = self._provider.reverse(x, y, radius, limit, params)
+            results = self._provider.reverse(x=x, y=y, radius=radius, limit=limit, params=params)
         except socket.timeout:
             return dict(error=True, message=_("Connection timed out"))
         except Exception:

@@ -42,7 +42,7 @@ URL_REVERSE = ("http://api.opencagedata.com/geocode/v1/json"
 
 cache = {}
 
-def geocode(query, x, y, params):
+def geocode(query, x=0, y=0, params={}):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 10)
@@ -95,7 +95,7 @@ def parse_type(result):
         return type.capitalize()
     return ""
 
-def reverse(x, y, radius, limit, params):
+def reverse(x, y, radius, limit=1, params={}):
     """Return a list of dictionaries of places nearby given coordinates."""
     lng = x
     lat = y
