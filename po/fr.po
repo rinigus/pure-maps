@@ -6,19 +6,19 @@
 # Translators:
 # rinigus github, 2018
 # Roman Meier <meierrom@gmail.com>, 2018
-# Jordi, 2018
 # Florian, 2019
 # lutinotmalin, 2019
 # Anne017, 2019
+# Jordi, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-12 20:30+0300\n"
+"POT-Creation-Date: 2019-09-13 19:08+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Anne017, 2019\n"
+"Last-Translator: Jordi, 2019\n"
 "Language-Team: French (https://www.transifex.com/rinigus/teams/89597/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +40,7 @@ msgstr "Position à partir de coordonnées"
 
 #: poor/geocoder.py:134
 msgid "Point from Plus code"
-msgstr ""
+msgstr "Point code plus"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
 #: poor/router.py:111
@@ -158,7 +158,7 @@ msgstr "Nouvel itinéraire introuvable"
 
 #: poor/narrative.py:621
 msgid "Starting navigation"
-msgstr ""
+msgstr "Démarrage de la navigation"
 
 #: poor/util.py:193 poor/util.py:212
 msgid "mi"
@@ -242,7 +242,7 @@ msgstr "{distance} nord-ouest"
 
 #: poor/util.py:270 poor/util.py:278
 msgid "plus code"
-msgstr ""
+msgstr "code plus"
 
 #: poor/util.py:291
 msgid "{:d} min"
@@ -482,7 +482,7 @@ msgstr "Par défaut"
 
 #: qml/BasemapButton.qml:222
 msgid "Guidance"
-msgstr ""
+msgstr "Guidage"
 
 #: qml/BasemapButton.qml:223
 msgid "Hybrid"
@@ -506,7 +506,7 @@ msgstr "Trafic"
 
 #: qml/BasemapButton.qml:242
 msgid "Light"
-msgstr ""
+msgstr "feu"
 
 #: qml/BasemapButton.qml:259
 msgid "Day"
@@ -667,6 +667,8 @@ msgid ""
 "Depending on the used map provider, error could be caused by network failure, expired API access key, absence of offline server. Try to address the issue and/or change your map provider, preferences, or profile.\n"
 "If you change API access key, you may have to restart Pure Maps."
 msgstr ""
+"Selon le fournisseur de carte utilisé, l'erreur peut être causée par une panne de réseau, une clé d'accès API expirée, l'absence de serveur hors ligne. Essayez de résoudre le problème et/ou changez votre fournisseur de carte, vos préférences ou votre profil.\n"
+"Si vous changez la clé d'accès à l'API, vous devrez peut-être redémarrer Pure Maps."
 
 #: qml/MapErrorPage.qml:50
 msgid ""
@@ -705,6 +707,8 @@ msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
+"Navigation vocale indisponible : moteur Text-to-Speech (TTS) manquant pour "
+"la langue sélectionnée"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -724,7 +728,7 @@ msgstr "Partager la position actuelle"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position (not ready)"
-msgstr ""
+msgstr "Partager la position actuelle (pas prêt)"
 
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
@@ -954,7 +958,7 @@ msgstr "Longitude: %2"
 
 #: qml/PoiInfoPage.qml:79
 msgid "Plus code: %1"
-msgstr ""
+msgstr "Code plus : %1"
 
 #: qml/PoiInfoPage.qml:112
 msgid "Postal code: %1"
@@ -1027,7 +1031,7 @@ msgstr "Anglaise"
 
 #: qml/PreferencesPage.qml:60
 msgid "Preferred map language."
-msgstr ""
+msgstr "Langue préférée pour la carte."
 
 #: qml/PreferencesPage.qml:61 qml/PreferencesPage.qml:693
 #: routers/gpx_osmscout_settings.qml:66 routers/mapquest_open_settings.qml:55
@@ -1037,7 +1041,7 @@ msgstr "Langue"
 
 #: qml/PreferencesPage.qml:63
 msgid "Local"
-msgstr ""
+msgstr "locale"
 
 #: qml/PreferencesPage.qml:64
 msgid "Arabic"
@@ -1152,7 +1156,7 @@ msgstr "Russe"
 
 #: qml/PreferencesPage.qml:89
 msgid "Sinhalese"
-msgstr ""
+msgstr "cinghalais"
 
 #: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:699
 #: routers/gpx_osmscout_settings.qml:69 routers/ValhallaSettings.qml:62
@@ -1178,7 +1182,7 @@ msgstr "Ukrénien"
 
 #: qml/PreferencesPage.qml:95
 msgid "Urdu"
-msgstr ""
+msgstr "Urdu"
 
 #: qml/PreferencesPage.qml:96
 msgid "Vietnamese"
@@ -1186,13 +1190,15 @@ msgstr "Vietnamien"
 
 #: qml/PreferencesPage.qml:97
 msgid "Welsh"
-msgstr ""
+msgstr "Gallois"
 
 #: qml/PreferencesPage.qml:149
 msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
 msgstr ""
+"Passer du mode jour/nuit. Notez que tous les fournisseurs n'ont pas toutes "
+"les cartes avec des paires jour/nuit disponibles."
 
 #: qml/PreferencesPage.qml:152
 msgid "Day/night mode"
@@ -1214,7 +1220,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:175
 msgid "Switch map modes"
-msgstr ""
+msgstr "Changer de mode de carte"
 
 #: qml/PreferencesPage.qml:184
 msgid ""
@@ -1273,7 +1279,7 @@ msgstr "Supprimer l'historique"
 
 #: qml/PreferencesPage.qml:250
 msgid "Clear map tiles stored in a cache"
-msgstr ""
+msgstr "Effacer les tuiles de la carte stockées dans un cache"
 
 #: qml/PreferencesPage.qml:258
 msgid "Clear cache"
@@ -1412,7 +1418,7 @@ msgstr "Compas"
 
 #: qml/PreferencesPage.qml:477
 msgid "Map selection"
-msgstr ""
+msgstr "Sélection de la carte"
 
 #: qml/PreferencesPage.qml:486
 msgid "Speed and location precision"

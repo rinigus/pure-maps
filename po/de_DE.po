@@ -10,19 +10,19 @@
 # Peter Feldbaum, 2018
 # happykraut, 2019
 # PawelSpoon, 2019
-# Uli M <popanz@online.de>, 2019
 # Timo <koennecke@mosushi.com>, 2019
 # Ricardo Breitkopf, 2019
 # Armin Maier <marsu1@gmx.de>, 2019
+# Uli M <popanz@online.de>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-12 20:30+0300\n"
+"POT-Creation-Date: 2019-09-13 19:08+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Armin Maier <marsu1@gmx.de>, 2019\n"
+"Last-Translator: Uli M <popanz@online.de>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rinigus/teams/89597/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1264,7 +1264,7 @@ msgstr "Automatische Vervollständigung während der Suche"
 
 #: qml/PreferencesPage.qml:215
 msgid "Privacy"
-msgstr ""
+msgstr "Datenschutz"
 
 #: qml/PreferencesPage.qml:221
 msgid ""
@@ -1317,6 +1317,8 @@ msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
+"Wähle eine Transportart. Gilt nur wenn „Pure Maps\" nicht navigiert. Für "
+"diese Funktion wird OSM Scout Server benutzt."
 
 #: qml/PreferencesPage.qml:334 qml/PreferencesPage.qml:577
 msgid "Snap position to road"
@@ -1463,7 +1465,7 @@ msgstr "Automatische Vergrößerung bei Programmstart"
 
 #: qml/PreferencesPage.qml:576
 msgid "Uses OSM Scout Server for its operation."
-msgstr ""
+msgstr "Für diese Funktion wird OSM Scout Server benutzt."
 
 #: qml/PreferencesPage.qml:588
 msgid "Show direction signs"
@@ -1491,7 +1493,7 @@ msgstr "Neige die Karte beim Navigieren"
 
 #: qml/PreferencesPage.qml:618
 msgid "Smooth position animation"
-msgstr ""
+msgstr "ruckfreie Positionsbewegung"
 
 #: qml/PreferencesPage.qml:629
 msgid ""
@@ -1518,6 +1520,8 @@ msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr ""
+"Zeige Geschwindigkeitsbegrenzungsschild. Benötigt \"Einrasten auf Straße\" "
+"um die Geschwindigkeitsbegrenzung zu finden."
 
 #: qml/PreferencesPage.qml:647
 msgid "Speed limit"
@@ -1564,6 +1568,9 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
 msgstr ""
+"Keine Engine für die gewählte Sprache vorhanden.\n"
+"\n"
+"Pure Maps unterstützt Mimic, Flite, PicoTTS und Espeak TTS. Wenn du Pure Maps nicht über Flatpak installiert hast, müssen die Sprach Engines separat installiert werden. Sailfish OS Nutzer finden entsprechende Pakete auf OpenRepos."
 
 #: qml/PreferencesPage.qml:800
 msgid "Development"
@@ -1708,7 +1715,7 @@ msgstr "Nachricht in Zwischenablage kopiert"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr ""
+msgstr "Fehler beim Senden der Nachricht"
 
 #: qml/SharePage.qml:66
 msgid "Email"

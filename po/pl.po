@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-12 20:30+0300\n"
+"POT-Creation-Date: 2019-09-13 19:08+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: A <hucul@o2.pl>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rinigus/teams/89597/pl/)\n"
@@ -1304,13 +1304,15 @@ msgstr "Zrestartuj aplikację po zmianie kluczy API"
 
 #: qml/PreferencesPage.qml:326
 msgid "Exploring"
-msgstr ""
+msgstr "Eksplorowanie"
 
 #: qml/PreferencesPage.qml:333
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
+"Wybierz środek transportu. Ma zastosowanie tylko wtedy, gdy Pure Maps nie "
+"nawiguje. Do działania używa OSM Scout Server."
 
 #: qml/PreferencesPage.qml:334 qml/PreferencesPage.qml:577
 msgid "Snap position to road"
@@ -1459,7 +1461,7 @@ msgstr "Automatyczny zoom od uruchomienia"
 
 #: qml/PreferencesPage.qml:576
 msgid "Uses OSM Scout Server for its operation."
-msgstr ""
+msgstr "Do działania używa OSM Scout Server."
 
 #: qml/PreferencesPage.qml:588
 msgid "Show direction signs"
@@ -1486,7 +1488,7 @@ msgstr "Przechyl mapę podczas nawigacji"
 
 #: qml/PreferencesPage.qml:618
 msgid "Smooth position animation"
-msgstr ""
+msgstr "Płynna animacja pozycji"
 
 #: qml/PreferencesPage.qml:629
 msgid ""
@@ -1513,6 +1515,8 @@ msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr ""
+"Pokaż znak ograniczenia prędkości. Wymaga przyciągania pozycji do drogi, aby"
+" znaleźć ograniczenie prędkości."
 
 #: qml/PreferencesPage.qml:647
 msgid "Speed limit"
@@ -1557,6 +1561,9 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
 msgstr ""
+"Brak dostępnego silnika dla wybranego języka.\n"
+"\n"
+"Pure Maps obsługuje silniki Mimic, Flite, PicoTTS i Espeak TTS. O ile nie korzystasz z Pure Maps przez Flatpak lub OpenStore, silniki muszą być zainstalowane osobno. Użytkownicy Sailfish OS mogą znaleźć silniki w OpenRepos."
 
 #: qml/PreferencesPage.qml:800
 msgid "Development"
@@ -1699,7 +1706,7 @@ msgstr "Wiadomość skopiowana do schowka"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr ""
+msgstr "Błąd wysyłania wiadomości"
 
 #: qml/SharePage.qml:66
 msgid "Email"

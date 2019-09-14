@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-12 20:30+0300\n"
+"POT-Creation-Date: 2019-09-13 19:08+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rui kon <facebookmail@qq.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -1269,7 +1269,7 @@ msgstr "探索"
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
-msgstr ""
+msgstr "当无法使用 Pure Maps导航时，使用 OSM Scout 服务。"
 
 #: qml/PreferencesPage.qml:334 qml/PreferencesPage.qml:577
 msgid "Snap position to road"
@@ -1407,7 +1407,7 @@ msgstr "启动时自动缩放"
 
 #: qml/PreferencesPage.qml:576
 msgid "Uses OSM Scout Server for its operation."
-msgstr ""
+msgstr "使用 OSM Scout "
 
 #: qml/PreferencesPage.qml:588
 msgid "Show direction signs"
@@ -1457,7 +1457,7 @@ msgstr "女性"
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
-msgstr ""
+msgstr "显示限速标志。需要定位到路上以寻找限速信息。"
 
 #: qml/PreferencesPage.qml:647
 msgid "Speed limit"
