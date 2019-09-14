@@ -8,6 +8,8 @@ DESTDIR    =
 PREFIX     = /usr
 EXEDIR     = $(DESTDIR)$(PREFIX)/bin
 EXE        = $(EXEDIR)/$(NAME)
+EXEDIRREAL = $(PREFIX)/bin
+EXEREAL    = $(EXEDIRREAL)/$(NAME)
 DATADIR    = $(DESTDIR)$(PREFIX)/share/$(FULLNAME)
 DESKTOPDIR = $(DESTDIR)$(PREFIX)/share/applications
 DBUSDIR    = $(DESTDIR)$(PREFIX)/share/dbus-1/services
@@ -58,19 +60,14 @@ dist:
 
 flathub-install-general:
 	tools/manage-keys inject . || true
-	$(MAKE) install
-	mkdir -p $(PREFIX)/share/applications
-	mkdir -p $(PREFIX)/share/appdata
-	mkdir -p $(PREFIX)/usr
-	install -D packaging/flatpak/io.github.rinigus.PureMaps $(PREFIX)/bin/io.github.rinigus.PureMaps
-	install -D packaging/flatpak/osmscout-server $(PREFIX)/bin/osmscout-server
-	install -D packaging/flatpak/io.github.rinigus.PureMaps.desktop $(PREFIX)/share/applications
-	sed 's/binary>pure-maps/binary>io.github.rinigus.PureMaps/' packaging/pure-maps.appdata.xml > $(PREFIX)/share/appdata/io.github.rinigus.PureMaps.appdata.xml
+	$(MAKE) QMLRUNNER="/app/bin/qmlrunner -P INSTALL_PREFIX/share FULL_NAME" NAME=io.github.rinigus.PureMaps install
+	mkdir -p $(DESKTOPDIR)
+	mkdir -p $(DESTDIR)$(PREFIX)/share/appdata
+	mkdir -p $(DESTDIR)$(PREFIX)/usr
+	install -D packaging/flatpak/osmscout-server $(DESTDIR)$(PREFIX)/bin/osmscout-server
+	sed 's/binary>pure-maps/binary>io.github.rinigus.PureMaps/' packaging/pure-maps.appdata.xml > $(DESTDIR)$(PREFIX)/share/appdata/io.github.rinigus.PureMaps.appdata.xml
 	# workaround https://github.com/hughsie/appstream-glib/issues/271
-	ln -s $(PREFIX)/share $(PREFIX)/usr
-	mv $(PREFIX)/share/pure-maps/qml/pure-maps.qml $(PREFIX)/share/pure-maps/qml/io.github.rinigus.PureMaps.qml
-	rename pure-maps io.github.rinigus.PureMaps $(PREFIX)/share/pure-maps/translations/*.qm
-	mv $(PREFIX)/share/pure-maps $(PREFIX)/share/io.github.rinigus.PureMaps
+	ln -s $(PREFIX)/share $(DESTDIR)$(PREFIX)/usr
 
 flathub-install-kirigami: platform-kirigami flathub-install-general
 	echo "Kirigami flathub install done"
@@ -170,7 +167,7 @@ endif
 	@echo "Installing desktop file..."
 	mkdir -p $(DESKTOPDIR)
 	cp data/$(NAME).desktop $(DESKTOPDIR) || cp data/pure-maps.desktop $(DESKTOPDIR)/$(NAME).desktop || true
-	sed -i -e 's|EXE|$(EXE)|g' $(DESKTOPDIR)/$(NAME).desktop || true
+	sed -i -e 's|EXE|$(EXEREAL)|g' $(DESKTOPDIR)/$(NAME).desktop || true
 	sed -i -e 's|NAME|$(NAME)|g' $(DESKTOPDIR)/$(NAME).desktop || true
 	@echo "Installing extra desktop files if available..."
 	cp data/$(NAME)-*.desktop $(DESKTOPDIR) || true
@@ -178,7 +175,7 @@ ifeq ($(INSTALL_DBUSACT),yes)
 	@echo "Installing DBus service file..."
 	mkdir -p $(DBUSDIR)
 	cp data/io.github.rinigus.PureMaps.service $(DBUSDIR) || true
-	sed -i -e 's|EXE|$(EXE)|g' $(DBUSDIR)/io.github.rinigus.PureMaps.service || true
+	sed -i -e 's|EXE|$(EXEREAL)|g' $(DBUSDIR)/io.github.rinigus.PureMaps.service || true
 endif
 	@echo "Installing executable file..."
 	mkdir -p $(EXEDIR)

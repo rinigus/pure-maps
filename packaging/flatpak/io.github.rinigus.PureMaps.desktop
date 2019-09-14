@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Pure Maps
-Exec=io.github.rinigus.PureMaps %u
-Type=Application
-Icon=io.github.rinigus.PureMaps
-Categories=Science;Maps;Qt;
-MimeType=x-scheme-handler/geo
