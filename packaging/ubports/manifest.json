@@ -9,7 +9,7 @@
             "desktop":  "pure-maps.desktop"
         }
     },
-    "version": "1.24.1",
+    "version": "1.25.0",
     "maintainer": "Jonatan Hatakeyama Zeidler <jonatan_zeidler@gmx.de>",
     "framework" : "ubuntu-sdk-16.04"
 }

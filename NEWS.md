@@ -1,3 +1,16 @@
+2019-09-14: Pure Maps 1.25
+==========================
+
+* Optional DBus activation [based on xXSparkeyy's work]
+* Search function has current location bias (online providers)
+* [silica] Fixing geo handler [based on xXSparkeyy's work]
+* [qtcontrols,kirigami] Add clipboard support for location sharing
+* [ubports] Fixes in packaging scripts [jonnius]
+* Attribution button redesign
+* [qtcontrols,kirigami] Improve fallback icons loading
+* Update translations
+* Bugfixes
+
 2019-08-26: Pure Maps 1.24
 ==========================
 

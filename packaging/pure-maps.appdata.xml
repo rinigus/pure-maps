@@ -38,6 +38,21 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.25.0" date="2019-09-14">
+     <description>
+       <ul>
+         <li>Optional DBus activation [based on xXSparkeyy's work]</li>
+         <li>Search function has current location bias (online providers)</li>
+         <li>[silica] Fixing geo handler [based on xXSparkeyy's work]</li>
+         <li>[qtcontrols,kirigami] Add clipboard support for location sharing</li>
+         <li>[ubports] Fixes in packaging scripts [jonnius]</li>
+         <li>Attribution button redesign</li>
+         <li>[qtcontrols,kirigami] Improve fallback icons loading</li>
+         <li>Update translations</li>
+         <li>Bugfixes</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.24.0" date="2019-08-26">
      <description>
        <ul>
