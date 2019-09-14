@@ -355,7 +355,7 @@ Item {
         var x = map.position.coordinate.longitude || 0;
         var y = map.position.coordinate.latitude || 0;
         geo.update();
-        py.call("poor.app.geocoder.geocode", [query, null, x, y], function(results) {
+        py.call("poor.app.geocoder.geocode", [query, x, y, null], function(results) {
             // skip, new search or autocomplete was started
             if (_searchIndex !== mySearchIndex || !_searchPending) return;
 
