@@ -9,7 +9,7 @@
 * Attribution button redesign
 * [qtcontrols,kirigami] Improve fallback icons loading
 * [1.25.0, 1.25.1] Update translations
-* [1.25.0, 1.25.1] Bugfixes
+* [1.25.0, 1.25.1, 1.25.2] Bugfixes
 
 2019-08-26: Pure Maps 1.24
 ==========================
