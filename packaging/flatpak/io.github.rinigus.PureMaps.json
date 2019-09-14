@@ -73,6 +73,23 @@
             ]
         },
         {
+            "name": "clipboard-qml",
+            "buildsystem": "qmake",
+            "make-install-args": [
+                "INSTALL_ROOT=/app"
+            ],
+            "post-install": [
+                "ln -s /app/usr/lib/qml/Clipboard /app/lib/qml"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/rinigus/qml-module-clipboard.git",
+                    "commit": "47a0aefb515bc53e20028d5eb741a163f73613f3"
+                }
+            ]
+        },
+        {
             "name": "mapbox-gl-native-qt",
             "buildsystem": "simple",
             "build-commands": [
