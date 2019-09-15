@@ -32,6 +32,8 @@ Alternative, is to use Flatpak-based environment and develop using
 that. For this approach, see separate
 [README](packaging/flatpak/README.md).
 
+To build a click package for Ubuntu Touch, see separate
+[README](packaging/ubports/README.md).
 
 ## Platforms
 
