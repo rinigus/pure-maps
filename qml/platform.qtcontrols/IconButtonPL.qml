@@ -44,6 +44,7 @@ Item {
         color: iconColorize ? styler.themeHighlightColor : "transparent"
         opacity: iconOpacity
         rotation: iconRotation
+        smooth: false
         sourceSize.height: iconHeight
         sourceSize.width: iconWidth
         visible: name
