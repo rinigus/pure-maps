@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import "."
 import "platform"
 
 PageEmptyPL {
@@ -36,11 +37,12 @@ PageEmptyPL {
     MenuButton { id: menuButton }
     Meters { id: meters }
     NavigateButton { id: navigateButton }
-    NavigationBlock { id: navigationBlock }
-    NavigationBlockLandscapeLeftShield { id: navigationBlockLandscapeLeftShield }
-    NavigationInfoBlock { id: navigationInfoBlock }
-    NavigationInfoBlockLandscapeLeftShield { id: navigationInfoBlockLandscapeLeftShield }
-    NavigationInfoBlockLandscapeRightShield { id: navigationInfoBlockLandscapeRightShield }
+//    NavigationBlock { id: navigationBlock }
+//    NavigationBlockLandscapeLeftShield { id: navigationBlockLandscapeLeftShield }
+//    NavigationInfoBlock { id: navigationInfoBlock }
+//    NavigationInfoBlockLandscapeLeftShield { id: navigationInfoBlockLandscapeLeftShield }
+//    NavigationInfoBlockLandscapeRightShield { id: navigationInfoBlockLandscapeRightShield }
+    NavigationOverviewBlock { id: navigationOverview }
     NavigationSign { id: navigationSign }
     NorthArrow { id: northArrow }
     Notification { id: notification }
