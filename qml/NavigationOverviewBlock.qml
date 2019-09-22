@@ -76,8 +76,8 @@ Item {
             id: infoLayout
             anchors.top: parent.top
             anchors.topMargin: styler.themePaddingMedium
-            anchors.right: extrasAndCompact.left
-            anchors.rightMargin: styler.themePaddingLarge
+            anchors.right: button.left
+            anchors.rightMargin: styler.themePaddingMedium
             activeColors: true
             visible: !block.condensedMode
         }
@@ -87,7 +87,7 @@ Item {
             anchors.top: parent.top
             anchors.topMargin: styler.themePaddingMedium
             anchors.right: button.left
-            anchors.rightMargin: styler.themePaddingLarge
+            anchors.rightMargin: styler.themePaddingMedium
             height: destLabel.height
             states: [
                 State {
@@ -106,6 +106,8 @@ Item {
                     }
                 }
             ]
+            visible: block.condensedMode
+            width: visible ? implicitWidth : 0
 
             property bool canCenter: block.condensedMode &&
                                      (extrasAndCompact.implicitWidth / 2 < parent.width/2 - button.width -
@@ -116,7 +118,6 @@ Item {
                 color: styler.themePrimaryColor
                 font.pixelSize: styler.themeFontSizeMedium
                 text: block.destDist
-                visible: block.condensedMode
             }
 
             Spacer {
@@ -129,7 +130,6 @@ Item {
                 color: styler.themePrimaryColor
                 font.pixelSize: styler.themeFontSizeMedium
                 text: block.destTime
-                visible: block.condensedMode
             }
 
             Spacer {
@@ -144,7 +144,6 @@ Item {
                 color: styler.themeSecondaryColor
                 font.pixelSize: styler.themeFontSizeSmall
                 text: app.tr("ETA")
-                visible: destLabel.height
             }
 
             Spacer {
