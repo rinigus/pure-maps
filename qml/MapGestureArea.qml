@@ -74,7 +74,7 @@ MapboxMapGestureArea {
 
     onPressAndHoldGeo: {
         if (app.mode === modes.navigate || app.mode === modes.followMe)
-            return app.notification.flash(app.tr("Stop navigation to select POI"), "mapgesture poi 2")
+            return app.notification.flash(app.tr("Stop navigation to select POI"), "mapgesture press and hold")
 
         var p = pois.add({ "x": geocoordinate.longitude,
                            "y": geocoordinate.latitude });
