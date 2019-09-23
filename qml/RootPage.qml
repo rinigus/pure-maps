@@ -42,6 +42,7 @@ PageEmptyPL {
 //    NavigationInfoBlock { id: navigationInfoBlock }
 //    NavigationInfoBlockLandscapeLeftShield { id: navigationInfoBlockLandscapeLeftShield }
 //    NavigationInfoBlockLandscapeRightShield { id: navigationInfoBlockLandscapeRightShield }
+    NavigationCurrentBlock { id: navigationCurrent }
     NavigationOverviewBlock { id: navigationOverview }
     NavigationSign { id: navigationSign }
     NorthArrow { id: northArrow }

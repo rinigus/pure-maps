@@ -26,7 +26,7 @@ Item {
     anchors.right: parent.right
     anchors.top: parent.top
 
-    height: visible ? childrenRect.height : 0
+    height: visible ? mainRect.height : 0
     states: [
         State {
             when: showAtBottom
@@ -69,7 +69,7 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: block.openManeuvers()
+            onClicked: block.openNavigation()
         }
 
         RouteOverallInfo {
@@ -178,12 +178,12 @@ Item {
                 anchors.verticalCenter: button.verticalCenter
                 iconHeight: styler.themeIconSizeSmall
                 iconName: styler.iconManeuvers
-                onClicked: block.openManeuvers()
+                onClicked: block.openNavigation()
             }
         }
     }
 
-    function openManeuvers() {
+    function openNavigation() {
         if (visible) app.showNavigationPages()
     }
 }
