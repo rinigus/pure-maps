@@ -56,6 +56,8 @@ MapboxMapGestureArea {
                 selectedPoi = { 'poi': poi, 'dist2': dist2 };
             }
         });
+        if (selectedPoi && (app.mode === modes.navigate || app.mode === modes.followMe))
+            return app.notification.flash(app.tr("Stop navigation to select POI"), "mapgesture poi")
         if (selectedPoi)
             return pois.show(selectedPoi.poi);
 
@@ -71,6 +73,9 @@ MapboxMapGestureArea {
     }
 
     onPressAndHoldGeo: {
+        if (app.mode === modes.navigate || app.mode === modes.followMe)
+            return app.notification.flash(app.tr("Stop navigation to select POI"), "mapgesture poi 2")
+
         var p = pois.add({ "x": geocoordinate.longitude,
                            "y": geocoordinate.latitude });
         if (!p) return;
