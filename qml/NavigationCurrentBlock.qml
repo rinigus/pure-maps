@@ -68,7 +68,7 @@ Item {
             color: styler.blockBg
             height: manLabel.height + styler.themePaddingMedium +
                     iconImage.height + iconImage.anchors.topMargin + radius
-            radius: styler.themePaddingSmall
+            radius: styler.themePaddingLarge
             visible: !app.portrait &&  leftShield.height > mainRect.height && block.notify
             width: manLabel.anchors.leftMargin + styler.themePaddingLarge +
                    Math.max(manLabel.width, iconImage.width) + radius
@@ -86,7 +86,7 @@ Item {
             anchors.rightMargin: -radius
             color: styler.blockBg
             height: speed.height + styler.themePaddingMedium + radius
-            radius: styler.themePaddingSmall
+            radius: styler.themePaddingLarge
             visible: speed.text && speedShield.height > mainRect.height ? true : false
             width: speed.width + styler.themePaddingLarge +
                    speedUnit.width + styler.themePaddingSmall +

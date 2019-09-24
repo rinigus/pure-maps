@@ -164,12 +164,12 @@ Item {
             id: button
             anchors.bottom: block.showAtBottom ? parent.bottom : undefined
             anchors.right: parent.right
-            anchors.rightMargin: -styler.themePaddingSmall
+            anchors.rightMargin: -radius
             anchors.top: !block.showAtBottom ? parent.top : undefined
             color: styler.blockBg
             height: _button.height + (block.condensedMode ? 2*styler.themePaddingSmall : 0)
-            radius: styler.themePaddingSmall
-            width: _button.width + 2*styler.themePaddingSmall - anchors.rightMargin
+            radius: styler.themePaddingLarge
+            width: _button.width + styler.themePaddingSmall + _button.anchors.leftMargin + radius
 
             IconButtonPL {
                 id: _button
