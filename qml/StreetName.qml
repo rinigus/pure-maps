@@ -25,13 +25,16 @@ Rectangle {
                     menuButton.top :
                     referenceBlockBottom.top
     anchors.bottomMargin: styler.themePaddingSmall
-    anchors.left: referenceBlockBottomLeft.right
-    anchors.leftMargin: styler.themePaddingLarge
-    anchors.right: referenceBlockBottomRight.left
-    anchors.rightMargin: styler.themePaddingLarge
     color: "transparent"
     height: cover.height
     visible: !app.modalDialog
+    x: {
+        var speed = speedLimit.visible ? speedLimit.x + speedLimit.width : 0;
+        var left = Math.max(speed, referenceBlockBottomLeft.width);
+        var right = referenceBlockBottomRight.width;
+        return Math.max(left, right) + styler.themePaddingLarge
+    }
+    width: parent.width - 2*x
     z: 400
 
     Rectangle {

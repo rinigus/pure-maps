@@ -23,7 +23,7 @@ Rectangle {
 
     anchors.left: parent.left
     anchors.leftMargin: styler.themePaddingLarge
-    anchors.bottom: streetName.top
+    anchors.bottom: referenceBlockBottomLeft.top
     anchors.bottomMargin: styler.themePaddingLarge
     border.width: 0.7*styler.themePaddingLarge
     border.color: "red"
