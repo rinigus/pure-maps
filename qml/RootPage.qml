@@ -37,6 +37,8 @@ PageEmptyPL {
     MenuButton { id: menuButton }
     Meters { id: meters }
     NavigateButton { id: navigateButton }
+    NavigationButtonClear { id: navigationButtonClear }
+    NavigationButtonStartPause { id: navigationButtonStartPause }
     NavigationCurrentBlock { id: navigationCurrent }
     NavigationOverviewBlock { id: navigationOverview }
     NavigationSign { id: navigationSign }
