@@ -30,10 +30,10 @@ MouseArea {
             (_rotate ? scaleBar.width : scaleBar.height)
     states: [
         State {
-            when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
+            when: (app.mode === modes.navigate || app.mode === modes.followMe)
             AnchorChanges {
                 target: master
-                anchors.bottom: navigationInfoBlockLandscapeRightShield.top
+                anchors.bottom: referenceBlockBottomRight.top
                 anchors.left: undefined
                 anchors.right: parent.right
                 anchors.top: undefined

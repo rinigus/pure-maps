@@ -23,7 +23,7 @@ Rectangle {
     id: block
     anchors.right: parent.right
     anchors.rightMargin: -styler.themePaddingMedium
-    anchors.top: navigationBlock.bottom
+    anchors.top: referenceBlockTopRight.bottom
     anchors.topMargin: height > 0 ? styler.themePaddingSmall : 0
     color: "#3768B7"
     height: {

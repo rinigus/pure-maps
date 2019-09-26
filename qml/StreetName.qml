@@ -21,24 +21,16 @@ import "platform"
 
 Rectangle {
     id: master
-    anchors.bottom: (app.mode === modes.navigate || app.mode === modes.followMe) ? (app.portrait && app.mode === modes.navigate ? navigationInfoBlock.top : parent.bottom) : menuButton.top
-    anchors.bottomMargin: (app.mode === modes.navigate || app.mode === modes.followMe) ? styler.themePaddingSmall : 0
-    anchors.left: parent.left
+    anchors.bottom: referenceBlockBottom.y > menuButton.y && menuButton.visible ?
+                    menuButton.top :
+                    referenceBlockBottom.top
+    anchors.bottomMargin: styler.themePaddingSmall
+    anchors.left: referenceBlockBottomLeft.right
     anchors.leftMargin: styler.themePaddingLarge
-    anchors.right: parent.right
+    anchors.right: referenceBlockBottomRight.left
     anchors.rightMargin: styler.themePaddingLarge
     color: "transparent"
     height: cover.height
-    states: [
-        State {
-            when: (app.mode === modes.navigate && !app.portrait) || app.mode === modes.followMe
-            AnchorChanges {
-                target: master
-                anchors.left: navigationInfoBlockLandscapeLeftShield.right
-                anchors.right: navigationInfoBlockLandscapeRightShield.left
-            }
-        }
-    ]
     visible: !app.modalDialog
     z: 400
 

@@ -54,8 +54,12 @@ Item {
     property string destEta:   app.navigationStatus.destEta
     property string destTime:  app.navigationStatus.destTime
     // difference in height between main and button rectangles if the button
-    // rectangle sticks out. zero otherwise
-    property real   marginExtra: Math.max(button.height - mainRect.height, 0)
+    // rectangle sticks out. zero otherwise. margins defined as in NavigationCurrentBlock
+    property real   marginExtraLeft: 0
+    property real   marginExtraLeftSide: 0
+    property real   marginExtraRight: Math.max(button.height - mainRect.height, 0)
+    property real   marginExtraRightSide: button.height > mainRect.height ?
+                                              button.width + button.anchors.rightMargin : 0
     property string totalDist: app.navigationStatus.totalDist
 
     Rectangle {

@@ -33,8 +33,12 @@ Item {
     property string icon:      app.navigationStatus.icon
     property string manDist:   app.navigationStatus.manDist
     property string manTime:   app.navigationStatus.manTime
-    // difference in height between main and button rectangles if the button
+    // difference in height between main and shields if the shield's
     // rectangle sticks out. zero otherwise
+    property real   marginExtraLeft: leftShield.visible ? Math.max(leftShield.height - mainRect.height, 0) : 0
+    property real   marginExtraLeftSide: leftShield.visible ? leftShield.width : 0
+    property real   marginExtraRight: speedShield.visible ? Math.max(speedShield.height - mainRect.height, 0) : 0
+    property real   marginExtraRightSide: speedShield.visible ? speedShield.width : 0
     property string narrative: app.navigationStatus.narrative
     property bool   notify:    app.navigationStatus.notify
     property var    street:    app.navigationStatus.street

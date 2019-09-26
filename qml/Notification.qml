@@ -21,7 +21,7 @@ import "platform"
 
 Rectangle {
     id: rect
-    anchors.top: navigationBlock.bottom
+    anchors.top: referenceBlockTop.bottom
     anchors.topMargin: styler.themePaddingLarge
     anchors.horizontalCenter: parent.horizontalCenter
     color: styler.blockBg

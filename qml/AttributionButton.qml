@@ -23,18 +23,9 @@ MouseArea {
     id: attributionButton
     anchors.left: parent.left
     anchors.leftMargin: styler.themePaddingLarge
-    anchors.top: navigationBlock.bottom
+    anchors.top: referenceBlockTopLeft.bottom
     anchors.topMargin: styler.themePaddingLarge
     height: styler.themeIconSizeSmall
-    states: [
-        State {
-            when: !app.portrait && navigationBlockLandscapeLeftShield.height > 0
-            AnchorChanges {
-                target: attributionButton
-                anchors.top: navigationBlockLandscapeLeftShield.bottom
-            }
-        }
-    ]
     width: extra.width + main.width
     z: 500
 
