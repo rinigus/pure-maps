@@ -644,7 +644,7 @@ MapboxMap {
         // Calculate new margins and set them for the map.
         var header = referenceBlockTop.height > 0 ? referenceBlockTop.height : map.height*0.05;
         var footer = !app.infoPanelOpen && (app.mode === modes.explore || app.mode === modes.exploreRoute) && menuButton ? menuButton.height + menuButton.anchors.bottomMargin : 0;
-        footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait && referenceBlockBottom ? referenceBlockBottom.height : 0;
+        footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && referenceBlockBottom ? referenceBlockBottom.height : 0;
         footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && streetName ? streetName.height : 0
         footer += app.infoPanelOpen && infoPanel ? infoPanel.height : 0
         footer = Math.min(footer, map.height / 2.0);
