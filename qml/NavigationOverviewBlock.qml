@@ -35,14 +35,6 @@ Item {
                 anchors.bottom: parent.bottom
                 anchors.top: undefined
             }
-        },
-        State {
-            when: showAtBottom
-            AnchorChanges {
-                target: block
-                anchors.bottom: undefined
-                anchors.top: parent.top
-            }
         }
     ]
     visible: !app.modalDialog && (app.mode === modes.exploreRoute || app.mode === modes.navigate)
@@ -183,6 +175,44 @@ Item {
                 iconHeight: styler.themeIconSizeSmall
                 iconName: styler.iconManeuvers
                 onClicked: block.openNavigation()
+            }
+        }
+
+        Item {
+            id: progress
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            height: styler.themePaddingSmall*2/3
+            states: [
+                State {
+                    when: showAtBottom
+                    AnchorChanges {
+                        target: progress
+                        anchors.bottom: parent.bottom
+                        anchors.top: undefined
+                    }
+                }
+            ]
+            Rectangle {
+                id: progressTotal
+                anchors.left: parent.left
+                anchors.leftMargin: styler.themeHorizontalPageMargin
+                anchors.right: parent.right
+                anchors.rightMargin: styler.themeHorizontalPageMargin
+                color: "transparent"
+                height: parent.height
+                radius: height / 2
+            }
+            Rectangle {
+                id: progressComplete
+                anchors.left: parent.left
+                anchors.leftMargin: progressTotal.anchors.leftMargin
+                color: styler.themeHighlightColor
+                height: parent.height
+                opacity: 0.2
+                radius: height / 2
+                width: app.navigationStatus.progress * progressTotal.width
             }
         }
     }
