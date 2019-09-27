@@ -200,8 +200,9 @@ Item {
                 anchors.leftMargin: styler.themeHorizontalPageMargin
                 anchors.right: parent.right
                 anchors.rightMargin: styler.themeHorizontalPageMargin
-                color: "transparent"
+                color: styler.themePrimaryColor
                 height: parent.height
+                opacity: 0.15
                 radius: height / 2
             }
             Rectangle {
@@ -210,7 +211,7 @@ Item {
                 anchors.leftMargin: progressTotal.anchors.leftMargin
                 color: styler.themeHighlightColor
                 height: parent.height
-                opacity: 0.2
+                opacity: 0.75
                 radius: height / 2
                 width: app.navigationStatus.progress * progressTotal.width
             }
