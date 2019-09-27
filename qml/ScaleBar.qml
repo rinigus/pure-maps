@@ -27,7 +27,7 @@ MouseArea {
     anchors.left: parent.left
     anchors.top: referenceBlockTopLeft.bottom
     height: 2*(styler.themePaddingLarge + styler.themePaddingSmall) +
-            (_rotate ? scaleBar.width : scaleBar.height)
+            (_rotate ? scaleBar.scaleBarMaxLength : scaleBar.height)
     states: [
         State {
             when: (app.mode === modes.navigate || app.mode === modes.followMe)
@@ -43,7 +43,7 @@ MouseArea {
     opacity: hidden ? 0 : 1
     visible: !app.modalDialog
     width: 2*(styler.themePaddingLarge + styler.themePaddingSmall) +
-           (_rotate ? scaleBar.height : scaleBar.width)
+           (_rotate ? scaleBar.height : scaleBar.scaleBarMaxLength)
     z: 400
 
     property bool hidden: !_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale
@@ -80,8 +80,7 @@ MouseArea {
 
         property real   _prevDist: 0
         property real   _thickness: styler.themeFontSizeOnMap / 8.0
-        property int    scaleBarMaxLengthDefault: Math.min(map.height,map.width) / 4
-        property int    scaleBarMaxLength: scaleBarMaxLengthDefault
+        property int    scaleBarMaxLength: Math.min(map.height,map.width) / 4
         property real   scaleWidth: 0
         property string text: ""
 
@@ -153,15 +152,15 @@ MouseArea {
             if (app.conf.units === "american")
                 // Round to an even amount of miles or feet.
                 return dist >= 1609.34 ?
-                            Util.siground(dist / 1609.34, 1) * 1609.34 :
-                            Util.siground(dist * 3.28084, 1) / 3.28084;
+                            Util.sigfloor(dist / 1609.34, 1) * 1609.34 :
+                            Util.sigfloor(dist * 3.28084, 1) / 3.28084;
             if (app.conf.units === "british")
                 // Round to an even amount of miles or yards.
                 return dist >= 1609.34 ?
-                            Util.siground(dist / 1609.34, 1) * 1609.34 :
-                            Util.siground(dist * 1.09361, 1) / 1.09361;
+                            Util.sigfloor(dist / 1609.34, 1) * 1609.34 :
+                            Util.sigfloor(dist * 1.09361, 1) / 1.09361;
             // Round to an even amount of kilometers or meters.
-            return Util.siground(dist, 1);
+            return Util.sigfloor(dist, 1);
         }
 
         function update() {
