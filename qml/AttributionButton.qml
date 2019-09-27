@@ -21,11 +21,25 @@ import "platform"
 
 MouseArea {
     id: attributionButton
-    anchors.left: parent.left
-    anchors.leftMargin: styler.themePaddingLarge
+    anchors.left: scaleBar.right
+    anchors.leftMargin: 0
     anchors.top: referenceBlockTopLeft.bottom
     anchors.topMargin: styler.themePaddingLarge
     height: styler.themeIconSizeSmall
+    states: [
+        State {
+            when: scaleBar.opacity < 1e-5 || app.mode === modes.navigate || app.mode === modes.followMe
+            AnchorChanges {
+                target: attributionButton
+                anchors.left: parent.left
+            }
+            PropertyChanges {
+                target: attributionButton
+                anchors.leftMargin: styler.themePaddingLarge
+            }
+        }
+
+    ]
     width: extra.width + main.width
     z: 500
 

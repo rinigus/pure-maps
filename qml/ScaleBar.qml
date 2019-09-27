@@ -25,7 +25,7 @@ import "js/util.js" as Util
 MouseArea {
     id: master
     anchors.left: parent.left
-    anchors.top: attributionButton.bottom
+    anchors.top: referenceBlockTopLeft.bottom
     height: 2*(styler.themePaddingLarge + styler.themePaddingSmall) +
             (_rotate ? scaleBar.width : scaleBar.height)
     states: [
