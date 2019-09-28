@@ -46,7 +46,7 @@ MapButton {
     }
     visible: app.mode === modes.exploreRoute || app.mode === modes.navigate || app.mode === modes.followMe
     y: {
-        var p = parent.height/2 - height;
+        var p = parent.height/2 - (navigationButtonClear.visible ? height : height/2);
         if (p < scaleBar.y + scaleBar.height && scaleBar.x < anchors.leftMargin + width)
             return scaleBar.y + scaleBar.height;
         if (p < attributionButton.y + attributionButton.height &&
