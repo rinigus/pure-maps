@@ -370,6 +370,7 @@ PagePL {
                         app.setModeExplore();
                         app.showMap();
                     } else {
+                        map.clearRoute();
                         app.setModeFollowMe();
                         app.hideMenu(); // there is no info panel, follow me mode starts and is using hidden menu
                     }
