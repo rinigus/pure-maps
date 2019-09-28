@@ -28,10 +28,23 @@ MouseArea {
     height: styler.themeIconSizeSmall
     states: [
         State {
+            when: app.mode===modes.navigate && !app.portrait
+            AnchorChanges {
+                target: attributionButton
+                anchors.left: referenceBlockTopLeft.right
+                anchors.top: referenceBlockTop.bottom
+            }
+            PropertyChanges {
+                target: attributionButton
+                anchors.leftMargin: styler.themePaddingLarge
+            }
+        },
+        State {
             when: scaleBar.opacity < 1e-5 || app.mode === modes.navigate || app.mode === modes.followMe
             AnchorChanges {
                 target: attributionButton
                 anchors.left: parent.left
+                anchors.top: referenceBlockTopLeft.bottom
             }
             PropertyChanges {
                 target: attributionButton

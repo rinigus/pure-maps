@@ -66,7 +66,7 @@ MapboxMapGestureArea {
             return pois.hide();
         // Change map mode
         map.cleanMode = !map.cleanMode;
-        if (map.showNavButtons) map.showNavButtons = false;
+        map.showNavButtons = !map.showNavButtons;
     }
 
     onDoubleClicked: {

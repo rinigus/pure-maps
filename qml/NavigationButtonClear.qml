@@ -49,7 +49,7 @@ MapButton {
         map.clearRoute();
     }
 
-    property bool hidden: (app.modalDialog || app.infoPanelOpen ||
-                           (map.cleanMode && !app.conf.mapModeCleanShowNavigationClear))
-                          && !map.showNavButtons
+    property bool hidden: ((app.infoPanelOpen ||
+                            (map.cleanMode && !app.conf.mapModeCleanShowNavigationClear))
+                           && !map.showNavButtons) || app.modalDialog
 }

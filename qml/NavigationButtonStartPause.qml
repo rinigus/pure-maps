@@ -47,6 +47,8 @@ MapButton {
         if (p < attributionButton.y + attributionButton.height &&
                 attributionButton.x < anchors.leftMargin + width)
             return attributionButton.y + attributionButton.height;
+        if (p < referenceBlockTopLeft.y + referenceBlockTopLeft.height)
+            return referenceBlockTopLeft.y + referenceBlockTopLeft.height;
         return p;
     }
     z: 900
@@ -64,7 +66,7 @@ MapButton {
         }
     }
 
-    property bool hidden: (app.modalDialog || app.infoPanelOpen ||
-                           (map.cleanMode && !app.conf.mapModeCleanShowNavigationStartPause)) &&
-                          !map.showNavButtons
+    property bool hidden: ((app.infoPanelOpen ||
+                            (map.cleanMode && !app.conf.mapModeCleanShowNavigationClear))
+                           && !map.showNavButtons) || app.modalDialog
 }

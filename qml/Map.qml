@@ -147,16 +147,20 @@ MapboxMap {
         // navigation buttons switch timer
         id: navButtonsTimer
         interval: app.conf.mapModeAutoSwitchTime > 0 ? app.conf.mapModeAutoSwitchTime*1000 : 1000
-        repeat: false
-        running: false
-        onTriggered: map.showNavButtons = false;
+        repeat: true
+        running: map.showNavButtons && app.conf.mapModeAutoSwitchTime > 0
+        onTriggered: {
+            if (map.showNavButtons && app.conf.mapModeAutoSwitchTime > 0)
+                map.showNavButtons = false;
+        }
         property var conn: Connections {
             target: app
             onModeChanged: {
-                if (app.mode === modes.navigate || app.mode === modes.exploreRoute) {
+                if (app.mode === modes.navigate || app.mode === modes.exploreRoute)
                     map.showNavButtons = true;
-                    navButtonsTimer.restart();
-                }
+                else
+                    map.showNavButtons = false;
+
             }
         }
     }
