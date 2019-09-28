@@ -82,14 +82,14 @@ PageEmptyPL {
     }
     Item {
         id: referenceBlockTopLeft
-        anchors.right: parent.right
+        anchors.left: parent.left
         anchors.top: parent.top
         height: _posTopLeft
         width: _itemTop ? _itemTop.marginExtraLeftSide : 1
     }
     Item {
         id: referenceBlockTopRight
-        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.top: parent.top
         height: _posTopRight
         width: _itemTop ? _itemTop.marginExtraRightSide : 1
