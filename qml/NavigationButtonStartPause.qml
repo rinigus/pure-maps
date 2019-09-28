@@ -24,7 +24,8 @@ MapButton {
     anchors.left: parent.left
     anchors.right: undefined
     iconHeight: styler.themeIconSizeSmall
-    iconSource: app.mode === modes.navigate ? app.getIcon("icons/navigation-pause") : app.getIcon("icons/navigation-start")
+    iconSource: app.mode === modes.navigate ? app.getIcon("icons/navigation-pause") :
+                                              app.getIcon("icons/navigation-start")
     states: [
         State {
             when: hidden
@@ -64,5 +65,6 @@ MapButton {
     }
 
     property bool hidden: (app.modalDialog || app.infoPanelOpen ||
-                           (map.cleanMode /*&& !app.conf.mapModeCleanShowMenuButton*/)) && !map.showNavButtons
+                           (map.cleanMode && !app.conf.mapModeCleanShowNavigationStartPause)) &&
+                          !map.showNavButtons
 }

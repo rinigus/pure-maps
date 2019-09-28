@@ -50,5 +50,6 @@ MapButton {
     }
 
     property bool hidden: (app.modalDialog || app.infoPanelOpen ||
-                           (map.cleanMode /*&& !app.conf.mapModeCleanShowMenuButton*/)) && !map.showNavButtons
+                           (map.cleanMode && !app.conf.mapModeCleanShowNavigationClear))
+                          && !map.showNavButtons
 }

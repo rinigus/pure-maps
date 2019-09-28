@@ -517,6 +517,24 @@ PagePL {
                         }
                     }
 
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowNavigationStartPause
+                        text: app.tr("Navigation Start/Pause")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowNavigationStartPause!==checked)
+                                app.conf.set("map_mode_clean_show_navigation_start_pause", checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapModeCleanShowNavigationClear
+                        text: app.tr("Navigation Clear Route")
+                        onCheckedChanged: {
+                            if (app.conf.mapModeCleanShowNavigationClear!==checked)
+                                app.conf.set("map_mode_clean_show_navigation_clear", checked);
+                        }
+                    }
+
                     Spacer {
                         height: styler.themePaddingLarge
                     }
