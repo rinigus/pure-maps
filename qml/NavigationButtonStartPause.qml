@@ -24,8 +24,13 @@ MapButton {
     anchors.left: parent.left
     anchors.right: undefined
     iconHeight: styler.themeIconSizeSmall
-    iconSource: app.mode === modes.navigate ? app.getIcon("icons/navigation-pause") :
-                                              app.getIcon("icons/navigation-start")
+    iconSource: {
+        if (app.mode === modes.followMe)
+            return app.getIcon("icons/navigation-stop");
+        if (app.mode === modes.navigate)
+            return app.getIcon("icons/navigation-pause");
+        return app.getIcon("icons/navigation-start");
+    }
     states: [
         State {
             when: hidden
@@ -39,7 +44,7 @@ MapButton {
     transitions: Transition {
         AnchorAnimation { duration: app.conf.animationDuration; }
     }
-    visible: app.mode === modes.exploreRoute || app.mode === modes.navigate
+    visible: app.mode === modes.exploreRoute || app.mode === modes.navigate || app.mode === modes.followMe
     y: {
         var p = parent.height/2 - height;
         if (p < scaleBar.y + scaleBar.height && scaleBar.x < anchors.leftMargin + width)
@@ -55,7 +60,12 @@ MapButton {
 
     onClicked: {
         var notifyId = "navigationStartPause";
-        if (app.mode === modes.navigate) {
+        if (app.mode === modes.followMe) {
+            notification.flash(app.tr("Stopped to follow the movement"),
+                               notifyId);
+            app.setModeExplore();
+            app.resetMenu();
+        } else if (app.mode === modes.navigate) {
             notification.flash(app.tr("Navigation paused"),
                                notifyId);
             app.setModeExploreRoute();

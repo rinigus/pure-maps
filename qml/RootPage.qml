@@ -42,6 +42,7 @@ PageEmptyPL {
     NavigationCurrentBlock { id: navigationCurrent }
     NavigationOverviewBlock { id: navigationOverview }
     NavigationSign { id: navigationSign }
+    NavigationSpeedBlock { id: navigationSpeed }
     NorthArrow { id: northArrow }
     Notification { id: notification }
     InfoPanel { id: infoPanel }
@@ -91,8 +92,9 @@ PageEmptyPL {
         id: referenceBlockTopRight
         anchors.right: parent.right
         anchors.top: parent.top
-        height: _posTopRight
-        width: _itemTop ? _itemTop.marginExtraRightSide : 1
+        height: navigationSpeed.visible ? navigationSpeed.height : _posTopRight
+        width: navigationSpeed.visible ? navigationSpeed.width :
+                                         (_itemTop ? _itemTop.marginExtraRightSide : 1)
     }
 
     // handling of overlays for navigation
