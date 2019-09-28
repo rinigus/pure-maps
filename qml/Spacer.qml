@@ -19,7 +19,7 @@
 import QtQuick 2.0
 
 Rectangle {
-    height: 0
+    height: 1
     opacity: 0
     width: 1
 }

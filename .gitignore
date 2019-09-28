@@ -1,9 +1,12 @@
 *~
 *.qmlc
+*.jsc
 .cache
+.flatpak-builder
 .pytest_cache
 __pycache__
 dist
+/libs
 rpm/*.rpm
 tools/apikeys.py
 /build_ubports/

@@ -21,19 +21,37 @@ import "platform"
 
 MouseArea {
     id: attributionButton
-    anchors.left: parent.left
-    anchors.leftMargin: styler.themePaddingLarge
-    anchors.top: navigationBlock.bottom
+    anchors.left: scaleBar.right
+    anchors.leftMargin: 0
+    anchors.top: referenceBlockTopLeft.bottom
     anchors.topMargin: styler.themePaddingLarge
     height: styler.themeIconSizeSmall
     states: [
         State {
-            when: !app.portrait && navigationBlockLandscapeLeftShield.height > 0
+            when: app.mode===modes.navigate && !app.portrait
             AnchorChanges {
                 target: attributionButton
-                anchors.top: navigationBlockLandscapeLeftShield.bottom
+                anchors.left: referenceBlockTopLeft.right
+                anchors.top: referenceBlockTop.bottom
+            }
+            PropertyChanges {
+                target: attributionButton
+                anchors.leftMargin: styler.themePaddingLarge
+            }
+        },
+        State {
+            when: scaleBar.opacity < 1e-5 || app.mode === modes.navigate || app.mode === modes.followMe
+            AnchorChanges {
+                target: attributionButton
+                anchors.left: parent.left
+                anchors.top: referenceBlockTopLeft.bottom
+            }
+            PropertyChanges {
+                target: attributionButton
+                anchors.leftMargin: styler.themePaddingLarge
             }
         }
+
     ]
     width: extra.width + main.width
     z: 500

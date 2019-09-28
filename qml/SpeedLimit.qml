@@ -23,22 +23,13 @@ Rectangle {
 
     anchors.left: parent.left
     anchors.leftMargin: styler.themePaddingLarge
+    anchors.bottom: referenceBlockBottomLeft.top
     anchors.bottomMargin: styler.themePaddingLarge
-    anchors.bottom: streetName.top
     border.width: 0.7*styler.themePaddingLarge
     border.color: "red"
     color: "white"
     height: width
     radius: width/2
-    states: [
-        State {
-            when: (!app.portrait || app.mode === modes.followMe) && navigationInfoBlockLandscapeLeftShield.height > 0
-            AnchorChanges {
-                target: ring
-                anchors.bottom: navigationInfoBlockLandscapeLeftShield.top
-            }
-        }
-    ]
     width: Math.round(Math.max(limit.width,limit.height) + 1.6*styler.themePaddingLarge + styler.themePaddingSmall)
     visible: {
         if (app.modalDialog) return false;

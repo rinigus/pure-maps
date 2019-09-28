@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import "."
 import "platform"
 
 PageEmptyPL {
@@ -36,12 +37,12 @@ PageEmptyPL {
     MenuButton { id: menuButton }
     Meters { id: meters }
     NavigateButton { id: navigateButton }
-    NavigationBlock { id: navigationBlock }
-    NavigationBlockLandscapeLeftShield { id: navigationBlockLandscapeLeftShield }
-    NavigationInfoBlock { id: navigationInfoBlock }
-    NavigationInfoBlockLandscapeLeftShield { id: navigationInfoBlockLandscapeLeftShield }
-    NavigationInfoBlockLandscapeRightShield { id: navigationInfoBlockLandscapeRightShield }
+    NavigationButtonClear { id: navigationButtonClear }
+    NavigationButtonStartPause { id: navigationButtonStartPause }
+    NavigationCurrentBlock { id: navigationCurrent }
+    NavigationOverviewBlock { id: navigationOverview }
     NavigationSign { id: navigationSign }
+    NavigationSpeedBlock { id: navigationSpeed }
     NorthArrow { id: northArrow }
     Notification { id: notification }
     InfoPanel { id: infoPanel }
@@ -51,6 +52,72 @@ PageEmptyPL {
     SpeedLimit { id: speedLimit }
     StreetName { id: streetName }
     ZoomLevel { id: zoomLevel }
+
+    Item {
+        id: referenceBlockBottom
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        height: page.height - _posBottomCenter
+        width: 1
+    }
+    Item {
+        id: referenceBlockBottomLeft
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        height: page.height - _posBottomLeft
+        width: _itemBottom ? _itemBottom.marginExtraLeftSide : 1
+    }
+    Item {
+        id: referenceBlockBottomRight
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        height: page.height - _posBottomRight
+        width: _itemBottom ? _itemBottom.marginExtraRightSide : 1
+    }
+    Item {
+        id: referenceBlockTop
+        anchors.left: parent.left
+        anchors.top: parent.top
+        height: _posTopCenter
+        width: 1
+    }
+    Item {
+        id: referenceBlockTopLeft
+        anchors.left: parent.left
+        anchors.top: parent.top
+        height: _posTopLeft
+        width: _itemTop ? _itemTop.marginExtraLeftSide : 1
+    }
+    Item {
+        id: referenceBlockTopRight
+        anchors.right: parent.right
+        anchors.top: parent.top
+        height: navigationSpeed.visible ? navigationSpeed.height : _posTopRight
+        width: navigationSpeed.visible ? navigationSpeed.width :
+                                         (_itemTop ? _itemTop.marginExtraRightSide : 1)
+    }
+
+    // handling of overlays for navigation
+    // used internally for positioning items that can be
+    // anchored to. as it is for internal use, its defined
+    // below all items - an exception for general code formatting
+    property var _itemBottom: {
+        if (navigationOverview.visible && navigationOverview.showAtBottom)
+            return navigationOverview;
+        return undefined;
+    }
+    property var _itemTop: {
+        if (navigationCurrent.visible) return navigationCurrent;
+        if (navigationOverview.visible && !navigationOverview.showAtBottom)
+            return navigationOverview;
+        return undefined;
+    }
+    property double _posBottomCenter: _itemBottom ? _itemBottom.y : page.height
+    property double _posBottomLeft: _itemBottom ? _itemBottom.y - _itemBottom.marginExtraLeft : page.height
+    property double _posBottomRight: _itemBottom ? _itemBottom.y - _itemBottom.marginExtraRight : page.height
+    property double _posTopCenter: _itemTop ? _itemTop.y + _itemTop.height : 0
+    property double _posTopLeft: _itemTop ? _itemTop.y + _itemTop.height + _itemTop.marginExtraLeft : 0
+    property double _posTopRight: _itemTop ? _itemTop.y + _itemTop.height + _itemTop.marginExtraRight : 0
 
     Component.onCompleted: {
         app.infoPanel = infoPanel;

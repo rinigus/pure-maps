@@ -21,7 +21,7 @@ import "platform"
 
 Rectangle {
     id: rect
-    anchors.top: navigationBlock.bottom
+    anchors.top: referenceBlockTop.bottom
     anchors.topMargin: styler.themePaddingLarge
     anchors.horizontalCenter: parent.horizontalCenter
     color: styler.blockBg
@@ -30,6 +30,7 @@ Rectangle {
     radius: 0.85 * padding
     visible: !app.modalDialog && label.text
     width: label.width + 2*padding
+    z: 750
 
     property string currentText: {
         if (stack.length)

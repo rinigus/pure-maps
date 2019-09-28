@@ -55,6 +55,8 @@ DEFAULTS = {
     "map_mode_clean_show_menu_button": True,
     "map_mode_clean_show_meters": False,
     "map_mode_clean_show_navigate": False,
+    "map_mode_clean_show_navigation_start_pause": False,
+    "map_mode_clean_show_navigation_clear": False,
     "map_mode_clean_show_scale": False,
     "map_scale": 1.0,
     "map_scale_navigation_bicycle": 2.0,

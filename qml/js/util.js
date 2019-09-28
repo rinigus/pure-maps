@@ -210,6 +210,12 @@ function shallowCopy(obj) {
     return copy;
 }
 
+function sigfloor(x, n) {
+    // Floor x to n significant digits.
+    var mult = Math.pow(10, n - Math.floor(Math.log(x) / Math.LN10) - 1);
+    return Math.floor(x * mult) / mult;
+}
+
 function siground(x, n) {
     // Round x to n significant digits.
     var mult = Math.pow(10, n - Math.floor(Math.log(x) / Math.LN10) - 1);

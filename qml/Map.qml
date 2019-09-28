@@ -67,6 +67,7 @@ MapboxMap {
     property var    position: gps.position
     property bool   ready: false
     property var    route: {}
+    property bool   showNavButtons: false
 
     readonly property var images: QtObject {
         readonly property string pixel:         "pure-image-pixel"
@@ -139,6 +140,28 @@ MapboxMap {
         onTriggered: {
             if (!cleanMode && app.conf.mapModeAutoSwitchTime > 0)
                 cleanMode = true;
+        }
+    }
+
+    Timer {
+        // navigation buttons switch timer
+        id: navButtonsTimer
+        interval: app.conf.mapModeAutoSwitchTime > 0 ? app.conf.mapModeAutoSwitchTime*1000 : 1000
+        repeat: true
+        running: map.showNavButtons && app.conf.mapModeAutoSwitchTime > 0
+        onTriggered: {
+            if (map.showNavButtons && app.conf.mapModeAutoSwitchTime > 0)
+                map.showNavButtons = false;
+        }
+        property var conn: Connections {
+            target: app
+            onModeChanged: {
+                if (app.mode === modes.navigate || app.mode === modes.exploreRoute)
+                    map.showNavButtons = true;
+                else
+                    map.showNavButtons = false;
+
+            }
         }
     }
 
@@ -218,12 +241,12 @@ MapboxMap {
     }
 
     Connections {
-        target: navigationBlock
+        target: referenceBlockTop
         onHeightChanged: map.updateMargins();
     }
 
     Connections {
-        target: navigationInfoBlock
+        target: referenceBlockBottom
         onHeightChanged: map.updateMargins();
     }
 
@@ -642,9 +665,9 @@ MapboxMap {
 
     function updateMargins() {
         // Calculate new margins and set them for the map.
-        var header = navigationBlock && navigationBlock.height > 0 ? navigationBlock.height : map.height*0.05;
+        var header = referenceBlockTop.height > 0 ? referenceBlockTop.height : map.height*0.05;
         var footer = !app.infoPanelOpen && (app.mode === modes.explore || app.mode === modes.exploreRoute) && menuButton ? menuButton.height + menuButton.anchors.bottomMargin : 0;
-        footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && app.portrait && navigationInfoBlock ? navigationInfoBlock.height : 0;
+        footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && referenceBlockBottom ? referenceBlockBottom.height : 0;
         footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && streetName ? streetName.height : 0
         footer += app.infoPanelOpen && infoPanel ? infoPanel.height : 0
         footer = Math.min(footer, map.height / 2.0);
