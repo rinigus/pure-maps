@@ -35,7 +35,7 @@ MouseArea {
         if (app.mode === modes.navigate || app.mode === modes.followMe) {
             if (!app.portrait)
                 return northArrow.y + northArrow.height;
-            return northArrow.y - height;
+            return (parent.height - northArrow.height)/2 - height;
         }
         // (app.mode === modes.explore || app.mode === modes.exploreRoute)
         return navigationSign.y + navigationSign.height + meters.anchors.topMargin +

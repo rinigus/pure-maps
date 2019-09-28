@@ -36,8 +36,11 @@ MapButton {
             return (parent.height - height)/2;
         }
         var p = parent.height/2 - height;
-        if (p < basemapButton.y + basemapButton.height)
-            return basemapButton.y + basemapButton.height;
+        // to avoid binding loops with basemap button
+        var bmy = navigationSign.y + navigationSign.height + meters.anchors.topMargin +
+                meters.height + styler.themePaddingLarge + basemapButton.height;
+        if (p < bmy)
+            return bmy;
         return p;
     }
     z: 500
