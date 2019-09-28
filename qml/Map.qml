@@ -67,6 +67,7 @@ MapboxMap {
     property var    position: gps.position
     property bool   ready: false
     property var    route: {}
+    property bool   showNavButtons: false
 
     readonly property var images: QtObject {
         readonly property string pixel:         "pure-image-pixel"
@@ -139,6 +140,24 @@ MapboxMap {
         onTriggered: {
             if (!cleanMode && app.conf.mapModeAutoSwitchTime > 0)
                 cleanMode = true;
+        }
+    }
+
+    Timer {
+        // navigation buttons switch timer
+        id: navButtonsTimer
+        interval: app.conf.mapModeAutoSwitchTime > 0 ? app.conf.mapModeAutoSwitchTime*1000 : 1000
+        repeat: false
+        running: false
+        onTriggered: map.showNavButtons = false;
+        property var conn: Connections {
+            target: app
+            onModeChanged: {
+                if (app.mode === modes.navigate || app.mode === modes.exploreRoute) {
+                    map.showNavButtons = true;
+                    navButtonsTimer.restart();
+                }
+            }
         }
     }
 

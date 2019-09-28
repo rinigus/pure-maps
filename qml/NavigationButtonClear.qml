@@ -25,7 +25,7 @@ MapButton {
     anchors.left: parent.left
     anchors.right: undefined
     iconHeight: styler.themeIconSizeSmall
-    iconName: styler.iconClear
+    iconSource: app.getIcon("icons/navigation-clear")
     states: [
         State {
             when: hidden
@@ -49,5 +49,6 @@ MapButton {
         map.clearRoute();
     }
 
-    property bool hidden: app.modalDialog || app.infoPanelOpen || (map.cleanMode) // && !app.conf.mapModeCleanShowMenuButton)
+    property bool hidden: (app.modalDialog || app.infoPanelOpen ||
+                           (map.cleanMode /*&& !app.conf.mapModeCleanShowMenuButton*/)) && !map.showNavButtons
 }

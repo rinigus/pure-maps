@@ -21,37 +21,17 @@ import "platform"
 
 MapButton {
     id: button
-    anchors.bottom: parent.verticalCenter
     anchors.left: parent.left
     anchors.right: undefined
     iconHeight: styler.themeIconSizeSmall
-    iconName: app.mode === modes.navigate ? styler.iconPause : styler.iconStart
+    iconSource: app.mode === modes.navigate ? app.getIcon("icons/navigation-pause") : app.getIcon("icons/navigation-start")
     states: [
-        State {
-            when: app.mode === modes.navigate && hidden
-            AnchorChanges {
-                target: button
-                anchors.bottom: speedLimit.top
-                anchors.left: undefined
-                anchors.right: parent.left
-            }
-        },
         State {
             when: hidden
             AnchorChanges {
                 target: button
-                anchors.bottom: parent.verticalCenter
                 anchors.left: undefined
                 anchors.right: parent.left
-            }
-        },
-        State {
-            when: app.mode === modes.navigate
-            AnchorChanges {
-                target: button
-                anchors.bottom: speedLimit.top
-                anchors.left: parent.left
-                anchors.right: undefined
             }
         }
     ]
@@ -59,6 +39,15 @@ MapButton {
         AnchorAnimation { duration: app.conf.animationDuration; }
     }
     visible: app.mode === modes.exploreRoute || app.mode === modes.navigate
+    y: {
+        var p = parent.height/2 - height;
+        if (p < scaleBar.y + scaleBar.height && scaleBar.x < anchors.leftMargin + width)
+            return scaleBar.y + scaleBar.height;
+        if (p < attributionButton.y + attributionButton.height &&
+                attributionButton.x < anchors.leftMargin + width)
+            return attributionButton.y + attributionButton.height;
+        return p;
+    }
     z: 900
 
     onClicked: {
@@ -74,5 +63,6 @@ MapButton {
         }
     }
 
-    property bool hidden: app.modalDialog || app.infoPanelOpen || (map.cleanMode) // && !app.conf.mapModeCleanShowMenuButton)
+    property bool hidden: (app.modalDialog || app.infoPanelOpen ||
+                           (map.cleanMode /*&& !app.conf.mapModeCleanShowMenuButton*/)) && !map.showNavButtons
 }
