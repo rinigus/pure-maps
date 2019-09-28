@@ -46,7 +46,8 @@ MouseArea {
            (_rotate ? scaleBar.height : scaleBar.scaleBarMaxLength)
     z: 400
 
-    property bool hidden: !_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale
+    property bool hidden: app.modalDialog || app.infoPanelOpen ||
+                          (!_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale)
 
     property bool _recentlyUpdated: false
     property bool _rotate: !((app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait)
