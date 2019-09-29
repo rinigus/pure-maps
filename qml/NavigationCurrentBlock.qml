@@ -26,7 +26,7 @@ Item {
     anchors.right: parent.right
     anchors.top: parent.top
 
-    height: visible ? mainRect.height : 0
+    height: visible ? mainRect.height + mainRect.anchors.topMargin : 0
     visible: !app.modalDialog && app.mode === modes.navigate
     z: 910
 
@@ -37,11 +37,11 @@ Item {
     // rectangle sticks out. zero otherwise
     property real   marginExtraLeft: leftShield.visible ?
                                          Math.max(leftShield.height + leftShield.anchors.topMargin -
-                                                  mainRect.height, 0) : 0
+                                                  (mainRect.height + mainRect.anchors.topMargin), 0) : 0
     property real   marginExtraLeftSide: leftShield.visible ? leftShield.width + leftShield.anchors.leftMargin : 0
     property real   marginExtraRight: speedShield.visible ?
                                           Math.max(speedShield.height + speedShield.anchors.topMargin -
-                                                   mainRect.height, 0) : 0
+                                                   (mainRect.height + mainRect.anchors.topMargin), 0) : 0
     property real   marginExtraRightSide: speedShield.visible ? speedShield.width + speedShield.anchors.rightMargin : 0
     property string narrative: app.navigationStatus.narrative
     property bool   notify:    app.navigationStatus.notify
