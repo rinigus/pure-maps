@@ -48,7 +48,6 @@ ApplicationWindowPL {
     property bool   modalDialogBasemap: false
     property int    mode: modes.explore
     property bool   narrativePageSeen: false
-    property bool   navigationPageSeen: false
     property var    navigationStatus: NavigationStatus {}
     property bool   navigationStarted: false
     property var    notification: null
@@ -123,7 +122,6 @@ ApplicationWindowPL {
         } else if (app.mode === modes.followMe) {
 
         } else if (app.mode === modes.navigate) {
-            app.navigationPageSeen = true;
             app.navigationStarted = true;
             app.rerouteConsecutiveErrors = 0;
             app.reroutePreviousTime = -1;

@@ -154,7 +154,6 @@ PagePL {
         }
     }
 
-    onPageStatusActive: app.navigationPageSeen = true
     onPageStatusActivating: {
         if (!app.narrativePageSeen) {
             narrative.populate();
