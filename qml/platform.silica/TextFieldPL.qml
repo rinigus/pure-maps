@@ -42,7 +42,7 @@ Item {
         anchors.right: clearButton.left
         labelVisible: !description
         EnterKey.iconSource: "image://theme/icon-m-enter-next"
-        EnterKey.onClicked: row.enter();
+        EnterKey.onClicked: row.enter()
     }
 
     IconButtonPL {
@@ -53,7 +53,10 @@ Item {
         iconName: styler.iconEditClear
         iconHeight: styler.themeFontSizeMedium
         visible: entry.text && entry.activeFocus
-        onClicked: entry.text = ""
+        onClicked: {
+            entry.text = "";
+            refocusTimer.start();
+        }
     }
 
     Label {
@@ -68,5 +71,16 @@ Item {
         height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap
+    }
+
+    Timer {
+        id: refocusTimer
+        interval: 100
+        repeat: false
+        running: false
+        onTriggered: {
+            entry.focus = true;
+            entry.forceActiveFocus();
+        }
     }
 }
