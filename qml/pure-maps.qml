@@ -359,13 +359,12 @@ ApplicationWindowPL {
         resetMenu();
         if (app._stackNavigation.keep) {
             // restore former navigation pages stack
-            app._stackNavigation.keep = false;
             app._stackNavigation.restore();
         } else {
             app._stackNavigation.clear();
             app.narrativePageSeen = false;
+            app._stackNavigation.keep = true;
             app._stackNavigation.push(Qt.resolvedUrl("NavigationPage.qml"));
-            app._stackNavigation.pushAttached(Qt.resolvedUrl("NarrativePage.qml"));
         }
     }
 

@@ -144,8 +144,8 @@ Column {
         list.activeItem = -1;
         var args = [map.center.longitude, map.center.latitude];
         py.call("poor.app.narrative.get_maneuvers", args, function(maneuvers) {
-            console.log(JSON.stringify())
             Util.appendAll(list.model, maneuvers);
+            console.log("*********** Populated **********");
         });
     }
 }

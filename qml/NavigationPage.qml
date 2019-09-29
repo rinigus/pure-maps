@@ -22,10 +22,7 @@ import "platform"
 
 PagePL {
     id: page
-    title: app.tr("Navigation")
-
-    acceptIconName: styler.iconManeuvers
-    acceptText: app.tr("Maneuvers")
+    title: app.tr("Maneuvers")
 
     Column {
         id: column
@@ -151,7 +148,17 @@ PagePL {
 
         RouteOverallInfo {
         }
+
+        NarrativeItem {
+            id: narrative
+        }
     }
 
     onPageStatusActive: app.navigationPageSeen = true
+    onPageStatusActivating: {
+        if (!app.narrativePageSeen) {
+            narrative.populate();
+            app.narrativePageSeen = true;
+        }
+    }
 }
