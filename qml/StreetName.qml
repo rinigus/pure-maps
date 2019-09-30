@@ -25,17 +25,20 @@ Rectangle {
                     menuButton.top :
                     referenceBlockBottom.top
     anchors.bottomMargin: styler.themePaddingSmall
+    anchors.horizontalCenter: parent.horizontalCenter
     color: "transparent"
     height: cover.height
     visible: !app.modalDialog
-    x: {
+    width: cover.width
+    z: 400
+
+    property int maxWidth: parent.width - 2*_x
+    property int _x: {
         var speed = speedLimit.visible ? speedLimit.x + speedLimit.width : 0;
         var left = Math.max(speed, referenceBlockBottomLeft.width);
         var right = referenceBlockBottomRight.width;
         return Math.max(left, right) + styler.themePaddingLarge
     }
-    width: parent.width - 2*x
-    z: 400
 
     Rectangle {
         id: cover
@@ -59,7 +62,8 @@ Rectangle {
         text: gps.streetName
         truncMode: truncModes.fade
         visible: (app.mode === modes.navigate || app.mode === modes.followMe) && (text !== undefined && text !== null && text.length>0)
-        width: implicitWidth > master.width - 4*styler.themePaddingMedium ? master.width-4*styler.themePaddingMedium : implicitWidth
+        width: implicitWidth > master.maxWidth - 4*styler.themePaddingMedium ?
+                   master.maxWidth-4*styler.themePaddingMedium : implicitWidth
         z: 500
     }
 }

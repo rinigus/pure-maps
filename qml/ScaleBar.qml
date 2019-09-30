@@ -30,6 +30,17 @@ MouseArea {
             (_rotate ? scaleBar.scaleBarMaxLength : scaleBar.height)
     states: [
         State {
+            when: (app.mode === modes.navigate || app.mode === modes.followMe) &&
+                  streetName.visible && streetName.x+streetName.width > x
+            AnchorChanges {
+                target: master
+                anchors.bottom: streetName.top
+                anchors.left: undefined
+                anchors.right: parent.right
+                anchors.top: undefined
+            }
+        },
+        State {
             when: (app.mode === modes.navigate || app.mode === modes.followMe)
             AnchorChanges {
                 target: master
