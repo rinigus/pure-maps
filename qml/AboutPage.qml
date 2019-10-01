@@ -58,12 +58,9 @@ PagePL {
             text: app.tr("version %1", py.evaluate("poor.__version__"))
         }
 
-        ButtonPL {
-            anchors.horizontalCenter: parent.horizontalCenter
-            height: styler.themeItemSizeLarge
-            preferredWidth: styler.themeButtonWidthMedium
-            text: app.tr("GitHub page")
-            onClicked: Qt.openUrlExternally("https://github.com/rinigus/pure-maps");
+        ListItemLabel {
+            horizontalAlignment: Text.AlignHCenter
+            text: app.tr('GitHub <a href="https://github.com/rinigus/pure-maps">project page</a>')
         }
 
         Column {
@@ -91,6 +88,16 @@ PagePL {
                 text: app.tr("Artwork by %1 and %2\nBanner photo by %3 (Pexels License)", "Fellfrosch", "Mosen", "Yaroslav Shuraev")
                 wrapMode: Text.WordWrap
             }
+
+            ListItemLabel {
+                font.pixelSize: styler.themeFontSizeSmall
+                height: implicitHeight
+                horizontalAlignment: Text.AlignRight
+                text: app.tr('Transportation icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> ' +
+                             'from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>')
+                wrapMode: Text.WordWrap
+            }
+
         }
 
         ListItemLabel {
@@ -130,12 +137,9 @@ PagePL {
             wrapMode: Text.WordWrap
         }
 
-        ButtonPL {
-            anchors.horizontalCenter: parent.horizontalCenter
-            height: styler.themeItemSizeLarge
-            preferredWidth: styler.themeButtonWidthMedium
-            text: app.tr("Transifex page")
-            onClicked: Qt.openUrlExternally("https://www.transifex.com/rinigus/pure-maps/");
+        ListItemLabel {
+            horizontalAlignment: Text.AlignHCenter
+            text: app.tr('Translations at <a href="https://www.transifex.com/rinigus/pure-maps">Transifex page</a>')
         }
     }
 }
