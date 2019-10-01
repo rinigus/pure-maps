@@ -13,10 +13,9 @@
    id="Capa_1"
    x="0px"
    y="0px"
-   width="459px"
-   height="459px"
-   viewBox="0 0 459 459"
-   style="enable-background:new 0 0 459 459;"
+   width="600"
+   height="600"
+   viewBox="0 0 600 600"
    xml:space="preserve"
    sodipodi:docname="transport-car-white.svg"
    inkscape:version="0.92.4 5da689c313, 2019-01-14"><metadata
@@ -38,67 +37,84 @@
    showgrid="false"
    inkscape:pagecheckerboard="true"
    inkscape:zoom="0.51416122"
-   inkscape:cx="-165.3178"
-   inkscape:cy="229.5"
+   inkscape:cx="-564.02543"
+   inkscape:cy="221.72034"
    inkscape:window-x="0"
    inkscape:window-y="27"
    inkscape:window-maximized="1"
    inkscape:current-layer="Capa_1" />
 <g
    id="g5"
-   style="fill:#ffffff;fill-opacity:1">
+   style="fill:#ffffff;fill-opacity:1"
+   transform="translate(70.5,70.5)">
 	<g
    id="directions-car"
    style="fill:#ffffff;fill-opacity:1">
 		<path
-   d="M405.45,51c-5.101-15.3-20.4-25.5-35.7-25.5H89.25c-17.85,0-30.6,10.2-35.7,25.5L0,204v204c0,15.3,10.2,25.5,25.5,25.5H51    c15.3,0,25.5-10.2,25.5-25.5v-25.5h306V408c0,15.3,10.2,25.5,25.5,25.5h25.5c15.3,0,25.5-10.2,25.5-25.5V204L405.45,51z     M89.25,306C68.85,306,51,288.15,51,267.75s17.85-38.25,38.25-38.25s38.25,17.85,38.25,38.25S109.65,306,89.25,306z M369.75,306    c-20.4,0-38.25-17.85-38.25-38.25s17.85-38.25,38.25-38.25S408,247.35,408,267.75S390.15,306,369.75,306z M51,178.5L89.25,63.75    h280.5L408,178.5H51z"
+   d="M 405.45,51 C 400.349,35.7 385.05,25.5 369.75,25.5 H 89.25 C 71.4,25.5 58.65,35.7 53.55,51 L 0,204 v 204 c 0,15.3 10.2,25.5 25.5,25.5 H 51 c 15.3,0 25.5,-10.2 25.5,-25.5 v -25.5 h 306 V 408 c 0,15.3 10.2,25.5 25.5,25.5 h 25.5 c 15.3,0 25.5,-10.2 25.5,-25.5 V 204 Z M 89.25,306 C 68.85,306 51,288.15 51,267.75 c 0,-20.4 17.85,-38.25 38.25,-38.25 20.4,0 38.25,17.85 38.25,38.25 0,20.4 -17.85,38.25 -38.25,38.25 z m 280.5,0 c -20.4,0 -38.25,-17.85 -38.25,-38.25 0,-20.4 17.85,-38.25 38.25,-38.25 20.4,0 38.25,17.85 38.25,38.25 0,20.4 -17.85,38.25 -38.25,38.25 z M 51,178.5 89.25,63.75 h 280.5 L 408,178.5 Z"
    id="path2"
-   style="fill:#ffffff;fill-opacity:1" />
+   style="fill:#ffffff;fill-opacity:1"
+   inkscape:connector-curvature="0" />
 	</g>
 </g>
 <g
-   id="g7">
+   id="g7"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g9">
+   id="g9"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g11">
+   id="g11"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g13">
+   id="g13"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g15">
+   id="g15"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g17">
+   id="g17"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g19">
+   id="g19"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g21">
+   id="g21"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g23">
+   id="g23"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g25">
+   id="g25"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g27">
+   id="g27"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g29">
+   id="g29"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g31">
+   id="g31"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g33">
+   id="g33"
+   transform="translate(0,141)">
 </g>
 <g
-   id="g35">
+   id="g35"
+   transform="translate(0,141)">
 </g>
 </svg>
