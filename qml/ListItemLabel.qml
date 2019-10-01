@@ -26,4 +26,5 @@ LabelPL {
     anchors.rightMargin: styler.themeHorizontalPageMargin
     truncMode: truncModes.fade
     verticalAlignment: Text.AlignVCenter
+    onLinkActivated: Qt.openUrlExternally(link)
 }
