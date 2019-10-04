@@ -1,3 +1,13 @@
+2019-10-04: Pure Maps 1.26
+==========================
+
+* Update Navigation and Follow Me mode GUI
+* Link to UBPorts documentation [jonnius]
+* Add transportation icons [mosen]
+* [silica] Keep text field focus after pressing clear button
+* Update translations
+* Bugfixes
+
 2019-09-14: Pure Maps 1.25
 ==========================
 

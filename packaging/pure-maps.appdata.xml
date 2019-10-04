@@ -38,6 +38,18 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.26.0" date="2019-10-04">
+     <description>
+       <ul>
+         <li>Update Navigation and Follow Me mode GUI</li>
+         <li>Link to UBPorts documentation [jonnius]</li>
+         <li>Add transportation icons [mosen]</li>
+         <li>[silica] Keep text field focus after pressing clear button</li>
+         <li>Update translations</li>
+         <li>Bugfixes</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.25.0" date="2019-09-14">
      <description>
        <ul>
