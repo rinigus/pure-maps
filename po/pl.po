@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-01 20:32+0300\n"
+"POT-Creation-Date: 2019-10-04 18:41+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: A <hucul@o2.pl>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rinigus/teams/89597/pl/)\n"
@@ -406,6 +406,8 @@ msgstr "wersja %1"
 #: qml/AboutPage.qml:63
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
 msgstr ""
+"<a href=\"https://github.com/rinigus/pure-maps\">Strona projektu</a> na "
+"GitHub"
 
 #: qml/AboutPage.qml:88
 msgid ""
@@ -422,6 +424,10 @@ msgid ""
 "title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" "
 "title=\"Flaticon\">www.flaticon.com</a>"
 msgstr ""
+"Ikony transportu zrobione przez <a "
+"href=\"https://www.flaticon.com/authors/freepik\" "
+"title=\"Freepik\">Freepik</a> z <a href=\"https://www.flaticon.com/\" "
+"title=\"Flaticon\">www.flaticon.com</a>"
 
 #: qml/AboutPage.qml:109
 msgid ""
@@ -457,6 +463,8 @@ msgid ""
 "Translations at <a href=\"https://www.transifex.com/rinigus/pure-"
 "maps\">Transifex page</a>"
 msgstr ""
+"Tłumaczenia na stronie <a href=\"https://www.transifex.com/rinigus/pure-"
+"maps\">Transifex</a>"
 
 #: qml/AttributionPage.qml:24
 msgid "Attribution"
@@ -706,7 +714,7 @@ msgstr "Mieszany"
 
 #: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
 msgid "Stop navigation to select POI"
-msgstr ""
+msgstr "Zatrzymaj nawigację aby wybrać POI"
 
 #: qml/Map.qml:527 stash/Map.qml:546
 msgid "Voice navigation on"
@@ -761,23 +769,23 @@ msgstr "Kontynuuj przez %1."
 
 #: qml/NavigationButtonClear.qml:46
 msgid "Route removed"
-msgstr ""
+msgstr "Trasa usunięta"
 
 #: qml/NavigationButtonStartPause.qml:64
 msgid "Stopped to follow the movement"
-msgstr ""
+msgstr "Zatrzymano, aby śledzić ruch"
 
 #: qml/NavigationButtonStartPause.qml:69
 msgid "Navigation paused"
-msgstr ""
+msgstr "Nawigacja wstrzymana"
 
 #: qml/NavigationButtonStartPause.qml:73
 msgid "Navigation started"
-msgstr ""
+msgstr "Nawigacja rozpoczęta"
 
 #: qml/NavigationCurrentBlock.qml:180
 msgid "To route"
-msgstr ""
+msgstr "Do trasy"
 
 #: qml/NavigationOverviewBlock.qml:142
 msgid "ETA"
@@ -1473,11 +1481,11 @@ msgstr "Nawiguj"
 
 #: qml/PreferencesPage.qml:522
 msgid "Navigation Start/Pause"
-msgstr ""
+msgstr "Nawigacja Start/Pauza"
 
 #: qml/PreferencesPage.qml:531
 msgid "Navigation Clear Route"
-msgstr ""
+msgstr "Nawigacja wyczyść trasę"
 
 #: qml/PreferencesPage.qml:554
 msgid "Show navigation instructions"

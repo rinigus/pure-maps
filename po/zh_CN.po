@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-01 20:32+0300\n"
+"POT-Creation-Date: 2019-10-04 18:41+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rui kon <facebookmail@qq.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -272,7 +272,7 @@ msgstr "步行"
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr "向 {arr_name} 方向走去"
+msgstr "前往 {arr_name} "
 
 #: routers/digitransit.py:70
 #, python-brace-format
@@ -347,7 +347,7 @@ msgstr "场所名称"
 #: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:202
 #: qml/RoutePage.qml:280
 msgid "Remove"
-msgstr "删除"
+msgstr "移除"
 
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
 #: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
@@ -388,14 +388,14 @@ msgstr "版本 %1"
 
 #: qml/AboutPage.qml:63
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
-msgstr ""
+msgstr "GitHub <a href=\"https://github.com/rinigus/pure-maps\">项目页面</a>"
 
 #: qml/AboutPage.qml:88
 msgid ""
 "Artwork by %1 and %2\n"
 "Banner photo by %3 (Pexels License)"
 msgstr ""
-"艺术图 %1 and %2\n"
+"艺术图 %1 及 %2\n"
 "横幅照片 %3 (Pexels 许可协议）"
 
 #: qml/AboutPage.qml:96
@@ -405,6 +405,9 @@ msgid ""
 "title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" "
 "title=\"Flaticon\">www.flaticon.com</a>"
 msgstr ""
+"交通标识制作者为 <a href=\"https://www.flaticon.com/authors/freepik\" "
+"title=\"Freepik\">Freepik</a> 来自<a href=\"https://www.flaticon.com/\" "
+"title=\"Flaticon\">www.flaticon.com</a>"
 
 #: qml/AboutPage.qml:109
 msgid ""
@@ -429,13 +432,15 @@ msgstr "译者荣誉"
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
-msgstr "你可以在Transifex添加新的应用翻译或对现有的翻译作贡献"
+msgstr "你可以在 Transifex 添加新的软件翻译或对现有的翻译作出贡献"
 
 #: qml/AboutPage.qml:142
 msgid ""
 "Translations at <a href=\"https://www.transifex.com/rinigus/pure-"
 "maps\">Transifex page</a>"
 msgstr ""
+"在 <a href=\"https://www.transifex.com/rinigus/pure-maps\">Transifex "
+"页面</a>提供翻译"
 
 #: qml/AttributionPage.qml:24
 msgid "Attribution"
@@ -684,7 +689,7 @@ msgstr "混合"
 
 #: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
 msgid "Stop navigation to select POI"
-msgstr ""
+msgstr "停止导航以选择 POI"
 
 #: qml/Map.qml:527 stash/Map.qml:546
 msgid "Voice navigation on"
@@ -737,23 +742,23 @@ msgstr " 继续 %1 "
 
 #: qml/NavigationButtonClear.qml:46
 msgid "Route removed"
-msgstr ""
+msgstr "已移除路线"
 
 #: qml/NavigationButtonStartPause.qml:64
 msgid "Stopped to follow the movement"
-msgstr ""
+msgstr "已停止跟随位置移动"
 
 #: qml/NavigationButtonStartPause.qml:69
 msgid "Navigation paused"
-msgstr ""
+msgstr "导航已暂停"
 
 #: qml/NavigationButtonStartPause.qml:73
 msgid "Navigation started"
-msgstr ""
+msgstr "导航开始"
 
 #: qml/NavigationCurrentBlock.qml:180
 msgid "To route"
-msgstr ""
+msgstr "导航"
 
 #: qml/NavigationOverviewBlock.qml:142
 msgid "ETA"
@@ -866,7 +871,7 @@ msgstr "网站"
 
 #: qml/PoiBlock.qml:128
 msgid "Phone"
-msgstr "手机"
+msgstr "电话"
 
 #: qml/PoiBlock.qml:129
 msgid "Shortlisted"
@@ -1221,7 +1226,7 @@ msgstr "切换地图模式"
 msgid ""
 "Only applies when Pure Maps is active. When minimized, sleep is controlled "
 "by normal device-level preferences."
-msgstr "仅当 \"Pure Maps\" 活动时启用。当应用最小化时, 睡眠由正常的设备级别偏好控制。"
+msgstr "仅当 \"Pure Maps\" 活动时启用。当软件处于最小化状态时, 睡眠由正常的设备级别偏好控制。"
 
 #: qml/PreferencesPage.qml:185
 msgid "Prevent sleep"
@@ -1242,7 +1247,7 @@ msgstr "总是"
 
 #: qml/PreferencesPage.qml:201
 msgid "Fetch autocompleted search results while typing a search string."
-msgstr "在输入搜索文本时实时显示搜索结果"
+msgstr "在输入搜索文本时实时预览搜索结果。"
 
 #: qml/PreferencesPage.qml:202
 msgid "Autocomplete while searching"
@@ -1256,7 +1261,7 @@ msgstr "隐私政策"
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
-msgstr "清空历史，包括搜索、导航及目的地。请注意书签将会保留。"
+msgstr "清空全部历史、搜索、导航及目的地。请注意书签将被保留。"
 
 #: qml/PreferencesPage.qml:229
 msgid "History cleared"
@@ -1283,11 +1288,11 @@ msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
-msgstr "你可以在下列选项中指定联机服务的私人密钥。请检查你要使用的各项服务的条款, 以确保你遵守它们"
+msgstr "你可以在下列选项中指定联机服务的私人密钥。请检查你要使用的各项服务的条款, 以确保你遵守它们。"
 
 #: qml/PreferencesPage.qml:284
 msgid "Please restart application after changing API keys."
-msgstr "请在更改 API 密钥后重新启动应用程序"
+msgstr "请在更改 API 密钥后重新启动软件。"
 
 #: qml/PreferencesPage.qml:326
 msgid "Exploring"
@@ -1322,7 +1327,7 @@ msgstr "自动缩放"
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
-msgstr "最大缩放水平用于自动调整缩放"
+msgstr "最大缩放水平将用于自动调整缩放。"
 
 #: qml/PreferencesPage.qml:364
 msgid "Maximal zoom level"
@@ -1387,7 +1392,7 @@ msgstr "总是显示"
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
-msgstr "无论地图视图是在最小模式还是在完整模式下，始终显示选定的控件"
+msgstr "无论地图视图是在最小模式还是在完整模式下，始终显示选定的控件。"
 
 #: qml/PreferencesPage.qml:450
 msgid "Menu"
@@ -1419,11 +1424,11 @@ msgstr "导航"
 
 #: qml/PreferencesPage.qml:522
 msgid "Navigation Start/Pause"
-msgstr ""
+msgstr "导航开始/暂停"
 
 #: qml/PreferencesPage.qml:531
 msgid "Navigation Clear Route"
-msgstr ""
+msgstr "清除导航路线"
 
 #: qml/PreferencesPage.qml:554
 msgid "Show navigation instructions"
@@ -1453,7 +1458,7 @@ msgstr "显示方向标志"
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
-msgstr "导航时, 按移动方向旋转地图"
+msgstr "导航时按移动方向旋转地图"
 
 #: qml/PreferencesPage.qml:617
 msgid "Rotate map when navigating"
