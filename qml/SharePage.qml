@@ -92,11 +92,20 @@ PagePL {
         }
 
         TextSwitchPL {
+            id: shareAddressSwitch
+            checked: app.conf.get("share_address")
+            text: app.tr("Add address")
+            onCheckedChanged: {
+                app.conf.set("share_address", checked);
+            }
+        }
+
+        TextSwitchPL {
             id: shareOsmSwitch
             checked: app.conf.get("share_osm")
             text: app.tr("Add link to OpenStreetMaps")
             onCheckedChanged: {
-                app.conf.set("share_osm", shareOsmSwitch.checked);
+                app.conf.set("share_osm", checked);
             }
         }
 
@@ -105,11 +114,12 @@ PagePL {
             checked: app.conf.get("share_googlemaps")
             text: app.tr("Add link to Google Maps")
             onCheckedChanged: {
-                app.conf.set("share_googlemaps", shareGoogleSwitch.checked);
+                app.conf.set("share_googlemaps", checked);
             }
         }
 
         Component.onCompleted: {
+            page.shareAddressSwitch = shareAddressSwitch;
             page.shareOsmSwitch = shareOsmSwitch;
             page.shareGoogleSwitch = shareGoogleSwitch;
         }
@@ -117,7 +127,9 @@ PagePL {
 
     // Required to be set by caller.
     property var coordinate: undefined
+    property var poi: undefined
 
+    property var shareAddressSwitch: undefined
     property var shareOsmSwitch: undefined
     property var shareGoogleSwitch: undefined
 
@@ -125,7 +137,9 @@ PagePL {
         return py.call_sync("poor.util.format_location_message", [
                                 page.coordinate.longitude,
                                 page.coordinate.latitude,
+                                poi && poi.address ? poi.address : title,
                                 html,
+                                shareAddressSwitch.checked,
                                 shareOsmSwitch.checked,
                                 shareGoogleSwitch.checked,
                             ]);

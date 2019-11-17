@@ -159,6 +159,7 @@ PagePL {
                 app.push(Qt.resolvedUrl("SharePage.qml"), {
                              "coordinate": poi.coordinate,
                              "title": poi.title,
+                             "poi": poi
                          });
             }
         }

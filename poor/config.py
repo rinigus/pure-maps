@@ -89,8 +89,9 @@ DEFAULTS = {
             }
         },
     "reroute": True,
-    "share_osm": True,
+    "share_address": True,
     "share_googlemaps": False,
+    "share_osm": True,
     "show_narrative": True,
     "show_navigation_sign": True,
     # "always", "exceeding", "never"

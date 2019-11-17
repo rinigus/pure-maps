@@ -259,13 +259,15 @@ def format_distance_and_bearing(meters, bearing, n=2, short=True):
 def format_location_olc(x, y):
     return olc_encode(y,x)
 
-def format_location_message(x, y, html=False, osm=True, gmaps=False):
+def format_location_message(x, y, extra_text, html=False, extra=True, osm=True, gmaps=False):
     """Format coordinates of a point into a location message."""
     if osm: osm_url = short_osm(y,x)
     if gmaps: gm = 'http://maps.google.com/?q={y:.5f},{x:.5f}'.format(x=x, y=y)
     plus = olc_encode(y,x)
     if html:
-        r = ('<a href="geo:{y:.5f},{x:.5f}">geo:{y:.5f},{x:.5f}</a>'
+        if extra_text and extra: r = extra_text + '<br>'
+        else: r = ''
+        r += ('<a href="geo:{y:.5f},{x:.5f}">geo:{y:.5f},{x:.5f}</a>'
              .format(x=x, y=y))
         r += ('<br>{desc}: {plus}'.format(desc=_("plus code"), plus=plus))
         if osm: r += ('<br><a href="{osm}">{osm}</a>'
@@ -273,7 +275,9 @@ def format_location_message(x, y, html=False, osm=True, gmaps=False):
         if gmaps: r += ('<br><a href="{gm}">{gm}</a>'
                       .format(gm=gm))
     else:
-        r = ('geo:{y:.5f},{x:.5f}'
+        if extra_text and extra: r = extra_text + '; '
+        else: r = ''
+        r += ('geo:{y:.5f},{x:.5f}'
                 .format(x=x, y=y))
         r += (' {desc}: {plus}'.format(desc=_("plus code"), plus=plus))
         if osm: r += (' {osm}'

@@ -84,6 +84,7 @@ MenuDrawerPL {
             app.push(Qt.resolvedUrl("SharePage.qml"), {
                          "coordinate": QtPositioning.coordinate(y, x),
                          "title": app.tr("Share Current Position"),
+                         "poi": { "address": app.tr("Current position") }
                      }, true);
         }
     }
