@@ -28,7 +28,7 @@ if [ "$ENABLE_MIMIC" == "1" ] ; then
 fi
 
 if [ "$ENABLE_PICOTTS" == "1" ] ; then
-	git clone https://github.com:jonnius/pkg-picotts.git $PICOTTS_SRC_DIR
+	git clone https://github.com/jonnius/pkg-picotts.git $PICOTTS_SRC_DIR
 fi
 
 # Replace mapbox-gl-native pro file
