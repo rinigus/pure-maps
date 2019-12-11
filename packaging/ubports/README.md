@@ -16,6 +16,10 @@ all clickable calls:
 Otherwise you'll have to append `-c packaging/ubports/clickable.json` to all
 clickable commands.
 
+If you did not clone this repository recursively, get the submodules:
+
+    git submodule update --init
+
 ## Dependencies
 
 **WARNING**: Dependencies may take hours to build (especially mimic).
