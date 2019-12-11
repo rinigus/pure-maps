@@ -1,7 +1,7 @@
 {
     "name": "pure-maps.jonnius",
     "description": "Maps and Navigation",
-    "architecture": "armhf",
+    "architecture": "@CLICK_ARCH@",
     "title": "Pure Maps",
     "hooks": {
         "pure-maps": {
