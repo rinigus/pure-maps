@@ -1,10 +1,10 @@
 {
-  "clickable_minimum_required": "6.0.2",
+  "clickable_minimum_required": "6.6",
   "template": "custom",
   "kill": "pure-maps",
-  "build": "cd $ROOT && make platform-ubports && make FULLNAME=pure-maps.jonnius PREFIX=. DESTDIR=$INSTALL_DIR/ INCLUDE_GPXPY=yes QT_PLATFORM_STYLE=suru TMP_AS_CACHE=yes install && cp $ROOT/packaging/ubports/pure-maps.desktop $INSTALL_DIR/share/applications",
+  "build": "cd $ROOT && make platform-ubports && make FULLNAME=pure-maps.jonnius PREFIX=. DESTDIR=$INSTALL_DIR/ INCLUDE_GPXPY=yes QT_PLATFORM_STYLE=suru TMP_AS_CACHE=yes install && cp $ROOT/packaging/ubports/pure-maps.desktop $INSTALL_DIR/share/applications && $ROOT/packaging/ubports/install-deps.sh $ARCH_TRIPLET",
   "prebuild": "cd $ROOT && tools/manage-keys inject .",
-  "postbuild": "cd $ROOT && tools/manage-keys strip . && $ROOT/packaging/ubports/install-deps.sh $ARCH_TRIPLET",
+  "postbuild": "cd $ROOT && tools/manage-keys strip .",
   "build_dir": "build_ubports/$ARCH_TRIPLET/pure-maps",
   "install_dir": "$BUILD_DIR/click",
   "scripts": {
