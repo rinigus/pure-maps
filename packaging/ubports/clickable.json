@@ -1,41 +1,53 @@
 {
-  "clickable_minimum_required": "6.6",
+  "clickable_minimum_required": "6.8.2",
   "template": "custom",
   "kill": "pure-maps",
-  "build": "cd $ROOT && make platform-ubports && make FULLNAME=pure-maps.jonnius PREFIX=. DESTDIR=$INSTALL_DIR/ INCLUDE_GPXPY=yes QT_PLATFORM_STYLE=suru TMP_AS_CACHE=yes install && cp $ROOT/packaging/ubports/pure-maps.desktop $INSTALL_DIR/share/applications && $ROOT/packaging/ubports/install-deps.sh $ARCH_TRIPLET",
-  "prebuild": "cd $ROOT && tools/manage-keys inject .",
-  "postbuild": "cd $ROOT && tools/manage-keys strip .",
-  "build_dir": "build_ubports/$ARCH_TRIPLET/pure-maps",
-  "install_dir": "$BUILD_DIR/click",
+  "build": "cd ${ROOT} && make platform-ubports && make FULLNAME=pure-maps.jonnius PREFIX=. DESTDIR=${INSTALL_DIR}/ INCLUDE_GPXPY=yes QT_PLATFORM_STYLE=suru TMP_AS_CACHE=yes install",
+  "prebuild": "cd ${ROOT} && tools/manage-keys inject .",
+  "postbuild": "cd ${ROOT} && tools/manage-keys strip .",
+  "install_data": {
+    "${ROOT}/packaging/ubports/pure-maps.desktop": "${INSTALL_DIR}",
+    "${ROOT}/packaging/ubports/manifest.json": "${INSTALL_DIR}",
+    "${ROOT}/packaging/ubports/pure-maps.apparmor": "${INSTALL_DIR}",
+    "${ROOT}/packaging/ubports/pure-maps.svg": "${INSTALL_DIR}",
+    "${PICOTTS_LIB_INSTALL_DIR}/usr/share/picotts": "${INSTALL_DIR}/usr/share"
+  },
+  "install_bin": [
+    "${INSTALL_DIR}/bin/pure-maps",
+    "${MIMIC_LIB_INSTALL_DIR}/bin/mimic",
+    "${PICOTTS_LIB_INSTALL_DIR}/usr/bin/pico2wave",
+    "${QMLRUNNER_LIB_INSTALL_DIR}/usr/local/bin/qmlrunner"
+  ],
+  "install_lib": [
+    "${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/*.so*",
+    "${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
+    "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
+    "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/*.so*"
+  ],
   "scripts": {
-    "prepare-deps": "$ROOT/packaging/ubports/prepare-deps.sh"
+    "prepare-deps": "git submodule update --recursive --init && ${ROOT}/packaging/ubports/prepare-deps.sh"
   },
   "libraries": {
     "mapbox-gl-native": {
-      "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
       "src_dir": "libs/mapbox-gl-native/mapbox-gl-native",
       "template": "qmake"
     },
     "qmlrunner": {
-      "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
       "template": "qmake"
     },
     "mapbox-gl-qml": {
-      "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
       "template": "qmake",
       "build_args": [
-        "INCLUDEPATH+=$ROOT/build_ubports/$ARCH_TRIPLET/mapbox-gl-native/install/usr/include/$ARCH_TRIPLET/qt5",
-        "LIBS+=-L$ROOT/build_ubports/$ARCH_TRIPLET/mapbox-gl-native/install/usr/lib/$ARCH_TRIPLET"
+        "INCLUDEPATH+=${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/usr/include/${ARCH_TRIPLET}/qt5",
+        "LIBS+=-L${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}"
       ]
     },
     "nemo-qml-plugin-dbus": {
-      "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
       "template": "qmake"
     },
     "mimic": {
-      "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
       "template": "custom",
-      "build": "cp -r $SRC_DIR/* $BUILD_DIR && cd $BUILD_DIR && ./autogen.sh && ./configure --with-audio=none --prefix=\"$INSTALL_DIR\" --exec-prefix=\"$INSTALL_DIR\" --host=$ARCH_TRIPLET && make -j4 &&  make install",
+      "build": "cp -r ${SRC_DIR}/* ${BUILD_DIR} && ./autogen.sh && ./configure --with-audio=none --prefix=${INSTALL_DIR} --exec-prefix=${INSTALL_DIR} --host=${ARCH_TRIPLET} && make -j4 &&  make install",
       "dependencies_target": [
         "libtool",
         "libasound2-dev",
@@ -43,9 +55,8 @@
       ]
     },
     "picotts": {
-      "build_dir": "build_ubports/$ARCH_TRIPLET/$NAME",
       "template": "custom",
-      "build": "cp -r $SRC_DIR/* $BUILD_DIR && cd $BUILD_DIR && ARCH_TRIPLET=$ARCH_TRIPLET DESTDIR=$INSTALL_DIR LANG_DIR=./usr/share/picotts/lang make -j4 && DESTDIR=$INSTALL_DIR make install",
+      "build": "cp -r ${SRC_DIR}/* ${BUILD_DIR} && DESTDIR=${INSTALL_DIR} LANG_DIR=./usr/share/picotts/lang make -j4 && DESTDIR=${INSTALL_DIR} make install",
       "dependencies_target": [
         "libtool",
         "libpopt-dev"

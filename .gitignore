@@ -9,6 +9,6 @@ dist
 /libs
 rpm/*.rpm
 tools/apikeys.py
-/build_ubports/
+/build/
 /qml/platform
 /.clickable/
