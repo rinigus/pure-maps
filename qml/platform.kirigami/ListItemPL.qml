@@ -30,22 +30,34 @@ import "."
 //
 // signals: clicked
 //
-Kirigami.SwipeListItem {
-    actions: menu && menu.enabled ? menu.items : []
-    bottomPadding: 0
-    contentItem: RowLayout {
-        Item {
-            id: itemData
-            implicitHeight: contentHeight
-            Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-            Layout.fillWidth: true
-        }
-    }
-    implicitHeight: contentHeight
-    topPadding: 0
-    separatorVisible: false
+Item {
+    id: root
+    height: item.height
+    width: parent.width
 
     default property alias content: itemData.data
-    property real contentHeight
-    property var  menu
+    property real  contentHeight
+    property alias highlighted: item.highlighted
+    property var   menu
+
+    signal clicked
+
+    Kirigami.SwipeListItem {
+        id: item
+        actions: menu && menu.enabled ? menu.items : []
+        bottomPadding: 0
+        contentItem: RowLayout {
+            Item {
+                id: itemData
+                implicitHeight: contentHeight
+                Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+                Layout.fillWidth: true
+            }
+        }
+        implicitHeight: contentHeight
+        topPadding: 0
+        separatorVisible: false
+        width: root.width
+        onClicked: root.clicked()
+    }
 }
