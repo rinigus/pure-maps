@@ -5,8 +5,10 @@
 * Link to UBPorts documentation [jonnius]
 * Add transportation icons [mosen]
 * [silica] Keep text field focus after pressing clear button
-* [1.26.0, 1.26.1] Update translations
+* [1.26.0, 1.26.1, 1.26.2] Update translations
+* [1.26.2] [kirigami] Update implementation to work with the latest Kirigami
 * Bugfixes
+
 
 2019-09-14: Pure Maps 1.25
 ==========================

@@ -38,6 +38,15 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.26.2" date="2020-02-08">
+     <description>
+       <ul>
+         <li>[kirigami] Update implementation to work with the latest Kirigami</li>
+         <li>Enable Foursquare</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.26.0" date="2019-10-04">
      <description>
        <ul>
