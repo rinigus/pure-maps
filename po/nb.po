@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-01 20:32+0300\n"
+"POT-Creation-Date: 2020-02-08 10:45+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Peer-Atle Motland <PeerAtle@online.no>, 2019\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/rinigus/teams/89597/nb/)\n"
@@ -44,10 +44,11 @@ msgid "Connection timed out"
 msgstr "Tidsavbrudd for tilkoblingen"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
-#: qml/NearbyPage.qml:30 qml/NearbyPage.qml:137 qml/NearbyPage.qml:152
-#: qml/RoutePage.qml:30 qml/RoutePage.qml:31 qml/RoutePage.qml:219
-#: qml/RoutePage.qml:224 qml/RoutePage.qml:445 qml/RoutePage.qml:460
-#: qml/RoutePage.qml:462 qml/RoutePoint.qml:42 qml/RoutePoint.qml:58
+#: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137
+#: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:31
+#: qml/RoutePage.qml:219 qml/RoutePage.qml:224 qml/RoutePage.qml:445
+#: qml/RoutePage.qml:460 qml/RoutePage.qml:462 qml/RoutePoint.qml:42
+#: qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr "Nåværende posisjon"
 
@@ -236,15 +237,15 @@ msgstr "{distance} vest"
 msgid "{distance} north-west"
 msgstr "{distance} nord-vest"
 
-#: poor/util.py:270 poor/util.py:278
+#: poor/util.py:272 poor/util.py:282
 msgid "plus code"
 msgstr "plus-kode"
 
-#: poor/util.py:291
+#: poor/util.py:295
 msgid "{:d} min"
 msgstr "{:d} min"
 
-#: poor/util.py:292
+#: poor/util.py:296
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
@@ -461,7 +462,7 @@ msgid "Attribution"
 msgstr "henvisning"
 
 #: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:57
-#: qml/MenuPage.qml:93
+#: qml/MenuPage.qml:94
 msgid "Maps"
 msgstr "Karter"
 
@@ -682,23 +683,23 @@ msgstr ""
 "Siste feil:\n"
 "%1"
 
-#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:99 qml/PreferencesPage.qml:25
+#: qml/MapErrorPage.qml:63 qml/MenuPage.qml:100 qml/PreferencesPage.qml:25
 msgid "Preferences"
 msgstr "Preferanser"
 
-#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:110
+#: qml/MapErrorPage.qml:94 qml/MenuPage.qml:111
 msgid "Profile"
 msgstr "Profil"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:114
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:115
 msgid "Online"
 msgstr "Tilkoblet"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:120
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:121
 msgid "Offline"
 msgstr "Frakoblet"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:126
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:127
 msgid "Mixed"
 msgstr "Blandet"
 
@@ -938,7 +939,7 @@ msgstr "Angi adresse"
 msgid "Enter postal code"
 msgstr "Angi postnummer"
 
-#: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:216
+#: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:217
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -958,7 +959,7 @@ msgstr "URL"
 msgid "Enter URL"
 msgstr "Angi URL"
 
-#: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:242
+#: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:243
 msgid "Additional info"
 msgstr "Tilleggsinformasjon"
 
@@ -1002,19 +1003,19 @@ msgstr "Kortliste"
 msgid "Share location"
 msgstr "Del lokasjon"
 
-#: qml/PoiInfoPage.qml:169
+#: qml/PoiInfoPage.qml:170
 msgid "Center on location"
 msgstr "Sentrer på lokasjon"
 
-#: qml/PoiInfoPage.qml:181
+#: qml/PoiInfoPage.qml:182
 msgid "Navigate To"
 msgstr "Naviger Til"
 
-#: qml/PoiInfoPage.qml:193
+#: qml/PoiInfoPage.qml:194
 msgid "Navigate From"
 msgstr "Naviger Fra"
 
-#: qml/PoiInfoPage.qml:205
+#: qml/PoiInfoPage.qml:206
 msgid "Nearby"
 msgstr "Nærheten"
 
@@ -1745,10 +1746,14 @@ msgid "Other"
 msgstr "Andre"
 
 #: qml/SharePage.qml:97
+msgid "Add address"
+msgstr ""
+
+#: qml/SharePage.qml:106
 msgid "Add link to OpenStreetMaps"
 msgstr "Legg til lenke til OpenStreetMaps"
 
-#: qml/SharePage.qml:106
+#: qml/SharePage.qml:115
 msgid "Add link to Google Maps"
 msgstr "Legg til lenke til Google Maps"
 
