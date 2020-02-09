@@ -1,5 +1,5 @@
 {
-  "clickable_minimum_required": "6.8.2",
+  "clickable_minimum_required": "6.9.1",
   "template": "custom",
   "kill": "pure-maps",
   "build": "cd ${ROOT} && make platform-ubports && make FULLNAME=pure-maps.jonnius PREFIX=. DESTDIR=${INSTALL_DIR}/ INCLUDE_GPXPY=yes QT_PLATFORM_STYLE=suru TMP_AS_CACHE=yes install",
