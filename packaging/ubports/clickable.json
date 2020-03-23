@@ -38,8 +38,8 @@
     "mapbox-gl-qml": {
       "template": "qmake",
       "build_args": [
-        "INCLUDEPATH+=${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/usr/include/${ARCH_TRIPLET}/qt5",
-        "LIBS+=-L${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}"
+        "INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/usr/include/${ARCH_TRIPLET}/qt5",
+        "LIBS+=-L${BUILD_DIR}/../mapbox-gl-native/install/usr/lib/${ARCH_TRIPLET}"
       ]
     },
     "nemo-qml-plugin-dbus": {
