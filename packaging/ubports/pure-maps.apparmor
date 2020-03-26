@@ -3,6 +3,7 @@
         "audio",
         "keep-display-on",
         "location",
+        "content_exchange",
         "networking"
     ],
     "policy_version": 16.04
