@@ -78,6 +78,9 @@ Kirigami.ApplicationWindow {
     function initPages() {
         if (menuPageUrl) {
             globalDrawer = app.createObject(menuPageUrl);
+            globalDrawer.edge = Qt.RightEdge;
+            globalDrawer.clip = true;
+            globalDrawer.enabled = Qt.binding(function () { return pages.currentIndex === 0; })
         }
     }
 
