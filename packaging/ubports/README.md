@@ -16,37 +16,35 @@ all clickable calls:
 Otherwise you'll have to append `-c packaging/ubports/clickable.json` to all
 clickable commands.
 
-If you did not clone this repository recursively, get the submodules:
-
-    git submodule update --init
-
 ## Dependencies
 
 **WARNING**: Dependencies may take hours to build (especially mimic).
 
+Download dependency sources:
+
+    clickable prepare-deps
+
 ### Python >= 3.6
 Run the following command to download and compile the app dependencies:
 
-    clickable prepare-deps build-libs
+    clickable build-libs --arch armhf # or arm64 depending on your device
 
 If you'd like to debug on desktop, too, also compile the dependencies for amd64:
 
-    clickable prepare-deps build-libs --arch amd64
+    clickable build-libs --arch amd64
 
 ### Python < 3.6
 Run the following command to download and compile the app dependencies:
 
-    clickable prepare-deps
-    clickable build-libs mapbox-gl-native
-    clickable build-libs mapbox-gl-qml
-    clickable build-libs qmlrunner
-    clickable build-libs nemo-qml-plugin-dbus
-    clickable build-libs mimic
-    clickable build-libs picotts
+    clickable build-libs mapbox-gl-native --arch armhf # or arm64
+    clickable build-libs mapbox-gl-qml --arch armhf # or arm64
+    clickable build-libs qmlrunner --arch armhf # or arm64
+    clickable build-libs nemo-qml-plugin-dbus --arch armhf # or arm64
+    clickable build-libs mimic --arch armhf # or arm64
+    clickable build-libs picotts --arch armhf # or arm64
 
 If you'd like to debug on desktop, too, also compile the dependencies for amd64:
 
-    clickable prepare-deps
     clickable build-libs mapbox-gl-native --arch amd64
     clickable build-libs mapbox-gl-qml --arch amd64
     clickable build-libs qmlrunner --arch amd64
@@ -58,16 +56,21 @@ If you'd like to debug on desktop, too, also compile the dependencies for amd64:
 
 Build the app by running
 
-    clickable build click-build
+    clickable build --arch armhf # for armhf devices
+    clickable build --arch arm64 # for arm64 devices
+    clickable build --arch amd64 # for desktop mode
 
 ## Debugging
 
 To debug on a Ubuntu Touch device simply run
 
-    clickable
+    clickable # implies a clean build run, installing on device and launching
+    clickable logs # to watch logs
 
-To debug on the desktop run
+To debug on the desktop run of these:
 
-    clickable desktop
+    clickable desktop # implies a clean build run
+    clickable desktop --dirty # avoid clean before build
+    clickable desktop --skip-build # start app without building
 
 See [Clickable docs](http://clickable.bhdouglass.com/en/latest/) for details.
