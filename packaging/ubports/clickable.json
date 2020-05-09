@@ -1,6 +1,6 @@
 {
-  "clickable_minimum_required": "6.9.1",
-  "template": "custom",
+  "clickable_minimum_required": "6.13.0",
+  "builder": "custom",
   "kill": "pure-maps",
   "build": "cd ${ROOT} && make platform-ubports && make FULLNAME=pure-maps.jonnius PREFIX=. DESTDIR=${INSTALL_DIR}/ INCLUDE_GPXPY=yes QT_PLATFORM_STYLE=suru TMP_AS_CACHE=yes install",
   "prebuild": "cd ${ROOT} && tools/manage-keys inject .",
@@ -30,23 +30,23 @@
   "libraries": {
     "mapbox-gl-native": {
       "src_dir": "libs/mapbox-gl-native/mapbox-gl-native",
-      "template": "qmake"
+      "builder": "qmake"
     },
     "qmlrunner": {
-      "template": "qmake"
+      "builder": "qmake"
     },
     "mapbox-gl-qml": {
-      "template": "qmake",
+      "builder": "qmake",
       "build_args": [
         "INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/usr/include/${ARCH_TRIPLET}/qt5",
         "LIBS+=-L${BUILD_DIR}/../mapbox-gl-native/install/usr/lib/${ARCH_TRIPLET}"
       ]
     },
     "nemo-qml-plugin-dbus": {
-      "template": "qmake"
+      "builder": "qmake"
     },
     "mimic": {
-      "template": "custom",
+      "builder": "custom",
       "build": "cp -r ${SRC_DIR}/* ${BUILD_DIR} && ./autogen.sh && ./configure --with-audio=none --prefix=${INSTALL_DIR} --exec-prefix=${INSTALL_DIR} --host=${ARCH_TRIPLET} && make -j4 &&  make install",
       "dependencies_target": [
         "libtool",
@@ -55,7 +55,7 @@
       ]
     },
     "picotts": {
-      "template": "custom",
+      "builder": "custom",
       "build": "cp -r ${SRC_DIR}/* ${BUILD_DIR} && DESTDIR=${INSTALL_DIR} LANG_DIR=./usr/share/picotts/lang make -j4 && DESTDIR=${INSTALL_DIR} make install",
       "dependencies_target": [
         "libtool",

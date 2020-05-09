@@ -20,37 +20,12 @@ clickable commands.
 
 **WARNING**: Dependencies may take hours to build (especially mimic).
 
-Download dependency sources:
+Run the following command to download and compile the app dependencies:
 
     clickable prepare-deps
-
-### Python >= 3.6
-Run the following command to download and compile the app dependencies:
-
-    clickable build-libs --arch armhf # or arm64 depending on your device
-
-If you'd like to debug on desktop, too, also compile the dependencies for amd64:
-
-    clickable build-libs --arch amd64
-
-### Python < 3.6
-Run the following command to download and compile the app dependencies:
-
-    clickable build-libs mapbox-gl-native --arch armhf # or arm64
-    clickable build-libs mapbox-gl-qml --arch armhf # or arm64
-    clickable build-libs qmlrunner --arch armhf # or arm64
-    clickable build-libs nemo-qml-plugin-dbus --arch armhf # or arm64
-    clickable build-libs mimic --arch armhf # or arm64
-    clickable build-libs picotts --arch armhf # or arm64
-
-If you'd like to debug on desktop, too, also compile the dependencies for amd64:
-
-    clickable build-libs mapbox-gl-native --arch amd64
-    clickable build-libs mapbox-gl-qml --arch amd64
-    clickable build-libs qmlrunner --arch amd64
-    clickable build-libs nemo-qml-plugin-dbus --arch amd64
-    clickable build-libs mimic --arch amd64
-    clickable build-libs picotts --arch amd64
+    clickable build-libs --arch armhf # for armhf devices
+    clickable build-libs --arch arm64 # for arm64 devices
+    clickable build-libs --arch amd64 # for desktop mode
 
 ## Building
 
