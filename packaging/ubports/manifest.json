@@ -10,6 +10,6 @@
         }
     },
     "version": "1.26.2",
-    "maintainer": "Jonatan Hatakeyama Zeidler <jonatan_zeidler@gmx.de>",
+    "maintainer": "Rinigus <rinigus.git@gmail.org>",
     "framework" : "ubuntu-sdk-16.04"
 }
