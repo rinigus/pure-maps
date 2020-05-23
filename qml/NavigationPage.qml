@@ -41,8 +41,7 @@ PagePL {
                 width: row.itemWidth + styler.themeHorizontalPageMargin
                 icon.iconHeight: styler.themeIconSizeMedium
                 icon.iconName: app.mode === modes.navigate ? styler.iconPause : styler.iconStart
-                text: app.mode === modes.navigate ? app.tr("Pause") :
-                                                    (app.navigationStarted ? app.tr("Resume") : app.tr("Begin"))
+                text: app.mode === modes.navigate ? app.tr("Pause") : app.tr("Navigate")
                 onClicked: {
                     app.hideNavigationPages();
                     if (app.mode === modes.navigate) app.setModeExploreRoute();

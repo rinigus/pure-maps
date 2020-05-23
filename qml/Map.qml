@@ -357,7 +357,6 @@ MapboxMap {
         map.saveRoute();
         map.saveManeuvers();
         if (!amend) app.setModeExploreRoute();
-        app.navigationStarted = !!amend;
     }
 
     function centerOnPosition() {
