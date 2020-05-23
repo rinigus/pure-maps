@@ -49,8 +49,23 @@ MapButton {
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 
+    Connections {
+        target: map
+        onAutoCenterChanged: if (!map.autoCenter) setAutoRotate(false)
+    }
+
     onClicked: {
-        map.autoRotate = !map.autoRotate;
+        if (hidden) return;
+        if (!map.autoCenter) {
+            notification.flash(app.tr("Auto-rotation requires auto-centering to be enabled"),
+                               "northArrow");
+            return;
+        }
+        setAutoRotate(!map.autoRotate)
+    }
+
+    function setAutoRotate(ar) {
+        map.autoRotate = ar;
         notification.flash(map.autoRotate ?
                                app.tr("Auto-rotate on") :
                                app.tr("Auto-rotate off"),
