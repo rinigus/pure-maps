@@ -1,3 +1,6 @@
 [submodule "thirdparty/gpxpy"]
 	path = thirdparty/gpxpy
 	url = https://github.com/tkrajina/gpxpy.git
+[submodule "thirdparty/geomag"]
+	path = thirdparty/geomag
+	url = https://github.com/rinigus/geomag.git

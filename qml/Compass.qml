@@ -20,10 +20,14 @@ import QtQuick 2.0
 import QtSensors 5.2
 
 Item {
+    id: cmp
     property alias active:  compass.active
     property real  azimuth: active && compass.reading !== undefined &&
                             compass.reading.azimuth !== undefined ?
-                                compass.reading.azimuth + app.compassOrientationOffset : 0
+                                compass.reading.azimuth + declination + app.compassOrientationOffset : 0
+    property real  declination: 0
+
+    property var  _last_call
 
     Compass {
         id: compass
@@ -32,5 +36,22 @@ Item {
                 gps.position.speedValid && gps.position.speed < 2.78 // limiting to 10 km/h
         alwaysOn: false
         skipDuplicates: true
+    }
+
+    Connections {
+        target: map
+        onPositionChanged: {
+            if (!cmp.active) return;
+            if (_last_call && map.position.timestamp - _last_call < 1000*300 )
+                return;
+            _last_call = map.position.timestamp;
+            py.call("poor.app.magfield.declination",
+                    [map.position.coordinate.latitude,
+                     map.position.coordinate.longitude],
+                    function (dec) {
+                       if (Math.abs(cmp.declination-dec) > 0.1)
+                           cmp.declination = dec;
+                    });
+        }
     }
 }

@@ -33,6 +33,7 @@ class Application:
         self.geocoder = None
         self.guide = None
         self.history = poor.HistoryManager()
+        self.magfield = poor.MagField()
         self.narrative = poor.Narrative()
         self.router = None
         self.sun = poor.Sun()

@@ -109,6 +109,11 @@ endif
 	cp thirdparty/open-location-code/*.py $(DATADIR)/poor/openlocationcode
 	mkdir -p $(DATADIR)/poor/astral
 	cp thirdparty/astral/*.py $(DATADIR)/poor/astral
+	mkdir -p $(DATADIR)/poor/astral
+	cp thirdparty/astral/*.py $(DATADIR)/poor/astral
+	mkdir -p $(DATADIR)/poor/geomag/model_data
+	cp thirdparty/geomag/geomag/*.py $(DATADIR)/poor/geomag
+	cp thirdparty/geomag/geomag/model_data/WMM.COF $(DATADIR)/poor/geomag/model_data
 	@echo "Setting standard paths..."
 	sed -i -e 's|pure-maps|$(FULLNAME)|g' $(DATADIR)/poor/paths.py || true
 	@echo "Installing QML files..."

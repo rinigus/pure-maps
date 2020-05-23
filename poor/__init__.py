@@ -50,6 +50,7 @@ from poor.guide import Guide
 from poor.history import HistoryManager
 from poor.keystore import KeyStore
 key = KeyStore()
+from poor.magfield import MagField
 from poor.router import Router
 from poor.sun import Sun
 from poor.voice import VoiceGenerator
