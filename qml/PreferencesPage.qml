@@ -36,7 +36,7 @@ PagePL {
                 title: app.tr("General")
                 content.sourceComponent: Column {
                     spacing: styler.themePaddingMedium
-                    width: sectionControls.width
+                    width: sectionGeneral.width
                     FormLayoutPL {
                         spacing: styler.themePaddingMedium
                         width: sectionGeneral.width
