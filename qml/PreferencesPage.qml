@@ -352,6 +352,149 @@ PagePL {
             }
 
             ExpandingSectionPL {
+                id: sectionNavigate
+                title: app.tr("Navigation")
+                content.sourceComponent: Column {
+                    spacing: styler.themePaddingMedium
+                    width: sectionNavigate.width
+
+                    TextSwitchPL {
+                        id: showNarrativeSwitch
+                        checked: app.conf.showNarrative
+                        text: app.tr("Show navigation instructions")
+                        onCheckedChanged: {
+                            if (app.conf.showNarrative!==showNarrativeSwitch.checked)
+                                app.conf.set("show_narrative", showNarrativeSwitch.checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        id: voiceNavigationSwitch
+                        checked: app.conf.voiceNavigation
+                        text: app.tr("Voice navigation instructions")
+                        onCheckedChanged: {
+                            if (voiceNavigationSwitch.checked === app.conf.voiceNavigation) return;
+                            app.conf.set("voice_navigation", voiceNavigationSwitch.checked);
+                            if (app.mode === modes.navigate) map.initVoiceNavigation();
+                        }
+                    }
+
+                    TextSwitchPL {
+                        id: rerouteSwitch
+                        checked: app.conf.reroute
+                        text: app.tr("Reroute automatically")
+                        onCheckedChanged: {
+                            if (rerouteSwitch.checked===app.conf.reroute) return;
+                            app.conf.set("reroute", rerouteSwitch.checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.mapZoomAutoWhenNavigating
+                        text: app.tr("Automatic zoom on start")
+                        onCheckedChanged: {
+                            if (checked===app.conf.mapZoomAutoWhenNavigating) return;
+                            app.conf.set("map_zoom_auto_when_navigating", checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        id: mapmatchingSwitch
+                        checked: app.conf.mapMatchingWhenNavigating
+                        description: app.tr("Uses OSM Scout Server for its operation.")
+                        text: app.tr("Snap position to road")
+                        visible: app.hasMapMatching
+                        onCheckedChanged: {
+                            if (mapmatchingSwitch.checked===app.conf.mapMatchingWhenNavigating) return;
+                            app.conf.set("map_matching_when_navigating", mapmatchingSwitch.checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        id: directionsSwitch
+                        checked: app.conf.showNavigationSign
+                        text: app.tr("Show direction signs")
+                        onCheckedChanged: {
+                            if (directionsSwitch.checked===app.conf.showNavigationSign) return;
+                            app.conf.set("show_navigation_sign", directionsSwitch.checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        id: autorotateSwitch
+                        checked: app.conf.autoRotateWhenNavigating
+                        description: app.tr("Set rotation of the map in the direction of movement when starting navigation.")
+                        text: app.tr("Rotate map when navigating")
+                        onCheckedChanged: {
+                            app.conf.set("auto_rotate_when_navigating", autorotateSwitch.checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        id: tiltSwitch
+                        checked: app.conf.tiltWhenNavigating
+                        description: app.tr("Only applies to vector maps.")
+                        enabled: autorotateSwitch.checked
+                        text: app.tr("Tilt map when navigating")
+                        onCheckedChanged: {
+                            app.conf.set("tilt_when_navigating", tiltSwitch.checked);
+                        }
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.smoothPositionAnimationWhenNavigating
+                        text: app.tr("Smooth position animation")
+                        onCheckedChanged: {
+                            app.conf.set("smooth_position_animation_when_navigating", checked);
+                        }
+                    }
+
+                    FormLayoutPL {
+                        spacing: styler.themePaddingMedium
+                        width: parent.width
+                        ComboBoxPL {
+                            id: voiceGenderComboBox
+                            description: app.tr("Preferred gender for voice navigation. Only supported by some engines and languages.")
+                            label: app.tr("Voice gender")
+                            model: [ app.tr("Male"), app.tr("Female") ]
+                            property var values: ["male", "female"]
+                            Component.onCompleted: {
+                                var value = app.conf.voiceGender;
+                                voiceGenderComboBox.currentIndex = voiceGenderComboBox.values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = voiceGenderComboBox.currentIndex;
+                                app.conf.set("voice_gender", voiceGenderComboBox.values[index]);
+                            }
+                        }
+
+                        ComboBoxPL {
+                            id: speedLimitComboBox
+                            description: app.tr("Show speed limit sign. Requires snapping position to the road to find the speed limit.")
+                            enabled: mapmatchingSwitch.checked
+                            label: app.tr("Speed limit")
+                            model: [ app.tr("Always"), app.tr("Only when exceeding"), app.tr("Never") ]
+                            property var values: ["always", "exceeding", "never"]
+                            Component.onCompleted: {
+                                var value = app.conf.showSpeedLimit;
+                                speedLimitComboBox.currentIndex = speedLimitComboBox.values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = speedLimitComboBox.currentIndex;
+                                var v = speedLimitComboBox.values[index];
+                                if (v !== app.conf.showSpeedLimit)
+                                    app.conf.set("show_speed_limit", v);
+                            }
+                        }
+                    }
+
+                    Spacer {
+                        height: styler.themePaddingLarge
+                    }
+                }
+            }
+
+            ExpandingSectionPL {
                 id: sectionCompass
                 title: app.tr("Compass")
                 content.sourceComponent: Column {
@@ -359,7 +502,7 @@ PagePL {
                     width: sectionCompass.width
 
                     ListItemLabel {
-                        text: app.tr("It is possible to use compass to determine orientation of your device " +
+                        text: app.tr("Compass can be used to determine orientation of your device " +
                                      "and align the map accordingly. Note that the compass is enabled only " +
                                      "when your position is determined, your speed is low, and, " +
                                      "if you are navigating, only if you are by foot or on the bicycle.")
@@ -372,46 +515,6 @@ PagePL {
                         description: app.tr("Use compass for determination of the direction.")
                         text: app.tr("Use compass")
                         onCheckedChanged: app.conf.set("compass_use", checked)
-                    }
-
-                    Spacer {
-                        height: styler.themePaddingLarge
-                    }
-                }
-            }
-
-            ExpandingSectionPL {
-                id: sectionAutoZoom
-                title: app.tr("Automatic zoom")
-                content.sourceComponent: FormLayoutPL {
-                    spacing: styler.themePaddingMedium
-                    width: sectionAutoZoom.width
-
-                    SliderPL {
-                        description: app.tr("Maximal zoom level that is going to be used " +
-                                            "in the automatic adjustment of the zoom.")
-                        label: app.tr("Maximal zoom level")
-                        maximumValue: 20.0
-                        minimumValue: 10.0
-                        stepSize: 0.1
-                        value: app.conf.get("map_zoom_auto_zero_speed_z")
-                        valueText: value
-                        width: parent.width
-                        onValueChanged: app.conf.set("map_zoom_auto_zero_speed_z", value)
-                    }
-
-                    SliderPL {
-                        description: app.tr("Zoom level will be adjusted to have the same " +
-                                            "map height as the distance that is " +
-                                            "covered by you in the given amount of seconds.")
-                        label: app.tr("Time range, s")
-                        maximumValue: 120.0
-                        minimumValue: 5.0
-                        stepSize: 1.0
-                        value: app.conf.get("map_zoom_auto_time")
-                        valueText: value
-                        width: parent.width
-                        onValueChanged: app.conf.set("map_zoom_auto_time", value)
                     }
 
                     Spacer {
@@ -571,140 +674,44 @@ PagePL {
             }
 
             ExpandingSectionPL {
-                id: sectionNavigate
-                title: app.tr("Navigation")
-                content.sourceComponent: Column {
+                id: sectionAutoZoom
+                title: app.tr("Zoom")
+                content.sourceComponent: FormLayoutPL {
                     spacing: styler.themePaddingMedium
-                    width: sectionNavigate.width
+                    width: sectionAutoZoom.width
 
-                    TextSwitchPL {
-                        id: showNarrativeSwitch
-                        checked: app.conf.showNarrative
-                        text: app.tr("Show navigation instructions")
-                        onCheckedChanged: {
-                            if (app.conf.showNarrative!==showNarrativeSwitch.checked)
-                                app.conf.set("show_narrative", showNarrativeSwitch.checked);
-                        }
+                    ListItemLabel {
+                        text: app.tr("Map zoom level can be adjusted automatically according to your speed. " +
+                                     "Here, you can adjust settings related to this adjustment.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
                     }
 
-                    TextSwitchPL {
-                        id: voiceNavigationSwitch
-                        checked: app.conf.voiceNavigation
-                        text: app.tr("Voice navigation instructions")
-                        onCheckedChanged: {
-                            if (voiceNavigationSwitch.checked === app.conf.voiceNavigation) return;
-                            app.conf.set("voice_navigation", voiceNavigationSwitch.checked);
-                            if (app.mode === modes.navigate) map.initVoiceNavigation();
-                        }
-                    }
-
-                    TextSwitchPL {
-                        id: rerouteSwitch
-                        checked: app.conf.reroute
-                        text: app.tr("Reroute automatically")
-                        onCheckedChanged: {
-                            if (rerouteSwitch.checked===app.conf.reroute) return;
-                            app.conf.set("reroute", rerouteSwitch.checked);
-                        }
-                    }
-
-                    TextSwitchPL {
-                        checked: app.conf.mapZoomAutoWhenNavigating
-                        text: app.tr("Automatic zoom on start")
-                        onCheckedChanged: {
-                            if (checked===app.conf.mapZoomAutoWhenNavigating) return;
-                            app.conf.set("map_zoom_auto_when_navigating", checked);
-                        }
-                    }
-
-                    TextSwitchPL {
-                        id: mapmatchingSwitch
-                        checked: app.conf.mapMatchingWhenNavigating
-                        description: app.tr("Uses OSM Scout Server for its operation.")
-                        text: app.tr("Snap position to road")
-                        visible: app.hasMapMatching
-                        onCheckedChanged: {
-                            if (mapmatchingSwitch.checked===app.conf.mapMatchingWhenNavigating) return;
-                            app.conf.set("map_matching_when_navigating", mapmatchingSwitch.checked);
-                        }
-                    }
-
-                    TextSwitchPL {
-                        id: directionsSwitch
-                        checked: app.conf.showNavigationSign
-                        text: app.tr("Show direction signs")
-                        onCheckedChanged: {
-                            if (directionsSwitch.checked===app.conf.showNavigationSign) return;
-                            app.conf.set("show_navigation_sign", directionsSwitch.checked);
-                        }
-                    }
-
-                    TextSwitchPL {
-                        id: autorotateSwitch
-                        checked: app.conf.autoRotateWhenNavigating
-                        description: app.tr("Set rotation of the map in the direction of movement when starting navigation.")
-                        text: app.tr("Rotate map when navigating")
-                        onCheckedChanged: {
-                            app.conf.set("auto_rotate_when_navigating", autorotateSwitch.checked);
-                        }
-                    }
-
-                    TextSwitchPL {
-                        id: tiltSwitch
-                        checked: app.conf.tiltWhenNavigating
-                        description: app.tr("Only applies to vector maps.")
-                        enabled: autorotateSwitch.checked
-                        text: app.tr("Tilt map when navigating")
-                        onCheckedChanged: {
-                            app.conf.set("tilt_when_navigating", tiltSwitch.checked);
-                        }
-                    }
-
-                    TextSwitchPL {
-                        checked: app.conf.smoothPositionAnimationWhenNavigating
-                        text: app.tr("Smooth position animation")
-                        onCheckedChanged: {
-                            app.conf.set("smooth_position_animation_when_navigating", checked);
-                        }
-                    }
-
-                    FormLayoutPL {
-                        spacing: styler.themePaddingMedium
+                    SliderPL {
+                        description: app.tr("Maximal zoom level that is going to be used " +
+                                            "in the automatic adjustment of the zoom.")
+                        label: app.tr("Maximal zoom level")
+                        maximumValue: 20.0
+                        minimumValue: 10.0
+                        stepSize: 0.1
+                        value: app.conf.get("map_zoom_auto_zero_speed_z")
+                        valueText: value
                         width: parent.width
-                        ComboBoxPL {
-                            id: voiceGenderComboBox
-                            description: app.tr("Preferred gender for voice navigation. Only supported by some engines and languages.")
-                            label: app.tr("Voice gender")
-                            model: [ app.tr("Male"), app.tr("Female") ]
-                            property var values: ["male", "female"]
-                            Component.onCompleted: {
-                                var value = app.conf.voiceGender;
-                                voiceGenderComboBox.currentIndex = voiceGenderComboBox.values.indexOf(value);
-                            }
-                            onCurrentIndexChanged: {
-                                var index = voiceGenderComboBox.currentIndex;
-                                app.conf.set("voice_gender", voiceGenderComboBox.values[index]);
-                            }
-                        }
+                        onValueChanged: app.conf.set("map_zoom_auto_zero_speed_z", value)
+                    }
 
-                        ComboBoxPL {
-                            id: speedLimitComboBox
-                            description: app.tr("Show speed limit sign. Requires snapping position to the road to find the speed limit.")
-                            enabled: mapmatchingSwitch.checked
-                            label: app.tr("Speed limit")
-                            model: [ app.tr("Always"), app.tr("Only when exceeding"), app.tr("Never") ]
-                            property var values: ["always", "exceeding", "never"]
-                            Component.onCompleted: {
-                                var value = app.conf.showSpeedLimit;
-                                speedLimitComboBox.currentIndex = speedLimitComboBox.values.indexOf(value);
-                            }
-                            onCurrentIndexChanged: {
-                                var index = speedLimitComboBox.currentIndex;
-                                var v = speedLimitComboBox.values[index];
-                                if (v !== app.conf.showSpeedLimit)
-                                    app.conf.set("show_speed_limit", v);
-                            }
-                        }
+                    SliderPL {
+                        description: app.tr("Zoom level will be adjusted to have the same " +
+                                            "map height as the distance that is " +
+                                            "covered by you in the given amount of seconds.")
+                        label: app.tr("Time range, s")
+                        maximumValue: 120.0
+                        minimumValue: 5.0
+                        stepSize: 1.0
+                        value: app.conf.get("map_zoom_auto_time")
+                        valueText: value
+                        width: parent.width
+                        onValueChanged: app.conf.set("map_zoom_auto_time", value)
                     }
 
                     Spacer {
