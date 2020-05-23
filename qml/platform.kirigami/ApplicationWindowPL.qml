@@ -36,6 +36,7 @@ Kirigami.ApplicationWindow {
                                                        Kirigami.ApplicationHeaderStyle.ShowBackButton :
                                                        Kirigami.ApplicationHeaderStyle.NoNavigationButtons
 
+    property real   compassOrientationOffset: 0
     property bool   isConvergent: true
     property var    initialPage
     property string menuPageUrl

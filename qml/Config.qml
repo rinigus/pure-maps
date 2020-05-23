@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
+ * Copyright (C) 2014 Osmo Salomaa, 2018-2020 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +30,7 @@ Item {
     property string basemapLight
     property string basemapType
     property string basemapVehicle
+    property bool   compassUse: true
     property bool   developmentCoordinateCenter: false
     property bool   developmentShowZ: false
     property string keepAlive
@@ -123,6 +124,7 @@ Item {
         conf.basemapLight = c.basemap_light;
         conf.basemapType = c.basemap_type;
         conf.basemapVehicle = c.basemap_vehicle;
+        conf.compassUse = c.compass_use;
         conf.developmentCoordinateCenter = c.devel_coordinate_center;
         conf.developmentShowZ = c.devel_show_z;
         conf.keepAlive = c.keep_alive;

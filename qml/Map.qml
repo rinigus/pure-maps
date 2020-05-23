@@ -53,10 +53,23 @@ MapboxMap {
     property bool   cleanMode: app.conf.mapModeCleanOnStart
     property int    counter: 0
     property var    direction: {
+        // check if we prefer to use compass
+        if (app.conf.compassUse && compass.active) {
+            if (app.mode === modes.explore || app.mode === modes.exploreRoute)
+                return compass.azimuth;
+            // navigation would prefer compass at low speed
+            // and if it is for bycicle or pedestrian. speed
+            // is already checked when activating compass, so
+            // only route mode is needed
+            if (route && (route.mode === "foot" || route.mode === "bicycle"))
+                return compass.azimuth;
+        }
         // prefer map matched direction, if available
         if (gps.directionValid) return gps.direction;
+        // direction as calculated along the route
         if (app.navigationStatus.direction!==undefined && app.navigationStatus.direction!==null)
             return app.navigationStatus.direction;
+        // direction calculated on the basis of gps coordinates
         if (gps.directionCalculated) return gps.direction;
         return undefined;
     }

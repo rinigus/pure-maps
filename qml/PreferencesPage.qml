@@ -352,6 +352,35 @@ PagePL {
             }
 
             ExpandingSectionPL {
+                id: sectionCompass
+                title: app.tr("Compass")
+                content.sourceComponent: Column {
+                    spacing: styler.themePaddingMedium
+                    width: sectionCompass.width
+
+                    ListItemLabel {
+                        text: app.tr("It is possible to use compass to determine orientation of your device " +
+                                     "and align the map accordingly. Note that the compass is enabled only " +
+                                     "when your position is determined, your speed is low, and, " +
+                                     "if you are navigating, only if you are by foot or on the bicycle.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    TextSwitchPL {
+                        checked: app.conf.compassUse
+                        description: app.tr("Use compass for determination of the direction.")
+                        text: app.tr("Use compass")
+                        onCheckedChanged: app.conf.set("compass_use", checked)
+                    }
+
+                    Spacer {
+                        height: styler.themePaddingLarge
+                    }
+                }
+            }
+
+            ExpandingSectionPL {
                 id: sectionAutoZoom
                 title: app.tr("Automatic zoom")
                 content.sourceComponent: FormLayoutPL {

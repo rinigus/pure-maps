@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
+# Copyright (C) 2014 Osmo Salomaa, 2018-2020 Rinigus
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@ DEFAULTS = {
     "basemap_light": "",
     "basemap_type": "",
     "basemap_vehicle": "",
+    "compass_use": False,
     "center": [13.0, 49.0],
     "devel_coordinate_center": False,
     "devel_show_z": False,

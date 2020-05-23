@@ -29,6 +29,7 @@ PageEmptyPL {
     BasemapButton { id: basemapButton }
     CenterButton { id: centerButton }
     Commander { id: commander }
+    Compass { id: compass }
     GeocodeButton { id: geocodeButton }
     Map {
         id: map

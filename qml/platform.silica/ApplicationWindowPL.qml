@@ -27,6 +27,7 @@ ApplicationWindow {
     cover: Cover {}
     initialPage: null
 
+    property real   compassOrientationOffset: 0
     property string menuPageUrl
     property var    pages: StackPL { }
     property bool   running: applicationActive || (cover && cover.active)
@@ -78,18 +79,22 @@ ApplicationWindow {
         if (!(deviceOrientation & allowedOrientations)) return;
         switch (deviceOrientation) {
         case Orientation.Portrait:
+            compassOrientationOffset = 0;
             screenWidth = Screen.width;
             screenHeight = Screen.height;
             break;
         case Orientation.PortraitInverted:
+            compassOrientationOffset = 180;
             screenWidth = Screen.width;
             screenHeight = Screen.height;
             break;
         case Orientation.Landscape:
+            compassOrientationOffset = 90;
             screenWidth = Screen.height;
             screenHeight = Screen.width;
             break;
         case Orientation.LandscapeInverted:
+            compassOrientationOffset = 270;
             screenWidth = Screen.height;
             screenHeight = Screen.width;
             break;
