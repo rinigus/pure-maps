@@ -61,7 +61,7 @@ MapboxMap {
             // and if it is for bycicle or pedestrian. speed
             // is already checked when activating compass, so
             // only route mode is needed
-            if (route && (route.mode === "foot" || route.mode === "bicycle"))
+            if (app.transportMode === "foot" || app.transportMode === "bicycle")
                 return compass.azimuth;
         }
         // prefer map matched direction, if available
@@ -241,6 +241,9 @@ MapboxMap {
         target: app
         onModeChanged: setMode()
         onPortraitChanged: map.updateMargins()
+        // onTransportMode is not followed separately
+        // as it is always set just before changing the
+        // main mode
     }
 
     Connections {
@@ -612,7 +615,7 @@ MapboxMap {
         map.autoRotate = false;
         if (map.zoomLevel > 14) map.setZoomLevel(14);
         map.setScale(app.conf.get("map_scale"));
-        py.call("poor.app.basemap.set_bias", [{'type': 'default', 'vehicle': ''}]);
+        py.call("poor.app.basemap.set_bias", [{'type': 'default', 'vehicle': app.transportMode}]);
     }
 
     function setModeExploreRoute() {
@@ -623,12 +626,12 @@ MapboxMap {
         if (map.zoomLevel > 14) map.setZoomLevel(14);
         map.setScale(app.conf.get("map_scale"));
         py.call("poor.app.basemap.set_bias", [{'type': 'preview',
-                                                  'vehicle': route && route.mode ? route.mode : ''}]);
+                                                  'vehicle': app.transportMode}]);
     }
 
     function setModeFollowMe() {
         // follow me mode
-        var scale = app.conf.get("map_scale_navigation_" + (app.conf.mapMatchingWhenFollowing !== "none" ? app.conf.mapMatchingWhenFollowing : "car") );
+        var scale = app.conf.get("map_scale_navigation_" + (app.transportMode ? app.transportMode : "car") );
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
         map.setScale(scale);
@@ -636,12 +639,12 @@ MapboxMap {
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
         if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
-        py.call("poor.app.basemap.set_bias", [{'type': 'guidance', 'vehicle': route.mode}]);
+        py.call("poor.app.basemap.set_bias", [{'type': 'guidance', 'vehicle': app.transportMode}]);
     }
 
     function setModeNavigate() {
         // map during navigation
-        var scale = app.conf.get("map_scale_navigation_" + route.mode);
+        var scale = app.conf.get("map_scale_navigation_" + app.transportMode);
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
         map.setScale(scale);
@@ -650,7 +653,7 @@ MapboxMap {
         map.autoRotate = app.conf.autoRotateWhenNavigating;
         if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
         map.initVoiceNavigation();
-        py.call("poor.app.basemap.set_bias", [{'type': 'guidance', 'vehicle': route.mode}]);
+        py.call("poor.app.basemap.set_bias", [{'type': 'guidance', 'vehicle': app.transportMode}]);
     }
 
     function setScale(scale) {

@@ -385,37 +385,23 @@ PagePL {
                 spacing: styler.themePaddingMedium
 
                 ComboBoxPL {
-                    id: mapmatchingComboBox
-                    description: app.tr("Select mode of transportation. Only applies when Pure Maps is in follow me mode.")
+                    description: app.tr("Select mode of transportation. Only applies when Pure Maps is in " +
+                                        "follow me mode.")
                     label: app.tr("Mode of transportation")
                     model: [ app.tr("Car"), app.tr("Bicycle"), app.tr("Foot") ]
                     property string  value: "car"
                     property var     values: ["car", "bicycle", "foot"]
                     Component.onCompleted: {
-                        var v = app.conf.mapMatchingWhenFollowing;
-                        mapmatchingComboBox.currentIndex = Math.max(0, mapmatchingComboBox.values.indexOf(v));
-                        value = values[mapmatchingComboBox.currentIndex];
+                        var v = app.conf.followMeTransportMode;
+                        currentIndex = Math.max(0, values.indexOf(v));
+                        value = values[currentIndex];
                     }
                     onCurrentIndexChanged: {
-                        mapmatchingComboBox.value = values[mapmatchingComboBox.currentIndex]
-                        app.conf.set("map_matching_when_following", mapmatchingComboBox.value);
-                        scaleSlider.value = app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
-                    }
-                }
-
-                SliderPL {
-                    id: scaleSlider
-                    label: app.tr("Map scale")
-                    maximumValue: 4.0
-                    minimumValue: 0.5
-                    stepSize: 0.1
-                    value: app.conf.get("map_scale_navigation_" + mapmatchingComboBox.value)
-                    valueText: value
-                    width: parent.width
-                    onValueChanged: {
-                        if (!mapmatchingComboBox.value) return;
-                        app.conf.set("map_scale_navigation_" + mapmatchingComboBox.value, scaleSlider.value);
-                        if (app.mode === modes.followMe) map.setScale(scaleSlider.value);
+                        value = values[currentIndex]
+                        app.conf.set("follow_me_transport_mode", value);
+                        if (app.mode === modes.followMe)
+                            // have to set it again to refresh the mode
+                            app.setModeFollowMe();
                     }
                 }
             }

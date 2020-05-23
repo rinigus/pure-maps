@@ -78,7 +78,6 @@ PagePL {
                     py.call_sync("poor.app.history.add_route", [r]);
                 }
                 // apply new route
-                app.setModeExploreRoute();
                 app.hideMenu(app.tr("Route to %1", routePage.toText));
                 pois.hide();
                 map.addRoute(route);

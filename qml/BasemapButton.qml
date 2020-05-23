@@ -375,14 +375,13 @@ MouseArea {
                 maximumValue: 4.0
                 minimumValue: 0.5
                 stepSize: 0.1
-                value: map.route != null && map.route.mode != null ? app.conf.get("map_scale_navigation_" + map.route.mode) : 1
+                value: app.transportMode ? app.conf.get("map_scale_navigation_" + app.transportMode) : 1
                 valueText: value
-                visible: (app.mode === modes.followMe || app.mode === modes.navigate) &&
-                         map.route != null && map.route.mode != null
+                visible: (app.mode === modes.followMe || app.mode === modes.navigate) && app.transportMode
                 width: parent.width
                 onValueChanged: {
-                    if (map.route == null || map.route.mode == null) return;
-                    app.conf.set("map_scale_navigation_" + map.route.mode, value);
+                    if (!app.transportMode) return;
+                    app.conf.set("map_scale_navigation_" + app.transportMode, value);
                     if (app.mode === modes.followMe || app.mode === modes.navigate)
                         map.setScale(value);
                 }

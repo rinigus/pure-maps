@@ -183,7 +183,6 @@ PagePL {
                 }
 
                 onClicked: {
-                    app.setModeExploreRoute();
                     app.hideMenu(app.tr("Route to %1", page.toText));
                     map.addRoute(listItem.result);
                     pois.hide();

@@ -41,10 +41,10 @@ DEFAULTS = {
     "center": [13.0, 49.0],
     "devel_coordinate_center": False,
     "devel_show_z": False,
+    "follow_me_transport_mode": "foot",
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
     # "none", "car", "bicycle", "foot"
-    "map_matching_when_following": "none",
     "map_matching_when_idle": "none",
     "map_matching_when_navigating": False,
     "map_mode_auto_switch_time": -1,

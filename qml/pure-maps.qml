@@ -43,7 +43,13 @@ ApplicationWindowPL {
     // and the associated constant Theme.itemSizeSmall.
     property real   listItemVerticalMargin: (styler.themeItemSizeSmall - 1.125 * styler.themeFontSizeMedium) / 2
     property var    map: null
-    property string mapMatchingMode: "none"
+    property string mapMatchingMode: {
+        if (!hasMapMatching) return "none";
+        else if (app.mode === modes.navigate || app.mode === modes.followMe)
+            return (app.conf.mapMatchingWhenNavigating && map && app.transportMode) ?
+                        app.transportMode : "none";
+        return app.conf.mapMatchingWhenIdle;
+    }
     property bool   modalDialog: modalDialogBasemap
     property bool   modalDialogBasemap: false
     property int    mode: modes.explore
@@ -61,6 +67,7 @@ ApplicationWindowPL {
     property var    rootPage: null
     // used to track current search and other operations with kept states (temp pois, for example)
     property string stateId
+    property string transportMode: ""
     property var    _stackMain: Stack {}
     property var    _stackNavigation: Stack {}
 
@@ -93,13 +100,6 @@ ApplicationWindowPL {
         }
     }
 
-    Connections {
-        target: app.conf
-        onMapMatchingWhenNavigatingChanged: app.updateMapMatching()
-        onMapMatchingWhenFollowingChanged: app.updateMapMatching()
-        onMapMatchingWhenIdleChanged: app.updateMapMatching()
-    }
-
     Component.onDestruction: {
         keepAlive = false;
         gps.active = false;
@@ -111,8 +111,6 @@ ApplicationWindowPL {
         app.conf.set("zoom", app.map.zoomLevel);
         py.call_sync("poor.app.quit", []);
     }
-
-    onHasMapMatchingChanged: updateMapMatching()
 
     onModeChanged: {
         if (!initialized) return;
@@ -126,7 +124,6 @@ ApplicationWindowPL {
             app.rerouteTotalCalls = 0;
             app.resetMenu();
         }
-        app.updateMapMatching();
     }
 
     onNarrativePageSeenChanged: {
@@ -312,18 +309,22 @@ ApplicationWindowPL {
     }
 
     function setModeExplore() {
+        app.transportMode = "";
         app.mode = modes.explore;
     }
 
     function setModeExploreRoute() {
+        app.transportMode = map.route.mode;
         app.mode = modes.exploreRoute;
     }
 
     function setModeFollowMe() {
+        app.transportMode = app.conf.followMeTransportMode;
         app.mode = modes.followMe;
     }
 
     function setModeNavigate() {
+        app.transportMode = map.route.mode;
         app.mode = modes.navigate;
     }
 
@@ -372,14 +373,6 @@ ApplicationWindowPL {
         for (var i = 1; i < arguments.length; i++)
             message = message.arg(arguments[i]);
         return message;
-    }
-
-    function updateMapMatching() {
-        if (!hasMapMatching) mapMatchingMode = "none";
-        else if (app.mode === modes.navigate)
-            mapMatchingMode = (app.conf.mapMatchingWhenNavigating && map && map.route && map.route.mode ? map.route.mode : "none");
-        else if (app.mode === modes.followMe) mapMatchingMode = app.conf.mapMatchingWhenFollowing;
-        else mapMatchingMode = app.conf.mapMatchingWhenIdle;
     }
 
     function updateNavigationStatus(status) {

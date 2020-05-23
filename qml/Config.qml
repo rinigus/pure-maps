@@ -33,9 +33,9 @@ Item {
     property bool   compassUse: true
     property bool   developmentCoordinateCenter: false
     property bool   developmentShowZ: false
+    property string followMeTransportMode
     property string keepAlive
-    property string mapMatchingWhenFollowing
-    property string mapMatchingWhenIdle
+    property string mapMatchingWhenIdle: "none"
     property bool   mapMatchingWhenNavigating
     property int    mapModeAutoSwitchTime: -1
     property bool   mapModeCleanOnStart
@@ -127,8 +127,8 @@ Item {
         conf.compassUse = c.compass_use;
         conf.developmentCoordinateCenter = c.devel_coordinate_center;
         conf.developmentShowZ = c.devel_show_z;
+        conf.followMeTransportMode = c.follow_me_transport_mode;
         conf.keepAlive = c.keep_alive;
-        conf.mapMatchingWhenFollowing = c.map_matching_when_following;
         conf.mapMatchingWhenIdle = c.map_matching_when_idle;
         conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
         conf.mapModeAutoSwitchTime = c.map_mode_auto_switch_time;
