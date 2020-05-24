@@ -18,7 +18,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Nemo.KeepAlive 1.1
+import Nemo.KeepAlive 1.2
 import "."
 
 ApplicationWindow {
@@ -37,10 +37,13 @@ ApplicationWindow {
     property string title
     property bool   keepAlive: false
 
+    DisplayBlanking {
+        preventBlanking: applicationActive && keepAlive
+    }
+
     Component.onCompleted: {
         pages.ps = pageStack;
         updateOrientation()
-        DisplayBlanking.preventBlanking = Qt.binding(function() { return applicationActive && keepAlive })
     }
 
     Keys.onPressed: {
