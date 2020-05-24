@@ -28,7 +28,12 @@ ApplicationWindowPL {
     title: app.tr("Pure Maps")
 
     keepAlive: app.conf.keepAlive === "always"
-               || (app.conf.keepAlive === "navigating" && (app.mode === modes.navigate || app.mode === modes.followMe))
+               || (app.conf.keepAlive === "navigating" &&
+                   (app.mode === modes.navigate || app.mode === modes.followMe))
+
+    keepAliveBackground: app.conf.keepAliveBackground === "always"
+                        || (app.conf.keepAliveBackground === "navigating" &&
+                            (app.mode === modes.navigate || app.mode === modes.followMe))
 
     property var    conf: Config {}
     property bool   errorPageOpen: false

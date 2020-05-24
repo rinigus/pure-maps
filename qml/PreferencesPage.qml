@@ -179,28 +179,74 @@ PagePL {
                             }
                         }
 
-                        ComboBoxPL {
-                            id: sleepComboBox
-                            description: app.tr("Only applies when Pure Maps is active. When minimized, sleep is controlled by normal device-level preferences.")
-                            label: app.tr("Prevent sleep")
-                            model: [ app.tr("Never"), app.tr("When navigating"), app.tr("Always") ]
-                            property var values: ["never", "navigating", "always"]
-                            Component.onCompleted: {
-                                var value = app.conf.get("keep_alive");
-                                sleepComboBox.currentIndex = sleepComboBox.values.indexOf(value);
-                            }
-                            onCurrentIndexChanged: {
-                                var index = sleepComboBox.currentIndex;
-                                app.conf.set("keep_alive", sleepComboBox.values[index]);
-                            }
-                        }
-
                         TextSwitchPL {
                             id: autocompleteSwitch
                             checked: app.conf.autoCompleteGeo
                             description: app.tr("Fetch autocompleted search results while typing a search string.")
                             text: app.tr("Autocomplete while searching")
                             onCheckedChanged: app.conf.set("auto_complete_geo", checked)
+                        }
+                    }
+
+                    Spacer {
+                        height: styler.themePaddingLarge
+                    }
+                }
+            }
+
+            ExpandingSectionPL {
+                id: sectionDevice
+                title: app.tr("Device")
+                content.sourceComponent: Column {
+                    spacing: styler.themePaddingMedium
+                    width: sectionDevice.width
+
+                    ListItemLabel {
+                        text: app.tr("You can control if and when " +
+                                     "Pure Maps keeps display active and works in the background. " +
+                                     "It is recommended to allow Pure Maps to prevent screensaver " +
+                                     "during navigation and never prevent the device suspend directly. " +
+                                     "The latter is useful if you wish to receive voice navigation commands " +
+                                     "while keeping device in the pocket.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    FormLayoutPL {
+                        spacing: styler.themePaddingMedium
+                        width: parent.width
+
+                        ComboBoxPL {
+                            description: app.tr("Only applies when Pure Maps is active. When minimized, screensaver " +
+                                                "is controlled by normal device-level preferences.")
+                            label: app.tr("Prevent screensaver")
+                            model: [ app.tr("Never"), app.tr("When navigating"), app.tr("Always") ]
+                            property var values: ["never", "navigating", "always"]
+                            Component.onCompleted: {
+                                var value = app.conf.get("keep_alive");
+                                currentIndex = values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = currentIndex;
+                                app.conf.set("keep_alive", values[index]);
+                            }
+                        }
+
+                        ComboBoxPL {
+                            description: app.tr("Allows to keep positioning and navigation instructions spoken even " +
+                                                "when the screen is switched off. If set to 'never', usual device suspend " +
+                                                "policy is applied.")
+                            label: app.tr("Prevent sleep")
+                            model: [ app.tr("Never"), app.tr("When navigating"), app.tr("Always") ]
+                            property var values: ["never", "navigating", "always"]
+                            Component.onCompleted: {
+                                var value = app.conf.get("keep_alive_background");
+                                currentIndex = values.indexOf(value);
+                            }
+                            onCurrentIndexChanged: {
+                                var index = currentIndex;
+                                app.conf.set("keep_alive_background", values[index]);
+                            }
                         }
                     }
 

@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018 Rinigus
+ * Copyright (C) 2018-2020 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@ ApplicationWindow {
     property bool   screenLarge: false
     property int    screenWidth: width
     property bool   keepAlive: false
+    property bool   keepAliveBackground: false
 
     ScreenSaver {
         screenSaverEnabled: !(Qt.application.state === Qt.ApplicationActive && keepAlive)

@@ -35,6 +35,7 @@ Item {
     property bool   developmentShowZ: false
     property string followMeTransportMode
     property string keepAlive
+    property string keepAliveBackground
     property string mapMatchingWhenIdle: "none"
     property bool   mapMatchingWhenNavigating
     property int    mapModeAutoSwitchTime: -1
@@ -129,6 +130,7 @@ Item {
         conf.developmentShowZ = c.devel_show_z;
         conf.followMeTransportMode = c.follow_me_transport_mode;
         conf.keepAlive = c.keep_alive;
+        conf.keepAliveBackground = c.keep_alive_background;
         conf.mapMatchingWhenIdle = c.map_matching_when_idle;
         conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
         conf.mapModeAutoSwitchTime = c.map_mode_auto_switch_time;

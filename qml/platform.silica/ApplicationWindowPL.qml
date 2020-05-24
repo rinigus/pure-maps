@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018 Rinigus
+ * Copyright (C) 2018-2020 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,15 +30,20 @@ ApplicationWindow {
     property real   compassOrientationOffset: 0
     property string menuPageUrl
     property var    pages: StackPL { }
-    property bool   running: applicationActive || (cover && cover.active)
+    property bool   running: applicationActive || (cover && cover.active) || keepAliveBackground
     property int    screenHeight: Screen.height
     property bool   screenLarge: Screen.sizeCategory >= Screen.Large
     property int    screenWidth: Screen.width
     property string title
     property bool   keepAlive: false
+    property bool   keepAliveBackground: false
 
     DisplayBlanking {
         preventBlanking: applicationActive && keepAlive
+    }
+
+    KeepAlive {
+        enabled: keepAliveBackground
     }
 
     Component.onCompleted: {

@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018-2019 Rinigus, 2019 Purism SPC
+ * Copyright (C) 2018-2020 Rinigus, 2019 Purism SPC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,11 +41,12 @@ Kirigami.ApplicationWindow {
     property var    initialPage
     property string menuPageUrl
     property var    pages: StackPL { }
-    property bool   running: visible
+    property bool   running: visible || keepAliveBackground
     property int    screenHeight: height
     property bool   screenLarge: false
     property int    screenWidth: width
-    property bool   keepAlive: false // not used - desktop is not expected to be falling asleep
+    property bool   keepAlive: false           // not used
+    property bool   keepAliveBackground: false // not used
 
     // hide from Kirigami
     default property var _content

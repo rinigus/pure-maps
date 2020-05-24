@@ -44,6 +44,7 @@ DEFAULTS = {
     "follow_me_transport_mode": "foot",
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
+    "keep_alive_background": "never",
     # "none", "car", "bicycle", "foot"
     "map_matching_when_idle": "none",
     "map_matching_when_navigating": False,
