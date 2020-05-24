@@ -68,7 +68,7 @@ QtObject {
         for (var i=0; i < _stack.length; i++) {
             // console.log('Restoring: ' + _stack[i][0] + ' current ' + _current);
             if (_stack[i][0]["page"] === _current) found = true;
-            app.pages.push(_stack[i][0]["page"], {}, !found);
+            app.pages.push(_stack[i][0]["page"], {}, !found && _current != null);
             // console.log('Current page found ' + found)
             for (var j=1; j < _stack[i].length; j++) {
                 // console.log('Restoring attached: ' + _stack[i][j]);
