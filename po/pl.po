@@ -1767,7 +1767,7 @@ msgstr "Inne"
 
 #: qml/SharePage.qml:97
 msgid "Add address"
-msgstr ""
+msgstr "Dodaj adres"
 
 #: qml/SharePage.qml:106
 msgid "Add link to OpenStreetMaps"
