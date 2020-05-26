@@ -212,18 +212,22 @@ endif
 
 platform-qtcontrols:
 	rm qml/platform || true
+	rm -rf ~/.cache/pure-maps/pure-maps/qmlcache || true
 	ln -s platform.qtcontrols qml/platform
 
 platform-kirigami:
 	rm qml/platform || true
+	rm -rf ~/.cache/pure-maps/pure-maps/qmlcache || true
 	ln -s platform.kirigami qml/platform
 
 platform-silica:
 	rm qml/platform || true
+	rm -rf ~/.cache/pure-maps/pure-maps/qmlcache || true
 	ln -s platform.silica qml/platform
 
 platform-ubports:
 	rm qml/platform || true
+	rm -rf ~/.cache/pure-maps/pure-maps/qmlcache || true
 	ln -s platform.ubports qml/platform
 
 pot:
