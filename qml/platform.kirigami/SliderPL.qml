@@ -22,8 +22,10 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.4 as Kirigami
 
 Item {
-    implicitHeight: childrenRect.height
-    Kirigami.FormData.buddyFor: valTxt
+    implicitHeight: val.height +
+                    styler.themeFontSizeLarge + styler.themePaddingSmall +
+                    desc.height + desc.anchors.topMargin
+    Kirigami.FormData.buddyFor: val
     Kirigami.FormData.label: label
     Layout.fillWidth: true
     Layout.preferredWidth: parent.width
@@ -42,7 +44,7 @@ Item {
         id: lab
         anchors.left: parent.left
         anchors.leftMargin: styler.themeHorizontalPageMargin
-        anchors.top: parent.top
+        anchors.verticalCenter: val.verticalCenter
         height: inForm ? 0 : implicitHeight
         width: inForm ? 0 : implicitWidth
         text: !inForm ? label : ""
@@ -51,21 +53,21 @@ Item {
 
     Slider {
         id: val
-        anchors.left: inForm ? undefined : lab.right
+        anchors.left: inForm ? parent.left : lab.right
         anchors.leftMargin: styler.themePaddingMedium
-        anchors.verticalCenter: valTxt.verticalCenter
-        font.pixelSize: styler.themeFontSizeMedium
-        width: Math.max(valTxt.width*2,
-                        parent.width - 2*(styler.themePaddingMedium+styler.themeHorizontalPageMargin) -
-                        lab.width - valTxt.width)
+        anchors.right: parent.right
+        anchors.rightMargin: styler.themeHorizontalPageMargin
+        anchors.top: parent.top
+        anchors.topMargin: styler.themeFontSizeSmall + styler.themePaddingMedium
     }
 
     Label {
         id: valTxt
-        anchors.left: val.right
-        anchors.leftMargin: styler.themePaddingMedium
-        anchors.baseline: inForm ? undefined : lab.baseline
+        anchors.bottom: val.top
+        anchors.bottomMargin: val.pressed ? styler.themePaddingSmall : 0
+        x: val.x + val.handle.x + val.handle.width/2 - width/2
         text: valueText.toFixed(valueTextDecimalPlaces)
+        font.pixelSize: val.pressed ? styler.themeFontSizeLarge : styler.themeFontSizeMedium
     }
 
     Label {

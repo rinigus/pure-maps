@@ -20,7 +20,9 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 
 Item {
-    height: childrenRect.height
+    height: val.height +
+            styler.themeFontSizeLarge + styler.themePaddingSmall +
+            desc.height + desc.anchors.topMargin
 
     property alias description: desc.text
     property alias label: lab.text
@@ -35,26 +37,26 @@ Item {
         id: lab
         anchors.left: parent.left
         anchors.leftMargin: styler.themeHorizontalPageMargin
-        anchors.top: parent.top
+        anchors.verticalCenter: val.verticalCenter
     }
 
     Slider {
         id: val
         anchors.left: lab.right
         anchors.leftMargin: styler.themePaddingMedium
-        anchors.verticalCenter: lab.verticalCenter
-        font.pixelSize: styler.themeFontSizeMedium
-        width: Math.max(valTxt.width*2,
-                        parent.width - 2*(styler.themePaddingMedium+styler.themeHorizontalPageMargin) -
-                        lab.width - valTxt.width)
+        anchors.right: parent.right
+        anchors.rightMargin: styler.themeHorizontalPageMargin
+        anchors.top: parent.top
+        anchors.topMargin: styler.themeFontSizeSmall + styler.themePaddingMedium
     }
 
     Label {
         id: valTxt
-        anchors.left: val.right
-        anchors.leftMargin: styler.themePaddingMedium
-        anchors.baseline: lab.baseline
+        anchors.bottom: val.top
+        anchors.bottomMargin: val.pressed ? styler.themePaddingSmall : 0
+        x: val.x + val.handle.x + val.handle.width/2 - width/2
         text: valueText.toFixed(valueTextDecimalPlaces)
+        font.pixelSize: val.pressed ? styler.themeFontSizeLarge : styler.themeFontSizeMedium
     }
 
     Label {
