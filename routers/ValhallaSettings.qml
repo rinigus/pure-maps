@@ -22,7 +22,6 @@ import "../qml/platform"
 FormLayoutPL {
     id: settingsBlock
     spacing: styler.themePaddingLarge
-    width: parent.width
 
     property bool   full: true
     property string router

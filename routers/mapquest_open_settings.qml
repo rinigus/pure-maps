@@ -20,7 +20,6 @@ import QtQuick 2.0
 import "../qml/platform"
 
 FormLayoutPL {
-
     property bool full: true
 
     ComboBoxPL {

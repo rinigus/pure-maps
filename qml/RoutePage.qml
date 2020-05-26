@@ -378,10 +378,6 @@ PagePL {
             }
 
             FormLayoutPL {
-                anchors.left: parent.left
-                anchors.leftMargin: styler.themeHorizontalPageMargin
-                anchors.right: parent.right
-                anchors.rightMargin: styler.themeHorizontalPageMargin
                 spacing: styler.themePaddingMedium
 
                 ComboBoxPL {

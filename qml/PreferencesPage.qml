@@ -39,7 +39,6 @@ PagePL {
                     width: sectionGeneral.width
                     FormLayoutPL {
                         spacing: styler.themePaddingMedium
-                        width: sectionGeneral.width
 
                         ComboBoxPL {
                             id: unitsComboBox
@@ -186,6 +185,7 @@ PagePL {
                             text: app.tr("Autocomplete while searching")
                             onCheckedChanged: app.conf.set("auto_complete_geo", checked)
                         }
+
                     }
 
                     Spacer {
@@ -214,7 +214,6 @@ PagePL {
 
                     FormLayoutPL {
                         spacing: styler.themePaddingMedium
-                        width: parent.width
 
                         ComboBoxPL {
                             description: app.tr("Only applies when Pure Maps is active. When minimized, screensaver " +
@@ -334,7 +333,6 @@ PagePL {
 
                     FormLayoutPL {
                         spacing: styler.themePaddingMedium
-                        width: parent.width
                         Repeater {
                             delegate: TextFieldPL {
                                 description: model.description
@@ -372,7 +370,6 @@ PagePL {
                 title: app.tr("Exploring")
                 content.sourceComponent: FormLayoutPL {
                     spacing: styler.themePaddingMedium
-                    width: sectionExplore.width
 
                     ComboBoxPL {
                         id: mapmatchingComboBox
@@ -497,7 +494,6 @@ PagePL {
 
                     FormLayoutPL {
                         spacing: styler.themePaddingMedium
-                        width: parent.width
                         ComboBoxPL {
                             id: voiceGenderComboBox
                             description: app.tr("Preferred gender for voice navigation. Only supported by some engines and languages.")
@@ -722,9 +718,9 @@ PagePL {
             ExpandingSectionPL {
                 id: sectionAutoZoom
                 title: app.tr("Zoom")
-                content.sourceComponent: FormLayoutPL {
+                content.sourceComponent: Column {
                     spacing: styler.themePaddingMedium
-                    width: sectionAutoZoom.width
+                    width: sectionGeneral.width
 
                     ListItemLabel {
                         text: app.tr("Map zoom level can be adjusted automatically according to your speed. " +
@@ -733,31 +729,35 @@ PagePL {
                         wrapMode: Text.WordWrap
                     }
 
-                    SliderPL {
-                        description: app.tr("Maximal zoom level that is going to be used " +
-                                            "in the automatic adjustment of the zoom.")
-                        label: app.tr("Maximal zoom level")
-                        maximumValue: 20.0
-                        minimumValue: 10.0
-                        stepSize: 0.1
-                        value: app.conf.get("map_zoom_auto_zero_speed_z")
-                        valueText: value
-                        width: parent.width
-                        onValueChanged: app.conf.set("map_zoom_auto_zero_speed_z", value)
-                    }
+                    FormLayoutPL {
+                        spacing: styler.themePaddingMedium
 
-                    SliderPL {
-                        description: app.tr("Zoom level will be adjusted to have the same " +
-                                            "map height as the distance that is " +
-                                            "covered by you in the given amount of seconds.")
-                        label: app.tr("Time range, s")
-                        maximumValue: 120.0
-                        minimumValue: 5.0
-                        stepSize: 1.0
-                        value: app.conf.get("map_zoom_auto_time")
-                        valueText: value
-                        width: parent.width
-                        onValueChanged: app.conf.set("map_zoom_auto_time", value)
+                        SliderPL {
+                            description: app.tr("Maximal zoom level that is going to be used " +
+                                                "in the automatic adjustment of the zoom.")
+                            label: app.tr("Maximal zoom level")
+                            maximumValue: 20.0
+                            minimumValue: 10.0
+                            stepSize: 0.1
+                            value: app.conf.get("map_zoom_auto_zero_speed_z")
+                            valueText: value
+                            width: parent.width
+                            onValueChanged: app.conf.set("map_zoom_auto_zero_speed_z", value)
+                        }
+
+                        SliderPL {
+                            description: app.tr("Zoom level will be adjusted to have the same " +
+                                                "map height as the distance that is " +
+                                                "covered by you in the given amount of seconds.")
+                            label: app.tr("Time range, s")
+                            maximumValue: 120.0
+                            minimumValue: 5.0
+                            stepSize: 1.0
+                            value: app.conf.get("map_zoom_auto_time")
+                            valueText: value
+                            width: parent.width
+                            onValueChanged: app.conf.set("map_zoom_auto_time", value)
+                        }
                     }
 
                     Spacer {
@@ -786,7 +786,6 @@ PagePL {
 
                     FormLayoutPL {
                         spacing: styler.themePaddingMedium
-                        width: parent.width
                         ComboBoxPL {
                             id: languageComboBox
                             currentIndex: 0
