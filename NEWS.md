@@ -1,3 +1,21 @@
+2020-05-27: Pure Maps 1.27
+==========================
+
+* Add support for compass
+* Correct for magnetic declination when using compass
+* Add support for navigation without screen
+* Rearrange preferences page
+* [ubports] Add support for GPX loading [StefWe]
+* [ubports] Update build config [jonnius]
+* [ubports] Packaging and documentation updates [jonnius]
+* [kirigami] Move main menu drawer to the right
+* [kirigami] Add support for dark themes
+* [kirigami,qtcontrols] Make slider touchscreen friendly
+* [kirigami] Disable wide layout in forms
+* [silica] Switch to KeepAlive 1.2
+* Bugfixes, smaller adjustments
+* Update translations
+
 2019-10-04: Pure Maps 1.26
 ==========================
 

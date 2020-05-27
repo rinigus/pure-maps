@@ -38,6 +38,26 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.27.0" date="2020-05-27">
+     <description>
+       <ul>
+         <li>Add support for compass</li>
+         <li>Correct for magnetic declination when using compass</li>
+         <li>Add support for navigation without screen</li>
+         <li>Rearrange preferences page</li>
+         <li>[ubports] Add support for GPX loading [StefWe]</li>
+         <li>[ubports] Update build config [jonnius]</li>
+         <li>[ubports] Packaging and documentation updates [jonnius]</li>
+         <li>[kirigami] Move main menu drawer to the right</li>
+         <li>[kirigami] Add support for dark themes</li>
+         <li>[kirigami,qtcontrols] Make slider touchscreen friendly</li>
+         <li>[kirigami] Disable wide layout in forms</li>
+         <li>[silica] Switch to KeepAlive 1.2</li>
+         <li>Bugfixes, smaller adjustments</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.26.2" date="2020-02-08">
      <description>
        <ul>

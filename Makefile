@@ -2,7 +2,7 @@
 
 NAME       = pure-maps
 FULLNAME   = $(NAME)
-VERSION    = 1.26.2
+VERSION    = 1.27.0
 RELEASE    = $(NAME)-$(VERSION)
 DESTDIR    =
 PREFIX     = /usr
