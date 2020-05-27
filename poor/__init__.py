@@ -71,6 +71,7 @@ assert http
 assert i18n
 assert KeyStore
 assert LOCALE_DIR
+assert MagField
 assert Map
 assert MapManager
 assert Narrative
