@@ -14,7 +14,7 @@
 * [kirigami] Disable wide layout in forms
 * [silica] Switch to KeepAlive 1.2
 * Bugfixes, smaller adjustments
-* Update translations
+* [1.27.0, 1.27.1] Update translations
 
 2019-10-04: Pure Maps 1.26
 ==========================
