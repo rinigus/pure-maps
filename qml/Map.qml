@@ -32,8 +32,8 @@ MapboxMap {
     metersPerPixelTolerance: Math.max(0.001, metersPerPixel*0.01) // 1 percent from the current value
     pitch: {
         if (app.mode === modes.explore || app.mode === modes.exploreRoute || format === "raster" || !map.autoRotate || !app.conf.tiltWhenNavigating) return 0;
-        if (app.mode === modes.navigate) return 60;
-        if (app.mode === modes.followMe) return 60;
+        if (app.mode === modes.navigate) return 50;
+        if (app.mode === modes.followMe) return 50;
         return 0; // should never get here
     }
     pixelRatio: styler.themePixelRatio * 1.5
