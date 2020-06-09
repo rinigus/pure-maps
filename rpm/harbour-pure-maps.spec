@@ -5,7 +5,7 @@
 %define __provides_exclude_from ^%{_datadir}/.*$
 
 Name: harbour-pure-maps
-Version: 1.27.1
+Version: 1.27.2
 Release: 1
 Summary: Maps and navigation
 License: GPLv3+

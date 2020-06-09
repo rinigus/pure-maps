@@ -15,6 +15,7 @@
 * [silica] Switch to KeepAlive 1.2
 * Bugfixes, smaller adjustments
 * [1.27.0, 1.27.1] Update translations
+* [1.27.2] Prepare for the update of Mapbox GL
 
 2019-10-04: Pure Maps 1.26
 ==========================
