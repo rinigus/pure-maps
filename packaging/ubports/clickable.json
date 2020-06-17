@@ -19,7 +19,7 @@
     "${QMLRUNNER_LIB_INSTALL_DIR}/usr/local/bin/qmlrunner"
   ],
   "install_lib": [
-    "${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/*.so*",
+    "${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/lib/*.so*",
     "${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
     "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
     "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/*.so*"
@@ -29,8 +29,20 @@
   },
   "libraries": {
     "mapbox-gl-native": {
-      "src_dir": "libs/mapbox-gl-native/mapbox-gl-native",
-      "builder": "qmake"
+      "builder": "cmake",
+      "build_args": [
+        "-DMBGL_WITH_QT=ON",
+        "-DMBGL_WITH_WERROR=OFF",
+        "-DMBGL_WITH_QT_HEADLESS=OFF",
+        "-DMBGL_WITH_QT_TEST=OFF",
+        "-DMBGL_WITH_QT_DEMO=OFF"
+      ],
+      "dependencies_ppa": [
+        "ppa:janisozaur/cmake-update"
+      ],
+      "dependencies_host": [
+        "cmake"
+      ]
     },
     "qmlrunner": {
       "builder": "qmake"
@@ -38,8 +50,9 @@
     "mapbox-gl-qml": {
       "builder": "qmake",
       "build_args": [
-        "INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/usr/include/${ARCH_TRIPLET}/qt5",
-        "LIBS+=-L${BUILD_DIR}/../mapbox-gl-native/install/usr/lib/${ARCH_TRIPLET}"
+        "INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/include",
+        "INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/include/qt5",
+        "LIBS+=-L${BUILD_DIR}/../mapbox-gl-native/install/lib"
       ]
     },
     "nemo-qml-plugin-dbus": {
@@ -51,7 +64,7 @@
       "dependencies_target": [
         "libtool",
         "libasound2-dev",
-	"libpcre2-dev"
+        "libpcre2-dev"
       ]
     },
     "picotts": {
