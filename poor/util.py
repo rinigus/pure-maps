@@ -170,72 +170,84 @@ def find_closest(xs, ys, x, y, subset=None):
             min_dist = dist
     return min_index
 
-def format_distance(meters, n=2, short=True):
+def format_decimal(value, n=0, lang=None):
+    """Format decimal to `n` significant digits"""
+    # All language designations as used by routers
+    decimal = {
+        "ca": ",",
+        "cs": ",",
+        "cz": ",",
+        "de": ",",
+        "de_DE": ",",
+        "en": ".",
+        "en_GB": ".",
+        "en_US": ".",
+        "en-US-x-pirate": ".",
+        "es": ",",
+        "es_ES": ",",
+        "es_MX": ".",
+        "fr": ",",
+        "fr_CA": ",",
+        "fr_FR": ",",
+        "hi": ".",
+        "it": ",",
+        "pt": ",",
+        "ru": ",",
+        "ru_RU": ",",
+        "sl": ",",
+        "sv": ",",
+        }
+
+    ndigits = n - get_ndigits(value)
+    ndigits = max(0, ndigits)
+    value = round(value, ndigits)
+    if lang is not None:
+        result = "{{:.{:d}f}}".format(max(0, ndigits)).format(value)
+        return result.replace('.', decimal.get(lang, '.'))
+    return locale.format("%.{:d}f".format(max(0, ndigits)), value)
+
+def format_distance(meters, n=2, short=True, lang=None):
     """Format `meters` to `n` significant digits and unit label."""
     if not math.isfinite(meters):
         return ""
     if poor.conf.units == "american":
         feet = 3.28084 * meters
-        return format_distance_american(feet, n, short)
+        return format_distance_american(feet, n, short, lang)
     if poor.conf.units == "british":
         yards = 1.09361 * meters
-        return format_distance_british(yards, n, short)
-    return format_distance_metric(meters, n, short)
+        return format_distance_british(yards, n, short, lang)
+    return format_distance_metric(meters, n, short, lang)
 
-def format_distance_american(feet, n=2, short=True):
+def format_distance_american(feet, n=2, short=True, lang=None):
     """Format `feet` to `n` significant digits and unit label."""
     if (n > 1 and feet >= 1000) or feet >= 5280:
-        distance = feet / 5280
-        ndigits = n - get_ndigits(distance)
-        ndigits = max(0, ndigits)
-        distance = round(distance, ndigits)
-        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        distance = format_decimal(feet / 5280, n, lang)
         units = _("mi") if short else _("miles")
         return "{distance} {units}".format(**locals())
     else:
-        distance = feet
-        ndigits = n - get_ndigits(distance)
-        ndigits = min(0, ndigits)
-        distance = round(distance, ndigits)
-        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        distance = format_decimal(feet, n, lang)
         units = _("ft") if short else _("feet")
         return "{distance} {units}".format(**locals())
 
-def format_distance_british(yards, n=2, short=True):
+def format_distance_british(yards, n=2, short=True, lang=None):
     """Format `yards` to `n` significant digits and unit label."""
     if (n > 1 and yards >= 400) or yards >= 1760:
-        distance = yards / 1760
-        ndigits = n - get_ndigits(distance)
-        ndigits = max(0, ndigits)
-        distance = round(distance, ndigits)
-        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        distance = format_decimal(yards / 1760, n, lang)
         units = _("mi") if short else _("miles")
         return "{distance} {units}".format(**locals())
     else:
-        distance = yards
-        ndigits = n - get_ndigits(distance)
-        ndigits = min(0, ndigits)
-        distance = round(distance, ndigits)
-        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        distance = format_decimal(yards, n, lang)
         units = _("yd") if short else _("yards")
         return "{distance} {units}".format(**locals())
 
-def format_distance_metric(meters, n=2, short=True):
+def format_distance_metric(meters, n=2, short=True, lang=None):
     """Format `meters` to `n` significant digits and unit label."""
     if meters >= 1000:
-        distance = meters / 1000
-        ndigits = n - get_ndigits(distance)
-        ndigits = max(0, ndigits)
-        distance = round(distance, ndigits)
-        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        distance = format_decimal(meters / 1000, n, lang)
         units = _("km") if short else _("kilometers")
         return "{distance} {units}".format(**locals())
     else:
-        distance = meters
-        ndigits = n - get_ndigits(distance)
-        ndigits = min(0, ndigits)
-        distance = round(distance, ndigits)
-        distance = "{{:.{:d}f}}".format(max(0, ndigits)).format(distance)
+        distance = format_decimal(meters, n, lang)
         units = _("m") if short else _("meters")
         return "{distance} {units}".format(**locals())
 
@@ -483,7 +495,7 @@ def read_gpx(path):
               file=sys.stderr)
         raise # Exception
     return x, y
-    
+
 def read_json(path):
     """Read data from JSON file at `path`."""
     try:

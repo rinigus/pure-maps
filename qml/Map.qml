@@ -365,6 +365,7 @@ MapboxMap {
             "x": route.x,
             "y": route.y
         };
+        py.call("poor.app.narrative.set_language", [route.language || "en"], null);
         py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);
         py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
             map.hasRoute = true;
@@ -535,7 +536,7 @@ MapboxMap {
     function initVoiceNavigation() {
         // Initialize a TTS engine for the current routing instructions.
         if (app.conf.voiceNavigation) {
-            var args = [map.route.language, app.conf.voiceGender];
+            var args = [app.conf.voiceGender];
             py.call_sync("poor.app.narrative.set_voice", args);
             var engine = py.evaluate("poor.app.narrative.voice_engine");
             if (engine) {
@@ -544,7 +545,7 @@ MapboxMap {
             } else
                 notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"), "mapVoice");
         } else {
-            py.call_sync("poor.app.narrative.set_voice", [null, null]);
+            py.call_sync("poor.app.narrative.unset_voice", []);
         }
     }
 

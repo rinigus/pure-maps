@@ -127,7 +127,7 @@ class Narrative:
         """Return `text` formatted as a verbal alert."""
         dist_offset = max(dist_offset, time_offset * speed)
         distance = poor.util.round_distance(dist_offset, n=1)
-        distance = poor.util.format_distance(distance, short=False)
+        distance = poor.util.format_distance(distance, short=False, lang=self.language)
         return (__("In {distance}, {direction}", self.language)
                 .format(distance=distance, direction=text))
 
@@ -467,6 +467,10 @@ class Narrative:
                               if remove == i + 1 and i + 1 < len(self.verbals)
                               else -1)
 
+    def set_language(self, language):
+        """Set language to use for directions."""
+        self.language = language
+
     def set_maneuvers(self, maneuvers):
         """
         Set maneuver points and corresponding narrative.
@@ -609,10 +613,9 @@ class Narrative:
         # Remove the least important of overlapping prompts.
         self._remove_overlapping_verbals()
 
-    def set_voice(self, language, gender="male"):
+    def set_voice(self, gender="male"):
         """Set TTS engine and voice to use for directions."""
-        self.language = language
-        self.voice_generator.set_voice(language, gender)
+        self.voice_generator.set_voice(self.language, gender)
         # Generate standard messages.
         self.voice_std_prompts = {
             "std:new route found": __("New route found", self.language),
@@ -637,6 +640,10 @@ class Narrative:
         self.verbals = []
         self.x = []
         self.y = []
+
+    def unset_voice(self):
+        """Set TTS engine and voice to use for directions."""
+        self.voice_generator.set_voice(None, None)
 
     @property
     def voice_engine(self):
