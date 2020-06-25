@@ -33,7 +33,7 @@ Item {
         id: compass
         // It makes sense to use compass on low speeds, with valid position and speed
         active: app.conf.compassUse && app.running && gps.ready &&
-                gps.position.speedValid && gps.position.speed < 2.78 // limiting to 10 km/h
+                gps.position.speedValid != null && gps.position.speedValid && gps.position.speed < 2.78 // limiting to 10 km/h
         alwaysOn: false
         skipDuplicates: true
     }
