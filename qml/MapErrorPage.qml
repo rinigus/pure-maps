@@ -47,6 +47,18 @@ PagePL {
         }
 
         ListItemLabel {
+            visible: app.conf.profile === "offline"
+            text: app.tr("You are using an offline profile. Make sure that you have OSM Scout Server installed " +
+                         "and running. Depending on your system, it is available either in application stores " +
+                         "(OpenRepos for Sailfish OS, OpenStore for UBPorts), Flathub, or your distribution. " +
+                         'See <a href="https://rinigus.github.io/osmscout-server">OSM Scout Server manual</a> for ' +
+                         "details.")
+            textFormat: Text.StyledText
+            truncMode: truncModes.none
+            wrapMode: Text.WordWrap
+        }
+
+        ListItemLabel {
             text: app.tr("Last error:\n%1").arg(lastError)
             truncMode: truncModes.none
             wrapMode: Text.WordWrap
