@@ -65,6 +65,7 @@ MapButton {
     }
 
     function setAutoRotate(ar) {
+        if (ar === map.autoRotate) return;
         map.autoRotate = ar;
         notification.flash(map.autoRotate ?
                                app.tr("Auto-rotate on") :
