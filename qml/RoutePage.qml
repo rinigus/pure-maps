@@ -217,12 +217,12 @@ PagePL {
                     onClicked: {
                         page.fromText = model.fromText;
                         if (page.fromText === app.tr("Current position"))
-                            page.from = map.getPosition();
+                            page.from = app.getPosition();
                         else page.from = [model.fromX, model.fromY];
 
                         page.toText = model.toText;
                         if (page.toText === app.tr("Current position"))
-                            page.to = map.getPosition();
+                            page.to = app.getPosition();
                         else page.to = [model.toX, model.toY];
                     }
                 }
@@ -423,7 +423,7 @@ PagePL {
     Component.onCompleted: {
         followMe = (app.mode === modes.followMe)
         if (!page.from) {
-            page.from = map.getPosition();
+            page.from = app.getPosition();
             page.fromText = app.tr("Current position");
         }
         updateRouter();
@@ -440,9 +440,9 @@ PagePL {
 
     onPageStatusActive: {
         if (page.fromText === app.tr("Current position"))
-            page.from = map.getPosition();
+            page.from = app.getPosition();
         if (page.toText === app.tr("Current position"))
-            page.to = map.getPosition();
+            page.to = app.getPosition();
         var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.results_qml_uri"));
         app.pushAttached(uri);
         // check if this page is made active for adjusting route settings

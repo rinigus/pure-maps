@@ -61,7 +61,7 @@ Item {
         onTriggered: {
             // Query maneuver narrative from Python and update status.
             if (_callRunning) return;
-            var coord = map.position.coordinate;
+            var coord = app.position.coordinate;
             var now = Date.now() / 1000;
             // avoid updating with invalid coordinate or too soon unless we don't have total data
             if (app.navigator.totalDist) {
@@ -70,8 +70,8 @@ Item {
                           coord === QtPositioning.coordinate() )) return;
             }
             _callRunning = true;
-            var accuracy = map.position.horizontalAccuracyValid ?
-                        map.position.horizontalAccuracy : null;
+            var accuracy = app.position.horizontalAccuracyValid ?
+                        app.position.horizontalAccuracy : null;
             var args = [coord.longitude, coord.latitude, accuracy, app.mode === modes.navigate];
             py.call("poor.app.narrative.get_display", args, function(status) {
                 navigator.updateStatus(status);

@@ -77,7 +77,6 @@ MapboxMap {
     property string format: ""
     property bool   hasRoute: false
     property var    maneuvers: []
-    property var    position: gps.position
     property bool   ready: false
     property var    route: {}
     property bool   showNavButtons: false
@@ -242,6 +241,9 @@ MapboxMap {
         // onTransportMode is not followed separately
         // as it is always set just before changing the
         // main mode
+        onPositionChanged: {
+            map.autoCenter && map.centerOnPosition();
+        }
     }
 
     Connections {
@@ -309,10 +311,6 @@ MapboxMap {
         map.updateMargins();
     }
 
-    onPositionChanged: {
-        map.autoCenter && map.centerOnPosition();
-    }
-
     onStyleJsonChanged: {
         py.call("poor.app.basemap.process_style", [styleJson],
                 function (style) {
@@ -377,8 +375,8 @@ MapboxMap {
     function centerOnPosition() {
         // Center on the current position.
         map.setCenter(
-                    map.position.coordinate.longitude,
-                    map.position.coordinate.latitude);
+                    app.position.coordinate.longitude,
+                    app.position.coordinate.latitude);
     }
 
     function clearRoute() {
@@ -472,11 +470,6 @@ MapboxMap {
         // Return coordinates of the route destination.
         var destination = map.route.coordinates[map.route.coordinates.length - 1];
         return [destination.longitude, destination.latitude];
-    }
-
-    function getPosition() {
-        // Return the coordinates of the current position.
-        return [map.position.coordinate.longitude, map.position.coordinate.latitude];
     }
 
     function initIcons() {

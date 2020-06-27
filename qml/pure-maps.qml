@@ -64,6 +64,7 @@ ApplicationWindowPL {
     property var    pois: null
     property bool   poiActive: false
     property bool   portrait: screenHeight >= screenWidth
+    property var    position: gps.position
     property var    remorse: null
     property int    rerouteConsecutiveErrors: 0
     property real   reroutePreviousTime: -1
@@ -181,6 +182,11 @@ ApplicationWindowPL {
         return "%1@%2.png".arg(name).arg(ratio);
     }
 
+    function getPosition() {
+        // Return the coordinates of the current position.
+        return [app.position.coordinate.longitude, app.position.coordinate.latitude];
+    }
+
     function hideMenu(menutext) {
         app._stackMain.keep = true;
         app._stackMain.setCurrent(app.pages.currentPage());
@@ -258,7 +264,7 @@ ApplicationWindowPL {
         app.rerouting = true;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
-        var args = [map.getPosition(), map.getDestination(), gps.direction];
+        var args = [app.getPosition(), map.getDestination(), gps.direction];
         py.call("poor.app.router.route", args, function(route) {
             if (Array.isArray(route) && route.length > 0)
                 // If the router returns multiple alternative routes,

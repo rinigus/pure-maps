@@ -133,7 +133,7 @@ PagePL {
 
     Component.onCompleted: {
         if (!page.near) {
-            page.near = map.getPosition();
+            page.near = app.getPosition();
             page.nearText = app.tr("Current position");
         }
     }
@@ -150,7 +150,7 @@ PagePL {
         }
 
         if (page.nearText === app.tr("Current position"))
-            page.near = map.getPosition();
+            page.near = app.getPosition();
         var resultPage = app.pages.nextPage();
         if (resultPage) resultPage.populated = false;
     }

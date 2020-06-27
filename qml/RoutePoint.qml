@@ -54,7 +54,7 @@ ValueButtonPL {
         dialog.accepted.connect(function() {
             query = dialog.query;
             if (dialog.selection.selectionType === dialog.selectionTypes.currentPosition) {
-                coordinates = map.getPosition();
+                coordinates = app.getPosition();
                 text = app.tr("Current position");
             }
             else if (dialog.selection.coordinate) {
