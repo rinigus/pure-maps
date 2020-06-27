@@ -103,7 +103,7 @@ Item {
         color: activeColors ? styler.themePrimaryColor : styler.themeHighlightColor
         horizontalAlignment: Text.AlignRight
         font.pixelSize: styler.themeFontSizeMedium
-        text: app.navigationStatus.destDist
+        text: app.navigator.destDist
         width: infoLayout.col2w
     }
     LabelPL {
@@ -113,7 +113,7 @@ Item {
         color: activeColors ? styler.themePrimaryColor : styler.themeHighlightColor
         horizontalAlignment: Text.AlignRight
         font.pixelSize: styler.themeFontSizeMedium
-        text: app.navigationStatus.destTime
+        text: app.navigator.destTime
         width: infoLayout.col3w
     }
 
@@ -137,7 +137,7 @@ Item {
         color: activeColors ? styler.themePrimaryColor : styler.themeHighlightColor
         horizontalAlignment: Text.AlignRight
         font.pixelSize: styler.themeFontSizeMedium
-        text: app.navigationStatus.totalDist
+        text: app.navigator.totalDist
         width: infoLayout.col2w
     }
     LabelPL {
@@ -147,7 +147,7 @@ Item {
         color: activeColors ? styler.themePrimaryColor : styler.themeHighlightColor
         horizontalAlignment: Text.AlignRight
         font.pixelSize: styler.themeFontSizeMedium
-        text: app.navigationStatus.totalTime
+        text: app.navigator.totalTime
         width: infoLayout.col3w
     }
 }

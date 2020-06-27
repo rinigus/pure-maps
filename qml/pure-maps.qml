@@ -59,7 +59,7 @@ ApplicationWindowPL {
     property bool   modalDialogBasemap: false
     property int    mode: modes.explore
     property bool   narrativePageSeen: false
-    property var    navigationStatus: NavigationStatus {}
+    property var    navigator: null
     property var    notification: null
     property var    pois: null
     property bool   poiActive: false
@@ -378,16 +378,6 @@ ApplicationWindowPL {
         for (var i = 1; i < arguments.length; i++)
             message = message.arg(arguments[i]);
         return message;
-    }
-
-    function updateNavigationStatus(status) {
-        // Update navigation status with data from Python backend.
-        app.navigationStatus.update(status);
-        if (app.navigationStatus.voiceUri && app.conf.voiceNavigation) {
-            sound.source = app.navigationStatus.voiceUri;
-            sound.play();
-        }
-        app.navigationStatus.reroute && app.rerouteMaybe();
     }
 
 }

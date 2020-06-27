@@ -44,6 +44,7 @@ PageEmptyPL {
     NavigationOverviewBlock { id: navigationOverview }
     NavigationSign { id: navigationSign }
     NavigationSpeedBlock { id: navigationSpeed }
+    Navigator { id: navigator }
     NorthArrow { id: northArrow }
     Notification { id: notification }
     InfoPanel { id: infoPanel }
@@ -123,6 +124,7 @@ PageEmptyPL {
     Component.onCompleted: {
         app.infoPanel = infoPanel;
         app.map = map;
+        app.navigator = navigator;
         app.notification = notification;
         app.pois = pois;
         app.remorse = remorse;

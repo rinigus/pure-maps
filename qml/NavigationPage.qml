@@ -111,7 +111,7 @@ PagePL {
                 color: styler.themeHighlightColor
                 height: styler.themePaddingSmall
                 radius: height / 2
-                width: app.navigationStatus.progress * progressTotal.width
+                width: app.navigator.progress * progressTotal.width
             }
         }
 
@@ -139,7 +139,7 @@ PagePL {
                 anchors.baseline: eta.baseline
                 color: styler.themeHighlightColor
                 horizontalAlignment: Text.AlignRight
-                text: app.navigationStatus.destEta
+                text: app.navigator.destEta
                 truncMode: truncModes.fade
                 width: parent.width / 3
             }

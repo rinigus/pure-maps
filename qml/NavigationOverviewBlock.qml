@@ -42,9 +42,9 @@ Item {
 
     property bool   showAtBottom: app.mode === modes.navigate
     property bool   condensedMode: app.mode === modes.navigate
-    property string destDist:  app.navigationStatus.destDist
-    property string destEta:   app.navigationStatus.destEta
-    property string destTime:  app.navigationStatus.destTime
+    property string destDist:  app.navigator.destDist
+    property string destEta:   app.navigator.destEta
+    property string destTime:  app.navigator.destTime
     // difference in height between main and button rectangles if the button
     // rectangle sticks out. zero otherwise. margins defined as in NavigationCurrentBlock
     property real   marginExtraLeft: 0
@@ -52,7 +52,7 @@ Item {
     property real   marginExtraRight: Math.max(button.height - mainRect.height, 0)
     property real   marginExtraRightSide: button.height > mainRect.height ?
                                               button.width + button.anchors.rightMargin : 0
-    property string totalDist: app.navigationStatus.totalDist
+    property string totalDist: app.navigator.totalDist
 
     Rectangle {
         id: mainRect
@@ -213,7 +213,7 @@ Item {
                 height: parent.height
                 opacity: 0.75
                 radius: height / 2
-                width: app.navigationStatus.progress * progressTotal.width
+                width: app.navigator.progress * progressTotal.width
             }
         }
     }
