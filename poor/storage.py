@@ -21,14 +21,6 @@ import os
 import poor
 
 
-def read_maneuvers(path=None):
-    """Read a list of maneuvers from JSON file at `path`."""
-    path = path or os.path.join(poor.CONFIG_HOME_DIR, "maneuvers.json")
-    if os.path.isfile(path):
-        with poor.util.silent(Exception, tb=True):
-            return poor.util.read_json(path)
-    return []
-
 def read_pois(path=None):
     """Read a list of POIs from JSON file at `path`."""
     path = path or os.path.join(poor.CONFIG_HOME_DIR, "pois.json")
@@ -44,12 +36,6 @@ def read_route(path=None):
         with poor.util.silent(Exception, tb=True):
             return poor.util.read_json(path)
     return {}
-
-def write_maneuvers(maneuvers, path=None):
-    """Write a list of maneuvers to JSON file at `path`."""
-    path = path or os.path.join(poor.CONFIG_HOME_DIR, "maneuvers.json")
-    with poor.util.silent(Exception, tb=True):
-        poor.util.write_json(maneuvers, path)
 
 def write_pois(pois, path=None):
     """Write a list of POIs to JSON file at `path`."""

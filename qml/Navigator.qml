@@ -102,7 +102,6 @@ Item {
 
     Component.onCompleted: {
         loadRoute();
-        loadManeuvers();
     }
 
     on_VoiceNavigationChanged: initVoiceNavigation()
@@ -133,7 +132,6 @@ Item {
         maneuvers.forEach(navigator._addManeuver);
         py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
         updateManeuvers();
-        saveManeuvers();
     }
 
     function addRoute(route, amend) {
@@ -166,7 +164,6 @@ Item {
         hasRoute = false;
         updateManeuvers();
         updateRoute();
-        saveManeuvers();
         saveRoute();
     }
 
@@ -208,13 +205,6 @@ Item {
         } else {
             py.call_sync("poor.app.narrative.unset_voice", []);
         }
-    }
-
-    function loadManeuvers() {
-        // Restore maneuver markers from JSON file.
-        py.call("poor.storage.read_maneuvers", [], function(data) {
-            data && data.length > 0 && addManeuvers(data);
-        });
     }
 
     function loadRoute() {
@@ -279,12 +269,6 @@ Item {
             if (Date.now() - app.reroutePreviousTime < interval) return;
             return reroute();
         }
-    }
-
-    function saveManeuvers() {
-        // Save maneuver markers to JSON file.
-        var data = Util.pointsToJson(navigator.maneuvers);
-        py.call_sync("poor.storage.write_maneuvers", [data]);
     }
 
     function saveRoute() {
