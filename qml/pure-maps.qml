@@ -69,7 +69,12 @@ ApplicationWindowPL {
     property var    rootPage: null
     // used to track current search and other operations with kept states (temp pois, for example)
     property string stateId
-    property string transportMode: ""
+    property string transportMode: {
+        if (app.mode === modes.followMe) return app.conf.followMeTransportMode;
+        if (app.mode === modes.exploreRoute || app.mode === modes.navigate)
+            return navigator.transportMode;
+        return "";
+    }
     property var    _stackMain: Stack {}
     property var    _stackNavigation: Stack {}
 
@@ -249,22 +254,18 @@ ApplicationWindowPL {
     }
 
     function setModeExplore() {
-        app.transportMode = "";
         app.mode = modes.explore;
     }
 
     function setModeExploreRoute() {
-        app.transportMode = navigator.route.mode;
         app.mode = modes.exploreRoute;
     }
 
     function setModeFollowMe() {
-        app.transportMode = app.conf.followMeTransportMode;
         app.mode = modes.followMe;
     }
 
     function setModeNavigate() {
-        app.transportMode = navigator.route.mode;
         app.mode = modes.navigate;
     }
 

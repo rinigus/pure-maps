@@ -45,6 +45,7 @@ Item {
     property var    street:    undefined
     property string totalDist: ""
     property string totalTime: ""
+    property string transportMode: route.mode ? route.mode : ""
     property string voiceUri:  ""
 
     property bool   _voiceNavigation: app.conf.voiceNavigation && app.mode === modes.navigate

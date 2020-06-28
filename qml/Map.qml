@@ -75,6 +75,12 @@ MapboxMap {
     }
     property string firstLabelLayer: ""
     property string format: ""
+    property string mapType: {
+        if (app.mode === modes.exploreRoute) return "preview";
+        else if (app.mode === modes.followMe || app.mode === modes.navigate)
+            return "guidance";
+        return "default";
+    }
     property bool   ready: false
     property bool   showNavButtons: false
 
@@ -235,9 +241,7 @@ MapboxMap {
         target: app
         onModeChanged: setMode()
         onPortraitChanged: map.updateMargins()
-        // onTransportMode is not followed separately
-        // as it is always set just before changing the
-        // main mode
+        onTransportMode: setBias()
         onPositionChanged: {
             map.autoCenter && map.centerOnPosition();
         }
@@ -312,9 +316,9 @@ MapboxMap {
 
     onErrorStringChanged: app.openMapErrorMessage(map.errorString)
 
-    onHeightChanged: {
-        map.updateMargins();
-    }
+    onHeightChanged: map.updateMargins();
+
+    onMapTypeChanged: setBias()
 
     onStyleJsonChanged: {
         py.call("poor.app.basemap.process_style", [styleJson],
@@ -474,6 +478,11 @@ MapboxMap {
         positionMarker.initIcons();
     }
 
+    function setBias() {
+        py.call("poor.app.basemap.set_bias", [{'type': map.mapType,
+                                                  'vehicle': app.transportMode}]);
+    }
+
     function setCenter(x, y) {
         // Center on the given coordinates.
         if (!x || !y) return;
@@ -495,7 +504,6 @@ MapboxMap {
         map.autoRotate = false;
         if (map.zoomLevel > 14) map.setZoomLevel(14);
         map.setScale(app.conf.get("map_scale"));
-        py.call("poor.app.basemap.set_bias", [{'type': 'default', 'vehicle': app.transportMode}]);
     }
 
     function setModeExploreRoute() {
@@ -505,8 +513,6 @@ MapboxMap {
         map.autoRotate = false;
         if (map.zoomLevel > 14) map.setZoomLevel(14);
         map.setScale(app.conf.get("map_scale"));
-        py.call("poor.app.basemap.set_bias", [{'type': 'preview',
-                                                  'vehicle': app.transportMode}]);
     }
 
     function setModeFollowMe() {
@@ -519,7 +525,6 @@ MapboxMap {
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
         if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
-        py.call("poor.app.basemap.set_bias", [{'type': 'guidance', 'vehicle': app.transportMode}]);
     }
 
     function setModeNavigate() {
@@ -532,7 +537,6 @@ MapboxMap {
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
         if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
-        py.call("poor.app.basemap.set_bias", [{'type': 'guidance', 'vehicle': app.transportMode}]);
     }
 
     function setScale(scale) {
