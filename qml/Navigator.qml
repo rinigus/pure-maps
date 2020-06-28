@@ -19,32 +19,42 @@
 import QtQuick 2.0
 import QtPositioning 5.3
 
+import "js/util.js" as Util
+
 Item {
     id: navigator
 
     property string destDist:  ""
-    property string destEta:  ""
+    property string destEta:   ""
     property string destTime:  ""
     property var    direction: undefined
+    property bool   hasRoute:  false
     property string icon:      ""
+    property var    maneuvers: []
     property string manDist:   ""
     property string manTime:   ""
     property string narrative: ""
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
     property real   progress:  0
-    property bool   reroute:   false
+    property int    rerouteConsecutiveErrors: 0
+    property real   reroutePreviousTime: -1
+    property int    rerouteTotalCalls: 0
+    property bool   rerouting: false
+    property var    route:     {}
     property var    sign:      undefined
     property var    street:    undefined
     property string totalDist: ""
     property string totalTime: ""
     property string voiceUri:  ""
 
+    property bool   _voiceNavigation: app.conf.voiceNavigation && app.mode === modes.navigate
+
     Timer {
         // timer for updating navigation instructions
         id: narrationTimer
         interval: app.mode === modes.navigate ? 1000 : 3000
         repeat: true
-        running: app.running && map.hasRoute
+        running: app.running && navigator.hasRoute
         triggeredOnStart: true
 
         property var coordPrev: QtPositioning.coordinate()
@@ -67,7 +77,7 @@ Item {
             if (app.navigator.totalDist) {
                 if (now - timePrev < 60 &&
                         ( (narrationTimer.coordPrev !== QtPositioning.coordinate() && coord.distanceTo(narrationTimer.coordPrev) < 10) ||
-                          coord === QtPositioning.coordinate() )) return;
+                         coord === QtPositioning.coordinate() )) return;
             }
             _callRunning = true;
             var accuracy = app.position.horizontalAccuracyValid ?
@@ -79,7 +89,7 @@ Item {
                     sound.source = navigator.voiceUri;
                     sound.play();
                 }
-                if (navigator.reroute) app.rerouteMaybe();
+                if (status.reroute) navigator.rerouteMaybe();
 
                 narrationTimer.coordPrev.longitude = coord.longitude;
                 narrationTimer.coordPrev.latitude = coord.latitude;
@@ -87,6 +97,77 @@ Item {
                 _callRunning = false;
             });
         }
+    }
+
+
+    Component.onCompleted: {
+        loadRoute();
+        loadManeuvers();
+    }
+
+    on_VoiceNavigationChanged: initVoiceNavigation()
+
+    function _addManeuver(maneuver) {
+        // Add new maneuver markers.
+        navigator.maneuvers.push({
+                                     "arrive_instruction": maneuver.arrive_instruction || "",
+                                     "depart_instruction": maneuver.depart_instruction || "",
+                                     "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
+                                     "duration": maneuver.duration || 0,
+                                     "icon": maneuver.icon || "flag",
+                                     // Needed to have separate layers via filters.
+                                     "name": maneuver.passive ? "passive" : "active",
+                                     "narrative": maneuver.narrative || "",
+                                     "passive": maneuver.passive || false,
+                                     "sign": maneuver.sign || undefined,
+                                     "street": maneuver.street|| undefined,
+                                     "travel_type": maneuver.travel_type || "",
+                                     "verbal_alert": maneuver.verbal_alert || "",
+                                     "verbal_post": maneuver.verbal_post || "",
+                                     "verbal_pre": maneuver.verbal_pre || "",
+                                 });
+    }
+
+    function addManeuvers(maneuvers) {
+        // Add new maneuver markers.
+        maneuvers.forEach(navigator._addManeuver);
+        py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
+        updateManeuvers();
+        saveManeuvers();
+    }
+
+    function addRoute(route, amend) {
+        // Add new route
+        clearRoute();
+        route.coordinates = route.x.map(function(value, i) {
+            return QtPositioning.coordinate(route.y[i], route.x[i]);
+        });
+        navigator.route = route;
+        py.call("poor.app.narrative.set_language", [route.language || "en"], null);
+        py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);
+        py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
+            navigator.hasRoute = true;
+        });
+        if (route.maneuvers !== undefined && route.maneuvers !== null) {
+            //navigator.route.maneuvers = route.maneuvers;
+            addManeuvers(route.maneuvers);
+        }
+        updateRoute();
+        saveRoute();
+        if (!amend) app.setModeExploreRoute();
+    }
+
+    function clearRoute() {
+        // Remove route
+        maneuvers = [];
+        route = {};
+        py.call("poor.app.narrative.unset", [], null);
+        clearStatus();
+        hasRoute = false;
+        updateManeuvers();
+        updateRoute();
+        saveManeuvers();
+        saveRoute();
     }
 
     function clearStatus() {
@@ -99,12 +180,126 @@ Item {
         manTime   = "";
         narrative = "";
         progress  = 0;
-        reroute   = false;
         sign      = undefined;
         street    = undefined;
         totalDist = "";
         totalTime = "";
         voiceUri  = "";
+    }
+
+    function getDestination() {
+        // Return coordinates of the route destination.
+        var destination = navigator.route.coordinates[navigator.route.coordinates.length - 1];
+        return [destination.longitude, destination.latitude];
+    }
+
+    function initVoiceNavigation() {
+        // Initialize a TTS engine for the current routing instructions.
+        if (_voiceNavigation) {
+            var args = [app.conf.voiceGender];
+            py.call_sync("poor.app.narrative.set_voice", args);
+            var engine = py.evaluate("poor.app.narrative.voice_engine");
+            if (engine) {
+                notification.flash(app.tr("Voice navigation on"), "navVoice");
+                app.playMaybe("std:starting navigation");
+            } else
+                notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"),
+                                   "navVoice");
+        } else {
+            py.call_sync("poor.app.narrative.unset_voice", []);
+        }
+    }
+
+    function loadManeuvers() {
+        // Restore maneuver markers from JSON file.
+        py.call("poor.storage.read_maneuvers", [], function(data) {
+            data && data.length > 0 && addManeuvers(data);
+        });
+    }
+
+    function loadRoute() {
+        // Restore route polyline from JSON file.
+        py.call("poor.storage.read_route", [], function(data) {
+            data.x && data.x.length > 0 && addRoute(data);
+        });
+    }
+
+    function reroute() {
+        // Find a new route from the current position to the existing destination.
+        if (rerouting) return;
+        var notifyId = "app reroute";
+        app.notification.hold(app.tr("Rerouting"), notifyId);
+        app.playMaybe("std:rerouting");
+        rerouting = true;
+        // Note that rerouting does not allow us to relay params to the router,
+        // i.e. ones saved only temporarily as page.params in RoutePage.qml.
+        var args = [app.getPosition(), getDestination(), gps.direction];
+        py.call("poor.app.router.route", args, function(route) {
+            if (Array.isArray(route) && route.length > 0)
+                // If the router returns multiple alternative routes,
+                // always reroute using the first one.
+                route = route[0];
+            if (route && route.error && route.message) {
+                app.notification.flash(app.tr("Rerouting failed: %1").arg(route.message), notifyId);
+                app.playMaybe("std:rerouting failed");
+                rerouteConsecutiveErrors++;
+            } else if (route && route.x && route.x.length > 0) {
+                app.notification.flash(app.tr("New route found"), notifyId);
+                app.playMaybe("std:new route found");
+                addRoute(route, true);
+                rerouteConsecutiveErrors = 0;
+            } else {
+                app.notification.flash(app.tr("Rerouting failed"), notifyId);
+                app.playMaybe("std:rerouting failed");
+                rerouteConsecutiveErrors++;
+            }
+            reroutePreviousTime = Date.now();
+            rerouteTotalCalls++;
+            rerouting = false;
+        });
+    }
+
+    function rerouteMaybe() {
+        // Find a new route if conditions are met.
+        if (!app.conf.reroute) return;
+        if (app.mode !== modes.navigate) return;
+        if (!gps.position.horizontalAccuracyValid) return;
+        if (gps.position.horizontalAccuracy > 100) return;
+        if (!py.evaluate("poor.app.router.can_reroute")) return;
+        if (py.evaluate("poor.app.router.offline")) {
+            if (Date.now() - app.reroutePreviousTime < 5000) return;
+            return reroute();
+        } else {
+            // Limit the total amount and frequency of rerouting for online routers
+            // to avoid an excessive amount of API calls (causing data traffic and
+            // costs) in some special case where the router returns bogus results
+            // and the user is not able to manually intervene.
+            if (rerouteTotalCalls > 50) return;
+            var interval = 5000 * Math.pow(2, Math.min(4, rerouteConsecutiveErrors));
+            if (Date.now() - app.reroutePreviousTime < interval) return;
+            return reroute();
+        }
+    }
+
+    function saveManeuvers() {
+        // Save maneuver markers to JSON file.
+        var data = Util.pointsToJson(navigator.maneuvers);
+        py.call_sync("poor.storage.write_maneuvers", [data]);
+    }
+
+    function saveRoute() {
+        // Save route polyline to JSON file.
+        var data = Util.polylineToJson(navigator.route);
+        py.call_sync("poor.storage.write_route", [data]);
+    }
+
+    function updateManeuvers() {
+        map.updateManeuvers();
+        app.narrativePageSeen = false;
+    }
+
+    function updateRoute() {
+        map.updateRoute();
     }
 
     function updateStatus(data) {
@@ -120,7 +315,8 @@ Item {
         manTime   = data.man_time   || "";
         narrative = data.narrative  || "";
         progress  = data.progress   || 0;
-        reroute   = data.reroute    || false;
+        // reroute checked in narration timer and clashes with the method name.
+        // no need to set it as a property
         sign      = data.sign       || undefined;
         street    = data.street     || undefined;
         totalDist = data.total_dist || "";

@@ -123,8 +123,8 @@ PagePL {
             Repeater {
                 id: routeRepeater
                 model: items.length
-                property var items: map.route && map.route.provider ?
-                                        py.call_sync("poor.app.get_attribution", ["router", [map.route.provider]]) : []
+                property var items: navigator.route && navigator.route.provider ?
+                                        py.call_sync("poor.app.get_attribution", ["router", [navigator.route.provider]]) : []
                 delegate: ListItemPL {
                     id: listItem
                     contentHeight: styler.themeItemSizeSmall

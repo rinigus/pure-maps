@@ -56,7 +56,7 @@ PagePL {
                 icon.iconName: styler.iconRefresh
                 text: app.tr("Reroute")
                 onClicked: {
-                    app.reroute();
+                    navigator.reroute();
                     app.hideNavigationPages();
                 }
             }
@@ -69,7 +69,7 @@ PagePL {
                 text: app.tr("Clear")
                 onClicked: {
                     app.setModeExplore();
-                    map.clearRoute();
+                    navigator.clearRoute();
                     app.showMap();
                 }
             }

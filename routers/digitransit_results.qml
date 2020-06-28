@@ -184,10 +184,9 @@ PagePL {
 
                 onClicked: {
                     app.hideMenu(app.tr("Route to %1", page.toText));
-                    map.addRoute(listItem.result);
+                    navigator.addRoute(listItem.result);
                     pois.hide();
                     map.fitViewToRoute();
-                    map.addManeuvers(listItem.result.maneuvers);
                 }
 
             }

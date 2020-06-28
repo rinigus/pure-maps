@@ -61,9 +61,9 @@ indicator and handles passing data to the map or notification if no
 results found. If writing a router that returns alternative routes, this
 page can be used to list the routes and their properties.
 
-To display a route on the map, you'll want to call `map.addRoute` and
-`map.addManeuvers`. See the implementation of these functions in
-`qml/Map.qml` to understand which fields are expected in their
+To display a route on the map, you'll want to call
+`navigator.addRoute`. See the implementation of these functions in
+`qml/Navigator.qml` to understand which fields are expected in their
 arguments.
 
 ## Tips

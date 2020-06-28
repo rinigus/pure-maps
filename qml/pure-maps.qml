@@ -66,10 +66,6 @@ ApplicationWindowPL {
     property bool   portrait: screenHeight >= screenWidth
     property var    position: gps.position
     property var    remorse: null
-    property int    rerouteConsecutiveErrors: 0
-    property real   reroutePreviousTime: -1
-    property int    rerouteTotalCalls: 0
-    property bool   rerouting: false
     property var    rootPage: null
     // used to track current search and other operations with kept states (temp pois, for example)
     property string stateId
@@ -135,20 +131,6 @@ ApplicationWindowPL {
     onNarrativePageSeenChanged: {
         if (!narrativePageSeen)
             app._stackNavigation.keep = false; // drops navigation pagestack if a new route is obtained
-    }
-
-    function clear(confirm) {
-        if (confirm) {
-            app.remorse.execute(app.tr("Clearing map"),
-                                function() {
-                                    app.clear();
-                                });
-            return;
-        }
-
-        // Remove all markers from the map.
-        pois.clear();
-        map.clearRoute();
     }
 
     function createObject(page, options, parent) {
@@ -255,64 +237,6 @@ ApplicationWindowPL {
         return app._stackMain.pushAttached(pagefile, options);
     }
 
-    function reroute() {
-        // Find a new route from the current position to the existing destination.
-        if (app.rerouting) return;
-        var notifyId = "app reroute";
-        app.notification.hold(app.tr("Rerouting"), notifyId);
-        app.playMaybe("std:rerouting");
-        app.rerouting = true;
-        // Note that rerouting does not allow us to relay params to the router,
-        // i.e. ones saved only temporarily as page.params in RoutePage.qml.
-        var args = [app.getPosition(), map.getDestination(), gps.direction];
-        py.call("poor.app.router.route", args, function(route) {
-            if (Array.isArray(route) && route.length > 0)
-                // If the router returns multiple alternative routes,
-                // always reroute using the first one.
-                route = route[0];
-            if (route && route.error && route.message) {
-                app.notification.flash(app.tr("Rerouting failed: %1").arg(route.message), notifyId);
-                app.playMaybe("std:rerouting failed");
-                app.rerouteConsecutiveErrors++;
-            } else if (route && route.x && route.x.length > 0) {
-                app.notification.flash(app.tr("New route found"), notifyId);
-                app.playMaybe("std:new route found");
-                map.addRoute(route, true);
-                map.addManeuvers(route.maneuvers);
-                app.rerouteConsecutiveErrors = 0;
-            } else {
-                app.notification.flash(app.tr("Rerouting failed"), notifyId);
-                app.playMaybe("std:rerouting failed");
-                app.rerouteConsecutiveErrors++;
-            }
-            app.reroutePreviousTime = Date.now();
-            app.rerouteTotalCalls++;
-            app.rerouting = false;
-        });
-    }
-
-    function rerouteMaybe() {
-        // Find a new route if conditions are met.
-        if (!app.conf.reroute) return;
-        if (app.mode !== modes.navigate) return;
-        if (!gps.position.horizontalAccuracyValid) return;
-        if (gps.position.horizontalAccuracy > 100) return;
-        if (!py.evaluate("poor.app.router.can_reroute")) return;
-        if (py.evaluate("poor.app.router.offline")) {
-            if (Date.now() - app.reroutePreviousTime < 5000) return;
-            return app.reroute();
-        } else {
-            // Limit the total amount and frequency of rerouting for online routers
-            // to avoid an excessive amount of API calls (causing data traffic and
-            // costs) in some special case where the router returns bogus results
-            // and the user is not able to manually intervene.
-            if (app.rerouteTotalCalls > 50) return;
-            var interval = 5000 * Math.pow(2, Math.min(4, app.rerouteConsecutiveErrors));
-            if (Date.now() - app.reroutePreviousTime < interval) return;
-            return app.reroute();
-        }
-    }
-
     function resetMenu() {
         app._stackMain.keep = false;
         app.stateId = "";
@@ -325,7 +249,7 @@ ApplicationWindowPL {
     }
 
     function setModeExploreRoute() {
-        app.transportMode = map.route.mode;
+        app.transportMode = navigator.route.mode;
         app.mode = modes.exploreRoute;
     }
 
@@ -335,7 +259,7 @@ ApplicationWindowPL {
     }
 
     function setModeNavigate() {
-        app.transportMode = map.route.mode;
+        app.transportMode = navigator.route.mode;
         app.mode = modes.navigate;
     }
 

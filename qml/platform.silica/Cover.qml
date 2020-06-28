@@ -26,7 +26,7 @@ CoverBackground {
     id: cover
 
     property bool active: status === Cover.Active
-    property bool showNarrative: app.initialized && app.conf.showNarrative && map.hasRoute
+    property bool showNarrative: app.initialized && app.conf.showNarrative && app.navigator.hasRoute
 
     Image {
         // Background icon
@@ -59,7 +59,7 @@ CoverBackground {
      */
 
     CoverActionList {
-        enabled: app.initialized && app.conf.showNarrative && map.hasRoute
+        enabled: app.initialized && app.conf.showNarrative && app.navigator.hasRoute
 
         CoverAction {
             iconSource: app.mode === modes.navigate ? "image://theme/icon-cover-pause" :
@@ -75,7 +75,7 @@ CoverBackground {
             iconSource: "image://theme/icon-cover-cancel"
             onTriggered: {
                 app.setModeExplore();
-                map.clearRoute();
+                navigator.clearRoute();
                 app.showMap();
             }
         }

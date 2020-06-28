@@ -75,10 +75,7 @@ MapboxMap {
     }
     property string firstLabelLayer: ""
     property string format: ""
-    property bool   hasRoute: false
-    property var    maneuvers: []
     property bool   ready: false
-    property var    route: {}
     property bool   showNavButtons: false
 
     readonly property var images: QtObject {
@@ -289,6 +286,8 @@ MapboxMap {
         map.initProperties();
         map.updatePois();
         map.updateMargins();
+        map.updateRoute();
+        map.updateManeuvers();
         map.setMode();
     }
 
@@ -318,78 +317,11 @@ MapboxMap {
                 });
     }
 
-    function _addManeuver(maneuver) {
-        // Add new maneuver marker to the map.
-        map.maneuvers.push({
-                               "arrive_instruction": maneuver.arrive_instruction || "",
-                               "depart_instruction": maneuver.depart_instruction || "",
-                               "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
-                               "duration": maneuver.duration || 0,
-                               "icon": maneuver.icon || "flag",
-                               // Needed to have separate layers via filters.
-                               "name": maneuver.passive ? "passive" : "active",
-                               "narrative": maneuver.narrative || "",
-                               "passive": maneuver.passive || false,
-                               "sign": maneuver.sign || undefined,
-                               "street": maneuver.street|| undefined,
-                               "travel_type": maneuver.travel_type || "",
-                               "verbal_alert": maneuver.verbal_alert || "",
-                               "verbal_post": maneuver.verbal_post || "",
-                               "verbal_pre": maneuver.verbal_pre || "",
-                           });
-    }
-
-    function addManeuvers(maneuvers) {
-        // Add new maneuver markers to the map.
-        maneuvers.forEach(map._addManeuver);
-        py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
-        map.updateManeuvers();
-        map.saveManeuvers();
-    }
-
-    function addRoute(route, amend) {
-        // Add new route polyline to the map.
-        map.clearRoute();
-        route.coordinates = route.x.map(function(value, i) {
-            return QtPositioning.coordinate(route.y[i], route.x[i]);
-        });
-        map.route = {
-            "coordinates": route.coordinates || [],
-            "language": route.language || "en",
-            "mode": route.mode || "car",
-            "provider": route.provider || "",
-            "x": route.x,
-            "y": route.y
-        };
-        py.call("poor.app.narrative.set_language", [route.language || "en"], null);
-        py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);
-        py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
-            map.hasRoute = true;
-        });
-        map.updateRoute();
-        map.saveRoute();
-        map.saveManeuvers();
-        if (!amend) app.setModeExploreRoute();
-    }
-
     function centerOnPosition() {
         // Center on the current position.
         map.setCenter(
                     app.position.coordinate.longitude,
                     app.position.coordinate.latitude);
-    }
-
-    function clearRoute() {
-        // Remove route polyline from the map.
-        map.maneuvers = [];
-        map.route = {};
-        py.call("poor.app.narrative.unset", [], null);
-        app.navigator.clearStatus();
-        map.hasRoute = false;
-        map.updateManeuvers();
-        map.updateRoute();
-        map.saveManeuvers();
-        map.saveRoute();
     }
 
     function configureLayers() {
@@ -463,13 +395,7 @@ MapboxMap {
         // Set center and zoom so that the whole route is visible.
         map.autoCenter = false;
         map.autoRotate = false;
-        map.fitView(map.route.coordinates);
-    }
-
-    function getDestination() {
-        // Return coordinates of the route destination.
-        var destination = map.route.coordinates[map.route.coordinates.length - 1];
-        return [destination.longitude, destination.latitude];
+        map.fitView(app.navigator.route.coordinates);
     }
 
     function initIcons() {
@@ -510,8 +436,6 @@ MapboxMap {
         map.autoRotate = app.conf.get("auto_rotate");
         var center = app.conf.get("center");
         map.setCenter(center[0], center[1]);
-        map.loadRoute();
-        map.loadManeuvers();
         map.ready = true;
     }
 
@@ -522,48 +446,6 @@ MapboxMap {
         map.addSourcePoints(map.sources.poisBookmarked, []);
         map.addSourceLine(map.sources.route, []);
         map.addSourcePoints(map.sources.maneuvers, []);
-    }
-
-    function initVoiceNavigation() {
-        // Initialize a TTS engine for the current routing instructions.
-        if (app.conf.voiceNavigation) {
-            var args = [app.conf.voiceGender];
-            py.call_sync("poor.app.narrative.set_voice", args);
-            var engine = py.evaluate("poor.app.narrative.voice_engine");
-            if (engine) {
-                notification.flash(app.tr("Voice navigation on"), "mapVoice");
-                app.playMaybe("std:starting navigation");
-            } else
-                notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"), "mapVoice");
-        } else {
-            py.call_sync("poor.app.narrative.unset_voice", []);
-        }
-    }
-
-    function loadManeuvers() {
-        // Restore maneuver markers from JSON file.
-        py.call("poor.storage.read_maneuvers", [], function(data) {
-            data && data.length > 0 && map.addManeuvers(data);
-        });
-    }
-
-    function loadRoute() {
-        // Restore route polyline from JSON file.
-        py.call("poor.storage.read_route", [], function(data) {
-            data.x && data.x.length > 0 && map.addRoute(data);
-        });
-    }
-
-    function saveManeuvers() {
-        // Save maneuver markers to JSON file.
-        var data = Util.pointsToJson(map.maneuvers);
-        py.call_sync("poor.storage.write_maneuvers", [data]);
-    }
-
-    function saveRoute() {
-        // Save route polyline to JSON file.
-        var data = Util.polylineToJson(map.route);
-        py.call_sync("poor.storage.write_route", [data]);
     }
 
     function setBasemap() {
@@ -644,7 +526,6 @@ MapboxMap {
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
         if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
-        map.initVoiceNavigation();
         py.call("poor.app.basemap.set_bias", [{'type': 'guidance', 'vehicle': app.transportMode}]);
     }
 
@@ -664,10 +545,9 @@ MapboxMap {
 
     function updateManeuvers() {
         // Update maneuver marker on the map.
-        var coords = Util.pluck(map.maneuvers, "coordinate");
-        var names  = Util.pluck(map.maneuvers, "name");
+        var coords = Util.pluck(app.navigator.maneuvers, "coordinate");
+        var names  = Util.pluck(app.navigator.maneuvers, "name");
         map.updateSourcePoints(map.sources.maneuvers, coords, names);
-        app.narrativePageSeen = false;
     }
 
     function updateMargins() {
@@ -707,8 +587,8 @@ MapboxMap {
 
     function updateRoute() {
         // Update route polyline on the map.
-        if (map.route.coordinates)
-            map.updateSourceLine(map.sources.route, map.route.coordinates);
+        if (app.navigator.route.coordinates)
+            map.updateSourceLine(map.sources.route, app.navigator.route.coordinates);
         else
             map.updateSourceLine(map.sources.route, []);
     }

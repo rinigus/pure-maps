@@ -418,7 +418,6 @@ PagePL {
                         onCheckedChanged: {
                             if (voiceNavigationSwitch.checked === app.conf.voiceNavigation) return;
                             app.conf.set("voice_navigation", voiceNavigationSwitch.checked);
-                            if (app.mode === modes.navigate) map.initVoiceNavigation();
                         }
                     }
 
