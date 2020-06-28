@@ -62,7 +62,7 @@ results found. If writing a router that returns alternative routes, this
 page can be used to list the routes and their properties.
 
 To display a route on the map, you'll want to call
-`navigator.addRoute`. See the implementation of these functions in
+`navigator.setRoute`. See the implementation of these functions in
 `qml/Navigator.qml` to understand which fields are expected in their
 arguments.
 

@@ -184,7 +184,7 @@ PagePL {
 
                 onClicked: {
                     app.hideMenu(app.tr("Route to %1", page.toText));
-                    navigator.addRoute(listItem.result);
+                    navigator.setRoute(listItem.result);
                     pois.hide();
                     map.fitViewToRoute();
                 }

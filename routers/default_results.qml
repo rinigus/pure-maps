@@ -80,7 +80,7 @@ PagePL {
                 // apply new route
                 app.hideMenu(app.tr("Route to %1", routePage.toText));
                 pois.hide();
-                navigator.addRoute(route);
+                navigator.setRoute(route);
                 map.fitViewToRoute();
                 if (app.isConvergent) {
                     page.loading = false;

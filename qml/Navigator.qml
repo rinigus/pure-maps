@@ -106,50 +106,6 @@ Item {
 
     on_VoiceNavigationChanged: initVoiceNavigation()
 
-    function addManeuvers(maneuvers) {
-        var m = maneuvers.map(function (maneuver) {
-            return {
-                "arrive_instruction": maneuver.arrive_instruction || "",
-                "depart_instruction": maneuver.depart_instruction || "",
-                "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
-                "duration": maneuver.duration || 0,
-                "icon": maneuver.icon || "flag",
-                // Needed to have separate layers via filters.
-                "name": maneuver.passive ? "passive" : "active",
-                "narrative": maneuver.narrative || "",
-                "passive": maneuver.passive || false,
-                "sign": maneuver.sign || undefined,
-                "street": maneuver.street|| undefined,
-                "travel_type": maneuver.travel_type || "",
-                "verbal_alert": maneuver.verbal_alert || "",
-                "verbal_post": maneuver.verbal_post || "",
-                "verbal_pre": maneuver.verbal_pre || "",
-            };
-        });
-        navigator.maneuvers = m;
-        py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
-    }
-
-    function addRoute(route, amend) {
-        // Add new route
-        clearRoute();
-        route.coordinates = route.x.map(function(value, i) {
-            return QtPositioning.coordinate(route.y[i], route.x[i]);
-        });
-        navigator.route = route;
-        py.call("poor.app.narrative.set_language", [route.language || "en"], null);
-        py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);
-        py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
-            navigator.hasRoute = true;
-        });
-        if (route.maneuvers !== undefined && route.maneuvers !== null) {
-            //navigator.route.maneuvers = route.maneuvers;
-            addManeuvers(route.maneuvers);
-        }
-        saveRoute();
-        if (!amend) app.setModeExploreRoute();
-    }
-
     function clearRoute() {
         // Remove route
         maneuvers = [];
@@ -203,7 +159,7 @@ Item {
     function loadRoute() {
         // Restore route polyline from JSON file.
         py.call("poor.storage.read_route", [], function(data) {
-            data.x && data.x.length > 0 && addRoute(data);
+            data.x && data.x.length > 0 && setRoute(data);
         });
     }
 
@@ -229,7 +185,7 @@ Item {
             } else if (route && route.x && route.x.length > 0) {
                 app.notification.flash(app.tr("New route found"), notifyId);
                 app.playMaybe("std:new route found");
-                addRoute(route, true);
+                setRoute(route, true);
                 rerouteConsecutiveErrors = 0;
             } else {
                 app.notification.flash(app.tr("Rerouting failed"), notifyId);
@@ -262,6 +218,50 @@ Item {
             if (Date.now() - app.reroutePreviousTime < interval) return;
             return reroute();
         }
+    }
+
+    function setManeuvers(maneuvers) {
+        var m = maneuvers.map(function (maneuver) {
+            return {
+                "arrive_instruction": maneuver.arrive_instruction || "",
+                "depart_instruction": maneuver.depart_instruction || "",
+                "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
+                "duration": maneuver.duration || 0,
+                "icon": maneuver.icon || "flag",
+                // Needed to have separate layers via filters.
+                "name": maneuver.passive ? "passive" : "active",
+                "narrative": maneuver.narrative || "",
+                "passive": maneuver.passive || false,
+                "sign": maneuver.sign || undefined,
+                "street": maneuver.street|| undefined,
+                "travel_type": maneuver.travel_type || "",
+                "verbal_alert": maneuver.verbal_alert || "",
+                "verbal_post": maneuver.verbal_post || "",
+                "verbal_pre": maneuver.verbal_pre || "",
+            };
+        });
+        navigator.maneuvers = m;
+        py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
+    }
+
+    function setRoute(route, amend) {
+        // Set new route
+        clearRoute();
+        route.coordinates = route.x.map(function(value, i) {
+            return QtPositioning.coordinate(route.y[i], route.x[i]);
+        });
+        navigator.route = route;
+        py.call("poor.app.narrative.set_language", [route.language || "en"], null);
+        py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);
+        py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
+            navigator.hasRoute = true;
+        });
+        if (route.maneuvers !== undefined && route.maneuvers !== null) {
+            //navigator.route.maneuvers = route.maneuvers;
+            setManeuvers(route.maneuvers);
+        }
+        saveRoute();
+        if (!amend) app.setModeExploreRoute();
     }
 
     function saveRoute() {
