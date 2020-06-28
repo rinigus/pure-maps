@@ -198,8 +198,10 @@ def format_decimal(value, n=0, lang=None):
         "sv": ",",
         }
 
-    ndigits = n - get_ndigits(value)
-    ndigits = max(0, ndigits)
+    if (n > 0):
+        ndigits = n - get_ndigits(value)
+    else:
+        ndigits = 0
     value = round(value, ndigits)
     if lang is not None:
         result = "{{:.{:d}f}}".format(max(0, ndigits)).format(value)
@@ -221,7 +223,7 @@ def format_distance(meters, n=2, short=True, lang=None):
 def format_distance_american(feet, n=2, short=True, lang=None):
     """Format `feet` to `n` significant digits and unit label."""
     if (n > 1 and feet >= 1000) or feet >= 5280:
-        distance = format_decimal(feet / 5280, n, lang)
+        distance = format_decimal(feet / 5280, 0, lang)
         units = _("mi") if short else _("miles")
         return "{distance} {units}".format(**locals())
     else:
@@ -232,7 +234,7 @@ def format_distance_american(feet, n=2, short=True, lang=None):
 def format_distance_british(yards, n=2, short=True, lang=None):
     """Format `yards` to `n` significant digits and unit label."""
     if (n > 1 and yards >= 400) or yards >= 1760:
-        distance = format_decimal(yards / 1760, n, lang)
+        distance = format_decimal(yards / 1760, 0, lang)
         units = _("mi") if short else _("miles")
         return "{distance} {units}".format(**locals())
     else:
@@ -243,7 +245,7 @@ def format_distance_british(yards, n=2, short=True, lang=None):
 def format_distance_metric(meters, n=2, short=True, lang=None):
     """Format `meters` to `n` significant digits and unit label."""
     if meters >= 1000:
-        distance = format_decimal(meters / 1000, n, lang)
+        distance = format_decimal(meters / 1000, 0, lang)
         units = _("km") if short else _("kilometers")
         return "{distance} {units}".format(**locals())
     else:
