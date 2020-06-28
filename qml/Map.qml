@@ -241,7 +241,7 @@ MapboxMap {
         target: app
         onModeChanged: setMode()
         onPortraitChanged: map.updateMargins()
-        onTransportMode: setBias()
+        onTransportModeChanged: setBias()
         onPositionChanged: {
             map.autoCenter && map.centerOnPosition();
         }
@@ -258,7 +258,7 @@ MapboxMap {
     }
 
     Connections {
-        target: navigator
+        target: app.navigator
         onManeuversChanged: updateManeuvers();
         onRouteChanged: updateRoute();
     }
@@ -555,6 +555,7 @@ MapboxMap {
 
     function updateManeuvers() {
         // Update maneuver marker on the map.
+        if (!app.navigator) return;
         var coords = Util.pluck(app.navigator.maneuvers, "coordinate");
         var names  = Util.pluck(app.navigator.maneuvers, "name");
         map.updateSourcePoints(map.sources.maneuvers, coords, names);
@@ -597,7 +598,7 @@ MapboxMap {
 
     function updateRoute() {
         // Update route polyline on the map.
-        if (app.navigator.route.coordinates)
+        if (app.navigator && app.navigator.route.coordinates)
             map.updateSourceLine(map.sources.route, app.navigator.route.coordinates);
         else
             map.updateSourceLine(map.sources.route, []);
