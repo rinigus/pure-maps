@@ -254,6 +254,12 @@ MapboxMap {
     }
 
     Connections {
+        target: navigator
+        onManeuversChanged: updateManeuvers();
+        onRouteChanged: updateRoute();
+    }
+
+    Connections {
         target: referenceBlockTop
         onHeightChanged: map.updateMargins();
     }

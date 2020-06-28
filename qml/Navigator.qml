@@ -106,32 +106,28 @@ Item {
 
     on_VoiceNavigationChanged: initVoiceNavigation()
 
-    function _addManeuver(maneuver) {
-        // Add new maneuver markers.
-        navigator.maneuvers.push({
-                                     "arrive_instruction": maneuver.arrive_instruction || "",
-                                     "depart_instruction": maneuver.depart_instruction || "",
-                                     "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
-                                     "duration": maneuver.duration || 0,
-                                     "icon": maneuver.icon || "flag",
-                                     // Needed to have separate layers via filters.
-                                     "name": maneuver.passive ? "passive" : "active",
-                                     "narrative": maneuver.narrative || "",
-                                     "passive": maneuver.passive || false,
-                                     "sign": maneuver.sign || undefined,
-                                     "street": maneuver.street|| undefined,
-                                     "travel_type": maneuver.travel_type || "",
-                                     "verbal_alert": maneuver.verbal_alert || "",
-                                     "verbal_post": maneuver.verbal_post || "",
-                                     "verbal_pre": maneuver.verbal_pre || "",
-                                 });
-    }
-
     function addManeuvers(maneuvers) {
-        // Add new maneuver markers.
-        maneuvers.forEach(navigator._addManeuver);
+        var m = maneuvers.map(function (maneuver) {
+            return {
+                "arrive_instruction": maneuver.arrive_instruction || "",
+                "depart_instruction": maneuver.depart_instruction || "",
+                "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
+                "duration": maneuver.duration || 0,
+                "icon": maneuver.icon || "flag",
+                // Needed to have separate layers via filters.
+                "name": maneuver.passive ? "passive" : "active",
+                "narrative": maneuver.narrative || "",
+                "passive": maneuver.passive || false,
+                "sign": maneuver.sign || undefined,
+                "street": maneuver.street|| undefined,
+                "travel_type": maneuver.travel_type || "",
+                "verbal_alert": maneuver.verbal_alert || "",
+                "verbal_post": maneuver.verbal_post || "",
+                "verbal_pre": maneuver.verbal_pre || "",
+            };
+        });
+        navigator.maneuvers = m;
         py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
-        updateManeuvers();
     }
 
     function addRoute(route, amend) {
@@ -150,7 +146,6 @@ Item {
             //navigator.route.maneuvers = route.maneuvers;
             addManeuvers(route.maneuvers);
         }
-        updateRoute();
         saveRoute();
         if (!amend) app.setModeExploreRoute();
     }
@@ -162,8 +157,6 @@ Item {
         py.call("poor.app.narrative.unset", [], null);
         clearStatus();
         hasRoute = false;
-        updateManeuvers();
-        updateRoute();
         saveRoute();
     }
 
@@ -275,15 +268,6 @@ Item {
         // Save route polyline to JSON file.
         var data = Util.polylineToJson(navigator.route);
         py.call_sync("poor.storage.write_route", [data]);
-    }
-
-    function updateManeuvers() {
-        map.updateManeuvers();
-        app.narrativePageSeen = false;
-    }
-
-    function updateRoute() {
-        map.updateRoute();
     }
 
     function updateStatus(data) {

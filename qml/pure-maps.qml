@@ -102,6 +102,11 @@ ApplicationWindowPL {
         }
     }
 
+    Connections {
+        target: app.navigator
+        onRouteChanged: app.narrativePageSeen = false
+    }
+
     Component.onDestruction: {
         keepAlive = false;
         gps.active = false;
