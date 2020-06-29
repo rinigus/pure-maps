@@ -76,6 +76,11 @@ into the JSON metadata file itself.
   tiles, fonts, icons or whatever specified by the style. Usually used
   to provide an API key, token or some other identification.
 
+* **`fingerprint`**: A dictionary consisting of keys and the values
+  uniquely identifying the style. For example, `{ "id": "streets-v10" }`.
+  This is used when generating language-specific version of the
+  style by Pure Maps by replacing labels.
+
 [mapbox-style]: https://www.mapbox.com/mapbox-gl-js/style-spec/
 
 ## Slippy Raster Tile Format

@@ -4,6 +4,7 @@
         "© OpenStreetMap": "https://www.openstreetmap.org/copyright",
         "Improve this map": "https://www.mapbox.com/map-feedback"
     },
+    "fingerprint": { "id": "satellite-v9" },
     "first_label_layer": "waterway-label",
     "format": "mapbox-gl",
     "lang": "local",

@@ -50,6 +50,7 @@ class Map:
         self.id = id
         self.format = values["format"]
         self.keys = values.get("keys", [])
+        self.fingerprint = values.get("fingerprint", {})
         self.lang = values.get("lang", "local")
         self.lang_key = values.get("lang_key", None)
         self.light = values.get("light", "day")
@@ -98,6 +99,11 @@ class Map:
         if self.style_json_orig is None and (style is None or len(style)==0):
             return None
         if isinstance(style, str) and self.style_json_processed != style:
+            import json
+            sj = json.loads(style)
+            for k,v in self.fingerprint.items():
+                if k not in sj or v != sj[k]:
+                    return None
             self.style_json_orig = style
         if not isinstance(self.lang, dict) or self.lang_key is None or lang not in self.lang:
             return None
