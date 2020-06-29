@@ -66,6 +66,51 @@ Item {
 
     readonly property int animationDuration: 150
 
+    readonly property var _mapQml2Py: {
+        "autoCompleteGeo": "auto_complete_geo",
+        "autoRotateWhenNavigating": "auto_rotate_when_navigating",
+        "basemapAutoLight": "basemap_auto_light",
+        "basemapAutoMode": "basemap_auto_mode",
+        "basemapLight": "basemap_light",
+        "basemapLang": "basemap_lang",
+        "basemapLight": "basemap_light",
+        "basemapType": "basemap_type",
+        "basemapVehicle": "basemap_vehicle",
+        "compassUse": "compass_use",
+        "developmentCoordinateCenter": "devel_coordinate_center",
+        "developmentShowZ": "devel_show_z",
+        "followMeTransportMode": "follow_me_transport_mode",
+        "keepAlive": "keep_alive",
+        "keepAliveBackground": "keep_alive_background",
+        "mapMatchingWhenIdle": "map_matching_when_idle",
+        "mapMatchingWhenNavigating": "map_matching_when_navigating",
+        "mapModeAutoSwitchTime": "map_mode_auto_switch_time",
+        "mapModeCleanOnStart": "map_mode_clean_on_start",
+        "mapModeCleanShowBasemap": "map_mode_clean_show_basemap",
+        "mapModeCleanShowCenter": "map_mode_clean_show_center",
+        "mapModeCleanShowCompass": "map_mode_clean_show_compass",
+        "mapModeCleanShowGeocode": "map_mode_clean_show_geocode",
+        "mapModeCleanShowMeters": "map_mode_clean_show_meters",
+        "mapModeCleanShowMenuButton": "map_mode_clean_show_menu_button",
+        "mapModeCleanShowNavigate": "map_mode_clean_show_navigate",
+        "mapModeCleanShowNavigationStartPause": "map_mode_clean_show_navigation_start_pause",
+        "mapModeCleanShowNavigationClear": "map_mode_clean_show_navigation_clear",
+        "mapModeCleanShowScale": "map_mode_clean_show_scale",
+        "mapZoomAutoTime": "map_zoom_auto_time",
+        "mapZoomAutoWhenNavigating": "map_zoom_auto_when_navigating",
+        "mapZoomAutoZeroSpeedZ": "map_zoom_auto_zero_speed_z",
+        "reroute": "reroute",
+        "profile": "profile",
+        "showNarrative": "show_narrative",
+        "showNavigationSign": "show_navigation_sign",
+        "showSpeedLimit": "show_speed_limit",
+        "smoothPositionAnimationWhenNavigating": "smooth_position_animation_when_navigating",
+        "tiltWhenNavigating": "tilt_when_navigating",
+        "units": "units",
+        "voiceGender": "voice_gender",
+        "voiceNavigation": "voice_navigation"
+    }
+
     Component.onCompleted: _update()
 
     Connections {
@@ -116,48 +161,11 @@ Item {
     function _update() {
         if (!py.ready) return;
         var c = py.call_sync("poor.conf.get_all", []);
-        conf.autoCompleteGeo = c.auto_complete_geo;
-        conf.autoRotateWhenNavigating = c.auto_rotate_when_navigating;
-        conf.basemapAutoLight = c.basemap_auto_light;
-        conf.basemapAutoMode = c.basemap_auto_mode;
-        conf.basemapLight = c.basemap_light;
-        conf.basemapLang = c.basemap_lang;
-        conf.basemapLight = c.basemap_light;
-        conf.basemapType = c.basemap_type;
-        conf.basemapVehicle = c.basemap_vehicle;
-        conf.compassUse = c.compass_use;
-        conf.developmentCoordinateCenter = c.devel_coordinate_center;
-        conf.developmentShowZ = c.devel_show_z;
-        conf.followMeTransportMode = c.follow_me_transport_mode;
-        conf.keepAlive = c.keep_alive;
-        conf.keepAliveBackground = c.keep_alive_background;
-        conf.mapMatchingWhenIdle = c.map_matching_when_idle;
-        conf.mapMatchingWhenNavigating = c.map_matching_when_navigating;
-        conf.mapModeAutoSwitchTime = c.map_mode_auto_switch_time;
-        conf.mapModeCleanOnStart = c.map_mode_clean_on_start;
-        conf.mapModeCleanShowBasemap = c.map_mode_clean_show_basemap;
-        conf.mapModeCleanShowCenter = c.map_mode_clean_show_center;
-        conf.mapModeCleanShowCompass = c.map_mode_clean_show_compass;
-        conf.mapModeCleanShowGeocode = c.map_mode_clean_show_geocode;
-        conf.mapModeCleanShowMeters = c.map_mode_clean_show_meters;
-        conf.mapModeCleanShowMenuButton = c.map_mode_clean_show_menu_button;
-        conf.mapModeCleanShowNavigate = c.map_mode_clean_show_navigate;
-        conf.mapModeCleanShowNavigationStartPause = c.map_mode_clean_show_navigation_start_pause;
-        conf.mapModeCleanShowNavigationClear = c.map_mode_clean_show_navigation_clear;
-        conf.mapModeCleanShowScale = c.map_mode_clean_show_scale;
-        conf.mapZoomAutoTime = c.map_zoom_auto_time;
-        conf.mapZoomAutoWhenNavigating = c.map_zoom_auto_when_navigating;
-        conf.mapZoomAutoZeroSpeedZ = c.map_zoom_auto_zero_speed_z;
-        conf.reroute = c.reroute;
-        conf.profile = c.profile;
-        conf.showNarrative = c.show_narrative;
-        conf.showNavigationSign = c.show_navigation_sign;
-        conf.showSpeedLimit = c.show_speed_limit;
-        conf.smoothPositionAnimationWhenNavigating = c.smooth_position_animation_when_navigating;
-        conf.tiltWhenNavigating = c.tilt_when_navigating;
-        conf.units = c.units;
-        conf.voiceGender = c.voice_gender;
-        conf.voiceNavigation = c.voice_navigation;
+        for (var k in _mapQml2Py) {
+            var n = c[ _mapQml2Py[k] ];
+            if (conf[k] !== n)
+                conf[k] = n;
+        }
     }
 
 }
