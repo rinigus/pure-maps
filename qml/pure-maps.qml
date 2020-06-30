@@ -262,10 +262,12 @@ ApplicationWindowPL {
     }
 
     function setModeFollowMe() {
+        app.resetMenu();
         app.mode = modes.followMe;
     }
 
     function setModeNavigate() {
+        app.resetMenu();
         app.mode = modes.navigate;
     }
 
