@@ -398,14 +398,14 @@ MapboxMap {
         map.autoRotate = false;
         map.fitView(pois.map(function(poi) {
             return poi.coordinate || QtPositioning.coordinate(poi.y, poi.x);
-        }));
+        }), true);
     }
 
     function fitViewToRoute() {
         // Set center and zoom so that the whole route is visible.
         map.autoCenter = false;
         map.autoRotate = false;
-        map.fitView(app.navigator.route.coordinates);
+        map.fitView(app.navigator.route.coordinates, true);
     }
 
     function initIcons() {
@@ -549,8 +549,10 @@ MapboxMap {
     function setSelectedPoi(coordinate) {
         if (coordinate===undefined)
             map.updateSourcePoints(map.sources.poisSelected, []);
-        else
+        else {
             map.updateSourcePoints(map.sources.poisSelected, [coordinate]);
+            map.fitView([coordinate], true);
+        }
     }
 
     function updateManeuvers() {
