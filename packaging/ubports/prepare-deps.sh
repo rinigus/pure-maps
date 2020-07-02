@@ -19,7 +19,7 @@ rm -rf $MAPBOX_GL_NATIVE_SRC_DIR $MAPBOX_GL_QML_SRC_DIR $NEMO_QML_PLUGIN_DBUS_SR
 
 # Download sources
 git clone -b mapbox-update-200607 https://github.com/rinigus/mapbox-gl-native.git $MAPBOX_GL_NATIVE_SRC_DIR --recurse-submodules  --shallow-submodules
-git clone -b 1.6.0 https://github.com/rinigus/mapbox-gl-qml.git $MAPBOX_GL_QML_SRC_DIR
+git clone -b 1.7.0 https://github.com/rinigus/mapbox-gl-qml.git $MAPBOX_GL_QML_SRC_DIR
 git clone https://git.merproject.org/mer-core/nemo-qml-plugin-dbus.git $NEMO_QML_PLUGIN_DBUS_SRC_DIR 
 git clone https://github.com/rinigus/qmlrunner.git $QMLRUNNER_SRC_DIR
 
