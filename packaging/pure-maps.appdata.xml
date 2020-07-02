@@ -38,6 +38,20 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.28.0" date="2020-07-02">
+     <description>
+       <ul>
+         <li>Distance formatted according to locale</li>
+         <li>Fix race condition while loading multi-language map styles</li>
+         <li>Fit to view route and found POIs, rearrange for margins changes</li>
+         <li>Rearrange properties and methods to improve code organization</li>
+         <li>Require Mapbox GL QML 1.7.0 or higher</li>
+         <li>[ubports] Switch to Mapbox GL Native upstream [jonnius]</li>
+         <li>Bugfixes, smaller adjustments</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.27.1" date="2020-06-05">
      <description>
        <ul>

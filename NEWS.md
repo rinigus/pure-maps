@@ -1,3 +1,15 @@
+2020-07-02: Pure Maps 1.28
+==========================
+
+* Distance formatted according to locale
+* Fix race condition while loading multi-language map styles
+* Fit to view route and found POIs, rearrange for margins changes
+* Rearrange properties and methods to improve code organization
+* Require Mapbox GL QML 1.7.0 or higher
+* [ubports] Switch to Mapbox GL Native upstream [jonnius]
+* Bugfixes, smaller adjustments
+* Update translations
+
 2020-05-27: Pure Maps 1.27
 ==========================
 
