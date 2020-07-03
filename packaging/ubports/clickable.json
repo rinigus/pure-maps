@@ -22,7 +22,7 @@
     "${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/lib/*.so*",
     "${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
     "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
-    "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/*.so*"
+    "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/*.so*"
   ],
   "scripts": {
     "prepare-deps": "git submodule update --recursive --init && ${ROOT}/packaging/ubports/prepare-deps.sh"
