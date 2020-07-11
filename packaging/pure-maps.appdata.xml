@@ -42,6 +42,7 @@
      <description>
        <ul>
          <li>Update translations</li>
+         <li>[ubports] fix pasting into search field [StefWe]</li>
        </ul>
      </description>
    </release>

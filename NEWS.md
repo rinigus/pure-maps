@@ -7,6 +7,7 @@
 * Rearrange properties and methods to improve code organization
 * Require Mapbox GL QML 1.7.0 or higher
 * [ubports] Switch to Mapbox GL Native upstream [jonnius]
+* [1.28.1] [ubports] fix pasting into search field [StefWe]
 * Bugfixes, smaller adjustments
 * [1.28.0,1.28.1] Update translations
 
