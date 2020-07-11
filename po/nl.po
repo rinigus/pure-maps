@@ -6,15 +6,16 @@
 # Translators:
 # rinigus github, 2018
 # Nathan Follens, 2019
+# Heimen Stoffels <vistausss@outlook.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 19:15+0300\n"
+"POT-Creation-Date: 2020-07-11 20:09+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Nathan Follens, 2019\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +25,7 @@ msgstr ""
 
 #: guides/foursquare.py:191
 msgid "Opening hours:"
-msgstr "Openingsuren:"
+msgstr "Openingstijden:"
 
 #: poor/geocoder.py:110
 msgid "Point from geo link"
@@ -41,7 +42,7 @@ msgstr "Punt van pluscode"
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
 #: poor/router.py:111
 msgid "Connection timed out"
-msgstr "Time-out bij verbinding"
+msgstr "Verbinding verlopen"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137

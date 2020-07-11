@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Вячеслав Диконов <sdiconov@mail.ru>, 2019
 # rinigus github, 2019
 # Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2020
+# Вячеслав Диконов <sdiconov@mail.ru>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 19:15+0300\n"
+"POT-Creation-Date: 2020-07-11 20:09+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2020\n"
+"Last-Translator: Вячеслав Диконов <sdiconov@mail.ru>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/rinigus/teams/89597/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -493,15 +493,15 @@ msgstr "Тип"
 #: qml/BasemapButton.qml:221 routers/digitransit_settings.qml:146
 #: qml/js/util.js:236
 msgid "Default"
-msgstr "По умолчанию"
+msgstr "Стандарт"
 
 #: qml/BasemapButton.qml:222
 msgid "Guidance"
-msgstr "Управление движением"
+msgstr "Навигатор"
 
 #: qml/BasemapButton.qml:223
 msgid "Hybrid"
-msgstr "Гибридный"
+msgstr "Гибрид"
 
 #: qml/BasemapButton.qml:224
 msgid "Preview"
@@ -509,11 +509,11 @@ msgstr "Предварительный просмотр"
 
 #: qml/BasemapButton.qml:225
 msgid "Satellite"
-msgstr "Спутниковый"
+msgstr "Спутник"
 
 #: qml/BasemapButton.qml:226
 msgid "Terrain"
-msgstr "Ландшафтный"
+msgstr "Ландшафт"
 
 #: qml/BasemapButton.qml:227
 msgid "Traffic"
@@ -521,15 +521,15 @@ msgstr "Трафик"
 
 #: qml/BasemapButton.qml:242
 msgid "Light"
-msgstr "Светлый"
+msgstr "Освещение"
 
 #: qml/BasemapButton.qml:259
 msgid "Day"
-msgstr "Дневной"
+msgstr "День"
 
 #: qml/BasemapButton.qml:260
 msgid "Night"
-msgstr "Ночной"
+msgstr "Ночь"
 
 #: qml/BasemapButton.qml:275
 msgid "Transport"
@@ -692,6 +692,12 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Используется автономный профиль. Необходимо убедиться, что установлен и "
+"работает OSM Scout Server. В зависимости от системы он доступен либо в "
+"магазинах приложений (OpenRepos для Sailfish OS, OpenStore для UBPorts), "
+"Flathub, либо в дистрибутиве. Дополнительные сведения в<a "
+"href=\"https://rinigus.github.io/osmscout-server\">Руководстве по OSM Scout "
+"Server</a>"
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -1239,8 +1245,8 @@ msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
 msgstr ""
-"Переключение между дневным и ночным режимами карты. Обратить внимание, что "
-"не у всех провайдеров имеются все карты с дневными/ночными парами."
+"Переключение между дневным и ночным режимами карты. Учтите, что не все "
+"поставщики карт имеют дневные/ночные варианты."
 
 #: qml/PreferencesPage.qml:151
 msgid "Day/night mode"
@@ -1259,9 +1265,9 @@ msgid ""
 "Automatically switch between map types of the provider according to the "
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
-"Автоматически переключаться между типами карт провайдера в соответствии с "
-"текущей задачей. Например, показать карту, предназначенную для навигации во "
-"время маршрутизации."
+"Автоматически переключаться между типами карт в соответствии с текущей "
+"задачей. Например, показать карту для навигации во время движения по "
+"маршруту."
 
 #: qml/PreferencesPage.qml:174
 msgid "Switch map modes"
@@ -1270,8 +1276,8 @@ msgstr "Переключение режимов карты"
 #: qml/PreferencesPage.qml:184
 msgid "Fetch autocompleted search results while typing a search string."
 msgstr ""
-"Получение результатов поиска с учетом автозаполнения при вводе строки "
-"поиска."
+"Во время ввода строки для поиска запрашивать результаты с возможным "
+"автодополнением."
 
 #: qml/PreferencesPage.qml:185
 msgid "Autocomplete while searching"
@@ -1289,23 +1295,24 @@ msgid ""
 "is useful if you wish to receive voice navigation commands while keeping "
 "device in the pocket."
 msgstr ""
-"Можно контролировать, если и когда Pure Maps сохраняет отображение активным "
-"и работает в фоновом режиме. Рекомендуется разрешить Pure Maps отключать "
-"скринсейвер во время навигации и никогда не препятствовать приостановке "
-"работы устройства напрямую. Последнее полезно, если необходимо получать "
-"голосовые навигационные команды, держа устройство в кармане."
+"Здесь можно указать Pure Maps, когда следует сохранять экран активным и как "
+"работать в фоновом режиме. Рекомендуется разрешить Pure Maps отключать "
+"автоматическое гашение экрана во время навигации и блокировать приостановку "
+"работы устройства при нажатии кнопки выключения. Последнее полезно, если вы "
+"хотите получать голосовые подсказки, когда устройство лежит в кармане."
 
 #: qml/PreferencesPage.qml:219
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
 msgstr ""
-"Применяется только тогда, когда Pure Maps активен. Когда Pure Maps свёрнут, "
-"скринсейвер управляется обычными настройками на уровне устройства. "
+"Действует, только когда программа Pure Maps активна. Когда окно Pure Maps "
+"свёрнуто, гашение экрана управляется обычными настройками на уровне "
+"устройства. "
 
 #: qml/PreferencesPage.qml:221
 msgid "Prevent screensaver"
-msgstr "Отключить скринсейвер"
+msgstr "Отключить гашение экрана"
 
 #: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
 #: qml/PreferencesPage.qml:517 qml/PreferencesPage.qml:596
@@ -1327,9 +1334,9 @@ msgid ""
 "screen is switched off. If set to 'never', usual device suspend policy is "
 "applied."
 msgstr ""
-"Позволяет сохранить произнесение инструкций по позиционированию и навигации "
-"даже при выключенном экране. Если установлено значение \"Никогда\", то "
-"применяется обычная политика приостановки работы устройства."
+"Позволяет сохранить произнесение голосовых подсказок навигации даже при "
+"выключенном экране. Если выбран вариант 'никогда', то применяется обычная "
+"политика приостановки работы устройства."
 
 #: qml/PreferencesPage.qml:238
 msgid "Prevent sleep"
@@ -1344,8 +1351,8 @@ msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
 msgstr ""
-"Очистить всю историю, включая поиск, маршруты и пункты назначения. Обратить "
-"внимание, что закладки будут сохранены."
+"Очистить всю историю, включая поиск, маршруты и пункты назначения. Учтите, "
+"что закладки будут сохранены."
 
 #: qml/PreferencesPage.qml:274
 msgid "History cleared"
@@ -1389,8 +1396,8 @@ msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
-"Выбрать способ передвижения. Применяется только в том случае, если Pure Maps"
-" не может выполнить навигацию. Используется OSM Scout Server в этом случае."
+"Выбор способа передвижения. Действует, только когда Pure Maps не находится в"
+" режиме навигации. Использует для работы OSM Scout Server."
 
 #: qml/PreferencesPage.qml:377 qml/PreferencesPage.qml:447
 msgid "Snap position to road"
@@ -1479,8 +1486,8 @@ msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr ""
-"Показать знак ограничения скорости. Требуется привязать положение к дороге "
-"для поиска ограничения скорости."
+"Показывать знак ограничения скорости. Требуется привязка положения к дороге "
+"для обнаружения зон ограничений скорости."
 
 #: qml/PreferencesPage.qml:516
 msgid "Speed limit"
@@ -1503,8 +1510,8 @@ msgid ""
 msgstr ""
 "Компас можно использовать для определения ориентации устройства и "
 "выравнивания карты соответствующим образом. Обратите внимание, что компас "
-"включен только тогда, когда положение определено, скорость невелика и "
-"навигация пешком или на велосипеде."
+"включается, только когда положение определено, скорость невелика режим "
+"навигации активен и выбран способ движения пешком или на велосипеде."
 
 #: qml/PreferencesPage.qml:556
 msgid "Use compass for determination of the direction."
