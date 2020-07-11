@@ -8,7 +8,7 @@
 * Require Mapbox GL QML 1.7.0 or higher
 * [ubports] Switch to Mapbox GL Native upstream [jonnius]
 * Bugfixes, smaller adjustments
-* Update translations
+* [1.28.0,1.28.1] Update translations
 
 2020-05-27: Pure Maps 1.27
 ==========================
