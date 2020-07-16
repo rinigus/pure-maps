@@ -8,13 +8,16 @@ which is used to build and publish click packages.
 Also copy `tools/apikeys_dummy.py` to `tools/apikeys.py` and fill missing API
 keys for the services that you plan to use.
 
-You may want to create a symlink to the config file to omit the `-c` flag in
-all clickable calls:
+Create a symlink to the config file to omit the `-c` flag in all clickable
+calls:
 
-    ln -s packaging/ubports/clickable.json clickable.json
+    ln -s packaging/ubports/full-build.json clickable.json
 
-Otherwise you'll have to append `-c packaging/ubports/clickable.json` to all
-clickable commands.
+for the full build including Mimic, resulting in a 98 MB click package, or:
+
+    ln -s packaging/ubports/slim-build.json clickable.json
+
+for the slim build without Mimic (but still with PicoTTS), resulting in a 10 MB click package.
 
 ## Dependencies
 
