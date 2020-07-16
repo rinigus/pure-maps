@@ -1,0 +1,69 @@
+{
+  "clickable_minimum_required": "6.13.0",
+  "builder": "custom",
+  "kill": "pure-maps",
+  "build": "cd ${ROOT} && make platform-ubports && make FULLNAME=pure-maps.jonnius PREFIX=. DESTDIR=${INSTALL_DIR}/ INCLUDE_GPXPY=yes QT_PLATFORM_STYLE=suru TMP_AS_CACHE=yes install",
+  "prebuild": "cd ${ROOT} && tools/manage-keys inject .",
+  "postbuild": "cd ${ROOT} && tools/manage-keys strip . && sed -i 's/pure-maps.jonnius/pure-maps-slim.jonius/g' ${INSTALL_DIR}/manifest.json",
+  "install_data": {
+    "${ROOT}/packaging/ubports/pure-maps.desktop": "${INSTALL_DIR}",
+    "${ROOT}/packaging/ubports/manifest.json": "${INSTALL_DIR}",
+    "${ROOT}/packaging/ubports/pure-maps.apparmor": "${INSTALL_DIR}",
+    "${ROOT}/packaging/ubports/pure-maps.svg": "${INSTALL_DIR}",
+    "${PICOTTS_LIB_INSTALL_DIR}/usr/share/picotts": "${INSTALL_DIR}/usr/share"
+  },
+  "install_bin": [
+    "${INSTALL_DIR}/bin/pure-maps",
+    "${PICOTTS_LIB_INSTALL_DIR}/usr/bin/pico2wave",
+    "${QMLRUNNER_LIB_INSTALL_DIR}/usr/local/bin/qmlrunner"
+  ],
+  "install_lib": [
+    "${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/lib/*.so*",
+    "${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
+    "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
+    "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/*.so*"
+  ],
+  "scripts": {
+    "prepare-deps": "git submodule update --recursive --init && ENABLE_MIMIC=0 ${ROOT}/packaging/ubports/prepare-deps.sh"
+  },
+  "libraries": {
+    "mapbox-gl-native": {
+      "builder": "cmake",
+      "build_args": [
+        "-DMBGL_WITH_QT=ON",
+        "-DMBGL_WITH_WERROR=OFF",
+        "-DMBGL_WITH_QT_HEADLESS=OFF",
+        "-DMBGL_WITH_QT_TEST=OFF",
+        "-DMBGL_WITH_QT_DEMO=OFF"
+      ],
+      "dependencies_ppa": [
+        "ppa:janisozaur/cmake-update"
+      ],
+      "dependencies_host": [
+        "cmake"
+      ]
+    },
+    "qmlrunner": {
+      "builder": "qmake"
+    },
+    "mapbox-gl-qml": {
+      "builder": "qmake",
+      "build_args": [
+        "INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/include",
+        "INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/include/qt5",
+        "LIBS+=-L${BUILD_DIR}/../mapbox-gl-native/install/lib"
+      ]
+    },
+    "nemo-qml-plugin-dbus": {
+      "builder": "qmake"
+    },
+    "picotts": {
+      "builder": "custom",
+      "build": "cp -r ${SRC_DIR}/* ${BUILD_DIR} && DESTDIR=${INSTALL_DIR} LANG_DIR=./usr/share/picotts/lang make -j4 && DESTDIR=${INSTALL_DIR} make install",
+      "dependencies_target": [
+        "libtool",
+        "libpopt-dev"
+      ]
+    }
+  }
+}
