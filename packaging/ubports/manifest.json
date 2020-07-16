@@ -1,10 +1,10 @@
 {
-    "name": "pure-maps.jonnius",
+    "name": "@APP_NAME@.jonnius",
     "description": "Maps and Navigation",
     "architecture": "@CLICK_ARCH@",
-    "title": "Pure Maps",
+    "title": "@APP_TITLE@",
     "hooks": {
-        "pure-maps": {
+        "@APP_NAME@": {
             "apparmor": "pure-maps.apparmor",
             "desktop":  "pure-maps.desktop"
         }
