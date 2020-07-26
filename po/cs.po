@@ -6,17 +6,17 @@
 # Translators:
 # PawelSpoon, 2019
 # Jan Straka <jstraka88@gmail.com>, 2019
-# Malakay X <Malakay.666@seznam.cz>, 2019
 # trendspotter <j.podhorecky@volny.cz>, 2019
+# Malakay X <Malakay.666@seznam.cz>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 19:15+0300\n"
+"POT-Creation-Date: 2020-07-11 20:09+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: trendspotter <j.podhorecky@volny.cz>, 2019\n"
+"Last-Translator: Malakay X <Malakay.666@seznam.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rinigus/teams/89597/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +43,7 @@ msgstr "Nasměrování pomocí Plus code"
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
 #: poor/router.py:111
 msgid "Connection timed out"
-msgstr "Připojení vypršelo"
+msgstr "Spojení vypršelo"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137
@@ -60,15 +60,15 @@ msgid ""
 "create your own Client ID and Client Secret keys"
 msgstr ""
 "ID Foursquare klient. Zaregistrujte se na https://developer.foursquare.com a"
-" vyplňte svůj osobní ID applikace a osbní tajemný klíč"
+" vyplňte svůj osobní ID aplikace a osobní klíč"
 
 #: poor/keystore.py:51
 msgid "Foursquare Client ID"
-msgstr "ID Foursquare klient"
+msgstr "ID Foursquare klienta"
 
 #: poor/keystore.py:52
 msgid "Foursquare Client Secret"
-msgstr "Foursquare Client Secret"
+msgstr "Foursquare klíč"
 
 #: poor/keystore.py:55
 msgid ""
@@ -124,7 +124,7 @@ msgid ""
 "ID and Code"
 msgstr ""
 "ID HERE App. Zaregistrujte se na https://developer.here.com a vyplňte svůj "
-"osobní ID applikace a osbní tajemný klíč"
+"osobní ID aplikace a osobní klíč"
 
 #: poor/keystore.py:72
 msgid "HERE App ID"
@@ -137,7 +137,7 @@ msgstr "Kód aplikace HERE"
 #: poor/narrative.py:131
 #, python-brace-format
 msgid "In {distance}, {direction}"
-msgstr "V {distance}, {direction}"
+msgstr "Za {distance}, {direction}"
 
 #: poor/narrative.py:222 poor/narrative.py:224
 msgid "Exit: "
@@ -390,8 +390,8 @@ msgid ""
 "When set, the search along the route is performed starting from the point "
 "specified by 'Near' on this page"
 msgstr ""
-"Když je nastaveno, vyhledávání na trase se provádí počínaje od bodu "
-"specifikovaného v části \"Blízko\" na této stránce"
+"Když je nastaveno, vyhledávání na trase se provádí od bodu specifikovaného v"
+" části \"Blízko\" na této stránce"
 
 #: guides/osmscout_settings.qml:76
 msgid "Search starting from the reference point"
@@ -408,6 +408,7 @@ msgstr "verze %1"
 #: qml/AboutPage.qml:63
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
 msgstr ""
+"Github<a href=\"https://github.com/rinigus/pure-maps\">stránka projektu</a>"
 
 #: qml/AboutPage.qml:88
 msgid ""
@@ -424,6 +425,9 @@ msgid ""
 "title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" "
 "title=\"Flaticon\">www.flaticon.com</a>"
 msgstr ""
+"Ikony přepravy vytvořil <a href=\"https://www.flaticon.com/authors/freepik\""
+" title=\"Freepik\">Freepik</a> z <a href=\"https://www.flaticon.com/\" "
+"title=\"Flaticon\">www.flaticon.com</a>"
 
 #: qml/AboutPage.qml:109
 msgid ""
@@ -459,6 +463,8 @@ msgid ""
 "Translations at <a href=\"https://www.transifex.com/rinigus/pure-"
 "maps\">Transifex page</a>"
 msgstr ""
+"Překlady na <a href=\"https://www.transifex.com/rinigus/pure-"
+"maps\">Transifex</a>"
 
 #: qml/AttributionPage.qml:24
 msgid "Attribution"
@@ -634,11 +640,11 @@ msgstr "Hledat: %1"
 
 #: qml/GeocodePage.qml:78 qml/NearbyResultsPage.qml:72
 msgid "%1 [duplicate]"
-msgstr "%1 [duplicate]"
+msgstr "%1 [duplicitních]"
 
 #: qml/GeocoderPage.qml:27 qml/GuidePage.qml:27
 msgid "Search engine"
-msgstr "Engine"
+msgstr "Vyhledávací engine"
 
 #: qml/InitPage.qml:33
 msgid "Initializing"
@@ -686,6 +692,11 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Používáte offline profil. Ujistěte se, že máte nainstalován OSM Scout Server"
+" a že běží. V závislosti na systému je k dispozici na obchodech s aplikacemi"
+" (OpenRepos pro Sailfish OS, OpenStore pro UBports) nebo Flathub. Pro více "
+"informací navštivte <a href=\"https://rinigus.github.io/osmscout-"
+"server\">OSM Scout Server manuál</a>"
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -717,11 +728,11 @@ msgstr "Smíšený"
 
 #: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
 msgid "Stop navigation to select POI"
-msgstr ""
+msgstr "Pro výběr bodu zájmu zastavte navigaci"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
-msgstr "Zastavte následující pohyb"
+msgstr "Přestat sledovat pohyb"
 
 #: qml/MenuPage.qml:66
 msgid "Nearby venues"
@@ -760,27 +771,27 @@ msgstr "Pokračujte k %1."
 
 #: qml/NavigationButtonClear.qml:46
 msgid "Route removed"
-msgstr ""
+msgstr "Trasa odebrána"
 
 #: qml/NavigationButtonStartPause.qml:64
 msgid "Stopped to follow the movement"
-msgstr ""
+msgstr "Sledování pohybu zastaveno"
 
 #: qml/NavigationButtonStartPause.qml:69
 msgid "Navigation paused"
-msgstr ""
+msgstr "Navigace pozastavena"
 
 #: qml/NavigationButtonStartPause.qml:73
 msgid "Navigation started"
-msgstr ""
+msgstr "Navigace spuštěna"
 
 #: qml/NavigationCurrentBlock.qml:180
 msgid "To route"
-msgstr ""
+msgstr "K trase"
 
 #: qml/NavigationOverviewBlock.qml:142
 msgid "ETA"
-msgstr "ETA"
+msgstr "Cíl"
 
 #: qml/NavigationPage.qml:25
 msgid "Maneuvers"
@@ -837,7 +848,7 @@ msgstr "Místa v okolí"
 #: qml/NearbyPage.qml:75
 msgid ""
 "Select a reference location next to which you want to perform the search."
-msgstr "Vyberte referenční umístění vedle kterého chcete provést vyhledávání."
+msgstr "Vyberte referenční umístění kde chcete provést vyhledávání."
 
 #: qml/NearbyPage.qml:76
 msgid "Near"
@@ -869,7 +880,7 @@ msgstr "%1 Výsledků"
 
 #: qml/NorthArrow.qml:60
 msgid "Auto-rotation requires auto-centering to be enabled"
-msgstr ""
+msgstr "Automatická rotace vyžaduje povolení automatického centrování"
 
 #: qml/NorthArrow.qml:71
 msgid "Auto-rotate on"
@@ -1021,7 +1032,7 @@ msgstr "Sdílet umístění"
 
 #: qml/PoiInfoPage.qml:170
 msgid "Center on location"
-msgstr "Vystředit na lokaci"
+msgstr "Centrovat na místo"
 
 #: qml/PoiInfoPage.qml:182
 msgid "Navigate To"
@@ -1274,7 +1285,7 @@ msgstr "Automatické dokončování při vyhledávání"
 
 #: qml/PreferencesPage.qml:199
 msgid "Device"
-msgstr ""
+msgstr "Zařízení"
 
 #: qml/PreferencesPage.qml:205
 msgid ""
@@ -1284,16 +1295,22 @@ msgid ""
 "is useful if you wish to receive voice navigation commands while keeping "
 "device in the pocket."
 msgstr ""
+"Můzete nastavit, kdy má Pure Maps ponechat display aktivní a pracovat na "
+"pozadí. Doporučeno je povolit Pure Maps potlačit screensaver při navigaci. "
+"Dále se hodí zejména pokud chcete dostávat hlasové pokyny když máte zařízení"
+" v kapse."
 
 #: qml/PreferencesPage.qml:219
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
 msgstr ""
+"Platí pouze, když jsou Pure Maps aktivní. Po minimalizaci je screensaver "
+"ovládán nastavením systému."
 
 #: qml/PreferencesPage.qml:221
 msgid "Prevent screensaver"
-msgstr ""
+msgstr "Potlačit screensaver"
 
 #: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
 #: qml/PreferencesPage.qml:517 qml/PreferencesPage.qml:596
@@ -1315,6 +1332,8 @@ msgid ""
 "screen is switched off. If set to 'never', usual device suspend policy is "
 "applied."
 msgstr ""
+"Umožňuje zachovat hlasové pokyny i při vypnutém displayi. Pokud nastavíte "
+"'nikdy', je vše řízeno systémem."
 
 #: qml/PreferencesPage.qml:238
 msgid "Prevent sleep"
@@ -1360,7 +1379,7 @@ msgid ""
 msgstr ""
 "V těchto nastaveních můžete zadat osobní klíče pro služby online. "
 "Zkontrolujte podmínky pro každou službu, kterou chcete použít, abyste se "
-"ujistili, že s ní dodržujete."
+"ujistili, že budou dodrženy."
 
 #: qml/PreferencesPage.qml:329
 msgid "Please restart application after changing API keys."
@@ -1375,8 +1394,8 @@ msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
-"Vyberte způsob dopravy. Platí pouze v případě, že aplikace Pure Maps ne "
-"naviguje. K jeho provozu používá server OSM Scout."
+"Vyberte způsob dopravy. Platí pouze v případě, že aplikace Pure Maps "
+"nenaviguje. Používá server OSM Scout."
 
 #: qml/PreferencesPage.qml:377 qml/PreferencesPage.qml:447
 msgid "Snap position to road"
@@ -1411,7 +1430,7 @@ msgstr "Autom. přiblížení při spuštění"
 
 #: qml/PreferencesPage.qml:446
 msgid "Uses OSM Scout Server for its operation."
-msgstr "K jeho provozu používá OSM Scout server."
+msgstr "K provozu používá OSM Scout server."
 
 #: qml/PreferencesPage.qml:458
 msgid "Show direction signs"
@@ -1464,8 +1483,8 @@ msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr ""
-"Zobrazit značku omezení rychlosti. K nalezení rychlostního limitu je nutná "
-"poloha přichycení k silnici."
+"Zobrazit značku omezení rychlosti. K nalezení rychlostního limitu je nutné "
+"zapnout přichytávání k silnici."
 
 #: qml/PreferencesPage.qml:516
 msgid "Speed limit"
@@ -1486,14 +1505,17 @@ msgid ""
 " determined, your speed is low, and, if you are navigating, only if you are "
 "by foot or on the bicycle."
 msgstr ""
+"Kompas lze použít pro odhad orientace zařízení a podle toho zobrazit mapu. "
+"Kompas je povolen pouze tehdy když je nalezena poloha, rychlost je nízká a "
+"při navigaci pouze na kole nebo pěšky."
 
 #: qml/PreferencesPage.qml:556
 msgid "Use compass for determination of the direction."
-msgstr ""
+msgstr "Používat kompas pro odhad směru"
 
 #: qml/PreferencesPage.qml:557
 msgid "Use compass"
-msgstr ""
+msgstr "Použít kompas"
 
 #: qml/PreferencesPage.qml:569
 msgid "Controls"
@@ -1505,20 +1527,20 @@ msgid ""
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
 msgstr ""
-"Zobrazená mapa může být buď se všemi ovládacími prvky v úplném módu nebo s "
-"menší sadou ovládacích prvku v minimalizovaném módu. K přepnutí mezi nimi "
-"klikněte na mapu."
+"Pohled na mapu může být s ovládacími prvky v úplném módu nebo s menší sadou "
+"ovládacích prvku v minimalizovaném módu. K přepnutí mezi nimi klikněte na "
+"mapu."
 
 #: qml/PreferencesPage.qml:584
 msgid "Set map view to minimal mode on start"
-msgstr "Nastavit minimalizovanou mapu při spuštění"
+msgstr "Při spuštění nastavit minimalizovaný mód ovládacích prvků"
 
 #: qml/PreferencesPage.qml:592
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
 msgstr ""
-"Automaticky přepnout na minimalizovaný mód při zpoždění nebo vypnutém "
+"Automaticky přepnout na minimalizovaný po uplynutí času nebo vypnutém "
 "automatickém přepínání mezi módy mapy."
 
 #: qml/PreferencesPage.qml:594
@@ -1567,7 +1589,7 @@ msgstr "Výběr mapy"
 
 #: qml/PreferencesPage.qml:659
 msgid "Speed and location precision"
-msgstr "Rychlost a přesnost navedení na místo"
+msgstr "Rychlost a přesnost polohy"
 
 #: qml/PreferencesPage.qml:668
 msgid "Scale"
@@ -1575,28 +1597,30 @@ msgstr "Měřítko"
 
 #: qml/PreferencesPage.qml:695
 msgid "Navigation Start/Pause"
-msgstr ""
+msgstr "Start/pauza navigace"
 
 #: qml/PreferencesPage.qml:704
 msgid "Navigation Clear Route"
-msgstr ""
+msgstr "Smazat trasu"
 
 #: qml/PreferencesPage.qml:719
 msgid "Zoom"
-msgstr ""
+msgstr "Zoom"
 
 #: qml/PreferencesPage.qml:725
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
 msgstr ""
+"Úroveň zoomu může být automaticky přizpůsobena vaší rychlosti. Zde můžete "
+"upravit nastavení této funkce."
 
 #: qml/PreferencesPage.qml:735
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
 msgstr ""
-"Maximální úroveň přiblížení , která by měla být použita v automaticky "
+"Maximální úroveň přiblížení, která by měla být použita v automaticky "
 "nastaveném přiblížení."
 
 #: qml/PreferencesPage.qml:737
@@ -1609,7 +1633,7 @@ msgid ""
 " is covered by you in the given amount of seconds."
 msgstr ""
 "Úroveň přiblížení bude přizpůsobena výšce mapy a současně vzdálenosti, "
-"kterou můžete urazit za dané množství sekund."
+"kterou urazíte za dané množství sekund."
 
 #: qml/PreferencesPage.qml:751
 msgid "Time range, s"
@@ -1624,7 +1648,7 @@ msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
-"Test Text-to-Speech (TTS) enginu. Vyberte stejný jazyk jako pro navigaci, "
+"Test Text-to-Speech (TTS) engine. Vyberte stejný jazyk jako pro navigaci, "
 "preferované pohlaví a pro spuštění testu stiskněte dolní tlačítko."
 
 #: qml/PreferencesPage.qml:802
@@ -1707,7 +1731,7 @@ msgstr "Následovat"
 
 #: qml/RoutePage.qml:63
 msgid "Reverse endpoints"
-msgstr "Obrátit koncové body"
+msgstr "Zaměnit start a cíl"
 
 #: qml/RoutePage.qml:135
 msgid "From"
@@ -1735,7 +1759,7 @@ msgstr "Cíle"
 
 #: qml/RoutePage.qml:357
 msgid "Follow the movement and show just in time information"
-msgstr "Postupujte podle pohybu a zobrazte informace včas"
+msgstr "Sledovat pohy a zobrazovat včasné informace"
 
 #: qml/RoutePage.qml:366
 msgid "Stop"
@@ -1771,7 +1795,7 @@ msgstr "Režimy: %1"
 
 #: qml/ScaleBar.qml:207
 msgid "Auto-zoom requires auto-centering to be enabled"
-msgstr "Auto-zoom vyžaduje povolení funkce auto-centrování"
+msgstr "Auto-zoom vyžaduje povolení funkce automatického centrování"
 
 #: qml/ScaleBar.qml:218
 msgid "Auto-zoom on"
@@ -1811,7 +1835,7 @@ msgstr "Ostatní"
 
 #: qml/SharePage.qml:97
 msgid "Add address"
-msgstr ""
+msgstr "Přidat adresu"
 
 #: qml/SharePage.qml:106
 msgid "Add link to OpenStreetMaps"
@@ -1887,7 +1911,7 @@ msgstr "Vyberte čas"
 
 #: routers/digitransit_settings.qml:145
 msgid "Criterion"
-msgstr "Měřítko"
+msgstr "Kritéria"
 
 #: routers/digitransit_settings.qml:146
 msgid "Least transfers"
@@ -2085,7 +2109,7 @@ msgstr "Hlavní silnice"
 
 #: routers/ValhallaSettings.qml:218
 msgid "Your desire to use rail/subway/metro."
-msgstr "Vaše touha používat železnici / metro / metro."
+msgstr "Vaše touha používat železnici / metro."
 
 #: routers/ValhallaSettings.qml:219
 msgid "Rail"

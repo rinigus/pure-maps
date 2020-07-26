@@ -8,17 +8,17 @@
 # Roman Meier <meierrom@gmail.com>, 2018
 # Florian, 2019
 # lutinotmalin, 2019
-# Anne017, 2019
 # Jordi, 2020
+# Anne017, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 19:15+0300\n"
+"POT-Creation-Date: 2020-07-11 20:09+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Jordi, 2020\n"
+"Last-Translator: Anne017, 2020\n"
 "Language-Team: French (https://www.transifex.com/rinigus/teams/89597/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -696,6 +696,12 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Vous utilisez un profil hors ligne. Assurez-vous que le serveur OSM Scout "
+"est installé et fonctionne. Selon votre système d'exploitation, il est "
+"disponible soit dans les magasins d'applications (OpenRepos pour Sailfish "
+"OS, OpenStore pour UBports), soit dans Flathub, soit dans votre "
+"distribution. Consultez le <a href=\"https://rinigus.github.io/osmscout-"
+"server\">manuel du serveur OSM Scout</a> pour plus de détails."
 
 #: qml/MapErrorPage.qml:62
 msgid ""

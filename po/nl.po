@@ -877,7 +877,7 @@ msgstr "%1 resultaten"
 
 #: qml/NorthArrow.qml:60
 msgid "Auto-rotation requires auto-centering to be enabled"
-msgstr ""
+msgstr "Schakel automatisch centreren in om automatisch te kunnen draaien"
 
 #: qml/NorthArrow.qml:71
 msgid "Auto-rotate on"
@@ -1283,7 +1283,7 @@ msgstr "Automatisch aanvullen bij zoeken"
 
 #: qml/PreferencesPage.qml:199
 msgid "Device"
-msgstr ""
+msgstr "Apparaat"
 
 #: qml/PreferencesPage.qml:205
 msgid ""
@@ -1302,7 +1302,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:221
 msgid "Prevent screensaver"
-msgstr ""
+msgstr "Schermbeveiliging onderdrukken"
 
 #: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
 #: qml/PreferencesPage.qml:517 qml/PreferencesPage.qml:596
@@ -1500,11 +1500,11 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:556
 msgid "Use compass for determination of the direction."
-msgstr ""
+msgstr "Gebruik een kompas om de richting te bepalen."
 
 #: qml/PreferencesPage.qml:557
 msgid "Use compass"
-msgstr ""
+msgstr "Kompas gebruiken"
 
 #: qml/PreferencesPage.qml:569
 msgid "Controls"
@@ -1595,7 +1595,7 @@ msgstr "Navigatie route wissen"
 
 #: qml/PreferencesPage.qml:719
 msgid "Zoom"
-msgstr ""
+msgstr "Zoomen"
 
 #: qml/PreferencesPage.qml:725
 msgid ""
@@ -1824,7 +1824,7 @@ msgstr "Andere"
 
 #: qml/SharePage.qml:97
 msgid "Add address"
-msgstr ""
+msgstr "Adres toevoegen"
 
 #: qml/SharePage.qml:106
 msgid "Add link to OpenStreetMaps"
