@@ -63,8 +63,13 @@ to a JSON format style definition, or by writing the style definition
 into the JSON metadata file itself.
 
 * **`first_label_layer`**: Identifier of the lowest label layer in the
-  style. Icons and route polylines might rendered right below this layer
+  style. Icons and route polyline outlines will be rendered right below this layer
   so that labels are not obscured and remain readable.
+
+* **`first_route_layer`**: Identifier of the layer in the
+  style below which the route will be rendered. If not specified, it is
+  assumed to be the same as `first_label_layer`. Is used in practice to avoid
+  overlaying traffic information.
 
 * **`style_json`**: A full JSON format style definition.
 

@@ -74,6 +74,7 @@ MapboxMap {
         return undefined;
     }
     property string firstLabelLayer: ""
+    property string firstRouteLayer: ""
     property string format: ""
     property string mapType: {
         if (app.mode === modes.exploreRoute) return "preview";
@@ -98,6 +99,7 @@ MapboxMap {
         readonly property string poisBookmarked:  "pure-layer-pois-bookmarked"
         readonly property string poisSelected:    "pure-layer-pois-selected"
         readonly property string route:           "pure-layer-route"
+        readonly property string routeOutline:    "pure-layer-route-outline"
     }
 
     readonly property var sources: QtObject {
@@ -370,21 +372,26 @@ MapboxMap {
         map.setLayoutProperty(map.layers.route, "line-join", "round");
         map.setPaintProperty(map.layers.route, "line-color", styler.route);
         map.setPaintProperty(map.layers.route, "line-opacity", styler.routeOpacity);
-        map.setPaintProperty(map.layers.route, "line-width", 22 / map.pixelRatio);
+        map.setPaintProperty(map.layers.route, "line-width", 16 / map.pixelRatio);
+        // Configure layer for route casing.
+        map.setLayoutProperty(map.layers.routeOutline, "line-cap", "round");
+        map.setLayoutProperty(map.layers.routeOutline, "line-join", "round");
+        map.setPaintProperty(map.layers.routeOutline, "line-color", styler.route);
+        map.setPaintProperty(map.layers.routeOutline, "line-gap-width", 16 / map.pixelRatio);
+        map.setPaintProperty(map.layers.routeOutline, "line-width", 4 / map.pixelRatio);
         // Configure layer for active maneuver markers.
         map.setPaintProperty(map.layers.maneuvers, "circle-color", styler.maneuver);
         map.setPaintProperty(map.layers.maneuvers, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layers.maneuvers, "circle-radius", 11 / map.pixelRatio);
         map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", styler.route);
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-opacity", styler.routeOpacity);
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 8 / map.pixelRatio);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 4 / map.pixelRatio);
         // Configure layer for passive maneuver markers.
         map.setPaintProperty(map.layers.nodes, "circle-color", styler.maneuver);
         map.setPaintProperty(map.layers.nodes, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layers.nodes, "circle-radius", 5 / map.pixelRatio);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-color", styler.route);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", styler.routeOpacity);
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 8 / map.pixelRatio);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 3 / map.pixelRatio);
         // Configure layer for dummy symbols that knock out road shields etc.
         map.setLayoutProperty(map.layers.dummies, "icon-image", map.images.pixel);
         map.setLayoutProperty(map.layers.dummies, "icon-padding", 20 / map.pixelRatio);
@@ -420,7 +427,8 @@ MapboxMap {
         map.addLayer(map.layers.poisSelected, {"type": "circle", "source": map.sources.poisSelected});
         map.addLayer(map.layers.pois, {"type": "symbol", "source": map.sources.pois});
         map.addLayer(map.layers.poisBookmarked, {"type": "symbol", "source": map.sources.poisBookmarked});
-        map.addLayer(map.layers.route, {"type": "line", "source": map.sources.route}, map.firstLabelLayer);
+        map.addLayer(map.layers.route, {"type": "line", "source": map.sources.route}, map.firstRouteLayer);
+        map.addLayer(map.layers.routeOutline, {"type": "line", "source": map.sources.route}, map.firstLabelLayer);
         map.addLayer(map.layers.maneuvers, {
                          "type": "circle",
                          "source": map.sources.maneuvers,
@@ -461,6 +469,7 @@ MapboxMap {
     function setBasemap() {
         // Set the basemap to use and related properties.
         map.firstLabelLayer = py.evaluate("poor.app.basemap.first_label_layer");
+        map.firstRouteLayer = py.evaluate("poor.app.basemap.first_route_layer");
         map.format = py.evaluate("poor.app.basemap.format");
         map.urlSuffix = py.evaluate("poor.app.basemap.url_suffix");
         var processed = py.call_sync("poor.app.basemap.process_style", []);

@@ -5,7 +5,8 @@
         "Improve this map": "https://www.mapbox.com/map-feedback"
     },
     "fingerprint": { "id": "navigation-preview-day-v4" },
-    "first_label_layer": "traffic-link-tunnel",
+    "first_label_layer": "waterway-label",
+    "first_route_layer": "traffic-link-tunnel",
     "format": "mapbox-gl",
     "lang": { "local": "{name}", "en": "{name_en}", "es": "{name_es}", "fr": "{name_fr}", "de": "{name_de}", "ru": "{name_ru}", "zh": "{name_zh}", "zh-simpl": "{name_zh-Hans}", "pt": "{name_pt}", "ar": "{name_ar}", "ja": "{name_ja}", "ko": "{name_ko}" },
     "lang_key": "{name_en}",
