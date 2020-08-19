@@ -31,8 +31,10 @@ Item {
     property alias inputMethodHints: entry.inputMethodHints
     property alias label: lab.text
     property alias placeholderText: entry.placeholderText
-    property alias text: entry.text
+    property string text
     property alias validator: entry.validator
+
+    property bool  _ignoreTextUpdate: false
 
     signal enter
 
@@ -50,6 +52,12 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: styler.themeHorizontalPageMargin
         Keys.onReturnPressed: row.enter()
+
+        onDisplayTextChanged: {
+            _ignoreTextUpdate = true;
+            row.text = displayText;
+            _ignoreTextUpdate = false;
+        }
     }
 
     Label {
@@ -64,5 +72,12 @@ Item {
         height: text ? implicitHeight : 0
         visible: text
         wrapMode: Text.WordWrap
+    }
+
+    Component.onCompleted: entry.text = row.text
+
+    onTextChanged: {
+        if (_ignoreTextUpdate) return;
+        entry.text = row.text
     }
 }
