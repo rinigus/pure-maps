@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import QtMultimedia 5.2
+import QtMultimedia 5.6
 import "."
 import "platform"
 
@@ -87,6 +87,7 @@ ApplicationWindowPL {
 
     Audio {
         id: sound
+        audioRole: Audio.NotificationRole
         autoLoad: true
         loops: 1
     }
