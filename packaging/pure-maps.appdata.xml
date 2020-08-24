@@ -38,6 +38,18 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.29.0" date="2020-08-24">
+     <description>
+       <ul>
+         <li>Show route using casing to reduce interference with traffic</li>
+         <li>Use Audio.NotificationRole for instructions</li>
+         <li>[ubports] Fix text update in POIs</li>
+         <li>[ubports] Add slim builds [jonnius]</li>
+         <li>[ubports] Update docs [jonnius]</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="1.28.1" date="2020-07-11">
      <description>
        <ul>

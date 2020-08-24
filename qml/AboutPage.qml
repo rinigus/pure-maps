@@ -78,7 +78,7 @@ PagePL {
                 font.pixelSize: styler.themeFontSizeSmall
                 height: implicitHeight
                 horizontalAlignment: Text.AlignRight
-                text: "2014–2018 Osmo Salomaa\n2018 Rinigus"
+                text: "2014–2018 Osmo Salomaa\n2018-2020 Rinigus"
             }
 
             ListItemLabel {

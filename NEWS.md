@@ -1,3 +1,13 @@
+2020-08-24: Pure Maps 1.29
+==========================
+
+* Show route using casing to reduce interference with traffic
+* Use Audio.NotificationRole for instructions
+* [ubports] Fix text update in POIs
+* [ubports] Add slim builds [jonnius]
+* [ubports] Update docs [jonnius]
+* Update translations
+
 2020-07-02: Pure Maps 1.28
 ==========================
 
