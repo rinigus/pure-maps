@@ -16,10 +16,10 @@ DBUSDIR    = $(DESTDIR)$(PREFIX)/share/dbus-1/services
 ICONDIR    = $(DESTDIR)$(PREFIX)/share/icons/hicolor
 METADIR    = $(DESTDIR)$(PREFIX)/share/metainfo
 LANGS      = $(basename $(notdir $(wildcard po/*.po)))
-LCONVERT   = $(or $(wildcard /usr/lib/qt5/bin/lconvert),\
+LCONVERT   = $(or $(wildcard /usr/lib*/qt5/bin/lconvert),\
 		  $(wildcard /bin/lconvert),\
 		  $(wildcard /usr/bin/lconvert),\
-		  $(wildcard /usr/lib/*/qt5/bin/lconvert))
+		  $(wildcard /usr/lib*/*/qt5/bin/lconvert))
 QMLRUNNER = qmlrunner -P INSTALL_PREFIX/share FULL_NAME
 QT_PLATFORM_STYLE =
 QT_PLATFORM_FALLBACK_STYLE =
@@ -237,10 +237,10 @@ rpm-silica:
 	$(MAKE) NAME=harbour-pure-maps QMLRUNNER="sailfish-qml FULL_NAME" .rpm-silica-imp
 
 .rpm-silica-imp:
-	$(MAKE) platform-silica
 	$(MAKE) dist
 	mkdir -p $$HOME/rpmbuild/SOURCES
 	cp dist/$(RELEASE).tar.xz $$HOME/rpmbuild/SOURCES
+	cp apikeys.py $$HOME/rpmbuild/SOURCES
 	rm -rf $$HOME/rpmbuild/BUILD/$(RELEASE)
 	rpmbuild -ba --nodeps rpm/$(NAME).spec
 	cp $$HOME/rpmbuild/RPMS/noarch/$(RELEASE)-*.rpm rpm

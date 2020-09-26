@@ -10,6 +10,7 @@ packaging
 routers
 rpm
 thirdparty
+tools
 AUTHORS.md
 COPYING
 Makefile
