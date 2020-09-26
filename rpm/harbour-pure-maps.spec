@@ -64,7 +64,7 @@ search for nearby places by type and share your location.
 %if 0%{?sailfishos}
 make platform-silica
 %else
-cp apikeys.py tools/
+cp %{SOURCE1} tools/
 tools/manage-keys inject . || true
 make platform-kirigami
 %endif
