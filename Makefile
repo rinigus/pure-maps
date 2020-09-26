@@ -237,10 +237,10 @@ rpm-silica:
 	$(MAKE) NAME=harbour-pure-maps QMLRUNNER="sailfish-qml FULL_NAME" .rpm-silica-imp
 
 .rpm-silica-imp:
-	$(MAKE) platform-silica
 	$(MAKE) dist
 	mkdir -p $$HOME/rpmbuild/SOURCES
 	cp dist/$(RELEASE).tar.xz $$HOME/rpmbuild/SOURCES
+	cp apikeys.py $$HOME/rpmbuild/SOURCES
 	rm -rf $$HOME/rpmbuild/BUILD/$(RELEASE)
 	rpmbuild -ba --nodeps rpm/$(NAME).spec
 	cp $$HOME/rpmbuild/RPMS/noarch/$(RELEASE)-*.rpm rpm

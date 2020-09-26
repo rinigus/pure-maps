@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Pure Maps Uri Handler
+MimeType=x-scheme-handler/geo
+Exec=pure-maps %u
+Icon=pure-maps
+Type=Application
+NoDisplay=true

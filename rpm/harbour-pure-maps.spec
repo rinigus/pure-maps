@@ -24,9 +24,8 @@ Summary: Maps and navigation
 License: GPLv3+
 URL:     https://github.com/rinigus/pure-maps
 Source:  %{name}-%{version}.tar.xz
-%if !0%{?sailfishos}
 Source1: apikeys.py
-%endif
+
 BuildArch: noarch
 
 BuildRequires: gettext
@@ -61,11 +60,12 @@ search for nearby places by type and share your location.
 
 %prep
 %setup -q
+cp %{SOURCE1} tools/
+tools/manage-keys inject . || true
+
 %if 0%{?sailfishos}
 make platform-silica
 %else
-cp %{SOURCE1} tools/
-tools/manage-keys inject . || true
 make platform-kirigami
 %endif
 
@@ -77,8 +77,7 @@ make DESTDIR=%{buildroot} PREFIX=/usr INCLUDE_GPXPY=yes install
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-#%{_datadir}/applications/%{name}-uri-handler.desktop
-#%{_datadir}/dbus-1/services/io.github.rinigus.PureMaps.service
+%{_datadir}/applications/%{name}-uri-handler.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %if 0%{?sailfishos}
 %exclude %{_datadir}/metainfo/%{name}.appdata.xml
