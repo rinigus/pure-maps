@@ -74,7 +74,7 @@ make DESTDIR=%{buildroot} PREFIX=/usr INCLUDE_GPXPY=yes install
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}
+%{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 #%{_datadir}/applications/%{name}-uri-handler.desktop
