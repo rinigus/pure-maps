@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Ladislav Hodas <ladislav@hodas.sk>, 2020
+# Priit Jõerüüt <transifex@joeruut.com>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -13,34 +13,34 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-18 11:39+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Ladislav Hodas <ladislav@hodas.sk>, 2020\n"
-"Language-Team: Slovak (Slovakia) (https://www.transifex.com/rinigus/teams/89597/sk_SK/)\n"
+"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2020\n"
+"Language-Team: Estonian (https://www.transifex.com/rinigus/teams/89597/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sk_SK\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+"Language: et\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: guides/foursquare.py:191
 msgid "Opening hours:"
-msgstr "Otváracia doba:"
+msgstr "Tööajad:"
 
 #: poor/geocoder.py:110
 msgid "Point from geo link"
-msgstr "Bod z geo link"
+msgstr "Asukoht geolingi alusel"
 
 #: poor/geocoder.py:122
 msgid "Point from coordinates"
-msgstr "Bod zo súradníc"
+msgstr "Asukoht koordinaatide alusel"
 
 #: poor/geocoder.py:134
 msgid "Point from Plus code"
-msgstr "Bod z Plus code"
+msgstr "Asukoht OLC-koodi alusel"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
 #: poor/router.py:111
 msgid "Connection timed out"
-msgstr "Čas pripojenia vypršal"
+msgstr "Ühendus aegus"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137
@@ -49,112 +49,112 @@ msgstr "Čas pripojenia vypršal"
 #: qml/RoutePage.qml:442 qml/RoutePage.qml:444 qml/RoutePoint.qml:42
 #: qml/RoutePoint.qml:58
 msgid "Current position"
-msgstr "Aktuálna poloha"
+msgstr "Praegune asukoht"
 
 #: poor/keystore.py:50
 msgid ""
 "Foursquare Client ID. Register at https://developer.foursquare.com and "
 "create your own Client ID and Client Secret keys"
 msgstr ""
-"Foursquare Client ID. Zaregistrujte sa na https://developer.foursquare.com a"
-" vytvorte svoje osobné ID aplikácie a osobný kľúč"
+"Foursquare klienditunnus. Registreeru https://developer.foursquare.com "
+"saidis ning loo oma klienditunnus ning kliendivõti"
 
 #: poor/keystore.py:51
 msgid "Foursquare Client ID"
-msgstr "ID klienta Foursquare"
+msgstr "Foursquare klienditunnus"
 
 #: poor/keystore.py:52
 msgid "Foursquare Client Secret"
-msgstr "Osobný kľúč Foursquare"
+msgstr "Foursquare kliendivõti"
 
 #: poor/keystore.py:55
 msgid ""
 "Mapbox API key. Register at https://www.mapbox.com and create your own API "
 "key"
 msgstr ""
-"Mapbox API kľúč. Zaregistrujte sa na https://www.mapbox.com a vytvorte svoj "
-"osobný kľúč"
+"Mapbox API võti. Registreeru https://www.mapbox.com saidis ja loo oma API "
+"võti"
 
 #: poor/keystore.py:56
 msgid "Mapbox API key"
-msgstr "Osobný kľúč Mapbox API"
+msgstr "Mapbox API võti"
 
 #: poor/keystore.py:59
 msgid ""
 "MapQuest API key. Register at https://developer.mapquest.com/ and create "
 "your own API key"
 msgstr ""
-"MapQuest API kľúč. Zaregistrujte sa na https://developer.mapquest.com/ a "
-"vytvorte svoj osobný API kľúč"
+"MapQuest API võti. Registreeru https://developer.mapquest.com/ saidis ja loo"
+" oma API võti"
 
 #: poor/keystore.py:60
 msgid "MapQuest API key"
-msgstr "Osobný kľúč MapQuest API"
+msgstr "MapQuest API võti"
 
 #: poor/keystore.py:63
 msgid ""
 "OpenCage API key. Register at https://opencagedata.com/ and create your own "
 "API key"
 msgstr ""
-"OpenCage API kľúč. Zaregistrujte sa na https://opencagedata.com/ a vytvorte "
-"svoj osobný API kľúč"
+"OpenCage API võti. Registreeru https://opencagedata.com/ saidis ja loo oma "
+"API võti"
 
 #: poor/keystore.py:64
 msgid "OpenCage API key"
-msgstr "Osobný kľúč OpenCage API"
+msgstr "OpenCage API võti"
 
 #: poor/keystore.py:67
 msgid ""
 "Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
 " API key"
 msgstr ""
-"Stadia Maps API kľúč. Zaregistrujte sa na https://stadiamaps.com/ a vytvorte"
-" svoj osobný API kľúč"
+"Stadia Maps API võti. Registreeru https://stadiamaps.com/ saidis ja loo oma "
+"API võti"
 
 #: poor/keystore.py:68
 msgid "Stadia Maps API key"
-msgstr "Osobný kľúč Stadia Maps API"
+msgstr "Stadia Maps API võti"
 
 #: poor/keystore.py:71
 msgid ""
 "HERE App ID. Register at https://developer.here.com and create your own App "
 "ID and Code"
 msgstr ""
-"ID HERE App. Zaregistrujte sa na https://developer.here.com a vytvorte svoje"
-" osobné ID aplikácie a osobný kód"
+"HERE rakenduse tunnus (App ID). Registreeru https://developer.here.com "
+"saidis ja loo oma rakenduse tunnus ning kood"
 
 #: poor/keystore.py:72
 msgid "HERE App ID"
-msgstr "ID aplikácie HERE"
+msgstr "HERE rakenduse tunnus"
 
 #: poor/keystore.py:73 poor/keystore.py:74
 msgid "HERE App Code"
-msgstr "Osobný kód aplikácie HERE"
+msgstr "HERE rakenduse kood"
 
 #: poor/narrative.py:131
 #, python-brace-format
 msgid "In {distance}, {direction}"
-msgstr "O {distance}, {direction}"
+msgstr "{distance} kaugusel, {direction}"
 
 #: poor/narrative.py:222 poor/narrative.py:224
 msgid "Exit: "
-msgstr "Výjazd: "
+msgstr "Ärapööre: "
 
 #: poor/narrative.py:621 qml/Navigator.qml:187
 msgid "New route found"
-msgstr "Bola nájdená nová trasa"
+msgstr "Leidsin uue teekonna"
 
 #: poor/narrative.py:622 qml/Navigator.qml:171
 msgid "Rerouting"
-msgstr "Presmerovanie"
+msgstr "Muudan teekonda"
 
 #: poor/narrative.py:623 qml/Navigator.qml:192
 msgid "Rerouting failed"
-msgstr "Presmerovanie bolo neúspešné"
+msgstr "Teekonna muutmine ei õnnestunud"
 
 #: poor/narrative.py:624
 msgid "Starting navigation"
-msgstr "Spúšťa sa navigovanie"
+msgstr "Alustan teekonda"
 
 #: poor/util.py:227 poor/util.py:238
 msgid "mi"
@@ -162,7 +162,7 @@ msgstr "mi"
 
 #: poor/util.py:227 poor/util.py:238
 msgid "miles"
-msgstr "míle"
+msgstr "miili"
 
 #: poor/util.py:231 qml/Meters.qml:85
 msgid "ft"
@@ -170,15 +170,15 @@ msgstr "ft"
 
 #: poor/util.py:231
 msgid "feet"
-msgstr "stôp"
+msgstr "jalga"
 
 #: poor/util.py:242 qml/Meters.qml:95
 msgid "yd"
-msgstr "yard"
+msgstr "yd"
 
 #: poor/util.py:242
 msgid "yards"
-msgstr "yardov"
+msgstr "jardi"
 
 #: poor/util.py:249
 msgid "km"
@@ -186,7 +186,7 @@ msgstr "km"
 
 #: poor/util.py:249
 msgid "kilometers"
-msgstr "kilometrov"
+msgstr "kilomeetrit"
 
 #: poor/util.py:253 qml/Meters.qml:105
 msgid "m"
@@ -194,51 +194,51 @@ msgstr "m"
 
 #: poor/util.py:253
 msgid "meters"
-msgstr "metrov"
+msgstr "meetrit"
 
 #: poor/util.py:262 poor/util.py:270
 #, python-brace-format
 msgid "{distance} north"
-msgstr "{distance} severne"
+msgstr "{distance} põhjas"
 
 #: poor/util.py:263
 #, python-brace-format
 msgid "{distance} north-east"
-msgstr "{distance} severovýchodne"
+msgstr "{distance} kirdes"
 
 #: poor/util.py:264
 #, python-brace-format
 msgid "{distance} east"
-msgstr "{distance} východne"
+msgstr "{distance} idas"
 
 #: poor/util.py:265
 #, python-brace-format
 msgid "{distance} south-east"
-msgstr "{distance} juhovýchodne"
+msgstr "{distance} kagus"
 
 #: poor/util.py:266
 #, python-brace-format
 msgid "{distance} south"
-msgstr "{distance} južne"
+msgstr "{distance} lõunas"
 
 #: poor/util.py:267
 #, python-brace-format
 msgid "{distance} south-west"
-msgstr "{distance} juhozápadne"
+msgstr "{distance} edelas"
 
 #: poor/util.py:268
 #, python-brace-format
 msgid "{distance} west"
-msgstr "{distance} západne"
+msgstr "{distance} läänes"
 
 #: poor/util.py:269
 #, python-brace-format
 msgid "{distance} north-west"
-msgstr "{distance} severozápadne"
+msgstr "{distance} loodes"
 
 #: poor/util.py:286 poor/util.py:296
 msgid "plus code"
-msgstr "plus kód"
+msgstr "OLC-kood"
 
 #: poor/util.py:309
 msgid "{:d} min"
@@ -250,91 +250,95 @@ msgstr "{:d} h {:d} min"
 
 #: routers/digitransit.py:58
 msgid "airplane"
-msgstr "lietadlo"
+msgstr "lennuk"
 
 #: routers/digitransit.py:59 standard input:11 standard input:13 standard
 #: input:15 standard input:17 standard input:21
 msgid "bicycle"
-msgstr "bicykel"
+msgstr "jalgratas"
 
 #: routers/digitransit.py:60
 msgid "bus"
-msgstr "autobus"
+msgstr "buss"
 
 #: routers/digitransit.py:61
 msgid "ferry"
-msgstr "trajekt"
+msgstr "praam"
 
 #: routers/digitransit.py:62
 msgid "train"
-msgstr "vlak"
+msgstr "rong"
 
 #: routers/digitransit.py:63
 msgid "metro"
-msgstr "metro"
+msgstr "metroo"
 
 #: routers/digitransit.py:64
 msgid "tram"
-msgstr "električka"
+msgstr "tramm"
 
 #: routers/digitransit.py:65
 msgid "walk"
-msgstr "chôdza"
+msgstr "kõndimine"
 
 #: routers/digitransit.py:69
 #, python-brace-format
 msgid "Walk towards {arr_name}."
-msgstr "Choďte smerom k {arr_name}."
+msgstr "Kõnni {arr_name} suunas."
 
 #: routers/digitransit.py:70
 #, python-brace-format
 msgid "Get a city bike at {dep_name}."
-msgstr "Použite mestský bicykel v {dep_name}."
+msgstr "Võta rendijalgratas {dep_name} laenutuspunktist."
 
 #: routers/digitransit.py:71 routers/digitransit.py:74
 #, python-brace-format
 msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "Naloďte sa {mode_name} {line_desc} v {dep_name} o {dep_time}."
+msgstr ""
+"Kasuta {mode_name} {line_desc} {dep_name} peatuses väljumisega {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr "Ísť smerom k cieľu."
+msgstr "Kõnni oma sihtkoha suunas."
 
 #: routers/digitransit.py:73
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "Odložte mestský bicykel v {dep_name} a choďte smerom k {arr_name}."
+msgstr ""
+"Jäta rendijalgratas {dep_name} laentuspunkti ning kõnni {arr_name} suunas."
 
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr "Odložte mestský bicykel v {dep_name} a choďte smerom k cieľu."
+msgstr ""
+"Jäta rendijalgratas {dep_name} laentuspunkti ning kõnni oma sihtkoha suunas."
 
 #: routers/digitransit.py:76
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Vystúpte v {dep_name} a choďte smerom k {arr_name}."
+msgstr "Mine maha {dep_name} peatuses ja kõnni {arr_name} suunas."
 
 #: routers/digitransit.py:77
 #, python-brace-format
 msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Vystúpte v {dep_name} a bicyklujte smerom k {arr_name}."
+msgstr "Lahku {dep_name}  laenutuspunktist ja sõida {arr_name} suunas."
 
 #: routers/digitransit.py:78
 #, python-brace-format
 msgid ""
 "Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
 msgstr ""
-"Vystúpte v {dep_name} a presuňte sa {mode_name} {line_desc} o {dep_time}."
+"Mine maha {dep_name} peatuses ja istu ümber {mode_name} {line_desc} "
+"väljumisega {dep_time}."
 
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Vystúpte v {dep_name} a choďte smerom k cieľu."
+msgstr "Mine maha {dep_name} peatuses ja kõnni oma sihtkoha suunas."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
-msgstr "Prichádzate do cieľa."
+msgstr "Sa saabud oma sihtkohta."
 
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:114
 #: routers/ValhallaSettings.qml:150 routers/ValhallaSettings.qml:203
@@ -342,78 +346,78 @@ msgstr "Prichádzate do cieľa."
 #: routers/ValhallaSettings.qml:254 routers/ValhallaSettings.qml:274
 #: routers/ValhallaSettings.qml:290
 msgid "Prefer"
-msgstr "Uprednostniť"
+msgstr "Eelista"
 
 #: guides/foursquare_settings.qml:29
 msgid "Closest"
-msgstr "Najbližší"
+msgstr "Lähim"
 
 #: guides/foursquare_settings.qml:29
 msgid "Best"
-msgstr "Najlepší"
+msgstr "Parim"
 
 #: guides/osmscout_name.qml:27
 msgid "Venue name"
-msgstr "Názov miesta"
+msgstr "Huvipunkti nimi"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
 #: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:202
 #: qml/RoutePage.qml:280
 msgid "Remove"
-msgstr "Odstrániť"
+msgstr "Eemalda"
 
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
 #: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
 #: qml/PreferencesPage.qml:677
 msgid "Search"
-msgstr "Hľadať"
+msgstr "Otsi"
 
 #: guides/osmscout_name.qml:81
 msgid "You can search for venues by name."
-msgstr "Miesta môžete vyhľadávať podľa názvu."
+msgstr "Sa võid huvipunkte otsida nime alusel."
 
 #: guides/osmscout_settings.qml:28
 msgid "Name"
-msgstr "Názov"
+msgstr "Nimi"
 
 #: guides/osmscout_settings.qml:51
 msgid "Search along the route"
-msgstr "Vyhľadávanie po trase"
+msgstr "Otsi teekonna ääres"
 
 #: guides/osmscout_settings.qml:75
 msgid ""
 "When set, the search along the route is performed starting from the point "
 "specified by 'Near' on this page"
 msgstr ""
-"Keď je nastavené, vyhľadávanie po trase sa vykonáva z miesta určeného v "
-"'Neďaleko' na tejto stránke"
+"Kui see valik on kasutusel, siis otsing teekonna ääres algab punktist mille "
+"sa sellel lehel oled määratlenud kui „Lähedal“"
 
 #: guides/osmscout_settings.qml:76
 msgid "Search starting from the reference point"
-msgstr "Vyhľadávanie začína od referenčného bodu"
+msgstr "Otsi alates valitud asukohast"
 
 #: qml/AboutPage.qml:25 qml/MenuPage.qml:33
 msgid "About Pure Maps"
-msgstr "O Pure Maps"
+msgstr "Pure Maps rakenduse teave"
 
 #: qml/AboutPage.qml:58
 msgid "version %1"
-msgstr "verzia %1"
+msgstr "versioon %1"
 
 #: qml/AboutPage.qml:63
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
 msgstr ""
-"GitHub <a href=\"https://github.com/rinigus/pure-maps\">stránka projektu "
-"</a>"
+"<a href=\"https://github.com/rinigus/pure-maps\">Arendusprojekti leht</a> "
+"GitHub'is"
 
 #: qml/AboutPage.qml:88
 msgid ""
 "Artwork by %1 and %2\n"
 "Banner photo by %3 (Pexels License)"
 msgstr ""
-"Dizajn %1 and %2\n"
-"Prúžková snímka od %3 (Licencia Pexels)"
+"Kujunduse autorid %1 ja %2\n"
+"Päisefoto autor %3 (Pexels License)"
 
 #: qml/AboutPage.qml:96
 msgid ""
@@ -422,22 +426,22 @@ msgid ""
 "title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" "
 "title=\"Flaticon\">www.flaticon.com</a>"
 msgstr ""
-"Pohybové ikony boli vytvorené <a "
+"Transpordiga seotud ikoonide autor <a "
 "href=\"https://www.flaticon.com/authors/freepik\" "
-"title=\"Freepik\">Freepik</a> z <a href=\"https://www.flaticon.com/\" "
-"title=\"Flaticon\">www.flaticon.com</a>"
+"title=\"Freepik\">Freepik</a> <a href=\"https://www.flaticon.com/\" "
+"title=\"Flaticon\">www.flaticon.com</a> saidist"
 
 #: qml/AboutPage.qml:109
 msgid ""
 "Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
-"Pure Maps je voľný softvér vydávaný pod GNU General Public License (GPL), "
-"verzie 3 alebo novšej."
+"Pure Maps on GNU Üldine Avalik Litsentsi (GPL) versiooni 3 või hilisema "
+"alusel litsentsitud vaba tarkvara."
 
 #: qml/AboutPage.qml:114
 msgid "Translated by"
-msgstr "Preložil"
+msgstr "Tõlked"
 
 #. TRANSLATORS: This is a special message that shouldn't be translated
 #. literally. It is used in the about page to give credits to the translators.
@@ -446,152 +450,152 @@ msgstr "Preložil"
 #. write them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:126
 msgid "translator-credits"
-msgstr "autori prekladu"
+msgstr "Priit Jõerüüt"
 
 #: qml/AboutPage.qml:136
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
-" Do Transifex môžete pridať nový preklad používateľského rozhrania alebo "
-"prispieť k existujúcemu."
+"Transifex'i saidis saad sa lisada uusi liidese tõlkeid või täiendada "
+"olemasolevaid."
 
 #: qml/AboutPage.qml:142
 msgid ""
 "Translations at <a href=\"https://www.transifex.com/rinigus/pure-"
 "maps\">Transifex page</a>"
 msgstr ""
-"Preklad na <a href=\"https://www.transifex.com/rinigus/pure-maps\">Transifex"
-" stránke </a>"
+"Tõlked <a href=\"https://www.transifex.com/rinigus/pure-maps\">Transifex'i "
+"saidis</a>"
 
 #: qml/AttributionPage.qml:24
 msgid "Attribution"
-msgstr "Kompetencia"
+msgstr "Kasutatud lahendused"
 
 #: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:69
 #: qml/MenuPage.qml:94
 msgid "Maps"
-msgstr "Mapy"
+msgstr "Kaardid"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
-msgstr "Miesta"
+msgstr "Kohad ja paigad"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/PreferencesPage.qml:399
 #: qml/RoutePage.qml:25
 msgid "Navigation"
-msgstr "Navigácia"
+msgstr "Teekonnad"
 
 #: qml/BasemapButton.qml:201 qml/NearbyPage.qml:105 qml/PoiEditPage.qml:57
 #: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Type"
-msgstr "Typ"
+msgstr "Tüüp"
 
 #: qml/BasemapButton.qml:221 routers/digitransit_settings.qml:146
 #: qml/js/util.js:236
 msgid "Default"
-msgstr "Východiskový"
+msgstr "Vaikimisi"
 
 #: qml/BasemapButton.qml:222
 msgid "Guidance"
-msgstr "Riadenie"
+msgstr "Juhised"
 
 #: qml/BasemapButton.qml:223
 msgid "Hybrid"
-msgstr "Zmiešaný"
+msgstr "Hübriidkaart"
 
 #: qml/BasemapButton.qml:224
 msgid "Preview"
-msgstr "Náhľad"
+msgstr "Eelvaade"
 
 #: qml/BasemapButton.qml:225
 msgid "Satellite"
-msgstr "Satelltný"
+msgstr "Satelliidikaart"
 
 #: qml/BasemapButton.qml:226
 msgid "Terrain"
-msgstr "Terén"
+msgstr "Maastikukaart"
 
 #: qml/BasemapButton.qml:227
 msgid "Traffic"
-msgstr "Premávka"
+msgstr "Liikluskaart"
 
 #: qml/BasemapButton.qml:242
 msgid "Light"
-msgstr "Režim"
+msgstr "Valgustus"
 
 #: qml/BasemapButton.qml:259
 msgid "Day"
-msgstr "Deň"
+msgstr "Päev"
 
 #: qml/BasemapButton.qml:260
 msgid "Night"
-msgstr "Noc"
+msgstr "Öö"
 
 #: qml/BasemapButton.qml:275
 msgid "Transport"
-msgstr "Doprava"
+msgstr "Transpordikaart"
 
 #: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:378 qml/RoutePage.qml:387
 #: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Bicycle"
-msgstr "Bicykel"
+msgstr "Jalgratas"
 
 #: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:378 qml/RoutePage.qml:387
 #: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Car"
-msgstr "Automobil"
+msgstr "Auto"
 
 #: qml/BasemapButton.qml:294 routers/ValhallaSettings.qml:131
 msgid "Walking"
-msgstr "Chôdza"
+msgstr "Jalgsi"
 
 #: qml/BasemapButton.qml:295 routers/ValhallaSettings.qml:37
 msgid "Public transport"
-msgstr "Verejná doprava"
+msgstr "Ühistransport"
 
 #: qml/BasemapButton.qml:357
 msgid "Map scale"
-msgstr "Mierka"
+msgstr "Kaardi skaala"
 
 #: qml/BasemapButton.qml:374
 msgid "Map scale during navigation"
-msgstr "Mierka počas navigácie"
+msgstr "Skaleeri kaarti tee näitamise ajal"
 
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
-msgstr "Mapa: %1"
+msgstr "Kaart: %1"
 
 #: qml/CenterButton.qml:110 qml/MapGestureArea.qml:43
 msgid "Auto-center off"
-msgstr "Automatické centrovanie vypnuté"
+msgstr "Kaardivaade ei ole automaatselt joondatud keskele"
 
 #: qml/CenterButton.qml:118 qml/MapGestureArea.qml:42
 msgid "Auto-center on"
-msgstr "Automatické centrovanie zapnuté"
+msgstr "Kaardivaade on automaatselt joondatud keskele"
 
 #: qml/CenterButton.qml:124
 msgid "Tap center button again for auto-center"
-msgstr "Pre automatické centrovanie ťuknite opäť centrovacie tlačidlo"
+msgstr "Kaardi joondamiseks keskele klõpsi musta mummu"
 
 #: qml/GeocodeItem.qml:42
 msgid "No selection"
-msgstr "Žiaden výber"
+msgstr "Valik puudub"
 
 #: qml/GeocodeItem.qml:386
 msgid "Suggestions (%1)"
-msgstr "Návrhy (%1)"
+msgstr "Soovitused (%1)"
 
 #: qml/GeocodeItem.qml:407
 msgid "Error while fetching results"
-msgstr "Chyba pri načítaní výsledkov"
+msgstr "Tulemuste laadimisel tekkis viga"
 
 #: qml/GeocodeItem.qml:416
 msgid "Searching ..."
-msgstr "Hľadanie ..."
+msgstr "Otsin ..."
 
 #: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:143
 #: routers/default_results.qml:90 routers/default_results.qml:93
@@ -603,58 +607,58 @@ msgstr "Hľadanie ..."
 #: routers/osrm_results.qml:90 routers/osrm_results.qml:93
 #: routers/stadiamaps_results.qml:90 routers/stadiamaps_results.qml:93
 msgid "No results"
-msgstr "Žiadne výsledky"
+msgstr "Tulemusi ei leidu"
 
 #: qml/GeocodeItem.qml:426
 msgid "Results (%1)"
-msgstr "Výsledky (%1)"
+msgstr "Tulemused (%1)"
 
 #: qml/GeocodeItem.qml:462
 msgid "Points of Interest (%1)"
-msgstr "Zaujímavé miesta (%1)"
+msgstr "Huvipunktid (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePage.qml:319 qml/RoutePage.qml:321
 #: qml/RoutePoint.qml:62
 msgid "Unnamed point"
-msgstr "Nepomenovaný bod"
+msgstr "Tundmatu asukoht"
 
 #: qml/GeocodeItem.qml:493
 msgid "Recent searches (%1)"
-msgstr "Predošlé hľadania (%1)"
+msgstr "Hiljutised otsingud (%1)"
 
 #: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
 #: qml/RoutePointPage.qml:31
 msgid "Using %1"
-msgstr "Použiť %1"
+msgstr "Kasutades %1"
 
 #: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:88 qml/RootPage.qml:25
 msgid "Map"
-msgstr "Mapa"
+msgstr "Kaart"
 
 #: qml/GeocodePage.qml:47 qml/GeocodePage.qml:83
 msgid "Search: %1"
-msgstr "Hľadať: %1"
+msgstr "Otsing: %1"
 
 #: qml/GeocodePage.qml:78 qml/NearbyResultsPage.qml:72
 msgid "%1 [duplicate]"
-msgstr "%1 [duplicate]"
+msgstr "%1 [topeltkirje]"
 
 #: qml/GeocoderPage.qml:27 qml/GuidePage.qml:27
 msgid "Search engine"
-msgstr "Vyhľadávací stroj"
+msgstr "Otsingumootor"
 
 #: qml/InitPage.qml:33
 msgid "Initializing"
-msgstr "Spúšťanie"
+msgstr "Käivitan rakendust"
 
 #: qml/InitPage.qml:46
 msgid "Dismiss"
-msgstr "Odmietnuť"
+msgstr "Jäta pooleli"
 
 #: qml/InitPage.qml:47
 msgid "Missing Mapbox key"
-msgstr "Chýbajúci kľúč Mapbox"
+msgstr "Mapbox API võti on puudu"
 
 #: qml/InitPage.qml:48
 msgid ""
@@ -662,25 +666,25 @@ msgid ""
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
-"Chýba kľúč Mapbox API. Zaregistrujte sa, prosím, v Mapbox a vyplňte svoj "
-"osobný kľúč API v Predvoľbách. Tento kľúč nie je potrebný ak plánujete "
-"používať Pure Maps s poskytovateľom offline máp."
+"Sinu paigalduses on puudu Mapbox API võti. Palun regsiteeri Mapbox'i saidis "
+"ja sisesta seadistustes oma isiklik Mapbox API võti. Kui sa kasutad Pure "
+"Maps'is võrguvaba kaarditeenuse pakkujat, siis seda pole vaja teha."
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
-msgstr "Chyba"
+msgstr "Viga"
 
 #: qml/MapErrorPage.qml:34
 msgid "Error occurred while loading current map."
-msgstr "Pri načítaní mapy sa vyskytla chyba."
+msgstr "Kasutuseloleva kaardi laadimisel tekkis viga."
 
 #: qml/MapErrorPage.qml:40
 msgid ""
 "Depending on the used map provider, error could be caused by network failure, expired API access key, absence of offline server. Try to address the issue and/or change your map provider, preferences, or profile.\n"
 "If you change API access key, you may have to restart Pure Maps."
 msgstr ""
-"V závislosti od poskytovateľa máp, mohla byť chyba spôsobená zlyhaním siete, vypršaním prístupového kľúča API alebo chýbajúcim offline serverom. Pokúste sa určiť príčinu a/alebo zmeňte poskytovateľa máp, predvoľby alebo profil.\n"
-"Ak zmeníte prístupový kľúč API, musíte rešrtartovať Pure Maps."
+"Sõltuvalt kasutatud kaarditeenuse pakkujast võib see viga olla põhjustatud võrgukatkestusest, aegunud API võtmest või võrguvaba lahenduse serveri puudumisest. Lahendusena vaheta kaarditeenuse pakkujat, oma profiili või muid seadistusi.\n"
+"Kui sa muudad API võtmeid, siis tavaliselt on vajalik Pure Maps rakenduse uuesti käivitamine."
 
 #: qml/MapErrorPage.qml:51
 msgid ""
@@ -690,73 +694,74 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
-"Používate offline profil. Uistite sa, že máte nainštalovaný OSM Scout Server"
-" a že je spustený. V závislosti od systému, je dostupný v obchodoch s "
-"aplikáciami (OpenRepos pre Sailfish OS, OpenStore pre UBPorts), Flathub. Pre"
-" získanie viac informácií pozrite <a href=\"https://rinigus.github.io"
-"/osmscout-server\">OSM Scout Server príručku</a> ."
+"Sa kasutad võrguühenduseta profiili. Palun kontrolli, et seadmesse oleks "
+"paigaldatud OSM Scout Server ning ta ka töötaks. Sõltuvalt missugust "
+"operatsioonisüsteemi sa kasutad, on ta sadaval kas rakendustepoest (Sailfish"
+" OS - OpenRepos, UBPorts - OpenStore), Flathub'ist või sinu distributsiooni "
+"repositooriumist. Lisateavet leiad <a href=\"https://rinigus.github.io"
+"/osmscout-server\">OSM Scout Serveri käsiraamatust</a>."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
 "Last error:\n"
 "%1"
 msgstr ""
-"Posledná chyba:\n"
+"Viimane viga:\n"
 "%1"
 
 #: qml/MapErrorPage.qml:75 qml/MenuPage.qml:100 qml/PreferencesPage.qml:25
 msgid "Preferences"
-msgstr "Predvoľby"
+msgstr "Eelistused"
 
 #: qml/MapErrorPage.qml:106 qml/MenuPage.qml:111
 msgid "Profile"
-msgstr "Profil"
+msgstr "Profiil"
 
 #: qml/MapErrorPage.qml:118 qml/MenuPage.qml:115
 msgid "Online"
-msgstr "Online"
+msgstr "Võrgukaardid"
 
 #: qml/MapErrorPage.qml:118 qml/MenuPage.qml:121
 msgid "Offline"
-msgstr "Offline"
+msgstr "Võrguühenduseta kaardid"
 
 #: qml/MapErrorPage.qml:118 qml/MenuPage.qml:127
 msgid "Mixed"
-msgstr "Zmiešaný"
+msgstr "Kombineeritud kaardid"
 
 #: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
 msgid "Stop navigation to select POI"
-msgstr "Pre výber POI zastavte navigáciu"
+msgstr "Huvipunkti valimiseks peata tee näitamine"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
-msgstr "Prestať sledovať pohyb"
+msgstr "Lõpeta liikumise jälgimine"
 
 #: qml/MenuPage.qml:66
 msgid "Nearby venues"
-msgstr "Okolité miesta"
+msgstr "Lähimad huvipunktid"
 
 #: qml/MenuPage.qml:72 qml/PoiPage.qml:28 qml/PoiPage.qml:127
 msgid "Bookmarks"
-msgstr "Záložky"
+msgstr "Järjehoidjad"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position"
-msgstr "Poskytnúť polohu"
+msgstr "Jaga praegust asukohta"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position (not ready)"
-msgstr "Poskytnúť polohu (zatiaľ nedostupné)"
+msgstr "Jaga praegust asukohta (pole valmis)"
 
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
-msgstr "Poskytnúť polohu"
+msgstr "Jaga praegust asukohta"
 
 #: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:332
 #: qml/NavigationCurrentBlock.qml:334 qml/NavigationSpeedBlock.qml:84
 #: qml/NavigationSpeedBlock.qml:86
 msgid "mph"
-msgstr "mi/h"
+msgstr "mph"
 
 #: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:336
 #: qml/NavigationSpeedBlock.qml:88
@@ -765,100 +770,100 @@ msgstr "km/h"
 
 #: qml/NarrativeItem.qml:117
 msgid "Continue for %1."
-msgstr "Pokračovať k %1."
+msgstr "Jätka %1."
 
 #: qml/NavigationButtonClear.qml:46
 msgid "Route removed"
-msgstr "Trasa odstránená"
+msgstr "Teekond on eemaldatud"
 
 #: qml/NavigationButtonStartPause.qml:64
 msgid "Stopped to follow the movement"
-msgstr "Sledovanie pohybu zastavené"
+msgstr "Lõpetasin liikumise jälgimine"
 
 #: qml/NavigationButtonStartPause.qml:69
 msgid "Navigation paused"
-msgstr "Navigovanie je prerušené"
+msgstr "Tee juhatamine lõppes"
 
 #: qml/NavigationButtonStartPause.qml:73
 msgid "Navigation started"
-msgstr "Navigovanie je spustené"
+msgstr "Tee juhatamine algas"
 
 #: qml/NavigationCurrentBlock.qml:180
 msgid "To route"
-msgstr "K trase"
+msgstr "Joonista teekonda"
 
 #: qml/NavigationOverviewBlock.qml:142
 msgid "ETA"
-msgstr "Cieľ"
+msgstr "Saabume"
 
 #: qml/NavigationPage.qml:25
 msgid "Maneuvers"
-msgstr "Inštrukcie"
+msgstr "Teekonna võimalused"
 
 #: qml/NavigationPage.qml:44
 msgid "Pause"
-msgstr "Prestávka"
+msgstr "Peata"
 
 #: qml/NavigationPage.qml:44 qml/PreferencesPage.qml:686 qml/RoutePage.qml:51
 msgid "Navigate"
-msgstr "Navigovať"
+msgstr "Asu teele"
 
 #: qml/NavigationPage.qml:57
 msgid "Reroute"
-msgstr "Presmerovať"
+msgstr "Muuda"
 
 #: qml/NavigationPage.qml:69
 msgid "Clear"
-msgstr "Vymazať"
+msgstr "Kustuta"
 
 #: qml/NavigationPage.qml:84
 msgid "Status"
-msgstr "Stav"
+msgstr "Olek"
 
 #: qml/NavigationPage.qml:133
 msgid "Estimated time of arrival"
-msgstr "Predpokladaný čas príjazdu"
+msgstr "Eeldatav saabumine"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
-msgstr "VÝJAZD"
+msgstr "VÄLJU"
 
 #: qml/Navigator.qml:150
 msgid "Voice navigation on"
-msgstr "Hlasová navigácia je zapnutá"
+msgstr "Hääljuhtimine on kasutusel"
 
 #: qml/Navigator.qml:153
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
-"Hlasová navigácia je nedostupná: chýba Text-to-Speech (TTS) stroj pre "
-"zvolený jazyk"
+"Hääljuhtimine ei ole saadaval: valitud keele jaoks puudub kõnesünteesi (TTS)"
+" mootor"
 
 #: qml/Navigator.qml:183
 msgid "Rerouting failed: %1"
-msgstr "Prepočítanie trasy zlyhalo: %1"
+msgstr "Teekonna muutmine ei õnnestunud: %1"
 
 #: qml/NearbyPage.qml:25
 msgid "Nearby Venues"
-msgstr "Okolité miesta"
+msgstr "Lähimad huvipunktid"
 
 #: qml/NearbyPage.qml:75
 msgid ""
 "Select a reference location next to which you want to perform the search."
-msgstr "Zvoľte referenčné miesto, kde chcete vykonať vyhľadávanie."
+msgstr "Vali asukoht, mille läheduses sa soovid huvipunkte leida."
 
 #: qml/NearbyPage.qml:76
 msgid "Near"
-msgstr "Blízko"
+msgstr "Mille lähedal"
 
 #: qml/NearbyPage.qml:77
 msgid "Near location"
-msgstr "Neďaleko polohy"
+msgstr "Otsi lähedast asukohta"
 
 #: qml/NearbyPage.qml:82
 msgid "Radius"
-msgstr "Okruh"
+msgstr "Otsinguraadius"
 
 #: qml/NearbyResultsPage.qml:115 routers/default_results.qml:39
 #: routers/digitransit_results.qml:213 routers/gpx_osmscout_results.qml:39
@@ -866,35 +871,37 @@ msgstr "Okruh"
 #: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
 #: routers/stadiamaps_results.qml:39
 msgid "Searching"
-msgstr "Hľadanie"
+msgstr "Otsin"
 
 #: qml/NearbyResultsPage.qml:123
 msgid "Nearby venues: %1"
-msgstr "Okolité miesta: %1"
+msgstr "Lähimad huvipunktid: %1"
 
 #: qml/NearbyResultsPage.qml:139
 msgid "%1 Results"
-msgstr "%1 Výsledkov"
+msgstr "%1 tulemust"
 
 #: qml/NorthArrow.qml:60
 msgid "Auto-rotation requires auto-centering to be enabled"
-msgstr "Automatické otáčanie vyžaduje povolenie automatického centrovania"
+msgstr ""
+"Automaatne kaardi pööramine eeldab, et kaardivaate automaatselt keskele "
+"joondamine on kasutusel"
 
 #: qml/NorthArrow.qml:71
 msgid "Auto-rotate on"
-msgstr "Automatické otáčanie zapnuté"
+msgstr "Automaatne kaardi pööramine on kasutusel"
 
 #: qml/NorthArrow.qml:72
 msgid "Auto-rotate off"
-msgstr "Automatické otáčanie vypnuté"
+msgstr "Automaatne kaardi pööramine ei ole kasutusel"
 
 #: qml/PlaceTypePage.qml:27
 msgid "Venue type"
-msgstr "Typ miesta"
+msgstr "Huvipunkti tüüp"
 
 #: qml/PlaceTypePage.qml:100
 msgid "You can search for venues by type or name."
-msgstr "Miesta môžete hľadať podľa typu alebo názvu."
+msgstr "Sa võid huvipunkte otsida kas tüübi või nime alusel."
 
 #: qml/PoiBlock.qml:81
 msgid "%1; %2"
@@ -902,67 +909,67 @@ msgstr "%1; %2"
 
 #: qml/PoiBlock.qml:99
 msgid "Latitude: %1; Longitude: %2"
-msgstr "Zem. šírka: %1; Zem. dĺžka: %2"
+msgstr "Laiuskraad: %1; pikkuskraad: %2"
 
 #: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:81
 msgid "Postal code"
-msgstr "PSČ"
+msgstr "Postiindeks"
 
 #: qml/PoiBlock.qml:127
 msgid "Web"
-msgstr "Web"
+msgstr "Veebisait"
 
 #: qml/PoiBlock.qml:128
 msgid "Phone"
-msgstr "Telefón"
+msgstr "Telefon"
 
 #: qml/PoiBlock.qml:129
 msgid "Shortlisted"
-msgstr "Výber"
+msgstr "Väljavalitud"
 
 #: qml/PoiBlock.qml:130
 msgid "Text"
-msgstr "Text"
+msgstr "Tekst"
 
 #: qml/PoiBlock.qml:132
 msgid "More info: %1"
-msgstr "Viac informácií: %1"
+msgstr "Lisateave: %1"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
-msgstr "Upraviť záložku"
+msgstr "Muuda järjehoidjat"
 
 #: qml/PoiEditPage.qml:28
 msgid "Save"
-msgstr "Uložiť"
+msgstr "Salvesta"
 
 #: qml/PoiEditPage.qml:42 qml/PreferencesPage.qml:36
 msgid "General"
-msgstr "Všeobecné"
+msgstr "Üldist"
 
 #: qml/PoiEditPage.qml:48
 msgid "Title"
-msgstr "Titul"
+msgstr "Pealkiri"
 
 #: qml/PoiEditPage.qml:49
 msgid "Enter title"
-msgstr "Zadať titul"
+msgstr "Sisesta pealkiri"
 
 #: qml/PoiEditPage.qml:58
 msgid "Enter type, such as Restaurant"
-msgstr "Zadať typ, napr. Reštaurácia"
+msgstr "Sisesta tüüp, nagu näiteks restoran"
 
 #: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:95
 msgid "Address"
-msgstr "Adresa"
+msgstr "Aadress"
 
 #: qml/PoiEditPage.qml:74
 msgid "Enter address"
-msgstr "Zadať adresu"
+msgstr "Sisesta aadress"
 
 #: qml/PoiEditPage.qml:82
 msgid "Enter postal code"
-msgstr "Zadať PSČ"
+msgstr "Sisesta postiindeks"
 
 #: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:217
 msgid "Contact"
@@ -970,11 +977,11 @@ msgstr "Kontakt"
 
 #: qml/PoiEditPage.qml:98
 msgid "Phone number"
-msgstr "Telefónne číslo"
+msgstr "Telefoninumber"
 
 #: qml/PoiEditPage.qml:99
 msgid "Enter phone number"
-msgstr "Zadať telefónne číslo"
+msgstr "Sisesta telefoninumber"
 
 #: qml/PoiEditPage.qml:106
 msgid "URL"
@@ -982,307 +989,308 @@ msgstr "URL"
 
 #: qml/PoiEditPage.qml:107
 msgid "Enter URL"
-msgstr "Zadať URL"
+msgstr "Sisesta veebisaidi aadress"
 
 #: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:243
 msgid "Additional info"
-msgstr "Ďalšie informácie"
+msgstr "Lisateave"
 
 #: qml/PoiEditPage.qml:123
 msgid "Enter additional info"
-msgstr "Zadať ďalšie informácie"
+msgstr "Sisesta lisateavet"
 
 #: qml/PoiInfoPage.qml:32 qml/PoiPage.qml:95
 msgid "Edit"
-msgstr "Upraviť"
+msgstr "Muuda"
 
 #: qml/PoiInfoPage.qml:67
 msgid "Latitude: %1"
-msgstr "Zem. šírka: %1"
+msgstr "Laiuskraad: %1"
 
 #: qml/PoiInfoPage.qml:68
 msgid "Longitude: %2"
-msgstr "Zem. dĺžka: %2"
+msgstr "Pikkuskraad: %2"
 
 #: qml/PoiInfoPage.qml:79
 msgid "Plus code: %1"
-msgstr "Plus kód: %1"
+msgstr "OLC-kood: %1"
 
 #: qml/PoiInfoPage.qml:112
 msgid "Postal code: %1"
-msgstr "PSČ: %1"
+msgstr "Postiindeks: %1"
 
 #: qml/PoiInfoPage.qml:125
 msgid "Actions"
-msgstr "Akcie"
+msgstr "Tegevused"
 
 #: qml/PoiInfoPage.qml:131
 msgid "Bookmark"
-msgstr "Záložka"
+msgstr "Järjehoidja"
 
 #: qml/PoiInfoPage.qml:144
 msgid "Shortlist"
-msgstr "Užší výber"
+msgstr "Vali välja"
 
 #: qml/PoiInfoPage.qml:157
 msgid "Share location"
-msgstr "Poskytnúť polohu"
+msgstr "Jaga asukohta"
 
 #: qml/PoiInfoPage.qml:170
 msgid "Center on location"
-msgstr "Vycentrovať na polohu"
+msgstr "Säti kaardi keskpunkt siia asukohta"
 
 #: qml/PoiInfoPage.qml:182
 msgid "Navigate To"
-msgstr "Kam navigovať"
+msgstr "Määra teekonna sihtpunktiks"
 
 #: qml/PoiInfoPage.qml:194
 msgid "Navigate From"
-msgstr "Odkiaľ navigovať"
+msgstr "Alusta siit teekonda"
 
 #: qml/PoiInfoPage.qml:206
 msgid "Nearby"
-msgstr "Blízko"
+msgstr "Läheduses"
 
 #: qml/PoiPage.qml:85
 msgid "View"
-msgstr "Pohľad"
+msgstr "Vaata"
 
 #: qml/PoiPage.qml:152
 msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
 msgstr ""
-"Nie sú uložené miesta v záložkách. Polohy môžete uložiť použitím mapy a "
-"hľadania."
+"Ühtegi järjehoidjat pole veel kirjeldatud. Asukohti võid järjehoidjana "
+"salvestada nii kaardilt kui otsingust."
 
 #: qml/Poi.qml:193
 msgid "Clearing map"
-msgstr "Vyčistenie mapy"
+msgstr "Kustutan kaardilt"
 
 #: qml/PreferencesPage.qml:45
 msgid "Units"
-msgstr "Jednotky"
+msgstr "Ühikud"
 
 #: qml/PreferencesPage.qml:46
 msgid "Metric"
-msgstr "Metrické"
+msgstr "Meetermõõdustik"
 
 #: qml/PreferencesPage.qml:46
 msgid "American"
-msgstr "Americké"
+msgstr "Ameerika mõõdustik"
 
 #: qml/PreferencesPage.qml:46
 msgid "British"
-msgstr "Britské"
+msgstr "Briti mõõdustik"
 
 #: qml/PreferencesPage.qml:59
 msgid "Preferred map language."
-msgstr "Uprednostnený jazyk mapy."
+msgstr "Kaardil kasutatava keele eelistus."
 
 #: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:791
 #: routers/gpx_osmscout_settings.qml:65 routers/mapquest_open_settings.qml:54
 #: routers/ValhallaSettings.qml:56
 msgid "Language"
-msgstr "Jazyk"
+msgstr "Keel"
 
 #: qml/PreferencesPage.qml:62
 msgid "Local"
-msgstr "Miestny"
+msgstr "Kohalik"
 
 #: qml/PreferencesPage.qml:63
 msgid "Arabic"
-msgstr "Arabština"
+msgstr "araabia"
 
 #: qml/PreferencesPage.qml:64
 msgid "Basque"
-msgstr "Baskičtina"
+msgstr "baski"
 
 #: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:794
 #: routers/gpx_osmscout_settings.qml:66 routers/ValhallaSettings.qml:59
 msgid "Catalan"
-msgstr "Katalánčina"
+msgstr "katalaani"
 
 #: qml/PreferencesPage.qml:66
 msgid "Chinese (simplified)"
-msgstr "Čínština (zjednodušená)"
+msgstr "hiina (lihtsustatud)"
 
 #: qml/PreferencesPage.qml:67
 msgid "Chinese (traditional)"
-msgstr "Čínština (tradičná)"
+msgstr "hiina (traditsiooniline)"
 
 #: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:795
 #: routers/gpx_osmscout_settings.qml:66 routers/ValhallaSettings.qml:59
 msgid "Czech"
-msgstr "Čeština"
+msgstr "tšehhi"
 
 #: qml/PreferencesPage.qml:69
 msgid "Danish"
-msgstr "Dánčina"
+msgstr "taani"
 
 #: qml/PreferencesPage.qml:70
 msgid "Dutch"
-msgstr "Holandčina"
+msgstr "hollandi"
 
 #: qml/PreferencesPage.qml:71 qml/PreferencesPage.qml:793
 #: routers/gpx_osmscout_settings.qml:66 routers/ValhallaSettings.qml:59
 msgid "English"
-msgstr "Angličtina"
+msgstr "inglise"
 
 #: qml/PreferencesPage.qml:72
 msgid "Finnish"
-msgstr "Fínčina"
+msgstr "soome"
 
 #: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:798
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "French"
-msgstr "Francúzština"
+msgstr "prantsuse"
 
 #: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:796
 #: routers/gpx_osmscout_settings.qml:67 routers/mapquest_open_settings.qml:58
 #: routers/ValhallaSettings.qml:60
 msgid "German"
-msgstr "Nemčina"
+msgstr "saksa"
 
 #: qml/PreferencesPage.qml:75
 msgid "Gaelic"
-msgstr "Galčina "
+msgstr "gaeli"
 
 #: qml/PreferencesPage.qml:76
 msgid "Greek"
-msgstr "Gréčtina"
+msgstr "kreeka"
 
 #: qml/PreferencesPage.qml:77
 msgid "Hebrew"
-msgstr "Hebrejčina"
+msgstr "heebrea"
 
 #: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:799
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "Hindi"
-msgstr "Hindčina"
+msgstr "hindi"
 
 #: qml/PreferencesPage.qml:79
 msgid "Indonesian"
-msgstr "Indonézčina"
+msgstr "indoneesia"
 
 #: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:800
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
 msgid "Italian"
-msgstr "Taliančina"
+msgstr "itaalia"
 
 #: qml/PreferencesPage.qml:81
 msgid "Japanese"
-msgstr "Japončina"
+msgstr "jaapani"
 
 #: qml/PreferencesPage.qml:82
 msgid "Korean"
-msgstr "Kórejčina"
+msgstr "korea"
 
 #: qml/PreferencesPage.qml:83
 msgid "Norwegian"
-msgstr "Nórčina"
+msgstr "norra"
 
 #: qml/PreferencesPage.qml:84
 msgid "Persian"
-msgstr "Perzština"
+msgstr "pärsia"
 
 #: qml/PreferencesPage.qml:85
 msgid "Polish"
-msgstr "Poľština"
+msgstr "poola"
 
 #: qml/PreferencesPage.qml:86 routers/gpx_osmscout_settings.qml:67
 #: routers/ValhallaSettings.qml:60
 msgid "Portuguese"
-msgstr "Portugalčina"
+msgstr "portugali"
 
 #: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:801
 #: routers/gpx_osmscout_settings.qml:68 routers/mapquest_open_settings.qml:58
 #: routers/ValhallaSettings.qml:61
 msgid "Russian"
-msgstr "Ruština"
+msgstr "vene"
 
 #: qml/PreferencesPage.qml:88
 msgid "Sinhalese"
-msgstr "Sinhalčina "
+msgstr "singali"
 
 #: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:797
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Spanish"
-msgstr "Španielčina"
+msgstr "hispaania"
 
 #: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:803
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Swedish"
-msgstr "Švédčina"
+msgstr "rootsi"
 
 #: qml/PreferencesPage.qml:91
 msgid "Thai"
-msgstr "Thajčina"
+msgstr "tai"
 
 #: qml/PreferencesPage.qml:92
 msgid "Turkish"
-msgstr "Turečtina"
+msgstr "türgi"
 
 #: qml/PreferencesPage.qml:93
 msgid "Ukrainian"
-msgstr "Ukrajinčina"
+msgstr "ukraina"
 
 #: qml/PreferencesPage.qml:94
 msgid "Urdu"
-msgstr "Urdčina "
+msgstr "urdu"
 
 #: qml/PreferencesPage.qml:95
 msgid "Vietnamese"
-msgstr "Vietnamčina"
+msgstr "vietnami"
 
 #: qml/PreferencesPage.qml:96
 msgid "Welsh"
-msgstr "Waleština "
+msgstr "kõmri"
 
 #: qml/PreferencesPage.qml:148
 msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
 msgstr ""
-"Prepínanie režimov deň/noc. Poznamenávame, že nie všetci poskytovatelia máp "
-"majú mapy kompatibilné s režimami deň/noc."
+"Kaardi öö- ja päevavaate vahetamine. Kõikidel teenusepakkujatel ei pruugi "
+"mõlemad vaated olla saadaval."
 
 #: qml/PreferencesPage.qml:151
 msgid "Day/night mode"
-msgstr "Režim deň/noc"
+msgstr "Öövaade/päevavaade"
 
 #: qml/PreferencesPage.qml:153
 msgid "Manual"
-msgstr "Ručný"
+msgstr "Käsitsi"
 
 #: qml/PreferencesPage.qml:154
 msgid "Sunrise and sunset"
-msgstr "Východ a západ slnka"
+msgstr "Päikesetõusu ja -loojangu alusel"
 
 #: qml/PreferencesPage.qml:172
 msgid ""
 "Automatically switch between map types of the provider according to the "
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
-"Automaticky prepínať medzi typmi máp poskytovateľa podľa aktuálnej úlohy. "
-"Napríklad, zobraziť mapu určenú pre navigáciu počas navigovania."
+"Vaheta teenusepakkuja kaardivaateid automaatselt vastavalt praegusele "
+"tegevusele. Näiteks, tee juhatamisel kuva teekonna jaoks mõeldud "
+"kaardivaadet."
 
 #: qml/PreferencesPage.qml:174
 msgid "Switch map modes"
-msgstr "Prepínanie režimov mapy"
+msgstr "Muuda kaardivaateid"
 
 #: qml/PreferencesPage.qml:184
 msgid "Fetch autocompleted search results while typing a search string."
 msgstr ""
-"Použite výsledky automatického dokončovania pri zadávaní hľadaného reťazca."
+"Otsingusõna kirjutamisel lae automaatse sõnalõpetuse abil sobivad variandid."
 
 #: qml/PreferencesPage.qml:185
 msgid "Autocomplete while searching"
-msgstr "Automatické dokončovanie pri vyhľadávaní"
+msgstr "Kasuta otsimisel automaatset sõnalõpetust"
 
 #: qml/PreferencesPage.qml:199
 msgid "Device"
-msgstr "Zariadenie"
+msgstr "Nutiseade"
 
 #: qml/PreferencesPage.qml:205
 msgid ""
@@ -1292,35 +1300,36 @@ msgid ""
 "is useful if you wish to receive voice navigation commands while keeping "
 "device in the pocket."
 msgstr ""
-"Môžete nastaviť či a kedy má Pure Maps nechať displej aktívny a pracovať na "
-"pozadí. Odporúča sa povoliť Pure Maps potlačiť šetrič obrazovky. Je to "
-"vhodné keď máte zariadenie vo vrecku a riadite sa iba hlasovými pokynmi."
+"Sa võid määrata, kas Pure Maps jätab ekraani tööle ning töötab taustal. Me "
+"soovitame, et ekraanisäästja ei peaks tee juhatamisel käivituma ning "
+"nutiseade ei peaks unne vajuma. Viimane võimalus sobib hääljuhiste "
+"saamiseks, kui nutiseade asub taskus."
 
 #: qml/PreferencesPage.qml:219
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
 msgstr ""
-"Platí iba ak je Pure Maps aktívna. Po minimalizácii je šetrič obrazovky "
-"riadený nastavením systému."
+"Kehtiv vaid siis, kui Pure Maps on kasutusel ja esiplaanil. Minimiseeritud "
+"vaates kehtivad tavapärased seadme ekraanisäästja seadistused."
 
 #: qml/PreferencesPage.qml:221
 msgid "Prevent screensaver"
-msgstr "Potlačiť šetrič obrazovky"
+msgstr "Takista ekraanisäästja käivitumist"
 
 #: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
 #: qml/PreferencesPage.qml:517 qml/PreferencesPage.qml:596
 msgid "Never"
-msgstr "Nikdy"
+msgstr "Mitte kunagi"
 
 #: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
 msgid "When navigating"
-msgstr "Počas navigácie"
+msgstr "Teekonna ajal"
 
 #: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
 #: qml/PreferencesPage.qml:517
 msgid "Always"
-msgstr "Vždy"
+msgstr "Alati"
 
 #: qml/PreferencesPage.qml:235
 msgid ""
@@ -1328,44 +1337,45 @@ msgid ""
 "screen is switched off. If set to 'never', usual device suspend policy is "
 "applied."
 msgstr ""
-"Umožňuje zachovať hlasové pokyny aj pri vypnutom displeji. Ak nastavíte "
-"'nikdy', je všetko riadené systémom."
+"Võimaldab jätta asukoha määramise ja hääljuhised kasutusele ka siis, kui "
+"ekraan on välja lülitatud. Kui olekuks on määratud „mitte kunagi“, siis "
+"kehtivad tavapärased nutiseadme seadistused."
 
 #: qml/PreferencesPage.qml:238
 msgid "Prevent sleep"
-msgstr "Nevypínať displej"
+msgstr "Takista nutiseadme unerežiimi käivitumist"
 
 #: qml/PreferencesPage.qml:260
 msgid "Privacy"
-msgstr "Súkromie"
+msgstr "Privaatsus"
 
 #: qml/PreferencesPage.qml:266
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
 msgstr ""
-"Zmazať celú históriu, vrátane hľadania, trás a cieľov. Upozorňujeme, že "
-"záložky ostanú zachované."
+"Kustuta kogu ajalugu, sealhulgas otsingud, teekonnad ja sihtkohad. Aga palun"
+" arvesta, et järjehoidjad jäävad alles."
 
 #: qml/PreferencesPage.qml:274
 msgid "History cleared"
-msgstr "História je vymazaná"
+msgstr "Ajalugu on kustutatud"
 
 #: qml/PreferencesPage.qml:283
 msgid "Clear history"
-msgstr "Vymazať históriu"
+msgstr "Kustuta ajalugu"
 
 #: qml/PreferencesPage.qml:295
 msgid "Clear map tiles stored in a cache"
-msgstr "Vymazať mapové dlaždice uložené vo vyrovnávacej pamäti."
+msgstr "Kustuta puhverdatud kaardipaanid"
 
 #: qml/PreferencesPage.qml:303
 msgid "Clear cache"
-msgstr "Vymazať vyrovnávaciu pamäť."
+msgstr "Kustuta puhverdatud teave"
 
 #: qml/PreferencesPage.qml:315
 msgid "API keys"
-msgstr "API kľúče"
+msgstr "API võtmed"
 
 #: qml/PreferencesPage.qml:321
 msgid ""
@@ -1373,126 +1383,125 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
-"V tomto nastavení môžete zadať osobné kľúče pre online služby. Skontrolujte,"
-" prosím, podmienky pre každú službu, ktorú chcete použiť, či podmienky budú "
-"splnené."
+"Alljärgnevalt saad sa seadistada isiklikke võtmeid erinevate veebiteenuste "
+"kasutamiseks. Tagamaks, et vajalikud tingimused on täidetud, palun tutvu "
+"eelnevalt teenuste kasutustingimustega."
 
 #: qml/PreferencesPage.qml:329
 msgid "Please restart application after changing API keys."
-msgstr "Po zmene API kľúčov aplikáciu reštartujte."
+msgstr "Peale API võtmete muutmist palun käivita rakendus uuesti."
 
 #: qml/PreferencesPage.qml:370
 msgid "Exploring"
-msgstr "Prieskum"
+msgstr "Avastamine"
 
 #: qml/PreferencesPage.qml:376
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
-"Zvoľte spôsob prepravy. Aplikuje sa iba v prípade, že Pure Maps nenaviguje. "
-"Toto nastavenie používa OSM Scout Server."
+"Vali transpordiliik. Kehtib vaid siis, kui Pure Maps ei juhata teed. Eeldab "
+"OSM Scout Serveri kasutamist."
 
 #: qml/PreferencesPage.qml:377 qml/PreferencesPage.qml:447
 msgid "Snap position to road"
-msgstr "Prichytávať k ceste"
+msgstr "Naksa asukoht tee külge"
 
 #: qml/PreferencesPage.qml:378 routers/gpx_osmscout_settings.qml:31
 #: routers/gpx_settings.qml:31
 msgid "None"
-msgstr "Nič"
+msgstr "Puudub"
 
 #: qml/PreferencesPage.qml:378 qml/RoutePage.qml:387
 #: routers/gpx_osmscout_settings.qml:46 routers/gpx_settings.qml:46
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Foot"
-msgstr "Chôdza"
+msgstr "Jalgsi"
 
 #: qml/PreferencesPage.qml:407
 msgid "Show navigation instructions"
-msgstr "Zobraziť navigačné pokyny"
+msgstr "Kuva teekonnajuhiseid"
 
 #: qml/PreferencesPage.qml:417
 msgid "Voice navigation instructions"
-msgstr "Pokyny pre hlasovú navigáciu"
+msgstr "Hääljuhtimine teekonna kestel"
 
 #: qml/PreferencesPage.qml:427
 msgid "Reroute automatically"
-msgstr "Automaticky prepočítať trasu"
+msgstr "Muuda teekonda automaatselt"
 
 #: qml/PreferencesPage.qml:436
 msgid "Automatic zoom on start"
-msgstr "Automaticky priblížiť pri spustení"
+msgstr "Alustamisel suumi esimene vaade automaatselt"
 
 #: qml/PreferencesPage.qml:446
 msgid "Uses OSM Scout Server for its operation."
-msgstr "Používa k prevádzke OSM Scout Server."
+msgstr "Eeldab OSM Scout Serveri kasutamist."
 
 #: qml/PreferencesPage.qml:458
 msgid "Show direction signs"
-msgstr "Zobraziť smerové značky"
+msgstr "Näita teeviitasid"
 
 #: qml/PreferencesPage.qml:468
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
-msgstr "Nastaviť natáčanie mapy v smere pohybu pri spustení navigácie."
+msgstr "Alustades teekonda pööra kaarti liikumise suunas."
 
 #: qml/PreferencesPage.qml:469
 msgid "Rotate map when navigating"
-msgstr "Natáčať mapu pri navigácii"
+msgstr "Teekonna juhatamisel pööra kaarti"
 
 #: qml/PreferencesPage.qml:478
 msgid "Only applies to vector maps."
-msgstr "Platí iba pre vektorové mapy."
+msgstr "Kehtib vaid vektorkaartide puhul."
 
 #: qml/PreferencesPage.qml:480
 msgid "Tilt map when navigating"
-msgstr "Nakloniť mapu pri navigácii"
+msgstr "Teekonna näitamisel kalluta kaarti"
 
 #: qml/PreferencesPage.qml:488
 msgid "Smooth position animation"
-msgstr "Vyhladená animácia polohy"
+msgstr "Asukoha sujuv joonistamine"
 
 #: qml/PreferencesPage.qml:498
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
-"Uprednostňované pohlavie pre hlasovú navigáciu. Podporované iba na "
-"niektorých strojoch a jazykoch."
+"Eelistatud sugu hääljuhtimisel. Ainult mõned mootorid ja keeled on toetatud."
 
 #: qml/PreferencesPage.qml:499 qml/PreferencesPage.qml:825
 msgid "Voice gender"
-msgstr "Pohlavie hlasu navigátora"
+msgstr "Soovin kuulda"
 
 #: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
 msgid "Male"
-msgstr "Mužské"
+msgstr "mehe häält"
 
 #: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
 msgid "Female"
-msgstr "Ženské"
+msgstr "naise häält"
 
 #: qml/PreferencesPage.qml:514
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr ""
-"Zobraziť symbol povolenej rýchlosti. Vyžaduje nastavenie prichytenia polohy "
-"k ceste."
+"Näita kiiruspiirangu märki. Piirangu tuvastamine eeldab asukoha naksamist "
+"tee külge."
 
 #: qml/PreferencesPage.qml:516
 msgid "Speed limit"
-msgstr "Povolená rýchlosť"
+msgstr "Kiiruspiirang"
 
 #: qml/PreferencesPage.qml:517
 msgid "Only when exceeding"
-msgstr "Iba pri prekročení"
+msgstr "Ainult piirangu ületamisel"
 
 #: qml/PreferencesPage.qml:540 qml/PreferencesPage.qml:641
 msgid "Compass"
-msgstr "Kompas"
+msgstr "Kompass"
 
 #: qml/PreferencesPage.qml:546
 msgid ""
@@ -1501,21 +1510,22 @@ msgid ""
 " determined, your speed is low, and, if you are navigating, only if you are "
 "by foot or on the bicycle."
 msgstr ""
-"Kompas možno použiť pre odhad orientácie zariadenia a zorientovanie mapy. "
-"Upozorňujeme, že kompas je dostupný iba ak je určená poloha, vaša rýchlosť "
-"je nízka pri navigácii pešo alebo na bicykli."
+"Kompassi saab kasutada sinu nutiseadme suuna määramiseks ning selle alusel "
+"kaardi suuna kohendamiseks. Kompassi on mõtet kasutada vaid siis, kui sinu "
+"asukoht on teada ja kiitus on väike. Kui kasutad tee näitamist, siis kasuta "
+"kompassi vaid jalgsi või jalgrattaga liikudes."
 
 #: qml/PreferencesPage.qml:556
 msgid "Use compass for determination of the direction."
-msgstr "Použiť kompas pre odhad smeru."
+msgstr "Suuna määramiseks kasuta kompassi."
 
 #: qml/PreferencesPage.qml:557
 msgid "Use compass"
-msgstr "Použiť kompas"
+msgstr "Kasuta kompassi"
 
 #: qml/PreferencesPage.qml:569
 msgid "Controls"
-msgstr "Ovládanie"
+msgstr "Nupud ja valikud kaardil"
 
 #: qml/PreferencesPage.qml:575
 msgid ""
@@ -1523,148 +1533,143 @@ msgid ""
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
 msgstr ""
-"Pohľad na mapu môže byť so všetkými ovládacími prvkami v úplnom zobrazení "
-"alebo s menším počtom ovládacích prvkov v minimalizovanom móde. Pre "
-"prepnutie módu klepnite na mapu."
+"Kaardivaade võib olla kuvatud täisvaatena, kus on kõik juhtnupud näha või "
+"vähendatud vaatena, kus kasutatakse vaid osasid juhtnuppe. Kahe vaate vahel "
+"liikumiseks klõpsa kaardil."
 
 #: qml/PreferencesPage.qml:584
 msgid "Set map view to minimal mode on start"
-msgstr "Pri štarte nastaviť zobrazenie mapy v minimalizovanom móde"
+msgstr "Käivitamisel kasuta vähendatud vaadet"
 
 #: qml/PreferencesPage.qml:592
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
 msgstr ""
-"Automaticky prepnúť do minimalizovaného módu po uplynutí času alebo vypnutom"
-" automatickom prepínaní módov zobrazenia."
+"Võta vähendatud vaade automaatselt kasutusele peale antud aja möödumist või "
+"lülita automaatne vaate muutmine välja."
 
 #: qml/PreferencesPage.qml:594
 msgid "Switch to minimal view"
-msgstr "Prepnúť do minimalizovaného zobrazenia"
+msgstr "Võta vähendatud vaade kasutusele"
 
 #: qml/PreferencesPage.qml:596
 msgid "10 seconds"
-msgstr "10 sekúnd"
+msgstr "10 sekundi pärast"
 
 #: qml/PreferencesPage.qml:596
 msgid "20 seconds"
-msgstr "20 sekúnd"
+msgstr "20 sekundi pärast"
 
 #: qml/PreferencesPage.qml:597
 msgid "30 seconds"
-msgstr "30 sekúnd"
+msgstr "30 sekundi pärast"
 
 #: qml/PreferencesPage.qml:597
 msgid "1 minute"
-msgstr "1 minúta"
+msgstr "1 minuti pärast"
 
 #: qml/PreferencesPage.qml:611
 msgid "Always show"
-msgstr "Zobraziť vždy"
+msgstr "Neid nuppe näita alati"
 
 #: qml/PreferencesPage.qml:615
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
 msgstr ""
-"Vždy zobraziť vybrané ovládacie prvky nezávisle od zobrazenia mapy v "
-"minimalizovanom alebo úplnom móde."
+"Näita neid juhtnuppe alati sõltumata sellest, kas kasutad täisvaadet või "
+"vähendatud vaadet."
 
 #: qml/PreferencesPage.qml:623
 msgid "Menu"
-msgstr "Menu"
+msgstr "Menüü"
 
 #: qml/PreferencesPage.qml:632
 msgid "Center on current location"
-msgstr "Vycentrovať na aktuálnu polohu"
+msgstr "Säti kaardi keskpunkt praegusesse asukohta"
 
 #: qml/PreferencesPage.qml:650
 msgid "Map selection"
-msgstr "Voľba mapy"
+msgstr "Kaardi valik"
 
 #: qml/PreferencesPage.qml:659
 msgid "Speed and location precision"
-msgstr "Rýchlosť a presnosť polohy"
+msgstr "Kiiruse ja asukoha täpsus"
 
 #: qml/PreferencesPage.qml:668
 msgid "Scale"
-msgstr "Mierka"
+msgstr "Mastaap"
 
 #: qml/PreferencesPage.qml:695
 msgid "Navigation Start/Pause"
-msgstr "Štart/Prerušenie navigácie"
+msgstr "Alusta tee näitamist või peata tee näitamine"
 
 #: qml/PreferencesPage.qml:704
 msgid "Navigation Clear Route"
-msgstr "Zmazať trasu"
+msgstr "Kustuta praegune teekond"
 
 #: qml/PreferencesPage.qml:719
 msgid "Zoom"
-msgstr "Priblíženie"
+msgstr "Kaardi suum"
 
 #: qml/PreferencesPage.qml:725
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
 msgstr ""
-"Úroveň priblíženia môže byť automaticky prispôsobená vašej rýchlosti. Tu "
-"môžete upraviť nastavenie tejto funkcie."
+"Kaardi suurendust on võimalik vastavalt kiirusele automaatselt sättida. "
+"Järgnevalt saad sättida eelistusi, mis seda määravad."
 
 #: qml/PreferencesPage.qml:735
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
-msgstr ""
-"Maximálna použiteľná úroveň priblíženia pri automatickom nastavení "
-"priblíženia."
+msgstr "Suurenduse piir milleni minnakse kaardi suumi automaatsel määramisel."
 
 #: qml/PreferencesPage.qml:737
 msgid "Maximal zoom level"
-msgstr "Maximálna úroveň priblíženia"
+msgstr "Suurim suurendus"
 
 #: qml/PreferencesPage.qml:748
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
 msgstr ""
-"Úroveň priblíženia bude prispôsobená výške mapy a vzdialenosti, ktorú "
-"prejdete za dané množstvo sekúnd."
+"Suurenduse piir sätitakse selle kaardi kõrguse alusel, mille sa läbid "
+"määratud sekundite jooksul."
 
 #: qml/PreferencesPage.qml:751
 msgid "Time range, s"
-msgstr "Časové rozpätie, s"
+msgstr "Ajavahemik sekundites"
 
 #: qml/PreferencesPage.qml:770
 msgid "Testing"
-msgstr "Testovanie"
+msgstr "Testime"
 
 #: qml/PreferencesPage.qml:779
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
-"Testovanie Text-to-Speech (TTS). Zvoľte rovnaký jazyk aký je použitý pre "
-"navigáciu, uprednostňované pohlavie a pre spustenie testovania stlačte "
-"tlačidlo dolu."
+"Kõnesünteesi (TTS) mootori testimine. Vali sama keel, mida kasutad teekonna "
+"näitamisel ja eelistatud sugu ning testimiseks vajuta järgnevat nuppu."
 
 #: qml/PreferencesPage.qml:802
 msgid "Slovak"
-msgstr "Slovenčina"
+msgstr "slovaki"
 
 #: qml/PreferencesPage.qml:824
 msgid "Preferred gender. Only supported by some engines and languages."
-msgstr ""
-"Uprednostňované pohlavie hlasu. Je podporované iba niektorými strojmi a "
-"jazykmi."
+msgstr "Eelistatud sugu. Ainult mõned mootorid ja keeled on toetatud."
 
 #: qml/PreferencesPage.qml:838
 msgid "Test"
-msgstr "Test"
+msgstr "Testi"
 
 #: qml/PreferencesPage.qml:878
 msgid "Selected voice engine: %1"
-msgstr "Zvolený hlasový stroj: %1"
+msgstr "Valitud kõnesünteesi mootor: %1"
 
 #: qml/PreferencesPage.qml:880
 msgid ""
@@ -1672,37 +1677,37 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
 msgstr ""
-"Pre zvolený jazyk nie je dostupný žiadny stroj .\n"
+"Sellele keelele pole kõnesünteesi mootorit saadaval.\n"
 "\n"
-"Pure Maps podporuje stroje Mimic, Flite, PicoTTS, a Espeak TTS. Pokiaľ nepoužívate Pure Maps z Flatpak alebo OpenStore, musíte stroj inštalovať samostatne. Používatelia Sailfish OS môžu nájsť stroj v OpenRepos."
+"Pure Maps toetab järgnevaid kõnesünteesi mootoreid: Mimic, Flite, PicoTTS ja Espeak. Kui sa pole Pure Maps'i paigaldanud Flatpak'ina või OpenStore abil, siis pead nad eraldi paigaldama. Sailfish OS kasutajad leiavad  kõnesünteesi mootorid OpenRepos saidist."
 
 #: qml/PreferencesPage.qml:898
 msgid "Development"
-msgstr "Vývoj"
+msgstr "Arendus"
 
 #: qml/PreferencesPage.qml:904
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
 msgstr ""
-"Nasledujúce nastavenia sú iba pre vývoj. Nemeňte ich, pokiaľ neviete čo "
-"robíte."
+"Järgnevad seadistused on mõeldud arendajatele. Kui sa ei tea, mida sa teed, "
+"siis palun ära muuda neid."
 
 #: qml/PreferencesPage.qml:912
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
 msgstr ""
-"Nastaviť súčasnú polohu do stredu súčasného zobrazenia mapy. Nezabudnite "
-"zakázať GPS polohovanie pri použití tejto voľby."
+"Sätib praeguse asukoha praeguse kaardivaate keskele. Asukoha määramine GPS'i"
+" alusel peab olema välja lülitatud."
 
 #: qml/PreferencesPage.qml:913
 msgid "Set position to the map center"
-msgstr "Nastavte polohu na stred mapy"
+msgstr "Säti asukoht kaardi keskele"
 
 #: qml/PreferencesPage.qml:920
 msgid "Show current zoom level"
-msgstr "Zobraziť súčasnú úroveň priblíženia"
+msgstr "Näita praegu kasutatavat suumitaset"
 
 #: qml/pure-maps.qml:28
 msgid "Pure Maps"
@@ -1710,96 +1715,99 @@ msgstr "Pure Maps"
 
 #: qml/RouteOverallInfo.qml:95
 msgid "Remaining"
-msgstr "Zostáva"
+msgstr "Jäänud minna"
 
 #: qml/RouteOverallInfo.qml:129
 msgid "Total"
-msgstr "Celkom"
+msgstr "Teekond kokku"
 
 #: qml/RoutePage.qml:28 routers/default_results.qml:25
 #: routers/gpx_osmscout_results.qml:25 routers/gpx_results.qml:25
 #: routers/mapquest_open_results.qml:25 routers/osmscout_results.qml:25
 #: routers/osrm_results.qml:25 routers/stadiamaps_results.qml:25
 msgid "Route"
-msgstr "Trasa"
+msgstr "Teekond"
 
 #: qml/RoutePage.qml:51
 msgid "Follow me"
-msgstr "Sledovať"
+msgstr "Järgne mulle"
 
 #: qml/RoutePage.qml:63
 msgid "Reverse endpoints"
-msgstr "Zameniť štart a cieľ"
+msgstr "Vaheta teekonna otspunktid"
 
 #: qml/RoutePage.qml:135
 msgid "From"
-msgstr "Odkiaľ"
+msgstr "Algus"
 
 #: qml/RoutePage.qml:136
 msgid "Origin"
-msgstr "Počiatok"
+msgstr "Lähtepunkt"
 
 #: qml/RoutePage.qml:142
 msgid "To"
-msgstr "Kam"
+msgstr "Lõpp"
 
 #: qml/RoutePage.qml:143
 msgid "Destination"
-msgstr "Cieľ"
+msgstr "Sihtkoht"
 
 #: qml/RoutePage.qml:186
 msgid "Routes"
-msgstr "Trasy"
+msgstr "Varasemad teekonnad"
 
 #: qml/RoutePage.qml:262
 msgid "Destinations"
-msgstr "Ciele"
+msgstr "Sihtkohad"
 
 #: qml/RoutePage.qml:357
 msgid "Follow the movement and show just in time information"
-msgstr "Sledovať pohyb a zobrazovať iba okamžité informácie"
+msgstr "Jälgi minu liikumist ja näita vaid ajakohast teavet"
 
 #: qml/RoutePage.qml:366
 msgid "Stop"
-msgstr "Zastaviť"
+msgstr "Peata"
 
 #: qml/RoutePage.qml:366
 msgid "Begin"
-msgstr "Začiatok"
+msgstr "Alusta"
 
 #: qml/RoutePage.qml:384
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
-msgstr "Zvoľte spôsob dopravy. Platí iba ak je Pure Maps v režime sledovania."
+msgstr ""
+"Vali transpordiliik. Kehtib vaid siis, kui Pure Maps jälgib sinu liikumist."
 
 #: qml/RoutePage.qml:386
 msgid "Mode of transportation"
-msgstr "Spôsob dopravy"
+msgstr "Transpordiliik"
 
 #: qml/RoutePointPage.qml:65
 msgid "Current selection: %1"
-msgstr "Súčasný výber: %1"
+msgstr "Praegune valik: %1"
 
 #: qml/RouterPage.qml:27
 msgid "Routing engine"
-msgstr "Trasovací stroj"
+msgstr "Teekonna koostaja"
 
 #: qml/RouterPage.qml:60
 msgid "Modes: %1"
-msgstr "Režimy: %1"
+msgstr "Liigid: %1"
 
 #: qml/ScaleBar.qml:207
 msgid "Auto-zoom requires auto-centering to be enabled"
-msgstr "Automatické priblíženie vyžaduje nastavenie automatického centrovania"
+msgstr ""
+"Automaatne suumimine eeldab, et kaardivaate automaatselt keskele joondamine "
+"on kasutusel"
 
 #: qml/ScaleBar.qml:218
 msgid "Auto-zoom on"
-msgstr "Automatické približovanie zapnuté"
+msgstr "Automaatne suumimine on kasutusel"
 
 #: qml/ScaleBar.qml:219
 msgid "Auto-zoom off"
-msgstr "Automatické približovanie vypnuté"
+msgstr "Automaatne suumimine ei ole kasutusel"
 
 #: qml/SharePage.qml:48
 msgid "SMS"
@@ -1807,54 +1815,54 @@ msgstr "SMS"
 
 #: qml/SharePage.qml:53
 msgid "Launching the Messages application"
-msgstr "Spustenie aplikácie na posielanie správ"
+msgstr "Käivitan sõnumirakendust"
 
 #: qml/SharePage.qml:54 qml/SharePage.qml:80
 msgid "Message copied to the clipboard"
-msgstr "Správa bola skopírovaná do schránky"
+msgstr "Kopeerisin sõnumi lõikelauale"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr "Chyba pri odosielaní správy"
+msgstr "Sõnumi saatmisel tekkis viga"
 
 #: qml/SharePage.qml:66
 msgid "Email"
-msgstr "E-mail"
+msgstr "E-post"
 
 #: qml/SharePage.qml:69
 msgid "Launching the Email application"
-msgstr "Spustenie aplikácie na posielanie e-mailov"
+msgstr "Käivitan e-posti rakendust"
 
 #: qml/SharePage.qml:77
 msgid "Other"
-msgstr "Iné"
+msgstr "Saada muul viisil"
 
 #: qml/SharePage.qml:97
 msgid "Add address"
-msgstr "Pridať adresu"
+msgstr "Lisa aadress"
 
 #: qml/SharePage.qml:106
 msgid "Add link to OpenStreetMaps"
-msgstr "Pridať odkaz do OpenStreetMaps"
+msgstr "Lisa viide OpenStreetMaps saiti"
 
 #: qml/SharePage.qml:115
 msgid "Add link to Google Maps"
-msgstr "Pridať odkaz do Google Maps"
+msgstr "Lisa viide Google Maps saiti"
 
 #: routers/default_results.qml:81 routers/digitransit_results.qml:186
 #: routers/gpx_osmscout_results.qml:81 routers/gpx_results.qml:81
 #: routers/mapquest_open_results.qml:81 routers/osmscout_results.qml:81
 #: routers/osrm_results.qml:81 routers/stadiamaps_results.qml:81
 msgid "Route to %1"
-msgstr "Trasa do %1"
+msgstr "Teekond sihtkohta %1"
 
 #: routers/digitransit_results.qml:61
 msgid "Route %1. total %2"
-msgstr "Trasa %1. celkom %2"
+msgstr "Teekond %1, kokku %2"
 
 #: routers/digitransit_results.qml:156
 msgid "Walk %1"
-msgstr "Chôdza %1"
+msgstr "Kõnni %1"
 
 #: routers/digitransit_results.qml:157
 msgid "%1 → %2"
@@ -1862,11 +1870,11 @@ msgstr "%1 → %2"
 
 #: routers/digitransit_results.qml:266
 msgid "Results"
-msgstr "Výsledky"
+msgstr "Tulemused"
 
 #: routers/digitransit_settings.qml:31
 msgid "Region"
-msgstr "Región"
+msgstr "Piirkond"
 
 #: routers/digitransit_settings.qml:32
 msgid "HSL"
@@ -1874,141 +1882,141 @@ msgstr "HSL"
 
 #: routers/digitransit_settings.qml:32
 msgid "Waltti"
-msgstr "Cestovná karta Waltti"
+msgstr "Waltti"
 
 #: routers/digitransit_settings.qml:32
 msgid "Finland"
-msgstr "Fínsko"
+msgstr "Soome"
 
 #: routers/digitransit_settings.qml:72 routers/digitransit_settings.qml:74
 #: routers/digitransit_settings.qml:78
 msgid "Depart"
-msgstr "Odjazd"
+msgstr "Välju"
 
 #: routers/digitransit_settings.qml:75
 msgid "Arrive"
-msgstr "Príjazd"
+msgstr "Saabu"
 
 #: routers/digitransit_settings.qml:91
 msgid "Today"
-msgstr "Dnes"
+msgstr "Täna"
 
 #: routers/digitransit_settings.qml:98
 msgid "Select date"
-msgstr "Zvoľte dátum"
+msgstr "Vali kuupäev"
 
 #: routers/digitransit_settings.qml:119
 msgid "Now"
-msgstr "Teraz"
+msgstr "Praegu"
 
 #: routers/digitransit_settings.qml:127
 msgid "Select time"
-msgstr "Zvoľte čas"
+msgstr "Vali aeg"
 
 #: routers/digitransit_settings.qml:145
 msgid "Criterion"
-msgstr "Kritéria"
+msgstr "Tingimused"
 
 #: routers/digitransit_settings.qml:146
 msgid "Least transfers"
-msgstr "Minimum presunov"
+msgstr "Kõige vähem ümberistumisi"
 
 #: routers/digitransit_settings.qml:146
 msgid "Least walking"
-msgstr "Minimum chôdze"
+msgstr "Kõige vähem kõndimist"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
-msgstr "Súbor"
+msgstr "Fail"
 
 #: routers/gpx_osmscout_settings.qml:46 routers/ValhallaSettings.qml:38
 #: routers/ValhallaSettings.qml:113
 msgid "Bus"
-msgstr "Autobus"
+msgstr "Buss"
 
 #: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:38
 msgid "High-occupancy vehicle (HOV)"
-msgstr "Viacmiestny automobil (HOV)"
+msgstr "Suure mahutavusega sõiduk"
 
 #: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:38
 msgid "Motorcycle"
-msgstr "Motocykel"
+msgstr "Mootorratas"
 
 #: routers/gpx_osmscout_settings.qml:47 routers/ValhallaSettings.qml:38
 msgid "Motor Scooter"
-msgstr "Moped"
+msgstr "Motoroller"
 
 #: routers/gpx_osmscout_settings.qml:66 routers/ValhallaSettings.qml:59
 msgid "English Pirate"
-msgstr "Anglický pirát"
+msgstr "piraatide inglise keel"
 
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
 msgid "Slovenian"
-msgstr "Slovinčina"
+msgstr "sloveeni"
 
 #: routers/mapquest_open_settings.qml:45
 msgid "Try to avoid tolls"
-msgstr "Snažiť sa vyhnúť mýtu"
+msgstr "Proovi vältida teemakse"
 
 #: routers/mapquest_open_settings.qml:57
 msgid "English (UK)"
-msgstr "Angličtina (UK)"
+msgstr "inglise (Suurbritannia)"
 
 #: routers/mapquest_open_settings.qml:57
 msgid "English (US)"
-msgstr "Angličtina (US)"
+msgstr "inglise (Ameerika Ühendriigid)"
 
 #: routers/mapquest_open_settings.qml:57
 msgid "French (Canada)"
-msgstr "Francúzština (Kanada)"
+msgstr "prantsuse (Kanada)"
 
 #: routers/mapquest_open_settings.qml:58
 msgid "French (France)"
-msgstr "Francúzština (Francúzsko)"
+msgstr "prantsuse (Prantsusmaa)"
 
 #: routers/mapquest_open_settings.qml:58
 msgid "Spanish (Mexico)"
-msgstr "Španielčina (Mexiko)"
+msgstr "hispaania (Mehhiko)"
 
 #: routers/mapquest_open_settings.qml:59
 msgid "Spanish (Spain)"
-msgstr "Španielčina (Španielsko)"
+msgstr "hispaania (Hispaania)"
 
 #: routers/ValhallaSettings.qml:30
 msgid "General options"
-msgstr "Všeobecné možnosti"
+msgstr "Üldised seadistused"
 
 #: routers/ValhallaSettings.qml:76
 msgid "Advanced options"
-msgstr "Pokročilé možnosti"
+msgstr "Lisavalikud"
 
 #: routers/ValhallaSettings.qml:84
 msgid "Prefer shorter route"
-msgstr "Uprednostniť kratšiu trasu"
+msgstr "Eelista lühemat teed"
 
 #: routers/ValhallaSettings.qml:95
 msgid "Bicycle type"
-msgstr "Typ bicykla"
+msgstr "Jalgratta tüüp"
 
 #: routers/ValhallaSettings.qml:96
 msgid "Road"
-msgstr "Cesta"
+msgstr "Tee"
 
 #: routers/ValhallaSettings.qml:96
 msgid "Hybrid or City (default)"
-msgstr "Hybridný alebo mestský (východzí)"
+msgstr "Hübriid- või linnakaart (vaikimisi väärtus)"
 
 #: routers/ValhallaSettings.qml:96
 msgid "Cross"
-msgstr "Prechod"
+msgstr "Rist"
 
 #: routers/ValhallaSettings.qml:96
 msgid "Mountain"
-msgstr "Kopec"
+msgstr "Mägi"
 
 #: routers/ValhallaSettings.qml:112
 msgid "Your desire to use buses."
-msgstr "Želáte si použiť autobusy."
+msgstr "Sinu eelistus kasutada busse."
 
 #: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
 #: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:186
@@ -2016,70 +2024,70 @@ msgstr "Želáte si použiť autobusy."
 #: routers/ValhallaSettings.qml:238 routers/ValhallaSettings.qml:254
 #: routers/ValhallaSettings.qml:290
 msgid "Avoid"
-msgstr "Vyhnúť sa"
+msgstr "Väldi"
 
 #: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
 #: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:202
 #: routers/ValhallaSettings.qml:220 routers/ValhallaSettings.qml:273
 msgid "Prefer to avoid"
-msgstr "Snažiť sa vyhnúť"
+msgstr "Eelista vältimist"
 
 #: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
 #: routers/ValhallaSettings.qml:186 routers/ValhallaSettings.qml:202
 #: routers/ValhallaSettings.qml:220 routers/ValhallaSettings.qml:238
 #: routers/ValhallaSettings.qml:254 routers/ValhallaSettings.qml:290
 msgid "No preference (default)"
-msgstr "Bez uprednostnenia (východzie)"
+msgstr "Eelistus puudub (vaikimisi väärtus)"
 
 #: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:150
 #: routers/ValhallaSettings.qml:167 routers/ValhallaSettings.qml:203
 #: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:274
 msgid "Incline"
-msgstr "Snažiť sa použiť"
+msgstr "Pigem eelista"
 
 #: routers/ValhallaSettings.qml:129
 msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr "Maximálna povolená obtiažnosť turistických chodníkov."
+msgstr "Suurim lubatav matkaradade raskusaste."
 
 #: routers/ValhallaSettings.qml:130
 msgid "Hiking difficulty"
-msgstr "Turistická obtiažnosť"
+msgstr "Matkamise raskusaste"
 
 #: routers/ValhallaSettings.qml:131
 msgid "Hiking (default)"
-msgstr "Turistika (východzie)"
+msgstr "Matkamine (vaikimisi väärtus)"
 
 #: routers/ValhallaSettings.qml:131
 msgid "Mountain hiking"
-msgstr "Horská turistika"
+msgstr "Mägimatkamine"
 
 #: routers/ValhallaSettings.qml:132
 msgid "Demanding mountain hiking"
-msgstr "Požadovaná horská turistika"
+msgstr "Peab kasutama mägimatkamist"
 
 #: routers/ValhallaSettings.qml:132
 msgid "Alpine hiking"
-msgstr "Alpská turistika"
+msgstr "Alpimatkamine"
 
 #: routers/ValhallaSettings.qml:132
 msgid "Demanding alpine hiking"
-msgstr "Populárna horská turistika"
+msgstr "Peab kasutama alpimatkamist"
 
 #: routers/ValhallaSettings.qml:148
 msgid "Ferries"
-msgstr "Trajekty"
+msgstr "Praamid"
 
 #: routers/ValhallaSettings.qml:165
 msgid "Highways"
-msgstr "Diaľnice"
+msgstr "Kiirteed"
 
 #: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:273
 msgid "No preference"
-msgstr "Bez uprednostnenia"
+msgstr "Eelistus puudub"
 
 #: routers/ValhallaSettings.qml:167
 msgid "Prefer (default)"
-msgstr "Uprednostniť (východzie)"
+msgstr "Eelista (vaikimisi väärtus)"
 
 #: routers/ValhallaSettings.qml:184
 msgid ""
@@ -2087,41 +2095,41 @@ msgid ""
 "(time and distance) routes can be selected. By allowing hills, it indicates "
 "you do not fear hills and steeper grades."
 msgstr ""
-"Želáte si zdolávať kopce. Ak sa vyhnete kopcom a strmým svahom, môžete si "
-"zvoliť dlhšie trasy (čas a vzdialenosť). Povolením kopcov naznačujete, že "
-"zvládnete kopce a strmé svahy."
+"Kirjeldab sinu soovi mägesid vallutada. Mägede ja järskude nõlvade "
+"vältimisel valitakse (aja ja vahemaa mõttes) pikem teekond.  Lubades "
+"teekonna koostamist üle mägede näitad, et ei pelga mägesid ja järske nõlvu."
 
 #: routers/ValhallaSettings.qml:185
 msgid "Hills"
-msgstr "Kopce"
+msgstr "Mäed"
 
 #: routers/ValhallaSettings.qml:186
 msgid "Allow"
-msgstr "Povoliť"
+msgstr "Luba"
 
 #: routers/ValhallaSettings.qml:201
 msgid "Primary roads"
-msgstr "Hlavné cesty"
+msgstr "Põhimaanteed"
 
 #: routers/ValhallaSettings.qml:218
 msgid "Your desire to use rail/subway/metro."
-msgstr "Želáte si použiť vlak/metro."
+msgstr "Sinu eelistus kasutada raudteed või metrood."
 
 #: routers/ValhallaSettings.qml:219
 msgid "Rail"
-msgstr "Železnica"
+msgstr "Raudtee"
 
 #: routers/ValhallaSettings.qml:236
 msgid "Your propensity to use roads alongside other vehicles."
-msgstr "Máte tendenciu používať cesty s ostatnými vozidlami."
+msgstr "Sinu eelistus kasutada teid koos teiste sõidukitega."
 
 #: routers/ValhallaSettings.qml:237
 msgid "Roads"
-msgstr "Cesty"
+msgstr "Teed"
 
 #: routers/ValhallaSettings.qml:253
 msgid "Tolls"
-msgstr "Mýto"
+msgstr "Teemaksud"
 
 #: routers/ValhallaSettings.qml:271
 msgid ""
@@ -2129,87 +2137,87 @@ msgid ""
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
 msgstr ""
-"Túžite po dobrodružstve. Navigácia sa bude snažiť vyhnúť sa hlavným cestám a"
-" navigovať po vedľajších cestách, niekedy po chodníkoch, železniciach, "
-"neoznačených cestách a cestách s horším povrchom."
+"Kui ihkad seigelda, siis kasuta seda valikut, mille puhul teekonna "
+"koostamisel välditakse põhimaanteid ja eelistatakse väiksemaid teid, "
+"sealhulgas külavaheteid, radasid ja pinnasekattega teid."
 
 #: routers/ValhallaSettings.qml:272
 msgid "Trails"
-msgstr "Chodníky"
+msgstr "Matkarajad"
 
 #: routers/ValhallaSettings.qml:273
 msgid "Avoid (default)"
-msgstr "Vyhnúť sa (východzie)"
+msgstr "Väldi (vaikimisi väärtus)"
 
 #: routers/ValhallaSettings.qml:289
 msgid "Transfers"
-msgstr "Presuny"
+msgstr "Ümberistumised"
 
 #: qml/js/util.js:157
 msgid "%1 (default)"
-msgstr "%1 (východzie)"
+msgstr "%1 (vaikimisi väärtus)"
 
 #: qml/js/util.js:235
 msgid "Alternatives"
-msgstr "Alternatívy"
+msgstr "Alternatiivid"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
-msgstr "Hľadanie vo Fínsku. Podpora automatického doplňovania"
+msgstr "Soome andmete otsing, mis kasutab automaatset sõnalõpetust"
 
 #: standard input:2
 msgid "Search based on open data sources"
-msgstr "Hľadanie založené na otvorených dátových zdrojoch"
+msgstr "Otsing põhineb avatud andmeallikatel"
 
 #: standard input:3
 msgid "Search based on open data sources. Supports autocomplete"
 msgstr ""
-"Hľadanie založené na otvorených dátových zdrojoch. Podporuje automatické "
-"doplňovanie"
+"Otsing põhineb avatud andmeallikatel ning võimaldab automaatset sõnalõpetust"
 
 #: standard input:4
 msgid "Search based on OpenStreetMap data. Supports autocomplete"
 msgstr ""
-"Hľadanie založené na dátach OpenStreetMap. Podporuje automatické doplňovanie"
+"Otsing põhineb OpenStreetMap'i andmetel ning võimaldab automaatset "
+"sõnalõpetust"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr "Miesta zoradené a hodnotené používateľmi Foursquare"
+msgstr "Foursquare'i kasutajate poolt sisestatud ja hinnatud kohad"
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
-msgstr "Zaujímavé miesta z OpenStreetMap"
+msgstr "Huvipunktid OpenStreetMap'i andmete alusel"
 
 #: standard input:8
 msgid "Public transport routing in Finland"
-msgstr "Trasy verejnej dopravy vo Fínsku"
+msgstr "Ühistransport Soomes"
 
 #: standard input:9
 msgid "public transport"
-msgstr "verejná doprava"
+msgstr "ühistransport"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr "Navádzanie po trase GPX"
+msgstr "Teekond piki GPX-rada"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
 msgid "car"
-msgstr "automobilom"
+msgstr "auto"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:21
 msgid "foot"
-msgstr "pešo"
+msgstr "jalgsi"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr "Navádzanie po trase GPX spracovanej serverom OSM Scout Server"
+msgstr "Teekonna piki GPX-rada koostas OSM Scout Server"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"
-msgstr "Navádzanie založené na dátach OpenStreetMap"
+msgstr "Teekond on koostatud OpenStreetMap'i andmete alusel"
 
 #: standard input:20
 msgid "Routing by Valhalla based on OpenStreetMap data"
-msgstr "Navádzanie podľa Valhalla založené na dátach OpenStreetMap"
+msgstr "Teekonna koostas Valhalla OpenStreetMap'i andmete alusel"

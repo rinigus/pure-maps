@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-24 21:33+0300\n"
+"POT-Creation-Date: 2020-10-18 11:39+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Caio2k, 2020\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rinigus/teams/89597/pt_BR/)\n"
@@ -1126,7 +1126,7 @@ msgstr "Checo"
 
 #: qml/PreferencesPage.qml:69
 msgid "Danish"
-msgstr ""
+msgstr "Dinamarquês"
 
 #: qml/PreferencesPage.qml:70
 msgid "Dutch"
@@ -1139,7 +1139,7 @@ msgstr "Inglês"
 
 #: qml/PreferencesPage.qml:72
 msgid "Finnish"
-msgstr ""
+msgstr "Finlandês"
 
 #: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:798
 #: routers/gpx_osmscout_settings.qml:67 routers/ValhallaSettings.qml:60
@@ -1154,7 +1154,7 @@ msgstr "Alemão"
 
 #: qml/PreferencesPage.qml:75
 msgid "Gaelic"
-msgstr ""
+msgstr "Gaélico"
 
 #: qml/PreferencesPage.qml:76
 msgid "Greek"
@@ -1211,7 +1211,7 @@ msgstr "Russo"
 
 #: qml/PreferencesPage.qml:88
 msgid "Sinhalese"
-msgstr ""
+msgstr "Cingalês"
 
 #: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:797
 #: routers/gpx_osmscout_settings.qml:68 routers/ValhallaSettings.qml:61
@@ -1237,7 +1237,7 @@ msgstr "Ucraniano"
 
 #: qml/PreferencesPage.qml:94
 msgid "Urdu"
-msgstr ""
+msgstr "Urdu"
 
 #: qml/PreferencesPage.qml:95
 msgid "Vietnamese"
@@ -1245,7 +1245,7 @@ msgstr "Vietnamita"
 
 #: qml/PreferencesPage.qml:96
 msgid "Welsh"
-msgstr ""
+msgstr "Galês"
 
 #: qml/PreferencesPage.qml:148
 msgid ""
