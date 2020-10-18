@@ -17,7 +17,7 @@ Name: harbour-pure-maps
 Name: pure-maps
 %endif
 
-Version: 1.29.0
+Version: 1.29.1
 Release: 1
 
 Summary: Maps and navigation
