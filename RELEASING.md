@@ -3,7 +3,7 @@ Releasing a New Version
 
 ```bash
 # Update translations.
-make pot
+tools/update-translations
 tx push -s
 tx pull -a --minimum-perc=85
 sed -i "s/charset=CHARSET/charset=UTF-8/" po/*.po
@@ -14,7 +14,7 @@ git commit -m "Update translations"
 
 # Check, test, do final edits and release.
 tools/manage-keys inject .
-make check test
+make -f Makefile.test
 tools/manage-keys strip .
 git status
 emacs poor/__init__.py rpm/*.spec Makefile packaging/ubports/manifest.json

@@ -64,13 +64,16 @@ cp %{SOURCE1} tools/
 tools/manage-keys inject . || true
 
 %if 0%{?sailfishos}
-make platform-silica
+%qmake FLAVOR=silica CONFIG+=install_gpxpy
 %else
-make platform-kirigami
+%qmake FLAVOR=kirigami CONFIG+=install_gpxpy
 %endif
 
+%build
+make
+
 %install
-make DESTDIR=%{buildroot} PREFIX=/usr INCLUDE_GPXPY=yes install
+make INSTALL_ROOT=%{buildroot} PREFIX=/usr install
 
 %files
 %defattr(-,root,root,-)
