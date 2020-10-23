@@ -113,24 +113,23 @@ trans.extra = $$PWD/tools/install-translations $${APP_NAME} $$[QT_HOST_BINS]/lco
 trans.path = $$DATADIR
 INSTALLS += trans
 
-flavor_silica {
-    qml.files = qml/*.qml
-    qml.path = $$DATADIR/qml
+qml.files = qml/*.qml
+qml.path = $$DATADIR/qml
 
-    qmlplatform.files = qml/platform.silica/*.qml
-    qmlplatform.path = $$DATADIR/platform
+js.files = qml/js/*.js
+js.path = $$DATADIR/qml/js
 
-    js.files = qml/js/*.js
-    js.path = $$DATADIR/qml/js
+icons.files = qml/icons/*.svg qml/icons/*.png qml/icons/*.jpg \
+              qml/icons/attribution qml/icons/basemap qml/icons/marker qml/icons/navigation \
+              qml/icons/navigation qml/icons/position qml/icons/sailfishos
+icons.path = $$DATADIR/qml/icons
 
-    icons.files = qml/icons/*.svg qml/icons/*.png qml/icons/*.jpg \
-                  qml/icons/attribution qml/icons/basemap qml/icons/marker qml/icons/navigation \
-                  qml/icons/navigation qml/icons/position qml/icons/sailfishos
-    icons.path = $$DATADIR/qml/icons
+qmlplatform.extra = cp -L -v $$PWD/qml/platform.$$FLAVOR/*.qml ${INSTALL_ROOT}$$DATADIR/qml/platform
+qmlplatform.path = $$DATADIR/qml/platform
 
-    INSTALLS += qmlplatform qml js icons
-}
+INSTALLS += qmlplatform qml js icons
 
+# sailfish icons are installed separately below
 flavor_kirigami|flavor_qtcontrols|flavor_ubports {
     icons108.path = $$PREFIX/share/icons/hicolor/108x108/apps
     icons108.extra = mkdir -p $(INSTALL_ROOT)/$$PREFIX/share/icons/hicolor/108x108/apps && cp $$PWD/data/pure-maps-108.png $(INSTALL_ROOT)/$$PREFIX/share/icons/hicolor/108x108/apps/$${TARGET}.png
@@ -187,7 +186,6 @@ SOURCES += src/main.cpp
 HEADERS +=
 
 OTHER_FILES += rpm/harbour-pure-maps.spec
-OTHER_FILES += qml/*.qml qml/js/*.js
 OTHER_FILES += qml/platform.generic/*.qml
 OTHER_FILES += qml/platform.kirigami/*.qml
 OTHER_FILES += qml/platform.qtcontrols/*.qml
@@ -207,14 +205,6 @@ flavor_silica {
     DISTFILES += \
         rpm/$${TARGET}.spec
 }
-
-flavor_kirigami|flavor_qtcontrols|flavor_ubports {
-    RESOURCES += qml_main.qrc
-    RESOURCES += icons.qrc
-}
-flavor_kirigami: RESOURCES += qml_kirigami.qrc
-flavor_qtcontrols: RESOURCES += qml_qtcontrols.qrc
-flavor_ubports: RESOURCES += qml_ubports.qrc
 
 # misc options
 flavor_silica {
