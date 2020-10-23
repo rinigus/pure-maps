@@ -18,15 +18,15 @@
 """
 Geocoding using Photon.
 
-http://photon.komoot.de/
+https://photon.komoot.io/
 """
 
 import copy
 import poor
 import urllib.parse
 
-URL = "http://photon.komoot.de/api/?q={query}&limit={limit}&lang={lang}"
-URL_REVERSE = "http://photon.komoot.de/reverse?lon={lon}&lat={lat}&limit={limit}&lang={lang}&distance_sort=true"
+URL = "https://photon.komoot.io/api/?q={query}&limit={limit}&lang={lang}"
+URL_REVERSE = "https://photon.komoot.io/reverse?lon={lon}&lat={lat}&limit={limit}&lang={lang}&distance_sort=true"
 cache = {}
 
 def autocomplete(query, x=0, y=0, params={}):

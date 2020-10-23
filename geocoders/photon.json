@@ -1,6 +1,6 @@
 {
   "attribution": {
-    "Photon": "https://photon.komoot.de/",
+    "Photon": "https://photon.komoot.io/",
     "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
   },
   "_description": "Search based on OpenStreetMap data. Supports autocomplete",
