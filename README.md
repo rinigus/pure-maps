@@ -26,7 +26,8 @@ all platforms are welcome at TMO, not only current Sailfish OS users.
 
 For development of Pure Maps and testing on desktop, you would have to
 choose platform for which you develop, install dependencies, and be
-able to run application. All this is covered below. 
+able to run the application. In this case, Qt Creator can be used. See
+details below.
 
 Alternative, is to use Flatpak-based environment and develop using
 that. For this approach, see separate
@@ -40,20 +41,8 @@ To build a click package for Ubuntu Touch, see separate
 To support multiple platforms, QML code is split into
 platform-specific and platform-independent parts. Platform-independent
 part is in `qml` folder with the platform-dependent code under
-`qml/<platform-id>`. To switch between platforms, one has to make a
-symbolic link from the corresponding `qml/<platform-id>` to
-`qml/platform`. This can be done by running 
-
-```
-make platform-qtcontrols
-```
-
-for example. Current platforms are 
-
-* platform.kirigami -> make target `platform-kirigami`
-* platform.qtcontrols -> make target `platform-qtcontrols`
-* platform.silica -> make target `platform-silica`
-* platform.ubports -> make target `platform-ubports`
+`qml/<platform-id>`. Correct platform is picked up in installation
+phase (`make install`) or is set by `make` for local builds.
 
 Within platform-independent code, platform is included allowing to
 access platform-specific implementations of page stack, file dialog,
@@ -78,7 +67,6 @@ are needed:
 * PyXDG https://www.freedesktop.org/wiki/Software/pyxdg/
 * Mapbox GL Native, Qt version, use the packaged version at https://github.com/rinigus/pkg-mapbox-gl-native
 * Mapbox GL QML, unofficial QML bindings, https://github.com/rinigus/mapbox-gl-qml
-* [non-Sailfish] QML runner https://github.com/rinigus/qmlrunner
 * [qtcontrols, kirigami] QML Clipboard module https://github.com/rinigus/qml-module-clipboard
 * GPXPy, https://github.com/tkrajina/gpxpy
 
@@ -91,36 +79,46 @@ together with Pure Maps by setting `INCLUDE_GPXPY=yes` argument to
 `make install`. 
 
 
-## Running
+## Building
 
-For development purposes, Pure Maps doesn't need to be installed in
-the system and can be started wither using `qmlscene`, `qmlrunner`, or
-some similar tool. On Linux desktop, `qmlrunner` is recommended since
-it adds support for fallback icons.
+Starting from Pure Maps version 2.0, the application has to be
+compiled. You could either
 
-The both solutions require the path used to install QML
-dependencies. In the following examples, `/usr/local/lib64/qml`,
-please adjust if needed.
+- compile/install/run
+- compile/run from source tree
 
-To run Pure Maps from the folder containing source, make a symbolic
-links
+In the both cases, you would have to specify platform via `FLAVOR`
+to `qmake`. Supported platforms:
 
+- Kirigami: `FLAVOR=kirigami`
+- QtControls: `FLAVOR=qtcontrols`
+- Sailfish: `FLAVOR=silica`
+- Ubuntu Touch: `FLAVOR=ubports`
+
+It is recommended to build the sources in a separate folder, as in
 ```
-ln -s qml/icons/fallback icons
-ln -s ../thirdparty/open-location-code poor/openlocationcode
+mkdir build
+cd build
+qmake FLAVOR=kirigami ..
+make && make install
 ```
 
-and then run with
+For compile/install/run, use regular `make` and `make install` before
+running application.
 
-```
-qmlrunner -P .. -path /usr/local/lib64/qml pure-maps
-```
+To run from the source tree, add `CONFIG+=run_from_source` option when
+running `qmake`. Please note that, when running from source tree, do
+not run `make install` in the build folder. Otherwise it can overwrite
+your source files. In this case, `make` and running compiled
+executable directly would allow you to run application without
+installation. For example, from Qt Creator directly.
 
-or
+The build options can be specified in Qt Creator under "Build
+settings" of the project. Just add them to the additional arguments of
+qmake.
 
-```
-qmlscene -I /usr/local/lib64/qml qml/pure-maps.qml
-```
+
+## API keys
 
 Note that you will need API keys if you wish to access the services
 that require them (such as Mapbox). For that, register as a developer
@@ -133,50 +131,23 @@ tiles for Finland), Sputnik (raster tiles in Russian), Photon
 ## Packaging
 
 At present, Sailfish OS version is packaged as RPM, Linux version
-is packaged using Flatpak, and UBPorts version as click.
+is packaged using Flatpak or RPM, and UBPorts version as click.
 
 For packaging, please copy `tools/apikeys_dummy.py` to
 `tools/apikeys.py` and fill missing API keys for the services that you
 plan to use.
-
-For installation on Sailfish, you can build the RPM package with
-command `make rpm`. You don't need an SDK to build the RPM, only basic
-tools: `make`, `rpmbuild`, `gettext` and `qttools`.
 
 Flatpak specific instructions are available under `packaging/flatpak`. 
 
 UBPorts specific instructions are available under `packaging/ubports`.
 
 
-## Platform specific notes
-
-### Kirigami
-
-Kirigami platform may require latest platform SDK available as
-flatpaks. See instructions at
-https://docs.plasma-mobile.org/AppDevelopment.html for local
-development. From these instructions, only SDK install is
-needed. After that, building and running can be performed by
-
-```
-make flatpak-build flatpak-run
-```
-
-If you wish to install development version for testing, you could use
-the following command instead (will build the package, bundle it,
-uninstall current version of Pure Maps, and install the freshly built
-one):
-```
-make flatpak-dev-install
-```
-
-
 ## Development
 
 ### General
 
-Throughout QML and Python code, all the same type items (properties,
-signals, functions), are ordered alphabetically. 
+Throughout QML, Python, and C++ code, all the same type items
+(properties, signals, functions), are ordered alphabetically.
 
 Its possible that some of the implemented code does not fully comply
 with the outlined order. Then it should be fixed eventually.

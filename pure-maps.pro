@@ -12,6 +12,8 @@ equals(FLAVOR, "silica") {
     CONFIG += flavor_qtcontrols
 } else:equals(FLAVOR, "ubports") {
     CONFIG += flavor_ubports
+} else {
+    error("Please specify platform using FLAVOR=platform as qmake option. Supported platforms: kirigami, silica, qtcontrols, ubports.")
 }
 
 ############################################
@@ -61,6 +63,20 @@ DATADIR    = $$PREFIX/share/$${TARGET}
 DESKTOPDIR = $$PREFIX/share/applications
 EXEREAL    = $$PREFIX/bin/$${TARGET}
 DBUSDIR    = $$PREFIX/share/dbus-1/services
+
+# Local run during development
+run_from_source {
+    DATADIR=$$PWD
+
+    platformlink.target = .platformlink.set.$$FLAVOR
+    platformlink.commands = \
+       rm -f $$PWD/qml/platform .platformlink.set.* || true; \
+       ln -s platform.$$FLAVOR $$PWD/qml/platform; \
+       touch $$platformlink.target
+
+    QMAKE_EXTRA_TARGETS += platformlink
+    PRE_TARGETDEPS += $$platformlink.target
+}
 
 ######################################
 # Installs
@@ -166,7 +182,7 @@ flavor_silica {
 }
 
 # default prefix for data
-DEFINES += DEFAULT_DATA_PREFIX=\\\"$${PREFIX_RUNNING}/share/$${TARGET}/\\\"
+DEFINES += DEFAULT_DATA_PREFIX=\\\"$${DATADIR}/\\\"
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
