@@ -38,6 +38,14 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="1.29.2" date="2020-10-24">
+     <description>
+       <ul>
+         <li>Update Photon URL</li>
+         <li>Update translations</li>
+      </ul>
+     </description>
+   </release>
    <release  version="1.29.1" date="2020-10-18">
      <description>
        <ul>

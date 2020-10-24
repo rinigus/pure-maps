@@ -6,7 +6,8 @@
 * [ubports] Fix text update in POIs
 * [ubports] Add slim builds [jonnius]
 * [ubports] Update docs [jonnius]
-* [1.29.0, 1.29.1] Update translations
+* [1.29.0, 1.29.1, 1.29.2] Update translations
+* [1.29.2] Update Photon URL
 
 2020-07-02: Pure Maps 1.28
 ==========================
