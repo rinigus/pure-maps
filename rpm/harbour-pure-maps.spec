@@ -28,6 +28,7 @@ Source1: apikeys.py
 
 BuildRequires: gettext
 BuildRequires: make
+BuildRequires: python(abi) > 3
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Qml)
 BuildRequires: pkgconfig(Qt5Quick)

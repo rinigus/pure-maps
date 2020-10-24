@@ -71,7 +71,7 @@ INSTALLS += target
 py.extra = \
    install -v -m 644 $$PWD/poor/*.py ${INSTALL_ROOT}$$DATADIR/poor; \
    sed -i -e \'s|pure-maps|$${APP_NAME}|g\' ${INSTALL_ROOT}$$DATADIR/poor/paths.py; \
-   $$PWD/tools/manage-keys inject ${INSTALL_ROOT}$$DATADIR
+   python3 $$PWD/tools/manage-keys inject ${INSTALL_ROOT}$$DATADIR
 py.path = $$DATADIR/poor
 INSTALLS += py
 
@@ -109,7 +109,7 @@ routers.path = $$DATADIR/routers
 INSTALLS += geocoders guides maps routers
 
 # translations
-trans.extra = $$PWD/tools/install-translations $${APP_NAME} $$[QT_HOST_BINS]/lconvert ${INSTALL_ROOT}$$DATADIR
+trans.extra = sh $$PWD/tools/install-translations $${APP_NAME} $$[QT_HOST_BINS]/lconvert ${INSTALL_ROOT}$$DATADIR
 trans.path = $$DATADIR
 INSTALLS += trans
 
