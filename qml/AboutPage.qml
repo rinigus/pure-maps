@@ -55,7 +55,7 @@ PagePL {
         ListItemLabel {
             height: styler.themeItemSizeExtraSmall
             horizontalAlignment: Text.AlignHCenter
-            text: app.tr("version %1", py.evaluate("poor.__version__"))
+            text: app.tr("version %1", programVersion)
         }
 
         ListItemLabel {

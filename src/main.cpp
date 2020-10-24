@@ -19,36 +19,54 @@
 
 #include <QDir>
 #include <QFileInfo>
+
+#ifdef IS_QTCONTROLS_QT
 #include <QApplication>
+#endif
+
+#ifdef IS_SAILFISH_OS
+#include <QGuiApplication>
+#include <sailfishapp.h>
+#endif
+
 #include <QIcon>
 #include <QStringList>
+#include <QScopedPointer>
 #include <QTranslator>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#ifdef IS_QTCONTROLS_QT
+#include <QQuickStyle>
+#endif
+#include <QQuickView>
 #include <QQuickWindow>
+
 #include <QtGlobal>
 
 #include <iostream>
 
 int main(int argc, char *argv[])
 {
-  // parse options that have to be applied before creation of QApplication
-  for (int i = 1; i < argc; ++i)
-    {
-      const char *arg = argv[i];
-      if (!qstrcmp(arg, "-scale"))
-        QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-      else if (!qstrcmp(arg, "-noscale"))
-        QGuiApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
-    }
+#ifdef IS_QTCONTROLS_QT
+#ifdef DEFAULT_FALLBACK_STYLE
+  if (QQuickStyle::name().isEmpty())
+    QQuickStyle::setStyle(DEFAULT_FALLBACK_STYLE);
+#endif
+#endif
 
-  QApplication app(argc, argv);
+#ifdef IS_SAILFISH_OS
+  QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+#endif
+#ifdef IS_QTCONTROLS_QT
+  QScopedPointer<QApplication> app(new QApplication(argc,argv));
+#endif
 
-  app.setApplicationName(APP_NAME);
-  app.setOrganizationName(APP_NAME);
-  app.setApplicationVersion(APP_VERSION);
+  app->setApplicationName(APP_NAME);
+  app->setOrganizationName(APP_NAME);
+  app->setApplicationVersion(APP_VERSION);
 #ifdef IS_QTCONTROLS_QT
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
-  app.setDesktopFileName(APP_NAME ".desktop");
+  app->setDesktopFileName(APP_NAME ".desktop");
 #endif
 #endif
 
@@ -57,30 +75,56 @@ int main(int argc, char *argv[])
   QTranslator translator;
   std::cout << "Current locale: " << QLocale().name().toStdString() << "\n";
   if (translator.load(QLocale(), APP_NAME, QLatin1String("-"),
-                      QStringLiteral(DEFAULT_DATA_PREFIX "/translations")))
+                      QStringLiteral(DEFAULT_DATA_PREFIX "translations")))
     {
       std::cout << "Loaded translation\n";
-      app.installTranslator(&translator);
+      app->installTranslator(&translator);
     }
   else
     std::cout << "Translation not found\n";
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
   // add fallback icon path
-  QString icons_extra_path(QStringLiteral(DEFAULT_DATA_PREFIX "/qml/icons/fallback"));
+  QString icons_extra_path(QStringLiteral(DEFAULT_DATA_PREFIX "qml/icons/fallback"));
   if (QFileInfo::exists(icons_extra_path)) {
       std::cout << "Fallback icons at " << icons_extra_path.toStdString() << "\n";
       QIcon::setFallbackSearchPaths(QIcon::fallbackSearchPaths() << icons_extra_path);
     }
 #endif
 
+#ifdef IS_SAILFISH_OS
+  QScopedPointer<QQuickView> v;
+  v.reset(SailfishApp::createView());
+  QQmlContext *rootContext = v->rootContext();
+#endif
+#ifdef IS_QTCONTROLS_QT
   QQmlApplicationEngine engine;
+  QQmlContext *rootContext = engine.rootContext();
+#endif
+
+#if defined(IS_SAILFISH_OS) || defined(IS_QTCONTROLS_QT)
+  if (rootContext)
+    {
+      rootContext->setContextProperty("programName", "Pure Maps");
+      rootContext->setContextProperty("programVersion", APP_VERSION);
+    }
+#endif
+
+#ifdef IS_SAILFISH_OS
+  if (v)
+    {
+      v->setSource(SailfishApp::pathTo("qml/pure-maps.qml"));
+      v->show();
+    }
+#endif
+#ifdef IS_QTCONTROLS_QT
   engine.load(DEFAULT_DATA_PREFIX "qml/pure-maps.qml");
   if (engine.rootObjects().isEmpty())
     {
       std::cerr << "Error loading QML\n";
       return -3;
     }
+#endif
 
-  return app.exec();
+  return app->exec();
 }
