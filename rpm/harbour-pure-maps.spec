@@ -48,6 +48,8 @@ Requires: qt5-qtdeclarative-import-positioning >= 5.2
 Requires: sailfishsilica-qt5
 %else
 BuildRequires: qt5-linguist
+BuildRequires: cmake(KF5Kirigami2)
+BuildRequires: pkgconfig(Qt5QuickControls2)
 Requires: kf5-kirigami2
 Requires: mapboxgl-qml
 Requires: pyotherside
