@@ -1,10 +1,9 @@
 {
   "clickable_minimum_required": "6.13.0",
-  "builder": "custom",
+  "builder": "qmake",
   "kill": "pure-maps",
-  "build": "cd ${ROOT} && make platform-ubports && make FULLNAME=pure-maps-slim.jonnius PREFIX=. DESTDIR=${INSTALL_DIR}/ INCLUDE_GPXPY=yes QT_PLATFORM_STYLE=suru TMP_AS_CACHE=yes install",
-  "prebuild": "cd ${ROOT} && tools/manage-keys inject .",
-  "postbuild": "cd ${ROOT} && tools/manage-keys strip . && sed -i 's/@APP_TITLE@/Pure Maps Slim/g' ${INSTALL_DIR}/manifest.json && sed -i 's/@APP_TITLE@/Pure Maps Slim/g' ${INSTALL_DIR}/pure-maps.desktop && sed -i 's/@APP_NAME@/pure-maps-slim/g' ${INSTALL_DIR}/manifest.json",
+  "build_args": ["FLAVOR=ubports", "CONFIG+=install_gpxpy", "APP_NAME=pure-maps-slim.jonnius"],
+  "postbuild": "sed -i 's/@APP_TITLE@/Pure Maps Slim/g' ${INSTALL_DIR}/manifest.json && sed -i 's/@APP_TITLE@/Pure Maps Slim/g' ${INSTALL_DIR}/pure-maps.desktop && sed -i 's/@APP_NAME@/pure-maps-slim/g' ${CLICK_PATH}/launch.sh && sed -i 's/@APP_NAME@/pure-maps-slim/g' ${INSTALL_DIR}/manifest.json && mv ${INSTALL_DIR}/bin/pure-maps-slim.jonnius ${CLICK_PATH}/pure-maps",
   "install_data": {
     "${ROOT}/packaging/ubports/pure-maps.desktop": "${INSTALL_DIR}",
     "${ROOT}/packaging/ubports/manifest.json": "${INSTALL_DIR}",
@@ -13,9 +12,8 @@
     "${PICOTTS_LIB_INSTALL_DIR}/usr/share/picotts": "${INSTALL_DIR}/usr/share"
   },
   "install_bin": [
-    "${INSTALL_DIR}/bin/pure-maps",
-    "${PICOTTS_LIB_INSTALL_DIR}/usr/bin/pico2wave",
-    "${QMLRUNNER_LIB_INSTALL_DIR}/usr/local/bin/qmlrunner"
+    "${SRC_DIR}/packaging/ubports/launch.sh",
+    "${PICOTTS_LIB_INSTALL_DIR}/usr/bin/pico2wave"
   ],
   "install_lib": [
     "${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/lib/*.so*",
@@ -42,9 +40,6 @@
       "dependencies_host": [
         "cmake"
       ]
-    },
-    "qmlrunner": {
-      "builder": "qmake"
     },
     "mapbox-gl-qml": {
       "builder": "qmake",
