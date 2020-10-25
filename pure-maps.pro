@@ -59,7 +59,8 @@ isEmpty(PREFIX_RUNNING) {
     PREFIX_RUNNING = $$PREFIX
 }
 
-DATADIR    = $$PREFIX/share/$${TARGET}
+DATADIR = $$PREFIX/share/$${TARGET}
+DATADIR_RUNNING = $$PREFIX_RUNNING/share/$${TARGET}
 DESKTOPDIR = $$PREFIX/share/applications
 EXEREAL    = $$PREFIX/bin/$${TARGET}
 DBUSDIR    = $$PREFIX/share/dbus-1/services
@@ -182,7 +183,7 @@ flavor_silica {
 }
 
 # default prefix for data
-DEFINES += DEFAULT_DATA_PREFIX=\\\"$${DATADIR}/\\\"
+DEFINES += DEFAULT_DATA_PREFIX=\\\"$${DATADIR_RUNNING}/\\\"
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -201,6 +202,7 @@ OTHER_FILES += qml/platform.kirigami/*.qml
 OTHER_FILES += qml/platform.qtcontrols/*.qml
 OTHER_FILES += qml/platform.ubports/*.qml
 OTHER_FILES += qml/platform.silica/*.qml
+OTHER_FILES += poor/*.py
 
 # debug options
 CONFIG(release, debug|release) {
