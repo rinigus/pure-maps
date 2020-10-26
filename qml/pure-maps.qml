@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtMultimedia 5.6
+import org.puremaps 1.0
 import "."
 import "platform"
 
@@ -111,6 +112,35 @@ ApplicationWindowPL {
     Connections {
         target: app.navigator
         onRouteChanged: app.narrativePageSeen = false
+    }
+
+    Connections {
+        target: Commander
+
+        onSearch: {
+            app.pushMain(Qt.resolvedUrl("GeocodePage.qml"),
+                         {"query": searchString});
+        }
+
+        onShowPoi: {
+            var radius = 50; // meters default radius
+            var p = pois.add({ "x": longitude, "y": latitude, "title": title });
+            if (!p) return;
+            pois.show(p);
+            py.call("poor.app.geocoder.reverse",
+                    [longitude, latitude, radius, 1],
+                    function(result) {
+                        if (!result || !result.length) return;
+                        var r = result[0];
+                        var rpoi = pois.convertFromPython(r);
+                        rpoi.poiId = p.poiId;
+                        rpoi.coordinate = QtPositioning.coordinate(rpoi.y, rpoi.x);
+                        if (title) rpoi.title = title;
+                        pois.update(rpoi);
+                    });
+            map.autoCenter = false;
+            map.setCenter(longitude, latitude);
+        }
     }
 
     Component.onDestruction: {

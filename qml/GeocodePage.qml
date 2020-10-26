@@ -51,6 +51,7 @@ PagePL {
     }
 
     property string browsingQuery
+    property alias  query: geo.query
 
     GeocodeItem {
         id: geo

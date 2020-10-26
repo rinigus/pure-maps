@@ -68,6 +68,7 @@ DBUSDIR    = $$PREFIX/share/dbus-1/services
 # Local run during development
 run_from_source {
     DATADIR=$$PWD
+    DATADIR_RUNNING=$$PWD
 
     platformlink.target = .platformlink.set.$$FLAVOR
     platformlink.commands = \
@@ -77,6 +78,8 @@ run_from_source {
 
     QMAKE_EXTRA_TARGETS += platformlink
     PRE_TARGETDEPS += $$platformlink.target
+
+    message(Please DO NOT run 'make install' in this build)
 }
 
 ######################################
@@ -192,9 +195,17 @@ DEFINES += DEFAULT_DATA_PREFIX=\\\"$${DATADIR_RUNNING}/\\\"
 DEFINES += QT_DEPRECATED_WARNINGS
 
 # sources
-SOURCES += src/main.cpp
+SOURCES += src/main.cpp \
+    src/cmdlineparser.cpp \
+    src/commander.cpp \
+    src/config.cpp \
+    src/dbusroot.cpp
 
-HEADERS +=
+HEADERS += \
+    src/cmdlineparser.h \
+    src/commander.h \
+    src/config.h \
+    src/dbusroot.h
 
 OTHER_FILES += rpm/harbour-pure-maps.spec
 OTHER_FILES += qml/platform.generic/*.qml
