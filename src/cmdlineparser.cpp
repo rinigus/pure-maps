@@ -5,6 +5,8 @@
 #include <QCoreApplication>
 #include <QRegularExpression>
 
+#include <iostream>
+
 #include <QDebug>
 
 CmdLineParser *CmdLineParser::s_instance = nullptr;
@@ -33,19 +35,19 @@ bool CmdLineParser::parse(const QStringList &arguments)
 
   if (m_parser.isSet("help"))
     {
-      qInfo() << m_parser.helpText().toStdString().c_str();
+      std::cout << m_parser.helpText().toStdString().c_str() << std::endl;
       return false;
     }
 
   if (m_parser.isSet("version"))
     {
-      qInfo() << "Pure Maps " APP_VERSION;
+      std::cout << "Pure Maps " APP_VERSION << std::endl;
       return false;
     }
 
   if (!r)
     {
-      qInfo() << m_parser.errorText().toStdString().c_str();
+      std::cout << m_parser.errorText().toStdString().c_str() << std::endl;
       return false;
     }
 
