@@ -196,12 +196,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # sources
 SOURCES += src/main.cpp \
+    src/clipboard.cpp \
     src/cmdlineparser.cpp \
     src/commander.cpp \
     src/config.cpp \
     src/dbusroot.cpp
 
 HEADERS += \
+    src/clipboard.h \
     src/cmdlineparser.h \
     src/commander.h \
     src/config.h \

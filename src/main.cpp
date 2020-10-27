@@ -38,6 +38,7 @@
 
 #include <iostream>
 
+#include "clipboard.h"
 #include "cmdlineparser.h"
 #include "commander.h"
 #include "dbusroot.h"
@@ -150,7 +151,9 @@ int main(int argc, char *argv[])
 #endif
 
   // ////////////////////////////
-  // register types: singleton
+  // register QML types
+  qmlRegisterType<Clipboard>("org.puremaps", 1, 0, "Clipboard");
+
   qmlRegisterSingletonType<CmdLineParser>("org.puremaps", 1, 0, "CmdLineParser", [](QQmlEngine *, QJSEngine *) -> QObject * {
       return static_cast<QObject *>(CmdLineParser::instance());
   });

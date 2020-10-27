@@ -67,7 +67,6 @@ are needed:
 * PyXDG https://www.freedesktop.org/wiki/Software/pyxdg/
 * Mapbox GL Native, Qt version, use the packaged version at https://github.com/rinigus/pkg-mapbox-gl-native
 * Mapbox GL QML, unofficial QML bindings, https://github.com/rinigus/mapbox-gl-qml
-* [qtcontrols, kirigami] QML Clipboard module https://github.com/rinigus/qml-module-clipboard
 * GPXPy, https://github.com/tkrajina/gpxpy
 
 When developing with Kirigami using flatpak builder, dependencies will

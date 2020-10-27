@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Clipboard 1.0
+import org.puremaps 1.0
 
 Clipboard {
     function copy(t) {
