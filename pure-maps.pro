@@ -185,6 +185,8 @@ flavor_silica {
     DEFINES += DEFAULT_FALLBACK_STYLE=\\\"suru\\\"
 }
 
+flavor_qtcontrols|flavor_kirigami: DEFINES += INTERNAL_CLIPBOARD
+
 # default prefix for data
 DEFINES += DEFAULT_DATA_PREFIX=\\\"$${DATADIR_RUNNING}/\\\"
 

@@ -26,6 +26,8 @@
 #ifndef CLIPBOARD_H
 #define CLIPBOARD_H
 
+#ifdef INTERNAL_CLIPBOARD
+
 #include <QQuickItem>
 
 #include <QClipboard>
@@ -51,5 +53,7 @@ Q_SIGNALS:
 private:
     QClipboard::Mode m_mode;
 };
+
+#endif // of INTERNAL_CLIPBOARD
 
 #endif // of CLIPBOARD_H

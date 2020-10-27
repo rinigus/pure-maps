@@ -152,7 +152,9 @@ int main(int argc, char *argv[])
 
   // ////////////////////////////
   // register QML types
+#ifdef INTERNAL_CLIPBOARD
   qmlRegisterType<Clipboard>("org.puremaps", 1, 0, "Clipboard");
+#endif
 
   qmlRegisterSingletonType<CmdLineParser>("org.puremaps", 1, 0, "CmdLineParser", [](QQmlEngine *, QJSEngine *) -> QObject * {
       return static_cast<QObject *>(CmdLineParser::instance());

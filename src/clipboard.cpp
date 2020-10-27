@@ -1,3 +1,5 @@
+#ifdef INTERNAL_CLIPBOARD
+
 /*
     Copyright (c) 2017 Sune Vuorela <sune@vuorela.dk>
 
@@ -63,3 +65,5 @@ QString Clipboard::text() const
 {
   return QGuiApplication::clipboard()->text(m_mode);
 }
+
+#endif
