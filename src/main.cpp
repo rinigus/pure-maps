@@ -123,6 +123,14 @@ int main(int argc, char *argv[])
     }
 #endif
 
+  // Audio setup based on https://github.com/qt/qtmultimedia/commit/1c5ea95
+  QByteArray envVar = qgetenv("NEMO_RESOURCE_CLASS_OVERRIDE");
+  if (envVar.isEmpty())
+    qputenv("NEMO_RESOURCE_CLASS_OVERRIDE", "navigator");
+
+  // ////////////////////////////
+  // QML setup
+
 #ifdef IS_SAILFISH_OS
   QScopedPointer<QQuickView> v;
   v.reset(SailfishApp::createView());
