@@ -87,10 +87,14 @@ run_from_source {
 target.path = $$PREFIX/bin
 INSTALLS += target
 
-# Installing poor/*.py, processing path, and injecting API keys
+# Installing poor/*.py, processing path, default configuration, and injecting API keys
 py.extra = \
    install -v -m 644 $$PWD/poor/*.py ${INSTALL_ROOT}$$DATADIR/poor; \
    sed -i -e \'s|pure-maps|$${APP_NAME}|g\' ${INSTALL_ROOT}$$DATADIR/poor/paths.py; \
+   [ \"$${DEFAULT_BASEMAP}\" != \"\" ] && sed -i -e \'s|_default_basemap *=.*|_default_basemap = \"$${DEFAULT_BASEMAP}\"|g\' ${INSTALL_ROOT}$$DATADIR/poor/config.py; \
+   [ \"$${DEFAULT_GEOCODER}\" != \"\" ] && sed -i -e \'s|_default_geocoder *=.*|_default_geocoder = \"$${DEFAULT_GEOCODER}\"|g\' ${INSTALL_ROOT}$$DATADIR/poor/config.py; \
+   [ \"$${DEFAULT_GUIDE}\" != \"\" ] && sed -i -e \'s|_default_guide *=.*|_default_guide = \"$${DEFAULT_GUIDE}\"|g\' ${INSTALL_ROOT}$$DATADIR/poor/config.py; \
+   [ \"$${DEFAULT_ROUTER}\" != \"\" ] && sed -i -e \'s|_default_router *=.*|_default_router = \"$${DEFAULT_ROUTER}\"|g\' ${INSTALL_ROOT}$$DATADIR/poor/config.py; \
    python3 $$PWD/tools/manage-keys inject ${INSTALL_ROOT}$$DATADIR
 py.path = $$DATADIR/poor
 INSTALLS += py

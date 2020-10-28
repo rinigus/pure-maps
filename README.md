@@ -21,6 +21,10 @@ requests. General discussion is expected either through corresponding
 issues opened by maintainer or TMO thread. Please note that users from
 all platforms are welcome at TMO, not only current Sailfish OS users.
 
+Currently there is no homepage setup for Pure Maps. You are welcome to
+help by working on the corresponding
+[issue](https://github.com/rinigus/pure-maps/issues/400)
+
 
 ## Development
 
@@ -35,6 +39,7 @@ that. For this approach, see separate
 
 To build a click package for Ubuntu Touch, see separate
 [README](packaging/ubports/README.md).
+
 
 ## Platforms
 
@@ -115,6 +120,20 @@ installation. For example, from Qt Creator directly.
 The build options can be specified in Qt Creator under "Build
 settings" of the project. Just add them to the additional arguments of
 qmake.
+
+Mainly targeting packagers, it is possible to specify default
+providers using `qmake` project options. Notice the difference in
+supplied values for basemap and other options:
+
+- `DEFAULT_BASEMAP=provider`
+  Map `provider` is either specified in basemap JSON as "provider"
+  or, if absent, as "name"
+- `DEFAULT_GEOCODER=provider`
+- `DEFAULT_GUIDE=provider`
+- `DEFAULT_ROUTER=provider`
+
+In the last three options, `provider` corresponds to the basename of
+JSON/Python file describing the provider. Example: "photon".
 
 
 ## API keys

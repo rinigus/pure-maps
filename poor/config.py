@@ -26,6 +26,11 @@ import pyotherside
 
 __all__ = ("ConfigurationStore",)
 
+_default_basemap = "Mapbox"
+_default_geocoder = "photon"
+_default_guide = "foursquare"
+_default_router = "stadiamaps"
+
 DEFAULTS = {
     "auto_center": False,
     "auto_complete_geo": True,
@@ -72,24 +77,24 @@ DEFAULTS = {
     "profile": "online",
     "profiles": {
         "mixed": {
-            "basemap": "Mapbox",
-            "geocoder": "photon",
-            "guide": "foursquare",
-            "router": "stadiamaps"
+            "basemap": _default_basemap,
+            "geocoder": _default_geocoder,
+            "guide": _default_guide,
+            "router": _default_router
         },
         "online": {
-            "basemap": "Mapbox",
-            "geocoder": "photon",
-            "guide": "foursquare",
-            "router": "stadiamaps"
+            "basemap": _default_basemap,
+            "geocoder": _default_geocoder,
+            "guide": _default_guide,
+            "router": _default_router
         },
         "offline": {
             "basemap": "OSM Scout",
             "geocoder": "osmscout",
             "guide": "osmscout",
             "router": "osmscout"
-            }
-        },
+        }
+     },
     "reroute": True,
     "share_address": True,
     "share_googlemaps": False,
