@@ -40,6 +40,13 @@ FormLayoutPL {
         }
     }
 
+    TextSwitchPL {
+        checked: False
+        text: app.tr("Reverse")
+        Component.onCompleted: checked = app.conf.get("routers.gpx_osmscout.reverse")
+        onCheckedChanged: app.conf.set("routers.gpx_osmscout.reverse", checked ? 1 : 0)
+    }
+
     ComboBoxPL {
         id: typeComboBox
         label: app.tr("Type")

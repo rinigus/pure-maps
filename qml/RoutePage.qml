@@ -61,6 +61,7 @@ PagePL {
         PageMenuItemPL {
             iconName: styler.iconNavigateTo
             text: app.tr("Reverse endpoints")
+            visible: page.fromNeeded && page.toNeeded
             onClicked: {
                 var from = page.from;
                 var fromQuery = page.fromQuery;

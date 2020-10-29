@@ -29,6 +29,7 @@ CONF_DEFAULTS = {
     "file": "",
     "language": poor.util.get_default_language("en"),
     "type": "auto",
+    "reverse": 0
 }
 
 ICONS = {
@@ -106,10 +107,12 @@ def route(fm, to, heading, params):
     """Find route and return its properties as a dictionary."""
     fname = poor.conf.routers.gpx_osmscout.file
     language = poor.conf.routers.gpx_osmscout.language
+    rev = poor.conf.routers.gpx_osmscout.reverse
     units = "kilometers" if poor.conf.units == "metric" else "miles"
     ctype = poor.conf.routers.gpx_osmscout.type
     x, y = poor.util.read_gpx(fname)
     shape = [dict(lat=y[i], lon=x[i]) for i in range(len(x))]
+    if rev: shape = list(reversed(shape))
     input = dict(shape=shape,
                  shape_match="map_snap",
                  costing=ctype,
