@@ -14,7 +14,7 @@ that was made to continue its development.
 
 There are two main communication channels with the users: GitHub and a
 thread at
-[TMO](https://talk.maemo.org/showthread.php?t=100442). 
+[TMO](https://talk.maemo.org/showthread.php?t=100442).
 
 Please use Github issues to address specific problems and development
 requests. General discussion is expected either through corresponding
@@ -23,7 +23,7 @@ all platforms are welcome at TMO, not only current Sailfish OS users.
 
 Currently there is no homepage setup for Pure Maps. You are welcome to
 help by working on the corresponding
-[issue](https://github.com/rinigus/pure-maps/issues/400)
+[issue](https://github.com/rinigus/pure-maps/issues/400).
 
 
 ## Development
@@ -52,7 +52,7 @@ phase (`make install`) or is set by `make` for local builds.
 Within platform-independent code, platform is included allowing to
 access platform-specific implementations of page stack, file dialog,
 and other specific aspects. For this approach to work, API in the
-platform specific implementation has to be the same for all platforms. 
+platform specific implementation has to be the same for all platforms.
 
 To add new platform, add new directory under `qml`, new Makefile
 target to set it, and implement all the required QML items. Take a
@@ -79,8 +79,8 @@ be pulled and installed in flatpak. See instructions regarding
 Kirigami below.
 
 GPXPy is also provided as a thirdparty submodule and can be installed
-together with Pure Maps by setting `INCLUDE_GPXPY=yes` argument to
-`make install`. 
+together with Pure Maps by setting `CONFIG+=install_gpxpy` argument to
+`qmake`.
 
 
 ## Building
@@ -155,7 +155,7 @@ For packaging, please copy `tools/apikeys_dummy.py` to
 `tools/apikeys.py` and fill missing API keys for the services that you
 plan to use.
 
-Flatpak specific instructions are available under `packaging/flatpak`. 
+Flatpak specific instructions are available under `packaging/flatpak`.
 
 UBPorts specific instructions are available under `packaging/ubports`.
 
@@ -170,17 +170,6 @@ Throughout QML, Python, and C++ code, all the same type items
 Its possible that some of the implemented code does not fully comply
 with the outlined order. Then it should be fixed eventually.
 
-If you wish to run the code while developing, it is recommended to
-make a symbolic link (command run from Pure Maps source folder):
-
-```
-ln -s ../thirdparty/open-location-code poor/openlocationcode
-```
-
-If GPXPy is not installed in the system, but is pulled as a thirdparty
-module, Pure Maps will run when executed using `qmlscene`, `qmlrunner`
-or similar tool, but the automatic tests will fail. This is an expected
-behavior or the implementation.
 
 ### QML
 
@@ -197,22 +186,22 @@ import "js/util.js" as Util
 
 Item {
     id: item
-    
+
     // base class defined properties in alphabetic order
     prop_a: val_a
     prop_b: val_b
-    
+
     // new properties in alphabetic order
     property         var  np_a: default_a
     default property bool np_b: default_b
-    
+
     // readonly properties
     readonly property var images: QtObject {
         readonly property string pixel:         "pure-image-pixel"
         readonly property string poi:           "pure-image-poi"
         readonly property string poiBookmarked: "pure-image-poi-bookmarked"
     }
-    
+
     // signals
     signal mySignal
 
@@ -227,12 +216,12 @@ Item {
             easing.type: Easing.Linear
         }
     }
-    
+
     // new sub-items following the same principles
     Item {
         id: subitem
     }
-    
+
     // connections
     Connections {
     }
@@ -240,8 +229,8 @@ Item {
     // signal handlers
     Component.onCompleted: init()
     onActivated: doSomething()
-    
-    // functions 
+
+    // functions
     function a() {
         return 10;
     }
