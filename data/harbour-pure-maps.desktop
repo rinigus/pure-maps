@@ -3,3 +3,4 @@ Name=Pure Maps
 Exec=harbour-pure-maps
 Icon=harbour-pure-maps
 Type=Application
+X-Nemo-Application-Type=silica-qt5

@@ -33,7 +33,7 @@ PagePL {
     pageMenu: PageMenuPL {
         PageMenuItemPL {
             iconName: styler.iconPreferences
-            text: app.tr("Using %1").arg(name)
+            text: app.tr("Change provider (%1)").arg(name)
             property string name: page.routerName
             onClicked: {
                 var dialog = app.push(Qt.resolvedUrl("RouterPage.qml"));
@@ -61,6 +61,7 @@ PagePL {
         PageMenuItemPL {
             iconName: styler.iconNavigateTo
             text: app.tr("Reverse endpoints")
+            visible: page.fromNeeded && page.toNeeded
             onClicked: {
                 var from = page.from;
                 var fromQuery = page.fromQuery;

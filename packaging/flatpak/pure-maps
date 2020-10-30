@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export QT_QUICK_CONTROLS_STYLE="${QT_QUICK_CONTROLS_STYLE:-org.kde.desktop}"
-exec /app/bin/qmlrunner -P /app/share pure-maps -- "$@"

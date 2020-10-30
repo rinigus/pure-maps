@@ -17,7 +17,9 @@
 
 """An application to display maps and stuff."""
 
-__version__ = "1.29.2"
+# Only update major version changes that can
+# lead to configuration file modifications
+__version__ = "2.0"
 
 try:
     import pyotherside

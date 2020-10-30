@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import org.puremaps 1.0
 import "."
 import "platform"
 
@@ -28,7 +29,6 @@ PageEmptyPL {
     AttributionButton { id: attributionButton }
     BasemapButton { id: basemapButton }
     CenterButton { id: centerButton }
-    Commander { id: commander }
     Compass { id: compass }
     GeocodeButton { id: geocodeButton }
     Map {
@@ -131,7 +131,7 @@ PageEmptyPL {
         // connect modal dialog properties
         app.modalDialogBasemap = Qt.binding(function () { return basemapButton.openMenu; });
         // after all objects are initialized
-        commander.parseCommandLine();
+        CmdLineParser.process()
     }
 
     onPageStatusActive: {

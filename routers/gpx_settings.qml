@@ -40,6 +40,13 @@ FormLayoutPL {
         }
     }
 
+    TextSwitchPL {
+        checked: False
+        text: app.tr("Reverse")
+        Component.onCompleted: checked = app.conf.get("routers.gpx.reverse")
+        onCheckedChanged: app.conf.set("routers.gpx.reverse", checked ? 1 : 0)
+    }
+
     ComboBoxPL {
         id: typeComboBox
         label: app.tr("Type")

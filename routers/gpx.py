@@ -23,14 +23,19 @@ import poor
 
 CONF_DEFAULTS = {
     "file": "",
-    "type": "car"
+    "type": "car",
+    "reverse": 0
 }
 
 def route(fm, to, heading, params):
     """Find route and return its properties as a dictionary."""
     fname = poor.conf.routers.gpx.file
     ctype = poor.conf.routers.gpx.type
+    rev = poor.conf.routers.gpx.reverse
     x, y = poor.util.read_gpx(fname)
+    if rev:
+        x = list(reversed(x))
+        y = list(reversed(y))
     maneuvers = [
         dict( x=x[0], y=y[0],
               icon="depart",
