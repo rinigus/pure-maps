@@ -49,6 +49,8 @@ flavor_silica {
 isEmpty(PREFIX) {
     flavor_silica {
         PREFIX = /usr
+    } else:flavor_ubports {
+        PREFIX = /
     } else {
         PREFIX = /usr/local
     }
@@ -56,7 +58,11 @@ isEmpty(PREFIX) {
 
 # PREFIX_RUNNING
 isEmpty(PREFIX_RUNNING) {
-    PREFIX_RUNNING = $$PREFIX
+    flavor_ubports {
+        PREFIX_RUNNING = .
+    } else {
+        PREFIX_RUNNING = $$PREFIX
+    }
 }
 
 DATADIR = $$PREFIX/share/$${TARGET}
