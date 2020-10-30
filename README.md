@@ -26,6 +26,25 @@ help by working on the corresponding
 [issue](https://github.com/rinigus/pure-maps/issues/400).
 
 
+## Command line options
+
+Pure Maps supports positional argument (one) that could either specify
+`geo:latitude,longitude` URI or a search string that will be searched
+by geocoder.
+
+If Pure Maps instance is running already, it will be contacted via
+DBus and the request will be forwarded.
+
+
+## DBus API
+
+DBus (service `io.github.rinigus.PureMaps` at session bus) can be used
+to
+
+* search: method `Search`
+* show poi: method `ShowPoi`
+
+
 ## Development
 
 For development of Pure Maps and testing on desktop, you would have to
