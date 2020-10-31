@@ -1,3 +1,15 @@
+2020-10-31: Pure Maps 2.0
+=========================
+
+* Switch to C++ main
+* Prevent voice navigation stopping other audio [research by Karry]
+* Allow to reverse GPX track
+* Refactor command line and DBus handling
+* Allow to specify default service providers
+* Update packaging scripts for new build system [ubports by jonnius]
+* [kirigami,qtcontrols] Add build-in clipboard support
+* Update translations
+
 2020-08-24: Pure Maps 1.29
 ==========================
 

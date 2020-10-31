@@ -38,6 +38,20 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.0.0" date="2020-10-31">
+     <description>
+       <ul>
+         <li>Switch to C++ main</li>
+         <li>Prevent voice navigation stopping other audio [research by Karry]</li>
+         <li>Allow to reverse GPX track</li>
+         <li>Refactor command line and DBus handling</li>
+         <li>Allow to specify default service providers</li>
+         <li>Update packaging scripts for new build system [ubports by jonnius]</li>
+         <li>[kirigami,qtcontrols] Add build-in clipboard support</li>
+         <li>Update translations</li>
+      </ul>
+     </description>
+   </release>
    <release  version="1.29.2" date="2020-10-24">
      <description>
        <ul>
