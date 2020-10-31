@@ -69,6 +69,20 @@ int main(int argc, char *argv[])
 #endif
 #endif
 
+  // add translations
+  QString transpath;
+  QTranslator translator;
+  std::cout << "Current locale: " << QLocale().name().toStdString() << "\n";
+  if (translator.load(QLocale(), APP_NAME, QLatin1String("-"),
+                      QStringLiteral(DEFAULT_DATA_PREFIX "translations")))
+    {
+      std::cout << "Loaded translation\n";
+      app->installTranslator(&translator);
+    }
+  else
+    std::cout << "Translation not found\n";
+
+  // command line
   CmdLineParser *parser = CmdLineParser::instance();
   if (!parser->parse(app->arguments()))
     return 0;
@@ -100,19 +114,6 @@ int main(int argc, char *argv[])
   // register dbus service
   if (!dbusconnection.registerService(DBUS_SERVICE))
     std::cerr << "Failed to register DBus service: " DBUS_SERVICE;
-
-  // add translations
-  QString transpath;
-  QTranslator translator;
-  std::cout << "Current locale: " << QLocale().name().toStdString() << "\n";
-  if (translator.load(QLocale(), APP_NAME, QLatin1String("-"),
-                      QStringLiteral(DEFAULT_DATA_PREFIX "translations")))
-    {
-      std::cout << "Loaded translation\n";
-      app->installTranslator(&translator);
-    }
-  else
-    std::cout << "Translation not found\n";
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
   // add fallback icon path
