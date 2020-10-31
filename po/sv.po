@@ -625,7 +625,7 @@ msgstr "Tidigare sökningar (%1)"
 
 #: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
 msgid "Change provider (%1)"
-msgstr ""
+msgstr "Byt leverantör (%1)"
 
 #: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:88 qml/RootPage.qml:26
 msgid "Map"
@@ -1927,7 +1927,7 @@ msgstr "Fil"
 
 #: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
 msgid "Reverse"
-msgstr ""
+msgstr "Omvänt"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:38
 #: routers/ValhallaSettings.qml:113
@@ -2163,15 +2163,15 @@ msgstr "Alternativ"
 
 #: src/cmdlineparser.cpp:18
 msgid "Displays help on commandline options."
-msgstr ""
+msgstr "Visar hjälp vid kommandoradsåtgärder."
 
 #: src/cmdlineparser.cpp:20
 msgid "Displays version information."
-msgstr ""
+msgstr "Visar versionsinformation."
 
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
-msgstr ""
+msgstr "Visar plats utifrån geo: latitud-, longitud-URI eller utför sökning."
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"

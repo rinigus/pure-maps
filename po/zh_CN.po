@@ -604,7 +604,7 @@ msgstr "最近搜索 (%1)"
 
 #: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
 msgid "Change provider (%1)"
-msgstr ""
+msgstr "更换服务提供商 (%1)"
 
 #: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:88 qml/RootPage.qml:26
 msgid "Map"
@@ -1854,7 +1854,7 @@ msgstr "文件"
 
 #: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
 msgid "Reverse"
-msgstr ""
+msgstr "倒转"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:38
 #: routers/ValhallaSettings.qml:113
@@ -2085,15 +2085,15 @@ msgstr "选择"
 
 #: src/cmdlineparser.cpp:18
 msgid "Displays help on commandline options."
-msgstr ""
+msgstr "在命令行选项显示帮助。"
 
 #: src/cmdlineparser.cpp:20
 msgid "Displays version information."
-msgstr ""
+msgstr "显示版本信息。"
 
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
-msgstr ""
+msgstr "显示地理坐标位置:经纬度 URI 或执行搜索。"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
