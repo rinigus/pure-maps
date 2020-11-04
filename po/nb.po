@@ -13,9 +13,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-30 21:13+0200\n"
-"PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Peer-Atle Motland <PeerAtle@online.no>, 2019\n"
-"Language-Team: Norwegian Bokmål (https://www.transifex.com/rinigus/teams/89597/nb/)\n"
+"PO-Revision-Date: 2020-11-04 02:00+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no.no>, 2019\n"
+"Language-Team: Norwegian Bokmål (Another Agency)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,55 +66,55 @@ msgstr "Foursquare klient-ID"
 
 #: poor/keystore.py:52
 msgid "Foursquare Client Secret"
-msgstr "Foursquare hemmelig nøkkel"
+msgstr "Foursquare-klienthemmelighet"
 
 #: poor/keystore.py:55
 msgid ""
 "Mapbox API key. Register at https://www.mapbox.com and create your own API "
 "key"
 msgstr ""
-"Mapbox API-nøkkel. Registrer deg på https://www.mapbox.com og lag din egen "
+"API-nøkkel for Mapbox. Registrer deg på https://www.mapbox.com og lag din egen "
 "API-nøkkel"
 
 #: poor/keystore.py:56
 msgid "Mapbox API key"
-msgstr "Mapbox API-nøkkel"
+msgstr "API-nøkkel for Mapbox"
 
 #: poor/keystore.py:59
 msgid ""
 "MapQuest API key. Register at https://developer.mapquest.com/ and create "
 "your own API key"
 msgstr ""
-"MapQuest API-nøkkel. Registrer deg på https://developer.mapquest.com/ og lag"
+"API-nøkkel for MapQuest. Registrer deg på https://developer.mapquest.com/ og lag"
 " din egen API-nøkkel"
 
 #: poor/keystore.py:60
 msgid "MapQuest API key"
-msgstr "MapQuest API-nøkkel"
+msgstr "API-nøkkel for MapQuest"
 
 #: poor/keystore.py:63
 msgid ""
 "OpenCage API key. Register at https://opencagedata.com/ and create your own "
 "API key"
 msgstr ""
-"OpenCage API-nøkkel. Registrer deg på https://opencagedata.com/ og lag din "
+"API-nøkkel for OpenCage. Registrer deg på https://opencagedata.com/ og lag din "
 "egen API-nøkkel"
 
 #: poor/keystore.py:64
 msgid "OpenCage API key"
-msgstr "OpenCage API-nøkkel"
+msgstr "API-nøkkel for OpenCage"
 
 #: poor/keystore.py:67
 msgid ""
 "Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
 " API key"
 msgstr ""
-"Stadia Maps API-nøkkel. Registrer deg på https://stadiamaps.com/ og lag din "
+"API-nøkkel for Stadia Maps. Registrer deg på https://stadiamaps.com/ og lag din "
 "egen API-nøkkel"
 
 #: poor/keystore.py:68
 msgid "Stadia Maps API key"
-msgstr "Stadia Maps API-nøkkel"
+msgstr "API-nøkkel for Stadia Maps"
 
 #: poor/keystore.py:71
 msgid ""
@@ -151,7 +151,7 @@ msgstr "Beregning av ny rute"
 
 #: poor/narrative.py:623 qml/Navigator.qml:192
 msgid "Rerouting failed"
-msgstr "Beregning av feilet"
+msgstr "Omberegning mislyktes"
 
 #: poor/narrative.py:624
 msgid "Starting navigation"
@@ -205,7 +205,7 @@ msgstr "{distance} nord"
 #: poor/util.py:263
 #, python-brace-format
 msgid "{distance} north-east"
-msgstr "{distance}  nord-øst"
+msgstr "{distance} nord-øst"
 
 #: poor/util.py:264
 #, python-brace-format
@@ -215,17 +215,17 @@ msgstr "{distance} øst"
 #: poor/util.py:265
 #, python-brace-format
 msgid "{distance} south-east"
-msgstr "{distance} syd-øst"
+msgstr "{distance} sør-øst"
 
 #: poor/util.py:266
 #, python-brace-format
 msgid "{distance} south"
-msgstr "{distance} syd"
+msgstr "{distance} sør"
 
 #: poor/util.py:267
 #, python-brace-format
 msgid "{distance} south-west"
-msgstr "{distance} syd-vest"
+msgstr "{distance} sør-vest"
 
 #: poor/util.py:268
 #, python-brace-format
@@ -264,7 +264,7 @@ msgstr "buss"
 
 #: routers/digitransit.py:61
 msgid "ferry"
-msgstr "ferje"
+msgstr "ferge"
 
 #: routers/digitransit.py:62
 msgid "train"
@@ -272,7 +272,7 @@ msgstr "tog"
 
 #: routers/digitransit.py:63
 msgid "metro"
-msgstr "Metro"
+msgstr "metro"
 
 #: routers/digitransit.py:64
 msgid "tram"
@@ -280,7 +280,7 @@ msgstr "trikk"
 
 #: routers/digitransit.py:65
 msgid "walk"
-msgstr "gå"
+msgstr "til fots"
 
 #: routers/digitransit.py:69
 #, python-brace-format
@@ -299,7 +299,7 @@ msgstr "Gå ombord {mode_name} {line_desc} ved {dep_name} kl. {dep_time}."
 
 #: routers/digitransit.py:72
 msgid "Walk towards your destination."
-msgstr "Gå mot ditt bestemmelsessted."
+msgstr "Gå til ditt reisemål."
 
 #: routers/digitransit.py:73
 #, python-brace-format
@@ -309,7 +309,7 @@ msgstr "Sett igjen bysykkelen ved {dep_name} og gå mot {arr_name}."
 #: routers/digitransit.py:75
 #, python-brace-format
 msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr "Sett igjen bysykkelen ved {dep_name} og gå mot ditt bestemmelsessted."
+msgstr "Sett igjen bysykkelen ved {dep_name} og gå mot ditt reisemål."
 
 #: routers/digitransit.py:76
 #, python-brace-format
@@ -331,11 +331,11 @@ msgstr ""
 #: routers/digitransit.py:79
 #, python-brace-format
 msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Gå av ved {dep_name} og gå mot ditt bestemmelsessted."
+msgstr "Gå av ved {dep_name} og gå mot ditt reisemål."
 
 #: routers/digitransit.py:204
 msgid "Arrive at your destination."
-msgstr "Ankomst til dit bestemmelsessted."
+msgstr "Ankom på ditt reisemål."
 
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:114
 #: routers/ValhallaSettings.qml:150 routers/ValhallaSettings.qml:203
@@ -388,7 +388,7 @@ msgid ""
 "specified by 'Near' on this page"
 msgstr ""
 "Når det er angitt, blir søket langs ruten utført fra punktet som er "
-"spesifisert av 'Nær' på denne siden"
+"spesifisert av «Nær» på denne siden"
 
 #: guides/osmscout_settings.qml:76
 msgid "Search starting from the reference point"
@@ -404,7 +404,7 @@ msgstr "versjon %1"
 
 #: qml/AboutPage.qml:63
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
-msgstr ""
+msgstr "GitHub-<a href=\"https://github.com/rinigus/pure-maps\">prosjektside</a>"
 
 #: qml/AboutPage.qml:88
 msgid ""
@@ -412,7 +412,7 @@ msgid ""
 "Banner photo by %3 (Pexels License)"
 msgstr ""
 "Grafikk av %1 og %2\n"
-"Bannerbilde av %3 (Pexels License)"
+"Bannerbilde av %3 (Pexels-lisens)"
 
 #: qml/AboutPage.qml:96
 msgid ""
@@ -421,14 +421,18 @@ msgid ""
 "title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" "
 "title=\"Flaticon\">www.flaticon.com</a>"
 msgstr ""
+"Transportikoner laget av <a "
+"href=\"https://www.flaticon.com/authors/freepik\" "
+"title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" "
+"title=\"Flaticon\">www.flaticon.com</a>"
 
 #: qml/AboutPage.qml:109
 msgid ""
 "Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
-"Pure Maps er gratis programvare utgitt under GNU General Public License "
-"(GPL), versjon 3 eller nyere."
+"Pure Maps er gemenhetslig fri programvare "
+"(GPLv3+)."
 
 #: qml/AboutPage.qml:114
 msgid "Translated by"
@@ -441,7 +445,7 @@ msgstr "Oversatt av"
 #. write them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:126
 msgid "translator-credits"
-msgstr "Peer-Atle Motland"
+msgstr "Peer-Atle Motland, Allan Nordhøy"
 
 #: qml/AboutPage.qml:136
 msgid ""
@@ -449,22 +453,23 @@ msgid ""
 "at Transifex."
 msgstr ""
 "Du kan legge til nye oversettelser av brukergrensesnittet eller bidra til "
-"eksisterende hos Transifex."
+"eksisterende på Transifex."
 
 #: qml/AboutPage.qml:142
 msgid ""
 "Translations at <a href=\"https://www.transifex.com/rinigus/pure-"
 "maps\">Transifex page</a>"
-msgstr ""
+msgstr "Oversettelser på <a href=\"https://www.transifex.com/rinigus/pure-"
+"maps\">Transifex-siden</a>"
 
 #: qml/AttributionPage.qml:24
 msgid "Attribution"
-msgstr "henvisning"
+msgstr "Bidragshenvisninger"
 
 #: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:69
 #: qml/MenuPage.qml:94
 msgid "Maps"
-msgstr "Karter"
+msgstr "Kart"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
@@ -484,7 +489,7 @@ msgstr "Type"
 #: qml/BasemapButton.qml:221 routers/digitransit_settings.qml:146
 #: qml/js/util.js:236
 msgid "Default"
-msgstr "Standard"
+msgstr "Forvalg"
 
 #: qml/BasemapButton.qml:222
 msgid "Guidance"
@@ -500,7 +505,7 @@ msgstr "Forhåndsvisning"
 
 #: qml/BasemapButton.qml:225
 msgid "Satellite"
-msgstr "Satellitt"
+msgstr "Satelitt"
 
 #: qml/BasemapButton.qml:226
 msgid "Terrain"
@@ -548,11 +553,11 @@ msgstr "Offentlig transport"
 
 #: qml/BasemapButton.qml:357
 msgid "Map scale"
-msgstr "Kart skala"
+msgstr "Kartskala"
 
 #: qml/BasemapButton.qml:374
 msgid "Map scale during navigation"
-msgstr "Kart skala ved navigering"
+msgstr "Kartskala ved navigering"
 
 #: qml/BasemapPage.qml:42
 msgid "Map: %1"
@@ -568,7 +573,7 @@ msgstr "Sentrer automatisk"
 
 #: qml/CenterButton.qml:124
 msgid "Tap center button again for auto-center"
-msgstr "Trykk på sentrer-knappen igjen for autosenter"
+msgstr "Trykk på «Sentrer»-knappen igjen for autosentrering"
 
 #: qml/GeocodeItem.qml:42
 msgid "No selection"
@@ -580,11 +585,11 @@ msgstr "Forslag (%1)"
 
 #: qml/GeocodeItem.qml:407
 msgid "Error while fetching results"
-msgstr "Feil under henting av resultater"
+msgstr "Klarte ikke å hente resultater"
 
 #: qml/GeocodeItem.qml:416
 msgid "Searching ..."
-msgstr "Søker ..."
+msgstr "Søker …"
 
 #: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:143
 #: routers/default_results.qml:90 routers/default_results.qml:93
@@ -604,7 +609,7 @@ msgstr "Resultater (%1)"
 
 #: qml/GeocodeItem.qml:462
 msgid "Points of Interest (%1)"
-msgstr "Severdigheter (%1)"
+msgstr "Interessepunkter (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
 #: qml/PoiPage.qml:47 qml/RoutePage.qml:320 qml/RoutePage.qml:322
@@ -618,7 +623,7 @@ msgstr "Nylige søk (%1)"
 
 #: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
 msgid "Change provider (%1)"
-msgstr ""
+msgstr "Endre tilbyder (%1)"
 
 #: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:88 qml/RootPage.qml:26
 msgid "Map"
@@ -634,19 +639,19 @@ msgstr "%1 [duplicate]"
 
 #: qml/GeocoderPage.qml:27 qml/GuidePage.qml:27
 msgid "Search engine"
-msgstr "Søke maskin"
+msgstr "Søkemotor"
 
 #: qml/InitPage.qml:33
 msgid "Initializing"
-msgstr "Initialisering"
+msgstr "Igagnsetter"
 
 #: qml/InitPage.qml:46
 msgid "Dismiss"
-msgstr "Avvist"
+msgstr "Avvis"
 
 #: qml/InitPage.qml:47
 msgid "Missing Mapbox key"
-msgstr "Mangler Mapbox key"
+msgstr "Mangler Mapbox-nøkkel"
 
 #: qml/InitPage.qml:48
 msgid ""
@@ -654,9 +659,9 @@ msgid ""
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
-"Installasjonen din mangler Mapbox API-nøkkel. Registrer deg på Mapbox og "
-"fyll inn din personlige API-nøkkel i Innstillinger. Denne nøkkelen er ikke "
-"nødvendig hvis du planlegger å bruke Pure Maps med fra-koblede kart."
+"Installasjonen din mangler API-nøkkel for Mapbox. Registrer deg på Mapbox og "
+"fyll inn din personlige API-nøkkel i «Innstillinger». Denne nøkkelen er ikke "
+"nødvendig hvis du planlegger å bruke Pure Maps med frakoblede kart."
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
@@ -664,14 +669,14 @@ msgstr "Feil"
 
 #: qml/MapErrorPage.qml:34
 msgid "Error occurred while loading current map."
-msgstr "Det oppsto en feil under lasting av gjeldende kart."
+msgstr "Det oppsto en feil under innlasting av gjeldende kart."
 
 #: qml/MapErrorPage.qml:40
 msgid ""
 "Depending on the used map provider, error could be caused by network failure, expired API access key, absence of offline server. Try to address the issue and/or change your map provider, preferences, or profile.\n"
 "If you change API access key, you may have to restart Pure Maps."
 msgstr ""
-"Avhengig av den brukte kartleverandøren, kan feil være forårsaket av nettverkssvikt, utløpt API-tilgangsnøkkel, fravær av offline server. Forsøk å feilsøke og / eller endre kartleverandøren, preferanser eller profilen din.\n"
+"Avhengig av den brukt kartleverandøren, kan feil forårsakes av nettverkssvikt, utløpt API-tilgangsnøkkel, fravær av frakoblet tjener. Forsøk å feilsøke og / eller endre kartleverandøren, innstillinger eller profilen din.\n"
 "Hvis du endrer API-tilgangsnøkkel, kan det hende du må starte Pure Maps på nytt."
 
 #: qml/MapErrorPage.qml:51
@@ -682,6 +687,11 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Du bruker en frakoblet profil. Forsikre deg om at du har OSM Scout Server "
+"installert og kjørende. Avhengig av systemet ditt, er det tilgjengelig enten i "
+"programbutikker (OpenRepos for Sailfish OS, OpenStore for UBPorts), "
+"Flathub, eller din distribusjon. Sjekk <a href=\"https://rinigus.github.io"
+"/osmscout-server\">OSM Scout Server-manualen</a> for detaljer."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -713,7 +723,7 @@ msgstr "Blandet"
 
 #: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
 msgid "Stop navigation to select POI"
-msgstr ""
+msgstr "Stopp navigasjon til valgt interessepunkt"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -756,23 +766,23 @@ msgstr "Fortsett i %1."
 
 #: qml/NavigationButtonClear.qml:46
 msgid "Route removed"
-msgstr ""
+msgstr "Rute fjernet"
 
 #: qml/NavigationButtonStartPause.qml:64
 msgid "Stopped to follow the movement"
-msgstr ""
+msgstr "Sluttet å følge bevegelse"
 
 #: qml/NavigationButtonStartPause.qml:69
 msgid "Navigation paused"
-msgstr ""
+msgstr "Navigasjon satt på pause"
 
 #: qml/NavigationButtonStartPause.qml:73
 msgid "Navigation started"
-msgstr ""
+msgstr "Navigasjon startet"
 
 #: qml/NavigationCurrentBlock.qml:180
 msgid "To route"
-msgstr ""
+msgstr "Til rute"
 
 #: qml/NavigationOverviewBlock.qml:142
 msgid "ETA"
@@ -808,7 +818,7 @@ msgstr "Estimert ankomsttid"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
-msgstr "AVKJØRSEL"
+msgstr "Avkjørsel"
 
 #: qml/Navigator.qml:150
 msgid "Voice navigation on"
@@ -819,12 +829,12 @@ msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
-"Stemmenavigering ikke tilgjengelig: manglende TTS-motor (Tekst til tale) for"
-" valgt språk"
+"Stemmenavigering ikke tilgjengelig: Mangler TTS-motor (Tekst til tale) for"
+" valgt språk."
 
 #: qml/Navigator.qml:183
 msgid "Rerouting failed: %1"
-msgstr "Ny rute beregning feilet: %1"
+msgstr "Kunne ikke beregne ny rute: %1"
 
 #: qml/NearbyPage.qml:25
 msgid "Nearby Venues"
@@ -833,7 +843,7 @@ msgstr "Steder i nærheten"
 #: qml/NearbyPage.qml:75
 msgid ""
 "Select a reference location next to which you want to perform the search."
-msgstr "Velg et referanse sted ved siden av der du vil utføre søket."
+msgstr "Velg et referansested ved siden av der du vil utføre søket."
 
 #: qml/NearbyPage.qml:76
 msgid "Near"
@@ -841,7 +851,7 @@ msgstr "Nær"
 
 #: qml/NearbyPage.qml:77
 msgid "Near location"
-msgstr "Nær beliggenhet"
+msgstr "Nærliggende beliggenhet"
 
 #: qml/NearbyPage.qml:82
 msgid "Radius"
@@ -865,7 +875,7 @@ msgstr "%1 Resultater"
 
 #: qml/NorthArrow.qml:60
 msgid "Auto-rotation requires auto-centering to be enabled"
-msgstr ""
+msgstr "Automatisk rotasjon krever at automatisk rotering er påslått"
 
 #: qml/NorthArrow.qml:71
 msgid "Auto-rotate on"
@@ -897,7 +907,7 @@ msgstr "Postnummer"
 
 #: qml/PoiBlock.qml:127
 msgid "Web"
-msgstr "Web"
+msgstr "Vev"
 
 #: qml/PoiBlock.qml:128
 msgid "Phone"
@@ -925,7 +935,7 @@ msgstr "Lagre"
 
 #: qml/PoiEditPage.qml:42 qml/PreferencesPage.qml:36
 msgid "General"
-msgstr "Generell"
+msgstr "Generelt"
 
 #: qml/PoiEditPage.qml:48
 msgid "Title"
@@ -965,23 +975,23 @@ msgstr "Angi telefonnummer"
 
 #: qml/PoiEditPage.qml:106
 msgid "URL"
-msgstr "URL"
+msgstr "Nettadresse"
 
 #: qml/PoiEditPage.qml:107
 msgid "Enter URL"
-msgstr "Angi URL"
+msgstr "Angi nettadresse"
 
 #: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:243
 msgid "Additional info"
-msgstr "Tilleggsinformasjon"
+msgstr "Tilleggsinfo"
 
 #: qml/PoiEditPage.qml:123
 msgid "Enter additional info"
-msgstr "Angi tilleggsinformasjon"
+msgstr "Angi tilleggsinfo"
 
 #: qml/PoiInfoPage.qml:32 qml/PoiPage.qml:95
 msgid "Edit"
-msgstr "Redigere"
+msgstr "Rediger"
 
 #: qml/PoiInfoPage.qml:67
 msgid "Latitude: %1"
@@ -1013,23 +1023,23 @@ msgstr "Kortliste"
 
 #: qml/PoiInfoPage.qml:157
 msgid "Share location"
-msgstr "Del lokasjon"
+msgstr "Del posisjon"
 
 #: qml/PoiInfoPage.qml:170
 msgid "Center on location"
-msgstr "Sentrer på lokasjon"
+msgstr "Sentrer på posisjon"
 
 #: qml/PoiInfoPage.qml:182
 msgid "Navigate To"
-msgstr "Naviger Til"
+msgstr "Naviger til"
 
 #: qml/PoiInfoPage.qml:194
 msgid "Navigate From"
-msgstr "Naviger Fra"
+msgstr "Naviger fra"
 
 #: qml/PoiInfoPage.qml:206
 msgid "Nearby"
-msgstr "Nærheten"
+msgstr "I nærheten"
 
 #: qml/PoiPage.qml:85
 msgid "View"
@@ -1040,7 +1050,7 @@ msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
 msgstr ""
-"Ingen bokmerker er definert ennå. Du kan bokmerke steder ved hjelp av kart "
+"Ingen bokmerker definert enda. Du kan bokmerke steder ved hjelp av kart "
 "og søk."
 
 #: qml/Poi.qml:193
@@ -1167,7 +1177,7 @@ msgstr "Koreansk"
 
 #: qml/PreferencesPage.qml:83
 msgid "Norwegian"
-msgstr "Norsk"
+msgstr "Norsk bokmål"
 
 #: qml/PreferencesPage.qml:84
 msgid "Persian"
@@ -1232,7 +1242,7 @@ msgid ""
 "have all maps with day/night pairs available."
 msgstr ""
 "Bytte mellom dag / natt-modus på kartet. Merk at ikke alle tilbydere har "
-"alle kart med dag / natt par tilgjengelig."
+"alle kart med dag / natt -par tilgjengelig."
 
 #: qml/PreferencesPage.qml:151
 msgid "Day/night mode"
@@ -1251,7 +1261,7 @@ msgid ""
 "Automatically switch between map types of the provider according to the "
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
-"Bytt automatisk mellom karttyper fra leverandøren i henhold til gjeldende "
+"Bytt mellom karttyper fra leverandøren automatisk i henhold til gjeldende "
 "oppgave. Vis for eksempel kart designet for navigasjon ved beregning av "
 "rute."
 
@@ -1269,7 +1279,7 @@ msgstr "Fullfør automatisk mens du søker"
 
 #: qml/PreferencesPage.qml:199
 msgid "Device"
-msgstr ""
+msgstr "Enhet"
 
 #: qml/PreferencesPage.qml:205
 msgid ""
@@ -1279,16 +1289,23 @@ msgid ""
 "is useful if you wish to receive voice navigation commands while keeping "
 "device in the pocket."
 msgstr ""
+"Du kan kontrollere når Pure Maps beholder skjermen påslått og kjører i bakgrunnen. "
+"Det anbefales at Pure Maps forhindrer skjermsparer under navigasjon og aldri"
+"og aldri forhindrer enheten fra dvalgang direkte. Sistnevnte er nyttig hvis du "
+"ønsker å motta stemmeveiledningskommandoer mens duy har enheten "
+"i lommen."
 
 #: qml/PreferencesPage.qml:219
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
 msgstr ""
+"Har kun innvirkning når Pure Maps er aktivt. Når minimert, kontrolleres "
+"skjermspareren av normale innstillinger på enhetsnivå."
 
 #: qml/PreferencesPage.qml:221
 msgid "Prevent screensaver"
-msgstr ""
+msgstr "Forhindre skjermsparer"
 
 #: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
 #: qml/PreferencesPage.qml:517 qml/PreferencesPage.qml:596
@@ -1310,10 +1327,13 @@ msgid ""
 "screen is switched off. If set to 'never', usual device suspend policy is "
 "applied."
 msgstr ""
+"Tillater at posisjonering og navigasjonsinstruks uttales når skjermen er "
+"avslått. Hvis satt til «Aldri», vil vanlig praksis for dvalgang brukes "
+"slik angitt på enehten."
 
 #: qml/PreferencesPage.qml:238
 msgid "Prevent sleep"
-msgstr "Forhindre dvale"
+msgstr "Forhindre dvalgang"
 
 #: qml/PreferencesPage.qml:260
 msgid "Privacy"
@@ -1329,19 +1349,19 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:274
 msgid "History cleared"
-msgstr "Historie er slettet"
+msgstr "Historikk slettet"
 
 #: qml/PreferencesPage.qml:283
 msgid "Clear history"
-msgstr "Slett historie"
+msgstr "Slett historikk"
 
 #: qml/PreferencesPage.qml:295
 msgid "Clear map tiles stored in a cache"
-msgstr "Fjern kartfliser som er lagret i bufferminnet"
+msgstr "Fjern kartfliser lagret i hurtiglageret"
 
 #: qml/PreferencesPage.qml:303
 msgid "Clear cache"
-msgstr "Slett bufferminnet"
+msgstr "Slett hurtiglageret"
 
 #: qml/PreferencesPage.qml:315
 msgid "API keys"
@@ -1353,13 +1373,13 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
-"Du kan spesifisere personlige nøkler for online tjenester i disse "
-"innstillingene. Vennligst sjekk betingelsene for hver av tjenestene du vil "
+"Du kan spesifisere personlige nøkler for nettbaserte tjenester i disse "
+"innstillingene. Sjekk betingelsene for hver av tjenestene du vil "
 "bruke for å sikre at du overholder dem."
 
 #: qml/PreferencesPage.qml:329
 msgid "Please restart application after changing API keys."
-msgstr "Start programmet på nytt etter at du har endret API-nøkler."
+msgstr "Start programmet på nytt etter at du har byttet API-nøkler."
 
 #: qml/PreferencesPage.qml:370
 msgid "Exploring"
@@ -1370,7 +1390,7 @@ msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
-"Velg transportmodus. Gjelder bare når Pure Maps ikke navigerer. Bruker OSM "
+"Velg transportmodus. Gjelder kun når Pure Maps ikke navigerer. Bruker OSM "
 "Scout Server for utføring."
 
 #: qml/PreferencesPage.qml:377 qml/PreferencesPage.qml:447
@@ -1386,11 +1406,11 @@ msgstr "Ingen"
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Foot"
-msgstr "Gå"
+msgstr "Til fots"
 
 #: qml/PreferencesPage.qml:407
 msgid "Show navigation instructions"
-msgstr "Vis navigasjonsinstruksjoner"
+msgstr "Vis navigasjonsinstruks"
 
 #: qml/PreferencesPage.qml:417
 msgid "Voice navigation instructions"
@@ -1402,11 +1422,11 @@ msgstr "Finn ny rute automatisk"
 
 #: qml/PreferencesPage.qml:436
 msgid "Automatic zoom on start"
-msgstr "Automatisk zoom ved start"
+msgstr "Automatisk forstørrelse ved start"
 
 #: qml/PreferencesPage.qml:446
 msgid "Uses OSM Scout Server for its operation."
-msgstr "Bruker OSM Scout Server for utføring."
+msgstr "Bruker OSM Scout-tjener for utføring."
 
 #: qml/PreferencesPage.qml:458
 msgid "Show direction signs"
@@ -1434,18 +1454,18 @@ msgstr "Vipp kartet når du navigerer"
 
 #: qml/PreferencesPage.qml:488
 msgid "Smooth position animation"
-msgstr "Jevn posisjons animering"
+msgstr "Jevn posisjonsanimering"
 
 #: qml/PreferencesPage.qml:498
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
-"Foretrukket kjønn for talenavigering. Støttes bare av noen motorer og språk."
+"Foretrukket kjønn for talenavigering. Støttes kun av noen motorer og språk."
 
 #: qml/PreferencesPage.qml:499 qml/PreferencesPage.qml:825
 msgid "Voice gender"
-msgstr "Stemme kjønn"
+msgstr "Stemmekjønn"
 
 #: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
 msgid "Male"
@@ -1482,14 +1502,18 @@ msgid ""
 " determined, your speed is low, and, if you are navigating, only if you are "
 "by foot or on the bicycle."
 msgstr ""
+"Kompass kan brukes for å bestemme retning for din enhet og justere kartet. "
+"Merk at kompass er påslått kun når posisjonen din bestemmes, farten din er lav, "
+"og du navigerer, kun når du er til "
+"fots, eller på sykler."
 
 #: qml/PreferencesPage.qml:556
 msgid "Use compass for determination of the direction."
-msgstr ""
+msgstr "Bruk kompass for å fastsette retning"
 
 #: qml/PreferencesPage.qml:557
 msgid "Use compass"
-msgstr ""
+msgstr "Bruk kompass"
 
 #: qml/PreferencesPage.qml:569
 msgid "Controls"
@@ -1501,9 +1525,9 @@ msgid ""
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
 msgstr ""
-"Kartvisning kan vises med enten alle aktuelle kontroller i full "
-"visningsmodus eller med et mindre valgt kontrollsett i minimal "
-"visningsmodus. For å veksle mellom modusene, klikk på et kart."
+"Kartvisning kan vises enten med alle aktuelle kontroller i full "
+"visningsmodus, eller med et mindre valgt kontrollsett i minimal "
+"visningsmodus. Klikk på et kart for å veksle mellom modusene."
 
 #: qml/PreferencesPage.qml:584
 msgid "Set map view to minimal mode on start"
@@ -1537,14 +1561,14 @@ msgstr "1 minutt"
 
 #: qml/PreferencesPage.qml:611
 msgid "Always show"
-msgstr "Vis Alltid"
+msgstr "Alltid vis"
 
 #: qml/PreferencesPage.qml:615
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
 msgstr ""
-"Vis alltid de valgte kontrollene uavhengig av om kartvisningen er i minimal "
+"Alltid vis de valgte kontrollene uavhengig av om kartvisningen er i minimal "
 "eller i full modus."
 
 #: qml/PreferencesPage.qml:623
@@ -1553,7 +1577,7 @@ msgstr "Meny"
 
 #: qml/PreferencesPage.qml:632
 msgid "Center on current location"
-msgstr "Sentrer på gjeldende lokasjon"
+msgstr "Sentrer på gjeldende posisjon"
 
 #: qml/PreferencesPage.qml:650
 msgid "Map selection"
@@ -1561,7 +1585,7 @@ msgstr "Kartvalg"
 
 #: qml/PreferencesPage.qml:659
 msgid "Speed and location precision"
-msgstr "Hastighet og lokasjons nøyaktighet"
+msgstr "Hastighet- og posisjoneringsnøyaktighet"
 
 #: qml/PreferencesPage.qml:668
 msgid "Scale"
@@ -1569,39 +1593,42 @@ msgstr "Skala"
 
 #: qml/PreferencesPage.qml:695
 msgid "Navigation Start/Pause"
-msgstr ""
+msgstr "Start / stopp navigering"
 
 #: qml/PreferencesPage.qml:704
 msgid "Navigation Clear Route"
-msgstr ""
+msgstr "Tøm navigeringsrute"
 
 #: qml/PreferencesPage.qml:719
 msgid "Zoom"
-msgstr ""
+msgstr "Forstørrelse"
 
 #: qml/PreferencesPage.qml:725
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
 msgstr ""
+"Kartforstørrelsesnivå kan justeres automatisk i henhold til hastighet. Her "
+"kan du justere innstillinger som har med dette å gjøre."
 
 #: qml/PreferencesPage.qml:735
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
-msgstr "Maksimalt zoomnivå som skal brukes i automatisk justering av zoom."
+msgstr "Maksimalt forstørrelsesnivå til bruk for automatisk justering av "
+"forstørrelse."
 
 #: qml/PreferencesPage.qml:737
 msgid "Maximal zoom level"
-msgstr "Maksimalt zoom nivå"
+msgstr "Maksimalt forstørrelsesnivå"
 
 #: qml/PreferencesPage.qml:748
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
 msgstr ""
-"Zoom nivået blir justert slik at det har samme karthøyde som avstanden som "
-"er dekket av deg i den gitte mengden sekunder."
+"Forstørrelsesnivået blir justert slik at det har samme karthøyde som avstanden som "
+"er dekket av deg i gitt antall sekunder."
 
 #: qml/PreferencesPage.qml:751
 msgid "Time range, s"
@@ -1616,7 +1643,7 @@ msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
-"Test av TTS-motor (Text-to-Speech). Velg samme språk som brukes for "
+"Test av TTS-motor (tekst-til-tale). Velg samme språk som brukes for "
 "navigasjon, foretrukket kjønn, og trykk på knappen nedenfor for å teste."
 
 #: qml/PreferencesPage.qml:802
@@ -1625,7 +1652,7 @@ msgstr "Slovakisk"
 
 #: qml/PreferencesPage.qml:824
 msgid "Preferred gender. Only supported by some engines and languages."
-msgstr "Foretrukket kjønn. Støttes bare av noen motorer og språk."
+msgstr "Foretrukket kjønn. Støttes kun av noen motorer og språk."
 
 #: qml/PreferencesPage.qml:838
 msgid "Test"
@@ -1643,7 +1670,7 @@ msgid ""
 msgstr ""
 "Ingen motor er tilgjengelig for valgt språk.\n"
 "\n"
-"Pure Maps støtter Mimic, Flite, PicoTTS, og Espeak TTS motorer. Men mindre du bruker Pure Maps gjennom Flatpak eller OpenStore, må motorene installeres separat. SailfishOS brukere kan finne motorene i OpenRepos."
+"Pure Maps støtter Mimic, Flite, PicoTTS, og Espeak TTS -motorer. Men mindre du bruker Pure Maps gjennom Flatpak eller OpenStore, må motorene installeres separat. SailfishOS brukere kan finne motorene i OpenRepos."
 
 #: qml/PreferencesPage.qml:898
 msgid "Development"
@@ -1663,7 +1690,7 @@ msgid ""
 "disable GPS positioning when using this option."
 msgstr ""
 "Setter gjeldende posisjon til midten av gjeldende kartvisning. Husk å "
-"deaktivere GPS-posisjonering når du bruker dette alternativet."
+"skru av GPS-posisjonering når du bruker dette alternativet."
 
 #: qml/PreferencesPage.qml:913
 msgid "Set position to the map center"
@@ -1671,7 +1698,7 @@ msgstr "Still posisjon til kartsenteret"
 
 #: qml/PreferencesPage.qml:920
 msgid "Show current zoom level"
-msgstr "Vis gjeldende zoomnivå"
+msgstr "Vis gjeldende forstørrelsesnivå"
 
 #: qml/pure-maps.qml:29
 msgid "Pure Maps"
@@ -1714,7 +1741,7 @@ msgstr "Til"
 
 #: qml/RoutePage.qml:144
 msgid "Destination"
-msgstr "Destinasjon"
+msgstr "Rutemål"
 
 #: qml/RoutePage.qml:187
 msgid "Routes"
@@ -1722,11 +1749,11 @@ msgstr "Ruter"
 
 #: qml/RoutePage.qml:263
 msgid "Destinations"
-msgstr "Destinasjoner"
+msgstr "Rutemål"
 
 #: qml/RoutePage.qml:358
 msgid "Follow the movement and show just in time information"
-msgstr "Følg bevegelsen og vis bare akkurat i tide informasjon"
+msgstr "Følg bevegelsen og kun vis info rett før den trengs"
 
 #: qml/RoutePage.qml:367
 msgid "Stop"
@@ -1740,7 +1767,7 @@ msgstr "Start"
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
-msgstr "Velg transportmodus. Gjelder bare når Pure Maps er i følg meg-modus."
+msgstr "Velg transportmodus. Gjelder bare når Pure Maps er i «Følg meg»-modus."
 
 #: qml/RoutePage.qml:387
 msgid "Mode of transportation"
@@ -1756,7 +1783,7 @@ msgstr "Gjeldende valg: %1"
 
 #: qml/RouterPage.qml:27
 msgid "Routing engine"
-msgstr "Ruting motor"
+msgstr "Rutingsmotor"
 
 #: qml/RouterPage.qml:60
 msgid "Modes: %1"
@@ -1764,15 +1791,15 @@ msgstr "Moduser: %1"
 
 #: qml/ScaleBar.qml:207
 msgid "Auto-zoom requires auto-centering to be enabled"
-msgstr "Automatisk zoom krever at autosentrering er aktivert"
+msgstr "Automatisk forstørrelse krever at autosentrering er påslått"
 
 #: qml/ScaleBar.qml:218
 msgid "Auto-zoom on"
-msgstr "Automatisk zoom på"
+msgstr "Automatisk forstørrelse påslått"
 
 #: qml/ScaleBar.qml:219
 msgid "Auto-zoom off"
-msgstr "Automatisk zoom av"
+msgstr "Automatisk forstørrelse avslått"
 
 #: qml/SharePage.qml:48
 msgid "SMS"
@@ -1788,7 +1815,7 @@ msgstr "Melding kopiert til utklippstavlen"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr "Feil ved sending av melding"
+msgstr "Klarte ikke å sende melding"
 
 #: qml/SharePage.qml:66
 msgid "Email"
@@ -1796,7 +1823,7 @@ msgstr "E-post"
 
 #: qml/SharePage.qml:69
 msgid "Launching the Email application"
-msgstr "Starter E-post programmet"
+msgstr "Starter e-postprogrammet"
 
 #: qml/SharePage.qml:77
 msgid "Other"
@@ -1804,7 +1831,7 @@ msgstr "Andre"
 
 #: qml/SharePage.qml:97
 msgid "Add address"
-msgstr ""
+msgstr "Legg til adresse"
 
 #: qml/SharePage.qml:106
 msgid "Add link to OpenStreetMaps"
@@ -1880,15 +1907,15 @@ msgstr "Velg tid"
 
 #: routers/digitransit_settings.qml:145
 msgid "Criterion"
-msgstr "kriterium"
+msgstr "Kriterium"
 
 #: routers/digitransit_settings.qml:146
 msgid "Least transfers"
-msgstr "Minst overføringer"
+msgstr "Minste antall overganger"
 
 #: routers/digitransit_settings.qml:146
 msgid "Least walking"
-msgstr "Minst gående"
+msgstr "Minste gangavstand"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
@@ -1896,7 +1923,7 @@ msgstr "Fil"
 
 #: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
 msgid "Reverse"
-msgstr ""
+msgstr "Snu rute"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:38
 #: routers/ValhallaSettings.qml:113
@@ -1933,7 +1960,7 @@ msgstr "Engelsk (Storbritannia)"
 
 #: routers/mapquest_open_settings.qml:57
 msgid "English (US)"
-msgstr "Engelsk (amerikansk)"
+msgstr "Engelsk (USA)"
 
 #: routers/mapquest_open_settings.qml:57
 msgid "French (Canada)"
@@ -1973,7 +2000,7 @@ msgstr "Vei"
 
 #: routers/ValhallaSettings.qml:96
 msgid "Hybrid or City (default)"
-msgstr "Hybrid eller by (standard)"
+msgstr "Hybrid eller by (forvalg)"
 
 #: routers/ValhallaSettings.qml:96
 msgid "Cross"
@@ -2016,15 +2043,15 @@ msgstr "Helling"
 
 #: routers/ValhallaSettings.qml:129
 msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr "Den maksimale vanskeligheten med turstier som er tillatt."
+msgstr "Den maksimale vanskeligheten med turstier som tillates."
 
 #: routers/ValhallaSettings.qml:130
 msgid "Hiking difficulty"
-msgstr "Vandring vanskelighetsgrad"
+msgstr "Vandringsvanskelighetsgrad"
 
 #: routers/ValhallaSettings.qml:131
 msgid "Hiking (default)"
-msgstr "Vandring (standard)"
+msgstr "Vandring (forvalg)"
 
 #: routers/ValhallaSettings.qml:131
 msgid "Mountain hiking"
@@ -2044,7 +2071,7 @@ msgstr "Krevende alpinvandring"
 
 #: routers/ValhallaSettings.qml:148
 msgid "Ferries"
-msgstr "Ferjer"
+msgstr "Ferger"
 
 #: routers/ValhallaSettings.qml:165
 msgid "Highways"
@@ -2056,7 +2083,7 @@ msgstr "Ingen preferanse"
 
 #: routers/ValhallaSettings.qml:167
 msgid "Prefer (default)"
-msgstr "Foretrekker (standard)"
+msgstr "Foretrekker (forvalg)"
 
 #: routers/ValhallaSettings.qml:184
 msgid ""
@@ -2090,7 +2117,7 @@ msgstr "Jernbane"
 
 #: routers/ValhallaSettings.qml:236
 msgid "Your propensity to use roads alongside other vehicles."
-msgstr "Din tilbøyelighet til å bruke veier sammen med andre kjøretøyer."
+msgstr "Din tilbøyelighet til å bruke veier sammen med andre kjøretøy."
 
 #: routers/ValhallaSettings.qml:237
 msgid "Roads"
@@ -2106,7 +2133,7 @@ msgid ""
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
 msgstr ""
-"Ditt ønske om eventyr. Når dette foretrekkes, vil ruteren ha en tendens til "
+"Ditt ønske om eventyr. Når dette foretrekkes, vil ruten ha en tendens til "
 "å unngå hovedveier og ruter på sekundære veier, noen ganger ved bruk av "
 "stier, spor, uklassifiserte veier eller veier med dårlige veidekke."
 
@@ -2124,7 +2151,7 @@ msgstr "Overganger"
 
 #: qml/js/util.js:157
 msgid "%1 (default)"
-msgstr "%1 (standard)"
+msgstr "%1 (forvalg)"
 
 #: qml/js/util.js:235
 msgid "Alternatives"
@@ -2132,19 +2159,19 @@ msgstr "Alternativer"
 
 #: src/cmdlineparser.cpp:18
 msgid "Displays help on commandline options."
-msgstr ""
+msgstr "Viser hjelp for kommandolinjevalg"
 
 #: src/cmdlineparser.cpp:20
 msgid "Displays version information."
-msgstr ""
+msgstr "Viser versjonsinfo"
 
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
-msgstr ""
+msgstr "Viser posisjon gitt av geo:lengegrad, breddegrads-URI, eller utfør søk."
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
-msgstr "Søk i Finland. Støtter autofullfør"
+msgstr "Søk i Finland. Støtter autofullføring"
 
 #: standard input:2
 msgid "Search based on open data sources"
@@ -2152,11 +2179,11 @@ msgstr "Søk basert på åpne datakilder"
 
 #: standard input:3
 msgid "Search based on open data sources. Supports autocomplete"
-msgstr "Søk basert på åpne datakilder. Støtter autofullfør"
+msgstr "Søk basert på åpne datakilder. Støtter autofullføring"
 
 #: standard input:4
 msgid "Search based on OpenStreetMap data. Supports autocomplete"
-msgstr "Søk basert på OpenStreetMap-data. Støtter autofullfør"
+msgstr "Søk basert på OpenStreetMap-data. Støtter autofullføring"
 
 #: standard input:5
 msgid "Venues listed and reviewed by Foursquare users"
@@ -2164,11 +2191,11 @@ msgstr "Severdigheter som er oppført og vurdert av Foursquare-brukere"
 
 #: standard input:6 standard input:7
 msgid "Points of interest from OpenStreetMap data"
-msgstr "Severdigheter fra OpenStreetMap-data"
+msgstr "Interessepunkter fra OpenStreetMap-data"
 
 #: standard input:8
 msgid "Public transport routing in Finland"
-msgstr "Rute beregning av kollektivtransport i Finland"
+msgstr "Ruteberegning for kollektivtransport i Finland"
 
 #: standard input:9
 msgid "public transport"
@@ -2176,7 +2203,7 @@ msgstr "Kollektivtransport"
 
 #: standard input:10
 msgid "Routing along GPX track"
-msgstr "Rute beregning langs GPX-sporet"
+msgstr "Ruteberegning langs GPX-spor"
 
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:19 standard input:21
@@ -2186,16 +2213,16 @@ msgstr "bil"
 #: standard input:11 standard input:13 standard input:15 standard input:17
 #: standard input:21
 msgid "foot"
-msgstr "gå"
+msgstr "til fots"
 
 #: standard input:12
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr "Rute beregning langs GPX-spor behandlet av OSM Scout Server"
+msgstr "Ruteberegning langs GPX-spor behandlet av OSM Scout-tjener"
 
 #: standard input:14 standard input:16 standard input:18
 msgid "Routing based on OpenStreetMap data"
-msgstr "Rute beregning basert på OpenStreetMap data"
+msgstr "Ruteberegning basert på OpenStreetMap-data"
 
 #: standard input:20
 msgid "Routing by Valhalla based on OpenStreetMap data"
-msgstr "Rute beregning av Valhalla basert på OpenStreetMap data"
+msgstr "Ruteberegning av Valhalla basert på OpenStreetMap-data"
