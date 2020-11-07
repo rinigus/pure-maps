@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
+import org.puremaps 1.0
 
 import "js/util.js" as Util
 
@@ -49,6 +50,17 @@ Item {
     property string voiceUri:  ""
 
     property bool   _voiceNavigation: app.conf.voiceNavigation && app.mode === modes.navigate
+
+    NavigatorBase {
+        id: navigatorBase
+    }
+
+    Connections {
+        target: app
+        onPositionChanged: navigatorBase.setPosition(app.position.coordinate,
+                                                     app.position.horizontalAccuracy,
+                                                     app.position.horizontalAccuracyValid && app.position.latitudeValid && app.position.longitudeValid)
+    }
 
     Timer {
         // timer for updating navigation instructions
@@ -108,6 +120,7 @@ Item {
     on_VoiceNavigationChanged: initVoiceNavigation()
 
     function clearRoute() {
+        navigatorBase.clearRoute();
         // Remove route
         maneuvers = [];
         route = {};
@@ -248,9 +261,11 @@ Item {
     function setRoute(route, amend) {
         // Set new route
         clearRoute();
-        route.coordinates = route.x.map(function(value, i) {
-            return QtPositioning.coordinate(route.y[i], route.x[i]);
-        });
+//        route.coordinates = route.x.map(function(value, i) {
+//            return QtPositioning.coordinate(route.y[i], route.x[i]);
+//        });
+        navigatorBase.setRoute(route);
+        route.coordinates = navigatorBase.route;
         navigator.route = route;
         py.call("poor.app.narrative.set_language", [route.language || "en"], null);
         py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);

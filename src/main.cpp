@@ -42,6 +42,7 @@
 #include "cmdlineparser.h"
 #include "commander.h"
 #include "dbusroot.h"
+#include "navigator.h"
 
 
 int main(int argc, char *argv[])
@@ -143,19 +144,21 @@ int main(int argc, char *argv[])
   QQmlContext *rootContext = engine.rootContext();
 #endif
 
-#if defined(IS_SAILFISH_OS) || defined(IS_QTCONTROLS_QT)
-  if (rootContext)
+  if (!rootContext)
     {
-      rootContext->setContextProperty("programName", "Pure Maps");
-      rootContext->setContextProperty("programVersion", APP_VERSION);
+      std::cerr << "Failed to initialize QML context\n";
+      return -2;
     }
-#endif
+
+  rootContext->setContextProperty("programName", "Pure Maps");
+  rootContext->setContextProperty("programVersion", APP_VERSION);
 
   // ////////////////////////////
   // register QML types
 #ifdef INTERNAL_CLIPBOARD
   qmlRegisterType<Clipboard>("org.puremaps", 1, 0, "Clipboard");
 #endif
+  qmlRegisterType<Navigator>("org.puremaps", 1, 0, "NavigatorBase");
 
   qmlRegisterSingletonType<CmdLineParser>("org.puremaps", 1, 0, "CmdLineParser", [](QQmlEngine *, QJSEngine *) -> QObject * {
       return static_cast<QObject *>(CmdLineParser::instance());
