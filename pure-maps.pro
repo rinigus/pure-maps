@@ -213,6 +213,7 @@ SOURCES += src/main.cpp \
     src/commander.cpp \
     src/config.cpp \
     src/dbusroot.cpp \
+    src/maneuver.cpp \
     src/navigator.cpp
 
 HEADERS += \
@@ -221,6 +222,7 @@ HEADERS += \
     src/commander.h \
     src/config.h \
     src/dbusroot.h \
+    src/maneuver.h \
     src/navigator.h
 
 OTHER_FILES += rpm/harbour-pure-maps.spec

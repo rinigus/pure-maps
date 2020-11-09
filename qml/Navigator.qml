@@ -29,24 +29,25 @@ Item {
     property string destEta:   ""
     property string destTime:  ""
     property var    direction: undefined
-    property bool   hasRoute:  false
+    property bool   hasRoute:  route.length > 0
     property string icon:      ""
     property var    maneuvers: []
     property string manDist:   ""
     property string manTime:   ""
     property string narrative: ""
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
-    property real   progress:  0
+    property real   progress:  navigatorBase.progress
+    property string provider
     property int    rerouteConsecutiveErrors: 0
     property real   reroutePreviousTime: -1
     property int    rerouteTotalCalls: 0
     property bool   rerouting: false
-    property var    route:     {}
+    property var    route:     navigatorBase.route
     property var    sign:      undefined
     property var    street:    undefined
     property string totalDist: ""
     property string totalTime: ""
-    property string transportMode: route && route.mode ? route.mode : ""
+    property string transportMode: navigatorBase.mode
     property string voiceUri:  ""
 
     property bool   _voiceNavigation: app.conf.voiceNavigation && app.mode === modes.navigate
@@ -123,11 +124,11 @@ Item {
         navigatorBase.clearRoute();
         // Remove route
         maneuvers = [];
-        route = {};
+        //route = {};
         py.call("poor.app.narrative.unset", [], null);
         clearStatus();
-        hasRoute = false;
-        saveRoute();
+        provider = "";
+        saveRoute({});
     }
 
     function clearStatus() {
@@ -139,7 +140,7 @@ Item {
         manDist   = "";
         manTime   = "";
         narrative = "";
-        progress  = 0;
+        //progress  = 0;
         sign      = undefined;
         street    = undefined;
         totalDist = "";
@@ -149,7 +150,7 @@ Item {
 
     function getDestination() {
         // Return coordinates of the route destination.
-        var destination = navigator.route.coordinates[navigator.route.coordinates.length - 1];
+        var destination = navigator.route[navigator.route.length - 1];
         return [destination.longitude, destination.latitude];
     }
 
@@ -261,28 +262,27 @@ Item {
     function setRoute(route, amend) {
         // Set new route
         clearRoute();
-//        route.coordinates = route.x.map(function(value, i) {
-//            return QtPositioning.coordinate(route.y[i], route.x[i]);
-//        });
+        console.log(JSON.stringify(route))
         navigatorBase.setRoute(route);
-        route.coordinates = navigatorBase.route;
-        navigator.route = route;
+        // TODO drop from here and add under start action?
+        navigatorBase.start()
+        provider = route.provider;
+        //navigator.route = route;
         py.call("poor.app.narrative.set_language", [route.language || "en"], null);
         py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);
         py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
-            navigator.hasRoute = true;
         });
         if (route.maneuvers !== undefined && route.maneuvers !== null) {
             //navigator.route.maneuvers = route.maneuvers;
             setManeuvers(route.maneuvers);
         }
-        saveRoute();
+        saveRoute(route);
         if (!amend) app.setModeExploreRoute();
     }
 
-    function saveRoute() {
+    function saveRoute(route_in) {
         // Save route polyline to JSON file.
-        var data = Util.polylineToJson(navigator.route);
+        var data = Util.polylineToJson(route_in);
         py.call_sync("poor.storage.write_route", [data]);
     }
 
@@ -298,7 +298,7 @@ Item {
         manDist   = data.man_dist   || "";
         manTime   = data.man_time   || "";
         narrative = data.narrative  || "";
-        progress  = data.progress   || 0;
+        //progress  = data.progress   || 0;
         // reroute checked in narration timer and clashes with the method name.
         // no need to set it as a property
         sign      = data.sign       || undefined;

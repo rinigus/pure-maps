@@ -17,6 +17,7 @@
 
 """Finding routes between addresses and/or coordinates."""
 
+import copy
 import importlib.machinery
 import os
 import poor
@@ -87,6 +88,28 @@ class Router:
             path = os.path.join(poor.DATA_DIR, leaf)
         return path, poor.util.read_json(path)
 
+    def _process_route(self, route):
+        if "maneuvers" in route:
+            mnew = []
+            for m in route["maneuvers"]:
+                sign = m.get("sign", None)
+                street = m.get("street", None)
+                if (street is None or len(street)==0) and sign is not None:
+                    if "exit_toward" in sign and sign["exit_toward"] is not None and len(sign["exit_toward"]) > 0:
+                        street = "⇨ " + ("; ".join(sign["exit_toward"]))
+                    elif "exit_branch"  in sign and sign["exit_branch"] is not None and len(sign["exit_branch"]) > 0:
+                        street = "⇨ " + ("; ".join(sign["exit_branch"]))
+                    elif "exit_number"  in sign and sign["exit_number"] is not None and len(sign["exit_number"]) > 0:
+                        street = _("Exit: ") + ("; ".join(sign["exit_number"]))
+                    elif "exit_name"  in sign and sign["exit_name"] is not None and len(sign["exit_name"]) > 0:
+                        street = _("Exit: ") + ("; ".join(sign["exit_name"]))
+                elif street is not None and len(street)>0:
+                    street = "; ".join(street)
+                mn = copy.deepcopy(m)
+                mn["street"] = street
+                mnew.append(mn)
+            route["maneuvers"] = mnew
+
     @property
     def results_qml_uri(self):
         """Return URI to router results QML file."""
@@ -115,10 +138,12 @@ class Router:
             return {}
         if isinstance(route, dict):
             route["provider"] = self.id
+            self._process_route(route)
         if isinstance(route, list):
             for alternative in route:
                 if isinstance(alternative, dict):
                     alternative["provider"] = self.id
+                    self._process_route(alternative)
         return route
 
     @property
@@ -127,4 +152,3 @@ class Router:
         path = re.sub(r"\.json$", "_settings.qml", self._path)
         if not os.path.isfile(path): return None
         return poor.util.path2uri(path)
-

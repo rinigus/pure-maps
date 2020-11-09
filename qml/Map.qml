@@ -412,7 +412,7 @@ MapboxMap {
         // Set center and zoom so that the whole route is visible.
         map.autoCenter = false;
         map.autoRotate = false;
-        map.fitView(app.navigator.route.coordinates, true);
+        map.fitView(app.navigator.route, true);
     }
 
     function initIcons() {
@@ -609,8 +609,8 @@ MapboxMap {
 
     function updateRoute() {
         // Update route polyline on the map.
-        if (app.navigator && app.navigator.route.coordinates)
-            map.updateSourceLine(map.sources.route, app.navigator.route.coordinates);
+        if (app.navigator && app.navigator.route)
+            map.updateSourceLine(map.sources.route, app.navigator.route);
         else
             map.updateSourceLine(map.sources.route, []);
     }
