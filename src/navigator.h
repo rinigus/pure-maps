@@ -20,6 +20,7 @@ class Navigator : public QObject
 
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(double progress READ progress NOTIFY progressChanged)
+  Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
   Q_PROPERTY(QList<QGeoCoordinate> route READ route NOTIFY routeChanged)
 
 public:
@@ -40,10 +41,17 @@ public:
   QList<QGeoCoordinate> route() const { return m_route; }
   Q_INVOKABLE void setRoute(QVariantMap m);
 
+  QString units() const { return m_units; }
+  void setUnits(QString u);
+
 signals:
   void modeChanged();
   void progressChanged();
   void routeChanged();
+  void unitsChanged();
+
+protected:
+  QString distanceToStr(double meters, bool condence=true) const;
 
 private:
   // Edges of the route
@@ -85,6 +93,8 @@ private:
   double m_last_distance_along_route_m{-1};
   double m_distance_to_route_m{-1};
   size_t m_offroad_count{0};
+
+  QString m_units{QLatin1String("metric")};
 };
 
 #endif // NAVIGATOR_H

@@ -1,11 +1,13 @@
 #include "navigator.h"
 
+#include <QCoreApplication>
 #include <QDebug>
 #include <QGeoCoordinate>
 
 #include <s2/s2closest_edge_query.h>
 #include <s2/s2earth.h>
 #include <vector>
+#include <cmath>
 
 // NB! All distances in Rad unless having suffix _m for Meters
 
@@ -106,17 +108,16 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       m_distance_to_route_m = 0;
       m_offroad_count = 0;
 
+      // handle reference points
       if (!ref || // add the first reference point
           (best.length_on_route - m_points.back().length_on_route) / best.accuracy > REF_POINT_ADD_MARGIN)
-        {
-          m_points.push_back(best);
-          //qDebug() << "NEW REFERENCE POINT";
-        }
+        m_points.push_back(best);
 
       if ( m_points.size() > NUMBER_OF_REF_POINTS ||
            (m_points.size() > 0 && m_points.front().accuracy/2 > best.accuracy) )
         m_points.pop_front();
 
+      // emit signals
       emit progressChanged();
 
       qDebug() << "ON ROUTE:" << m_route_length_m - S2Earth::RadiansToMeters(std::max(0.0,best.length_on_route)) << "km left" << m_points.size();
@@ -233,15 +234,16 @@ void Navigator::setRoute(QVariantMap m)
         }
 
       Maneuver man(mc);
-      length_on_route += man_length;
-      duration_on_route += man.duration;
       man.duration_on_route = duration_on_route;
       man.length = man_length;
       man.length_on_route = length_on_route;
       m_maneuvers.push_back(man);
+      length_on_route += man_length;
+      duration_on_route += man.duration;
 
       qDebug() << "Maneuver" << mind << "Length" << S2Earth::RadiansToKm(man.length) << "m  Duration"
                << man.duration << "s  Speed" << S2Earth::RadiansToKm(man.length)/std::max(man.duration, 0.1)*3600 << "km/h" << "\n"
+               << man.duration_on_route << "s / " << distanceToStr(S2Earth::RadiansToMeters(man.length_on_route))
                << man.icon << man.narrative << man.sign << man.street << "\n";
     }
 
@@ -249,6 +251,12 @@ void Navigator::setRoute(QVariantMap m)
   qDebug() << "Route:" << m_route_duration << "seconds";
 }
 
+
+void Navigator::setUnits(QString u)
+{
+  m_units = u;
+  emit unitsChanged();
+}
 
 double Navigator::progress() const
 {
@@ -269,3 +277,53 @@ void Navigator::stop()
   m_running = false;
 }
 
+static QString n2Str(double n, int roundDig=2)
+{
+  double rd = std::pow(10, roundDig);
+  return QString("%L1").arg( round(n/rd) * rd );
+}
+
+static QString distanceToStr_american(double feet, bool condence)
+{
+  QString unit;
+  if (feet > 1010)
+    {
+      unit = condence ? QCoreApplication::translate("", "mi") : QCoreApplication::translate("", "miles");
+      return QString("%1 %2").arg(n2Str(feet/5280, feet > 5280 ? 0 : -1)).arg(unit);
+    }
+  unit = condence ? QCoreApplication::translate("", "ft") : QCoreApplication::translate("", "feet");
+  return QString("%1 %2").arg(n2Str(feet, feet > 150 ? 2 : 1)).arg(unit);
+}
+
+static QString distanceToStr_british(double yard, bool condence)
+{
+  QString unit;
+  if (yard > 1010)
+    {
+      unit = condence ? QCoreApplication::translate("", "mi") : QCoreApplication::translate("", "miles");
+      return QString("%1 %2").arg(n2Str(yard/1760, yard > 1760 ? 0 : -1)).arg(unit);
+    }
+  unit = condence ? QCoreApplication::translate("", "yd") : QCoreApplication::translate("", "yards");
+  return QString("%1 %2").arg(n2Str(yard, yard > 150 ? 2 : 1)).arg(unit);
+}
+
+static QString distanceToStr_metric(double meters, bool condence)
+{
+  QString unit;
+  if (meters > 1000)
+    {
+      unit = condence ? QCoreApplication::translate("", "km") : QCoreApplication::translate("", "kilometers");
+      return QString("%1 %2").arg(n2Str(meters/1000, 0)).arg(unit);
+    }
+  unit = condence ? QCoreApplication::translate("", "m") : QCoreApplication::translate("", "meters");
+  return QString("%1 %2").arg(n2Str(meters, meters > 150 ? 2 : 1)).arg(unit);
+}
+
+QString Navigator::distanceToStr(double meters, bool condence) const
+{
+  if (m_units == QLatin1String("american"))
+    return distanceToStr_american(3.28084 * meters, condence);
+  if (m_units == QLatin1String("british"))
+    return distanceToStr_british(1.09361 * meters, condence);
+  return distanceToStr_metric(meters, condence);
+}

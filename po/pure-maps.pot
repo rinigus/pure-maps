@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-30 21:13+0200\n"
+"POT-Creation-Date: 2020-11-10 22:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgid "Point from Plus code"
 msgstr ""
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:111
+#: poor/router.py:134
 msgid "Connection timed out"
 msgstr ""
 
@@ -120,19 +120,20 @@ msgstr ""
 msgid "In {distance}, {direction}"
 msgstr ""
 
-#: poor/narrative.py:222 poor/narrative.py:224
+#: poor/narrative.py:222 poor/narrative.py:224 poor/router.py:103
+#: poor/router.py:105
 msgid "Exit: "
 msgstr ""
 
-#: poor/narrative.py:621 qml/Navigator.qml:187
+#: poor/narrative.py:621 qml/Navigator.qml:202
 msgid "New route found"
 msgstr ""
 
-#: poor/narrative.py:622 qml/Navigator.qml:171
+#: poor/narrative.py:622 qml/Navigator.qml:186
 msgid "Rerouting"
 msgstr ""
 
-#: poor/narrative.py:623 qml/Navigator.qml:192
+#: poor/narrative.py:623 qml/Navigator.qml:207
 msgid "Rerouting failed"
 msgstr ""
 
@@ -140,43 +141,45 @@ msgstr ""
 msgid "Starting navigation"
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:291
+#: src/navigator.cpp:303
 msgid "mi"
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:291
+#: src/navigator.cpp:303
 msgid "miles"
 msgstr ""
 
-#: poor/util.py:231 qml/Meters.qml:85
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:294
 msgid "ft"
 msgstr ""
 
-#: poor/util.py:231
+#: poor/util.py:231 src/navigator.cpp:294
 msgid "feet"
 msgstr ""
 
-#: poor/util.py:242 qml/Meters.qml:95
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:306
 msgid "yd"
 msgstr ""
 
-#: poor/util.py:242
+#: poor/util.py:242 src/navigator.cpp:306
 msgid "yards"
 msgstr ""
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:315
 msgid "km"
 msgstr ""
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:315
 msgid "kilometers"
 msgstr ""
 
-#: poor/util.py:253 qml/Meters.qml:105
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:318
 msgid "m"
 msgstr ""
 
-#: poor/util.py:253
+#: poor/util.py:253 src/navigator.cpp:318
 msgid "meters"
 msgstr ""
 
@@ -707,13 +710,13 @@ msgstr ""
 msgid "Share Current Position"
 msgstr ""
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:332
-#: qml/NavigationCurrentBlock.qml:334 qml/NavigationSpeedBlock.qml:84
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:333
+#: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
 #: qml/NavigationSpeedBlock.qml:86
 msgid "mph"
 msgstr ""
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:336
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
 #: qml/NavigationSpeedBlock.qml:88
 msgid "km/h"
 msgstr ""
@@ -778,17 +781,17 @@ msgstr ""
 msgid "EXIT"
 msgstr ""
 
-#: qml/Navigator.qml:150
+#: qml/Navigator.qml:165
 msgid "Voice navigation on"
 msgstr ""
 
-#: qml/Navigator.qml:153
+#: qml/Navigator.qml:168
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
 
-#: qml/Navigator.qml:183
+#: qml/Navigator.qml:198
 msgid "Rerouting failed: %1"
 msgstr ""
 

@@ -54,6 +54,7 @@ Item {
 
     NavigatorBase {
         id: navigatorBase
+        units: app.conf.units
     }
 
     Connections {
