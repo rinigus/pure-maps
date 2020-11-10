@@ -25,14 +25,14 @@ import "js/util.js" as Util
 Item {
     id: navigator
 
-    property string destDist:  ""
+    property string destDist:  navigatorBase.destDist
     property string destEta:   ""
     property string destTime:  ""
     property var    direction: undefined
     property bool   hasRoute:  route.length > 0
     property string icon:      ""
     property var    maneuvers: []
-    property string manDist:   ""
+    property string manDist:   navigatorBase.manDist
     property string manTime:   ""
     property string narrative: ""
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
@@ -45,7 +45,7 @@ Item {
     property var    route:     navigatorBase.route
     property var    sign:      undefined
     property var    street:    undefined
-    property string totalDist: ""
+    property string totalDist: navigatorBase.totalDist
     property string totalTime: ""
     property string transportMode: navigatorBase.mode
     property string voiceUri:  ""
@@ -134,17 +134,17 @@ Item {
 
     function clearStatus() {
         // Reset all navigation status properties.
-        destDist  = "";
+        //destDist  = "";
         destTime  = "";
         direction = undefined;
         icon      = "";
-        manDist   = "";
+        //manDist   = "";
         manTime   = "";
         narrative = "";
         //progress  = 0;
         sign      = undefined;
         street    = undefined;
-        totalDist = "";
+        //totalDist = "";
         totalTime = "";
         voiceUri  = "";
     }
@@ -290,13 +290,13 @@ Item {
     function updateStatus(data) {
         // Update navigation status with data from Python backend.
         if (!data) return;
-        destDist  = data.dest_dist  || "";
+        //destDist  = data.dest_dist  || "";
         destEta   = data.dest_eta   || "";
         destTime  = data.dest_time  || "";
         if (data.direction !== undefined && data.direction !== null) direction = data.direction;
         else direction = undefined;
         icon      = data.icon       || "";
-        manDist   = data.man_dist   || "";
+        //manDist   = data.man_dist   || "";
         manTime   = data.man_time   || "";
         narrative = data.narrative  || "";
         //progress  = data.progress   || 0;
@@ -304,7 +304,7 @@ Item {
         // no need to set it as a property
         sign      = data.sign       || undefined;
         street    = data.street     || undefined;
-        totalDist = data.total_dist || "";
+        //totalDist = data.total_dist || "";
         totalTime = data.total_time || "";
         voiceUri  = data.voice_uri  || "";
     }

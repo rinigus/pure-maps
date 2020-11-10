@@ -16,6 +16,9 @@
 #define NUMBER_OF_REF_POINTS    2  // how many points to keep as a reference
 #define MAX_OFFROAD_COUNTS      5  // times position was updated and point was off the route (counted in a sequence)
 
+// use var without m_ prefix
+#define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; emit var##Changed(); } }
+
 Navigator::Navigator(QObject *parent) : QObject(parent)
 {
 }
@@ -30,6 +33,9 @@ void Navigator::clearRoute()
 
   m_distance_traveled_m = 0;
   emit progressChanged();
+
+  SET(totalDist, "");
+  SET(destDist, "");
 }
 
 
@@ -108,6 +114,8 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       m_distance_to_route_m = 0;
       m_offroad_count = 0;
 
+      SET(destDist, distanceToStr(m_route_length_m - m_last_distance_along_route_m));
+
       // handle reference points
       if (!ref || // add the first reference point
           (best.length_on_route - m_points.back().length_on_route) / best.accuracy > REF_POINT_ADD_MARGIN)
@@ -153,6 +161,7 @@ void Navigator::setRoute(QVariantMap m)
   if (x.length() != y.length())
     {
       qWarning() << "Route given by inconsistent lists: " << x.length() << " " << y.length();
+      clearRoute();
       return;
     }
 
@@ -248,7 +257,8 @@ void Navigator::setRoute(QVariantMap m)
     }
 
   m_route_duration = duration_on_route;
-  qDebug() << "Route:" << m_route_duration << "seconds";
+
+  SET(totalDist, distanceToStr(m_route_length_m));
 }
 
 

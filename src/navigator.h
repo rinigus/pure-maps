@@ -18,9 +18,13 @@ class Navigator : public QObject
 {
   Q_OBJECT
 
+  Q_PROPERTY(QString destDist READ destDist NOTIFY destDistChanged)
+  Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
-  Q_PROPERTY(double progress READ progress NOTIFY progressChanged)
+  Q_PROPERTY(double  progress READ progress NOTIFY progressChanged)
+  Q_PROPERTY(QString totalDist READ totalDist NOTIFY totalDistChanged)
   Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
+
   Q_PROPERTY(QList<QGeoCoordinate> route READ route NOTIFY routeChanged)
 
 public:
@@ -31,8 +35,12 @@ public:
   Q_INVOKABLE void stop();
 
   // current state
+  QString destDist() const { return m_destDist; }
+  QString manDist() const { return m_manDist; }
   QString mode() const { return m_mode; }
   double progress() const;
+  QString totalDist() const { return m_totalDist; }
+
 
   Q_INVOKABLE void setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid);
 
@@ -45,9 +53,12 @@ public:
   void setUnits(QString u);
 
 signals:
+  void destDistChanged();
+  void manDistChanged();
   void modeChanged();
   void progressChanged();
   void routeChanged();
+  void totalDistChanged();
   void unitsChanged();
 
 protected:
@@ -93,6 +104,10 @@ private:
   double m_last_distance_along_route_m{-1};
   double m_distance_to_route_m{-1};
   size_t m_offroad_count{0};
+
+  QString m_destDist;
+  QString m_manDist;
+  QString m_totalDist;
 
   QString m_units{QLatin1String("metric")};
 };
