@@ -3,6 +3,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QGeoCoordinate>
+#include <QTime>
 
 #include <s2/s2closest_edge_query.h>
 #include <s2/s2earth.h>
@@ -35,7 +36,10 @@ void Navigator::clearRoute()
   emit progressChanged();
 
   SET(totalDist, "");
+  SET(totalTime, "");
   SET(destDist, "");
+  SET(destEta, "");
+  SET(destTime, "");
 }
 
 
@@ -114,7 +118,24 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       m_distance_to_route_m = 0;
       m_offroad_count = 0;
 
+      const Maneuver &man = m_maneuvers[best.maneuver];
+      m_last_duration_along_route = man.duration_on_route;
+      if (man.length > 0)
+        m_last_duration_along_route +=
+            (man.length - (man.length_on_route-best.length_on_route)) / man.length * man.duration;
+
       SET(destDist, distanceToStr(m_route_length_m - m_last_distance_along_route_m));
+      SET(destTime, timeToStr(m_route_duration - m_last_duration_along_route));
+
+      QTime time = QTime::currentTime().addSecs(m_route_duration - m_last_duration_along_route);
+      SET(destEta, QLocale::system().toString(time, QLocale::ShortFormat));
+
+      if (best.maneuver+1 < m_maneuvers.size())
+        {
+          const Maneuver &next = m_maneuvers[best.maneuver+1];
+          SET(manDist, distanceToStr(S2Earth::RadiansToMeters(next.length_on_route - best.length_on_route)));
+          SET(manTime, timeToStr(man.duration_on_route - m_last_duration_along_route));
+        }
 
       // handle reference points
       if (!ref || // add the first reference point
@@ -259,6 +280,7 @@ void Navigator::setRoute(QVariantMap m)
   m_route_duration = duration_on_route;
 
   SET(totalDist, distanceToStr(m_route_length_m));
+  SET(totalTime, timeToStr(m_route_duration));
 }
 
 
@@ -335,4 +357,12 @@ QString Navigator::distanceToStr(double meters, bool condence) const
   if (m_units == QLatin1String("british"))
     return distanceToStr_british(1.09361 * meters, condence);
   return distanceToStr_metric(meters, condence);
+}
+
+QString Navigator::timeToStr(double seconds) const
+{
+  int hours = int(seconds / 3600);
+  int minutes = round((seconds - hours*3600)/60);
+  return hours > 0 ? QCoreApplication::translate("", "%1 h %2 min").arg(hours).arg(minutes) :
+                     QCoreApplication::translate("", "%2 min").arg(minutes);
 }
