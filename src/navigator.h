@@ -22,6 +22,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(double  progress READ progress NOTIFY progressChanged)
+  Q_PROPERTY(bool    running READ running WRITE setRunning NOTIFY runningChanged)
   Q_PROPERTY(QString totalDist READ totalDist NOTIFY totalDistChanged)
   Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
@@ -30,15 +31,11 @@ class Navigator : public QObject
 public:
   explicit Navigator(QObject *parent = nullptr);
 
-  // commands
-  Q_INVOKABLE bool start();
-  Q_INVOKABLE void stop();
-
   // current state
   QString destDist() const { return m_destDist; }
   QString manDist() const { return m_manDist; }
   QString mode() const { return m_mode; }
-  double progress() const;
+  double  progress() const;
   QString totalDist() const { return m_totalDist; }
 
 
@@ -49,6 +46,9 @@ public:
   QList<QGeoCoordinate> route() const { return m_route; }
   Q_INVOKABLE void setRoute(QVariantMap m);
 
+  bool running () const { return m_running; }
+  void setRunning(bool r);
+
   QString units() const { return m_units; }
   void setUnits(QString u);
 
@@ -58,6 +58,7 @@ signals:
   void modeChanged();
   void progressChanged();
   void routeChanged();
+  void runningChanged();
   void totalDistChanged();
   void unitsChanged();
 

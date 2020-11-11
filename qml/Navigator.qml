@@ -55,6 +55,7 @@ Item {
     NavigatorBase {
         id: navigatorBase
         units: app.conf.units
+        running: app.mode === modes.navigate && route.length > 0
     }
 
     Connections {
@@ -262,11 +263,8 @@ Item {
 
     function setRoute(route, amend) {
         // Set new route
-        clearRoute();
         console.log(JSON.stringify(route))
         navigatorBase.setRoute(route);
-        // TODO drop from here and add under start action?
-        navigatorBase.start()
         provider = route.provider;
         //navigator.route = route;
         py.call("poor.app.narrative.set_language", [route.language || "en"], null);

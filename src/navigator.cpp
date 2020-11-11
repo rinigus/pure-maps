@@ -26,7 +26,7 @@ Navigator::Navigator(QObject *parent) : QObject(parent)
 
 void Navigator::clearRoute()
 {
-  stop();
+  setRunning(false);
   m_polyline.release();
   m_route.clear();
   emit routeChanged();
@@ -275,16 +275,15 @@ double Navigator::progress() const
   return m_distance_traveled_m / std::max(1.0, m_distance_traveled_m + m_route_length_m - m_last_distance_along_route_m);
 }
 
-bool Navigator::start()
+void Navigator::setRunning(bool r)
 {
-  if (!m_index) return false;
-  m_running = true;
-  return true;
-}
-
-void Navigator::stop()
-{
-  m_running = false;
+  if (!m_index && r)
+    {
+      qCritical() << "Navigator: Cannot start routing without route. Fix the caller.";
+      r = false;
+    }
+  m_running = r;
+  emit runningChanged();
 }
 
 static QString n2Str(double n, int roundDig=2)
