@@ -13,9 +13,9 @@
 // NB! All distances in Rad unless having suffix _m for Meters
 
 #define MAX_ROUTE_INTERSECTIONS 5  // Maximal number of route intersections with itself
-#define REF_POINT_ADD_MARGIN    10 // Add next reference point along the route when it is that far away from the last one (relative to accuracy)
+#define REF_POINT_ADD_MARGIN    2  // Add next reference point along the route when it is that far away from the last one (relative to accuracy)
 #define NUMBER_OF_REF_POINTS    2  // how many points to keep as a reference
-#define MAX_OFFROAD_COUNTS      5  // times position was updated and point was off the route (counted in a sequence)
+#define MAX_OFFROAD_COUNTS      3  // times position was updated and point was off the route (counted in a sequence)
 
 // use var without m_ prefix
 #define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; emit var##Changed(); } }
@@ -40,6 +40,7 @@ void Navigator::clearRoute()
   SET(destDist, "");
   SET(destEta, "");
   SET(destTime, "");
+  SET(onRoad, false);
 }
 
 
@@ -86,24 +87,34 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       double dist_edge = einfo.length;
 
       // replace point with vertex if it is projected outside the edge
+      bool betweenVertexes = true;
       if ( dist_edge < dist_edge_v0 )
         {
           pr = edge.v1;
           dist_edge_v0 = dist_edge;
+          betweenVertexes = false;
         }
       else if ( dist_edge < dist_edge_v1 )
         {
           pr = edge.v0;
           dist_edge_v0 = 0;
+          betweenVertexes = false;
         }
 
       double dist = einfo.length_before + dist_edge_v0;
-      if (!best || (ref &&  ref.length_on_route - accuracy_rad < dist &&
-                    best.length_on_route-ref.length_on_route > dist-ref.length_on_route ))
+      if (!best || (ref &&
+                    ref.length_on_route - accuracy_rad < dist && // is it along route?
+                    // consider to improve only if on the edge. otherwise
+                    // turns will always prefer older edge
+                    betweenVertexes &&
+                    // take the point closer to the origin only if
+                    // it is significantly closer
+                    (best.length_on_route - dist) > 2*REF_POINT_ADD_MARGIN*accuracy_rad))
         {
           // update to the current estimate
           best.length_on_route = dist;
           best.point = pr;
+          best.bearing = einfo.bearing;
           best.maneuver = einfo.maneuver;
         }
     }
@@ -117,6 +128,8 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       m_last_distance_along_route_m = S2Earth::RadiansToMeters(best.length_on_route);
       m_distance_to_route_m = 0;
       m_offroad_count = 0;
+
+      SET(bearing, best.bearing);
 
       const Maneuver &man = m_maneuvers[best.maneuver];
       m_last_duration_along_route = man.duration_on_route;
@@ -148,6 +161,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
 
       // emit signals
       emit progressChanged();
+      SET(onRoad, m_points.size() >= NUMBER_OF_REF_POINTS);
 
       qDebug() << "ON ROUTE:" << m_route_length_m - S2Earth::RadiansToMeters(std::max(0.0,best.length_on_route)) << "km left" << m_points.size();
     }
@@ -164,7 +178,10 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
 
       // wipe history used to track direction on route if we are off the route
       if (m_offroad_count > MAX_OFFROAD_COUNTS)
-        m_points.clear();
+        {
+          m_points.clear();
+          SET(onRoad, false);
+        }
     }
 
   qDebug() << "\n";
@@ -230,6 +247,7 @@ void Navigator::setRoute(QVariantMap m)
       EdgeInfo edge;
       edge.length = S1ChordAngle(shape->edge(i).v0, shape->edge(i).v1).radians();
       edge.length_before = route_length;
+      edge.bearing = S2Earth::GetInitialBearing(S2LatLng(shape->edge(i).v0), S2LatLng(shape->edge(i).v1)).degrees();
       m_edges.push_back(edge);
       route_length += edge.length;
     }

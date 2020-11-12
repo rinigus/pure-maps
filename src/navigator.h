@@ -18,12 +18,14 @@ class Navigator : public QObject
 {
   Q_OBJECT
 
+  Q_PROPERTY(double  bearing READ bearing NOTIFY bearingChanged)
   Q_PROPERTY(QString destDist READ destDist NOTIFY destDistChanged)
   Q_PROPERTY(QString destEta READ destEta NOTIFY destEtaChanged)
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
   Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
   Q_PROPERTY(QString manTime READ manTime NOTIFY manTimeChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
+  Q_PROPERTY(bool    onRoad READ onRoad NOTIFY onRoadChanged)
   Q_PROPERTY(double  progress READ progress NOTIFY progressChanged)
   Q_PROPERTY(bool    running READ running WRITE setRunning NOTIFY runningChanged)
   Q_PROPERTY(QString totalDist READ totalDist NOTIFY totalDistChanged)
@@ -36,12 +38,14 @@ public:
   explicit Navigator(QObject *parent = nullptr);
 
   // current state
+  double  bearing() const { return m_bearing; }
   QString destDist() const { return m_destDist; }
   QString destEta() const { return m_destEta; }
   QString destTime() const { return m_destTime; }
   QString manDist() const { return m_manDist; }
   QString manTime() const { return m_manTime; }
   QString mode() const { return m_mode; }
+  bool    onRoad() const { return m_onRoad; }
   double  progress() const;
   QString totalDist() const { return m_totalDist; }
   QString totalTime() const { return m_totalTime; }
@@ -61,12 +65,14 @@ public:
   void setUnits(QString u);
 
 signals:
+  void bearingChanged();
   void destDistChanged();
   void destEtaChanged();
   void destTimeChanged();
   void manDistChanged();
   void manTimeChanged();
   void modeChanged();
+  void onRoadChanged();
   void progressChanged();
   void routeChanged();
   void runningChanged();
@@ -83,6 +89,7 @@ private:
   struct EdgeInfo {
     double length;
     double length_before;
+    double bearing{0};
     size_t maneuver{0};
   };
 
@@ -90,6 +97,7 @@ private:
   struct PointInfo {
     S2Point point;
     double accuracy;
+    double bearing{0};
     size_t maneuver{0};
     double length_on_route{-1};
 
@@ -120,11 +128,13 @@ private:
   double m_distance_to_route_m{-1};
   size_t m_offroad_count{0};
 
+  double  m_bearing;
   QString m_destDist;
   QString m_destEta;
   QString m_destTime;
   QString m_manDist;
   QString m_manTime;
+  bool    m_onRoad{false};
   QString m_totalDist;
   QString m_totalTime;
 

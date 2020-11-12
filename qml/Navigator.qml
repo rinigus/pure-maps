@@ -28,7 +28,7 @@ Item {
     property string destDist:  navigatorBase.destDist
     property string destEta:   navigatorBase.destEta
     property string destTime:  navigatorBase.destTime
-    property var    direction: undefined
+    property var    direction: navigatorBase.onRoad ? navigatorBase.bearing : undefined
     property bool   hasRoute:  route.length > 0
     property string icon:      ""
     property var    maneuvers: []
@@ -137,7 +137,7 @@ Item {
         // Reset all navigation status properties.
         //destDist  = "";
         //destTime  = "";
-        direction = undefined;
+        //direction = undefined;
         icon      = "";
         //manDist   = "";
         //manTime   = "";
@@ -291,8 +291,8 @@ Item {
         //destDist  = data.dest_dist  || "";
         //destEta   = data.dest_eta   || "";
         //destTime  = data.dest_time  || "";
-        if (data.direction !== undefined && data.direction !== null) direction = data.direction;
-        else direction = undefined;
+        //if (data.direction !== undefined && data.direction !== null) direction = data.direction;
+        //else direction = undefined;
         icon      = data.icon       || "";
         //manDist   = data.man_dist   || "";
         //manTime   = data.man_time   || "";
