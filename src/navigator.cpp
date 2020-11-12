@@ -143,20 +143,6 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       QTime time = QTime::currentTime().addSecs(m_route_duration - m_last_duration_along_route);
       SET(destEta, QLocale::system().toString(time, QLocale::ShortFormat));
 
-      if (best.maneuver+1 < m_maneuvers.size())
-        {
-          const Maneuver &next = m_maneuvers[best.maneuver+1];
-          const double mdist = S2Earth::RadiansToMeters(next.length_on_route - best.length_on_route);
-          const double mtime = next.duration_on_route - m_last_duration_along_route;
-          SET(manDist, distanceToStr(mdist));
-          SET(manTime, timeToStr(mtime));
-          SET(icon, next.icon);
-          SET(narrative, next.narrative);
-          if (m_running && (mdist < 500 || mtime < 300)) { SET(sign, next.sign); }
-          else SET(sign, QVariantMap());
-          SET(street, next.street);
-        }
-
       // handle reference points
       if (!ref || // add the first reference point
           (best.length_on_route - m_points.back().length_on_route) / best.accuracy > REF_POINT_ADD_MARGIN)
@@ -169,6 +155,20 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       // emit signals
       emit progressChanged();
       SET(onRoad, m_points.size() >= NUMBER_OF_REF_POINTS);
+
+      if (m_onRoute && best.maneuver+1 < m_maneuvers.size())
+        {
+          const Maneuver &next = m_maneuvers[best.maneuver+1];
+          const double mdist = S2Earth::RadiansToMeters(next.length_on_route - best.length_on_route);
+          const double mtime = next.duration_on_route - m_last_duration_along_route;
+          SET(manDist, distanceToStr(mdist));
+          SET(manTime, timeToStr(mtime));
+          SET(icon, next.icon);
+          SET(narrative, next.narrative);
+          if (m_running && (mdist < 500 || mtime < 300)) { SET(sign, next.sign); }
+          else SET(sign, QVariantMap());
+          SET(street, next.street);
+        }
 
       qDebug() << "ON ROUTE:" << m_route_length_m - S2Earth::RadiansToMeters(std::max(0.0,best.length_on_route)) << "km left" << m_points.size();
     }
@@ -187,6 +187,13 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       if (m_offroad_count > MAX_OFFROAD_COUNTS)
         {
           m_points.clear();
+
+          SET(icon, QLatin1String("flag")); // off route icon
+          SET(narrative, QCoreApplication::translate("", "Away from route or wrong direction"));
+          SET(manDist, distanceToStr(m_distance_to_route_m));
+          SET(manTime, QLatin1String());
+          SET(sign, QVariantMap());
+          SET(street, QLatin1String());
         }
 
       SET(onRoad, false);
