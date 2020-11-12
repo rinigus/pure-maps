@@ -22,12 +22,16 @@ class Navigator : public QObject
   Q_PROPERTY(QString destDist READ destDist NOTIFY destDistChanged)
   Q_PROPERTY(QString destEta READ destEta NOTIFY destEtaChanged)
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
+  Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
   Q_PROPERTY(QString manTime READ manTime NOTIFY manTimeChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
+  Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
   Q_PROPERTY(bool    onRoad READ onRoad NOTIFY onRoadChanged)
   Q_PROPERTY(double  progress READ progress NOTIFY progressChanged)
   Q_PROPERTY(bool    running READ running WRITE setRunning NOTIFY runningChanged)
+  Q_PROPERTY(QVariantMap sign READ sign NOTIFY signChanged)
+  Q_PROPERTY(QString street READ street NOTIFY streetChanged)
   Q_PROPERTY(QString totalDist READ totalDist NOTIFY totalDistChanged)
   Q_PROPERTY(QString totalTime READ totalTime NOTIFY totalTimeChanged)
   Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
@@ -42,11 +46,15 @@ public:
   QString destDist() const { return m_destDist; }
   QString destEta() const { return m_destEta; }
   QString destTime() const { return m_destTime; }
+  QString icon() const { return m_icon; }
   QString manDist() const { return m_manDist; }
   QString manTime() const { return m_manTime; }
   QString mode() const { return m_mode; }
+  QString narrative() const { return m_narrative; }
   bool    onRoad() const { return m_onRoad; }
   double  progress() const;
+  QVariantMap sign() const { return m_sign; }
+  QString street() const { return m_street; }
   QString totalDist() const { return m_totalDist; }
   QString totalTime() const { return m_totalTime; }
 
@@ -69,13 +77,17 @@ signals:
   void destDistChanged();
   void destEtaChanged();
   void destTimeChanged();
+  void iconChanged();
   void manDistChanged();
   void manTimeChanged();
   void modeChanged();
+  void narrativeChanged();
   void onRoadChanged();
   void progressChanged();
   void routeChanged();
   void runningChanged();
+  void signChanged();
+  void streetChanged();
   void totalDistChanged();
   void totalTimeChanged();
   void unitsChanged();
@@ -132,9 +144,13 @@ private:
   QString m_destDist;
   QString m_destEta;
   QString m_destTime;
+  QString m_icon;
   QString m_manDist;
   QString m_manTime;
+  QString m_narrative;
   bool    m_onRoad{false};
+  QVariantMap m_sign;
+  QString m_street;
   QString m_totalDist;
   QString m_totalTime;
 

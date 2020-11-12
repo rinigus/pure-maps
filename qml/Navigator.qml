@@ -30,11 +30,11 @@ Item {
     property string destTime:  navigatorBase.destTime
     property var    direction: navigatorBase.onRoad ? navigatorBase.bearing : undefined
     property bool   hasRoute:  route.length > 0
-    property string icon:      ""
+    property string icon:      navigatorBase.icon
     property var    maneuvers: []
     property string manDist:   navigatorBase.manDist
     property string manTime:   navigatorBase.manTime
-    property string narrative: ""
+    property string narrative: navigatorBase.narrative
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
     property real   progress:  navigatorBase.progress
     property string provider
@@ -43,8 +43,8 @@ Item {
     property int    rerouteTotalCalls: 0
     property bool   rerouting: false
     property var    route:     navigatorBase.route
-    property var    sign:      undefined
-    property var    street:    undefined
+    property var    sign:      navigatorBase.sign
+    property var    street:    navigatorBase.street
     property string totalDist: navigatorBase.totalDist
     property string totalTime: navigatorBase.totalTime
     property string transportMode: navigatorBase.mode
@@ -138,13 +138,13 @@ Item {
         //destDist  = "";
         //destTime  = "";
         //direction = undefined;
-        icon      = "";
+        //icon      = "";
         //manDist   = "";
         //manTime   = "";
-        narrative = "";
+        //narrative = "";
         //progress  = 0;
-        sign      = undefined;
-        street    = undefined;
+        //sign      = undefined;
+        //street    = undefined;
         //totalDist = "";
         //totalTime = "";
         voiceUri  = "";
@@ -293,15 +293,15 @@ Item {
         //destTime  = data.dest_time  || "";
         //if (data.direction !== undefined && data.direction !== null) direction = data.direction;
         //else direction = undefined;
-        icon      = data.icon       || "";
+        //icon      = data.icon       || "";
         //manDist   = data.man_dist   || "";
         //manTime   = data.man_time   || "";
-        narrative = data.narrative  || "";
+        //narrative = data.narrative  || "";
         //progress  = data.progress   || 0;
         // reroute checked in narration timer and clashes with the method name.
         // no need to set it as a property
-        sign      = data.sign       || undefined;
-        street    = data.street     || undefined;
+        //sign      = data.sign       || undefined;
+        //street    = data.street     || undefined;
         //totalDist = data.total_dist || "";
         //totalTime = data.total_time || "";
         voiceUri  = data.voice_uri  || "";

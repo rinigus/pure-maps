@@ -135,7 +135,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       m_last_duration_along_route = man.duration_on_route;
       if (man.length > 0)
         m_last_duration_along_route +=
-            (man.length - (man.length_on_route-best.length_on_route)) / man.length * man.duration;
+            (best.length_on_route - man.length_on_route) / man.length * man.duration;
 
       SET(destDist, distanceToStr(m_route_length_m - m_last_distance_along_route_m));
       SET(destTime, timeToStr(m_route_duration - m_last_duration_along_route));
@@ -146,8 +146,15 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       if (best.maneuver+1 < m_maneuvers.size())
         {
           const Maneuver &next = m_maneuvers[best.maneuver+1];
-          SET(manDist, distanceToStr(S2Earth::RadiansToMeters(next.length_on_route - best.length_on_route)));
-          SET(manTime, timeToStr(man.duration_on_route - m_last_duration_along_route));
+          const double mdist = S2Earth::RadiansToMeters(next.length_on_route - best.length_on_route);
+          const double mtime = next.duration_on_route - m_last_duration_along_route;
+          SET(manDist, distanceToStr(mdist));
+          SET(manTime, timeToStr(mtime));
+          SET(icon, next.icon);
+          SET(narrative, next.narrative);
+          if (m_running && (mdist < 500 || mtime < 300)) { SET(sign, next.sign); }
+          else SET(sign, QVariantMap());
+          SET(street, next.street);
         }
 
       // handle reference points
@@ -180,8 +187,9 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       if (m_offroad_count > MAX_OFFROAD_COUNTS)
         {
           m_points.clear();
-          SET(onRoad, false);
         }
+
+      SET(onRoad, false);
     }
 
   qDebug() << "\n";
