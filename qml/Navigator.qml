@@ -263,7 +263,7 @@ Item {
 
     function setRoute(route, amend) {
         // Set new route
-        console.log(JSON.stringify(route))
+        // console.log(JSON.stringify(route))
         navigatorBase.setRoute(route);
         provider = route.provider;
         //navigator.route = route;

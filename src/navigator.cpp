@@ -48,7 +48,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
 {
   if (!m_index || !valid || horizontalAccuracy > 100) return;
 
-  qDebug() << c << horizontalAccuracy << valid;
+  //qDebug() << c << horizontalAccuracy << valid;
 
   double accuracy_rad = S2Earth::MetersToRadians(horizontalAccuracy);
   S1ChordAngle accuracy = S1ChordAngle::Radians(accuracy_rad);
@@ -129,8 +129,6 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       m_distance_to_route_m = 0;
       m_offroad_count = 0;
 
-      SET(bearing, best.bearing);
-
       const Maneuver &man = m_maneuvers[best.maneuver];
       m_last_duration_along_route = man.duration_on_route;
       if (man.length > 0)
@@ -155,6 +153,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       // emit signals
       emit progressChanged();
       SET(onRoute, m_points.size() >= NUMBER_OF_REF_POINTS);
+      if (m_onRoute) SET(bearing, best.bearing);
 
       if (m_onRoute && best.maneuver+1 < m_maneuvers.size())
         {
@@ -169,37 +168,50 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           else SET(sign, QVariantMap());
           SET(street, next.street);
         }
+      else if (!m_onRoute)
+        {
+          SET(manDist, "-");
+          SET(narrative, QCoreApplication::translate("", "Preparing to start navigation"));
+        }
 
-      qDebug() << "ON ROUTE:" << m_route_length_m - S2Earth::RadiansToMeters(std::max(0.0,best.length_on_route)) << "km left" << m_points.size();
+      //qDebug() << "ON ROUTE:" << m_route_length_m - S2Earth::RadiansToMeters(std::max(0.0,best.length_on_route)) << "km left" << m_points.size();
     }
   else
     {
-      S2ClosestEdgeQuery query(m_index.get());
-      query.mutable_options()->set_max_results(1);
-      m_distance_to_route_m = S2Earth::RadiansToMeters(query.GetDistance(&target).radians());
       if (m_offroad_count <= MAX_OFFROAD_COUNTS) m_offroad_count++;
-
-//      qDebug() << "OFF ROUTE:" << m_distance_to_route_m << "m to route;"
-//               << m_route_length_m - m_last_distance_along_route_m << "m left"
-//               << m_offroad_count;
 
       // wipe history used to track direction on route if we are off the route
       if (m_offroad_count > MAX_OFFROAD_COUNTS)
         {
           m_points.clear();
 
-          SET(icon, QLatin1String("flag")); // off route icon
-          SET(narrative, QCoreApplication::translate("", "Away from route or wrong direction"));
-          SET(manDist, distanceToStr(m_distance_to_route_m));
+          if ((bool)best) // point on route but wrong direction
+            {
+              m_distance_to_route_m = 0; // within the accuracy
+
+              SET(icon, QLatin1String("uturn")); // turn around
+              SET(narrative, QCoreApplication::translate("", "Moving in a wrong direction"));
+              SET(manDist, "-");
+            }
+          else
+            {
+              S2ClosestEdgeQuery query(m_index.get());
+              query.mutable_options()->set_max_results(1);
+              m_distance_to_route_m = S2Earth::RadiansToMeters(query.GetDistance(&target).radians());
+
+              SET(icon, QLatin1String("flag")); // away from route icon
+              SET(narrative, QCoreApplication::translate("", "Away from route"));
+              SET(manDist, distanceToStr(m_distance_to_route_m));
+            }
+
           SET(manTime, QLatin1String());
           SET(sign, QVariantMap());
           SET(street, QLatin1String());
+          SET(onRoute, false);
         }
-
-      SET(onRoute, false);
     }
 
-  qDebug() << "\n";
+  //qDebug() << "\n";
 }
 
 
@@ -230,7 +242,6 @@ void Navigator::setRoute(QVariantMap m)
 
   // set global vars
   m_mode = m.value("mode", "car").toString();
-  qDebug() << "Mode" << m_mode;
 
   // route
   m_route.reserve(x.length());
@@ -304,10 +315,10 @@ void Navigator::setRoute(QVariantMap m)
       length_on_route += man_length;
       duration_on_route += man.duration;
 
-      qDebug() << "Maneuver" << mind << "Length" << S2Earth::RadiansToKm(man.length) << "m  Duration"
-               << man.duration << "s  Speed" << S2Earth::RadiansToKm(man.length)/std::max(man.duration, 0.1)*3600 << "km/h" << "\n"
-               << man.duration_on_route << "s / " << distanceToStr(S2Earth::RadiansToMeters(man.length_on_route))
-               << man.icon << man.narrative << man.sign << man.street << "\n";
+//      qDebug() << "Maneuver" << mind << "Length" << S2Earth::RadiansToKm(man.length) << "m  Duration"
+//               << man.duration << "s  Speed" << S2Earth::RadiansToKm(man.length)/std::max(man.duration, 0.1)*3600 << "km/h" << "\n"
+//               << man.duration_on_route << "s / " << distanceToStr(S2Earth::RadiansToMeters(man.length_on_route))
+//               << man.icon << man.narrative << man.sign << man.street << "\n";
     }
 
   m_route_duration = duration_on_route;
@@ -325,8 +336,10 @@ void Navigator::setUnits(QString u)
 
 double Navigator::progress() const
 {
-  qDebug() << "P" << m_distance_traveled_m << m_route_length_m << m_last_distance_along_route_m
-           << m_distance_traveled_m / std::max(1.0, m_distance_traveled_m + m_route_length_m - m_last_distance_along_route_m);
+//  qDebug() << "P" << m_distance_traveled_m << m_route_length_m << m_last_distance_along_route_m
+//           << m_distance_traveled_m / std::max(1.0, m_distance_traveled_m + m_route_length_m - m_last_distance_along_route_m);
+  if (!m_running)
+    return m_last_distance_along_route_m  / std::max(1.0, m_route_length_m);
   return m_distance_traveled_m / std::max(1.0, m_distance_traveled_m + m_route_length_m - m_last_distance_along_route_m);
 }
 
