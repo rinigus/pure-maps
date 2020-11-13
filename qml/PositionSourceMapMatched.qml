@@ -109,7 +109,7 @@ Item {
             }
         }
 
-        onPositionChanged: positionUpdate(position)
+        onPositionChanged: if (testingCoordinate==null) positionUpdate(position)
 
         onActiveChanged: {
             if (!gps.active) scoutbus.stop();
@@ -255,7 +255,7 @@ Item {
     Timer {
         id: testingTimer
         interval: Math.max(gps.updateInterval, 1000)
-        running: false
+        running: testingCoordinate!=null
         repeat: true
         onTriggered: {
             var p= {};
@@ -278,14 +278,6 @@ Item {
             _timingOverallCounter = 0;
             _timingOverallSum = 0.0;
             _timingShot = false;
-        }
-    }
-
-    onTestingCoordinateChanged: {
-        if (testingCoordinate==null) {
-            testingTimer.running = false;
-        } else {
-            testingTimer.running = true;
         }
     }
 }
