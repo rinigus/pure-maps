@@ -27,7 +27,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString manTime READ manTime NOTIFY manTimeChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
-  Q_PROPERTY(bool    onRoad READ onRoad NOTIFY onRoadChanged)
+  Q_PROPERTY(bool    onRoute READ onRoute NOTIFY onRouteChanged)
   Q_PROPERTY(double  progress READ progress NOTIFY progressChanged)
   Q_PROPERTY(bool    running READ running WRITE setRunning NOTIFY runningChanged)
   Q_PROPERTY(QVariantMap sign READ sign NOTIFY signChanged)
@@ -51,7 +51,7 @@ public:
   QString manTime() const { return m_manTime; }
   QString mode() const { return m_mode; }
   QString narrative() const { return m_narrative; }
-  bool    onRoad() const { return m_onRoad; }
+  bool    onRoute() const { return m_onRoute; }
   double  progress() const;
   QVariantMap sign() const { return m_sign; }
   QString street() const { return m_street; }
@@ -82,7 +82,7 @@ signals:
   void manTimeChanged();
   void modeChanged();
   void narrativeChanged();
-  void onRoadChanged();
+  void onRouteChanged();
   void progressChanged();
   void routeChanged();
   void runningChanged();
@@ -148,7 +148,7 @@ private:
   QString m_manDist;
   QString m_manTime;
   QString m_narrative;
-  bool    m_onRoad{false};
+  bool    m_onRoute{false};
   QVariantMap m_sign;
   QString m_street;
   QString m_totalDist;

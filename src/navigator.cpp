@@ -40,7 +40,7 @@ void Navigator::clearRoute()
   SET(destDist, "");
   SET(destEta, "");
   SET(destTime, "");
-  SET(onRoad, false);
+  SET(onRoute, false);
 }
 
 
@@ -50,7 +50,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
 
   qDebug() << c << horizontalAccuracy << valid;
 
-  double accuracy_rad = S2Earth::MetersToRadians(20); //horizontalAccuracy));
+  double accuracy_rad = S2Earth::MetersToRadians(horizontalAccuracy);
   S1ChordAngle accuracy = S1ChordAngle::Radians(accuracy_rad);
   S2Point point = S2LatLng::FromDegrees(c.latitude(), c.longitude()).ToPoint();
 
@@ -154,7 +154,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
 
       // emit signals
       emit progressChanged();
-      SET(onRoad, m_points.size() >= NUMBER_OF_REF_POINTS);
+      SET(onRoute, m_points.size() >= NUMBER_OF_REF_POINTS);
 
       if (m_onRoute && best.maneuver+1 < m_maneuvers.size())
         {
@@ -196,7 +196,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(street, QLatin1String());
         }
 
-      SET(onRoad, false);
+      SET(onRoute, false);
     }
 
   qDebug() << "\n";

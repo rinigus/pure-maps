@@ -28,7 +28,7 @@ Item {
     property string destDist:  navigatorBase.destDist
     property string destEta:   navigatorBase.destEta
     property string destTime:  navigatorBase.destTime
-    property var    direction: navigatorBase.onRoad ? navigatorBase.bearing : undefined
+    property var    direction: navigatorBase.onRoute ? navigatorBase.bearing : undefined
     property bool   hasRoute:  route.length > 0
     property string icon:      navigatorBase.icon
     property var    maneuvers: []
