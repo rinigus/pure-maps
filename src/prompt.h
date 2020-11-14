@@ -18,6 +18,7 @@ public:
   QString text;
   int importance;
   bool flagged{false};
+  bool requested{false};
 };
 
 #endif // PROMPT_H

@@ -53,7 +53,10 @@ void Navigator::resetPrompts()
 
   m_last_prompt = 0;
   for (auto &p: m_prompts)
-    p.flagged = false;
+    {
+      p.flagged = false;
+      p.requested = false;
+    }
   qDebug() << "Prompts reset";
 }
 
@@ -202,6 +205,20 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
                   m_last_prompt = i;
                 }
             }
+
+          // prepare prompts for near future
+          for (size_t i=m_last_prompt+1;
+               m_running && i < m_prompts.size() &&
+               m_prompts[i].time < m_last_duration_along_route + 300; ++i)
+            {
+              Prompt &p = m_prompts[i];
+              if (!p.requested)
+                {
+                  p.requested = true;
+                  emit promptPrepare(p.text);
+                }
+            }
+
         }
       else if (!m_onRoute)
         {
