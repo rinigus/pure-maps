@@ -24,6 +24,9 @@ public:
   bool passive;
   QVariantMap sign;
   QString street;
+  QString verbal_alert;
+  QString verbal_post;
+  QString verbal_pre;
 };
 
 #endif // MANEUVER_H

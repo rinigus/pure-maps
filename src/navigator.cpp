@@ -24,6 +24,7 @@
 
 Navigator::Navigator(QObject *parent) : QObject(parent)
 {
+  connect(this, &Navigator::onRouteChanged, this, &Navigator::resetPrompts);
 }
 
 
@@ -45,6 +46,16 @@ void Navigator::clearRoute()
   SET(onRoute, false);
 }
 
+void Navigator::resetPrompts()
+{
+  // reset flagging of the prompts when returning back to route
+  if (!m_onRoute) return;
+
+  m_last_prompt = 0;
+  for (auto &p: m_prompts)
+    p.flagged = false;
+  qDebug() << "Prompts reset";
+}
 
 void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid)
 {
@@ -150,8 +161,8 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
            (m_points.size() > 0 && m_points.front().accuracy/2 > best.accuracy) )
         m_points.pop_front();
 
-      // emit signals
       emit progressChanged();
+
       SET(onRoute, m_points.size() >= NUMBER_OF_REF_POINTS);
       if (m_onRoute) SET(bearing, best.bearing);
 
@@ -167,6 +178,30 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           if (m_running && (mdist < 500 || mtime < 300)) { SET(sign, next.sign); }
           else SET(sign, QVariantMap());
           SET(street, next.street);
+
+          // check for voice prompt to play
+          for (size_t i=m_last_prompt; m_running && i < m_prompts.size(); ++i)
+            {
+              Prompt &p = m_prompts[i];
+              if (!p.flagged &&
+                  (p.dist_m <= m_last_distance_along_route_m || p.time <= m_last_duration_along_route))
+                {
+                  if (p.dist_m+p.length() < m_last_distance_along_route_m &&
+                      p.time+p.duration() < m_last_duration_along_route)
+                    {
+                      qDebug() << "Skipping prompt as it is too late:"
+                               << p.dist_m << m_last_distance_along_route_m << p.time
+                               << p.text;
+                    }
+                  else
+                    {
+                      emit promptPlay(p.text);
+                    }
+
+                  p.flagged = true;
+                  m_last_prompt = i;
+                }
+            }
         }
       else if (!m_onRoute)
         {
@@ -289,14 +324,22 @@ void Navigator::setRoute(QVariantMap m)
 
   m_route_length_m = S2Earth::RadiansToMeters(route_length);
 
-  // fill maneuvers
+  // fill maneuvers and voice prompts
   QVariantList man = m.value("maneuvers").toList();
   int edge_ind = 0;
   double length_on_route = 0;
   double duration_on_route = 0;
+  double pre_duration = 0;
+  double pre_length = 0;
+  double pre_speed = 0;
+  std::vector<Prompt> prompts;
   for (int mind = 0; mind < man.length(); ++mind)
     {
       QVariantMap mc = man[mind].toMap();
+      // skip passive maneuvers
+      if (mc.value("passive", false).toBool()) continue;
+
+      const size_t new_man_ind = m_maneuvers.size();
       S2Point end;
       bool end_available = false;
       if (mind < man.length()-1)
@@ -313,22 +356,116 @@ void Navigator::setRoute(QVariantMap m)
         {
           EdgeInfo &edge = m_edges[edge_ind];
           man_length += edge.length;
-          edge.maneuver = mind;
+          edge.maneuver = new_man_ind;
         }
 
-      Maneuver man(mc);
-      man.duration_on_route = duration_on_route;
-      man.length = man_length;
-      man.length_on_route = length_on_route;
-      m_maneuvers.push_back(man);
+      Maneuver m(mc);
+      m.duration_on_route = duration_on_route;
+      m.length = man_length;
+      m.length_on_route = length_on_route;
+      m_maneuvers.push_back(m);
       length_on_route += man_length;
-      duration_on_route += man.duration;
+      duration_on_route += m.duration;
 
-//      qDebug() << "Maneuver" << mind << "Length" << S2Earth::RadiansToKm(man.length) << "m  Duration"
-//               << man.duration << "s  Speed" << S2Earth::RadiansToKm(man.length)/std::max(man.duration, 0.1)*3600 << "km/h" << "\n"
-//               << man.duration_on_route << "s / " << distanceToStr(S2Earth::RadiansToMeters(man.length_on_route))
-//               << man.icon << man.narrative << man.sign << man.street << "\n";
+//      qDebug() << mc;
+//      qDebug() << "Maneuver" << new_man_ind << "Length" << S2Earth::RadiansToKm(m.length) << "km  Duration"
+//               << m.duration << "s  Speed" << S2Earth::RadiansToKm(m.length)/std::max(m.duration, 0.1)*3600 << "km/h" << "\n"
+//               << m.duration_on_route << "s / " << S2Earth::RadiansToMeters(m.length_on_route) << "m"
+//               << m.icon << m.narrative << m.sign << m.street << "\n";
+
+      // fill prompts
+      double post_duration = std::max(1.0, m.duration);
+      double post_length = S2Earth::RadiansToMeters(m.length);
+      double post_speed = post_length / post_duration;
+
+      // Add advance alert, e.g. "In 1 km, turn right onto Broadway."
+      if (!m.verbal_alert.isEmpty() && pre_duration > 1800 && pre_length > 30)
+        {
+          Prompt p = makePrompt(m,
+                                QCoreApplication::translate("", "In %2, %1").arg(m.verbal_alert),
+                                std::min(500.0, pre_length-30),
+                                std::min(90.0, pre_duration-3),
+                                pre_speed, 1);
+          prompts.push_back(p);
+        }
+
+      // Add advance alert, e.g. "In 100 m, turn right onto Broadway."
+      if (!m.verbal_alert.isEmpty() && pre_duration > 20)
+        {
+          Prompt p = makePrompt(m,
+                                QCoreApplication::translate("", "In %2, %1").arg(m.verbal_alert),
+                                std::min(100.0, pre_length-30),
+                                std::min(30.0, pre_duration-3),
+                                pre_speed, 4);
+          prompts.push_back(p);
+        }
+
+      // Add pre-maneuver prompt, e.g. "Turn right onto Broadway."
+      if (!m.verbal_pre.isEmpty() && pre_duration > 2)
+        {
+          Prompt p = makePrompt(m,
+                                m.verbal_pre,
+                                std::min(50.0, pre_length-10),
+                                std::min(5.0, pre_duration-1),
+                                pre_speed, 3);
+          prompts.push_back(p);
+        }
+
+      // Add post-maneuver prompt, e.g. "Continue for 100 m."
+      if (!m.verbal_post.isEmpty() && post_duration > 20)
+        {
+          Prompt p = makePrompt(m,
+                                m.verbal_post,
+                                std::min(50.0, post_length-30),
+                                std::min(5.0, post_duration-3),
+                                post_speed, 2, true);
+          prompts.push_back(p);
+        }
+
+      pre_duration = post_duration;
+      pre_length = post_length;
+      pre_speed = post_speed;
     }
+
+  // remove overlapping prompts
+  for (size_t i=0; prompts.size() > 1 && i < prompts.size()-1; ++i)
+    {
+      if (prompts[i].flagged) continue;
+
+      size_t j = i+1;
+      bool done = false;
+      Prompt &p0 = prompts[i];
+      double dist_0 = p0.dist_m + p0.length();
+      double time_0 = p0.time + p0.duration();
+      while (!done)
+        {
+          for (; j < prompts.size() && prompts[j].flagged; ++j);
+          if (j >= prompts.size()) break;
+          Prompt &p1 = prompts[j];
+          bool overlap = (dist_0 >= p1.dist_m || time_0 >= p1.time);
+          if (overlap)
+            {
+              if (p1.importance > p0.importance)
+                {
+                  p0.flagged = true;
+                  done = true;
+                }
+              else
+                p1.flagged = true;
+            }
+          else
+            done = true;
+        }
+    }
+
+//  for (auto p: prompts)
+//    qDebug() << p.dist_m << p.dist_m + p.length() << p.time << p.time+p.duration()
+//             << p.importance << p.flagged << p.text;
+
+  m_prompts.clear();
+  for (auto p: prompts)
+    if (!p.flagged)
+      m_prompts.push_back(p);
 
   m_route_duration = duration_on_route;
 
@@ -363,10 +500,15 @@ void Navigator::setRunning(bool r)
   emit runningChanged();
 }
 
-static QString n2Str(double n, int roundDig=2)
+static double roundToDigits(double n, int roundDig)
 {
   double rd = std::pow(10, roundDig);
-  return QString("%L1").arg( round(n/rd) * rd );
+  return round(n/rd) * rd;
+}
+
+static QString n2Str(double n, int roundDig=2)
+{
+  return QString("%L1").arg( roundToDigits(n, roundDig) );
 }
 
 static QString distanceToStr_american(double feet, bool condence)
@@ -420,4 +562,43 @@ QString Navigator::timeToStr(double seconds) const
   int minutes = round((seconds - hours*3600)/60);
   return hours > 0 ? QCoreApplication::translate("", "%1 h %2 min").arg(hours).arg(minutes) :
                      QCoreApplication::translate("", "%2 min").arg(minutes);
+}
+
+double Navigator::distanceRounded(double meters) const
+{
+  const double mile = 1609.34;
+  const double yard = 0.9144;
+  const double foot = 0.3048;
+
+  if (m_units == QLatin1String("american"))
+    {
+      if (meters >= mile) return roundToDigits(meters/mile, 0) * mile;
+      int n = std::min(1, (int)ceil(log10(meters/foot)));
+      return roundToDigits(meters/foot, n) * foot;
+    }
+  if (m_units == QLatin1String("british"))
+    {
+      if (meters >= mile) return roundToDigits(meters/mile, 0) * mile;
+      int n = std::min(1, (int)ceil(log10(meters/yard)));
+      return roundToDigits(meters/yard, n) * yard;
+    }
+
+  if (meters >= 1000) return roundToDigits(meters/1000, 0) * 1000;
+  int n = std::min(1, (int)ceil(log10(meters)));
+  return roundToDigits(meters, n);
+}
+
+Prompt Navigator::makePrompt(const Maneuver &m, QString text, double dist_offset_m, double time_offset,
+                             double speed_m, int importance, bool after) const
+{
+  double distance = std::max(dist_offset_m, time_offset*speed_m);
+  distance = distanceRounded(distance);
+  Prompt p;
+  p.dist_m = S2Earth::RadiansToMeters(m.length_on_route) + (after ? 1 : -1)*distance;
+  p.importance = importance;
+  p.speed_m = speed_m;
+  p.time = m.duration_on_route + (after ? 1 : -1)*time_offset;
+  if (text.contains('%')) p.text = text.arg( distanceToStr(distance, false) );
+  else p.text = text;
+  return p;
 }

@@ -12,4 +12,9 @@ Maneuver::Maneuver(const QVariantMap &map)
   narrative = map.value("narrative").toString();
   sign = map.value("sign").toMap();
   street = map.value("street").toString();
+  verbal_alert = map.value("verbal_alert").toString();
+  verbal_post = map.value("verbal_post").toString();
+  verbal_pre = map.value("verbal_pre").toString();
+  if (verbal_alert.isEmpty()) verbal_alert = narrative;
+  if (verbal_pre.isEmpty()) verbal_pre = narrative;
 }

@@ -14,6 +14,7 @@
 #include <s2/s2polygon.h>
 
 #include "maneuver.h"
+#include "prompt.h"
 
 class Navigator : public QObject
 {
@@ -93,10 +94,16 @@ signals:
   void totalDistChanged();
   void totalTimeChanged();
   void unitsChanged();
+  void promptPrepare(QString text);
+  void promptPlay(QString text);
 
 protected:
   QString distanceToStr(double meters, bool condence=true) const;
   QString timeToStr(double seconds) const;
+  double  distanceRounded(double meters) const;
+  Prompt  makePrompt(const Maneuver &m, QString text, double dist_offset_m, double time_offset,
+                     double speed_m, int importance, bool after=false) const;
+  void resetPrompts();
 
 private:
   // Edges of the route
@@ -127,6 +134,7 @@ private:
   QString m_mode{"car"};
   std::deque<PointInfo> m_points;
   std::unique_ptr<S2Polyline> m_polyline;
+  std::vector<Prompt> m_prompts;
   QList<QGeoCoordinate> m_route;
 
   S2Point m_last_point;
@@ -139,6 +147,7 @@ private:
   double m_distance_traveled_m{0};
   double m_last_distance_along_route_m{-1};
   double m_last_duration_along_route{-1};
+  size_t m_last_prompt{0};
   double m_distance_to_route_m{-1};
   size_t m_offroad_count{0};
   QTime  m_reroute_request;

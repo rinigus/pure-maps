@@ -57,6 +57,8 @@ Item {
         units: app.conf.units
         running: app.mode === modes.navigate && route.length > 0
         onRerouteRequest: rerouteMaybe()
+        onPromptPlay: console.log("Play: " + text)
+        onPromptPrepare: console.log("Request: " + text)
     }
 
     Connections {
@@ -86,33 +88,33 @@ Item {
         }
 
         onTriggered: {
-            // Query maneuver narrative from Python and update status.
-            if (_callRunning) return;
-            var coord = app.position.coordinate;
-            var now = Date.now() / 1000;
-            // avoid updating with invalid coordinate or too soon unless we don't have total data
-            if (app.navigator.totalDist) {
-                if (now - timePrev < 60 &&
-                        ( (narrationTimer.coordPrev !== QtPositioning.coordinate() && coord.distanceTo(narrationTimer.coordPrev) < 10) ||
-                         coord === QtPositioning.coordinate() )) return;
-            }
-            _callRunning = true;
-            var accuracy = app.position.horizontalAccuracyValid ?
-                        app.position.horizontalAccuracy : null;
-            var args = [coord.longitude, coord.latitude, accuracy, app.mode === modes.navigate];
-            py.call("poor.app.narrative.get_display", args, function(status) {
-                navigator.updateStatus(status);
-                if (navigator.voiceUri && app.conf.voiceNavigation) {
-                    sound.source = navigator.voiceUri;
-                    sound.play();
-                }
-                //if (status.reroute) navigator.rerouteMaybe();
+//            // Query maneuver narrative from Python and update status.
+//            if (_callRunning) return;
+//            var coord = app.position.coordinate;
+//            var now = Date.now() / 1000;
+//            // avoid updating with invalid coordinate or too soon unless we don't have total data
+//            if (app.navigator.totalDist) {
+//                if (now - timePrev < 60 &&
+//                        ( (narrationTimer.coordPrev !== QtPositioning.coordinate() && coord.distanceTo(narrationTimer.coordPrev) < 10) ||
+//                         coord === QtPositioning.coordinate() )) return;
+//            }
+//            _callRunning = true;
+//            var accuracy = app.position.horizontalAccuracyValid ?
+//                        app.position.horizontalAccuracy : null;
+//            var args = [coord.longitude, coord.latitude, accuracy, app.mode === modes.navigate];
+//            py.call("poor.app.narrative.get_display", args, function(status) {
+//                navigator.updateStatus(status);
+//                if (navigator.voiceUri && app.conf.voiceNavigation) {
+//                    sound.source = navigator.voiceUri;
+//                    sound.play();
+//                }
+//                //if (status.reroute) navigator.rerouteMaybe();
 
-                narrationTimer.coordPrev.longitude = coord.longitude;
-                narrationTimer.coordPrev.latitude = coord.latitude;
-                narrationTimer.timePrev = now;
-                _callRunning = false;
-            });
+//                narrationTimer.coordPrev.longitude = coord.longitude;
+//                narrationTimer.coordPrev.latitude = coord.latitude;
+//                narrationTimer.timePrev = now;
+//                _callRunning = false;
+//            });
         }
     }
 
