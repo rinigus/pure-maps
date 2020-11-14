@@ -56,6 +56,7 @@ Item {
         id: navigatorBase
         units: app.conf.units
         running: app.mode === modes.navigate && route.length > 0
+        onRerouteRequest: rerouteMaybe()
     }
 
     Connections {
@@ -105,7 +106,7 @@ Item {
                     sound.source = navigator.voiceUri;
                     sound.play();
                 }
-                if (status.reroute) navigator.rerouteMaybe();
+                //if (status.reroute) navigator.rerouteMaybe();
 
                 narrationTimer.coordPrev.longitude = coord.longitude;
                 narrationTimer.coordPrev.latitude = coord.latitude;

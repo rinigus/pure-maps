@@ -16,6 +16,8 @@
 #define REF_POINT_ADD_MARGIN    2  // Add next reference point along the route when it is that far away from the last one (relative to accuracy)
 #define NUMBER_OF_REF_POINTS    2  // how many points to keep as a reference
 #define MAX_OFFROAD_COUNTS      3  // times position was updated and point was off the route (counted in a sequence)
+#define MAX_OFFROAD_COUNTS_TO_REROUTE 10 // request reroute when driving along route but in opposite direction. should be larger than MAX_OFFROAD_COUNTS
+#define REROUTE_REQUEST_TIME_INTERVAL_MS 5000 // min time elapsed since last rerouting request in milliseconds
 
 // use var without m_ prefix
 #define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; emit var##Changed(); } }
@@ -47,8 +49,6 @@ void Navigator::clearRoute()
 void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid)
 {
   if (!m_index || !valid || horizontalAccuracy > 100) return;
-
-  //qDebug() << c << horizontalAccuracy << valid;
 
   double accuracy_rad = S2Earth::MetersToRadians(horizontalAccuracy);
   S1ChordAngle accuracy = S1ChordAngle::Radians(accuracy_rad);
@@ -178,7 +178,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
     }
   else
     {
-      if (m_offroad_count <= MAX_OFFROAD_COUNTS) m_offroad_count++;
+      if (m_offroad_count <= MAX_OFFROAD_COUNTS_TO_REROUTE) m_offroad_count++;
 
       // wipe history used to track direction on route if we are off the route
       if (m_offroad_count > MAX_OFFROAD_COUNTS)
@@ -209,6 +209,14 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(street, QLatin1String());
           SET(onRoute, false);
         }
+
+      if ( (m_offroad_count > MAX_OFFROAD_COUNTS_TO_REROUTE ||
+            m_distance_to_route_m > 100 + horizontalAccuracy) &&
+          m_reroute_request.elapsed() > REROUTE_REQUEST_TIME_INTERVAL_MS)
+        {
+          m_reroute_request.restart();
+          emit rerouteRequest();
+        }
     }
 
   //qDebug() << "\n";
@@ -235,6 +243,7 @@ void Navigator::setRoute(QVariantMap m)
   m_edges.clear();
   m_points.clear();
   m_maneuvers.clear();
+  m_reroute_request.start();
 
   // clear distance traveled only if not running
   // that will keep progress intact on rerouting

@@ -4,6 +4,7 @@
 
 #include <QGeoCoordinate>
 #include <QObject>
+#include <QTime>
 #include <QVariantList>
 #include <QVariantMap>
 
@@ -84,6 +85,7 @@ signals:
   void narrativeChanged();
   void onRouteChanged();
   void progressChanged();
+  void rerouteRequest();
   void routeChanged();
   void runningChanged();
   void signChanged();
@@ -139,6 +141,7 @@ private:
   double m_last_duration_along_route{-1};
   double m_distance_to_route_m{-1};
   size_t m_offroad_count{0};
+  QTime  m_reroute_request;
 
   double  m_bearing;
   QString m_destDist;
