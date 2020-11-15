@@ -248,6 +248,9 @@ CONFIG(release, debug|release) {
     LIBS += $${S2LIBS}
 }
 
+# specify s2 requirement
+LIBS += -ls2
+
 # translations
 DISTFILES += $${TARGET}.desktop
 
