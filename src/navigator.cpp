@@ -26,7 +26,6 @@
 Navigator::Navigator(QObject *parent) : QObject(parent)
 {
   setupTranslator();
-  connect(this, &Navigator::onRouteChanged, this, &Navigator::resetPrompts, Qt::QueuedConnection);
   connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator, Qt::DirectConnection);
 }
 
@@ -62,9 +61,6 @@ void Navigator::clearRoute()
 
 void Navigator::resetPrompts()
 {
-  // reset flagging of the prompts when returning back to route
-  if (!m_onRoute) return;
-
   m_last_prompt = 0;
   for (auto &p: m_prompts)
     {
@@ -196,6 +192,10 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(bearing, best.bearing);
           m_offroad_count = 0;
         }
+
+      // reset prompts when just entering the route
+      if (on_route && !m_onRoute)
+        resetPrompts();
 
       if (on_route && best.maneuver+1 < m_maneuvers.size())
         {
