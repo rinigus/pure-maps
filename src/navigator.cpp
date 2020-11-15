@@ -36,7 +36,7 @@ void Navigator::setupTranslator()
   m_locale = QLocale(lang);
   if (m_translator.load(m_locale, APP_NAME, QLatin1String("-"),
                         QStringLiteral(DEFAULT_DATA_PREFIX "translations")))
-    qDebug() << "Loaded translation for navigation" << m_translator.language();
+    qDebug() << "Loaded translation for navigation" << lang;
   else
     qWarning() << "Translation not found for navigator:" << lang;
 }
