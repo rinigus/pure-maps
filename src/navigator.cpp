@@ -3,6 +3,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QGeoCoordinate>
+#include <QLocale>
 #include <QTime>
 
 #include <s2/s2closest_edge_query.h>
@@ -16,7 +17,7 @@
 #define REF_POINT_ADD_MARGIN    2  // Add next reference point along the route when it is that far away from the last one (relative to accuracy)
 #define NUMBER_OF_REF_POINTS    2  // how many points to keep as a reference
 #define MAX_OFFROAD_COUNTS      3  // times position was updated and point was off the route (counted in a sequence)
-#define MAX_OFFROAD_COUNTS_TO_REROUTE 10 // request reroute when driving along route but in opposite direction. should be larger than MAX_OFFROAD_COUNTS
+#define MAX_OFFROAD_COUNTS_TO_REROUTE 5 // request reroute when driving along route but in opposite direction. should be larger than MAX_OFFROAD_COUNTS
 #define REROUTE_REQUEST_TIME_INTERVAL_MS 5000 // min time elapsed since last rerouting request in milliseconds
 
 // use var without m_ prefix
@@ -24,9 +25,22 @@
 
 Navigator::Navigator(QObject *parent) : QObject(parent)
 {
+  setupTranslator();
   connect(this, &Navigator::onRouteChanged, this, &Navigator::resetPrompts);
+  connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator);
 }
 
+void Navigator::setupTranslator()
+{
+  QString lang = m_language;
+  if (lang == QLatin1Literal("en-US-x-pirate")) lang = QLatin1String("en-US");
+  m_locale = QLocale(lang);
+  if (m_translator.load(m_locale, APP_NAME, QLatin1String("-"),
+                        QStringLiteral(DEFAULT_DATA_PREFIX "translations")))
+    qDebug() << "Loaded translation for navigation" << m_translator.language();
+  else
+    qWarning() << "Translation not found for navigator:" << lang;
+}
 
 void Navigator::clearRoute()
 {
@@ -58,6 +72,13 @@ void Navigator::resetPrompts()
       p.requested = false;
     }
   qDebug() << "Prompts reset";
+}
+
+double Navigator::progress() const
+{
+  if (!m_running)
+    return m_last_distance_along_route_m  / std::max(1.0, m_route_length_m);
+  return m_distance_traveled_m / std::max(1.0, m_distance_traveled_m + m_route_length_m - m_last_distance_along_route_m);
 }
 
 void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid)
@@ -141,7 +162,6 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       best.accuracy = accuracy_rad;
       m_last_distance_along_route_m = S2Earth::RadiansToMeters(best.length_on_route);
       m_distance_to_route_m = 0;
-      m_offroad_count = 0;
 
       const Maneuver &man = m_maneuvers[best.maneuver];
       m_last_duration_along_route = man.duration_on_route;
@@ -167,7 +187,11 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       emit progressChanged();
 
       SET(onRoute, m_points.size() >= NUMBER_OF_REF_POINTS);
-      if (m_onRoute) SET(bearing, best.bearing);
+      if (m_onRoute)
+        {
+          SET(bearing, best.bearing);
+          m_offroad_count = 0;
+        }
 
       if (m_onRoute && best.maneuver+1 < m_maneuvers.size())
         {
@@ -223,7 +247,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       else if (!m_onRoute)
         {
           SET(manDist, "-");
-          SET(narrative, QCoreApplication::translate("", "Preparing to start navigation"));
+          SET(narrative, trans("Preparing to start navigation"));
         }
 
       //qDebug() << "ON ROUTE:" << m_route_length_m - S2Earth::RadiansToMeters(std::max(0.0,best.length_on_route)) << "km left" << m_points.size();
@@ -242,7 +266,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
               m_distance_to_route_m = 0; // within the accuracy
 
               SET(icon, QLatin1String("uturn")); // turn around
-              SET(narrative, QCoreApplication::translate("", "Moving in a wrong direction"));
+              SET(narrative, trans("Moving in a wrong direction"));
               SET(manDist, "-");
             }
           else
@@ -252,7 +276,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
               m_distance_to_route_m = S2Earth::RadiansToMeters(query.GetDistance(&target).radians());
 
               SET(icon, QLatin1String("flag")); // away from route icon
-              SET(narrative, QCoreApplication::translate("", "Away from route"));
+              SET(narrative, trans("Away from route"));
               SET(manDist, distanceToStr(m_distance_to_route_m));
             }
 
@@ -262,7 +286,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(onRoute, false);
         }
 
-      if ( (m_offroad_count > MAX_OFFROAD_COUNTS_TO_REROUTE ||
+      if ( ((m_offroad_count > MAX_OFFROAD_COUNTS_TO_REROUTE && m_distance_to_route_m < 1) ||
             m_distance_to_route_m > 100 + horizontalAccuracy) &&
           m_reroute_request.elapsed() > REROUTE_REQUEST_TIME_INTERVAL_MS)
         {
@@ -302,7 +326,8 @@ void Navigator::setRoute(QVariantMap m)
   if (!m_running) m_distance_traveled_m = 0;
 
   // set global vars
-  m_mode = m.value("mode", "car").toString();
+  SET(language, m.value("language", "en").toString());
+  SET(mode, m.value("mode", "car").toString());
 
   // route
   m_route.reserve(x.length());
@@ -399,7 +424,8 @@ void Navigator::setRoute(QVariantMap m)
       if (!m.verbal_alert.isEmpty() && pre_duration > 1800 && pre_length > 30)
         {
           Prompt p = makePrompt(m,
-                                QCoreApplication::translate("", "In %2, %1").arg(m.verbal_alert),
+                                // TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In" and adjust the order if needed
+                                trans("In %2, %1").arg(m.verbal_alert),
                                 std::min(500.0, pre_length-30),
                                 std::min(90.0, pre_duration-3),
                                 pre_speed, 1);
@@ -410,7 +436,7 @@ void Navigator::setRoute(QVariantMap m)
       if (!m.verbal_alert.isEmpty() && pre_duration > 20)
         {
           Prompt p = makePrompt(m,
-                                QCoreApplication::translate("", "In %2, %1").arg(m.verbal_alert),
+                                trans("In %2, %1").arg(m.verbal_alert),
                                 std::min(100.0, pre_length-30),
                                 std::min(30.0, pre_duration-3),
                                 pre_speed, 4);
@@ -475,9 +501,9 @@ void Navigator::setRoute(QVariantMap m)
         }
     }
 
-//  for (auto p: prompts)
-//    qDebug() << p.dist_m << p.dist_m + p.length() << p.time << p.time+p.duration()
-//             << p.importance << p.flagged << p.text;
+  for (auto p: prompts)
+    qDebug() << p.dist_m << p.dist_m + p.length() << p.time << p.time+p.duration()
+             << p.importance << p.flagged << p.text;
 
   m_prompts.clear();
   for (auto p: prompts)
@@ -497,15 +523,6 @@ void Navigator::setUnits(QString u)
   emit unitsChanged();
 }
 
-double Navigator::progress() const
-{
-//  qDebug() << "P" << m_distance_traveled_m << m_route_length_m << m_last_distance_along_route_m
-//           << m_distance_traveled_m / std::max(1.0, m_distance_traveled_m + m_route_length_m - m_last_distance_along_route_m);
-  if (!m_running)
-    return m_last_distance_along_route_m  / std::max(1.0, m_route_length_m);
-  return m_distance_traveled_m / std::max(1.0, m_distance_traveled_m + m_route_length_m - m_last_distance_along_route_m);
-}
-
 void Navigator::setRunning(bool r)
 {
   if (!m_index && r)
@@ -517,50 +534,58 @@ void Navigator::setRunning(bool r)
   emit runningChanged();
 }
 
+// Translations and string functions
+QString Navigator::trans(const char *text) const
+{
+  QString t = m_translator.translate("", text);
+  if (t.isEmpty()) return text;
+  return t;
+}
+
 static double roundToDigits(double n, int roundDig)
 {
   double rd = std::pow(10, roundDig);
   return round(n/rd) * rd;
 }
 
-static QString n2Str(double n, int roundDig=2)
+QString Navigator::n2Str(double n, int roundDig) const
 {
-  return QString("%L1").arg( roundToDigits(n, roundDig) );
+  return m_locale.toString( roundToDigits(n, roundDig) );
 }
 
-static QString distanceToStr_american(double feet, bool condence)
+QString Navigator::distanceToStr_american(double feet, bool condence) const
 {
   QString unit;
   if (feet > 1010)
     {
-      unit = condence ? QCoreApplication::translate("", "mi") : QCoreApplication::translate("", "miles");
+      unit = condence ? trans("mi") : trans("miles");
       return QString("%1 %2").arg(n2Str(feet/5280, feet > 5280 ? 0 : -1)).arg(unit);
     }
-  unit = condence ? QCoreApplication::translate("", "ft") : QCoreApplication::translate("", "feet");
+  unit = condence ? trans("ft") : trans("feet");
   return QString("%1 %2").arg(n2Str(feet, feet > 150 ? 2 : 1)).arg(unit);
 }
 
-static QString distanceToStr_british(double yard, bool condence)
+QString Navigator::distanceToStr_british(double yard, bool condence) const
 {
   QString unit;
   if (yard > 1010)
     {
-      unit = condence ? QCoreApplication::translate("", "mi") : QCoreApplication::translate("", "miles");
+      unit = condence ? trans("mi") : trans("miles");
       return QString("%1 %2").arg(n2Str(yard/1760, yard > 1760 ? 0 : -1)).arg(unit);
     }
-  unit = condence ? QCoreApplication::translate("", "yd") : QCoreApplication::translate("", "yards");
+  unit = condence ? trans("yd") : trans("yards");
   return QString("%1 %2").arg(n2Str(yard, yard > 150 ? 2 : 1)).arg(unit);
 }
 
-static QString distanceToStr_metric(double meters, bool condence)
+QString Navigator::distanceToStr_metric(double meters, bool condence) const
 {
   QString unit;
   if (meters > 1000)
     {
-      unit = condence ? QCoreApplication::translate("", "km") : QCoreApplication::translate("", "kilometers");
+      unit = condence ? trans("km") : trans("kilometers");
       return QString("%1 %2").arg(n2Str(meters/1000, 0)).arg(unit);
     }
-  unit = condence ? QCoreApplication::translate("", "m") : QCoreApplication::translate("", "meters");
+  unit = condence ? trans("m") : trans("meters");
   return QString("%1 %2").arg(n2Str(meters, meters > 150 ? 2 : 1)).arg(unit);
 }
 
@@ -577,8 +602,10 @@ QString Navigator::timeToStr(double seconds) const
 {
   int hours = int(seconds / 3600);
   int minutes = round((seconds - hours*3600)/60);
-  return hours > 0 ? QCoreApplication::translate("", "%1 h %2 min").arg(hours).arg(minutes) :
-                     QCoreApplication::translate("", "%2 min").arg(minutes);
+  // TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical hours (%1) and minutes (%2)
+  return hours > 0 ? trans("%1 h %2 min").arg(hours).arg(minutes) :
+                     // TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes (%1)
+                     trans("%1 min").arg(minutes);
 }
 
 double Navigator::distanceRounded(double meters) const

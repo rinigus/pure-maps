@@ -3,8 +3,10 @@
 
 
 #include <QGeoCoordinate>
+#include <QLocale>
 #include <QObject>
 #include <QTime>
+#include <QTranslator>
 #include <QVariantList>
 #include <QVariantMap>
 
@@ -25,6 +27,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString destEta READ destEta NOTIFY destEtaChanged)
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
+  Q_PROPERTY(QString language READ language NOTIFY languageChanged)
   Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
   Q_PROPERTY(QString manTime READ manTime NOTIFY manTimeChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
@@ -49,6 +52,7 @@ public:
   QString destEta() const { return m_destEta; }
   QString destTime() const { return m_destTime; }
   QString icon() const { return m_icon; }
+  QString language() const { return m_language; }
   QString manDist() const { return m_manDist; }
   QString manTime() const { return m_manTime; }
   QString mode() const { return m_mode; }
@@ -80,6 +84,7 @@ signals:
   void destEtaChanged();
   void destTimeChanged();
   void iconChanged();
+  void languageChanged();
   void manDistChanged();
   void manTimeChanged();
   void modeChanged();
@@ -99,11 +104,19 @@ signals:
 
 protected:
   QString distanceToStr(double meters, bool condence=true) const;
+  QString distanceToStr_american(double feet, bool condence) const;
+  QString distanceToStr_british(double yard, bool condence) const;
+  QString distanceToStr_metric(double meters, bool condence) const;
+  QString n2Str(double n, int roundDig=2) const;
+
   QString timeToStr(double seconds) const;
   double  distanceRounded(double meters) const;
   Prompt  makePrompt(const Maneuver &m, QString text, double dist_offset_m, double time_offset,
                      double speed_m, int importance, bool after=false) const;
   void resetPrompts();
+
+  void setupTranslator();
+  QString trans(const char *text) const;
 
 private:
   // Edges of the route
@@ -130,12 +143,15 @@ private:
 
   std::vector<EdgeInfo> m_edges;
   std::unique_ptr<MutableS2ShapeIndex> m_index;
+  QString m_language{"en"};
+  QLocale m_locale;
   std::vector<Maneuver> m_maneuvers;
   QString m_mode{"car"};
   std::deque<PointInfo> m_points;
   std::unique_ptr<S2Polyline> m_polyline;
   std::vector<Prompt> m_prompts;
   QList<QGeoCoordinate> m_route;
+  QTranslator m_translator;
 
   S2Point m_last_point;
   bool m_last_point_initialized{false};
