@@ -21,13 +21,13 @@
 #define REROUTE_REQUEST_TIME_INTERVAL_MS 5000 // min time elapsed since last rerouting request in milliseconds
 
 // use var without m_ prefix
-#define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; emit var##Changed(); } }
+#define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; qDebug() << "Emit " #var; emit var##Changed(); } }
 
 Navigator::Navigator(QObject *parent) : QObject(parent)
 {
   setupTranslator();
-  connect(this, &Navigator::onRouteChanged, this, &Navigator::resetPrompts);
-  connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator);
+  connect(this, &Navigator::onRouteChanged, this, &Navigator::resetPrompts, Qt::QueuedConnection);
+  connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator, Qt::DirectConnection);
 }
 
 void Navigator::setupTranslator()
@@ -92,6 +92,8 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
   // check if standing still
   if (m_last_point_initialized && m_last_point.Angle(point) < accuracy_rad/10)
     return;
+
+  qDebug() << "Enter setPosition";
 
   // update travelled distance and last point
   if (m_last_point_initialized && m_running)
@@ -186,14 +188,16 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
 
       emit progressChanged();
 
-      SET(onRoute, m_points.size() >= NUMBER_OF_REF_POINTS);
-      if (m_onRoute)
+      // handle onRoute specially as some lockups were seen when setting
+      // it early in the method
+      on_route = (m_points.size() >= NUMBER_OF_REF_POINTS);
+      if (on_route)
         {
           SET(bearing, best.bearing);
           m_offroad_count = 0;
         }
 
-      if (m_onRoute && best.maneuver+1 < m_maneuvers.size())
+      if (on_route && best.maneuver+1 < m_maneuvers.size())
         {
           const Maneuver &next = m_maneuvers[best.maneuver+1];
           const double mdist = S2Earth::RadiansToMeters(next.length_on_route - best.length_on_route);
@@ -245,13 +249,13 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
             }
 
         }
-      else if (!m_onRoute)
+      else if (!on_route)
         {
           SET(manDist, "-");
           SET(narrative, trans("Preparing to start navigation"));
         }
 
-      //qDebug() << "ON ROUTE:" << m_route_length_m - S2Earth::RadiansToMeters(std::max(0.0,best.length_on_route)) << "km left" << m_points.size();
+      SET(onRoute, on_route);
     }
   else
     {
@@ -296,7 +300,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
         }
     }
 
-  //qDebug() << "\n";
+  qDebug() << "Exit setPosition";
 }
 
 
