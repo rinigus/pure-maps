@@ -222,6 +222,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
                     }
                   else
                     {
+                      emit promptPrepare(p.text, false);
                       emit promptPlay(p.text);
                     }
 
@@ -239,7 +240,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
               if (!p.requested)
                 {
                   p.requested = true;
-                  emit promptPrepare(p.text);
+                  emit promptPrepare(p.text, false);
                 }
             }
 
@@ -559,7 +560,7 @@ QString Navigator::distanceToStr_american(double feet, bool condence) const
   if (feet > 1010)
     {
       unit = condence ? trans("mi") : trans("miles");
-      return QString("%1 %2").arg(n2Str(feet/5280, feet > 5280 ? 0 : -1)).arg(unit);
+      return QStringLiteral("%1 %2").arg(n2Str(feet/5280, feet > 5280 ? 0 : -1)).arg(unit);
     }
   unit = condence ? trans("ft") : trans("feet");
   return QString("%1 %2").arg(n2Str(feet, feet > 150 ? 2 : 1)).arg(unit);
@@ -645,4 +646,25 @@ Prompt Navigator::makePrompt(const Maneuver &m, QString text, double dist_offset
   if (text.contains('%')) p.text = text.arg( distanceToStr(distance, false) );
   else p.text = text;
   return p;
+}
+
+void Navigator::prepareStandardPrompts()
+{
+  m_std_prompts.clear();
+  m_std_prompts.insert(QLatin1String("std:starting navigation"), trans("Starting navigation"));
+  m_std_prompts.insert(QLatin1String("std:new route found"), trans("New route found"));
+  m_std_prompts.insert(QLatin1String("std:rerouting"), trans("Rerouting"));
+  m_std_prompts.insert(QLatin1String("std:rerouting failed"), trans("Rerouting failed"));
+
+  // first prompt that is needed, can request multiple times
+  emit promptPrepare(m_std_prompts["std:starting navigation"], true);
+  for (QString p: m_std_prompts.values())
+    emit promptPrepare(p, true);
+}
+
+void Navigator::prompt(const QString key)
+{
+  QString p = m_std_prompts.value(key);
+  if (!p.isEmpty())
+    emit promptPlay(p);
 }

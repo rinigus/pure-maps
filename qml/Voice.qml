@@ -74,10 +74,12 @@ Item {
             currentEngine = "";
             return;
         }
+        console.log('Initializing voice engine ' + engine + ' ' + language + ' ' + gender);
         var args = [engine, language, gender];
         py.call_sync("poor.app.set_voice", args);
         currentEngine = py.call_sync("poor.app.voice_current_engine", [engine]);
         active = py.call_sync("poor.app.voice_active", [engine]);
+        console.log('Voice engine: ' + engine + ' ' + currentEngine + ' active=' + active);
     }
 
     function play(text) {

@@ -3,6 +3,7 @@
 
 
 #include <QGeoCoordinate>
+#include <QHash>
 #include <QLocale>
 #include <QObject>
 #include <QTime>
@@ -78,6 +79,10 @@ public:
   QString units() const { return m_units; }
   void setUnits(QString u);
 
+  // standard prompts
+  Q_INVOKABLE void prepareStandardPrompts();
+  Q_INVOKABLE void prompt(const QString key);
+
 signals:
   void bearingChanged();
   void destDistChanged();
@@ -99,7 +104,7 @@ signals:
   void totalDistChanged();
   void totalTimeChanged();
   void unitsChanged();
-  void promptPrepare(QString text);
+  void promptPrepare(QString text, bool preserve);
   void promptPlay(QString text);
 
 protected:
@@ -183,6 +188,8 @@ private:
   QString m_totalTime;
 
   QString m_units{QLatin1String("metric")};
+
+  QHash<QString, QString> m_std_prompts;
 };
 
 #endif // NAVIGATOR_H
