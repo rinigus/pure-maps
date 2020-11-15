@@ -79,7 +79,28 @@ double Navigator::progress() const
 
 void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid)
 {
-  if (!m_index || !valid || horizontalAccuracy > 100) return;
+  if (!m_index || !valid || horizontalAccuracy > 100)
+    {
+      if (m_running)
+        {
+          if (!m_index)
+            qCritical() << "Programming error: called setPosition without route";
+
+          else if (!valid)
+            {
+              SET(icon, QLatin1String("flag"));
+              SET(narrative, trans("Positioning unknown"));
+            }
+
+          else
+            {
+              SET(icon, QLatin1String("flag"));
+              SET(narrative, trans("Position imprecise: accuracy %L1 m").arg(horizontalAccuracy));
+            }
+        }
+
+      return;
+    }
 
   double accuracy_rad = S2Earth::MetersToRadians(horizontalAccuracy);
   S1ChordAngle accuracy = S1ChordAngle::Radians(accuracy_rad);
