@@ -34,6 +34,7 @@ BuildRequires: pkgconfig(Qt5Qml)
 BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5Positioning)
 BuildRequires: pkgconfig(Qt5DBus)
+BuildRequires: s2geometry-devel
 
 Requires: mapboxgl-qml >= 1.7.0
 
