@@ -19,8 +19,8 @@ a thread at [TMO](https://talk.maemo.org/showthread.php?t=100442).
 
 Please use Github issues to address specific problems and development
 requests. General discussion is expected either through corresponding
-issues opened by maintainer or TMO thread. Please note that users from
-all platforms are welcome at TMO, not only current Sailfish OS users.
+issues, Matrix channel, or TMO thread. Please note that users from all
+platforms are welcome at TMO, not only current Sailfish OS users.
 
 Currently there is no homepage setup for Pure Maps. You are welcome to
 help by working on the corresponding
