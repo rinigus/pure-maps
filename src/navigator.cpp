@@ -27,6 +27,7 @@ Navigator::Navigator(QObject *parent) : QObject(parent)
 {
   setupTranslator();
   connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator, Qt::DirectConnection);
+  clearRoute();
 }
 
 void Navigator::setupTranslator()
@@ -51,12 +52,15 @@ void Navigator::clearRoute()
   m_distance_traveled_m = 0;
   emit progressChanged();
 
-  SET(totalDist, "");
-  SET(totalTime, "");
-  SET(destDist, "");
-  SET(destEta, "");
-  SET(destTime, "");
+  SET(totalDist, QLatin1String());
+  SET(totalTime, QLatin1String());
+  SET(destDist, QLatin1String("-"));
+  SET(destEta, QLatin1String("-"));
+  SET(destTime, QLatin1String("-"));
+  SET(manDist, QLatin1String("-"));
+  SET(manTime, QLatin1String("-"));
   SET(onRoute, false);
+  SET(street, "");
 }
 
 void Navigator::resetPrompts()
@@ -95,11 +99,24 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           else
             {
               SET(icon, QLatin1String("flag"));
-              SET(narrative, trans("Position imprecise: accuracy %L1 m").arg(horizontalAccuracy));
+              SET(narrative, trans("Position imprecise: accuracy %1").arg(distanceToStr(horizontalAccuracy)));
             }
+
+          SET(manDist, QLatin1String("-"));
+          SET(manTime, QLatin1String());
+          SET(sign, QVariantMap());
+          SET(street, QLatin1String());
+          m_precision_insufficient = true;
         }
 
       return;
+    }
+
+  // cleanup precision messages when the first good coordinate goes through
+  if (m_precision_insufficient)
+    {
+      m_precision_insufficient = false;
+      SET(narrative, trans("Preparing to start navigation"));
     }
 
   double accuracy_rad = S2Earth::MetersToRadians(horizontalAccuracy);
@@ -272,8 +289,11 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
         }
       else if (!on_route)
         {
-          SET(manDist, "-");
+          SET(manDist, QLatin1String("-"));
+          SET(manTime, QLatin1String());
           SET(narrative, trans("Preparing to start navigation"));
+          SET(sign, QVariantMap());
+          SET(street, QLatin1String());
         }
 
       SET(onRoute, on_route);
@@ -354,6 +374,13 @@ void Navigator::setRoute(QVariantMap m)
   // set global vars
   SET(language, m.value("language", "en").toString());
   SET(mode, m.value("mode", "car").toString());
+  SET(destDist, "-");
+  SET(destEta, "-");
+  SET(destTime, "-");
+  SET(manDist, "-");
+  SET(manTime, "-");
+  SET(onRoute, false);
+  SET(street, "");
 
   // route
   QList<QGeoCoordinate> route;

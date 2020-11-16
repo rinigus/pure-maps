@@ -182,6 +182,7 @@ private:
   QString m_manTime;
   QString m_narrative;
   bool    m_onRoute{false};
+  bool    m_precision_insufficient{false};
   QVariantMap m_sign;
   QString m_street;
   QString m_totalDist;
