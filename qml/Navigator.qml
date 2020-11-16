@@ -69,6 +69,8 @@ Item {
         }
 
         onRunningChanged: {
+            if (running) updatePosition();
+
             if (running && app.conf.voiceNavigation) {
                 // check if the call was caused by rerouting, for example
                 if (voicePrepared) return;
@@ -86,6 +88,12 @@ Item {
                 voicePrepared = false;
             }
         }
+
+        function updatePosition() {
+            navigatorBase.setPosition(app.position.coordinate,
+                                      app.position.horizontalAccuracy,
+                                      app.position.horizontalAccuracyValid && app.position.latitudeValid && app.position.longitudeValid);
+        }
     }
 
     Voice {
@@ -98,9 +106,7 @@ Item {
 
     Connections {
         target: app
-        onPositionChanged: navigatorBase.setPosition(app.position.coordinate,
-                                                     app.position.horizontalAccuracy,
-                                                     app.position.horizontalAccuracyValid && app.position.latitudeValid && app.position.longitudeValid)
+        onPositionChanged: navigatorBase.updatePosition()
     }
 
     Component.onCompleted: {
