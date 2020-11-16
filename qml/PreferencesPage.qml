@@ -845,6 +845,14 @@ PagePL {
 
                     ListItemLabel {
                         id: description
+                        text: voice.currentEngine ? app.tr("Selected voice engine: %1",
+                                                           voice.currentEngine) :
+                                                    app.tr("No engine available for selected language.\n\n" +
+                                                           "Pure Maps supports Mimic, Flite, PicoTTS, and " +
+                                                           "Espeak TTS engines. Unless you are using Pure Maps " +
+                                                           "through Flatpak or OpenStore, the engines have " +
+                                                           "to be installed separately. Sailfish OS users " +
+                                                           "can find the engines at OpenRepos.")
                         truncMode: truncModes.none
                         wrapMode: Text.WordWrap
                     }
@@ -855,25 +863,13 @@ PagePL {
 
                     Voice {
                         id: voice
-                        enabled: false
+                        enabled: true
                         engine: "tester"
                         gender: genderComboBox.values[genderComboBox.currentIndex]
                         language: languageComboBox.values[languageComboBox.currentIndex]
                     }
 
                     function test() {
-                        voice.enabled = true;
-                        if (voice.currentEngine)
-                            description.text = app.tr("Selected voice engine: %1",
-                                                      voice.currentEngine);
-                        else {
-                            description.text = app.tr("No engine available for selected language.\n\n" +
-                                                      "Pure Maps supports Mimic, Flite, PicoTTS, and " +
-                                                      "Espeak TTS engines. Unless you are using Pure Maps " +
-                                                      "through Flatpak or OpenStore, the engines have " +
-                                                      "to be installed separately. Sailfish OS users " +
-                                                      "can find the engines at OpenRepos.");
-                        }
                         if (voice.active) {
                             var txt = languageComboBox.phrases[languageComboBox.currentIndex];
                             voice.prepare(txt);

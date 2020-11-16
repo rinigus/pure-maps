@@ -30,6 +30,7 @@ Item {
     Timer {
         id: currentPlay
         interval: 500
+        repeat: true
         running: text
 
         property string text
