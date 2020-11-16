@@ -12,9 +12,10 @@ that was made to continue its development.
 
 ## User feedback
 
-There are two main communication channels with the users: GitHub and a
-thread at
-[TMO](https://talk.maemo.org/showthread.php?t=100442).
+There are three main communication channels with the users: GitHub,
+Matrix channel
+[#pure-maps:matrix.org](https://matrix.to/#/#pure-maps:matrix.org) and
+a thread at [TMO](https://talk.maemo.org/showthread.php?t=100442).
 
 Please use Github issues to address specific problems and development
 requests. General discussion is expected either through corresponding
