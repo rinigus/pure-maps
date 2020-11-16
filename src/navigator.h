@@ -158,6 +158,7 @@ private:
   QVariantList m_route;
   QTranslator m_translator;
 
+  double  m_last_accuracy{-1};
   S2Point m_last_point;
   bool m_last_point_initialized{false};
 

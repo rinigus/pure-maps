@@ -123,8 +123,11 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
   S1ChordAngle accuracy = S1ChordAngle::Radians(accuracy_rad);
   S2Point point = S2LatLng::FromDegrees(c.latitude(), c.longitude()).ToPoint();
 
-  // check if standing still
-  if (m_last_point_initialized && m_last_point.Angle(point) < accuracy_rad/10)
+  // check if standing still and if accuracy is similar to the current one
+  if (m_last_point_initialized &&
+      m_last_point.Angle(point) < accuracy_rad/10 &&
+      m_last_accuracy >= 0 &&
+      std::fabs(m_last_accuracy - accuracy_rad) < accuracy_rad/10 )
     return;
 
   qDebug() << "Enter setPosition";
@@ -135,6 +138,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
 
   m_last_point_initialized = true;
   m_last_point = point;
+  m_last_accuracy = accuracy_rad;
 
   // find if are on the route
   S2ClosestEdgeQuery::PointTarget target(point);
@@ -366,6 +370,7 @@ void Navigator::setRoute(QVariantMap m)
   m_points.clear();
   m_maneuvers.clear();
   m_reroute_request.start();
+  m_last_accuracy = -1;
 
   // clear distance traveled only if not running
   // that will keep progress intact on rerouting
