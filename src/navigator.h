@@ -42,7 +42,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString totalTime READ totalTime NOTIFY totalTimeChanged)
   Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
-  Q_PROPERTY(QList<QGeoCoordinate> route READ route NOTIFY routeChanged)
+  Q_PROPERTY(QVariantList route READ route NOTIFY routeChanged)
 
 public:
   explicit Navigator(QObject *parent = nullptr);
@@ -70,7 +70,7 @@ public:
 
   // route
   Q_INVOKABLE void clearRoute();
-  QList<QGeoCoordinate> route() const { return m_route; }
+  QVariantList route() const { return m_route; }
   Q_INVOKABLE void setRoute(QVariantMap m);
 
   bool running () const { return m_running; }
@@ -155,7 +155,7 @@ private:
   std::deque<PointInfo> m_points;
   std::unique_ptr<S2Polyline> m_polyline;
   std::vector<Prompt> m_prompts;
-  QList<QGeoCoordinate> m_route;
+  QVariantList m_route;
   QTranslator m_translator;
 
   S2Point m_last_point;

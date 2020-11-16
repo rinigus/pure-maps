@@ -89,7 +89,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           else if (!valid)
             {
               SET(icon, QLatin1String("flag"));
-              SET(narrative, trans("Positioning unknown"));
+              SET(narrative, trans("Position unknown"));
             }
 
           else
@@ -356,20 +356,26 @@ void Navigator::setRoute(QVariantMap m)
   SET(mode, m.value("mode", "car").toString());
 
   // route
-  m_route.reserve(x.length());
+  QList<QGeoCoordinate> route;
+  route.reserve(x.length());
   for (int i=0; i < x.length(); ++i)
     {
       QGeoCoordinate c(y[i].toDouble(), x[i].toDouble());
       // avoid the same point entered twice (observed with MapQuest)
-      if (i == 0 || c.distanceTo(m_route.back()) > accuracy_m)
-        m_route.append(c);
+      if (i == 0 || c.distanceTo(route.back()) > accuracy_m)
+        route.append(c);
     }
-  emit routeChanged();
 
   std::vector<S2LatLng> coor;
   coor.reserve(x.length());
-  for (QGeoCoordinate c: m_route)
-    coor.push_back(S2LatLng::FromDegrees(c.latitude(), c.longitude()));
+  m_route.reserve(route.length());
+  for (QGeoCoordinate c: route)
+    {
+      coor.push_back(S2LatLng::FromDegrees(c.latitude(), c.longitude()));
+      m_route.append(QVariant::fromValue(c));
+    }
+
+  emit routeChanged();
 
   m_polyline.reset(new S2Polyline(coor));
 
