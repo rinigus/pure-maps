@@ -1,5 +1,13 @@
 # Pure Maps
 
+[![Latest release](https://img.shields.io/github/v/release/rinigus/pure-maps)](https://github.com/rinigus/pure-maps/releases)
+[![SFOS](https://img.shields.io/badge/SailfishOS-OpenRepos-1CA198)](https://openrepos.net/content/rinigus/pure-maps)
+[![UBPorts](https://img.shields.io/badge/Ubuntu%20Touch-OpenStore-292929)](https://open-store.io/app/pure-maps.jonnius)
+[![Flatpak](https://img.shields.io/badge/Flatpak-Flathub-4A86CF)](https://flathub.org/apps/details/io.github.rinigus.PureMaps)
+[![Matrix](https://img.shields.io/badge/matrix.org-%23pure--maps-blue)](https://matrix.to/#/#pure-maps:matrix.org)
+[![TMO](https://img.shields.io/badge/forum-T.M.O-FB9200)](https://talk.maemo.org/showthread.php?t=100442)
+
+
 Pure Maps is an application for Sailfish OS and Linux to display
 vector and raster maps, places, routes, and provide navigation
 instructions with a flexible selection of data and service providers.
