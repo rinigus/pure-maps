@@ -19,6 +19,7 @@
 #define MAX_OFFROAD_COUNTS      3  // times position was updated and point was off the route (counted in a sequence)
 #define MAX_OFFROAD_COUNTS_TO_REROUTE 5 // request reroute when driving along route but in opposite direction. should be larger than MAX_OFFROAD_COUNTS
 #define REROUTE_REQUEST_TIME_INTERVAL_MS 5000 // min time elapsed since last rerouting request in milliseconds
+#define MAP_HORIZONTAL_ACCURACY_M 15.0 // amount of meters that are not considered to be offroad
 
 // use var without m_ prefix
 #define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; /*qDebug() << "Emit " #var;*/ emit var##Changed(); } }
@@ -119,7 +120,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       SET(narrative, trans("Preparing to start navigation"));
     }
 
-  double accuracy_rad = S2Earth::MetersToRadians(horizontalAccuracy);
+  double accuracy_rad = S2Earth::MetersToRadians(std::max(horizontalAccuracy, MAP_HORIZONTAL_ACCURACY_M));
   S1ChordAngle accuracy = S1ChordAngle::Radians(accuracy_rad);
   S2Point point = S2LatLng::FromDegrees(c.latitude(), c.longitude()).ToPoint();
 
