@@ -64,11 +64,11 @@ MapboxMap {
             if (app.transportMode === "foot" || app.transportMode === "bicycle")
                 return compass.azimuth;
         }
-        // prefer map matched direction, if available
-        if (gps.directionValid) return gps.direction;
         // direction as calculated along the route
         if (app.navigator.direction!==undefined && app.navigator.direction!==null)
             return app.navigator.direction;
+        // prefer map matched direction, if available
+        if (gps.directionValid) return gps.direction;
         // direction calculated on the basis of gps coordinates
         if (gps.directionCalculated) return gps.direction;
         return undefined;
