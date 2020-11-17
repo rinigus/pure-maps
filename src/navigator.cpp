@@ -27,8 +27,11 @@
 Navigator::Navigator(QObject *parent) : QObject(parent)
 {
   setupTranslator();
-  connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator, Qt::DirectConnection);
   clearRoute();
+  m_timer.setInterval(60000); // 1 minute
+
+  connect(&m_timer, &QTimer::timeout, this, &Navigator::updateEta);
+  connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator);
 }
 
 void Navigator::setupTranslator()
@@ -294,6 +297,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
         }
       else if (!on_route)
         {
+          SET(icon, QLatin1String("flag"));
           SET(manDist, QLatin1String("-"));
           SET(manTime, QLatin1String());
           SET(narrative, trans("Preparing to start navigation"));
@@ -349,6 +353,12 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
   //qDebug() << "Exit setPosition";
 }
 
+void Navigator::updateEta()
+{
+  if (!m_running) return;
+  QTime time = QTime::currentTime().addSecs(m_route_duration - m_last_duration_along_route);
+  SET(destEta, QLocale::system().toString(time, QLocale::NarrowFormat));
+}
 
 void Navigator::setRoute(QVariantMap m)
 {
@@ -595,6 +605,9 @@ void Navigator::setRunning(bool r)
       r = false;
     }
   m_running = r;
+  if (m_running) m_timer.start();
+  else m_timer.stop();
+
   emit runningChanged();
 }
 

@@ -7,6 +7,7 @@
 #include <QLocale>
 #include <QObject>
 #include <QTime>
+#include <QTimer>
 #include <QTranslator>
 #include <QVariantList>
 #include <QVariantMap>
@@ -123,6 +124,8 @@ protected:
   void setupTranslator();
   QString trans(const char *text) const;
 
+  void updateEta();
+
 private:
   // Edges of the route
   struct EdgeInfo {
@@ -156,6 +159,7 @@ private:
   std::unique_ptr<S2Polyline> m_polyline;
   std::vector<Prompt> m_prompts;
   QVariantList m_route;
+  QTimer m_timer;
   QTranslator m_translator;
 
   double  m_last_accuracy{-1};
