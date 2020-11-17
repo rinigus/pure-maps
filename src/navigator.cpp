@@ -213,7 +213,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       SET(destTime, timeToStr(m_route_duration - m_last_duration_along_route));
 
       QTime time = QTime::currentTime().addSecs(m_route_duration - m_last_duration_along_route);
-      SET(destEta, QLocale::system().toString(time, QLocale::ShortFormat));
+      SET(destEta, QLocale::system().toString(time, QLocale::NarrowFormat));
 
       // handle reference points
       if (!ref || // add the first reference point
