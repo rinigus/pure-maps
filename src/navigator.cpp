@@ -351,7 +351,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
 
 void Navigator::setRoute(QVariantMap m)
 {
-  const double accuracy_m = 0.1;
+  const double accuracy_m = 5;
   const double accuracy = S2Earth::MetersToRadians(accuracy_m);
 
   // copy route coordinates
@@ -365,10 +365,11 @@ void Navigator::setRoute(QVariantMap m)
     }
 
   // cleanup
-  m_route.clear();
   m_edges.clear();
-  m_points.clear();
   m_maneuvers.clear();
+  m_points.clear();
+  m_route.clear();
+  m_prompts.clear();
   m_reroute_request.start();
   m_last_accuracy = -1;
 
@@ -569,7 +570,6 @@ void Navigator::setRoute(QVariantMap m)
     qDebug() << p.dist_m << p.dist_m + p.length() << p.time << p.time+p.duration()
              << p.importance << p.flagged << p.text;
 
-  m_prompts.clear();
   for (auto p: prompts)
     if (!p.flagged)
       m_prompts.push_back(p);
