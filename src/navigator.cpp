@@ -21,7 +21,7 @@
 #define REROUTE_REQUEST_TIME_INTERVAL_MS 5000 // min time elapsed since last rerouting request in milliseconds
 
 // use var without m_ prefix
-#define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; qDebug() << "Emit " #var; emit var##Changed(); } }
+#define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; /*qDebug() << "Emit " #var;*/ emit var##Changed(); } }
 
 Navigator::Navigator(QObject *parent) : QObject(parent)
 {
@@ -130,7 +130,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       std::fabs(m_last_accuracy - accuracy_rad) < accuracy_rad/10 )
     return;
 
-  qDebug() << "Enter setPosition";
+  //qDebug() << "Enter setPosition";
 
   // update travelled distance and last point
   if (m_last_point_initialized && m_running)
@@ -345,7 +345,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
         }
     }
 
-  qDebug() << "Exit setPosition";
+  //qDebug() << "Exit setPosition";
 }
 
 
@@ -474,7 +474,6 @@ void Navigator::setRoute(QVariantMap m)
       length_on_route += man_length;
       duration_on_route += m.duration;
 
-//      qDebug() << mc;
 //      qDebug() << "Maneuver" << new_man_ind << "Length" << S2Earth::RadiansToKm(m.length) << "km  Duration"
 //               << m.duration << "s  Speed" << S2Earth::RadiansToKm(m.length)/std::max(m.duration, 0.1)*3600 << "km/h" << "\n"
 //               << m.duration_on_route << "s / " << S2Earth::RadiansToMeters(m.length_on_route) << "m"
