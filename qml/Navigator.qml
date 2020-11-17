@@ -193,6 +193,12 @@ Item {
         }
     }
 
+    function saveRoute(route_in) {
+        // Save route polyline to JSON file.
+        var data = Util.polylineToJson(route_in);
+        py.call_sync("poor.storage.write_route", [data]);
+    }
+
     function setManeuvers(maneuvers) {
         var m = maneuvers.map(function (maneuver) {
             return {
@@ -225,12 +231,6 @@ Item {
         }
         saveRoute(route);
         if (!amend) app.setModeExploreRoute();
-    }
-
-    function saveRoute(route_in) {
-        // Save route polyline to JSON file.
-        var data = Util.polylineToJson(route_in);
-        py.call_sync("poor.storage.write_route", [data]);
     }
 
 }
