@@ -14,11 +14,13 @@ public:
   QGeoCoordinate coordinate;
   double duration;
   double duration_on_route{0};
+  QString duration_txt;
   QString icon;
   QString instArrive;
   QString instDepart;
   double length{0};
   double length_on_route{0};
+  QString length_txt;
   QString name;
   QString narrative;
   bool passive;

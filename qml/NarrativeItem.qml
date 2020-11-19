@@ -30,7 +30,8 @@ Column {
         width: parent.width
         delegate: ListItemPL {
             id: listItem
-            contentHeight: narrativeLabel.height + departLabel.height + arriveLabel.height + lengthLabel.height + 2.0*styler.themePaddingLarge
+            contentHeight: narrativeLabel.height + departLabel.height + arriveLabel.height +
+                           lengthLabel.height + 2.0*styler.themePaddingLarge
 
             Image {
                 id: icon
@@ -60,8 +61,7 @@ Column {
                 anchors.right: parent.right
                 anchors.rightMargin: styler.themeHorizontalPageMargin
                 anchors.top: spacer.bottom
-                color: ( (list.activeItem < 0 && model.active) ||
-                         (list.activeItem === model.index) ||
+                color: ( (list.activeItem === model.index) ||
                          listItem.highlighted) ?
                            styler.themeHighlightColor : styler.themePrimaryColor
                 font.pixelSize: styler.themeFontSizeSmall
@@ -81,7 +81,7 @@ Column {
                 color: styler.themeSecondaryColor
                 font.pixelSize: styler.themeFontSizeSmall
                 height: text ? implicitHeight + styler.themePaddingSmall : 0
-                text: model.depart_instruction ? model.depart_instruction : ""
+                text: model.depart ? model.depart : ""
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
             }
@@ -96,7 +96,7 @@ Column {
                 color: styler.themeSecondaryColor
                 font.pixelSize: styler.themeFontSizeSmall
                 height: text ? implicitHeight + styler.themePaddingSmall : 0
-                text: model.arrive_instruction ? model.arrive_instruction : ""
+                text: model.arrive ? model.arrive : ""
                 verticalAlignment: Text.AlignTop
                 wrapMode: Text.WordWrap
             }
@@ -113,8 +113,13 @@ Column {
                 font.pixelSize: styler.themeFontSizeSmall
                 height: implicitHeight + styler.themePaddingSmall
                 lineHeight: 1.15
-                text: model.index < list.model.count - 1 ?
-                          app.tr("Continue for %1.", model.length) : ""
+                text: {
+                    if (model.index >= list.model.count - 1)
+                        return "";
+                    if (model.duration)
+                        return app.tr("Continue for %1 (%2).", model.length, model.duration);
+                    return app.tr("Continue for %1.", model.length);
+                }
                 truncMode: truncModes.fade
                 verticalAlignment: Text.AlignTop
             }
@@ -122,30 +127,15 @@ Column {
             onClicked: {
                 list.activeItem = model.index;
                 app.setModeExploreRoute();
-                map.setCenter(model.x, model.y);
+                map.center = model.coordinate;
                 map.zoomLevel < 15 && map.setZoomLevel(15);
                 app.hideNavigationPages();
             }
 
         }
 
-        model: ListModel {}
+        model: app.navigator.maneuvers
 
         property int activeItem: -1
-    }
-
-    function clear() {
-        list.model.clear();
-    }
-
-    function populate() {
-        // Load narrative from the Python backend.
-        list.model.clear();
-        list.activeItem = -1;
-        var args = [map.center.longitude, map.center.latitude];
-        py.call("poor.app.narrative.get_maneuvers", args, function(maneuvers) {
-            Util.appendAll(list.model, maneuvers);
-            console.log("*********** Populated **********");
-        });
     }
 }

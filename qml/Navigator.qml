@@ -31,7 +31,7 @@ Item {
     property var    direction: navigatorBase.onRoute ? navigatorBase.bearing : undefined
     property bool   hasRoute:  route.length > 0
     property string icon:      navigatorBase.icon
-    property var    maneuvers: []
+    property alias  maneuvers: navigatorBase.maneuvers
     property string manDist:   navigatorBase.manDist
     property string manTime:   navigatorBase.manTime
     property string narrative: navigatorBase.narrative
@@ -116,7 +116,7 @@ Item {
     function clearRoute() {
         navigatorBase.clearRoute();
         // Remove route
-        maneuvers = [];
+        //maneuvers = [];
         //route = {};
         py.call("poor.app.narrative.unset", [], null);
         provider = "";
@@ -199,36 +199,36 @@ Item {
         py.call_sync("poor.storage.write_route", [data]);
     }
 
-    function setManeuvers(maneuvers) {
-        var m = maneuvers.map(function (maneuver) {
-            return {
-                "arrive_instruction": maneuver.arrive_instruction || "",
-                "depart_instruction": maneuver.depart_instruction || "",
-                "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
-                "duration": maneuver.duration || 0,
-                "icon": maneuver.icon || "flag",
-                // Needed to have separate layers via filters.
-                "name": maneuver.passive ? "passive" : "active",
-                "narrative": maneuver.narrative || "",
-                "passive": maneuver.passive || false,
-                "sign": maneuver.sign || undefined,
-                "street": maneuver.street|| undefined,
-                "travel_type": maneuver.travel_type || "",
-                "verbal_alert": maneuver.verbal_alert || "",
-                "verbal_post": maneuver.verbal_post || "",
-                "verbal_pre": maneuver.verbal_pre || "",
-            };
-        });
-        navigator.maneuvers = m;
-    }
+//    function setManeuvers(maneuvers) {
+//        var m = maneuvers.map(function (maneuver) {
+//            return {
+//                "arrive_instruction": maneuver.arrive_instruction || "",
+//                "depart_instruction": maneuver.depart_instruction || "",
+//                "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
+//                "duration": maneuver.duration || 0,
+//                "icon": maneuver.icon || "flag",
+//                // Needed to have separate layers via filters.
+//                "name": maneuver.passive ? "passive" : "active",
+//                "narrative": maneuver.narrative || "",
+//                "passive": maneuver.passive || false,
+//                "sign": maneuver.sign || undefined,
+//                "street": maneuver.street|| undefined,
+//                "travel_type": maneuver.travel_type || "",
+//                "verbal_alert": maneuver.verbal_alert || "",
+//                "verbal_post": maneuver.verbal_post || "",
+//                "verbal_pre": maneuver.verbal_pre || "",
+//            };
+//        });
+//        navigator.maneuvers = m;
+//    }
 
     function setRoute(route, amend) {
         // Set new route
         navigatorBase.setRoute(route);
         provider = route.provider;
-        if (route.maneuvers != null) {
-            setManeuvers(route.maneuvers);
-        }
+//        if (route.maneuvers != null) {
+//            setManeuvers(route.maneuvers);
+//        }
         saveRoute(route);
         if (!amend) app.setModeExploreRoute();
     }

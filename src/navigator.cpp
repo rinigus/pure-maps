@@ -65,6 +65,8 @@ void Navigator::clearRoute()
   SET(manTime, QLatin1String("-"));
   SET(onRoute, false);
   SET(street, "");
+
+  m_maneuvers_model.clear();
 }
 
 void Navigator::resetPrompts()
@@ -479,8 +481,10 @@ void Navigator::setRoute(QVariantMap m)
 
       Maneuver m(mc);
       m.duration_on_route = duration_on_route;
+      m.duration_txt = m.duration > 59 ? timeToStr(m.duration) : QString();
       m.length = man_length;
       m.length_on_route = length_on_route;
+      m.length_txt = distanceToStr(S2Earth::RadiansToMeters(m.length));
       m_maneuvers.push_back(m);
       length_on_route += man_length;
       duration_on_route += m.duration;
@@ -588,6 +592,7 @@ void Navigator::setRoute(QVariantMap m)
 
   SET(totalDist, distanceToStr(m_route_length_m));
   SET(totalTime, timeToStr(m_route_duration));
+  m_maneuvers_model.setManeuvers(m_maneuvers);
 }
 
 

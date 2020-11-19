@@ -18,6 +18,7 @@
 #include <s2/s2polygon.h>
 
 #include "maneuver.h"
+#include "maneuvermodel.h"
 #include "prompt.h"
 
 class Navigator : public QObject
@@ -44,6 +45,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
   Q_PROPERTY(QVariantList route READ route NOTIFY routeChanged)
+  Q_PROPERTY(ManeuverModel* maneuvers READ maneuvers)
 
 public:
   explicit Navigator(QObject *parent = nullptr);
@@ -73,6 +75,8 @@ public:
   Q_INVOKABLE void clearRoute();
   QVariantList route() const { return m_route; }
   Q_INVOKABLE void setRoute(QVariantMap m);
+
+  ManeuverModel* maneuvers() { return &m_maneuvers_model; }
 
   bool running () const { return m_running; }
   void setRunning(bool r);
@@ -196,6 +200,7 @@ private:
   QString m_units{QLatin1String("metric")};
 
   QHash<QString, QString> m_std_prompts;
+  ManeuverModel m_maneuvers_model;
 };
 
 #endif // NAVIGATOR_H

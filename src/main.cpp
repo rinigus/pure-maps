@@ -159,6 +159,7 @@ int main(int argc, char *argv[])
   qmlRegisterType<Clipboard>("org.puremaps", 1, 0, "Clipboard");
 #endif
   qmlRegisterType<Navigator>("org.puremaps", 1, 0, "NavigatorBase");
+  qmlRegisterType<ManeuverModel>("org.puremaps", 1, 0, "ManeuverList");
 
   qmlRegisterSingletonType<CmdLineParser>("org.puremaps", 1, 0, "CmdLineParser", [](QQmlEngine *, QJSEngine *) -> QObject * {
       return static_cast<QObject *>(CmdLineParser::instance());
