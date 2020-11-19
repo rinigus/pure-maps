@@ -34,7 +34,6 @@ class Application:
         self.guide = None
         self.history = poor.HistoryManager()
         self.magfield = poor.MagField()
-        self.narrative = poor.Narrative()
         self.router = None
         self.sun = poor.Sun()
         self._voice = {}
@@ -67,8 +66,6 @@ class Application:
         poor.conf.write()
         print("Calling self.history.write")
         self.history.write()
-        print("Calling self.narrative.quit")
-        self.narrative.quit()
         print("Closing voice engines")
         for i in self._voice.keys(): self._voice[i].quit()
         print("All quit methods called")

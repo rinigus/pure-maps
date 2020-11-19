@@ -56,7 +56,6 @@ from poor.magfield import MagField
 from poor.router import Router
 from poor.sun import Sun
 from poor.voice import VoiceGenerator
-from poor.narrative import Narrative
 from poor.application import Application
 
 assert Application
@@ -76,7 +75,6 @@ assert LOCALE_DIR
 assert MagField
 assert Map
 assert MapManager
-assert Narrative
 assert polysimp
 assert Router
 assert storage
