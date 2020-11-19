@@ -580,9 +580,9 @@ void Navigator::setRoute(QVariantMap m)
         }
     }
 
-  for (auto p: prompts)
-    qDebug() << p.dist_m << p.dist_m + p.length() << p.time << p.time+p.duration()
-             << p.importance << p.flagged << p.text;
+//  for (auto p: prompts)
+//    qDebug() << p.dist_m << p.dist_m + p.length() << p.time << p.time+p.duration()
+//             << p.importance << p.flagged << p.text;
 
   for (auto p: prompts)
     if (!p.flagged)
