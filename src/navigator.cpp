@@ -51,10 +51,8 @@ void Navigator::clearRoute()
   setRunning(false);
   m_polyline.release();
   m_route.clear();
-  emit routeChanged();
 
   m_distance_traveled_m = 0;
-  emit progressChanged();
 
   SET(totalDist, QLatin1String());
   SET(totalTime, QLatin1String());
@@ -67,6 +65,9 @@ void Navigator::clearRoute()
   SET(street, "");
 
   m_maneuvers_model.clear();
+
+  emit progressChanged();
+  emit routeChanged();
 }
 
 void Navigator::resetPrompts()
@@ -421,8 +422,6 @@ void Navigator::setRoute(QVariantMap m)
       m_route.append(QVariant::fromValue(c));
     }
 
-  emit routeChanged();
-
   m_polyline.reset(new S2Polyline(coor));
 
   // fill index
@@ -593,6 +592,8 @@ void Navigator::setRoute(QVariantMap m)
   SET(totalDist, distanceToStr(m_route_length_m));
   SET(totalTime, timeToStr(m_route_duration));
   m_maneuvers_model.setManeuvers(m_maneuvers);
+
+  emit routeChanged();
 }
 
 

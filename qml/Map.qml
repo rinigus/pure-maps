@@ -261,8 +261,10 @@ MapboxMap {
 
     Connections {
         target: app.navigator
-        onManeuversChanged: updateManeuvers();
-        onRouteChanged: updateRoute();
+        onRouteChanged: {
+            updateRoute();
+            updateManeuvers();
+        }
     }
 
     Connections {
@@ -567,8 +569,8 @@ MapboxMap {
     function updateManeuvers() {
         // Update maneuver marker on the map.
         if (!app.navigator) return;
-        var coords = Util.pluck(app.navigator.maneuvers, "coordinate");
-        var names  = Util.pluck(app.navigator.maneuvers, "name");
+        var coords = app.navigator.maneuvers.coordinates();
+        var names  = app.navigator.maneuvers.names();
         map.updateSourcePoints(map.sources.maneuvers, coords, names);
     }
 

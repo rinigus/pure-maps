@@ -13,7 +13,7 @@ class ManeuverModel : public QAbstractListModel
   Q_OBJECT
 
   enum RoleNames { CoordinateRole = Qt::UserRole + 1,
-                   DurationRole, IconRole,
+                   DurationRole, IconRole, NameRole,
                    LengthRole, NarrativeRole,
                    ArriveRole, DepartRole,
                    SignRole };
@@ -27,6 +27,9 @@ public:
 
   void clear();
   void setManeuvers(const std::vector<Maneuver> &maneuvers);
+
+  Q_INVOKABLE QVariantList coordinates() const;
+  Q_INVOKABLE QStringList names() const;
 
 private:
   std::vector<Maneuver> m_maneuvers;

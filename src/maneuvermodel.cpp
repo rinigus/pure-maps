@@ -24,6 +24,7 @@ QHash<int, QByteArray> ManeuverModel::roleNames() const
       { RoleNames::CoordinateRole, QByteArrayLiteral("coordinate") },
       { RoleNames::DurationRole, QByteArrayLiteral("duration") },
       { RoleNames::IconRole, QByteArrayLiteral("icon") },
+      { RoleNames::NameRole, QByteArrayLiteral("name") },
       { RoleNames::LengthRole, QByteArrayLiteral("length") },
       { RoleNames::NarrativeRole, QByteArrayLiteral("narrative") },
       { RoleNames::ArriveRole, QByteArrayLiteral("arrive") },
@@ -45,6 +46,8 @@ QVariant ManeuverModel::data(const QModelIndex &index, int role) const
       return mc.duration_txt;
     case RoleNames::IconRole:
       return mc.icon;
+    case RoleNames::NameRole:
+      return mc.name;
     case RoleNames::LengthRole:
       return mc.length_txt;
     case RoleNames::NarrativeRole:
@@ -63,4 +66,22 @@ QVariant ManeuverModel::data(const QModelIndex &index, int role) const
 int ManeuverModel::rowCount(const QModelIndex &parent) const
 {
   return parent.isValid() ? 0 : m_maneuvers.size();
+}
+
+QVariantList ManeuverModel::coordinates() const
+{
+  QVariantList cl;
+  cl.reserve(m_maneuvers.size());
+  for (auto &m: m_maneuvers)
+    cl.push_back(QVariant::fromValue(m.coordinate));
+  return cl;
+}
+
+QStringList ManeuverModel::names() const
+{
+  QStringList nl;
+  nl.reserve(m_maneuvers.size());
+  for (auto &m: m_maneuvers)
+    nl.push_back(m.name);
+  return nl;
 }
