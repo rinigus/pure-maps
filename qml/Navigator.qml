@@ -56,7 +56,13 @@ Item {
 
         property bool voicePrepared: false
 
-        onRerouteRequest: rerouteMaybe()
+        onNavigationEnded: {
+            if (app.mode === modes.navigate) {
+                notification.flash(app.tr("Destination reached"),
+                                   "navigatorStop");
+                app.setModeExploreRoute();
+            }
+        }
 
         onPromptPlay: {
             if (!app.conf.voiceNavigation) return;
@@ -67,6 +73,8 @@ Item {
             if (!app.conf.voiceNavigation) return;
             voice.prepare(text, preserve)
         }
+
+        onRerouteRequest: rerouteMaybe()
 
         onRunningChanged: {
             if (running) updatePosition();

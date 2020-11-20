@@ -309,6 +309,10 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
         }
 
       SET(onRoute, on_route);
+
+      // stop navigation if close to the end of the route
+      if (m_running && m_last_distance_along_route_m + horizontalAccuracy > m_route_length_m)
+        emit navigationEnded();
     }
   else
     {

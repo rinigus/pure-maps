@@ -111,6 +111,7 @@ signals:
   void unitsChanged();
   void promptPrepare(QString text, bool preserve);
   void promptPlay(QString text);
+  void navigationEnded();
 
 protected:
   QString distanceToStr(double meters, bool condence=true) const;
