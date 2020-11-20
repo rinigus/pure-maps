@@ -194,8 +194,8 @@ function pointsToJson(points) {
 
 function polylineToJson(polyline) {
     // Return a shallow copy of points with coordinates unpacked.
-    if (!polyline.coordinates) return {};
     var data = shallowCopy(polyline);
+    if (!polyline.coordinates) return data;
     data.x = pluck(data.coordinates, "longitude");
     data.y = pluck(data.coordinates, "latitude");
     delete data.coordinates;

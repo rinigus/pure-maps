@@ -845,6 +845,14 @@ PagePL {
 
                     ListItemLabel {
                         id: description
+                        text: voice.currentEngine ? app.tr("Selected voice engine: %1",
+                                                           voice.currentEngine) :
+                                                    app.tr("No engine available for selected language.\n\n" +
+                                                           "Pure Maps supports Mimic, Flite, PicoTTS, and " +
+                                                           "Espeak TTS engines. Unless you are using Pure Maps " +
+                                                           "through Flatpak or OpenStore, the engines have " +
+                                                           "to be installed separately. Sailfish OS users " +
+                                                           "can find the engines at OpenRepos.")
                         truncMode: truncModes.none
                         wrapMode: Text.WordWrap
                     }
@@ -853,42 +861,20 @@ PagePL {
                         height: styler.themePaddingLarge
                     }
 
-                    Timer {
-                        interval: 500
-                        running: testingColumn.message
-                        repeat: true
-                        onTriggered: {
-                            console.log("Waiting for WAV file")
-                            py.call("poor.app.voice_tester.get_uri", [testingColumn.message], function(uri) {
-                                if (uri) {
-                                    sound.source = uri;
-                                    sound.play();
-                                    testingColumn.message = "";
-                                }
-                            });
-                        }
+                    Voice {
+                        id: voice
+                        enabled: true
+                        engine: "tester"
+                        gender: genderComboBox.values[genderComboBox.currentIndex]
+                        language: languageComboBox.values[languageComboBox.currentIndex]
                     }
 
                     function test() {
-                        py.call_sync("poor.app.voice_tester_start", []);
-                        py.call_sync("poor.app.voice_tester.set_voice",
-                                     [ languageComboBox.values[languageComboBox.currentIndex],
-                                      genderComboBox.values[genderComboBox.currentIndex] ]);
-                        var engine = py.evaluate("poor.app.voice_tester.current_engine");
-                        if (engine) description.text = app.tr("Selected voice engine: %1", engine);
-                        else {
-                            description.text = app.tr("No engine available for selected language.\n\n" +
-                                                      "Pure Maps supports Mimic, Flite, PicoTTS, and " +
-                                                      "Espeak TTS engines. Unless you are using Pure Maps " +
-                                                      "through Flatpak or OpenStore, the engines have " +
-                                                      "to be installed separately. Sailfish OS users " +
-                                                      "can find the engines at OpenRepos.");
+                        if (voice.active) {
+                            var txt = languageComboBox.phrases[languageComboBox.currentIndex];
+                            voice.prepare(txt);
+                            voice.play(txt);
                         }
-
-                        if (!py.evaluate("poor.app.voice_tester.active")) return;
-                        testingColumn.message = languageComboBox.phrases[languageComboBox.currentIndex];
-                        py.call_sync("poor.app.voice_tester.make",
-                                     [testingColumn.message]);
                     }
                 }
             }

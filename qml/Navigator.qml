@@ -18,149 +18,117 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
+import org.puremaps 1.0
 
 import "js/util.js" as Util
 
 Item {
     id: navigator
 
-    property string destDist:  ""
-    property string destEta:   ""
-    property string destTime:  ""
-    property var    direction: undefined
-    property bool   hasRoute:  false
-    property string icon:      ""
-    property var    maneuvers: []
-    property string manDist:   ""
-    property string manTime:   ""
-    property string narrative: ""
+    property string destDist:  navigatorBase.destDist
+    property string destEta:   navigatorBase.destEta
+    property string destTime:  navigatorBase.destTime
+    property var    direction: navigatorBase.onRoute ? navigatorBase.bearing : undefined
+    property bool   hasRoute:  route.length > 0
+    property string icon:      navigatorBase.icon
+    property alias  maneuvers: navigatorBase.maneuvers
+    property string manDist:   navigatorBase.manDist
+    property string manTime:   navigatorBase.manTime
+    property string narrative: navigatorBase.narrative
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
-    property real   progress:  0
+    property real   progress:  navigatorBase.progress
+    property string provider
     property int    rerouteConsecutiveErrors: 0
     property real   reroutePreviousTime: -1
     property int    rerouteTotalCalls: 0
     property bool   rerouting: false
-    property var    route:     {}
-    property var    sign:      undefined
-    property var    street:    undefined
-    property string totalDist: ""
-    property string totalTime: ""
-    property string transportMode: route && route.mode ? route.mode : ""
-    property string voiceUri:  ""
+    property var    route:     navigatorBase.route
+    property var    sign:      navigatorBase.sign
+    property var    street:    navigatorBase.street
+    property string totalDist: navigatorBase.totalDist
+    property string totalTime: navigatorBase.totalTime
+    property string transportMode: navigatorBase.mode
 
-    property bool   _voiceNavigation: app.conf.voiceNavigation && app.mode === modes.navigate
+    NavigatorBase {
+        id: navigatorBase
+        units: app.conf.units
+        running: app.mode === modes.navigate && route.length > 0
 
-    Timer {
-        // timer for updating navigation instructions
-        id: narrationTimer
-        interval: app.mode === modes.navigate ? 1000 : 3000
-        repeat: true
-        running: app.running && navigator.hasRoute
-        triggeredOnStart: true
+        property bool voicePrepared: false
 
-        property var coordPrev: QtPositioning.coordinate()
-        property var timePrev: 0
+        onRerouteRequest: rerouteMaybe()
 
-        property bool _callRunning: false
-
-        onRunningChanged: {
-            // Always update after changing timer state.
-            narrationTimer.coordPrev.longitude = 0;
-            narrationTimer.coordPrev.latitude = 0;
+        onPromptPlay: {
+            if (!app.conf.voiceNavigation) return;
+            voice.play(text);
         }
 
-        onTriggered: {
-            // Query maneuver narrative from Python and update status.
-            if (_callRunning) return;
-            var coord = app.position.coordinate;
-            var now = Date.now() / 1000;
-            // avoid updating with invalid coordinate or too soon unless we don't have total data
-            if (app.navigator.totalDist) {
-                if (now - timePrev < 60 &&
-                        ( (narrationTimer.coordPrev !== QtPositioning.coordinate() && coord.distanceTo(narrationTimer.coordPrev) < 10) ||
-                         coord === QtPositioning.coordinate() )) return;
-            }
-            _callRunning = true;
-            var accuracy = app.position.horizontalAccuracyValid ?
-                        app.position.horizontalAccuracy : null;
-            var args = [coord.longitude, coord.latitude, accuracy, app.mode === modes.navigate];
-            py.call("poor.app.narrative.get_display", args, function(status) {
-                navigator.updateStatus(status);
-                if (navigator.voiceUri && app.conf.voiceNavigation) {
-                    sound.source = navigator.voiceUri;
-                    sound.play();
-                }
-                if (status.reroute) navigator.rerouteMaybe();
+        onPromptPrepare: {
+            if (!app.conf.voiceNavigation) return;
+            voice.prepare(text, preserve)
+        }
 
-                narrationTimer.coordPrev.longitude = coord.longitude;
-                narrationTimer.coordPrev.latitude = coord.latitude;
-                narrationTimer.timePrev = now;
-                _callRunning = false;
-            });
+        onRunningChanged: {
+            if (running) updatePosition();
+
+            if (running && app.conf.voiceNavigation) {
+                // check if the call was caused by rerouting, for example
+                if (voicePrepared) return;
+
+                if (voice.active) {
+                    notification.flash(app.tr("Voice navigation on"), "navVoice");
+                    navigatorBase.prepareStandardPrompts();
+                    navigatorBase.prompt("std:starting navigation");
+                    voicePrepared = true;
+                } else {
+                    notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"),
+                                       "navVoice");
+                }
+            } else {
+                voicePrepared = false;
+            }
+        }
+
+        function updatePosition() {
+            navigatorBase.setPosition(app.position.coordinate,
+                                      app.position.horizontalAccuracy,
+                                      app.position.horizontalAccuracyValid && app.position.latitudeValid && app.position.longitudeValid);
         }
     }
 
+    Voice {
+        id: voice
+        enabled: app.conf.voiceNavigation
+        engine: "navigator"
+        gender: app.conf.voiceGender
+        language: navigatorBase.language
+    }
+
+    Connections {
+        target: app
+        onPositionChanged: navigatorBase.updatePosition()
+    }
 
     Component.onCompleted: {
         loadRoute();
     }
 
-    on_VoiceNavigationChanged: initVoiceNavigation()
-
     function clearRoute() {
-        // Remove route
-        maneuvers = [];
-        route = {};
-        py.call("poor.app.narrative.unset", [], null);
-        clearStatus();
-        hasRoute = false;
-        saveRoute();
-    }
-
-    function clearStatus() {
-        // Reset all navigation status properties.
-        destDist  = "";
-        destTime  = "";
-        direction = undefined;
-        icon      = "";
-        manDist   = "";
-        manTime   = "";
-        narrative = "";
-        progress  = 0;
-        sign      = undefined;
-        street    = undefined;
-        totalDist = "";
-        totalTime = "";
-        voiceUri  = "";
+        navigatorBase.clearRoute();
+        provider = "";
+        saveRoute({});
     }
 
     function getDestination() {
         // Return coordinates of the route destination.
-        var destination = navigator.route.coordinates[navigator.route.coordinates.length - 1];
+        var destination = navigator.route[navigator.route.length - 1];
         return [destination.longitude, destination.latitude];
-    }
-
-    function initVoiceNavigation() {
-        // Initialize a TTS engine for the current routing instructions.
-        if (_voiceNavigation) {
-            var args = [app.conf.voiceGender];
-            py.call_sync("poor.app.narrative.set_voice", args);
-            var engine = py.evaluate("poor.app.narrative.voice_engine");
-            if (engine) {
-                notification.flash(app.tr("Voice navigation on"), "navVoice");
-                app.playMaybe("std:starting navigation");
-            } else
-                notification.flash(app.tr("Voice navigation unavailable: missing Text-to-Speech (TTS) engine for selected language"),
-                                   "navVoice");
-        } else {
-            py.call_sync("poor.app.narrative.unset_voice", []);
-        }
     }
 
     function loadRoute() {
         // Restore route polyline from JSON file.
         py.call("poor.storage.read_route", [], function(data) {
-            data.x && data.x.length > 0 && setRoute(data);
+            if (data.x && data.x.length > 0) setRoute(data);
         });
     }
 
@@ -169,7 +137,7 @@ Item {
         if (rerouting) return;
         var notifyId = "app reroute";
         app.notification.hold(app.tr("Rerouting"), notifyId);
-        app.playMaybe("std:rerouting");
+        navigatorBase.prompt("std:rerouting");
         rerouting = true;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
@@ -181,16 +149,16 @@ Item {
                 route = route[0];
             if (route && route.error && route.message) {
                 app.notification.flash(app.tr("Rerouting failed: %1").arg(route.message), notifyId);
-                app.playMaybe("std:rerouting failed");
+                navigatorBase.prompt("std:rerouting failed");
                 rerouteConsecutiveErrors++;
             } else if (route && route.x && route.x.length > 0) {
                 app.notification.flash(app.tr("New route found"), notifyId);
-                app.playMaybe("std:new route found");
+                navigatorBase.prompt("std:new route found");
                 setRoute(route, true);
                 rerouteConsecutiveErrors = 0;
             } else {
                 app.notification.flash(app.tr("Rerouting failed"), notifyId);
-                app.playMaybe("std:rerouting failed");
+                navigatorBase.prompt("std:rerouting failed");
                 rerouteConsecutiveErrors++;
             }
             reroutePreviousTime = Date.now();
@@ -221,76 +189,18 @@ Item {
         }
     }
 
-    function setManeuvers(maneuvers) {
-        var m = maneuvers.map(function (maneuver) {
-            return {
-                "arrive_instruction": maneuver.arrive_instruction || "",
-                "depart_instruction": maneuver.depart_instruction || "",
-                "coordinate": QtPositioning.coordinate(maneuver.y, maneuver.x),
-                "duration": maneuver.duration || 0,
-                "icon": maneuver.icon || "flag",
-                // Needed to have separate layers via filters.
-                "name": maneuver.passive ? "passive" : "active",
-                "narrative": maneuver.narrative || "",
-                "passive": maneuver.passive || false,
-                "sign": maneuver.sign || undefined,
-                "street": maneuver.street|| undefined,
-                "travel_type": maneuver.travel_type || "",
-                "verbal_alert": maneuver.verbal_alert || "",
-                "verbal_post": maneuver.verbal_post || "",
-                "verbal_pre": maneuver.verbal_pre || "",
-            };
-        });
-        navigator.maneuvers = m;
-        py.call("poor.app.narrative.set_maneuvers", [maneuvers], null);
+    function saveRoute(route_in) {
+        // Save route polyline to JSON file.
+        var data = Util.polylineToJson(route_in);
+        py.call_sync("poor.storage.write_route", [data]);
     }
 
     function setRoute(route, amend) {
         // Set new route
-        clearRoute();
-        route.coordinates = route.x.map(function(value, i) {
-            return QtPositioning.coordinate(route.y[i], route.x[i]);
-        });
-        navigator.route = route;
-        py.call("poor.app.narrative.set_language", [route.language || "en"], null);
-        py.call("poor.app.narrative.set_mode", [route.mode || "car"], null);
-        py.call("poor.app.narrative.set_route", [route.x, route.y], function() {
-            navigator.hasRoute = true;
-        });
-        if (route.maneuvers !== undefined && route.maneuvers !== null) {
-            //navigator.route.maneuvers = route.maneuvers;
-            setManeuvers(route.maneuvers);
-        }
-        saveRoute();
+        navigatorBase.setRoute(route);
+        provider = route.provider;
+        saveRoute(route);
         if (!amend) app.setModeExploreRoute();
-    }
-
-    function saveRoute() {
-        // Save route polyline to JSON file.
-        var data = Util.polylineToJson(navigator.route);
-        py.call_sync("poor.storage.write_route", [data]);
-    }
-
-    function updateStatus(data) {
-        // Update navigation status with data from Python backend.
-        if (!data) return;
-        destDist  = data.dest_dist  || "";
-        destEta   = data.dest_eta   || "";
-        destTime  = data.dest_time  || "";
-        if (data.direction !== undefined && data.direction !== null) direction = data.direction;
-        else direction = undefined;
-        icon      = data.icon       || "";
-        manDist   = data.man_dist   || "";
-        manTime   = data.man_time   || "";
-        narrative = data.narrative  || "";
-        progress  = data.progress   || 0;
-        // reroute checked in narration timer and clashes with the method name.
-        // no need to set it as a property
-        sign      = data.sign       || undefined;
-        street    = data.street     || undefined;
-        totalDist = data.total_dist || "";
-        totalTime = data.total_time || "";
-        voiceUri  = data.voice_uri  || "";
     }
 
 }

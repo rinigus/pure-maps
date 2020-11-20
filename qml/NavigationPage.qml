@@ -155,7 +155,6 @@ PagePL {
 
     onPageStatusActivating: {
         if (!app.narrativePageSeen) {
-            narrative.populate();
             app.narrativePageSeen = true;
         }
     }

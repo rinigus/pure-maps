@@ -84,7 +84,7 @@ Item {
             anchors.topMargin: styler.themePaddingMedium
             anchors.right: button.left
             anchors.rightMargin: styler.themePaddingMedium
-            height: destLabel.height
+            height: Math.max(destLabel.height, destEta.height)
             states: [
                 State {
                     when: extrasAndCompact.canCenter

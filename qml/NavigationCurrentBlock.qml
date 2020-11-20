@@ -249,15 +249,16 @@ Item {
         truncMode: truncModes.fade
         verticalAlignment: Text.AlignTop
 
-        property string streetName: {
-            if (!block.street) return "";
-            var s = "";
-            for (var i in block.street) {
-                if (s != "") s += "; "
-                s += block.street[i];
-            }
-            return s;
-        }
+        property string streetName: block.street ? block.street : ""
+//        {
+//            if (!block.street) return "";
+//            var s = "";
+//            for (var i in block.street) {
+//                if (s != "") s += "; "
+//                s += block.street[i];
+//            }
+//            return s;
+//        }
     }
 
     LabelPL {

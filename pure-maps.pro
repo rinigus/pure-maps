@@ -212,14 +212,22 @@ SOURCES += src/main.cpp \
     src/cmdlineparser.cpp \
     src/commander.cpp \
     src/config.cpp \
-    src/dbusroot.cpp
+    src/dbusroot.cpp \
+    src/maneuver.cpp \
+    src/maneuvermodel.cpp \
+    src/navigator.cpp \
+    src/prompt.cpp
 
 HEADERS += \
     src/clipboard.h \
     src/cmdlineparser.h \
     src/commander.h \
     src/config.h \
-    src/dbusroot.h
+    src/dbusroot.h \
+    src/maneuver.h \
+    src/maneuvermodel.h \
+    src/navigator.h \
+    src/prompt.h
 
 OTHER_FILES += rpm/harbour-pure-maps.spec
 OTHER_FILES += qml/platform.generic/*.qml
@@ -234,6 +242,16 @@ CONFIG(release, debug|release) {
     DEFINES += QT_NO_WARNING_OUTPUT QT_NO_DEBUG_OUTPUT
 }
 
+# extra libraries
+!isEmpty(S2INCLUDES) {
+    INCLUDEPATH += $${S2INCLUDES}
+}
+!isEmpty(S2LIBS) {
+    LIBS += $${S2LIBS}
+}
+
+# specify s2 requirement
+LIBS += -ls2
 
 # translations
 DISTFILES += $${TARGET}.desktop

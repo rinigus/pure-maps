@@ -64,11 +64,11 @@ MapboxMap {
             if (app.transportMode === "foot" || app.transportMode === "bicycle")
                 return compass.azimuth;
         }
-        // prefer map matched direction, if available
-        if (gps.directionValid) return gps.direction;
         // direction as calculated along the route
         if (app.navigator.direction!==undefined && app.navigator.direction!==null)
             return app.navigator.direction;
+        // prefer map matched direction, if available
+        if (gps.directionValid) return gps.direction;
         // direction calculated on the basis of gps coordinates
         if (gps.directionCalculated) return gps.direction;
         return undefined;
@@ -261,8 +261,10 @@ MapboxMap {
 
     Connections {
         target: app.navigator
-        onManeuversChanged: updateManeuvers();
-        onRouteChanged: updateRoute();
+        onRouteChanged: {
+            updateRoute();
+            updateManeuvers();
+        }
     }
 
     Connections {
@@ -412,7 +414,7 @@ MapboxMap {
         // Set center and zoom so that the whole route is visible.
         map.autoCenter = false;
         map.autoRotate = false;
-        map.fitView(app.navigator.route.coordinates, true);
+        map.fitView(app.navigator.route, true);
     }
 
     function initIcons() {
@@ -567,8 +569,8 @@ MapboxMap {
     function updateManeuvers() {
         // Update maneuver marker on the map.
         if (!app.navigator) return;
-        var coords = Util.pluck(app.navigator.maneuvers, "coordinate");
-        var names  = Util.pluck(app.navigator.maneuvers, "name");
+        var coords = app.navigator.maneuvers.coordinates();
+        var names  = app.navigator.maneuvers.names();
         map.updateSourcePoints(map.sources.maneuvers, coords, names);
     }
 
@@ -609,8 +611,8 @@ MapboxMap {
 
     function updateRoute() {
         // Update route polyline on the map.
-        if (app.navigator && app.navigator.route.coordinates)
-            map.updateSourceLine(map.sources.route, app.navigator.route.coordinates);
+        if (app.navigator && app.navigator.route)
+            map.updateSourceLine(map.sources.route, app.navigator.route);
         else
             map.updateSourceLine(map.sources.route, []);
     }

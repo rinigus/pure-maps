@@ -14,6 +14,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#######################################################################
+#
+# NB! This code is kept for reference only and is not used anymore. It
+# is replaced with C++ class Navigator
+#
+#######################################################################
+#
 
 """Narration of routing maneuvers."""
 

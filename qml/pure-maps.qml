@@ -93,22 +93,6 @@ ApplicationWindowPL {
         loops: 1
     }
 
-    Timer {
-        id: voicePromptRetry
-        interval: 500
-        running: false
-        repeat: false
-
-        property string message
-        property int tries
-
-        onMessageChanged: tries = 0
-        onTriggered: {
-            tries += 1;
-            app.playMaybe(message);
-        }
-    }
-
     Connections {
         target: app.navigator
         onRouteChanged: app.narrativePageSeen = false
@@ -234,21 +218,9 @@ ApplicationWindowPL {
         app.push(Qt.resolvedUrl("MapErrorPage.qml"), { "lastError": error } )
     }
 
-    function playMaybe(message) {
-        // Play message via TTS engine if applicable.
-        if (!app.conf.voiceNavigation) return;
-        var fun = "poor.app.narrative.get_message_voice_uri";
-        py.call(fun, [message], function(uri) {
-            if (uri) {
-                sound.source = uri;
-                sound.play();
-            } else {
-                if (voicePromptRetry.message !== message)
-                    voicePromptRetry.message = message;
-                if (voicePromptRetry.tries < 10)
-                    voicePromptRetry.start();
-            }
-        });
+    function play(uri) {
+        sound.source = uri;
+        sound.play();
     }
 
     function push(pagefile, options, clearAll) {

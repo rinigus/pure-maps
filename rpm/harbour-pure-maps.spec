@@ -9,6 +9,7 @@
 %if 0%{?sailfishos}
 # "Harbour RPM packages should not provide anything."
 %define __provides_exclude_from ^%{_datadir}/.*$
+%define __requires_exclude ^libs2.*$
 %endif
 
 %if 0%{?sailfishos}
@@ -34,6 +35,7 @@ BuildRequires: pkgconfig(Qt5Qml)
 BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5Positioning)
 BuildRequires: pkgconfig(Qt5DBus)
+BuildRequires: s2geometry-devel
 
 Requires: mapboxgl-qml >= 1.7.0
 
@@ -81,6 +83,12 @@ make %{?_smp_mflags}
 
 %install
 make INSTALL_ROOT=%{buildroot} install
+
+%if 0%{?sailfishos}
+# ship some shared libraries
+mkdir -p %{buildroot}%{_datadir}/%{name}/lib
+cp %{_libdir}/libs2.so %{buildroot}%{_datadir}/%{name}/lib
+%endif # sailfishos
 
 %files
 %defattr(-,root,root,-)

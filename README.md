@@ -1,5 +1,13 @@
 # Pure Maps
 
+[![Latest release](https://img.shields.io/github/v/release/rinigus/pure-maps)](https://github.com/rinigus/pure-maps/releases)
+[![SFOS](https://img.shields.io/badge/SailfishOS-OpenRepos-1CA198)](https://openrepos.net/content/rinigus/pure-maps)
+[![UBPorts](https://img.shields.io/badge/Ubuntu%20Touch-OpenStore-292929)](https://open-store.io/app/pure-maps.jonnius)
+[![Flatpak](https://img.shields.io/badge/Flatpak-Flathub-4A86CF)](https://flathub.org/apps/details/io.github.rinigus.PureMaps)
+[![Matrix](https://img.shields.io/badge/matrix.org-%23pure--maps-blue)](https://matrix.to/#/#pure-maps:matrix.org)
+[![TMO](https://img.shields.io/badge/forum-T.M.O-FB9200)](https://talk.maemo.org/showthread.php?t=100442)
+
+
 Pure Maps is an application for Sailfish OS and Linux to display
 vector and raster maps, places, routes, and provide navigation
 instructions with a flexible selection of data and service providers.
@@ -12,14 +20,15 @@ that was made to continue its development.
 
 ## User feedback
 
-There are two main communication channels with the users: GitHub and a
-thread at
-[TMO](https://talk.maemo.org/showthread.php?t=100442).
+There are three main communication channels with the users: GitHub,
+Matrix channel
+[#pure-maps:matrix.org](https://matrix.to/#/#pure-maps:matrix.org) and
+a thread at [TMO](https://talk.maemo.org/showthread.php?t=100442).
 
 Please use Github issues to address specific problems and development
 requests. General discussion is expected either through corresponding
-issues opened by maintainer or TMO thread. Please note that users from
-all platforms are welcome at TMO, not only current Sailfish OS users.
+issues, Matrix channel, or TMO thread. Please note that users from all
+platforms are welcome at TMO, not only current Sailfish OS users.
 
 Currently there is no homepage setup for Pure Maps. You are welcome to
 help by working on the corresponding
@@ -92,6 +101,7 @@ are needed:
 * Mapbox GL Native, Qt version, use the packaged version at https://github.com/rinigus/pkg-mapbox-gl-native
 * Mapbox GL QML, unofficial QML bindings, https://github.com/rinigus/mapbox-gl-qml
 * GPXPy, https://github.com/tkrajina/gpxpy
+* S2 Geometry Library, https://github.com/google/s2geometry
 
 When developing with Kirigami using flatpak builder, dependencies will
 be pulled and installed in flatpak. See instructions regarding
