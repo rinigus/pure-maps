@@ -35,7 +35,7 @@ QHash<int, QByteArray> ManeuverModel::roleNames() const
 
 QVariant ManeuverModel::data(const QModelIndex &index, int role) const
 {
-  if (!index.isValid() || index.row() < 0 || index.row() >= m_maneuvers.size())
+  if (!index.isValid() || index.row() < 0 || (size_t)index.row() >= m_maneuvers.size())
     return {};
 
   const Maneuver &mc = m_maneuvers[index.row()];
