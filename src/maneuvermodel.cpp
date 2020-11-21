@@ -7,14 +7,14 @@ ManeuverModel::ManeuverModel()
 void ManeuverModel::clear()
 {
   beginResetModel();
-  m_maneuvers.clear();
+  m_maneuvers = nullptr;
   endResetModel();
 }
 
 void ManeuverModel::setManeuvers(const std::vector<Maneuver> &maneuvers)
 {
   beginResetModel();
-  m_maneuvers = maneuvers;
+  m_maneuvers = &maneuvers;
   endResetModel();
 }
 
@@ -35,10 +35,12 @@ QHash<int, QByteArray> ManeuverModel::roleNames() const
 
 QVariant ManeuverModel::data(const QModelIndex &index, int role) const
 {
-  if (!index.isValid() || index.row() < 0 || (size_t)index.row() >= m_maneuvers.size())
+  if (!index.isValid() || index.row() < 0 ||
+      !m_maneuvers ||
+      (size_t)index.row() >= m_maneuvers->size())
     return {};
 
-  const Maneuver &mc = m_maneuvers[index.row()];
+  const Maneuver &mc = (*m_maneuvers)[index.row()];
   switch (role) {
     case RoleNames::CoordinateRole:
       return QVariant::fromValue(mc.coordinate);
@@ -65,14 +67,15 @@ QVariant ManeuverModel::data(const QModelIndex &index, int role) const
 
 int ManeuverModel::rowCount(const QModelIndex &parent) const
 {
-  return parent.isValid() ? 0 : m_maneuvers.size();
+  return parent.isValid() || !m_maneuvers ? 0 : m_maneuvers->size();
 }
 
 QVariantList ManeuverModel::coordinates() const
 {
   QVariantList cl;
-  cl.reserve(m_maneuvers.size());
-  for (auto &m: m_maneuvers)
+  if (!m_maneuvers) return cl;
+  cl.reserve(m_maneuvers->size());
+  for (auto &m: *m_maneuvers)
     cl.push_back(QVariant::fromValue(m.coordinate));
   return cl;
 }
@@ -80,8 +83,9 @@ QVariantList ManeuverModel::coordinates() const
 QStringList ManeuverModel::names() const
 {
   QStringList nl;
-  nl.reserve(m_maneuvers.size());
-  for (auto &m: m_maneuvers)
+  if (!m_maneuvers) return nl;
+  nl.reserve(m_maneuvers->size());
+  for (auto &m: *m_maneuvers)
     nl.push_back(m.name);
   return nl;
 }

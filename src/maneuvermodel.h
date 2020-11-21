@@ -32,7 +32,7 @@ public:
   Q_INVOKABLE QStringList names() const;
 
 private:
-  std::vector<Maneuver> m_maneuvers;
+  const std::vector<Maneuver> *m_maneuvers;
 };
 
 #endif // MANEUVERMODEL_H
