@@ -1,0 +1,5 @@
+from Config import *
+addFilter("arch-dependent-file-in-usr-share")
+addFilter("library-without-ldconfig-postin")
+addFilter("library-without-ldconfig-postun")
+addFilter("filename-too-long-for-joliet")

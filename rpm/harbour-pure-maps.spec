@@ -26,6 +26,9 @@ License: GPLv3+
 URL:     https://github.com/rinigus/pure-maps
 Source:  %{name}-%{version}.tar.xz
 Source1: apikeys.py
+%if 0%{?sailfishos}
+Source101:  harbour-pure-maps-rpmlintrc
+%endif
 
 BuildRequires: gettext
 BuildRequires: make
