@@ -88,6 +88,10 @@ make INSTALL_ROOT=%{buildroot} install
 # ship some shared libraries
 mkdir -p %{buildroot}%{_datadir}/%{name}/lib
 cp %{_libdir}/libs2.so %{buildroot}%{_datadir}/%{name}/lib
+
+# strip executable bit from all libraries
+chmod -x %{buildroot}%{_datadir}/%{name}/lib/*.so*
+
 %endif # sailfishos
 
 %files
