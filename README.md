@@ -30,8 +30,8 @@ requests. General discussion is expected either through corresponding
 issues, Matrix channel, or TMO thread. Please note that users from all
 platforms are welcome at TMO, not only current Sailfish OS users.
 
-Currently there is no homepage setup for Pure Maps. You are welcome to
-help by working on the corresponding
+Currently, the homepage for Pure Maps is a placeholder. You are
+welcome to help by working on the corresponding
 [issue](https://github.com/rinigus/pure-maps/issues/400).
 
 
