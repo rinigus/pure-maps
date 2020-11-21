@@ -4,6 +4,8 @@
 [![SFOS](https://img.shields.io/badge/SailfishOS-OpenRepos-1CA198)](https://openrepos.net/content/rinigus/pure-maps)
 [![UBPorts](https://img.shields.io/badge/Ubuntu%20Touch-OpenStore-292929)](https://open-store.io/app/pure-maps.jonnius)
 [![Flatpak](https://img.shields.io/badge/Flatpak-Flathub-4A86CF)](https://flathub.org/apps/details/io.github.rinigus.PureMaps)
+[![Fedora](https://img.shields.io/badge/O.B.S-Fedora-3C6EB4)](https://build.opensuse.org/package/show/home:rinigus:maps/pure-maps)
+
 [![Matrix](https://img.shields.io/badge/matrix.org-%23pure--maps-blue)](https://matrix.to/#/#pure-maps:matrix.org)
 [![TMO](https://img.shields.io/badge/forum-T.M.O-FB9200)](https://talk.maemo.org/showthread.php?t=100442)
 
