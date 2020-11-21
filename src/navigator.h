@@ -161,7 +161,6 @@ private:
   std::vector<Maneuver> m_maneuvers;
   QString m_mode{"car"};
   std::deque<PointInfo> m_points;
-  std::unique_ptr<S2Polyline> m_polyline;
   std::vector<Prompt> m_prompts;
   QVariantList m_route;
   QTimer m_timer;

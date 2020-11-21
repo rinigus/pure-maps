@@ -49,7 +49,7 @@ void Navigator::setupTranslator()
 void Navigator::clearRoute()
 {
   setRunning(false);
-  m_polyline.release();
+  m_index.release();
   m_route.clear();
 
   m_distance_traveled_m = 0;
@@ -426,13 +426,15 @@ void Navigator::setRoute(QVariantMap m)
       m_route.append(QVariant::fromValue(c));
     }
 
-  m_polyline.reset(new S2Polyline(coor));
-
-  // fill index
+  // fill index and set route
   m_index.reset(new MutableS2ShapeIndex);
 
+  std::unique_ptr<S2Polyline> polyline(new S2Polyline(coor));
+  int shape_id = m_index->Add(std::unique_ptr<S2Polyline::OwningShape>(
+                                new S2Polyline::OwningShape(std::move(polyline))
+                                ));
+
   // determine each edge length
-  int shape_id = m_index->Add(std::unique_ptr<S2Shape>(new S2Polyline::Shape(m_polyline.get())));
   const S2Shape *shape = m_index->shape(shape_id);
   double route_length = 0.0;
   for (int i=0; i < shape->num_edges(); ++i)
