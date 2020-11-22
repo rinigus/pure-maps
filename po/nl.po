@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-30 21:13+0200\n"
+"POT-Creation-Date: 2020-11-22 13:56+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
@@ -40,7 +40,7 @@ msgid "Point from Plus code"
 msgstr "Punt van pluscode"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:111
+#: poor/router.py:134
 msgid "Connection timed out"
 msgstr "Verbinding verlopen"
 
@@ -133,68 +133,71 @@ msgstr "HERE-app-ID"
 msgid "HERE App Code"
 msgstr "HERE-appcode"
 
-#: poor/narrative.py:131
+#: poor/narrative.py:139
 #, python-brace-format
 msgid "In {distance}, {direction}"
 msgstr "Over {distance}, {direction}"
 
-#: poor/narrative.py:222 poor/narrative.py:224
+#: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
+#: poor/router.py:105
 msgid "Exit: "
 msgstr "Uitrit:"
 
-#: poor/narrative.py:621 qml/Navigator.qml:187
+#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
 msgid "New route found"
 msgstr "Nieuwe route gevonden"
 
-#: poor/narrative.py:622 qml/Navigator.qml:171
+#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
 msgid "Rerouting"
 msgstr "Route wordt herberekend"
 
-#: poor/narrative.py:623 qml/Navigator.qml:192
+#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
 msgid "Rerouting failed"
 msgstr "Routeherberekening mislukt"
 
-#: poor/narrative.py:624
+#: poor/narrative.py:632 src/navigator.cpp:742
 msgid "Starting navigation"
 msgstr "Navigatie beginnen"
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "miles"
 msgstr "mijl"
 
-#: poor/util.py:231 qml/Meters.qml:85
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231
+#: poor/util.py:231 src/navigator.cpp:653
 msgid "feet"
 msgstr "voet"
 
-#: poor/util.py:242 qml/Meters.qml:95
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242
+#: poor/util.py:242 src/navigator.cpp:665
 msgid "yards"
 msgstr "yard"
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "kilometers"
 msgstr "kilometer"
 
-#: poor/util.py:253 qml/Meters.qml:105
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253
+#: poor/util.py:253 src/navigator.cpp:677
 msgid "meters"
 msgstr "meter"
 
@@ -627,7 +630,7 @@ msgstr "Recente zoekopdrachten (%1)"
 
 #: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
 msgid "Change provider (%1)"
-msgstr ""
+msgstr "Andere dienst kiezen (%1)"
 
 #: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:88 qml/RootPage.qml:26
 msgid "Map"
@@ -692,6 +695,12 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Je gebruikt een offline-profiel. Zorg er voor dat OSM Scout Server "
+"geïnstalleerd en actief is. OSM Scout Server is beschikbaar in OpenRepos "
+"(Sailfish OS), OpenStore (UBPorts), Flathub en wellicht in de pakketbronnen "
+"van je distributie. Bekijk voor meer informatie de <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server-"
+"handleiding</a>."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -749,18 +758,22 @@ msgstr "Huidige positie delen (nog niet klaar)"
 msgid "Share Current Position"
 msgstr "Huidige positie delen"
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:332
-#: qml/NavigationCurrentBlock.qml:334 qml/NavigationSpeedBlock.qml:84
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:333
+#: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
 #: qml/NavigationSpeedBlock.qml:86
 msgid "mph"
 msgstr "mph"
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:336
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
 #: qml/NavigationSpeedBlock.qml:88
 msgid "km/h"
 msgstr "km/u"
 
-#: qml/NarrativeItem.qml:117
+#: qml/NarrativeItem.qml:120
+msgid "Continue for %1 (%2)."
+msgstr ""
+
+#: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
 msgstr "Ga door voor %1."
 
@@ -820,11 +833,15 @@ msgstr "Geschatte aankomsttijd"
 msgid "EXIT"
 msgstr "UITRIT"
 
-#: qml/Navigator.qml:150
+#: qml/Navigator.qml:61
+msgid "Destination reached"
+msgstr ""
+
+#: qml/Navigator.qml:87
 msgid "Voice navigation on"
 msgstr "Stemnavigatie aan"
 
-#: qml/Navigator.qml:153
+#: qml/Navigator.qml:92
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -832,7 +849,7 @@ msgstr ""
 "Stemnavigatie niet beschikbaar: spraakmotor (TTS) voor geselecteerde taal is"
 " niet geïnstalleerd"
 
-#: qml/Navigator.qml:183
+#: qml/Navigator.qml:159
 msgid "Rerouting failed: %1"
 msgstr "Routeherberekening mislukt: %1"
 
@@ -1292,12 +1309,18 @@ msgid ""
 "is useful if you wish to receive voice navigation commands while keeping "
 "device in the pocket."
 msgstr ""
+"Je kunt aangeven of en wanneer Pure Maps het scherm ingeschakeld moet houden"
+" en op de achtergrond moet draaien. Dit is aanbevolen om te voorkomen dat "
+"het scherm wordt vergrendeld en uitgeschakeld, wat de navigatie onderbreekt."
+" Ook blijf je hierdoor gesproken instructies horen."
 
 #: qml/PreferencesPage.qml:219
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
 msgstr ""
+"Wordt alleen toegepast als Pure Maps actief is. Bij minimaliseren beheert "
+"het systeem of het scherm wordt uitgeschakeld."
 
 #: qml/PreferencesPage.qml:221
 msgid "Prevent screensaver"
@@ -1323,6 +1346,8 @@ msgid ""
 "screen is switched off. If set to 'never', usual device suspend policy is "
 "applied."
 msgstr ""
+"Staat navigeren en gesproken navigatie-instructies toe, óók als het scherm "
+"is uitgeschakeld. Stel in op 'nooit' om dit aan het systeem over te laten."
 
 #: qml/PreferencesPage.qml:238
 msgid "Prevent sleep"
@@ -1496,6 +1521,10 @@ msgid ""
 " determined, your speed is low, and, if you are navigating, only if you are "
 "by foot or on the bicycle."
 msgstr ""
+"Het kompas kan worden gebruikt om de oriëntatie van je apparaat te bepalen "
+"en de map correct uit te lijnen. Let op: het kompas wordt alleen gebruikt "
+"bij het bepalen van je positie, als je snelheid laag is en, tijdens het "
+"navigeren, alleen als je te voet of op de fiets bent."
 
 #: qml/PreferencesPage.qml:556
 msgid "Use compass for determination of the direction."
@@ -1601,6 +1630,8 @@ msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
 msgstr ""
+"Het zoomniveau kan automatisch worden aangepast op basis van je snelheid. "
+"Hier kun je de bijbehorende instellingen aanpassen."
 
 #: qml/PreferencesPage.qml:735
 msgid ""
@@ -1651,11 +1682,11 @@ msgstr "Voorkeursgeslacht. Wordt niet door alle motoren en talen ondersteund."
 msgid "Test"
 msgstr "Testen"
 
-#: qml/PreferencesPage.qml:878
+#: qml/PreferencesPage.qml:848
 msgid "Selected voice engine: %1"
 msgstr "Geselecteerde spraakmotor: %1"
 
-#: qml/PreferencesPage.qml:880
+#: qml/PreferencesPage.qml:850
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1665,11 +1696,11 @@ msgstr ""
 "\n"
 "Pure Maps biedt ondersteuning voor de Mimic-, Flite-, PicoTTS- en Espeak-TTS-motoren. Tenzij je Pure Maps gebruikt via Flatpak of OpenStore, dienen de motoren apart te worden geïnstalleerd. Sailfish OS-gebruikers kunnen deze motoren vinden op OpenRepos."
 
-#: qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:884
 msgid "Development"
 msgstr "Ontwikkeling"
 
-#: qml/PreferencesPage.qml:904
+#: qml/PreferencesPage.qml:890
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1677,7 +1708,7 @@ msgstr ""
 "Volgende opties dienen enkel voor ontwikkelingsdoeleinden. Pas ze niet aan "
 "als je niet weet wat je doet."
 
-#: qml/PreferencesPage.qml:912
+#: qml/PreferencesPage.qml:898
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1685,11 +1716,11 @@ msgstr ""
 "Stelt huidige positie in op het centrum van de huidige kaartweergave. "
 "Schakel gps-positiebepaling uit wanneer je deze optie gebruikt."
 
-#: qml/PreferencesPage.qml:913
+#: qml/PreferencesPage.qml:899
 msgid "Set position to the map center"
 msgstr "Positie instellen op centrum van kaart"
 
-#: qml/PreferencesPage.qml:920
+#: qml/PreferencesPage.qml:906
 msgid "Show current zoom level"
 msgstr "Huidig zoomniveau tonen"
 
@@ -1919,7 +1950,7 @@ msgstr "Bestand"
 
 #: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
 msgid "Reverse"
-msgstr ""
+msgstr "Omkeren"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:38
 #: routers/ValhallaSettings.qml:113
@@ -2156,14 +2187,54 @@ msgstr "Alternatieven"
 
 #: src/cmdlineparser.cpp:18
 msgid "Displays help on commandline options."
-msgstr ""
+msgstr "Toont hulp bij opdrachtregelopties."
 
 #: src/cmdlineparser.cpp:20
 msgid "Displays version information."
-msgstr ""
+msgstr "Toont de versie-informatie."
 
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
+msgstr ""
+"Toont de locatie op basis van een geo:breedtegraad,lengtegraad-uri of voert "
+"een zoekopdracht uit."
+
+#: src/navigator.cpp:103
+msgid "Position unknown"
+msgstr ""
+
+#: src/navigator.cpp:109
+msgid "Position imprecise: accuracy %1"
+msgstr ""
+
+#: src/navigator.cpp:126 src/navigator.cpp:306
+msgid "Preparing to start navigation"
+msgstr ""
+
+#: src/navigator.cpp:331
+msgid "Moving in a wrong direction"
+msgstr ""
+
+#: src/navigator.cpp:341
+msgid "Away from route"
+msgstr ""
+
+#. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
+#. and adjust the order if needed
+#: src/navigator.cpp:512 src/navigator.cpp:523
+msgid "In %2, %1"
+msgstr ""
+
+#. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
+#. hours (%1) and minutes (%2)
+#: src/navigator.cpp:695
+msgid "%1 h %2 min"
+msgstr ""
+
+#. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
+#. (%1)
+#: src/navigator.cpp:697
+msgid "%1 min"
 msgstr ""
 
 #: standard input:1

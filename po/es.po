@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-30 21:13+0200\n"
+"POT-Creation-Date: 2020-11-22 13:56+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Carmen Fernández B., 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -39,7 +39,7 @@ msgid "Point from Plus code"
 msgstr "Punto código plus"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:111
+#: poor/router.py:134
 msgid "Connection timed out"
 msgstr "Tiempo de conexión finalizado"
 
@@ -132,68 +132,71 @@ msgstr "ID de HERE"
 msgid "HERE App Code"
 msgstr "Código de HERE"
 
-#: poor/narrative.py:131
+#: poor/narrative.py:139
 #, python-brace-format
 msgid "In {distance}, {direction}"
 msgstr "A {distance}, {direction}"
 
-#: poor/narrative.py:222 poor/narrative.py:224
+#: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
+#: poor/router.py:105
 msgid "Exit: "
 msgstr "Salida: "
 
-#: poor/narrative.py:621 qml/Navigator.qml:187
+#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
 msgid "New route found"
 msgstr "Nueva ruta encontrada"
 
-#: poor/narrative.py:622 qml/Navigator.qml:171
+#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
 msgid "Rerouting"
 msgstr "Recalculando"
 
-#: poor/narrative.py:623 qml/Navigator.qml:192
+#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
 msgid "Rerouting failed"
 msgstr "Error al recalcular"
 
-#: poor/narrative.py:624
+#: poor/narrative.py:632 src/navigator.cpp:742
 msgid "Starting navigation"
 msgstr "Iniciando navegación"
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "miles"
 msgstr "millas"
 
-#: poor/util.py:231 qml/Meters.qml:85
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231
+#: poor/util.py:231 src/navigator.cpp:653
 msgid "feet"
 msgstr "pies"
 
-#: poor/util.py:242 qml/Meters.qml:95
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242
+#: poor/util.py:242 src/navigator.cpp:665
 msgid "yards"
 msgstr "yardas"
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "kilometers"
 msgstr "kilómetros"
 
-#: poor/util.py:253 qml/Meters.qml:105
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253
+#: poor/util.py:253 src/navigator.cpp:677
 msgid "meters"
 msgstr "metros"
 
@@ -626,7 +629,7 @@ msgstr "Búsquedas recientes (%1)"
 
 #: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
 msgid "Change provider (%1)"
-msgstr ""
+msgstr "Cambiar proveedor (%1)"
 
 #: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:88 qml/RootPage.qml:26
 msgid "Map"
@@ -753,18 +756,22 @@ msgstr "Compartir posición actual (no está listo)"
 msgid "Share Current Position"
 msgstr "Compartir posición actual"
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:332
-#: qml/NavigationCurrentBlock.qml:334 qml/NavigationSpeedBlock.qml:84
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:333
+#: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
 #: qml/NavigationSpeedBlock.qml:86
 msgid "mph"
 msgstr "mph"
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:336
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
 #: qml/NavigationSpeedBlock.qml:88
 msgid "km/h"
 msgstr "km/h"
 
-#: qml/NarrativeItem.qml:117
+#: qml/NarrativeItem.qml:120
+msgid "Continue for %1 (%2)."
+msgstr ""
+
+#: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
 msgstr "Sigue durante %1."
 
@@ -824,11 +831,15 @@ msgstr "Tiempo estimado de llegada"
 msgid "EXIT"
 msgstr "SALIDA"
 
-#: qml/Navigator.qml:150
+#: qml/Navigator.qml:61
+msgid "Destination reached"
+msgstr ""
+
+#: qml/Navigator.qml:87
 msgid "Voice navigation on"
 msgstr "Navegación por voz activado"
 
-#: qml/Navigator.qml:153
+#: qml/Navigator.qml:92
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -836,7 +847,7 @@ msgstr ""
 "Navegación por voz no disponible: falta motor de conversión texto-voz (TTS) "
 "para el idioma seleccionado"
 
-#: qml/Navigator.qml:183
+#: qml/Navigator.qml:159
 msgid "Rerouting failed: %1"
 msgstr "Error al recalcular: %1"
 
@@ -1670,11 +1681,11 @@ msgstr "Género preferido. Sólo soportado por algunos motores e idiomas."
 msgid "Test"
 msgstr "Probar"
 
-#: qml/PreferencesPage.qml:878
+#: qml/PreferencesPage.qml:848
 msgid "Selected voice engine: %1"
 msgstr "Motor de voz: %1"
 
-#: qml/PreferencesPage.qml:880
+#: qml/PreferencesPage.qml:850
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1684,11 +1695,11 @@ msgstr ""
 "\n"
 "Pure maps soporta los motores Mimic, Flite, PicoTTS, y Espeak TTS. Salvo que uses Pure Maps a través de Flatpak u OpenStore, los motores tienen que instalarse aparte. Los usuarios de Sailfish OS pueden buscar motores en OpenRepos."
 
-#: qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:884
 msgid "Development"
 msgstr "Desarrollo"
 
-#: qml/PreferencesPage.qml:904
+#: qml/PreferencesPage.qml:890
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1696,7 +1707,7 @@ msgstr ""
 "Las siguientes opciones son sólo para el desarrollo. Por favor, no las "
 "cambies salvo que sepas lo que estás haciendo."
 
-#: qml/PreferencesPage.qml:912
+#: qml/PreferencesPage.qml:898
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1704,11 +1715,11 @@ msgstr ""
 "Ajusta la posición actual en el centro de la vista del mapa actual. No "
 "olvides desactivar el posicionamiento GPS cuando uses esta opción."
 
-#: qml/PreferencesPage.qml:913
+#: qml/PreferencesPage.qml:899
 msgid "Set position to the map center"
 msgstr "Ajustar posición al centro del mapa"
 
-#: qml/PreferencesPage.qml:920
+#: qml/PreferencesPage.qml:906
 msgid "Show current zoom level"
 msgstr "Mostrar nivel de zoom actual"
 
@@ -1937,7 +1948,7 @@ msgstr "Archivo"
 
 #: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
 msgid "Reverse"
-msgstr ""
+msgstr "Invertir"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:38
 #: routers/ValhallaSettings.qml:113
@@ -2174,14 +2185,53 @@ msgstr "Alternativas"
 
 #: src/cmdlineparser.cpp:18
 msgid "Displays help on commandline options."
-msgstr ""
+msgstr "Muestra ayuda sobre las opciones de línea de comandos."
 
 #: src/cmdlineparser.cpp:20
 msgid "Displays version information."
-msgstr ""
+msgstr "Muestra información de la versión."
 
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
+msgstr ""
+"Mostrar la ubicación dada por geo:latitud,longitud URI o realizar búsqueda."
+
+#: src/navigator.cpp:103
+msgid "Position unknown"
+msgstr ""
+
+#: src/navigator.cpp:109
+msgid "Position imprecise: accuracy %1"
+msgstr ""
+
+#: src/navigator.cpp:126 src/navigator.cpp:306
+msgid "Preparing to start navigation"
+msgstr ""
+
+#: src/navigator.cpp:331
+msgid "Moving in a wrong direction"
+msgstr ""
+
+#: src/navigator.cpp:341
+msgid "Away from route"
+msgstr ""
+
+#. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
+#. and adjust the order if needed
+#: src/navigator.cpp:512 src/navigator.cpp:523
+msgid "In %2, %1"
+msgstr ""
+
+#. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
+#. hours (%1) and minutes (%2)
+#: src/navigator.cpp:695
+msgid "%1 h %2 min"
+msgstr ""
+
+#. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
+#. (%1)
+#: src/navigator.cpp:697
+msgid "%1 min"
 msgstr ""
 
 #: standard input:1

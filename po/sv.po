@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-30 21:13+0200\n"
+"POT-Creation-Date: 2020-11-22 13:56+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2020\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -39,7 +39,7 @@ msgid "Point from Plus code"
 msgstr "Punkt från Plus-kod"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:111
+#: poor/router.py:134
 msgid "Connection timed out"
 msgstr "Tidsgränsen för anslutning överskreds"
 
@@ -132,68 +132,71 @@ msgstr "HERE app-ID"
 msgid "HERE App Code"
 msgstr "HERE app-kod"
 
-#: poor/narrative.py:131
+#: poor/narrative.py:139
 #, python-brace-format
 msgid "In {distance}, {direction}"
 msgstr "{distance}, {direction}"
 
-#: poor/narrative.py:222 poor/narrative.py:224
+#: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
+#: poor/router.py:105
 msgid "Exit: "
 msgstr "Avfart: "
 
-#: poor/narrative.py:621 qml/Navigator.qml:187
+#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
 msgid "New route found"
 msgstr "Ny rutt hittad"
 
-#: poor/narrative.py:622 qml/Navigator.qml:171
+#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
 msgid "Rerouting"
 msgstr "Beräknar om"
 
-#: poor/narrative.py:623 qml/Navigator.qml:192
+#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
 msgid "Rerouting failed"
 msgstr "Omberäkning misslyckades"
 
-#: poor/narrative.py:624
+#: poor/narrative.py:632 src/navigator.cpp:742
 msgid "Starting navigation"
 msgstr "Startar navigering"
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "miles"
 msgstr "miles"
 
-#: poor/util.py:231 qml/Meters.qml:85
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231
+#: poor/util.py:231 src/navigator.cpp:653
 msgid "feet"
 msgstr "feet"
 
-#: poor/util.py:242 qml/Meters.qml:95
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242
+#: poor/util.py:242 src/navigator.cpp:665
 msgid "yards"
 msgstr "yards"
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "kilometers"
 msgstr "kilometer"
 
-#: poor/util.py:253 qml/Meters.qml:105
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253
+#: poor/util.py:253 src/navigator.cpp:677
 msgid "meters"
 msgstr "meter"
 
@@ -752,18 +755,22 @@ msgstr "Dela aktuell position (inte klar)"
 msgid "Share Current Position"
 msgstr "Dela aktuell position"
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:332
-#: qml/NavigationCurrentBlock.qml:334 qml/NavigationSpeedBlock.qml:84
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:333
+#: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
 #: qml/NavigationSpeedBlock.qml:86
 msgid "mph"
 msgstr "mph"
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:336
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
 #: qml/NavigationSpeedBlock.qml:88
 msgid "km/h"
 msgstr "km/h"
 
-#: qml/NarrativeItem.qml:117
+#: qml/NarrativeItem.qml:120
+msgid "Continue for %1 (%2)."
+msgstr ""
+
+#: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
 msgstr "Fortsätt %1."
 
@@ -823,11 +830,15 @@ msgstr "Beräknad ankomsttid"
 msgid "EXIT"
 msgstr "AVFART"
 
-#: qml/Navigator.qml:150
+#: qml/Navigator.qml:61
+msgid "Destination reached"
+msgstr ""
+
+#: qml/Navigator.qml:87
 msgid "Voice navigation on"
 msgstr "Röstnavigering på"
 
-#: qml/Navigator.qml:153
+#: qml/Navigator.qml:92
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -835,7 +846,7 @@ msgstr ""
 "Röstnavigering är inte tillgänglig. Text-till-tal-motor (TTS) saknas, för "
 "det önskade språket."
 
-#: qml/Navigator.qml:183
+#: qml/Navigator.qml:159
 msgid "Rerouting failed: %1"
 msgstr "Omberäkning misslyckades: %1"
 
@@ -1661,11 +1672,11 @@ msgstr "Önskat kön, Stöds endast av vissa motorer och språk."
 msgid "Test"
 msgstr "Testa"
 
-#: qml/PreferencesPage.qml:878
+#: qml/PreferencesPage.qml:848
 msgid "Selected voice engine: %1"
 msgstr "Vald röstmotor: %1"
 
-#: qml/PreferencesPage.qml:880
+#: qml/PreferencesPage.qml:850
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1675,11 +1686,11 @@ msgstr ""
 "\n"
 "Pure Maps stödjer Mimic, Flite, PicoTTS, och Espeak TTS. Om du inte använder Pure Maps via Flatpak eller OpenStore, måste motorerna installeras separat. Sailfish-användare kan hitta motorer på OpenRepos."
 
-#: qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:884
 msgid "Development"
 msgstr "Utveckling"
 
-#: qml/PreferencesPage.qml:904
+#: qml/PreferencesPage.qml:890
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1687,7 +1698,7 @@ msgstr ""
 "Följande alternativ är endast för utveckling. Ändra dem bara om du vet vad "
 "du gör."
 
-#: qml/PreferencesPage.qml:912
+#: qml/PreferencesPage.qml:898
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1695,11 +1706,11 @@ msgstr ""
 "Centrera aktuell position i aktuell kartvy. Kom ihåg att inaktivera GPS-"
 "positionering när detta alternativ används."
 
-#: qml/PreferencesPage.qml:913
+#: qml/PreferencesPage.qml:899
 msgid "Set position to the map center"
 msgstr "Centrera positionen på kartan"
 
-#: qml/PreferencesPage.qml:920
+#: qml/PreferencesPage.qml:906
 msgid "Show current zoom level"
 msgstr "Visa aktuell zoomnivå"
 
@@ -2172,6 +2183,44 @@ msgstr "Visar versionsinformation."
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr "Visar plats utifrån geo: latitud-, longitud-URI eller utför sökning."
+
+#: src/navigator.cpp:103
+msgid "Position unknown"
+msgstr ""
+
+#: src/navigator.cpp:109
+msgid "Position imprecise: accuracy %1"
+msgstr ""
+
+#: src/navigator.cpp:126 src/navigator.cpp:306
+msgid "Preparing to start navigation"
+msgstr ""
+
+#: src/navigator.cpp:331
+msgid "Moving in a wrong direction"
+msgstr ""
+
+#: src/navigator.cpp:341
+msgid "Away from route"
+msgstr ""
+
+#. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
+#. and adjust the order if needed
+#: src/navigator.cpp:512 src/navigator.cpp:523
+msgid "In %2, %1"
+msgstr ""
+
+#. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
+#. hours (%1) and minutes (%2)
+#: src/navigator.cpp:695
+msgid "%1 h %2 min"
+msgstr ""
+
+#. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
+#. (%1)
+#: src/navigator.cpp:697
+msgid "%1 min"
+msgstr ""
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"

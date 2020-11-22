@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-30 21:13+0200\n"
+"POT-Creation-Date: 2020-11-22 13:56+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rui kon <facebookmail@qq.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -39,7 +39,7 @@ msgid "Point from Plus code"
 msgstr "从附加代码指向"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:111
+#: poor/router.py:134
 msgid "Connection timed out"
 msgstr "连接超时"
 
@@ -120,68 +120,71 @@ msgstr "HERE 软件账号"
 msgid "HERE App Code"
 msgstr "HERE 软件密码"
 
-#: poor/narrative.py:131
+#: poor/narrative.py:139
 #, python-brace-format
 msgid "In {distance}, {direction}"
 msgstr "在 {distance}, {direction}"
 
-#: poor/narrative.py:222 poor/narrative.py:224
+#: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
+#: poor/router.py:105
 msgid "Exit: "
 msgstr "退出: "
 
-#: poor/narrative.py:621 qml/Navigator.qml:187
+#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
 msgid "New route found"
 msgstr "发现新路线"
 
-#: poor/narrative.py:622 qml/Navigator.qml:171
+#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
 msgid "Rerouting"
 msgstr "重新规划"
 
-#: poor/narrative.py:623 qml/Navigator.qml:192
+#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
 msgid "Rerouting failed"
 msgstr "重新规划线路失败"
 
-#: poor/narrative.py:624
+#: poor/narrative.py:632 src/navigator.cpp:742
 msgid "Starting navigation"
 msgstr "开始导航"
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "mi"
 msgstr "米"
 
-#: poor/util.py:227 poor/util.py:238
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "miles"
 msgstr "英里"
 
-#: poor/util.py:231 qml/Meters.qml:85
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
 msgid "ft"
 msgstr "英尺"
 
-#: poor/util.py:231
+#: poor/util.py:231 src/navigator.cpp:653
 msgid "feet"
 msgstr "英尺"
 
-#: poor/util.py:242 qml/Meters.qml:95
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
 msgid "yd"
 msgstr "码"
 
-#: poor/util.py:242
+#: poor/util.py:242 src/navigator.cpp:665
 msgid "yards"
 msgstr "码"
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "km"
 msgstr "千米"
 
-#: poor/util.py:249
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "kilometers"
 msgstr "千米"
 
-#: poor/util.py:253 qml/Meters.qml:105
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
 msgid "m"
 msgstr "米"
 
-#: poor/util.py:253
+#: poor/util.py:253 src/navigator.cpp:677
 msgid "meters"
 msgstr "米"
 
@@ -727,18 +730,22 @@ msgstr "分享当前位置 (尚未准备好)"
 msgid "Share Current Position"
 msgstr "分享当前位置"
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:332
-#: qml/NavigationCurrentBlock.qml:334 qml/NavigationSpeedBlock.qml:84
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:333
+#: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
 #: qml/NavigationSpeedBlock.qml:86
 msgid "mph"
 msgstr "英里/小时"
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:336
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
 #: qml/NavigationSpeedBlock.qml:88
 msgid "km/h"
 msgstr "千米/小时"
 
-#: qml/NarrativeItem.qml:117
+#: qml/NarrativeItem.qml:120
+msgid "Continue for %1 (%2)."
+msgstr ""
+
+#: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
 msgstr " 继续 %1 "
 
@@ -798,17 +805,21 @@ msgstr "预计抵达时间"
 msgid "EXIT"
 msgstr "退出"
 
-#: qml/Navigator.qml:150
+#: qml/Navigator.qml:61
+msgid "Destination reached"
+msgstr ""
+
+#: qml/Navigator.qml:87
 msgid "Voice navigation on"
 msgstr "语音导航开启"
 
-#: qml/Navigator.qml:153
+#: qml/Navigator.qml:92
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr "语言导航引擎不可用：所选语言缺失文本转语音（TTS）引擎"
 
-#: qml/Navigator.qml:183
+#: qml/Navigator.qml:159
 msgid "Rerouting failed: %1"
 msgstr "重新规划路线失败: %1"
 
@@ -1593,11 +1604,11 @@ msgstr "性别偏好设置仅支持特定引擎及语言"
 msgid "Test"
 msgstr "测试"
 
-#: qml/PreferencesPage.qml:878
+#: qml/PreferencesPage.qml:848
 msgid "Selected voice engine: %1"
 msgstr "选择语音引擎: %1"
 
-#: qml/PreferencesPage.qml:880
+#: qml/PreferencesPage.qml:850
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1607,27 +1618,27 @@ msgstr ""
 "\n"
 "Pure Maps 支持 Mimic、Flite、PicoTTS和Espeak TTS引擎。除非你通过 Flatpak 或 OpenStore 使用 PureMaps，否则引擎必须单独安装。旗鱼系统用户可在 OpenRepos 找到引擎。"
 
-#: qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:884
 msgid "Development"
 msgstr "开发选项"
 
-#: qml/PreferencesPage.qml:904
+#: qml/PreferencesPage.qml:890
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
 msgstr "以下选项仅适用于开发。除非你知道自己在做什么, 否则请勿更改"
 
-#: qml/PreferencesPage.qml:912
+#: qml/PreferencesPage.qml:898
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
 msgstr "将当前位置设为地图视图的中心。使用此选项时, 请记住禁用GPS定位。"
 
-#: qml/PreferencesPage.qml:913
+#: qml/PreferencesPage.qml:899
 msgid "Set position to the map center"
 msgstr "将位置设置为地图中心"
 
-#: qml/PreferencesPage.qml:920
+#: qml/PreferencesPage.qml:906
 msgid "Show current zoom level"
 msgstr "显示当前缩放级别"
 
@@ -2094,6 +2105,44 @@ msgstr "显示版本信息。"
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr "显示地理坐标位置:经纬度 URI 或执行搜索。"
+
+#: src/navigator.cpp:103
+msgid "Position unknown"
+msgstr ""
+
+#: src/navigator.cpp:109
+msgid "Position imprecise: accuracy %1"
+msgstr ""
+
+#: src/navigator.cpp:126 src/navigator.cpp:306
+msgid "Preparing to start navigation"
+msgstr ""
+
+#: src/navigator.cpp:331
+msgid "Moving in a wrong direction"
+msgstr ""
+
+#: src/navigator.cpp:341
+msgid "Away from route"
+msgstr ""
+
+#. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
+#. and adjust the order if needed
+#: src/navigator.cpp:512 src/navigator.cpp:523
+msgid "In %2, %1"
+msgstr ""
+
+#. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
+#. hours (%1) and minutes (%2)
+#: src/navigator.cpp:695
+msgid "%1 h %2 min"
+msgstr ""
+
+#. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
+#. (%1)
+#: src/navigator.cpp:697
+msgid "%1 min"
+msgstr ""
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-15 12:45+0200\n"
+"POT-Creation-Date: 2020-11-22 13:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,71 +115,71 @@ msgstr ""
 msgid "HERE App Code"
 msgstr ""
 
-#: poor/narrative.py:131
+#: poor/narrative.py:139
 #, python-brace-format
 msgid "In {distance}, {direction}"
 msgstr ""
 
-#: poor/narrative.py:222 poor/narrative.py:224 poor/router.py:103
+#: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
 #: poor/router.py:105
 msgid "Exit: "
 msgstr ""
 
-#: poor/narrative.py:621 qml/Navigator.qml:215
+#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
 msgid "New route found"
 msgstr ""
 
-#: poor/narrative.py:622 qml/Navigator.qml:199
+#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
 msgid "Rerouting"
 msgstr ""
 
-#: poor/narrative.py:623 qml/Navigator.qml:220
+#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
 msgid "Rerouting failed"
 msgstr ""
 
-#: poor/narrative.py:624
+#: poor/narrative.py:632 src/navigator.cpp:742
 msgid "Starting navigation"
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:561
-#: src/navigator.cpp:573
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "mi"
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:561
-#: src/navigator.cpp:573
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
+#: src/navigator.cpp:662
 msgid "miles"
 msgstr ""
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:564
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
 msgid "ft"
 msgstr ""
 
-#: poor/util.py:231 src/navigator.cpp:564
+#: poor/util.py:231 src/navigator.cpp:653
 msgid "feet"
 msgstr ""
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:576
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
 msgid "yd"
 msgstr ""
 
-#: poor/util.py:242 src/navigator.cpp:576
+#: poor/util.py:242 src/navigator.cpp:665
 msgid "yards"
 msgstr ""
 
-#: poor/util.py:249 src/navigator.cpp:585
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "km"
 msgstr ""
 
-#: poor/util.py:249 src/navigator.cpp:585
+#: poor/util.py:249 src/navigator.cpp:674
 msgid "kilometers"
 msgstr ""
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:588
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
 msgid "m"
 msgstr ""
 
-#: poor/util.py:253 src/navigator.cpp:588
+#: poor/util.py:253 src/navigator.cpp:677
 msgid "meters"
 msgstr ""
 
@@ -721,7 +721,11 @@ msgstr ""
 msgid "km/h"
 msgstr ""
 
-#: qml/NarrativeItem.qml:117
+#: qml/NarrativeItem.qml:120
+msgid "Continue for %1 (%2)."
+msgstr ""
+
+#: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
 msgstr ""
 
@@ -781,17 +785,21 @@ msgstr ""
 msgid "EXIT"
 msgstr ""
 
-#: qml/Navigator.qml:178
+#: qml/Navigator.qml:61
+msgid "Destination reached"
+msgstr ""
+
+#: qml/Navigator.qml:87
 msgid "Voice navigation on"
 msgstr ""
 
-#: qml/Navigator.qml:181
+#: qml/Navigator.qml:92
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
 
-#: qml/Navigator.qml:211
+#: qml/Navigator.qml:159
 msgid "Rerouting failed: %1"
 msgstr ""
 
@@ -1572,11 +1580,11 @@ msgstr ""
 msgid "Test"
 msgstr ""
 
-#: qml/PreferencesPage.qml:877
+#: qml/PreferencesPage.qml:848
 msgid "Selected voice engine: %1"
 msgstr ""
 
-#: qml/PreferencesPage.qml:879
+#: qml/PreferencesPage.qml:850
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1585,27 +1593,27 @@ msgid ""
 "installed separately. Sailfish OS users can find the engines at OpenRepos."
 msgstr ""
 
-#: qml/PreferencesPage.qml:897
+#: qml/PreferencesPage.qml:884
 msgid "Development"
 msgstr ""
 
-#: qml/PreferencesPage.qml:903
+#: qml/PreferencesPage.qml:890
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
 msgstr ""
 
-#: qml/PreferencesPage.qml:911
+#: qml/PreferencesPage.qml:898
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
 msgstr ""
 
-#: qml/PreferencesPage.qml:912
+#: qml/PreferencesPage.qml:899
 msgid "Set position to the map center"
 msgstr ""
 
-#: qml/PreferencesPage.qml:919
+#: qml/PreferencesPage.qml:906
 msgid "Show current zoom level"
 msgstr ""
 
@@ -2072,30 +2080,38 @@ msgstr ""
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
 
-#: src/navigator.cpp:250
+#: src/navigator.cpp:103
+msgid "Position unknown"
+msgstr ""
+
+#: src/navigator.cpp:109
+msgid "Position imprecise: accuracy %1"
+msgstr ""
+
+#: src/navigator.cpp:126 src/navigator.cpp:306
 msgid "Preparing to start navigation"
 msgstr ""
 
-#: src/navigator.cpp:269
+#: src/navigator.cpp:331
 msgid "Moving in a wrong direction"
 msgstr ""
 
-#: src/navigator.cpp:279
+#: src/navigator.cpp:341
 msgid "Away from route"
 msgstr ""
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In" and adjust the order if needed
-#: src/navigator.cpp:428 src/navigator.cpp:439
+#: src/navigator.cpp:512 src/navigator.cpp:523
 msgid "In %2, %1"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical hours (%1) and minutes (%2)
-#: src/navigator.cpp:606
+#: src/navigator.cpp:695
 msgid "%1 h %2 min"
 msgstr ""
 
-#. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical minutes (%1)
-#: src/navigator.cpp:608
+#. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes (%1)
+#: src/navigator.cpp:697
 msgid "%1 min"
 msgstr ""
 
