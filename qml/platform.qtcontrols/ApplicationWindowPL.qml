@@ -35,8 +35,14 @@ ApplicationWindow {
     property int    screenHeight: height
     property bool   screenLarge: false
     property int    screenWidth: width
-    property bool   keepAlive: false           // not used
+    property bool   keepAlive: false
     property bool   keepAliveBackground: false // not used
+
+    ScreenSaver {
+        name: "Pure Maps"
+        preventBlanking: active && keepAlive
+        reason: "Showing Maps"
+    }
 
     StackView {
         id: pageStack

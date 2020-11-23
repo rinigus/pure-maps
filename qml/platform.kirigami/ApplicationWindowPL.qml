@@ -45,11 +45,17 @@ Kirigami.ApplicationWindow {
     property int    screenHeight: height
     property bool   screenLarge: false
     property int    screenWidth: width
-    property bool   keepAlive: false           // not used
+    property bool   keepAlive: false
     property bool   keepAliveBackground: false // not used
 
     // hide from Kirigami
     default property var _content
+
+    ScreenSaver {
+        name: "Pure Maps"
+        preventBlanking: active && keepAlive
+        reason: "Showing Maps"
+    }
 
     Settings {
         property alias x: appWindow.x
