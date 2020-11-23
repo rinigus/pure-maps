@@ -196,7 +196,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           // update to the current estimate
           best.length_on_route = dist;
           best.point = pr;
-          best.bearing = einfo.bearing;
+          best.direction = einfo.direction;
           best.maneuver = einfo.maneuver;
         }
     }
@@ -238,7 +238,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       on_route = (m_points.size() >= NUMBER_OF_REF_POINTS);
       if (on_route)
         {
-          SET(bearing, best.bearing);
+          SET(direction, best.direction);
           m_offroad_count = 0;
         }
 
@@ -442,7 +442,7 @@ void Navigator::setRoute(QVariantMap m)
       EdgeInfo edge;
       edge.length = S1ChordAngle(shape->edge(i).v0, shape->edge(i).v1).radians();
       edge.length_before = route_length;
-      edge.bearing = S2Earth::GetInitialBearing(S2LatLng(shape->edge(i).v0), S2LatLng(shape->edge(i).v1)).degrees();
+      edge.direction = S2Earth::GetInitialBearing(S2LatLng(shape->edge(i).v0), S2LatLng(shape->edge(i).v1)).degrees();
       m_edges.push_back(edge);
       route_length += edge.length;
     }

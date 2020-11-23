@@ -25,10 +25,10 @@ class Navigator : public QObject
 {
   Q_OBJECT
 
-  Q_PROPERTY(double  bearing READ bearing NOTIFY bearingChanged)
   Q_PROPERTY(QString destDist READ destDist NOTIFY destDistChanged)
   Q_PROPERTY(QString destEta READ destEta NOTIFY destEtaChanged)
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
+  Q_PROPERTY(double  direction READ direction NOTIFY directionChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
   Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
@@ -51,10 +51,10 @@ public:
   explicit Navigator(QObject *parent = nullptr);
 
   // current state
-  double  bearing() const { return m_bearing; }
   QString destDist() const { return m_destDist; }
   QString destEta() const { return m_destEta; }
   QString destTime() const { return m_destTime; }
+  double  direction() const { return m_direction; }
   QString icon() const { return m_icon; }
   QString language() const { return m_language; }
   QString manDist() const { return m_manDist; }
@@ -89,10 +89,10 @@ public:
   Q_INVOKABLE void prompt(const QString key);
 
 signals:
-  void bearingChanged();
   void destDistChanged();
   void destEtaChanged();
   void destTimeChanged();
+  void directionChanged();
   void iconChanged();
   void languageChanged();
   void manDistChanged();
@@ -136,7 +136,7 @@ private:
   struct EdgeInfo {
     double length;
     double length_before;
-    double bearing{0};
+    double direction{0};
     size_t maneuver{0};
   };
 
@@ -144,7 +144,7 @@ private:
   struct PointInfo {
     S2Point point;
     double accuracy;
-    double bearing{0};
+    double direction{0};
     size_t maneuver{0};
     double length_on_route{-1};
 
@@ -182,10 +182,10 @@ private:
   size_t m_offroad_count{0};
   QTime  m_reroute_request;
 
-  double  m_bearing;
   QString m_destDist;
   QString m_destEta;
   QString m_destTime;
+  double  m_direction;
   QString m_icon;
   QString m_manDist;
   QString m_manTime;
