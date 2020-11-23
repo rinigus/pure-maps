@@ -29,6 +29,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString destEta READ destEta NOTIFY destEtaChanged)
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
   Q_PROPERTY(double  direction READ direction NOTIFY directionChanged)
+  Q_PROPERTY(bool    directionValid READ directionValid NOTIFY directionValidChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
   Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
@@ -55,6 +56,7 @@ public:
   QString destEta() const { return m_destEta; }
   QString destTime() const { return m_destTime; }
   double  direction() const { return m_direction; }
+  bool    directionValid() const { return m_directionValid; }
   QString icon() const { return m_icon; }
   QString language() const { return m_language; }
   QString manDist() const { return m_manDist; }
@@ -93,6 +95,7 @@ signals:
   void destEtaChanged();
   void destTimeChanged();
   void directionChanged();
+  void directionValidChanged();
   void iconChanged();
   void languageChanged();
   void manDistChanged();
@@ -186,6 +189,7 @@ private:
   QString m_destEta;
   QString m_destTime;
   double  m_direction;
+  bool    m_directionValid{false};
   QString m_icon;
   QString m_manDist;
   QString m_manTime;

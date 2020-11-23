@@ -59,6 +59,7 @@ void Navigator::clearRoute()
   SET(destDist, QLatin1String("-"));
   SET(destEta, QLatin1String("-"));
   SET(destTime, QLatin1String("-"));
+  SET(directionValid, false);
   SET(manDist, QLatin1String("-"));
   SET(manTime, QLatin1String("-"));
   SET(onRoute, false);
@@ -109,6 +110,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
               SET(narrative, trans("Position imprecise: accuracy %1").arg(distanceToStr(horizontalAccuracy)));
             }
 
+          SET(directionValid, false);
           SET(manDist, QLatin1String("-"));
           SET(manTime, QLatin1String());
           SET(sign, QVariantMap());
@@ -239,7 +241,12 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       if (on_route)
         {
           SET(direction, best.direction);
+          SET(directionValid, true);
           m_offroad_count = 0;
+        }
+      else
+        {
+          SET(directionValid, false);
         }
 
       // reset prompts when just entering the route
@@ -316,6 +323,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
     }
   else
     {
+      SET(directionValid, false);
       if (m_offroad_count <= MAX_OFFROAD_COUNTS_TO_REROUTE) m_offroad_count++;
 
       // wipe history used to track direction on route if we are off the route
