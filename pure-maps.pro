@@ -216,6 +216,7 @@ SOURCES += src/main.cpp \
     src/maneuver.cpp \
     src/maneuvermodel.cpp \
     src/navigator.cpp \
+    src/navigatordbusadapter.cpp \
     src/prompt.cpp
 
 HEADERS += \
@@ -227,6 +228,7 @@ HEADERS += \
     src/maneuver.h \
     src/maneuvermodel.h \
     src/navigator.h \
+    src/navigatordbusadapter.h \
     src/prompt.h
 
 OTHER_FILES += rpm/harbour-pure-maps.spec

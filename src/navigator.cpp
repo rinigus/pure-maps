@@ -11,6 +11,9 @@
 #include <vector>
 #include <cmath>
 
+#include "config.h"
+#include "navigatordbusadapter.h"
+
 // NB! All distances in Rad unless having suffix _m for Meters
 
 #define MAX_ROUTE_INTERSECTIONS 5  // Maximal number of route intersections with itself
@@ -32,6 +35,11 @@ Navigator::Navigator(QObject *parent) : QObject(parent)
 
   connect(&m_timer, &QTimer::timeout, this, &Navigator::updateEta);
   connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator);
+
+  // setup DBus service
+  new NavigatorDBusAdapter(this);
+  if (!dbusconnection->registerObject(DBUS_PATH_NAVIGATOR, this))
+    qWarning() << "Failed to register DBus object: " DBUS_PATH_NAVIGATOR;
 }
 
 void Navigator::setupTranslator()
@@ -621,7 +629,7 @@ void Navigator::setRunning(bool r)
 {
   if (!m_index && r)
     {
-      qCritical() << "Navigator: Cannot start routing without route. Fix the caller.";
+      qWarning() << "Navigator: Cannot start routing without route. Fix the caller.";
       r = false;
     }
   m_running = r;

@@ -7,8 +7,8 @@
  *
  */
 
-// dummy file to make Qt make happy
+#include <QDBusConnection>
 
 #include "config.h"
 
-
+QDBusConnection *dbusconnection{nullptr};

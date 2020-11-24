@@ -43,6 +43,7 @@
 #include "commander.h"
 #include "dbusroot.h"
 #include "navigator.h"
+#include "navigatordbusadapter.h"
 
 
 int main(int argc, char *argv[])
@@ -89,7 +90,8 @@ int main(int argc, char *argv[])
     return 0;
 
   // establish DBus connection
-  QDBusConnection dbusconnection = QDBusConnection::sessionBus();
+  dbusconnection = new QDBusConnection(QDBusConnection::sessionBus());
+  assert(dbusconnection!=nullptr);
 
   // check if Pure Maps is running already.
   // forward cmd line arguments if it does
@@ -108,12 +110,12 @@ int main(int argc, char *argv[])
 
   // looks like it is the first instance, register DBus service
   DBusRoot dbusRoot(app.data());
-  if (!dbusconnection.registerObject(DBUS_PATH_ROOT, &dbusRoot,
-                                     QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllProperties))
+  if (!dbusconnection->registerObject(DBUS_PATH_ROOT, &dbusRoot,
+                                      QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllProperties))
     std::cerr << "Failed to register DBus object: " DBUS_PATH_ROOT << "\n";
 
   // register dbus service
-  if (!dbusconnection.registerService(DBUS_SERVICE))
+  if (!dbusconnection->registerService(DBUS_SERVICE))
     std::cerr << "Failed to register DBus service: " DBUS_SERVICE;
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))

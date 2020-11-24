@@ -95,6 +95,13 @@ Item {
             } else {
                 voicePrepared = false;
             }
+
+            // as happens with DBus command
+            if (running && app.mode !== modes.navigate)
+                app.setModeNavigate()
+
+            if (!running && app.mode === modes.navigate)
+                app.setModeExploreRoute();
         }
 
         function updatePosition() {
@@ -119,6 +126,12 @@ Item {
 
     Component.onCompleted: {
         loadRoute();
+    }
+
+    onHasRouteChanged: {
+        // as happens with DBus command
+        if (!hasRoute && (app.mode === modes.navigate || app.mode === modes.exploreRoute))
+            app.setModeExplore();
     }
 
     function clearRoute() {
