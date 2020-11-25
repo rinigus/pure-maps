@@ -54,6 +54,77 @@ to
 
 * search: method `Search`
 * show poi: method `ShowPoi`
+* get navigation status and control it.
+
+There service is split as described below.
+
+### Global actions
+
+Path: `/io/github/rinigus/PureMaps`
+Interface: `io.github.rinigus.PureMaps`
+
+Methods:
+
+* `Search(String search_string)` - activates search action for given
+  `search_string`
+
+* `ShowPoi(String title, Double latitude, Double longitude)` - show
+  POI on map with the given coordinates and title.
+
+
+### Navigation
+
+Path: `/io/github/rinigus/PureMaps/navigator`
+Interface: `io.github.rinigus.PureMaps.navigator`
+
+Methods:
+
+* `Clear()` - stops navigation and removes current route
+
+* `Start() -> Boolean` - start navigation and returns `true` if
+  succesful. If already started or has no route defined, will return
+  `false` to indicate failure.
+
+* `Stop()` - stop navigation if running.
+
+Properties and signals:
+
+Each property has a corresponding `...Changed` signal to indicate when
+the value of the property has changed.
+
+* `destDist`, `destEta`, `destTime` - human readable strings with the
+  remaining distance, time, and estimated time of arrival
+
+* `direction` and `directionValid` - bearing of the current route
+  segment and whether it is valid (current location is on route)
+
+* `hasRoute` - whether route has been set in application
+
+* `icon` - icon name for the next maneuver
+
+* `language` - navigation instructions language
+
+* `manDist`, `manTime` - remaining distance and time for the next
+  maneuver in human readable form
+
+* `mode` - mode of transportation
+
+* `narrative` - longer next maneuver instruction, should be available
+  for all maneuvers
+
+* `onRoute` - whether current location is on route and movement is
+  along it.
+
+* `progress` - current progress along the route in percentage (0-100)
+
+* `running` - whether navigation in active
+
+* `street` - short form of the narrative usually shown in Pure Maps
+  next to the maneuver icon. Could be absent for some maneuvers
+
+* `totalDist`, `totalTime` - total route distance and time in human
+  readable form.
+
 
 
 ## Development
