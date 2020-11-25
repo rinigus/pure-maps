@@ -179,8 +179,8 @@ private:
   double m_route_length_m{-1};
   double m_route_duration{0};
   double m_distance_traveled_m{0};
-  double m_last_distance_along_route_m{-1};
-  double m_last_duration_along_route{-1};
+  double m_last_distance_along_route_m{0};
+  double m_last_duration_along_route{0};
   size_t m_last_prompt{0};
   double m_distance_to_route_m{-1};
   size_t m_offroad_count{0};

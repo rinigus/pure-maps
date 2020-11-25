@@ -61,6 +61,8 @@ void Navigator::clearRoute()
   m_route.clear();
 
   m_distance_traveled_m = 0;
+  m_last_distance_along_route_m = 0;
+  m_route_length_m = 0;
 
   SET(totalDist, QLatin1String());
   SET(totalTime, QLatin1String());
@@ -93,6 +95,7 @@ void Navigator::resetPrompts()
 void Navigator::updateProgress()
 {
   float p = 0;
+
   if (!m_running)
     p = m_last_distance_along_route_m  / std::max(1.0, m_route_length_m);
   else
