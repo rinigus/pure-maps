@@ -75,7 +75,7 @@ void Navigator::clearRoute()
 
   m_maneuvers_model.clear();
 
-  emit progressChanged();
+  updateProgress();
   emit routeChanged();
 }
 
@@ -90,11 +90,15 @@ void Navigator::resetPrompts()
   qDebug() << "Prompts reset";
 }
 
-double Navigator::progress() const
+void Navigator::updateProgress()
 {
+  float p = 0;
   if (!m_running)
-    return m_last_distance_along_route_m  / std::max(1.0, m_route_length_m);
-  return m_distance_traveled_m / std::max(1.0, m_distance_traveled_m + m_route_length_m - m_last_distance_along_route_m);
+    p = m_last_distance_along_route_m  / std::max(1.0, m_route_length_m);
+  else
+    p = m_distance_traveled_m / std::max(1.0, m_distance_traveled_m +
+                                         m_route_length_m - m_last_distance_along_route_m);
+  SET(progress, (int)round(100*p));
 }
 
 void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid)
@@ -241,7 +245,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
            (m_points.size() > 0 && m_points.front().accuracy/2 > best.accuracy) )
         m_points.pop_front();
 
-      emit progressChanged();
+      updateProgress();
 
       // handle onRoute specially as some lockups were seen when setting
       // it early in the method

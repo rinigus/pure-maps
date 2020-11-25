@@ -36,7 +36,7 @@ Item {
     property string manTime:   navigatorBase.manTime
     property string narrative: navigatorBase.narrative
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
-    property real   progress:  navigatorBase.progress
+    property real   progress:  navigatorBase.progress / 100.0
     property string provider
     property int    rerouteConsecutiveErrors: 0
     property real   reroutePreviousTime: -1

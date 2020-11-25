@@ -25,7 +25,7 @@ class NavigatorDBusAdapter : public QDBusAbstractAdaptor
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
   Q_PROPERTY(bool    onRoute READ onRoute NOTIFY onRouteChanged)
-  Q_PROPERTY(double  progress READ progress NOTIFY progressChanged)
+  Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
   Q_PROPERTY(bool    running READ running NOTIFY runningChanged)
   Q_PROPERTY(QString street READ street NOTIFY streetChanged)
   Q_PROPERTY(QString totalDist READ totalDist NOTIFY totalDistChanged)
@@ -47,7 +47,7 @@ public:
   QString mode() const { return m->mode(); }
   QString narrative() const { return m->narrative(); }
   bool    onRoute() const { return m->onRoute(); }
-  double  progress() const { return m->progress(); }
+  int     progress() const { return m->progress(); }
   bool    running() const { return m->running(); }
   QString street() const { return m->street(); }
   QString totalDist() const { return m->totalDist(); }

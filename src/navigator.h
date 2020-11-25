@@ -37,7 +37,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
   Q_PROPERTY(bool    onRoute READ onRoute NOTIFY onRouteChanged)
-  Q_PROPERTY(double  progress READ progress NOTIFY progressChanged)
+  Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
   Q_PROPERTY(bool    running READ running WRITE setRunning NOTIFY runningChanged)
   Q_PROPERTY(QVariantMap sign READ sign NOTIFY signChanged)
   Q_PROPERTY(QString street READ street NOTIFY streetChanged)
@@ -64,7 +64,7 @@ public:
   QString mode() const { return m_mode; }
   QString narrative() const { return m_narrative; }
   bool    onRoute() const { return m_onRoute; }
-  double  progress() const;
+  double  progress() const { return m_progress; }
   QVariantMap sign() const { return m_sign; }
   QString street() const { return m_street; }
   QString totalDist() const { return m_totalDist; }
@@ -133,6 +133,7 @@ protected:
   QString trans(const char *text) const;
 
   void updateEta();
+  void updateProgress();
 
 private:
   // Edges of the route
@@ -188,7 +189,7 @@ private:
   QString m_destDist;
   QString m_destEta;
   QString m_destTime;
-  double  m_direction;
+  double  m_direction{0};
   bool    m_directionValid{false};
   QString m_icon;
   QString m_manDist;
@@ -196,6 +197,7 @@ private:
   QString m_narrative;
   bool    m_onRoute{false};
   bool    m_precision_insufficient{false};
+  int     m_progress{0};
   QVariantMap m_sign;
   QString m_street;
   QString m_totalDist;
