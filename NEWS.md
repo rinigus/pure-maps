@@ -1,3 +1,15 @@
+2020-11-26: Pure Maps 2.1
+=========================
+
+* Rewrite navigation guidance
+* Navigation direction is preferred for orienting the map
+* Switch off navigation mode on reaching destination
+* [kirigami,qtcontrols] Support inhibition of screensaver
+* Support for external control by DBus
+* Update translations
+* Updated packaging for UBPorts [jonnius]
+* Matrix channel added
+
 2020-10-31: Pure Maps 2.0
 =========================
 

@@ -38,6 +38,18 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.1.0" date="2020-11-26">
+     <description>
+       <ul>
+         <li>Rewrite navigation guidance</li>
+         <li>Navigation direction is preferred for orienting the map</li>
+         <li>Switch off navigation mode on reaching destination</li>
+         <li>[kirigami,qtcontrols] Support inhibition of screensaver</li>
+         <li>Support for external control by DBus</li>
+         <li>Update translations</li>
+         <li>Updated packaging for UBPorts [jonnius]</li>
+         <li>Matrix channel added</li>
+       </ul>
    <release  version="2.0.0" date="2020-10-31">
      <description>
        <ul>
