@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 13:56+0200\n"
+"POT-Creation-Date: 2020-11-26 20:09+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Jordi, 2020\n"
 "Language-Team: French (https://www.transifex.com/rinigus/teams/89597/fr/)\n"
@@ -146,61 +146,61 @@ msgstr "En {distance}, {direction}"
 msgid "Exit: "
 msgstr "Sortie :"
 
-#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
+#: poor/narrative.py:629 qml/Navigator.qml:176 src/navigator.cpp:766
 msgid "New route found"
 msgstr "Nouvel itinéraire trouvé"
 
-#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
+#: poor/narrative.py:630 qml/Navigator.qml:160 src/navigator.cpp:767
 msgid "Rerouting"
 msgstr "Déroutement"
 
-#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
+#: poor/narrative.py:631 qml/Navigator.qml:181 src/navigator.cpp:768
 msgid "Rerouting failed"
 msgstr "Nouvel itinéraire introuvable"
 
-#: poor/narrative.py:632 src/navigator.cpp:742
+#: poor/narrative.py:632 src/navigator.cpp:765
 msgid "Starting navigation"
 msgstr "Démarrage de la navigation"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:673
+#: src/navigator.cpp:685
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:673
+#: src/navigator.cpp:685
 msgid "miles"
 msgstr "miles"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:676
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231 src/navigator.cpp:653
+#: poor/util.py:231 src/navigator.cpp:676
 msgid "feet"
 msgstr "pieds"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:688
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242 src/navigator.cpp:665
+#: poor/util.py:242 src/navigator.cpp:688
 msgid "yards"
 msgstr "yards"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:697
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:697
 msgid "kilometers"
 msgstr "kilomètres"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:700
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253 src/navigator.cpp:677
+#: poor/util.py:253 src/navigator.cpp:700
 msgid "meters"
 msgstr "mètres"
 
@@ -250,11 +250,11 @@ msgstr "code plus"
 
 #: poor/util.py:309
 msgid "{:d} min"
-msgstr "{:d} min."
+msgstr "{:d} min"
 
 #: poor/util.py:310
 msgid "{:d} h {:d} min"
-msgstr "{:d} h. {:d} min."
+msgstr "{:d} h {:d} min"
 
 #: routers/digitransit.py:58
 msgid "airplane"
@@ -774,7 +774,7 @@ msgstr "km/h"
 
 #: qml/NarrativeItem.qml:120
 msgid "Continue for %1 (%2)."
-msgstr ""
+msgstr "Continuez pendant %1 (%2). "
 
 #: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
@@ -838,7 +838,7 @@ msgstr "QUITTER"
 
 #: qml/Navigator.qml:61
 msgid "Destination reached"
-msgstr ""
+msgstr "Destination atteinte"
 
 #: qml/Navigator.qml:87
 msgid "Voice navigation on"
@@ -852,7 +852,7 @@ msgstr ""
 "Navigation vocale indisponible : moteur Text-to-Speech (TTS) manquant pour "
 "la langue sélectionnée"
 
-#: qml/Navigator.qml:159
+#: qml/Navigator.qml:172
 msgid "Rerouting failed: %1"
 msgstr "Nouvel itinéraire introuvable : %1"
 
@@ -2078,8 +2078,7 @@ msgstr "Pas contre"
 #: routers/ValhallaSettings.qml:129
 msgid "The maximum difficulty of hiking trails that is allowed."
 msgstr ""
-"La difficulté maximale autorisée en ce qui concerne les sentiers de "
-"randonnée."
+"Difficulté maximale autorisée en ce qui concerne les sentiers de randonnée."
 
 #: routers/ValhallaSettings.qml:130
 msgid "Hiking difficulty"
@@ -2145,7 +2144,7 @@ msgstr "Routes principales"
 
 #: routers/ValhallaSettings.qml:218
 msgid "Your desire to use rail/subway/metro."
-msgstr "Votre désir de prendre le rail/tram/métro"
+msgstr "Votre désir de prendre le rail/tram/métro."
 
 #: routers/ValhallaSettings.qml:219
 msgid "Rail"
@@ -2208,43 +2207,43 @@ msgstr ""
 "Affiche l'emplacement donné par geo:latitude,longitude URI ou effectue une "
 "recherche."
 
-#: src/navigator.cpp:103
+#: src/navigator.cpp:119
 msgid "Position unknown"
-msgstr ""
+msgstr "Position inconnue"
 
-#: src/navigator.cpp:109
+#: src/navigator.cpp:125
 msgid "Position imprecise: accuracy %1"
-msgstr ""
+msgstr "Position imprécise : précision %1"
 
-#: src/navigator.cpp:126 src/navigator.cpp:306
+#: src/navigator.cpp:143 src/navigator.cpp:328
 msgid "Preparing to start navigation"
-msgstr ""
+msgstr "Préparation à la navigation"
 
-#: src/navigator.cpp:331
+#: src/navigator.cpp:354
 msgid "Moving in a wrong direction"
-msgstr ""
+msgstr "Déplacement dans la mauvaise direction"
 
-#: src/navigator.cpp:341
+#: src/navigator.cpp:364
 msgid "Away from route"
-msgstr ""
+msgstr "Hors de l'itinéraire "
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:512 src/navigator.cpp:523
+#: src/navigator.cpp:535 src/navigator.cpp:546
 msgid "In %2, %1"
-msgstr ""
+msgstr "Dans %2, %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:695
+#: src/navigator.cpp:718
 msgid "%1 h %2 min"
-msgstr ""
+msgstr "%1 h %2 min"
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:697
+#: src/navigator.cpp:720
 msgid "%1 min"
-msgstr ""
+msgstr "%1 min"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"

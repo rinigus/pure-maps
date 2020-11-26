@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 13:56+0200\n"
+"POT-Creation-Date: 2020-11-26 20:09+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
@@ -58,76 +58,76 @@ msgid ""
 "Foursquare Client ID. Register at https://developer.foursquare.com and "
 "create your own Client ID and Client Secret keys"
 msgstr ""
-"Foursquare-cliënt-ID. Registreer je op https://developer.foursquare.com en "
-"maak je eigen cliënt-ID en cliëntgeheim aan"
+"Foursquare-client-id. Registreer je op https://developer.foursquare.com en "
+"maak je eigen client-id en clientgeheim aan."
 
 #: poor/keystore.py:51
 msgid "Foursquare Client ID"
-msgstr "Foursquare-cliënt-ID"
+msgstr "Foursquare-client-id"
 
 #: poor/keystore.py:52
 msgid "Foursquare Client Secret"
-msgstr "Foursquare-cliëntgeheim"
+msgstr "Foursquare-clientgeheim"
 
 #: poor/keystore.py:55
 msgid ""
 "Mapbox API key. Register at https://www.mapbox.com and create your own API "
 "key"
 msgstr ""
-"Mapbox-API-sleutel. Registreer je op https://www.mapbox.com en maak je eigen"
-" API-sleutel aan"
+"Mapbox-api-sleutel. Registreer je op https://www.mapbox.com en maak je eigen"
+" api-sleutel aan."
 
 #: poor/keystore.py:56
 msgid "Mapbox API key"
-msgstr "Mapbox-API-sleutel"
+msgstr "Mapbox-api-sleutel"
 
 #: poor/keystore.py:59
 msgid ""
 "MapQuest API key. Register at https://developer.mapquest.com/ and create "
 "your own API key"
 msgstr ""
-"MapQuest-API-sleutel. Registreer je op https://developer.mapquest.com/ en "
-"maak je eigen API-sleutel aan"
+"MapQuest-api-sleutel. Registreer je op https://developer.mapquest.com/ en "
+"maak je eigen api-sleutel aan."
 
 #: poor/keystore.py:60
 msgid "MapQuest API key"
-msgstr "MapQuest-API-sleutel"
+msgstr "MapQuest-api-sleutel"
 
 #: poor/keystore.py:63
 msgid ""
 "OpenCage API key. Register at https://opencagedata.com/ and create your own "
 "API key"
 msgstr ""
-"OpenCage-API-sleutel. Registreer je op https://opencagedata.com/ en maak je "
-"eigen API-sleutel aan"
+"OpenCage-api-sleutel. Registreer je op https://opencagedata.com/ en maak je "
+"eigen api-sleutel aan."
 
 #: poor/keystore.py:64
 msgid "OpenCage API key"
-msgstr "OpenCage-API-sleutel"
+msgstr "OpenCage-api-sleutel"
 
 #: poor/keystore.py:67
 msgid ""
 "Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
 " API key"
 msgstr ""
-"Stadia Maps-API-sleutel. Registreer je op https://stadiamaps.com/ en maak je"
-" eigen API-sleutel aan"
+"Stadia Maps-api-sleutel. Registreer je op https://stadiamaps.com/ en maak je"
+" eigen api-sleutel aan."
 
 #: poor/keystore.py:68
 msgid "Stadia Maps API key"
-msgstr "Stadia Maps-API-sleutel"
+msgstr "Stadia Maps-api-sleutel"
 
 #: poor/keystore.py:71
 msgid ""
 "HERE App ID. Register at https://developer.here.com and create your own App "
 "ID and Code"
 msgstr ""
-"HERE-app-ID. Registreer je op https://developer.here.com en maak je eigen "
-"app-ID en -code aan"
+"HERE-app-id. Registreer je op https://developer.here.com en maak je eigen "
+"app-id en -code aan."
 
 #: poor/keystore.py:72
 msgid "HERE App ID"
-msgstr "HERE-app-ID"
+msgstr "HERE-app-id"
 
 #: poor/keystore.py:73 poor/keystore.py:74
 msgid "HERE App Code"
@@ -141,63 +141,63 @@ msgstr "Over {distance}, {direction}"
 #: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
 #: poor/router.py:105
 msgid "Exit: "
-msgstr "Uitrit:"
+msgstr "Afslag:"
 
-#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
+#: poor/narrative.py:629 qml/Navigator.qml:176 src/navigator.cpp:766
 msgid "New route found"
 msgstr "Nieuwe route gevonden"
 
-#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
+#: poor/narrative.py:630 qml/Navigator.qml:160 src/navigator.cpp:767
 msgid "Rerouting"
-msgstr "Route wordt herberekend"
+msgstr "Bezig met herberekenen"
 
-#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
+#: poor/narrative.py:631 qml/Navigator.qml:181 src/navigator.cpp:768
 msgid "Rerouting failed"
-msgstr "Routeherberekening mislukt"
+msgstr "Herberekening mislukt"
 
-#: poor/narrative.py:632 src/navigator.cpp:742
+#: poor/narrative.py:632 src/navigator.cpp:765
 msgid "Starting navigation"
-msgstr "Navigatie beginnen"
+msgstr "Bezig met starten van navigatie"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:673
+#: src/navigator.cpp:685
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:673
+#: src/navigator.cpp:685
 msgid "miles"
 msgstr "mijl"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:676
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231 src/navigator.cpp:653
+#: poor/util.py:231 src/navigator.cpp:676
 msgid "feet"
 msgstr "voet"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:688
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242 src/navigator.cpp:665
+#: poor/util.py:242 src/navigator.cpp:688
 msgid "yards"
 msgstr "yard"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:697
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:697
 msgid "kilometers"
 msgstr "kilometer"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:700
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253 src/navigator.cpp:677
+#: poor/util.py:253 src/navigator.cpp:700
 msgid "meters"
 msgstr "meter"
 
@@ -378,7 +378,7 @@ msgstr "Zoeken"
 
 #: guides/osmscout_name.qml:81
 msgid "You can search for venues by name."
-msgstr "Je kan zoeken naar ontmoetingsplaatsen op naam."
+msgstr "Je kunt zoeken naar ontmoetingsplaatsen op naam."
 
 #: guides/osmscout_settings.qml:28
 msgid "Name"
@@ -451,22 +451,22 @@ msgstr "Vertaald door"
 #. write them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:126
 msgid "translator-credits"
-msgstr "Nathan Follens"
+msgstr ""
+"Nathan Follens\n"
+"Heimen Stoffels"
 
 #: qml/AboutPage.qml:136
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
-msgstr ""
-"Je kan vertalingen voor de gebruikersinterface toevoegen of bijwerken op "
-"Transifex."
+msgstr "Je kunt vertalingen toevoegen of bijwerken op Transifex."
 
 #: qml/AboutPage.qml:142
 msgid ""
 "Translations at <a href=\"https://www.transifex.com/rinigus/pure-"
 "maps\">Transifex page</a>"
 msgstr ""
-"Vertalingen op <a href=\"https://www.transifex.com/rinigus/pure-"
+"Vertalen op <a href=\"https://www.transifex.com/rinigus/pure-"
 "maps\">Transifex</a>"
 
 #: qml/AttributionPage.qml:24
@@ -491,7 +491,7 @@ msgstr "Navigatie"
 #: routers/gpx_osmscout_settings.qml:52 routers/gpx_settings.qml:52
 #: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
 msgid "Type"
-msgstr "Type"
+msgstr "Soort"
 
 #: qml/BasemapButton.qml:221 routers/digitransit_settings.qml:146
 #: qml/js/util.js:236
@@ -500,7 +500,7 @@ msgstr "Standaard"
 
 #: qml/BasemapButton.qml:222
 msgid "Guidance"
-msgstr "Begeleiding"
+msgstr "Begeleid"
 
 #: qml/BasemapButton.qml:223
 msgid "Hybrid"
@@ -508,7 +508,7 @@ msgstr "Hybride"
 
 #: qml/BasemapButton.qml:224
 msgid "Preview"
-msgstr "Voorbeeld"
+msgstr "Voorvertoning"
 
 #: qml/BasemapButton.qml:225
 msgid "Satellite"
@@ -580,7 +580,7 @@ msgstr "Automatisch centreren aan"
 
 #: qml/CenterButton.qml:124
 msgid "Tap center button again for auto-center"
-msgstr "Tik opnieuw op de centreerknop om automatisch te centreren"
+msgstr "Druk nogmaals op de centreerknop om automatisch te centreren"
 
 #: qml/GeocodeItem.qml:42
 msgid "No selection"
@@ -666,9 +666,9 @@ msgid ""
 "fill in your personal API key in Preferences. This key is not needed if you "
 "plan to use Pure Maps with the offline map provider."
 msgstr ""
-"Er ontbreekt een Mapbox-API-sleutel in je installatie. Registreer je bij "
-"Mapbox en vul je persoonlijke API-sleutel in in de Voorkeuren. Deze sleutel "
-"is niet nodig als je Pure Maps enkel met de offlinekaartprovider wil "
+"Er ontbreekt een Mapbox-api-sleutel in je installatie. Registreer je bij "
+"Mapbox en voer je persoonlijke api-sleutel in in de instellingen. Deze "
+"sleutel is niet nodig als je Pure Maps enkel met de offlinekaartdienst wilt "
 "gebruiken."
 
 #: qml/MapErrorPage.qml:25
@@ -677,15 +677,15 @@ msgstr "Fout"
 
 #: qml/MapErrorPage.qml:34
 msgid "Error occurred while loading current map."
-msgstr "Er trad een fout op bij het laden van de huidige kaart"
+msgstr "Er is een fout opgetreden tijdens het laden van de huidige kaart"
 
 #: qml/MapErrorPage.qml:40
 msgid ""
 "Depending on the used map provider, error could be caused by network failure, expired API access key, absence of offline server. Try to address the issue and/or change your map provider, preferences, or profile.\n"
 "If you change API access key, you may have to restart Pure Maps."
 msgstr ""
-"Afhankelijk van de gekozen kaartleverancier, kan een fout veroorzaakt zijn door een netwerkprobleem, een verlopen API-toegangssleutel, of een offline server. Probeer het probleem te verhelpen en/of je kaartleverancier, voorkeuren of profiel te wijzigen.\n"
-"Als je je API-toegangssleutel wijzigt, moet je Pure Maps mogelijk opnieuw starten."
+"Afhankelijk van de gekozen kaartdienst, kan een fout veroorzaakt zijn door een netwerkprobleem, een verlopen api-toegangssleutel of een offline server. Probeer het probleem te verhelpen en/of je kaartdienst, instellingen of profiel te wijzigen.\n"
+"Als je je api-toegangssleutel wijzigt, moet je Pure Maps mogelijk opnieuw starten."
 
 #: qml/MapErrorPage.qml:51
 msgid ""
@@ -707,12 +707,12 @@ msgid ""
 "Last error:\n"
 "%1"
 msgstr ""
-"Laatste fout:\n"
+"Recentste fout:\n"
 "%1"
 
 #: qml/MapErrorPage.qml:75 qml/MenuPage.qml:100 qml/PreferencesPage.qml:25
 msgid "Preferences"
-msgstr "Voorkeuren"
+msgstr "Instellingen"
 
 #: qml/MapErrorPage.qml:106 qml/MenuPage.qml:111
 msgid "Profile"
@@ -849,7 +849,7 @@ msgstr ""
 "Stemnavigatie niet beschikbaar: spraakmotor (TTS) voor geselecteerde taal is"
 " niet geïnstalleerd"
 
-#: qml/Navigator.qml:159
+#: qml/Navigator.qml:172
 msgid "Rerouting failed: %1"
 msgstr "Routeherberekening mislukt: %1"
 
@@ -2199,41 +2199,41 @@ msgstr ""
 "Toont de locatie op basis van een geo:breedtegraad,lengtegraad-uri of voert "
 "een zoekopdracht uit."
 
-#: src/navigator.cpp:103
+#: src/navigator.cpp:119
 msgid "Position unknown"
 msgstr ""
 
-#: src/navigator.cpp:109
+#: src/navigator.cpp:125
 msgid "Position imprecise: accuracy %1"
 msgstr ""
 
-#: src/navigator.cpp:126 src/navigator.cpp:306
+#: src/navigator.cpp:143 src/navigator.cpp:328
 msgid "Preparing to start navigation"
 msgstr ""
 
-#: src/navigator.cpp:331
+#: src/navigator.cpp:354
 msgid "Moving in a wrong direction"
 msgstr ""
 
-#: src/navigator.cpp:341
+#: src/navigator.cpp:364
 msgid "Away from route"
 msgstr ""
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:512 src/navigator.cpp:523
+#: src/navigator.cpp:535 src/navigator.cpp:546
 msgid "In %2, %1"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:695
+#: src/navigator.cpp:718
 msgid "%1 h %2 min"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:697
+#: src/navigator.cpp:720
 msgid "%1 min"
 msgstr ""
 
