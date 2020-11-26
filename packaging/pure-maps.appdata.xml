@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+2<?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
  <id>io.github.rinigus.PureMaps</id>
  <name>Pure Maps</name>
@@ -50,6 +50,8 @@
          <li>Updated packaging for UBPorts [jonnius]</li>
          <li>Matrix channel added</li>
        </ul>
+     </description>
+   </release>
    <release  version="2.0.0" date="2020-10-31">
      <description>
        <ul>
