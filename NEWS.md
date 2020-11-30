@@ -6,7 +6,7 @@
 * Switch off navigation mode on reaching destination
 * [kirigami,qtcontrols] Support inhibition of screensaver
 * Support for external control by DBus
-* Update translations
+* [2.1.0,2.1.1] Update translations
 * Updated packaging for UBPorts [jonnius]
 * Matrix channel added
 
