@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-26 20:09+0200\n"
+"POT-Creation-Date: 2020-11-30 19:04+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
@@ -732,7 +732,7 @@ msgstr "Gemengd"
 
 #: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
 msgid "Stop navigation to select POI"
-msgstr "Stop navigatie om bezienswaardigheid te selecteren"
+msgstr "Navigatie stoppen om nuttige plaats te selecteren"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -740,7 +740,7 @@ msgstr "Beweging niet meer volgen"
 
 #: qml/MenuPage.qml:66
 msgid "Nearby venues"
-msgstr "Plaatsen dichtbij"
+msgstr "Plaatsen in de buurt"
 
 #: qml/MenuPage.qml:72 qml/PoiPage.qml:28 qml/PoiPage.qml:127
 msgid "Bookmarks"
@@ -762,7 +762,7 @@ msgstr "Huidige positie delen"
 #: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
 #: qml/NavigationSpeedBlock.qml:86
 msgid "mph"
-msgstr "mph"
+msgstr "mpu"
 
 #: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
 #: qml/NavigationSpeedBlock.qml:88
@@ -771,11 +771,11 @@ msgstr "km/u"
 
 #: qml/NarrativeItem.qml:120
 msgid "Continue for %1 (%2)."
-msgstr ""
+msgstr "Ga nog %1 (%2) door."
 
 #: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
-msgstr "Ga door voor %1."
+msgstr "Ga nog %1 door."
 
 #: qml/NavigationButtonClear.qml:46
 msgid "Route removed"
@@ -787,7 +787,7 @@ msgstr "Gestopt om beweging te volgen"
 
 #: qml/NavigationButtonStartPause.qml:69
 msgid "Navigation paused"
-msgstr "Navigatie gepauzeerd"
+msgstr "Navigatie onderbroken"
 
 #: qml/NavigationButtonStartPause.qml:73
 msgid "Navigation started"
@@ -831,11 +831,11 @@ msgstr "Geschatte aankomsttijd"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
-msgstr "UITRIT"
+msgstr "AFRIT"
 
 #: qml/Navigator.qml:61
 msgid "Destination reached"
-msgstr ""
+msgstr "Bestemming bereikt"
 
 #: qml/Navigator.qml:87
 msgid "Voice navigation on"
@@ -846,8 +846,8 @@ msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
-"Stemnavigatie niet beschikbaar: spraakmotor (TTS) voor geselecteerde taal is"
-" niet geïnstalleerd"
+"Stemnavigatie niet beschikbaar: spraakaandrijving (TTS) van geselecteerde "
+"taal is niet geïnstalleerd"
 
 #: qml/Navigator.qml:172
 msgid "Rerouting failed: %1"
@@ -855,7 +855,7 @@ msgstr "Routeherberekening mislukt: %1"
 
 #: qml/NearbyPage.qml:25
 msgid "Nearby Venues"
-msgstr "Plaatsen dichtbij"
+msgstr "Plaatsen in de buurt"
 
 #: qml/NearbyPage.qml:75
 msgid ""
@@ -865,11 +865,11 @@ msgstr ""
 
 #: qml/NearbyPage.qml:76
 msgid "Near"
-msgstr "Dichtbij"
+msgstr "Nabij"
 
 #: qml/NearbyPage.qml:77
 msgid "Near location"
-msgstr "Locatie nabij"
+msgstr "Nabij locatie"
 
 #: qml/NearbyPage.qml:82
 msgid "Radius"
@@ -885,7 +885,7 @@ msgstr "Bezig met zoeken"
 
 #: qml/NearbyResultsPage.qml:123
 msgid "Nearby venues: %1"
-msgstr "Plaatsen nabij: %1"
+msgstr "Plaatsen in de buurt: %1"
 
 #: qml/NearbyResultsPage.qml:139
 msgid "%1 Results"
@@ -905,11 +905,11 @@ msgstr "Automatisch draaien uit"
 
 #: qml/PlaceTypePage.qml:27
 msgid "Venue type"
-msgstr "Plaatstype"
+msgstr "Soort ontmoetingsplaats"
 
 #: qml/PlaceTypePage.qml:100
 msgid "You can search for venues by type or name."
-msgstr "Je kan zoeken naar ontmoetingsplaatsen op type of naam."
+msgstr "Je kunt zoeken naar ontmoetingsplaatsen op type of naam."
 
 #: qml/PoiBlock.qml:81
 msgid "%1; %2"
@@ -917,7 +917,7 @@ msgstr "%1; %2"
 
 #: qml/PoiBlock.qml:99
 msgid "Latitude: %1; Longitude: %2"
-msgstr "Breedtegraad: %1; Lengtegraad: %2"
+msgstr "Breedtegraad: %1 - Lengtegraad: %2"
 
 #: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:81
 msgid "Postal code"
@@ -925,15 +925,15 @@ msgstr "Postcode"
 
 #: qml/PoiBlock.qml:127
 msgid "Web"
-msgstr "Web"
+msgstr "Website"
 
 #: qml/PoiBlock.qml:128
 msgid "Phone"
-msgstr "Telefoon"
+msgstr "Telefoonnummer"
 
 #: qml/PoiBlock.qml:129
 msgid "Shortlisted"
-msgstr "Op de shortlist"
+msgstr "Op onthoudlijst gezet"
 
 #: qml/PoiBlock.qml:130
 msgid "Text"
@@ -997,15 +997,15 @@ msgstr "URL"
 
 #: qml/PoiEditPage.qml:107
 msgid "Enter URL"
-msgstr "Voer een URL in"
+msgstr "Voer een url in"
 
 #: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:243
 msgid "Additional info"
-msgstr "Extra info"
+msgstr "Aanvullende informatie"
 
 #: qml/PoiEditPage.qml:123
 msgid "Enter additional info"
-msgstr "Voer extra info in"
+msgstr "Voer aanvullende informatie in"
 
 #: qml/PoiInfoPage.qml:32 qml/PoiPage.qml:95
 msgid "Edit"
@@ -1037,7 +1037,7 @@ msgstr "Toevoegen aan bladwijzers"
 
 #: qml/PoiInfoPage.qml:144
 msgid "Shortlist"
-msgstr "Toevoegen aan shortlist"
+msgstr "Toevoegen aan onthoudlijst"
 
 #: qml/PoiInfoPage.qml:157
 msgid "Share location"
@@ -1057,7 +1057,7 @@ msgstr "Navigeren van"
 
 #: qml/PoiInfoPage.qml:206
 msgid "Nearby"
-msgstr "Dichtbij"
+msgstr "In de buurt"
 
 #: qml/PoiPage.qml:85
 msgid "View"
@@ -1068,12 +1068,12 @@ msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
 msgstr ""
-"Nog geen bladwijzers ingesteld. Je kan locaties toevoegen aan je bladwijzers"
-" via de kaart en via zoeken."
+"Je hebt nog geen bladwijzers ingesteld. Voeg locaties toe aan je bladwijzers"
+" via de kaart en de zoekfunctie."
 
 #: qml/Poi.qml:193
 msgid "Clearing map"
-msgstr "Kaart wordt gewist"
+msgstr "Bezig met wissen"
 
 #: qml/PreferencesPage.qml:45
 msgid "Units"
@@ -1093,7 +1093,7 @@ msgstr "Brits"
 
 #: qml/PreferencesPage.qml:59
 msgid "Preferred map language."
-msgstr "Voorkeurtaal voor kaarten."
+msgstr "Voorkeurstaal voor kaarten."
 
 #: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:791
 #: routers/gpx_osmscout_settings.qml:72 routers/mapquest_open_settings.qml:54
@@ -1120,11 +1120,11 @@ msgstr "Catalaans"
 
 #: qml/PreferencesPage.qml:66
 msgid "Chinese (simplified)"
-msgstr "Chinees (vereenvoudigd)"
+msgstr "Chinees (Vereenvoudigd)"
 
 #: qml/PreferencesPage.qml:67
 msgid "Chinese (traditional)"
-msgstr "Chinees (traditioneel)"
+msgstr "Chinees (Traditioneel)"
 
 #: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:795
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
@@ -1259,12 +1259,12 @@ msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
 msgstr ""
-"Wisselen tussen de dag-/nacht-modi van de kaart. Let op: niet alle "
-"leveranciers hebben dag-/nacht-modi voor alle kaarten."
+"Wisselen tussen de dag- en nachtmodus van de kaart. Let op: niet alle "
+"leveranciers hebben dag-/nachtmodi van alle kaarten."
 
 #: qml/PreferencesPage.qml:151
 msgid "Day/night mode"
-msgstr "Dag-/nacht-modus"
+msgstr "Dag-/nachtmodus"
 
 #: qml/PreferencesPage.qml:153
 msgid "Manual"
@@ -1279,18 +1279,18 @@ msgid ""
 "Automatically switch between map types of the provider according to the "
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
-"Automatisch wisselen tussen de kaarttypes van de leverancier naargelang de "
-"huidige taak. Bijvoorbeeld: een kaart bedoeld voor navigatie gebruiken "
-"tijdens routering."
+"Automatisch wisselen tussen de kaarttypes van de leverancier, naargelang de "
+"huidige taak. Voorbeeld: een kaart bedoeld voor navigatie gebruiken tijdens "
+"routering."
 
 #: qml/PreferencesPage.qml:174
 msgid "Switch map modes"
-msgstr "Kaartmodi wisselen"
+msgstr "Andere kaartmodus"
 
 #: qml/PreferencesPage.qml:184
 msgid "Fetch autocompleted search results while typing a search string."
 msgstr ""
-"Haalt automatisch aangevulde zoekresultaten op bij invoeren van "
+"Haalt automatisch aangevulde zoekresultaten op bij het invoeren van een "
 "zoekopdracht."
 
 #: qml/PreferencesPage.qml:185
@@ -1363,7 +1363,7 @@ msgid ""
 "that the bookmarks will be kept."
 msgstr ""
 "Wis de hele geschiedenis, inclusief zoekopdrachten, routes en bestemmingen. "
-"Let op: bladwijzers worden bijgehouden."
+"Let op: bladwijzers worden behouden."
 
 #: qml/PreferencesPage.qml:274
 msgid "History cleared"
@@ -1391,13 +1391,13 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
-"Je kan persoonlijke sleutels voor online diensten in deze instellingen "
-"opgeven. Kijk de voorwaarden van elk van de diensten die je wil gebruiken na"
-" zodat je ze kan naleven."
+"Hier kun je persoonlijke sleutels voor online-diensten opgeven. Bekijk de "
+"voorwaarden van elk van de diensten die je wilt gebruiken zodat je ze kunt "
+"naleven."
 
 #: qml/PreferencesPage.qml:329
 msgid "Please restart application after changing API keys."
-msgstr "Herstart de toepassing na het wijzigen van API-sleutels."
+msgstr "Herstart de toepassing om de api-sleutels in te stellen."
 
 #: qml/PreferencesPage.qml:370
 msgid "Exploring"
@@ -1408,7 +1408,7 @@ msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
-"Selecteer een transportmodus. Geldt enkel wanneer Pure Maps niet in "
+"Selecteer een transportmodus. Geldt enkel als Pure Maps niet in "
 "navigatiemodus is. Maakt gebruik van OSM Scout Server."
 
 #: qml/PreferencesPage.qml:377 qml/PreferencesPage.qml:447
@@ -1428,7 +1428,7 @@ msgstr "Te voet"
 
 #: qml/PreferencesPage.qml:407
 msgid "Show navigation instructions"
-msgstr "Navigatie-instructies weergeven"
+msgstr "Navigatie-instructies tonen"
 
 #: qml/PreferencesPage.qml:417
 msgid "Voice navigation instructions"
@@ -1484,7 +1484,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:499 qml/PreferencesPage.qml:825
 msgid "Voice gender"
-msgstr "Geslacht van stem"
+msgstr "Stemgeslacht"
 
 #: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
 msgid "Male"
@@ -1499,12 +1499,12 @@ msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr ""
-"Toon snelheidlimietsymbool. Vereist vastklemmen van positie aan wegen om de "
-"snelheidlimiet te bepalen."
+"Toon het snelheidlimietsymbool. Vereist vastklemmen van positie aan wegen om"
+" het snelheidslimiet te bepalen."
 
 #: qml/PreferencesPage.qml:516
 msgid "Speed limit"
-msgstr "Snelheidlimiet"
+msgstr "Snelheidslimiet"
 
 #: qml/PreferencesPage.qml:517
 msgid "Only when exceeding"
@@ -1546,8 +1546,8 @@ msgid ""
 msgstr ""
 "Kaartweergave kan worden getoond met ofwel alle toepasbare "
 "besturingselementen in volledige weergavemodus, ofwel met een kleinere "
-"geselecteerde set besturingselementen in minimale weergavemodus. Tik op een "
-"kaart om tussen de modi te wisselen."
+"geselecteerde set besturingselementen in minimale weergavemodus. Druk op een"
+" kaart om te wisselen."
 
 #: qml/PreferencesPage.qml:584
 msgid "Set map view to minimal mode on start"
