@@ -23,6 +23,7 @@
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <QIcon>
+#include <QLoggingCategory>
 #include <QStringList>
 #include <QScopedPointer>
 #include <QTranslator>
@@ -135,6 +136,10 @@ int main(int argc, char *argv[])
 
   // ////////////////////////////
   // QML setup
+
+  // disable new QML connection syntax debug messages for as long as
+  // older Qt versions (5.12 and older) are supported
+  QLoggingCategory::setFilterRules(QStringLiteral("qt.qml.connections=false"));
 
 #ifdef IS_SAILFISH_OS
   QScopedPointer<QQuickView> v;
