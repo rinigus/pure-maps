@@ -254,7 +254,13 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
       on_route = (m_points.size() >= NUMBER_OF_REF_POINTS);
       if (on_route)
         {
-          SET(direction, best.direction);
+          // as direction is float, update only if above some tolerance
+          {
+            const double factor = 10.0;
+            double ndir = round(best.direction*factor)/factor;
+            if (fabs(m_direction - ndir) > factor/2)
+              SET(direction, best.direction);
+          }
           SET(directionValid, true);
           m_offroad_count = 0;
         }
