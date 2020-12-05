@@ -213,6 +213,7 @@ SOURCES += src/main.cpp \
     src/commander.cpp \
     src/config.cpp \
     src/dbusroot.cpp \
+    src/dbusservice.cpp \
     src/maneuver.cpp \
     src/maneuvermodel.cpp \
     src/navigator.cpp \
@@ -225,6 +226,7 @@ HEADERS += \
     src/commander.h \
     src/config.h \
     src/dbusroot.h \
+    src/dbusservice.h \
     src/maneuver.h \
     src/maneuvermodel.h \
     src/navigator.h \

@@ -19,6 +19,7 @@
 #include <QVariant>
 #include <QVariantList>
 
+// DBus service root object
 class DBusRoot : public QObject
 {
   Q_OBJECT

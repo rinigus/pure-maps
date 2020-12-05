@@ -11,7 +11,7 @@
 #include <vector>
 #include <cmath>
 
-#include "config.h"
+#include "dbusservice.h"
 #include "navigatordbusadapter.h"
 
 // NB! All distances in Rad unless having suffix _m for Meters
@@ -38,8 +38,7 @@ Navigator::Navigator(QObject *parent) : QObject(parent)
 
   // setup DBus service
   new NavigatorDBusAdapter(this);
-  if (!dbusconnection->registerObject(DBUS_PATH_NAVIGATOR, this))
-    qWarning() << "Failed to register DBus object: " DBUS_PATH_NAVIGATOR;
+  DBusService::instance()->registerNavigator(this);
 }
 
 void Navigator::setupTranslator()

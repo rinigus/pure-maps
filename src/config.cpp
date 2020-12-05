@@ -7,8 +7,4 @@
  *
  */
 
-#include <QDBusConnection>
-
 #include "config.h"
-
-QDBusConnection *dbusconnection{nullptr};
