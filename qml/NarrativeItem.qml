@@ -126,7 +126,6 @@ Column {
 
             onClicked: {
                 list.activeItem = model.index;
-                app.setModeExploreRoute();
                 map.center = model.coordinate;
                 map.zoomLevel < 15 && map.setZoomLevel(15);
                 app.hideNavigationPages();

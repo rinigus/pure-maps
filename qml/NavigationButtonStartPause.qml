@@ -63,16 +63,16 @@ MapButton {
         if (app.mode === modes.followMe) {
             notification.flash(app.tr("Stopped to follow the movement"),
                                notifyId);
-            app.setModeExplore();
+            app.navigator.followMe = false;
             app.resetMenu();
         } else if (app.mode === modes.navigate) {
             notification.flash(app.tr("Navigation paused"),
                                notifyId);
-            app.setModeExploreRoute();
+            app.navigator.running = false;
         } else {
             notification.flash(app.tr("Navigation started"),
                                notifyId);
-            app.setModeNavigate();
+            app.navigator.running = true;
         }
     }
 

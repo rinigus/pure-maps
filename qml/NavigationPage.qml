@@ -44,8 +44,8 @@ PagePL {
                 text: app.mode === modes.navigate ? app.tr("Pause") : app.tr("Navigate")
                 onClicked: {
                     app.hideNavigationPages();
-                    if (app.mode === modes.navigate) app.setModeExploreRoute();
-                    else app.setModeNavigate();
+                    if (app.mode === modes.navigate) app.navigator.running = false;
+                    else app.navigator.running = true;
                 }
             }
 
@@ -68,7 +68,6 @@ PagePL {
                 icon.iconName: styler.iconClear
                 text: app.tr("Clear")
                 onClicked: {
-                    app.setModeExplore();
                     navigator.clearRoute();
                     app.showMap();
                 }

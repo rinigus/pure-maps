@@ -45,7 +45,6 @@ MapButton {
     onClicked: {
         notification.flash(app.tr("Route removed"),
                            "navigationClear");
-        app.setModeExplore();
         navigator.clearRoute();
     }
 

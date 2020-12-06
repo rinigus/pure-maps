@@ -25,16 +25,17 @@ import "js/util.js" as Util
 Item {
     id: navigator
 
-    property string destDist:  navigatorBase.destDist
-    property string destEta:   navigatorBase.destEta
-    property string destTime:  navigatorBase.destTime
+    property alias  destDist:  navigatorBase.destDist
+    property alias  destEta:   navigatorBase.destEta
+    property alias  destTime:  navigatorBase.destTime
     property var    direction: navigatorBase.directionValid ? navigatorBase.direction : undefined
-    property bool   hasRoute:  route.length > 0
-    property string icon:      navigatorBase.icon
+    property bool   followMe:  false
+    property bool   hasRoute:  navigatorBase.route.length > 0
+    property alias  icon:      navigatorBase.icon
     property alias  maneuvers: navigatorBase.maneuvers
-    property string manDist:   navigatorBase.manDist
-    property string manTime:   navigatorBase.manTime
-    property string narrative: navigatorBase.narrative
+    property alias  manDist:   navigatorBase.manDist
+    property alias  manTime:   navigatorBase.manTime
+    property alias  narrative: navigatorBase.narrative
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
     property real   progress:  navigatorBase.progress / 100.0
     property string provider
@@ -42,17 +43,17 @@ Item {
     property real   reroutePreviousTime: -1
     property int    rerouteTotalCalls: 0
     property bool   rerouting: false
-    property var    route:     navigatorBase.route
-    property var    sign:      navigatorBase.sign
-    property var    street:    navigatorBase.street
-    property string totalDist: navigatorBase.totalDist
-    property string totalTime: navigatorBase.totalTime
-    property string transportMode: navigatorBase.mode
+    property alias  route:     navigatorBase.route
+    property alias  running:   navigatorBase.running
+    property alias  sign:      navigatorBase.sign
+    property alias  street:    navigatorBase.street
+    property alias  totalDist: navigatorBase.totalDist
+    property alias  totalTime: navigatorBase.totalTime
+    property alias  transportMode: navigatorBase.mode
 
     NavigatorBase {
         id: navigatorBase
         units: app.conf.units
-        running: app.mode === modes.navigate && route.length > 0
 
         property bool voicePrepared: false
 
@@ -60,7 +61,7 @@ Item {
             if (app.mode === modes.navigate) {
                 notification.flash(app.tr("Destination reached"),
                                    "navigatorStop");
-                app.setModeExploreRoute();
+                running = false;
             }
         }
 
@@ -77,6 +78,9 @@ Item {
         onRerouteRequest: rerouteMaybe()
 
         onRunningChanged: {
+            if (running && navigator.followMe)
+                navigator.followMe = false;
+
             if (running) updatePosition();
 
             if (running && app.conf.voiceNavigation) {
@@ -95,13 +99,6 @@ Item {
             } else {
                 voicePrepared = false;
             }
-
-            // as happens with DBus command
-            if (running && app.mode !== modes.navigate)
-                app.setModeNavigate()
-
-            if (!running && app.mode === modes.navigate)
-                app.setModeExploreRoute();
         }
 
         function updatePosition() {
@@ -126,12 +123,6 @@ Item {
 
     Component.onCompleted: {
         loadRoute();
-    }
-
-    onHasRouteChanged: {
-        // as happens with DBus command
-        if (!hasRoute && (app.mode === modes.navigate || app.mode === modes.exploreRoute))
-            app.setModeExplore();
     }
 
     function clearRoute() {
@@ -221,7 +212,6 @@ Item {
         navigatorBase.setRoute(route);
         provider = route.provider;
         saveRoute(route);
-        if (!amend) app.setModeExploreRoute();
     }
 
 }

@@ -58,7 +58,14 @@ ApplicationWindowPL {
     }
     property bool   modalDialog: modalDialogBasemap
     property bool   modalDialogBasemap: false
-    property int    mode: modes.explore
+    property int    mode: {
+        if (navigator) {
+            if (navigator.running) return modes.navigate;
+            if (navigator.followMe) return modes.followMe;
+            if (navigator.hasRoute) return modes.exploreRoute;
+        }
+        return modes.explore;
+    }
     property bool   narrativePageSeen: false
     property var    navigator: null
     property var    notification: null
@@ -144,7 +151,7 @@ ApplicationWindowPL {
         if (app.mode === modes.explore) {
 
         } else if (app.mode === modes.followMe) {
-
+            app.resetMenu();
         } else if (app.mode === modes.navigate) {
             app.rerouteConsecutiveErrors = 0;
             app.reroutePreviousTime = -1;
@@ -254,24 +261,6 @@ ApplicationWindowPL {
         app._stackMain.keep = false;
         app.stateId = "";
         app.infoPanel.infoText = "";
-    }
-
-    function setModeExplore() {
-        app.mode = modes.explore;
-    }
-
-    function setModeExploreRoute() {
-        app.mode = modes.exploreRoute;
-    }
-
-    function setModeFollowMe() {
-        app.resetMenu();
-        app.mode = modes.followMe;
-    }
-
-    function setModeNavigate() {
-        app.resetMenu();
-        app.mode = modes.navigate;
     }
 
     function showMap() {

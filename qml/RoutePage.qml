@@ -368,11 +368,11 @@ PagePL {
                 width: columnFollow.width
                 onClicked: {
                     if (app.mode === modes.followMe) {
-                        app.setModeExplore();
+                        app.navigator.followMe = false;
                         app.showMap();
                     } else {
-                        navigator.clearRoute();
-                        app.setModeFollowMe();
+                        app.navigator.clearRoute();
+                        app.navigator.followMe = true;
                         app.hideMenu(); // there is no info panel, follow me mode starts and is using hidden menu
                     }
                 }
@@ -396,9 +396,6 @@ PagePL {
                     onCurrentIndexChanged: {
                         value = values[currentIndex]
                         app.conf.set("follow_me_transport_mode", value);
-                        if (app.mode === modes.followMe)
-                            // have to set it again to refresh the mode
-                            app.setModeFollowMe();
                     }
                 }
             }

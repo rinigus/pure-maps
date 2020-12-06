@@ -44,7 +44,7 @@ MenuDrawerPL {
         visible: app.mode === modes.followMe
         onClicked: {
             if (app.mode !== modes.followMe) return;
-            app.setModeExplore();
+            app.navigator.followMe = false;
             app.showMap();
         }
     }
