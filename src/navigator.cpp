@@ -71,6 +71,8 @@ void Navigator::clearRoute()
   SET(directionValid, false);
   SET(manDist, QLatin1String("-"));
   SET(manTime, QLatin1String("-"));
+  SET(nextIcon, QLatin1String());
+  SET(nextManDist, QLatin1String());
   SET(onRoute, false);
   SET(street, "");
 
@@ -282,8 +284,22 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(manTime, timeToStr(mtime));
           SET(icon, next.icon);
           SET(narrative, next.narrative);
-          if (m_running && (mdist < 500 || mtime < 300)) { SET(sign, next.sign); }
-          else SET(sign, QVariantMap());
+          if (m_running && (mdist < 500 || mtime < 300))
+            {
+              if (next.next > 0)
+                {
+                  const Maneuver &close = m_maneuvers[next.next];
+                  SET(nextIcon, close.icon);
+                  SET(nextManDist, close.length_txt);
+                }
+              SET(sign, next.sign);
+            }
+          else
+            {
+              SET(nextIcon, QLatin1String());
+              SET(nextManDist, QLatin1String());
+              SET(sign, QVariantMap());
+            }
           SET(street, next.street);
 
           // check for voice prompt to play
@@ -331,6 +347,20 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(manDist, QLatin1String("-"));
           SET(manTime, QLatin1String());
           SET(narrative, trans("Preparing to start navigation"));
+          SET(nextIcon, QLatin1String());
+          SET(nextManDist, QLatin1String());
+          SET(sign, QVariantMap());
+          SET(street, QLatin1String());
+        }
+      else
+        {
+          // no more maneuvers
+          SET(icon, QLatin1String("flag"));
+          SET(manDist, QLatin1String("-"));
+          SET(manTime, QLatin1String());
+          SET(narrative, QLatin1String());
+          SET(nextIcon, QLatin1String());
+          SET(nextManDist, QLatin1String());
           SET(sign, QVariantMap());
           SET(street, QLatin1String());
         }
@@ -620,6 +650,13 @@ void Navigator::setRoute(QVariantMap m)
   for (auto p: prompts)
     if (!p.flagged)
       m_prompts.push_back(p);
+
+  // fill next maneuvers info if close to each other
+  for (size_t i=0; m_maneuvers.size() > 0 && i < m_maneuvers.size()-1; ++i)
+    {
+      if (m_maneuvers[i+1].duration < 120)
+        m_maneuvers[i].next = i+1;
+    }
 
   m_route_duration = duration_on_route;
 

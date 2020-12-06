@@ -23,6 +23,7 @@ public:
   QString length_txt;
   QString name;
   QString narrative;
+  int  next{-1};
   bool passive;
   QVariantMap sign;
   QString street;
