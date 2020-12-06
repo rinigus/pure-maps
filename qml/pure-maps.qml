@@ -153,9 +153,6 @@ ApplicationWindowPL {
         } else if (app.mode === modes.followMe) {
             app.resetMenu();
         } else if (app.mode === modes.navigate) {
-            app.rerouteConsecutiveErrors = 0;
-            app.reroutePreviousTime = -1;
-            app.rerouteTotalCalls = 0;
             app.resetMenu();
         }
     }

@@ -81,7 +81,12 @@ Item {
             if (running && navigator.followMe)
                 navigator.followMe = false;
 
-            if (running) updatePosition();
+            if (running) {
+                rerouteConsecutiveErrors = 0;
+                reroutePreviousTime = -1;
+                rerouteTotalCalls = 0;
+                updatePosition();
+            }
 
             if (running && app.conf.voiceNavigation) {
                 // check if the call was caused by rerouting, for example
