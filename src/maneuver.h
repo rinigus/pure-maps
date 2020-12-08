@@ -25,6 +25,7 @@ public:
   QString narrative;
   int  next{-1};
   bool passive;
+  int  roundabout_exit_count{0};
   QVariantMap sign;
   QString street;
   QString verbal_alert;

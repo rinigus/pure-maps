@@ -164,6 +164,7 @@ def route(fm, to, heading, params):
         street=maneuver.get("begin_street_names", maneuver.get("street_names", None)),
         arrive_instruction=maneuver.get("arrive_instruction", None),
         depart_instruction=maneuver.get("depart_instruction", None),
+        roundabout_exit_count=maneuver.get("roundabout_exit_count", None),
         travel_type=maneuver.get("travel_type", None),
         verbal_alert=maneuver.get("verbal_transition_alert_instruction", None),
         verbal_pre=maneuver.get("verbal_pre_transition_instruction", None),

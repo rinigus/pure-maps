@@ -74,6 +74,7 @@ void Navigator::clearRoute()
   SET(nextIcon, QLatin1String());
   SET(nextManDist, QLatin1String());
   SET(onRoute, false);
+  SET(roundaboutExit, 0);
   SET(street, "");
 
   m_maneuvers_model.clear();
@@ -129,6 +130,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(directionValid, false);
           SET(manDist, QLatin1String("-"));
           SET(manTime, QLatin1String());
+          SET(roundaboutExit, 0);
           SET(sign, QVariantMap());
           SET(street, QLatin1String());
           m_precision_insufficient = true;
@@ -284,6 +286,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(manTime, timeToStr(mtime));
           SET(icon, next.icon);
           SET(narrative, next.narrative);
+          SET(roundaboutExit, next.roundabout_exit_count);
           if (m_running && (mdist < 500 || mtime < 300))
             {
               if (next.next >= 0)
@@ -355,6 +358,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(narrative, trans("Preparing to start navigation"));
           SET(nextIcon, QLatin1String());
           SET(nextManDist, QLatin1String());
+          SET(roundaboutExit, 0);
           SET(sign, QVariantMap());
           SET(street, QLatin1String());
         }
@@ -367,6 +371,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(narrative, QLatin1String());
           SET(nextIcon, QLatin1String());
           SET(nextManDist, QLatin1String());
+          SET(roundaboutExit, 0);
           SET(sign, QVariantMap());
           SET(street, QLatin1String());
         }
@@ -409,6 +414,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(manTime, QLatin1String());
           SET(nextIcon, QLatin1String());
           SET(nextManDist, QLatin1String());
+          SET(roundaboutExit, 0);
           SET(sign, QVariantMap());
           SET(street, QLatin1String());
           SET(onRoute, false);

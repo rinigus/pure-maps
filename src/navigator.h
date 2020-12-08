@@ -40,6 +40,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString nextManDist READ nextManDist NOTIFY nextManDistChanged)
   Q_PROPERTY(bool    onRoute READ onRoute NOTIFY onRouteChanged)
   Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
+  Q_PROPERTY(int     roundaboutExit READ roundaboutExit NOTIFY roundaboutExitChanged)
   Q_PROPERTY(bool    running READ running WRITE setRunning NOTIFY runningChanged)
   Q_PROPERTY(QVariantMap sign READ sign NOTIFY signChanged)
   Q_PROPERTY(QString street READ street NOTIFY streetChanged)
@@ -69,6 +70,7 @@ public:
   QString nextManDist() const { return m_nextManDist; }
   bool    onRoute() const { return m_onRoute; }
   double  progress() const { return m_progress; }
+  int     roundaboutExit() const { return m_roundaboutExit; }
   QVariantMap sign() const { return m_sign; }
   QString street() const { return m_street; }
   QString totalDist() const { return m_totalDist; }
@@ -111,6 +113,7 @@ signals:
   void onRouteChanged();
   void progressChanged();
   void rerouteRequest();
+  void roundaboutExitChanged();
   void routeChanged();
   void runningChanged();
   void signChanged();
@@ -206,6 +209,7 @@ private:
   bool    m_onRoute{false};
   bool    m_precision_insufficient{false};
   int     m_progress{0};
+  int     m_roundaboutExit{0};
   QVariantMap m_sign;
   QString m_street;
   QString m_totalDist;

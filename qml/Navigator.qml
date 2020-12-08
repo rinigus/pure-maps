@@ -45,6 +45,7 @@ Item {
     property real   reroutePreviousTime: -1
     property int    rerouteTotalCalls: 0
     property bool   rerouting: false
+    property alias  roundaboutExit: navigatorBase.roundaboutExit
     property alias  route:     navigatorBase.route
     property alias  running:   navigatorBase.running
     property alias  sign:      navigatorBase.sign

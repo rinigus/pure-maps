@@ -56,6 +56,7 @@ Item {
     property string nextIcon:  app.navigator.nextIcon
     property string nextManDist:  app.navigator.nextManDist
     property bool   notify:    app.navigator.notify
+    property int    roundaboutExit: app.navigator.roundaboutExit
     property var    street:    app.navigator.street
 
     Rectangle {
@@ -197,6 +198,16 @@ Item {
             }
         ]
         width: block.notify ? sourceSize.width : 0
+
+        LabelPL {
+            // roundabout exit if available
+            anchors.centerIn: parent
+            color: styler.themePrimaryColor
+            font.family: styler.themeFontFamily
+            font.pixelSize: parent.height / 4
+            text: roundaboutExit
+            visible: block.notify && roundaboutExit > 0
+        }
     }
 
     LabelPL {

@@ -10,6 +10,7 @@ Maneuver::Maneuver(const QVariantMap &map)
   passive = map.value("passive", false).toBool();
   name = passive ? QStringLiteral("passive") : QStringLiteral("active");
   narrative = map.value("narrative").toString();
+  roundabout_exit_count=map.value("roundabout_exit_count").toInt();
   sign = map.value("sign").toMap();
   street = map.value("street").toString();
   verbal_alert = map.value("verbal_alert").toString();
