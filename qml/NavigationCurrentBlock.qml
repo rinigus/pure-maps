@@ -35,15 +35,26 @@ Item {
     property string manTime:   app.navigator.manTime
     // difference in height between main and shields if the shield's
     // rectangle sticks out. zero otherwise
-    property real   marginExtraLeft: leftShield.visible ?
-                                         Math.max(leftShield.height + leftShield.anchors.topMargin -
-                                                  (mainRect.height + mainRect.anchors.topMargin), 0) : 0
-    property real   marginExtraLeftSide: leftShield.visible ? leftShield.width + leftShield.anchors.leftMargin : 0
+    property real   marginExtraLeft: {
+        var le = leftShield.visible ? Math.max(leftShield.height + leftShield.anchors.topMargin -
+                                               (mainRect.height + mainRect.anchors.topMargin), 0) : 0;
+        var ln = nextAfterNextShield.visible ? nextAfterNextShield.height +
+                                               nextAfterNextShield.anchors.topMargin : 0;
+        return le + ln;
+    }
+    property real   marginExtraLeftSide: {
+        var le = leftShield.visible ? leftShield.width + leftShield.anchors.leftMargin : 0;
+        var ln = nextAfterNextShield.visible ? nextAfterNextShield.width +
+                                               nextAfterNextShield.anchors.leftMargin : 0;
+        return Math.max(le, ln);
+    }
     property real   marginExtraRight: speedShield.visible ?
                                           Math.max(speedShield.height + speedShield.anchors.topMargin -
                                                    (mainRect.height + mainRect.anchors.topMargin), 0) : 0
     property real   marginExtraRightSide: speedShield.visible ? speedShield.width + speedShield.anchors.rightMargin : 0
     property string narrative: app.navigator.narrative
+    property string nextIcon:  app.navigator.nextIcon
+    property string nextManDist:  app.navigator.nextManDist
     property bool   notify:    app.navigator.notify
     property var    street:    app.navigator.street
 
@@ -127,6 +138,25 @@ Item {
                speedUnit.width + styler.themePaddingSmall +
                styler.themeHorizontalPageMargin + radius
 
+        MouseArea {
+            anchors.fill: parent
+            onClicked: block.openNavigation()
+        }
+    }
+
+    Rectangle {
+        id: nextAfterNextShield
+        anchors.top: leftShield.visible ? leftShield.bottom : mainRect.bottom
+        anchors.topMargin:  -radius
+        anchors.left: parent.left
+        anchors.leftMargin: -radius
+        color: styler.blockBg
+        height: visible ? iconNextImage.height + nextManDistLabel.height + 2*radius : 0
+        radius: styler.themePaddingLarge
+        visible: iconNextImage.visible
+        width: Math.max(iconNextImage.width, nextManDistLabel.width) +
+               styler.themeHorizontalPageMargin +
+               2*radius
         MouseArea {
             anchors.fill: parent
             onClicked: block.openNavigation()
@@ -250,15 +280,6 @@ Item {
         verticalAlignment: Text.AlignTop
 
         property string streetName: block.street ? block.street : ""
-//        {
-//            if (!block.street) return "";
-//            var s = "";
-//            for (var i in block.street) {
-//                if (s != "") s += "; "
-//                s += block.street[i];
-//            }
-//            return s;
-//        }
     }
 
     LabelPL {
@@ -337,6 +358,37 @@ Item {
                 text = app.tr("km/h")
             }
         }
+    }
+
+    Image {
+        // Icon for the maneuver next after next
+        id: iconNextImage
+        x: (nextAfterNextShield.width + nextAfterNextShield.anchors.leftMargin)/2 - width/2
+        anchors.top: nextAfterNextShield.top
+        anchors.topMargin: -nextAfterNextShield.anchors.topMargin
+        fillMode: Image.Pad
+        height: visible ? sourceSize.height : 0
+        opacity: 0.9
+        smooth: true
+        source: visible ? "icons/navigation/%1-%2.svg".arg(block.nextIcon).arg(styler.navigationIconsVariant) : ""
+        sourceSize.height: (app.screenLarge ? 1.7 : 1) * styler.themeIconSizeLarge * 0.5
+        sourceSize.width: (app.screenLarge ? 1.7 : 1) * styler.themeIconSizeLarge * 0.5
+        visible: block.notify && block.nextIcon
+        width: visible ? sourceSize.width : 0
+    }
+
+    LabelPL {
+        // Distance for the maneuver next after next
+        id: nextManDistLabel
+        anchors.horizontalCenter: iconNextImage.horizontalCenter
+        anchors.top: iconNextImage.bottom
+        color: block.notify ? styler.themeHighlightColor : styler.themePrimaryColor
+        font.family: block.notify ? styler.themeFontFamilyHeading : styler.themeFontFamily
+        font.pixelSize: styler.themeFontSizeLarge
+        height: text ? implicitHeight + styler.themePaddingMedium : 0
+        text: block.nextManDist
+        verticalAlignment: Text.AlignBottom
+        visible: text
     }
 
     Connections {

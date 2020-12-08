@@ -36,6 +36,8 @@ Item {
     property alias  manDist:   navigatorBase.manDist
     property alias  manTime:   navigatorBase.manTime
     property alias  narrative: navigatorBase.narrative
+    property alias  nextIcon:  navigatorBase.nextIcon
+    property alias  nextManDist: navigatorBase.nextManDist
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
     property real   progress:  navigatorBase.progress / 100.0
     property string provider

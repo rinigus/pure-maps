@@ -286,12 +286,18 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(narrative, next.narrative);
           if (m_running && (mdist < 500 || mtime < 300))
             {
-              if (next.next > 0)
+              if (next.next >= 0)
                 {
                   const Maneuver &close = m_maneuvers[next.next];
-                  SET(nextIcon, close.icon);
-                  SET(nextManDist, close.length_txt);
+                  SET(nextIcon, close.icon); // upcoming maneuver icon after the next one
+                  SET(nextManDist, next.length_txt); // distance is length of "next" maneuver
                 }
+              else
+                {
+                  SET(nextIcon, QLatin1String());
+                  SET(nextManDist, QLatin1String());
+                }
+
               SET(sign, next.sign);
             }
           else
@@ -401,6 +407,8 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
             }
 
           SET(manTime, QLatin1String());
+          SET(nextIcon, QLatin1String());
+          SET(nextManDist, QLatin1String());
           SET(sign, QVariantMap());
           SET(street, QLatin1String());
           SET(onRoute, false);
@@ -654,9 +662,12 @@ void Navigator::setRoute(QVariantMap m)
   // fill next maneuvers info if close to each other
   for (size_t i=0; m_maneuvers.size() > 0 && i < m_maneuvers.size()-1; ++i)
     {
-      if (m_maneuvers[i+1].duration < 120)
+      if (m_maneuvers[i].duration < 60)
         m_maneuvers[i].next = i+1;
     }
+
+  for (auto m: m_maneuvers)
+    qDebug() << m.narrative << m.duration_txt << m.length_txt << m.next;
 
   m_route_duration = duration_on_route;
 
