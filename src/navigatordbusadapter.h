@@ -26,6 +26,7 @@ class NavigatorDBusAdapter : public QDBusAbstractAdaptor
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
   Q_PROPERTY(bool    onRoute READ onRoute NOTIFY onRouteChanged)
   Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
+  Q_PROPERTY(int     roundaboutExit READ roundaboutExit NOTIFY roundaboutExitChanged)
   Q_PROPERTY(bool    running READ running NOTIFY runningChanged)
   Q_PROPERTY(QString street READ street NOTIFY streetChanged)
   Q_PROPERTY(QString totalDist READ totalDist NOTIFY totalDistChanged)
@@ -48,6 +49,7 @@ public:
   QString narrative() const { return m->narrative(); }
   bool    onRoute() const { return m->onRoute(); }
   int     progress() const { return m->progress(); }
+  int     roundaboutExit() const { return m->roundaboutExit(); }
   bool    running() const { return m->running(); }
   QString street() const { return m->street(); }
   QString totalDist() const { return m->totalDist(); }
@@ -74,6 +76,7 @@ signals:
   void narrativeChanged();
   void onRouteChanged();
   void progressChanged();
+  void roundaboutExitChanged();
   void runningChanged();
   void streetChanged();
   void totalDistChanged();
