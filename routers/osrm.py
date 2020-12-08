@@ -65,9 +65,9 @@ def init_icons():
     # OSRM's maneuver types and modifiers match Mapbox directions
     # icons, which are included under qml/icons/navigation.
     directory = os.path.join(poor.DATA_DIR, "qml", "icons", "navigation")
-    icons = glob.glob("{}/*.svg".format(directory))
+    icons = glob.glob("{}/*-white.svg".format(directory))
     icons = list(map(os.path.basename, icons))
-    icons = [x.replace(".svg", "") for x in icons]
+    icons = [x.replace("-white.svg", "") for x in icons]
     ICONS.extend(icons)
 
 def get_maneuver_components(maneuver):
