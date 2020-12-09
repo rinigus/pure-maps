@@ -53,6 +53,7 @@ Item {
                                                    (mainRect.height + mainRect.anchors.topMargin), 0) : 0
     property real   marginExtraRightSide: speedShield.visible ? speedShield.width + speedShield.anchors.rightMargin : 0
     property string narrative: app.navigator.narrative
+    property bool   nextAfterNextVisible: notify && nextIcon
     property string nextIcon:  app.navigator.nextIcon
     property string nextManDist:  app.navigator.nextManDist
     property bool   notify:    app.navigator.notify
@@ -154,7 +155,7 @@ Item {
         color: styler.blockBg
         height: visible ? iconNextImage.height + nextManDistLabel.height + 2*radius : 0
         radius: styler.themePaddingLarge
-        visible: iconNextImage.visible
+        visible: nextAfterNextVisible
         width: Math.max(iconNextImage.width, nextManDistLabel.width) +
                styler.themeHorizontalPageMargin +
                2*radius
@@ -384,7 +385,7 @@ Item {
         source: visible ? "icons/navigation/%1-%2.svg".arg(block.nextIcon).arg(styler.navigationIconsVariant) : ""
         sourceSize.height: (app.screenLarge ? 1.7 : 1) * styler.themeIconSizeLarge * 0.5
         sourceSize.width: (app.screenLarge ? 1.7 : 1) * styler.themeIconSizeLarge * 0.5
-        visible: block.notify && block.nextIcon
+        visible: nextAfterNextVisible
         width: visible ? sourceSize.width : 0
     }
 
@@ -399,7 +400,7 @@ Item {
         height: text ? implicitHeight + styler.themePaddingMedium : 0
         text: block.nextManDist
         verticalAlignment: Text.AlignBottom
-        visible: text
+        visible: nextAfterNextVisible && text
     }
 
     Connections {
