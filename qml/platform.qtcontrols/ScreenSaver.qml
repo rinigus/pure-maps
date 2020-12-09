@@ -44,7 +44,6 @@ Item {
             if (inhibited || error) return;
             call("Inhibit", [name, reason],
                  function(result) {
-                     console.log('Screensaver inhibited');
                      cookie = result;
                      inhibited = true;
                  },
@@ -61,7 +60,6 @@ Item {
             if (!inhibited || error) return;
             typedCall("UnInhibit", [{'type': 'u', 'value': cookie}],
                       function(result) {
-                          console.log("ScreenSaver uninhibited");
                           inhibited = false;
                       },
                       function(error, message) {
