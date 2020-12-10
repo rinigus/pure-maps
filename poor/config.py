@@ -53,7 +53,7 @@ DEFAULTS = {
     # "none", "car", "bicycle", "foot"
     "map_matching_when_idle": "none",
     "map_matching_when_navigating": False,
-    "map_mode_auto_switch_time": -1,
+    "map_mode_auto_switch_time": 30,
     "map_mode_clean_on_start": False,
     "map_mode_clean_show_basemap": False,
     "map_mode_clean_show_center": False,
