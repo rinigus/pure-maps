@@ -286,8 +286,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(manTime, timeToStr(mtime));
           SET(icon, next.icon);
           SET(narrative, next.narrative);
-          SET(roundaboutExit, next.roundabout_exit_count);
-          if (m_running && (mdist < 500 || mtime < 300))
+          if (m_running && (mdist < 100 || mtime < 60))
             {
               if (next.next >= 0)
                 {
@@ -300,13 +299,19 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
                   SET(nextIcon, QLatin1String());
                   SET(nextManDist, QLatin1String());
                 }
-
-              SET(sign, next.sign);
             }
           else
             {
               SET(nextIcon, QLatin1String());
               SET(nextManDist, QLatin1String());
+            }
+          SET(roundaboutExit, next.roundabout_exit_count);
+          if (m_running && (mdist < 500 || mtime < 300))
+            {
+              SET(sign, next.sign);
+            }
+          else
+            {
               SET(sign, QVariantMap());
             }
           SET(street, next.street);
