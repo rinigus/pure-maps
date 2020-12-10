@@ -145,6 +145,7 @@ def route(fm, to, heading, params):
         icon=parse_icon(step.maneuver),
         narrative=parse_narrative(step.maneuver, step.get("name", "")),
         duration=float(step.duration),
+        roundabout_exit_count=step.maneuver.get("exit", None),
     ) for step in result.legs[0].steps]
     route = dict(x=x, y=y, maneuvers=maneuvers, mode="car")
     route["language"] = "en_US"
