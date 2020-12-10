@@ -164,7 +164,7 @@ Item {
             anchors.top: !block.showAtBottom ? parent.top : undefined
             color: styler.blockBg
             height: _button.height + (block.condensedMode ? 2*styler.themePaddingSmall : 0)
-            radius: styler.themePaddingLarge
+            radius: styler.themePaddingMedium
             width: _button.width + styler.themePaddingSmall + _button.anchors.leftMargin + radius
 
             IconButtonPL {

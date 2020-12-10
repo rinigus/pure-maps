@@ -29,7 +29,7 @@ Rectangle {
     anchors.rightMargin: -radius
     color: styler.blockBg
     height: speed.height + styler.themePaddingMedium
-    radius: styler.themePaddingLarge
+    radius: styler.themePaddingMedium
     visible: !app.modalDialog && app.mode === modes.followMe && speed.text
     width: speed.width + styler.themePaddingLarge +
            speedUnit.width + styler.themePaddingSmall +
