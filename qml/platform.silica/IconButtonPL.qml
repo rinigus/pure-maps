@@ -38,6 +38,8 @@ Item {
     Image {
         id: image
         anchors.centerIn: parent
+        fillMode: Image.PreserveAspectFit
+        height: iconHeight
         source: iconName || iconSource
         sourceSize.height: iconHeight
         sourceSize.width: iconWidth

@@ -266,6 +266,7 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.top: !block.showAtBottom ? parent.top : undefined
+        anchors.topMargin: styler.themePaddingMedium
         iconHeight: app.mode !== modes.navigate ?
                         styler.themeIconSizeSmall :
                         (compactRight.height + compactRight.anchors.bottomMargin +
