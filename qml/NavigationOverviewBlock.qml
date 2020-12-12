@@ -265,10 +265,11 @@ Item {
     IconButtonPL {
         id: button
         anchors.bottom: block.showAtBottom ? parent.bottom : undefined
+        anchors.bottomMargin: styler.themePaddingSmall
         anchors.right: parent.right
         anchors.rightMargin: styler.themeHorizontalPageMargin
-        anchors.top: !block.showAtBottom ? parent.top : rightRect.top
-        iconHeight: mode === blockModes.full ? styler.themeIconSizeSmall : 0
+        anchors.top: !block.showAtBottom ? parent.top : undefined
+        iconHeight: mode === blockModes.full ? styler.themeIconSizeSmall : compactRight.height
         iconName: styler.iconManeuvers
         onClicked: block.openNavigation()
     }

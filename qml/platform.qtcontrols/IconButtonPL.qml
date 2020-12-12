@@ -45,7 +45,7 @@ Item {
         opacity: iconOpacity
         rotation: iconRotation
         smooth: false
-        sourceSize.height: iconHeight ? iconHeight : item.height / (1 + item.padding)
+        sourceSize.height: iconHeight
         sourceSize.width: iconWidth
         visible: name
     }
@@ -56,7 +56,7 @@ Item {
         fillMode: Image.PreserveAspectFit
         opacity: iconOpacity
         rotation: iconRotation
-        sourceSize.height: iconHeight ? iconHeight : height / (1 + padding)
+        sourceSize.height: iconHeight
         sourceSize.width: iconWidth
         visible: source && !iconName
     }
