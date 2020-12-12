@@ -119,7 +119,8 @@ Item {
         radius: styler.themePaddingMedium
         visible: !app.portrait &&  leftShield.height > mainRect.height && block.notify
         width: manLabel.anchors.leftMargin + styler.themePaddingLarge +
-               Math.max(manLabel.width, iconImage.width) + radius
+               contentWidth + radius
+        property int contentWidth: Math.max(manLabel.width, iconImage.width)
         MouseArea {
             anchors.fill: parent
             onClicked: block.openNavigation()
@@ -169,7 +170,11 @@ Item {
         // Icon for the next maneuver
         id: iconImage
         anchors.left: parent.left
-        anchors.leftMargin: styler.themeHorizontalPageMargin
+        anchors.leftMargin: {
+            if (!app.portrait)
+                return styler.themeHorizontalPageMargin + (leftShield.contentWidth-width)/2;
+            return styler.themeHorizontalPageMargin;
+        }
         anchors.rightMargin: styler.themePaddingLarge
         anchors.top: parent.top
         anchors.topMargin: styler.themePaddingLarge
@@ -180,24 +185,6 @@ Item {
         source: block.notify ? "icons/navigation/%1-%2.svg".arg(block.icon || "flag").arg(styler.navigationIconsVariant) : ""
         sourceSize.height: (app.screenLarge ? 1.7 : 1) * styler.themeIconSizeLarge
         sourceSize.width: (app.screenLarge ? 1.7 : 1) * styler.themeIconSizeLarge
-        states: [
-            State {
-                when: !app.portrait && block.notify && iconImage.width < manLabel.width
-                AnchorChanges {
-                    target: iconImage
-                    anchors.left: undefined
-                    anchors.horizontalCenter: manLabel.horizontalCenter
-                }
-            },
-            State {
-                when: !app.portrait && block.notify
-                AnchorChanges {
-                    target: iconImage
-                    anchors.left: parent.left
-                    anchors.horizontalCenter: undefined
-                }
-            }
-        ]
         width: block.notify ? sourceSize.width : 0
 
         LabelPL {
@@ -230,7 +217,8 @@ Item {
         anchors.left: iconImage.right
         anchors.leftMargin: {
             if (distToRoadLabel.visible) return styler.themePaddingSmall;
-            if (!app.portrait) return styler.themeHorizontalPageMargin;
+            if (!app.portrait)
+                return styler.themeHorizontalPageMargin + (leftShield.contentWidth-width)/2;
             return styler.themePaddingLarge;
         }
         anchors.top: parent.top
