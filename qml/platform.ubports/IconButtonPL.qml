@@ -26,7 +26,7 @@ Item {
     width: image.width*(1 + padding)
 
     property alias  iconColorize: image.iconColorize
-    property alias  iconHeight: image.iconHeight
+    property int    iconHeight: 0
     property alias  iconName: image.iconName
     property real   iconOpacity: 1.0
     property real   iconRotation
@@ -40,6 +40,7 @@ Item {
     IconPL {
         id: image
         anchors.centerIn: parent
+        iconHeight: item.iconHeight ? item.iconHeight : item.height / (1 + item.padding)
         opacity: iconOpacity
         rotation: iconRotation
     }

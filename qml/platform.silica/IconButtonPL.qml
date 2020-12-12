@@ -39,7 +39,7 @@ Item {
         id: image
         anchors.centerIn: parent
         source: iconName || iconSource
-        sourceSize.height: iconHeight
+        sourceSize.height: iconHeight ? iconHeight : item.height / (1 + item.padding)
         sourceSize.width: iconWidth
     }
 
