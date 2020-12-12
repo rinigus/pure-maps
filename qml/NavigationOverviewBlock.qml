@@ -47,10 +47,10 @@ Item {
     // difference in height between main and button rectangles if the button
     // rectangle sticks out. zero otherwise. margins defined as in NavigationCurrentBlock
     property int    extrasAndCompactHeight: Math.max(destLabel.height, destEta.height, distLabel.height)
-    property real   marginExtraLeft: leftRect.height - mainRect.height
-    property real   marginExtraLeftSide: leftRect.width
-    property real   marginExtraRight: rightRect.height - mainRect.height
-    property real   marginExtraRightSide: rightRect.width
+    property real   marginExtraLeft: leftRect.visible ? leftRect.height - mainRect.height : 0
+    property real   marginExtraLeftSide: leftRect.visible ? leftRect.width : 0
+    property real   marginExtraRight: leftRect.visible ? rightRect.height - mainRect.height : 0
+    property real   marginExtraRightSide: leftRect.visible ? rightRect.width : 0
     property var    mode: {
         if (app.mode === modes.navigate) {
             var availableHalfSpace = block.width/2 - button.width -
@@ -65,7 +65,7 @@ Item {
         }
         return blockModes.full;
     }
-    property bool   showAtBottom: mode !== blockModes.full
+    property bool   showAtBottom: app.mode === modes.navigate
     property string totalDist: app.navigator.totalDist
 
     readonly property var blockModes: QtObject {
@@ -83,7 +83,7 @@ Item {
         height: Math.max(infoLayout.visible ? infoLayout.height : 0,
                          mode !== blockModes.condensedSplit && compactLeft.visible ? compactLeft.height : 0,
                          mode !== blockModes.condensedSplit && compactRight.visible ? compactRight.height : 0,
-                         mode === blockModes.full ? button.height : 0) +
+                         app.mode !== modes.navigate ? button.height : 0) +
                 (mode === blockModes.condensedSplit ? progress.height*3/2 : styler.themePaddingMedium*2)
         width: parent.width
 
@@ -101,10 +101,10 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: -radius
         color: styler.blockBg
-        height: visible ? compactLeft.height + styler.themePaddingMedium*2 + radius : 0
+        height: compactLeft.height + styler.themePaddingMedium*2 + radius
         radius: styler.themePaddingMedium
         visible: mode === blockModes.condensedSplit
-        width: visible ? compactLeft.width + compactLeft.anchors.leftMargin + styler.themePaddingLarge + radius : 0
+        width: compactLeft.width + compactLeft.anchors.leftMargin + styler.themePaddingLarge + radius
         MouseArea {
             anchors.fill: parent
             onClicked: block.openNavigation()
@@ -119,12 +119,13 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: -radius
         color: styler.blockBg
-        height: visible ? compactRight.height + styler.themePaddingMedium*2 + radius : 0
+        height: compactRight.height + compactRight.anchors.bottomMargin +
+                compactRight.anchors.topMargin + radius
         radius: styler.themePaddingMedium
         visible: mode === blockModes.condensedSplit
-        width: visible ? compactRight.width + compactRight.anchors.rightMargin +
-                         button.width + button.anchors.rightMargin +
-                         styler.themePaddingLarge + radius : 0
+        width: compactRight.width + compactRight.anchors.rightMargin +
+               button.width + button.anchors.rightMargin +
+               styler.themePaddingLarge + radius
         MouseArea {
             anchors.fill: parent
             onClicked: block.openNavigation()
@@ -170,10 +171,6 @@ Item {
                     anchors.left: block.left
                     anchors.right: undefined
                 }
-                PropertyChanges {
-                    target: compactLeft
-                    x: undefined
-                }
             },
             State {
                 // condensedNarrow
@@ -215,9 +212,10 @@ Item {
         id: compactRight
         anchors.bottom: parent.bottom
         anchors.bottomMargin: styler.themePaddingMedium
-        anchors.leftMargin: styler.themePaddingMedium
+        anchors.leftMargin: styler.themePaddingLarge
         anchors.right: button.left
         anchors.rightMargin: styler.themePaddingMedium
+        anchors.topMargin: styler.themePaddingMedium
         height: extrasAndCompactHeight
         states: [
             State {
@@ -265,11 +263,13 @@ Item {
     IconButtonPL {
         id: button
         anchors.bottom: block.showAtBottom ? parent.bottom : undefined
-        anchors.bottomMargin: styler.themePaddingSmall
         anchors.right: parent.right
         anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.top: !block.showAtBottom ? parent.top : undefined
-        iconHeight: mode === blockModes.full ? styler.themeIconSizeSmall : compactRight.height
+        iconHeight: app.mode !== modes.navigate ?
+                        styler.themeIconSizeSmall :
+                        (compactRight.height + compactRight.anchors.bottomMargin +
+                         compactRight.anchors.topMargin) / (1+padding)
         iconName: styler.iconManeuvers
         onClicked: block.openNavigation()
     }
