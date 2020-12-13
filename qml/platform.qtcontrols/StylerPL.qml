@@ -56,7 +56,7 @@ QtObject {
     // used icons
     property string iconAbout: "help-about-symbolic"
     property string iconBack: "go-previous-symbolic"
-    property string iconClear: "edit-clear-all-symbolic"
+    property string iconClear: "edit-delete-symbolic"
     property string iconClose: "window-close-symbolic"
     property string iconDelete: "edit-delete-symbolic"
     property string iconDot: "find-location-symbolic"

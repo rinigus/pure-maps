@@ -59,7 +59,7 @@ QtObject {
     // used icons
     property string iconAbout: "image://theme/info" //Qt.resolvedUrl("../../icons/help-about-symbolic.svg")
     property string iconBack: "image://theme/back" //Qt.resolvedUrl("../../icons/go-previous-symbolic.svg")
-    property string iconClear: "image://theme/edit-delete" //Qt.resolvedUrl("../../icons/edit-clear-all-symbolic.svg")
+    property string iconClear: "image://theme/edit-delete" //Qt.resolvedUrl("../../icons/edit-delete-symbolic.svg")
     property string iconClose: "image://theme/close" //Qt.resolvedUrl("../../icons/window-close-symbolic.svg")
     property string iconDelete: "image://theme/delete" //Qt.resolvedUrl("../../icons/edit-delete-symbolic.svg")
     property string iconDot: "image://theme/gps" //Qt.resolvedUrl("../../icons/find-location-symbolic.svg")
