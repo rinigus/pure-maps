@@ -44,12 +44,22 @@ Panel {
         anchors.topMargin: styler.themePaddingLarge
     }
 
-    Item {
+    Rectangle {
         id: infoBg
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
+        color: infoBgMouse.pressed ? styler.blockPressed : "transparent"
         height: infoText ? Math.max(backButton.height, infoLabel.height, menuButton.height) + 2*styler.themePaddingLarge : 0
+
+        MouseArea {
+            id: infoBgMouse
+            anchors.fill: parent
+            onClicked: {
+                app.showMenu();
+                _hide();
+            }
+        }
 
         IconButtonPL {
             id: backButton
@@ -80,30 +90,15 @@ Panel {
             verticalAlignment: Text.AlignTop
         }
 
-        IconButtonPL {
+        IconPL {
             id: menuButton
             anchors.right: parent.right
             anchors.rightMargin: styler.themeHorizontalPageMargin
             anchors.verticalCenter: infoBg.verticalCenter
+            height: iconHeight
             iconHeight: styler.themeIconSizeMedium
             iconName: showMenu ? styler.iconMenu : ""
-            padding: 0
             visible: showMenu
-            onClicked: {
-                app.showMenu();
-                _hide();
-            }
-        }
-    }
-
-    onClicked: {
-        if (!infoText) return;
-        if (mouse.y >= infoBg.y && mouse.y <= infoBg.y + infoBg.height
-                && mouse.x >= infoBg.x + infoLabel.x
-                && mouse.x <= infoBg.x + infoLabel.x + infoLabel.width) {
-            // consider as a click on menu button
-            app.showMenu();
-            _hide();
         }
     }
 
