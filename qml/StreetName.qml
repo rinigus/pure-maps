@@ -49,7 +49,6 @@ Rectangle {
         radius: styler.radius
         visible: streetname.visible
         width: streetname.width + 2*styler.themePaddingMedium
-        z: 450
     }
 
     LabelPL {
@@ -64,6 +63,5 @@ Rectangle {
         visible: (app.mode === modes.navigate || app.mode === modes.followMe) && (text !== undefined && text !== null && text.length>0)
         width: implicitWidth > master.maxWidth - 4*styler.themePaddingMedium ?
                    master.maxWidth-4*styler.themePaddingMedium : implicitWidth
-        z: 500
     }
 }

@@ -38,7 +38,7 @@ Item {
         }
     ]
     visible: !app.modalDialog && (app.mode === modes.exploreRoute || app.mode === modes.navigate)
-    z: 910
+    z: 400
 
     property int    compactTotalWidth: compactLeft.width + compactLeft.anchors.rightMargin + compactRight.width
     property string destDist:  app.navigator.destDist

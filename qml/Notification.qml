@@ -30,7 +30,7 @@ Rectangle {
     radius: 0.85 * padding
     visible: !app.modalDialog && label.text
     width: label.width + 2*padding
-    z: 750
+    z: 400
 
     property string currentText: {
         if (stack.length)

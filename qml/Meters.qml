@@ -41,7 +41,7 @@ Item {
     }
     width: parent.width
     visible: app.mode === modes.explore || app.mode === modes.exploreRoute
-    z: 400
+    z: 200
 
     property bool hidden: app.modalDialog || app.infoPanelOpen || (map.cleanMode && !app.conf.mapModeCleanShowMeters)
 

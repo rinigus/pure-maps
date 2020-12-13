@@ -33,7 +33,7 @@ Rectangle {
 //        samples: 1 + radius*2
 //    }
     y: mode === panelModes.bottom ? parent.height - _offset : -height + _offset
-    z: 910
+    z: 1000
 
     // properties
     property int  contentHeight: 0

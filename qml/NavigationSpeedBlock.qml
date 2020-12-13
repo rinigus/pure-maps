@@ -34,7 +34,7 @@ Rectangle {
     width: speed.width + styler.themePaddingLarge +
            speedUnit.width + styler.themePaddingSmall +
            styler.themeHorizontalPageMargin + radius
-    z: 910
+    z: 400
 
     MouseArea {
         anchors.fill: parent

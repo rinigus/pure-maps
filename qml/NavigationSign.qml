@@ -48,7 +48,7 @@ Rectangle {
         if (w) return w + 2*styler.themePaddingLarge;
         return 0;
     }
-    z: 500
+    z: 400
 
     property var    sign:   app.navigator.sign
     property var    street: app.navigator.street

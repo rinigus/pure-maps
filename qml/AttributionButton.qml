@@ -54,7 +54,7 @@ MouseArea {
 
     ]
     width: extra.width + main.width
-    z: 500
+    z: 100
 
     property string logo: ""
 

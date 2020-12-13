@@ -28,7 +28,7 @@ Item {
 
     height: visible ? mainRect.height + mainRect.anchors.topMargin : 0
     visible: !app.modalDialog && app.mode === modes.navigate
-    z: 910
+    z: 400
 
     property string icon:      app.navigator.icon
     property string manDist:   app.navigator.manDist

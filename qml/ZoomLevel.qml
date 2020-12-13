@@ -27,7 +27,7 @@ Rectangle {
     color: "transparent"
     height: visible ? cover.height : 0
     visible: !app.modalDialog && app.conf.developmentShowZ
-    z: 400
+    z: 200
 
     Rectangle {
         id: cover
@@ -38,7 +38,6 @@ Rectangle {
         radius: styler.radius
         visible: parent.visible
         width: ztxt.width + 2*styler.themePaddingMedium
-        z: 450
     }
 
     LabelPL {
@@ -49,6 +48,5 @@ Rectangle {
         font.pixelSize: styler.themeFontSizeLarge
         maximumLineCount: 1
         text: "z=%1".arg(map.zoomLevel.toFixed(2))
-        z: 500
     }
 }
