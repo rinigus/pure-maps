@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 
 Image {
     id: image
+    fillMode: Image.PreserveAspectFit
     source: iconName || iconSource
     sourceSize.height: iconHeight
     sourceSize.width: iconWidth
