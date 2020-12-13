@@ -68,7 +68,7 @@ Item {
     property bool   showAtBottom: app.mode === modes.navigate
     property string streetName: (gps.streetName !== undefined && gps.streetName !== null &&
                                  gps.streetName.length>0) ? gps.streetName : ""
-    property bool   streetNameInOverview: !app.portrait && _splitPossible
+    property bool   streetNameInOverview: app.mode === modes.navigate && !app.portrait && _splitPossible
     property string totalDist: app.navigator.totalDist
 
     property int    _availableHalfSpace: block.width/2 - button.width -
