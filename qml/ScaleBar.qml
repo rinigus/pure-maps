@@ -55,7 +55,7 @@ MouseArea {
     visible: !app.modalDialog
     width: 2*(styler.themePaddingLarge + styler.themePaddingSmall) +
            (_rotate ? scaleBar.height : scaleBar.scaleBarMaxLength)
-    z: 400
+    z: 300
 
     property bool hidden: app.modalDialog || app.infoPanelOpen ||
                           (!_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale)
