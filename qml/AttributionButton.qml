@@ -40,7 +40,7 @@ MouseArea {
             }
         },
         State {
-            when: scaleBar.opacity < 1e-5 || app.mode === modes.followMe
+            when: scaleBar.opacity < 1e-5 || app.mode === modes.followMe || app.mode === modes.navigatePost
             AnchorChanges {
                 target: attributionButton
                 anchors.left: parent.left

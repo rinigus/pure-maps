@@ -32,7 +32,7 @@ MouseArea {
     y: {
         if (openMenu) return 0;
         // navigation or follow me
-        if (app.mode === modes.navigate || app.mode === modes.followMe) {
+        if (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost) {
             if (!app.portrait)
                 return northArrow.y + northArrow.height;
             return (parent.height - northArrow.height)/2 - height;
@@ -364,7 +364,7 @@ MouseArea {
                 width: parent.width
                 onValueChanged: {
                     app.conf.set("map_scale", value);
-                    if (app.mode !== modes.followMe && app.mode !== modes.navigate)
+                    if (app.mode !== modes.followMe && app.mode !== modes.navigate && app.mode !== modes.navigatePost)
                         map.setScale(value);
                 }
             }
@@ -377,12 +377,12 @@ MouseArea {
                 stepSize: 0.1
                 value: app.transportMode ? app.conf.get("map_scale_navigation_" + app.transportMode) : 1
                 valueText: value
-                visible: (app.mode === modes.followMe || app.mode === modes.navigate) && app.transportMode
+                visible: (app.mode === modes.followMe || app.mode === modes.navigate || app.mode === modes.navigatePost) && app.transportMode
                 width: parent.width
                 onValueChanged: {
                     if (!app.transportMode) return;
                     app.conf.set("map_scale_navigation_" + app.transportMode, value);
-                    if (app.mode === modes.followMe || app.mode === modes.navigate)
+                    if (app.mode === modes.followMe || app.mode === modes.navigate || app.mode === modes.navigatePost)
                         map.setScale(value);
                 }
             }

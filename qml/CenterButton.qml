@@ -28,7 +28,7 @@ MapButton {
     indicator: map.autoCenter
     states: [
         State {
-            when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
+            when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost) && !app.portrait
             AnchorChanges {
                 target: button
                 anchors.bottom: navigationSign.bottom
@@ -38,7 +38,7 @@ MapButton {
             }
         },
         State {
-            when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe)
+            when: hidden && (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
             AnchorChanges {
                 target: button
                 anchors.bottom: undefined
@@ -58,7 +58,7 @@ MapButton {
             }
         },
         State {
-            when: (app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait
+            when: (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost) && !app.portrait
             AnchorChanges {
                 target: button
                 anchors.bottom: undefined
@@ -68,7 +68,7 @@ MapButton {
             }
         },
         State {
-            when: (app.mode === modes.navigate || app.mode === modes.followMe)
+            when: (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
             AnchorChanges {
                 target: button
                 anchors.bottom: undefined

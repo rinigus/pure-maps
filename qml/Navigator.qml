@@ -28,6 +28,7 @@ Item {
     property alias  destDist:  navigatorBase.destDist
     property alias  destEta:   navigatorBase.destEta
     property alias  destTime:  navigatorBase.destTime
+    property bool   destReached: false
     property var    direction: navigatorBase.directionValid ? navigatorBase.direction : undefined
     property bool   followMe:  false
     property bool   hasRoute:  navigatorBase.route.length > 0
@@ -64,7 +65,7 @@ Item {
             if (app.mode === modes.navigate) {
                 notification.flash(app.tr("Destination reached"),
                                    "navigatorStop");
-                running = false;
+                destReached = true;
             }
         }
 
@@ -81,8 +82,11 @@ Item {
         onRerouteRequest: rerouteMaybe()
 
         onRunningChanged: {
-            if (running && navigator.followMe)
-                navigator.followMe = false;
+            if (running && followMe)
+                followMe = false;
+
+            if (destReached)
+                destReached = false;
 
             if (running) {
                 rerouteConsecutiveErrors = 0;
@@ -110,6 +114,7 @@ Item {
         }
 
         function updatePosition() {
+            if (destReached) return; // no more updates
             navigatorBase.setPosition(app.position.coordinate,
                                       app.position.horizontalAccuracy,
                                       app.position.horizontalAccuracyValid && app.position.latitudeValid && app.position.longitudeValid);

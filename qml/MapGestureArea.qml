@@ -38,6 +38,7 @@ MapboxMapGestureArea {
         // Toggle auto-center if position marker clicked.
         if (app.mode !== modes.navigate &&
                 app.mode !== modes.followMe &&
+                app.mode !== modes.navigatePost &&
                 area.coordinatesMatch(geocoordinate, app.position.coordinate)) {
             map.autoCenter = !map.autoCenter;
             notification.flash(map.autoCenter ?
@@ -58,7 +59,7 @@ MapboxMapGestureArea {
                 selectedPoi = { 'poi': poi, 'dist2': dist2 };
             }
         });
-        if (selectedPoi && (app.mode === modes.navigate || app.mode === modes.followMe))
+        if (selectedPoi && (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost))
             return app.notification.flash(app.tr("Stop navigation to select POI"), "mapgesture poi")
         if (selectedPoi)
             return pois.show(selectedPoi.poi);
@@ -76,7 +77,7 @@ MapboxMapGestureArea {
     }
 
     onPressAndHoldGeo: {
-        if (app.mode === modes.navigate || app.mode === modes.followMe)
+        if (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
             return app.notification.flash(app.tr("Stop navigation to select POI"), "mapgesture press and hold")
 
         var p = pois.add({ "x": geocoordinate.longitude,

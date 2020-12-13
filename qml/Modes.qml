@@ -20,8 +20,9 @@ import QtQuick 2.0
 
 QtObject {
     // possible program modes
-    readonly property int explore: 1
-    readonly property int followMe: 2
-    readonly property int navigate: 3
-    readonly property int exploreRoute: 4
+    readonly property int explore: 1       // regular map exploring
+    readonly property int followMe: 2      // follow motion and show just-in-time info
+    readonly property int navigate: 3      // navigation instructions
+    readonly property int exploreRoute: 4  // explore map with route
+    readonly property int navigatePost: 5  // after reaching destination, parking mode
 }

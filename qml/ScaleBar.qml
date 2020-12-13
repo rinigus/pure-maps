@@ -30,7 +30,7 @@ MouseArea {
             (_rotate ? scaleBar.scaleBarMaxLength : scaleBar.height)
     states: [
         State {
-            when: (app.mode === modes.navigate || app.mode === modes.followMe) &&
+            when: (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost) &&
                   streetName.visible && streetName.x+streetName.width > x
             AnchorChanges {
                 target: master
@@ -41,7 +41,7 @@ MouseArea {
             }
         },
         State {
-            when: (app.mode === modes.navigate || app.mode === modes.followMe)
+            when: (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
             AnchorChanges {
                 target: master
                 anchors.bottom: referenceBlockBottomRight.top
@@ -61,7 +61,7 @@ MouseArea {
                           (!_recentlyUpdated && map.cleanMode && !app.conf.mapModeCleanShowScale)
 
     property bool _recentlyUpdated: false
-    property bool _rotate: !((app.mode === modes.navigate || app.mode === modes.followMe) && !app.portrait)
+    property bool _rotate: !((app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost) && !app.portrait)
 
     Behavior on opacity { NumberAnimation { property: "opacity"; duration: app.conf.animationDuration; } }
 

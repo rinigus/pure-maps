@@ -40,17 +40,17 @@ PagePL {
                 id: beginItem
                 width: row.itemWidth + styler.themeHorizontalPageMargin
                 icon.iconHeight: styler.themeIconSizeMedium
-                icon.iconName: app.mode === modes.navigate ? styler.iconPause : styler.iconStart
-                text: app.mode === modes.navigate ? app.tr("Pause") : app.tr("Navigate")
+                icon.iconName: (app.mode === modes.navigate || app.mode === modes.navigatePost) ? styler.iconPause : styler.iconStart
+                text: (app.mode === modes.navigate || app.mode === modes.navigatePost) ? app.tr("Pause") : app.tr("Navigate")
                 onClicked: {
                     app.hideNavigationPages();
-                    if (app.mode === modes.navigate) app.navigator.running = false;
-                    else app.navigator.running = true;
+                    navigator.running = !navigator.running;
                 }
             }
 
             ToolItemPL {
                 id: rerouteItem
+                enabled: app.mode === modes.navigate
                 width: row.itemWidth
                 icon.iconHeight: styler.themeIconSizeMedium
                 icon.iconName: styler.iconRefresh

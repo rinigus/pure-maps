@@ -30,7 +30,7 @@ MapButton {
     indicator: map.autoRotate
     opacity: hidden ? 0 : 1
     y: {
-        if (app.mode === modes.navigate || app.mode === modes.followMe) {
+        if (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost) {
             if (!app.portrait)
                 return navigationSign.y + navigationSign.height;
             return (parent.height - height)/2;

@@ -20,23 +20,24 @@ import QtQuick 2.0
 import "platform"
 import "."
 
-// This is used to show speed in follow me mode
+// This is used to show speed in follow me and navigationPost mode
 Rectangle {
     id: block
     anchors.top: parent.top
     anchors.topMargin: -radius
     anchors.right: parent.right
     anchors.rightMargin: -radius
-    color: styler.blockBg
+    color: mouse.pressed ? styler.blockPressed : styler.blockBg
     height: speed.height + styler.themePaddingMedium
     radius: styler.radius
-    visible: !app.modalDialog && app.mode === modes.followMe && speed.text
+    visible: !app.modalDialog && (app.mode === modes.followMe || app.mode === modes.navigatePost) && speed.text
     width: speed.width + styler.themePaddingLarge +
            speedUnit.width + styler.themePaddingSmall +
            styler.themeHorizontalPageMargin + radius
     z: 400
 
     MouseArea {
+        id: mouse
         anchors.fill: parent
         onClicked: app.pushMain(Qt.resolvedUrl("RoutePage.qml"))
     }

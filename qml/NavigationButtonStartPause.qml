@@ -27,7 +27,7 @@ MapButton {
     iconSource: {
         if (app.mode === modes.followMe)
             return app.getIcon("icons/navigation-stop");
-        if (app.mode === modes.navigate)
+        if (app.mode === modes.navigate || app.mode === modes.navigatePost)
             return app.getIcon("icons/navigation-pause");
         return app.getIcon("icons/navigation-start");
     }
@@ -44,7 +44,8 @@ MapButton {
     transitions: Transition {
         AnchorAnimation { duration: app.conf.animationDuration; }
     }
-    visible: app.mode === modes.exploreRoute || app.mode === modes.navigate || app.mode === modes.followMe
+    visible: app.mode === modes.exploreRoute || app.mode === modes.navigate ||
+             app.mode === modes.navigatePost || app.mode === modes.followMe
     y: {
         var needed = (navigationButtonClear.visible ? 2*height : height);
         var p = parent.height/2 - needed/2;
@@ -69,7 +70,7 @@ MapButton {
                                notifyId);
             app.navigator.followMe = false;
             app.resetMenu();
-        } else if (app.mode === modes.navigate) {
+        } else if (app.mode === modes.navigate || app.mode === modes.navigatePost) {
             notification.flash(app.tr("Navigation paused"),
                                notifyId);
             app.navigator.running = false;

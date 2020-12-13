@@ -52,7 +52,7 @@ Rectangle {
 
     property var    sign:   app.navigator.sign
     property var    street: app.navigator.street
-    property bool   signActive: (app.mode === modes.navigate || app.mode === modes.navigate) && sign!=null && (sign.exit_number!=null || sign.exit_name!=null || sign.exit_toward!=null || sign.exit_branch!=null)
+    property bool   signActive: app.mode === modes.navigate && sign!=null && (sign.exit_number!=null || sign.exit_name!=null || sign.exit_toward!=null || sign.exit_branch!=null)
 
     Rectangle {
         id: signBorder

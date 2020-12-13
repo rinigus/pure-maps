@@ -60,7 +60,7 @@ Rectangle {
         maximumLineCount: 1
         text: gps.streetName
         truncMode: truncModes.fade
-        visible: (app.mode === modes.navigate || app.mode === modes.followMe) && (text !== undefined && text !== null && text.length>0)
+        visible: (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost) && (text !== undefined && text !== null && text.length>0)
         width: implicitWidth > master.maxWidth - 4*styler.themePaddingMedium ?
                    master.maxWidth-4*styler.themePaddingMedium : implicitWidth
     }

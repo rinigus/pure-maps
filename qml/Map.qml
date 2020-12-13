@@ -31,7 +31,9 @@ MapboxMap {
     center: QtPositioning.coordinate(49, 13)
     metersPerPixelTolerance: Math.max(0.001, metersPerPixel*0.01) // 1 percent from the current value
     pitch: {
-        if (app.mode === modes.explore || app.mode === modes.exploreRoute || format === "raster" || !map.autoRotate || !app.conf.tiltWhenNavigating) return 0;
+        if (app.mode === modes.explore || app.mode === modes.exploreRoute ||
+                app.mode === modes.navigatePost ||
+                format === "raster" || !map.autoRotate || !app.conf.tiltWhenNavigating) return 0;
         if (app.mode === modes.navigate) return 50;
         if (app.mode === modes.followMe) return 50;
         return 0; // should never get here
@@ -78,7 +80,7 @@ MapboxMap {
     property string format: ""
     property string mapType: {
         if (app.mode === modes.exploreRoute) return "preview";
-        else if (app.mode === modes.followMe || app.mode === modes.navigate)
+        else if (app.mode === modes.followMe || app.mode === modes.navigate || app.mode === modes.navigatePost)
             return "guidance";
         return "default";
     }
@@ -505,6 +507,7 @@ MapboxMap {
         else if (app.mode === modes.exploreRoute) setModeExploreRoute();
         else if (app.mode === modes.followMe) setModeFollowMe();
         else if (app.mode === modes.navigate) setModeNavigate();
+        else if (app.mode === modes.navigatePost) setModeNavigatePost();
         else console.log("Something is terribly wrong - unknown mode in Map.setMode: " + app.mode);
     }
 
@@ -550,6 +553,18 @@ MapboxMap {
         if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
     }
 
+    function setModeNavigatePost() {
+        // map after navigation in post mode
+        var scale = app.conf.get("map_scale_navigation_" + app.transportMode);
+        var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
+        if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
+        map.setScale(scale);
+        map.centerOnPosition();
+        map.autoCenter = true;
+        map.autoRotate = app.conf.autoRotateWhenNavigating;
+        if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
+    }
+
     function setScale(scale) {
         // Set the map scaling via its pixel ratio.
         map.pixelRatio = styler.themePixelRatio * 1.5 * scale;
@@ -578,8 +593,8 @@ MapboxMap {
         // Calculate new margins and set them for the map.
         var header = referenceBlockTop.height > 0 ? referenceBlockTop.height : map.height*0.05;
         var footer = !app.infoPanelOpen && (app.mode === modes.explore || app.mode === modes.exploreRoute) && menuButton ? menuButton.height + menuButton.anchors.bottomMargin : 0;
-        footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && referenceBlockBottom ? referenceBlockBottom.height : 0;
-        footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.followMe) && streetName ? streetName.height : 0
+        footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.navigatePost || app.mode === modes.followMe) && referenceBlockBottom ? referenceBlockBottom.height : 0;
+        footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.navigatePost || app.mode === modes.followMe) && streetName ? streetName.height : 0
         footer += app.infoPanelOpen && infoPanel ? infoPanel.height : 0
         footer = Math.min(footer, map.height / 2.0);
 

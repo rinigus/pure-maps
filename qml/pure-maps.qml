@@ -30,11 +30,11 @@ ApplicationWindowPL {
 
     keepAlive: app.conf.keepAlive === "always"
                || (app.conf.keepAlive === "navigating" &&
-                   (app.mode === modes.navigate || app.mode === modes.followMe))
+                   (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost))
 
     keepAliveBackground: app.conf.keepAliveBackground === "always"
                         || (app.conf.keepAliveBackground === "navigating" &&
-                            (app.mode === modes.navigate || app.mode === modes.followMe))
+                            (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost))
 
     property var    conf: Config {}
     property bool   errorPageOpen: false
@@ -51,7 +51,7 @@ ApplicationWindowPL {
     property var    map: null
     property string mapMatchingMode: {
         if (!hasMapMatching) return "none";
-        else if (app.mode === modes.navigate || app.mode === modes.followMe)
+        else if (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
             return (app.conf.mapMatchingWhenNavigating && map && app.transportMode) ?
                         app.transportMode : "none";
         return app.conf.mapMatchingWhenIdle;
@@ -60,6 +60,7 @@ ApplicationWindowPL {
     property bool   modalDialogBasemap: false
     property int    mode: {
         if (navigator) {
+            if (navigator.running && navigator.destReached) return modes.navigatePost;
             if (navigator.running) return modes.navigate;
             if (navigator.followMe) return modes.followMe;
             if (navigator.hasRoute) return modes.exploreRoute;
@@ -79,7 +80,7 @@ ApplicationWindowPL {
     property string stateId
     property string transportMode: {
         if (app.mode === modes.followMe) return app.conf.followMeTransportMode;
-        if (app.mode === modes.exploreRoute || app.mode === modes.navigate)
+        if (app.mode === modes.exploreRoute || app.mode === modes.navigate || app.mode === modes.navigatePost)
             return navigator.transportMode;
         return "";
     }
@@ -153,6 +154,8 @@ ApplicationWindowPL {
         } else if (app.mode === modes.followMe) {
             app.resetMenu();
         } else if (app.mode === modes.navigate) {
+            app.resetMenu();
+        } else if (app.mode === modes.navigatePost) {
             app.resetMenu();
         }
     }

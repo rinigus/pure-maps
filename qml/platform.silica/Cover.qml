@@ -62,20 +62,19 @@ CoverBackground {
         enabled: app.initialized && app.conf.showNarrative && app.navigator.hasRoute
 
         CoverAction {
-            iconSource: app.mode === modes.navigate ? "image://theme/icon-cover-pause" :
-                                                      "image://theme/icon-cover-play"
+            iconSource: (app.mode === modes.navigate || app.mode === modes.navigatePost) ?
+                            "image://theme/icon-cover-pause" :
+                            "image://theme/icon-cover-play"
             onTriggered: {
                 app.hideNavigationPages();
-                if (app.mode === modes.navigate) app.setModeExploreRoute();
-                else app.setModeNavigate();
+                navigator.running = !navigator.running;
             }
         }
 
         CoverAction {
             iconSource: "image://theme/icon-cover-cancel"
             onTriggered: {
-                app.setModeExplore();
-                navigator.clearRoute();
+                app.navigator.clearRoute();
                 app.showMap();
             }
         }

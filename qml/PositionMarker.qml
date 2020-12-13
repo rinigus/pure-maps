@@ -28,7 +28,7 @@ Item {
     property var  positionShown
 
     property bool _animatePosition: app.conf.smoothPositionAnimationWhenNavigating &&
-                                    (app.mode === modes.navigate || app.mode === modes.followMe)
+                                    (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
 
     readonly property var images: QtObject {
         readonly property string moving: "pure-position-moving"
