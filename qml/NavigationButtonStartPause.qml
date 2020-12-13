@@ -46,15 +46,19 @@ MapButton {
     }
     visible: app.mode === modes.exploreRoute || app.mode === modes.navigate || app.mode === modes.followMe
     y: {
-        var p = parent.height/2 - (navigationButtonClear.visible ? height : height/2);
+        var needed = (navigationButtonClear.visible ? 2*height : height);
+        var p = parent.height/2 - needed/2;
+        var proposed = p;
         if (scaleBar.opacity > 1e-5 && p < scaleBar.y + scaleBar.height && scaleBar.x < anchors.leftMargin + width)
-            return scaleBar.y + scaleBar.height;
-        if (p < attributionButton.y + attributionButton.height &&
+            proposed = scaleBar.y + scaleBar.height;
+        else if (p < attributionButton.y + attributionButton.height &&
                 attributionButton.x < anchors.leftMargin + width)
-            return attributionButton.y + attributionButton.height;
-        if (p < referenceBlockTopLeft.y + referenceBlockTopLeft.height)
-            return referenceBlockTopLeft.y + referenceBlockTopLeft.height;
-        return p;
+            proposed = attributionButton.y + attributionButton.height;
+        else if (p < referenceBlockTopLeft.y + referenceBlockTopLeft.height)
+            proposed = referenceBlockTopLeft.y + referenceBlockTopLeft.height;
+        if (proposed + needed < parent.height)
+            return proposed; // buttons fit
+        return p; // have to draw buttons over other elements
     }
     z: 900
 
