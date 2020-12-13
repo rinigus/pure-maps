@@ -71,9 +71,14 @@ Item {
     property bool   streetNameInOverview: app.mode === modes.navigate && !app.portrait && _splitPossible
     property string totalDist: app.navigator.totalDist
 
+    // spacing properties
     property int    _availableHalfSpace: block.width/2 - button.width -
                                          compactRight.anchors.rightMargin - button.anchors.rightMargin
     property bool   _splitPossible: compactTotalWidth/2 < _availableHalfSpace - styler.themePaddingLarge*2
+
+    // press feedback
+    property var    _colorBg: _pressed ? styler.blockPressed : styler.blockBg
+    property bool   _pressed: mainRectMouse.pressed || leftRectMouse.pressed || rightRectMouse.pressed
 
     readonly property var blockModes: QtObject {
         readonly property int full: 1
@@ -87,7 +92,7 @@ Item {
     Rectangle {
         id: mainRect
         anchors.top: parent.top
-        color: styler.blockBg
+        color: _colorBg
         height: Math.max(infoLayout.visible ? infoLayout.height : 0,
                          mode !== blockModes.condensedSplit && compactLeft.visible ? compactLeft.height : 0,
                          mode !== blockModes.condensedSplit && compactRight.visible ? compactRight.height : 0,
@@ -97,6 +102,7 @@ Item {
         width: parent.width
 
         MouseArea {
+            id: mainRectMouse
             anchors.fill: parent
             onClicked: block.openNavigation()
         }
@@ -109,12 +115,13 @@ Item {
         anchors.bottomMargin: -radius
         anchors.left: parent.left
         anchors.leftMargin: -radius
-        color: styler.blockBg
+        color: _colorBg
         height: compactLeft.height + styler.themePaddingMedium*2 + radius
         radius: styler.radius
         visible: mode === blockModes.condensedSplit
         width: compactLeft.width + compactLeft.anchors.leftMargin + styler.themePaddingLarge + radius
         MouseArea {
+            id: leftRectMouse
             anchors.fill: parent
             onClicked: block.openNavigation()
         }
@@ -127,7 +134,7 @@ Item {
         anchors.bottomMargin: -radius
         anchors.right: parent.right
         anchors.rightMargin: -radius
-        color: styler.blockBg
+        color: _colorBg
         height: compactRight.height + compactRight.anchors.bottomMargin +
                 compactRight.anchors.topMargin + radius
         radius: styler.radius
@@ -136,6 +143,7 @@ Item {
                button.width + button.anchors.rightMargin +
                styler.themePaddingLarge + radius
         MouseArea {
+            id: rightRectMouse
             anchors.fill: parent
             onClicked: block.openNavigation()
         }
@@ -294,19 +302,18 @@ Item {
         }
     }
 
-    IconButtonPL {
+    IconPL {
         id: button
         anchors.bottom: block.showAtBottom ? parent.bottom : undefined
+        anchors.bottomMargin: compactRight.anchors.bottomMargin
         anchors.right: parent.right
         anchors.rightMargin: styler.themeHorizontalPageMargin
         anchors.top: !block.showAtBottom ? parent.top : undefined
         anchors.topMargin: styler.themePaddingMedium
-        iconHeight: app.mode !== modes.navigate ?
-                        styler.themeIconSizeSmall :
-                        (compactRight.height + compactRight.anchors.bottomMargin +
-                         compactRight.anchors.topMargin) / (1+padding)
+        height: iconHeight
+        iconHeight: app.mode !== modes.navigate ? styler.themeIconSizeSmall :
+                                                  compactRight.height
         iconName: styler.iconManeuvers
-        onClicked: block.openNavigation()
     }
 
     Item {

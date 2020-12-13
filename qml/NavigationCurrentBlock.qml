@@ -60,11 +60,16 @@ Item {
     property int    roundaboutExit: app.navigator.roundaboutExit
     property var    street:    app.navigator.street
 
+    // press feedback
+    property var    _colorBg: _pressed ? styler.blockPressed : styler.blockBg
+    property bool   _pressed: mainRectMouse.pressed || leftShieldMouse.pressed ||
+                              speedShieldMouse.pressed || nextAfterNextShieldMouse.pressed
+
     Rectangle {
         id: mainRect
         anchors.top: parent.top
         anchors.topMargin: -radius
-        color: styler.blockBg
+        color: _colorBg
         height: {
             if (!block.notify) return styler.themePaddingMedium + manLabel.height + radius;
             if (app.portrait) {
@@ -102,6 +107,7 @@ Item {
         x: -radius
 
         MouseArea {
+            id: mainRectMouse
             anchors.fill: parent
             onClicked: block.openNavigation()
         }
@@ -113,7 +119,7 @@ Item {
         anchors.topMargin: -radius
         anchors.left: parent.left
         anchors.leftMargin: -radius
-        color: styler.blockBg
+        color: _colorBg
         height: manLabel.height + styler.themePaddingMedium +
                 iconImage.height + iconImage.anchors.topMargin + radius
         radius: styler.radius
@@ -122,6 +128,7 @@ Item {
                contentWidth + radius
         property int contentWidth: Math.max(manLabel.width, iconImage.width)
         MouseArea {
+            id: leftShieldMouse
             anchors.fill: parent
             onClicked: block.openNavigation()
         }
@@ -133,7 +140,7 @@ Item {
         anchors.topMargin: -radius
         anchors.right: block.right
         anchors.rightMargin: -radius
-        color: styler.blockBg
+        color: _colorBg
         height: speed.height + styler.themePaddingMedium + radius
         radius: styler.radius
         visible: speed.text && (speedShield.height > mainRect.height || mainRect.width < parent.width) ? true : false
@@ -142,6 +149,7 @@ Item {
                styler.themeHorizontalPageMargin + radius
 
         MouseArea {
+            id: speedShieldMouse
             anchors.fill: parent
             onClicked: block.openNavigation()
         }
@@ -153,7 +161,7 @@ Item {
         anchors.topMargin:  -radius
         anchors.left: parent.left
         anchors.leftMargin: -radius
-        color: styler.blockBg
+        color: _colorBg
         height: visible ? iconNextImage.height + nextManDistLabel.height + 2*radius : 0
         radius: styler.radius
         visible: nextAfterNextVisible
@@ -161,6 +169,7 @@ Item {
                styler.themeHorizontalPageMargin +
                2*radius
         MouseArea {
+            id: nextAfterNextShieldMouse
             anchors.fill: parent
             onClicked: block.openNavigation()
         }
