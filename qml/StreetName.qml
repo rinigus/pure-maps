@@ -27,8 +27,8 @@ Rectangle {
     anchors.bottomMargin: styler.themePaddingSmall
     anchors.horizontalCenter: parent.horizontalCenter
     color: "transparent"
-    height: cover.height
-    visible: !app.modalDialog
+    height: !navigationOverview.streetNameInOverview ? cover.height : 0
+    visible: !app.modalDialog && !navigationOverview.streetNameInOverview
     width: cover.width
     z: 400
 

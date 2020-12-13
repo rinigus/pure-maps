@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2014 Osmo Salomaa, 2018 Rinigus
+ * Copyright (C) 2014 Osmo Salomaa, 2018-2020 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,26 +53,34 @@ Item {
     property real   marginExtraRightSide: leftRect.visible ? rightRect.width : 0
     property var    mode: {
         if (app.mode === modes.navigate) {
-            var availableHalfSpace = block.width/2 - button.width -
-                    compactRight.anchors.rightMargin - button.anchors.rightMargin;
             if (!app.portrait) {
-                if (compactTotalWidth/2 < availableHalfSpace - styler.themePaddingLarge*2)
+                if (_splitPossible) {
+                    if (streetName) return blockModes.condensedWithStreet;
                     return blockModes.condensedSplit;
+                }
             }
-            if (compactTotalWidth/2 < availableHalfSpace)
+            if (compactTotalWidth/2 < _availableHalfSpace)
                 return blockModes.condensedCentered;
             return blockModes.condensedNarrow;
         }
         return blockModes.full;
     }
     property bool   showAtBottom: app.mode === modes.navigate
+    property string streetName: (gps.streetName !== undefined && gps.streetName !== null &&
+                                 gps.streetName.length>0) ? gps.streetName : ""
+    property bool   streetNameInOverview: !app.portrait && _splitPossible
     property string totalDist: app.navigator.totalDist
+
+    property int    _availableHalfSpace: block.width/2 - button.width -
+                                         compactRight.anchors.rightMargin - button.anchors.rightMargin
+    property bool   _splitPossible: compactTotalWidth/2 < _availableHalfSpace - styler.themePaddingLarge*2
 
     readonly property var blockModes: QtObject {
         readonly property int full: 1
         readonly property int condensedCentered: 2
         readonly property int condensedSplit: 3
         readonly property int condensedNarrow: 4
+        readonly property int condensedWithStreet: 5
     }
 
 
@@ -83,8 +91,9 @@ Item {
         height: Math.max(infoLayout.visible ? infoLayout.height : 0,
                          mode !== blockModes.condensedSplit && compactLeft.visible ? compactLeft.height : 0,
                          mode !== blockModes.condensedSplit && compactRight.visible ? compactRight.height : 0,
+                         mode === blockModes.condensedWithStreet && streetLabel.visible ? streetLabel.height : 0,
                          app.mode !== modes.navigate ? button.height : 0) +
-                (mode === blockModes.condensedSplit ? progress.height*3/2 : styler.themePaddingMedium*2)
+                    (mode === blockModes.condensedSplit ? progress.height*3/2 : styler.themePaddingMedium*2)
         width: parent.width
 
         MouseArea {
@@ -165,7 +174,7 @@ Item {
                 }
             },
             State {
-                when: mode === blockModes.condensedSplit
+                when: mode === blockModes.condensedSplit || mode === blockModes.condensedWithStreet
                 AnchorChanges {
                     target: compactLeft
                     anchors.left: block.left
@@ -206,6 +215,31 @@ Item {
             font.pixelSize: styler.themeFontSizeMedium
             text: block.destTime
         }
+    }
+
+    LabelPL {
+        // Current street
+        id: streetLabel
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: styler.themePaddingMedium
+        anchors.left: compactLeft.right
+        anchors.leftMargin: {
+            // position into the center if possible
+            var ref = compactLeft.x + compactLeft.width;
+            var xmin = compactLeft.x + compactLeft.width + styler.themePaddingLarge;
+            var xcenter = parent.width / 2 - implicitWidth / 2;
+            var xright = compactRight.x - anchors.rightMargin - implicitWidth;
+            if (xcenter > xmin) return xcenter - ref;
+            if (xright > xmin) return xright - ref;
+            return styler.themePaddingLarge;
+        }
+        anchors.right: compactRight.left
+        anchors.rightMargin: styler.themePaddingLarge
+        color: styler.themePrimaryColor
+        font.pixelSize: styler.themeFontSizeMedium
+        text: block.streetName
+        truncMode: truncModes.fade
+        visible: mode === blockModes.condensedWithStreet && text
     }
 
     Row {
