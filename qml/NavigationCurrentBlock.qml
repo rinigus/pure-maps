@@ -74,7 +74,7 @@ Item {
             }
             return styler.themePaddingMedium + streetLabel.height + narrativeLabel.height + radius;
         }
-        radius: width < parent.width ? styler.themePaddingMedium : 0
+        radius: width < parent.width ? styler.radius : 0
         width: {
             if (!app.portrait) {
                 var sp = speedShield.x - styler.themePaddingLarge*3;
@@ -116,7 +116,7 @@ Item {
         color: styler.blockBg
         height: manLabel.height + styler.themePaddingMedium +
                 iconImage.height + iconImage.anchors.topMargin + radius
-        radius: styler.themePaddingMedium
+        radius: styler.radius
         visible: !app.portrait &&  leftShield.height > mainRect.height && block.notify
         width: manLabel.anchors.leftMargin + styler.themePaddingLarge +
                contentWidth + radius
@@ -135,7 +135,7 @@ Item {
         anchors.rightMargin: -radius
         color: styler.blockBg
         height: speed.height + styler.themePaddingMedium + radius
-        radius: styler.themePaddingMedium
+        radius: styler.radius
         visible: speed.text && (speedShield.height > mainRect.height || mainRect.width < parent.width) ? true : false
         width: speed.width + styler.themePaddingLarge +
                speedUnit.width + styler.themePaddingSmall +
@@ -155,7 +155,7 @@ Item {
         anchors.leftMargin: -radius
         color: styler.blockBg
         height: visible ? iconNextImage.height + nextManDistLabel.height + 2*radius : 0
-        radius: styler.themePaddingMedium
+        radius: styler.radius
         visible: nextAfterNextVisible
         width: Math.max(iconNextImage.width, nextManDistLabel.width) +
                styler.themeHorizontalPageMargin +

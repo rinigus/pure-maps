@@ -36,7 +36,7 @@ Rectangle {
         if (h) return h + 2*styler.themePaddingMedium;
         return 0;
     }
-    radius: styler.themePaddingMedium
+    radius: styler.radius
     visible: !app.modalDialog && app.conf.showNavigationSign
     width: {
         if (!app.conf.showNavigationSign) return 0;
@@ -61,7 +61,7 @@ Rectangle {
         border.color: "white"
         border.width: styler.themePaddingSmall/2
         color: "transparent"
-        radius: styler.themePaddingMedium
+        radius: styler.radius
     }
     
     LabelPL {

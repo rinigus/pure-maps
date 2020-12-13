@@ -94,7 +94,7 @@ MouseArea {
             radius: styler.shadowRadius
             samples: 1 + radius*2
         }
-        radius: styler.themePaddingMedium
+        radius: styler.radius
         visible: openMenu
         width: flick.width + 2*styler.themePaddingLarge
         y: styler.themePaddingLarge

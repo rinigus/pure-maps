@@ -40,6 +40,7 @@ StylerPL {
     property string maneuver             // maneuver circle inner color
     property string position             // variant of position marker, set to "" for default
     property string positionUncertainty  // position marker uncertainty
+    property int    radius: styler.themePaddingMedium // shields radius - do not change in defaults or style
     property string route                // route color on the map. also used for maneuver markers
     property real   routeOpacity         // opacity of route
     property string shadowColor          // shadow color used on map buttons and panels

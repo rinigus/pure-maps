@@ -35,7 +35,7 @@ Rectangle {
         color: styler.itemBg
         height: ztxt.height
         opacity: 0.75
-        radius: styler.themePaddingMedium
+        radius: styler.radius
         visible: parent.visible
         width: ztxt.width + 2*styler.themePaddingMedium
         z: 450

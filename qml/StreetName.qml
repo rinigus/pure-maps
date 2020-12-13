@@ -46,7 +46,7 @@ Rectangle {
         color: styler.itemBg
         height: streetname.height
         opacity: 0.75
-        radius: styler.themePaddingMedium
+        radius: styler.radius
         visible: streetname.visible
         width: streetname.width + 2*styler.themePaddingMedium
         z: 450

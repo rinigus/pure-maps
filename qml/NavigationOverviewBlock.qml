@@ -102,7 +102,7 @@ Item {
         anchors.leftMargin: -radius
         color: styler.blockBg
         height: compactLeft.height + styler.themePaddingMedium*2 + radius
-        radius: styler.themePaddingMedium
+        radius: styler.radius
         visible: mode === blockModes.condensedSplit
         width: compactLeft.width + compactLeft.anchors.leftMargin + styler.themePaddingLarge + radius
         MouseArea {
@@ -121,7 +121,7 @@ Item {
         color: styler.blockBg
         height: compactRight.height + compactRight.anchors.bottomMargin +
                 compactRight.anchors.topMargin + radius
-        radius: styler.themePaddingMedium
+        radius: styler.radius
         visible: mode === blockModes.condensedSplit
         width: compactRight.width + compactRight.anchors.rightMargin +
                button.width + button.anchors.rightMargin +
