@@ -36,7 +36,9 @@ MapboxMapGestureArea {
         area.degLatPerPixel = degLatPerPixel;
 
         // Toggle auto-center if position marker clicked.
-        if (area.coordinatesMatch(geocoordinate, app.position.coordinate)) {
+        if (app.mode !== modes.navigate &&
+                app.mode !== modes.followMe &&
+                area.coordinatesMatch(geocoordinate, app.position.coordinate)) {
             map.autoCenter = !map.autoCenter;
             notification.flash(map.autoCenter ?
                                    app.tr("Auto-center on") :
