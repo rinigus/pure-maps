@@ -125,6 +125,7 @@ PagePL {
             anchors.right: parent.right
             anchors.rightMargin: styler.themeHorizontalPageMargin
             height: styler.themeItemSizeExtraSmall
+            visible: app.mode !== modes.navigatePost
             LabelPL {
                 id: eta
                 color: styler.themeSecondaryHighlightColor
@@ -145,6 +146,21 @@ PagePL {
         }
 
         RouteOverallInfo {
+            visible: app.mode !== modes.navigatePost
+        }
+
+        LabelPL {
+            anchors.left: parent.left
+            anchors.leftMargin: styler.themeHorizontalPageMargin
+            anchors.right: parent.right
+            anchors.rightMargin: styler.themeHorizontalPageMargin
+            color: styler.themeHighlightColor
+            height: implicitHeight + styler.themePaddingLarge
+            horizontalAlignment: Text.AlignHCenter
+            text: app.tr("Destination reached")
+            visible: app.mode === modes.navigatePost
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.WordWrap
         }
 
         NarrativeItem {
