@@ -39,7 +39,12 @@ Rectangle {
     MouseArea {
         id: mouse
         anchors.fill: parent
-        onClicked: app.pushMain(Qt.resolvedUrl("RoutePage.qml"))
+        onClicked: {
+            if (app.mode === modes.followMe)
+                app.pushMain(Qt.resolvedUrl("RoutePage.qml"));
+            if (app.mode === modes.navigatePost)
+                app.showNavigationPages();
+        }
     }
 
     LabelPL {
