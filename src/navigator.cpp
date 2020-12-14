@@ -63,6 +63,7 @@ void Navigator::clearRoute()
   m_last_distance_along_route_m = 0;
   m_route_length_m = 0;
 
+  SET(alongRoute, false);
   SET(totalDist, QLatin1String());
   SET(totalTime, QLatin1String());
   SET(destDist, QLatin1String("-"));
@@ -73,7 +74,6 @@ void Navigator::clearRoute()
   SET(manTime, QLatin1String("-"));
   SET(nextIcon, QLatin1String());
   SET(nextManDist, QLatin1String());
-  SET(onRoute, false);
   SET(roundaboutExit, 0);
   SET(street, "");
 
@@ -253,7 +253,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
 
       updateProgress();
 
-      // handle onRoute specially as some lockups were seen when setting
+      // handle alongRoute specially as some lockups were seen when setting
       // it early in the method
       on_route = (m_points.size() >= NUMBER_OF_REF_POINTS);
       if (on_route)
@@ -274,7 +274,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
         }
 
       // reset prompts when just entering the route
-      if (on_route && !m_onRoute)
+      if (on_route && !m_alongRoute)
         resetPrompts();
 
       if (on_route && best.maneuver+1 < m_maneuvers.size())
@@ -381,7 +381,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(street, QLatin1String());
         }
 
-      SET(onRoute, on_route);
+      SET(alongRoute, on_route);
 
       // stop navigation if close to the end of the route
       if (m_running && m_last_distance_along_route_m + horizontalAccuracy > m_route_length_m)
@@ -422,7 +422,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           SET(roundaboutExit, 0);
           SET(sign, QVariantMap());
           SET(street, QLatin1String());
-          SET(onRoute, false);
+          SET(alongRoute, false);
         }
 
       if ( ((m_offroad_count > MAX_OFFROAD_COUNTS_TO_REROUTE && m_distance_to_route_m < 1) ||
@@ -480,7 +480,7 @@ void Navigator::setRoute(QVariantMap m)
   SET(destTime, "-");
   SET(manDist, "-");
   SET(manTime, "-");
-  SET(onRoute, false);
+  SET(alongRoute, false);
   SET(street, "");
 
   // route

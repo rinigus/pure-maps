@@ -31,6 +31,7 @@ Item {
     property bool   destReached: false
     property var    direction: navigatorBase.directionValid ? navigatorBase.direction : undefined
     property bool   followMe:  false
+    property bool   hasBeenAlongRoute: false
     property bool   hasRoute:  navigatorBase.route.length > 0
     property alias  icon:      navigatorBase.icon
     property alias  maneuvers: navigatorBase.maneuvers
@@ -81,6 +82,10 @@ Item {
 
         onRerouteRequest: rerouteMaybe()
 
+        onAlongRouteChanged: {
+            if (!hasBeenAlongRoute && alongRoute) hasBeenAlongRoute = true;
+        }
+
         onRunningChanged: {
             if (running && followMe)
                 followMe = false;
@@ -92,6 +97,7 @@ Item {
                 rerouteConsecutiveErrors = 0;
                 reroutePreviousTime = -1;
                 rerouteTotalCalls = 0;
+                hasBeenAlongRoute = alongRoute;
                 updatePosition();
             }
 
@@ -164,6 +170,7 @@ Item {
         app.notification.hold(app.tr("Rerouting"), notifyId);
         navigatorBase.prompt("std:rerouting");
         rerouting = true;
+        hasBeenAlongRoute = false;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
         var args = [app.getPosition(), getDestination(), gps.direction];
@@ -199,8 +206,10 @@ Item {
         if (!gps.position.horizontalAccuracyValid) return;
         if (gps.position.horizontalAccuracy > 100) return;
         if (!py.evaluate("poor.app.router.can_reroute")) return;
+        var interval = (hasBeenAlongRoute ? 5000 : 30000)
+        interval *= Math.pow(2, Math.min(3, rerouteConsecutiveErrors));
         if (py.evaluate("poor.app.router.offline")) {
-            if (Date.now() - app.reroutePreviousTime < 5000) return;
+            if (Date.now() - app.reroutePreviousTime < interval) return;
             return reroute();
         } else {
             // Limit the total amount and frequency of rerouting for online routers
@@ -208,7 +217,6 @@ Item {
             // costs) in some special case where the router returns bogus results
             // and the user is not able to manually intervene.
             if (rerouteTotalCalls > 50) return;
-            var interval = 5000 * Math.pow(2, Math.min(4, rerouteConsecutiveErrors));
             if (Date.now() - app.reroutePreviousTime < interval) return;
             return reroute();
         }

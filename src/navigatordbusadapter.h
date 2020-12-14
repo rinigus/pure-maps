@@ -12,6 +12,7 @@ class NavigatorDBusAdapter : public QDBusAbstractAdaptor
   Q_OBJECT
   Q_CLASSINFO("D-Bus Interface", DBUS_INTERFACE_NAVIGATOR)
 
+  Q_PROPERTY(bool    alongRoute READ alongRoute NOTIFY alongRouteChanged)
   Q_PROPERTY(QString destDist READ destDist NOTIFY destDistChanged)
   Q_PROPERTY(QString destEta READ destEta NOTIFY destEtaChanged)
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
@@ -24,7 +25,6 @@ class NavigatorDBusAdapter : public QDBusAbstractAdaptor
   Q_PROPERTY(QString manTime READ manTime NOTIFY manTimeChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
-  Q_PROPERTY(bool    onRoute READ onRoute NOTIFY onRouteChanged)
   Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
   Q_PROPERTY(int     roundaboutExit READ roundaboutExit NOTIFY roundaboutExitChanged)
   Q_PROPERTY(bool    running READ running NOTIFY runningChanged)
@@ -35,6 +35,7 @@ class NavigatorDBusAdapter : public QDBusAbstractAdaptor
 public:
   NavigatorDBusAdapter(Navigator *navigator);
 
+  bool    alongRoute() const { return m->alongRoute(); }
   QString destDist() const { return m->destDist(); }
   QString destEta() const { return m->destEta(); }
   QString destTime() const { return m->destTime(); }
@@ -47,7 +48,6 @@ public:
   QString manTime() const { return m->manTime(); }
   QString mode() const { return m->mode(); }
   QString narrative() const { return m->narrative(); }
-  bool    onRoute() const { return m->onRoute(); }
   int     progress() const { return m->progress(); }
   int     roundaboutExit() const { return m->roundaboutExit(); }
   bool    running() const { return m->running(); }
@@ -62,6 +62,7 @@ public slots:
 
 
 signals:
+  void alongRouteChanged();
   void destDistChanged();
   void destEtaChanged();
   void destTimeChanged();
@@ -74,7 +75,6 @@ signals:
   void manTimeChanged();
   void modeChanged();
   void narrativeChanged();
-  void onRouteChanged();
   void progressChanged();
   void roundaboutExitChanged();
   void runningChanged();

@@ -112,7 +112,7 @@ the value of the property has changed.
 * `narrative` - longer next maneuver instruction, should be available
   for all maneuvers
 
-* `onRoute` - whether current location is on route and movement is
+* `alongRoute` - whether current location is on route and movement is
   along it.
 
 * `progress` - current progress along the route in percentage (0-100)

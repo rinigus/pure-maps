@@ -25,6 +25,7 @@ class Navigator : public QObject
 {
   Q_OBJECT
 
+  Q_PROPERTY(bool    alongRoute READ alongRoute NOTIFY alongRouteChanged)
   Q_PROPERTY(QString destDist READ destDist NOTIFY destDistChanged)
   Q_PROPERTY(QString destEta READ destEta NOTIFY destEtaChanged)
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
@@ -38,7 +39,6 @@ class Navigator : public QObject
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
   Q_PROPERTY(QString nextIcon READ nextIcon NOTIFY nextIconChanged)
   Q_PROPERTY(QString nextManDist READ nextManDist NOTIFY nextManDistChanged)
-  Q_PROPERTY(bool    onRoute READ onRoute NOTIFY onRouteChanged)
   Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
   Q_PROPERTY(int     roundaboutExit READ roundaboutExit NOTIFY roundaboutExitChanged)
   Q_PROPERTY(bool    running READ running WRITE setRunning NOTIFY runningChanged)
@@ -55,6 +55,7 @@ public:
   explicit Navigator(QObject *parent = nullptr);
 
   // current state
+  bool    alongRoute() const { return m_alongRoute; }
   QString destDist() const { return m_destDist; }
   QString destEta() const { return m_destEta; }
   QString destTime() const { return m_destTime; }
@@ -68,7 +69,6 @@ public:
   QString narrative() const { return m_narrative; }
   QString nextIcon() const { return m_nextIcon; }
   QString nextManDist() const { return m_nextManDist; }
-  bool    onRoute() const { return m_onRoute; }
   double  progress() const { return m_progress; }
   int     roundaboutExit() const { return m_roundaboutExit; }
   QVariantMap sign() const { return m_sign; }
@@ -97,6 +97,7 @@ public:
   Q_INVOKABLE void prompt(const QString key);
 
 signals:
+  void alongRouteChanged();
   void destDistChanged();
   void destEtaChanged();
   void destTimeChanged();
@@ -110,7 +111,6 @@ signals:
   void narrativeChanged();
   void nextIconChanged();
   void nextManDistChanged();
-  void onRouteChanged();
   void progressChanged();
   void rerouteRequest();
   void roundaboutExitChanged();
@@ -195,6 +195,7 @@ private:
   size_t m_offroad_count{0};
   QTime  m_reroute_request;
 
+  bool    m_alongRoute{false};
   QString m_destDist;
   QString m_destEta;
   QString m_destTime;
@@ -206,7 +207,6 @@ private:
   QString m_narrative;
   QString m_nextIcon;
   QString m_nextManDist;
-  bool    m_onRoute{false};
   bool    m_precision_insufficient{false};
   int     m_progress{0};
   int     m_roundaboutExit{0};
