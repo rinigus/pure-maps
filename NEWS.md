@@ -1,3 +1,17 @@
+2020-12-16: Pure Maps 2.2
+=========================
+
+* Show close consecutive maneuvers
+* Show roundabout exit number for supported routers
+* Fix maneuver icons for OSRM
+* Autohide buttons by default for new users
+* Reduce vertical requirements of navigation overview bar
+* Handle arrival to destination by switching to dedicated mode
+* Change DBus registration order
+* Rewrite imlpementation determining mode of the application
+* Update translations
+* Bugfixes, optimizations, and visual adjustments
+
 2020-11-26: Pure Maps 2.1
 =========================
 

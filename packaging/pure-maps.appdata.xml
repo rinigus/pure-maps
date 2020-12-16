@@ -38,6 +38,22 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.2.0" date="2020-12-16">
+     <description>
+       <ul>
+	 <li>Show close consecutive maneuvers</li>
+	 <li>Show roundabout exit number for supported routers</li>
+	 <li>Fix maneuver icons for OSRM</li>
+	 <li>Autohide buttons by default for new users</li>
+	 <li>Reduce vertical requirements of navigation overview bar</li>
+	 <li>Handle arrival to destination by switching to dedicated mode</li>
+	 <li>Change DBus registration order</li>
+	 <li>Rewrite imlpementation determining mode of the application</li>
+         <li>Update translations</li>
+	 <li>Bugfixes, optimizations, and visual adjustments</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.1.0" date="2020-11-26">
      <description>
        <ul>
