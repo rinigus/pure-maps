@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 13:56+0200\n"
+"POT-Creation-Date: 2020-12-16 18:31+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2020\n"
 "Language-Team: Estonian (https://www.transifex.com/rinigus/teams/89597/et/)\n"
@@ -45,8 +45,8 @@ msgstr "Ühendus aegus"
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137
 #: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:31
-#: qml/RoutePage.qml:220 qml/RoutePage.qml:225 qml/RoutePage.qml:428
-#: qml/RoutePage.qml:443 qml/RoutePage.qml:445 qml/RoutePoint.qml:42
+#: qml/RoutePage.qml:220 qml/RoutePage.qml:225 qml/RoutePage.qml:425
+#: qml/RoutePage.qml:440 qml/RoutePage.qml:442 qml/RoutePoint.qml:42
 #: qml/RoutePoint.qml:58
 msgid "Current position"
 msgstr "Praegune asukoht"
@@ -141,61 +141,61 @@ msgstr "{distance} kaugusel, {direction}"
 msgid "Exit: "
 msgstr "Ärapööre: "
 
-#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
+#: poor/narrative.py:629 qml/Navigator.qml:190 src/navigator.cpp:830
 msgid "New route found"
 msgstr "Leidsin uue teekonna"
 
-#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
+#: poor/narrative.py:630 qml/Navigator.qml:172 src/navigator.cpp:831
 msgid "Rerouting"
 msgstr "Muudan teekonda"
 
-#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
+#: poor/narrative.py:631 qml/Navigator.qml:195 src/navigator.cpp:832
 msgid "Rerouting failed"
 msgstr "Teekonna muutmine ei õnnestunud"
 
-#: poor/narrative.py:632 src/navigator.cpp:742
+#: poor/narrative.py:632 src/navigator.cpp:829
 msgid "Starting navigation"
 msgstr "Alustan teekonda"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:737
+#: src/navigator.cpp:749
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:737
+#: src/navigator.cpp:749
 msgid "miles"
 msgstr "miili"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:740
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231 src/navigator.cpp:653
+#: poor/util.py:231 src/navigator.cpp:740
 msgid "feet"
 msgstr "jalga"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:752
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242 src/navigator.cpp:665
+#: poor/util.py:242 src/navigator.cpp:752
 msgid "yards"
 msgstr "jardi"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:761
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:761
 msgid "kilometers"
 msgstr "kilomeetrit"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:764
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253 src/navigator.cpp:677
+#: poor/util.py:253 src/navigator.cpp:764
 msgid "meters"
 msgstr "meetrit"
 
@@ -572,11 +572,11 @@ msgstr "Skaleeri kaarti tee näitamise ajal"
 msgid "Map: %1"
 msgstr "Kaart: %1"
 
-#: qml/CenterButton.qml:110 qml/MapGestureArea.qml:43
+#: qml/CenterButton.qml:110 qml/MapGestureArea.qml:46
 msgid "Auto-center off"
 msgstr "Kaardivaade ei ole automaatselt joondatud keskele"
 
-#: qml/CenterButton.qml:118 qml/MapGestureArea.qml:42
+#: qml/CenterButton.qml:118 qml/MapGestureArea.qml:45
 msgid "Auto-center on"
 msgstr "Kaardivaade on automaatselt joondatud keskele"
 
@@ -731,7 +731,7 @@ msgstr "Võrguühenduseta kaardid"
 msgid "Mixed"
 msgstr "Kombineeritud kaardid"
 
-#: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
+#: qml/MapGestureArea.qml:63 qml/MapGestureArea.qml:81
 msgid "Stop navigation to select POI"
 msgstr "Huvipunkti valimiseks peata tee näitamine"
 
@@ -759,20 +759,20 @@ msgstr "Jaga praegust asukohta (pole valmis)"
 msgid "Share Current Position"
 msgstr "Jaga praegust asukohta"
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:333
-#: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
-#: qml/NavigationSpeedBlock.qml:86
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:363
+#: qml/NavigationCurrentBlock.qml:365 qml/NavigationSpeedBlock.qml:90
+#: qml/NavigationSpeedBlock.qml:92
 msgid "mph"
 msgstr "mph"
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
-#: qml/NavigationSpeedBlock.qml:88
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:367
+#: qml/NavigationSpeedBlock.qml:94
 msgid "km/h"
 msgstr "km/h"
 
 #: qml/NarrativeItem.qml:120
 msgid "Continue for %1 (%2)."
-msgstr ""
+msgstr "Jätka veel %1 (%2)."
 
 #: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
@@ -782,23 +782,23 @@ msgstr "Jätka %1."
 msgid "Route removed"
 msgstr "Teekond on eemaldatud"
 
-#: qml/NavigationButtonStartPause.qml:64
+#: qml/NavigationButtonStartPause.qml:69
 msgid "Stopped to follow the movement"
 msgstr "Lõpetasin liikumise jälgimine"
 
-#: qml/NavigationButtonStartPause.qml:69
+#: qml/NavigationButtonStartPause.qml:74
 msgid "Navigation paused"
 msgstr "Tee juhatamine lõppes"
 
-#: qml/NavigationButtonStartPause.qml:73
+#: qml/NavigationButtonStartPause.qml:78
 msgid "Navigation started"
 msgstr "Tee juhatamine algas"
 
-#: qml/NavigationCurrentBlock.qml:180
+#: qml/NavigationCurrentBlock.qml:218
 msgid "To route"
 msgstr "Joonista teekonda"
 
-#: qml/NavigationOverviewBlock.qml:142
+#: qml/NavigationOverviewBlock.qml:288
 msgid "ETA"
 msgstr "Saabume"
 
@@ -822,7 +822,7 @@ msgstr "Muuda"
 msgid "Clear"
 msgstr "Kustuta"
 
-#: qml/NavigationPage.qml:84
+#: qml/NavigationPage.qml:83
 msgid "Status"
 msgstr "Olek"
 
@@ -830,19 +830,19 @@ msgstr "Olek"
 msgid "Estimated time of arrival"
 msgstr "Eeldatav saabumine"
 
+#: qml/NavigationPage.qml:160 qml/Navigator.qml:68
+msgid "Destination reached"
+msgstr "Saabusid sihtkohta"
+
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
 msgstr "VÄLJU"
 
-#: qml/Navigator.qml:61
-msgid "Destination reached"
-msgstr ""
-
-#: qml/Navigator.qml:87
+#: qml/Navigator.qml:111
 msgid "Voice navigation on"
 msgstr "Hääljuhtimine on kasutusel"
 
-#: qml/Navigator.qml:92
+#: qml/Navigator.qml:116
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -850,7 +850,7 @@ msgstr ""
 "Hääljuhtimine ei ole saadaval: valitud keele jaoks puudub kõnesünteesi (TTS)"
 " mootor"
 
-#: qml/Navigator.qml:159
+#: qml/Navigator.qml:186
 msgid "Rerouting failed: %1"
 msgstr "Teekonna muutmine ei õnnestunud: %1"
 
@@ -2193,43 +2193,43 @@ msgstr ""
 "Näita kas asukohta geo:laiuskraad,pikkuskraad vormingu alusel või otsi "
 "sisestatud sõna või asukohta."
 
-#: src/navigator.cpp:103
+#: src/navigator.cpp:121
 msgid "Position unknown"
-msgstr ""
+msgstr "Asukoht ei ole teada"
 
-#: src/navigator.cpp:109
+#: src/navigator.cpp:127
 msgid "Position imprecise: accuracy %1"
-msgstr ""
+msgstr "Asukoht pole täpne: viga %1"
 
-#: src/navigator.cpp:126 src/navigator.cpp:306
+#: src/navigator.cpp:146 src/navigator.cpp:363
 msgid "Preparing to start navigation"
-msgstr ""
+msgstr "Valmistun teekonda alustama"
 
-#: src/navigator.cpp:331
+#: src/navigator.cpp:405
 msgid "Moving in a wrong direction"
-msgstr ""
+msgstr "Liigume valesse suunda"
 
-#: src/navigator.cpp:341
+#: src/navigator.cpp:415
 msgid "Away from route"
-msgstr ""
+msgstr "Teekonnast eemal"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:512 src/navigator.cpp:523
+#: src/navigator.cpp:589 src/navigator.cpp:600
 msgid "In %2, %1"
-msgstr ""
+msgstr "%2 järel %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:695
+#: src/navigator.cpp:782
 msgid "%1 h %2 min"
-msgstr ""
+msgstr "%1 h %2 min"
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:697
+#: src/navigator.cpp:784
 msgid "%1 min"
-msgstr ""
+msgstr "%1 min"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
