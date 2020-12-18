@@ -3,22 +3,22 @@
   "builder": "qmake",
   "kill": "pure-maps",
   "build_args": [
-    "FLAVOR=ubports",
+    "FLAVOR=uuitk",
     "CONFIG+=install_gpxpy",
     "APP_NAME=pure-maps.jonnius",
     "S2INCLUDES=${S2GEOMETRY_LIB_INSTALL_DIR}/include",
     "S2LIBS=-L${S2GEOMETRY_LIB_INSTALL_DIR}/lib"
   ],
-  "postbuild": "sed -i 's/@APP_TITLE@/Pure Maps/g' ${INSTALL_DIR}/manifest.json && sed -i 's/@APP_TITLE@/Pure Maps/g' ${INSTALL_DIR}/pure-maps.desktop && sed -i 's/@APP_NAME@/pure-maps/g' ${CLICK_PATH}/launch.sh  && sed -i 's/@APP_NAME@/pure-maps/g' ${INSTALL_DIR}/manifest.json && mv ${INSTALL_DIR}/bin/pure-maps.jonnius ${CLICK_PATH}/pure-maps",
+  "postbuild": "sed -i 's/@APP_TITLE@/Pure Maps/g' ${INSTALL_DIR}/manifest.json && sed -i 's/@APP_TITLE@/Pure Maps/g' ${INSTALL_DIR}/pure-maps.desktop && sed -i 's/@APP_NAME@/pure-maps/g' ${CLICK_PATH}/launch.sh && sed -i 's/@APP_NAME@/pure-maps/g' ${INSTALL_DIR}/manifest.json && mv ${INSTALL_DIR}/bin/pure-maps.jonnius ${CLICK_PATH}/pure-maps",
   "install_data": {
-    "${ROOT}/packaging/ubports/pure-maps.desktop": "${INSTALL_DIR}",
-    "${ROOT}/packaging/ubports/manifest.json": "${INSTALL_DIR}",
-    "${ROOT}/packaging/ubports/pure-maps.apparmor": "${INSTALL_DIR}",
-    "${ROOT}/packaging/ubports/pure-maps.svg": "${INSTALL_DIR}",
+    "${ROOT}/packaging/click/pure-maps.desktop": "${INSTALL_DIR}",
+    "${ROOT}/packaging/click/manifest.json": "${INSTALL_DIR}",
+    "${ROOT}/packaging/click/pure-maps.apparmor": "${INSTALL_DIR}",
+    "${ROOT}/packaging/click/pure-maps.svg": "${INSTALL_DIR}",
     "${PICOTTS_LIB_INSTALL_DIR}/usr/share/picotts": "${INSTALL_DIR}/usr/share"
   },
   "install_bin": [
-    "${SRC_DIR}/packaging/ubports/launch.sh",
+    "${SRC_DIR}/packaging/click/launch.sh",
     "${MIMIC_LIB_INSTALL_DIR}/bin/mimic",
     "${PICOTTS_LIB_INSTALL_DIR}/usr/bin/pico2wave"
   ],
@@ -30,7 +30,7 @@
     "${S2GEOMETRY_LIB_INSTALL_DIR}/lib/*.so*"
   ],
   "scripts": {
-    "prepare-deps": "git submodule update --recursive --init && ${ROOT}/packaging/ubports/prepare-deps.sh"
+    "prepare-deps": "git submodule update --recursive --init && ${ROOT}/packaging/click/prepare-deps.sh"
   },
   "libraries": {
     "mapbox-gl-native": {

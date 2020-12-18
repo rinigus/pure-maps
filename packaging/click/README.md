@@ -11,13 +11,14 @@ keys for the services that you plan to use.
 Create a symlink to the config file to omit the `-c` flag in all clickable
 calls:
 
-    ln -s packaging/ubports/full-build.json clickable.json
+    ln -s packaging/click/full-build.json clickable.json
 
 for the full build including Mimic, resulting in a 98 MB click package, or:
 
-    ln -s packaging/ubports/slim-build.json clickable.json
+    ln -s packaging/click/slim-build.json clickable.json
 
-for the slim build without Mimic (but still with PicoTTS), resulting in a 10 MB click package.
+for the slim build without Mimic (but still with PicoTTS), resulting in a 10 MB
+click package.
 
 ## Dependencies
 
@@ -51,4 +52,4 @@ To debug on the desktop run of these:
     clickable desktop --dirty # avoid clean before build
     clickable desktop --skip-build # start app without building
 
-See [Clickable docs](http://clickable.bhdouglass.com/en/latest/) for details.
+See [Clickable docs](https://clickable-ut.dev/en/latest/) for details.
