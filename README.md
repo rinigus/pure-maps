@@ -2,7 +2,7 @@
 
 [![Latest release](https://img.shields.io/github/v/release/rinigus/pure-maps)](https://github.com/rinigus/pure-maps/releases)
 [![SFOS](https://img.shields.io/badge/SailfishOS-OpenRepos-1CA198)](https://openrepos.net/content/rinigus/pure-maps)
-[![UBPorts](https://img.shields.io/badge/Ubuntu%20Touch-OpenStore-292929)](https://open-store.io/app/pure-maps.jonnius)
+[![Ubuntu Touch](https://img.shields.io/badge/Ubuntu%20Touch-OpenStore-292929)](https://open-store.io/app/pure-maps.jonnius)
 [![Flatpak](https://img.shields.io/badge/Flatpak-Flathub-4A86CF)](https://flathub.org/apps/details/io.github.rinigus.PureMaps)
 [![Fedora](https://img.shields.io/badge/O.B.S-Fedora-3C6EB4)](https://build.opensuse.org/package/show/home:rinigus:maps/pure-maps)
 
@@ -138,8 +138,8 @@ Alternative, is to use Flatpak-based environment and develop using
 that. For this approach, see separate
 [README](packaging/flatpak/README.md).
 
-To build a click package for Ubuntu Touch, see separate
-[README](packaging/ubports/README.md).
+Building and Debugging for Ubuntu Touch is described in
+[README](packaging/click/README.md).
 
 
 ## Platforms
@@ -199,7 +199,7 @@ to `qmake`. Supported platforms:
 - Kirigami: `FLAVOR=kirigami`
 - QtControls: `FLAVOR=qtcontrols`
 - Sailfish: `FLAVOR=silica`
-- Ubuntu Touch: `FLAVOR=ubports`
+- Ubuntu Touch: `FLAVOR=uuitk`
 
 It is recommended to build the sources in a separate folder, as in
 ```
@@ -251,7 +251,7 @@ tiles for Finland), Sputnik (raster tiles in Russian), Photon
 ## Packaging
 
 At present, Sailfish OS version is packaged as RPM, Linux version
-is packaged using Flatpak or RPM, and UBPorts version as click.
+is packaged using Flatpak or RPM, and Ubuntu Touch version as click.
 
 For packaging, please copy `tools/apikeys_dummy.py` to
 `tools/apikeys.py` and fill missing API keys for the services that you
@@ -259,7 +259,8 @@ plan to use.
 
 Flatpak specific instructions are available under `packaging/flatpak`.
 
-UBPorts specific instructions are available under `packaging/ubports`.
+Ubuntu Touch specific instructions are available in
+[Ubuntu Touch README](packaging/click/README.md).
 
 
 ## Development

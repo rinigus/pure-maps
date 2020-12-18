@@ -10,10 +10,10 @@ equals(FLAVOR, "silica") {
     CONFIG += flavor_kirigami
 } else:equals(FLAVOR, "qtcontrols") {
     CONFIG += flavor_qtcontrols
-} else:equals(FLAVOR, "ubports") {
-    CONFIG += flavor_ubports
+} else:equals(FLAVOR, "uuitk") {
+    CONFIG += flavor_uuitk
 } else {
-    error("Please specify platform using FLAVOR=platform as qmake option. Supported platforms: kirigami, silica, qtcontrols, ubports.")
+    error("Please specify platform using FLAVOR=platform as qmake option. Supported platforms: kirigami, silica, qtcontrols, uuitk.")
 }
 
 ############################################
@@ -34,7 +34,7 @@ TARGET=$${APP_NAME}
 # Overall QT options
 QT += gui positioning dbus
 
-flavor_kirigami|flavor_qtcontrols|flavor_ubports {
+flavor_kirigami|flavor_qtcontrols|flavor_uuitk {
     QT += quick qml widgets quickcontrols2
 }
 
@@ -49,7 +49,7 @@ flavor_silica {
 isEmpty(PREFIX) {
     flavor_silica {
         PREFIX = /usr
-    } else:flavor_ubports {
+    } else:flavor_uuitk {
         PREFIX = /
     } else {
         PREFIX = /usr/local
@@ -58,7 +58,7 @@ isEmpty(PREFIX) {
 
 # PREFIX_RUNNING
 isEmpty(PREFIX_RUNNING) {
-    flavor_ubports {
+    flavor_uuitk {
         PREFIX_RUNNING = .
     } else {
         PREFIX_RUNNING = $$PREFIX
@@ -152,7 +152,7 @@ js.path = $$DATADIR/qml/js
 icons.files = qml/icons/*.svg qml/icons/*.png qml/icons/*.jpg \
               qml/icons/attribution qml/icons/basemap qml/icons/marker qml/icons/navigation \
               qml/icons/navigation qml/icons/position \
-              qml/icons/fallback qml/icons/ubports qml/icons/sailfishos
+              qml/icons/fallback qml/icons/uuitk qml/icons/sailfishos
 icons.path = $$DATADIR/qml/icons
 
 qmlplatform.extra = cp -L -v $$PWD/qml/platform.$$FLAVOR/*.qml ${INSTALL_ROOT}$$DATADIR/qml/platform
@@ -190,8 +190,8 @@ flavor_silica {
     DEFINES += IS_SAILFISH_OS
 } else:flavor_qtcontrols|flavor_kirigami {
     DEFINES += IS_QTCONTROLS_QT
-} else:flavor_ubports {
-    DEFINES += IS_QTCONTROLS_QT IS_UBPORTS
+} else:flavor_uuitk {
+    DEFINES += IS_QTCONTROLS_QT
     DEFINES += DEFAULT_FALLBACK_STYLE=\\\"suru\\\"
 }
 
@@ -237,7 +237,7 @@ OTHER_FILES += rpm/harbour-pure-maps.spec
 OTHER_FILES += qml/platform.generic/*.qml
 OTHER_FILES += qml/platform.kirigami/*.qml
 OTHER_FILES += qml/platform.qtcontrols/*.qml
-OTHER_FILES += qml/platform.ubports/*.qml
+OTHER_FILES += qml/platform.uuitk/*.qml
 OTHER_FILES += qml/platform.silica/*.qml
 OTHER_FILES += poor/*.py
 

@@ -17,7 +17,7 @@ tools/manage-keys inject .
 make -f Makefile.test
 tools/manage-keys strip .
 git status
-emacs rpm/*.spec pure-maps.pro packaging/ubports/manifest.json
+emacs rpm/*.spec pure-maps.pro packaging/click/manifest.json
 emacs NEWS.md packaging/pure-maps.appdata.xml
 git status
 ```

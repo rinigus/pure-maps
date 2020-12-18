@@ -1,5 +1,5 @@
 Use for imports that are corresponding to Qt 5.9, as much as possible. When possible,
-prefer to import Kirigami 2.4, as it is available at UBPorts and the code can be shared
+prefer to import Kirigami 2.4, as it is available at Ubuntu Touch and the code can be shared
 between the platforms.
 
 Recommended imports are
