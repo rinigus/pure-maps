@@ -1,5 +1,5 @@
-UBPorts implementation. Its currently based on Ubuntu Components and
-QtControls platform.
+UUITK implementation used in Ubuntu Touch. Its currently based on
+Ubuntu Components and QtControls platform.
 
 Recommended imports are
 
