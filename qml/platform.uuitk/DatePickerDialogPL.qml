@@ -24,5 +24,5 @@ DialogPL {
 
     property var date
 
-    Component.onCompleted: console.log("DatePickerDialog is not implemented for UBPorts")
+    Component.onCompleted: console.log("DatePickerDialog is not implemented for UUITK")
 }

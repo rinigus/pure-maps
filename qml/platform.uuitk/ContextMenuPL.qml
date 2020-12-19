@@ -20,10 +20,10 @@ import QtQuick 2.0
 import QtQuick.Controls 2.2 as Controls
 
 Item {
-    // skipping context menu in UBPorts for now
+    // skipping context menu in UUITK for now
     // TODO: fix
     // otherwise was getting all kind of errors on absence of
-    // "enabled" property on UBPorts setup and complains regarding FINAL property on
+    // "enabled" property on UUITK setup and complains regarding FINAL property on
     // desktop
     function open() { console.log("Not implemented") }
 }
