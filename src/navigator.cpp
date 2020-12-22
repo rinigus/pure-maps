@@ -677,8 +677,8 @@ void Navigator::setRoute(QVariantMap m)
         m_maneuvers[i].next = i+1;
     }
 
-  for (auto m: m_maneuvers)
-    qDebug() << m.narrative << m.duration_txt << m.length_txt << m.next;
+//  for (auto m: m_maneuvers)
+//    qDebug() << m.narrative << m.duration_txt << m.length_txt << m.next;
 
   m_route_duration = duration_on_route;
 
