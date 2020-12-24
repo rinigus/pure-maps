@@ -26,9 +26,17 @@ PagePL {
 
     acceptIconName: styler.iconNavigate
     acceptText: app.tr("Route")
-    canNavigateForward:
-        (!page.fromNeeded || (page.from && (page.fromText !== app.tr("Current position") || gps.ready))) &&
-        (!page.toNeeded   || (page.to   && (page.toText   !== app.tr("Current position") || gps.ready)))
+    canNavigateForward: {
+        if (page.fromNeeded && !(page.from && (page.fromText !== app.tr("Current position") || gps.ready)) )
+            return false;
+        if (page.toNeeded && !(page.to && (page.toText !== app.tr("Current position") || gps.ready)) )
+            return false;
+        if (waypointsEnabled)
+            for (var i=0; i < waypoints.count; ++i)
+                if (!waypoints.get(i).set)
+                    return false;
+        return true;
+    }
 
     pageMenu: PageMenuPL {
         PageMenuItemPL {
@@ -90,6 +98,8 @@ PagePL {
     property bool   toNeeded: true
     property alias  toQuery: toButton.query
     property alias  toText: toButton.text
+    property alias  waypointsEnabled: viaSwitch.checked
+    property var    waypoints: ListModel {}
 
     property int    _autoRouteFlag: 0
     property var    _destinationsNotForSave: []
@@ -143,6 +153,68 @@ PagePL {
                 label: app.tr("To")
                 title: app.tr("Destination")
                 visible: page.toNeeded
+            }
+
+            TextSwitchPL {
+                id: viaSwitch
+                checked: false
+                text: app.tr("Waypoints")
+            }
+
+            Column {
+                id: waypointsColumn
+                visible: waypointsEnabled
+                width: parent.width
+
+                Repeater {
+                    model: waypoints
+                    delegate: Item {
+                        height: childrenRect.height
+                        width: waypointsColumn.width
+
+                        RoutePoint {
+                            anchors.left: parent.left
+                            anchors.right: wayButtons.left
+                            anchors.rightMargin: styler.themePaddingSmall
+                            anchors.verticalCenter: parent.verticalCenter
+                            coordinates: model.set ? [model.x, model.y] : null
+                            label: app.tr("Waypoint %1", model.index+1)
+                            query: model.query
+                            text: model.text
+
+                            onUpdated: {
+                                waypoints.set(model.index, {
+                                                  "set": true,
+                                                  "query": query,
+                                                  "text": text,
+                                                  "x": coordinates[0],
+                                                  "y": coordinates[1]
+                                              });
+                            }
+                        }
+
+                        Row {
+                            id: wayButtons
+                            anchors.right: parent.right
+                            anchors.rightMargin: styler.themeHorizontalPageMargin
+                            anchors.verticalCenter: parent.verticalCenter
+                            height: clearButton.height
+                            IconButtonPL {
+                                id: clearButton
+                                iconHeight: styler.themeIconSizeSmall
+                                iconName: styler.iconDelete
+                                onClicked: waypoints.remove(model.index)
+                            }
+                        }
+                    }
+                }
+
+                ButtonPL {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    preferredWidth: styler.themeButtonWidthLarge
+                    text: app.tr("Add")
+                    onClicked: waypoints.append({"set": false, "query": "", "text": "", "x": 0.0, "y": 0.0})
+                }
             }
 
             Component.onCompleted: {
@@ -212,7 +284,9 @@ PagePL {
                         id: label
                         anchors.verticalCenter: parent.verticalCenter
                         color: styler.themePrimaryColor
-                        text: "%1 ‒ %2".arg(model.fromText).arg(model.toText)
+                        text: model.waypoints ?
+                                  app.tr("%1 ‒ %2 (%3 waypoints)", model.fromText, model.toText, model.waypoints) :
+                                  "%1 ‒ %2".arg(model.fromText).arg(model.toText)
                     }
 
                     onClicked: {
@@ -225,6 +299,17 @@ PagePL {
                         if (page.toText === app.tr("Current position"))
                             page.to = app.getPosition();
                         else page.to = [model.toX, model.toY];
+
+                        if (model.waypoints) {
+                            var r = JSON.parse(model.full);
+                            page.waypoints.clear();
+                            for (var i=1; i < r.length-1; i++)
+                                page.waypoints.append({"set": true, "query": "", "text": r[i].text, "x": r[i].x, "y": r[i].y})
+                            page.waypointsEnabled = true;
+                        } else {
+                            page.waypointsEnabled = false;
+                            page.waypoints.clear();
+                        }
                     }
                 }
 
@@ -238,14 +323,17 @@ PagePL {
                 routes.model.clear();
                 var rs = py.evaluate("poor.app.history.routes").slice(0, 2);
                 rs.forEach(function (p) {
+
                     routes.model.append({
-                                            "fromText": p.from.text,
-                                            "fromX": p.from.x,
-                                            "fromY": p.from.y,
-                                            "toText": p.to.text,
-                                            "toX": p.to.x,
-                                            "toY": p.to.y,
-                                            "visible": true
+                                            "fromText": p[0].text,
+                                            "fromX": p[0].x,
+                                            "fromY": p[0].y,
+                                            "toText": p[p.length-1].text,
+                                            "toX": p[p.length-1].x,
+                                            "toY": p[p.length-1].y,
+                                            "visible": true,
+                                            "full": JSON.stringify(p),
+                                            "waypoints": p.length - 2
                                         });
                 });
             }
@@ -448,6 +536,21 @@ PagePL {
         if (_autoRouteFlag === 0) _autoRouteFlag = 1;
     }
 
+    function getLocations() {
+        var routePoints = []
+        if (from && fromText)
+            routePoints.push( { "x": from[0], "y": from[1],
+                                 "text": fromText } );
+        if (waypointsEnabled)
+            for (var i=0; i < waypoints.count; ++i)
+                if (waypoints.get(i).set)
+                    routePoints.push({ "x": waypoints.get(i).x, "y": waypoints.get(i).y,
+                                         "text": waypoints.get(i).text });
+        if (to && toText)
+            routePoints.push({ "x": to[0], "y": to[1], "text": toText });
+        return routePoints;
+    }
+
     function routeAutomatically() {
         if (followMe || !canNavigateForward || !autoRouteSupported) return;
         if (_autoRouteFlag === 1) {
@@ -463,7 +566,21 @@ PagePL {
                     Math.abs(to[0]-_destinationsNotForSave[i].x) < 1e-8 &&
                     Math.abs(to[1]-_destinationsNotForSave[i].y) < 1e-8)
                 return false;
+
+        if (!to || !toText)
+            return false;
+
+        var d = {
+            'text': toText,
+            'x': to[0],
+            'y': to[1]
+        };
+        py.call_sync("poor.app.history.add_destination", [d]);
         return true;
+    }
+
+    function saveLocations() {
+        py.call_sync("poor.app.history.add_route", [getLocations()]);
     }
 
     function updateRouter() {

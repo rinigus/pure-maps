@@ -35,6 +35,8 @@ ValueButtonPL {
     property string text
     property string title
 
+    signal updated;
+
     BusyIndicatorSmallPL {
         anchors.right: parent.right
         anchors.rightMargin: styler.themeHorizontalPageMargin + (parent.width - page.width)
@@ -63,6 +65,7 @@ ValueButtonPL {
             } else {
                 console.log("RoutePoint: " + label + " selection error: " + JSON.stringify(dialog.selection))
             }
+            updated();
         });
     }
 }

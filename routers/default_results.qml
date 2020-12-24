@@ -47,36 +47,15 @@ PagePL {
         page.loading = true;
         busy.visible = true;
         var routePage = app.pages.previousPage();
-        if (routePage.saveDestination() && routePage.toText && routePage.to) {
-            var d = {
-                'text': routePage.toText,
-                'x': routePage.to[0],
-                'y': routePage.to[1]
-            };
-            py.call_sync("poor.app.history.add_destination", [d]);
-        }
-        var args = [routePage.from, routePage.to];
+        routePage.saveDestination();
+        var routePoints = routePage.getLocations();
+        var args = [routePoints];
         py.call("poor.app.router.route", args, function(route) {
             if (route && route.error && route.message) {
                 busy.error = route.message;
                 page.loading = false;
             } else if (route && route.x && route.x.length > 0) {
-                // save found route
-                if (routePage.toText && routePage.to && routePage.fromText && routePage.from) {
-                    var r = {
-                        'to': {
-                            'text': routePage.toText,
-                            'x': routePage.to[0],
-                            'y': routePage.to[1]
-                        },
-                        'from': {
-                            'text': routePage.fromText,
-                            'x': routePage.from[0],
-                            'y': routePage.from[1]
-                        }
-                    };
-                    py.call_sync("poor.app.history.add_route", [r]);
-                }
+                routePage.saveLocations();
                 // apply new route
                 app.hideMenu(app.tr("Route to %1", routePage.toText));
                 pois.hide();

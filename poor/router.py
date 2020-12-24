@@ -116,20 +116,21 @@ class Router:
         path = re.sub(r"\.json$", "_results.qml", self._path)
         return poor.util.path2uri(path)
 
-    def route(self, fm, to, heading=None, params=None):
+    def route(self, locations, heading=None, params=None):
         """Find route and return its properties as a dictionary.
 
-        `fm` and `to` can be either strings (usually addresses) or two-element
-        tuples or lists of (x,y) coordinates. `heading` is the initial
-        direction as an angle with zero being north, increasing clockwise, with
-        360 being north again. `heading` is mostly useful for rerouting, to
-        avoid suggesting U-turns, and will be ``None`` in non-rerouting
-        context. `params` can be used to specify a dictionary of
-        router-specific parameters.
+        `locations` is a list of either strings (usually addresses) or
+        two-element tuples or lists of (x,y) coordinates. `heading` is
+        the initial direction as an angle with zero being north,
+        increasing clockwise, with 360 being north again. `heading` is
+        mostly useful for rerouting, to avoid suggesting U-turns, and
+        will be ``None`` in non-rerouting context. `params` can be
+        used to specify a dictionary of router-specific parameters.
+
         """
         params = params or {}
         try:
-            route = self._provider.route(fm, to, heading, params)
+            route = self._provider.route(locations, heading, params)
         except socket.timeout:
             return dict(error=True, message=_("Connection timed out"))
         except Exception:
