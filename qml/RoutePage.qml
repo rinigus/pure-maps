@@ -168,14 +168,35 @@ PagePL {
 
                 Repeater {
                     model: waypoints
-                    delegate: Item {
-                        height: childrenRect.height
-                        width: waypointsColumn.width
+                    delegate: ListItemPL {
+                        contentHeight: styler.themeItemSizeSmall
+                        menu: ContextMenuPL {
+                            ContextMenuItemPL {
+                                visible: model.index > 0
+                                iconName: styler.iconUp
+                                text: app.tr("Up")
+                                onClicked: {
+                                    if (model.index > 0)
+                                        waypoints.move(model.index, model.index-1, 1);
+                                }
+                            }
+                            ContextMenuItemPL {
+                                visible: model.index < waypoints.count - 1
+                                iconName: styler.iconDown
+                                text: app.tr("Down")
+                                onClicked: {
+                                    if (model.index < waypoints.count - 1)
+                                        waypoints.move(model.index, model.index+1, 1);
+                                }
+                            }
+                            ContextMenuItemPL {
+                                iconName: styler.iconDelete
+                                text: app.tr("Remove")
+                                onClicked: waypoints.remove(model.index)
+                            }
+                        }
 
                         RoutePoint {
-                            anchors.left: parent.left
-                            anchors.right: wayButtons.left
-                            anchors.rightMargin: styler.themePaddingSmall
                             anchors.verticalCenter: parent.verticalCenter
                             coordinates: model.set ? [model.x, model.y] : null
                             label: app.tr("Waypoint %1", model.index+1)
@@ -190,20 +211,6 @@ PagePL {
                                                   "x": coordinates[0],
                                                   "y": coordinates[1]
                                               });
-                            }
-                        }
-
-                        Row {
-                            id: wayButtons
-                            anchors.right: parent.right
-                            anchors.rightMargin: styler.themeHorizontalPageMargin
-                            anchors.verticalCenter: parent.verticalCenter
-                            height: clearButton.height
-                            IconButtonPL {
-                                id: clearButton
-                                iconHeight: styler.themeIconSizeSmall
-                                iconName: styler.iconDelete
-                                onClicked: waypoints.remove(model.index)
                             }
                         }
                     }
@@ -280,7 +287,6 @@ PagePL {
                     }
 
                     ListItemLabel {
-                        id: label
                         anchors.verticalCenter: parent.verticalCenter
                         color: styler.themePrimaryColor
                         text: model.waypoints ?
@@ -374,7 +380,6 @@ PagePL {
                     visible: model.visible
 
                     ListItemLabel {
-                        id: label
                         anchors.verticalCenter: parent.verticalCenter
                         color: styler.themePrimaryColor
                         text: model.text
