@@ -27,13 +27,13 @@ PagePL {
     acceptIconName: styler.iconNavigate
     acceptText: app.tr("Route")
     canNavigateForward: {
-        if (page.fromNeeded && !(page.from && (page.fromText !== app.tr("Current position") || gps.ready)) )
+        if (page.fromNeeded && (!page.from || (page.fromText === app.tr("Current position") && !gps.ready)) )
             return false;
-        if (page.toNeeded && !(page.to && (page.toText !== app.tr("Current position") || gps.ready)) )
+        if (page.toNeeded && (!page.to || (page.toText === app.tr("Current position") && !gps.ready)) )
             return false;
         if (waypointsEnabled)
             for (var i=0; i < waypoints.count; ++i)
-                if (!waypoints.get(i).set)
+                if (!waypoints.get(i).set || (waypoints.get(i).text === app.tr("Current position") && !gps.ready))
                     return false;
         return true;
     }
@@ -269,12 +269,11 @@ PagePL {
                 delegate: ListItemPL {
                     contentHeight: styler.themeItemSizeSmall
                     menu: ContextMenuPL {
-                        id: contextMenu
                         ContextMenuItemPL {
                             iconName: styler.iconDelete
                             text: app.tr("Remove")
                             onClicked: {
-                                py.call_sync("poor.app.history.remove_route", [model.fromText, model.toText]);
+                                py.call_sync("poor.app.history.remove_route", [JSON.parse(model.full)]);
                                 columnRoutes.fillRoutes();
                             }
                         }
@@ -323,7 +322,6 @@ PagePL {
                 routes.model.clear();
                 var rs = py.evaluate("poor.app.history.routes").slice(0, 2);
                 rs.forEach(function (p) {
-
                     routes.model.append({
                                             "fromText": p[0].text,
                                             "fromX": p[0].x,
@@ -361,7 +359,6 @@ PagePL {
                 delegate: ListItemPL {
                     contentHeight: model.visible ? styler.themeItemSizeSmall : 0
                     menu: ContextMenuPL {
-                        id: contextMenu
                         enabled: model.type === "recent destination"
                         ContextMenuItemPL {
                             enabled: model.type === "recent destination"
@@ -525,10 +522,6 @@ PagePL {
     }
 
     onPageStatusActive: {
-        if (page.fromText === app.tr("Current position"))
-            page.from = app.getPosition();
-        if (page.toText === app.tr("Current position"))
-            page.to = app.getPosition();
         var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.results_qml_uri"));
         app.pushAttached(uri);
         // check if this page is made active for adjusting route settings
@@ -548,6 +541,15 @@ PagePL {
                                          "text": waypoints.get(i).text });
         if (to && toText)
             routePoints.push({ "x": to[0], "y": to[1], "text": toText });
+
+        // update current position if needed
+        for (var i=0; i < routePoints.length; i++)
+            if (routePoints[i]["text"] === app.tr("Current position")) {
+                var p = app.getPosition();
+                routePoints[i]["x"] = p[0];
+                routePoints[i]["y"] = p[1];
+            }
+
         return routePoints;
     }
 
