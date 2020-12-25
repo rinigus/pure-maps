@@ -184,6 +184,11 @@ private:
   std::unique_ptr<MutableS2ShapeIndex> m_index;
   QString m_language{"en"};
   QLocale m_locale;
+  QList<LocationInfo> m_locations;
+  // if true, a location are considered passed only if
+  // the trajectory went close to it. if false, just
+  // distance along route determines if the location is passed
+  bool m_locations_strict{false};
   std::vector<Maneuver> m_maneuvers;
   QString m_mode{"car"};
   std::deque<PointInfo> m_points;
@@ -215,7 +220,6 @@ private:
   double  m_direction{0};
   bool    m_directionValid{false};
   QString m_icon;
-  QList<LocationInfo> m_locations;
   QString m_manDist;
   QString m_manTime;
   QString m_narrative;

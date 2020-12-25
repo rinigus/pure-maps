@@ -286,11 +286,31 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           }
           SET(directionValid, true);
           m_offroad_count = 0;
+
+          // check if we passed some locations using distance along route
+          if (!m_locations_strict)
+            for (int i=m_locations.length()-1; i>=0; --i)
+              if (m_locations[i].length_on_route < best.length_on_route)
+                {
+                  m_locations.removeAt(i);
+                  emit locationsChanged();
+                }
         }
       else
         {
           SET(directionValid, false);
         }
+
+      // handle locations when compared with the position
+      if (m_locations_strict)
+        for (int i=m_locations.length()-1; i>=0; --i)
+          if ( S1ChordAngle(m_locations[i].point, point).radians() <
+                 m_locations[i].distance_to_route + 2*accuracy_rad )
+            {
+              m_locations.removeAt(i);
+              emit locationsChanged();
+            }
+
 
       // reset prompts when just entering the route
       if (on_route && !m_alongRoute)
