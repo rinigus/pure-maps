@@ -168,10 +168,10 @@ def route(locations, heading, params):
     result = poor.AttrDict(result)
     mode = MODE.get(ctype,"car")
     if result.get("API version", "") == "libosmscout V1":
-        return parse_result_libosmscout(url, result, mode)
-    return parse_result_valhalla(url, result, mode)
+        return parse_result_libosmscout(url, locations, result, mode)
+    return parse_result_valhalla(url, locations, result, mode)
 
-def parse_result_libosmscout(url, result, mode):
+def parse_result_libosmscout(url, locations, result, mode):
     """Parse and return route from libosmscout engine."""
     x, y = result.lng, result.lat
     maneuvers = [dict(
@@ -182,7 +182,7 @@ def parse_result_libosmscout(url, result, mode):
         duration=float(maneuver.time),
         length=float(maneuver.length),
     ) for maneuver in result.maneuvers]
-    route = dict(x=x, y=y, maneuvers=maneuvers, mode=mode)
+    route = dict(x=x, y=y, locations=locations, maneuvers=maneuvers, mode=mode)
     route["language"] = result.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
@@ -194,9 +194,9 @@ def parse_exit(maneuver, key):
     e = maneuver["sign"][key]
     return [i.get("text", "") for i in e]
 
-def parse_result_valhalla(url, result, mode):
+def parse_result_valhalla(url, locations, result, mode):
     """Parse and return route from Valhalla engine."""
-    X, Y, Man = [], [], []
+    X, Y, Man, LocPointInd = [], [], [], [0]
     for legs in result.trip.legs:
         x, y = poor.util.decode_epl(legs.shape, precision=6)
         maneuvers = [dict(
@@ -223,7 +223,8 @@ def parse_result_valhalla(url, result, mode):
         X.extend(x)
         Y.extend(y)
         Man.extend(maneuvers)
-    route = dict(x=X, y=Y, maneuvers=Man, mode=mode)
+        LocPointInd.append(len(X)-1)
+    route = dict(x=X, y=Y, locations=locations, location_indexes=LocPointInd, maneuvers=Man, mode=mode)
     route["language"] = result.trip.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
