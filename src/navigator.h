@@ -33,6 +33,7 @@ class Navigator : public QObject
   Q_PROPERTY(bool    directionValid READ directionValid NOTIFY directionValidChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
+  Q_PROPERTY(QVariantList locations READ locations NOTIFY locationsChanged)
   Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
   Q_PROPERTY(QString manTime READ manTime NOTIFY manTimeChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
@@ -63,6 +64,7 @@ public:
   bool    directionValid() const { return m_directionValid; }
   QString icon() const { return m_icon; }
   QString language() const { return m_language; }
+  QVariantList locations() const;
   QString manDist() const { return m_manDist; }
   QString manTime() const { return m_manTime; }
   QString mode() const { return m_mode; }
@@ -105,6 +107,7 @@ signals:
   void directionValidChanged();
   void iconChanged();
   void languageChanged();
+  void locationsChanged();
   void manDistChanged();
   void manTimeChanged();
   void modeChanged();
@@ -164,6 +167,16 @@ private:
     operator bool() const { return length_on_route > 0; }
   };
 
+  // Location
+  struct LocationInfo {
+    S2Point point;
+    double length_on_route;
+    double distance_to_route;
+    double latitude;
+    double longitude;
+    QString name;
+  };
+
 private:
   bool m_running{false};
 
@@ -202,6 +215,7 @@ private:
   double  m_direction{0};
   bool    m_directionValid{false};
   QString m_icon;
+  QList<LocationInfo> m_locations;
   QString m_manDist;
   QString m_manTime;
   QString m_narrative;

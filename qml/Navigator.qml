@@ -176,7 +176,9 @@ Item {
         hasBeenAlongRoute = false;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
-        var args = [app.getPosition(), getDestination(), gps.direction];
+        var loc = navigatorBase.locations;
+        loc.splice(0, 0, app.getPosition());
+        var args = [loc, gps.direction];
         py.call("poor.app.router.route", args, function(route) {
             if (Array.isArray(route) && route.length > 0)
                 // If the router returns multiple alternative routes,
