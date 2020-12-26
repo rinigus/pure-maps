@@ -22,90 +22,95 @@ import "."
 
 import "js/util.js" as Util
 
-PositionSourceMapMatched {
-    id: gps
+Item {
+    id: master
 
-    // If application is no longer active, turn positioning off immediately
-    // if we already have a lock, otherwise keep trying for a couple minutes
-    // and give up if we still don't gain that lock.
-    active: app.running || (coordHistory.length === 0 && timePosition - timeActivate < 180000)
+    property alias accurate: gps.accurate
+    property real  direction: gps.directionValid ? gps.direction : gps.directionCalculated
+    property bool  directionValid: gps.directionValid || gps.directionCalculated
+    property alias position: gps.position
+    property alias ready: gps.ready
+    property alias streetName: gps.streetName
+    property alias streetSpeedAssumed: gps.streetSpeedAssumed
+    property alias streetSpeedLimit: gps.streetSpeedLimit
 
-    mapMatchingMode: {
-        if (app.mapMatchingMode == "none") return 0;
-        else if (app.mapMatchingMode == "car") return 1;
-        else if (app.mapMatchingMode == "bicycle") return 3;
-        else if (app.mapMatchingMode == "foot") return 5;
-        return 0;
-    }
+    PositionSourceMapMatched {
+        id: gps
 
-    testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
+        // If application is no longer active, turn positioning off immediately
+        // if we already have a lock, otherwise keep trying for a couple minutes
+        // and give up if we still don't gain that lock.
+        active: app.running || (coordHistory.length === 0 && timePosition - timeActivate < 180000)
 
-    property bool accurate: ready &&
-                            position.horizontalAccuracyValid &&
-                            position.horizontalAccuracy > 0 &&
-                            position.horizontalAccuracy < 25
-    property var  coordHistory: []
-    property bool directionCalculated: false
-    property var  directionHistory: []
-    property var  ready: false
-    property var  timeActivate:  Date.now()
-    property var  timeDirection: Date.now()
-    property var  timePosition:  Date.now()
-    property int  timePerUpdate: 1000
+        mapMatchingMode: {
+            if (app.mapMatchingMode == "none") return 0;
+            else if (app.mapMatchingMode == "car") return 1;
+            else if (app.mapMatchingMode == "bicycle") return 3;
+            else if (app.mapMatchingMode == "foot") return 5;
+            return 0;
+        }
 
-    onActiveChanged: {
-        // Keep track of when positioning was (re)activated.
-        if (gps.active) gps.timeActivate = Date.now();
-        else gps.ready = false;
-    }
+        testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
 
-    onDirectionValidChanged: {
-        // Clear direction if we switchid to map matched directions
-        if (!directionValid) return;
-        gps.coordHistory = [];
-        gps.directionCalculated = false;
-        gps.directionHistory = [];
-    }
+        property bool accurate: ready &&
+                                position.horizontalAccuracyValid &&
+                                position.horizontalAccuracy > 0 &&
+                                position.horizontalAccuracy < 25
+        property var  coordHistory: []
+        property real directionCalculated: 0
+        property bool directionCalculatedValid: false
+        property var  directionHistory: []
+        property var  ready: false
+        property var  timeActivate:  Date.now()
+        property var  timeDirection: Date.now()
+        property var  timePosition:  Date.now()
+        property int  timePerUpdate: 1000
 
-    onPositionChanged: {
-        gps.timePerUpdate = Math.round(Math.min(2000,
-                                                Math.max(500, Date.now()-gps.timePosition)) / 100)*100;
-        gps.timePosition = Date.now();
-        // Calculate direction as a median of individual direction values
-        // calculated after significant changes in position. This should be
-        // more stable than any direct value and usable with map.autoRotate.
-        gps.ready = gps.position.latitudeValid &&
-            gps.position.longitudeValid &&
-            gps.position.coordinate.latitude &&
-            gps.position.coordinate.longitude;
-        // proceed only if map matching does not provide direction
-        if (directionValid) return;
-        var threshold = gps.position.horizontalAccuracy || 15;
-        if (threshold < 0 || threshold > 40) return;
-        var coord = gps.position.coordinate;
-        if (gps.coordHistory.length === 0)
-            gps.coordHistory.push(QtPositioning.coordinate(
-                coord.latitude, coord.longitude));
-        var coordPrev = gps.coordHistory[gps.coordHistory.length-1];
-        if (coordPrev.distanceTo(coord) > threshold) {
-            gps.coordHistory.push(QtPositioning.coordinate(
-                coord.latitude, coord.longitude));
-            gps.coordHistory = gps.coordHistory.slice(-3);
-            // XXX: Direction is missing from gps.position.
-            // https://bugreports.qt.io/browse/QTBUG-36298
-            var direction = coordPrev.azimuthTo(coord);
-            gps.directionHistory.push(direction);
-            gps.directionHistory = gps.directionHistory.slice(-3);
-            if (gps.directionHistory.length >= 3) {
-                gps.direction = Util.median(gps.directionHistory);
-                gps.timeDirection = Date.now();
-                gps.directionCalculated = true;
+        onActiveChanged: {
+            // Keep track of when positioning was (re)activated.
+            if (gps.active) gps.timeActivate = Date.now();
+            else gps.ready = false;
+        }
+
+        onPositionChanged: {
+            gps.timePerUpdate = Math.round(Math.min(2000,
+                                                    Math.max(500, Date.now()-gps.timePosition)) / 100)*100;
+            gps.timePosition = Date.now();
+            // Calculate direction as a median of individual direction values
+            // calculated after significant changes in position. This should be
+            // more stable than any direct value and usable with map.autoRotate.
+            gps.ready = gps.position.latitudeValid &&
+                    gps.position.longitudeValid &&
+                    gps.position.coordinate.latitude &&
+                    gps.position.coordinate.longitude;
+            var threshold = gps.position.horizontalAccuracy || 15;
+            if ((!gps.ready && !testingCoordinate)
+                    || threshold < 0 || threshold > 40) return;
+            var coord = gps.position.coordinate;
+            if (gps.coordHistory.length === 0)
+                gps.coordHistory.push(QtPositioning.coordinate(
+                                          coord.latitude, coord.longitude));
+            var coordPrev = gps.coordHistory[gps.coordHistory.length-1];
+            if (coordPrev.distanceTo(coord) > threshold) {
+                gps.coordHistory.push(QtPositioning.coordinate(
+                                          coord.latitude, coord.longitude));
+                gps.coordHistory = gps.coordHistory.slice(-3);
+                // XXX: Direction is missing from gps.position.
+                // https://bugreports.qt.io/browse/QTBUG-36298
+                var direction = coordPrev.azimuthTo(coord);
+                gps.directionHistory.push(direction);
+                gps.directionHistory = gps.directionHistory.slice(-3);
+                if (gps.directionHistory.length >= 3) {
+                    gps.directionCalculated = Util.median(gps.directionHistory);
+                    gps.timeDirection = Date.now();
+                    gps.directionCalculatedValid = true;
+                }
+            } else if (gps.directionCalculatedValid && Date.now() - gps.timeDirection > 300000) {
+                // Clear direction if we have not seen any valid updates in a while.
+                gps.coordHistory = [];
+                gps.directionCalculatedValid = false;
+                gps.directionHistory = [];
             }
-        } else if (gps.directionCalculated && Date.now() - gps.timeDirection > 300000) {
-            // Clear direction if we have not seen any valid updates in a while.
-            gps.coordHistory = [];
-            gps.directionCalculated = false;
-            gps.directionHistory = [];
         }
     }
 
