@@ -159,6 +159,7 @@ PagePL {
                 id: viaSwitch
                 checked: false
                 text: app.tr("Waypoints")
+                visible: page.toNeeded
             }
 
             Column {

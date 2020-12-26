@@ -103,7 +103,7 @@ MODE = {
 
 URL = "http://localhost:8553/v2/trace_route"
 
-def route(fm, to, heading, params):
+def route(locations_ignored, heading, params):
     """Find route and return its properties as a dictionary."""
     fname = poor.conf.routers.gpx_osmscout.file
     language = poor.conf.routers.gpx_osmscout.language
