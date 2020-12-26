@@ -5,4 +5,4 @@ Icon=NAME
 Type=Application
 MimeType=x-scheme-handler/geo
 X-Ubuntu-Touch=true
-
+X-Purism-FormFactor=Workstation;Mobile;
