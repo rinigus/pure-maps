@@ -26,6 +26,7 @@ Item {
     id: master
 
     property alias accurate: gps.accurate
+    property alias active: gps.active
     property real  direction: gps.directionValid ? gps.direction : gps.directionCalculated
     property bool  directionValid: gps.directionValid || gps.directionCalculated
     property alias position: gps.position
@@ -84,12 +85,13 @@ Item {
                     gps.position.coordinate.latitude &&
                     gps.position.coordinate.longitude;
             var threshold = gps.position.horizontalAccuracy || 15;
-            if ((!gps.ready && !testingCoordinate)
-                    || threshold < 0 || threshold > 40) return;
+            if (!gps.ready || threshold < 0 || threshold > 40) return;
             var coord = gps.position.coordinate;
-            if (gps.coordHistory.length === 0)
+            if (gps.coordHistory.length === 0) {
                 gps.coordHistory.push(QtPositioning.coordinate(
                                           coord.latitude, coord.longitude));
+                return;
+            }
             var coordPrev = gps.coordHistory[gps.coordHistory.length-1];
             if (coordPrev.distanceTo(coord) > threshold) {
                 gps.coordHistory.push(QtPositioning.coordinate(

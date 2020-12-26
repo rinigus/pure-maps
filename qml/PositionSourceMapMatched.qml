@@ -157,17 +157,17 @@ Item {
                       function(result) {
                           // successful call
                           var r = JSON.parse(result);
-                          var position = {}
-                          for (var i in gps.position) {
-                              if (!(gps.position[i] instanceof Function) && i!=="coordinate")
-                                  position[i] = gps.position[i]
+                          var pos = {}
+                          for (var i in position) {
+                              if (!(position[i] instanceof Function) && i!=="coordinate")
+                                  pos[i] = position[i]
                           }
 
-                          var latitude = master.position.coordinate.latitude
-                          var longitude = master.position.coordinate.longitude
+                          var latitude = position.coordinate.latitude
+                          var longitude = position.coordinate.longitude
                           if (r.latitude !== undefined) latitude = r.latitude;
                           if (r.longitude !== undefined) longitude = r.longitude;
-                          position.coordinate = QtPositioning.coordinate(latitude, longitude);
+                          pos.coordinate = QtPositioning.coordinate(latitude, longitude);
 
                           if (r.direction!==undefined) master.direction = r.direction;
                           if (r.direction_valid!==undefined) master.directionValid = r.direction_valid;
@@ -176,7 +176,7 @@ Item {
                           if (r.street_speed_limit!==undefined) master.streetSpeedLimit = r.street_speed_limit;
 
                           // always update position
-                          master.position = position;
+                          master.position = pos;
 
                           if (master._timingShot) {
                               var dt = 1e-3*(Date.now() - master._timingLastCallStart);
