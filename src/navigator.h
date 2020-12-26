@@ -79,7 +79,7 @@ public:
   QString totalTime() const { return m_totalTime; }
 
 
-  Q_INVOKABLE void setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid);
+  Q_INVOKABLE void setPosition(const QGeoCoordinate &c, double direction, double horizontalAccuracy, bool valid);
 
   // route
   Q_INVOKABLE void clearRoute();

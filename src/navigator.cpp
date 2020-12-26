@@ -125,7 +125,13 @@ void Navigator::resetPrompts()
   qDebug() << "Prompts reset";
 }
 
-void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid)
+static double angleDiff(double angle1, double angle2)
+{
+  double diff = angle1-angle2;
+  return abs(diff - 360. * round(diff / 360.));
+}
+
+void Navigator::setPosition(const QGeoCoordinate &c, double direction, double horizontalAccuracy, bool valid)
 {
   if (!m_index || !valid || horizontalAccuracy > 100)
     {
@@ -186,6 +192,17 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
   m_last_point = point;
   m_last_accuracy = accuracy_rad;
 
+  // handle locations when compared with the position
+  if (m_locations_strict)
+    for (int i=m_locations.length()-1; i>=0; --i)
+      if ( S1ChordAngle(m_locations[i].point, point).radians() <
+             m_locations[i].distance_to_route + 2*accuracy_rad )
+        {
+          qDebug() << "Arrived to location" << i << m_locations[i].name;
+          m_locations.removeAt(i);
+          emit locationsChanged();
+        }
+
   // find if are on the route
   S2ClosestEdgeQuery::PointTarget target(point);
   S2ClosestEdgeQuery query(m_index.get());
@@ -196,10 +213,20 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
   PointInfo ref;
   if (m_points.size() > 0) ref = m_points.front();
 
+  bool wrong_direction = false;
   for (const auto& result : query.FindClosestEdges(&target))
     {
       S2Point pr = query.Project(point, result);
       EdgeInfo &einfo = m_edges[result.edge_id()];
+
+      // check if the edge is in the direction of movement
+      double angle_diff = angleDiff(direction, einfo.direction);
+      if (angle_diff > 45)
+        {
+          // skip this edge as it is not along the motion
+          wrong_direction = (wrong_direction || angle_diff > 135);
+          continue;
+        }
 
       // is the projected point between edge vertices?
       S2Shape::Edge edge = query.GetEdge(result);
@@ -239,6 +266,9 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           best.maneuver = einfo.maneuver;
         }
     }
+
+  // check if at least one edge resulted in correct motion
+  wrong_direction = (wrong_direction && !(bool(best)));
 
   // whether we found the point on route and whether it was in expected direction
   bool on_route = ((bool)best && (!ref || ref.length_on_route - accuracy_rad < best.length_on_route));
@@ -292,6 +322,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
             for (int i=m_locations.length()-1; i>=0; --i)
               if (m_locations[i].length_on_route < best.length_on_route)
                 {
+                  qDebug() << "Arrived to location along route" << i << m_locations[i].name;
                   m_locations.removeAt(i);
                   emit locationsChanged();
                 }
@@ -300,17 +331,6 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
         {
           SET(directionValid, false);
         }
-
-      // handle locations when compared with the position
-      if (m_locations_strict)
-        for (int i=m_locations.length()-1; i>=0; --i)
-          if ( S1ChordAngle(m_locations[i].point, point).radians() <
-                 m_locations[i].distance_to_route + 2*accuracy_rad )
-            {
-              m_locations.removeAt(i);
-              emit locationsChanged();
-            }
-
 
       // reset prompts when just entering the route
       if (on_route && !m_alongRoute)
@@ -436,7 +456,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
         {
           m_points.clear();
 
-          if ((bool)best) // point on route but wrong direction
+          if (wrong_direction)
             {
               m_distance_to_route_m = 0; // within the accuracy
 

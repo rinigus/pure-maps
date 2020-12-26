@@ -124,8 +124,11 @@ Item {
         function updatePosition() {
             if (destReached) return; // no more updates
             navigatorBase.setPosition(app.position.coordinate,
+                                      gps.direction,
                                       app.position.horizontalAccuracy,
-                                      app.position.horizontalAccuracyValid && app.position.latitudeValid && app.position.longitudeValid);
+                                      app.position.horizontalAccuracyValid &&
+                                      app.position.latitudeValid && app.position.longitudeValid &&
+                                      gps.directionValid);
         }
     }
 
