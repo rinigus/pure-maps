@@ -199,6 +199,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
              m_locations[i].distance_to_route + 2*accuracy_rad )
         {
           qDebug() << "Arrived to location" << i << m_locations[i].name;
+          emit locationArrived(m_locations[i].name, true /*strict*/);
           m_locations.removeAt(i);
           emit locationsChanged();
         }
@@ -323,6 +324,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
               if (m_locations[i].length_on_route < best.length_on_route)
                 {
                   qDebug() << "Arrived to location along route" << i << m_locations[i].name;
+                  emit locationArrived(m_locations[i].name, false /*strict*/);
                   m_locations.removeAt(i);
                   emit locationsChanged();
                 }

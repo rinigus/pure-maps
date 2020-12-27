@@ -64,6 +64,14 @@ Item {
 
         property bool voicePrepared: false
 
+        onLocationArrived: {
+            if (app.mode === modes.navigate) {
+                notification.flash(strict ? app.tr("Destination %1 reached", name) :
+                                            app.tr("Waypoint %1 reached", name),
+                                   "navigatorStop");
+            }
+        }
+
         onNavigationEnded: {
             if (app.mode === modes.navigate) {
                 notification.flash(app.tr("Destination reached"),

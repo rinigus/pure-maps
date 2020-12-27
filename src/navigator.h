@@ -127,6 +127,7 @@ signals:
   void promptPrepare(QString text, bool preserve);
   void promptPlay(QString text);
   void navigationEnded();
+  void locationArrived(QString name, bool strict);
 
 protected:
   QString distanceToStr(double meters, bool condence=true) const;
