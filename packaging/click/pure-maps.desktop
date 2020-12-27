@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=@APP_TITLE@
-Exec=launch.sh %u
+Exec=pure-maps %u
 Icon=pure-maps.svg
 Type=Application
 MimeType=x-scheme-handler/geo

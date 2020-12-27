@@ -15,12 +15,6 @@ for i in "$@"; do
     options=$options${i//,/.COMMA.}
 done
 
-# INSERT_TMP_AS_CACHE
-
-TMPINCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}"/FULL_NAME/tmp
-if [ "$USE_CACHE_AS_TMP" = "yes" ]; then
-    TMPDIR=$TMPINCACHEDIR
-fi
 XDG_DATA_DIRS="${XDG_DATA_DIRS:-$HOME/.local/share}":INSTALL_PREFIX/share/FULL_NAME
 
 # INSERT_PLATFORM_STYLE
