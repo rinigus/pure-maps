@@ -50,7 +50,6 @@ PagePL {
 
             ToolItemPL {
                 id: rerouteItem
-                enabled: app.mode === modes.navigate
                 width: row.itemWidth
                 icon.iconHeight: styler.themeIconSizeMedium
                 icon.iconName: styler.iconRefresh

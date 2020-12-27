@@ -90,6 +90,7 @@ QtObject {
     property string iconShortlistedSelected: "image://theme/select" //Qt.resolvedUrl("../../icons/shortlist-selected-symbolic.svg")
     property string iconStart: "image://theme/media-playback-start" //Qt.resolvedUrl("../../icons/media-playback-start-symbolic.svg")
     property string iconStop: "image://theme/media-playback-stop" //Qt.resolvedUrl("../../icons/media-playback-stop-symbolic.svg")
+    property string iconUp: "image://theme/up"
     property string iconWebLink: "image://theme/stock_website" //Qt.resolvedUrl("../../icons/web-browser-symbolic.svg")
 
     // item sizes

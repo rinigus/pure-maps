@@ -33,6 +33,7 @@ class Navigator : public QObject
   Q_PROPERTY(bool    directionValid READ directionValid NOTIFY directionValidChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
+  Q_PROPERTY(QVariantList locations READ locations NOTIFY locationsChanged)
   Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
   Q_PROPERTY(QString manTime READ manTime NOTIFY manTimeChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
@@ -63,6 +64,7 @@ public:
   bool    directionValid() const { return m_directionValid; }
   QString icon() const { return m_icon; }
   QString language() const { return m_language; }
+  QVariantList locations() const;
   QString manDist() const { return m_manDist; }
   QString manTime() const { return m_manTime; }
   QString mode() const { return m_mode; }
@@ -77,7 +79,7 @@ public:
   QString totalTime() const { return m_totalTime; }
 
 
-  Q_INVOKABLE void setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid);
+  Q_INVOKABLE void setPosition(const QGeoCoordinate &c, double direction, double horizontalAccuracy, bool valid);
 
   // route
   Q_INVOKABLE void clearRoute();
@@ -105,6 +107,7 @@ signals:
   void directionValidChanged();
   void iconChanged();
   void languageChanged();
+  void locationsChanged();
   void manDistChanged();
   void manTimeChanged();
   void modeChanged();
@@ -124,6 +127,7 @@ signals:
   void promptPrepare(QString text, bool preserve);
   void promptPlay(QString text);
   void navigationEnded();
+  void locationArrived(QString name, bool strict);
 
 protected:
   QString distanceToStr(double meters, bool condence=true) const;
@@ -164,6 +168,16 @@ private:
     operator bool() const { return length_on_route > 0; }
   };
 
+  // Location
+  struct LocationInfo {
+    S2Point point;
+    double length_on_route;
+    double distance_to_route;
+    double latitude;
+    double longitude;
+    QString name;
+  };
+
 private:
   bool m_running{false};
 
@@ -171,6 +185,11 @@ private:
   std::unique_ptr<MutableS2ShapeIndex> m_index;
   QString m_language{"en"};
   QLocale m_locale;
+  QList<LocationInfo> m_locations;
+  // if true, a location are considered passed only if
+  // the trajectory went close to it. if false, just
+  // distance along route determines if the location is passed
+  bool m_locations_strict{false};
   std::vector<Maneuver> m_maneuvers;
   QString m_mode{"car"};
   std::deque<PointInfo> m_points;

@@ -22,6 +22,7 @@ http://open.mapquestapi.com/directions/
 """
 
 import copy
+import json
 import poor
 import urllib.parse
 
@@ -71,17 +72,7 @@ SUPPORTED_LOCALES = [
 ]
 
 URL = ("http://open.mapquestapi.com/directions/v2/route"
-       "?key=" + poor.key.get("MAPQUEST_KEY") +
-       "&ambiguities=ignore"
-       "&from={fm}"
-       "&to={to}"
-       "&unit=k"
-       "&routeType={type}"
-       "&doReverseGeocode=false"
-       "&shapeFormat=cmp"
-       "&generalize=5"
-       "&manMaps=false"
-       "&locale={locale}")
+       "?key=" + poor.key.get("MAPQUEST_KEY") )
 
 cache = {}
 
@@ -89,25 +80,38 @@ def prepare_endpoint(point):
     """Return `point` as a string ready to be passed on to the router."""
     if isinstance(point, (list, tuple)):
         return "{:.5f},{:.5f}".format(point[1], point[0])
+    if isinstance(point, dict):
+        return "{:.5f},{:.5f}".format(point["y"], point["x"])
     geocoder = poor.Geocoder("default")
     results = geocoder.geocode(point, params=dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
-def route(fm, to, heading, params):
+def route(locations, heading, params):
     """Find route and return its properties as a dictionary."""
-    fm, to = map(prepare_endpoint, (fm, to))
+    loc = list(map(prepare_endpoint, locations))
     type = poor.conf.routers.mapquest_open.type
     locale = poor.conf.routers.mapquest_open.language
     locale = (locale if locale in SUPPORTED_LOCALES else "en_US")
     url = URL.format(**locals())
+    options = dict(ambiguities="ignore",
+                   unit="k",
+                   routeType=type,
+                   doReverseGeocode=False,
+                   shapeFormat="cmp",
+                   generalize=5,
+                   manMaps=False,
+                   locale=locale)
     if type == "fastest":
         # Assume all avoids are related to cars.
-        for avoid in poor.conf.routers.mapquest_open.avoids:
-            url += "&avoids={}".format(urllib.parse.quote_plus(avoid))
+        options["avoids"] = poor.conf.routers.mapquest_open.avoids
+    input = dict(locations=loc, options=options)
+    input = json.dumps(input)
     with poor.util.silent(KeyError):
-        return copy.deepcopy(cache[url])
-    result = poor.http.get_json(url)
+        return copy.deepcopy(cache[input])
+    result = poor.http.post_json(url, input)
     result = poor.AttrDict(result)
+    # with open('route.json', 'w') as f:
+    #     f.write(json.dumps(result))
     x, y = poor.util.decode_epl(result.route.shape.shapePoints)
     maneuvers = []
     for leg in result.route.legs:
@@ -123,9 +127,11 @@ def route(fm, to, heading, params):
     if len(maneuvers) > 1:
         maneuvers[ 0]["icon"] = "depart"
         maneuvers[-1]["icon"] = "arrive"
+    loc_index = result.route.shape.legIndexes
+    loc_index[-1] -= 1
     mode = MODE.get(type,"car")
-    route = dict(x=x, y=y, maneuvers=maneuvers, mode=mode)
+    route = dict(x=x, y=y, locations=locations, location_indexes=loc_index, maneuvers=maneuvers, mode=mode)
     route["language"] = locale
     if route and route["x"]:
-        cache[url] = copy.deepcopy(route)
+        cache[input] = copy.deepcopy(route)
     return route

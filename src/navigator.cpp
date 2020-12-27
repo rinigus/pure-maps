@@ -78,9 +78,40 @@ void Navigator::clearRoute()
   SET(street, "");
 
   m_maneuvers_model.clear();
+  if (m_locations.size() > 0)
+    {
+      m_locations.clear();
+      emit locationsChanged();
+    }
 
   updateProgress();
   emit routeChanged();
+}
+
+QVariantList Navigator::locations() const
+{
+  QVariantList locations;
+
+  for (auto l: m_locations)
+    {
+      QVariantMap loc;
+      loc["text"] = l.name;
+      loc["x"] = l.longitude;
+      loc["y"] = l.latitude;
+      locations.append(loc);
+    }
+
+  // handle the routes with the absent locations
+  if (m_locations.length() == 0 && m_route.length() > 0)
+    {
+      QVariantMap loc;
+      QGeoCoordinate c = m_route.back().value<QGeoCoordinate>();
+      loc["x"] = c.longitude();
+      loc["y"] = c.latitude();
+      locations.append(loc);
+    }
+
+  return locations;
 }
 
 void Navigator::resetPrompts()
@@ -94,19 +125,13 @@ void Navigator::resetPrompts()
   qDebug() << "Prompts reset";
 }
 
-void Navigator::updateProgress()
+static double angleDiff(double angle1, double angle2)
 {
-  float p = 0;
-
-  if (!m_running)
-    p = m_last_distance_along_route_m  / std::max(1.0, m_route_length_m);
-  else
-    p = m_distance_traveled_m / std::max(1.0, m_distance_traveled_m +
-                                         m_route_length_m - m_last_distance_along_route_m);
-  SET(progress, (int)round(100*p));
+  double diff = angle1-angle2;
+  return abs(diff - 360. * round(diff / 360.));
 }
 
-void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, bool valid)
+void Navigator::setPosition(const QGeoCoordinate &c, double direction, double horizontalAccuracy, bool valid)
 {
   if (!m_index || !valid || horizontalAccuracy > 100)
     {
@@ -167,6 +192,18 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
   m_last_point = point;
   m_last_accuracy = accuracy_rad;
 
+  // handle locations when compared with the position
+  if (m_locations_strict)
+    for (int i=m_locations.length()-1; i>=0; --i)
+      if ( S1ChordAngle(m_locations[i].point, point).radians() <
+             m_locations[i].distance_to_route + 2*accuracy_rad )
+        {
+          qDebug() << "Arrived to location" << i << m_locations[i].name;
+          emit locationArrived(m_locations[i].name, true /*strict*/);
+          m_locations.removeAt(i);
+          emit locationsChanged();
+        }
+
   // find if are on the route
   S2ClosestEdgeQuery::PointTarget target(point);
   S2ClosestEdgeQuery query(m_index.get());
@@ -177,10 +214,20 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
   PointInfo ref;
   if (m_points.size() > 0) ref = m_points.front();
 
+  bool wrong_direction = false;
   for (const auto& result : query.FindClosestEdges(&target))
     {
       S2Point pr = query.Project(point, result);
       EdgeInfo &einfo = m_edges[result.edge_id()];
+
+      // check if the edge is in the direction of movement
+      double angle_diff = angleDiff(direction, einfo.direction);
+      if (angle_diff > 45)
+        {
+          // skip this edge as it is not along the motion
+          wrong_direction = (wrong_direction || angle_diff > 135);
+          continue;
+        }
 
       // is the projected point between edge vertices?
       S2Shape::Edge edge = query.GetEdge(result);
@@ -220,6 +267,9 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           best.maneuver = einfo.maneuver;
         }
     }
+
+  // check if at least one edge resulted in correct motion
+  wrong_direction = (wrong_direction && !(bool(best)));
 
   // whether we found the point on route and whether it was in expected direction
   bool on_route = ((bool)best && (!ref || ref.length_on_route - accuracy_rad < best.length_on_route));
@@ -267,6 +317,17 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
           }
           SET(directionValid, true);
           m_offroad_count = 0;
+
+          // check if we passed some locations using distance along route
+          if (!m_locations_strict)
+            for (int i=m_locations.length()-1; i>=0; --i)
+              if (m_locations[i].length_on_route < best.length_on_route)
+                {
+                  qDebug() << "Arrived to location along route" << i << m_locations[i].name;
+                  emit locationArrived(m_locations[i].name, false /*strict*/);
+                  m_locations.removeAt(i);
+                  emit locationsChanged();
+                }
         }
       else
         {
@@ -397,7 +458,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
         {
           m_points.clear();
 
-          if ((bool)best) // point on route but wrong direction
+          if (wrong_direction)
             {
               m_distance_to_route_m = 0; // within the accuracy
 
@@ -437,13 +498,6 @@ void Navigator::setPosition(const QGeoCoordinate &c, double horizontalAccuracy, 
   //qDebug() << "Exit setPosition";
 }
 
-void Navigator::updateEta()
-{
-  if (!m_running) return;
-  QTime time = QTime::currentTime().addSecs(m_route_duration - m_last_duration_along_route);
-  SET(destEta, QLocale::system().toString(time, QLocale::NarrowFormat));
-}
-
 void Navigator::setRoute(QVariantMap m)
 {
   const double accuracy_m = 5;
@@ -461,6 +515,7 @@ void Navigator::setRoute(QVariantMap m)
 
   // cleanup
   m_edges.clear();
+  m_locations.clear();
   m_maneuvers.clear();
   m_points.clear();
   m_route.clear();
@@ -485,13 +540,16 @@ void Navigator::setRoute(QVariantMap m)
 
   // route
   QList<QGeoCoordinate> route;
+  QList<int> orig2new_index;
   route.reserve(x.length());
+  orig2new_index.reserve(x.length());
   for (int i=0; i < x.length(); ++i)
     {
       QGeoCoordinate c(y[i].toDouble(), x[i].toDouble());
       // avoid the same point entered twice (observed with MapQuest)
       if (i == 0 || c.distanceTo(route.back()) > accuracy_m)
         route.append(c);
+      orig2new_index.append(route.length()-1);
     }
 
   std::vector<S2LatLng> coor;
@@ -680,6 +738,48 @@ void Navigator::setRoute(QVariantMap m)
 //  for (auto m: m_maneuvers)
 //    qDebug() << m.narrative << m.duration_txt << m.length_txt << m.next;
 
+  // locations
+  m_locations.clear();
+  QVariantList locations = m.value("locations").toList();
+  QVariantList locindexes = m.value("location_indexes").toList();
+  if (locations.length() == locindexes.length())
+    {
+      // skipping the origin as it is not used for rerouting
+      for (int i=1; i < locations.length(); ++i)
+        {
+          QVariantMap lm = locations[i].toMap();
+          LocationInfo li;
+          li.latitude = lm.value("y").toDouble();
+          li.longitude = lm.value("x").toDouble();
+          li.name = lm.value("text").toString();
+          double dist = 0.0;
+          int ne = locindexes[i].toInt();
+          if (ne >= orig2new_index.length())
+            {
+              qWarning() << "Wrong index for location observed during route import. Index="
+                         << ne << "while there are only" << orig2new_index.length()
+                         << "nodes. Interrupring import of locations";
+              break;
+            }
+          ne = orig2new_index[ne];
+          if (ne > 0)
+            dist = m_edges[ne-1].length + m_edges[ne-1].length_before;
+          li.length_on_route = dist;
+          li.point = S2LatLng::FromDegrees(li.latitude, li.longitude).ToPoint();
+          li.distance_to_route = S1ChordAngle(li.point, coor[ne].ToPoint()).radians();
+          m_locations.push_back(li);
+
+//          qDebug() << li.name << "node:" << ne
+//                   << " distance along route:" << S2Earth::RadiansToKm(li.length_on_route) << "km"
+//                   << " distance from route to location:"
+//                   << S2Earth::RadiansToMeters(li.distance_to_route) << "m";
+        }
+    }
+  else
+    qWarning() << "Number of locations and number of their indexes do not match. Number of indexes:"
+               << locindexes.length();
+
+  // global vars
   m_route_duration = duration_on_route;
 
   SET(totalDist, distanceToStr(m_route_length_m));
@@ -687,14 +787,9 @@ void Navigator::setRoute(QVariantMap m)
   m_maneuvers_model.setManeuvers(m_maneuvers);
 
   emit routeChanged();
+  emit locationsChanged();
 }
 
-
-void Navigator::setUnits(QString u)
-{
-  m_units = u;
-  emit unitsChanged();
-}
 
 void Navigator::setRunning(bool r)
 {
@@ -708,6 +803,31 @@ void Navigator::setRunning(bool r)
   else m_timer.stop();
 
   emit runningChanged();
+}
+
+void Navigator::setUnits(QString u)
+{
+  m_units = u;
+  emit unitsChanged();
+}
+
+void Navigator::updateEta()
+{
+  if (!m_running) return;
+  QTime time = QTime::currentTime().addSecs(m_route_duration - m_last_duration_along_route);
+  SET(destEta, QLocale::system().toString(time, QLocale::NarrowFormat));
+}
+
+void Navigator::updateProgress()
+{
+  float p = 0;
+
+  if (!m_running)
+    p = m_last_distance_along_route_m  / std::max(1.0, m_route_length_m);
+  else
+    p = m_distance_traveled_m / std::max(1.0, m_distance_traveled_m +
+                                         m_route_length_m - m_last_distance_along_route_m);
+  SET(progress, (int)round(100*p));
 }
 
 // Translations and string functions

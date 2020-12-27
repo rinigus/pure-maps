@@ -135,15 +135,19 @@ def prepare_endpoint(point):
     """Return `point` as a dictionary ready to be passed on to the router."""
     if isinstance(point, (list, tuple)):
         return dict(lat=point[1], lon=point[0])
+    if isinstance(point, dict):
+        d = dict(lat=point["y"], lon=point["x"])
+        if "text" in point: d["name"] = point["text"]
+        return d
     geocoder = poor.Geocoder("osmscout")
     results = geocoder.geocode(point, params=dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
-def route(fm, to, heading, params):
+def route(locations, heading, params):
     """Find route and return its properties as a dictionary."""
-    fm, to = map(prepare_endpoint, (fm, to))
+    loc = list(map(prepare_endpoint, locations))
     if heading is not None:
-        fm["heading"] = heading
+        loc[0]["heading"] = heading
     language = poor.conf.routers.osmscout.language
     units = "kilometers" if poor.conf.units == "metric" else "miles"
     ctype = poor.conf.routers.osmscout.type
@@ -151,7 +155,7 @@ def route(fm, to, heading, params):
     co = {key: poor.conf.routers.osmscout[key] for key in MODEOPTIONS[ctype]}
     costing_options = {}
     costing_options[ctype] = co
-    input = dict(locations=[fm, to],
+    input = dict(locations=loc,
                  costing=ctype,
                  costing_options=costing_options,
                  directions_options=dict(language=language, units=units))
@@ -164,10 +168,10 @@ def route(fm, to, heading, params):
     result = poor.AttrDict(result)
     mode = MODE.get(ctype,"car")
     if result.get("API version", "") == "libosmscout V1":
-        return parse_result_libosmscout(url, result, mode)
-    return parse_result_valhalla(url, result, mode)
+        return parse_result_libosmscout(url, locations, result, mode)
+    return parse_result_valhalla(url, locations, result, mode)
 
-def parse_result_libosmscout(url, result, mode):
+def parse_result_libosmscout(url, locations, result, mode):
     """Parse and return route from libosmscout engine."""
     x, y = result.lng, result.lat
     maneuvers = [dict(
@@ -178,7 +182,7 @@ def parse_result_libosmscout(url, result, mode):
         duration=float(maneuver.time),
         length=float(maneuver.length),
     ) for maneuver in result.maneuvers]
-    route = dict(x=x, y=y, maneuvers=maneuvers, mode=mode)
+    route = dict(x=x, y=y, locations=locations, maneuvers=maneuvers, mode=mode)
     route["language"] = result.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
@@ -190,32 +194,37 @@ def parse_exit(maneuver, key):
     e = maneuver["sign"][key]
     return [i.get("text", "") for i in e]
 
-def parse_result_valhalla(url, result, mode):
+def parse_result_valhalla(url, locations, result, mode):
     """Parse and return route from Valhalla engine."""
-    legs = result.trip.legs[0]
-    x, y = poor.util.decode_epl(legs.shape, precision=6)
-    maneuvers = [dict(
-        x=float(x[maneuver.begin_shape_index]),
-        y=float(y[maneuver.begin_shape_index]),
-        icon=ICONS.get(maneuver.type, "flag"),
-        narrative=maneuver.instruction,
-        sign=dict(
-            exit_branch=parse_exit(maneuver, "exit_branch_elements"),
-            exit_name=parse_exit(maneuver, "exit_name_elements"),
-            exit_number=parse_exit(maneuver, "exit_number_elements"),
-            exit_toward=parse_exit(maneuver, "exit_toward_elements")
-        ),
-        street=maneuver.get("begin_street_names", maneuver.get("street_names", None)),
-        arrive_instruction=maneuver.get("arrive_instruction", None),
-        depart_instruction=maneuver.get("depart_instruction", None),
-        roundabout_exit_count=maneuver.get("roundabout_exit_count", None),
-        travel_type=maneuver.get("travel_type", None),
-        verbal_alert=maneuver.get("verbal_transition_alert_instruction", None),
-        verbal_pre=maneuver.get("verbal_pre_transition_instruction", None),
-        verbal_post=maneuver.get("verbal_post_transition_instruction", None),
-        duration=float(maneuver.time),
-    ) for maneuver in legs.maneuvers]
-    route = dict(x=x, y=y, maneuvers=maneuvers, mode=mode)
+    X, Y, Man, LocPointInd = [], [], [], [0]
+    for legs in result.trip.legs:
+        x, y = poor.util.decode_epl(legs.shape, precision=6)
+        maneuvers = [dict(
+            x=float(x[maneuver.begin_shape_index]),
+            y=float(y[maneuver.begin_shape_index]),
+            icon=ICONS.get(maneuver.type, "flag"),
+            narrative=maneuver.instruction,
+            sign=dict(
+                exit_branch=parse_exit(maneuver, "exit_branch_elements"),
+                exit_name=parse_exit(maneuver, "exit_name_elements"),
+                exit_number=parse_exit(maneuver, "exit_number_elements"),
+                exit_toward=parse_exit(maneuver, "exit_toward_elements")
+            ),
+            street=maneuver.get("begin_street_names", maneuver.get("street_names", None)),
+            arrive_instruction=maneuver.get("arrive_instruction", None),
+            depart_instruction=maneuver.get("depart_instruction", None),
+            roundabout_exit_count=maneuver.get("roundabout_exit_count", None),
+            travel_type=maneuver.get("travel_type", None),
+            verbal_alert=maneuver.get("verbal_transition_alert_instruction", None),
+            verbal_pre=maneuver.get("verbal_pre_transition_instruction", None),
+            verbal_post=maneuver.get("verbal_post_transition_instruction", None),
+            duration=float(maneuver.time),
+        ) for maneuver in legs.maneuvers]
+        X.extend(x)
+        Y.extend(y)
+        Man.extend(maneuvers)
+        LocPointInd.append(len(X)-1)
+    route = dict(x=X, y=Y, locations=locations, location_indexes=LocPointInd, maneuvers=Man, mode=mode)
     route["language"] = result.trip.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)

@@ -34,6 +34,7 @@ Item {
     property bool   hasBeenAlongRoute: false
     property bool   hasRoute:  navigatorBase.route.length > 0
     property alias  icon:      navigatorBase.icon
+    property alias  locations: navigatorBase.locations
     property alias  maneuvers: navigatorBase.maneuvers
     property alias  manDist:   navigatorBase.manDist
     property alias  manTime:   navigatorBase.manTime
@@ -62,6 +63,14 @@ Item {
         units: app.conf.units
 
         property bool voicePrepared: false
+
+        onLocationArrived: {
+            if (app.mode === modes.navigate) {
+                notification.flash(strict ? app.tr("Destination %1 reached", name) :
+                                            app.tr("Waypoint %1 reached", name),
+                                   "navigatorStop");
+            }
+        }
 
         onNavigationEnded: {
             if (app.mode === modes.navigate) {
@@ -124,8 +133,11 @@ Item {
         function updatePosition() {
             if (destReached) return; // no more updates
             navigatorBase.setPosition(app.position.coordinate,
+                                      gps.direction,
                                       app.position.horizontalAccuracy,
-                                      app.position.horizontalAccuracyValid && app.position.latitudeValid && app.position.longitudeValid);
+                                      app.position.horizontalAccuracyValid &&
+                                      app.position.latitudeValid && app.position.longitudeValid &&
+                                      gps.directionValid);
         }
     }
 
@@ -176,7 +188,9 @@ Item {
         hasBeenAlongRoute = false;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
-        var args = [app.getPosition(), getDestination(), gps.direction];
+        var loc = navigatorBase.locations;
+        loc.splice(0, 0, app.getPosition());
+        var args = [loc, gps.direction];
         py.call("poor.app.router.route", args, function(route) {
             if (Array.isArray(route) && route.length > 0)
                 // If the router returns multiple alternative routes,

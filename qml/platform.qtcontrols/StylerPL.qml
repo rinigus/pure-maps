@@ -87,6 +87,7 @@ QtObject {
     property string iconShortlistedSelected: "shortlist-selected-symbolic"
     property string iconStart: "media-playback-start-symbolic"
     property string iconStop: "media-playback-stop-symbolic"
+    property string iconUp: "go-up-symbolic"
     property string iconWebLink: "web-browser-symbolic"
 
     // item sizes
