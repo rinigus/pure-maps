@@ -92,6 +92,7 @@ MapboxMap {
 
     readonly property var layers: QtObject {
         readonly property string dummies:         "pure-layer-dummies"
+        readonly property string locations:       "pure-layer-locations"
         readonly property string maneuvers:       "pure-layer-maneuvers-active"
         readonly property string nodes:           "pure-layer-maneuvers-passive"
         readonly property string pois:            "pure-layer-pois"
@@ -102,6 +103,7 @@ MapboxMap {
     }
 
     readonly property var sources: QtObject {
+        readonly property string locations:      "pure-source-locations"
         readonly property string maneuvers:      "pure-source-maneuvers"
         readonly property string pois:           "pure-source-pois"
         readonly property string poisBookmarked: "pure-source-pois-bookmarked"
@@ -264,6 +266,7 @@ MapboxMap {
             updateRoute();
             updateManeuvers();
         }
+        onLocationsChanged: updateLocations()
     }
 
     Connections {
@@ -301,6 +304,7 @@ MapboxMap {
         map.updateMargins();
         map.updateRoute();
         map.updateManeuvers();
+        map.updateLocations();
         map.setMode();
     }
 
@@ -398,6 +402,11 @@ MapboxMap {
         map.setLayoutProperty(map.layers.dummies, "icon-padding", 20 / map.pixelRatio);
         map.setLayoutProperty(map.layers.dummies, "icon-rotation-alignment", "map");
         map.setLayoutProperty(map.layers.dummies, "visibility", "visible");
+        // Configure layer for location markers.
+        map.setLayoutProperty(map.layers.locations, "icon-allow-overlap", true);
+        map.setLayoutProperty(map.layers.locations, "icon-anchor", "bottom");
+        map.setLayoutProperty(map.layers.locations, "icon-image", map.images.poiBookmarked);
+        map.setLayoutProperty(map.layers.locations, "icon-size", 1.0 / map.pixelRatio);
     }
 
     function fitViewToPois(pois) {
@@ -444,6 +453,7 @@ MapboxMap {
         // that would otherwise overlap with the above maneuver and node circles.
         map.addImagePath(map.images.pixel, Qt.resolvedUrl("icons/pixel.png"));
         map.addLayer(map.layers.dummies, {"type": "symbol", "source": map.sources.maneuvers});
+        map.addLayer(map.layers.locations, {"type": "symbol", "source": map.sources.locations});
     }
 
     function initProperties() {
@@ -464,6 +474,7 @@ MapboxMap {
         map.addSourcePoints(map.sources.pois, []);
         map.addSourcePoints(map.sources.poisBookmarked, []);
         map.addSourceLine(map.sources.route, []);
+        map.addSourcePoints(map.sources.locations, []);
         map.addSourcePoints(map.sources.maneuvers, []);
     }
 
@@ -576,6 +587,15 @@ MapboxMap {
             map.updateSourcePoints(map.sources.poisSelected, [coordinate]);
             map.fitView([coordinate], true);
         }
+    }
+
+    function updateLocations() {
+        // Update location markers on the map.
+        if (!app.navigator) return;
+        var coords = [];
+        for (var i=0; i < app.navigator.locations.length; i++)
+            coords.push(QtPositioning.coordinate(app.navigator.locations[i].y, app.navigator.locations[i].x));
+        map.updateSourcePoints(map.sources.locations, coords);
     }
 
     function updateManeuvers() {

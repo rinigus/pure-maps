@@ -34,6 +34,7 @@ Item {
     property bool   hasBeenAlongRoute: false
     property bool   hasRoute:  navigatorBase.route.length > 0
     property alias  icon:      navigatorBase.icon
+    property alias  locations: navigatorBase.locations
     property alias  maneuvers: navigatorBase.maneuvers
     property alias  manDist:   navigatorBase.manDist
     property alias  manTime:   navigatorBase.manTime
