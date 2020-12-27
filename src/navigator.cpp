@@ -767,13 +767,14 @@ void Navigator::setRoute(QVariantMap m)
           li.distance_to_route = S1ChordAngle(li.point, coor[ne].ToPoint()).radians();
           m_locations.push_back(li);
 
-//          qDebug() << li.name << ne << S2Earth::RadiansToKm(li.length_on_route) << "km"
-//                   << S2Earth::RadiansToMeters(li.distance_to_route) << "m"
-//                   << m_edges.size();
+//          qDebug() << li.name << "node:" << ne
+//                   << " distance along route:" << S2Earth::RadiansToKm(li.length_on_route) << "km"
+//                   << " distance from route to location:"
+//                   << S2Earth::RadiansToMeters(li.distance_to_route) << "m";
         }
     }
   else
-    qWarning() << "Number of locations and number of their indexes do not match. Number of indexes="
+    qWarning() << "Number of locations and number of their indexes do not match. Number of indexes:"
                << locindexes.length();
 
   // global vars
