@@ -113,10 +113,9 @@ PagePL {
 
         Column {
             id: columnRouter
-            anchors.left: parent.left
-            anchors.right: parent.right
             spacing: styler.themePaddingMedium
             visible: !followMe
+            width: parent.width
 
             property var  settings: null
 
@@ -164,9 +163,8 @@ PagePL {
 
             Column {
                 id: waypointsColumn
-                anchors.left: parent.left
-                anchors.right: parent.right
                 visible: waypointsEnabled
+                width: parent.width
 
                 ListItemLabel {
                     color: styler.themeHighlightColor
@@ -259,24 +257,47 @@ PagePL {
                     visible: waypoints.count > 0
                 }
 
-                Row {
+                Item {
+                    id: bLayout
                     anchors.horizontalCenter: parent.horizontalCenter
-                    height: childrenRect.height
-                    spacing: styler.themePaddingMedium
+                    height: onerow ?
+                                Math.max(wpb1.height, wpb2.height) :
+                                wpb1.height + wpb2.height + styler.themePaddingMedium
+                    width: onerow ?
+                               wpb1.width + wpb2.width + styler.themePaddingMedium :
+                               Math.max(wpb1.width, wpb2.width)
+
+                    property bool onerow: {
+                        var tgt = waypointsColumn.width - 2*styler.themeHorizontalPageMargin -
+                                styler.themePaddingMedium;
+                        if (tgt < wpb1.width + wpb2.width)
+                            return false;
+                        return true;
+                    }
 
                     ButtonPL {
+                        id: wpb1
                         preferredWidth: styler.themeButtonWidthMedium
                         text: app.tr("Add destination")
+                        x: bLayout.onerow ? 0 : bLayout.width/2 - width/2
                         onClicked: waypoints.append({"destination": 1, "set": false,
                                                         "query": "", "text": "", "x": 0.0, "y": 0.0})
                     }
 
                     ButtonPL {
+                        id: wpb2
                         preferredWidth: styler.themeButtonWidthMedium
                         text: app.tr("Add waypoint")
+                        x: bLayout.onerow ? bLayout.width - width : bLayout.width/2 - width/2
+                        y: bLayout.onerow ? 0 : bLayout.height - height
                         onClicked: waypoints.append({"destination": 0, "set": false,
                                                         "query": "", "text": "", "x": 0.0, "y": 0.0})
                     }
+                }
+
+                Spacer {
+                    height: styler.themePaddingMedium
+                    visible: waypoints.count > 0
                 }
             }
 
