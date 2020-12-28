@@ -44,7 +44,7 @@ PagePL {
                 text: (app.mode === modes.navigate || app.mode === modes.navigatePost) ? app.tr("Pause") : app.tr("Navigate")
                 onClicked: {
                     app.hideNavigationPages();
-                    navigator.running = !navigator.running;
+                    app.navigator.running = !app.navigator.running;
                 }
             }
 
@@ -55,7 +55,7 @@ PagePL {
                 icon.iconName: styler.iconRefresh
                 text: app.tr("Reroute")
                 onClicked: {
-                    navigator.reroute();
+                    app.navigator.reroute();
                     app.hideNavigationPages();
                 }
             }
@@ -67,7 +67,7 @@ PagePL {
                 icon.iconName: styler.iconClear
                 text: app.tr("Clear")
                 onClicked: {
-                    navigator.clearRoute();
+                    app.navigator.clearRoute();
                     app.showMap();
                 }
             }
@@ -160,6 +160,55 @@ PagePL {
             visible: app.mode === modes.navigatePost
             verticalAlignment: Text.AlignTop
             wrapMode: Text.WordWrap
+        }
+
+        Spacer {
+            height: styler.themePaddingLarge + styler.themePaddingSmall
+            visible: app.mode !== modes.navigatePost
+        }
+
+        Repeater {
+            id: locRep
+            delegate: ListItemPL {
+                contentHeight: styler.themeItemSizeSmall
+                menu: ContextMenuPL {
+                    enabled: !item.final
+                    ContextMenuItemPL {
+                        iconName: styler.iconDelete
+                        text: app.tr("Remove")
+                        onClicked: if (!item.final) locRep.removeLocationAndReroute(model.index)
+                    }
+                }
+
+                property var item: app.navigator.locations[model.index]
+
+                ListItemLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: styler.themePrimaryColor
+                    text: {
+                        if (item.final)
+                            return app.tr("Final destination: %1", item.text);
+                        return item.destination ?
+                                    app.tr("Destination %1: %2", index+1, item.text) :
+                                    app.tr("Waypoint %1: %2", index+1, item.text);
+                    }
+                }
+            }
+            model: app.navigator.locations.length
+            visible: app.mode !== modes.navigatePost
+
+            function removeLocationAndReroute(index) {
+                // has to be outside the location delegate as it will be destroyed
+                // on removal of location
+                if (!app.navigator.removeLocation(index)) return;
+                app.navigator.reroute();
+                app.hideNavigationPages();
+            }
+        }
+
+        Spacer {
+            height: styler.themePaddingLarge + styler.themePaddingSmall
+            visible: app.mode !== modes.navigatePost
         }
 
         NarrativeItem {

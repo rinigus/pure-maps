@@ -86,6 +86,8 @@ public:
   QVariantList route() const { return m_route; }
   Q_INVOKABLE void setRoute(QVariantMap m);
 
+  Q_INVOKABLE bool removeLocation(int index);
+
   ManeuverModel* maneuvers() { return &m_maneuvers_model; }
 
   bool running () const { return m_running; }
@@ -127,7 +129,7 @@ signals:
   void promptPrepare(QString text, bool preserve);
   void promptPlay(QString text);
   void navigationEnded();
-  void locationArrived(QString name, bool strict);
+  void locationArrived(QString name, bool destination);
 
 protected:
   QString distanceToStr(double meters, bool condence=true) const;
@@ -170,12 +172,14 @@ private:
 
   // Location
   struct LocationInfo {
-    S2Point point;
-    double length_on_route;
+    bool destination{false};
+    bool final{false};
     double distance_to_route;
+    double length_on_route;
     double latitude;
     double longitude;
     QString name;
+    S2Point point;
   };
 
 private:
@@ -186,10 +190,6 @@ private:
   QString m_language{"en"};
   QLocale m_locale;
   QList<LocationInfo> m_locations;
-  // if true, a location are considered passed only if
-  // the trajectory went close to it. if false, just
-  // distance along route determines if the location is passed
-  bool m_locations_strict{false};
   std::vector<Maneuver> m_maneuvers;
   QString m_mode{"car"};
   std::deque<PointInfo> m_points;

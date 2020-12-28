@@ -66,8 +66,8 @@ Item {
 
         onLocationArrived: {
             if (app.mode === modes.navigate) {
-                notification.flash(strict ? app.tr("Destination %1 reached", name) :
-                                            app.tr("Waypoint %1 reached", name),
+                notification.flash(destination ? app.tr("Destination %1 reached", name) :
+                                                 app.tr("Waypoint %1 reached", name),
                                    "navigatorStop");
             }
         }
@@ -175,6 +175,14 @@ Item {
         py.call("poor.storage.read_route", [], function(data) {
             if (data.x && data.x.length > 0) setRoute(data);
         });
+    }
+
+    function removeLocation(index) {
+        if (!navigatorBase.removeLocation(index)) {
+            console.log("Failed to remove location " + index);
+            return false;
+        }
+        return true;
     }
 
     function reroute() {

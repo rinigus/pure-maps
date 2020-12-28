@@ -98,6 +98,8 @@ QVariantList Navigator::locations() const
       loc["text"] = l.name;
       loc["x"] = l.longitude;
       loc["y"] = l.latitude;
+      loc["destination"] = (l.destination ? 1 : 0);
+      loc["final"] = (l.final ? 1 : 0);
       locations.append(loc);
     }
 
@@ -114,6 +116,15 @@ QVariantList Navigator::locations() const
   return locations;
 }
 
+bool Navigator::removeLocation(int index)
+{
+  if (index < 0 || index >= m_locations.length())
+    return false;
+  m_locations.removeAt(index);
+  emit locationsChanged();
+  return true;
+}
+
 void Navigator::resetPrompts()
 {
   m_last_prompt = 0;
@@ -125,6 +136,7 @@ void Navigator::resetPrompts()
   qDebug() << "Prompts reset";
 }
 
+// helper function
 static double angleDiff(double angle1, double angle2)
 {
   double diff = angle1-angle2;
@@ -193,16 +205,16 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
   m_last_accuracy = accuracy_rad;
 
   // handle locations when compared with the position
-  if (m_locations_strict)
-    for (int i=m_locations.length()-1; i>=0; --i)
-      if ( S1ChordAngle(m_locations[i].point, point).radians() <
-             m_locations[i].distance_to_route + 2*accuracy_rad )
-        {
-          qDebug() << "Arrived to location" << i << m_locations[i].name;
-          emit locationArrived(m_locations[i].name, true /*strict*/);
-          m_locations.removeAt(i);
-          emit locationsChanged();
-        }
+  for (int i=m_locations.length()-1; i>=0; --i)
+    if ( m_locations[i].destination &&
+         S1ChordAngle(m_locations[i].point, point).radians() <
+         m_locations[i].distance_to_route + 2*accuracy_rad )
+      {
+        qDebug() << "Arrived to location" << i << m_locations[i].name;
+        emit locationArrived(m_locations[i].name, m_locations[i].destination);
+        m_locations.removeAt(i);
+        emit locationsChanged();
+      }
 
   // find if are on the route
   S2ClosestEdgeQuery::PointTarget target(point);
@@ -319,15 +331,21 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
           m_offroad_count = 0;
 
           // check if we passed some locations using distance along route
-          if (!m_locations_strict)
-            for (int i=m_locations.length()-1; i>=0; --i)
-              if (m_locations[i].length_on_route < best.length_on_route)
-                {
-                  qDebug() << "Arrived to location along route" << i << m_locations[i].name;
-                  emit locationArrived(m_locations[i].name, false /*strict*/);
-                  m_locations.removeAt(i);
-                  emit locationsChanged();
-                }
+          for (int i=m_locations.length()-1; i>=0; --i)
+            if (!m_locations[i].destination &&
+                m_locations[i].length_on_route < best.length_on_route)
+              {
+                // clear waypoint iff the destinations before
+                // it have been cleared already
+                for (int j=0; j < i; ++j)
+                  if (m_locations[j].destination)
+                    continue; // skip removal
+
+                qDebug() << "Arrived to location along route" << i << m_locations[i].name;
+                emit locationArrived(m_locations[i].name, m_locations[i].destination);
+                m_locations.removeAt(i);
+                emit locationsChanged();
+              }
         }
       else
         {
@@ -752,6 +770,8 @@ void Navigator::setRoute(QVariantMap m)
           li.latitude = lm.value("y").toDouble();
           li.longitude = lm.value("x").toDouble();
           li.name = lm.value("text").toString();
+          li.destination = (lm.value("destination").toInt() > 0);
+          li.final = (i == locations.length()-1);
           double dist = 0.0;
           int ne = locindexes[i].toInt();
           if (ne >= orig2new_index.length())
