@@ -189,8 +189,8 @@ PagePL {
                         if (item.final)
                             return app.tr("Final destination: %1", item.text);
                         return item.destination ?
-                                    app.tr("Destination %1: %2", index+1, item.text) :
-                                    app.tr("Waypoint %1: %2", index+1, item.text);
+                                    app.tr("Destination: %1", item.text) :
+                                    app.tr("Waypoint: %1", item.text);
                     }
                 }
             }

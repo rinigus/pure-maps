@@ -206,7 +206,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
 
   // handle locations when compared with the position
   for (int i=m_locations.length()-1; i>=0; --i)
-    if ( m_locations[i].destination &&
+    if ( m_locations[i].destination && !m_locations[i].final &&
          S1ChordAngle(m_locations[i].point, point).radians() <
          m_locations[i].distance_to_route + 2*accuracy_rad )
       {
@@ -332,8 +332,12 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
 
           // check if we passed some locations using distance along route
           for (int i=m_locations.length()-1; i>=0; --i)
-            if (!m_locations[i].destination &&
-                m_locations[i].length_on_route < best.length_on_route)
+            if (!m_locations[i].final &&
+                ( (!m_locations[i].destination &&
+                   m_locations[i].length_on_route < best.length_on_route) ||
+                  (m_locations[i].destination &&
+                   abs(m_locations[i].length_on_route - best.length_on_route) <
+                       m_locations[i].distance_to_route + 2*accuracy_rad) ) )
               {
                 // clear waypoint iff the destinations before
                 // it have been cleared already

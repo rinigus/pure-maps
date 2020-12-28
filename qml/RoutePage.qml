@@ -158,7 +158,7 @@ PagePL {
             TextSwitchPL {
                 id: viaSwitch
                 checked: false
-                text: app.tr("Waypoints")
+                text: app.tr("Destinations and waypoints")
                 visible: page.toNeeded
             }
 
@@ -166,6 +166,18 @@ PagePL {
                 id: waypointsColumn
                 visible: waypointsEnabled
                 width: parent.width
+
+                ListItemLabel {
+                    text: app.tr("Additional destinations and wayponts can be added along the route. " +
+                                 "The both locations are used for calculation of the route, but only " +
+                                 "destinations are tracked for being reached.")
+                    truncMode: truncModes.none
+                    wrapMode: Text.WordWrap
+                }
+
+                Spacer {
+                    height: styler.themePaddingMedium
+                }
 
                 Repeater {
                     model: waypoints
@@ -195,17 +207,25 @@ PagePL {
                                 text: app.tr("Remove")
                                 onClicked: waypoints.remove(model.index)
                             }
+                            ContextMenuItemPL {
+                                iconName: styler.iconEdit
+                                text: model.destination ?
+                                          app.tr("Convert to waypoint") :
+                                          app.tr("Convert to destination")
+                                onClicked: model.destination = (model.destination ? 0 : 1)
+                            }
                         }
 
                         RoutePoint {
                             anchors.verticalCenter: parent.verticalCenter
                             coordinates: model.set ? [model.x, model.y] : null
-                            label: app.tr("Waypoint %1", model.index+1)
+                            label: model.destination ? app.tr("Destination") : app.tr("Waypoint")
                             query: model.query
                             text: model.text
 
                             onUpdated: {
                                 waypoints.set(model.index, {
+                                                  "destination": model.destination,
                                                   "set": true,
                                                   "query": query,
                                                   "text": text,
@@ -217,11 +237,29 @@ PagePL {
                     }
                 }
 
-                ButtonPL {
+                Spacer {
+                    height: styler.themePaddingMedium
+                    visible: waypoints.count > 0
+                }
+
+                Row {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    preferredWidth: styler.themeButtonWidthLarge
-                    text: app.tr("Add")
-                    onClicked: waypoints.append({"set": false, "query": "", "text": "", "x": 0.0, "y": 0.0})
+                    height: childrenRect.height
+                    spacing: styler.themePaddingMedium
+
+                    ButtonPL {
+                        preferredWidth: styler.themeButtonWidthMedium
+                        text: app.tr("Add destination")
+                        onClicked: waypoints.append({"destination": 1, "set": false,
+                                                        "query": "", "text": "", "x": 0.0, "y": 0.0})
+                    }
+
+                    ButtonPL {
+                        preferredWidth: styler.themeButtonWidthMedium
+                        text: app.tr("Add waypoint")
+                        onClicked: waypoints.append({"destination": 0, "set": false,
+                                                        "query": "", "text": "", "x": 0.0, "y": 0.0})
+                    }
                 }
             }
 
@@ -291,7 +329,7 @@ PagePL {
                         anchors.verticalCenter: parent.verticalCenter
                         color: styler.themePrimaryColor
                         text: model.waypoints ?
-                                  app.tr("%1 ‒ %2 (%3 waypoints)", model.fromText, model.toText, model.waypoints) :
+                                  app.tr("%1 ‒ %2 (%3 destinations and waypoints)", model.fromText, model.toText, model.waypoints) :
                                   "%1 ‒ %2".arg(model.fromText).arg(model.toText)
                     }
 
@@ -310,7 +348,8 @@ PagePL {
                             var r = JSON.parse(model.full);
                             page.waypoints.clear();
                             for (var i=1; i < r.length-1; i++)
-                                page.waypoints.append({"set": true, "query": "", "text": r[i].text, "x": r[i].x, "y": r[i].y})
+                                page.waypoints.append({"destination": r[i].destination, "set": true, "query": "",
+                                                          "text": r[i].text, "x": r[i].x, "y": r[i].y})
                             page.waypointsEnabled = true;
                         } else {
                             page.waypointsEnabled = false;
@@ -543,7 +582,8 @@ PagePL {
         if (waypointsEnabled)
             for (var i=0; i < waypoints.count; ++i)
                 if (waypoints.get(i).set)
-                    routePoints.push({ "x": waypoints.get(i).x, "y": waypoints.get(i).y,
+                    routePoints.push({ "destination": waypoints.get(i).destination,
+                                         "x": waypoints.get(i).x, "y": waypoints.get(i).y,
                                          "text": waypoints.get(i).text });
         if (to && toText)
             routePoints.push({ "x": to[0], "y": to[1], "text": toText });
