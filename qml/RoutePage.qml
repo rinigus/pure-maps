@@ -258,7 +258,7 @@ PagePL {
                 }
 
                 Spacer {
-                    height: styler.themePaddingMedium
+                    height: styler.themePaddingLarge
                     visible: waypoints.count > 0
                 }
 
@@ -267,9 +267,9 @@ PagePL {
                     anchors.horizontalCenter: parent.horizontalCenter
                     height: onerow ?
                                 Math.max(wpb1.height, wpb2.height) :
-                                wpb1.height + wpb2.height + styler.themePaddingMedium
+                                wpb1.height + wpb2.height + styler.themePaddingLarge
                     width: onerow ?
-                               wpb1.width + wpb2.width + styler.themePaddingMedium :
+                               wpb1.width + wpb2.width + styler.themePaddingLarge :
                                Math.max(wpb1.width, wpb2.width)
 
                     property bool onerow: {
@@ -279,6 +279,7 @@ PagePL {
                             return false;
                         return true;
                     }
+                    property int spacing: styler.themePaddingLarge
 
                     ButtonPL {
                         id: wpb1
@@ -301,7 +302,7 @@ PagePL {
                 }
 
                 Spacer {
-                    height: styler.themePaddingMedium
+                    height: styler.themePaddingLarge
                     visible: waypoints.count > 0
                 }
             }
