@@ -249,6 +249,11 @@ PagePL {
                         }
 
                         onClicked: rpointWaypoints.activate()
+
+                        Component.onCompleted: {
+                            if (model.index == waypoints.count-1)
+                                rpointWaypoints.activate();
+                        }
                     }
                 }
 
