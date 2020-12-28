@@ -28,7 +28,9 @@ Item {
     property alias accurate: gps.accurate
     property alias active: gps.active
     property real  direction: gps.directionValid ? gps.direction : gps.directionCalculated
-    property bool  directionValid: gps.directionValid || gps.directionCalculated
+    property real  directionDevice: gps.directionCalculated
+    property bool  directionValid: gps.directionValid || gps.directionCalculatedValid
+    property bool  directionDeviceValid: gps.directionCalculatedValid
     property alias position: gps.position
     property alias ready: gps.ready
     property alias streetName: gps.streetName
