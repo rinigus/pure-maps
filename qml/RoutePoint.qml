@@ -45,7 +45,9 @@ ValueButtonPL {
         z: parent.z + 1
     }
 
-    onClicked: {
+    onClicked: activate()
+
+    function activate() {
         var dialog = app.push(Qt.resolvedUrl("RoutePointPage.qml"), {
                                   "comment": comment,
                                   "currentSelection": text,

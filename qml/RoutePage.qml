@@ -164,10 +164,12 @@ PagePL {
 
             Column {
                 id: waypointsColumn
+                anchors.left: parent.left
+                anchors.right: parent.right
                 visible: waypointsEnabled
-                width: parent.width
 
                 ListItemLabel {
+                    color: styler.themeHighlightColor
                     text: app.tr("Additional destinations and wayponts can be added along the route. " +
                                  "The both locations are used for calculation of the route, but only " +
                                  "destinations are tracked for being reached.")
@@ -182,6 +184,7 @@ PagePL {
                 Repeater {
                     model: waypoints
                     delegate: ListItemPL {
+                        id: waypointsItem
                         contentHeight: styler.themeItemSizeSmall
                         menu: ContextMenuPL {
                             ContextMenuItemPL {
@@ -216,12 +219,24 @@ PagePL {
                             }
                         }
 
+                        ListItemLabel {
+                            anchors.verticalCenter: parent.verticalCenter
+                            color: waypointsItem.highlighted ?
+                                       styler.themeHighlightColor :
+                                       styler.themePrimaryColor
+                            text: model.destination ?
+                                      app.tr("Destination: %1", model.text) :
+                                      app.tr("Waypoint: %1", model.text)
+                        }
+
                         RoutePoint {
+                            // this is invisible as it prevents using
+                            // listitem context menu in SFOS
+                            id: rpointWaypoints
                             anchors.verticalCenter: parent.verticalCenter
                             coordinates: model.set ? [model.x, model.y] : null
-                            label: model.destination ? app.tr("Destination") : app.tr("Waypoint")
                             query: model.query
-                            text: model.text
+                            visible: false
 
                             onUpdated: {
                                 waypoints.set(model.index, {
@@ -234,6 +249,8 @@ PagePL {
                                               });
                             }
                         }
+
+                        onClicked: rpointWaypoints.activate()
                     }
                 }
 
