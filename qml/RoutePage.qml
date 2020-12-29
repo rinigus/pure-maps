@@ -184,6 +184,13 @@ PagePL {
                 }
             }
 
+            TextSwitchPL {
+                id: optimizeSwitch
+                checked: false
+                text: app.tr("Optimize order")
+                visible: page.toNeeded && waypoints.count > 1
+            }
+
             Column {
                 id: waypointsColumn
                 visible: waypointsEnabled
