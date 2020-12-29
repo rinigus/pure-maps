@@ -47,6 +47,7 @@ DEFAULTS = {
     "devel_coordinate_center": False,
     "devel_show_z": False,
     "follow_me_transport_mode": "foot",
+    "route_page_show_destinations_help": True,
     # "always", "navigating" or "never".
     "keep_alive": "navigating",
     "keep_alive_background": "never",

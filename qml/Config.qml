@@ -17,7 +17,6 @@
  */
 
 import QtQuick 2.0
-import Qt.labs.settings 1.0
 
 Item {
     id: conf
@@ -35,7 +34,6 @@ Item {
     property bool   developmentCoordinateCenter: false
     property bool   developmentShowZ: false
     property string followMeTransportMode
-    property bool   guiRoutePageShowDestinationsHelp: true
     property string keepAlive
     property string keepAliveBackground
     property string mapMatchingWhenIdle: "none"
@@ -57,6 +55,8 @@ Item {
     property real   mapZoomAutoZeroSpeedZ
     property string profile
     property bool   reroute
+    property bool   routePageShowDestinationsHelp: true
+    property bool   routePageShowDestinationsHelpShown: false // not persistent, only this session
     property bool   showNarrative: false
     property bool   showNavigationSign: false
     property string showSpeedLimit
@@ -102,6 +102,7 @@ Item {
         "mapZoomAutoWhenNavigating": "map_zoom_auto_when_navigating",
         "mapZoomAutoZeroSpeedZ": "map_zoom_auto_zero_speed_z",
         "reroute": "reroute",
+        "routePageShowDestinationsHelp": "route_page_show_destinations_help",
         "profile": "profile",
         "showNarrative": "show_narrative",
         "showNavigationSign": "show_navigation_sign",
@@ -115,15 +116,13 @@ Item {
 
     Component.onCompleted: _update()
 
+    onRoutePageShowDestinationsHelpChanged: set(_mapQml2Py["routePageShowDestinationsHelp"],
+                                                routePageShowDestinationsHelp)
+
     Connections {
         target: py
         onConfigurationChanged: conf._update()
         onReadyChanged: conf._update()
-    }
-
-    Settings {
-        category: "Main"
-        property alias guiRoutePageShowDestinationsHelp: conf.guiRoutePageShowDestinationsHelp
     }
 
     function add(option, item) {

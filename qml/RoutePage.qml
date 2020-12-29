@@ -160,10 +160,8 @@ PagePL {
                 text: app.tr("Destinations and waypoints")
                 visible: page.toNeeded
 
-                property bool helpShown: false
-
                 onCheckedChanged: {
-                    if (checked && !helpShown && app.conf.guiRoutePageShowDestinationsHelp) {
+                    if (checked && !app.conf.routePageShowDestinationsHelpShown && app.conf.routePageShowDestinationsHelp) {
                         var d = app.push(Qt.resolvedUrl("MessagePage.qml"), {
                                              "acceptText": app.tr("Dismiss"),
                                              "title": app.tr("Destinations and waypoints"),
@@ -178,9 +176,9 @@ PagePL {
                                                                "waypoints just to shape the route according to your preferences.\n\n" +
                                                                "Dismiss this dialog to stop showing this message.")
                                          });
-                        helpShown = true;
+                        app.conf.routePageShowDestinationsHelpShown = true;
                         d.accepted.connect(function () {
-                            app.conf.guiRoutePageShowDestinationsHelp = false;
+                            app.conf.routePageShowDestinationsHelp = false;
                         });
                     }
                 }
