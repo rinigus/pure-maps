@@ -180,7 +180,7 @@ Item {
 
                     ListItemLabel {
                         //anchors.leftMargin: searchField.textLeftMargin
-                        color: styler.themeSecondaryColor
+                        color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
                         font.pixelSize: styler.themeFontSizeExtraSmall
                         height: visible ? implicitHeight : 0
                         text: {

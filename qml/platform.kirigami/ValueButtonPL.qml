@@ -54,6 +54,7 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: inForm ? 0 : styler.themeHorizontalPageMargin
             anchors.verticalCenter: val.verticalCenter
+            color: val.pressed ? styler.themeHighlightColor : styler.themePrimaryColor
             height: inForm ? 0 : implicitHeight
             width: inForm ? 0 : implicitWidth
             text: !inForm ? label : ""
@@ -69,6 +70,7 @@ Item {
         anchors.topMargin: text ? styler.themePaddingSmall : 0
         anchors.right: parent.right
         anchors.rightMargin: styler.themeHorizontalPageMargin
+        color: styler.themeHighlightColor
         font.pixelSize: styler.themeFontSizeSmall
         height: text ? implicitHeight : 0
         visible: text

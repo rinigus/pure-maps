@@ -83,7 +83,7 @@ Panel {
             anchors.right: menuButton.left
             anchors.rightMargin: styler.themePaddingLarge
             anchors.verticalCenter: infoBg.verticalCenter
-            color: styler.themePrimaryColor
+            color: infoBgMouse.pressed ? styler.themeHighlightColor : styler.themePrimaryColor
             font.pixelSize: styler.themeFontSizeLarge
             height: text ? implicitHeight: 0
             truncMode: truncModes.fade

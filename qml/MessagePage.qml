@@ -27,7 +27,8 @@ DialogPL {
 
     ListItemLabel {
         id: text
-        font.pixelSize: styler.themeFontSizeMedium
+        color: styler.themeHighlightColor
+        font.pixelSize: styler.themeFontSizeMedium        
         height: implicitHeight
         wrapMode: Text.WordWrap
     }

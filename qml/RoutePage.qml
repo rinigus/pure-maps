@@ -361,6 +361,7 @@ PagePL {
                 id: routes
 
                 delegate: ListItemPL {
+                    id: routesListItem
                     contentHeight: styler.themeItemSizeSmall
                     menu: ContextMenuPL {
                         ContextMenuItemPL {
@@ -375,7 +376,7 @@ PagePL {
 
                     ListItemLabel {
                         anchors.verticalCenter: parent.verticalCenter
-                        color: styler.themePrimaryColor
+                        color: routesListItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
                         text: model.waypoints ?
                                   app.tr("%1 ‒ %2 (%3 destinations and waypoints)", model.fromText, model.toText, model.waypoints) :
                                   "%1 ‒ %2".arg(model.fromText).arg(model.toText)
@@ -452,6 +453,7 @@ PagePL {
                 id: destinations
 
                 delegate: ListItemPL {
+                    id: destListItem
                     contentHeight: model.visible ? styler.themeItemSizeSmall : 0
                     menu: ContextMenuPL {
                         enabled: model.type === "recent destination"
@@ -470,7 +472,7 @@ PagePL {
 
                     ListItemLabel {
                         anchors.verticalCenter: parent.verticalCenter
-                        color: styler.themePrimaryColor
+                        color: destListItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
                         text: model.text
                     }
 

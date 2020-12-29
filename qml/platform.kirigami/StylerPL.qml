@@ -40,9 +40,9 @@ QtObject {
     // descriptive items
     property color themeHighlightColor: Kirigami.Theme.textColor
     // navigation items, primary
-    property color themePrimaryColor: Kirigami.Theme.textColor
+    property color themePrimaryColor: Kirigami.Theme.linkColor
     // navigation items, secondary
-    property color themeSecondaryColor: Kirigami.Theme.textColor
+    property color themeSecondaryColor: Kirigami.Theme.visitedLinkColor
     // descriptive items, secondary
     property color themeSecondaryHighlightColor: Kirigami.Theme.disabledTextColor
 

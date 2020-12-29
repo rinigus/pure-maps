@@ -202,6 +202,7 @@ PagePL {
                     width: sectionDevice.width
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("You can control if and when " +
                                      "Pure Maps keeps display active and works in the background. " +
                                      "It is recommended to allow Pure Maps to prevent screensaver " +
@@ -263,6 +264,7 @@ PagePL {
                     width: sectionControls.width
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("Clear all history, including search, routes, and destinations. " +
                                      "Please note that the bookmarks will be kept.")
                         truncMode: truncModes.none
@@ -271,6 +273,7 @@ PagePL {
 
                     ListItemLabel {
                         id: historyClearedNote
+                        color: styler.themeHighlightColor
                         text: app.tr("History cleared")
                         truncMode: truncModes.none
                         visible: false
@@ -318,6 +321,7 @@ PagePL {
                     width: sectionKeys.width
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("You can specify personal keys for online services " +
                                      "in these settings. Please check the conditions for each of the " +
                                      "services that you want to use to ensure that you comply with them.")
@@ -326,6 +330,7 @@ PagePL {
                     }
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("Please restart application after changing API keys.")
                         truncMode: truncModes.none
                         wrapMode: Text.WordWrap
@@ -543,6 +548,7 @@ PagePL {
                     width: sectionCompass.width
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("Compass can be used to determine orientation of your device " +
                                      "and align the map accordingly. Note that the compass is enabled only " +
                                      "when your position is determined, your speed is low, and, " +
@@ -572,6 +578,7 @@ PagePL {
                     width: sectionControls.width
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("Map view can be shown with either all applicable controls in full view mode " +
                                      "or with a smaller selected set of controls in minimal view mode. To switch between " +
                                      "the modes, click on a map.")
@@ -612,6 +619,7 @@ PagePL {
                     }
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("Always show the selected controls regardless of whether " +
                                      "map view is in the minimal or in the full mode.")
                         truncMode: truncModes.none
@@ -722,6 +730,7 @@ PagePL {
                     width: sectionGeneral.width
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("Map zoom level can be adjusted automatically according to your speed. " +
                                      "Here, you can adjust settings related to this adjustment.")
                         truncMode: truncModes.none
@@ -776,6 +785,7 @@ PagePL {
                     property string message
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("Testing of Text-to-Speech (TTS) engine. " +
                                      "Select the same language as used for navigation, preferred gender, and press " +
                                      "the button below for testing.")
@@ -845,6 +855,7 @@ PagePL {
 
                     ListItemLabel {
                         id: description
+                        color: styler.themeHighlightColor
                         text: voice.currentEngine ? app.tr("Selected voice engine: %1",
                                                            voice.currentEngine) :
                                                     app.tr("No engine available for selected language.\n\n" +
@@ -887,6 +898,7 @@ PagePL {
                     width: sectionDevelop.width
 
                     ListItemLabel {
+                        color: styler.themeHighlightColor
                         text: app.tr("The following options are for development only. Please don't change them unless you know what you are doing.")
                         truncMode: truncModes.none
                         wrapMode: Text.WordWrap

@@ -170,6 +170,7 @@ PagePL {
         Repeater {
             id: locRep
             delegate: ListItemPL {
+                id: locRepItem
                 contentHeight: styler.themeItemSizeSmall
                 menu: ContextMenuPL {
                     enabled: !item.final
@@ -184,7 +185,7 @@ PagePL {
 
                 ListItemLabel {
                     anchors.verticalCenter: parent.verticalCenter
-                    color: styler.themePrimaryColor
+                    color: locRepItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
                     text: {
                         if (item.final)
                             return app.tr("Final destination: %1", item.text);

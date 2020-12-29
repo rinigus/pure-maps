@@ -213,7 +213,7 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: styler.themeHorizontalPageMargin
         anchors.baseline: manLabel.baseline
-        color: styler.themeSecondaryColor
+        color: _pressed ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
         font.pixelSize: styler.themeFontSizeSmall
         text: app.tr("To route")
         visible: !block.notify
@@ -231,7 +231,7 @@ Item {
             return styler.themePaddingLarge;
         }
         anchors.top: parent.top
-        color: block.notify ? styler.themeHighlightColor : styler.themePrimaryColor
+        color: block.notify || _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
         font.family: block.notify ? styler.themeFontFamilyHeading : styler.themeFontFamily
         font.pixelSize: block.notify ? styler.themeFontSizeHuge : styler.themeFontSizeLarge
         height: text ? implicitHeight + styler.themePaddingMedium : 0
@@ -265,7 +265,7 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: app.portrait ? styler.themeHorizontalPageMargin : styler.themePaddingLarge
         anchors.top: manLabel.bottom
-        color: styler.themePrimaryColor
+        color: _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
         font.pixelSize: styler.themeFontSizeExtraLarge
         height: text ? implicitHeight + styler.themePaddingMedium : 0
         maximumLineCount: 1
@@ -300,7 +300,7 @@ Item {
         anchors.rightMargin: app.portrait ? styler.themeHorizontalPageMargin : styler.themePaddingLarge
         anchors.top: manLabel.bottom
         anchors.topMargin: styler.themePaddingSmall
-        color: styler.themePrimaryColor
+        color: _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
         font.pixelSize: styler.themeFontSizeMedium
         height: text ? implicitHeight + styler.themePaddingMedium : 0
         states: [
@@ -326,7 +326,7 @@ Item {
         anchors.right: speedUnit.left
         anchors.rightMargin: styler.themePaddingSmall
         anchors.top: parent.top
-        color: styler.themePrimaryColor
+        color: _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
         font.pixelSize: styler.themeFontSizeHuge
         height: implicitHeight + styler.themePaddingMedium
         verticalAlignment: Text.AlignBottom
@@ -354,7 +354,7 @@ Item {
         anchors.baseline: speed.baseline
         anchors.right: parent.right
         anchors.rightMargin: styler.themeHorizontalPageMargin
-        color: styler.themeSecondaryColor
+        color: _pressed ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
         font.pixelSize: styler.themeFontSizeMedium
         visible: speed.text ? true : false
 
@@ -391,7 +391,7 @@ Item {
         id: nextManDistLabel
         anchors.horizontalCenter: iconNextImage.horizontalCenter
         anchors.top: iconNextImage.bottom
-        color: block.notify ? styler.themeHighlightColor : styler.themePrimaryColor
+        color: block.notify || _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
         font.family: block.notify ? styler.themeFontFamilyHeading : styler.themeFontFamily
         font.pixelSize: styler.themeFontSizeLarge
         height: text ? implicitHeight + styler.themePaddingMedium : 0

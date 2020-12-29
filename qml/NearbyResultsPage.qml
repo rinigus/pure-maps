@@ -47,7 +47,7 @@ PageListPL {
             id: descriptionLabel
             anchors.top: titleLabel.bottom
             anchors.topMargin: styler.themePaddingSmall
-            color: styler.themeSecondaryColor
+            color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
             font.pixelSize: styler.themeFontSizeExtraSmall
             height: implicitHeight + app.listItemVerticalMargin
             lineHeight: 1.15

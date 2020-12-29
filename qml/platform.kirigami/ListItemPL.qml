@@ -37,7 +37,7 @@ Item {
 
     default property alias content: itemData.data
     property real  contentHeight
-    property alias highlighted: item.highlighted
+    property alias highlighted: item.pressed
     property var   menu
 
     signal clicked

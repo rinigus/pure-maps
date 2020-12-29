@@ -156,7 +156,7 @@ Item {
         anchors.topMargin: styler.themePaddingMedium
         anchors.right: button.left
         anchors.rightMargin: styler.themePaddingMedium
-        activeColors: true
+        activeColors: _pressed ? false : true
         visible: mode === blockModes.full
     }
 
@@ -208,7 +208,7 @@ Item {
 
         LabelPL {
             id: distLabel
-            color: styler.themePrimaryColor
+            color: _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
             font.pixelSize: styler.themeFontSizeMedium
             text: block.destDist
         }
@@ -219,7 +219,7 @@ Item {
 
         LabelPL {
             anchors.baseline: distLabel.baseline
-            color: styler.themePrimaryColor
+            color: _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
             font.pixelSize: styler.themeFontSizeMedium
             text: block.destTime
         }
@@ -243,7 +243,7 @@ Item {
         }
         anchors.right: compactRight.left
         anchors.rightMargin: styler.themePaddingLarge
-        color: styler.themePrimaryColor
+        color: _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
         font.pixelSize: styler.themeFontSizeMedium
         text: block.streetName
         truncMode: truncModes.fade
@@ -283,7 +283,7 @@ Item {
             // Estimated time of arrival: ETA label
             id: destEta
             anchors.baseline: destLabel.baseline
-            color: styler.themeSecondaryColor
+            color: _pressed ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
             font.pixelSize: styler.themeFontSizeSmall
             text: app.tr("ETA")
         }
@@ -295,7 +295,7 @@ Item {
         LabelPL {
             // Estimated time of arrival: shown during navigation and exploreRoute
             id: destLabel
-            color: styler.themePrimaryColor
+            color: _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
             font.pixelSize: styler.themeFontSizeMedium
             height: text ? implicitHeight : 0
             text: block.destEta

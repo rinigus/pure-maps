@@ -53,7 +53,7 @@ DialogListPL {
             id: descriptionLabel
             anchors.top: nameLabel.bottom
             anchors.topMargin: height > 0 ? styler.themePaddingSmall : 0
-            color: styler.themeSecondaryColor
+            color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
             font.pixelSize: styler.themeFontSizeExtraSmall
             height: text && visible ? implicitHeight + app.listItemVerticalMargin : 0
             lineHeight: 1.15

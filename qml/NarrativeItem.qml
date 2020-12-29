@@ -78,7 +78,7 @@ Column {
                 anchors.right: parent.right
                 anchors.rightMargin: styler.themeHorizontalPageMargin
                 anchors.top: narrativeLabel.bottom
-                color: styler.themeSecondaryColor
+                color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
                 font.pixelSize: styler.themeFontSizeSmall
                 height: text ? implicitHeight + styler.themePaddingSmall : 0
                 text: model.depart ? model.depart : ""
@@ -93,7 +93,7 @@ Column {
                 anchors.right: parent.right
                 anchors.rightMargin: styler.themeHorizontalPageMargin
                 anchors.top: departLabel.bottom
-                color: styler.themeSecondaryColor
+                color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
                 font.pixelSize: styler.themeFontSizeSmall
                 height: text ? implicitHeight + styler.themePaddingSmall : 0
                 text: model.arrive ? model.arrive : ""
@@ -109,7 +109,7 @@ Column {
                 anchors.rightMargin: styler.themeHorizontalPageMargin
                 anchors.top: arriveLabel.bottom
                 anchors.topMargin: styler.themePaddingSmall
-                color: styler.themeSecondaryColor
+                color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
                 font.pixelSize: styler.themeFontSizeSmall
                 height: implicitHeight + styler.themePaddingSmall
                 lineHeight: 1.15

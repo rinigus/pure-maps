@@ -51,7 +51,7 @@ Item {
             anchors.rightMargin: styler.themePaddingLarge
             anchors.top: image.bottom
             anchors.topMargin: styler.themePaddingMedium
-            color: item.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
+            color: item.pressed ? styler.themeHighlightColor : styler.themePrimaryColor
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
         }
