@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-26 20:09+0200\n"
+"POT-Creation-Date: 2020-12-29 22:10+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2020\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -39,16 +39,16 @@ msgid "Point from Plus code"
 msgstr "Punkt från Plus-kod"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:134
+#: poor/router.py:135
 msgid "Connection timed out"
 msgstr "Tidsgränsen för anslutning överskreds"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137
-#: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:31
-#: qml/RoutePage.qml:220 qml/RoutePage.qml:225 qml/RoutePage.qml:428
-#: qml/RoutePage.qml:443 qml/RoutePage.qml:445 qml/RoutePoint.qml:42
-#: qml/RoutePoint.qml:58
+#: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:32
+#: qml/RoutePage.qml:36 qml/RoutePage.qml:401 qml/RoutePage.qml:406
+#: qml/RoutePage.qml:620 qml/RoutePage.qml:658 qml/RoutePoint.qml:44
+#: qml/RoutePoint.qml:62
 msgid "Current position"
 msgstr "Aktuell position"
 
@@ -132,71 +132,49 @@ msgstr "HERE app-ID"
 msgid "HERE App Code"
 msgstr "HERE app-kod"
 
-#: poor/narrative.py:139
-#, python-brace-format
-msgid "In {distance}, {direction}"
-msgstr "{distance}, {direction}"
-
-#: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
-#: poor/router.py:105
+#: poor/router.py:103 poor/router.py:105
 msgid "Exit: "
 msgstr "Avfart: "
 
-#: poor/narrative.py:629 qml/Navigator.qml:176 src/navigator.cpp:766
-msgid "New route found"
-msgstr "Ny rutt hittad"
-
-#: poor/narrative.py:630 qml/Navigator.qml:160 src/navigator.cpp:767
-msgid "Rerouting"
-msgstr "Beräknar om"
-
-#: poor/narrative.py:631 qml/Navigator.qml:181 src/navigator.cpp:768
-msgid "Rerouting failed"
-msgstr "Omberäkning misslyckades"
-
-#: poor/narrative.py:632 src/navigator.cpp:765
-msgid "Starting navigation"
-msgstr "Startar navigering"
-
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:673
-#: src/navigator.cpp:685
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:881
+#: src/navigator.cpp:893
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:673
-#: src/navigator.cpp:685
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:881
+#: src/navigator.cpp:893
 msgid "miles"
 msgstr "miles"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:676
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:884
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231 src/navigator.cpp:676
+#: poor/util.py:231 src/navigator.cpp:884
 msgid "feet"
 msgstr "feet"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:688
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:896
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242 src/navigator.cpp:688
+#: poor/util.py:242 src/navigator.cpp:896
 msgid "yards"
 msgstr "yards"
 
-#: poor/util.py:249 src/navigator.cpp:697
+#: poor/util.py:249 src/navigator.cpp:905
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249 src/navigator.cpp:697
+#: poor/util.py:249 src/navigator.cpp:905
 msgid "kilometers"
 msgstr "kilometer"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:700
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:908
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253 src/navigator.cpp:700
+#: poor/util.py:253 src/navigator.cpp:908
 msgid "meters"
 msgstr "meter"
 
@@ -252,94 +230,6 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} t {:d} min"
 
-#: routers/digitransit.py:58
-msgid "airplane"
-msgstr "flygplan"
-
-#: routers/digitransit.py:59 standard input:11 standard input:13 standard
-#: input:15 standard input:17 standard input:21
-msgid "bicycle"
-msgstr "cykel"
-
-#: routers/digitransit.py:60
-msgid "bus"
-msgstr "buss"
-
-#: routers/digitransit.py:61
-msgid "ferry"
-msgstr "färja"
-
-#: routers/digitransit.py:62
-msgid "train"
-msgstr "tåg"
-
-#: routers/digitransit.py:63
-msgid "metro"
-msgstr "tunnelbana"
-
-#: routers/digitransit.py:64
-msgid "tram"
-msgstr "spårvagn"
-
-#: routers/digitransit.py:65
-msgid "walk"
-msgstr "gång"
-
-#: routers/digitransit.py:69
-#, python-brace-format
-msgid "Walk towards {arr_name}."
-msgstr "Gå till {arr_name}."
-
-#: routers/digitransit.py:70
-#, python-brace-format
-msgid "Get a city bike at {dep_name}."
-msgstr "Hämta en stadscykel vid {dep_name}."
-
-#: routers/digitransit.py:71 routers/digitransit.py:74
-#, python-brace-format
-msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "Ta {mode_name} {line_desc} vid {dep_name} kl.{dep_time}."
-
-#: routers/digitransit.py:72
-msgid "Walk towards your destination."
-msgstr "Gå mot din destination."
-
-#: routers/digitransit.py:73
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "Lämna stadscykeln vid {dep_name} och gå mot {arr_name}."
-
-#: routers/digitransit.py:75
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr "Lämna stadscykeln vid {dep_name} och gå mot din destination."
-
-#: routers/digitransit.py:76
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Gå av vid {dep_name} och gå till {arr_name}."
-
-#: routers/digitransit.py:77
-#, python-brace-format
-msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Gå av vid {dep_name} och cykla mot {arr_name}."
-
-#: routers/digitransit.py:78
-#, python-brace-format
-msgid ""
-"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
-msgstr ""
-"Gå av vid {dep_name} och byt till {mode_name} {line_desc} kl.{dep_time}."
-
-#: routers/digitransit.py:79
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Gå av vid {dep_name} och gå till destinationen."
-
-#: routers/digitransit.py:204
-msgid "Arrive at your destination."
-msgstr "Anländer till din destination."
-
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:114
 #: routers/ValhallaSettings.qml:150 routers/ValhallaSettings.qml:203
 #: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:238
@@ -361,15 +251,15 @@ msgid "Venue name"
 msgstr "Platsens namn"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
-#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:203
-#: qml/RoutePage.qml:281
+#: qml/NavigationPage.qml:179 qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
+#: qml/RoutePage.qml:222 qml/RoutePage.qml:383 qml/RoutePage.qml:477
 msgid "Remove"
 msgstr "Ta bort"
 
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
 #: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
-#: qml/PreferencesPage.qml:677
+#: qml/PreferencesPage.qml:685
 msgid "Search"
 msgstr "Sök"
 
@@ -480,7 +370,7 @@ msgstr "Kartor"
 msgid "Venues"
 msgstr "Platser"
 
-#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/PreferencesPage.qml:399
+#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/PreferencesPage.qml:404
 #: qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Navigation"
@@ -491,8 +381,7 @@ msgstr "Navigation"
 msgid "Type"
 msgstr "Typ"
 
-#: qml/BasemapButton.qml:221 routers/digitransit_settings.qml:146
-#: qml/js/util.js:236
+#: qml/BasemapButton.qml:221 qml/js/util.js:236
 msgid "Default"
 msgstr "Standard"
 
@@ -536,13 +425,13 @@ msgstr "Natt"
 msgid "Transport"
 msgstr "Transport"
 
-#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
+#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Bicycle"
 msgstr "Cykel"
 
-#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
+#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Car"
@@ -568,11 +457,11 @@ msgstr "Kartskala under navigering"
 msgid "Map: %1"
 msgstr "Karta: %1"
 
-#: qml/CenterButton.qml:110 qml/MapGestureArea.qml:43
+#: qml/CenterButton.qml:110 qml/MapGestureArea.qml:46
 msgid "Auto-center off"
 msgstr "Autocentrering av"
 
-#: qml/CenterButton.qml:118 qml/MapGestureArea.qml:42
+#: qml/CenterButton.qml:118 qml/MapGestureArea.qml:45
 msgid "Auto-center on"
 msgstr "Autocentrering på"
 
@@ -597,14 +486,13 @@ msgid "Searching ..."
 msgstr "Söker ..."
 
 #: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:143
-#: routers/default_results.qml:90 routers/default_results.qml:93
-#: routers/digitransit_results.qml:271 routers/digitransit_results.qml:273
-#: routers/gpx_osmscout_results.qml:90 routers/gpx_osmscout_results.qml:93
-#: routers/gpx_results.qml:90 routers/gpx_results.qml:93
-#: routers/mapquest_open_results.qml:90 routers/mapquest_open_results.qml:93
-#: routers/osmscout_results.qml:90 routers/osmscout_results.qml:93
-#: routers/osrm_results.qml:90 routers/osrm_results.qml:93
-#: routers/stadiamaps_results.qml:90 routers/stadiamaps_results.qml:93
+#: routers/default_results.qml:69 routers/default_results.qml:72
+#: routers/gpx_osmscout_results.qml:69 routers/gpx_osmscout_results.qml:72
+#: routers/gpx_results.qml:69 routers/gpx_results.qml:72
+#: routers/mapquest_open_results.qml:69 routers/mapquest_open_results.qml:72
+#: routers/osmscout_results.qml:69 routers/osmscout_results.qml:72
+#: routers/osrm_results.qml:69 routers/osrm_results.qml:72
+#: routers/stadiamaps_results.qml:69 routers/stadiamaps_results.qml:72
 msgid "No results"
 msgstr "Inga resultat"
 
@@ -617,8 +505,8 @@ msgid "Points of Interest (%1)"
 msgstr "Platser av intresse (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePage.qml:320 qml/RoutePage.qml:322
-#: qml/RoutePoint.qml:62
+#: qml/PoiPage.qml:47 qml/RoutePage.qml:515 qml/RoutePage.qml:517
+#: qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Namnlös punkt"
 
@@ -626,7 +514,7 @@ msgstr "Namnlös punkt"
 msgid "Recent searches (%1)"
 msgstr "Tidigare sökningar (%1)"
 
-#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
+#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:44
 msgid "Change provider (%1)"
 msgstr "Byt leverantör (%1)"
 
@@ -650,7 +538,7 @@ msgstr "Sökmotor"
 msgid "Initializing"
 msgstr "Startar"
 
-#: qml/InitPage.qml:46
+#: qml/InitPage.qml:46 qml/RoutePage.qml:166
 msgid "Dismiss"
 msgstr "Avfärda"
 
@@ -688,16 +576,10 @@ msgstr ""
 msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
-"application stores (OpenRepos for Sailfish OS, OpenStore for UBPorts), "
+"application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
-"Du använder en offline-profil. Tillse att du har OSM Scout Server "
-"installerad och startad. Beroende på ditt system, finns den tillgänglig "
-"antingen i programförråden (OpenRepos för Sailfish OS, OpenStore för "
-"UBPorts), Flathub, eller din i distribution. Se <a "
-"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
-"manual</a> för detaljerad info."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -727,7 +609,7 @@ msgstr "Offline"
 msgid "Mixed"
 msgstr "Blandat"
 
-#: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
+#: qml/MapGestureArea.qml:63 qml/MapGestureArea.qml:81
 msgid "Stop navigation to select POI"
 msgstr "Stoppa navigeringen för att välja POI"
 
@@ -755,14 +637,14 @@ msgstr "Dela aktuell position (inte klar)"
 msgid "Share Current Position"
 msgstr "Dela aktuell position"
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:333
-#: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
-#: qml/NavigationSpeedBlock.qml:86
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:363
+#: qml/NavigationCurrentBlock.qml:365 qml/NavigationSpeedBlock.qml:90
+#: qml/NavigationSpeedBlock.qml:92
 msgid "mph"
 msgstr "mph"
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
-#: qml/NavigationSpeedBlock.qml:88
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:367
+#: qml/NavigationSpeedBlock.qml:94
 msgid "km/h"
 msgstr "km/h"
 
@@ -778,23 +660,23 @@ msgstr "Fortsätt %1."
 msgid "Route removed"
 msgstr "Rutten borttagen"
 
-#: qml/NavigationButtonStartPause.qml:64
+#: qml/NavigationButtonStartPause.qml:69
 msgid "Stopped to follow the movement"
 msgstr "Sluta följa färden"
 
-#: qml/NavigationButtonStartPause.qml:69
+#: qml/NavigationButtonStartPause.qml:74
 msgid "Navigation paused"
 msgstr "Navigering pausad"
 
-#: qml/NavigationButtonStartPause.qml:73
+#: qml/NavigationButtonStartPause.qml:78
 msgid "Navigation started"
 msgstr "Navigering startad"
 
-#: qml/NavigationCurrentBlock.qml:180
+#: qml/NavigationCurrentBlock.qml:218
 msgid "To route"
 msgstr "Till rutten"
 
-#: qml/NavigationOverviewBlock.qml:142
+#: qml/NavigationOverviewBlock.qml:288
 msgid "ETA"
 msgstr "Beräknad ankomst"
 
@@ -806,39 +688,59 @@ msgstr "Manövrer"
 msgid "Pause"
 msgstr "Paus"
 
-#: qml/NavigationPage.qml:44 qml/PreferencesPage.qml:686 qml/RoutePage.qml:51
+#: qml/NavigationPage.qml:44 qml/PreferencesPage.qml:694 qml/RoutePage.qml:59
 msgid "Navigate"
 msgstr "Navigera"
 
-#: qml/NavigationPage.qml:57
+#: qml/NavigationPage.qml:56
 msgid "Reroute"
 msgstr "Beräkna om rutten"
 
-#: qml/NavigationPage.qml:69
+#: qml/NavigationPage.qml:68
 msgid "Clear"
 msgstr "Rensa"
 
-#: qml/NavigationPage.qml:84
+#: qml/NavigationPage.qml:82
 msgid "Status"
 msgstr "Status"
 
-#: qml/NavigationPage.qml:133
+#: qml/NavigationPage.qml:132
 msgid "Estimated time of arrival"
 msgstr "Beräknad ankomsttid"
+
+#: qml/NavigationPage.qml:159 qml/Navigator.qml:77
+msgid "Destination reached"
+msgstr "Du är framme"
+
+#: qml/NavigationPage.qml:191
+msgid "Final destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:193 qml/RoutePage.qml:240
+msgid "Destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:194 qml/RoutePage.qml:241
+msgid "Waypoint: %1"
+msgstr ""
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
 msgstr "AVFART"
 
-#: qml/Navigator.qml:61
-msgid "Destination reached"
-msgstr "Du är framme"
+#: qml/Navigator.qml:69
+msgid "Destination %1 reached"
+msgstr ""
 
-#: qml/Navigator.qml:87
+#: qml/Navigator.qml:70
+msgid "Waypoint %1 reached"
+msgstr ""
+
+#: qml/Navigator.qml:120
 msgid "Voice navigation on"
 msgstr "Röstnavigering på"
 
-#: qml/Navigator.qml:92
+#: qml/Navigator.qml:125
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -846,9 +748,21 @@ msgstr ""
 "Röstnavigering är inte tillgänglig. Text-till-tal-motor (TTS) saknas, för "
 "det önskade språket."
 
-#: qml/Navigator.qml:172
+#: qml/Navigator.qml:192 src/navigator.cpp:975
+msgid "Rerouting"
+msgstr "Beräknar om"
+
+#: qml/Navigator.qml:208
 msgid "Rerouting failed: %1"
 msgstr "Omberäkning misslyckades: %1"
+
+#: qml/Navigator.qml:212 src/navigator.cpp:974
+msgid "New route found"
+msgstr "Ny rutt hittad"
+
+#: qml/Navigator.qml:217 src/navigator.cpp:976
+msgid "Rerouting failed"
+msgstr "Omberäkning misslyckades"
 
 #: qml/NearbyPage.qml:25
 msgid "Nearby Venues"
@@ -872,10 +786,9 @@ msgid "Radius"
 msgstr "Radie"
 
 #: qml/NearbyResultsPage.qml:115 routers/default_results.qml:39
-#: routers/digitransit_results.qml:213 routers/gpx_osmscout_results.qml:39
-#: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
-#: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
-#: routers/stadiamaps_results.qml:39
+#: routers/gpx_osmscout_results.qml:39 routers/gpx_results.qml:39
+#: routers/mapquest_open_results.qml:39 routers/osmscout_results.qml:39
+#: routers/osrm_results.qml:39 routers/stadiamaps_results.qml:39
 msgid "Searching"
 msgstr "Söker"
 
@@ -1091,7 +1004,7 @@ msgstr "Brittisk"
 msgid "Preferred map language."
 msgstr "Föredraget kartspråk."
 
-#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:791
+#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:801
 #: routers/gpx_osmscout_settings.qml:72 routers/mapquest_open_settings.qml:54
 #: routers/ValhallaSettings.qml:56
 msgid "Language"
@@ -1109,7 +1022,7 @@ msgstr "Arabiska"
 msgid "Basque"
 msgstr "Baskiska"
 
-#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:794
+#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:804
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
 msgid "Catalan"
 msgstr "Katalanska"
@@ -1122,7 +1035,7 @@ msgstr "Kinesiska (förenklad)"
 msgid "Chinese (traditional)"
 msgstr "Kinesiska (traditionell)"
 
-#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:795
+#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:805
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
 msgid "Czech"
 msgstr "Tjeckiska"
@@ -1135,7 +1048,7 @@ msgstr "Danska"
 msgid "Dutch"
 msgstr "Nederländska"
 
-#: qml/PreferencesPage.qml:71 qml/PreferencesPage.qml:793
+#: qml/PreferencesPage.qml:71 qml/PreferencesPage.qml:803
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
 msgid "English"
 msgstr "Engelska"
@@ -1144,12 +1057,12 @@ msgstr "Engelska"
 msgid "Finnish"
 msgstr "Finska"
 
-#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:798
+#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:808
 #: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
 msgid "French"
 msgstr "Franska"
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:796
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:806
 #: routers/gpx_osmscout_settings.qml:74 routers/mapquest_open_settings.qml:58
 #: routers/ValhallaSettings.qml:60
 msgid "German"
@@ -1167,7 +1080,7 @@ msgstr "Grekiska"
 msgid "Hebrew"
 msgstr "Hebreiska"
 
-#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:799
+#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:809
 #: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
 msgid "Hindi"
 msgstr "Hindi"
@@ -1176,7 +1089,7 @@ msgstr "Hindi"
 msgid "Indonesian"
 msgstr "Indonesiska"
 
-#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:800
+#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:810
 #: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
 msgid "Italian"
 msgstr "Italienska"
@@ -1206,7 +1119,7 @@ msgstr "Polska"
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:801
+#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:811
 #: routers/gpx_osmscout_settings.qml:75 routers/mapquest_open_settings.qml:58
 #: routers/ValhallaSettings.qml:61
 msgid "Russian"
@@ -1216,12 +1129,12 @@ msgstr "Ryska"
 msgid "Sinhalese"
 msgstr "Singalesiska"
 
-#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:797
+#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:807
 #: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
 msgid "Spanish"
 msgstr "Spanska"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:803
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:813
 #: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
 msgid "Swedish"
 msgstr "Svenska"
@@ -1295,7 +1208,7 @@ msgstr "Komplettera automatiskt vid sökning"
 msgid "Device"
 msgstr "Enhet"
 
-#: qml/PreferencesPage.qml:205
+#: qml/PreferencesPage.qml:206
 msgid ""
 "You can control if and when Pure Maps keeps display active and works in the "
 "background. It is recommended to allow Pure Maps to prevent screensaver "
@@ -1309,7 +1222,7 @@ msgstr ""
 "senare är användbart om du vill ta emot röstnavigeringskommandon samtidigt "
 "som du har enheten i fickan."
 
-#: qml/PreferencesPage.qml:219
+#: qml/PreferencesPage.qml:220
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
@@ -1317,25 +1230,25 @@ msgstr ""
 "Tillämpas endast när Pure Maps är aktiv. Vid minimering, kontrolleras "
 "skärmsläckaren av normal inställning på enhetsnivå."
 
-#: qml/PreferencesPage.qml:221
+#: qml/PreferencesPage.qml:222
 msgid "Prevent screensaver"
 msgstr "Förhindra skärmsläckare"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
-#: qml/PreferencesPage.qml:517 qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
+#: qml/PreferencesPage.qml:522 qml/PreferencesPage.qml:603
 msgid "Never"
 msgstr "Aldrig"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
+#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
 msgid "When navigating"
 msgstr "Vid navigering"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
-#: qml/PreferencesPage.qml:517
+#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
+#: qml/PreferencesPage.qml:522
 msgid "Always"
 msgstr "Alltid"
 
-#: qml/PreferencesPage.qml:235
+#: qml/PreferencesPage.qml:236
 msgid ""
 "Allows to keep positioning and navigation instructions spoken even when the "
 "screen is switched off. If set to 'never', usual device suspend policy is "
@@ -1345,15 +1258,15 @@ msgstr ""
 "skärmen är avstängd. Om den är inställd på \"aldrig\" tillämpas vanlig "
 "enhetsprincip."
 
-#: qml/PreferencesPage.qml:238
+#: qml/PreferencesPage.qml:239
 msgid "Prevent sleep"
 msgstr "Förhindra viloläge"
 
-#: qml/PreferencesPage.qml:260
+#: qml/PreferencesPage.qml:261
 msgid "Privacy"
 msgstr "Sekretess"
 
-#: qml/PreferencesPage.qml:266
+#: qml/PreferencesPage.qml:268
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
@@ -1361,27 +1274,27 @@ msgstr ""
 "Ta bort all historik, inkl. sökning, ruttberäkning och destinationer. Notera"
 " att bokmärken kommer att bevaras."
 
-#: qml/PreferencesPage.qml:274
+#: qml/PreferencesPage.qml:277
 msgid "History cleared"
 msgstr "Historiken borttagen"
 
-#: qml/PreferencesPage.qml:283
+#: qml/PreferencesPage.qml:286
 msgid "Clear history"
 msgstr "Ta bort historik"
 
-#: qml/PreferencesPage.qml:295
+#: qml/PreferencesPage.qml:298
 msgid "Clear map tiles stored in a cache"
 msgstr "Ta bort cachelagrade kartrutor"
 
-#: qml/PreferencesPage.qml:303
+#: qml/PreferencesPage.qml:306
 msgid "Clear cache"
 msgstr "Rensa cache"
 
-#: qml/PreferencesPage.qml:315
+#: qml/PreferencesPage.qml:318
 msgid "API keys"
 msgstr "API-nycklar"
 
-#: qml/PreferencesPage.qml:321
+#: qml/PreferencesPage.qml:325
 msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
@@ -1391,15 +1304,15 @@ msgstr ""
 "inställningar. Kontrollera villkoren för var och en av de tjänster du vill "
 "använda, för att säkerställa att du tillämpar dem."
 
-#: qml/PreferencesPage.qml:329
+#: qml/PreferencesPage.qml:334
 msgid "Please restart application after changing API keys."
 msgstr "Starta om appen efter ändring av API-nycklar."
 
-#: qml/PreferencesPage.qml:370
+#: qml/PreferencesPage.qml:375
 msgid "Exploring"
 msgstr "Utforskning"
 
-#: qml/PreferencesPage.qml:376
+#: qml/PreferencesPage.qml:381
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
@@ -1407,87 +1320,87 @@ msgstr ""
 "Välj transportsätt. Gäller endast när Pure Maps inte navigerar. Använder OSM"
 " Scout Server för åtgärden."
 
-#: qml/PreferencesPage.qml:377 qml/PreferencesPage.qml:447
+#: qml/PreferencesPage.qml:382 qml/PreferencesPage.qml:452
 msgid "Snap position to road"
 msgstr "Fäst positionen vid vägen"
 
-#: qml/PreferencesPage.qml:378 routers/gpx_osmscout_settings.qml:31
+#: qml/PreferencesPage.qml:383 routers/gpx_osmscout_settings.qml:31
 #: routers/gpx_settings.qml:31
 msgid "None"
 msgstr "Ingen"
 
-#: qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
+#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Foot"
 msgstr "Gång"
 
-#: qml/PreferencesPage.qml:407
+#: qml/PreferencesPage.qml:412
 msgid "Show navigation instructions"
 msgstr "Visa navigeringsinstruktioner"
 
-#: qml/PreferencesPage.qml:417
+#: qml/PreferencesPage.qml:422
 msgid "Voice navigation instructions"
 msgstr "Röstnavigering"
 
-#: qml/PreferencesPage.qml:427
+#: qml/PreferencesPage.qml:432
 msgid "Reroute automatically"
 msgstr "Beräkna om rutter automatiskt"
 
-#: qml/PreferencesPage.qml:436
+#: qml/PreferencesPage.qml:441
 msgid "Automatic zoom on start"
 msgstr "Automatisk zoom vid start"
 
-#: qml/PreferencesPage.qml:446
+#: qml/PreferencesPage.qml:451
 msgid "Uses OSM Scout Server for its operation."
 msgstr "Använder OSM Scout Server för åtgärden."
 
-#: qml/PreferencesPage.qml:458
+#: qml/PreferencesPage.qml:463
 msgid "Show direction signs"
 msgstr "Visa riktningsskyltar"
 
-#: qml/PreferencesPage.qml:468
+#: qml/PreferencesPage.qml:473
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr "Rotera kartan i rörelsens riktning när navigering påbörjas."
 
-#: qml/PreferencesPage.qml:469
+#: qml/PreferencesPage.qml:474
 msgid "Rotate map when navigating"
 msgstr "Rotera kartan vid navigering"
 
-#: qml/PreferencesPage.qml:478
+#: qml/PreferencesPage.qml:483
 msgid "Only applies to vector maps."
 msgstr "Gäller endast vektorkartor."
 
-#: qml/PreferencesPage.qml:480
+#: qml/PreferencesPage.qml:485
 msgid "Tilt map when navigating"
 msgstr "Luta kartan vid navigering"
 
-#: qml/PreferencesPage.qml:488
+#: qml/PreferencesPage.qml:493
 msgid "Smooth position animation"
 msgstr "Jämn positionsanimering"
 
-#: qml/PreferencesPage.qml:498
+#: qml/PreferencesPage.qml:503
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
 "Önskat kön för röstnavigering. Stöds endast av vissa motorer och språk."
 
-#: qml/PreferencesPage.qml:499 qml/PreferencesPage.qml:825
+#: qml/PreferencesPage.qml:504 qml/PreferencesPage.qml:835
 msgid "Voice gender"
 msgstr "Röst"
 
-#: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
+#: qml/PreferencesPage.qml:505 qml/PreferencesPage.qml:836
 msgid "Male"
 msgstr "Manlig"
 
-#: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
+#: qml/PreferencesPage.qml:505 qml/PreferencesPage.qml:836
 msgid "Female"
 msgstr "Kvinnlig"
 
-#: qml/PreferencesPage.qml:514
+#: qml/PreferencesPage.qml:519
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
@@ -1495,19 +1408,19 @@ msgstr ""
 "Visa hastighetsbegränsning. Kräver att positionen fästs vid vägen för att "
 "hitta hastighetsbegränsningen."
 
-#: qml/PreferencesPage.qml:516
+#: qml/PreferencesPage.qml:521
 msgid "Speed limit"
 msgstr "Hastighetsgräns"
 
-#: qml/PreferencesPage.qml:517
+#: qml/PreferencesPage.qml:522
 msgid "Only when exceeding"
 msgstr "Endast vid överskridande"
 
-#: qml/PreferencesPage.qml:540 qml/PreferencesPage.qml:641
+#: qml/PreferencesPage.qml:545 qml/PreferencesPage.qml:649
 msgid "Compass"
 msgstr "Kompass"
 
-#: qml/PreferencesPage.qml:546
+#: qml/PreferencesPage.qml:552
 msgid ""
 "Compass can be used to determine orientation of your device and align the "
 "map accordingly. Note that the compass is enabled only when your position is"
@@ -1519,19 +1432,19 @@ msgstr ""
 " bestämd, din hastighet låg och om du navigerar, endast om du går till fots "
 "eller cyklar."
 
-#: qml/PreferencesPage.qml:556
+#: qml/PreferencesPage.qml:562
 msgid "Use compass for determination of the direction."
 msgstr "Använd kompass för att bestämma riktning."
 
-#: qml/PreferencesPage.qml:557
+#: qml/PreferencesPage.qml:563
 msgid "Use compass"
 msgstr "Använd kompass"
 
-#: qml/PreferencesPage.qml:569
+#: qml/PreferencesPage.qml:575
 msgid "Controls"
 msgstr "Kontroller"
 
-#: qml/PreferencesPage.qml:575
+#: qml/PreferencesPage.qml:582
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
@@ -1541,11 +1454,11 @@ msgstr ""
 "visningsläge, eller med ett mindre antal utvalda kontroller i minimalt "
 "visningsläge. Klicka på en karta för att växla mellan lägen."
 
-#: qml/PreferencesPage.qml:584
+#: qml/PreferencesPage.qml:591
 msgid "Set map view to minimal mode on start"
 msgstr "Sätt kartvyn i minimalt läge vid uppstart"
 
-#: qml/PreferencesPage.qml:592
+#: qml/PreferencesPage.qml:599
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
@@ -1553,31 +1466,31 @@ msgstr ""
 "Växla automatiskt till minimalt visningsläge efter angiven fördröjning, "
 "eller inaktivera automatisk växling mellan kartvisningslägen."
 
-#: qml/PreferencesPage.qml:594
+#: qml/PreferencesPage.qml:601
 msgid "Switch to minimal view"
 msgstr "Växla till minimal vy"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:603
 msgid "10 seconds"
 msgstr "10 sekunder"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:603
 msgid "20 seconds"
 msgstr "20 sekunder"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:604
 msgid "30 seconds"
 msgstr "30 sekunder"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:604
 msgid "1 minute"
 msgstr "1 minut"
 
-#: qml/PreferencesPage.qml:611
+#: qml/PreferencesPage.qml:618
 msgid "Always show"
 msgstr "Visa alltid"
 
-#: qml/PreferencesPage.qml:615
+#: qml/PreferencesPage.qml:623
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
@@ -1585,39 +1498,39 @@ msgstr ""
 "Visa alltid valda kontroller, oavsett om kartvyn är i minimalt eller fullt "
 "läge."
 
-#: qml/PreferencesPage.qml:623
+#: qml/PreferencesPage.qml:631
 msgid "Menu"
 msgstr "Meny"
 
-#: qml/PreferencesPage.qml:632
+#: qml/PreferencesPage.qml:640
 msgid "Center on current location"
 msgstr "Centrera på aktuell position"
 
-#: qml/PreferencesPage.qml:650
+#: qml/PreferencesPage.qml:658
 msgid "Map selection"
 msgstr "Kartval"
 
-#: qml/PreferencesPage.qml:659
+#: qml/PreferencesPage.qml:667
 msgid "Speed and location precision"
 msgstr "Hastighets- och platsprecision"
 
-#: qml/PreferencesPage.qml:668
+#: qml/PreferencesPage.qml:676
 msgid "Scale"
 msgstr "Skala"
 
-#: qml/PreferencesPage.qml:695
+#: qml/PreferencesPage.qml:703
 msgid "Navigation Start/Pause"
 msgstr "Navigering start/paus"
 
-#: qml/PreferencesPage.qml:704
+#: qml/PreferencesPage.qml:712
 msgid "Navigation Clear Route"
 msgstr "Ta bort rutten"
 
-#: qml/PreferencesPage.qml:719
+#: qml/PreferencesPage.qml:727
 msgid "Zoom"
 msgstr "Zoom"
 
-#: qml/PreferencesPage.qml:725
+#: qml/PreferencesPage.qml:734
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
@@ -1625,18 +1538,18 @@ msgstr ""
 "Kartans zoomnivå kan justeras automatiskt efter din hastighet. Här kan du "
 "justera relaterade inställningar."
 
-#: qml/PreferencesPage.qml:735
+#: qml/PreferencesPage.qml:744
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
 msgstr ""
 "Maximal zoomnivå som kommer att användas i den automatiska zoomjusteringen."
 
-#: qml/PreferencesPage.qml:737
+#: qml/PreferencesPage.qml:746
 msgid "Maximal zoom level"
 msgstr "Maximal zoomnivå"
 
-#: qml/PreferencesPage.qml:748
+#: qml/PreferencesPage.qml:757
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
@@ -1644,15 +1557,15 @@ msgstr ""
 "Zoomnivån kommer att justeras till att ha samma karthöjd som avståndet du "
 "färdas, under den angivna tiden i sekunder."
 
-#: qml/PreferencesPage.qml:751
+#: qml/PreferencesPage.qml:760
 msgid "Time range, s"
 msgstr "Tidsintervall, s"
 
-#: qml/PreferencesPage.qml:770
+#: qml/PreferencesPage.qml:779
 msgid "Testing"
 msgstr "Test"
 
-#: qml/PreferencesPage.qml:779
+#: qml/PreferencesPage.qml:789
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
@@ -1660,23 +1573,23 @@ msgstr ""
 "Test av text-to-speech (TTS). Välj samma språk som vid navigering samt "
 "önskat kön, och tryck på nedanstående knapp för att testa."
 
-#: qml/PreferencesPage.qml:802
+#: qml/PreferencesPage.qml:812
 msgid "Slovak"
 msgstr "Slovakiska"
 
-#: qml/PreferencesPage.qml:824
+#: qml/PreferencesPage.qml:834
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "Önskat kön, Stöds endast av vissa motorer och språk."
 
-#: qml/PreferencesPage.qml:838
+#: qml/PreferencesPage.qml:848
 msgid "Test"
 msgstr "Testa"
 
-#: qml/PreferencesPage.qml:848
+#: qml/PreferencesPage.qml:859
 msgid "Selected voice engine: %1"
 msgstr "Vald röstmotor: %1"
 
-#: qml/PreferencesPage.qml:850
+#: qml/PreferencesPage.qml:861
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1686,11 +1599,11 @@ msgstr ""
 "\n"
 "Pure Maps stödjer Mimic, Flite, PicoTTS, och Espeak TTS. Om du inte använder Pure Maps via Flatpak eller OpenStore, måste motorerna installeras separat. Sailfish-användare kan hitta motorer på OpenRepos."
 
-#: qml/PreferencesPage.qml:884
+#: qml/PreferencesPage.qml:895
 msgid "Development"
 msgstr "Utveckling"
 
-#: qml/PreferencesPage.qml:890
+#: qml/PreferencesPage.qml:902
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1698,7 +1611,7 @@ msgstr ""
 "Följande alternativ är endast för utveckling. Ändra dem bara om du vet vad "
 "du gör."
 
-#: qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:910
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1706,11 +1619,11 @@ msgstr ""
 "Centrera aktuell position i aktuell kartvy. Kom ihåg att inaktivera GPS-"
 "positionering när detta alternativ används."
 
-#: qml/PreferencesPage.qml:899
+#: qml/PreferencesPage.qml:911
 msgid "Set position to the map center"
 msgstr "Centrera positionen på kartan"
 
-#: qml/PreferencesPage.qml:906
+#: qml/PreferencesPage.qml:918
 msgid "Show current zoom level"
 msgstr "Visa aktuell zoomnivå"
 
@@ -1733,58 +1646,99 @@ msgstr "Totalt"
 msgid "Route"
 msgstr "Beräkna"
 
-#: qml/RoutePage.qml:51
+#: qml/RoutePage.qml:59
 msgid "Follow me"
 msgstr "Följ mig"
 
-#: qml/RoutePage.qml:63
+#: qml/RoutePage.qml:71
 msgid "Reverse endpoints"
 msgstr "Växla start-/slutpunkt"
 
-#: qml/RoutePage.qml:136
+#: qml/RoutePage.qml:145
 msgid "From"
 msgstr "Från"
 
-#: qml/RoutePage.qml:137
+#: qml/RoutePage.qml:146
 msgid "Origin"
 msgstr "Ursprung"
 
-#: qml/RoutePage.qml:143
+#: qml/RoutePage.qml:152
 msgid "To"
 msgstr "Till"
 
-#: qml/RoutePage.qml:144
+#: qml/RoutePage.qml:153
 msgid "Destination"
 msgstr "Destination"
 
-#: qml/RoutePage.qml:187
+#: qml/RoutePage.qml:160 qml/RoutePage.qml:167
+msgid "Destinations and waypoints"
+msgstr ""
+
+#: qml/RoutePage.qml:168
+msgid ""
+"Additional destinations and wayponts can be added along the route. The both locations are used for calculation of the route, but only destinations are tracked for being reached. As a result, if you miss the waypoint and later rejoin the calculated route after the waypoint, it will be assumed that waypoint was reached and it will be dismissed in the rerouting calculations later. In contrast, destinations have to be reached within the certain tolerance and will not be dismissed in such manner.\n"
+"\n"
+"So, set as destination the locations that you need to reach on your route and as waypoints the locations that are just for shaping the route according to your preferences.\n"
+"\n"
+"Dismiss this dialog to stop showing this message."
+msgstr ""
+
+#: qml/RoutePage.qml:205
+msgid "Up"
+msgstr ""
+
+#: qml/RoutePage.qml:214
+msgid "Down"
+msgstr ""
+
+#: qml/RoutePage.qml:228
+msgid "Convert to waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:229
+msgid "Convert to destination"
+msgstr ""
+
+#: qml/RoutePage.qml:303
+msgid "Add destination"
+msgstr ""
+
+#: qml/RoutePage.qml:313
+msgid "Add waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:367
 msgid "Routes"
 msgstr "Rutter"
 
-#: qml/RoutePage.qml:263
+#: qml/RoutePage.qml:395
+msgid "%1 ‒ %2 (%3 destinations and waypoints)"
+msgstr ""
+
+#: qml/RoutePage.qml:459
 msgid "Destinations"
 msgstr "Destinationer"
 
-#: qml/RoutePage.qml:358
+#: qml/RoutePage.qml:553
 msgid "Follow the movement and show just in time information"
 msgstr "Följ förflyttningen och visa just-i-tid-information"
 
-#: qml/RoutePage.qml:367
+#: qml/RoutePage.qml:562
 msgid "Stop"
 msgstr "Stopp"
 
-#: qml/RoutePage.qml:367
+#: qml/RoutePage.qml:562
 msgid "Begin"
 msgstr "Börja"
 
-#: qml/RoutePage.qml:385
+#: qml/RoutePage.qml:580
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
 "Välj transportsätt. Tillämpas endast när Pure Maps är i följ mig-läge."
 
-#: qml/RoutePage.qml:387
+#: qml/RoutePage.qml:582
 msgid "Mode of transportation"
 msgstr "Transportsätt"
 
@@ -1856,81 +1810,12 @@ msgstr "Lägg till länk till OpenStreetMaps"
 msgid "Add link to Google Maps"
 msgstr "Lägg till länk till Google Maps"
 
-#: routers/default_results.qml:81 routers/digitransit_results.qml:186
-#: routers/gpx_osmscout_results.qml:81 routers/gpx_results.qml:81
-#: routers/mapquest_open_results.qml:81 routers/osmscout_results.qml:81
-#: routers/osrm_results.qml:81 routers/stadiamaps_results.qml:81
+#: routers/default_results.qml:60 routers/gpx_osmscout_results.qml:60
+#: routers/gpx_results.qml:60 routers/mapquest_open_results.qml:60
+#: routers/osmscout_results.qml:60 routers/osrm_results.qml:60
+#: routers/stadiamaps_results.qml:60
 msgid "Route to %1"
 msgstr "Beräkna rutt till %1"
-
-#: routers/digitransit_results.qml:61
-msgid "Route %1. total %2"
-msgstr "Rutt %1. Totalt %2"
-
-#: routers/digitransit_results.qml:156
-msgid "Walk %1"
-msgstr "Gå %1"
-
-#: routers/digitransit_results.qml:157
-msgid "%1 → %2"
-msgstr "%1 → %2"
-
-#: routers/digitransit_results.qml:266
-msgid "Results"
-msgstr "Resultat"
-
-#: routers/digitransit_settings.qml:31
-msgid "Region"
-msgstr "Region"
-
-#: routers/digitransit_settings.qml:32
-msgid "HSL"
-msgstr "HSL"
-
-#: routers/digitransit_settings.qml:32
-msgid "Waltti"
-msgstr "Waltti"
-
-#: routers/digitransit_settings.qml:32
-msgid "Finland"
-msgstr "Finland"
-
-#: routers/digitransit_settings.qml:72 routers/digitransit_settings.qml:74
-#: routers/digitransit_settings.qml:78
-msgid "Depart"
-msgstr "Avgår"
-
-#: routers/digitransit_settings.qml:75
-msgid "Arrive"
-msgstr "Anländer"
-
-#: routers/digitransit_settings.qml:91
-msgid "Today"
-msgstr "I dag"
-
-#: routers/digitransit_settings.qml:98
-msgid "Select date"
-msgstr "Välj datum"
-
-#: routers/digitransit_settings.qml:119
-msgid "Now"
-msgstr "Nu"
-
-#: routers/digitransit_settings.qml:127
-msgid "Select time"
-msgstr "Välj tid"
-
-#: routers/digitransit_settings.qml:145
-msgid "Criterion"
-msgstr "Kriterium"
-
-#: routers/digitransit_settings.qml:146
-msgid "Least transfers"
-msgstr "Lägst antal byten"
-
-#: routers/digitransit_settings.qml:146
-msgid "Least walking"
-msgstr "Kortast gångavstånd"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
@@ -2184,43 +2069,47 @@ msgstr "Visar versionsinformation."
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr "Visar plats utifrån geo: latitud-, longitud-URI eller utför sökning."
 
-#: src/navigator.cpp:119
+#: src/navigator.cpp:158
 msgid "Position unknown"
 msgstr "Position okänd"
 
-#: src/navigator.cpp:125
+#: src/navigator.cpp:164
 msgid "Position imprecise: accuracy %1"
 msgstr "Position oprecis: Noggrannhet %1"
 
-#: src/navigator.cpp:143 src/navigator.cpp:328
+#: src/navigator.cpp:183 src/navigator.cpp:446
 msgid "Preparing to start navigation"
 msgstr "Förbereder navigering"
 
-#: src/navigator.cpp:354
+#: src/navigator.cpp:488
 msgid "Moving in a wrong direction"
 msgstr "Förflyttning i fel riktning"
 
-#: src/navigator.cpp:364
+#: src/navigator.cpp:498
 msgid "Away from route"
 msgstr "Bort från rutten"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:535 src/navigator.cpp:546
+#: src/navigator.cpp:669 src/navigator.cpp:680
 msgid "In %2, %1"
 msgstr "%2, %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:718
+#: src/navigator.cpp:926
 msgid "%1 h %2 min"
 msgstr "%1 t %2 min"
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:720
+#: src/navigator.cpp:928
 msgid "%1 min"
 msgstr "%1 min"
+
+#: src/navigator.cpp:973
+msgid "Starting navigation"
+msgstr "Startar navigering"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
@@ -2247,35 +2136,32 @@ msgid "Points of interest from OpenStreetMap data"
 msgstr "Punkter av intresse, från OpenStreetMap-data"
 
 #: standard input:8
-msgid "Public transport routing in Finland"
-msgstr "Kollektivtrafikrutter i Finland"
-
-#: standard input:9
-msgid "public transport"
-msgstr "kollektivtrafik"
-
-#: standard input:10
 msgid "Routing along GPX track"
 msgstr "Ruttberäkning längs GPX-spår"
 
-#: standard input:11 standard input:13 standard input:15 standard input:17
-#: standard input:19 standard input:21
+#: standard input:9 standard input:11 standard input:13 standard input:15
+#: standard input:17 standard input:19
 msgid "car"
 msgstr "bil"
 
-#: standard input:11 standard input:13 standard input:15 standard input:17
-#: standard input:21
+#: standard input:9 standard input:11 standard input:13 standard input:15
+#: standard input:19
+msgid "bicycle"
+msgstr "cykel"
+
+#: standard input:9 standard input:11 standard input:13 standard input:15
+#: standard input:19
 msgid "foot"
 msgstr "fot"
 
-#: standard input:12
+#: standard input:10
 msgid "Routing along GPX track processed by OSM Scout Server"
 msgstr "Ruttberäkning längs GPX-spår, bearbetad av OSM Scout Server"
 
-#: standard input:14 standard input:16 standard input:18
+#: standard input:12 standard input:14 standard input:16
 msgid "Routing based on OpenStreetMap data"
 msgstr "Färdväg baserad på OpenStreetMap-data"
 
-#: standard input:20
+#: standard input:18
 msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr "Ruttberäkning av Valhalla, baserat på OpenStreetMap-data"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 13:56+0200\n"
+"POT-Creation-Date: 2020-12-29 22:10+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Malakay X <Malakay.666@seznam.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rinigus/teams/89597/cs/)\n"
@@ -41,16 +41,16 @@ msgid "Point from Plus code"
 msgstr "Nasměrování pomocí Plus code"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:134
+#: poor/router.py:135
 msgid "Connection timed out"
 msgstr "Spojení vypršelo"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137
-#: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:31
-#: qml/RoutePage.qml:220 qml/RoutePage.qml:225 qml/RoutePage.qml:428
-#: qml/RoutePage.qml:443 qml/RoutePage.qml:445 qml/RoutePoint.qml:42
-#: qml/RoutePoint.qml:58
+#: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:32
+#: qml/RoutePage.qml:36 qml/RoutePage.qml:401 qml/RoutePage.qml:406
+#: qml/RoutePage.qml:620 qml/RoutePage.qml:658 qml/RoutePoint.qml:44
+#: qml/RoutePoint.qml:62
 msgid "Current position"
 msgstr "Aktuální pozice"
 
@@ -134,71 +134,49 @@ msgstr "ID aplikace HERE"
 msgid "HERE App Code"
 msgstr "Kód aplikace HERE"
 
-#: poor/narrative.py:139
-#, python-brace-format
-msgid "In {distance}, {direction}"
-msgstr "Za {distance}, {direction}"
-
-#: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
-#: poor/router.py:105
+#: poor/router.py:103 poor/router.py:105
 msgid "Exit: "
 msgstr "Sjezd: "
 
-#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
-msgid "New route found"
-msgstr "Nalezena nová trasa"
-
-#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
-msgid "Rerouting"
-msgstr "Přesměrování"
-
-#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
-msgid "Rerouting failed"
-msgstr "Přesměrování se nezdařilo"
-
-#: poor/narrative.py:632 src/navigator.cpp:742
-msgid "Starting navigation"
-msgstr "Spouští se navigace"
-
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:881
+#: src/navigator.cpp:893
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:881
+#: src/navigator.cpp:893
 msgid "miles"
 msgstr "míle"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:884
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231 src/navigator.cpp:653
+#: poor/util.py:231 src/navigator.cpp:884
 msgid "feet"
 msgstr "stop"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:896
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242 src/navigator.cpp:665
+#: poor/util.py:242 src/navigator.cpp:896
 msgid "yards"
 msgstr "yardů"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:905
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:905
 msgid "kilometers"
 msgstr "kilometrů"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:908
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253 src/navigator.cpp:677
+#: poor/util.py:253 src/navigator.cpp:908
 msgid "meters"
 msgstr "metrů"
 
@@ -254,95 +232,6 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
-#: routers/digitransit.py:58
-msgid "airplane"
-msgstr "letadlo"
-
-#: routers/digitransit.py:59 standard input:11 standard input:13 standard
-#: input:15 standard input:17 standard input:21
-msgid "bicycle"
-msgstr "kolo"
-
-#: routers/digitransit.py:60
-msgid "bus"
-msgstr "autobus"
-
-#: routers/digitransit.py:61
-msgid "ferry"
-msgstr "trajekt"
-
-#: routers/digitransit.py:62
-msgid "train"
-msgstr "vlak"
-
-#: routers/digitransit.py:63
-msgid "metro"
-msgstr "metro"
-
-#: routers/digitransit.py:64
-msgid "tram"
-msgstr "tramvaj"
-
-#: routers/digitransit.py:65
-msgid "walk"
-msgstr "chůze"
-
-#: routers/digitransit.py:69
-#, python-brace-format
-msgid "Walk towards {arr_name}."
-msgstr "Jděte směrem k {arr_name}."
-
-#: routers/digitransit.py:70
-#, python-brace-format
-msgid "Get a city bike at {dep_name}."
-msgstr "Použijte městské kolo v {dep_name}."
-
-#: routers/digitransit.py:71 routers/digitransit.py:74
-#, python-brace-format
-msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "Naloďte se na {mode_name} {line_desc} v {dep_name} v čase {dep_time}."
-
-#: routers/digitransit.py:72
-msgid "Walk towards your destination."
-msgstr "Chůzí k cíli."
-
-#: routers/digitransit.py:73
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "Zanechte městské kolo v {dep_name} a jděte pěšky směrem k {arr_name}."
-
-#: routers/digitransit.py:75
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr "Zanechte městské kolo v {dep_name} a jděte pěšky směrem k cíli."
-
-#: routers/digitransit.py:76
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Vystupte v {dep_name} a jděte směrem k {arr_name}."
-
-#: routers/digitransit.py:77
-#, python-brace-format
-msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Vystupte v {dep_name} a jeďte na kole směrem k {arr_name}."
-
-#: routers/digitransit.py:78
-#, python-brace-format
-msgid ""
-"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
-msgstr ""
-"Vystupte v {dep_name} a přemístěte se {mode_name} {line_desc} v čase "
-"{dep_time}."
-
-#: routers/digitransit.py:79
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Vystupte v {dep_name} a jděte pěšky směrem k cíli."
-
-#: routers/digitransit.py:204
-msgid "Arrive at your destination."
-msgstr "Přijíždíte na místo určení."
-
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:114
 #: routers/ValhallaSettings.qml:150 routers/ValhallaSettings.qml:203
 #: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:238
@@ -364,15 +253,15 @@ msgid "Venue name"
 msgstr "Název místa"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
-#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:203
-#: qml/RoutePage.qml:281
+#: qml/NavigationPage.qml:179 qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
+#: qml/RoutePage.qml:222 qml/RoutePage.qml:383 qml/RoutePage.qml:477
 msgid "Remove"
 msgstr "Odstranit"
 
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
 #: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
-#: qml/PreferencesPage.qml:677
+#: qml/PreferencesPage.qml:685
 msgid "Search"
 msgstr "Hledat"
 
@@ -482,7 +371,7 @@ msgstr "Mapy"
 msgid "Venues"
 msgstr "Místa"
 
-#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/PreferencesPage.qml:399
+#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/PreferencesPage.qml:404
 #: qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Navigace"
@@ -493,8 +382,7 @@ msgstr "Navigace"
 msgid "Type"
 msgstr "Typ"
 
-#: qml/BasemapButton.qml:221 routers/digitransit_settings.qml:146
-#: qml/js/util.js:236
+#: qml/BasemapButton.qml:221 qml/js/util.js:236
 msgid "Default"
 msgstr "Výchozí"
 
@@ -538,13 +426,13 @@ msgstr "Noční"
 msgid "Transport"
 msgstr "Doprava"
 
-#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
+#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Bicycle"
 msgstr "Kolo"
 
-#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
+#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Car"
@@ -570,11 +458,11 @@ msgstr "Měřítko mapy během navigace"
 msgid "Map: %1"
 msgstr "Mapa: %1"
 
-#: qml/CenterButton.qml:110 qml/MapGestureArea.qml:43
+#: qml/CenterButton.qml:110 qml/MapGestureArea.qml:46
 msgid "Auto-center off"
 msgstr "Automatické centrování vypnuto"
 
-#: qml/CenterButton.qml:118 qml/MapGestureArea.qml:42
+#: qml/CenterButton.qml:118 qml/MapGestureArea.qml:45
 msgid "Auto-center on"
 msgstr "Automatické centrování zapnuto"
 
@@ -599,14 +487,13 @@ msgid "Searching ..."
 msgstr "Hledání ..."
 
 #: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:143
-#: routers/default_results.qml:90 routers/default_results.qml:93
-#: routers/digitransit_results.qml:271 routers/digitransit_results.qml:273
-#: routers/gpx_osmscout_results.qml:90 routers/gpx_osmscout_results.qml:93
-#: routers/gpx_results.qml:90 routers/gpx_results.qml:93
-#: routers/mapquest_open_results.qml:90 routers/mapquest_open_results.qml:93
-#: routers/osmscout_results.qml:90 routers/osmscout_results.qml:93
-#: routers/osrm_results.qml:90 routers/osrm_results.qml:93
-#: routers/stadiamaps_results.qml:90 routers/stadiamaps_results.qml:93
+#: routers/default_results.qml:69 routers/default_results.qml:72
+#: routers/gpx_osmscout_results.qml:69 routers/gpx_osmscout_results.qml:72
+#: routers/gpx_results.qml:69 routers/gpx_results.qml:72
+#: routers/mapquest_open_results.qml:69 routers/mapquest_open_results.qml:72
+#: routers/osmscout_results.qml:69 routers/osmscout_results.qml:72
+#: routers/osrm_results.qml:69 routers/osrm_results.qml:72
+#: routers/stadiamaps_results.qml:69 routers/stadiamaps_results.qml:72
 msgid "No results"
 msgstr "Žádné výsledky"
 
@@ -619,8 +506,8 @@ msgid "Points of Interest (%1)"
 msgstr "Body zájmu (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePage.qml:320 qml/RoutePage.qml:322
-#: qml/RoutePoint.qml:62
+#: qml/PoiPage.qml:47 qml/RoutePage.qml:515 qml/RoutePage.qml:517
+#: qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Nepojmenovaný bod"
 
@@ -628,7 +515,7 @@ msgstr "Nepojmenovaný bod"
 msgid "Recent searches (%1)"
 msgstr "Poslední vyhledávání (%1)"
 
-#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
+#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:44
 msgid "Change provider (%1)"
 msgstr ""
 
@@ -652,7 +539,7 @@ msgstr "Vyhledávací engine"
 msgid "Initializing"
 msgstr "Spouštění"
 
-#: qml/InitPage.qml:46
+#: qml/InitPage.qml:46 qml/RoutePage.qml:166
 msgid "Dismiss"
 msgstr "Opustit"
 
@@ -690,15 +577,10 @@ msgstr ""
 msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
-"application stores (OpenRepos for Sailfish OS, OpenStore for UBPorts), "
+"application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
-"Používáte offline profil. Ujistěte se, že máte nainstalován OSM Scout Server"
-" a že běží. V závislosti na systému je k dispozici na obchodech s aplikacemi"
-" (OpenRepos pro Sailfish OS, OpenStore pro UBports) nebo Flathub. Pro více "
-"informací navštivte <a href=\"https://rinigus.github.io/osmscout-"
-"server\">OSM Scout Server manuál</a>"
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -728,7 +610,7 @@ msgstr "Offline"
 msgid "Mixed"
 msgstr "Smíšený"
 
-#: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
+#: qml/MapGestureArea.qml:63 qml/MapGestureArea.qml:81
 msgid "Stop navigation to select POI"
 msgstr "Pro výběr bodu zájmu zastavte navigaci"
 
@@ -756,14 +638,14 @@ msgstr "Sdílet aktuální polohu (zatím nedostupné)"
 msgid "Share Current Position"
 msgstr "Sdílet aktuální polohu"
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:333
-#: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
-#: qml/NavigationSpeedBlock.qml:86
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:363
+#: qml/NavigationCurrentBlock.qml:365 qml/NavigationSpeedBlock.qml:90
+#: qml/NavigationSpeedBlock.qml:92
 msgid "mph"
 msgstr "mph"
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
-#: qml/NavigationSpeedBlock.qml:88
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:367
+#: qml/NavigationSpeedBlock.qml:94
 msgid "km/h"
 msgstr "km/h"
 
@@ -779,23 +661,23 @@ msgstr "Pokračujte k %1."
 msgid "Route removed"
 msgstr "Trasa odebrána"
 
-#: qml/NavigationButtonStartPause.qml:64
+#: qml/NavigationButtonStartPause.qml:69
 msgid "Stopped to follow the movement"
 msgstr "Sledování pohybu zastaveno"
 
-#: qml/NavigationButtonStartPause.qml:69
+#: qml/NavigationButtonStartPause.qml:74
 msgid "Navigation paused"
 msgstr "Navigace pozastavena"
 
-#: qml/NavigationButtonStartPause.qml:73
+#: qml/NavigationButtonStartPause.qml:78
 msgid "Navigation started"
 msgstr "Navigace spuštěna"
 
-#: qml/NavigationCurrentBlock.qml:180
+#: qml/NavigationCurrentBlock.qml:218
 msgid "To route"
 msgstr "K trase"
 
-#: qml/NavigationOverviewBlock.qml:142
+#: qml/NavigationOverviewBlock.qml:288
 msgid "ETA"
 msgstr "Cíl"
 
@@ -807,39 +689,59 @@ msgstr "Instrukce"
 msgid "Pause"
 msgstr "Pauza"
 
-#: qml/NavigationPage.qml:44 qml/PreferencesPage.qml:686 qml/RoutePage.qml:51
+#: qml/NavigationPage.qml:44 qml/PreferencesPage.qml:694 qml/RoutePage.qml:59
 msgid "Navigate"
 msgstr "Navigovat"
 
-#: qml/NavigationPage.qml:57
+#: qml/NavigationPage.qml:56
 msgid "Reroute"
 msgstr "Přesměrovat"
 
-#: qml/NavigationPage.qml:69
+#: qml/NavigationPage.qml:68
 msgid "Clear"
 msgstr "Vymazat"
 
-#: qml/NavigationPage.qml:84
+#: qml/NavigationPage.qml:82
 msgid "Status"
 msgstr "Status"
 
-#: qml/NavigationPage.qml:133
+#: qml/NavigationPage.qml:132
 msgid "Estimated time of arrival"
 msgstr "Předpokládaný čas příjezdu"
+
+#: qml/NavigationPage.qml:159 qml/Navigator.qml:77
+msgid "Destination reached"
+msgstr ""
+
+#: qml/NavigationPage.qml:191
+msgid "Final destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:193 qml/RoutePage.qml:240
+msgid "Destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:194 qml/RoutePage.qml:241
+msgid "Waypoint: %1"
+msgstr ""
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
 msgstr "EXIT"
 
-#: qml/Navigator.qml:61
-msgid "Destination reached"
+#: qml/Navigator.qml:69
+msgid "Destination %1 reached"
 msgstr ""
 
-#: qml/Navigator.qml:87
+#: qml/Navigator.qml:70
+msgid "Waypoint %1 reached"
+msgstr ""
+
+#: qml/Navigator.qml:120
 msgid "Voice navigation on"
 msgstr "Hlasová navigace zapnutá"
 
-#: qml/Navigator.qml:92
+#: qml/Navigator.qml:125
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -847,9 +749,21 @@ msgstr ""
 "Hlasová navigace nedostupná: chybí Text-to-Speech (TTS) engine pro vybraný "
 "jazyk"
 
-#: qml/Navigator.qml:159
+#: qml/Navigator.qml:192 src/navigator.cpp:975
+msgid "Rerouting"
+msgstr "Přesměrování"
+
+#: qml/Navigator.qml:208
 msgid "Rerouting failed: %1"
 msgstr "Přepočítání trasy selhalo: %1"
+
+#: qml/Navigator.qml:212 src/navigator.cpp:974
+msgid "New route found"
+msgstr "Nalezena nová trasa"
+
+#: qml/Navigator.qml:217 src/navigator.cpp:976
+msgid "Rerouting failed"
+msgstr "Přesměrování se nezdařilo"
 
 #: qml/NearbyPage.qml:25
 msgid "Nearby Venues"
@@ -873,10 +787,9 @@ msgid "Radius"
 msgstr "Poloměr"
 
 #: qml/NearbyResultsPage.qml:115 routers/default_results.qml:39
-#: routers/digitransit_results.qml:213 routers/gpx_osmscout_results.qml:39
-#: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
-#: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
-#: routers/stadiamaps_results.qml:39
+#: routers/gpx_osmscout_results.qml:39 routers/gpx_results.qml:39
+#: routers/mapquest_open_results.qml:39 routers/osmscout_results.qml:39
+#: routers/osrm_results.qml:39 routers/stadiamaps_results.qml:39
 msgid "Searching"
 msgstr "Hledání"
 
@@ -1092,7 +1005,7 @@ msgstr "Britské"
 msgid "Preferred map language."
 msgstr "Preferovaný jazyk mapy."
 
-#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:791
+#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:801
 #: routers/gpx_osmscout_settings.qml:72 routers/mapquest_open_settings.qml:54
 #: routers/ValhallaSettings.qml:56
 msgid "Language"
@@ -1110,7 +1023,7 @@ msgstr "Arabština"
 msgid "Basque"
 msgstr "Baskičtina"
 
-#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:794
+#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:804
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
 msgid "Catalan"
 msgstr "Katalánština"
@@ -1123,7 +1036,7 @@ msgstr "Čínština (zjednodušená)"
 msgid "Chinese (traditional)"
 msgstr "Čínština (tradiční)"
 
-#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:795
+#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:805
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
 msgid "Czech"
 msgstr "Čeština"
@@ -1136,7 +1049,7 @@ msgstr "Dánština"
 msgid "Dutch"
 msgstr "Holandština"
 
-#: qml/PreferencesPage.qml:71 qml/PreferencesPage.qml:793
+#: qml/PreferencesPage.qml:71 qml/PreferencesPage.qml:803
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
 msgid "English"
 msgstr "Angličtina"
@@ -1145,12 +1058,12 @@ msgstr "Angličtina"
 msgid "Finnish"
 msgstr "Finština"
 
-#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:798
+#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:808
 #: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
 msgid "French"
 msgstr "Francouzština"
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:796
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:806
 #: routers/gpx_osmscout_settings.qml:74 routers/mapquest_open_settings.qml:58
 #: routers/ValhallaSettings.qml:60
 msgid "German"
@@ -1168,7 +1081,7 @@ msgstr "Řečtina"
 msgid "Hebrew"
 msgstr "Hebrejština"
 
-#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:799
+#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:809
 #: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
 msgid "Hindi"
 msgstr "Hindština"
@@ -1177,7 +1090,7 @@ msgstr "Hindština"
 msgid "Indonesian"
 msgstr "Indonézština"
 
-#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:800
+#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:810
 #: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
 msgid "Italian"
 msgstr "Italština"
@@ -1207,7 +1120,7 @@ msgstr "Polština"
 msgid "Portuguese"
 msgstr "Portugalština"
 
-#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:801
+#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:811
 #: routers/gpx_osmscout_settings.qml:75 routers/mapquest_open_settings.qml:58
 #: routers/ValhallaSettings.qml:61
 msgid "Russian"
@@ -1217,12 +1130,12 @@ msgstr "Ruština"
 msgid "Sinhalese"
 msgstr "Sinhálština"
 
-#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:797
+#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:807
 #: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
 msgid "Spanish"
 msgstr "Španělština"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:803
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:813
 #: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
 msgid "Swedish"
 msgstr "Švédština"
@@ -1297,7 +1210,7 @@ msgstr "Automatické dokončování při vyhledávání"
 msgid "Device"
 msgstr "Zařízení"
 
-#: qml/PreferencesPage.qml:205
+#: qml/PreferencesPage.qml:206
 msgid ""
 "You can control if and when Pure Maps keeps display active and works in the "
 "background. It is recommended to allow Pure Maps to prevent screensaver "
@@ -1310,7 +1223,7 @@ msgstr ""
 "Dále se hodí zejména pokud chcete dostávat hlasové pokyny když máte zařízení"
 " v kapse."
 
-#: qml/PreferencesPage.qml:219
+#: qml/PreferencesPage.qml:220
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
@@ -1318,25 +1231,25 @@ msgstr ""
 "Platí pouze, když jsou Pure Maps aktivní. Po minimalizaci je screensaver "
 "ovládán nastavením systému."
 
-#: qml/PreferencesPage.qml:221
+#: qml/PreferencesPage.qml:222
 msgid "Prevent screensaver"
 msgstr "Potlačit screensaver"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
-#: qml/PreferencesPage.qml:517 qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
+#: qml/PreferencesPage.qml:522 qml/PreferencesPage.qml:603
 msgid "Never"
 msgstr "Nikdy"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
+#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
 msgid "When navigating"
 msgstr "Při navigaci"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
-#: qml/PreferencesPage.qml:517
+#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
+#: qml/PreferencesPage.qml:522
 msgid "Always"
 msgstr "Vždy"
 
-#: qml/PreferencesPage.qml:235
+#: qml/PreferencesPage.qml:236
 msgid ""
 "Allows to keep positioning and navigation instructions spoken even when the "
 "screen is switched off. If set to 'never', usual device suspend policy is "
@@ -1345,15 +1258,15 @@ msgstr ""
 "Umožňuje zachovat hlasové pokyny i při vypnutém displayi. Pokud nastavíte "
 "'nikdy', je vše řízeno systémem."
 
-#: qml/PreferencesPage.qml:238
+#: qml/PreferencesPage.qml:239
 msgid "Prevent sleep"
 msgstr "Nezhasínat displej"
 
-#: qml/PreferencesPage.qml:260
+#: qml/PreferencesPage.qml:261
 msgid "Privacy"
 msgstr "Soukromí"
 
-#: qml/PreferencesPage.qml:266
+#: qml/PreferencesPage.qml:268
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
@@ -1361,27 +1274,27 @@ msgstr ""
 "Vymažte celou historii, včetně vyhledávání, tras a cílů. Upozorňujeme, že "
 "záložky zůstanou zachovány."
 
-#: qml/PreferencesPage.qml:274
+#: qml/PreferencesPage.qml:277
 msgid "History cleared"
 msgstr "Historie vymazána"
 
-#: qml/PreferencesPage.qml:283
+#: qml/PreferencesPage.qml:286
 msgid "Clear history"
 msgstr "Smazat historii"
 
-#: qml/PreferencesPage.qml:295
+#: qml/PreferencesPage.qml:298
 msgid "Clear map tiles stored in a cache"
 msgstr "Vymazat dlaždice mapy uložené v mezipaměti"
 
-#: qml/PreferencesPage.qml:303
+#: qml/PreferencesPage.qml:306
 msgid "Clear cache"
 msgstr "Vyčistit mezipaměť"
 
-#: qml/PreferencesPage.qml:315
+#: qml/PreferencesPage.qml:318
 msgid "API keys"
 msgstr "API klíče"
 
-#: qml/PreferencesPage.qml:321
+#: qml/PreferencesPage.qml:325
 msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
@@ -1391,15 +1304,15 @@ msgstr ""
 "Zkontrolujte podmínky pro každou službu, kterou chcete použít, abyste se "
 "ujistili, že budou dodrženy."
 
-#: qml/PreferencesPage.qml:329
+#: qml/PreferencesPage.qml:334
 msgid "Please restart application after changing API keys."
 msgstr "restartujte aplikaci po změně api klíče"
 
-#: qml/PreferencesPage.qml:370
+#: qml/PreferencesPage.qml:375
 msgid "Exploring"
 msgstr "Prozkoumat"
 
-#: qml/PreferencesPage.qml:376
+#: qml/PreferencesPage.qml:381
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
@@ -1407,68 +1320,68 @@ msgstr ""
 "Vyberte způsob dopravy. Platí pouze v případě, že aplikace Pure Maps "
 "nenaviguje. Používá server OSM Scout."
 
-#: qml/PreferencesPage.qml:377 qml/PreferencesPage.qml:447
+#: qml/PreferencesPage.qml:382 qml/PreferencesPage.qml:452
 msgid "Snap position to road"
 msgstr "Přichytávat k silnicím"
 
-#: qml/PreferencesPage.qml:378 routers/gpx_osmscout_settings.qml:31
+#: qml/PreferencesPage.qml:383 routers/gpx_osmscout_settings.qml:31
 #: routers/gpx_settings.qml:31
 msgid "None"
 msgstr "Nic"
 
-#: qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
+#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Foot"
 msgstr "Chůze"
 
-#: qml/PreferencesPage.qml:407
+#: qml/PreferencesPage.qml:412
 msgid "Show navigation instructions"
 msgstr "Zobrazit navigační pokyny"
 
-#: qml/PreferencesPage.qml:417
+#: qml/PreferencesPage.qml:422
 msgid "Voice navigation instructions"
 msgstr "Pokyny pro hlasovou navigaci"
 
-#: qml/PreferencesPage.qml:427
+#: qml/PreferencesPage.qml:432
 msgid "Reroute automatically"
 msgstr "Automaticky přepočítat trasu"
 
-#: qml/PreferencesPage.qml:436
+#: qml/PreferencesPage.qml:441
 msgid "Automatic zoom on start"
 msgstr "Autom. přiblížení při spuštění"
 
-#: qml/PreferencesPage.qml:446
+#: qml/PreferencesPage.qml:451
 msgid "Uses OSM Scout Server for its operation."
 msgstr "K provozu používá OSM Scout server."
 
-#: qml/PreferencesPage.qml:458
+#: qml/PreferencesPage.qml:463
 msgid "Show direction signs"
 msgstr "Zobrazit směrové značky"
 
-#: qml/PreferencesPage.qml:468
+#: qml/PreferencesPage.qml:473
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr "Nastavit rotaci mapy ve směru pohybu při spuštění navigace."
 
-#: qml/PreferencesPage.qml:469
+#: qml/PreferencesPage.qml:474
 msgid "Rotate map when navigating"
 msgstr "Otočení mapy při navigaci"
 
-#: qml/PreferencesPage.qml:478
+#: qml/PreferencesPage.qml:483
 msgid "Only applies to vector maps."
 msgstr "Platí pouze pro vektorové mapy."
 
-#: qml/PreferencesPage.qml:480
+#: qml/PreferencesPage.qml:485
 msgid "Tilt map when navigating"
 msgstr "Naklonit mapu při navigaci"
 
-#: qml/PreferencesPage.qml:488
+#: qml/PreferencesPage.qml:493
 msgid "Smooth position animation"
 msgstr "Hladká animace polohy"
 
-#: qml/PreferencesPage.qml:498
+#: qml/PreferencesPage.qml:503
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
@@ -1476,19 +1389,19 @@ msgstr ""
 "Preferované pohlaví pro hlasovou navigaci. Podporováno pouze některými "
 "enginy a jazyky."
 
-#: qml/PreferencesPage.qml:499 qml/PreferencesPage.qml:825
+#: qml/PreferencesPage.qml:504 qml/PreferencesPage.qml:835
 msgid "Voice gender"
 msgstr "Pohlaví hlasu"
 
-#: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
+#: qml/PreferencesPage.qml:505 qml/PreferencesPage.qml:836
 msgid "Male"
 msgstr "Mužské"
 
-#: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
+#: qml/PreferencesPage.qml:505 qml/PreferencesPage.qml:836
 msgid "Female"
 msgstr "Ženské"
 
-#: qml/PreferencesPage.qml:514
+#: qml/PreferencesPage.qml:519
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
@@ -1496,19 +1409,19 @@ msgstr ""
 "Zobrazit značku omezení rychlosti. K nalezení rychlostního limitu je nutné "
 "zapnout přichytávání k silnici."
 
-#: qml/PreferencesPage.qml:516
+#: qml/PreferencesPage.qml:521
 msgid "Speed limit"
 msgstr "Rychlostní omezení"
 
-#: qml/PreferencesPage.qml:517
+#: qml/PreferencesPage.qml:522
 msgid "Only when exceeding"
 msgstr "Pouze při překročení"
 
-#: qml/PreferencesPage.qml:540 qml/PreferencesPage.qml:641
+#: qml/PreferencesPage.qml:545 qml/PreferencesPage.qml:649
 msgid "Compass"
 msgstr "Kompas"
 
-#: qml/PreferencesPage.qml:546
+#: qml/PreferencesPage.qml:552
 msgid ""
 "Compass can be used to determine orientation of your device and align the "
 "map accordingly. Note that the compass is enabled only when your position is"
@@ -1519,19 +1432,19 @@ msgstr ""
 "Kompas je povolen pouze tehdy když je nalezena poloha, rychlost je nízká a "
 "při navigaci pouze na kole nebo pěšky."
 
-#: qml/PreferencesPage.qml:556
+#: qml/PreferencesPage.qml:562
 msgid "Use compass for determination of the direction."
 msgstr "Používat kompas pro odhad směru"
 
-#: qml/PreferencesPage.qml:557
+#: qml/PreferencesPage.qml:563
 msgid "Use compass"
 msgstr "Použít kompas"
 
-#: qml/PreferencesPage.qml:569
+#: qml/PreferencesPage.qml:575
 msgid "Controls"
 msgstr "Ovládání"
 
-#: qml/PreferencesPage.qml:575
+#: qml/PreferencesPage.qml:582
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
@@ -1541,11 +1454,11 @@ msgstr ""
 "ovládacích prvku v minimalizovaném módu. K přepnutí mezi nimi klikněte na "
 "mapu."
 
-#: qml/PreferencesPage.qml:584
+#: qml/PreferencesPage.qml:591
 msgid "Set map view to minimal mode on start"
 msgstr "Při spuštění nastavit minimalizovaný mód ovládacích prvků"
 
-#: qml/PreferencesPage.qml:592
+#: qml/PreferencesPage.qml:599
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
@@ -1553,31 +1466,31 @@ msgstr ""
 "Automaticky přepnout na minimalizovaný po uplynutí času nebo vypnutém "
 "automatickém přepínání mezi módy mapy."
 
-#: qml/PreferencesPage.qml:594
+#: qml/PreferencesPage.qml:601
 msgid "Switch to minimal view"
 msgstr "Přepnout na minimalizované zobrazení"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:603
 msgid "10 seconds"
 msgstr "10 sekund"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:603
 msgid "20 seconds"
 msgstr "20 sekund"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:604
 msgid "30 seconds"
 msgstr "30 sekund"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:604
 msgid "1 minute"
 msgstr "1 minuta"
 
-#: qml/PreferencesPage.qml:611
+#: qml/PreferencesPage.qml:618
 msgid "Always show"
 msgstr "Vždy zobrazit"
 
-#: qml/PreferencesPage.qml:615
+#: qml/PreferencesPage.qml:623
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
@@ -1585,39 +1498,39 @@ msgstr ""
 "Vždy zobrazit zvolené ovládací prvky bez ohledu na to, zda je mapa v "
 "minimalizovaném nebo plném módu."
 
-#: qml/PreferencesPage.qml:623
+#: qml/PreferencesPage.qml:631
 msgid "Menu"
 msgstr "Menu"
 
-#: qml/PreferencesPage.qml:632
+#: qml/PreferencesPage.qml:640
 msgid "Center on current location"
 msgstr "Centrovat na aktuální umístění"
 
-#: qml/PreferencesPage.qml:650
+#: qml/PreferencesPage.qml:658
 msgid "Map selection"
 msgstr "Výběr mapy"
 
-#: qml/PreferencesPage.qml:659
+#: qml/PreferencesPage.qml:667
 msgid "Speed and location precision"
 msgstr "Rychlost a přesnost polohy"
 
-#: qml/PreferencesPage.qml:668
+#: qml/PreferencesPage.qml:676
 msgid "Scale"
 msgstr "Měřítko"
 
-#: qml/PreferencesPage.qml:695
+#: qml/PreferencesPage.qml:703
 msgid "Navigation Start/Pause"
 msgstr "Start/pauza navigace"
 
-#: qml/PreferencesPage.qml:704
+#: qml/PreferencesPage.qml:712
 msgid "Navigation Clear Route"
 msgstr "Smazat trasu"
 
-#: qml/PreferencesPage.qml:719
+#: qml/PreferencesPage.qml:727
 msgid "Zoom"
 msgstr "Zoom"
 
-#: qml/PreferencesPage.qml:725
+#: qml/PreferencesPage.qml:734
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
@@ -1625,7 +1538,7 @@ msgstr ""
 "Úroveň zoomu může být automaticky přizpůsobena vaší rychlosti. Zde můžete "
 "upravit nastavení této funkce."
 
-#: qml/PreferencesPage.qml:735
+#: qml/PreferencesPage.qml:744
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
@@ -1633,11 +1546,11 @@ msgstr ""
 "Maximální úroveň přiblížení, která by měla být použita v automaticky "
 "nastaveném přiblížení."
 
-#: qml/PreferencesPage.qml:737
+#: qml/PreferencesPage.qml:746
 msgid "Maximal zoom level"
 msgstr "Maximální úroveň přiblížení"
 
-#: qml/PreferencesPage.qml:748
+#: qml/PreferencesPage.qml:757
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
@@ -1645,15 +1558,15 @@ msgstr ""
 "Úroveň přiblížení bude přizpůsobena výšce mapy a současně vzdálenosti, "
 "kterou urazíte za dané množství sekund."
 
-#: qml/PreferencesPage.qml:751
+#: qml/PreferencesPage.qml:760
 msgid "Time range, s"
 msgstr "Časové rozpětí, s"
 
-#: qml/PreferencesPage.qml:770
+#: qml/PreferencesPage.qml:779
 msgid "Testing"
 msgstr "Testování"
 
-#: qml/PreferencesPage.qml:779
+#: qml/PreferencesPage.qml:789
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
@@ -1661,24 +1574,24 @@ msgstr ""
 "Test Text-to-Speech (TTS) engine. Vyberte stejný jazyk jako pro navigaci, "
 "preferované pohlaví a pro spuštění testu stiskněte dolní tlačítko."
 
-#: qml/PreferencesPage.qml:802
+#: qml/PreferencesPage.qml:812
 msgid "Slovak"
 msgstr "Slovenština"
 
-#: qml/PreferencesPage.qml:824
+#: qml/PreferencesPage.qml:834
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr ""
 "Preferované pohlaví hlasu. Podporováno pouze některými enginy a jazyky."
 
-#: qml/PreferencesPage.qml:838
+#: qml/PreferencesPage.qml:848
 msgid "Test"
 msgstr "Test"
 
-#: qml/PreferencesPage.qml:848
+#: qml/PreferencesPage.qml:859
 msgid "Selected voice engine: %1"
 msgstr "Vybraný hlasový engine: %1"
 
-#: qml/PreferencesPage.qml:850
+#: qml/PreferencesPage.qml:861
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1688,11 +1601,11 @@ msgstr ""
 "\n"
 "Pure Maps podporuje enginy Mimic, Flite, PicoTTS a Espeak TTS. Pokud nepoužíváte Pure Maps přes Flatpak nebo OpenStore, musí být enginy nainstalovány samostatně. Uživatelé Sailfish OS mohou najít enginy na OpenRepos."
 
-#: qml/PreferencesPage.qml:884
+#: qml/PreferencesPage.qml:895
 msgid "Development"
 msgstr "Vývoj"
 
-#: qml/PreferencesPage.qml:890
+#: qml/PreferencesPage.qml:902
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1700,7 +1613,7 @@ msgstr ""
 "Následující možnosti jsou určeny pouze pro vývoj. Neměňte je, pokud nevíte, "
 "co děláte."
 
-#: qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:910
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1708,11 +1621,11 @@ msgstr ""
 "Nastaví aktuální polohu do středu aktuálního zobrazení mapy. Nezapomeňte "
 "zakázat GPS při použití této možnosti."
 
-#: qml/PreferencesPage.qml:899
+#: qml/PreferencesPage.qml:911
 msgid "Set position to the map center"
 msgstr "Nastavte polohu na střed mapy"
 
-#: qml/PreferencesPage.qml:906
+#: qml/PreferencesPage.qml:918
 msgid "Show current zoom level"
 msgstr "Zobrazit aktuální úroveň zvětšení"
 
@@ -1735,51 +1648,92 @@ msgstr "Celkem"
 msgid "Route"
 msgstr "Trasa"
 
-#: qml/RoutePage.qml:51
+#: qml/RoutePage.qml:59
 msgid "Follow me"
 msgstr "Následovat"
 
-#: qml/RoutePage.qml:63
+#: qml/RoutePage.qml:71
 msgid "Reverse endpoints"
 msgstr "Zaměnit start a cíl"
 
-#: qml/RoutePage.qml:136
+#: qml/RoutePage.qml:145
 msgid "From"
 msgstr "Z"
 
-#: qml/RoutePage.qml:137
+#: qml/RoutePage.qml:146
 msgid "Origin"
 msgstr "Počátek"
 
-#: qml/RoutePage.qml:143
+#: qml/RoutePage.qml:152
 msgid "To"
 msgstr "Do"
 
-#: qml/RoutePage.qml:144
+#: qml/RoutePage.qml:153
 msgid "Destination"
 msgstr "Cíl"
 
-#: qml/RoutePage.qml:187
+#: qml/RoutePage.qml:160 qml/RoutePage.qml:167
+msgid "Destinations and waypoints"
+msgstr ""
+
+#: qml/RoutePage.qml:168
+msgid ""
+"Additional destinations and wayponts can be added along the route. The both locations are used for calculation of the route, but only destinations are tracked for being reached. As a result, if you miss the waypoint and later rejoin the calculated route after the waypoint, it will be assumed that waypoint was reached and it will be dismissed in the rerouting calculations later. In contrast, destinations have to be reached within the certain tolerance and will not be dismissed in such manner.\n"
+"\n"
+"So, set as destination the locations that you need to reach on your route and as waypoints the locations that are just for shaping the route according to your preferences.\n"
+"\n"
+"Dismiss this dialog to stop showing this message."
+msgstr ""
+
+#: qml/RoutePage.qml:205
+msgid "Up"
+msgstr ""
+
+#: qml/RoutePage.qml:214
+msgid "Down"
+msgstr ""
+
+#: qml/RoutePage.qml:228
+msgid "Convert to waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:229
+msgid "Convert to destination"
+msgstr ""
+
+#: qml/RoutePage.qml:303
+msgid "Add destination"
+msgstr ""
+
+#: qml/RoutePage.qml:313
+msgid "Add waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:367
 msgid "Routes"
 msgstr "Trasy"
 
-#: qml/RoutePage.qml:263
+#: qml/RoutePage.qml:395
+msgid "%1 ‒ %2 (%3 destinations and waypoints)"
+msgstr ""
+
+#: qml/RoutePage.qml:459
 msgid "Destinations"
 msgstr "Cíle"
 
-#: qml/RoutePage.qml:358
+#: qml/RoutePage.qml:553
 msgid "Follow the movement and show just in time information"
 msgstr "Sledovat pohy a zobrazovat včasné informace"
 
-#: qml/RoutePage.qml:367
+#: qml/RoutePage.qml:562
 msgid "Stop"
 msgstr "Stop"
 
-#: qml/RoutePage.qml:367
+#: qml/RoutePage.qml:562
 msgid "Begin"
 msgstr "Počátek"
 
-#: qml/RoutePage.qml:385
+#: qml/RoutePage.qml:580
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
@@ -1787,7 +1741,7 @@ msgstr ""
 "Vyberte způsob dopravy. Platí pouze v případě, že aplikace Pure Maps je v "
 "režimu sledování."
 
-#: qml/RoutePage.qml:387
+#: qml/RoutePage.qml:582
 msgid "Mode of transportation"
 msgstr "Způsob dopravy"
 
@@ -1859,81 +1813,12 @@ msgstr "Přidat odkaz na OpenStreetMaps"
 msgid "Add link to Google Maps"
 msgstr "Přidat odkaz do Google Maps"
 
-#: routers/default_results.qml:81 routers/digitransit_results.qml:186
-#: routers/gpx_osmscout_results.qml:81 routers/gpx_results.qml:81
-#: routers/mapquest_open_results.qml:81 routers/osmscout_results.qml:81
-#: routers/osrm_results.qml:81 routers/stadiamaps_results.qml:81
+#: routers/default_results.qml:60 routers/gpx_osmscout_results.qml:60
+#: routers/gpx_results.qml:60 routers/mapquest_open_results.qml:60
+#: routers/osmscout_results.qml:60 routers/osrm_results.qml:60
+#: routers/stadiamaps_results.qml:60
 msgid "Route to %1"
 msgstr "Trasa do %1"
-
-#: routers/digitransit_results.qml:61
-msgid "Route %1. total %2"
-msgstr "Cesta %1. celkem %2"
-
-#: routers/digitransit_results.qml:156
-msgid "Walk %1"
-msgstr "Chůze %1"
-
-#: routers/digitransit_results.qml:157
-msgid "%1 → %2"
-msgstr "%1 → %2"
-
-#: routers/digitransit_results.qml:266
-msgid "Results"
-msgstr "Výsledky"
-
-#: routers/digitransit_settings.qml:31
-msgid "Region"
-msgstr "Region"
-
-#: routers/digitransit_settings.qml:32
-msgid "HSL"
-msgstr "HSL"
-
-#: routers/digitransit_settings.qml:32
-msgid "Waltti"
-msgstr "Cestovní karta Waltti"
-
-#: routers/digitransit_settings.qml:32
-msgid "Finland"
-msgstr "Finsko"
-
-#: routers/digitransit_settings.qml:72 routers/digitransit_settings.qml:74
-#: routers/digitransit_settings.qml:78
-msgid "Depart"
-msgstr "Odjezd"
-
-#: routers/digitransit_settings.qml:75
-msgid "Arrive"
-msgstr "Příjezd"
-
-#: routers/digitransit_settings.qml:91
-msgid "Today"
-msgstr "Dnes"
-
-#: routers/digitransit_settings.qml:98
-msgid "Select date"
-msgstr "Vyberte datum"
-
-#: routers/digitransit_settings.qml:119
-msgid "Now"
-msgstr "Nyní"
-
-#: routers/digitransit_settings.qml:127
-msgid "Select time"
-msgstr "Vyberte čas"
-
-#: routers/digitransit_settings.qml:145
-msgid "Criterion"
-msgstr "Kritéria"
-
-#: routers/digitransit_settings.qml:146
-msgid "Least transfers"
-msgstr "Minimum přesunů"
-
-#: routers/digitransit_settings.qml:146
-msgid "Least walking"
-msgstr "Minimum chůze"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
@@ -2188,43 +2073,47 @@ msgstr ""
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
 
-#: src/navigator.cpp:103
+#: src/navigator.cpp:158
 msgid "Position unknown"
 msgstr ""
 
-#: src/navigator.cpp:109
+#: src/navigator.cpp:164
 msgid "Position imprecise: accuracy %1"
 msgstr ""
 
-#: src/navigator.cpp:126 src/navigator.cpp:306
+#: src/navigator.cpp:183 src/navigator.cpp:446
 msgid "Preparing to start navigation"
 msgstr ""
 
-#: src/navigator.cpp:331
+#: src/navigator.cpp:488
 msgid "Moving in a wrong direction"
 msgstr ""
 
-#: src/navigator.cpp:341
+#: src/navigator.cpp:498
 msgid "Away from route"
 msgstr ""
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:512 src/navigator.cpp:523
+#: src/navigator.cpp:669 src/navigator.cpp:680
 msgid "In %2, %1"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:695
+#: src/navigator.cpp:926
 msgid "%1 h %2 min"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:697
+#: src/navigator.cpp:928
 msgid "%1 min"
 msgstr ""
+
+#: src/navigator.cpp:973
+msgid "Starting navigation"
+msgstr "Spouští se navigace"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
@@ -2255,35 +2144,32 @@ msgid "Points of interest from OpenStreetMap data"
 msgstr "Zajímavá místa z OpenStreetMap"
 
 #: standard input:8
-msgid "Public transport routing in Finland"
-msgstr "Trasy veřejné dopravy ve Finsku"
-
-#: standard input:9
-msgid "public transport"
-msgstr "veřejná doprava"
-
-#: standard input:10
 msgid "Routing along GPX track"
 msgstr "Trasování podle GPX trasy"
 
-#: standard input:11 standard input:13 standard input:15 standard input:17
-#: standard input:19 standard input:21
+#: standard input:9 standard input:11 standard input:13 standard input:15
+#: standard input:17 standard input:19
 msgid "car"
 msgstr "autem"
 
-#: standard input:11 standard input:13 standard input:15 standard input:17
-#: standard input:21
+#: standard input:9 standard input:11 standard input:13 standard input:15
+#: standard input:19
+msgid "bicycle"
+msgstr "kolo"
+
+#: standard input:9 standard input:11 standard input:13 standard input:15
+#: standard input:19
 msgid "foot"
 msgstr "pěšky"
 
-#: standard input:12
+#: standard input:10
 msgid "Routing along GPX track processed by OSM Scout Server"
 msgstr "Trasování podle tras GPX zpracovaných OSM Scout Serverem"
 
-#: standard input:14 standard input:16 standard input:18
+#: standard input:12 standard input:14 standard input:16
 msgid "Routing based on OpenStreetMap data"
 msgstr "Spojení založené na datech z OpenStreetMap"
 
-#: standard input:20
+#: standard input:18
 msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr "Spojení Valhallou založené na datech z OpenStreetMap"

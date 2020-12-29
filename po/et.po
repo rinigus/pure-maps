@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-16 18:31+0200\n"
+"POT-Creation-Date: 2020-12-29 22:10+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2020\n"
 "Language-Team: Estonian (https://www.transifex.com/rinigus/teams/89597/et/)\n"
@@ -38,16 +38,16 @@ msgid "Point from Plus code"
 msgstr "Asukoht OLC-koodi alusel"
 
 #: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:134
+#: poor/router.py:135
 msgid "Connection timed out"
 msgstr "Ühendus aegus"
 
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137
-#: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:31
-#: qml/RoutePage.qml:220 qml/RoutePage.qml:225 qml/RoutePage.qml:425
-#: qml/RoutePage.qml:440 qml/RoutePage.qml:442 qml/RoutePoint.qml:42
-#: qml/RoutePoint.qml:58
+#: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:32
+#: qml/RoutePage.qml:36 qml/RoutePage.qml:401 qml/RoutePage.qml:406
+#: qml/RoutePage.qml:620 qml/RoutePage.qml:658 qml/RoutePoint.qml:44
+#: qml/RoutePoint.qml:62
 msgid "Current position"
 msgstr "Praegune asukoht"
 
@@ -131,71 +131,49 @@ msgstr "HERE rakenduse tunnus"
 msgid "HERE App Code"
 msgstr "HERE rakenduse kood"
 
-#: poor/narrative.py:139
-#, python-brace-format
-msgid "In {distance}, {direction}"
-msgstr "{distance} kaugusel, {direction}"
-
-#: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
-#: poor/router.py:105
+#: poor/router.py:103 poor/router.py:105
 msgid "Exit: "
 msgstr "Ärapööre: "
 
-#: poor/narrative.py:629 qml/Navigator.qml:190 src/navigator.cpp:830
-msgid "New route found"
-msgstr "Leidsin uue teekonna"
-
-#: poor/narrative.py:630 qml/Navigator.qml:172 src/navigator.cpp:831
-msgid "Rerouting"
-msgstr "Muudan teekonda"
-
-#: poor/narrative.py:631 qml/Navigator.qml:195 src/navigator.cpp:832
-msgid "Rerouting failed"
-msgstr "Teekonna muutmine ei õnnestunud"
-
-#: poor/narrative.py:632 src/navigator.cpp:829
-msgid "Starting navigation"
-msgstr "Alustan teekonda"
-
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:737
-#: src/navigator.cpp:749
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:881
+#: src/navigator.cpp:893
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:737
-#: src/navigator.cpp:749
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:881
+#: src/navigator.cpp:893
 msgid "miles"
 msgstr "miili"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:740
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:884
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231 src/navigator.cpp:740
+#: poor/util.py:231 src/navigator.cpp:884
 msgid "feet"
 msgstr "jalga"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:752
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:896
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242 src/navigator.cpp:752
+#: poor/util.py:242 src/navigator.cpp:896
 msgid "yards"
 msgstr "jardi"
 
-#: poor/util.py:249 src/navigator.cpp:761
+#: poor/util.py:249 src/navigator.cpp:905
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249 src/navigator.cpp:761
+#: poor/util.py:249 src/navigator.cpp:905
 msgid "kilometers"
 msgstr "kilomeetrit"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:764
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:908
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253 src/navigator.cpp:764
+#: poor/util.py:253 src/navigator.cpp:908
 msgid "meters"
 msgstr "meetrit"
 
@@ -251,98 +229,6 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
-#: routers/digitransit.py:58
-msgid "airplane"
-msgstr "lennuk"
-
-#: routers/digitransit.py:59 standard input:11 standard input:13 standard
-#: input:15 standard input:17 standard input:21
-msgid "bicycle"
-msgstr "jalgratas"
-
-#: routers/digitransit.py:60
-msgid "bus"
-msgstr "buss"
-
-#: routers/digitransit.py:61
-msgid "ferry"
-msgstr "praam"
-
-#: routers/digitransit.py:62
-msgid "train"
-msgstr "rong"
-
-#: routers/digitransit.py:63
-msgid "metro"
-msgstr "metroo"
-
-#: routers/digitransit.py:64
-msgid "tram"
-msgstr "tramm"
-
-#: routers/digitransit.py:65
-msgid "walk"
-msgstr "kõndimine"
-
-#: routers/digitransit.py:69
-#, python-brace-format
-msgid "Walk towards {arr_name}."
-msgstr "Kõnni {arr_name} suunas."
-
-#: routers/digitransit.py:70
-#, python-brace-format
-msgid "Get a city bike at {dep_name}."
-msgstr "Võta rendijalgratas {dep_name} laenutuspunktist."
-
-#: routers/digitransit.py:71 routers/digitransit.py:74
-#, python-brace-format
-msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr ""
-"Kasuta {mode_name} {line_desc} {dep_name} peatuses väljumisega {dep_time}."
-
-#: routers/digitransit.py:72
-msgid "Walk towards your destination."
-msgstr "Kõnni oma sihtkoha suunas."
-
-#: routers/digitransit.py:73
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr ""
-"Jäta rendijalgratas {dep_name} laentuspunkti ning kõnni {arr_name} suunas."
-
-#: routers/digitransit.py:75
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards your destination."
-msgstr ""
-"Jäta rendijalgratas {dep_name} laentuspunkti ning kõnni oma sihtkoha suunas."
-
-#: routers/digitransit.py:76
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Mine maha {dep_name} peatuses ja kõnni {arr_name} suunas."
-
-#: routers/digitransit.py:77
-#, python-brace-format
-msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Lahku {dep_name}  laenutuspunktist ja sõida {arr_name} suunas."
-
-#: routers/digitransit.py:78
-#, python-brace-format
-msgid ""
-"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
-msgstr ""
-"Mine maha {dep_name} peatuses ja istu ümber {mode_name} {line_desc} "
-"väljumisega {dep_time}."
-
-#: routers/digitransit.py:79
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Mine maha {dep_name} peatuses ja kõnni oma sihtkoha suunas."
-
-#: routers/digitransit.py:204
-msgid "Arrive at your destination."
-msgstr "Sa saabud oma sihtkohta."
-
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:114
 #: routers/ValhallaSettings.qml:150 routers/ValhallaSettings.qml:203
 #: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:238
@@ -364,15 +250,15 @@ msgid "Venue name"
 msgstr "Huvipunkti nimi"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
-#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:203
-#: qml/RoutePage.qml:281
+#: qml/NavigationPage.qml:179 qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
+#: qml/RoutePage.qml:222 qml/RoutePage.qml:383 qml/RoutePage.qml:477
 msgid "Remove"
 msgstr "Eemalda"
 
 #: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
 #: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
 #: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
-#: qml/PreferencesPage.qml:677
+#: qml/PreferencesPage.qml:685
 msgid "Search"
 msgstr "Otsi"
 
@@ -484,7 +370,7 @@ msgstr "Kaardid"
 msgid "Venues"
 msgstr "Kohad ja paigad"
 
-#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/PreferencesPage.qml:399
+#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/PreferencesPage.qml:404
 #: qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Teekonnad"
@@ -495,8 +381,7 @@ msgstr "Teekonnad"
 msgid "Type"
 msgstr "Tüüp"
 
-#: qml/BasemapButton.qml:221 routers/digitransit_settings.qml:146
-#: qml/js/util.js:236
+#: qml/BasemapButton.qml:221 qml/js/util.js:236
 msgid "Default"
 msgstr "Vaikimisi"
 
@@ -540,13 +425,13 @@ msgstr "Öö"
 msgid "Transport"
 msgstr "Transpordikaart"
 
-#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
+#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Bicycle"
 msgstr "Jalgratas"
 
-#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
+#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Car"
@@ -601,14 +486,13 @@ msgid "Searching ..."
 msgstr "Otsin ..."
 
 #: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:143
-#: routers/default_results.qml:90 routers/default_results.qml:93
-#: routers/digitransit_results.qml:271 routers/digitransit_results.qml:273
-#: routers/gpx_osmscout_results.qml:90 routers/gpx_osmscout_results.qml:93
-#: routers/gpx_results.qml:90 routers/gpx_results.qml:93
-#: routers/mapquest_open_results.qml:90 routers/mapquest_open_results.qml:93
-#: routers/osmscout_results.qml:90 routers/osmscout_results.qml:93
-#: routers/osrm_results.qml:90 routers/osrm_results.qml:93
-#: routers/stadiamaps_results.qml:90 routers/stadiamaps_results.qml:93
+#: routers/default_results.qml:69 routers/default_results.qml:72
+#: routers/gpx_osmscout_results.qml:69 routers/gpx_osmscout_results.qml:72
+#: routers/gpx_results.qml:69 routers/gpx_results.qml:72
+#: routers/mapquest_open_results.qml:69 routers/mapquest_open_results.qml:72
+#: routers/osmscout_results.qml:69 routers/osmscout_results.qml:72
+#: routers/osrm_results.qml:69 routers/osrm_results.qml:72
+#: routers/stadiamaps_results.qml:69 routers/stadiamaps_results.qml:72
 msgid "No results"
 msgstr "Tulemusi ei leidu"
 
@@ -621,8 +505,8 @@ msgid "Points of Interest (%1)"
 msgstr "Huvipunktid (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePage.qml:320 qml/RoutePage.qml:322
-#: qml/RoutePoint.qml:62
+#: qml/PoiPage.qml:47 qml/RoutePage.qml:515 qml/RoutePage.qml:517
+#: qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Tundmatu asukoht"
 
@@ -630,7 +514,7 @@ msgstr "Tundmatu asukoht"
 msgid "Recent searches (%1)"
 msgstr "Hiljutised otsingud (%1)"
 
-#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
+#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:44
 msgid "Change provider (%1)"
 msgstr "Muuda teenusepakkujat (%1)"
 
@@ -654,7 +538,7 @@ msgstr "Otsingumootor"
 msgid "Initializing"
 msgstr "Käivitan rakendust"
 
-#: qml/InitPage.qml:46
+#: qml/InitPage.qml:46 qml/RoutePage.qml:166
 msgid "Dismiss"
 msgstr "Jäta pooleli"
 
@@ -692,16 +576,10 @@ msgstr ""
 msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
-"application stores (OpenRepos for Sailfish OS, OpenStore for UBPorts), "
+"application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
-"Sa kasutad võrguühenduseta profiili. Palun kontrolli, et seadmesse oleks "
-"paigaldatud OSM Scout Server ning ta ka töötaks. Sõltuvalt missugust "
-"operatsioonisüsteemi sa kasutad, on ta sadaval kas rakendustepoest (Sailfish"
-" OS - OpenRepos, UBPorts - OpenStore), Flathub'ist või sinu distributsiooni "
-"repositooriumist. Lisateavet leiad <a href=\"https://rinigus.github.io"
-"/osmscout-server\">OSM Scout Serveri käsiraamatust</a>."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -810,39 +688,59 @@ msgstr "Teekonna võimalused"
 msgid "Pause"
 msgstr "Peata"
 
-#: qml/NavigationPage.qml:44 qml/PreferencesPage.qml:686 qml/RoutePage.qml:51
+#: qml/NavigationPage.qml:44 qml/PreferencesPage.qml:694 qml/RoutePage.qml:59
 msgid "Navigate"
 msgstr "Asu teele"
 
-#: qml/NavigationPage.qml:57
+#: qml/NavigationPage.qml:56
 msgid "Reroute"
 msgstr "Muuda"
 
-#: qml/NavigationPage.qml:69
+#: qml/NavigationPage.qml:68
 msgid "Clear"
 msgstr "Kustuta"
 
-#: qml/NavigationPage.qml:83
+#: qml/NavigationPage.qml:82
 msgid "Status"
 msgstr "Olek"
 
-#: qml/NavigationPage.qml:133
+#: qml/NavigationPage.qml:132
 msgid "Estimated time of arrival"
 msgstr "Eeldatav saabumine"
 
-#: qml/NavigationPage.qml:160 qml/Navigator.qml:68
+#: qml/NavigationPage.qml:159 qml/Navigator.qml:77
 msgid "Destination reached"
 msgstr "Saabusid sihtkohta"
+
+#: qml/NavigationPage.qml:191
+msgid "Final destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:193 qml/RoutePage.qml:240
+msgid "Destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:194 qml/RoutePage.qml:241
+msgid "Waypoint: %1"
+msgstr ""
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
 msgstr "VÄLJU"
 
-#: qml/Navigator.qml:111
+#: qml/Navigator.qml:69
+msgid "Destination %1 reached"
+msgstr ""
+
+#: qml/Navigator.qml:70
+msgid "Waypoint %1 reached"
+msgstr ""
+
+#: qml/Navigator.qml:120
 msgid "Voice navigation on"
 msgstr "Hääljuhtimine on kasutusel"
 
-#: qml/Navigator.qml:116
+#: qml/Navigator.qml:125
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -850,9 +748,21 @@ msgstr ""
 "Hääljuhtimine ei ole saadaval: valitud keele jaoks puudub kõnesünteesi (TTS)"
 " mootor"
 
-#: qml/Navigator.qml:186
+#: qml/Navigator.qml:192 src/navigator.cpp:975
+msgid "Rerouting"
+msgstr "Muudan teekonda"
+
+#: qml/Navigator.qml:208
 msgid "Rerouting failed: %1"
 msgstr "Teekonna muutmine ei õnnestunud: %1"
+
+#: qml/Navigator.qml:212 src/navigator.cpp:974
+msgid "New route found"
+msgstr "Leidsin uue teekonna"
+
+#: qml/Navigator.qml:217 src/navigator.cpp:976
+msgid "Rerouting failed"
+msgstr "Teekonna muutmine ei õnnestunud"
 
 #: qml/NearbyPage.qml:25
 msgid "Nearby Venues"
@@ -876,10 +786,9 @@ msgid "Radius"
 msgstr "Otsinguraadius"
 
 #: qml/NearbyResultsPage.qml:115 routers/default_results.qml:39
-#: routers/digitransit_results.qml:213 routers/gpx_osmscout_results.qml:39
-#: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
-#: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
-#: routers/stadiamaps_results.qml:39
+#: routers/gpx_osmscout_results.qml:39 routers/gpx_results.qml:39
+#: routers/mapquest_open_results.qml:39 routers/osmscout_results.qml:39
+#: routers/osrm_results.qml:39 routers/stadiamaps_results.qml:39
 msgid "Searching"
 msgstr "Otsin"
 
@@ -1097,7 +1006,7 @@ msgstr "Briti mõõdustik"
 msgid "Preferred map language."
 msgstr "Kaardil kasutatava keele eelistus."
 
-#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:791
+#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:801
 #: routers/gpx_osmscout_settings.qml:72 routers/mapquest_open_settings.qml:54
 #: routers/ValhallaSettings.qml:56
 msgid "Language"
@@ -1115,7 +1024,7 @@ msgstr "araabia"
 msgid "Basque"
 msgstr "baski"
 
-#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:794
+#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:804
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
 msgid "Catalan"
 msgstr "katalaani"
@@ -1128,7 +1037,7 @@ msgstr "hiina (lihtsustatud)"
 msgid "Chinese (traditional)"
 msgstr "hiina (traditsiooniline)"
 
-#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:795
+#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:805
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
 msgid "Czech"
 msgstr "tšehhi"
@@ -1141,7 +1050,7 @@ msgstr "taani"
 msgid "Dutch"
 msgstr "hollandi"
 
-#: qml/PreferencesPage.qml:71 qml/PreferencesPage.qml:793
+#: qml/PreferencesPage.qml:71 qml/PreferencesPage.qml:803
 #: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
 msgid "English"
 msgstr "inglise"
@@ -1150,12 +1059,12 @@ msgstr "inglise"
 msgid "Finnish"
 msgstr "soome"
 
-#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:798
+#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:808
 #: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
 msgid "French"
 msgstr "prantsuse"
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:796
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:806
 #: routers/gpx_osmscout_settings.qml:74 routers/mapquest_open_settings.qml:58
 #: routers/ValhallaSettings.qml:60
 msgid "German"
@@ -1173,7 +1082,7 @@ msgstr "kreeka"
 msgid "Hebrew"
 msgstr "heebrea"
 
-#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:799
+#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:809
 #: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
 msgid "Hindi"
 msgstr "hindi"
@@ -1182,7 +1091,7 @@ msgstr "hindi"
 msgid "Indonesian"
 msgstr "indoneesia"
 
-#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:800
+#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:810
 #: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
 msgid "Italian"
 msgstr "itaalia"
@@ -1212,7 +1121,7 @@ msgstr "poola"
 msgid "Portuguese"
 msgstr "portugali"
 
-#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:801
+#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:811
 #: routers/gpx_osmscout_settings.qml:75 routers/mapquest_open_settings.qml:58
 #: routers/ValhallaSettings.qml:61
 msgid "Russian"
@@ -1222,12 +1131,12 @@ msgstr "vene"
 msgid "Sinhalese"
 msgstr "singali"
 
-#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:797
+#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:807
 #: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
 msgid "Spanish"
 msgstr "hispaania"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:803
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:813
 #: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
 msgid "Swedish"
 msgstr "rootsi"
@@ -1302,7 +1211,7 @@ msgstr "Kasuta otsimisel automaatset sõnalõpetust"
 msgid "Device"
 msgstr "Nutiseade"
 
-#: qml/PreferencesPage.qml:205
+#: qml/PreferencesPage.qml:206
 msgid ""
 "You can control if and when Pure Maps keeps display active and works in the "
 "background. It is recommended to allow Pure Maps to prevent screensaver "
@@ -1315,7 +1224,7 @@ msgstr ""
 "nutiseade ei peaks unne vajuma. Viimane võimalus sobib hääljuhiste "
 "saamiseks, kui nutiseade asub taskus."
 
-#: qml/PreferencesPage.qml:219
+#: qml/PreferencesPage.qml:220
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
@@ -1323,25 +1232,25 @@ msgstr ""
 "Kehtiv vaid siis, kui Pure Maps on kasutusel ja esiplaanil. Minimiseeritud "
 "vaates kehtivad tavapärased seadme ekraanisäästja seadistused."
 
-#: qml/PreferencesPage.qml:221
+#: qml/PreferencesPage.qml:222
 msgid "Prevent screensaver"
 msgstr "Takista ekraanisäästja käivitumist"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
-#: qml/PreferencesPage.qml:517 qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
+#: qml/PreferencesPage.qml:522 qml/PreferencesPage.qml:603
 msgid "Never"
 msgstr "Mitte kunagi"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
+#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
 msgid "When navigating"
 msgstr "Teekonna ajal"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
-#: qml/PreferencesPage.qml:517
+#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
+#: qml/PreferencesPage.qml:522
 msgid "Always"
 msgstr "Alati"
 
-#: qml/PreferencesPage.qml:235
+#: qml/PreferencesPage.qml:236
 msgid ""
 "Allows to keep positioning and navigation instructions spoken even when the "
 "screen is switched off. If set to 'never', usual device suspend policy is "
@@ -1351,15 +1260,15 @@ msgstr ""
 "ekraan on välja lülitatud. Kui olekuks on määratud „mitte kunagi“, siis "
 "kehtivad tavapärased nutiseadme seadistused."
 
-#: qml/PreferencesPage.qml:238
+#: qml/PreferencesPage.qml:239
 msgid "Prevent sleep"
 msgstr "Takista nutiseadme unerežiimi käivitumist"
 
-#: qml/PreferencesPage.qml:260
+#: qml/PreferencesPage.qml:261
 msgid "Privacy"
 msgstr "Privaatsus"
 
-#: qml/PreferencesPage.qml:266
+#: qml/PreferencesPage.qml:268
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
@@ -1367,27 +1276,27 @@ msgstr ""
 "Kustuta kogu ajalugu, sealhulgas otsingud, teekonnad ja sihtkohad. Aga palun"
 " arvesta, et järjehoidjad jäävad alles."
 
-#: qml/PreferencesPage.qml:274
+#: qml/PreferencesPage.qml:277
 msgid "History cleared"
 msgstr "Ajalugu on kustutatud"
 
-#: qml/PreferencesPage.qml:283
+#: qml/PreferencesPage.qml:286
 msgid "Clear history"
 msgstr "Kustuta ajalugu"
 
-#: qml/PreferencesPage.qml:295
+#: qml/PreferencesPage.qml:298
 msgid "Clear map tiles stored in a cache"
 msgstr "Kustuta puhverdatud kaardipaanid"
 
-#: qml/PreferencesPage.qml:303
+#: qml/PreferencesPage.qml:306
 msgid "Clear cache"
 msgstr "Kustuta puhverdatud teave"
 
-#: qml/PreferencesPage.qml:315
+#: qml/PreferencesPage.qml:318
 msgid "API keys"
 msgstr "API võtmed"
 
-#: qml/PreferencesPage.qml:321
+#: qml/PreferencesPage.qml:325
 msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
@@ -1397,15 +1306,15 @@ msgstr ""
 "kasutamiseks. Tagamaks, et vajalikud tingimused on täidetud, palun tutvu "
 "eelnevalt teenuste kasutustingimustega."
 
-#: qml/PreferencesPage.qml:329
+#: qml/PreferencesPage.qml:334
 msgid "Please restart application after changing API keys."
 msgstr "Peale API võtmete muutmist palun käivita rakendus uuesti."
 
-#: qml/PreferencesPage.qml:370
+#: qml/PreferencesPage.qml:375
 msgid "Exploring"
 msgstr "Avastamine"
 
-#: qml/PreferencesPage.qml:376
+#: qml/PreferencesPage.qml:381
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
@@ -1413,87 +1322,87 @@ msgstr ""
 "Vali transpordiliik. Kehtib vaid siis, kui Pure Maps ei juhata teed. Eeldab "
 "OSM Scout Serveri kasutamist."
 
-#: qml/PreferencesPage.qml:377 qml/PreferencesPage.qml:447
+#: qml/PreferencesPage.qml:382 qml/PreferencesPage.qml:452
 msgid "Snap position to road"
 msgstr "Naksa asukoht tee külge"
 
-#: qml/PreferencesPage.qml:378 routers/gpx_osmscout_settings.qml:31
+#: qml/PreferencesPage.qml:383 routers/gpx_osmscout_settings.qml:31
 #: routers/gpx_settings.qml:31
 msgid "None"
 msgstr "Puudub"
 
-#: qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
+#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Foot"
 msgstr "Jalgsi"
 
-#: qml/PreferencesPage.qml:407
+#: qml/PreferencesPage.qml:412
 msgid "Show navigation instructions"
 msgstr "Kuva teekonnajuhiseid"
 
-#: qml/PreferencesPage.qml:417
+#: qml/PreferencesPage.qml:422
 msgid "Voice navigation instructions"
 msgstr "Hääljuhtimine teekonna kestel"
 
-#: qml/PreferencesPage.qml:427
+#: qml/PreferencesPage.qml:432
 msgid "Reroute automatically"
 msgstr "Muuda teekonda automaatselt"
 
-#: qml/PreferencesPage.qml:436
+#: qml/PreferencesPage.qml:441
 msgid "Automatic zoom on start"
 msgstr "Alustamisel suumi esimene vaade automaatselt"
 
-#: qml/PreferencesPage.qml:446
+#: qml/PreferencesPage.qml:451
 msgid "Uses OSM Scout Server for its operation."
 msgstr "Eeldab OSM Scout Serveri kasutamist."
 
-#: qml/PreferencesPage.qml:458
+#: qml/PreferencesPage.qml:463
 msgid "Show direction signs"
 msgstr "Näita teeviitasid"
 
-#: qml/PreferencesPage.qml:468
+#: qml/PreferencesPage.qml:473
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr "Alustades teekonda pööra kaarti liikumise suunas."
 
-#: qml/PreferencesPage.qml:469
+#: qml/PreferencesPage.qml:474
 msgid "Rotate map when navigating"
 msgstr "Teekonna juhatamisel pööra kaarti"
 
-#: qml/PreferencesPage.qml:478
+#: qml/PreferencesPage.qml:483
 msgid "Only applies to vector maps."
 msgstr "Kehtib vaid vektorkaartide puhul."
 
-#: qml/PreferencesPage.qml:480
+#: qml/PreferencesPage.qml:485
 msgid "Tilt map when navigating"
 msgstr "Teekonna näitamisel kalluta kaarti"
 
-#: qml/PreferencesPage.qml:488
+#: qml/PreferencesPage.qml:493
 msgid "Smooth position animation"
 msgstr "Asukoha sujuv joonistamine"
 
-#: qml/PreferencesPage.qml:498
+#: qml/PreferencesPage.qml:503
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
 "Eelistatud sugu hääljuhtimisel. Ainult mõned mootorid ja keeled on toetatud."
 
-#: qml/PreferencesPage.qml:499 qml/PreferencesPage.qml:825
+#: qml/PreferencesPage.qml:504 qml/PreferencesPage.qml:835
 msgid "Voice gender"
 msgstr "Soovin kuulda"
 
-#: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
+#: qml/PreferencesPage.qml:505 qml/PreferencesPage.qml:836
 msgid "Male"
 msgstr "mehe häält"
 
-#: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
+#: qml/PreferencesPage.qml:505 qml/PreferencesPage.qml:836
 msgid "Female"
 msgstr "naise häält"
 
-#: qml/PreferencesPage.qml:514
+#: qml/PreferencesPage.qml:519
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
@@ -1501,19 +1410,19 @@ msgstr ""
 "Näita kiiruspiirangu märki. Piirangu tuvastamine eeldab asukoha naksamist "
 "tee külge."
 
-#: qml/PreferencesPage.qml:516
+#: qml/PreferencesPage.qml:521
 msgid "Speed limit"
 msgstr "Kiiruspiirang"
 
-#: qml/PreferencesPage.qml:517
+#: qml/PreferencesPage.qml:522
 msgid "Only when exceeding"
 msgstr "Ainult piirangu ületamisel"
 
-#: qml/PreferencesPage.qml:540 qml/PreferencesPage.qml:641
+#: qml/PreferencesPage.qml:545 qml/PreferencesPage.qml:649
 msgid "Compass"
 msgstr "Kompass"
 
-#: qml/PreferencesPage.qml:546
+#: qml/PreferencesPage.qml:552
 msgid ""
 "Compass can be used to determine orientation of your device and align the "
 "map accordingly. Note that the compass is enabled only when your position is"
@@ -1525,19 +1434,19 @@ msgstr ""
 "asukoht on teada ja kiitus on väike. Kui kasutad tee näitamist, siis kasuta "
 "kompassi vaid jalgsi või jalgrattaga liikudes."
 
-#: qml/PreferencesPage.qml:556
+#: qml/PreferencesPage.qml:562
 msgid "Use compass for determination of the direction."
 msgstr "Suuna määramiseks kasuta kompassi."
 
-#: qml/PreferencesPage.qml:557
+#: qml/PreferencesPage.qml:563
 msgid "Use compass"
 msgstr "Kasuta kompassi"
 
-#: qml/PreferencesPage.qml:569
+#: qml/PreferencesPage.qml:575
 msgid "Controls"
 msgstr "Nupud ja valikud kaardil"
 
-#: qml/PreferencesPage.qml:575
+#: qml/PreferencesPage.qml:582
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
@@ -1547,11 +1456,11 @@ msgstr ""
 "vähendatud vaatena, kus kasutatakse vaid osasid juhtnuppe. Kahe vaate vahel "
 "liikumiseks klõpsa kaardil."
 
-#: qml/PreferencesPage.qml:584
+#: qml/PreferencesPage.qml:591
 msgid "Set map view to minimal mode on start"
 msgstr "Käivitamisel kasuta vähendatud vaadet"
 
-#: qml/PreferencesPage.qml:592
+#: qml/PreferencesPage.qml:599
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
@@ -1559,31 +1468,31 @@ msgstr ""
 "Võta vähendatud vaade automaatselt kasutusele peale antud aja möödumist või "
 "lülita automaatne vaate muutmine välja."
 
-#: qml/PreferencesPage.qml:594
+#: qml/PreferencesPage.qml:601
 msgid "Switch to minimal view"
 msgstr "Võta vähendatud vaade kasutusele"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:603
 msgid "10 seconds"
 msgstr "10 sekundi pärast"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:603
 msgid "20 seconds"
 msgstr "20 sekundi pärast"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:604
 msgid "30 seconds"
 msgstr "30 sekundi pärast"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:604
 msgid "1 minute"
 msgstr "1 minuti pärast"
 
-#: qml/PreferencesPage.qml:611
+#: qml/PreferencesPage.qml:618
 msgid "Always show"
 msgstr "Neid nuppe näita alati"
 
-#: qml/PreferencesPage.qml:615
+#: qml/PreferencesPage.qml:623
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
@@ -1591,39 +1500,39 @@ msgstr ""
 "Näita neid juhtnuppe alati sõltumata sellest, kas kasutad täisvaadet või "
 "vähendatud vaadet."
 
-#: qml/PreferencesPage.qml:623
+#: qml/PreferencesPage.qml:631
 msgid "Menu"
 msgstr "Menüü"
 
-#: qml/PreferencesPage.qml:632
+#: qml/PreferencesPage.qml:640
 msgid "Center on current location"
 msgstr "Säti kaardi keskpunkt praegusesse asukohta"
 
-#: qml/PreferencesPage.qml:650
+#: qml/PreferencesPage.qml:658
 msgid "Map selection"
 msgstr "Kaardi valik"
 
-#: qml/PreferencesPage.qml:659
+#: qml/PreferencesPage.qml:667
 msgid "Speed and location precision"
 msgstr "Kiiruse ja asukoha täpsus"
 
-#: qml/PreferencesPage.qml:668
+#: qml/PreferencesPage.qml:676
 msgid "Scale"
 msgstr "Mastaap"
 
-#: qml/PreferencesPage.qml:695
+#: qml/PreferencesPage.qml:703
 msgid "Navigation Start/Pause"
 msgstr "Alusta tee näitamist või peata tee näitamine"
 
-#: qml/PreferencesPage.qml:704
+#: qml/PreferencesPage.qml:712
 msgid "Navigation Clear Route"
 msgstr "Kustuta praegune teekond"
 
-#: qml/PreferencesPage.qml:719
+#: qml/PreferencesPage.qml:727
 msgid "Zoom"
 msgstr "Kaardi suum"
 
-#: qml/PreferencesPage.qml:725
+#: qml/PreferencesPage.qml:734
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
@@ -1631,17 +1540,17 @@ msgstr ""
 "Kaardi suurendust on võimalik vastavalt kiirusele automaatselt sättida. "
 "Järgnevalt saad sättida eelistusi, mis seda määravad."
 
-#: qml/PreferencesPage.qml:735
+#: qml/PreferencesPage.qml:744
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
 msgstr "Suurenduse piir milleni minnakse kaardi suumi automaatsel määramisel."
 
-#: qml/PreferencesPage.qml:737
+#: qml/PreferencesPage.qml:746
 msgid "Maximal zoom level"
 msgstr "Suurim suurendus"
 
-#: qml/PreferencesPage.qml:748
+#: qml/PreferencesPage.qml:757
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
@@ -1649,15 +1558,15 @@ msgstr ""
 "Suurenduse piir sätitakse selle kaardi kõrguse alusel, mille sa läbid "
 "määratud sekundite jooksul."
 
-#: qml/PreferencesPage.qml:751
+#: qml/PreferencesPage.qml:760
 msgid "Time range, s"
 msgstr "Ajavahemik sekundites"
 
-#: qml/PreferencesPage.qml:770
+#: qml/PreferencesPage.qml:779
 msgid "Testing"
 msgstr "Testime"
 
-#: qml/PreferencesPage.qml:779
+#: qml/PreferencesPage.qml:789
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
@@ -1665,23 +1574,23 @@ msgstr ""
 "Kõnesünteesi (TTS) mootori testimine. Vali sama keel, mida kasutad teekonna "
 "näitamisel ja eelistatud sugu ning testimiseks vajuta järgnevat nuppu."
 
-#: qml/PreferencesPage.qml:802
+#: qml/PreferencesPage.qml:812
 msgid "Slovak"
 msgstr "slovaki"
 
-#: qml/PreferencesPage.qml:824
+#: qml/PreferencesPage.qml:834
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "Eelistatud sugu. Ainult mõned mootorid ja keeled on toetatud."
 
-#: qml/PreferencesPage.qml:838
+#: qml/PreferencesPage.qml:848
 msgid "Test"
 msgstr "Testi"
 
-#: qml/PreferencesPage.qml:848
+#: qml/PreferencesPage.qml:859
 msgid "Selected voice engine: %1"
 msgstr "Valitud kõnesünteesi mootor: %1"
 
-#: qml/PreferencesPage.qml:850
+#: qml/PreferencesPage.qml:861
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1691,11 +1600,11 @@ msgstr ""
 "\n"
 "Pure Maps toetab järgnevaid kõnesünteesi mootoreid: Mimic, Flite, PicoTTS ja Espeak. Kui sa pole Pure Maps'i paigaldanud Flatpak'ina või OpenStore abil, siis pead nad eraldi paigaldama. Sailfish OS kasutajad leiavad  kõnesünteesi mootorid OpenRepos saidist."
 
-#: qml/PreferencesPage.qml:884
+#: qml/PreferencesPage.qml:895
 msgid "Development"
 msgstr "Arendus"
 
-#: qml/PreferencesPage.qml:890
+#: qml/PreferencesPage.qml:902
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1703,7 +1612,7 @@ msgstr ""
 "Järgnevad seadistused on mõeldud arendajatele. Kui sa ei tea, mida sa teed, "
 "siis palun ära muuda neid."
 
-#: qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:910
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1711,11 +1620,11 @@ msgstr ""
 "Sätib praeguse asukoha praeguse kaardivaate keskele. Asukoha määramine GPS'i"
 " alusel peab olema välja lülitatud."
 
-#: qml/PreferencesPage.qml:899
+#: qml/PreferencesPage.qml:911
 msgid "Set position to the map center"
 msgstr "Säti asukoht kaardi keskele"
 
-#: qml/PreferencesPage.qml:906
+#: qml/PreferencesPage.qml:918
 msgid "Show current zoom level"
 msgstr "Näita praegu kasutatavat suumitaset"
 
@@ -1738,58 +1647,99 @@ msgstr "Teekond kokku"
 msgid "Route"
 msgstr "Teekond"
 
-#: qml/RoutePage.qml:51
+#: qml/RoutePage.qml:59
 msgid "Follow me"
 msgstr "Järgne mulle"
 
-#: qml/RoutePage.qml:63
+#: qml/RoutePage.qml:71
 msgid "Reverse endpoints"
 msgstr "Vaheta teekonna otspunktid"
 
-#: qml/RoutePage.qml:136
+#: qml/RoutePage.qml:145
 msgid "From"
 msgstr "Algus"
 
-#: qml/RoutePage.qml:137
+#: qml/RoutePage.qml:146
 msgid "Origin"
 msgstr "Lähtepunkt"
 
-#: qml/RoutePage.qml:143
+#: qml/RoutePage.qml:152
 msgid "To"
 msgstr "Lõpp"
 
-#: qml/RoutePage.qml:144
+#: qml/RoutePage.qml:153
 msgid "Destination"
 msgstr "Sihtkoht"
 
-#: qml/RoutePage.qml:187
+#: qml/RoutePage.qml:160 qml/RoutePage.qml:167
+msgid "Destinations and waypoints"
+msgstr ""
+
+#: qml/RoutePage.qml:168
+msgid ""
+"Additional destinations and wayponts can be added along the route. The both locations are used for calculation of the route, but only destinations are tracked for being reached. As a result, if you miss the waypoint and later rejoin the calculated route after the waypoint, it will be assumed that waypoint was reached and it will be dismissed in the rerouting calculations later. In contrast, destinations have to be reached within the certain tolerance and will not be dismissed in such manner.\n"
+"\n"
+"So, set as destination the locations that you need to reach on your route and as waypoints the locations that are just for shaping the route according to your preferences.\n"
+"\n"
+"Dismiss this dialog to stop showing this message."
+msgstr ""
+
+#: qml/RoutePage.qml:205
+msgid "Up"
+msgstr ""
+
+#: qml/RoutePage.qml:214
+msgid "Down"
+msgstr ""
+
+#: qml/RoutePage.qml:228
+msgid "Convert to waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:229
+msgid "Convert to destination"
+msgstr ""
+
+#: qml/RoutePage.qml:303
+msgid "Add destination"
+msgstr ""
+
+#: qml/RoutePage.qml:313
+msgid "Add waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:367
 msgid "Routes"
 msgstr "Varasemad teekonnad"
 
-#: qml/RoutePage.qml:263
+#: qml/RoutePage.qml:395
+msgid "%1 ‒ %2 (%3 destinations and waypoints)"
+msgstr ""
+
+#: qml/RoutePage.qml:459
 msgid "Destinations"
 msgstr "Sihtkohad"
 
-#: qml/RoutePage.qml:358
+#: qml/RoutePage.qml:553
 msgid "Follow the movement and show just in time information"
 msgstr "Jälgi minu liikumist ja näita vaid ajakohast teavet"
 
-#: qml/RoutePage.qml:367
+#: qml/RoutePage.qml:562
 msgid "Stop"
 msgstr "Peata"
 
-#: qml/RoutePage.qml:367
+#: qml/RoutePage.qml:562
 msgid "Begin"
 msgstr "Alusta"
 
-#: qml/RoutePage.qml:385
+#: qml/RoutePage.qml:580
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
 "Vali transpordiliik. Kehtib vaid siis, kui Pure Maps jälgib sinu liikumist."
 
-#: qml/RoutePage.qml:387
+#: qml/RoutePage.qml:582
 msgid "Mode of transportation"
 msgstr "Transpordiliik"
 
@@ -1863,81 +1813,12 @@ msgstr "Lisa viide OpenStreetMaps saiti"
 msgid "Add link to Google Maps"
 msgstr "Lisa viide Google Maps saiti"
 
-#: routers/default_results.qml:81 routers/digitransit_results.qml:186
-#: routers/gpx_osmscout_results.qml:81 routers/gpx_results.qml:81
-#: routers/mapquest_open_results.qml:81 routers/osmscout_results.qml:81
-#: routers/osrm_results.qml:81 routers/stadiamaps_results.qml:81
+#: routers/default_results.qml:60 routers/gpx_osmscout_results.qml:60
+#: routers/gpx_results.qml:60 routers/mapquest_open_results.qml:60
+#: routers/osmscout_results.qml:60 routers/osrm_results.qml:60
+#: routers/stadiamaps_results.qml:60
 msgid "Route to %1"
 msgstr "Teekond sihtkohta %1"
-
-#: routers/digitransit_results.qml:61
-msgid "Route %1. total %2"
-msgstr "Teekond %1, kokku %2"
-
-#: routers/digitransit_results.qml:156
-msgid "Walk %1"
-msgstr "Kõnni %1"
-
-#: routers/digitransit_results.qml:157
-msgid "%1 → %2"
-msgstr "%1 → %2"
-
-#: routers/digitransit_results.qml:266
-msgid "Results"
-msgstr "Tulemused"
-
-#: routers/digitransit_settings.qml:31
-msgid "Region"
-msgstr "Piirkond"
-
-#: routers/digitransit_settings.qml:32
-msgid "HSL"
-msgstr "HSL"
-
-#: routers/digitransit_settings.qml:32
-msgid "Waltti"
-msgstr "Waltti"
-
-#: routers/digitransit_settings.qml:32
-msgid "Finland"
-msgstr "Soome"
-
-#: routers/digitransit_settings.qml:72 routers/digitransit_settings.qml:74
-#: routers/digitransit_settings.qml:78
-msgid "Depart"
-msgstr "Välju"
-
-#: routers/digitransit_settings.qml:75
-msgid "Arrive"
-msgstr "Saabu"
-
-#: routers/digitransit_settings.qml:91
-msgid "Today"
-msgstr "Täna"
-
-#: routers/digitransit_settings.qml:98
-msgid "Select date"
-msgstr "Vali kuupäev"
-
-#: routers/digitransit_settings.qml:119
-msgid "Now"
-msgstr "Praegu"
-
-#: routers/digitransit_settings.qml:127
-msgid "Select time"
-msgstr "Vali aeg"
-
-#: routers/digitransit_settings.qml:145
-msgid "Criterion"
-msgstr "Tingimused"
-
-#: routers/digitransit_settings.qml:146
-msgid "Least transfers"
-msgstr "Kõige vähem ümberistumisi"
-
-#: routers/digitransit_settings.qml:146
-msgid "Least walking"
-msgstr "Kõige vähem kõndimist"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"
@@ -2193,43 +2074,47 @@ msgstr ""
 "Näita kas asukohta geo:laiuskraad,pikkuskraad vormingu alusel või otsi "
 "sisestatud sõna või asukohta."
 
-#: src/navigator.cpp:121
+#: src/navigator.cpp:158
 msgid "Position unknown"
 msgstr "Asukoht ei ole teada"
 
-#: src/navigator.cpp:127
+#: src/navigator.cpp:164
 msgid "Position imprecise: accuracy %1"
 msgstr "Asukoht pole täpne: viga %1"
 
-#: src/navigator.cpp:146 src/navigator.cpp:363
+#: src/navigator.cpp:183 src/navigator.cpp:446
 msgid "Preparing to start navigation"
 msgstr "Valmistun teekonda alustama"
 
-#: src/navigator.cpp:405
+#: src/navigator.cpp:488
 msgid "Moving in a wrong direction"
 msgstr "Liigume valesse suunda"
 
-#: src/navigator.cpp:415
+#: src/navigator.cpp:498
 msgid "Away from route"
 msgstr "Teekonnast eemal"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:589 src/navigator.cpp:600
+#: src/navigator.cpp:669 src/navigator.cpp:680
 msgid "In %2, %1"
 msgstr "%2 järel %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:782
+#: src/navigator.cpp:926
 msgid "%1 h %2 min"
 msgstr "%1 h %2 min"
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:784
+#: src/navigator.cpp:928
 msgid "%1 min"
 msgstr "%1 min"
+
+#: src/navigator.cpp:973
+msgid "Starting navigation"
+msgstr "Alustan teekonda"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
@@ -2259,35 +2144,32 @@ msgid "Points of interest from OpenStreetMap data"
 msgstr "Huvipunktid OpenStreetMap'i andmete alusel"
 
 #: standard input:8
-msgid "Public transport routing in Finland"
-msgstr "Ühistransport Soomes"
-
-#: standard input:9
-msgid "public transport"
-msgstr "ühistransport"
-
-#: standard input:10
 msgid "Routing along GPX track"
 msgstr "Teekond piki GPX-rada"
 
-#: standard input:11 standard input:13 standard input:15 standard input:17
-#: standard input:19 standard input:21
+#: standard input:9 standard input:11 standard input:13 standard input:15
+#: standard input:17 standard input:19
 msgid "car"
 msgstr "auto"
 
-#: standard input:11 standard input:13 standard input:15 standard input:17
-#: standard input:21
+#: standard input:9 standard input:11 standard input:13 standard input:15
+#: standard input:19
+msgid "bicycle"
+msgstr "jalgratas"
+
+#: standard input:9 standard input:11 standard input:13 standard input:15
+#: standard input:19
 msgid "foot"
 msgstr "jalgsi"
 
-#: standard input:12
+#: standard input:10
 msgid "Routing along GPX track processed by OSM Scout Server"
 msgstr "Teekonna piki GPX-rada koostas OSM Scout Server"
 
-#: standard input:14 standard input:16 standard input:18
+#: standard input:12 standard input:14 standard input:16
 msgid "Routing based on OpenStreetMap data"
 msgstr "Teekond on koostatud OpenStreetMap'i andmete alusel"
 
-#: standard input:20
+#: standard input:18
 msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr "Teekonna koostas Valhalla OpenStreetMap'i andmete alusel"
