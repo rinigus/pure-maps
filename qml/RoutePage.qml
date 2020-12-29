@@ -159,21 +159,37 @@ PagePL {
                 checked: false
                 text: app.tr("Destinations and waypoints")
                 visible: page.toNeeded
+
+                property bool helpShown: false
+
+                onCheckedChanged: {
+                    if (checked && !helpShown && app.conf.guiRoutePageShowDestinationsHelp) {
+                        var d = app.push(Qt.resolvedUrl("MessagePage.qml"), {
+                                             "acceptText": app.tr("Dismiss"),
+                                             "title": app.tr("Destinations and waypoints"),
+                                             "message": app.tr("Additional destinations and wayponts can be added along the route. " +
+                                                               "The both locations are used for calculation of the route, but only " +
+                                                               "destinations are tracked for being reached. As a result, if you miss the " +
+                                                               "waypoint and later rejoin the calculated route after the waypoint, the waypoint " +
+                                                               "will be assumed to be reached and will be dismissed in the rerouting calculations " +
+                                                               "later during the navigation. In contrast, destinations have to be reached within the " +
+                                                               "certain tolerance and will be not dismissed in such manner.\n\n" +
+                                                               "So, set as destination the locations that you need to reach on your route and as " +
+                                                               "waypoints just to shape the route according to your preferences.\n\n" +
+                                                               "Dismiss this dialog to stop showing this message.")
+                                         });
+                        helpShown = true;
+                        d.accepted.connect(function () {
+                            app.conf.guiRoutePageShowDestinationsHelp = false;
+                        });
+                    }
+                }
             }
 
             Column {
                 id: waypointsColumn
                 visible: waypointsEnabled
                 width: parent.width
-
-                ListItemLabel {
-                    color: styler.themeHighlightColor
-                    text: app.tr("Additional destinations and wayponts can be added along the route. " +
-                                 "The both locations are used for calculation of the route, but only " +
-                                 "destinations are tracked for being reached.")
-                    truncMode: truncModes.none
-                    wrapMode: Text.WordWrap
-                }
 
                 Spacer {
                     height: styler.themePaddingMedium

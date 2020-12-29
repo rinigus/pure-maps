@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import Qt.labs.settings 1.0
 
 Item {
     id: conf
@@ -34,6 +35,7 @@ Item {
     property bool   developmentCoordinateCenter: false
     property bool   developmentShowZ: false
     property string followMeTransportMode
+    property bool   guiRoutePageShowDestinationsHelp: true
     property string keepAlive
     property string keepAliveBackground
     property string mapMatchingWhenIdle: "none"
@@ -117,6 +119,11 @@ Item {
         target: py
         onConfigurationChanged: conf._update()
         onReadyChanged: conf._update()
+    }
+
+    Settings {
+        category: "Main"
+        property alias guiRoutePageShowDestinationsHelp: conf.guiRoutePageShowDestinationsHelp
     }
 
     function add(option, item) {
