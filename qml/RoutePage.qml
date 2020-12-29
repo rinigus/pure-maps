@@ -168,12 +168,12 @@ PagePL {
                                              "message": app.tr("Additional destinations and wayponts can be added along the route. " +
                                                                "The both locations are used for calculation of the route, but only " +
                                                                "destinations are tracked for being reached. As a result, if you miss the " +
-                                                               "waypoint and later rejoin the calculated route after the waypoint, the waypoint " +
-                                                               "will be assumed to be reached and will be dismissed in the rerouting calculations " +
-                                                               "later during the navigation. In contrast, destinations have to be reached within the " +
-                                                               "certain tolerance and will be not dismissed in such manner.\n\n" +
+                                                               "waypoint and later rejoin the calculated route after the waypoint, " +
+                                                               "it will be assumed that waypoint was reached and it will be dismissed in the rerouting calculations " +
+                                                               "later. In contrast, destinations have to be reached within the " +
+                                                               "certain tolerance and will not be dismissed in such manner.\n\n" +
                                                                "So, set as destination the locations that you need to reach on your route and as " +
-                                                               "waypoints just to shape the route according to your preferences.\n\n" +
+                                                               "waypoints the locations that are just for shaping the route according to your preferences.\n\n" +
                                                                "Dismiss this dialog to stop showing this message.")
                                          });
                         app.conf.routePageShowDestinationsHelpShown = true;
