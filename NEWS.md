@@ -1,3 +1,13 @@
+2020-12-31: Pure Maps 2.3
+=========================
+
+* Add support for intermediate destinations and waypoints
+* Adjust naming of Ubuntu Touch platform [jonnius]
+* Adjust desktop and appdata to support PureOS Store [dos1]
+* Drop support for Digitransit router
+* Use text color to indicate interactive elements
+* Update translations
+
 2020-12-16: Pure Maps 2.2
 =========================
 

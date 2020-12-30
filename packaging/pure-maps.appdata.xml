@@ -38,6 +38,18 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.3.0" date="2020-12-31">
+     <description>
+       <ul>
+	 <li>Add support for intermediate destinations and waypoints</li>
+	 <li>Adjust naming of Ubuntu Touch platform [jonnius]</li>
+	 <li>Adjust desktop and appdata to support PureOS Store [dos1]</li>
+	 <li>Drop support for Digitransit router</li>
+	 <li>Use text color to indicate interactive elements</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.2.0" date="2020-12-16">
      <description>
        <ul>
