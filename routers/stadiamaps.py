@@ -119,7 +119,7 @@ def prepare_endpoint(point):
         d = dict(lat=point["y"], lon=point["x"])
         if "text" in point: d["name"] = point["text"]
         return d
-    geocoder = poor.Geocoder("osmscout")
+    geocoder = poor.Geocoder("default")
     results = geocoder.geocode(point, params=dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 

@@ -25,7 +25,7 @@ class TestModule(poor.test.TestCase):
 
     # XXX: OSRM demo server is often over capacity.
     def __test_geocode(self):
-        result = self.router.route("maunula, helsinki", "kallio, helsinki")
+        result = self.router.route(["maunula, helsinki", "kallio, helsinki"])
         result = poor.AttrDict(result)
         assert result.maneuvers
         assert result.x

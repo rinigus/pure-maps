@@ -24,7 +24,6 @@ http://open.mapquestapi.com/directions/
 import copy
 import json
 import poor
-import urllib.parse
 
 CONF_DEFAULTS = {
     "avoids": [],
