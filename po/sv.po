@@ -580,6 +580,12 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Du använder en offline-profil. Tillse att du har OSM Scout Server "
+"installerad och startad. Beroende på ditt system, finns den tillgänglig "
+"antingen i programförråden (OpenRepos för Sailfish OS, OpenStore för Ubuntu "
+"Touch), Flathub, eller i din  distribution. Se <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
+"manual</a> för detaljerad info."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -714,15 +720,15 @@ msgstr "Du är framme"
 
 #: qml/NavigationPage.qml:191
 msgid "Final destination: %1"
-msgstr ""
+msgstr "Slutdestination: %1"
 
 #: qml/NavigationPage.qml:193 qml/RoutePage.qml:240
 msgid "Destination: %1"
-msgstr ""
+msgstr "Destination: %1"
 
 #: qml/NavigationPage.qml:194 qml/RoutePage.qml:241
 msgid "Waypoint: %1"
-msgstr ""
+msgstr "Vägpunkt: %1"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
@@ -730,11 +736,11 @@ msgstr "AVFART"
 
 #: qml/Navigator.qml:69
 msgid "Destination %1 reached"
-msgstr ""
+msgstr "Du är framme vid destination %1"
 
 #: qml/Navigator.qml:70
 msgid "Waypoint %1 reached"
-msgstr ""
+msgstr "Du är framme vid vägpunkt %1"
 
 #: qml/Navigator.qml:120
 msgid "Voice navigation on"
@@ -1672,7 +1678,7 @@ msgstr "Destination"
 
 #: qml/RoutePage.qml:160 qml/RoutePage.qml:167
 msgid "Destinations and waypoints"
-msgstr ""
+msgstr "Destinationer och vägpunkter"
 
 #: qml/RoutePage.qml:168
 msgid ""
@@ -1682,30 +1688,35 @@ msgid ""
 "\n"
 "Dismiss this dialog to stop showing this message."
 msgstr ""
+"Ytterligare destinationer och vägpunkter kan läggas till längs rutten. De båda platserna används för beräkning av rutten, men endast destinationer spåras för att nås. Resultatet kan bli att om du missar vägpunkten och senare återansluter till den beräknade rutten, efter vägpunkten, kommer det att antas att vägpunkten nåddes och den kommer att avfärdas i senare omberäkning av rutten. Däremot måste destinationer nås inom en viss tolerans och kommer inte att avfärdas på ett sådant sätt.\n"
+"\n"
+"Så ange de platser du behöver nå på din rutt, som destination och de platser som bara är för att utforma rutten enligt dina önskemål, som vägpunkter.\n"
+"\n"
+"Avfärda den här dialogen om du vill sluta visa det här meddelandet."
 
 #: qml/RoutePage.qml:205
 msgid "Up"
-msgstr ""
+msgstr "Upp"
 
 #: qml/RoutePage.qml:214
 msgid "Down"
-msgstr ""
+msgstr "Ner"
 
 #: qml/RoutePage.qml:228
 msgid "Convert to waypoint"
-msgstr ""
+msgstr "Konvertera till vägpunkt"
 
 #: qml/RoutePage.qml:229
 msgid "Convert to destination"
-msgstr ""
+msgstr "Konvertera till destination"
 
 #: qml/RoutePage.qml:303
 msgid "Add destination"
-msgstr ""
+msgstr "Lägg till destination"
 
 #: qml/RoutePage.qml:313
 msgid "Add waypoint"
-msgstr ""
+msgstr "Lägg till vägpunkt"
 
 #: qml/RoutePage.qml:367
 msgid "Routes"
@@ -1713,7 +1724,7 @@ msgstr "Rutter"
 
 #: qml/RoutePage.qml:395
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
-msgstr ""
+msgstr "%1 ‒ %2 (%3 destinationer och vägpunkter)"
 
 #: qml/RoutePage.qml:459
 msgid "Destinations"
@@ -1815,7 +1826,7 @@ msgstr "Lägg till länk till Google Maps"
 #: routers/osmscout_results.qml:60 routers/osrm_results.qml:60
 #: routers/stadiamaps_results.qml:60
 msgid "Route to %1"
-msgstr "Beräkna rutt till %1"
+msgstr "Beräknad rutt till %1"
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
 msgid "File"

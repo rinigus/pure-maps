@@ -581,6 +581,12 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Je gebruikt een offline-profiel. Zorg er voor dat OSM Scout Server "
+"geïnstalleerd en actief is. OSM Scout Server is beschikbaar in OpenRepos "
+"(Sailfish OS), OpenStore (Ubuntu Touch), Flathub en wellicht in de "
+"pakketbronnen van je distributie. Bekijk voor meer informatie de <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server-"
+"handleiding</a>."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -715,15 +721,15 @@ msgstr "Bestemming bereikt"
 
 #: qml/NavigationPage.qml:191
 msgid "Final destination: %1"
-msgstr ""
+msgstr "Eindbestemming: %1"
 
 #: qml/NavigationPage.qml:193 qml/RoutePage.qml:240
 msgid "Destination: %1"
-msgstr ""
+msgstr "Bestemming: %1"
 
 #: qml/NavigationPage.qml:194 qml/RoutePage.qml:241
 msgid "Waypoint: %1"
-msgstr ""
+msgstr "Routepunt: %1"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
@@ -731,11 +737,11 @@ msgstr "AFRIT"
 
 #: qml/Navigator.qml:69
 msgid "Destination %1 reached"
-msgstr ""
+msgstr "De bestemming, %1, is bereikt"
 
 #: qml/Navigator.qml:70
 msgid "Waypoint %1 reached"
-msgstr ""
+msgstr "Het routepunt, %1, is bereikt"
 
 #: qml/Navigator.qml:120
 msgid "Voice navigation on"
@@ -1680,7 +1686,7 @@ msgstr "Bestemming"
 
 #: qml/RoutePage.qml:160 qml/RoutePage.qml:167
 msgid "Destinations and waypoints"
-msgstr ""
+msgstr "Bestemmingen en routepunten"
 
 #: qml/RoutePage.qml:168
 msgid ""
@@ -1693,27 +1699,27 @@ msgstr ""
 
 #: qml/RoutePage.qml:205
 msgid "Up"
-msgstr ""
+msgstr "Omhoog"
 
 #: qml/RoutePage.qml:214
 msgid "Down"
-msgstr ""
+msgstr "Omlaag"
 
 #: qml/RoutePage.qml:228
 msgid "Convert to waypoint"
-msgstr ""
+msgstr "Omzetten naar routepunt"
 
 #: qml/RoutePage.qml:229
 msgid "Convert to destination"
-msgstr ""
+msgstr "Omzetten naar bestemming"
 
 #: qml/RoutePage.qml:303
 msgid "Add destination"
-msgstr ""
+msgstr "Bestemming toevoegen"
 
 #: qml/RoutePage.qml:313
 msgid "Add waypoint"
-msgstr ""
+msgstr "Routepunt toevoegen"
 
 #: qml/RoutePage.qml:367
 msgid "Routes"
@@ -1721,7 +1727,7 @@ msgstr "Routes"
 
 #: qml/RoutePage.qml:395
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
-msgstr ""
+msgstr "%1 ‒ %2 (%3 bestemmingen en routepunten)"
 
 #: qml/RoutePage.qml:459
 msgid "Destinations"
@@ -2084,41 +2090,41 @@ msgstr ""
 
 #: src/navigator.cpp:158
 msgid "Position unknown"
-msgstr ""
+msgstr "Onbekende positie"
 
 #: src/navigator.cpp:164
 msgid "Position imprecise: accuracy %1"
-msgstr ""
+msgstr "Onnauwkeurige positie: nauwkeurigheid %1"
 
 #: src/navigator.cpp:183 src/navigator.cpp:446
 msgid "Preparing to start navigation"
-msgstr ""
+msgstr "Bezig met voorbereiden van navigatie"
 
 #: src/navigator.cpp:488
 msgid "Moving in a wrong direction"
-msgstr ""
+msgstr "Je rijdt de verkeerde kant op"
 
 #: src/navigator.cpp:498
 msgid "Away from route"
-msgstr ""
+msgstr "Je bent afgeweken van de route"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
 #: src/navigator.cpp:669 src/navigator.cpp:680
 msgid "In %2, %1"
-msgstr ""
+msgstr "Sla over %2 %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
 #: src/navigator.cpp:926
 msgid "%1 h %2 min"
-msgstr ""
+msgstr "%1 uur en %2 min."
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
 #: src/navigator.cpp:928
 msgid "%1 min"
-msgstr ""
+msgstr "%1 min."
 
 #: src/navigator.cpp:973
 msgid "Starting navigation"
