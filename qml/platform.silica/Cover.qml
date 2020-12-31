@@ -59,7 +59,7 @@ CoverBackground {
      */
 
     CoverActionList {
-        enabled: app.initialized && app.conf.showNarrative && app.navigator.hasRoute
+        enabled: app.initialized && app.conf.showNarrative && app.navigator && app.navigator.hasRoute
 
         CoverAction {
             iconSource: (app.mode === modes.navigate || app.mode === modes.navigatePost) ?
@@ -87,7 +87,7 @@ CoverBackground {
         anchors.horizontalCenter: parent.horizontalCenter
         opacity: 0.9
         smooth: true
-        source: "../icons/navigation/%1-%2.svg".arg(app.navigator.icon || "flag").arg(styler.navigationIconsVariant)
+        source: app.navigator ? "../icons/navigation/%1-%2.svg".arg(app.navigator.icon || "flag").arg(styler.navigationIconsVariant) : ""
         sourceSize.height: cover.width / 2
         sourceSize.width: cover.width / 2
         visible: cover.showNarrative
@@ -99,7 +99,7 @@ CoverBackground {
         anchors.top: parent.verticalCenter
         font.family: Theme.fontFamilyHeading
         font.pixelSize: Theme.fontSizeExtraLarge
-        text: app.navigator.manDist
+        text: app.navigator ? app.navigator.manDist : ""
         visible: cover.showNarrative
     }
 
@@ -111,7 +111,7 @@ CoverBackground {
         anchors.leftMargin: Theme.paddingLarge
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeExtraSmall
-        text: app.navigator.destDist
+        text: app.navigator ? app.navigator.destDist : ""
         visible: cover.showNarrative
     }
 
@@ -123,7 +123,7 @@ CoverBackground {
         anchors.rightMargin: Theme.paddingLarge
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeExtraSmall
-        text: app.navigator.destTime
+        text: app.navigator ? app.navigator.destTime : ""
         visible: cover.showNarrative
     }
 }
