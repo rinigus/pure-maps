@@ -241,36 +241,7 @@ PagePL {
                                       app.tr("Waypoint: %1", model.text)
                         }
 
-                        RoutePoint {
-                            // this is invisible as it prevents using
-                            // listitem context menu in SFOS
-                            id: rpointWaypoints
-                            anchors.verticalCenter: parent.verticalCenter
-                            coordinates: model.set ? [model.x, model.y] : null
-                            query: model.query
-                            visible: false
-
-                            onUpdated: {
-                                waypoints.set(model.index, {
-                                                  "added": 0,
-                                                  "destination": model.destination,
-                                                  "set": true,
-                                                  "query": query,
-                                                  "text": text,
-                                                  "x": coordinates[0],
-                                                  "y": coordinates[1]
-                                              });
-                            }
-                        }
-
-                        onClicked: rpointWaypoints.activate()
-
-                        Component.onCompleted: {
-                            if (model.added) {
-                                rpointWaypoints.activate();
-                                model.added = 0;
-                            }
-                        }
+                        onClicked: waypointsColumn.edit(model.index)
                     }
                 }
 
@@ -303,13 +274,7 @@ PagePL {
                         preferredWidth: styler.themeButtonWidthMedium
                         text: app.tr("Add destination")
                         x: bLayout.onerow ? 0 : bLayout.width/2 - width/2
-                        onClicked: waypoints.append({"added": 1,
-                                                        "destination": 1,
-                                                        "set": false,
-                                                        "query": "",
-                                                        "text": "",
-                                                        "x": 0.0,
-                                                        "y": 0.0})
+                        onClicked: waypointsColumn.add(1)
                     }
 
                     ButtonPL {
@@ -318,19 +283,67 @@ PagePL {
                         text: app.tr("Add waypoint")
                         x: bLayout.onerow ? bLayout.width - width : bLayout.width/2 - width/2
                         y: bLayout.onerow ? 0 : bLayout.height - height
-                        onClicked: waypoints.append({"added": 1,
-                                                        "destination": 0,
-                                                        "set": false,
-                                                        "query": "",
-                                                        "text": "",
-                                                        "x": 0.0,
-                                                        "y": 0.0})
+                        onClicked: waypointsColumn.add(0)
                     }
                 }
 
                 Spacer {
                     height: styler.themePaddingLarge
                     visible: waypoints.count > 0
+                }
+
+                RoutePoint {
+                    // this is invisible and shared by all waypoints
+                    id: rpointWaypoint
+                    anchors.verticalCenter: parent.verticalCenter
+                    title: p && p.destination ? app.tr("Destination") : app.tr("Waypoint")
+                    query: p ? p.query : ""
+                    visible: false
+
+                    property int index: -1
+                    property var p: null
+
+                    onIndexChanged: {
+                        // have to specify manually as it uncouples property values when editing
+                        if (index < 0 || index >= waypoints.count) {
+                            p = null;
+                            coordinates = null;
+                            text = "";
+                            query = "";
+                        } else {
+                            p = waypoints.get(index);
+                            coordinates = [p.x, p.y];
+                            text = p.text;
+                            query = p.query;
+                        }
+                    }
+
+                    onUpdated: {
+                        waypoints.set(index, {
+                                          "destination": p.destination,
+                                          "set": true,
+                                          "query": query,
+                                          "text": text,
+                                          "x": coordinates[0],
+                                          "y": coordinates[1]
+                                      });
+                        index = -1;
+                    }
+                }
+
+                function add(destination) {
+                    waypoints.append({"destination": destination,
+                                         "set": false,
+                                         "query": "",
+                                         "text": "",
+                                         "x": 0.0,
+                                         "y": 0.0});
+                    edit(waypoints.count - 1);
+                }
+
+                function edit(i) {
+                    rpointWaypoint.index = i;
+                    rpointWaypoint.activate();
                 }
             }
 
@@ -420,8 +433,7 @@ PagePL {
                             var r = JSON.parse(model.full);
                             page.waypoints.clear();
                             for (var i=1; i < r.length-1; i++)
-                                page.waypoints.append({"added": 0,
-                                                          "destination": r[i].destination,
+                                page.waypoints.append({"destination": r[i].destination,
                                                           "set": true,
                                                           "query": "",
                                                           "text": r[i].text,
