@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 22:10+0200\n"
+"POT-Creation-Date: 2020-12-31 16:45+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
@@ -47,8 +47,8 @@ msgstr "Verbinding verlopen"
 #: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137
 #: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:32
-#: qml/RoutePage.qml:36 qml/RoutePage.qml:401 qml/RoutePage.qml:406
-#: qml/RoutePage.qml:620 qml/RoutePage.qml:658 qml/RoutePoint.qml:44
+#: qml/RoutePage.qml:36 qml/RoutePage.qml:423 qml/RoutePage.qml:428
+#: qml/RoutePage.qml:645 qml/RoutePage.qml:683 qml/RoutePoint.qml:44
 #: qml/RoutePoint.qml:62
 msgid "Current position"
 msgstr "Huidige positie"
@@ -253,7 +253,7 @@ msgstr "Plaatsnaam"
 
 #: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
 #: qml/NavigationPage.qml:179 qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108
-#: qml/RoutePage.qml:222 qml/RoutePage.qml:383 qml/RoutePage.qml:477
+#: qml/RoutePage.qml:222 qml/RoutePage.qml:405 qml/RoutePage.qml:502
 msgid "Remove"
 msgstr "Verwijderen"
 
@@ -425,13 +425,13 @@ msgstr "Nacht"
 msgid "Transport"
 msgstr "Transport"
 
-#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
+#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:383 qml/RoutePage.qml:608
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Bicycle"
 msgstr "Fiets"
 
-#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
+#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:383 qml/RoutePage.qml:608
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Car"
@@ -505,7 +505,7 @@ msgid "Points of Interest (%1)"
 msgstr "Nuttige plaatsen (%1)"
 
 #: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePage.qml:515 qml/RoutePage.qml:517
+#: qml/PoiPage.qml:47 qml/RoutePage.qml:540 qml/RoutePage.qml:542
 #: qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Punt zonder naam"
@@ -1337,7 +1337,7 @@ msgstr "Positie vastklemmen aan wegen"
 msgid "None"
 msgstr "Geen"
 
-#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:583
+#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:608
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Foot"
@@ -1680,7 +1680,7 @@ msgstr "Vertrekpunt"
 msgid "To"
 msgstr "Naar"
 
-#: qml/RoutePage.qml:153
+#: qml/RoutePage.qml:153 qml/RoutePage.qml:299
 msgid "Destination"
 msgstr "Bestemming"
 
@@ -1713,39 +1713,43 @@ msgstr "Omzetten naar routepunt"
 msgid "Convert to destination"
 msgstr "Omzetten naar bestemming"
 
-#: qml/RoutePage.qml:303
+#: qml/RoutePage.qml:275
 msgid "Add destination"
 msgstr "Bestemming toevoegen"
 
-#: qml/RoutePage.qml:313
+#: qml/RoutePage.qml:283
 msgid "Add waypoint"
 msgstr "Routepunt toevoegen"
 
-#: qml/RoutePage.qml:367
+#: qml/RoutePage.qml:299
+msgid "Waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:389
 msgid "Routes"
 msgstr "Routes"
 
-#: qml/RoutePage.qml:395
+#: qml/RoutePage.qml:417
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
 msgstr "%1 ‒ %2 (%3 bestemmingen en routepunten)"
 
-#: qml/RoutePage.qml:459
+#: qml/RoutePage.qml:484
 msgid "Destinations"
 msgstr "Bestemmingen"
 
-#: qml/RoutePage.qml:553
+#: qml/RoutePage.qml:578
 msgid "Follow the movement and show just in time information"
 msgstr "Volg de bewegingen en toon net-op-tijd-informatie"
 
-#: qml/RoutePage.qml:562
+#: qml/RoutePage.qml:587
 msgid "Stop"
 msgstr "Stoppen"
 
-#: qml/RoutePage.qml:562
+#: qml/RoutePage.qml:587
 msgid "Begin"
 msgstr "Beginnen"
 
-#: qml/RoutePage.qml:580
+#: qml/RoutePage.qml:605
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
@@ -1753,7 +1757,7 @@ msgstr ""
 "Selecteer een transportmodus. Geldt enkel wanneer Pure Maps in volg-mij-"
 "modus is."
 
-#: qml/RoutePage.qml:582
+#: qml/RoutePage.qml:607
 msgid "Mode of transportation"
 msgstr "Transportmodus"
 
