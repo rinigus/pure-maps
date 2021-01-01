@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtPositioning 5.3
 import "."
 import "platform"
 
@@ -193,6 +194,12 @@ PagePL {
                                     app.tr("Destination: %1", item.text) :
                                     app.tr("Waypoint: %1", item.text);
                     }
+                }
+
+                onClicked: {
+                    map.center = QtPositioning.coordinate(item.y, item.x);
+                    map.zoomLevel < 15 && map.setZoomLevel(15);
+                    app.hideNavigationPages();
                 }
             }
             model: app.navigator.locations.length
