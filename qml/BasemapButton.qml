@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2019 Rinigus, 2019 Purism SPC
+ * Copyright (C) 2019-2021 Rinigus, 2019 Purism SPC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -103,21 +103,21 @@ MouseArea {
         property int cellHeightFull: cellHeight + styler.themePaddingLarge
         property int cellWidth: styler.themeIconSizeMedium*1.5
         property int cellWidthFull: cellWidth + styler.themePaddingMedium
+        property int maxHeight: Math.max(cellHeightFull, parent.height - panel.height -
+                                         4*styler.themePaddingLarge)
+        property int maxWidth: Math.max(cellWidthFull, parent.width - 4*styler.themePaddingLarge)
 
         Flickable {
             id: flick
 
             anchors.centerIn: parent
+            boundsBehavior: Flickable.StopAtBounds
             clip: true
             contentHeight: col.height
-            contentWidth: width
+            contentWidth: col.width
 
-            height: Math.min(col.height, Math.round((map.height-panel.height)*0.6))
-            width: Math.min(Math.round(map.width*0.6),
-                            menu.cellWidthFull*8,
-                            menu.cellWidthFull*Math.max(Math.ceil(typeGrid.model.count/typeGrid.nrows),
-                                                        lightList.model.count,
-                                                        transList.model.count))
+            height: Math.min(col.height, menu.maxHeight)
+            width: Math.min(col.width, menu.maxWidth)
 
             Component {
                 id: selectionDelegate
@@ -128,19 +128,18 @@ MouseArea {
                     radius: styler.themePaddingSmall
                     width: menu.cellWidthFull
 
-                    property var view: GridView.view ? GridView.view : ListView.view
+                    property var view: parent
 
                     Rectangle {
                         id: iconHolder
                         anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: parent.top
-                        anchors.topMargin: styler.themePaddingMedium/2 - border.width
                         border.color: model.current ? styler.itemHighlight : "transparent"
                         border.width: Math.max(1,styler.themeFontSizeExtraSmall/5)
                         color: "transparent"
                         height: icon.height + 2*border.width
                         radius: styler.themePaddingSmall
                         width: icon.height + 2*border.width
+                        y: (item.height - height - label.height - label.anchors.topMargin) / 2
 
                         IconPL {
                             id: icon
@@ -189,12 +188,37 @@ MouseArea {
                 }
             }
 
-            Column {
+            Grid {
                 id: col
-                spacing: styler.themePaddingLarge
-                width: parent.width
+                columns: portrait ? 1 : 3
+                columnSpacing: styler.themePaddingLarge
+                flow: Grid.TopToBottom
+                rowSpacing: styler.themePaddingLarge
+
+                property bool portrait: menu.maxHeight >= menu.maxWidth
+                property int  nrExtras: {
+                    if (portrait) {
+                        var h = rowSpacing*5 + 3*menu.cellHeightFull + 3*typeLabel.height;
+                        h = menu.maxHeight - h;
+                        if (h > 0)
+                            return Math.floor(h / menu.cellHeightFull);
+                    } else {
+                        var w = columnSpacing*3 +
+                                Math.max(menu.cellWidthFull, typeLabel.width, lightLabel.width, transLabel.width);
+                        w = menu.maxWidth - w;
+                        if (w > 0)
+                            return Math.floor(w / menu.cellWidthFull);
+                    }
+                    return 0;
+                }
+                property int secondMaxCount: {
+                    var l = [ typeGrid.model.count, lightGrid.model.count, transGrid.model.count ];
+                    l.sort();
+                    return Math.max(2, l[1]);
+                }
 
                 LabelPL {
+                    id: typeLabel
                     color: styler.itemFg
                     font.bold: true
                     font.pixelSize: styler.themeFontSizeSmall
@@ -202,21 +226,19 @@ MouseArea {
                     visible: typeGrid.model.count > 0
                 }
 
-                GridView {
+                Grid {
                     id: typeGrid
-                    boundsBehavior: Flickable.StopAtBounds
-                    cellHeight: menu.cellHeightFull
-                    cellWidth: menu.cellWidthFull
-                    clip: true
-                    delegate: selectionDelegate
-                    flow: GridView.TopToBottom
-                    height: cellHeight * nrows
-                    model: ListModel {}
-                    visible: typeGrid.model.count > 0
-                    width: parent.width
+                    flow: col.portrait ? Grid.TopToBottom : Grid.LeftToRight
+                    rows: col.gridRows(model.count)
+                    visible: model.count > 0
+
+                    Repeater {
+                        delegate: selectionDelegate
+                        model: parent.model
+                    }
 
                     property string iconPrefix: "type"
-                    property int    nrows: model.count < 4? 1 : 2
+                    property var    model: ListModel {}
                     property var    tr: {
                         "default": app.tr("Default"),
                         "guidance": app.tr("Guidance"),
@@ -236,25 +258,27 @@ MouseArea {
                 }
 
                 LabelPL {
+                    id: lightLabel
                     color: styler.itemFg
                     font.bold: true
                     font.pixelSize: styler.themeFontSizeSmall
                     text: app.tr("Light")
-                    visible: lightList.model.count > 0
+                    visible: lightGrid.model.count > 0
                 }
 
-                ListView {
-                    id: lightList
-                    boundsBehavior: Flickable.StopAtBounds
-                    clip: true
-                    delegate: selectionDelegate
-                    model: ListModel {}
-                    orientation: ListView.Horizontal
-                    height: menu.cellHeightFull
-                    visible: lightList.model.count > 0
-                    width: parent.width
+                Grid {
+                    id: lightGrid
+                    flow: col.portrait ? Grid.TopToBottom : Grid.LeftToRight
+                    rows: col.gridRows(model.count)
+                    visible: model.count > 0
+
+                    Repeater {
+                        delegate: selectionDelegate
+                        model: parent.model
+                    }
 
                     property string iconPrefix: "light"
+                    property var    model: ListModel {}
                     property var    tr: {
                         "day": app.tr("Day"),
                         "night": app.tr("Night")
@@ -269,25 +293,27 @@ MouseArea {
                 }
 
                 LabelPL {
+                    id: transLabel
                     color: styler.itemFg
                     font.bold: true
                     font.pixelSize: styler.themeFontSizeSmall
                     text: app.tr("Transport")
-                    visible: transList.model.count > 0
+                    visible: transGrid.model.count > 0
                 }
 
-                ListView {
-                    id: transList
-                    boundsBehavior: Flickable.StopAtBounds
-                    clip: true
-                    delegate: selectionDelegate
-                    model: ListModel {}
-                    orientation: ListView.Horizontal
-                    height: menu.cellHeightFull
-                    visible: transList.model.count > 0
-                    width: parent.width
+                Grid {
+                    id: transGrid
+                    flow: col.portrait ? Grid.TopToBottom : Grid.LeftToRight
+                    rows: col.gridRows(model.count)
+                    visible: model.count > 0
+
+                    Repeater {
+                        delegate: selectionDelegate
+                        model: parent.model
+                    }
 
                     property string iconPrefix: "transport"
+                    property var    model: ListModel {}
                     property var    tr: {
                         "bicycle": app.tr("Bicycle"),
                         "car": app.tr("Car"),
@@ -302,12 +328,36 @@ MouseArea {
                         master.fillMenu();
                     }
                 }
+
+                function gridRows(count){
+                    var nc;
+                    var nr;
+                    if (col.portrait) {
+                        nc = Math.max(1, Math.floor(menu.maxWidth / menu.cellWidthFull));
+                        nr = Math.max(1, Math.ceil(count / nc));
+                        if (nc > col.secondMaxCount && col.nrExtras + 1 > nr) {
+                            nr = Math.min(col.nrExtras + 1, Math.ceil(count / col.secondMaxCount));
+                        }
+                        return nr;
+                    } else {
+                        var h = menu.maxHeight -
+                                Math.max(typeLabel.height, lightLabel.height, transLabel.height) -
+                                rowSpacing;
+                        nr = Math.max(1, Math.floor(h / menu.cellHeightFull));
+                        nc = Math.max(1, Math.ceil(count / nr));
+                        if (nr > col.secondMaxCount && col.nrExtras + 1 > nc) {
+                            nc = Math.min(col.nrExtras + 1, Math.ceil(count / col.secondMaxCount));
+                            nr = Math.max(1, Math.ceil(count / nc));
+                        }
+                        return nr;
+                    }
+                }
             }
         }
 
         Rectangle {
-            // scrollbar for flickable
-            id: scrollBar
+            // vertical scrollbar for flickable
+            id: scrollBarV
             anchors.right: parent.right
             color: styler.itemPressed
             height:  Math.max(flick.height / flick.contentHeight * flick.height - 2 * radius, flick.height/10)
@@ -317,18 +367,48 @@ MouseArea {
             width: Math.max(1,styler.themeFontSizeExtraSmall/5)
             y: flick.y + flick.contentY / flick.contentHeight * flick.height + radius;
 
-            Behavior on opacity { NumberAnimation { id: anim; property: "opacity"; duration: 0; } }
+            Behavior on opacity { NumberAnimation { id: animV; property: "opacity"; duration: 0; } }
 
             Connections {
                 target: menu
                 onVisibleChanged: {
                     if (menu.visible)
-                        scrollBar.opacity = Qt.binding(function () {
-                            anim.duration = flick.moving ? 0 : 3*app.conf.animationDuration;
+                        scrollBarV.opacity = Qt.binding(function () {
+                            animV.duration = flick.moving ? 0 : 3*app.conf.animationDuration;
                             return flick.moving ? 1 : 0;
                         })
                     else {
-                        scrollBar.opacity = 1;
+                        scrollBarV.opacity = 1;
+                        animV.duration = 0;
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            // horizontal scrollbar for flickable
+            id: scrollBarH
+            anchors.bottom: parent.bottom
+            color: styler.itemPressed
+            width:  Math.max(flick.width / flick.contentWidth * flick.width - 2 * radius, flick.width/10)
+            opacity: 1
+            radius: height / 2
+            visible: flick.width < flick.contentWidth
+            height: Math.max(1,styler.themeFontSizeExtraSmall/5)
+            x: flick.x + flick.contentX / flick.contentWidth * flick.width + radius;
+
+            Behavior on opacity { NumberAnimation { id: animH; property: "opacity"; duration: 0; } }
+
+            Connections {
+                target: menu
+                onVisibleChanged: {
+                    if (menu.visible)
+                        scrollBarH.opacity = Qt.binding(function () {
+                            animH.duration = flick.moving ? 0 : 3*app.conf.animationDuration;
+                            return flick.moving ? 1 : 0;
+                        })
+                    else {
+                        scrollBarH.opacity = 1;
                         anim.duration = 0;
                     }
                 }
@@ -406,10 +486,10 @@ MouseArea {
         py.call("poor.app.basemap.options", [], function(options) {
             typeGrid.model.clear();
             Util.appendAll(typeGrid.model, options.type);
-            lightList.model.clear();
-            Util.appendAll(lightList.model, options.light);
-            transList.model.clear();
-            Util.appendAll(transList.model, options.vehicle);
+            lightGrid.model.clear();
+            Util.appendAll(lightGrid.model, options.light);
+            transGrid.model.clear();
+            Util.appendAll(transGrid.model, options.vehicle);
         });
     }
 }
