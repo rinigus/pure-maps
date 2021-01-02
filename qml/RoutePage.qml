@@ -68,7 +68,7 @@ PagePL {
 
         PageMenuItemPL {
             iconName: styler.iconNavigateTo
-            text: app.tr("Reverse endpoints")
+            text: app.tr("Reverse route")
             visible: page.fromNeeded && page.toNeeded
             onClicked: {
                 var from = page.from;
@@ -80,6 +80,8 @@ PagePL {
                 page.to = from;
                 page.toQuery = fromQuery;
                 page.toText = fromText;
+                for (var i = waypoints.count - 2; i >= 0; i--)
+                    waypoints.move(i, waypoints.count - 1, 1);
             }
         }
     }
