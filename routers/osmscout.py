@@ -129,6 +129,7 @@ MODEOPTIONS = {
 }
 
 URL = "http://localhost:8553/v2/route?json={input}"
+URL_OPT = "http://localhost:8553/v2/optimized_route?json={input}"
 cache = {}
 
 def prepare_endpoint(point):
@@ -143,9 +144,11 @@ def prepare_endpoint(point):
     results = geocoder.geocode(point, params=dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
-def route(locations, heading, params):
+def route(locations, params):
     """Find route and return its properties as a dictionary."""
     loc = list(map(prepare_endpoint, locations))
+    heading = params.get('heading', None)
+    optimized = params.get('optimized', False) if len(loc) > 3 else False
     if heading is not None:
         loc[0]["heading"] = heading
     language = poor.conf.routers.osmscout.language
@@ -161,7 +164,10 @@ def route(locations, heading, params):
                  directions_options=dict(language=language, units=units))
 
     input = urllib.parse.quote(json.dumps(input))
-    url = URL.format(**locals())
+    if optimized:
+        url = URL_OPT.format(**locals())
+    else:
+        url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     result = poor.http.get_json(url)
@@ -169,7 +175,7 @@ def route(locations, heading, params):
     mode = MODE.get(ctype,"car")
     if result.get("API version", "") == "libosmscout V1":
         return parse_result_libosmscout(url, locations, result, mode)
-    return parse_result_valhalla(url, locations, result, mode)
+    return parse_result_valhalla(url, locations, optimized, result, mode)
 
 def parse_result_libosmscout(url, locations, result, mode):
     """Parse and return route from libosmscout engine."""
@@ -182,7 +188,8 @@ def parse_result_libosmscout(url, locations, result, mode):
         duration=float(maneuver.time),
         length=float(maneuver.length),
     ) for maneuver in result.maneuvers]
-    route = dict(x=x, y=y, locations=locations, maneuvers=maneuvers, mode=mode)
+    route = dict(x=x, y=y, locations=locations,
+                 maneuvers=maneuvers, mode=mode, optimized=False)
     route["language"] = result.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
@@ -194,7 +201,7 @@ def parse_exit(maneuver, key):
     e = maneuver["sign"][key]
     return [i.get("text", "") for i in e]
 
-def parse_result_valhalla(url, locations, result, mode):
+def parse_result_valhalla(url, locations, optimized, result, mode):
     """Parse and return route from Valhalla engine."""
     X, Y, Man, LocPointInd = [], [], [], [0]
     for legs in result.trip.legs:
@@ -224,7 +231,10 @@ def parse_result_valhalla(url, locations, result, mode):
         Y.extend(y)
         Man.extend(maneuvers)
         LocPointInd.append(len(X)-1)
-    route = dict(x=X, y=Y, locations=locations, location_indexes=LocPointInd, maneuvers=Man, mode=mode)
+    route = dict(x=X, y=Y,
+                 locations=[locations[i.original_index] for i in result.trip.locations],
+                 location_indexes=LocPointInd,
+                 maneuvers=Man, mode=mode, optimized=optimized)
     route["language"] = result.trip.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)

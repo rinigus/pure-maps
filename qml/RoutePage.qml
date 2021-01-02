@@ -92,6 +92,7 @@ PagePL {
     property bool   fromNeeded: true
     property alias  fromQuery: fromButton.query
     property alias  fromText: fromButton.text
+    property alias  optimized: optimizeSwitch.checked
     property var    params: {}
     property string routerName
     property alias  to: toButton.coordinates
@@ -437,7 +438,8 @@ PagePL {
                         else page.to = [model.toX, model.toY];
 
                         if (model.waypoints) {
-                            var r = JSON.parse(model.full);
+                            var rfull= JSON.parse(model.full);
+                            var r = rfull.locations;
                             page.waypoints.clear();
                             for (var i=1; i < r.length-1; i++)
                                 page.waypoints.append({"destination": r[i].destination,
@@ -447,8 +449,10 @@ PagePL {
                                                           "x": r[i].x,
                                                           "y": r[i].y})
                             page.waypointsEnabled = true;
+                            page.optimized = rfull.optimized;
                         } else {
                             page.waypointsEnabled = false;
+                            page.optimized = false;
                             page.waypoints.clear();
                         }
                     }
@@ -463,7 +467,8 @@ PagePL {
                 // recent destinations
                 routes.model.clear();
                 var rs = py.evaluate("poor.app.history.routes").slice(0, 2);
-                rs.forEach(function (p) {
+                rs.forEach(function (r) {
+                    var p = r.locations;
                     routes.model.append({
                                             "fromText": p[0].text,
                                             "fromX": p[0].x,
@@ -472,7 +477,7 @@ PagePL {
                                             "toX": p[p.length-1].x,
                                             "toY": p[p.length-1].y,
                                             "visible": true,
-                                            "full": JSON.stringify(p),
+                                            "full": JSON.stringify(r),
                                             "waypoints": p.length - 2
                                         });
                 });
@@ -725,7 +730,7 @@ PagePL {
     }
 
     function saveLocations() {
-        py.call_sync("poor.app.history.add_route", [getLocations()]);
+        py.call_sync("poor.app.history.add_route", [{"locations": getLocations(), "optimized": optimized}]);
     }
 
     function updateRouter() {

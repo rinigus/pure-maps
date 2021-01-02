@@ -27,6 +27,7 @@ import socket
 import sys
 import traceback
 
+from poor.attrdict import AttrDict
 from poor.i18n import _
 
 __all__ = ("Router",)
@@ -116,7 +117,7 @@ class Router:
         path = re.sub(r"\.json$", "_results.qml", self._path)
         return poor.util.path2uri(path)
 
-    def route(self, locations, heading=None, params=None):
+    def route(self, locations, params=dict()):
         """Find route and return its properties as a dictionary.
 
         `locations` is a list of either strings (usually addresses) or
@@ -128,9 +129,9 @@ class Router:
         used to specify a dictionary of router-specific parameters.
 
         """
-        params = params or {}
+        params = AttrDict(params)
         try:
-            route = self._provider.route(locations, heading, params)
+            route = self._provider.route(locations=locations, params=params)
         except socket.timeout:
             return dict(error=True, message=_("Connection timed out"))
         except Exception:

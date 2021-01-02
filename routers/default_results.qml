@@ -49,7 +49,7 @@ PagePL {
         var routePage = app.pages.previousPage();
         routePage.saveDestination();
         var routePoints = routePage.getLocations();
-        var args = [routePoints];
+        var args = [routePoints, {"optimized": routePage.optimized}];
         py.call("poor.app.router.route", args, function(route) {
             if (route && route.error && route.message) {
                 busy.error = route.message;

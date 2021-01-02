@@ -198,7 +198,7 @@ Item {
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
         var loc = navigatorBase.locations;
         loc.splice(0, 0, app.getPosition());
-        var args = [loc, gps.direction];
+        var args = [loc, {"heading": gps.direction, "optimized": navigatorBase.optimized}];
         py.call("poor.app.router.route", args, function(route) {
             if (Array.isArray(route) && route.length > 0)
                 // If the router returns multiple alternative routes,

@@ -74,6 +74,7 @@ void Navigator::clearRoute()
   SET(manTime, QLatin1String("-"));
   SET(nextIcon, QLatin1String());
   SET(nextManDist, QLatin1String());
+  SET(optimized, false);
   SET(roundaboutExit, 0);
   SET(street, "");
 
@@ -552,6 +553,7 @@ void Navigator::setRoute(QVariantMap m)
   // set global vars
   SET(language, m.value("language", "en").toString());
   SET(mode, m.value("mode", "car").toString());
+  SET(optimized, m.value("optimized", false).toBool());
   SET(destDist, "-");
   SET(destEta, "-");
   SET(destTime, "-");
