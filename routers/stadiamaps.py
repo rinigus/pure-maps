@@ -109,6 +109,7 @@ MODEOPTIONS = {
 }
 
 URL = "https://route.stadiamaps.com/route?api_key=" + poor.key.get("STADIAMAPS_KEY") + "&json={input}"
+URL_OPT = "https://route.stadiamaps.com/optimized_route?api_key=" + poor.key.get("STADIAMAPS_KEY") + "&json={input}"
 cache = {}
 
 def prepare_endpoint(point):
@@ -123,9 +124,11 @@ def prepare_endpoint(point):
     results = geocoder.geocode(point, params=dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
-def route(locations, heading, params):
+def route(locations, params):
     """Find route and return its properties as a dictionary."""
     loc = list(map(prepare_endpoint, locations))
+    heading = params.get('heading', None)
+    optimized = params.get('optimized', False) if len(loc) > 3 else False
     if heading is not None:
         loc[0]["heading"] = heading
     language = poor.conf.routers.stadiamaps.language
@@ -141,13 +144,16 @@ def route(locations, heading, params):
                  directions_options=dict(language=language, units=units))
 
     input = urllib.parse.quote(json.dumps(input))
-    url = URL.format(**locals())
+    if optimized:
+        url = URL_OPT.format(**locals())
+    else:
+        url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     result = poor.http.get_json(url)
     result = poor.AttrDict(result)
     mode = MODE.get(ctype,"car")
-    return parse_result_valhalla(url, locations, result, mode)
+    return parse_result_valhalla(url, locations, optimized, result, mode)
 
 def parse_exit(maneuver, key):
     if "sign" not in maneuver or key not in maneuver["sign"]:
@@ -155,7 +161,7 @@ def parse_exit(maneuver, key):
     e = maneuver["sign"][key]
     return [i.get("text", "") for i in e]
 
-def parse_result_valhalla(url, locations, result, mode):
+def parse_result_valhalla(url, locations, optimized, result, mode):
     """Parse and return route from Valhalla engine."""
     X, Y, Man, LocPointInd = [], [], [], [0]
     for legs in result.trip.legs:
@@ -185,7 +191,10 @@ def parse_result_valhalla(url, locations, result, mode):
         Y.extend(y)
         Man.extend(maneuvers)
         LocPointInd.append(len(X)-1)
-    route = dict(x=X, y=Y, locations=locations, location_indexes=LocPointInd, maneuvers=Man, mode=mode)
+    route = dict(x=X, y=Y,
+                 locations=[locations[i.original_index] for i in result.trip.locations],
+                 location_indexes=LocPointInd,
+                 maneuvers=Man, mode=mode, optimized=optimized)
     route["language"] = result.trip.language
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
