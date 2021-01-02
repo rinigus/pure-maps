@@ -58,6 +58,8 @@ NARRATIVE = {
 }
 
 URL = "http://router.project-osrm.org/route/v1/car/{locstring}?steps=true&annotations=nodes&overview=full"
+URL_OPT = "http://router.project-osrm.org/trip/v1/car/{locstring}?steps=true&annotations=nodes&overview=full" + \
+    "&source=first&destination=last&roundtrip=false"
 cache = {}
 
 def init_icons():
@@ -132,14 +134,21 @@ def prepare_endpoint(point):
     results = geocoder.geocode(point, params=dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
-def route(locations, heading, params):
+def route(locations, params):
     """Find route and return its properties as a dictionary."""
     locstring = ";".join(map(prepare_endpoint, locations))
-    url = URL.format(**locals())
+    heading = params.get('heading', None)
+    optimized = params.get('optimized', False) if len(locations) > 3 else False
+    if optimized:
+        url = URL_OPT.format(**locals())
+    else:
+        url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    result = poor.http.get_json(url)["routes"][0]
-    result = poor.AttrDict(result)
+    routes = "trips" if optimized else "routes"
+    result = poor.http.get_json(url)
+    waypoints = result["waypoints"]
+    result = poor.AttrDict(result[routes][0])
     x, y = poor.util.decode_epl(result.geometry)
     maneuvers, loc_index = [], [0]
     for leg in result.legs:
@@ -152,9 +161,13 @@ def route(locations, heading, params):
             roundabout_exit_count=step.maneuver.get("exit", None),
         ) for step in leg.steps])
         loc_index.append(loc_index[-1] + len(leg.annotation.nodes) - 1)
+    if optimized:
+        li = { waypoints[i]["waypoint_index"] : i for i in range(len(waypoints)) }
+        locations=[locations[li[i]] for i in range(len(waypoints))]
     route = dict(x=x, y=y,
-                 locations=locations, location_indexes=loc_index,
-                 maneuvers=maneuvers, mode="car")
+                 locations=locations,
+                 location_indexes=loc_index,
+                 maneuvers=maneuvers, mode="car", optimized=optimized)
     route["language"] = "en_US"
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
