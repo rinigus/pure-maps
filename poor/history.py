@@ -180,6 +180,8 @@ class HistoryManager:
         """Remove route with the same text for origin and target from the list of routes."""
         def rkey(route):
             return ' - '.join([r['text'] for r in route.locations]) + ('#opt' if route.optimized else '#no')
+        if isinstance(route, dict):
+            route = AttrDict(route)
         key = rkey(route)
         for i in reversed(range(len(self._routes))):
             if rkey(self._routes[i]) == key:
