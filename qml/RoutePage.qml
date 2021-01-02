@@ -393,6 +393,8 @@ PagePL {
             anchors.right: parent.right
             visible: !followMe && !page.to && page.toNeeded && routes.model.count > 0
 
+            property int numberOfRoutes: 2
+
             SectionHeaderPL {
                 text: app.tr("Routes")
             }
@@ -461,12 +463,26 @@ PagePL {
                 model: ListModel {}
             }
 
+            ListItemPL {
+                contentHeight: styler.themeItemSizeSmall
+                visible: columnRoutes.numberOfRoutes < 20 && routes.model.count === columnRoutes.numberOfRoutes
+                ListItemLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: parent.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
+                    text: app.tr("Show more...")
+                }
+                onClicked: {
+                    columnRoutes.numberOfRoutes += 10;
+                    columnRoutes.fillRoutes();
+                }
+            }
+
             Component.onCompleted: columnRoutes.fillRoutes()
 
             function fillRoutes() {
                 // recent destinations
                 routes.model.clear();
-                var rs = py.evaluate("poor.app.history.routes").slice(0, 2);
+                var rs = py.evaluate("poor.app.history.routes").slice(0, numberOfRoutes);
                 rs.forEach(function (r) {
                     var p = r.locations;
                     routes.model.append({
