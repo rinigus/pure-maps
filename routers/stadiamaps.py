@@ -119,6 +119,10 @@ def prepare_endpoint(point):
     if isinstance(point, dict):
         d = dict(lat=point["y"], lon=point["x"])
         if "text" in point: d["name"] = point["text"]
+        if "destination" in point and not point["destination"]:
+            d["type"] = "break_through"
+        else:
+            d["type"] = "break"
         return d
     geocoder = poor.Geocoder("default")
     results = geocoder.geocode(point, params=dict(limit=1))
