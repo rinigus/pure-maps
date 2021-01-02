@@ -70,7 +70,7 @@ SUPPORTED_LOCALES = [
     "ru_RU",
 ]
 
-URL = ("http://open.mapquestapi.com/directions/v2/route"
+URL = ("http://open.mapquestapi.com/directions/v2/{service}"
        "?key=" + poor.key.get("MAPQUEST_KEY") )
 
 cache = {}
@@ -85,12 +85,15 @@ def prepare_endpoint(point):
     results = geocoder.geocode(point, params=dict(limit=1))
     return prepare_endpoint((results[0]["x"], results[0]["y"]))
 
-def route(locations, heading, params):
+def route(locations, params):
     """Find route and return its properties as a dictionary."""
     loc = list(map(prepare_endpoint, locations))
+    heading = params.get('heading', None)
+    optimized = params.get('optimized', False) if len(loc) > 3 else False
     type = poor.conf.routers.mapquest_open.type
     locale = poor.conf.routers.mapquest_open.language
     locale = (locale if locale in SUPPORTED_LOCALES else "en_US")
+    service = "optimizedroute" if optimized else "route"
     url = URL.format(**locals())
     options = dict(ambiguities="ignore",
                    unit="k",
@@ -106,7 +109,7 @@ def route(locations, heading, params):
     input = dict(locations=loc, options=options)
     input = json.dumps(input)
     with poor.util.silent(KeyError):
-        return copy.deepcopy(cache[input])
+        return copy.deepcopy(cache[url + input])
     result = poor.http.post_json(url, input)
     result = poor.AttrDict(result)
     # with open('route.json', 'w') as f:
@@ -129,8 +132,11 @@ def route(locations, heading, params):
     loc_index = result.route.shape.legIndexes
     loc_index[-1] -= 1
     mode = MODE.get(type,"car")
-    route = dict(x=x, y=y, locations=locations, location_indexes=loc_index, maneuvers=maneuvers, mode=mode)
+    route = dict(x=x, y=y,
+                 locations=[locations[i] for i in result.route.locationSequence],
+                 location_indexes=loc_index,
+                 maneuvers=maneuvers, mode=mode, optimized=optimized)
     route["language"] = locale
     if route and route["x"]:
-        cache[input] = copy.deepcopy(route)
+        cache[url + input] = copy.deepcopy(route)
     return route
