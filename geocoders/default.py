@@ -24,7 +24,7 @@ if the first one tried does not work.
 
 import poor
 
-providers = ["opencage", "photon"]
+providers = ["photon", "opencage"]
 
 def geocode(query, x, y, params):
     """Return a list of dictionaries of places matching `query`."""
