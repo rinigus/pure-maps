@@ -23,7 +23,7 @@ import "platform"
 
 PagePL {
     id: page
-    title: app.tr("Maneuvers")
+    title: app.tr("Navigation")
 
     Column {
         id: column
@@ -168,6 +168,10 @@ PagePL {
             visible: app.mode !== modes.navigatePost
         }
 
+        SectionHeaderPL {
+            text: app.tr("Destinations and waypoints")
+        }
+
         Repeater {
             id: locRep
             delegate: ListItemPL {
@@ -217,6 +221,10 @@ PagePL {
         Spacer {
             height: styler.themePaddingLarge + styler.themePaddingSmall
             visible: app.mode !== modes.navigatePost
+        }
+
+        SectionHeaderPL {
+            text: app.tr("Maneuvers")
         }
 
         NarrativeItem {
