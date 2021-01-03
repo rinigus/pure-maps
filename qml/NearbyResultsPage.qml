@@ -25,9 +25,6 @@ import "js/util.js" as Util
 PageListPL {
     id: page
 
-    property bool   loading: true
-    property bool   populated: false
-
     delegate: ListItemPL {
         id: listItem
         contentHeight: titleLabel.height + descriptionLabel.height + descriptionLabel.anchors.topMargin
@@ -98,25 +95,35 @@ PageListPL {
         }
     }
 
-    property string querySummary
+    placeholderEnabled: populated && model.count < 1
+    placeholderText: app.tr("No results")
+    title: app.tr("Nearby Venues")
+
+    property bool   loading: true
+    property bool   populated: false
     property int    searchCounter: 0
     property string stateId: "Nearby search: " + querySummary + searchCounter
+    property string querySummary
 
-    BusyModal {
-        id: busy
-        running: page.loading
+    headerExtra: Component {
+        Item {
+            height: busy.running ? page.height : 0
+            width: busy.running ? page.width : 0
+            BusyModal {
+                id: busy
+                running: page.loading
+                text: app.tr("Searching")
+            }
+        }
     }
 
     onPageStatusActivating: {
         if (page.populated) return;
         page.model.clear();
         page.loading = true;
-        page.title = "";
-        busy.text = app.tr("Searching");
     }
 
     onPageStatusActive: {
-        //listView.visible = true;
         if (page.populated) return;
         var nearbyPage = app.pages.previousPage();
         page.populate(nearbyPage.query, nearbyPage.near, nearbyPage.radius, nearbyPage.params);
@@ -124,7 +131,6 @@ PageListPL {
     }
 
     onPageStatusInactive: {
-        //listView.visible = false;
     }
 
     function populate(query, near, radius, params) {
@@ -133,14 +139,10 @@ PageListPL {
         searchCounter += 1;
         py.call("poor.app.guide.nearby", [query, near, radius, params], function(results) {
             if (results && results.error && results.message) {
-                page.title = "";
-                busy.error = results.message;
+                page.placeholderText = results.message;
             } else if (results.length > 0) {
                 page.title = app.tr("%1 Results", results.length);
                 Util.appendAll(page.model, results);
-            } else {
-                page.title = "";
-                busy.error = app.tr("No results");
             }
             page.loading = false;
             page.populated = true;
