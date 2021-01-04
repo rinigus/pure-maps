@@ -26,7 +26,6 @@ DialogListPL {
     id: dialog
     title: app.tr("Venue type")
 
-    canAccept: dialog.query.length > 0
     currentIndex: -1
 
     property bool   autocompletePending: false
@@ -78,6 +77,7 @@ DialogListPL {
             SearchFieldPL {
                 id: searchField
                 placeholderText: app.tr("Search")
+                text: dialog.query
                 width: parent.width
                 property string prevText: ""
                 onSearch: dialog.accept();
@@ -96,8 +96,7 @@ DialogListPL {
     }
 
     model: ListModel {}
-
-    placeholderText: app.tr("You can search for venues by type or name.")
+    placeholderText: app.tr("You can search for venues by type.")
 
     property var searchField: undefined
 

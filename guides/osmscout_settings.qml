@@ -23,26 +23,6 @@ Column {
     spacing: styler.themePaddingLarge
     width: parent.width
 
-    ValueButtonPL {
-        id: nameButton
-        label: app.tr("Name")
-        height: Math.max(styler.themeItemSizeSmall, implicitHeight)
-        value: ""
-        width: parent.width
-        onClicked: {
-            var dialog = app.pages.push(Qt.resolvedUrl("../guides/osmscout_name.qml"));
-            dialog.accepted.connect(function() {
-                nameButton.value = dialog.query;
-                page.params.name = dialog.query;
-                py.call_sync("poor.app.history.add_place_name", [dialog.query]);
-            });
-        }
-
-        Component.onCompleted: {
-            page.params.name = ""
-        }
-    }
-
     TextSwitchPL {
         id: routeSwitch
         anchors.left: parent.left

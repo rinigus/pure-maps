@@ -126,18 +126,21 @@ PageListPL {
     onPageStatusActive: {
         if (page.populated) return;
         var nearbyPage = app.pages.previousPage();
-        page.populate(nearbyPage.query, nearbyPage.near, nearbyPage.radius, nearbyPage.params);
-        querySummary = app.tr("Nearby venues: %1").arg(nearbyPage.query)
+        page.populate(nearbyPage.queryType, nearbyPage.queryName,
+                      nearbyPage.near, nearbyPage.radius, nearbyPage.params);
+        querySummary = app.tr("Nearby venues: %1 %2",
+                              nearbyPage.queryType, nearbyPage.queryName)
     }
 
     onPageStatusInactive: {
     }
 
-    function populate(query, near, radius, params) {
+    function populate(queryType, queryName, near, radius, params) {
         // Load nearby results from the Python backend.
         page.model.clear();
         searchCounter += 1;
-        py.call("poor.app.guide.nearby", [query, near, radius, params], function(results) {
+        py.call("poor.app.guide.nearby", [queryType, queryName,
+                                          near, radius, params], function(results) {
             if (results && results.error && results.message) {
                 page.placeholderText = results.message;
             } else if (results.length > 0) {

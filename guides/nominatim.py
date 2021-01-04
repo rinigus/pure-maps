@@ -54,9 +54,9 @@ def get_bbox(x, y, radius):
     ymax = y + radius/y_m_per_deg
     return xmin, xmax, ymin, ymax
 
-def nearby(query, near, radius, params):
+def nearby(query_type, query_name, near, radius, params):
     """Return X, Y and a list of dictionaries of places matching `query`."""
-    query = urllib.parse.quote_plus(query)
+    query = urllib.parse.quote_plus(query_type + ' ' + query_name)
     x, y = prepare_point(near)
     xmin, xmax, ymin, ymax = get_bbox(x, y, radius)
     limit = params.get("limit", 50)

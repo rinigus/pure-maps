@@ -37,8 +37,8 @@ URL_SEARCH = ("http://localhost:8553/v1/guide"
 
 URL_XY = ("http://localhost:8553/v1/guide"
           "?limit={limit}"
-          "&poitype={query}"
-          "&name={name}"
+          "&poitype={query_type}"
+          "&name={query_name}"
           "&radius={radius}"
           "&lng={x}"
           "&lat={y}")
@@ -71,12 +71,11 @@ def get_types():
         types.append({"original": t, "normalized": normalize(t)})
     return types
 
-def nearby(query, near, radius, params):
+def nearby(query_type, query_name, near, radius, params):
     """Return X, Y and a list of dictionaries of places matching `query`."""
-    query = urllib.parse.quote_plus(query)
+    query_type = urllib.parse.quote_plus(query_type)
+    query_name = urllib.parse.quote_plus(query_name)
     limit = params.get("limit", 50)
-    name = params.get("name", "")
-    name = urllib.parse.quote_plus(name)
     route_search = params.get("alongRoute", False)
     route = params.get("route", {})
     use_reference = params.get("fromReference", True)

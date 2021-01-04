@@ -17,10 +17,10 @@
  */
 
 import QtQuick 2.0
-import "../qml"
-import "../qml/platform"
+import "."
+import "platform"
 
-import "../qml/js/util.js" as Util
+import "js/util.js" as Util
 
 DialogListPL {
     id: dialog
@@ -66,7 +66,8 @@ DialogListPL {
     headerExtra: Component {
         SearchFieldPL {
             id: searchField
-            placeholderText: app.tr("Search")
+            placeholderText: app.tr("Name or keyword")
+            text: dialog.query
             width: parent.width
             onSearch: dialog.accept();
             onTextChanged: {

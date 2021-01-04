@@ -50,7 +50,6 @@ EXPLORE_URL = "".join((
     "&v=20180603",
     "&ll={y:.6f},{x:.6f}",
     "&radius={radius:.0f}",
-    "&query={query}",
     "&limit=20",
     "&sortByDistance={sort_by_distance}",
 ))
@@ -71,7 +70,7 @@ def autocomplete_type(query, params=None):
         return x.lower().replace("é", "e")
     query = normalize(query)
     results = []
-    for i, type in enumerate(get_types()):
+    for _, type in get_types().items():
         pos = normalize(type.label).find(query)
         if pos < 0: continue
         results.append(poor.AttrDict(
@@ -91,9 +90,11 @@ def get_types():
         children = item.get("categories", [])
         children = list(itertools.chain.from_iterable(
             get_recursive(x, level=level+1) for x in children))
-        return [poor.AttrDict(label=item.get("name"), level=level)] + children
+        return [poor.AttrDict(id=item.get("id"), label=item.get("name"), level=level)] + children
     types = list(get_recursive(results.response))
-    return list(filter(lambda x: x.label, types))
+    types = list(filter(lambda x: x.label, types))
+    types = {i.label: i for i in types}
+    return types
 
 def get_link(id):
     """Return hyperlink for venue with given `id`."""
@@ -116,12 +117,18 @@ def inject_venue_details(results):
             results[i].text = parse_text(venues[i])
             results[i].phone = parse_phone(venues[i])
 
-def nearby(query, near, radius, params):
+def nearby(query_type, query_name, near, radius, params):
     """Return X, Y and a list of dictionaries of places matching `query`."""
-    query = urllib.parse.quote_plus(query)
+    type_id = get_types().get(query_type, None)
+    if type_id is not None:
+        query = "&categoryId=" + type_id.id
+    else:
+        query = ""
+        query_name = query_name + ' ' + query_type
+    query = query + '&query=' + urllib.parse.quote_plus(query_name) if query_name else query
     sort_by_distance = str(int(poor.conf.guides.foursquare.sort_by_distance))
     x, y = prepare_point(near)
-    url = EXPLORE_URL.format(**locals())
+    url = EXPLORE_URL.format(**locals()) + query
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)

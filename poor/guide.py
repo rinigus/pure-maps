@@ -107,7 +107,7 @@ class Guide:
             path = os.path.join(poor.DATA_DIR, leaf)
         return path, poor.util.read_json(path)
 
-    def nearby(self, query, near, radius, params=None):
+    def nearby(self, query_type, query_name, near, radius, params=None):
         """
         Return a list of dictionaries of places matching `query`.
 
@@ -118,7 +118,7 @@ class Guide:
         """
         params = params or {}
         try:
-            x, y, results = self._provider.nearby(query, near, radius, params)
+            x, y, results = self._provider.nearby(query_type, query_name, near, radius, params)
         except socket.timeout:
             return dict(error=True, message=_("Connection timed out"))
         except Exception:
