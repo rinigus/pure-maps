@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Ladislav Hodas <ladislav@hodas.sk>, 2020
+# Ladislav Hodas <ladislav@hodas.sk>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-05 09:54+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Ladislav Hodas <ladislav@hodas.sk>, 2020\n"
+"Last-Translator: Ladislav Hodas <ladislav@hodas.sk>, 2021\n"
 "Language-Team: Slovak (Slovakia) (https://www.transifex.com/rinigus/teams/89597/sk_SK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -567,6 +567,12 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Používate offline profil. Uistite sa, že máte nainštalovaný a spustený "
+"server OSM Scout. V závislosti na vašom systéme je k dispozícii buď v "
+"obchodoch s aplikáciami (OpenRepos pre Sailfish OS, OpenStore pre Ubuntu "
+"Touch), Flathub alebo vo vašej distribúcii. Podrobnosti nájdete v <a "
+"href=\"https://rinigus.github.io/osmscout-server\"> príručke OSM Scout "
+"Server </a>."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -697,19 +703,19 @@ msgstr "Bol dosiahnutý cieľ"
 
 #: qml/NavigationPage.qml:172 qml/RoutePage.qml:163 qml/RoutePage.qml:170
 msgid "Destinations and waypoints"
-msgstr ""
+msgstr "Ciele a body na trase"
 
 #: qml/NavigationPage.qml:196
 msgid "Final destination: %1"
-msgstr ""
+msgstr "Konečný cieľ: %1"
 
 #: qml/NavigationPage.qml:198 qml/RoutePage.qml:250
 msgid "Destination: %1"
-msgstr ""
+msgstr "Cieľ: %1"
 
 #: qml/NavigationPage.qml:199 qml/RoutePage.qml:251
 msgid "Waypoint: %1"
-msgstr ""
+msgstr "Body na trase: %1"
 
 #: qml/NavigationPage.qml:227
 msgid "Maneuvers"
@@ -721,11 +727,11 @@ msgstr "VÝJAZD"
 
 #: qml/Navigator.qml:69
 msgid "Destination %1 reached"
-msgstr ""
+msgstr "Cieľ %1 bol dosiahnutý"
 
 #: qml/Navigator.qml:70
 msgid "Waypoint %1 reached"
-msgstr ""
+msgstr "Bod na trase %1 bol dosiahnutý"
 
 #: qml/Navigator.qml:120
 msgid "Voice navigation on"
@@ -789,7 +795,7 @@ msgstr "Hľadanie"
 
 #: qml/NearbyResultsPage.qml:131
 msgid "Nearby venues: %1 %2"
-msgstr ""
+msgstr "Miesta v okolí: %1 %2"
 
 #: qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
@@ -813,7 +819,7 @@ msgstr "Názov miesta"
 
 #: qml/PlaceNamePage.qml:69
 msgid "Name or keyword"
-msgstr ""
+msgstr "Názov alebo kľúčové slovo"
 
 #: qml/PlaceNamePage.qml:82
 msgid "You can search for venues by name."
@@ -825,7 +831,7 @@ msgstr "Typ miesta"
 
 #: qml/PlaceTypePage.qml:99
 msgid "You can search for venues by type."
-msgstr ""
+msgstr "Miesta môžete vyhľadávať podľa typu."
 
 #: qml/PoiBlock.qml:81
 msgid "%1; %2"
@@ -1660,7 +1666,7 @@ msgstr "Sledovať"
 
 #: qml/RoutePage.qml:71
 msgid "Reverse route"
-msgstr ""
+msgstr "Spiatočná trasa"
 
 #: qml/RoutePage.qml:148
 msgid "From"
@@ -1686,38 +1692,43 @@ msgid ""
 "\n"
 "Dismiss this dialog to stop showing this message."
 msgstr ""
+"Na trase je možné pridať ďalšie ciele a body. Obidve polohy sa používajú na výpočet trasy, ale sledujú sa iba ciele. Nakoniec, ak zmeškáte bod na trase a neskôr sa znovu pripojíte k vypočítanej trase po bode na trase, bude sa predpokladať, že bol bod na trase dosiahnutý a bude neskôr vo výpočtoch presmerovania zamietnutý. Naopak, ciele musia byť dosiahnuté v rámci určitej tolerancie a nebudú takýmto spôsobom odmietané.\n"
+"\n"
+"Stanovte si teda ako cieľ miesta, ktoré musíte na svojej trase dosiahnuť a body na trase miesta, ktoré slúžia iba na usmernenie trasy podľa vašich preferencií.\n"
+"\n"
+"Zavrieť toto dialógové okno a prestať zobrazovať túto správu."
 
 #: qml/RoutePage.qml:193
 msgid "Optimize order"
-msgstr ""
+msgstr "Optimalizovať poradie"
 
 #: qml/RoutePage.qml:215
 msgid "Up"
-msgstr ""
+msgstr "Hore"
 
 #: qml/RoutePage.qml:224
 msgid "Down"
-msgstr ""
+msgstr "Dolu"
 
 #: qml/RoutePage.qml:238
 msgid "Convert to waypoint"
-msgstr ""
+msgstr "Zmeniť na bod na trase"
 
 #: qml/RoutePage.qml:239
 msgid "Convert to destination"
-msgstr ""
+msgstr "Zmeniť na cieľ"
 
 #: qml/RoutePage.qml:285
 msgid "Add destination"
-msgstr ""
+msgstr "Pridať cieľ"
 
 #: qml/RoutePage.qml:293
 msgid "Add waypoint"
-msgstr ""
+msgstr "Pridať bod na trase"
 
 #: qml/RoutePage.qml:309
 msgid "Waypoint"
-msgstr ""
+msgstr "Bod na trase"
 
 #: qml/RoutePage.qml:401
 msgid "Routes"
@@ -1725,11 +1736,11 @@ msgstr "Trasy"
 
 #: qml/RoutePage.qml:429
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
-msgstr ""
+msgstr "%1 ‒ %2 (%3 ciele a body na trase)"
 
 #: qml/RoutePage.qml:474
 msgid "Show more..."
-msgstr ""
+msgstr "Zobraziť viac..."
 
 #: qml/RoutePage.qml:514
 msgid "Destinations"
