@@ -19,7 +19,7 @@
 # This test is performed after other tests to avoid changes in poor.conf
 # with the respect to used API keys
 
-import imp
+import importlib
 import os
 import poor.test
 import tempfile
@@ -28,7 +28,7 @@ import tempfile
 class TestConfigurationStore(poor.test.TestCase):
 
     def setup_method(self, method):
-        imp.reload(poor.config)
+        importlib.reload(poor.config)
         poor.conf = poor.ConfigurationStore()
         handle, self.path = tempfile.mkstemp()
 

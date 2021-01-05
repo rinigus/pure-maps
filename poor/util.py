@@ -206,7 +206,7 @@ def format_decimal(value, n=0, lang=None):
     if lang is not None:
         result = "{{:.{:d}f}}".format(max(0, ndigits)).format(value)
         return result.replace('.', decimal.get(lang, '.'))
-    return locale.format("%.{:d}f".format(max(0, ndigits)), value)
+    return locale.format_string("%.{:d}f".format(max(0, ndigits)), value)
 
 def format_distance(meters, n=2, short=True, lang=None):
     """Format `meters` to `n` significant digits and unit label."""

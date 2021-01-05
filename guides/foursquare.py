@@ -70,7 +70,7 @@ def autocomplete_type(query, params=None):
         return x.lower().replace("é", "e")
     query = normalize(query)
     results = []
-    for _, type in get_types().items():
+    for _ignore_, type in get_types().items():
         pos = normalize(type.label).find(query)
         if pos < 0: continue
         results.append(poor.AttrDict(
