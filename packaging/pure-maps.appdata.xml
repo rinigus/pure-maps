@@ -38,6 +38,20 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.4.0" date="2021-01-05">
+     <description>
+       <ul>
+	 <li>Add support for routing waypoints order optimization</li>
+	 <li>Allow to see more routes from history</li>
+	 <li>Adjust basemap selector</li>
+	 <li>Handle type and name separately in nearby search</li>
+	 <li>Switch default online geocoder to Photon</li>
+	 <li>Improve MapQuest nearby search support</li>
+	 <li>Navigation overview page adjustments</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.3.0" date="2020-12-31">
      <description>
        <ul>

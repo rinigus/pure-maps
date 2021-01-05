@@ -1,3 +1,15 @@
+2021-01-05: Pure Maps 2.4
+=========================
+
+* Add support for routing waypoints order optimization
+* Allow to see more routes from history
+* Adjust basemap selector
+* Handle type and name separately in nearby search
+* Switch default online geocoder to Photon
+* Improve MapQuest nearby search support
+* Navigation overview page adjustments
+* Update translations
+
 2020-12-31: Pure Maps 2.3
 =========================
 
