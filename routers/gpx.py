@@ -27,7 +27,7 @@ CONF_DEFAULTS = {
     "reverse": 0
 }
 
-def route(locations_ignored, heading, params):
+def route(locations, params):
     """Find route and return its properties as a dictionary."""
     fname = poor.conf.routers.gpx.file
     ctype = poor.conf.routers.gpx.type
