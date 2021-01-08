@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-05 09:54+0200\n"
+"POT-Creation-Date: 2021-01-08 21:14+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Ladislav Hodas <ladislav@hodas.sk>, 2021\n"
 "Language-Team: Slovak (Slovakia) (https://www.transifex.com/rinigus/teams/89597/sk_SK/)\n"
@@ -715,7 +715,7 @@ msgstr "Cieľ: %1"
 
 #: qml/NavigationPage.qml:199 qml/RoutePage.qml:251
 msgid "Waypoint: %1"
-msgstr "Body na trase: %1"
+msgstr "Bod na trase: %1"
 
 #: qml/NavigationPage.qml:227
 msgid "Maneuvers"
@@ -795,7 +795,7 @@ msgstr "Hľadanie"
 
 #: qml/NearbyResultsPage.qml:131
 msgid "Nearby venues: %1 %2"
-msgstr "Miesta v okolí: %1 %2"
+msgstr "Okolité miesta: %1 %2"
 
 #: qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
@@ -1696,7 +1696,7 @@ msgstr ""
 "\n"
 "Stanovte si teda ako cieľ miesta, ktoré musíte na svojej trase dosiahnuť a body na trase miesta, ktoré slúžia iba na usmernenie trasy podľa vašich preferencií.\n"
 "\n"
-"Zavrieť toto dialógové okno a prestať zobrazovať túto správu."
+"Odmietnuť toto dialógové okno a prestať zobrazovať túto správu."
 
 #: qml/RoutePage.qml:193
 msgid "Optimize order"
