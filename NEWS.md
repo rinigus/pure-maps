@@ -8,7 +8,8 @@
 * Switch default online geocoder to Photon
 * Improve MapQuest nearby search support
 * Navigation overview page adjustments
-* Update translations
+* [2.4.0,2.4.1] Update translations
+* [2.4.1] Fix GPX routers
 
 2020-12-31: Pure Maps 2.3
 =========================
