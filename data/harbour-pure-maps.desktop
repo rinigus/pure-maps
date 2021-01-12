@@ -6,4 +6,4 @@ Type=Application
 X-Nemo-Application-Type=silica-qt5
 
 [X-HarbourBackup]
-BackupPathList=/home/nemo/.config/harbour-pure-maps
+BackupPathList=.config/harbour-pure-maps
