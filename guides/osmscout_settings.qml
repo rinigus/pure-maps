@@ -37,7 +37,10 @@ Column {
             }
             if (routeSwitch.checked) {
                 page.params.alongRoute = true;
-                page.params.route = { "route_lng": navigator.route.x, "route_lat": navigator.route.y };
+                page.params.route = {
+                    "route_lng": navigator.route.map(x => x.longitude),
+                    "route_lat": navigator.route.map(x => x.latitude),
+                };
             } else {
                 page.params.alongRoute = false;
             }

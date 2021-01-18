@@ -45,8 +45,8 @@ URL_XY = ("http://localhost:8553/v1/guide"
 
 URL_ROUTEONLY = ("http://localhost:8553/v1/guide"
                  "?limit={limit}"
-                 "&poitype={query}"
-                 "&name={name}"
+                 "&poitype={query_type}"
+                 "&name={query_name}"
                  "&radius={radius}")
 
 cache = {}
