@@ -112,8 +112,6 @@ def route(locations, params):
         return copy.deepcopy(cache[url + input])
     result = poor.http.post_json(url, input)
     result = poor.AttrDict(result)
-    # with open('route.json', 'w') as f:
-    #     f.write(json.dumps(result))
     x, y = poor.util.decode_epl(result.route.shape.shapePoints)
     maneuvers = []
     for leg in result.route.legs:

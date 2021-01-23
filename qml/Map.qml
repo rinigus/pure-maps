@@ -430,6 +430,7 @@ MapboxMap {
         if (styler.position) suffix = "-" + styler.position;
         map.addImagePath(map.images.poi, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker-stroked" + suffix, true)));
         map.addImagePath(map.images.poiBookmarked, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker" + suffix, true)));
+        map.addImagePath(map.images.pixel, Qt.resolvedUrl("icons/pixel.png"));
     }
 
     function initLayers() {
@@ -451,7 +452,6 @@ MapboxMap {
                      }, map.firstLabelLayer);
         // Add transparent 1x1 pixels at maneuver points to knock out road shields etc.
         // that would otherwise overlap with the above maneuver and node circles.
-        map.addImagePath(map.images.pixel, Qt.resolvedUrl("icons/pixel.png"));
         map.addLayer(map.layers.dummies, {"type": "symbol", "source": map.sources.maneuvers});
         map.addLayer(map.layers.locations, {"type": "symbol", "source": map.sources.locations});
     }
@@ -592,9 +592,7 @@ MapboxMap {
     function updateLocations() {
         // Update location markers on the map.
         if (!app.navigator) return;
-        var coords = [];
-        for (var i=0; i < app.navigator.locations.length; i++)
-            coords.push(QtPositioning.coordinate(app.navigator.locations[i].y, app.navigator.locations[i].x));
+        var coords = app.navigator.locations.map(l => QtPositioning.coordinate(l.y, l.x))
         map.updateSourcePoints(map.sources.locations, coords);
     }
 
