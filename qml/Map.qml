@@ -592,7 +592,9 @@ MapboxMap {
     function updateLocations() {
         // Update location markers on the map.
         if (!app.navigator) return;
-        var coords = app.navigator.locations.map(l => QtPositioning.coordinate(l.y, l.x))
+        var coords = app.navigator.locations.map(function (l) {
+            return QtPositioning.coordinate(l.y, l.x);
+        })
         map.updateSourcePoints(map.sources.locations, coords);
     }
 
