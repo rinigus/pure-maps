@@ -11,5 +11,5 @@ for d in ['marker', 'position']:
         assert width > 0 and height > 0
         for ratio in [1.00, 1.25, 1.50, 1.75, 2.00]:
             png = "{}@{:.2f}.png".format(svg[:-4], ratio)
-            os.system("inkscape -f {} -e {} -C -w {:.0f} -h {:.0f}"
-                      .format(svg, png, ratio*width, ratio*height))
+            os.system("inkscape --convert-dpi-method=scale-document --export-filename={} -C -w {:.0f} -h {:.0f} {}"
+                      .format(png, ratio*width, ratio*height, svg))
