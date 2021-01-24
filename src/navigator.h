@@ -176,6 +176,7 @@ private:
   // Location
   struct LocationInfo {
     bool destination{false};
+    bool origin{false};
     bool final{false};
     double distance_to_route;
     double length_on_route;

@@ -196,7 +196,7 @@ Item {
         hasBeenAlongRoute = false;
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
-        var loc = navigatorBase.locations;
+        var loc = navigatorBase.locations.slice(1);
         loc.splice(0, 0, app.getPosition());
         var args = [loc, {"heading": gps.direction, "optimized": navigatorBase.optimized}];
         py.call("poor.app.router.route", args, function(route) {

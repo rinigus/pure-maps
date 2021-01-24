@@ -85,6 +85,10 @@ MapboxMap {
     property bool   showNavButtons: false
 
     readonly property var images: QtObject {
+        readonly property string locationDest:  "pure-image-location-dest"
+        readonly property string locationEnd:   "pure-image-location-end"
+        readonly property string locationStart: "pure-image-location-start"
+        readonly property string locationWay:   "pure-image-location-way"
         readonly property string pixel:         "pure-image-pixel"
         readonly property string poi:           "pure-image-poi"
         readonly property string poiBookmarked: "pure-image-poi-bookmarked"
@@ -383,6 +387,7 @@ MapboxMap {
         map.setLayoutProperty(map.layers.routeOutline, "line-join", "round");
         map.setPaintProperty(map.layers.routeOutline, "line-color", styler.route);
         map.setPaintProperty(map.layers.routeOutline, "line-gap-width", 16 / map.pixelRatio);
+        map.setPaintProperty(map.layers.routeOutline, "line-opacity", 1 - (1-styler.routeOpacity)/2);
         map.setPaintProperty(map.layers.routeOutline, "line-width", 4 / map.pixelRatio);
         // Configure layer for active maneuver markers.
         map.setPaintProperty(map.layers.maneuvers, "circle-color", styler.maneuver);
@@ -395,7 +400,6 @@ MapboxMap {
         map.setPaintProperty(map.layers.nodes, "circle-pitch-alignment", "map");
         map.setPaintProperty(map.layers.nodes, "circle-radius", 5 / map.pixelRatio);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-color", styler.route);
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-opacity", styler.routeOpacity);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 3 / map.pixelRatio);
         // Configure layer for dummy symbols that knock out road shields etc.
         map.setLayoutProperty(map.layers.dummies, "icon-image", map.images.pixel);
@@ -405,8 +409,15 @@ MapboxMap {
         // Configure layer for location markers.
         map.setLayoutProperty(map.layers.locations, "icon-allow-overlap", true);
         map.setLayoutProperty(map.layers.locations, "icon-anchor", "bottom");
-        map.setLayoutProperty(map.layers.locations, "icon-image", map.images.poiBookmarked);
+        map.setLayoutProperty(map.layers.locations, "icon-image", "{symbol}");
         map.setLayoutProperty(map.layers.locations, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.locations, "text-anchor", "top");
+        map.setLayoutProperty(map.layers.locations, "text-field", "{name}");
+        map.setLayoutProperty(map.layers.locations, "text-optional", true);
+        map.setLayoutProperty(map.layers.locations, "text-size", 12);
+        map.setPaintProperty(map.layers.locations, "text-color", styler.itemFg);
+        map.setPaintProperty(map.layers.locations, "text-halo-color", styler.itemBg);
+        map.setPaintProperty(map.layers.locations, "text-halo-width", 2);
     }
 
     function fitViewToPois(pois) {
@@ -428,6 +439,10 @@ MapboxMap {
     function initIcons() {
         var suffix = "";
         if (styler.position) suffix = "-" + styler.position;
+        map.addImagePath(map.images.locationDest, Qt.resolvedUrl(app.getIconScaled("icons/marker/flag-dest" + suffix, true)));
+        map.addImagePath(map.images.locationEnd, Qt.resolvedUrl(app.getIconScaled("icons/marker/flag-end" + suffix, true)));
+        map.addImagePath(map.images.locationStart, Qt.resolvedUrl(app.getIconScaled("icons/marker/flag-start" + suffix, true)));
+        map.addImagePath(map.images.locationWay, Qt.resolvedUrl(app.getIconScaled("icons/marker/flag-way" + suffix, true)));
         map.addImagePath(map.images.poi, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker-stroked" + suffix, true)));
         map.addImagePath(map.images.poiBookmarked, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker" + suffix, true)));
         map.addImagePath(map.images.pixel, Qt.resolvedUrl("icons/pixel.png"));
@@ -474,7 +489,7 @@ MapboxMap {
         map.addSourcePoints(map.sources.pois, []);
         map.addSourcePoints(map.sources.poisBookmarked, []);
         map.addSourceLine(map.sources.route, []);
-        map.addSourcePoints(map.sources.locations, []);
+        //map.addSourcePoints(map.sources.locations, []);
         map.addSourcePoints(map.sources.maneuvers, []);
     }
 
@@ -589,13 +604,47 @@ MapboxMap {
         }
     }
 
+    function _updateLocationsAddPoint(l, name, symbol) {
+        // helper function for adding location points
+        var p = {};
+        p.type = "Feature";
+        p.geometry = {"type": "Point", "coordinates": [l.x, l.y]};
+        p.properties = {"name": name, "symbol": symbol };
+        return p;
+    }
+
     function updateLocations() {
         // Update location markers on the map.
         if (!app.navigator) return;
-        var coords = app.navigator.locations.map(function (l) {
-            return QtPositioning.coordinate(l.y, l.x);
-        })
-        map.updateSourcePoints(map.sources.locations, coords);
+        var data = {};
+        data.type = "FeatureCollection";
+        data.features = []
+        for (var i=0; i < app.navigator.locations.length; ++i) {
+            var l = app.navigator.locations[i];
+            var symbol;
+            console.log(JSON.stringify(l))
+            if (l.origin)
+                symbol = map.images.locationStart;
+            else if (l.final)
+                symbol = map.images.locationEnd;
+            else if (l.destination)
+                symbol = map.images.locationDest;
+            else
+                symbol = map.images.locationWay;
+
+            var name;
+            if (l.origin)
+                name = app.tr("Origin");
+            else if (l.final)
+                name = app.tr("Final destination");
+            else
+                name = app.tr("#%1", i);
+
+            data.features.push(_updateLocationsAddPoint(l, name, symbol));
+        }
+
+        map.updateSource(map.sources.locations,
+                         { "type": "geojson", "data": data });
     }
 
     function updateManeuvers() {

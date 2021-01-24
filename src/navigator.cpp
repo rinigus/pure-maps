@@ -100,6 +100,7 @@ QVariantList Navigator::locations() const
       loc["x"] = l.longitude;
       loc["y"] = l.latitude;
       loc["destination"] = (l.destination ? 1 : 0);
+      loc["origin"] = (l.origin ? 1 : 0);
       loc["final"] = (l.final ? 1 : 0);
       locations.append(loc);
     }
@@ -768,15 +769,27 @@ void Navigator::setRoute(QVariantMap m)
   QVariantList locindexes = m.value("location_indexes").toList();
   if (locations.length() == locindexes.length())
     {
-      // skipping the origin as it is not used for rerouting
-      for (int i=1; i < locations.length(); ++i)
+      for (int i=0; i < locations.length(); ++i)
         {
-          QVariantMap lm = locations[i].toMap();
+          QVariantMap lm;
+          if (locations[i].canConvert<QVariantMap>())
+            lm = locations[i].toMap();
+          else if (locations[i].canConvert< QList<QVariant> >())
+            {
+              QList<QVariant> l = locations[i].toList();
+              if (l.size() <= 2)
+                {
+                  lm["x"] = l[0].toDouble();
+                  lm["y"] = l[1].toDouble();
+                }
+            }
+
           LocationInfo li;
           li.latitude = lm.value("y").toDouble();
           li.longitude = lm.value("x").toDouble();
           li.name = lm.value("text").toString();
           li.destination = (lm.value("destination").toInt() > 0);
+          li.origin = (i == 0);
           li.final = (i == locations.length()-1);
           double dist = 0.0;
           int ne = locindexes[i].toInt();

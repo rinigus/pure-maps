@@ -192,6 +192,8 @@ PagePL {
                     anchors.verticalCenter: parent.verticalCenter
                     color: locRepItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
                     text: {
+                        if (item.origin)
+                            return item.text ? app.tr("Origin: %1", item.text) : app.tr("Origin");
                         if (item.final)
                             return app.tr("Final destination: %1", item.text);
                         return item.destination ?
