@@ -197,7 +197,8 @@ Item {
         // Note that rerouting does not allow us to relay params to the router,
         // i.e. ones saved only temporarily as page.params in RoutePage.qml.
         var loc = navigatorBase.locations.slice(1);
-        loc.splice(0, 0, app.getPosition());
+        var p = app.getPosition();
+        loc.splice(0, 0, {"text": app.tr("Rerouting position"), "x": p[0], "y": p[1]});
         var args = [loc, {"heading": gps.direction, "optimized": navigatorBase.optimized}];
         py.call("poor.app.router.route", args, function(route) {
             if (Array.isArray(route) && route.length > 0)
