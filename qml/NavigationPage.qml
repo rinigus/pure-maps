@@ -178,7 +178,7 @@ PagePL {
                 id: locRepItem
                 contentHeight: styler.themeItemSizeSmall
                 menu: ContextMenuPL {
-                    enabled: !item.final
+                    enabled: !item.final && !item.origin
                     ContextMenuItemPL {
                         iconName: styler.iconDelete
                         text: app.tr("Remove")

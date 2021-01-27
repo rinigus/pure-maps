@@ -108,11 +108,20 @@ QVariantList Navigator::locations() const
   // handle the routes with the absent locations
   if (m_locations.length() == 0 && m_route.length() > 0)
     {
-      QVariantMap loc;
-      QGeoCoordinate c = m_route.back().value<QGeoCoordinate>();
-      loc["x"] = c.longitude();
-      loc["y"] = c.latitude();
-      locations.append(loc);
+      QGeoCoordinate c;
+      QVariantMap locs;
+      c = m_route.front().value<QGeoCoordinate>();
+      locs["x"] = c.longitude();
+      locs["y"] = c.latitude();
+      locs["origin"] = 1;
+      locations.append(locs);
+
+      QVariantMap loce;
+      c = m_route.back().value<QGeoCoordinate>();
+      loce["x"] = c.longitude();
+      loce["y"] = c.latitude();
+      loce["final"] = 1;
+      locations.append(loce);
     }
 
   return locations;
@@ -208,7 +217,8 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
 
   // handle locations when compared with the position
   for (int i=m_locations.length()-1; i>=0; --i)
-    if ( m_locations[i].destination && !m_locations[i].final &&
+    if ( m_locations[i].destination &&
+         !m_locations[i].origin && !m_locations[i].final &&
          S1ChordAngle(m_locations[i].point, point).radians() <
          m_locations[i].distance_to_route + 2*accuracy_rad )
       {
@@ -334,7 +344,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
 
           // check if we passed some locations using distance along route
           for (int i=m_locations.length()-1; i>=0; --i)
-            if (!m_locations[i].final &&
+            if (!m_locations[i].origin && !m_locations[i].final &&
                 ( (!m_locations[i].destination &&
                    m_locations[i].length_on_route < best.length_on_route) ||
                   (m_locations[i].destination &&
@@ -344,7 +354,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
                 // clear waypoint iff the destinations before
                 // it have been cleared already
                 for (int j=0; j < i; ++j)
-                  if (m_locations[j].destination)
+                  if (!m_locations[j].origin && m_locations[j].destination)
                     continue; // skip removal
 
                 qDebug() << "Arrived to location along route" << i << m_locations[i].name;
