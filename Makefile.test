@@ -4,7 +4,7 @@ all: check test
 
 check:
 	python3 -m pyflakes geocoders guides poor routers
-	find . -type f -name "*.json" -exec jsonlint -q {} \;
+	find . -type f -name "*.json" -print0 | xargs -0 -n 1 tools/check-json
 
 test:
 	py.test geocoders guides poor routers
