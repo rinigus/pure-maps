@@ -33,14 +33,14 @@ class Navigator : public QObject
   Q_PROPERTY(bool    directionValid READ directionValid NOTIFY directionValidChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
-  Q_PROPERTY(QVariantList locations READ locations NOTIFY locationsChanged)
+  Q_PROPERTY(QVariantList locations READ locations WRITE setLocations NOTIFY locationsChanged)
   Q_PROPERTY(QString manDist READ manDist NOTIFY manDistChanged)
   Q_PROPERTY(QString manTime READ manTime NOTIFY manTimeChanged)
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
   Q_PROPERTY(QString nextIcon READ nextIcon NOTIFY nextIconChanged)
   Q_PROPERTY(QString nextManDist READ nextManDist NOTIFY nextManDistChanged)
-  Q_PROPERTY(bool    optimized READ optimized NOTIFY optimizedChanged)
+  Q_PROPERTY(bool    optimized READ optimized WRITE setOptimized NOTIFY optimizedChanged)
   Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
   Q_PROPERTY(int     roundaboutExit READ roundaboutExit NOTIFY roundaboutExitChanged)
   Q_PROPERTY(bool    running READ running WRITE setRunning NOTIFY runningChanged)
@@ -72,7 +72,6 @@ public:
   QString narrative() const { return m_narrative; }
   QString nextIcon() const { return m_nextIcon; }
   QString nextManDist() const { return m_nextManDist; }
-  bool    optimized() const { return m_optimized; }
   double  progress() const { return m_progress; }
   int     roundaboutExit() const { return m_roundaboutExit; }
   QVariantMap sign() const { return m_sign; }
@@ -84,6 +83,7 @@ public:
   Q_INVOKABLE bool locationInsert(int index, QVariantMap location);
   Q_INVOKABLE bool locationMove(int from, int to);
   Q_INVOKABLE bool locationRemove(int index);
+  void setLocations(const QVariantList &locations);
 
   // position
   Q_INVOKABLE void setPosition(const QGeoCoordinate &c, double direction, double horizontalAccuracy, bool valid);
@@ -94,6 +94,9 @@ public:
   Q_INVOKABLE void setRoute(QVariantMap m);
 
   ManeuverModel* maneuvers() { return &m_maneuvers_model; }
+
+  bool optimized() const { return m_optimized; }
+  void setOptimized(bool opt);
 
   bool running () const { return m_running; }
   void setRunning(bool r);

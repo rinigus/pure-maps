@@ -186,6 +186,23 @@ bool Navigator::locationRemove(int index)
   return true;
 }
 
+void Navigator::setLocations(const QVariantList &locations)
+{
+  clearRoute(false); // remove route and locations
+  for (const QVariant &val: locations)
+    {
+      QVariantMap location = val.toMap();
+      LocationInfo loc;
+      // setting minimal location info
+      _varFiller(loc.name, location, QStringLiteral("text"));
+      _varFiller(loc.longitude, location, QStringLiteral("x"));
+      _varFiller(loc.latitude, location, QStringLiteral("y"));
+      _varFiller(loc.destination, location, QStringLiteral("destination"));
+      m_locations.append(loc);
+    }
+  emit locationsChanged();
+}
+
 void Navigator::resetPrompts()
 {
   m_last_prompt = 0;
@@ -202,6 +219,14 @@ static double angleDiff(double angle1, double angle2)
 {
   double diff = angle1-angle2;
   return abs(diff - 360. * round(diff / 360.));
+}
+
+
+void Navigator::setOptimized(bool opt)
+{
+  if (opt == m_optimized) return;
+  m_optimized = opt;
+  emit optimizedChanged();
 }
 
 void Navigator::setPosition(const QGeoCoordinate &c, double direction, double horizontalAccuracy, bool valid)

@@ -20,13 +20,23 @@ import QtQuick 2.0
 import "."
 import "platform"
 
-PagePL {
+DialogPL {
     id: page
     title: app.tr("Navigation")
 
-    acceptIconName: styler.iconNavigate
-    acceptText: app.tr("Route")
+    acceptIconName: {
+        if (followMe)
+            return app.mode === modes.followMe ? styler.iconStop : styler.iconStart;
+        return styler.iconNavigate;
+    }
+    acceptText: {
+        if (followMe)
+            return app.mode === modes.followMe ? app.tr("Stop") : app.tr("Begin");
+        return app.tr("Route");
+    }
     canNavigateForward: {
+        if (followMe)
+            return true;
         if (page.fromNeeded && (!page.from || (page.fromText === app.tr("Current position") && !gps.ready)) )
             return false;
         if (page.toNeeded && (!page.to || (page.toText === app.tr("Current position") && !gps.ready)) )
@@ -47,7 +57,7 @@ PagePL {
                 var dialog = app.push(Qt.resolvedUrl("RouterPage.qml"));
                 dialog.accepted.connect(function() {
                     page.updateRouter();
-                    columnRouter.settings && columnRouter.settings.destroy();
+                    if (columnRouter.settings) columnRouter.settings.destroy();
                     columnRouter.settings = null;
                     columnRouter.addSettings();
                 });
@@ -610,24 +620,6 @@ PagePL {
                 wrapMode: Text.WordWrap
             }
 
-            ToolItemPL {
-                id: beginFollowMeItem
-                icon.iconHeight: styler.themeIconSizeMedium
-                icon.iconName: app.mode === modes.followMe ? styler.iconStop : styler.iconStart
-                text: app.mode === modes.followMe ? app.tr("Stop") : app.tr("Begin")
-                width: columnFollow.width
-                onClicked: {
-                    if (app.mode === modes.followMe) {
-                        app.navigator.followMe = false;
-                        app.showMap();
-                    } else {
-                        app.navigator.clearRoute();
-                        app.navigator.followMe = true;
-                        app.hideMenu(); // there is no info panel, follow me mode starts and is using hidden menu
-                    }
-                }
-            }
-
             FormLayoutPL {
                 spacing: styler.themePaddingMedium
 
@@ -678,6 +670,21 @@ PagePL {
         columnRouter.addSettings();
     }
 
+    onAccepted: {
+        if (followMe) triggerFollowMe();
+        else {
+            navigator.clearRoute();
+            navigator.locations = getLocations();
+            navigator.optimized = optimized;
+            navigator.findRoute(false,
+                                {"fitToView": true
+                                });
+            saveDestination();
+            saveLocations();
+            pois.hide();
+        }
+    }
+
     on_AutoRouteFlagChanged: routeAutomatically()
     onCanNavigateForwardChanged: routeAutomatically()
 
@@ -687,8 +694,8 @@ PagePL {
     }
 
     onPageStatusActive: {
-        var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.results_qml_uri"));
-        app.pushAttached(uri);
+//        var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.results_qml_uri"));
+//        app.pushAttached(uri);
         // check if this page is made active for adjusting route settings
         if (autoRoute) autoRoute = false;
         if (_autoRouteFlag === 0) _autoRouteFlag = 1;
@@ -720,12 +727,12 @@ PagePL {
     }
 
     function routeAutomatically() {
-        if (followMe || !canNavigateForward || !autoRouteSupported) return;
-        if (_autoRouteFlag === 1) {
-            autoRoute = true;
-            _autoRouteFlag = 2;
-            autoRouteTimer.start();
-        }
+//        if (followMe || !canNavigateForward || !autoRouteSupported) return;
+//        if (_autoRouteFlag === 1) {
+//            autoRoute = true;
+//            _autoRouteFlag = 2;
+//            autoRouteTimer.start();
+//        }
     }
 
     function saveDestination() {
@@ -749,6 +756,15 @@ PagePL {
 
     function saveLocations() {
         py.call_sync("poor.app.history.add_route", [{"locations": getLocations(), "optimized": optimized}]);
+    }
+
+    function triggerFollowMe() {
+        if (app.mode === modes.followMe) {
+            app.navigator.followMe = false;
+        } else {
+            app.navigator.clearRoute();
+            app.navigator.followMe = true;
+        }
     }
 
     function updateRouter() {

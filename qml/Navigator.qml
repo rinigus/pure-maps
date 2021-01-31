@@ -42,6 +42,7 @@ Item {
     property alias  nextIcon:  navigatorBase.nextIcon
     property alias  nextManDist: navigatorBase.nextManDist
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
+    property alias  optimized: navigatorBase.optimized
     property real   progress:  navigatorBase.progress / 100.0
     property string provider
     property int    rerouteConsecutiveErrors: 0
@@ -167,7 +168,7 @@ Item {
     function findRoute(locations, options) {
         if (routing) return;
         if (!options) options = {};
-        options["optimized"] = navigatorBase.optimized;
+        options.optimized = navigatorBase.optimized;
         var notifyId = "route";
         var notification  = options.notification || app.tr("Routing")
         app.notification.hold(notification, notifyId);
@@ -181,16 +182,17 @@ Item {
                 route = route[0];
             if (route && route.error && route.message) {
                 app.notification.flash(app.tr("Routing failed: %1").arg(route.message), notifyId);
-                navigatorBase.prompt("std:routing failed");
+                if (options.voicePrompt) navigatorBase.prompt("std:routing failed");
                 rerouteConsecutiveErrors++;
             } else if (route && route.x && route.x.length > 0) {
                 app.notification.flash(app.tr("New route found"), notifyId);
-                navigatorBase.prompt("std:new route found");
+                if (options.voicePrompt) navigatorBase.prompt("std:new route found");
                 setRoute(route, true);
                 rerouteConsecutiveErrors = 0;
+                if (options.fitToView) map.fitViewToRoute();
             } else {
                 app.notification.flash(app.tr("Routing failed"), notifyId);
-                navigatorBase.prompt("std:routing failed");
+                if (options.voicePrompt) navigatorBase.prompt("std:routing failed");
                 rerouteConsecutiveErrors++;
             }
             routing = false;
@@ -222,8 +224,9 @@ Item {
         var p = app.getPosition();
         loc.splice(0, 0, {"text": app.tr("Rerouting position"), "x": p[0], "y": p[1]});
         findRoute(loc,
-                  { "notification": app.tr("Rerouting"),
-                      "heading": gps.direction } );
+                  {   "heading": gps.direction,
+                      "notification": app.tr("Rerouting"),
+                      "voicePrompt": true } );
         reroutePreviousTime = Date.now();
         rerouteTotalCalls++;
     }
