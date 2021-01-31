@@ -48,7 +48,7 @@ Item {
     property int    rerouteConsecutiveIgnored: 0
     property real   reroutePreviousTime: -1
     property int    rerouteTotalCalls: 0
-    property bool   rerouting: false
+    property bool   routing: false
     property alias  roundaboutExit: navigatorBase.roundaboutExit
     property alias  route:     navigatorBase.route
     property alias  running:   navigatorBase.running
@@ -164,10 +164,37 @@ Item {
         saveRoute({});
     }
 
-    function getDestination() {
-        // Return coordinates of the route destination.
-        var destination = navigator.route[navigator.route.length - 1];
-        return [destination.longitude, destination.latitude];
+    function findRoute(locations, options) {
+        if (routing) return;
+        if (!options) options = {};
+        options["optimized"] = navigatorBase.optimized;
+        var notifyId = "route";
+        var notification  = options.notification || app.tr("Routing")
+        app.notification.hold(notification, notifyId);
+        routing = true;
+        var args = [locations || navigatorBase.locations,
+                    options];
+        py.call("poor.app.router.route", args, function(route) {
+            if (Array.isArray(route) && route.length > 0)
+                // If the router returns multiple alternative routes,
+                // always route using the first one.
+                route = route[0];
+            if (route && route.error && route.message) {
+                app.notification.flash(app.tr("Routing failed: %1").arg(route.message), notifyId);
+                navigatorBase.prompt("std:routing failed");
+                rerouteConsecutiveErrors++;
+            } else if (route && route.x && route.x.length > 0) {
+                app.notification.flash(app.tr("New route found"), notifyId);
+                navigatorBase.prompt("std:new route found");
+                setRoute(route, true);
+                rerouteConsecutiveErrors = 0;
+            } else {
+                app.notification.flash(app.tr("Routing failed"), notifyId);
+                navigatorBase.prompt("std:routing failed");
+                rerouteConsecutiveErrors++;
+            }
+            routing = false;
+        });
     }
 
     function loadRoute() {
@@ -187,42 +214,18 @@ Item {
 
     function reroute() {
         // Find a new route from the current position to the existing destination.
-        if (rerouting) return;
-        var notifyId = "reroute";
-        app.notification.hold(app.tr("Rerouting"), notifyId);
+        if (routing) return;
         navigatorBase.prompt("std:rerouting");
-        rerouting = true;
         if (!hasBeenAlongRoute) rerouteConsecutiveIgnored++;
         hasBeenAlongRoute = false;
-        // Note that rerouting does not allow us to relay params to the router,
-        // i.e. ones saved only temporarily as page.params in RoutePage.qml.
         var loc = navigatorBase.locations.slice(1);
         var p = app.getPosition();
         loc.splice(0, 0, {"text": app.tr("Rerouting position"), "x": p[0], "y": p[1]});
-        var args = [loc, {"heading": gps.direction, "optimized": navigatorBase.optimized}];
-        py.call("poor.app.router.route", args, function(route) {
-            if (Array.isArray(route) && route.length > 0)
-                // If the router returns multiple alternative routes,
-                // always reroute using the first one.
-                route = route[0];
-            if (route && route.error && route.message) {
-                app.notification.flash(app.tr("Rerouting failed: %1").arg(route.message), notifyId);
-                navigatorBase.prompt("std:rerouting failed");
-                rerouteConsecutiveErrors++;
-            } else if (route && route.x && route.x.length > 0) {
-                app.notification.flash(app.tr("New route found"), notifyId);
-                navigatorBase.prompt("std:new route found");
-                setRoute(route, true);
-                rerouteConsecutiveErrors = 0;
-            } else {
-                app.notification.flash(app.tr("Rerouting failed"), notifyId);
-                navigatorBase.prompt("std:rerouting failed");
-                rerouteConsecutiveErrors++;
-            }
-            reroutePreviousTime = Date.now();
-            rerouteTotalCalls++;
-            rerouting = false;
-        });
+        findRoute(loc,
+                  { "notification": app.tr("Rerouting"),
+                      "heading": gps.direction } );
+        reroutePreviousTime = Date.now();
+        rerouteTotalCalls++;
     }
 
     function rerouteMaybe() {
