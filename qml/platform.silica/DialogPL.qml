@@ -42,9 +42,7 @@ Dialog {
         DialogHeader {
             id: title
             title: page.title
-            Component.onCompleted: {
-                if (page.acceptText) acceptText = page.acceptText;
-            }
+            acceptText: page.acceptText
         }
 
         Item {
