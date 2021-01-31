@@ -648,7 +648,6 @@ DialogPL {
         var locations = navigator.locations;
         for (var i=0; i < locations.length; ++i) {
             var l = locations[i];
-            console.log(JSON.stringify(l))
             if (l.origin) {
                 fromText = l.text;
                 from = [l.x, l.y];
