@@ -30,6 +30,7 @@ Dialog {
     property alias  delegate: listView.delegate
     property var    headerExtra
     property alias  model: listView.model
+    property alias  pageMenu: menuLoader.sourceComponent
     property alias  placeholderEnabled: viewPlaceholder.enabled
     property alias  placeholderText: viewPlaceholder.hintText
     property string title
@@ -60,6 +61,12 @@ Dialog {
 
         ViewPlaceholder {
             id: viewPlaceholder
+        }
+
+        Loader {
+            id: menuLoader
+            active: sourceComponent
+            width: parent.width
         }
 
         VerticalScrollDecorator { flickable: listView }

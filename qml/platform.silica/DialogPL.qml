@@ -27,6 +27,7 @@ Dialog {
     property string acceptIconName // for compatibility
     property string acceptText
     default property alias content: itemCont.data
+    property alias  pageMenu: menuLoader.sourceComponent
     property string title
 
     signal pageStatusActivating
@@ -52,6 +53,12 @@ Dialog {
             anchors.top: title.bottom
             anchors.topMargin: styler.themePaddingLarge
             height: childrenRect.height
+            width: parent.width
+        }
+
+        Loader {
+            id: menuLoader
+            active: sourceComponent
             width: parent.width
         }
 
