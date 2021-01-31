@@ -622,7 +622,6 @@ MapboxMap {
         for (var i=0; i < app.navigator.locations.length; ++i) {
             var l = app.navigator.locations[i];
             var symbol;
-            console.log(JSON.stringify(l))
             if (l.origin)
                 symbol = map.images.locationStart;
             else if (l.final)
