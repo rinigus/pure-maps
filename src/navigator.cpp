@@ -82,6 +82,7 @@ void Navigator::clearRoute(bool keepLocations)
   if (!keepLocations && m_locations.size() > 0)
     {
       m_locations.clear();
+      m_origin_set = false;
       emit locationsChanged();
     }
 
@@ -123,12 +124,16 @@ QVariantList Navigator::locations() const
   // set origin and final destinations
   if (m_locations.length() >= 2)
     {
-      QVariantMap lo = locations.front().toMap();
-      lo["origin"] = 1;
-      locations.front() = lo;
+      if (m_origin_set)
+        {
+          QVariantMap lo = locations.front().toMap();
+          lo["origin"] = 1;
+          locations.front() = lo;
+        }
 
       QVariantMap lf = locations.last().toMap();
       lf["final"] = 1;
+      lf["destination"] = 1;
       locations.last() = lf;
     }
 
@@ -145,11 +150,13 @@ static void _varFiller(T &var, QVariantMap &l, QString key)
 bool Navigator::locationInsert(int index, QVariantMap location)
 {
   LocationInfo loc;
+  bool origin = false;
   // setting minimal location info
   _varFiller(loc.name, location, QStringLiteral("text"));
   _varFiller(loc.longitude, location, QStringLiteral("x"));
   _varFiller(loc.latitude, location, QStringLiteral("y"));
   _varFiller(loc.destination, location, QStringLiteral("destination"));
+  _varFiller(origin, location, QStringLiteral("origin"));
 
   if (index == -1 || index==m_locations.length())
     m_locations.append(loc);
@@ -157,6 +164,9 @@ bool Navigator::locationInsert(int index, QVariantMap location)
     m_locations.insert(index, loc);
   else
     return false;
+
+  if (index == 0 && origin)
+    m_origin_set = true;
 
   clearRoute(true);
   emit locationsChanged();
@@ -199,6 +209,13 @@ void Navigator::setLocations(const QVariantList &locations)
       _varFiller(loc.latitude, location, QStringLiteral("y"));
       _varFiller(loc.destination, location, QStringLiteral("destination"));
       m_locations.append(loc);
+      // check for origin
+      if (m_locations.length() == 1)
+        {
+          bool origin = false;
+          _varFiller(origin, location, QStringLiteral("origin"));
+          m_origin_set = origin;
+        }
     }
   emit locationsChanged();
 }
@@ -850,6 +867,7 @@ void Navigator::setRoute(QVariantMap m)
 
   // locations
   m_locations.clear();
+  m_origin_set = true;
   QVariantList locations = m.value("locations").toList();
   QVariantList locindexes = m.value("location_indexes").toList();
   if (locations.length() == locindexes.length())

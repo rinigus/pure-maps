@@ -237,6 +237,7 @@ private:
   QString m_nextIcon;
   QString m_nextManDist;
   bool    m_optimized{false};
+  bool    m_origin_set{false};
   bool    m_precision_insufficient{false};
   int     m_progress{0};
   int     m_roundaboutExit{0};

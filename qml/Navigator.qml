@@ -173,7 +173,13 @@ Item {
         var notification  = options.notification || app.tr("Routing")
         app.notification.hold(notification, notifyId);
         routing = true;
-        var args = [locations || navigatorBase.locations,
+        var loc = locations || navigatorBase.locations;
+        // note that GPX trace does not use locations
+        if (loc.length >= 1 && !loc[0].origin) {
+            var p = app.getPosition();
+            loc.splice(0, 0, {"text": app.tr("Rerouting position"), "x": p[0], "y": p[1]});
+        }
+        var args = [loc,
                     options];
         py.call("poor.app.router.route", args, function(route) {
             if (Array.isArray(route) && route.length > 0)
@@ -225,8 +231,6 @@ Item {
         if (!hasBeenAlongRoute) rerouteConsecutiveIgnored++;
         hasBeenAlongRoute = false;
         var loc = navigatorBase.locations.slice(1);
-        var p = app.getPosition();
-        loc.splice(0, 0, {"text": app.tr("Rerouting position"), "x": p[0], "y": p[1]});
         findRoute(loc,
                   {   "heading": gps.direction,
                       "notification": app.tr("Rerouting"),

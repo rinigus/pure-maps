@@ -643,10 +643,37 @@ DialogPL {
 
     Component.onCompleted: {
         followMe = (app.mode === modes.followMe)
+
+        // fill state from navigator current state
+        var locations = navigator.locations;
+        for (var i=0; i < locations.length; ++i) {
+            var l = locations[i];
+            console.log(JSON.stringify(l))
+            if (l.origin) {
+                fromText = l.text;
+                from = [l.x, l.y];
+            } else if (i === locations.length-1 && l.destination) {
+                toText = l.text;
+                to = [l.x, l.y];
+            } else {
+                waypoints.append( {"destination": l.destination,
+                                     "set": true,
+                                     "query": "",
+                                     "text": l.text,
+                                     "x": l.x,
+                                     "y": l.y });
+            }
+        }
+        waypointsEnabled = (waypoints.count > 0);
+        optimized = navigator.optimized;
+
+        // Fill "from" if origin is not set
         if (!page.from) {
             page.from = app.getPosition();
             page.fromText = app.tr("Current position");
         }
+
+        // update GUI
         updateRouter();
         columnRouter.addSettings();
     }
@@ -673,7 +700,7 @@ DialogPL {
         var routePoints = []
         if (from && fromText)
             routePoints.push( { "x": from[0], "y": from[1],
-                                 "text": fromText } );
+                                 "text": fromText, "origin": true } );
         if (waypointsEnabled)
             for (var i=0; i < waypoints.count; ++i)
                 if (waypoints.get(i).set)
@@ -681,7 +708,8 @@ DialogPL {
                                          "x": waypoints.get(i).x, "y": waypoints.get(i).y,
                                          "text": waypoints.get(i).text });
         if (to && toText)
-            routePoints.push({ "x": to[0], "y": to[1], "text": toText });
+            routePoints.push({ "x": to[0], "y": to[1], "text": toText,
+                                 "final": true, "destination": true });
 
         // update current position if needed
         for (var i=0; i < routePoints.length; i++)
