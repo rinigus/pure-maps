@@ -53,7 +53,7 @@ void Navigator::setupTranslator()
     qWarning() << "Translation not found for navigator:" << lang;
 }
 
-void Navigator::clearRoute()
+void Navigator::clearRoute(bool keepLocations)
 {
   setRunning(false);
   m_index.release();
@@ -79,7 +79,7 @@ void Navigator::clearRoute()
   SET(street, "");
 
   m_maneuvers_model.clear();
-  if (m_locations.size() > 0)
+  if (!keepLocations && m_locations.size() > 0)
     {
       m_locations.clear();
       emit locationsChanged();
@@ -100,8 +100,6 @@ QVariantList Navigator::locations() const
       loc["x"] = l.longitude;
       loc["y"] = l.latitude;
       loc["destination"] = (l.destination ? 1 : 0);
-      loc["origin"] = (l.origin ? 1 : 0);
-      loc["final"] = (l.final ? 1 : 0);
       locations.append(loc);
     }
 
@@ -113,25 +111,77 @@ QVariantList Navigator::locations() const
       c = m_route.front().value<QGeoCoordinate>();
       locs["x"] = c.longitude();
       locs["y"] = c.latitude();
-      locs["origin"] = 1;
       locations.append(locs);
 
       QVariantMap loce;
       c = m_route.back().value<QGeoCoordinate>();
       loce["x"] = c.longitude();
       loce["y"] = c.latitude();
-      loce["final"] = 1;
       locations.append(loce);
+    }
+
+  // set origin and final destinations
+  if (m_locations.length() >= 2)
+    {
+      QVariantMap lo = locations.front().toMap();
+      lo["origin"] = 1;
+      locations.front() = lo;
+
+      QVariantMap lf = locations.last().toMap();
+      lf["final"] = 1;
+      locations.last() = lf;
     }
 
   return locations;
 }
 
-bool Navigator::removeLocation(int index)
+template <typename T>
+static void _varFiller(T &var, QVariantMap &l, QString key)
+{
+  if (l.contains(key) && l[key].canConvert<T>())
+    var=l[key].value<T>();
+}
+
+bool Navigator::locationInsert(int index, QVariantMap location)
+{
+  LocationInfo loc;
+  // setting minimal location info
+  _varFiller(loc.name, location, QStringLiteral("text"));
+  _varFiller(loc.longitude, location, QStringLiteral("x"));
+  _varFiller(loc.latitude, location, QStringLiteral("y"));
+  _varFiller(loc.destination, location, QStringLiteral("destination"));
+
+  if (index == -1 || index==m_locations.length())
+    m_locations.append(loc);
+  else if (index >=0 && index < m_locations.length())
+    m_locations.insert(index, loc);
+  else
+    return false;
+
+  clearRoute(true);
+  emit locationsChanged();
+  return true;
+}
+
+bool Navigator::locationMove(int from, int to)
+{
+  if (from < 0 || from >= m_locations.length() ||
+      to < 0 || to >= m_locations.length())
+    return false;
+
+  m_locations.move(from, to);
+
+  clearRoute(true);
+  emit locationsChanged();
+  return true;
+}
+
+bool Navigator::locationRemove(int index)
 {
   if (index < 0 || index >= m_locations.length())
     return false;
   m_locations.removeAt(index);
+  clearRoute(true);
   emit locationsChanged();
   return true;
 }

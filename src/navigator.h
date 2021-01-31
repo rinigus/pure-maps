@@ -80,15 +80,18 @@ public:
   QString totalDist() const { return m_totalDist; }
   QString totalTime() const { return m_totalTime; }
 
+  // locations
+  Q_INVOKABLE bool locationInsert(int index, QVariantMap location);
+  Q_INVOKABLE bool locationMove(int from, int to);
+  Q_INVOKABLE bool locationRemove(int index);
 
+  // position
   Q_INVOKABLE void setPosition(const QGeoCoordinate &c, double direction, double horizontalAccuracy, bool valid);
 
   // route
-  Q_INVOKABLE void clearRoute();
+  Q_INVOKABLE void clearRoute(bool keepLocations = false);
   QVariantList route() const { return m_route; }
   Q_INVOKABLE void setRoute(QVariantMap m);
-
-  Q_INVOKABLE bool removeLocation(int index);
 
   ManeuverModel* maneuvers() { return &m_maneuvers_model; }
 

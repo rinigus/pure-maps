@@ -214,7 +214,7 @@ PagePL {
             function removeLocationAndReroute(index) {
                 // has to be outside the location delegate as it will be destroyed
                 // on removal of location
-                if (!app.navigator.removeLocation(index)) return;
+                if (!app.navigator.locationRemove(index)) return;
                 app.navigator.reroute();
                 app.hideNavigationPages();
             }

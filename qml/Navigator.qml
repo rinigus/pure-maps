@@ -177,8 +177,8 @@ Item {
         });
     }
 
-    function removeLocation(index) {
-        if (!navigatorBase.removeLocation(index)) {
+    function locationRemove(index) {
+        if (!navigatorBase.locationRemove(index)) {
             console.log("Failed to remove location " + index);
             return false;
         }
