@@ -96,8 +96,6 @@ DialogPL {
         }
     }
 
-    property bool   autoRoute: false
-    property bool   autoRouteSupported: false
     property var    columnRouter
     property bool   followMe: false
     property alias  from: fromButton.coordinates
@@ -113,8 +111,6 @@ DialogPL {
     property alias  toText: toButton.text
     property alias  waypointsEnabled: viaSwitch.checked
     property var    waypoints: ListModel {}
-
-    property int    _autoRouteFlag: 0
 
     signal notify(string notification)
 
@@ -643,18 +639,6 @@ DialogPL {
             ///////////////////////
 
         }
-
-        Timer {
-            // timer is used to ensure that all property handlers by
-            // page stacks of different platforms are fully processed
-            // (such as canNavigateForward, for example) before trying
-            // to calculate the route
-            id: autoRouteTimer
-            interval: 1 // arbitrary small value (in ms)
-            running: false
-            repeat: false
-            onTriggered: app.pages.navigateForward()
-        }
     }
 
     Component.onCompleted: {
@@ -681,20 +665,8 @@ DialogPL {
         }
     }
 
-    on_AutoRouteFlagChanged: routeAutomatically()
-    onCanNavigateForwardChanged: routeAutomatically()
-
     onFollowMeChanged: {
         columnRouter.addSettings();
-        routeAutomatically();
-    }
-
-    onPageStatusActive: {
-//        var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.results_qml_uri"));
-//        app.pushAttached(uri);
-        // check if this page is made active for adjusting route settings
-        if (autoRoute) autoRoute = false;
-        if (_autoRouteFlag === 0) _autoRouteFlag = 1;
     }
 
     function getLocations() {
@@ -722,15 +694,6 @@ DialogPL {
         return routePoints;
     }
 
-    function routeAutomatically() {
-//        if (followMe || !canNavigateForward || !autoRouteSupported) return;
-//        if (_autoRouteFlag === 1) {
-//            autoRoute = true;
-//            _autoRouteFlag = 2;
-//            autoRouteTimer.start();
-//        }
-    }
-
     function triggerFollowMe() {
         if (app.mode === modes.followMe) {
             app.navigator.followMe = false;
@@ -742,7 +705,6 @@ DialogPL {
 
     function updateRouter() {
         page.routerName = py.evaluate("poor.app.router.name");
-        page.autoRouteSupported = py.evaluate("poor.app.router.auto_route");
         page.fromNeeded = py.evaluate("poor.app.router.from_needed");
         page.toNeeded = py.evaluate("poor.app.router.to_needed");
     }
