@@ -4,8 +4,8 @@ Implementing a Router
 ## API
 
 To implement a router you need to write a JSON metadata file, a Python
-file that implements the `route` function and one or two QML
-files. The `route` function should given two points return a
+file that implements the `route` function and one QML
+file. The `route` function should given two points return a
 dictionary of route properties with keys `x`, `y`, `locations`,
 `location_indexes`, `maneuvers`, `mode` and `language`, example
 below. The location points (2 or more) are given as an argument in the
@@ -14,10 +14,7 @@ etc.), two-element tuples or lists of (x, y) coordinates, or
 dictionaries with the keys `x`, `y` (coordinates), and optional `text`
 (can be used by router to describe location). If returning multiple
 alternative routes for the user to choose from, the return value
-should be a list of dictionaries of route properties. Note that while
-you handle the return value yourself in router specific QML, rerouting
-doesn't go through that same interactive code and requires a return
-value consistent with other routers.
+should be a list of dictionaries of route properties. 
 
 ```python
 {
@@ -43,7 +40,7 @@ value consistent with other routers.
 Here, `location_indexes` designate the index of the point on the route
 (xi,yi) which is considered as the closest to the location.
 
-Of the two QML files, the settings file (`*_settings.qml`) is optional;
+A QML file, the settings file (`*_settings.qml`) is optional;
 it can be used to provide a column of router-specific settings, which
 are shown in Pure's routing page below the endpoint selectors. To pass
 settings to your router, you have two options. If those settings are to
@@ -62,14 +59,6 @@ Python `route` function. When returning the narration language as a part
 of the return dictionary of `route`, make sure to use the standard
 locale format `xx[_YY]`. See the OSM Scout router for an example on how
 to implement language settings in QML and Python.
-
-The second QML file (`*_results.qml`) is mandatory and used to specify
-a result page. At minimum this should be a page which shows a busy
-indicator and handles passing data to the map or notification if no
-results found. If writing a router that returns alternative routes,
-this page can be used to list the routes and their properties. Note
-that many routers use the same `default_results.qml` by making
-a corresponding symlink, see available routers.
 
 To display a route on the map, you'll want to call
 `navigator.setRoute`. See the implementation of these functions in
