@@ -115,7 +115,6 @@ DialogPL {
     property var    waypoints: ListModel {}
 
     property int    _autoRouteFlag: 0
-    property var    _destinationsNotForSave: []
 
     signal notify(string notification)
 
@@ -566,7 +565,6 @@ DialogPL {
 
             Component.onCompleted: {
                 // pois
-                _destinationsNotForSave = [];
                 var pois = app.pois.pois.filter(function (p) {
                     return (p.bookmarked && p.shortlisted);
                 });
@@ -586,7 +584,6 @@ DialogPL {
                         "y": p.coordinate.latitude
                     };
                     destinations.model.append(t);
-                    _destinationsNotForSave.push(t);
                 });
 
                 // recent destinations
@@ -677,10 +674,9 @@ DialogPL {
             navigator.locations = getLocations();
             navigator.optimized = optimized;
             navigator.findRoute(false,
-                                {"fitToView": true
+                                {  "fitToView": true,
+                                   "save": true
                                 });
-            saveDestination();
-            saveLocations();
             pois.hide();
         }
     }
@@ -733,29 +729,6 @@ DialogPL {
 //            _autoRouteFlag = 2;
 //            autoRouteTimer.start();
 //        }
-    }
-
-    function saveDestination() {
-        for (var i=0; i < _destinationsNotForSave.length; i++)
-            if (toText === _destinationsNotForSave[i].toText &&
-                    Math.abs(to[0]-_destinationsNotForSave[i].x) < 1e-8 &&
-                    Math.abs(to[1]-_destinationsNotForSave[i].y) < 1e-8)
-                return false;
-
-        if (!to || !toText)
-            return false;
-
-        var d = {
-            'text': toText,
-            'x': to[0],
-            'y': to[1]
-        };
-        py.call_sync("poor.app.history.add_destination", [d]);
-        return true;
-    }
-
-    function saveLocations() {
-        py.call_sync("poor.app.history.add_route", [{"locations": getLocations(), "optimized": optimized}]);
     }
 
     function triggerFollowMe() {

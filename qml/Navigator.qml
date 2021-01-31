@@ -187,9 +187,13 @@ Item {
             } else if (route && route.x && route.x.length > 0) {
                 app.notification.flash(app.tr("New route found"), notifyId);
                 if (options.voicePrompt) navigatorBase.prompt("std:new route found");
-                setRoute(route, true);
+                setRoute(route);
                 rerouteConsecutiveErrors = 0;
                 if (options.fitToView) map.fitViewToRoute();
+                if (options.save) {
+                    saveDestination();
+                    saveLocations();
+                }
             } else {
                 app.notification.flash(app.tr("Routing failed"), notifyId);
                 if (options.voicePrompt) navigatorBase.prompt("std:routing failed");
@@ -254,13 +258,58 @@ Item {
         }
     }
 
+    function saveDestination() {
+        // Save destinations if not POIs
+        var _destinationsNotForSave = [];
+        var pois = app.pois.pois.filter(function (p) {
+            return (p.bookmarked && p.shortlisted);
+        });
+        pois.sort(function (a, b){
+            if (a.title < b.title) return -1;
+            if (a.title > b.title) return 1;
+            return 0;
+        })
+        pois.forEach(function (p) {
+            var t = {
+                "text": (p.title ? p.title : app.tr("Unnamed point")) +
+                        (p.shortlisted ? " ☰" : ""),
+                "toText": p.title ? p.title : app.tr("Unnamed point"),
+                "type": "poi",
+                "visible": true,
+                "x": p.coordinate.longitude,
+                "y": p.coordinate.latitude
+            };
+            _destinationsNotForSave.push(t);
+        });
+
+        var dest = navigatorBase.locations[ navigatorBase.locations.length - 1 ];
+
+        for (var i=0; i < _destinationsNotForSave.length; i++)
+            if (dest.text === _destinationsNotForSave[i].toText &&
+                    Math.abs(dest.x -_destinationsNotForSave[i].x) < 1e-8 &&
+                    Math.abs(dest.y -_destinationsNotForSave[i].y) < 1e-8)
+                return false;
+
+        if (!dest.text)
+            return false;
+
+        py.call_sync("poor.app.history.add_destination", [dest]);
+        return true;
+    }
+
+    function saveLocations() {
+        py.call_sync("poor.app.history.add_route",
+                     [{  "locations": navigatorBase.locations,
+                         "optimized": navigatorBase.optimized }]);
+    }
+
     function saveRoute(route_in) {
         // Save route polyline to JSON file.
         var data = Util.polylineToJson(route_in);
         py.call_sync("poor.storage.write_route", [data]);
     }
 
-    function setRoute(route, amend) {
+    function setRoute(route) {
         // Set new route
         navigatorBase.setRoute(route);
         provider = route.provider;
