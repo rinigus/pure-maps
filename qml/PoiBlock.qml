@@ -178,10 +178,11 @@ Item {
             iconName: styler.iconNavigate
             onClicked: {
                 if (coordinate === undefined) return;
-                app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
-                                 "to": [coordinate.longitude, coordinate.latitude],
-                                 "toText": title,
-                             });
+                navigator.clearRoute();
+                navigator.findRoute([{"text": title,
+                                     "x": coordinate.longitude, "y": coordinate.latitude,
+                                     "destination": true} ],
+                                    {"save": true, "fitToView": true} );
             }
         }
 

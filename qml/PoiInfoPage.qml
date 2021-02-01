@@ -181,10 +181,12 @@ PagePL {
             icon: styler.iconNavigateTo
             label: app.tr("Navigate To")
             onClicked: {
-                app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
-                                 "to": [poi.coordinate.longitude, poi.coordinate.latitude],
-                                 "toText": poi.title,
-                             });
+                navigator.clearRoute();
+                navigator.findRoute([{"text": poi.title,
+                                     "x": poi.coordinate.longitude, "y": poi.coordinate.latitude,
+                                     "destination": true} ],
+                                    {"save": true, "fitToView": true} );
+                app.showMap();
             }
         }
 
