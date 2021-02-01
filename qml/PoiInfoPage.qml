@@ -187,6 +187,7 @@ PagePL {
                                      "destination": true} ],
                                     {"save": true, "fitToView": true} );
                 app.showMap();
+                pois.hide();
             }
         }
 

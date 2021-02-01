@@ -177,7 +177,7 @@ Item {
         // note that GPX trace does not use locations
         if (loc.length >= 1 && !loc[0].origin) {
             var p = app.getPosition();
-            loc.splice(0, 0, {"text": app.tr("Rerouting position"), "x": p[0], "y": p[1]});
+            loc.splice(0, 0, {"text": app.tr("Current position"), "x": p[0], "y": p[1]});
         }
         var args = [loc,
                     options];

@@ -183,6 +183,7 @@ Item {
                                      "x": coordinate.longitude, "y": coordinate.latitude,
                                      "destination": true} ],
                                     {"save": true, "fitToView": true} );
+                pois.hide();
             }
         }
 
