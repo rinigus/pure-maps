@@ -157,6 +157,11 @@ Item {
         return attached;
     }
 
+    function pushMain(page, options) {
+        ps.currentIndex = 0;
+        return push(page, options);
+    }
+
     function replace(page, options) {
         return ps.replace(page, options ? options : {});
     }

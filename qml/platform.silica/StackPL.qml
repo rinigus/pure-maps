@@ -60,6 +60,12 @@ QtObject {
         return ps.pushAttached(page, options ? options : {});
     }
 
+    function pushMain(page, options) {
+        if (ps.depth > 1)
+            return ps.replaceAbove(app.rootPage, page, options);
+        return push(page, options);
+    }
+
     function replace(page, options) {
         return ps.replace(page, options ? options : {})
     }

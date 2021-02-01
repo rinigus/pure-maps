@@ -688,8 +688,6 @@ DialogPL {
                                    "save": true
                                 });
             pois.hide();
-            // as in SFOS page could be started from menu
-            app.showMap();
         }
     }
 

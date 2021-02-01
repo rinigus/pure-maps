@@ -73,16 +73,6 @@ Kirigami.ApplicationWindow {
         appWindow.raise();
     }
 
-    function clearPages() {
-        // called when we need to drop all pages
-        // except the page with a map and start
-        // adding new ones
-
-        // this implementation takes into account
-        // we clear pages when we get to page 0
-        app.pages.ps.currentIndex = 0;
-    }
-
     function initPages() {
         if (menuPageUrl) {
             globalDrawer = app.createObject(menuPageUrl);

@@ -59,11 +59,6 @@ ApplicationWindow {
 
     onDeviceOrientationChanged: updateOrientation()
 
-    function clearPages() {
-        // not used in the platforms with menu shown
-        // as a page in a stack
-    }
-
     function initPages() {
     }
 

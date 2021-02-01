@@ -31,7 +31,7 @@ MenuDrawerPL {
         PageMenuItemPL {
             iconName: styler.iconAbout
             text: app.tr("About Pure Maps")
-            onClicked: app.push(Qt.resolvedUrl("AboutPage.qml"), {}, true)
+            onClicked: app.pushMain(Qt.resolvedUrl("AboutPage.qml"))
         }
     }
 
@@ -81,11 +81,11 @@ MenuDrawerPL {
             if (!gps.ready) return;
             var y = gps.position.coordinate.latitude;
             var x = gps.position.coordinate.longitude;
-            app.push(Qt.resolvedUrl("SharePage.qml"), {
-                         "coordinate": QtPositioning.coordinate(y, x),
-                         "title": app.tr("Share Current Position"),
-                         "poi": { "address": app.tr("Current position") }
-                     }, true);
+            app.pushMain(Qt.resolvedUrl("SharePage.qml"), {
+                             "coordinate": QtPositioning.coordinate(y, x),
+                             "title": app.tr("Share Current Position"),
+                             "poi": { "address": app.tr("Current position") }
+                         });
         }
     }
 
@@ -98,7 +98,7 @@ MenuDrawerPL {
     MenuDrawerItemPL {
         iconName: styler.iconPreferences
         text: app.tr("Preferences")
-        onClicked: app.push(Qt.resolvedUrl("PreferencesPage.qml"), {}, true)
+        onClicked: app.pushMain(Qt.resolvedUrl("PreferencesPage.qml"), {}, true)
     }
 
     MenuDrawerSubmenuPL {

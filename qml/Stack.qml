@@ -49,7 +49,7 @@ QtObject {
         var p = app.createObject(pagefile, options ? options : {});
         if (!p) return;
         _stack.push([{"stack_index": app.pages.currentIndex + 1, "page": p}]);
-        app.pages.push(p);
+        app.pages.pushMain(p);
         // console.log('Pushed: ' + p);
         return p;
     }

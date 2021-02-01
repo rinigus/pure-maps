@@ -79,6 +79,15 @@ QtObject {
         return attached;
     }
 
+    function pushMain(page, options) {
+        if (ps.depth > 1) {
+            attached = undefined;
+            hasAttached = false;
+            return ps.replace(ps.get(1), page, options);
+        }
+        return push(page, options);
+    }
+
     function replace(page, options) {
         return ps.replace(page, options ? options : {});
     }

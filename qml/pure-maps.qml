@@ -230,11 +230,7 @@ ApplicationWindowPL {
         sound.play();
     }
 
-    function push(pagefile, options, clearAll) {
-        if (app.isConvergent && clearAll) {
-            app.resetMenu();
-            app.clearPages();
-        }
+    function push(pagefile, options) {
         return app.pages.push(pagefile, options);
     }
 
@@ -246,9 +242,6 @@ ApplicationWindowPL {
         // replace the current main with the new stack
         app._stackMain.clear();
         app.resetMenu();
-        if (app.isConvergent) {
-            app.clearPages();
-        }
         return app._stackMain.push(pagefile, options);
     }
 
