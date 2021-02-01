@@ -196,6 +196,7 @@ PagePL {
             icon: styler.iconNavigateFrom
             label: app.tr("Navigate From")
             onClicked: {
+                navigator.clearRoute();
                 app.showMenu(Qt.resolvedUrl("RoutePage.qml"), {
                                  "from": [poi.coordinate.longitude, poi.coordinate.latitude],
                                  "fromText": poi.title,
