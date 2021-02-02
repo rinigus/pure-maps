@@ -195,10 +195,11 @@ PagePL {
                         if (item.origin)
                             return item.text ? app.tr("Origin: %1", item.text) : app.tr("Origin");
                         if (item.final)
-                            return app.tr("Final destination: %1", item.text);
+                            return item.text ? app.tr("Final destination: %1", item.text) :
+                                               app.tr("Final destination");
                         return item.destination ?
-                                    app.tr("Destination: %1", item.text) :
-                                    app.tr("Waypoint: %1", item.text);
+                                    app.tr("Destination: %1", item.text ? item.text : "") :
+                                    app.tr("Waypoint: %1", item.text ? item.text : "");
                     }
                 }
 

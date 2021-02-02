@@ -44,5 +44,15 @@ def route(locations, params):
               icon="arrive",
               narrative="")
     ]
-    route = dict(x=x, y=y, maneuvers=maneuvers, mode=ctype)
+    locations = [
+        dict( x=x[0], y=y[0],
+              text="" ),
+        dict( x=x[-1], y=y[-1],
+              destination = True,
+              text="" )
+    ]
+    route = dict(x=x, y=y, maneuvers=maneuvers,
+                 locations=locations,
+                 location_indexes=[0, len(x)-1],
+                 mode=ctype)
     return route

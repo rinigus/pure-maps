@@ -153,6 +153,16 @@ def parse_result_valhalla(result, mode):
         verbal_post=maneuver.get("verbal_post_transition_instruction", None),
         duration=float(maneuver.time),
     ) for maneuver in legs.maneuvers]
-    route = dict(x=x, y=y, maneuvers=maneuvers, mode=mode)
+    locations = [
+        dict( x=x[0], y=y[0],
+              text="" ),
+        dict( x=x[-1], y=y[-1],
+              destination = True,
+              text="" )
+    ]
+    route = dict(x=x, y=y, maneuvers=maneuvers,
+                 locations=locations,
+                 location_indexes=[0, len(x)-1],
+                 mode=mode)
     route["language"] = result.trip.language
     return route

@@ -77,6 +77,7 @@ class HistoryManager:
         """Add `route` to the list of routes."""
         route = AttrDict(route)
         for r in route.locations:
+            if 'text' not in r: return
             r['text'] = r['text'].strip()
         if len(route.locations) < 2 or not route.locations[0]['text'] or not route.locations[-1]['text']: return
         self.remove_route(route)
