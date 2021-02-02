@@ -3,4 +3,4 @@
 set -e
 
 echo Checking "$1"
-python -m json.tool "$1" > /dev/null || (echo Check failed && exit 255)
+python3 -m json.tool "$1" > /dev/null || (echo Check failed && exit 255)
