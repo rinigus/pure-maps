@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-08 21:14+0200\n"
+"POT-Creation-Date: 2021-02-02 22:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,11 +39,11 @@ msgid "Connection timed out"
 msgstr ""
 
 #: poor/history.py:33 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
-#: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:155
-#: qml/NearbyPage.qml:170 qml/RoutePage.qml:30 qml/RoutePage.qml:32
-#: qml/RoutePage.qml:36 qml/RoutePage.qml:435 qml/RoutePage.qml:440
-#: qml/RoutePage.qml:675 qml/RoutePage.qml:713 qml/RoutePoint.qml:44
-#: qml/RoutePoint.qml:62
+#: qml/MenuPage.qml:87 qml/Navigator.qml:183 qml/NearbyPage.qml:30
+#: qml/NearbyPage.qml:155 qml/NearbyPage.qml:170 qml/RoutePage.qml:40
+#: qml/RoutePage.qml:42 qml/RoutePage.qml:46 qml/RoutePage.qml:441
+#: qml/RoutePage.qml:446 qml/RoutePage.qml:673 qml/RoutePage.qml:716
+#: qml/RoutePoint.qml:44 qml/RoutePoint.qml:62
 msgid "Current position"
 msgstr ""
 
@@ -119,45 +119,45 @@ msgstr ""
 msgid "Exit: "
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:883
-#: src/navigator.cpp:895
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1001
+#: src/navigator.cpp:1013
 msgid "mi"
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:883
-#: src/navigator.cpp:895
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1001
+#: src/navigator.cpp:1013
 msgid "miles"
 msgstr ""
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:886
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:1004
 msgid "ft"
 msgstr ""
 
-#: poor/util.py:231 src/navigator.cpp:886
+#: poor/util.py:231 src/navigator.cpp:1004
 msgid "feet"
 msgstr ""
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:898
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:1016
 msgid "yd"
 msgstr ""
 
-#: poor/util.py:242 src/navigator.cpp:898
+#: poor/util.py:242 src/navigator.cpp:1016
 msgid "yards"
 msgstr ""
 
-#: poor/util.py:249 src/navigator.cpp:907
+#: poor/util.py:249 src/navigator.cpp:1025
 msgid "km"
 msgstr ""
 
-#: poor/util.py:249 src/navigator.cpp:907
+#: poor/util.py:249 src/navigator.cpp:1025
 msgid "kilometers"
 msgstr ""
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:910
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:1028
 msgid "m"
 msgstr ""
 
-#: poor/util.py:253 src/navigator.cpp:910
+#: poor/util.py:253 src/navigator.cpp:1028
 msgid "meters"
 msgstr ""
 
@@ -233,13 +233,13 @@ msgstr ""
 msgid "Search along the route"
 msgstr ""
 
-#: guides/osmscout_settings.qml:55
+#: guides/osmscout_settings.qml:58
 msgid ""
 "When set, the search along the route is performed starting from the point "
 "specified by 'Near' on this page"
 msgstr ""
 
-#: guides/osmscout_settings.qml:56
+#: guides/osmscout_settings.qml:59
 msgid "Search starting from the reference point"
 msgstr ""
 
@@ -374,13 +374,13 @@ msgstr ""
 msgid "Transport"
 msgstr ""
 
-#: qml/BasemapButton.qml:318 qml/PreferencesPage.qml:383 qml/RoutePage.qml:638
+#: qml/BasemapButton.qml:318 qml/PreferencesPage.qml:383 qml/RoutePage.qml:624
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Bicycle"
 msgstr ""
 
-#: qml/BasemapButton.qml:319 qml/PreferencesPage.qml:383 qml/RoutePage.qml:638
+#: qml/BasemapButton.qml:319 qml/PreferencesPage.qml:383 qml/RoutePage.qml:624
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Car"
@@ -423,8 +423,8 @@ msgid "No selection"
 msgstr ""
 
 #: qml/GeocodeItem.qml:134 qml/NavigationPage.qml:184 qml/PlaceNamePage.qml:48
-#: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:108 qml/RoutePage.qml:232
-#: qml/RoutePage.qml:417 qml/RoutePage.qml:532
+#: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:108 qml/RoutePage.qml:238
+#: qml/RoutePage.qml:423 qml/RoutePage.qml:538
 msgid "Remove"
 msgstr ""
 
@@ -441,13 +441,6 @@ msgid "Searching ..."
 msgstr ""
 
 #: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:99
-#: routers/default_results.qml:69 routers/default_results.qml:72
-#: routers/gpx_osmscout_results.qml:69 routers/gpx_osmscout_results.qml:72
-#: routers/gpx_results.qml:69 routers/gpx_results.qml:72
-#: routers/mapquest_open_results.qml:69 routers/mapquest_open_results.qml:72
-#: routers/osmscout_results.qml:69 routers/osmscout_results.qml:72
-#: routers/osrm_results.qml:69 routers/osrm_results.qml:72
-#: routers/stadiamaps_results.qml:69 routers/stadiamaps_results.qml:72
 msgid "No results"
 msgstr ""
 
@@ -459,9 +452,9 @@ msgstr ""
 msgid "Points of Interest (%1)"
 msgstr ""
 
-#: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePage.qml:570 qml/RoutePage.qml:572
-#: qml/RoutePoint.qml:66
+#: qml/GeocodeItem.qml:467 qml/Navigator.qml:284 qml/Navigator.qml:286
+#: qml/PoiBlock.qml:248 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/RoutePage.qml:575 qml/RoutePage.qml:577 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr ""
 
@@ -469,7 +462,7 @@ msgstr ""
 msgid "Recent searches (%1)"
 msgstr ""
 
-#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:44
+#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:54
 msgid "Change provider (%1)"
 msgstr ""
 
@@ -493,7 +486,7 @@ msgstr ""
 msgid "Initializing"
 msgstr ""
 
-#: qml/InitPage.qml:46 qml/RoutePage.qml:169
+#: qml/InitPage.qml:46 qml/RoutePage.qml:174
 msgid "Dismiss"
 msgstr ""
 
@@ -561,6 +554,18 @@ msgstr ""
 
 #: qml/MapGestureArea.qml:63 qml/MapGestureArea.qml:81
 msgid "Stop navigation to select POI"
+msgstr ""
+
+#: qml/Map.qml:636 qml/NavigationPage.qml:196 qml/RoutePage.qml:154
+msgid "Origin"
+msgstr ""
+
+#: qml/Map.qml:638 qml/NavigationPage.qml:199
+msgid "Final destination"
+msgstr ""
+
+#: qml/Map.qml:640
+msgid "#%1"
 msgstr ""
 
 #: qml/MenuPage.qml:43
@@ -634,7 +639,7 @@ msgstr ""
 msgid "Pause"
 msgstr ""
 
-#: qml/NavigationPage.qml:45 qml/PreferencesPage.qml:694 qml/RoutePage.qml:59
+#: qml/NavigationPage.qml:45 qml/PreferencesPage.qml:694 qml/RoutePage.qml:69
 msgid "Navigate"
 msgstr ""
 
@@ -654,27 +659,31 @@ msgstr ""
 msgid "Estimated time of arrival"
 msgstr ""
 
-#: qml/NavigationPage.qml:160 qml/Navigator.qml:77
+#: qml/NavigationPage.qml:160 qml/Navigator.qml:78
 msgid "Destination reached"
 msgstr ""
 
-#: qml/NavigationPage.qml:172 qml/RoutePage.qml:163 qml/RoutePage.qml:170
+#: qml/NavigationPage.qml:172 qml/RoutePage.qml:168 qml/RoutePage.qml:175
 msgid "Destinations and waypoints"
 msgstr ""
 
 #: qml/NavigationPage.qml:196
+msgid "Origin: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:198
 msgid "Final destination: %1"
 msgstr ""
 
-#: qml/NavigationPage.qml:198 qml/RoutePage.qml:250
+#: qml/NavigationPage.qml:201 qml/RoutePage.qml:256
 msgid "Destination: %1"
 msgstr ""
 
-#: qml/NavigationPage.qml:199 qml/RoutePage.qml:251
+#: qml/NavigationPage.qml:202 qml/RoutePage.qml:257
 msgid "Waypoint: %1"
 msgstr ""
 
-#: qml/NavigationPage.qml:227
+#: qml/NavigationPage.qml:230
 msgid "Maneuvers"
 msgstr ""
 
@@ -682,38 +691,50 @@ msgstr ""
 msgid "EXIT"
 msgstr ""
 
-#: qml/Navigator.qml:69
+#: qml/Navigator.qml:70
 msgid "Destination %1 reached"
 msgstr ""
 
-#: qml/Navigator.qml:70
+#: qml/Navigator.qml:71
 msgid "Waypoint %1 reached"
 msgstr ""
 
-#: qml/Navigator.qml:120
+#: qml/Navigator.qml:121
 msgid "Voice navigation on"
 msgstr ""
 
-#: qml/Navigator.qml:125
+#: qml/Navigator.qml:126
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
 
-#: qml/Navigator.qml:192 src/navigator.cpp:977
-msgid "Rerouting"
+#: qml/Navigator.qml:173
+msgid "Routing"
 msgstr ""
 
-#: qml/Navigator.qml:208
-msgid "Rerouting failed: %1"
+#: qml/Navigator.qml:182
+msgid "Rerouting position"
 msgstr ""
 
-#: qml/Navigator.qml:212 src/navigator.cpp:976
+#: qml/Navigator.qml:194
+msgid "Routing failed: %1"
+msgstr ""
+
+#: qml/Navigator.qml:199 src/navigator.cpp:1094
 msgid "New route found"
 msgstr ""
 
-#: qml/Navigator.qml:217 src/navigator.cpp:978
-msgid "Rerouting failed"
+#: qml/Navigator.qml:200
+msgid "Route found"
+msgstr ""
+
+#: qml/Navigator.qml:210 src/navigator.cpp:1096
+msgid "Routing failed"
+msgstr ""
+
+#: qml/Navigator.qml:242 src/navigator.cpp:1095
+msgid "Rerouting"
 msgstr ""
 
 #: qml/NearbyPage.qml:25 qml/NearbyResultsPage.qml:100
@@ -741,10 +762,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: qml/NearbyResultsPage.qml:115 routers/default_results.qml:39
-#: routers/gpx_osmscout_results.qml:39 routers/gpx_results.qml:39
-#: routers/mapquest_open_results.qml:39 routers/osmscout_results.qml:39
-#: routers/osrm_results.qml:39 routers/stadiamaps_results.qml:39
+#: qml/NearbyResultsPage.qml:115
 msgid "Searching"
 msgstr ""
 
@@ -856,7 +874,7 @@ msgstr ""
 msgid "Enter postal code"
 msgstr ""
 
-#: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:217
+#: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:221
 msgid "Contact"
 msgstr ""
 
@@ -876,7 +894,7 @@ msgstr ""
 msgid "Enter URL"
 msgstr ""
 
-#: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:243
+#: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:247
 msgid "Additional info"
 msgstr ""
 
@@ -928,11 +946,11 @@ msgstr ""
 msgid "Navigate To"
 msgstr ""
 
-#: qml/PoiInfoPage.qml:194
+#: qml/PoiInfoPage.qml:197
 msgid "Navigate From"
 msgstr ""
 
-#: qml/PoiInfoPage.qml:206
+#: qml/PoiInfoPage.qml:210
 msgid "Nearby"
 msgstr ""
 
@@ -1273,7 +1291,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:638
+#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:624
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Foot"
@@ -1557,38 +1575,39 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: qml/RoutePage.qml:28 routers/default_results.qml:25
-#: routers/gpx_osmscout_results.qml:25 routers/gpx_results.qml:25
-#: routers/mapquest_open_results.qml:25 routers/osmscout_results.qml:25
-#: routers/osrm_results.qml:25 routers/stadiamaps_results.qml:25
+#: qml/RoutePage.qml:34
+msgid "Stop"
+msgstr ""
+
+#: qml/RoutePage.qml:34
+msgid "Begin"
+msgstr ""
+
+#: qml/RoutePage.qml:35
 msgid "Route"
 msgstr ""
 
-#: qml/RoutePage.qml:59
+#: qml/RoutePage.qml:69
 msgid "Follow me"
 msgstr ""
 
-#: qml/RoutePage.qml:71
+#: qml/RoutePage.qml:81
 msgid "Reverse route"
 msgstr ""
 
-#: qml/RoutePage.qml:148
+#: qml/RoutePage.qml:153
 msgid "From"
 msgstr ""
 
-#: qml/RoutePage.qml:149
-msgid "Origin"
-msgstr ""
-
-#: qml/RoutePage.qml:155
+#: qml/RoutePage.qml:160
 msgid "To"
 msgstr ""
 
-#: qml/RoutePage.qml:156 qml/RoutePage.qml:309
+#: qml/RoutePage.qml:161 qml/RoutePage.qml:315
 msgid "Destination"
 msgstr ""
 
-#: qml/RoutePage.qml:171
+#: qml/RoutePage.qml:176
 msgid ""
 "Additional destinations and wayponts can be added along the route. The both "
 "locations are used for calculation of the route, but only destinations are "
@@ -1605,73 +1624,65 @@ msgid ""
 "Dismiss this dialog to stop showing this message."
 msgstr ""
 
-#: qml/RoutePage.qml:193
+#: qml/RoutePage.qml:198
 msgid "Optimize order"
 msgstr ""
 
-#: qml/RoutePage.qml:215
+#: qml/RoutePage.qml:221
 msgid "Up"
 msgstr ""
 
-#: qml/RoutePage.qml:224
+#: qml/RoutePage.qml:230
 msgid "Down"
 msgstr ""
 
-#: qml/RoutePage.qml:238
+#: qml/RoutePage.qml:244
 msgid "Convert to waypoint"
 msgstr ""
 
-#: qml/RoutePage.qml:239
+#: qml/RoutePage.qml:245
 msgid "Convert to destination"
 msgstr ""
 
-#: qml/RoutePage.qml:285
+#: qml/RoutePage.qml:291
 msgid "Add destination"
 msgstr ""
 
-#: qml/RoutePage.qml:293
+#: qml/RoutePage.qml:299
 msgid "Add waypoint"
 msgstr ""
 
-#: qml/RoutePage.qml:309
+#: qml/RoutePage.qml:315
 msgid "Waypoint"
 msgstr ""
 
-#: qml/RoutePage.qml:401
+#: qml/RoutePage.qml:407
 msgid "Routes"
 msgstr ""
 
-#: qml/RoutePage.qml:429
+#: qml/RoutePage.qml:435
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
 msgstr ""
 
-#: qml/RoutePage.qml:474
+#: qml/RoutePage.qml:480
 msgid "Show more..."
 msgstr ""
 
-#: qml/RoutePage.qml:514
+#: qml/RoutePage.qml:520
 msgid "Destinations"
 msgstr ""
 
-#: qml/RoutePage.qml:608
+#: qml/RoutePage.qml:612
 msgid "Follow the movement and show just in time information"
 msgstr ""
 
-#: qml/RoutePage.qml:617
-msgid "Stop"
-msgstr ""
-
-#: qml/RoutePage.qml:617
-msgid "Begin"
-msgstr ""
-
-#: qml/RoutePage.qml:635
+#: qml/RoutePage.qml:621
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
 
-#: qml/RoutePage.qml:637
+#: qml/RoutePage.qml:623
 msgid "Mode of transportation"
 msgstr ""
 
@@ -1691,15 +1702,15 @@ msgstr ""
 msgid "Modes: %1"
 msgstr ""
 
-#: qml/ScaleBar.qml:207
+#: qml/ScaleBar.qml:208
 msgid "Auto-zoom requires auto-centering to be enabled"
 msgstr ""
 
-#: qml/ScaleBar.qml:218
+#: qml/ScaleBar.qml:219
 msgid "Auto-zoom on"
 msgstr ""
 
-#: qml/ScaleBar.qml:219
+#: qml/ScaleBar.qml:220
 msgid "Auto-zoom off"
 msgstr ""
 
@@ -1741,13 +1752,6 @@ msgstr ""
 
 #: qml/SharePage.qml:115
 msgid "Add link to Google Maps"
-msgstr ""
-
-#: routers/default_results.qml:60 routers/gpx_osmscout_results.qml:60
-#: routers/gpx_results.qml:60 routers/mapquest_open_results.qml:60
-#: routers/osmscout_results.qml:60 routers/osrm_results.qml:60
-#: routers/stadiamaps_results.qml:60
-msgid "Route to %1"
 msgstr ""
 
 #: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
@@ -1996,42 +2000,42 @@ msgstr ""
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
 
-#: src/navigator.cpp:159
+#: src/navigator.cpp:261
 msgid "Position unknown"
 msgstr ""
 
-#: src/navigator.cpp:165
+#: src/navigator.cpp:267
 msgid "Position imprecise: accuracy %1"
 msgstr ""
 
-#: src/navigator.cpp:184 src/navigator.cpp:447
+#: src/navigator.cpp:286 src/navigator.cpp:550
 msgid "Preparing to start navigation"
 msgstr ""
 
-#: src/navigator.cpp:489
+#: src/navigator.cpp:592
 msgid "Moving in a wrong direction"
 msgstr ""
 
-#: src/navigator.cpp:499
+#: src/navigator.cpp:602
 msgid "Away from route"
 msgstr ""
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In" and adjust the order if needed
-#: src/navigator.cpp:671 src/navigator.cpp:682
+#: src/navigator.cpp:776 src/navigator.cpp:787
 msgid "In %2, %1"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical hours (%1) and minutes (%2)
-#: src/navigator.cpp:928
+#: src/navigator.cpp:1046
 msgid "%1 h %2 min"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes (%1)
-#: src/navigator.cpp:930
+#: src/navigator.cpp:1048
 msgid "%1 min"
 msgstr ""
 
-#: src/navigator.cpp:975
+#: src/navigator.cpp:1093
 msgid "Starting navigation"
 msgstr ""
 
