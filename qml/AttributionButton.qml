@@ -105,6 +105,6 @@ MouseArea {
     onLogoChanged: extra.setSource()
 
     function pushPage() {
-        app.push(Qt.resolvedUrl("AttributionPage.qml"), {}, true);
+        app.push(Qt.resolvedUrl("AttributionPage.qml"));
     }
 }

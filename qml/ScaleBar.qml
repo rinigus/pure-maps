@@ -26,6 +26,7 @@ MouseArea {
     id: master
     anchors.left: parent.left
     anchors.top: referenceBlockTopLeft.bottom
+    enabled: !hidden
     height: 2*(styler.themePaddingLarge + styler.themePaddingSmall) +
             (_rotate ? scaleBar.scaleBarMaxLength : scaleBar.height)
     states: [
