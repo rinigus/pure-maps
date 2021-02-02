@@ -177,7 +177,11 @@ Item {
         // note that GPX trace does not use locations
         if (loc.length >= 1 && !loc[0].origin) {
             var p = app.getPosition();
-            loc.splice(0, 0, {"text": app.tr("Current position"), "x": p[0], "y": p[1]});
+            loc.splice(0, 0,
+                       {"text": navigatorBase.running ?
+                                    app.tr("Rerouting position") :
+                                    app.tr("Current position"),
+                                    "x": p[0], "y": p[1]});
         }
         var args = [loc,
                     options];
@@ -191,7 +195,9 @@ Item {
                 if (options.voicePrompt) navigatorBase.prompt("std:routing failed");
                 rerouteConsecutiveErrors++;
             } else if (route && route.x && route.x.length > 0) {
-                app.notification.flash(app.tr("New route found"), notifyId);
+                app.notification.flash(navigatorBase.running ?
+                                           app.tr("New route found") :
+                                           app.tr("Route found"), notifyId);
                 if (options.voicePrompt) navigatorBase.prompt("std:new route found");
                 setRoute(route);
                 rerouteConsecutiveErrors = 0;
