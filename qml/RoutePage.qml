@@ -201,7 +201,8 @@ DialogPL {
 
             Column {
                 id: waypointsColumn
-                visible: waypointsEnabled
+                // no need to have waypoints if there is no destination
+                visible: page.toNeeded && waypointsEnabled
                 width: parent.width
 
                 Spacer {
