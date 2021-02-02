@@ -388,7 +388,23 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
   wrong_direction = (wrong_direction && !(bool(best)));
 
   // whether we found the point on route and whether it was in expected direction
-  bool on_route = ((bool)best && (!ref || ref.length_on_route - accuracy_rad < best.length_on_route));
+  bool on_route = ((bool)best && (!ref || ref.length_on_route - 2*accuracy_rad < best.length_on_route));
+
+  // check if we skipped some destination along the route and took
+  // a shortcut. for destinations, it means rerouting as they are
+  // expected to be visited.
+  //
+  // Possible scenario: route goes to intermediate destination
+  // and then back. By rejoining in a wrong direction, destination can be
+  // skipped.
+  //
+  // This check prevents it. Here, relatively large inaccuracy is used to
+  // avoid smaller deviations during local maneuvers
+  for (int i=0; on_route && i < m_locations.length(); ++i)
+    if (!m_locations[i].origin && !m_locations[i].final &&
+         m_locations[i].destination &&
+         m_locations[i].length_on_route < best.length_on_route - 8*accuracy_rad )
+        on_route = false;
 
   if (on_route)
     {
@@ -590,7 +606,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
 
               SET(icon, QLatin1String("uturn")); // turn around
               SET(narrative, trans("Moving in a wrong direction"));
-              SET(manDist, "-");
+              SET(manDist, QLatin1String("-"));
             }
           else
             {
@@ -600,7 +616,9 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
 
               SET(icon, QLatin1String("flag")); // away from route icon
               SET(narrative, trans("Away from route"));
-              SET(manDist, distanceToStr(m_distance_to_route_m));
+              SET(manDist,
+                  m_distance_to_route_m > 1 ?
+                    distanceToStr(m_distance_to_route_m) : QLatin1String("-"));
             }
 
           SET(manTime, QLatin1String());
