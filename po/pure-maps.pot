@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-02 22:21+0200\n"
+"POT-Creation-Date: 2021-02-03 22:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,45 +119,45 @@ msgstr ""
 msgid "Exit: "
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1001
-#: src/navigator.cpp:1013
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1017
+#: src/navigator.cpp:1029
 msgid "mi"
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1001
-#: src/navigator.cpp:1013
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1017
+#: src/navigator.cpp:1029
 msgid "miles"
 msgstr ""
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:1004
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:1020
 msgid "ft"
 msgstr ""
 
-#: poor/util.py:231 src/navigator.cpp:1004
+#: poor/util.py:231 src/navigator.cpp:1020
 msgid "feet"
 msgstr ""
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:1016
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:1032
 msgid "yd"
 msgstr ""
 
-#: poor/util.py:242 src/navigator.cpp:1016
+#: poor/util.py:242 src/navigator.cpp:1032
 msgid "yards"
 msgstr ""
 
-#: poor/util.py:249 src/navigator.cpp:1025
+#: poor/util.py:249 src/navigator.cpp:1041
 msgid "km"
 msgstr ""
 
-#: poor/util.py:249 src/navigator.cpp:1025
+#: poor/util.py:249 src/navigator.cpp:1041
 msgid "kilometers"
 msgstr ""
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:1028
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:1044
 msgid "m"
 msgstr ""
 
-#: poor/util.py:253 src/navigator.cpp:1028
+#: poor/util.py:253 src/navigator.cpp:1044
 msgid "meters"
 msgstr ""
 
@@ -721,7 +721,7 @@ msgstr ""
 msgid "Routing failed: %1"
 msgstr ""
 
-#: qml/Navigator.qml:199 src/navigator.cpp:1094
+#: qml/Navigator.qml:199 src/navigator.cpp:1110
 msgid "New route found"
 msgstr ""
 
@@ -729,11 +729,11 @@ msgstr ""
 msgid "Route found"
 msgstr ""
 
-#: qml/Navigator.qml:210 src/navigator.cpp:1096
+#: qml/Navigator.qml:210 src/navigator.cpp:1112
 msgid "Routing failed"
 msgstr ""
 
-#: qml/Navigator.qml:242 src/navigator.cpp:1095
+#: qml/Navigator.qml:242 src/navigator.cpp:1111
 msgid "Rerouting"
 msgstr ""
 
@@ -2008,34 +2008,34 @@ msgstr ""
 msgid "Position imprecise: accuracy %1"
 msgstr ""
 
-#: src/navigator.cpp:286 src/navigator.cpp:550
+#: src/navigator.cpp:286 src/navigator.cpp:566
 msgid "Preparing to start navigation"
 msgstr ""
 
-#: src/navigator.cpp:592
+#: src/navigator.cpp:608
 msgid "Moving in a wrong direction"
 msgstr ""
 
-#: src/navigator.cpp:602
+#: src/navigator.cpp:618
 msgid "Away from route"
 msgstr ""
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In" and adjust the order if needed
-#: src/navigator.cpp:776 src/navigator.cpp:787
+#: src/navigator.cpp:792 src/navigator.cpp:803
 msgid "In %2, %1"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical hours (%1) and minutes (%2)
-#: src/navigator.cpp:1046
+#: src/navigator.cpp:1062
 msgid "%1 h %2 min"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes (%1)
-#: src/navigator.cpp:1048
+#: src/navigator.cpp:1064
 msgid "%1 min"
 msgstr ""
 
-#: src/navigator.cpp:1093
+#: src/navigator.cpp:1109
 msgid "Starting navigation"
 msgstr ""
 
