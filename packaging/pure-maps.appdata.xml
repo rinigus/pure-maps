@@ -38,6 +38,21 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.5.0" date="2021-02-03">
+     <description>
+       <ul>
+         <li>Allow to edit route</li>
+         <li>Quick route calculation through selection of point of interest</li>
+         <li>Better handling of some corner cases in routing</li>
+         <li>Refactor page stack implementation</li>
+         <li>Add support to Sailfish Harbour MyBackup [atlochowski]</li>
+         <li>Show waypoints and destinations using dedicated icons</li>
+         <li>Explicitly invoke python3 in check-json [Newbyte]</li>
+         <li>Bugfixes</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.4.1" date="2021-01-08">
      <description>
        <ul>

@@ -1,3 +1,16 @@
+2021-02-03: Pure Maps 2.5
+=========================
+
+* Allow to edit route
+* Quick route calculation through selection of point of interest
+* Better handling of some corner cases in routing
+* Refactor page stack implementation
+* Add support to Sailfish Harbour MyBackup [atlochowski]
+* Show waypoints and destinations using dedicated icons
+* Explicitly invoke python3 in check-json [Newbyte]
+* Bugfixes
+* Update translations
+
 2021-01-05: Pure Maps 2.4
 =========================
 
