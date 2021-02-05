@@ -31,6 +31,8 @@ class Navigator : public QObject
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
   Q_PROPERTY(double  direction READ direction NOTIFY directionChanged)
   Q_PROPERTY(bool    directionValid READ directionValid NOTIFY directionValidChanged)
+  Q_PROPERTY(bool    hasDestination READ hasDestination NOTIFY hasDestinationChanged)
+  Q_PROPERTY(bool    hasOrigin READ hasOrigin NOTIFY hasOriginChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
   Q_PROPERTY(QVariantList locations READ locations WRITE setLocations NOTIFY locationsChanged)
@@ -63,6 +65,8 @@ public:
   QString destTime() const { return m_destTime; }
   double  direction() const { return m_direction; }
   bool    directionValid() const { return m_directionValid; }
+  bool    hasDestination() const { return m_hasDestination; }
+  bool    hasOrigin() const { return m_hasOrigin; }
   QString icon() const { return m_icon; }
   QString language() const { return m_language; }
   QVariantList locations() const;
@@ -115,6 +119,8 @@ signals:
   void destTimeChanged();
   void directionChanged();
   void directionValidChanged();
+  void hasDestinationChanged();
+  void hasOriginChanged();
   void iconChanged();
   void languageChanged();
   void locationsChanged();
@@ -230,6 +236,8 @@ private:
   QString m_destTime;
   double  m_direction{0};
   bool    m_directionValid{false};
+  bool    m_hasDestination{false};
+  bool    m_hasOrigin{false};
   QString m_icon;
   QString m_manDist;
   QString m_manTime;
@@ -237,7 +245,6 @@ private:
   QString m_nextIcon;
   QString m_nextManDist;
   bool    m_optimized{false};
-  bool    m_origin_set{false};
   bool    m_precision_insufficient{false};
   int     m_progress{0};
   int     m_roundaboutExit{0};

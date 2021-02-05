@@ -82,7 +82,8 @@ void Navigator::clearRoute(bool keepLocations)
   if (!keepLocations && m_locations.size() > 0)
     {
       m_locations.clear();
-      m_origin_set = false;
+      SET(hasDestination, false);
+      SET(hasOrigin, false);
       emit locationsChanged();
     }
 
@@ -122,15 +123,15 @@ QVariantList Navigator::locations() const
     }
 
   // set origin and final destinations
-  if (m_locations.length() >= 2)
+  if (m_locations.length() >= 1 && m_hasOrigin)
     {
-      if (m_origin_set)
-        {
-          QVariantMap lo = locations.front().toMap();
-          lo["origin"] = 1;
-          locations.front() = lo;
-        }
+      QVariantMap lo = locations.front().toMap();
+      lo["origin"] = 1;
+      locations.front() = lo;
+    }
 
+  if (m_locations.length() >= 1 && m_hasDestination)
+    {
       QVariantMap lf = locations.last().toMap();
       lf["final"] = 1;
       lf["destination"] = 1;
@@ -159,14 +160,18 @@ bool Navigator::locationInsert(int index, QVariantMap location)
   _varFiller(origin, location, QStringLiteral("origin"));
 
   if (index == -1 || index==m_locations.length())
-    m_locations.append(loc);
+    {
+      m_locations.append(loc);
+      if (loc.destination)
+        SET(hasDestination, true);
+    }
   else if (index >=0 && index < m_locations.length())
     m_locations.insert(index, loc);
   else
     return false;
 
   if (index == 0 && origin)
-    m_origin_set = true;
+    SET(hasOrigin, true);
 
   clearRoute(true);
   emit locationsChanged();
@@ -180,9 +185,15 @@ bool Navigator::locationMove(int from, int to)
     return false;
 
   m_locations.move(from, to);
-
   clearRoute(true);
   emit locationsChanged();
+
+  if (to == m_locations.length()-1)
+    SET(hasDestination,
+        m_locations.length() > 1 ||
+        (!m_hasOrigin && m_locations.length() > 0) ?
+          m_locations.back().destination : false);
+
   return true;
 }
 
@@ -190,9 +201,18 @@ bool Navigator::locationRemove(int index)
 {
   if (index < 0 || index >= m_locations.length())
     return false;
+
   m_locations.removeAt(index);
   clearRoute(true);
   emit locationsChanged();
+
+  if (index == 0) SET(hasOrigin, false);
+  if (index == m_locations.length())
+    SET(hasDestination,
+        m_locations.length() > 1 ||
+        (!m_hasOrigin && m_locations.length() > 0) ?
+          m_locations.back().destination : false);
+
   return true;
 }
 
@@ -214,9 +234,13 @@ void Navigator::setLocations(const QVariantList &locations)
         {
           bool origin = false;
           _varFiller(origin, location, QStringLiteral("origin"));
-          m_origin_set = origin;
+          SET(hasOrigin, origin);
         }
     }
+
+  if (m_locations.length() > 0 && !m_locations.back().origin)
+    SET(hasDestination, m_locations.back().destination);
+
   emit locationsChanged();
 }
 
@@ -885,7 +909,8 @@ void Navigator::setRoute(QVariantMap m)
 
   // locations
   m_locations.clear();
-  m_origin_set = true;
+  SET(hasOrigin, true);
+  SET(hasDestination, true);
   QVariantList locations = m.value("locations").toList();
   QVariantList locindexes = m.value("location_indexes").toList();
   if (locations.length() == locindexes.length())

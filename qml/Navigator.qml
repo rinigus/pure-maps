@@ -32,6 +32,8 @@ Item {
     property var    direction: navigatorBase.directionValid ? navigatorBase.direction : undefined
     property bool   followMe:  false
     property bool   hasBeenAlongRoute: false
+    property alias  hasDestination: navigatorBase.hasDestination
+    property alias  hasOrigin: navigatorBase.hasOrigin
     property bool   hasRoute:  navigatorBase.route.length > 0
     property alias  icon:      navigatorBase.icon
     property alias  locations: navigatorBase.locations
