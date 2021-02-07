@@ -275,8 +275,8 @@ PagePL {
 
     function setPoi(p) {
         page.poi = p;
-        page.bookmarked = p.bookmarked;
-        page.shortlisted = p.shortlisted;
+        page.bookmarked = Boolean(p.bookmarked);
+        page.shortlisted = Boolean(p.shortlisted);
     }
 
 }
