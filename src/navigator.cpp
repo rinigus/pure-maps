@@ -646,9 +646,10 @@ void Navigator::setRoute(QVariantMap m)
   if (!m_running) m_distance_traveled_m = 0;
 
   // set global vars
+  // note that "optimized" is set later, together with
+  // locations
   SET(language, m.value("language", "en").toString());
   SET(mode, m.value("mode", "car").toString());
-  SET(optimized, m.value("optimized", false).toBool());
   SET(destDist, "-");
   SET(destEta, "-");
   SET(destTime, "-");
@@ -913,6 +914,14 @@ void Navigator::setRoute(QVariantMap m)
   else
     qWarning() << "Number of locations and number of their indexes do not match. Number of indexes:"
                << locindexes.length();
+
+  // override optimized parameter only if the route
+  // had sufficient amount of destinations. Otherwise
+  // keep it intact. This allows to preserve earlier setting
+  // until user had a chance to change it.
+  if (locations.length() > 3)
+    SET(optimized, m.value("optimized", false).toBool());
+
 
   // global vars
   m_route_duration = duration_on_route;
