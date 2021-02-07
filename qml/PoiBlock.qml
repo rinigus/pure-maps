@@ -31,9 +31,7 @@ Column {
 
     // properties of the item
     property bool  active: false
-    property bool  fullMode: true
     property bool  navigationControls: false
-    property alias optionalHeight: optional.height
 
     // poi properties
     property string address
@@ -48,6 +46,16 @@ Column {
     property string text
     property string title
     property var    poi
+
+    // internal properties
+    property bool  _fullMode: true
+    property bool  _multipleIntermediatePossible: {
+        if (!navigator.hasDestination) return false;
+        if (navigator.hasOrigin)
+            return navigator.locations.length > 2;
+        return navigator.locations.length > 1;
+    }
+    property alias _optionalHeight: optional.height
 
     property var    poiAsRoutingDestination: {
         "text": title,
@@ -75,7 +83,7 @@ Column {
         id: optional
         anchors.left: parent.left
         anchors.right: parent.right
-        visible: fullMode
+        visible: _fullMode
 
         ListItemLabel {
             color: styler.themeHighlightColor
@@ -236,26 +244,6 @@ Column {
                                      styler.themePaddingLarge
 
         ListItemLabelActive {
-            id: gdest
-            contentHeight: styler.themeItemSizeSmall
-            label: app.tr("Final destination")
-            labelX: gridRepl.landscape ? styler.themeHorizontalPageMargin +
-                                         gridRepl.cellTextSpace/2 - labelImplicitWidth/2 :
-                                         styler.themeHorizontalPageMargin
-            width: Math.max(minWidth, gridRepl.width / 2)
-            property int minWidth: labelImplicitWidth + styler.themeHorizontalPageMargin +
-                                   styler.themePaddingLarge
-
-            onClicked: {
-                var loc = navigator.locations;
-                if (navigator.hasDestination) loc[loc.length-1] = poiAsRoutingDestination;
-                else loc.push(poiAsRoutingDestination);
-                navigator.locations = loc;
-                finalizeRouting();
-            }
-        }
-
-        ListItemLabelActive {
             id: gorig
             contentHeight: styler.themeItemSizeSmall
             label: app.tr("Origin")
@@ -270,6 +258,26 @@ Column {
                 var loc = navigator.locations;
                 if (navigator.hasOrigin) loc[0] = poiAsRoutingOrigin;
                 else loc.splice(0, 0, poiAsRoutingOrigin);
+                navigator.locations = loc;
+                finalizeRouting();
+            }
+        }
+
+        ListItemLabelActive {
+            id: gdest
+            contentHeight: styler.themeItemSizeSmall
+            label: app.tr("Final destination")
+            labelX: gridRepl.landscape ? styler.themeHorizontalPageMargin +
+                                         gridRepl.cellTextSpace/2 - labelImplicitWidth/2 :
+                                         styler.themeHorizontalPageMargin
+            width: Math.max(minWidth, gridRepl.width / 2)
+            property int minWidth: labelImplicitWidth + styler.themeHorizontalPageMargin +
+                                   styler.themePaddingLarge
+
+            onClicked: {
+                var loc = navigator.locations;
+                if (navigator.hasDestination) loc[loc.length-1] = poiAsRoutingDestination;
+                else loc.push(poiAsRoutingDestination);
                 navigator.locations = loc;
                 finalizeRouting();
             }
@@ -313,7 +321,7 @@ Column {
     ListItemLabelActive {
         label: app.tr("First intermediate destination")
         labelX: styler.themeHorizontalPageMargin
-        visible: navigationControls && navigator.hasDestination
+        visible: navigationControls && _multipleIntermediatePossible
         width: Math.max(labelImplicitWidth + styler.themeHorizontalPageMargin +
                         styler.themePaddingLarge, parent.width/2)
         onClicked: {
@@ -326,7 +334,8 @@ Column {
     }
 
     ListItemLabelActive {
-        label: app.tr("Last intermediate destination")
+        label: _multipleIntermediatePossible ? app.tr("Last intermediate destination") :
+                                               app.tr("Intermediate destination")
         labelX: styler.themeHorizontalPageMargin
         visible: navigationControls && navigator.hasDestination
         width: Math.max(labelImplicitWidth + styler.themeHorizontalPageMargin +
@@ -354,15 +363,15 @@ Column {
     }
 
     onHeightChanged: checkMode()
-    onOptionalHeightChanged: checkMode()
+    on_OptionalHeightChanged: checkMode()
 
     function checkMode() {
         // check if we have space to show all information
         var h = item.height + 2*styler.themePaddingLarge;
-        if (fullMode && h > map.height)
-            fullMode = false;
-        else if (!fullMode && h + optionalHeight < map.height)
-            fullMode = true;
+        if (_fullMode && h > map.height)
+            _fullMode = false;
+        else if (!_fullMode && h + _optionalHeight < map.height)
+            _fullMode = true;
     }
 
     function finalizeRouting() {
