@@ -8,17 +8,17 @@
 # Roman Meier <meierrom@gmail.com>, 2018
 # Florian, 2019
 # lutinotmalin, 2019
-# Jordi, 2020
 # Anne017, 2021
+# Jordi, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-02 22:21+0200\n"
+"POT-Creation-Date: 2021-02-07 15:22+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Anne017, 2021\n"
+"Last-Translator: Jordi, 2021\n"
 "Language-Team: French (https://www.transifex.com/rinigus/teams/89597/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,7 @@ msgid "Connection timed out"
 msgstr "Délai de connexion dépassé"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
-#: qml/MenuPage.qml:87 qml/Navigator.qml:183 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:186 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:155 qml/NearbyPage.qml:170 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:46 qml/RoutePage.qml:441
 #: qml/RoutePage.qml:446 qml/RoutePage.qml:673 qml/RoutePage.qml:716
@@ -488,8 +488,8 @@ msgstr "Résultats (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Points d'intérêt (%1)"
 
-#: qml/GeocodeItem.qml:467 qml/Navigator.qml:284 qml/Navigator.qml:286
-#: qml/PoiBlock.qml:248 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/GeocodeItem.qml:467 qml/Navigator.qml:290 qml/Navigator.qml:292
+#: qml/PoiBlock.qml:401 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:575 qml/RoutePage.qml:577 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Emplacement sans nom"
@@ -604,17 +604,18 @@ msgstr "Les deux"
 msgid "Stop navigation to select POI"
 msgstr "Arrêter la navigation vers le point d'intérêt sélectionné"
 
-#: qml/Map.qml:636 qml/NavigationPage.qml:196 qml/RoutePage.qml:154
+#: qml/Map.qml:636 qml/NavigationPage.qml:196 qml/PoiBlock.qml:249
+#: qml/RoutePage.qml:154
 msgid "Origin"
 msgstr "Départ"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:199
+#: qml/Map.qml:638 qml/NavigationPage.qml:199 qml/PoiBlock.qml:269
 msgid "Final destination"
-msgstr ""
+msgstr "Destination"
 
 #: qml/Map.qml:640
 msgid "#%1"
-msgstr ""
+msgstr "#%1"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -707,7 +708,7 @@ msgstr "État"
 msgid "Estimated time of arrival"
 msgstr "Arrivée estimée"
 
-#: qml/NavigationPage.qml:160 qml/Navigator.qml:78
+#: qml/NavigationPage.qml:160 qml/Navigator.qml:80
 msgid "Destination reached"
 msgstr "Destination atteinte"
 
@@ -717,7 +718,7 @@ msgstr "Destinations et points de passage"
 
 #: qml/NavigationPage.qml:196
 msgid "Origin: %1"
-msgstr ""
+msgstr "Point de départ : %1"
 
 #: qml/NavigationPage.qml:198
 msgid "Final destination: %1"
@@ -739,19 +740,19 @@ msgstr "Manœuvres "
 msgid "EXIT"
 msgstr "QUITTER"
 
-#: qml/Navigator.qml:70
+#: qml/Navigator.qml:72
 msgid "Destination %1 reached"
 msgstr "Destination %1 atteinte"
 
-#: qml/Navigator.qml:71
+#: qml/Navigator.qml:73
 msgid "Waypoint %1 reached"
 msgstr "Point de passage %1 atteint"
 
-#: qml/Navigator.qml:121
+#: qml/Navigator.qml:123
 msgid "Voice navigation on"
 msgstr "Instructions vocales activées"
 
-#: qml/Navigator.qml:126
+#: qml/Navigator.qml:128
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -759,31 +760,35 @@ msgstr ""
 "Navigation vocale indisponible : moteur Text-to-Speech (TTS) manquant pour "
 "la langue sélectionnée"
 
-#: qml/Navigator.qml:173
-msgid "Routing"
+#: qml/Navigator.qml:179
+msgid "Routing failed: current position not known"
 msgstr ""
 
-#: qml/Navigator.qml:182
+#: qml/Navigator.qml:185
 msgid "Rerouting position"
-msgstr ""
+msgstr "Position de déroutement"
 
-#: qml/Navigator.qml:194
+#: qml/Navigator.qml:189
+msgid "Routing"
+msgstr "Routage"
+
+#: qml/Navigator.qml:200
 msgid "Routing failed: %1"
-msgstr ""
+msgstr "Échec du routage : %1"
 
-#: qml/Navigator.qml:199 src/navigator.cpp:1094
+#: qml/Navigator.qml:205 src/navigator.cpp:1094
 msgid "New route found"
 msgstr "Nouvel itinéraire trouvé"
 
-#: qml/Navigator.qml:200
+#: qml/Navigator.qml:206
 msgid "Route found"
-msgstr ""
+msgstr "Itinéraire trouvé"
 
-#: qml/Navigator.qml:210 src/navigator.cpp:1096
+#: qml/Navigator.qml:216 src/navigator.cpp:1096
 msgid "Routing failed"
-msgstr ""
+msgstr "Échec du routage"
 
-#: qml/Navigator.qml:242 src/navigator.cpp:1095
+#: qml/Navigator.qml:248 src/navigator.cpp:1095
 msgid "Rerouting"
 msgstr "Déroutement"
 
@@ -856,37 +861,69 @@ msgstr "Type de site"
 msgid "You can search for venues by type."
 msgstr "Vous pouvez chercher des lieux par type."
 
-#: qml/PoiBlock.qml:81
+#: qml/PoiBlock.qml:94
 msgid "%1; %2"
 msgstr "%1; %2"
 
-#: qml/PoiBlock.qml:99
+#: qml/PoiBlock.qml:110
 msgid "Latitude: %1; Longitude: %2"
 msgstr "Latitude: %1; Longitude: %2 "
 
-#: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:81
+#: qml/PoiBlock.qml:133 qml/PoiEditPage.qml:81
 msgid "Postal code"
 msgstr "Code postal"
 
-#: qml/PoiBlock.qml:127
+#: qml/PoiBlock.qml:134
 msgid "Web"
 msgstr "Web"
 
-#: qml/PoiBlock.qml:128
+#: qml/PoiBlock.qml:135
 msgid "Phone"
 msgstr "Téléphone"
 
-#: qml/PoiBlock.qml:129
+#: qml/PoiBlock.qml:136
 msgid "Shortlisted"
 msgstr "Présélectionné"
 
-#: qml/PoiBlock.qml:130
+#: qml/PoiBlock.qml:137
 msgid "Text"
 msgstr "Texte"
 
-#: qml/PoiBlock.qml:132
+#: qml/PoiBlock.qml:139
 msgid "More info: %1"
 msgstr "Plus d'info : %1"
+
+#: qml/PoiBlock.qml:228
+msgid "Set as or Replace"
+msgstr ""
+
+#: qml/PoiBlock.qml:228
+msgid "Set as"
+msgstr ""
+
+#: qml/PoiBlock.qml:288
+msgid "Insert as"
+msgstr ""
+
+#: qml/PoiBlock.qml:293
+msgid "New origin"
+msgstr ""
+
+#: qml/PoiBlock.qml:306
+msgid "New final destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:318
+msgid "First intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:331
+msgid "Last intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:332
+msgid "Intermediate destination"
+msgstr ""
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -2121,29 +2158,29 @@ msgstr ""
 "Affiche l'emplacement donné par geo:latitude,longitude URI ou effectue une "
 "recherche."
 
-#: src/navigator.cpp:261
+#: src/navigator.cpp:235
 msgid "Position unknown"
 msgstr "Position inconnue"
 
-#: src/navigator.cpp:267
+#: src/navigator.cpp:241
 msgid "Position imprecise: accuracy %1"
 msgstr "Position imprécise : précision %1"
 
-#: src/navigator.cpp:286 src/navigator.cpp:550
+#: src/navigator.cpp:260 src/navigator.cpp:540
 msgid "Preparing to start navigation"
 msgstr "Préparation à la navigation"
 
-#: src/navigator.cpp:592
+#: src/navigator.cpp:582
 msgid "Moving in a wrong direction"
 msgstr "Déplacement dans la mauvaise direction"
 
-#: src/navigator.cpp:602
+#: src/navigator.cpp:592
 msgid "Away from route"
 msgstr "Hors de l'itinéraire "
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:776 src/navigator.cpp:787
+#: src/navigator.cpp:767 src/navigator.cpp:778
 msgid "In %2, %1"
 msgstr "Dans %2, %1"
 

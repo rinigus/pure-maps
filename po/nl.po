@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-03 22:05+0200\n"
+"POT-Creation-Date: 2021-02-07 15:22+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
@@ -45,7 +45,7 @@ msgid "Connection timed out"
 msgstr "Verbinding verlopen"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
-#: qml/MenuPage.qml:87 qml/Navigator.qml:183 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:186 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:155 qml/NearbyPage.qml:170 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:46 qml/RoutePage.qml:441
 #: qml/RoutePage.qml:446 qml/RoutePage.qml:673 qml/RoutePage.qml:716
@@ -137,45 +137,45 @@ msgstr "HERE-appcode"
 msgid "Exit: "
 msgstr "Afslag:"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1017
-#: src/navigator.cpp:1029
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1001
+#: src/navigator.cpp:1013
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1017
-#: src/navigator.cpp:1029
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1001
+#: src/navigator.cpp:1013
 msgid "miles"
 msgstr "mijl"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:1020
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:1004
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231 src/navigator.cpp:1020
+#: poor/util.py:231 src/navigator.cpp:1004
 msgid "feet"
 msgstr "voet"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:1032
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:1016
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242 src/navigator.cpp:1032
+#: poor/util.py:242 src/navigator.cpp:1016
 msgid "yards"
 msgstr "yard"
 
-#: poor/util.py:249 src/navigator.cpp:1041
+#: poor/util.py:249 src/navigator.cpp:1025
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249 src/navigator.cpp:1041
+#: poor/util.py:249 src/navigator.cpp:1025
 msgid "kilometers"
 msgstr "kilometer"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:1044
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:1028
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253 src/navigator.cpp:1044
+#: poor/util.py:253 src/navigator.cpp:1028
 msgid "meters"
 msgstr "meter"
 
@@ -484,8 +484,8 @@ msgstr "Resultaten (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Nuttige plaatsen (%1)"
 
-#: qml/GeocodeItem.qml:467 qml/Navigator.qml:284 qml/Navigator.qml:286
-#: qml/PoiBlock.qml:248 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/GeocodeItem.qml:467 qml/Navigator.qml:290 qml/Navigator.qml:292
+#: qml/PoiBlock.qml:401 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:575 qml/RoutePage.qml:577 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Punt zonder naam"
@@ -600,11 +600,12 @@ msgstr "Gemengd"
 msgid "Stop navigation to select POI"
 msgstr "Navigatie stoppen om nuttige plaats te selecteren"
 
-#: qml/Map.qml:636 qml/NavigationPage.qml:196 qml/RoutePage.qml:154
+#: qml/Map.qml:636 qml/NavigationPage.qml:196 qml/PoiBlock.qml:249
+#: qml/RoutePage.qml:154
 msgid "Origin"
 msgstr "Vertrekpunt"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:199
+#: qml/Map.qml:638 qml/NavigationPage.qml:199 qml/PoiBlock.qml:269
 msgid "Final destination"
 msgstr "Eindbestemming"
 
@@ -703,7 +704,7 @@ msgstr "Status"
 msgid "Estimated time of arrival"
 msgstr "Geschatte aankomsttijd"
 
-#: qml/NavigationPage.qml:160 qml/Navigator.qml:78
+#: qml/NavigationPage.qml:160 qml/Navigator.qml:80
 msgid "Destination reached"
 msgstr "Bestemming bereikt"
 
@@ -735,19 +736,19 @@ msgstr "Manoeuvres"
 msgid "EXIT"
 msgstr "AFRIT"
 
-#: qml/Navigator.qml:70
+#: qml/Navigator.qml:72
 msgid "Destination %1 reached"
 msgstr "De bestemming, %1, is bereikt"
 
-#: qml/Navigator.qml:71
+#: qml/Navigator.qml:73
 msgid "Waypoint %1 reached"
 msgstr "Het routepunt, %1, is bereikt"
 
-#: qml/Navigator.qml:121
+#: qml/Navigator.qml:123
 msgid "Voice navigation on"
 msgstr "Stemnavigatie aan"
 
-#: qml/Navigator.qml:126
+#: qml/Navigator.qml:128
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -755,31 +756,35 @@ msgstr ""
 "Stemnavigatie niet beschikbaar: spraakaandrijving (TTS) van geselecteerde "
 "taal is niet geïnstalleerd"
 
-#: qml/Navigator.qml:173
-msgid "Routing"
-msgstr "Bezig met berekenen"
+#: qml/Navigator.qml:179
+msgid "Routing failed: current position not known"
+msgstr ""
 
-#: qml/Navigator.qml:182
+#: qml/Navigator.qml:185
 msgid "Rerouting position"
 msgstr "Bezig met herberekenen"
 
-#: qml/Navigator.qml:194
+#: qml/Navigator.qml:189
+msgid "Routing"
+msgstr "Bezig met berekenen"
+
+#: qml/Navigator.qml:200
 msgid "Routing failed: %1"
 msgstr "Berekening mislukt: %1"
 
-#: qml/Navigator.qml:199 src/navigator.cpp:1110
+#: qml/Navigator.qml:205 src/navigator.cpp:1094
 msgid "New route found"
 msgstr "Nieuwe route gevonden"
 
-#: qml/Navigator.qml:200
+#: qml/Navigator.qml:206
 msgid "Route found"
 msgstr "Route gevonden"
 
-#: qml/Navigator.qml:210 src/navigator.cpp:1112
+#: qml/Navigator.qml:216 src/navigator.cpp:1096
 msgid "Routing failed"
 msgstr "Berekening mislukt"
 
-#: qml/Navigator.qml:242 src/navigator.cpp:1111
+#: qml/Navigator.qml:248 src/navigator.cpp:1095
 msgid "Rerouting"
 msgstr "Bezig met herberekenen"
 
@@ -853,37 +858,69 @@ msgstr "Soort ontmoetingsplaats"
 msgid "You can search for venues by type."
 msgstr "Je kunt zoeken naar ontmoetingsplaatsen op soort."
 
-#: qml/PoiBlock.qml:81
+#: qml/PoiBlock.qml:94
 msgid "%1; %2"
 msgstr "%1; %2"
 
-#: qml/PoiBlock.qml:99
+#: qml/PoiBlock.qml:110
 msgid "Latitude: %1; Longitude: %2"
 msgstr "Breedtegraad: %1 - Lengtegraad: %2"
 
-#: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:81
+#: qml/PoiBlock.qml:133 qml/PoiEditPage.qml:81
 msgid "Postal code"
 msgstr "Postcode"
 
-#: qml/PoiBlock.qml:127
+#: qml/PoiBlock.qml:134
 msgid "Web"
 msgstr "Website"
 
-#: qml/PoiBlock.qml:128
+#: qml/PoiBlock.qml:135
 msgid "Phone"
 msgstr "Telefoonnummer"
 
-#: qml/PoiBlock.qml:129
+#: qml/PoiBlock.qml:136
 msgid "Shortlisted"
 msgstr "Op onthoudlijst gezet"
 
-#: qml/PoiBlock.qml:130
+#: qml/PoiBlock.qml:137
 msgid "Text"
 msgstr "Tekst"
 
-#: qml/PoiBlock.qml:132
+#: qml/PoiBlock.qml:139
 msgid "More info: %1"
 msgstr "Meer informatie: %1"
+
+#: qml/PoiBlock.qml:228
+msgid "Set as or Replace"
+msgstr ""
+
+#: qml/PoiBlock.qml:228
+msgid "Set as"
+msgstr ""
+
+#: qml/PoiBlock.qml:288
+msgid "Insert as"
+msgstr ""
+
+#: qml/PoiBlock.qml:293
+msgid "New origin"
+msgstr ""
+
+#: qml/PoiBlock.qml:306
+msgid "New final destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:318
+msgid "First intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:331
+msgid "Last intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:332
+msgid "Intermediate destination"
+msgstr ""
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -2107,45 +2144,45 @@ msgstr ""
 "Toont de locatie op basis van een geo:breedtegraad,lengtegraad-uri of voert "
 "een zoekopdracht uit."
 
-#: src/navigator.cpp:261
+#: src/navigator.cpp:235
 msgid "Position unknown"
 msgstr "Onbekende positie"
 
-#: src/navigator.cpp:267
+#: src/navigator.cpp:241
 msgid "Position imprecise: accuracy %1"
 msgstr "Onnauwkeurige positie: nauwkeurigheid %1"
 
-#: src/navigator.cpp:286 src/navigator.cpp:566
+#: src/navigator.cpp:260 src/navigator.cpp:540
 msgid "Preparing to start navigation"
 msgstr "Bezig met voorbereiden van navigatie"
 
-#: src/navigator.cpp:608
+#: src/navigator.cpp:582
 msgid "Moving in a wrong direction"
 msgstr "Je rijdt de verkeerde kant op"
 
-#: src/navigator.cpp:618
+#: src/navigator.cpp:592
 msgid "Away from route"
 msgstr "Je bent afgeweken van de route"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:792 src/navigator.cpp:803
+#: src/navigator.cpp:767 src/navigator.cpp:778
 msgid "In %2, %1"
 msgstr "Sla over %2 %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:1062
+#: src/navigator.cpp:1046
 msgid "%1 h %2 min"
 msgstr "%1 uur en %2 min."
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:1064
+#: src/navigator.cpp:1048
 msgid "%1 min"
 msgstr "%1 min."
 
-#: src/navigator.cpp:1109
+#: src/navigator.cpp:1093
 msgid "Starting navigation"
 msgstr "Bezig met starten van navigatie"
 

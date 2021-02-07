@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# rui kon <facebookmail@qq.com>, 2020
+# rui kon <facebookmail@qq.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-02 22:21+0200\n"
+"POT-Creation-Date: 2021-02-07 15:22+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: rui kon <facebookmail@qq.com>, 2020\n"
+"Last-Translator: rui kon <facebookmail@qq.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +43,7 @@ msgid "Connection timed out"
 msgstr "连接超时"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
-#: qml/MenuPage.qml:87 qml/Navigator.qml:183 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:186 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:155 qml/NearbyPage.qml:170 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:46 qml/RoutePage.qml:441
 #: qml/RoutePage.qml:446 qml/RoutePage.qml:673 qml/RoutePage.qml:716
@@ -463,8 +463,8 @@ msgstr "结果 (%1)"
 msgid "Points of Interest (%1)"
 msgstr "兴趣地点 (%1)"
 
-#: qml/GeocodeItem.qml:467 qml/Navigator.qml:284 qml/Navigator.qml:286
-#: qml/PoiBlock.qml:248 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/GeocodeItem.qml:467 qml/Navigator.qml:290 qml/Navigator.qml:292
+#: qml/PoiBlock.qml:401 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:575 qml/RoutePage.qml:577 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "无名地点"
@@ -574,17 +574,18 @@ msgstr "混合"
 msgid "Stop navigation to select POI"
 msgstr "停止导航以选择 POI"
 
-#: qml/Map.qml:636 qml/NavigationPage.qml:196 qml/RoutePage.qml:154
+#: qml/Map.qml:636 qml/NavigationPage.qml:196 qml/PoiBlock.qml:249
+#: qml/RoutePage.qml:154
 msgid "Origin"
 msgstr "起点"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:199
+#: qml/Map.qml:638 qml/NavigationPage.qml:199 qml/PoiBlock.qml:269
 msgid "Final destination"
-msgstr ""
+msgstr "最终目的地"
 
 #: qml/Map.qml:640
 msgid "#%1"
-msgstr ""
+msgstr "#%1"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -677,7 +678,7 @@ msgstr "状态"
 msgid "Estimated time of arrival"
 msgstr "预计抵达时间"
 
-#: qml/NavigationPage.qml:160 qml/Navigator.qml:78
+#: qml/NavigationPage.qml:160 qml/Navigator.qml:80
 msgid "Destination reached"
 msgstr "已抵达目的地"
 
@@ -687,7 +688,7 @@ msgstr "目的地及路标"
 
 #: qml/NavigationPage.qml:196
 msgid "Origin: %1"
-msgstr ""
+msgstr "起点: %1"
 
 #: qml/NavigationPage.qml:198
 msgid "Final destination: %1"
@@ -709,49 +710,53 @@ msgstr "导航规划"
 msgid "EXIT"
 msgstr "退出"
 
-#: qml/Navigator.qml:70
+#: qml/Navigator.qml:72
 msgid "Destination %1 reached"
 msgstr "已抵达目的地 %1"
 
-#: qml/Navigator.qml:71
+#: qml/Navigator.qml:73
 msgid "Waypoint %1 reached"
 msgstr "已抵达路标 %1"
 
-#: qml/Navigator.qml:121
+#: qml/Navigator.qml:123
 msgid "Voice navigation on"
 msgstr "语音导航开启"
 
-#: qml/Navigator.qml:126
+#: qml/Navigator.qml:128
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr "语言导航引擎不可用：所选语言缺失文本转语音（TTS）引擎"
 
-#: qml/Navigator.qml:173
-msgid "Routing"
+#: qml/Navigator.qml:179
+msgid "Routing failed: current position not known"
 msgstr ""
 
-#: qml/Navigator.qml:182
+#: qml/Navigator.qml:185
 msgid "Rerouting position"
-msgstr ""
+msgstr "重新规划位置"
 
-#: qml/Navigator.qml:194
+#: qml/Navigator.qml:189
+msgid "Routing"
+msgstr "路线规划"
+
+#: qml/Navigator.qml:200
 msgid "Routing failed: %1"
-msgstr ""
+msgstr "路线规划失败: %1"
 
-#: qml/Navigator.qml:199 src/navigator.cpp:1094
+#: qml/Navigator.qml:205 src/navigator.cpp:1094
 msgid "New route found"
 msgstr "发现新路线"
 
-#: qml/Navigator.qml:200
+#: qml/Navigator.qml:206
 msgid "Route found"
-msgstr ""
+msgstr "路线规划失败"
 
-#: qml/Navigator.qml:210 src/navigator.cpp:1096
+#: qml/Navigator.qml:216 src/navigator.cpp:1096
 msgid "Routing failed"
-msgstr ""
+msgstr "重新规划路线失败"
 
-#: qml/Navigator.qml:242 src/navigator.cpp:1095
+#: qml/Navigator.qml:248 src/navigator.cpp:1095
 msgid "Rerouting"
 msgstr "重新规划"
 
@@ -786,7 +791,7 @@ msgstr "搜索中"
 
 #: qml/NearbyResultsPage.qml:131
 msgid "Nearby venues: %1 %2"
-msgstr ""
+msgstr "附近场所: %1 %2"
 
 #: qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
@@ -810,7 +815,7 @@ msgstr "场所名称"
 
 #: qml/PlaceNamePage.qml:69
 msgid "Name or keyword"
-msgstr ""
+msgstr "名称或关键词"
 
 #: qml/PlaceNamePage.qml:82
 msgid "You can search for venues by name."
@@ -822,39 +827,71 @@ msgstr "场所类型"
 
 #: qml/PlaceTypePage.qml:99
 msgid "You can search for venues by type."
-msgstr ""
+msgstr "你可以通过类型搜索地点。"
 
-#: qml/PoiBlock.qml:81
+#: qml/PoiBlock.qml:94
 msgid "%1; %2"
 msgstr "%1; %2"
 
-#: qml/PoiBlock.qml:99
+#: qml/PoiBlock.qml:110
 msgid "Latitude: %1; Longitude: %2"
 msgstr "纬度: %1 ; 经度: %2"
 
-#: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:81
+#: qml/PoiBlock.qml:133 qml/PoiEditPage.qml:81
 msgid "Postal code"
 msgstr "邮政编码"
 
-#: qml/PoiBlock.qml:127
+#: qml/PoiBlock.qml:134
 msgid "Web"
 msgstr "网站"
 
-#: qml/PoiBlock.qml:128
+#: qml/PoiBlock.qml:135
 msgid "Phone"
 msgstr "电话"
 
-#: qml/PoiBlock.qml:129
+#: qml/PoiBlock.qml:136
 msgid "Shortlisted"
 msgstr "候选名单"
 
-#: qml/PoiBlock.qml:130
+#: qml/PoiBlock.qml:137
 msgid "Text"
 msgstr "文本"
 
-#: qml/PoiBlock.qml:132
+#: qml/PoiBlock.qml:139
 msgid "More info: %1"
 msgstr "更多信息: %1"
+
+#: qml/PoiBlock.qml:228
+msgid "Set as or Replace"
+msgstr ""
+
+#: qml/PoiBlock.qml:228
+msgid "Set as"
+msgstr ""
+
+#: qml/PoiBlock.qml:288
+msgid "Insert as"
+msgstr ""
+
+#: qml/PoiBlock.qml:293
+msgid "New origin"
+msgstr ""
+
+#: qml/PoiBlock.qml:306
+msgid "New final destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:318
+msgid "First intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:331
+msgid "Last intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:332
+msgid "Intermediate destination"
+msgstr ""
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -1616,7 +1653,7 @@ msgstr "跟随我"
 
 #: qml/RoutePage.qml:81
 msgid "Reverse route"
-msgstr ""
+msgstr "倒转导航"
 
 #: qml/RoutePage.qml:153
 msgid "From"
@@ -1646,7 +1683,7 @@ msgstr ""
 
 #: qml/RoutePage.qml:198
 msgid "Optimize order"
-msgstr ""
+msgstr "优化顺序"
 
 #: qml/RoutePage.qml:221
 msgid "Up"
@@ -1686,7 +1723,7 @@ msgstr "%1 ‒ %2 (%3 目的地及路标)"
 
 #: qml/RoutePage.qml:480
 msgid "Show more..."
-msgstr ""
+msgstr "显示更多..."
 
 #: qml/RoutePage.qml:520
 msgid "Destinations"
@@ -2021,29 +2058,29 @@ msgstr "显示版本信息。"
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr "显示地理坐标位置:经纬度 URI 或执行搜索。"
 
-#: src/navigator.cpp:261
+#: src/navigator.cpp:235
 msgid "Position unknown"
 msgstr "未知位置"
 
-#: src/navigator.cpp:267
+#: src/navigator.cpp:241
 msgid "Position imprecise: accuracy %1"
 msgstr "位置不精确: 精度 %1"
 
-#: src/navigator.cpp:286 src/navigator.cpp:550
+#: src/navigator.cpp:260 src/navigator.cpp:540
 msgid "Preparing to start navigation"
 msgstr "准备开始导航"
 
-#: src/navigator.cpp:592
+#: src/navigator.cpp:582
 msgid "Moving in a wrong direction"
 msgstr "向错误方向移动"
 
-#: src/navigator.cpp:602
+#: src/navigator.cpp:592
 msgid "Away from route"
 msgstr "偏离路线"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:776 src/navigator.cpp:787
+#: src/navigator.cpp:767 src/navigator.cpp:778
 msgid "In %2, %1"
 msgstr " %2 后, %1"
 
