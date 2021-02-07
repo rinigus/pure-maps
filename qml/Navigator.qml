@@ -172,12 +172,13 @@ Item {
         if (!options) options = {};
         options.optimized = navigatorBase.optimized;
         var notifyId = "route";
-        var notification  = options.notification || app.tr("Routing")
-        app.notification.hold(notification, notifyId);
-        routing = true;
         var loc = locations || navigatorBase.locations;
         // note that GPX trace does not use locations
         if (loc.length >= 1 && !loc[0].origin) {
+            if (!gps.ready) {
+                app.notification.flash(app.tr("Routing failed: current position not known"), notifyId);
+                return;
+            }
             var p = app.getPosition();
             loc.splice(0, 0,
                        {"text": navigatorBase.running ?
@@ -185,6 +186,9 @@ Item {
                                     app.tr("Current position"),
                                     "x": p[0], "y": p[1]});
         }
+        var notification  = options.notification || app.tr("Routing")
+        app.notification.hold(notification, notifyId);
+        routing = true;
         var args = [loc,
                     options];
         py.call("poor.app.router.route", args, function(route) {
