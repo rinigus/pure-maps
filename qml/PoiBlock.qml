@@ -293,8 +293,6 @@ Column {
         label: app.tr("New origin")
         labelX: styler.themeHorizontalPageMargin
         visible: navigationControls && navigator.hasOrigin
-        width: Math.max(labelImplicitWidth + styler.themeHorizontalPageMargin +
-                        styler.themePaddingLarge, parent.width/2)
         onClicked: {
             var loc = navigator.locations;
             loc[0].destination = true;
@@ -308,8 +306,6 @@ Column {
         label: app.tr("New final destination")
         labelX: styler.themeHorizontalPageMargin
         visible: navigationControls && navigator.hasDestination
-        width: Math.max(labelImplicitWidth + styler.themeHorizontalPageMargin +
-                        styler.themePaddingLarge, parent.width/2)
         onClicked: {
             var loc = navigator.locations;
             loc.push(poiAsRoutingDestination);
@@ -322,8 +318,6 @@ Column {
         label: app.tr("First intermediate destination")
         labelX: styler.themeHorizontalPageMargin
         visible: navigationControls && _multipleIntermediatePossible
-        width: Math.max(labelImplicitWidth + styler.themeHorizontalPageMargin +
-                        styler.themePaddingLarge, parent.width/2)
         onClicked: {
             var loc = navigator.locations;
             var i = navigator.hasOrigin ? 1 : 0;
@@ -338,8 +332,6 @@ Column {
                                                app.tr("Intermediate destination")
         labelX: styler.themeHorizontalPageMargin
         visible: navigationControls && navigator.hasDestination
-        width: Math.max(labelImplicitWidth + styler.themeHorizontalPageMargin +
-                        styler.themePaddingLarge, parent.width/2)
         onClicked: {
             var loc = navigator.locations;
             loc.splice(loc.length-1, 0, poiAsRoutingDestination);
