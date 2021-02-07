@@ -74,7 +74,6 @@ void Navigator::clearRoute(bool keepLocations)
   SET(manTime, QLatin1String("-"));
   SET(nextIcon, QLatin1String());
   SET(nextManDist, QLatin1String());
-  SET(optimized, false);
   SET(roundaboutExit, 0);
   SET(street, "");
 
@@ -146,55 +145,6 @@ static void _varFiller(T &var, QVariantMap &l, QString key)
 {
   if (l.contains(key) && l[key].canConvert<T>())
     var=l[key].value<T>();
-}
-
-bool Navigator::locationInsert(int index, QVariantMap location)
-{
-  LocationInfo loc;
-  bool origin = false;
-  // setting minimal location info
-  _varFiller(loc.name, location, QStringLiteral("text"));
-  _varFiller(loc.longitude, location, QStringLiteral("x"));
-  _varFiller(loc.latitude, location, QStringLiteral("y"));
-  _varFiller(loc.destination, location, QStringLiteral("destination"));
-  _varFiller(origin, location, QStringLiteral("origin"));
-
-  if (index == -1 || index==m_locations.length())
-    {
-      m_locations.append(loc);
-      if (loc.destination)
-        SET(hasDestination, true);
-    }
-  else if (index >=0 && index < m_locations.length())
-    m_locations.insert(index, loc);
-  else
-    return false;
-
-  if (index == 0 && origin)
-    SET(hasOrigin, true);
-
-  clearRoute(true);
-  emit locationsChanged();
-  return true;
-}
-
-bool Navigator::locationMove(int from, int to)
-{
-  if (from < 0 || from >= m_locations.length() ||
-      to < 0 || to >= m_locations.length())
-    return false;
-
-  m_locations.move(from, to);
-  clearRoute(true);
-  emit locationsChanged();
-
-  if (to == m_locations.length()-1)
-    SET(hasDestination,
-        m_locations.length() > 1 ||
-        (!m_hasOrigin && m_locations.length() > 0) ?
-          m_locations.back().destination : false);
-
-  return true;
 }
 
 bool Navigator::locationRemove(int index)

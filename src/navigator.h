@@ -84,8 +84,6 @@ public:
   QString totalTime() const { return m_totalTime; }
 
   // locations
-  Q_INVOKABLE bool locationInsert(int index, QVariantMap location);
-  Q_INVOKABLE bool locationMove(int from, int to);
   Q_INVOKABLE bool locationRemove(int index);
   void setLocations(const QVariantList &locations);
 
