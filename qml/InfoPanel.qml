@@ -25,7 +25,7 @@ Panel {
 
     contentHeight: {
         var h = 0;
-        if (poiBlock.height > 0) h += poiBlock.height + styler.themePaddingLarge;
+        if (poiBlock.height > 0) h += poiFlickable.height + poiFlickable.anchors.topMargin;
         if (infoText) h += infoBg.height;
         else if (h > 0) h += styler.themePaddingLarge;
         return h;
@@ -38,10 +38,22 @@ Panel {
 
     signal poiHidden(string poiId);
 
-    PoiBlock {
-        id: poiBlock
+    Flickable {
+        id: poiFlickable
         anchors.top: parent.top
         anchors.topMargin: styler.themePaddingLarge
+        boundsBehavior: Flickable.StopAtBounds
+        clip: true
+        contentHeight: poiBlock.height
+        contentWidth: width
+        height: Math.min(contentHeight,
+                         map.height - anchors.topMargin -
+                         (infoText ? infoBg.height : styler.themePaddingLarge))
+        width: panel.width
+        PoiBlock {
+            id: poiBlock
+            anchors.top: parent.top
+        }
     }
 
     Rectangle {
