@@ -35,7 +35,6 @@ Navigator::Navigator(QObject *parent) : QObject(parent)
 
   connect(&m_timer, &QTimer::timeout, this, &Navigator::updateEta);
   connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator);
-  connect(this, &Navigator::locationsChanged, this, &Navigator::nextLocationChanged);
 
   // setup DBus service
   new NavigatorDBusAdapter(this);
@@ -71,9 +70,14 @@ void Navigator::clearRoute(bool keepLocations)
   SET(destEta, QLatin1String("-"));
   SET(destTime, QLatin1String("-"));
   SET(directionValid, false);
+  SET(hasNextLocation, false);
   SET(manDist, QLatin1String("-"));
   SET(manTime, QLatin1String("-"));
   SET(nextIcon, QLatin1String());
+  SET(nextLocationDestination, false);
+  SET(nextLocationDist, QLatin1String());
+  SET(nextLocationEta, QLatin1String());
+  SET(nextLocationTime, QLatin1String());
   SET(nextManDist, QLatin1String());
   SET(roundaboutExit, 0);
   SET(street, "");
@@ -193,21 +197,6 @@ void Navigator::setLocations(const QVariantList &locations)
     SET(hasDestination, m_locations.back().destination);
 
   emit locationsChanged();
-}
-
-QVariantMap Navigator::nextLocation() const
-{
-  QVariantMap r;
-  if (m_locations.length() <= 2 | m_route.length() < 2)
-    return r;
-
-  const LocationInfo &loc = m_locations[1];
-  r["destination"] = loc.destination;
-  r["distance"] = distanceToStr(loc.length_on_route_m - m_last_distance_along_route_m);
-  r["time"] = timeToStr(loc.duration_on_route - m_last_duration_along_route);
-  QTime time = QTime::currentTime().addSecs(loc.duration_on_route - m_last_duration_along_route);
-  r["eta"] = QLocale::system().toString(time, QLocale::NarrowFormat);
-  return r;
 }
 
 void Navigator::resetPrompts()
@@ -414,11 +403,6 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
       QTime time = QTime::currentTime().addSecs(m_route_duration - m_last_duration_along_route);
       SET(destEta, QLocale::system().toString(time, QLocale::NarrowFormat));
 
-      // check if there is at least one intermediate location
-      // between origin and the final destination
-      if (m_locations.length() > 2)
-        emit nextLocationChanged();
-
       // handle reference points
       if (!ref || // add the first reference point
           (best.length_on_route - m_points.back().length_on_route) / best.accuracy > REF_POINT_ADD_MARGIN)
@@ -469,6 +453,31 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
       else
         {
           SET(directionValid, false);
+        }
+
+      // handle stats of intermediate locations
+      if (m_locations.length() > 2)
+        {
+          const LocationInfo &loc = m_locations[1];
+          SET(hasNextLocation, true);
+          SET(nextLocationDestination, loc.destination);
+          SET(nextLocationDist,
+              distanceToStr(loc.length_on_route_m - m_last_distance_along_route_m));
+          SET(nextLocationTime,
+              timeToStr(loc.duration_on_route - m_last_duration_along_route));
+
+          QTime time = QTime::currentTime().addSecs(loc.duration_on_route -
+                                                    m_last_duration_along_route);
+          SET(nextLocationEta,
+              QLocale::system().toString(time, QLocale::NarrowFormat));
+        }
+      else
+        {
+          SET(hasNextLocation, false);
+          SET(nextLocationDestination, false);
+          SET(nextLocationDist, QLatin1String());
+          SET(nextLocationEta, QLatin1String());
+          SET(nextLocationTime, QLatin1String());
         }
 
       // reset prompts when just entering the route

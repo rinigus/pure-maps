@@ -32,6 +32,7 @@ class Navigator : public QObject
   Q_PROPERTY(double  direction READ direction NOTIFY directionChanged)
   Q_PROPERTY(bool    directionValid READ directionValid NOTIFY directionValidChanged)
   Q_PROPERTY(bool    hasDestination READ hasDestination NOTIFY hasDestinationChanged)
+  Q_PROPERTY(bool    hasNextLocation READ hasNextLocation NOTIFY hasNextLocationChanged)
   Q_PROPERTY(bool    hasOrigin READ hasOrigin NOTIFY hasOriginChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
@@ -41,7 +42,10 @@ class Navigator : public QObject
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
   Q_PROPERTY(QString nextIcon READ nextIcon NOTIFY nextIconChanged)
-  Q_PROPERTY(QVariantMap nextLocation READ nextLocation NOTIFY nextLocationChanged)
+  Q_PROPERTY(bool    nextLocationDestination READ nextLocationDestination NOTIFY nextLocationDestinationChanged)
+  Q_PROPERTY(QString nextLocationDist READ nextLocationDist NOTIFY nextLocationDistChanged)
+  Q_PROPERTY(QString nextLocationEta READ nextLocationEta NOTIFY nextLocationEtaChanged)
+  Q_PROPERTY(QString nextLocationTime READ nextLocationTime NOTIFY nextLocationTimeChanged)
   Q_PROPERTY(QString nextManDist READ nextManDist NOTIFY nextManDistChanged)
   Q_PROPERTY(bool    optimized READ optimized WRITE setOptimized NOTIFY optimizedChanged)
   Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
@@ -67,6 +71,7 @@ public:
   double  direction() const { return m_direction; }
   bool    directionValid() const { return m_directionValid; }
   bool    hasDestination() const { return m_hasDestination; }
+  bool    hasNextLocation() const { return m_hasNextLocation; }
   bool    hasOrigin() const { return m_hasOrigin; }
   QString icon() const { return m_icon; }
   QString language() const { return m_language; }
@@ -76,7 +81,10 @@ public:
   QString mode() const { return m_mode; }
   QString narrative() const { return m_narrative; }
   QString nextIcon() const { return m_nextIcon; }
-  QVariantMap nextLocation() const;
+  bool    nextLocationDestination() const { return m_nextLocationDestination; }
+  QString nextLocationDist() const { return m_nextLocationDist; }
+  QString nextLocationEta() const { return m_nextLocationEta; }
+  QString nextLocationTime() const { return m_nextLocationTime; }
   QString nextManDist() const { return m_nextManDist; }
   double  progress() const { return m_progress; }
   int     roundaboutExit() const { return m_roundaboutExit; }
@@ -120,6 +128,7 @@ signals:
   void directionChanged();
   void directionValidChanged();
   void hasDestinationChanged();
+  void hasNextLocationChanged();
   void hasOriginChanged();
   void iconChanged();
   void languageChanged();
@@ -129,7 +138,10 @@ signals:
   void modeChanged();
   void narrativeChanged();
   void nextIconChanged();
-  void nextLocationChanged();
+  void nextLocationDestinationChanged();
+  void nextLocationDistChanged();
+  void nextLocationEtaChanged();
+  void nextLocationTimeChanged();
   void nextManDistChanged();
   void optimizedChanged();
   void progressChanged();
@@ -240,12 +252,17 @@ private:
   double  m_direction{0};
   bool    m_directionValid{false};
   bool    m_hasDestination{false};
+  bool    m_hasNextLocation{false};
   bool    m_hasOrigin{false};
   QString m_icon;
   QString m_manDist;
   QString m_manTime;
   QString m_narrative;
   QString m_nextIcon;
+  bool    m_nextLocationDestination{false};
+  QString m_nextLocationDist;
+  QString m_nextLocationEta;
+  QString m_nextLocationTime;
   QString m_nextManDist;
   bool    m_optimized{false};
   bool    m_precision_insufficient{false};

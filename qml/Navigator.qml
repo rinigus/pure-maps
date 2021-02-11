@@ -33,6 +33,7 @@ Item {
     property bool   followMe:  false
     property bool   hasBeenAlongRoute: false
     property alias  hasDestination: navigatorBase.hasDestination
+    property alias  hasNextLocation: navigatorBase.hasNextLocation
     property alias  hasOrigin: navigatorBase.hasOrigin
     property bool   hasRoute:  navigatorBase.route.length > 0
     property alias  icon:      navigatorBase.icon
@@ -42,7 +43,10 @@ Item {
     property alias  manTime:   navigatorBase.manTime
     property alias  narrative: navigatorBase.narrative
     property alias  nextIcon:  navigatorBase.nextIcon
-    property alias  nextLocation: navigatorBase.nextLocation
+    property alias  nextLocationDestination: navigatorBase.nextLocationDestination
+    property alias  nextLocationDist: navigatorBase.nextLocationDist
+    property alias  nextLocationEta: navigatorBase.nextLocationEta
+    property alias  nextLocationTime: navigatorBase.nextLocationTime
     property alias  nextManDist: navigatorBase.nextManDist
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
     property alias  optimized: navigatorBase.optimized

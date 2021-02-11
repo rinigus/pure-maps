@@ -41,9 +41,9 @@ Item {
     z: 400
 
     property int    compactTotalWidth: compactLeft.width + compactLeft.anchors.rightMargin + compactRight.width
-    property string destDist:  app.navigator.destDist
-    property string destEta:   app.navigator.destEta
-    property string destTime:  app.navigator.destTime
+    property string destDist:  showNextLocation ? navigator.nextLocationDist : app.navigator.destDist
+    property string destEta:   showNextLocation ? navigator.nextLocationEta : app.navigator.destEta
+    property string destTime:  showNextLocation ? navigator.nextLocationTime : app.navigator.destTime
     // difference in height between main and button rectangles if the button
     // rectangle sticks out. zero otherwise. margins defined as in NavigationCurrentBlock
     property int    extrasAndCompactHeight: Math.max(destLabel.height, destEta.height, distLabel.height)
@@ -66,6 +66,8 @@ Item {
         return blockModes.full;
     }
     property bool   showAtBottom: app.mode === modes.navigate
+    property bool   showNextLocation: app.mode === modes.navigate &&
+                                      navigator.hasNextLocation
     property string streetName: (gps.streetName !== undefined && gps.streetName !== null &&
                                  gps.streetName.length>0) ? gps.streetName : ""
     property bool   streetNameInOverview: app.mode === modes.navigate && !app.portrait && _splitPossible
@@ -205,6 +207,22 @@ Item {
         ]
         visible: mode !== blockModes.full
         width: visible ? implicitWidth : 0
+
+        LabelPL {
+            anchors.baseline: distLabel.baseline
+            color: _pressed ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
+            font.pixelSize: styler.themeFontSizeMedium
+            text: navigator.nextLocationDestination ?
+                      // TRANSLATORS: "(D)" corresponds to the abbreviated destination
+                      app.tr("(D)") :
+                      // TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
+                      app.tr("(W)")
+            visible: showNextLocation
+        }
+
+        Spacer {
+            width: styler.themePaddingLarge
+        }
 
         LabelPL {
             id: distLabel

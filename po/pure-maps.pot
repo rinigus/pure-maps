@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-07 15:22+0200\n"
+"POT-Creation-Date: 2021-02-11 22:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgid "Connection timed out"
 msgstr ""
 
 #: poor/history.py:33 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
-#: qml/MenuPage.qml:87 qml/Navigator.qml:186 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:191 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:155 qml/NearbyPage.qml:170 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:46 qml/RoutePage.qml:441
 #: qml/RoutePage.qml:446 qml/RoutePage.qml:673 qml/RoutePage.qml:716
@@ -119,45 +119,45 @@ msgstr ""
 msgid "Exit: "
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1001
-#: src/navigator.cpp:1013
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1041
+#: src/navigator.cpp:1053
 msgid "mi"
 msgstr ""
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1001
-#: src/navigator.cpp:1013
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1041
+#: src/navigator.cpp:1053
 msgid "miles"
 msgstr ""
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:1004
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:1044
 msgid "ft"
 msgstr ""
 
-#: poor/util.py:231 src/navigator.cpp:1004
+#: poor/util.py:231 src/navigator.cpp:1044
 msgid "feet"
 msgstr ""
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:1016
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:1056
 msgid "yd"
 msgstr ""
 
-#: poor/util.py:242 src/navigator.cpp:1016
+#: poor/util.py:242 src/navigator.cpp:1056
 msgid "yards"
 msgstr ""
 
-#: poor/util.py:249 src/navigator.cpp:1025
+#: poor/util.py:249 src/navigator.cpp:1065
 msgid "km"
 msgstr ""
 
-#: poor/util.py:249 src/navigator.cpp:1025
+#: poor/util.py:249 src/navigator.cpp:1065
 msgid "kilometers"
 msgstr ""
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:1028
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:1068
 msgid "m"
 msgstr ""
 
-#: poor/util.py:253 src/navigator.cpp:1028
+#: poor/util.py:253 src/navigator.cpp:1068
 msgid "meters"
 msgstr ""
 
@@ -452,7 +452,7 @@ msgstr ""
 msgid "Points of Interest (%1)"
 msgstr ""
 
-#: qml/GeocodeItem.qml:467 qml/Navigator.qml:290 qml/Navigator.qml:292
+#: qml/GeocodeItem.qml:467 qml/Navigator.qml:295 qml/Navigator.qml:297
 #: qml/PoiBlock.qml:401 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:575 qml/RoutePage.qml:577 qml/RoutePoint.qml:66
 msgid "Unnamed point"
@@ -632,7 +632,17 @@ msgstr ""
 msgid "To route"
 msgstr ""
 
-#: qml/NavigationOverviewBlock.qml:288
+#. TRANSLATORS: "(D)" corresponds to the abbreviated destination
+#: qml/NavigationOverviewBlock.qml:217
+msgid "(D)"
+msgstr ""
+
+#. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
+#: qml/NavigationOverviewBlock.qml:219
+msgid "(W)"
+msgstr ""
+
+#: qml/NavigationOverviewBlock.qml:306
 msgid "ETA"
 msgstr ""
 
@@ -660,7 +670,7 @@ msgstr ""
 msgid "Estimated time of arrival"
 msgstr ""
 
-#: qml/NavigationPage.qml:160 qml/Navigator.qml:80
+#: qml/NavigationPage.qml:160 qml/Navigator.qml:85
 msgid "Destination reached"
 msgstr ""
 
@@ -692,53 +702,53 @@ msgstr ""
 msgid "EXIT"
 msgstr ""
 
-#: qml/Navigator.qml:72
+#: qml/Navigator.qml:77
 msgid "Destination %1 reached"
 msgstr ""
 
-#: qml/Navigator.qml:73
+#: qml/Navigator.qml:78
 msgid "Waypoint %1 reached"
 msgstr ""
 
-#: qml/Navigator.qml:123
+#: qml/Navigator.qml:128
 msgid "Voice navigation on"
 msgstr ""
 
-#: qml/Navigator.qml:128
+#: qml/Navigator.qml:133
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
 
-#: qml/Navigator.qml:179
+#: qml/Navigator.qml:184
 msgid "Routing failed: current position not known"
 msgstr ""
 
-#: qml/Navigator.qml:185
+#: qml/Navigator.qml:190
 msgid "Rerouting position"
 msgstr ""
 
-#: qml/Navigator.qml:189
+#: qml/Navigator.qml:194
 msgid "Routing"
 msgstr ""
 
-#: qml/Navigator.qml:200
+#: qml/Navigator.qml:205
 msgid "Routing failed: %1"
 msgstr ""
 
-#: qml/Navigator.qml:205 src/navigator.cpp:1094
+#: qml/Navigator.qml:210 src/navigator.cpp:1134
 msgid "New route found"
 msgstr ""
 
-#: qml/Navigator.qml:206
+#: qml/Navigator.qml:211
 msgid "Route found"
 msgstr ""
 
-#: qml/Navigator.qml:216 src/navigator.cpp:1096
+#: qml/Navigator.qml:221 src/navigator.cpp:1136
 msgid "Routing failed"
 msgstr ""
 
-#: qml/Navigator.qml:248 src/navigator.cpp:1095
+#: qml/Navigator.qml:253 src/navigator.cpp:1135
 msgid "Rerouting"
 msgstr ""
 
@@ -2037,42 +2047,42 @@ msgstr ""
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
 
-#: src/navigator.cpp:235
+#: src/navigator.cpp:240
 msgid "Position unknown"
 msgstr ""
 
-#: src/navigator.cpp:241
+#: src/navigator.cpp:246
 msgid "Position imprecise: accuracy %1"
 msgstr ""
 
-#: src/navigator.cpp:260 src/navigator.cpp:540
+#: src/navigator.cpp:265 src/navigator.cpp:570
 msgid "Preparing to start navigation"
 msgstr ""
 
-#: src/navigator.cpp:582
+#: src/navigator.cpp:612
 msgid "Moving in a wrong direction"
 msgstr ""
 
-#: src/navigator.cpp:592
+#: src/navigator.cpp:622
 msgid "Away from route"
 msgstr ""
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In" and adjust the order if needed
-#: src/navigator.cpp:767 src/navigator.cpp:778
+#: src/navigator.cpp:797 src/navigator.cpp:808
 msgid "In %2, %1"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical hours (%1) and minutes (%2)
-#: src/navigator.cpp:1046
+#: src/navigator.cpp:1086
 msgid "%1 h %2 min"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes (%1)
-#: src/navigator.cpp:1048
+#: src/navigator.cpp:1088
 msgid "%1 min"
 msgstr ""
 
-#: src/navigator.cpp:1093
+#: src/navigator.cpp:1133
 msgid "Starting navigation"
 msgstr ""
 
