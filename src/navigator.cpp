@@ -35,6 +35,7 @@ Navigator::Navigator(QObject *parent) : QObject(parent)
 
   connect(&m_timer, &QTimer::timeout, this, &Navigator::updateEta);
   connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator);
+  connect(this, &Navigator::locationsChanged, this, &Navigator::nextLocationChanged);
 
   // setup DBus service
   new NavigatorDBusAdapter(this);
@@ -192,6 +193,21 @@ void Navigator::setLocations(const QVariantList &locations)
     SET(hasDestination, m_locations.back().destination);
 
   emit locationsChanged();
+}
+
+QVariantMap Navigator::nextLocation() const
+{
+  QVariantMap r;
+  if (m_locations.length() <= 2 | m_route.length() < 2)
+    return r;
+
+  const LocationInfo &loc = m_locations[1];
+  r["destination"] = loc.destination;
+  r["distance"] = distanceToStr(loc.length_on_route_m - m_last_distance_along_route_m);
+  r["time"] = timeToStr(loc.duration_on_route - m_last_duration_along_route);
+  QTime time = QTime::currentTime().addSecs(loc.duration_on_route - m_last_duration_along_route);
+  r["eta"] = QLocale::system().toString(time, QLocale::NarrowFormat);
+  return r;
 }
 
 void Navigator::resetPrompts()
@@ -397,6 +413,11 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
 
       QTime time = QTime::currentTime().addSecs(m_route_duration - m_last_duration_along_route);
       SET(destEta, QLocale::system().toString(time, QLocale::NarrowFormat));
+
+      // check if there is at least one intermediate location
+      // between origin and the final destination
+      if (m_locations.length() > 2)
+        emit nextLocationChanged();
 
       // handle reference points
       if (!ref || // add the first reference point
@@ -888,7 +909,6 @@ void Navigator::setRoute(QVariantMap m)
           li.destination = (lm.value("destination").toInt() > 0);
           li.origin = (i == 0);
           li.final = (i == locations.length()-1);
-          double dist = 0.0;
           int ne = locindexes[i].toInt();
           if (ne >= orig2new_index.length())
             {
@@ -897,18 +917,29 @@ void Navigator::setRoute(QVariantMap m)
                          << "nodes. Interrupring import of locations";
               break;
             }
+
           ne = orig2new_index[ne];
           if (ne > 0)
-            dist = m_edges[ne-1].length + m_edges[ne-1].length_before;
-          li.length_on_route = dist;
+            {
+              li.length_on_route = m_edges[ne-1].length + m_edges[ne-1].length_before;
+              li.length_on_route_m = S2Earth::RadiansToMeters(li.length_on_route);
+              const Maneuver &man = m_maneuvers[m_edges[ne-1].maneuver];
+              li.duration_on_route = man.duration_on_route;
+              if (man.length > 0)
+                li.duration_on_route +=
+                    (li.length_on_route - man.length_on_route) / man.length * man.duration;
+            }
+
           li.point = S2LatLng::FromDegrees(li.latitude, li.longitude).ToPoint();
           li.distance_to_route = S1ChordAngle(li.point, coor[ne].ToPoint()).radians();
+
           m_locations.push_back(li);
 
 //          qDebug() << li.name << "node:" << ne
 //                   << " distance along route:" << S2Earth::RadiansToKm(li.length_on_route) << "km"
 //                   << " distance from route to location:"
-//                   << S2Earth::RadiansToMeters(li.distance_to_route) << "m";
+//                   << S2Earth::RadiansToMeters(li.distance_to_route) << "m"
+//                   << " duration along route: " << li.duration_on_route << "s";
         }
     }
   else

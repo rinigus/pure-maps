@@ -42,6 +42,7 @@ Item {
     property alias  manTime:   navigatorBase.manTime
     property alias  narrative: navigatorBase.narrative
     property alias  nextIcon:  navigatorBase.nextIcon
+    property alias  nextLocation: navigatorBase.nextLocation
     property alias  nextManDist: navigatorBase.nextManDist
     property bool   notify:    app.conf.showNarrative && app.mode === modes.navigate && (icon || narrative)
     property alias  optimized: navigatorBase.optimized

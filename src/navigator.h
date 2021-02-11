@@ -41,6 +41,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
   Q_PROPERTY(QString nextIcon READ nextIcon NOTIFY nextIconChanged)
+  Q_PROPERTY(QVariantMap nextLocation READ nextLocation NOTIFY nextLocationChanged)
   Q_PROPERTY(QString nextManDist READ nextManDist NOTIFY nextManDistChanged)
   Q_PROPERTY(bool    optimized READ optimized WRITE setOptimized NOTIFY optimizedChanged)
   Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
@@ -75,6 +76,7 @@ public:
   QString mode() const { return m_mode; }
   QString narrative() const { return m_narrative; }
   QString nextIcon() const { return m_nextIcon; }
+  QVariantMap nextLocation() const;
   QString nextManDist() const { return m_nextManDist; }
   double  progress() const { return m_progress; }
   int     roundaboutExit() const { return m_roundaboutExit; }
@@ -127,6 +129,7 @@ signals:
   void modeChanged();
   void narrativeChanged();
   void nextIconChanged();
+  void nextLocationChanged();
   void nextManDistChanged();
   void optimizedChanged();
   void progressChanged();
@@ -189,7 +192,9 @@ private:
     bool origin{false};
     bool final{false};
     double distance_to_route;
-    double length_on_route;
+    double duration_on_route{0};
+    double length_on_route{0};
+    double length_on_route_m{0};
     double latitude;
     double longitude;
     QString name;
