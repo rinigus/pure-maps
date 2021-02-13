@@ -54,6 +54,12 @@ QVariant LocationModel::data(const QModelIndex &index, int role) const
       return loc.longitude;
     case RoleNames::YRole:
       return loc.latitude;
+    case RoleNames::DistRole:
+      return loc.dist;
+    case RoleNames::TimeRole:
+      return loc.time;
+    case RoleNames::EtaRole:
+      return loc.eta;
     }
 
   return {};

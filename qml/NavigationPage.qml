@@ -176,40 +176,52 @@ PagePL {
             id: locRep
             delegate: ListItemPL {
                 id: locRepItem
-                contentHeight: styler.themeItemSizeSmall
+                contentHeight: Math.max(content.height + styler.themePaddingLarge,
+                                        styler.themeItemSizeSmall)
                 menu: ContextMenuPL {
-                    enabled: !item.final && !item.origin
+                    enabled: !model.final && !model.origin
                     ContextMenuItemPL {
                         iconName: styler.iconDelete
                         text: app.tr("Remove")
-                        onClicked: if (!item.final) locRep.removeLocationAndReroute(model.index)
+                        onClicked: if (!model.final) locRep.removeLocationAndReroute(model.index)
                     }
                 }
 
-                property var item: app.navigator.locations[model.index]
-
-                ListItemLabel {
+                Column {
+                    id: content
                     anchors.verticalCenter: parent.verticalCenter
-                    color: locRepItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
-                    text: {
-                        if (item.origin)
-                            return item.text ? app.tr("Origin: %1", item.text) : app.tr("Origin");
-                        if (item.final)
-                            return item.text ? app.tr("Final destination: %1", item.text) :
-                                               app.tr("Final destination");
-                        return item.destination ?
-                                    app.tr("Destination: %1", item.text ? item.text : "") :
-                                    app.tr("Waypoint: %1", item.text ? item.text : "");
+                    width: parent.width
+
+                    ListItemLabel {
+                        color: locRepItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
+                        text: {
+                            if (model.origin)
+                                return model.text ? app.tr("Origin: %1", model.text) : app.tr("Origin");
+                            if (model.final)
+                                return model.text ? app.tr("Final destination: %1", model.text) :
+                                                    app.tr("Final destination");
+                            return model.destination ?
+                                        app.tr("Destination: %1", model.text ? model.text : "") :
+                                        app.tr("Waypoint: %1", model.text ? model.text : "");
+                        }
+                    }
+
+                    ListItemLabel {
+                        color: locRepItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
+                        horizontalAlignment: Text.AlignRight
+                        // TRANSLATORS: Short form for showing remaining distance, time, and ETA
+                        text: app.tr("%1 %2; ETA %3", model.dist, model.time, model.eta)
+                        visible: model.dist
                     }
                 }
 
                 onClicked: {
-                    map.center = QtPositioning.coordinate(item.y, item.x);
+                    map.center = QtPositioning.coordinate(model.y, model.x);
                     map.zoomLevel < 15 && map.setZoomLevel(15);
                     app.hideNavigationPages();
                 }
             }
-            model: app.navigator.locations.length
+            model: app.navigator.locationsModel
             visible: app.mode !== modes.navigatePost
 
             function removeLocationAndReroute(index) {
