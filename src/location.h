@@ -31,6 +31,11 @@ struct Location {
   double longitude;
   QString name;
   S2Point point;
+
+  // stats
+  QString dist;
+  QString time;
+  QString eta;
 };
 
 #endif // LOCATION_H

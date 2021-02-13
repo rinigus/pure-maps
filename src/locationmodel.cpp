@@ -1,12 +1,16 @@
 #include "locationmodel.h"
+#include "navigator.h"
+
+#include <QLocale>
 
 #include <QDebug>
 
 // use var without m_ prefix
 #define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; /*qDebug() << "Emit " #var;*/ emit var##Changed(); } }
 
-LocationModel::LocationModel()
+LocationModel::LocationModel(Navigator *navigator)
 {
+  m_navigator = navigator;
   connect(this, &LocationModel::modelAboutToBeReset, this, &LocationModel::dropCache);
   connect(this, &LocationModel::modelReset, this, &LocationModel::dropCache);
 }
@@ -19,7 +23,10 @@ QHash<int, QByteArray> LocationModel::roleNames() const
       { RoleNames::FinalRole, QByteArrayLiteral("final") },
       { RoleNames::TextRole, QByteArrayLiteral("text") },
       { RoleNames::XRole, QByteArrayLiteral("x") },
-      { RoleNames::YRole, QByteArrayLiteral("y") }
+      { RoleNames::YRole, QByteArrayLiteral("y") },
+      { RoleNames::DistRole, QByteArrayLiteral("dist") },
+      { RoleNames::TimeRole, QByteArrayLiteral("time") },
+      { RoleNames::EtaRole, QByteArrayLiteral("eta") }
     };
 }
 
@@ -150,6 +157,56 @@ bool LocationModel::hasMissedDest(double length_on_route, double accuracy)
         return true;
   return false;
 }
+
+#define SETLOC(var, value, role) { \
+  auto t=(value); \
+  if (var != t) { var=t; roles.push_back(role); } }
+
+void LocationModel::updateRoutePosition(double last_distance_along_route_m,
+                                        double last_duration_along_route)
+{
+  for (int i=1; i < m_locations.length()-1; ++i)
+    {
+      Location &loc = m_locations[i];
+      QVector<int> roles;
+
+      SETLOC(loc.dist,
+             m_navigator->distanceToStr(loc.length_on_route_m -
+                                        last_distance_along_route_m),
+             RoleNames::DistRole);
+      SETLOC(loc.time,
+             m_navigator->timeToStr(loc.duration_on_route -
+                                    last_duration_along_route),
+             RoleNames::TimeRole);
+
+      if (loc.duration_on_route > last_duration_along_route)
+        {
+          QTime time = QTime::currentTime().addSecs(loc.duration_on_route -
+                                                    last_duration_along_route);
+          SETLOC(loc.eta,
+                 QLocale::system().toString(time, QLocale::NarrowFormat),
+                 RoleNames::EtaRole);
+        }
+      else
+        SETLOC(loc.eta, QLatin1String(), RoleNames::EtaRole);
+
+      if (roles.length() > 0)
+        {
+          QModelIndex index = createIndex(i, 0);
+          emit dataChanged(index, index, roles);
+        }
+
+      if (i==1)
+        {
+          SET(hasNextLocation, true);
+          SET(nextLocationDestination, loc.destination);
+          SET(nextLocationDist, loc.dist);
+          SET(nextLocationEta, loc.eta);
+          SET(nextLocationTime, loc.time);
+        }
+    }
+}
+
 
 void LocationModel::append(const Location &location)
 {

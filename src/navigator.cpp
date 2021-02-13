@@ -27,7 +27,8 @@
 // use var without m_ prefix
 #define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; /*qDebug() << "Emit " #var;*/ emit var##Changed(); } }
 
-Navigator::Navigator(QObject *parent) : QObject(parent)
+Navigator::Navigator(QObject *parent) :
+  QObject(parent), m_locations_model(this)
 {
   setupTranslator();
   clearRoute();
@@ -73,14 +74,9 @@ void Navigator::clearRoute(bool keepLocations)
   SET(destEta, QLatin1String("-"));
   SET(destTime, QLatin1String("-"));
   SET(directionValid, false);
-  SET(hasNextLocation, false);
   SET(manDist, QLatin1String("-"));
   SET(manTime, QLatin1String("-"));
   SET(nextIcon, QLatin1String());
-  SET(nextLocationDestination, false);
-  SET(nextLocationDist, QLatin1String());
-  SET(nextLocationEta, QLatin1String());
-  SET(nextLocationTime, QLatin1String());
   SET(nextManDist, QLatin1String());
   SET(roundaboutExit, 0);
   SET(street, "");
@@ -340,29 +336,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
         }
 
       // handle stats of intermediate locations
-      if (false) // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!m_locations.length() > 2)
-        {
-//          const Location &loc = m_locations[1];
-//          SET(hasNextLocation, true);
-//          SET(nextLocationDestination, loc.destination);
-//          SET(nextLocationDist,
-//              distanceToStr(loc.length_on_route_m - m_last_distance_along_route_m));
-//          SET(nextLocationTime,
-//              timeToStr(loc.duration_on_route - m_last_duration_along_route));
-
-//          QTime time = QTime::currentTime().addSecs(loc.duration_on_route -
-//                                                    m_last_duration_along_route);
-//          SET(nextLocationEta,
-//              QLocale::system().toString(time, QLocale::NarrowFormat));
-        }
-      else
-        {
-          SET(hasNextLocation, false);
-          SET(nextLocationDestination, false);
-          SET(nextLocationDist, QLatin1String());
-          SET(nextLocationEta, QLatin1String());
-          SET(nextLocationTime, QLatin1String());
-        }
+      m_locations_model.updateRoutePosition(m_last_distance_along_route_m, m_last_duration_along_route);
 
       // reset prompts when just entering the route
       if (on_route && !m_alongRoute)
