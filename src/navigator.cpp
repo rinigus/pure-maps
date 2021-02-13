@@ -36,6 +36,9 @@ Navigator::Navigator(QObject *parent) : QObject(parent)
   connect(&m_timer, &QTimer::timeout, this, &Navigator::updateEta);
   connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator);
 
+  connect(&m_locations_model, &LocationModel::locationArrived, this, &Navigator::locationArrived);
+  connect(&m_locations_model, &LocationModel::modelReset, this, &Navigator::locationsChanged);
+
   // setup DBus service
   new NavigatorDBusAdapter(this);
   DBusService::instance()->registerNavigator(this);
@@ -83,120 +86,33 @@ void Navigator::clearRoute(bool keepLocations)
   SET(street, "");
 
   m_maneuvers_model.clear();
-  if (!keepLocations && m_locations.size() > 0)
-    {
-      m_locations.clear();
-      SET(hasDestination, false);
-      SET(hasOrigin, false);
-      emit locationsChanged();
-    }
+  if (!keepLocations)
+    m_locations_model.clear();
 
   updateProgress();
   emit routeChanged();
 }
 
-QVariantList Navigator::locations() const
+QVariantList Navigator::locations()
 {
-  QVariantList locations;
-
-  for (auto l: m_locations)
-    {
-      QVariantMap loc;
-      loc["text"] = l.name;
-      loc["x"] = l.longitude;
-      loc["y"] = l.latitude;
-      loc["destination"] = (l.destination ? 1 : 0);
-      locations.append(loc);
-    }
-
-  // handle the routes with the absent locations
-  if (m_locations.length() == 0 && m_route.length() > 0)
-    {
-      QGeoCoordinate c;
-      QVariantMap locs;
-      c = m_route.front().value<QGeoCoordinate>();
-      locs["x"] = c.longitude();
-      locs["y"] = c.latitude();
-      locations.append(locs);
-
-      QVariantMap loce;
-      c = m_route.back().value<QGeoCoordinate>();
-      loce["x"] = c.longitude();
-      loce["y"] = c.latitude();
-      locations.append(loce);
-    }
-
-  // set origin and final destinations
-  if (m_locations.length() >= 1 && m_hasOrigin)
-    {
-      QVariantMap lo = locations.front().toMap();
-      lo["origin"] = 1;
-      locations.front() = lo;
-    }
-
-  if (m_locations.length() >= 1 && m_hasDestination)
-    {
-      QVariantMap lf = locations.last().toMap();
-      lf["final"] = 1;
-      lf["destination"] = 1;
-      locations.last() = lf;
-    }
-
-  return locations;
-}
-
-template <typename T>
-static void _varFiller(T &var, QVariantMap &l, QString key)
-{
-  if (l.contains(key) && l[key].canConvert<T>())
-    var=l[key].value<T>();
+  return m_locations_model.list();
 }
 
 bool Navigator::locationRemove(int index)
 {
-  if (index < 0 || index >= m_locations.length())
-    return false;
+  if (m_locations_model.remove(index))
+    {
+      clearRoute(true);
+      return true;
+    }
 
-  m_locations.removeAt(index);
-  clearRoute(true);
-  emit locationsChanged();
-
-  if (index == 0) SET(hasOrigin, false);
-  if (index == m_locations.length())
-    SET(hasDestination,
-        m_locations.length() > 1 ||
-        (!m_hasOrigin && m_locations.length() > 0) ?
-          m_locations.back().destination : false);
-
-  return true;
+  return false;
 }
 
 void Navigator::setLocations(const QVariantList &locations)
 {
-  clearRoute(false); // remove route and locations
-  for (const QVariant &val: locations)
-    {
-      QVariantMap location = val.toMap();
-      LocationInfo loc;
-      // setting minimal location info
-      _varFiller(loc.name, location, QStringLiteral("text"));
-      _varFiller(loc.longitude, location, QStringLiteral("x"));
-      _varFiller(loc.latitude, location, QStringLiteral("y"));
-      _varFiller(loc.destination, location, QStringLiteral("destination"));
-      m_locations.append(loc);
-      // check for origin
-      if (m_locations.length() == 1)
-        {
-          bool origin = false;
-          _varFiller(origin, location, QStringLiteral("origin"));
-          SET(hasOrigin, origin);
-        }
-    }
-
-  if (m_locations.length() > 0 && !m_locations.back().origin)
-    SET(hasDestination, m_locations.back().destination);
-
-  emit locationsChanged();
+  clearRoute(); // remove route and locations
+  m_locations_model.set(locations);
 }
 
 void Navigator::resetPrompts()
@@ -287,17 +203,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
   m_last_accuracy = accuracy_rad;
 
   // handle locations when compared with the position
-  for (int i=m_locations.length()-1; i>=0; --i)
-    if ( m_locations[i].destination &&
-         !m_locations[i].origin && !m_locations[i].final &&
-         S1ChordAngle(m_locations[i].point, point).radians() <
-         m_locations[i].distance_to_route + 2*accuracy_rad )
-      {
-        qDebug() << "Arrived to location" << i << m_locations[i].name;
-        emit locationArrived(m_locations[i].name, m_locations[i].destination);
-        m_locations.removeAt(i);
-        emit locationsChanged();
-      }
+  m_locations_model.checkArrivalByPosition(point, 2*accuracy_rad);
 
   // find if are on the route
   S2ClosestEdgeQuery::PointTarget target(point);
@@ -379,11 +285,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
   //
   // This check prevents it. Here, relatively large inaccuracy is used to
   // avoid smaller deviations during local maneuvers
-  for (int i=0; on_route && i < m_locations.length(); ++i)
-    if (!m_locations[i].origin && !m_locations[i].final &&
-         m_locations[i].destination &&
-         m_locations[i].length_on_route < best.length_on_route - 8*accuracy_rad )
-        on_route = false;
+  on_route = (on_route && !m_locations_model.hasMissedDest(best.length_on_route, 8*accuracy_rad));
 
   if (on_route)
     {
@@ -430,25 +332,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
           m_offroad_count = 0;
 
           // check if we passed some locations using distance along route
-          for (int i=m_locations.length()-1; i>=0; --i)
-            if (!m_locations[i].origin && !m_locations[i].final &&
-                ( (!m_locations[i].destination &&
-                   m_locations[i].length_on_route < best.length_on_route) ||
-                  (m_locations[i].destination &&
-                   abs(m_locations[i].length_on_route - best.length_on_route) <
-                       m_locations[i].distance_to_route + 2*accuracy_rad) ) )
-              {
-                // clear waypoint iff the destinations before
-                // it have been cleared already
-                for (int j=0; j < i; ++j)
-                  if (!m_locations[j].origin && m_locations[j].destination)
-                    continue; // skip removal
-
-                qDebug() << "Arrived to location along route" << i << m_locations[i].name;
-                emit locationArrived(m_locations[i].name, m_locations[i].destination);
-                m_locations.removeAt(i);
-                emit locationsChanged();
-              }
+          m_locations_model.checkArrivalByRouteDistance(best.length_on_route, 2*accuracy_rad);
         }
       else
         {
@@ -456,20 +340,20 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
         }
 
       // handle stats of intermediate locations
-      if (m_locations.length() > 2)
+      if (false) // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!m_locations.length() > 2)
         {
-          const LocationInfo &loc = m_locations[1];
-          SET(hasNextLocation, true);
-          SET(nextLocationDestination, loc.destination);
-          SET(nextLocationDist,
-              distanceToStr(loc.length_on_route_m - m_last_distance_along_route_m));
-          SET(nextLocationTime,
-              timeToStr(loc.duration_on_route - m_last_duration_along_route));
+//          const Location &loc = m_locations[1];
+//          SET(hasNextLocation, true);
+//          SET(nextLocationDestination, loc.destination);
+//          SET(nextLocationDist,
+//              distanceToStr(loc.length_on_route_m - m_last_distance_along_route_m));
+//          SET(nextLocationTime,
+//              timeToStr(loc.duration_on_route - m_last_duration_along_route));
 
-          QTime time = QTime::currentTime().addSecs(loc.duration_on_route -
-                                                    m_last_duration_along_route);
-          SET(nextLocationEta,
-              QLocale::system().toString(time, QLocale::NarrowFormat));
+//          QTime time = QTime::currentTime().addSecs(loc.duration_on_route -
+//                                                    m_last_duration_along_route);
+//          SET(nextLocationEta,
+//              QLocale::system().toString(time, QLocale::NarrowFormat));
         }
       else
         {
@@ -663,7 +547,7 @@ void Navigator::setRoute(QVariantMap m)
 
   // cleanup
   m_edges.clear();
-  m_locations.clear();
+  m_locations_model.clear();
   m_maneuvers.clear();
   m_points.clear();
   m_route.clear();
@@ -889,11 +773,9 @@ void Navigator::setRoute(QVariantMap m)
 //    qDebug() << m.narrative << m.duration_txt << m.length_txt << m.next;
 
   // locations
-  m_locations.clear();
-  SET(hasOrigin, true);
-  SET(hasDestination, true);
   QVariantList locations = m.value("locations").toList();
   QVariantList locindexes = m.value("location_indexes").toList();
+  QList<Location> locations_processed;
   if (locations.length() == locindexes.length())
     {
       for (int i=0; i < locations.length(); ++i)
@@ -911,7 +793,7 @@ void Navigator::setRoute(QVariantMap m)
                 }
             }
 
-          LocationInfo li;
+          Location li;
           li.latitude = lm.value("y").toDouble();
           li.longitude = lm.value("x").toDouble();
           li.name = lm.value("text").toString();
@@ -942,7 +824,7 @@ void Navigator::setRoute(QVariantMap m)
           li.point = S2LatLng::FromDegrees(li.latitude, li.longitude).ToPoint();
           li.distance_to_route = S1ChordAngle(li.point, coor[ne].ToPoint()).radians();
 
-          m_locations.push_back(li);
+          locations_processed.push_back(li);
 
 //          qDebug() << li.name << "node:" << ne
 //                   << " distance along route:" << S2Earth::RadiansToKm(li.length_on_route) << "km"
@@ -955,13 +837,14 @@ void Navigator::setRoute(QVariantMap m)
     qWarning() << "Number of locations and number of their indexes do not match. Number of indexes:"
                << locindexes.length();
 
+  m_locations_model.set(locations_processed);
+
   // override optimized parameter only if the route
   // had sufficient amount of destinations. Otherwise
   // keep it intact. This allows to preserve earlier setting
   // until user had a chance to change it.
   if (locations.length() > 3)
     SET(optimized, m.value("optimized", false).toBool());
-
 
   // global vars
   m_route_duration = duration_on_route;
@@ -971,7 +854,6 @@ void Navigator::setRoute(QVariantMap m)
   m_maneuvers_model.setManeuvers(m_maneuvers);
 
   emit routeChanged();
-  emit locationsChanged();
 }
 
 

@@ -59,12 +59,14 @@ Column {
 
     property var    poiAsRoutingDestination: {
         "text": title,
-        "x": coordinate.longitude, "y": coordinate.latitude,
+        "x": coordinate ? coordinate.longitude : 0,
+        "y": coordinate ? coordinate.latitude : 0,
         "destination": true
     }
     property var    poiAsRoutingOrigin: {
         "text": title,
-        "x": coordinate.longitude, "y": coordinate.latitude,
+        "x": coordinate ? coordinate.longitude : 0,
+        "y": coordinate ? coordinate.latitude : 0,
         "origin": true
     }
 

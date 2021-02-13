@@ -17,6 +17,8 @@
 #include <s2/mutable_s2shape_index.h>
 #include <s2/s2polygon.h>
 
+#include "location.h"
+#include "locationmodel.h"
 #include "maneuver.h"
 #include "maneuvermodel.h"
 #include "prompt.h"
@@ -31,9 +33,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
   Q_PROPERTY(double  direction READ direction NOTIFY directionChanged)
   Q_PROPERTY(bool    directionValid READ directionValid NOTIFY directionValidChanged)
-  Q_PROPERTY(bool    hasDestination READ hasDestination NOTIFY hasDestinationChanged)
   Q_PROPERTY(bool    hasNextLocation READ hasNextLocation NOTIFY hasNextLocationChanged)
-  Q_PROPERTY(bool    hasOrigin READ hasOrigin NOTIFY hasOriginChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
   Q_PROPERTY(QVariantList locations READ locations WRITE setLocations NOTIFY locationsChanged)
@@ -58,6 +58,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
   Q_PROPERTY(QVariantList route READ route NOTIFY routeChanged)
+  Q_PROPERTY(LocationModel* locationsModel READ locationsModel)
   Q_PROPERTY(ManeuverModel* maneuvers READ maneuvers)
 
 public:
@@ -70,12 +71,10 @@ public:
   QString destTime() const { return m_destTime; }
   double  direction() const { return m_direction; }
   bool    directionValid() const { return m_directionValid; }
-  bool    hasDestination() const { return m_hasDestination; }
   bool    hasNextLocation() const { return m_hasNextLocation; }
-  bool    hasOrigin() const { return m_hasOrigin; }
   QString icon() const { return m_icon; }
   QString language() const { return m_language; }
-  QVariantList locations() const;
+  QVariantList locations();
   QString manDist() const { return m_manDist; }
   QString manTime() const { return m_manTime; }
   QString mode() const { return m_mode; }
@@ -105,6 +104,7 @@ public:
   QVariantList route() const { return m_route; }
   Q_INVOKABLE void setRoute(QVariantMap m);
 
+  LocationModel* locationsModel() { return &m_locations_model; }
   ManeuverModel* maneuvers() { return &m_maneuvers_model; }
 
   bool optimized() const { return m_optimized; }
@@ -127,9 +127,7 @@ signals:
   void destTimeChanged();
   void directionChanged();
   void directionValidChanged();
-  void hasDestinationChanged();
   void hasNextLocationChanged();
-  void hasOriginChanged();
   void iconChanged();
   void languageChanged();
   void locationsChanged();
@@ -198,21 +196,6 @@ private:
     operator bool() const { return length_on_route > 0; }
   };
 
-  // Location
-  struct LocationInfo {
-    bool destination{false};
-    bool origin{false};
-    bool final{false};
-    double distance_to_route;
-    double duration_on_route{0};
-    double length_on_route{0};
-    double length_on_route_m{0};
-    double latitude;
-    double longitude;
-    QString name;
-    S2Point point;
-  };
-
 private:
   bool m_running{false};
 
@@ -220,7 +203,6 @@ private:
   std::unique_ptr<MutableS2ShapeIndex> m_index;
   QString m_language{"en"};
   QLocale m_locale;
-  QList<LocationInfo> m_locations;
   std::vector<Maneuver> m_maneuvers;
   QString m_mode{"car"};
   std::deque<PointInfo> m_points;
@@ -251,9 +233,7 @@ private:
   QString m_destTime;
   double  m_direction{0};
   bool    m_directionValid{false};
-  bool    m_hasDestination{false};
   bool    m_hasNextLocation{false};
-  bool    m_hasOrigin{false};
   QString m_icon;
   QString m_manDist;
   QString m_manTime;
@@ -276,6 +256,7 @@ private:
   QString m_units{QLatin1String("metric")};
 
   QHash<QString, QString> m_std_prompts;
+  LocationModel m_locations_model;
   ManeuverModel m_maneuvers_model;
 };
 

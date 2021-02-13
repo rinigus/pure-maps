@@ -32,12 +32,13 @@ Item {
     property var    direction: navigatorBase.directionValid ? navigatorBase.direction : undefined
     property bool   followMe:  false
     property bool   hasBeenAlongRoute: false
-    property alias  hasDestination: navigatorBase.hasDestination
+    property bool   hasDestination: locationsModel.hasDestination
     property alias  hasNextLocation: navigatorBase.hasNextLocation
-    property alias  hasOrigin: navigatorBase.hasOrigin
+    property bool   hasOrigin: locationsModel.hasOrigin
     property bool   hasRoute:  navigatorBase.route.length > 0
     property alias  icon:      navigatorBase.icon
     property alias  locations: navigatorBase.locations
+    property alias  locationsModel: navigatorBase.locationsModel
     property alias  maneuvers: navigatorBase.maneuvers
     property alias  manDist:   navigatorBase.manDist
     property alias  manTime:   navigatorBase.manTime
@@ -303,7 +304,8 @@ Item {
             _destinationsNotForSave.push(t);
         });
 
-        var dest = navigatorBase.locations[ navigatorBase.locations.length - 1 ];
+        var loc = navigatorBase.locations;
+        var dest = loc[ loc.length - 1 ];
 
         for (var i=0; i < _destinationsNotForSave.length; i++)
             if (dest.text === _destinationsNotForSave[i].toText &&

@@ -619,8 +619,9 @@ MapboxMap {
         var data = {};
         data.type = "FeatureCollection";
         data.features = []
-        for (var i=0; i < app.navigator.locations.length; ++i) {
-            var l = app.navigator.locations[i];
+        var locations = app.navigator.locations;
+        for (var i=0; i < locations.length; ++i) {
+            var l = locations[i];
             var symbol;
             if (l.origin)
                 symbol = map.images.locationStart;
