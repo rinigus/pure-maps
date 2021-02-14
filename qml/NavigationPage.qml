@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtPositioning 5.3
+import QtQuick.Layouts 1.1
 import "."
 import "platform"
 
@@ -176,8 +177,7 @@ PagePL {
             id: locRep
             delegate: ListItemPL {
                 id: locRepItem
-                contentHeight: Math.max(content.height + styler.themePaddingLarge,
-                                        styler.themeItemSizeSmall)
+                contentHeight: locItem.height
                 menu: ContextMenuPL {
                     enabled: !model.final && !model.origin
                     ContextMenuItemPL {
@@ -187,31 +187,146 @@ PagePL {
                     }
                 }
 
-                Column {
-                    id: content
-                    anchors.verticalCenter: parent.verticalCenter
+                Item {
+                    id: locItem
+                    height: Math.max(locColumn.height + styler.themePaddingLarge,
+                                     styler.themeItemSizeSmall)
                     width: parent.width
 
-                    ListItemLabel {
-                        color: locRepItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
-                        text: {
-                            if (model.origin)
-                                return model.text ? app.tr("Origin: %1", model.text) : app.tr("Origin");
-                            if (model.final)
-                                return model.text ? app.tr("Final destination: %1", model.text) :
-                                                    app.tr("Final destination");
-                            return model.destination ?
-                                        app.tr("Destination: %1", model.text ? model.text : "") :
-                                        app.tr("Waypoint: %1", model.text ? model.text : "");
-                        }
-                    }
+                    Column {
+                        id: locColumn
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: styler.themePaddingMedium
+                        width: parent.width
 
-                    ListItemLabel {
-                        color: locRepItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
-                        horizontalAlignment: Text.AlignRight
-                        // TRANSLATORS: Short form for showing remaining distance, time, and ETA
-                        text: app.tr("%1 %2; ETA %3", model.dist, model.time, model.eta)
-                        visible: model.dist
+                        ListItemLabel {
+                            color: locRepItem.highlighted ? styler.themeHighlightColor : styler.themePrimaryColor
+                            text: {
+                                if (model.origin)
+                                    return model.text ? app.tr("Origin: %1", model.text) : app.tr("Origin");
+                                if (model.final)
+                                    return model.text ? app.tr("Final destination: %1", model.text) :
+                                                        app.tr("Final destination");
+                                return model.destination ?
+                                            app.tr("Destination: %1", model.text ? model.text : "") :
+                                            app.tr("Waypoint: %1", model.text ? model.text : "");
+                            }
+                        }
+
+                        // Remaining info
+                        GridLayout {
+                            id: glayout
+                            anchors.left: parent.left
+                            anchors.leftMargin: styler.themeHorizontalPageMargin
+                            anchors.right: parent.right
+                            anchors.rightMargin: styler.themeHorizontalPageMargin
+                            columnSpacing: styler.themePaddingMedium
+                            columns: {
+                                var col1 =
+                                        2*columnSpacing +
+                                        Math.max(lr1.implicitWidth + d1.implicitWidth + t1.implicitWidth,
+                                                 lr2.implicitWidth + t2.implicitWidth,
+                                                 lr3.implicitWidth + d3.implicitWidth + t3.implicitWidth);
+                                var col2 =
+                                        columnSpacing +
+                                        Math.max(lr1.implicitWidth, lr2.implicitWidth, lr3.implicitWidth) +
+                                        Math.max(d1.implicitWidth, t1.implicitWidth,
+                                                 t2.implicitWidth,
+                                                 d3.implicitWidth, t3.implicitWidth);
+                                if (col1 < width) return 3;
+                                if (col2 < width) return 2;
+                                return 1;
+                            }
+                            rowSpacing: styler.themePaddingMedium
+                            visible: hasRow3 || hasRow2 || hasRow1
+
+                            property bool hasRow1: model.dist
+                            property bool hasRow2: model.eta
+                            property bool hasRow3: model.legDist
+                            property var textColor: locRepItem.highlighted ? styler.themeSecondaryColor :
+                                                                             styler.themeSecondaryHighlightColor
+
+                            LabelPL {
+                                id: lr1
+                                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                                Layout.fillWidth: true
+                                Layout.rowSpan: glayout.columns===2 ? 2 : 1
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                horizontalAlignment: Text.AlignLeft
+                                text: visible ? app.tr("Remaining") : ""
+                                visible: glayout.hasRow1
+                            }
+
+                            LabelPL {
+                                id: d1
+                                Layout.alignment: Qt.AlignRight | Qt.AlignTop
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                text: model.dist
+                                visible: glayout.hasRow1
+                            }
+
+                            LabelPL {
+                                id: t1
+                                Layout.alignment: Qt.AlignRight | Qt.AlignTop
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                text: model.time
+                                visible: glayout.hasRow1
+                            }
+
+                            LabelPL {
+                                id: lr2
+                                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                                Layout.fillWidth: true
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                horizontalAlignment: Text.AlignLeft
+                                text: visible ? app.tr("ETA") : ""
+                                visible: glayout.hasRow2
+                            }
+
+                            LabelPL {
+                                id: t2
+                                Layout.alignment: Qt.AlignRight | Qt.AlignTop
+                                Layout.columnSpan: glayout.columns==3 ? 2 : 1
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                text: model.eta
+                                visible: glayout.hasRow2
+                            }
+
+                            LabelPL {
+                                id: lr3
+                                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                                Layout.fillWidth: true
+                                Layout.rowSpan: glayout.columns===2 ? 2 : 1
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                horizontalAlignment: Text.AlignLeft
+                                text: visible ? app.tr("Leg") : ""
+                                visible: glayout.hasRow3
+                            }
+
+                            LabelPL {
+                                id: d3
+                                Layout.alignment: Qt.AlignRight | Qt.AlignTop
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                text: model.legDist
+                                visible: glayout.hasRow3
+                            }
+
+                            LabelPL {
+                                id: t3
+                                Layout.alignment: Qt.AlignRight | Qt.AlignTop
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                text: model.legTime
+                                visible: glayout.hasRow3
+                            }
+                        }
                     }
                 }
 

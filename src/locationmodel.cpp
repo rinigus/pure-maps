@@ -26,7 +26,9 @@ QHash<int, QByteArray> LocationModel::roleNames() const
       { RoleNames::YRole, QByteArrayLiteral("y") },
       { RoleNames::DistRole, QByteArrayLiteral("dist") },
       { RoleNames::TimeRole, QByteArrayLiteral("time") },
-      { RoleNames::EtaRole, QByteArrayLiteral("eta") }
+      { RoleNames::EtaRole, QByteArrayLiteral("eta") },
+      { RoleNames::LegDistRole, QByteArrayLiteral("legDist") },
+      { RoleNames::LegTimeRole, QByteArrayLiteral("legTime") },
     };
 }
 
@@ -60,6 +62,10 @@ QVariant LocationModel::data(const QModelIndex &index, int role) const
       return loc.time;
     case RoleNames::EtaRole:
       return loc.eta;
+    case RoleNames::LegDistRole:
+      return loc.legDist;
+    case RoleNames::LegTimeRole:
+      return loc.legTime;
     }
 
   return {};
@@ -137,7 +143,7 @@ void LocationModel::checkArrivalByRouteDistance(double length_on_route, double a
            m_locations[i].length_on_route < length_on_route) ||
           (m_locations[i].destination &&
            abs(m_locations[i].length_on_route - length_on_route) <
-               m_locations[i].distance_to_route + accuracy) ) )
+           m_locations[i].distance_to_route + accuracy) ) )
       {
         // clear waypoint iff the destinations before
         // it have been cleared already
@@ -158,9 +164,9 @@ bool LocationModel::hasMissedDest(double length_on_route, double accuracy)
   // returns true if some destination was missed
   for (int i=0; i < m_locations.length(); ++i)
     if (!m_locations[i].origin && !m_locations[i].final &&
-         m_locations[i].destination &&
-         m_locations[i].length_on_route < length_on_route - accuracy )
-        return true;
+        m_locations[i].destination &&
+        m_locations[i].length_on_route < length_on_route - accuracy )
+      return true;
   return false;
 }
 
@@ -171,19 +177,63 @@ bool LocationModel::hasMissedDest(double length_on_route, double accuracy)
 void LocationModel::updateRoutePosition(double last_distance_along_route_m,
                                         double last_duration_along_route)
 {
-  for (int i=1; i < m_locations.length()-1; ++i)
+  for (int i=1; i < m_locations.length(); ++i)
     {
       Location &loc = m_locations[i];
       QVector<int> roles;
 
-      SETLOC(loc.dist,
-             m_navigator->distanceToStr(loc.length_on_route_m -
-                                        last_distance_along_route_m),
-             RoleNames::DistRole);
-      SETLOC(loc.time,
-             m_navigator->timeToStr(loc.duration_on_route -
-                                    last_duration_along_route),
-             RoleNames::TimeRole);
+      // as duration is linked to distance, one check is sufficient
+      // eta and other info for the last destination is shown separately
+      if (i < m_locations.length()-1 &&
+          loc.length_on_route_m > last_distance_along_route_m)
+        {
+
+          SETLOC(loc.dist,
+                 m_navigator->distanceToStr(loc.length_on_route_m -
+                                            last_distance_along_route_m),
+                 RoleNames::DistRole);
+          SETLOC(loc.time,
+                 m_navigator->timeToStr(loc.duration_on_route -
+                                        last_duration_along_route),
+                 RoleNames::TimeRole);
+
+          QTime time = QTime::currentTime().addSecs(loc.duration_on_route -
+                                                    last_duration_along_route);
+          SETLOC(loc.eta,
+                 QLocale::system().toString(time, QLocale::NarrowFormat),
+                 RoleNames::EtaRole);
+        }
+      else
+        {
+          SETLOC(loc.dist, QLatin1String(), RoleNames::DistRole);
+          SETLOC(loc.time,QLatin1String(), RoleNames::TimeRole);
+          SETLOC(loc.eta, QLatin1String(), RoleNames::EtaRole);
+        }
+
+      if (roles.length() > 0)
+        {
+          QModelIndex index = createIndex(i, 0);
+          emit dataChanged(index, index, roles);
+        }
+
+      if (i==1)
+        {
+          SET(hasNextLocation, true);
+          SET(nextLocationDestination, loc.destination);
+          SET(nextLocationDist, loc.dist);
+          SET(nextLocationEta, loc.eta);
+          SET(nextLocationTime, loc.time);
+        }
+    }
+}
+
+
+void LocationModel::updateEta(double last_duration_along_route)
+{
+  for (int i=1; i < m_locations.length()-1; ++i)
+    {
+      Location &loc = m_locations[i];
+      QVector<int> roles;
 
       if (loc.duration_on_route > last_duration_along_route)
         {
@@ -204,11 +254,7 @@ void LocationModel::updateRoutePosition(double last_distance_along_route_m,
 
       if (i==1)
         {
-          SET(hasNextLocation, true);
-          SET(nextLocationDestination, loc.destination);
-          SET(nextLocationDist, loc.dist);
           SET(nextLocationEta, loc.eta);
-          SET(nextLocationTime, loc.time);
         }
     }
 }
@@ -257,6 +303,25 @@ void LocationModel::set(const QList<Location> &locations)
   SET(hasDestination, true);
   m_locations = locations;
   endResetModel();
+}
+
+void LocationModel::fillLegInfo()
+{
+  for (int i=1; i < m_locations.length(); ++i)
+    {
+      const Location &locPrev = m_locations[i-1];
+      Location &loc = m_locations[i];
+
+      loc.legDist = m_navigator->distanceToStr(loc.length_on_route_m -
+                                               locPrev.length_on_route_m);
+      loc.legTime = m_navigator->timeToStr(loc.duration_on_route -
+                                           locPrev.duration_on_route);
+    }
+
+  QModelIndex index0 = createIndex(1, 0);
+  QModelIndex index1 = createIndex(m_locations.length()-1, 0);
+  QVector<int> roles = {RoleNames::LegDistRole, RoleNames::LegTimeRole};
+  emit dataChanged(index0, index1, roles);
 }
 
 bool LocationModel::remove(int index)

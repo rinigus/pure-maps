@@ -812,6 +812,7 @@ void Navigator::setRoute(QVariantMap m)
                << locindexes.length();
 
   m_locations_model.set(locations_processed);
+  m_locations_model.fillLegInfo();
 
   // override optimized parameter only if the route
   // had sufficient amount of destinations. Otherwise
@@ -856,6 +857,7 @@ void Navigator::updateEta()
   if (!m_running) return;
   QTime time = QTime::currentTime().addSecs(m_route_duration - m_last_duration_along_route);
   SET(destEta, QLocale::system().toString(time, QLocale::NarrowFormat));
+  m_locations_model.updateEta(m_last_duration_along_route);
 }
 
 void Navigator::updateProgress()

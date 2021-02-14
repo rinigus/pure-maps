@@ -24,7 +24,8 @@ class LocationModel : public QAbstractListModel
   enum RoleNames { DestinationRole = Qt::UserRole + 1,
                    OriginRole, FinalRole,
                    TextRole, XRole, YRole,
-                   DistRole, TimeRole, EtaRole
+                   DistRole, TimeRole, EtaRole,
+                   LegDistRole, LegTimeRole
                  };
 
 public:
@@ -53,8 +54,11 @@ public:
   void checkArrivalByRouteDistance(double length_on_route, double accuracy);
   bool hasMissedDest(double length_on_route, double accuracy); // true if missed
 
+  void fillLegInfo();
   void updateRoutePosition(double last_distance_along_route_m,
                            double last_duration_along_route);
+  void updateEta(double last_duration_along_route);
+
 
   // data model handling
   void append(const Location &location);

@@ -36,6 +36,8 @@ struct Location {
   QString dist;
   QString time;
   QString eta;
+  QString legDist;
+  QString legTime;
 };
 
 #endif // LOCATION_H
