@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-14 16:24+0200\n"
+"POT-Creation-Date: 2021-02-14 16:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -708,11 +708,12 @@ msgstr ""
 msgid "Remaining"
 msgstr ""
 
-#: qml/NavigationPage.qml:308
+#. TRANSLATORS: Leg corresponds to the trip leg between two destinations, such as intermediate destinations on the route
+#: qml/NavigationPage.qml:309
 msgid "Leg"
 msgstr ""
 
-#: qml/NavigationPage.qml:357
+#: qml/NavigationPage.qml:358
 msgid "Maneuvers"
 msgstr ""
 

@@ -305,6 +305,7 @@ PagePL {
                                 color: glayout.textColor
                                 font.pixelSize: styler.themeFontSizeMedium
                                 horizontalAlignment: Text.AlignLeft
+                                // TRANSLATORS: Leg corresponds to the trip leg between two destinations, such as intermediate destinations on the route
                                 text: visible ? app.tr("Leg") : ""
                                 visible: glayout.hasRow3
                             }
