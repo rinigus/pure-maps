@@ -303,7 +303,16 @@ Item {
             anchors.baseline: destLabel.baseline
             color: _pressed ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
             font.pixelSize: styler.themeFontSizeSmall
-            text: app.tr("ETA")
+            text: {
+                if (mode === blockModes.condensedSplit && showNextLocation) {
+                    return navigator.nextLocationDestination ?
+                                // TRANSLATORS: "(D)" corresponds to the abbreviated destination
+                                app.tr("(D) ETA") :
+                                // TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
+                                app.tr("(W) ETA")
+                }
+                return app.tr("ETA");
+            }
         }
 
         Spacer {
