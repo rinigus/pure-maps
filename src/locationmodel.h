@@ -14,7 +14,6 @@ class LocationModel : public QAbstractListModel
   Q_OBJECT
 
   Q_PROPERTY(bool    hasDestination READ hasDestination NOTIFY hasDestinationChanged)
-  Q_PROPERTY(bool    hasNextLocation READ hasNextLocation NOTIFY hasNextLocationChanged)
   Q_PROPERTY(bool    hasOrigin READ hasOrigin NOTIFY hasOriginChanged)
   Q_PROPERTY(bool    nextLocationDestination READ nextLocationDestination NOTIFY nextLocationDestinationChanged)
   Q_PROPERTY(QString nextLocationDist READ nextLocationDist NOTIFY nextLocationDistChanged)
@@ -39,7 +38,6 @@ public:
 
   // properties
   bool hasDestination() const { return m_hasDestination; }
-  bool hasNextLocation() const { return m_hasNextLocation; }
   bool hasOrigin() const { return m_hasOrigin; }
   bool    nextLocationDestination() const { return m_nextLocationDestination; }
   QString nextLocationDist() const { return m_nextLocationDist; }
@@ -69,7 +67,6 @@ public:
 
 signals:
   void hasDestinationChanged();
-  void hasNextLocationChanged();
   void hasOriginChanged();
   void locationArrived(QString name, bool destination);
   void nextLocationDestinationChanged();
@@ -87,7 +84,6 @@ private:
   Navigator *m_navigator;
 
   bool m_hasDestination;
-  bool m_hasNextLocation{false};
   bool m_hasOrigin;
   bool m_locations_cached_ready{false};
   bool    m_nextLocationDestination{false};

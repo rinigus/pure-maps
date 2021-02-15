@@ -33,7 +33,7 @@ Item {
     property bool   followMe:  false
     property bool   hasBeenAlongRoute: false
     property bool   hasDestination: locationsModel.hasDestination
-    property bool   hasNextLocation: locationsModel.hasNextLocation
+    property bool   hasNextLocation: nextLocationDist
     property bool   hasOrigin: locationsModel.hasOrigin
     property bool   hasRoute:  navigatorBase.route.length > 0
     property alias  icon:      navigatorBase.icon

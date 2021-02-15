@@ -264,7 +264,6 @@ void LocationModel::updateNextLocationInfo()
 {
   if (m_locations.length() <= 2)
     {
-      SET(hasNextLocation, false);
       SET(nextLocationDestination, false);
       SET(nextLocationDist, QLatin1String());
       SET(nextLocationEta, QLatin1String());
@@ -273,7 +272,6 @@ void LocationModel::updateNextLocationInfo()
   else
     {
       Location &loc = m_locations[1];
-      SET(hasNextLocation, true);
       SET(nextLocationDestination, loc.destination);
       SET(nextLocationDist, loc.dist);
       SET(nextLocationEta, loc.eta);
