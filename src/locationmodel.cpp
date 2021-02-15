@@ -13,6 +13,7 @@ LocationModel::LocationModel(Navigator *navigator)
   m_navigator = navigator;
   connect(this, &LocationModel::modelAboutToBeReset, this, &LocationModel::dropCache);
   connect(this, &LocationModel::modelReset, this, &LocationModel::dropCache);
+  connect(this, &LocationModel::modelReset, this, &LocationModel::updateNextLocationInfo);
 }
 
 QHash<int, QByteArray> LocationModel::roleNames() const
@@ -216,9 +217,8 @@ void LocationModel::updateRoutePosition(double last_distance_along_route_m,
           emit dataChanged(index, index, roles);
         }
 
-      if (i==1)
+      if (i==1 && i < m_locations.length()-1)
         {
-          SET(hasNextLocation, true);
           SET(nextLocationDestination, loc.destination);
           SET(nextLocationDist, loc.dist);
           SET(nextLocationEta, loc.eta);
@@ -259,6 +259,27 @@ void LocationModel::updateEta(double last_duration_along_route)
     }
 }
 
+
+void LocationModel::updateNextLocationInfo()
+{
+  if (m_locations.length() <= 2)
+    {
+      SET(hasNextLocation, false);
+      SET(nextLocationDestination, false);
+      SET(nextLocationDist, QLatin1String());
+      SET(nextLocationEta, QLatin1String());
+      SET(nextLocationTime, QLatin1String());
+    }
+  else
+    {
+      Location &loc = m_locations[1];
+      SET(hasNextLocation, true);
+      SET(nextLocationDestination, loc.destination);
+      SET(nextLocationDist, loc.dist);
+      SET(nextLocationEta, loc.eta);
+      SET(nextLocationTime, loc.time);
+    }
+}
 
 void LocationModel::append(const Location &location)
 {

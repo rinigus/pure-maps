@@ -79,6 +79,7 @@ signals:
 
 private:
   void dropCache();
+  void updateNextLocationInfo();
 
 private:
   QList<Location> m_locations;
