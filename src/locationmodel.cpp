@@ -326,19 +326,20 @@ void LocationModel::set(const QList<Location> &locations)
 
 void LocationModel::fillLegInfo()
 {
-  for (int i=1; i < m_locations.length(); ++i)
-    {
-      const Location &locPrev = m_locations[i-1];
-      Location &loc = m_locations[i];
+  if (m_locations.length() > 2)
+    for (int i=1; i < m_locations.length(); ++i)
+      {
+        const Location &locPrev = m_locations[i-1];
+        Location &loc = m_locations[i];
 
-      loc.legDist = m_navigator->distanceToStr(loc.length_on_route_m -
-                                               locPrev.length_on_route_m);
-      loc.legTime = m_navigator->timeToStr(loc.duration_on_route -
-                                           locPrev.duration_on_route);
-    }
+        loc.legDist = m_navigator->distanceToStr(loc.length_on_route_m -
+                                                 locPrev.length_on_route_m);
+        loc.legTime = m_navigator->timeToStr(loc.duration_on_route -
+                                             locPrev.duration_on_route);
+      }
 
   QModelIndex index0 = createIndex(1, 0);
-  QModelIndex index1 = createIndex(m_locations.length()-1, 0);
+  QModelIndex index1 = createIndex(m_locations.length(), 0);
   QVector<int> roles = {RoleNames::LegDistRole, RoleNames::LegTimeRole};
   emit dataChanged(index0, index1, roles);
 }
