@@ -655,7 +655,7 @@ DialogPL {
             } else if (i === locations.length-1 && l.destination) {
                 toText = l.text;
                 to = [l.x, l.y];
-            } else {
+            } else if (!l.arrived) {
                 waypoints.append( {"destination": l.destination,
                                      "set": true,
                                      "query": "",

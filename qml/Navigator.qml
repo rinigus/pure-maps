@@ -192,6 +192,10 @@ Item {
                                     app.tr("Current position"),
                                     "x": p[0], "y": p[1]});
         }
+        // filter out arrived locations
+        loc = loc.filter(function (l) {
+           return !l.arrived;
+        });
         var notification  = options.notification || app.tr("Routing")
         app.notification.hold(notification, notifyId);
         routing = true;

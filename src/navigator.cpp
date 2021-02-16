@@ -521,7 +521,6 @@ void Navigator::setRoute(QVariantMap m)
 
   // cleanup
   m_edges.clear();
-  m_locations_model.clear();
   m_maneuvers.clear();
   m_points.clear();
   m_route.clear();
@@ -529,9 +528,13 @@ void Navigator::setRoute(QVariantMap m)
   m_reroute_request.start();
   m_last_accuracy = -1;
 
-  // clear distance traveled only if not running
+  // clear traveled distance and locations only if not running
   // that will keep progress intact on rerouting
-  if (!m_running) m_distance_traveled_m = 0;
+  if (!m_running)
+    {
+      m_distance_traveled_m = 0;
+      m_locations_model.clear();
+    }
 
   // set global vars
   // note that "optimized" is set later, together with
@@ -811,7 +814,7 @@ void Navigator::setRoute(QVariantMap m)
     qWarning() << "Number of locations and number of their indexes do not match. Number of indexes:"
                << locindexes.length();
 
-  m_locations_model.set(locations_processed);
+  m_locations_model.set(locations_processed, m_running);
   m_locations_model.fillLegInfo();
 
   // override optimized parameter only if the route

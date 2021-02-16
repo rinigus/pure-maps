@@ -24,7 +24,9 @@ class LocationModel : public QAbstractListModel
                    OriginRole, FinalRole,
                    TextRole, XRole, YRole,
                    DistRole, TimeRole, EtaRole,
-                   LegDistRole, LegTimeRole
+                   LegDistRole, LegTimeRole,
+                   ArrivedRole, ArrivedAtRole,
+                   ActiveIndexRole
                  };
 
 public:
@@ -62,7 +64,7 @@ public:
   void append(const Location &location);
   void clear();
   void set(const QVariantList &locations);
-  void set(const QList<Location> &locations);
+  void set(const QList<Location> &locations, bool merge);
   bool remove(int index);
 
 signals:
@@ -80,6 +82,7 @@ private:
 
 private:
   QList<Location> m_locations;
+  QList<Location> m_locations_arrived;
   QVariantList m_locations_cached;
   Navigator *m_navigator;
 

@@ -179,11 +179,12 @@ PagePL {
                 id: locRepItem
                 contentHeight: locItem.height
                 menu: ContextMenuPL {
-                    enabled: !model.final && !model.origin
+                    enabled: !model.final && !model.origin && model.activeIndex > 0
                     ContextMenuItemPL {
                         iconName: styler.iconDelete
                         text: app.tr("Remove")
-                        onClicked: if (!model.final) locRep.removeLocationAndReroute(model.index)
+                        onClicked: if (!model.final && model.activeIndex > 0)
+                                       locRep.removeLocationAndReroute(model.activeIndex)
                     }
                 }
 
@@ -226,23 +227,27 @@ PagePL {
                                         2*columnSpacing +
                                         Math.max(lr1.implicitWidth + d1.implicitWidth + t1.implicitWidth,
                                                  lr2.implicitWidth + t2.implicitWidth,
-                                                 lr3.implicitWidth + d3.implicitWidth + t3.implicitWidth);
+                                                 lr3.implicitWidth + d3.implicitWidth + t3.implicitWidth,
+                                                 lr4.implicitWidth + t4.implicitWidth,);
                                 var col2 =
                                         columnSpacing +
-                                        Math.max(lr1.implicitWidth, lr2.implicitWidth, lr3.implicitWidth) +
+                                        Math.max(lr1.implicitWidth, lr2.implicitWidth,
+                                                 lr3.implicitWidth, lr4.implicitWidth) +
                                         Math.max(d1.implicitWidth, t1.implicitWidth,
                                                  t2.implicitWidth,
-                                                 d3.implicitWidth, t3.implicitWidth);
+                                                 d3.implicitWidth, t3.implicitWidth,
+                                                 t4.implicitWidth);
                                 if (col1 < width) return 3;
                                 if (col2 < width) return 2;
                                 return 1;
                             }
                             rowSpacing: styler.themePaddingMedium
-                            visible: hasRow3 || hasRow2 || hasRow1
+                            visible: hasRow3 || hasRow2 || hasRow1 || hasRow4
 
-                            property bool hasRow1: model.dist
-                            property bool hasRow2: model.eta
-                            property bool hasRow3: model.legDist
+                            property bool hasRow1: !model.arrived && model.dist
+                            property bool hasRow2: !model.arrived && model.eta
+                            property bool hasRow3: !model.arrived && model.legDist
+                            property bool hasRow4: model.arrived
                             property var textColor: locRepItem.highlighted ? styler.themeSecondaryColor :
                                                                              styler.themeSecondaryHighlightColor
 
@@ -263,7 +268,7 @@ PagePL {
                                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
                                 color: glayout.textColor
                                 font.pixelSize: styler.themeFontSizeMedium
-                                text: model.dist
+                                text: visible ? model.dist : ""
                                 visible: glayout.hasRow1
                             }
 
@@ -272,7 +277,7 @@ PagePL {
                                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
                                 color: glayout.textColor
                                 font.pixelSize: styler.themeFontSizeMedium
-                                text: model.time
+                                text: visible ? model.time : ""
                                 visible: glayout.hasRow1
                             }
 
@@ -293,7 +298,7 @@ PagePL {
                                 Layout.columnSpan: glayout.columns==3 ? 2 : 1
                                 color: glayout.textColor
                                 font.pixelSize: styler.themeFontSizeMedium
-                                text: model.eta
+                                text: visible ? model.eta : ""
                                 visible: glayout.hasRow2
                             }
 
@@ -315,7 +320,7 @@ PagePL {
                                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
                                 color: glayout.textColor
                                 font.pixelSize: styler.themeFontSizeMedium
-                                text: model.legDist
+                                text: visible ? model.legDist : ""
                                 visible: glayout.hasRow3
                             }
 
@@ -324,8 +329,29 @@ PagePL {
                                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
                                 color: glayout.textColor
                                 font.pixelSize: styler.themeFontSizeMedium
-                                text: model.legTime
+                                text: visible ? model.legTime : ""
                                 visible: glayout.hasRow3
+                            }
+
+                            LabelPL {
+                                id: lr4
+                                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                                Layout.fillWidth: true
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                horizontalAlignment: Text.AlignLeft
+                                text: visible ? app.tr("Arrived") : ""
+                                visible: glayout.hasRow4
+                            }
+
+                            LabelPL {
+                                id: t4
+                                Layout.alignment: Qt.AlignRight | Qt.AlignTop
+                                Layout.columnSpan: glayout.columns==3 ? 2 : 1
+                                color: glayout.textColor
+                                font.pixelSize: styler.themeFontSizeMedium
+                                text: visible ? model.arrivedAt : ""
+                                visible: glayout.hasRow4
                             }
                         }
                     }

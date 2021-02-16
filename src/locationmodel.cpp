@@ -30,27 +30,37 @@ QHash<int, QByteArray> LocationModel::roleNames() const
       { RoleNames::EtaRole, QByteArrayLiteral("eta") },
       { RoleNames::LegDistRole, QByteArrayLiteral("legDist") },
       { RoleNames::LegTimeRole, QByteArrayLiteral("legTime") },
+      { RoleNames::ArrivedRole, QByteArrayLiteral("arrived") },
+      { RoleNames::ArrivedAtRole, QByteArrayLiteral("arrivedAt") },
+      { RoleNames::ActiveIndexRole, QByteArrayLiteral("activeIndex") },
     };
 }
 
 QVariant LocationModel::data(const QModelIndex &index, int role) const
 {
   const int row = index.row();
-  if (!index.isValid() || row < 0 || row >= m_locations.size())
+  if (!index.isValid() || row < 0 || row >= m_locations.size() + m_locations_arrived.size())
     return {};
 
-  const Location &loc = m_locations[row];
+  const Location *lp;
+  if (row < 1)
+    lp = &m_locations[row];
+  else if (row - 1 < m_locations_arrived.size())
+    lp = &m_locations_arrived[row - 1];
+  else
+    lp = &m_locations[row - m_locations_arrived.size()];
+  const Location &loc = *lp;
+
+  bool is_final = (row == m_locations.size() + m_locations_arrived.size() - 1 &&
+                   m_locations.length() >= 1 && m_hasDestination);
+
   switch (role) {
     case RoleNames::DestinationRole:
-      return loc.destination ||
-          (row == m_locations.length()-1 &&
-           m_locations.length() >= 1 && m_hasDestination);
+      return loc.destination || is_final;
     case RoleNames::OriginRole:
       return row == 0 && m_locations.length() >= 1 && m_hasOrigin;
     case RoleNames::FinalRole:
-      return
-          row == m_locations.length()-1 &&
-          m_locations.length() >= 1 && m_hasDestination;
+      return is_final;
     case RoleNames::TextRole:
       return loc.name;
     case RoleNames::XRole:
@@ -67,6 +77,17 @@ QVariant LocationModel::data(const QModelIndex &index, int role) const
       return loc.legDist;
     case RoleNames::LegTimeRole:
       return loc.legTime;
+    case RoleNames::ArrivedRole:
+      return loc.arrived;
+    case RoleNames::ArrivedAtRole:
+      return loc.arrivedAt;
+    case RoleNames::ActiveIndexRole:
+      {
+        if (row == 0) return row;
+        if (row - 1 < m_locations_arrived.size())
+          return -1;
+        return row - m_locations_arrived.size();
+      }
     }
 
   return {};
@@ -74,7 +95,7 @@ QVariant LocationModel::data(const QModelIndex &index, int role) const
 
 int LocationModel::rowCount(const QModelIndex &parent) const
 {
-  return parent.isValid() ? 0 : m_locations.size();
+  return parent.isValid() ? 0 : (m_locations.size() + m_locations_arrived.size());
 }
 
 void LocationModel::dropCache()
@@ -82,22 +103,30 @@ void LocationModel::dropCache()
   m_locations_cached_ready = false;
 }
 
+static
+QVariantMap toVarMap(const Location &l)
+{
+  QVariantMap loc;
+  loc["text"] = l.name;
+  loc["x"] = l.longitude;
+  loc["y"] = l.latitude;
+  loc["destination"] = (l.destination ? 1 : 0);
+  loc["arrived"] = (l.arrived ? 1 : 0);
+  return loc;
+}
+
 QVariantList LocationModel::list()
 {
-  if (m_locations_cached_ready && m_locations_cached.size()==m_locations.size())
+  if (m_locations_cached_ready &&
+      m_locations_cached.size() == (m_locations.size() + m_locations_arrived.size()))
     return m_locations_cached;
 
   QVariantList locations;
+  if (m_locations.size() < 1)
+    return locations; // empty and arrived is empty too
 
   for (auto l: m_locations)
-    {
-      QVariantMap loc;
-      loc["text"] = l.name;
-      loc["x"] = l.longitude;
-      loc["y"] = l.latitude;
-      loc["destination"] = (l.destination ? 1 : 0);
-      locations.append(loc);
-    }
+    locations.append( toVarMap(l) );
 
   // set origin and final destinations
   if (m_locations.length() >= 1 && m_hasOrigin)
@@ -115,6 +144,17 @@ QVariantList LocationModel::list()
       locations.last() = lf;
     }
 
+  // insert arrived destinations if available
+  if (m_locations_arrived.length() > 0 && locations.length() >= 2)
+    {
+      QVariantList locfull = { locations[0] };
+      for (auto l: m_locations_arrived)
+        locfull.append( toVarMap(l) );
+      for (int i = 1; i < locations.length(); ++i)
+        locfull.append(locations[i]);
+      locations = locfull;
+    }
+
   m_locations_cached = locations;
   m_locations_cached_ready = true;
   return locations;
@@ -122,6 +162,9 @@ QVariantList LocationModel::list()
 
 void LocationModel::checkArrivalByPosition(const S2Point &point, double accuracy)
 {
+  QList<Location> freshArrivals;
+  bool reset = false;
+
   // clear destination if we are close to it
   for (int i=m_locations.length()-1; i>=0; --i)
     if ( m_locations[i].destination &&
@@ -130,14 +173,30 @@ void LocationModel::checkArrivalByPosition(const S2Point &point, double accuracy
       {
         qDebug() << "Arrived to location" << i << m_locations[i].name;
         emit locationArrived(m_locations[i].name, m_locations[i].destination);
-        beginResetModel();
+
+        if (!reset) beginResetModel();
+        reset = true;
+
+        Location arr = m_locations[i];
+        QTime time = QTime::currentTime();
+        arr.arrived = true;
+        arr.arrivedAt = QLocale::system().toString(time, QLocale::NarrowFormat);
+        freshArrivals.prepend(arr);
+
         m_locations.removeAt(i);
-        endResetModel();
       }
+
+  for (auto loc: freshArrivals)
+    m_locations_arrived.append(loc);
+
+  if (reset) endResetModel();
 }
 
 void LocationModel::checkArrivalByRouteDistance(double length_on_route, double accuracy)
 {
+  QList<Location> freshArrivals;
+  bool reset = false;
+
   for (int i=m_locations.length()-1; i>=0; --i)
     if (!m_locations[i].origin && !m_locations[i].final &&
         ( (!m_locations[i].destination &&
@@ -154,10 +213,23 @@ void LocationModel::checkArrivalByRouteDistance(double length_on_route, double a
 
         qDebug() << "Arrived to location along route" << i << m_locations[i].name;
         emit locationArrived(m_locations[i].name, m_locations[i].destination);
-        beginResetModel();
+
+        if (!reset) beginResetModel();
+        reset = true;
+
+        Location arr = m_locations[i];
+        QTime time = QTime::currentTime();
+        arr.arrived = true;
+        arr.arrivedAt = QLocale::system().toString(time, QLocale::NarrowFormat);
+        freshArrivals.prepend(arr);
+
         m_locations.removeAt(i);
-        endResetModel();
       }
+
+  for (auto loc: freshArrivals)
+    m_locations_arrived.append(loc);
+
+  if (reset) endResetModel();
 }
 
 bool LocationModel::hasMissedDest(double length_on_route, double accuracy)
@@ -292,6 +364,7 @@ void LocationModel::clear()
   SET(hasDestination, false);
   SET(hasOrigin, false);
   m_locations.clear();
+  m_locations_arrived.clear();
   endResetModel();
 }
 
@@ -312,31 +385,50 @@ void LocationModel::set(const QVariantList &locations)
   if (m_locations.length() > 0 && !m_locations.back().origin)
     SET(hasDestination, m_locations.back().destination);
 
+  m_locations_arrived.clear();
+
   endResetModel();
 }
 
-void LocationModel::set(const QList<Location> &locations)
+void LocationModel::set(const QList<Location> &locations, bool merge)
 {
   beginResetModel();
+
   SET(hasOrigin, true);
   SET(hasDestination, true);
-  m_locations = locations;
+
+  if (!merge || m_locations.length() < 2 || locations.length() < 2)
+    {
+      qDebug() << "Reset locations" << (!merge) << m_locations.length() << locations.length();
+      m_locations = locations;
+      m_locations_arrived.clear();
+    }
+  else
+    {
+      // use original origin and incorporate rest of the route
+      // into the locations list
+      QList<Location> m = { m_locations[0] };
+      m.append(locations.mid(1));
+      m_locations = m;
+    }
+
   endResetModel();
 }
 
 void LocationModel::fillLegInfo()
 {
-  if (m_locations.length() > 2)
-    for (int i=1; i < m_locations.length(); ++i)
-      {
-        const Location &locPrev = m_locations[i-1];
-        Location &loc = m_locations[i];
+  if (m_locations.length() <= 2) return;
 
-        loc.legDist = m_navigator->distanceToStr(loc.length_on_route_m -
-                                                 locPrev.length_on_route_m);
-        loc.legTime = m_navigator->timeToStr(loc.duration_on_route -
-                                             locPrev.duration_on_route);
-      }
+  for (int i=1; i < m_locations.length(); ++i)
+    {
+      const Location &locPrev = m_locations[i-1];
+      Location &loc = m_locations[i];
+
+      loc.legDist = m_navigator->distanceToStr(loc.length_on_route_m -
+                                               locPrev.length_on_route_m);
+      loc.legTime = m_navigator->timeToStr(loc.duration_on_route -
+                                           locPrev.duration_on_route);
+    }
 
   QModelIndex index0 = createIndex(1, 0);
   QModelIndex index1 = createIndex(m_locations.length(), 0);

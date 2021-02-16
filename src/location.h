@@ -38,6 +38,10 @@ struct Location {
   QString eta;
   QString legDist;
   QString legTime;
+
+  // arrival info
+  bool arrived{false};
+  QString arrivedAt;
 };
 
 #endif // LOCATION_H

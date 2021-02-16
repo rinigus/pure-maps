@@ -620,6 +620,7 @@ MapboxMap {
         data.type = "FeatureCollection";
         data.features = []
         var locations = app.navigator.locations;
+        var counter = 0;
         for (var i=0; i < locations.length; ++i) {
             var l = locations[i];
             var symbol;
@@ -637,8 +638,12 @@ MapboxMap {
                 name = app.tr("Origin");
             else if (l.final)
                 name = app.tr("Final destination");
-            else
-                name = app.tr("#%1", i);
+            else if (l.arrived)
+                name = app.tr("✓");
+            else {
+                counter = counter + 1;
+                name = app.tr("#%1", counter);
+            }
 
             data.features.push(_updateLocationsAddPoint(l, name, symbol));
         }
