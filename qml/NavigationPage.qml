@@ -228,7 +228,7 @@ PagePL {
                                         Math.max(lr1.implicitWidth + d1.implicitWidth + t1.implicitWidth,
                                                  lr2.implicitWidth + t2.implicitWidth,
                                                  lr3.implicitWidth + d3.implicitWidth + t3.implicitWidth,
-                                                 lr4.implicitWidth + t4.implicitWidth,);
+                                                 lr4.implicitWidth + t4.implicitWidth);
                                 var col2 =
                                         columnSpacing +
                                         Math.max(lr1.implicitWidth, lr2.implicitWidth,
