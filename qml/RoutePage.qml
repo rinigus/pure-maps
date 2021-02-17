@@ -94,6 +94,26 @@ DialogPL {
                     waypoints.move(i, waypoints.count - 1, 1);
             }
         }
+
+        PageMenuItemPL {
+            iconName: styler.iconNavigateTo
+            text: app.tr("Clear route")
+            onClicked: {
+                navigator.clearRoute();
+                page.from = app.getPosition();
+                page.fromText = app.tr("Current position");
+                page.fromQuery = "";
+                page.to = null;
+                page.toQuery = "";
+                page.toText = "";
+                page.waypoints.clear();
+                page.waypointsEnabled = false;
+                page.params = {};
+                columnRouter.settings && columnRouter.settings.destroy();
+                columnRouter.settings = null;
+                columnRouter.addSettings();
+            }
+        }
     }
 
     property var    columnRouter
