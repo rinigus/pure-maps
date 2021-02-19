@@ -44,7 +44,7 @@ Item {
     property alias  manTime:   navigatorBase.manTime
     property alias  narrative: navigatorBase.narrative
     property alias  nextIcon:  navigatorBase.nextIcon
-    property string nextLocationDestination: locationsModel.nextLocationDestination
+    property bool   nextLocationDestination: locationsModel.nextLocationDestination
     property string nextLocationDist: locationsModel.nextLocationDist
     property string nextLocationEta: locationsModel.nextLocationEta
     property string nextLocationTime: locationsModel.nextLocationTime
