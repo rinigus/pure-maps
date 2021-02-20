@@ -38,6 +38,18 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.6.0" date="2021-02-20">
+     <description>
+       <ul>
+         <li>Route manipulation through selection of point of interest on map</li>
+         <li>Use scrollable panel when showing data regarding points of interest</li>
+         <li>Show remaining distance and time to the upcoming waypoint on the main screen</li>
+         <li>Keep track on arrivals to intermediate waypoints</li>
+         <li>Bugfixes</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.5.0" date="2021-02-03">
      <description>
        <ul>

@@ -1,3 +1,13 @@
+2021-02-20: Pure Maps 2.6
+=========================
+
+* Route manipulation through selection of point of interest on map
+* Use scrollable panel when showing data regarding points of interest
+* Show remaining distance and time to the upcoming waypoint on the main screen
+* Keep track on arrivals to intermediate waypoints
+* Bugfixes
+* Update translations
+
 2021-02-03: Pure Maps 2.5
 =========================
 
