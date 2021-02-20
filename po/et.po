@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-02-20 16:10+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2021\n"
 "Language-Team: Estonian (https://www.transifex.com/rinigus/teams/89597/et/)\n"
@@ -611,7 +611,7 @@ msgstr "Lõppsihtkoht"
 
 #: qml/Map.qml:642
 msgid "✓"
-msgstr ""
+msgstr "✓"
 
 #: qml/Map.qml:645
 msgid "#%1"
@@ -764,7 +764,7 @@ msgstr "Lõik"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "Jõudsid kohale"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
@@ -1765,7 +1765,7 @@ msgstr "Pööra teekond teistpidi"
 
 #: qml/RoutePage.qml:100
 msgid "Clear route"
-msgstr ""
+msgstr "Kustuta teekond"
 
 #: qml/RoutePage.qml:173
 msgid "From"

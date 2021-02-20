@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-02-20 16:10+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Åke Engelbrektson, 2021\n"
 "Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
@@ -610,7 +610,7 @@ msgstr "Slutdestination"
 
 #: qml/Map.qml:642
 msgid "✓"
-msgstr ""
+msgstr "✓"
 
 #: qml/Map.qml:645
 msgid "#%1"
@@ -763,7 +763,7 @@ msgstr "Delrutt"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "Ankom"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
@@ -1763,7 +1763,7 @@ msgstr "Omvänd rutt"
 
 #: qml/RoutePage.qml:100
 msgid "Clear route"
-msgstr ""
+msgstr "Rensa rutten"
 
 #: qml/RoutePage.qml:173
 msgid "From"

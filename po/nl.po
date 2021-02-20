@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-02-20 16:10+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
@@ -611,7 +611,7 @@ msgstr "Eindbestemming"
 
 #: qml/Map.qml:642
 msgid "✓"
-msgstr ""
+msgstr "✓"
 
 #: qml/Map.qml:645
 msgid "#%1"
@@ -764,7 +764,7 @@ msgstr "Deel"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "Bestemming bereikt"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
@@ -1771,7 +1771,7 @@ msgstr "Route omdraaien"
 
 #: qml/RoutePage.qml:100
 msgid "Clear route"
-msgstr ""
+msgstr "Route wissen"
 
 #: qml/RoutePage.qml:173
 msgid "From"
