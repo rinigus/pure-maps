@@ -73,7 +73,6 @@ ApplicationWindowPL {
     property var    pois: null
     property bool   poiActive: false
     property bool   portrait: screenHeight >= screenWidth
-    property var    position: gps.position
     property var    remorse: null
     property var    rootPage: null
     // used to track current search and other operations with kept states (temp pois, for example)
@@ -198,7 +197,7 @@ ApplicationWindowPL {
 
     function getPosition() {
         // Return the coordinates of the current position.
-        return [app.position.coordinate.longitude, app.position.coordinate.latitude];
+        return [gps.position.coordinate.longitude, gps.position.coordinate.latitude];
     }
 
     function hideMenu(menutext) {

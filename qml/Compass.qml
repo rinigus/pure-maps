@@ -39,15 +39,15 @@ Item {
     }
 
     Connections {
-        target: app
+        target: gps
         onPositionChanged: {
             if (!cmp.active) return;
-            if (_last_call && app.position.timestamp - _last_call < 1000*300 )
+            if (_last_call && gps.position.timestamp - _last_call < 1000*300 )
                 return;
-            _last_call = app.position.timestamp;
+            _last_call = gps.position.timestamp;
             py.call("poor.app.magfield.declination",
-                    [app.position.coordinate.latitude,
-                     app.position.coordinate.longitude],
+                    [gps.position.coordinate.latitude,
+                     gps.position.coordinate.longitude],
                     function (dec) {
                        if (Math.abs(cmp.declination-dec) > 0.1)
                            cmp.declination = dec;

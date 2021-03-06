@@ -141,11 +141,11 @@ Item {
 
         function updatePosition() {
             if (destReached) return; // no more updates
-            navigatorBase.setPosition(app.position.coordinate,
+            navigatorBase.setPosition(gps.position.coordinate,
                                       gps.directionDeviceValid ? gps.directionDevice : gps.direction,
-                                      app.position.horizontalAccuracy,
-                                      app.position.horizontalAccuracyValid &&
-                                      app.position.latitudeValid && app.position.longitudeValid &&
+                                      gps.position.horizontalAccuracy,
+                                      gps.position.horizontalAccuracyValid &&
+                                      gps.position.latitudeValid && gps.position.longitudeValid &&
                                       gps.directionValid);
         }
     }
@@ -159,7 +159,7 @@ Item {
     }
 
     Connections {
-        target: app
+        target: gps
         onPositionChanged: navigatorBase.updatePosition()
     }
 

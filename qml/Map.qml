@@ -222,7 +222,7 @@ MapboxMap {
         // daytime bias timer
         interval: 1000*60
         repeat: true
-        running: app.conf.basemapAutoLight==="sunrise/sunset" && position.latitudeValid && position.longitudeValid //false
+        running: app.conf.basemapAutoLight==="sunrise/sunset" && gps.position.latitudeValid && gps.position.longitudeValid //false
 
         property bool lastLight: false
 
@@ -231,10 +231,10 @@ MapboxMap {
         onTriggered: update()
 
         function update(force) {
-            if (app.conf.basemapAutoLight!=="sunrise/sunset" || !position.latitudeValid || !position.longitudeValid)
+            if (app.conf.basemapAutoLight!=="sunrise/sunset" || !gps.position.latitudeValid || !gps.position.longitudeValid)
                 return;
-            py.call("poor.app.sun.day", [position.coordinate.latitude,
-                                         position.coordinate.longitude],
+            py.call("poor.app.sun.day", [gps.position.coordinate.latitude,
+                                         gps.position.coordinate.longitude],
                     function(light) {
                         if (force || lastLight !== light) {
                             py.call("poor.app.basemap.set_bias", [{'light': light ? 'day' : 'night'}]);
@@ -249,6 +249,10 @@ MapboxMap {
         onModeChanged: setMode()
         onPortraitChanged: map.updateMargins()
         onTransportModeChanged: setBias()
+    }
+
+    Connections {
+        target: gps
         onPositionChanged: {
             map.autoCenter && map.centerOnPosition();
         }
@@ -340,9 +344,8 @@ MapboxMap {
 
     function centerOnPosition() {
         // Center on the current position.
-        map.setCenter(
-                    app.position.coordinate.longitude,
-                    app.position.coordinate.latitude);
+        map.setCenter( gps.position.coordinate.longitude,
+                       gps.position.coordinate.latitude );
     }
 
     function configureLayers() {

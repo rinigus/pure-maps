@@ -56,20 +56,21 @@ Item {
         onDirectionChanged: marker.updateDirection()
         onMetersPerPixelChanged: marker.updateUncertainty()
     }
+
     Connections {
-        target: app
+        target: gps
         onPositionChanged: {
             if (!positionShown || !marker._animatePosition) {
-                positionShown = QtPositioning.coordinate(app.position.coordinate.latitude, app.position.coordinate.longitude);
-                marker.position = QtPositioning.coordinate(app.position.coordinate.latitude, app.position.coordinate.longitude);
+                positionShown = QtPositioning.coordinate(gps.position.coordinate.latitude, gps.position.coordinate.longitude);
+                marker.position = QtPositioning.coordinate(gps.position.coordinate.latitude, gps.position.coordinate.longitude);
                 animate.to = marker.position;
             } else {
                 animate.complete();
                 marker.position = animate.to;
                 animate.from = QtPositioning.coordinate(marker.position.latitude, marker.position.longitude);
-                animate.to = QtPositioning.coordinate(app.position.coordinate.latitude, app.position.coordinate.longitude);
+                animate.to = QtPositioning.coordinate(gps.position.coordinate.latitude, gps.position.coordinate.longitude);
                 animate.start();
-                marker.position = QtPositioning.coordinate(app.position.coordinate.latitude, app.position.coordinate.longitude);
+                marker.position = QtPositioning.coordinate(gps.position.coordinate.latitude, gps.position.coordinate.longitude);
             }
         }
     }
@@ -124,7 +125,7 @@ Item {
     }
 
     function initLayers() {
-        map.addSourcePoint(marker.source, app.position.coordinate);
+        map.addSourcePoint(marker.source, gps.position.coordinate);
         map.addLayer(marker.layers.layerUncertainty,
                      {"type": "circle", "source": marker.source},
                      map.firstLabelLayer);
@@ -147,9 +148,9 @@ Item {
     }
 
     function updateUncertainty() {
-        if (app.position.horizontalAccuracyValid)
+        if (gps.position.horizontalAccuracyValid)
             map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius",
-                                 app.position.horizontalAccuracy / map.metersPerPixel / map.pixelRatio);
+                                 gps.position.horizontalAccuracy / map.metersPerPixel / map.pixelRatio);
         else
             map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius", 0);
     }
