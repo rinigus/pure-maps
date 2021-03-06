@@ -325,8 +325,8 @@ Item {
         if (!query || query === geo._prevAutocompleteQuery) return;
         geo._autocompletePending = true;
         geo._prevAutocompleteQuery = query;
-        var x = gps.position.coordinate.longitude || 0;
-        var y = gps.position.coordinate.latitude || 0;
+        var x = gps.position.coordinate.longitude;
+        var y = gps.position.coordinate.latitude;
         py.call("poor.app.geocoder.autocomplete", [query, x, y], function(results) {
             if (!geo._autocompletePending) return;
 
@@ -352,8 +352,8 @@ Item {
         setSearchResults([]);
         _autocompletePending = false; // skip any ongoing autocomplete search
         py.call_sync("poor.app.history.add_place", [query]);
-        var x = gps.position.coordinate.longitude || 0;
-        var y = gps.position.coordinate.latitude || 0;
+        var x = gps.position.coordinate.longitude;
+        var y = gps.position.coordinate.latitude;
         geo.update();
         py.call("poor.app.geocoder.geocode", [query, x, y, null], function(results) {
             // skip, new search or autocomplete was started

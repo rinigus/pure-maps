@@ -123,8 +123,8 @@ DialogListPL {
         if (query === dialog.prevAutocompleteQuery) return;
         dialog.autocompletePending = true;
         dialog.prevAutocompleteQuery = query;
-        var x = gps.position.coordinate.longitude || 0;
-        var y = gps.position.coordinate.latitude || 0;
+        var x = gps.position.coordinate.longitude;
+        var y = gps.position.coordinate.latitude;
         py.call("poor.app.guide.autocomplete_type", [query], function(results) {
             dialog.autocompletePending = false;
             if (!dialog.active) return;
