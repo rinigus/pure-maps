@@ -1,5 +1,5 @@
 {
-  "clickable_minimum_required": "6.13.0",
+  "clickable_minimum_required": "6.23.3",
   "builder": "qmake",
   "kill": "pure-maps",
   "build_args": [

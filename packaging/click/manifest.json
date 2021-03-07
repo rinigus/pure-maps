@@ -11,5 +11,5 @@
     },
     "version": "2.6.0",
     "maintainer": "Rinigus <rinigus.git@gmail.org>",
-    "framework" : "ubuntu-sdk-16.04"
+    "framework" : "@CLICK_FRAMEWORK@"
 }
