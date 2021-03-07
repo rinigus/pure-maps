@@ -1,0 +1,10 @@
+{
+    "attribution": {
+        "© OpenSlopeMap": "https://openslopemap.org"
+    },
+    "format": "raster",
+    "name": "OpenSlopeMap",
+    "profiles": ["mixed", "online"],
+    "tile_size": 256,
+    "tile_url": "https://wmts.openslopemap.org/wmts/OSloMap_HR_AlpsEast_16/{z}/{x}/{y}.png"
+}
