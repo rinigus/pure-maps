@@ -21,7 +21,7 @@
  <provides>
   <binary>pure-maps</binary>
  </provides>
- <project_license>GPL-3.0+</project_license>
+ <project_license>GPL-3.0-or-later</project_license>
  <screenshots>
   <screenshot type="default">
    <caption>Main screen of the application</caption>
