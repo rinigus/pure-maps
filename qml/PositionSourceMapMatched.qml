@@ -137,9 +137,9 @@ Item {
     // interaction with OSM Scout Server via D-Bus
     DBusInterface {
         id: scoutbus
-        service: "org.osm.scout.server1"
-        path: "/org/osm/scout/server1/mapmatching1"
-        iface: "org.osm.scout.server1.mapmatching1"
+        service: "io.github.rinigus.OSMScoutServer"
+        path: "/io/github/rinigus/OSMScoutServer/mapmatching"
+        iface: "io.github.rinigus.OSMScoutServer.mapmatching"
 
         property bool available: false
         property int  mode: 0
