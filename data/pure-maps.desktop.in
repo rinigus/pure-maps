@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Pure Maps
-Exec=EXE %u
-Icon=NAME
+Exec=@CMAKE_INSTALL_FULL_BINDIR@/@APP_NAME@ %u
+Icon=@APP_NAME@
 Type=Application
 MimeType=x-scheme-handler/geo
 X-Ubuntu-Touch=true

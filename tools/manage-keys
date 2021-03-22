@@ -27,23 +27,22 @@ if not inject and not strip_allowed:
 if inject: print('Injecting keys into %s' % root)
 else: print( 'Stripping keys from %s' % root)
 
-for dname in ['qml', 'geocoders', 'guides', 'maps', 'poor', 'routers']:
-    for ext in ["py", "qml", "json"]:
-        for fname in glob.glob(os.path.join(root, dname, "*." + ext)):
-            with open(fname, 'r', encoding='utf-8') as f:
-                s = f.read()
-            keys = ""
-            for k, v in Keys.items():
-                if inject:
-                    old = k
-                    new = v
-                else:
-                    old = v
-                    new = k
-                if s.find(old) >= 0:
-                    keys += k + " "
-                    s = s.replace(old, new)
-            if len(keys) > 0:
-                print(fname, ":", keys)
-                with open(fname, 'w') as f:
-                    f.write(s)
+for ext in ["py", "qml", "json"]:
+    for fname in glob.glob(os.path.join(root, "*." + ext)):
+        with open(fname, 'r', encoding='utf-8') as f:
+            s = f.read()
+        keys = ""
+        for k, v in Keys.items():
+            if inject:
+                old = k
+                new = v
+            else:
+                old = v
+                new = k
+            if s.find(old) >= 0:
+                keys += k + " "
+                s = s.replace(old, new)
+        if len(keys) > 0:
+            print(fname, ":", keys)
+            with open(fname, 'w') as f:
+                f.write(s)
