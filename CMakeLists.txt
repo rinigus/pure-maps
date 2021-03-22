@@ -42,7 +42,7 @@ elseif(PROFILE STREQUAL "Offline")
 	set(DEFAULT_GUIDE "osmscout" CACHE STRING "Default guide")
 	set(DEFAULT_ROUTER "osmscout" CACHE STRING "Default router")
 else()
-	message(ERROR "Please specify a supported profile using -DPROFILE as CMake option!")
+	message(ERROR " Please specify a supported profile using -DPROFILE as CMake option!")
 	return()
 endif()
 
