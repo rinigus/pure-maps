@@ -22,4 +22,13 @@ git add NEWS.md packaging/click/manifest.json packaging/pure-maps.appdata.xml pu
 git status
 ```
 
+Make a release at Github and generate corresponding vendored archive:
+
+```
+PM_VERSION=2.6.5
+git-archive-all -v --prefix=pure-maps-${PM_VERSION} pure-maps-${PM_VERSION}.tar.gz
+```
+
+Upload the archive by attaching it to the release.
+
 After that, trigger update at Flathub and OBS.
