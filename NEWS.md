@@ -1,3 +1,16 @@
+2021-03-30: Pure Maps 2.6.5
+===========================
+
+* Fix crash induced by absent location coordinates
+* Add OpenSlopeMap tiles provider [henning-schild]
+* Use DBus API introduced in 2.0 of OSM Scout Server
+* [ubuntu touch] Remove tmp in cache workaround [jonnius]
+* [ubuntu touch] Packaging improvements [jonnius]
+* Update license identifier [Newbyte]
+* Bugfixes
+* Update translations
+
+
 2021-02-20: Pure Maps 2.6
 =========================
 

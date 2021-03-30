@@ -38,6 +38,20 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.6.5" date="2021-03-30">
+     <description>
+       <ul>
+         <li>Fix crash induced by absent location coordinates</li>
+         <li>Add OpenSlopeMap tiles provider [henning-schild]</li>
+         <li>Use DBus API introduced in 2.0 of OSM Scout Server</li>
+         <li>[ubuntu touch] Remove tmp in cache workaround [jonnius]</li>
+         <li>[ubuntu touch] Packaging improvements [jonnius]</li>
+         <li>Update license identifier [Newbyte]</li>
+         <li>Bugfixes</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.6.0" date="2021-02-20">
      <description>
        <ul>
