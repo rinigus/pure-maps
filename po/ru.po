@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-03-30 21:01+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rinigus/teams/89597/ru/)\n"
@@ -601,20 +601,20 @@ msgstr "Смешанный"
 msgid "Stop navigation to select POI"
 msgstr "Остановить навигацию для выбора точек интереса"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
 #: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr "Пункт отправления"
 
-#: qml/Map.qml:640 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
 msgstr "Конечный пункт назначения"
 
-#: qml/Map.qml:642
-msgid "✓"
-msgstr ""
-
 #: qml/Map.qml:645
+msgid "✓"
+msgstr "✓"
+
+#: qml/Map.qml:648
 msgid "#%1"
 msgstr "#%1"
 
@@ -684,22 +684,22 @@ msgstr "Прокладывать маршрут"
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:217
 msgid "(D)"
-msgstr ""
+msgstr "(Пункт Назначения)"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:219
 msgid "(W)"
-msgstr ""
+msgstr "(Промежуточный Пункт)"
 
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:310
 msgid "(D) ETA"
-msgstr ""
+msgstr "(Пункт Назначения) Расчетное Время Прибытия"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:312
 msgid "(W) ETA"
-msgstr ""
+msgstr "(Промежуточный Пункт) Расчетное Время Прибытия"
 
 #: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:291
 msgid "ETA"
@@ -761,11 +761,11 @@ msgstr "Осталось"
 #. as intermediate destinations on the route
 #: qml/NavigationPage.qml:314
 msgid "Leg"
-msgstr ""
+msgstr "Этап"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "Приехал"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
@@ -797,7 +797,7 @@ msgstr ""
 
 #: qml/Navigator.qml:185
 msgid "Routing failed: current position not known"
-msgstr ""
+msgstr "Ошибка маршрутизации: текущая позиция неизвестна"
 
 #: qml/Navigator.qml:191
 msgid "Rerouting position"
@@ -930,35 +930,35 @@ msgstr "Больше информации: %1"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as or Replace"
-msgstr ""
+msgstr "Установить как или Заменить"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as"
-msgstr ""
+msgstr "Установить как"
 
 #: qml/PoiBlock.qml:290
 msgid "Insert as"
-msgstr ""
+msgstr "Вставить как"
 
 #: qml/PoiBlock.qml:295
 msgid "New origin"
-msgstr ""
+msgstr "Новое начало отсчета"
 
 #: qml/PoiBlock.qml:308
 msgid "New final destination"
-msgstr ""
+msgstr "Новый конечный пункт назначения"
 
 #: qml/PoiBlock.qml:320
 msgid "First intermediate destination"
-msgstr ""
+msgstr "Первый промежуточный пункт назначения"
 
 #: qml/PoiBlock.qml:333
 msgid "Last intermediate destination"
-msgstr ""
+msgstr "Последний промежуточный пункт назначения"
 
 #: qml/PoiBlock.qml:334
 msgid "Intermediate destination"
-msgstr ""
+msgstr "Промежуточный пункт назначения"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -1768,7 +1768,7 @@ msgstr "Обратный маршрут"
 
 #: qml/RoutePage.qml:100
 msgid "Clear route"
-msgstr ""
+msgstr "Очистить маршрут"
 
 #: qml/RoutePage.qml:173
 msgid "From"

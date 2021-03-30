@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-03-30 21:01+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Anne017, 2021\n"
 "Language-Team: French (https://www.transifex.com/rinigus/teams/89597/fr/)\n"
@@ -604,20 +604,20 @@ msgstr "Les deux"
 msgid "Stop navigation to select POI"
 msgstr "Arrêter la navigation vers le point d'intérêt sélectionné"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
 #: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr "Départ"
 
-#: qml/Map.qml:640 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
 msgstr "Destination"
 
-#: qml/Map.qml:642
-msgid "✓"
-msgstr ""
-
 #: qml/Map.qml:645
+msgid "✓"
+msgstr "✓"
+
+#: qml/Map.qml:648
 msgid "#%1"
 msgstr "#%1"
 
@@ -768,7 +768,7 @@ msgstr "Tronçon"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "Vous êtes arrivé"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
@@ -1780,7 +1780,7 @@ msgstr "Itinéraire inverse"
 
 #: qml/RoutePage.qml:100
 msgid "Clear route"
-msgstr ""
+msgstr "Effacer la route"
 
 #: qml/RoutePage.qml:173
 msgid "From"

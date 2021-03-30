@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-20 16:10+0200\n"
+"POT-Creation-Date: 2021-03-30 21:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -556,20 +556,20 @@ msgstr ""
 msgid "Stop navigation to select POI"
 msgstr ""
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
 #: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr ""
 
-#: qml/Map.qml:640 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
 msgstr ""
 
-#: qml/Map.qml:642
+#: qml/Map.qml:645
 msgid "✓"
 msgstr ""
 
-#: qml/Map.qml:645
+#: qml/Map.qml:648
 msgid "#%1"
 msgstr ""
 

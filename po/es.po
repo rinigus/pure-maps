@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-03-30 21:01+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Carmen Fernández B., 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
@@ -600,20 +600,20 @@ msgstr "Mixto"
 msgid "Stop navigation to select POI"
 msgstr "Detener navegación para seleccionar POI"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
 #: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr "Origen"
 
-#: qml/Map.qml:640 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
 msgstr "Destino final"
 
-#: qml/Map.qml:642
-msgid "✓"
-msgstr ""
-
 #: qml/Map.qml:645
+msgid "✓"
+msgstr "✓"
+
+#: qml/Map.qml:648
 msgid "#%1"
 msgstr "#%1"
 
@@ -683,22 +683,22 @@ msgstr "A la ruta"
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:217
 msgid "(D)"
-msgstr ""
+msgstr "(D)"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:219
 msgid "(W)"
-msgstr ""
+msgstr "(P)"
 
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:310
 msgid "(D) ETA"
-msgstr ""
+msgstr "(D) ETA"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:312
 msgid "(W) ETA"
-msgstr ""
+msgstr "(P) ETA"
 
 #: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:291
 msgid "ETA"
@@ -760,11 +760,11 @@ msgstr "Restante"
 #. as intermediate destinations on the route
 #: qml/NavigationPage.qml:314
 msgid "Leg"
-msgstr ""
+msgstr "Tramo"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "Has llegado"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
@@ -1772,7 +1772,7 @@ msgstr "Ruta inversa"
 
 #: qml/RoutePage.qml:100
 msgid "Clear route"
-msgstr ""
+msgstr "Limpiar ruta"
 
 #: qml/RoutePage.qml:173
 msgid "From"

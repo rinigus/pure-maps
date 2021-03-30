@@ -6,16 +6,16 @@
 # Translators:
 # rinigus github, 2018
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2020
-# JR Fi <juho@reivo.fi>, 2020
+# JR Fi <juho@reivo.fi>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-03-30 21:01+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: JR Fi <juho@reivo.fi>, 2020\n"
+"Last-Translator: JR Fi <juho@reivo.fi>, 2021\n"
 "Language-Team: Finnish (https://www.transifex.com/rinigus/teams/89597/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -498,7 +498,7 @@ msgstr "Viimeiset haut (%1)"
 
 #: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:54
 msgid "Change provider (%1)"
-msgstr ""
+msgstr "Vaihda palveluntarjoajaa (%1)"
 
 #: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:85 qml/RootPage.qml:26
 msgid "Map"
@@ -563,6 +563,12 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Käytät yhteydettömän tilan käyttäjäprofiilia. Varmista, että sinulla on OSM "
+"Scout Server -palvelin asennettuna ja toiminnassa. Riippuen "
+"järjestelmästäsi, se on saatavissa sovelluskaupasta (OpenRepos Sailfish "
+"järjestelmässä, OpenStore UBPorts järjestelmässä), Flathub-pakettina tai "
+"jakeluversiosi pakettina. Katso <a href=\"https://rinigus.github.io"
+"/osmscout-server\">OSM Scout Serverin ohjeista</a> lisätietoja."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -596,22 +602,22 @@ msgstr "Yhdistetty tila"
 msgid "Stop navigation to select POI"
 msgstr "Lopeta navigointi valitaksesi kohdepisteen"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
 #: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr "Alkupiste"
 
-#: qml/Map.qml:640 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
-msgstr ""
-
-#: qml/Map.qml:642
-msgid "✓"
-msgstr ""
+msgstr "Määränpää kohde"
 
 #: qml/Map.qml:645
+msgid "✓"
+msgstr "✓"
+
+#: qml/Map.qml:648
 msgid "#%1"
-msgstr ""
+msgstr "#%1"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -650,7 +656,7 @@ msgstr "km/h"
 
 #: qml/NarrativeItem.qml:120
 msgid "Continue for %1 (%2)."
-msgstr ""
+msgstr "Jatka %1 (%2)."
 
 #: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
@@ -679,22 +685,22 @@ msgstr "Reitille"
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:217
 msgid "(D)"
-msgstr ""
+msgstr "(M)"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:219
 msgid "(W)"
-msgstr ""
+msgstr "(V)"
 
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:310
 msgid "(D) ETA"
-msgstr ""
+msgstr "(M) ASA"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:312
 msgid "(W) ETA"
-msgstr ""
+msgstr "(V) ASA"
 
 #: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:291
 msgid "ETA"
@@ -722,31 +728,31 @@ msgstr "Tilanne"
 
 #: qml/NavigationPage.qml:134
 msgid "Estimated time of arrival"
-msgstr "Arvioitu saapumisaika"
+msgstr "Arvioitu saapumisaika (ASA)"
 
 #: qml/NavigationPage.qml:161 qml/Navigator.qml:86
 msgid "Destination reached"
-msgstr ""
+msgstr "Kohde saavutettu"
 
 #: qml/NavigationPage.qml:173 qml/RoutePage.qml:188 qml/RoutePage.qml:195
 msgid "Destinations and waypoints"
-msgstr ""
+msgstr "Kohteet (K) ja reittipisteet (p)"
 
 #: qml/NavigationPage.qml:207
 msgid "Origin: %1"
-msgstr ""
+msgstr "Alkupiste: %1"
 
 #: qml/NavigationPage.qml:209
 msgid "Final destination: %1"
-msgstr ""
+msgstr "Määränpää kohde: %1"
 
 #: qml/NavigationPage.qml:212 qml/RoutePage.qml:276
 msgid "Destination: %1"
-msgstr ""
+msgstr "Kohde: %1"
 
 #: qml/NavigationPage.qml:213 qml/RoutePage.qml:277
 msgid "Waypoint: %1"
-msgstr ""
+msgstr "Reittipiste: %1"
 
 #: qml/NavigationPage.qml:262 qml/RouteOverallInfo.qml:95
 msgid "Remaining"
@@ -756,11 +762,11 @@ msgstr "Jäljellä"
 #. as intermediate destinations on the route
 #: qml/NavigationPage.qml:314
 msgid "Leg"
-msgstr ""
+msgstr "Etappi"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "Saapunut"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
@@ -772,11 +778,11 @@ msgstr "Käännös pois"
 
 #: qml/Navigator.qml:78
 msgid "Destination %1 reached"
-msgstr ""
+msgstr "Kohde %1 saavutettu"
 
 #: qml/Navigator.qml:79
 msgid "Waypoint %1 reached"
-msgstr ""
+msgstr "Reittipiste %1 saatuvettu"
 
 #: qml/Navigator.qml:129
 msgid "Voice navigation on"
@@ -792,19 +798,19 @@ msgstr ""
 
 #: qml/Navigator.qml:185
 msgid "Routing failed: current position not known"
-msgstr ""
+msgstr "Reititys ei onnistunut: nykyinen sijainti tuntematon"
 
 #: qml/Navigator.qml:191
 msgid "Rerouting position"
-msgstr ""
+msgstr "Uudelleenreitittää sijaintia"
 
 #: qml/Navigator.qml:199
 msgid "Routing"
-msgstr ""
+msgstr "Reititys"
 
 #: qml/Navigator.qml:210
 msgid "Routing failed: %1"
-msgstr ""
+msgstr "Reititys epäonnistui: %1"
 
 #: qml/Navigator.qml:215 src/navigator.cpp:995
 msgid "New route found"
@@ -812,11 +818,11 @@ msgstr "Uusi reitti löydetty"
 
 #: qml/Navigator.qml:216
 msgid "Route found"
-msgstr ""
+msgstr "Reitti löytynyt"
 
 #: qml/Navigator.qml:226 src/navigator.cpp:997
 msgid "Routing failed"
-msgstr ""
+msgstr "Reititys epäonnistui"
 
 #: qml/Navigator.qml:258 src/navigator.cpp:996
 msgid "Rerouting"
@@ -853,7 +859,7 @@ msgstr "Haetaan"
 
 #: qml/NearbyResultsPage.qml:131
 msgid "Nearby venues: %1 %2"
-msgstr ""
+msgstr "Läheiset paikat: %1 %2"
 
 #: qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
@@ -877,7 +883,7 @@ msgstr "Paikan nimi"
 
 #: qml/PlaceNamePage.qml:69
 msgid "Name or keyword"
-msgstr ""
+msgstr "Nimi tai avainsana"
 
 #: qml/PlaceNamePage.qml:82
 msgid "You can search for venues by name."
@@ -889,7 +895,7 @@ msgstr "Paikan tyyppi"
 
 #: qml/PlaceTypePage.qml:99
 msgid "You can search for venues by type."
-msgstr ""
+msgstr "Voit etsiä paikkoja tyypin mukaan."
 
 #: qml/PoiBlock.qml:96
 msgid "%1; %2"
@@ -925,35 +931,35 @@ msgstr "Lisätietoja: %1"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as or Replace"
-msgstr ""
+msgstr "Aseta nimellä tai Korvaa"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as"
-msgstr ""
+msgstr "Aseta nimellä"
 
 #: qml/PoiBlock.qml:290
 msgid "Insert as"
-msgstr ""
+msgstr "Liitä nimellä"
 
 #: qml/PoiBlock.qml:295
 msgid "New origin"
-msgstr ""
+msgstr "Uusi alkupiste"
 
 #: qml/PoiBlock.qml:308
 msgid "New final destination"
-msgstr ""
+msgstr "Uusi määränpää kohde"
 
 #: qml/PoiBlock.qml:320
 msgid "First intermediate destination"
-msgstr ""
+msgstr "Ensimmäinen välikohde"
 
 #: qml/PoiBlock.qml:333
 msgid "Last intermediate destination"
-msgstr ""
+msgstr "Viimeinen välikohde"
 
 #: qml/PoiBlock.qml:334
 msgid "Intermediate destination"
-msgstr ""
+msgstr "Välikohde"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -1292,8 +1298,8 @@ msgid ""
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
 "Vaihda automaattisesti karttalähteen eri karttatyyppien välillä riippuen "
-"tarpeesta. Esimerkiksi, näytä navigointiin sopiva katukartta, kun reittiä "
-"tehdään."
+"tarpeesta. Esimerkiksi, näytä navigointiin sopiva katukartta, kun "
+"reititetään."
 
 #: qml/PreferencesPage.qml:174
 msgid "Switch map modes"
@@ -1375,7 +1381,7 @@ msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
 msgstr ""
-"Poista koko historia, myös haut, reitit ja määränpäät. Huomaa, että "
+"Poista koko historia, myös haut, reitit ja kohteet. Huomaa, että "
 "kirjanmerkit säilyvät."
 
 #: qml/PreferencesPage.qml:277
@@ -1761,11 +1767,11 @@ msgstr "Seuraa minua"
 
 #: qml/RoutePage.qml:81
 msgid "Reverse route"
-msgstr ""
+msgstr "Käänteinen reitti"
 
 #: qml/RoutePage.qml:100
 msgid "Clear route"
-msgstr ""
+msgstr "Tyhjennä reitti"
 
 #: qml/RoutePage.qml:173
 msgid "From"
@@ -1777,7 +1783,7 @@ msgstr "Määräpaikka"
 
 #: qml/RoutePage.qml:181 qml/RoutePage.qml:335
 msgid "Destination"
-msgstr "Määränpää"
+msgstr "Kohde"
 
 #: qml/RoutePage.qml:196
 msgid ""
@@ -1787,38 +1793,43 @@ msgid ""
 "\n"
 "Dismiss this dialog to stop showing this message."
 msgstr ""
+"Kohteita (K) ja reittipisteitä (p) voidaan lisätä matkan varrelle. Molempia käytetään reitityksen laskemiseen, mutta vain kohteiden saavuttamista seurataan. Tämän takia, mikäli menet reittipisteen huti ja myöhemmin palaat lasketulle reitille, oletetaan että reittipiste saavutettiin ja sitä ei enää huomioida uudellenreitityksessä myöhemmin. Sitä vastoin, kohteet pitää saavuttaa tietyn toleranssin sisällä ja niitä ei unohdeta reitityksestä.\n"
+"\n"
+"Eli, aseta paikka kohteeksi, kun siellä on käytävä, ja aseta paikka reittipisteenä, kun se on vain osa mieleisen reitin valintaa.\n"
+"\n"
+"Hylkää tämä viesti lopettaaksesi sen näyttämisen."
 
 #: qml/RoutePage.qml:218
 msgid "Optimize order"
-msgstr ""
+msgstr "Optimoi järjestys"
 
 #: qml/RoutePage.qml:241
 msgid "Up"
-msgstr ""
+msgstr "Ylös"
 
 #: qml/RoutePage.qml:250
 msgid "Down"
-msgstr ""
+msgstr "Alas"
 
 #: qml/RoutePage.qml:264
 msgid "Convert to waypoint"
-msgstr ""
+msgstr "Muunna reittipisteeksi"
 
 #: qml/RoutePage.qml:265
 msgid "Convert to destination"
-msgstr ""
+msgstr "Muunna kohteeksi"
 
 #: qml/RoutePage.qml:311
 msgid "Add destination"
-msgstr ""
+msgstr "Lisää kohde"
 
 #: qml/RoutePage.qml:319
 msgid "Add waypoint"
-msgstr ""
+msgstr "Lisää reittipiste"
 
 #: qml/RoutePage.qml:335
 msgid "Waypoint"
-msgstr ""
+msgstr "Reittipiste"
 
 #: qml/RoutePage.qml:427
 msgid "Routes"
@@ -1826,15 +1837,15 @@ msgstr "Reitit"
 
 #: qml/RoutePage.qml:455
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
-msgstr ""
+msgstr "%1 ‒ %2 (%3 kohteet ja reittipisteet)"
 
 #: qml/RoutePage.qml:500
 msgid "Show more..."
-msgstr ""
+msgstr "Näytä lisää..."
 
 #: qml/RoutePage.qml:540
 msgid "Destinations"
-msgstr "Määränpäät"
+msgstr "Kohteet"
 
 #: qml/RoutePage.qml:632
 msgid "Follow the movement and show just in time information"
@@ -1925,7 +1936,7 @@ msgstr "Tiedosto"
 
 #: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
 msgid "Reverse"
-msgstr ""
+msgstr "Käänteinen"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:38
 #: routers/ValhallaSettings.qml:113
@@ -2161,53 +2172,54 @@ msgstr "Vaihtoehdot"
 
 #: src/cmdlineparser.cpp:18
 msgid "Displays help on commandline options."
-msgstr ""
+msgstr "Näyttää lisätietoja komentorivin vaihtoehdoista."
 
 #: src/cmdlineparser.cpp:20
 msgid "Displays version information."
-msgstr ""
+msgstr "Näyttää versiotiedot."
 
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
+"Näytä sijainti käyttäen geo:latitude,longitude URI-muotoa tai tee haku."
 
 #: src/navigator.cpp:152
 msgid "Position unknown"
-msgstr ""
+msgstr "Sijaintia ei tiedetä"
 
 #: src/navigator.cpp:158
 msgid "Position imprecise: accuracy %1"
-msgstr ""
+msgstr "Sijainti epätarkka: tarkkuus %1"
 
 #: src/navigator.cpp:177 src/navigator.cpp:428
 msgid "Preparing to start navigation"
-msgstr ""
+msgstr "Valmistautuu aloittamaan navigoinnin"
 
 #: src/navigator.cpp:470
 msgid "Moving in a wrong direction"
-msgstr ""
+msgstr "Liikkuu väärään suuntaan"
 
 #: src/navigator.cpp:480
 msgid "Away from route"
-msgstr ""
+msgstr "Poissa reitiltä"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
 #: src/navigator.cpp:658 src/navigator.cpp:669
 msgid "In %2, %1"
-msgstr ""
+msgstr "%2: %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
 #: src/navigator.cpp:947
 msgid "%1 h %2 min"
-msgstr ""
+msgstr "%1 h %2 min"
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
 #: src/navigator.cpp:949
 msgid "%1 min"
-msgstr ""
+msgstr "%1 min"
 
 #: src/navigator.cpp:994
 msgid "Starting navigation"

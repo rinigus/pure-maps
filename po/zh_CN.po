@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-03-30 21:01+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rui kon <facebookmail@qq.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -574,20 +574,20 @@ msgstr "混合"
 msgid "Stop navigation to select POI"
 msgstr "停止导航以选择 POI"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
 #: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr "起点"
 
-#: qml/Map.qml:640 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
 msgstr "最终目的地"
 
-#: qml/Map.qml:642
-msgid "✓"
-msgstr ""
-
 #: qml/Map.qml:645
+msgid "✓"
+msgstr "✓"
+
+#: qml/Map.qml:648
 msgid "#%1"
 msgstr "#%1"
 
@@ -657,22 +657,22 @@ msgstr "导航"
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:217
 msgid "(D)"
-msgstr ""
+msgstr "(D)"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:219
 msgid "(W)"
-msgstr ""
+msgstr "(W)"
 
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:310
 msgid "(D) ETA"
-msgstr ""
+msgstr "(D) 预计抵达时间"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:312
 msgid "(W) ETA"
-msgstr ""
+msgstr "(W) 预计抵达时间"
 
 #: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:291
 msgid "ETA"
@@ -734,11 +734,11 @@ msgstr "剩余里程"
 #. as intermediate destinations on the route
 #: qml/NavigationPage.qml:314
 msgid "Leg"
-msgstr ""
+msgstr "里程"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "已抵达"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
@@ -768,7 +768,7 @@ msgstr "语言导航引擎不可用：所选语言缺失文本转语音（TTS）
 
 #: qml/Navigator.qml:185
 msgid "Routing failed: current position not known"
-msgstr ""
+msgstr "导航失败：当前位置未知"
 
 #: qml/Navigator.qml:191
 msgid "Rerouting position"
@@ -901,35 +901,35 @@ msgstr "更多信息: %1"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as or Replace"
-msgstr ""
+msgstr "设置或替换"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as"
-msgstr ""
+msgstr "设置或替换"
 
 #: qml/PoiBlock.qml:290
 msgid "Insert as"
-msgstr ""
+msgstr "插入为"
 
 #: qml/PoiBlock.qml:295
 msgid "New origin"
-msgstr ""
+msgstr "新起点"
 
 #: qml/PoiBlock.qml:308
 msgid "New final destination"
-msgstr ""
+msgstr "新最终目的地"
 
 #: qml/PoiBlock.qml:320
 msgid "First intermediate destination"
-msgstr ""
+msgstr "首个中途目的地"
 
 #: qml/PoiBlock.qml:333
 msgid "Last intermediate destination"
-msgstr ""
+msgstr "最后的中途目的地"
 
 #: qml/PoiBlock.qml:334
 msgid "Intermediate destination"
-msgstr ""
+msgstr "中途目的地"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -1691,7 +1691,7 @@ msgstr "倒转导航"
 
 #: qml/RoutePage.qml:100
 msgid "Clear route"
-msgstr ""
+msgstr "清除路线规划"
 
 #: qml/RoutePage.qml:173
 msgid "From"

@@ -12,17 +12,19 @@
 # Ricardo Breitkopf, 2019
 # Armin Maier <marsu1@gmx.de>, 2019
 # PawelSpoon, 2020
-# Uli M <popanz@online.de>, 2020
-# rinigus github, 2020
+# Uli M <popanz@online.de>, 2021
+# edw edw <edw@gmx.de>, 2021
+# rozgwi "Te ol' sailin' linguist", 2021
+# rinigus github, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-14 16:24+0200\n"
+"POT-Creation-Date: 2021-03-30 21:01+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: rinigus github, 2020\n"
+"Last-Translator: rinigus github, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rinigus/teams/89597/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,9 +56,9 @@ msgstr "Zeitüberschreitung bei der Verbindung"
 #: poor/history.py:33 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/Navigator.qml:192 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:155 qml/NearbyPage.qml:170 qml/RoutePage.qml:40
-#: qml/RoutePage.qml:42 qml/RoutePage.qml:46 qml/RoutePage.qml:441
-#: qml/RoutePage.qml:446 qml/RoutePage.qml:673 qml/RoutePage.qml:716
-#: qml/RoutePoint.qml:44 qml/RoutePoint.qml:62
+#: qml/RoutePage.qml:42 qml/RoutePage.qml:46 qml/RoutePage.qml:104
+#: qml/RoutePage.qml:461 qml/RoutePage.qml:466 qml/RoutePage.qml:693
+#: qml/RoutePage.qml:736 qml/RoutePoint.qml:44 qml/RoutePoint.qml:62
 msgid "Current position"
 msgstr "Aktuelle Position"
 
@@ -144,45 +146,45 @@ msgstr "HERE App Code"
 msgid "Exit: "
 msgstr "Ausfahrt:"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:899
-#: src/navigator.cpp:911
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:902
+#: src/navigator.cpp:914
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:899
-#: src/navigator.cpp:911
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:902
+#: src/navigator.cpp:914
 msgid "miles"
 msgstr "Meilen"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:902
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:905
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231 src/navigator.cpp:902
+#: poor/util.py:231 src/navigator.cpp:905
 msgid "feet"
 msgstr "Fuß"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:914
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:917
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242 src/navigator.cpp:914
+#: poor/util.py:242 src/navigator.cpp:917
 msgid "yards"
 msgstr "Yards"
 
-#: poor/util.py:249 src/navigator.cpp:923
+#: poor/util.py:249 src/navigator.cpp:926
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249 src/navigator.cpp:923
+#: poor/util.py:249 src/navigator.cpp:926
 msgid "kilometers"
 msgstr "Kilometer"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:926
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:929
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253 src/navigator.cpp:926
+#: poor/util.py:253 src/navigator.cpp:929
 msgid "meters"
 msgstr "Meter"
 
@@ -413,13 +415,13 @@ msgstr "Nacht"
 msgid "Transport"
 msgstr "Verkehrsmittel"
 
-#: qml/BasemapButton.qml:318 qml/PreferencesPage.qml:383 qml/RoutePage.qml:624
+#: qml/BasemapButton.qml:318 qml/PreferencesPage.qml:383 qml/RoutePage.qml:644
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Bicycle"
 msgstr "Fahrrad"
 
-#: qml/BasemapButton.qml:319 qml/PreferencesPage.qml:383 qml/RoutePage.qml:624
+#: qml/BasemapButton.qml:319 qml/PreferencesPage.qml:383 qml/RoutePage.qml:644
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Car"
@@ -462,8 +464,8 @@ msgid "No selection"
 msgstr "keine Auswahl"
 
 #: qml/GeocodeItem.qml:134 qml/NavigationPage.qml:185 qml/PlaceNamePage.qml:48
-#: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:108 qml/RoutePage.qml:238
-#: qml/RoutePage.qml:423 qml/RoutePage.qml:538
+#: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:108 qml/RoutePage.qml:258
+#: qml/RoutePage.qml:443 qml/RoutePage.qml:558
 msgid "Remove"
 msgstr "Entfernen"
 
@@ -491,9 +493,9 @@ msgstr "Ergebnisse (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Sonderziele (%1)"
 
-#: qml/GeocodeItem.qml:467 qml/Navigator.qml:296 qml/Navigator.qml:298
+#: qml/GeocodeItem.qml:467 qml/Navigator.qml:300 qml/Navigator.qml:302
 #: qml/PoiBlock.qml:403 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
-#: qml/RoutePage.qml:575 qml/RoutePage.qml:577 qml/RoutePoint.qml:66
+#: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Namenloser Punkt"
 
@@ -525,7 +527,7 @@ msgstr "Suchmaschine"
 msgid "Initializing"
 msgstr "Initialisiere"
 
-#: qml/InitPage.qml:46 qml/RoutePage.qml:174
+#: qml/InitPage.qml:46 qml/RoutePage.qml:194
 msgid "Dismiss"
 msgstr "Abbrechen"
 
@@ -568,6 +570,11 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Du verwendest ein Offline-Profil. Stelle sicher, dass OSM Scout Server "
+"installiert ist und läuft. Abhängig vom System ist er entweder in den App-"
+"Stores (OpenRepos für Sailfish OS, OpenStore für Ubuntu Touch), Flathub oder"
+" in Deiner Distribution zu finden. Siehe <a href=\"https://rinigus.github.io"
+"/osmscout-server\">OSM Scout Server-Handbuch</a> für Details."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -601,18 +608,22 @@ msgstr "Gemischt"
 msgid "Stop navigation to select POI"
 msgstr "Stoppe Navigation um POI auszuwählen"
 
-#: qml/Map.qml:637 qml/NavigationPage.qml:206 qml/PoiBlock.qml:251
-#: qml/RoutePage.qml:154
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr "Start"
 
-#: qml/Map.qml:639 qml/NavigationPage.qml:209 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
-msgstr ""
+msgstr "Endgültiges Ziel"
 
-#: qml/Map.qml:641
+#: qml/Map.qml:645
+msgid "✓"
+msgstr "✓"
+
+#: qml/Map.qml:648
 msgid "#%1"
-msgstr ""
+msgstr "#%1"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -651,7 +662,7 @@ msgstr "km/h"
 
 #: qml/NarrativeItem.qml:120
 msgid "Continue for %1 (%2)."
-msgstr ""
+msgstr "Weiter für %1 (%2)."
 
 #: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
@@ -690,14 +701,14 @@ msgstr ""
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:310
 msgid "(D) ETA"
-msgstr ""
+msgstr "(D) Voraussichtliche Zielankunft"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:312
 msgid "(W) ETA"
-msgstr ""
+msgstr "(W) Voraussichtliche Wegpunktankunftszeit"
 
-#: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:286
+#: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:291
 msgid "ETA"
 msgstr "AN"
 
@@ -729,35 +740,41 @@ msgstr "Geschätzte Ankunftszeit"
 msgid "Destination reached"
 msgstr "Ziel erreicht"
 
-#: qml/NavigationPage.qml:173 qml/RoutePage.qml:168 qml/RoutePage.qml:175
+#: qml/NavigationPage.qml:173 qml/RoutePage.qml:188 qml/RoutePage.qml:195
 msgid "Destinations and waypoints"
-msgstr ""
+msgstr "Ziele und Wegpunkte"
 
-#: qml/NavigationPage.qml:206
+#: qml/NavigationPage.qml:207
 msgid "Origin: %1"
-msgstr ""
+msgstr "Startpunkt: %1"
 
-#: qml/NavigationPage.qml:208
+#: qml/NavigationPage.qml:209
 msgid "Final destination: %1"
-msgstr ""
+msgstr "Endgültiges Ziel: %1"
 
-#: qml/NavigationPage.qml:211 qml/RoutePage.qml:256
+#: qml/NavigationPage.qml:212 qml/RoutePage.qml:276
 msgid "Destination: %1"
-msgstr ""
+msgstr "Ziel: %1"
 
-#: qml/NavigationPage.qml:212 qml/RoutePage.qml:257
+#: qml/NavigationPage.qml:213 qml/RoutePage.qml:277
 msgid "Waypoint: %1"
-msgstr ""
+msgstr "Wegpunkt: %1"
 
-#: qml/NavigationPage.qml:257 qml/RouteOverallInfo.qml:95
+#: qml/NavigationPage.qml:262 qml/RouteOverallInfo.qml:95
 msgid "Remaining"
 msgstr "Verbleibend"
 
-#: qml/NavigationPage.qml:308
+#. TRANSLATORS: Leg corresponds to the trip leg between two destinations, such
+#. as intermediate destinations on the route
+#: qml/NavigationPage.qml:314
 msgid "Leg"
-msgstr ""
+msgstr "Teilstrecke"
 
-#: qml/NavigationPage.qml:357
+#: qml/NavigationPage.qml:343
+msgid "Arrived"
+msgstr "Angekommen"
+
+#: qml/NavigationPage.qml:384
 msgid "Maneuvers"
 msgstr "Anweisungen"
 
@@ -767,11 +784,11 @@ msgstr "Ausfahrt"
 
 #: qml/Navigator.qml:78
 msgid "Destination %1 reached"
-msgstr ""
+msgstr "Ziel %1 erreicht"
 
 #: qml/Navigator.qml:79
 msgid "Waypoint %1 reached"
-msgstr ""
+msgstr "Wegpunkt %1 erreicht"
 
 #: qml/Navigator.qml:129
 msgid "Voice navigation on"
@@ -787,33 +804,33 @@ msgstr ""
 
 #: qml/Navigator.qml:185
 msgid "Routing failed: current position not known"
-msgstr ""
+msgstr "Navigation fehlgeschlagen: aktuelle Position unbekannt"
 
 #: qml/Navigator.qml:191
 msgid "Rerouting position"
-msgstr ""
+msgstr "Neuberechnung Standort"
 
-#: qml/Navigator.qml:195
+#: qml/Navigator.qml:199
 msgid "Routing"
-msgstr ""
+msgstr "Navigation"
 
-#: qml/Navigator.qml:206
+#: qml/Navigator.qml:210
 msgid "Routing failed: %1"
-msgstr ""
+msgstr "Navigation fehlgeschlagen: %1"
 
-#: qml/Navigator.qml:211 src/navigator.cpp:992
+#: qml/Navigator.qml:215 src/navigator.cpp:995
 msgid "New route found"
 msgstr "Neue Route gefunden"
 
-#: qml/Navigator.qml:212
+#: qml/Navigator.qml:216
 msgid "Route found"
-msgstr ""
+msgstr "Route gefunden"
 
-#: qml/Navigator.qml:222 src/navigator.cpp:994
+#: qml/Navigator.qml:226 src/navigator.cpp:997
 msgid "Routing failed"
-msgstr ""
+msgstr "Navigation fehlgeschlagen"
 
-#: qml/Navigator.qml:254 src/navigator.cpp:993
+#: qml/Navigator.qml:258 src/navigator.cpp:996
 msgid "Rerouting"
 msgstr "Neuberechnung"
 
@@ -848,7 +865,7 @@ msgstr "Suche nach"
 
 #: qml/NearbyResultsPage.qml:131
 msgid "Nearby venues: %1 %2"
-msgstr ""
+msgstr "Naheliegender Veranstaltungsort %1 %2"
 
 #: qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
@@ -872,7 +889,7 @@ msgstr "Name des Veranstaltungs-Ortes"
 
 #: qml/PlaceNamePage.qml:69
 msgid "Name or keyword"
-msgstr ""
+msgstr "Name oder Schlagwort"
 
 #: qml/PlaceNamePage.qml:82
 msgid "You can search for venues by name."
@@ -884,7 +901,7 @@ msgstr "Typ des Veranstaltungs-Ortes"
 
 #: qml/PlaceTypePage.qml:99
 msgid "You can search for venues by type."
-msgstr ""
+msgstr "Du kannst Örtlichkeiten nach Typ durchsuchen"
 
 #: qml/PoiBlock.qml:96
 msgid "%1; %2"
@@ -920,35 +937,35 @@ msgstr "Weitere Informationen: %1"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as or Replace"
-msgstr ""
+msgstr "Einsetzen oder Ersetzen"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as"
-msgstr ""
+msgstr "Setzen als"
 
 #: qml/PoiBlock.qml:290
 msgid "Insert as"
-msgstr ""
+msgstr "Einfügen als"
 
 #: qml/PoiBlock.qml:295
 msgid "New origin"
-msgstr ""
+msgstr "Neuer Startpunkt"
 
 #: qml/PoiBlock.qml:308
 msgid "New final destination"
-msgstr ""
+msgstr "Neues endgültiges Ziel"
 
 #: qml/PoiBlock.qml:320
 msgid "First intermediate destination"
-msgstr ""
+msgstr "Erstes Zwischenziel"
 
 #: qml/PoiBlock.qml:333
 msgid "Last intermediate destination"
-msgstr ""
+msgstr "Letztes Zwischenziel"
 
 #: qml/PoiBlock.qml:334
 msgid "Intermediate destination"
-msgstr ""
+msgstr "Zwischenziel"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -1297,7 +1314,7 @@ msgstr "Zwischen Karten-Modi wechseln"
 #: qml/PreferencesPage.qml:184
 msgid "Fetch autocompleted search results while typing a search string."
 msgstr ""
-"Zeigt Vorschläge der automatischen Vervollständigung während Du einen "
+"Zeigt Vorschläge der automatischen Vervollständigung während du einen "
 "Suchbegriff eingibst."
 
 #: qml/PreferencesPage.qml:185
@@ -1316,12 +1333,20 @@ msgid ""
 "is useful if you wish to receive voice navigation commands while keeping "
 "device in the pocket."
 msgstr ""
+"Du kannst entscheiden, ob und  wann Pure Maps das Display aktiv hält oder im"
+" Hintergrund läuft. Es wird empfohlen, Pure Maps zu erlauben den "
+"Bildschirmschoner während der Navigation zu verhindern, und nicht direkt das"
+" Gerät vom Ruhezustand abzuhalten. Letzteres ist nützlich, wenn du die "
+"Sprachanweisungen hören willst, während sich das Gerät in der Tasche "
+"befindet."
 
 #: qml/PreferencesPage.qml:220
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
 msgstr ""
+"Wirkt sich nur aus, wenn Pure Maps aktiv ist. Läuft es im Hintergrund, wird "
+"der Bildschirmschoner durch die Vorgaben der Geräteeinstellungen verwaltet."
 
 #: qml/PreferencesPage.qml:222
 msgid "Prevent screensaver"
@@ -1347,6 +1372,9 @@ msgid ""
 "screen is switched off. If set to 'never', usual device suspend policy is "
 "applied."
 msgstr ""
+"Erlaubt die Wiedergabe der Ansagen von Position und Navigation, selbst wenn "
+"der Bildschirm abgeschaltet ist. Wenn auf \"nie\" gesetzt, dann wirkt die "
+"Ruhezustandseinstellung des Gerätes."
 
 #: qml/PreferencesPage.qml:239
 msgid "Prevent sleep"
@@ -1419,7 +1447,7 @@ msgstr "Position auf der Straße ausrichten"
 msgid "None"
 msgstr "Nichts"
 
-#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:624
+#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:644
 #: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
 #: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Foot"
@@ -1520,6 +1548,11 @@ msgid ""
 " determined, your speed is low, and, if you are navigating, only if you are "
 "by foot or on the bicycle."
 msgstr ""
+"Der Kompass kann genutzt werden, um die Orientierung des Gerätes zu "
+"ermitteln und die Karte entsprechend auszurichten. Beachte, dass der Kompass"
+" nur dann zum Einsatz kommt, wenn deine Position bereits bestimmt und deine "
+"Geschwindigkeit niedrig ist. Während der Navigation ist er auch dann nur im "
+"Modus Fußgänger oder Fahrrad aktiv."
 
 #: qml/PreferencesPage.qml:562
 msgid "Use compass for determination of the direction."
@@ -1601,7 +1634,7 @@ msgstr "Karten-Auswahl"
 
 #: qml/PreferencesPage.qml:667
 msgid "Speed and location precision"
-msgstr "Geschwindigkeits- und Standortgenauigkeit"
+msgstr "Geschwindigkeit und Standortgenauigkeit"
 
 #: qml/PreferencesPage.qml:676
 msgid "Scale"
@@ -1609,11 +1642,11 @@ msgstr "Maßstab"
 
 #: qml/PreferencesPage.qml:703
 msgid "Navigation Start/Pause"
-msgstr "Navigation Start/Pause"
+msgstr "Navigation: Start/Pause"
 
 #: qml/PreferencesPage.qml:712
 msgid "Navigation Clear Route"
-msgstr "Navigation Route eöschen"
+msgstr "Navigation: Route löschen"
 
 #: qml/PreferencesPage.qml:727
 msgid "Zoom"
@@ -1624,8 +1657,8 @@ msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
 msgstr ""
-"Karten-Vergrößerung-Level cann automatisch passend zur Geschwindigkeit "
-"angepasst werden. Hier kannst Du die Einstellungen entsprechend anpassen."
+"Die Karten-Vergrößerung kann sich automatisch an die Geschwindigkeit "
+"anpassen. Hier kannst du die Einstellungen entsprechend ändern"
 
 #: qml/PreferencesPage.qml:744
 msgid ""
@@ -1745,21 +1778,25 @@ msgstr "Folge mir"
 
 #: qml/RoutePage.qml:81
 msgid "Reverse route"
-msgstr ""
+msgstr "Route umkehren"
 
-#: qml/RoutePage.qml:153
+#: qml/RoutePage.qml:100
+msgid "Clear route"
+msgstr "Route löschen"
+
+#: qml/RoutePage.qml:173
 msgid "From"
 msgstr "Von"
 
-#: qml/RoutePage.qml:160
+#: qml/RoutePage.qml:180
 msgid "To"
 msgstr "Nach"
 
-#: qml/RoutePage.qml:161 qml/RoutePage.qml:315
+#: qml/RoutePage.qml:181 qml/RoutePage.qml:335
 msgid "Destination"
 msgstr "Ziel"
 
-#: qml/RoutePage.qml:176
+#: qml/RoutePage.qml:196
 msgid ""
 "Additional destinations and wayponts can be added along the route. The both locations are used for calculation of the route, but only destinations are tracked for being reached. As a result, if you miss the waypoint and later rejoin the calculated route after the waypoint, it will be assumed that waypoint was reached and it will be dismissed in the rerouting calculations later. In contrast, destinations have to be reached within the certain tolerance and will not be dismissed in such manner.\n"
 "\n"
@@ -1767,60 +1804,65 @@ msgid ""
 "\n"
 "Dismiss this dialog to stop showing this message."
 msgstr ""
+"Weitere Zwischenziele und Wegpunkte können entlang der Route hinzugefügt werden. Beide fließen in die Routenberechnung ein. Erfasst werden jedoch nur erreichte Ziele. Verpasst du einen Wegpunkt und kehrst danach zur Route zurück, gilt er als passiert. Bei einer Neuberechnung der Route wird er dann nicht mehr berücksichtigt. Im Gegensatz dazu müssen Ziele innerhalb einer gewissen Toleranz erreicht sein. Ansonsten bleiben sie Teil der neu berechneten Route.\n"
+"\n"
+"Lege also Orte, die du auf deiner Route erreichen musst immer als Ziele fest. Wegpunkte sind nur ein Mittel, die Route nach deinen Wünschen anzupassen..\n"
+"\n"
+"Lehne den Dialog ab, um diesen Hinweis nicht erneut anzeigen zu lassen."
 
-#: qml/RoutePage.qml:198
+#: qml/RoutePage.qml:218
 msgid "Optimize order"
-msgstr ""
+msgstr "Optimiere Reihenfolge"
 
-#: qml/RoutePage.qml:221
+#: qml/RoutePage.qml:241
 msgid "Up"
-msgstr ""
+msgstr "Hoch"
 
-#: qml/RoutePage.qml:230
+#: qml/RoutePage.qml:250
 msgid "Down"
-msgstr ""
+msgstr "Runter"
 
-#: qml/RoutePage.qml:244
+#: qml/RoutePage.qml:264
 msgid "Convert to waypoint"
-msgstr ""
+msgstr "In Wegpunkt umwandeln"
 
-#: qml/RoutePage.qml:245
+#: qml/RoutePage.qml:265
 msgid "Convert to destination"
-msgstr ""
+msgstr "In Ziel umwandeln"
 
-#: qml/RoutePage.qml:291
+#: qml/RoutePage.qml:311
 msgid "Add destination"
-msgstr ""
+msgstr "Ziel hinzufügen"
 
-#: qml/RoutePage.qml:299
+#: qml/RoutePage.qml:319
 msgid "Add waypoint"
-msgstr ""
+msgstr "Wegpunkt hinzufügen"
 
-#: qml/RoutePage.qml:315
+#: qml/RoutePage.qml:335
 msgid "Waypoint"
-msgstr ""
+msgstr "Wegpunkt"
 
-#: qml/RoutePage.qml:407
+#: qml/RoutePage.qml:427
 msgid "Routes"
 msgstr "Strecken"
 
-#: qml/RoutePage.qml:435
+#: qml/RoutePage.qml:455
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
-msgstr ""
+msgstr "%1 ‒ %2 (%3 Ziele und Wegpunkte)"
 
-#: qml/RoutePage.qml:480
+#: qml/RoutePage.qml:500
 msgid "Show more..."
-msgstr ""
+msgstr "Mehr anzeigen..."
 
-#: qml/RoutePage.qml:520
+#: qml/RoutePage.qml:540
 msgid "Destinations"
 msgstr "Ziele"
 
-#: qml/RoutePage.qml:612
+#: qml/RoutePage.qml:632
 msgid "Follow the movement and show just in time information"
 msgstr "Folge der Bewegung und zeige Echtzeit-Informationen"
 
-#: qml/RoutePage.qml:621
+#: qml/RoutePage.qml:641
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
@@ -1828,7 +1870,7 @@ msgstr ""
 "Transportart auswählen. Trifft nur zu, wenn sich Pure Maps im Follow-Me-"
 "Modus befindet."
 
-#: qml/RoutePage.qml:623
+#: qml/RoutePage.qml:643
 msgid "Mode of transportation"
 msgstr "Transportmittel"
 
@@ -1907,7 +1949,7 @@ msgstr "Datei"
 
 #: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
 msgid "Reverse"
-msgstr ""
+msgstr "Umkehren"
 
 #: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:38
 #: routers/ValhallaSettings.qml:113
@@ -1996,7 +2038,7 @@ msgstr "Berg"
 
 #: routers/ValhallaSettings.qml:112
 msgid "Your desire to use buses."
-msgstr "Du willst Busse benutzen."
+msgstr "Deine Bereitschaft, Busse zu nutzen"
 
 #: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
 #: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:186
@@ -2075,10 +2117,9 @@ msgid ""
 "(time and distance) routes can be selected. By allowing hills, it indicates "
 "you do not fear hills and steeper grades."
 msgstr ""
-"Du willst Berge in Angriff nehmen? Durch die Vermeidung von Bergen und "
-"steilen Steigungen können längere (Dauer und Entfernung) Routen resultieren."
-" Die Option „Berge zulassen\" bedeutet, keine Höhen und steile Anstiege zu "
-"fürchten."
+"Deine Bereitschaft, Hügel zu befahren. Beim Vermeiden von Hügeln und großen "
+"Steigungen können längere Routen (Dauer und Entfernung) entstehen. Hügel zu "
+"erlauben bedeutet, keine Anstiege zu fürchten."
 
 #: routers/ValhallaSettings.qml:185
 msgid "Hills"
@@ -2118,7 +2159,7 @@ msgid ""
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
 msgstr ""
-"Du sehnst dich nach Abenteuer? Wenn ja, tendiert der Router dazu "
+"Deine Bereitschaft für Abenteuer. Wenn bevorzugt, neigt der Router dazu "
 "Hauptstraßen zu meiden. Stattdessen werden Nebenstraßen, Wege, nicht "
 "klassifizierte oder Straßen mit schlechten Oberflächen gewählt."
 
@@ -2153,6 +2194,8 @@ msgstr "Zeigt Versions-Informationen"
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
+"Position per geo: Breitengrad, Längengrad Schema anzeigen oder Suche "
+"durchführen."
 
 #: src/navigator.cpp:152
 msgid "Position unknown"
@@ -2176,23 +2219,23 @@ msgstr "Abseits der Route"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:655 src/navigator.cpp:666
+#: src/navigator.cpp:658 src/navigator.cpp:669
 msgid "In %2, %1"
-msgstr ""
+msgstr "In %2, %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:944
+#: src/navigator.cpp:947
 msgid "%1 h %2 min"
-msgstr ""
+msgstr "%1 h %2 min"
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:946
+#: src/navigator.cpp:949
 msgid "%1 min"
-msgstr ""
+msgstr "%1 min"
 
-#: src/navigator.cpp:991
+#: src/navigator.cpp:994
 msgid "Starting navigation"
 msgstr "Starte Navigation "
 

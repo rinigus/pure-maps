@@ -5,17 +5,17 @@
 # 
 # Translators:
 # rinigus github, 2018
-# Nathan Follens, 2019
-# Heimen Stoffels <vistausss@outlook.com>, 2021
+# Heimen Stoffels <vistausss@fastmail.com>, 2021
+# Nathan Follens, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-20 16:10+0200\n"
+"POT-Creation-Date: 2021-03-30 21:01+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2021\n"
+"Last-Translator: Nathan Follens, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -561,7 +561,7 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
-"Je gebruikt een offline-profiel. Zorg er voor dat OSM Scout Server "
+"Je gebruikt een offline-profiel. Zorg ervoor dat OSM Scout Server "
 "geïnstalleerd en actief is. OSM Scout Server is beschikbaar in OpenRepos "
 "(Sailfish OS), OpenStore (Ubuntu Touch), Flathub en wellicht in de "
 "pakketbronnen van je distributie. Bekijk voor meer informatie de <a "
@@ -600,20 +600,20 @@ msgstr "Gemengd"
 msgid "Stop navigation to select POI"
 msgstr "Navigatie stoppen om nuttige plaats te selecteren"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
 #: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr "Vertrekpunt"
 
-#: qml/Map.qml:640 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
 msgstr "Eindbestemming"
 
-#: qml/Map.qml:642
+#: qml/Map.qml:645
 msgid "✓"
 msgstr "✓"
 
-#: qml/Map.qml:645
+#: qml/Map.qml:648
 msgid "#%1"
 msgstr "#%1"
 
@@ -942,7 +942,7 @@ msgstr "Invoegen als"
 
 #: qml/PoiBlock.qml:295
 msgid "New origin"
-msgstr "Nieuw vetrekpunt"
+msgstr "Nieuw vertrekpunt"
 
 #: qml/PoiBlock.qml:308
 msgid "New final destination"
@@ -1517,7 +1517,7 @@ msgid ""
 "speed limit."
 msgstr ""
 "Toon het snelheidlimietsymbool. Vereist vastklemmen van positie aan wegen om"
-" het snelheidslimiet te bepalen."
+" de snelheidlimiet te bepalen."
 
 #: qml/PreferencesPage.qml:521
 msgid "Speed limit"
