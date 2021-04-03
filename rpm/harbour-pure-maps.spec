@@ -39,6 +39,7 @@ BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5Positioning)
 BuildRequires: pkgconfig(Qt5DBus)
 BuildRequires: s2geometry-devel
+BuildRequires: cmake
 
 Requires: mapboxgl-qml >= 1.7.0
 
@@ -76,16 +77,33 @@ cp %{SOURCE1} tools/
 tools/manage-keys inject . || true
 
 %build
+mkdir build
+cd build
+
 %if 0%{?sailfishos}
-%qmake5 VERSION='%{version}-%{release}' FLAVOR=silica CONFIG+=install_gpxpy
+cmake \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=${_prefix} \
+	-DCMAKE_VERBOSE_MAKEFILE=ON \
+	-DFLAVOR=silica \
+	-DUSE_BUNDLED_GPXPY=ON \
+	..
 %else
-%qmake5 VERSION='%{version}-%{release}' FLAVOR=kirigami CONFIG+=install_gpxpy
+cmake \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=${_prefix} \
+	-DCMAKE_VERBOSE_MAKEFILE=ON \
+	-DFLAVOR=kirigami \
+	-DUSE_BUNDLED_GPXPY=ON \
+	..
 %endif
 
-make %{?_smp_mflags}
+cmake --build . %{?_smp_mflags}
 
 %install
-make INSTALL_ROOT=%{buildroot} install
+cd build
+rm -rf %{buildroot}
+DESTDIR=%{buildroot} cmake --install .
 
 %if 0%{?sailfishos}
 # ship some shared libraries
