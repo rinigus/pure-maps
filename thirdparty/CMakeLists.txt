@@ -1,11 +1,9 @@
-install(DIRECTORY geomag/geomag
-    DESTINATION ${DATADIR}/poor
-    FILES_MATCHING PATTERN "*.py")
+file(GLOB GEOMAG_SRC LIST_DIRECTORIES false geomag/geomag/*.py)
+install(FILES ${GEOMAG_SRC} DESTINATION ${DATADIR}/poor/geomag)
 install(FILES geomag/geomag/model_data/WMM.COF
     DESTINATION ${DATADIR}/poor/geomag/model_data)
 
 if(USE_BUNDLED_GPXPY)
-    install(DIRECTORY gpxpy/gpxpy
-        DESTINATION ${DATADIR}/thirdparty/gpxpy
-        PATTERN "__pycache__" EXCLUDE)
+    file(GLOB GPXPY_SRC LIST_DIRECTORIES false gpxpy/gpxpy/*.py)
+    install(FILES ${GPXPY_SRC} DESTINATION ${DATADIR}/poor/gpxpy)
 endif()

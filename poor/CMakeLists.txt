@@ -1,11 +1,4 @@
-file(GLOB_RECURSE POOR *.py)
-list(FILTER POOR EXCLUDE REGEX "__pycache__|test")
-install(FILES ${POOR} DESTINATION ${DATADIR}/poor)
-# The following _should_ work and would be better than the above GLOB_RECURSE, but for some reason it installs broken symlinks as well instead of just Python files
-#install(DIRECTORY poor
-#	DESTINATION ${DATADIR}
-#	FILES_MATCHING
-#	PATTERN "*.py")
+install(FILES ${POOR_SRC} DESTINATION ${DATADIR}/poor)
 
 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/config.py"
     COMMAND sed -e \'s|pure-maps|${APP_NAME}|g\' ${CMAKE_CURRENT_SOURCE_DIR}/paths.py > ${CMAKE_CURRENT_BINARY_DIR}/paths.py
