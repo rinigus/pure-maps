@@ -13,7 +13,7 @@ endif()
 
 add_compile_options(
     -DAPP_NAME="${APP_NAME}"
-    -DAPP_VERSION="${PROJECT_VERSION}"
+    -DAPP_VERSION="${PM_VERSION}"
     -DDEFAULT_DATA_PREFIX="${DATADIR}/"
     -DQT_DEPRECATED_WARNINGS)
 

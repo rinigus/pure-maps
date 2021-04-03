@@ -14,6 +14,12 @@ set(S2INCLUDES "" CACHE STRING "Custom installed location for s2geometry, includ
 set(S2LIBS "" CACHE STRING "Custom installed location for s2geometry, libs")
 option(USE_BUNDLED_GPXPY "Use a bundled version of GPXPY rather than a system-wide version" ON)
 
+# set project version used in About message
+if(NOT PM_VERSION)
+    set(PM_VERSION ${PROJECT_VERSION})
+endif()
+
+
 # check options
 set(VALID_FLAVOR_OPTIONS
     "kirigami"
