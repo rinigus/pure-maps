@@ -65,13 +65,21 @@ add_executable(${APP_NAME} ${SRC} ${HEADERS})
 
 target_link_libraries(${APP_NAME}
 	Qt5::Gui
-	Qt5::Widgets
-	Qt5::Qml
-	Qt5::Quick
-	Qt5::QuickControls2
 	Qt5::Positioning
 	Qt5::DBus
 	s2)
+
+set(LINKING_FLAVORS
+	"kirigami"
+	"qtcontrols"
+	"uuitk")
+if(FLAVOR IN_LIST LINKING_FLAVORS)
+	target_link_libraries(${APP_NAME}
+		Qt5::Quick
+		Qt5::Qml
+		Qt5::Widgets
+		Qt5::QuickControls2)
+endif()
 
 install(TARGETS ${APP_NAME}
 	DESTINATION ${CMAKE_INSTALL_BINDIR})
