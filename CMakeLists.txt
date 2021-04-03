@@ -16,6 +16,7 @@ include(CMakePrintHelpers)
 option(USE_BUNDLED_GPXPY "Use a bundled version of GPXPY rather than a system-wide version" ON)
 set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami, silica, qtcontrols, uuitk")
 set(PROFILE "Online" CACHE STRING "Default profile. Supported profiles: Online, Mixed, Offline")
+set(PYTHON_EXE "auto" CACHE STRING "Set python3 executable. If set to 'auto', cmake will try to find it.")
 option(RUN_FROM_SOURCE "Run from source, this is mainly intended for easy development" OFF)
 set(S2INCLUDES "" CACHE STRING "Custom installed location for s2geometry, includes")
 set(S2LIBS "" CACHE STRING "Custom installed location for s2geometry, libs")
@@ -53,13 +54,22 @@ else()
 endif()
 
 set(QT_MIN_VERSION "5.6.0")
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
 find_package(Gettext REQUIRED)
-find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Positioning DBus LinguistTools REQUIRED)
+find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Positioning Qml Quick DBus LinguistTools REQUIRED)
+
+if(PYTHON_EXE STREQUAL "auto")
+    find_package(Python3 COMPONENTS Interpreter REQUIRED)
+else()
+    set(PYTHON_EXECUTABLE ${PYTHON_EXE})
+endif()
 
 if(FLAVOR STREQUAL "kirigami" OR FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "uuitk")
-	find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Quick Qml Widgets QuickControls2 REQUIRED)
+        find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Widgets QuickControls2 REQUIRED)
+elseif(FLAVOR STREQUAL "silica")
+        include(FindPkgConfig)
+        pkg_search_module(SAILFISH sailfishapp REQUIRED)
 endif()
+
 
 if(RUN_FROM_SOURCE)
 	set(DATADIR ${CMAKE_CURRENT_SOURCE_DIR})
@@ -108,11 +118,28 @@ install(FILES packaging/pure-maps.appdata.xml
 	DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
 	RENAME ${APP_NAME}.appdata.xml)
 
+# desktop files
 if(NOT FLAVOR STREQUAL "silica")
-	configure_file(data/${APP_NAME}.desktop.in ${APP_NAME}.desktop @ONLY)
+    configure_file(data/${APP_NAME}.desktop.in ${APP_NAME}.desktop @ONLY)
+    configure_file(data/${APP_NAME}-uri-handler.desktop.in ${APP_NAME}-uri-handler.desktop @ONLY)
+    set(DESKTOP_SRC
+        ${CMAKE_CURRENT_BINARY_DIR}/${APP_NAME}.desktop
+        ${CMAKE_CURRENT_BINARY_DIR}/${APP_NAME}-uri-handler.desktop)
+else()
+    set(DESKTOP_SRC
+        data/${APP_NAME}.desktop
+        data/${APP_NAME}-uri-handler.desktop)
 endif()
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_NAME}.desktop
+install(FILES ${DESKTOP_SRC}
 	DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
 
+# icons
+set(ICON_SIZES 108 128 256 86)
+foreach(_ISIZE ${ICON_SIZES})
+    install(FILES data/pure-maps-${_ISIZE}.png RENAME ${APP_NAME}.png
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${_ISIZE}x${_ISIZE}/apps)
+endforeach()
+
+# summary
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

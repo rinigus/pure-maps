@@ -53,19 +53,28 @@ if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "debug")
 		-QT_NO_DEBUG_OUTPUT)
 endif()
 
+add_executable(${APP_NAME} ${SRC} ${HEADERS})
+
+if(FLAVOR STREQUAL "silica")
+    target_include_directories(${APP_NAME} PRIVATE
+        $<BUILD_INTERFACE:
+        ${SAILFISH_INCLUDE_DIRS}
+        >)
+endif()
+
 if(S2INCLUDES)
-	include_directories(${S2INCLUDES})
+       include_directories(${S2INCLUDES})
 endif()
 
 if(S2LIBS)
-	link_directories(${S2LIBS})
+       link_directories(${S2LIBS})
 endif()
-
-add_executable(${APP_NAME} ${SRC} ${HEADERS})
 
 target_link_libraries(${APP_NAME}
 	Qt5::Gui
-	Qt5::Positioning
+        Qt5::Qml
+        Qt5::Quick
+        Qt5::Positioning
 	Qt5::DBus
 	s2)
 
@@ -75,10 +84,14 @@ set(LINKING_FLAVORS
 	"uuitk")
 if(FLAVOR IN_LIST LINKING_FLAVORS)
 	target_link_libraries(${APP_NAME}
-		Qt5::Quick
-		Qt5::Qml
 		Qt5::Widgets
 		Qt5::QuickControls2)
+endif()
+
+if(FLAVOR STREQUAL "silica")
+    target_link_libraries(${APP_NAME}
+        ${SAILFISH_LDFLAGS}
+        )
 endif()
 
 install(TARGETS ${APP_NAME}

@@ -77,33 +77,27 @@ cp %{SOURCE1} tools/
 tools/manage-keys inject . || true
 
 %build
-mkdir build
-cd build
 
 %if 0%{?sailfishos}
-cmake \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX=${_prefix} \
-	-DCMAKE_VERBOSE_MAKEFILE=ON \
-	-DFLAVOR=silica \
-	-DUSE_BUNDLED_GPXPY=ON \
-	..
+%cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DFLAVOR=silica \
+    -DUSE_BUNDLED_GPXPY=ON \
+    -DPYTHON_EXE=python3
 %else
-cmake \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX=${_prefix} \
-	-DCMAKE_VERBOSE_MAKEFILE=ON \
-	-DFLAVOR=kirigami \
-	-DUSE_BUNDLED_GPXPY=ON \
-	..
+%cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DFLAVOR=kirigami \
+    -DUSE_BUNDLED_GPXPY=ON
 %endif
 
-cmake --build . %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %install
-cd build
 rm -rf %{buildroot}
-DESTDIR=%{buildroot} cmake --install .
+make DESTDIR=%{buildroot} install
 
 %if 0%{?sailfishos}
 # ship some shared libraries

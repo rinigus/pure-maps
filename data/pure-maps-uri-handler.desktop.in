@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Pure Maps Uri Handler
 MimeType=x-scheme-handler/geo
-Exec=pure-maps %u
-Icon=pure-maps
+Exec=@CMAKE_INSTALL_FULL_BINDIR@/@APP_NAME@ %u
+Icon=@APP_NAME@
 Type=Application
 NoDisplay=true
