@@ -4,15 +4,8 @@ project(pure-maps
     VERSION 2.6.5
     DESCRIPTION "Maps and navigation")
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-include(FeatureSummary)
-include(GNUInstallDirs)
-include(CMakePrintHelpers)
-
+# options
+set(APP_NAME "" CACHE STRING "Name of the application, specify if custom name is needed")
 set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami, silica, qtcontrols, uuitk")
 set(PROFILE "Online" CACHE STRING "Default profile. Supported profiles: Online, Mixed, Offline")
 set(PYTHON_EXE "auto" CACHE STRING "Set python3 executable. If set to 'auto', cmake will try to find it.")
@@ -21,6 +14,7 @@ set(S2INCLUDES "" CACHE STRING "Custom installed location for s2geometry, includ
 set(S2LIBS "" CACHE STRING "Custom installed location for s2geometry, libs")
 option(USE_BUNDLED_GPXPY "Use a bundled version of GPXPY rather than a system-wide version" ON)
 
+# check options
 set(VALID_FLAVOR_OPTIONS
     "kirigami"
     "silica"
@@ -47,22 +41,37 @@ else()
     return()
 endif()
 
-if(FLAVOR STREQUAL "silica")
-    set(APP_NAME harbour-pure-maps)
-else()
-    set(APP_NAME pure-maps)
+# set app name
+if(NOT APP_NAME)
+    if(FLAVOR STREQUAL "silica")
+        set(APP_NAME harbour-pure-maps)
+    else()
+        set(APP_NAME pure-maps)
+    endif()
 endif()
 
+# requirements
 set(QT_MIN_VERSION "5.6.0")
-find_package(Gettext REQUIRED)
-find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Positioning Qml Quick DBus LinguistTools REQUIRED)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+include(FeatureSummary)
+include(GNUInstallDirs)
+include(CMakePrintHelpers)
+
+find_package(Gettext REQUIRED)
+
+# allow to compile on platforms without FindPython3.cmake
 if(PYTHON_EXE STREQUAL "auto")
     find_package(Python3 COMPONENTS Interpreter REQUIRED)
 else()
     set(PYTHON_EXECUTABLE ${PYTHON_EXE})
 endif()
 
+# Qt
+find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Positioning Qml Quick DBus LinguistTools REQUIRED)
 if(FLAVOR STREQUAL "kirigami" OR FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "uuitk")
     find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Widgets QuickControls2 REQUIRED)
 elseif(FLAVOR STREQUAL "silica")
@@ -70,7 +79,7 @@ elseif(FLAVOR STREQUAL "silica")
     pkg_search_module(SAILFISH sailfishapp REQUIRED)
 endif()
 
-
+# handle request for running from source dir
 if(RUN_FROM_SOURCE)
     set(DATADIR ${CMAKE_CURRENT_SOURCE_DIR})
     set(DATADIR_RUNNING ${DATADIR})
@@ -91,37 +100,64 @@ else()
     endif()
 endif()
 
+# define sources and most of install targets
+
+## extension modules
+file(GLOB GEOCODERS_SRC geocoders/*.json geocoders/*.md geocoders/*.py)
+file(GLOB GEOCODERS_EXTRA LIST_DIRECTORIES false geocoders/test/*)
+install(FILES ${GEOCODERS_SRC} DESTINATION ${DATADIR}/geocoders)
+
+file(GLOB GUIDES_SRC guides/*.json guides/*.md guides/*.qml guides/*.py)
+file(GLOB GUIDES_EXTRA LIST_DIRECTORIES false guides/test/*)
+install(FILES ${GUIDES_SRC} DESTINATION ${DATADIR}/guides)
+
+file(GLOB MAPS_SRC maps/*.json maps/*.md)
+install(FILES ${MAPS_SRC} DESTINATION ${DATADIR}/maps)
+
+file(GLOB ROUTERS_SRC routers/*.json routers/*.md routers/*.qml routers/*.py)
+file(GLOB ROUTERS_EXTRA LIST_DIRECTORIES false routers/test/*)
+install(FILES ${ROUTERS_SRC} DESTINATION ${DATADIR}/routers)
+
+## python sources: installed in subdir
+file(GLOB POOR_SRC poor/*.py)
+
+## QML sources: installed in subdir
+file(GLOB QML_SRC qml/*.qml)
+file(GLOB QML_JS qml/js/*.js)
+file(GLOB QML_PLATFORMS qml/platform.*/*.qml)
+file(GLOB QML_DOCS qml/*.md qml/platform.*/*.md)
+
+## C++ sources
+file(GLOB PM_SRC src/*.cpp)
+file(GLOB PM_HEADERS src/*.h)
+
+# custom target for showing all sources in Qt Creator
+add_custom_target(Sources SOURCES
+    ${GEOCODERS_SRC} ${GEOCODERS_EXTRA}
+    ${GUIDES_SRC} ${GUIDES_EXTRA}
+    ${MAPS_SRC}
+    ${ROUTERS_SRC} ${ROUTERS_EXTRA}
+    ${POOR_SRC}
+    ${QML_SRC} ${QML_JS} ${QML_PLATFORMS} ${QML_DOCS}
+    ${PM_SRC} ${PM_HEADERS}
+    )
+
+# process linking and installation in the subdirs where needed
 add_subdirectory(src)
 add_subdirectory(poor)
 add_subdirectory(thirdparty)
 add_subdirectory(qml)
 add_subdirectory(po)
 
-install(DIRECTORY geocoders
-    DESTINATION ${DATADIR}
-    PATTERN "__pycache__" EXCLUDE
-    PATTERN "test" EXCLUDE)
-install(DIRECTORY guides
-    DESTINATION ${DATADIR}
-    PATTERN "__pycache__" EXCLUDE
-    PATTERN "test" EXCLUDE)
-install(DIRECTORY maps
-    DESTINATION ${DATADIR}
-    PATTERN "__pycache__" EXCLUDE
-    PATTERN "test" EXCLUDE)
-install(DIRECTORY routers
-    DESTINATION ${DATADIR}
-    PATTERN "__pycache__" EXCLUDE
-    PATTERN "test" EXCLUDE)
-
+# appdata
 install(FILES packaging/pure-maps.appdata.xml
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
     RENAME ${APP_NAME}.appdata.xml)
 
 # desktop files
 if(NOT FLAVOR STREQUAL "silica")
-    configure_file(data/${APP_NAME}.desktop.in ${APP_NAME}.desktop @ONLY)
-    configure_file(data/${APP_NAME}-uri-handler.desktop.in ${APP_NAME}-uri-handler.desktop @ONLY)
+    configure_file(data/pure-maps.desktop.in ${APP_NAME}.desktop @ONLY)
+    configure_file(data/pure-maps-uri-handler.desktop.in ${APP_NAME}-uri-handler.desktop @ONLY)
     set(DESKTOP_SRC
         ${CMAKE_CURRENT_BINARY_DIR}/${APP_NAME}.desktop
         ${CMAKE_CURRENT_BINARY_DIR}/${APP_NAME}-uri-handler.desktop)

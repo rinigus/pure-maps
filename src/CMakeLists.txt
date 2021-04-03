@@ -17,43 +17,13 @@ add_compile_options(
     -DDEFAULT_DATA_PREFIX="${DATADIR}/"
     -DQT_DEPRECATED_WARNINGS)
 
-set(SRC
-    main.cpp
-    clipboard.cpp
-    cmdlineparser.cpp
-    commander.cpp
-    config.cpp
-    dbusroot.cpp
-    dbusservice.cpp
-    location.cpp
-    locationmodel.cpp
-    maneuver.cpp
-    maneuvermodel.cpp
-    navigator.cpp
-    navigatordbusadapter.cpp
-    prompt.cpp)
-set(HEADERS
-    clipboard.h
-    cmdlineparser.h
-    commander.h
-    config.h
-    dbusroot.h
-    dbusservice.h
-    location.h
-    locationmodel.h
-    maneuver.h
-    maneuvermodel.h
-    navigator.h
-    navigatordbusadapter.h
-    prompt.h)
-
-if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "debug")
+if(CMAKE_BUILD_TYPE STREQUAL "release")
     add_definitions(
         -QT_NO_WARNING_OUTPUT
         -QT_NO_DEBUG_OUTPUT)
 endif()
 
-add_executable(${APP_NAME} ${SRC} ${HEADERS})
+add_executable(${APP_NAME} ${PM_SRC} ${PM_HEADERS})
 
 if(FLAVOR STREQUAL "silica")
     target_include_directories(${APP_NAME} PRIVATE
