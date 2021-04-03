@@ -53,9 +53,14 @@ else()
 endif()
 
 set(QT_MIN_VERSION "5.6.0")
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
 find_package(Gettext REQUIRED)
 find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Positioning DBus LinguistTools REQUIRED)
+
+if(CMAKE_VERSION VERSION_LESS 3.12)
+	set(PYTHON_EXECUTABLE "/usr/bin/python3")
+else()
+	find_package(Python3 COMPONENTS Interpreter REQUIRED)
+endif()
 
 if(FLAVOR STREQUAL "kirigami" OR FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "uuitk")
 	find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Quick Qml Widgets QuickControls2 REQUIRED)
