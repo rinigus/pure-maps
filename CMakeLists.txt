@@ -7,7 +7,6 @@ project(pure-maps
 # options
 set(APP_NAME "" CACHE STRING "Name of the application, specify if custom name is needed")
 set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami, silica, qtcontrols, uuitk")
-set(PROFILE "Online" CACHE STRING "Default profile. Supported profiles: Online, Mixed, Offline")
 option(MAPMATCHING_CHECK_RUNTIME "Check map matching availibility at runtime" ON)
 option(MAPMATCHING_AVAILABLE "Availibility of map matching if not checked at runtime. If checking is enabled at runtime, this option is ignored" ON)
 set(PYTHON_EXE "auto" CACHE STRING "Set python3 executable. If set to 'auto', cmake will try to find it.")
@@ -16,11 +15,16 @@ set(S2INCLUDES "" CACHE STRING "Custom installed location for s2geometry, includ
 set(S2LIBS "" CACHE STRING "Custom installed location for s2geometry, libs")
 option(USE_BUNDLED_GPXPY "Use a bundled version of GPXPY rather than a system-wide version" ON)
 
+set(DEFAULT_PROFILE "online" CACHE STRING "Default profile. Supported profile selection: online, offline")
+set(DEFAULT_BASEMAP "Mapbox" CACHE STRING "Default basemap for online profile")
+set(DEFAULT_GEOCODER "photon" CACHE STRING "Default geocoder for online profile")
+set(DEFAULT_GUIDE "foursquare" CACHE STRING "Default guide for online profile")
+set(DEFAULT_ROUTER "stadiamaps" CACHE STRING "Default router for online profile")
+
 # set project version used in About message
 if(NOT PM_VERSION)
     set(PM_VERSION ${PROJECT_VERSION})
 endif()
-
 
 # check options
 set(VALID_FLAVOR_OPTIONS
@@ -34,18 +38,12 @@ if(NOT FLAVOR IN_LIST VALID_FLAVOR_OPTIONS)
     return()
 endif()
 
-if(PROFILE STREQUAL "Online" OR PROFILE STREQUAL "Mixed")
-    set(DEFAULT_BASEMAP "Mapbox" CACHE STRING "Default basemap")
-    set(DEFAULT_GEOCODER "photon" CACHE STRING "Default geocoder")
-    set(DEFAULT_GUIDE "foursquare" CACHE STRING "Default guide")
-    set(DEFAULT_ROUTER "stadiamaps" CACHE STRING "Default router")
-elseif(PROFILE STREQUAL "Offline")
-    set(DEFAULT_BASEMAP "OSM Scout" CACHE STRING "Default basemap")
-    set(DEFAULT_GEOCODER "osmscout" CACHE STRING "Default geocoder")
-    set(DEFAULT_GUIDE "osmscout" CACHE STRING "Default guide")
-    set(DEFAULT_ROUTER "osmscout" CACHE STRING "Default router")
-else()
-    message(ERROR " Please specify a supported profile using -DPROFILE as CMake option!")
+set(VALID_PROFILES
+    "online"
+    "offline")
+
+if(NOT DEFAULT_PROFILE IN_LIST VALID_PROFILES)
+    message(ERROR " Please specify a supported profile using -DDEFAULT_PROFILE as CMake option!")
     return()
 endif()
 
