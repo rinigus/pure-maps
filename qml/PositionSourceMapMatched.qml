@@ -255,7 +255,7 @@ Item {
         id: activationTimer
         interval: 5000
         repeat: true
-        running: scoutbus.mode > 0 && !scoutbus.available
+        running: scoutbus.mode > 0 && !scoutbus.available && app.hasMapMatching
         onTriggered: {
             console.log('Activating OSM Scout Server');
 

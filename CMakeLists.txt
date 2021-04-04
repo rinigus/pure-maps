@@ -8,6 +8,8 @@ project(pure-maps
 set(APP_NAME "" CACHE STRING "Name of the application, specify if custom name is needed")
 set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami, silica, qtcontrols, uuitk")
 set(PROFILE "Online" CACHE STRING "Default profile. Supported profiles: Online, Mixed, Offline")
+option(MAPMATCHING_CHECK_RUNTIME "Check map matching availibility at runtime" ON)
+option(MAPMATCHING_AVAILABLE "Availibility of map matching if not checked at runtime. If checking is enabled at runtime, this option is ignored" ON)
 set(PYTHON_EXE "auto" CACHE STRING "Set python3 executable. If set to 'auto', cmake will try to find it.")
 option(RUN_FROM_SOURCE "Run from source, this is mainly intended for easy development" OFF)
 set(S2INCLUDES "" CACHE STRING "Custom installed location for s2geometry, includes")
