@@ -219,7 +219,6 @@ ApplicationWindowPL {
             app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
         else
             app.hasMapMatching = mapMatchingAvailable;
-        console.log('Has map matching: ' + app.hasMapMatching + ' ' + mapMatchingCheck + ' ' + mapMatchingAvailable)
         initialized = true;
     }
 
