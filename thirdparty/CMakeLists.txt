@@ -5,5 +5,5 @@ install(FILES geomag/geomag/model_data/WMM.COF
 
 if(USE_BUNDLED_GPXPY)
     file(GLOB GPXPY_SRC LIST_DIRECTORIES false gpxpy/gpxpy/*.py)
-    install(FILES ${GPXPY_SRC} DESTINATION ${DATADIR}/poor/gpxpy)
+    install(FILES ${GPXPY_SRC} DESTINATION ${DATADIR}/thirdparty/gpxpy/gpxpy)
 endif()
