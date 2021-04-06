@@ -1,13 +1,20 @@
 {
-  "clickable_minimum_required": "6.23.3",
-  "builder": "qmake",
+  "clickable_minimum_required": "6.24",
+  "builder": "cmake",
   "kill": "pure-maps",
+  "dependencies_ppa": [
+    "ppa:janisozaur/cmake-update"
+  ],
+  "dependencies_host": [
+    "cmake"
+  ],
   "build_args": [
-    "FLAVOR=uuitk",
-    "CONFIG+=install_gpxpy",
-    "APP_NAME=pure-maps-slim.jonnius",
-    "S2INCLUDES=${S2GEOMETRY_LIB_INSTALL_DIR}/include",
-    "S2LIBS=-L${S2GEOMETRY_LIB_INSTALL_DIR}/lib"
+    "-DFLAVOR=uuitk",
+    "-DAPP_NAME=pure-maps-slim.jonnius",
+    "-DMAPMATCHING_CHECK_RUNTIME=OFF",
+    "-DMAPMATCHING_AVAILABLE=OFF",
+    "-DS2INCLUDES=${S2GEOMETRY_LIB_INSTALL_DIR}/include",
+    "-DS2LIBS=${S2GEOMETRY_LIB_INSTALL_DIR}/lib"
   ],
   "postbuild": "sed -i 's/@APP_TITLE@/Pure Maps Slim/g' ${INSTALL_DIR}/manifest.json && sed -i 's/@APP_TITLE@/Pure Maps Slim/g' ${INSTALL_DIR}/pure-maps.desktop && sed -i 's/@APP_NAME@/pure-maps-slim/g' ${INSTALL_DIR}/manifest.json && mv ${INSTALL_DIR}/bin/pure-maps-slim.jonnius ${CLICK_PATH}/pure-maps",
   "install_data": {

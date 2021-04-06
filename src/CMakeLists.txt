@@ -14,7 +14,7 @@ endif()
 add_compile_options(
     -DAPP_NAME="${APP_NAME}"
     -DAPP_VERSION="${PM_VERSION}"
-    -DDEFAULT_DATA_PREFIX="${DATADIR}/"
+    -DDEFAULT_DATA_PREFIX="${DATADIR_RUNNING}/"
     -DQT_DEPRECATED_WARNINGS)
 
 if(CMAKE_BUILD_TYPE STREQUAL "release")
@@ -30,6 +30,14 @@ if(MAPMATCHING_AVAILABLE)
     add_definitions(-DMAPMATCHING_AVAILABLE)
 endif()
 
+if(S2INCLUDES)
+    include_directories(${S2INCLUDES})
+endif()
+
+if(S2LIBS)
+    link_directories(${S2LIBS})
+endif()
+
 add_executable(${APP_NAME} ${PM_SRC} ${PM_HEADERS})
 
 if(FLAVOR STREQUAL "silica")
@@ -37,14 +45,6 @@ if(FLAVOR STREQUAL "silica")
         $<BUILD_INTERFACE:
         ${SAILFISH_INCLUDE_DIRS}
         >)
-endif()
-
-if(S2INCLUDES)
-    include_directories(${S2INCLUDES})
-endif()
-
-if(S2LIBS)
-    link_directories(${S2LIBS})
 endif()
 
 target_link_libraries(${APP_NAME}
