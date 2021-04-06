@@ -30,6 +30,7 @@ _default_basemap = "Mapbox"
 _default_geocoder = "photon"
 _default_guide = "foursquare"
 _default_router = "stadiamaps"
+_default_profile = "online"
 
 DEFAULTS = {
     "auto_center": False,
@@ -75,7 +76,7 @@ DEFAULTS = {
     "map_zoom_auto_when_navigating": False,
     "map_zoom_auto_zero_speed_z": 16.0,
     "poi_list_show_bookmarked": False,
-    "profile": "online",
+    "profile": _default_profile,
     "profiles": {
         "mixed": {
             "basemap": _default_basemap,

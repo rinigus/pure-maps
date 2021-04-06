@@ -215,7 +215,10 @@ ApplicationWindowPL {
 
     function initialize() {
         initPages();
-        app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
+        if (mapMatchingCheck)
+            app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
+        else
+            app.hasMapMatching = mapMatchingAvailable;
         initialized = true;
     }
 

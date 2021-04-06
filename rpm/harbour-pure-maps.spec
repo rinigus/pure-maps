@@ -39,6 +39,7 @@ BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5Positioning)
 BuildRequires: pkgconfig(Qt5DBus)
 BuildRequires: s2geometry-devel
+BuildRequires: cmake
 
 Requires: mapboxgl-qml >= 1.7.0
 
@@ -46,7 +47,6 @@ Requires: mapboxgl-qml >= 1.7.0
 BuildRequires: qt5-qttools-linguist
 BuildRequires: pkgconfig(sailfishapp) >= 1.0.2
 Requires: libkeepalive
-Requires: libsailfishapp-launcher
 Requires: pyotherside-qml-plugin-python3-qt5 >= 1.5.1
 Requires: qt5-qtdeclarative-import-multimedia >= 5.2
 Requires: qt5-qtdeclarative-import-positioning >= 5.2
@@ -76,16 +76,32 @@ cp %{SOURCE1} tools/
 tools/manage-keys inject . || true
 
 %build
+
 %if 0%{?sailfishos}
-%qmake5 VERSION='%{version}-%{release}' FLAVOR=silica CONFIG+=install_gpxpy
+# SFOS RPM cmake macro disables RPATH
+cmake \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_RPATH=%{_datadir}/%{name}/lib: \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DPM_VERSION='%{version}-%{release}' \
+    -DFLAVOR=silica \
+    -DUSE_BUNDLED_GPXPY=ON \
+    -DPYTHON_EXE=python3
 %else
-%qmake5 VERSION='%{version}-%{release}' FLAVOR=kirigami CONFIG+=install_gpxpy
+%cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DPM_VERSION='%{version}-%{release}' \
+    -DFLAVOR=kirigami \
+    -DUSE_BUNDLED_GPXPY=ON
 %endif
 
 make %{?_smp_mflags}
 
 %install
-make INSTALL_ROOT=%{buildroot} install
+rm -rf %{buildroot}
+make DESTDIR=%{buildroot} install
 
 %if 0%{?sailfishos}
 # ship some shared libraries

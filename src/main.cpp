@@ -149,6 +149,22 @@ int main(int argc, char *argv[])
   rootContext->setContextProperty("programName", "Pure Maps");
   rootContext->setContextProperty("programVersion", APP_VERSION);
 
+  // handle map matching setting
+  rootContext->setContextProperty("mapMatchingCheck",
+                                #ifdef MAPMATCHING_CHECK_RUNTIME
+                                  true
+                                #else
+                                  false
+                                #endif
+                                  );
+  rootContext->setContextProperty("mapMatchingAvailable",
+                                #ifdef MAPMATCHING_AVAILABLE
+                                  true
+                                #else
+                                  false
+                                #endif
+                                  );
+
   // ////////////////////////////
   // register QML types
 #ifdef INTERNAL_CLIPBOARD
