@@ -124,8 +124,34 @@ file(GLOB ROUTERS_SRC routers/*.json routers/*.md routers/*.qml routers/*.py)
 file(GLOB ROUTERS_EXTRA LIST_DIRECTORIES false routers/test/*)
 install(FILES ${ROUTERS_SRC} DESTINATION ${DATADIR}/routers)
 
-## python sources: installed in subdir
-file(GLOB POOR_SRC poor/*.py)
+## python sources
+### config, paths, and keystore are installed from processed versions
+set(POOR_SRC_DIRECT
+    poor/application.py
+    poor/attrdict.py
+    poor/geocoder.py
+    poor/guide.py
+    poor/history.py
+    poor/http.py
+    poor/i18n.py
+    poor/__init__.py
+    poor/magfield.py
+    poor/map.py
+    poor/polysimp.py
+    poor/router.py
+    poor/storage.py
+    poor/sun.py
+    poor/util.py
+    poor/voice.py)
+
+### these files are processed and installed in subdir
+set(POOR_SRC_PROCESSED
+    poor/config.py
+    poor/keystore.py
+    poor/paths.py)
+
+install(FILES ${POOR_SRC_DIRECT}
+        DESTINATION ${DATADIR}/poor)
 
 ## QML sources: installed in subdir
 file(GLOB QML_SRC qml/*.qml)
@@ -143,7 +169,7 @@ add_custom_target(Sources SOURCES
     ${GUIDES_SRC} ${GUIDES_EXTRA}
     ${MAPS_SRC}
     ${ROUTERS_SRC} ${ROUTERS_EXTRA}
-    ${POOR_SRC}
+    ${POOR_SRC_DIRECT} ${POOR_SRC_PROCESSED}
     ${QML_SRC} ${QML_JS} ${QML_PLATFORMS} ${QML_DOCS}
     ${PM_SRC} ${PM_HEADERS}
     )
