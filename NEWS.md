@@ -1,3 +1,10 @@
+2021-04-09: Pure Maps 2.7
+=========================
+
+* Transition to CMake build system [PureTryOut]
+* Update Ubuntu Touch build scripts [jonnius]
+
+
 2021-03-30: Pure Maps 2.6.5
 ===========================
 

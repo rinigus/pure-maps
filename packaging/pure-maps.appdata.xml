@@ -38,6 +38,14 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.7.0" date="2021-04-09">
+     <description>
+       <ul>
+         <li>Transition to CMake build system [PureTryOut]</li>
+         <li>Update Ubuntu Touch build scripts [jonnius]</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.6.5" date="2021-03-30">
      <description>
        <ul>
