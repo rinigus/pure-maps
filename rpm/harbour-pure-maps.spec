@@ -75,7 +75,11 @@ search for nearby places by type and share your location.
 cp %{SOURCE1} tools/
 #tools/manage-keys inject poor || true
 
+mkdir build-rpm
+
 %build
+
+cd build-rpm
 
 %if 0%{?sailfishos}
 # SFOS RPM cmake macro disables RPATH
@@ -87,19 +91,20 @@ cmake \
     -DPM_VERSION='%{version}-%{release}' \
     -DFLAVOR=silica \
     -DUSE_BUNDLED_GPXPY=ON \
-    -DPYTHON_EXE=python3
+    -DPYTHON_EXE=python3 ..
 %else
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DPM_VERSION='%{version}-%{release}' \
     -DFLAVOR=kirigami \
-    -DUSE_BUNDLED_GPXPY=ON
+    -DUSE_BUNDLED_GPXPY=ON ..
 %endif
 
 make %{?_smp_mflags}
 
 %install
+cd build-rpm
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
