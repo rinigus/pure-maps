@@ -159,9 +159,6 @@ To add new platform, add new directory under `qml`, new Makefile
 target to set it, and implement all the required QML items. Take a
 look under other platforms for examples.
 
-For testing purposes you can just run `qmlscene qml/pure-maps.qml`,
-after setting the platform.
-
 
 ## Dependencies
 
@@ -181,8 +178,8 @@ be pulled and installed in flatpak. See instructions regarding
 Kirigami below.
 
 GPXPy is also provided as a thirdparty submodule and can be installed
-together with Pure Maps by setting `CONFIG+=install_gpxpy` argument to
-`qmake`.
+together with Pure Maps by setting corresponding option during `cmake`
+configuration phase.
 
 
 ## Building
@@ -193,8 +190,8 @@ compiled. You could either
 - compile/install/run
 - compile/run from source tree
 
-In the both cases, you would have to specify platform via `FLAVOR`
-to `qmake`. Supported platforms:
+In the both cases, you would have to specify platform via `-DFLAVOR`
+to `cmake`. Supported platforms:
 
 - Kirigami: `FLAVOR=kirigami`
 - QtControls: `FLAVOR=qtcontrols`
@@ -205,15 +202,15 @@ It is recommended to build the sources in a separate folder, as in
 ```
 mkdir build
 cd build
-qmake FLAVOR=kirigami ..
+cmake -DFLAVOR=kirigami ..
 make && make install
 ```
 
 For compile/install/run, use regular `make` and `make install` before
 running application.
 
-To run from the source tree, add `CONFIG+=run_from_source` option when
-running `qmake`. Please note that, when running from source tree, do
+To run from the source tree, add `-DRUN_FROM_SOURCE=ON` option when
+running `cmake`. Please note that, when running from source tree, do
 not run `make install` in the build folder. Otherwise it can overwrite
 your source files. In this case, `make` and running compiled
 executable directly would allow you to run application without
@@ -221,12 +218,14 @@ installation. For example, from Qt Creator directly.
 
 The build options can be specified in Qt Creator under "Build
 settings" of the project. Just add them to the additional arguments of
-qmake.
+cmake.
 
 Mainly targeting packagers, it is possible to specify default
-providers using `qmake` project options. Notice the difference in
+providers using `cmake` project options. Notice the difference in
 supplied values for basemap and other options:
 
+- `DEFAULT_PROFILE=profile`
+  where profile is either online or offline
 - `DEFAULT_BASEMAP=provider`
   Map `provider` is either specified in basemap JSON as "provider"
   or, if absent, as "name"
@@ -250,8 +249,11 @@ tiles for Finland), Sputnik (raster tiles in Russian), Photon
 
 ## Packaging
 
-At present, Sailfish OS version is packaged as RPM, Linux version
-is packaged using Flatpak or RPM, and Ubuntu Touch version as click.
+Pure Maps is packaged for different distributions. Included in the
+source tree: Sailfish OS version is packaged as RPM, Linux version is
+packaged using Flatpak or RPM, and Ubuntu Touch version as
+click. Several distributions provide packaging scripts in their source
+trees.
 
 For packaging, please copy `tools/apikeys_dummy.py` to
 `tools/apikeys.py` and fill missing API keys for the services that you
