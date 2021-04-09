@@ -73,7 +73,7 @@ search for nearby places by type and share your location.
 %prep
 %setup -q
 cp %{SOURCE1} tools/
-tools/manage-keys inject . || true
+#tools/manage-keys inject poor || true
 
 %build
 
