@@ -75,9 +75,10 @@ search for nearby places by type and share your location.
 cp %{SOURCE1} tools/
 #tools/manage-keys inject poor || true
 
-mkdir build-rpm
 
 %build
+
+mkdir build-rpm
 
 cd build-rpm
 
