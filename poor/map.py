@@ -123,9 +123,12 @@ class Map:
             return s
         if self.style_dict:
             return process(json.dumps(self.style_dict, ensure_ascii=False))
+        glyphs = "mapbox://fonts/mapbox/{fontstack}/{range}.pbf"
+        if poor.conf.font_provider == "osmscout":
+            glyphs = "http://127.0.0.1:8553/v1/mbgl/glyphs?stack={fontstack}&range={range}"
         return json.dumps({
             "id": "raster",
-            "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
+            "glyphs": glyphs,
             "sources": {
                 "raster": {
                     "type": "raster",

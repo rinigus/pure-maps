@@ -40,8 +40,9 @@ PageEmptyPL {
             page.ready = true
             // initialize conf before anything else
             app.conf.initialize();
+            app.conf.set("font_provider", defaultFontProvider);
             var k = py.call_sync("poor.key.get_mapbox_key", [])
-            if (k == "EMPTY") {
+            if (defaultFontProvider == "mapbox" && k == "EMPTY") {
                 var d = app.push(Qt.resolvedUrl("MessagePage.qml"), {
                                      "acceptText": app.tr("Dismiss"),
                                      "title": app.tr("Missing Mapbox key"),

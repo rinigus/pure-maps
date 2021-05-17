@@ -148,6 +148,7 @@ int main(int argc, char *argv[])
 
   rootContext->setContextProperty("programName", "Pure Maps");
   rootContext->setContextProperty("programVersion", APP_VERSION);
+  rootContext->setContextProperty("defaultFontProvider", DEFAULT_FONTPROVIDER);
 
   // handle map matching setting
   rootContext->setContextProperty("mapMatchingCheck",

@@ -20,6 +20,7 @@ set(DEFAULT_BASEMAP "Mapbox" CACHE STRING "Default basemap for online profile")
 set(DEFAULT_GEOCODER "photon" CACHE STRING "Default geocoder for online profile")
 set(DEFAULT_GUIDE "foursquare" CACHE STRING "Default guide for online profile")
 set(DEFAULT_ROUTER "stadiamaps" CACHE STRING "Default router for online profile")
+set(DEFAULT_FONTPROVIDER "mapbox" CACHE STRING "Default font provider. Supported: mapbox, osmscout")
 
 # set project version used in About message
 if(NOT PM_VERSION)
@@ -44,6 +45,15 @@ set(VALID_PROFILES
 
 if(NOT DEFAULT_PROFILE IN_LIST VALID_PROFILES)
     message(ERROR " Please specify a supported profile using -DDEFAULT_PROFILE as CMake option!")
+    return()
+endif()
+
+set(VALID_FONTPROVIDERS
+    "mapbox"
+    "osmscout")
+
+if(NOT DEFAULT_FONTPROVIDER IN_LIST VALID_FONTPROVIDERS)
+    message(ERROR " Please specify a supported profile using -DDEFAULT_FONTPROVIDER as CMake option!")
     return()
 endif()
 
