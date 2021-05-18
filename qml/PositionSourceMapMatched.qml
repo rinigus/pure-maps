@@ -27,7 +27,7 @@
 
 
 import QtQuick 2.0
-import QtPositioning 5.3
+import QtPositioning 5.4
 import Nemo.DBus 2.0
 
 Item {
@@ -35,8 +35,12 @@ Item {
 
     // Properties
     property alias active: gps.active
-    property real  direction: 0
-    property bool  directionValid: false
+    property real  direction: directionMapMatchValid ? directionMapMatch : directionDevice
+    property real  directionDevice: 0
+    property bool  directionDeviceValid: false
+    property real  directionMapMatch: 0
+    property bool  directionMapMatchValid: false
+    property bool  directionValid: directionMapMatchValid || directionDeviceValid
     property alias mapMatchingAvailable: scoutbus.available
     property alias mapMatchingMode: scoutbus.mode
     property alias name: gps.name
@@ -105,6 +109,9 @@ Item {
                     pos.coordinate.longitude == null ||
                     isNaN(pos.coordinate.longitude))
                 pos.coordinate = QtPositioning.coordinate(0, 0);
+
+            master.directionDevice = pos.directionValid ? pos.direction : 0;
+            master.directionDeviceValid = pos.directionValid;
 
             if (scoutbus.available &&
                     scoutbus.mode &&
@@ -185,8 +192,8 @@ Item {
                           if (r.longitude !== undefined) longitude = r.longitude;
                           pos.coordinate = QtPositioning.coordinate(latitude, longitude);
 
-                          if (r.direction!==undefined) master.direction = r.direction;
-                          if (r.direction_valid!==undefined) master.directionValid = r.direction_valid;
+                          if (r.direction!==undefined) master.directionMapMatch = r.direction;
+                          if (r.direction_valid!==undefined) master.directionMapMatchValid = r.direction_valid;
                           if (r.street_name!==undefined) master.streetName = r.street_name;
                           if (r.street_speed_assumed!==undefined) master.streetSpeedAssumed = r.street_speed_assumed;
                           if (r.street_speed_limit!==undefined) master.streetSpeedLimit = r.street_speed_limit;
@@ -214,7 +221,6 @@ Item {
         }
 
         function resetValues() {
-            master.directionValid = false;
             master.streetName = ""
             master.streetSpeedAssumed = -1;
             master.streetSpeedLimit = -1;
@@ -280,9 +286,13 @@ Item {
             p.latitudeValid = true;
             p.longitudeValid = true;
             p.horizontalAccuracyValid = true;
+            p.directionValid = false;
             gps.positionUpdate(p);
         }
     }
+
+    // reset direction estimated by map matching until the next position update
+    onMapMatchingModeChanged: directionMapMatchValid = false
 
     onTimingStatsEnableChanged: {
         // reset if timing stats started

@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import QtPositioning 5.3
+import QtPositioning 5.4
 import QtGraphicalEffects 1.0
 
 import "js/util.js" as Util
