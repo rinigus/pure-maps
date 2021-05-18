@@ -409,7 +409,7 @@ MouseArea {
                         })
                     else {
                         scrollBarH.opacity = 1;
-                        anim.duration = 0;
+                        animH.duration = 0;
                     }
                 }
             }
