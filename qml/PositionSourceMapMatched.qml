@@ -95,6 +95,16 @@ Item {
     PositionSource {
         id: gps
 
+        property var lastPositionDirectionValid: null
+
+        Component.onCompleted: positionUpdate(position)
+
+        onPositionChanged: if (testingCoordinate==null) positionUpdate(position)
+
+        onActiveChanged: {
+            if (!gps.active) scoutbus.stop();
+        }
+
         function positionUpdate(positionRaw) {
             // Filter coordinates first to ensure that they
             // are numeric values
@@ -110,8 +120,18 @@ Item {
                     isNaN(pos.coordinate.longitude))
                 pos.coordinate = QtPositioning.coordinate(0, 0);
 
-            master.directionDevice = pos.directionValid ? pos.direction : 0;
-            master.directionDeviceValid = pos.directionValid;
+            if (pos.directionValid) {
+                master.directionDevice = pos.direction;
+                if (!master.directionDeviceValid)
+                    master.directionDeviceValid = true;
+                lastPositionDirectionValid = pos.coordinate;
+            } else if (lastPositionDirectionValid == null ||
+                       // stick to old direction when we stop moving
+                       pos.coordinate.distanceTo(lastPositionDirectionValid) > 10 /* meters */ )
+            {
+                master.directionDeviceValid = false;
+                master.directionDevice = 0;
+            }
 
             if (scoutbus.available &&
                     scoutbus.mode &&
@@ -129,16 +149,6 @@ Item {
                     scoutbus.stop();
             }
         }
-
-        Component.onCompleted: positionUpdate(position)
-
-        onPositionChanged: if (testingCoordinate==null) positionUpdate(position)
-
-        onActiveChanged: {
-            if (!gps.active) scoutbus.stop();
-        }
-
-        //onUpdateTimeout: master.updateTimeout()
     }
 
     // interaction with OSM Scout Server via D-Bus
