@@ -39,6 +39,10 @@ if(S2LIBS)
     link_directories(${S2LIBS})
 endif()
 
+if(QML_IMPORT_PATH)
+    add_definitions(-DQML_IMPORT_PATH=${QML_IMPORT_PATH})
+endif()
+
 add_executable(${APP_NAME} ${PM_SRC} ${PM_HEADERS})
 
 if(FLAVOR STREQUAL "silica")

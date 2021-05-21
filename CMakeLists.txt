@@ -14,6 +14,7 @@ option(RUN_FROM_SOURCE "Run from source, this is mainly intended for easy develo
 set(S2INCLUDES "" CACHE STRING "Custom installed location for s2geometry, includes")
 set(S2LIBS "" CACHE STRING "Custom installed location for s2geometry, libs")
 option(USE_BUNDLED_GPXPY "Use a bundled version of GPXPY rather than a system-wide version" ON)
+set(QML_IMPORT_PATH "" CACHE STRING "Additional QML import path")
 
 set(DEFAULT_PROFILE "online" CACHE STRING "Default profile. Supported profile selection: online, offline")
 set(DEFAULT_BASEMAP "Mapbox" CACHE STRING "Default basemap for online profile")

@@ -146,6 +146,10 @@ int main(int argc, char *argv[])
       return -2;
     }
 
+#ifdef QML_IMPORT_PATH
+  rootContext->engine()->addImportPath(QML_IMPORT_PATH);
+#endif
+
   rootContext->setContextProperty("programName", "Pure Maps");
   rootContext->setContextProperty("programVersion", APP_VERSION);
   rootContext->setContextProperty("defaultFontProvider", DEFAULT_FONTPROVIDER);
