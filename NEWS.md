@@ -1,3 +1,12 @@
+2021-05-22: Pure Maps 2.7.5
+===========================
+
+* Allow to specify default font provider
+* Require QtPositioning 5.4 and use Qt calculated direction
+* Update translations
+* [sfos] Adjust packaging for Jolla Store
+
+
 2021-04-09: Pure Maps 2.7
 =========================
 

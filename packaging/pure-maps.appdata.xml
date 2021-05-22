@@ -38,6 +38,16 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.7.5" date="2021-05-22">
+     <description>
+       <ul>
+         <li>Allow to specify default font provider</li>
+         <li>Require QtPositioning 5.4 and use Qt calculated direction</li>
+         <li>Update translations</li>
+         <li>[sfos] Adjust packaging for Jolla Store</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.7.0" date="2021-04-09">
      <description>
        <ul>
