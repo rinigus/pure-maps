@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-05-22 13:51+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Atlochowski <hucul@o2.pl>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rinigus/teams/89597/pl/)\n"
@@ -519,15 +519,15 @@ msgstr "Silnik wyszukiwania"
 msgid "Initializing"
 msgstr "Uruchamianie"
 
-#: qml/InitPage.qml:46 qml/RoutePage.qml:194
+#: qml/InitPage.qml:47 qml/RoutePage.qml:194
 msgid "Dismiss"
 msgstr "Odrzuć"
 
-#: qml/InitPage.qml:47
+#: qml/InitPage.qml:48
 msgid "Missing Mapbox key"
 msgstr "Brakujący klucz Mapbox"
 
-#: qml/InitPage.qml:48
+#: qml/InitPage.qml:49
 msgid ""
 "Your installation is missing Mapbox API key. Please register at Mapbox and "
 "fill in your personal API key in Preferences. This key is not needed if you "
@@ -594,20 +594,20 @@ msgstr "Mieszany"
 msgid "Stop navigation to select POI"
 msgstr "Zatrzymaj nawigację aby wybrać POI"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
 #: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr "Początek"
 
-#: qml/Map.qml:640 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
 msgstr "Miejsce docelowe"
 
-#: qml/Map.qml:642
-msgid "✓"
-msgstr ""
-
 #: qml/Map.qml:645
+msgid "✓"
+msgstr "✓"
+
+#: qml/Map.qml:648
 msgid "#%1"
 msgstr "#%1"
 
@@ -758,7 +758,7 @@ msgstr ""
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "Na miejscu"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"

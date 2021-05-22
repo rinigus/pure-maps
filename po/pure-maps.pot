@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 20:21+0300\n"
+"POT-Creation-Date: 2021-05-22 13:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -486,15 +486,15 @@ msgstr ""
 msgid "Initializing"
 msgstr ""
 
-#: qml/InitPage.qml:46 qml/RoutePage.qml:194
+#: qml/InitPage.qml:47 qml/RoutePage.qml:194
 msgid "Dismiss"
 msgstr ""
 
-#: qml/InitPage.qml:47
+#: qml/InitPage.qml:48
 msgid "Missing Mapbox key"
 msgstr ""
 
-#: qml/InitPage.qml:48
+#: qml/InitPage.qml:49
 msgid ""
 "Your installation is missing Mapbox API key. Please register at Mapbox and "
 "fill in your personal API key in Preferences. This key is not needed if you "

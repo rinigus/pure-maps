@@ -6,16 +6,16 @@
 # Translators:
 # rinigus github, 2018
 # Gustavo Martins <gustavo737@gmail.com>, 2020
-# Caio2k, 2020
+# Caio2k, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 22:10+0200\n"
+"POT-Creation-Date: 2021-05-22 13:51+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Caio2k, 2020\n"
+"Last-Translator: Caio2k, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rinigus/teams/89597/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -520,15 +520,15 @@ msgstr "Motor de busca"
 msgid "Initializing"
 msgstr "Iniciando"
 
-#: qml/InitPage.qml:46 qml/RoutePage.qml:194
+#: qml/InitPage.qml:47 qml/RoutePage.qml:194
 msgid "Dismiss"
 msgstr "Dispensar"
 
-#: qml/InitPage.qml:47
+#: qml/InitPage.qml:48
 msgid "Missing Mapbox key"
 msgstr "Faltando chave do Mapbox"
 
-#: qml/InitPage.qml:48
+#: qml/InitPage.qml:49
 msgid ""
 "Your installation is missing Mapbox API key. Please register at Mapbox and "
 "fill in your personal API key in Preferences. This key is not needed if you "
@@ -563,6 +563,12 @@ msgid ""
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
+"Você está usando o perfil offline. Certifique-se que o aplicativo OSM Scout "
+"Server esteja instalado e em execução. Ele está disponível na loja de "
+"aplicativos do seu sistema (OpenRepos para o Sailfish OS, OpenStore para o "
+"UBPorts), no Flathub ou na sua distribuição. Veja <a "
+"href=\"https://rinigus.github.io/osmscout-server\">Manual do OSM Scout "
+"Server</a>para mias informações."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -594,24 +600,24 @@ msgstr "Misto"
 
 #: qml/MapGestureArea.qml:63 qml/MapGestureArea.qml:81
 msgid "Stop navigation to select POI"
-msgstr "Para navegação para selecionar PDI"
+msgstr "Pare a navegação para selecionar PDI"
 
-#: qml/Map.qml:638 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
 #: qml/RoutePage.qml:174
 msgid "Origin"
 msgstr "Origem"
 
-#: qml/Map.qml:640 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
-msgstr ""
-
-#: qml/Map.qml:642
-msgid "✓"
-msgstr ""
+msgstr "Destino final"
 
 #: qml/Map.qml:645
+msgid "✓"
+msgstr "✓"
+
+#: qml/Map.qml:648
 msgid "#%1"
-msgstr ""
+msgstr "#%1"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
@@ -679,22 +685,22 @@ msgstr "Para rota"
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:217
 msgid "(D)"
-msgstr ""
+msgstr "(D)"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:219
 msgid "(W)"
-msgstr ""
+msgstr "(P)"
 
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:310
 msgid "(D) ETA"
-msgstr ""
+msgstr "(D) HEC"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:312
 msgid "(W) ETA"
-msgstr ""
+msgstr "(P) HEC"
 
 #: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:291
 msgid "ETA"
@@ -730,23 +736,23 @@ msgstr "Você chegou ao seu destino"
 
 #: qml/NavigationPage.qml:173 qml/RoutePage.qml:188 qml/RoutePage.qml:195
 msgid "Destinations and waypoints"
-msgstr ""
+msgstr "Destinos e paradas"
 
 #: qml/NavigationPage.qml:207
 msgid "Origin: %1"
-msgstr ""
+msgstr "Origem: %1"
 
 #: qml/NavigationPage.qml:209
 msgid "Final destination: %1"
-msgstr ""
+msgstr "Destino final: %1"
 
 #: qml/NavigationPage.qml:212 qml/RoutePage.qml:276
 msgid "Destination: %1"
-msgstr ""
+msgstr "Destino: %1"
 
 #: qml/NavigationPage.qml:213 qml/RoutePage.qml:277
 msgid "Waypoint: %1"
-msgstr ""
+msgstr "Parada: %1"
 
 #: qml/NavigationPage.qml:262 qml/RouteOverallInfo.qml:95
 msgid "Remaining"
@@ -756,11 +762,11 @@ msgstr "Distância"
 #. as intermediate destinations on the route
 #: qml/NavigationPage.qml:314
 msgid "Leg"
-msgstr ""
+msgstr "Perna"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr ""
+msgstr "Chegou"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
@@ -772,11 +778,11 @@ msgstr "SAÍDA"
 
 #: qml/Navigator.qml:78
 msgid "Destination %1 reached"
-msgstr ""
+msgstr "Você chegou ao destino %1"
 
 #: qml/Navigator.qml:79
 msgid "Waypoint %1 reached"
-msgstr ""
+msgstr "Você chegou à parada %1"
 
 #: qml/Navigator.qml:129
 msgid "Voice navigation on"
@@ -792,19 +798,19 @@ msgstr ""
 
 #: qml/Navigator.qml:185
 msgid "Routing failed: current position not known"
-msgstr ""
+msgstr "Não foi possível encontrar rota: posição atual desconhecida"
 
 #: qml/Navigator.qml:191
 msgid "Rerouting position"
-msgstr ""
+msgstr "Posicionando rota"
 
 #: qml/Navigator.qml:199
 msgid "Routing"
-msgstr ""
+msgstr "Procurando rota"
 
 #: qml/Navigator.qml:210
 msgid "Routing failed: %1"
-msgstr ""
+msgstr "Não foi possível encontrar rota: %1"
 
 #: qml/Navigator.qml:215 src/navigator.cpp:995
 msgid "New route found"
@@ -812,11 +818,11 @@ msgstr "Nova rota encontrada"
 
 #: qml/Navigator.qml:216
 msgid "Route found"
-msgstr ""
+msgstr "Rota encontrada"
 
 #: qml/Navigator.qml:226 src/navigator.cpp:997
 msgid "Routing failed"
-msgstr ""
+msgstr "Não foi possível encontrar rota"
 
 #: qml/Navigator.qml:258 src/navigator.cpp:996
 msgid "Rerouting"
@@ -853,7 +859,7 @@ msgstr "Buscando"
 
 #: qml/NearbyResultsPage.qml:131
 msgid "Nearby venues: %1 %2"
-msgstr ""
+msgstr "Locais próximos: %1 %2"
 
 #: qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
@@ -879,7 +885,7 @@ msgstr "Nome do local"
 
 #: qml/PlaceNamePage.qml:69
 msgid "Name or keyword"
-msgstr ""
+msgstr "Nome ou palavra-chave"
 
 #: qml/PlaceNamePage.qml:82
 msgid "You can search for venues by name."
@@ -891,7 +897,7 @@ msgstr "Tipo de local"
 
 #: qml/PlaceTypePage.qml:99
 msgid "You can search for venues by type."
-msgstr ""
+msgstr "Você pode procurar locais próximos por tipo."
 
 #: qml/PoiBlock.qml:96
 msgid "%1; %2"
@@ -927,35 +933,35 @@ msgstr "Mais informações: %1"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as or Replace"
-msgstr ""
+msgstr "Configurar com ou Substituir"
 
 #: qml/PoiBlock.qml:230
 msgid "Set as"
-msgstr ""
+msgstr "Configurar como"
 
 #: qml/PoiBlock.qml:290
 msgid "Insert as"
-msgstr ""
+msgstr "Inserir como"
 
 #: qml/PoiBlock.qml:295
 msgid "New origin"
-msgstr ""
+msgstr "Nova origem"
 
 #: qml/PoiBlock.qml:308
 msgid "New final destination"
-msgstr ""
+msgstr "Novo destino final"
 
 #: qml/PoiBlock.qml:320
 msgid "First intermediate destination"
-msgstr ""
+msgstr "Primeiro destino intermediário"
 
 #: qml/PoiBlock.qml:333
 msgid "Last intermediate destination"
-msgstr ""
+msgstr "Último destino intermediário"
 
 #: qml/PoiBlock.qml:334
 msgid "Intermediate destination"
-msgstr ""
+msgstr "Destino intermediário"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -1754,11 +1760,11 @@ msgstr "Siga-me"
 
 #: qml/RoutePage.qml:81
 msgid "Reverse route"
-msgstr ""
+msgstr "Rota reversa"
 
 #: qml/RoutePage.qml:100
 msgid "Clear route"
-msgstr ""
+msgstr "Limpar rota"
 
 #: qml/RoutePage.qml:173
 msgid "From"
@@ -1780,38 +1786,43 @@ msgid ""
 "\n"
 "Dismiss this dialog to stop showing this message."
 msgstr ""
+"Destinos adicionais e paradas podem ser adicionados à rota e ambos funcionam de maneira similar, mas somente chegadas a destinos são detectadas. Se você chegar em um destino pulando paradas anteriores elas serão ignoradas para fins de cálculo de rotas.\n"
+"\n"
+"Os destinos são pensados para pontos que você necessita passar e as paradas para ajudar a desenhar caminhos para que a rota se adequar à sua preferência.\n"
+"\n"
+"Dispense essa mensagem para não vê-la mais."
 
 #: qml/RoutePage.qml:218
 msgid "Optimize order"
-msgstr ""
+msgstr "Otimizar ordem"
 
 #: qml/RoutePage.qml:241
 msgid "Up"
-msgstr ""
+msgstr "Subir"
 
 #: qml/RoutePage.qml:250
 msgid "Down"
-msgstr ""
+msgstr "Descer"
 
 #: qml/RoutePage.qml:264
 msgid "Convert to waypoint"
-msgstr ""
+msgstr "Converter em parada"
 
 #: qml/RoutePage.qml:265
 msgid "Convert to destination"
-msgstr ""
+msgstr "Converter em destino"
 
 #: qml/RoutePage.qml:311
 msgid "Add destination"
-msgstr ""
+msgstr "Adicionar destino"
 
 #: qml/RoutePage.qml:319
 msgid "Add waypoint"
-msgstr ""
+msgstr "Adicionar parada"
 
 #: qml/RoutePage.qml:335
 msgid "Waypoint"
-msgstr ""
+msgstr "Parada"
 
 #: qml/RoutePage.qml:427
 msgid "Routes"
@@ -1819,11 +1830,11 @@ msgstr "Rotas"
 
 #: qml/RoutePage.qml:455
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
-msgstr ""
+msgstr "%1 ‒ %2 (%3 destinos e paradas)"
 
 #: qml/RoutePage.qml:500
 msgid "Show more..."
-msgstr ""
+msgstr "Mais informação..."
 
 #: qml/RoutePage.qml:540
 msgid "Destinations"
