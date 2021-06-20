@@ -276,7 +276,7 @@ def format_location_olc(x, y):
 def format_location_message(x, y, extra_text, html=False, extra=True, osm=True, gmaps=False):
     """Format coordinates of a point into a location message."""
     if osm: osm_url = short_osm(y,x)
-    if gmaps: gm = 'http://maps.google.com/?q={y:.5f},{x:.5f}'.format(x=x, y=y)
+    if gmaps: gm = 'https://maps.google.com/?q={y:.5f},{x:.5f}'.format(x=x, y=y)
     plus = olc_encode(y,x)
     if html:
         if extra_text and extra: r = extra_text + '<br>'
@@ -419,11 +419,11 @@ def short_osm(lat, lon, zoom=16):
     Provide coordinates and optional zoom level. e.g.:
 
     >>> short_osm(50.671530961990356, 6.09715461730957)
-    http://osm.org/go/0GAjIv8h
+    https://osm.org/go/0GAjIv8h
     >>> short_osm(0, 0, 3)
-    http://osm.org/go/wAAA--
+    https://osm.org/go/wAAA--
     >>> short_osm(0, 0, 4)
-    http://osm.org/go/wAAA
+    https://osm.org/go/wAAA
     """
     # OSM short link, from https://gist.github.com/mdornseif/5652824
     # osm_shortlink.py - MAximillian Dornseif 2013 - Public Domain
@@ -464,7 +464,7 @@ def short_osm(lat, lon, zoom=16):
           c = (c << 1) | ((y >> i) & 1)
         return c
 
-    return 'http://osm.org/go/' + _encode(lat, lon, zoom) + "?m"
+    return 'https://osm.org/go/' + _encode(lat, lon, zoom) + "?m"
 
 def path2uri(path):
     """Convert local filepath to URI."""
