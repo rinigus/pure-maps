@@ -49,6 +49,7 @@ ApplicationWindowPL {
     // and the associated constant Theme.itemSizeSmall.
     property real   listItemVerticalMargin: (styler.themeItemSizeSmall - 1.125 * styler.themeFontSizeMedium) / 2
     property var    map: null
+    property bool   mapboxKeyMissing: false
     property string mapMatchingMode: {
         if (!hasMapMatching) return "none";
         else if (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
@@ -220,6 +221,8 @@ ApplicationWindowPL {
         else
             app.hasMapMatching = mapMatchingAvailable;
         initialized = true;
+        // after all objects and pages are initialized
+        CmdLineParser.process()
     }
 
     function openMapErrorMessage(error) {

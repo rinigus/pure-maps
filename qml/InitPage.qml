@@ -24,7 +24,6 @@ PageEmptyPL {
     id: page
     title: "Pure Maps"
 
-    property bool mapboxKeyMissing: false
     property bool ready: false
 
     BusyModal {
@@ -51,7 +50,7 @@ PageEmptyPL {
                                                        "in Preferences. This key is not needed if you plan to use " +
                                                        "Pure Maps with the offline map provider.")
                                  });
-                mapboxKeyMissing = true;
+                app.mapboxKeyMissing = true;
             } else start();
         }
     }
@@ -60,7 +59,5 @@ PageEmptyPL {
 
     function start() {
         app.rootPage = app.pages.replace(Qt.resolvedUrl("RootPage.qml"));
-        app.initialize();
-        if (mapboxKeyMissing) app.showMenu();
     }
 }

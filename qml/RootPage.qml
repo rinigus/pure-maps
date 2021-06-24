@@ -130,11 +130,14 @@ PageEmptyPL {
         app.remorse = remorse;
         // connect modal dialog properties
         app.modalDialogBasemap = Qt.binding(function () { return basemapButton.openMenu; });
-        // after all objects are initialized
-        CmdLineParser.process()
     }
 
     onPageStatusActive: {
         if (!app.infoActive) app.stateId = "";
+        // finish initialization after the root page is shown
+        if (!app.initialized) {
+            app.initialize();
+            if (app.mapboxKeyMissing) app.showMenu();
+        }
     }
 }
