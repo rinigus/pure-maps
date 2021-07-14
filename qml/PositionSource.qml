@@ -48,14 +48,20 @@ PositionSourceMapMatched {
     property var  timeActivate:  Date.now()
     property var  timePosition:  Date.now()
 
+    Component.onCompleted: checkReady()
+
     onActiveChanged: {
         // Keep track of when positioning was (re)activated.
         if (active) timeActivate = Date.now();
-        else ready = false;
+        checkReady();
     }
 
     onPositionChanged: {
         timePosition = Date.now();
+        checkReady();
+    }
+
+    function checkReady() {
         ready = position.latitudeValid &&
                 position.longitudeValid &&
                 position.coordinate.latitude &&
