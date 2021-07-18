@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtMultimedia 5.6
+import QtPositioning 5.4
 import org.puremaps 1.0
 import "."
 import "platform"
