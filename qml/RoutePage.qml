@@ -395,13 +395,7 @@ DialogPL {
                 columnRouter.settings && columnRouter.settings.destroy();
                 var uri = Qt.resolvedUrl(py.evaluate("poor.app.router.settings_qml_uri"));
                 if (!uri) return;
-                var component = Qt.createComponent(uri);
-                if (component.status === Component.Error) {
-                    console.log('Error while creating component');
-                    console.log(component.errorString());
-                    return null;
-                }
-                columnRouter.settings = component.createObject(columnRouter);
+                columnRouter.settings = app.createObject(uri, {}, columnRouter);
                 if (!columnRouter.settings) return;
                 columnRouter.settings.anchors.left = columnRouter.left;
                 columnRouter.settings.anchors.right = columnRouter.right;

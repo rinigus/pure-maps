@@ -141,8 +141,8 @@ PagePL {
             if (column.settings) column.settings.destroy();
             var uri = Qt.resolvedUrl(py.evaluate("poor.app.guide.settings_qml_uri"));
             if (!uri) return;
-            var component = Qt.createComponent(uri);
-            column.settings = component.createObject(column);
+            column.settings = app.createObject(uri, {}, column);
+            if (!column.settings) return;
             column.settings.anchors.left = column.left;
             column.settings.anchors.right = column.right;
             column.settings.width = column.width;
