@@ -38,8 +38,8 @@ Column {
             if (routeSwitch.checked) {
                 page.params.alongRoute = true;
                 page.params.route = {
-                    "route_lng": navigator.route.map(x => x.longitude),
-                    "route_lat": navigator.route.map(x => x.latitude),
+                    "route_lng": navigator.route.map(function(x) { return x.longitude }),
+                    "route_lat": navigator.route.map(function(x) { return x.latitude }),
                 };
             } else {
                 page.params.alongRoute = false;
