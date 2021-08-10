@@ -28,7 +28,8 @@ Item {
     property var  positionShown
 
     property bool _animatePosition: app.conf.smoothPositionAnimationWhenNavigating &&
-                                    (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
+                                    (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost) &&
+                                    map.animationTime > 0
 
     readonly property var images: QtObject {
         readonly property string moving: "pure-position-moving"
@@ -45,7 +46,7 @@ Item {
 
     CoordinateAnimation {
         id: animate
-        duration: marker._animatePosition ? map.animationTime : 0
+        duration: map.animationTime
         easing.type: Easing.Linear
         target: marker
         property: "positionShown"
@@ -63,6 +64,7 @@ Item {
             if (!positionShown || !marker._animatePosition) {
                 positionShown = QtPositioning.coordinate(gps.position.coordinate.latitude, gps.position.coordinate.longitude);
                 marker.position = QtPositioning.coordinate(gps.position.coordinate.latitude, gps.position.coordinate.longitude);
+                animate.from = marker.position;
                 animate.to = marker.position;
             } else {
                 animate.complete();

@@ -125,7 +125,7 @@ MapboxMap {
 
     Behavior on center {
         CoordinateAnimation {
-            duration: map.ready ? animationTime : 0
+            duration: animationTime
             easing.type: app.mode === modes.explore || app.mode === modes.exploreRoute ? Easing.InOutQuad : Easing.Linear
         }
     }
