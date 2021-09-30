@@ -40,10 +40,7 @@ PositionSourceMapMatched {
 
     testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
 
-    property bool accurate: ready &&
-                            position.horizontalAccuracyValid &&
-                            position.horizontalAccuracy > 0 &&
-                            position.horizontalAccuracy < 25
+    property bool accurate: false
     property var  ready: false
     property var  timeActivate:  Date.now()
     property var  timePosition:  Date.now()
@@ -66,5 +63,9 @@ PositionSourceMapMatched {
                 position.longitudeValid &&
                 position.coordinate.latitude &&
                 position.coordinate.longitude;
+        accurate = ready &&
+                position.horizontalAccuracyValid &&
+                position.horizontalAccuracy > 0 &&
+                position.horizontalAccuracy < 25;
     }
 }
