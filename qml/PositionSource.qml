@@ -41,7 +41,7 @@ PositionSourceMapMatched {
     testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
 
     property bool accurate: false
-    property var  ready: false
+    property bool ready: false
     property var  timeActivate:  Date.now()
     property var  timePosition:  Date.now()
 

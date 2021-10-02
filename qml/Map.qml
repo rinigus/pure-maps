@@ -46,7 +46,8 @@ MapboxMap {
         if (app.mode === modes.explore || app.mode === modes.exploreRoute)
             return 1000;
         // support smooth animations for position marker
-        // and map center only if GPS is accurate and is desired
+        // and map center only if GPS is accurate and
+        // smooth animation is desired
         return (gps.accurate && app.conf.smoothPositionAnimationWhenNavigating ? gps.timePerUpdate : 0);
     }
     property bool   autoCenter: false

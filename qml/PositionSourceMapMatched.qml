@@ -51,6 +51,7 @@ Item {
     property real  streetSpeedAssumed: -1  // in m/s
     property real  streetSpeedLimit: -1    // in m/s
     property alias supportedPositioningMethods: gps.supportedPositioningMethods
+    property real  timePerUpdate: 1000
     property alias updateInterval: gps.updateInterval
     property alias valid: gps.valid
 
