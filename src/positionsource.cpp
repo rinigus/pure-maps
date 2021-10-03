@@ -88,6 +88,5 @@ void PositionSource::onPositionUpdated(const QGeoPositionInfo &info)
 
   SET(updateInterval, std::max(m_source->updateInterval(), m_source->minimumUpdateInterval()));
 
-  qDebug() << "Update interval:" << m_updateInterval;
   emit positionUpdated();
 }

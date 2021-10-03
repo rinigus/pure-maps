@@ -28,7 +28,7 @@ PM.PositionSource {
     // If application is no longer active, turn positioning off immediately
     // if we already have a lock, otherwise keep trying for a couple minutes
     // and give up if we still don't gain that lock.
-    active: app.running || (!accurate && timePosition - timeActivate < 180000)
+    active: app.running || (!accurate && waitForLock)
 
     property var  mapMatchingMode: {
         if (app.mapMatchingMode == "none") return 0;
@@ -48,19 +48,18 @@ PM.PositionSource {
     property real  streetSpeedAssumed: -1  // in m/s
     property real  streetSpeedLimit: -1    // in m/s
 
-    property var  testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
+    property var   testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
 
-    property var  timeActivate:  Date.now()
-    property var  timePosition:  Date.now()
+    property bool  waitForLock: false
 
-    onActiveChanged: {
-        // Keep track of when positioning was (re)activated.
-        if (active) timeActivate = Date.now();
-    }
-
-    onCoordinateChanged: {
-        // TODO - some cases may not fire if coordinate is not changed
-        //
-        timePosition = Date.now();
+    property var   _timer: Timer {
+        id: timerLockWait
+        interval: 180000
+        repeat: false
+        running: gps.active && !gps.accurate
+        onTriggered: gps.waitForLock = false
+        onRunningChanged: {
+            if (running) gps.waitForLock = true;
+        }
     }
 }
