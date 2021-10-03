@@ -37,13 +37,13 @@ DialogPL {
     canNavigateForward: {
         if (followMe)
             return true;
-        if (page.fromNeeded && (!page.from || (page.fromText === app.tr("Current position") && !gps.ready)) )
+        if (page.fromNeeded && (!page.from || (page.fromText === app.tr("Current position") && !gps.coordinateValid)) )
             return false;
-        if (page.toNeeded && (!page.to || (page.toText === app.tr("Current position") && !gps.ready)) )
+        if (page.toNeeded && (!page.to || (page.toText === app.tr("Current position") && !gps.coordinateValid)) )
             return false;
         if (waypointsEnabled)
             for (var i=0; i < waypoints.count; ++i)
-                if (!waypoints.get(i).set || (waypoints.get(i).text === app.tr("Current position") && !gps.ready))
+                if (!waypoints.get(i).set || (waypoints.get(i).text === app.tr("Current position") && !gps.coordinateValid))
                     return false;
         return true;
     }

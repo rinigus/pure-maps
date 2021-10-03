@@ -41,7 +41,7 @@ ValueButtonPL {
         anchors.right: parent.right
         anchors.rightMargin: styler.themeHorizontalPageMargin + (parent.width - page.width)
         anchors.verticalCenter: parent.verticalCenter
-        running: text === app.tr("Current position") && !gps.ready
+        running: text === app.tr("Current position") && !gps.coordinateValid
         z: parent.z + 1
     }
 

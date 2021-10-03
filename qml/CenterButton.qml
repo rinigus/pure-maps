@@ -23,6 +23,7 @@ MapButton {
     id: button
     anchors.top: northArrow.bottom
     anchors.right: parent.right
+    enabled: gps.coordinateValid
     iconHeight: styler.themeIconSizeSmall
     iconSource: app.getIcon("icons/center")
     indicator: map.autoCenter

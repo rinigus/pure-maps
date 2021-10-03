@@ -25,6 +25,7 @@ Item {
     height: bg.height + 2*styler.themePaddingLarge
     width: bg.width + 2*styler.themePaddingLarge
 
+    property alias  enabled: mouse.enabled
     property alias  iconColorize: button.iconColorize
     property alias  iconHeight: button.iconHeight
     property alias  iconName: button.iconName
@@ -48,6 +49,7 @@ Item {
             radius: styler.shadowRadius
             samples: 1 + radius*2
         }
+        opacity: item.enabled ? 1.0 : 0.75
         radius: wh/2
         width: wh
 

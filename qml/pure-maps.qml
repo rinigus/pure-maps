@@ -199,7 +199,7 @@ ApplicationWindowPL {
 
     function getPosition() {
         // Return the coordinates of the current position.
-        return [gps.position.coordinate.longitude, gps.position.coordinate.latitude];
+        return [gps.coordinate.longitude, gps.coordinate.latitude];
     }
 
     function hideMenu(menutext) {

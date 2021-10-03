@@ -45,6 +45,7 @@
 #include "dbusservice.h"
 #include "navigator.h"
 #include "navigatordbusadapter.h"
+#include "positionsource.h"
 
 
 int main(int argc, char *argv[])
@@ -177,6 +178,7 @@ int main(int argc, char *argv[])
 #endif
   qmlRegisterType<Navigator>("org.puremaps", 1, 0, "NavigatorBase");
   qmlRegisterType<ManeuverModel>("org.puremaps", 1, 0, "ManeuverList");
+  qmlRegisterType<PositionSource>("org.puremaps", 1, 0, "PositionSource");
 
   qmlRegisterSingletonType<CmdLineParser>("org.puremaps", 1, 0, "CmdLineParser", [](QQmlEngine *, QJSEngine *) -> QObject * {
       return static_cast<QObject *>(CmdLineParser::instance());

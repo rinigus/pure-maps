@@ -29,31 +29,30 @@
 import QtQuick 2.0
 import QtPositioning 5.4
 import Nemo.DBus 2.0
+import org.puremaps 1.0 as PM
 
 Item {
     id: master
 
     // Properties
     property alias active: gps.active
-    property real  direction: directionMapMatchValid ? directionMapMatch : directionDevice
-    property real  directionDevice: 0
-    property bool  directionDeviceValid: false
+    property alias ready: gps.ready
+    property alias accurate: gps.accurate
+
+    property var   coordinate
+    property bool  coordinateValid: false
+    property var   direction: directionMapMatchValid ? directionMapMatch : directionDevice
+    property alias directionDevice: gps.direction
+    property alias directionDeviceValid: gps.directionValid
     property real  directionMapMatch: 0
     property bool  directionMapMatchValid: false
     property bool  directionValid: directionMapMatchValid || directionDeviceValid
     property alias mapMatchingAvailable: scoutbus.available
     property alias mapMatchingMode: scoutbus.mode
-    property alias name: gps.name
-    property var   position
-    property alias preferredPositioningMethods: gps.preferredPositioningMethods
-    property alias sourceError: gps.sourceError
     property string streetName: ""
     property real  streetSpeedAssumed: -1  // in m/s
     property real  streetSpeedLimit: -1    // in m/s
-    property alias supportedPositioningMethods: gps.supportedPositioningMethods
-    property real  timePerUpdate: 1000
-    property alias updateInterval: gps.updateInterval
-    property alias valid: gps.valid
+    property real  timePerUpdate: 1000 // NOT REAL NUMBER, TODO
 
     // Timing statistics support
     property bool  timingStatsEnable: false
@@ -71,84 +70,75 @@ Item {
     property var   testingCoordinate: undefined
 
     // Signals
+    signal positionUpdated()
 
     // signal is not provided by Sailfish version of PositionSource
     // signal updateTimeout()
-
-    // Methods
-    function start() {
-        gps.start()
-    }
-
-    function stop() {
-        gps.stop()
-    }
-
-    function update() {
-        gps.update()
-    }
 
     //////////////////////////////////////////////////////////////
     /// Implementation
     //////////////////////////////////////////////////////////////
 
     // provider for actual position
-    PositionSource {
+    PM.PositionSource {
         id: gps
 
-        property var lastPositionDirectionValid: null
+//        property var lastPositionDirectionValid: null
 
         Component.onCompleted: positionUpdate(position)
 
-        onPositionChanged: if (testingCoordinate==null) positionUpdate(position)
+//        onPositionUpdated: if (testingCoordinate==null) positionUpdate(position)
 
         onActiveChanged: {
             if (!gps.active) scoutbus.stop();
         }
 
-        function positionUpdate(positionRaw) {
+        onPositionUpdated: {
             // Filter coordinates first to ensure that they
             // are numeric values
-            var pos = {}
-            for (var i in positionRaw) {
-                if (!(positionRaw[i] instanceof Function))
-                    pos[i] = positionRaw[i]
-            }
+//            var pos = {}
+//            for (var i in positionRaw) {
+//                if (!(positionRaw[i] instanceof Function))
+//                    pos[i] = positionRaw[i]
+//            }
 
-            if (pos.coordinate.latitude == null ||
-                    isNaN(pos.coordinate.latitude) ||
-                    pos.coordinate.longitude == null ||
-                    isNaN(pos.coordinate.longitude))
-                pos.coordinate = QtPositioning.coordinate(0, 0);
+//            if (pos.coordinate.latitude == null ||
+//                    isNaN(pos.coordinate.latitude) ||
+//                    pos.coordinate.longitude == null ||
+//                    isNaN(pos.coordinate.longitude))
+//                pos.coordinate = QtPositioning.coordinate(0, 0);
 
-            if (pos.directionValid) {
-                master.directionDevice = pos.direction;
-                if (!master.directionDeviceValid)
-                    master.directionDeviceValid = true;
-                lastPositionDirectionValid = pos.coordinate;
-            } else if (lastPositionDirectionValid == null ||
-                       // stick to old direction when we stop moving
-                       pos.coordinate.distanceTo(lastPositionDirectionValid) > 10 /* meters */ )
-            {
-                master.directionDeviceValid = false;
-                master.directionDevice = 0;
-            }
+//            if (pos.directionValid) {
+//                master.directionDevice = pos.direction;
+//                if (!master.directionDeviceValid)
+//                    master.directionDeviceValid = true;
+//                lastPositionDirectionValid = pos.coordinate;
+//            } else if (lastPositionDirectionValid == null ||
+//                       // stick to old direction when we stop moving
+//                       pos.coordinate.distanceTo(lastPositionDirectionValid) > 10 /* meters */ )
+//            {
+//                master.directionDeviceValid = false;
+//                master.directionDevice = 0;
+//            }
 
             if (scoutbus.available &&
                     scoutbus.mode &&
-                    pos.latitudeValid && pos.longitudeValid &&
-                    pos.horizontalAccuracyValid) {
+                    coordinateValid &&
+                    horizontalAccuracyValid) {
                 if (master.timingStatsEnable && !master._timingShot) {
                     master._timingOverallCounter += 1;
                     master._timingShot = true;
                     master._timingLastCallStart = Date.now();
                 }
-                scoutbus.mapMatch(pos);
+                scoutbus.mapMatch(coordinate, horizontalAccuracy);
             } else {
-                master.position = pos;
+                master.coordinate = coordinate;
+                master.coordinateValid = coordinateValid;
                 if (scoutbus.mode && scoutbus.running)
                     scoutbus.stop();
             }
+
+            master.positionUpdated();
         }
     }
 
@@ -180,28 +170,24 @@ Item {
             }
         }
 
-        function mapMatch(position) {
+        function mapMatch(coordinate, horizontalAccuracy) {
             if (!mode || !available) return;
 
             typedCall("Update",
                       [ {'type': 'i', 'value': mode},
-                       {'type': 'd', 'value': position.coordinate.latitude},
-                       {'type': 'd', 'value': position.coordinate.longitude},
-                       {'type': 'd', 'value': position.horizontalAccuracy} ],
+                       {'type': 'd', 'value': coordinate.latitude},
+                       {'type': 'd', 'value': coordinate.longitude},
+                       {'type': 'd', 'value': horizontalAccuracy} ],
                       function(result) {
                           // successful call
                           var r = JSON.parse(result);
-                          var pos = {}
-                          for (var i in position) {
-                              if (!(position[i] instanceof Function) && i!=="coordinate")
-                                  pos[i] = position[i]
-                          }
+                          var coor;
 
-                          var latitude = position.coordinate.latitude
-                          var longitude = position.coordinate.longitude
+                          var latitude = coordinate.latitude
+                          var longitude = coordinate.longitude
                           if (r.latitude !== undefined) latitude = r.latitude;
                           if (r.longitude !== undefined) longitude = r.longitude;
-                          pos.coordinate = QtPositioning.coordinate(latitude, longitude);
+                          coor = QtPositioning.coordinate(latitude, longitude);
 
                           if (r.direction!==undefined) master.directionMapMatch = r.direction;
                           if (r.direction_valid!==undefined) master.directionMapMatchValid = r.direction_valid;
@@ -210,7 +196,8 @@ Item {
                           if (r.street_speed_limit!==undefined) master.streetSpeedLimit = r.street_speed_limit;
 
                           // always update position
-                          master.position = pos;
+                          master.coordinate = coor;
+                          master.coordinateValid = true;
 
                           if (master._timingShot) {
                               var dt = 1e-3*(Date.now() - master._timingLastCallStart);
@@ -224,7 +211,8 @@ Item {
                       function(result) {
                           // error
                           scoutbus.resetValues();
-                          master.position = gps.position;
+                          master.coordinate = gps.coordinate;
+                          master.coordinateValid = gps.coordinateValid;
                       }
                       );
 
@@ -284,23 +272,25 @@ Item {
         }
     }
 
-    // support for testing
-    Timer {
-        id: testingTimer
-        interval: Math.max(gps.updateInterval, 1000)
-        running: testingCoordinate!=null
-        repeat: true
-        onTriggered: {
-            var p= {};
-            p.coordinate = master.testingCoordinate;
-            p.horizontalAccuracy = 10;
-            p.latitudeValid = true;
-            p.longitudeValid = true;
-            p.horizontalAccuracyValid = true;
-            p.directionValid = false;
-            gps.positionUpdate(p);
-        }
-    }
+    // TODO: TESTING
+
+//    // support for testing
+//    Timer {
+//        id: testingTimer
+//        interval: Math.max(gps.updateInterval, 1000)
+//        running: testingCoordinate!=null
+//        repeat: true
+//        onTriggered: {
+//            var p= {};
+//            p.coordinate = master.testingCoordinate;
+//            p.horizontalAccuracy = 10;
+//            p.latitudeValid = true;
+//            p.longitudeValid = true;
+//            p.horizontalAccuracyValid = true;
+//            p.directionValid = false;
+//            gps.positionUpdate(p);
+//        }
+//    }
 
     // reset direction estimated by map matching until the next position update
     onMapMatchingModeChanged: directionMapMatchValid = false

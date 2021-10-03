@@ -18,11 +18,11 @@
 
 import QtQuick 2.0
 import QtPositioning 5.4
-import "."
+import org.puremaps 1.0 as PM
 
 import "js/util.js" as Util
 
-PositionSourceMapMatched {
+PM.PositionSource {
     id: gps
 
     // If application is no longer active, turn positioning off immediately
@@ -30,7 +30,7 @@ PositionSourceMapMatched {
     // and give up if we still don't gain that lock.
     active: app.running || (!accurate && timePosition - timeActivate < 180000)
 
-    mapMatchingMode: {
+    property var  mapMatchingMode: {
         if (app.mapMatchingMode == "none") return 0;
         else if (app.mapMatchingMode == "car") return 1;
         else if (app.mapMatchingMode == "bicycle") return 3;
@@ -38,34 +38,29 @@ PositionSourceMapMatched {
         return 0;
     }
 
-    testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
+    //property var   direction: directionMapMatchValid ? directionMapMatch : directionDevice
+    property alias directionDevice: gps.direction
+    property alias directionDeviceValid: gps.directionValid
+    property real  directionMapMatch: 0
+    property bool  directionMapMatchValid: false
+    property bool  mapMatchingAvailable: false
+    property string streetName: ""
+    property real  streetSpeedAssumed: -1  // in m/s
+    property real  streetSpeedLimit: -1    // in m/s
 
-    property bool accurate: false
-    property bool ready: false
+    property var  testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
+
     property var  timeActivate:  Date.now()
     property var  timePosition:  Date.now()
-
-    Component.onCompleted: checkReady()
 
     onActiveChanged: {
         // Keep track of when positioning was (re)activated.
         if (active) timeActivate = Date.now();
-        checkReady();
     }
 
-    onPositionChanged: {
+    onCoordinateChanged: {
+        // TODO - some cases may not fire if coordinate is not changed
+        //
         timePosition = Date.now();
-        checkReady();
-    }
-
-    function checkReady() {
-        ready = position.latitudeValid &&
-                position.longitudeValid &&
-                position.coordinate.latitude &&
-                position.coordinate.longitude;
-        accurate = ready &&
-                position.horizontalAccuracyValid &&
-                position.horizontalAccuracy > 0 &&
-                position.horizontalAccuracy < 25;
     }
 }

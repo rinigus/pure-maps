@@ -141,11 +141,11 @@ Item {
 
         function updatePosition() {
             if (destReached) return; // no more updates
-            navigatorBase.setPosition(gps.position.coordinate,
+            navigatorBase.setPosition(gps.coordinate,
                                       gps.directionDeviceValid ? gps.directionDevice : gps.direction,
-                                      gps.position.horizontalAccuracy,
-                                      gps.position.horizontalAccuracyValid &&
-                                      gps.position.latitudeValid && gps.position.longitudeValid &&
+                                      gps.horizontalAccuracy,
+                                      gps.horizontalAccuracyValid &&
+                                      gps.ready &&
                                       gps.directionValid);
         }
     }
@@ -160,7 +160,7 @@ Item {
 
     Connections {
         target: gps
-        onPositionChanged: navigatorBase.updatePosition()
+        onPositionUpdated: navigatorBase.updatePosition()
     }
 
     Component.onCompleted: {
@@ -181,7 +181,7 @@ Item {
         var loc = locations || navigatorBase.locations;
         // note that GPX trace does not use locations
         if (loc.length >= 1 && !loc[0].origin) {
-            if (!gps.ready) {
+            if (!gps.coordinateValid) {
                 app.notification.flash(app.tr("Routing failed: current position not known"), notifyId);
                 return;
             }
@@ -265,8 +265,8 @@ Item {
         // Find a new route if conditions are met.
         if (!app.conf.reroute) return;
         if (app.mode !== modes.navigate) return;
-        if (!gps.position.horizontalAccuracyValid) return;
-        if (gps.position.horizontalAccuracy > 100) return;
+        if (!gps.horizontalAccuracyValid || !gps.ready) return;
+        if (gps.horizontalAccuracy > 100) return;
         if (!py.evaluate("poor.app.router.can_reroute")) return;
         if (hasBeenAlongRoute) rerouteConsecutiveIgnored = 0;
         var interval = 5000*Math.pow(2, Math.min(4, rerouteConsecutiveErrors + rerouteConsecutiveIgnored));

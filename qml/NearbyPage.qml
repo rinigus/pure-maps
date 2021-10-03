@@ -27,7 +27,7 @@ PagePL {
     acceptIconName: styler.iconNearby
     acceptText: app.tr("Search")
     canNavigateForward: page.near &&
-                        (page.nearText !== app.tr("Current position") || gps.ready) &&
+                        (page.nearText !== app.tr("Current position") || gps.coordinateValid) &&
                         (page.queryType.length > 0 || page.queryName.length > 0)
 
     pageMenu: PageMenuPL {

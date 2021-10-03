@@ -39,7 +39,8 @@ MapboxMapGestureArea {
         if (app.mode !== modes.navigate &&
                 app.mode !== modes.followMe &&
                 app.mode !== modes.navigatePost &&
-                area.coordinatesMatch(geocoordinate, gps.position.coordinate)) {
+                gps.ready &&
+                area.coordinatesMatch(geocoordinate, gps.coordinate)) {
             map.autoCenter = !map.autoCenter;
             notification.flash(map.autoCenter ?
                                    app.tr("Auto-center on") :

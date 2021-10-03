@@ -82,7 +82,7 @@ cp %{SOURCE1} tools/
 
 %build
 
-mkdir build-rpm
+mkdir build-rpm || true
 
 cd build-rpm
 

@@ -329,23 +329,17 @@ Item {
         color: _pressed ? styler.themeHighlightColor : styler.themePrimaryColor
         font.pixelSize: styler.themeFontSizeHuge
         height: implicitHeight + styler.themePaddingMedium
-        verticalAlignment: Text.AlignBottom
+        text: {
+            if (!gps.speedValid)
+                return "";
 
-        function update() {
-            // Update speed and positioning accuracy values in user's preferred units.
-            if (!gps.position.speedValid) {
-                text = ""
-                return;
-            }
-
-            if (app.conf.units === "american") {
-                text = "%1".arg(Math.round(gps.position.speed * 2.23694))
-            } else if (app.conf.units === "british") {
-                text = "%1".arg(Math.round(gps.position.speed * 2.23694))
-            } else {
-                text = "%1".arg(Math.round(gps.position.speed * 3.6))
-            }
+            if (app.conf.units === "american")
+                return "%1".arg(Math.round(gps.speed * 2.23694));
+            else if (app.conf.units === "british")
+                return "%1".arg(Math.round(gps.speed * 2.23694));
+            return "%1".arg(Math.round(gps.speed * 3.6)); // km/h
         }
+        verticalAlignment: Text.AlignBottom
     }
 
     LabelPL {
@@ -356,17 +350,12 @@ Item {
         anchors.rightMargin: styler.themeHorizontalPageMargin
         color: _pressed ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
         font.pixelSize: styler.themeFontSizeMedium
-        visible: speed.text ? true : false
-
-        function update() {
-            if (app.conf.units === "american") {
-                text = app.tr("mph")
-            } else if (app.conf.units === "british") {
-                text = app.tr("mph")
-            } else {
-                text = app.tr("km/h")
-            }
+        text: {
+            if (app.conf.units === "american") return app.tr("mph");
+            else if (app.conf.units === "british") return app.tr("mph");
+            return app.tr("km/h")
         }
+        visible: speed.text ? true : false
     }
 
     Image {
@@ -400,24 +389,7 @@ Item {
         visible: nextAfterNextVisible && text
     }
 
-    Connections {
-        target: app.conf
-        onUnitsChanged: block.update()
-    }
-
-    Connections {
-        target: gps
-        onPositionChanged: speed.update()
-    }
-
-    Component.onCompleted: block.update()
-
     function openNavigation() {
         if (visible) app.showNavigationPages()
-    }
-
-    function update() {
-        speed.update();
-        speedUnit.update();
     }
 }

@@ -33,21 +33,21 @@ Item {
         id: compass
         // It makes sense to use compass on low speeds, with valid position and speed
         active: app.conf.compassUse && app.running && gps.ready &&
-                gps.position.speedValid != null && gps.position.speedValid && gps.position.speed < 2.78 // limiting to 10 km/h
+                gps.speedValid && gps.speed < 2.78 // limiting to 10 km/h
         alwaysOn: false
         skipDuplicates: true
     }
 
     Connections {
         target: gps
-        onPositionChanged: {
+        onPositionUpdated: {
             if (!cmp.active) return;
-            if (_last_call && gps.position.timestamp - _last_call < 1000*300 )
+            if (_last_call && gps.timestamp - _last_call < 1000*300 )
                 return;
-            _last_call = gps.position.timestamp;
+            _last_call = gps.timestamp;
             py.call("poor.app.magfield.declination",
-                    [gps.position.coordinate.latitude,
-                     gps.position.coordinate.longitude],
+                    [gps.coordinate.latitude,
+                     gps.coordinate.longitude],
                     function (dec) {
                        if (Math.abs(cmp.declination-dec) > 0.1)
                            cmp.declination = dec;
