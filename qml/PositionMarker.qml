@@ -50,6 +50,7 @@ Item {
         easing.type: Easing.Linear
         target: marker
         property: "positionShown"
+        property bool initialized: false
     }
 
     Connections {
@@ -62,16 +63,19 @@ Item {
         target: gps
         onReadyChanged: marker.updateVisibility()
         onPositionUpdated: {
-            if (!gps.ready) return;
+            if (!gps.coordinateValid) return;
             if (!positionShown || !marker._animatePosition) {
                 positionShown = QtPositioning.coordinate(gps.coordinate.latitude, gps.coordinate.longitude);
                 marker.position = QtPositioning.coordinate(gps.coordinate.latitude, gps.coordinate.longitude);
-                animate.from = marker.position;
-                animate.to = marker.position;
             } else {
                 animate.complete();
+                if (!animate.initialized) {
+                    animate.from = QtPositioning.coordinate(gps.coordinate.latitude, gps.coordinate.longitude);
+                    animate.to = QtPositioning.coordinate(gps.coordinate.latitude, gps.coordinate.longitude);
+                    animate.initialized = true;
+                }
                 marker.position = animate.to;
-                animate.from = QtPositioning.coordinate(marker.latitude, marker.longitude);
+                animate.from = QtPositioning.coordinate(marker.position.latitude, marker.position.longitude);
                 animate.to = QtPositioning.coordinate(gps.coordinate.latitude, gps.coordinate.longitude);
                 animate.start();
                 marker.position = QtPositioning.coordinate(gps.coordinate.latitude, gps.coordinate.longitude);
@@ -86,6 +90,12 @@ Item {
         marker.updateDirection();
         marker.updateUncertainty();
         marker.updateVisibility();
+    }
+
+    on_AnimatePositionChanged: {
+        if (!_animatePosition) {
+            animate.initialized = false;
+        }
     }
 
     onPositionShownChanged: {
@@ -111,7 +121,7 @@ Item {
             map.setLayoutProperty(marker.layers.still, "visibility", "none");
             map.setLayoutProperty(marker.layers.moving, "visibility", "visible");
             marker.directionVisible = true;
-        } else if (map.direction===undefined) {
+        } else {
             map.setLayoutProperty(marker.layers.still, "visibility", "visible");
             map.setLayoutProperty(marker.layers.moving, "visibility", "none");
             marker.directionVisible = false;
