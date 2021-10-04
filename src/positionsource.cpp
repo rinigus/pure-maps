@@ -31,6 +31,9 @@ PositionSource::PositionSource(QObject *parent) : QObject(parent)
           this, SLOT(onError(QGeoPositionInfoSource::Error)));
   connect(m_source, &QGeoPositionInfoSource::updateTimeout,
           this, &PositionSource::onUpdateTimeout);
+
+  m_timer.setInterval(1000);
+  connect(&m_timer, &QTimer::timeout, this, &PositionSource::onTestingTimer);
 }
 
 void PositionSource::setActive(bool active)
@@ -44,30 +47,7 @@ void PositionSource::setActive(bool active)
   emit activeChanged();
 }
 
-void PositionSource::setStickyDirection(bool stickyDirection)
-{
-  SET(stickyDirection, stickyDirection);
-}
-
-void PositionSource::onError(QGeoPositionInfoSource::Error positioningError)
-{
-  qWarning() << "Positioning error:" << positioningError;
-  setReady(false);
-}
-
-void PositionSource::onUpdateTimeout()
-{
-  qWarning() << "Positioning update timeout";
-  setReady(false);
-}
-
-void PositionSource::setReady(bool ready)
-{
-  SET(ready,ready);
-  if (!ready) SET(accurate, false);
-}
-
-void PositionSource::onPositionUpdated(const QGeoPositionInfo &info)
+void PositionSource::setPosition(const QGeoPositionInfo &info)
 {
   qDebug() << "Position update:" << info;
 
@@ -89,4 +69,54 @@ void PositionSource::onPositionUpdated(const QGeoPositionInfo &info)
   SET(updateInterval, std::max(m_source->updateInterval(), m_source->minimumUpdateInterval()));
 
   emit positionUpdated();
+}
+
+void PositionSource::setReady(bool ready)
+{
+  SET(ready,ready);
+  if (!ready) SET(accurate, false);
+}
+
+void PositionSource::setStickyDirection(bool stickyDirection)
+{
+  SET(stickyDirection, stickyDirection);
+}
+
+void PositionSource::setTestingCoordinate(QGeoCoordinate testingCoordinate)
+{
+  SET(testingCoordinate, testingCoordinate);
+}
+
+void PositionSource::setTestingMode(bool testingMode)
+{
+  SET(testingMode, testingMode);
+  if (m_testingMode) m_timer.start();
+  else m_timer.stop();
+}
+
+void PositionSource::onError(QGeoPositionInfoSource::Error positioningError)
+{
+  qWarning() << "Positioning error:" << positioningError;
+  setReady(false);
+}
+
+void PositionSource::onTestingTimer()
+{
+  if (!m_testingMode) return;
+  QGeoPositionInfo info;
+  info.setCoordinate(m_testingCoordinate);
+  info.setAttribute(QGeoPositionInfo::HorizontalAccuracy, 10);
+  info.setTimestamp(QDateTime::currentDateTime());
+  setPosition(info);
+}
+
+void PositionSource::onUpdateTimeout()
+{
+  qWarning() << "Positioning update timeout";
+  setReady(false);
+}
+
+void PositionSource::onPositionUpdated(const QGeoPositionInfo &info)
+{
+  if (!m_testingMode) setPosition(info);
 }

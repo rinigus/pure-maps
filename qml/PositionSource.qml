@@ -30,6 +30,34 @@ PM.PositionSource {
     // and give up if we still don't gain that lock.
     active: app.running || (!accurate && waitForLock)
 
+    testingMode: app.conf.developmentCoordinateCenter
+
+    property bool  waitForLock: false
+
+    // properties used for implementation details
+    property var _timer: Timer {
+        interval: 180000
+        repeat: false
+        running: gps.active && !gps.accurate
+        onTriggered: gps.waitForLock = false
+        onRunningChanged: {
+            if (running) gps.waitForLock = true;
+            else gps.waitForLock = false;
+        }
+    }
+
+    Component.onCompleted: setTestingBinding()
+    onTestingModeChanged: setTestingBinding()
+
+    function setTestingBinding() {
+        // avoid setting testing coordinate updates for most of the users
+        // and set it only if requested
+        if (testingMode)
+            testingCoordinate = Qt.binding(function() { return map.center; });
+        else
+            testingCoordinate = map.center; // break binding
+    }
+
     property var  mapMatchingMode: {
         if (app.mapMatchingMode == "none") return 0;
         else if (app.mapMatchingMode == "car") return 1;
@@ -48,18 +76,4 @@ PM.PositionSource {
     property real  streetSpeedAssumed: -1  // in m/s
     property real  streetSpeedLimit: -1    // in m/s
 
-    property var   testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
-
-    property bool  waitForLock: false
-
-    property var   _timer: Timer {
-        id: timerLockWait
-        interval: 180000
-        repeat: false
-        running: gps.active && !gps.accurate
-        onTriggered: gps.waitForLock = false
-        onRunningChanged: {
-            if (running) gps.waitForLock = true;
-        }
-    }
 }

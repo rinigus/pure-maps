@@ -6,6 +6,7 @@
 #include <QDateTime>
 #include <QGeoCoordinate>
 #include <QGeoPositionInfoSource>
+#include <QTimer>
 
 class PositionSource: public QObject
 {
@@ -23,6 +24,8 @@ class PositionSource: public QObject
   Q_PROPERTY(float speed READ speed NOTIFY speedChanged)
   Q_PROPERTY(bool speedValid READ speedValid NOTIFY speedValidChanged)
   Q_PROPERTY(bool stickyDirection READ stickyDirection WRITE setStickyDirection NOTIFY stickyDirectionChanged)
+  Q_PROPERTY(QGeoCoordinate testingCoordinate READ testingCoordinate WRITE setTestingCoordinate  NOTIFY testingCoordinateChanged)
+  Q_PROPERTY(bool testingMode READ testingMode WRITE setTestingMode NOTIFY testingModeChanged)
   Q_PROPERTY(QDateTime timestamp READ timestamp NOTIFY timestampChanged)
   Q_PROPERTY(int updateInterval READ updateInterval NOTIFY updateIntervalChanged)
 
@@ -42,12 +45,16 @@ public:
   float speed() const { return m_speed; }
   bool speedValid() const { return m_speedValid; }
   bool stickyDirection() const { return m_stickyDirection; }
+  QGeoCoordinate testingCoordinate() const { return m_testingCoordinate; }
+  bool testingMode() const { return m_testingMode; }
   QDateTime timestamp() const { return m_timestamp; }
   int updateInterval() const { return m_updateInterval; }
 
   // setters
   void setActive(bool active);
   void setStickyDirection(bool stickyDirection);
+  void setTestingCoordinate(QGeoCoordinate testingCoordinate);
+  void setTestingMode(bool testingMode);
 
 signals:
   // properties
@@ -63,6 +70,8 @@ signals:
   void speedChanged();
   void speedValidChanged();
   void stickyDirectionChanged();
+  void testingCoordinateChanged();
+  void testingModeChanged();
   void timestampChanged();
   void updateIntervalChanged();
 
@@ -72,8 +81,10 @@ signals:
 private:
   void onError(QGeoPositionInfoSource::Error positioningError);
   void onPositionUpdated(const QGeoPositionInfo &info);
+  void onTestingTimer();
   void onUpdateTimeout();
 
+  void setPosition(const QGeoPositionInfo &info);
   void setReady(bool ready);
 
 private:
@@ -90,11 +101,14 @@ private:
   float m_speed{0};
   bool m_speedValid{false};
   bool m_stickyDirection{false};
+  QGeoCoordinate m_testingCoordinate;
+  bool m_testingMode{false};
   QDateTime m_timestamp;
   int m_updateInterval{0};
 
   // internal
   QGeoPositionInfoSource *m_source{nullptr};
+  QTimer m_timer;
 };
 
 #endif // POSITIONSOURCEEXTENDED_H
