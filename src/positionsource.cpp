@@ -3,6 +3,7 @@
 #include <QDebug>
 
 #include <algorithm>
+#include <math.h>
 
 // use var without m_ prefix
 #define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; /*qDebug() << "Emit " #var;*/ emit var##Changed(); } }
@@ -56,11 +57,48 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
                !qIsNaN(info.coordinate().latitude()) &&
                !qIsNaN(info.coordinate().longitude()));
 
-  SETWITHNANCHECK(direction, info.attribute(QGeoPositionInfo::Direction));
+  //SETWITHNANCHECK(direction, info.attribute(QGeoPositionInfo::Direction));
   SETWITHNANCHECK(horizontalAccuracy, info.attribute(QGeoPositionInfo::HorizontalAccuracy));
   SETWITHNANCHECK(speed, info.attribute(QGeoPositionInfo::GroundSpeed));
   SET(timestamp, info.timestamp());
 
+  // update and calculate direction
+  if (m_horizontalAccuracyValid && m_coordinateValid)
+    {
+      float threshold = m_horizontalAccuracy;
+      if (m_history.empty()) m_history.push_back(m_coordinate);
+      QGeoCoordinate &last = m_history.back();
+      if (last.distanceTo(m_coordinate) > threshold)
+        {
+          m_history.push_back(m_coordinate);
+          if (m_history.size() > 3) m_history.removeFirst();
+          double scos = 0;
+          double ssin = 0;
+          for (int i=0; i < m_history.size()-1; ++i)
+            {
+              double az = m_history[i].azimuthTo(m_history[i+1]);
+              double s, c;
+              sincos(az / 180 * M_PI, &s, &c);
+              scos += c;
+              ssin += s;
+            }
+          int dir = int(round(atan2(ssin, scos) / M_PI * 180));
+          while (dir < 0) dir += 360;
+
+          SET(direction, dir);
+          SET(directionValid, true);
+          m_directionTimestamp = QTime::currentTime();
+        }
+    }
+
+  // reset direction if it has not been updated for a while (60s)
+  if (!m_stickyDirection && m_directionValid && m_directionTimestamp.elapsed() > 60000)
+    {
+      m_history.clear();
+      SET(directionValid, false);
+    }
+
+  // set overall state vars
   setReady(m_coordinateValid);
   SET(accurate,
       m_ready && m_coordinateValid && m_horizontalAccuracyValid &&

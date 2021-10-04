@@ -6,6 +6,7 @@
 #include <QDateTime>
 #include <QGeoCoordinate>
 #include <QGeoPositionInfoSource>
+#include <QList>
 #include <QTimer>
 
 class PositionSource: public QObject
@@ -16,7 +17,7 @@ class PositionSource: public QObject
   Q_PROPERTY(bool active READ active WRITE setActive NOTIFY activeChanged)
   Q_PROPERTY(QGeoCoordinate coordinate READ coordinate NOTIFY coordinateChanged)
   Q_PROPERTY(bool coordinateValid READ coordinateValid NOTIFY coordinateValidChanged)
-  Q_PROPERTY(float direction READ direction NOTIFY directionChanged)
+  Q_PROPERTY(int direction READ direction NOTIFY directionChanged)
   Q_PROPERTY(bool directionValid READ directionValid NOTIFY directionValidChanged)
   Q_PROPERTY(float horizontalAccuracy READ horizontalAccuracy NOTIFY horizontalAccuracyChanged)
   Q_PROPERTY(bool horizontalAccuracyValid READ horizontalAccuracyValid NOTIFY horizontalAccuracyValidChanged)
@@ -37,7 +38,7 @@ public:
   bool active() const{ return m_active; }
   QGeoCoordinate coordinate() const { return m_coordinate; }
   bool coordinateValid() const { return m_coordinateValid; }
-  float direction() const { return m_direction; }
+  int direction() const { return m_direction; }
   bool directionValid() const { return m_directionValid; }
   float horizontalAccuracy() const { return m_horizontalAccuracy; }
   bool horizontalAccuracyValid() const { return m_horizontalAccuracyValid; }
@@ -93,7 +94,7 @@ private:
   bool m_active{false};
   QGeoCoordinate m_coordinate;
   bool m_coordinateValid{false};
-  float m_direction{0};
+  int  m_direction{0};
   bool m_directionValid{false};
   float m_horizontalAccuracy{0};
   bool m_horizontalAccuracyValid;
@@ -108,6 +109,8 @@ private:
 
   // internal
   QGeoPositionInfoSource *m_source{nullptr};
+  QList<QGeoCoordinate> m_history;
+  QTime m_directionTimestamp;
   QTimer m_timer;
 };
 

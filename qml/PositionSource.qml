@@ -29,7 +29,9 @@ PM.PositionSource {
     // if we already have a lock, otherwise keep trying for a couple minutes
     // and give up if we still don't gain that lock.
     active: app.running || (!accurate && waitForLock)
-
+    stickyDirection: app.mode === modes.navigate ||
+                     app.mode === modes.followMe ||
+                     app.mode === modes.navigatePost
     testingMode: app.conf.developmentCoordinateCenter
 
     property bool  waitForLock: false
