@@ -109,6 +109,7 @@ private:
 
   // internal
   QGeoPositionInfoSource *m_source{nullptr};
+  bool m_direction_calculate{false};
   QList<QGeoCoordinate> m_history;
   QTime m_directionTimestamp;
   QTimer m_timer;

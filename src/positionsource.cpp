@@ -25,6 +25,11 @@ PositionSource::PositionSource(QObject *parent) : QObject(parent)
     }
 
   qDebug() << "Acquired QGeoPositionInfoSource:" << m_source->sourceName();
+  if (m_source->sourceName() == "geoclue2")
+    {
+      m_direction_calculate = true;
+      qInfo() << "Calculate direction using a sequence of coordinates";
+    }
 
   connect(m_source, &QGeoPositionInfoSource::positionUpdated,
           this, &PositionSource::onPositionUpdated);
@@ -57,45 +62,56 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
                !qIsNaN(info.coordinate().latitude()) &&
                !qIsNaN(info.coordinate().longitude()));
 
-  //SETWITHNANCHECK(direction, info.attribute(QGeoPositionInfo::Direction));
   SETWITHNANCHECK(horizontalAccuracy, info.attribute(QGeoPositionInfo::HorizontalAccuracy));
   SETWITHNANCHECK(speed, info.attribute(QGeoPositionInfo::GroundSpeed));
   SET(timestamp, info.timestamp());
 
-  // update and calculate direction
-  if (m_horizontalAccuracyValid && m_coordinateValid)
+  // update and calculate direction if needed
+  if (m_direction_calculate)
     {
-      float threshold = m_horizontalAccuracy;
-      if (m_history.empty()) m_history.push_back(m_coordinate);
-      QGeoCoordinate &last = m_history.back();
-      if (last.distanceTo(m_coordinate) > threshold)
+      if (m_horizontalAccuracyValid && m_coordinateValid)
         {
-          m_history.push_back(m_coordinate);
-          if (m_history.size() > 3) m_history.removeFirst();
-          double scos = 0;
-          double ssin = 0;
-          for (int i=0; i < m_history.size()-1; ++i)
+          float threshold = m_horizontalAccuracy;
+          if (m_history.empty()) m_history.push_back(m_coordinate);
+          QGeoCoordinate &last = m_history.back();
+          if (last.distanceTo(m_coordinate) > threshold)
             {
-              double az = m_history[i].azimuthTo(m_history[i+1]);
-              double s, c;
-              sincos(az / 180 * M_PI, &s, &c);
-              scos += c;
-              ssin += s;
-            }
-          int dir = int(round(atan2(ssin, scos) / M_PI * 180));
-          while (dir < 0) dir += 360;
+              m_history.push_back(m_coordinate);
+              if (m_history.size() > 3) m_history.removeFirst();
+              double scos = 0;
+              double ssin = 0;
+              for (int i=0; i < m_history.size()-1; ++i)
+                {
+                  double az = m_history[i].azimuthTo(m_history[i+1]);
+                  double s, c;
+                  sincos(az / 180 * M_PI, &s, &c);
+                  scos += c;
+                  ssin += s;
+                }
+              int dir = int(round(atan2(ssin, scos) / M_PI * 180));
+              while (dir < 0) dir += 360;
 
-          SET(direction, dir);
-          SET(directionValid, true);
-          m_directionTimestamp = QTime::currentTime();
+              SET(direction, dir);
+              SET(directionValid, true);
+              m_directionTimestamp = QTime::currentTime();
+            }
+        }
+
+      // reset direction if it has not been updated for a while (60s)
+      if (!m_stickyDirection && m_directionValid && m_directionTimestamp.elapsed() > 60000)
+        {
+          m_history.clear();
+          SET(directionValid, false);
         }
     }
-
-  // reset direction if it has not been updated for a while (60s)
-  if (!m_stickyDirection && m_directionValid && m_directionTimestamp.elapsed() > 60000)
+  else
     {
-      m_history.clear();
-      SET(directionValid, false);
+      // use direction as provided by the device
+      float dir = info.attribute(QGeoPositionInfo::Direction);
+      if (!qIsNaN(dir) || !m_stickyDirection)
+        {
+          SETWITHNANCHECK(direction, dir);
+        }
     }
 
   // set overall state vars
