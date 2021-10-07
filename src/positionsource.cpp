@@ -27,7 +27,7 @@ PositionSource::PositionSource(QObject *parent) : QObject(parent)
   qDebug() << "Acquired QGeoPositionInfoSource:" << m_source->sourceName();
   if (m_source->sourceName() == "geoclue2")
     {
-      m_direction_calculate = true;
+      m_directionCalculate = true;
       qInfo() << "Calculate direction using a sequence of coordinates";
     }
 
@@ -67,7 +67,7 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
   SET(timestamp, info.timestamp());
 
   // update and calculate direction if needed
-  if (m_direction_calculate)
+  if (m_directionCalculate)
     {
       if (m_horizontalAccuracyValid && m_coordinateValid)
         {
@@ -108,9 +108,12 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
     {
       // use direction as provided by the device
       float dir = info.attribute(QGeoPositionInfo::Direction);
-      if (!qIsNaN(dir) || !m_stickyDirection)
+      if (!qIsNaN(dir) || !m_stickyDirection ||
+          (m_coordinateValid && m_directionLastPositionValid.distanceTo(m_coordinate) > 10 /*meters*/))
         {
           SETWITHNANCHECK(direction, dir);
+          if (m_directionValid && m_coordinateValid)
+            m_directionLastPositionValid = m_coordinate;
         }
     }
 
