@@ -29,12 +29,24 @@ PM.PositionSource {
     // if we already have a lock, otherwise keep trying for a couple minutes
     // and give up if we still don't gain that lock.
     active: app.running || (!accurate && waitForLock)
+    hasMapMatching: app.hasMapMatching
+    mapMatchingMode: {
+            if (app.mapMatchingMode == "none") return 0;
+            else if (app.mapMatchingMode == "car") return 1;
+            else if (app.mapMatchingMode == "bicycle") return 3;
+            else if (app.mapMatchingMode == "foot") return 5;
+            return 0;
+        }
     stickyDirection: app.mode === modes.navigate ||
                      app.mode === modes.followMe ||
                      app.mode === modes.navigatePost
     testingMode: app.conf.developmentCoordinateCenter
 
-    property bool  waitForLock: false
+    property var  coordinate: coordinateMapMatchValid ? coordinateMapMatch : coordinateDevice
+    property bool coordinateValid: coordinateMapMatchValid || coordinateDeviceValid
+    property int  direction: directionMapMatchValid ? directionMapMatch : directionDevice
+    property bool directionValid: directionMapMatchValid || directionDeviceValid
+    property bool waitForLock: false
 
     // properties used for implementation details
     property var _timer: Timer {
@@ -59,23 +71,4 @@ PM.PositionSource {
         else
             testingCoordinate = map.center; // break binding
     }
-
-    property var  mapMatchingMode: {
-        if (app.mapMatchingMode == "none") return 0;
-        else if (app.mapMatchingMode == "car") return 1;
-        else if (app.mapMatchingMode == "bicycle") return 3;
-        else if (app.mapMatchingMode == "foot") return 5;
-        return 0;
-    }
-
-    //property var   direction: directionMapMatchValid ? directionMapMatch : directionDevice
-    property alias directionDevice: gps.direction
-    property alias directionDeviceValid: gps.directionValid
-    property real  directionMapMatch: 0
-    property bool  directionMapMatchValid: false
-    property bool  mapMatchingAvailable: false
-    property string streetName: ""
-    property real  streetSpeedAssumed: -1  // in m/s
-    property real  streetSpeedLimit: -1    // in m/s
-
 }
