@@ -36,7 +36,7 @@ class PositionSource: public QObject
   Q_PROPERTY(bool speedValid READ speedValid NOTIFY speedValidChanged)
   Q_PROPERTY(bool stickyDirection READ stickyDirection WRITE setStickyDirection NOTIFY stickyDirectionChanged)
   Q_PROPERTY(QString streetName READ streetName NOTIFY streetNameChanged)
-  Q_PROPERTY(float streetSpeedLimit READ streetSpeedLimit NOTIFY streetSpeedLimitChanged)
+  Q_PROPERTY(float streetSpeedLimit READ streetSpeedLimit NOTIFY streetSpeedLimitChanged) // in m/s
   Q_PROPERTY(QGeoCoordinate testingCoordinate READ testingCoordinate WRITE setTestingCoordinate  NOTIFY testingCoordinateChanged)
   Q_PROPERTY(bool testingMode READ testingMode WRITE setTestingMode NOTIFY testingModeChanged)
   Q_PROPERTY(QDateTime timestamp READ timestamp NOTIFY timestampChanged)
@@ -124,10 +124,10 @@ private:
   void onTestingTimer();
   void onUpdateTimeout();
 
-  void resetMatMatchingValues();
-
+  void resetMapMatchingValues();
   void setPosition(const QGeoPositionInfo &info);
   void setReady(bool ready);
+  void stopMapMatching();
 
 private:
   // properties
@@ -168,6 +168,7 @@ private:
   QTimer m_timer;
 
   OSMScoutMapMatch *m_mapmatch{nullptr};
+  bool m_mapMatchingActive{false};
   bool m_mapMatchingAvailable{false};
   QTimer m_mapMatchingActivateTimer;
   bool m_mapMatchingCallInProgress{false};

@@ -73,7 +73,12 @@ void PositionSource::setActive(bool active)
   if (!m_source || active==m_active) return;
 
   if (active) m_source->startUpdates();
-  else m_source->stopUpdates();
+  else
+    {
+      m_source->stopUpdates();
+      stopMapMatching();
+      checkMapMatchAvailable();
+    }
 
   m_active = active;
   emit activeChanged();
@@ -148,17 +153,22 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
       // vars and try to update again. It indicates that the map
       // matching is either not working or too slow
       if (m_mapMatchingCallInProgress)
-        resetMatMatchingValues();
+        {
+          qWarning() << "Position was updated faster than map matching found the location";
+          resetMapMatchingValues();
+        }
 
       m_mapMatchingCallInProgress = true;
+      m_mapMatchingActive = true;
       auto reply = m_mapmatch->Update(m_mapMatchingMode,
                                       m_coordinateDevice.latitude(), m_coordinateDevice.longitude(),
                                       m_horizontalAccuracy);
       QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, this);
-      connect(watcher, &QDBusPendingCallWatcher::finished, this, &PositionSource::onMapMatchingUpdateFinished);
+      connect(watcher, &QDBusPendingCallWatcher::finished,
+              this, &PositionSource::onMapMatchingUpdateFinished);
     }
   else
-    resetMatMatchingValues();
+    stopMapMatching();
 
   // set overall state vars
   setReady(m_coordinateDeviceValid);
@@ -244,8 +254,7 @@ void PositionSource::setHasMapMatching(bool hasMapMatching)
           m_mapmatch = nullptr;
         }
     }
-
-  if (!m_mapmatch && m_hasMapMatching)
+  else if (!m_mapmatch && m_hasMapMatching)
     {
       m_mapmatch = new OSMScoutMapMatch(MAPMATCHING_SERVICE,
                                         MAPMATCHING_PATH,
@@ -256,23 +265,21 @@ void PositionSource::setHasMapMatching(bool hasMapMatching)
     }
 
   checkMapMatchAvailable();
-  resetMatMatchingValues();
+  resetMapMatchingValues();
 }
 
 void PositionSource::setMapMatchingMode(int mapMatchingMode)
 {
   SET(mapMatchingMode, mapMatchingMode);
   checkMapMatchAvailable();
-  if (m_mapMatchingAvailable)
-    {
-      m_mapmatch->Reset(m_mapMatchingMode);
-      resetMatMatchingValues();
-    }
+  resetMapMatchingValues();
+  if (m_mapmatch)
+    m_mapmatch->Reset(m_mapMatchingMode);
 }
 
 void PositionSource::checkMapMatchAvailable()
 {
-  bool want = (m_hasMapMatching && m_mapmatch && m_mapMatchingMode > 0);
+  bool want = (m_active && m_hasMapMatching && m_mapmatch && m_mapMatchingMode > 0);
 
   // if we don't need map matching, do not activate it via DBus
   // or network
@@ -280,7 +287,7 @@ void PositionSource::checkMapMatchAvailable()
     {
       m_mapMatchingActivateTimer.stop();
       m_mapMatchingAvailable = false;
-      resetMatMatchingValues();
+      resetMapMatchingValues();
       return;
     }
 
@@ -292,6 +299,8 @@ void PositionSource::checkMapMatchAvailable()
   if (m_mapMatchingAvailable)
     {
       m_mapMatchingActivateTimer.stop();
+      if (m_mapMatchingMode > 0)
+        m_mapmatch->Reset(m_mapMatchingMode);
       return;
     }
 
@@ -317,12 +326,14 @@ void PositionSource::onMapMatchingUpdateFinished(QDBusPendingCallWatcher *watche
 
   if (reply.isError())
     {
-      resetMatMatchingValues();
+      resetMapMatchingValues();
       qWarning() << "Error while receiving map matching reply";
+      watcher->deleteLater();
       return;
     }
 
   QVariantMap obj = QJsonDocument::fromJson(reply.argumentAt<0>().toUtf8()).toVariant().toMap();
+  watcher->deleteLater();
 
   // Map matching response will include only updates from
   // the previous call. So, we leave other variables unchanged
@@ -377,10 +388,20 @@ void PositionSource::onMapMatchingUpdateFinished(QDBusPendingCallWatcher *watche
   emit positionUpdated();
 }
 
-void PositionSource::resetMatMatchingValues()
+void PositionSource::resetMapMatchingValues()
 {
   SET(coordinateMapMatchValid, false);
   SET(directionMapMatchValid, false);
   SET(streetName, "");
   SET(streetSpeedLimit, -1);
+}
+
+void PositionSource::stopMapMatching()
+{
+  if (!m_mapMatchingActive) return;
+  if (m_mapMatchingMode > 0 && m_mapMatchingAvailable)
+      m_mapmatch->Stop(m_mapMatchingMode);
+
+  resetMapMatchingValues();
+  m_mapMatchingActive = false;
 }
