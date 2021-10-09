@@ -37,14 +37,12 @@ DialogPL {
     canNavigateForward: {
         if (followMe)
             return true;
-        if (page.fromNeeded && (!page.from || (page.fromText === app.tr("Current position") && !gps.ready)) )
+        if (page.fromNeeded && (!page.from || (page.fromText === app.tr("Current position") && !gps.coordinateValid)) )
             return false;
-        if (page.toNeeded && (!page.to || (page.toText === app.tr("Current position") && !gps.ready)) )
+        if (page.toNeeded && (!page.to || (page.toText === app.tr("Current position") && !gps.coordinateValid)) )
             return false;
-        if (waypointsEnabled)
-            for (var i=0; i < waypoints.count; ++i)
-                if (!waypoints.get(i).set || (waypoints.get(i).text === app.tr("Current position") && !gps.ready))
-                    return false;
+        if (waypointsEnabled && !waypointsReady)
+            return false;
         return true;
     }
 
@@ -129,8 +127,9 @@ DialogPL {
     property bool   toNeeded: true
     property alias  toQuery: toButton.query
     property alias  toText: toButton.text
-    property alias  waypointsEnabled: viaSwitch.checked
     property var    waypoints: ListModel {}
+    property alias  waypointsEnabled: viaSwitch.checked
+    property bool   waypointsReady: false
 
     signal notify(string notification)
 
@@ -364,6 +363,7 @@ DialogPL {
                                           "y": coordinates[1]
                                       });
                         index = -1;
+                        checkIfWaypointsReady();
                     }
                 }
 
@@ -685,6 +685,7 @@ DialogPL {
             }
         }
         waypointsEnabled = (waypoints.count > 0);
+        checkIfWaypointsReady();
         optimized = navigator.optimized;
 
         // Fill "from" if origin is not set
@@ -714,6 +715,16 @@ DialogPL {
 
     onFollowMeChanged: {
         columnRouter.addSettings();
+    }
+
+    function checkIfWaypointsReady() {
+        for (var i=0; i < waypoints.count; ++i)
+            if (!waypoints.get(i).set ||
+                    (waypoints.get(i).text === app.tr("Current position") && !gps.coordinateValid)) {
+                waypointsReady = false;
+                return;
+            }
+        waypointsReady = true;
     }
 
     function getLocations() {

@@ -65,8 +65,6 @@ Requires: pyotherside
 Requires: qt5-qtmultimedia
 Requires: qt5-qtlocation
 Requires: mimic
-Requires: nemo-qml-plugin-dbus-qt5
-Requires: qml-module-clipboard
 Requires: dbus-tools
 %endif
 
@@ -82,7 +80,7 @@ cp %{SOURCE1} tools/
 
 %build
 
-mkdir build-rpm
+mkdir build-rpm || true
 
 cd build-rpm
 

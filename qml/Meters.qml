@@ -83,30 +83,30 @@ Item {
         var lines = ["—", "—"];
         if (app.conf.units === "american") {
             labels.text = " %1\n %2".arg(app.tr("mph")).arg(app.tr("ft"))
-            if (gps.position.speedValid)
-                lines[0] = Math.round(gps.position.speed * 2.23694);
-            if (gps.ready && gps.position.horizontalAccuracyValid)
-                lines[1] = Util.siground(gps.position.horizontalAccuracy * 3.28084, 2);
+            if (gps.speedValid)
+                lines[0] = Math.round(gps.speed * 2.23694);
+            if (gps.coordinateValid && gps.horizontalAccuracyValid)
+                lines[1] = Util.siground(gps.horizontalAccuracy * 3.28084, 2);
             lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
             values.doLayout();
 
         } else if (app.conf.units === "british") {
             labels.text = " %1\n %2".arg(app.tr("mph")).arg(app.tr("yd"))
-            if (gps.position.speedValid)
-                lines[0] = Math.round(gps.position.speed * 2.23694);
-            if (gps.ready && gps.position.horizontalAccuracyValid)
-                lines[1] = Util.siground(gps.position.horizontalAccuracy * 1.09361, 2);
+            if (gps.speedValid)
+                lines[0] = Math.round(gps.speed * 2.23694);
+            if (gps.coordinateValid && gps.horizontalAccuracyValid)
+                lines[1] = Util.siground(gps.horizontalAccuracy * 1.09361, 2);
             lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
             values.doLayout();
 
         } else {
             labels.text = " %1\n %2".arg(app.tr("km/h")).arg(app.tr("m"))
-            if (gps.position.speedValid)
-                lines[0] = Math.round(gps.position.speed * 3.6);
-            if (gps.ready && gps.position.horizontalAccuracyValid)
-                lines[1] = Util.siground(gps.position.horizontalAccuracy, 2);
+            if (gps.speedValid)
+                lines[0] = Math.round(gps.speed * 3.6);
+            if (gps.coordinateValid && gps.horizontalAccuracyValid)
+                lines[1] = Util.siground(gps.horizontalAccuracy, 2);
             lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
             values.doLayout();

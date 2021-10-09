@@ -74,13 +74,13 @@ MenuDrawerPL {
     }
 
     MenuDrawerItemPL {
-        enabled: gps.ready
+        enabled: gps.coordinateValid
         iconName: styler.iconShare
-        text: gps.ready ? app.tr("Share current position") : app.tr("Share current position (not ready)")
+        text: gps.coordinateValid ? app.tr("Share current position") : app.tr("Share current position (not ready)")
         onClicked: {
-            if (!gps.ready) return;
-            var y = gps.position.coordinate.latitude;
-            var x = gps.position.coordinate.longitude;
+            if (!gps.coordinateValid) return;
+            var y = gps.coordinate.latitude;
+            var x = gps.coordinate.longitude;
             app.pushMain(Qt.resolvedUrl("SharePage.qml"), {
                              "coordinate": QtPositioning.coordinate(y, x),
                              "title": app.tr("Share Current Position"),

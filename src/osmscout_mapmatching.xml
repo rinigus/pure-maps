@@ -1,0 +1,28 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="io.github.rinigus.OSMScoutServer.mapmatching">
+    <property name="Active" type="b" access="read"/>
+    <signal name="ActiveChanged">
+      <arg name="active" type="b" direction="out"/>
+    </signal>
+    <method name="Update">
+      <arg type="s" direction="out"/>
+      <arg name="mode" type="i" direction="in"/>
+      <arg name="lat" type="d" direction="in"/>
+      <arg name="lon" type="d" direction="in"/>
+      <arg name="accuracy" type="d" direction="in"/>
+    </method>
+    <method name="Reset">
+      <arg type="b" direction="out"/>
+      <arg name="mode" type="i" direction="in"/>
+    </method>
+    <method name="Stop">
+      <arg type="b" direction="out"/>
+      <arg name="mode" type="i" direction="in"/>
+    </method>
+    <method name="Stop">
+      <arg type="b" direction="out"/>
+    </method>
+  </interface>
+</node>

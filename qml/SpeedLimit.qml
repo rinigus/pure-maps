@@ -36,9 +36,9 @@ Rectangle {
         if (app.mapMatchingMode !== "car" || app.conf.showSpeedLimit==="never")
             return false;
         if (app.conf.showSpeedLimit==="exceeding") {
-            if (!gps.position.speedValid || gps.streetSpeedLimit==null || gps.streetSpeedLimit < 0)
+            if (!gps.speedValid || gps.streetSpeedLimit==null || gps.streetSpeedLimit < 0)
                 return false;
-            if (gps.position.speed <= gps.streetSpeedLimit)
+            if (gps.speed <= gps.streetSpeedLimit)
                 return false;
         }
         return limit.text.length > 0

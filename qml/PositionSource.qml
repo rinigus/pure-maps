@@ -18,53 +18,57 @@
 
 import QtQuick 2.0
 import QtPositioning 5.4
-import "."
+import org.puremaps 1.0 as PM
 
 import "js/util.js" as Util
 
-PositionSourceMapMatched {
+PM.PositionSource {
     id: gps
 
     // If application is no longer active, turn positioning off immediately
     // if we already have a lock, otherwise keep trying for a couple minutes
     // and give up if we still don't gain that lock.
-    active: app.running || (!accurate && timePosition - timeActivate < 180000)
-
+    active: app.running || (!accurate && waitForLock)
+    hasMapMatching: app.hasMapMatching
     mapMatchingMode: {
-        if (app.mapMatchingMode == "none") return 0;
-        else if (app.mapMatchingMode == "car") return 1;
-        else if (app.mapMatchingMode == "bicycle") return 3;
-        else if (app.mapMatchingMode == "foot") return 5;
-        return 0;
+            if (app.mapMatchingMode == "none") return 0;
+            else if (app.mapMatchingMode == "car") return 1;
+            else if (app.mapMatchingMode == "bicycle") return 3;
+            else if (app.mapMatchingMode == "foot") return 5;
+            return 0;
+        }
+    stickyDirection: app.mode === modes.navigate ||
+                     app.mode === modes.followMe ||
+                     app.mode === modes.navigatePost
+    testingMode: app.conf.developmentCoordinateCenter
+
+    property var  coordinate: coordinateMapMatchValid ? coordinateMapMatch : coordinateDevice
+    property bool coordinateValid: coordinateMapMatchValid || coordinateDeviceValid
+    property int  direction: directionMapMatchValid ? directionMapMatch : directionDevice
+    property bool directionValid: directionMapMatchValid || directionDeviceValid
+    property bool waitForLock: false
+
+    // properties used for implementation details
+    property var _timer: Timer {
+        interval: 180000
+        repeat: false
+        running: gps.active && !gps.accurate
+        onTriggered: gps.waitForLock = false
+        onRunningChanged: {
+            if (running) gps.waitForLock = true;
+            else gps.waitForLock = false;
+        }
     }
 
-    testingCoordinate: app.conf.developmentCoordinateCenter ? map.center : undefined
+    Component.onCompleted: setTestingBinding()
+    onTestingModeChanged: setTestingBinding()
 
-    property bool accurate: ready &&
-                            position.horizontalAccuracyValid &&
-                            position.horizontalAccuracy > 0 &&
-                            position.horizontalAccuracy < 25
-    property var  ready: false
-    property var  timeActivate:  Date.now()
-    property var  timePosition:  Date.now()
-
-    Component.onCompleted: checkReady()
-
-    onActiveChanged: {
-        // Keep track of when positioning was (re)activated.
-        if (active) timeActivate = Date.now();
-        checkReady();
-    }
-
-    onPositionChanged: {
-        timePosition = Date.now();
-        checkReady();
-    }
-
-    function checkReady() {
-        ready = position.latitudeValid &&
-                position.longitudeValid &&
-                position.coordinate.latitude &&
-                position.coordinate.longitude;
+    function setTestingBinding() {
+        // avoid setting testing coordinate updates for most of the users
+        // and set it only if requested
+        if (testingMode)
+            testingCoordinate = Qt.binding(function() { return map.center; });
+        else
+            testingCoordinate = map.center; // break binding
     }
 }

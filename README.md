@@ -165,13 +165,13 @@ look under other platforms for examples.
 In addition to common dependencies for QML applications, the following
 are needed:
 
-* Nemo DBus https://git.merproject.org/mer-core/nemo-qml-plugin-dbus
 * PyOtherSide https://github.com/thp/pyotherside
 * PyXDG https://www.freedesktop.org/wiki/Software/pyxdg/
 * Mapbox GL Native, Qt version, use the packaged version at https://github.com/rinigus/pkg-mapbox-gl-native
 * Mapbox GL QML, unofficial QML bindings, https://github.com/rinigus/mapbox-gl-qml
 * GPXPy, https://github.com/tkrajina/gpxpy
 * S2 Geometry Library, https://github.com/google/s2geometry
+* For Kirigami platform: Nemo DBus https://git.merproject.org/mer-core/nemo-qml-plugin-dbus
 
 When developing with Kirigami using flatpak builder, dependencies will
 be pulled and installed in flatpak. See instructions regarding

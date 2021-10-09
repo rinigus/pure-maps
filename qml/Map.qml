@@ -46,8 +46,9 @@ MapboxMap {
         if (app.mode === modes.explore || app.mode === modes.exploreRoute)
             return 1000;
         // support smooth animations for position marker
-        // and map center only if GPS is accurate and is desired
-        return (gps.accurate && app.conf.smoothPositionAnimationWhenNavigating ? gps.timePerUpdate : 0);
+        // and map center only if GPS is accurate and
+        // smooth animation is desired
+        return (gps.accurate && app.conf.smoothPositionAnimationWhenNavigating ? gps.updateInterval : 0);
     }
     property bool   autoCenter: false
     property bool   autoRotate: false
@@ -125,7 +126,7 @@ MapboxMap {
 
     Behavior on center {
         CoordinateAnimation {
-            duration: map.ready ? animationTime : 0
+            duration: animationTime
             easing.type: app.mode === modes.explore || app.mode === modes.exploreRoute ? Easing.InOutQuad : Easing.Linear
         }
     }
@@ -201,9 +202,9 @@ MapboxMap {
         onMppChanged: zmref = map.zoomLevel
 
         onTriggered: {
-            if (!gps.position.speedValid) return;
+            if (!gps.speedValid) return;
             var dist = mpp * map.height;
-            var speed = gps.position.speed;
+            var speed = gps.speed;
             var newZoom = zmref;
             var zstep = 0.1;
             if (speed > 0) newZoom -= Math.log(speed*app.conf.mapZoomAutoTime / dist) / Math.log(2);
@@ -222,7 +223,7 @@ MapboxMap {
         // daytime bias timer
         interval: 1000*60
         repeat: true
-        running: app.conf.basemapAutoLight==="sunrise/sunset" && gps.position.latitudeValid && gps.position.longitudeValid //false
+        running: app.conf.basemapAutoLight==="sunrise/sunset" && gps.ready //false
 
         property bool lastLight: false
 
@@ -231,10 +232,10 @@ MapboxMap {
         onTriggered: update()
 
         function update(force) {
-            if (app.conf.basemapAutoLight!=="sunrise/sunset" || !gps.position.latitudeValid || !gps.position.longitudeValid)
+            if (app.conf.basemapAutoLight!=="sunrise/sunset" || !gps.ready)
                 return;
-            py.call("poor.app.sun.day", [gps.position.coordinate.latitude,
-                                         gps.position.coordinate.longitude],
+            py.call("poor.app.sun.day", [gps.coordinate.latitude,
+                                         gps.coordinate.longitude],
                     function(light) {
                         if (force || lastLight !== light) {
                             py.call("poor.app.basemap.set_bias", [{'light': light ? 'day' : 'night'}]);
@@ -253,7 +254,7 @@ MapboxMap {
 
     Connections {
         target: gps
-        onPositionChanged: {
+        onPositionUpdated: {
             map.autoCenter && map.centerOnPosition();
         }
     }
@@ -343,9 +344,10 @@ MapboxMap {
     }
 
     function centerOnPosition() {
-        // Center on the current position.
-        map.setCenter( gps.position.coordinate.longitude,
-                       gps.position.coordinate.latitude );
+        // Center on the current position
+        if (gps.coordinateValid)
+            map.setCenter( gps.coordinate.longitude,
+                           gps.coordinate.latitude );
     }
 
     function configureLayers() {
