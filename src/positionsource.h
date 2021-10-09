@@ -116,6 +116,7 @@ private:
   void checkMapMatchAvailable();
 
   void onMapMatchingActive(bool active);
+  void onMapMatchingActiveFinished(QDBusPendingCallWatcher*);
   void onMapMatchingActivateTimer();
   void onMapMatchingServiceChanged(QString name);
   void onMapMatchingUpdateFinished(QDBusPendingCallWatcher*);

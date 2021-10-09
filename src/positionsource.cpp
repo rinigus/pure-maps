@@ -1,6 +1,7 @@
 #include "positionsource.h"
 
 #include <QDebug>
+#include <QDBusMessage>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QNetworkReply>
@@ -291,8 +292,26 @@ void PositionSource::checkMapMatchAvailable()
       return;
     }
 
+  // compose async call to request property value
+  QDBusMessage methCall = QDBusMessage::createMethodCall(MAPMATCHING_SERVICE,
+                                                         MAPMATCHING_PATH,
+                                                         QLatin1String("org.freedesktop.DBus.Properties"),
+                                                         QLatin1String("Get"));
+  methCall << OSMScoutMapMatch::staticInterfaceName() << QLatin1String("Active");
+  auto call = QDBusConnection::sessionBus().asyncCall(methCall);
+
+  QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(call, this);
+  connect(watcher, &QDBusPendingCallWatcher::finished,
+          this, &PositionSource::onMapMatchingActiveFinished);
+}
+
+void PositionSource::onMapMatchingActiveFinished(QDBusPendingCallWatcher *watcher)
+{
+  QDBusPendingReply<QVariant> reply = *watcher;
+  watcher->deleteLater();
+
   bool before = m_mapMatchingAvailable;
-  m_mapMatchingAvailable = m_mapmatch->active();
+  m_mapMatchingAvailable = (!reply.isError() && reply.isValid() && reply.argumentAt<0>().toBool());
   if (before != m_mapMatchingAvailable)
     qInfo() << "Map matching active:" << m_mapMatchingAvailable;
 
