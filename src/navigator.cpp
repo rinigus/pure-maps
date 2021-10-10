@@ -148,13 +148,13 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
 
           else if (!valid)
             {
-              SET(icon, QLatin1String("flag"));
+              SET(icon, QLatin1String("position-unknown-no-signal"));
               SET(narrative, trans("Position unknown"));
             }
 
           else
             {
-              SET(icon, QLatin1String("flag"));
+              SET(icon, QLatin1String("position-unknown-low-signal"));
               SET(narrative, trans("Position imprecise: accuracy %1").arg(distanceToStr(horizontalAccuracy)));
             }
 
@@ -422,7 +422,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
         }
       else if (!on_route)
         {
-          SET(icon, QLatin1String("flag"));
+          SET(icon, QLatin1String("navigation-start"));
           SET(manDist, QLatin1String("-"));
           SET(manTime, QLatin1String());
           SET(narrative, trans("Preparing to start navigation"));
@@ -466,7 +466,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
             {
               m_distance_to_route_m = 0; // within the accuracy
 
-              SET(icon, QLatin1String("uturn")); // turn around
+              SET(icon, QLatin1String("wrong-direction")); // turn around
               SET(narrative, trans("Moving in a wrong direction"));
               SET(manDist, QLatin1String("-"));
             }
@@ -476,7 +476,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
               query.mutable_options()->set_max_results(1);
               m_distance_to_route_m = S2Earth::RadiansToMeters(query.GetDistance(&target).radians());
 
-              SET(icon, QLatin1String("flag")); // away from route icon
+              SET(icon, QLatin1String("away-from-route")); // away from route icon
               SET(narrative, trans("Away from route"));
               SET(manDist,
                   m_distance_to_route_m > 1 ?
