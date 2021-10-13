@@ -43,6 +43,8 @@ PositionSource::PositionSource(QObject *parent) : QObject(parent)
       qInfo() << "Calculate direction using a sequence of coordinates";
     }
 
+  m_source->setPreferredPositioningMethods(QGeoPositionInfoSource::SatellitePositioningMethods);
+
   connect(m_source, &QGeoPositionInfoSource::positionUpdated,
           this, &PositionSource::onPositionUpdated);
   connect(m_source, SIGNAL(error(QGeoPositionInfoSource::Error)),
