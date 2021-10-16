@@ -101,7 +101,7 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
   // update and calculate direction if needed
   if (m_directionCalculate)
     {
-      if (m_horizontalAccuracyValid && m_coordinateDeviceValid)
+      if (m_horizontalAccuracyValid && m_coordinateDeviceValid && m_horizontalAccuracy < 100)
         {
           float threshold = m_horizontalAccuracy;
           if (m_history.empty()) m_history.push_back(m_coordinateDevice);
