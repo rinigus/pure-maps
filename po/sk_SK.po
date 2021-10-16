@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Ladislav Hodas <ladislav@hodas.sk>, 2021
+# rinigus github, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 17:15+0300\n"
+"POT-Creation-Date: 2021-10-16 18:03+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Ladislav Hodas <ladislav@hodas.sk>, 2021\n"
+"Last-Translator: rinigus github, 2021\n"
 "Language-Team: Slovak (Slovakia) (https://www.transifex.com/rinigus/teams/89597/sk_SK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -548,7 +549,7 @@ msgstr "Angličtina"
 #: qml/LanguageSelector.qml:44 routers/gpx_osmscout_settings.qml:84
 #: routers/mapquest_open_settings.qml:59 routers/ValhallaSettings.qml:67
 msgid "English (United States)"
-msgstr ""
+msgstr "angličtina (Spojené štáty)"
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
@@ -1940,33 +1941,33 @@ msgstr "Moped"
 
 #: routers/gpx_osmscout_settings.qml:77 routers/ValhallaSettings.qml:60
 msgid "Bulgarian (Bulgaria)"
-msgstr ""
+msgstr "bulharčina (Bulharsko)"
 
 #: routers/gpx_osmscout_settings.qml:78 routers/ValhallaSettings.qml:61
 msgid "Catalan (Spain)"
-msgstr ""
+msgstr "katalánčina (Španielsko)"
 
 #: routers/gpx_osmscout_settings.qml:79 routers/ValhallaSettings.qml:62
 msgid "Czech (Czechia)"
-msgstr ""
+msgstr "čeština (Česko)"
 
 #: routers/gpx_osmscout_settings.qml:80 routers/ValhallaSettings.qml:63
 msgid "Danish (Denmark)"
-msgstr ""
+msgstr "dánčina (Dánsko)"
 
 #: routers/gpx_osmscout_settings.qml:81 routers/mapquest_open_settings.qml:57
 #: routers/ValhallaSettings.qml:64
 msgid "German (Germany)"
-msgstr ""
+msgstr "nemčina (Nemecko)"
 
 #: routers/gpx_osmscout_settings.qml:82 routers/ValhallaSettings.qml:65
 msgid "Greek (Greece)"
-msgstr ""
+msgstr "gréčtina (Grécko)"
 
 #: routers/gpx_osmscout_settings.qml:83 routers/mapquest_open_settings.qml:58
 #: routers/ValhallaSettings.qml:66
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "angličtina (Spojené kráľovstvo)"
 
 #: routers/gpx_osmscout_settings.qml:85 routers/ValhallaSettings.qml:68
 msgid "English Pirate"
@@ -1979,11 +1980,11 @@ msgstr "Španielčina (Španielsko)"
 
 #: routers/gpx_osmscout_settings.qml:87 routers/ValhallaSettings.qml:70
 msgid "Estonian (Estonia)"
-msgstr ""
+msgstr "estónčina (Estónsko)"
 
 #: routers/gpx_osmscout_settings.qml:88 routers/ValhallaSettings.qml:71
 msgid "Finnish (Finland)"
-msgstr ""
+msgstr "fínčina (Fínsko)"
 
 #: routers/gpx_osmscout_settings.qml:89 routers/mapquest_open_settings.qml:63
 #: routers/ValhallaSettings.qml:72
@@ -1992,68 +1993,68 @@ msgstr "Francúzština (Francúzsko)"
 
 #: routers/gpx_osmscout_settings.qml:90 routers/ValhallaSettings.qml:73
 msgid "Hindi (India)"
-msgstr ""
+msgstr "hindčina (India)"
 
 #: routers/gpx_osmscout_settings.qml:91 routers/ValhallaSettings.qml:74
 msgid "Hungarian (Hungary)"
-msgstr ""
+msgstr "maďarčina (Maďarsko)"
 
 #: routers/gpx_osmscout_settings.qml:92 routers/ValhallaSettings.qml:75
 msgid "Italian (Italy)"
-msgstr ""
+msgstr "taliančina (Taliansko)"
 
 #: routers/gpx_osmscout_settings.qml:93 routers/ValhallaSettings.qml:76
 msgid "Japanese (Japan)"
-msgstr ""
+msgstr "japončina (Japonsko)"
 
 #: routers/gpx_osmscout_settings.qml:94 routers/ValhallaSettings.qml:77
 msgid "Norwegian Bokmål (Norway)"
-msgstr ""
+msgstr "nórčina (bokmal) (Nórsko)"
 
 #: routers/gpx_osmscout_settings.qml:95 routers/ValhallaSettings.qml:78
 msgid "Dutch (Netherlands)"
-msgstr ""
+msgstr "holandčina (Holandsko)"
 
 #: routers/gpx_osmscout_settings.qml:96 routers/ValhallaSettings.qml:79
 msgid "Polish (Poland)"
-msgstr ""
+msgstr "poľština (Poľsko)"
 
 #: routers/gpx_osmscout_settings.qml:97 routers/ValhallaSettings.qml:80
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "portugalčina (Brazília)"
 
 #: routers/gpx_osmscout_settings.qml:98 routers/ValhallaSettings.qml:81
 msgid "Portuguese (Portugal)"
-msgstr ""
+msgstr "portugalčina (Portugalsko)"
 
 #: routers/gpx_osmscout_settings.qml:99 routers/ValhallaSettings.qml:82
 msgid "Romanian (Romania)"
-msgstr ""
+msgstr "rumunčina (Rumunsko)"
 
 #: routers/gpx_osmscout_settings.qml:100 routers/mapquest_open_settings.qml:64
 #: routers/ValhallaSettings.qml:83
 msgid "Russian (Russia)"
-msgstr ""
+msgstr "ruština (Rusko)"
 
 #: routers/gpx_osmscout_settings.qml:101 routers/ValhallaSettings.qml:84
 msgid "Slovak (Slovakia)"
-msgstr ""
+msgstr "slovenčina (Slovensko)"
 
 #: routers/gpx_osmscout_settings.qml:102 routers/ValhallaSettings.qml:85
 msgid "Slovenian (Slovenia)"
-msgstr ""
+msgstr "slovinčina (Slovinsko)"
 
 #: routers/gpx_osmscout_settings.qml:103 routers/ValhallaSettings.qml:86
 msgid "Swedish (Sweden)"
-msgstr ""
+msgstr "švédčina (Švédsko)"
 
 #: routers/gpx_osmscout_settings.qml:104 routers/ValhallaSettings.qml:87
 msgid "Turkish (Turkey)"
-msgstr ""
+msgstr "turečtina (Turecko)"
 
 #: routers/gpx_osmscout_settings.qml:105 routers/ValhallaSettings.qml:88
 msgid "Ukrainian (Ukraine)"
-msgstr ""
+msgstr "ukrajinčina (Ukrajina)"
 
 #: routers/mapquest_open_settings.qml:46
 msgid "Try to avoid tolls"
