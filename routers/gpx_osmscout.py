@@ -164,5 +164,5 @@ def parse_result_valhalla(result, mode):
                  locations=locations,
                  location_indexes=[0, len(x)-1],
                  mode=mode)
-    route["language"] = result.trip.language
+    route["language"] = result.trip.language.replace('-','_')
     return route

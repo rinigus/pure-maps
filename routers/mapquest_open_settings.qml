@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import "../qml/platform"
+import "../qml"
 
 FormLayoutPL {
     property bool full: true
@@ -49,25 +50,19 @@ FormLayoutPL {
             app.conf.remove("routers.mapquest_open.avoids", "Toll Road");
     }
 
-    ComboBoxPL {
+    LanguageSelector {
         id: langComboBox
-        label: app.tr("Language")
-        // XXX: We need something more complicated here in order to
-        // have the languages in alphabetical order after translation.
-        model: [ app.tr("English (UK)"), app.tr("English (US)"), app.tr("French (Canada)"),
-            app.tr("French (France)"), app.tr("German"), app.tr("Russian"), app.tr("Spanish (Mexico)"),
-            app.tr("Spanish (Spain)") ]
-        visible: full
-        property var keys: ["en_GB", "en_US", "fr_CA", "fr_FR", "de_DE", "ru_RU", "es_MX", "es_ES"]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.mapquest_open.language");
-            var index = langComboBox.keys.indexOf(key);
-            langComboBox.currentIndex = index > -1 ? index : 1;
-        }
-        onCurrentIndexChanged: {
-            var key = langComboBox.keys[langComboBox.currentIndex];
-            app.conf.set("routers.mapquest_open.language", key);
-        }
+        key: app.conf.get("routers.mapquest_open.language")
+        languages: [
+            { "key": "de_DE", "name": app.tr("German (Germany)") },
+            { "key": "en_GB", "name": app.tr("English (United Kingdom)") },
+            { "key": "en_US", "name": app.tr("English (United States)") },
+            { "key": "es_ES", "name": app.tr("Spanish (Spain)") },
+            { "key": "es_MX", "name": app.tr("Spanish (Mexico)") },
+            { "key": "fr_CA", "name": app.tr("French (Canada)") },
+            { "key": "fr_FR", "name": app.tr("French (France)") },
+            { "key": "ru_RU", "name": app.tr("Russian (Russia)") }
+          ]
+        onKeyChanged: app.conf.set("routers.mapquest_open.language", key)
     }
-
 }

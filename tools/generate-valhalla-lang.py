@@ -20,6 +20,7 @@ for lng in os.listdir(os.path.join(VDIR, "locales")):
     if lng.find(".json") > 0:
         Langs.append(lng.split(".")[0])
 
+#Langs = ["en_GB", "en_US", "fr_CA", "fr_FR", "de_DE", "ru_RU", "es_MX", "es_ES"]
 Langs.sort()
 
 ltxt = '[\n'
