@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-30 21:01+0300\n"
+"POT-Creation-Date: 2021-10-16 17:15+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rinigus/teams/89597/ru/)\n"
@@ -46,10 +46,10 @@ msgstr "Время ожидания соединения истекло"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
 #: qml/MenuPage.qml:87 qml/Navigator.qml:192 qml/NearbyPage.qml:30
-#: qml/NearbyPage.qml:155 qml/NearbyPage.qml:170 qml/RoutePage.qml:40
-#: qml/RoutePage.qml:42 qml/RoutePage.qml:46 qml/RoutePage.qml:104
-#: qml/RoutePage.qml:461 qml/RoutePage.qml:466 qml/RoutePage.qml:693
-#: qml/RoutePage.qml:736 qml/RoutePoint.qml:44 qml/RoutePoint.qml:62
+#: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
+#: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
+#: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
+#: qml/RoutePage.qml:747 qml/RoutePoint.qml:44 qml/RoutePoint.qml:62
 msgid "Current position"
 msgstr "Текущая позиция"
 
@@ -232,11 +232,11 @@ msgstr "{:d} мин"
 msgid "{:d} h {:d} min"
 msgstr "{:d} ч {:d} мин"
 
-#: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:114
-#: routers/ValhallaSettings.qml:150 routers/ValhallaSettings.qml:203
-#: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:238
-#: routers/ValhallaSettings.qml:254 routers/ValhallaSettings.qml:274
-#: routers/ValhallaSettings.qml:290
+#: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:133
+#: routers/ValhallaSettings.qml:169 routers/ValhallaSettings.qml:222
+#: routers/ValhallaSettings.qml:240 routers/ValhallaSettings.qml:257
+#: routers/ValhallaSettings.qml:273 routers/ValhallaSettings.qml:293
+#: routers/ValhallaSettings.qml:309
 msgid "Prefer"
 msgstr "Настройка"
 
@@ -345,7 +345,7 @@ msgstr "Карты"
 
 #: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
 #: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
-#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:685
+#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:643
 msgid "Search"
 msgstr "Поиск"
 
@@ -354,13 +354,13 @@ msgid "Venues"
 msgstr "Заведения"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:27
-#: qml/PreferencesPage.qml:404 qml/RoutePage.qml:25
+#: qml/PreferencesPage.qml:362 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Навигация"
 
 #: qml/BasemapButton.qml:225 qml/NearbyPage.qml:106 qml/PoiEditPage.qml:57
-#: routers/gpx_osmscout_settings.qml:52 routers/gpx_settings.qml:52
-#: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
+#: routers/gpx_osmscout_settings.qml:54 routers/gpx_settings.qml:52
+#: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
 msgid "Type"
 msgstr "Тип"
 
@@ -408,23 +408,23 @@ msgstr "Ночь"
 msgid "Transport"
 msgstr "Транспорт"
 
-#: qml/BasemapButton.qml:318 qml/PreferencesPage.qml:383 qml/RoutePage.qml:644
-#: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
-#: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
+#: qml/BasemapButton.qml:318 qml/PreferencesPage.qml:341 qml/RoutePage.qml:644
+#: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
+#: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Bicycle"
 msgstr "Велосипед"
 
-#: qml/BasemapButton.qml:319 qml/PreferencesPage.qml:383 qml/RoutePage.qml:644
-#: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
-#: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
+#: qml/BasemapButton.qml:319 qml/PreferencesPage.qml:341 qml/RoutePage.qml:644
+#: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
+#: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Car"
 msgstr "Автомобиль"
 
-#: qml/BasemapButton.qml:320 routers/ValhallaSettings.qml:131
+#: qml/BasemapButton.qml:320 routers/ValhallaSettings.qml:150
 msgid "Walking"
 msgstr "Ходьба"
 
-#: qml/BasemapButton.qml:321 routers/ValhallaSettings.qml:37
+#: qml/BasemapButton.qml:321 routers/ValhallaSettings.qml:38
 msgid "Public transport"
 msgstr "Общественный транспорт"
 
@@ -440,15 +440,15 @@ msgstr "Масштабирование карты во время навигац
 msgid "Map: %1"
 msgstr "Карта: %1"
 
-#: qml/CenterButton.qml:110 qml/MapGestureArea.qml:46
+#: qml/CenterButton.qml:111 qml/MapGestureArea.qml:47
 msgid "Auto-center off"
 msgstr "Автоматическое центрирование карты выключено"
 
-#: qml/CenterButton.qml:118 qml/MapGestureArea.qml:45
+#: qml/CenterButton.qml:119 qml/MapGestureArea.qml:46
 msgid "Auto-center on"
 msgstr "Автоматическое центрирование карты включено"
 
-#: qml/CenterButton.qml:124
+#: qml/CenterButton.qml:125
 msgid "Tap center button again for auto-center"
 msgstr "Повторно нажать кнопку центрирования для автоцентрирования"
 
@@ -457,7 +457,7 @@ msgid "No selection"
 msgstr "Нет выбора"
 
 #: qml/GeocodeItem.qml:134 qml/NavigationPage.qml:185 qml/PlaceNamePage.qml:48
-#: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:108 qml/RoutePage.qml:258
+#: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:108 qml/RoutePage.qml:257
 #: qml/RoutePage.qml:443 qml/RoutePage.qml:558
 msgid "Remove"
 msgstr "Удалить"
@@ -496,7 +496,7 @@ msgstr "Безымянная точка"
 msgid "Recent searches (%1)"
 msgstr "Недавние запросы (%1)"
 
-#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:54
+#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:52
 msgid "Change provider (%1)"
 msgstr "Сменить провайдера (%1)"
 
@@ -516,11 +516,11 @@ msgstr "%1 [копия]"
 msgid "Search engine"
 msgstr "Поисковый движок"
 
-#: qml/InitPage.qml:33
+#: qml/InitPage.qml:32
 msgid "Initializing"
 msgstr "Инициализация"
 
-#: qml/InitPage.qml:46 qml/RoutePage.qml:194
+#: qml/InitPage.qml:46 qml/RoutePage.qml:193
 msgid "Dismiss"
 msgstr "Отклонить"
 
@@ -537,6 +537,20 @@ msgstr ""
 "Нет ключа Mapbox API. Необходимо зарегистрироваться на Mapbox и записать "
 "личный ключ API в Персональных настройках. Этот ключ не требуется, если "
 "использовать Pure Maps с автономным источником карт."
+
+#: qml/LanguageSelector.qml:24
+msgid "Language"
+msgstr "Язык"
+
+#: qml/LanguageSelector.qml:43 qml/PreferencesPage.qml:71
+#: qml/PreferencesPage.qml:760
+msgid "English"
+msgstr "Английский"
+
+#: qml/LanguageSelector.qml:44 routers/gpx_osmscout_settings.qml:84
+#: routers/mapquest_open_settings.qml:59 routers/ValhallaSettings.qml:67
+msgid "English (United States)"
+msgstr ""
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
@@ -597,24 +611,24 @@ msgstr "Автономный"
 msgid "Mixed"
 msgstr "Смешанный"
 
-#: qml/MapGestureArea.qml:63 qml/MapGestureArea.qml:81
+#: qml/MapGestureArea.qml:64 qml/MapGestureArea.qml:82
 msgid "Stop navigation to select POI"
 msgstr "Остановить навигацию для выбора точек интереса"
 
-#: qml/Map.qml:641 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
-#: qml/RoutePage.qml:174
+#: qml/Map.qml:643 qml/NavigationPage.qml:207 qml/PoiBlock.qml:251
+#: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Пункт отправления"
 
-#: qml/Map.qml:643 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
+#: qml/Map.qml:645 qml/NavigationPage.qml:210 qml/PoiBlock.qml:271
 msgid "Final destination"
 msgstr "Конечный пункт назначения"
 
-#: qml/Map.qml:645
+#: qml/Map.qml:647
 msgid "✓"
 msgstr "✓"
 
-#: qml/Map.qml:648
+#: qml/Map.qml:650
 msgid "#%1"
 msgstr "#%1"
 
@@ -642,14 +656,14 @@ msgstr "Поделиться текущей позицией (не готово)
 msgid "Share Current Position"
 msgstr "Сообщить свою позицию"
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:363
-#: qml/NavigationCurrentBlock.qml:365 qml/NavigationSpeedBlock.qml:90
-#: qml/NavigationSpeedBlock.qml:92
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:354
+#: qml/NavigationCurrentBlock.qml:355 qml/NavigationSpeedBlock.qml:81
+#: qml/NavigationSpeedBlock.qml:82
 msgid "mph"
 msgstr "миль/ч"
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:367
-#: qml/NavigationSpeedBlock.qml:94
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:356
+#: qml/NavigationSpeedBlock.qml:83
 msgid "km/h"
 msgstr "км/ч"
 
@@ -709,7 +723,7 @@ msgstr "Прибытие"
 msgid "Pause"
 msgstr "Пауза"
 
-#: qml/NavigationPage.qml:46 qml/PreferencesPage.qml:694 qml/RoutePage.qml:69
+#: qml/NavigationPage.qml:46 qml/PreferencesPage.qml:652 qml/RoutePage.qml:67
 msgid "Navigate"
 msgstr "Прокладка маршрута"
 
@@ -733,7 +747,7 @@ msgstr "Время прибытия"
 msgid "Destination reached"
 msgstr "Пункт назначения достигнут"
 
-#: qml/NavigationPage.qml:173 qml/RoutePage.qml:188 qml/RoutePage.qml:195
+#: qml/NavigationPage.qml:173 qml/RoutePage.qml:187 qml/RoutePage.qml:194
 msgid "Destinations and waypoints"
 msgstr "Пункты назначения и промежуточные точки"
 
@@ -745,11 +759,11 @@ msgstr "Начало отсчета: %1"
 msgid "Final destination: %1"
 msgstr "Конечный пункт назначения: %1"
 
-#: qml/NavigationPage.qml:212 qml/RoutePage.qml:276
+#: qml/NavigationPage.qml:212 qml/RoutePage.qml:275
 msgid "Destination: %1"
 msgstr "Пункт назначения: %1"
 
-#: qml/NavigationPage.qml:213 qml/RoutePage.qml:277
+#: qml/NavigationPage.qml:213 qml/RoutePage.qml:276
 msgid "Waypoint: %1"
 msgstr "Промежуточный пункт: %1"
 
@@ -1110,12 +1124,6 @@ msgstr "британские"
 msgid "Preferred map language."
 msgstr "Предпочитаемый язык карты."
 
-#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:801
-#: routers/gpx_osmscout_settings.qml:72 routers/mapquest_open_settings.qml:54
-#: routers/ValhallaSettings.qml:56
-msgid "Language"
-msgstr "Язык"
-
 #: qml/PreferencesPage.qml:62
 msgid "Local"
 msgstr "Местный"
@@ -1128,8 +1136,7 @@ msgstr "Арабский"
 msgid "Basque"
 msgstr "Баскский"
 
-#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:804
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
+#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:761
 msgid "Catalan"
 msgstr "Каталонский"
 
@@ -1141,8 +1148,7 @@ msgstr "Китайский (упрощенный)"
 msgid "Chinese (traditional)"
 msgstr "Китайский (традиционный)"
 
-#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:805
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
+#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:762
 msgid "Czech"
 msgstr "Чешский"
 
@@ -1154,23 +1160,15 @@ msgstr "Датский"
 msgid "Dutch"
 msgstr "Голландский"
 
-#: qml/PreferencesPage.qml:71 qml/PreferencesPage.qml:803
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
-msgid "English"
-msgstr "Английский"
-
 #: qml/PreferencesPage.qml:72
 msgid "Finnish"
 msgstr "Финский"
 
-#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:808
-#: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:765
 msgid "French"
 msgstr "Французский"
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:806
-#: routers/gpx_osmscout_settings.qml:74 routers/mapquest_open_settings.qml:58
-#: routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:763
 msgid "German"
 msgstr "Немецкий"
 
@@ -1186,8 +1184,7 @@ msgstr "Греческий"
 msgid "Hebrew"
 msgstr "Иврит"
 
-#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:809
-#: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:766
 msgid "Hindi"
 msgstr "Хинди"
 
@@ -1195,8 +1192,7 @@ msgstr "Хинди"
 msgid "Indonesian"
 msgstr "Индонезийский"
 
-#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:810
-#: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:767
 msgid "Italian"
 msgstr "Итальянский"
 
@@ -1220,14 +1216,11 @@ msgstr "Персидский"
 msgid "Polish"
 msgstr "Польский"
 
-#: qml/PreferencesPage.qml:86 routers/gpx_osmscout_settings.qml:74
-#: routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:86
 msgid "Portuguese"
 msgstr "Португальский"
 
-#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:811
-#: routers/gpx_osmscout_settings.qml:75 routers/mapquest_open_settings.qml:58
-#: routers/ValhallaSettings.qml:61
+#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:768
 msgid "Russian"
 msgstr "Русский"
 
@@ -1235,13 +1228,11 @@ msgstr "Русский"
 msgid "Sinhalese"
 msgstr "Сингальский"
 
-#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:807
-#: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
+#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:764
 msgid "Spanish"
 msgstr "Испанский"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:813
-#: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:770
 msgid "Swedish"
 msgstr "Шведский"
 
@@ -1269,7 +1260,7 @@ msgstr "Вьетнамский"
 msgid "Welsh"
 msgstr "Валлийский"
 
-#: qml/PreferencesPage.qml:148
+#: qml/PreferencesPage.qml:106
 msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
@@ -1277,19 +1268,19 @@ msgstr ""
 "Переключение между дневным и ночным режимами карты. Учтите, что не все "
 "поставщики карт имеют дневные/ночные варианты."
 
-#: qml/PreferencesPage.qml:151
+#: qml/PreferencesPage.qml:109
 msgid "Day/night mode"
 msgstr "Дневной/ночной режим"
 
-#: qml/PreferencesPage.qml:153
+#: qml/PreferencesPage.qml:111
 msgid "Manual"
 msgstr "Ручной"
 
-#: qml/PreferencesPage.qml:154
+#: qml/PreferencesPage.qml:112
 msgid "Sunrise and sunset"
 msgstr "Восход и закат солнца"
 
-#: qml/PreferencesPage.qml:172
+#: qml/PreferencesPage.qml:130
 msgid ""
 "Automatically switch between map types of the provider according to the "
 "current task. For example, show map designed for navigation while routing."
@@ -1298,25 +1289,25 @@ msgstr ""
 "задачей. Например, показать карту для навигации во время движения по "
 "маршруту."
 
-#: qml/PreferencesPage.qml:174
+#: qml/PreferencesPage.qml:132
 msgid "Switch map modes"
 msgstr "Переключение режимов карты"
 
-#: qml/PreferencesPage.qml:184
+#: qml/PreferencesPage.qml:142
 msgid "Fetch autocompleted search results while typing a search string."
 msgstr ""
 "Во время ввода строки для поиска запрашивать результаты с возможным "
 "автодополнением."
 
-#: qml/PreferencesPage.qml:185
+#: qml/PreferencesPage.qml:143
 msgid "Autocomplete while searching"
 msgstr "Автозаполнение при поиске"
 
-#: qml/PreferencesPage.qml:199
+#: qml/PreferencesPage.qml:157
 msgid "Device"
 msgstr "Устройство"
 
-#: qml/PreferencesPage.qml:206
+#: qml/PreferencesPage.qml:164
 msgid ""
 "You can control if and when Pure Maps keeps display active and works in the "
 "background. It is recommended to allow Pure Maps to prevent screensaver "
@@ -1330,7 +1321,7 @@ msgstr ""
 "работы устройства при нажатии кнопки выключения. Последнее полезно, если вы "
 "хотите получать голосовые подсказки, когда устройство лежит в кармане."
 
-#: qml/PreferencesPage.qml:220
+#: qml/PreferencesPage.qml:178
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
@@ -1339,25 +1330,25 @@ msgstr ""
 "свёрнуто, гашение экрана управляется обычными настройками на уровне "
 "устройства. "
 
-#: qml/PreferencesPage.qml:222
+#: qml/PreferencesPage.qml:180
 msgid "Prevent screensaver"
 msgstr "Отключить гашение экрана"
 
-#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
-#: qml/PreferencesPage.qml:522 qml/PreferencesPage.qml:603
+#: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
+#: qml/PreferencesPage.qml:480 qml/PreferencesPage.qml:561
 msgid "Never"
 msgstr "никогда"
 
-#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
+#: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
 msgid "When navigating"
 msgstr "во время движения"
 
-#: qml/PreferencesPage.qml:223 qml/PreferencesPage.qml:240
-#: qml/PreferencesPage.qml:522
+#: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
+#: qml/PreferencesPage.qml:480
 msgid "Always"
 msgstr "всегда"
 
-#: qml/PreferencesPage.qml:236
+#: qml/PreferencesPage.qml:194
 msgid ""
 "Allows to keep positioning and navigation instructions spoken even when the "
 "screen is switched off. If set to 'never', usual device suspend policy is "
@@ -1367,15 +1358,15 @@ msgstr ""
 "выключенном экране. Если выбран вариант 'никогда', то применяется обычная "
 "политика приостановки работы устройства."
 
-#: qml/PreferencesPage.qml:239
+#: qml/PreferencesPage.qml:197
 msgid "Prevent sleep"
 msgstr "Не допускать перехода в спящий режим"
 
-#: qml/PreferencesPage.qml:261
+#: qml/PreferencesPage.qml:219
 msgid "Privacy"
 msgstr "Приватность"
 
-#: qml/PreferencesPage.qml:268
+#: qml/PreferencesPage.qml:226
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
@@ -1383,27 +1374,27 @@ msgstr ""
 "Очистить всю историю, включая поиск, маршруты и пункты назначения. Учтите, "
 "что закладки будут сохранены."
 
-#: qml/PreferencesPage.qml:277
+#: qml/PreferencesPage.qml:235
 msgid "History cleared"
 msgstr "История очищена"
 
-#: qml/PreferencesPage.qml:286
+#: qml/PreferencesPage.qml:244
 msgid "Clear history"
 msgstr "Очистить историю"
 
-#: qml/PreferencesPage.qml:298
+#: qml/PreferencesPage.qml:256
 msgid "Clear map tiles stored in a cache"
 msgstr "Очистить тайлы карт в кэше"
 
-#: qml/PreferencesPage.qml:306
+#: qml/PreferencesPage.qml:264
 msgid "Clear cache"
 msgstr "Очистить кэш"
 
-#: qml/PreferencesPage.qml:318
+#: qml/PreferencesPage.qml:276
 msgid "API keys"
 msgstr "Ключи API"
 
-#: qml/PreferencesPage.qml:325
+#: qml/PreferencesPage.qml:283
 msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
@@ -1412,15 +1403,15 @@ msgstr ""
 "Здесь можно указать персональные ключи для онлайн сервисов. Убедитесь, что "
 "условия доступа к каждому из используемых сервисов не нарушаются."
 
-#: qml/PreferencesPage.qml:334
+#: qml/PreferencesPage.qml:292
 msgid "Please restart application after changing API keys."
 msgstr "Перезапустите приложение после изменения ключей API."
 
-#: qml/PreferencesPage.qml:375
+#: qml/PreferencesPage.qml:333
 msgid "Exploring"
 msgstr "Анализ"
 
-#: qml/PreferencesPage.qml:381
+#: qml/PreferencesPage.qml:339
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
@@ -1428,69 +1419,69 @@ msgstr ""
 "Выбор способа передвижения. Действует, только когда Pure Maps не находится в"
 " режиме навигации. Использует для работы OSM Scout Server."
 
-#: qml/PreferencesPage.qml:382 qml/PreferencesPage.qml:452
+#: qml/PreferencesPage.qml:340 qml/PreferencesPage.qml:410
 msgid "Snap position to road"
 msgstr "Привязывать положение к дороге"
 
-#: qml/PreferencesPage.qml:383 routers/gpx_osmscout_settings.qml:31
+#: qml/PreferencesPage.qml:341 routers/gpx_osmscout_settings.qml:33
 #: routers/gpx_settings.qml:31
 msgid "None"
 msgstr "Нет"
 
-#: qml/PreferencesPage.qml:383 qml/RoutePage.qml:644
-#: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
-#: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
+#: qml/PreferencesPage.qml:341 qml/RoutePage.qml:644
+#: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
+#: routers/mapquest_open_settings.qml:29 routers/ValhallaSettings.qml:38
 msgid "Foot"
 msgstr "Пешком"
 
-#: qml/PreferencesPage.qml:412
+#: qml/PreferencesPage.qml:370
 msgid "Show navigation instructions"
 msgstr "Показывать подсказки"
 
-#: qml/PreferencesPage.qml:422
+#: qml/PreferencesPage.qml:380
 msgid "Voice navigation instructions"
 msgstr "Голосовые подсказки"
 
-#: qml/PreferencesPage.qml:432
+#: qml/PreferencesPage.qml:390
 msgid "Reroute automatically"
 msgstr "Перестраивать маршрут автоматически"
 
-#: qml/PreferencesPage.qml:441
+#: qml/PreferencesPage.qml:399
 msgid "Automatic zoom on start"
 msgstr "Автоматический выбор масштаба при запуске"
 
-#: qml/PreferencesPage.qml:451
+#: qml/PreferencesPage.qml:409
 msgid "Uses OSM Scout Server for its operation."
 msgstr "Использует OSM Scout Server для своей работы."
 
-#: qml/PreferencesPage.qml:463
+#: qml/PreferencesPage.qml:421
 msgid "Show direction signs"
 msgstr "Показывать дорожные указатели"
 
-#: qml/PreferencesPage.qml:473
+#: qml/PreferencesPage.qml:431
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr ""
 "Ориентировать карту по направлению движения в начале движения по маршруту."
 
-#: qml/PreferencesPage.qml:474
+#: qml/PreferencesPage.qml:432
 msgid "Rotate map when navigating"
 msgstr "Поворачивать карту во время движения по маршруту"
 
-#: qml/PreferencesPage.qml:483
+#: qml/PreferencesPage.qml:441
 msgid "Only applies to vector maps."
 msgstr "Только для векторных карт"
 
-#: qml/PreferencesPage.qml:485
+#: qml/PreferencesPage.qml:443
 msgid "Tilt map when navigating"
 msgstr "Наклонять карту во время движения по маршруту"
 
-#: qml/PreferencesPage.qml:493
+#: qml/PreferencesPage.qml:451
 msgid "Smooth position animation"
 msgstr "Плавная анимация маркера положения"
 
-#: qml/PreferencesPage.qml:503
+#: qml/PreferencesPage.qml:461
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
@@ -1498,19 +1489,19 @@ msgstr ""
 "Выбрать мужской или женский голос для подсказок. Доступно не для всех языков"
 " и программ синтеза речи."
 
-#: qml/PreferencesPage.qml:504 qml/PreferencesPage.qml:835
+#: qml/PreferencesPage.qml:462 qml/PreferencesPage.qml:777
 msgid "Voice gender"
 msgstr "Голос"
 
-#: qml/PreferencesPage.qml:505 qml/PreferencesPage.qml:836
+#: qml/PreferencesPage.qml:463 qml/PreferencesPage.qml:778
 msgid "Male"
 msgstr "мужской"
 
-#: qml/PreferencesPage.qml:505 qml/PreferencesPage.qml:836
+#: qml/PreferencesPage.qml:463 qml/PreferencesPage.qml:778
 msgid "Female"
 msgstr "женский"
 
-#: qml/PreferencesPage.qml:519
+#: qml/PreferencesPage.qml:477
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
@@ -1518,19 +1509,19 @@ msgstr ""
 "Показывать знак ограничения скорости. Требуется привязка положения к дороге "
 "для обнаружения зон ограничений скорости."
 
-#: qml/PreferencesPage.qml:521
+#: qml/PreferencesPage.qml:479
 msgid "Speed limit"
 msgstr "Ограничение скорости"
 
-#: qml/PreferencesPage.qml:522
+#: qml/PreferencesPage.qml:480
 msgid "Only when exceeding"
 msgstr "Только при превышении"
 
-#: qml/PreferencesPage.qml:545 qml/PreferencesPage.qml:649
+#: qml/PreferencesPage.qml:503 qml/PreferencesPage.qml:607
 msgid "Compass"
 msgstr "Компас"
 
-#: qml/PreferencesPage.qml:552
+#: qml/PreferencesPage.qml:510
 msgid ""
 "Compass can be used to determine orientation of your device and align the "
 "map accordingly. Note that the compass is enabled only when your position is"
@@ -1542,19 +1533,19 @@ msgstr ""
 "включается, только когда положение определено, скорость невелика режим "
 "навигации активен и выбран способ движения пешком или на велосипеде."
 
-#: qml/PreferencesPage.qml:562
+#: qml/PreferencesPage.qml:520
 msgid "Use compass for determination of the direction."
 msgstr "Использовать компас для определения направления"
 
-#: qml/PreferencesPage.qml:563
+#: qml/PreferencesPage.qml:521
 msgid "Use compass"
 msgstr "Использовать компас"
 
-#: qml/PreferencesPage.qml:575
+#: qml/PreferencesPage.qml:533
 msgid "Controls"
 msgstr "Элементы управления"
 
-#: qml/PreferencesPage.qml:582
+#: qml/PreferencesPage.qml:540
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
@@ -1564,11 +1555,11 @@ msgstr ""
 "управления либо в минимальном режиме с меньшим набором элементов управления."
 " Для переключения между режимами коснитесь карты."
 
-#: qml/PreferencesPage.qml:591
+#: qml/PreferencesPage.qml:549
 msgid "Set map view to minimal mode on start"
 msgstr "Минимальный вид при запуске"
 
-#: qml/PreferencesPage.qml:599
+#: qml/PreferencesPage.qml:557
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
@@ -1576,31 +1567,31 @@ msgstr ""
 "Автоматическое переключение в минимальный режим после заданной задержки или "
 "отключение автоматического переключения между режимами отображения карты."
 
-#: qml/PreferencesPage.qml:601
+#: qml/PreferencesPage.qml:559
 msgid "Switch to minimal view"
 msgstr "Включать минимальный вид"
 
-#: qml/PreferencesPage.qml:603
+#: qml/PreferencesPage.qml:561
 msgid "10 seconds"
 msgstr "10 секунд"
 
-#: qml/PreferencesPage.qml:603
+#: qml/PreferencesPage.qml:561
 msgid "20 seconds"
 msgstr "20 секунд"
 
-#: qml/PreferencesPage.qml:604
+#: qml/PreferencesPage.qml:562
 msgid "30 seconds"
 msgstr "30 секунд"
 
-#: qml/PreferencesPage.qml:604
+#: qml/PreferencesPage.qml:562
 msgid "1 minute"
 msgstr "1 минута"
 
-#: qml/PreferencesPage.qml:618
+#: qml/PreferencesPage.qml:576
 msgid "Always show"
 msgstr "Показывать всегда"
 
-#: qml/PreferencesPage.qml:623
+#: qml/PreferencesPage.qml:581
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
@@ -1608,39 +1599,39 @@ msgstr ""
 "Всегда показывать выбранные элементы управления, независимо от того, "
 "находится ли карта в минимальном или полном режиме отображения."
 
-#: qml/PreferencesPage.qml:631
+#: qml/PreferencesPage.qml:589
 msgid "Menu"
 msgstr "Меню"
 
-#: qml/PreferencesPage.qml:640
+#: qml/PreferencesPage.qml:598
 msgid "Center on current location"
 msgstr "Переход к текущей позиции"
 
-#: qml/PreferencesPage.qml:658
+#: qml/PreferencesPage.qml:616
 msgid "Map selection"
 msgstr "Выбор карты"
 
-#: qml/PreferencesPage.qml:667
+#: qml/PreferencesPage.qml:625
 msgid "Speed and location precision"
 msgstr "Скорость и точность положения"
 
-#: qml/PreferencesPage.qml:676
+#: qml/PreferencesPage.qml:634
 msgid "Scale"
 msgstr "Индикатор масштаба"
 
-#: qml/PreferencesPage.qml:703
+#: qml/PreferencesPage.qml:661
 msgid "Navigation Start/Pause"
 msgstr "Навигация Старт/Пауза"
 
-#: qml/PreferencesPage.qml:712
+#: qml/PreferencesPage.qml:670
 msgid "Navigation Clear Route"
 msgstr "Навигация Очистить Маршрут"
 
-#: qml/PreferencesPage.qml:727
+#: qml/PreferencesPage.qml:685
 msgid "Zoom"
 msgstr "Масштаб"
 
-#: qml/PreferencesPage.qml:734
+#: qml/PreferencesPage.qml:692
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
@@ -1648,18 +1639,18 @@ msgstr ""
 "Уровень масштабирования карты может изменяться автоматически в соответствии "
 "со скоростью движения. Здесь можно изменить соответствующие настройки."
 
-#: qml/PreferencesPage.qml:744
+#: qml/PreferencesPage.qml:702
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
 msgstr ""
 "Максимальный уровень увеличения при автоматической регулировке масштаба."
 
-#: qml/PreferencesPage.qml:746
+#: qml/PreferencesPage.qml:704
 msgid "Maximal zoom level"
 msgstr "Максимальный масштаб"
 
-#: qml/PreferencesPage.qml:757
+#: qml/PreferencesPage.qml:715
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
@@ -1667,15 +1658,15 @@ msgstr ""
 "Масштаб будет изменяться так, чтобы высота карты равнялась расстоянию, "
 "преодолеваемому вами за указанное здесь время."
 
-#: qml/PreferencesPage.qml:760
+#: qml/PreferencesPage.qml:718
 msgid "Time range, s"
 msgstr "Периодичность, сек"
 
-#: qml/PreferencesPage.qml:779
+#: qml/PreferencesPage.qml:737
 msgid "Testing"
 msgstr "Проверка"
 
-#: qml/PreferencesPage.qml:789
+#: qml/PreferencesPage.qml:747
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
@@ -1684,23 +1675,23 @@ msgstr ""
 "Следует выбрать тот же язык, что и для навигации, предпочтительный пол и "
 "нажать кнопку ниже для тестирования."
 
-#: qml/PreferencesPage.qml:812
+#: qml/PreferencesPage.qml:769
 msgid "Slovak"
 msgstr "Словацкий"
 
-#: qml/PreferencesPage.qml:834
+#: qml/PreferencesPage.qml:776
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "Пол диктора. Поддерживается только некоторыми движками и языками."
 
-#: qml/PreferencesPage.qml:848
+#: qml/PreferencesPage.qml:790
 msgid "Test"
 msgstr "Тест"
 
-#: qml/PreferencesPage.qml:859
+#: qml/PreferencesPage.qml:801
 msgid "Selected voice engine: %1"
 msgstr "Выбранный голосовой движок: %1"
 
-#: qml/PreferencesPage.qml:861
+#: qml/PreferencesPage.qml:803
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1710,11 +1701,11 @@ msgstr ""
 "\n"
 "Pure Maps поддерживает движки синтеза речи Mimic, Flite, PicoTTS, и Espeak. Если Pure Maps установлен не через Flatpak или OpenStore, то движки должны устанавливаться отдельно. Пользователи Sailfish OS могут найти их на OpenRepos."
 
-#: qml/PreferencesPage.qml:895
+#: qml/PreferencesPage.qml:837
 msgid "Development"
 msgstr "Режим разработки"
 
-#: qml/PreferencesPage.qml:902
+#: qml/PreferencesPage.qml:844
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1722,7 +1713,7 @@ msgstr ""
 "Следующие параметры предназначены только для режима разработки. Пожалуйста, "
 "не изменяйте их, если вы не знаете, что делаете."
 
-#: qml/PreferencesPage.qml:910
+#: qml/PreferencesPage.qml:852
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1730,15 +1721,15 @@ msgstr ""
 "Делает текущую позицию центром карты. При использовании этой опции следует "
 "отключить приемник GPS."
 
-#: qml/PreferencesPage.qml:911
+#: qml/PreferencesPage.qml:853
 msgid "Set position to the map center"
 msgstr "Установить местоположение центром карты"
 
-#: qml/PreferencesPage.qml:918
+#: qml/PreferencesPage.qml:860
 msgid "Show current zoom level"
 msgstr "Показывать текущий масштаб"
 
-#: qml/pure-maps.qml:29
+#: qml/pure-maps.qml:30
 msgid "Pure Maps"
 msgstr "Pure Maps"
 
@@ -1758,31 +1749,31 @@ msgstr "Начать"
 msgid "Route"
 msgstr "Маршрут"
 
-#: qml/RoutePage.qml:69
+#: qml/RoutePage.qml:67
 msgid "Follow me"
 msgstr "Следовать за мной"
 
-#: qml/RoutePage.qml:81
+#: qml/RoutePage.qml:79
 msgid "Reverse route"
 msgstr "Обратный маршрут"
 
-#: qml/RoutePage.qml:100
+#: qml/RoutePage.qml:98
 msgid "Clear route"
 msgstr "Очистить маршрут"
 
-#: qml/RoutePage.qml:173
+#: qml/RoutePage.qml:172
 msgid "From"
 msgstr "От"
 
-#: qml/RoutePage.qml:180
+#: qml/RoutePage.qml:179
 msgid "To"
 msgstr "До"
 
-#: qml/RoutePage.qml:181 qml/RoutePage.qml:335
+#: qml/RoutePage.qml:180 qml/RoutePage.qml:334
 msgid "Destination"
 msgstr "Пункт назначения"
 
-#: qml/RoutePage.qml:196
+#: qml/RoutePage.qml:195
 msgid ""
 "Additional destinations and wayponts can be added along the route. The both locations are used for calculation of the route, but only destinations are tracked for being reached. As a result, if you miss the waypoint and later rejoin the calculated route after the waypoint, it will be assumed that waypoint was reached and it will be dismissed in the rerouting calculations later. In contrast, destinations have to be reached within the certain tolerance and will not be dismissed in such manner.\n"
 "\n"
@@ -1796,35 +1787,35 @@ msgstr ""
 "\n"
 "Закройте это диалоговое окно, чтобы прекратить показ этого сообщения."
 
-#: qml/RoutePage.qml:218
+#: qml/RoutePage.qml:217
 msgid "Optimize order"
 msgstr "Оптимизировать порядок"
 
-#: qml/RoutePage.qml:241
+#: qml/RoutePage.qml:240
 msgid "Up"
 msgstr "Вверх"
 
-#: qml/RoutePage.qml:250
+#: qml/RoutePage.qml:249
 msgid "Down"
 msgstr "Вниз"
 
-#: qml/RoutePage.qml:264
+#: qml/RoutePage.qml:263
 msgid "Convert to waypoint"
 msgstr "Преобразовать в промежуточную точку"
 
-#: qml/RoutePage.qml:265
+#: qml/RoutePage.qml:264
 msgid "Convert to destination"
 msgstr "Преобразовать в пункт назначения"
 
-#: qml/RoutePage.qml:311
+#: qml/RoutePage.qml:310
 msgid "Add destination"
 msgstr "Добавить пункт назначения"
 
-#: qml/RoutePage.qml:319
+#: qml/RoutePage.qml:318
 msgid "Add waypoint"
 msgstr "Добавить промежуточную точку"
 
-#: qml/RoutePage.qml:335
+#: qml/RoutePage.qml:334
 msgid "Waypoint"
 msgstr "Промежуточная точка"
 
@@ -1928,175 +1919,268 @@ msgstr "Добавить ссылку на OpenStreetMaps"
 msgid "Add link to Google Maps"
 msgstr "Добавить ссылку на Google Maps"
 
-#: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
+#: routers/gpx_osmscout_settings.qml:32 routers/gpx_settings.qml:30
 msgid "File"
 msgstr "Файл"
 
-#: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
+#: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:45
 msgid "Reverse"
 msgstr "Обратно"
 
-#: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:38
-#: routers/ValhallaSettings.qml:113
+#: routers/gpx_osmscout_settings.qml:55 routers/ValhallaSettings.qml:39
+#: routers/ValhallaSettings.qml:132
 msgid "Bus"
 msgstr "Автобус"
 
-#: routers/gpx_osmscout_settings.qml:54 routers/ValhallaSettings.qml:38
+#: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "High-occupancy vehicle (HOV)"
 msgstr "Автомобиль повышенной вместимости (HOV)"
 
-#: routers/gpx_osmscout_settings.qml:54 routers/ValhallaSettings.qml:38
+#: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "Motorcycle"
 msgstr "Мотоцикл"
 
-#: routers/gpx_osmscout_settings.qml:54 routers/ValhallaSettings.qml:38
+#: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "Motor Scooter"
 msgstr "Мотоскутер"
 
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
+#: routers/gpx_osmscout_settings.qml:77 routers/ValhallaSettings.qml:60
+msgid "Bulgarian (Bulgaria)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:78 routers/ValhallaSettings.qml:61
+msgid "Catalan (Spain)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:79 routers/ValhallaSettings.qml:62
+msgid "Czech (Czechia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:80 routers/ValhallaSettings.qml:63
+msgid "Danish (Denmark)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:81 routers/mapquest_open_settings.qml:57
+#: routers/ValhallaSettings.qml:64
+msgid "German (Germany)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:82 routers/ValhallaSettings.qml:65
+msgid "Greek (Greece)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:83 routers/mapquest_open_settings.qml:58
+#: routers/ValhallaSettings.qml:66
+msgid "English (United Kingdom)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:85 routers/ValhallaSettings.qml:68
 msgid "English Pirate"
 msgstr "Английский пиратский"
 
-#: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
-msgid "Slovenian"
-msgstr "Словенский"
-
-#: routers/mapquest_open_settings.qml:45
-msgid "Try to avoid tolls"
-msgstr "Избегать платных дорог"
-
-#: routers/mapquest_open_settings.qml:57
-msgid "English (UK)"
-msgstr "Английский (Британия)"
-
-#: routers/mapquest_open_settings.qml:57
-msgid "English (US)"
-msgstr "Английский (США)"
-
-#: routers/mapquest_open_settings.qml:57
-msgid "French (Canada)"
-msgstr "Французский (Канада)"
-
-#: routers/mapquest_open_settings.qml:58
-msgid "French (France)"
-msgstr "Французский (Франция)"
-
-#: routers/mapquest_open_settings.qml:58
-msgid "Spanish (Mexico)"
-msgstr "Испанский (Мексика)"
-
-#: routers/mapquest_open_settings.qml:59
+#: routers/gpx_osmscout_settings.qml:86 routers/mapquest_open_settings.qml:60
+#: routers/ValhallaSettings.qml:69
 msgid "Spanish (Spain)"
 msgstr "Испанский (Испания)"
 
-#: routers/ValhallaSettings.qml:30
+#: routers/gpx_osmscout_settings.qml:87 routers/ValhallaSettings.qml:70
+msgid "Estonian (Estonia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:88 routers/ValhallaSettings.qml:71
+msgid "Finnish (Finland)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:89 routers/mapquest_open_settings.qml:63
+#: routers/ValhallaSettings.qml:72
+msgid "French (France)"
+msgstr "Французский (Франция)"
+
+#: routers/gpx_osmscout_settings.qml:90 routers/ValhallaSettings.qml:73
+msgid "Hindi (India)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:91 routers/ValhallaSettings.qml:74
+msgid "Hungarian (Hungary)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:92 routers/ValhallaSettings.qml:75
+msgid "Italian (Italy)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:93 routers/ValhallaSettings.qml:76
+msgid "Japanese (Japan)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:94 routers/ValhallaSettings.qml:77
+msgid "Norwegian Bokmål (Norway)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:95 routers/ValhallaSettings.qml:78
+msgid "Dutch (Netherlands)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:96 routers/ValhallaSettings.qml:79
+msgid "Polish (Poland)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:97 routers/ValhallaSettings.qml:80
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:98 routers/ValhallaSettings.qml:81
+msgid "Portuguese (Portugal)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:99 routers/ValhallaSettings.qml:82
+msgid "Romanian (Romania)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:100 routers/mapquest_open_settings.qml:64
+#: routers/ValhallaSettings.qml:83
+msgid "Russian (Russia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:101 routers/ValhallaSettings.qml:84
+msgid "Slovak (Slovakia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:102 routers/ValhallaSettings.qml:85
+msgid "Slovenian (Slovenia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:103 routers/ValhallaSettings.qml:86
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:104 routers/ValhallaSettings.qml:87
+msgid "Turkish (Turkey)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:105 routers/ValhallaSettings.qml:88
+msgid "Ukrainian (Ukraine)"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:46
+msgid "Try to avoid tolls"
+msgstr "Избегать платных дорог"
+
+#: routers/mapquest_open_settings.qml:61
+msgid "Spanish (Mexico)"
+msgstr "Испанский (Мексика)"
+
+#: routers/mapquest_open_settings.qml:62
+msgid "French (Canada)"
+msgstr "Французский (Канада)"
+
+#: routers/ValhallaSettings.qml:31
 msgid "General options"
 msgstr "Общие параметры"
 
-#: routers/ValhallaSettings.qml:76
+#: routers/ValhallaSettings.qml:95
 msgid "Advanced options"
 msgstr "Расширенная настройка"
 
-#: routers/ValhallaSettings.qml:84
+#: routers/ValhallaSettings.qml:103
 msgid "Prefer shorter route"
 msgstr "Предпочесть более короткий маршрут"
 
-#: routers/ValhallaSettings.qml:95
+#: routers/ValhallaSettings.qml:114
 msgid "Bicycle type"
 msgstr "Тип велосипеда"
 
-#: routers/ValhallaSettings.qml:96
+#: routers/ValhallaSettings.qml:115
 msgid "Road"
 msgstr "Шоссе"
 
-#: routers/ValhallaSettings.qml:96
+#: routers/ValhallaSettings.qml:115
 msgid "Hybrid or City (default)"
 msgstr "Гибридный или городской (по умолчанию)"
 
-#: routers/ValhallaSettings.qml:96
+#: routers/ValhallaSettings.qml:115
 msgid "Cross"
 msgstr "Пересеченная местность"
 
-#: routers/ValhallaSettings.qml:96
+#: routers/ValhallaSettings.qml:115
 msgid "Mountain"
 msgstr "Гора"
 
-#: routers/ValhallaSettings.qml:112
+#: routers/ValhallaSettings.qml:131
 msgid "Your desire to use buses."
 msgstr "Вы желаете воспользоваться автобусами."
 
-#: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
-#: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:186
-#: routers/ValhallaSettings.qml:202 routers/ValhallaSettings.qml:220
-#: routers/ValhallaSettings.qml:238 routers/ValhallaSettings.qml:254
-#: routers/ValhallaSettings.qml:290
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
+#: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:205
+#: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:239
+#: routers/ValhallaSettings.qml:257 routers/ValhallaSettings.qml:273
+#: routers/ValhallaSettings.qml:309
 msgid "Avoid"
 msgstr "Избегать"
 
-#: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
-#: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:202
-#: routers/ValhallaSettings.qml:220 routers/ValhallaSettings.qml:273
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
+#: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:221
+#: routers/ValhallaSettings.qml:239 routers/ValhallaSettings.qml:292
 msgid "Prefer to avoid"
 msgstr "Желательно избегать"
 
-#: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
-#: routers/ValhallaSettings.qml:186 routers/ValhallaSettings.qml:202
-#: routers/ValhallaSettings.qml:220 routers/ValhallaSettings.qml:238
-#: routers/ValhallaSettings.qml:254 routers/ValhallaSettings.qml:290
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
+#: routers/ValhallaSettings.qml:205 routers/ValhallaSettings.qml:221
+#: routers/ValhallaSettings.qml:239 routers/ValhallaSettings.qml:257
+#: routers/ValhallaSettings.qml:273 routers/ValhallaSettings.qml:309
 msgid "No preference (default)"
 msgstr "Нет предпочтений (по умолчанию)"
 
-#: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:150
-#: routers/ValhallaSettings.qml:167 routers/ValhallaSettings.qml:203
-#: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:274
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:169
+#: routers/ValhallaSettings.qml:186 routers/ValhallaSettings.qml:222
+#: routers/ValhallaSettings.qml:240 routers/ValhallaSettings.qml:293
 msgid "Incline"
 msgstr "Склон"
 
-#: routers/ValhallaSettings.qml:129
+#: routers/ValhallaSettings.qml:148
 msgid "The maximum difficulty of hiking trails that is allowed."
 msgstr "Максимальная разрешенная сложность пешеходного маршрута."
 
-#: routers/ValhallaSettings.qml:130
+#: routers/ValhallaSettings.qml:149
 msgid "Hiking difficulty"
 msgstr "Сложность пешего туризма"
 
-#: routers/ValhallaSettings.qml:131
+#: routers/ValhallaSettings.qml:150
 msgid "Hiking (default)"
 msgstr "Пешая прогулка (по умолчанию)"
 
-#: routers/ValhallaSettings.qml:131
+#: routers/ValhallaSettings.qml:150
 msgid "Mountain hiking"
 msgstr "Горный пеший туризм"
 
-#: routers/ValhallaSettings.qml:132
+#: routers/ValhallaSettings.qml:151
 msgid "Demanding mountain hiking"
 msgstr "Жесткий горный пеший туризм"
 
-#: routers/ValhallaSettings.qml:132
+#: routers/ValhallaSettings.qml:151
 msgid "Alpine hiking"
 msgstr "Высокогорный туризм"
 
-#: routers/ValhallaSettings.qml:132
+#: routers/ValhallaSettings.qml:151
 msgid "Demanding alpine hiking"
 msgstr "Жесткий высокогорный туризм"
 
-#: routers/ValhallaSettings.qml:148
+#: routers/ValhallaSettings.qml:167
 msgid "Ferries"
 msgstr "Паромы"
 
-#: routers/ValhallaSettings.qml:165
+#: routers/ValhallaSettings.qml:184
 msgid "Highways"
 msgstr "Автомагистраль"
 
-#: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:273
+#: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:292
 msgid "No preference"
 msgstr "Нет предпочтений"
 
-#: routers/ValhallaSettings.qml:167
+#: routers/ValhallaSettings.qml:186
 msgid "Prefer (default)"
 msgstr "Предпочитать (по умолчанию)"
 
-#: routers/ValhallaSettings.qml:184
+#: routers/ValhallaSettings.qml:203
 msgid ""
 "Your desire to tackle hills. When avoiding hills and steep grades, longer "
 "(time and distance) routes can be selected. By allowing hills, it indicates "
@@ -2107,40 +2191,40 @@ msgstr ""
 "путь. Разрешение пересечь холмы указывает на то, что Вы не боитесь холмов и "
 "крутых склонов."
 
-#: routers/ValhallaSettings.qml:185
+#: routers/ValhallaSettings.qml:204
 msgid "Hills"
 msgstr "Горный массив"
 
-#: routers/ValhallaSettings.qml:186
+#: routers/ValhallaSettings.qml:205
 msgid "Allow"
 msgstr "Разрешить"
 
-#: routers/ValhallaSettings.qml:201
+#: routers/ValhallaSettings.qml:220
 msgid "Primary roads"
 msgstr "Основные дороги"
 
-#: routers/ValhallaSettings.qml:218
+#: routers/ValhallaSettings.qml:237
 msgid "Your desire to use rail/subway/metro."
 msgstr ""
 "Вы желаете воспользоваться железнодорожным транспортом/трамваем/метро."
 
-#: routers/ValhallaSettings.qml:219
+#: routers/ValhallaSettings.qml:238
 msgid "Rail"
 msgstr "Железнодорожный транспорт"
 
-#: routers/ValhallaSettings.qml:236
+#: routers/ValhallaSettings.qml:255
 msgid "Your propensity to use roads alongside other vehicles."
 msgstr "Ваша предрасположенность к использованию дорог наряду с автомобилями."
 
-#: routers/ValhallaSettings.qml:237
+#: routers/ValhallaSettings.qml:256
 msgid "Roads"
 msgstr "Дорожные магистрали"
 
-#: routers/ValhallaSettings.qml:253
+#: routers/ValhallaSettings.qml:272
 msgid "Tolls"
 msgstr "Дорожные пошлины"
 
-#: routers/ValhallaSettings.qml:271
+#: routers/ValhallaSettings.qml:290
 msgid ""
 "Your desire for adventure. When preferred, router will tend to avoid major "
 "roads and route on secondary roads, sometimes on using trails, tracks, "
@@ -2151,15 +2235,15 @@ msgstr ""
 "второстепенным дорогам, иногда используя тропы, дорожки, "
 "неклассифицированные дороги или дороги с плохим покрытием."
 
-#: routers/ValhallaSettings.qml:272
+#: routers/ValhallaSettings.qml:291
 msgid "Trails"
 msgstr "Тропы"
 
-#: routers/ValhallaSettings.qml:273
+#: routers/ValhallaSettings.qml:292
 msgid "Avoid (default)"
 msgstr "Избегать (по умолчанию)"
 
-#: routers/ValhallaSettings.qml:289
+#: routers/ValhallaSettings.qml:308
 msgid "Transfers"
 msgstr "Трансферы"
 
