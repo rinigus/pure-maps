@@ -55,94 +55,52 @@ PagePL {
                             }
                         }
 
-                        ComboBoxPL {
+                        LanguageSelector {
                             description: app.tr("Preferred map language.")
-                            label: app.tr("Language")
-                            model: [
-                                app.tr("Local"),
-                                app.tr("Arabic"),
-                                app.tr("Basque"),
-                                app.tr("Catalan"),
-                                app.tr("Chinese (simplified)"),
-                                app.tr("Chinese (traditional)"),
-                                app.tr("Czech"),
-                                app.tr("Danish"),
-                                app.tr("Dutch"),
-                                app.tr("English"),
-                                app.tr("Finnish"),
-                                app.tr("French"),
-                                app.tr("German"),
-                                app.tr("Gaelic"),
-                                app.tr("Greek"),
-                                app.tr("Hebrew"),
-                                app.tr("Hindi"),
-                                app.tr("Indonesian"),
-                                app.tr("Italian"),
-                                app.tr("Japanese"),
-                                app.tr("Korean"),
-                                app.tr("Norwegian"),
-                                app.tr("Persian"),
-                                app.tr("Polish"),
-                                app.tr("Portuguese"),
-                                app.tr("Russian"),
-                                app.tr("Sinhalese"),
-                                app.tr("Spanish"),
-                                app.tr("Swedish"),
-                                app.tr("Thai"),
-                                app.tr("Turkish"),
-                                app.tr("Ukrainian"),
-                                app.tr("Urdu"),
-                                app.tr("Vietnamese"),
-                                app.tr("Welsh")
+                            key: app.conf.basemapLang
+                            languages: [
+                                { "key": "local", "name": app.tr("Local") },
+                                { "key": "ar", "name": app.tr("Arabic") },
+                                { "key": "eu", "name": app.tr("Basque") },
+                                { "key": "ca", "name": app.tr("Catalan") },
+                                { "key": "zh-simpl", "name": app.tr("Chinese (simplified)") },
+                                { "key": "zh", "name": app.tr("Chinese (traditional)") },
+                                { "key": "cs", "name": app.tr("Czech") },
+                                { "key": "da", "name": app.tr("Danish") },
+                                { "key": "nl", "name": app.tr("Dutch") },
+                                { "key": "en", "name": app.tr("English") },
+                                { "key": "fi", "name": app.tr("Finnish") },
+                                { "key": "fr", "name": app.tr("French") },
+                                { "key": "de", "name": app.tr("German") },
+                                { "key": "ga", "name": app.tr("Gaelic") },
+                                { "key": "el", "name": app.tr("Greek") },
+                                { "key": "he", "name": app.tr("Hebrew") },
+                                { "key": "hi", "name": app.tr("Hindi") },
+                                { "key": "id", "name": app.tr("Indonesian") },
+                                { "key": "it", "name": app.tr("Italian") },
+                                { "key": "ja", "name": app.tr("Japanese") },
+                                { "key": "ko", "name": app.tr("Korean") },
+                                { "key": "no", "name": app.tr("Norwegian") },
+                                { "key": "fa", "name": app.tr("Persian") },
+                                { "key": "pl", "name": app.tr("Polish") },
+                                { "key": "pt", "name": app.tr("Portuguese") },
+                                { "key": "ru", "name": app.tr("Russian") },
+                                { "key": "si", "name": app.tr("Sinhalese") },
+                                { "key": "es", "name": app.tr("Spanish") },
+                                { "key": "sv", "name": app.tr("Swedish") },
+                                { "key": "th", "name": app.tr("Thai") },
+                                { "key": "tr", "name": app.tr("Turkish") },
+                                { "key": "uk", "name": app.tr("Ukrainian") },
+                                { "key": "ur", "name": app.tr("Urdu") },
+                                { "key": "vi", "name": app.tr("Vietnamese") },
+                                { "key": "cy", "name": app.tr("Welsh") }
                             ]
-                            property var values: [
-                                "local",
-                                "ar",
-                                "eu",
-                                "ca",
-                                "zh-simpl",
-                                "zh",
-                                "cs",
-                                "da",
-                                "nl",
-                                "en",
-                                "fi",
-                                "fr",
-                                "de",
-                                "ga",
-                                "el",
-                                "he",
-                                "hi",
-                                "id",
-                                "it",
-                                "ja",
-                                "ko",
-                                "no",
-                                "fa",
-                                "pl",
-                                "pt",
-                                "ru",
-                                "si",
-                                "es",
-                                "sv",
-                                "th",
-                                "tr",
-                                "uk",
-                                "ur",
-                                "vi",
-                                "cy"
-                            ]
-
-                            Component.onCompleted: {
-                                var value = app.conf.basemapLang;
-                                currentIndex = values.indexOf(value);
-                            }
-                            onCurrentIndexChanged: {
-                                var index = currentIndex;
-                                app.conf.set("basemap_lang", values[index]);
+                            onKeyChanged: {
+                                app.conf.set("basemap_lang", key);
                                 py.call_sync("poor.app.basemap.update", []);
                             }
                         }
+
 
                         ComboBoxPL {
                             description: app.tr("Switching between day/night modes of the map. " +
@@ -795,37 +753,21 @@ PagePL {
 
                     FormLayoutPL {
                         spacing: styler.themePaddingMedium
-                        ComboBoxPL {
+                        LanguageSelector {
                             id: languageComboBox
-                            currentIndex: 0
-                            label: app.tr("Language")
-                            model: [
-                                app.tr("English"),
-                                app.tr("Catalan"),
-                                app.tr("Czech"),
-                                app.tr("German"),
-                                app.tr("Spanish"),
-                                app.tr("French"),
-                                app.tr("Hindi"),
-                                app.tr("Italian"),
-                                app.tr("Russian"),
-                                app.tr("Slovak"),
-                                app.tr("Swedish")
-                            ]
-                            property var values: ["en", "ca", "cz", "de", "es", "fr", "hi", "it", "ru", "sl", "sv"]
-                            // from https://www.omniglot.com/language/phrases/hovercraft.htm
-                            property var phrases: [
-                                "My hovercraft is full of eels", // en
-                                "El meu aerolliscador està ple d'anguiles", // ca
-                                "Moje vznášedlo je plné úhořů", // cz
-                                "Mein Luftkissenfahrzeug ist voller Aale", // de
-                                "Mi aerodeslizador está lleno de anguilas", // es
-                                "Mon aéroglisseur est plein d'anguilles", // fr
-                                "मेरी मँडराने वाली नाव सर्पमीनों से भरी हैं", // hi
-                                "Il mio hovercraft è pieno di anguille", // it
-                                "Моё судно на воздушной подушке полно угрей", // ru
-                                "Moje vznášadlo je plné úhorov", // sl
-                                "Min svävare är full med ål" // sv
+                            key: "en"
+                            languages: [
+                                { "key": "en", "name": app.tr("English"), "text": "My hovercraft is full of eels" },
+                                { "key": "ca", "name": app.tr("Catalan"), "text": "El meu aerolliscador està ple d'anguiles" },
+                                { "key": "cz", "name": app.tr("Czech"), "text": "Moje vznášedlo je plné úhořů" },
+                                { "key": "de", "name": app.tr("German"), "text": "Mein Luftkissenfahrzeug ist voller Aale" },
+                                { "key": "es", "name": app.tr("Spanish"), "text": "Mi aerodeslizador está lleno de anguilas" },
+                                { "key": "fr", "name": app.tr("French"), "text": "Mon aéroglisseur est plein d'anguilles" },
+                                { "key": "hi", "name": app.tr("Hindi"), "text": "मेरी मँडराने वाली नाव सर्पमीनों से भरी हैं" },
+                                { "key": "it", "name": app.tr("Italian"), "text": "Il mio hovercraft è pieno di anguille" },
+                                { "key": "ru", "name": app.tr("Russian"), "text": "Моё судно на воздушной подушке полно угрей" },
+                                { "key": "sl", "name": app.tr("Slovak"), "text": "Moje vznášadlo je plné úhorov" },
+                                { "key": "sv", "name": app.tr("Swedish"), "text": "Min svävare är full med ål" }
                             ]
                         }
 
@@ -877,12 +819,12 @@ PagePL {
                         enabled: true
                         engine: "tester"
                         gender: genderComboBox.values[genderComboBox.currentIndex]
-                        language: languageComboBox.values[languageComboBox.currentIndex]
+                        language: languageComboBox.key
                     }
 
                     function test() {
                         if (voice.active) {
-                            var txt = languageComboBox.phrases[languageComboBox.currentIndex];
+                            var txt = languageComboBox.languages[languageComboBox.languageIndex].text;
                             voice.prepare(txt);
                             voice.play(txt);
                         }
