@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import "../qml/platform"
+import "../qml"
 
 FormLayoutPL {
     id: settingsBlock
@@ -51,25 +52,43 @@ FormLayoutPL {
         }
     }
 
-    ComboBoxPL {
+    LanguageSelector {
         id: langComboBox
-        label: app.tr("Language")
-        // XXX: We need something more complicated here in order to
-        // have the languages in alphabetical order after translation.
-        model: [ app.tr("Catalan"), app.tr("Czech"), app.tr("English"), app.tr("English Pirate"),
-            app.tr("French"), app.tr("German"), app.tr("Hindi"), app.tr("Italian"), app.tr("Portuguese"),
-            app.tr("Russian"), app.tr("Slovenian"), app.tr("Spanish"), app.tr("Swedish") ]
+        key: app.conf.get("routers." + settingsBlock.router + ".language")
+        // list generated using tools/generate-valhalla-lang.py
+        languages: [
+              { "key": "bg-BG", "name": app.tr("Bulgarian (Bulgaria)") },
+              { "key": "ca-ES", "name": app.tr("Catalan (Spain)") },
+              { "key": "cs-CZ", "name": app.tr("Czech (Czechia)") },
+              { "key": "da-DK", "name": app.tr("Danish (Denmark)") },
+              { "key": "de-DE", "name": app.tr("German (Germany)") },
+              { "key": "el-GR", "name": app.tr("Greek (Greece)") },
+              { "key": "en-GB", "name": app.tr("English (United Kingdom)") },
+              { "key": "en-US", "name": app.tr("English (United States)") },
+              { "key": "en-US-x-pirate", "name": app.tr("English Pirate") },
+              { "key": "es-ES", "name": app.tr("Spanish (Spain)") },
+              { "key": "et-EE", "name": app.tr("Estonian (Estonia)") },
+              { "key": "fi-FI", "name": app.tr("Finnish (Finland)") },
+              { "key": "fr-FR", "name": app.tr("French (France)") },
+              { "key": "hi-IN", "name": app.tr("Hindi (India)") },
+              { "key": "hu-HU", "name": app.tr("Hungarian (Hungary)") },
+              { "key": "it-IT", "name": app.tr("Italian (Italy)") },
+              { "key": "ja-JP", "name": app.tr("Japanese (Japan)") },
+              { "key": "nb-NO", "name": app.tr("Norwegian Bokmål (Norway)") },
+              { "key": "nl-NL", "name": app.tr("Dutch (Netherlands)") },
+              { "key": "pl-PL", "name": app.tr("Polish (Poland)") },
+              { "key": "pt-BR", "name": app.tr("Portuguese (Brazil)") },
+              { "key": "pt-PT", "name": app.tr("Portuguese (Portugal)") },
+              { "key": "ro-RO", "name": app.tr("Romanian (Romania)") },
+              { "key": "ru-RU", "name": app.tr("Russian (Russia)") },
+              { "key": "sk-SK", "name": app.tr("Slovak (Slovakia)") },
+              { "key": "sl-SI", "name": app.tr("Slovenian (Slovenia)") },
+              { "key": "sv-SE", "name": app.tr("Swedish (Sweden)") },
+              { "key": "tr-TR", "name": app.tr("Turkish (Turkey)") },
+              { "key": "uk-UA", "name": app.tr("Ukrainian (Ukraine)") }
+          ]
         visible: full
-        property var keys: ["ca", "cs", "en", "en-US-x-pirate", "fr", "de", "hi", "it", "pt", "ru", "sl", "es", "sv"]
-        Component.onCompleted: {
-            var key = app.conf.get("routers." + settingsBlock.router + ".language");
-            var index = langComboBox.keys.indexOf(key);
-            langComboBox.currentIndex = index > -1 ? index : 2;
-        }
-        onCurrentIndexChanged: {
-            var key = langComboBox.keys[langComboBox.currentIndex]
-            app.conf.set("routers." + settingsBlock.router + ".language", key);
-        }
+        onKeyChanged: app.conf.set("routers." + settingsBlock.router + ".language", key)
     }
 
     SectionHeaderPL {

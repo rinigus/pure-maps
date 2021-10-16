@@ -239,7 +239,7 @@ def parse_result_valhalla(url, locations, optimized, result, mode):
                  locations=[locations[i.original_index] for i in result.trip.locations],
                  location_indexes=LocPointInd,
                  maneuvers=Man, mode=mode, optimized=optimized)
-    route["language"] = result.trip.language
+    route["language"] = result.trip.language.replace('-','_')
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route

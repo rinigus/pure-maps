@@ -194,7 +194,7 @@ class VoiceEngineMimicEnUsPirate(VoiceEngine):
     commands = ["mimic", "harbour-mimic"]
     description = "Mimic Pirate"
     voices = {
-        "en-US-x-pirate": {"male": "awb", "female": "slt"},
+        "en_US_x_pirate": {"male": "awb", "female": "slt"},
     }
     phonemes = { "Arrr": "aa r ah0 r r .",
                  "Cap'n": "k ae1 p n",
