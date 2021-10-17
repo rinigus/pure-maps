@@ -38,6 +38,19 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.8.0" date="2021-10-17">
+     <description>
+       <ul>
+         <li>Add app-specific PositionSource</li>
+         <li>Add missing icons for navigation instructions [Lolek]</li>
+         <li>Add support for large number of languages by Valhalla</li>
+         <li>Drop support for Thunderforest maps</li>
+         <li>Adjust dependencies</li>
+         <li>Bugfixes and small enhancements</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.7.5" date="2021-05-22">
      <description>
        <ul>

@@ -1,3 +1,14 @@
+2021-10-17: Pure Maps 2.8.0
+===========================
+
+* Add app-specific PositionSource
+* Add missing icons for navigation instructions [Lolek]
+* Add support for large number of languages by Valhalla
+* Drop support for Thunderforest maps
+* Adjust dependencies
+* Bugfixes and small enhancements
+* Update translations
+
 2021-05-22: Pure Maps 2.7.5
 ===========================
 
