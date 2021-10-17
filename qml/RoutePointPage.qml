@@ -28,7 +28,7 @@ DialogAutoPL {
     pageMenu: PageMenuPL {
         PageMenuItemPL {
             iconName: styler.iconPreferences
-            text: app.tr("Using %1").arg(name)
+            text: app.tr("Change provider (%1)").arg(name)
             property string name: py.evaluate("poor.app.geocoder.name")
             onClicked: {
                 var dialog = app.push(Qt.resolvedUrl("GeocoderPage.qml"));
