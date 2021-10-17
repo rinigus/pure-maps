@@ -38,6 +38,13 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.8.1" date="2021-10-17">
+     <description>
+       <ul>
+         <li>Bugfixes</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.8.0" date="2021-10-17">
      <description>
        <ul>
