@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-17 12:41+0300\n"
+"POT-Creation-Date: 2021-10-17 15:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Connection timed out"
 msgstr ""
 
-#: poor/history.py:33 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
+#: poor/history.py:33 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:529
 #: qml/MenuPage.qml:87 qml/Navigator.qml:192 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
@@ -428,41 +428,42 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: qml/GeocodeItem.qml:386
+#: qml/GeocodeItem.qml:388
 msgid "Suggestions (%1)"
 msgstr ""
 
-#: qml/GeocodeItem.qml:407
+#: qml/GeocodeItem.qml:409
 msgid "Error while fetching results"
 msgstr ""
 
-#: qml/GeocodeItem.qml:416
+#: qml/GeocodeItem.qml:418
 msgid "Searching ..."
 msgstr ""
 
-#: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:99
+#: qml/GeocodeItem.qml:423 qml/NearbyResultsPage.qml:99
 msgid "No results"
 msgstr ""
 
-#: qml/GeocodeItem.qml:426
+#: qml/GeocodeItem.qml:428
 msgid "Results (%1)"
 msgstr ""
 
-#: qml/GeocodeItem.qml:462
+#: qml/GeocodeItem.qml:464
 msgid "Points of Interest (%1)"
 msgstr ""
 
-#: qml/GeocodeItem.qml:467 qml/Navigator.qml:300 qml/Navigator.qml:302
+#: qml/GeocodeItem.qml:469 qml/Navigator.qml:300 qml/Navigator.qml:302
 #: qml/PoiBlock.qml:403 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr ""
 
-#: qml/GeocodeItem.qml:493
+#: qml/GeocodeItem.qml:495
 msgid "Recent searches (%1)"
 msgstr ""
 
 #: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:52
+#: qml/RoutePointPage.qml:31
 msgid "Change provider (%1)"
 msgstr ""
 
@@ -1749,10 +1750,6 @@ msgstr ""
 
 #: qml/RoutePage.qml:643
 msgid "Mode of transportation"
-msgstr ""
-
-#: qml/RoutePointPage.qml:31
-msgid "Using %1"
 msgstr ""
 
 #: qml/RoutePointPage.qml:65
