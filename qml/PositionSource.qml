@@ -42,7 +42,7 @@ PM.PositionSource {
                      app.mode === modes.navigatePost
     testingMode: app.conf.developmentCoordinateCenter
 
-    property var  coordinate: coordinateMapMatchValid ? coordinateMapMatch : coordinateDevice
+    property var  coordinate: coordinateMapMatchValid ? coordinateMapMatch : coordinateDeviceValid ? coordinateDevice : QtPositioning.coordinate(0,0)
     property bool coordinateValid: coordinateMapMatchValid || coordinateDeviceValid
     property int  direction: directionMapMatchValid ? directionMapMatch : directionDevice
     property bool directionValid: directionMapMatchValid || directionDeviceValid
