@@ -31,8 +31,6 @@
   "install_lib": [
     "${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/lib/*.so*",
     "${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
-    "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*",
-    "${NEMO_QML_PLUGIN_DBUS_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/*.so*",
     "${S2GEOMETRY_LIB_INSTALL_DIR}/lib/*.so*"
   ],
   "scripts": {
@@ -62,9 +60,6 @@
         "INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/include/qt5",
         "LIBS+=-L${BUILD_DIR}/../mapbox-gl-native/install/lib"
       ]
-    },
-    "nemo-qml-plugin-dbus": {
-      "builder": "qmake"
     },
     "s2geometry": {
       "builder": "cmake",
