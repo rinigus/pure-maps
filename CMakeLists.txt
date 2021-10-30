@@ -14,6 +14,7 @@ option(RUN_FROM_SOURCE "Run from source, this is mainly intended for easy develo
 set(S2INCLUDES "" CACHE STRING "Custom installed location for s2geometry, includes")
 set(S2LIBS "" CACHE STRING "Custom installed location for s2geometry, libs")
 option(USE_BUNDLED_GPXPY "Use a bundled version of GPXPY rather than a system-wide version" ON)
+option(USE_BUNDLED_GEOCLUE2 "Use a bundled version of Geoclue2 Qt plugin with bugfixes" OFF)
 set(QML_IMPORT_PATH "" CACHE STRING "Additional QML import path")
 
 set(DEFAULT_PROFILE "online" CACHE STRING "Default profile. Supported profile selection: online, offline")
@@ -148,6 +149,10 @@ file(GLOB QML_DOCS qml/*.md qml/platform.*/*.md)
 file(GLOB PM_SRC src/*.cpp)
 file(GLOB PM_HEADERS src/*.h)
 
+file(GLOB GCLUE2_SRC src/geoclue2/*.cpp)
+file(GLOB GCLUE2_HEADERS src/geoclue2/*.h)
+file(GLOB GCLUE2_XML src/geoclue2/*.xml)
+
 # custom target for showing all sources in Qt Creator
 add_custom_target(Sources SOURCES
     ${GEOCODERS_SRC} ${GEOCODERS_EXTRA}
@@ -157,6 +162,7 @@ add_custom_target(Sources SOURCES
     ${POOR_SRC}
     ${QML_SRC} ${QML_JS} ${QML_PLATFORMS} ${QML_DOCS}
     ${PM_SRC} ${PM_HEADERS}
+    ${GCLUE2_SRC} ${GCLUE2_HEADERS} ${GCLUE2_XML}
     )
 
 # process linking and installation in the subdirs where needed
