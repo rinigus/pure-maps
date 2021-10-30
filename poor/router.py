@@ -137,7 +137,7 @@ class Router:
         except Exception:
             print("Routing failed:", file=sys.stderr)
             traceback.print_exc()
-            return {}
+            return dict(error=True)
         if isinstance(route, dict):
             route["provider"] = self.id
             self._process_route(route)
