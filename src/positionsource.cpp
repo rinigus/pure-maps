@@ -13,6 +13,10 @@
 
 #include "dbustracker.h"
 
+#ifdef USE_BUNDLED_GEOCLUE2
+#include "geoclue2/qgeopositioninfosource_geoclue2.h"
+#endif
+
 // use var without m_ prefix
 #define SET(var, value) { auto t=(value); if (m_##var != t) { m_##var=t; /*qDebug() << "Emit " #var;*/ emit var##Changed(); } }
 
@@ -30,6 +34,7 @@
 PositionSource::PositionSource(QObject *parent) : QObject(parent)
 {
   m_source = QGeoPositionInfoSource::createDefaultSource(this);
+
   if (!m_source)
     {
       qWarning() << "Failed to acquire QGeoPositionInfoSource";
@@ -41,6 +46,13 @@ PositionSource::PositionSource(QObject *parent) : QObject(parent)
     {
       m_directionCalculate = true;
       qInfo() << "Calculate direction using a sequence of coordinates";
+
+#ifdef USE_BUNDLED_GEOCLUE2
+      // replace system-provided geoclue2 with the bundled one
+      m_source->deleteLater();
+      m_source = new PM::QGeoPositionInfoSourceGeoclue2(this);
+      qInfo() << "Replacing system-provided Geoclue2 with the bundled plugin";
+#endif
     }
 
   m_source->setPreferredPositioningMethods(QGeoPositionInfoSource::SatellitePositioningMethods);

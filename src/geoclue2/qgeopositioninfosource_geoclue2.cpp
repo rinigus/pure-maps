@@ -37,6 +37,9 @@
 **
 ****************************************************************************/
 
+// This version has changes to separate it from Qt provided version and
+// fixes by @tpikonen (Teemu Ikonen) for speed and direction reporting
+
 #include "qgeopositioninfosource_geoclue2.h"
 
 #include <QtCore/QLoggingCategory>
@@ -49,7 +52,7 @@
 #include "clientinterface.h"
 #include "locationinterface.h"
 
-Q_LOGGING_CATEGORY(lcPositioningGeoclue2, "qt.positioning.geoclue2")
+Q_LOGGING_CATEGORY(lcPositioningGeoclue2, "qt.positioning.geoclue2patched")
 
 QT_BEGIN_NAMESPACE
 
@@ -77,7 +80,7 @@ static QString lastPositionFilePath()
 
 } // namespace
 
-QGeoPositionInfoSourceGeoclue2::QGeoPositionInfoSourceGeoclue2(QObject *parent)
+PM::QGeoPositionInfoSourceGeoclue2::QGeoPositionInfoSourceGeoclue2(QObject *parent)
     : QGeoPositionInfoSource(parent)
     , m_requestTimer(new QTimer(this))
     , m_manager(QLatin1String(GEOCLUE2_SERVICE_NAME),
@@ -94,25 +97,25 @@ QGeoPositionInfoSourceGeoclue2::QGeoPositionInfoSourceGeoclue2(QObject *parent)
             this, &QGeoPositionInfoSourceGeoclue2::requestUpdateTimeout);
 }
 
-QGeoPositionInfoSourceGeoclue2::~QGeoPositionInfoSourceGeoclue2()
+PM::QGeoPositionInfoSourceGeoclue2::~QGeoPositionInfoSourceGeoclue2()
 {
     saveLastPosition();
 }
 
-void QGeoPositionInfoSourceGeoclue2::setUpdateInterval(int msec)
+void PM::QGeoPositionInfoSourceGeoclue2::setUpdateInterval(int msec)
 {
     QGeoPositionInfoSource::setUpdateInterval(msec);
     configureClient();
 }
 
-QGeoPositionInfo QGeoPositionInfoSourceGeoclue2::lastKnownPosition(bool fromSatellitePositioningMethodsOnly) const
+QGeoPositionInfo PM::QGeoPositionInfoSourceGeoclue2::lastKnownPosition(bool fromSatellitePositioningMethodsOnly) const
 {
     if (fromSatellitePositioningMethodsOnly && !m_lastPositionFromSatellite)
         return QGeoPositionInfo();
     return m_lastPosition;
 }
 
-QGeoPositionInfoSourceGeoclue2::PositioningMethods QGeoPositionInfoSourceGeoclue2::supportedPositioningMethods() const
+PM::QGeoPositionInfoSourceGeoclue2::PositioningMethods PM::QGeoPositionInfoSourceGeoclue2::supportedPositioningMethods() const
 {
     bool ok;
     const auto accuracy = m_manager.property("AvailableAccuracyLevel").toUInt(&ok);
@@ -135,23 +138,23 @@ QGeoPositionInfoSourceGeoclue2::PositioningMethods QGeoPositionInfoSourceGeoclue
     }
 }
 
-void QGeoPositionInfoSourceGeoclue2::setPreferredPositioningMethods(PositioningMethods methods)
+void PM::QGeoPositionInfoSourceGeoclue2::setPreferredPositioningMethods(PositioningMethods methods)
 {
     QGeoPositionInfoSource::setPreferredPositioningMethods(methods);
     configureClient();
 }
 
-int QGeoPositionInfoSourceGeoclue2::minimumUpdateInterval() const
+int PM::QGeoPositionInfoSourceGeoclue2::minimumUpdateInterval() const
 {
     return MINIMUM_UPDATE_INTERVAL;
 }
 
-QGeoPositionInfoSource::Error QGeoPositionInfoSourceGeoclue2::error() const
+QGeoPositionInfoSource::Error PM::QGeoPositionInfoSourceGeoclue2::error() const
 {
     return m_error;
 }
 
-void QGeoPositionInfoSourceGeoclue2::startUpdates()
+void PM::QGeoPositionInfoSourceGeoclue2::startUpdates()
 {
     if (m_running) {
         qCWarning(lcPositioningGeoclue2) << "Already running";
@@ -169,7 +172,7 @@ void QGeoPositionInfoSourceGeoclue2::startUpdates()
     }
 }
 
-void QGeoPositionInfoSourceGeoclue2::stopUpdates()
+void PM::QGeoPositionInfoSourceGeoclue2::stopUpdates()
 {
     if (!m_running) {
         qCWarning(lcPositioningGeoclue2) << "Already stopped";
@@ -182,7 +185,7 @@ void QGeoPositionInfoSourceGeoclue2::stopUpdates()
     stopClient();
 }
 
-void QGeoPositionInfoSourceGeoclue2::requestUpdate(int timeout)
+void PM::QGeoPositionInfoSourceGeoclue2::requestUpdate(int timeout)
 {
     if (timeout < minimumUpdateInterval() && timeout != 0) {
         emit updateTimeout();
@@ -198,13 +201,13 @@ void QGeoPositionInfoSourceGeoclue2::requestUpdate(int timeout)
     startClient();
 }
 
-void QGeoPositionInfoSourceGeoclue2::setError(QGeoPositionInfoSource::Error error)
+void PM::QGeoPositionInfoSourceGeoclue2::setError(QGeoPositionInfoSource::Error error)
 {
     m_error = error;
     emit QGeoPositionInfoSource::error(m_error);
 }
 
-void QGeoPositionInfoSourceGeoclue2::restoreLastPosition()
+void PM::QGeoPositionInfoSourceGeoclue2::restoreLastPosition()
 {
 #if !defined(QT_NO_DATASTREAM)
     const auto filePath = lastPositionFilePath();
@@ -216,7 +219,7 @@ void QGeoPositionInfoSourceGeoclue2::restoreLastPosition()
 #endif
 }
 
-void QGeoPositionInfoSourceGeoclue2::saveLastPosition()
+void PM::QGeoPositionInfoSourceGeoclue2::saveLastPosition()
 {
 #if !defined(QT_NO_DATASTREAM) && QT_CONFIG(temporaryfile)
     if (!m_lastPosition.isValid())
@@ -233,7 +236,7 @@ void QGeoPositionInfoSourceGeoclue2::saveLastPosition()
 #endif
 }
 
-void QGeoPositionInfoSourceGeoclue2::createClient()
+void PM::QGeoPositionInfoSourceGeoclue2::createClient()
 {
     const QDBusPendingReply<QDBusObjectPath> reply = m_manager.GetClient();
     const auto watcher = new QDBusPendingCallWatcher(reply, this);
@@ -274,7 +277,7 @@ void QGeoPositionInfoSourceGeoclue2::createClient()
     });
 }
 
-void QGeoPositionInfoSourceGeoclue2::startClient()
+void PM::QGeoPositionInfoSourceGeoclue2::startClient()
 {
     // only start the client if someone asked for it already
     if (!m_running && !m_requestTimer->isActive())
@@ -311,7 +314,7 @@ void QGeoPositionInfoSourceGeoclue2::startClient()
     });
 }
 
-void QGeoPositionInfoSourceGeoclue2::stopClient()
+void PM::QGeoPositionInfoSourceGeoclue2::stopClient()
 {
     // Only stop client if updates are no longer wanted.
     if (m_requestTimer->isActive() || m_running || !m_client)
@@ -336,7 +339,7 @@ void QGeoPositionInfoSourceGeoclue2::stopClient()
     });
 }
 
-bool QGeoPositionInfoSourceGeoclue2::configureClient()
+bool PM::QGeoPositionInfoSourceGeoclue2::configureClient()
 {
     if (!m_client)
         return false;
@@ -378,7 +381,7 @@ bool QGeoPositionInfoSourceGeoclue2::configureClient()
     return true;
 }
 
-void QGeoPositionInfoSourceGeoclue2::requestUpdateTimeout()
+void PM::QGeoPositionInfoSourceGeoclue2::requestUpdateTimeout()
 {
     qCDebug(lcPositioningGeoclue2) << "Request update timeout occurred";
 
@@ -387,7 +390,7 @@ void QGeoPositionInfoSourceGeoclue2::requestUpdateTimeout()
     stopClient();
 }
 
-void QGeoPositionInfoSourceGeoclue2::handleNewLocation(const QDBusObjectPath &oldLocation,
+void PM::QGeoPositionInfoSourceGeoclue2::handleNewLocation(const QDBusObjectPath &oldLocation,
                                                        const QDBusObjectPath &newLocation)
 {
     if (m_requestTimer->isActive())

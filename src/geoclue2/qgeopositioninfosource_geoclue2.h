@@ -37,6 +37,9 @@
 **
 ****************************************************************************/
 
+// This version has changes to separate it from Qt provided version and
+// fixes by @tpikonen (Teemu Ikonen) for speed and direction reporting
+
 #ifndef QGEOPOSITIONINFOSOURCE_GEOCLUE2_P_H
 #define QGEOPOSITIONINFOSOURCE_GEOCLUE2_P_H
 
@@ -50,11 +53,12 @@ QT_BEGIN_NAMESPACE
 class QDBusObjectPath;
 class QTimer;
 
-class QGeoPositionInfoSourceGeoclue2 : public QGeoPositionInfoSource
-{
+namespace PM {
+  class QGeoPositionInfoSourceGeoclue2 : public QGeoPositionInfoSource
+  {
     Q_OBJECT
 
-public:
+  public:
     explicit QGeoPositionInfoSourceGeoclue2(QObject *parent = nullptr);
     ~QGeoPositionInfoSourceGeoclue2();
 
@@ -71,7 +75,7 @@ public:
     void stopUpdates() override;
     void requestUpdate(int timeout = 5000) override;
 
-private:
+  private:
     void setError(QGeoPositionInfoSource::Error error);
     void restoreLastPosition();
     void saveLastPosition();
@@ -90,7 +94,8 @@ private:
     bool m_lastPositionFromSatellite = false;
     QGeoPositionInfoSource::Error m_error = NoError;
     QGeoPositionInfo m_lastPosition;
-};
+  };
+}
 
 QT_END_NAMESPACE
 
