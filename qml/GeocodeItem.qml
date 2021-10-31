@@ -326,8 +326,9 @@ Item {
         geo._autocompletePending = true;
         geo._prevAutocompleteQuery = query;
         py.call("poor.app.geocoder.autocomplete",
-                gps.coordinateValid ? [query, gps.coordinate.longitude, gps.coordinate.latitude] :
-                                      [query],
+                gps.coordinateValid ? [query, gps.coordinate.longitude, gps.coordinate.latitude,
+                                       map.center.longitude, map.center.latitude] :
+                                      [query, 0, 0, map.center.longitude, map.center.latitude],
                 function(results) {
             if (!geo._autocompletePending) return;
 
@@ -355,8 +356,9 @@ Item {
         py.call_sync("poor.app.history.add_place", [query]);
         geo.update();
         py.call("poor.app.geocoder.geocode",
-                gps.coordinateValid ? [query, gps.coordinate.longitude, gps.coordinate.latitude] :
-                                      [query],
+                gps.coordinateValid ? [query, gps.coordinate.longitude, gps.coordinate.latitude,
+                                       map.center.longitude, map.center.latitude] :
+                                      [query, 0, 0, map.center.longitude, map.center.latitude],
                 function(results) {
             // skip, new search or autocomplete was started
             if (_searchIndex !== mySearchIndex || !_searchPending) return;
