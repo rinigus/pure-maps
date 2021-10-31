@@ -116,6 +116,7 @@ Column {
         }
 
         ListItemLabel {
+            id: textItem
             color: styler.themeHighlightColor
             font.pixelSize: styler.themeFontSizeSmall
             height: text ? implicitHeight + styler.themePaddingSmall: 0
