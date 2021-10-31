@@ -66,6 +66,7 @@ QtObject {
     property string iconDown: "image://theme/down" //Qt.resolvedUrl("../../icons/go-down-symbolic.svg")
     property string iconEdit: "image://theme/edit" //Qt.resolvedUrl("../../icons/document-edit-symbolic.svg")
     property string iconEditClear: "image://theme/edit-clear" //Qt.resolvedUrl("../../icons/edit-clear-symbolic.svg")
+    property string iconEmail: "image://theme/mail"
     property string iconFavorite: Qt.resolvedUrl("../icons/uuitk/bookmark-new-symbolic.svg")
     property string iconFavoriteSelected: Qt.resolvedUrl("../icons/uuitk/user-bookmarks-symbolic.svg")
     property string iconForward: "image://theme/next" //Qt.resolvedUrl("../../icons/go-next-symbolic.svg")

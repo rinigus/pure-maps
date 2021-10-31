@@ -240,10 +240,10 @@ PagePL {
 
         IconListItem {
             height: styler.themeItemSizeSmall
-            icon: poi.email ? styler.iconWebLink : ""
+            icon: poi.email ? styler.iconEmail : ""
             label: poi.email
             visible: poi.email
-            onClicked: Qt.openUrlExternally(poi.email)
+            onClicked: Qt.openUrlExternally("mailto:" + poi.email)
         }
 
         Spacer {
