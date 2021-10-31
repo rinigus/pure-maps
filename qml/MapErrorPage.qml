@@ -115,8 +115,8 @@ PagePL {
                 anchors.right: parent.right
                 anchors.topMargin: styler.isSilica ? parent.top : undefined
                 anchors.verticalCenter: styler.isSilica ? undefined : label.verticalCenter
-                model: [ app.tr("Online"), app.tr("Offline"), app.tr("Mixed") ]
-                property var values: ["online", "offline", "mixed"]
+                model: [ app.tr("Online"), app.tr("Offline"), app.tr("HERE"), app.tr("Mixed") ]
+                property var values: ["online", "offline", "HERE", "mixed"]
                 Component.onCompleted: {
                     var value = app.conf.profile;
                     profileComboBox.currentIndex = profileComboBox.values.indexOf(value);
