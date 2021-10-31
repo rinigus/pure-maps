@@ -4,15 +4,15 @@
         "© HERE. All rights reserved.": "https://legal.here.com/en-gb/terms/general-content-supplier-terms-and-notices"
     },
     "format": "raster",
-    "keys": ["HERE_APP_ID", "HERE_APP_CODE"],
+    "keys": ["HERE_APIKEY"],
     "lang": {"local": "mul", "ar": "ara", "eu": "baq", "ca": "cat", "zh-simpl": "chi", "zh": "cht", "cs": "cze", "da": "dan", "nl": "dut", "en": "eng", "fi": "fin", "fr": "fre", "de": "ger", "ga": "gle", "el": "gre", "he": "heb", "hi": "hin", "id": "ind", "it": "ita", "no": "nor", "fa": "per", "pl": "pol", "pt": "por", "ru": "rus", "si": "sin", "es": "spa", "sv": "swe", "th": "tha", "tr": "tur", "uk": "ukr", "ur": "urd", "vi": "vie", "cy": "wel"},
     "lang_key": "#LANG#",
     "light": "night",
     "name": "HERE Normal Night Pedestrian",
-    "profiles": ["mixed", "online"],
+    "profiles": ["mixed", "online", "HERE"],
     "provider": "HERE",
     "tile_size": 512,
-    "tile_url": "https://3.base.maps.api.here.com/maptile/2.1/maptile/newest/pedestrian.night/{z}/{x}/{y}/512/png8?app_id=#HERE_APP_ID#&app_code=#HERE_APP_CODE#&ppi=250&lg=#LANG#",
+    "tile_url": "https://3.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/pedestrian.night/{z}/{x}/{y}/512/png8?apiKey=#HERE_APIKEY#&ppi=250&lg=#LANG#",
     "style_gui": {
         "fg": "white",
         "iconVariant": "white",

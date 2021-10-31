@@ -96,6 +96,12 @@ DEFAULTS = {
             "geocoder": "osmscout",
             "guide": "osmscout",
             "router": "osmscout"
+        },
+        "HERE": {
+            "basemap": "HERE",
+            "geocoder": "here",
+            "guide": "here",
+            "router": "here"
         }
      },
     "reroute": True,

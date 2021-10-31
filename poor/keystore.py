@@ -40,8 +40,7 @@ DEFAULTS = {
     "STADIAMAPS_KEY": "<STADIAMAPS_KEY>",
 
     # here.com
-    "HERE_APP_ID": "<HERE_APP_ID>",
-    "HERE_APP_CODE": "<HERE_APP_CODE>",
+    "HERE_APIKEY": "<HERE_APIKEY>",
 }
 
 ApiKeyDesc = namedtuple('ApiKeyDesc', ['description', 'label'])
@@ -68,10 +67,8 @@ KEYDESC = {
                                  _("Stadia Maps API key")),
 
     # here.com
-    "HERE_APP_ID": ApiKeyDesc(_("HERE App ID. Register at https://developer.here.com and create your own App ID and Code"),
-                              _("HERE App ID")),
-    "HERE_APP_CODE": ApiKeyDesc(_("HERE App Code"),
-                                _("HERE App Code")),
+    "HERE_APIKEY": ApiKeyDesc(_("HERE API Key. Register at https://developer.here.com and create your own App API Key"),
+                              _("HERE API Key")),
 }
 
 class KeyStore:
