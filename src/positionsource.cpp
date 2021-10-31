@@ -31,6 +31,8 @@
 #define MAPMATCHING_SERVICE "io.github.rinigus.OSMScoutServer"
 #define MAPMATCHING_PATH    "/io/github/rinigus/OSMScoutServer/mapmatching"
 
+Q_LOGGING_CATEGORY(lcPositioning, "puremaps.positioning", QtCriticalMsg)
+
 PositionSource::PositionSource(QObject *parent) : QObject(parent)
 {
   m_source = QGeoPositionInfoSource::createDefaultSource(this);
@@ -101,6 +103,7 @@ void PositionSource::setActive(bool active)
 
 void PositionSource::setPosition(const QGeoPositionInfo &info)
 {
+  qCInfo(lcPositioning) << "setPosition:" << info;
   SETWITHVALID(coordinateDevice, info.coordinate(),
                info.isValid() &&
                !qIsNaN(info.coordinate().latitude()) &&
@@ -117,7 +120,7 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
         {
           float threshold = m_horizontalAccuracy;
           if (m_history.empty()) m_history.push_back(m_coordinateDevice);
-          QGeoCoordinate &last = m_history.back();
+          QGeoCoordinate last = m_history.back();
           if (last.distanceTo(m_coordinateDevice) > threshold)
             {
               m_history.push_back(m_coordinateDevice);
@@ -138,6 +141,8 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
               SET(directionDevice, dir);
               SET(directionDeviceValid, true);
               m_directionTimestamp = QTime::currentTime();
+              qCInfo(lcPositioning) << "Calculated direction:" << m_directionDevice << "history:" << m_history.size() << "distance to last:"
+                                    << last.distanceTo(m_coordinateDevice) << "threshold:" << threshold;
             }
         }
 
