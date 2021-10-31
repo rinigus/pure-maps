@@ -1,0 +1,9 @@
+{
+    "attribution": {
+        "© HERE": "https://legal.here.com",
+        "© HERE. All rights reserved.": "https://legal.here.com/en-gb/terms/general-content-supplier-terms-and-notices"
+    },
+    "_description": "Search based on HERE data. Supports autocomplete",
+    "name": "HERE",
+    "profiles": ["HERE"]
+}
