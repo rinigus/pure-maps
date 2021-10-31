@@ -37,6 +37,7 @@ Column {
     property string address
     property bool   bookmarked: false
     property var    coordinate
+    property string email
     property string link
     property string phone
     property string poiId
@@ -135,6 +136,7 @@ Column {
                 if (item.postcode) info += app.tr("Postal code") + "  ";
                 if (item.link) info += app.tr("Web") + "  ";
                 if (item.phone) info += app.tr("Phone") + "  ";
+                if (item.email) info += app.tr("Email") + "  ";
                 if (item.shortlisted) info += app.tr("Shortlisted") + "  ";
                 if (item.text && textItem.truncated) info += app.tr("Text") + "  ";
                 if (info)
@@ -393,6 +395,7 @@ Column {
         item.address = poi.address || "";
         item.bookmarked = poi.bookmarked || false;
         item.coordinate = poi.coordinate || QtPositioning.coordinate(poi.y, poi.x);
+        item.email = poi.email || "";
         item.link = poi.link || "";
         item.phone = poi.phone || "";
         item.poiId = poi.poiId || "";

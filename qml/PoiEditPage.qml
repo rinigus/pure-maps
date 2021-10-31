@@ -106,6 +106,14 @@ DialogPL {
                 label: app.tr("URL")
                 placeholderText: app.tr("Enter URL")
                 text: poi.link ? poi.link : ""
+                onEnter: emailField.focus = true
+            }
+
+            TextFieldPL {
+                id: emailField
+                label: app.tr("Email")
+                placeholderText: app.tr("Enter Email")
+                text: poi.email ? poi.email : ""
                 onEnter: textArea.focus = true
             }
 
@@ -126,6 +134,7 @@ DialogPL {
 
         function accepted() {
             poi.address = addressField.text;
+            poi.email = emailField.text;
             poi.link = linkField.text;
             poi.phone = phoneField.text;
             poi.poiType = typeField.text;

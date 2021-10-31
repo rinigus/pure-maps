@@ -58,6 +58,7 @@ Item {
             "address": poi.address || "",
             "bookmarked": poi.bookmarked || false,
             "coordinate": poi.coordinate || QtPositioning.coordinate(poi.y, poi.x),
+            "email": poi.email || "",
             "link": poi.link || "",
             "phone": poi.phone || "",
             "poiId": poi.poiId || Util.uuidv4(),
@@ -135,6 +136,7 @@ Item {
         // methods into JS representation
         return {
             "address": pyPoi.address || "",
+            "email": pyPoi.email || "",
             "link": pyPoi.link || "",
             "phone": pyPoi.phone || "",
             "poiType": pyPoi.poi_type || "",
