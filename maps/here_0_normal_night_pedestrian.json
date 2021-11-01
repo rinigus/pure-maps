@@ -12,7 +12,7 @@
     "profiles": ["mixed", "online", "HERE"],
     "provider": "HERE",
     "tile_size": 512,
-    "tile_url": "https://3.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/pedestrian.night/{z}/{x}/{y}/512/png8?apiKey=#HERE_APIKEY#&ppi=250&lg=#LANG#",
+    "tile_url": "https://3.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/pedestrian.night/{z}/{x}/{y}/512/png8?apiKey=#HERE_APIKEY#&ppi=250&pois&lg=#LANG#",
     "style_gui": {
         "fg": "white",
         "iconVariant": "white",
