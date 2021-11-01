@@ -32,7 +32,10 @@ URL = ("https://discover.search.hereapi.com/v1/discover?"
        "&limit={limit}"
        "&language={lang}")
        
-URL_REVERSE = "https://photon.komoot.io/reverse?lon={lon}&lat={lat}&limit={limit}&lang={lang}&distance_sort=true"
+URL_REVERSE = ("https://revgeocode.search.hereapi.com/v1/revgeocode?"
+               "apiKey=" + poor.key.get("HERE_APIKEY") +
+               "&at={lat},{lon}"
+               "&language={lang}")
 cache = {}
 
 def autocomplete(query, x=0, y=0, params={}):
@@ -63,7 +66,20 @@ def geocode(query, x=0, y=0, params={}):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)["items"]
     results = list(map(poor.AttrDict, results))
-    results = [dict(
+    results = parse_results(results)
+    if results and results[0]:
+        cache[url] = copy.deepcopy(results)
+    return results
+
+def merge(d, t, delim="\n", categ=""):
+    if t:
+        if categ: t = categ.format(t)
+        if d: return d + delim + t
+        return t
+    return d
+
+def parse_results(results):
+    return [dict(
         address=result.address.label,
         label=result.address.label,
         poi_type=parse_type(result),
@@ -77,16 +93,7 @@ def geocode(query, x=0, y=0, params={}):
         x=float(result.position.lng),
         y=float(result.position.lat),
     ) for result in results]
-    if results and results[0]:
-        cache[url] = copy.deepcopy(results)
-    return results
-
-def merge(d, t, delim="\n", categ=""):
-    if t:
-        if categ: t = categ.format(t)
-        if d: return d + delim + t
-        return t
-    return d
+    
 
 def parse_type(result):
     with poor.util.silent(Exception):
@@ -129,22 +136,12 @@ def reverse(x, y, radius, limit=1, params={}):
     lon = x
     lat = y
     lang = poor.util.get_default_language("en")
-    lang = (lang if lang in ("de", "en", "it", "fr") else "en")
     url = URL_REVERSE.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    results = poor.http.get_json(url)["features"]
+    results = poor.http.get_json(url)["items"]
     results = list(map(poor.AttrDict, results))
-    results = [dict(
-        address=parse_address_full(result),
-        label=parse_address_full(result),
-        poi_type=parse_type(result),
-        postcode=parse_postcode(result),
-        title=parse_title(result),
-        description=parse_description(result),
-        x=float(result.geometry.coordinates[0]),
-        y=float(result.geometry.coordinates[1]),
-    ) for result in results]
+    results = parse_results(results)
     if results and results[0]:
         cache[url] = copy.deepcopy(results)
     return results
