@@ -102,40 +102,42 @@ class Geocoder:
         the results will include correct distance and bearing.
         """
         params = params or {}
-        # Parse coordinates if query is a geo URI.
-        match = RE_GEO_URI.search(query)
-        if match is not None:
-            qy = float(match.group(1))
-            qx = float(match.group(2))
-            return [dict(title=_("Point from geo link"),
-                         description=match.group(0),
-                         x=qx,
-                         y=qy,
-                         distance=self._format_distance(x, y, qx, qy),
-                         provider=self.id)]
+        # check special string queries
+        if isinstance(query, str):
+            # Parse coordinates if query is a geo URI.
+            match = RE_GEO_URI.search(query)
+            if match is not None:
+                qy = float(match.group(1))
+                qx = float(match.group(2))
+                return [dict(title=_("Point from geo link"),
+                             description=match.group(0),
+                             x=qx,
+                             y=qy,
+                             distance=self._format_distance(x, y, qx, qy),
+                             provider=self.id)]
 
-        # Parse coordinates if query is "LAT,LON".
-        match = RE_LAT_LON.search(query)
-        if match is not None:
-            qy = float(match.group(1))
-            qx = float(match.group(3))
-            return [dict(title=_("Point from coordinates"),
-                         description=match.group(0),
-                         x=qx,
-                         y=qy,
-                         distance=self._format_distance(x, y, qx, qy),
-                         provider=self.id)]
+            # Parse coordinates if query is "LAT,LON".
+            match = RE_LAT_LON.search(query)
+            if match is not None:
+                qy = float(match.group(1))
+                qx = float(match.group(3))
+                return [dict(title=_("Point from coordinates"),
+                             description=match.group(0),
+                             x=qx,
+                             y=qy,
+                             distance=self._format_distance(x, y, qx, qy),
+                             provider=self.id)]
 
-        # Parse if query is a Plus code
-        qtrimmed = query.strip()
-        if olc_isFull(qtrimmed):
-            latlng = olc_decode(qtrimmed).latlng()
-            return [dict(title=qtrimmed.upper(),
-                         description=_("Point from Plus code"),
-                         x=latlng[1],
-                         y=latlng[0],
-                         distance=self._format_distance(x, y, latlng[1], latlng[0]),
-                         provider=self.id)]
+            # Parse if query is a Plus code
+            qtrimmed = query.strip()
+            if olc_isFull(qtrimmed):
+                latlng = olc_decode(qtrimmed).latlng()
+                return [dict(title=qtrimmed.upper(),
+                             description=_("Point from Plus code"),
+                             x=latlng[1],
+                             y=latlng[0],
+                             distance=self._format_distance(x, y, latlng[1], latlng[0]),
+                             provider=self.id)]
 
         try:
             results = self._provider.geocode(query=query, x=center_x, y=center_y, params=params)

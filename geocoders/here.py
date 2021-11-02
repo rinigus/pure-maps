@@ -31,7 +31,12 @@ URL = ("https://discover.search.hereapi.com/v1/discover?"
        "&q={query}"
        "&limit={limit}"
        "&language={lang}")
-       
+
+URL_AUTOSUGGEST = ("https://autosuggest.search.hereapi.com/v1/autosuggest?"
+                   "apiKey=" + poor.key.get("HERE_APIKEY") +
+                   "&q={query}"
+                   "&language={lang}")
+
 URL_REVERSE = ("https://revgeocode.search.hereapi.com/v1/revgeocode?"
                "apiKey=" + poor.key.get("HERE_APIKEY") +
                "&at={lat},{lon}"
@@ -40,28 +45,40 @@ cache = {}
 
 def autocomplete(query, x=0, y=0, params={}):
     """Return a list of autocomplete dictionaries matching `query`."""
-    print("HERE autocomplete")
-    return []
-    # if len(query) < 3: return []
-    # key = "autocomplete:{}".format(query)
-    # with poor.util.silent(KeyError):
-    #     return copy.deepcopy(cache[key])
-    # results = geocode(query=query, x=x, y=y, params=params)
-    # cache[key] = copy.deepcopy(results)
-    # return results
-
-def geocode(query, x=0, y=0, params={}):
-    """Return a list of dictionaries of places matching `query`."""
+    query = query.strip()
+    if len(query) < 3: return []
     query = urllib.parse.quote_plus(query)
-    limit = params.get("limit", 20)
     lang = poor.util.get_default_language("en")
-    #lang = (lang if lang in ("de", "en", "it", "fr") else "en")
-    url = URL.format(**locals())
+    url = URL_AUTOSUGGEST.format(**locals())
     if x and y:
         url += "&at={:.3f},{:.3f}".format(y,x)
     else:
         # HERE requires reference point
         url += "&at={:.3f},{:.3f}".format(59,24)
+    with poor.util.silent(KeyError):
+        return copy.deepcopy(cache[url])
+    results = poor.http.get_json(url)["items"]
+    results = list(map(poor.AttrDict, results))
+    results = parse_results(results)
+    if results and results[0]:
+        cache[url] = copy.deepcopy(results)
+    return results
+
+def geocode(query, x=0, y=0, params={}):
+    """Return a list of dictionaries of places matching `query`."""
+    if isinstance(query, str):
+        query = urllib.parse.quote_plus(query)
+        limit = params.get("limit", 20)
+        lang = poor.util.get_default_language("en")
+        #lang = (lang if lang in ("de", "en", "it", "fr") else "en")
+        url = URL.format(**locals())
+        if x and y:
+            url += "&at={:.3f},{:.3f}".format(y,x)
+        else:
+            # HERE requires reference point
+            url += "&at={:.3f},{:.3f}".format(59,24)
+    else: # should be query type with reference
+        url = query['href'] + "&apiKey=" + poor.key.get("HERE_APIKEY")
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)["items"]
@@ -80,25 +97,43 @@ def merge(d, t, delim="\n", categ=""):
 
 def parse_results(results):
     return [dict(
-        address=result.address.label,
-        label=result.address.label,
+        address=parse_address(result),
+        label=parse_label(result),
         poi_type=parse_type(result),
         postcode=parse_postcode(result),
         title=result.title,
-        description=parse_type(result),
+        description=parse_description(result),
         phone=parse_contact(result, "phone"),
         link=parse_contact(result, "www"),
         email=parse_contact(result, "email"),
         text=parse_extras(result),
-        x=float(result.position.lng),
-        y=float(result.position.lat),
+        x=parse_position(result, "lng"),
+        y=parse_position(result, "lat"),
+        query=result,
     ) for result in results]
-    
 
-def parse_type(result):
+
+def parse_address(result):
     with poor.util.silent(Exception):
-        return ", ".join([c.name.capitalize() for c in result.categories])
+        return result.address.label
     return ""
+
+def parse_contact(result, key):
+    with poor.util.silent(Exception):
+        t = []
+        for c in result.contacts:
+            if key in c:
+                t.extend([v.value for v in c[key]])
+        if len(t) == 1:
+            return t[0]
+        return ", ".join(t)
+    return ""
+
+def parse_description(result):
+    r = parse_type(result)
+    if r == "PM:Query":
+        return _("Search suggestion")
+    return r
 
 def parse_extras(result):
     """Parse description from geocoding result."""
@@ -115,22 +150,29 @@ def parse_extras(result):
         description = merge(description, t, categ=_("Opening hours: {}"))
     return description
 
+def parse_label(result):
+    a = parse_address(result)
+    t = result.title
+    if a:
+        return "{}: {}".format(t,a)
+    return t
+
+def parse_position(result, key):
+    with poor.util.silent(Exception):
+        return float(result.position[key])
+    return 0
+
 def parse_postcode(result):
     with poor.util.silent(Exception):
         return result.address.postalCode
     return ""
 
-def parse_contact(result, key):
+def parse_type(result):
     with poor.util.silent(Exception):
-        t = []
-        for c in result.contacts:
-            if key in c:
-                t.extend([v.value for v in c[key]])
-        if len(t) == 1:
-            return t[0]
-        return ", ".join(t)
+        if "href" in result: return "PM:Query"
+        return ", ".join([c.name.capitalize() for c in result.categories])
     return ""
-    
+
 def reverse(x, y, radius, limit=1, params={}):
     """Return a list of dictionaries of places nearby given coordinates."""
     lon = x
@@ -145,4 +187,3 @@ def reverse(x, y, radius, limit=1, params={}):
     if results and results[0]:
         cache[url] = copy.deepcopy(results)
     return results
-

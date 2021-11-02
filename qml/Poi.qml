@@ -143,10 +143,11 @@ Item {
             "postcode": pyPoi.postcode || "",
             "provider": pyPoi.provider || "",
             "text": pyPoi.text || "",
-            "title": pyPoi.title || model.place,
-            "type": "geocode",
+            "title": pyPoi.title || "",
+            "type": pyPoi.type !== "PM:Query" ? "geocode" : pyPoi.type,
             "x": pyPoi.x,
             "y": pyPoi.y,
+            "query": pyPoi.query,
         };
     }
 
