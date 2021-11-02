@@ -18,7 +18,10 @@
 """Calculates magnetic declination."""
 
 from datetime import datetime, timedelta
-from poor.geomag import WorldMagneticModel
+try:
+    from poor.geomag import WorldMagneticModel
+except ImportError:
+    from geomag import WorldMagneticModel
 
 __all__ = ("MagField")
 
