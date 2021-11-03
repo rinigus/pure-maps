@@ -23,6 +23,7 @@ https://developer.here.com/
 
 import copy
 import poor
+import random
 import urllib.parse
 from poor.i18n import _
 
@@ -96,22 +97,27 @@ def merge(d, t, delim="\n", categ=""):
     return d
 
 def parse_results(results):
-    return [dict(
-        address=parse_address(result),
-        label=parse_label(result),
-        poi_type=parse_type(result),
-        postcode=parse_postcode(result),
-        title=result.title,
-        description=parse_description(result),
-        phone=parse_contact(result, "phone"),
-        link=parse_contact(result, "www"),
-        email=parse_contact(result, "email"),
-        text=parse_extras(result),
-        x=parse_position(result, "lng"),
-        y=parse_position(result, "lat"),
-        query=result,
-    ) for result in results]
-
+    res = []
+    for result in results:
+        # x=lng, y=lat
+        x, y = parse_position(result)
+        res.append(
+            dict(
+                address=parse_address(result),
+                label=parse_label(result),
+                poi_type=parse_type(result),
+                postcode=parse_postcode(result),
+                title=result.title,
+                description=parse_description(result),
+                phone=parse_contact(result, "phone"),
+                link=parse_contact(result, "www"),
+                email=parse_contact(result, "email"),
+                text=parse_extras(result),
+                x=x,
+                y=y,
+                query=result)
+        )
+    return res
 
 def parse_address(result):
     with poor.util.silent(Exception):
@@ -157,10 +163,18 @@ def parse_label(result):
         return "{}: {}".format(t,a)
     return t
 
-def parse_position(result, key):
+def parse_position(result):
+    # As many POIs share the same coordinates in HERE, add random
+    # jitter to spread the points on a map. Used spread corresponds to
+    # ~50 cm on equator
+    ja = 5e-6
+    jitter_x = random.uniform(-ja, ja)
+    jitter_y = random.uniform(-ja, ja)
     with poor.util.silent(Exception):
-        return float(result.position[key])
-    return 0
+        return float(result.access[0].lng)+jitter_x, float(result.access[0].lat)+jitter_y
+    with poor.util.silent(Exception):
+        return float(result.position.lng)+jitter_x, float(result.position.lat)+jitter_y
+    return 0, 0
 
 def parse_postcode(result):
     with poor.util.silent(Exception):

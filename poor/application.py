@@ -18,6 +18,7 @@
 """An application to display maps and stuff."""
 
 import poor
+import random
 import sys
 
 __all__ = ("Application",)
@@ -29,6 +30,7 @@ class Application:
 
     def __init__(self):
         """Initialize an :class:`Application` instance."""
+        random.seed()
         self.basemap = poor.MapManager()
         self.geocoder = None
         self.guide = None
