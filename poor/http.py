@@ -270,7 +270,7 @@ def _request_real(method, url, body, encoding, retry, headers):
     that imply a connection error. `headers` should be a dictionary of custom
     headers to add to the defaults :attr:`http.HEADERS`.
     """
-    print("{} {}".format(method, url))
+    #print("{} {}".format(method, url))
     try:
         connection = pool.get(url)
         # Do relative requests (without scheme and netloc)
