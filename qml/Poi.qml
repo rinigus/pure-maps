@@ -94,7 +94,8 @@ Item {
     function addList(pois, stateId) {
         // Add new POIs
         pois.forEach(function (p) {
-            _add(p, stateId);
+            if (p.poiType !== "PM:Query")
+                _add(p, stateId);
         });
         save();
         poiChanged("");
@@ -144,7 +145,7 @@ Item {
             "provider": pyPoi.provider || "",
             "text": pyPoi.text || "",
             "title": pyPoi.title || "",
-            "type": pyPoi.type !== "PM:Query" ? "geocode" : pyPoi.type,
+            "type": "geocode",
             "x": pyPoi.x,
             "y": pyPoi.y,
             "query": pyPoi.query,
