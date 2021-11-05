@@ -100,7 +100,7 @@ DEFAULTS = {
         "HERE": {
             "basemap": "HERE",
             "geocoder": "here",
-            "guide": "here",
+            "guide": _default_guide,
             "router": "here"
         }
      },
