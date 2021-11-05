@@ -233,9 +233,13 @@ Item {
                         searchField.text = model.text;
                         fetchResults();
                     } else if (model.type === "subquery"){
-                        // No autocompletion, no POI, open results geo.
+                        var q = geo._resultDetails[model.detailId];
+                        if (!q) {
+                            console.log("GeocoderItem Unexpected result: " + model.detailId);
+                            return;
+                        }
                         searchField.text = model.title;
-                        fetchResults(model.query);
+                        fetchResults(q.query);
                     } else {
                         console.log("Unknown type in Geocoder Item: " + model.type)
                     }
@@ -404,8 +408,7 @@ Item {
                                "detailId": k,
                                "markup": p.label,
                                "title": p.label,
-                               "type": p.poiType === "PM:Query" ? "subquery" : "autocomplete",
-                               "query": p.query
+                               "type": p.poiType === "PM:Query" ? "subquery" : "autocomplete"
                            });
                 _resultDetails[k] = p;
             });
@@ -449,8 +452,7 @@ Item {
                                "title": p.title,
                                "description": p.description,
                                "distance": p.distance,
-                               "type": p.poiType === "PM:Query" ? "subquery" : "result",
-                               "query": p.query
+                               "type": p.poiType === "PM:Query" ? "subquery" : "result"
                            });
                 _resultDetails[k] = p;
             });
