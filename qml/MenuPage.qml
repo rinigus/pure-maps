@@ -125,7 +125,7 @@ MenuDrawerPL {
 
         MenuDrawerSubmenuItemPL {
             checked: app.conf.profile === "HERE"
-            text: app.tr("HERE")
+            text: app.tr("HERE - Online")
             onClicked: profiles.set("HERE")
         }
 
