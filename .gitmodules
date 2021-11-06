@@ -4,3 +4,6 @@
 [submodule "thirdparty/geomag"]
 	path = thirdparty/geomag
 	url = https://github.com/rinigus/geomag.git
+[submodule "thirdparty/flexible-polyline"]
+	path = thirdparty/flexible-polyline
+	url = https://github.com/heremaps/flexible-polyline.git
