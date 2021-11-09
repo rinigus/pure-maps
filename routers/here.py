@@ -212,8 +212,17 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
                 m.update(process_maneuver(maneuver,
                                           transport_mode=transport_mode,
                                           language=language,
-                                          lang_translation=lang_translation))
-        
+                                          lang_translation=lang_translation,
+                                          fill_narrative=True))
+                maneuvers.append(m)
+
+        # preprocess roundabouts
+        for i in range(len(legs.turnByTurnActions)-1):
+            m0 = legs.turnByTurnActions[i]
+            m1 = legs.turnByTurnActions[i+1]
+            if m0.action == 'roundaboutEnter' and m1.action == 'roundaboutExit':
+                m0["exit"] = m1.get("exit", None)
+
         for maneuver in legs.turnByTurnActions:
             m = dict(
                 x=float(x[maneuver.offset]),
@@ -223,7 +232,8 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
             m.update(process_maneuver(maneuver,
                                       transport_mode=transport_mode,
                                       language=language,
-                                      lang_translation=lang_translation))
+                                      lang_translation=lang_translation,
+                                      fill_narrative=(m["narrative"] is None)))
             maneuvers.append(m)
 
         if "postActions" in legs:
@@ -235,30 +245,10 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
                 m.update(process_maneuver(maneuver,
                                           transport_mode=transport_mode,
                                           language=language,
-                                          lang_translation=lang_translation))
-        
+                                          lang_translation=lang_translation,
+                                          fill_narrative = True))
+                maneuvers.append(m)
 
-        # dict(
-        #     x=float(x[maneuver.begin_shape_index]),
-        #     y=float(y[maneuver.begin_shape_index]),
-        #     icon="flag", #ICONS.get(maneuver.type, "flag"),
-        #     narrative=instructions.get(maneuver.offset, ""),
-        #     sign=dict(
-        #         exit_branch=parse_exit(maneuver, "exit_branch_elements"),
-        #         exit_name=parse_exit(maneuver, "exit_name_elements"),
-        #         exit_number=parse_exit(maneuver, "exit_number_elements"),
-        #         exit_toward=parse_exit(maneuver, "exit_toward_elements")
-        #     ),
-        #     street=maneuver.get("begin_street_names", maneuver.get("street_names", None)),
-        #     arrive_instruction=maneuver.get("arrive_instruction", None),
-        #     depart_instruction=maneuver.get("depart_instruction", None),
-        #     roundabout_exit_count=maneuver.get("roundabout_exit_count", None),
-        #     travel_type=maneuver.get("travel_type", None),
-        #     verbal_alert=maneuver.get("verbal_transition_alert_instruction", None),
-        #     verbal_pre=maneuver.get("verbal_pre_transition_instruction", None),
-        #     verbal_post=maneuver.get("verbal_post_transition_instruction", None),
-        #     duration=float(maneuver.time),
-        # ) for maneuver in legs.maneuvers]
         X.extend(x)
         Y.extend(y)
         Man.extend(maneuvers)
@@ -291,7 +281,7 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
         ic = ic + min(mins)
         LocPointInd.append(location_candidates[ic].index)
         ic += 1
-    
+
     # add last location
     LocPointInd.append(location_candidates[-1].index)
     if len(LocPointInd) != len(locations_processed):
@@ -331,7 +321,7 @@ def get_street(maneuver, language):
         return get_name(maneuver.nextRoad.name, language)
     return None
 
-def process_maneuver(maneuver, transport_mode, language, lang_translation):
+def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_narrative):
     result = {}
 
     action = maneuver.action
@@ -341,9 +331,18 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation):
     icon = "flag"
     length=float(maneuver.get("length", -1))
     roundabout_exit_count=get_roundabout_exit(maneuver)
+    severity=maneuver.get("severity", None)
     street = get_street(maneuver, language)
     verbal_pre=None
     verbal_post=__("Continue for {distance}", lang_translation).format(distance=length) if length>0 else None
+
+    def unknown():
+        print("\n******************************")
+        print("HERE Router: Unknown action, please notify the developers by filing an issue at Github with the details below")
+        print("For privacy, just blank out street names, coordinates and such")
+        print(maneuver)
+        print("******************************\n")
+
 
     if action == "arrive":
         verbal_pre=__("Arrive at your destination", lang_translation)
@@ -351,18 +350,61 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation):
     elif action == "continue":
         verbal_pre=__("Continue", lang_translation)
         icon="continue"
+    elif action == "board" and transport_mode == "ferry":
+        verbal_pre=__("Board the ferry", lang_translation)
+        icon="ferry"
+    elif action == "deboard" and transport_mode == "ferry":
+        verbal_pre=__("Disembark the ferry", lang_translation)
+        icon="ferry"
     elif action == "depart":
         verbal_pre=__("Start navigation", lang_translation)
         icon="depart"
+    elif action == "roundaboutEnter":
+        if exit_number==1:
+            verbal_pre=__("Enter the roundabout and take the 1st exit", lang_translation)
+        elif exit_number==2:
+            verbal_pre=__("Enter the roundabout and take the 2nd exit", lang_translation)
+        elif exit_number==3:
+            verbal_pre=__("Enter the roundabout and take the 3rd exit", lang_translation)
+        elif exit_number==4:
+            verbal_pre=__("Enter the roundabout and take the 4th exit", lang_translation)
+        elif exit_number==5:
+            verbal_pre=__("Enter the roundabout and take the 5th exit", lang_translation)
+        elif exit_number==2:
+            verbal_pre=__("Enter the roundabout and take the 6th exit", lang_translation)
+        else:
+            verbal_pre=__("Enter the roundabout", lang_translation)
+        icon="roundabout"
+    elif action == "roundaboutExit":
+        verbal_pre=__("Exit the roundabout", lang_translation)
+        icon="roundabout"
+
+
+    elif action == "turn":
+        if severity == "light":
+            strength = "slight-"
+            if direction == "right":
+                verbal_pre=__("Bear right", lang_translation)
+            elif direction == "left":
+                verbal_pre=__("Bear left", lang_translation)
+        elif severity == "heavy":
+            strength = "sharp-"
+            if direction == "right":
+                verbal_pre=__("Make a sharp right", lang_translation)
+            elif direction == "left":
+                verbal_pre=__("Make a sharp left", lang_translation)
+        else:
+            strength = ""
+            if direction == "right":
+                verbal_pre=__("Turn right", lang_translation)
+            elif direction == "left":
+                verbal_pre=__("Turn left", lang_translation)
+        icon="turn-{strength}{direction}".format(strength=strength, direction=direction)
     else:
         # catch all unknown actions
-        print("\n******************************")
-        print("HERE Router: Unknown action, please notify the developers by filing an issue at Github with the details below")
-        print("For privacy, just blank out street names, coordinates and such")
-        print(maneuver)
-        print("******************************\n")
+        unknown()
 
-    return dict(
+    r = dict(
         duration=duration,
         icon=icon,
         sign=dict(exit_number=exit_number),
@@ -372,3 +414,6 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation):
         verbal_pre=verbal_pre,
         verbal_post=verbal_post
         )
+    if fill_narrative:
+        r["narrative"] = verbal_pre
+    return r
