@@ -303,6 +303,17 @@ def get_exit_number(maneuver, language):
         return get_name(maneuver.exitSign.number, language)
     return None
 
+def get_exit_toward(maneuver, language):
+    toward = []
+    if maneuver.action in ["continueHighway", "keep"]:
+        if "currentRoad" in maneuver and "toward" in maneuver.currentRoad:
+            toward.extend([i.value for i in maneuver.currentRoad.toward])
+    if "nextRoad" in maneuver and "number" in maneuver.nextRoad:
+        toward.append(get_name(maneuver.nextRoad.number, language))
+    if len(toward) > 0:
+        return toward
+    return None
+
 def get_name(names, language):
     for i in names:
         if i.language == language or i.language.split('-')[0]==language.split('-')[0]:
@@ -328,6 +339,7 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
     direction = maneuver.get("direction", None)
     duration=float(maneuver.duration)
     exit_number=get_exit_number(maneuver, language)
+    exit_toward=get_exit_toward(maneuver, language)
     icon = "flag"
     length=float(maneuver.get("length", -1))
     roundabout_exit_count=get_roundabout_exit(maneuver)
@@ -347,18 +359,70 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
     if action == "arrive":
         verbal_pre=__("Arrive at your destination", lang_translation)
         icon="arrive"
-    elif action == "continue":
-        verbal_pre=__("Continue", lang_translation)
-        icon="continue"
+
     elif action == "board" and transport_mode == "ferry":
         verbal_pre=__("Board the ferry", lang_translation)
         icon="ferry"
+
+    elif action == "continue":
+        verbal_pre=__("Continue", lang_translation)
+        icon="continue"
+
+    elif action == "continueHighway":
+        if direction == "right":
+            verbal_pre=__("Merge right and continue on highway", lang_translation)
+        elif direction == "left":
+            verbal_pre=__("Merge left and continue on highway", lang_translation)
+        icon="merge-slight-{direction}".format(direction=direction)
+
     elif action == "deboard" and transport_mode == "ferry":
         verbal_pre=__("Disembark the ferry", lang_translation)
         icon="ferry"
+
     elif action == "depart":
         verbal_pre=__("Start navigation", lang_translation)
         icon="depart"
+
+    elif action == "enterHighway":
+        if direction == "right":
+            verbal_pre=__("Merge right and enter highway", lang_translation)
+        elif direction == "left":
+            verbal_pre=__("Merge left and enter highway", lang_translation)
+        else:
+            verbal_pre=__("Enter highway", lang_translation)
+        if direction in ["right", "left"]:
+            icon="merge-slight-{direction}".format(direction=direction)
+        else:
+            icon="continue"
+
+    elif action == "exit":
+        if severity == "light":
+            strength = "slight-"
+        else:
+            strength = ""
+        if exit_number is None:
+            if direction == "right":
+                verbal_pre=__("Take exit on the right", lang_translation)
+            elif direction == "left":
+                verbal_pre=__("Take exit on the left", lang_translation)
+        else:
+            if direction == "right":
+                verbal_pre=__("Take exit {number} on the right", lang_translation).format(number=exit_number)
+            elif direction == "left":
+                verbal_pre=__("Take exit {number} on the left", lang_translation).format(number=exit_number)
+        icon="fork-{strength}{direction}".format(strength=strength, direction=direction)
+
+    elif action == "keep":
+        diricon = direction
+        if direction == "right":
+            verbal_pre=__("Keep right", lang_translation)
+        elif direction == "left":
+            verbal_pre=__("Keep left", lang_translation)
+        elif direction == "middle":
+            diricon = "straight"
+            verbal_pre=__("Keep straight", lang_translation)
+        icon="fork-slight-{direction}".format(direction=diricon)
+
     elif action == "roundaboutEnter":
         if exit_number==1:
             verbal_pre=__("Enter the roundabout and take the 1st exit", lang_translation)
@@ -375,10 +439,10 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
         else:
             verbal_pre=__("Enter the roundabout", lang_translation)
         icon="roundabout"
+
     elif action == "roundaboutExit":
         verbal_pre=__("Exit the roundabout", lang_translation)
         icon="roundabout"
-
 
     elif action == "turn":
         if severity == "light":
@@ -400,15 +464,20 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
             elif direction == "left":
                 verbal_pre=__("Turn left", lang_translation)
         icon="turn-{strength}{direction}".format(strength=strength, direction=direction)
+
     else:
         # catch all unknown actions
         unknown()
+        verbal_pre = "action: " + action
 
     r = dict(
         duration=duration,
         icon=icon,
-        sign=dict(exit_number=exit_number),
-        street=street,
+        sign=dict(
+            exit_number=([exit_number] if exit_number is not None else None),
+            exit_toward=exit_toward
+        ),
+        street=[street] if street is not None else None,
         roundabout_exit_count=roundabout_exit_count,
         verbal_alert=verbal_pre,
         verbal_pre=verbal_pre,
