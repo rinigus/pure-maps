@@ -43,46 +43,6 @@ CONF_DEFAULTS = {
     "type": "car",
 }
 
-ICONS = {
-     0: "flag",
-     1: "depart",
-     2: "depart-right",
-     3: "depart-left",
-     4: "arrive",
-     5: "arrive-right",
-     6: "arrive-left",
-     7: "continue",
-     8: "continue",
-     9: "turn-slight-right",
-    10: "turn-right",
-    11: "turn-sharp-right",
-    12: "uturn",
-    13: "uturn",
-    14: "turn-sharp-left",
-    15: "turn-left",
-    16: "turn-slight-left",
-    17: "continue",
-    18: "off-ramp-slight-right",
-    19: "off-ramp-slight-left",
-    20: "off-ramp-slight-right",
-    21: "off-ramp-slight-left",
-    22: "fork-straight",
-    23: "fork-slight-right",
-    24: "fork-slight-left",
-    25: "merge-slight-left",
-    26: "roundabout",
-    27: "off-ramp-slight-right",
-    28: "ferry",
-    29: "depart",
-    30: "flag",
-    31: "flag",
-    32: "flag",
-    33: "flag",
-    34: "flag",
-    35: "flag",
-    36: "flag",
-}
-
 MODE = {
     "car": "car",
     "auto_shorter": "car",
@@ -180,11 +140,6 @@ def route(locations, params):
     mode = MODE.get(transportMode,"car")
     return parse_result(url, locations, result, mode, lang, loc)
 
-def parse_exit(maneuver, key):
-    if "sign" not in maneuver or key not in maneuver["sign"]:
-        return None
-    e = maneuver["sign"][key]
-    return [i.get("text", "") for i in e]
 
 def parse_result(url, locations, result, mode, lang_translation, locations_processed):
     """Parse and return route"""
