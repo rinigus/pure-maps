@@ -35,7 +35,7 @@ import poor
 import poor.flexpolyline
 import urllib.parse
 from poor.i18n import __
-from poor.util import calculate_distance
+from poor.util import calculate_distance, format_distance
 
 CONF_DEFAULTS = {
     "language": poor.util.get_default_language("en_US"),
@@ -346,7 +346,11 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
     severity=maneuver.get("severity", None)
     street = get_street(maneuver, language)
     verbal_pre=None
-    verbal_post=__("Continue for {distance}", lang_translation).format(distance=length) if length>0 else None
+    if length > 0:
+        length=format_distance(length, short=False, lang=lang_translation)
+        verbal_post=__("Continue for {distance}", lang_translation).format(distance=length)
+    else:
+        verbal_post=None
 
     def unknown():
         print("\n******************************")
@@ -414,14 +418,16 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
 
     elif action == "keep":
         diricon = direction
+        strength = "slight-"
         if direction == "right":
             verbal_pre=__("Keep right", lang_translation)
         elif direction == "left":
             verbal_pre=__("Keep left", lang_translation)
         elif direction == "middle":
             diricon = "straight"
+            strength = ""
             verbal_pre=__("Keep straight", lang_translation)
-        icon="fork-slight-{direction}".format(direction=diricon)
+        icon="fork-{strength}{direction}".format(strength=strength, direction=diricon)
 
     elif action == "roundaboutEnter":
         if exit_number==1:
@@ -464,6 +470,15 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
             elif direction == "left":
                 verbal_pre=__("Turn left", lang_translation)
         icon="turn-{strength}{direction}".format(strength=strength, direction=direction)
+
+    elif action == "uTurn":
+        if direction == "right":
+            verbal_pre=__("Make a right U-turn", lang_translation)
+        elif direction == "left":
+            verbal_pre=__("Make a left U-turn", lang_translation)
+        else:
+            verbal_pre=__("Make a U-turn", lang_translation)
+        icon="uturn"
 
     else:
         # catch all unknown actions
