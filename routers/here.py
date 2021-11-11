@@ -39,25 +39,21 @@ from poor.util import calculate_distance, format_distance
 
 CONF_DEFAULTS = {
     "language": poor.util.get_default_language("en_US"),
-    "short": 0,
+    "shorter": 0,
     "type": "car",
 }
 
 MODE = {
     "car": "car",
-    "auto_shorter": "car",
     "bicycle": "bicycle",
     "bus": "car",
-    "hov": "car",
-    "motorcycle": "car",
-    "motor_scooter": "car",
+    "taxi": "car",
+    "scooter": "car",
     "pedestrian": "foot",
-    "transit": "transit"
 }
 
 MODEOPTIONS = {
     "auto": ["use_ferry", "use_highways", "use_tolls"],
-    "auto_shorter": ["use_ferry", "use_highways", "use_tolls"],
     "bicycle": ["bicycle_type", "use_ferry", "use_hills", "use_roads"],
     "bus": ["use_ferry", "use_highways", "use_tolls"],
     "hov": ["use_ferry", "use_highways", "use_tolls"],
@@ -116,7 +112,7 @@ def route(locations, params):
     lang = poor.conf.routers.here.language
     units = "metric" if poor.conf.units == "metric" else "imperial"
     transportMode = poor.conf.routers.here.type
-    routingMode = "short" if poor.conf.routers.here.short else "fast"
+    routingMode = "short" if poor.conf.routers.here.shorter else "fast"
     origin = prepare_txtpoint(loc[0])
     destination = prepare_txtpoint(loc[-1])
     via = ''
