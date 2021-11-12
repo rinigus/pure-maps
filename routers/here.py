@@ -296,6 +296,7 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
     roundabout_exit_count=get_roundabout_exit(maneuver)
     severity=maneuver.get("severity", None)
     street = get_street(maneuver, language)
+    verbal_alert=None
     verbal_pre=None
     if length > 0:
         length=format_distance(length, short=False, lang=lang_translation)
@@ -381,18 +382,19 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
         icon="fork-{strength}{direction}".format(strength=strength, direction=diricon)
 
     elif action == "roundaboutEnter":
-        if exit_number==1:
-            verbal_pre=__("Enter the roundabout and take the 1st exit", lang_translation)
-        elif exit_number==2:
-            verbal_pre=__("Enter the roundabout and take the 2nd exit", lang_translation)
-        elif exit_number==3:
-            verbal_pre=__("Enter the roundabout and take the 3rd exit", lang_translation)
-        elif exit_number==4:
-            verbal_pre=__("Enter the roundabout and take the 4th exit", lang_translation)
-        elif exit_number==5:
-            verbal_pre=__("Enter the roundabout and take the 5th exit", lang_translation)
-        elif exit_number==2:
-            verbal_pre=__("Enter the roundabout and take the 6th exit", lang_translation)
+        verbal_alert="Enter the roundabout"
+        if roundabout_exit_count==1:
+            verbal_pre=__("Enter the roundabout and take the first exit", lang_translation)
+        elif roundabout_exit_count==2:
+            verbal_pre=__("Enter the roundabout and take the second exit", lang_translation)
+        elif roundabout_exit_count==3:
+            verbal_pre=__("Enter the roundabout and take the third exit", lang_translation)
+        elif roundabout_exit_count==4:
+            verbal_pre=__("Enter the roundabout and take the fourth exit", lang_translation)
+        elif roundabout_exit_count==5:
+            verbal_pre=__("Enter the roundabout and take the fifth exit", lang_translation)
+        elif roundabout_exit_count==2:
+            verbal_pre=__("Enter the roundabout and take the sixth exit", lang_translation)
         else:
             verbal_pre=__("Enter the roundabout", lang_translation)
         icon="roundabout"
@@ -445,7 +447,7 @@ def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_
         ),
         street=[street] if street is not None else None,
         roundabout_exit_count=roundabout_exit_count,
-        verbal_alert=verbal_pre,
+        verbal_alert=verbal_alert if verbal_alert is not None else verbal_pre,
         verbal_pre=verbal_pre,
         verbal_post=verbal_post
         )
