@@ -140,14 +140,6 @@ def route(locations, params):
     else:
         avoid = ""
 
-    #co = {key: poor.conf.routers.stadiamaps[key] for key in MODEOPTIONS[ctype]}
-    #costing_options = {}
-    #costing_options[ctype] = co
-    # input = dict(locations=loc,
-    #              costing=ctype,
-    #              costing_options=costing_options,
-    #              directions_options=dict(language=language, units=units))
-
     url = URL.format(**locals()) + via + avoid
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
