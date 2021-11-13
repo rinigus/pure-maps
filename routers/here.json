@@ -1,7 +1,8 @@
 {
     "attribution": {
         "© HERE": "https://legal.here.com",
-        "© HERE. All rights reserved.": "https://legal.here.com/en-gb/terms/general-content-supplier-terms-and-notices"
+        "© HERE. All rights reserved.": "https://legal.here.com/en-gb/terms/general-content-supplier-terms-and-notices",
+	"© HERE. Report an issue.": "https://mapfeedback.here.com"
     },
     "_description": "Routing by HERE",
     "_modes": ["car", "bicycle", "foot"],
