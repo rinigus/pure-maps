@@ -11,8 +11,8 @@
     "name": "HERE Normal Day Pedestrian",
     "profiles": ["mixed", "online", "HERE"],
     "provider": "HERE",
-    "tile_size": 512,
-    "tile_url": "https://3.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/pedestrian.day/{z}/{x}/{y}/512/png8?apiKey=#HERE_APIKEY#&ppi=250&pois&lg=#LANG#",
+    "tile_size": 256,
+    "tile_url": "https://3.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/pedestrian.day/{z}/{x}/{y}/512/png8?apiKey=#HERE_APIKEY#&ppi=500&pois&lg=#LANG#",
     "type": "default",
     "vehicle": "foot"
 }
