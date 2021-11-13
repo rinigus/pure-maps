@@ -38,7 +38,15 @@ from poor.i18n import __
 from poor.util import calculate_distance, format_distance
 
 CONF_DEFAULTS = {
-    "language": poor.util.get_default_language("en_US"),
+    "avoid_car_train": 0,
+    "avoid_difficult_turn": 0,
+    "avoid_dirt": 0,
+    "avoid_highway": 0,
+    "avoid_ferry": 0,
+    "avoid_seasonal_closure": 0,
+    "avoid_toll": 0,
+    "avoid_tunnel": 0,
+    "language": poor.util.get_default_language("en-US"),
     "shorter": 0,
     "type": "car",
 }
@@ -118,6 +126,19 @@ def route(locations, params):
     via = ''
     for point in loc[1:-1]:
        via += "&via=" + prepare_txtpoint(point)
+    avoid = []
+    if poor.conf.routers.here.avoid_car_train: avoid.append("carShuttleTrain")
+    if transportMode=="truck" and poor.conf.routers.here.avoid_difficult_turn: avoid.append("difficultTurns")
+    if poor.conf.routers.here.avoid_dirt: avoid.append("dirtRoad")
+    if poor.conf.routers.here.avoid_highway: avoid.append("controlledAccessHighway")
+    if poor.conf.routers.here.avoid_ferry: avoid.append("ferry")
+    if poor.conf.routers.here.avoid_seasonal_closure: avoid.append("seasonalClosure")
+    if poor.conf.routers.here.avoid_toll: avoid.append("tollRoad")
+    if poor.conf.routers.here.avoid_tunnel: avoid.append("tunnel")
+    if len(avoid) > 0:
+        avoid = "&avoid[features]=" + (",".join(avoid))
+    else:
+        avoid = ""
 
     #co = {key: poor.conf.routers.stadiamaps[key] for key in MODEOPTIONS[ctype]}
     #costing_options = {}
@@ -127,7 +148,7 @@ def route(locations, params):
     #              costing_options=costing_options,
     #              directions_options=dict(language=language, units=units))
 
-    url = URL.format(**locals()) + via
+    url = URL.format(**locals()) + via + avoid
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     result = poor.http.get_json(url)
@@ -171,7 +192,7 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
         for i in range(len(legs.turnByTurnActions)-1):
             m0 = legs.turnByTurnActions[i]
             m1 = legs.turnByTurnActions[i+1]
-            if m0.action == 'roundaboutEnter' and m1.action == 'roundaboutExit':
+            if m0.action == "roundaboutEnter" and m1.action == "roundaboutExit":
                 m0["exit"] = m1.get("exit", None)
 
         for maneuver in legs.turnByTurnActions:
@@ -244,7 +265,7 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
                  locations=locations,
                  location_indexes=LocPointInd,
                  maneuvers=Man, mode=mode)
-    route["language"] = result.routes[0].sections[0].language.replace('-','_')
+    route["language"] = result.routes[0].sections[0].language.replace("-","_")
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
     return route
@@ -267,14 +288,14 @@ def get_exit_toward(maneuver, language):
 
 def get_name(names, language):
     for i in names:
-        if i.language == language or i.language.split('-')[0]==language.split('-')[0]:
+        if i.language == language or i.language.split("-")[0]==language.split("-")[0]:
             return i.value
     if len(names) > 0:
         return names[0].value
     return None
 
 def get_roundabout_exit(maneuver):
-    if maneuver.action.startswith('roundabout') and 'exit' in maneuver:
+    if maneuver.action.startswith("roundabout") and "exit" in maneuver:
         return maneuver.exit
     return None
 

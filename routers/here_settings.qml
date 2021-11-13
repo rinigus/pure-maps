@@ -174,240 +174,110 @@ FormLayoutPL {
     }
 
     TextSwitchPL {
-        id: autoShorterSwitch
         anchors.left: parent.left
         anchors.right: parent.right
         text: app.tr("Prefer shorter route")
         visible: full && (typeComboBox.current_key == "car" || typeComboBox.current_key == "truck")
         Component.onCompleted: checked = app.conf.get("routers.here.shorter")
         onCheckedChanged: {
-            if (!autoShorterSwitch.visible) return;
+            if (!visible) return;
             app.conf.set("routers.here.shorter", checked ? 1 : 0);
         }
     }
 
-    ComboBoxPL {
-        id: bicycleTypeComboBox
-        label: app.tr("Bicycle type")
-        model: [ app.tr("Road"), app.tr("Hybrid or City (default)"), app.tr("Cross"), app.tr("Mountain") ]
-        visible: full && typeComboBox.current_key == "bicycle"
-        property var keys: ["Road", "Hybrid", "Cross", "Mountain"]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.bicycle_type");
-            var index = bicycleTypeComboBox.keys.indexOf(key);
-            bicycleTypeComboBox.currentIndex = index > -1 ? index : 1;
-        }
-        onCurrentIndexChanged: {
-            var key = bicycleTypeComboBox.keys[bicycleTypeComboBox.currentIndex]
-            app.conf.set("routers.here.bicycle_type", key);
+    TextSwitchPL {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: app.tr("Avoid tolls")
+        visible: full
+        Component.onCompleted: checked = app.conf.get("routers.here.avoid_toll")
+        onCheckedChanged: {
+            if (!visible) return;
+            app.conf.set("routers.here.avoid_toll", checked ? 1 : 0);
         }
     }
 
-    ComboBoxPL {
-        id: useBusComboBox
-        description: app.tr("Your desire to use buses.")
-        label: app.tr("Bus")
-        model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"), app.tr("Incline"), app.tr("Prefer") ]
-        visible: full && typeComboBox.current_key == "transit"
-        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_bus");
-            useBusComboBox.currentIndex = settingsBlock.getIndex(useBusComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = useBusComboBox.keys[useBusComboBox.currentIndex]
-            app.conf.set("routers.here.use_bus", key);
+    TextSwitchPL {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: app.tr("Avoid highways")
+        visible: full
+        Component.onCompleted: checked = app.conf.get("routers.here.avoid_highway")
+        onCheckedChanged: {
+            if (!visible) return;
+            app.conf.set("routers.here.avoid_highway", checked ? 1 : 0);
         }
     }
 
-    ComboBoxPL {
-        id: maxHikingDifficultyComboBox
-        description: app.tr("The maximum difficulty of hiking trails that is allowed.")
-        label: app.tr("Hiking difficulty")
-        model: [ app.tr("Walking"), app.tr("Hiking (default)"), app.tr("Mountain hiking"),
-            app.tr("Demanding mountain hiking"), app.tr("Alpine hiking"), app.tr("Demanding alpine hiking") ]
-        visible: full && typeComboBox.current_key == "pedestrian"
-        property var keys: [0, 1, 2, 3, 4, 5]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.max_hiking_difficulty");
-            var index = maxHikingDifficultyComboBox.keys.indexOf(key);
-            maxHikingDifficultyComboBox.currentIndex = index > -1 ? index : 1;
-        }
-        onCurrentIndexChanged: {
-            var key = maxHikingDifficultyComboBox.keys[maxHikingDifficultyComboBox.currentIndex]
-            app.conf.set("routers.here.max_hiking_difficulty", key);
+    TextSwitchPL {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: app.tr("Avoid tunnels")
+        visible: full
+        Component.onCompleted: checked = app.conf.get("routers.here.avoid_tunnel")
+        onCheckedChanged: {
+            if (!visible) return;
+            app.conf.set("routers.here.avoid_tunnel", checked ? 1 : 0);
         }
     }
 
-    ComboBoxPL {
-        id: useFerryComboBox
-        label: app.tr("Ferries")
-        model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"),
-            app.tr("Incline"), app.tr("Prefer") ]
-        visible: full && typeComboBox.current_key != "transit"
-        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_ferry");
-            useFerryComboBox.currentIndex = settingsBlock.getIndex(useFerryComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = useFerryComboBox.keys[useFerryComboBox.currentIndex]
-            app.conf.set("routers.here.use_ferry", key);
+    TextSwitchPL {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: app.tr("Avoid dirt roads")
+        visible: full
+        Component.onCompleted: checked = app.conf.get("routers.here.avoid_dirt")
+        onCheckedChanged: {
+            if (!visible) return;
+            app.conf.set("routers.here.avoid_dirt", checked ? 1 : 0);
         }
     }
 
-    ComboBoxPL {
-        id: useHighwaysComboBox
-        label: app.tr("Highways")
-        model: [app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference"),
-            app.tr("Incline"), app.tr("Prefer (default)") ]
-        visible: full && (typeComboBox.current_key == "auto" || typeComboBox.current_key == "bus" ||
-                          typeComboBox.current_key == "hov" || typeComboBox.current_key == "motorcycle" ||
-                          typeComboBox.current_key == "motor_scooter")
-        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_highways");
-            useHighwaysComboBox.currentIndex = settingsBlock.getIndex(useHighwaysComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = useHighwaysComboBox.keys[useHighwaysComboBox.currentIndex]
-            app.conf.set("routers.here.use_highways", key);
+    TextSwitchPL {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: app.tr("Avoid difficult turns")
+        visible: full && (typeComboBox.current_key == "truck")
+        Component.onCompleted: checked = app.conf.get("routers.here.avoid_difficult_turn")
+        onCheckedChanged: {
+            if (!visible) return;
+            app.conf.set("routers.here.avoid_difficult_turn", checked ? 1 : 0);
         }
     }
 
-    ComboBoxPL {
-        id: useHillsComboBox
-        description: app.tr("Your desire to tackle hills. When avoiding hills and steep grades, longer (time and distance) routes can be selected. By allowing hills, it indicates you do not fear hills and steeper grades.")
-        label: app.tr("Hills")
-        model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Allow") ]
-        visible: full && (typeComboBox.current_key == "bicycle" || typeComboBox.current_key == "motor_scooter")
-        property var keys: [0.0, 0.5, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_hills");
-            useHillsComboBox.currentIndex = settingsBlock.getIndex(useHillsComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = useHillsComboBox.keys[useHillsComboBox.currentIndex]
-            app.conf.set("routers.here.use_hills", key);
+    TextSwitchPL {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: app.tr("Avoid ferries")
+        visible: full
+        Component.onCompleted: checked = app.conf.get("routers.here.avoid_ferry")
+        onCheckedChanged: {
+            if (!visible) return;
+            app.conf.set("routers.here.avoid_ferry", checked ? 1 : 0);
         }
     }
 
-    ComboBoxPL {
-        id: usePrimaryComboBox
-        label: app.tr("Primary roads")
-        model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"),
-            app.tr("Incline"), app.tr("Prefer") ]
-        visible: full && typeComboBox.current_key == "motor_scooter"
-        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_primary");
-            usePrimaryComboBox.currentIndex = settingsBlock.getIndex(usePrimaryComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = usePrimaryComboBox.keys[usePrimaryComboBox.currentIndex]
-            app.conf.set("routers.here.use_primary", key);
+    TextSwitchPL {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: app.tr("Avoid car trains")
+        visible: full
+        Component.onCompleted: checked = app.conf.get("routers.here.avoid_car_train")
+        onCheckedChanged: {
+            if (!visible) return;
+            app.conf.set("routers.here.avoid_car_train", checked ? 1 : 0);
         }
     }
 
-    ComboBoxPL {
-        id: useRailComboBox
-        description: app.tr("Your desire to use rail/subway/metro.")
-        label: app.tr("Rail")
-        model: [ app.tr("Avoid"), app.tr("Prefer to avoid"), app.tr("No preference (default)"),
-            app.tr("Incline"), app.tr("Prefer") ]
-        visible: full && typeComboBox.current_key == "transit"
-        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_rail");
-            useRailComboBox.currentIndex = settingsBlock.getIndex(useRailComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = useRailComboBox.keys[useRailComboBox.currentIndex]
-            app.conf.set("routers.here.use_rail", key);
+    TextSwitchPL {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: app.tr("Avoid seasonally closed roads")
+        visible: full
+        Component.onCompleted: checked = app.conf.get("routers.here.avoid_seasonal_closure")
+        onCheckedChanged: {
+            if (!visible) return;
+            app.conf.set("routers.here.avoid_seasonal_closure", checked ? 1 : 0);
         }
     }
-
-    ComboBoxPL {
-        id: useRoadsComboBox
-        description: app.tr("Your propensity to use roads alongside other vehicles.")
-        label: app.tr("Roads")
-        model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Prefer") ]
-        visible: full && typeComboBox.current_key == "bicycle"
-        property var keys: [0.0, 0.5, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_roads");
-            useRoadsComboBox.currentIndex = settingsBlock.getIndex(useRoadsComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = useRoadsComboBox.keys[useRoadsComboBox.currentIndex]
-            app.conf.set("routers.here.use_roads", key);
-        }
-    }
-
-    ComboBoxPL {
-        id: useTollsComboBox
-        label: app.tr("Tolls")
-        model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Prefer") ]
-        visible: full && (typeComboBox.current_key == "auto" || typeComboBox.current_key == "bus" ||
-                          typeComboBox.current_key == "hov" || typeComboBox.current_key == "motorcycle" ||
-                          typeComboBox.current_key == "motor_scooter")
-        property var keys: [0.0, 0.5, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_tolls");
-            useTollsComboBox.currentIndex = settingsBlock.getIndex(useTollsComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = useTollsComboBox.keys[useTollsComboBox.currentIndex]
-            app.conf.set("routers.here.use_tolls", key);
-        }
-    }
-
-    ComboBoxPL {
-        id: useTrailsComboBox
-        description: app.tr("Your desire for adventure. When preferred, router will tend to avoid major roads and route on secondary roads, sometimes on using trails, tracks, unclassified roads or roads with bad surfaces.")
-        label: app.tr("Trails")
-        model: [ app.tr("Avoid (default)"), app.tr("Prefer to avoid"), app.tr("No preference"),
-            app.tr("Incline"), app.tr("Prefer") ]
-        visible: full && typeComboBox.current_key == "motorcycle"
-        property var keys: [0.0, 0.25, 0.5, 0.75, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_trails");
-            useTrailsComboBox.currentIndex = settingsBlock.getIndex(useTrailsComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = useTrailsComboBox.keys[useTrailsComboBox.currentIndex]
-            app.conf.set("routers.here.use_trails", key);
-        }
-    }
-
-    ComboBoxPL {
-        id: useTransfersComboBox
-        label: app.tr("Transfers")
-        model: [ app.tr("Avoid"), app.tr("No preference (default)"), app.tr("Prefer") ]
-        visible: full && typeComboBox.current_key == "transit"
-        property var keys: [0.0, 0.5, 1.0]
-        Component.onCompleted: {
-            var key = app.conf.get("routers.here.use_transfers");
-            useTransfersComboBox.currentIndex = settingsBlock.getIndex(useTransfersComboBox.keys,key);
-        }
-        onCurrentIndexChanged: {
-            var key = useTransfersComboBox.keys[useTransfersComboBox.currentIndex]
-            app.conf.set("routers.here.use_transfers", key);
-        }
-    }
-
-    function getIndex(arr, val) {
-        // for sorted short arrays
-        if (arr==null || arr.length <= 1)
-            return 0;
-        for (var i = 1; i < arr.length; i++) {
-            if (arr[i] > val) {
-                var p = arr[i-1];
-                var c = arr[i]
-                return Math.abs( p-val ) < Math.abs( c-val ) ? i-1 : i;
-            }
-        }
-        return arr.length-1;
-    }
-
 }
