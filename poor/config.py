@@ -234,6 +234,10 @@ class ConfigurationStore(poor.AttrDict):
         """Add configuration `values` for keys if missing."""
         self._register({"keys": values})
 
+    def register_licenses(self, values):
+        """Add configuration `values` for licenses if missing."""
+        self._register({"licenses": values})
+
     def register_guide(self, name, values):
         """Add configuration `values` for guide `name` if missing."""
         self._register({"guides": {name: values}})
