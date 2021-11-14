@@ -30,8 +30,8 @@ PageEmptyPL {
 
     BusyModal {
         id: busy
-        running: !py.ready
-        text: !py.ready ? app.tr("Initializing") : ""
+        running: true
+        text: app.tr("Initializing")
     }
 
     Connections {
@@ -41,6 +41,7 @@ PageEmptyPL {
             page.ready = true
             // initialize conf before anything else
             app.conf.initialize();
+            // check licenses
             licensesMissing = py.call_sync("poor.key.get_licenses_missing", [])
             // check font provider
             app.conf.set("font_provider", defaultFontProvider);
@@ -77,6 +78,9 @@ PageEmptyPL {
     }
 
     function start() {
-        app.rootPage = app.pages.replace(Qt.resolvedUrl("RootPage.qml"));
+        py.call("poor.app.initialize", [], function () {
+            busy.running = false
+            app.rootPage = app.pages.replace(Qt.resolvedUrl("RootPage.qml"));
+        });
     }
 }
