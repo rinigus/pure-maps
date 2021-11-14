@@ -118,7 +118,7 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
     {
       if (m_horizontalAccuracyValid && m_coordinateDeviceValid && m_horizontalAccuracy < 100)
         {
-          float threshold = m_horizontalAccuracy;
+          float threshold = std::max(10.0f, m_horizontalAccuracy);
           if (m_history.empty()) m_history.push_back(m_coordinateDevice);
           QGeoCoordinate last = m_history.back();
           if (last.distanceTo(m_coordinateDevice) > threshold)
