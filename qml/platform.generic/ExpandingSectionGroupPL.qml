@@ -56,9 +56,7 @@ Column {
             Item {
                 id: item
                 anchors.left: parent.left
-                anchors.leftMargin: styler.themeHorizontalPageMargin
                 anchors.right: parent.right
-                anchors.rightMargin: styler.themeHorizontalPageMargin
                 data: selections[model.index]
                 height: childrenRect.height
                 visible: del.expanded
