@@ -38,6 +38,7 @@ DialogPL {
             color: styler.themeHighlightColor
             font.pixelSize: styler.themeFontSizeMedium
             height: implicitHeight
+            truncMode: truncModes.none
             wrapMode: Text.WordWrap
         }
 
@@ -45,6 +46,10 @@ DialogPL {
             id: acceptSwitch
             checked: true
             text: app.tr("Accept license")
+        }
+
+        Spacer {
+            height: styler.themePaddingLarge
         }
     }
 

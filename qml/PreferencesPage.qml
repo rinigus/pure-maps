@@ -313,14 +313,14 @@ PagePL {
                                     }
 
                                     ListItemLabel {
-                                        color: listItem.highlighted ? styler.themeSecondaryHighlightColor :
-                                                                      styler.themeSecondaryColor
+                                        color: listItem.highlighted ? styler.themeHighlightColor :
+                                                                      styler.themePrimaryColor
                                         text: model.title
                                     }
 
                                     ListItemLabel {
-                                        color: listItem.highlighted ? styler.themeSecondaryHighlightColor :
-                                                                      styler.themeSecondaryColor
+                                        color: listItem.highlighted ? styler.themeHighlightColor :
+                                                                      styler.themePrimaryColor
                                         horizontalAlignment: Text.AlignRight
                                         text: {
                                             if (model.status === -1) return app.tr("Declined")
