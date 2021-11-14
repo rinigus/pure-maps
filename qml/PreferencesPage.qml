@@ -272,6 +272,104 @@ PagePL {
             }
 
             ExpandingSectionPL {
+                id: sectionLicenses
+                title: app.tr("Licenses")
+                content.sourceComponent: Column {
+                    spacing: styler.themePaddingMedium
+                    width: sectionLicenses.width
+
+                    ListItemLabel {
+                        color: styler.themeHighlightColor
+                        text: app.tr("List of the licenses and whether they are accepted or declined. " +
+                                     "Here you can change the acceptance of each license.")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    ListItemLabel {
+                        color: styler.themeHighlightColor
+                        text: app.tr("Please restart application after changing the acceptance state of the license(s).")
+                        truncMode: truncModes.none
+                        wrapMode: Text.WordWrap
+                    }
+
+                    Column {
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+
+                        Repeater {
+                            id: licenseRep
+                            delegate: ListItemPL {
+                                id: listItem
+                                contentHeight: licenseItemColumn.height
+                                Column {
+                                    id: licenseItemColumn
+                                    anchors.left: parent.left
+                                    anchors.right: parent.right
+                                    spacing: styler.themePaddingSmall
+
+                                    Spacer {
+                                        height: Math.max(0, styler.themePaddingLarge / 2 - styler.themePaddingSmall)
+                                    }
+
+                                    ListItemLabel {
+                                        color: listItem.highlighted ? styler.themeHighlightColor :
+                                                                      styler.themePrimaryColor
+                                        text: model.title
+                                    }
+
+                                    ListItemLabel {
+                                        color: listItem.highlighted ? styler.themeHighlightColor :
+                                                                      styler.themePrimaryColor
+                                        horizontalAlignment: Text.AlignRight
+                                        text: {
+                                            if (model.status === -1) return app.tr("Declined")
+                                            if (model.status === 1) return app.tr("Accepted")
+                                            return app.tr("Unset")
+                                        }
+                                    }
+
+                                    Spacer {
+                                        height: Math.max(0, styler.themePaddingLarge / 2 - styler.themePaddingSmall)
+                                    }
+                                }
+
+                                onClicked: {
+                                    var d = app.push(Qt.resolvedUrl("LicensePage.qml"), {
+                                                         "title": model.title,
+                                                         "key": model.key,
+                                                         "text": model.text,
+                                                         "acceptLicense": model.status!==-1
+                                                     });
+                                    d.accepted.connect(licenseRep.load)
+                                }
+                            }
+                            model: ListModel {}
+
+                            Component.onCompleted: load()
+
+                            function load() {
+                                model.clear();
+                                py.call("poor.key.licenses", [], function(licenses) {
+                                    for (var i = 0; i < licenses.length; i++)
+                                        model.append({
+                                                         "key": licenses[i].id,
+                                                         "text": licenses[i].text,
+                                                         "title": licenses[i].title,
+                                                         "status": licenses[i].status
+                                                     });
+                                });
+                            }
+                        }
+                    }
+
+                    Spacer {
+                        height: styler.themePaddingLarge
+                    }
+                }
+            }
+
+            ExpandingSectionPL {
                 id: sectionKeys
                 title: app.tr("API keys")
                 content.sourceComponent: Column {
@@ -308,7 +406,6 @@ PagePL {
                             model: ListModel {}
 
                             Component.onCompleted: {
-                                // Load router model items from the Python backend.
                                 py.call("poor.key.list", [], function(keys) {
                                     for (var i = 0; i < keys.length; i++)
                                         model.append({

@@ -63,7 +63,7 @@ class Geocoder:
         """Return a list of attribution dictionaries."""
         return [{"text": k, "url": v} for k, v in self._attribution.items()]
 
-    def autocomplete(self, query, x=0, y=0, params=None):
+    def autocomplete(self, query, x=0, y=0, center_x=0, center_y=0, params=None):
         """
         Return a list of autocomplete dictionaries matching `query`.
 
@@ -78,7 +78,7 @@ class Geocoder:
             olc_isFull(query.strip())):
             return []
         try:
-            results = self._provider.autocomplete(query=query, x=x, y=y, params=params)
+            results = self._provider.autocomplete(query=query, x=center_x, y=center_y, params=params)
         except Exception:
             print("Autocomplete failed:", file=sys.stderr)
             traceback.print_exc()
@@ -93,7 +93,7 @@ class Geocoder:
         bearing  = poor.util.calculate_bearing(x1, y1, x2, y2)
         return poor.util.format_distance_and_bearing(distance, bearing)
 
-    def geocode(self, query, x=0, y=0, params=None):
+    def geocode(self, query, x=0, y=0, center_x=0, center_y=0, params=None):
         """
         Return a list of dictionaries of places matching `query`.
 
@@ -102,43 +102,45 @@ class Geocoder:
         the results will include correct distance and bearing.
         """
         params = params or {}
-        # Parse coordinates if query is a geo URI.
-        match = RE_GEO_URI.search(query)
-        if match is not None:
-            qy = float(match.group(1))
-            qx = float(match.group(2))
-            return [dict(title=_("Point from geo link"),
-                         description=match.group(0),
-                         x=qx,
-                         y=qy,
-                         distance=self._format_distance(x, y, qx, qy),
-                         provider=self.id)]
+        # check special string queries
+        if isinstance(query, str):
+            # Parse coordinates if query is a geo URI.
+            match = RE_GEO_URI.search(query)
+            if match is not None:
+                qy = float(match.group(1))
+                qx = float(match.group(2))
+                return [dict(title=_("Point from geo link"),
+                             description=match.group(0),
+                             x=qx,
+                             y=qy,
+                             distance=self._format_distance(x, y, qx, qy),
+                             provider=self.id)]
 
-        # Parse coordinates if query is "LAT,LON".
-        match = RE_LAT_LON.search(query)
-        if match is not None:
-            qy = float(match.group(1))
-            qx = float(match.group(3))
-            return [dict(title=_("Point from coordinates"),
-                         description=match.group(0),
-                         x=qx,
-                         y=qy,
-                         distance=self._format_distance(x, y, qx, qy),
-                         provider=self.id)]
+            # Parse coordinates if query is "LAT,LON".
+            match = RE_LAT_LON.search(query)
+            if match is not None:
+                qy = float(match.group(1))
+                qx = float(match.group(3))
+                return [dict(title=_("Point from coordinates"),
+                             description=match.group(0),
+                             x=qx,
+                             y=qy,
+                             distance=self._format_distance(x, y, qx, qy),
+                             provider=self.id)]
 
-        # Parse if query is a Plus code
-        qtrimmed = query.strip()
-        if olc_isFull(qtrimmed):
-            latlng = olc_decode(qtrimmed).latlng()
-            return [dict(title=qtrimmed.upper(),
-                         description=_("Point from Plus code"),
-                         x=latlng[1],
-                         y=latlng[0],
-                         distance=self._format_distance(x, y, latlng[1], latlng[0]),
-                         provider=self.id)]
+            # Parse if query is a Plus code
+            qtrimmed = query.strip()
+            if olc_isFull(qtrimmed):
+                latlng = olc_decode(qtrimmed).latlng()
+                return [dict(title=qtrimmed.upper(),
+                             description=_("Point from Plus code"),
+                             x=latlng[1],
+                             y=latlng[0],
+                             distance=self._format_distance(x, y, latlng[1], latlng[0]),
+                             provider=self.id)]
 
         try:
-            results = self._provider.geocode(query=query, x=x, y=y, params=params)
+            results = self._provider.geocode(query=query, x=center_x, y=center_y, params=params)
         except socket.timeout:
             return dict(error=True, message=_("Connection timed out"))
         except Exception:

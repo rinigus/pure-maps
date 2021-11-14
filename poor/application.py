@@ -18,6 +18,7 @@
 """An application to display maps and stuff."""
 
 import poor
+import random
 import sys
 
 __all__ = ("Application",)
@@ -29,14 +30,20 @@ class Application:
 
     def __init__(self):
         """Initialize an :class:`Application` instance."""
+        # some of the components are initialized separately
+        # after handling of all licenses
+        random.seed()
+        self.history = poor.HistoryManager()
+        self.magfield = poor.MagField()
+        self.sun = poor.Sun()
+        self._voice = {}
+
+    def initialize(self):
+        """Initialize all components that may depend on licenses."""
         self.basemap = poor.MapManager()
         self.geocoder = None
         self.guide = None
-        self.history = poor.HistoryManager()
-        self.magfield = poor.MagField()
         self.router = None
-        self.sun = poor.Sun()
-        self._voice = {}
         self.set_basemap(poor.conf.basemap)
         self.set_geocoder(poor.conf.geocoder)
         self.set_guide(poor.conf.guide)

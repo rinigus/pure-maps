@@ -238,6 +238,14 @@ PagePL {
             onClicked: Qt.openUrlExternally(poi.link)
         }
 
+        IconListItem {
+            height: styler.themeItemSizeSmall
+            icon: poi.email ? styler.iconEmail : ""
+            label: poi.email
+            visible: poi.email
+            onClicked: Qt.openUrlExternally("mailto:" + poi.email)
+        }
+
         Spacer {
             height: styler.themePaddingMedium
         }

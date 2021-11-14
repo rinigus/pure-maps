@@ -96,6 +96,12 @@ DEFAULTS = {
             "geocoder": "osmscout",
             "guide": "osmscout",
             "router": "osmscout"
+        },
+        "HERE": {
+            "basemap": "HERE",
+            "geocoder": "here",
+            "guide": _default_guide,
+            "router": "here"
         }
      },
     "reroute": True,
@@ -227,6 +233,10 @@ class ConfigurationStore(poor.AttrDict):
     def register_keys(self, values):
         """Add configuration `values` for keys if missing."""
         self._register({"keys": values})
+
+    def register_licenses(self, values):
+        """Add configuration `values` for licenses if missing."""
+        self._register({"licenses": values})
 
     def register_guide(self, name, values):
         """Add configuration `values` for guide `name` if missing."""

@@ -43,7 +43,9 @@ PagePL {
             iconName: styler.iconMaps
             text: app.tr("Map")
             onClicked: {
-                var pois = geo.searchResults;
+                var pois = geo.searchResults.filter(function(p) {
+                    return p.poiType !== "PM:Query"
+                });
                 app.hideMenu(app.tr("Search: %1").arg(geo.query));
                 map.fitViewToPois(pois);
             }

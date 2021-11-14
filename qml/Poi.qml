@@ -58,6 +58,7 @@ Item {
             "address": poi.address || "",
             "bookmarked": poi.bookmarked || false,
             "coordinate": poi.coordinate || QtPositioning.coordinate(poi.y, poi.x),
+            "email": poi.email || "",
             "link": poi.link || "",
             "phone": poi.phone || "",
             "poiId": poi.poiId || Util.uuidv4(),
@@ -93,7 +94,8 @@ Item {
     function addList(pois, stateId) {
         // Add new POIs
         pois.forEach(function (p) {
-            _add(p, stateId);
+            if (p.poiType !== "PM:Query")
+                _add(p, stateId);
         });
         save();
         poiChanged("");
@@ -135,16 +137,18 @@ Item {
         // methods into JS representation
         return {
             "address": pyPoi.address || "",
+            "email": pyPoi.email || "",
             "link": pyPoi.link || "",
             "phone": pyPoi.phone || "",
             "poiType": pyPoi.poi_type || "",
             "postcode": pyPoi.postcode || "",
             "provider": pyPoi.provider || "",
             "text": pyPoi.text || "",
-            "title": pyPoi.title || model.place,
+            "title": pyPoi.title || "",
             "type": "geocode",
             "x": pyPoi.x,
             "y": pyPoi.y,
+            "query": pyPoi.query,
         };
     }
 

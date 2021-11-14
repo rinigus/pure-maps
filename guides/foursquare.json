@@ -4,5 +4,5 @@
   },
   "_description": "Venues listed and reviewed by Foursquare users",
   "name": "Foursquare",
-  "profiles": ["mixed", "online"]
+  "profiles": ["mixed", "online", "HERE"]
 }
