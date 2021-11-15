@@ -178,12 +178,14 @@ class MapManager:
 
     def __init__(self):
         """Initialize a :class:`MapManager` instance."""
-        if hasattr(self, "profile"): return
+        # always reset on init
         self.basemap = None
         self.basemap_types = set()
         self.current_lang = None
         self.current_map = None
-        # load map descriptions
+        # load map descriptions only when initializing manager the first time
+        if hasattr(self, "profile"): return
+        self.profile = poor.conf.profile
         maps = poor.util.get_basemaps()
         maps.sort(key=lambda x: x["pid"])
         self._providers = collections.defaultdict(list)
