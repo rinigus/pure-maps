@@ -25,11 +25,17 @@ DialogPL {
 
     property alias message: text.text
 
-    ListItemLabel {
-        id: text
-        color: styler.themeHighlightColor
-        font.pixelSize: styler.themeFontSizeMedium        
-        height: implicitHeight
-        wrapMode: Text.WordWrap
+    Column {
+        id: column
+        spacing: styler.themePaddingLarge
+        width: parent.width
+
+        ListItemLabel {
+            id: text
+            color: styler.themeHighlightColor
+            font.pixelSize: styler.themeFontSizeMedium
+            truncMode: truncModes.none
+            wrapMode: Text.WordWrap
+        }
     }
 }
