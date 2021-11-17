@@ -115,15 +115,20 @@ PagePL {
                 anchors.right: parent.right
                 anchors.topMargin: styler.isSilica ? parent.top : undefined
                 anchors.verticalCenter: styler.isSilica ? undefined : label.verticalCenter
-                model: [ app.tr("Online"), app.tr("Offline"), app.tr("HERE - Online"), app.tr("Mixed") ]
+                model: [ app.tr("Online"), app.tr("Offline"),
+                    hereAvailable ? app.tr("HERE - Online") : app.tr("HERE (disabled)"),
+                    app.tr("Mixed") ]
                 property var values: ["online", "offline", "HERE", "mixed"]
+                property bool hereAvailable: py.evaluate("poor.key.has_here")
                 Component.onCompleted: {
                     var value = app.conf.profile;
                     profileComboBox.currentIndex = profileComboBox.values.indexOf(value);
                 }
                 onCurrentIndexChanged: {
                     var index = profileComboBox.currentIndex;
-                    py.call_sync("poor.app.set_profile", [profileComboBox.values[index]]);
+                    var val = profileComboBox.values[index];
+                    if (val === "HERE" && !hereAvailable) return;
+                    py.call_sync("poor.app.set_profile", [val]);
                 }
             }
 

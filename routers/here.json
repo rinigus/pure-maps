@@ -6,6 +6,7 @@
     },
     "_description": "Routing by HERE",
     "_modes": ["car", "bicycle", "foot"],
+    "keys": ["HERE_APIKEY"],
     "name": "HERE",
     "source": "here.com",
     "profiles": ["HERE"]

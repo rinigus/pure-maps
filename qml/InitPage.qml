@@ -45,8 +45,8 @@ PageEmptyPL {
             licensesMissing = py.call_sync("poor.key.get_licenses_missing", [])
             // check font provider
             app.conf.set("font_provider", defaultFontProvider);
-            var k = py.call_sync("poor.key.get_mapbox_key", [])
-            if (defaultFontProvider == "mapbox" && k == "") {
+            var k = py.evaluate("poor.key.mapbox_key")
+            if (defaultFontProvider == "mapbox" && !k) {
                 var d = app.push(Qt.resolvedUrl("MessagePage.qml"), {
                              "acceptText": app.tr("Dismiss"),
                              "title": app.tr("Missing Mapbox key"),

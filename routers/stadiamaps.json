@@ -7,6 +7,7 @@
     },
     "_description": "Routing by Valhalla based on OpenStreetMap data",
     "_modes": ["car", "bicycle", "foot"],
+    "keys": ["STADIAMAPS_KEY"],
     "name": "Stadia Maps",
     "source": "stadiamaps.com",
     "profiles": ["mixed", "online"]

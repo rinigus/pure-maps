@@ -33,7 +33,7 @@ PageEmptyPL {
     GeocodeButton { id: geocodeButton }
     Map {
         id: map
-        accessToken: py.call_sync("poor.key.get_mapbox_key", [])
+        accessToken: py.evaluate("poor.key.mapbox_key")
     }
     MenuButton { id: menuButton }
     Meters { id: meters }

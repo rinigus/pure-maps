@@ -5,6 +5,7 @@
   },
   "_description": "Routing based on OpenStreetMap data",
   "_modes": ["car", "bicycle", "foot"],
+  "keys": ["MAPQUEST_KEY"],
   "name": "MapQuest Open",
   "profiles": ["mixed", "online"]
 }

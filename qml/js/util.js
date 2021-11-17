@@ -152,10 +152,14 @@ function injectMatches(model, found, text, markup, properties) {
 
 function markDefault(providers, defpid) {
     // Edit the default provider's name in-place.
-    for (var i = 0; i < providers.length; i++)
+    for (var i = 0; i < providers.length; i++) {
         if (providers[i].pid === defpid)
             providers[i].name = (qsTranslate("", "%1 (default)")
                                  .arg(providers[i].name));
+        if (!providers[i].available)
+            providers[i].name = (qsTranslate("", "%1 (disabled)")
+                                 .arg(providers[i].name));
+    }
 
 }
 

@@ -32,26 +32,33 @@ PageListPL {
 
         ListItemLabel {
             id: nameLabel
-            color: (model.active || listItem.highlighted) ?
-                       styler.themeHighlightColor : styler.themePrimaryColor;
+            color: {
+                if (!model.available)
+                    return styler.themeSecondaryHighlightColor;
+                if (model.active || listItem.highlighted)
+                    return styler.themeHighlightColor;
+                return styler.themePrimaryColor;
+            }
             height: styler.themeItemSizeSmall
             text: model.name
         }
 
         onClicked: {
+            if (!model.available) return;
             app.hideMenu(app.tr("Map: %1").arg(model.name));
             py.call_sync("poor.app.set_basemap", [model.pid]);
-            for (var i = 0; i < page.model.count; i++)
-                page.model.setProperty(i, "active", false);
-            model.active = true;
+            update();
         }
     }
 
     model: ListModel {}
 
-    Component.onCompleted: {
+    Component.onCompleted: update()
+
+    function update() {
         // Load basemap model items from the Python backend.
         py.call("poor.app.basemap.list", [], function(basemaps) {
+            page.model.clear();
             Util.markDefault(basemaps, app.conf.getDefault("basemap"));
             Util.appendAll(page.model, basemaps);
         });

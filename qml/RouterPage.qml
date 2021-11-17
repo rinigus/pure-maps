@@ -41,10 +41,15 @@ DialogListPL {
         ListItemLabel {
             id: nameLabel
             anchors.top: defaultHeader.bottom
-            color: (model.active || listItem.highlighted) ?
-                       styler.themeHighlightColor : styler.themePrimaryColor;
+            color: {
+                if (!model.available)
+                    return styler.themeSecondaryHighlightColor;
+                if (model.active || listItem.highlighted)
+                    return styler.themeHighlightColor;
+                return styler.themePrimaryColor;
+            }
             height: text && visible ? implicitHeight + app.listItemVerticalMargin : 0
-            text: model.name
+            text: model.available ? model.name : app.tr("%1 (disabled)", model.name)
             verticalAlignment: Text.AlignBottom
             visible: !model.header
         }
@@ -53,7 +58,7 @@ DialogListPL {
             id: descriptionLabel
             anchors.top: nameLabel.bottom
             anchors.topMargin: height > 0 ? styler.themePaddingSmall : 0
-            color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
+            color: listItem.highlighted || !model.available ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
             font.pixelSize: styler.themeFontSizeExtraSmall
             height: text && visible ? implicitHeight + app.listItemVerticalMargin : 0
             lineHeight: 1.15
@@ -70,7 +75,7 @@ DialogListPL {
         }
 
         onClicked: {
-            if (model.header) return;
+            if (model.header || !model.available) return;
             dialog.pid = model.pid;
             dialog.accept();
         }

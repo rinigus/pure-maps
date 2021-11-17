@@ -3,6 +3,7 @@
     "© Foursquare": "https://foursquare.com/"
   },
   "_description": "Venues listed and reviewed by Foursquare users",
+    "keys": ["FOURSQUARE_CLIENT", "FOURSQUARE_SECRET"],
   "name": "Foursquare",
   "profiles": ["mixed", "online", "HERE"]
 }

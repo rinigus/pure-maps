@@ -111,13 +111,13 @@ class KeyStore:
     def license_decline(self, key):
         poor.conf.set("licenses." + key, -1)
 
-    def get(self, key):
+    def get(self, key, skip_license_check=False):
         """Return API key with the preference of the personal one"""
-        if key in LICENSES:
+        if not skip_license_check and key in LICENSES:
             if poor.conf.get("licenses." + key) <= 0:
                 # license either declined or not accepted
                 return ""
-        return poor.conf.get("keys." + key) or DEFAULTS.get(key, "")
+        return poor.conf.get("keys." + key).strip() or DEFAULTS.get(key, "").strip()
 
     def licenses(self):
         return [dict(id = key,
@@ -128,15 +128,19 @@ class KeyStore:
     def get_licenses_missing(self):
         missing = []
         for key in LICENSES:
-            if poor.conf.get("licenses." + key)==0:
+            if not poor.conf.get("licenses." + key) and self.get(key, skip_license_check=True):
                 missing.append(dict(id = key,
                                     text = LICENSES[key].text,
                                     title = LICENSES[key].title))
         return missing
 
-    def get_mapbox_key(self):
-        """Return Mapbox access key with the preference of the personal one"""
-        return self.get("MAPBOX_KEY")
+    @property
+    def has_here(self):
+        return self.get("HERE_APIKEY")
+
+    @property
+    def has_mapbox(self):
+        return self.mapbox_key
 
     def list(self):
         """Return a list of dictionaries of API key properties"""
@@ -149,6 +153,11 @@ class KeyStore:
                    "needs_license": (k in LICENSES),
                    "license_accepted": 1 if k in LICENSES and poor.conf.get("licenses." + k)>0 else 0
         } for k in keys ]
+
+    @property
+    def mapbox_key(self):
+        """Return Mapbox access key with the preference of the personal one"""
+        return self.get("MAPBOX_KEY")
 
     def set(self, key, value):
         return poor.conf.set("keys." + key, value.strip())

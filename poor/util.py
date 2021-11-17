@@ -373,8 +373,16 @@ def _get_providers(directory, default, active, profile):
             provider["pid"] = pid
             provider["default"] = matches(pid, default)
             provider["active"] = matches(pid, active)
+            # check for availability
+            available = True
+            for k in provider.get("keys", []):
+                v = poor.key.get(k).strip()
+                if not v:
+                    print('API key missing:', k, 'disabling', pid)
+                    available = False
+            provider["available"] = available
             providers.append(provider)
-    providers.sort(key=lambda x: x["name"])
+    providers.sort(key=lambda x: (not x["available"], x["name"]))
     return providers
 
 def get_routers():

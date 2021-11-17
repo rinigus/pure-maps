@@ -39,6 +39,7 @@ DEFAULTS = {
     "auto_rotate_when_navigating": True,
     "basemap_auto_light": "none",
     "basemap_auto_mode": True,
+    "basemap_fallback": "OpenTopoMap", # should work without any API keys or API keys are always added
     "basemap_lang": "local",
     "basemap_light": "",
     "basemap_type": "",

@@ -5,6 +5,7 @@
 	"© HERE. Report an issue.": "https://mapfeedback.here.com"
     },
     "_description": "Search based on HERE data. Supports autocomplete",
+    "keys": ["HERE_APIKEY"],
     "name": "HERE",
     "profiles": ["HERE"]
 }
