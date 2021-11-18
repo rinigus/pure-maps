@@ -22,6 +22,11 @@ from poor.i18n import _
 
 __all__ = ("KeyStore",)
 
+HeaderDesc = namedtuple('HeaderDesc', ['description', 'title'])
+LicenseDesc = namedtuple('LicenseDesc', ['text', 'title'])
+
+# key has to start with the same prefix as used in the HEADERS, then
+# underscore and folowed by any string
 DEFAULTS = {
     # https://developer.foursquare.com
     "FOURSQUARE_CLIENT": "<FOURSQUARE_CLIENT>",
@@ -43,33 +48,33 @@ DEFAULTS = {
     "HERE_APIKEY": "<HERE_APIKEY>",
 }
 
-ApiKeyDesc = namedtuple('ApiKeyDesc', ['description', 'label'])
-LicenseDesc = namedtuple('LicenseDesc', ['text', 'title'])
+HEADERS = {
+    "FOURSQUARE": HeaderDesc(_('Register at <a href="https://developer.foursquare.com">https://developer.foursquare.com</a> and create your own Client ID and Client Secret keys'), "Foursquare"),
+    "MAPBOX": HeaderDesc(_('Register at <a href="https://www.mapbox.com">https://www.mapbox.com</a> and create your own API key'), "Mapbox"),
+    "MAPQUEST": HeaderDesc(_('Register at <a href="https://developer.mapquest.com">https://developer.mapquest.com</a> and create your own API key'), "MapQuest"),
+    "OPENCAGE": HeaderDesc(_('Register at <a href="https://opencagedata.com">https://opencagedata.com</a> and create your own API key'), "OpenCage"),
+    "STADIAMAPS": HeaderDesc(_('Register at <a href="https://stadiamaps.com">https://stadiamaps.com</a> and create your own API key'), "Stadia Maps"),
+    "HERE": HeaderDesc(_('Register at <a href="https://developer.here.com">https://developer.here.com</a> and create your own App API Key'), "HERE")
+}
 
 KEYDESC = {
-    "FOURSQUARE_CLIENT": ApiKeyDesc(_("Foursquare Client ID. Register at https://developer.foursquare.com and create your own Client ID and Client Secret keys"),
-                                    _("Foursquare Client ID")),
-    "FOURSQUARE_SECRET": ApiKeyDesc(_("Foursquare Client Secret"),_("Foursquare Client Secret")),
+    "FOURSQUARE_CLIENT": _("Foursquare Client ID"),
+    "FOURSQUARE_SECRET": _("Foursquare Client Secret"),
 
     # mapbox.com
-    "MAPBOX_KEY": ApiKeyDesc(_("Mapbox API key. Register at https://www.mapbox.com and create your own API key"),
-                             _("Mapbox API key")),
+    "MAPBOX_KEY": _("Mapbox API key"),
 
     # http://open.mapquestapi.com
-    "MAPQUEST_KEY": ApiKeyDesc(_("MapQuest API key. Register at https://developer.mapquest.com/ and create your own API key"),
-                               _("MapQuest API key")),
+    "MAPQUEST_KEY": _("MapQuest API key"),
 
     # https://geocoder.opencagedata.com/api [old key]
-    "OPENCAGE_KEY": ApiKeyDesc(_("OpenCage API key. Register at https://opencagedata.com/ and create your own API key"),
-                               _("OpenCage API key")),
+    "OPENCAGE_KEY": _("OpenCage API key"),
 
     # https://docs.stadiamaps.com/
-    "STADIAMAPS_KEY": ApiKeyDesc(_("Stadia Maps API key. Register at https://stadiamaps.com/ and create your own API key"),
-                                 _("Stadia Maps API key")),
+    "STADIAMAPS_KEY": _("Stadia Maps API key"),
 
     # here.com
-    "HERE_APIKEY": ApiKeyDesc(_("HERE API Key. Register at https://developer.here.com and create your own App API Key"),
-                              _("HERE API Key")),
+    "HERE_APIKEY": _("HERE API Key"),
 }
 
 # List of keys that are made available only after end user license is
@@ -142,17 +147,24 @@ class KeyStore:
     def has_mapbox(self):
         return self.mapbox_key
 
-    def list(self):
+    def list(self, headers=False):
         """Return a list of dictionaries of API key properties"""
         keys = list(DEFAULTS.keys())
         keys.sort()
-        return [ { "id": k,
-                   "description": KEYDESC[k].description,
-                   "label": KEYDESC[k].label,
-                   "value": poor.conf.get("keys." + k),
-                   "needs_license": (k in LICENSES),
-                   "license_accepted": 1 if k in LICENSES and poor.conf.get("licenses." + k)>0 else 0
-        } for k in keys ]
+        head = None
+        vals = []
+        for k in keys:
+            if head is None or k.split('_')[0] != head:
+                head = k.split('_')[0]
+                vals.append(dict(header = HEADERS[head].title,
+                                 description = HEADERS[head].description))
+            vals.append( dict( id=k,
+                               label=KEYDESC[k],
+                               value=poor.conf.get("keys." + k),
+                               needs_license=(k in LICENSES),
+                               license_accepted=(1 if k in LICENSES and poor.conf.get("licenses." + k)>0 else 0)
+                               ) )
+        return vals
 
     @property
     def mapbox_key(self):

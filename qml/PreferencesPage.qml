@@ -373,6 +373,7 @@ PagePL {
                 id: sectionKeys
                 title: app.tr("API keys")
                 content.sourceComponent: Column {
+                    id: keysColumn
                     spacing: styler.themePaddingMedium
                     width: sectionKeys.width
 
@@ -392,27 +393,49 @@ PagePL {
                         wrapMode: Text.WordWrap
                     }
 
-                    FormLayoutPL {
-                        spacing: styler.themePaddingMedium
+                    Column {
+                        id: keysForm
+                        spacing: styler.themePaddingLarge
+                        width: keysColumn.width
                         Repeater {
-                            delegate: TextFieldPL {
-                                description: model.description
-                                label: model.label
-                                placeholderText: model.label
-                                text: model.value
-                                onTextChanged: py.call_sync("poor.key.set",
-                                                            [model.key, text])
+                            delegate: Column {
+                                spacing: styler.themePaddingMedium
+                                width: keysForm.width
+                                property bool isHeader: model.header
+
+                                SectionHeaderPL {
+                                    text: model.header
+                                    visible: text
+                                }
+
+                                ListItemLabel {
+                                    color: styler.themeHighlightColor
+                                    text: model.description
+                                    truncMode: truncModes.none
+                                    visible: text
+                                    wrapMode: Text.WordWrap
+                                }
+
+                                TextFieldPL {
+                                    label: model.label
+                                    placeholderText: model.label
+                                    text: model.value
+                                    visible: !parent.isHeader
+                                    onTextChanged: py.call_sync("poor.key.set",
+                                                                [model.key, text])
+                                }
                             }
                             model: ListModel {}
 
                             Component.onCompleted: {
-                                py.call("poor.key.list", [], function(keys) {
+                                py.call("poor.key.list", [true], function(keys) {
                                     for (var i = 0; i < keys.length; i++)
                                         model.append({
-                                                         "key": keys[i].id,
-                                                         "description": keys[i].description,
-                                                         "label": keys[i].label,
-                                                         "value": keys[i].value
+                                                         "header": keys[i].header || "",
+                                                         "key": keys[i].id || "",
+                                                         "description": keys[i].description || "",
+                                                         "label": keys[i].label || "",
+                                                         "value": keys[i].value || ""
                                                      });
                                 });
                             }
