@@ -2,11 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # rui kon <facebookmail@qq.com>, 2021
 # rinigus github, 2021
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -16,10 +16,10 @@ msgstr ""
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rinigus github, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: geocoders/here.py:141
@@ -759,8 +759,9 @@ msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
 "application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
-"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
-"/osmscout-server\">OSM Scout Server manual</a> for details."
+"Flathub, or your distribution. See <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
+"manual</a> for details."
 msgstr ""
 "你正在使用离线配置文件。请确保你已安装并运行OSM Scout Server。根据你的系统，它可以在应用程序商店（适用于 Sailfish OS 的 "
 "OpenRepos、适用于 Ubuntu Touch 的 OpenStore）、Flathub 或你的发行版中使用。详情请参阅 <a "
@@ -2259,303 +2260,303 @@ msgstr ""
 
 #: routers/here_settings.qml:59
 msgid "Afrikaans"
-msgstr ""
+msgstr "南非荷兰语"
 
 #: routers/here_settings.qml:60
 msgid "Albanian"
-msgstr ""
+msgstr "阿尔巴尼亚语"
 
 #: routers/here_settings.qml:61
 msgid "Amharic"
-msgstr ""
+msgstr "阿姆哈拉语"
 
 #: routers/here_settings.qml:62
 msgid "Arabic (Saudi Arabia)"
-msgstr ""
+msgstr "阿拉伯语（沙特阿拉伯）"
 
 #: routers/here_settings.qml:63
 msgid "Armenian"
-msgstr ""
+msgstr "亚美尼亚语"
 
 #: routers/here_settings.qml:64
 msgid "Assamese"
-msgstr ""
+msgstr "阿萨姆语"
 
 #: routers/here_settings.qml:65
 msgid "Azerbaijani (Latin)"
-msgstr ""
+msgstr "阿塞拜疆语（拉丁文）"
 
 #: routers/here_settings.qml:67
 msgid "Belarusian"
-msgstr ""
+msgstr "白俄罗斯语"
 
 #: routers/here_settings.qml:68
 msgid "Bangla (Bangladesh)"
-msgstr ""
+msgstr "孟加拉语（孟加拉国）"
 
 #: routers/here_settings.qml:69
 msgid "Bangla (India)"
-msgstr ""
+msgstr "孟加拉语（印度）"
 
 #: routers/here_settings.qml:70
 msgid "Bosnian"
-msgstr ""
+msgstr "波斯尼亚语"
 
 #: routers/here_settings.qml:71
 msgid "Bulgarian"
-msgstr ""
+msgstr "保加利亚语"
 
 #: routers/here_settings.qml:74
 msgid "Chinese (China)"
-msgstr ""
+msgstr "中文（中国）"
 
 #: routers/here_settings.qml:75
 msgid "Chinese (Hong Kong SAR China)"
-msgstr ""
+msgstr "中文（中国香港特别行政区）"
 
 #: routers/here_settings.qml:76
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "中文（台湾）"
 
 #: routers/here_settings.qml:77
 msgid "Croatian"
-msgstr ""
+msgstr "克罗地亚语"
 
 #: routers/here_settings.qml:80
 msgid "Persian (Afghanistan)"
-msgstr ""
+msgstr "波斯语（阿富汗）"
 
 #: routers/here_settings.qml:84
 msgid "Estonian"
-msgstr ""
+msgstr "爱沙尼亚语"
 
 #: routers/here_settings.qml:85
 msgid "Filipino (Latin)"
-msgstr ""
+msgstr "菲律宾语（拉丁文）"
 
 #: routers/here_settings.qml:88
 msgid "Galician"
-msgstr ""
+msgstr "加利西亚语"
 
 #: routers/here_settings.qml:89
 msgid "Georgian"
-msgstr ""
+msgstr "格鲁吉亚语"
 
 #: routers/here_settings.qml:92
 msgid "Gujarati"
-msgstr ""
+msgstr "古吉拉特语"
 
 #: routers/here_settings.qml:93
 msgid "Hausa (Latin)"
-msgstr ""
+msgstr "豪萨语（拉丁文）"
 
 #: routers/here_settings.qml:94
 msgid "Hebrew (Israel)"
-msgstr ""
+msgstr "希伯来语（以色列）"
 
 #: routers/here_settings.qml:97
 msgid "Icelandic"
-msgstr ""
+msgstr "冰岛语"
 
 #: routers/here_settings.qml:98
 msgid "Igbo (Latin)"
-msgstr ""
+msgstr "伊博语（拉丁文）"
 
 #: routers/here_settings.qml:99
 msgid "Indonesian (Indonesia)"
-msgstr ""
+msgstr "印度尼西亚语（印度尼西亚）"
 
 #: routers/here_settings.qml:100
 msgid "Irish"
-msgstr ""
+msgstr "爱尔兰语"
 
 #: routers/here_settings.qml:103
 msgid "Kʼicheʼ (Latin)"
-msgstr ""
+msgstr "基切语（拉丁文）"
 
 #: routers/here_settings.qml:104
 msgid "Kannada"
-msgstr ""
+msgstr "卡纳达语"
 
 #: routers/here_settings.qml:105
 msgid "Kazakh"
-msgstr ""
+msgstr "哈萨克语"
 
 #: routers/here_settings.qml:106
 msgid "Khmer"
-msgstr ""
+msgstr "高棉语"
 
 #: routers/here_settings.qml:107
 msgid "Kinyarwanda (Rwanda)"
-msgstr ""
+msgstr "卢旺达语（卢旺达）"
 
 #: routers/here_settings.qml:108
 msgid "Konkani"
-msgstr ""
+msgstr "孔卡尼语"
 
 #: routers/here_settings.qml:109
 msgid "Korean (South Korea)"
-msgstr ""
+msgstr "韩语（韩国）"
 
 #: routers/here_settings.qml:110
 msgid "Kurdish (Arabic)"
-msgstr ""
+msgstr "库尔德语（阿拉伯文）"
 
 #: routers/here_settings.qml:111
 msgid "Kyrgyz (Cyrillic)"
-msgstr ""
+msgstr "柯尔克孜语（西里尔文）"
 
 #: routers/here_settings.qml:112
 msgid "Latvian"
-msgstr ""
+msgstr "拉脱维亚语"
 
 #: routers/here_settings.qml:113
 msgid "Lithuanian"
-msgstr ""
+msgstr "立陶宛语"
 
 #: routers/here_settings.qml:114
 msgid "Luxembourgish"
-msgstr ""
+msgstr "卢森堡语"
 
 #: routers/here_settings.qml:115
 msgid "Macedonian"
-msgstr ""
+msgstr "马其顿语"
 
 #: routers/here_settings.qml:116
 msgid "Malay (Malaysia)"
-msgstr ""
+msgstr "马来语（马来西亚）"
 
 #: routers/here_settings.qml:117
 msgid "Malayalam"
-msgstr ""
+msgstr "马拉雅拉姆语"
 
 #: routers/here_settings.qml:118
 msgid "Maltese"
-msgstr ""
+msgstr "马耳他语"
 
 #: routers/here_settings.qml:119
 msgid "Maori (Latin)"
-msgstr ""
+msgstr "毛利语（拉丁文）"
 
 #: routers/here_settings.qml:120
 msgid "Marathi"
-msgstr ""
+msgstr "马拉地语"
 
 #: routers/here_settings.qml:121
 msgid "Mongolian (Cyrillic)"
-msgstr ""
+msgstr "蒙古语（西里尔文）"
 
 #: routers/here_settings.qml:122
 msgid "Nepali (Nepal)"
-msgstr ""
+msgstr "尼泊尔语（尼泊尔）"
 
 #: routers/here_settings.qml:124
 msgid "Norwegian Nynorsk"
-msgstr ""
+msgstr "挪威尼诺斯克语"
 
 #: routers/here_settings.qml:125
 msgid "Odia"
-msgstr ""
+msgstr "奥里亚语"
 
 #: routers/here_settings.qml:126
 msgid "Northern Sotho"
-msgstr ""
+msgstr "北索托语"
 
 #: routers/here_settings.qml:131
 msgid "Punjabi"
-msgstr ""
+msgstr "旁遮普语"
 
 #: routers/here_settings.qml:132
 msgid "Punjabi (Arabic)"
-msgstr ""
+msgstr "旁遮普语（阿拉伯文）"
 
 #: routers/here_settings.qml:133
 msgid "Cusco Quechua (Latin, Peru)"
-msgstr ""
+msgstr "Cusco Quechua（拉丁文，秘鲁）"
 
 #: routers/here_settings.qml:136
 msgid "Scottish Gaelic (Latin)"
-msgstr ""
+msgstr "苏格兰盖尔语（拉丁文）"
 
 #: routers/here_settings.qml:137
 msgid "Serbian (Cyrillic, Bosnia & Herzegovina)"
-msgstr ""
+msgstr "塞尔维亚语（西里尔文，波斯尼亚和黑塞哥维那）"
 
 #: routers/here_settings.qml:138
 msgid "Serbian (Cyrillic, Serbia)"
-msgstr ""
+msgstr "塞尔维亚语（西里尔文，塞尔维亚）"
 
 #: routers/here_settings.qml:139
 msgid "Serbian (Latin, Serbia)"
-msgstr ""
+msgstr "塞尔维亚语（拉丁文，塞尔维亚）"
 
 #: routers/here_settings.qml:140
 msgid "Sindhi (Arabic)"
-msgstr ""
+msgstr "信德语（阿拉伯文）"
 
 #: routers/here_settings.qml:141
 msgid "Sinhala"
-msgstr ""
+msgstr "僧伽罗语"
 
 #: routers/here_settings.qml:145
 msgid "Swahili"
-msgstr ""
+msgstr "斯瓦希里语"
 
 #: routers/here_settings.qml:147
 msgid "Tajik (Cyrillic)"
-msgstr ""
+msgstr "塔吉克语（西里尔文）"
 
 #: routers/here_settings.qml:148
 msgid "Tamil"
-msgstr ""
+msgstr "泰米尔语"
 
 #: routers/here_settings.qml:149
 msgid "Tatar (Cyrillic)"
-msgstr ""
+msgstr "鞑靼语（西里尔文）"
 
 #: routers/here_settings.qml:150
 msgid "Telugu"
-msgstr ""
+msgstr "泰卢固语"
 
 #: routers/here_settings.qml:151
 msgid "Thai (Thailand)"
-msgstr ""
+msgstr "泰语（泰国）"
 
 #: routers/here_settings.qml:152
 msgid "Tigrinya"
-msgstr ""
+msgstr "提格利尼亚语"
 
 #: routers/here_settings.qml:153
 msgid "Tswana"
-msgstr ""
+msgstr "茨瓦纳语"
 
 #: routers/here_settings.qml:155
 msgid "Turkmen (Latin)"
-msgstr ""
+msgstr "土库曼语（拉丁文）"
 
 #: routers/here_settings.qml:158
 msgid "Uyghur (Arabic)"
-msgstr ""
+msgstr "维吾尔语（阿拉伯文）"
 
 #: routers/here_settings.qml:159
 msgid "Uzbek (Cyrillic)"
-msgstr ""
+msgstr "乌兹别克语（西里尔文）"
 
 #: routers/here_settings.qml:162
 msgid "Wolof (Latin)"
-msgstr ""
+msgstr "沃洛夫语（拉丁文）"
 
 #: routers/here_settings.qml:163
 msgid "Xhosa"
-msgstr ""
+msgstr "科萨语"
 
 #: routers/here_settings.qml:164
 msgid "Yoruba (Latin)"
-msgstr ""
+msgstr "约鲁巴语（拉丁文）"
 
 #: routers/here_settings.qml:165
 msgid "Zulu (South Africa)"
-msgstr ""
+msgstr "祖鲁语（南非）"
 
 #: routers/here_settings.qml:172 routers/ValhallaSettings.qml:95
 msgid "Advanced options"

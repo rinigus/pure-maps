@@ -2,11 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Priit Jõerüüt <transifex@joeruut.com>, 2021
 # rinigus github, 2021
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -16,10 +16,10 @@ msgstr ""
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rinigus github, 2021\n"
 "Language-Team: Estonian (https://www.transifex.com/rinigus/teams/89597/et/)\n"
+"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: geocoders/here.py:141
@@ -768,8 +768,9 @@ msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
 "application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
-"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
-"/osmscout-server\">OSM Scout Server manual</a> for details."
+"Flathub, or your distribution. See <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
+"manual</a> for details."
 msgstr ""
 "Sa kasutad võrguühenduseta profiili. Palun kontrolli, et seadmesse oleks "
 "paigaldatud OSM Scout Server ning ta ka töötaks. Sõltuvalt missugust "
@@ -2323,303 +2324,303 @@ msgstr ""
 
 #: routers/here_settings.qml:59
 msgid "Afrikaans"
-msgstr ""
+msgstr "afrikaani"
 
 #: routers/here_settings.qml:60
 msgid "Albanian"
-msgstr ""
+msgstr "albaania"
 
 #: routers/here_settings.qml:61
 msgid "Amharic"
-msgstr ""
+msgstr "amhara"
 
 #: routers/here_settings.qml:62
 msgid "Arabic (Saudi Arabia)"
-msgstr ""
+msgstr "araabia (Saudi Araabia)"
 
 #: routers/here_settings.qml:63
 msgid "Armenian"
-msgstr ""
+msgstr "armeenia"
 
 #: routers/here_settings.qml:64
 msgid "Assamese"
-msgstr ""
+msgstr "assami"
 
 #: routers/here_settings.qml:65
 msgid "Azerbaijani (Latin)"
-msgstr ""
+msgstr "aserbaidžaani (ladina)"
 
 #: routers/here_settings.qml:67
 msgid "Belarusian"
-msgstr ""
+msgstr "valgevene"
 
 #: routers/here_settings.qml:68
 msgid "Bangla (Bangladesh)"
-msgstr ""
+msgstr "bengali (Bangladesh)"
 
 #: routers/here_settings.qml:69
 msgid "Bangla (India)"
-msgstr ""
+msgstr "bengali (India)"
 
 #: routers/here_settings.qml:70
 msgid "Bosnian"
-msgstr ""
+msgstr "bosnia"
 
 #: routers/here_settings.qml:71
 msgid "Bulgarian"
-msgstr ""
+msgstr "bulgaaria"
 
 #: routers/here_settings.qml:74
 msgid "Chinese (China)"
-msgstr ""
+msgstr "hiina (Hiina)"
 
 #: routers/here_settings.qml:75
 msgid "Chinese (Hong Kong SAR China)"
-msgstr ""
+msgstr "hiina (Hongkongi erihalduspiirkond)"
 
 #: routers/here_settings.qml:76
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "hiina (Taiwan)"
 
 #: routers/here_settings.qml:77
 msgid "Croatian"
-msgstr ""
+msgstr "horvaadi"
 
 #: routers/here_settings.qml:80
 msgid "Persian (Afghanistan)"
-msgstr ""
+msgstr "pärsia (Afganistan)"
 
 #: routers/here_settings.qml:84
 msgid "Estonian"
-msgstr ""
+msgstr "eesti"
 
 #: routers/here_settings.qml:85
 msgid "Filipino (Latin)"
-msgstr ""
+msgstr "filipiini (ladina)"
 
 #: routers/here_settings.qml:88
 msgid "Galician"
-msgstr ""
+msgstr "galeegi"
 
 #: routers/here_settings.qml:89
 msgid "Georgian"
-msgstr ""
+msgstr "gruusia"
 
 #: routers/here_settings.qml:92
 msgid "Gujarati"
-msgstr ""
+msgstr "gudžarati"
 
 #: routers/here_settings.qml:93
 msgid "Hausa (Latin)"
-msgstr ""
+msgstr "hausa (ladina)"
 
 #: routers/here_settings.qml:94
 msgid "Hebrew (Israel)"
-msgstr ""
+msgstr "heebrea (Iisrael)"
 
 #: routers/here_settings.qml:97
 msgid "Icelandic"
-msgstr ""
+msgstr "islandi"
 
 #: routers/here_settings.qml:98
 msgid "Igbo (Latin)"
-msgstr ""
+msgstr "ibo (ladina)"
 
 #: routers/here_settings.qml:99
 msgid "Indonesian (Indonesia)"
-msgstr ""
+msgstr "indoneesia (Indoneesia)"
 
 #: routers/here_settings.qml:100
 msgid "Irish"
-msgstr ""
+msgstr "iiri"
 
 #: routers/here_settings.qml:103
 msgid "Kʼicheʼ (Latin)"
-msgstr ""
+msgstr "kitše (ladina)"
 
 #: routers/here_settings.qml:104
 msgid "Kannada"
-msgstr ""
+msgstr "kannada"
 
 #: routers/here_settings.qml:105
 msgid "Kazakh"
-msgstr ""
+msgstr "kasahhi"
 
 #: routers/here_settings.qml:106
 msgid "Khmer"
-msgstr ""
+msgstr "khmeeri"
 
 #: routers/here_settings.qml:107
 msgid "Kinyarwanda (Rwanda)"
-msgstr ""
+msgstr "ruanda (Rwanda)"
 
 #: routers/here_settings.qml:108
 msgid "Konkani"
-msgstr ""
+msgstr "konkani"
 
 #: routers/here_settings.qml:109
 msgid "Korean (South Korea)"
-msgstr ""
+msgstr "korea (Lõuna-Korea)"
 
 #: routers/here_settings.qml:110
 msgid "Kurdish (Arabic)"
-msgstr ""
+msgstr "kurdi (araabia)"
 
 #: routers/here_settings.qml:111
 msgid "Kyrgyz (Cyrillic)"
-msgstr ""
+msgstr "kirgiisi (kirillitsa)"
 
 #: routers/here_settings.qml:112
 msgid "Latvian"
-msgstr ""
+msgstr "läti"
 
 #: routers/here_settings.qml:113
 msgid "Lithuanian"
-msgstr ""
+msgstr "leedu"
 
 #: routers/here_settings.qml:114
 msgid "Luxembourgish"
-msgstr ""
+msgstr "letseburgi"
 
 #: routers/here_settings.qml:115
 msgid "Macedonian"
-msgstr ""
+msgstr "makedoonia"
 
 #: routers/here_settings.qml:116
 msgid "Malay (Malaysia)"
-msgstr ""
+msgstr "malai (Malaisia)"
 
 #: routers/here_settings.qml:117
 msgid "Malayalam"
-msgstr ""
+msgstr "malajalami"
 
 #: routers/here_settings.qml:118
 msgid "Maltese"
-msgstr ""
+msgstr "malta"
 
 #: routers/here_settings.qml:119
 msgid "Maori (Latin)"
-msgstr ""
+msgstr "maoori (ladina)"
 
 #: routers/here_settings.qml:120
 msgid "Marathi"
-msgstr ""
+msgstr "marathi"
 
 #: routers/here_settings.qml:121
 msgid "Mongolian (Cyrillic)"
-msgstr ""
+msgstr "mongoli (kirillitsa)"
 
 #: routers/here_settings.qml:122
 msgid "Nepali (Nepal)"
-msgstr ""
+msgstr "nepali (Nepal)"
 
 #: routers/here_settings.qml:124
 msgid "Norwegian Nynorsk"
-msgstr ""
+msgstr "uusnorra"
 
 #: routers/here_settings.qml:125
 msgid "Odia"
-msgstr ""
+msgstr "oria"
 
 #: routers/here_settings.qml:126
 msgid "Northern Sotho"
-msgstr ""
+msgstr "põhjasotho"
 
 #: routers/here_settings.qml:131
 msgid "Punjabi"
-msgstr ""
+msgstr "pandžabi"
 
 #: routers/here_settings.qml:132
 msgid "Punjabi (Arabic)"
-msgstr ""
+msgstr "pandžabi (araabia)"
 
 #: routers/here_settings.qml:133
 msgid "Cusco Quechua (Latin, Peru)"
-msgstr ""
+msgstr "Cusco Quechua (ladina, Peruu)"
 
 #: routers/here_settings.qml:136
 msgid "Scottish Gaelic (Latin)"
-msgstr ""
+msgstr "gaeli (ladina)"
 
 #: routers/here_settings.qml:137
 msgid "Serbian (Cyrillic, Bosnia & Herzegovina)"
-msgstr ""
+msgstr "serbia (kirillitsa, Bosnia ja Hertsegoviina)"
 
 #: routers/here_settings.qml:138
 msgid "Serbian (Cyrillic, Serbia)"
-msgstr ""
+msgstr "serbia (kirillitsa, Serbia)"
 
 #: routers/here_settings.qml:139
 msgid "Serbian (Latin, Serbia)"
-msgstr ""
+msgstr "serbia (ladina, Serbia)"
 
 #: routers/here_settings.qml:140
 msgid "Sindhi (Arabic)"
-msgstr ""
+msgstr "sindhi (araabia)"
 
 #: routers/here_settings.qml:141
 msgid "Sinhala"
-msgstr ""
+msgstr "singali"
 
 #: routers/here_settings.qml:145
 msgid "Swahili"
-msgstr ""
+msgstr "suahiili"
 
 #: routers/here_settings.qml:147
 msgid "Tajik (Cyrillic)"
-msgstr ""
+msgstr "tadžiki (kirillitsa)"
 
 #: routers/here_settings.qml:148
 msgid "Tamil"
-msgstr ""
+msgstr "tamili"
 
 #: routers/here_settings.qml:149
 msgid "Tatar (Cyrillic)"
-msgstr ""
+msgstr "tatari (kirillitsa)"
 
 #: routers/here_settings.qml:150
 msgid "Telugu"
-msgstr ""
+msgstr "telugu"
 
 #: routers/here_settings.qml:151
 msgid "Thai (Thailand)"
-msgstr ""
+msgstr "tai (Tai)"
 
 #: routers/here_settings.qml:152
 msgid "Tigrinya"
-msgstr ""
+msgstr "tigrinja"
 
 #: routers/here_settings.qml:153
 msgid "Tswana"
-msgstr ""
+msgstr "tsvana"
 
 #: routers/here_settings.qml:155
 msgid "Turkmen (Latin)"
-msgstr ""
+msgstr "türkmeeni (ladina)"
 
 #: routers/here_settings.qml:158
 msgid "Uyghur (Arabic)"
-msgstr ""
+msgstr "uiguuri (araabia)"
 
 #: routers/here_settings.qml:159
 msgid "Uzbek (Cyrillic)"
-msgstr ""
+msgstr "usbeki (kirillitsa)"
 
 #: routers/here_settings.qml:162
 msgid "Wolof (Latin)"
-msgstr ""
+msgstr "volofi (ladina)"
 
 #: routers/here_settings.qml:163
 msgid "Xhosa"
-msgstr ""
+msgstr "koosa"
 
 #: routers/here_settings.qml:164
 msgid "Yoruba (Latin)"
-msgstr ""
+msgstr "joruba (ladina)"
 
 #: routers/here_settings.qml:165
 msgid "Zulu (South Africa)"
-msgstr ""
+msgstr "suulu (Lõuna-Aafrika Vabariik)"
 
 #: routers/here_settings.qml:172 routers/ValhallaSettings.qml:95
 msgid "Advanced options"

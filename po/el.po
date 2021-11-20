@@ -2,11 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # rinigus github, 2018
 # Panagiotis Melas <pmelas@gmail.com>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -16,10 +16,10 @@ msgstr ""
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Panagiotis Melas <pmelas@gmail.com>, 2019\n"
 "Language-Team: Greek (https://www.transifex.com/rinigus/teams/89597/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: geocoders/here.py:141
@@ -723,7 +723,7 @@ msgstr "Αγγλικά"
 #: routers/here_settings.qml:83 routers/mapquest_open_settings.qml:59
 #: routers/ValhallaSettings.qml:67
 msgid "English (United States)"
-msgstr ""
+msgstr "Αγγλικά (Ηνωμένες Πολιτείες)"
 
 #: qml/LicensePage.qml:25
 msgid "Accept"
@@ -756,8 +756,9 @@ msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
 "application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
-"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
-"/osmscout-server\">OSM Scout Server manual</a> for details."
+"Flathub, or your distribution. See <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
+"manual</a> for details."
 msgstr ""
 
 #: qml/MapErrorPage.qml:62
@@ -1323,7 +1324,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:64 routers/here_settings.qml:66
 msgid "Basque"
-msgstr ""
+msgstr "Βασκικά"
 
 #: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:881
 #: routers/here_settings.qml:72
@@ -1396,11 +1397,11 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:83 routers/here_settings.qml:123
 msgid "Norwegian"
-msgstr ""
+msgstr "Νορβηγικά"
 
 #: qml/PreferencesPage.qml:84 routers/here_settings.qml:127
 msgid "Persian"
-msgstr ""
+msgstr "Περσικά"
 
 #: qml/PreferencesPage.qml:85
 msgid "Polish"
@@ -1436,19 +1437,19 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:93 routers/here_settings.qml:156
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ουκρανικά"
 
 #: qml/PreferencesPage.qml:94 routers/here_settings.qml:157
 msgid "Urdu"
-msgstr ""
+msgstr "Ουρντού"
 
 #: qml/PreferencesPage.qml:95 routers/here_settings.qml:160
 msgid "Vietnamese"
-msgstr ""
+msgstr "Βιετναμικά"
 
 #: qml/PreferencesPage.qml:96 routers/here_settings.qml:161
 msgid "Welsh"
-msgstr ""
+msgstr "Ουαλικά"
 
 #: qml/PreferencesPage.qml:106
 msgid ""
@@ -2114,32 +2115,32 @@ msgstr ""
 #: routers/gpx_osmscout_settings.qml:78 routers/here_settings.qml:73
 #: routers/ValhallaSettings.qml:61
 msgid "Catalan (Spain)"
-msgstr ""
+msgstr "Καταλανικά (Ισπανία)"
 
 #: routers/gpx_osmscout_settings.qml:79 routers/here_settings.qml:78
 #: routers/ValhallaSettings.qml:62
 msgid "Czech (Czechia)"
-msgstr ""
+msgstr "Τσεχικά (Τσεχία)"
 
 #: routers/gpx_osmscout_settings.qml:80 routers/here_settings.qml:79
 #: routers/ValhallaSettings.qml:63
 msgid "Danish (Denmark)"
-msgstr ""
+msgstr "Δανικά (Δανία)"
 
 #: routers/gpx_osmscout_settings.qml:81 routers/here_settings.qml:90
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:64
 msgid "German (Germany)"
-msgstr ""
+msgstr "Γερμανικά (Γερμανία)"
 
 #: routers/gpx_osmscout_settings.qml:82 routers/here_settings.qml:91
 #: routers/ValhallaSettings.qml:65
 msgid "Greek (Greece)"
-msgstr ""
+msgstr "Ελληνικά (Ελλάδα)"
 
 #: routers/gpx_osmscout_settings.qml:83 routers/here_settings.qml:82
 #: routers/mapquest_open_settings.qml:58 routers/ValhallaSettings.qml:66
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Αγγλικά (Ηνωμένο Βασίλειο)"
 
 #: routers/gpx_osmscout_settings.qml:85 routers/ValhallaSettings.qml:68
 msgid "English Pirate"
@@ -2157,7 +2158,7 @@ msgstr ""
 #: routers/gpx_osmscout_settings.qml:88 routers/here_settings.qml:86
 #: routers/ValhallaSettings.qml:71
 msgid "Finnish (Finland)"
-msgstr ""
+msgstr "Φινλανδικά (Φινλανδία)"
 
 #: routers/gpx_osmscout_settings.qml:89 routers/here_settings.qml:87
 #: routers/mapquest_open_settings.qml:63 routers/ValhallaSettings.qml:72
@@ -2167,22 +2168,22 @@ msgstr "Γαλλική (Γαλλία)"
 #: routers/gpx_osmscout_settings.qml:90 routers/here_settings.qml:95
 #: routers/ValhallaSettings.qml:73
 msgid "Hindi (India)"
-msgstr ""
+msgstr "Χίντι (Ινδία)"
 
 #: routers/gpx_osmscout_settings.qml:91 routers/here_settings.qml:96
 #: routers/ValhallaSettings.qml:74
 msgid "Hungarian (Hungary)"
-msgstr ""
+msgstr "Ουγγρικά (Ουγγαρία)"
 
 #: routers/gpx_osmscout_settings.qml:92 routers/here_settings.qml:101
 #: routers/ValhallaSettings.qml:75
 msgid "Italian (Italy)"
-msgstr ""
+msgstr "Ιταλικά (Ιταλία)"
 
 #: routers/gpx_osmscout_settings.qml:93 routers/here_settings.qml:102
 #: routers/ValhallaSettings.qml:76
 msgid "Japanese (Japan)"
-msgstr ""
+msgstr "Ιαπωνικά (Ιαπωνία)"
 
 #: routers/gpx_osmscout_settings.qml:94 routers/ValhallaSettings.qml:77
 msgid "Norwegian Bokmål (Norway)"
@@ -2191,52 +2192,52 @@ msgstr ""
 #: routers/gpx_osmscout_settings.qml:95 routers/here_settings.qml:81
 #: routers/ValhallaSettings.qml:78
 msgid "Dutch (Netherlands)"
-msgstr ""
+msgstr "Ολλανδικά (Ολλανδία)"
 
 #: routers/gpx_osmscout_settings.qml:96 routers/here_settings.qml:128
 #: routers/ValhallaSettings.qml:79
 msgid "Polish (Poland)"
-msgstr ""
+msgstr "Πολωνικά (Πολωνία)"
 
 #: routers/gpx_osmscout_settings.qml:97 routers/here_settings.qml:129
 #: routers/ValhallaSettings.qml:80
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Πορτογαλικά (Βραζιλία)"
 
 #: routers/gpx_osmscout_settings.qml:98 routers/here_settings.qml:130
 #: routers/ValhallaSettings.qml:81
 msgid "Portuguese (Portugal)"
-msgstr ""
+msgstr "Πορτογαλικά (Πορτογαλία)"
 
 #: routers/gpx_osmscout_settings.qml:99 routers/here_settings.qml:134
 #: routers/ValhallaSettings.qml:82
 msgid "Romanian (Romania)"
-msgstr ""
+msgstr "Ρουμανικά (Ρουμανία)"
 
 #: routers/gpx_osmscout_settings.qml:100 routers/here_settings.qml:135
 #: routers/mapquest_open_settings.qml:64 routers/ValhallaSettings.qml:83
 msgid "Russian (Russia)"
-msgstr ""
+msgstr "Ρωσικά (Ρωσία)"
 
 #: routers/gpx_osmscout_settings.qml:101 routers/here_settings.qml:142
 #: routers/ValhallaSettings.qml:84
 msgid "Slovak (Slovakia)"
-msgstr ""
+msgstr "Σλοβακικά (Σλοβακία)"
 
 #: routers/gpx_osmscout_settings.qml:102 routers/here_settings.qml:143
 #: routers/ValhallaSettings.qml:85
 msgid "Slovenian (Slovenia)"
-msgstr ""
+msgstr "Σλοβενικά (Σλοβενία)"
 
 #: routers/gpx_osmscout_settings.qml:103 routers/here_settings.qml:146
 #: routers/ValhallaSettings.qml:86
 msgid "Swedish (Sweden)"
-msgstr ""
+msgstr "Σουηδικά (Σουηδία)"
 
 #: routers/gpx_osmscout_settings.qml:104 routers/here_settings.qml:154
 #: routers/ValhallaSettings.qml:87
 msgid "Turkish (Turkey)"
-msgstr ""
+msgstr "Τουρκικά (Τουρκία)"
 
 #: routers/gpx_osmscout_settings.qml:105 routers/ValhallaSettings.qml:88
 msgid "Ukrainian (Ukraine)"
@@ -2252,303 +2253,303 @@ msgstr ""
 
 #: routers/here_settings.qml:59
 msgid "Afrikaans"
-msgstr ""
+msgstr "Αφρικάανς"
 
 #: routers/here_settings.qml:60
 msgid "Albanian"
-msgstr ""
+msgstr "Αλβανικά"
 
 #: routers/here_settings.qml:61
 msgid "Amharic"
-msgstr ""
+msgstr "Αμχαρικά"
 
 #: routers/here_settings.qml:62
 msgid "Arabic (Saudi Arabia)"
-msgstr ""
+msgstr "Αραβικά (Σαουδική Αραβία)"
 
 #: routers/here_settings.qml:63
 msgid "Armenian"
-msgstr ""
+msgstr "Αρμενικά"
 
 #: routers/here_settings.qml:64
 msgid "Assamese"
-msgstr ""
+msgstr "Ασαμικά"
 
 #: routers/here_settings.qml:65
 msgid "Azerbaijani (Latin)"
-msgstr ""
+msgstr "Αζερμπαϊτζανικά (Λατινικό)"
 
 #: routers/here_settings.qml:67
 msgid "Belarusian"
-msgstr ""
+msgstr "Λευκορωσικά"
 
 #: routers/here_settings.qml:68
 msgid "Bangla (Bangladesh)"
-msgstr ""
+msgstr "Βεγγαλικά (Μπανγκλαντές)"
 
 #: routers/here_settings.qml:69
 msgid "Bangla (India)"
-msgstr ""
+msgstr "Βεγγαλικά (Ινδία)"
 
 #: routers/here_settings.qml:70
 msgid "Bosnian"
-msgstr ""
+msgstr "Βοσνιακά"
 
 #: routers/here_settings.qml:71
 msgid "Bulgarian"
-msgstr ""
+msgstr "Βουλγαρικά"
 
 #: routers/here_settings.qml:74
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Κινεζικά (Κίνα)"
 
 #: routers/here_settings.qml:75
 msgid "Chinese (Hong Kong SAR China)"
-msgstr ""
+msgstr "Κινεζικά (Χονγκ Κονγκ ΕΔΠ Κίνας)"
 
 #: routers/here_settings.qml:76
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "Κινεζικά (Ταϊβάν)"
 
 #: routers/here_settings.qml:77
 msgid "Croatian"
-msgstr ""
+msgstr "Κροατικά"
 
 #: routers/here_settings.qml:80
 msgid "Persian (Afghanistan)"
-msgstr ""
+msgstr "Περσικά (Αφγανιστάν)"
 
 #: routers/here_settings.qml:84
 msgid "Estonian"
-msgstr ""
+msgstr "Εσθονικά"
 
 #: routers/here_settings.qml:85
 msgid "Filipino (Latin)"
-msgstr ""
+msgstr "Φιλιππινικά (Λατινικό)"
 
 #: routers/here_settings.qml:88
 msgid "Galician"
-msgstr ""
+msgstr "Γαλικιανά"
 
 #: routers/here_settings.qml:89
 msgid "Georgian"
-msgstr ""
+msgstr "Γεωργιανά"
 
 #: routers/here_settings.qml:92
 msgid "Gujarati"
-msgstr ""
+msgstr "Γκουγιαράτι"
 
 #: routers/here_settings.qml:93
 msgid "Hausa (Latin)"
-msgstr ""
+msgstr "Χάουσα (Λατινικό)"
 
 #: routers/here_settings.qml:94
 msgid "Hebrew (Israel)"
-msgstr ""
+msgstr "Εβραϊκά (Ισραήλ)"
 
 #: routers/here_settings.qml:97
 msgid "Icelandic"
-msgstr ""
+msgstr "Ισλανδικά"
 
 #: routers/here_settings.qml:98
 msgid "Igbo (Latin)"
-msgstr ""
+msgstr "Ίγκμπο (Λατινικό)"
 
 #: routers/here_settings.qml:99
 msgid "Indonesian (Indonesia)"
-msgstr ""
+msgstr "Ινδονησιακά (Ινδονησία)"
 
 #: routers/here_settings.qml:100
 msgid "Irish"
-msgstr ""
+msgstr "Ιρλανδικά"
 
 #: routers/here_settings.qml:103
 msgid "Kʼicheʼ (Latin)"
-msgstr ""
+msgstr "Κιτσέ (Λατινικό)"
 
 #: routers/here_settings.qml:104
 msgid "Kannada"
-msgstr ""
+msgstr "Κανάντα"
 
 #: routers/here_settings.qml:105
 msgid "Kazakh"
-msgstr ""
+msgstr "Καζακικά"
 
 #: routers/here_settings.qml:106
 msgid "Khmer"
-msgstr ""
+msgstr "Χμερ"
 
 #: routers/here_settings.qml:107
 msgid "Kinyarwanda (Rwanda)"
-msgstr ""
+msgstr "Κινιαρουάντα (Ρουάντα)"
 
 #: routers/here_settings.qml:108
 msgid "Konkani"
-msgstr ""
+msgstr "Κονκανικά"
 
 #: routers/here_settings.qml:109
 msgid "Korean (South Korea)"
-msgstr ""
+msgstr "Κορεατικά (Νότια Κορέα)"
 
 #: routers/here_settings.qml:110
 msgid "Kurdish (Arabic)"
-msgstr ""
+msgstr "Κουρδικά (Αραβικό)"
 
 #: routers/here_settings.qml:111
 msgid "Kyrgyz (Cyrillic)"
-msgstr ""
+msgstr "Κιργιζικά (Κυριλλικό)"
 
 #: routers/here_settings.qml:112
 msgid "Latvian"
-msgstr ""
+msgstr "Λετονικά"
 
 #: routers/here_settings.qml:113
 msgid "Lithuanian"
-msgstr ""
+msgstr "Λιθουανικά"
 
 #: routers/here_settings.qml:114
 msgid "Luxembourgish"
-msgstr ""
+msgstr "Λουξεμβουργιανά"
 
 #: routers/here_settings.qml:115
 msgid "Macedonian"
-msgstr ""
+msgstr "Μακεδονικά"
 
 #: routers/here_settings.qml:116
 msgid "Malay (Malaysia)"
-msgstr ""
+msgstr "Μαλαισιανά (Μαλαισία)"
 
 #: routers/here_settings.qml:117
 msgid "Malayalam"
-msgstr ""
+msgstr "Μαλαγιαλαμικά"
 
 #: routers/here_settings.qml:118
 msgid "Maltese"
-msgstr ""
+msgstr "Μαλτεζικά"
 
 #: routers/here_settings.qml:119
 msgid "Maori (Latin)"
-msgstr ""
+msgstr "Μαορί (Λατινικό)"
 
 #: routers/here_settings.qml:120
 msgid "Marathi"
-msgstr ""
+msgstr "Μαραθικά"
 
 #: routers/here_settings.qml:121
 msgid "Mongolian (Cyrillic)"
-msgstr ""
+msgstr "Μογγολικά (Κυριλλικό)"
 
 #: routers/here_settings.qml:122
 msgid "Nepali (Nepal)"
-msgstr ""
+msgstr "Νεπαλικά (Νεπάλ)"
 
 #: routers/here_settings.qml:124
 msgid "Norwegian Nynorsk"
-msgstr ""
+msgstr "Νορβηγικά Νινόρσκ"
 
 #: routers/here_settings.qml:125
 msgid "Odia"
-msgstr ""
+msgstr "Όντια"
 
 #: routers/here_settings.qml:126
 msgid "Northern Sotho"
-msgstr ""
+msgstr "Βόρεια Σόθο"
 
 #: routers/here_settings.qml:131
 msgid "Punjabi"
-msgstr ""
+msgstr "Παντζαπικά"
 
 #: routers/here_settings.qml:132
 msgid "Punjabi (Arabic)"
-msgstr ""
+msgstr "Παντζαπικά (Αραβικό)"
 
 #: routers/here_settings.qml:133
 msgid "Cusco Quechua (Latin, Peru)"
-msgstr ""
+msgstr "Cusco Quechua (Λατινικό, Περού)"
 
 #: routers/here_settings.qml:136
 msgid "Scottish Gaelic (Latin)"
-msgstr ""
+msgstr "Σκωτικά Κελτικά (Λατινικό)"
 
 #: routers/here_settings.qml:137
 msgid "Serbian (Cyrillic, Bosnia & Herzegovina)"
-msgstr ""
+msgstr "Σερβικά (Κυριλλικό, Βοσνία - Ερζεγοβίνη)"
 
 #: routers/here_settings.qml:138
 msgid "Serbian (Cyrillic, Serbia)"
-msgstr ""
+msgstr "Σερβικά (Κυριλλικό, Σερβία)"
 
 #: routers/here_settings.qml:139
 msgid "Serbian (Latin, Serbia)"
-msgstr ""
+msgstr "Σερβικά (Λατινικό, Σερβία)"
 
 #: routers/here_settings.qml:140
 msgid "Sindhi (Arabic)"
-msgstr ""
+msgstr "Σίντι (Αραβικό)"
 
 #: routers/here_settings.qml:141
 msgid "Sinhala"
-msgstr ""
+msgstr "Σινχαλεζικά"
 
 #: routers/here_settings.qml:145
 msgid "Swahili"
-msgstr ""
+msgstr "Σουαχίλι"
 
 #: routers/here_settings.qml:147
 msgid "Tajik (Cyrillic)"
-msgstr ""
+msgstr "Τατζικικά (Κυριλλικό)"
 
 #: routers/here_settings.qml:148
 msgid "Tamil"
-msgstr ""
+msgstr "Ταμιλικά"
 
 #: routers/here_settings.qml:149
 msgid "Tatar (Cyrillic)"
-msgstr ""
+msgstr "Ταταρικά (Κυριλλικό)"
 
 #: routers/here_settings.qml:150
 msgid "Telugu"
-msgstr ""
+msgstr "Τελούγκου"
 
 #: routers/here_settings.qml:151
 msgid "Thai (Thailand)"
-msgstr ""
+msgstr "Ταϊλανδικά (Ταϊλάνδη)"
 
 #: routers/here_settings.qml:152
 msgid "Tigrinya"
-msgstr ""
+msgstr "Τιγκρινικά"
 
 #: routers/here_settings.qml:153
 msgid "Tswana"
-msgstr ""
+msgstr "Τσουάνα"
 
 #: routers/here_settings.qml:155
 msgid "Turkmen (Latin)"
-msgstr ""
+msgstr "Τουρκμενικά (Λατινικό)"
 
 #: routers/here_settings.qml:158
 msgid "Uyghur (Arabic)"
-msgstr ""
+msgstr "Ουιγκουρικά (Αραβικό)"
 
 #: routers/here_settings.qml:159
 msgid "Uzbek (Cyrillic)"
-msgstr ""
+msgstr "Ουζμπεκικά (Κυριλλικό)"
 
 #: routers/here_settings.qml:162
 msgid "Wolof (Latin)"
-msgstr ""
+msgstr "Γουόλοφ (Λατινικό)"
 
 #: routers/here_settings.qml:163
 msgid "Xhosa"
-msgstr ""
+msgstr "Κόσα"
 
 #: routers/here_settings.qml:164
 msgid "Yoruba (Latin)"
-msgstr ""
+msgstr "Γιορούμπα (Λατινικό)"
 
 #: routers/here_settings.qml:165
 msgid "Zulu (South Africa)"
-msgstr ""
+msgstr "Ζουλού (Νότια Αφρική)"
 
 #: routers/here_settings.qml:172 routers/ValhallaSettings.qml:95
 msgid "Advanced options"
