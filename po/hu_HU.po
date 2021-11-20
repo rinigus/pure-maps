@@ -3,14 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# rinigus github, 2018
+# PizzaProgram <info@pizzaprogram.hu>, 2020
+# Szabó G. <leo.kanak@yahoo.com>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-26 13:00+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: rinigus github, 2018\n"
+"POT-Creation-Date: 2021-11-20 17:14+0200\n"
+"PO-Revision-Date: 2018-08-22 13:49+0000\n"
+"Last-Translator: Szabó G. <leo.kanak@yahoo.com>, 2021\n"
 "Language-Team: Hungarian (Hungary) (https://www.transifex.com/rinigus/teams/89597/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,234 +23,400 @@ msgstr ""
 "Language: hu_HU\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: poor/geocoder.py:108
+#: geocoders/here.py:141
+msgid "Search suggestion"
+msgstr ""
+
+#: geocoders/here.py:149
+msgid "Food types: {}"
+msgstr ""
+
+#: geocoders/here.py:156
+msgid "Opening hours: {}"
+msgstr ""
+
+#: guides/foursquare.py:198
+msgid "Opening hours:"
+msgstr "Nyitvatartás:"
+
+#: poor/geocoder.py:112
 msgid "Point from geo link"
 msgstr "Pont geo linkből"
 
-#: poor/geocoder.py:120
+#: poor/geocoder.py:124
 msgid "Point from coordinates"
 msgstr "Pont koordinátákból"
 
-#: poor/geocoder.py:130 poor/guide.py:123 poor/router.py:102
+#: poor/geocoder.py:136
+msgid "Point from Plus code"
+msgstr ""
+
+#: poor/geocoder.py:145 poor/geocoder.py:182 poor/guide.py:123
+#: poor/router.py:136
 msgid "Connection timed out"
 msgstr "Kapcsolat időtúllépés"
 
-#: poor/history.py:32 qml/NearbyPage.qml:27 qml/NearbyPage.qml:88
-#: qml/NearbyPage.qml:96 qml/NearbyPage.qml:172 qml/NearbyPage.qml:182
-#: qml/RoutePage.qml:27 qml/RoutePage.qml:28 qml/RoutePage.qml:80
-#: qml/RoutePage.qml:88 qml/RoutePage.qml:113 qml/RoutePage.qml:121
-#: qml/RoutePage.qml:179 qml/RoutePage.qml:184 qml/RoutePage.qml:186
-#: qml/RoutePointPage.qml:94 qml/RoutePointPage.qml:97
+#: poor/history.py:33 qml/GeocodeItem.qml:210 qml/GeocodeItem.qml:544
+#: qml/MenuPage.qml:87 qml/Navigator.qml:192 qml/NearbyPage.qml:30
+#: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
+#: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
+#: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
+#: qml/RoutePage.qml:747 qml/RoutePoint.qml:44 qml/RoutePoint.qml:62
 msgid "Current position"
 msgstr "Jelenlegi helyzet"
 
-#: poor/narrative.py:127
-#, python-brace-format
-msgid "In {distance}, {direction}"
-msgstr "Ennyi: {distance}, erre: {direction}"
+#: poor/keystore.py:55
+msgid ""
+"Register at <a "
+"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
+" and create your own Client ID and Client Secret keys"
+msgstr ""
 
-#: poor/narrative.py:218 poor/narrative.py:220
+#: poor/keystore.py:56
+msgid ""
+"Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
+"and create your own API key"
+msgstr ""
+
+#: poor/keystore.py:57
+msgid ""
+"Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
+"create your own API key"
+msgstr ""
+
+#: poor/keystore.py:58
+msgid ""
+"Register at <a "
+"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
+"and create your own API key"
+msgstr ""
+
+#: poor/keystore.py:59
+msgid ""
+"Register at <a "
+"href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
+"your own API key"
+msgstr ""
+
+#: poor/keystore.py:60
+msgid ""
+"Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
+"and create your own API key"
+msgstr ""
+
+#: poor/keystore.py:61
+msgid ""
+"Register at <a "
+"href=\"https://developer.here.com\">https://developer.here.com</a> and "
+"create your own App API Key"
+msgstr ""
+
+#: poor/keystore.py:65
+msgid "Foursquare Client ID"
+msgstr "Foursquare kliens ID"
+
+#: poor/keystore.py:66
+msgid "Foursquare Client Secret"
+msgstr ""
+
+#: poor/keystore.py:69
+msgid "Mapbox API key"
+msgstr "Mapbox API kulcs"
+
+#: poor/keystore.py:72
+msgid "MapTiler API key"
+msgstr ""
+
+#: poor/keystore.py:75
+msgid "MapQuest API key"
+msgstr "MapQuest API kulcs"
+
+#: poor/keystore.py:78
+msgid "OpenCage API key"
+msgstr "OpenCage API kulcs"
+
+#: poor/keystore.py:81
+msgid "Stadia Maps API key"
+msgstr "Stadia Maps API kulcs"
+
+#: poor/keystore.py:84
+msgid "HERE API Key"
+msgstr ""
+
+#: poor/keystore.py:92
+msgid ""
+"<p>Your Pure Maps installation has enabled support for HERE "
+"services.</p><br><p>Please consult <a href=\"https://legal.here.com/en-"
+"gb/terms/here-end-user-terms\">end-user terms</a>, <a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy\">acceptable"
+" use policy</a>, and <a href=\"https://legal.here.com/en-gb/privacy\">HERE "
+"Privacy policies</a>. In context of use of HERE and privacy policy, Pure "
+"Maps communicates with HERE using REST API.<p></br><p>For <a "
+"href=\"https://knowledge.here.com/csm_kb?id=public_kb_csm_details&number=KB0016412\">legal"
+" reasons</a>, Pure Maps enables HERE search and routing in a dedicated "
+"\"HERE Online\" profile only. While not active anymore, see acceptable use "
+"policy of 2018 for details regarding use of HERE together with other "
+"providers under <a href=\"https://legal.here.com/en-gb/terms/acceptable-use-"
+"policy-2018\">Layering and Modifications</a> section of the "
+"document.</p><br><p>Please either accept the terms and the policy or decline"
+" them. If declined, HERE support will be inactive and can be enabled later "
+"by accepting the terms in Preferences under Licenses.</p>"
+msgstr ""
+
+#: poor/keystore.py:106
+msgid "HERE End-User Terms"
+msgstr ""
+
+#: poor/router.py:104 poor/router.py:106
 msgid "Exit: "
-msgstr ""
+msgstr "Kilépés:"
 
-#: poor/narrative.py:415 qml/pure-maps.qml:163
-msgid "Rerouting"
-msgstr "Újratervezés"
-
-#: poor/narrative.py:416 qml/pure-maps.qml:185
-msgid "Rerouting failed"
-msgstr "Az újratervezés sikertelen"
-
-#: poor/narrative.py:417 qml/pure-maps.qml:179
-msgid "New route found"
-msgstr "Új útvonal megtalálva"
-
-#: poor/util.py:183 poor/util.py:201
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:956
+#: src/navigator.cpp:968
 msgid "mi"
-msgstr ""
+msgstr "mf"
 
-#: poor/util.py:183 poor/util.py:201
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:956
+#: src/navigator.cpp:968
 msgid "miles"
 msgstr "mérföld"
 
-#: poor/util.py:191 qml/Meters.qml:72
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:959
 msgid "ft"
-msgstr ""
+msgstr "láb"
 
-#: poor/util.py:191
+#: poor/util.py:231 src/navigator.cpp:959
 msgid "feet"
 msgstr "láb"
 
-#: poor/util.py:209 qml/Meters.qml:83
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:971
 msgid "yd"
-msgstr ""
+msgstr "yard"
 
-#: poor/util.py:209
+#: poor/util.py:242 src/navigator.cpp:971
 msgid "yards"
 msgstr "yard"
 
-#: poor/util.py:219
+#: poor/util.py:249 src/navigator.cpp:980
 msgid "km"
-msgstr ""
+msgstr "km"
 
-#: poor/util.py:219
+#: poor/util.py:249 src/navigator.cpp:980
 msgid "kilometers"
 msgstr "kilométer"
 
-#: poor/util.py:227 qml/Meters.qml:94
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:983
 msgid "m"
-msgstr ""
+msgstr "m"
 
-#: poor/util.py:227
+#: poor/util.py:253 src/navigator.cpp:983
 msgid "meters"
 msgstr "méter"
 
-#: poor/util.py:236 poor/util.py:244
+#: poor/util.py:262 poor/util.py:270
 #, python-brace-format
 msgid "{distance} north"
 msgstr "{distance} észak"
 
-#: poor/util.py:237
+#: poor/util.py:263
 #, python-brace-format
 msgid "{distance} north-east"
 msgstr "{distance} északkelet"
 
-#: poor/util.py:238
+#: poor/util.py:264
 #, python-brace-format
 msgid "{distance} east"
 msgstr "{distance} kelet"
 
-#: poor/util.py:239
+#: poor/util.py:265
 #, python-brace-format
 msgid "{distance} south-east"
 msgstr "{distance} délkelet"
 
-#: poor/util.py:240
+#: poor/util.py:266
 #, python-brace-format
 msgid "{distance} south"
 msgstr "{distance} dél"
 
-#: poor/util.py:241
+#: poor/util.py:267
 #, python-brace-format
 msgid "{distance} south-west"
 msgstr "{distance}délnyugat"
 
-#: poor/util.py:242
+#: poor/util.py:268
 #, python-brace-format
 msgid "{distance} west"
 msgstr "{distance} nyugat"
 
-#: poor/util.py:243
+#: poor/util.py:269
 #, python-brace-format
 msgid "{distance} north-west"
 msgstr "{distance} északnyugat"
 
-#: poor/util.py:265
+#: poor/util.py:286 poor/util.py:296
+msgid "plus code"
+msgstr ""
+
+#: poor/util.py:309
 msgid "{:d} min"
 msgstr "{:d} p"
 
-#: poor/util.py:266
+#: poor/util.py:310
 msgid "{:d} h {:d} min"
 msgstr "{:d} ó {:d} p"
 
-#: routers/digitransit.py:58
-msgid "airplane"
-msgstr "repülő"
-
-#: routers/digitransit.py:59 standard input:11 standard input:13 standard
-#: input:17
-msgid "bicycle"
-msgstr "kerékpár"
-
-#: routers/digitransit.py:60
-msgid "bus"
-msgstr "busz"
-
-#: routers/digitransit.py:61
-msgid "ferry"
-msgstr "komp"
-
-#: routers/digitransit.py:62
-msgid "train"
-msgstr "vonat"
-
-#: routers/digitransit.py:63
-msgid "metro"
-msgstr "metró"
-
-#: routers/digitransit.py:64
-msgid "tram"
-msgstr "villamos"
-
-#: routers/digitransit.py:65
-msgid "walk"
-msgstr "gyalog"
-
-#: routers/digitransit.py:69
+#: routers/here.py:316
 #, python-brace-format
-msgid "Walk towards {arr_name}."
-msgstr "Sétáljon {arr_name} felé."
-
-#: routers/digitransit.py:70
-#, python-brace-format
-msgid "Get a city bike at {dep_name}."
-msgstr "Itt talál városi biciklit: {dep_name}."
-
-#: routers/digitransit.py:71 routers/digitransit.py:74
-#, python-brace-format
-msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
+msgid "Continue for {distance}"
 msgstr ""
-"Beszállás erre: {mode_name} {line_desc} itt: {dep_name} ekkor: {dep_time}."
 
-#: routers/digitransit.py:72
-msgid "Walk towards your destination."
-msgstr "Sétáljon a célja felé."
-
-#: routers/digitransit.py:73
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
+#: routers/here.py:329
+msgid "Arrive at your destination"
 msgstr ""
-"Hagyja a közösségi biciklit itt: {dep_name}, majd sétáljon {arr_name} felé."
 
-#: routers/digitransit.py:75
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards your destination."
+#: routers/here.py:333
+msgid "Board the ferry"
 msgstr ""
-"Hagyja a közösségi biciklit itt: {dep_name}, majd sétáljon a célja felé."
 
-#: routers/digitransit.py:76
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Kiszállás itt: {dep_name}, majd sétáljon {arr_name} felé."
-
-#: routers/digitransit.py:77
-#, python-brace-format
-msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Kiszállás itt: {dep_name}, majd biciklizzen {arr_name} felé."
-
-#: routers/digitransit.py:78
-#, python-brace-format
-msgid ""
-"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+#: routers/here.py:337
+msgid "Continue"
 msgstr ""
-"Kiszállás itt: {dep_name}, majd átszállás erre: {mode_name} {line_desc} "
-"ekkor: {dep_time}."
 
-#: routers/digitransit.py:79
+#: routers/here.py:342
+msgid "Merge right and continue on highway"
+msgstr ""
+
+#: routers/here.py:344
+msgid "Merge left and continue on highway"
+msgstr ""
+
+#: routers/here.py:348
+msgid "Disembark the ferry"
+msgstr ""
+
+#: routers/here.py:352
+msgid "Start navigation"
+msgstr ""
+
+#: routers/here.py:357
+msgid "Merge right and enter highway"
+msgstr ""
+
+#: routers/here.py:359
+msgid "Merge left and enter highway"
+msgstr ""
+
+#: routers/here.py:361
+msgid "Enter highway"
+msgstr ""
+
+#: routers/here.py:374
+msgid "Take exit on the right"
+msgstr ""
+
+#: routers/here.py:376
+msgid "Take exit on the left"
+msgstr ""
+
+#: routers/here.py:379
 #, python-brace-format
-msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Kiszállás itt: {dep_name}, majd sétáljon a célja felé."
+msgid "Take exit {number} on the right"
+msgstr ""
 
-#: routers/digitransit.py:204
-msgid "Arrive at your destination."
-msgstr "Megérkezik a céljához."
+#: routers/here.py:381
+#, python-brace-format
+msgid "Take exit {number} on the left"
+msgstr ""
 
-#: guides/foursquare_settings.qml:26 routers/ValhallaSettings.qml:163
-#: routers/ValhallaSettings.qml:228 routers/ValhallaSettings.qml:292
+#: routers/here.py:388
+msgid "Keep right"
+msgstr ""
+
+#: routers/here.py:390
+msgid "Keep left"
+msgstr ""
+
+#: routers/here.py:394
+msgid "Keep straight"
+msgstr ""
+
+#: routers/here.py:400
+msgid "Enter the roundabout and take the first exit"
+msgstr ""
+
+#: routers/here.py:402
+msgid "Enter the roundabout and take the second exit"
+msgstr ""
+
+#: routers/here.py:404
+msgid "Enter the roundabout and take the third exit"
+msgstr ""
+
+#: routers/here.py:406
+msgid "Enter the roundabout and take the fourth exit"
+msgstr ""
+
+#: routers/here.py:408
+msgid "Enter the roundabout and take the fifth exit"
+msgstr ""
+
+#: routers/here.py:410
+msgid "Enter the roundabout and take the sixth exit"
+msgstr ""
+
+#: routers/here.py:412
+msgid "Enter the roundabout"
+msgstr ""
+
+#: routers/here.py:416
+msgid "Exit the roundabout"
+msgstr ""
+
+#: routers/here.py:423
+msgid "Bear right"
+msgstr ""
+
+#: routers/here.py:425
+msgid "Bear left"
+msgstr ""
+
+#: routers/here.py:429
+msgid "Make a sharp right"
+msgstr ""
+
+#: routers/here.py:431
+msgid "Make a sharp left"
+msgstr ""
+
+#: routers/here.py:435
+msgid "Turn right"
+msgstr ""
+
+#: routers/here.py:437
+msgid "Turn left"
+msgstr ""
+
+#: routers/here.py:442
+msgid "Make a right U-turn"
+msgstr ""
+
+#: routers/here.py:444
+msgid "Make a left U-turn"
+msgstr ""
+
+#: routers/here.py:446
+msgid "Make a U-turn"
+msgstr ""
+
+#: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:133
+#: routers/ValhallaSettings.qml:169 routers/ValhallaSettings.qml:222
+#: routers/ValhallaSettings.qml:240 routers/ValhallaSettings.qml:257
+#: routers/ValhallaSettings.qml:273 routers/ValhallaSettings.qml:293
+#: routers/ValhallaSettings.qml:309
 msgid "Prefer"
 msgstr "Előnyben"
 
-#: guides/foursquare_settings.qml:28
+#: guides/foursquare_settings.qml:29
 msgid "Closest"
 msgstr "Legközelebbi"
 
@@ -253,62 +424,57 @@ msgstr "Legközelebbi"
 msgid "Best"
 msgstr "Legjobb"
 
-#: guides/osmscout_name.qml:53 qml/GeocodePage.qml:60 qml/PlaceTypePage.qml:59
-#: qml/RoutePointPage.qml:60
-msgid "Remove"
-msgstr "Eltávolítás"
-
-#: guides/osmscout_name.qml:81 qml/AttributionPage.qml:64
-#: qml/GeocodePage.qml:106 qml/GeocodePage.qml:125 qml/MenuPage.qml:46
-#: qml/PlaceTypePage.qml:88 qml/RoutePointPage.qml:104
-msgid "Search"
-msgstr "Keresés"
-
-#: guides/osmscout_name.qml:102
-msgid "You can search for venues by name."
-msgstr ""
-
-#: guides/osmscout_settings.qml:25
-msgid "Name"
-msgstr ""
-
-#: guides/osmscout_settings.qml:47
+#: guides/osmscout_settings.qml:31
 msgid "Search along the route"
-msgstr ""
+msgstr "Keresés az útvonal mentén"
 
-#: guides/osmscout_settings.qml:71
+#: guides/osmscout_settings.qml:58
 msgid ""
 "When set, the search along the route is performed starting from the point "
 "specified by 'Near' on this page"
 msgstr ""
 
-#: guides/osmscout_settings.qml:72
+#: guides/osmscout_settings.qml:59
 msgid "Search starting from the reference point"
-msgstr ""
+msgstr "A keresés a referencia ponttól kezdődik"
 
-#: qml/AboutPage.qml:38
+#: qml/AboutPage.qml:25 qml/MenuPage.qml:33
 msgid "About Pure Maps"
-msgstr ""
+msgstr "A Pure Maps névjegye"
 
-#: qml/AboutPage.qml:53
+#: qml/AboutPage.qml:58
 msgid "version %1"
 msgstr "%1 verzió"
 
-#: qml/AboutPage.qml:60
-msgid "GitHub page"
-msgstr "GitHub oldal"
+#: qml/AboutPage.qml:63
+msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
+msgstr "GitHub <a href=\"https://github.com/rinigus/pure-maps\">projekt-oldal</a>"
 
-#: qml/AboutPage.qml:86
-msgid "Logo by %1"
+#: qml/AboutPage.qml:88
+msgid ""
+"Artwork by %1 and %2\n"
+"Banner photo by %3 (Pexels License)"
 msgstr ""
+"A grafikát %1 és %2 készítette\n"
+"A banner-képet %3 készítette (Pexels Licenc)"
 
 #: qml/AboutPage.qml:96
+msgid ""
+"Transportation icons made by <a "
+"href=\"https://www.flaticon.com/authors/freepik\" "
+"title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" "
+"title=\"Flaticon\">www.flaticon.com</a>"
+msgstr ""
+
+#: qml/AboutPage.qml:109
 msgid ""
 "Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
+"A Pure Maps szabad szoftver, megjelent a GNU General Public License (GPL) "
+"3-as vagy későbbi verziója alapján."
 
-#: qml/AboutPage.qml:101
+#: qml/AboutPage.qml:114
 msgid "Translated by"
 msgstr "Fordította"
 
@@ -317,11 +483,11 @@ msgstr "Fordította"
 #. Thus, you should translate it to your name. You can also include other
 #. translators who have contributed to this translation; in that case, please
 #. write them on separate lines seperated by newlines (\n).
-#: qml/AboutPage.qml:113
+#: qml/AboutPage.qml:126
 msgid "translator-credits"
 msgstr "Szabó G."
 
-#: qml/AboutPage.qml:123
+#: qml/AboutPage.qml:136
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
@@ -329,290 +495,1211 @@ msgstr ""
 "Új fordítást adhatsz hozzá, vagy közreműködhetsz a meglévők javításában a "
 "Transifex-en."
 
-#: qml/AboutPage.qml:131
-msgid "Transifex page"
-msgstr "Transifex oldal"
+#: qml/AboutPage.qml:142
+msgid ""
+"Translations at <a href=\"https://www.transifex.com/rinigus/pure-"
+"maps\">Transifex page</a>"
+msgstr ""
+"Fordítások a <a href=\"https://www.transifex.com/rinigus/pure-"
+"maps\">Transifex oldalon</a>"
 
-#: qml/AttributionPage.qml:36
+#: qml/AttributionPage.qml:24
 msgid "Attribution"
 msgstr "Jellemző"
 
-#: qml/AttributionPage.qml:40 qml/BasemapPage.qml:29 qml/MenuPage.qml:107
+#: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:69
+#: qml/MenuPage.qml:94
 msgid "Maps"
 msgstr "Térképek"
+
+#: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
+#: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
+#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:763
+msgid "Search"
+msgstr "Keresés"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
 msgstr "Helyek"
 
-#: qml/AttributionPage.qml:116 qml/MenuPage.qml:55 qml/NavigationPage.qml:39
-#: qml/RoutePage.qml:49
+#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:27
+#: qml/PreferencesPage.qml:482 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Navigáció"
 
-#: qml/GeocodePage.qml:112 qml/NearbyPage.qml:63 qml/RoutePage.qml:54
-msgid "Using"
-msgstr "Használatban"
-
-#: qml/GeocodePage.qml:159 qml/RoutePointPage.qml:138
-msgid ""
-"You can search by address, locality, landmark and many other terms. For best"
-" results, include a region, e.g. “address, city” or “city, country”."
-msgstr ""
-"Kereshet cím, település, tereptárgy, és sok más kifejezésre. A legjobb "
-"eredmények érdekében foglaljon bele egy régiót, pl. \"cím, város\" vagy "
-"\"város, ország\"."
-
-#: qml/GeocoderPage.qml:44 qml/GuidePage.qml:44 qml/RouterPage.qml:44
-#: routers/digitransit_settings.qml:181
-msgid "Default"
-msgstr "Alapértelmezett"
-
-#: qml/GeocoderPage.qml:75 qml/GuidePage.qml:75 qml/RouterPage.qml:75
-msgid "Alternatives"
-msgstr "Alternatívák"
-
-#: qml/GeocodingResultsPage.qml:94 qml/NearbyResultsPage.qml:94
-msgid "Show all"
-msgstr "Az összes megjelenítése"
-
-#: qml/GeocodingResultsPage.qml:132 qml/NearbyResultsPage.qml:132
-#: routers/digitransit_results.qml:215 routers/mapquest_open_results.qml:36
-#: routers/osmscout_results.qml:36 routers/osrm_results.qml:36
-#: routers/stadiamaps_results.qml:36
-msgid "Searching"
-msgstr "Keresés"
-
-#: qml/GeocodingResultsPage.qml:154 qml/NearbyResultsPage.qml:151
-msgid "%1 Results"
-msgstr "%1 Találat"
-
-#: qml/GeocodingResultsPage.qml:158 qml/NearbyResultsPage.qml:155
-#: routers/digitransit_results.qml:244 routers/mapquest_open_results.qml:58
-#: routers/osmscout_results.qml:58 routers/osrm_results.qml:58
-#: routers/stadiamaps_results.qml:58
-msgid "No results"
-msgstr "Nincs találat"
-
-#: qml/MapGestureArea.qml:53 qml/MapGestureArea.qml:54
-msgid "Unnamed point"
-msgstr "Névtelen pont"
-
-#: qml/Map.qml:439
-msgid "Voice navigation on"
-msgstr "Hangos navigáció be"
-
-#: qml/Map.qml:538
-msgid "Auto-center off"
-msgstr "Automatikus középre igazítás ki"
-
-#: qml/Map.qml:541
-msgid "Auto-center on"
-msgstr "Automatikus középre igazítás be"
-
-#: qml/MenuPage.qml:61
-msgid "Nearby venues"
-msgstr "Közeli helyszínek"
-
-#: qml/MenuPage.qml:67
-msgid "Share current position"
-msgstr "Jelenlegi helyzet megosztása"
-
-#: qml/MenuPage.qml:82
-msgid "Share Current Position"
-msgstr "Jelenlegi helyzet megosztása"
-
-#: qml/MenuPage.qml:89
-msgid "Center on current position"
-msgstr "Jelenlegi helyzet legyen középen"
-
-#: qml/MenuPage.qml:98
-msgid "Clear map"
-msgstr "Térkép törlése"
-
-#: qml/MenuPage.qml:116
-msgid "Auto-center on position"
-msgstr "A helyzet automatikus középre igazítása"
-
-#: qml/MenuPage.qml:133
-msgid "Auto-rotate on direction"
-msgstr "Automatikus irányra forgatás"
-
-#: qml/MenuPage.qml:148
-msgid "About"
-msgstr "Névjegy"
-
-#: qml/MenuPage.qml:152 qml/PreferencesPage.qml:36
-msgid "Preferences"
-msgstr "Beállítások"
-
-#: qml/Meters.qml:72 qml/Meters.qml:83 qml/NavigationInfoBlock.qml:83
-#: qml/NavigationInfoBlock.qml:85
-msgid "mph"
-msgstr ""
-
-#: qml/Meters.qml:94 qml/NavigationInfoBlock.qml:87
-msgid "km/h"
-msgstr ""
-
-#: qml/NarrativePage.qml:84
-msgid "Continue for %1."
-msgstr "Folytasd %1-n keresztül."
-
-#: qml/NarrativePage.qml:103
-msgid "Maneuvers"
-msgstr "Manőverek"
-
-#: qml/NavigationBlock.qml:139
-msgid "ETA"
-msgstr ""
-
-#: qml/NavigationBlock.qml:207
-msgid "Tap to review maneuvers or begin navigating"
-msgstr "Érintsd meg a manőverek kiértékeléséhez, vagy a navigáció kezdéséhez"
-
-#: qml/NavigationPage.qml:54
-msgid "Pause"
-msgstr "Szünet"
-
-#: qml/NavigationPage.qml:55
-msgid "Resume"
-msgstr "Folytatás"
-
-#: qml/NavigationPage.qml:55
-msgid "Begin"
-msgstr "Indítás"
-
-#: qml/NavigationPage.qml:66
-msgid "Reroute"
-msgstr "Újratervezés"
-
-#: qml/NavigationPage.qml:78
-msgid "Clear"
-msgstr "Törlés"
-
-#: qml/NavigationPage.qml:89
-msgid "Status"
-msgstr "Állapot"
-
-#: qml/NavigationPage.qml:137
-msgid "Remaining"
-msgstr "Hátralévő"
-
-#: qml/NavigationPage.qml:168
-msgid "Total"
-msgstr "Összes"
-
-#: qml/NavigationPage.qml:190
-msgid "Options"
-msgstr "Lehetőségek"
-
-#: qml/NavigationPage.qml:196
-msgid "Show navigation instructions"
-msgstr "Navigációs utasítások megjelenítése"
-
-#: qml/NavigationPage.qml:207
-msgid "Voice navigation instructions"
-msgstr "Hangos navigációs utasítások"
-
-#: qml/NavigationPage.qml:220
-msgid "Reroute automatically"
-msgstr "Automatikus újratervezés"
-
-#: qml/NavigationPage.qml:231 qml/PreferencesPage.qml:108
-msgid "Snap position to road"
-msgstr ""
-
-#: qml/NavigationPage.qml:243 qml/PreferencesPage.qml:52
-msgid "Map scale"
-msgstr "Térkép méretarány"
-
-#: qml/NavigationPage.qml:261
-msgid "Show direction signs"
-msgstr ""
-
-#: qml/NavigationPage.qml:270
-msgid "Show speed limit sign"
-msgstr ""
-
-#: qml/NavigationPage.qml:272
-msgid "Speed limit"
-msgstr ""
-
-#: qml/NavigationPage.qml:274 qml/PreferencesPage.qml:91
-msgid "Always"
-msgstr "Mindig"
-
-#: qml/NavigationPage.qml:275
-msgid "Only when exceeding"
-msgstr ""
-
-#: qml/NavigationPage.qml:276 qml/PreferencesPage.qml:89
-msgid "Never"
-msgstr "Soha"
-
-#: qml/NavigationSign.qml:92
-msgid "EXIT"
-msgstr ""
-
-#: qml/NearbyPage.qml:58
-msgid "Nearby Venues"
-msgstr "Közeli helyek"
-
-#: qml/NearbyPage.qml:78
-msgid "Near"
-msgstr "Közel"
-
-#: qml/NearbyPage.qml:111 routers/mapquest_open_settings.qml:26
-#: routers/ValhallaSettings.qml:33
+#: qml/BasemapButton.qml:225 qml/NearbyPage.qml:106 qml/PoiEditPage.qml:57
+#: routers/gpx_osmscout_settings.qml:54 routers/gpx_settings.qml:52
+#: routers/here_settings.qml:36 routers/mapquest_open_settings.qml:28
+#: routers/ValhallaSettings.qml:37
 msgid "Type"
 msgstr "Típus"
 
-#: qml/NearbyPage.qml:126
-msgid "Radius"
-msgstr "Sugár"
+#: qml/BasemapButton.qml:243 qml/js/util.js:240
+msgid "Default"
+msgstr "Alapértelmezett"
 
-#: qml/NorthArrow.qml:72
-msgid "Auto-rotate on"
-msgstr "Automatikus forgatás be"
+#: qml/BasemapButton.qml:244
+msgid "Guidance"
+msgstr "Útmutatás"
 
-#: qml/NorthArrow.qml:73
-msgid "Auto-rotate off"
-msgstr "Automatikus forgatás ki"
+#: qml/BasemapButton.qml:245
+msgid "Hybrid"
+msgstr "Hibrid"
 
-#: qml/PlaceTypePage.qml:122
-msgid "You can search for venues by type or name."
-msgstr "A helyszínekre típus vagy név alapján kereshetsz rá"
+#: qml/BasemapButton.qml:246
+msgid "Preview"
+msgstr "Előnézet"
 
-#: qml/PoiBubble.qml:60
+#: qml/BasemapButton.qml:247
+msgid "Satellite"
+msgstr "Műhold"
+
+#: qml/BasemapButton.qml:248
+msgid "Terrain"
+msgstr "Terep"
+
+#: qml/BasemapButton.qml:249
+msgid "Traffic"
+msgstr "Forgalom"
+
+#: qml/BasemapButton.qml:265
+msgid "Light"
+msgstr "Fény"
+
+#: qml/BasemapButton.qml:283
+msgid "Day"
+msgstr "Nappal"
+
+#: qml/BasemapButton.qml:284
+msgid "Night"
+msgstr "Éjszaka"
+
+#: qml/BasemapButton.qml:300
+msgid "Transport"
+msgstr ""
+
+#: qml/BasemapButton.qml:318 qml/PreferencesPage.qml:461 qml/RoutePage.qml:644
+#: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
+#: routers/here_settings.qml:37 routers/mapquest_open_settings.qml:29
+#: routers/ValhallaSettings.qml:38
+msgid "Bicycle"
+msgstr "Kerékpár"
+
+#: qml/BasemapButton.qml:319 qml/PreferencesPage.qml:461 qml/RoutePage.qml:644
+#: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
+#: routers/here_settings.qml:37 routers/mapquest_open_settings.qml:29
+#: routers/ValhallaSettings.qml:38
+msgid "Car"
+msgstr "Autó"
+
+#: qml/BasemapButton.qml:320 routers/ValhallaSettings.qml:150
+msgid "Walking"
+msgstr "Gyalog"
+
+#: qml/BasemapButton.qml:321 routers/ValhallaSettings.qml:38
+msgid "Public transport"
+msgstr "Tömegközlekedés"
+
+#: qml/BasemapButton.qml:437
+msgid "Map scale"
+msgstr "Térkép méretarány"
+
+#: qml/BasemapButton.qml:454
+msgid "Map scale during navigation"
+msgstr "Méretarány navigáció alatt"
+
+#: qml/BasemapPage.qml:48
+msgid "Map: %1"
+msgstr "Térkép: %1"
+
+#: qml/CenterButton.qml:111 qml/MapGestureArea.qml:47
+msgid "Auto-center off"
+msgstr "Automatikus középre igazítás ki"
+
+#: qml/CenterButton.qml:119 qml/MapGestureArea.qml:46
+msgid "Auto-center on"
+msgstr "Automatikus középre igazítás be"
+
+#: qml/CenterButton.qml:125
+msgid "Tap center button again for auto-center"
+msgstr ""
+"Automatikus középre igazításhoz érintsd meg a középre-ikont még egyszer"
+
+#: qml/GeocodeItem.qml:42
+msgid "No selection"
+msgstr "Nincs kiválasztva"
+
+#: qml/GeocodeItem.qml:134 qml/NavigationPage.qml:185 qml/PlaceNamePage.qml:48
+#: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:108 qml/RoutePage.qml:257
+#: qml/RoutePage.qml:443 qml/RoutePage.qml:558
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: qml/GeocodeItem.qml:402
+msgid "Suggestions (%1)"
+msgstr "Javaslatok (%1)"
+
+#: qml/GeocodeItem.qml:424
+msgid "Error while fetching results"
+msgstr "Hiba az eredmények lekérésekor"
+
+#: qml/GeocodeItem.qml:433
+msgid "Searching ..."
+msgstr "Keresés ..."
+
+#: qml/GeocodeItem.qml:438 qml/NearbyResultsPage.qml:99
+msgid "No results"
+msgstr "Nincs találat"
+
+#: qml/GeocodeItem.qml:443
+msgid "Results (%1)"
+msgstr "(%1) eredmény"
+
+#: qml/GeocodeItem.qml:479
+msgid "Points of Interest (%1)"
+msgstr "(%1) Érdekes Pont"
+
+#: qml/GeocodeItem.qml:484 qml/Navigator.qml:300 qml/Navigator.qml:302
+#: qml/PoiBlock.qml:407 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
+msgid "Unnamed point"
+msgstr "Névtelen pont"
+
+#: qml/GeocodeItem.qml:510
+msgid "Recent searches (%1)"
+msgstr "(%1) előző keresés"
+
+#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:52
+#: qml/RoutePointPage.qml:31
+msgid "Change provider (%1)"
+msgstr "Szolgáltatóváltás (%1)"
+
+#: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:85 qml/RootPage.qml:26
+msgid "Map"
+msgstr "Térkép"
+
+#: qml/GeocodePage.qml:49 qml/GeocodePage.qml:86
+msgid "Search: %1"
+msgstr "Keresés: %1"
+
+#: qml/GeocodePage.qml:81 qml/NearbyResultsPage.qml:69
+msgid "%1 [duplicate]"
+msgstr ""
+
+#: qml/GeocoderPage.qml:27 qml/GuidePage.qml:27
+msgid "Search engine"
+msgstr "Keresőmotor"
+
+#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
+#: qml/js/util.js:160
+msgid "%1 (disabled)"
+msgstr ""
+
+#: qml/InitPage.qml:34
+msgid "Initializing"
+msgstr "Inicializálás"
+
+#: qml/InitPage.qml:54 qml/RoutePage.qml:193
+msgid "Dismiss"
+msgstr "Elutasítás"
+
+#: qml/InitPage.qml:55
+msgid "Missing %1 key"
+msgstr ""
+
+#: qml/InitPage.qml:56
+msgid ""
+"Your installation is missing %1 API key. Please register at %1 and fill in "
+"your personal API key in Preferences. This key is not needed if you plan to "
+"use Pure Maps with the offline map provider."
+msgstr ""
+
+#: qml/LanguageSelector.qml:24
+msgid "Language"
+msgstr "Nyelv"
+
+#: qml/LanguageSelector.qml:43 qml/PreferencesPage.qml:71
+#: qml/PreferencesPage.qml:880
+msgid "English"
+msgstr "Angol"
+
+#: qml/LanguageSelector.qml:44 routers/gpx_osmscout_settings.qml:84
+#: routers/here_settings.qml:83 routers/mapquest_open_settings.qml:59
+#: routers/ValhallaSettings.qml:67
+msgid "English (United States)"
+msgstr ""
+
+#: qml/LicensePage.qml:25
+msgid "Accept"
+msgstr ""
+
+#: qml/LicensePage.qml:25
+msgid "Decline"
+msgstr ""
+
+#: qml/LicensePage.qml:48
+msgid "Accept license"
+msgstr ""
+
+#: qml/MapErrorPage.qml:25
+msgid "Error"
+msgstr "Hiba"
+
+#: qml/MapErrorPage.qml:34
+msgid "Error occurred while loading current map."
+msgstr "Hiba történt a térkép betöltésekor."
+
+#: qml/MapErrorPage.qml:40
+msgid ""
+"Depending on the used map provider, error could be caused by network failure, expired API access key, absence of offline server. Try to address the issue and/or change your map provider, preferences, or profile.\n"
+"If you change API access key, you may have to restart Pure Maps."
+msgstr ""
+"A térképszolgáltatótól függően, a hiba oka lehet:\n"
+"- hálózati kapcsolat\n"
+"- lejárt hozzáférési API kulcs\n"
+"- Offline szerver hiánya\n"
+"Próbálj meg szolgáltatót váltani, vagy ellenőrizd a beállításokat / profilt.\n"
+"Ha API kulcsot cserélsz, lehet, hogy újra kell indítanod a Pure Maps programot."
+
+#: qml/MapErrorPage.qml:51
+msgid ""
+"You are using an offline profile. Make sure that you have OSM Scout Server "
+"installed and running. Depending on your system, it is available either in "
+"application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
+"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
+"/osmscout-server\">OSM Scout Server manual</a> for details."
+msgstr ""
+"Offline profilt használsz. Bizonyosodj meg róla, hogy az OSM Scout Server "
+"telepítve van és fut. A rendszeredtől függően, elérhető az "
+"alkalmazásboltokban (OpenRepos a Sailfish OS, OpenStore az Ubuntu Touch "
+"esetében), a Flathubon, vagy a disztribúciódban. Bővebb információért lásd "
+"az <a href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
+"kézikönyvet</a>."
+
+#: qml/MapErrorPage.qml:62
+msgid ""
+"Last error:\n"
+"%1"
+msgstr ""
+"Utolsó hiba:\n"
+"%1"
+
+#: qml/MapErrorPage.qml:75 qml/MenuPage.qml:100 qml/PreferencesPage.qml:25
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:112
+msgid "Profile"
+msgstr "Profil"
+
+#: qml/MapErrorPage.qml:118 qml/MenuPage.qml:116
+msgid "Online"
+msgstr "Online"
+
+#: qml/MapErrorPage.qml:118 qml/MenuPage.qml:122
+msgid "Offline"
+msgstr "Offline"
+
+#: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
+msgid "HERE - Online"
+msgstr ""
+
+#: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
+msgid "HERE (disabled)"
+msgstr ""
+
+#: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
+msgid "Mixed"
+msgstr "Vegyes"
+
+#: qml/MapGestureArea.qml:64 qml/MapGestureArea.qml:82
+msgid "Stop navigation to select POI"
+msgstr "POI választásához előbb állítsd le a navigálást"
+
+#: qml/Map.qml:643 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
+#: qml/RoutePage.qml:173
+msgid "Origin"
+msgstr ""
+
+#: qml/Map.qml:645 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
+msgid "Final destination"
+msgstr "Végső cél"
+
+#: qml/Map.qml:647
+msgid "✓"
+msgstr ""
+
+#: qml/Map.qml:650
+msgid "#%1"
+msgstr ""
+
+#: qml/MenuPage.qml:43
+msgid "Stop following the movement"
+msgstr "Ne kövesse a mozgást"
+
+#: qml/MenuPage.qml:66
+msgid "Nearby venues"
+msgstr "Közeli helyszínek"
+
+#: qml/MenuPage.qml:72 qml/PoiPage.qml:28 qml/PoiPage.qml:127
+msgid "Bookmarks"
+msgstr "Könyvjelzők"
+
+#: qml/MenuPage.qml:79
+msgid "Share current position"
+msgstr "Jelenlegi helyzet megosztása"
+
+#: qml/MenuPage.qml:79
+msgid "Share current position (not ready)"
+msgstr "Jelenlegi helyzet megosztása (nincs kész)"
+
+#: qml/MenuPage.qml:86
+msgid "Share Current Position"
+msgstr "Jelenlegi helyzet megosztása"
+
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:354
+#: qml/NavigationCurrentBlock.qml:355 qml/NavigationSpeedBlock.qml:81
+#: qml/NavigationSpeedBlock.qml:82
+msgid "mph"
+msgstr "mph"
+
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:356
+#: qml/NavigationSpeedBlock.qml:83
+msgid "km/h"
+msgstr "km/h"
+
+#: qml/NarrativeItem.qml:120
+msgid "Continue for %1 (%2)."
+msgstr ""
+
+#: qml/NarrativeItem.qml:121
+msgid "Continue for %1."
+msgstr "Folytasd %1-n keresztül."
+
+#: qml/NavigationButtonClear.qml:46
+msgid "Route removed"
+msgstr "Útvonal eltávolítva"
+
+#: qml/NavigationButtonStartPause.qml:69
+msgid "Stopped to follow the movement"
+msgstr "Az útvonalkövetés leállt"
+
+#: qml/NavigationButtonStartPause.qml:74
+msgid "Navigation paused"
+msgstr "A navigáció szünetel"
+
+#: qml/NavigationButtonStartPause.qml:78
+msgid "Navigation started"
+msgstr "A navigáció elindult"
+
+#: qml/NavigationCurrentBlock.qml:218
+msgid "To route"
+msgstr "Útvonalhoz"
+
+#. TRANSLATORS: "(D)" corresponds to the abbreviated destination
+#: qml/NavigationOverviewBlock.qml:217
+msgid "(D)"
+msgstr ""
+
+#. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
+#: qml/NavigationOverviewBlock.qml:219
+msgid "(W)"
+msgstr ""
+
+#. TRANSLATORS: "(D)" corresponds to the abbreviated destination
+#: qml/NavigationOverviewBlock.qml:310
+msgid "(D) ETA"
+msgstr ""
+
+#. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
+#: qml/NavigationOverviewBlock.qml:312
+msgid "(W) ETA"
+msgstr ""
+
+#: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:291
+msgid "ETA"
+msgstr "TÉI"
+
+#: qml/NavigationPage.qml:46
+msgid "Pause"
+msgstr "Szünet"
+
+#: qml/NavigationPage.qml:46 qml/PreferencesPage.qml:772 qml/RoutePage.qml:67
 msgid "Navigate"
 msgstr "Navigálás"
 
-#: qml/PoiBubble.qml:77
-msgid "Nearby"
-msgstr "A közelben"
+#: qml/NavigationPage.qml:58
+msgid "Reroute"
+msgstr "Újratervezés"
 
-#: qml/PoiBubble.qml:94
-msgid "Share"
-msgstr "Megosztás"
+#: qml/NavigationPage.qml:70
+msgid "Clear"
+msgstr "Törlés"
 
-#: qml/PoiBubble.qml:100
-msgid "Share Location"
-msgstr "Helyzet Megosztása"
+#: qml/NavigationPage.qml:84
+msgid "Status"
+msgstr "Állapot"
 
-#: qml/PoiBubble.qml:111
+#: qml/NavigationPage.qml:134
+msgid "Estimated time of arrival"
+msgstr "Becsült érkezési idő"
+
+#: qml/NavigationPage.qml:161 qml/Navigator.qml:86
+msgid "Destination reached"
+msgstr "Elértél a célhoz"
+
+#: qml/NavigationPage.qml:173 qml/RoutePage.qml:187 qml/RoutePage.qml:194
+msgid "Destinations and waypoints"
+msgstr "Célok és útpontok"
+
+#: qml/NavigationPage.qml:207
+msgid "Origin: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:209
+msgid "Final destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:212 qml/RoutePage.qml:275
+msgid "Destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:213 qml/RoutePage.qml:276
+msgid "Waypoint: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:262 qml/RouteOverallInfo.qml:95
+msgid "Remaining"
+msgstr "Hátralévő"
+
+#. TRANSLATORS: Leg corresponds to the trip leg between two destinations, such
+#. as intermediate destinations on the route
+#: qml/NavigationPage.qml:314
+msgid "Leg"
+msgstr ""
+
+#: qml/NavigationPage.qml:343
+msgid "Arrived"
+msgstr ""
+
+#: qml/NavigationPage.qml:384
+msgid "Maneuvers"
+msgstr "Manőverek"
+
+#: qml/NavigationSign.qml:92
+msgid "EXIT"
+msgstr "KILÉPÉS"
+
+#: qml/Navigator.qml:78
+msgid "Destination %1 reached"
+msgstr ""
+
+#: qml/Navigator.qml:79
+msgid "Waypoint %1 reached"
+msgstr ""
+
+#: qml/Navigator.qml:129
+msgid "Voice navigation on"
+msgstr "Hangos navigáció be"
+
+#: qml/Navigator.qml:134
+msgid ""
+"Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
+"selected language"
+msgstr ""
+"Hangos utasítás nem érhető el: a kiválasztott nyelvre hiányzik a Text-to-"
+"Speech (TTS) motor"
+
+#: qml/Navigator.qml:185
+msgid "Routing failed: current position not known"
+msgstr ""
+
+#: qml/Navigator.qml:191
+msgid "Rerouting position"
+msgstr ""
+
+#: qml/Navigator.qml:199
+msgid "Routing"
+msgstr ""
+
+#: qml/Navigator.qml:210
+msgid "Routing failed: %1"
+msgstr ""
+
+#: qml/Navigator.qml:215 src/navigator.cpp:1049
+msgid "New route found"
+msgstr "Új útvonal megtalálva"
+
+#: qml/Navigator.qml:216
+msgid "Route found"
+msgstr ""
+
+#: qml/Navigator.qml:226 src/navigator.cpp:1051
+msgid "Routing failed"
+msgstr ""
+
+#: qml/Navigator.qml:258 src/navigator.cpp:1050
+msgid "Rerouting"
+msgstr "Újratervezés"
+
+#: qml/NearbyPage.qml:25 qml/NearbyResultsPage.qml:100
+msgid "Nearby Venues"
+msgstr "Közeli helyek"
+
+#: qml/NearbyPage.qml:76
+msgid ""
+"Select a reference location next to which you want to perform the search."
+msgstr ""
+
+#: qml/NearbyPage.qml:77
+msgid "Near"
+msgstr "Közel"
+
+#: qml/NearbyPage.qml:78
+msgid "Near location"
+msgstr ""
+
+#: qml/NearbyPage.qml:83
+msgid "Radius"
+msgstr "Sugár"
+
+#: qml/NearbyPage.qml:122
+msgid "Name"
+msgstr "Név"
+
+#: qml/NearbyResultsPage.qml:115
+msgid "Searching"
+msgstr "Keresés"
+
+#: qml/NearbyResultsPage.qml:131
+msgid "Nearby venues: %1 %2"
+msgstr ""
+
+#: qml/NearbyResultsPage.qml:147
+msgid "%1 Results"
+msgstr "%1 Találat"
+
+#: qml/NorthArrow.qml:60
+msgid "Auto-rotation requires auto-centering to be enabled"
+msgstr ""
+
+#: qml/NorthArrow.qml:71
+msgid "Auto-rotate on"
+msgstr "Automatikus forgatás be"
+
+#: qml/NorthArrow.qml:72
+msgid "Auto-rotate off"
+msgstr "Automatikus forgatás ki"
+
+#: qml/PlaceNamePage.qml:27
+msgid "Venue name"
+msgstr ""
+
+#: qml/PlaceNamePage.qml:69
+msgid "Name or keyword"
+msgstr ""
+
+#: qml/PlaceNamePage.qml:82
+msgid "You can search for venues by name."
+msgstr ""
+
+#: qml/PlaceTypePage.qml:27
+msgid "Venue type"
+msgstr ""
+
+#: qml/PlaceTypePage.qml:99
+msgid "You can search for venues by type."
+msgstr ""
+
+#: qml/PoiBlock.qml:97
+msgid "%1; %2"
+msgstr "%1; %2"
+
+#: qml/PoiBlock.qml:113
+msgid "Latitude: %1; Longitude: %2"
+msgstr "Szélesség: %1; Hosszúság: %2"
+
+#: qml/PoiBlock.qml:137 qml/PoiEditPage.qml:81
+msgid "Postal code"
+msgstr "Irányítószám"
+
+#: qml/PoiBlock.qml:138
 msgid "Web"
 msgstr "Web"
 
-#: qml/PreferencesPage.qml:42
+#: qml/PoiBlock.qml:139
+msgid "Phone"
+msgstr "Telefon"
+
+#: qml/PoiBlock.qml:140 qml/PoiEditPage.qml:114 qml/SharePage.qml:66
+msgid "Email"
+msgstr "E-mail"
+
+#: qml/PoiBlock.qml:141
+msgid "Shortlisted"
+msgstr "Szűkített"
+
+#: qml/PoiBlock.qml:142
+msgid "Text"
+msgstr "Szöveg"
+
+#: qml/PoiBlock.qml:144
+msgid "More info: %1"
+msgstr "Több infó: %1"
+
+#: qml/PoiBlock.qml:233
+msgid "Set as or Replace"
+msgstr ""
+
+#: qml/PoiBlock.qml:233
+msgid "Set as"
+msgstr ""
+
+#: qml/PoiBlock.qml:293
+msgid "Insert as"
+msgstr ""
+
+#: qml/PoiBlock.qml:298
+msgid "New origin"
+msgstr ""
+
+#: qml/PoiBlock.qml:311
+msgid "New final destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:323
+msgid "First intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:336
+msgid "Last intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:337
+msgid "Intermediate destination"
+msgstr ""
+
+#: qml/PoiEditPage.qml:25
+msgid "Edit bookmark"
+msgstr "Könyvjelző szerkesztése"
+
+#: qml/PoiEditPage.qml:28
+msgid "Save"
+msgstr "Mentés"
+
+#: qml/PoiEditPage.qml:42 qml/PreferencesPage.qml:36
+msgid "General"
+msgstr "Általános"
+
+#: qml/PoiEditPage.qml:48
+msgid "Title"
+msgstr "Cím"
+
+#: qml/PoiEditPage.qml:49
+msgid "Enter title"
+msgstr "Cím megadása"
+
+#: qml/PoiEditPage.qml:58
+msgid "Enter type, such as Restaurant"
+msgstr "Típus megadása, pl. Étterem"
+
+#: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:95
+msgid "Address"
+msgstr "Cím"
+
+#: qml/PoiEditPage.qml:74
+msgid "Enter address"
+msgstr "Írd be a címet"
+
+#: qml/PoiEditPage.qml:82
+msgid "Enter postal code"
+msgstr "Add meg az irányítószámot"
+
+#: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:221
+msgid "Contact"
+msgstr "Névjegy"
+
+#: qml/PoiEditPage.qml:98
+msgid "Phone number"
+msgstr "Telefonszám"
+
+#: qml/PoiEditPage.qml:99
+msgid "Enter phone number"
+msgstr "Írd be a telefonszámot"
+
+#: qml/PoiEditPage.qml:106
+msgid "URL"
+msgstr "URL"
+
+#: qml/PoiEditPage.qml:107
+msgid "Enter URL"
+msgstr "URL megadása"
+
+#: qml/PoiEditPage.qml:115
+msgid "Enter Email"
+msgstr ""
+
+#: qml/PoiEditPage.qml:125 qml/PoiInfoPage.qml:255
+msgid "Additional info"
+msgstr "További infó"
+
+#: qml/PoiEditPage.qml:131
+msgid "Enter additional info"
+msgstr "További infó megadása"
+
+#: qml/PoiInfoPage.qml:32 qml/PoiPage.qml:95
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: qml/PoiInfoPage.qml:67
+msgid "Latitude: %1"
+msgstr "Szélesség: %1"
+
+#: qml/PoiInfoPage.qml:68
+msgid "Longitude: %2"
+msgstr "Hosszúság: %2"
+
+#: qml/PoiInfoPage.qml:79
+msgid "Plus code: %1"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:112
+msgid "Postal code: %1"
+msgstr "Irányítószám: %1"
+
+#: qml/PoiInfoPage.qml:125
+msgid "Actions"
+msgstr ""
+
+#: qml/PoiInfoPage.qml:131
+msgid "Bookmark"
+msgstr "Könyvjelző"
+
+#: qml/PoiInfoPage.qml:144
+msgid "Shortlist"
+msgstr "Gyorslista"
+
+#: qml/PoiInfoPage.qml:157
+msgid "Share location"
+msgstr "Helyzet megosztása"
+
+#: qml/PoiInfoPage.qml:170
+msgid "Center on location"
+msgstr "A helyzet középre igazítása"
+
+#: qml/PoiInfoPage.qml:182
+msgid "Navigate To"
+msgstr "Navigálás ide: "
+
+#: qml/PoiInfoPage.qml:197
+msgid "Navigate From"
+msgstr "Navigálás innen: "
+
+#: qml/PoiInfoPage.qml:210
+msgid "Nearby"
+msgstr "A közelben"
+
+#: qml/PoiPage.qml:85
+msgid "View"
+msgstr "Megtekintés"
+
+#: qml/PoiPage.qml:152
+msgid ""
+"No points of bookmarks defined yet. You can bookmark locations using map and"
+" search."
+msgstr ""
+
+#: qml/Poi.qml:197
+msgid "Clearing map"
+msgstr "Térkép törlése"
+
+#: qml/PreferencesPage.qml:45
+msgid "Units"
+msgstr "Mértékegységek"
+
+#: qml/PreferencesPage.qml:46
+msgid "Metric"
+msgstr "Metrikus"
+
+#: qml/PreferencesPage.qml:46
+msgid "American"
+msgstr "Amerikai"
+
+#: qml/PreferencesPage.qml:46
+msgid "British"
+msgstr "Brit"
+
+#: qml/PreferencesPage.qml:59
+msgid "Preferred map language."
+msgstr "Előnyben részesített térkép nyelv."
+
+#: qml/PreferencesPage.qml:62
+msgid "Local"
+msgstr "Helyi"
+
+#: qml/PreferencesPage.qml:63
+msgid "Arabic"
+msgstr "Arab"
+
+#: qml/PreferencesPage.qml:64 routers/here_settings.qml:66
+msgid "Basque"
+msgstr "Baszk"
+
+#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:881
+#: routers/here_settings.qml:72
+msgid "Catalan"
+msgstr "Katalán"
+
+#: qml/PreferencesPage.qml:66
+msgid "Chinese (simplified)"
+msgstr "Kínai (egyszerűsített)"
+
+#: qml/PreferencesPage.qml:67
+msgid "Chinese (traditional)"
+msgstr "Kínai (hagyományos)"
+
+#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:882
+msgid "Czech"
+msgstr "Cseh"
+
+#: qml/PreferencesPage.qml:69
+msgid "Danish"
+msgstr "Dán"
+
+#: qml/PreferencesPage.qml:70
+msgid "Dutch"
+msgstr "Holland"
+
+#: qml/PreferencesPage.qml:72
+msgid "Finnish"
+msgstr "Finn"
+
+#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:885
+msgid "French"
+msgstr "Francia"
+
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:883
+msgid "German"
+msgstr "Német"
+
+#: qml/PreferencesPage.qml:75
+msgid "Gaelic"
+msgstr "Kelta"
+
+#: qml/PreferencesPage.qml:76
+msgid "Greek"
+msgstr "Görög"
+
+#: qml/PreferencesPage.qml:77
+msgid "Hebrew"
+msgstr "Héber"
+
+#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:886
+msgid "Hindi"
+msgstr "Hindi"
+
+#: qml/PreferencesPage.qml:79
+msgid "Indonesian"
+msgstr "Indonéz"
+
+#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:887
+msgid "Italian"
+msgstr "Olasz"
+
+#: qml/PreferencesPage.qml:81
+msgid "Japanese"
+msgstr "Japán"
+
+#: qml/PreferencesPage.qml:82
+msgid "Korean"
+msgstr "Koreai"
+
+#: qml/PreferencesPage.qml:83 routers/here_settings.qml:123
+msgid "Norwegian"
+msgstr "Norvég"
+
+#: qml/PreferencesPage.qml:84 routers/here_settings.qml:127
+msgid "Persian"
+msgstr "Perzsa"
+
+#: qml/PreferencesPage.qml:85
+msgid "Polish"
+msgstr "Lengyel"
+
+#: qml/PreferencesPage.qml:86
+msgid "Portuguese"
+msgstr "Portugál"
+
+#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:888
+msgid "Russian"
+msgstr "Orosz"
+
+#: qml/PreferencesPage.qml:88
+msgid "Sinhalese"
+msgstr "Szingaléz"
+
+#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:884
+msgid "Spanish"
+msgstr "Spanyol"
+
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:890
+msgid "Swedish"
+msgstr "Svéd"
+
+#: qml/PreferencesPage.qml:91
+msgid "Thai"
+msgstr "Thai"
+
+#: qml/PreferencesPage.qml:92
+msgid "Turkish"
+msgstr "Török"
+
+#: qml/PreferencesPage.qml:93 routers/here_settings.qml:156
+msgid "Ukrainian"
+msgstr "Ukrán"
+
+#: qml/PreferencesPage.qml:94 routers/here_settings.qml:157
+msgid "Urdu"
+msgstr "Urdu"
+
+#: qml/PreferencesPage.qml:95 routers/here_settings.qml:160
+msgid "Vietnamese"
+msgstr "Vietnámi"
+
+#: qml/PreferencesPage.qml:96 routers/here_settings.qml:161
+msgid "Welsh"
+msgstr "Walesi"
+
+#: qml/PreferencesPage.qml:106
+msgid ""
+"Switching between day/night modes of the map. Note that not all providers "
+"have all maps with day/night pairs available."
+msgstr ""
+"Váltás a térkép nappali/éjszakai módja között. Vedd figyelembe, hogy nem "
+"minden szolgáltató minden térképe rendelkezik éjszakai/nappali nézet-párral."
+
+#: qml/PreferencesPage.qml:109
+msgid "Day/night mode"
+msgstr "Nappali/éjszakai mód"
+
+#: qml/PreferencesPage.qml:111
+msgid "Manual"
+msgstr "Kézi"
+
+#: qml/PreferencesPage.qml:112
+msgid "Sunrise and sunset"
+msgstr "Napfelkelte és napnyugta"
+
+#: qml/PreferencesPage.qml:130
+msgid ""
+"Automatically switch between map types of the provider according to the "
+"current task. For example, show map designed for navigation while routing."
+msgstr ""
+
+#: qml/PreferencesPage.qml:132
+msgid "Switch map modes"
+msgstr "Térkép mód váltás"
+
+#: qml/PreferencesPage.qml:142
+msgid "Fetch autocompleted search results while typing a search string."
+msgstr ""
+
+#: qml/PreferencesPage.qml:143
+msgid "Autocomplete while searching"
+msgstr "Automata kiegészítés keresés közben"
+
+#: qml/PreferencesPage.qml:157
+msgid "Device"
+msgstr "Készülék"
+
+#: qml/PreferencesPage.qml:164
+msgid ""
+"You can control if and when Pure Maps keeps display active and works in the "
+"background. It is recommended to allow Pure Maps to prevent screensaver "
+"during navigation and never prevent the device suspend directly. The latter "
+"is useful if you wish to receive voice navigation commands while keeping "
+"device in the pocket."
+msgstr ""
+
+#: qml/PreferencesPage.qml:178
+msgid ""
+"Only applies when Pure Maps is active. When minimized, screensaver is "
+"controlled by normal device-level preferences."
+msgstr ""
+
+#: qml/PreferencesPage.qml:180
+msgid "Prevent screensaver"
+msgstr "Képernyőkímélő tiltása"
+
+#: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
+#: qml/PreferencesPage.qml:600 qml/PreferencesPage.qml:681
+msgid "Never"
+msgstr "Soha"
+
+#: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
+msgid "When navigating"
+msgstr "Navigálás közben"
+
+#: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
+#: qml/PreferencesPage.qml:600
+msgid "Always"
+msgstr "Mindig"
+
+#: qml/PreferencesPage.qml:194
+msgid ""
+"Allows to keep positioning and navigation instructions spoken even when the "
+"screen is switched off. If set to 'never', usual device suspend policy is "
+"applied."
+msgstr ""
+
+#: qml/PreferencesPage.qml:197
+msgid "Prevent sleep"
+msgstr "Elalvás megakadályozása"
+
+#: qml/PreferencesPage.qml:219
+msgid "Privacy"
+msgstr "Adatvédelem"
+
+#: qml/PreferencesPage.qml:226
+msgid ""
+"Clear all history, including search, routes, and destinations. Please note "
+"that the bookmarks will be kept."
+msgstr ""
+"Az összes előzmény törlése, beleértve kereséseket, útvonalakat és célokat. "
+"Kérlek vedd figyelembe, hogy a könyvjelzők megőrződnek."
+
+#: qml/PreferencesPage.qml:235
+msgid "History cleared"
+msgstr "Előzmények törölve"
+
+#: qml/PreferencesPage.qml:244
+msgid "Clear history"
+msgstr "Előzmények törlése"
+
+#: qml/PreferencesPage.qml:256
+msgid "Clear map tiles stored in a cache"
+msgstr "A gyorsítótárban tárolt térképkockák törlése"
+
+#: qml/PreferencesPage.qml:264
+msgid "Clear cache"
+msgstr "Gyorsítótár ürítése"
+
+#: qml/PreferencesPage.qml:276
+msgid "Licenses"
+msgstr ""
+
+#: qml/PreferencesPage.qml:283
+msgid ""
+"List of the licenses and whether they are accepted or declined. Here you can"
+" change the acceptance of each license."
+msgstr ""
+
+#: qml/PreferencesPage.qml:291
+msgid ""
+"Please restart application after changing the acceptance state of the "
+"license(s)."
+msgstr ""
+
+#: qml/PreferencesPage.qml:326
+msgid "Declined"
+msgstr ""
+
+#: qml/PreferencesPage.qml:327
+msgid "Accepted"
+msgstr ""
+
+#: qml/PreferencesPage.qml:328
+msgid "Unset"
+msgstr ""
+
+#: qml/PreferencesPage.qml:374
+msgid "API keys"
+msgstr "API kulcsok"
+
+#: qml/PreferencesPage.qml:382
+msgid ""
+"You can specify personal keys for online services in these settings. Please "
+"check the conditions for each of the services that you want to use to ensure"
+" that you comply with them."
+msgstr ""
+
+#: qml/PreferencesPage.qml:391
+msgid "Please restart application after changing API keys."
+msgstr "Kérlek indítsd újra az alkalmazást API kulcs csere után."
+
+#: qml/PreferencesPage.qml:453
+msgid "Exploring"
+msgstr ""
+
+#: qml/PreferencesPage.qml:459
+msgid ""
+"Select mode of transportation. Only applies when Pure Maps is not "
+"navigating. Uses OSM Scout Server for its operation."
+msgstr ""
+
+#: qml/PreferencesPage.qml:460 qml/PreferencesPage.qml:530
+msgid "Snap position to road"
+msgstr "Pozíció útvonalhoz közelítése (snap)"
+
+#: qml/PreferencesPage.qml:461 routers/gpx_osmscout_settings.qml:33
+#: routers/gpx_settings.qml:31
+msgid "None"
+msgstr "Egyik sem"
+
+#: qml/PreferencesPage.qml:461 qml/RoutePage.qml:644
+#: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
+#: routers/here_settings.qml:37 routers/mapquest_open_settings.qml:29
+#: routers/ValhallaSettings.qml:38
+msgid "Foot"
+msgstr "Gyalog"
+
+#: qml/PreferencesPage.qml:490
+msgid "Show navigation instructions"
+msgstr "Navigációs utasítások megjelenítése"
+
+#: qml/PreferencesPage.qml:500
+msgid "Voice navigation instructions"
+msgstr "Hangos navigációs utasítások"
+
+#: qml/PreferencesPage.qml:510
+msgid "Reroute automatically"
+msgstr "Automatikus újratervezés"
+
+#: qml/PreferencesPage.qml:519
+msgid "Automatic zoom on start"
+msgstr "Automatikus zoom induláskor"
+
+#: qml/PreferencesPage.qml:529
+msgid "Uses OSM Scout Server for its operation."
+msgstr ""
+
+#: qml/PreferencesPage.qml:541
+msgid "Show direction signs"
+msgstr "Irányjelzések megjelenítése"
+
+#: qml/PreferencesPage.qml:551
+msgid ""
+"Set rotation of the map in the direction of movement when starting "
+"navigation."
+msgstr "A navigáció indulásakor a térkép a mozgás irányába forduljon"
+
+#: qml/PreferencesPage.qml:552
+msgid "Rotate map when navigating"
+msgstr "Térkép forgatása navigáció közben"
+
+#: qml/PreferencesPage.qml:561
 msgid "Only applies to vector maps."
 msgstr "Csak a vektoros térképekre vonatkozik."
 
-#: qml/PreferencesPage.qml:43
+#: qml/PreferencesPage.qml:563
 msgid "Tilt map when navigating"
 msgstr "Térkép megdöntése navigációkor"
 
-#: qml/PreferencesPage.qml:67
+#: qml/PreferencesPage.qml:571
+msgid "Smooth position animation"
+msgstr "Lágy pozíció-animáció"
+
+#: qml/PreferencesPage.qml:581
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
@@ -620,467 +1707,1203 @@ msgstr ""
 "A navigáció hangjának preferált neme. Csak néhány motor és nyelv esetében "
 "támogatott."
 
-#: qml/PreferencesPage.qml:68
+#: qml/PreferencesPage.qml:582 qml/PreferencesPage.qml:897
 msgid "Voice gender"
 msgstr "Hang neme"
 
-#: qml/PreferencesPage.qml:70
+#: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:898
 msgid "Male"
 msgstr "Férfi"
 
-#: qml/PreferencesPage.qml:71
+#: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:898
 msgid "Female"
 msgstr "Női"
 
-#: qml/PreferencesPage.qml:86
+#: qml/PreferencesPage.qml:597
 msgid ""
-"Only applies when Pure Maps is active. When minimized, sleep is controlled "
-"by normal device-level preferences."
+"Show speed limit sign. Requires snapping position to the road to find the "
+"speed limit."
 msgstr ""
+"Mutasd a sebesség korlátozó táblát. (A pozíció útvonal-közelítése szükséges "
+"hozzá.)"
 
-#: qml/PreferencesPage.qml:87
-msgid "Prevent sleep"
-msgstr "Elalvás megakadályozása"
+#: qml/PreferencesPage.qml:599
+msgid "Speed limit"
+msgstr "Sebességhatár"
 
-#: qml/PreferencesPage.qml:90
-msgid "When navigating"
-msgstr "Navigálás közben"
+#: qml/PreferencesPage.qml:600
+msgid "Only when exceeding"
+msgstr "Csak túllépéskor"
 
-#: qml/PreferencesPage.qml:107
+#: qml/PreferencesPage.qml:623 qml/PreferencesPage.qml:727
+msgid "Compass"
+msgstr "Iránytű"
+
+#: qml/PreferencesPage.qml:630
 msgid ""
-"Select mode of transportation. Only applies when Pure Maps is not "
-"navigating."
+"Compass can be used to determine orientation of your device and align the "
+"map accordingly. Note that the compass is enabled only when your position is"
+" determined, your speed is low, and, if you are navigating, only if you are "
+"by foot or on the bicycle."
 msgstr ""
 
-#: qml/PreferencesPage.qml:110
-msgid "None"
+#: qml/PreferencesPage.qml:640
+msgid "Use compass for determination of the direction."
+msgstr "Iránytű használata az irány meghatározásához."
+
+#: qml/PreferencesPage.qml:641
+msgid "Use compass"
+msgstr "Használj iránytűt"
+
+#: qml/PreferencesPage.qml:653
+msgid "Controls"
+msgstr "Vezérlők"
+
+#: qml/PreferencesPage.qml:660
+msgid ""
+"Map view can be shown with either all applicable controls in full view mode "
+"or with a smaller selected set of controls in minimal view mode. To switch "
+"between the modes, click on a map."
 msgstr ""
 
-#: qml/PreferencesPage.qml:111 routers/mapquest_open_settings.qml:28
-#: routers/ValhallaSettings.qml:35
-msgid "Car"
-msgstr "Autó"
+#: qml/PreferencesPage.qml:669
+msgid "Set map view to minimal mode on start"
+msgstr "Minimál térkép nézet mód beállítása induláskor"
 
-#: qml/PreferencesPage.qml:112 routers/mapquest_open_settings.qml:29
-#: routers/ValhallaSettings.qml:36
-msgid "Bicycle"
-msgstr "Kerékpár"
+#: qml/PreferencesPage.qml:677
+msgid ""
+"Automatically switch to minimal view mode after given delay or disable "
+"automatic switch between map view modes."
+msgstr ""
 
-#: qml/PreferencesPage.qml:113 routers/mapquest_open_settings.qml:30
-#: routers/ValhallaSettings.qml:37
-msgid "Foot"
-msgstr "Gyalog"
+#: qml/PreferencesPage.qml:679
+msgid "Switch to minimal view"
+msgstr "Minimál nézetre váltás"
 
-#: qml/PreferencesPage.qml:130
-msgid "Units"
-msgstr "Mértékegységek"
+#: qml/PreferencesPage.qml:681
+msgid "10 seconds"
+msgstr "10 másodperc"
 
-#: qml/PreferencesPage.qml:132
-msgid "Metric"
-msgstr "Metrikus"
+#: qml/PreferencesPage.qml:681
+msgid "20 seconds"
+msgstr "20 másodperc"
 
-#: qml/PreferencesPage.qml:133
-msgid "American"
-msgstr "Amerikai"
+#: qml/PreferencesPage.qml:682
+msgid "30 seconds"
+msgstr "30 másodperc"
 
-#: qml/PreferencesPage.qml:134
-msgid "British"
-msgstr "Brit"
+#: qml/PreferencesPage.qml:682
+msgid "1 minute"
+msgstr "1 perc"
 
-#: qml/PreferencesPage.qml:155
-msgid "Clear cache"
-msgstr "Gyorsítótár ürítése"
+#: qml/PreferencesPage.qml:696
+msgid "Always show"
+msgstr "Mindig mutasd"
 
-#: qml/pure-maps.qml:175
-msgid "Rerouting failed: %1"
-msgstr "Az újratervezés sikertelen: %1"
+#: qml/PreferencesPage.qml:701
+msgid ""
+"Always show the selected controls regardless of whether map view is in the "
+"minimal or in the full mode."
+msgstr ""
+"Mindig mutasd a kiválasztott vezérlőgombokat, függetlenül attól, hogy a "
+"nézet minimál vagy teljes."
 
-#: qml/RoutePage.qml:70
+#: qml/PreferencesPage.qml:709
+msgid "Menu"
+msgstr "Menü"
+
+#: qml/PreferencesPage.qml:718
+msgid "Center on current location"
+msgstr "A mostani hely legyen a középpont"
+
+#: qml/PreferencesPage.qml:736
+msgid "Map selection"
+msgstr "Térkép választás"
+
+#: qml/PreferencesPage.qml:745
+msgid "Speed and location precision"
+msgstr "Sebesség és hely pontosság"
+
+#: qml/PreferencesPage.qml:754
+msgid "Scale"
+msgstr "Méretarány"
+
+#: qml/PreferencesPage.qml:781
+msgid "Navigation Start/Pause"
+msgstr ""
+
+#: qml/PreferencesPage.qml:790
+msgid "Navigation Clear Route"
+msgstr "Navigációs Útvonal Törlése"
+
+#: qml/PreferencesPage.qml:805
+msgid "Zoom"
+msgstr ""
+
+#: qml/PreferencesPage.qml:812
+msgid ""
+"Map zoom level can be adjusted automatically according to your speed. Here, "
+"you can adjust settings related to this adjustment."
+msgstr ""
+
+#: qml/PreferencesPage.qml:822
+msgid ""
+"Maximal zoom level that is going to be used in the automatic adjustment of "
+"the zoom."
+msgstr ""
+
+#: qml/PreferencesPage.qml:824
+msgid "Maximal zoom level"
+msgstr ""
+
+#: qml/PreferencesPage.qml:835
+msgid ""
+"Zoom level will be adjusted to have the same map height as the distance that"
+" is covered by you in the given amount of seconds."
+msgstr ""
+
+#: qml/PreferencesPage.qml:838
+msgid "Time range, s"
+msgstr "Időtartam (mp)"
+
+#: qml/PreferencesPage.qml:857
+msgid "Testing"
+msgstr "Tesztelés"
+
+#: qml/PreferencesPage.qml:867
+msgid ""
+"Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
+" navigation, preferred gender, and press the button below for testing."
+msgstr ""
+"A Text-to-Speech (TTS) motor tesztelése. A teszteléshez válaszd ki ugyanazt "
+"a nyelvet, mint a navigáció esetén, a hang nemét, és nyomd meg az alábbi "
+"gombot."
+
+#: qml/PreferencesPage.qml:889
+msgid "Slovak"
+msgstr "Szlovák"
+
+#: qml/PreferencesPage.qml:896
+msgid "Preferred gender. Only supported by some engines and languages."
+msgstr "Kedvelt nem. Csak néhány nyelv és motor támogatott."
+
+#: qml/PreferencesPage.qml:910
+msgid "Test"
+msgstr "Teszt"
+
+#: qml/PreferencesPage.qml:921
+msgid "Selected voice engine: %1"
+msgstr "Kiválasztott hang-motor: %1"
+
+#: qml/PreferencesPage.qml:923
+msgid ""
+"No engine available for selected language.\n"
+"\n"
+"Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
+msgstr ""
+"A kiválasztott nyelv esetében nem áll rendelkezésre motor.\n"
+"\n"
+"A Pure Maps támogatja a Mimic, Flite, PicoTTS, és Espeak TTS motorokat. A motorokat külön kell telepíteni, kivéve ha   Flatpak-en vagy OpenStore-on használod a PureMaps-et. A Sailfish OS felhasználók megtalálják a motorokat az OpenRepos-on."
+
+#: qml/PreferencesPage.qml:957
+msgid "Development"
+msgstr "Fejlesztés"
+
+#: qml/PreferencesPage.qml:964
+msgid ""
+"The following options are for development only. Please don't change them "
+"unless you know what you are doing."
+msgstr ""
+"A következő lehetőségek csak fejlesztőknek vannak. Ne módosítsd őket, csak "
+"ha tudod mit csinálsz."
+
+#: qml/PreferencesPage.qml:972
+msgid ""
+"Sets current position to the center of the current map view. Remember to "
+"disable GPS positioning when using this option."
+msgstr ""
+
+#: qml/PreferencesPage.qml:973
+msgid "Set position to the map center"
+msgstr "A pozíció legyen a térkép közepe"
+
+#: qml/PreferencesPage.qml:980
+msgid "Show current zoom level"
+msgstr "Mutasd a nagyítás mértékét"
+
+#: qml/pure-maps.qml:30
+msgid "Pure Maps"
+msgstr "Pure Maps"
+
+#: qml/RouteOverallInfo.qml:129
+msgid "Total"
+msgstr "Összes"
+
+#: qml/RoutePage.qml:34
+msgid "Stop"
+msgstr "Leállítás"
+
+#: qml/RoutePage.qml:34
+msgid "Begin"
+msgstr "Indítás"
+
+#: qml/RoutePage.qml:35
+msgid "Route"
+msgstr "Útvonal"
+
+#: qml/RoutePage.qml:67
+msgid "Follow me"
+msgstr "Kövess"
+
+#: qml/RoutePage.qml:79
+msgid "Reverse route"
+msgstr "Útirány megfordítása"
+
+#: qml/RoutePage.qml:98
+msgid "Clear route"
+msgstr "Útvonal törlése"
+
+#: qml/RoutePage.qml:172
 msgid "From"
 msgstr "Innen"
 
-#: qml/RoutePage.qml:103
+#: qml/RoutePage.qml:179
 msgid "To"
 msgstr "Ide"
 
-#: qml/RoutePage.qml:161
-msgid "Reverse endpoints"
-msgstr "Végpontok megfordítása"
+#: qml/RoutePage.qml:180 qml/RoutePage.qml:334
+msgid "Destination"
+msgstr "Cél"
 
-#: qml/RouterPage.qml:66
+#: qml/RoutePage.qml:195
+msgid ""
+"Additional destinations and wayponts can be added along the route. The both locations are used for calculation of the route, but only destinations are tracked for being reached. As a result, if you miss the waypoint and later rejoin the calculated route after the waypoint, it will be assumed that waypoint was reached and it will be dismissed in the rerouting calculations later. In contrast, destinations have to be reached within the certain tolerance and will not be dismissed in such manner.\n"
+"\n"
+"So, set as destination the locations that you need to reach on your route and as waypoints the locations that are just for shaping the route according to your preferences.\n"
+"\n"
+"Dismiss this dialog to stop showing this message."
+msgstr ""
+
+#: qml/RoutePage.qml:217
+msgid "Optimize order"
+msgstr ""
+
+#: qml/RoutePage.qml:240
+msgid "Up"
+msgstr "Fel"
+
+#: qml/RoutePage.qml:249
+msgid "Down"
+msgstr "Le"
+
+#: qml/RoutePage.qml:263
+msgid "Convert to waypoint"
+msgstr "Átalakítás útponttá"
+
+#: qml/RoutePage.qml:264
+msgid "Convert to destination"
+msgstr "Átalakítás céllá"
+
+#: qml/RoutePage.qml:310
+msgid "Add destination"
+msgstr "Cél hozzáadása"
+
+#: qml/RoutePage.qml:318
+msgid "Add waypoint"
+msgstr "Útpont hozzáadása"
+
+#: qml/RoutePage.qml:334
+msgid "Waypoint"
+msgstr "Útpont"
+
+#: qml/RoutePage.qml:427
+msgid "Routes"
+msgstr "Útvonalak"
+
+#: qml/RoutePage.qml:455
+msgid "%1 ‒ %2 (%3 destinations and waypoints)"
+msgstr ""
+
+#: qml/RoutePage.qml:500
+msgid "Show more..."
+msgstr "Több megjelenítése..."
+
+#: qml/RoutePage.qml:540
+msgid "Destinations"
+msgstr "Célok"
+
+#: qml/RoutePage.qml:632
+msgid "Follow the movement and show just in time information"
+msgstr "Kövesd a mozgást és mutass pillanatnyi információt"
+
+#: qml/RoutePage.qml:641
+msgid ""
+"Select mode of transportation. Only applies when Pure Maps is in follow me "
+"mode."
+msgstr ""
+
+#: qml/RoutePage.qml:643
+msgid "Mode of transportation"
+msgstr ""
+
+#: qml/RoutePointPage.qml:65
+msgid "Current selection: %1"
+msgstr "Mostani kiválasztás: %1"
+
+#: qml/RouterPage.qml:27
+msgid "Routing engine"
+msgstr "Útvonaltervező motor"
+
+#: qml/RouterPage.qml:65
 msgid "Modes: %1"
 msgstr "Módok: %1"
 
-#: qml/SharePage.qml:53
+#: qml/ScaleBar.qml:208
+msgid "Auto-zoom requires auto-centering to be enabled"
+msgstr ""
+
+#: qml/ScaleBar.qml:219
+msgid "Auto-zoom on"
+msgstr "Auto-zoom BE"
+
+#: qml/ScaleBar.qml:220
+msgid "Auto-zoom off"
+msgstr "Auto-zoom KI"
+
+#: qml/SharePage.qml:48
 msgid "SMS"
 msgstr "SMS"
 
-#: qml/SharePage.qml:59 qml/SharePage.qml:91
-msgid "Message copied to the clipboard"
-msgstr "Üzenet a vágólapra másolva"
-
-#: qml/SharePage.qml:60
+#: qml/SharePage.qml:53
 msgid "Launching the Messages application"
 msgstr "Az Üzenetek alkalmazás indítása"
 
-#: qml/SharePage.qml:75
-msgid "Email"
-msgstr "E-mail"
+#: qml/SharePage.qml:54 qml/SharePage.qml:80
+msgid "Message copied to the clipboard"
+msgstr "Üzenet a vágólapra másolva"
 
-#: qml/SharePage.qml:78
+#: qml/SharePage.qml:59
+msgid "Error sending message"
+msgstr "Hiba az üzenetküldésben"
+
+#: qml/SharePage.qml:69
 msgid "Launching the Email application"
 msgstr "Az E-mail alkalmazás indítása"
 
-#: qml/SharePage.qml:88
+#: qml/SharePage.qml:77
 msgid "Other"
 msgstr "Más"
 
-#: routers/digitransit_results.qml:60
-msgid "Route %1. total %2"
-msgstr "Útvonal %1. összesen %2"
+#: qml/SharePage.qml:97
+msgid "Add address"
+msgstr "Cím hozzáadása"
 
-#: routers/digitransit_results.qml:155
-msgid "Walk %1"
-msgstr "Gyalog: %1"
+#: qml/SharePage.qml:106
+msgid "Add link to OpenStreetMaps"
+msgstr "Hivatkozás hozzáadása az OpenStreetMaps-hez"
 
-#: routers/digitransit_results.qml:156
-msgid "%1 → %2"
-msgstr "%1 → %2"
+#: qml/SharePage.qml:115
+msgid "Add link to Google Maps"
+msgstr "Hivatkozás hozzáadása a Google  Maps-hez"
 
-#: routers/digitransit_results.qml:239
-msgid "Results"
-msgstr "Eredmények"
+#: routers/gpx_osmscout_settings.qml:32 routers/gpx_settings.qml:30
+msgid "File"
+msgstr "Fájl"
 
-#: routers/digitransit_settings.qml:28
-msgid "Region"
-msgstr "Régió"
+#: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:45
+msgid "Reverse"
+msgstr "Visszirány"
 
-#: routers/digitransit_settings.qml:30
-msgid "HSL"
-msgstr "HSL"
-
-#: routers/digitransit_settings.qml:31
-msgid "Waltti"
-msgstr "Waltti"
-
-#: routers/digitransit_settings.qml:32
-msgid "Finland"
-msgstr "Finnország"
-
-#: routers/digitransit_settings.qml:70 routers/digitransit_settings.qml:75
-#: routers/digitransit_settings.qml:80
-msgid "Depart"
-msgstr "Indulás"
-
-#: routers/digitransit_settings.qml:76
-msgid "Arrive"
-msgstr "Érkezés"
-
-#: routers/digitransit_settings.qml:107
-msgid "Today"
-msgstr "Ma"
-
-#: routers/digitransit_settings.qml:150
-msgid "Now"
-msgstr "Most"
-
-#: routers/digitransit_settings.qml:179
-msgid "Criterion"
-msgstr "Feltétel"
-
-#: routers/digitransit_settings.qml:182
-msgid "Least transfers"
-msgstr "Kevesebb átszállás"
-
-#: routers/digitransit_settings.qml:183
-msgid "Least walking"
-msgstr "Kevesebb gyaloglás"
-
-#: routers/mapquest_open_settings.qml:48
-msgid "Try to avoid tolls"
-msgstr "Útdíjak elkerülése"
-
-#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:61
-msgid "Language"
-msgstr "Nyelv"
-
-#: routers/mapquest_open_settings.qml:61
-msgid "English (UK)"
-msgstr "Angol (UK)"
-
-#: routers/mapquest_open_settings.qml:62
-msgid "English (US)"
-msgstr "Angol (US)"
-
-#: routers/mapquest_open_settings.qml:63
-msgid "French (Canada)"
-msgstr "Francia (Kanada)"
-
-#: routers/mapquest_open_settings.qml:64
-msgid "French (France)"
-msgstr "Francia (Franciaország)"
-
-#: routers/mapquest_open_settings.qml:65 routers/ValhallaSettings.qml:70
-msgid "German"
-msgstr "Német"
-
-#: routers/mapquest_open_settings.qml:66 routers/ValhallaSettings.qml:74
-msgid "Russian"
-msgstr "Orosz"
-
-#: routers/mapquest_open_settings.qml:67
-msgid "Spanish (Mexico)"
-msgstr "Spanyol (Mexikó)"
-
-#: routers/mapquest_open_settings.qml:68
-msgid "Spanish (Spain)"
-msgstr "Spanyol (Spanyolország)"
-
-#: routers/ValhallaSettings.qml:28
-msgid "General options"
-msgstr ""
-
-#: routers/ValhallaSettings.qml:38
+#: routers/gpx_osmscout_settings.qml:55 routers/here_settings.qml:38
+#: routers/ValhallaSettings.qml:39 routers/ValhallaSettings.qml:132
 msgid "Bus"
-msgstr ""
+msgstr "Busz"
 
-#: routers/ValhallaSettings.qml:39
+#: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "High-occupancy vehicle (HOV)"
 msgstr ""
 
+#: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
+msgid "Motorcycle"
+msgstr "Motorkerékpár"
+
+#: routers/gpx_osmscout_settings.qml:56 routers/here_settings.qml:37
+#: routers/ValhallaSettings.qml:39
+msgid "Motor Scooter"
+msgstr "Robogó"
+
+#: routers/gpx_osmscout_settings.qml:77 routers/ValhallaSettings.qml:60
+msgid "Bulgarian (Bulgaria)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:78 routers/here_settings.qml:73
+#: routers/ValhallaSettings.qml:61
+msgid "Catalan (Spain)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:79 routers/here_settings.qml:78
+#: routers/ValhallaSettings.qml:62
+msgid "Czech (Czechia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:80 routers/here_settings.qml:79
+#: routers/ValhallaSettings.qml:63
+msgid "Danish (Denmark)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:81 routers/here_settings.qml:90
+#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:64
+msgid "German (Germany)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:82 routers/here_settings.qml:91
 #: routers/ValhallaSettings.qml:65
-msgid "Catalan"
-msgstr "Katalán"
+msgid "Greek (Greece)"
+msgstr ""
 
-#: routers/ValhallaSettings.qml:66
-msgid "Czech"
-msgstr "Cseh"
+#: routers/gpx_osmscout_settings.qml:83 routers/here_settings.qml:82
+#: routers/mapquest_open_settings.qml:58 routers/ValhallaSettings.qml:66
+msgid "English (United Kingdom)"
+msgstr ""
 
-#: routers/ValhallaSettings.qml:67
-msgid "English"
-msgstr "Angol"
-
-#: routers/ValhallaSettings.qml:68
+#: routers/gpx_osmscout_settings.qml:85 routers/ValhallaSettings.qml:68
 msgid "English Pirate"
 msgstr ""
 
-#: routers/ValhallaSettings.qml:69
-msgid "French"
+#: routers/gpx_osmscout_settings.qml:86 routers/here_settings.qml:144
+#: routers/mapquest_open_settings.qml:60 routers/ValhallaSettings.qml:69
+msgid "Spanish (Spain)"
+msgstr "Spanyol (Spanyolország)"
+
+#: routers/gpx_osmscout_settings.qml:87 routers/ValhallaSettings.qml:70
+msgid "Estonian (Estonia)"
 msgstr ""
 
+#: routers/gpx_osmscout_settings.qml:88 routers/here_settings.qml:86
 #: routers/ValhallaSettings.qml:71
-msgid "Hindi"
-msgstr "Hindi"
+msgid "Finnish (Finland)"
+msgstr ""
 
-#: routers/ValhallaSettings.qml:72
-msgid "Italian"
-msgstr "Olasz"
+#: routers/gpx_osmscout_settings.qml:89 routers/here_settings.qml:87
+#: routers/mapquest_open_settings.qml:63 routers/ValhallaSettings.qml:72
+msgid "French (France)"
+msgstr "Francia (Franciaország)"
 
+#: routers/gpx_osmscout_settings.qml:90 routers/here_settings.qml:95
 #: routers/ValhallaSettings.qml:73
-msgid "Portuguese"
+msgid "Hindi (India)"
 msgstr ""
 
+#: routers/gpx_osmscout_settings.qml:91 routers/here_settings.qml:96
+#: routers/ValhallaSettings.qml:74
+msgid "Hungarian (Hungary)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:92 routers/here_settings.qml:101
 #: routers/ValhallaSettings.qml:75
-msgid "Slovenian"
-msgstr "Szlovén"
+msgid "Italian (Italy)"
+msgstr ""
 
+#: routers/gpx_osmscout_settings.qml:93 routers/here_settings.qml:102
 #: routers/ValhallaSettings.qml:76
-msgid "Spanish"
-msgstr "Spanyol"
+msgid "Japanese (Japan)"
+msgstr ""
 
-#: routers/ValhallaSettings.qml:77
-msgid "Swedish"
-msgstr "Svéd"
+#: routers/gpx_osmscout_settings.qml:94 routers/ValhallaSettings.qml:77
+msgid "Norwegian Bokmål (Norway)"
+msgstr ""
 
-#: routers/ValhallaSettings.qml:92
+#: routers/gpx_osmscout_settings.qml:95 routers/here_settings.qml:81
+#: routers/ValhallaSettings.qml:78
+msgid "Dutch (Netherlands)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:96 routers/here_settings.qml:128
+#: routers/ValhallaSettings.qml:79
+msgid "Polish (Poland)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:97 routers/here_settings.qml:129
+#: routers/ValhallaSettings.qml:80
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:98 routers/here_settings.qml:130
+#: routers/ValhallaSettings.qml:81
+msgid "Portuguese (Portugal)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:99 routers/here_settings.qml:134
+#: routers/ValhallaSettings.qml:82
+msgid "Romanian (Romania)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:100 routers/here_settings.qml:135
+#: routers/mapquest_open_settings.qml:64 routers/ValhallaSettings.qml:83
+msgid "Russian (Russia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:101 routers/here_settings.qml:142
+#: routers/ValhallaSettings.qml:84
+msgid "Slovak (Slovakia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:102 routers/here_settings.qml:143
+#: routers/ValhallaSettings.qml:85
+msgid "Slovenian (Slovenia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:103 routers/here_settings.qml:146
+#: routers/ValhallaSettings.qml:86
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:104 routers/here_settings.qml:154
+#: routers/ValhallaSettings.qml:87
+msgid "Turkish (Turkey)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:105 routers/ValhallaSettings.qml:88
+msgid "Ukrainian (Ukraine)"
+msgstr ""
+
+#: routers/here_settings.qml:30 routers/ValhallaSettings.qml:31
+msgid "General options"
+msgstr "Általános lehetőségek"
+
+#: routers/here_settings.qml:38
+msgid "Taxi"
+msgstr ""
+
+#: routers/here_settings.qml:59
+msgid "Afrikaans"
+msgstr ""
+
+#: routers/here_settings.qml:60
+msgid "Albanian"
+msgstr ""
+
+#: routers/here_settings.qml:61
+msgid "Amharic"
+msgstr ""
+
+#: routers/here_settings.qml:62
+msgid "Arabic (Saudi Arabia)"
+msgstr ""
+
+#: routers/here_settings.qml:63
+msgid "Armenian"
+msgstr ""
+
+#: routers/here_settings.qml:64
+msgid "Assamese"
+msgstr ""
+
+#: routers/here_settings.qml:65
+msgid "Azerbaijani (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:67
+msgid "Belarusian"
+msgstr ""
+
+#: routers/here_settings.qml:68
+msgid "Bangla (Bangladesh)"
+msgstr ""
+
+#: routers/here_settings.qml:69
+msgid "Bangla (India)"
+msgstr ""
+
+#: routers/here_settings.qml:70
+msgid "Bosnian"
+msgstr ""
+
+#: routers/here_settings.qml:71
+msgid "Bulgarian"
+msgstr ""
+
+#: routers/here_settings.qml:74
+msgid "Chinese (China)"
+msgstr ""
+
+#: routers/here_settings.qml:75
+msgid "Chinese (Hong Kong SAR China)"
+msgstr ""
+
+#: routers/here_settings.qml:76
+msgid "Chinese (Taiwan)"
+msgstr ""
+
+#: routers/here_settings.qml:77
+msgid "Croatian"
+msgstr ""
+
+#: routers/here_settings.qml:80
+msgid "Persian (Afghanistan)"
+msgstr ""
+
+#: routers/here_settings.qml:84
+msgid "Estonian"
+msgstr ""
+
+#: routers/here_settings.qml:85
+msgid "Filipino (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:88
+msgid "Galician"
+msgstr ""
+
+#: routers/here_settings.qml:89
+msgid "Georgian"
+msgstr ""
+
+#: routers/here_settings.qml:92
+msgid "Gujarati"
+msgstr ""
+
+#: routers/here_settings.qml:93
+msgid "Hausa (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:94
+msgid "Hebrew (Israel)"
+msgstr ""
+
+#: routers/here_settings.qml:97
+msgid "Icelandic"
+msgstr ""
+
+#: routers/here_settings.qml:98
+msgid "Igbo (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:99
+msgid "Indonesian (Indonesia)"
+msgstr ""
+
+#: routers/here_settings.qml:100
+msgid "Irish"
+msgstr ""
+
+#: routers/here_settings.qml:103
+msgid "Kʼicheʼ (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:104
+msgid "Kannada"
+msgstr ""
+
+#: routers/here_settings.qml:105
+msgid "Kazakh"
+msgstr ""
+
+#: routers/here_settings.qml:106
+msgid "Khmer"
+msgstr ""
+
+#: routers/here_settings.qml:107
+msgid "Kinyarwanda (Rwanda)"
+msgstr ""
+
+#: routers/here_settings.qml:108
+msgid "Konkani"
+msgstr ""
+
+#: routers/here_settings.qml:109
+msgid "Korean (South Korea)"
+msgstr ""
+
+#: routers/here_settings.qml:110
+msgid "Kurdish (Arabic)"
+msgstr ""
+
+#: routers/here_settings.qml:111
+msgid "Kyrgyz (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:112
+msgid "Latvian"
+msgstr ""
+
+#: routers/here_settings.qml:113
+msgid "Lithuanian"
+msgstr ""
+
+#: routers/here_settings.qml:114
+msgid "Luxembourgish"
+msgstr ""
+
+#: routers/here_settings.qml:115
+msgid "Macedonian"
+msgstr ""
+
+#: routers/here_settings.qml:116
+msgid "Malay (Malaysia)"
+msgstr ""
+
+#: routers/here_settings.qml:117
+msgid "Malayalam"
+msgstr ""
+
+#: routers/here_settings.qml:118
+msgid "Maltese"
+msgstr ""
+
+#: routers/here_settings.qml:119
+msgid "Maori (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:120
+msgid "Marathi"
+msgstr ""
+
+#: routers/here_settings.qml:121
+msgid "Mongolian (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:122
+msgid "Nepali (Nepal)"
+msgstr ""
+
+#: routers/here_settings.qml:124
+msgid "Norwegian Nynorsk"
+msgstr ""
+
+#: routers/here_settings.qml:125
+msgid "Odia"
+msgstr ""
+
+#: routers/here_settings.qml:126
+msgid "Northern Sotho"
+msgstr ""
+
+#: routers/here_settings.qml:131
+msgid "Punjabi"
+msgstr ""
+
+#: routers/here_settings.qml:132
+msgid "Punjabi (Arabic)"
+msgstr ""
+
+#: routers/here_settings.qml:133
+msgid "Cusco Quechua (Latin, Peru)"
+msgstr ""
+
+#: routers/here_settings.qml:136
+msgid "Scottish Gaelic (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:137
+msgid "Serbian (Cyrillic, Bosnia & Herzegovina)"
+msgstr ""
+
+#: routers/here_settings.qml:138
+msgid "Serbian (Cyrillic, Serbia)"
+msgstr ""
+
+#: routers/here_settings.qml:139
+msgid "Serbian (Latin, Serbia)"
+msgstr ""
+
+#: routers/here_settings.qml:140
+msgid "Sindhi (Arabic)"
+msgstr ""
+
+#: routers/here_settings.qml:141
+msgid "Sinhala"
+msgstr ""
+
+#: routers/here_settings.qml:145
+msgid "Swahili"
+msgstr ""
+
+#: routers/here_settings.qml:147
+msgid "Tajik (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:148
+msgid "Tamil"
+msgstr ""
+
+#: routers/here_settings.qml:149
+msgid "Tatar (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:150
+msgid "Telugu"
+msgstr ""
+
+#: routers/here_settings.qml:151
+msgid "Thai (Thailand)"
+msgstr ""
+
+#: routers/here_settings.qml:152
+msgid "Tigrinya"
+msgstr ""
+
+#: routers/here_settings.qml:153
+msgid "Tswana"
+msgstr ""
+
+#: routers/here_settings.qml:155
+msgid "Turkmen (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:158
+msgid "Uyghur (Arabic)"
+msgstr ""
+
+#: routers/here_settings.qml:159
+msgid "Uzbek (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:162
+msgid "Wolof (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:163
+msgid "Xhosa"
+msgstr ""
+
+#: routers/here_settings.qml:164
+msgid "Yoruba (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:165
+msgid "Zulu (South Africa)"
+msgstr ""
+
+#: routers/here_settings.qml:172 routers/ValhallaSettings.qml:95
 msgid "Advanced options"
+msgstr "Haladó lehetőségek"
+
+#: routers/here_settings.qml:179 routers/ValhallaSettings.qml:103
+msgid "Prefer shorter route"
+msgstr "Rövidebb út előnyben"
+
+#: routers/here_settings.qml:191
+msgid "Avoid tolls"
 msgstr ""
 
-#: routers/ValhallaSettings.qml:99
-msgid "Prefer shorter path"
+#: routers/here_settings.qml:203
+msgid "Avoid highways"
 msgstr ""
 
-#: routers/ValhallaSettings.qml:110
-msgid "Bicycle type"
+#: routers/here_settings.qml:215
+msgid "Avoid tunnels"
 msgstr ""
 
-#: routers/ValhallaSettings.qml:112
-msgid "Road"
+#: routers/here_settings.qml:227
+msgid "Avoid dirt roads"
 msgstr ""
 
-#: routers/ValhallaSettings.qml:113
-msgid "Hybrid or City (default)"
+#: routers/here_settings.qml:239
+msgid "Avoid difficult turns"
 msgstr ""
+
+#: routers/here_settings.qml:251
+msgid "Avoid ferries"
+msgstr ""
+
+#: routers/here_settings.qml:263
+msgid "Avoid car trains"
+msgstr ""
+
+#: routers/here_settings.qml:275
+msgid "Avoid seasonally closed roads"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:46
+msgid "Try to avoid tolls"
+msgstr "Útdíjak elkerülése"
+
+#: routers/mapquest_open_settings.qml:61
+msgid "Spanish (Mexico)"
+msgstr "Spanyol (Mexikó)"
+
+#: routers/mapquest_open_settings.qml:62
+msgid "French (Canada)"
+msgstr "Francia (Kanada)"
 
 #: routers/ValhallaSettings.qml:114
+msgid "Bicycle type"
+msgstr "Kerékpár típusa"
+
+#: routers/ValhallaSettings.qml:115
+msgid "Road"
+msgstr "Út"
+
+#: routers/ValhallaSettings.qml:115
+msgid "Hybrid or City (default)"
+msgstr "Hibrid vagy város (alapértelmezett)"
+
+#: routers/ValhallaSettings.qml:115
 msgid "Cross"
-msgstr ""
+msgstr "Kereszteződés"
 
 #: routers/ValhallaSettings.qml:115
 msgid "Mountain"
-msgstr ""
+msgstr "Hegy"
 
-#: routers/ValhallaSettings.qml:132
-msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr ""
+#: routers/ValhallaSettings.qml:131
+msgid "Your desire to use buses."
+msgstr "Buszok használata megengedett"
 
-#: routers/ValhallaSettings.qml:133
-msgid "Hiking difficulty"
-msgstr ""
-
-#: routers/ValhallaSettings.qml:135
-msgid "Walking"
-msgstr ""
-
-#: routers/ValhallaSettings.qml:136
-msgid "Hiking (default)"
-msgstr ""
-
-#: routers/ValhallaSettings.qml:137
-msgid "Mountain hiking"
-msgstr ""
-
-#: routers/ValhallaSettings.qml:138
-msgid "Demanding mountain hiking"
-msgstr ""
-
-#: routers/ValhallaSettings.qml:139
-msgid "Alpine hiking"
-msgstr ""
-
-#: routers/ValhallaSettings.qml:140
-msgid "Demanding alpine hiking"
-msgstr ""
-
-#: routers/ValhallaSettings.qml:157
-msgid "Ferries"
-msgstr ""
-
-#: routers/ValhallaSettings.qml:159 routers/ValhallaSettings.qml:181
-#: routers/ValhallaSettings.qml:204 routers/ValhallaSettings.qml:224
-#: routers/ValhallaSettings.qml:247 routers/ValhallaSettings.qml:267
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
+#: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:205
+#: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:239
+#: routers/ValhallaSettings.qml:257 routers/ValhallaSettings.qml:273
+#: routers/ValhallaSettings.qml:309
 msgid "Avoid"
-msgstr ""
+msgstr "Kerüld"
 
-#: routers/ValhallaSettings.qml:160 routers/ValhallaSettings.qml:182
-#: routers/ValhallaSettings.qml:225 routers/ValhallaSettings.qml:289
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
+#: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:221
+#: routers/ValhallaSettings.qml:239 routers/ValhallaSettings.qml:292
 msgid "Prefer to avoid"
-msgstr ""
+msgstr "Inkább elkerülni"
 
-#: routers/ValhallaSettings.qml:161 routers/ValhallaSettings.qml:205
-#: routers/ValhallaSettings.qml:226 routers/ValhallaSettings.qml:248
-#: routers/ValhallaSettings.qml:268
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
+#: routers/ValhallaSettings.qml:205 routers/ValhallaSettings.qml:221
+#: routers/ValhallaSettings.qml:239 routers/ValhallaSettings.qml:257
+#: routers/ValhallaSettings.qml:273 routers/ValhallaSettings.qml:309
 msgid "No preference (default)"
 msgstr ""
 
-#: routers/ValhallaSettings.qml:162 routers/ValhallaSettings.qml:184
-#: routers/ValhallaSettings.qml:227 routers/ValhallaSettings.qml:291
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:169
+#: routers/ValhallaSettings.qml:186 routers/ValhallaSettings.qml:222
+#: routers/ValhallaSettings.qml:240 routers/ValhallaSettings.qml:293
 msgid "Incline"
 msgstr ""
 
-#: routers/ValhallaSettings.qml:179
+#: routers/ValhallaSettings.qml:148
+msgid "The maximum difficulty of hiking trails that is allowed."
+msgstr ""
+
+#: routers/ValhallaSettings.qml:149
+msgid "Hiking difficulty"
+msgstr "Túranehézség"
+
+#: routers/ValhallaSettings.qml:150
+msgid "Hiking (default)"
+msgstr "Túra (alapértelmezett)"
+
+#: routers/ValhallaSettings.qml:150
+msgid "Mountain hiking"
+msgstr "Hegyi túra"
+
+#: routers/ValhallaSettings.qml:151
+msgid "Demanding mountain hiking"
+msgstr ""
+
+#: routers/ValhallaSettings.qml:151
+msgid "Alpine hiking"
+msgstr "Alpesi túra"
+
+#: routers/ValhallaSettings.qml:151
+msgid "Demanding alpine hiking"
+msgstr ""
+
+#: routers/ValhallaSettings.qml:167
+msgid "Ferries"
+msgstr "Kompok"
+
+#: routers/ValhallaSettings.qml:184
 msgid "Highways"
-msgstr ""
+msgstr "Autópályák"
 
-#: routers/ValhallaSettings.qml:183 routers/ValhallaSettings.qml:290
+#: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:292
 msgid "No preference"
-msgstr ""
+msgstr "Nincs preferált"
 
-#: routers/ValhallaSettings.qml:185
+#: routers/ValhallaSettings.qml:186
 msgid "Prefer (default)"
-msgstr ""
+msgstr "Preferált (alapértelmezett)"
 
-#: routers/ValhallaSettings.qml:201
+#: routers/ValhallaSettings.qml:203
 msgid ""
 "Your desire to tackle hills. When avoiding hills and steep grades, longer "
 "(time and distance) routes can be selected. By allowing hills, it indicates "
 "you do not fear hills and steeper grades."
 msgstr ""
 
-#: routers/ValhallaSettings.qml:202
+#: routers/ValhallaSettings.qml:204
 msgid "Hills"
-msgstr ""
+msgstr "Hegyek"
 
-#: routers/ValhallaSettings.qml:206 routers/ValhallaSettings.qml:249
-#: routers/ValhallaSettings.qml:269
+#: routers/ValhallaSettings.qml:205
 msgid "Allow"
-msgstr ""
+msgstr "Engedélyezés"
 
-#: routers/ValhallaSettings.qml:222
+#: routers/ValhallaSettings.qml:220
 msgid "Primary roads"
 msgstr ""
 
-#: routers/ValhallaSettings.qml:244
+#: routers/ValhallaSettings.qml:237
+msgid "Your desire to use rail/subway/metro."
+msgstr ""
+
+#: routers/ValhallaSettings.qml:238
+msgid "Rail"
+msgstr ""
+
+#: routers/ValhallaSettings.qml:255
 msgid "Your propensity to use roads alongside other vehicles."
 msgstr ""
 
-#: routers/ValhallaSettings.qml:245
+#: routers/ValhallaSettings.qml:256
 msgid "Roads"
-msgstr ""
+msgstr "Utak"
 
-#: routers/ValhallaSettings.qml:265
+#: routers/ValhallaSettings.qml:272
 msgid "Tolls"
-msgstr ""
+msgstr "Fizetős útvonalak"
 
-#: routers/ValhallaSettings.qml:285
+#: routers/ValhallaSettings.qml:290
 msgid ""
 "Your desire for adventure. When preferred, router will tend to avoid major "
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
 msgstr ""
+"Kalandra vágysz. Ha úgy szeretnéd, az útvonaltervező kerülni fogja a főbb "
+"utakat, és másodlagos terepen visz. Néha jelöletlen úton, ösvényen vagy "
+"rossz terepviszonyokon keresztül."
 
-#: routers/ValhallaSettings.qml:286
+#: routers/ValhallaSettings.qml:291
 msgid "Trails"
 msgstr ""
 
-#: routers/ValhallaSettings.qml:288
+#: routers/ValhallaSettings.qml:292
 msgid "Avoid (default)"
+msgstr "Elkerülés (alapértelmezett)"
+
+#: routers/ValhallaSettings.qml:308
+msgid "Transfers"
 msgstr ""
 
-#: qml/js/util.js:86
+#: qml/js/util.js:157
 msgid "%1 (default)"
 msgstr "%1 (alapértelmezett)"
 
+#: qml/js/util.js:239
+msgid "Alternatives"
+msgstr "Alternatívák"
+
+#: src/cmdlineparser.cpp:18
+msgid "Displays help on commandline options."
+msgstr ""
+
+#: src/cmdlineparser.cpp:20
+msgid "Displays version information."
+msgstr ""
+
+#: src/cmdlineparser.cpp:23
+msgid "Show location given by geo:latitude,longitude URI or perform search."
+msgstr ""
+
+#: src/navigator.cpp:152
+msgid "Position unknown"
+msgstr "A pozíció nem ismert"
+
+#: src/navigator.cpp:158
+msgid "Position imprecise: accuracy %1"
+msgstr "A pozíció nem pontos: pontosság %1"
+
+#: src/navigator.cpp:177 src/navigator.cpp:428
+msgid "Preparing to start navigation"
+msgstr "Felkészülés a navigáció indítására"
+
+#: src/navigator.cpp:470
+msgid "Moving in a wrong direction"
+msgstr ""
+
+#: src/navigator.cpp:480
+msgid "Away from route"
+msgstr ""
+
+#. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
+#. and adjust the order if needed
+#: src/navigator.cpp:659 src/navigator.cpp:670
+msgid "In %2, %1"
+msgstr "%2, %1 után"
+
+#. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
+#. hours (%1) and minutes (%2)
+#: src/navigator.cpp:1001
+msgid "%1 h %2 min"
+msgstr "%1 ó %2 p"
+
+#. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
+#. (%1)
+#: src/navigator.cpp:1003
+msgid "%1 min"
+msgstr "%1 p"
+
+#: src/navigator.cpp:1048
+msgid "Starting navigation"
+msgstr "Navigáció indítása"
+
 #: standard input:1
-msgid "Search in Finland"
-msgstr "Keresés Finnországban"
+msgid "Search in Finland. Supports autocomplete"
+msgstr ""
 
 #: standard input:2
+msgid "Search based on HERE data. Supports autocomplete"
+msgstr ""
+
+#: standard input:3
 msgid "Search based on open data sources"
 msgstr "Keresés nyílt adatforrások alapján"
 
-#: standard input:3 standard input:4
-msgid "Search based on OpenStreetMap data"
-msgstr "Keresés az OpenStreetMap adatok alapján"
+#: standard input:4
+msgid "Search based on open data sources. Supports autocomplete"
+msgstr ""
 
 #: standard input:5
+msgid "Search based on OpenStreetMap data. Supports autocomplete"
+msgstr ""
+
+#: standard input:6
 msgid "Venues listed and reviewed by Foursquare users"
 msgstr "A helyek Forsquare felhasználók által felsoroltak és értékeltek"
 
-#: standard input:6 standard input:7
+#: standard input:7 standard input:8
 msgid "Points of interest from OpenStreetMap data"
 msgstr "Az érdekes pontok az OpenStreetMap adatokon alapulnak"
 
-#: standard input:8
-msgid "Public transport routing in Finland"
-msgstr "Útvonaltervezés tömegközlekedéssel Finnországban"
-
 #: standard input:9
-msgid "public transport"
-msgstr "tömegközlekedés"
+msgid "Routing along GPX track"
+msgstr "Navigálás GPX track alapján"
 
-#: standard input:10 standard input:12 standard input:14
-msgid "Routing based on OpenStreetMap data"
-msgstr "Az útvonaltervezés az OpenStreetMap adatokon alapul"
-
-#: standard input:11 standard input:13 standard input:15 standard input:17
+#: standard input:10 standard input:12 standard input:14 standard input:16
+#: standard input:18 standard input:20 standard input:22
 msgid "car"
 msgstr "autóval"
 
-#: standard input:11 standard input:13 standard input:17
+#: standard input:10 standard input:12 standard input:14 standard input:16
+#: standard input:18 standard input:22
+msgid "bicycle"
+msgstr "kerékpár"
+
+#: standard input:10 standard input:12 standard input:14 standard input:16
+#: standard input:18 standard input:22
 msgid "foot"
 msgstr "gyalog"
 
-#: standard input:16
+#: standard input:11
+msgid "Routing along GPX track processed by OSM Scout Server"
+msgstr ""
+
+#: standard input:13
+msgid "Routing by HERE"
+msgstr ""
+
+#: standard input:15 standard input:17 standard input:19
+msgid "Routing based on OpenStreetMap data"
+msgstr "Az útvonaltervezés az OpenStreetMap adatokon alapul"
+
+#: standard input:21
 msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr ""

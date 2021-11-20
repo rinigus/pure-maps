@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 13:56+0200\n"
+"POT-Creation-Date: 2021-11-20 17:14+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Michele Claus <claus.miki@hotmail.it>, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/rinigus/teams/89597/it/)\n"
@@ -24,181 +24,193 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: guides/foursquare.py:191
+#: geocoders/here.py:141
+msgid "Search suggestion"
+msgstr ""
+
+#: geocoders/here.py:149
+msgid "Food types: {}"
+msgstr ""
+
+#: geocoders/here.py:156
+msgid "Opening hours: {}"
+msgstr ""
+
+#: guides/foursquare.py:198
 msgid "Opening hours:"
 msgstr "Orari di apertura:"
 
-#: poor/geocoder.py:110
+#: poor/geocoder.py:112
 msgid "Point from geo link"
 msgstr "Punto da geo link"
 
-#: poor/geocoder.py:122
+#: poor/geocoder.py:124
 msgid "Point from coordinates"
 msgstr "Punto da coordinate"
 
-#: poor/geocoder.py:134
+#: poor/geocoder.py:136
 msgid "Point from Plus code"
 msgstr "Punto dal codice Plus"
 
-#: poor/geocoder.py:143 poor/geocoder.py:180 poor/guide.py:123
-#: poor/router.py:134
+#: poor/geocoder.py:145 poor/geocoder.py:182 poor/guide.py:123
+#: poor/router.py:136
 msgid "Connection timed out"
 msgstr "Connessione scaduta"
 
-#: poor/history.py:32 qml/GeocodeItem.qml:209 qml/GeocodeItem.qml:527
-#: qml/MenuPage.qml:87 qml/NearbyPage.qml:30 qml/NearbyPage.qml:137
-#: qml/NearbyPage.qml:152 qml/RoutePage.qml:30 qml/RoutePage.qml:31
-#: qml/RoutePage.qml:220 qml/RoutePage.qml:225 qml/RoutePage.qml:428
-#: qml/RoutePage.qml:443 qml/RoutePage.qml:445 qml/RoutePoint.qml:42
-#: qml/RoutePoint.qml:58
+#: poor/history.py:33 qml/GeocodeItem.qml:210 qml/GeocodeItem.qml:544
+#: qml/MenuPage.qml:87 qml/Navigator.qml:192 qml/NearbyPage.qml:30
+#: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
+#: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
+#: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
+#: qml/RoutePage.qml:747 qml/RoutePoint.qml:44 qml/RoutePoint.qml:62
 msgid "Current position"
 msgstr "Posizione attuale"
 
-#: poor/keystore.py:50
-msgid ""
-"Foursquare Client ID. Register at https://developer.foursquare.com and "
-"create your own Client ID and Client Secret keys"
-msgstr ""
-"ID cliente Foursquare. Registrati su https://developer.foursquare.com e crea"
-" il tuo ID cliente e le tue chiavi segrete"
-
-#: poor/keystore.py:51
-msgid "Foursquare Client ID"
-msgstr "ID cliente Foursquare"
-
-#: poor/keystore.py:52
-msgid "Foursquare Client Secret"
-msgstr "Foursquare client Segreto"
-
 #: poor/keystore.py:55
 msgid ""
-"Mapbox API key. Register at https://www.mapbox.com and create your own API "
-"key"
+"Register at <a "
+"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
+" and create your own Client ID and Client Secret keys"
 msgstr ""
-"Chiave API Mapbox. Registrati su https://www.mapbox.com e crea la tua chiave"
-" API"
 
 #: poor/keystore.py:56
-msgid "Mapbox API key"
-msgstr "Chiave API Mapbox"
+msgid ""
+"Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
+"and create your own API key"
+msgstr ""
+
+#: poor/keystore.py:57
+msgid ""
+"Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
+"create your own API key"
+msgstr ""
+
+#: poor/keystore.py:58
+msgid ""
+"Register at <a "
+"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
+"and create your own API key"
+msgstr ""
 
 #: poor/keystore.py:59
 msgid ""
-"MapQuest API key. Register at https://developer.mapquest.com/ and create "
+"Register at <a "
+"href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
 "your own API key"
 msgstr ""
-"Chiave API MapQuest. Registrati su https://developer.mapquest.com/ e crea la"
-" tua chiave API"
 
 #: poor/keystore.py:60
+msgid ""
+"Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
+"and create your own API key"
+msgstr ""
+
+#: poor/keystore.py:61
+msgid ""
+"Register at <a "
+"href=\"https://developer.here.com\">https://developer.here.com</a> and "
+"create your own App API Key"
+msgstr ""
+
+#: poor/keystore.py:65
+msgid "Foursquare Client ID"
+msgstr "ID cliente Foursquare"
+
+#: poor/keystore.py:66
+msgid "Foursquare Client Secret"
+msgstr "Foursquare client Segreto"
+
+#: poor/keystore.py:69
+msgid "Mapbox API key"
+msgstr "Chiave API Mapbox"
+
+#: poor/keystore.py:72
+msgid "MapTiler API key"
+msgstr ""
+
+#: poor/keystore.py:75
 msgid "MapQuest API key"
 msgstr "Chiave API MapQuest"
 
-#: poor/keystore.py:63
-msgid ""
-"OpenCage API key. Register at https://opencagedata.com/ and create your own "
-"API key"
-msgstr ""
-"Chiave API OpenCage. Registrati su https://opencagedata.com/ e crea la tua "
-"chiave API"
-
-#: poor/keystore.py:64
+#: poor/keystore.py:78
 msgid "OpenCage API key"
 msgstr "Chiave API OpenCage"
 
-#: poor/keystore.py:67
-msgid ""
-"Stadia Maps API key. Register at https://stadiamaps.com/ and create your own"
-" API key"
-msgstr ""
-"Chiave API Stadia Maps. Registrati su https://stadiamaps.com/ e crea la tua "
-"chiave API"
-
-#: poor/keystore.py:68
+#: poor/keystore.py:81
 msgid "Stadia Maps API key"
 msgstr "Chiave API Stadia Maps"
 
-#: poor/keystore.py:71
-msgid ""
-"HERE App ID. Register at https://developer.here.com and create your own App "
-"ID and Code"
+#: poor/keystore.py:84
+msgid "HERE API Key"
 msgstr ""
-"QUI ID app. Registrati su https://developer.here.com e crea il tuo ID e "
-"codice personale"
 
-#: poor/keystore.py:72
-msgid "HERE App ID"
-msgstr "QUI ID app"
+#: poor/keystore.py:92
+msgid ""
+"<p>Your Pure Maps installation has enabled support for HERE "
+"services.</p><br><p>Please consult <a href=\"https://legal.here.com/en-"
+"gb/terms/here-end-user-terms\">end-user terms</a>, <a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy\">acceptable"
+" use policy</a>, and <a href=\"https://legal.here.com/en-gb/privacy\">HERE "
+"Privacy policies</a>. In context of use of HERE and privacy policy, Pure "
+"Maps communicates with HERE using REST API.<p></br><p>For <a "
+"href=\"https://knowledge.here.com/csm_kb?id=public_kb_csm_details&number=KB0016412\">legal"
+" reasons</a>, Pure Maps enables HERE search and routing in a dedicated "
+"\"HERE Online\" profile only. While not active anymore, see acceptable use "
+"policy of 2018 for details regarding use of HERE together with other "
+"providers under <a href=\"https://legal.here.com/en-gb/terms/acceptable-use-"
+"policy-2018\">Layering and Modifications</a> section of the "
+"document.</p><br><p>Please either accept the terms and the policy or decline"
+" them. If declined, HERE support will be inactive and can be enabled later "
+"by accepting the terms in Preferences under Licenses.</p>"
+msgstr ""
 
-#: poor/keystore.py:73 poor/keystore.py:74
-msgid "HERE App Code"
-msgstr "QUI Codice app"
+#: poor/keystore.py:106
+msgid "HERE End-User Terms"
+msgstr ""
 
-#: poor/narrative.py:139
-#, python-brace-format
-msgid "In {distance}, {direction}"
-msgstr "Tra {distance}, {direction}"
-
-#: poor/narrative.py:230 poor/narrative.py:232 poor/router.py:103
-#: poor/router.py:105
+#: poor/router.py:104 poor/router.py:106
 msgid "Exit: "
 msgstr "Uscita: "
 
-#: poor/narrative.py:629 qml/Navigator.qml:163 src/navigator.cpp:743
-msgid "New route found"
-msgstr "Nuovo percorso trovato"
-
-#: poor/narrative.py:630 qml/Navigator.qml:147 src/navigator.cpp:744
-msgid "Rerouting"
-msgstr "Ricalcolo"
-
-#: poor/narrative.py:631 qml/Navigator.qml:168 src/navigator.cpp:745
-msgid "Rerouting failed"
-msgstr "Ricalcolo fallito"
-
-#: poor/narrative.py:632 src/navigator.cpp:742
-msgid "Starting navigation"
-msgstr "Avvio della navigazione"
-
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:956
+#: src/navigator.cpp:968
 msgid "mi"
 msgstr "mi"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:650
-#: src/navigator.cpp:662
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:956
+#: src/navigator.cpp:968
 msgid "miles"
 msgstr "miglia"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:653
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:959
 msgid "ft"
 msgstr "ft"
 
-#: poor/util.py:231 src/navigator.cpp:653
+#: poor/util.py:231 src/navigator.cpp:959
 msgid "feet"
 msgstr "piedi"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:665
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:971
 msgid "yd"
 msgstr "yd"
 
-#: poor/util.py:242 src/navigator.cpp:665
+#: poor/util.py:242 src/navigator.cpp:971
 msgid "yards"
 msgstr "iarde"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:980
 msgid "km"
 msgstr "km"
 
-#: poor/util.py:249 src/navigator.cpp:674
+#: poor/util.py:249 src/navigator.cpp:980
 msgid "kilometers"
 msgstr "chilometri"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:677
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:983
 msgid "m"
 msgstr "m"
 
-#: poor/util.py:253 src/navigator.cpp:677
+#: poor/util.py:253 src/navigator.cpp:983
 msgid "meters"
 msgstr "metri"
 
@@ -254,100 +266,154 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
-#: routers/digitransit.py:58
-msgid "airplane"
-msgstr "aeroplano"
-
-#: routers/digitransit.py:59 standard input:11 standard input:13 standard
-#: input:15 standard input:17 standard input:21
-msgid "bicycle"
-msgstr "bicicletta"
-
-#: routers/digitransit.py:60
-msgid "bus"
-msgstr "bus"
-
-#: routers/digitransit.py:61
-msgid "ferry"
-msgstr "traghetto"
-
-#: routers/digitransit.py:62
-msgid "train"
-msgstr "treno"
-
-#: routers/digitransit.py:63
-msgid "metro"
-msgstr "metropolitana"
-
-#: routers/digitransit.py:64
-msgid "tram"
-msgstr "tram"
-
-#: routers/digitransit.py:65
-msgid "walk"
-msgstr "a piedi"
-
-#: routers/digitransit.py:69
+#: routers/here.py:316
 #, python-brace-format
-msgid "Walk towards {arr_name}."
-msgstr "A piedi verso {arr_name}."
-
-#: routers/digitransit.py:70
-#, python-brace-format
-msgid "Get a city bike at {dep_name}."
-msgstr "Prendi una city bike presso {dep_name}."
-
-#: routers/digitransit.py:71 routers/digitransit.py:74
-#, python-brace-format
-msgid "Board {mode_name} {line_desc} at {dep_name} at {dep_time}."
-msgstr "Sali su {mode_name} {line_desc} a {dep_name} alle {dep_time}."
-
-#: routers/digitransit.py:72
-msgid "Walk towards your destination."
-msgstr "Cammina verso la tua destinazione."
-
-#: routers/digitransit.py:73
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards {arr_name}."
-msgstr "Lascia la city bike presso {dep_name} e cammina verso {arr_name}."
-
-#: routers/digitransit.py:75
-#, python-brace-format
-msgid "Leave the city bike at {dep_name} and walk towards your destination."
+msgid "Continue for {distance}"
 msgstr ""
-"Lascia la city bike presso {dep_name} e cammina verso la tua destinazione."
 
-#: routers/digitransit.py:76
-#, python-brace-format
-msgid "Get off at {dep_name} and walk towards {arr_name}."
-msgstr "Scendi a {dep_name} e vai a piedi verso {arr_name}."
-
-#: routers/digitransit.py:77
-#, python-brace-format
-msgid "Get off at {dep_name} and bike towards {arr_name}."
-msgstr "Scendi a {dep_name}e pedala fino a {arr_name}."
-
-#: routers/digitransit.py:78
-#, python-brace-format
-msgid ""
-"Get off at {dep_name} and transfer to {mode_name} {line_desc} at {dep_time}."
+#: routers/here.py:329
+msgid "Arrive at your destination"
 msgstr ""
-"Scendi a {dep_name} e cambia a {mode_name} {line_desc} alle {dep_time}."
 
-#: routers/digitransit.py:79
+#: routers/here.py:333
+msgid "Board the ferry"
+msgstr ""
+
+#: routers/here.py:337
+msgid "Continue"
+msgstr ""
+
+#: routers/here.py:342
+msgid "Merge right and continue on highway"
+msgstr ""
+
+#: routers/here.py:344
+msgid "Merge left and continue on highway"
+msgstr ""
+
+#: routers/here.py:348
+msgid "Disembark the ferry"
+msgstr ""
+
+#: routers/here.py:352
+msgid "Start navigation"
+msgstr ""
+
+#: routers/here.py:357
+msgid "Merge right and enter highway"
+msgstr ""
+
+#: routers/here.py:359
+msgid "Merge left and enter highway"
+msgstr ""
+
+#: routers/here.py:361
+msgid "Enter highway"
+msgstr ""
+
+#: routers/here.py:374
+msgid "Take exit on the right"
+msgstr ""
+
+#: routers/here.py:376
+msgid "Take exit on the left"
+msgstr ""
+
+#: routers/here.py:379
 #, python-brace-format
-msgid "Get off at {dep_name} and walk towards your destination."
-msgstr "Scendi a {dep_name} e vai a piedi verso la tua destinazione."
+msgid "Take exit {number} on the right"
+msgstr ""
 
-#: routers/digitransit.py:204
-msgid "Arrive at your destination."
-msgstr "Arrivato a destinazione."
+#: routers/here.py:381
+#, python-brace-format
+msgid "Take exit {number} on the left"
+msgstr ""
 
-#: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:114
-#: routers/ValhallaSettings.qml:150 routers/ValhallaSettings.qml:203
-#: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:238
-#: routers/ValhallaSettings.qml:254 routers/ValhallaSettings.qml:274
-#: routers/ValhallaSettings.qml:290
+#: routers/here.py:388
+msgid "Keep right"
+msgstr ""
+
+#: routers/here.py:390
+msgid "Keep left"
+msgstr ""
+
+#: routers/here.py:394
+msgid "Keep straight"
+msgstr ""
+
+#: routers/here.py:400
+msgid "Enter the roundabout and take the first exit"
+msgstr ""
+
+#: routers/here.py:402
+msgid "Enter the roundabout and take the second exit"
+msgstr ""
+
+#: routers/here.py:404
+msgid "Enter the roundabout and take the third exit"
+msgstr ""
+
+#: routers/here.py:406
+msgid "Enter the roundabout and take the fourth exit"
+msgstr ""
+
+#: routers/here.py:408
+msgid "Enter the roundabout and take the fifth exit"
+msgstr ""
+
+#: routers/here.py:410
+msgid "Enter the roundabout and take the sixth exit"
+msgstr ""
+
+#: routers/here.py:412
+msgid "Enter the roundabout"
+msgstr ""
+
+#: routers/here.py:416
+msgid "Exit the roundabout"
+msgstr ""
+
+#: routers/here.py:423
+msgid "Bear right"
+msgstr ""
+
+#: routers/here.py:425
+msgid "Bear left"
+msgstr ""
+
+#: routers/here.py:429
+msgid "Make a sharp right"
+msgstr ""
+
+#: routers/here.py:431
+msgid "Make a sharp left"
+msgstr ""
+
+#: routers/here.py:435
+msgid "Turn right"
+msgstr ""
+
+#: routers/here.py:437
+msgid "Turn left"
+msgstr ""
+
+#: routers/here.py:442
+msgid "Make a right U-turn"
+msgstr ""
+
+#: routers/here.py:444
+msgid "Make a left U-turn"
+msgstr ""
+
+#: routers/here.py:446
+msgid "Make a U-turn"
+msgstr ""
+
+#: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:133
+#: routers/ValhallaSettings.qml:169 routers/ValhallaSettings.qml:222
+#: routers/ValhallaSettings.qml:240 routers/ValhallaSettings.qml:257
+#: routers/ValhallaSettings.qml:273 routers/ValhallaSettings.qml:293
+#: routers/ValhallaSettings.qml:309
 msgid "Prefer"
 msgstr "Preferisci"
 
@@ -359,36 +425,11 @@ msgstr "Più vicino"
 msgid "Best"
 msgstr "Migliore"
 
-#: guides/osmscout_name.qml:27
-msgid "Venue name"
-msgstr "Nome del luogo"
-
-#: guides/osmscout_name.qml:48 qml/GeocodeItem.qml:134
-#: qml/PlaceTypePage.qml:46 qml/PoiPage.qml:108 qml/RoutePage.qml:203
-#: qml/RoutePage.qml:281
-msgid "Remove"
-msgstr "Rimuovi"
-
-#: guides/osmscout_name.qml:69 qml/AttributionPage.qml:61
-#: qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27 qml/MenuPage.qml:54
-#: qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:80 qml/PoiPage.qml:136
-#: qml/PreferencesPage.qml:677
-msgid "Search"
-msgstr "Cerca"
-
-#: guides/osmscout_name.qml:81
-msgid "You can search for venues by name."
-msgstr "Puoi cercare luoghi per nome."
-
-#: guides/osmscout_settings.qml:28
-msgid "Name"
-msgstr "Nome"
-
-#: guides/osmscout_settings.qml:51
+#: guides/osmscout_settings.qml:31
 msgid "Search along the route"
 msgstr "Cerca lungo il percorso"
 
-#: guides/osmscout_settings.qml:75
+#: guides/osmscout_settings.qml:58
 msgid ""
 "When set, the search along the route is performed starting from the point "
 "specified by 'Near' on this page"
@@ -396,7 +437,7 @@ msgstr ""
 "Quando impostata, la ricerca lungo il percorso viene eseguita a partire dal "
 "punto specificato in 'Vicino' su questa pagina"
 
-#: guides/osmscout_settings.qml:76
+#: guides/osmscout_settings.qml:59
 msgid "Search starting from the reference point"
 msgstr "Rierca a partire dal punto di riferimento"
 
@@ -474,107 +515,115 @@ msgstr "Attribuzione"
 msgid "Maps"
 msgstr "Mappe"
 
+#: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
+#: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
+#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:763
+msgid "Search"
+msgstr "Cerca"
+
 #: qml/AttributionPage.qml:90
 msgid "Venues"
 msgstr "Luoghi"
 
-#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/PreferencesPage.qml:399
-#: qml/RoutePage.qml:25
+#: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:27
+#: qml/PreferencesPage.qml:482 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Navigazione"
 
-#: qml/BasemapButton.qml:201 qml/NearbyPage.qml:105 qml/PoiEditPage.qml:57
-#: routers/gpx_osmscout_settings.qml:52 routers/gpx_settings.qml:52
-#: routers/mapquest_open_settings.qml:27 routers/ValhallaSettings.qml:36
+#: qml/BasemapButton.qml:225 qml/NearbyPage.qml:106 qml/PoiEditPage.qml:57
+#: routers/gpx_osmscout_settings.qml:54 routers/gpx_settings.qml:52
+#: routers/here_settings.qml:36 routers/mapquest_open_settings.qml:28
+#: routers/ValhallaSettings.qml:37
 msgid "Type"
 msgstr "Tipo"
 
-#: qml/BasemapButton.qml:221 routers/digitransit_settings.qml:146
-#: qml/js/util.js:236
+#: qml/BasemapButton.qml:243 qml/js/util.js:240
 msgid "Default"
 msgstr "Predefinito"
 
-#: qml/BasemapButton.qml:222
+#: qml/BasemapButton.qml:244
 msgid "Guidance"
 msgstr ""
 
-#: qml/BasemapButton.qml:223
+#: qml/BasemapButton.qml:245
 msgid "Hybrid"
 msgstr ""
 
-#: qml/BasemapButton.qml:224
+#: qml/BasemapButton.qml:246
 msgid "Preview"
 msgstr ""
 
-#: qml/BasemapButton.qml:225
+#: qml/BasemapButton.qml:247
 msgid "Satellite"
 msgstr "Satellite"
 
-#: qml/BasemapButton.qml:226
+#: qml/BasemapButton.qml:248
 msgid "Terrain"
 msgstr "Terreno"
 
-#: qml/BasemapButton.qml:227
+#: qml/BasemapButton.qml:249
 msgid "Traffic"
 msgstr "Traffico"
 
-#: qml/BasemapButton.qml:242
+#: qml/BasemapButton.qml:265
 msgid "Light"
 msgstr "Luce"
 
-#: qml/BasemapButton.qml:259
+#: qml/BasemapButton.qml:283
 msgid "Day"
 msgstr "Giorno"
 
-#: qml/BasemapButton.qml:260
+#: qml/BasemapButton.qml:284
 msgid "Night"
 msgstr "Notte"
 
-#: qml/BasemapButton.qml:275
+#: qml/BasemapButton.qml:300
 msgid "Transport"
 msgstr ""
 
-#: qml/BasemapButton.qml:292 qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
-#: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
-#: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
+#: qml/BasemapButton.qml:318 qml/PreferencesPage.qml:461 qml/RoutePage.qml:644
+#: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
+#: routers/here_settings.qml:37 routers/mapquest_open_settings.qml:29
+#: routers/ValhallaSettings.qml:38
 msgid "Bicycle"
 msgstr "In bici"
 
-#: qml/BasemapButton.qml:293 qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
-#: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
-#: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
+#: qml/BasemapButton.qml:319 qml/PreferencesPage.qml:461 qml/RoutePage.qml:644
+#: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
+#: routers/here_settings.qml:37 routers/mapquest_open_settings.qml:29
+#: routers/ValhallaSettings.qml:38
 msgid "Car"
 msgstr "In auto"
 
-#: qml/BasemapButton.qml:294 routers/ValhallaSettings.qml:131
+#: qml/BasemapButton.qml:320 routers/ValhallaSettings.qml:150
 msgid "Walking"
 msgstr "Camminata"
 
-#: qml/BasemapButton.qml:295 routers/ValhallaSettings.qml:37
+#: qml/BasemapButton.qml:321 routers/ValhallaSettings.qml:38
 msgid "Public transport"
 msgstr "Trasporti pubblici"
 
-#: qml/BasemapButton.qml:357
+#: qml/BasemapButton.qml:437
 msgid "Map scale"
 msgstr "Scala della mappa"
 
-#: qml/BasemapButton.qml:374
+#: qml/BasemapButton.qml:454
 msgid "Map scale during navigation"
 msgstr ""
 
-#: qml/BasemapPage.qml:42
+#: qml/BasemapPage.qml:48
 msgid "Map: %1"
 msgstr "Mappa: %1"
 
-#: qml/CenterButton.qml:110 qml/MapGestureArea.qml:43
+#: qml/CenterButton.qml:111 qml/MapGestureArea.qml:47
 msgid "Auto-center off"
 msgstr "Centramento automatico disattivo"
 
-#: qml/CenterButton.qml:118 qml/MapGestureArea.qml:42
+#: qml/CenterButton.qml:119 qml/MapGestureArea.qml:46
 msgid "Auto-center on"
 msgstr "Centramento automatico attivo"
 
-#: qml/CenterButton.qml:124
+#: qml/CenterButton.qml:125
 msgid "Tap center button again for auto-center"
 msgstr "Toccare di nuovo il pulsante centrale per l'auto-centratura"
 
@@ -582,61 +631,60 @@ msgstr "Toccare di nuovo il pulsante centrale per l'auto-centratura"
 msgid "No selection"
 msgstr "Nessuna selezione"
 
-#: qml/GeocodeItem.qml:386
+#: qml/GeocodeItem.qml:134 qml/NavigationPage.qml:185 qml/PlaceNamePage.qml:48
+#: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:108 qml/RoutePage.qml:257
+#: qml/RoutePage.qml:443 qml/RoutePage.qml:558
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: qml/GeocodeItem.qml:402
 msgid "Suggestions (%1)"
 msgstr "Suggerimenti (%1)"
 
-#: qml/GeocodeItem.qml:407
+#: qml/GeocodeItem.qml:424
 msgid "Error while fetching results"
 msgstr "Errore durante il recupero dei risultati"
 
-#: qml/GeocodeItem.qml:416
+#: qml/GeocodeItem.qml:433
 msgid "Searching ..."
 msgstr "Ricerca in corso ..."
 
-#: qml/GeocodeItem.qml:421 qml/NearbyResultsPage.qml:143
-#: routers/default_results.qml:90 routers/default_results.qml:93
-#: routers/digitransit_results.qml:271 routers/digitransit_results.qml:273
-#: routers/gpx_osmscout_results.qml:90 routers/gpx_osmscout_results.qml:93
-#: routers/gpx_results.qml:90 routers/gpx_results.qml:93
-#: routers/mapquest_open_results.qml:90 routers/mapquest_open_results.qml:93
-#: routers/osmscout_results.qml:90 routers/osmscout_results.qml:93
-#: routers/osrm_results.qml:90 routers/osrm_results.qml:93
-#: routers/stadiamaps_results.qml:90 routers/stadiamaps_results.qml:93
+#: qml/GeocodeItem.qml:438 qml/NearbyResultsPage.qml:99
 msgid "No results"
 msgstr "Nessun risultato"
 
-#: qml/GeocodeItem.qml:426
+#: qml/GeocodeItem.qml:443
 msgid "Results (%1)"
 msgstr "Risultati (%1)"
 
-#: qml/GeocodeItem.qml:462
+#: qml/GeocodeItem.qml:479
 msgid "Points of Interest (%1)"
 msgstr "Punti di interesse (%1)"
 
-#: qml/GeocodeItem.qml:467 qml/PoiBlock.qml:246 qml/PoiInfoPage.qml:26
-#: qml/PoiPage.qml:47 qml/RoutePage.qml:320 qml/RoutePage.qml:322
-#: qml/RoutePoint.qml:62
+#: qml/GeocodeItem.qml:484 qml/Navigator.qml:300 qml/Navigator.qml:302
+#: qml/PoiBlock.qml:407 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Punto senza nome"
 
-#: qml/GeocodeItem.qml:493
+#: qml/GeocodeItem.qml:510
 msgid "Recent searches (%1)"
 msgstr "Ricerche recenti (%1)"
 
-#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:36
+#: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:52
+#: qml/RoutePointPage.qml:31
 msgid "Change provider (%1)"
 msgstr ""
 
-#: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:88 qml/RootPage.qml:26
+#: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:85 qml/RootPage.qml:26
 msgid "Map"
 msgstr "Mappa"
 
-#: qml/GeocodePage.qml:47 qml/GeocodePage.qml:84
+#: qml/GeocodePage.qml:49 qml/GeocodePage.qml:86
 msgid "Search: %1"
 msgstr "Cerca: %1"
 
-#: qml/GeocodePage.qml:79 qml/NearbyResultsPage.qml:72
+#: qml/GeocodePage.qml:81 qml/NearbyResultsPage.qml:69
 msgid "%1 [duplicate]"
 msgstr "%1 [duplicato]"
 
@@ -644,28 +692,56 @@ msgstr "%1 [duplicato]"
 msgid "Search engine"
 msgstr "Motore di ricerca"
 
-#: qml/InitPage.qml:33
+#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
+#: qml/js/util.js:160
+msgid "%1 (disabled)"
+msgstr ""
+
+#: qml/InitPage.qml:34
 msgid "Initializing"
 msgstr "Inizializzare"
 
-#: qml/InitPage.qml:46
+#: qml/InitPage.qml:54 qml/RoutePage.qml:193
 msgid "Dismiss"
 msgstr "Rimuovi"
 
-#: qml/InitPage.qml:47
-msgid "Missing Mapbox key"
-msgstr "Chiave Mapbox mancante"
-
-#: qml/InitPage.qml:48
-msgid ""
-"Your installation is missing Mapbox API key. Please register at Mapbox and "
-"fill in your personal API key in Preferences. This key is not needed if you "
-"plan to use Pure Maps with the offline map provider."
+#: qml/InitPage.qml:55
+msgid "Missing %1 key"
 msgstr ""
-"Nell'installazione manca la chiave API Mapbox. Registrati su Mapbox e "
-"inserisci la tua chiave API personale in Preferenze. Questa chiave non è "
-"necessaria se prevedi di utilizzare Pure Maps con il provider di mappe "
-"offline."
+
+#: qml/InitPage.qml:56
+msgid ""
+"Your installation is missing %1 API key. Please register at %1 and fill in "
+"your personal API key in Preferences. This key is not needed if you plan to "
+"use Pure Maps with the offline map provider."
+msgstr ""
+
+#: qml/LanguageSelector.qml:24
+msgid "Language"
+msgstr "Lingua"
+
+#: qml/LanguageSelector.qml:43 qml/PreferencesPage.qml:71
+#: qml/PreferencesPage.qml:880
+msgid "English"
+msgstr "Inglese"
+
+#: qml/LanguageSelector.qml:44 routers/gpx_osmscout_settings.qml:84
+#: routers/here_settings.qml:83 routers/mapquest_open_settings.qml:59
+#: routers/ValhallaSettings.qml:67
+msgid "English (United States)"
+msgstr ""
+
+#: qml/LicensePage.qml:25
+msgid "Accept"
+msgstr ""
+
+#: qml/LicensePage.qml:25
+msgid "Decline"
+msgstr ""
+
+#: qml/LicensePage.qml:48
+msgid "Accept license"
+msgstr ""
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
@@ -688,7 +764,7 @@ msgstr ""
 msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
-"application stores (OpenRepos for Sailfish OS, OpenStore for UBPorts), "
+"application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
 "/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
@@ -703,24 +779,49 @@ msgstr "Ultimo errore: %1"
 msgid "Preferences"
 msgstr "Impostazioni"
 
-#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:111
+#: qml/MapErrorPage.qml:106 qml/MenuPage.qml:112
 msgid "Profile"
 msgstr "Profilo"
 
-#: qml/MapErrorPage.qml:118 qml/MenuPage.qml:115
+#: qml/MapErrorPage.qml:118 qml/MenuPage.qml:116
 msgid "Online"
 msgstr "Online"
 
-#: qml/MapErrorPage.qml:118 qml/MenuPage.qml:121
+#: qml/MapErrorPage.qml:118 qml/MenuPage.qml:122
 msgid "Offline"
 msgstr "Offline"
 
-#: qml/MapErrorPage.qml:118 qml/MenuPage.qml:127
+#: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
+msgid "HERE - Online"
+msgstr ""
+
+#: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
+msgid "HERE (disabled)"
+msgstr ""
+
+#: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
 msgstr "MIsto"
 
-#: qml/MapGestureArea.qml:60 qml/MapGestureArea.qml:78
+#: qml/MapGestureArea.qml:64 qml/MapGestureArea.qml:82
 msgid "Stop navigation to select POI"
+msgstr ""
+
+#: qml/Map.qml:643 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
+#: qml/RoutePage.qml:173
+msgid "Origin"
+msgstr "Origine"
+
+#: qml/Map.qml:645 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
+msgid "Final destination"
+msgstr ""
+
+#: qml/Map.qml:647
+msgid "✓"
+msgstr ""
+
+#: qml/Map.qml:650
+msgid "#%1"
 msgstr ""
 
 #: qml/MenuPage.qml:43
@@ -747,14 +848,14 @@ msgstr "Condividi la posizione corrente (non pronta)"
 msgid "Share Current Position"
 msgstr "Condividi posizione attuale"
 
-#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:333
-#: qml/NavigationCurrentBlock.qml:335 qml/NavigationSpeedBlock.qml:84
-#: qml/NavigationSpeedBlock.qml:86
+#: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:354
+#: qml/NavigationCurrentBlock.qml:355 qml/NavigationSpeedBlock.qml:81
+#: qml/NavigationSpeedBlock.qml:82
 msgid "mph"
 msgstr "mph"
 
-#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:337
-#: qml/NavigationSpeedBlock.qml:88
+#: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:356
+#: qml/NavigationSpeedBlock.qml:83
 msgid "km/h"
 msgstr "km/h"
 
@@ -770,43 +871,59 @@ msgstr "Continua per %1."
 msgid "Route removed"
 msgstr "Percorso rimosso"
 
-#: qml/NavigationButtonStartPause.qml:64
+#: qml/NavigationButtonStartPause.qml:69
 msgid "Stopped to follow the movement"
 msgstr "Fermato per seguire il movimento"
 
-#: qml/NavigationButtonStartPause.qml:69
+#: qml/NavigationButtonStartPause.qml:74
 msgid "Navigation paused"
 msgstr "Navigazione in pausa"
 
-#: qml/NavigationButtonStartPause.qml:73
+#: qml/NavigationButtonStartPause.qml:78
 msgid "Navigation started"
 msgstr ""
 
-#: qml/NavigationCurrentBlock.qml:180
+#: qml/NavigationCurrentBlock.qml:218
 msgid "To route"
 msgstr ""
 
-#: qml/NavigationOverviewBlock.qml:142
+#. TRANSLATORS: "(D)" corresponds to the abbreviated destination
+#: qml/NavigationOverviewBlock.qml:217
+msgid "(D)"
+msgstr ""
+
+#. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
+#: qml/NavigationOverviewBlock.qml:219
+msgid "(W)"
+msgstr ""
+
+#. TRANSLATORS: "(D)" corresponds to the abbreviated destination
+#: qml/NavigationOverviewBlock.qml:310
+msgid "(D) ETA"
+msgstr ""
+
+#. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
+#: qml/NavigationOverviewBlock.qml:312
+msgid "(W) ETA"
+msgstr ""
+
+#: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:291
 msgid "ETA"
 msgstr "Arrivo"
 
-#: qml/NavigationPage.qml:25
-msgid "Maneuvers"
-msgstr "Manovre"
-
-#: qml/NavigationPage.qml:44
+#: qml/NavigationPage.qml:46
 msgid "Pause"
 msgstr "Pausa"
 
-#: qml/NavigationPage.qml:44 qml/PreferencesPage.qml:686 qml/RoutePage.qml:51
+#: qml/NavigationPage.qml:46 qml/PreferencesPage.qml:772 qml/RoutePage.qml:67
 msgid "Navigate"
 msgstr "Navigare"
 
-#: qml/NavigationPage.qml:57
+#: qml/NavigationPage.qml:58
 msgid "Reroute"
 msgstr "Ricalcola"
 
-#: qml/NavigationPage.qml:69
+#: qml/NavigationPage.qml:70
 msgid "Clear"
 msgstr "Cancella"
 
@@ -814,23 +931,69 @@ msgstr "Cancella"
 msgid "Status"
 msgstr "Stato"
 
-#: qml/NavigationPage.qml:133
+#: qml/NavigationPage.qml:134
 msgid "Estimated time of arrival"
 msgstr "Ora prevista di arrivo"
+
+#: qml/NavigationPage.qml:161 qml/Navigator.qml:86
+msgid "Destination reached"
+msgstr ""
+
+#: qml/NavigationPage.qml:173 qml/RoutePage.qml:187 qml/RoutePage.qml:194
+msgid "Destinations and waypoints"
+msgstr ""
+
+#: qml/NavigationPage.qml:207
+msgid "Origin: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:209
+msgid "Final destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:212 qml/RoutePage.qml:275
+msgid "Destination: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:213 qml/RoutePage.qml:276
+msgid "Waypoint: %1"
+msgstr ""
+
+#: qml/NavigationPage.qml:262 qml/RouteOverallInfo.qml:95
+msgid "Remaining"
+msgstr "Rimanenti"
+
+#. TRANSLATORS: Leg corresponds to the trip leg between two destinations, such
+#. as intermediate destinations on the route
+#: qml/NavigationPage.qml:314
+msgid "Leg"
+msgstr ""
+
+#: qml/NavigationPage.qml:343
+msgid "Arrived"
+msgstr ""
+
+#: qml/NavigationPage.qml:384
+msgid "Maneuvers"
+msgstr "Manovre"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
 msgstr "USCITA"
 
-#: qml/Navigator.qml:61
-msgid "Destination reached"
+#: qml/Navigator.qml:78
+msgid "Destination %1 reached"
 msgstr ""
 
-#: qml/Navigator.qml:87
+#: qml/Navigator.qml:79
+msgid "Waypoint %1 reached"
+msgstr ""
+
+#: qml/Navigator.qml:129
 msgid "Voice navigation on"
 msgstr "Navigazione vocale attiva"
 
-#: qml/Navigator.qml:92
+#: qml/Navigator.qml:134
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -838,46 +1001,74 @@ msgstr ""
 "Navigazione vocale non disponibile: motore Text-to-Speech (TTS) mancante per"
 " la lingua selezionata"
 
-#: qml/Navigator.qml:159
-msgid "Rerouting failed: %1"
-msgstr "Ricalcolo fallito: %1"
+#: qml/Navigator.qml:185
+msgid "Routing failed: current position not known"
+msgstr ""
 
-#: qml/NearbyPage.qml:25
+#: qml/Navigator.qml:191
+msgid "Rerouting position"
+msgstr ""
+
+#: qml/Navigator.qml:199
+msgid "Routing"
+msgstr ""
+
+#: qml/Navigator.qml:210
+msgid "Routing failed: %1"
+msgstr ""
+
+#: qml/Navigator.qml:215 src/navigator.cpp:1049
+msgid "New route found"
+msgstr "Nuovo percorso trovato"
+
+#: qml/Navigator.qml:216
+msgid "Route found"
+msgstr ""
+
+#: qml/Navigator.qml:226 src/navigator.cpp:1051
+msgid "Routing failed"
+msgstr ""
+
+#: qml/Navigator.qml:258 src/navigator.cpp:1050
+msgid "Rerouting"
+msgstr "Ricalcolo"
+
+#: qml/NearbyPage.qml:25 qml/NearbyResultsPage.qml:100
 msgid "Nearby Venues"
 msgstr "Località nelle vicinanze"
 
-#: qml/NearbyPage.qml:75
+#: qml/NearbyPage.qml:76
 msgid ""
 "Select a reference location next to which you want to perform the search."
 msgstr ""
 "Selezionare una posizione di riferimento accanto alla quale si desidera "
 "eseguire la ricerca."
 
-#: qml/NearbyPage.qml:76
+#: qml/NearbyPage.qml:77
 msgid "Near"
 msgstr "Vicino"
 
-#: qml/NearbyPage.qml:77
+#: qml/NearbyPage.qml:78
 msgid "Near location"
 msgstr "Vicino a posizione"
 
-#: qml/NearbyPage.qml:82
+#: qml/NearbyPage.qml:83
 msgid "Radius"
 msgstr "Raggio"
 
-#: qml/NearbyResultsPage.qml:115 routers/default_results.qml:39
-#: routers/digitransit_results.qml:213 routers/gpx_osmscout_results.qml:39
-#: routers/gpx_results.qml:39 routers/mapquest_open_results.qml:39
-#: routers/osmscout_results.qml:39 routers/osrm_results.qml:39
-#: routers/stadiamaps_results.qml:39
+#: qml/NearbyPage.qml:122
+msgid "Name"
+msgstr "Nome"
+
+#: qml/NearbyResultsPage.qml:115
 msgid "Searching"
 msgstr "Ricerca"
 
-#: qml/NearbyResultsPage.qml:123
-msgid "Nearby venues: %1"
+#: qml/NearbyResultsPage.qml:131
+msgid "Nearby venues: %1 %2"
 msgstr ""
 
-#: qml/NearbyResultsPage.qml:139
+#: qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
 msgstr "%1 risultati"
 
@@ -893,45 +1084,93 @@ msgstr "Autorotazione attiva"
 msgid "Auto-rotate off"
 msgstr "Autorotazione disattiva"
 
+#: qml/PlaceNamePage.qml:27
+msgid "Venue name"
+msgstr "Nome del luogo"
+
+#: qml/PlaceNamePage.qml:69
+msgid "Name or keyword"
+msgstr ""
+
+#: qml/PlaceNamePage.qml:82
+msgid "You can search for venues by name."
+msgstr "Puoi cercare luoghi per nome."
+
 #: qml/PlaceTypePage.qml:27
 msgid "Venue type"
 msgstr ""
 
-#: qml/PlaceTypePage.qml:100
-msgid "You can search for venues by type or name."
-msgstr "Puoi cercare luoghi per tipo o per nome."
+#: qml/PlaceTypePage.qml:99
+msgid "You can search for venues by type."
+msgstr ""
 
-#: qml/PoiBlock.qml:81
+#: qml/PoiBlock.qml:97
 msgid "%1; %2"
 msgstr "%1; %2"
 
-#: qml/PoiBlock.qml:99
+#: qml/PoiBlock.qml:113
 msgid "Latitude: %1; Longitude: %2"
 msgstr "Latitudine: %1; Longitudine: %2"
 
-#: qml/PoiBlock.qml:126 qml/PoiEditPage.qml:81
+#: qml/PoiBlock.qml:137 qml/PoiEditPage.qml:81
 msgid "Postal code"
 msgstr "Codice postale"
 
-#: qml/PoiBlock.qml:127
+#: qml/PoiBlock.qml:138
 msgid "Web"
 msgstr "Web"
 
-#: qml/PoiBlock.qml:128
+#: qml/PoiBlock.qml:139
 msgid "Phone"
 msgstr "Telefono"
 
-#: qml/PoiBlock.qml:129
+#: qml/PoiBlock.qml:140 qml/PoiEditPage.qml:114 qml/SharePage.qml:66
+msgid "Email"
+msgstr "Email"
+
+#: qml/PoiBlock.qml:141
 msgid "Shortlisted"
 msgstr ""
 
-#: qml/PoiBlock.qml:130
+#: qml/PoiBlock.qml:142
 msgid "Text"
 msgstr "Testo"
 
-#: qml/PoiBlock.qml:132
+#: qml/PoiBlock.qml:144
 msgid "More info: %1"
 msgstr "Maggiori info: %1"
+
+#: qml/PoiBlock.qml:233
+msgid "Set as or Replace"
+msgstr ""
+
+#: qml/PoiBlock.qml:233
+msgid "Set as"
+msgstr ""
+
+#: qml/PoiBlock.qml:293
+msgid "Insert as"
+msgstr ""
+
+#: qml/PoiBlock.qml:298
+msgid "New origin"
+msgstr ""
+
+#: qml/PoiBlock.qml:311
+msgid "New final destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:323
+msgid "First intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:336
+msgid "Last intermediate destination"
+msgstr ""
+
+#: qml/PoiBlock.qml:337
+msgid "Intermediate destination"
+msgstr ""
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -969,7 +1208,7 @@ msgstr "Inserisci indirizzo"
 msgid "Enter postal code"
 msgstr "Inserisci codice postale"
 
-#: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:217
+#: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:221
 msgid "Contact"
 msgstr "Contatto"
 
@@ -989,11 +1228,15 @@ msgstr "URL"
 msgid "Enter URL"
 msgstr "Inserisci URL"
 
-#: qml/PoiEditPage.qml:117 qml/PoiInfoPage.qml:243
+#: qml/PoiEditPage.qml:115
+msgid "Enter Email"
+msgstr ""
+
+#: qml/PoiEditPage.qml:125 qml/PoiInfoPage.qml:255
 msgid "Additional info"
 msgstr "Informazioni aggiuntive"
 
-#: qml/PoiEditPage.qml:123
+#: qml/PoiEditPage.qml:131
 msgid "Enter additional info"
 msgstr "Inserisci informazioni aggiuntive"
 
@@ -1041,11 +1284,11 @@ msgstr "Centra sul luogo"
 msgid "Navigate To"
 msgstr "Naviga fin qui"
 
-#: qml/PoiInfoPage.qml:194
+#: qml/PoiInfoPage.qml:197
 msgid "Navigate From"
 msgstr "Naviga da qui"
 
-#: qml/PoiInfoPage.qml:206
+#: qml/PoiInfoPage.qml:210
 msgid "Nearby"
 msgstr "Vicino"
 
@@ -1061,7 +1304,7 @@ msgstr ""
 "Nessun punto di segnalibri ancora definito. È possibile contrassegnare i "
 "luoghi utilizzando la mappa e la ricerca."
 
-#: qml/Poi.qml:193
+#: qml/Poi.qml:197
 msgid "Clearing map"
 msgstr "Pulizia mappa"
 
@@ -1085,12 +1328,6 @@ msgstr "Britannico"
 msgid "Preferred map language."
 msgstr "Lingua preferita per la mappa"
 
-#: qml/PreferencesPage.qml:60 qml/PreferencesPage.qml:791
-#: routers/gpx_osmscout_settings.qml:72 routers/mapquest_open_settings.qml:54
-#: routers/ValhallaSettings.qml:56
-msgid "Language"
-msgstr "Lingua"
-
 #: qml/PreferencesPage.qml:62
 msgid "Local"
 msgstr "Locale"
@@ -1099,12 +1336,12 @@ msgstr "Locale"
 msgid "Arabic"
 msgstr "Arabo"
 
-#: qml/PreferencesPage.qml:64
+#: qml/PreferencesPage.qml:64 routers/here_settings.qml:66
 msgid "Basque"
 msgstr "Basco"
 
-#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:794
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
+#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:881
+#: routers/here_settings.qml:72
 msgid "Catalan"
 msgstr "Catalano"
 
@@ -1116,8 +1353,7 @@ msgstr "Cinese (semplificato)"
 msgid "Chinese (traditional)"
 msgstr "Cinese (tradizionale)"
 
-#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:795
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
+#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:882
 msgid "Czech"
 msgstr "Ceco"
 
@@ -1129,23 +1365,15 @@ msgstr "Danese"
 msgid "Dutch"
 msgstr "Olandese"
 
-#: qml/PreferencesPage.qml:71 qml/PreferencesPage.qml:793
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
-msgid "English"
-msgstr "Inglese"
-
 #: qml/PreferencesPage.qml:72
 msgid "Finnish"
 msgstr "Finlandese"
 
-#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:798
-#: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:885
 msgid "French"
 msgstr "Francese"
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:796
-#: routers/gpx_osmscout_settings.qml:74 routers/mapquest_open_settings.qml:58
-#: routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:883
 msgid "German"
 msgstr "Tedesco"
 
@@ -1161,8 +1389,7 @@ msgstr "Greco"
 msgid "Hebrew"
 msgstr "Ebraico"
 
-#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:799
-#: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:886
 msgid "Hindi"
 msgstr "Hindi"
 
@@ -1170,8 +1397,7 @@ msgstr "Hindi"
 msgid "Indonesian"
 msgstr "Indonesiano"
 
-#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:800
-#: routers/gpx_osmscout_settings.qml:74 routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:887
 msgid "Italian"
 msgstr "Italiano"
 
@@ -1183,11 +1409,11 @@ msgstr "Giapponese"
 msgid "Korean"
 msgstr "Coreano"
 
-#: qml/PreferencesPage.qml:83
+#: qml/PreferencesPage.qml:83 routers/here_settings.qml:123
 msgid "Norwegian"
 msgstr "Norvegese"
 
-#: qml/PreferencesPage.qml:84
+#: qml/PreferencesPage.qml:84 routers/here_settings.qml:127
 msgid "Persian"
 msgstr "Persiano"
 
@@ -1195,14 +1421,11 @@ msgstr "Persiano"
 msgid "Polish"
 msgstr "Polacco"
 
-#: qml/PreferencesPage.qml:86 routers/gpx_osmscout_settings.qml:74
-#: routers/ValhallaSettings.qml:60
+#: qml/PreferencesPage.qml:86
 msgid "Portuguese"
 msgstr "Portoghese"
 
-#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:801
-#: routers/gpx_osmscout_settings.qml:75 routers/mapquest_open_settings.qml:58
-#: routers/ValhallaSettings.qml:61
+#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:888
 msgid "Russian"
 msgstr "Russo"
 
@@ -1210,13 +1433,11 @@ msgstr "Russo"
 msgid "Sinhalese"
 msgstr ""
 
-#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:797
-#: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
+#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:884
 msgid "Spanish"
 msgstr "Spagnolo"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:803
-#: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:890
 msgid "Swedish"
 msgstr "Svedese"
 
@@ -1228,65 +1449,65 @@ msgstr "Tailandese"
 msgid "Turkish"
 msgstr "Turco"
 
-#: qml/PreferencesPage.qml:93
+#: qml/PreferencesPage.qml:93 routers/here_settings.qml:156
 msgid "Ukrainian"
 msgstr "Ucraino"
 
-#: qml/PreferencesPage.qml:94
+#: qml/PreferencesPage.qml:94 routers/here_settings.qml:157
 msgid "Urdu"
 msgstr "Urdu"
 
-#: qml/PreferencesPage.qml:95
+#: qml/PreferencesPage.qml:95 routers/here_settings.qml:160
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: qml/PreferencesPage.qml:96
+#: qml/PreferencesPage.qml:96 routers/here_settings.qml:161
 msgid "Welsh"
 msgstr "Gallese"
 
-#: qml/PreferencesPage.qml:148
+#: qml/PreferencesPage.qml:106
 msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
 msgstr ""
 
-#: qml/PreferencesPage.qml:151
+#: qml/PreferencesPage.qml:109
 msgid "Day/night mode"
 msgstr "Modalità giorno/notte"
 
-#: qml/PreferencesPage.qml:153
+#: qml/PreferencesPage.qml:111
 msgid "Manual"
 msgstr "Manuale"
 
-#: qml/PreferencesPage.qml:154
+#: qml/PreferencesPage.qml:112
 msgid "Sunrise and sunset"
 msgstr "Alba e tramonto"
 
-#: qml/PreferencesPage.qml:172
+#: qml/PreferencesPage.qml:130
 msgid ""
 "Automatically switch between map types of the provider according to the "
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
 
-#: qml/PreferencesPage.qml:174
+#: qml/PreferencesPage.qml:132
 msgid "Switch map modes"
 msgstr ""
 
-#: qml/PreferencesPage.qml:184
+#: qml/PreferencesPage.qml:142
 msgid "Fetch autocompleted search results while typing a search string."
 msgstr ""
 "Recupera suggerimenti di autocompletamento mentre digiti una stringa di "
 "ricerca."
 
-#: qml/PreferencesPage.qml:185
+#: qml/PreferencesPage.qml:143
 msgid "Autocomplete while searching"
 msgstr "Autocompletamento durante la ricerca"
 
-#: qml/PreferencesPage.qml:199
+#: qml/PreferencesPage.qml:157
 msgid "Device"
 msgstr ""
 
-#: qml/PreferencesPage.qml:205
+#: qml/PreferencesPage.qml:164
 msgid ""
 "You can control if and when Pure Maps keeps display active and works in the "
 "background. It is recommended to allow Pure Maps to prevent screensaver "
@@ -1295,72 +1516,100 @@ msgid ""
 "device in the pocket."
 msgstr ""
 
-#: qml/PreferencesPage.qml:219
+#: qml/PreferencesPage.qml:178
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
 msgstr ""
 
-#: qml/PreferencesPage.qml:221
+#: qml/PreferencesPage.qml:180
 msgid "Prevent screensaver"
 msgstr ""
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
-#: qml/PreferencesPage.qml:517 qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
+#: qml/PreferencesPage.qml:600 qml/PreferencesPage.qml:681
 msgid "Never"
 msgstr "Mai"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
+#: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
 msgid "When navigating"
 msgstr "Durante navigazione"
 
-#: qml/PreferencesPage.qml:222 qml/PreferencesPage.qml:239
-#: qml/PreferencesPage.qml:517
+#: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
+#: qml/PreferencesPage.qml:600
 msgid "Always"
 msgstr "Sempre"
 
-#: qml/PreferencesPage.qml:235
+#: qml/PreferencesPage.qml:194
 msgid ""
 "Allows to keep positioning and navigation instructions spoken even when the "
 "screen is switched off. If set to 'never', usual device suspend policy is "
 "applied."
 msgstr ""
 
-#: qml/PreferencesPage.qml:238
+#: qml/PreferencesPage.qml:197
 msgid "Prevent sleep"
 msgstr "Previeni stand-by"
 
-#: qml/PreferencesPage.qml:260
+#: qml/PreferencesPage.qml:219
 msgid "Privacy"
 msgstr "Privacy"
 
-#: qml/PreferencesPage.qml:266
+#: qml/PreferencesPage.qml:226
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
 msgstr ""
 
-#: qml/PreferencesPage.qml:274
+#: qml/PreferencesPage.qml:235
 msgid "History cleared"
 msgstr "Cronologia cancellata"
 
-#: qml/PreferencesPage.qml:283
+#: qml/PreferencesPage.qml:244
 msgid "Clear history"
 msgstr "Cancella cronologia"
 
-#: qml/PreferencesPage.qml:295
+#: qml/PreferencesPage.qml:256
 msgid "Clear map tiles stored in a cache"
 msgstr ""
 
-#: qml/PreferencesPage.qml:303
+#: qml/PreferencesPage.qml:264
 msgid "Clear cache"
 msgstr "Svuota la cache"
 
-#: qml/PreferencesPage.qml:315
+#: qml/PreferencesPage.qml:276
+msgid "Licenses"
+msgstr ""
+
+#: qml/PreferencesPage.qml:283
+msgid ""
+"List of the licenses and whether they are accepted or declined. Here you can"
+" change the acceptance of each license."
+msgstr ""
+
+#: qml/PreferencesPage.qml:291
+msgid ""
+"Please restart application after changing the acceptance state of the "
+"license(s)."
+msgstr ""
+
+#: qml/PreferencesPage.qml:326
+msgid "Declined"
+msgstr ""
+
+#: qml/PreferencesPage.qml:327
+msgid "Accepted"
+msgstr ""
+
+#: qml/PreferencesPage.qml:328
+msgid "Unset"
+msgstr ""
+
+#: qml/PreferencesPage.qml:374
 msgid "API keys"
 msgstr "Chiavi API"
 
-#: qml/PreferencesPage.qml:321
+#: qml/PreferencesPage.qml:382
 msgid ""
 "You can specify personal keys for online services in these settings. Please "
 "check the conditions for each of the services that you want to use to ensure"
@@ -1370,84 +1619,85 @@ msgstr ""
 "impostazioni. Si prega di verificare le condizioni per ciascuno dei servizi "
 "che si desidera utilizzare per assicurarsi di rispettarli."
 
-#: qml/PreferencesPage.qml:329
+#: qml/PreferencesPage.qml:391
 msgid "Please restart application after changing API keys."
 msgstr ""
 "Si prega di riavviare l'applicazione dopo aver modificato le chiavi API."
 
-#: qml/PreferencesPage.qml:370
+#: qml/PreferencesPage.qml:453
 msgid "Exploring"
 msgstr ""
 
-#: qml/PreferencesPage.qml:376
+#: qml/PreferencesPage.qml:459
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
 
-#: qml/PreferencesPage.qml:377 qml/PreferencesPage.qml:447
+#: qml/PreferencesPage.qml:460 qml/PreferencesPage.qml:530
 msgid "Snap position to road"
 msgstr "Aggancia posizione alla strada"
 
-#: qml/PreferencesPage.qml:378 routers/gpx_osmscout_settings.qml:31
+#: qml/PreferencesPage.qml:461 routers/gpx_osmscout_settings.qml:33
 #: routers/gpx_settings.qml:31
 msgid "None"
 msgstr "Nessuno"
 
-#: qml/PreferencesPage.qml:378 qml/RoutePage.qml:388
-#: routers/gpx_osmscout_settings.qml:53 routers/gpx_settings.qml:53
-#: routers/mapquest_open_settings.qml:28 routers/ValhallaSettings.qml:37
+#: qml/PreferencesPage.qml:461 qml/RoutePage.qml:644
+#: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
+#: routers/here_settings.qml:37 routers/mapquest_open_settings.qml:29
+#: routers/ValhallaSettings.qml:38
 msgid "Foot"
 msgstr "A piedi"
 
-#: qml/PreferencesPage.qml:407
+#: qml/PreferencesPage.qml:490
 msgid "Show navigation instructions"
 msgstr "Mostra indicazioni"
 
-#: qml/PreferencesPage.qml:417
+#: qml/PreferencesPage.qml:500
 msgid "Voice navigation instructions"
 msgstr "Indicazioni vocali"
 
-#: qml/PreferencesPage.qml:427
+#: qml/PreferencesPage.qml:510
 msgid "Reroute automatically"
 msgstr "Ricalcola automaticamente"
 
-#: qml/PreferencesPage.qml:436
+#: qml/PreferencesPage.qml:519
 msgid "Automatic zoom on start"
 msgstr "Zoom automatico all'avvio"
 
-#: qml/PreferencesPage.qml:446
+#: qml/PreferencesPage.qml:529
 msgid "Uses OSM Scout Server for its operation."
 msgstr ""
 
-#: qml/PreferencesPage.qml:458
+#: qml/PreferencesPage.qml:541
 msgid "Show direction signs"
 msgstr "Mostra segnali stradali"
 
-#: qml/PreferencesPage.qml:468
+#: qml/PreferencesPage.qml:551
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr ""
 "Ruota la mappa nella direzione di movimento quando avvii la navigazione."
 
-#: qml/PreferencesPage.qml:469
+#: qml/PreferencesPage.qml:552
 msgid "Rotate map when navigating"
 msgstr "Ruota la mappa durante la navigazione"
 
-#: qml/PreferencesPage.qml:478
+#: qml/PreferencesPage.qml:561
 msgid "Only applies to vector maps."
 msgstr "Si applica solo a mappe vettoriali."
 
-#: qml/PreferencesPage.qml:480
+#: qml/PreferencesPage.qml:563
 msgid "Tilt map when navigating"
 msgstr "Ruota mappa durante la navigazione"
 
-#: qml/PreferencesPage.qml:488
+#: qml/PreferencesPage.qml:571
 msgid "Smooth position animation"
 msgstr ""
 
-#: qml/PreferencesPage.qml:498
+#: qml/PreferencesPage.qml:581
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
@@ -1455,37 +1705,37 @@ msgstr ""
 "Genere preferito per la navigazione vocale. Supportato solo da alcuni "
 "sintetizzatori e lingue."
 
-#: qml/PreferencesPage.qml:499 qml/PreferencesPage.qml:825
+#: qml/PreferencesPage.qml:582 qml/PreferencesPage.qml:897
 msgid "Voice gender"
 msgstr "Genere della voce"
 
-#: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
+#: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:898
 msgid "Male"
 msgstr "Maschile"
 
-#: qml/PreferencesPage.qml:500 qml/PreferencesPage.qml:826
+#: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:898
 msgid "Female"
 msgstr "Femminile"
 
-#: qml/PreferencesPage.qml:514
+#: qml/PreferencesPage.qml:597
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr ""
 
-#: qml/PreferencesPage.qml:516
+#: qml/PreferencesPage.qml:599
 msgid "Speed limit"
 msgstr "Limite di velocità"
 
-#: qml/PreferencesPage.qml:517
+#: qml/PreferencesPage.qml:600
 msgid "Only when exceeding"
 msgstr "Solo quando superato"
 
-#: qml/PreferencesPage.qml:540 qml/PreferencesPage.qml:641
+#: qml/PreferencesPage.qml:623 qml/PreferencesPage.qml:727
 msgid "Compass"
 msgstr "Bussola"
 
-#: qml/PreferencesPage.qml:546
+#: qml/PreferencesPage.qml:630
 msgid ""
 "Compass can be used to determine orientation of your device and align the "
 "map accordingly. Note that the compass is enabled only when your position is"
@@ -1493,19 +1743,19 @@ msgid ""
 "by foot or on the bicycle."
 msgstr ""
 
-#: qml/PreferencesPage.qml:556
+#: qml/PreferencesPage.qml:640
 msgid "Use compass for determination of the direction."
 msgstr "Usa la bussola per determinare la direzione"
 
-#: qml/PreferencesPage.qml:557
+#: qml/PreferencesPage.qml:641
 msgid "Use compass"
 msgstr "Usa bussola"
 
-#: qml/PreferencesPage.qml:569
+#: qml/PreferencesPage.qml:653
 msgid "Controls"
 msgstr "Controlli"
 
-#: qml/PreferencesPage.qml:575
+#: qml/PreferencesPage.qml:660
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
@@ -1516,12 +1766,12 @@ msgstr ""
 "controlli selezionato più piccolo nella modalità di visualizzazione minima. "
 "Per passare da una modalità all'altra, fare clic su una mappa."
 
-#: qml/PreferencesPage.qml:584
+#: qml/PreferencesPage.qml:669
 msgid "Set map view to minimal mode on start"
 msgstr ""
 "Imposta la visualizzazione della mappa sulla modalità minima all'avvio"
 
-#: qml/PreferencesPage.qml:592
+#: qml/PreferencesPage.qml:677
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
@@ -1530,31 +1780,31 @@ msgstr ""
 "ritardo o disabilita il passaggio automatico tra le modalità di "
 "visualizzazione della mappa."
 
-#: qml/PreferencesPage.qml:594
+#: qml/PreferencesPage.qml:679
 msgid "Switch to minimal view"
 msgstr "Passa alla visualizzazione minima"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:681
 msgid "10 seconds"
 msgstr " 10 secondi"
 
-#: qml/PreferencesPage.qml:596
+#: qml/PreferencesPage.qml:681
 msgid "20 seconds"
 msgstr "20 secondi"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:682
 msgid "30 seconds"
 msgstr "30 secondi"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:682
 msgid "1 minute"
 msgstr "1 minuto"
 
-#: qml/PreferencesPage.qml:611
+#: qml/PreferencesPage.qml:696
 msgid "Always show"
 msgstr "Mostra sempre"
 
-#: qml/PreferencesPage.qml:615
+#: qml/PreferencesPage.qml:701
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
@@ -1562,45 +1812,45 @@ msgstr ""
 "Mostra sempre i controlli selezionati indipendentemente dal fatto che la "
 "visualizzazione della mappa sia nella modalità minima o completa."
 
-#: qml/PreferencesPage.qml:623
+#: qml/PreferencesPage.qml:709
 msgid "Menu"
 msgstr "Menu"
 
-#: qml/PreferencesPage.qml:632
+#: qml/PreferencesPage.qml:718
 msgid "Center on current location"
 msgstr "Centro sulla posizione corrente"
 
-#: qml/PreferencesPage.qml:650
+#: qml/PreferencesPage.qml:736
 msgid "Map selection"
 msgstr ""
 
-#: qml/PreferencesPage.qml:659
+#: qml/PreferencesPage.qml:745
 msgid "Speed and location precision"
 msgstr "Velocità e precisione di posizione"
 
-#: qml/PreferencesPage.qml:668
+#: qml/PreferencesPage.qml:754
 msgid "Scale"
 msgstr "Scala"
 
-#: qml/PreferencesPage.qml:695
+#: qml/PreferencesPage.qml:781
 msgid "Navigation Start/Pause"
 msgstr ""
 
-#: qml/PreferencesPage.qml:704
+#: qml/PreferencesPage.qml:790
 msgid "Navigation Clear Route"
 msgstr ""
 
-#: qml/PreferencesPage.qml:719
+#: qml/PreferencesPage.qml:805
 msgid "Zoom"
 msgstr "Zoom"
 
-#: qml/PreferencesPage.qml:725
+#: qml/PreferencesPage.qml:812
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
 msgstr ""
 
-#: qml/PreferencesPage.qml:735
+#: qml/PreferencesPage.qml:822
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
@@ -1608,11 +1858,11 @@ msgstr ""
 "Livello massimo di zoom che verrà utilizzato nella regolazione automatica "
 "dello zoom."
 
-#: qml/PreferencesPage.qml:737
+#: qml/PreferencesPage.qml:824
 msgid "Maximal zoom level"
 msgstr "Massimo livello di zoom"
 
-#: qml/PreferencesPage.qml:748
+#: qml/PreferencesPage.qml:835
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
@@ -1620,15 +1870,15 @@ msgstr ""
 "Il livello di zoom verrà regolato per avere la stessa altezza della mappa "
 "della distanza coperta da te nel numero di secondi specificato."
 
-#: qml/PreferencesPage.qml:751
+#: qml/PreferencesPage.qml:838
 msgid "Time range, s"
 msgstr "Intervallo di tempo, s"
 
-#: qml/PreferencesPage.qml:770
+#: qml/PreferencesPage.qml:857
 msgid "Testing"
 msgstr ""
 
-#: qml/PreferencesPage.qml:779
+#: qml/PreferencesPage.qml:867
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
@@ -1637,34 +1887,34 @@ msgstr ""
 "per la navigazione, il genere preferito e premi il pulsante in basso per "
 "test."
 
-#: qml/PreferencesPage.qml:802
+#: qml/PreferencesPage.qml:889
 msgid "Slovak"
 msgstr "Slovacco"
 
-#: qml/PreferencesPage.qml:824
+#: qml/PreferencesPage.qml:896
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "Genere preferito. Supportato solo da alcuni motori e lingue."
 
-#: qml/PreferencesPage.qml:838
+#: qml/PreferencesPage.qml:910
 msgid "Test"
 msgstr "Test"
 
-#: qml/PreferencesPage.qml:848
+#: qml/PreferencesPage.qml:921
 msgid "Selected voice engine: %1"
 msgstr "Motore vocale selezionato: %1"
 
-#: qml/PreferencesPage.qml:850
+#: qml/PreferencesPage.qml:923
 msgid ""
 "No engine available for selected language.\n"
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at OpenRepos."
 msgstr ""
 
-#: qml/PreferencesPage.qml:884
+#: qml/PreferencesPage.qml:957
 msgid "Development"
 msgstr "Sviluppatori"
 
-#: qml/PreferencesPage.qml:890
+#: qml/PreferencesPage.qml:964
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1672,7 +1922,7 @@ msgstr ""
 "Le opzioni seguenti sono solo per sviluppatori. Non modificarle a meno che "
 "tu non sappia quel che fai."
 
-#: qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:972
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1681,78 +1931,120 @@ msgstr ""
 "visualizzata. Ricorda di disattivare il posizionamento GPS quando usi questa"
 " opzione."
 
-#: qml/PreferencesPage.qml:899
+#: qml/PreferencesPage.qml:973
 msgid "Set position to the map center"
 msgstr "Imposta la posizione sul centro della mappa"
 
-#: qml/PreferencesPage.qml:906
+#: qml/PreferencesPage.qml:980
 msgid "Show current zoom level"
 msgstr "Mostra livello di zoom attuale"
 
-#: qml/pure-maps.qml:29
+#: qml/pure-maps.qml:30
 msgid "Pure Maps"
 msgstr "Pure Maps"
-
-#: qml/RouteOverallInfo.qml:95
-msgid "Remaining"
-msgstr "Rimanenti"
 
 #: qml/RouteOverallInfo.qml:129
 msgid "Total"
 msgstr "Totale"
 
-#: qml/RoutePage.qml:28 routers/default_results.qml:25
-#: routers/gpx_osmscout_results.qml:25 routers/gpx_results.qml:25
-#: routers/mapquest_open_results.qml:25 routers/osmscout_results.qml:25
-#: routers/osrm_results.qml:25 routers/stadiamaps_results.qml:25
-msgid "Route"
-msgstr "Percorso"
-
-#: qml/RoutePage.qml:51
-msgid "Follow me"
-msgstr "Seguimi"
-
-#: qml/RoutePage.qml:63
-msgid "Reverse endpoints"
-msgstr "Inverti destinazione/arrivo"
-
-#: qml/RoutePage.qml:136
-msgid "From"
-msgstr "Da"
-
-#: qml/RoutePage.qml:137
-msgid "Origin"
-msgstr "Origine"
-
-#: qml/RoutePage.qml:143
-msgid "To"
-msgstr "A"
-
-#: qml/RoutePage.qml:144
-msgid "Destination"
-msgstr "Destinazione"
-
-#: qml/RoutePage.qml:187
-msgid "Routes"
-msgstr "Percorsi"
-
-#: qml/RoutePage.qml:263
-msgid "Destinations"
-msgstr "Destinazioni"
-
-#: qml/RoutePage.qml:358
-msgid "Follow the movement and show just in time information"
-msgstr "Segui il movimento e mostra le informazioni al momento"
-
-#: qml/RoutePage.qml:367
+#: qml/RoutePage.qml:34
 msgid "Stop"
 msgstr "Ferma"
 
-#: qml/RoutePage.qml:367
+#: qml/RoutePage.qml:34
 msgid "Begin"
 msgstr "Inizia"
 
-#: qml/RoutePage.qml:385
+#: qml/RoutePage.qml:35
+msgid "Route"
+msgstr "Percorso"
+
+#: qml/RoutePage.qml:67
+msgid "Follow me"
+msgstr "Seguimi"
+
+#: qml/RoutePage.qml:79
+msgid "Reverse route"
+msgstr ""
+
+#: qml/RoutePage.qml:98
+msgid "Clear route"
+msgstr ""
+
+#: qml/RoutePage.qml:172
+msgid "From"
+msgstr "Da"
+
+#: qml/RoutePage.qml:179
+msgid "To"
+msgstr "A"
+
+#: qml/RoutePage.qml:180 qml/RoutePage.qml:334
+msgid "Destination"
+msgstr "Destinazione"
+
+#: qml/RoutePage.qml:195
+msgid ""
+"Additional destinations and wayponts can be added along the route. The both locations are used for calculation of the route, but only destinations are tracked for being reached. As a result, if you miss the waypoint and later rejoin the calculated route after the waypoint, it will be assumed that waypoint was reached and it will be dismissed in the rerouting calculations later. In contrast, destinations have to be reached within the certain tolerance and will not be dismissed in such manner.\n"
+"\n"
+"So, set as destination the locations that you need to reach on your route and as waypoints the locations that are just for shaping the route according to your preferences.\n"
+"\n"
+"Dismiss this dialog to stop showing this message."
+msgstr ""
+
+#: qml/RoutePage.qml:217
+msgid "Optimize order"
+msgstr ""
+
+#: qml/RoutePage.qml:240
+msgid "Up"
+msgstr ""
+
+#: qml/RoutePage.qml:249
+msgid "Down"
+msgstr ""
+
+#: qml/RoutePage.qml:263
+msgid "Convert to waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:264
+msgid "Convert to destination"
+msgstr ""
+
+#: qml/RoutePage.qml:310
+msgid "Add destination"
+msgstr ""
+
+#: qml/RoutePage.qml:318
+msgid "Add waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:334
+msgid "Waypoint"
+msgstr ""
+
+#: qml/RoutePage.qml:427
+msgid "Routes"
+msgstr "Percorsi"
+
+#: qml/RoutePage.qml:455
+msgid "%1 ‒ %2 (%3 destinations and waypoints)"
+msgstr ""
+
+#: qml/RoutePage.qml:500
+msgid "Show more..."
+msgstr ""
+
+#: qml/RoutePage.qml:540
+msgid "Destinations"
+msgstr "Destinazioni"
+
+#: qml/RoutePage.qml:632
+msgid "Follow the movement and show just in time information"
+msgstr "Segui il movimento e mostra le informazioni al momento"
+
+#: qml/RoutePage.qml:641
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
@@ -1760,13 +2052,9 @@ msgstr ""
 "Seleziona la modalità di trasporto. Si applica solo quando Pure Maps è in "
 "modalità seguimi."
 
-#: qml/RoutePage.qml:387
+#: qml/RoutePage.qml:643
 msgid "Mode of transportation"
 msgstr "Modalità di trasporto"
-
-#: qml/RoutePointPage.qml:31
-msgid "Using %1"
-msgstr "Utilizzando %1"
 
 #: qml/RoutePointPage.qml:65
 msgid "Current selection: %1"
@@ -1776,19 +2064,19 @@ msgstr "Selezione corrente: %1"
 msgid "Routing engine"
 msgstr ""
 
-#: qml/RouterPage.qml:60
+#: qml/RouterPage.qml:65
 msgid "Modes: %1"
 msgstr "Modalità: %1"
 
-#: qml/ScaleBar.qml:207
+#: qml/ScaleBar.qml:208
 msgid "Auto-zoom requires auto-centering to be enabled"
 msgstr "Lo zoom automatico richiede l'attivazione della centratura automatica"
 
-#: qml/ScaleBar.qml:218
+#: qml/ScaleBar.qml:219
 msgid "Auto-zoom on"
 msgstr "Zoom automatico attivato"
 
-#: qml/ScaleBar.qml:219
+#: qml/ScaleBar.qml:220
 msgid "Auto-zoom off"
 msgstr "Zoom automatico disattivato"
 
@@ -1807,10 +2095,6 @@ msgstr "Messaggio copiato negli appunti"
 #: qml/SharePage.qml:59
 msgid "Error sending message"
 msgstr ""
-
-#: qml/SharePage.qml:66
-msgid "Email"
-msgstr "Email"
 
 #: qml/SharePage.qml:69
 msgid "Launching the Email application"
@@ -1832,251 +2116,623 @@ msgstr "Aggiungi collegamento a OpenStreetMaps"
 msgid "Add link to Google Maps"
 msgstr "Aggiungi collegamento a Google Maps"
 
-#: routers/default_results.qml:81 routers/digitransit_results.qml:186
-#: routers/gpx_osmscout_results.qml:81 routers/gpx_results.qml:81
-#: routers/mapquest_open_results.qml:81 routers/osmscout_results.qml:81
-#: routers/osrm_results.qml:81 routers/stadiamaps_results.qml:81
-msgid "Route to %1"
-msgstr "Percorso a %1"
-
-#: routers/digitransit_results.qml:61
-msgid "Route %1. total %2"
-msgstr "Percorso %1. totale %2"
-
-#: routers/digitransit_results.qml:156
-msgid "Walk %1"
-msgstr "A piedi %1"
-
-#: routers/digitransit_results.qml:157
-msgid "%1 → %2"
-msgstr "%1 → %2"
-
-#: routers/digitransit_results.qml:266
-msgid "Results"
-msgstr "Risultati"
-
-#: routers/digitransit_settings.qml:31
-msgid "Region"
-msgstr "Regione"
-
-#: routers/digitransit_settings.qml:32
-msgid "HSL"
-msgstr "HSL"
-
-#: routers/digitransit_settings.qml:32
-msgid "Waltti"
-msgstr "Waltti"
-
-#: routers/digitransit_settings.qml:32
-msgid "Finland"
-msgstr "Finlandia"
-
-#: routers/digitransit_settings.qml:72 routers/digitransit_settings.qml:74
-#: routers/digitransit_settings.qml:78
-msgid "Depart"
-msgstr "Partenza"
-
-#: routers/digitransit_settings.qml:75
-msgid "Arrive"
-msgstr "Arrivo"
-
-#: routers/digitransit_settings.qml:91
-msgid "Today"
-msgstr "Oggi"
-
-#: routers/digitransit_settings.qml:98
-msgid "Select date"
-msgstr "Seleziona data"
-
-#: routers/digitransit_settings.qml:119
-msgid "Now"
-msgstr "Ora"
-
-#: routers/digitransit_settings.qml:127
-msgid "Select time"
-msgstr "Seleziona orario"
-
-#: routers/digitransit_settings.qml:145
-msgid "Criterion"
-msgstr "Criterio"
-
-#: routers/digitransit_settings.qml:146
-msgid "Least transfers"
-msgstr "Meno cambi"
-
-#: routers/digitransit_settings.qml:146
-msgid "Least walking"
-msgstr "Meno tratti a piedi"
-
-#: routers/gpx_osmscout_settings.qml:30 routers/gpx_settings.qml:30
+#: routers/gpx_osmscout_settings.qml:32 routers/gpx_settings.qml:30
 msgid "File"
 msgstr "File"
 
-#: routers/gpx_osmscout_settings.qml:45 routers/gpx_settings.qml:45
+#: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:45
 msgid "Reverse"
 msgstr ""
 
-#: routers/gpx_osmscout_settings.qml:53 routers/ValhallaSettings.qml:38
-#: routers/ValhallaSettings.qml:113
+#: routers/gpx_osmscout_settings.qml:55 routers/here_settings.qml:38
+#: routers/ValhallaSettings.qml:39 routers/ValhallaSettings.qml:132
 msgid "Bus"
 msgstr "Bus"
 
-#: routers/gpx_osmscout_settings.qml:54 routers/ValhallaSettings.qml:38
+#: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "High-occupancy vehicle (HOV)"
 msgstr "Veicoli ad alta occupazione (HOV)"
 
-#: routers/gpx_osmscout_settings.qml:54 routers/ValhallaSettings.qml:38
+#: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "Motorcycle"
 msgstr "Motocicli"
 
-#: routers/gpx_osmscout_settings.qml:54 routers/ValhallaSettings.qml:38
+#: routers/gpx_osmscout_settings.qml:56 routers/here_settings.qml:37
+#: routers/ValhallaSettings.qml:39
 msgid "Motor Scooter"
 msgstr "Scooter"
 
-#: routers/gpx_osmscout_settings.qml:73 routers/ValhallaSettings.qml:59
+#: routers/gpx_osmscout_settings.qml:77 routers/ValhallaSettings.qml:60
+msgid "Bulgarian (Bulgaria)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:78 routers/here_settings.qml:73
+#: routers/ValhallaSettings.qml:61
+msgid "Catalan (Spain)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:79 routers/here_settings.qml:78
+#: routers/ValhallaSettings.qml:62
+msgid "Czech (Czechia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:80 routers/here_settings.qml:79
+#: routers/ValhallaSettings.qml:63
+msgid "Danish (Denmark)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:81 routers/here_settings.qml:90
+#: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:64
+msgid "German (Germany)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:82 routers/here_settings.qml:91
+#: routers/ValhallaSettings.qml:65
+msgid "Greek (Greece)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:83 routers/here_settings.qml:82
+#: routers/mapquest_open_settings.qml:58 routers/ValhallaSettings.qml:66
+msgid "English (United Kingdom)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:85 routers/ValhallaSettings.qml:68
 msgid "English Pirate"
 msgstr "Inglese pirata"
 
-#: routers/gpx_osmscout_settings.qml:75 routers/ValhallaSettings.qml:61
-msgid "Slovenian"
-msgstr "Sloveno"
-
-#: routers/mapquest_open_settings.qml:45
-msgid "Try to avoid tolls"
-msgstr "Cerca di evitare pedaggi"
-
-#: routers/mapquest_open_settings.qml:57
-msgid "English (UK)"
-msgstr "Inglese (UK)"
-
-#: routers/mapquest_open_settings.qml:57
-msgid "English (US)"
-msgstr "Inglese (US)"
-
-#: routers/mapquest_open_settings.qml:57
-msgid "French (Canada)"
-msgstr "Francese (Canada)"
-
-#: routers/mapquest_open_settings.qml:58
-msgid "French (France)"
-msgstr "Francese (Francia)"
-
-#: routers/mapquest_open_settings.qml:58
-msgid "Spanish (Mexico)"
-msgstr "Spagnolo (Messico)"
-
-#: routers/mapquest_open_settings.qml:59
+#: routers/gpx_osmscout_settings.qml:86 routers/here_settings.qml:144
+#: routers/mapquest_open_settings.qml:60 routers/ValhallaSettings.qml:69
 msgid "Spanish (Spain)"
 msgstr "Spagnolo (Spagna)"
 
-#: routers/ValhallaSettings.qml:30
+#: routers/gpx_osmscout_settings.qml:87 routers/ValhallaSettings.qml:70
+msgid "Estonian (Estonia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:88 routers/here_settings.qml:86
+#: routers/ValhallaSettings.qml:71
+msgid "Finnish (Finland)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:89 routers/here_settings.qml:87
+#: routers/mapquest_open_settings.qml:63 routers/ValhallaSettings.qml:72
+msgid "French (France)"
+msgstr "Francese (Francia)"
+
+#: routers/gpx_osmscout_settings.qml:90 routers/here_settings.qml:95
+#: routers/ValhallaSettings.qml:73
+msgid "Hindi (India)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:91 routers/here_settings.qml:96
+#: routers/ValhallaSettings.qml:74
+msgid "Hungarian (Hungary)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:92 routers/here_settings.qml:101
+#: routers/ValhallaSettings.qml:75
+msgid "Italian (Italy)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:93 routers/here_settings.qml:102
+#: routers/ValhallaSettings.qml:76
+msgid "Japanese (Japan)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:94 routers/ValhallaSettings.qml:77
+msgid "Norwegian Bokmål (Norway)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:95 routers/here_settings.qml:81
+#: routers/ValhallaSettings.qml:78
+msgid "Dutch (Netherlands)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:96 routers/here_settings.qml:128
+#: routers/ValhallaSettings.qml:79
+msgid "Polish (Poland)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:97 routers/here_settings.qml:129
+#: routers/ValhallaSettings.qml:80
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:98 routers/here_settings.qml:130
+#: routers/ValhallaSettings.qml:81
+msgid "Portuguese (Portugal)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:99 routers/here_settings.qml:134
+#: routers/ValhallaSettings.qml:82
+msgid "Romanian (Romania)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:100 routers/here_settings.qml:135
+#: routers/mapquest_open_settings.qml:64 routers/ValhallaSettings.qml:83
+msgid "Russian (Russia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:101 routers/here_settings.qml:142
+#: routers/ValhallaSettings.qml:84
+msgid "Slovak (Slovakia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:102 routers/here_settings.qml:143
+#: routers/ValhallaSettings.qml:85
+msgid "Slovenian (Slovenia)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:103 routers/here_settings.qml:146
+#: routers/ValhallaSettings.qml:86
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:104 routers/here_settings.qml:154
+#: routers/ValhallaSettings.qml:87
+msgid "Turkish (Turkey)"
+msgstr ""
+
+#: routers/gpx_osmscout_settings.qml:105 routers/ValhallaSettings.qml:88
+msgid "Ukrainian (Ukraine)"
+msgstr ""
+
+#: routers/here_settings.qml:30 routers/ValhallaSettings.qml:31
 msgid "General options"
 msgstr "Opzioni generali"
 
-#: routers/ValhallaSettings.qml:76
+#: routers/here_settings.qml:38
+msgid "Taxi"
+msgstr ""
+
+#: routers/here_settings.qml:59
+msgid "Afrikaans"
+msgstr ""
+
+#: routers/here_settings.qml:60
+msgid "Albanian"
+msgstr ""
+
+#: routers/here_settings.qml:61
+msgid "Amharic"
+msgstr ""
+
+#: routers/here_settings.qml:62
+msgid "Arabic (Saudi Arabia)"
+msgstr ""
+
+#: routers/here_settings.qml:63
+msgid "Armenian"
+msgstr ""
+
+#: routers/here_settings.qml:64
+msgid "Assamese"
+msgstr ""
+
+#: routers/here_settings.qml:65
+msgid "Azerbaijani (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:67
+msgid "Belarusian"
+msgstr ""
+
+#: routers/here_settings.qml:68
+msgid "Bangla (Bangladesh)"
+msgstr ""
+
+#: routers/here_settings.qml:69
+msgid "Bangla (India)"
+msgstr ""
+
+#: routers/here_settings.qml:70
+msgid "Bosnian"
+msgstr ""
+
+#: routers/here_settings.qml:71
+msgid "Bulgarian"
+msgstr ""
+
+#: routers/here_settings.qml:74
+msgid "Chinese (China)"
+msgstr ""
+
+#: routers/here_settings.qml:75
+msgid "Chinese (Hong Kong SAR China)"
+msgstr ""
+
+#: routers/here_settings.qml:76
+msgid "Chinese (Taiwan)"
+msgstr ""
+
+#: routers/here_settings.qml:77
+msgid "Croatian"
+msgstr ""
+
+#: routers/here_settings.qml:80
+msgid "Persian (Afghanistan)"
+msgstr ""
+
+#: routers/here_settings.qml:84
+msgid "Estonian"
+msgstr ""
+
+#: routers/here_settings.qml:85
+msgid "Filipino (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:88
+msgid "Galician"
+msgstr ""
+
+#: routers/here_settings.qml:89
+msgid "Georgian"
+msgstr ""
+
+#: routers/here_settings.qml:92
+msgid "Gujarati"
+msgstr ""
+
+#: routers/here_settings.qml:93
+msgid "Hausa (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:94
+msgid "Hebrew (Israel)"
+msgstr ""
+
+#: routers/here_settings.qml:97
+msgid "Icelandic"
+msgstr ""
+
+#: routers/here_settings.qml:98
+msgid "Igbo (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:99
+msgid "Indonesian (Indonesia)"
+msgstr ""
+
+#: routers/here_settings.qml:100
+msgid "Irish"
+msgstr ""
+
+#: routers/here_settings.qml:103
+msgid "Kʼicheʼ (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:104
+msgid "Kannada"
+msgstr ""
+
+#: routers/here_settings.qml:105
+msgid "Kazakh"
+msgstr ""
+
+#: routers/here_settings.qml:106
+msgid "Khmer"
+msgstr ""
+
+#: routers/here_settings.qml:107
+msgid "Kinyarwanda (Rwanda)"
+msgstr ""
+
+#: routers/here_settings.qml:108
+msgid "Konkani"
+msgstr ""
+
+#: routers/here_settings.qml:109
+msgid "Korean (South Korea)"
+msgstr ""
+
+#: routers/here_settings.qml:110
+msgid "Kurdish (Arabic)"
+msgstr ""
+
+#: routers/here_settings.qml:111
+msgid "Kyrgyz (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:112
+msgid "Latvian"
+msgstr ""
+
+#: routers/here_settings.qml:113
+msgid "Lithuanian"
+msgstr ""
+
+#: routers/here_settings.qml:114
+msgid "Luxembourgish"
+msgstr ""
+
+#: routers/here_settings.qml:115
+msgid "Macedonian"
+msgstr ""
+
+#: routers/here_settings.qml:116
+msgid "Malay (Malaysia)"
+msgstr ""
+
+#: routers/here_settings.qml:117
+msgid "Malayalam"
+msgstr ""
+
+#: routers/here_settings.qml:118
+msgid "Maltese"
+msgstr ""
+
+#: routers/here_settings.qml:119
+msgid "Maori (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:120
+msgid "Marathi"
+msgstr ""
+
+#: routers/here_settings.qml:121
+msgid "Mongolian (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:122
+msgid "Nepali (Nepal)"
+msgstr ""
+
+#: routers/here_settings.qml:124
+msgid "Norwegian Nynorsk"
+msgstr ""
+
+#: routers/here_settings.qml:125
+msgid "Odia"
+msgstr ""
+
+#: routers/here_settings.qml:126
+msgid "Northern Sotho"
+msgstr ""
+
+#: routers/here_settings.qml:131
+msgid "Punjabi"
+msgstr ""
+
+#: routers/here_settings.qml:132
+msgid "Punjabi (Arabic)"
+msgstr ""
+
+#: routers/here_settings.qml:133
+msgid "Cusco Quechua (Latin, Peru)"
+msgstr ""
+
+#: routers/here_settings.qml:136
+msgid "Scottish Gaelic (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:137
+msgid "Serbian (Cyrillic, Bosnia & Herzegovina)"
+msgstr ""
+
+#: routers/here_settings.qml:138
+msgid "Serbian (Cyrillic, Serbia)"
+msgstr ""
+
+#: routers/here_settings.qml:139
+msgid "Serbian (Latin, Serbia)"
+msgstr ""
+
+#: routers/here_settings.qml:140
+msgid "Sindhi (Arabic)"
+msgstr ""
+
+#: routers/here_settings.qml:141
+msgid "Sinhala"
+msgstr ""
+
+#: routers/here_settings.qml:145
+msgid "Swahili"
+msgstr ""
+
+#: routers/here_settings.qml:147
+msgid "Tajik (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:148
+msgid "Tamil"
+msgstr ""
+
+#: routers/here_settings.qml:149
+msgid "Tatar (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:150
+msgid "Telugu"
+msgstr ""
+
+#: routers/here_settings.qml:151
+msgid "Thai (Thailand)"
+msgstr ""
+
+#: routers/here_settings.qml:152
+msgid "Tigrinya"
+msgstr ""
+
+#: routers/here_settings.qml:153
+msgid "Tswana"
+msgstr ""
+
+#: routers/here_settings.qml:155
+msgid "Turkmen (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:158
+msgid "Uyghur (Arabic)"
+msgstr ""
+
+#: routers/here_settings.qml:159
+msgid "Uzbek (Cyrillic)"
+msgstr ""
+
+#: routers/here_settings.qml:162
+msgid "Wolof (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:163
+msgid "Xhosa"
+msgstr ""
+
+#: routers/here_settings.qml:164
+msgid "Yoruba (Latin)"
+msgstr ""
+
+#: routers/here_settings.qml:165
+msgid "Zulu (South Africa)"
+msgstr ""
+
+#: routers/here_settings.qml:172 routers/ValhallaSettings.qml:95
 msgid "Advanced options"
 msgstr "Opzioni avanzate"
 
-#: routers/ValhallaSettings.qml:84
+#: routers/here_settings.qml:179 routers/ValhallaSettings.qml:103
 msgid "Prefer shorter route"
 msgstr "Preferisci percorso più breve"
 
-#: routers/ValhallaSettings.qml:95
+#: routers/here_settings.qml:191
+msgid "Avoid tolls"
+msgstr ""
+
+#: routers/here_settings.qml:203
+msgid "Avoid highways"
+msgstr ""
+
+#: routers/here_settings.qml:215
+msgid "Avoid tunnels"
+msgstr ""
+
+#: routers/here_settings.qml:227
+msgid "Avoid dirt roads"
+msgstr ""
+
+#: routers/here_settings.qml:239
+msgid "Avoid difficult turns"
+msgstr ""
+
+#: routers/here_settings.qml:251
+msgid "Avoid ferries"
+msgstr ""
+
+#: routers/here_settings.qml:263
+msgid "Avoid car trains"
+msgstr ""
+
+#: routers/here_settings.qml:275
+msgid "Avoid seasonally closed roads"
+msgstr ""
+
+#: routers/mapquest_open_settings.qml:46
+msgid "Try to avoid tolls"
+msgstr "Cerca di evitare pedaggi"
+
+#: routers/mapquest_open_settings.qml:61
+msgid "Spanish (Mexico)"
+msgstr "Spagnolo (Messico)"
+
+#: routers/mapquest_open_settings.qml:62
+msgid "French (Canada)"
+msgstr "Francese (Canada)"
+
+#: routers/ValhallaSettings.qml:114
 msgid "Bicycle type"
 msgstr "Tipo di bicicletta"
 
-#: routers/ValhallaSettings.qml:96
+#: routers/ValhallaSettings.qml:115
 msgid "Road"
 msgstr "Strada"
 
-#: routers/ValhallaSettings.qml:96
+#: routers/ValhallaSettings.qml:115
 msgid "Hybrid or City (default)"
 msgstr "Ibrida o City (predefinito)"
 
-#: routers/ValhallaSettings.qml:96
+#: routers/ValhallaSettings.qml:115
 msgid "Cross"
 msgstr "Cross"
 
-#: routers/ValhallaSettings.qml:96
+#: routers/ValhallaSettings.qml:115
 msgid "Mountain"
 msgstr "Mountain"
 
-#: routers/ValhallaSettings.qml:112
+#: routers/ValhallaSettings.qml:131
 msgid "Your desire to use buses."
 msgstr "Disponibilità a usare autobus."
 
-#: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
-#: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:186
-#: routers/ValhallaSettings.qml:202 routers/ValhallaSettings.qml:220
-#: routers/ValhallaSettings.qml:238 routers/ValhallaSettings.qml:254
-#: routers/ValhallaSettings.qml:290
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
+#: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:205
+#: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:239
+#: routers/ValhallaSettings.qml:257 routers/ValhallaSettings.qml:273
+#: routers/ValhallaSettings.qml:309
 msgid "Avoid"
 msgstr "Evita"
 
-#: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
-#: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:202
-#: routers/ValhallaSettings.qml:220 routers/ValhallaSettings.qml:273
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
+#: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:221
+#: routers/ValhallaSettings.qml:239 routers/ValhallaSettings.qml:292
 msgid "Prefer to avoid"
 msgstr "Preferisci evitare"
 
-#: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:149
-#: routers/ValhallaSettings.qml:186 routers/ValhallaSettings.qml:202
-#: routers/ValhallaSettings.qml:220 routers/ValhallaSettings.qml:238
-#: routers/ValhallaSettings.qml:254 routers/ValhallaSettings.qml:290
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
+#: routers/ValhallaSettings.qml:205 routers/ValhallaSettings.qml:221
+#: routers/ValhallaSettings.qml:239 routers/ValhallaSettings.qml:257
+#: routers/ValhallaSettings.qml:273 routers/ValhallaSettings.qml:309
 msgid "No preference (default)"
 msgstr "Nessuna preferenza (predefinito)"
 
-#: routers/ValhallaSettings.qml:114 routers/ValhallaSettings.qml:150
-#: routers/ValhallaSettings.qml:167 routers/ValhallaSettings.qml:203
-#: routers/ValhallaSettings.qml:221 routers/ValhallaSettings.qml:274
+#: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:169
+#: routers/ValhallaSettings.qml:186 routers/ValhallaSettings.qml:222
+#: routers/ValhallaSettings.qml:240 routers/ValhallaSettings.qml:293
 msgid "Incline"
 msgstr "Pendenza"
 
-#: routers/ValhallaSettings.qml:129
+#: routers/ValhallaSettings.qml:148
 msgid "The maximum difficulty of hiking trails that is allowed."
 msgstr "La difficoltà massima permessa per i percorsi escursionistici."
 
-#: routers/ValhallaSettings.qml:130
+#: routers/ValhallaSettings.qml:149
 msgid "Hiking difficulty"
 msgstr "Difficoltà escursione"
 
-#: routers/ValhallaSettings.qml:131
+#: routers/ValhallaSettings.qml:150
 msgid "Hiking (default)"
 msgstr "Escursione a piedi (predefinita)"
 
-#: routers/ValhallaSettings.qml:131
+#: routers/ValhallaSettings.qml:150
 msgid "Mountain hiking"
 msgstr "Escursione di montagna"
 
-#: routers/ValhallaSettings.qml:132
+#: routers/ValhallaSettings.qml:151
 msgid "Demanding mountain hiking"
 msgstr "Escursione di montagna impegnativa"
 
-#: routers/ValhallaSettings.qml:132
+#: routers/ValhallaSettings.qml:151
 msgid "Alpine hiking"
 msgstr "Escursione alpina"
 
-#: routers/ValhallaSettings.qml:132
+#: routers/ValhallaSettings.qml:151
 msgid "Demanding alpine hiking"
 msgstr "Escursione alpina impegnativa"
 
-#: routers/ValhallaSettings.qml:148
+#: routers/ValhallaSettings.qml:167
 msgid "Ferries"
 msgstr "Ferrata"
 
-#: routers/ValhallaSettings.qml:165
+#: routers/ValhallaSettings.qml:184
 msgid "Highways"
 msgstr "Autostrade"
 
-#: routers/ValhallaSettings.qml:166 routers/ValhallaSettings.qml:273
+#: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:292
 msgid "No preference"
 msgstr "Nessuna preferenza"
 
-#: routers/ValhallaSettings.qml:167
+#: routers/ValhallaSettings.qml:186
 msgid "Prefer (default)"
 msgstr "Preferisci (predefinito)"
 
-#: routers/ValhallaSettings.qml:184
+#: routers/ValhallaSettings.qml:203
 msgid ""
 "Your desire to tackle hills. When avoiding hills and steep grades, longer "
 "(time and distance) routes can be selected. By allowing hills, it indicates "
@@ -2087,39 +2743,39 @@ msgstr ""
 "distanza). Permettendo le colline, indichi di non temere colline e pendenze "
 "elevate."
 
-#: routers/ValhallaSettings.qml:185
+#: routers/ValhallaSettings.qml:204
 msgid "Hills"
 msgstr "Colline"
 
-#: routers/ValhallaSettings.qml:186
+#: routers/ValhallaSettings.qml:205
 msgid "Allow"
 msgstr "Permetti"
 
-#: routers/ValhallaSettings.qml:201
+#: routers/ValhallaSettings.qml:220
 msgid "Primary roads"
 msgstr "Strade principali"
 
-#: routers/ValhallaSettings.qml:218
+#: routers/ValhallaSettings.qml:237
 msgid "Your desire to use rail/subway/metro."
 msgstr "Disponibilità a usare treni/tram/metropolitane."
 
-#: routers/ValhallaSettings.qml:219
+#: routers/ValhallaSettings.qml:238
 msgid "Rail"
 msgstr "Treni"
 
-#: routers/ValhallaSettings.qml:236
+#: routers/ValhallaSettings.qml:255
 msgid "Your propensity to use roads alongside other vehicles."
 msgstr "La tua propensione a percorrere strade assieme ad altri veicoli."
 
-#: routers/ValhallaSettings.qml:237
+#: routers/ValhallaSettings.qml:256
 msgid "Roads"
 msgstr "Strade"
 
-#: routers/ValhallaSettings.qml:253
+#: routers/ValhallaSettings.qml:272
 msgid "Tolls"
 msgstr "Pedaggi"
 
-#: routers/ValhallaSettings.qml:271
+#: routers/ValhallaSettings.qml:290
 msgid ""
 "Your desire for adventure. When preferred, router will tend to avoid major "
 "roads and route on secondary roads, sometimes on using trails, tracks, "
@@ -2130,15 +2786,15 @@ msgstr ""
 "talvolta utilizzando sentieri, piste e strade non classificate o con "
 "superfici sconnesse."
 
-#: routers/ValhallaSettings.qml:272
+#: routers/ValhallaSettings.qml:291
 msgid "Trails"
 msgstr "Sentieri"
 
-#: routers/ValhallaSettings.qml:273
+#: routers/ValhallaSettings.qml:292
 msgid "Avoid (default)"
 msgstr "Evita (predefinito)"
 
-#: routers/ValhallaSettings.qml:289
+#: routers/ValhallaSettings.qml:308
 msgid "Transfers"
 msgstr "Cambi"
 
@@ -2146,7 +2802,7 @@ msgstr "Cambi"
 msgid "%1 (default)"
 msgstr "%1 (predefinito)"
 
-#: qml/js/util.js:235
+#: qml/js/util.js:239
 msgid "Alternatives"
 msgstr "Alternative"
 
@@ -2162,98 +2818,107 @@ msgstr ""
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
 
-#: src/navigator.cpp:103
+#: src/navigator.cpp:152
 msgid "Position unknown"
 msgstr ""
 
-#: src/navigator.cpp:109
+#: src/navigator.cpp:158
 msgid "Position imprecise: accuracy %1"
 msgstr ""
 
-#: src/navigator.cpp:126 src/navigator.cpp:306
+#: src/navigator.cpp:177 src/navigator.cpp:428
 msgid "Preparing to start navigation"
 msgstr ""
 
-#: src/navigator.cpp:331
+#: src/navigator.cpp:470
 msgid "Moving in a wrong direction"
 msgstr ""
 
-#: src/navigator.cpp:341
+#: src/navigator.cpp:480
 msgid "Away from route"
 msgstr ""
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:512 src/navigator.cpp:523
+#: src/navigator.cpp:659 src/navigator.cpp:670
 msgid "In %2, %1"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:695
+#: src/navigator.cpp:1001
 msgid "%1 h %2 min"
 msgstr ""
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:697
+#: src/navigator.cpp:1003
 msgid "%1 min"
 msgstr ""
+
+#: src/navigator.cpp:1048
+msgid "Starting navigation"
+msgstr "Avvio della navigazione"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
 msgstr ""
 
 #: standard input:2
+msgid "Search based on HERE data. Supports autocomplete"
+msgstr ""
+
+#: standard input:3
 msgid "Search based on open data sources"
 msgstr "Ricerca basata su sorgenti di dati aperte"
 
-#: standard input:3
+#: standard input:4
 msgid "Search based on open data sources. Supports autocomplete"
 msgstr ""
 
-#: standard input:4
+#: standard input:5
 msgid "Search based on OpenStreetMap data. Supports autocomplete"
 msgstr ""
 
-#: standard input:5
+#: standard input:6
 msgid "Venues listed and reviewed by Foursquare users"
 msgstr "Località elencate e recensite da utenti Foursquare."
 
-#: standard input:6 standard input:7
+#: standard input:7 standard input:8
 msgid "Points of interest from OpenStreetMap data"
 msgstr "Punti di interesse da dati OpenStreetMap"
 
-#: standard input:8
-msgid "Public transport routing in Finland"
-msgstr "Indicazioni per trasporto pubblico in Filandia"
-
 #: standard input:9
-msgid "public transport"
-msgstr "trasporto pubblico"
-
-#: standard input:10
 msgid "Routing along GPX track"
 msgstr "Navigazione lungo traccia GPX"
 
-#: standard input:11 standard input:13 standard input:15 standard input:17
-#: standard input:19 standard input:21
+#: standard input:10 standard input:12 standard input:14 standard input:16
+#: standard input:18 standard input:20 standard input:22
 msgid "car"
 msgstr "in auto"
 
-#: standard input:11 standard input:13 standard input:15 standard input:17
-#: standard input:21
+#: standard input:10 standard input:12 standard input:14 standard input:16
+#: standard input:18 standard input:22
+msgid "bicycle"
+msgstr "bicicletta"
+
+#: standard input:10 standard input:12 standard input:14 standard input:16
+#: standard input:18 standard input:22
 msgid "foot"
 msgstr "a piedi"
 
-#: standard input:12
+#: standard input:11
 msgid "Routing along GPX track processed by OSM Scout Server"
 msgstr ""
 
-#: standard input:14 standard input:16 standard input:18
+#: standard input:13
+msgid "Routing by HERE"
+msgstr ""
+
+#: standard input:15 standard input:17 standard input:19
 msgid "Routing based on OpenStreetMap data"
 msgstr "Navigazione basata su dati OpenStreetMaps"
 
-#: standard input:20
+#: standard input:21
 msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr "Navigazione tramite Valhalla basata su dati OpenStreetMap"
