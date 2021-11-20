@@ -154,6 +154,10 @@ class KeyStore:
     def has_mapbox(self):
         return self.mapbox_key
 
+    @property
+    def has_maptiler(self):
+        return self.maptiler_key
+
     def list(self, headers=False):
         """Return a list of dictionaries of API key properties"""
         keys = list(DEFAULTS.keys())
@@ -177,6 +181,11 @@ class KeyStore:
     def mapbox_key(self):
         """Return Mapbox access key with the preference of the personal one"""
         return self.get("MAPBOX_KEY")
+
+    @property
+    def maptiler_key(self):
+        """Return Mapbox access key with the preference of the personal one"""
+        return self.get("MAPTILER_KEY")
 
     def set(self, key, value):
         return poor.conf.set("keys." + key, value.strip())

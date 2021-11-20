@@ -137,7 +137,7 @@ PageEmptyPL {
         // finish initialization after the root page is shown
         if (!app.initialized) {
             app.initialize();
-            if (app.mapboxKeyMissing) app.showMenu();
+            if (app.fontKeyMissing) app.showMenu();
         }
     }
 }

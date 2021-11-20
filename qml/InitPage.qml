@@ -45,18 +45,21 @@ PageEmptyPL {
             licensesMissing = py.call_sync("poor.key.get_licenses_missing", [])
             // check font provider
             app.conf.set("font_provider", defaultFontProvider);
-            var k = py.evaluate("poor.key.mapbox_key")
-            if (defaultFontProvider == "mapbox" && !k) {
+            var hasMapboxKey = py.evaluate("poor.key.has_mapbox")
+            var hasMaptilerKey = py.evaluate("poor.key.has_maptiler")
+            if ( (defaultFontProvider === "mapbox" && !hasMapboxKey) ||
+                 (defaultFontProvider === "maptiler" && !hasMaptilerKey) ) {
+                var provider = (defaultFontProvider === "mapbox") ? "Mapbox" : "MapTiler"
                 var d = app.push(Qt.resolvedUrl("MessagePage.qml"), {
                              "acceptText": app.tr("Dismiss"),
-                             "title": app.tr("Missing Mapbox key"),
-                             "message": app.tr("Your installation is missing Mapbox API key. " +
-                                               "Please register at Mapbox and fill in your personal API key " +
+                             "title": app.tr("Missing %1 key", provider),
+                             "message": app.tr("Your installation is missing %1 API key. " +
+                                               "Please register at %1 and fill in your personal API key " +
                                                "in Preferences. This key is not needed if you plan to use " +
-                                               "Pure Maps with the offline map provider.")
+                                               "Pure Maps with the offline map provider.", provider)
                          });
                 d.Component.destruction.connect(showNextLicense)
-                app.mapboxKeyMissing = true;
+                app.fontKeyMissing = true;
             } else if (licensesMissing.length > 0) {
                 showNextLicense();
             } else {

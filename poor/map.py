@@ -134,6 +134,8 @@ class Map:
         glyphs = "mapbox://fonts/mapbox/{fontstack}/{range}.pbf"
         if poor.conf.font_provider == "osmscout":
             glyphs = "http://127.0.0.1:8553/v1/mbgl/glyphs?stack={fontstack}&range={range}"
+        elif poor.conf.font_provider == "maptiler":
+            glyphs = "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=" + poor.key.maptiler_key
         return json.dumps({
             "id": "raster",
             "glyphs": glyphs,

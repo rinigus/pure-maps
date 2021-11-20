@@ -39,6 +39,7 @@ ApplicationWindowPL {
 
     property var    conf: Config {}
     property bool   errorPageOpen: false
+    property bool   fontKeyMissing: false
     property bool   hasMapMatching: false
     property bool   initialized: false
     property bool   infoActive: infoPanel && infoPanel.infoText
@@ -50,7 +51,6 @@ ApplicationWindowPL {
     // and the associated constant Theme.itemSizeSmall.
     property real   listItemVerticalMargin: (styler.themeItemSizeSmall - 1.125 * styler.themeFontSizeMedium) / 2
     property var    map: null
-    property bool   mapboxKeyMissing: false
     property string mapMatchingMode: {
         if (!hasMapMatching) return "none";
         else if (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
