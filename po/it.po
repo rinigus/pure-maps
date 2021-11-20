@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Watchmaker <alessandro.pra@gmail.com>, 2018
-# rinigus github, 2019
 # albanobattistella <albano_battistella@hotmail.com>, 2019
 # Michele Claus <claus.miki@hotmail.it>, 2020
-#
+# rinigus github, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -16,12 +16,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-20 17:14+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Michele Claus <claus.miki@hotmail.it>, 2020\n"
+"Last-Translator: rinigus github, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rinigus/teams/89597/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: geocoders/here.py:141
@@ -765,9 +765,8 @@ msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
 "application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
-"Flathub, or your distribution. See <a "
-"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
-"manual</a> for details."
+"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
+"/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
 
 #: qml/MapErrorPage.qml:62

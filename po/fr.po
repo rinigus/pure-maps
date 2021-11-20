@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roman Meier <meierrom@gmail.com>, 2018
 # Florian, 2019
@@ -10,7 +10,7 @@
 # Jordi, 2021
 # Anne017, 2021
 # rinigus github, 2021
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -20,10 +20,10 @@ msgstr ""
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rinigus github, 2021\n"
 "Language-Team: French (https://www.transifex.com/rinigus/teams/89597/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: geocoders/here.py:141
@@ -771,9 +771,8 @@ msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
 "application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
-"Flathub, or your distribution. See <a "
-"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
-"manual</a> for details."
+"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
+"/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
 "Vous utilisez un profil hors-ligne. Assurez-vous d'avoir installé et lancé "
 "OSM Scout Server. Suivant votre système d'exploitation, il est disponible "
@@ -2926,8 +2925,8 @@ msgstr "Recherche basée sur des données open source"
 #: standard input:4
 msgid "Search based on open data sources. Supports autocomplete"
 msgstr ""
-"Recherche basée sur des sources de données ouvertes. Prise en charge de "
-"l'auto-complétion."
+"Recherche basée sur des sources de données ouvertes. Prise en charge de l"
+"'auto-complétion."
 
 #: standard input:5
 msgid "Search based on OpenStreetMap data. Supports autocomplete"

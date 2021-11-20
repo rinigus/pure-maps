@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Heimen Stoffels <vistausss@fastmail.com>, 2021
 # Nathan Follens, 2021
 # rinigus github, 2021
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -17,10 +17,10 @@ msgstr ""
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rinigus github, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rinigus/teams/89597/nl/)\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: geocoders/here.py:141
@@ -767,9 +767,8 @@ msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
 "application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
-"Flathub, or your distribution. See <a "
-"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
-"manual</a> for details."
+"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
+"/osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
 "Je gebruikt een offline-profiel. Zorg ervoor dat OSM Scout Server "
 "geïnstalleerd en actief is. OSM Scout Server is beschikbaar in OpenRepos "
