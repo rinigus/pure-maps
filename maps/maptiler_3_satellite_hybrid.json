@@ -1,0 +1,18 @@
+{
+    "attribution": {
+	"© MapTiler": "https://www.maptiler.com/",
+	"© MapTiler Copyright": "https://www.maptiler.com/copyright/",
+        "© OpenStreetMap contributors": "https://www.openstreetmap.org/copyright"
+    },
+    "fingerprint": { "id": "hybrid" },
+    "first_label_layer": "road_label",
+    "format": "mapbox-gl",
+    "keys": ["MAPTILER_KEY"],
+    "light": "day",
+    "logo": "maptiler",
+    "name": "MapTiler Satellite Hybrid",
+    "profiles": ["mixed", "online"],
+    "provider": "MapTiler",
+    "style_url": "https://api.maptiler.com/maps/hybrid/style.json?key=#MAPTILER_KEY#",
+    "type": "hybrid"
+}

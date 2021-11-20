@@ -1,0 +1,18 @@
+{
+    "attribution": {
+	"© MapTiler": "https://www.maptiler.com/",
+	"© MapTiler Copyright": "https://www.maptiler.com/copyright/",
+        "© OpenStreetMap contributors": "https://www.openstreetmap.org/copyright"
+    },
+    "fingerprint": { "id": "streets" },
+    "first_label_layer": "water_name_line",
+    "format": "mapbox-gl",
+    "keys": ["MAPTILER_KEY"],
+    "light": "day",
+    "logo": "maptiler",
+    "name": "MapTiler Streets",
+    "profiles": ["mixed", "online"],
+    "provider": "MapTiler",
+    "style_url": "https://api.maptiler.com/maps/streets/style.json?key=#MAPTILER_KEY#",
+    "type": "default"
+}

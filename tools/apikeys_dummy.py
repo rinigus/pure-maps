@@ -7,6 +7,9 @@ Keys = {
     # mapbox.com
     "<MAPBOX_KEY>": "REPLACE WITH MAPBOX KEY",
 
+    # maptiler.com
+    "<MAPTILER_KEY>": "REPLACE WITH MAPTILER KEY",
+
     # http://open.mapquestapi.com
     "<MAPQUEST_KEY>": "REPLACE WITH MAPQUEST KEY",
 

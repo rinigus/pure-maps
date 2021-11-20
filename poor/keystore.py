@@ -35,6 +35,9 @@ DEFAULTS = {
     # mapbox.com
     "MAPBOX_KEY": "<MAPBOX_KEY>",
 
+    # maptiler.com
+    "MAPTILER_KEY": "<MAPTILER_KEY>",
+
     # http://open.mapquestapi.com
     "MAPQUEST_KEY": "<MAPQUEST_KEY>",
 
@@ -51,6 +54,7 @@ DEFAULTS = {
 HEADERS = {
     "FOURSQUARE": HeaderDesc(_('Register at <a href="https://developer.foursquare.com">https://developer.foursquare.com</a> and create your own Client ID and Client Secret keys'), "Foursquare"),
     "MAPBOX": HeaderDesc(_('Register at <a href="https://www.mapbox.com">https://www.mapbox.com</a> and create your own API key'), "Mapbox"),
+    "MAPTILER": HeaderDesc(_('Register at <a href="https://maptiler.com">https://maptiler.com</a> and create your own API key'), "MapTiler"),
     "MAPQUEST": HeaderDesc(_('Register at <a href="https://developer.mapquest.com">https://developer.mapquest.com</a> and create your own API key'), "MapQuest"),
     "OPENCAGE": HeaderDesc(_('Register at <a href="https://opencagedata.com">https://opencagedata.com</a> and create your own API key'), "OpenCage"),
     "STADIAMAPS": HeaderDesc(_('Register at <a href="https://stadiamaps.com">https://stadiamaps.com</a> and create your own API key'), "Stadia Maps"),
@@ -63,6 +67,9 @@ KEYDESC = {
 
     # mapbox.com
     "MAPBOX_KEY": _("Mapbox API key"),
+
+    # maptiler.com
+    "MAPTILER_KEY": _("MapTiler API key"),
 
     # http://open.mapquestapi.com
     "MAPQUEST_KEY": _("MapQuest API key"),
