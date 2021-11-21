@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-20 17:14+0200\n"
+"POT-Creation-Date: 2021-11-21 15:10+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rinigus github, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rinigus/teams/89597/ru/)\n"
@@ -57,7 +57,7 @@ msgid "Connection timed out"
 msgstr "Время ожидания соединения истекло"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:210 qml/GeocodeItem.qml:544
-#: qml/MenuPage.qml:87 qml/Navigator.qml:192 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:193 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
 #: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
@@ -171,45 +171,45 @@ msgstr ""
 msgid "Exit: "
 msgstr "Выход:"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:956
-#: src/navigator.cpp:968
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:961
+#: src/navigator.cpp:973
 msgid "mi"
 msgstr "миль"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:956
-#: src/navigator.cpp:968
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:961
+#: src/navigator.cpp:973
 msgid "miles"
 msgstr "миль"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:959
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:964
 msgid "ft"
 msgstr "фт"
 
-#: poor/util.py:231 src/navigator.cpp:959
+#: poor/util.py:231 src/navigator.cpp:964
 msgid "feet"
 msgstr "футов"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:971
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:976
 msgid "yd"
 msgstr "ярд."
 
-#: poor/util.py:242 src/navigator.cpp:971
+#: poor/util.py:242 src/navigator.cpp:976
 msgid "yards"
 msgstr "ярдов"
 
-#: poor/util.py:249 src/navigator.cpp:980
+#: poor/util.py:249 src/navigator.cpp:985
 msgid "km"
 msgstr "км"
 
-#: poor/util.py:249 src/navigator.cpp:980
+#: poor/util.py:249 src/navigator.cpp:985
 msgid "kilometers"
 msgstr "километров"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:983
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:988
 msgid "m"
 msgstr "м"
 
-#: poor/util.py:253 src/navigator.cpp:983
+#: poor/util.py:253 src/navigator.cpp:988
 msgid "meters"
 msgstr "метров"
 
@@ -521,7 +521,7 @@ msgstr "Карты"
 
 #: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
 #: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
-#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:763
+#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:793
 msgid "Search"
 msgstr "Поиск"
 
@@ -530,7 +530,7 @@ msgid "Venues"
 msgstr "Заведения"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:27
-#: qml/PreferencesPage.qml:482 qml/RoutePage.qml:25
+#: qml/PreferencesPage.qml:481 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "Навигация"
 
@@ -665,7 +665,7 @@ msgstr "Результаты (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Точки интереса (%1)"
 
-#: qml/GeocodeItem.qml:484 qml/Navigator.qml:300 qml/Navigator.qml:302
+#: qml/GeocodeItem.qml:484 qml/Navigator.qml:301 qml/Navigator.qml:303
 #: qml/PoiBlock.qml:407 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
@@ -725,7 +725,7 @@ msgid "Language"
 msgstr "Язык"
 
 #: qml/LanguageSelector.qml:43 qml/PreferencesPage.qml:71
-#: qml/PreferencesPage.qml:880
+#: qml/PreferencesPage.qml:910
 msgid "English"
 msgstr "Английский"
 
@@ -926,7 +926,7 @@ msgstr "Прибытие"
 msgid "Pause"
 msgstr "Пауза"
 
-#: qml/NavigationPage.qml:46 qml/PreferencesPage.qml:772 qml/RoutePage.qml:67
+#: qml/NavigationPage.qml:46 qml/PreferencesPage.qml:802 qml/RoutePage.qml:67
 msgid "Navigate"
 msgstr "Прокладка маршрута"
 
@@ -946,7 +946,7 @@ msgstr "Статус"
 msgid "Estimated time of arrival"
 msgstr "Время прибытия"
 
-#: qml/NavigationPage.qml:161 qml/Navigator.qml:86
+#: qml/NavigationPage.qml:161 qml/Navigator.qml:87
 msgid "Destination reached"
 msgstr "Пункт назначения достигнут"
 
@@ -992,19 +992,19 @@ msgstr "Маневры"
 msgid "EXIT"
 msgstr "ВЫХОД"
 
-#: qml/Navigator.qml:78
+#: qml/Navigator.qml:79
 msgid "Destination %1 reached"
 msgstr "Пункт назначения %1 достигнут"
 
-#: qml/Navigator.qml:79
+#: qml/Navigator.qml:80
 msgid "Waypoint %1 reached"
 msgstr "Промежуточный пункт %1 достигнут"
 
-#: qml/Navigator.qml:129
+#: qml/Navigator.qml:130
 msgid "Voice navigation on"
 msgstr "Голосовая подсказка включена"
 
-#: qml/Navigator.qml:134
+#: qml/Navigator.qml:135
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -1012,35 +1012,35 @@ msgstr ""
 "Голосовая навигация недоступна: отсутствует движок преобразования текста в "
 "речь (Text-to-Speech, TTS) для выбранного языка"
 
-#: qml/Navigator.qml:185
+#: qml/Navigator.qml:186
 msgid "Routing failed: current position not known"
 msgstr "Ошибка маршрутизации: текущая позиция неизвестна"
 
-#: qml/Navigator.qml:191
+#: qml/Navigator.qml:192
 msgid "Rerouting position"
 msgstr "Перемаршрутизация позиции"
 
-#: qml/Navigator.qml:199
+#: qml/Navigator.qml:200
 msgid "Routing"
 msgstr "Маршрутизация"
 
-#: qml/Navigator.qml:210
+#: qml/Navigator.qml:211
 msgid "Routing failed: %1"
 msgstr "Сбой маршрутизации: %1"
 
-#: qml/Navigator.qml:215 src/navigator.cpp:1049
+#: qml/Navigator.qml:216 src/navigator.cpp:1054
 msgid "New route found"
 msgstr "Найден новый маршрут"
 
-#: qml/Navigator.qml:216
+#: qml/Navigator.qml:217
 msgid "Route found"
 msgstr "Маршрут найден"
 
-#: qml/Navigator.qml:226 src/navigator.cpp:1051
+#: qml/Navigator.qml:227 src/navigator.cpp:1056
 msgid "Routing failed"
 msgstr "Сбой маршрутизации"
 
-#: qml/Navigator.qml:258 src/navigator.cpp:1050
+#: qml/Navigator.qml:259 src/navigator.cpp:1055
 msgid "Rerouting"
 msgstr "Перестроение маршрута"
 
@@ -1347,7 +1347,7 @@ msgstr "Арабский"
 msgid "Basque"
 msgstr "Баскский"
 
-#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:881
+#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:911
 #: routers/here_settings.qml:72
 msgid "Catalan"
 msgstr "Каталонский"
@@ -1360,7 +1360,7 @@ msgstr "Китайский (упрощенный)"
 msgid "Chinese (traditional)"
 msgstr "Китайский (традиционный)"
 
-#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:882
+#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:912
 msgid "Czech"
 msgstr "Чешский"
 
@@ -1376,11 +1376,11 @@ msgstr "Голландский"
 msgid "Finnish"
 msgstr "Финский"
 
-#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:885
+#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:915
 msgid "French"
 msgstr "Французский"
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:883
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:913
 msgid "German"
 msgstr "Немецкий"
 
@@ -1396,7 +1396,7 @@ msgstr "Греческий"
 msgid "Hebrew"
 msgstr "Иврит"
 
-#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:886
+#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:916
 msgid "Hindi"
 msgstr "Хинди"
 
@@ -1404,7 +1404,7 @@ msgstr "Хинди"
 msgid "Indonesian"
 msgstr "Индонезийский"
 
-#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:887
+#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:917
 msgid "Italian"
 msgstr "Итальянский"
 
@@ -1432,7 +1432,7 @@ msgstr "Польский"
 msgid "Portuguese"
 msgstr "Португальский"
 
-#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:888
+#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:918
 msgid "Russian"
 msgstr "Русский"
 
@@ -1440,11 +1440,11 @@ msgstr "Русский"
 msgid "Sinhalese"
 msgstr "Сингальский"
 
-#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:884
+#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:914
 msgid "Spanish"
 msgstr "Испанский"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:890
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:920
 msgid "Swedish"
 msgstr "Шведский"
 
@@ -1547,7 +1547,7 @@ msgid "Prevent screensaver"
 msgstr "Отключить гашение экрана"
 
 #: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
-#: qml/PreferencesPage.qml:600 qml/PreferencesPage.qml:681
+#: qml/PreferencesPage.qml:598 qml/PreferencesPage.qml:711
 msgid "Never"
 msgstr "никогда"
 
@@ -1556,7 +1556,7 @@ msgid "When navigating"
 msgstr "во время движения"
 
 #: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
-#: qml/PreferencesPage.qml:600
+#: qml/PreferencesPage.qml:598
 msgid "Always"
 msgstr "всегда"
 
@@ -1659,7 +1659,7 @@ msgstr ""
 "Выбор способа передвижения. Действует, только когда Pure Maps не находится в"
 " режиме навигации. Использует для работы OSM Scout Server."
 
-#: qml/PreferencesPage.qml:460 qml/PreferencesPage.qml:530
+#: qml/PreferencesPage.qml:460 qml/PreferencesPage.qml:529
 msgid "Snap position to road"
 msgstr "Привязывать положение к дороге"
 
@@ -1675,54 +1675,54 @@ msgstr "Нет"
 msgid "Foot"
 msgstr "Пешком"
 
-#: qml/PreferencesPage.qml:490
+#: qml/PreferencesPage.qml:489
 msgid "Show navigation instructions"
 msgstr "Показывать подсказки"
 
-#: qml/PreferencesPage.qml:500
+#: qml/PreferencesPage.qml:499
 msgid "Voice navigation instructions"
 msgstr "Голосовые подсказки"
 
-#: qml/PreferencesPage.qml:510
+#: qml/PreferencesPage.qml:509
 msgid "Reroute automatically"
 msgstr "Перестраивать маршрут автоматически"
 
-#: qml/PreferencesPage.qml:519
+#: qml/PreferencesPage.qml:518
 msgid "Automatic zoom on start"
 msgstr "Автоматический выбор масштаба при запуске"
 
-#: qml/PreferencesPage.qml:529
+#: qml/PreferencesPage.qml:528
 msgid "Uses OSM Scout Server for its operation."
 msgstr "Использует OSM Scout Server для своей работы."
 
-#: qml/PreferencesPage.qml:541
+#: qml/PreferencesPage.qml:539
 msgid "Show direction signs"
 msgstr "Показывать дорожные указатели"
 
-#: qml/PreferencesPage.qml:551
+#: qml/PreferencesPage.qml:549
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr ""
 "Ориентировать карту по направлению движения в начале движения по маршруту."
 
-#: qml/PreferencesPage.qml:552
+#: qml/PreferencesPage.qml:550
 msgid "Rotate map when navigating"
 msgstr "Поворачивать карту во время движения по маршруту"
 
-#: qml/PreferencesPage.qml:561
+#: qml/PreferencesPage.qml:559
 msgid "Only applies to vector maps."
 msgstr "Только для векторных карт"
 
-#: qml/PreferencesPage.qml:563
+#: qml/PreferencesPage.qml:561
 msgid "Tilt map when navigating"
 msgstr "Наклонять карту во время движения по маршруту"
 
-#: qml/PreferencesPage.qml:571
+#: qml/PreferencesPage.qml:569
 msgid "Smooth position animation"
 msgstr "Плавная анимация маркера положения"
 
-#: qml/PreferencesPage.qml:581
+#: qml/PreferencesPage.qml:579
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
@@ -1730,19 +1730,19 @@ msgstr ""
 "Выбрать мужской или женский голос для подсказок. Доступно не для всех языков"
 " и программ синтеза речи."
 
-#: qml/PreferencesPage.qml:582 qml/PreferencesPage.qml:897
+#: qml/PreferencesPage.qml:580 qml/PreferencesPage.qml:927
 msgid "Voice gender"
 msgstr "Голос"
 
-#: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:581 qml/PreferencesPage.qml:928
 msgid "Male"
 msgstr "мужской"
 
-#: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:581 qml/PreferencesPage.qml:928
 msgid "Female"
 msgstr "женский"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:595
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
@@ -1750,19 +1750,29 @@ msgstr ""
 "Показывать знак ограничения скорости. Требуется привязка положения к дороге "
 "для обнаружения зон ограничений скорости."
 
-#: qml/PreferencesPage.qml:599
+#: qml/PreferencesPage.qml:597
 msgid "Speed limit"
 msgstr "Ограничение скорости"
 
-#: qml/PreferencesPage.qml:600
+#: qml/PreferencesPage.qml:598
 msgid "Only when exceeding"
 msgstr "Только при превышении"
 
-#: qml/PreferencesPage.qml:623 qml/PreferencesPage.qml:727
+#: qml/PreferencesPage.qml:614
+msgid ""
+"Accuracy of the positioning supported by device. Deviation from the route "
+"below the specified accuracy will be ignored."
+msgstr ""
+
+#: qml/PreferencesPage.qml:615
+msgid "Positioning accuracy"
+msgstr ""
+
+#: qml/PreferencesPage.qml:653 qml/PreferencesPage.qml:757
 msgid "Compass"
 msgstr "Компас"
 
-#: qml/PreferencesPage.qml:630
+#: qml/PreferencesPage.qml:660
 msgid ""
 "Compass can be used to determine orientation of your device and align the "
 "map accordingly. Note that the compass is enabled only when your position is"
@@ -1774,19 +1784,19 @@ msgstr ""
 "включается, только когда положение определено, скорость невелика режим "
 "навигации активен и выбран способ движения пешком или на велосипеде."
 
-#: qml/PreferencesPage.qml:640
+#: qml/PreferencesPage.qml:670
 msgid "Use compass for determination of the direction."
 msgstr "Использовать компас для определения направления"
 
-#: qml/PreferencesPage.qml:641
+#: qml/PreferencesPage.qml:671
 msgid "Use compass"
 msgstr "Использовать компас"
 
-#: qml/PreferencesPage.qml:653
+#: qml/PreferencesPage.qml:683
 msgid "Controls"
 msgstr "Элементы управления"
 
-#: qml/PreferencesPage.qml:660
+#: qml/PreferencesPage.qml:690
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
@@ -1796,11 +1806,11 @@ msgstr ""
 "управления либо в минимальном режиме с меньшим набором элементов управления."
 " Для переключения между режимами коснитесь карты."
 
-#: qml/PreferencesPage.qml:669
+#: qml/PreferencesPage.qml:699
 msgid "Set map view to minimal mode on start"
 msgstr "Минимальный вид при запуске"
 
-#: qml/PreferencesPage.qml:677
+#: qml/PreferencesPage.qml:707
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
@@ -1808,31 +1818,31 @@ msgstr ""
 "Автоматическое переключение в минимальный режим после заданной задержки или "
 "отключение автоматического переключения между режимами отображения карты."
 
-#: qml/PreferencesPage.qml:679
+#: qml/PreferencesPage.qml:709
 msgid "Switch to minimal view"
 msgstr "Включать минимальный вид"
 
-#: qml/PreferencesPage.qml:681
+#: qml/PreferencesPage.qml:711
 msgid "10 seconds"
 msgstr "10 секунд"
 
-#: qml/PreferencesPage.qml:681
+#: qml/PreferencesPage.qml:711
 msgid "20 seconds"
 msgstr "20 секунд"
 
-#: qml/PreferencesPage.qml:682
+#: qml/PreferencesPage.qml:712
 msgid "30 seconds"
 msgstr "30 секунд"
 
-#: qml/PreferencesPage.qml:682
+#: qml/PreferencesPage.qml:712
 msgid "1 minute"
 msgstr "1 минута"
 
-#: qml/PreferencesPage.qml:696
+#: qml/PreferencesPage.qml:726
 msgid "Always show"
 msgstr "Показывать всегда"
 
-#: qml/PreferencesPage.qml:701
+#: qml/PreferencesPage.qml:731
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
@@ -1840,39 +1850,39 @@ msgstr ""
 "Всегда показывать выбранные элементы управления, независимо от того, "
 "находится ли карта в минимальном или полном режиме отображения."
 
-#: qml/PreferencesPage.qml:709
+#: qml/PreferencesPage.qml:739
 msgid "Menu"
 msgstr "Меню"
 
-#: qml/PreferencesPage.qml:718
+#: qml/PreferencesPage.qml:748
 msgid "Center on current location"
 msgstr "Переход к текущей позиции"
 
-#: qml/PreferencesPage.qml:736
+#: qml/PreferencesPage.qml:766
 msgid "Map selection"
 msgstr "Выбор карты"
 
-#: qml/PreferencesPage.qml:745
+#: qml/PreferencesPage.qml:775
 msgid "Speed and location precision"
 msgstr "Скорость и точность положения"
 
-#: qml/PreferencesPage.qml:754
+#: qml/PreferencesPage.qml:784
 msgid "Scale"
 msgstr "Индикатор масштаба"
 
-#: qml/PreferencesPage.qml:781
+#: qml/PreferencesPage.qml:811
 msgid "Navigation Start/Pause"
 msgstr "Навигация Старт/Пауза"
 
-#: qml/PreferencesPage.qml:790
+#: qml/PreferencesPage.qml:820
 msgid "Navigation Clear Route"
 msgstr "Навигация Очистить Маршрут"
 
-#: qml/PreferencesPage.qml:805
+#: qml/PreferencesPage.qml:835
 msgid "Zoom"
 msgstr "Масштаб"
 
-#: qml/PreferencesPage.qml:812
+#: qml/PreferencesPage.qml:842
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
@@ -1880,18 +1890,18 @@ msgstr ""
 "Уровень масштабирования карты может изменяться автоматически в соответствии "
 "со скоростью движения. Здесь можно изменить соответствующие настройки."
 
-#: qml/PreferencesPage.qml:822
+#: qml/PreferencesPage.qml:852
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
 msgstr ""
 "Максимальный уровень увеличения при автоматической регулировке масштаба."
 
-#: qml/PreferencesPage.qml:824
+#: qml/PreferencesPage.qml:854
 msgid "Maximal zoom level"
 msgstr "Максимальный масштаб"
 
-#: qml/PreferencesPage.qml:835
+#: qml/PreferencesPage.qml:865
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
@@ -1899,15 +1909,15 @@ msgstr ""
 "Масштаб будет изменяться так, чтобы высота карты равнялась расстоянию, "
 "преодолеваемому вами за указанное здесь время."
 
-#: qml/PreferencesPage.qml:838
+#: qml/PreferencesPage.qml:868
 msgid "Time range, s"
 msgstr "Периодичность, сек"
 
-#: qml/PreferencesPage.qml:857
+#: qml/PreferencesPage.qml:887
 msgid "Testing"
 msgstr "Проверка"
 
-#: qml/PreferencesPage.qml:867
+#: qml/PreferencesPage.qml:897
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
@@ -1916,23 +1926,23 @@ msgstr ""
 "Следует выбрать тот же язык, что и для навигации, предпочтительный пол и "
 "нажать кнопку ниже для тестирования."
 
-#: qml/PreferencesPage.qml:889
+#: qml/PreferencesPage.qml:919
 msgid "Slovak"
 msgstr "Словацкий"
 
-#: qml/PreferencesPage.qml:896
+#: qml/PreferencesPage.qml:926
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "Пол диктора. Поддерживается только некоторыми движками и языками."
 
-#: qml/PreferencesPage.qml:910
+#: qml/PreferencesPage.qml:940
 msgid "Test"
 msgstr "Тест"
 
-#: qml/PreferencesPage.qml:921
+#: qml/PreferencesPage.qml:951
 msgid "Selected voice engine: %1"
 msgstr "Выбранный голосовой движок: %1"
 
-#: qml/PreferencesPage.qml:923
+#: qml/PreferencesPage.qml:953
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1942,11 +1952,11 @@ msgstr ""
 "\n"
 "Pure Maps поддерживает движки синтеза речи Mimic, Flite, PicoTTS, и Espeak. Если Pure Maps установлен не через Flatpak или OpenStore, то движки должны устанавливаться отдельно. Пользователи Sailfish OS могут найти их на OpenRepos."
 
-#: qml/PreferencesPage.qml:957
+#: qml/PreferencesPage.qml:987
 msgid "Development"
 msgstr "Режим разработки"
 
-#: qml/PreferencesPage.qml:964
+#: qml/PreferencesPage.qml:994
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
@@ -1954,7 +1964,7 @@ msgstr ""
 "Следующие параметры предназначены только для режима разработки. Пожалуйста, "
 "не изменяйте их, если вы не знаете, что делаете."
 
-#: qml/PreferencesPage.qml:972
+#: qml/PreferencesPage.qml:1002
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
@@ -1962,11 +1972,11 @@ msgstr ""
 "Делает текущую позицию центром карты. При использовании этой опции следует "
 "отключить приемник GPS."
 
-#: qml/PreferencesPage.qml:973
+#: qml/PreferencesPage.qml:1003
 msgid "Set position to the map center"
 msgstr "Установить местоположение центром карты"
 
-#: qml/PreferencesPage.qml:980
+#: qml/PreferencesPage.qml:1010
 msgid "Show current zoom level"
 msgstr "Показывать текущий масштаб"
 
@@ -2857,45 +2867,45 @@ msgstr ""
 "Показать местоположение, заданное в гео: широта, долгота URI или выполнить "
 "поиск."
 
-#: src/navigator.cpp:152
+#: src/navigator.cpp:157
 msgid "Position unknown"
 msgstr "Положение неизвестно"
 
-#: src/navigator.cpp:158
+#: src/navigator.cpp:163
 msgid "Position imprecise: accuracy %1"
 msgstr "Положение неточное: точность %1"
 
-#: src/navigator.cpp:177 src/navigator.cpp:428
+#: src/navigator.cpp:182 src/navigator.cpp:433
 msgid "Preparing to start navigation"
 msgstr "Подготовка к началу навигации"
 
-#: src/navigator.cpp:470
+#: src/navigator.cpp:475
 msgid "Moving in a wrong direction"
 msgstr "Движение в неправильном направлении"
 
-#: src/navigator.cpp:480
+#: src/navigator.cpp:485
 msgid "Away from route"
 msgstr "Вдали от маршрута"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:659 src/navigator.cpp:670
+#: src/navigator.cpp:664 src/navigator.cpp:675
 msgid "In %2, %1"
 msgstr "В %2, %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:1001
+#: src/navigator.cpp:1006
 msgid "%1 h %2 min"
 msgstr "%1 ч %2 мин"
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:1003
+#: src/navigator.cpp:1008
 msgid "%1 min"
 msgstr "%1 мин"
 
-#: src/navigator.cpp:1048
+#: src/navigator.cpp:1053
 msgid "Starting navigation"
 msgstr "Начало навигации"
 

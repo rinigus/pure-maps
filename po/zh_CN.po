@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-20 17:14+0200\n"
+"POT-Creation-Date: 2021-11-21 15:10+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rinigus github, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rinigus/teams/89597/zh_CN/)\n"
@@ -56,7 +56,7 @@ msgid "Connection timed out"
 msgstr "连接超时"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:210 qml/GeocodeItem.qml:544
-#: qml/MenuPage.qml:87 qml/Navigator.qml:192 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:193 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
 #: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
@@ -170,45 +170,45 @@ msgstr ""
 msgid "Exit: "
 msgstr "退出: "
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:956
-#: src/navigator.cpp:968
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:961
+#: src/navigator.cpp:973
 msgid "mi"
 msgstr "米"
 
-#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:956
-#: src/navigator.cpp:968
+#: poor/util.py:227 poor/util.py:238 src/navigator.cpp:961
+#: src/navigator.cpp:973
 msgid "miles"
 msgstr "英里"
 
-#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:959
+#: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:964
 msgid "ft"
 msgstr "英尺"
 
-#: poor/util.py:231 src/navigator.cpp:959
+#: poor/util.py:231 src/navigator.cpp:964
 msgid "feet"
 msgstr "英尺"
 
-#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:971
+#: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:976
 msgid "yd"
 msgstr "码"
 
-#: poor/util.py:242 src/navigator.cpp:971
+#: poor/util.py:242 src/navigator.cpp:976
 msgid "yards"
 msgstr "码"
 
-#: poor/util.py:249 src/navigator.cpp:980
+#: poor/util.py:249 src/navigator.cpp:985
 msgid "km"
 msgstr "千米"
 
-#: poor/util.py:249 src/navigator.cpp:980
+#: poor/util.py:249 src/navigator.cpp:985
 msgid "kilometers"
 msgstr "千米"
 
-#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:983
+#: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:988
 msgid "m"
 msgstr "米"
 
-#: poor/util.py:253 src/navigator.cpp:983
+#: poor/util.py:253 src/navigator.cpp:988
 msgid "meters"
 msgstr "米"
 
@@ -512,7 +512,7 @@ msgstr "地图"
 
 #: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
 #: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
-#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:763
+#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:793
 msgid "Search"
 msgstr "搜索"
 
@@ -521,7 +521,7 @@ msgid "Venues"
 msgstr "场所"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:27
-#: qml/PreferencesPage.qml:482 qml/RoutePage.qml:25
+#: qml/PreferencesPage.qml:481 qml/RoutePage.qml:25
 msgid "Navigation"
 msgstr "导航"
 
@@ -656,7 +656,7 @@ msgstr "结果 (%1)"
 msgid "Points of Interest (%1)"
 msgstr "兴趣地点 (%1)"
 
-#: qml/GeocodeItem.qml:484 qml/Navigator.qml:300 qml/Navigator.qml:302
+#: qml/GeocodeItem.qml:484 qml/Navigator.qml:301 qml/Navigator.qml:303
 #: qml/PoiBlock.qml:407 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
@@ -716,7 +716,7 @@ msgid "Language"
 msgstr "语言"
 
 #: qml/LanguageSelector.qml:43 qml/PreferencesPage.qml:71
-#: qml/PreferencesPage.qml:880
+#: qml/PreferencesPage.qml:910
 msgid "English"
 msgstr "英语"
 
@@ -914,7 +914,7 @@ msgstr "预计抵达时间"
 msgid "Pause"
 msgstr "停止"
 
-#: qml/NavigationPage.qml:46 qml/PreferencesPage.qml:772 qml/RoutePage.qml:67
+#: qml/NavigationPage.qml:46 qml/PreferencesPage.qml:802 qml/RoutePage.qml:67
 msgid "Navigate"
 msgstr "导航"
 
@@ -934,7 +934,7 @@ msgstr "状态"
 msgid "Estimated time of arrival"
 msgstr "预计抵达时间"
 
-#: qml/NavigationPage.qml:161 qml/Navigator.qml:86
+#: qml/NavigationPage.qml:161 qml/Navigator.qml:87
 msgid "Destination reached"
 msgstr "已抵达目的地"
 
@@ -980,53 +980,53 @@ msgstr "导航规划"
 msgid "EXIT"
 msgstr "退出"
 
-#: qml/Navigator.qml:78
+#: qml/Navigator.qml:79
 msgid "Destination %1 reached"
 msgstr "已抵达目的地 %1"
 
-#: qml/Navigator.qml:79
+#: qml/Navigator.qml:80
 msgid "Waypoint %1 reached"
 msgstr "已抵达路标 %1"
 
-#: qml/Navigator.qml:129
+#: qml/Navigator.qml:130
 msgid "Voice navigation on"
 msgstr "语音导航开启"
 
-#: qml/Navigator.qml:134
+#: qml/Navigator.qml:135
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr "语言导航引擎不可用：所选语言缺失文本转语音（TTS）引擎"
 
-#: qml/Navigator.qml:185
+#: qml/Navigator.qml:186
 msgid "Routing failed: current position not known"
 msgstr "导航失败：当前位置未知"
 
-#: qml/Navigator.qml:191
+#: qml/Navigator.qml:192
 msgid "Rerouting position"
 msgstr "重新规划位置"
 
-#: qml/Navigator.qml:199
+#: qml/Navigator.qml:200
 msgid "Routing"
 msgstr "路线规划"
 
-#: qml/Navigator.qml:210
+#: qml/Navigator.qml:211
 msgid "Routing failed: %1"
 msgstr "路线规划失败: %1"
 
-#: qml/Navigator.qml:215 src/navigator.cpp:1049
+#: qml/Navigator.qml:216 src/navigator.cpp:1054
 msgid "New route found"
 msgstr "发现新路线"
 
-#: qml/Navigator.qml:216
+#: qml/Navigator.qml:217
 msgid "Route found"
 msgstr "路线规划失败"
 
-#: qml/Navigator.qml:226 src/navigator.cpp:1051
+#: qml/Navigator.qml:227 src/navigator.cpp:1056
 msgid "Routing failed"
 msgstr "重新规划路线失败"
 
-#: qml/Navigator.qml:258 src/navigator.cpp:1050
+#: qml/Navigator.qml:259 src/navigator.cpp:1055
 msgid "Rerouting"
 msgstr "重新规划"
 
@@ -1333,7 +1333,7 @@ msgstr "阿拉伯语"
 msgid "Basque"
 msgstr "巴斯克语"
 
-#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:881
+#: qml/PreferencesPage.qml:65 qml/PreferencesPage.qml:911
 #: routers/here_settings.qml:72
 msgid "Catalan"
 msgstr "加泰罗尼亚语"
@@ -1346,7 +1346,7 @@ msgstr "汉语（简体）"
 msgid "Chinese (traditional)"
 msgstr "汉语（繁体）"
 
-#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:882
+#: qml/PreferencesPage.qml:68 qml/PreferencesPage.qml:912
 msgid "Czech"
 msgstr "捷克语"
 
@@ -1362,11 +1362,11 @@ msgstr "荷兰语"
 msgid "Finnish"
 msgstr "芬兰语"
 
-#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:885
+#: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:915
 msgid "French"
 msgstr "法语"
 
-#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:883
+#: qml/PreferencesPage.qml:74 qml/PreferencesPage.qml:913
 msgid "German"
 msgstr "德语"
 
@@ -1382,7 +1382,7 @@ msgstr "希腊语"
 msgid "Hebrew"
 msgstr "希伯来语"
 
-#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:886
+#: qml/PreferencesPage.qml:78 qml/PreferencesPage.qml:916
 msgid "Hindi"
 msgstr "印地语"
 
@@ -1390,7 +1390,7 @@ msgstr "印地语"
 msgid "Indonesian"
 msgstr "印尼语"
 
-#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:887
+#: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:917
 msgid "Italian"
 msgstr "意大利语"
 
@@ -1418,7 +1418,7 @@ msgstr "波兰语"
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:888
+#: qml/PreferencesPage.qml:87 qml/PreferencesPage.qml:918
 msgid "Russian"
 msgstr "俄语"
 
@@ -1426,11 +1426,11 @@ msgstr "俄语"
 msgid "Sinhalese"
 msgstr "僧伽罗语"
 
-#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:884
+#: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:914
 msgid "Spanish"
 msgstr "西班牙语"
 
-#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:890
+#: qml/PreferencesPage.qml:90 qml/PreferencesPage.qml:920
 msgid "Swedish"
 msgstr "瑞典语"
 
@@ -1520,7 +1520,7 @@ msgid "Prevent screensaver"
 msgstr "阻止屏保"
 
 #: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
-#: qml/PreferencesPage.qml:600 qml/PreferencesPage.qml:681
+#: qml/PreferencesPage.qml:598 qml/PreferencesPage.qml:711
 msgid "Never"
 msgstr "绝不"
 
@@ -1529,7 +1529,7 @@ msgid "When navigating"
 msgstr "导航时"
 
 #: qml/PreferencesPage.qml:181 qml/PreferencesPage.qml:198
-#: qml/PreferencesPage.qml:600
+#: qml/PreferencesPage.qml:598
 msgid "Always"
 msgstr "总是"
 
@@ -1623,7 +1623,7 @@ msgid ""
 "navigating. Uses OSM Scout Server for its operation."
 msgstr "当无法使用 Pure Maps导航时，使用 OSM Scout 服务。"
 
-#: qml/PreferencesPage.qml:460 qml/PreferencesPage.qml:530
+#: qml/PreferencesPage.qml:460 qml/PreferencesPage.qml:529
 msgid "Snap position to road"
 msgstr "快速走到路上"
 
@@ -1639,89 +1639,99 @@ msgstr "无"
 msgid "Foot"
 msgstr "步行"
 
-#: qml/PreferencesPage.qml:490
+#: qml/PreferencesPage.qml:489
 msgid "Show navigation instructions"
 msgstr "显示导航指引"
 
-#: qml/PreferencesPage.qml:500
+#: qml/PreferencesPage.qml:499
 msgid "Voice navigation instructions"
 msgstr "语音导航指引"
 
-#: qml/PreferencesPage.qml:510
+#: qml/PreferencesPage.qml:509
 msgid "Reroute automatically"
 msgstr "自动重新规划路线"
 
-#: qml/PreferencesPage.qml:519
+#: qml/PreferencesPage.qml:518
 msgid "Automatic zoom on start"
 msgstr "启动时自动缩放"
 
-#: qml/PreferencesPage.qml:529
+#: qml/PreferencesPage.qml:528
 msgid "Uses OSM Scout Server for its operation."
 msgstr "使用 OSM Scout "
 
-#: qml/PreferencesPage.qml:541
+#: qml/PreferencesPage.qml:539
 msgid "Show direction signs"
 msgstr "显示方向标志"
 
-#: qml/PreferencesPage.qml:551
+#: qml/PreferencesPage.qml:549
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
 msgstr "导航时按移动方向旋转地图"
 
-#: qml/PreferencesPage.qml:552
+#: qml/PreferencesPage.qml:550
 msgid "Rotate map when navigating"
 msgstr "导航时旋转地图"
 
-#: qml/PreferencesPage.qml:561
+#: qml/PreferencesPage.qml:559
 msgid "Only applies to vector maps."
 msgstr "仅应用到矢量地图"
 
-#: qml/PreferencesPage.qml:563
+#: qml/PreferencesPage.qml:561
 msgid "Tilt map when navigating"
 msgstr "导航时倾斜地图"
 
-#: qml/PreferencesPage.qml:571
+#: qml/PreferencesPage.qml:569
 msgid "Smooth position animation"
 msgstr "平滑定位动画"
 
-#: qml/PreferencesPage.qml:581
+#: qml/PreferencesPage.qml:579
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr "语音导航的性别偏好，仅支持某些引擎和语言"
 
-#: qml/PreferencesPage.qml:582 qml/PreferencesPage.qml:897
+#: qml/PreferencesPage.qml:580 qml/PreferencesPage.qml:927
 msgid "Voice gender"
 msgstr "语音性别"
 
-#: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:581 qml/PreferencesPage.qml:928
 msgid "Male"
 msgstr "男性"
 
-#: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:898
+#: qml/PreferencesPage.qml:581 qml/PreferencesPage.qml:928
 msgid "Female"
 msgstr "女性"
 
-#: qml/PreferencesPage.qml:597
+#: qml/PreferencesPage.qml:595
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr "显示限速标志。需要定位到路上以寻找限速信息。"
 
-#: qml/PreferencesPage.qml:599
+#: qml/PreferencesPage.qml:597
 msgid "Speed limit"
 msgstr "限速"
 
-#: qml/PreferencesPage.qml:600
+#: qml/PreferencesPage.qml:598
 msgid "Only when exceeding"
 msgstr "仅在超速时"
 
-#: qml/PreferencesPage.qml:623 qml/PreferencesPage.qml:727
+#: qml/PreferencesPage.qml:614
+msgid ""
+"Accuracy of the positioning supported by device. Deviation from the route "
+"below the specified accuracy will be ignored."
+msgstr ""
+
+#: qml/PreferencesPage.qml:615
+msgid "Positioning accuracy"
+msgstr ""
+
+#: qml/PreferencesPage.qml:653 qml/PreferencesPage.qml:757
 msgid "Compass"
 msgstr "指南针"
 
-#: qml/PreferencesPage.qml:630
+#: qml/PreferencesPage.qml:660
 msgid ""
 "Compass can be used to determine orientation of your device and align the "
 "map accordingly. Note that the compass is enabled only when your position is"
@@ -1731,150 +1741,150 @@ msgstr ""
 "指南针可以用来确定设备的方向，并相应地对齐地图。 "
 "请注意，只有当你的位置确定且速度较低时，指南针才会被启用，如果你正在导航，只有当你步行或骑自行车时，指南针才会被启用。"
 
-#: qml/PreferencesPage.qml:640
+#: qml/PreferencesPage.qml:670
 msgid "Use compass for determination of the direction."
 msgstr "使用指南针确定方向"
 
-#: qml/PreferencesPage.qml:641
+#: qml/PreferencesPage.qml:671
 msgid "Use compass"
 msgstr "使用罗盘"
 
-#: qml/PreferencesPage.qml:653
+#: qml/PreferencesPage.qml:683
 msgid "Controls"
 msgstr "控件"
 
-#: qml/PreferencesPage.qml:660
+#: qml/PreferencesPage.qml:690
 msgid ""
 "Map view can be shown with either all applicable controls in full view mode "
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
 msgstr "地图视图可以在全视图模式下显示所有可用的控件, 也可以在最小视图模式下显示较少的选定控件集。要在模式之间切换, 请点击地图。"
 
-#: qml/PreferencesPage.qml:669
+#: qml/PreferencesPage.qml:699
 msgid "Set map view to minimal mode on start"
 msgstr "设置启动时的地图视图为最小模式"
 
-#: qml/PreferencesPage.qml:677
+#: qml/PreferencesPage.qml:707
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
 msgstr "在设定延迟后自动切换到最小视图模式, 或禁用地图视图模式之间的自动切换。"
 
-#: qml/PreferencesPage.qml:679
+#: qml/PreferencesPage.qml:709
 msgid "Switch to minimal view"
 msgstr "切换到最小视图"
 
-#: qml/PreferencesPage.qml:681
+#: qml/PreferencesPage.qml:711
 msgid "10 seconds"
 msgstr "10 秒"
 
-#: qml/PreferencesPage.qml:681
+#: qml/PreferencesPage.qml:711
 msgid "20 seconds"
 msgstr "20 秒"
 
-#: qml/PreferencesPage.qml:682
+#: qml/PreferencesPage.qml:712
 msgid "30 seconds"
 msgstr "30 秒"
 
-#: qml/PreferencesPage.qml:682
+#: qml/PreferencesPage.qml:712
 msgid "1 minute"
 msgstr "1 分钟"
 
-#: qml/PreferencesPage.qml:696
+#: qml/PreferencesPage.qml:726
 msgid "Always show"
 msgstr "总是显示"
 
-#: qml/PreferencesPage.qml:701
+#: qml/PreferencesPage.qml:731
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
 msgstr "无论地图视图是在最小模式还是在完整模式下，始终显示选定的控件。"
 
-#: qml/PreferencesPage.qml:709
+#: qml/PreferencesPage.qml:739
 msgid "Menu"
 msgstr "菜单"
 
-#: qml/PreferencesPage.qml:718
+#: qml/PreferencesPage.qml:748
 msgid "Center on current location"
 msgstr "集中于当前位置"
 
-#: qml/PreferencesPage.qml:736
+#: qml/PreferencesPage.qml:766
 msgid "Map selection"
 msgstr "地图选择"
 
-#: qml/PreferencesPage.qml:745
+#: qml/PreferencesPage.qml:775
 msgid "Speed and location precision"
 msgstr "速度和位置精度"
 
-#: qml/PreferencesPage.qml:754
+#: qml/PreferencesPage.qml:784
 msgid "Scale"
 msgstr "比例尺"
 
-#: qml/PreferencesPage.qml:781
+#: qml/PreferencesPage.qml:811
 msgid "Navigation Start/Pause"
 msgstr "导航开始/暂停"
 
-#: qml/PreferencesPage.qml:790
+#: qml/PreferencesPage.qml:820
 msgid "Navigation Clear Route"
 msgstr "清除导航路线"
 
-#: qml/PreferencesPage.qml:805
+#: qml/PreferencesPage.qml:835
 msgid "Zoom"
 msgstr "缩放"
 
-#: qml/PreferencesPage.qml:812
+#: qml/PreferencesPage.qml:842
 msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
 msgstr "可以根据你的速度自动调整地图缩放水平。你可以在这里调整与此调整相关的设置。"
 
-#: qml/PreferencesPage.qml:822
+#: qml/PreferencesPage.qml:852
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
 msgstr "最大缩放水平将用于自动调整缩放。"
 
-#: qml/PreferencesPage.qml:824
+#: qml/PreferencesPage.qml:854
 msgid "Maximal zoom level"
 msgstr "最大缩放水平"
 
-#: qml/PreferencesPage.qml:835
+#: qml/PreferencesPage.qml:865
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
 msgstr "缩放级别将调整为在给定的秒内与你所覆盖的距离相同的地图高度"
 
-#: qml/PreferencesPage.qml:838
+#: qml/PreferencesPage.qml:868
 msgid "Time range, s"
 msgstr "时间范围, 秒"
 
-#: qml/PreferencesPage.qml:857
+#: qml/PreferencesPage.qml:887
 msgid "Testing"
 msgstr "测试"
 
-#: qml/PreferencesPage.qml:867
+#: qml/PreferencesPage.qml:897
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr "测试文字转语音（TTS）引擎。 选择与导航相同的语言，偏好性别，然后按下面的按钮进行测试。"
 
-#: qml/PreferencesPage.qml:889
+#: qml/PreferencesPage.qml:919
 msgid "Slovak"
 msgstr "斯洛伐克语"
 
-#: qml/PreferencesPage.qml:896
+#: qml/PreferencesPage.qml:926
 msgid "Preferred gender. Only supported by some engines and languages."
 msgstr "性别偏好设置仅支持特定引擎及语言"
 
-#: qml/PreferencesPage.qml:910
+#: qml/PreferencesPage.qml:940
 msgid "Test"
 msgstr "测试"
 
-#: qml/PreferencesPage.qml:921
+#: qml/PreferencesPage.qml:951
 msgid "Selected voice engine: %1"
 msgstr "选择语音引擎: %1"
 
-#: qml/PreferencesPage.qml:923
+#: qml/PreferencesPage.qml:953
 msgid ""
 "No engine available for selected language.\n"
 "\n"
@@ -1884,27 +1894,27 @@ msgstr ""
 "\n"
 "Pure Maps 支持 Mimic、Flite、PicoTTS和Espeak TTS引擎。除非你通过 Flatpak 或 OpenStore 使用 PureMaps，否则引擎必须单独安装。旗鱼系统用户可在 OpenRepos 找到引擎。"
 
-#: qml/PreferencesPage.qml:957
+#: qml/PreferencesPage.qml:987
 msgid "Development"
 msgstr "开发选项"
 
-#: qml/PreferencesPage.qml:964
+#: qml/PreferencesPage.qml:994
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
 msgstr "以下选项仅适用于开发。除非你知道自己在做什么, 否则请勿更改"
 
-#: qml/PreferencesPage.qml:972
+#: qml/PreferencesPage.qml:1002
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
 msgstr "将当前位置设为地图视图的中心。使用此选项时, 请记住禁用GPS定位。"
 
-#: qml/PreferencesPage.qml:973
+#: qml/PreferencesPage.qml:1003
 msgid "Set position to the map center"
 msgstr "将位置设置为地图中心"
 
-#: qml/PreferencesPage.qml:980
+#: qml/PreferencesPage.qml:1010
 msgid "Show current zoom level"
 msgstr "显示当前缩放级别"
 
@@ -2783,45 +2793,45 @@ msgstr "显示版本信息。"
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr "显示地理坐标位置:经纬度 URI 或执行搜索。"
 
-#: src/navigator.cpp:152
+#: src/navigator.cpp:157
 msgid "Position unknown"
 msgstr "未知位置"
 
-#: src/navigator.cpp:158
+#: src/navigator.cpp:163
 msgid "Position imprecise: accuracy %1"
 msgstr "位置不精确: 精度 %1"
 
-#: src/navigator.cpp:177 src/navigator.cpp:428
+#: src/navigator.cpp:182 src/navigator.cpp:433
 msgid "Preparing to start navigation"
 msgstr "准备开始导航"
 
-#: src/navigator.cpp:470
+#: src/navigator.cpp:475
 msgid "Moving in a wrong direction"
 msgstr "向错误方向移动"
 
-#: src/navigator.cpp:480
+#: src/navigator.cpp:485
 msgid "Away from route"
 msgstr "偏离路线"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
-#: src/navigator.cpp:659 src/navigator.cpp:670
+#: src/navigator.cpp:664 src/navigator.cpp:675
 msgid "In %2, %1"
 msgstr " %2 后, %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
-#: src/navigator.cpp:1001
+#: src/navigator.cpp:1006
 msgid "%1 h %2 min"
 msgstr "%1 h %2 分钟"
 
 #. TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes
 #. (%1)
-#: src/navigator.cpp:1003
+#: src/navigator.cpp:1008
 msgid "%1 min"
 msgstr "%1 分钟"
 
-#: src/navigator.cpp:1048
+#: src/navigator.cpp:1053
 msgid "Starting navigation"
 msgstr "开始导航"
 
