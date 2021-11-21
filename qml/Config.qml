@@ -53,6 +53,7 @@ Item {
     property real   mapZoomAutoTime
     property bool   mapZoomAutoWhenNavigating: false
     property real   mapZoomAutoZeroSpeedZ
+    property real   navigationHorizontalAccuracy: 15.0
     property string profile
     property bool   reroute
     property bool   routePageShowDestinationsHelp: true
@@ -101,6 +102,7 @@ Item {
         "mapZoomAutoTime": "map_zoom_auto_time",
         "mapZoomAutoWhenNavigating": "map_zoom_auto_when_navigating",
         "mapZoomAutoZeroSpeedZ": "map_zoom_auto_zero_speed_z",
+        "navigationHorizontalAccuracy": "navigation_horizontal_accuracy",
         "reroute": "reroute",
         "routePageShowDestinationsHelp": "route_page_show_destinations_help",
         "profile": "profile",

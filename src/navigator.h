@@ -33,6 +33,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
   Q_PROPERTY(double  direction READ direction NOTIFY directionChanged)
   Q_PROPERTY(bool    directionValid READ directionValid NOTIFY directionValidChanged)
+  Q_PROPERTY(double  horizontalAccuracy READ horizontalAccuracy WRITE setHorizontalAccuracy NOTIFY horizontalAccuracyChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
   Q_PROPERTY(QVariantList locations READ locations WRITE setLocations NOTIFY locationsChanged)
@@ -66,6 +67,7 @@ public:
   QString destTime() const { return m_destTime; }
   double  direction() const { return m_direction; }
   bool    directionValid() const { return m_directionValid; }
+  double  horizontalAccuracy() const { return m_horizontalAccuracy; }
   QString icon() const { return m_icon; }
   QString language() const { return m_language; }
   QVariantList locations();
@@ -81,6 +83,8 @@ public:
   QString street() const { return m_street; }
   QString totalDist() const { return m_totalDist; }
   QString totalTime() const { return m_totalTime; }
+
+  void setHorizontalAccuracy(double accuracy);
 
   // locations
   Q_INVOKABLE bool locationRemove(int index);
@@ -120,6 +124,7 @@ signals:
   void destTimeChanged();
   void directionChanged();
   void directionValidChanged();
+  void horizontalAccuracyChanged();
   void iconChanged();
   void languageChanged();
   void locationsChanged();
@@ -219,6 +224,7 @@ private:
   QString m_destTime;
   double  m_direction{0};
   bool    m_directionValid{false};
+  double  m_horizontalAccuracy{15};
   QString m_icon;
   QString m_manDist;
   QString m_manTime;

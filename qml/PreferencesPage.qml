@@ -608,6 +608,38 @@ PagePL {
                                     app.conf.set("show_speed_limit", v);
                             }
                         }
+
+                        ComboBoxPL {
+                            id: horizontalAccuracyComboBox
+                            description: app.tr("Accuracy of the positioning supported by device. Deviation from the route below the specified accuracy will be ignored.")
+                            label: app.tr("Positioning accuracy")
+                            model: [
+                                py.call_sync("poor.util.format_distance", [10, 2]),
+                                py.call_sync("poor.util.format_distance", [15, 2]),
+                                py.call_sync("poor.util.format_distance", [20, 2]),
+                                py.call_sync("poor.util.format_distance", [25, 2]),
+                                py.call_sync("poor.util.format_distance", [35, 2]),
+                                py.call_sync("poor.util.format_distance", [50, 2])
+                            ]
+                            property var values: [10, 15, 20, 25, 35, 50]
+                            Component.onCompleted: {
+                                var value = app.conf.navigationHorizontalAccuracy;
+                                var r = values[0];
+                                var ci = 0;
+                                for (var i=1; i < values.length; i++)
+                                    if (Math.abs(r - value) > Math.abs(values[i] - value)) {
+                                        r = values[i];
+                                        ci = i;
+                                    }
+                                currentIndex = ci;
+                            }
+                            onCurrentIndexChanged: {
+                                var index = currentIndex;
+                                var v = values[index];
+                                if (v !== app.conf.navigationHorizontalAccuracy)
+                                    app.conf.set("navigation_horizontal_accuracy", v);
+                            }
+                        }
                     }
 
                     Spacer {

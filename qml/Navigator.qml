@@ -69,6 +69,7 @@ Item {
 
     NavigatorBase {
         id: navigatorBase
+        horizontalAccuracy: app.conf.navigationHorizontalAccuracy
         units: app.conf.units
 
         property bool voicePrepared: false
