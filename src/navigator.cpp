@@ -479,7 +479,7 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
               SET(icon, QLatin1String("away-from-route")); // away from route icon
               SET(narrative, trans("Away from route"));
               SET(manDist,
-                  m_distance_to_route_m > 1 ?
+                  m_distance_to_route_m > MAP_HORIZONTAL_ACCURACY_M ?
                     distanceToStr(m_distance_to_route_m) : QLatin1String("-"));
             }
 
