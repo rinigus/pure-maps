@@ -29,7 +29,6 @@ PM.PositionSource {
     // if we already have a lock, otherwise keep trying for a couple minutes
     // and give up if we still don't gain that lock.
     active: app.running || (!accurate && waitForLock)
-    hasMapMatching: app.hasMapMatching
     mapMatchingMode: {
             if (app.mapMatchingMode == "none") return 0;
             else if (app.mapMatchingMode == "car") return 1;

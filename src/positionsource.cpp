@@ -69,6 +69,13 @@ PositionSource::PositionSource(QObject *parent) : QObject(parent)
   // network
   connect(&m_networkManager, &QNetworkAccessManager::finished, this, &PositionSource::onNetworkFinished);
 
+  // map matching
+  m_mapmatch = new OSMScoutMapMatch(MAPMATCHING_SERVICE,
+                                    MAPMATCHING_PATH,
+                                    QDBusConnection::sessionBus(), this);
+  connect(m_mapmatch, &OSMScoutMapMatch::ActiveChanged,
+          this, &PositionSource::checkMapMatchAvailable);
+
   // track map matching service
   DBusTracker::instance()->track(MAPMATCHING_SERVICE);
   connect(DBusTracker::instance(), &DBusTracker::serviceAppeared,
@@ -81,8 +88,12 @@ PositionSource::PositionSource(QObject *parent) : QObject(parent)
   connect(&m_timer, &QTimer::timeout, this, &PositionSource::onTestingTimer);
 
   m_mapMatchingActivateTimer.setInterval(5000);
-  m_mapMatchingActivateTimer.setSingleShot(false);
+  m_mapMatchingActivateTimer.setSingleShot(true);
   connect(&m_mapMatchingActivateTimer, &QTimer::timeout, this, &PositionSource::onMapMatchingActivateTimer);
+
+  // check current state
+  checkMapMatchAvailable();
+  resetMapMatchingValues();
 }
 
 void PositionSource::setActive(bool active)
@@ -262,32 +273,6 @@ void PositionSource::onPositionUpdated(const QGeoPositionInfo &info)
 /// Map matching support
 ///
 
-void PositionSource::setHasMapMatching(bool hasMapMatching)
-{
-  SET(hasMapMatching, hasMapMatching);
-
-  if (!m_hasMapMatching)
-    {
-      if (m_mapmatch)
-        {
-          m_mapmatch->deleteLater();
-          m_mapmatch = nullptr;
-        }
-    }
-  else if (!m_mapmatch && m_hasMapMatching)
-    {
-      m_mapmatch = new OSMScoutMapMatch(MAPMATCHING_SERVICE,
-                                        MAPMATCHING_PATH,
-                                        QDBusConnection::sessionBus(), this);
-      // connect signals
-      connect(m_mapmatch, &OSMScoutMapMatch::ActiveChanged,
-              this, &PositionSource::checkMapMatchAvailable);
-    }
-
-  checkMapMatchAvailable();
-  resetMapMatchingValues();
-}
-
 void PositionSource::setMapMatchingMode(int mapMatchingMode)
 {
   SET(mapMatchingMode, mapMatchingMode);
@@ -299,7 +284,7 @@ void PositionSource::setMapMatchingMode(int mapMatchingMode)
 
 void PositionSource::checkMapMatchAvailable()
 {
-  bool want = (m_active && m_hasMapMatching && m_mapmatch && m_mapMatchingMode > 0);
+  bool want = (m_active && m_mapmatch && m_mapMatchingMode > 0);
 
   // if we don't need map matching, do not activate it via DBus
   // or network

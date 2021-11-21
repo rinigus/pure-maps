@@ -27,7 +27,6 @@ class PositionSource: public QObject
   Q_PROPERTY(bool directionDeviceValid READ directionDeviceValid NOTIFY directionDeviceValidChanged)
   Q_PROPERTY(int directionMapMatch READ directionMapMatch NOTIFY directionMapMatchChanged)
   Q_PROPERTY(bool directionMapMatchValid READ directionMapMatchValid NOTIFY directionMapMatchValidChanged)
-  Q_PROPERTY(bool hasMapMatching READ hasMapMatching WRITE setHasMapMatching NOTIFY hasMapMatchingChanged)
   Q_PROPERTY(float horizontalAccuracy READ horizontalAccuracy NOTIFY horizontalAccuracyChanged)
   Q_PROPERTY(bool horizontalAccuracyValid READ horizontalAccuracyValid NOTIFY horizontalAccuracyValidChanged)
   Q_PROPERTY(int mapMatchingMode READ mapMatchingMode WRITE setMapMatchingMode NOTIFY mapMatchingModeChanged)
@@ -56,7 +55,6 @@ public:
   bool directionDeviceValid() const { return m_directionDeviceValid; }
   int directionMapMatch() const { return m_directionMapMatch; }
   bool directionMapMatchValid() const { return m_directionMapMatchValid; }
-  bool hasMapMatching() const { return m_hasMapMatching; }
   float horizontalAccuracy() const { return m_horizontalAccuracy; }
   bool horizontalAccuracyValid() const { return m_horizontalAccuracyValid; }
   int mapMatchingMode() const { return m_mapMatchingMode; }
@@ -73,7 +71,6 @@ public:
 
   // setters
   void setActive(bool active);
-  void setHasMapMatching(bool hasMapMatching);
   void setMapMatchingMode(int mapMatchingMode);
   void setStickyDirection(bool stickyDirection);
   void setTestingCoordinate(QGeoCoordinate testingCoordinate);
@@ -91,7 +88,6 @@ signals:
   void directionDeviceValidChanged();
   void directionMapMatchChanged();
   void directionMapMatchValidChanged();
-  void hasMapMatchingChanged();
   void horizontalAccuracyChanged();
   void horizontalAccuracyValidChanged();
   void mapMatchingModeChanged();
@@ -142,7 +138,6 @@ private:
   bool m_directionDeviceValid{false};
   int  m_directionMapMatch{0};
   bool m_directionMapMatchValid{false};
-  bool m_hasMapMatching{false};
   float m_horizontalAccuracy{0};
   bool m_horizontalAccuracyValid{false};
   int m_mapMatchingMode{0};

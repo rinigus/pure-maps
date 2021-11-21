@@ -459,7 +459,6 @@ PagePL {
                         description: app.tr("Select mode of transportation. Only applies when Pure Maps is not navigating. Uses OSM Scout Server for its operation.")
                         label: app.tr("Snap position to road")
                         model: [ app.tr("None"), app.tr("Car"), app.tr("Bicycle"), app.tr("Foot") ]
-                        visible: app.hasMapMatching
                         property var values: ["none", "car", "bicycle", "foot"]
                         Component.onCompleted: {
                             var value = app.conf.mapMatchingWhenIdle;
@@ -528,7 +527,6 @@ PagePL {
                         checked: app.conf.mapMatchingWhenNavigating
                         description: app.tr("Uses OSM Scout Server for its operation.")
                         text: app.tr("Snap position to road")
-                        visible: app.hasMapMatching
                         onCheckedChanged: {
                             if (mapmatchingSwitch.checked===app.conf.mapMatchingWhenNavigating) return;
                             app.conf.set("map_matching_when_navigating", mapmatchingSwitch.checked);

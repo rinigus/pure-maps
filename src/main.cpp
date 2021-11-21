@@ -155,22 +155,6 @@ int main(int argc, char *argv[])
   rootContext->setContextProperty("programVersion", APP_VERSION);
   rootContext->setContextProperty("defaultFontProvider", DEFAULT_FONTPROVIDER);
 
-  // handle map matching setting
-  rootContext->setContextProperty("mapMatchingCheck",
-                                #ifdef MAPMATCHING_CHECK_RUNTIME
-                                  true
-                                #else
-                                  false
-                                #endif
-                                  );
-  rootContext->setContextProperty("mapMatchingAvailable",
-                                #ifdef MAPMATCHING_AVAILABLE
-                                  true
-                                #else
-                                  false
-                                #endif
-                                  );
-
   // ////////////////////////////
   // register QML types
 #ifdef INTERNAL_CLIPBOARD

@@ -40,7 +40,6 @@ ApplicationWindowPL {
     property var    conf: Config {}
     property bool   errorPageOpen: false
     property bool   fontKeyMissing: false
-    property bool   hasMapMatching: false
     property bool   initialized: false
     property bool   infoActive: infoPanel && infoPanel.infoText
     property var    infoPanel: null
@@ -52,8 +51,7 @@ ApplicationWindowPL {
     property real   listItemVerticalMargin: (styler.themeItemSizeSmall - 1.125 * styler.themeFontSizeMedium) / 2
     property var    map: null
     property string mapMatchingMode: {
-        if (!hasMapMatching) return "none";
-        else if (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
+        if (app.mode === modes.navigate || app.mode === modes.followMe || app.mode === modes.navigatePost)
             return (app.conf.mapMatchingWhenNavigating && map && app.transportMode) ?
                         app.transportMode : "none";
         return app.conf.mapMatchingWhenIdle;
@@ -217,10 +215,6 @@ ApplicationWindowPL {
 
     function initialize() {
         initPages();
-        if (mapMatchingCheck)
-            app.hasMapMatching = py.call_sync("poor.app.has_mapmatching", []);
-        else
-            app.hasMapMatching = mapMatchingAvailable;
         initialized = true;
         // after all objects and pages are initialized
         CmdLineParser.process()

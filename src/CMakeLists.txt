@@ -24,13 +24,6 @@ if(CMAKE_BUILD_TYPE STREQUAL "release")
         -QT_NO_DEBUG_OUTPUT)
 endif()
 
-if(MAPMATCHING_CHECK_RUNTIME)
-    add_definitions(-DMAPMATCHING_CHECK_RUNTIME)
-endif()
-if(MAPMATCHING_AVAILABLE)
-    add_definitions(-DMAPMATCHING_AVAILABLE)
-endif()
-
 if(S2INCLUDES)
     include_directories(${S2INCLUDES})
 endif()
