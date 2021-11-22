@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-21 15:10+0200\n"
+"POT-Creation-Date: 2021-11-22 21:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,81 +59,81 @@ msgstr ""
 msgid "Current position"
 msgstr ""
 
-#: poor/keystore.py:55
+#: poor/keystore.py:57
 msgid ""
 "Register at <a href=\"https://developer.foursquare.com\">https://developer."
 "foursquare.com</a> and create your own Client ID and Client Secret keys"
 msgstr ""
 
-#: poor/keystore.py:56
+#: poor/keystore.py:58
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
 msgstr ""
 
-#: poor/keystore.py:57
+#: poor/keystore.py:59
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
 msgstr ""
 
-#: poor/keystore.py:58
+#: poor/keystore.py:60
 msgid ""
 "Register at <a href=\"https://developer.mapquest.com\">https://developer."
 "mapquest.com</a> and create your own API key"
 msgstr ""
 
-#: poor/keystore.py:59
+#: poor/keystore.py:61
 msgid ""
 "Register at <a href=\"https://opencagedata.com\">https://opencagedata.com</"
 "a> and create your own API key"
 msgstr ""
 
-#: poor/keystore.py:60
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
 msgstr ""
 
-#: poor/keystore.py:61
+#: poor/keystore.py:63
 msgid ""
 "Register at <a href=\"https://developer.here.com\">https://developer.here."
 "com</a> and create your own App API Key"
 msgstr ""
 
-#: poor/keystore.py:65
+#: poor/keystore.py:67
 msgid "Foursquare Client ID"
 msgstr ""
 
-#: poor/keystore.py:66
+#: poor/keystore.py:68
 msgid "Foursquare Client Secret"
 msgstr ""
 
-#: poor/keystore.py:69
+#: poor/keystore.py:71
 msgid "Mapbox API key"
 msgstr ""
 
-#: poor/keystore.py:72
+#: poor/keystore.py:74
 msgid "MapTiler API key"
 msgstr ""
 
-#: poor/keystore.py:75
+#: poor/keystore.py:77
 msgid "MapQuest API key"
 msgstr ""
 
-#: poor/keystore.py:78
+#: poor/keystore.py:80
 msgid "OpenCage API key"
 msgstr ""
 
-#: poor/keystore.py:81
+#: poor/keystore.py:83
 msgid "Stadia Maps API key"
 msgstr ""
 
-#: poor/keystore.py:84
+#: poor/keystore.py:86
 msgid "HERE API Key"
 msgstr ""
 
-#: poor/keystore.py:92
+#: poor/keystore.py:94
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE services.</"
 "p><br><p>Please consult <a href=\"https://legal.here.com/en-gb/terms/here-"
@@ -153,7 +153,7 @@ msgid ""
 "under Licenses.</p>"
 msgstr ""
 
-#: poor/keystore.py:106
+#: poor/keystore.py:108
 msgid "HERE End-User Terms"
 msgstr ""
 
@@ -255,146 +255,146 @@ msgstr ""
 msgid "{:d} h {:d} min"
 msgstr ""
 
-#: routers/here.py:316
+#: routers/here.py:311
 #, python-brace-format
 msgid "Continue for {distance}"
 msgstr ""
 
-#: routers/here.py:329
+#: routers/here.py:324
 msgid "Arrive at your destination"
 msgstr ""
 
-#: routers/here.py:333
+#: routers/here.py:328
 msgid "Board the ferry"
 msgstr ""
 
-#: routers/here.py:337
+#: routers/here.py:332
 msgid "Continue"
 msgstr ""
 
-#: routers/here.py:342
+#: routers/here.py:337
 msgid "Merge right and continue on highway"
 msgstr ""
 
-#: routers/here.py:344
+#: routers/here.py:339
 msgid "Merge left and continue on highway"
 msgstr ""
 
-#: routers/here.py:348
+#: routers/here.py:343
 msgid "Disembark the ferry"
 msgstr ""
 
-#: routers/here.py:352
+#: routers/here.py:347
 msgid "Start navigation"
 msgstr ""
 
-#: routers/here.py:357
+#: routers/here.py:352
 msgid "Merge right and enter highway"
 msgstr ""
 
-#: routers/here.py:359
+#: routers/here.py:354
 msgid "Merge left and enter highway"
 msgstr ""
 
-#: routers/here.py:361
+#: routers/here.py:356
 msgid "Enter highway"
 msgstr ""
 
-#: routers/here.py:374
+#: routers/here.py:369
 msgid "Take exit on the right"
 msgstr ""
 
-#: routers/here.py:376
+#: routers/here.py:371
 msgid "Take exit on the left"
 msgstr ""
 
-#: routers/here.py:379
+#: routers/here.py:374
 #, python-brace-format
 msgid "Take exit {number} on the right"
 msgstr ""
 
-#: routers/here.py:381
+#: routers/here.py:376
 #, python-brace-format
 msgid "Take exit {number} on the left"
 msgstr ""
 
-#: routers/here.py:388
+#: routers/here.py:383
 msgid "Keep right"
 msgstr ""
 
-#: routers/here.py:390
+#: routers/here.py:385
 msgid "Keep left"
 msgstr ""
 
-#: routers/here.py:394
+#: routers/here.py:389
 msgid "Keep straight"
 msgstr ""
 
-#: routers/here.py:400
+#: routers/here.py:395
 msgid "Enter the roundabout and take the first exit"
 msgstr ""
 
-#: routers/here.py:402
+#: routers/here.py:397
 msgid "Enter the roundabout and take the second exit"
 msgstr ""
 
-#: routers/here.py:404
+#: routers/here.py:399
 msgid "Enter the roundabout and take the third exit"
 msgstr ""
 
-#: routers/here.py:406
+#: routers/here.py:401
 msgid "Enter the roundabout and take the fourth exit"
 msgstr ""
 
-#: routers/here.py:408
+#: routers/here.py:403
 msgid "Enter the roundabout and take the fifth exit"
 msgstr ""
 
-#: routers/here.py:410
+#: routers/here.py:405
 msgid "Enter the roundabout and take the sixth exit"
 msgstr ""
 
-#: routers/here.py:412
+#: routers/here.py:407
 msgid "Enter the roundabout"
 msgstr ""
 
-#: routers/here.py:416
+#: routers/here.py:411
 msgid "Exit the roundabout"
 msgstr ""
 
-#: routers/here.py:423
+#: routers/here.py:418
 msgid "Bear right"
 msgstr ""
 
-#: routers/here.py:425
+#: routers/here.py:420
 msgid "Bear left"
 msgstr ""
 
-#: routers/here.py:429
+#: routers/here.py:424
 msgid "Make a sharp right"
 msgstr ""
 
-#: routers/here.py:431
+#: routers/here.py:426
 msgid "Make a sharp left"
 msgstr ""
 
-#: routers/here.py:435
+#: routers/here.py:430
 msgid "Turn right"
 msgstr ""
 
-#: routers/here.py:437
+#: routers/here.py:432
 msgid "Turn left"
 msgstr ""
 
-#: routers/here.py:442
+#: routers/here.py:437
 msgid "Make a right U-turn"
 msgstr ""
 
-#: routers/here.py:444
+#: routers/here.py:439
 msgid "Make a left U-turn"
 msgstr ""
 
-#: routers/here.py:446
+#: routers/here.py:441
 msgid "Make a U-turn"
 msgstr ""
 

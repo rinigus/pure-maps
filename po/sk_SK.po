@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-21 15:10+0200\n"
+"POT-Creation-Date: 2021-11-22 21:12+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: rinigus github, 2021\n"
 "Language-Team: Slovak (Slovakia) (https://www.transifex.com/rinigus/teams/89597/sk_SK/)\n"
@@ -24,15 +24,15 @@ msgstr ""
 
 #: geocoders/here.py:141
 msgid "Search suggestion"
-msgstr ""
+msgstr "Vyhľadať návrh"
 
 #: geocoders/here.py:149
 msgid "Food types: {}"
-msgstr ""
+msgstr "Druh jedla: {}"
 
 #: geocoders/here.py:156
 msgid "Opening hours: {}"
-msgstr ""
+msgstr "Otváracia doba: {}"
 
 #: guides/foursquare.py:198
 msgid "Opening hours:"
@@ -64,85 +64,105 @@ msgstr "Čas pripojenia vypršal"
 msgid "Current position"
 msgstr "Aktuálna poloha"
 
-#: poor/keystore.py:55
+#: poor/keystore.py:57
 msgid ""
 "Register at <a "
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
 " and create your own Client ID and Client Secret keys"
 msgstr ""
+"Registrujte sa na <a "
+"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
+" a vytvorte si vlastný Client ID a kľúče Client Secret"
 
-#: poor/keystore.py:56
+#: poor/keystore.py:58
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
 msgstr ""
+"Registrujte sa na <a "
+"href=\"https://www.mapbox.com\">https://www.mapbox.com</a> a vytvorte si "
+"vlastný kľúč API"
 
-#: poor/keystore.py:57
+#: poor/keystore.py:59
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
 msgstr ""
+"Registrujte sa na <a href=\"https://maptiler.com\">https://maptiler.com</a> "
+"a vytvorte si vlastný kľúč API"
 
-#: poor/keystore.py:58
+#: poor/keystore.py:60
 msgid ""
 "Register at <a "
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
 "and create your own API key"
 msgstr ""
+"Registrujte sa na <a "
+"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> a"
+" vytvorte si vlastný kľúč API"
 
-#: poor/keystore.py:59
+#: poor/keystore.py:61
 msgid ""
 "Register at <a "
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
 "your own API key"
 msgstr ""
+"Registrujte sa na <a "
+"href=\"https://opencagedata.com\">https://opencagedata.com</a> a vytvorte si"
+" vlastný kľúč API"
 
-#: poor/keystore.py:60
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
 msgstr ""
+"Registrujte sa na <a "
+"href=\"https://stadiamaps.com\">https://stadiamaps.com</a> a vytvorte si "
+"vlastný kľúč API"
 
-#: poor/keystore.py:61
+#: poor/keystore.py:63
 msgid ""
 "Register at <a "
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
 "create your own App API Key"
 msgstr ""
+"Registrujte sa na <a "
+"href=\"https://developer.here.com\">https://developer.here.com</a> a "
+"vytvorte si vlastný kľúč API"
 
-#: poor/keystore.py:65
+#: poor/keystore.py:67
 msgid "Foursquare Client ID"
 msgstr "ID klienta Foursquare"
 
-#: poor/keystore.py:66
+#: poor/keystore.py:68
 msgid "Foursquare Client Secret"
 msgstr "Osobný kľúč Foursquare"
 
-#: poor/keystore.py:69
+#: poor/keystore.py:71
 msgid "Mapbox API key"
 msgstr "Osobný kľúč Mapbox API"
 
-#: poor/keystore.py:72
+#: poor/keystore.py:74
 msgid "MapTiler API key"
-msgstr ""
+msgstr "Kľúč MapTiler API"
 
-#: poor/keystore.py:75
+#: poor/keystore.py:77
 msgid "MapQuest API key"
 msgstr "Osobný kľúč MapQuest API"
 
-#: poor/keystore.py:78
+#: poor/keystore.py:80
 msgid "OpenCage API key"
 msgstr "Osobný kľúč OpenCage API"
 
-#: poor/keystore.py:81
+#: poor/keystore.py:83
 msgid "Stadia Maps API key"
 msgstr "Osobný kľúč Stadia Maps API"
 
-#: poor/keystore.py:84
+#: poor/keystore.py:86
 msgid "HERE API Key"
-msgstr ""
+msgstr "Kľúč HERE API"
 
-#: poor/keystore.py:92
+#: poor/keystore.py:94
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE "
 "services.</p><br><p>Please consult <a href=\"https://legal.here.com/en-"
@@ -161,10 +181,12 @@ msgid ""
 " them. If declined, HERE support will be inactive and can be enabled later "
 "by accepting the terms in Preferences under Licenses.</p>"
 msgstr ""
+"<p>Vaša inštalácia Pure Maps umožňuje podporu pre služby HERE.</p><br><p>Prečítajte, prosím <a href=\"https://legal.here.com/en-gb/terms/here-end-user-terms\">podmienky pre koncového používateľa</a>, <a href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy\">prijateľné zásady používania</a>, a <a href=\"https://legal.here.com/en-gb/privacy\">zásady ochrany osobných údajov HERE</a>. V kontexte používania HERE a zásad ochrany osobných údajov Pure Maps komunikuje s HERE pomocou REST API.<p></br><p>Na základe <a href=\"https://knowledge.here.com/csm_kb?id=public_kb_csm_details&number=KB0016412\">zákonných dôvodov</a>, Pure Maps povolia vyhľadávanie a smerovanie HERE iba vo vyhradenom profile \"HERE Online\". Ak už nie je aktívny, pozrite si pravidlá prijateľného používania z roku 2018, kde nájdete podrobnosti týkajúce sa používania HERE spolu s ďalšími poskytovateľmi v <a href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy-2018\">sekcii dokumentu Layering and Modifications</a>.</p><br><p>Prijmite podmienky a zásady alebo ich odmietnite.  "
+"V prípade odmietnutia bude podpora HERE neaktívna a možno ju povoliť neskôr prijatím podmienok v Predvoľbách v časti Licencie.</p>"
 
-#: poor/keystore.py:106
+#: poor/keystore.py:108
 msgid "HERE End-User Terms"
-msgstr ""
+msgstr "Podmienky pre koncového používateľa HERE"
 
 #: poor/router.py:104 poor/router.py:106
 msgid "Exit: "
@@ -264,148 +286,148 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
-#: routers/here.py:316
+#: routers/here.py:311
 #, python-brace-format
 msgid "Continue for {distance}"
-msgstr ""
+msgstr "Pokračovať na {distance}"
 
-#: routers/here.py:329
+#: routers/here.py:324
 msgid "Arrive at your destination"
-msgstr ""
+msgstr "Prišli ste do Vášho cieľa"
 
-#: routers/here.py:333
+#: routers/here.py:328
 msgid "Board the ferry"
-msgstr ""
+msgstr "Naloďte sa na trajekt"
+
+#: routers/here.py:332
+msgid "Continue"
+msgstr "Pokračujte"
 
 #: routers/here.py:337
-msgid "Continue"
-msgstr ""
-
-#: routers/here.py:342
 msgid "Merge right and continue on highway"
-msgstr ""
+msgstr "Zaraďte sa vpravo a pokračujte po diaľnici"
 
-#: routers/here.py:344
+#: routers/here.py:339
 msgid "Merge left and continue on highway"
-msgstr ""
+msgstr "Zaraďte sa vľavo a pokračujte po diaľnici"
 
-#: routers/here.py:348
+#: routers/here.py:343
 msgid "Disembark the ferry"
-msgstr ""
+msgstr "Vystúpte z trajektu"
+
+#: routers/here.py:347
+msgid "Start navigation"
+msgstr "Spustenie navigácie"
 
 #: routers/here.py:352
-msgid "Start navigation"
-msgstr ""
-
-#: routers/here.py:357
 msgid "Merge right and enter highway"
-msgstr ""
+msgstr "Zaraďte sa vpravo a vojdite na diaľnicu"
 
-#: routers/here.py:359
+#: routers/here.py:354
 msgid "Merge left and enter highway"
-msgstr ""
+msgstr "Zaraďte sa vľavo a vojdite na diaľnicu"
 
-#: routers/here.py:361
+#: routers/here.py:356
 msgid "Enter highway"
-msgstr ""
+msgstr "Vojdite na diaľnicu"
+
+#: routers/here.py:369
+msgid "Take exit on the right"
+msgstr "Použite výjazd vpravo"
+
+#: routers/here.py:371
+msgid "Take exit on the left"
+msgstr "Použite výjazd vľavo"
 
 #: routers/here.py:374
-msgid "Take exit on the right"
-msgstr ""
-
-#: routers/here.py:376
-msgid "Take exit on the left"
-msgstr ""
-
-#: routers/here.py:379
 #, python-brace-format
 msgid "Take exit {number} on the right"
-msgstr ""
+msgstr "Použite výjazd {number} vpravo"
 
-#: routers/here.py:381
+#: routers/here.py:376
 #, python-brace-format
 msgid "Take exit {number} on the left"
-msgstr ""
+msgstr "Použite výjazd {number} vľavo"
 
-#: routers/here.py:388
+#: routers/here.py:383
 msgid "Keep right"
-msgstr ""
+msgstr "Držte sa vpravo"
 
-#: routers/here.py:390
+#: routers/here.py:385
 msgid "Keep left"
-msgstr ""
+msgstr "Držte sa vľavo"
 
-#: routers/here.py:394
+#: routers/here.py:389
 msgid "Keep straight"
-msgstr ""
+msgstr "Choďte priamo"
 
-#: routers/here.py:400
+#: routers/here.py:395
 msgid "Enter the roundabout and take the first exit"
-msgstr ""
+msgstr "Vojdite do kruhového objazdu a opustite ho prvým výjazdom"
 
-#: routers/here.py:402
+#: routers/here.py:397
 msgid "Enter the roundabout and take the second exit"
-msgstr ""
+msgstr "Vojdite do kruhového objazdu a opustite ho druhým výjazdom"
 
-#: routers/here.py:404
+#: routers/here.py:399
 msgid "Enter the roundabout and take the third exit"
-msgstr ""
+msgstr "Vojdite do kruhového objazdu a opustite ho tretím výjazdom"
 
-#: routers/here.py:406
+#: routers/here.py:401
 msgid "Enter the roundabout and take the fourth exit"
-msgstr ""
+msgstr "Vojdite do kruhového objazdu a opustite ho štvrtým výjazdom"
 
-#: routers/here.py:408
+#: routers/here.py:403
 msgid "Enter the roundabout and take the fifth exit"
-msgstr ""
+msgstr "Vojdite do kruhového objazdu a opustite ho piatym výjazdom"
 
-#: routers/here.py:410
+#: routers/here.py:405
 msgid "Enter the roundabout and take the sixth exit"
-msgstr ""
+msgstr "Vojdite do kruhového objazdu a opustite ho šiestym výjazdom"
 
-#: routers/here.py:412
+#: routers/here.py:407
 msgid "Enter the roundabout"
-msgstr ""
+msgstr "Vojdite do kruhového objazdu"
 
-#: routers/here.py:416
+#: routers/here.py:411
 msgid "Exit the roundabout"
-msgstr ""
+msgstr "Opustite kruhový objazd"
 
-#: routers/here.py:423
+#: routers/here.py:418
 msgid "Bear right"
-msgstr ""
+msgstr "Choďte vpravo"
 
-#: routers/here.py:425
+#: routers/here.py:420
 msgid "Bear left"
-msgstr ""
+msgstr "Choďte vľavo"
 
-#: routers/here.py:429
+#: routers/here.py:424
 msgid "Make a sharp right"
-msgstr ""
+msgstr "Zabočte prudko doprava"
 
-#: routers/here.py:431
+#: routers/here.py:426
 msgid "Make a sharp left"
-msgstr ""
+msgstr "Zabočte prudko doľava"
 
-#: routers/here.py:435
+#: routers/here.py:430
 msgid "Turn right"
-msgstr ""
+msgstr "Odbočte doprava"
+
+#: routers/here.py:432
+msgid "Turn left"
+msgstr "Odbočte doľava"
 
 #: routers/here.py:437
-msgid "Turn left"
-msgstr ""
-
-#: routers/here.py:442
 msgid "Make a right U-turn"
-msgstr ""
+msgstr "Otočte sa doprava"
 
-#: routers/here.py:444
+#: routers/here.py:439
 msgid "Make a left U-turn"
-msgstr ""
+msgstr "Otočte sa doľava"
 
-#: routers/here.py:446
+#: routers/here.py:441
 msgid "Make a U-turn"
-msgstr ""
+msgstr "Otočte sa"
 
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:133
 #: routers/ValhallaSettings.qml:169 routers/ValhallaSettings.qml:222
@@ -699,7 +721,7 @@ msgstr "Vyhľadávací stroj"
 #: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
 #: qml/js/util.js:160
 msgid "%1 (disabled)"
-msgstr ""
+msgstr "%1 (neprejazdné)"
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -711,7 +733,7 @@ msgstr "Odmietnuť"
 
 #: qml/InitPage.qml:55
 msgid "Missing %1 key"
-msgstr ""
+msgstr "Chýbajúci kľúč %1"
 
 #: qml/InitPage.qml:56
 msgid ""
@@ -719,6 +741,9 @@ msgid ""
 "your personal API key in Preferences. This key is not needed if you plan to "
 "use Pure Maps with the offline map provider."
 msgstr ""
+"Vaša inštalácia nemá kľúč API %1. Zaregistrujte sa, prosím, na %1 a zadajte "
+"Váš osobný kľúč API v Predvoľbách. Tento kľúč nie je potrebný ak plánujete "
+"používať Pure Maps s lokálne uloženými mapami."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
@@ -737,15 +762,15 @@ msgstr "angličtina (Spojené štáty)"
 
 #: qml/LicensePage.qml:25
 msgid "Accept"
-msgstr ""
+msgstr "Prijať"
 
 #: qml/LicensePage.qml:25
 msgid "Decline"
-msgstr ""
+msgstr "Odmietnuť"
 
 #: qml/LicensePage.qml:48
 msgid "Accept license"
-msgstr ""
+msgstr "Prijať licenciu"
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
@@ -804,11 +829,11 @@ msgstr "Offline"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE - Online"
-msgstr ""
+msgstr "HERE - Online"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE (disabled)"
-msgstr ""
+msgstr "HERE (zakázané)"
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -1239,7 +1264,7 @@ msgstr "Zadať URL"
 
 #: qml/PoiEditPage.qml:115
 msgid "Enter Email"
-msgstr ""
+msgstr "Vložiť e-mail"
 
 #: qml/PoiEditPage.qml:125 qml/PoiInfoPage.qml:255
 msgid "Additional info"
@@ -1600,31 +1625,33 @@ msgstr "Vymazať vyrovnávaciu pamäť"
 
 #: qml/PreferencesPage.qml:276
 msgid "Licenses"
-msgstr ""
+msgstr "Licencie"
 
 #: qml/PreferencesPage.qml:283
 msgid ""
 "List of the licenses and whether they are accepted or declined. Here you can"
 " change the acceptance of each license."
 msgstr ""
+"Zoznam licencií a informácie o tom, či sú akceptované alebo odmietnuté. Tu "
+"môžete zmeniť akceptáciu každej licencie."
 
 #: qml/PreferencesPage.qml:291
 msgid ""
 "Please restart application after changing the acceptance state of the "
 "license(s)."
-msgstr ""
+msgstr "Po zmene stavu akceptácie licencie(í) reštartujte aplikáciu, prosím."
 
 #: qml/PreferencesPage.qml:326
 msgid "Declined"
-msgstr ""
+msgstr "Odmietnuť"
 
 #: qml/PreferencesPage.qml:327
 msgid "Accepted"
-msgstr ""
+msgstr "Prijať"
 
 #: qml/PreferencesPage.qml:328
 msgid "Unset"
-msgstr ""
+msgstr "Nezadané"
 
 #: qml/PreferencesPage.qml:374
 msgid "API keys"
@@ -1759,10 +1786,12 @@ msgid ""
 "Accuracy of the positioning supported by device. Deviation from the route "
 "below the specified accuracy will be ignored."
 msgstr ""
+"Presnosť určovania polohy podporovaná zariadením. Odchýlka od trasy pod "
+"špecifikovanú presnosť bude ignorovaná."
 
 #: qml/PreferencesPage.qml:615
 msgid "Positioning accuracy"
-msgstr ""
+msgstr "Presnosť určovania polohy"
 
 #: qml/PreferencesPage.qml:653 qml/PreferencesPage.qml:757
 msgid "Compass"
@@ -2325,7 +2354,7 @@ msgstr "Všeobecné možnosti"
 
 #: routers/here_settings.qml:38
 msgid "Taxi"
-msgstr ""
+msgstr "Taxi"
 
 #: routers/here_settings.qml:59
 msgid "Afrikaans"
@@ -2637,35 +2666,35 @@ msgstr "Uprednostniť kratšiu trasu"
 
 #: routers/here_settings.qml:191
 msgid "Avoid tolls"
-msgstr ""
+msgstr "Vyhnúť sa mýtu"
 
 #: routers/here_settings.qml:203
 msgid "Avoid highways"
-msgstr ""
+msgstr "Vyhnúť sa diaľniciam"
 
 #: routers/here_settings.qml:215
 msgid "Avoid tunnels"
-msgstr ""
+msgstr "Vyhnúť sa tunelom"
 
 #: routers/here_settings.qml:227
 msgid "Avoid dirt roads"
-msgstr ""
+msgstr "Vyhnúť sa nespevneným cestám"
 
 #: routers/here_settings.qml:239
 msgid "Avoid difficult turns"
-msgstr ""
+msgstr "Vyhnúť sa kľukatým cestám"
 
 #: routers/here_settings.qml:251
 msgid "Avoid ferries"
-msgstr ""
+msgstr "Vyhnúť sa trajektom"
 
 #: routers/here_settings.qml:263
 msgid "Avoid car trains"
-msgstr ""
+msgstr "Vyhnúť sa autovlakom"
 
 #: routers/here_settings.qml:275
 msgid "Avoid seasonally closed roads"
-msgstr ""
+msgstr "Vyhnúť sa sezónnym cestám"
 
 #: routers/mapquest_open_settings.qml:46
 msgid "Try to avoid tolls"
@@ -2908,7 +2937,7 @@ msgstr "Hľadanie vo Fínsku. Podpora automatického doplňovania"
 
 #: standard input:2
 msgid "Search based on HERE data. Supports autocomplete"
-msgstr ""
+msgstr "Vyhľadávanie na základe údajov HERE. Podporuje automatické dopĺňanie"
 
 #: standard input:3
 msgid "Search based on open data sources"
@@ -2958,7 +2987,7 @@ msgstr "Navádzanie po trase GPX spracovanej serverom OSM Scout Server"
 
 #: standard input:13
 msgid "Routing by HERE"
-msgstr ""
+msgstr "Smerovanie pomocou HERE"
 
 #: standard input:15 standard input:17 standard input:19
 msgid "Routing based on OpenStreetMap data"
