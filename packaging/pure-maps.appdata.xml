@@ -38,6 +38,27 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="2.9.0" date="2021-11-22">
+     <description>
+       <ul>
+         <li>Add support for HERE through dedicated profile</li>
+         <li>Add support for licenses</li>
+         <li>Add support for MapTiler</li>
+         <li>Add and fix Geoclue2 plugin [fix by tpikonen]</li>
+         <li>Set center of the map as a reference point for geocoders</li>
+         <li>Disable plugins with missing API keys or licenses</li>
+         <li>Indicate when routing has failed</li>
+         <li>Fix direction calculations used by positioning source</li>
+         <li>Allow to use system-wide Geomag [tpikonen]</li>
+         <li>Update Ubuntu Touch packaging [jonnius]</li>
+         <li>Try to activate map matching if requested</li>
+         <li>Allow to specify accuracy of positioning</li>
+         <li>Revise API keys handling</li>
+         <li>Bugfixes and small enhancements</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.8.1" date="2021-10-17">
      <description>
        <ul>

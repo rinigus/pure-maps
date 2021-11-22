@@ -1,3 +1,22 @@
+2021-11-22: Pure Maps 2.9.0
+===========================
+
+* Add support for HERE through dedicated profile
+* Add support for licenses
+* Add support for MapTiler
+* Add and fix Geoclue2 plugin [fix by tpikonen]
+* Set center of the map as a reference point for geocoders
+* Disable plugins with missing API keys or licenses
+* Indicate when routing has failed
+* Fix direction calculations used by positioning source
+* Allow to use system-wide Geomag [tpikonen]
+* Update Ubuntu Touch packaging [jonnius]
+* Try to activate map matching if requested
+* Allow to specify accuracy of positioning
+* Revise API keys handling
+* Update translations
+* Bugfixes
+
 2021-10-17: Pure Maps 2.8.0
 ===========================
 
