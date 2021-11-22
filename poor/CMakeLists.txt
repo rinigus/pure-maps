@@ -14,17 +14,16 @@ add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/config.py"
 add_custom_target(sed_default_providers ALL
     DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/config.py")
 
-add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/keystore.py"
-    COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/keystore.py ${CMAKE_CURRENT_BINARY_DIR}/keystore.py
-    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/../tools/manage-keys inject ${CMAKE_CURRENT_BINARY_DIR})
+add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/apikeys.py"
+    COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../tools/apikeys.py ${CMAKE_CURRENT_BINARY_DIR})
 add_custom_target(inject_keys ALL
-    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/keystore.py")
+    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/apikeys.py")
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/paths.py
     DESTINATION ${DATADIR}/poor)
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/config.py
-    ${CMAKE_CURRENT_BINARY_DIR}/keystore.py
+    ${CMAKE_CURRENT_BINARY_DIR}/apikeys.py
     DESTINATION ${DATADIR}/poor)
 
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/astral/astral.py

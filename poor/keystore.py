@@ -15,10 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import copy
 import poor
 
 from collections import namedtuple
 from poor.i18n import _
+from .apikeys import Keys as ApiKeys
 
 __all__ = ("KeyStore",)
 
@@ -27,29 +29,29 @@ LicenseDesc = namedtuple('LicenseDesc', ['text', 'title'])
 
 # key has to start with the same prefix as used in the HEADERS, then
 # underscore and folowed by any string
-DEFAULTS = {
+KEYNAMES = [
     # https://developer.foursquare.com
-    "FOURSQUARE_CLIENT": "<FOURSQUARE_CLIENT>",
-    "FOURSQUARE_SECRET": "<FOURSQUARE_SECRET>",
-
-    # mapbox.com
-    "MAPBOX_KEY": "<MAPBOX_KEY>",
-
-    # maptiler.com
-    "MAPTILER_KEY": "<MAPTILER_KEY>",
-
-    # http://open.mapquestapi.com
-    "MAPQUEST_KEY": "<MAPQUEST_KEY>",
-
-    # https://geocoder.opencagedata.com/api [old key]
-    "OPENCAGE_KEY": "<OPENCAGE_KEY>",
-
-    # https://docs.stadiamaps.com/
-    "STADIAMAPS_KEY": "<STADIAMAPS_KEY>",
+    "FOURSQUARE_CLIENT",
+    "FOURSQUARE_SECRET",
 
     # here.com
-    "HERE_APIKEY": "<HERE_APIKEY>",
-}
+    "HERE_APIKEY",
+
+    # mapbox.com
+    "MAPBOX_KEY",
+
+    # maptiler.com
+    "MAPTILER_KEY",
+
+    # http://open.mapquestapi.com
+    "MAPQUEST_KEY",
+
+    # https://geocoder.opencagedata.com/api
+    "OPENCAGE_KEY",
+
+    # https://docs.stadiamaps.com/
+    "STADIAMAPS_KEY"
+]
 
 HEADERS = {
     "FOURSQUARE": HeaderDesc(_('Register at <a href="https://developer.foursquare.com">https://developer.foursquare.com</a> and create your own Client ID and Client Secret keys'), "Foursquare"),
@@ -112,10 +114,12 @@ class KeyStore:
 
     def __init__(self):
         """Initialize a :class:`KeyStore` instance."""
-        plain = {key: "" for key in DEFAULTS}
+        plain = {key: "" for key in KEYNAMES}
         poor.conf.register_keys(plain)
         licenses = {key: 0 for key in LICENSES}
         poor.conf.register_licenses(licenses)
+        plain.update(ApiKeys)
+        self.defaults = plain
 
     def license_accept(self, key):
         poor.conf.set("licenses." + key, 1)
@@ -129,7 +133,7 @@ class KeyStore:
             if poor.conf.get("licenses." + key) <= 0:
                 # license either declined or not accepted
                 return ""
-        return poor.conf.get("keys." + key).strip() or DEFAULTS.get(key, "").strip()
+        return poor.conf.get("keys." + key).strip() or self.defaults.get(key, "").strip()
 
     def licenses(self):
         return [dict(id = key,
@@ -160,7 +164,7 @@ class KeyStore:
 
     def list(self, headers=False):
         """Return a list of dictionaries of API key properties"""
-        keys = list(DEFAULTS.keys())
+        keys = copy.copy(KEYNAMES)
         keys.sort()
         head = None
         vals = []

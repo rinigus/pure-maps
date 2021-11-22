@@ -255,9 +255,9 @@ packaged using Flatpak or RPM, and Ubuntu Touch version as
 click. Several distributions provide packaging scripts in their source
 trees.
 
-For packaging, please copy `tools/apikeys_dummy.py` to
-`tools/apikeys.py` and fill missing API keys for the services that you
-plan to use.
+For packaging, please copy `poor/apikeys.py` to `tools/apikeys.py` and
+fill missing API keys for the services that you plan to use. Note that
+the format of `tools/apikeys.py` has changed with 2.9 release.
 
 Flatpak specific instructions are available under `packaging/flatpak`.
 

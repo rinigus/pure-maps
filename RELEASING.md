@@ -12,9 +12,9 @@ git add po/*.po po/*.pot; git status
 git commit -m "Update translations"
 
 # Check, test, do final edits and release.
-tools/manage-keys inject poor
+cp tools/apikeys.py poor
 make -f Makefile.test
-tools/manage-keys strip poor
+git checkout poor/apikeys.py
 git status
 emacs rpm/*.spec CMakeLists.txt packaging/click/manifest.json
 emacs NEWS.md packaging/pure-maps.appdata.xml
