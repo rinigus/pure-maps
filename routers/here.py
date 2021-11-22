@@ -30,10 +30,8 @@ https://developer.here.com
 
 
 import copy
-import json
 import poor
 import poor.flexpolyline
-import urllib.parse
 from poor.i18n import __
 from poor.util import calculate_distance, format_distance
 
@@ -164,7 +162,6 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
         instructions = { i.offset: i.instruction for i in legs.actions }
         language = legs.language
         transport_mode = legs.transport.mode
-        section_type = legs.type
         maneuvers = []
 
         if "preActions" in legs:
@@ -297,8 +294,6 @@ def get_street(maneuver, language):
     return None
 
 def process_maneuver(maneuver, transport_mode, language, lang_translation, fill_narrative):
-    result = {}
-
     action = maneuver.action
     direction = maneuver.get("direction", None)
     duration=float(maneuver.duration)
