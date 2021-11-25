@@ -123,6 +123,7 @@ cp %{_libdir}/libs2.so %{buildroot}%{_datadir}/%{name}/lib
 mkdir -p %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap
 cp %{_libdir}/qt5/qml/MapboxMap/* %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap
 cp %{_libdir}/libqmapboxgl.so.1* %{buildroot}%{_datadir}/%{name}/lib
+sed -i 's/QtPositioning 5.3/QtPositioning 5.4/g' %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap/MapboxMapGestureArea.qml
 sed -i 's/X-Nemo-Application-Type=silica-qt5/X-Nemo-Application-Type=no-invoker/g' %{buildroot}%{_datadir}/applications/%{name}.desktop
 %endif
 
