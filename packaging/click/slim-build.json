@@ -11,8 +11,6 @@
   "build_args": [
     "-DFLAVOR=uuitk",
     "-DAPP_NAME=pure-maps-slim.jonnius",
-    "-DMAPMATCHING_CHECK_RUNTIME=OFF",
-    "-DMAPMATCHING_AVAILABLE=OFF",
     "-DS2INCLUDES=${S2GEOMETRY_LIB_INSTALL_DIR}/include",
     "-DS2LIBS=${S2GEOMETRY_LIB_INSTALL_DIR}/lib"
   ],
