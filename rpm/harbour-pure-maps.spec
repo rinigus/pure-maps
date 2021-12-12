@@ -72,6 +72,25 @@ Requires: dbus-tools
 View maps, find places and routes, navigate with turn-by-turn instructions,
 search for nearby places by type and share your location.
 
+PackageName: Pure Maps
+Type: desktop-application
+Categories:
+  - Maps
+  - Science
+Custom:
+  RepoType: github
+  Repo: https://github.com/rinigus/pure-maps
+Icon: https://raw.githubusercontent.com/rinigus/pure-maps/master/data/pure-maps.svg
+Screenshots:
+  - https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/main.png
+  - https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/menu.png
+  - https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/traffic.png
+Url:
+  Homepage: https://rinigus.github.io/pure-maps
+  Help: https://github.com/rinigus/pure-maps/discussions
+  Bugtracker: https://github.com/rinigus/pure-maps/issues
+  Donation: https://rinigus.github.io/donate
+
 %prep
 %setup -q
 cp %{SOURCE1} tools/
@@ -133,7 +152,8 @@ chmod -x %{buildroot}%{_datadir}/%{name}/lib/*.so*
 chmod -x %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap/*.so*
 %endif
 
-%endif # sailfishos
+# sailfishos
+%endif
 
 %if 0%{?jollastore}
 # remove not allowed desktop handler
