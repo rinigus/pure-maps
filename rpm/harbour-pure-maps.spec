@@ -69,8 +69,10 @@ Requires: dbus-tools
 %endif
 
 %description
-View maps, find places and routes, navigate with turn-by-turn instructions,
-search for nearby places by type and share your location.
+Pure Maps is a full-featured map and navigation application allowing
+you to explore maps, search for addresses and points of interest, as
+well as assist with navigation. For that, it uses online or offline
+service providers.
 
 PackageName: Pure Maps
 Type: desktop-application
@@ -78,17 +80,13 @@ Categories:
   - Maps
   - Science
 Custom:
-  RepoType: github
   Repo: https://github.com/rinigus/pure-maps
 Icon: https://raw.githubusercontent.com/rinigus/pure-maps/master/data/pure-maps.svg
 Screenshots:
   - https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/main.png
-  - https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/menu.png
+  - https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/menu_sfos.png
   - https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/traffic.png
 Url:
-  Homepage: https://rinigus.github.io/pure-maps
-  Help: https://github.com/rinigus/pure-maps/discussions
-  Bugtracker: https://github.com/rinigus/pure-maps/issues
   Donation: https://rinigus.github.io/donate
 
 %prep
