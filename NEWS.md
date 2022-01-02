@@ -16,6 +16,8 @@
 * Revise API keys handling
 * Update translations
 * Bugfixes
+* [2.9.2, sfos] Add Chum section to SPEC
+* [2.9.2, sfos] Fix My Backup configuration [Karry]
 
 2021-10-17: Pure Maps 2.8.0
 ===========================
