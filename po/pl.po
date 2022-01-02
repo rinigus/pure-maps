@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Atlochowski <hucul@o2.pl>, 2021
 # rinigus github, 2021
+# Atlochowski <hucul@o2.pl>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-21 15:10+0200\n"
+"POT-Creation-Date: 2022-01-02 21:13+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: rinigus github, 2021\n"
+"Last-Translator: Atlochowski <hucul@o2.pl>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rinigus/teams/89597/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,15 +24,15 @@ msgstr ""
 
 #: geocoders/here.py:141
 msgid "Search suggestion"
-msgstr ""
+msgstr "Sugestie wyszukiwania"
 
 #: geocoders/here.py:149
 msgid "Food types: {}"
-msgstr ""
+msgstr "Rodzaje jedzenia: {}"
 
 #: geocoders/here.py:156
 msgid "Opening hours: {}"
-msgstr ""
+msgstr "Godziny otwarcia: {}"
 
 #: guides/foursquare.py:198
 msgid "Opening hours:"
@@ -64,85 +64,105 @@ msgstr "Czas połączenia przekroczony"
 msgid "Current position"
 msgstr "Obecna pozycja"
 
-#: poor/keystore.py:55
+#: poor/keystore.py:57
 msgid ""
 "Register at <a "
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
 " and create your own Client ID and Client Secret keys"
 msgstr ""
+"Zarejestruj się na <a "
+"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
+" i utwórz swoje własne Client ID and Client Secret keys"
 
-#: poor/keystore.py:56
+#: poor/keystore.py:58
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
 msgstr ""
+"Zarejestruj się <a "
+"href=\"https://www.mapbox.com\">https://www.mapbox.com</a> i utwórz swój "
+"własny klucz API"
 
-#: poor/keystore.py:57
+#: poor/keystore.py:59
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
 msgstr ""
+"Zarejestruj się <a href=\"https://maptiler.com\">https://maptiler.com</a> i "
+"utwórz swój własny klucz API"
 
-#: poor/keystore.py:58
+#: poor/keystore.py:60
 msgid ""
 "Register at <a "
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
 "and create your own API key"
 msgstr ""
+"Zarejestruj się <a "
+"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> i"
+" utwórz swój własny klucz API"
 
-#: poor/keystore.py:59
+#: poor/keystore.py:61
 msgid ""
 "Register at <a "
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
 "your own API key"
 msgstr ""
+"Zarejestruj się <a "
+"href=\"https://opencagedata.com\">https://opencagedata.com</a> i utwórz swój"
+" własny klucz API"
 
-#: poor/keystore.py:60
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
 msgstr ""
+"Zarejestruj się <a "
+"href=\"https://stadiamaps.com\">https://stadiamaps.com</a> i utwórz swój "
+"własny klucz API"
 
-#: poor/keystore.py:61
+#: poor/keystore.py:63
 msgid ""
 "Register at <a "
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
 "create your own App API Key"
 msgstr ""
+"Zarejestruj się <a "
+"href=\"https://developer.here.com\">https://developer.here.com</a> i utwórz "
+"swój własny klucz API"
 
-#: poor/keystore.py:65
+#: poor/keystore.py:67
 msgid "Foursquare Client ID"
 msgstr "ID klienta Foursquare"
 
-#: poor/keystore.py:66
+#: poor/keystore.py:68
 msgid "Foursquare Client Secret"
 msgstr "Foursquare Client Secret"
 
-#: poor/keystore.py:69
+#: poor/keystore.py:71
 msgid "Mapbox API key"
 msgstr "Klucz API Mapbox"
 
-#: poor/keystore.py:72
+#: poor/keystore.py:74
 msgid "MapTiler API key"
-msgstr ""
+msgstr "Klucz API MapTiler"
 
-#: poor/keystore.py:75
+#: poor/keystore.py:77
 msgid "MapQuest API key"
 msgstr "Klucz API MapQuest"
 
-#: poor/keystore.py:78
+#: poor/keystore.py:80
 msgid "OpenCage API key"
 msgstr "Klucz API OpenCage"
 
-#: poor/keystore.py:81
+#: poor/keystore.py:83
 msgid "Stadia Maps API key"
 msgstr "Klucz API Stadia Maps"
 
-#: poor/keystore.py:84
+#: poor/keystore.py:86
 msgid "HERE API Key"
-msgstr ""
+msgstr "Klucz API HERE"
 
-#: poor/keystore.py:92
+#: poor/keystore.py:94
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE "
 "services.</p><br><p>Please consult <a href=\"https://legal.here.com/en-"
@@ -162,9 +182,9 @@ msgid ""
 "by accepting the terms in Preferences under Licenses.</p>"
 msgstr ""
 
-#: poor/keystore.py:106
+#: poor/keystore.py:108
 msgid "HERE End-User Terms"
-msgstr ""
+msgstr "Warunki dla użytkownika końcowego HERE"
 
 #: poor/router.py:104 poor/router.py:106
 msgid "Exit: "
@@ -264,148 +284,148 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} g {:d} min"
 
-#: routers/here.py:316
+#: routers/here.py:311
 #, python-brace-format
 msgid "Continue for {distance}"
-msgstr ""
+msgstr "Kontynuuj przez {distance}"
 
-#: routers/here.py:329
+#: routers/here.py:324
 msgid "Arrive at your destination"
-msgstr ""
+msgstr "Przybądź do celu"
 
-#: routers/here.py:333
+#: routers/here.py:328
 msgid "Board the ferry"
-msgstr ""
+msgstr "Wsiądź na prom"
+
+#: routers/here.py:332
+msgid "Continue"
+msgstr "Kontynuuj"
 
 #: routers/here.py:337
-msgid "Continue"
-msgstr ""
-
-#: routers/here.py:342
 msgid "Merge right and continue on highway"
-msgstr ""
+msgstr "Skręć w prawo i jedź dalej autostradą"
 
-#: routers/here.py:344
+#: routers/here.py:339
 msgid "Merge left and continue on highway"
-msgstr ""
+msgstr "Skręć w lewo i jedź dalej autostradą"
 
-#: routers/here.py:348
+#: routers/here.py:343
 msgid "Disembark the ferry"
-msgstr ""
+msgstr "Zejdź z promu"
+
+#: routers/here.py:347
+msgid "Start navigation"
+msgstr "Rozpocznij nawigację"
 
 #: routers/here.py:352
-msgid "Start navigation"
-msgstr ""
-
-#: routers/here.py:357
 msgid "Merge right and enter highway"
-msgstr ""
+msgstr "Skręć w prawo i wjedź na autostradę"
 
-#: routers/here.py:359
+#: routers/here.py:354
 msgid "Merge left and enter highway"
-msgstr ""
+msgstr "Skręć w lewo i wjedź na autostradę"
 
-#: routers/here.py:361
+#: routers/here.py:356
 msgid "Enter highway"
-msgstr ""
+msgstr "Wjedź na autostradę"
+
+#: routers/here.py:369
+msgid "Take exit on the right"
+msgstr "Skręć w zjazd po prawej"
+
+#: routers/here.py:371
+msgid "Take exit on the left"
+msgstr "Skręć w zjazd po lewej"
 
 #: routers/here.py:374
-msgid "Take exit on the right"
-msgstr ""
-
-#: routers/here.py:376
-msgid "Take exit on the left"
-msgstr ""
-
-#: routers/here.py:379
 #, python-brace-format
 msgid "Take exit {number} on the right"
-msgstr ""
+msgstr "Skręć w {number} zjazd po prawej"
 
-#: routers/here.py:381
+#: routers/here.py:376
 #, python-brace-format
 msgid "Take exit {number} on the left"
-msgstr ""
+msgstr "Skręć w {number} zjazd po prawej"
 
-#: routers/here.py:388
+#: routers/here.py:383
 msgid "Keep right"
-msgstr ""
+msgstr "Trzymaj się prawej strony"
 
-#: routers/here.py:390
+#: routers/here.py:385
 msgid "Keep left"
-msgstr ""
+msgstr "Trzymaj się lewej strony"
 
-#: routers/here.py:394
+#: routers/here.py:389
 msgid "Keep straight"
-msgstr ""
+msgstr "Jedź prosto"
 
-#: routers/here.py:400
+#: routers/here.py:395
 msgid "Enter the roundabout and take the first exit"
-msgstr ""
+msgstr "Wjedź na rondo i zjedź pierwszym zjazdem"
 
-#: routers/here.py:402
+#: routers/here.py:397
 msgid "Enter the roundabout and take the second exit"
-msgstr ""
+msgstr "Wjedź na rondo i zjedź drugim zjazdem"
 
-#: routers/here.py:404
+#: routers/here.py:399
 msgid "Enter the roundabout and take the third exit"
-msgstr ""
+msgstr "Wjedź na rondo i zjedź trzecim zjazdem"
 
-#: routers/here.py:406
+#: routers/here.py:401
 msgid "Enter the roundabout and take the fourth exit"
-msgstr ""
+msgstr "Wjedź na rondo i zjedź czwartym zjazdem"
 
-#: routers/here.py:408
+#: routers/here.py:403
 msgid "Enter the roundabout and take the fifth exit"
-msgstr ""
+msgstr "Wjedź na rondo i zjedź piątym zjazdem"
 
-#: routers/here.py:410
+#: routers/here.py:405
 msgid "Enter the roundabout and take the sixth exit"
-msgstr ""
+msgstr "Wjedź na rondo i zjedź szóstym zjazdem"
 
-#: routers/here.py:412
+#: routers/here.py:407
 msgid "Enter the roundabout"
-msgstr ""
+msgstr "Wjedź na rondo"
 
-#: routers/here.py:416
+#: routers/here.py:411
 msgid "Exit the roundabout"
-msgstr ""
+msgstr "Opuść rondo"
 
-#: routers/here.py:423
+#: routers/here.py:418
 msgid "Bear right"
 msgstr ""
 
-#: routers/here.py:425
+#: routers/here.py:420
 msgid "Bear left"
 msgstr ""
 
-#: routers/here.py:429
+#: routers/here.py:424
 msgid "Make a sharp right"
-msgstr ""
+msgstr "Skręć ostro w prawo"
 
-#: routers/here.py:431
+#: routers/here.py:426
 msgid "Make a sharp left"
-msgstr ""
+msgstr "Skręć ostro w lewo"
 
-#: routers/here.py:435
+#: routers/here.py:430
 msgid "Turn right"
-msgstr ""
+msgstr "Skręć w prawo"
+
+#: routers/here.py:432
+msgid "Turn left"
+msgstr "Skręć w lewo"
 
 #: routers/here.py:437
-msgid "Turn left"
-msgstr ""
-
-#: routers/here.py:442
 msgid "Make a right U-turn"
-msgstr ""
+msgstr "Zawróć w prawo"
 
-#: routers/here.py:444
+#: routers/here.py:439
 msgid "Make a left U-turn"
-msgstr ""
+msgstr "Zawróć w lewo"
 
-#: routers/here.py:446
+#: routers/here.py:441
 msgid "Make a U-turn"
-msgstr ""
+msgstr "Zawróć"
 
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:133
 #: routers/ValhallaSettings.qml:169 routers/ValhallaSettings.qml:222
@@ -699,7 +719,7 @@ msgstr "Silnik wyszukiwania"
 #: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
 #: qml/js/util.js:160
 msgid "%1 (disabled)"
-msgstr ""
+msgstr "%1 (wyłączony)"
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -711,7 +731,7 @@ msgstr "Odrzuć"
 
 #: qml/InitPage.qml:55
 msgid "Missing %1 key"
-msgstr ""
+msgstr "Brakujący %1 klucz"
 
 #: qml/InitPage.qml:56
 msgid ""
@@ -719,6 +739,9 @@ msgid ""
 "your personal API key in Preferences. This key is not needed if you plan to "
 "use Pure Maps with the offline map provider."
 msgstr ""
+"W Twojej instalacji brakuje klucza API %1. Zarejestruj się w %1 i wpisz swój"
+" osobisty klucz API w Preferencjach. Ten klucz nie jest potrzebny, jeśli "
+"masz zamiar używać Pure Maps z dostawcą map offline."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
@@ -737,15 +760,15 @@ msgstr "angielski (Stany Zjednoczone)"
 
 #: qml/LicensePage.qml:25
 msgid "Accept"
-msgstr ""
+msgstr "Akceptuj"
 
 #: qml/LicensePage.qml:25
 msgid "Decline"
-msgstr ""
+msgstr "Odrzuć"
 
 #: qml/LicensePage.qml:48
 msgid "Accept license"
-msgstr ""
+msgstr "Akceptuj licencję"
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
@@ -768,9 +791,16 @@ msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
 "application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
-"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
-"/osmscout-server\">OSM Scout Server manual</a> for details."
+"Flathub, or your distribution. See <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
+"manual</a> for details."
 msgstr ""
+"Używasz profilu offline. Upewnij się, że masz zainstalowany i uruchomiony "
+"serwer OSM Scout. W zależności od systemu jest dostępny w sklepach z "
+"aplikacjami (OpenRepos dla Sailfish OS, OpenStore dla Ubuntu Touch), Flathub"
+" lub twojej dystrybucji. Szczegółowe informacje można znaleźć w <a "
+"href=\"https://rinigus.github.io/osmscout-server\"> instrukcji serwera OSM "
+"Scout</a>"
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -798,11 +828,11 @@ msgstr "Offline"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE - Online"
-msgstr ""
+msgstr "HERE - Online"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE (disabled)"
-msgstr ""
+msgstr "HERE (wyłączone)"
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -812,20 +842,20 @@ msgstr "Mieszany"
 msgid "Stop navigation to select POI"
 msgstr "Zatrzymaj nawigację aby wybrać POI"
 
-#: qml/Map.qml:643 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
+#: qml/Map.qml:644 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
 #: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Początek"
 
-#: qml/Map.qml:645 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
+#: qml/Map.qml:646 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
 msgid "Final destination"
 msgstr "Miejsce docelowe"
 
-#: qml/Map.qml:647
+#: qml/Map.qml:648
 msgid "✓"
 msgstr "✓"
 
-#: qml/Map.qml:650
+#: qml/Map.qml:651
 msgid "#%1"
 msgstr "#%1"
 
@@ -950,7 +980,7 @@ msgstr "Miejsca docelowe i punkty trasy"
 
 #: qml/NavigationPage.qml:207
 msgid "Origin: %1"
-msgstr ""
+msgstr "Punkt początkowy: %1"
 
 #: qml/NavigationPage.qml:209
 msgid "Final destination: %1"
@@ -972,7 +1002,7 @@ msgstr "Pozostały"
 #. as intermediate destinations on the route
 #: qml/NavigationPage.qml:314
 msgid "Leg"
-msgstr ""
+msgstr "Etap"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
@@ -1008,19 +1038,19 @@ msgstr ""
 
 #: qml/Navigator.qml:186
 msgid "Routing failed: current position not known"
-msgstr ""
+msgstr "Nieudane wytyczanie trasy: obecne położenie nie jest znane"
 
 #: qml/Navigator.qml:192
 msgid "Rerouting position"
-msgstr ""
+msgstr "Pozycja zmiany trasy"
 
 #: qml/Navigator.qml:200
 msgid "Routing"
-msgstr ""
+msgstr "Wyznaczanie trasy"
 
 #: qml/Navigator.qml:211
 msgid "Routing failed: %1"
-msgstr ""
+msgstr "Nieudane wytyczanie trasy: %1"
 
 #: qml/Navigator.qml:216 src/navigator.cpp:1054
 msgid "New route found"
@@ -1028,11 +1058,11 @@ msgstr "Znaleziono nową trasę"
 
 #: qml/Navigator.qml:217
 msgid "Route found"
-msgstr ""
+msgstr "Trasa znaleziona"
 
 #: qml/Navigator.qml:227 src/navigator.cpp:1056
 msgid "Routing failed"
-msgstr ""
+msgstr "Nieudane wytyczanie trasy"
 
 #: qml/Navigator.qml:259 src/navigator.cpp:1055
 msgid "Rerouting"
@@ -1147,35 +1177,35 @@ msgstr "Więcej informacji: %1"
 
 #: qml/PoiBlock.qml:233
 msgid "Set as or Replace"
-msgstr ""
+msgstr "Ustaw jako lub zastąp"
 
 #: qml/PoiBlock.qml:233
 msgid "Set as"
-msgstr ""
+msgstr "Ustaw jako"
 
 #: qml/PoiBlock.qml:293
 msgid "Insert as"
-msgstr ""
+msgstr "Wstaw jako"
 
 #: qml/PoiBlock.qml:298
 msgid "New origin"
-msgstr ""
+msgstr "Nowy punkt początkowy"
 
 #: qml/PoiBlock.qml:311
 msgid "New final destination"
-msgstr ""
+msgstr "Nowe miejsce docelowe"
 
 #: qml/PoiBlock.qml:323
 msgid "First intermediate destination"
-msgstr ""
+msgstr "Pierwszy pośredni cel podróży"
 
 #: qml/PoiBlock.qml:336
 msgid "Last intermediate destination"
-msgstr ""
+msgstr "Ostatni pośredni cel podróży"
 
 #: qml/PoiBlock.qml:337
 msgid "Intermediate destination"
-msgstr ""
+msgstr "Pośredni punkt podróży"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
@@ -1235,7 +1265,7 @@ msgstr "Wprowadź URL"
 
 #: qml/PoiEditPage.qml:115
 msgid "Enter Email"
-msgstr ""
+msgstr "Wprowadź email"
 
 #: qml/PoiEditPage.qml:125 qml/PoiInfoPage.qml:255
 msgid "Additional info"
@@ -1600,31 +1630,33 @@ msgstr "Wyczyść pamięć podręczną"
 
 #: qml/PreferencesPage.qml:276
 msgid "Licenses"
-msgstr ""
+msgstr "Licencje"
 
 #: qml/PreferencesPage.qml:283
 msgid ""
 "List of the licenses and whether they are accepted or declined. Here you can"
 " change the acceptance of each license."
 msgstr ""
+"Lista licencji i czy są zaakceptowane czy odrzucone. Tutaj możesz zmienić "
+"akceptację każdej licencji. "
 
 #: qml/PreferencesPage.qml:291
 msgid ""
 "Please restart application after changing the acceptance state of the "
 "license(s)."
-msgstr ""
+msgstr "Zrestartuj aplikację po zmianie stanu akceptacji licencji."
 
 #: qml/PreferencesPage.qml:326
 msgid "Declined"
-msgstr ""
+msgstr "Odrzucono"
 
 #: qml/PreferencesPage.qml:327
 msgid "Accepted"
-msgstr ""
+msgstr "Zaakceptowano"
 
 #: qml/PreferencesPage.qml:328
 msgid "Unset"
-msgstr ""
+msgstr "Nieustawiony"
 
 #: qml/PreferencesPage.qml:374
 msgid "API keys"
@@ -1760,10 +1792,12 @@ msgid ""
 "Accuracy of the positioning supported by device. Deviation from the route "
 "below the specified accuracy will be ignored."
 msgstr ""
+"Dokładność pozycjonowania obsługiwana przez urządzenie. Odchylenie od trasy "
+"poniżej określonej dokładności zostanie zignorowane. "
 
 #: qml/PreferencesPage.qml:615
 msgid "Positioning accuracy"
-msgstr ""
+msgstr "Dokładność pozycjonowania"
 
 #: qml/PreferencesPage.qml:653 qml/PreferencesPage.qml:757
 msgid "Compass"
@@ -2008,7 +2042,7 @@ msgstr "Odwróć trasę "
 
 #: qml/RoutePage.qml:98
 msgid "Clear route"
-msgstr ""
+msgstr "Wyczyść trasę"
 
 #: qml/RoutePage.qml:172
 msgid "From"
@@ -2322,7 +2356,7 @@ msgstr "Ogólne opcje"
 
 #: routers/here_settings.qml:38
 msgid "Taxi"
-msgstr ""
+msgstr "Taxi"
 
 #: routers/here_settings.qml:59
 msgid "Afrikaans"
@@ -2634,35 +2668,35 @@ msgstr "Preferencja krótszej drogi"
 
 #: routers/here_settings.qml:191
 msgid "Avoid tolls"
-msgstr ""
+msgstr "Unikaj płatnych dróg"
 
 #: routers/here_settings.qml:203
 msgid "Avoid highways"
-msgstr ""
+msgstr "Unikaj autostrad"
 
 #: routers/here_settings.qml:215
 msgid "Avoid tunnels"
-msgstr ""
+msgstr "Unikaj tuneli"
 
 #: routers/here_settings.qml:227
 msgid "Avoid dirt roads"
-msgstr ""
+msgstr "Unikaj dróg gruntowych"
 
 #: routers/here_settings.qml:239
 msgid "Avoid difficult turns"
-msgstr ""
+msgstr "Unikaj trudnych zwrotów"
 
 #: routers/here_settings.qml:251
 msgid "Avoid ferries"
-msgstr ""
+msgstr "Unikaj promów"
 
 #: routers/here_settings.qml:263
 msgid "Avoid car trains"
-msgstr ""
+msgstr "Unikaj pociągów samochodowych"
 
 #: routers/here_settings.qml:275
 msgid "Avoid seasonally closed roads"
-msgstr ""
+msgstr "Unikaj sezonowo zamkniętych dróg"
 
 #: routers/mapquest_open_settings.qml:46
 msgid "Try to avoid tolls"
@@ -2906,7 +2940,7 @@ msgstr "Szukaj w Finlandii. Obsługuje autouzupełnianie"
 
 #: standard input:2
 msgid "Search based on HERE data. Supports autocomplete"
-msgstr ""
+msgstr "Wyszukiwanie na podstawie danych HERE. Obsługuje autouzupełnianie "
 
 #: standard input:3
 msgid "Search based on open data sources"
@@ -2954,7 +2988,7 @@ msgstr "Wytyczanie trasy wzdłuż śladu GPX poprzez OSM Scout Server"
 
 #: standard input:13
 msgid "Routing by HERE"
-msgstr ""
+msgstr "Wytyczanie trasy przez HERE"
 
 #: standard input:15 standard input:17 standard input:19
 msgid "Routing based on OpenStreetMap data"

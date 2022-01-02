@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Carmen Fernández B., 2021
 # rinigus github, 2021
+# Carmen Fernández B., 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-21 15:10+0200\n"
+"POT-Creation-Date: 2022-01-02 21:13+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: rinigus github, 2021\n"
+"Last-Translator: Carmen Fernández B., 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,15 +24,15 @@ msgstr ""
 
 #: geocoders/here.py:141
 msgid "Search suggestion"
-msgstr ""
+msgstr "Buscar sugerencia"
 
 #: geocoders/here.py:149
 msgid "Food types: {}"
-msgstr ""
+msgstr "Tipos de comida: {}"
 
 #: geocoders/here.py:156
 msgid "Opening hours: {}"
-msgstr ""
+msgstr "Horario de apertura: {}"
 
 #: guides/foursquare.py:198
 msgid "Opening hours:"
@@ -64,85 +64,103 @@ msgstr "Tiempo de conexión finalizado"
 msgid "Current position"
 msgstr "Posición actual"
 
-#: poor/keystore.py:55
+#: poor/keystore.py:57
 msgid ""
 "Register at <a "
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
 " and create your own Client ID and Client Secret keys"
 msgstr ""
+"Regístrate en <a "
+"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
+" y crea tu propio ID de cliente y claves secretas"
 
-#: poor/keystore.py:56
+#: poor/keystore.py:58
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
 msgstr ""
+"Regístrate en <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
+"y crea tu propia clave API"
 
-#: poor/keystore.py:57
+#: poor/keystore.py:59
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
 msgstr ""
+"Regístrate en <a href=\"https://maptiler.com\">https://maptiler.com</a> y "
+"crea tu propia clave API"
 
-#: poor/keystore.py:58
+#: poor/keystore.py:60
 msgid ""
 "Register at <a "
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
 "and create your own API key"
 msgstr ""
+"Regístrate en <a "
+"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> y"
+" crea tu propia clave API"
 
-#: poor/keystore.py:59
+#: poor/keystore.py:61
 msgid ""
 "Register at <a "
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
 "your own API key"
 msgstr ""
+"Regístrate en <a "
+"href=\"https://opencagedata.com\">https://opencagedata.com</a> y crea tu "
+"propia clave API"
 
-#: poor/keystore.py:60
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
 msgstr ""
+"Regístrate en <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
+"y crea tu propia clave API"
 
-#: poor/keystore.py:61
+#: poor/keystore.py:63
 msgid ""
 "Register at <a "
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
 "create your own App API Key"
 msgstr ""
+"Regístrate en <a "
+"href=\"https://developer.here.com\">https://developer.here.com</a> y crea tu"
+" propia clave API"
 
-#: poor/keystore.py:65
+#: poor/keystore.py:67
 msgid "Foursquare Client ID"
 msgstr "ID de cliente Foursquare"
 
-#: poor/keystore.py:66
+#: poor/keystore.py:68
 msgid "Foursquare Client Secret"
 msgstr "Cliente secreto Foursquare"
 
-#: poor/keystore.py:69
+#: poor/keystore.py:71
 msgid "Mapbox API key"
 msgstr "Clave API de Mapbox"
 
-#: poor/keystore.py:72
+#: poor/keystore.py:74
 msgid "MapTiler API key"
-msgstr ""
+msgstr "Clave API de MapTiler"
 
-#: poor/keystore.py:75
+#: poor/keystore.py:77
 msgid "MapQuest API key"
 msgstr "Clave API de MapQuest"
 
-#: poor/keystore.py:78
+#: poor/keystore.py:80
 msgid "OpenCage API key"
 msgstr "Clave API de OpenCage"
 
-#: poor/keystore.py:81
+#: poor/keystore.py:83
 msgid "Stadia Maps API key"
 msgstr "Clave API de Stadia Map"
 
-#: poor/keystore.py:84
+#: poor/keystore.py:86
 msgid "HERE API Key"
-msgstr ""
+msgstr "Clave API de HERE"
 
-#: poor/keystore.py:92
+#: poor/keystore.py:94
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE "
 "services.</p><br><p>Please consult <a href=\"https://legal.here.com/en-"
@@ -161,10 +179,28 @@ msgid ""
 " them. If declined, HERE support will be inactive and can be enabled later "
 "by accepting the terms in Preferences under Licenses.</p>"
 msgstr ""
+"<p>Tu instalación de Pure Maps ha habilitado el soporte de servicios de "
+"HERE.</p><br><p>Consulta los <a href=\"https://legal.here.com/en-"
+"gb/terms/here-end-user-terms\">términos de usuario final</a>, las <a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy\">políticas "
+"de uso aceptable</a>, y las <a href=\"https://legal.here.com/en-"
+"gb/privacy\">políticas de privacidad de HERE</a>. En el contexto de uso de "
+"HERE y la política de privacidad, Pure Maps se comunica con HERE usando las "
+"REST API.<p></br><p>Por <a "
+"href=\"https://knowledge.here.com/csm_kb?id=public_kb_csm_details&number=KB0016412\">razones"
+" legales</a>, Pure Maps habilita la búsqueda y el cálculo de rutas de HERE "
+"únicamente con un perfil dedicado de \"HERE Online\". Si bien ya no está "
+"activo, consulta la política de uso aceptable de 2018 para obtener los "
+"detalles sobre el uso de HERE junto con otros proveedores en la sección <a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy-2018\">Capas"
+" y modificaciones</a> del documento.</p><br><p>Acepta los términos y la "
+"política o recházalos. Si los rechazas, el soporte de HERE estará inactivo y"
+" se podrá habilitar más tarde aceptando los términos en Licencias dentro de "
+"Preferencias.</p>"
 
-#: poor/keystore.py:106
+#: poor/keystore.py:108
 msgid "HERE End-User Terms"
-msgstr ""
+msgstr "Términos de usuario final de HERE"
 
 #: poor/router.py:104 poor/router.py:106
 msgid "Exit: "
@@ -264,148 +300,148 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
-#: routers/here.py:316
+#: routers/here.py:311
 #, python-brace-format
 msgid "Continue for {distance}"
-msgstr ""
+msgstr "Continúa {distance}"
 
-#: routers/here.py:329
+#: routers/here.py:324
 msgid "Arrive at your destination"
-msgstr ""
+msgstr "Has llegado a tu destino"
 
-#: routers/here.py:333
+#: routers/here.py:328
 msgid "Board the ferry"
-msgstr ""
+msgstr "Embarca en el ferri"
+
+#: routers/here.py:332
+msgid "Continue"
+msgstr "Continúa"
 
 #: routers/here.py:337
-msgid "Continue"
-msgstr ""
-
-#: routers/here.py:342
 msgid "Merge right and continue on highway"
-msgstr ""
+msgstr "Incorpórate a la derecha y continúa en la autovía"
 
-#: routers/here.py:344
+#: routers/here.py:339
 msgid "Merge left and continue on highway"
-msgstr ""
+msgstr "Incorpórate a la izquierda y continúa en la autovía"
 
-#: routers/here.py:348
+#: routers/here.py:343
 msgid "Disembark the ferry"
-msgstr ""
+msgstr "Desembarca del ferri"
+
+#: routers/here.py:347
+msgid "Start navigation"
+msgstr "Iniciar navegación"
 
 #: routers/here.py:352
-msgid "Start navigation"
-msgstr ""
-
-#: routers/here.py:357
 msgid "Merge right and enter highway"
-msgstr ""
+msgstr "Incorpórate a la derecha y entra en la autovía"
 
-#: routers/here.py:359
+#: routers/here.py:354
 msgid "Merge left and enter highway"
-msgstr ""
+msgstr "Incorpórate a la izquierda y entra en la autovía"
 
-#: routers/here.py:361
+#: routers/here.py:356
 msgid "Enter highway"
-msgstr ""
+msgstr "Entra en la autovía"
+
+#: routers/here.py:369
+msgid "Take exit on the right"
+msgstr "Toma la salida a la derecha"
+
+#: routers/here.py:371
+msgid "Take exit on the left"
+msgstr "Toma la salida a la izquierda"
 
 #: routers/here.py:374
-msgid "Take exit on the right"
-msgstr ""
-
-#: routers/here.py:376
-msgid "Take exit on the left"
-msgstr ""
-
-#: routers/here.py:379
 #, python-brace-format
 msgid "Take exit {number} on the right"
-msgstr ""
+msgstr "Toma la salida {number} a la derecha"
 
-#: routers/here.py:381
+#: routers/here.py:376
 #, python-brace-format
 msgid "Take exit {number} on the left"
-msgstr ""
+msgstr "Toma la salida {number} a la izquierda"
 
-#: routers/here.py:388
+#: routers/here.py:383
 msgid "Keep right"
-msgstr ""
+msgstr "Mantente a la derecha "
 
-#: routers/here.py:390
+#: routers/here.py:385
 msgid "Keep left"
-msgstr ""
+msgstr "Mantente a la izquierda"
 
-#: routers/here.py:394
+#: routers/here.py:389
 msgid "Keep straight"
-msgstr ""
+msgstr "Mantente recto"
 
-#: routers/here.py:400
+#: routers/here.py:395
 msgid "Enter the roundabout and take the first exit"
-msgstr ""
+msgstr "Entra en la rotonda y toma la primera salida"
 
-#: routers/here.py:402
+#: routers/here.py:397
 msgid "Enter the roundabout and take the second exit"
-msgstr ""
+msgstr "Entra en la rotonda y toma la segunda salida"
 
-#: routers/here.py:404
+#: routers/here.py:399
 msgid "Enter the roundabout and take the third exit"
-msgstr ""
+msgstr "Entra en la rotonda y toma la tercera salida"
 
-#: routers/here.py:406
+#: routers/here.py:401
 msgid "Enter the roundabout and take the fourth exit"
-msgstr ""
+msgstr "Entra en la rotonda y toma la cuarta salida"
 
-#: routers/here.py:408
+#: routers/here.py:403
 msgid "Enter the roundabout and take the fifth exit"
-msgstr ""
+msgstr "Entra en la rotonda y toma la quinta salida"
 
-#: routers/here.py:410
+#: routers/here.py:405
 msgid "Enter the roundabout and take the sixth exit"
-msgstr ""
+msgstr "Entra en la rotonda y toma la sexta salida"
 
-#: routers/here.py:412
+#: routers/here.py:407
 msgid "Enter the roundabout"
-msgstr ""
+msgstr "Entra en la rotonda"
 
-#: routers/here.py:416
+#: routers/here.py:411
 msgid "Exit the roundabout"
-msgstr ""
+msgstr "Sal de la rotonda"
 
-#: routers/here.py:423
+#: routers/here.py:418
 msgid "Bear right"
-msgstr ""
+msgstr "Seguir por la derecha"
 
-#: routers/here.py:425
+#: routers/here.py:420
 msgid "Bear left"
-msgstr ""
+msgstr "Seguir por la izquierda"
 
-#: routers/here.py:429
+#: routers/here.py:424
 msgid "Make a sharp right"
-msgstr ""
+msgstr "Gira brúscamente a la derecha"
 
-#: routers/here.py:431
+#: routers/here.py:426
 msgid "Make a sharp left"
-msgstr ""
+msgstr "Gira brúscamente a la izquierda"
 
-#: routers/here.py:435
+#: routers/here.py:430
 msgid "Turn right"
-msgstr ""
+msgstr "Gira a la derecha"
+
+#: routers/here.py:432
+msgid "Turn left"
+msgstr "Gira a la izquierda"
 
 #: routers/here.py:437
-msgid "Turn left"
-msgstr ""
-
-#: routers/here.py:442
 msgid "Make a right U-turn"
-msgstr ""
+msgstr "Realiza un cambio de sentido a la derecha"
 
-#: routers/here.py:444
+#: routers/here.py:439
 msgid "Make a left U-turn"
-msgstr ""
+msgstr "Realiza un cambio de sentido a la izquierda"
 
-#: routers/here.py:446
+#: routers/here.py:441
 msgid "Make a U-turn"
-msgstr ""
+msgstr "Realiza un cambio de sentido"
 
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:133
 #: routers/ValhallaSettings.qml:169 routers/ValhallaSettings.qml:222
@@ -699,7 +735,7 @@ msgstr "Motor de búsqueda"
 #: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
 #: qml/js/util.js:160
 msgid "%1 (disabled)"
-msgstr ""
+msgstr "%1 (deshabilitado)"
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -711,7 +747,7 @@ msgstr "Descartar"
 
 #: qml/InitPage.qml:55
 msgid "Missing %1 key"
-msgstr ""
+msgstr "Falta clave de %1"
 
 #: qml/InitPage.qml:56
 msgid ""
@@ -719,6 +755,9 @@ msgid ""
 "your personal API key in Preferences. This key is not needed if you plan to "
 "use Pure Maps with the offline map provider."
 msgstr ""
+"A tu instalación le falta la clave API de %1. Regístrate en %1 y cumplimenta"
+" tu clave API personal en Preferencias. Esta clave no es necesaria si vas a "
+"usar Pure Maps con el proveedor de mapas sin conexión."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
@@ -737,15 +776,15 @@ msgstr "inglés (Estados Unidos)"
 
 #: qml/LicensePage.qml:25
 msgid "Accept"
-msgstr ""
+msgstr "Aceptar"
 
 #: qml/LicensePage.qml:25
 msgid "Decline"
-msgstr ""
+msgstr "Rechazar"
 
 #: qml/LicensePage.qml:48
 msgid "Accept license"
-msgstr ""
+msgstr "Aceptar licencia"
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
@@ -768,8 +807,9 @@ msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
 "application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
-"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
-"/osmscout-server\">OSM Scout Server manual</a> for details."
+"Flathub, or your distribution. See <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
+"manual</a> for details."
 msgstr ""
 "Estás usando un perfil sin conexión de datos. Asegúrate de tener instalado "
 "OSM Scout Server y que esté ejecutándose. Dependiendo del sistema, está "
@@ -804,11 +844,11 @@ msgstr "Sin conexión"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE - Online"
-msgstr ""
+msgstr "HERE - Online"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE (disabled)"
-msgstr ""
+msgstr "HERE (deshabilitado)"
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -818,20 +858,20 @@ msgstr "Mixto"
 msgid "Stop navigation to select POI"
 msgstr "Detener navegación para seleccionar POI"
 
-#: qml/Map.qml:643 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
+#: qml/Map.qml:644 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
 #: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Origen"
 
-#: qml/Map.qml:645 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
+#: qml/Map.qml:646 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
 msgid "Final destination"
 msgstr "Destino final"
 
-#: qml/Map.qml:647
+#: qml/Map.qml:648
 msgid "✓"
 msgstr "✓"
 
-#: qml/Map.qml:650
+#: qml/Map.qml:651
 msgid "#%1"
 msgstr "#%1"
 
@@ -1240,7 +1280,7 @@ msgstr "Introduce URL"
 
 #: qml/PoiEditPage.qml:115
 msgid "Enter Email"
-msgstr ""
+msgstr "Introduce e-mail"
 
 #: qml/PoiEditPage.qml:125 qml/PoiInfoPage.qml:255
 msgid "Additional info"
@@ -1606,31 +1646,35 @@ msgstr "Borrar caché"
 
 #: qml/PreferencesPage.qml:276
 msgid "Licenses"
-msgstr ""
+msgstr "Licencias"
 
 #: qml/PreferencesPage.qml:283
 msgid ""
 "List of the licenses and whether they are accepted or declined. Here you can"
 " change the acceptance of each license."
 msgstr ""
+"Lista de licencias aceptadas o rechazadas. Aquí puedes cambiar  la "
+"aceptación de cada licencia."
 
 #: qml/PreferencesPage.qml:291
 msgid ""
 "Please restart application after changing the acceptance state of the "
 "license(s)."
 msgstr ""
+"Reinicia la aplicación después de cambiar el estado de aceptación de la(s) "
+"licencia(s)."
 
 #: qml/PreferencesPage.qml:326
 msgid "Declined"
-msgstr ""
+msgstr "Rechazado"
 
 #: qml/PreferencesPage.qml:327
 msgid "Accepted"
-msgstr ""
+msgstr "Aceptado"
 
 #: qml/PreferencesPage.qml:328
 msgid "Unset"
-msgstr ""
+msgstr "Sin configurar"
 
 #: qml/PreferencesPage.qml:374
 msgid "API keys"
@@ -1767,10 +1811,12 @@ msgid ""
 "Accuracy of the positioning supported by device. Deviation from the route "
 "below the specified accuracy will be ignored."
 msgstr ""
+"Precisión del posicionamiento soportado por el dispositivo. Se ignorará la "
+"desviación de la ruta por debajo de la precisión especificada."
 
 #: qml/PreferencesPage.qml:615
 msgid "Positioning accuracy"
-msgstr ""
+msgstr "Precisión del posicionamiento"
 
 #: qml/PreferencesPage.qml:653 qml/PreferencesPage.qml:757
 msgid "Compass"
@@ -2195,37 +2241,37 @@ msgstr "Escúter"
 
 #: routers/gpx_osmscout_settings.qml:77 routers/ValhallaSettings.qml:60
 msgid "Bulgarian (Bulgaria)"
-msgstr "búlgaro (Bulgaria)"
+msgstr "Búlgaro (Bulgaria)"
 
 #: routers/gpx_osmscout_settings.qml:78 routers/here_settings.qml:73
 #: routers/ValhallaSettings.qml:61
 msgid "Catalan (Spain)"
-msgstr "catalán (España)"
+msgstr "Catalán (España)"
 
 #: routers/gpx_osmscout_settings.qml:79 routers/here_settings.qml:78
 #: routers/ValhallaSettings.qml:62
 msgid "Czech (Czechia)"
-msgstr "checo (Chequia)"
+msgstr "Checo (Chequia)"
 
 #: routers/gpx_osmscout_settings.qml:80 routers/here_settings.qml:79
 #: routers/ValhallaSettings.qml:63
 msgid "Danish (Denmark)"
-msgstr "danés (Dinamarca)"
+msgstr "Danés (Dinamarca)"
 
 #: routers/gpx_osmscout_settings.qml:81 routers/here_settings.qml:90
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:64
 msgid "German (Germany)"
-msgstr "alemán (Alemania)"
+msgstr "Alemán (Alemania)"
 
 #: routers/gpx_osmscout_settings.qml:82 routers/here_settings.qml:91
 #: routers/ValhallaSettings.qml:65
 msgid "Greek (Greece)"
-msgstr "griego (Grecia)"
+msgstr "Griego (Grecia)"
 
 #: routers/gpx_osmscout_settings.qml:83 routers/here_settings.qml:82
 #: routers/mapquest_open_settings.qml:58 routers/ValhallaSettings.qml:66
 msgid "English (United Kingdom)"
-msgstr "inglés (Reino Unido)"
+msgstr "Inglés (Reino Unido)"
 
 #: routers/gpx_osmscout_settings.qml:85 routers/ValhallaSettings.qml:68
 msgid "English Pirate"
@@ -2238,12 +2284,12 @@ msgstr "Español (España)"
 
 #: routers/gpx_osmscout_settings.qml:87 routers/ValhallaSettings.qml:70
 msgid "Estonian (Estonia)"
-msgstr "estonio (Estonia)"
+msgstr "Estonio (Estonia)"
 
 #: routers/gpx_osmscout_settings.qml:88 routers/here_settings.qml:86
 #: routers/ValhallaSettings.qml:71
 msgid "Finnish (Finland)"
-msgstr "finés (Finlandia)"
+msgstr "Finés (Finlandia)"
 
 #: routers/gpx_osmscout_settings.qml:89 routers/here_settings.qml:87
 #: routers/mapquest_open_settings.qml:63 routers/ValhallaSettings.qml:72
@@ -2253,80 +2299,80 @@ msgstr "Francés (Francia)"
 #: routers/gpx_osmscout_settings.qml:90 routers/here_settings.qml:95
 #: routers/ValhallaSettings.qml:73
 msgid "Hindi (India)"
-msgstr "hindi (India)"
+msgstr "Hindi (India)"
 
 #: routers/gpx_osmscout_settings.qml:91 routers/here_settings.qml:96
 #: routers/ValhallaSettings.qml:74
 msgid "Hungarian (Hungary)"
-msgstr "húngaro (Hungría)"
+msgstr "Húngaro (Hungría)"
 
 #: routers/gpx_osmscout_settings.qml:92 routers/here_settings.qml:101
 #: routers/ValhallaSettings.qml:75
 msgid "Italian (Italy)"
-msgstr "italiano (Italia)"
+msgstr "Italiano (Italia)"
 
 #: routers/gpx_osmscout_settings.qml:93 routers/here_settings.qml:102
 #: routers/ValhallaSettings.qml:76
 msgid "Japanese (Japan)"
-msgstr "japonés (Japón)"
+msgstr "Japonés (Japón)"
 
 #: routers/gpx_osmscout_settings.qml:94 routers/ValhallaSettings.qml:77
 msgid "Norwegian Bokmål (Norway)"
-msgstr "noruego bokmal (Noruega)"
+msgstr "Noruego bokmal (Noruega)"
 
 #: routers/gpx_osmscout_settings.qml:95 routers/here_settings.qml:81
 #: routers/ValhallaSettings.qml:78
 msgid "Dutch (Netherlands)"
-msgstr "neerlandés (Países Bajos)"
+msgstr "Holandés (Países Bajos)"
 
 #: routers/gpx_osmscout_settings.qml:96 routers/here_settings.qml:128
 #: routers/ValhallaSettings.qml:79
 msgid "Polish (Poland)"
-msgstr "polaco (Polonia)"
+msgstr "Polaco (Polonia)"
 
 #: routers/gpx_osmscout_settings.qml:97 routers/here_settings.qml:129
 #: routers/ValhallaSettings.qml:80
 msgid "Portuguese (Brazil)"
-msgstr "portugués (Brasil)"
+msgstr "Portugués (Brasil)"
 
 #: routers/gpx_osmscout_settings.qml:98 routers/here_settings.qml:130
 #: routers/ValhallaSettings.qml:81
 msgid "Portuguese (Portugal)"
-msgstr "portugués (Portugal)"
+msgstr "Portugués (Portugal)"
 
 #: routers/gpx_osmscout_settings.qml:99 routers/here_settings.qml:134
 #: routers/ValhallaSettings.qml:82
 msgid "Romanian (Romania)"
-msgstr "rumano (Rumanía)"
+msgstr "Rumano (Rumanía)"
 
 #: routers/gpx_osmscout_settings.qml:100 routers/here_settings.qml:135
 #: routers/mapquest_open_settings.qml:64 routers/ValhallaSettings.qml:83
 msgid "Russian (Russia)"
-msgstr "ruso (Rusia)"
+msgstr "Ruso (Rusia)"
 
 #: routers/gpx_osmscout_settings.qml:101 routers/here_settings.qml:142
 #: routers/ValhallaSettings.qml:84
 msgid "Slovak (Slovakia)"
-msgstr "eslovaco (Eslovaquia)"
+msgstr "Eslovaco (Eslovaquia)"
 
 #: routers/gpx_osmscout_settings.qml:102 routers/here_settings.qml:143
 #: routers/ValhallaSettings.qml:85
 msgid "Slovenian (Slovenia)"
-msgstr "esloveno (Eslovenia)"
+msgstr "Esloveno (Eslovenia)"
 
 #: routers/gpx_osmscout_settings.qml:103 routers/here_settings.qml:146
 #: routers/ValhallaSettings.qml:86
 msgid "Swedish (Sweden)"
-msgstr "sueco (Suecia)"
+msgstr "Sueco (Suecia)"
 
 #: routers/gpx_osmscout_settings.qml:104 routers/here_settings.qml:154
 #: routers/ValhallaSettings.qml:87
 msgid "Turkish (Turkey)"
-msgstr "turco (Turquía)"
+msgstr "Turco (Turquía)"
 
 #: routers/gpx_osmscout_settings.qml:105 routers/ValhallaSettings.qml:88
 msgid "Ukrainian (Ukraine)"
-msgstr "ucraniano (Ucrania)"
+msgstr "Ucraniano (Ucrania)"
 
 #: routers/here_settings.qml:30 routers/ValhallaSettings.qml:31
 msgid "General options"
@@ -2334,219 +2380,219 @@ msgstr "Opciones generales"
 
 #: routers/here_settings.qml:38
 msgid "Taxi"
-msgstr ""
+msgstr "Taxi"
 
 #: routers/here_settings.qml:59
 msgid "Afrikaans"
-msgstr "afrikáans"
+msgstr "Afrikáans"
 
 #: routers/here_settings.qml:60
 msgid "Albanian"
-msgstr "albanés"
+msgstr "Albanés"
 
 #: routers/here_settings.qml:61
 msgid "Amharic"
-msgstr "amárico"
+msgstr "Amárico"
 
 #: routers/here_settings.qml:62
 msgid "Arabic (Saudi Arabia)"
-msgstr "árabe (Arabia Saudí)"
+msgstr "Árabe (Arabia Saudí)"
 
 #: routers/here_settings.qml:63
 msgid "Armenian"
-msgstr "armenio"
+msgstr "Armenio"
 
 #: routers/here_settings.qml:64
 msgid "Assamese"
-msgstr "asamés"
+msgstr "Asamés"
 
 #: routers/here_settings.qml:65
 msgid "Azerbaijani (Latin)"
-msgstr "azerbaiyano (latino)"
+msgstr "Azerbaiyano (latino)"
 
 #: routers/here_settings.qml:67
 msgid "Belarusian"
-msgstr "bielorruso"
+msgstr "Bielorruso"
 
 #: routers/here_settings.qml:68
 msgid "Bangla (Bangladesh)"
-msgstr "bengalí (Bangladés)"
+msgstr "Bengalí (Bangladés)"
 
 #: routers/here_settings.qml:69
 msgid "Bangla (India)"
-msgstr "bengalí (India)"
+msgstr "Bengalí (India)"
 
 #: routers/here_settings.qml:70
 msgid "Bosnian"
-msgstr "bosnio"
+msgstr "Bosnio"
 
 #: routers/here_settings.qml:71
 msgid "Bulgarian"
-msgstr "búlgaro"
+msgstr "Búlgaro"
 
 #: routers/here_settings.qml:74
 msgid "Chinese (China)"
-msgstr "chino (China)"
+msgstr "Chino (China)"
 
 #: routers/here_settings.qml:75
 msgid "Chinese (Hong Kong SAR China)"
-msgstr "chino (RAE de Hong Kong (China))"
+msgstr "Chino (RAE de Hong Kong (China))"
 
 #: routers/here_settings.qml:76
 msgid "Chinese (Taiwan)"
-msgstr "chino (Taiwán)"
+msgstr "Chino (Taiwán)"
 
 #: routers/here_settings.qml:77
 msgid "Croatian"
-msgstr "croata"
+msgstr "Croata"
 
 #: routers/here_settings.qml:80
 msgid "Persian (Afghanistan)"
-msgstr "persa (Afganistán)"
+msgstr "Persa (Afganistán)"
 
 #: routers/here_settings.qml:84
 msgid "Estonian"
-msgstr "estonio"
+msgstr "Estonio"
 
 #: routers/here_settings.qml:85
 msgid "Filipino (Latin)"
-msgstr "filipino (latino)"
+msgstr "Filipino (latino)"
 
 #: routers/here_settings.qml:88
 msgid "Galician"
-msgstr "gallego"
+msgstr "Gallego"
 
 #: routers/here_settings.qml:89
 msgid "Georgian"
-msgstr "georgiano"
+msgstr "Georgiano"
 
 #: routers/here_settings.qml:92
 msgid "Gujarati"
-msgstr "guyaratí"
+msgstr "Guyaratí"
 
 #: routers/here_settings.qml:93
 msgid "Hausa (Latin)"
-msgstr "hausa (latino)"
+msgstr "Hausa (latino)"
 
 #: routers/here_settings.qml:94
 msgid "Hebrew (Israel)"
-msgstr "hebreo (Israel)"
+msgstr "Hebreo (Israel)"
 
 #: routers/here_settings.qml:97
 msgid "Icelandic"
-msgstr "islandés"
+msgstr "Islandés"
 
 #: routers/here_settings.qml:98
 msgid "Igbo (Latin)"
-msgstr "igbo (latino)"
+msgstr "Igbo (latino)"
 
 #: routers/here_settings.qml:99
 msgid "Indonesian (Indonesia)"
-msgstr "indonesio (Indonesia)"
+msgstr "Indonesio (Indonesia)"
 
 #: routers/here_settings.qml:100
 msgid "Irish"
-msgstr "irlandés"
+msgstr "Irlandés"
 
 #: routers/here_settings.qml:103
 msgid "Kʼicheʼ (Latin)"
-msgstr "quiché (latino)"
+msgstr "Quiché (latino)"
 
 #: routers/here_settings.qml:104
 msgid "Kannada"
-msgstr "canarés"
+msgstr "Canarés"
 
 #: routers/here_settings.qml:105
 msgid "Kazakh"
-msgstr "kazajo"
+msgstr "Kazajo"
 
 #: routers/here_settings.qml:106
 msgid "Khmer"
-msgstr "jemer"
+msgstr "Jemer"
 
 #: routers/here_settings.qml:107
 msgid "Kinyarwanda (Rwanda)"
-msgstr "kinyarwanda (Ruanda)"
+msgstr "Kinyarwanda (Ruanda)"
 
 #: routers/here_settings.qml:108
 msgid "Konkani"
-msgstr "konkaní"
+msgstr "Konkaní"
 
 #: routers/here_settings.qml:109
 msgid "Korean (South Korea)"
-msgstr "coreano (Corea del Sur)"
+msgstr "Coreano (Corea del Sur)"
 
 #: routers/here_settings.qml:110
 msgid "Kurdish (Arabic)"
-msgstr "kurdo (árabe)"
+msgstr "Kurdo (árabe)"
 
 #: routers/here_settings.qml:111
 msgid "Kyrgyz (Cyrillic)"
-msgstr "kirguís (cirílico)"
+msgstr "Kirguís (cirílico)"
 
 #: routers/here_settings.qml:112
 msgid "Latvian"
-msgstr "letón"
+msgstr "Letón"
 
 #: routers/here_settings.qml:113
 msgid "Lithuanian"
-msgstr "lituano"
+msgstr "Lituano"
 
 #: routers/here_settings.qml:114
 msgid "Luxembourgish"
-msgstr "luxemburgués"
+msgstr "Luxemburgués"
 
 #: routers/here_settings.qml:115
 msgid "Macedonian"
-msgstr "macedonio"
+msgstr "Macedonio"
 
 #: routers/here_settings.qml:116
 msgid "Malay (Malaysia)"
-msgstr "malayo (Malasia)"
+msgstr "Malayo (Malasia)"
 
 #: routers/here_settings.qml:117
 msgid "Malayalam"
-msgstr "malayalam"
+msgstr "Malayalam"
 
 #: routers/here_settings.qml:118
 msgid "Maltese"
-msgstr "maltés"
+msgstr "Maltés"
 
 #: routers/here_settings.qml:119
 msgid "Maori (Latin)"
-msgstr "maorí (latino)"
+msgstr "Maorí (latino)"
 
 #: routers/here_settings.qml:120
 msgid "Marathi"
-msgstr "maratí"
+msgstr "Maratí"
 
 #: routers/here_settings.qml:121
 msgid "Mongolian (Cyrillic)"
-msgstr "mongol (cirílico)"
+msgstr "Mongol (cirílico)"
 
 #: routers/here_settings.qml:122
 msgid "Nepali (Nepal)"
-msgstr "nepalí (Nepal)"
+msgstr "Nepalí (Nepal)"
 
 #: routers/here_settings.qml:124
 msgid "Norwegian Nynorsk"
-msgstr "noruego nynorsk"
+msgstr "Noruego nynorsk"
 
 #: routers/here_settings.qml:125
 msgid "Odia"
-msgstr "oriya"
+msgstr "Oriya"
 
 #: routers/here_settings.qml:126
 msgid "Northern Sotho"
-msgstr "sotho septentrional"
+msgstr "Sotho septentrional"
 
 #: routers/here_settings.qml:131
 msgid "Punjabi"
-msgstr "punyabí"
+msgstr "Punyabí"
 
 #: routers/here_settings.qml:132
 msgid "Punjabi (Arabic)"
-msgstr "punyabí (árabe)"
+msgstr "Punyabí (árabe)"
 
 #: routers/here_settings.qml:133
 msgid "Cusco Quechua (Latin, Peru)"
@@ -2554,87 +2600,87 @@ msgstr "Cusco Quechua (latino, Perú)"
 
 #: routers/here_settings.qml:136
 msgid "Scottish Gaelic (Latin)"
-msgstr "gaélico escocés (latino)"
+msgstr "Gaélico escocés (latino)"
 
 #: routers/here_settings.qml:137
 msgid "Serbian (Cyrillic, Bosnia & Herzegovina)"
-msgstr "serbio (cirílico, Bosnia y Herzegovina)"
+msgstr "Serbio (cirílico, Bosnia y Herzegovina)"
 
 #: routers/here_settings.qml:138
 msgid "Serbian (Cyrillic, Serbia)"
-msgstr "serbio (cirílico, Serbia)"
+msgstr "Serbio (cirílico, Serbia)"
 
 #: routers/here_settings.qml:139
 msgid "Serbian (Latin, Serbia)"
-msgstr "serbio (latino, Serbia)"
+msgstr "Serbio (latino, Serbia)"
 
 #: routers/here_settings.qml:140
 msgid "Sindhi (Arabic)"
-msgstr "sindhi (árabe)"
+msgstr "Sindhi (árabe)"
 
 #: routers/here_settings.qml:141
 msgid "Sinhala"
-msgstr "cingalés"
+msgstr "Cingalés"
 
 #: routers/here_settings.qml:145
 msgid "Swahili"
-msgstr "suajili"
+msgstr "Suajili"
 
 #: routers/here_settings.qml:147
 msgid "Tajik (Cyrillic)"
-msgstr "tayiko (cirílico)"
+msgstr "Tayiko (cirílico)"
 
 #: routers/here_settings.qml:148
 msgid "Tamil"
-msgstr "tamil"
+msgstr "Tamil"
 
 #: routers/here_settings.qml:149
 msgid "Tatar (Cyrillic)"
-msgstr "tártaro (cirílico)"
+msgstr "Tártaro (cirílico)"
 
 #: routers/here_settings.qml:150
 msgid "Telugu"
-msgstr "telugu"
+msgstr "Telugu"
 
 #: routers/here_settings.qml:151
 msgid "Thai (Thailand)"
-msgstr "tailandés (Tailandia)"
+msgstr "Tailandés (Tailandia)"
 
 #: routers/here_settings.qml:152
 msgid "Tigrinya"
-msgstr "tigriña"
+msgstr "Tigriña"
 
 #: routers/here_settings.qml:153
 msgid "Tswana"
-msgstr "setsuana"
+msgstr "Setsuana"
 
 #: routers/here_settings.qml:155
 msgid "Turkmen (Latin)"
-msgstr "turcomano (latino)"
+msgstr "Turcomano (latino)"
 
 #: routers/here_settings.qml:158
 msgid "Uyghur (Arabic)"
-msgstr "uigur (árabe)"
+msgstr "Uigur (árabe)"
 
 #: routers/here_settings.qml:159
 msgid "Uzbek (Cyrillic)"
-msgstr "uzbeko (cirílico)"
+msgstr "Uzbeko (cirílico)"
 
 #: routers/here_settings.qml:162
 msgid "Wolof (Latin)"
-msgstr "wólof (latino)"
+msgstr "Wólof (latino)"
 
 #: routers/here_settings.qml:163
 msgid "Xhosa"
-msgstr "xhosa"
+msgstr "Xhosa"
 
 #: routers/here_settings.qml:164
 msgid "Yoruba (Latin)"
-msgstr "yoruba (latino)"
+msgstr "Yoruba (latino)"
 
 #: routers/here_settings.qml:165
 msgid "Zulu (South Africa)"
-msgstr "zulú (Sudáfrica)"
+msgstr "Zulú (Sudáfrica)"
 
 #: routers/here_settings.qml:172 routers/ValhallaSettings.qml:95
 msgid "Advanced options"
@@ -2646,35 +2692,35 @@ msgstr "Preferir ruta más corta"
 
 #: routers/here_settings.qml:191
 msgid "Avoid tolls"
-msgstr ""
+msgstr "Evitar peajes"
 
 #: routers/here_settings.qml:203
 msgid "Avoid highways"
-msgstr ""
+msgstr "Evitar autovías"
 
 #: routers/here_settings.qml:215
 msgid "Avoid tunnels"
-msgstr ""
+msgstr "Evitar túneles"
 
 #: routers/here_settings.qml:227
 msgid "Avoid dirt roads"
-msgstr ""
+msgstr "Evitar caminos de tierra"
 
 #: routers/here_settings.qml:239
 msgid "Avoid difficult turns"
-msgstr ""
+msgstr "Evitar giros difíciles"
 
 #: routers/here_settings.qml:251
 msgid "Avoid ferries"
-msgstr ""
+msgstr "Evitar ferris"
 
 #: routers/here_settings.qml:263
 msgid "Avoid car trains"
-msgstr ""
+msgstr "Evitar trenes de coches"
 
 #: routers/here_settings.qml:275
 msgid "Avoid seasonally closed roads"
-msgstr ""
+msgstr "Evitar carreteras cerradas estacionalmente"
 
 #: routers/mapquest_open_settings.qml:46
 msgid "Try to avoid tolls"
@@ -2917,7 +2963,7 @@ msgstr "Búsqueda en Finlandia. Soporta autocompletado"
 
 #: standard input:2
 msgid "Search based on HERE data. Supports autocomplete"
-msgstr ""
+msgstr "Búsqueda basada en datos de HERE. Soporta autocompletado"
 
 #: standard input:3
 msgid "Search based on open data sources"
@@ -2964,7 +3010,7 @@ msgstr "Rutas en trayectos GPX procesadas por OSM Scout Server"
 
 #: standard input:13
 msgid "Routing by HERE"
-msgstr ""
+msgstr "Ruta calculada por HERE"
 
 #: standard input:15 standard input:17 standard input:19
 msgid "Routing based on OpenStreetMap data"

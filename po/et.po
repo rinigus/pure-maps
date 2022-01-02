@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Priit Jõerüüt <transifex@joeruut.com>, 2021
 # rinigus github, 2021
+# Priit Jõerüüt <transifex@joeruut.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-21 15:10+0200\n"
+"POT-Creation-Date: 2022-01-02 21:13+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: rinigus github, 2021\n"
+"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2021\n"
 "Language-Team: Estonian (https://www.transifex.com/rinigus/teams/89597/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,15 +24,15 @@ msgstr ""
 
 #: geocoders/here.py:141
 msgid "Search suggestion"
-msgstr ""
+msgstr "Otsingusoovitus"
 
 #: geocoders/here.py:149
 msgid "Food types: {}"
-msgstr ""
+msgstr "Toiduliigid: {}"
 
 #: geocoders/here.py:156
 msgid "Opening hours: {}"
-msgstr ""
+msgstr "Tööajad: {}"
 
 #: guides/foursquare.py:198
 msgid "Opening hours:"
@@ -64,85 +64,104 @@ msgstr "Ühendus aegus"
 msgid "Current position"
 msgstr "Praegune asukoht"
 
-#: poor/keystore.py:55
+#: poor/keystore.py:57
 msgid ""
 "Register at <a "
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
 " and create your own Client ID and Client Secret keys"
 msgstr ""
+"Registreeru <a "
+"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
+" saidis ning loo oma klienditunnus ning kliendivõtmed"
 
-#: poor/keystore.py:56
+#: poor/keystore.py:58
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
 msgstr ""
+"Registreeru <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
+"saidis ja loo oma API võti"
 
-#: poor/keystore.py:57
+#: poor/keystore.py:59
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
 msgstr ""
+"Registreeru <a href=\"https://maptiler.com\">https://maptiler.com</a> saidis"
+" ja loo oma API võti"
 
-#: poor/keystore.py:58
+#: poor/keystore.py:60
 msgid ""
 "Register at <a "
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
 "and create your own API key"
 msgstr ""
+"Registreeru <a "
+"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
+"saidis ja loo oma API võti"
 
-#: poor/keystore.py:59
+#: poor/keystore.py:61
 msgid ""
 "Register at <a "
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
 "your own API key"
 msgstr ""
+"Registreeru <a "
+"href=\"https://opencagedata.com\">https://opencagedata.com</a> saidis ja loo"
+" oma API võti"
 
-#: poor/keystore.py:60
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
 msgstr ""
+"Registreeru <a "
+"href=\"https://stadiamaps.com\">https://stadiamaps.com</a>saidis ja loo oma "
+"API võti"
 
-#: poor/keystore.py:61
+#: poor/keystore.py:63
 msgid ""
 "Register at <a "
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
 "create your own App API Key"
 msgstr ""
+"Registreeru <a "
+"href=\"https://developer.here.com\">https://developer.here.com</a> saidis ja"
+" loo oma API võti"
 
-#: poor/keystore.py:65
+#: poor/keystore.py:67
 msgid "Foursquare Client ID"
 msgstr "Foursquare klienditunnus"
 
-#: poor/keystore.py:66
+#: poor/keystore.py:68
 msgid "Foursquare Client Secret"
 msgstr "Foursquare kliendivõti"
 
-#: poor/keystore.py:69
+#: poor/keystore.py:71
 msgid "Mapbox API key"
 msgstr "Mapbox API võti"
 
-#: poor/keystore.py:72
+#: poor/keystore.py:74
 msgid "MapTiler API key"
-msgstr ""
+msgstr "MapTiler'i API võti"
 
-#: poor/keystore.py:75
+#: poor/keystore.py:77
 msgid "MapQuest API key"
 msgstr "MapQuest API võti"
 
-#: poor/keystore.py:78
+#: poor/keystore.py:80
 msgid "OpenCage API key"
 msgstr "OpenCage API võti"
 
-#: poor/keystore.py:81
+#: poor/keystore.py:83
 msgid "Stadia Maps API key"
 msgstr "Stadia Maps API võti"
 
-#: poor/keystore.py:84
+#: poor/keystore.py:86
 msgid "HERE API Key"
-msgstr ""
+msgstr "HERE API võti"
 
-#: poor/keystore.py:92
+#: poor/keystore.py:94
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE "
 "services.</p><br><p>Please consult <a href=\"https://legal.here.com/en-"
@@ -161,10 +180,27 @@ msgid ""
 " them. If declined, HERE support will be inactive and can be enabled later "
 "by accepting the terms in Preferences under Licenses.</p>"
 msgstr ""
+"<p>Selles Pure Maps rakenduses on HERE tugi kasutusel</p><br><p>Palun tutvu "
+"<a href=\"https://legal.here.com/en-gb/terms/here-end-user-"
+"terms\">kasutustingimustega lõppkasutajale</a>, <a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy\">mõistliku "
+"kasutuse põhimõtetega</a> ja <a href=\"https://legal.here.com/en-"
+"gb/privacy\">HERE privaatsustingimustega</a>. Kui HERE on kasutusel, siis "
+"Pure Maps teeb REST API abil päringuid HERE teenustele.<p></br><p><a "
+"href=\"https://knowledge.here.com/csm_kb?id=public_kb_csm_details&number=KB0016412\">Juriidilistel"
+" põhjustel</a>Pure Maps saab kasutada HERE otsingu- ja teekonna koostamise "
+"teenuseid vaid võrguteenustena. Kuigi 2018. aasta mõistliku kasutuse "
+"põhimõtted pole enam jõus, siis sa leiad teavet HERE kasutamise kohta "
+"teistes rakendustes <a href=\"https://legal.here.com/en-gb/terms/acceptable-"
+"use-policy-2018\">Layering and Modifications</a> lõikust sellest samast "
+"dokumendist.</p><br><p>Palun otsusta, kas sa nõustud HERE "
+"kasutustingimustega või mitte. Viimasel juhul ei ole HERE tugi kasutusel "
+"ning soovi korral saad hiljem selle Eelistused - Litsentsid vaatest uuesti "
+"kasutusele võtta.</p>"
 
-#: poor/keystore.py:106
+#: poor/keystore.py:108
 msgid "HERE End-User Terms"
-msgstr ""
+msgstr "HERE kasutustingimused lõppkasutajale"
 
 #: poor/router.py:104 poor/router.py:106
 msgid "Exit: "
@@ -264,148 +300,148 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
-#: routers/here.py:316
+#: routers/here.py:311
 #, python-brace-format
 msgid "Continue for {distance}"
-msgstr ""
+msgstr "Jätka veel {distance}"
 
-#: routers/here.py:329
+#: routers/here.py:324
 msgid "Arrive at your destination"
-msgstr ""
+msgstr "Sa saabud oma sihtkohta"
 
-#: routers/here.py:333
+#: routers/here.py:328
 msgid "Board the ferry"
-msgstr ""
+msgstr "Sõida või mine praamile"
+
+#: routers/here.py:332
+msgid "Continue"
+msgstr "Jätka"
 
 #: routers/here.py:337
-msgid "Continue"
-msgstr ""
-
-#: routers/here.py:342
 msgid "Merge right and continue on highway"
-msgstr ""
+msgstr "Liitu sõidurajaga paremal ja jätka mööda kiirteed"
 
-#: routers/here.py:344
+#: routers/here.py:339
 msgid "Merge left and continue on highway"
-msgstr ""
+msgstr "Liitu sõidurajaga vasakul ja jätka mööda kiirteed"
 
-#: routers/here.py:348
+#: routers/here.py:343
 msgid "Disembark the ferry"
-msgstr ""
+msgstr "Lahku praamilt"
+
+#: routers/here.py:347
+msgid "Start navigation"
+msgstr "Alusta teekonda"
 
 #: routers/here.py:352
-msgid "Start navigation"
-msgstr ""
-
-#: routers/here.py:357
 msgid "Merge right and enter highway"
-msgstr ""
+msgstr "Liitu sõidurajaga paremal ja sõida kiirteele"
 
-#: routers/here.py:359
+#: routers/here.py:354
 msgid "Merge left and enter highway"
-msgstr ""
+msgstr "Liitu sõidurajaga vasakul ja sõida kiirteele"
 
-#: routers/here.py:361
+#: routers/here.py:356
 msgid "Enter highway"
-msgstr ""
+msgstr "Sõida kiirteele"
+
+#: routers/here.py:369
+msgid "Take exit on the right"
+msgstr "Pööra ära mahasõidust paremal"
+
+#: routers/here.py:371
+msgid "Take exit on the left"
+msgstr "Pööra ära mahasõidust vasakul"
 
 #: routers/here.py:374
-msgid "Take exit on the right"
-msgstr ""
-
-#: routers/here.py:376
-msgid "Take exit on the left"
-msgstr ""
-
-#: routers/here.py:379
 #, python-brace-format
 msgid "Take exit {number} on the right"
-msgstr ""
+msgstr "Pööra ära mahasõidust {number} paremal"
 
-#: routers/here.py:381
+#: routers/here.py:376
 #, python-brace-format
 msgid "Take exit {number} on the left"
-msgstr ""
+msgstr "Pööra ära mahasõidust {number} vasakul"
 
-#: routers/here.py:388
+#: routers/here.py:383
 msgid "Keep right"
-msgstr ""
+msgstr "Hoia paremale"
 
-#: routers/here.py:390
+#: routers/here.py:385
 msgid "Keep left"
-msgstr ""
+msgstr "Hoia vasakule"
 
-#: routers/here.py:394
+#: routers/here.py:389
 msgid "Keep straight"
-msgstr ""
+msgstr "Liigu otse"
 
-#: routers/here.py:400
+#: routers/here.py:395
 msgid "Enter the roundabout and take the first exit"
-msgstr ""
+msgstr "Sõida ringteele ja pööra ära esimesest ärapöördest"
 
-#: routers/here.py:402
+#: routers/here.py:397
 msgid "Enter the roundabout and take the second exit"
-msgstr ""
+msgstr "Sõida ringteele ja pööra ära teisest ärapöördest"
 
-#: routers/here.py:404
+#: routers/here.py:399
 msgid "Enter the roundabout and take the third exit"
-msgstr ""
+msgstr "Sõida ringteele ja pööra ära kolmandast ärapöördest"
 
-#: routers/here.py:406
+#: routers/here.py:401
 msgid "Enter the roundabout and take the fourth exit"
-msgstr ""
+msgstr "Sõida ringteele ja pööra ära neljandast ärapöördest"
 
-#: routers/here.py:408
+#: routers/here.py:403
 msgid "Enter the roundabout and take the fifth exit"
-msgstr ""
+msgstr "Sõida ringteele ja pööra ära viiendast ärapöördest"
 
-#: routers/here.py:410
+#: routers/here.py:405
 msgid "Enter the roundabout and take the sixth exit"
-msgstr ""
+msgstr "Sõida ringteele ja pööra ära kuuendast ärapöördest"
 
-#: routers/here.py:412
+#: routers/here.py:407
 msgid "Enter the roundabout"
-msgstr ""
+msgstr "Sõida ringteele"
 
-#: routers/here.py:416
+#: routers/here.py:411
 msgid "Exit the roundabout"
-msgstr ""
+msgstr "Pööra ringteelt ära"
 
-#: routers/here.py:423
+#: routers/here.py:418
 msgid "Bear right"
-msgstr ""
+msgstr "Võta suund paremale"
 
-#: routers/here.py:425
+#: routers/here.py:420
 msgid "Bear left"
-msgstr ""
+msgstr "Võta suund vasakule"
 
-#: routers/here.py:429
+#: routers/here.py:424
 msgid "Make a sharp right"
-msgstr ""
+msgstr "Pööra järsult paremale"
 
-#: routers/here.py:431
+#: routers/here.py:426
 msgid "Make a sharp left"
-msgstr ""
+msgstr "Pööra järsult vasakule"
 
-#: routers/here.py:435
+#: routers/here.py:430
 msgid "Turn right"
-msgstr ""
+msgstr "Pööra paremale"
+
+#: routers/here.py:432
+msgid "Turn left"
+msgstr "Pööra vasakule"
 
 #: routers/here.py:437
-msgid "Turn left"
-msgstr ""
-
-#: routers/here.py:442
 msgid "Make a right U-turn"
-msgstr ""
+msgstr "Pööra paremalt tagasi"
 
-#: routers/here.py:444
+#: routers/here.py:439
 msgid "Make a left U-turn"
-msgstr ""
+msgstr "Pööra vasakult tagasi"
 
-#: routers/here.py:446
+#: routers/here.py:441
 msgid "Make a U-turn"
-msgstr ""
+msgstr "Pööra tagasi"
 
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:133
 #: routers/ValhallaSettings.qml:169 routers/ValhallaSettings.qml:222
@@ -699,7 +735,7 @@ msgstr "Otsingumootor"
 #: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
 #: qml/js/util.js:160
 msgid "%1 (disabled)"
-msgstr ""
+msgstr "%1 (pole kasutusel)"
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -711,7 +747,7 @@ msgstr "Jäta pooleli"
 
 #: qml/InitPage.qml:55
 msgid "Missing %1 key"
-msgstr ""
+msgstr "%1 APi võti on puudu"
 
 #: qml/InitPage.qml:56
 msgid ""
@@ -719,6 +755,9 @@ msgid ""
 "your personal API key in Preferences. This key is not needed if you plan to "
 "use Pure Maps with the offline map provider."
 msgstr ""
+"Sinu paigalduses on puudu %1 API võti. Palun registreeri %1 saidis ja "
+"sisesta seadistustes oma isiklik API võti. Kui sa kasutad Pure Maps'is "
+"võrguvaba kaarditeenuse pakkujat, siis seda pole vaja teha."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
@@ -737,15 +776,15 @@ msgstr "inglise (Ameerika Ühendriigid)"
 
 #: qml/LicensePage.qml:25
 msgid "Accept"
-msgstr ""
+msgstr "Nõustu"
 
 #: qml/LicensePage.qml:25
 msgid "Decline"
-msgstr ""
+msgstr "Keeldu"
 
 #: qml/LicensePage.qml:48
 msgid "Accept license"
-msgstr ""
+msgstr "Nõustun litsentsiga"
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
@@ -768,8 +807,9 @@ msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
 "application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
-"Flathub, or your distribution. See <a href=\"https://rinigus.github.io"
-"/osmscout-server\">OSM Scout Server manual</a> for details."
+"Flathub, or your distribution. See <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
+"manual</a> for details."
 msgstr ""
 "Sa kasutad võrguühenduseta profiili. Palun kontrolli, et seadmesse oleks "
 "paigaldatud OSM Scout Server ning ta ka töötaks. Sõltuvalt missugust "
@@ -805,11 +845,11 @@ msgstr "Võrguühenduseta kaardid"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE - Online"
-msgstr ""
+msgstr "HERE - võrgupõhine"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE (disabled)"
-msgstr ""
+msgstr "HERE (ei ole kasutusel)"
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -819,20 +859,20 @@ msgstr "Kombineeritud kaardid"
 msgid "Stop navigation to select POI"
 msgstr "Huvipunkti valimiseks peata tee näitamine"
 
-#: qml/Map.qml:643 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
+#: qml/Map.qml:644 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
 #: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Lähtepunkt"
 
-#: qml/Map.qml:645 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
+#: qml/Map.qml:646 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
 msgid "Final destination"
 msgstr "Lõppsihtkoht"
 
-#: qml/Map.qml:647
+#: qml/Map.qml:648
 msgid "✓"
 msgstr "✓"
 
-#: qml/Map.qml:650
+#: qml/Map.qml:651
 msgid "#%1"
 msgstr "#%1"
 
@@ -1242,7 +1282,7 @@ msgstr "Sisesta veebisaidi aadress"
 
 #: qml/PoiEditPage.qml:115
 msgid "Enter Email"
-msgstr ""
+msgstr "Sisesta e-posti aadress"
 
 #: qml/PoiEditPage.qml:125 qml/PoiInfoPage.qml:255
 msgid "Additional info"
@@ -1606,31 +1646,35 @@ msgstr "Kustuta puhverdatud teave"
 
 #: qml/PreferencesPage.qml:276
 msgid "Licenses"
-msgstr ""
+msgstr "Litsentsid"
 
 #: qml/PreferencesPage.qml:283
 msgid ""
 "List of the licenses and whether they are accepted or declined. Here you can"
 " change the acceptance of each license."
 msgstr ""
+"Litsentside loend koos märkega, kas sa oled tingimustega nõustunud või "
+"mitte. Samas saad ka nõustumise olekut muuta."
 
 #: qml/PreferencesPage.qml:291
 msgid ""
 "Please restart application after changing the acceptance state of the "
 "license(s)."
 msgstr ""
+"Kui oled muutnud litsentsi(de)ga nõustumise olekut, siis palun käivita "
+"rakendus uuesti."
 
 #: qml/PreferencesPage.qml:326
 msgid "Declined"
-msgstr ""
+msgstr "Sa ei ole tingimustega nõustunud"
 
 #: qml/PreferencesPage.qml:327
 msgid "Accepted"
-msgstr ""
+msgstr "Sa oled tingimustega nõustunud"
 
 #: qml/PreferencesPage.qml:328
 msgid "Unset"
-msgstr ""
+msgstr "Eemalda seadistus"
 
 #: qml/PreferencesPage.qml:374
 msgid "API keys"
@@ -1764,10 +1808,12 @@ msgid ""
 "Accuracy of the positioning supported by device. Deviation from the route "
 "below the specified accuracy will be ignored."
 msgstr ""
+"Nutiseadme toetatav asukohamääramise täpsus. Rakendus ei anna märku, kui "
+"kõrvalekalded teekonnast jäävad alla selle piiri."
 
 #: qml/PreferencesPage.qml:615
 msgid "Positioning accuracy"
-msgstr ""
+msgstr "Asukohamääramise täpsus"
 
 #: qml/PreferencesPage.qml:653 qml/PreferencesPage.qml:757
 msgid "Compass"
@@ -2329,7 +2375,7 @@ msgstr "Üldised seadistused"
 
 #: routers/here_settings.qml:38
 msgid "Taxi"
-msgstr ""
+msgstr "Takso"
 
 #: routers/here_settings.qml:59
 msgid "Afrikaans"
@@ -2641,35 +2687,35 @@ msgstr "Eelista lühemat teed"
 
 #: routers/here_settings.qml:191
 msgid "Avoid tolls"
-msgstr ""
+msgstr "Väldi tasulisi teid"
 
 #: routers/here_settings.qml:203
 msgid "Avoid highways"
-msgstr ""
+msgstr "Väldi kiirteid"
 
 #: routers/here_settings.qml:215
 msgid "Avoid tunnels"
-msgstr ""
+msgstr "Väldi tunneleid"
 
 #: routers/here_settings.qml:227
 msgid "Avoid dirt roads"
-msgstr ""
+msgstr "Väldi pinnaseteid"
 
 #: routers/here_settings.qml:239
 msgid "Avoid difficult turns"
-msgstr ""
+msgstr "Väldi keerukaid ärapöördeid"
 
 #: routers/here_settings.qml:251
 msgid "Avoid ferries"
-msgstr ""
+msgstr "Väldi praame"
 
 #: routers/here_settings.qml:263
 msgid "Avoid car trains"
-msgstr ""
+msgstr "Väldi autode veoks kohandatud ronge"
 
 #: routers/here_settings.qml:275
 msgid "Avoid seasonally closed roads"
-msgstr ""
+msgstr "Väldi hooajal suletud teid"
 
 #: routers/mapquest_open_settings.qml:46
 msgid "Try to avoid tolls"
@@ -2912,7 +2958,7 @@ msgstr "Soome andmete otsing, mis kasutab automaatset sõnalõpetust"
 
 #: standard input:2
 msgid "Search based on HERE data. Supports autocomplete"
-msgstr ""
+msgstr "Otsing põhineb HERE andmetel. Kasutab otsingusoovitusi"
 
 #: standard input:3
 msgid "Search based on open data sources"
@@ -2962,7 +3008,7 @@ msgstr "Teekonna piki GPX-rada koostas OSM Scout Server"
 
 #: standard input:13
 msgid "Routing by HERE"
-msgstr ""
+msgstr "Teekonna koostamine HERE abil"
 
 #: standard input:15 standard input:17 standard input:19
 msgid "Routing based on OpenStreetMap data"
