@@ -36,6 +36,7 @@ Item {
     property bool   hasNextLocation: nextLocationDist
     property bool   hasOrigin: locationsModel.hasOrigin
     property bool   hasRoute:  navigatorBase.route.length > 0
+    property bool   hasTraffic: navigatorBase.hasTraffic
     property alias  icon:      navigatorBase.icon
     property alias  locations: navigatorBase.locations
     property alias  locationsModel: navigatorBase.locationsModel
@@ -65,6 +66,7 @@ Item {
     property alias  street:    navigatorBase.street
     property alias  totalDist: navigatorBase.totalDist
     property alias  totalTime: navigatorBase.totalTime
+    property alias  totalTimeInTraffic: navigatorBase.totalTimeInTraffic
     property alias  transportMode: navigatorBase.mode
 
     NavigatorBase {

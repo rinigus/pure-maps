@@ -885,10 +885,16 @@ void Navigator::setRoute(QVariantMap m)
 
   // global vars
   m_route_duration = duration_on_route;
+  m_route_duration_traffic = m.value("traffic", 0).toInt();
 
   SET(totalDist, distanceToStr(m_route_length_m));
   SET(totalTime, timeToStr(m_route_duration));
+  SET(totalTimeInTraffic, timeToStr(m_route_duration_traffic));
+  SET(hasTraffic, m.contains("traffic"));
+
   m_maneuvers_model.setManeuvers(m_maneuvers);
+
+  qDebug() << "TR" << m_hasTraffic << m_totalTimeInTraffic;
 
   emit routeChanged();
 }
@@ -1004,8 +1010,9 @@ QString Navigator::timeToStr(double seconds) const
   int minutes = round((seconds - hours*3600)/60);
   // TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical hours (%1) and minutes (%2)
   return hours > 0 ? trans("%1 h %2 min").arg(hours).arg(minutes) :
+                     minutes > 0 ?
                      // TRANSLATORS: Keep %1 as it is, it will be replaced with numerical minutes (%1)
-                     trans("%1 min").arg(minutes);
+                     trans("%1 min").arg(minutes) : QString();
 }
 
 double Navigator::distanceRounded(double meters) const

@@ -29,8 +29,9 @@ Item {
     anchors.rightMargin: styler.themeHorizontalPageMargin
     height: {
         if (!visible) return 0;
-        if (willFit) return lr1.height + lr2.height + styler.themePaddingMedium;
-        return lr1.height + lr2.height + t1.height + t2.height + 3*styler.themePaddingMedium;
+        var trLine = hasTraffic ? lr3.height + styler.themePaddingMedium : 0;
+        if (willFit) return lr1.height + lr2.height + styler.themePaddingMedium + trLine;
+        return lr1.height + lr2.height + t1.height + t2.height + 3*styler.themePaddingMedium + trLine;
     }
     states: [
         State {
@@ -75,6 +76,7 @@ Item {
                 width: parent.width
                 anchors.topMargin: styler.themePaddingMedium
             }
+            // no changes for t3 as it is traffic line
         }
     ]
 
@@ -82,6 +84,7 @@ Item {
     property int  col1w: Math.max(lr1.implicitWidth, lr2.implicitWidth)
     property int  col2w: Math.max(d1.implicitWidth, d2.implicitWidth)
     property int  col3w: Math.max(t1.implicitWidth, t2.implicitWidth)
+    property bool hasTraffic: app.navigator.hasTraffic
     property bool willFit: width - styler.themePaddingLarge*2- col1w - col2w - col3w > 0
 
     // Row 1
@@ -149,5 +152,20 @@ Item {
         font.pixelSize: styler.themeFontSizeMedium
         text: app.navigator.totalTime
         width: infoLayout.col3w
+    }
+
+    // Row 3
+    LabelPL {
+        id: lr3
+        anchors.left: parent.left
+        anchors.top: t2.bottom
+        anchors.topMargin: styler.themePaddingMedium
+        anchors.right: parent.right
+        color: activeColors ? styler.themePrimaryColor : styler.themeHighlightColor
+        horizontalAlignment: Text.AlignRight
+        font.pixelSize: styler.themeFontSizeMedium
+        text: app.tr("incl %1 traffic delay", app.navigator.totalTimeInTraffic)
+        visible: infoLayout.hasTraffic
+        width: infoLayout.col1w
     }
 }

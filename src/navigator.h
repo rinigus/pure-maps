@@ -33,6 +33,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString destTime READ destTime NOTIFY destTimeChanged)
   Q_PROPERTY(double  direction READ direction NOTIFY directionChanged)
   Q_PROPERTY(bool    directionValid READ directionValid NOTIFY directionValidChanged)
+  Q_PROPERTY(bool    hasTraffic READ hasTraffic NOTIFY hasTrafficChanged)
   Q_PROPERTY(double  horizontalAccuracy READ horizontalAccuracy WRITE setHorizontalAccuracy NOTIFY horizontalAccuracyChanged)
   Q_PROPERTY(QString icon READ icon NOTIFY iconChanged)
   Q_PROPERTY(QString language READ language NOTIFY languageChanged)
@@ -51,6 +52,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString street READ street NOTIFY streetChanged)
   Q_PROPERTY(QString totalDist READ totalDist NOTIFY totalDistChanged)
   Q_PROPERTY(QString totalTime READ totalTime NOTIFY totalTimeChanged)
+  Q_PROPERTY(QString totalTimeInTraffic READ totalTimeInTraffic NOTIFY totalTimeInTrafficChanged)
   Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
   Q_PROPERTY(QVariantList route READ route NOTIFY routeChanged)
@@ -67,6 +69,7 @@ public:
   QString destTime() const { return m_destTime; }
   double  direction() const { return m_direction; }
   bool    directionValid() const { return m_directionValid; }
+  bool    hasTraffic() const { return m_hasTraffic; }
   double  horizontalAccuracy() const { return m_horizontalAccuracy; }
   QString icon() const { return m_icon; }
   QString language() const { return m_language; }
@@ -83,6 +86,7 @@ public:
   QString street() const { return m_street; }
   QString totalDist() const { return m_totalDist; }
   QString totalTime() const { return m_totalTime; }
+  QString totalTimeInTraffic() const { return m_totalTimeInTraffic; }
 
   void setHorizontalAccuracy(double accuracy);
 
@@ -124,6 +128,7 @@ signals:
   void destTimeChanged();
   void directionChanged();
   void directionValidChanged();
+  void hasTrafficChanged();
   void horizontalAccuracyChanged();
   void iconChanged();
   void languageChanged();
@@ -144,6 +149,7 @@ signals:
   void streetChanged();
   void totalDistChanged();
   void totalTimeChanged();
+  void totalTimeInTrafficChanged();
   void unitsChanged();
   void promptPrepare(QString text, bool preserve);
   void promptPlay(QString text);
@@ -210,6 +216,7 @@ private:
 
   double m_route_length_m{-1};
   double m_route_duration{0};
+  double m_route_duration_traffic{0};
   double m_distance_traveled_m{0};
   double m_last_distance_along_route_m{0};
   double m_last_duration_along_route{0};
@@ -224,6 +231,7 @@ private:
   QString m_destTime;
   double  m_direction{0};
   bool    m_directionValid{false};
+  bool    m_hasTraffic{false};
   double  m_horizontalAccuracy{15};
   QString m_icon;
   QString m_manDist;
@@ -239,6 +247,7 @@ private:
   QString m_street;
   QString m_totalDist;
   QString m_totalTime;
+  QString m_totalTimeInTraffic;
 
   QString m_units{QLatin1String("metric")};
 

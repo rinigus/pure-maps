@@ -34,6 +34,7 @@ should be a list of dictionaries of route properties.
     ],
     "mode": "car",
     "language": "en_US",
+    "traffic": 120,
 }
 ```
 

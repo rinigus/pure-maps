@@ -153,6 +153,7 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
 
     X, Y, Man, LocPointInd = [], [], [], [0]
     location_candidates = []
+    traffic = 0
     for legs in result.routes[0].sections:
         x, y = [], []
         for p in poor.flexpolyline.decode(legs.polyline):
@@ -163,6 +164,7 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
         language = legs.language
         transport_mode = legs.transport.mode
         maneuvers = []
+        traffic += legs.summary.duration - legs.summary.baseDuration
 
         if "preActions" in legs:
             for maneuver in legs.preActions:
@@ -253,7 +255,8 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
     route = dict(x=X, y=Y,
                  locations=locations,
                  location_indexes=LocPointInd,
-                 maneuvers=Man, mode=mode)
+                 maneuvers=Man, mode=mode,
+                 traffic=traffic)
     route["language"] = result.routes[0].sections[0].language.replace("-","_")
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
