@@ -116,6 +116,7 @@ DEFAULTS = {
     "show_speed_limit": "always",
     "smooth_position_animation_when_navigating": False,
     "tilt_when_navigating": True,
+    "traffic_reroute_time": -1,
     # "metric", "american" or "british".
     "units": "metric",
     # "male" or "female"

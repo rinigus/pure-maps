@@ -53,6 +53,7 @@ class Navigator : public QObject
   Q_PROPERTY(QString totalDist READ totalDist NOTIFY totalDistChanged)
   Q_PROPERTY(QString totalTime READ totalTime NOTIFY totalTimeChanged)
   Q_PROPERTY(QString totalTimeInTraffic READ totalTimeInTraffic NOTIFY totalTimeInTrafficChanged)
+  Q_PROPERTY(int     trafficRerouteTime READ trafficRerouteTime WRITE setTrafficRerouteTime NOTIFY trafficRerouteTimeChanged)
   Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
   Q_PROPERTY(QVariantList route READ route NOTIFY routeChanged)
@@ -87,8 +88,10 @@ public:
   QString totalDist() const { return m_totalDist; }
   QString totalTime() const { return m_totalTime; }
   QString totalTimeInTraffic() const { return m_totalTimeInTraffic; }
+  int     trafficRerouteTime() const { return m_trafficRerouteTime; }
 
   void setHorizontalAccuracy(double accuracy);
+  void setTrafficRerouteTime(int t);
 
   // locations
   Q_INVOKABLE bool locationRemove(int index);
@@ -150,6 +153,7 @@ signals:
   void totalDistChanged();
   void totalTimeChanged();
   void totalTimeInTrafficChanged();
+  void trafficRerouteTimeChanged();
   void unitsChanged();
   void promptPrepare(QString text, bool preserve);
   void promptPlay(QString text);
@@ -172,6 +176,7 @@ protected:
 
   void updateEta();
   void updateProgress();
+  void updateTraffic();
 
 private:
   // Edges of the route
@@ -224,6 +229,8 @@ private:
   double m_distance_to_route_m{-1};
   size_t m_offroad_count{0};
   QTime  m_reroute_request;
+  QTime  m_traffic_updated;
+  bool   m_traffic_update_requested{false};
 
   bool    m_alongRoute{false};
   QString m_destDist;
@@ -248,6 +255,7 @@ private:
   QString m_totalDist;
   QString m_totalTime;
   QString m_totalTimeInTraffic;
+  int     m_trafficRerouteTime{-1};
 
   QString m_units{QLatin1String("metric")};
 

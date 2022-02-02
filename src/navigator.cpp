@@ -34,6 +34,7 @@ Navigator::Navigator(QObject *parent) :
   m_timer.setInterval(60000); // 1 minute
 
   connect(&m_timer, &QTimer::timeout, this, &Navigator::updateEta);
+  connect(&m_timer, &QTimer::timeout, this, &Navigator::updateTraffic);
   connect(this, &Navigator::languageChanged, this, &Navigator::setupTranslator);
 
   connect(&m_locations_model, &LocationModel::locationArrived, this, &Navigator::locationArrived);
@@ -533,6 +534,7 @@ void Navigator::setRoute(QVariantMap m)
   m_prompts.clear();
   m_reroute_request.start();
   m_last_accuracy = -1;
+  m_traffic_update_requested = false;
 
   // clear traveled distance and locations only if not running
   // that will keep progress intact on rerouting
@@ -886,6 +888,7 @@ void Navigator::setRoute(QVariantMap m)
   // global vars
   m_route_duration = duration_on_route;
   m_route_duration_traffic = m.value("traffic", 0).toInt();
+  m_traffic_updated.restart();
 
   SET(totalDist, distanceToStr(m_route_length_m));
   SET(totalTime, timeToStr(m_route_duration));
@@ -893,8 +896,6 @@ void Navigator::setRoute(QVariantMap m)
   SET(hasTraffic, m.contains("traffic"));
 
   m_maneuvers_model.setManeuvers(m_maneuvers);
-
-  qDebug() << "TR" << m_hasTraffic << m_totalTimeInTraffic;
 
   emit routeChanged();
 }
@@ -912,6 +913,12 @@ void Navigator::setRunning(bool r)
   else m_timer.stop();
 
   emit runningChanged();
+}
+
+void Navigator::setTrafficRerouteTime(int t)
+{
+  m_trafficRerouteTime = t;
+  emit trafficRerouteTimeChanged();
 }
 
 void Navigator::setUnits(QString u)
@@ -938,6 +945,14 @@ void Navigator::updateProgress()
     p = m_distance_traveled_m / std::max(1.0, m_distance_traveled_m +
                                          m_route_length_m - m_last_distance_along_route_m);
   SET(progress, (int)round(100*p));
+}
+
+void Navigator::updateTraffic()
+{
+  if (!m_running || !m_hasTraffic || m_traffic_update_requested || m_trafficRerouteTime <= 0) return;
+  if (m_traffic_updated.elapsed() / 1000 < m_trafficRerouteTime /* in seconds */) return;
+  m_traffic_update_requested = true;
+  emit rerouteRequest();
 }
 
 // Translations and string functions

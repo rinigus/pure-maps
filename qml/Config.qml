@@ -63,6 +63,7 @@ Item {
     property string showSpeedLimit
     property bool   smoothPositionAnimationWhenNavigating: false
     property bool   tiltWhenNavigating
+    property int    trafficRerouteTime: -1
     property string units
     property string voiceGender
     property bool   voiceNavigation
@@ -111,6 +112,7 @@ Item {
         "showSpeedLimit": "show_speed_limit",
         "smoothPositionAnimationWhenNavigating": "smooth_position_animation_when_navigating",
         "tiltWhenNavigating": "tilt_when_navigating",
+        "trafficRerouteTime": "traffic_reroute_time",
         "units": "units",
         "voiceGender": "voice_gender",
         "voiceNavigation": "voice_navigation"

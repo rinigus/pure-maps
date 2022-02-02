@@ -72,6 +72,7 @@ Item {
     NavigatorBase {
         id: navigatorBase
         horizontalAccuracy: app.conf.navigationHorizontalAccuracy
+        trafficRerouteTime: app.conf.trafficRerouteTime
         units: app.conf.units
 
         property bool voicePrepared: false

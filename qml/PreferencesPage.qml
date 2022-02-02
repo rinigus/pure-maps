@@ -591,6 +591,39 @@ PagePL {
                         }
 
                         ComboBoxPL {
+                            description: app.tr("Timeout between traffic information updates leading to possible rerouting. This is active only while routing.")
+                            label: app.tr("Update traffic while routing")
+                            model: [
+                                app.tr("Disabled"),
+                                app.tr("10 minutes"),
+                                app.tr("20 minutes"),
+                                app.tr("30 minutes"),
+                                app.tr("45 minutes"),
+                                app.tr("60 minutes")
+                            ]
+                            property var values: [-1, 600, 1200, 1800, 2700, 3600]
+                            Component.onCompleted: {
+                                var value = app.conf.trafficRerouteTime;
+                                var r = values[0];
+                                var ci = 0;
+                                if (value > 0) {
+                                    for (var i=1; i < values.length; i++)
+                                        if (Math.abs(r - value) > Math.abs(values[i] - value)) {
+                                            r = values[i];
+                                            ci = i;
+                                        }
+                                }
+                                currentIndex = ci;
+                            }
+                            onCurrentIndexChanged: {
+                                var index = currentIndex;
+                                var v = values[index];
+                                if (v !== app.conf.trafficRerouteTime)
+                                    app.conf.set("traffic_reroute_time", v);
+                            }
+                        }
+
+                        ComboBoxPL {
                             id: speedLimitComboBox
                             description: app.tr("Show speed limit sign. Requires snapping position to the road to find the speed limit.")
                             enabled: mapmatchingSwitch.checked
