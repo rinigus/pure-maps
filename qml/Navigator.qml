@@ -57,7 +57,6 @@ Item {
     property int    rerouteConsecutiveErrors: 0
     property int    rerouteConsecutiveIgnored: 0
     property real   reroutePreviousTime: -1
-    property int    rerouteTotalCalls: 0
     property bool   routing: false
     property alias  roundaboutExit: navigatorBase.roundaboutExit
     property alias  route:     navigatorBase.route
@@ -120,7 +119,6 @@ Item {
                 rerouteConsecutiveErrors = 0;
                 rerouteConsecutiveIgnored = 0;
                 reroutePreviousTime = -1;
-                rerouteTotalCalls = 0;
                 hasBeenAlongRoute = alongRoute;
                 updatePosition();
             }
@@ -262,7 +260,6 @@ Item {
                       "notification": app.tr("Rerouting"),
                       "voicePrompt": true } );
         reroutePreviousTime = Date.now();
-        rerouteTotalCalls++;
     }
 
     function rerouteMaybe() {
@@ -282,7 +279,6 @@ Item {
             // to avoid an excessive amount of API calls (causing data traffic and
             // costs) in some special case where the router returns bogus results
             // and the user is not able to manually intervene.
-            if (rerouteTotalCalls > 50) return;
             if (Date.now() - reroutePreviousTime < interval) return;
             return reroute();
         }
