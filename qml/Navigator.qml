@@ -102,7 +102,27 @@ Item {
             voice.prepare(text, preserve)
         }
 
-        onRerouteRequest: rerouteMaybe()
+        onRerouteRequest: {
+            // Find a new route if conditions are met.
+            if (!app.conf.reroute) return;
+            if (app.mode !== modes.navigate) return;
+            if (!gps.horizontalAccuracyValid || !gps.ready) return;
+            if (gps.horizontalAccuracy > 100) return;
+            if (!py.evaluate("poor.app.router.can_reroute")) return;
+            if (hasBeenAlongRoute) rerouteConsecutiveIgnored = 0;
+            var interval = 5000*Math.pow(2, Math.min(4, rerouteConsecutiveErrors + rerouteConsecutiveIgnored));
+            if (py.evaluate("poor.app.router.offline")) {
+                if (Date.now() - reroutePreviousTime < interval) return;
+                return reroute();
+            } else {
+                // Limit the total amount and frequency of rerouting for online routers
+                // to avoid an excessive amount of API calls (causing data traffic and
+                // costs) in some special case where the router returns bogus results
+                // and the user is not able to manually intervene.
+                if (Date.now() - reroutePreviousTime < interval) return;
+                return reroute(traffic);
+            }
+        }
 
         onAlongRouteChanged: {
             if (!hasBeenAlongRoute && alongRoute) hasBeenAlongRoute = true;
@@ -248,40 +268,20 @@ Item {
         return true;
     }
 
-    function reroute() {
+    function reroute(traffic) {
         // Find a new route from the current position to the existing destination.
         if (routing) return;
         navigatorBase.prompt("std:rerouting");
         if (!hasBeenAlongRoute) rerouteConsecutiveIgnored++;
         hasBeenAlongRoute = false;
         var loc = navigatorBase.locations.slice(1);
-        findRoute(loc,
-                  {   "heading": gps.direction,
-                      "notification": app.tr("Rerouting"),
-                      "voicePrompt": true } );
-        reroutePreviousTime = Date.now();
-    }
-
-    function rerouteMaybe() {
-        // Find a new route if conditions are met.
-        if (!app.conf.reroute) return;
-        if (app.mode !== modes.navigate) return;
-        if (!gps.horizontalAccuracyValid || !gps.ready) return;
-        if (gps.horizontalAccuracy > 100) return;
-        if (!py.evaluate("poor.app.router.can_reroute")) return;
-        if (hasBeenAlongRoute) rerouteConsecutiveIgnored = 0;
-        var interval = 5000*Math.pow(2, Math.min(4, rerouteConsecutiveErrors + rerouteConsecutiveIgnored));
-        if (py.evaluate("poor.app.router.offline")) {
-            if (Date.now() - reroutePreviousTime < interval) return;
-            return reroute();
-        } else {
-            // Limit the total amount and frequency of rerouting for online routers
-            // to avoid an excessive amount of API calls (causing data traffic and
-            // costs) in some special case where the router returns bogus results
-            // and the user is not able to manually intervene.
-            if (Date.now() - reroutePreviousTime < interval) return;
-            return reroute();
+        var options = {
+            "heading": gps.direction,
+            "notification": traffic ? app.tr("Updating traffic"): app.tr("Rerouting"),
+            "voicePrompt": true
         }
+        findRoute(loc, options);
+        reroutePreviousTime = Date.now();
     }
 
     function saveDestination() {

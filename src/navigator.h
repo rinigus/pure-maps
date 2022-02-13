@@ -144,7 +144,7 @@ signals:
   void nextManDistChanged();
   void optimizedChanged();
   void progressChanged();
-  void rerouteRequest();
+  void rerouteRequest(bool traffic=false);
   void roundaboutExitChanged();
   void routeChanged();
   void runningChanged();
@@ -230,7 +230,6 @@ private:
   size_t m_offroad_count{0};
   QTime  m_reroute_request;
   QTime  m_traffic_updated;
-  bool   m_traffic_update_requested{false};
 
   bool    m_alongRoute{false};
   QString m_destDist;

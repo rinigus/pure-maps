@@ -534,7 +534,6 @@ void Navigator::setRoute(QVariantMap m)
   m_prompts.clear();
   m_reroute_request.start();
   m_last_accuracy = -1;
-  m_traffic_update_requested = false;
 
   // clear traveled distance and locations only if not running
   // that will keep progress intact on rerouting
@@ -949,10 +948,9 @@ void Navigator::updateProgress()
 
 void Navigator::updateTraffic()
 {
-  if (!m_running || !m_hasTraffic || m_traffic_update_requested || m_trafficRerouteTime <= 0) return;
+  if (!m_running || !m_hasTraffic || m_trafficRerouteTime <= 0) return;
   if (m_traffic_updated.elapsed() / 1000 < m_trafficRerouteTime /* in seconds */) return;
-  m_traffic_update_requested = true;
-  emit rerouteRequest();
+  emit rerouteRequest(true);
 }
 
 // Translations and string functions
