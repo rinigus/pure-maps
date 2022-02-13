@@ -354,10 +354,10 @@ MapboxMap {
     function configureLayers() {
         // Configure layer for selected POI markers.
         map.setPaintProperty(map.layers.poisSelected, "circle-opacity", 0);
-        map.setPaintProperty(map.layers.poisSelected, "circle-radius", 8 * map.mapToQtPixelRatio * map.pixelRatio);
+        map.setPaintProperty(map.layers.poisSelected, "circle-radius", 8 * map.mapToQtPixelRatio / map.devicePixelRatio * styler.themePixelRatio);
         map.setPaintProperty(map.layers.poisSelected, "circle-stroke-color", styler.route);
         map.setPaintProperty(map.layers.poisSelected, "circle-stroke-opacity", styler.routeOpacity);
-        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-width", 6 * map.mapToQtPixelRatio * map.pixelRatio);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-width", 6 * map.mapToQtPixelRatio / map.devicePixelRatio * styler.themePixelRatio);
         // Configure layer for non-bookmarked POI markers.
         map.setLayoutProperty(map.layers.pois, "icon-allow-overlap", true);
         map.setLayoutProperty(map.layers.pois, "icon-anchor", "bottom");
@@ -445,7 +445,7 @@ MapboxMap {
     function initIcons() {
         var suffix = "";
         if (styler.position) suffix = "-" + styler.position;
-        var iconSize = map.devicePixelRatio * 25 * map.pixelRatio;
+        var iconSize = 35 * styler.themePixelRatio;
         map.addImagePath(map.images.locationDest, Qt.resolvedUrl(app.getIcon("icons/marker/flag-dest" + suffix, true)), iconSize);
         map.addImagePath(map.images.locationEnd, Qt.resolvedUrl(app.getIcon("icons/marker/flag-end" + suffix, true)), iconSize);
         map.addImagePath(map.images.locationStart, Qt.resolvedUrl(app.getIcon("icons/marker/flag-start" + suffix, true)), iconSize);
