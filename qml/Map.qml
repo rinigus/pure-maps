@@ -39,6 +39,7 @@ MapboxMap {
         return 0; // should never get here
     }
     pixelRatio: styler.themePixelRatio * 1.5
+    //useFBO: true
     zoomLevel: 4.0
 
     property int    animationTime: {
@@ -305,9 +306,7 @@ MapboxMap {
 
     Component.onCompleted: {
         map.initSources();
-        map.initIcons();
-        map.initLayers();
-        map.configureLayers();
+        map.setStyleAdditions();
         map.initProperties();
         map.updatePois();
         map.updateMargins();
@@ -334,6 +333,8 @@ MapboxMap {
 
     onHeightChanged: map.updateMargins();
 
+    onMapToQtPixelRatioChanged: setStyleAdditions()
+
     onMapTypeChanged: setBias()
 
     onStyleJsonChanged: {
@@ -353,15 +354,15 @@ MapboxMap {
     function configureLayers() {
         // Configure layer for selected POI markers.
         map.setPaintProperty(map.layers.poisSelected, "circle-opacity", 0);
-        map.setPaintProperty(map.layers.poisSelected, "circle-radius", 16 / map.pixelRatio);
+        map.setPaintProperty(map.layers.poisSelected, "circle-radius", 8 * map.mapToQtPixelRatio);
         map.setPaintProperty(map.layers.poisSelected, "circle-stroke-color", styler.route);
         map.setPaintProperty(map.layers.poisSelected, "circle-stroke-opacity", styler.routeOpacity);
-        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-width", 13 / map.pixelRatio);
+        map.setPaintProperty(map.layers.poisSelected, "circle-stroke-width", 6 * map.mapToQtPixelRatio);
         // Configure layer for non-bookmarked POI markers.
         map.setLayoutProperty(map.layers.pois, "icon-allow-overlap", true);
         map.setLayoutProperty(map.layers.pois, "icon-anchor", "bottom");
         map.setLayoutProperty(map.layers.pois, "icon-image", map.images.poi);
-        map.setLayoutProperty(map.layers.pois, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.pois, "icon-size", 1.0 * map.mapToQtPixelRatio / map.devicePixelRatio );
         map.setLayoutProperty(map.layers.pois, "text-anchor", "top");
         map.setLayoutProperty(map.layers.pois, "text-field", "{name}");
         map.setLayoutProperty(map.layers.pois, "text-optional", true);
@@ -373,7 +374,7 @@ MapboxMap {
         map.setLayoutProperty(map.layers.poisBookmarked, "icon-allow-overlap", true);
         map.setLayoutProperty(map.layers.poisBookmarked, "icon-anchor", "bottom");
         map.setLayoutProperty(map.layers.poisBookmarked, "icon-image", map.images.poiBookmarked);
-        map.setLayoutProperty(map.layers.poisBookmarked, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.poisBookmarked, "icon-size", 1.0 * map.mapToQtPixelRatio / map.devicePixelRatio );
         map.setLayoutProperty(map.layers.poisBookmarked, "text-anchor", "top");
         map.setLayoutProperty(map.layers.poisBookmarked, "text-field", "{name}");
         map.setLayoutProperty(map.layers.poisBookmarked, "text-optional", true);
@@ -386,36 +387,36 @@ MapboxMap {
         map.setLayoutProperty(map.layers.route, "line-join", "round");
         map.setPaintProperty(map.layers.route, "line-color", styler.route);
         map.setPaintProperty(map.layers.route, "line-opacity", styler.routeOpacity);
-        map.setPaintProperty(map.layers.route, "line-width", 16 / map.pixelRatio);
+        map.setPaintProperty(map.layers.route, "line-width", 10);
         // Configure layer for route casing.
         map.setLayoutProperty(map.layers.routeOutline, "line-cap", "round");
         map.setLayoutProperty(map.layers.routeOutline, "line-join", "round");
         map.setPaintProperty(map.layers.routeOutline, "line-color", styler.route);
-        map.setPaintProperty(map.layers.routeOutline, "line-gap-width", 16 / map.pixelRatio);
+        map.setPaintProperty(map.layers.routeOutline, "line-gap-width", 10);
         map.setPaintProperty(map.layers.routeOutline, "line-opacity", 1 - (1-styler.routeOpacity)/2);
-        map.setPaintProperty(map.layers.routeOutline, "line-width", 4 / map.pixelRatio);
+        map.setPaintProperty(map.layers.routeOutline, "line-width", 3);
         // Configure layer for active maneuver markers.
         map.setPaintProperty(map.layers.maneuvers, "circle-color", styler.maneuver);
         map.setPaintProperty(map.layers.maneuvers, "circle-pitch-alignment", "map");
-        map.setPaintProperty(map.layers.maneuvers, "circle-radius", 11 / map.pixelRatio);
+        map.setPaintProperty(map.layers.maneuvers, "circle-radius", 5);
         map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", styler.route);
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 4 / map.pixelRatio);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 2);
         // Configure layer for passive maneuver markers.
         map.setPaintProperty(map.layers.nodes, "circle-color", styler.maneuver);
         map.setPaintProperty(map.layers.nodes, "circle-pitch-alignment", "map");
-        map.setPaintProperty(map.layers.nodes, "circle-radius", 5 / map.pixelRatio);
+        map.setPaintProperty(map.layers.nodes, "circle-radius", 3);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-color", styler.route);
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 3 / map.pixelRatio);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 1);
         // Configure layer for dummy symbols that knock out road shields etc.
         map.setLayoutProperty(map.layers.dummies, "icon-image", map.images.pixel);
-        map.setLayoutProperty(map.layers.dummies, "icon-padding", 20 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.dummies, "icon-padding", 15);
         map.setLayoutProperty(map.layers.dummies, "icon-rotation-alignment", "map");
         map.setLayoutProperty(map.layers.dummies, "visibility", "visible");
         // Configure layer for location markers.
         map.setLayoutProperty(map.layers.locations, "icon-allow-overlap", true);
         map.setLayoutProperty(map.layers.locations, "icon-anchor", "bottom");
         map.setLayoutProperty(map.layers.locations, "icon-image", "{symbol}");
-        map.setLayoutProperty(map.layers.locations, "icon-size", 1.0 / map.pixelRatio);
+        map.setLayoutProperty(map.layers.locations, "icon-size", 1.0 * map.mapToQtPixelRatio / map.devicePixelRatio );
         map.setLayoutProperty(map.layers.locations, "text-anchor", "top");
         map.setLayoutProperty(map.layers.locations, "text-field", "{name}");
         map.setLayoutProperty(map.layers.locations, "text-optional", true);
@@ -444,12 +445,13 @@ MapboxMap {
     function initIcons() {
         var suffix = "";
         if (styler.position) suffix = "-" + styler.position;
-        map.addImagePath(map.images.locationDest, Qt.resolvedUrl(app.getIconScaled("icons/marker/flag-dest" + suffix, true)));
-        map.addImagePath(map.images.locationEnd, Qt.resolvedUrl(app.getIconScaled("icons/marker/flag-end" + suffix, true)));
-        map.addImagePath(map.images.locationStart, Qt.resolvedUrl(app.getIconScaled("icons/marker/flag-start" + suffix, true)));
-        map.addImagePath(map.images.locationWay, Qt.resolvedUrl(app.getIconScaled("icons/marker/flag-way" + suffix, true)));
-        map.addImagePath(map.images.poi, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker-stroked" + suffix, true)));
-        map.addImagePath(map.images.poiBookmarked, Qt.resolvedUrl(app.getIconScaled("icons/marker/marker" + suffix, true)));
+        var iconSize = map.devicePixelRatio * 25;
+        map.addImagePath(map.images.locationDest, Qt.resolvedUrl(app.getIcon("icons/marker/flag-dest" + suffix, true)), iconSize);
+        map.addImagePath(map.images.locationEnd, Qt.resolvedUrl(app.getIcon("icons/marker/flag-end" + suffix, true)), iconSize);
+        map.addImagePath(map.images.locationStart, Qt.resolvedUrl(app.getIcon("icons/marker/flag-start" + suffix, true)), iconSize);
+        map.addImagePath(map.images.locationWay, Qt.resolvedUrl(app.getIcon("icons/marker/flag-way" + suffix, true)), iconSize);
+        map.addImagePath(map.images.poi, Qt.resolvedUrl(app.getIcon("icons/marker/marker-stroked" + suffix, true)), iconSize);
+        map.addImagePath(map.images.poiBookmarked, Qt.resolvedUrl(app.getIcon("icons/marker/marker" + suffix, true)), iconSize);
         map.addImagePath(map.images.pixel, Qt.resolvedUrl("icons/pixel.png"));
     }
 
@@ -513,10 +515,7 @@ MapboxMap {
         }
         attributionButton.logo = py.evaluate("poor.app.basemap.logo");
         styler.apply(py.evaluate("poor.app.basemap.style_gui"))
-        map.initIcons();
-        map.initLayers();
-        map.configureLayers();
-        positionMarker.initIcons();
+        map.setStyleAdditions();
     }
 
     function setBias() {
@@ -596,8 +595,6 @@ MapboxMap {
     function setScale(scale) {
         // Set the map scaling via its pixel ratio.
         map.pixelRatio = styler.themePixelRatio * 1.5 * scale;
-        map.configureLayers();
-        positionMarker.configureLayers();
     }
 
     function setSelectedPoi(coordinate) {
@@ -607,6 +604,14 @@ MapboxMap {
             map.updateSourcePoints(map.sources.poisSelected, [coordinate]);
             map.fitView([coordinate], true);
         }
+    }
+
+    function setStyleAdditions() {
+        map.initIcons();
+        map.initLayers();
+        map.configureLayers();
+        positionMarker.initIcons();
+        positionMarker.configureLayers();
     }
 
     function _updateLocationsAddPoint(l, name, symbol) {
@@ -667,6 +672,7 @@ MapboxMap {
 
     function updateMargins() {
         // Calculate new margins and set them for the map.
+        if (map.height <= 0) return;
         var header = referenceBlockTop.height > 0 ? referenceBlockTop.height : map.height*0.05;
         var footer = !app.infoPanelOpen && (app.mode === modes.explore || app.mode === modes.exploreRoute) && menuButton ? menuButton.height + menuButton.anchors.bottomMargin : 0;
         footer += !app.infoPanelOpen && (app.mode === modes.navigate || app.mode === modes.navigatePost || app.mode === modes.followMe) && referenceBlockBottom ? referenceBlockBottom.height : 0;

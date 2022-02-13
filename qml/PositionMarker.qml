@@ -87,9 +87,6 @@ Item {
         marker.initIcons();
         marker.initLayers();
         marker.configureLayers();
-        marker.updateDirection();
-        marker.updateUncertainty();
-        marker.updateVisibility();
     }
 
     on_AnimatePositionChanged: {
@@ -108,11 +105,11 @@ Item {
         map.setLayoutProperty(marker.layers.still, "icon-allow-overlap", true);
         map.setLayoutProperty(marker.layers.still, "icon-image", marker.images.still);
         map.setLayoutProperty(marker.layers.still, "icon-rotation-alignment", "map");
-        map.setLayoutProperty(marker.layers.still, "icon-size", 1 / map.pixelRatio);
+        map.setLayoutProperty(marker.layers.still, "icon-size", 1 * map.mapToQtPixelRatio / map.devicePixelRatio );
         map.setLayoutProperty(marker.layers.moving, "icon-allow-overlap", true);
         map.setLayoutProperty(marker.layers.moving, "icon-image", marker.images.moving);
         map.setLayoutProperty(marker.layers.moving, "icon-rotation-alignment", "map");
-        map.setLayoutProperty(marker.layers.moving, "icon-size", 1 / map.pixelRatio);
+        map.setLayoutProperty(marker.layers.moving, "icon-size", 1 * map.mapToQtPixelRatio / map.devicePixelRatio );
         // set the layer immediately in accordence with the direction availibility.
         // there seems to be a corner case in interaction with mapbox-gl qml when the layer
         // visibility is changed in two consecutive calls before the changes are applied by
@@ -130,13 +127,22 @@ Item {
         map.setPaintProperty(marker.layers.layerUncertainty, "circle-color", styler.positionUncertainty);
         map.setPaintProperty(marker.layers.layerUncertainty, "circle-opacity", 0.15);
         map.setPaintProperty(marker.layers.layerUncertainty, "circle-pitch-alignment", "map");
+
+        updateDirection();
+        updateUncertainty();
+        updateVisibility();
     }
 
     function initIcons() {
         var suffix = "";
         if (styler.position) suffix = "-" + styler.position;
-        map.addImagePath(marker.images.still, Qt.resolvedUrl(app.getIconScaled("icons/position/position" + suffix, true)));
-        map.addImagePath(marker.images.moving, Qt.resolvedUrl(app.getIconScaled("icons/position/position-direction" + suffix, true)));
+        var iconSize = map.devicePixelRatio * 50;
+        map.addImagePath(marker.images.still,
+                         Qt.resolvedUrl(app.getIcon("icons/position/position" + suffix, true)),
+                         iconSize );
+        map.addImagePath(marker.images.moving,
+                         Qt.resolvedUrl(app.getIcon("icons/position/position-direction" + suffix, true)),
+                         iconSize );
     }
 
     function initLayers() {
@@ -165,7 +171,7 @@ Item {
     function updateUncertainty() {
         if (gps.horizontalAccuracyValid)
             map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius",
-                                 gps.horizontalAccuracy / map.metersPerPixel / map.pixelRatio);
+                                 gps.horizontalAccuracy / map.metersPerMapPixel);
         else
             map.setPaintProperty(marker.layers.layerUncertainty, "circle-radius", 0);
     }

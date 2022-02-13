@@ -56,7 +56,7 @@ MapboxMapGestureArea {
             var dlat = (geocoordinate.latitude - poi.coordinate.latitude) / area.degLatPerPixel;
             var dist2 = dlon*dlon + dlat*dlat;
             // select only if poi is closer than 30 pixels (dist2 is square of that)
-            if (dist2 < map.pixelRatio*map.pixelRatio*900 && (selectedPoi == null || selectedPoi.dist2 > dist2)) {
+            if (dist2 < 900 && (selectedPoi == null || selectedPoi.dist2 > dist2)) {
                 selectedPoi = { 'poi': poi, 'dist2': dist2 };
             }
         });
@@ -100,8 +100,8 @@ MapboxMapGestureArea {
 
     function coordinatesMatch(a, b) {
         // Return true if coordinates match given a sufficient tap buffer.
-        var epsLon = map.pixelRatio * 30 * area.degLonPerPixel;
-        var epsLat = map.pixelRatio * 30 * area.degLatPerPixel;
+        var epsLon = 30 * area.degLonPerPixel;
+        var epsLat = 30 * area.degLatPerPixel;
         return (Math.abs(a.longitude - b.longitude) < epsLon &&
                 Math.abs(a.latitude  - b.latitude ) < epsLat);
 

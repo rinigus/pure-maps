@@ -103,7 +103,7 @@ QtObject {
     property real themePaddingMedium: Kirigami.Units.largeSpacing * 1
     property real themePaddingSmall: Kirigami.Units.smallSpacing
 
-    property real themePixelRatio: 1 //Screen.devicePixelRatio
+    property real themePixelRatio: Screen.devicePixelRatio
 
     property bool darkTheme: (Kirigami.Theme.backgroundColor.r + Kirigami.Theme.backgroundColor.g +
                               Kirigami.Theme.backgroundColor.b) <
