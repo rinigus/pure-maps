@@ -136,7 +136,7 @@ Item {
     function initIcons() {
         var suffix = "";
         if (styler.position) suffix = "-" + styler.position;
-        var iconSize = map.devicePixelRatio * 50;
+        var iconSize = map.devicePixelRatio * 50 * map.pixelRatio;
         map.addImagePath(marker.images.still,
                          Qt.resolvedUrl(app.getIcon("icons/position/position" + suffix, true)),
                          iconSize );
