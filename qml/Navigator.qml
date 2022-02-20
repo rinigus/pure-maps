@@ -195,7 +195,7 @@ Item {
         saveRoute({});
     }
 
-    function findRoute(locations, options) {
+    function findRoute(locations, options, traffic) {
         if (routing) return;
         if (!options) options = {};
         options.optimized = navigatorBase.optimized;
@@ -234,9 +234,10 @@ Item {
                 rerouteConsecutiveErrors++;
             } else if (route && route.x && route.x.length > 0) {
                 app.notification.flash(navigatorBase.running ?
-                                           app.tr("New route found") :
+                                           (traffic ? app.tr("Traffic and route updated") : app.tr("New route found")) :
                                            app.tr("Route found"), notifyId);
-                if (options.voicePrompt) navigatorBase.prompt("std:new route found");
+                if (options.voicePrompt) navigatorBase.prompt(traffic ? "std:traffic updated" :
+                                                                        "std:new route found");
                 setRoute(route);
                 rerouteConsecutiveErrors = 0;
                 if (options.fitToView) map.fitViewToRoute();
@@ -271,7 +272,7 @@ Item {
     function reroute(traffic) {
         // Find a new route from the current position to the existing destination.
         if (routing) return;
-        navigatorBase.prompt("std:rerouting");
+        if (!traffic) navigatorBase.prompt("std:rerouting");
         if (!hasBeenAlongRoute) rerouteConsecutiveIgnored++;
         hasBeenAlongRoute = false;
         var loc = navigatorBase.locations.slice(1);
@@ -280,7 +281,7 @@ Item {
             "notification": traffic ? app.tr("Updating traffic"): app.tr("Rerouting"),
             "voicePrompt": true
         }
-        findRoute(loc, options);
+        findRoute(loc, options, traffic);
         reroutePreviousTime = Date.now();
     }
 

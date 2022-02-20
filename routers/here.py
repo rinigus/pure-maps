@@ -137,13 +137,14 @@ def route(locations, params):
         avoid = "&avoid[features]=" + (",".join(avoid))
     else:
         avoid = ""
-
+    # skip cache if traffic update is expected
+    skip_cache = transportMode in (["car", "bus", "taxi"])
     url = URL.format(**locals()) + via + avoid
-    with poor.util.silent(KeyError):
-        return copy.deepcopy(cache[url])
+    if not skip_cache:
+        with poor.util.silent(KeyError):
+            return copy.deepcopy(cache[url])
     result = poor.http.get_json(url)
     result = poor.AttrDict(result)
-    #return result
     mode = MODE.get(transportMode,"car")
     return parse_result(url, locations, result, mode, lang, loc)
 

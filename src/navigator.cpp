@@ -1074,6 +1074,7 @@ void Navigator::prepareStandardPrompts()
   m_std_prompts.insert(QLatin1String("std:new route found"), trans("New route found"));
   m_std_prompts.insert(QLatin1String("std:rerouting"), trans("Rerouting"));
   m_std_prompts.insert(QLatin1String("std:routing failed"), trans("Routing failed"));
+  m_std_prompts.insert(QLatin1String("std:traffic updated"), trans("Traffic and route updated"));
 
   // first prompt that is needed, can request multiple times
   emit promptPrepare(m_std_prompts["std:starting navigation"], true);
