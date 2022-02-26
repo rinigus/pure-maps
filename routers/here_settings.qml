@@ -176,6 +176,20 @@ FormLayoutPL {
     TextSwitchPL {
         anchors.left: parent.left
         anchors.right: parent.right
+        text: app.tr("Traffic")
+        visible: full && (typeComboBox.current_key == "car" ||
+                          typeComboBox.current_key == "bus" ||
+                          typeComboBox.current_key == "taxi")
+        Component.onCompleted: checked = app.conf.get("routers.here.traffic")
+        onCheckedChanged: {
+            if (!visible) return;
+            app.conf.set("routers.here.traffic", checked ? 1 : 0);
+        }
+    }
+
+    TextSwitchPL {
+        anchors.left: parent.left
+        anchors.right: parent.right
         text: app.tr("Prefer shorter route")
         visible: full && (typeComboBox.current_key == "car" || typeComboBox.current_key == "truck")
         Component.onCompleted: checked = app.conf.get("routers.here.shorter")

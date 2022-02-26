@@ -32,6 +32,7 @@ Navigator::Navigator(QObject *parent) :
   setupTranslator();
   clearRoute();
   m_timer.setInterval(60000); // 1 minute
+  m_timer.setInterval(1000);
 
   connect(&m_timer, &QTimer::timeout, this, &Navigator::updateEta);
   connect(&m_timer, &QTimer::timeout, this, &Navigator::updateTraffic);

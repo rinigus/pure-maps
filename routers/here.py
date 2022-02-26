@@ -46,6 +46,7 @@ CONF_DEFAULTS = {
     "avoid_tunnel": 0,
     "language": poor.util.get_default_language("en-US"),
     "shorter": 0,
+    "traffic": 1,
     "type": "car",
 }
 
@@ -118,6 +119,7 @@ def route(locations, params):
     lang = poor.conf.routers.here.language
     units = "metric" if poor.conf.units == "metric" else "imperial"
     transportMode = poor.conf.routers.here.type
+    traffic = poor.conf.routers.here.traffic
     routingMode = "short" if poor.conf.routers.here.shorter else "fast"
     origin = prepare_txtpoint(loc[0])
     destination = prepare_txtpoint(loc[-1])
@@ -138,8 +140,9 @@ def route(locations, params):
     else:
         avoid = ""
     # skip cache if traffic update is expected
-    skip_cache = transportMode in (["car", "bus", "taxi"])
+    skip_cache = traffic and transportMode in (["car", "bus", "taxi"])
     url = URL.format(**locals()) + via + avoid
+    if not traffic: url += "&departureTime=any"
     if not skip_cache:
         with poor.util.silent(KeyError):
             return copy.deepcopy(cache[url])
@@ -253,11 +256,12 @@ def parse_result(url, locations, result, mode, lang_translation, locations_proce
         print("Data:", locations_processed, location_candidates, LocPointInd)
         return dict()
 
+    if traffic < 1: traffic = 0
     route = dict(x=X, y=Y,
                  locations=locations,
                  location_indexes=LocPointInd,
-                 maneuvers=Man, mode=mode,
-                 traffic=traffic)
+                 maneuvers=Man, mode=mode)
+    if traffic > 0.1: route["traffic"]=traffic
     route["language"] = result.routes[0].sections[0].language.replace("-","_")
     if route and route["x"]:
         cache[url] = copy.deepcopy(route)
