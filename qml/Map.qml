@@ -38,7 +38,7 @@ MapboxMap {
         if (app.mode === modes.followMe) return 50;
         return 0; // should never get here
     }
-    pixelRatio: styler.themePixelRatio * 1.5
+    pixelRatio: styler.themePixelRatio * 1.5 * scale
     //useFBO: true
     zoomLevel: 4.0
 
@@ -84,6 +84,15 @@ MapboxMap {
         return "default";
     }
     property bool   ready: false
+    property real   scale: {
+        if (app.mode === modes.followMe ||
+                app.mode === modes.navigate ||
+                app.mode === modes.navigatePost) {
+            return app.conf.mapScaleNavigation;
+        }
+        return app.conf.mapScale;
+    }
+
     property bool   showNavButtons: false
 
     readonly property var images: QtObject {
@@ -544,7 +553,6 @@ MapboxMap {
         map.autoCenter = false;
         map.autoRotate = false;
         if (map.zoomLevel > 14) map.setZoomLevel(14);
-        map.setScale(app.conf.get("map_scale"));
     }
 
     function setModeExploreRoute() {
@@ -553,15 +561,13 @@ MapboxMap {
         map.autoCenter = false;
         map.autoRotate = false;
         if (map.zoomLevel > 14) map.setZoomLevel(14);
-        map.setScale(app.conf.get("map_scale"));
     }
 
     function setModeFollowMe() {
         // follow me mode
-        var scale = app.conf.get("map_scale_navigation_" + (app.transportMode ? app.transportMode : "car") );
+        var scale = app.conf.mapScaleNavigation;
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
-        map.setScale(scale);
         map.centerOnPosition();
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
@@ -570,10 +576,9 @@ MapboxMap {
 
     function setModeNavigate() {
         // map during navigation
-        var scale = app.conf.get("map_scale_navigation_" + app.transportMode);
+        var scale = app.conf.mapScaleNavigation;
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
-        map.setScale(scale);
         map.centerOnPosition();
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
@@ -582,19 +587,13 @@ MapboxMap {
 
     function setModeNavigatePost() {
         // map after navigation in post mode
-        var scale = app.conf.get("map_scale_navigation_" + app.transportMode);
+        var scale = app.conf.mapScaleNavigation;
         var zoom = 15 - (scale > 1 ? Math.log(scale)*Math.LOG2E : 0);
         if (map.zoomLevel < zoom) map.setZoomLevel(zoom);
-        map.setScale(scale);
         map.centerOnPosition();
         map.autoCenter = true;
         map.autoRotate = app.conf.autoRotateWhenNavigating;
         if (app.conf.mapZoomAutoWhenNavigating) map.autoZoom = true;
-    }
-
-    function setScale(scale) {
-        // Set the map scaling via its pixel ratio.
-        map.pixelRatio = styler.themePixelRatio * 1.5 * scale;
     }
 
     function setSelectedPoi(coordinate) {

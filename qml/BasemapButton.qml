@@ -444,8 +444,6 @@ MouseArea {
                 width: parent.width
                 onValueChanged: {
                     app.conf.set("map_scale", value);
-                    if (app.mode !== modes.followMe && app.mode !== modes.navigate && app.mode !== modes.navigatePost)
-                        map.setScale(value);
                 }
             }
 
@@ -462,8 +460,6 @@ MouseArea {
                 onValueChanged: {
                     if (!app.transportMode) return;
                     app.conf.set("map_scale_navigation_" + app.transportMode, value);
-                    if (app.mode === modes.followMe || app.mode === modes.navigate || app.mode === modes.navigatePost)
-                        map.setScale(value);
                 }
             }
         }

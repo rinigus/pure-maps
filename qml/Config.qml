@@ -50,6 +50,22 @@ Item {
     property bool   mapModeCleanShowNavigationStartPause
     property bool   mapModeCleanShowNavigationClear
     property bool   mapModeCleanShowScale
+    property real   mapScale: 1
+    property real   mapScaleNavigation: {
+        if (!app || !app.transportMode)
+            return app.conf.mapScaleNavigationCar;
+        if (app.transportMode === "bicycle")
+            return app.conf.mapScaleNavigationBicycle;
+        if (app.transportMode === "foot")
+            return app.conf.mapScaleNavigationFoot;
+        if (app.transportMode === "transit")
+            return app.conf.mapScaleNavigationTransit;
+        return app.conf.mapScaleNavigationCar;
+    }
+    property real   mapScaleNavigationBicycle: 1
+    property real   mapScaleNavigationCar: 1
+    property real   mapScaleNavigationFoot: 1
+    property real   mapScaleNavigationTransit: 1
     property real   mapZoomAutoTime
     property bool   mapZoomAutoWhenNavigating: false
     property real   mapZoomAutoZeroSpeedZ
@@ -100,6 +116,11 @@ Item {
         "mapModeCleanShowNavigationStartPause": "map_mode_clean_show_navigation_start_pause",
         "mapModeCleanShowNavigationClear": "map_mode_clean_show_navigation_clear",
         "mapModeCleanShowScale": "map_mode_clean_show_scale",
+        "mapScale": "map_scale",
+        "mapScaleNavigationBicycle": "map_scale_navigation_bicycle",
+        "mapScaleNavigationCar": "map_scale_navigation_car",
+        "mapScaleNavigationFoot": "map_scale_navigation_foot",
+        "mapScaleNavigationTransit": "map_scale_navigation_transit",
         "mapZoomAutoTime": "map_zoom_auto_time",
         "mapZoomAutoWhenNavigating": "map_zoom_auto_when_navigating",
         "mapZoomAutoZeroSpeedZ": "map_zoom_auto_zero_speed_z",
