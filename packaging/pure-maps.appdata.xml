@@ -17,7 +17,7 @@
  <url type="bugtracker">https://github.com/rinigus/pure-maps/issues</url>
  <url type="donation">https://rinigus.github.io/donate</url>
  <url type="translate">https://www.transifex.com/rinigus/pure-maps</url>
- <launchable type="desktop-id">io.github.rinigus.PureMaps.desktop</launchable>
+ <launchable type="desktop-id">pure-maps.desktop</launchable>
  <provides>
   <binary>pure-maps</binary>
  </provides>
