@@ -1,0 +1,14 @@
+diff --git a/platform/qt/qt.cmake b/platform/qt/qt.cmake
+index cb11d5352..1e7411df3 100644
+--- a/platform/qt/qt.cmake
++++ b/platform/qt/qt.cmake
+@@ -226,7 +226,8 @@ configure_package_config_file(
+ 
+ write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/QMapboxGLConfigVersion.cmake
+ 	VERSION ${MBGL_QT_VERSION}
+-	COMPATIBILITY AnyNewerVersion)
++	COMPATIBILITY AnyNewerVersion
++        ARCH_INDEPENDENT)
+ 
+ install(EXPORT QMapboxGLTargets
+ 	DESTINATION ${CMAKECONFIG_INSTALL_DIR}
