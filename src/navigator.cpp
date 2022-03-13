@@ -146,7 +146,7 @@ void Navigator::setOptimized(bool opt)
 
 void Navigator::setPosition(const QGeoCoordinate &c, double direction, double horizontalAccuracy, bool valid)
 {
-  if (!m_index || !valid || horizontalAccuracy > 100)
+  if (!m_index || !valid || horizontalAccuracy > std::max(100.0, 3*m_horizontalAccuracy))
     {
       if (m_running)
         {
@@ -154,16 +154,9 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
             qCritical() << "Programming error: called setPosition without route";
 
           else if (!valid)
-            {
-              SET(icon, QLatin1String("position-unknown-no-signal"));
-              SET(narrative, trans("Position unknown"));
-            }
-
+              setPrecision(PrecisionStateNone, horizontalAccuracy);
           else
-            {
-              SET(icon, QLatin1String("position-unknown-low-signal"));
-              SET(narrative, trans("Position imprecise: accuracy %1").arg(distanceToStr(horizontalAccuracy)));
-            }
+              setPrecision(PrecisionStateLow, horizontalAccuracy);
 
           SET(directionValid, false);
           SET(manDist, QLatin1String("-"));
@@ -171,18 +164,12 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
           SET(roundaboutExit, 0);
           SET(sign, QVariantMap());
           SET(street, QLatin1String());
-          m_precision_insufficient = true;
         }
 
       return;
     }
 
-  // cleanup precision messages when the first good coordinate goes through
-  if (m_precision_insufficient)
-    {
-      m_precision_insufficient = false;
-      SET(narrative, trans("Preparing to start navigation"));
-    }
+  setPrecision(PrecisionStatePrecise, horizontalAccuracy);
 
   double accuracy_rad = S2Earth::MetersToRadians(std::max(horizontalAccuracy, m_horizontalAccuracy));
   S1ChordAngle accuracy = S1ChordAngle::Radians(accuracy_rad);
@@ -511,6 +498,38 @@ void Navigator::setPosition(const QGeoCoordinate &c, double direction, double ho
   //qDebug() << "Exit setPosition";
 }
 
+void Navigator::setPrecision(Navigator::PrecisionState state, double horizontalAccuracy)
+{
+  if (state == m_precision) return;
+
+  if (m_running &&
+      m_precision != PrecisionStateUnknown &&
+      state != PrecisionStateUnknown)
+    {
+      // precision of location changed during navigation and
+      // we have to notify about it via voice prompt
+      if (state == PrecisionStateLow)
+        {
+          SET(icon, QLatin1String("position-unknown-low-signal"));
+          SET(narrative, trans("Position imprecise: accuracy %1").arg(distanceToStr(horizontalAccuracy)));
+          prompt(QStringLiteral("std:precision low"));
+        }
+      else if (state == PrecisionStateNone)
+        {
+          SET(icon, QLatin1String("position-unknown-no-signal"));
+          SET(narrative, trans("Position unknown"));
+          prompt(QStringLiteral("std:precision none"));
+        }
+      else if (state == PrecisionStatePrecise)
+        {
+          SET(narrative, trans("Preparing to start navigation"));
+          prompt(QStringLiteral("std:precision precise"));
+        }
+    }
+
+  m_precision = state;
+}
+
 void Navigator::setRoute(QVariantMap m)
 {
   const double accuracy_m = 5;
@@ -535,6 +554,7 @@ void Navigator::setRoute(QVariantMap m)
   m_prompts.clear();
   m_reroute_request.start();
   m_last_accuracy = -1;
+  setPrecision(PrecisionStateUnknown);
 
   // clear traveled distance and locations only if not running
   // that will keep progress intact on rerouting
@@ -903,6 +923,7 @@ void Navigator::setRoute(QVariantMap m)
 
 void Navigator::setRunning(bool r)
 {
+  setPrecision(PrecisionStateUnknown);
   if (!m_index && r)
     {
       qWarning() << "Navigator: Cannot start routing without route. Fix the caller.";
@@ -1076,6 +1097,9 @@ void Navigator::prepareStandardPrompts()
   m_std_prompts.insert(QLatin1String("std:rerouting"), trans("Rerouting"));
   m_std_prompts.insert(QLatin1String("std:routing failed"), trans("Routing failed"));
   m_std_prompts.insert(QLatin1String("std:traffic updated"), trans("Traffic and route updated"));
+  m_std_prompts.insert(QLatin1String("std:precision low"), trans("Position imprecise"));
+  m_std_prompts.insert(QLatin1String("std:precision none"), trans("Position unknown"));
+  m_std_prompts.insert(QLatin1String("std:precision precise"), trans("Position information available"));
 
   // first prompt that is needed, can request multiple times
   emit promptPrepare(m_std_prompts["std:starting navigation"], true);

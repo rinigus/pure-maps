@@ -161,12 +161,23 @@ signals:
   void locationArrived(QString name, bool destination);
 
 protected:
+  // precision states
+  enum PrecisionState {
+    PrecisionStateUnknown,
+    PrecisionStateNone,
+    PrecisionStateLow,
+    PrecisionStatePrecise
+  };
+
   QString distanceToStr_american(double feet, bool condence) const;
   QString distanceToStr_british(double yard, bool condence) const;
   QString distanceToStr_metric(double meters, bool condence) const;
   QString n2Str(double n, int roundDig=2) const;
 
   double  distanceRounded(double meters) const;
+
+  void setPrecision(PrecisionState state, double horizontalAccuracy=0);
+
   Prompt  makePrompt(const Maneuver &m, QString text, double dist_offset_m, double time_offset,
                      double speed_m, int importance, bool after=false) const;
   void resetPrompts();
@@ -246,7 +257,7 @@ private:
   QString m_nextIcon;
   QString m_nextManDist;
   bool    m_optimized{false};
-  bool    m_precision_insufficient{false};
+  PrecisionState m_precision{PrecisionStateUnknown};
   int     m_progress{0};
   int     m_roundaboutExit{0};
   QVariantMap m_sign;
