@@ -503,27 +503,27 @@ void Navigator::setPrecision(Navigator::PrecisionState state, double horizontalA
   if (state == m_precision) return;
 
   if (m_running &&
-      m_precision != PrecisionStateUnknown &&
       state != PrecisionStateUnknown)
     {
+      bool with_prompt = (m_precision != PrecisionStateUnknown);
       // precision of location changed during navigation and
       // we have to notify about it via voice prompt
       if (state == PrecisionStateLow)
         {
           SET(icon, QLatin1String("position-unknown-low-signal"));
           SET(narrative, trans("Position imprecise: accuracy %1").arg(distanceToStr(horizontalAccuracy)));
-          prompt(QStringLiteral("std:precision low"));
+          if (with_prompt) prompt(QStringLiteral("std:precision low"));
         }
       else if (state == PrecisionStateNone)
         {
           SET(icon, QLatin1String("position-unknown-no-signal"));
           SET(narrative, trans("Position unknown"));
-          prompt(QStringLiteral("std:precision none"));
+          if (with_prompt) prompt(QStringLiteral("std:precision none"));
         }
       else if (state == PrecisionStatePrecise)
         {
           SET(narrative, trans("Preparing to start navigation"));
-          prompt(QStringLiteral("std:precision precise"));
+          if (with_prompt) prompt(QStringLiteral("std:precision precise"));
         }
     }
 
@@ -1099,7 +1099,7 @@ void Navigator::prepareStandardPrompts()
   m_std_prompts.insert(QLatin1String("std:traffic updated"), trans("Traffic and route updated"));
   m_std_prompts.insert(QLatin1String("std:precision low"), trans("Position imprecise"));
   m_std_prompts.insert(QLatin1String("std:precision none"), trans("Position unknown"));
-  m_std_prompts.insert(QLatin1String("std:precision precise"), trans("Position information available"));
+  m_std_prompts.insert(QLatin1String("std:precision precise"), trans("Position available"));
 
   // first prompt that is needed, can request multiple times
   emit promptPrepare(m_std_prompts["std:starting navigation"], true);
