@@ -6,6 +6,7 @@ project(pure-maps
 
 # options
 set(APP_NAME "" CACHE STRING "Name of the application, specify if custom name is needed")
+set(APP_REV_NAME "" CACHE STRING "Name of the application used for data files, specify if custom name is needed")
 set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami, silica, qtcontrols, uuitk")
 set(PYTHON_EXE "auto" CACHE STRING "Set python3 executable. If set to 'auto', cmake will try to find it.")
 option(RUN_FROM_SOURCE "Run from source, this is mainly intended for easy development" OFF)
@@ -65,9 +66,17 @@ if(NOT APP_NAME)
         set(APP_NAME harbour-pure-maps)
     else()
         set(APP_NAME pure-maps)
+	set(APP_REV_NAME io.github.rinigus.PureMaps)
     endif()
 endif()
-set(APP_REV_NAME io.github.rinigus.PureMaps)
+
+if(NOT APP_REV_NAME)
+    if(FLAVOR STREQUAL "silica")
+        set(APP_REV_NAME harbour-pure-maps)
+    else()
+	set(APP_REV_NAME io.github.rinigus.PureMaps)
+    endif()
+endif()
 
 # requirements
 set(QT_MIN_VERSION "5.6.0")

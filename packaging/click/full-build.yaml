@@ -9,6 +9,7 @@ builder: cmake
 build_args:
 - -DFLAVOR=uuitk
 - -DAPP_NAME=pure-maps.jonnius
+- -DAPP_REV_NAME=pure-maps-slim.jonnius
 - -DS2INCLUDES=${S2GEOMETRY_LIB_INSTALL_DIR}/include
 - -DS2LIBS=${S2GEOMETRY_LIB_INSTALL_DIR}/lib
 postbuild:
