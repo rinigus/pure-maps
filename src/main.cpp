@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
   app->setApplicationVersion(APP_VERSION);
 #ifdef IS_QTCONTROLS_QT
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
-  app->setDesktopFileName(APP_NAME ".desktop");
+  app->setDesktopFileName(APP_REV_NAME ".desktop");
 #endif
 #endif
 

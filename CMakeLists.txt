@@ -67,6 +67,7 @@ if(NOT APP_NAME)
         set(APP_NAME pure-maps)
     endif()
 endif()
+set(APP_REV_NAME io.github.rinigus.PureMaps)
 
 # requirements
 set(QT_MIN_VERSION "5.6.0")
@@ -175,18 +176,18 @@ add_subdirectory(po)
 # appdata
 install(FILES packaging/pure-maps.appdata.xml
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
-    RENAME ${APP_NAME}.appdata.xml)
+    RENAME ${APP_REV_NAME}.appdata.xml)
 
 # desktop files
 if(NOT FLAVOR STREQUAL "silica")
-    configure_file(data/pure-maps.desktop.in ${APP_NAME}.desktop @ONLY)
+    configure_file(data/pure-maps.desktop.in ${APP_REV_NAME}.desktop @ONLY)
     configure_file(data/pure-maps-uri-handler.desktop.in ${APP_NAME}-uri-handler.desktop @ONLY)
     set(DESKTOP_SRC
-        ${CMAKE_CURRENT_BINARY_DIR}/${APP_NAME}.desktop
+        ${CMAKE_CURRENT_BINARY_DIR}/${APP_REV_NAME}.desktop
         ${CMAKE_CURRENT_BINARY_DIR}/${APP_NAME}-uri-handler.desktop)
 else()
     set(DESKTOP_SRC
-        data/${APP_NAME}.desktop
+        data/${APP_REV_NAME}.desktop
         data/${APP_NAME}-uri-handler.desktop)
 endif()
 
@@ -196,7 +197,7 @@ install(FILES ${DESKTOP_SRC}
 # icons
 set(ICON_SIZES 108 128 256 86)
 foreach(_ISIZE ${ICON_SIZES})
-    install(FILES data/pure-maps-${_ISIZE}.png RENAME ${APP_NAME}.png
+    install(FILES data/pure-maps-${_ISIZE}.png RENAME ${APP_REV_NAME}.png
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${_ISIZE}x${_ISIZE}/apps)
 endforeach()
 
