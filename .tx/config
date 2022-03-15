@@ -1,8 +1,9 @@
 [main]
 host = https://www.transifex.com
 
-[pure-maps.pure-mapspot]
+[o:rinigus:p:pure-maps:r:pure-mapspot]
 file_filter = po/<lang>.po
 source_file = po/pure-maps.pot
 source_lang = en
-type = PO
+type        = PO
+
