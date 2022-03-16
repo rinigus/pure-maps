@@ -38,6 +38,20 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="3.0.0" date="2022-03-16">
+     <description>
+       <ul>
+         <li>Switch over to Maplibre Native GL based plugin</li>
+         <li>Show traffic impact on route</li>
+         <li>Update route traffic info while routing</li>
+         <li>Switch to SVG based map icons</li>
+         <li>Notify the changes in positioning precision during navigation</li>
+         <li>Update build scripts [pabloyoyoista]</li>
+         <li>Update Ubuntu Touch build scripts [jonnius]</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="2.9.0" date="2021-11-22">
      <description>
        <ul>

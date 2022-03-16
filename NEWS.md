@@ -1,3 +1,14 @@
+2022-03-16: Pure Maps 3.0.0
+============================
+
+* Switch over to Maplibre Native GL based plugin
+* Show traffic impact on route
+* Update route traffic info while routing
+* Switch to SVG based map icons
+* Notify the changes in positioning precision during navigation
+* Update build scripts [pabloyoyoista]
+* Update Ubuntu Touch build scripts [jonnius]
+
 2021-11-22: Pure Maps 2.9.0
 ===========================
 
