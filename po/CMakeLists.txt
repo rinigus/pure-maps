@@ -1,6 +1,4 @@
-message(${Qt5LinguistTools_DIR})
 get_filename_component(LINGUIST_PATH ${QT_MOC_EXECUTABLE} PATH)
-message(${LINGUIST_PATH})
 find_program(QT_LCONVERT NAMES lconvert-qt5 lconvert PATHS ${LINGUIST_PATH})
 
 if(QT_LCONVERT)
