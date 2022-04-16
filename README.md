@@ -7,7 +7,7 @@
 [![Fedora](https://img.shields.io/badge/O.B.S-Fedora-3C6EB4)](https://build.opensuse.org/package/show/home:rinigus:maps/pure-maps)
 
 [![Matrix](https://img.shields.io/badge/matrix.org-%23pure--maps-blue)](https://matrix.to/#/#pure-maps:matrix.org)
-[![TMO](https://img.shields.io/badge/forum-T.M.O-FB9200)](https://talk.maemo.org/showthread.php?t=100442)
+[![Discussions](https://img.shields.io/badge/forum-GitHub-FB9200)](https://github.com/rinigus/pure-maps/discussions)
 
 
 Pure Maps is an application for Sailfish OS and Linux to display
@@ -22,15 +22,16 @@ that was made to continue its development.
 
 ## User feedback
 
-There are three main communication channels with the users: GitHub,
-Matrix channel
+There are three main communication channels with the users: GitHub
+[discussions](https://github.com/rinigus/pure-maps/discussions) and
+issues, Matrix channel
 [#pure-maps:matrix.org](https://matrix.to/#/#pure-maps:matrix.org) and
 a thread at [TMO](https://talk.maemo.org/showthread.php?t=100442).
 
 Please use Github issues to address specific problems and development
 requests. General discussion is expected either through corresponding
-issues, Matrix channel, or TMO thread. Please note that users from all
-platforms are welcome at TMO, not only current Sailfish OS users.
+topics in GitHub discussions, issues, Matrix channel, or TMO
+thread. 
 
 Currently, the homepage for Pure Maps is a placeholder. You are
 welcome to help by working on the corresponding
