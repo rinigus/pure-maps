@@ -988,7 +988,7 @@ PagePL {
                                                            "Espeak TTS engines. Unless you are using Pure Maps " +
                                                            "through Flatpak or OpenStore, the engines have " +
                                                            "to be installed separately. Sailfish OS users " +
-                                                           "can find the engines at OpenRepos.")
+                                                           "can find the engines at Chum.")
                         truncMode: truncModes.none
                         wrapMode: Text.WordWrap
                     }
