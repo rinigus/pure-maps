@@ -1,4 +1,13 @@
-find_program(QT_LCONVERT NAMES lconvert-qt5 lconvert)
+message(${Qt5LinguistTools_DIR})
+get_filename_component(LINGUIST_PATH ${QT_MOC_EXECUTABLE} PATH)
+message(${LINGUIST_PATH})
+find_program(QT_LCONVERT NAMES lconvert-qt5 lconvert PATHS ${LINGUIST_PATH})
+
+if(QT_LCONVERT)
+  message(STATUS "Found lconvert: ${QT_LCONVERT}")
+else()
+  message(FATAL_ERROR "Could NOT find lconvert")
+endif()
 
 set(LANGUAGES cs de_DE el es et fi fr fur hu_HU it nb nl nl_BE pl pt_BR ru sk_SK sl_SI sv zh_CN)
 foreach(LANG ${LANGUAGES})
