@@ -153,6 +153,13 @@ int main(int argc, char *argv[])
 
   rootContext->setContextProperty("programName", "Pure Maps");
   rootContext->setContextProperty("programVersion", APP_VERSION);
+  rootContext->setContextProperty("programVariantJollaStore",
+#ifdef APP_VARIANT_JOLLA_STORE
+                                  1
+#else
+                                  0
+#endif
+                                  );
   rootContext->setContextProperty("defaultFontProvider", DEFAULT_FONTPROVIDER);
 
   // ////////////////////////////

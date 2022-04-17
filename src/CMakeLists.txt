@@ -25,6 +25,12 @@ if(CMAKE_BUILD_TYPE STREQUAL "release")
         -QT_NO_DEBUG_OUTPUT)
 endif()
 
+if (APP_VARIANT_JOLLA_STORE)
+   add_compile_options(
+       -DAPP_VARIANT_JOLLA_STORE
+       )
+endif()
+
 if(S2INCLUDES)
     include_directories(${S2INCLUDES})
 endif()

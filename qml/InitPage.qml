@@ -42,7 +42,18 @@ PageEmptyPL {
             // initialize conf before anything else
             app.conf.initialize();
             // check licenses
-            licensesMissing = py.call_sync("poor.key.get_licenses_missing", [])
+            licensesMissing = py.call_sync("poor.key.get_licenses_missing", []);
+            // iterate through messages
+            showStartMessages();
+        }
+    }
+
+    function showStartMessages() {
+        if (licenseIndex < 0) {
+            // first check is for the fonts provider. Bump index to check
+            // the license check with the next call
+            licenseIndex = 0;
+
             // check font provider
             app.conf.set("font_provider", defaultFontProvider);
             var hasMapboxKey = py.evaluate("poor.key.has_mapbox")
@@ -58,27 +69,34 @@ PageEmptyPL {
                                                "in Preferences. This key is not needed if you plan to use " +
                                                "Pure Maps with the offline map provider.", provider)
                          });
-                d.Component.destruction.connect(showNextLicense)
+                d.Component.destruction.connect(showStartMessages)
                 app.fontKeyMissing = true;
-            } else if (licensesMissing.length > 0) {
-                showNextLicense();
-            } else {
-                start();
-            }
-        }
-    }
-
-    function showNextLicense() {
-        licenseIndex += 1;
-        if (licenseIndex < licensesMissing.length) {
+            } else showStartMessages();
+        } else if (licenseIndex < licensesMissing.length) {
             app.pages.completeAnimation();
             var d = app.push(Qt.resolvedUrl("LicensePage.qml"), {
                          "title": licensesMissing[licenseIndex].title,
                          "key": licensesMissing[licenseIndex].id,
                          "text": licensesMissing[licenseIndex].text
                      });
-            d.Component.destruction.connect(showNextLicense)
-        } else start();
+            d.Component.destruction.connect(showStartMessages)
+            licenseIndex += 1;
+        } else if (programVariantJollaStore &&
+                   app.conf.get("message_jolla_store_last_version") !== programVersion) {
+                var d = app.push(Qt.resolvedUrl("MessagePage.qml"), {
+                             "acceptText": app.tr("Dismiss"),
+                             "title": app.tr("Pure Maps at Jolla Store"),
+                             "message": app.tr("You are using Pure Maps distributed through Jolla Store. " +
+                                               "Due to Jolla Store restrictions, Pure Maps distributed via that store has several limitations. " +
+                                               "With the introduction of Sailjail, limitations include inability to provide voice prompts, " +
+                                               "display current street and speed limits through " +
+                                               "matching position to street network.\n\n" +
+                                               "To get fully functional Pure Maps, it is recommended to use Sailfish Chum and install Pure Maps from there.")
+                         });
+                d.Component.destruction.connect(showStartMessages)
+                app.conf.set("message_jolla_store_last_version", programVersion);
+        } else // all messages shown
+            start();
     }
 
     function start() {

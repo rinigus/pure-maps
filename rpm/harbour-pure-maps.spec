@@ -113,6 +113,7 @@ cmake \
     -DUSE_BUNDLED_GPXPY=ON \
 %if 0%{?jollastore}
     -DQML_IMPORT_PATH=\"%{_datadir}/%{name}/lib/qml\" \
+    -DAPP_VARIANT_JOLLA_STORE=ON \
 %endif
     -DPYTHON_EXE=python3 ..
 %else
