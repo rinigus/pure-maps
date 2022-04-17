@@ -63,6 +63,7 @@ PagePL {
             horizontalAlignment: Text.AlignHCenter
             text: app.tr("This is a limited edition distributed through Jolla Store")
             visible: programVariantJollaStore
+            wrapMode: Text.WordWrap
         }
 
         ListItemLabel {
