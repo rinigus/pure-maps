@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Pure Maps
+Exec=harbour-pure-maps
+Icon=harbour-pure-maps
+Type=Application
+X-Nemo-Application-Type=no-invoker
+
+[X-HarbourBackup]
+BackupPathList=.config/harbour-pure-maps/
+
+[X-Sailjail]
+Permissions=Internet;Location;Audio

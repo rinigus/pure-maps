@@ -142,9 +142,6 @@ mkdir -p %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap
 cp %{_libdir}/qt5/qml/MapboxMap/* %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap
 cp %{_libdir}/libQMapboxGL.so.2* %{buildroot}%{_datadir}/%{name}/lib
 sed -i 's/QtPositioning 5.3/QtPositioning 5.4/g' %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap/MapboxMapGestureArea.qml
-sed -i 's/X-Nemo-Application-Type=silica-qt5/X-Nemo-Application-Type=no-invoker/g' %{buildroot}%{_datadir}/applications/%{name}.desktop
-sed -i 's/Sandboxing=Disabled//g' %{buildroot}%{_datadir}/applications/%{name}.desktop
-sed -i 's/[X-Sailjail]//g' %{buildroot}%{_datadir}/applications/%{name}.desktop
 %endif
 
 # strip executable bit from all libraries
@@ -154,11 +151,6 @@ chmod -x %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap/*.so*
 %endif
 
 # sailfishos
-%endif
-
-%if 0%{?jollastore}
-# remove not allowed desktop handler
-rm %{buildroot}%{_datadir}/applications/harbour-pure-maps-uri-handler.desktop || true
 %endif
 
 %files

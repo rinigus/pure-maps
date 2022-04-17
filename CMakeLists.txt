@@ -196,13 +196,22 @@ if(NOT FLAVOR STREQUAL "silica")
         ${CMAKE_CURRENT_BINARY_DIR}/${APP_REV_NAME}.desktop
         ${CMAKE_CURRENT_BINARY_DIR}/${APP_NAME}-uri-handler.desktop)
 else()
-    set(DESKTOP_SRC
-        data/${APP_REV_NAME}.desktop
-        data/${APP_NAME}-uri-handler.desktop)
+    # SFOS
+    if (APP_VARIANT_JOLLA_STORE)
+      install(FILES data/harbour-pure-maps-jolla-store.desktop
+	DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
+	RENAME harbour-pure-maps.desktop)
+    else()
+      set(DESKTOP_SRC
+          data/${APP_REV_NAME}.desktop
+          data/${APP_NAME}-uri-handler.desktop)
+    endif()
 endif()
 
-install(FILES ${DESKTOP_SRC}
+if (NOT APP_VARIANT_JOLLA_STORE)
+  install(FILES ${DESKTOP_SRC}
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+endif()
 
 # icons
 set(ICON_SIZES 108 128 256 86)
