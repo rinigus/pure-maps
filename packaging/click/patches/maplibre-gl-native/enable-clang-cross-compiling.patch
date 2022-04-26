@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 71db29e2f..69ca6d4bc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,6 +24,27 @@ set(
+     "--leak-check=full --gen-suppressions=all --error-exitcode=1 --suppressions=${PROJECT_SOURCE_DIR}/scripts/valgrind.sup"
+ )
+ 
++set(CROSS_COMPILING OFF)
++
++if($ENV{ARCH} STREQUAL "armhf")
++    set(CROSS_COMPILING ON)
++    set(CMAKE_SYSTEM_PROCESSOR arm)
++elseif($ENV{ARCH} STREQUAL "arm64")
++    set(CROSS_COMPILING ON)
++    set(CMAKE_SYSTEM_PROCESSOR aarch64)
++endif()
++
++if(CROSS_COMPILING)
++    set(CMAKE_SYSTEM_NAME Linux)
++
++    set(CMAKE_PREFIX_PATH /usr/lib/$ENV{ARCH_TRIPLET};/usr/lib/$ENV{ARCH_TRIPLET}/cmake)
++    set(CMAKE_C_COMPILER_TARGET $ENV{ARCH_TRIPLET})
++    set(CMAKE_CXX_COMPILER_TARGET $ENV{ARCH_TRIPLET})
++
++    set(ICU_INCLUDE_DIR /usr/include/$ENV{ARCH_TRIPLET})
++    find_package(ICU REQUIRED COMPONENTS uc)
++endif()
++
+ include(CTest)
+ 
+ if(NOT CMAKE_BUILD_TYPE)

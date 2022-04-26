@@ -22,9 +22,10 @@ dependencies_ppa:
 dependencies_host:
 - cmake
 
+install_qml:
+- ${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/MapboxMap
 install_lib:
-- ${MAPBOX_GL_NATIVE_LIB_INSTALL_DIR}/lib/*.so*
-- ${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/*
+- ${MAPLIBRE_GL_NATIVE_LIB_INSTALL_DIR}/lib/libQMapboxGL.so*
 - ${S2GEOMETRY_LIB_INSTALL_DIR}/lib/*.so*
 install_bin:
 - ${MIMIC_LIB_INSTALL_DIR}/bin/mimic
@@ -38,25 +39,42 @@ install_data:
   ${PICOTTS_LIB_INSTALL_DIR}/usr/share/picotts: usr/share
 
 libraries:
-  mapbox-gl-native:
+  maplibre-gl-native:
     builder: cmake
     build_args:
     - -DMBGL_WITH_QT=ON
     - -DMBGL_WITH_WERROR=OFF
     - -DMBGL_WITH_QT_HEADLESS=OFF
-    - -DMBGL_WITH_QT_TEST=OFF
-    - -DMBGL_WITH_QT_DEMO=OFF
+    - -DMBGL_QT_LIBRARY_ONLY=ON
+    - -DMBGL_QT_STATIC=OFF
+
+    image_setup:
+      run:
+      - ln -s android-23 /usr/include/android
+      - wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+      - apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-12 main"
+      - apt-get update
+      - apt-get install -y clang-12 lld-12
+      - update-alternatives --install /usr/bin/cc cc /usr/bin/clang-12 60
+      - update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-12 60
+      - mkdir /opt/cmake
+      - wget https://github.com/Kitware/CMake/releases/download/v3.22.3/cmake-3.22.3-linux-x86_64.sh -O cmake-installer.sh
+      - sh cmake-installer.sh --skip-license --prefix=/opt/cmake
+      - rm cmake-installer.sh
+      env:
+        CC: clang-12
+        CXX: clang++-12
+        PATH: /opt/cmake/bin:$PATH
+
+  mapbox-gl-qml:
+    builder: cmake
+    build_args:
+    - -DCMAKE_CXX_STANDARD=14
+
     dependencies_ppa:
     - ppa:janisozaur/cmake-update
     dependencies_host:
     - cmake
-
-  mapbox-gl-qml:
-    builder: qmake
-    build_args:
-    - INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/include
-    - INCLUDEPATH+=${BUILD_DIR}/../mapbox-gl-native/install/include/qt5
-    - LIBS+=-L${BUILD_DIR}/../mapbox-gl-native/install/lib
 
   s2geometry:
     builder: cmake
