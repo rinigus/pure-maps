@@ -7,6 +7,7 @@ project(pure-maps
 # options
 set(APP_NAME "" CACHE STRING "Name of the application, specify if custom name is needed")
 set(APP_REV_NAME "" CACHE STRING "Name of the application used for data files, specify if custom name is needed")
+set(APP_ORG "" CACHE STRING "Name of the organization, specify if different from APP_NAME")
 set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami, silica, qtcontrols, uuitk")
 option(APP_VARIANT_JOLLA_STORE "Set if compiling for Sailfish Jolla Store" OFF)
 set(PYTHON_EXE "auto" CACHE STRING "Set python3 executable. If set to 'auto', cmake will try to find it.")
@@ -77,6 +78,10 @@ if(NOT APP_REV_NAME)
     else()
 	set(APP_REV_NAME io.github.rinigus.PureMaps)
     endif()
+endif()
+
+if(NOT APP_ORG)
+    set(APP_ORG ${APP_NAME})
 endif()
 
 # requirements

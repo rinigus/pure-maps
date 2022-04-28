@@ -38,6 +38,7 @@
 #include <QtGlobal>
 
 #include <iostream>
+#include <stdlib.h>
 
 #include "clipboard.h"
 #include "cmdlineparser.h"
@@ -46,10 +47,24 @@
 #include "navigator.h"
 #include "navigatordbusadapter.h"
 #include "positionsource.h"
+#include "util.h"
 
 
 int main(int argc, char *argv[])
 {
+  // Set environment variables
+  {
+#ifdef IS_SAILFISH_OS
+    setenv("PUREMAPS_HOME_CACHE", SFOS_HOME_PREFIX, 0);
+    setenv("PUREMAPS_HOME_CONFIG", SFOS_HOME_PREFIX, 0);
+    setenv("PUREMAPS_HOME_DATA", SFOS_HOME_PREFIX, 0);
+#else
+    setenv("PUREMAPS_HOME_CACHE", APP_NAME, 0);
+    setenv("PUREMAPS_HOME_CONFIG", APP_NAME, 0);
+    setenv("PUREMAPS_HOME_DATA", APP_NAME, 0);
+#endif
+  }
+
 #ifdef IS_QTCONTROLS_QT
 #ifdef DEFAULT_FALLBACK_STYLE
   if (QQuickStyle::name().isEmpty())
@@ -65,12 +80,17 @@ int main(int argc, char *argv[])
 #endif
 
   app->setApplicationName(APP_NAME);
-  app->setOrganizationName(APP_NAME);
+  app->setOrganizationName(APP_ORG);
   app->setApplicationVersion(APP_VERSION);
 #ifdef IS_QTCONTROLS_QT
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
   app->setDesktopFileName(APP_REV_NAME ".desktop");
 #endif
+#endif
+
+  // check if we need to migrate settings
+#ifdef IS_SAILFISH_OS
+  migrateSailfishSettings();
 #endif
 
   // add translations

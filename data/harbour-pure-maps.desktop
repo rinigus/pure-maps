@@ -6,7 +6,7 @@ Type=Application
 X-Nemo-Application-Type=silica-qt5
 
 [X-HarbourBackup]
-BackupPathList=.config/harbour-pure-maps/
+BackupPathList=.config/io.github.rinigus/PureMaps
 
 [X-Sailjail]
 Sandboxing=Disabled

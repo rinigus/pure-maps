@@ -18,4 +18,8 @@
 #define DBUS_PATH_NAVIGATOR DBUS_PATH_ROOT "/navigator"
 #define DBUS_INTERFACE_NAVIGATOR DBUS_INTERFACE_ROOT ".navigator"
 
+#ifdef IS_SAILFISH_OS
+#define SFOS_HOME_PREFIX "io.github.rinigus/PureMaps"
+#endif
+
 #endif // CONFIG_H

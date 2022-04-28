@@ -109,6 +109,7 @@ cmake \
     -DCMAKE_INSTALL_RPATH=%{_datadir}/%{name}/lib: \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DPM_VERSION='%{version}-%{release}' \
+    -DAPP_ORG="io.github.rinigus" \
     -DFLAVOR=silica \
     -DUSE_BUNDLED_GPXPY=ON \
 %if 0%{?jollastore}
