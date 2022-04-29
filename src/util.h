@@ -10,6 +10,8 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#ifdef IS_SAILFISH_OS
 void migrateSailfishSettings();
+#endif
 
 #endif // UTIL_H

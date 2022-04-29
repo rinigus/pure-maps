@@ -15,6 +15,7 @@
 #include <QSettings>
 #include <QStandardPaths>
 
+#ifdef IS_SAILFISH_OS
 void migrateSailfishSettings()
 {
   // The new location of config file
@@ -46,3 +47,4 @@ void migrateSailfishSettings()
 
   settings.setValue(key, 1);
 }
+#endif
