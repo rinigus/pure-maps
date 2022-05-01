@@ -1,3 +1,14 @@
+2022-05-01: Pure Maps 3.1.0
+===========================
+
+* Redesign no-signal and low-signal icons [eLtMosen]
+* Reduce basemap icons size [eLtMosen]
+* Improve cmake build scripts
+* Update translations
+* [sfos] Distinguish between Chum and Jolla Store versions and warn users of limitations
+* [sfos] SailJail permissions for Jolla Store version
+* [ubuntu touch] Use MapLibre in Ubuntu packaging [jonnius]
+
 2022-03-16: Pure Maps 3.0.0
 ============================
 
