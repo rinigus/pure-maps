@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 22:02+0200\n"
+"POT-Creation-Date: 2022-05-01 16:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -436,31 +436,35 @@ msgstr ""
 msgid "version %1"
 msgstr ""
 
-#: qml/AboutPage.qml:63
+#: qml/AboutPage.qml:64
+msgid "This is a limited edition distributed through Jolla Store"
+msgstr ""
+
+#: qml/AboutPage.qml:71
 msgid ""
 "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
 msgstr ""
 
-#: qml/AboutPage.qml:88
+#: qml/AboutPage.qml:96
 msgid ""
 "Artwork by %1 and %2\n"
 "Banner photo by %3 (Pexels License)"
 msgstr ""
 
-#: qml/AboutPage.qml:96
+#: qml/AboutPage.qml:104
 msgid ""
 "Transportation icons made by <a href=\"https://www.flaticon.com/authors/"
 "freepik\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon."
 "com/\" title=\"Flaticon\">www.flaticon.com</a>"
 msgstr ""
 
-#: qml/AboutPage.qml:109
+#: qml/AboutPage.qml:117
 msgid ""
 "Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
 
-#: qml/AboutPage.qml:114
+#: qml/AboutPage.qml:122
 msgid "Translated by"
 msgstr ""
 
@@ -469,17 +473,17 @@ msgstr ""
 #. Thus, you should translate it to your name. You can also include other
 #. translators who have contributed to this translation; in that case, please
 #. write them on separate lines seperated by newlines (\n).
-#: qml/AboutPage.qml:126
+#: qml/AboutPage.qml:134
 msgid "translator-credits"
 msgstr ""
 
-#: qml/AboutPage.qml:136
+#: qml/AboutPage.qml:144
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
 
-#: qml/AboutPage.qml:142
+#: qml/AboutPage.qml:150
 msgid ""
 "Translations at <a href=\"https://www.transifex.com/rinigus/pure-maps"
 "\">Transifex page</a>"
@@ -680,19 +684,35 @@ msgstr ""
 msgid "Initializing"
 msgstr ""
 
-#: qml/InitPage.qml:54 qml/RoutePage.qml:193
+#: qml/InitPage.qml:65 qml/InitPage.qml:87 qml/RoutePage.qml:193
 msgid "Dismiss"
 msgstr ""
 
-#: qml/InitPage.qml:55
+#: qml/InitPage.qml:66
 msgid "Missing %1 key"
 msgstr ""
 
-#: qml/InitPage.qml:56
+#: qml/InitPage.qml:67
 msgid ""
 "Your installation is missing %1 API key. Please register at %1 and fill in "
 "your personal API key in Preferences. This key is not needed if you plan to "
 "use Pure Maps with the offline map provider."
+msgstr ""
+
+#: qml/InitPage.qml:88
+msgid "Pure Maps at Jolla Store"
+msgstr ""
+
+#: qml/InitPage.qml:89
+msgid ""
+"You are using Pure Maps distributed through Jolla Store. Due to Jolla Store "
+"restrictions, Pure Maps distributed via that store has several limitations. "
+"With the introduction of Sailjail, limitations include inability to provide "
+"voice prompts, display current street and speed limits through matching "
+"position to street network.\n"
+"\n"
+"To get fully functional Pure Maps, it is recommended to use Sailfish Chum "
+"and install Pure Maps from there."
 msgstr ""
 
 #: qml/LanguageSelector.qml:24
@@ -742,7 +762,7 @@ msgstr ""
 msgid ""
 "You are using an offline profile. Make sure that you have OSM Scout Server "
 "installed and running. Depending on your system, it is available either in "
-"application stores (OpenRepos for Sailfish OS, OpenStore for Ubuntu Touch), "
+"application stores (Chum for Sailfish OS, OpenStore for Ubuntu Touch), "
 "Flathub, or your distribution. See <a href=\"https://rinigus.github.io/"
 "osmscout-server\">OSM Scout Server manual</a> for details."
 msgstr ""
@@ -1906,7 +1926,7 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you "
 "are using Pure Maps through Flatpak or OpenStore, the engines have to be "
-"installed separately. Sailfish OS users can find the engines at OpenRepos."
+"installed separately. Sailfish OS users can find the engines at Chum."
 msgstr ""
 
 #: qml/PreferencesPage.qml:1020
