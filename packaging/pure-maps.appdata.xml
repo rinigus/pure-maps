@@ -46,7 +46,7 @@
          <li>Improve cmake build scripts</li>
          <li>[sfos] Distinguish between Chum and Jolla Store versions and warn users of limitations</li>
          <li>[sfos] SailJail permissions for Jolla Store version</li>
-         <li>[ubuntu touch] Use MapLibre in Ubuntu packaging [jonnius]
+         <li>[ubuntu touch] Use MapLibre in Ubuntu packaging [jonnius]</li>
          <li>Update translations</li>
        </ul>
      </description>
