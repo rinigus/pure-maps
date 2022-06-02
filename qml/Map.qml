@@ -396,26 +396,26 @@ MapboxMap {
         map.setLayoutProperty(map.layers.route, "line-join", "round");
         map.setPaintProperty(map.layers.route, "line-color", styler.route);
         map.setPaintProperty(map.layers.route, "line-opacity", styler.routeOpacity);
-        map.setPaintProperty(map.layers.route, "line-width", 10);
+        map.setPaintProperty(map.layers.route, "line-width", 16 * map.mapToQtPixelRatio);
         // Configure layer for route casing.
         map.setLayoutProperty(map.layers.routeOutline, "line-cap", "round");
         map.setLayoutProperty(map.layers.routeOutline, "line-join", "round");
         map.setPaintProperty(map.layers.routeOutline, "line-color", styler.route);
-        map.setPaintProperty(map.layers.routeOutline, "line-gap-width", 10);
+        map.setPaintProperty(map.layers.routeOutline, "line-gap-width", 16 * map.mapToQtPixelRatio);
         map.setPaintProperty(map.layers.routeOutline, "line-opacity", 1 - (1-styler.routeOpacity)/2);
-        map.setPaintProperty(map.layers.routeOutline, "line-width", 3);
+        map.setPaintProperty(map.layers.routeOutline, "line-width", 4 * map.mapToQtPixelRatio);
         // Configure layer for active maneuver markers.
         map.setPaintProperty(map.layers.maneuvers, "circle-color", styler.maneuver);
         map.setPaintProperty(map.layers.maneuvers, "circle-pitch-alignment", "map");
-        map.setPaintProperty(map.layers.maneuvers, "circle-radius", 5);
+        map.setPaintProperty(map.layers.maneuvers, "circle-radius", 11 * map.mapToQtPixelRatio);
         map.setPaintProperty(map.layers.maneuvers, "circle-stroke-color", styler.route);
-        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 2);
+        map.setPaintProperty(map.layers.maneuvers, "circle-stroke-width", 4 * map.mapToQtPixelRatio);
         // Configure layer for passive maneuver markers.
         map.setPaintProperty(map.layers.nodes, "circle-color", styler.maneuver);
         map.setPaintProperty(map.layers.nodes, "circle-pitch-alignment", "map");
-        map.setPaintProperty(map.layers.nodes, "circle-radius", 3);
+        map.setPaintProperty(map.layers.nodes, "circle-radius", 5 * map.mapToQtPixelRatio);
         map.setPaintProperty(map.layers.nodes, "circle-stroke-color", styler.route);
-        map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 1);
+        map.setPaintProperty(map.layers.nodes, "circle-stroke-width", 3 * map.mapToQtPixelRatio);
         // Configure layer for dummy symbols that knock out road shields etc.
         map.setLayoutProperty(map.layers.dummies, "icon-image", map.images.pixel);
         map.setLayoutProperty(map.layers.dummies, "icon-padding", 15);
