@@ -49,7 +49,8 @@ DialogListPL {
                 return styler.themePrimaryColor;
             }
             height: text && visible ? implicitHeight + app.listItemVerticalMargin : 0
-            text: model.available ? model.name : app.tr("%1 (disabled)", model.name)
+            text: model.available ? model.name :
+                                    app.tr("%1 (disabled, %2)", model.name, model.available_message)
             verticalAlignment: Text.AlignBottom
             visible: !model.header
         }

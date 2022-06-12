@@ -116,7 +116,7 @@ PagePL {
                 anchors.topMargin: styler.isSilica ? parent.top : undefined
                 anchors.verticalCenter: styler.isSilica ? undefined : label.verticalCenter
                 model: [ app.tr("Online"), app.tr("Offline"),
-                    hereAvailable ? app.tr("HERE - Online") : app.tr("HERE (disabled)"),
+                    hereAvailable ? app.tr("HERE - Online") : app.tr("HERE (disabled, API key missing)"),
                     app.tr("Mixed") ]
                 property var values: ["online", "offline", "HERE", "mixed"]
                 property bool hereAvailable: py.evaluate("poor.key.has_here")

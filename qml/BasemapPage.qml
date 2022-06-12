@@ -40,7 +40,15 @@ PageListPL {
                 return styler.themePrimaryColor;
             }
             height: styler.themeItemSizeSmall
-            text: model.name
+            text: {
+                var isDefault = (model.pid === defaultId);
+                if (model.available)
+                    return isDefault ? app.tr("%1 (default)", model.name) :
+                                       model.name;
+                // Assume that basemap was disabled due to missing API key
+                return isDefault ? app.tr("%1 (default, disabled, API key missing)", model.name) :
+                                   app.tr("%1 (disabled, API key missing)", model.name)
+            }
         }
 
         onClicked: {
@@ -53,13 +61,15 @@ PageListPL {
 
     model: ListModel {}
 
+    property string defaultId: ""
+
     Component.onCompleted: update()
 
     function update() {
         // Load basemap model items from the Python backend.
         py.call("poor.app.basemap.list", [], function(basemaps) {
             page.model.clear();
-            Util.markDefault(basemaps, app.conf.getDefault("basemap"));
+            defaultId = app.conf.getDefault("basemap");
             Util.appendAll(page.model, basemaps);
         });
     }

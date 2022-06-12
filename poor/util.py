@@ -380,7 +380,9 @@ def _get_providers(directory, default, active, profile):
                 if not v:
                     print('API key missing:', k, 'disabling', pid)
                     available = False
+                    provider["available_message"] = _("API key missing")
             provider["available"] = available
+            if available: provider["available_message"] = _("Available")
             providers.append(provider)
     providers.sort(key=lambda x: (not x["available"], x["name"]))
     return providers
