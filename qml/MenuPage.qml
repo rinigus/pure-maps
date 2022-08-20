@@ -126,7 +126,7 @@ MenuDrawerPL {
         MenuDrawerSubmenuItemPL {
             checked: app.conf.profile === "HERE"
             enabled: available
-            text: available ? app.tr("HERE - Online") : app.tr("HERE (disabled)")
+            text: available ? app.tr("HERE - Online") : app.tr("HERE (disabled, API key missing)")
             onClicked: if (available) profiles.set("HERE")
             property bool available: py.evaluate("poor.key.has_here")
         }
