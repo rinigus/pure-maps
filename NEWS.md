@@ -8,6 +8,9 @@
 * [sfos] Distinguish between Chum and Jolla Store versions and warn users of limitations
 * [sfos] SailJail permissions for Jolla Store version
 * [ubuntu touch] Use MapLibre in Ubuntu packaging [jonnius]
+* [3.1.1] Adjust route width
+* [3.1.1, kirigami] Workaround Kirigami scrollable page bugs
+
 
 2022-03-16: Pure Maps 3.0.0
 ============================

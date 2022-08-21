@@ -38,6 +38,15 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="3.1.1" date="2022-08-21">
+     <description>
+       <ul>
+         <li>Adjust route width</li>
+         <li>[kirigami] Workaround Kirigami scrollable page bugs</li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="3.1.0" date="2022-05-01">
      <description>
        <ul>
