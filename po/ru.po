@@ -7,15 +7,16 @@
 # Oleg Artobolevsky <artobolevsky.oleg@yandex.ru>, 2021
 # rinigus github, 2021
 # Вячеслав Диконов <sdiconov@mail.ru>, 2022
+# Alex UBports, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-01 16:51+0300\n"
+"POT-Creation-Date: 2022-08-21 11:41+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Вячеслав Диконов <sdiconov@mail.ru>, 2022\n"
+"Last-Translator: Alex UBports, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rinigus/teams/89597/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -306,6 +307,14 @@ msgstr "{:d} мин"
 msgid "{:d} h {:d} min"
 msgstr "{:d} ч {:d} мин"
 
+#: poor/util.py:383
+msgid "API key missing"
+msgstr ""
+
+#: poor/util.py:385
+msgid "Available"
+msgstr ""
+
 #: routers/here.py:319
 #, python-brace-format
 msgid "Continue for {distance}"
@@ -491,7 +500,7 @@ msgstr "версия %1"
 
 #: qml/AboutPage.qml:64
 msgid "This is a limited edition distributed through Jolla Store"
-msgstr ""
+msgstr "Это ограниченная серия, распространяемая через Магазин Jolla"
 
 #: qml/AboutPage.qml:71
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
@@ -566,7 +575,7 @@ msgstr "Карты"
 
 #: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
 #: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
-#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:826
+#: qml/PoiPage.qml:135 qml/PreferencesPage.qml:826
 msgid "Search"
 msgstr "Поиск"
 
@@ -586,7 +595,7 @@ msgstr "Навигация"
 msgid "Type"
 msgstr "Тип"
 
-#: qml/BasemapButton.qml:243 qml/js/util.js:240
+#: qml/BasemapButton.qml:243 qml/js/util.js:227
 msgid "Default"
 msgstr "Стандарт"
 
@@ -660,7 +669,19 @@ msgstr "Увеличение карты"
 msgid "Map scale during navigation"
 msgstr "Масштабирование карты во время навигации"
 
-#: qml/BasemapPage.qml:48
+#: qml/BasemapPage.qml:46
+msgid "%1 (default)"
+msgstr "%1 (по умолчанию)"
+
+#: qml/BasemapPage.qml:49
+msgid "%1 (default, disabled, API key missing)"
+msgstr ""
+
+#: qml/BasemapPage.qml:50
+msgid "%1 (disabled, API key missing)"
+msgstr ""
+
+#: qml/BasemapPage.qml:56
 msgid "Map: %1"
 msgstr "Карта: %1"
 
@@ -741,10 +762,9 @@ msgstr "%1 [duplicate]"
 msgid "Search engine"
 msgstr "Поисковый движок"
 
-#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
-#: qml/js/util.js:160
-msgid "%1 (disabled)"
-msgstr "%1 (отключено)"
+#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:55 qml/RouterPage.qml:53
+msgid "%1 (disabled, %2)"
+msgstr ""
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -770,7 +790,7 @@ msgstr ""
 
 #: qml/InitPage.qml:88
 msgid "Pure Maps at Jolla Store"
-msgstr ""
+msgstr "Pure Maps в Магазине Jolla"
 
 #: qml/InitPage.qml:89
 msgid ""
@@ -778,6 +798,13 @@ msgid ""
 "\n"
 "To get fully functional Pure Maps, it is recommended to use Sailfish Chum and install Pure Maps from there."
 msgstr ""
+"Вы используете Pure Maps, распространяемые через Магазин Jolla. Из-за "
+"ограничений Магазина Jolla, Pure Maps, распространяемые через этот магазин, "
+"имеют несколько ограничений. С введением Sailjail ограничения включают в "
+"себя невозможность предоставления голосовых подсказок, отображения текущих "
+"ограничений улицы и скорости через сопоставление положения с уличной "
+"сетью.Чтобы получить полнофункциональные Pure Maps, рекомендуется "
+"использовать Sailfish Chum и установить Pure Maps оттуда."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
@@ -831,6 +858,11 @@ msgid ""
 "href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
 "manual</a> for details."
 msgstr ""
+"Вы используете автономный профиль. Убедитесь, что у вас установлен и запущен"
+" Сервер OSM Scout. В зависимости от вашей системы, он доступен либо в "
+"магазинах приложений (Chum для Sailfish OS, OpenStore для Ubuntu Touch), "
+"Flathub или в вашем дистрибутиве. Подробности см. в руководстве по серверу "
+"OSM Scout."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -861,8 +893,8 @@ msgid "HERE - Online"
 msgstr "HERE - онлайн"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
-msgid "HERE (disabled)"
-msgstr "HERE (отключено)"
+msgid "HERE (disabled, API key missing)"
+msgstr ""
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -1367,7 +1399,7 @@ msgstr "Рядом"
 msgid "View"
 msgstr "Просмотр"
 
-#: qml/PoiPage.qml:152
+#: qml/PoiPage.qml:151
 msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
@@ -2050,6 +2082,9 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at Chum."
 msgstr ""
+"Pure Maps поддерживает движки Mimic, Flite, PicoTTS и Espeak TTS. Если вы не"
+" используете Pure Maps через Flatpak или OpenStore, движки должны быть "
+"установлены отдельно. Пользователи Sailfish OS могут найти двигатели в Chum."
 
 #: qml/PreferencesPage.qml:1020
 msgid "Development"
@@ -2213,7 +2248,7 @@ msgstr "Текущий выбор: %1"
 msgid "Routing engine"
 msgstr "Движок маршрутизации"
 
-#: qml/RouterPage.qml:65
+#: qml/RouterPage.qml:66
 msgid "Modes: %1"
 msgstr "Режимы: %1"
 
@@ -2948,11 +2983,7 @@ msgstr "Избегать (по умолчанию)"
 msgid "Transfers"
 msgstr "Трансферы"
 
-#: qml/js/util.js:157
-msgid "%1 (default)"
-msgstr "%1 (по умолчанию)"
-
-#: qml/js/util.js:239
+#: qml/js/util.js:226
 msgid "Alternatives"
 msgstr "Альтернативы"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-01 16:51+0300\n"
+"POT-Creation-Date: 2022-08-21 11:41+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Ladislav Hodas <ladislav@hodas.sk>, 2022\n"
 "Language-Team: Slovak (Slovakia) (https://www.transifex.com/rinigus/teams/89597/sk_SK/)\n"
@@ -286,6 +286,14 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
+#: poor/util.py:383
+msgid "API key missing"
+msgstr ""
+
+#: poor/util.py:385
+msgid "Available"
+msgstr ""
+
 #: routers/here.py:319
 #, python-brace-format
 msgid "Continue for {distance}"
@@ -471,7 +479,7 @@ msgstr "verzia %1"
 
 #: qml/AboutPage.qml:64
 msgid "This is a limited edition distributed through Jolla Store"
-msgstr ""
+msgstr "Toto je limitovaná edícia distribuovaná prostredníctvom Jolla Store"
 
 #: qml/AboutPage.qml:71
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
@@ -494,9 +502,8 @@ msgid ""
 "title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" "
 "title=\"Flaticon\">www.flaticon.com</a>"
 msgstr ""
-"Pohybové ikony boli vytvorené <a "
-"href=\"https://www.flaticon.com/authors/freepik\" "
-"title=\"Freepik\">Freepik</a> z <a href=\"https://www.flaticon.com/\" "
+"Dopravné ikony vytvoril <a href=\"https://www.flaticon.com/authors/freepik\""
+" title=\"Freepik\">Freepik</a> z <a href=\"https://www.flaticon.com/\" "
 "title=\"Flaticon\">www.flaticon.com</a>"
 
 #: qml/AboutPage.qml:117
@@ -547,7 +554,7 @@ msgstr "Mapy"
 
 #: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
 #: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
-#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:826
+#: qml/PoiPage.qml:135 qml/PreferencesPage.qml:826
 msgid "Search"
 msgstr "Hľadať"
 
@@ -567,7 +574,7 @@ msgstr "Navigácia"
 msgid "Type"
 msgstr "Typ"
 
-#: qml/BasemapButton.qml:243 qml/js/util.js:240
+#: qml/BasemapButton.qml:243 qml/js/util.js:227
 msgid "Default"
 msgstr "Východiskový"
 
@@ -641,7 +648,19 @@ msgstr "Mierka"
 msgid "Map scale during navigation"
 msgstr "Mierka počas navigácie"
 
-#: qml/BasemapPage.qml:48
+#: qml/BasemapPage.qml:46
+msgid "%1 (default)"
+msgstr "%1 (východzie)"
+
+#: qml/BasemapPage.qml:49
+msgid "%1 (default, disabled, API key missing)"
+msgstr ""
+
+#: qml/BasemapPage.qml:50
+msgid "%1 (disabled, API key missing)"
+msgstr ""
+
+#: qml/BasemapPage.qml:56
 msgid "Map: %1"
 msgstr "Mapa: %1"
 
@@ -722,10 +741,9 @@ msgstr "%1 [duplicate]"
 msgid "Search engine"
 msgstr "Vyhľadávací stroj"
 
-#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
-#: qml/js/util.js:160
-msgid "%1 (disabled)"
-msgstr "%1 (neprejazdné)"
+#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:55 qml/RouterPage.qml:53
+msgid "%1 (disabled, %2)"
+msgstr ""
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -751,7 +769,7 @@ msgstr ""
 
 #: qml/InitPage.qml:88
 msgid "Pure Maps at Jolla Store"
-msgstr ""
+msgstr "Pure Maps v Jolla Store"
 
 #: qml/InitPage.qml:89
 msgid ""
@@ -759,6 +777,9 @@ msgid ""
 "\n"
 "To get fully functional Pure Maps, it is recommended to use Sailfish Chum and install Pure Maps from there."
 msgstr ""
+"Používate Pure Maps distribuované prostredníctvom Jolla Store. V dôsledku obmedzení Jolla Store majú Pure Maps distribuované prostredníctvom Jolla Store niekoľko obmedzení. So zavedením Sailjail, obmedzenia zahŕňajú neschopnosť poskytovať hlasové pokyny, zobrazovať aktuálnu ulicu a rýchlostné obmedzenia prostredníctvom priraďovania polohy k sieti ulíc.\n"
+"\n"
+"Pre plnú funkčnosť Pure Maps odporúčame použiť Sailfish Chum a inštalovať Pure Maps odtiaľ."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
@@ -812,6 +833,11 @@ msgid ""
 "href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
 "manual</a> for details."
 msgstr ""
+"Používate nepripojený profil. Uistite sa, že máte inštalovaný a bežiaci OSM "
+"Scout Server. V závislosti od Vášho systému je dostupný v niektorom zo "
+"skladov (Chum pre Sailfish OS, OpenStore pre Ubuntu Touch), Flathub, alebo "
+"Vaša vlastná distribúcia. Pre podrobnosti pozrite používateľskú príručku <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server</a>."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -842,8 +868,8 @@ msgid "HERE - Online"
 msgstr "HERE - Online"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
-msgid "HERE (disabled)"
-msgstr "HERE (zakázané)"
+msgid "HERE (disabled, API key missing)"
+msgstr ""
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -1348,7 +1374,7 @@ msgstr "Blízko"
 msgid "View"
 msgstr "Pohľad"
 
-#: qml/PoiPage.qml:152
+#: qml/PoiPage.qml:151
 msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
@@ -2029,6 +2055,9 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at Chum."
 msgstr ""
+"Pre zvolený jazyk nie je k dispozícii hlasový generátor.\n"
+"\n"
+"Pure Maps podporujú Mimic, Flite, PicoTTS a Espeak TTS hlasové generátory. Pokiaľ nepoužívate Pure Maps prostredníctvom Flatpak alebo OpenStore, hlasový generátor musíte inštalovať samostatne. Používatelia Sailfish OS môžu nájsť hlasový generátor v Chum."
 
 #: qml/PreferencesPage.qml:1020
 msgid "Development"
@@ -2052,7 +2081,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:1036
 msgid "Set position to the map center"
-msgstr "Nastavte polohu na stred mapy"
+msgstr "Nastaviť polohu na stred mapy"
 
 #: qml/PreferencesPage.qml:1043
 msgid "Show current zoom level"
@@ -2190,7 +2219,7 @@ msgstr "Súčasný výber: %1"
 msgid "Routing engine"
 msgstr "Trasovací stroj"
 
-#: qml/RouterPage.qml:65
+#: qml/RouterPage.qml:66
 msgid "Modes: %1"
 msgstr "Režimy: %1"
 
@@ -2922,11 +2951,7 @@ msgstr "Vyhnúť sa (východzie)"
 msgid "Transfers"
 msgstr "Presuny"
 
-#: qml/js/util.js:157
-msgid "%1 (default)"
-msgstr "%1 (východzie)"
-
-#: qml/js/util.js:239
+#: qml/js/util.js:226
 msgid "Alternatives"
 msgstr "Alternatívy"
 

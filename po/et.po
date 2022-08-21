@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-01 16:51+0300\n"
+"POT-Creation-Date: 2022-08-21 11:41+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2022\n"
 "Language-Team: Estonian (https://www.transifex.com/rinigus/teams/89597/et/)\n"
@@ -300,6 +300,14 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
+#: poor/util.py:383
+msgid "API key missing"
+msgstr ""
+
+#: poor/util.py:385
+msgid "Available"
+msgstr ""
+
 #: routers/here.py:319
 #, python-brace-format
 msgid "Continue for {distance}"
@@ -561,7 +569,7 @@ msgstr "Kaardid"
 
 #: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
 #: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
-#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:826
+#: qml/PoiPage.qml:135 qml/PreferencesPage.qml:826
 msgid "Search"
 msgstr "Otsi"
 
@@ -581,7 +589,7 @@ msgstr "Sinu teekond"
 msgid "Type"
 msgstr "Tüüp"
 
-#: qml/BasemapButton.qml:243 qml/js/util.js:240
+#: qml/BasemapButton.qml:243 qml/js/util.js:227
 msgid "Default"
 msgstr "Vaikimisi"
 
@@ -655,7 +663,19 @@ msgstr "Kaardi skaala"
 msgid "Map scale during navigation"
 msgstr "Skaleeri kaarti tee näitamise ajal"
 
-#: qml/BasemapPage.qml:48
+#: qml/BasemapPage.qml:46
+msgid "%1 (default)"
+msgstr "%1 (vaikimisi väärtus)"
+
+#: qml/BasemapPage.qml:49
+msgid "%1 (default, disabled, API key missing)"
+msgstr ""
+
+#: qml/BasemapPage.qml:50
+msgid "%1 (disabled, API key missing)"
+msgstr ""
+
+#: qml/BasemapPage.qml:56
 msgid "Map: %1"
 msgstr "Kaart: %1"
 
@@ -736,10 +756,9 @@ msgstr "%1 [topeltkirje]"
 msgid "Search engine"
 msgstr "Otsingumootor"
 
-#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
-#: qml/js/util.js:160
-msgid "%1 (disabled)"
-msgstr "%1 (pole kasutusel)"
+#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:55 qml/RouterPage.qml:53
+msgid "%1 (disabled, %2)"
+msgstr ""
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -856,8 +875,8 @@ msgid "HERE - Online"
 msgstr "HERE - võrgupõhine"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
-msgid "HERE (disabled)"
-msgstr "HERE (ei ole kasutusel)"
+msgid "HERE (disabled, API key missing)"
+msgstr ""
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -1364,7 +1383,7 @@ msgstr "Läheduses"
 msgid "View"
 msgstr "Vaata"
 
-#: qml/PoiPage.qml:152
+#: qml/PoiPage.qml:151
 msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
@@ -2207,7 +2226,7 @@ msgstr "Praegune valik: %1"
 msgid "Routing engine"
 msgstr "Teekonna koostaja"
 
-#: qml/RouterPage.qml:65
+#: qml/RouterPage.qml:66
 msgid "Modes: %1"
 msgstr "Liigid: %1"
 
@@ -2941,11 +2960,7 @@ msgstr "Väldi (vaikimisi väärtus)"
 msgid "Transfers"
 msgstr "Ümberistumised"
 
-#: qml/js/util.js:157
-msgid "%1 (default)"
-msgstr "%1 (vaikimisi väärtus)"
-
-#: qml/js/util.js:239
+#: qml/js/util.js:226
 msgid "Alternatives"
 msgstr "Alternatiivid"
 

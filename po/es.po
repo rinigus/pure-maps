@@ -5,22 +5,22 @@
 # 
 # Translators:
 # rinigus github, 2021
-# Carmen Fernández B., 2021
+# Carmen Fernández B., 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-01 16:51+0300\n"
+"POT-Creation-Date: 2022-08-21 11:41+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Carmen Fernández B., 2021\n"
+"Last-Translator: Carmen Fernández B., 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: geocoders/here.py:141
 msgid "Search suggestion"
@@ -300,6 +300,14 @@ msgstr "{:d} min"
 msgid "{:d} h {:d} min"
 msgstr "{:d} h {:d} min"
 
+#: poor/util.py:383
+msgid "API key missing"
+msgstr ""
+
+#: poor/util.py:385
+msgid "Available"
+msgstr ""
+
 #: routers/here.py:319
 #, python-brace-format
 msgid "Continue for {distance}"
@@ -486,6 +494,7 @@ msgstr "versión %1"
 #: qml/AboutPage.qml:64
 msgid "This is a limited edition distributed through Jolla Store"
 msgstr ""
+"Esta es una edición limitada distribuida a través de la tienda de Jolla"
 
 #: qml/AboutPage.qml:71
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
@@ -561,7 +570,7 @@ msgstr "Mapas"
 
 #: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
 #: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
-#: qml/PoiPage.qml:136 qml/PreferencesPage.qml:826
+#: qml/PoiPage.qml:135 qml/PreferencesPage.qml:826
 msgid "Search"
 msgstr "Buscar"
 
@@ -581,7 +590,7 @@ msgstr "Navegación"
 msgid "Type"
 msgstr "Tipo"
 
-#: qml/BasemapButton.qml:243 qml/js/util.js:240
+#: qml/BasemapButton.qml:243 qml/js/util.js:227
 msgid "Default"
 msgstr "Defecto"
 
@@ -655,7 +664,19 @@ msgstr "Escala del mapa"
 msgid "Map scale during navigation"
 msgstr "Escala del mapa durante la navegación"
 
-#: qml/BasemapPage.qml:48
+#: qml/BasemapPage.qml:46
+msgid "%1 (default)"
+msgstr "%1 (por defecto)"
+
+#: qml/BasemapPage.qml:49
+msgid "%1 (default, disabled, API key missing)"
+msgstr ""
+
+#: qml/BasemapPage.qml:50
+msgid "%1 (disabled, API key missing)"
+msgstr ""
+
+#: qml/BasemapPage.qml:56
 msgid "Map: %1"
 msgstr "Mapa: %1"
 
@@ -736,10 +757,9 @@ msgstr "%1 [duplicado]"
 msgid "Search engine"
 msgstr "Motor de búsqueda"
 
-#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:54 qml/RouterPage.qml:52
-#: qml/js/util.js:160
-msgid "%1 (disabled)"
-msgstr "%1 (deshabilitado)"
+#: qml/GeocoderPage.qml:54 qml/GuidePage.qml:55 qml/RouterPage.qml:53
+msgid "%1 (disabled, %2)"
+msgstr ""
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -765,7 +785,7 @@ msgstr ""
 
 #: qml/InitPage.qml:88
 msgid "Pure Maps at Jolla Store"
-msgstr ""
+msgstr "Pure Maps en la tienda de Jolla"
 
 #: qml/InitPage.qml:89
 msgid ""
@@ -773,6 +793,9 @@ msgid ""
 "\n"
 "To get fully functional Pure Maps, it is recommended to use Sailfish Chum and install Pure Maps from there."
 msgstr ""
+"Estás usando Pure Maps distribuida a través de la tienda de Jolla. Debido a las restricciones de la tienda de Jolla, esta compilación de Pure Maps tiene varias limitaciones. Con la introducción de Sailjail,  esas  limitaciones consisten en la incapacidad de proporcionar indicaciones por voz, mostrar la calle actual y los límites de velocidad al coincidir la posición con la red viaria.\n"
+"\n"
+"Para obtener Pure Maps completamente funcional, se recomienda usar Sailfish Chum e instalar Pure Maps desde allí."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
@@ -826,6 +849,12 @@ msgid ""
 "href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
 "manual</a> for details."
 msgstr ""
+"Estás usando un perfil sin conexión. Asegúrate de tener instalado y "
+"funcionando OSM Scout Server. Dependiendo de tu sistema, está disponible en "
+"las tiendas de aplicaciones (Chum para Sailfish OS, OpenStore para Ubuntu "
+"Touch), Flathub o tu distribución. Consulta el <a "
+"href=\"https://rinigus.github.io/osmscout-server\"> manual de OSM Scout "
+"Server</a> para más detalles."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -856,8 +885,8 @@ msgid "HERE - Online"
 msgstr "HERE - Online"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
-msgid "HERE (disabled)"
-msgstr "HERE (deshabilitado)"
+msgid "HERE (disabled, API key missing)"
+msgstr ""
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -1079,7 +1108,7 @@ msgstr "Error al calcular ruta: %1"
 
 #: qml/Navigator.qml:237 src/navigator.cpp:1099
 msgid "Traffic and route updated"
-msgstr ""
+msgstr "Tráfico y ruta actualizadas"
 
 #: qml/Navigator.qml:237 src/navigator.cpp:1096
 msgid "New route found"
@@ -1095,7 +1124,7 @@ msgstr "Error al calcular ruta"
 
 #: qml/Navigator.qml:281
 msgid "Updating traffic"
-msgstr ""
+msgstr "Actualizando tráfico"
 
 #: qml/Navigator.qml:281 src/navigator.cpp:1097
 msgid "Rerouting"
@@ -1363,7 +1392,7 @@ msgstr "Cerca"
 msgid "View"
 msgstr "Ver"
 
-#: qml/PoiPage.qml:152
+#: qml/PoiPage.qml:151
 msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
@@ -1812,34 +1841,36 @@ msgid ""
 "Timeout between traffic information updates leading to possible rerouting. "
 "This is active only while routing."
 msgstr ""
+"Tiempo de espera entre actualizaciones de información de tráfico que "
+"conducen a un posible cambio de ruta. Esto sólo está activo durante la ruta."
 
 #: qml/PreferencesPage.qml:595
 msgid "Update traffic while routing"
-msgstr ""
+msgstr "Actualizar tráfico durante la ruta"
 
 #: qml/PreferencesPage.qml:597
 msgid "Disabled"
-msgstr ""
+msgstr "Deshabilitado"
 
 #: qml/PreferencesPage.qml:598
 msgid "10 minutes"
-msgstr ""
+msgstr "10 minutos"
 
 #: qml/PreferencesPage.qml:599
 msgid "20 minutes"
-msgstr ""
+msgstr "20 minutos"
 
 #: qml/PreferencesPage.qml:600
 msgid "30 minutes"
-msgstr ""
+msgstr "30 minutos"
 
 #: qml/PreferencesPage.qml:601
 msgid "45 minutes"
-msgstr ""
+msgstr "45 minutos"
 
 #: qml/PreferencesPage.qml:602
 msgid "60 minutes"
-msgstr ""
+msgstr "60 minutos"
 
 #: qml/PreferencesPage.qml:628
 msgid ""
@@ -2050,6 +2081,9 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at Chum."
 msgstr ""
+"No hay motor disponible para el idioma seleccionado.\n"
+"\n"
+"Pure Maps es compatible con los motores Mimic, Flite, PicoTTS y Espeak TTS. A menos que estés usando Pure Maps a través de Flatpak u OpenStore, los motores deben instalarse por separado. Los usuarios de Sailfish OS pueden encontrar los motores en Chum."
 
 #: qml/PreferencesPage.qml:1020
 msgid "Development"
@@ -2089,7 +2123,7 @@ msgstr "Total"
 
 #: qml/RouteOverallInfo.qml:167
 msgid "incl %1 traffic delay"
-msgstr ""
+msgstr "incl %1 de retraso"
 
 #: qml/RoutePage.qml:34
 msgid "Stop"
@@ -2213,7 +2247,7 @@ msgstr "Selección actual: %1"
 msgid "Routing engine"
 msgstr "Motor de cálculo de rutas"
 
-#: qml/RouterPage.qml:65
+#: qml/RouterPage.qml:66
 msgid "Modes: %1"
 msgstr "Modos: %1"
 
@@ -2946,11 +2980,7 @@ msgstr "Evitar (por defecto)"
 msgid "Transfers"
 msgstr "Transbordos"
 
-#: qml/js/util.js:157
-msgid "%1 (default)"
-msgstr "%1 (por defecto)"
-
-#: qml/js/util.js:239
+#: qml/js/util.js:226
 msgid "Alternatives"
 msgstr "Alternativas"
 
@@ -3011,11 +3041,11 @@ msgstr "Iniciando navegación"
 
 #: src/navigator.cpp:1100
 msgid "Position imprecise"
-msgstr ""
+msgstr "Posición imprecisa"
 
 #: src/navigator.cpp:1102
 msgid "Position available"
-msgstr ""
+msgstr "Posición disponible"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
