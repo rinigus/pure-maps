@@ -22,10 +22,10 @@ import QtQuick.Controls 2.2
 import org.kde.kirigami 2.7 as Kirigami
 import "."
 
-Kirigami.ScrollablePage {
+Kirigami.Page {
     id: page
-    flickable: listView
-    mainItem: listView
+    leftPadding: 0
+    rightPadding: 0
     Kirigami.ColumnView.fillWidth: false
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
 
@@ -71,6 +71,7 @@ Kirigami.ScrollablePage {
     ListView {
         id: listView
 
+        anchors.fill: parent
         currentIndex: -1
         header: Column {
             height: styler.themePaddingLarge +
@@ -85,8 +86,8 @@ Kirigami.ScrollablePage {
             Loader {
                 id: headerExtraLoader
                 active: sourceComponent ? true : false
-                width: parent.width
                 sourceComponent: page.headerExtra
+                width: parent.width
             }
         }
 
