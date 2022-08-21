@@ -50,8 +50,8 @@ PageListPL {
 
         ListItemLabel {
             id: detailsItem
-            anchors.top: titleItem.bottom
             anchors.leftMargin: page.searchField.textLeftMargin
+            anchors.top: titleItem.bottom
             color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
             font.pixelSize: styler.themeFontSizeSmall
             height: text ? implicitHeight + styler.themePaddingSmall : 0
@@ -66,9 +66,9 @@ PageListPL {
 
         ListItemLabel {
             id: textItem
+            anchors.leftMargin: page.searchField.textLeftMargin
             anchors.top: detailsItem.bottom
             anchors.topMargin: styler.themePaddingSmall
-            anchors.leftMargin: page.searchField.textLeftMargin
             color: listItem.highlighted ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
             font.pixelSize: styler.themeFontSizeExtraSmall
             height: text ? implicitHeight : 0
@@ -132,7 +132,6 @@ PageListPL {
     headerExtra: Component {
         SearchFieldPL {
             id: searchField
-            width: parent.width
             placeholderText: app.tr("Search")
             property string prevText: ""
             onTextChanged: {

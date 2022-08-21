@@ -32,7 +32,9 @@ TextField {
     rightPadding: clearButton.width + clearButton.anchors.leftMargin + styler.themePaddingMedium
     Keys.onReturnPressed: field.search()
 
-    property real  textLeftMargin: field.x + leftPadding
+    // Original formula: field.x + leftPadding
+    // No idea why it is now working better without field.x
+    property real  textLeftMargin: leftPadding
 
     signal search
 
