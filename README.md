@@ -172,7 +172,7 @@ are needed:
 * Mapbox GL QML, unofficial QML bindings, https://github.com/rinigus/mapbox-gl-qml
 * GPXPy, https://github.com/tkrajina/gpxpy
 * S2 Geometry Library, https://github.com/google/s2geometry
-* For Kirigami platform: Nemo DBus https://git.merproject.org/mer-core/nemo-qml-plugin-dbus
+* For Kirigami platform: Nemo DBus https://github.com/sailfishos/nemo-qml-plugin-dbus
 
 When developing with Kirigami using flatpak builder, dependencies will
 be pulled and installed in flatpak. See instructions regarding
