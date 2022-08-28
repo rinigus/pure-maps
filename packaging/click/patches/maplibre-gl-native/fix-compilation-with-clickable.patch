@@ -11,10 +11,10 @@ index 01f62a1a8..71db29e2f 100644
  set(CMAKE_CXX_STANDARD_REQUIRED ON)
  set(CMAKE_CXX_VISIBILITY_PRESET hidden)
  set(CMAKE_C_EXTENSIONS OFF)
-diff --git a/platform/qt/src/http_file_source.cpp b/platform/qt/src/http_file_source.cpp
+diff --git a/platform/qt/src/mbgl/http_file_source.cpp b/platform/qt/src/mbgl/http_file_source.cpp
 index a2a13c5e1..a4ac0c58e 100644
---- a/platform/qt/src/http_file_source.cpp
-+++ b/platform/qt/src/http_file_source.cpp
+--- a/platform/qt/src/mbgl/http_file_source.cpp
++++ b/platform/qt/src/mbgl/http_file_source.cpp
 @@ -45,7 +45,8 @@ void HTTPFileSource::Impl::request(HTTPRequest* req)
  #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
      connect(data.first, &QNetworkReply::errorOccurred, this, &HTTPFileSource::Impl::onReplyFinished);
