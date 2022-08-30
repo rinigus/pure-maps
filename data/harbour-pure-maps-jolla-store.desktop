@@ -9,6 +9,6 @@ X-Nemo-Application-Type=no-invoker
 BackupPathList=.config/io.github.rinigus/PureMaps
 
 [X-Sailjail]
-Permissions=Internet;Location;Audio
+Permissions=Internet;Location;Audio;Downloads
 OrganizationName=io.github.rinigus
 ApplicationName=PureMaps
