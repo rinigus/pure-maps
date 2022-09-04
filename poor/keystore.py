@@ -96,7 +96,7 @@ LICENSES = {
             '<a href="https://legal.here.com/en-gb/terms/acceptable-use-policy">acceptable use policy</a>, '
             'and <a href="https://legal.here.com/en-gb/privacy">HERE Privacy policies</a>. '
             'In context of use of HERE and privacy policy, Pure Maps communicates with HERE using REST API.<p></br>'
-            '<p>For <a href="https://knowledge.here.com/csm_kb?id=public_kb_csm_details&number=KB0016412">legal reasons</a>, '
+            '<p>For <a href="{lruri}">legal reasons</a>, '
             'Pure Maps enables HERE search and routing in a dedicated "HERE Online" profile only. '
             'While not active anymore, see acceptable use policy of 2018 for details regarding '
             'use of HERE together with other providers under '
@@ -105,7 +105,8 @@ LICENSES = {
             '<p>Please either accept the terms and the policy or decline them. If declined, '
             'HERE support will be inactive and '
             'can be enabled later by accepting the terms in Preferences under Licenses.</p>'
-        ), _('HERE End-User Terms'))
+        ).format(lruri="https://knowledge.here.com/csm_kb?id=public_kb_csm_details&number=KB0017825"),
+        _('HERE End-User Terms'))
 }
 
 class KeyStore:
