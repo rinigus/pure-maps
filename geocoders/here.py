@@ -44,7 +44,7 @@ URL_REVERSE = ("https://revgeocode.search.hereapi.com/v1/revgeocode?"
                "&language={lang}")
 cache = {}
 
-def autocomplete(query, x=0, y=0, params={}):
+def autocomplete(query, x=0, y=0, zoom=16, params={}):
     """Return a list of autocomplete dictionaries matching `query`."""
     query = query.strip()
     if len(query) < 3: return []
@@ -65,7 +65,7 @@ def autocomplete(query, x=0, y=0, params={}):
         cache[url] = copy.deepcopy(results)
     return results
 
-def geocode(query, x=0, y=0, params={}):
+def geocode(query, x=0, y=0, zoom=16, params={}):
     """Return a list of dictionaries of places matching `query`."""
     if isinstance(query, str):
         query = urllib.parse.quote_plus(query)

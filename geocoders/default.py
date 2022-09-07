@@ -26,13 +26,13 @@ import poor
 
 providers = ["photon", "opencage"]
 
-def geocode(query, x, y, params):
+def geocode(query, x, y, zoom, params):
     """Return a list of dictionaries of places matching `query`."""
     for i, provider in enumerate(providers):
         geocoder = poor.Geocoder(provider)
         # 'geocode' returns an empty list or a dict(error=True)
         # in case of no results or an error.
-        results = geocoder.geocode(query, x, y, params)
+        results = geocoder.geocode(query, x, y, zoom, params)
         if results and isinstance(results, list):
             if i > 0: providers.insert(0, providers.pop(i))
             return results

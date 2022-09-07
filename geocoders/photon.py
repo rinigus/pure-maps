@@ -29,13 +29,13 @@ URL = "https://photon.komoot.io/api/?q={query}&limit={limit}&lang={lang}"
 URL_REVERSE = "https://photon.komoot.io/reverse?lon={lon}&lat={lat}&limit={limit}&lang={lang}&distance_sort=true"
 cache = {}
 
-def autocomplete(query, x=0, y=0, params={}):
+def autocomplete(query, x=0, y=0, zoom=16, params={}):
     """Return a list of autocomplete dictionaries matching `query`."""
     if len(query) < 3: return []
-    results = geocode(query=query, x=x, y=y, params=params)
+    results = geocode(query=query, x=x, y=y, zoom=zoom, params=params)
     return results
 
-def geocode(query, x=0, y=0, params={}):
+def geocode(query, x=0, y=0, zoom=16, params={}):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 10)
@@ -45,6 +45,8 @@ def geocode(query, x=0, y=0, params={}):
     if x and y:
         url += "&lon={:.3f}".format(x)
         url += "&lat={:.3f}".format(y)
+        if zoom:
+            url += "&zoom={zoom}".format(zoom=int(zoom))
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)["features"]

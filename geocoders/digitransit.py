@@ -31,7 +31,7 @@ REVERSE_URL = "http://api.digitransit.fi/geocoding/v1/reverse?point.lat={lat}&po
 
 cache = {}
 
-def autocomplete(query, x=0, y=0, params={}):
+def autocomplete(query, x=0, y=0, zoom=16, params={}):
     """Return a list of autocomplete dictionaries matching `query`."""
     if len(query) < 3: return []
     query = urllib.parse.quote_plus(query)
@@ -52,7 +52,7 @@ def autocomplete(query, x=0, y=0, params={}):
     cache[key] = copy.deepcopy(results)
     return results
 
-def geocode(query, x=0, y=0, params={}):
+def geocode(query, x=0, y=0, zoom=16, params={}):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 10)

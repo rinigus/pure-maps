@@ -29,17 +29,22 @@ URL = "http://localhost:8553/v1/search?limit={limit}&search={query}"
 URL_REVERSE = "http://localhost:8553/v1/guide?radius={radius}&limit={limit}&lng={lng}&lat={lat}&poitype=any"
 cache = {}
 
-def autocomplete(query, x=0, y=0, params={}):
+def autocomplete(query, x=0, y=0, zoom=16, params={}):
     """Return a list of autocomplete dictionaries matching `query`."""
     if len(query) < 3: return []
-    results = geocode(query=query, x=x, y=y, params=params)
+    results = geocode(query=query, x=x, y=y, zoom=zoom, params=params)
     return results
 
-def geocode(query, x=0, y=0, params={}):
+def geocode(query, x=0, y=0, zoom=16, params={}):
     """Return a list of dictionaries of places matching `query`."""
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 25)
     url = URL.format(**locals())
+    if x and y:
+        url += "&lng={:.3f}".format(x)
+        url += "&lat={:.3f}".format(y)
+        if zoom:
+            url += "&zoom={zoom}".format(zoom=int(zoom))
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
     results = poor.http.get_json(url)
