@@ -375,6 +375,7 @@ MapboxMap {
         map.setLayoutProperty(map.layers.pois, "text-anchor", "top");
         map.setLayoutProperty(map.layers.pois, "text-field", "{name}");
         map.setLayoutProperty(map.layers.pois, "text-optional", true);
+        map.setLayoutProperty(map.layers.pois, "text-font", '["Open Sans Regular"]');
         map.setLayoutProperty(map.layers.pois, "text-size", 12);
         map.setPaintProperty(map.layers.pois, "text-color", styler.itemFg);
         map.setPaintProperty(map.layers.pois, "text-halo-color", styler.itemBg);
@@ -387,6 +388,7 @@ MapboxMap {
         map.setLayoutProperty(map.layers.poisBookmarked, "text-anchor", "top");
         map.setLayoutProperty(map.layers.poisBookmarked, "text-field", "{name}");
         map.setLayoutProperty(map.layers.poisBookmarked, "text-optional", true);
+        map.setLayoutProperty(map.layers.poisBookmarked, "text-font", '["Open Sans Regular"]');
         map.setLayoutProperty(map.layers.poisBookmarked, "text-size", 12);
         map.setPaintProperty(map.layers.poisBookmarked, "text-color", styler.itemFg);
         map.setPaintProperty(map.layers.poisBookmarked, "text-halo-color", styler.itemBg);
@@ -429,6 +431,7 @@ MapboxMap {
         map.setLayoutProperty(map.layers.locations, "text-anchor", "top");
         map.setLayoutProperty(map.layers.locations, "text-field", "{name}");
         map.setLayoutProperty(map.layers.locations, "text-optional", true);
+        map.setLayoutProperty(map.layers.locations, "text-font", '["Open Sans Regular"]');
         map.setLayoutProperty(map.layers.locations, "text-size", 12);
         map.setPaintProperty(map.layers.locations, "text-color", styler.itemFg);
         map.setPaintProperty(map.layers.locations, "text-halo-color", styler.itemBg);
