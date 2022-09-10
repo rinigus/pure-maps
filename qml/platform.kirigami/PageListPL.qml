@@ -22,7 +22,7 @@ import QtQuick.Controls 2.2
 import org.kde.kirigami 2.7 as Kirigami
 import "."
 
-Kirigami.Page {
+Kirigami.ScrollablePage {
     id: page
     leftPadding: 0
     rightPadding: 0
