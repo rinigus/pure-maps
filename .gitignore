@@ -12,4 +12,4 @@ tools/apikeys.py
 /build/
 /qml/platform
 /.clickable/
-/clickable.json
+/clickable.yaml
