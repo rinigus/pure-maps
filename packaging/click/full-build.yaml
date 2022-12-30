@@ -1,8 +1,9 @@
-clickable_minimum_required: 7.4.0
+clickable_minimum_required: 7.8.0
 
 scripts:
   prepare-deps: git submodule update --recursive --init && ENABLE_MIMIC=1 ${ROOT}/packaging/click/prepare-deps.sh
 
+framework: ubuntu-sdk-20.04
 kill: pure-maps
 
 builder: cmake
@@ -43,19 +44,6 @@ libraries:
     - -DMBGL_WITH_QT_HEADLESS=OFF
     - -DMBGL_QT_LIBRARY_ONLY=ON
     - -DMBGL_QT_STATIC=OFF
-
-    image_setup:
-      run:
-      - ln -s android-23 /usr/include/android
-      - wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-      - apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-12 main"
-      - apt-get update
-      - apt-get install -y clang-12 lld-12
-      - update-alternatives --install /usr/bin/cc cc /usr/bin/clang-12 60
-      - update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-12 60
-      env:
-        CC: clang-12
-        CXX: clang++-12
 
   mapbox-gl-qml:
     builder: cmake

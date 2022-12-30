@@ -4,5 +4,5 @@ Exec=pure-maps %u
 Icon=pure-maps.svg
 Type=Application
 MimeType=x-scheme-handler/geo
-X-Ubuntu-Touch=true
+X-Lomiri-Touch=true
 

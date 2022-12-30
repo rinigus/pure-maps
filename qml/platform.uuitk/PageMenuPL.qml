@@ -18,7 +18,7 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import Ubuntu.Components 1.3 as UC
+import Lomiri.Components 1.3 as UC
 
 Item {
     id: menu
