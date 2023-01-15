@@ -710,10 +710,10 @@ MapboxMap {
 
     function updateRoute() {
         // Update route polyline on the map.
-        if (app.navigator && app.navigator.route)
+        if (app.navigator && app.navigator.route && app.navigator.route.length > 0)
             map.updateSourceLine(map.sources.route, app.navigator.route);
         else
-            map.updateSourceLine(map.sources.route, []);
+            map.updateSourcePoints(map.sources.route, [], []);
     }
 
 }
