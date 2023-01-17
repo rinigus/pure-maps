@@ -128,6 +128,7 @@ class Map:
             sj = json.loads(style)
             for k,v in self.fingerprint.items():
                 if k not in sj or v != sj[k]:
+                    print('Style has unexpected fingerprint') 
                     return None
             self.style_json_orig = style
 
