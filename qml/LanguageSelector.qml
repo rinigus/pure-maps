@@ -29,29 +29,27 @@ ComboBoxPL {
     property var languages // has to be set on construction
 
     Component.onCompleted: {
-        var p = [];
+        var s = [], p = [];
         for (var i=0; i < languages.length; i++)
-            p.push(languages[i].name);
-        p.sort();
+            if (languages[i].no_sort)
+                p.push(languages[i].name);
+            else
+                s.push(languages[i].name);
+        s.sort();
+        p = p.concat(s);
         model = p;
+
         // as ancient Qt used by SFOS is unaware of findIndex
         var index = languageIndex;
         for (var i=0; i < languages.length && index < 0; i++)
             if (languages[i].key === key)
                 index = i;
-        if (index < 0) { // set to English by default
-            var eng = app.tr("English");
-            var eng_us = app.tr("English (United States)");
-            for (var i=0; i < languages.length && index < 0; i++)
-                if (languages[i].name === eng || languages[i].name === eng_us)
-                    index = i;
-        }
         // TODO: replace with the implementation for newer Qt
         //            var index = languages.findIndex(function (l) { return l.key === key; } );
-        //            if (index < 0) { // set to English by default
-        //                var eng = app.tr("English");
-        //                index = languages.findIndex(function (l) { return l.name === eng; } );
-        //            }
+
+        if (index < 0)
+            index = 0;
+
         index = model.indexOf(languages[index].name);
         comboBox.currentIndex = index;
     }

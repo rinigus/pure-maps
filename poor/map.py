@@ -31,8 +31,9 @@ class Map:
 
     """Map data and style source."""
 
-    KEY_LOCAL = "local"
     KEY_INT = "int"
+    KEY_LOCAL = "local"
+    KEY_MAP_DEFAULT = "map default"
 
     def __new__(cls, id, values=None):
         """Return possibly existing instance for `id`."""
@@ -91,8 +92,9 @@ class Map:
     def complies(self, lang="", light="", type="", vehicle=""):
         """Return True if the applied restrictions are met"""
         return \
-            (lang=='' or ((isinstance(self.lang, str) and lang==self.lang) or \
-                          (isinstance(self.lang, dict) and lang in self.lang))) and \
+            (lang=='' or lang==Map.KEY_MAP_DEFAULT or \
+                   ((isinstance(self.lang, str) and lang==self.lang) or \
+                   (isinstance(self.lang, dict) and lang in self.lang))) and \
             (light=='' or light==self.light) and \
             (type=='' or type==self.type or (type=="preview" and self.type=="traffic")) and \
             (vehicle=='' or self.vehicle==vehicle)
@@ -132,6 +134,9 @@ class Map:
                     return None
             self.style_json_orig = style
 
+        if lang == Map.KEY_MAP_DEFAULT:
+            return self.style_json_orig
+
         if not isinstance(self.lang, dict) or \
            self.lang_key is None or \
            lang not in self.lang or \
@@ -159,8 +164,11 @@ class Map:
                                ["get", self.lang[Map.KEY_LOCAL]]]
             sj = self._process_style_json(json.loads(self.style_json_orig), replacement)
             self.style_json_processed = json.dumps(sj)
+        #     for l in sj['layers']:
+        #         print(l['id'])
+        #     print()
 
-        #with open('style.json', "w") as f: f.write(self.style_json_processed)
+        # with open('style.json', "w") as f: f.write(self.style_json_processed)
         return self.style_json_processed
 
     def style_json(self, lang=None):

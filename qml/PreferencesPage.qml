@@ -59,7 +59,9 @@ PagePL {
                             description: app.tr("Preferred map language.")
                             key: app.conf.basemapLang
                             languages: [
-                                { "key": "local", "name": app.tr("Local") },
+                                { "key": "map default", "name": app.tr("Map default"), "no_sort": true },
+                                { "key": "local", "name": app.tr("Local"), "no_sort": true },
+                                { "key": "int", "name": app.tr("International"), "no_sort": true },
                                 { "key": "ar", "name": app.tr("Arabic") },
                                 { "key": "eu", "name": app.tr("Basque") },
                                 { "key": "ca", "name": app.tr("Catalan") },
