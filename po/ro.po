@@ -4,10 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Watchmaker <alessandro.pra@gmail.com>, 2018
-# albanobattistella <albano_battistella@hotmail.com>, 2019
-# Michele Claus <claus.miki@hotmail.it>, 2020
-# rinigus github, 2021
 # liberi liberi <trfex.mtqx8@slmail.me>, 2022
 # 
 #, fuzzy
@@ -18,45 +14,45 @@ msgstr ""
 "POT-Creation-Date: 2023-01-24 22:19+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: liberi liberi <trfex.mtqx8@slmail.me>, 2022\n"
-"Language-Team: Italian (https://www.transifex.com/rinigus/teams/89597/it/)\n"
+"Language-Team: Romanian (https://www.transifex.com/rinigus/teams/89597/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: geocoders/here.py:141
 msgid "Search suggestion"
-msgstr "Suggerimento di ricerca"
+msgstr "Sugestie de căutare"
 
 #: geocoders/here.py:149
 msgid "Food types: {}"
-msgstr "Tipi di cibo: {}"
+msgstr "Tipuri de mâncare: {}"
 
 #: geocoders/here.py:156
 msgid "Opening hours: {}"
-msgstr "Orari di apertura: {}"
+msgstr "Orar: {}"
 
 #: guides/foursquare.py:198
 msgid "Opening hours:"
-msgstr "Orari di apertura:"
+msgstr "Orar:"
 
 #: poor/geocoder.py:112
 msgid "Point from geo link"
-msgstr "Punto da GeoLink"
+msgstr "Punct de la GeoLink"
 
 #: poor/geocoder.py:124
 msgid "Point from coordinates"
-msgstr "Punto da coordinate"
+msgstr "Punct din coordonate"
 
 #: poor/geocoder.py:136
 msgid "Point from Plus code"
-msgstr "Punto da Plus Codes"
+msgstr "Punct de la Plus Codes"
 
 #: poor/geocoder.py:145 poor/geocoder.py:182 poor/guide.py:123
 #: poor/router.py:136
 msgid "Connection timed out"
-msgstr "Connessione scaduta"
+msgstr "Conexiunea a expirat"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:210 qml/GeocodeItem.qml:544
 #: qml/MenuPage.qml:87 qml/Navigator.qml:214 qml/NearbyPage.qml:30
@@ -65,7 +61,7 @@ msgstr "Connessione scaduta"
 #: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
 #: qml/RoutePage.qml:747 qml/RoutePoint.qml:44 qml/RoutePoint.qml:62
 msgid "Current position"
-msgstr "Posizione attuale"
+msgstr "Poziția actuală"
 
 #: poor/keystore.py:57
 msgid ""
@@ -73,25 +69,25 @@ msgid ""
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
 " and create your own Client ID and Client Secret keys"
 msgstr ""
-"Iscriversi a <a "
-"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
-" e creare le proprie chiavi ID cliente e Segreto cliente."
+"Înscrie-te la <a "
+"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>și"
+" creează-ți ID-ul și secretul de Client"
 
 #: poor/keystore.py:58
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
 msgstr ""
-"Iscriversi a <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> e"
-" creare la propria chiave API"
+"Înscrie-te la <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
+"și creează-ți propriul cod API"
 
 #: poor/keystore.py:59
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
 msgstr ""
-"Iscriversi a <a href=\"https://maptiler.com\">https://maptiler.com</a> e "
-"creare la propria chiave API"
+"Înscrie-te la <a href=\"https://maptiler.com\">https://maptiler.com</a> și "
+"creează-ți propriul cod API"
 
 #: poor/keystore.py:60
 msgid ""
@@ -99,9 +95,9 @@ msgid ""
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
 "and create your own API key"
 msgstr ""
-"Iscriversi a <a "
-"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> e"
-" creare la propria chiave API"
+"Înscrie-te la <a "
+"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
+"și creează-ți propriul cod API"
 
 #: poor/keystore.py:61
 msgid ""
@@ -109,17 +105,17 @@ msgid ""
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
 "your own API key"
 msgstr ""
-"Iscriversi a <a "
-"href=\"https://opencagedata.com\">https://opencagedata.com</a> e creare la "
-"propria chiave API"
+"Înscrie-te la <a "
+"href=\"https://opencagedata.com\">https://opencagedata.com</a> și creează-ți"
+" propriul cod API"
 
 #: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
 msgstr ""
-"Iscriversi a <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> e"
-" creare la propria chiave API"
+"Înscrie-te la <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
+"și creează-ți propriul cod API"
 
 #: poor/keystore.py:63
 msgid ""
@@ -127,41 +123,41 @@ msgid ""
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
 "create your own App API Key"
 msgstr ""
-"Iscriversi a <a "
-"href=\"https://developer.here.com\">https://developer.here.com</a> e creare "
-"la propria chiave API"
+"Înscrie-te la <a "
+"href=\"https://developer.here.com\">https://developer.here.com</a> și "
+"creează-ți propriul cod API"
 
 #: poor/keystore.py:67
 msgid "Foursquare Client ID"
-msgstr "ID cliente Foursquare"
+msgstr "ID de client Foursquare"
 
 #: poor/keystore.py:68
 msgid "Foursquare Client Secret"
-msgstr "Segreto cliente Foursquare"
+msgstr "Secret de client Foursquare"
 
 #: poor/keystore.py:71
 msgid "Mapbox API key"
-msgstr "Chiave API Mapbox"
+msgstr "Cod API Mapbox"
 
 #: poor/keystore.py:74
 msgid "MapTiler API key"
-msgstr "Chiave API MapTiler"
+msgstr "Cod API MapTiler"
 
 #: poor/keystore.py:77
 msgid "MapQuest API key"
-msgstr "Chiave API MapQuest"
+msgstr "Cod API MapQuest"
 
 #: poor/keystore.py:80
 msgid "OpenCage API key"
-msgstr "Chiave API OpenCage"
+msgstr "Cod API OpenCage"
 
 #: poor/keystore.py:83
 msgid "Stadia Maps API key"
-msgstr "Chiave API Stadia Maps"
+msgstr "Cod API Stadia Maps"
 
 #: poor/keystore.py:86
 msgid "HERE API Key"
-msgstr "Chiave API HERE"
+msgstr "Cod API HERE"
 
 #: poor/keystore.py:94
 #, python-brace-format
@@ -185,11 +181,11 @@ msgstr ""
 
 #: poor/keystore.py:109
 msgid "HERE End-User Terms"
-msgstr "Condizioni per l'utilizzo di HERE"
+msgstr "Condiții pentru utilizarea HERE"
 
 #: poor/router.py:104 poor/router.py:106
 msgid "Exit: "
-msgstr "Uscita: "
+msgstr "Ieșire: "
 
 #: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1002
 #: src/navigator.cpp:1014
@@ -199,7 +195,7 @@ msgstr "mi"
 #: poor/util.py:227 poor/util.py:238 src/navigator.cpp:1002
 #: src/navigator.cpp:1014
 msgid "miles"
-msgstr "miglia"
+msgstr "mile"
 
 #: poor/util.py:231 qml/Meters.qml:85 src/navigator.cpp:1005
 msgid "ft"
@@ -207,7 +203,7 @@ msgstr "ft"
 
 #: poor/util.py:231 src/navigator.cpp:1005
 msgid "feet"
-msgstr "piedi"
+msgstr "picioare"
 
 #: poor/util.py:242 qml/Meters.qml:95 src/navigator.cpp:1017
 msgid "yd"
@@ -215,7 +211,7 @@ msgstr "yd"
 
 #: poor/util.py:242 src/navigator.cpp:1017
 msgid "yards"
-msgstr "iarde"
+msgstr "iarzi"
 
 #: poor/util.py:249 src/navigator.cpp:1026
 msgid "km"
@@ -223,7 +219,7 @@ msgstr "km"
 
 #: poor/util.py:249 src/navigator.cpp:1026
 msgid "kilometers"
-msgstr "chilometri"
+msgstr "kilometri"
 
 #: poor/util.py:253 qml/Meters.qml:105 src/navigator.cpp:1029
 msgid "m"
@@ -261,17 +257,17 @@ msgstr "{distance} sud"
 #: poor/util.py:267
 #, python-brace-format
 msgid "{distance} south-west"
-msgstr "{distance} sud-ovest"
+msgstr "{distance} sud-vest"
 
 #: poor/util.py:268
 #, python-brace-format
 msgid "{distance} west"
-msgstr "{distance}  ovest"
+msgstr "{distance} vest"
 
 #: poor/util.py:269
 #, python-brace-format
 msgid "{distance} north-west"
-msgstr "{distance} nord-ovest"
+msgstr "{distance} nord-vest"
 
 #: poor/util.py:286 poor/util.py:296
 msgid "plus code"
@@ -287,154 +283,154 @@ msgstr "{:d} h {:d} min"
 
 #: poor/util.py:383
 msgid "API key missing"
-msgstr "Chiave API mancante"
+msgstr "Lipsește codul API"
 
 #: poor/util.py:385
 msgid "Available"
-msgstr "Disponibile"
+msgstr "Disponibil"
 
 #: routers/here.py:319
 #, python-brace-format
 msgid "Continue for {distance}"
-msgstr "Proseguire per {distance}"
+msgstr "Continuă încă {distance}"
 
 #: routers/here.py:332
 msgid "Arrive at your destination"
-msgstr "Hai raggiunto la tua destinazione"
+msgstr "Ai ajuns la destinație"
 
 #: routers/here.py:336
 msgid "Board the ferry"
-msgstr "Imbarcarsi sul traghetto"
+msgstr "Urcă pe feribot"
 
 #: routers/here.py:340
 msgid "Continue"
-msgstr "Proseguire"
+msgstr "Continuă"
 
 #: routers/here.py:345
 msgid "Merge right and continue on highway"
-msgstr "Immettersi a destra e proseguire sull'autostrada"
+msgstr "Încadrează-te pe dreapta și continuă pe autostradă"
 
 #: routers/here.py:347
 msgid "Merge left and continue on highway"
-msgstr "Immettersi a sinistra e proseguire sull'autostrada"
+msgstr "Încadrează-te pe stânga și continuă pe autostradă"
 
 #: routers/here.py:351
 msgid "Disembark the ferry"
-msgstr "Sbarcare dal traghetto"
+msgstr "Coboară de pe feribot"
 
 #: routers/here.py:355
 msgid "Start navigation"
-msgstr "Inizia la navigazione"
+msgstr "Pornește la drum"
 
 #: routers/here.py:360
 msgid "Merge right and enter highway"
-msgstr "Immettersi a destra ed entrare in autostrada"
+msgstr "Încadrează-te pe dreapta și intră pe autostradă"
 
 #: routers/here.py:362
 msgid "Merge left and enter highway"
-msgstr "Immettersi a sinistra ed entrare in autostrada"
+msgstr "Încadrează-te pe stânga și intră pe autostradă"
 
 #: routers/here.py:364
 msgid "Enter highway"
-msgstr "Entra in autostrada"
+msgstr "Intră pe autostradă"
 
 #: routers/here.py:377
 msgid "Take exit on the right"
-msgstr "Prendere l'uscita a destra"
+msgstr "Virează la dreapta spre ieșire"
 
 #: routers/here.py:379
 msgid "Take exit on the left"
-msgstr "Prendere l'uscita a sinistra"
+msgstr "Virează la stânga spre ieșire"
 
 #: routers/here.py:382
 #, python-brace-format
 msgid "Take exit {number} on the right"
-msgstr "Prendere l'uscita {number} a destra"
+msgstr "Virează la dreapta spre ieșirea {number}"
 
 #: routers/here.py:384
 #, python-brace-format
 msgid "Take exit {number} on the left"
-msgstr "Prendere l'uscita {number} a sinistra"
+msgstr "Virează la stânga spre ieșirea {number}"
 
 #: routers/here.py:391
 msgid "Keep right"
-msgstr "Tenere la destra"
+msgstr "Ține dreapta"
 
 #: routers/here.py:393
 msgid "Keep left"
-msgstr "Tenere la sinistra"
+msgstr "Ține stânga"
 
 #: routers/here.py:397
 msgid "Keep straight"
-msgstr "Tenere dritto"
+msgstr "Drept înainte"
 
 #: routers/here.py:403
 msgid "Enter the roundabout and take the first exit"
-msgstr "Entrare nella rotonda e prendere la prima uscita"
+msgstr "Intră în sensul giratoriu și virează la prima ieșire"
 
 #: routers/here.py:405
 msgid "Enter the roundabout and take the second exit"
-msgstr "Entrare nella rotonda e prendere la seconda uscita"
+msgstr "Intră în sensul giratoriu și virează la a doua ieșire"
 
 #: routers/here.py:407
 msgid "Enter the roundabout and take the third exit"
-msgstr "Entrare nella rotonda e prendere la terza uscita"
+msgstr "Intră în sensul giratoriu și virează la a treia ieșire"
 
 #: routers/here.py:409
 msgid "Enter the roundabout and take the fourth exit"
-msgstr "Entrare nella rotonda e prendere la quarta uscita"
+msgstr "Intră în sensul giratoriu și virează la a patra ieșire"
 
 #: routers/here.py:411
 msgid "Enter the roundabout and take the fifth exit"
-msgstr "Entrare nella rotonda e prendere la quinta uscita"
+msgstr "Intră în sensul giratoriu și virează la a cincea ieșire"
 
 #: routers/here.py:413
 msgid "Enter the roundabout and take the sixth exit"
-msgstr "Entrare nella rotonda e prendere la sesta uscita"
+msgstr "Intră în sensul giratoriu și virează la a șasea ieșire"
 
 #: routers/here.py:415
 msgid "Enter the roundabout"
-msgstr "Entrare nella rotonda"
+msgstr "Intră în sensul giratoriu"
 
 #: routers/here.py:419
 msgid "Exit the roundabout"
-msgstr "Uscire dalla rotonda"
+msgstr "Părăsește sensul giratoriu"
 
 #: routers/here.py:426
 msgid "Bear right"
-msgstr "Tenere la destra"
+msgstr "Virează larg la dreapta"
 
 #: routers/here.py:428
 msgid "Bear left"
-msgstr "Tenere la sinistra"
+msgstr "Virează larg la stânga"
 
 #: routers/here.py:432
 msgid "Make a sharp right"
-msgstr "Girare a destra"
+msgstr "Virează strâns la dreapta"
 
 #: routers/here.py:434
 msgid "Make a sharp left"
-msgstr "Girare a sinistra"
+msgstr "Virează strâns la stânga"
 
 #: routers/here.py:438
 msgid "Turn right"
-msgstr "Girare a destra"
+msgstr "Virează la dreapta"
 
 #: routers/here.py:440
 msgid "Turn left"
-msgstr "Girare a sinistra"
+msgstr "Virează la stânga"
 
 #: routers/here.py:445
 msgid "Make a right U-turn"
-msgstr "Fare un'inversione a destra"
+msgstr "Întoarce prin dreapta"
 
 #: routers/here.py:447
 msgid "Make a left U-turn"
-msgstr "Fare un'inversione a sinistra"
+msgstr "Întoarce prin stânga"
 
 #: routers/here.py:449
 msgid "Make a U-turn"
-msgstr "Fare un'inversione di marcia"
+msgstr "Întoarce"
 
 #: guides/foursquare_settings.qml:28 routers/ValhallaSettings.qml:133
 #: routers/ValhallaSettings.qml:169 routers/ValhallaSettings.qml:222
@@ -442,57 +438,57 @@ msgstr "Fare un'inversione di marcia"
 #: routers/ValhallaSettings.qml:273 routers/ValhallaSettings.qml:293
 #: routers/ValhallaSettings.qml:309
 msgid "Prefer"
-msgstr "Preferisci"
+msgstr "Preferat"
 
 #: guides/foursquare_settings.qml:29
 msgid "Closest"
-msgstr "Più vicino"
+msgstr "Cel mai apropiat"
 
 #: guides/foursquare_settings.qml:29
 msgid "Best"
-msgstr "Migliore"
+msgstr "Cel mai bun"
 
 #: guides/osmscout_settings.qml:31
 msgid "Search along the route"
-msgstr "Cerca lungo il percorso"
+msgstr "Caută de-a lungul traseului"
 
 #: guides/osmscout_settings.qml:58
 msgid ""
 "When set, the search along the route is performed starting from the point "
 "specified by 'Near' on this page"
 msgstr ""
-"Quando impostata, la ricerca lungo il percorso viene eseguita a partire dal "
-"punto specificato in 'Vicino' su questa pagina"
+"Dacă se utilizează această opțiune, căutarea de-a lungul traseului începe "
+"din locul pe care l-ai definit în această pagină ca fiind „Aproape”"
 
 #: guides/osmscout_settings.qml:59
 msgid "Search starting from the reference point"
-msgstr "Rierca a partire dal punto di riferimento"
+msgstr "Căutarea începe din locul specificat"
 
 #: qml/AboutPage.qml:25 qml/MenuPage.qml:33
 msgid "About Pure Maps"
-msgstr "Info su Pure Maps"
+msgstr "Despre Pure Maps"
 
 #: qml/AboutPage.qml:58
 msgid "version %1"
-msgstr "versione %1"
+msgstr "versiunea %1"
 
 #: qml/AboutPage.qml:64
 msgid "This is a limited edition distributed through Jolla Store"
-msgstr "Questa è un'edizione limitata distribuita tramite Jolla Store"
+msgstr "Aceasta este o ediție limitată distribuită prin Jolla Store"
 
 #: qml/AboutPage.qml:71
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
 msgstr ""
-"GitHub <a href=\"https://github.com/rinigus/pure-maps\">pagina del "
-"progetto</a>"
+"GitHub <a href=\"https://github.com/rinigus/pure-maps\">pagina "
+"proiectului</a>"
 
 #: qml/AboutPage.qml:96
 msgid ""
 "Artwork by %1 and %2\n"
 "Banner photo by %3 (Pexels License)"
 msgstr ""
-"Opera di %1 e %2\n"
-"Foto banner di %3 (licenza Pexels)"
+"Grafică de %1 și %2\n"
+"Fotografie din titlu de %3 (Licență Pexels)"
 
 #: qml/AboutPage.qml:104
 msgid ""
@@ -501,9 +497,9 @@ msgid ""
 "title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" "
 "title=\"Flaticon\">www.flaticon.com</a>"
 msgstr ""
-"Icone dei trasporti realizzate da <a "
+"Simboluri pentru transport realizate de <a "
 "href=\"https://www.flaticon.com/authors/freepik\" "
-"title=\"Freepik\">Freepik</a> da <a href=\"https://www.flaticon.com/\" "
+"title=\"Freepik\">Freepik</a> din <a href=\"https://www.flaticon.com/\" "
 "title=\"Flaticon\">www.flaticon.com</a>"
 
 #: qml/AboutPage.qml:117
@@ -511,12 +507,12 @@ msgid ""
 "Pure Maps is free software released under the GNU General Public License "
 "(GPL), version 3 or later."
 msgstr ""
-"Pure Maps è software libero realizzato sotto la GNU General Public License "
-"(GPL), versione 3 o successiva."
+"Pure Maps este un program gratuit disponibil sub licența GNU General Public "
+"License (GPL), versiunea 3 sau superioară."
 
 #: qml/AboutPage.qml:122
 msgid "Translated by"
-msgstr "Tradotto da"
+msgstr "Tradus de"
 
 #. TRANSLATORS: This is a special message that shouldn't be translated
 #. literally. It is used in the about page to give credits to the translators.
@@ -525,239 +521,237 @@ msgstr "Tradotto da"
 #. write them on separate lines seperated by newlines (\n).
 #: qml/AboutPage.qml:134
 msgid "translator-credits"
-msgstr ""
-"Michele Claus\n"
-"Alessandro Pra'"
+msgstr "Liberi"
 
 #: qml/AboutPage.qml:144
 msgid ""
 "You can add new user interface translations or contribute to existing ones "
 "at Transifex."
 msgstr ""
-"Puoi aggiungere nuove traduzioni dell'interfaccia o contribuire a quelle "
-"esistenti su Transifex."
+"Poți adăuga o nouă traducere a interfeței sau poți contribui la cele "
+"existente pe Transifex."
 
 #: qml/AboutPage.qml:150
 msgid ""
 "Translations at <a href=\"https://www.transifex.com/rinigus/pure-"
 "maps\">Transifex page</a>"
 msgstr ""
-"Traduzioni su <a href=\"https://www.transifex.com/rinigus/pure-"
-"maps\">Transifex page</a>"
+"Traduceri pe <a href=\"https://www.transifex.com/rinigus/pure-maps\">Pagina "
+"Transifex</a>"
 
 #: qml/AttributionPage.qml:24
 msgid "Attribution"
-msgstr "Attribuzione"
+msgstr "Surse"
 
 #: qml/AttributionPage.qml:33 qml/BasemapPage.qml:27 qml/MapErrorPage.qml:69
 #: qml/MenuPage.qml:94
 msgid "Maps"
-msgstr "Mappe"
+msgstr "Hărți"
 
 #: qml/AttributionPage.qml:61 qml/GeocodeItem.qml:38 qml/GeocodePage.qml:27
 #: qml/MenuPage.qml:54 qml/NearbyPage.qml:28 qml/PlaceTypePage.qml:79
 #: qml/PoiPage.qml:135 qml/PreferencesPage.qml:828
 msgid "Search"
-msgstr "Cerca"
+msgstr "Caută"
 
 #: qml/AttributionPage.qml:90
 msgid "Venues"
-msgstr "Luoghi"
+msgstr "Locuri"
 
 #: qml/AttributionPage.qml:119 qml/MenuPage.qml:60 qml/NavigationPage.qml:27
 #: qml/PreferencesPage.qml:483 qml/RoutePage.qml:25
 msgid "Navigation"
-msgstr "Navigazione"
+msgstr "Navigare"
 
 #: qml/BasemapButton.qml:225 qml/NearbyPage.qml:106 qml/PoiEditPage.qml:57
 #: routers/gpx_osmscout_settings.qml:54 routers/gpx_settings.qml:52
 #: routers/here_settings.qml:36 routers/mapquest_open_settings.qml:28
 #: routers/ValhallaSettings.qml:37
 msgid "Type"
-msgstr "Tipo"
+msgstr "Tip"
 
 #: qml/BasemapButton.qml:243 qml/js/util.js:227
 msgid "Default"
-msgstr "Predefinito"
+msgstr "Prestabilit"
 
 #: qml/BasemapButton.qml:244
 msgid "Guidance"
-msgstr "Indicazioni"
+msgstr "Instrucțiuni"
 
 #: qml/BasemapButton.qml:245
 msgid "Hybrid"
-msgstr "Misto"
+msgstr "Mixt"
 
 #: qml/BasemapButton.qml:246
 msgid "Preview"
-msgstr "Anteprima"
+msgstr "Previzualizare"
 
 #: qml/BasemapButton.qml:247
 msgid "Satellite"
-msgstr "Satellite"
+msgstr "Satelit"
 
 #: qml/BasemapButton.qml:248
 msgid "Terrain"
-msgstr "Terreno"
+msgstr "Teren"
 
 #: qml/BasemapButton.qml:249 routers/here_settings.qml:179
 msgid "Traffic"
-msgstr "Traffico"
+msgstr "Trafic"
 
 #: qml/BasemapButton.qml:265
 msgid "Light"
-msgstr "Luce"
+msgstr "Luminozitate"
 
 #: qml/BasemapButton.qml:283
 msgid "Day"
-msgstr "Giorno"
+msgstr "Zi"
 
 #: qml/BasemapButton.qml:284
 msgid "Night"
-msgstr "Notte"
+msgstr "Noapte"
 
 #: qml/BasemapButton.qml:300
 msgid "Transport"
-msgstr "Trasporto"
+msgstr "Transport"
 
 #: qml/BasemapButton.qml:318 qml/PreferencesPage.qml:463 qml/RoutePage.qml:644
 #: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
 #: routers/here_settings.qml:37 routers/mapquest_open_settings.qml:29
 #: routers/ValhallaSettings.qml:38
 msgid "Bicycle"
-msgstr "In bici"
+msgstr "Bicicletă"
 
 #: qml/BasemapButton.qml:319 qml/PreferencesPage.qml:463 qml/RoutePage.qml:644
 #: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
 #: routers/here_settings.qml:37 routers/mapquest_open_settings.qml:29
 #: routers/ValhallaSettings.qml:38
 msgid "Car"
-msgstr "In auto"
+msgstr "Mașină"
 
 #: qml/BasemapButton.qml:320 routers/ValhallaSettings.qml:150
 msgid "Walking"
-msgstr "Camminata"
+msgstr "Pe jos"
 
 #: qml/BasemapButton.qml:321 routers/ValhallaSettings.qml:38
 msgid "Public transport"
-msgstr "Trasporti pubblici"
+msgstr "Transport public"
 
 #: qml/BasemapButton.qml:437
 msgid "Map scale"
-msgstr "Scala della mappa"
+msgstr "Scara hărții"
 
 #: qml/BasemapButton.qml:452
 msgid "Map scale during navigation"
-msgstr "Scala della mappa durante la navigazione"
+msgstr "Scara hărții în timpul navigării"
 
 #: qml/BasemapPage.qml:46
 msgid "%1 (default)"
-msgstr "%1 (predefinito)"
+msgstr "%1 (prestabilit)"
 
 #: qml/BasemapPage.qml:49
 msgid "%1 (default, disabled, API key missing)"
-msgstr "%1 (predefinito, disabilitato, chiave API mancante)"
+msgstr "%1 (prestabilit, dezactivat, lipsește codul API)"
 
 #: qml/BasemapPage.qml:50
 msgid "%1 (disabled, API key missing)"
-msgstr "%1 (disabilitato, chiave API mancante)"
+msgstr "%1 (dezactivat, lipsește codul API)"
 
 #: qml/BasemapPage.qml:56
 msgid "Map: %1"
-msgstr "Mappa: %1"
+msgstr "Hartă: %1"
 
 #: qml/CenterButton.qml:111 qml/MapGestureArea.qml:47
 msgid "Auto-center off"
-msgstr "Centramento automatico disattivo"
+msgstr "Autocentrare oprită"
 
 #: qml/CenterButton.qml:119 qml/MapGestureArea.qml:46
 msgid "Auto-center on"
-msgstr "Centramento automatico attivo"
+msgstr "Autocentrare pornită"
 
 #: qml/CenterButton.qml:125
 msgid "Tap center button again for auto-center"
-msgstr "Toccare di nuovo il pulsante centrale per l'auto-centratura"
+msgstr "Apasă din nou pe butonul de centrare pentru autocentrare"
 
 #: qml/GeocodeItem.qml:42
 msgid "No selection"
-msgstr "Nessuna selezione"
+msgstr "Nicio alegere"
 
 #: qml/GeocodeItem.qml:134 qml/NavigationPage.qml:185 qml/PlaceNamePage.qml:48
 #: qml/PlaceTypePage.qml:45 qml/PoiPage.qml:108 qml/RoutePage.qml:257
 #: qml/RoutePage.qml:443 qml/RoutePage.qml:558
 msgid "Remove"
-msgstr "Rimuovi"
+msgstr "Elimină"
 
 #: qml/GeocodeItem.qml:402
 msgid "Suggestions (%1)"
-msgstr "Suggerimenti (%1)"
+msgstr "Sugestii (%1)"
 
 #: qml/GeocodeItem.qml:424
 msgid "Error while fetching results"
-msgstr "Errore durante il recupero dei risultati"
+msgstr "Eroare la obținerea rezultatelor"
 
 #: qml/GeocodeItem.qml:433
 msgid "Searching ..."
-msgstr "Ricerca in corso ..."
+msgstr "Se caută ..."
 
 #: qml/GeocodeItem.qml:438 qml/NearbyResultsPage.qml:99
 msgid "No results"
-msgstr "Nessun risultato"
+msgstr "Niciun rezultat"
 
 #: qml/GeocodeItem.qml:443
 msgid "Results (%1)"
-msgstr "Risultati (%1)"
+msgstr "Rezultate (%1)"
 
 #: qml/GeocodeItem.qml:479
 msgid "Points of Interest (%1)"
-msgstr "Punti di interesse (%1)"
+msgstr "Locuri de interes (%1)"
 
 #: qml/GeocodeItem.qml:484 qml/Navigator.qml:301 qml/Navigator.qml:303
 #: qml/PoiBlock.qml:407 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
-msgstr "Punto senza nome"
+msgstr "Loc necunoscut"
 
 #: qml/GeocodeItem.qml:510
 msgid "Recent searches (%1)"
-msgstr "Ricerche recenti (%1)"
+msgstr "Căutări recente (%1)"
 
 #: qml/GeocodePage.qml:31 qml/NearbyPage.qml:36 qml/RoutePage.qml:52
 #: qml/RoutePointPage.qml:31
 msgid "Change provider (%1)"
-msgstr "Cambia fornitore (%1)"
+msgstr "Schimbă furnizorul (%1)"
 
 #: qml/GeocodePage.qml:44 qml/NearbyResultsPage.qml:85 qml/RootPage.qml:26
 msgid "Map"
-msgstr "Mappa"
+msgstr "Hartă"
 
 #: qml/GeocodePage.qml:49 qml/GeocodePage.qml:86
 msgid "Search: %1"
-msgstr "Cerca: %1"
+msgstr "Caută: %1"
 
 #: qml/GeocodePage.qml:81 qml/NearbyResultsPage.qml:69
 msgid "%1 [duplicate]"
-msgstr "%1 [duplicato]"
+msgstr "%1 [duplicat]"
 
 #: qml/GeocoderPage.qml:27 qml/GuidePage.qml:27
 msgid "Search engine"
-msgstr "Motore di ricerca"
+msgstr "Motor de căutare"
 
 #: qml/GeocoderPage.qml:54 qml/GuidePage.qml:55 qml/RouterPage.qml:53
 msgid "%1 (disabled, %2)"
-msgstr "%1 (disabilitato, %2)"
+msgstr "%1 (dezactivat, %2)"
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
-msgstr "Inizializzare"
+msgstr "Inițializare"
 
 #: qml/InitPage.qml:65 qml/InitPage.qml:87 qml/RoutePage.qml:193
 msgid "Dismiss"
-msgstr "Rimuovi"
+msgstr "Ignoră"
 
 #: qml/InitPage.qml:66
 msgid "Missing %1 key"
-msgstr "Manca la chiave %1"
+msgstr "Lipsește codul %1"
 
 #: qml/InitPage.qml:67
 msgid ""
@@ -765,14 +759,13 @@ msgid ""
 "your personal API key in Preferences. This key is not needed if you plan to "
 "use Pure Maps with the offline map provider."
 msgstr ""
-"Alla tua installazione manca la chiave API %1. Iscriversi al sito %1 e "
-"inserire la propria chiave API nelle Preferenze. Questa chiave non è "
-"necessaria se si intende utilizzare Pure Maps con il fornitore di mappe "
-"offline."
+"Instalarea ta nu are codul API %1. Înscrie-te la %1 și introdu propriul cod "
+"API în „Preferințe”. Acest cod nu este necesar dacă vrei să folosești Pure "
+"Maps cu hărți fără conectare la internet."
 
 #: qml/InitPage.qml:88
 msgid "Pure Maps at Jolla Store"
-msgstr "Pure Maps nel Jolla Store"
+msgstr "Pure Maps din Jolla Store"
 
 #: qml/InitPage.qml:89
 msgid ""
@@ -780,42 +773,41 @@ msgid ""
 "\n"
 "To get fully functional Pure Maps, it is recommended to use Sailfish Chum and install Pure Maps from there."
 msgstr ""
-"Si sta utilizzando Pure Maps distribuito attraverso il Jolla Store. A causa delle restrizioni del Jolla Store, Pure Maps distribuito attraverso il Jolla Store ha alcune limitazioni. Con l'introduzione di Sailjail, le limitazioni includono l'impossibilità di fornire indicazioni vocali, di visualizzare la strada corrente e i limiti di velocità confrontando la propria posizione con la rete stradale.\n"
+"Folosești Pure Maps distribuit prin Jolla Store. Din cauza restricțiilor Jolla Store, Pure Maps distribuit prin intermediul acestui magazin are câteva limitări. Odată cu introducerea Sailjail, printre limitări se numără imposibilitatea de a oferi instrucțiuni vocale, de a afișa strada actuală și limitele de viteză prin compararea poziției cu rețeaua de străzi.\n"
 "\n"
-"Per ottenere Pure Maps completamente funzionante, si consiglia di utilizzare Sailfish Chum e di installare Pure Maps da lì."
+"Pentru a obține Pure Maps pe deplin funcțional, se recomandă folosirea Sailfish Chum și instalarea Pure Maps de acolo."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
-msgstr "Lingua"
+msgstr "Limba"
 
 #: qml/LicensePage.qml:25
 msgid "Accept"
-msgstr "Accetta"
+msgstr "Acceptă"
 
 #: qml/LicensePage.qml:25
 msgid "Decline"
-msgstr "Rifiuta"
+msgstr "Refuză"
 
 #: qml/LicensePage.qml:48
 msgid "Accept license"
-msgstr "Accetta la licenza"
+msgstr "Acceptă licența"
 
 #: qml/MapErrorPage.qml:25
 msgid "Error"
-msgstr "Errore"
+msgstr "Eroare"
 
 #: qml/MapErrorPage.qml:34
 msgid "Error occurred while loading current map."
-msgstr ""
-"Si è verificato un errore durante il caricamento della mappa corrente."
+msgstr "A apărut o eroare la încărcarea hărții actuale."
 
 #: qml/MapErrorPage.qml:40
 msgid ""
 "Depending on the used map provider, error could be caused by network failure, expired API access key, absence of offline server. Try to address the issue and/or change your map provider, preferences, or profile.\n"
 "If you change API access key, you may have to restart Pure Maps."
 msgstr ""
-"A seconda del provider di mappe utilizzato, l'errore potrebbe essere causato da un errore di rete, una chiave di accesso API scaduta, l'assenza di un server offline. Cerca di risolvere il problema e / o modificare il provider, le preferenze o il profilo della mappa.\n"
-"Se si modifica la chiave di accesso API, potrebbe essere necessario riavviare Pure Maps."
+"În funcție de furnizorul de hărți utilizat, eroarea poate fi cauzată de o întrerupere a rețelei, de un cod de acces API expirat, de absența unui server offline. Încearcă să rezolvi problema schimbând furnizorul de hărți, preferințele sau profilul.\n"
+"Dacă schimbi codul API, poate fi necesar să repornești Pure Maps."
 
 #: qml/MapErrorPage.qml:51
 msgid ""
@@ -826,34 +818,36 @@ msgid ""
 "href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
 "manual</a> for details."
 msgstr ""
-"Si sta utilizzando un profilo offline. Assicurarsi che OSM Scout Server sia "
-"installato e funzionante. A seconda del sistema, è disponibile nei negozi di"
-" applicazioni (Chum per Sailfish OS, OpenStore per Ubuntu Touch), in Flathub"
-" o nella propria distribuzione. Per maggiori dettagli, consultare il <a "
-"href=\"https://rinigus.github.io/osmscout-server\">manuale di OSM Scout "
-"Server</a>."
+"Folosești un profil fără conectare la internet. Verifică dacă OSM Scout "
+"Server este instalat și funcționează. În funcție de sistemul tău, acesta "
+"este disponibil fie în magazinele de aplicații (Chum pentru Sailfish OS, "
+"OpenStore pentru Ubuntu Touch), Flathub, fie în distribuția ta. Consultă <a "
+"href=\"https://rinigus.github.io/osmscout-server\">manualul OSM Scout Server"
+" </a> pentru detalii."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
 "Last error:\n"
 "%1"
-msgstr "Ultimo errore: %1"
+msgstr ""
+"Ultima eroare:\n"
+"%1"
 
 #: qml/MapErrorPage.qml:75 qml/MenuPage.qml:100 qml/PreferencesPage.qml:25
 msgid "Preferences"
-msgstr "Impostazioni"
+msgstr "Preferințe"
 
 #: qml/MapErrorPage.qml:106 qml/MenuPage.qml:112
 msgid "Profile"
-msgstr "Profilo"
+msgstr "Profil"
 
 #: qml/MapErrorPage.qml:118 qml/MenuPage.qml:116
 msgid "Online"
-msgstr "Online"
+msgstr "Conectat"
 
 #: qml/MapErrorPage.qml:118 qml/MenuPage.qml:122
 msgid "Offline"
-msgstr "Offline"
+msgstr "Deconectat"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE - Online"
@@ -861,24 +855,24 @@ msgstr "HERE - Online"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE (disabled, API key missing)"
-msgstr "HERE (disabilitato, chiave API mancante)"
+msgstr "HERE (dezactivat, lipsește codul API)"
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
-msgstr "MIsto"
+msgstr "Combinate"
 
 #: qml/MapGestureArea.qml:66 qml/MapGestureArea.qml:84
 msgid "Stop navigation to select POI"
-msgstr "Interrompi la navigazione per selezionare PDI"
+msgstr "Oprește navigarea pentru a alege un loc de interes"
 
 #: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
 #: qml/RoutePage.qml:173
 msgid "Origin"
-msgstr "Punto di partenza"
+msgstr "Punct de plecare"
 
 #: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
 msgid "Final destination"
-msgstr "Destinazione"
+msgstr "Destinație finală"
 
 #: qml/Map.qml:654
 msgid "✓"
@@ -890,27 +884,27 @@ msgstr "#%1"
 
 #: qml/MenuPage.qml:43
 msgid "Stop following the movement"
-msgstr "Smetti di seguire il movimento"
+msgstr "Oprește urmărirea mișcării"
 
 #: qml/MenuPage.qml:66
 msgid "Nearby venues"
-msgstr "Località nelle vicinanze"
+msgstr "Locuri în apropiere"
 
 #: qml/MenuPage.qml:72 qml/PoiPage.qml:28 qml/PoiPage.qml:127
 msgid "Bookmarks"
-msgstr "Preferiti"
+msgstr "Preferate"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position"
-msgstr "Condividi posizione attuale"
+msgstr "Trimite poziția actuală"
 
 #: qml/MenuPage.qml:79
 msgid "Share current position (not ready)"
-msgstr "Condividi la posizione corrente (non pronta)"
+msgstr "Trimite poziția actuală (nu e gata)"
 
 #: qml/MenuPage.qml:86
 msgid "Share Current Position"
-msgstr "Condividi posizione attuale"
+msgstr "Trimite poziția actuală"
 
 #: qml/Meters.qml:85 qml/Meters.qml:95 qml/NavigationCurrentBlock.qml:354
 #: qml/NavigationCurrentBlock.qml:355 qml/NavigationSpeedBlock.qml:81
@@ -925,31 +919,31 @@ msgstr "km/h"
 
 #: qml/NarrativeItem.qml:120
 msgid "Continue for %1 (%2)."
-msgstr "Proseguire per %1 (%2)."
+msgstr "Continuă încă %1 (%2)."
 
 #: qml/NarrativeItem.qml:121
 msgid "Continue for %1."
-msgstr "Proseguire per %1."
+msgstr "Continuă încă %1."
 
 #: qml/NavigationButtonClear.qml:46
 msgid "Route removed"
-msgstr "Percorso rimosso"
+msgstr "Traseu eliminat"
 
 #: qml/NavigationButtonStartPause.qml:69
 msgid "Stopped to follow the movement"
-msgstr "Fermato per seguire il movimento"
+msgstr "Am încetat să urmăresc mișcarea"
 
 #: qml/NavigationButtonStartPause.qml:74
 msgid "Navigation paused"
-msgstr "Navigazione in pausa"
+msgstr "Navigare întreruptă"
 
 #: qml/NavigationButtonStartPause.qml:78
 msgid "Navigation started"
-msgstr "Navigazione avviata"
+msgstr "Navigare pornită"
 
 #: qml/NavigationCurrentBlock.qml:218
 msgid "To route"
-msgstr "Verso il percorso"
+msgstr "Spre traseu"
 
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:217
@@ -964,218 +958,215 @@ msgstr "(P)"
 #. TRANSLATORS: "(D)" corresponds to the abbreviated destination
 #: qml/NavigationOverviewBlock.qml:310
 msgid "(D) ETA"
-msgstr "(D) Arrivo"
+msgstr "(D) Sosire"
 
 #. TRANSLATORS: "(W)" corresponds to the abbreviated waypoint
 #: qml/NavigationOverviewBlock.qml:312
 msgid "(W) ETA"
-msgstr "(P) Arrivo"
+msgstr "(P) Sosire"
 
 #: qml/NavigationOverviewBlock.qml:314 qml/NavigationPage.qml:291
 msgid "ETA"
-msgstr "Arrivo"
+msgstr "Sosire"
 
 #: qml/NavigationPage.qml:46
 msgid "Pause"
-msgstr "Pausa"
+msgstr "Pauză"
 
 #: qml/NavigationPage.qml:46 qml/PreferencesPage.qml:837 qml/RoutePage.qml:67
 msgid "Navigate"
-msgstr "Navigare"
+msgstr "Pornește la drum"
 
 #: qml/NavigationPage.qml:58
 msgid "Reroute"
-msgstr "Ricalcola"
+msgstr "Recalculează traseul"
 
 #: qml/NavigationPage.qml:70
 msgid "Clear"
-msgstr "Cancella"
+msgstr "Șterge"
 
 #: qml/NavigationPage.qml:84
 msgid "Status"
-msgstr "Stato"
+msgstr "Stare"
 
 #: qml/NavigationPage.qml:134
 msgid "Estimated time of arrival"
-msgstr "Ora prevista di arrivo"
+msgstr "Sosire"
 
 #: qml/NavigationPage.qml:161 qml/Navigator.qml:89
 msgid "Destination reached"
-msgstr "Destinazione raggiunta"
+msgstr "Destinație atinsă"
 
 #: qml/NavigationPage.qml:173 qml/RoutePage.qml:187 qml/RoutePage.qml:194
 msgid "Destinations and waypoints"
-msgstr "Destinazioni e punti intermedi"
+msgstr "Destinații și puncte intermediare"
 
 #: qml/NavigationPage.qml:207
 msgid "Origin: %1"
-msgstr "Punto di partenza: %1"
+msgstr "Punct de plecare: %1"
 
 #: qml/NavigationPage.qml:209
 msgid "Final destination: %1"
-msgstr "Destinazione finale: %1"
+msgstr "Destinație finală: %1"
 
 #: qml/NavigationPage.qml:212 qml/RoutePage.qml:275
 msgid "Destination: %1"
-msgstr "Destinazione: %1"
+msgstr "Destinație: %1"
 
 #: qml/NavigationPage.qml:213 qml/RoutePage.qml:276
 msgid "Waypoint: %1"
-msgstr "Punto intermedio: %1"
+msgstr "Punct intermediar: %1"
 
 #: qml/NavigationPage.qml:262 qml/RouteOverallInfo.qml:98
 msgid "Remaining"
-msgstr "Rimanenti"
+msgstr "Rămas"
 
 #. TRANSLATORS: Leg corresponds to the trip leg between two destinations, such
 #. as intermediate destinations on the route
 #: qml/NavigationPage.qml:314
 msgid "Leg"
-msgstr "Tappa"
+msgstr "Porțiune"
 
 #: qml/NavigationPage.qml:343
 msgid "Arrived"
-msgstr "Arrivato"
+msgstr "Ai ajuns"
 
 #: qml/NavigationPage.qml:384
 msgid "Maneuvers"
-msgstr "Manovre"
+msgstr "Manevre"
 
 #: qml/NavigationSign.qml:92
 msgid "EXIT"
-msgstr "USCITA"
+msgstr "IEȘIRE"
 
 #: qml/Navigator.qml:81
 msgid "Destination %1 reached"
-msgstr "Destinazione %1 raggiunta"
+msgstr "Destinația %1 a fost atinsă"
 
 #: qml/Navigator.qml:82
 msgid "Waypoint %1 reached"
-msgstr "Punto intermedio %1 raggiunto"
+msgstr "Punctul intermediar %1 a fost atins"
 
 #: qml/Navigator.qml:151
 msgid "Voice navigation on"
-msgstr "Navigazione vocale attiva"
+msgstr "Instrucțiuni vocale activate"
 
 #: qml/Navigator.qml:156
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
-"Navigazione vocale non disponibile: motore Text-to-Speech (TTS) mancante per"
-" la lingua selezionata"
+"Instrucțiunile vocale nu sunt disponibile: lipsește motorul de pronunțare a "
+"textului (TTS) pentru limba aleasă"
 
 #: qml/Navigator.qml:207
 msgid "Routing failed: current position not known"
-msgstr "Calcolo fallito: posizione attuale sconosciuta"
+msgstr "Calcularea traseului a eșuat: poziția actuală nu este cunoscută"
 
 #: qml/Navigator.qml:213
 msgid "Rerouting position"
-msgstr "Ricerca della posizione"
+msgstr "Se caută poziția"
 
 #: qml/Navigator.qml:221
 msgid "Routing"
-msgstr "Calcolo"
+msgstr "Calculez traseul"
 
 #: qml/Navigator.qml:232
 msgid "Routing failed: %1"
-msgstr "Calcolo non riuscito: %1"
+msgstr "Calculare eșuată: %1"
 
 #: qml/Navigator.qml:237 src/navigator.cpp:1099
 msgid "Traffic and route updated"
-msgstr "Traffico e percorso aggiornati"
+msgstr "Traficul și traseul au fost actualizate"
 
 #: qml/Navigator.qml:237 src/navigator.cpp:1096
 msgid "New route found"
-msgstr "Nuovo percorso trovato"
+msgstr "S-a găsit un traseu nou"
 
 #: qml/Navigator.qml:238
 msgid "Route found"
-msgstr "Percorso trovato"
+msgstr "Traseu găsit"
 
 #: qml/Navigator.qml:249 src/navigator.cpp:1098
 msgid "Routing failed"
-msgstr "Calcolo non riuscito"
+msgstr "Calculare eșuată"
 
 #: qml/Navigator.qml:281
 msgid "Updating traffic"
-msgstr "Aggiornamento del traffico"
+msgstr "Se actualizează traficul"
 
 #: qml/Navigator.qml:281 src/navigator.cpp:1097
 msgid "Rerouting"
-msgstr "Ricalcolo"
+msgstr "Recalculez traseul"
 
 #: qml/NearbyPage.qml:25 qml/NearbyResultsPage.qml:100
 msgid "Nearby Venues"
-msgstr "Località nelle vicinanze"
+msgstr "Locuri în apropiere"
 
 #: qml/NearbyPage.qml:76
 msgid ""
 "Select a reference location next to which you want to perform the search."
-msgstr ""
-"Selezionare una posizione di riferimento accanto alla quale si desidera "
-"eseguire la ricerca."
+msgstr "Alege locul în apropierea căruia dorești să efectuezi căutarea."
 
 #: qml/NearbyPage.qml:77
 msgid "Near"
-msgstr "Vicino"
+msgstr "Aproape"
 
 #: qml/NearbyPage.qml:78
 msgid "Near location"
-msgstr "Vicino a posizione"
+msgstr "Loc în apropiere"
 
 #: qml/NearbyPage.qml:83
 msgid "Radius"
-msgstr "Raggio"
+msgstr "Rază"
 
 #: qml/NearbyPage.qml:122
 msgid "Name"
-msgstr "Nome"
+msgstr "Nume"
 
 #: qml/NearbyResultsPage.qml:115
 msgid "Searching"
-msgstr "Ricerca"
+msgstr "Se caută"
 
 #: qml/NearbyResultsPage.qml:131
 msgid "Nearby venues: %1 %2"
-msgstr "Luoghi nelle vicinanze: %1 %2"
+msgstr "Locuri în apropiere: %1 %2"
 
 #: qml/NearbyResultsPage.qml:147
 msgid "%1 Results"
-msgstr "%1 risultati"
+msgstr "%1 Rezultate"
 
 #: qml/NorthArrow.qml:60
 msgid "Auto-rotation requires auto-centering to be enabled"
-msgstr ""
-"La rotazione automatica richiede l'abilitazione della centratura automatica."
+msgstr "Rotirea automată necesită activarea centrării automate"
 
 #: qml/NorthArrow.qml:71
 msgid "Auto-rotate on"
-msgstr "Autorotazione attiva"
+msgstr "Autorotire pornită"
 
 #: qml/NorthArrow.qml:72
 msgid "Auto-rotate off"
-msgstr "Autorotazione disattiva"
+msgstr "Autorotire oprită"
 
 #: qml/PlaceNamePage.qml:27
 msgid "Venue name"
-msgstr "Nome del luogo"
+msgstr "Numele locului"
 
 #: qml/PlaceNamePage.qml:69
 msgid "Name or keyword"
-msgstr "Nome o parola chiave"
+msgstr "Nume sau cuvânt cheie"
 
 #: qml/PlaceNamePage.qml:82
 msgid "You can search for venues by name."
-msgstr "Puoi cercare luoghi per nome."
+msgstr "Poți căuta locuri după nume."
 
 #: qml/PlaceTypePage.qml:27
 msgid "Venue type"
-msgstr "Tipo di posto"
+msgstr "Tipul locului"
 
 #: qml/PlaceTypePage.qml:99
 msgid "You can search for venues by type."
-msgstr "È possibile cercare i posti in base alla tipologia."
+msgstr "Poți căuta locuri în funcție de tip."
 
 #: qml/PoiBlock.qml:97
 msgid "%1; %2"
@@ -1187,7 +1178,7 @@ msgstr "Latitudine: %1; Longitudine: %2"
 
 #: qml/PoiBlock.qml:137 qml/PoiEditPage.qml:81
 msgid "Postal code"
-msgstr "Codice postale"
+msgstr "Cod poștal"
 
 #: qml/PoiBlock.qml:138
 msgid "Web"
@@ -1195,63 +1186,63 @@ msgstr "Web"
 
 #: qml/PoiBlock.qml:139
 msgid "Phone"
-msgstr "Telefono"
+msgstr "Telefon"
 
 #: qml/PoiBlock.qml:140 qml/PoiEditPage.qml:114 qml/SharePage.qml:66
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #: qml/PoiBlock.qml:141
 msgid "Shortlisted"
-msgstr "Aggiunto alla lista"
+msgstr "Adăugat pe listă"
 
 #: qml/PoiBlock.qml:142
 msgid "Text"
-msgstr "Testo"
+msgstr "Text"
 
 #: qml/PoiBlock.qml:144
 msgid "More info: %1"
-msgstr "Maggiori info: %1"
+msgstr "Alte informații: %1"
 
 #: qml/PoiBlock.qml:233
 msgid "Set as or Replace"
-msgstr "Imposta come o Sostituisci"
+msgstr "Stabilește sau Înlocuiește"
 
 #: qml/PoiBlock.qml:233
 msgid "Set as"
-msgstr "Imposta come"
+msgstr "Stabilește ca"
 
 #: qml/PoiBlock.qml:293
 msgid "Insert as"
-msgstr "Inserisci come"
+msgstr "Introdu ca"
 
 #: qml/PoiBlock.qml:298
 msgid "New origin"
-msgstr "Nuovo punto di partenza"
+msgstr "Punct nou de plecare"
 
 #: qml/PoiBlock.qml:311
 msgid "New final destination"
-msgstr "Nuova destinazione finale"
+msgstr "Destinație finală nouă"
 
 #: qml/PoiBlock.qml:323
 msgid "First intermediate destination"
-msgstr "Prima destinazione intermedia"
+msgstr "Prima destinație intermediară"
 
 #: qml/PoiBlock.qml:336
 msgid "Last intermediate destination"
-msgstr "Ultima destinazione intermedia"
+msgstr "Ultima destinație intermediară"
 
 #: qml/PoiBlock.qml:337
 msgid "Intermediate destination"
-msgstr "Destinazione intermedia"
+msgstr "Destinație intermediară"
 
 #: qml/PoiEditPage.qml:25
 msgid "Edit bookmark"
-msgstr "Modifica preferito"
+msgstr "Modifică preferatul"
 
 #: qml/PoiEditPage.qml:28
 msgid "Save"
-msgstr "Salva"
+msgstr "Salvează"
 
 #: qml/PoiEditPage.qml:42 qml/PreferencesPage.qml:36
 msgid "General"
@@ -1259,39 +1250,39 @@ msgstr "Generale"
 
 #: qml/PoiEditPage.qml:48
 msgid "Title"
-msgstr "Titolo"
+msgstr "Titlu"
 
 #: qml/PoiEditPage.qml:49
 msgid "Enter title"
-msgstr "Inserisci titolo"
+msgstr "Introdu titlul"
 
 #: qml/PoiEditPage.qml:58
 msgid "Enter type, such as Restaurant"
-msgstr "Inserisci tipo, ad es. Ristorante"
+msgstr "Introdu tipul, de exemplu Restaurant"
 
 #: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:95
 msgid "Address"
-msgstr "Indirizzo"
+msgstr "Adresa"
 
 #: qml/PoiEditPage.qml:74
 msgid "Enter address"
-msgstr "Inserisci indirizzo"
+msgstr "Introdu adresa"
 
 #: qml/PoiEditPage.qml:82
 msgid "Enter postal code"
-msgstr "Inserisci codice postale"
+msgstr "Introdu codul poștal"
 
 #: qml/PoiEditPage.qml:92 qml/PoiInfoPage.qml:221
 msgid "Contact"
-msgstr "Contatto"
+msgstr "Contact"
 
 #: qml/PoiEditPage.qml:98
 msgid "Phone number"
-msgstr "Numero di telefono"
+msgstr "Număr de telefon"
 
 #: qml/PoiEditPage.qml:99
 msgid "Enter phone number"
-msgstr "Inserisci numero di telefono"
+msgstr "Introdu numărul de telefon"
 
 #: qml/PoiEditPage.qml:106
 msgid "URL"
@@ -1299,23 +1290,23 @@ msgstr "URL"
 
 #: qml/PoiEditPage.qml:107
 msgid "Enter URL"
-msgstr "Inserisci URL"
+msgstr "Introdu URL-ul"
 
 #: qml/PoiEditPage.qml:115
 msgid "Enter Email"
-msgstr "Inserire l'e-mail"
+msgstr "Introdu E-mailul"
 
 #: qml/PoiEditPage.qml:125 qml/PoiInfoPage.qml:255
 msgid "Additional info"
-msgstr "Informazioni aggiuntive"
+msgstr "Informații suplimentare"
 
 #: qml/PoiEditPage.qml:131
 msgid "Enter additional info"
-msgstr "Inserisci informazioni aggiuntive"
+msgstr "Introdu informații suplimentare"
 
 #: qml/PoiInfoPage.qml:32 qml/PoiPage.qml:95
 msgid "Edit"
-msgstr "Modifica"
+msgstr "Modifică"
 
 #: qml/PoiInfoPage.qml:67
 msgid "Latitude: %1"
@@ -1331,75 +1322,75 @@ msgstr "Plus Codes: %1"
 
 #: qml/PoiInfoPage.qml:112
 msgid "Postal code: %1"
-msgstr "Codice postale: %1"
+msgstr "Cod poștal: %1"
 
 #: qml/PoiInfoPage.qml:125
 msgid "Actions"
-msgstr "Azioni"
+msgstr "Acțiuni"
 
 #: qml/PoiInfoPage.qml:131
 msgid "Bookmark"
-msgstr "Preferito"
+msgstr "Preferat"
 
 #: qml/PoiInfoPage.qml:144
 msgid "Shortlist"
-msgstr "Lista"
+msgstr "Listă"
 
 #: qml/PoiInfoPage.qml:157
 msgid "Share location"
-msgstr "Condividi luogo"
+msgstr "Trimite locul"
 
 #: qml/PoiInfoPage.qml:170
 msgid "Center on location"
-msgstr "Centra sul luogo"
+msgstr "Locul ca centru al hărții"
 
 #: qml/PoiInfoPage.qml:182
 msgid "Navigate To"
-msgstr "Naviga fin qui"
+msgstr "Alege destinația"
 
 #: qml/PoiInfoPage.qml:197
 msgid "Navigate From"
-msgstr "Naviga da qui"
+msgstr "Alege locul de plecare"
 
 #: qml/PoiInfoPage.qml:210
 msgid "Nearby"
-msgstr "Vicino"
+msgstr "În apropiere"
 
 #: qml/PoiPage.qml:85
 msgid "View"
-msgstr "Visualizzazione"
+msgstr "Opțiuni"
 
 #: qml/PoiPage.qml:151
 msgid ""
 "No points of bookmarks defined yet. You can bookmark locations using map and"
 " search."
 msgstr ""
-"Nessun luogo preferito definito attualmente. È possibile inserire i luoghi "
-"preferiti utilizzando la mappa e la ricerca."
+"În prezent, nu există locuri preferate. Poți introduce locurile preferate "
+"folosind harta și căutarea."
 
 #: qml/Poi.qml:197
 msgid "Clearing map"
-msgstr "Pulizia mappa"
+msgstr "Ștergerea hărții"
 
 #: qml/PreferencesPage.qml:45
 msgid "Units"
-msgstr "Unità"
+msgstr "Unități"
 
 #: qml/PreferencesPage.qml:46
 msgid "Metric"
-msgstr "Metrico"
+msgstr "Metric"
 
 #: qml/PreferencesPage.qml:46
 msgid "American"
-msgstr "Americano"
+msgstr "American"
 
 #: qml/PreferencesPage.qml:46
 msgid "British"
-msgstr "Britannico"
+msgstr "Britanic"
 
 #: qml/PreferencesPage.qml:59
 msgid "Preferred map language."
-msgstr "Lingua preferita per la mappa"
+msgstr "Limba preferată a hărții."
 
 #: qml/PreferencesPage.qml:62
 msgid "Map default"
@@ -1407,7 +1398,7 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:63
 msgid "Local"
-msgstr "Locale"
+msgstr "Locală"
 
 #: qml/PreferencesPage.qml:64
 msgid "International"
@@ -1415,64 +1406,64 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:65
 msgid "Arabic"
-msgstr "Arabo"
+msgstr "Arabă"
 
 #: qml/PreferencesPage.qml:66 routers/here_settings.qml:66
 msgid "Basque"
-msgstr "Basco"
+msgstr "Bască"
 
 #: qml/PreferencesPage.qml:67 qml/PreferencesPage.qml:946
 #: routers/here_settings.qml:72
 msgid "Catalan"
-msgstr "Catalano"
+msgstr "Catalană"
 
 #: qml/PreferencesPage.qml:68
 msgid "Chinese (simplified)"
-msgstr "Cinese (semplificato)"
+msgstr "Chineză (simplificată)"
 
 #: qml/PreferencesPage.qml:69
 msgid "Chinese (traditional)"
-msgstr "Cinese (tradizionale)"
+msgstr "Chineză (tradițională)"
 
 #: qml/PreferencesPage.qml:70 qml/PreferencesPage.qml:947
 msgid "Czech"
-msgstr "Ceco"
+msgstr "Cehă"
 
 #: qml/PreferencesPage.qml:71
 msgid "Danish"
-msgstr "Danese"
+msgstr "Daneză"
 
 #: qml/PreferencesPage.qml:72
 msgid "Dutch"
-msgstr "Olandese"
+msgstr "Olandeză"
 
 #: qml/PreferencesPage.qml:73 qml/PreferencesPage.qml:945
 msgid "English"
-msgstr "Inglese"
+msgstr "Engleză"
 
 #: qml/PreferencesPage.qml:74
 msgid "Finnish"
-msgstr "Finlandese"
+msgstr "Finlandeză"
 
 #: qml/PreferencesPage.qml:75 qml/PreferencesPage.qml:950
 msgid "French"
-msgstr "Francese"
+msgstr "Franceză"
 
 #: qml/PreferencesPage.qml:76 qml/PreferencesPage.qml:948
 msgid "German"
-msgstr "Tedesco"
+msgstr "Germană"
 
 #: qml/PreferencesPage.qml:77
 msgid "Gaelic"
-msgstr "Gaelico"
+msgstr "Gaelică"
 
 #: qml/PreferencesPage.qml:78
 msgid "Greek"
-msgstr "Greco"
+msgstr "Greacă"
 
 #: qml/PreferencesPage.qml:79
 msgid "Hebrew"
-msgstr "Ebraico"
+msgstr "Ebraică"
 
 #: qml/PreferencesPage.qml:80 qml/PreferencesPage.qml:951
 msgid "Hindi"
@@ -1480,63 +1471,63 @@ msgstr "Hindi"
 
 #: qml/PreferencesPage.qml:81
 msgid "Indonesian"
-msgstr "Indonesiano"
+msgstr "Indoneziană"
 
 #: qml/PreferencesPage.qml:82 qml/PreferencesPage.qml:952
 msgid "Italian"
-msgstr "Italiano"
+msgstr "Italiană"
 
 #: qml/PreferencesPage.qml:83
 msgid "Japanese"
-msgstr "Giapponese"
+msgstr "Japoneză"
 
 #: qml/PreferencesPage.qml:84
 msgid "Korean"
-msgstr "Coreano"
+msgstr "Coreeană"
 
 #: qml/PreferencesPage.qml:85 routers/here_settings.qml:123
 msgid "Norwegian"
-msgstr "Norvegese"
+msgstr "Norvegiană"
 
 #: qml/PreferencesPage.qml:86 routers/here_settings.qml:127
 msgid "Persian"
-msgstr "Persiano"
+msgstr "Persană"
 
 #: qml/PreferencesPage.qml:87
 msgid "Polish"
-msgstr "Polacco"
+msgstr "Poloneză"
 
 #: qml/PreferencesPage.qml:88
 msgid "Portuguese"
-msgstr "Portoghese"
+msgstr "Portugheză"
 
 #: qml/PreferencesPage.qml:89 qml/PreferencesPage.qml:953
 msgid "Russian"
-msgstr "Russo"
+msgstr "Rusă"
 
 #: qml/PreferencesPage.qml:90
 msgid "Sinhalese"
-msgstr "Singalese"
+msgstr "Singhaleză"
 
 #: qml/PreferencesPage.qml:91 qml/PreferencesPage.qml:949
 msgid "Spanish"
-msgstr "Spagnolo"
+msgstr "Spaniolă"
 
 #: qml/PreferencesPage.qml:92 qml/PreferencesPage.qml:955
 msgid "Swedish"
-msgstr "Svedese"
+msgstr "Suedeză"
 
 #: qml/PreferencesPage.qml:93
 msgid "Thai"
-msgstr "Tailandese"
+msgstr "Thailandeză"
 
 #: qml/PreferencesPage.qml:94
 msgid "Turkish"
-msgstr "Turco"
+msgstr "Turcă"
 
 #: qml/PreferencesPage.qml:95 routers/here_settings.qml:156
 msgid "Ukrainian"
-msgstr "Ucraino"
+msgstr "Ucraineană"
 
 #: qml/PreferencesPage.qml:96 routers/here_settings.qml:157
 msgid "Urdu"
@@ -1544,58 +1535,56 @@ msgstr "Urdu"
 
 #: qml/PreferencesPage.qml:97 routers/here_settings.qml:160
 msgid "Vietnamese"
-msgstr "Vietnamita"
+msgstr "Vietnameză"
 
 #: qml/PreferencesPage.qml:98 routers/here_settings.qml:161
 msgid "Welsh"
-msgstr "Gallese"
+msgstr "Galeză"
 
 #: qml/PreferencesPage.qml:108
 msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
 msgstr ""
-"Commutazione tra le modalità giorno/notte della mappa. Si noti che non tutti"
-" i fornitori hanno a disposizione tutte le mappe con coppie giorno/notte."
+"Schimbarea între aspectul de zi și de noapte al hărții. Nu toți furnizorii "
+"au disponibile toate hărțile cu perechi zi/noapte."
 
 #: qml/PreferencesPage.qml:111
 msgid "Day/night mode"
-msgstr "Modalità giorno/notte"
+msgstr "Aspect zi/noapte"
 
 #: qml/PreferencesPage.qml:113
 msgid "Manual"
-msgstr "Manuale"
+msgstr "Manual"
 
 #: qml/PreferencesPage.qml:114
 msgid "Sunrise and sunset"
-msgstr "Alba e tramonto"
+msgstr "Bazat pe răsărit și apus"
 
 #: qml/PreferencesPage.qml:132
 msgid ""
 "Automatically switch between map types of the provider according to the "
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
-"Passa automaticamente da un tipo di mappa del fornitore all'altro in base "
-"all'attività corrente. Ad esempio, visualizza la mappa progettata per la "
-"navigazione durante il percorso."
+"Schimbă automat între tipurile de hărți ale furnizorului în funcție de "
+"activitatea actuală. De exemplu, afișează harta concepută pentru navigare în"
+" timpul deplasării pe traseu."
 
 #: qml/PreferencesPage.qml:134
 msgid "Switch map modes"
-msgstr "Cambia modalità mappa"
+msgstr "Schimbă aspectul hărții"
 
 #: qml/PreferencesPage.qml:144
 msgid "Fetch autocompleted search results while typing a search string."
-msgstr ""
-"Recupera suggerimenti di autocompletamento mentre digiti una stringa di "
-"ricerca."
+msgstr "Obține rezultate de căutare completate automat în timpul scrierii."
 
 #: qml/PreferencesPage.qml:145
 msgid "Autocomplete while searching"
-msgstr "Autocompletamento durante la ricerca"
+msgstr "Completare automată la căutare"
 
 #: qml/PreferencesPage.qml:159
 msgid "Device"
-msgstr "Dispositivo"
+msgstr "Aparat"
 
 #: qml/PreferencesPage.qml:166
 msgid ""
@@ -1605,37 +1594,38 @@ msgid ""
 "is useful if you wish to receive voice navigation commands while keeping "
 "device in the pocket."
 msgstr ""
-"È possibile controllare se e quando Pure Maps mantiene lo schermo acceso e "
-"lavora in background. Si consiglia di consentire a Pure Maps di bloccare il "
-"salvaschermo durante la navigazione e la sospensione del dispositivo. "
-"L'ultima opzione è utile se si desidera ricevere indicazioni vocali di "
-"navigazione mentre si tiene il dispositivo in tasca."
+"Poți controla dacă și când Pure Maps menține ecranul aprins și funcționează "
+"ascuns. Recomandăm să se permită ca Pure Maps să blocheze pornirea "
+"protectorului de ecran în timpul navigării și intrarea în stare de repaus a "
+"aparatului. Ultima opțiune este utilă dacă se dorește primirea "
+"instrucțiunilor vocale de navigare în timp ce aparatul este ținut în "
+"buzunar."
 
 #: qml/PreferencesPage.qml:180
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
 msgstr ""
-"Si applica solo quando Pure Maps è attivo. Quando è ridotto a icona, il "
-"salvaschermo è controllato dalle normali preferenze del dispositivo."
+"Se aplică numai când Pure Maps este activ. Atunci când este minimizat, "
+"protectorul de ecran este controlat de preferințele normale ale aparatului."
 
 #: qml/PreferencesPage.qml:182
 msgid "Prevent screensaver"
-msgstr "Impedisci il salvaschermo"
+msgstr "Blochează protectorul de ecran"
 
 #: qml/PreferencesPage.qml:183 qml/PreferencesPage.qml:200
 #: qml/PreferencesPage.qml:633 qml/PreferencesPage.qml:746
 msgid "Never"
-msgstr "Mai"
+msgstr "Niciodată"
 
 #: qml/PreferencesPage.qml:183 qml/PreferencesPage.qml:200
 msgid "When navigating"
-msgstr "Durante navigazione"
+msgstr "În timpul navigării"
 
 #: qml/PreferencesPage.qml:183 qml/PreferencesPage.qml:200
 #: qml/PreferencesPage.qml:633
 msgid "Always"
-msgstr "Sempre"
+msgstr "Mereu"
 
 #: qml/PreferencesPage.qml:196
 msgid ""
@@ -1643,77 +1633,77 @@ msgid ""
 "screen is switched off. If set to 'never', usual device suspend policy is "
 "applied."
 msgstr ""
-"Consente di mantenere le indicazioni di navigazione e il posizionamento "
-"anche quando lo schermo è spento. Se è impostato su \"mai\", viene applicato"
-" il criterio di sospensione del dispositivo."
+"Permite menținerea instrucțiunilor de navigare și poziționarea chiar și "
+"atunci când ecranul este stins. Dacă este pus la „niciodată”, se aplică "
+"reglările aparatului."
 
 #: qml/PreferencesPage.qml:199
 msgid "Prevent sleep"
-msgstr "Previeni stand-by"
+msgstr "Blochează repausul aparatului"
 
 #: qml/PreferencesPage.qml:221
 msgid "Privacy"
-msgstr "Privacy"
+msgstr "Confidențialitate"
 
 #: qml/PreferencesPage.qml:228
 msgid ""
 "Clear all history, including search, routes, and destinations. Please note "
 "that the bookmarks will be kept."
 msgstr ""
-"Cancella tutta la cronologia, comprese le ricerche, i percorsi e le "
-"destinazioni. I luoghi preferiti saranno conservati."
+"Șterge toată cronologia, inclusiv căutarea, traseele și destinațiile. "
+"Locurile preferate vor fi păstrate."
 
 #: qml/PreferencesPage.qml:237
 msgid "History cleared"
-msgstr "Cronologia cancellata"
+msgstr "Cronologia a fost ștearsă"
 
 #: qml/PreferencesPage.qml:246
 msgid "Clear history"
-msgstr "Cancella cronologia"
+msgstr "Șterge cronologia"
 
 #: qml/PreferencesPage.qml:258
 msgid "Clear map tiles stored in a cache"
-msgstr "Cancella i dati della mappa dalla cache"
+msgstr "Șterge datele hărții din memoria cache"
 
 #: qml/PreferencesPage.qml:266
 msgid "Clear cache"
-msgstr "Svuota la cache"
+msgstr "Șterge cache"
 
 #: qml/PreferencesPage.qml:278
 msgid "Licenses"
-msgstr "Licenze"
+msgstr "Licențe"
 
 #: qml/PreferencesPage.qml:285
 msgid ""
 "List of the licenses and whether they are accepted or declined. Here you can"
 " change the acceptance of each license."
 msgstr ""
-"Elenco delle licenze e se sono accettate o rifiutate. Qui è possibile "
-"modificare l'accettazione di ciascuna licenza."
+"Lista licențelor și dacă acestea sunt acceptate sau refuzate. Aici se poate "
+"modifica acceptarea fiecărei licențe."
 
 #: qml/PreferencesPage.qml:293
 msgid ""
 "Please restart application after changing the acceptance state of the "
 "license(s)."
 msgstr ""
-"Riavviare l'applicazione dopo aver modificato lo stato di accettazione della"
-" licenza(e)."
+"Repornește aplicația după modificarea stării de acceptare a licenței "
+"(licențelor)."
 
 #: qml/PreferencesPage.qml:328
 msgid "Declined"
-msgstr "Rifiutata"
+msgstr "Refuzată"
 
 #: qml/PreferencesPage.qml:329
 msgid "Accepted"
-msgstr "Accettata"
+msgstr "Acceptată"
 
 #: qml/PreferencesPage.qml:330
 msgid "Unset"
-msgstr "Non impostata"
+msgstr "Nestabilită"
 
 #: qml/PreferencesPage.qml:376
 msgid "API keys"
-msgstr "Chiavi API"
+msgstr "Coduri API"
 
 #: qml/PreferencesPage.qml:384
 msgid ""
@@ -1721,178 +1711,175 @@ msgid ""
 "check the conditions for each of the services that you want to use to ensure"
 " that you comply with them."
 msgstr ""
-"È possibile specificare le chiavi personali per i servizi online in queste "
-"impostazioni. Si prega di verificare le condizioni per ciascuno dei servizi "
-"che si desidera utilizzare per assicurarsi di rispettarli."
+"Aici pot fi specificate codurile personale pentru serviciile care necesită "
+"conectare la internet. Verifică condițiile de utilizare pentru fiecare "
+"dintre serviciile pe care dorești să le folosești."
 
 #: qml/PreferencesPage.qml:393
 msgid "Please restart application after changing API keys."
-msgstr ""
-"Si prega di riavviare l'applicazione dopo aver modificato le chiavi API."
+msgstr "Repornește aplicația după schimbarea codurilor API."
 
 #: qml/PreferencesPage.qml:455
 msgid "Exploring"
-msgstr "Esplorare"
+msgstr "Explorare"
 
 #: qml/PreferencesPage.qml:461
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is not "
 "navigating. Uses OSM Scout Server for its operation."
 msgstr ""
-"Scegli la modalità di viaggio. Si applica solo se Pure Maps non sta "
-"navigando. Utilizza OSM Scout Server per funzionare."
+"Alege modul de deplasare. Se aplică numai dacă Pure Maps nu navighează. "
+"Folosește OSM Scout Server pentru a funcționa."
 
 #: qml/PreferencesPage.qml:462 qml/PreferencesPage.qml:531
 msgid "Snap position to road"
-msgstr "Aggancia posizione alla strada"
+msgstr "Leagă poziția de drum"
 
 #: qml/PreferencesPage.qml:463 routers/gpx_osmscout_settings.qml:33
 #: routers/gpx_settings.qml:31
 msgid "None"
-msgstr "Nessuno"
+msgstr "Nimic"
 
 #: qml/PreferencesPage.qml:463 qml/RoutePage.qml:644
 #: routers/gpx_osmscout_settings.qml:55 routers/gpx_settings.qml:53
 #: routers/here_settings.qml:37 routers/mapquest_open_settings.qml:29
 #: routers/ValhallaSettings.qml:38
 msgid "Foot"
-msgstr "A piedi"
+msgstr "Pe jos"
 
 #: qml/PreferencesPage.qml:491
 msgid "Show navigation instructions"
-msgstr "Mostra indicazioni"
+msgstr "Arată instrucțiunile de navigare"
 
 #: qml/PreferencesPage.qml:501
 msgid "Voice navigation instructions"
-msgstr "Indicazioni vocali"
+msgstr "Instrucțiuni vocale de navigare"
 
 #: qml/PreferencesPage.qml:511
 msgid "Reroute automatically"
-msgstr "Ricalcola automaticamente"
+msgstr "Recalculează automat traseul"
 
 #: qml/PreferencesPage.qml:520
 msgid "Automatic zoom on start"
-msgstr "Zoom automatico all'avvio"
+msgstr "Zoom automat la pornire"
 
 #: qml/PreferencesPage.qml:530
 msgid "Uses OSM Scout Server for its operation."
-msgstr "Utilizza OSM Scout Server per il suo funzionamento."
+msgstr "Folosește OSM Scout Server pentru a funcționa."
 
 #: qml/PreferencesPage.qml:541
 msgid "Show direction signs"
-msgstr "Mostra segnali stradali"
+msgstr "Arată semnele de direcție"
 
 #: qml/PreferencesPage.qml:551
 msgid ""
 "Set rotation of the map in the direction of movement when starting "
 "navigation."
-msgstr ""
-"Ruota la mappa nella direzione di movimento quando avvii la navigazione."
+msgstr "Rotește harta după direcția de deplasare la pornirea navigării."
 
 #: qml/PreferencesPage.qml:552
 msgid "Rotate map when navigating"
-msgstr "Ruota la mappa durante la navigazione"
+msgstr "Rotește harta în timpul navigării"
 
 #: qml/PreferencesPage.qml:561
 msgid "Only applies to vector maps."
-msgstr "Si applica solo a mappe vettoriali."
+msgstr "Se aplică numai hărților vectoriale."
 
 #: qml/PreferencesPage.qml:563
 msgid "Tilt map when navigating"
-msgstr "Ruota mappa durante la navigazione"
+msgstr "Înclină harta în timpul navigării"
 
 #: qml/PreferencesPage.qml:571
 msgid "Smooth position animation"
-msgstr "Animazione fluida della posizione"
+msgstr "Animație lină a poziției"
 
 #: qml/PreferencesPage.qml:581
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
-"Genere preferito per la navigazione vocale. Supportato solo da alcuni "
-"sintetizzatori e lingue."
+"Genul preferat pentru instrucțiunile vocale. Este acceptat doar de unele "
+"motoare și limbi."
 
 #: qml/PreferencesPage.qml:582 qml/PreferencesPage.qml:962
 msgid "Voice gender"
-msgstr "Genere della voce"
+msgstr "Genul vocii"
 
 #: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:963
 msgid "Male"
-msgstr "Maschile"
+msgstr "Masculină"
 
 #: qml/PreferencesPage.qml:583 qml/PreferencesPage.qml:963
 msgid "Female"
-msgstr "Femminile"
+msgstr "Feminină"
 
 #: qml/PreferencesPage.qml:596
 msgid ""
 "Timeout between traffic information updates leading to possible rerouting. "
 "This is active only while routing."
 msgstr ""
-"Intervallo di aggiornamento delle informazioni sul traffico che possono "
-"causare il ricalcolo del percorso. Valido solo quando si viaggia sul "
-"percorso."
+"Intervalul de actualizare a informațiilor despre trafic care pot provoca "
+"recalcularea traseului. Valabil doar la deplasarea pe traseu."
 
 #: qml/PreferencesPage.qml:597
 msgid "Update traffic while routing"
-msgstr "Aggiorna il traffico durante la navigazione"
+msgstr "Actualizează traficul în timpul deplasării"
 
 #: qml/PreferencesPage.qml:599
 msgid "Disabled"
-msgstr "Disabilitato"
+msgstr "Dezactivat"
 
 #: qml/PreferencesPage.qml:600
 msgid "10 minutes"
-msgstr "10 minuti"
+msgstr "10 minute"
 
 #: qml/PreferencesPage.qml:601
 msgid "20 minutes"
-msgstr "20 minuti"
+msgstr "20 minute"
 
 #: qml/PreferencesPage.qml:602
 msgid "30 minutes"
-msgstr "30 minuti"
+msgstr "30 minute"
 
 #: qml/PreferencesPage.qml:603
 msgid "45 minutes"
-msgstr "45 minuti"
+msgstr "45 minute"
 
 #: qml/PreferencesPage.qml:604
 msgid "60 minutes"
-msgstr "60 minuti"
+msgstr "60 minute"
 
 #: qml/PreferencesPage.qml:630
 msgid ""
 "Show speed limit sign. Requires snapping position to the road to find the "
 "speed limit."
 msgstr ""
-"Mostra il cartello del limite di velocità. Richiede che la posizione venga "
-"spostata sulla strada per trovare il limite di velocità."
+"Arată limita de viteză. Trebuie ca poziția să fie pe drum pentru a găsi "
+"limita de viteză."
 
 #: qml/PreferencesPage.qml:632
 msgid "Speed limit"
-msgstr "Limite di velocità"
+msgstr "Limită de viteză"
 
 #: qml/PreferencesPage.qml:633
 msgid "Only when exceeding"
-msgstr "Solo quando superato"
+msgstr "Doar la depășirea limitei"
 
 #: qml/PreferencesPage.qml:649
 msgid ""
 "Accuracy of the positioning supported by device. Deviation from the route "
 "below the specified accuracy will be ignored."
 msgstr ""
-"Precisione di posizionamento fornita dal dispositivo. La deviazione dal "
-"percorso al di sotto della precisione specificata verrà ignorata."
+"Precizia poziționării oferită de aparat. Abaterea de la traseu sub precizia "
+"specificată va fi ignorată."
 
 #: qml/PreferencesPage.qml:650
 msgid "Positioning accuracy"
-msgstr "Precisione di posizionamento"
+msgstr "Precizia poziționării"
 
 #: qml/PreferencesPage.qml:688 qml/PreferencesPage.qml:792
 msgid "Compass"
-msgstr "Bussola"
+msgstr "Busolă"
 
 #: qml/PreferencesPage.qml:695
 msgid ""
@@ -1901,22 +1888,22 @@ msgid ""
 " determined, your speed is low, and, if you are navigating, only if you are "
 "by foot or on the bicycle."
 msgstr ""
-"La bussola può essere utilizzata per determinare l'orientamento del "
-"dispositivo e allineare la mappa in modo appropriato. Si noti che la bussola"
-" è abilitata solo quando la posizione è determinata, la velocità è bassa e, "
-"se si sta navigando, solo se si è a piedi o in bicicletta."
+"Busola poate fi utilizată pentru a determina orientarea aparatului tău și "
+"pentru a alinia harta în mod corespunzător. Busola este activată numai când "
+"poziția ta este stabilită, viteza ta este redusă și, dacă navighezi, numai "
+"dacă ești pe jos sau pe bicicletă."
 
 #: qml/PreferencesPage.qml:705
 msgid "Use compass for determination of the direction."
-msgstr "Usa la bussola per determinare la direzione"
+msgstr "Folosește busola pentru determinarea direcției."
 
 #: qml/PreferencesPage.qml:706
 msgid "Use compass"
-msgstr "Usa bussola"
+msgstr "Folosește busola"
 
 #: qml/PreferencesPage.qml:718
 msgid "Controls"
-msgstr "Controlli"
+msgstr "Comenzi"
 
 #: qml/PreferencesPage.qml:725
 msgid ""
@@ -1924,84 +1911,81 @@ msgid ""
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
 msgstr ""
-"La visualizzazione della mappa può essere visualizzata con tutti i controlli"
-" applicabili in modalità di visualizzazione completa o con un set di "
-"controlli selezionato più piccolo nella modalità di visualizzazione minima. "
-"Per passare da una modalità all'altra, fare clic su una mappa."
+"Harta poate fi afișată fie cu toate comenzile vizibile în vizualizarea "
+"detaliată, fie cu un set mai mic de comenzi vizibile în vizualizarea "
+"minimală. Apasă pe hartă pentru a trece de la un aspect la altul."
 
 #: qml/PreferencesPage.qml:734
 msgid "Set map view to minimal mode on start"
-msgstr ""
-"Imposta la visualizzazione della mappa sulla modalità minima all'avvio"
+msgstr "Folosește vizualizarea minimală la pornire"
 
 #: qml/PreferencesPage.qml:742
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
 msgstr ""
-"Passa automaticamente alla modalità di visualizzazione minima dopo un dato "
-"ritardo o disabilita il passaggio automatico tra le modalità di "
-"visualizzazione della mappa."
+"Comută automat la vizualizarea minimală după un anumit timp sau dezactivează"
+" schimbarea automată a vizualizării hărților."
 
 #: qml/PreferencesPage.qml:744
 msgid "Switch to minimal view"
-msgstr "Passa alla visualizzazione minima"
+msgstr "Treci la vizualizarea minimală"
 
 #: qml/PreferencesPage.qml:746
 msgid "10 seconds"
-msgstr " 10 secondi"
+msgstr "10 secunde"
 
 #: qml/PreferencesPage.qml:746
 msgid "20 seconds"
-msgstr "20 secondi"
+msgstr "20 secunde"
 
 #: qml/PreferencesPage.qml:747
 msgid "30 seconds"
-msgstr "30 secondi"
+msgstr "30 secunde"
 
 #: qml/PreferencesPage.qml:747
 msgid "1 minute"
-msgstr "1 minuto"
+msgstr "1 minut"
 
 #: qml/PreferencesPage.qml:761
 msgid "Always show"
-msgstr "Mostra sempre"
+msgstr "Arată mereu"
 
 #: qml/PreferencesPage.qml:766
 msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
 msgstr ""
-"Mostra sempre i controlli selezionati indipendentemente dal fatto che la "
-"visualizzazione della mappa sia nella modalità minima o completa."
+"Arată mereu comenzile alese, indiferent dacă vizualizarea hărții este "
+"minimală sau detaliată."
 
 #: qml/PreferencesPage.qml:774
 msgid "Menu"
-msgstr "Menu"
+msgstr "Opțiuni"
 
 #: qml/PreferencesPage.qml:783
 msgid "Center on current location"
-msgstr "Centro sulla posizione corrente"
+msgstr "Locul actual ca centru al hărții"
 
 #: qml/PreferencesPage.qml:801
 msgid "Map selection"
-msgstr "Selezione della mappa"
+msgstr "Alegerea hărții"
 
 #: qml/PreferencesPage.qml:810
 msgid "Speed and location precision"
-msgstr "Velocità e precisione di posizione"
+msgstr "Precizia vitezei și a localizării"
 
 #: qml/PreferencesPage.qml:819
 msgid "Scale"
-msgstr "Scala"
+msgstr "Scara"
 
 #: qml/PreferencesPage.qml:846
 msgid "Navigation Start/Pause"
-msgstr "Navigazione Avvio/Pausa"
+msgstr "Navigare Start/Pauză"
 
 #: qml/PreferencesPage.qml:855
 msgid "Navigation Clear Route"
-msgstr "Cancella il percorso attuale"
+msgstr "Șterge traseul actual"
 
 #: qml/PreferencesPage.qml:870
 msgid "Zoom"
@@ -2012,53 +1996,53 @@ msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
 msgstr ""
-"Il livello di zoom della mappa può essere regolato automaticamente in base "
-"alla velocità. Qui è possibile regolare le impostazioni a tale scopo."
+"Nivelul de zoom al hărții se poate schimba automat în funcție de viteza de "
+"deplasare. Aici pot fi modificate reglările corespunzătoare."
 
 #: qml/PreferencesPage.qml:887
 msgid ""
 "Maximal zoom level that is going to be used in the automatic adjustment of "
 "the zoom."
 msgstr ""
-"Livello massimo di zoom che verrà utilizzato nella regolazione automatica "
-"dello zoom."
+"Nivelul maxim de zoom care va fi utilizat la schimbarea automată a zoom-"
+"ului."
 
 #: qml/PreferencesPage.qml:889
 msgid "Maximal zoom level"
-msgstr "Massimo livello di zoom"
+msgstr "Nivelul maxim de zoom"
 
 #: qml/PreferencesPage.qml:900
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
 msgstr ""
-"Il livello di zoom verrà regolato per avere la stessa altezza della mappa "
-"della distanza coperta da te nel numero di secondi specificato."
+"Zoomul este stabilit în funcție de înălțimea hărții pe care o parcurgi în "
+"numărul specificat de secunde."
 
 #: qml/PreferencesPage.qml:903
 msgid "Time range, s"
-msgstr "Intervallo di tempo, s"
+msgstr "Interval de timp, s"
 
 #: qml/PreferencesPage.qml:922
 msgid "Testing"
-msgstr "Test"
+msgstr "Testare"
 
 #: qml/PreferencesPage.qml:932
 msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
-"Test del motore Text-to-Speech (TTS). Seleziona la stessa lingua utilizzata "
-"per la navigazione, il genere preferito e premi il pulsante in basso per "
-"test."
+"Testarea motorului de pronunțare a textului (TTS). Alege aceeași limbă ca "
+"cea utilizată pentru navigare, genul preferat și apasă butonul de mai jos "
+"pentru testare."
 
 #: qml/PreferencesPage.qml:954
 msgid "Slovak"
-msgstr "Slovacco"
+msgstr "Slovacă"
 
 #: qml/PreferencesPage.qml:961
 msgid "Preferred gender. Only supported by some engines and languages."
-msgstr "Genere preferito. Supportato solo da alcuni motori e lingue."
+msgstr "Genul preferat. Este acceptat numai de unele motoare și limbi."
 
 #: qml/PreferencesPage.qml:975
 msgid "Test"
@@ -2066,7 +2050,7 @@ msgstr "Test"
 
 #: qml/PreferencesPage.qml:986
 msgid "Selected voice engine: %1"
-msgstr "Motore vocale selezionato: %1"
+msgstr "Motorul de sinteză vocală ales: %1"
 
 #: qml/PreferencesPage.qml:988
 msgid ""
@@ -2074,38 +2058,37 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at Chum."
 msgstr ""
-"Nessun motore disponibile per la lingua selezionata.\n"
+"Niciun motor nu este disponibil pentru limba aleasă.\n"
 "\n"
-"Pure Maps è compatibile con i motori TTS Mimic, Flite, PicoTTS ed Espeak. A meno che non si utilizzi Pure Maps tramite Flatpak o OpenStore, i motori devono essere installati separatamente. Gli utenti di Sailfish OS possono trovare i motori su Chum."
+"Pure Maps acceptă motoarele Mimic, Flite, PicoTTS și Espeak TTS. Cu excepția cazului în care se utilizează Pure Maps prin Flatpak sau OpenStore, motoarele trebuie instalate separat. Utilizatorii Sailfish OS pot găsi motoarele în Chum."
 
 #: qml/PreferencesPage.qml:1022
 msgid "Development"
-msgstr "Sviluppatori"
+msgstr "Programatori"
 
 #: qml/PreferencesPage.qml:1029
 msgid ""
 "The following options are for development only. Please don't change them "
 "unless you know what you are doing."
 msgstr ""
-"Le opzioni seguenti sono solo per sviluppatori. Non modificarle a meno che "
-"tu non sappia quel che fai."
+"Următoarele opțiuni sunt doar pentru programatori. Nu le schimba decât dacă "
+"știi ce faci."
 
 #: qml/PreferencesPage.qml:1037
 msgid ""
 "Sets current position to the center of the current map view. Remember to "
 "disable GPS positioning when using this option."
 msgstr ""
-"Imposta come posizione attuale il centro della mappa attualmente "
-"visualizzata. Ricorda di disattivare il posizionamento GPS quando usi questa"
-" opzione."
+"Stabilește poziția actuală în centrul hărții actuale. Nu uita să dezactivezi"
+" poziționarea GPS când folosești această opțiune."
 
 #: qml/PreferencesPage.qml:1038
 msgid "Set position to the map center"
-msgstr "Imposta la posizione sul centro della mappa"
+msgstr "Centrează poziția pe hartă"
 
 #: qml/PreferencesPage.qml:1045
 msgid "Show current zoom level"
-msgstr "Mostra livello di zoom attuale"
+msgstr "Arată nivelul actual de zoom"
 
 #: qml/pure-maps.qml:30
 msgid "Pure Maps"
@@ -2113,47 +2096,47 @@ msgstr "Pure Maps"
 
 #: qml/RouteOverallInfo.qml:132
 msgid "Total"
-msgstr "Totale"
+msgstr "Total"
 
 #: qml/RouteOverallInfo.qml:167
 msgid "incl %1 traffic delay"
-msgstr "incluso %1 ritardo nel traffico"
+msgstr "inclusiv %1 întârziere în trafic"
 
 #: qml/RoutePage.qml:34
 msgid "Stop"
-msgstr "Ferma"
+msgstr "Stop"
 
 #: qml/RoutePage.qml:34
 msgid "Begin"
-msgstr "Inizia"
+msgstr "Începe"
 
 #: qml/RoutePage.qml:35
 msgid "Route"
-msgstr "Percorso"
+msgstr "Traseu"
 
 #: qml/RoutePage.qml:67
 msgid "Follow me"
-msgstr "Seguimi"
+msgstr "Urmează-mă"
 
 #: qml/RoutePage.qml:79
 msgid "Reverse route"
-msgstr "Percorso inverso"
+msgstr "Traseu invers"
 
 #: qml/RoutePage.qml:98
 msgid "Clear route"
-msgstr "Cancella percorso"
+msgstr "Șterge traseul"
 
 #: qml/RoutePage.qml:172
 msgid "From"
-msgstr "Da"
+msgstr "De la"
 
 #: qml/RoutePage.qml:179
 msgid "To"
-msgstr "A"
+msgstr "La"
 
 #: qml/RoutePage.qml:180 qml/RoutePage.qml:334
 msgid "Destination"
-msgstr "Destinazione"
+msgstr "Destinație"
 
 #: qml/RoutePage.qml:195
 msgid ""
@@ -2163,99 +2146,99 @@ msgid ""
 "\n"
 "Dismiss this dialog to stop showing this message."
 msgstr ""
-"È possibile aggiungere altre destinazioni e punti intermedi lungo il percorso. Entrambe le posizioni vengono utilizzate per il calcolo del percorso, ma solo le destinazioni vengono monitorate per essere raggiunte. Di conseguenza, se si perde un punto intermedio e si riprende il percorso calcolato dopo il punto intermedio, si riterrà che il punto intermedio sia stato raggiunto e verrà scartato nei ricalcoli successivi. Le destinazioni, invece, devono essere raggiunte entro una certa tolleranza e non verranno scartate in questo modo.\n"
+"De-a lungul traseului pot fi adăugate alte destinații și puncte intermediare. Ambele locuri sunt utilizate pentru calcularea traseului, dar sunt urmărite doar destinațiile care urmează să fie atinse. În consecință, dacă se ratează un punct intermediar și se reia traseul calculat după punctul intermediar, punctul intermediar va fi considerat ca fiind atins și va fi eliminat din recalcularea ulterioară a traseului. Destinațiile, pe de altă parte, trebuie să fie atinse în limitele unei anumite toleranțe și nu vor fi eliminate în acest mod.\n"
 "\n"
-"Quindi, impostare come destinazione i luoghi che si devono raggiungere sul percorso e come punti intermedi i luoghi che servono solo per modellare il percorso secondo le proprie preferenze.\n"
+"Prin urmare, stabilește ca destinații locurile la care trebuie să ajungi pe traseu, iar ca puncte intermediare locurile care servesc doar la modelarea traseului în funcție de preferințele tale.\n"
 "\n"
-"Chiudere questa finestra di dialogo per non visualizzare più questo messaggio."
+"Închide această fereastră de dialog pentru a nu mai vedea acest mesaj."
 
 #: qml/RoutePage.qml:217
 msgid "Optimize order"
-msgstr "Ottimizza l'ordine"
+msgstr "Schimbă ordinea"
 
 #: qml/RoutePage.qml:240
 msgid "Up"
-msgstr "Su"
+msgstr "Sus"
 
 #: qml/RoutePage.qml:249
 msgid "Down"
-msgstr "Giù"
+msgstr "Jos"
 
 #: qml/RoutePage.qml:263
 msgid "Convert to waypoint"
-msgstr "Trasforma in punto intermedio"
+msgstr "Transformă în punct intermediar"
 
 #: qml/RoutePage.qml:264
 msgid "Convert to destination"
-msgstr "Trasforma in destinazione"
+msgstr "Transformă în destinație"
 
 #: qml/RoutePage.qml:310
 msgid "Add destination"
-msgstr "Aggiungi destinazione"
+msgstr "Adaugă o destinație"
 
 #: qml/RoutePage.qml:318
 msgid "Add waypoint"
-msgstr "Aggiungi punto intermedio"
+msgstr "Adaugă un punct intermediar"
 
 #: qml/RoutePage.qml:334
 msgid "Waypoint"
-msgstr "Punto intermedio"
+msgstr "Punct intermediar"
 
 #: qml/RoutePage.qml:427
 msgid "Routes"
-msgstr "Percorsi"
+msgstr "Trasee"
 
 #: qml/RoutePage.qml:455
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
-msgstr "%1 ‒ %2 (%3 destinazioni e punti intermedi)"
+msgstr "%1 ‒ %2 (%3 destinații și puncte intermediare)"
 
 #: qml/RoutePage.qml:500
 msgid "Show more..."
-msgstr "Mostra altro..."
+msgstr "Arată mai mult..."
 
 #: qml/RoutePage.qml:540
 msgid "Destinations"
-msgstr "Destinazioni"
+msgstr "Destinații"
 
 #: qml/RoutePage.qml:632
 msgid "Follow the movement and show just in time information"
-msgstr "Segui il movimento e mostra le informazioni al momento"
+msgstr "Urmărește mișcarea și arată informații când e nevoie"
 
 #: qml/RoutePage.qml:641
 msgid ""
 "Select mode of transportation. Only applies when Pure Maps is in follow me "
 "mode."
 msgstr ""
-"Seleziona la modalità di trasporto. Si applica solo quando Pure Maps è in "
-"modalità seguimi."
+"Alege modul de deplasare. Se aplică numai dacă Pure Maps este în modul "
+"„Urmează-mă”."
 
 #: qml/RoutePage.qml:643
 msgid "Mode of transportation"
-msgstr "Modalità di trasporto"
+msgstr "Mod de deplasare"
 
 #: qml/RoutePointPage.qml:65
 msgid "Current selection: %1"
-msgstr "Selezione corrente: %1"
+msgstr "Alegerea actuală: %1"
 
 #: qml/RouterPage.qml:27
 msgid "Routing engine"
-msgstr "Motore di navigazione"
+msgstr "Navigator"
 
 #: qml/RouterPage.qml:66
 msgid "Modes: %1"
-msgstr "Modalità: %1"
+msgstr "Moduri: %1"
 
 #: qml/ScaleBar.qml:208
 msgid "Auto-zoom requires auto-centering to be enabled"
-msgstr "Lo zoom automatico richiede l'attivazione della centratura automatica"
+msgstr "Zoom-ul automat necesită activarea centrării automate"
 
 #: qml/ScaleBar.qml:219
 msgid "Auto-zoom on"
-msgstr "Zoom automatico attivato"
+msgstr "Autozoom pornit"
 
 #: qml/ScaleBar.qml:220
 msgid "Auto-zoom off"
-msgstr "Zoom automatico disattivato"
+msgstr "Autozoom oprit"
 
 #: qml/SharePage.qml:48
 msgid "SMS"
@@ -2263,123 +2246,123 @@ msgstr "SMS"
 
 #: qml/SharePage.qml:53
 msgid "Launching the Messages application"
-msgstr "Apertura dell'applicazione Messaggi"
+msgstr "Se pornește aplicația de mesagerie"
 
 #: qml/SharePage.qml:54 qml/SharePage.qml:80
 msgid "Message copied to the clipboard"
-msgstr "Messaggio copiato negli appunti"
+msgstr "Mesaj copiat în notițe"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr "Errore durante l'invio del messaggio"
+msgstr "Eroare la trimiterea mesajului"
 
 #: qml/SharePage.qml:69
 msgid "Launching the Email application"
-msgstr "Apertura dell'applicazione Email"
+msgstr "Se pornește aplicația de e-mail"
 
 #: qml/SharePage.qml:77
 msgid "Other"
-msgstr "Altro"
+msgstr "Altele"
 
 #: qml/SharePage.qml:97
 msgid "Add address"
-msgstr "Aggiungi indirizzo"
+msgstr "Adaugă o adresă"
 
 #: qml/SharePage.qml:106
 msgid "Add link to OpenStreetMaps"
-msgstr "Aggiungi collegamento a OpenStreetMaps"
+msgstr "Adaugă o legătură către OpenStreetMaps"
 
 #: qml/SharePage.qml:115
 msgid "Add link to Google Maps"
-msgstr "Aggiungi collegamento a Google Maps"
+msgstr "Adaugă o legătură către Google Maps"
 
 #: routers/gpx_osmscout_settings.qml:32 routers/gpx_settings.qml:30
 msgid "File"
-msgstr "File"
+msgstr "Fişier"
 
 #: routers/gpx_osmscout_settings.qml:47 routers/gpx_settings.qml:45
 msgid "Reverse"
-msgstr "Inverso"
+msgstr "Invers"
 
 #: routers/gpx_osmscout_settings.qml:55 routers/here_settings.qml:38
 #: routers/ValhallaSettings.qml:39 routers/ValhallaSettings.qml:132
 msgid "Bus"
-msgstr "Bus"
+msgstr "Autobuz"
 
 #: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "High-occupancy vehicle (HOV)"
-msgstr "Veicoli ad alta occupazione (HOV)"
+msgstr "Vehicul cu mai mulți pasageri (HOV)"
 
 #: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "Motorcycle"
-msgstr "Motocicli"
+msgstr "Motocicletă"
 
 #: routers/gpx_osmscout_settings.qml:56 routers/here_settings.qml:37
 #: routers/ValhallaSettings.qml:39
 msgid "Motor Scooter"
-msgstr "Scooter"
+msgstr "Scuter"
 
 #: routers/gpx_osmscout_settings.qml:77 routers/ValhallaSettings.qml:60
 msgid "Bulgarian (Bulgaria)"
-msgstr "Bulgaro (Bulgaria)"
+msgstr "Bulgară (Bulgaria)"
 
 #: routers/gpx_osmscout_settings.qml:78 routers/here_settings.qml:73
 #: routers/ValhallaSettings.qml:61
 msgid "Catalan (Spain)"
-msgstr "Catalano (Spagna)"
+msgstr "Catalană (Spania)"
 
 #: routers/gpx_osmscout_settings.qml:79 routers/here_settings.qml:78
 #: routers/ValhallaSettings.qml:62
 msgid "Czech (Czechia)"
-msgstr "Ceco (Cechia)"
+msgstr "Cehă (Cehia)"
 
 #: routers/gpx_osmscout_settings.qml:80 routers/here_settings.qml:79
 #: routers/ValhallaSettings.qml:63
 msgid "Danish (Denmark)"
-msgstr "Danese (Danimarca)"
+msgstr "Daneză (Danemarca)"
 
 #: routers/gpx_osmscout_settings.qml:81 routers/here_settings.qml:90
 #: routers/mapquest_open_settings.qml:57 routers/ValhallaSettings.qml:64
 msgid "German (Germany)"
-msgstr "Tedesco (Germania)"
+msgstr "Germană (Germania)"
 
 #: routers/gpx_osmscout_settings.qml:82 routers/here_settings.qml:91
 #: routers/ValhallaSettings.qml:65
 msgid "Greek (Greece)"
-msgstr "Greco (Grecia)"
+msgstr "Greacă (Grecia)"
 
 #: routers/gpx_osmscout_settings.qml:83 routers/here_settings.qml:82
 #: routers/mapquest_open_settings.qml:58 routers/ValhallaSettings.qml:66
 msgid "English (United Kingdom)"
-msgstr "Inglese (Regno Unito)"
+msgstr "Engleză (Regatul Unit)"
 
 #: routers/gpx_osmscout_settings.qml:84 routers/here_settings.qml:83
 #: routers/mapquest_open_settings.qml:59 routers/ValhallaSettings.qml:67
 msgid "English (United States)"
-msgstr "Inglese (Stati Uniti)"
+msgstr "Engleză (Statele Unite)"
 
 #: routers/gpx_osmscout_settings.qml:85 routers/ValhallaSettings.qml:68
 msgid "English Pirate"
-msgstr "Inglese pirata"
+msgstr "Engleză Pirat"
 
 #: routers/gpx_osmscout_settings.qml:86 routers/here_settings.qml:144
 #: routers/mapquest_open_settings.qml:60 routers/ValhallaSettings.qml:69
 msgid "Spanish (Spain)"
-msgstr "Spagnolo (Spagna)"
+msgstr "Spaniolă (Spania)"
 
 #: routers/gpx_osmscout_settings.qml:87 routers/ValhallaSettings.qml:70
 msgid "Estonian (Estonia)"
-msgstr "Estone (Estonia)"
+msgstr "Estonă (Estonia)"
 
 #: routers/gpx_osmscout_settings.qml:88 routers/here_settings.qml:86
 #: routers/ValhallaSettings.qml:71
 msgid "Finnish (Finland)"
-msgstr "Finlandese (Finlandia)"
+msgstr "Finlandeză (Finlanda)"
 
 #: routers/gpx_osmscout_settings.qml:89 routers/here_settings.qml:87
 #: routers/mapquest_open_settings.qml:63 routers/ValhallaSettings.qml:72
 msgid "French (France)"
-msgstr "Francese (Francia)"
+msgstr "Franceză (Franța)"
 
 #: routers/gpx_osmscout_settings.qml:90 routers/here_settings.qml:95
 #: routers/ValhallaSettings.qml:73
@@ -2389,79 +2372,79 @@ msgstr "Hindi (India)"
 #: routers/gpx_osmscout_settings.qml:91 routers/here_settings.qml:96
 #: routers/ValhallaSettings.qml:74
 msgid "Hungarian (Hungary)"
-msgstr "Ungherese (Ungheria)"
+msgstr "Maghiară (Ungaria)"
 
 #: routers/gpx_osmscout_settings.qml:92 routers/here_settings.qml:101
 #: routers/ValhallaSettings.qml:75
 msgid "Italian (Italy)"
-msgstr "Italiano (Italia)"
+msgstr "Italiană (Italia)"
 
 #: routers/gpx_osmscout_settings.qml:93 routers/here_settings.qml:102
 #: routers/ValhallaSettings.qml:76
 msgid "Japanese (Japan)"
-msgstr "Giapponese (Giappone)"
+msgstr "Japoneză (Japonia)"
 
 #: routers/gpx_osmscout_settings.qml:94 routers/ValhallaSettings.qml:77
 msgid "Norwegian Bokmål (Norway)"
-msgstr "Norvegese Bokmål (Norvegia)"
+msgstr "Norvegiană Bokmål (Norvegia)"
 
 #: routers/gpx_osmscout_settings.qml:95 routers/here_settings.qml:81
 #: routers/ValhallaSettings.qml:78
 msgid "Dutch (Netherlands)"
-msgstr "Olandese (Paesi Bassi)"
+msgstr "Olandeză (Olanda)"
 
 #: routers/gpx_osmscout_settings.qml:96 routers/here_settings.qml:128
 #: routers/ValhallaSettings.qml:79
 msgid "Polish (Poland)"
-msgstr "Polacco (Polonia)"
+msgstr "Poloneză (Polonia)"
 
 #: routers/gpx_osmscout_settings.qml:97 routers/here_settings.qml:129
 #: routers/ValhallaSettings.qml:80
 msgid "Portuguese (Brazil)"
-msgstr "Portoghese (Brasile)"
+msgstr "Portugheză (Brazilia)"
 
 #: routers/gpx_osmscout_settings.qml:98 routers/here_settings.qml:130
 #: routers/ValhallaSettings.qml:81
 msgid "Portuguese (Portugal)"
-msgstr "Portoghese (Portogallo)"
+msgstr "Portugheză (Portugalia)"
 
 #: routers/gpx_osmscout_settings.qml:99 routers/here_settings.qml:134
 #: routers/ValhallaSettings.qml:82
 msgid "Romanian (Romania)"
-msgstr "Rumeno (Romania)"
+msgstr "Română (România)"
 
 #: routers/gpx_osmscout_settings.qml:100 routers/here_settings.qml:135
 #: routers/mapquest_open_settings.qml:64 routers/ValhallaSettings.qml:83
 msgid "Russian (Russia)"
-msgstr "Russo (Russia)"
+msgstr "Rusă (Rusia)"
 
 #: routers/gpx_osmscout_settings.qml:101 routers/here_settings.qml:142
 #: routers/ValhallaSettings.qml:84
 msgid "Slovak (Slovakia)"
-msgstr "Slovacco (Slovacchia)"
+msgstr "Slovacă (Slovacia)"
 
 #: routers/gpx_osmscout_settings.qml:102 routers/here_settings.qml:143
 #: routers/ValhallaSettings.qml:85
 msgid "Slovenian (Slovenia)"
-msgstr "Sloveno (Slovenia)"
+msgstr "Slovenă (Slovenia)"
 
 #: routers/gpx_osmscout_settings.qml:103 routers/here_settings.qml:146
 #: routers/ValhallaSettings.qml:86
 msgid "Swedish (Sweden)"
-msgstr "Svedese (Svezia)"
+msgstr "Suedeză (Suedia)"
 
 #: routers/gpx_osmscout_settings.qml:104 routers/here_settings.qml:154
 #: routers/ValhallaSettings.qml:87
 msgid "Turkish (Turkey)"
-msgstr "Turco (Turchia)"
+msgstr "Turcă (Turcia)"
 
 #: routers/gpx_osmscout_settings.qml:105 routers/ValhallaSettings.qml:88
 msgid "Ukrainian (Ukraine)"
-msgstr "Ucraino (Ucraina)"
+msgstr "Ucraineană (Ucraina)"
 
 #: routers/here_settings.qml:30 routers/ValhallaSettings.qml:31
 msgid "General options"
-msgstr "Opzioni generali"
+msgstr "Opțiuni generale"
 
 #: routers/here_settings.qml:38
 msgid "Taxi"
@@ -2473,83 +2456,83 @@ msgstr "Afrikaans"
 
 #: routers/here_settings.qml:60
 msgid "Albanian"
-msgstr "Albanese"
+msgstr "Albaneză"
 
 #: routers/here_settings.qml:61
 msgid "Amharic"
-msgstr "Amarico"
+msgstr "Amharică"
 
 #: routers/here_settings.qml:62
 msgid "Arabic (Saudi Arabia)"
-msgstr "Arabo (Arabia Saudita)"
+msgstr "Arabă (Arabia Saudită)"
 
 #: routers/here_settings.qml:63
 msgid "Armenian"
-msgstr "Armeno"
+msgstr "Armeană"
 
 #: routers/here_settings.qml:64
 msgid "Assamese"
-msgstr "Assamese"
+msgstr "Assameză"
 
 #: routers/here_settings.qml:65
 msgid "Azerbaijani (Latin)"
-msgstr "Azerbaigiano (latino)"
+msgstr "Azeră (Latină)"
 
 #: routers/here_settings.qml:67
 msgid "Belarusian"
-msgstr "Bielorusso"
+msgstr "Belarusă"
 
 #: routers/here_settings.qml:68
 msgid "Bangla (Bangladesh)"
-msgstr "Bengalese (Bangladesh)"
+msgstr "Bengaleză (Bangladesh)"
 
 #: routers/here_settings.qml:69
 msgid "Bangla (India)"
-msgstr "Bengalese (India)"
+msgstr "Bengaleză (India)"
 
 #: routers/here_settings.qml:70
 msgid "Bosnian"
-msgstr "Bosniaco"
+msgstr "Bosniacă"
 
 #: routers/here_settings.qml:71
 msgid "Bulgarian"
-msgstr "Bulgaro"
+msgstr "Bulgară"
 
 #: routers/here_settings.qml:74
 msgid "Chinese (China)"
-msgstr "Cinese (Cina)"
+msgstr "Chineză (China)"
 
 #: routers/here_settings.qml:75
 msgid "Chinese (Hong Kong SAR China)"
-msgstr "Cinese (RAS di Hong Kong)"
+msgstr "Chineză (Hong Kong)"
 
 #: routers/here_settings.qml:76
 msgid "Chinese (Taiwan)"
-msgstr "Cinese (Taiwan)"
+msgstr "Chineză (Taiwan)"
 
 #: routers/here_settings.qml:77
 msgid "Croatian"
-msgstr "Croato"
+msgstr "Croată"
 
 #: routers/here_settings.qml:80
 msgid "Persian (Afghanistan)"
-msgstr "Persiano (Afghanistan)"
+msgstr "Persană (Afganistan)"
 
 #: routers/here_settings.qml:84
 msgid "Estonian"
-msgstr "Estone"
+msgstr "Estonă"
 
 #: routers/here_settings.qml:85
 msgid "Filipino (Latin)"
-msgstr "Filippino (latino)"
+msgstr "Filipineză (Latină)"
 
 #: routers/here_settings.qml:88
 msgid "Galician"
-msgstr "Galiziano"
+msgstr "Galiciană"
 
 #: routers/here_settings.qml:89
 msgid "Georgian"
-msgstr "Georgiano"
+msgstr "Georgiană"
 
 #: routers/here_settings.qml:92
 msgid "Gujarati"
@@ -2557,31 +2540,31 @@ msgstr "Gujarati"
 
 #: routers/here_settings.qml:93
 msgid "Hausa (Latin)"
-msgstr "Hausa (latino)"
+msgstr "Hausa (Latină)"
 
 #: routers/here_settings.qml:94
 msgid "Hebrew (Israel)"
-msgstr "Ebraico (Israele)"
+msgstr "Ebraică (Israel)"
 
 #: routers/here_settings.qml:97
 msgid "Icelandic"
-msgstr "Islandese"
+msgstr "Islandeză"
 
 #: routers/here_settings.qml:98
 msgid "Igbo (Latin)"
-msgstr "Igbo (latino)"
+msgstr "Igbo (Latină)"
 
 #: routers/here_settings.qml:99
 msgid "Indonesian (Indonesia)"
-msgstr "Indonesiano (Indonesia)"
+msgstr "Indoneziană (Indonezia)"
 
 #: routers/here_settings.qml:100
 msgid "Irish"
-msgstr "Irlandese"
+msgstr "Irlandeză"
 
 #: routers/here_settings.qml:103
 msgid "Kʼicheʼ (Latin)"
-msgstr "K’iche’ (latino)"
+msgstr "Kʼicheʼ (Latină)"
 
 #: routers/here_settings.qml:104
 msgid "Kannada"
@@ -2589,15 +2572,15 @@ msgstr "Kannada"
 
 #: routers/here_settings.qml:105
 msgid "Kazakh"
-msgstr "Kazako"
+msgstr "Kazahă"
 
 #: routers/here_settings.qml:106
 msgid "Khmer"
-msgstr "Khmer"
+msgstr "Khmeră"
 
 #: routers/here_settings.qml:107
 msgid "Kinyarwanda (Rwanda)"
-msgstr "Kinyarwanda (Ruanda)"
+msgstr "Kinyarwanda (Rwanda)"
 
 #: routers/here_settings.qml:108
 msgid "Konkani"
@@ -2605,35 +2588,35 @@ msgstr "Konkani"
 
 #: routers/here_settings.qml:109
 msgid "Korean (South Korea)"
-msgstr "Coreano (Corea del Sud)"
+msgstr "Coreeană (Coreea De Sud)"
 
 #: routers/here_settings.qml:110
 msgid "Kurdish (Arabic)"
-msgstr "Curdo (arabo)"
+msgstr "Kurdă (Arabă)"
 
 #: routers/here_settings.qml:111
 msgid "Kyrgyz (Cyrillic)"
-msgstr "Kirghiso (cirillico)"
+msgstr "Kirghiză (Chirilic)"
 
 #: routers/here_settings.qml:112
 msgid "Latvian"
-msgstr "Lettone"
+msgstr "Letonă"
 
 #: routers/here_settings.qml:113
 msgid "Lithuanian"
-msgstr "Lituano"
+msgstr "Lituaniană"
 
 #: routers/here_settings.qml:114
 msgid "Luxembourgish"
-msgstr "Lussemburghese"
+msgstr "Luxemburgheză"
 
 #: routers/here_settings.qml:115
 msgid "Macedonian"
-msgstr "Macedone"
+msgstr "Macedoneană"
 
 #: routers/here_settings.qml:116
 msgid "Malay (Malaysia)"
-msgstr "Malese (Malaysia)"
+msgstr "Malaeză (Malaezia)"
 
 #: routers/here_settings.qml:117
 msgid "Malayalam"
@@ -2641,11 +2624,11 @@ msgstr "Malayalam"
 
 #: routers/here_settings.qml:118
 msgid "Maltese"
-msgstr "Maltese"
+msgstr "Malteză"
 
 #: routers/here_settings.qml:119
 msgid "Maori (Latin)"
-msgstr "Maori (latino)"
+msgstr "Maori (Latină)"
 
 #: routers/here_settings.qml:120
 msgid "Marathi"
@@ -2653,15 +2636,15 @@ msgstr "Marathi"
 
 #: routers/here_settings.qml:121
 msgid "Mongolian (Cyrillic)"
-msgstr "Mongolo (cirillico)"
+msgstr "Mongolă (Chirilic)"
 
 #: routers/here_settings.qml:122
 msgid "Nepali (Nepal)"
-msgstr "Nepalese (Nepal)"
+msgstr "Nepaleză (Nepal)"
 
 #: routers/here_settings.qml:124
 msgid "Norwegian Nynorsk"
-msgstr "Norvegese nynorsk"
+msgstr "Norvegiană Nynorsk"
 
 #: routers/here_settings.qml:125
 msgid "Odia"
@@ -2669,7 +2652,7 @@ msgstr "Odia"
 
 #: routers/here_settings.qml:126
 msgid "Northern Sotho"
-msgstr "Sotho del nord"
+msgstr "Sotho De Nord"
 
 #: routers/here_settings.qml:131
 msgid "Punjabi"
@@ -2677,35 +2660,35 @@ msgstr "Punjabi"
 
 #: routers/here_settings.qml:132
 msgid "Punjabi (Arabic)"
-msgstr "Punjabi (arabo)"
+msgstr "Punjabi (Arabă)"
 
 #: routers/here_settings.qml:133
 msgid "Cusco Quechua (Latin, Peru)"
-msgstr "Cusco Quechua (latino, Perù)"
+msgstr "Cusco Quechua (Latină, Peru)"
 
 #: routers/here_settings.qml:136
 msgid "Scottish Gaelic (Latin)"
-msgstr "Gaelico scozzese (latino)"
+msgstr "Gaelică Scoțiană (Latină)"
 
 #: routers/here_settings.qml:137
 msgid "Serbian (Cyrillic, Bosnia & Herzegovina)"
-msgstr "Serbo (cirillico, Bosnia ed Erzegovina)"
+msgstr "Sârbă (Chirilic, Bosnia și Herțegovina)"
 
 #: routers/here_settings.qml:138
 msgid "Serbian (Cyrillic, Serbia)"
-msgstr "Serbo (cirillico, Serbia)"
+msgstr "Sârbă (Chirilic, Serbia)"
 
 #: routers/here_settings.qml:139
 msgid "Serbian (Latin, Serbia)"
-msgstr "Serbo (latino, Serbia)"
+msgstr "Sârbă (Latină, Serbia)"
 
 #: routers/here_settings.qml:140
 msgid "Sindhi (Arabic)"
-msgstr "Sindhi (arabo)"
+msgstr "Sindhi (Arabă)"
 
 #: routers/here_settings.qml:141
 msgid "Sinhala"
-msgstr "Singalese"
+msgstr "Sinhala"
 
 #: routers/here_settings.qml:145
 msgid "Swahili"
@@ -2713,7 +2696,7 @@ msgstr "Swahili"
 
 #: routers/here_settings.qml:147
 msgid "Tajik (Cyrillic)"
-msgstr "Tagico (cirillico)"
+msgstr "Tadjică (Chirilic)"
 
 #: routers/here_settings.qml:148
 msgid "Tamil"
@@ -2721,7 +2704,7 @@ msgstr "Tamil"
 
 #: routers/here_settings.qml:149
 msgid "Tatar (Cyrillic)"
-msgstr "Tataro (cirillico)"
+msgstr "Tătară (Chirilic)"
 
 #: routers/here_settings.qml:150
 msgid "Telugu"
@@ -2729,11 +2712,11 @@ msgstr "Telugu"
 
 #: routers/here_settings.qml:151
 msgid "Thai (Thailand)"
-msgstr "Thai (Thailandia)"
+msgstr "Thailandeză (Thailanda)"
 
 #: routers/here_settings.qml:152
 msgid "Tigrinya"
-msgstr "Tigrino"
+msgstr "Tigrinya"
 
 #: routers/here_settings.qml:153
 msgid "Tswana"
@@ -2741,19 +2724,19 @@ msgstr "Tswana"
 
 #: routers/here_settings.qml:155
 msgid "Turkmen (Latin)"
-msgstr "Turcomanno (latino)"
+msgstr "Turkmenă (Latină)"
 
 #: routers/here_settings.qml:158
 msgid "Uyghur (Arabic)"
-msgstr "Uiguro (arabo)"
+msgstr "Uyghur (Arabă)"
 
 #: routers/here_settings.qml:159
 msgid "Uzbek (Cyrillic)"
-msgstr "Uzbeco (cirillico)"
+msgstr "Uzbecă (Chirilic)"
 
 #: routers/here_settings.qml:162
 msgid "Wolof (Latin)"
-msgstr "Wolof (latino)"
+msgstr "Wolof (Latină)"
 
 #: routers/here_settings.qml:163
 msgid "Xhosa"
@@ -2761,87 +2744,87 @@ msgstr "Xhosa"
 
 #: routers/here_settings.qml:164
 msgid "Yoruba (Latin)"
-msgstr "Yoruba (latino)"
+msgstr "Yoruba (Latină)"
 
 #: routers/here_settings.qml:165
 msgid "Zulu (South Africa)"
-msgstr "Zulu (Sudafrica)"
+msgstr "Zulu (Africa De Sud)"
 
 #: routers/here_settings.qml:172 routers/ValhallaSettings.qml:95
 msgid "Advanced options"
-msgstr "Opzioni avanzate"
+msgstr "Opțiuni avansate"
 
 #: routers/here_settings.qml:193 routers/ValhallaSettings.qml:103
 msgid "Prefer shorter route"
-msgstr "Preferisci percorso più breve"
+msgstr "Prefer un traseu mai scurt"
 
 #: routers/here_settings.qml:205
 msgid "Avoid tolls"
-msgstr "Evita i pedaggi"
+msgstr "Evită drumurile cu plată"
 
 #: routers/here_settings.qml:217
 msgid "Avoid highways"
-msgstr "Evita le autostrade"
+msgstr "Evită autostrăzile"
 
 #: routers/here_settings.qml:229
 msgid "Avoid tunnels"
-msgstr "Evita i tunnel"
+msgstr "Evită tunelurile"
 
 #: routers/here_settings.qml:241
 msgid "Avoid dirt roads"
-msgstr "Evita le strade sterrate"
+msgstr "Evită drumurile de pământ"
 
 #: routers/here_settings.qml:253
 msgid "Avoid difficult turns"
-msgstr "Evita i tornanti"
+msgstr "Evită serpentinele"
 
 #: routers/here_settings.qml:265
 msgid "Avoid ferries"
-msgstr "Evita i traghetti"
+msgstr "Evită feriboturile"
 
 #: routers/here_settings.qml:277
 msgid "Avoid car trains"
-msgstr "Evita i treni per auto"
+msgstr "Evită trenurile pentru mașini"
 
 #: routers/here_settings.qml:289
 msgid "Avoid seasonally closed roads"
-msgstr "Evita le strade chiuse stagionalmente"
+msgstr "Evită drumurile închise sezonier"
 
 #: routers/mapquest_open_settings.qml:46
 msgid "Try to avoid tolls"
-msgstr "Cerca di evitare pedaggi"
+msgstr "Încearcă să eviți drumurile cu plată"
 
 #: routers/mapquest_open_settings.qml:61
 msgid "Spanish (Mexico)"
-msgstr "Spagnolo (Messico)"
+msgstr "Spaniolă (Mexic)"
 
 #: routers/mapquest_open_settings.qml:62
 msgid "French (Canada)"
-msgstr "Francese (Canada)"
+msgstr "Franceză (Canada)"
 
 #: routers/ValhallaSettings.qml:114
 msgid "Bicycle type"
-msgstr "Tipo di bicicletta"
+msgstr "Tip de bicicletă"
 
 #: routers/ValhallaSettings.qml:115
 msgid "Road"
-msgstr "Strada"
+msgstr "Drum"
 
 #: routers/ValhallaSettings.qml:115
 msgid "Hybrid or City (default)"
-msgstr "Ibrida o City (predefinito)"
+msgstr "Mixt sau Urban (prestabilit)"
 
 #: routers/ValhallaSettings.qml:115
 msgid "Cross"
-msgstr "Fuori strada"
+msgstr "Teren accidentat"
 
 #: routers/ValhallaSettings.qml:115
 msgid "Mountain"
-msgstr "Montagna"
+msgstr "Munte"
 
 #: routers/ValhallaSettings.qml:131
 msgid "Your desire to use buses."
-msgstr "Disponibilità a usare autobus."
+msgstr "Dorința ta de a folosi autobuzele."
 
 #: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
 #: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:205
@@ -2849,70 +2832,70 @@ msgstr "Disponibilità a usare autobus."
 #: routers/ValhallaSettings.qml:257 routers/ValhallaSettings.qml:273
 #: routers/ValhallaSettings.qml:309
 msgid "Avoid"
-msgstr "Evita"
+msgstr "Evită"
 
 #: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
 #: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:221
 #: routers/ValhallaSettings.qml:239 routers/ValhallaSettings.qml:292
 msgid "Prefer to avoid"
-msgstr "Preferisci evitare"
+msgstr "Prefer să evit"
 
 #: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
 #: routers/ValhallaSettings.qml:205 routers/ValhallaSettings.qml:221
 #: routers/ValhallaSettings.qml:239 routers/ValhallaSettings.qml:257
 #: routers/ValhallaSettings.qml:273 routers/ValhallaSettings.qml:309
 msgid "No preference (default)"
-msgstr "Nessuna preferenza (predefinito)"
+msgstr "Nicio preferință (prestabilit)"
 
 #: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:169
 #: routers/ValhallaSettings.qml:186 routers/ValhallaSettings.qml:222
 #: routers/ValhallaSettings.qml:240 routers/ValhallaSettings.qml:293
 msgid "Incline"
-msgstr "Pendenza"
+msgstr "Înclinare"
 
 #: routers/ValhallaSettings.qml:148
 msgid "The maximum difficulty of hiking trails that is allowed."
-msgstr "La difficoltà massima permessa per i percorsi escursionistici."
+msgstr "Dificultatea maximă permisă a traseelor de mers pe jos."
 
 #: routers/ValhallaSettings.qml:149
 msgid "Hiking difficulty"
-msgstr "Difficoltà escursione"
+msgstr "Dificultatea drumeției"
 
 #: routers/ValhallaSettings.qml:150
 msgid "Hiking (default)"
-msgstr "Escursione a piedi (predefinita)"
+msgstr "Mers pe jos (prestabilit)"
 
 #: routers/ValhallaSettings.qml:150
 msgid "Mountain hiking"
-msgstr "Escursione di montagna"
+msgstr "Mers pe munte"
 
 #: routers/ValhallaSettings.qml:151
 msgid "Demanding mountain hiking"
-msgstr "Escursione di montagna impegnativa"
+msgstr "Drumeții montane dificile"
 
 #: routers/ValhallaSettings.qml:151
 msgid "Alpine hiking"
-msgstr "Escursione alpina"
+msgstr "Alpinism"
 
 #: routers/ValhallaSettings.qml:151
 msgid "Demanding alpine hiking"
-msgstr "Escursione alpina impegnativa"
+msgstr "Alpinism dificil"
 
 #: routers/ValhallaSettings.qml:167
 msgid "Ferries"
-msgstr "Ferrata"
+msgstr "Feriboturi"
 
 #: routers/ValhallaSettings.qml:184
 msgid "Highways"
-msgstr "Autostrade"
+msgstr "Autostrăzi"
 
 #: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:292
 msgid "No preference"
-msgstr "Nessuna preferenza"
+msgstr "Nicio preferință"
 
 #: routers/ValhallaSettings.qml:186
 msgid "Prefer (default)"
-msgstr "Preferisci (predefinito)"
+msgstr "Preferat (prestabilit)"
 
 #: routers/ValhallaSettings.qml:203
 msgid ""
@@ -2920,42 +2903,41 @@ msgid ""
 "(time and distance) routes can be selected. By allowing hills, it indicates "
 "you do not fear hills and steeper grades."
 msgstr ""
-"Il tuo desiderio di affrontare colline. Quando eviti colline e pendenze "
-"elevate, potrebbero essere selezionati percorsi più lunghi (per tempo e "
-"distanza). Permettendo le colline, indichi di non temere colline e pendenze "
-"elevate."
+"Dorința ta de a urca pe serpentine. Atunci când se evită serpentinele și "
+"pantele abrupte, pot fi alese trasee mai lungi (timp și distanță). Permițând"
+" serpentinele, înseamnă că nu te deranjează munții și pantele abrupte."
 
 #: routers/ValhallaSettings.qml:204
 msgid "Hills"
-msgstr "Colline"
+msgstr "Serpentine"
 
 #: routers/ValhallaSettings.qml:205
 msgid "Allow"
-msgstr "Permetti"
+msgstr "Permite"
 
 #: routers/ValhallaSettings.qml:220
 msgid "Primary roads"
-msgstr "Strade principali"
+msgstr "Drumuri principale"
 
 #: routers/ValhallaSettings.qml:237
 msgid "Your desire to use rail/subway/metro."
-msgstr "Disponibilità a usare treni/tram/metropolitane."
+msgstr "Dorința ta de a folosi trenul/metroul."
 
 #: routers/ValhallaSettings.qml:238
 msgid "Rail"
-msgstr "Treni"
+msgstr "Tren"
 
 #: routers/ValhallaSettings.qml:255
 msgid "Your propensity to use roads alongside other vehicles."
-msgstr "La tua propensione a percorrere strade assieme ad altri veicoli."
+msgstr "Tendința ta de a folosi drumurile alături de alte vehicule."
 
 #: routers/ValhallaSettings.qml:256
 msgid "Roads"
-msgstr "Strade"
+msgstr "Drumuri"
 
 #: routers/ValhallaSettings.qml:272
 msgid "Tolls"
-msgstr "Pedaggi"
+msgstr "Drumuri cu plată"
 
 #: routers/ValhallaSettings.qml:290
 msgid ""
@@ -2963,22 +2945,22 @@ msgid ""
 "roads and route on secondary roads, sometimes on using trails, tracks, "
 "unclassified roads or roads with bad surfaces."
 msgstr ""
-"Il tuo desiderio d'avventura. Quando preferito, il calcolatore di percorsi "
-"tenderà ad evitare strade maggiori e ti indirizzerà su strade secondarie, "
-"talvolta utilizzando sentieri, piste e strade non classificate o con "
-"superfici sconnesse."
+"Dorința ta de aventură. Atunci când este preferat, calculul traseului tinde "
+"să evite drumurile principale și să se deplaseze pe drumuri secundare, "
+"uneori pe poteci, piste, drumuri neclasificate sau drumuri cu suprafețe "
+"deteriorate."
 
 #: routers/ValhallaSettings.qml:291
 msgid "Trails"
-msgstr "Sentieri"
+msgstr "Poteci"
 
 #: routers/ValhallaSettings.qml:292
 msgid "Avoid (default)"
-msgstr "Evita (predefinito)"
+msgstr "Evită (prestabilit)"
 
 #: routers/ValhallaSettings.qml:308
 msgid "Transfers"
-msgstr "Cambi"
+msgstr "Transferuri"
 
 #: qml/js/util.js:226
 msgid "Alternatives"
@@ -2986,41 +2968,41 @@ msgstr "Alternative"
 
 #: src/cmdlineparser.cpp:18
 msgid "Displays help on commandline options."
-msgstr "Visualizza la guida sulle opzioni della riga di comando."
+msgstr "Arată instrucțiuni pentru opțiunile liniei de comandă."
 
 #: src/cmdlineparser.cpp:20
 msgid "Displays version information."
-msgstr "Visualizza le informazioni sulla versione."
+msgstr "Arată informații despre versiune."
 
 #: src/cmdlineparser.cpp:23
 msgid "Show location given by geo:latitude,longitude URI or perform search."
-msgstr "Mostra il luogo dato da latitudine, longitudine o esegui una ricerca."
+msgstr "Arată locul dat de latitudine,longitudine sau efectuează o căutare."
 
 #: src/navigator.cpp:422 src/navigator.cpp:525
 msgid "Preparing to start navigation"
-msgstr "Preparazione per iniziare la navigazione"
+msgstr "Se pregătește începerea navigării"
 
 #: src/navigator.cpp:464
 msgid "Moving in a wrong direction"
-msgstr "La direzione è sbagliata"
+msgstr "Direcția este greșită"
 
 #: src/navigator.cpp:474
 msgid "Away from route"
-msgstr "Lontano dal percorso"
+msgstr "Te-ai abătut de la traseu"
 
 #: src/navigator.cpp:514
 msgid "Position imprecise: accuracy %1"
-msgstr "Posizione imprecisa: precisione %1"
+msgstr "Poziție imprecisă: precizie %1"
 
 #: src/navigator.cpp:520 src/navigator.cpp:1101
 msgid "Position unknown"
-msgstr "Posizione sconosciuta"
+msgstr "Poziție necunoscută"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
 #: src/navigator.cpp:686 src/navigator.cpp:697
 msgid "In %2, %1"
-msgstr "Tra %2, %1"
+msgstr "După %2, %1"
 
 #. TRANSLATORS: Keep %1 and %2 as they are, will be replaced with numerical
 #. hours (%1) and minutes (%2)
@@ -3036,78 +3018,75 @@ msgstr "%1 min"
 
 #: src/navigator.cpp:1095
 msgid "Starting navigation"
-msgstr "Avvio della navigazione"
+msgstr "Se începe navigarea"
 
 #: src/navigator.cpp:1100
 msgid "Position imprecise"
-msgstr "Posizione imprecisa"
+msgstr "Poziție imprecisă"
 
 #: src/navigator.cpp:1102
 msgid "Position available"
-msgstr "Posizione disponibile"
+msgstr "Poziție disponibilă"
 
 #: standard input:1
 msgid "Search in Finland. Supports autocomplete"
-msgstr "Ricerca in Finlandia. Consente il completamento automatico"
+msgstr "Caută în Finlanda. Permite completarea automată"
 
 #: standard input:2
 msgid "Search based on HERE data. Supports autocomplete"
-msgstr "Ricerca basata sui dati HERE. Consente il completamento automatico"
+msgstr "Căutare pe baza datelor HERE. Permite completarea automată"
 
 #: standard input:3
 msgid "Search based on open data sources"
-msgstr "Ricerca basata su sorgenti di dati aperte"
+msgstr "Căutare bazată pe surse de date publice"
 
 #: standard input:4
 msgid "Search based on open data sources. Supports autocomplete"
-msgstr ""
-"Ricerca basata su fonti di dati pubblici. Consente il completamento "
-"automatico"
+msgstr "Căutare bazată pe surse de date publice. Permite completarea automată"
 
 #: standard input:5
 msgid "Search based on OpenStreetMap data. Supports autocomplete"
-msgstr ""
-"Ricerca basata su dati OpenStreetMap. Consente il completamento automatico"
+msgstr "Căutare bazată pe datele OpenStreetMap. Permite completarea automată"
 
 #: standard input:6
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr "Località elencate e recensite da utenti Foursquare."
+msgstr "Locuri enumerate și recenzate de utilizatorii Foursquare"
 
 #: standard input:7 standard input:8
 msgid "Points of interest from OpenStreetMap data"
-msgstr "Punti di interesse da dati OpenStreetMap"
+msgstr "Locuri de interes din datele OpenStreetMap"
 
 #: standard input:9
 msgid "Routing along GPX track"
-msgstr "Navigazione lungo traccia GPX"
+msgstr "Navigare de-a lungul unui traseu GPX"
 
 #: standard input:10 standard input:12 standard input:14 standard input:16
 #: standard input:18 standard input:20 standard input:22
 msgid "car"
-msgstr "in auto"
+msgstr "mașină"
 
 #: standard input:10 standard input:12 standard input:14 standard input:16
 #: standard input:18 standard input:22
 msgid "bicycle"
-msgstr "bicicletta"
+msgstr "bicicletă"
 
 #: standard input:10 standard input:12 standard input:14 standard input:16
 #: standard input:18 standard input:22
 msgid "foot"
-msgstr "a piedi"
+msgstr "pe jos"
 
 #: standard input:11
 msgid "Routing along GPX track processed by OSM Scout Server"
-msgstr "Navigazione lungo la traccia GPX elaborata da OSM Scout Server"
+msgstr "Navigare de-a lungul unui traseu GPX folosind OSM Scout Server"
 
 #: standard input:13
 msgid "Routing by HERE"
-msgstr "Navigazione basata su HERE"
+msgstr "Traseu calculat de HERE"
 
 #: standard input:15 standard input:17 standard input:19
 msgid "Routing based on OpenStreetMap data"
-msgstr "Navigazione basata su dati OpenStreetMap"
+msgstr "Traseu calculat folosind datele OpenStreetMap"
 
 #: standard input:21
 msgid "Routing by Valhalla based on OpenStreetMap data"
-msgstr "Navigazione tramite Valhalla basata su dati OpenStreetMap"
+msgstr "Traseu calculat de Valhalla folosind datele OpenStreetMap"
