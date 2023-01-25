@@ -70,7 +70,7 @@ SUPPORTED_LOCALES = [
     "ru_RU",
 ]
 
-URL = ("http://open.mapquestapi.com/directions/v2/{service}"
+URL = ("http://www.mapquestapi.com/directions/v2/{service}"
        "?key=" + poor.key.get("MAPQUEST_KEY") )
 
 cache = {}
