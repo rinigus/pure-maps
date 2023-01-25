@@ -24,7 +24,7 @@ class TestModule(poor.test.TestCase):
         self.guide = poor.Guide("nominatim")
 
     def test_geocode(self):
-        results = self.guide.nearby("restaurant", "", "olari, espoo", 1000)
+        results = self.guide.nearby("restaurant", "", (24.7381,60.1738), 1000)
         results = list(map(poor.AttrDict, results))
         assert results
         for result in results:

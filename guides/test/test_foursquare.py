@@ -31,7 +31,7 @@ class TestModule(poor.test.TestCase):
             assert result.label
 
     def test_nearby(self):
-        results = self.guide.nearby("restaurant", "", "tapiola, espoo", 1000)
+        results = self.guide.nearby("restaurant", "", (24.8099,60.1828), 1000)
         results = list(map(poor.AttrDict, results))
         assert results
         for result in results:
