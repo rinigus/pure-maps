@@ -9,7 +9,7 @@
 %if 0%{?sailfishos}
 # "Harbour RPM packages should not provide anything."
 %define __provides_exclude_from ^%{_datadir}/.*$
-%define __requires_exclude ^libs2|libQMapboxGL.*$
+%define __requires_exclude ^libs2|libQMapLibreGL.*$
 %endif
 
 %if 0%{?sailfishos}
@@ -141,7 +141,7 @@ cp %{_libdir}/libs2.so %{buildroot}%{_datadir}/%{name}/lib
 %if 0%{?jollastore}
 mkdir -p %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap
 cp %{_libdir}/qt5/qml/MapboxMap/* %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap
-cp %{_libdir}/libQMapboxGL.so.2* %{buildroot}%{_datadir}/%{name}/lib
+cp %{_libdir}/libQMapLibreGL.so.2* %{buildroot}%{_datadir}/%{name}/lib
 sed -i 's/QtPositioning 5.3/QtPositioning 5.4/g' %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap/MapboxMapGestureArea.qml
 %endif
 
