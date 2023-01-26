@@ -1,3 +1,17 @@
+2023-01-26: Pure Maps 3.2.0
+===========================
+
+* Provide map zoom as search positioning bias info
+* Add positioning bias to search using OSM Scout Server
+* Improve localization support of vector tile maps
+* Set OpenMapTiles as a default fonts provider
+* Fix map route update
+* Update translations
+* Update documentation [JacekJagosz]
+* [ubuntu touch] Update packaging scripts [jonnius]
+* [ubuntu touch] Package click for Ubuntu Touch 20.04 [jonnius]
+* [sfos] Allow access to Downloads [mschilli87]
+
 2022-05-01: Pure Maps 3.1.0
 ===========================
 

@@ -38,6 +38,24 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="3.2.0" date="2023-01-26">
+     <description>
+       <ul>
+	 <li>Provide map zoom as search positioning bias info</li>
+	 <li>Add positioning bias to search using OSM Scout Server</li>
+	 <li>Improve localization support of vector tile maps</li>
+	 <li>Set OpenMapTiles as a default fonts provider</li>
+	 <li>Fix map route update</li>
+	 <li>Update documentation [JacekJagosz]</li>
+	 <li>[ubuntu touch] Update packaging scripts [jonnius]</li>
+	 <li>[ubuntu touch] Package click for Ubuntu Touch 20.04 [jonnius]</li>
+	 <li></li>
+	 <li></li>
+	 <li></li>
+         <li>Update translations</li>
+       </ul>
+     </description>
+   </release>
    <release  version="3.1.1" date="2022-08-21">
      <description>
        <ul>
