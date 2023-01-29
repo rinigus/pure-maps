@@ -5,7 +5,7 @@
 # 
 # Translators:
 # rinigus github, 2021
-# Ladislav Hodas <ladislav@hodas.sk>, 2022
+# Ladislav Hodas <ladislav@hodas.sk>, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-24 22:19+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Ladislav Hodas <ladislav@hodas.sk>, 2022\n"
+"Last-Translator: Ladislav Hodas <ladislav@hodas.sk>, 2023\n"
 "Language-Team: Slovak (Slovakia) (https://www.transifex.com/rinigus/teams/89597/sk_SK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -181,6 +181,23 @@ msgid ""
 " decline them. If declined, HERE support will be inactive and can be enabled"
 " later by accepting the terms in Preferences under Licenses.</p>"
 msgstr ""
+"<p>Vaša inštalácia Pure Maps má povolenú podporu pre služby "
+"HERE.</p><br><p>Oboznámte sa, prosím, <a href=\"https://legal.here.com/en-"
+"gb/terms/here-end-user-terms\">s podmienkami pre koncového používateľa</a>, "
+"<a href=\"https://legal.here.com/en-gb/terms/acceptable-use-"
+"policy\">zásadami prijateľného používania</a>, a <a "
+"href=\"https://legal.here.com/en-gb/privacy\">Zásadami ochrany osobných "
+"údajov HERE</a>. V súvislosti s používaním HERE a Zásady ochrany osobných "
+"údajov, Pure Maps komunikujú s HERE prostredníctvom REST API.<p></br><p>Z <a"
+" href=\"{lruri}\">právnych dôvodov</a>, Pure Maps umožnia vyhľadávania a "
+"smerovanie HERE iba vo vyhradenom profile \"HERE Online\". Ak už nie je "
+"aktívny, pozrite si pravidlá prijateľného používania z roku 2018, kde "
+"nájdete podrobnosti týkajúce sa používania HERE spolu s ostatnými "
+"poskytovateľmi v časti <a href=\"https://legal.here.com/en-"
+"gb/terms/acceptable-use-policy-2018\">Vrstvenie a "
+"modifikácie</a>.</p><br><p>Prijmite podmienky a zásady alebo ich odmietnite."
+" V prípade odmietnutia bude podpora HERE neaktívna a možno ju povoliť neskôr"
+" prijatím podmienok v Predvoľbách v časti Licencie.</p>"
 
 #: poor/keystore.py:109
 msgid "HERE End-User Terms"
@@ -1395,7 +1412,7 @@ msgstr "Uprednostnený jazyk mapy."
 
 #: qml/PreferencesPage.qml:62
 msgid "Map default"
-msgstr ""
+msgstr "Východzie mapy"
 
 #: qml/PreferencesPage.qml:63
 msgid "Local"
@@ -1403,7 +1420,7 @@ msgstr "Miestny"
 
 #: qml/PreferencesPage.qml:64
 msgid "International"
-msgstr ""
+msgstr "Medzinárodný"
 
 #: qml/PreferencesPage.qml:65
 msgid "Arabic"

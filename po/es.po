@@ -5,7 +5,7 @@
 # 
 # Translators:
 # rinigus github, 2021
-# Carmen Fernández B., 2022
+# Carmen Fernández B., 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-24 22:19+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Carmen Fernández B., 2022\n"
+"Last-Translator: Carmen Fernández B., 2023\n"
 "Language-Team: Spanish (https://www.transifex.com/rinigus/teams/89597/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -179,6 +179,23 @@ msgid ""
 " decline them. If declined, HERE support will be inactive and can be enabled"
 " later by accepting the terms in Preferences under Licenses.</p>"
 msgstr ""
+"<p>Tu instalación de Pure Maps ha habilitado el soporte de servicios de "
+"HERE.</p><br><p>Consulta los <a href=\"https://legal.here.com/en-"
+"gb/terms/here-end-user-terms\">términos de usuario final</a>, las <a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy\">políticas "
+"de uso aceptable</a>, y las <a href=\"https://legal.here.com/en-"
+"gb/privacy\">políticas de privacidad de HERE</a>. En el contexto de uso de "
+"HERE y la política de privacidad, Pure Maps se comunica con HERE usando las "
+"REST API.<p></br><p>Por <a href=\"{lruri}\">razones legales</a>, Pure Maps "
+"habilita la búsqueda y el cálculo de rutas de HERE únicamente con un perfil "
+"dedicado de \"HERE Online\". Al no estar activo nunca más, consulta la "
+"política de uso aceptable de 2018 para obtener los detalles sobre el uso de "
+"HERE junto con otros proveedores en la sección <a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy-2018\">Capas"
+" y modificaciones</a> del documento.</p><br><p>Acepta o rechaza los términos"
+" y la política. Si los rechazas, el soporte de HERE estará inactivo y se "
+"podrá habilitar más tarde aceptando los términos en Licencias dentro de "
+"Preferencias.</p>"
 
 #: poor/keystore.py:109
 msgid "HERE End-User Terms"
@@ -284,11 +301,11 @@ msgstr "{:d} h {:d} min"
 
 #: poor/util.py:383
 msgid "API key missing"
-msgstr ""
+msgstr "Falta clave API"
 
 #: poor/util.py:385
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 #: routers/here.py:319
 #, python-brace-format
@@ -652,11 +669,11 @@ msgstr "%1 (por defecto)"
 
 #: qml/BasemapPage.qml:49
 msgid "%1 (default, disabled, API key missing)"
-msgstr ""
+msgstr "%1 (por defecto, deshabilitado, falta clave API)"
 
 #: qml/BasemapPage.qml:50
 msgid "%1 (disabled, API key missing)"
-msgstr ""
+msgstr "%1 (por defecto, falta clave API)"
 
 #: qml/BasemapPage.qml:56
 msgid "Map: %1"
@@ -741,7 +758,7 @@ msgstr "Motor de búsqueda"
 
 #: qml/GeocoderPage.qml:54 qml/GuidePage.qml:55 qml/RouterPage.qml:53
 msgid "%1 (disabled, %2)"
-msgstr ""
+msgstr "%1 (por defecto, %2)"
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -857,7 +874,7 @@ msgstr "HERE - Online"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE (disabled, API key missing)"
-msgstr ""
+msgstr "HERE (por defecto, falta clave API)"
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -1397,7 +1414,7 @@ msgstr "Idioma preferido del mapa."
 
 #: qml/PreferencesPage.qml:62
 msgid "Map default"
-msgstr ""
+msgstr "Mapa por defecto"
 
 #: qml/PreferencesPage.qml:63
 msgid "Local"
@@ -1405,7 +1422,7 @@ msgstr "Local"
 
 #: qml/PreferencesPage.qml:64
 msgid "International"
-msgstr ""
+msgstr "Internacional"
 
 #: qml/PreferencesPage.qml:65
 msgid "Arabic"
