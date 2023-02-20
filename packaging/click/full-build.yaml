@@ -66,6 +66,7 @@ libraries:
     build:
     - cp -r ${SRC_DIR}/* ${BUILD_DIR}/
     - DESTDIR=${INSTALL_DIR} LANG_DIR=./usr/share/picotts/lang make -j${NUM_PROCS}
+    - touch pico2wave
     - DESTDIR=${INSTALL_DIR} make install
     dependencies_target:
     - libtool
