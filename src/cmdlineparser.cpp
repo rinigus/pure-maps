@@ -4,6 +4,8 @@
 
 #include <QCoreApplication>
 #include <QRegularExpression>
+#include <QUrl>
+#include <QUrlQuery>
 
 #include <iostream>
 
@@ -17,7 +19,7 @@ CmdLineParser::CmdLineParser(QObject *parent) : QObject(parent)
   const QCommandLineOption help(QStringList() << "h" << "help",
                                 QCoreApplication::translate("", "Displays help on commandline options."));
   const QCommandLineOption version(QStringList() << "v" << "version",
-                                QCoreApplication::translate("", "Displays version information."));
+                                   QCoreApplication::translate("", "Displays version information."));
   m_parser.addOption(help);
   m_parser.addOption(version);
   m_parser.addPositionalArgument("location", QCoreApplication::translate("", "Show location given by geo:latitude,longitude URI or perform search."));
@@ -63,17 +65,38 @@ void CmdLineParser::process()
       QString location = args[0];
       QRegularExpression re("^ *geo:(-?[\\d.]+),(-?[\\d.]+) *$");
       QRegularExpressionMatch match = re.match(location);
-      bool isGeo = false;
+      bool parsed = false;
       if (match.hasMatch())
         {
-          isGeo = true;
+          bool isGeo = true;
           bool ok = true;
           double lat = match.captured(1).toDouble(&ok); isGeo = isGeo && ok;
           double lon = match.captured(2).toDouble(&ok); isGeo = isGeo && ok;
-          if (isGeo) Commander::instance()->showPoi(QStringLiteral(), lat, lon);
+          if (isGeo)
+            {
+              Commander::instance()->showPoi(QStringLiteral(), lat, lon);
+              parsed = true;
+            }
         }
 
-      if (!match.hasMatch() || !isGeo)
+      if (!parsed)
+        {
+          // check if it is geo: with Android extensions
+          // described in https://en.wikipedia.org/wiki/Geo_URI_scheme
+          if (location.startsWith("geo:"))
+            {
+              QUrl url(location);
+              QUrlQuery query(url.query());
+              QString query_item = query.queryItemValue("q", QUrl::FullyDecoded);
+              if (!query_item.isEmpty())
+                {
+                  Commander::instance()->search(query_item.replace(",", ", "));
+                  parsed = true;
+                }
+            }
+        }
+
+      if (!parsed)
         Commander::instance()->search(location);
     }
 }
