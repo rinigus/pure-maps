@@ -111,6 +111,7 @@ ApplicationWindowPL {
         onSearch: {
             app.pushMain(Qt.resolvedUrl("GeocodePage.qml"),
                          {"query": searchString});
+            app.activate();
         }
 
         onShowPoi: {
@@ -131,6 +132,7 @@ ApplicationWindowPL {
                     });
             map.autoCenter = false;
             map.setCenter(longitude, latitude);
+            app.activate();
         }
     }
 

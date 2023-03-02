@@ -59,6 +59,8 @@ ApplicationWindow {
 
     onDeviceOrientationChanged: updateOrientation()
 
+    // function activate() provided by silica
+
     function initPages() {
     }
 
