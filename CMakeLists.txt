@@ -211,6 +211,8 @@ else()
       set(DESKTOP_SRC
           data/${APP_REV_NAME}.desktop
           data/${APP_NAME}-uri-handler.desktop)
+      install(FILES data/harbour-pure-maps-launcher
+              DESTINATION ${DATADIR}/scripts)
     endif()
 endif()
 

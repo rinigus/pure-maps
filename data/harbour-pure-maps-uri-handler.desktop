@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Pure Maps
 MimeType=x-scheme-handler/geo
-Exec=harbour-pure-maps %u
+Exec=/bin/sh /usr/share/harbour-pure-maps/scripts/harbour-pure-maps-launcher %u
 Icon=harbour-pure-maps
 Type=Application
 NoDisplay=true

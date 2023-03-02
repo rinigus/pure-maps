@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Used to launch Pure Maps on SFOS in geo URI handler. Has to start
+# Pure Maps in background or Lipstick will launch it only once.
+
+/usr/bin/harbour-pure-maps "$*" &
