@@ -5,7 +5,7 @@ Exec=/bin/sh /usr/share/harbour-pure-maps/scripts/harbour-pure-maps-launcher %u
 Icon=harbour-pure-maps
 Type=Application
 NoDisplay=true
-X-Nemo-Application-Type=silica-qt5
+X-Nemo-Application-Type=no-invoker
 
 [X-Sailjail]
 Sandboxing=Disabled
