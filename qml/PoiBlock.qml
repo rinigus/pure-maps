@@ -161,6 +161,10 @@ Column {
         visible: !navigationControls
 
         property real factor: {
+            // Return condition is a workaround for
+            // https://gitlab.com/ubports/development/core/lomiri-ui-toolkit/-/issues/28
+            if (item.width == 0) return 1.0;
+
             // Assuming that icon width equals to height
             var l = children.length
             var w = item.width - styler.themeHorizontalPageMargin*2;
