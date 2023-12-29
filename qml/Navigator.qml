@@ -29,7 +29,8 @@ Item {
     property alias  destEta:   navigatorBase.destEta
     property alias  destTime:  navigatorBase.destTime
     property bool   destReached: false
-    property var    direction: navigatorBase.directionValid ? navigatorBase.direction : undefined
+    property alias  direction: navigatorBase.direction
+    property alias  directionValid: navigatorBase.directionValid
     property bool   followMe:  false
     property bool   hasBeenAlongRoute: false
     property bool   hasDestination: locationsModel.hasDestination

@@ -69,7 +69,7 @@ MapboxMap {
                 return compass.azimuth;
         }
         // direction as calculated along the route
-        if (app.navigator.direction!==undefined && app.navigator.direction!==null)
+        if (app.navigator.directionValid)
             return app.navigator.direction;
         if (gps.directionValid) return gps.direction;
         return undefined;
