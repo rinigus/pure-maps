@@ -3,6 +3,7 @@
         "OSM Scout Server": "https://github.com/rinigus/osmscout-server",
         "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
     },
+    "fingerprint": { "name": "OSM Bright" },
     "first_label_layer": "waterway-name",
     "format": "mapbox-gl",
     "lang": {"local": "name", "int": "name_int", "ar": "name:ar", "ca": "name:ca", "cs": "name:cs", "cy": "name:cy", "da": "name:da", "de": "name:de", "el": "name:el", "en": "name:en", "es": "name:es", "eu": "name:eu", "fi": "name:fi", "fr": "name:fr", "ga": "name:ga", "he": "name:he", "hi": "name:hi", "id": "name:id", "it": "name:it", "ja": "name:ja", "ko": "name:ko", "nl": "name:nl", "no": "name:no", "pl": "name:pl", "pt": "name:pt", "ru": "name:ru", "sv": "name:sv", "th": "name:th", "tr": "name:tr", "uk": "name:uk", "zh": "name:zh"},
