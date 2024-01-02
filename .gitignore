@@ -13,3 +13,5 @@ tools/apikeys.py
 /qml/platform
 /.clickable/
 /clickable.yaml
+/pure-maps-*.tar.gz
+/CMakeLists.txt.user*
