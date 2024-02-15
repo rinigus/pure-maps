@@ -5,8 +5,10 @@ if(USE_BUNDLED_GEOMAG)
         DESTINATION ${DATADIR}/poor/geomag/model_data)
 endif()
 
-file(GLOB FLEXPOLYLINE_SRC LIST_DIRECTORIES false flexible-polyline/python/flexpolyline/*.py)
-install(FILES ${FLEXPOLYLINE_SRC} DESTINATION ${DATADIR}/poor/flexpolyline)
+if(USE_BUNDLED_FLEXPOLYLINE)
+    file(GLOB FLEXPOLYLINE_SRC LIST_DIRECTORIES false flexible-polyline/python/flexpolyline/*.py)
+    install(FILES ${FLEXPOLYLINE_SRC} DESTINATION ${DATADIR}/poor/flexpolyline)
+endif()
 
 if(USE_BUNDLED_GPXPY)
     file(GLOB GPXPY_SRC LIST_DIRECTORIES false gpxpy/gpxpy/*.py)
