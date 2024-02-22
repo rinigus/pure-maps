@@ -33,7 +33,7 @@
    <image>https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/menu.png</image>
   </screenshot>
   <screenshot>
-   <capion>Support for languages by address parser</capion>
+   <caption>Support for languages by address parser</caption>
    <image>https://raw.githubusercontent.com/rinigus/pure-maps/master/screenshots/navigation.png</image>
   </screenshot>
  </screenshots>
@@ -483,7 +483,6 @@
    </release>
  </releases>
  <custom>
-   <value key="Purism::form_factor">workstation</value>
    <value key="Purism::form_factor">mobile</value>
  </custom>
 </component>
