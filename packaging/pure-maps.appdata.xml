@@ -3,6 +3,7 @@
  <id>io.github.rinigus.PureMaps</id>
  <name>Pure Maps</name>
  <summary>Maps and navigation</summary>
+ <developer_name>Rinigus</developer_name>
  <description>
    <p>Pure Maps is an application to display vector and raster maps, places, routes, and provide navigation instructions with a flexible selection of data and service providers.</p>
    <p>Depending on the used service provider, Pure Maps can rely fully either on online services or, together with OSM Scout Server, provide fully offline maps</p>
