@@ -39,6 +39,22 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="3.3.0" date="2024-02-25">
+     <description>
+       <ul>
+         <li>Update translations</li>
+	 <li>Add extended geo URI handling</li>
+	 <li>Activate main window on external search</li>
+	 <li>Add checks for OSM Scout Server styles loading</li>
+	 <li>Allow to use system-wide flexible-polyline package [Vedingrot]</li>
+	 <li>Small other changes</li>
+	 <li>[ubuntu touch] Update packaging scripts [jonnius]</li>
+	 <li>[ubuntu touch] Add workaround for squeezed icons on UT [jonnius]</li>
+	 <li>[sfos] Update URI handler desktop file</li>
+	 <li>[flatpak] Update Appdata</li>
+       </ul>
+     </description>
+   </release>
    <release  version="3.2.0" date="2023-01-26">
      <description>
        <ul>

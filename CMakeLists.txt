@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5.1) # Latest version as supported by Ubuntu Touch
 
 project(pure-maps
-    VERSION 3.2.0
+    VERSION 3.3.0
     DESCRIPTION "Maps and navigation")
 
 # options
