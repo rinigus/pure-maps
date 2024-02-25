@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# rinigus github, 2021
-# Priit Jõerüüt <transifex@joeruut.com>, 2022
+# Priit Jõerüüt <transifex@joeruut.com>, 2023
+# rinigus github, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 22:19+0200\n"
+"POT-Creation-Date: 2024-02-25 11:45+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2022\n"
-"Language-Team: Estonian (https://www.transifex.com/rinigus/teams/89597/et/)\n"
+"Last-Translator: rinigus github, 2024\n"
+"Language-Team: Estonian (https://app.transifex.com/rinigus/teams/89597/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -56,7 +56,7 @@ msgid "Connection timed out"
 msgstr "Ühendus aegus"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:210 qml/GeocodeItem.qml:544
-#: qml/MenuPage.qml:87 qml/Navigator.qml:214 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:215 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
 #: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
@@ -180,6 +180,23 @@ msgid ""
 " decline them. If declined, HERE support will be inactive and can be enabled"
 " later by accepting the terms in Preferences under Licenses.</p>"
 msgstr ""
+"<p>Selles Pure Maps rakenduses on kasutusel HERE'i tugi</p><br><p>Palun "
+"tutvu <a href=\"https://legal.here.com/en-gb/terms/here-end-user-"
+"terms\">kasutustingimustega lõppkasutajale</a>, <a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-policy\">mõistliku "
+"kasutuse põhimõtetega</a> ja <a href=\"https://legal.here.com/en-"
+"gb/privacy\">HERE privaatsustingimustega</a>. Kui HERE on kasutusel, siis "
+"Pure Maps teeb REST API abil päringuid HERE'i teenustest.<p></br><p><a "
+"href=\"{lruri}\">Juriidilistel põhjustel</a> Pure Maps saab kasutada HERE "
+"otsingu- ja teekonna koostamise teenuseid vaid võrguteenustena „HERE Online“"
+" profiili alusel. Kuigi 2018. aasta mõistliku kasutuse põhimõtted pole enam "
+"jõus, siis sa leiad teavet HERE'i kasutamise kohta teistes rakendustes <a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-"
+"policy-2018\">Layering and Modifications</a> lõigust sellest samast "
+"dokumendist.</p><br><p>Palun otsusta, kas sa nõustud selliste HERE'i "
+"kasutustingimustega või mitte. Viimasel juhul ei ole HERE'i tugi kasutusel "
+"ning soovi korral saad hiljem selle Eelistused - Litsentsid vaatest uuesti "
+"kasutusele võtta.</p>"
 
 #: poor/keystore.py:109
 msgid "HERE End-User Terms"
@@ -289,7 +306,7 @@ msgstr "API võti on puudu"
 
 #: poor/util.py:385
 msgid "Available"
-msgstr ""
+msgstr "Saadaval"
 
 #: routers/here.py:319
 #, python-brace-format
@@ -477,6 +494,8 @@ msgstr "versioon %1"
 #: qml/AboutPage.qml:64
 msgid "This is a limited edition distributed through Jolla Store"
 msgstr ""
+"Tegemist on osaliselt piiratud funktsionaalsusega versiooniga, mis on "
+"saadaval Jolla rakenduste poest"
 
 #: qml/AboutPage.qml:71
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
@@ -652,11 +671,11 @@ msgstr "%1 (vaikimisi väärtus)"
 
 #: qml/BasemapPage.qml:49
 msgid "%1 (default, disabled, API key missing)"
-msgstr ""
+msgstr "%1 (vaikimisi lahendus, pole kasutusel, API võti on puudu)"
 
 #: qml/BasemapPage.qml:50
 msgid "%1 (disabled, API key missing)"
-msgstr ""
+msgstr "%1 (pole kasutusel, API võti on puudu)"
 
 #: qml/BasemapPage.qml:56
 msgid "Map: %1"
@@ -708,8 +727,8 @@ msgstr "Tulemused (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Huvipunktid (%1)"
 
-#: qml/GeocodeItem.qml:484 qml/Navigator.qml:301 qml/Navigator.qml:303
-#: qml/PoiBlock.qml:407 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/GeocodeItem.qml:484 qml/Navigator.qml:302 qml/Navigator.qml:304
+#: qml/PoiBlock.qml:411 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Tundmatu asukoht"
@@ -741,7 +760,7 @@ msgstr "Otsingumootor"
 
 #: qml/GeocoderPage.qml:54 qml/GuidePage.qml:55 qml/RouterPage.qml:53
 msgid "%1 (disabled, %2)"
-msgstr ""
+msgstr "%1 (pole kasutusel, %2)"
 
 #: qml/InitPage.qml:34
 msgid "Initializing"
@@ -767,7 +786,7 @@ msgstr ""
 
 #: qml/InitPage.qml:88
 msgid "Pure Maps at Jolla Store"
-msgstr ""
+msgstr "Pure Maps Jolla rakendustepoes"
 
 #: qml/InitPage.qml:89
 msgid ""
@@ -775,6 +794,9 @@ msgid ""
 "\n"
 "To get fully functional Pure Maps, it is recommended to use Sailfish Chum and install Pure Maps from there."
 msgstr ""
+"Sa kasutad Pure Maps'i versiooni, mis on paigaldatud Jolla rakendustepoest ning seal seatud piirangute tõttu on ka Pure Maps mitmete piirangutega. Peale Sailjail'i kasutusele võtmist on sellisteks piiranguteks kõnesünteesimootorite puudumine ning tänava- ja kiiruspiirangute teabe kuvamine asukoha alusel teedevõrgustikus.\n"
+"\n"
+"Täisfunktsionaalse Pure Maps'i saad paigaldada Sailfish Chum repositooriumist."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
@@ -817,6 +839,13 @@ msgid ""
 "href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
 "manual</a> for details."
 msgstr ""
+"Sa kasutad võrguühenduseta profiili. Palun kontrolli, et seadmesse oleks "
+"paigaldatud OSM Scout Server ning ta ka töötaks. Sõltuvalt missugust "
+"operatsioonisüsteemi sa kasutad, on ta sadaval kas rakendustepoest (Sailfish"
+" OS - Chum, Ubuntu Touch - OpenStore), Flathub'ist või sinu distributsiooni "
+"repositooriumist. Lisateavet leiad <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Serveri "
+"käsiraamatust</a>."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -848,7 +877,7 @@ msgstr "HERE - võrgupõhine"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE (disabled, API key missing)"
-msgstr ""
+msgstr "HERE (pole kasutusel, API võti on puudu)"
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -858,20 +887,20 @@ msgstr "Kombineeritud kaardid"
 msgid "Stop navigation to select POI"
 msgstr "Huvipunkti valimiseks peata tee näitamine"
 
-#: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
+#: qml/Map.qml:655 qml/NavigationPage.qml:207 qml/PoiBlock.qml:258
 #: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Lähtepunkt"
 
-#: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
+#: qml/Map.qml:657 qml/NavigationPage.qml:210 qml/PoiBlock.qml:278
 msgid "Final destination"
 msgstr "Lõppsihtkoht"
 
-#: qml/Map.qml:654
+#: qml/Map.qml:659
 msgid "✓"
 msgstr "✓"
 
-#: qml/Map.qml:657
+#: qml/Map.qml:662
 msgid "#%1"
 msgstr "#%1"
 
@@ -986,7 +1015,7 @@ msgstr "Olek"
 msgid "Estimated time of arrival"
 msgstr "Eeldatav saabumine"
 
-#: qml/NavigationPage.qml:161 qml/Navigator.qml:89
+#: qml/NavigationPage.qml:161 qml/Navigator.qml:90
 msgid "Destination reached"
 msgstr "Saabusid sihtkohta"
 
@@ -1032,19 +1061,19 @@ msgstr "Teekonna võimalused"
 msgid "EXIT"
 msgstr "VÄLJU"
 
-#: qml/Navigator.qml:81
+#: qml/Navigator.qml:82
 msgid "Destination %1 reached"
 msgstr "Saabusid sihtkohta %1"
 
-#: qml/Navigator.qml:82
+#: qml/Navigator.qml:83
 msgid "Waypoint %1 reached"
 msgstr "Jõudsid teekonnapunkti %1"
 
-#: qml/Navigator.qml:151
+#: qml/Navigator.qml:152
 msgid "Voice navigation on"
 msgstr "Hääljuhtimine on kasutusel"
 
-#: qml/Navigator.qml:156
+#: qml/Navigator.qml:157
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -1052,43 +1081,43 @@ msgstr ""
 "Hääljuhtimine ei ole saadaval: valitud keele jaoks puudub kõnesünteesi (TTS)"
 " mootor"
 
-#: qml/Navigator.qml:207
+#: qml/Navigator.qml:208
 msgid "Routing failed: current position not known"
 msgstr "Tee juhatamine ei õnnestunud: praegune asukoht pole teada"
 
-#: qml/Navigator.qml:213
+#: qml/Navigator.qml:214
 msgid "Rerouting position"
 msgstr "Muudetud asukoht"
 
-#: qml/Navigator.qml:221
+#: qml/Navigator.qml:222
 msgid "Routing"
 msgstr "Koostatud teekond"
 
-#: qml/Navigator.qml:232
+#: qml/Navigator.qml:233
 msgid "Routing failed: %1"
 msgstr "Teekonna koostamine ei õnnestunud: %1"
 
-#: qml/Navigator.qml:237 src/navigator.cpp:1099
+#: qml/Navigator.qml:238 src/navigator.cpp:1099
 msgid "Traffic and route updated"
 msgstr "Liiklusteave ja teekonnainfo on uuendatud"
 
-#: qml/Navigator.qml:237 src/navigator.cpp:1096
+#: qml/Navigator.qml:238 src/navigator.cpp:1096
 msgid "New route found"
 msgstr "Leidsin uue teekonna"
 
-#: qml/Navigator.qml:238
+#: qml/Navigator.qml:239
 msgid "Route found"
 msgstr "Leidsin teekonna"
 
-#: qml/Navigator.qml:249 src/navigator.cpp:1098
+#: qml/Navigator.qml:250 src/navigator.cpp:1098
 msgid "Routing failed"
 msgstr "Teekonna koostamine ei õnnestunud"
 
-#: qml/Navigator.qml:281
+#: qml/Navigator.qml:282
 msgid "Updating traffic"
 msgstr "Liiklusteabe uuendmine"
 
-#: qml/Navigator.qml:281 src/navigator.cpp:1097
+#: qml/Navigator.qml:282 src/navigator.cpp:1097
 msgid "Rerouting"
 msgstr "Muudan teekonda"
 
@@ -1199,35 +1228,35 @@ msgstr "Tekst"
 msgid "More info: %1"
 msgstr "Lisateave: %1"
 
-#: qml/PoiBlock.qml:233
+#: qml/PoiBlock.qml:237
 msgid "Set as or Replace"
 msgstr "Määratle või asenda"
 
-#: qml/PoiBlock.qml:233
+#: qml/PoiBlock.qml:237
 msgid "Set as"
 msgstr "Määratle"
 
-#: qml/PoiBlock.qml:293
+#: qml/PoiBlock.qml:297
 msgid "Insert as"
 msgstr "Lisa"
 
-#: qml/PoiBlock.qml:298
+#: qml/PoiBlock.qml:302
 msgid "New origin"
 msgstr "Uue lähtepunktina"
 
-#: qml/PoiBlock.qml:311
+#: qml/PoiBlock.qml:315
 msgid "New final destination"
 msgstr "Uue lõppsihtkohana"
 
-#: qml/PoiBlock.qml:323
+#: qml/PoiBlock.qml:327
 msgid "First intermediate destination"
 msgstr "Esimese vahesihtkohana"
 
-#: qml/PoiBlock.qml:336
+#: qml/PoiBlock.qml:340
 msgid "Last intermediate destination"
 msgstr "Viimase vahesihtkohana"
 
-#: qml/PoiBlock.qml:337
+#: qml/PoiBlock.qml:341
 msgid "Intermediate destination"
 msgstr "Vahesihtkohana"
 
@@ -1389,7 +1418,7 @@ msgstr "Kaardil kasutatava keele eelistus."
 
 #: qml/PreferencesPage.qml:62
 msgid "Map default"
-msgstr ""
+msgstr "Kaardi vaikimisi väärtus"
 
 #: qml/PreferencesPage.qml:63
 msgid "Local"
@@ -1397,7 +1426,7 @@ msgstr "Kohalik"
 
 #: qml/PreferencesPage.qml:64
 msgid "International"
-msgstr ""
+msgstr "Rahvusvaheline"
 
 #: qml/PreferencesPage.qml:65
 msgid "Arabic"
@@ -2048,6 +2077,9 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at Chum."
 msgstr ""
+"Sellele keelele pole kõnesünteesi mootorit saadaval.\n"
+"\n"
+"Pure Maps toetab järgnevaid kõnesünteesi mootoreid: Mimic, Flite, PicoTTS ja Espeak. Kui sa pole Pure Maps'i paigaldanud Flatpak'ina või OpenStore abil, siis pead nad eraldi paigaldama. Sailfish OS kasutajad leiavad  kõnesünteesi mootorid Chum repositooriumist."
 
 #: qml/PreferencesPage.qml:1022
 msgid "Development"
@@ -2953,15 +2985,15 @@ msgstr "Ümberistumised"
 msgid "Alternatives"
 msgstr "Alternatiivid"
 
-#: src/cmdlineparser.cpp:18
+#: src/cmdlineparser.cpp:20
 msgid "Displays help on commandline options."
 msgstr "Kuvab käsurea võtmete abiteavet"
 
-#: src/cmdlineparser.cpp:20
+#: src/cmdlineparser.cpp:22
 msgid "Displays version information."
 msgstr "Kuvab versiooniteavet"
 
-#: src/cmdlineparser.cpp:23
+#: src/cmdlineparser.cpp:25
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
 "Näita kas asukohta geo:laiuskraad,pikkuskraad vormingu alusel või otsi "
@@ -3017,68 +3049,68 @@ msgstr "Asukoht ei ole täpne"
 msgid "Position available"
 msgstr "Asukoht on teada"
 
-#: standard input:1
+#: ⁨standard input⁩:1
 msgid "Search in Finland. Supports autocomplete"
 msgstr "Soome andmete otsing, mis kasutab automaatset sõnalõpetust"
 
-#: standard input:2
+#: ⁨standard input⁩:2
 msgid "Search based on HERE data. Supports autocomplete"
 msgstr "Otsing põhineb HERE andmetel. Kasutab otsingusoovitusi"
 
-#: standard input:3
+#: ⁨standard input⁩:3
 msgid "Search based on open data sources"
 msgstr "Otsing põhineb avatud andmeallikatel"
 
-#: standard input:4
+#: ⁨standard input⁩:4
 msgid "Search based on open data sources. Supports autocomplete"
 msgstr ""
 "Otsing põhineb avatud andmeallikatel ning võimaldab automaatset sõnalõpetust"
 
-#: standard input:5
+#: ⁨standard input⁩:5
 msgid "Search based on OpenStreetMap data. Supports autocomplete"
 msgstr ""
 "Otsing põhineb OpenStreetMap'i andmetel ning võimaldab automaatset "
 "sõnalõpetust"
 
-#: standard input:6
+#: ⁨standard input⁩:6
 msgid "Venues listed and reviewed by Foursquare users"
 msgstr "Foursquare'i kasutajate poolt sisestatud ja hinnatud kohad"
 
-#: standard input:7 standard input:8
+#: ⁨standard input⁩:7
 msgid "Points of interest from OpenStreetMap data"
 msgstr "Huvipunktid OpenStreetMap'i andmete alusel"
 
-#: standard input:9
+#: ⁨standard input⁩:8
 msgid "Routing along GPX track"
 msgstr "Teekond piki GPX-rada"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:20 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:19 ⁨standard input⁩:21
 msgid "car"
 msgstr "auto"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:21
 msgid "bicycle"
 msgstr "jalgratas"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:21
 msgid "foot"
 msgstr "jalgsi"
 
-#: standard input:11
+#: ⁨standard input⁩:10
 msgid "Routing along GPX track processed by OSM Scout Server"
 msgstr "Teekonna piki GPX-rada koostas OSM Scout Server"
 
-#: standard input:13
+#: ⁨standard input⁩:12
 msgid "Routing by HERE"
 msgstr "Teekonna koostamine HERE abil"
 
-#: standard input:15 standard input:17 standard input:19
+#: ⁨standard input⁩:14 ⁨standard input⁩:16 ⁨standard input⁩:18
 msgid "Routing based on OpenStreetMap data"
 msgstr "Teekond on koostatud OpenStreetMap'i andmete alusel"
 
-#: standard input:21
+#: ⁨standard input⁩:20
 msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr "Teekonna koostas Valhalla OpenStreetMap'i andmete alusel"
