@@ -1,0 +1,13 @@
+{
+  "attribution": {
+    "© Ordnance Survey": "https://www.ordnancesurvey.co.uk",
+    "Contains OS Data © Crown Copyright and database rights 2024" : "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+  },
+  "format": "raster",
+  "keys": ["OS_APIKEY"],
+  "name": "OSGB Outdoor",
+  "profiles": ["mixed", "online"],
+  "tile_size": 256,
+  "provider": "Ordnance Survey Roads",
+  "tile_url": "https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=#OS_APIKEY#"
+}

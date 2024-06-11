@@ -50,7 +50,10 @@ KEYNAMES = [
     "OPENCAGE_KEY",
 
     # https://docs.stadiamaps.com/
-    "STADIAMAPS_KEY"
+    "STADIAMAPS_KEY",
+
+    # https://osdatahub.os.uk/
+    "OS_APIKEY"
 ]
 
 HEADERS = {
@@ -60,7 +63,8 @@ HEADERS = {
     "MAPQUEST": HeaderDesc(_('Register at <a href="https://developer.mapquest.com">https://developer.mapquest.com</a> and create your own API key'), "MapQuest"),
     "OPENCAGE": HeaderDesc(_('Register at <a href="https://opencagedata.com">https://opencagedata.com</a> and create your own API key'), "OpenCage"),
     "STADIAMAPS": HeaderDesc(_('Register at <a href="https://stadiamaps.com">https://stadiamaps.com</a> and create your own API key'), "Stadia Maps"),
-    "HERE": HeaderDesc(_('Register at <a href="https://developer.here.com">https://developer.here.com</a> and create your own App API Key'), "HERE")
+    "HERE": HeaderDesc(_('Register at <a href="https://developer.here.com">https://developer.here.com</a> and create your own App API Key'), "HERE"),
+    "OS": HeaderDesc(_('Register at <a href="https://osdatahub.os.uk/">https://osdatahub.os.uk</a> and create your own App API Key'), "Ordnance Survey")
 }
 
 KEYDESC = {
@@ -84,6 +88,9 @@ KEYDESC = {
 
     # here.com
     "HERE_APIKEY": _("HERE API Key"),
+
+    # www.ordnancesurvey.co.uk 
+    "OS_APIKEY": _("Ordnance Survey API Key"),
 }
 
 # List of keys that are made available only after end user license is
