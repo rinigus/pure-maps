@@ -20,4 +20,7 @@ Keys = {
 
     # https://docs.stadiamaps.com/
     "STADIAMAPS_KEY": "",
+
+    # https://www.ordnancesurvey.co.uk
+    "OS_APIKEY": ""
 }
