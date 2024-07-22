@@ -70,7 +70,7 @@ target_link_libraries(${APP_NAME}
     Qt5::Quick
     Qt5::Positioning
     Qt5::DBus
-    s2)
+    s2::s2)
 
 set(LINKING_FLAVORS
     "kirigami"

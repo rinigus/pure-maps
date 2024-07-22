@@ -115,6 +115,9 @@ elseif(FLAVOR STREQUAL "silica")
     pkg_search_module(SAILFISH sailfishapp REQUIRED)
 endif()
 
+# s2
+find_package(s2 REQUIRED)
+
 # handle request for running from source dir
 if(RUN_FROM_SOURCE)
     set(DATADIR ${CMAKE_CURRENT_SOURCE_DIR})
