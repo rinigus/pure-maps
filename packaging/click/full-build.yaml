@@ -23,7 +23,6 @@ install_qml:
 - ${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/MapboxMap
 install_lib:
 - ${MAPLIBRE_GL_NATIVE_LIB_INSTALL_DIR}/lib/libQMapLibreGL.so*
-- ${S2GEOMETRY_LIB_INSTALL_DIR}/lib/*.so*
 install_bin:
 - ${MIMIC_LIB_INSTALL_DIR}/bin/mimic
 - ${PICOTTS_LIB_INSTALL_DIR}/usr/bin/pico2wave
@@ -50,12 +49,16 @@ libraries:
     build_args:
     - -DCMAKE_CXX_STANDARD=14
 
+  abseil:
+    builder: cmake
+    build_args:
+    - -DABSL_ENABLE_INSTALL=ON
+
   s2geometry:
     builder: cmake
     build_args:
-    - -DBUILD_PYTHON=OFF
-    - -DBUILD_TESTING=OFF
-    - -DBUILD_SHARED_LIBS=ON
+    - -DBUILD_TESTS=OFF
+    - -DBUILD_SHARED_LIBS=OFF
     - -DBUILD_EXAMPLES=OFF
     dependencies_target:
     - swig
