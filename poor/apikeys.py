@@ -22,5 +22,8 @@ Keys = {
     "STADIAMAPS_KEY": "",
 
     # https://www.ordnancesurvey.co.uk
-    "OS_APIKEY": ""
+    "OS_APIKEY": "",
+
+    # https://digitransit.fi/
+    "DIGITRANSIT_KEY": "",
 }
