@@ -181,7 +181,14 @@ class Map:
                 elif Map.KEY_INT in self.lang: r = self.lang[Map.KEY_INT]
                 else: r = self.lang.values()[0]
                 s = s.replace(self.lang_key, r)
+            for k in self.keys:
+                v = poor.key.get(k).strip()
+                if not v:
+                    print('API key missing:', k, 'disabling', id)
+                    self.available = False
+                s = s.replace("#" + k + "#", v)
             return s
+
         if self.style_dict:
             return process(json.dumps(self.style_dict, ensure_ascii=False))
         glyphs = "http://fonts.openmaptiles.org/{fontstack}/{range}.pbf"
