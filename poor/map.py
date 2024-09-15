@@ -83,6 +83,7 @@ class Map:
                 self.available = False
             self.style_url = self.style_url.replace("#" + k + "#", v)
             self.tile_url = self.tile_url.replace("#" + k + "#", v)
+            self.url_suffix = self.url_suffix.replace("#" + k + "#", v)
 
     @property
     def attribution(self):
