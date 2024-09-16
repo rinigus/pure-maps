@@ -1,0 +1,14 @@
+{
+  "attribution": {
+    "Digitransit": "https://digitransit.fi/",
+    "© OpenStreetMap": "https://www.openstreetmap.org/copyright"
+  },
+  "format": "raster",
+  "name": "Digitransit",
+  "profiles": ["mixed", "online"],
+  "lang": { "local": "hsl-map", "int": "hsl-map-en", "fi": "hsl-map", "en": "hsl-map-en", "sv": "hsl-map-sv" },
+  "lang_key": "#LANG#",
+  "light": "day",
+  "tile_size": 512,
+  "tile_url": "https://cdn.digitransit.fi/map/v2/#LANG#/{z}/{x}/{y}@2x.png"
+}
