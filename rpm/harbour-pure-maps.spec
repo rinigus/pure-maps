@@ -6,10 +6,10 @@
 # Prevent brp-python-bytecompile from running.
 %define __os_install_post %{___build_post}
 
-%if 0%{?sailfishos}
+%if 0%{?jollastore}
 # "Harbour RPM packages should not provide anything."
 %define __provides_exclude_from ^%{_datadir}/.*$
-%define __requires_exclude ^libs2|libQMapLibreGL.*$
+%define __requires_exclude ^libs2.*|libabsl_*|libQMapLibreGL.*$
 %endif
 
 %if 0%{?sailfishos}
@@ -133,25 +133,22 @@ cd build-rpm
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
-%if 0%{?sailfishos}
+%if 0%{?jollastore}
 # ship some shared libraries
 mkdir -p %{buildroot}%{_datadir}/%{name}/lib
-cp %{_libdir}/libs2.so %{buildroot}%{_datadir}/%{name}/lib
+cp %{_libdir}/libs2.so.* %{buildroot}%{_datadir}/%{name}/lib
+cp %{_libdir}/libabsl*.so.* %{buildroot}%{_datadir}/%{name}/lib
 
-%if 0%{?jollastore}
 mkdir -p %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap
 cp %{_libdir}/qt5/qml/MapboxMap/* %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap
 cp %{_libdir}/libQMapLibreGL.so.2* %{buildroot}%{_datadir}/%{name}/lib
 sed -i 's/QtPositioning 5.3/QtPositioning 5.4/g' %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap/MapboxMapGestureArea.qml
-%endif
 
 # strip executable bit from all libraries
 chmod -x %{buildroot}%{_datadir}/%{name}/lib/*.so*
-%if 0%{?jollastore}
 chmod -x %{buildroot}%{_datadir}/%{name}/lib/qml/MapboxMap/*.so*
-%endif
 
-# sailfishos
+# jollastore
 %endif
 
 %files
