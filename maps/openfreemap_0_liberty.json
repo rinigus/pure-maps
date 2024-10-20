@@ -1,0 +1,15 @@
+{
+    "attribution": {
+	"© OpenFreeMap": "https://openfreemap.org/",
+    "© OpenMapTiles": "https://www.openmaptiles.org/",
+    "© OpenStreetMap contributors": "https://www.openstreetmap.org/copyright"
+    },
+    "first_label_layer": "waterway_line_label",
+    "format": "mapbox-gl",
+    "light": "day",
+    "name": "OpenFreeMap Liberty",
+    "profiles": ["mixed", "online"],
+    "provider": "OpenFreeMap Liberty",
+    "style_url": "https://tiles.openfreemap.org/styles/liberty",
+    "type": "default"
+}

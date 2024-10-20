@@ -1,0 +1,15 @@
+{
+    "attribution": {
+	"© OpenFreeMap": "https://openfreemap.org/",
+    "© OpenMapTiles": "https://www.openmaptiles.org/",
+    "© OpenStreetMap contributors": "https://www.openstreetmap.org/copyright"
+    },
+    "first_label_layer": "waterway_line_label",
+    "format": "mapbox-gl",
+    "light": "day",
+    "name": "OpenFreeMap Bright",
+    "profiles": ["mixed", "online"],
+    "provider": "OpenFreeMap Bright",
+    "style_url": "https://tiles.openfreemap.org/styles/bright",
+    "type": "default"
+}
