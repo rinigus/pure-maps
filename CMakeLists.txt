@@ -12,8 +12,6 @@ set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported pla
 option(APP_VARIANT_JOLLA_STORE "Set if compiling for Sailfish Jolla Store" OFF)
 set(PYTHON_EXE "auto" CACHE STRING "Set python3 executable. If set to 'auto', cmake will try to find it.")
 option(RUN_FROM_SOURCE "Run from source, this is mainly intended for easy development" OFF)
-set(S2INCLUDES "" CACHE STRING "Custom installed location for s2geometry, includes")
-set(S2LIBS "" CACHE STRING "Custom installed location for s2geometry, libs")
 option(USE_BUNDLED_GPXPY "Use a bundled version of GPXPY rather than a system-wide version" ON)
 option(USE_BUNDLED_GEOMAG "Use a bundled version of geomag rather than a system-wide version" ON)
 option(USE_BUNDLED_FLEXPOLYLINE "Use a bundled version of flexible-polyline rather than a system-wide version" ON)
