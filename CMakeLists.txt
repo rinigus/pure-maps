@@ -19,7 +19,7 @@ option(USE_BUNDLED_GEOCLUE2 "Use a bundled version of Geoclue2 Qt plugin with bu
 set(QML_IMPORT_PATH "" CACHE STRING "Additional QML import path")
 
 set(DEFAULT_PROFILE "online" CACHE STRING "Default profile. Supported profile selection: online, offline")
-set(DEFAULT_BASEMAP "MapTiler" CACHE STRING "Default basemap for online profile")
+set(DEFAULT_BASEMAP "OpenFreeMap Bright" CACHE STRING "Default basemap for online profile")
 set(DEFAULT_GEOCODER "photon" CACHE STRING "Default geocoder for online profile")
 set(DEFAULT_GUIDE "foursquare" CACHE STRING "Default guide for online profile")
 set(DEFAULT_ROUTER "stadiamaps" CACHE STRING "Default router for online profile")
