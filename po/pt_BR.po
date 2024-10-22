@@ -7,6 +7,7 @@
 # Caio2k, 2021
 # rinigus github, 2021
 # Gustavo Martins <gustavo737@gmail.com>, 2023
+# Alexandre Fernandes Junior <alejr.dev@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-25 11:45+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Gustavo Martins <gustavo737@gmail.com>, 2023\n"
+"Last-Translator: Alexandre Fernandes Junior <alejr.dev@gmail.com>, 2024\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/rinigus/teams/89597/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,18 +72,25 @@ msgid ""
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
 " and create your own Client ID and Client Secret keys"
 msgstr ""
+"Registre em <a "
+"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
+" e crie o seu id de cliente e chave de API"
 
 #: poor/keystore.py:58
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
 msgstr ""
+"Registre em <a href=\"https://www.mapbox.com\">https://www.mapbox.com </a>e "
+"crie sua chave de API"
 
 #: poor/keystore.py:59
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
 msgstr ""
+"Registre em <a href=\"https://maptiler.com\">https://maptiler.com</a>e crie "
+"a sua chave de API"
 
 #: poor/keystore.py:60
 msgid ""
@@ -90,6 +98,9 @@ msgid ""
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
 "and create your own API key"
 msgstr ""
+"Registre em <a "
+"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a>e "
+"crie a sua chave de API"
 
 #: poor/keystore.py:61
 msgid ""

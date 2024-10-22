@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# liberi liberi <trfex.mtqx8@slmail.me>, 2023
+# liberi liberi <trfex.mtqx8@slmail.me>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-25 11:45+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: liberi liberi <trfex.mtqx8@slmail.me>, 2023\n"
+"Last-Translator: liberi liberi <trfex.mtqx8@slmail.me>, 2024\n"
 "Language-Team: Romanian (https://app.transifex.com/rinigus/teams/89597/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,15 +39,15 @@ msgstr "Orar:"
 
 #: poor/geocoder.py:112
 msgid "Point from geo link"
-msgstr "Punct de la GeoLink"
+msgstr "Loc de la GeoLink"
 
 #: poor/geocoder.py:124
 msgid "Point from coordinates"
-msgstr "Punct din coordonate"
+msgstr "Loc din coordonate"
 
 #: poor/geocoder.py:136
 msgid "Point from Plus code"
-msgstr "Punct de la Plus Codes"
+msgstr "Loc de la Plus Codes"
 
 #: poor/geocoder.py:145 poor/geocoder.py:182 poor/guide.py:123
 #: poor/router.py:136
@@ -1016,7 +1016,7 @@ msgstr "Destinație atinsă"
 
 #: qml/NavigationPage.qml:173 qml/RoutePage.qml:187 qml/RoutePage.qml:194
 msgid "Destinations and waypoints"
-msgstr "Destinații și puncte intermediare"
+msgstr "Destinații și locuri intermediare"
 
 #: qml/NavigationPage.qml:207
 msgid "Origin: %1"
@@ -1032,7 +1032,7 @@ msgstr "Destinație: %1"
 
 #: qml/NavigationPage.qml:213 qml/RoutePage.qml:276
 msgid "Waypoint: %1"
-msgstr "Punct intermediar: %1"
+msgstr "Loc intermediar: %1"
 
 #: qml/NavigationPage.qml:262 qml/RouteOverallInfo.qml:98
 msgid "Remaining"
@@ -1062,7 +1062,7 @@ msgstr "Destinația %1 a fost atinsă"
 
 #: qml/Navigator.qml:83
 msgid "Waypoint %1 reached"
-msgstr "Punctul intermediar %1 a fost atins"
+msgstr "Locul intermediar %1 a fost atins"
 
 #: qml/Navigator.qml:152
 msgid "Voice navigation on"
@@ -2162,9 +2162,9 @@ msgid ""
 "\n"
 "Dismiss this dialog to stop showing this message."
 msgstr ""
-"De-a lungul traseului pot fi adăugate alte destinații și puncte intermediare. Ambele locuri sunt utilizate pentru calcularea traseului, dar sunt urmărite doar destinațiile care urmează să fie atinse. În consecință, dacă se ratează un punct intermediar și se reia traseul calculat după punctul intermediar, punctul intermediar va fi considerat ca fiind atins și va fi eliminat din recalcularea ulterioară a traseului. Destinațiile, pe de altă parte, trebuie să fie atinse în limitele unei anumite toleranțe și nu vor fi eliminate în acest mod.\n"
+"De-a lungul traseului pot fi adăugate alte destinații și locuri intermediare. Ambele locuri sunt utilizate pentru calcularea traseului, dar sunt urmărite doar destinațiile care urmează să fie atinse. În consecință, dacă se ratează un loc intermediar și se reia traseul calculat după locul intermediar, locul intermediar va fi considerat ca fiind atins și va fi eliminat din recalcularea ulterioară a traseului. Destinațiile, pe de altă parte, trebuie să fie atinse în limitele unei anumite toleranțe și nu vor fi eliminate în acest mod.\n"
 "\n"
-"Prin urmare, stabilește ca destinații locurile la care trebuie să ajungi pe traseu, iar ca puncte intermediare locurile care servesc doar la modelarea traseului în funcție de preferințele tale.\n"
+"Prin urmare, stabilește ca destinații locurile la care trebuie să ajungi pe traseu, iar ca locuri intermediare locurile care servesc doar la modelarea traseului în funcție de preferințele tale.\n"
 "\n"
 "Închide această fereastră de dialog pentru a nu mai vedea acest mesaj."
 
@@ -2182,7 +2182,7 @@ msgstr "Jos"
 
 #: qml/RoutePage.qml:263
 msgid "Convert to waypoint"
-msgstr "Transformă în punct intermediar"
+msgstr "Transformă în loc intermediar"
 
 #: qml/RoutePage.qml:264
 msgid "Convert to destination"
@@ -2194,11 +2194,11 @@ msgstr "Adaugă o destinație"
 
 #: qml/RoutePage.qml:318
 msgid "Add waypoint"
-msgstr "Adaugă un punct intermediar"
+msgstr "Adaugă un loc intermediar"
 
 #: qml/RoutePage.qml:334
 msgid "Waypoint"
-msgstr "Punct intermediar"
+msgstr "Loc intermediar"
 
 #: qml/RoutePage.qml:427
 msgid "Routes"
@@ -2206,7 +2206,7 @@ msgstr "Trasee"
 
 #: qml/RoutePage.qml:455
 msgid "%1 ‒ %2 (%3 destinations and waypoints)"
-msgstr "%1 ‒ %2 (%3 destinații și puncte intermediare)"
+msgstr "%1 ‒ %2 (%3 destinații și locuri intermediare)"
 
 #: qml/RoutePage.qml:500
 msgid "Show more..."
