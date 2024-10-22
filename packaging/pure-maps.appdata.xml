@@ -39,6 +39,18 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="3.4.0" date="2024-10-22">
+     <description>
+       <ul>
+	 <li>Add OpenFreeMap and set it as default map tiles provider</li>
+	 <li>Add Ordnance Survey (UK) maps [james1465]</li>
+	 <li>Update building against s2geometry [tpikonen]</li>
+	 <li>Digitransit (Finland) update to new API [tpikonen]</li>
+         <li>Update translations</li>
+	 <li>[ubuntu touch] Update build scripts [jonnius]</li>
+       </ul>
+     </description>
+   </release>
    <release  version="3.3.0" date="2024-02-25">
      <description>
        <ul>

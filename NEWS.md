@@ -1,3 +1,13 @@
+2024-10-22: Pure Maps 3.4.0
+===========================
+
+* Add OpenFreeMap and set it as default map tiles provider
+* Add Ordnance Survey (UK) maps [james1465]
+* Update building against s2geometry [tpikonen]
+* Digitransit (Finland) update to new API [tpikonen]
+* Update translations
+* [ubuntu touch] Update build scripts [jonnius]
+
 2024-02-25: Pure Maps 3.3.0
 ===========================
 
