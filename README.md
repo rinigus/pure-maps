@@ -342,3 +342,10 @@ Item {
     }
 }
 ```
+## Translations
+
+You can translate Pure Maps to a new language or improve an existing 
+translation using [Transifex](https://explore.transifex.com/rinigus/pure-maps/).
+
+If you don't have a Transifex account and want to fix a minor issue, you can 
+create a [pull request](https://github.com/rinigus/pure-maps/pulls) or [open an issue](https://github.com/rinigus/pure-maps/issues/).
