@@ -53,7 +53,10 @@ KEYNAMES = [
     "STADIAMAPS_KEY",
 
     # https://osdatahub.os.uk/
-    "OS_APIKEY"
+    "OS_APIKEY",
+
+    # https://digitransit.fi/
+    "DIGITRANSIT_KEY",
 ]
 
 HEADERS = {
@@ -64,7 +67,8 @@ HEADERS = {
     "OPENCAGE": HeaderDesc(_('Register at <a href="https://opencagedata.com">https://opencagedata.com</a> and create your own API key'), "OpenCage"),
     "STADIAMAPS": HeaderDesc(_('Register at <a href="https://stadiamaps.com">https://stadiamaps.com</a> and create your own API key'), "Stadia Maps"),
     "HERE": HeaderDesc(_('Register at <a href="https://developer.here.com">https://developer.here.com</a> and create your own App API Key'), "HERE"),
-    "OS": HeaderDesc(_('Register at <a href="https://osdatahub.os.uk/">https://osdatahub.os.uk</a> and create your own App API Key'), "Ordnance Survey")
+    "OS": HeaderDesc(_('Register at <a href="https://osdatahub.os.uk/">https://osdatahub.os.uk</a> and create your own App API Key'), "Ordnance Survey"),
+    "DIGITRANSIT": HeaderDesc(_('Register at <a href="https://digitransit.fi/">https://digitransit.fi/</a> and create your own App API Key'), "Digitransit"),
 }
 
 KEYDESC = {
@@ -89,8 +93,11 @@ KEYDESC = {
     # here.com
     "HERE_APIKEY": _("HERE API Key"),
 
-    # www.ordnancesurvey.co.uk 
+    # www.ordnancesurvey.co.uk
     "OS_APIKEY": _("Ordnance Survey API Key"),
+
+    # digitransit.fi
+    "DIGITRANSIT_KEY": _("Digitransit API Key"),
 }
 
 # List of keys that are made available only after end user license is
