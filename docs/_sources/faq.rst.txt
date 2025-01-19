@@ -16,4 +16,6 @@ Frequently asked questions:
  Does Pure Maps display height profiles?
   No.
 
-  
+ Why can't I route long trips for walking or cycling in offline mode?
+  Increase limits in :ref:`osmscout-server`-gui in
+  ``Settings > Backend settings > Valhalla > Limits``.   

@@ -72,3 +72,4 @@ or `TMO`_ thread.
    installation
    usage
    osmscout-server   
+   troubleshooting

@@ -21,12 +21,13 @@ For example on Alpine/postmarketOS:
  
 
 **Flatpak**
+
 There is a Flatpak build on `flathub`_.
 
 .. code-block:: shell
 
  sudo flatpak install flathub io.github.rinigus.PureMaps
- flatpak install flathub io.github.rinigus.OSMScoutServer
+ sudo flatpak install flathub io.github.rinigus.OSMScoutServer
  
 .. _flathub: https://flathub.org/apps/io.github.rinigus.PureMaps
 
@@ -43,6 +44,7 @@ Install via `chum`_
 .. _chum: https://build.sailfishos.org/package/show/sailfishos:chum/pure-maps'
 
 
+.. _API_key:
 
 API Keys
 ---------
