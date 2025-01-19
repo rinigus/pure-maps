@@ -9,6 +9,7 @@ flexible selection of data and service providers. Its designed for mobile device
 
 .. image:: _static/01_pure-maps_satelite.png
    :alt: pure-maps screenshot
+   :width: 400
    
 .. image:: https://img.shields.io/github/v/release/rinigus/pure-maps
    :alt: Latest Release

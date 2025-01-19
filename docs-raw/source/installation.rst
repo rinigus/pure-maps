@@ -53,3 +53,4 @@ registering on each linked map provider.
 
 .. image:: _static/03_preferences_api-key.png
    :alt: api keys page
+   :width: 400
