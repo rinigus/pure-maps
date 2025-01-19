@@ -87,4 +87,7 @@ GPX-Import
 Map Type
 --------
 
+.. image:: _static/04_map_type.png 
+ :alt: overview
+ :width: 400
 
