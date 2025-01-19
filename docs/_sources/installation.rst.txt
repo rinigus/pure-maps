@@ -26,17 +26,30 @@ There is a Flatpak build on `flathub`_.
 .. code-block:: shell
 
  sudo flatpak install flathub io.github.rinigus.PureMaps
-
+ flatpak install flathub io.github.rinigus.OSMScoutServer
+ 
 .. _flathub: https://flathub.org/apps/io.github.rinigus.PureMaps
 
 **UBports**
 
-`open-store`_
+Install via `open-store`_
 
 .. _open-store: https://open-store.io/app/pure-maps.jonnius
 
 **Sailfish**
 
-`chum`_
+Install via `chum`_
 
 .. _chum: https://build.sailfishos.org/package/show/sailfishos:chum/pure-maps'
+
+
+
+API Keys
+---------
+To get access to online  maps, its
+recommended to go to ``Preferences > API keys``
+and add API keys. You get them with
+registering on each linked map provider.
+
+.. image:: _static/03_preferences_api-key.png
+   :alt: api keys page
