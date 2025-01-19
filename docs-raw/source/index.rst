@@ -1,50 +1,73 @@
-.. pure-maps documentation master file, created by
-   sphinx-quickstart on Thu Jan 16 22:18:28 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. _index:
 
-pure-maps
+Pure Maps
 =========
 
-[![Latest release](https://img.shields.io/github/v/release/rinigus/pure-maps)](https://github.com/rinigus/pure-maps/releases)
-[![SFOS](https://img.shields.io/badge/SailfishOS-Chum-1CA198)](https://build.sailfishos.org/package/show/sailfishos:chum/pure-maps)
-[![Ubuntu Touch](https://img.shields.io/badge/Ubuntu%20Touch-OpenStore-292929)](https://open-store.io/app/pure-maps.jonnius)
-[![Flatpak](https://img.shields.io/badge/Flatpak-Flathub-4A86CF)](https://flathub.org/apps/details/io.github.rinigus.PureMaps)
-[![Fedora](https://img.shields.io/badge/O.B.S-Fedora-3C6EB4)](https://build.opensuse.org/package/show/home:rinigus:maps/pure-maps)
+**Pure Maps** is an application for Linux to display vector and raster
+maps, places, routes and provide navigation instructions with a
+flexible selection of data and service providers. Its designed for mobile devices. 
 
-[![Matrix](https://img.shields.io/badge/matrix.org-%23pure--maps-blue)](https://matrix.to/#/#pure-maps:matrix.org)
-[![Discussions](https://img.shields.io/badge/forum-GitHub-FB9200)](https://github.com/rinigus/pure-maps/discussions)
+.. image:: _static/01_pure-maps_satelite.png
+   :alt: pure-maps screenshot
+   
+.. image:: https://img.shields.io/github/v/release/rinigus/pure-maps
+   :alt: Latest Release
+   :target: https://github.com/rinigus/pure-maps/releases
+   
+.. image:: https://img.shields.io/badge/Ubuntu%20Touch-OpenStore-292929
+   :alt: Ubuntu Touch
+   :target: https://open-store.io/app/pure-maps.jonnius
+
+.. image:: https://img.shields.io/badge/Flatpak-Flathub-4A86CF
+   :alt: Flatpak
+   :target: https://flathub.org/apps/details/io.github.rinigus.PureMaps
+
+.. image:: https://img.shields.io/badge/O.B.S-Fedora-3C6EB4  
+   :alt: Fedora
+   :target: https://build.opensuse.org/package/show/home:rinigus:maps/pure-maps
+
+.. image:: https://img.shields.io/badge/matrix.org-%23pure--maps-blue
+   :alt: Matrix
+   :target: https://matrix.to/#/#pure-maps:matrix.org
+
+.. image:: https://img.shields.io/badge/forum-GitHub-FB9200
+   :alt: Discussions
+   :target: https://github.com/rinigus/pure-maps/discussions
 
 
-Pure Maps is an application for Linux to display vector and raster
-maps, places, routes, and provide navigation instructions with a
-flexible selection of data and service providers. It is targeting
-mobile Linux platforms, such as Sailfish OS, Ubuntu Touch, and others.
 
-This page is a placeholder and users are welcome to contribute the
-content. See corresponding
-[issue](https://github.com/rinigus/pure-maps/issues/400) for details.
+.. Note::
+   Add your content using ``reStructuredText`` syntax to ``docs-raw`` folder. See this `issue`_ and
+   `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
+   documentation for details.
+   
+.. _issue: https://github.com/rinigus/pure-maps/issues/400 
+   
 
+User feedback
+--------------
 
-## User feedback
+Use `Github Issues`_ to address specific problems and development
+requests.
 
-There are three main communication channels with the users: GitHub
-[discussions](https://github.com/rinigus/pure-maps/discussions) and
-issues, Matrix channel
-[#pure-maps:matrix.org](https://matrix.to/#/#pure-maps:matrix.org) and
-a thread at [TMO](https://talk.maemo.org/showthread.php?t=100442).
+General discussion is expected either through corresponding
+topics in `Github Discussions`_,  `Github Issues`_ , `Matrix channel`_,
+or `TMO`_ thread. 
 
-Please use Github issues to address specific problems and development
-requests. General discussion is expected either through corresponding
-topics in GitHub discussions, issues, Matrix channel, or TMO
-thread. 
+.. _Github Issues: https://github.com/rinigus/pure-maps/issues
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+.. _Github Discussions: https://github.com/rinigus/pure-maps/discussions
+
+.. _Matrix channel: https://matrix.to/#/#pure-maps:matrix.org
+
+.. _TMO: https://talk.maemo.org/showthread.php?t=100442
 
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Content
 
+   faq
+   installation
+   usage
+   

@@ -7,13 +7,17 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'pure-maps'
-copyright = '2025, magdesign'
+copyright = '2025, pure-maps'
 author = 'magdesign'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+ #   'sphinx_toolbox.shields'
+]
+
+
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -25,7 +29,9 @@ exclude_patterns = []
 import sphinx_rtd_theme
 
 html_theme = 'sphinx_rtd_theme'
-
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-
-#html_static_path = ['_static']
+html_logo = 'logo.svg'
+html_theme_options = {
+    'logo_only': False,
+    'display_version': False,
+}
+html_static_path = ['_static']
