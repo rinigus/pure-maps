@@ -1,6 +1,5 @@
 .. _Usage:
 
-
 Usage
 ==============
 
@@ -10,6 +9,7 @@ Overview
 .. image:: _static/04_overview.png 
  :alt: overview
  :width: 400
+
 
 .. _Search:
 
