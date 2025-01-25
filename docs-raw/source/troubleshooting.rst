@@ -12,7 +12,7 @@ GPS
    
 Map
 ---
- Pure-maps does not show city names in the default offline mode. 
+ Pure Maps does not show city names in the default offline mode. 
   Edit:
   ``/usr/share/osmscout-server/styles/mapboxgl/styles/osmbright.json``
   change under ``id``: ``place-city``
@@ -23,8 +23,8 @@ Map
  "maxzoom": 18,
 
 this should show the city names in zoomlevel 14.49 to 18.
-we also need to import other zoom levels 
-check here whats going on:
+We also need to import other zoom levels 
+see:
 
 https://github.com/rinigus/osmscout-server/blob/master/scripts/import/mapbox/run_planetiler.sh
 
