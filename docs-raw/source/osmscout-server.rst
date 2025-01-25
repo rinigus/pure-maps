@@ -3,6 +3,10 @@
 Osmscout-server
 ===============
 
+See `official documentation <https://rinigus.github.io/osmscout-server/en/>`_ for more detailed info.
+
+
+
 To use Pure Maps offline, run osmscout-server before opening Pure-Maps:
 
 .. code-block::
