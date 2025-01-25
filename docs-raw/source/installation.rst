@@ -31,7 +31,7 @@ There is a Flatpak build on `flathub`_.
  
 .. _flathub: https://flathub.org/apps/io.github.rinigus.PureMaps
 
-**UBports**
+**Ubuntu Touch**
 
 Install via `open-store`_
 
