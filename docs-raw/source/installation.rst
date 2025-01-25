@@ -33,9 +33,10 @@ There is a Flatpak build on `flathub`_.
 
 **Ubuntu Touch**
 
-Install via `open-store`_
+Install via `open-store <https://open-store.io/app/pure-maps.jonnius>`_
 
-.. _open-store: https://open-store.io/app/pure-maps.jonnius
+or the `slim version <https://open-store.io/app/pure-maps-slim.jonnius>`_ without text-to-speech
+
 
 **Sailfish**
 
