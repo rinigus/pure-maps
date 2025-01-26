@@ -29,6 +29,7 @@ jobs:
 
     - name: Build HTML documentation
       run: |
+        mkdir -p docs
         cd docs-raw
         make html
 
