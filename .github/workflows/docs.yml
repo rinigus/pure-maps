@@ -31,7 +31,7 @@ jobs:
       run: |
         mkdir -p docs
         cd docs-raw
-        make html
+        sphinx docs-raw docs
 
     - name: create nojekyll file
       run: |
