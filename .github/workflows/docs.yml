@@ -29,5 +29,10 @@ jobs:
 
     - name: Build HTML documentation
       run: |
-        cd docs
+        cd docs-raw
         make html
+
+    - name: create nojekyll file
+      run: |
+        cd docs
+        touch .nojekyll
