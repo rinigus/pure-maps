@@ -29,6 +29,7 @@ install_bin:
 install_root_data:
 - packaging/click/manifest.json
 - packaging/click/pure-maps.apparmor
+- packaging/click/app-dispatcher.json
 - packaging/click/pure-maps.desktop
 - packaging/click/pure-maps.svg
 install_data:

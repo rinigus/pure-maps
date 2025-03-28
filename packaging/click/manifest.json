@@ -6,6 +6,7 @@
     "hooks": {
         "@APP_NAME@": {
             "apparmor": "pure-maps.apparmor",
+            "urls": "app-dispatcher.json",
             "desktop":  "pure-maps.desktop"
         }
     },
