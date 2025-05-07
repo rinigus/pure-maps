@@ -204,7 +204,7 @@ class VoiceEnginePiper(VoiceEngine):
     def make_wav(self, text, fname):
         """Generate voice output to WAV file `fname`."""
         text = self.transform_text(text)
-        cmd = f"echo '{text}' | {self.command} --model /piper/voices/{self.voice_name} --output_file {fname}"
+        cmd = f"echo '{text}' | {self.command} --model /app/piper/voices/{self.voice_name} --output_file {fname}"
         return self.call([cmd]) == 0
 
 
