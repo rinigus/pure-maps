@@ -204,8 +204,24 @@ class VoiceEnginePiper(VoiceEngine):
     def make_wav(self, text, fname):
         """Generate voice output to WAV file `fname`."""
         text = self.transform_text(text)
-        cmd = f"echo '{text}' | {self.command} --model /app/piper/voices/{self.voice_name} --output_file {fname}"
-        return self.call([cmd]) == 0
+        cmd = [
+            self.command,
+            "--model", f"/app/piper/voices/{self.voice_name}",
+            "--output_file", fname
+        ]
+        try:
+            # Run Piper and pass text via stdin
+            process = subprocess.Popen(
+                cmd,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.DEVNULL,  # Suppress stdout
+                stderr=subprocess.DEVNULL   # Suppress stderr
+            )
+            process.communicate(input=text.encode("utf-8"))
+            return process.returncode == 0
+        except Exception as e:
+            print(f"Error generating WAV: {e}")
+            return False
 
 
 
