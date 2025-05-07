@@ -186,6 +186,28 @@ class VoiceEnginePicoTTS(VoiceEngine):
                           "-l", self.voice_name,
                           text]) == 0
 
+class VoiceEnginePiper(VoiceEngine):
+
+    """Text-to-speech (TTS) using Piper."""
+
+    commands = ["piper"]
+    description = "Piper"
+    voices = {
+        "de":    {"female": "de_DE-kerstin-low.onnx", "male": "de_DE-karlsson-low.onnx"},
+        "en":    {"female": "en_US-amy-medium.onnx", "male": "en_US-ryan-medium.onnx"},
+        "en_GB": {"female": "en_GB-semaine-medium.onnx", "male": "en_GB-northern_english_male-medium.onnx"},
+        "en_US": {"female": "en_US-amy-medium.onnx", "male": "en_US-ryan-medium.onnx"},
+        "es":    {"male": "es_ES-sharvard-medium.onnx"},
+        "fr":    {"female": "fr_FR-upmc-medium.onnx", "male": "fr_FR-gilles-low.onnx"},
+        "it":    {"female": "it_IT-paola-medium.onnx", "male": "it_IT-riccardo-x_low.onnx"},
+    }
+    def make_wav(self, text, fname):
+        """Generate voice output to WAV file `fname`."""
+        text = self.transform_text(text)
+        cmd = f"echo '{text}' | {self.command} --model /piper/voices/{self.voice_name} --output_file {fname}"
+        return self.call([cmd]) == 0
+
+
 
 class VoiceEngineMimicEnUsPirate(VoiceEngine):
 
@@ -240,6 +262,7 @@ class VoiceGenerator:
         VoiceEnginePicoTTS,
         VoiceEngineEspeak,
         VoiceEngineMimicEnUsPirate,
+        VoiceEnginePiper,
     ]
 
     def __init__(self):
@@ -374,15 +397,18 @@ class VoiceGenerator:
             shutil.rmtree(self._tmpdir)
 
     def set_voice(self, language, gender="male"):
-        """Set TTS engine and voice to use."""
-        new = self._find_engine(language, gender)
-        if self._engine is None and new is None: return
-        if (self._engine is None or
-            new is None or
-            new.__class__ is not self._engine.__class__ or
-            new.voice_name != self._engine.voice_name):
-            self._engine = new
-            self.clean()
+     """Set TTS engine and voice to use."""
+     new = self._find_engine(language, gender)
+     if self._engine is None and new is None: 
+         print("No suitable TTS engine found for", language, gender)
+         return
+     if (self._engine is None or
+         new is None or
+         new.__class__ is not self._engine.__class__ or
+         new.voice_name != self._engine.voice_name):
+         print(f"Switching TTS engine to {new.description} with voice {new.voice_name}")
+         self._engine = new
+         self.clean()
 
     def _update_cache(self):
         """Update the WAV file cache."""
