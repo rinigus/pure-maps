@@ -257,12 +257,12 @@ class VoiceGenerator:
 
     # TTS engines in order of preference.
     engines = [
+        VoiceEnginePiper,
         VoiceEngineMimic,
         VoiceEngineFlite,
         VoiceEnginePicoTTS,
         VoiceEngineEspeak,
         VoiceEngineMimicEnUsPirate,
-        VoiceEnginePiper,
     ]
 
     def __init__(self):
