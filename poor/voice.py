@@ -413,18 +413,18 @@ class VoiceGenerator:
             shutil.rmtree(self._tmpdir)
 
     def set_voice(self, language, gender="male"):
-     """Set TTS engine and voice to use."""
-     new = self._find_engine(language, gender)
-     if self._engine is None and new is None: 
-         print("No suitable TTS engine found for", language, gender)
-         return
-     if (self._engine is None or
-         new is None or
-         new.__class__ is not self._engine.__class__ or
-         new.voice_name != self._engine.voice_name):
-         print(f"Switching TTS engine to {new.description} with voice {new.voice_name}")
-         self._engine = new
-         self.clean()
+        """Set TTS engine and voice to use."""
+        new = self._find_engine(language, gender)
+        if self._engine is None and new is None: 
+            print("No suitable TTS engine found for", language, gender)
+            return
+        if (self._engine is None or
+            new is None or
+            new.__class__ is not self._engine.__class__ or
+            new.voice_name != self._engine.voice_name):
+            print(f"Switching TTS engine to {new.description} with voice {new.voice_name}")
+            self._engine = new
+            self.clean()
 
     def _update_cache(self):
         """Update the WAV file cache."""
