@@ -1,10 +1,26 @@
-# PureMaps Build and Installation Guide (Tested on Debian 12 and Ubuntu 24.04)
+# Building PureMaps (Tested on Debian 12 and Ubuntu 24.04)
 
-This guide explains how to build and install **PureMaps** along with its dependencies. It has been tested on both **Debian 12** and **Ubuntu 24.04**.
+This document covers the full process for building and installing **PureMaps** and its dependencies from source. It applies to common Linux distributions and has been tested on **Debian 12** and **Ubuntu 24.04**.
 
 ---
 
-## Install Required System Dependencies
+## Dependencies
+
+In addition to general QML development packages, the following specific dependencies are required:
+
+* [PyOtherSide](https://github.com/thp/pyotherside)
+* [PyXDG](https://www.freedesktop.org/wiki/Software/pyxdg/)
+* [Mapbox GL Native (Qt fork)](https://github.com/rinigus/pkg-mapbox-gl-native) or [MapLibre Native Qt](https://github.com/maplibre/maplibre-native-qt)
+* [Mapbox GL QML](https://github.com/rinigus/mapbox-gl-qml)
+* [GPXPy](https://github.com/tkrajina/gpxpy) (available as submodule)
+* [S2 Geometry Library](https://github.com/google/s2geometry)
+* [Nemo DBus](https://github.com/sailfishos/nemo-qml-plugin-dbus) (needed for Kirigami platform)
+
+> When building with **flatpak-builder**, dependencies will be handled via Flatpak manifest.
+
+---
+
+## Install System Packages
 
 ```bash
 sudo apt update
@@ -22,9 +38,9 @@ sudo apt install -y git build-essential cmake ninja-build pkg-config \
 
 ---
 
-## Build Dependencies
+## Build Third-Party Dependencies
 
-### 1. Abseil
+### Abseil
 
 ```bash
 git clone https://github.com/abseil/abseil-cpp.git
@@ -37,7 +53,7 @@ sudo ninja install
 cd ../..
 ```
 
-### 2. S2Geometry
+### S2Geometry
 
 ```bash
 git clone https://github.com/google/s2geometry.git
@@ -50,7 +66,7 @@ sudo ninja install
 cd ../..
 ```
 
-### 3. Nemodbus
+### Nemo DBus (for Kirigami)
 
 ```bash
 wget https://github.com/sailfishos/nemo-qml-plugin-dbus/archive/refs/tags/2.1.27.tar.gz
@@ -62,7 +78,7 @@ sudo make install
 cd ..
 ```
 
-### 4. PyOtherSide
+### PyOtherSide
 
 ```bash
 wget https://github.com/thp/pyotherside/archive/1.5.9.tar.gz
@@ -74,13 +90,13 @@ sudo make install
 cd ..
 ```
 
-### 5. Python3-PyXDG
+### PyXDG
 
 ```bash
 pip3 install pyxdg
 ```
 
-### 6. MapLibre GL Native Qt
+### MapLibre GL Native Qt
 
 ```bash
 git clone https://github.com/maplibre/maplibre-native-qt.git
@@ -96,7 +112,7 @@ sudo ninja install
 cd ../..
 ```
 
-### 7. Mapbox GL QML
+### Mapbox GL QML
 
 ```bash
 git clone https://github.com/rinigus/mapbox-gl-qml.git
@@ -109,7 +125,7 @@ sudo ninja install
 cd ../..
 ```
 
-### 8. Mimic1 (Text-to-Speech)
+### Mimic1 (TTS Engine)
 
 ```bash
 git clone https://github.com/MycroftAI/mimic1.git
@@ -122,7 +138,7 @@ sudo make install
 cd ..
 ```
 
-### 9. Libpopt
+### Libpopt
 
 ```bash
 wget https://ftp.osuosl.org/pub/rpm/popt/releases/popt-1.x/popt-1.19.tar.gz
@@ -134,7 +150,7 @@ sudo make install
 cd ..
 ```
 
-### 10. PicoTTS
+### PicoTTS
 
 ```bash
 git clone https://github.com/ihuguet/picotts.git
@@ -168,6 +184,35 @@ sudo make install
 
 ---
 
+## Notes on Build Options
+
+* To **run without installing**, add `-DRUN_FROM_SOURCE=ON` and avoid using `make install`.
+* Platform can be specified using `-DFLAVOR=`:
+
+  * `kirigami`
+  * `qtcontrols`
+  * `silica`
+  * `uuitk`
+* Recommended: use an out-of-source build with a separate `build/` directory.
+
+---
+
+## Packaging and Defaults
+
+To configure default services for packaging:
+
+```bash
+cmake -DDEFAULT_PROFILE=online \
+      -DDEFAULT_BASEMAP=osm \
+      -DDEFAULT_GEOCODER=photon \
+      -DDEFAULT_GUIDE=guideservice \
+      -DDEFAULT_ROUTER=graphhopper ..
+```
+
+Each provider refers to its corresponding JSON or Python configuration file in PureMaps.
+
+---
+
 ## Environment Setup
 
 ```bash
@@ -178,7 +223,7 @@ source ~/.bashrc
 
 ---
 
-## Start PureMaps
+## Run PureMaps
 
 ```bash
 pure-maps
