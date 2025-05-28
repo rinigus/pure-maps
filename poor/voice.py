@@ -26,8 +26,10 @@ import shutil
 import subprocess
 import tempfile
 import threading
+import config
 
 __all__ = ("VoiceGenerator",)
+data_dir = config.DATA_DIR
 
 
 class VoiceEngine:
@@ -206,7 +208,7 @@ class VoiceEnginePiper(VoiceEngine):
         text = self.transform_text(text)
         cmd = [
             self.command,
-            "--model", f"/app/piper/voices/{self.voice_name}",
+            "--model", f"{os.path.join(data_dir, "voices", "piper")}/{self.voice_name}",
             "--output_file", fname
         ]
         try:
