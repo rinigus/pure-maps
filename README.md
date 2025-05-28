@@ -160,82 +160,10 @@ To add new platform, add new directory under `qml`, new Makefile
 target to set it, and implement all the required QML items. Take a
 look under other platforms for examples.
 
+## Building from Source
 
-## Dependencies
-
-In addition to common dependencies for QML applications, the following
-are needed:
-
-* PyOtherSide https://github.com/thp/pyotherside
-* PyXDG https://www.freedesktop.org/wiki/Software/pyxdg/
-* Mapbox GL Native, Qt version, use the packaged version at https://github.com/rinigus/pkg-mapbox-gl-native
-* Mapbox GL QML, unofficial QML bindings, https://github.com/rinigus/mapbox-gl-qml
-* GPXPy, https://github.com/tkrajina/gpxpy
-* S2 Geometry Library, https://github.com/google/s2geometry
-* For Kirigami platform: Nemo DBus https://github.com/sailfishos/nemo-qml-plugin-dbus
-
-When developing with Kirigami using flatpak builder, dependencies will
-be pulled and installed in flatpak. See instructions regarding
-Kirigami below.
-
-GPXPy is also provided as a thirdparty submodule and can be installed
-together with Pure Maps by setting corresponding option during `cmake`
-configuration phase.
-
-
-## Building
-
-Starting from Pure Maps version 2.0, the application has to be
-compiled. You could either
-
-- compile/install/run
-- compile/run from source tree
-
-In the both cases, you would have to specify platform via `-DFLAVOR`
-to `cmake`. Supported platforms:
-
-- Kirigami: `FLAVOR=kirigami`
-- QtControls: `FLAVOR=qtcontrols`
-- Sailfish: `FLAVOR=silica`
-- Ubuntu Touch: `FLAVOR=uuitk`
-
-It is recommended to build the sources in a separate folder, as in
-```
-mkdir build
-cd build
-cmake -DFLAVOR=kirigami ..
-make && make install
-```
-
-For compile/install/run, use regular `make` and `make install` before
-running application.
-
-To run from the source tree, add `-DRUN_FROM_SOURCE=ON` option when
-running `cmake`. Please note that, when running from source tree, do
-not run `make install` in the build folder. Otherwise it can overwrite
-your source files. In this case, `make` and running compiled
-executable directly would allow you to run application without
-installation. For example, from Qt Creator directly.
-
-The build options can be specified in Qt Creator under "Build
-settings" of the project. Just add them to the additional arguments of
-cmake.
-
-Mainly targeting packagers, it is possible to specify default
-providers using `cmake` project options. Notice the difference in
-supplied values for basemap and other options:
-
-- `DEFAULT_PROFILE=profile`
-  where profile is either online or offline
-- `DEFAULT_BASEMAP=provider`
-  Map `provider` is either specified in basemap JSON as "provider"
-  or, if absent, as "name"
-- `DEFAULT_GEOCODER=provider`
-- `DEFAULT_GUIDE=provider`
-- `DEFAULT_ROUTER=provider`
-
-In the last three options, `provider` corresponds to the basename of
-JSON/Python file describing the provider. Example: "photon".
+To build PureMaps from source, please refer to the [Build.md](./Build.md) file.
+It provides comprehensive instructions for compiling the application on systems such as Debian 12 and Ubuntu 24.04.
 
 
 ## API keys
