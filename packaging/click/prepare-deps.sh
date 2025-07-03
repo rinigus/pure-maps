@@ -38,5 +38,8 @@ fi
 cd $MAPLIBRE_GL_NATIVE_SRC_DIR
 git apply $ROOT_DIR/packaging/click/patches/maplibre-gl-native/*.patch
 
+cd $MAPLIBRE_GL_NATIVE_SRC_DIR/vendor/eternal
+git apply $ROOT_DIR/packaging/click/patches/maplibre-gl-native_eternal/*.patch
+
 cd $ABSEIL_SRC_DIR
 git apply $ROOT_DIR/packaging/click/patches/abseil/*.patch
