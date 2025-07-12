@@ -1024,7 +1024,7 @@ QString Navigator::distanceToStr_metric(double meters, bool condence) const
   if (meters > 1000)
     {
       unit = condence ? trans("km") : trans("kilometers");
-      return QString("%1 %2").arg(n2Str(meters/1000, 0)).arg(unit);
+      return QString("%1 %2").arg(n2Str(meters/1000, meters > 5000 ? 0 : -2)).arg(unit);
     }
   unit = condence ? trans("m") : trans("meters");
   return QString("%1 %2").arg(n2Str(meters, meters > 150 ? 2 : 1)).arg(unit);
