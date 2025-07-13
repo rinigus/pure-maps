@@ -1,4 +1,4 @@
-clickable_minimum_required: 7.8.0
+clickable_minimum_required: 8
 
 scripts:
   prepare-deps: git submodule update --recursive --init && ENABLE_MIMIC=1 ${ROOT}/packaging/click/prepare-deps.sh
