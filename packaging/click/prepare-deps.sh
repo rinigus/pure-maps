@@ -15,6 +15,7 @@ MIMIC_VERSION="1.3.0.1"
 PICOTTS_SRC_DIR=$ROOT_DIR/libs/picotts
 ABSEIL_SRC_DIR=$ROOT_DIR/libs/abseil
 S2GEOMETRY_SRC_DIR=$ROOT_DIR/libs/s2geometry
+PATCH_DIR=$ROOT_DIR/packaging/click/patches
 
 # Remove old downloads
 rm -rf $MAPLIBRE_GL_NATIVE_SRC_DIR $MAPBOX_GL_QML_SRC_DIR $QMLRUNNER_SRC_DIR $MIMIC_SRC_DIR $PICOTTS_SRC_DIR $S2GEOMETRY_SRC_DIR $ABSEIL_SRC_DIR
@@ -36,10 +37,13 @@ fi
 
 # Apply patches
 cd $MAPLIBRE_GL_NATIVE_SRC_DIR
-git apply $ROOT_DIR/packaging/click/patches/maplibre-gl-native/*.patch
+git apply $PATCH_DIR/maplibre-gl-native/*.patch
 
 cd $MAPLIBRE_GL_NATIVE_SRC_DIR/vendor/eternal
-git apply $ROOT_DIR/packaging/click/patches/maplibre-gl-native_eternal/*.patch
+git apply $PATCH_DIR/maplibre-gl-native_eternal/*.patch
 
 cd $ABSEIL_SRC_DIR
-git apply $ROOT_DIR/packaging/click/patches/abseil/*.patch
+git apply $PATCH_DIR/abseil/*.patch
+
+cd $MIMIC_SRC_DIR
+patch -p1 < $PATCH_DIR/mimic/fix-compilation.patch
