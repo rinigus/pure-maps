@@ -1,9 +1,9 @@
-clickable_minimum_required: 7.8.0
+clickable_minimum_required: 8.4.0
 
 scripts:
   prepare-deps: git submodule update --recursive --init && ENABLE_MIMIC=1 ${ROOT}/packaging/click/prepare-deps.sh
 
-framework: ubuntu-sdk-20.04
+framework: ubuntu-touch-24.04-1.x
 kill: pure-maps
 
 builder: cmake

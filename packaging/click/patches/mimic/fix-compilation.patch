@@ -1,0 +1,25 @@
+unchanged:
+--- a/lang/cmu_indic_lang/cmu_indic_lang.h
++++ b/lang/cmu_indic_lang/cmu_indic_lang.h
+@@ -51,7 +51,7 @@ void cmu_indic_lang_init(cst_voice *v);
+ extern const cst_phoneset cmu_indic_phoneset;
+ extern const cst_cart cmu_indic_phrasing_cart; 
+ 
+-const cst_regex * const cst_rx_not_indic;
++extern const cst_regex * const cst_rx_not_indic;
+ 
+ #ifdef __cplusplus
+ } /* extern "C" */
+only in patch2:
+unchanged:
+--- a/src/hts/hts_engine_API/lib/HTS_model.c
++++ b/src/hts/hts_engine_API/lib/HTS_model.c
+@@ -698,7 +698,7 @@ static HTS_Boolean HTS_Model_load_pdf(HTS_Model * model, HTS_File * fp, size_t v
+    }
+    if (result == FALSE) {
+       model->npdf += 2;
+-      free(model->npdf);
++      HTS_free(model->npdf);
+       HTS_Model_initialize(model);
+       return FALSE;
+    }
