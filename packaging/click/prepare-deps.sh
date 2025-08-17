@@ -24,7 +24,7 @@ git clone -b qt-v2.0.1 ${CLONE_ARGS} https://github.com/maplibre/maplibre-gl-nat
 git clone -b 2.1.1 ${CLONE_ARGS} https://github.com/rinigus/mapbox-gl-qml.git $MAPBOX_GL_QML_SRC_DIR
 git clone -b 1.0.2 ${CLONE_ARGS} https://github.com/rinigus/qmlrunner.git $QMLRUNNER_SRC_DIR
 git clone -b v0.11.1 ${CLONE_ARGS} https://github.com/google/s2geometry.git $S2GEOMETRY_SRC_DIR
-git clone -b 20240722.0 ${CLONE_ARGS} https://github.com/abseil/abseil-cpp.git $ABSEIL_SRC_DIR
+git clone -b 20250127.1 ${CLONE_ARGS} https://github.com/abseil/abseil-cpp.git $ABSEIL_SRC_DIR
 
 if [ "$ENABLE_MIMIC" == "1" ] ; then
 	wget -qO- https://github.com/MycroftAI/mimic1/archive/${MIMIC_VERSION}.tar.gz  | tar -xzv && mv mimic1-${MIMIC_VERSION} $MIMIC_SRC_DIR
