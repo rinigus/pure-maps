@@ -15,6 +15,6 @@
     "name": "MapTiler Streets",
     "profiles": ["mixed", "online"],
     "provider": "MapTiler",
-    "style_url": "https://api.maptiler.com/maps/streets/style.json?key=#MAPTILER_KEY#",
+    "style_url": "https://api.maptiler.com/maps/streets-v2/style.json?key=#MAPTILER_KEY#",
     "type": "default"
 }

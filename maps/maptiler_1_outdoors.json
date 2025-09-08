@@ -14,6 +14,6 @@
     "name": "MapTiler Outdoor",
     "profiles": ["mixed", "online"],
     "provider": "MapTiler",
-    "style_url": "https://api.maptiler.com/maps/outdoor/style.json?key=#MAPTILER_KEY#",
+    "style_url": "https://api.maptiler.com/maps/outdoor-v2/style.json?key=#MAPTILER_KEY#",
     "type": "terrain"
 }
