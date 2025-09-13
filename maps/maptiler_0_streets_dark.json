@@ -16,5 +16,15 @@
     "profiles": ["mixed", "online"],
     "provider": "MapTiler",
     "style_url": "https://api.maptiler.com/maps/streets-v2-dark/style.json?key=#MAPTILER_KEY#",
+    "style_gui": {
+        "fg": "white",
+        "iconVariant": "white",
+        "maneuver": "#050505",
+        "position": "white",
+        "route": "#ffffff",
+        "routeOpacity": 0.5,
+        "itemFg": "white",
+        "itemBg": "#192530"
+    },
     "type": "default"
 }
