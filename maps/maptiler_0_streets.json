@@ -4,7 +4,7 @@
 	"© MapTiler Copyright": "https://www.maptiler.com/copyright/",
         "© OpenStreetMap contributors": "https://www.openstreetmap.org/copyright"
     },
-    "fingerprint": { "id": "streets" },
+    "fingerprint": { "id": "streets-v2" },
     "first_label_layer": "water_name_line",
     "format": "mapbox-gl",
     "keys": ["MAPTILER_KEY"],
