@@ -1,3 +1,9 @@
+2024-08-18: Pure Maps 3.4.2
+===========================
+
+* Update MapTiler maps [junocomp]
+* Fix Stadia API [vetzki]
+
 2024-08-18: Pure Maps 3.4.1
 ===========================
 

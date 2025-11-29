@@ -10,7 +10,7 @@
             "desktop":  "pure-maps.desktop"
         }
     },
-    "version": "3.4.1",
+    "version": "3.4.2",
     "maintainer": "Rinigus <rinigus.git@gmail.org>",
     "framework" : "@CLICK_FRAMEWORK@"
 }
