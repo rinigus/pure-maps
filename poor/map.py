@@ -72,6 +72,9 @@ class Map:
         self.url_suffix = values.get("url_suffix", "")
         self.vehicle = values.get("vehicle", "")
         self.available = True
+        # check if tile_url is string
+        if isinstance(self.tile_url, str):
+            self.tile_url = [self.tile_url]
         # check mapbox for availability
         if self.style_url.startswith('mapbox://') and not poor.key.has_mapbox:
             print('Mapbox API key missing: skipping', id)
@@ -82,7 +85,7 @@ class Map:
                 print('API key missing:', k, 'disabling', id)
                 self.available = False
             self.style_url = self.style_url.replace("#" + k + "#", v)
-            self.tile_url = self.tile_url.replace("#" + k + "#", v)
+            self.tile_url = [i.replace("#" + k + "#", v) for i in self.tile_url]
 
     @property
     def attribution(self):
@@ -164,11 +167,7 @@ class Map:
                                ["get", self.lang[Map.KEY_LOCAL]]]
             sj = self._process_style_json(json.loads(self.style_json_orig), replacement)
             self.style_json_processed = json.dumps(sj)
-        #     for l in sj['layers']:
-        #         print(l['id'])
-        #     print()
 
-        # with open('style.json', "w") as f: f.write(self.style_json_processed)
         return self.style_json_processed
 
     def style_json(self, lang=None):
@@ -190,30 +189,34 @@ class Map:
             glyphs = "mapbox://fonts/mapbox/{fontstack}/{range}.pbf"
         elif poor.conf.font_provider == "maptiler":
             glyphs = "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=" + poor.key.maptiler_key
+
+        sources = {}
+        layers = [
+            {
+                "id": "background",
+                "type": "background",
+                "paint": {
+                    "background-color": self.background_color,
+                },
+            },
+        ]
+        for i, url in enumerate(self.tile_url):
+            source_id = f"raster-{i}"
+            sources[source_id] = {
+                "type": "raster",
+                "tiles": [process(url)],
+                "tileSize": self.tile_size,
+            }
+            layers.append({
+                "id": source_id,
+                "type": "raster",
+                "source": source_id,
+            })
         return json.dumps({
             "id": "raster",
             "glyphs": glyphs,
-            "sources": {
-                "raster": {
-                    "type": "raster",
-                    "tiles": [process(self.tile_url)],
-                    "tileSize": self.tile_size,
-                },
-            },
-            "layers": [
-                {
-                    "id": "background",
-                    "type": "background",
-                    "paint": {
-                        "background-color": self.background_color,
-                    },
-                },
-                {
-                    "id": "raster",
-                    "type": "raster",
-                    "source": "raster",
-                },
-            ],
+            "sources": sources,
+            "layers": layers,
         }, ensure_ascii=False)
 
 

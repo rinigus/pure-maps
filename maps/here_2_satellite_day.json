@@ -11,6 +11,6 @@
     "profiles": ["mixed", "online", "HERE"],
     "provider": "HERE",
     "tile_size": 256,
-    "tile_url": "https://3.aerial.maps.ls.hereapi.com/maptile/2.1/maptile/newest/satellite.day/{z}/{x}/{y}/512/png8?apiKey=#HERE_APIKEY#",
+    "tile_url": "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/png8?apiKey=#HERE_APIKEY#&ppi=400&size=512&style=satellite.day",
     "type": "satellite"
 }
