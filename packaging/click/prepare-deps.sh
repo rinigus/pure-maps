@@ -32,7 +32,7 @@ if [ "$ENABLE_MIMIC" == "1" ] ; then
 fi
 
 if [ "$ENABLE_PICOTTS" == "1" ] ; then
-	git clone ${CLONE_ARGS} https://github.com/jonnius/pkg-picotts.git $PICOTTS_SRC_DIR
+	git clone -b 17.08.10-ut1 ${CLONE_ARGS} https://github.com/jonnius/pkg-picotts.git $PICOTTS_SRC_DIR
 fi
 
 # Apply patches
