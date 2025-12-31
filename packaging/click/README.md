@@ -18,7 +18,11 @@ for the full build including Mimic, resulting in a 100 MB click package, or:
     ln -s packaging/click/slim-build.yaml clickable.yaml
 
 for the slim build without Mimic (but still with PicoTTS), resulting in a 10 MB
-click package.
+click package. Or:
+
+    ln -s packaging/click/unconfined-build.yaml clickable.yaml
+
+for an unconfined build that supports DBus and can be used with a smart watch.
 
 ## Dependencies
 
