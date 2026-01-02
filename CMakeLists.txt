@@ -230,5 +230,15 @@ foreach(_ISIZE ${ICON_SIZES})
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${_ISIZE}x${_ISIZE}/apps)
 endforeach()
 
+# Piper Voice Files
+configure_file(
+        ${CMAKE_CURRENT_SOURCE_DIR}/config_template.py.in
+        ${CMAKE_CURRENT_BINARY_DIR}/config.py
+        @ONLY
+)
+file(GLOB VOICES_SRC data/voices/piper/*.onnx data/voices/piper/*.json)
+install(FILES ${VOICES_SRC} DESTINATION ${DATADIR}/voices/piper)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/config.py DESTINATION ${DATADIR})
+
 # summary
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
