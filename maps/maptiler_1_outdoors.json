@@ -4,7 +4,7 @@
 	"© MapTiler Copyright": "https://www.maptiler.com/copyright/",
         "© OpenStreetMap contributors": "https://www.openstreetmap.org/copyright"
     },
-    "fingerprint": { "id": "outdoor" },
+    "fingerprint": { "id": "outdoor-v2" },
     "first_label_layer": "outdoor_poi_parking",
     "format": "mapbox-gl",
     "keys": ["MAPTILER_KEY"],
@@ -14,6 +14,6 @@
     "name": "MapTiler Outdoor",
     "profiles": ["mixed", "online"],
     "provider": "MapTiler",
-    "style_url": "https://api.maptiler.com/maps/outdoor/style.json?key=#MAPTILER_KEY#",
+    "style_url": "https://api.maptiler.com/maps/outdoor-v2/style.json?key=#MAPTILER_KEY#",
     "type": "terrain"
 }

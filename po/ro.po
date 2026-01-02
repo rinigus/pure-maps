@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-25 11:45+0200\n"
+"POT-Creation-Date: 2024-10-22 21:34+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
 "Last-Translator: liberi liberi <trfex.mtqx8@slmail.me>, 2024\n"
 "Language-Team: Romanian (https://app.transifex.com/rinigus/teams/89597/ro/)\n"
@@ -63,7 +63,7 @@ msgstr "Conexiunea a expirat"
 msgid "Current position"
 msgstr "Poziția actuală"
 
-#: poor/keystore.py:57
+#: poor/keystore.py:60
 msgid ""
 "Register at <a "
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
@@ -73,7 +73,7 @@ msgstr ""
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>și"
 " creează-ți ID-ul și secretul de Client"
 
-#: poor/keystore.py:58
+#: poor/keystore.py:61
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
@@ -81,7 +81,7 @@ msgstr ""
 "Înscrie-te la <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "și creează-ți propriul cod API"
 
-#: poor/keystore.py:59
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
@@ -89,7 +89,7 @@ msgstr ""
 "Înscrie-te la <a href=\"https://maptiler.com\">https://maptiler.com</a> și "
 "creează-ți propriul cod API"
 
-#: poor/keystore.py:60
+#: poor/keystore.py:63
 msgid ""
 "Register at <a "
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
@@ -99,7 +99,7 @@ msgstr ""
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
 "și creează-ți propriul cod API"
 
-#: poor/keystore.py:61
+#: poor/keystore.py:64
 msgid ""
 "Register at <a "
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
@@ -109,7 +109,7 @@ msgstr ""
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> și creează-ți"
 " propriul cod API"
 
-#: poor/keystore.py:62
+#: poor/keystore.py:65
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
@@ -117,7 +117,7 @@ msgstr ""
 "Înscrie-te la <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "și creează-ți propriul cod API"
 
-#: poor/keystore.py:63
+#: poor/keystore.py:66
 msgid ""
 "Register at <a "
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
@@ -128,38 +128,51 @@ msgstr ""
 "creează-ți propriul cod API"
 
 #: poor/keystore.py:67
+msgid ""
+"Register at <a href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a>"
+" and create your own App API Key"
+msgstr ""
+"Înscrie-te la <a "
+"href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a> și creează-ți "
+"propriul cod API"
+
+#: poor/keystore.py:71
 msgid "Foursquare Client ID"
 msgstr "ID de client Foursquare"
 
-#: poor/keystore.py:68
+#: poor/keystore.py:72
 msgid "Foursquare Client Secret"
 msgstr "Secret de client Foursquare"
 
-#: poor/keystore.py:71
+#: poor/keystore.py:75
 msgid "Mapbox API key"
 msgstr "Cod API Mapbox"
 
-#: poor/keystore.py:74
+#: poor/keystore.py:78
 msgid "MapTiler API key"
 msgstr "Cod API MapTiler"
 
-#: poor/keystore.py:77
+#: poor/keystore.py:81
 msgid "MapQuest API key"
 msgstr "Cod API MapQuest"
 
-#: poor/keystore.py:80
+#: poor/keystore.py:84
 msgid "OpenCage API key"
 msgstr "Cod API OpenCage"
 
-#: poor/keystore.py:83
+#: poor/keystore.py:87
 msgid "Stadia Maps API key"
 msgstr "Cod API Stadia Maps"
 
-#: poor/keystore.py:86
+#: poor/keystore.py:90
 msgid "HERE API Key"
 msgstr "Cod API HERE"
 
-#: poor/keystore.py:94
+#: poor/keystore.py:93
+msgid "Ordnance Survey API Key"
+msgstr "Cod API Ordnance Survey"
+
+#: poor/keystore.py:101
 #, python-brace-format
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE "
@@ -196,7 +209,7 @@ msgstr ""
 "acceptarea condițiilor de utilizare din Preferințe, în secțiunea "
 "Licențe.</p>"
 
-#: poor/keystore.py:109
+#: poor/keystore.py:116
 msgid "HERE End-User Terms"
 msgstr "Condiții pentru utilizarea HERE"
 
@@ -882,20 +895,20 @@ msgstr "Combinate"
 msgid "Stop navigation to select POI"
 msgstr "Oprește navigarea pentru a alege un loc de interes"
 
-#: qml/Map.qml:655 qml/NavigationPage.qml:207 qml/PoiBlock.qml:258
+#: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:258
 #: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Punct de plecare"
 
-#: qml/Map.qml:657 qml/NavigationPage.qml:210 qml/PoiBlock.qml:278
+#: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:278
 msgid "Final destination"
 msgstr "Destinație finală"
 
-#: qml/Map.qml:659
+#: qml/Map.qml:654
 msgid "✓"
 msgstr "✓"
 
-#: qml/Map.qml:662
+#: qml/Map.qml:657
 msgid "#%1"
 msgstr "#%1"
 

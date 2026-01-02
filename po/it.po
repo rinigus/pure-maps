@@ -5,19 +5,19 @@
 # 
 # Translators:
 # Watchmaker <alessandro.pra@gmail.com>, 2018
-# albanobattistella <albano_battistella@hotmail.com>, 2019
+# albanobattistella <albanobattistella@gmail.com>, 2019
 # Michele Claus <claus.miki@hotmail.it>, 2020
 # rinigus github, 2021
-# liberi liberi <trfex.mtqx8@slmail.me>, 2023
+# liberi liberi <trfex.mtqx8@slmail.me>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-25 11:45+0200\n"
+"POT-Creation-Date: 2024-10-22 21:34+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: liberi liberi <trfex.mtqx8@slmail.me>, 2023\n"
+"Last-Translator: liberi liberi <trfex.mtqx8@slmail.me>, 2024\n"
 "Language-Team: Italian (https://app.transifex.com/rinigus/teams/89597/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,7 +67,7 @@ msgstr "Connessione scaduta"
 msgid "Current position"
 msgstr "Posizione attuale"
 
-#: poor/keystore.py:57
+#: poor/keystore.py:60
 msgid ""
 "Register at <a "
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
@@ -77,7 +77,7 @@ msgstr ""
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
 " e creare le proprie chiavi ID cliente e Segreto cliente."
 
-#: poor/keystore.py:58
+#: poor/keystore.py:61
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
@@ -85,7 +85,7 @@ msgstr ""
 "Iscriversi a <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> e"
 " creare la propria chiave API"
 
-#: poor/keystore.py:59
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
@@ -93,7 +93,7 @@ msgstr ""
 "Iscriversi a <a href=\"https://maptiler.com\">https://maptiler.com</a> e "
 "creare la propria chiave API"
 
-#: poor/keystore.py:60
+#: poor/keystore.py:63
 msgid ""
 "Register at <a "
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
@@ -103,7 +103,7 @@ msgstr ""
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> e"
 " creare la propria chiave API"
 
-#: poor/keystore.py:61
+#: poor/keystore.py:64
 msgid ""
 "Register at <a "
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
@@ -113,7 +113,7 @@ msgstr ""
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> e creare la "
 "propria chiave API"
 
-#: poor/keystore.py:62
+#: poor/keystore.py:65
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
@@ -121,7 +121,7 @@ msgstr ""
 "Iscriversi a <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> e"
 " creare la propria chiave API"
 
-#: poor/keystore.py:63
+#: poor/keystore.py:66
 msgid ""
 "Register at <a "
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
@@ -132,38 +132,51 @@ msgstr ""
 "la propria chiave API"
 
 #: poor/keystore.py:67
+msgid ""
+"Register at <a href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a>"
+" and create your own App API Key"
+msgstr ""
+"Iscriversi a <a "
+"href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a> e creare la "
+"propria chiave API"
+
+#: poor/keystore.py:71
 msgid "Foursquare Client ID"
 msgstr "ID cliente Foursquare"
 
-#: poor/keystore.py:68
+#: poor/keystore.py:72
 msgid "Foursquare Client Secret"
 msgstr "Segreto cliente Foursquare"
 
-#: poor/keystore.py:71
+#: poor/keystore.py:75
 msgid "Mapbox API key"
 msgstr "Chiave API Mapbox"
 
-#: poor/keystore.py:74
+#: poor/keystore.py:78
 msgid "MapTiler API key"
 msgstr "Chiave API MapTiler"
 
-#: poor/keystore.py:77
+#: poor/keystore.py:81
 msgid "MapQuest API key"
 msgstr "Chiave API MapQuest"
 
-#: poor/keystore.py:80
+#: poor/keystore.py:84
 msgid "OpenCage API key"
 msgstr "Chiave API OpenCage"
 
-#: poor/keystore.py:83
+#: poor/keystore.py:87
 msgid "Stadia Maps API key"
 msgstr "Chiave API Stadia Maps"
 
-#: poor/keystore.py:86
+#: poor/keystore.py:90
 msgid "HERE API Key"
 msgstr "Chiave API HERE"
 
-#: poor/keystore.py:94
+#: poor/keystore.py:93
+msgid "Ordnance Survey API Key"
+msgstr "Chiave API Ordnance Survey"
+
+#: poor/keystore.py:101
 #, python-brace-format
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE "
@@ -200,7 +213,7 @@ msgstr ""
 "un secondo momento accettando le condizioni d'uso nelle Preferenze nella "
 "sezione Licenze.</p>"
 
-#: poor/keystore.py:109
+#: poor/keystore.py:116
 msgid "HERE End-User Terms"
 msgstr "Condizioni per l'utilizzo di HERE"
 
@@ -888,20 +901,20 @@ msgstr "MIsto"
 msgid "Stop navigation to select POI"
 msgstr "Interrompi la navigazione per selezionare PDI"
 
-#: qml/Map.qml:655 qml/NavigationPage.qml:207 qml/PoiBlock.qml:258
+#: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:258
 #: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Punto di partenza"
 
-#: qml/Map.qml:657 qml/NavigationPage.qml:210 qml/PoiBlock.qml:278
+#: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:278
 msgid "Final destination"
 msgstr "Destinazione"
 
-#: qml/Map.qml:659
+#: qml/Map.qml:654
 msgid "✓"
 msgstr "✓"
 
-#: qml/Map.qml:662
+#: qml/Map.qml:657
 msgid "#%1"
 msgstr "#%1"
 

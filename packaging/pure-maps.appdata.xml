@@ -39,6 +39,22 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="3.4.2" date="2025-11-29">
+     <description>
+       <ul>
+	 <li>Update MapTiler maps [junocomp]</li>
+	 <li>Fix Stadia API [vetzki]</li>
+       </ul>
+     </description>
+   </release>
+   <release  version="3.4.1" date="2025-08-18">
+     <description>
+       <ul>
+         <li>Update translations</li>
+	 <li>[ubuntu touch] Update build scripts [jonnius]</li>
+       </ul>
+     </description>
+   </release>
    <release  version="3.4.0" date="2024-10-22">
      <description>
        <ul>

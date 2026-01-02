@@ -5,17 +5,17 @@
 # 
 # Translators:
 # rinigus github, 2021
-# Åke Engelbrektson, 2023
+# Åke Engelbrektson, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 22:19+0200\n"
+"POT-Creation-Date: 2024-10-22 21:34+0300\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Åke Engelbrektson, 2023\n"
-"Language-Team: Swedish (https://www.transifex.com/rinigus/teams/89597/sv/)\n"
+"Last-Translator: Åke Engelbrektson, 2024\n"
+"Language-Team: Swedish (https://app.transifex.com/rinigus/teams/89597/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -56,7 +56,7 @@ msgid "Connection timed out"
 msgstr "Tidsgränsen för anslutning överskreds"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:210 qml/GeocodeItem.qml:544
-#: qml/MenuPage.qml:87 qml/Navigator.qml:214 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:215 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
 #: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
@@ -64,7 +64,7 @@ msgstr "Tidsgränsen för anslutning överskreds"
 msgid "Current position"
 msgstr "Aktuell position"
 
-#: poor/keystore.py:57
+#: poor/keystore.py:60
 msgid ""
 "Register at <a "
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
@@ -74,7 +74,7 @@ msgstr ""
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
 " och skapa ditt eget klient-ID och klientnycklar"
 
-#: poor/keystore.py:58
+#: poor/keystore.py:61
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
@@ -83,7 +83,7 @@ msgstr ""
 "href=\"https://www.mapbox.com\">https://www.mapbox.com</a> och skapa din "
 "egen API-nyckel"
 
-#: poor/keystore.py:59
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
@@ -91,7 +91,7 @@ msgstr ""
 "Registrera dig på <a href=\"https://maptiler.com\">https://maptiler.com</a> "
 "och skapa din egen API-nyckel"
 
-#: poor/keystore.py:60
+#: poor/keystore.py:63
 msgid ""
 "Register at <a "
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
@@ -100,7 +100,7 @@ msgstr ""
 "Registrera dig på<a href=\"https://developer.mapquest.com\"> "
 "https://developer.mapquest.com</a> och skapa din egen API-nyckel"
 
-#: poor/keystore.py:61
+#: poor/keystore.py:64
 msgid ""
 "Register at <a "
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
@@ -110,7 +110,7 @@ msgstr ""
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> och skapa din"
 " egen API-nyckel"
 
-#: poor/keystore.py:62
+#: poor/keystore.py:65
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
@@ -119,7 +119,7 @@ msgstr ""
 "href=\"https://stadiamaps.com\">https://stadiamaps.com</a> och skapa din "
 "egen API-nyckel"
 
-#: poor/keystore.py:63
+#: poor/keystore.py:66
 msgid ""
 "Register at <a "
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
@@ -130,38 +130,51 @@ msgstr ""
 " din egen App-API-nyckel"
 
 #: poor/keystore.py:67
+msgid ""
+"Register at <a href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a>"
+" and create your own App API Key"
+msgstr ""
+"Registrera dig på <a "
+"href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a> och skapa din "
+"egen API-nyckel"
+
+#: poor/keystore.py:71
 msgid "Foursquare Client ID"
 msgstr "Foursquare klient-ID"
 
-#: poor/keystore.py:68
+#: poor/keystore.py:72
 msgid "Foursquare Client Secret"
 msgstr "Foursquare klienthemlighet"
 
-#: poor/keystore.py:71
+#: poor/keystore.py:75
 msgid "Mapbox API key"
 msgstr "Mapbox API-nyckel"
 
-#: poor/keystore.py:74
+#: poor/keystore.py:78
 msgid "MapTiler API key"
 msgstr "MapTiler API-nyckel"
 
-#: poor/keystore.py:77
+#: poor/keystore.py:81
 msgid "MapQuest API key"
 msgstr "MapQuest API-nyckel"
 
-#: poor/keystore.py:80
+#: poor/keystore.py:84
 msgid "OpenCage API key"
 msgstr "OpenCage API-nyckel"
 
-#: poor/keystore.py:83
+#: poor/keystore.py:87
 msgid "Stadia Maps API key"
 msgstr "Stadia Maps API-nyckel"
 
-#: poor/keystore.py:86
+#: poor/keystore.py:90
 msgid "HERE API Key"
 msgstr "HERE API-nyckel"
 
-#: poor/keystore.py:94
+#: poor/keystore.py:93
+msgid "Ordnance Survey API Key"
+msgstr "Ordnance Survey API-nyckel"
+
+#: poor/keystore.py:101
 #, python-brace-format
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE "
@@ -196,7 +209,7 @@ msgstr ""
 "kommer HERE-supporten att vara inaktiv och kan aktiveras senare genom att "
 "acceptera villkoren i Inställningar under Licenser.</p>"
 
-#: poor/keystore.py:109
+#: poor/keystore.py:116
 msgid "HERE End-User Terms"
 msgstr "HERE slutanvändaravtal"
 
@@ -722,8 +735,8 @@ msgstr "Resultat (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Platser av intresse (%1)"
 
-#: qml/GeocodeItem.qml:484 qml/Navigator.qml:301 qml/Navigator.qml:303
-#: qml/PoiBlock.qml:407 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/GeocodeItem.qml:484 qml/Navigator.qml:302 qml/Navigator.qml:304
+#: qml/PoiBlock.qml:411 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Namnlös punkt"
@@ -880,12 +893,12 @@ msgstr "Blandat"
 msgid "Stop navigation to select POI"
 msgstr "Stoppa navigeringen för att välja POI"
 
-#: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
+#: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:258
 #: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Ursprung"
 
-#: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
+#: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:278
 msgid "Final destination"
 msgstr "Slutdestination"
 
@@ -1008,7 +1021,7 @@ msgstr "Status"
 msgid "Estimated time of arrival"
 msgstr "Beräknad ankomsttid"
 
-#: qml/NavigationPage.qml:161 qml/Navigator.qml:89
+#: qml/NavigationPage.qml:161 qml/Navigator.qml:90
 msgid "Destination reached"
 msgstr "Du är framme"
 
@@ -1054,19 +1067,19 @@ msgstr "Manövrer"
 msgid "EXIT"
 msgstr "AVFART"
 
-#: qml/Navigator.qml:81
+#: qml/Navigator.qml:82
 msgid "Destination %1 reached"
 msgstr "Du är framme vid destination %1"
 
-#: qml/Navigator.qml:82
+#: qml/Navigator.qml:83
 msgid "Waypoint %1 reached"
 msgstr "Du är framme vid vägpunkt %1"
 
-#: qml/Navigator.qml:151
+#: qml/Navigator.qml:152
 msgid "Voice navigation on"
 msgstr "Röstnavigering på"
 
-#: qml/Navigator.qml:156
+#: qml/Navigator.qml:157
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -1074,43 +1087,43 @@ msgstr ""
 "Röstnavigering är inte tillgänglig. Text-till-tal-motor (TTS) saknas, för "
 "det önskade språket."
 
-#: qml/Navigator.qml:207
+#: qml/Navigator.qml:208
 msgid "Routing failed: current position not known"
 msgstr "Ruttberäkning misslyckades: Aktuell position okänd"
 
-#: qml/Navigator.qml:213
+#: qml/Navigator.qml:214
 msgid "Rerouting position"
 msgstr "Beräknar om position"
 
-#: qml/Navigator.qml:221
+#: qml/Navigator.qml:222
 msgid "Routing"
 msgstr "Beräknar"
 
-#: qml/Navigator.qml:232
+#: qml/Navigator.qml:233
 msgid "Routing failed: %1"
 msgstr "Ruttberäkning misslyckades: %1"
 
-#: qml/Navigator.qml:237 src/navigator.cpp:1099
+#: qml/Navigator.qml:238 src/navigator.cpp:1099
 msgid "Traffic and route updated"
 msgstr "Trafik och rutt uppdaterad"
 
-#: qml/Navigator.qml:237 src/navigator.cpp:1096
+#: qml/Navigator.qml:238 src/navigator.cpp:1096
 msgid "New route found"
 msgstr "Ny rutt hittad"
 
-#: qml/Navigator.qml:238
+#: qml/Navigator.qml:239
 msgid "Route found"
 msgstr "Rutt hittad"
 
-#: qml/Navigator.qml:249 src/navigator.cpp:1098
+#: qml/Navigator.qml:250 src/navigator.cpp:1098
 msgid "Routing failed"
 msgstr "Ruttberäkning misslyckades"
 
-#: qml/Navigator.qml:281
+#: qml/Navigator.qml:282
 msgid "Updating traffic"
 msgstr "Uppdaterar trafik"
 
-#: qml/Navigator.qml:281 src/navigator.cpp:1097
+#: qml/Navigator.qml:282 src/navigator.cpp:1097
 msgid "Rerouting"
 msgstr "Beräknar om"
 
@@ -1219,35 +1232,35 @@ msgstr "Text"
 msgid "More info: %1"
 msgstr "Mer info: %1"
 
-#: qml/PoiBlock.qml:233
+#: qml/PoiBlock.qml:237
 msgid "Set as or Replace"
 msgstr "Ange som, eller ersätt."
 
-#: qml/PoiBlock.qml:233
+#: qml/PoiBlock.qml:237
 msgid "Set as"
 msgstr "Ange som"
 
-#: qml/PoiBlock.qml:293
+#: qml/PoiBlock.qml:297
 msgid "Insert as"
 msgstr "Infoga som"
 
-#: qml/PoiBlock.qml:298
+#: qml/PoiBlock.qml:302
 msgid "New origin"
 msgstr "Nytt ursprung"
 
-#: qml/PoiBlock.qml:311
+#: qml/PoiBlock.qml:315
 msgid "New final destination"
 msgstr "Ny slutdestination"
 
-#: qml/PoiBlock.qml:323
+#: qml/PoiBlock.qml:327
 msgid "First intermediate destination"
 msgstr "Första mellanliggande destination"
 
-#: qml/PoiBlock.qml:336
+#: qml/PoiBlock.qml:340
 msgid "Last intermediate destination"
 msgstr "Sista mellanliggande destination"
 
-#: qml/PoiBlock.qml:337
+#: qml/PoiBlock.qml:341
 msgid "Intermediate destination"
 msgstr "Mellanliggande destination"
 
@@ -2975,15 +2988,15 @@ msgstr "Byten"
 msgid "Alternatives"
 msgstr "Alternativ"
 
-#: src/cmdlineparser.cpp:18
+#: src/cmdlineparser.cpp:20
 msgid "Displays help on commandline options."
 msgstr "Visar hjälp vid kommandoradsåtgärder."
 
-#: src/cmdlineparser.cpp:20
+#: src/cmdlineparser.cpp:22
 msgid "Displays version information."
 msgstr "Visar versionsinformation."
 
-#: src/cmdlineparser.cpp:23
+#: src/cmdlineparser.cpp:25
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr "Visar plats utifrån geo: latitud-, longitud-URI eller utför sökning."
 
@@ -3037,65 +3050,65 @@ msgstr "Position oprecis"
 msgid "Position available"
 msgstr "Position tillgänglig"
 
-#: standard input:1
+#: ⁨standard input⁩:1
 msgid "Search in Finland. Supports autocomplete"
 msgstr "Sök i Finland. Stödjer automatisk komplettering."
 
-#: standard input:2
+#: ⁨standard input⁩:2
 msgid "Search based on HERE data. Supports autocomplete"
 msgstr "Sök baserat på HERE-data. Stödjer automatisk komplettering."
 
-#: standard input:3
+#: ⁨standard input⁩:3
 msgid "Search based on open data sources"
 msgstr "Sök baserat på öppna datakällor"
 
-#: standard input:4
+#: ⁨standard input⁩:4
 msgid "Search based on open data sources. Supports autocomplete"
 msgstr "Sök baserat på öppna datakällor. Stödjer automatisk komplettering."
 
-#: standard input:5
+#: ⁨standard input⁩:5
 msgid "Search based on OpenStreetMap data. Supports autocomplete"
 msgstr "Sök baserat på OpenStreetMap-data. Stödjer automatisk komplettering."
 
-#: standard input:6
+#: ⁨standard input⁩:6
 msgid "Venues listed and reviewed by Foursquare users"
 msgstr "Platser listade och utvärderade av Foursquare-användare"
 
-#: standard input:7 standard input:8
+#: ⁨standard input⁩:7
 msgid "Points of interest from OpenStreetMap data"
 msgstr "Punkter av intresse, från OpenStreetMap-data"
 
-#: standard input:9
+#: ⁨standard input⁩:8
 msgid "Routing along GPX track"
 msgstr "Ruttberäkning längs GPX-spår"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:20 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:19 ⁨standard input⁩:21
 msgid "car"
 msgstr "bil"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:21
 msgid "bicycle"
 msgstr "cykel"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:21
 msgid "foot"
 msgstr "fot"
 
-#: standard input:11
+#: ⁨standard input⁩:10
 msgid "Routing along GPX track processed by OSM Scout Server"
 msgstr "Ruttberäkning längs GPX-spår, bearbetad av OSM Scout Server"
 
-#: standard input:13
+#: ⁨standard input⁩:12
 msgid "Routing by HERE"
 msgstr "Ruttberäkning av HERE"
 
-#: standard input:15 standard input:17 standard input:19
+#: ⁨standard input⁩:14 ⁨standard input⁩:16 ⁨standard input⁩:18
 msgid "Routing based on OpenStreetMap data"
 msgstr "Färdväg baserad på OpenStreetMap-data"
 
-#: standard input:21
+#: ⁨standard input⁩:20
 msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr "Ruttberäkning av Valhalla, baserat på OpenStreetMap-data"

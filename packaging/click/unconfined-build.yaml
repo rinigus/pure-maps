@@ -1,7 +1,7 @@
 clickable_minimum_required: 8.6.0
 
 scripts:
-  prepare-deps: git submodule update --recursive --init && ENABLE_MIMIC=0 ${ROOT}/packaging/click/prepare-deps.sh
+  prepare-deps: git submodule update --recursive --init && ENABLE_MIMIC=1 ${ROOT}/packaging/click/prepare-deps.sh
 
 framework: ubuntu-touch-24.04-1.x
 kill: pure-maps
@@ -9,25 +9,29 @@ kill: pure-maps
 builder: cmake
 build_args:
 - -DFLAVOR=uuitk
-- -DAPP_NAME=pure-maps-slim.jonnius
+- -DAPP_NAME=pure-maps-unconfined.jonnius
 - -DAPP_REV_NAME=pure-maps-slim.jonnius
 - -DS2INCLUDES=${S2GEOMETRY_LIB_INSTALL_DIR}/include
 - -DS2LIBS=${S2GEOMETRY_LIB_INSTALL_DIR}/lib
 postbuild:
-- sed -i 's/@APP_TITLE@/Pure Maps Slim/g' ${INSTALL_DIR}/pure-maps.desktop
-- sed -i 's/@APP_TITLE@/Pure Maps Slim/g' ${INSTALL_DIR}/manifest.json
-- sed -i 's/@APP_NAME@/pure-maps-slim/g'  ${INSTALL_DIR}/manifest.json
-- mv ${INSTALL_DIR}/bin/pure-maps-slim.jonnius ${CLICK_PATH}/pure-maps
+- sed -i 's/@APP_TITLE@/Pure Maps Unconfined/g' ${INSTALL_DIR}/pure-maps.desktop
+- sed -i 's/@APP_TITLE@/Pure Maps Unconfined/g' ${INSTALL_DIR}/manifest.json
+- sed -i 's/@APP_NAME@/pure-maps-unconfined/g'  ${INSTALL_DIR}/manifest.json
+- mv ${INSTALL_DIR}/bin/pure-maps-unconfined.jonnius ${CLICK_PATH}/pure-maps
+- |
+  jq '. + {"template": "unconfined"}' ${ROOT}/packaging/click/pure-maps.apparmor > ${INSTALL_DIR}/pure-maps.apparmor
+dependencies_host:
+- jq
 
 install_qml:
 - ${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/MapboxMap
 install_lib:
 - ${MAPLIBRE_GL_NATIVE_LIB_INSTALL_DIR}/lib/libQMapLibreGL.so*
 install_bin:
+- ${MIMIC_LIB_INSTALL_DIR}/bin/mimic
 - ${PICOTTS_LIB_INSTALL_DIR}/usr/bin/pico2wave
 install_root_data:
 - packaging/click/manifest.json
-- packaging/click/pure-maps.apparmor
 - packaging/click/app-dispatcher.json
 - packaging/click/pure-maps.desktop
 - packaging/click/pure-maps.svg
@@ -74,3 +78,16 @@ libraries:
     dependencies_target:
     - libtool
     - libpopt-dev
+
+  mimic:
+    builder: custom
+    build:
+    - cp -r ${SRC_DIR}/* ${BUILD_DIR}
+    - ./autogen.sh
+    - ./configure --with-audio=none --prefix=${INSTALL_DIR} --exec-prefix=${INSTALL_DIR} --host=${ARCH_TRIPLET}
+    - make -j${NUM_PROCS}
+    - make install
+    dependencies_target:
+    - libtool
+    - libasound2-dev
+    - libpcre2-dev

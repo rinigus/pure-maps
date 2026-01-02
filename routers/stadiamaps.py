@@ -108,8 +108,8 @@ MODEOPTIONS = {
     "transit": ["use_bus", "use_rail", "use_transfers"]
 }
 
-URL = "https://route.stadiamaps.com/route?api_key=" + poor.key.get("STADIAMAPS_KEY") + "&json={input}"
-URL_OPT = "https://route.stadiamaps.com/optimized_route?api_key=" + poor.key.get("STADIAMAPS_KEY") + "&json={input}"
+URL = "https://api.stadiamaps.com/route/v1?api_key=" + poor.key.get("STADIAMAPS_KEY")
+URL_OPT = "https://api.stadiamaps.com/optimized_route/v1?api_key=" + poor.key.get("STADIAMAPS_KEY")
 cache = {}
 
 def prepare_endpoint(point):
@@ -147,16 +147,18 @@ def route(locations, params):
                  costing_options=costing_options,
                  directions_options=dict(language=language, units=units))
 
-    input = urllib.parse.quote(json.dumps(input))
+    input = json.dumps(input)
     if optimized:
         url = URL_OPT.format(**locals())
     else:
         url = URL.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
-    result = poor.http.get_json(url)
+    result = poor.http.post_json(url, body=input, headers={"Content-Type": "application/json"})
     result = poor.AttrDict(result)
     mode = MODE.get(ctype,"car")
+    # set url id
+    url = url + "_" + input
     return parse_result_valhalla(url, locations, optimized, result, mode)
 
 def parse_exit(maneuver, key):

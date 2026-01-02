@@ -9,11 +9,11 @@
     "lang": {"local": "", "int": "&lang=en", "ar": "&lang=ar", "as": "&lang=as", "az": "&lang=az", "be": "&lang=be", "bg": "&lang=bg", "bn": "&lang=bn", "bs": "&lang=bs", "ca": "&lang=ca", "cs": "&lang=cs", "cy": "&lang=cy", "da": "&lang=da", "de": "&lang=de", "el": "&lang=el", "en": "&lang=en", "es": "&lang=es", "et": "&lang=et", "eu": "&lang=eu", "fi": "&lang=fi", "fo": "&lang=fo", "fr": "&lang=fr", "ga": "&lang=ga", "gl": "&lang=gl", "gn": "&lang=gn", "gu": "&lang=gu", "he": "&lang=he", "hi": "&lang=hi", "hr": "&lang=hr", "hu": "&lang=hu", "hy": "&lang=hy", "id": "&lang=id", "is": "&lang=is", "it": "&lang=it", "ja": "&lang=ja", "ka": "&lang=ka", "kk": "&lang=kk", "km": "&lang=km", "kn": "&lang=kn", "ko": "&lang=ko", "ky": "&lang=ky", "lt": "&lang=lt", "lv": "&lang=lv", "mk": "&lang=mk", "ml": "&lang=ml", "mr": "&lang=mr", "ms": "&lang=ms", "mt": "&lang=mt", "my": "&lang=my", "nl": "&lang=nl", "no": "&lang=no", "or": "&lang=or", "pa": "&lang=pa", "pl": "&lang=pl", "pt": "&lang=pt", "ro": "&lang=ro", "ru": "&lang=ru", "sk": "&lang=sk", "sl": "&lang=sl", "sq": "&lang=sq", "sr": "&lang=sr", "sv": "&lang=sv", "ta": "&lang=ta", "te": "&lang=te", "th": "&lang=th", "tr": "&lang=tr", "uk": "&lang=uk", "uz": "&lang=uz", "vi": "&lang=vi", "zh-simpl": "&lang=zh", "zh": "&lang=zh-Hant"},
     "lang_key": "#LANG#",
     "light": "night",
-    "name": "HERE Normal Night Transit",
+    "name": "HERE Terrain",
     "profiles": ["mixed", "online", "HERE"],
     "provider": "HERE",
     "tile_size": 256,
-    "tile_url": "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/png8?apiKey=#HERE_APIKEY##LANG#&ppi=400&size=512&features=public_transit:all_systems&style=explore.night",
+    "tile_url": "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/png8?apiKey=#HERE_APIKEY##LANG#&ppi=400&size=512&features=pois:all&style=topo.night",
     "style_gui": {
         "fg": "white",
         "iconVariant": "white",
@@ -24,6 +24,5 @@
         "itemFg": "white",
         "itemBg": "#192530"
     },
-    "type": "default",
-    "vehicle": "transit"
+    "type": "terrain"
 }
