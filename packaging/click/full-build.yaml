@@ -22,7 +22,7 @@ postbuild:
 install_qml:
 - ${MAPBOX_GL_QML_LIB_INSTALL_DIR}/usr/lib/${ARCH_TRIPLET}/qt5/qml/MapboxMap
 install_lib:
-- ${MAPLIBRE_GL_NATIVE_LIB_INSTALL_DIR}/lib/libQMapLibreGL.so*
+- ${MAPLIBRE_NATIVE_LIB_INSTALL_DIR}/lib/libQMapLibre.so*
 install_bin:
 - ${MIMIC_LIB_INSTALL_DIR}/bin/mimic
 - ${PICOTTS_LIB_INSTALL_DIR}/usr/bin/pico2wave
@@ -36,19 +36,19 @@ install_data:
   ${PICOTTS_LIB_INSTALL_DIR}/usr/share/picotts: usr/share
 
 libraries:
-  maplibre-gl-native:
+  maplibre-native:
     builder: cmake
     build_args:
-    - -DMBGL_WITH_QT=ON
-    - -DMBGL_WITH_WERROR=OFF
-    - -DMBGL_WITH_QT_HEADLESS=OFF
-    - -DMBGL_QT_LIBRARY_ONLY=ON
-    - -DMBGL_QT_STATIC=OFF
+    - -DMLN_QT_WITH_WIDGETS=OFF
+    - -DMLN_QT_WITH_LOCATION=OFF
+    - -DMLN_QT_WITH_INTERNAL_ICU=ON
+    - -DMLN_WITH_WERROR=OFF
 
   mapbox-gl-qml:
     builder: cmake
     build_args:
     - -DCMAKE_CXX_STANDARD=14
+    - -DCMAKE_CXX_FLAGS="-I${MAPLIBRE_NATIVE_LIB_INSTALL_DIR}/include -L${MAPLIBRE_NATIVE_LIB_INSTALL_DIR}/lib"
 
   abseil:
     builder: cmake
