@@ -39,6 +39,16 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="3.5.0" date="2026-01-08">
+     <description>
+       <ul>
+	 <li>Add support for HERE v3 API maps</li>
+	 <li>[ubuntu touch] Add unconfined click build config [jonnius]</li>
+	 <li>[ubuntu touch] Fix non-sense output via PicoTTS [jonnius]</li>
+	 <li>[ubuntu touch] Append Ubuntu Touch framework to click versions [jonnius]</li>
+       </ul>
+     </description>
+   </release>
    <release  version="3.4.2" date="2025-11-29">
      <description>
        <ul>
