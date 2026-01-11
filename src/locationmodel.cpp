@@ -2,6 +2,7 @@
 #include "navigator.h"
 
 #include <QLocale>
+#include <QTime>
 
 #include <QDebug>
 

@@ -10,6 +10,7 @@
 #include <QList>
 #include <QNetworkAccessManager>
 #include <QTimer>
+#include <QElapsedTimer>
 
 #include "osmscout_mapmatching.h"
 
@@ -160,7 +161,7 @@ private:
 
   QNetworkAccessManager m_networkManager;
 
-  QTime m_directionTimestamp;
+  QElapsedTimer m_directionTimestamp;
   QTimer m_timer;
 
   OSMScoutMapMatch *m_mapmatch{nullptr};
