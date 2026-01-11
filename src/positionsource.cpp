@@ -61,10 +61,19 @@ PositionSource::PositionSource(QObject *parent) : QObject(parent)
 
   connect(m_source, &QGeoPositionInfoSource::positionUpdated,
           this, &PositionSource::onPositionUpdated);
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  connect(m_source, &QGeoPositionInfoSource::errorOccurred,
+          this, &PositionSource::onError);
+#else
   connect(m_source, SIGNAL(error(QGeoPositionInfoSource::Error)),
           this, SLOT(onError(QGeoPositionInfoSource::Error)));
+#endif
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
   connect(m_source, &QGeoPositionInfoSource::updateTimeout,
           this, &PositionSource::onUpdateTimeout);
+#endif
 
   // network
   connect(&m_networkManager, &QNetworkAccessManager::finished, this, &PositionSource::onNetworkFinished);
@@ -151,7 +160,7 @@ void PositionSource::setPosition(const QGeoPositionInfo &info)
 
               SET(directionDevice, dir);
               SET(directionDeviceValid, true);
-              m_directionTimestamp = QTime::currentTime();
+              m_directionTimestamp.start();
               qCInfo(lcPositioning) << "Calculated direction:" << m_directionDevice << "history:" << m_history.size() << "distance to last:"
                                     << last.distanceTo(m_coordinateDevice) << "threshold:" << threshold;
             }
@@ -238,7 +247,12 @@ void PositionSource::setTestingMode(bool testingMode)
 void PositionSource::onError(QGeoPositionInfoSource::Error positioningError)
 {
   qWarning() << "Positioning error:" << positioningError;
-  setReady(false);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  if (positioningError == QGeoPositionInfoSource::UpdateTimeoutError)
+    onUpdateTimeout();
+  else
+#endif
+    setReady(false);
 }
 
 void PositionSource::onNetworkFinished(QNetworkReply *reply)

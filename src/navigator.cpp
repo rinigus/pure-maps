@@ -55,7 +55,7 @@ void Navigator::setHorizontalAccuracy(double accuracy)
 void Navigator::setupTranslator()
 {
   QString lang = m_language;
-  if (lang == QLatin1Literal("en_US_x_pirate")) lang = QLatin1String("en_US");
+  if (lang == QLatin1String("en_US_x_pirate")) lang = QLatin1String("en_US");
   m_locale = QLocale(lang);
   if (m_translator.load(m_locale, APP_NAME, QLatin1String("-"),
                         QStringLiteral(DEFAULT_DATA_PREFIX "translations")))

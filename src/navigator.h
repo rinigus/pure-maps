@@ -6,7 +6,7 @@
 #include <QHash>
 #include <QLocale>
 #include <QObject>
-#include <QTime>
+#include <QElapsedTimer>
 #include <QTimer>
 #include <QTranslator>
 #include <QVariantList>
@@ -239,8 +239,9 @@ private:
   size_t m_last_prompt{0};
   double m_distance_to_route_m{-1};
   size_t m_offroad_count{0};
-  QTime  m_reroute_request;
-  QTime  m_traffic_updated;
+
+  QElapsedTimer m_reroute_request;
+  QElapsedTimer m_traffic_updated;
 
   bool    m_alongRoute{false};
   QString m_destDist;
