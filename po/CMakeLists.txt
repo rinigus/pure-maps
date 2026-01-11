@@ -1,10 +1,8 @@
-get_filename_component(LINGUIST_PATH ${QT_MOC_EXECUTABLE} PATH)
-find_program(QT_LCONVERT NAMES lconvert-qt5 lconvert PATHS ${LINGUIST_PATH})
-
-if(QT_LCONVERT)
+if(TARGET Qt${QT_VERSION_MAJOR}::lconvert)
+  set(QT_LCONVERT $<TARGET_FILE:Qt${QT_VERSION_MAJOR}::lconvert>)
   message(STATUS "Found lconvert: ${QT_LCONVERT}")
 else()
-  message(FATAL_ERROR "Could NOT find lconvert")
+  message(FATAL_ERROR "Could NOT find Qt lconvert target")
 endif()
 
 set(LANGUAGES cs de_DE el es et fi fr fur hu_HU it nb nl nl_BE pl pt_BR ru sk_SK sl_SI sv zh_CN)

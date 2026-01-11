@@ -8,7 +8,7 @@ project(pure-maps
 set(APP_NAME "" CACHE STRING "Name of the application, specify if custom name is needed")
 set(APP_REV_NAME "" CACHE STRING "Name of the application used for data files, specify if custom name is needed")
 set(APP_ORG "" CACHE STRING "Name of the organization, specify if different from APP_NAME")
-set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami, silica, qtcontrols, uuitk")
+set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami6, kirigami, silica, qtcontrols6, qtcontrols, uuitk")
 option(APP_VARIANT_JOLLA_STORE "Set if compiling for Sailfish Jolla Store" OFF)
 set(PYTHON_EXE "auto" CACHE STRING "Set python3 executable. If set to 'auto', cmake will try to find it.")
 option(RUN_FROM_SOURCE "Run from source, this is mainly intended for easy development" OFF)
@@ -33,8 +33,10 @@ endif()
 # check options
 set(VALID_FLAVOR_OPTIONS
     "kirigami"
+    "kirigami6"
     "silica"
     "qtcontrols"
+    "qtcontrols6"
     "uuitk")
 
 if(NOT FLAVOR IN_LIST VALID_FLAVOR_OPTIONS)
@@ -85,9 +87,17 @@ if(NOT APP_ORG)
 endif()
 
 # requirements
-set(QT_MIN_VERSION "5.6.0")
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+
+# determine if it is Qt5 or Qt6
+if(FLAVOR STREQUAL "kirigami6" OR FLAVOR STREQUAL "qtcontrols6")
+    set(QT_VERSION_MAJOR 6)
+    set(QT_MIN_VERSION "6.8.0")
+else()
+    set(QT_VERSION_MAJOR 5)
+    set(QT_MIN_VERSION "5.6.0")
+endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -105,9 +115,9 @@ else()
 endif()
 
 # Qt
-find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Positioning Qml Quick DBus LinguistTools REQUIRED)
-if(FLAVOR STREQUAL "kirigami" OR FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "uuitk")
-    find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Widgets QuickControls2 REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} ${QT_MIN_VERSION} COMPONENTS Gui Positioning Qml Quick DBus LinguistTools REQUIRED)
+if(FLAVOR STREQUAL "kirigami" OR FLAVOR STREQUAL "kirigami6" OR FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "qtcontrols6" OR FLAVOR STREQUAL "uuitk")
+    find_package(Qt${QT_VERSION_MAJOR} ${QT_MIN_VERSION} COMPONENTS Widgets QuickControls2 REQUIRED)
 elseif(FLAVOR STREQUAL "silica")
     include(FindPkgConfig)
     pkg_search_module(SAILFISH sailfishapp REQUIRED)

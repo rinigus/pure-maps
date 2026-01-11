@@ -1,6 +1,6 @@
 if(FLAVOR STREQUAL "silica")
     add_compile_options(-DIS_SAILFISH_OS)
-elseif(FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "kirigami")
+elseif(FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "qtcontrols6" OR FLAVOR STREQUAL "kirigami" OR FLAVOR STREQUAL "kirigami6")
     add_compile_options(
         -DIS_QTCONTROLS_QT
         -DINTERNAL_CLIPBOARD)
@@ -44,7 +44,11 @@ if(USE_BUNDLED_GEOCLUE2)
 
     set_source_files_properties(${GCLUE2_XML}
                                 PROPERTIES INCLUDE geoclue2/geocluetypes.h NO_NAMESPACE ON)
-    qt5_add_dbus_interfaces(PM_SRC ${GCLUE2_XML})
+    if(QT_VERSION_MAJOR EQUAL 6)
+        qt6_add_dbus_interfaces(PM_SRC ${GCLUE2_XML})
+    else()
+        qt5_add_dbus_interfaces(PM_SRC ${GCLUE2_XML})
+    endif()
 endif()
 
 add_executable(${APP_NAME} ${PM_SRC} ${PM_HEADERS})
@@ -57,21 +61,23 @@ if(FLAVOR STREQUAL "silica")
 endif()
 
 target_link_libraries(${APP_NAME}
-    Qt5::Gui
-    Qt5::Qml
-    Qt5::Quick
-    Qt5::Positioning
-    Qt5::DBus
+    Qt${QT_VERSION_MAJOR}::Gui
+    Qt${QT_VERSION_MAJOR}::Qml
+    Qt${QT_VERSION_MAJOR}::Quick
+    Qt${QT_VERSION_MAJOR}::Positioning
+    Qt${QT_VERSION_MAJOR}::DBus
     s2::s2)
 
 set(LINKING_FLAVORS
     "kirigami"
+    "kirigami6"
     "qtcontrols"
+    "qtcontrols6"
     "uuitk")
 if(FLAVOR IN_LIST LINKING_FLAVORS)
     target_link_libraries(${APP_NAME}
-        Qt5::Widgets
-        Qt5::QuickControls2)
+        Qt${QT_VERSION_MAJOR}::Widgets
+        Qt${QT_VERSION_MAJOR}::QuickControls2)
 endif()
 
 if(FLAVOR STREQUAL "silica")
