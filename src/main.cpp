@@ -47,6 +47,7 @@
 #include "navigator.h"
 #include "navigatordbusadapter.h"
 #include "positionsource.h"
+#include "screensaverinhibitor.h"
 #include "util.h"
 
 
@@ -181,11 +182,15 @@ int main(int argc, char *argv[])
 #endif
                                   );
   rootContext->setContextProperty("defaultFontProvider", DEFAULT_FONTPROVIDER);
+  rootContext->setContextProperty("dataDirectory", DATA_DIR);
 
   // ////////////////////////////
   // register QML types
 #ifdef INTERNAL_CLIPBOARD
   qmlRegisterType<Clipboard>("org.puremaps", 1, 0, "Clipboard");
+#endif
+#ifdef INTERNAL_SCREENSAVERINH
+  qmlRegisterType<ScreenSaverInhibitor>("org.puremaps", 1, 0, "ScreenSaverInhibitor");
 #endif
   qmlRegisterType<Navigator>("org.puremaps", 1, 0, "NavigatorBase");
   qmlRegisterType<ManeuverModel>("org.puremaps", 1, 0, "ManeuverList");
@@ -202,12 +207,17 @@ int main(int argc, char *argv[])
 #ifdef IS_SAILFISH_OS
   if (v)
     {
-      v->setSource(SailfishApp::pathTo("qml/pure-maps.qml"));
+      v->setSource(SailfishApp::pathTo("qml/Main.qml"));
       v->show();
     }
 #endif
 #ifdef IS_QTCONTROLS_QT
-  engine.load(DEFAULT_DATA_PREFIX "qml/pure-maps.qml");
+
+#if defined(RUN_FROM_SOURCE) || (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+  engine.load(DEFAULT_DATA_PREFIX "qml/Main.qml");
+#else
+  engine.loadFromModule("pm", "Main");
+#endif
   if (engine.rootObjects().isEmpty())
     {
       std::cerr << "Error loading QML\n";

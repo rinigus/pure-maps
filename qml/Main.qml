@@ -93,11 +93,8 @@ ApplicationWindowPL {
     Styler { id: styler }
     TruncationModes { id: truncModes }
 
-    Audio {
+    AudioPL {
         id: sound
-        audioRole: Audio.NotificationRole
-        autoLoad: true
-        loops: 1
     }
 
     Connections {
