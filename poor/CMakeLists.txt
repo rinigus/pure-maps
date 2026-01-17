@@ -1,3 +1,7 @@
+if (RUN_FROM_SOURCE)
+    return()
+endif()
+
 install(FILES ${POOR_SRC} DESTINATION ${DATADIR}/poor)
 
 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/config.py"
@@ -23,7 +27,6 @@ if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../tools/apikeys.py)
     ${CMAKE_CURRENT_BINARY_DIR}/apikeys.py
     DESTINATION ${DATADIR}/poor)
 endif()
-
 
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/astral/astral.py
     DESTINATION ${DATADIR}/poor/astral)

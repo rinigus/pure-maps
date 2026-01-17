@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.1) # Latest version as supported by Ubuntu Touch
+cmake_minimum_required(VERSION 3.10.0)
 
 project(pure-maps
     VERSION 3.5.0
@@ -123,6 +123,10 @@ elseif(FLAVOR STREQUAL "silica")
     pkg_search_module(SAILFISH sailfishapp REQUIRED)
 endif()
 
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt_standard_project_setup(REQUIRES 6.5)
+endif()
+
 # s2
 find_package(s2 REQUIRED)
 
@@ -152,18 +156,21 @@ endif()
 ## extension modules
 file(GLOB GEOCODERS_SRC geocoders/*.json geocoders/*.md geocoders/*.py)
 file(GLOB GEOCODERS_EXTRA LIST_DIRECTORIES false geocoders/test/*)
-install(FILES ${GEOCODERS_SRC} DESTINATION ${DATADIR}/geocoders)
 
 file(GLOB GUIDES_SRC guides/*.json guides/*.md guides/*.qml guides/*.py)
 file(GLOB GUIDES_EXTRA LIST_DIRECTORIES false guides/test/*)
-install(FILES ${GUIDES_SRC} DESTINATION ${DATADIR}/guides)
 
 file(GLOB MAPS_SRC maps/*.json maps/*.md)
-install(FILES ${MAPS_SRC} DESTINATION ${DATADIR}/maps)
 
 file(GLOB ROUTERS_SRC routers/*.json routers/*.md routers/*.qml routers/*.py)
 file(GLOB ROUTERS_EXTRA LIST_DIRECTORIES false routers/test/*)
-install(FILES ${ROUTERS_SRC} DESTINATION ${DATADIR}/routers)
+
+if (NOT RUN_FROM_SOURCE)
+    install(FILES ${GEOCODERS_SRC} DESTINATION ${DATADIR}/geocoders)
+    install(FILES ${GUIDES_SRC} DESTINATION ${DATADIR}/guides)
+    install(FILES ${MAPS_SRC} DESTINATION ${DATADIR}/maps)
+    install(FILES ${ROUTERS_SRC} DESTINATION ${DATADIR}/routers)
+endif()
 
 ## python sources: installed in subdir
 file(GLOB POOR_SRC poor/*.py)
@@ -195,10 +202,11 @@ add_custom_target(Sources SOURCES
     )
 
 # process linking and installation in the subdirs where needed
-add_subdirectory(src)
+
+add_subdirectory(qml)
 add_subdirectory(poor)
 add_subdirectory(thirdparty)
-add_subdirectory(qml)
+add_subdirectory(src)
 add_subdirectory(po)
 
 # appdata
@@ -217,8 +225,8 @@ else()
     # SFOS
     if (APP_VARIANT_JOLLA_STORE)
       install(FILES data/harbour-pure-maps-jolla-store.desktop
-	DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
-	RENAME harbour-pure-maps.desktop)
+	    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
+	    RENAME harbour-pure-maps.desktop)
     else()
       set(DESKTOP_SRC
           data/${APP_REV_NAME}.desktop
