@@ -1,3 +1,7 @@
+if (RUN_FROM_SOURCE)
+    return()
+endif()
+
 if(USE_BUNDLED_GEOMAG)
     file(GLOB GEOMAG_SRC LIST_DIRECTORIES false geomag/geomag/*.py)
     install(FILES ${GEOMAG_SRC} DESTINATION ${DATADIR}/poor/geomag)

@@ -3,19 +3,26 @@ if(FLAVOR STREQUAL "silica")
 elseif(FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "qtcontrols6" OR FLAVOR STREQUAL "kirigami" OR FLAVOR STREQUAL "kirigami6")
     add_compile_options(
         -DIS_QTCONTROLS_QT
-        -DINTERNAL_CLIPBOARD)
-    set(CMAKE_AUTOMOC_MOC_OPTIONS -DINTERNAL_CLIPBOARD)
+        -DINTERNAL_CLIPBOARD
+        -DINTERNAL_SCREENSAVERINH)
+    set(CMAKE_AUTOMOC_MOC_OPTIONS -DINTERNAL_CLIPBOARD -DINTERNAL_SCREENSAVERINH)
 else()
     add_compile_options(
         -DIS_QTCONTROLS_QT
         -DDEFAULT_FALLBACK_STYLE="suru")
 endif()
 
+if(RUN_FROM_SOURCE)
+    add_compile_options(-DRUN_FROM_SOURCE)
+endif()
+
+
 add_compile_options(
     -DAPP_NAME="${APP_NAME}"
     -DAPP_REV_NAME="${APP_REV_NAME}"
     -DAPP_ORG="${APP_ORG}"
     -DAPP_VERSION="${PM_VERSION}"
+    -DDATA_DIR="${DATADIR}"
     -DDEFAULT_DATA_PREFIX="${DATADIR_RUNNING}/"
     -DDEFAULT_FONTPROVIDER="${DEFAULT_FONTPROVIDER}"
     -DQT_DEPRECATED_WARNINGS)
@@ -86,5 +93,16 @@ if(FLAVOR STREQUAL "silica")
         )
 endif()
 
-install(TARGETS ${APP_NAME}
-    DESTINATION ${CMAKE_INSTALL_BINDIR})
+if(NOT RUN_FROM_SOURCE AND QT_VERSION_MAJOR EQUAL 6)
+    target_link_libraries(${APP_NAME}
+        PureMapsQml
+        PureMapsQmlplugin
+        PureMapsPlatformQml
+        PureMapsPlatformQmlplugin
+    )
+endif()
+
+if (NOT RUN_FROM_SOURCE)
+    install(TARGETS ${APP_NAME}
+        DESTINATION ${CMAKE_INSTALL_BINDIR})
+endif()
