@@ -18,9 +18,10 @@
 
 import QtQuick 2.0
 import QtPositioning 5.4
-import QtGraphicalEffects 1.0
+import "platform"
 
 import "js/util.js" as Util
+
 
 MouseArea {
     id: master
@@ -142,12 +143,7 @@ MouseArea {
             anchors.horizontalCenter: _rotate ? left.horizontalCenter : right.horizontalCenter
             height: sourceSize.height
             layer.enabled: true
-            layer.effect: DropShadow {
-                color: styler.shadowColor
-                opacity: styler.shadowOpacity
-                radius: styler.shadowRadius
-                samples: 1 + radius*2
-            }
+            layer.effect: ShadowPL { }
             smooth: true
             source: app.getIcon("icons/indicator", true)
             sourceSize.height: styler.indicatorSize
