@@ -4,6 +4,7 @@
 .cache
 .flatpak-builder
 .pytest_cache
+.qmlls.ini
 __pycache__
 dist
 /libs
