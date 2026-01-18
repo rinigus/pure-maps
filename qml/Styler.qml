@@ -56,6 +56,10 @@ StylerPL {
     property color  _itemColBg: itemBg
     property color  _itemColFg: itemFg
 
+    Component.onCompleted: {
+        defaults()
+    }
+
     function apply(guistyle) {
         defaults();
         if (guistyle == null) return;
@@ -77,6 +81,5 @@ StylerPL {
         itemFg = "black";
         itemBg = "white";
         shadowColor = "black";
-
     }
 }

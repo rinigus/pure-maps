@@ -264,6 +264,11 @@ Item {
     Component.onCompleted: init()
     onActivated: doSomething()
 
+    // signal handlers as functions
+    function handleActivated(activated_arg) {
+      doSomethingWithArg(activated_arg)
+    }
+
     // functions
     function a() {
         return 10;
