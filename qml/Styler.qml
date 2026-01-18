@@ -49,8 +49,6 @@ StylerPL {
     property string route                // route color on the map. also used for maneuver markers
     property real   routeOpacity         // opacity of route
     property string shadowColor          // shadow color used on map buttons and panels
-    property real   shadowOpacity: 0.35  // shadow opacity - do not change in defaults or style
-    property int    shadowRadius: 10     // shadow radius - do not change in defaults or style
 
     // private properties
     property color  _itemColBg: itemBg

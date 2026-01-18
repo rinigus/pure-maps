@@ -5,5 +5,5 @@ MultiEffect {
     shadowBlur: 1.0
     shadowColor: styler.shadowColor
     shadowEnabled: true
-    shadowOpacity: styler.shadowOpacity
+    shadowOpacity: 0.35
 }
