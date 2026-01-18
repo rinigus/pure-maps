@@ -28,8 +28,12 @@ Python {
     signal configurationChanged
 
     Component.onCompleted: {
-        addImportPath(Qt.resolvedUrl(".."));
-        addImportPath(Qt.resolvedUrl("../thirdparty/gpxpy"));
+        // connect signals
+        py.received.connect(handleReceved);
+        py.error.connect(handleError);
+
+        addImportPath(dataDirectory);
+        addImportPath(Qt.resolvedUrl(dataDirectory + "/thirdparty/gpxpy"));
         importModule("poor", function() {
             py.call("poor.main", [], function() {
                 py.ready = true;
@@ -37,9 +41,12 @@ Python {
         });
     }
 
-    onError: console.log("Error: %1".arg(traceback));
+    // handle signals
+    function handleError(traceback) {
+        console.log("Error: %1".arg(traceback));
+    }
 
-    onReceived: {
+    function handleReceved(data) {
         if (!data.length) return;
         if (data[0] === "config.changed") py.configurationChanged();
         if (data[0] === "basemap.changed") py.basemapChanged();
