@@ -45,7 +45,6 @@
 #include "commander.h"
 #include "dbusservice.h"
 #include "navigator.h"
-#include "navigatordbusadapter.h"
 #include "positionsource.h"
 #include "screensaverinhibitor.h"
 #include "util.h"
