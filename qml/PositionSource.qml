@@ -68,6 +68,6 @@ PM.PositionSource {
         if (testingMode)
             testingCoordinate = Qt.binding(function() { return map.center; });
         else
-            testingCoordinate = map.center; // break binding
+            testingCoordinate = QtPositioning.coordinate(0,0); // break binding
     }
 }
