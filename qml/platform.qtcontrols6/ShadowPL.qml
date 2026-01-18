@@ -1,0 +1,1 @@
+../platform.qt6/ShadowPL.qml
