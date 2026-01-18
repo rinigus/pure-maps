@@ -89,8 +89,6 @@ Item {
                 lines[1] = Util.siground(gps.horizontalAccuracy * 3.28084, 2);
             lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
-            values.doLayout();
-
         } else if (app.conf.units === "british") {
             labels.text = " %1\n %2".arg(app.tr("mph")).arg(app.tr("yd"))
             if (gps.speedValid)
@@ -99,8 +97,6 @@ Item {
                 lines[1] = Util.siground(gps.horizontalAccuracy * 1.09361, 2);
             lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
-            values.doLayout();
-
         } else {
             labels.text = " %1\n %2".arg(app.tr("km/h")).arg(app.tr("m"))
             if (gps.speedValid)
@@ -109,9 +105,8 @@ Item {
                 lines[1] = Util.siground(gps.horizontalAccuracy, 2);
             lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
-            values.doLayout();
-
         }
+        values.doLayout();
     }
 
 }

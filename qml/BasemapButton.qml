@@ -17,7 +17,6 @@
  */
 
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
 import "platform"
 
 import "js/util.js" as Util
@@ -88,12 +87,7 @@ MouseArea {
         color: styler.itemBg
         height: flick.height + 2*styler.themePaddingLarge
         layer.enabled: true
-        layer.effect: DropShadow {
-            color: styler.shadowColor
-            opacity: styler.shadowOpacity
-            radius: styler.shadowRadius
-            samples: 1 + radius*2
-        }
+        layer.effect: ShadowPL { }
         radius: styler.radius
         visible: openMenu
         width: flick.width + 2*styler.themePaddingLarge
