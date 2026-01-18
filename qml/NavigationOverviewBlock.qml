@@ -378,7 +378,7 @@ Item {
             height: parent.height
             opacity: 0.75
             radius: height / 2
-            width: app.navigator.progress * progressTotal.width
+            width: app.navigator ? app.navigator.progress * progressTotal.width : 0
         }
     }
 
