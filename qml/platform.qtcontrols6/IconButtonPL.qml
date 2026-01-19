@@ -16,10 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.11
-import QtQuick.Controls 2.4
+import QtQuick
+import QtQuick.Controls
 // for IconImage, see https://bugreports.qt.io/browse/QTBUG-66829
-import QtQuick.Controls.impl 2.4
+import QtQuick.Controls.impl
 
 Item {
     id: item
