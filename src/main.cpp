@@ -183,6 +183,14 @@ int main(int argc, char *argv[])
   rootContext->setContextProperty("defaultFontProvider", DEFAULT_FONTPROVIDER);
   rootContext->setContextProperty("dataDirectory", DATA_DIR);
 
+  rootContext->setContextProperty("qtMajorVersion",
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+                                  6
+#else
+                                  5
+#endif
+                                  );
+
   // ////////////////////////////
   // register QML types
 #ifdef INTERNAL_CLIPBOARD
