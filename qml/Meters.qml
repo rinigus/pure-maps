@@ -106,7 +106,9 @@ Item {
             lines[1] = "\u2300 %1".arg(lines[1]);
             values.text = lines.join("\n");
         }
-        values.doLayout();
+        if (qtMajorVersion === 5) {
+            values.doLayout();
+        }
     }
 
 }

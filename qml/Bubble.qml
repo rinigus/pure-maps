@@ -184,6 +184,6 @@ Rectangle {
         }
     }
 
-    onWidthChanged: label.doLayout();
+    onWidthChanged: if (qtMajorVersion === 5) { label.doLayout(); }
 
 }
