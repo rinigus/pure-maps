@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick.Controls 2.2 as Controls
+import QtQuick.Controls as Controls
 
 Controls.Menu {
 }
