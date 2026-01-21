@@ -42,7 +42,7 @@ Item {
     ItemDelegate {
         id: item
 
-        height: contentHeight
+        height: main.contentHeight
         width: parent.width
 
         MouseArea {
