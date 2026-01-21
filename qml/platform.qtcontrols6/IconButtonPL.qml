@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018 Rinigus
+ * Copyright (C) 2018-2026 Rinigus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,58 +18,36 @@
 
 import QtQuick
 import QtQuick.Controls
-// for IconImage, see https://bugreports.qt.io/browse/QTBUG-66829
-import QtQuick.Controls.impl
 
-Item {
+RoundButton {
     id: item
-    height: (iconName ? iconimage.height : image.height)*(1 + padding)
-    width: (iconName ? iconimage.width : image.width)*(1 + padding)
+
+    background: Rectangle {
+        color: item.down ? styler.themePrimaryColor : "transparent"
+        opacity: 0.2
+        radius: width / 2
+    }
+    display: AbstractButton.IconOnly
+    flat: true
+    height: Math.max(iconHeight, iconWidth) * (1 + padding)
+    padding: 0.5
+    opacity: iconOpacity
+    //rotation: iconRotation
+    width: height
+
+    icon {
+        color: iconColorize ? styler.themeHighlightColor : "transparent"
+        height: iconHeight
+        name: iconName
+        source: iconSource
+        width: iconWidth
+    }
 
     property bool   iconColorize: true
     property int    iconHeight: 0
-    property alias  iconName: iconimage.name
+    property var    iconName
     property real   iconOpacity: 1.0
     property real   iconRotation
-    property alias  iconSource: image.source
+    property var    iconSource
     property int    iconWidth: 0
-    property real   padding: 0.5
-    property alias  pressed: mouse.pressed
-
-    signal clicked
-
-    IconImage {
-        id: iconimage
-        anchors.centerIn: parent
-        color: iconColorize ? styler.themeHighlightColor : "transparent"
-        opacity: iconOpacity
-        rotation: iconRotation
-        smooth: false
-        sourceSize.height: iconHeight
-        sourceSize.width: iconWidth
-        visible: name
-    }
-
-    Image {
-        id: image
-        anchors.centerIn: parent
-        fillMode: Image.PreserveAspectFit
-        opacity: iconOpacity
-        rotation: iconRotation
-        sourceSize.height: iconHeight
-        sourceSize.width: iconWidth
-        visible: source && !iconName
-    }
-
-    Rectangle {
-        anchors.fill: parent
-        color: mouse.pressed ? styler.themePrimaryColor : "transparent"
-        opacity: 0.2
-    }
-
-    MouseArea {
-        id: mouse
-        anchors.fill: parent
-        onClicked: item.clicked()
-    }
 }

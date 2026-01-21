@@ -39,7 +39,6 @@ Item {
             anchors.horizontalCenter: item.horizontalCenter
             anchors.top: item.top
             anchors.topMargin: styler.themePaddingLarge
-            fillMode: Image.PreserveAspectFit
             height: styler.themeItemSizeSmall
         }
 
