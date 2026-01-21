@@ -1,6 +1,6 @@
 /* -*- coding: utf-8-unix -*-
  *
- * Copyright (C) 2018-2019 Rinigus, 2019 Purism SPC
+ * Copyright (C) 2018-2026 Rinigus, 2019 Purism SPC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,22 +17,9 @@
  */
 
 import QtQuick
-import QtQuick.Controls
-// for IconImage, see https://bugreports.qt.io/browse/QTBUG-66829
-import QtQuick.Controls.impl
 
-IconImage {
-    id: image
+import "."
 
-    color: iconColorize ? styler.themeHighlightColor : "transparent"
-    name: iconName
-    source: iconSource
-    sourceSize.height: iconHeight
-    sourceSize.width: iconWidth
-
-    property bool   iconColorize: true
-    property int    iconHeight: 0
-    property string iconName
-    property string iconSource
-    property int    iconWidth: 0
+IconButtonPL {
+    enabled: false
 }
