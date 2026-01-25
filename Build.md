@@ -10,7 +10,6 @@ In addition to general QML development packages, the following specific dependen
 
 * [PyOtherSide](https://github.com/thp/pyotherside)
 * [PyXDG](https://www.freedesktop.org/wiki/Software/pyxdg/)
-* [Mapbox GL Native (Qt fork)](https://github.com/rinigus/pkg-mapbox-gl-native)
 * [MapLibre Native Qt](https://github.com/maplibre/maplibre-native-qt)
 * [Mapbox GL QML](https://github.com/rinigus/mapbox-gl-qml)
 * [GPXPy](https://github.com/tkrajina/gpxpy) (available as submodule)
