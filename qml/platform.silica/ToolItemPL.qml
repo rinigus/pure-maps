@@ -32,7 +32,6 @@ BackgroundItem {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: styler.themePaddingLarge
-        fillMode: Image.PreserveAspectFit
     }
 
     Label {

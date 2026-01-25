@@ -88,7 +88,6 @@ PagePL {
                 anchors.left: parent.left
                 anchors.leftMargin: styler.themeHorizontalPageMargin
                 anchors.verticalCenter: label.verticalCenter
-                fillMode: Image.PreserveAspectFit
                 height: styler.themeItemSizeSmall*0.8
                 iconName: styler.iconProfile
             }
