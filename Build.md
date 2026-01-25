@@ -10,7 +10,7 @@ In addition to general QML development packages, the following specific dependen
 
 * [PyOtherSide](https://github.com/thp/pyotherside)
 * [PyXDG](https://www.freedesktop.org/wiki/Software/pyxdg/)
-* [Mapbox GL Native (Qt fork)](https://github.com/rinigus/pkg-mapbox-gl-native) or [MapLibre Native Qt](https://github.com/maplibre/maplibre-native-qt)
+* [MapLibre Native Qt](https://github.com/maplibre/maplibre-native-qt)
 * [Mapbox GL QML](https://github.com/rinigus/mapbox-gl-qml)
 * [GPXPy](https://github.com/tkrajina/gpxpy) (available as submodule)
 * [S2 Geometry Library](https://github.com/google/s2geometry)
@@ -26,7 +26,7 @@ In addition to general QML development packages, the following specific dependen
 sudo apt update
 sudo apt install -y git build-essential cmake ninja-build pkg-config \
     qt5-qmake libqt5core5a libqt5dbus5 qtbase5-dev qtdeclarative5-dev \
-    python3 python3-pip python3-setuptools \
+    python3 python3-pip python3-setuptools python3-xdg \
     libpcre2-dev libasound2-dev libssl-dev \
     libtool automake autoconf libxml2-dev libxslt1-dev \
     libgeoip-dev libgl1-mesa-dev libgles2-mesa-dev \
@@ -43,12 +43,11 @@ sudo apt install -y git build-essential cmake ninja-build pkg-config \
 ### Abseil
 
 ```bash
-git clone https://github.com/abseil/abseil-cpp.git
+git clone https://github.com/abseil/abseil-cpp.git -b lts_2024_07_22
 cd abseil-cpp
-git checkout 4447c7562e3bc702ade25105912dce503f0c4010
 mkdir build && cd build
 cmake -DBUILD_SHARED_LIBS=ON -G Ninja ..
-ninja
+ninja -j$(nproc)
 sudo ninja install
 cd ../..
 ```
@@ -56,12 +55,11 @@ cd ../..
 ### S2Geometry
 
 ```bash
-git clone https://github.com/google/s2geometry.git
+git clone --depth 1 https://github.com/google/s2geometry.git -b v0.12.0
 cd s2geometry
-git checkout 713f9c27fed3085cc8dcf18a9d664c39227a0c45
 mkdir build && cd build
 cmake -DBUILD_SHARED_LIBS=ON -DBUILD_PYTHON=OFF -DBUILD_TESTS=OFF -G Ninja ..
-ninja
+ninja -j$(nproc)
 sudo ninja install
 cd ../..
 ```
@@ -73,7 +71,7 @@ wget https://github.com/sailfishos/nemo-qml-plugin-dbus/archive/refs/tags/2.1.27
 tar -xzvf 2.1.27.tar.gz
 cd nemo-qml-plugin-dbus-2.1.27
 qmake
-make
+make -j$(nproc)
 sudo make install
 cd ..
 ```
@@ -85,29 +83,20 @@ wget https://github.com/thp/pyotherside/archive/1.5.9.tar.gz
 tar -xzvf 1.5.9.tar.gz
 cd pyotherside-1.5.9
 qmake
-make
+make -j$(nproc)
 sudo make install
 cd ..
-```
-
-### PyXDG
-
-```bash
-pip3 install pyxdg
 ```
 
 ### MapLibre GL Native Qt
 
 ```bash
-git clone https://github.com/maplibre/maplibre-native-qt.git
+git clone --depth 1 --shallow-submodules --recurse-submodules --jobs 8 -b v3.0.0 https://github.com/maplibre/maplibre-native-qt.git
 cd maplibre-native-qt
-git checkout d929c783737120787b43417d9ef05da88da75dfd
-git submodule update --init --recursive
-sed -i 's/add_subdirectory(test)/#add_subdirectory(test)/' CMakeLists.txt
 mkdir build && cd build
 cmake -DMLN_QT_WITH_WIDGETS=OFF -DMLN_QT_WITH_LOCATION=OFF \
       -DMLN_QT_WITH_INTERNAL_ICU=ON -DMLN_WITH_WERROR=OFF -G Ninja ..
-ninja
+ninja -j$(nproc)
 sudo ninja install
 cd ../..
 ```
@@ -115,12 +104,11 @@ cd ../..
 ### Mapbox GL QML
 
 ```bash
-git clone https://github.com/rinigus/mapbox-gl-qml.git
+git clone --depth 1 https://github.com/rinigus/mapbox-gl-qml.git -b 3.0.0
 cd mapbox-gl-qml
-git checkout 7cb85afbf26369db3698ff34af84436cb0d897e7
 mkdir build && cd build
-cmake -DQT_INSTALL_QML=/usr/lib/qml -G Ninja ..
-ninja
+cmake -DQT_INSTALL_QML=$(qmake -query QT_INSTALL_QML) -G Ninja ..
+ninja -j$(nproc)
 sudo ninja install
 cd ../..
 ```
@@ -128,24 +116,11 @@ cd ../..
 ### Mimic1 (TTS Engine)
 
 ```bash
-git clone https://github.com/MycroftAI/mimic1.git
+git clone --depth 1 https://github.com/MycroftAI/mimic1.git
 cd mimic1
-git checkout eba879c6e4ece50ca6de9b4966f2918ed89148bd
 ./autogen.sh
 ./configure --with-audio=none
-make
-sudo make install
-cd ..
-```
-
-### Libpopt
-
-```bash
-wget https://ftp.osuosl.org/pub/rpm/popt/releases/popt-1.x/popt-1.19.tar.gz
-tar -xzvf popt-1.19.tar.gz
-cd popt-1.19
-./configure
-make
+make -j$(nproc)
 sudo make install
 cd ..
 ```
@@ -153,13 +128,12 @@ cd ..
 ### PicoTTS
 
 ```bash
-git clone https://github.com/ihuguet/picotts.git
+git clone --depth 1 https://github.com/ihuguet/picotts.git
 cd picotts
-git checkout 21089d223e177ba3cb7e385db8613a093dff74b5
 cd pico
 ./autogen.sh
 ./configure --prefix=/usr
-make
+make -j$(nproc)
 sudo make install
 cd ../../
 ```
@@ -169,17 +143,16 @@ cd ../../
 ## Build PureMaps
 
 ```bash
-git clone https://github.com/rinigus/pure-maps.git
+git clone --recursive https://github.com/rinigus/pure-maps.git
 cd pure-maps
-git checkout b594d2f5c480686a2b7df15eb565df3c2f51adff
-git submodule update --init --recursive
+# to get current flatpak version: git checkout 3.4.2
 cp poor/apikeys.py tools/apikeys.py
 mkdir build && cd build
 cmake -DFLAVOR=kirigami -DAPP_NAME=pure-maps \
       -DUSE_BUNDLED_GPXPY=ON -DMAPMATCHING_CHECK_RUNTIME=OFF \
-      -DMAPMATCHING_AVAILABLE=ON -DUSE_BUNDLED_GEOCLUE2=ON ..
-make
-sudo make install
+      -DMAPMATCHING_AVAILABLE=ON -DUSE_BUNDLED_GEOCLUE2=ON -G Ninja ..
+ninja -j$(nproc)
+sudo ninja install
 ```
 
 ---
@@ -187,12 +160,13 @@ sudo make install
 ## Notes on Build Options
 
 * To **run without installing**, add `-DRUN_FROM_SOURCE=ON` and avoid using `make install`.
-* Platform can be specified using `-DFLAVOR=`:
+* GUI Platform can be specified using `-DFLAVOR=`:
 
-  * `kirigami`
-  * `qtcontrols`
-  * `silica`
-  * `uuitk`
+    * `silica` – Recommended for **Sailfish OS**
+    * `kirigami` – Use on **KDE Plasma** systems or other environments where a responsive Qt/KDE-style UI is desired
+    * `qtcontrols` – Use on **generic Qt platforms**
+    * `uuitk` – Use when targeting **Ubuntu Touch / Lomiri–based systems**
+
 * Recommended: use an out-of-source build with a separate `build/` directory.
 
 ---
@@ -210,16 +184,6 @@ cmake -DDEFAULT_PROFILE=online \
 ```
 
 Each provider refers to its corresponding JSON or Python configuration file in PureMaps.
-
----
-
-## Environment Setup
-
-```bash
-echo 'export QT_PLUGIN_PATH=/usr/local/qml' >> ~/.bashrc
-echo 'export QML2_IMPORT_PATH=/usr/lib/qml' >> ~/.bashrc
-source ~/.bashrc
-```
 
 ---
 
