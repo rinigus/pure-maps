@@ -1,0 +1,25 @@
+From a43eb157e312f3b0294ceddf943aacfdd21a6202 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Sun, 20 Oct 2024 16:07:02 +0300
+Subject: [PATCH] [SFOS] Fix type error
+
+---
+ src/core/map.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/map.cpp b/src/core/map.cpp
+index d8e6abd..a979dac 100644
+--- a/src/core/map.cpp
++++ b/src/core/map.cpp
+@@ -1070,7 +1070,7 @@ QPointF Map::pixelForCoordinate(const Coordinate &coordinate) const {
+     const mbgl::ScreenCoordinate pixel = d_ptr->mapObj->pixelForLatLng(
+         mbgl::LatLng{coordinate.first, coordinate.second});
+ 
+-    return {pixel.x, pixel.y};
++    return {(qreal)pixel.x, (qreal)pixel.y};
+ }
+ 
+ /*!
+-- 
+2.45.2
+

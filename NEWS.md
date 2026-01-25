@@ -1,10 +1,19 @@
-2024-08-18: Pure Maps 3.4.2
+2026-01-08: Pure Maps 3.5.0
+===========================
+
+* Add support for HERE v3 API maps
+* [ubuntu touch] Add unconfined click build config [jonnius]
+* [ubuntu touch] Fix non-sense output via PicoTTS [jonnius]
+* [ubuntu touch] Append Ubuntu Touch framework to click versions [jonnius]
+
+
+2025-11-29: Pure Maps 3.4.2
 ===========================
 
 * Update MapTiler maps [junocomp]
 * Fix Stadia API [vetzki]
 
-2024-08-18: Pure Maps 3.4.1
+2025-08-18: Pure Maps 3.4.1
 ===========================
 
 * Update translations
