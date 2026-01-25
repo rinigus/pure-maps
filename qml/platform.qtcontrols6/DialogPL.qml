@@ -29,7 +29,6 @@ PagePL {
 
     property var    acceptDestination
     property bool   acceptDestinationPop: false
-    property string acceptText: app.tr("Accept")
     property alias  canAccept: page.canNavigateForward
     property bool   isDialog: true
 

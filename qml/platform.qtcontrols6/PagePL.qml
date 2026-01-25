@@ -29,7 +29,7 @@ Page {
     width: parent ? parent.width : undefined
 
     property string        acceptIconName
-    property string        acceptText
+    property string        acceptText: app.tr("Accept")
     property bool          canNavigateForward: true
     default property alias content: itemCont.data
     readonly property bool empty: false
