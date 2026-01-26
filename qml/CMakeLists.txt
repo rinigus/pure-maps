@@ -38,8 +38,8 @@ add_custom_command(
 )
 
 add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/platform/qmldir
-    COMMAND ${GENERATE_QMLDIR_SCRIPT} ${CMAKE_CURRENT_SOURCE_DIR}/platform pm.platform
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/platform/qmldir
+    COMMAND ${GENERATE_QMLDIR_SCRIPT} ${CMAKE_CURRENT_BINARY_DIR}/platform pm.platform
     DEPENDS ${GENERATE_QMLDIR_SCRIPT} ${_PLATFORM_FILES} 
     COMMENT "Generating qmldir for module pm.platform"
 )
@@ -47,7 +47,7 @@ add_custom_command(
 add_custom_target(generate_qmldir ALL
     DEPENDS
     ${CMAKE_CURRENT_SOURCE_DIR}/qmldir 
-    ${CMAKE_CURRENT_SOURCE_DIR}/platform/qmldir)
+    ${CMAKE_CURRENT_BINARY_DIR}/platform/qmldir)
 
 # no installation is needed if we run from source dir
 if (RUN_FROM_SOURCE)
@@ -63,7 +63,7 @@ if(QT_VERSION_MAJOR EQUAL 5)
         DESTINATION ${DATADIR}/pm/platform)
     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/qmldir
         DESTINATION ${DATADIR}/pm)
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/platform/qmldir
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/platform/qmldir
         DESTINATION ${DATADIR}/pm/platform)
 else()
     # include QML into executable
