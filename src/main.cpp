@@ -214,7 +214,7 @@ int main(int argc, char *argv[])
 #ifdef IS_SAILFISH_OS
   if (v)
     {
-      v->engine.addImportPath(DEFAULT_DATA_PREFIX);
+      v->engine()->addImportPath(DEFAULT_DATA_PREFIX);
       v->setSource(SailfishApp::pathTo("pm/Main.qml"));
       v->show();
     }
