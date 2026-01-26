@@ -214,17 +214,15 @@ int main(int argc, char *argv[])
 #ifdef IS_SAILFISH_OS
   if (v)
     {
-      v->setSource(SailfishApp::pathTo("qml/Main.qml"));
+      v->engine.addImportPath(DEFAULT_DATA_PREFIX);
+      v->setSource(SailfishApp::pathTo("pm/Main.qml"));
       v->show();
     }
 #endif
 #ifdef IS_QTCONTROLS_QT
-
-#if defined(RUN_FROM_SOURCE) || (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
-  engine.load(DEFAULT_DATA_PREFIX "qml/Main.qml");
-#else
+  engine.addImportPath(DEFAULT_DATA_PREFIX);
   engine.loadFromModule("pm", "Main");
-#endif
+
   if (engine.rootObjects().isEmpty())
     {
       std::cerr << "Error loading QML\n";

@@ -1,7 +1,3 @@
-if (RUN_FROM_SOURCE)
-    return()
-endif()
-
 function(make_paths_relative output_var)
     set(result)
     foreach(file ${ARGN})
@@ -11,7 +7,7 @@ function(make_paths_relative output_var)
     set(${output_var} ${result} PARENT_SCOPE)
 endfunction()
 
-# We can't just install entire directories, as the kirigami flavor includes symlinked files
+# We can't just install entire directories, as platforms include symlinked files
 # To remedy this we dereference them first
 file(GLOB_RECURSE _PLATFORM_FILES platform.${FLAVOR}/*.qml)
 set(_RESOLVED_FILES "")
@@ -31,13 +27,44 @@ foreach(_FILE ${_PLATFORM_FILES})
     list(APPEND _RESOLVED_FILES ${_RESULT})
 endforeach()
 
+# Generate qmldir file for module pm and pm.platform
+set(GENERATE_QMLDIR_SCRIPT "${CMAKE_SOURCE_DIR}/tools/generate-qmldir.sh")
+
+add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/qmldir
+    COMMAND ${GENERATE_QMLDIR_SCRIPT} ${CMAKE_CURRENT_SOURCE_DIR} pm
+    DEPENDS ${GENERATE_QMLDIR_SCRIPT} ${QML_SRC}
+    COMMENT "Generating qmldir for module pm"
+)
+
+add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/platform/qmldir
+    COMMAND ${GENERATE_QMLDIR_SCRIPT} ${CMAKE_CURRENT_SOURCE_DIR}/platform pm.platform
+    DEPENDS ${GENERATE_QMLDIR_SCRIPT} ${_PLATFORM_FILES} 
+    COMMENT "Generating qmldir for module pm.platform"
+)
+
+add_custom_target(generate_qmldir ALL
+    DEPENDS
+    ${CMAKE_CURRENT_SOURCE_DIR}/qmldir 
+    ${CMAKE_CURRENT_SOURCE_DIR}/platform/qmldir)
+
+# no installation is needed if we run from source dir
+if (RUN_FROM_SOURCE)
+    return()
+endif()
+
 # load QML files from filesystem with Qt 5
 if(QT_VERSION_MAJOR EQUAL 5)
-    install(FILES ${QML_SRC} DESTINATION ${DATADIR}/qml)
-    install(FILES ${QML_JS} DESTINATION ${DATADIR}/qml/js)
-    install(DIRECTORY icons DESTINATION ${DATADIR}/qml)
+    install(FILES ${QML_SRC} DESTINATION ${DATADIR}/pm)
+    install(FILES ${QML_JS} DESTINATION ${DATADIR}/pm/js)
+    install(DIRECTORY icons DESTINATION ${DATADIR}/pm)
     install(FILES ${_RESOLVED_FILES}
-        DESTINATION ${DATADIR}/qml/platform)
+        DESTINATION ${DATADIR}/pm/platform)
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/qmldir
+        DESTINATION ${DATADIR}/pm)
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/platform/qmldir
+        DESTINATION ${DATADIR}/pm/platform)
 else()
     # include QML into executable
     make_paths_relative(QML_SRC_REL ${QML_SRC})
