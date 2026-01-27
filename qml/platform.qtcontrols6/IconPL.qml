@@ -18,7 +18,7 @@
 
 import QtQuick
 
-import "."
+import pm.platform
 
 IconButtonPL {
     enabled: false

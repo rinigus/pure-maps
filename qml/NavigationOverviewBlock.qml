@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.0
-import "platform"
-import "."
+import pm.platform
+import pm
 
 Item {
     id: block

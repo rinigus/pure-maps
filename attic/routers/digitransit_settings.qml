@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.0
-import "../qml"
-import "../qml/platform"
+import pm
+import pm.platform
 
 Column {
     id: column

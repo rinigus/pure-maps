@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import "../qml/platform"
+import pm.platform
 
 Column {
     spacing: styler.themePaddingLarge

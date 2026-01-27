@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.0
-import "."
-import "platform"
+import pm
+import pm.platform
 
 import "js/util.js" as Util
 

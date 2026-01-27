@@ -20,7 +20,7 @@ import QtQuick
 import QtQuick.Controls
 import QtCore
 import org.puremaps 1.0
-import "."
+import pm.platform
 
 ApplicationWindow {
     id: appWindow

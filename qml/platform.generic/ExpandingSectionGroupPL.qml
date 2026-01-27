@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.9
-import "."
-import ".."
+import pm.platform
+import pm
 
 Column {
     id: section

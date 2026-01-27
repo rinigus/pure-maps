@@ -214,7 +214,7 @@ components):
 ```
 import A
 import B
-import "."
+import pm
 
 import "js/util.js" as Util
 

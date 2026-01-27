@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import "platform"
+import pm.platform
 
 LabelPL {
     anchors.left: parent.left

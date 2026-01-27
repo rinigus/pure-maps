@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.2
-import "platform"
+import pm.platform
 
 Rectangle {
     id: rect

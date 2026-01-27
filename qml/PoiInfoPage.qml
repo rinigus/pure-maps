@@ -18,8 +18,8 @@
 
 import QtQuick 2.0
 import QtPositioning 5.4
-import "."
-import "platform"
+import pm
+import pm.platform
 
 PagePL {
     id: page

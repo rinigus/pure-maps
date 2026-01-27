@@ -18,8 +18,8 @@
 
 import QtQuick 2.0
 import org.puremaps 1.0
-import "."
-import "platform"
+import pm
+import pm.platform
 
 PageEmptyPL {
     id: page

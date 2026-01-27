@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.0
-import "platform"
-import "."
+import pm.platform
+import pm
 
 // This is used to show speed in follow me and navigationPost mode
 Rectangle {
