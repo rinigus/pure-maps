@@ -17,7 +17,7 @@
  */
 
 import QtQuick
-import "."
+import pm.platform
 
 // Used when accepted is called only through program
 PagePL {

@@ -19,7 +19,7 @@
 import QtQuick 2.0
 import QtPositioning 5.4
 import MapboxMap 1.0
-import "."
+import pm
 
 import "js/util.js" as Util
 

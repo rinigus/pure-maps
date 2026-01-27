@@ -3,8 +3,8 @@ Use for imports (as required)
 ```
 import QtQuick 2.0
 QtQuick.Layouts 1.1
-import "."
-import "platform"
+import pm
+import pm.platformm
 ```
 
 

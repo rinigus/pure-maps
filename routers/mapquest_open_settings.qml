@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.0
-import "../qml/platform"
-import "../qml"
+import pm.platform
+import pm
 
 FormLayoutPL {
     property bool full: true

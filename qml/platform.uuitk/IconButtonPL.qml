@@ -18,7 +18,7 @@
 
 import QtQuick 2.0
 import Lomiri.Components 1.3
-import "."
+import pm.platform
 
 Item {
     id: item

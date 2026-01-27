@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import "."
+import pm.platform
 
 PagePL {
     id: menu

@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import "."
+import pm.platform
 
 // Used when accepted is called only through program
 PagePL {

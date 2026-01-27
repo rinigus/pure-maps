@@ -17,7 +17,7 @@
  */
 
 import QtQuick
-import "."
+import pm.platform
 
 PageListPL {
     id: page

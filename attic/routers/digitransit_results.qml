@@ -17,10 +17,8 @@
  */
 
 import QtQuick 2.0
-import "../qml"
-import "../qml/platform"
-
-import "../qml/js/util.js" as Util
+import pm
+import pm.platform
 
 PagePL {
     id: page
@@ -226,6 +224,13 @@ PagePL {
     function formatLength(length) {
         // Format length in meters to human-readable format.
         return py.call_sync("poor.util.format_distance", [length]);
+    }
+
+    function appendAll(model, items) {
+    // Append all items to model.
+    // brought from util.js as it cannot be imported here
+    for (var i = 0; i < items.length; i++)
+        model.append(items[i]);
     }
 
     function populate() {

@@ -18,7 +18,7 @@
 
 import QtQuick 2.0
 import QtPositioning 5.4
-import "."
+import pm
 
 Item {
     id: marker
