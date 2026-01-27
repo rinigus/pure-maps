@@ -21,7 +21,7 @@ import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
 import org.kde.kirigami 2.5 as Kirigami
 import org.puremaps 1.0
-import pm.platform
+import pm.platform 1.0
 
 Kirigami.ApplicationWindow {
     id: appWindow

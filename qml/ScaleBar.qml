@@ -18,7 +18,7 @@
 
 import QtQuick 2.0
 import QtPositioning 5.4
-import pm.platform
+import pm.platform 1.0
 
 import "js/util.js" as Util
 

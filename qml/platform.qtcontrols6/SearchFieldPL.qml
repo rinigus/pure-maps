@@ -18,7 +18,7 @@
 
 import QtQuick
 import QtQuick.Controls
-import pm.platform
+import pm.platform 1.0
 
 TextField {
     id: field
