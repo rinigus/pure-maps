@@ -18,7 +18,7 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 1.4
-import pm.platform
+import pm.platform 1.0
 
 DialogPL {
     id: dialog

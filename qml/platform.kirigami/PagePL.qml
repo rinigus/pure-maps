@@ -20,7 +20,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.7 as Kirigami
-import pm.platform
+import pm.platform 1.0
 
 Kirigami.ScrollablePage {
     id: page

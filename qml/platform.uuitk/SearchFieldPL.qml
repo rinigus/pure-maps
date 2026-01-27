@@ -18,7 +18,7 @@
 
 import QtQuick 2.9
 import Lomiri.Components 1.3
-import pm.platform
+import pm.platform 1.0
 
 TextField {
     id: field

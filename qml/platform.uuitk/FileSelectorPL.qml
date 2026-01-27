@@ -21,7 +21,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import Lomiri.Content 1.3
-import pm.platform
+import pm.platform 1.0
 
 Page {
     id: fs

@@ -18,8 +18,8 @@
 
 import QtQuick 2.0
 import QtPositioning 5.4
-import pm
-import pm.platform
+import pm 1.0
+import pm.platform 1.0
 
 // POI information shown in a panel under the map
 Column {

@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import pm.platform
+import pm.platform 1.0
 
 StylerPL {
     id: styler
