@@ -14,8 +14,11 @@
 
 #include <deque>
 #include <memory>
+
+#ifndef Q_MOC_RUN // workaround - avoid errors by old Qt
 #include <s2/mutable_s2shape_index.h>
 #include <s2/s2polygon.h>
+#endif
 
 #include "location.h"
 #include "locationmodel.h"

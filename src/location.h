@@ -4,8 +4,10 @@
 #include <QString>
 #include <QVariantMap>
 
+#ifndef Q_MOC_RUN // workaround - avoid errors by old Qt
 #include <s2/s2point.h>
 #include <s2/s1chord_angle.h>
+#endif
 
 struct Location {
   Location() = default;
