@@ -10,16 +10,17 @@
 # Jordi, 2021
 # rinigus github, 2021
 # Anne017, 2021
+# r0g me, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 22:19+0200\n"
+"POT-Creation-Date: 2025-11-29 16:02+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Anne017, 2021\n"
-"Language-Team: French (https://www.transifex.com/rinigus/teams/89597/fr/)\n"
+"Last-Translator: r0g me, 2026\n"
+"Language-Team: French (https://app.transifex.com/rinigus/teams/89597/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -60,7 +61,7 @@ msgid "Connection timed out"
 msgstr "Délai de connexion dépassé"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:210 qml/GeocodeItem.qml:544
-#: qml/MenuPage.qml:87 qml/Navigator.qml:214 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:215 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
 #: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
@@ -68,7 +69,7 @@ msgstr "Délai de connexion dépassé"
 msgid "Current position"
 msgstr "Position actuelle"
 
-#: poor/keystore.py:57
+#: poor/keystore.py:60
 msgid ""
 "Register at <a "
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
@@ -79,7 +80,7 @@ msgstr ""
 " et créez votre propre identifiant client et vos propres clés secrètes "
 "client"
 
-#: poor/keystore.py:58
+#: poor/keystore.py:61
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
@@ -88,7 +89,7 @@ msgstr ""
 "href=\"https://www.mapbox.com\">https://www.mapbox.com</a> et créez votre "
 "propre clé API"
 
-#: poor/keystore.py:59
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
@@ -96,7 +97,7 @@ msgstr ""
 "Inscrivez-vous sur <a href=\"https://maptiler.com\">https://maptiler.com</a>"
 " et créez votre propre clé API"
 
-#: poor/keystore.py:60
+#: poor/keystore.py:63
 msgid ""
 "Register at <a "
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
@@ -106,7 +107,7 @@ msgstr ""
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
 "et créez votre propre clé API"
 
-#: poor/keystore.py:61
+#: poor/keystore.py:64
 msgid ""
 "Register at <a "
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
@@ -116,7 +117,7 @@ msgstr ""
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> et créez "
 "votre propre clé API"
 
-#: poor/keystore.py:62
+#: poor/keystore.py:65
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
@@ -125,7 +126,7 @@ msgstr ""
 "href=\"https://stadiamaps.com\">https://stadiamaps.com</a> et créez votre "
 "propre clé API"
 
-#: poor/keystore.py:63
+#: poor/keystore.py:66
 msgid ""
 "Register at <a "
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
@@ -136,38 +137,51 @@ msgstr ""
 "votre propre clé API"
 
 #: poor/keystore.py:67
+msgid ""
+"Register at <a href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a>"
+" and create your own App API Key"
+msgstr ""
+"Enregistrez vous sur <a "
+"href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a> et créez votre"
+" propre clé API d'application"
+
+#: poor/keystore.py:71
 msgid "Foursquare Client ID"
 msgstr "ID Client Foursquare"
 
-#: poor/keystore.py:68
+#: poor/keystore.py:72
 msgid "Foursquare Client Secret"
 msgstr "Secret Client Foursquare"
 
-#: poor/keystore.py:71
+#: poor/keystore.py:75
 msgid "Mapbox API key"
 msgstr "Clé API Mapbox"
 
-#: poor/keystore.py:74
+#: poor/keystore.py:78
 msgid "MapTiler API key"
 msgstr "Clé API de MapTiler"
 
-#: poor/keystore.py:77
+#: poor/keystore.py:81
 msgid "MapQuest API key"
 msgstr "Clé API MapQuest"
 
-#: poor/keystore.py:80
+#: poor/keystore.py:84
 msgid "OpenCage API key"
 msgstr "Clé API OpenCage"
 
-#: poor/keystore.py:83
+#: poor/keystore.py:87
 msgid "Stadia Maps API key"
 msgstr "Clé API Stadia Maps"
 
-#: poor/keystore.py:86
+#: poor/keystore.py:90
 msgid "HERE API Key"
 msgstr "Clé API de HERE"
 
-#: poor/keystore.py:94
+#: poor/keystore.py:93
+msgid "Ordnance Survey API Key"
+msgstr ""
+
+#: poor/keystore.py:101
 #, python-brace-format
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE "
@@ -187,7 +201,7 @@ msgid ""
 " later by accepting the terms in Preferences under Licenses.</p>"
 msgstr ""
 
-#: poor/keystore.py:109
+#: poor/keystore.py:116
 msgid "HERE End-User Terms"
 msgstr "Conditions d'utilisation de HERE"
 
@@ -291,11 +305,11 @@ msgstr "{:d} h {:d} min"
 
 #: poor/util.py:383
 msgid "API key missing"
-msgstr ""
+msgstr "Clé API manquante"
 
 #: poor/util.py:385
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 #: routers/here.py:319
 #, python-brace-format
@@ -713,8 +727,8 @@ msgstr "Résultats (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Points d'intérêt (%1)"
 
-#: qml/GeocodeItem.qml:484 qml/Navigator.qml:301 qml/Navigator.qml:303
-#: qml/PoiBlock.qml:407 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/GeocodeItem.qml:484 qml/Navigator.qml:302 qml/Navigator.qml:304
+#: qml/PoiBlock.qml:411 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Emplacement sans nom"
@@ -773,7 +787,7 @@ msgstr ""
 
 #: qml/InitPage.qml:88
 msgid "Pure Maps at Jolla Store"
-msgstr ""
+msgstr "Pure Maps sur Jolla Store"
 
 #: qml/InitPage.qml:89
 msgid ""
@@ -823,6 +837,12 @@ msgid ""
 "href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
 "manual</a> for details."
 msgstr ""
+"Vous utilisez un profil hors-ligne. Assurez vous que le serveur OSM Scout "
+"soit installé et executé. Selon votre système, il est disponible via les "
+"stores d'application (Chum pour Sailfish OS, OpenStore pour Ubuntu Touch), "
+"via Flathub ou intégré à votre distribution. Voir <a "
+"href=\"https://rinigus.github.io/osmscout-server\"></a> pour plus de "
+"détails."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -854,7 +874,7 @@ msgstr "HERE - En ligne"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE (disabled, API key missing)"
-msgstr ""
+msgstr "HERE (désactivé, clé API manquante)"
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
@@ -864,12 +884,12 @@ msgstr "Les deux"
 msgid "Stop navigation to select POI"
 msgstr "Arrêter la navigation vers le point d'intérêt sélectionné"
 
-#: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
+#: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:258
 #: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Départ"
 
-#: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
+#: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:278
 msgid "Final destination"
 msgstr "Destination"
 
@@ -992,7 +1012,7 @@ msgstr "État"
 msgid "Estimated time of arrival"
 msgstr "Arrivée estimée"
 
-#: qml/NavigationPage.qml:161 qml/Navigator.qml:89
+#: qml/NavigationPage.qml:161 qml/Navigator.qml:90
 msgid "Destination reached"
 msgstr "Destination atteinte"
 
@@ -1038,19 +1058,19 @@ msgstr "Manœuvres "
 msgid "EXIT"
 msgstr "QUITTER"
 
-#: qml/Navigator.qml:81
+#: qml/Navigator.qml:82
 msgid "Destination %1 reached"
 msgstr "Destination %1 atteinte"
 
-#: qml/Navigator.qml:82
+#: qml/Navigator.qml:83
 msgid "Waypoint %1 reached"
 msgstr "Point de passage %1 atteint"
 
-#: qml/Navigator.qml:151
+#: qml/Navigator.qml:152
 msgid "Voice navigation on"
 msgstr "Instructions vocales activées"
 
-#: qml/Navigator.qml:156
+#: qml/Navigator.qml:157
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
@@ -1058,43 +1078,43 @@ msgstr ""
 "Navigation vocale indisponible : moteur Text-to-Speech (TTS) manquant pour "
 "la langue sélectionnée"
 
-#: qml/Navigator.qml:207
+#: qml/Navigator.qml:208
 msgid "Routing failed: current position not known"
 msgstr "Échec du routage : position actuelle inconnue"
 
-#: qml/Navigator.qml:213
+#: qml/Navigator.qml:214
 msgid "Rerouting position"
 msgstr "Position de déroutement"
 
-#: qml/Navigator.qml:221
+#: qml/Navigator.qml:222
 msgid "Routing"
 msgstr "Routage"
 
-#: qml/Navigator.qml:232
+#: qml/Navigator.qml:233
 msgid "Routing failed: %1"
 msgstr "Échec du routage : %1"
 
-#: qml/Navigator.qml:237 src/navigator.cpp:1099
+#: qml/Navigator.qml:238 src/navigator.cpp:1099
 msgid "Traffic and route updated"
 msgstr ""
 
-#: qml/Navigator.qml:237 src/navigator.cpp:1096
+#: qml/Navigator.qml:238 src/navigator.cpp:1096
 msgid "New route found"
 msgstr "Nouvel itinéraire trouvé"
 
-#: qml/Navigator.qml:238
+#: qml/Navigator.qml:239
 msgid "Route found"
 msgstr "Itinéraire trouvé"
 
-#: qml/Navigator.qml:249 src/navigator.cpp:1098
+#: qml/Navigator.qml:250 src/navigator.cpp:1098
 msgid "Routing failed"
 msgstr "Échec du routage"
 
-#: qml/Navigator.qml:281
+#: qml/Navigator.qml:282
 msgid "Updating traffic"
 msgstr ""
 
-#: qml/Navigator.qml:281 src/navigator.cpp:1097
+#: qml/Navigator.qml:282 src/navigator.cpp:1097
 msgid "Rerouting"
 msgstr "Déroutement"
 
@@ -1203,35 +1223,35 @@ msgstr "Texte"
 msgid "More info: %1"
 msgstr "Plus d'info : %1"
 
-#: qml/PoiBlock.qml:233
+#: qml/PoiBlock.qml:237
 msgid "Set as or Replace"
 msgstr "Définir en tant que ou remplacer"
 
-#: qml/PoiBlock.qml:233
+#: qml/PoiBlock.qml:237
 msgid "Set as"
 msgstr "Définir en tant que"
 
-#: qml/PoiBlock.qml:293
+#: qml/PoiBlock.qml:297
 msgid "Insert as"
 msgstr "Insérer en tant que"
 
-#: qml/PoiBlock.qml:298
+#: qml/PoiBlock.qml:302
 msgid "New origin"
 msgstr "Nouveau point de départ"
 
-#: qml/PoiBlock.qml:311
+#: qml/PoiBlock.qml:315
 msgid "New final destination"
 msgstr "Nouvelle destination finale"
 
-#: qml/PoiBlock.qml:323
+#: qml/PoiBlock.qml:327
 msgid "First intermediate destination"
 msgstr "Première destination intermédiaire"
 
-#: qml/PoiBlock.qml:336
+#: qml/PoiBlock.qml:340
 msgid "Last intermediate destination"
 msgstr "Dernière destination intermédiaire"
 
-#: qml/PoiBlock.qml:337
+#: qml/PoiBlock.qml:341
 msgid "Intermediate destination"
 msgstr "Destination intermédiaire"
 
@@ -1402,7 +1422,7 @@ msgstr "locale"
 
 #: qml/PreferencesPage.qml:64
 msgid "International"
-msgstr ""
+msgstr "International"
 
 #: qml/PreferencesPage.qml:65
 msgid "Arabic"
@@ -1831,27 +1851,27 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:599
 msgid "Disabled"
-msgstr ""
+msgstr "Désactivé"
 
 #: qml/PreferencesPage.qml:600
 msgid "10 minutes"
-msgstr ""
+msgstr "10 minutes"
 
 #: qml/PreferencesPage.qml:601
 msgid "20 minutes"
-msgstr ""
+msgstr "20 minutes"
 
 #: qml/PreferencesPage.qml:602
 msgid "30 minutes"
-msgstr ""
+msgstr "30 minutes"
 
 #: qml/PreferencesPage.qml:603
 msgid "45 minutes"
-msgstr ""
+msgstr "45 minutes"
 
 #: qml/PreferencesPage.qml:604
 msgid "60 minutes"
-msgstr ""
+msgstr "60 minutes"
 
 #: qml/PreferencesPage.qml:630
 msgid ""
@@ -2970,15 +2990,15 @@ msgstr "Transferts"
 msgid "Alternatives"
 msgstr "Alternatives"
 
-#: src/cmdlineparser.cpp:18
+#: src/cmdlineparser.cpp:20
 msgid "Displays help on commandline options."
 msgstr "Affiche l'aide sur les options de la ligne de commande."
 
-#: src/cmdlineparser.cpp:20
+#: src/cmdlineparser.cpp:22
 msgid "Displays version information."
 msgstr "Affiche les informations de la version."
 
-#: src/cmdlineparser.cpp:23
+#: src/cmdlineparser.cpp:25
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
 "Affiche l'emplacement donné par geo:latitude,longitude URI ou effectue une "
@@ -3028,75 +3048,75 @@ msgstr "Démarrage de la navigation"
 
 #: src/navigator.cpp:1100
 msgid "Position imprecise"
-msgstr ""
+msgstr "Position imprécise"
 
 #: src/navigator.cpp:1102
 msgid "Position available"
-msgstr ""
+msgstr "Position disponible"
 
-#: standard input:1
+#: ⁨standard input⁩:1
 msgid "Search in Finland. Supports autocomplete"
 msgstr "Recherche en Finlande. Prise en charge de la saisie automatique"
 
-#: standard input:2
+#: ⁨standard input⁩:2
 msgid "Search based on HERE data. Supports autocomplete"
 msgstr "Recherche basée sur les données HERE. Supporte l'autocomplétion."
 
-#: standard input:3
+#: ⁨standard input⁩:3
 msgid "Search based on open data sources"
 msgstr "Recherche basée sur des données open source"
 
-#: standard input:4
+#: ⁨standard input⁩:4
 msgid "Search based on open data sources. Supports autocomplete"
 msgstr ""
 "Recherche basée sur des sources de données ouvertes. Prise en charge de "
 "l'auto-complétion."
 
-#: standard input:5
+#: ⁨standard input⁩:5
 msgid "Search based on OpenStreetMap data. Supports autocomplete"
 msgstr ""
 "Recherche basée sur des données OpenStreetMap. Prise en charge de l'auto-"
 "complétion."
 
-#: standard input:6
+#: ⁨standard input⁩:6
 msgid "Venues listed and reviewed by Foursquare users"
 msgstr "Lieux classés et commentés par les utilisateurs Foursquare"
 
-#: standard input:7 standard input:8
+#: ⁨standard input⁩:7
 msgid "Points of interest from OpenStreetMap data"
 msgstr "Points d’intérêt issus de données OpenStreetmap"
 
-#: standard input:9
+#: ⁨standard input⁩:8
 msgid "Routing along GPX track"
 msgstr "Routage avec le traqueur GPX"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:20 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:19 ⁨standard input⁩:21
 msgid "car"
 msgstr "voiture"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:21
 msgid "bicycle"
 msgstr "vélo"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:21
 msgid "foot"
 msgstr "piéton"
 
-#: standard input:11
+#: ⁨standard input⁩:10
 msgid "Routing along GPX track processed by OSM Scout Server"
 msgstr "Routage avec le traqueur GPX, propulsé par OSM Scout Server"
 
-#: standard input:13
+#: ⁨standard input⁩:12
 msgid "Routing by HERE"
 msgstr "Routage par HERE"
 
-#: standard input:15 standard input:17 standard input:19
+#: ⁨standard input⁩:14 ⁨standard input⁩:16 ⁨standard input⁩:18
 msgid "Routing based on OpenStreetMap data"
 msgstr "Itinéraires basés sur des données OpenStreetMap"
 
-#: standard input:21
+#: ⁨standard input⁩:20
 msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr "Routage par Valhalla basé sur les données OpenStreetMap"

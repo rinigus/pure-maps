@@ -7,16 +7,17 @@
 # JR Fi <juho@reivo.fi>, 2021
 # rinigus github, 2021
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2023
+# Elmeri Länsiharju, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 22:19+0200\n"
+"POT-Creation-Date: 2025-11-29 16:02+0200\n"
 "PO-Revision-Date: 2018-08-22 13:49+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>, 2023\n"
-"Language-Team: Finnish (https://www.transifex.com/rinigus/teams/89597/fi/)\n"
+"Last-Translator: Elmeri Länsiharju, 2026\n"
+"Language-Team: Finnish (https://app.transifex.com/rinigus/teams/89597/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -57,7 +58,7 @@ msgid "Connection timed out"
 msgstr "Yhteys aikakatkaistiin"
 
 #: poor/history.py:33 qml/GeocodeItem.qml:210 qml/GeocodeItem.qml:544
-#: qml/MenuPage.qml:87 qml/Navigator.qml:214 qml/NearbyPage.qml:30
+#: qml/MenuPage.qml:87 qml/Navigator.qml:215 qml/NearbyPage.qml:30
 #: qml/NearbyPage.qml:161 qml/NearbyPage.qml:176 qml/RoutePage.qml:40
 #: qml/RoutePage.qml:42 qml/RoutePage.qml:102 qml/RoutePage.qml:461
 #: qml/RoutePage.qml:466 qml/RoutePage.qml:694 qml/RoutePage.qml:723
@@ -65,85 +66,119 @@ msgstr "Yhteys aikakatkaistiin"
 msgid "Current position"
 msgstr "Nykyinen sijainti"
 
-#: poor/keystore.py:57
+#: poor/keystore.py:60
 msgid ""
 "Register at <a "
 "href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
 " and create your own Client ID and Client Secret keys"
 msgstr ""
+"Rekisteröidy osoitteessa <a "
+"href=\"https://developer.foursquare.com\">https://developer.foursquare.com</a>"
+" ja luo itsellesi asiakastunnus ja -avain"
 
-#: poor/keystore.py:58
+#: poor/keystore.py:61
 msgid ""
 "Register at <a href=\"https://www.mapbox.com\">https://www.mapbox.com</a> "
 "and create your own API key"
 msgstr ""
+"Rekisteröidy osoitteessa <a "
+"href=\"https://www.mapbox.com\">https://www.mapbox.com</a> ja luo itsellesi "
+"API-avain"
 
-#: poor/keystore.py:59
+#: poor/keystore.py:62
 msgid ""
 "Register at <a href=\"https://maptiler.com\">https://maptiler.com</a> and "
 "create your own API key"
 msgstr ""
+"Rekisteröidy osoitteessa <a "
+"href=\"https://maptiler.com\">https://maptiler.com</a> ja luo itsellesi API-"
+"avain"
 
-#: poor/keystore.py:60
+#: poor/keystore.py:63
 msgid ""
 "Register at <a "
 "href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
 "and create your own API key"
 msgstr ""
+"Rekisteröidy osoitteessa <a "
+"href=\"https://developer.mapquest.com\">https://developer.mapquest.com</a> "
+"ja luo itsellesi API-avain"
 
-#: poor/keystore.py:61
+#: poor/keystore.py:64
 msgid ""
 "Register at <a "
 "href=\"https://opencagedata.com\">https://opencagedata.com</a> and create "
 "your own API key"
 msgstr ""
+"Rekisteröidy osoitteessa <a "
+"href=\"https://opencagedata.com\">https://opencagedata.com</a> ja luo "
+"itsellesi API-avain"
 
-#: poor/keystore.py:62
+#: poor/keystore.py:65
 msgid ""
 "Register at <a href=\"https://stadiamaps.com\">https://stadiamaps.com</a> "
 "and create your own API key"
 msgstr ""
+"Rekisteröidy osoitteessa <a "
+"href=\"https://stadiamaps.com\">https://stadiamaps.com</a> ja luo itsellesi "
+"API-avain"
 
-#: poor/keystore.py:63
+#: poor/keystore.py:66
 msgid ""
 "Register at <a "
 "href=\"https://developer.here.com\">https://developer.here.com</a> and "
 "create your own App API Key"
 msgstr ""
+"Rekisteröidy osoitteessa <a "
+"href=\"https://developer.here.com\">https://developer.here.com</a> ja luo "
+"itsellesi API-avain"
 
 #: poor/keystore.py:67
-msgid "Foursquare Client ID"
-msgstr "Foursquare-käyttäjätunnus"
-
-#: poor/keystore.py:68
-msgid "Foursquare Client Secret"
-msgstr "Foursquare-salasana"
+msgid ""
+"Register at <a href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a>"
+" and create your own App API Key"
+msgstr ""
+"Rekisteröidy osoitteessa <a "
+"href=\"https://osdatahub.os.uk/\">https://osdatahub.os.uk</a> ja luo "
+"itsellesi API-avain"
 
 #: poor/keystore.py:71
+msgid "Foursquare Client ID"
+msgstr "Foursquare-asiakastunnus"
+
+#: poor/keystore.py:72
+msgid "Foursquare Client Secret"
+msgstr "Foursquare-asiakasavain"
+
+#: poor/keystore.py:75
 msgid "Mapbox API key"
-msgstr "Mapbox-rajapinnan avain"
+msgstr "Mapbox API-avain"
 
-#: poor/keystore.py:74
+#: poor/keystore.py:78
 msgid "MapTiler API key"
-msgstr "MapTiler-rajapinnan avain"
+msgstr "MapTiler API-avain"
 
-#: poor/keystore.py:77
+#: poor/keystore.py:81
 msgid "MapQuest API key"
-msgstr "MapQuest-rajapinnan avain"
+msgstr "MapQuest API-avain"
 
-#: poor/keystore.py:80
+#: poor/keystore.py:84
 msgid "OpenCage API key"
-msgstr "OpenCage API-rajapinnan avainkoodi"
+msgstr "OpenCage API-avain"
 
-#: poor/keystore.py:83
+#: poor/keystore.py:87
 msgid "Stadia Maps API key"
-msgstr "Stadia Maps API-rajapinnan avainkoodi"
+msgstr "Stadia Maps API-avain"
 
-#: poor/keystore.py:86
+#: poor/keystore.py:90
 msgid "HERE API Key"
-msgstr "HERE-rajapinnan avain"
+msgstr "HERE API-avain"
 
-#: poor/keystore.py:94
+#: poor/keystore.py:93
+msgid "Ordnance Survey API Key"
+msgstr "Ordnance Survey API-avain"
+
+#: poor/keystore.py:101
 #, python-brace-format
 msgid ""
 "<p>Your Pure Maps installation has enabled support for HERE "
@@ -162,8 +197,25 @@ msgid ""
 " decline them. If declined, HERE support will be inactive and can be enabled"
 " later by accepting the terms in Preferences under Licenses.</p>"
 msgstr ""
+"<p>Olet ottanut HERE-palvelut käyttöön Pure Maps "
+"-asennuksessasi.</p><br><p>Tarkistathan vielä<a "
+"href=\"https://legal.here.com/en-gb/terms/here-end-user-"
+"terms\">käyttöehdot</a>, <a href=\"https://legal.here.com/en-"
+"gb/terms/acceptable-use-policy\">hyväksyttävää käyttöä koskevat "
+"käytännöt</a> ja <a href=\"https://legal.here.com/en-gb/privacy\">HEREn "
+"tietosuojakäytännöt</a>. HEREn käyttöön ja tietosuojakäytäntöihin liittyen, "
+"Pure Maps kommunikoi HEREn kanssa REST-rajapinnan kautta.<p></br><p><a "
+"href=\"{lruri}\">Oikeudellisista syistä</a> johtuen Pure Maps käyttää HERE-"
+"hakua ja -reititystä vain silloin, kun erillinen \"HERE - Verkkokartta\" "
+"-profiili on käytössä. Vaikka asiakirja on vanhentunut, tarkista vuoden 2018"
+" hyväksyttävää käyttöä koskevien käytäntöjen lisätiedot käytettäessä HEREä "
+"yhdessä muiden palveluntarjoajien kanssa. Tiedot löytyvät asiakirjan<a "
+"href=\"https://legal.here.com/en-gb/terms/acceptable-use-"
+"policy-2018\">\"Layering and Modifications\"</a> -otsikon "
+"alta.<br><p>Hyväksy ehdot ja käytännöt tai hylkää ne. Jos hylkäät ne, HERE-"
+"tuki poistetaan käytöstä, kunnes hyväksyt ehdot Asetusten Lisenssit-osiossa."
 
-#: poor/keystore.py:109
+#: poor/keystore.py:116
 msgid "HERE End-User Terms"
 msgstr "HERE-käyttöehdot"
 
@@ -267,11 +319,11 @@ msgstr "{:d} h {:d} min"
 
 #: poor/util.py:383
 msgid "API key missing"
-msgstr "Rajapinta-avain puuttuu"
+msgstr "API-avain puuttuu"
 
 #: poor/util.py:385
 msgid "Available"
-msgstr ""
+msgstr "Saatavilla"
 
 #: routers/here.py:319
 #, python-brace-format
@@ -284,7 +336,7 @@ msgstr "Saavu määräpaikkaan"
 
 #: routers/here.py:336
 msgid "Board the ferry"
-msgstr ""
+msgstr "Nouse lautalle"
 
 #: routers/here.py:340
 msgid "Continue"
@@ -292,15 +344,15 @@ msgstr "Jatka"
 
 #: routers/here.py:345
 msgid "Merge right and continue on highway"
-msgstr ""
+msgstr "Siirry oikealle kaistalle ja jatka maantiellä"
 
 #: routers/here.py:347
 msgid "Merge left and continue on highway"
-msgstr ""
+msgstr "Siirry vasemmalle kaistalle ja jatka maantiellä"
 
 #: routers/here.py:351
 msgid "Disembark the ferry"
-msgstr ""
+msgstr "Poistu lautalta"
 
 #: routers/here.py:355
 msgid "Start navigation"
@@ -308,33 +360,33 @@ msgstr "Aloita navigointi"
 
 #: routers/here.py:360
 msgid "Merge right and enter highway"
-msgstr ""
+msgstr "Siirry oikealle kaistalle ja liity maantielle"
 
 #: routers/here.py:362
 msgid "Merge left and enter highway"
-msgstr ""
+msgstr "Siirry vasemmalle kaistalle ja liity maantielle"
 
 #: routers/here.py:364
 msgid "Enter highway"
-msgstr "Mene valtatielle"
+msgstr "Liity maantielle"
 
 #: routers/here.py:377
 msgid "Take exit on the right"
-msgstr ""
+msgstr "Poistu oikeanpuoleisesta liittymästä"
 
 #: routers/here.py:379
 msgid "Take exit on the left"
-msgstr ""
+msgstr "Poistu vasemmanpuoleisesta liittymästä"
 
 #: routers/here.py:382
 #, python-brace-format
 msgid "Take exit {number} on the right"
-msgstr ""
+msgstr "Poistu oikealle liittymästä {number} "
 
 #: routers/here.py:384
 #, python-brace-format
 msgid "Take exit {number} on the left"
-msgstr ""
+msgstr "Poistu vasemmalle liittymästä {number}"
 
 #: routers/here.py:391
 msgid "Keep right"
@@ -350,31 +402,31 @@ msgstr "Jatka suoraan"
 
 #: routers/here.py:403
 msgid "Enter the roundabout and take the first exit"
-msgstr "Mene kiertoliittymään ja poistu ensimmäisestä"
+msgstr "Aja kiertoliittymään ja poistu ensimmäisestä liittymästä"
 
 #: routers/here.py:405
 msgid "Enter the roundabout and take the second exit"
-msgstr "Mene kiertoliittymään ja poistu toisesta"
+msgstr "Aja kiertoliittymään ja poistu toisesta liittymästä"
 
 #: routers/here.py:407
 msgid "Enter the roundabout and take the third exit"
-msgstr "Mene kiertoliittymään ja poistu kolmannesta"
+msgstr "Aja kiertoliittymään ja poistu kolmannesta liittymästä"
 
 #: routers/here.py:409
 msgid "Enter the roundabout and take the fourth exit"
-msgstr "Mene kiertoliittymään ja poistu neljännestä"
+msgstr "Aja kiertoliittymään ja poistu neljännestä liittymästä"
 
 #: routers/here.py:411
 msgid "Enter the roundabout and take the fifth exit"
-msgstr "Mene kiertoliittymään ja poistu viidennestä"
+msgstr "Aja kiertoliittymään ja poistu viidennestä liittymästä"
 
 #: routers/here.py:413
 msgid "Enter the roundabout and take the sixth exit"
-msgstr "Mene kiertoliittymään ja poistu kuudennesta"
+msgstr "Aja kiertoliittymään ja poistu kuudennesta liittymästä"
 
 #: routers/here.py:415
 msgid "Enter the roundabout"
-msgstr "Mene kiertoliittymään"
+msgstr "Aja kiertoliittymään"
 
 #: routers/here.py:419
 msgid "Exit the roundabout"
@@ -382,19 +434,19 @@ msgstr "Poistu kiertoliittymästä"
 
 #: routers/here.py:426
 msgid "Bear right"
-msgstr ""
+msgstr "Pysy oikealla"
 
 #: routers/here.py:428
 msgid "Bear left"
-msgstr ""
+msgstr "Pysy vasemmalla"
 
 #: routers/here.py:432
 msgid "Make a sharp right"
-msgstr ""
+msgstr "Käänny jyrkästi oikealle"
 
 #: routers/here.py:434
 msgid "Make a sharp left"
-msgstr ""
+msgstr "Käänny jyrkästi vasemmalle"
 
 #: routers/here.py:438
 msgid "Turn right"
@@ -406,11 +458,11 @@ msgstr "Käänny vasemmalle"
 
 #: routers/here.py:445
 msgid "Make a right U-turn"
-msgstr ""
+msgstr "Tee U-käännös oikealle"
 
 #: routers/here.py:447
 msgid "Make a left U-turn"
-msgstr ""
+msgstr "Tee U-käännös vasemmalle"
 
 #: routers/here.py:449
 msgid "Make a U-turn"
@@ -458,7 +510,7 @@ msgstr "versio %1"
 
 #: qml/AboutPage.qml:64
 msgid "This is a limited edition distributed through Jolla Store"
-msgstr ""
+msgstr "Tämä on Jolla Kaupasta asennettu rajoitettu sovellusversio"
 
 #: qml/AboutPage.qml:71
 msgid "GitHub <a href=\"https://github.com/rinigus/pure-maps\">project page</a>"
@@ -634,11 +686,11 @@ msgstr "%1 (oletus)"
 
 #: qml/BasemapPage.qml:49
 msgid "%1 (default, disabled, API key missing)"
-msgstr ""
+msgstr "%1 (oletus, ei käytössä, API-avain puuttuu)"
 
 #: qml/BasemapPage.qml:50
 msgid "%1 (disabled, API key missing)"
-msgstr ""
+msgstr "%1 (ei käytössä, API-avain puuttuu)"
 
 #: qml/BasemapPage.qml:56
 msgid "Map: %1"
@@ -646,15 +698,15 @@ msgstr "Kartta: %1"
 
 #: qml/CenterButton.qml:111 qml/MapGestureArea.qml:47
 msgid "Auto-center off"
-msgstr "Automaattinen keskitys pois"
+msgstr "Automaattinen keskitys pois käytöstä"
 
 #: qml/CenterButton.qml:119 qml/MapGestureArea.qml:46
 msgid "Auto-center on"
-msgstr "Automaattinen keskitys päällä"
+msgstr "Automaattinen keskitys käytössä"
 
 #: qml/CenterButton.qml:125
 msgid "Tap center button again for auto-center"
-msgstr "Kosketa keskinappia uudelleen automaatti-keskittämiseksi"
+msgstr "Kosketa keskinappia uudelleen keskittääksesi automaattisesti"
 
 #: qml/GeocodeItem.qml:42
 msgid "No selection"
@@ -690,8 +742,8 @@ msgstr "Tulokset (%1)"
 msgid "Points of Interest (%1)"
 msgstr "Kohdepisteet (%1)"
 
-#: qml/GeocodeItem.qml:484 qml/Navigator.qml:301 qml/Navigator.qml:303
-#: qml/PoiBlock.qml:407 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
+#: qml/GeocodeItem.qml:484 qml/Navigator.qml:302 qml/Navigator.qml:304
+#: qml/PoiBlock.qml:411 qml/PoiInfoPage.qml:26 qml/PoiPage.qml:47
 #: qml/RoutePage.qml:595 qml/RoutePage.qml:597 qml/RoutePoint.qml:66
 msgid "Unnamed point"
 msgstr "Nimetön piste"
@@ -735,7 +787,7 @@ msgstr "Keskeytä"
 
 #: qml/InitPage.qml:66
 msgid "Missing %1 key"
-msgstr ""
+msgstr " %1 avain puuttuu"
 
 #: qml/InitPage.qml:67
 msgid ""
@@ -743,10 +795,13 @@ msgid ""
 "your personal API key in Preferences. This key is not needed if you plan to "
 "use Pure Maps with the offline map provider."
 msgstr ""
+"Asennuksestasi puuttuu %1 API-avain. Rekisteröidy osoitteessa %1 ja lisää "
+"henkilökohtainen API-avaimesi Asetuksissa. Avainta ei tarvita, jos aiot "
+"käyttää Pure Mapsia yhteydettömän karttapalvelun kanssa."
 
 #: qml/InitPage.qml:88
 msgid "Pure Maps at Jolla Store"
-msgstr ""
+msgstr "Pure Maps Jolla Kaupassa"
 
 #: qml/InitPage.qml:89
 msgid ""
@@ -754,6 +809,9 @@ msgid ""
 "\n"
 "To get fully functional Pure Maps, it is recommended to use Sailfish Chum and install Pure Maps from there."
 msgstr ""
+"Käytössäsi on Jolla Kaupasta asennettu Pure Maps -versio. Jolla Kaupan rajoituksista johtuen tässä sovellusversiossa on useita rajoitteita. SailJailin käyttöönoton myötä ääniohjeet ja nykyisen kadun sekä nopeusrajoituksen näyttäminen eivät toimi.\n"
+"\n"
+"Täysin toimivan käyttökokemuksen saamiseksi Pure Maps on suositeltavaa asentaa Sailfish Chum -pakettilähteestä."
 
 #: qml/LanguageSelector.qml:24
 msgid "Language"
@@ -765,7 +823,7 @@ msgstr "Hyväksy"
 
 #: qml/LicensePage.qml:25
 msgid "Decline"
-msgstr "Kieltäydy"
+msgstr "Hylkää"
 
 #: qml/LicensePage.qml:48
 msgid "Accept license"
@@ -784,8 +842,8 @@ msgid ""
 "Depending on the used map provider, error could be caused by network failure, expired API access key, absence of offline server. Try to address the issue and/or change your map provider, preferences, or profile.\n"
 "If you change API access key, you may have to restart Pure Maps."
 msgstr ""
-"Riippuen käytetystä karttalähteestä, virhe voi johtua verkkoyhteydestä, vanhentuneesta avainkoodista tai yhteydettömän tilan karttapalvelimen puutteesta. Yritä korjata tilanne tai vaihda karttalähdettä, asetuksia tai profiilia.\n"
-"Mikäli vaihdat API-rajapinnnan avainkoodia, saatat joutua uudelleenkäynnistämään Pure Maps:in."
+"Riippuen käytetystä karttalähteestä, virhe voi johtua verkkoyhteydestä, vanhentuneesta API-avaimesta tai laitteella sijaitsevan karttapalvelimen puutteesta. Yritä paikantaa ongelma ja/tai vaihda karttalähdettä, asetuksia tai profiilia.\n"
+"Mikäli vaihdat API-avainta, saatat joutua uudelleenkäynnistämään Pure Mapsin."
 
 #: qml/MapErrorPage.qml:51
 msgid ""
@@ -796,6 +854,12 @@ msgid ""
 "href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Server "
 "manual</a> for details."
 msgstr ""
+"Käytössäsi on \"Laitteen kartat\" -profiili. Varmista, että OSM Scout Server"
+" on asennettu ja käynnissä. Järjestelmästäsi riippuen, se on saatavilla joko"
+" sovelluskaupoissa (Sailfishillä Chum, Ubuntu Touchilla OpenStore), "
+"Flathubissa tai jakelussasi. Katso tarkemmat tiedot <a "
+"href=\"https://rinigus.github.io/osmscout-server\">OSM Scout Serverin "
+"käyttöohjeista</a>."
 
 #: qml/MapErrorPage.qml:62
 msgid ""
@@ -815,36 +879,36 @@ msgstr "Profiili"
 
 #: qml/MapErrorPage.qml:118 qml/MenuPage.qml:116
 msgid "Online"
-msgstr "Verkkoyhteys - online"
+msgstr "Verkkokartat"
 
 #: qml/MapErrorPage.qml:118 qml/MenuPage.qml:122
 msgid "Offline"
-msgstr "Yhteydetön offline-tila"
+msgstr "Laitteen kartat"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE - Online"
-msgstr ""
+msgstr "HERE - Verkkokartta"
 
 #: qml/MapErrorPage.qml:119 qml/MenuPage.qml:129
 msgid "HERE (disabled, API key missing)"
-msgstr "HERE (ei käytössä, rajapinta-avain puuttuu)"
+msgstr "HERE (ei käytössä, API-avain puuttuu)"
 
 #: qml/MapErrorPage.qml:120 qml/MenuPage.qml:136
 msgid "Mixed"
-msgstr "Yhdistetty tila"
+msgstr "Yhdistelmä"
 
 #: qml/MapGestureArea.qml:66 qml/MapGestureArea.qml:84
 msgid "Stop navigation to select POI"
 msgstr "Lopeta navigointi valitaksesi kohdepisteen"
 
-#: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:254
+#: qml/Map.qml:650 qml/NavigationPage.qml:207 qml/PoiBlock.qml:258
 #: qml/RoutePage.qml:173
 msgid "Origin"
 msgstr "Alkupiste"
 
-#: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:274
+#: qml/Map.qml:652 qml/NavigationPage.qml:210 qml/PoiBlock.qml:278
 msgid "Final destination"
-msgstr "Määränpää kohde"
+msgstr "Määränpää"
 
 #: qml/Map.qml:654
 msgid "✓"
@@ -882,7 +946,7 @@ msgstr "Jaa nykyinen sijainti"
 #: qml/NavigationCurrentBlock.qml:355 qml/NavigationSpeedBlock.qml:81
 #: qml/NavigationSpeedBlock.qml:82
 msgid "mph"
-msgstr "mph"
+msgstr "mi/h"
 
 #: qml/Meters.qml:105 qml/NavigationCurrentBlock.qml:356
 #: qml/NavigationSpeedBlock.qml:83
@@ -963,15 +1027,15 @@ msgstr "Tilanne"
 
 #: qml/NavigationPage.qml:134
 msgid "Estimated time of arrival"
-msgstr "Arvioitu saapumisaika (ASA)"
+msgstr "Arvioitu saapumisaika"
 
-#: qml/NavigationPage.qml:161 qml/Navigator.qml:89
+#: qml/NavigationPage.qml:161 qml/Navigator.qml:90
 msgid "Destination reached"
 msgstr "Kohde saavutettu"
 
 #: qml/NavigationPage.qml:173 qml/RoutePage.qml:187 qml/RoutePage.qml:194
 msgid "Destinations and waypoints"
-msgstr "Kohteet (K) ja reittipisteet (p)"
+msgstr "Kohteet ja reittipisteet"
 
 #: qml/NavigationPage.qml:207
 msgid "Origin: %1"
@@ -1011,63 +1075,63 @@ msgstr "Vaiheet"
 msgid "EXIT"
 msgstr "Käännös pois"
 
-#: qml/Navigator.qml:81
+#: qml/Navigator.qml:82
 msgid "Destination %1 reached"
 msgstr "Kohde %1 saavutettu"
 
-#: qml/Navigator.qml:82
+#: qml/Navigator.qml:83
 msgid "Waypoint %1 reached"
 msgstr "Reittipiste %1 saatuvettu"
 
-#: qml/Navigator.qml:151
+#: qml/Navigator.qml:152
 msgid "Voice navigation on"
-msgstr "Ääninavigointi päällä"
+msgstr "Puhenavigointi päällä"
 
-#: qml/Navigator.qml:156
+#: qml/Navigator.qml:157
 msgid ""
 "Voice navigation unavailable: missing Text-to-Speech (TTS) engine for "
 "selected language"
 msgstr ""
-"Ääninavigointi ei ole saatavissa: puuttuva teksti-ääneksi (TTS) "
-"puheentuottokone valitulle kielelle"
+"Puhenavigointi ei ole käytettävissä: teksti puheeksi -puhesyntetisaattoria "
+"(TTS) ei ole saatavilla valitulle kielelle"
 
-#: qml/Navigator.qml:207
+#: qml/Navigator.qml:208
 msgid "Routing failed: current position not known"
 msgstr "Reititys ei onnistunut: nykyinen sijainti tuntematon"
 
-#: qml/Navigator.qml:213
+#: qml/Navigator.qml:214
 msgid "Rerouting position"
 msgstr "Uudelleenreitittää sijaintia"
 
-#: qml/Navigator.qml:221
+#: qml/Navigator.qml:222
 msgid "Routing"
 msgstr "Reititys"
 
-#: qml/Navigator.qml:232
+#: qml/Navigator.qml:233
 msgid "Routing failed: %1"
 msgstr "Reititys epäonnistui: %1"
 
-#: qml/Navigator.qml:237 src/navigator.cpp:1099
+#: qml/Navigator.qml:238 src/navigator.cpp:1099
 msgid "Traffic and route updated"
 msgstr "Liikenne ja reitti päivitetty"
 
-#: qml/Navigator.qml:237 src/navigator.cpp:1096
+#: qml/Navigator.qml:238 src/navigator.cpp:1096
 msgid "New route found"
 msgstr "Uusi reitti löydetty"
 
-#: qml/Navigator.qml:238
+#: qml/Navigator.qml:239
 msgid "Route found"
 msgstr "Reitti löytynyt"
 
-#: qml/Navigator.qml:249 src/navigator.cpp:1098
+#: qml/Navigator.qml:250 src/navigator.cpp:1098
 msgid "Routing failed"
 msgstr "Reititys epäonnistui"
 
-#: qml/Navigator.qml:281
+#: qml/Navigator.qml:282
 msgid "Updating traffic"
 msgstr "Päivitetään liikennettä"
 
-#: qml/Navigator.qml:281 src/navigator.cpp:1097
+#: qml/Navigator.qml:282 src/navigator.cpp:1097
 msgid "Rerouting"
 msgstr "Uudelleenreititetään"
 
@@ -1078,7 +1142,7 @@ msgstr "Läheiset paikat"
 #: qml/NearbyPage.qml:76
 msgid ""
 "Select a reference location next to which you want to perform the search."
-msgstr "Valitse paikka, jonka vierestä haluat suorittaa haun"
+msgstr "Valitse paikka, jonka vierestä haluat suorittaa haun."
 
 #: qml/NearbyPage.qml:77
 msgid "Near"
@@ -1110,15 +1174,15 @@ msgstr "%1 tulosta"
 
 #: qml/NorthArrow.qml:60
 msgid "Auto-rotation requires auto-centering to be enabled"
-msgstr "Automaattinen kääntyminen vaatii automaattisen keskittämisen käyttöä"
+msgstr "Automaattinen kääntäminen vaatii automaattisen keskittämisen käyttöä"
 
 #: qml/NorthArrow.qml:71
 msgid "Auto-rotate on"
-msgstr "Automaattinen kierto päällä"
+msgstr "Automaattinen kääntäminen käytössä"
 
 #: qml/NorthArrow.qml:72
 msgid "Auto-rotate off"
-msgstr "Automaattinen kierto pois"
+msgstr "Automaattinen kääntäminen pois käytöstä"
 
 #: qml/PlaceNamePage.qml:27
 msgid "Venue name"
@@ -1154,7 +1218,7 @@ msgstr "Postinumero"
 
 #: qml/PoiBlock.qml:138
 msgid "Web"
-msgstr "WWW"
+msgstr "Verkko"
 
 #: qml/PoiBlock.qml:139
 msgid "Phone"
@@ -1176,35 +1240,35 @@ msgstr "Tekstiviesti"
 msgid "More info: %1"
 msgstr "Lisätietoja: %1"
 
-#: qml/PoiBlock.qml:233
+#: qml/PoiBlock.qml:237
 msgid "Set as or Replace"
 msgstr "Aseta nimellä tai korvaa"
 
-#: qml/PoiBlock.qml:233
+#: qml/PoiBlock.qml:237
 msgid "Set as"
 msgstr "Aseta nimellä"
 
-#: qml/PoiBlock.qml:293
+#: qml/PoiBlock.qml:297
 msgid "Insert as"
 msgstr "Liitä nimellä"
 
-#: qml/PoiBlock.qml:298
+#: qml/PoiBlock.qml:302
 msgid "New origin"
 msgstr "Uusi alkupiste"
 
-#: qml/PoiBlock.qml:311
+#: qml/PoiBlock.qml:315
 msgid "New final destination"
-msgstr "Uusi määränpää kohde"
+msgstr "Uusi määränpää"
 
-#: qml/PoiBlock.qml:323
+#: qml/PoiBlock.qml:327
 msgid "First intermediate destination"
 msgstr "Ensimmäinen välikohde"
 
-#: qml/PoiBlock.qml:336
+#: qml/PoiBlock.qml:340
 msgid "Last intermediate destination"
 msgstr "Viimeinen välikohde"
 
-#: qml/PoiBlock.qml:337
+#: qml/PoiBlock.qml:341
 msgid "Intermediate destination"
 msgstr "Välikohde"
 
@@ -1230,7 +1294,7 @@ msgstr "Lisää nimi"
 
 #: qml/PoiEditPage.qml:58
 msgid "Enter type, such as Restaurant"
-msgstr "Lisää tyyppi, kuten 'ravintola'"
+msgstr "Lisää tyyppi, kuten \"ravintola\""
 
 #: qml/PoiEditPage.qml:68 qml/PoiEditPage.qml:73 qml/PoiInfoPage.qml:95
 msgid "Address"
@@ -1262,7 +1326,7 @@ msgstr "WWW-osoite:"
 
 #: qml/PoiEditPage.qml:107
 msgid "Enter URL"
-msgstr "Lisää WWW-osoite:"
+msgstr "Lisää WWW-osoite"
 
 #: qml/PoiEditPage.qml:115
 msgid "Enter Email"
@@ -1274,7 +1338,7 @@ msgstr "Lisätietoja"
 
 #: qml/PoiEditPage.qml:131
 msgid "Enter additional info"
-msgstr "Lisää lisätietoja"
+msgstr "Syötä lisätietoja"
 
 #: qml/PoiInfoPage.qml:32 qml/PoiPage.qml:95
 msgid "Edit"
@@ -1350,7 +1414,7 @@ msgstr "Yksiköt"
 
 #: qml/PreferencesPage.qml:46
 msgid "Metric"
-msgstr "Metrinen"
+msgstr "Metrit"
 
 #: qml/PreferencesPage.qml:46
 msgid "American"
@@ -1374,7 +1438,7 @@ msgstr "Paikallinen"
 
 #: qml/PreferencesPage.qml:64
 msgid "International"
-msgstr ""
+msgstr "Kansainvälinen"
 
 #: qml/PreferencesPage.qml:65
 msgid "Arabic"
@@ -1518,8 +1582,8 @@ msgid ""
 "Switching between day/night modes of the map. Note that not all providers "
 "have all maps with day/night pairs available."
 msgstr ""
-"Vaihtaminen kartan päivä/yö-tilojen välillä. Huomaa, että kaikilla "
-"karttalähteillä ei ole tarjota karttoja, joissa on päivä/yö pari tarjolla."
+"Vaihtaminen kartan päivä- ja yötilojen välillä. Huomaa, että kaikkien "
+"palveluntarjoajien kartoissa ei ole päivä- ja yötilaa."
 
 #: qml/PreferencesPage.qml:111
 msgid "Day/night mode"
@@ -1527,11 +1591,11 @@ msgstr "Päivä-/yötila"
 
 #: qml/PreferencesPage.qml:113
 msgid "Manual"
-msgstr "Manuaali"
+msgstr "Manuaalinen"
 
 #: qml/PreferencesPage.qml:114
 msgid "Sunrise and sunset"
-msgstr "Auringon nousu ja lasku"
+msgstr "Auringonnousu ja -lasku"
 
 #: qml/PreferencesPage.qml:132
 msgid ""
@@ -1539,12 +1603,12 @@ msgid ""
 "current task. For example, show map designed for navigation while routing."
 msgstr ""
 "Vaihda automaattisesti karttalähteen eri karttatyyppien välillä riippuen "
-"tarpeesta. Esimerkiksi, näytä navigointiin sopiva katukartta, kun "
-"reititetään."
+"tarpeesta. Esimerkiksi reitittäessä näytetään navigointiin sopiva "
+"katukartta."
 
 #: qml/PreferencesPage.qml:134
 msgid "Switch map modes"
-msgstr "Vaihda kattatilaa"
+msgstr "Vaihda karttatilaa"
 
 #: qml/PreferencesPage.qml:144
 msgid "Fetch autocompleted search results while typing a search string."
@@ -1567,19 +1631,18 @@ msgid ""
 "is useful if you wish to receive voice navigation commands while keeping "
 "device in the pocket."
 msgstr ""
-"Voit ohjata miten Pure Maps pitää näytön aktiivisena tai toimii taustalla. "
-"Suositeltua on antaa Pure Mapsin estää näytönsäästäjä navigoinnin aikana "
-"sekä estää laitetteen sammuminen/lepotilaan siirtyminen. Jälkimmäinen on "
-"hyödyllinen, mikäli haluat ääniohjeita navigoimiseen puhelimen ollessa "
-"taskussa."
+"Voit hallita, miten Pure Maps pitää näytön päällä tai toimii taustalla. On "
+"suositeltavaa, että Pure Maps estää näytönsäästäjän navigoinnin aikana eikä "
+"estä lepotilaan siirtymistä suoranaisesti. Jälkimmäisestä on hyötyä, mikäli "
+"haluat käyttää puhenavigointia puhelimen ollessa taskussa."
 
 #: qml/PreferencesPage.qml:180
 msgid ""
 "Only applies when Pure Maps is active. When minimized, screensaver is "
 "controlled by normal device-level preferences."
 msgstr ""
-"Käytössä vain, kun Pure Maps on aktiivinen. Pienennettynä näytönsäästäjää "
-"ohjaavat laitteen normaalit asetukset."
+"Käytössä vain, kun Pure Mapsia käytetään. Pienennettynä näytönsäästäjää "
+"ohjaavat laitteen järjestelmäasetukset."
 
 #: qml/PreferencesPage.qml:182
 msgid "Prevent screensaver"
@@ -1605,9 +1668,9 @@ msgid ""
 "screen is switched off. If set to 'never', usual device suspend policy is "
 "applied."
 msgstr ""
-"Mahdollistaa sijainnin ja navigoinnin ääniohjeet myös ruudun ollessa "
-"sammutettuna. Mikäli asetus on 'ei koskaan', normaalit laitteen "
-"sammuttamista/lepotilaa ohjaavat asetukset ovat käytössä."
+"Mahdollistaa sijainnin seuraamisen ja navigoinnin ääniohjeet myös näytön "
+"ollessa sammutettuna. Mikäli valitset asetuksen \"ei koskaan\", laitteen "
+"normaalit lepotilaa ohjaavat asetukset ovat käytössä."
 
 #: qml/PreferencesPage.qml:199
 msgid "Prevent sleep"
@@ -1650,16 +1713,20 @@ msgid ""
 "List of the licenses and whether they are accepted or declined. Here you can"
 " change the acceptance of each license."
 msgstr ""
+"Luettelo lisensseistä ja tieto siitä, onko ne hyväksytty vai hylätty. Tässä "
+"voit tehdä muutoksia lisenssien hyväksyntöihin."
 
 #: qml/PreferencesPage.qml:293
 msgid ""
 "Please restart application after changing the acceptance state of the "
 "license(s)."
 msgstr ""
+"Käynnistä sovellus uudelleen, kun olet tehnyt muutoksia lisenssi(e)n "
+"hyväksyntöihin."
 
 #: qml/PreferencesPage.qml:328
 msgid "Declined"
-msgstr "Kieltäydytty"
+msgstr "Hylätty"
 
 #: qml/PreferencesPage.qml:329
 msgid "Accepted"
@@ -1667,11 +1734,11 @@ msgstr "Hyväksytty"
 
 #: qml/PreferencesPage.qml:330
 msgid "Unset"
-msgstr ""
+msgstr "Ei valittu"
 
 #: qml/PreferencesPage.qml:376
 msgid "API keys"
-msgstr "API-rajapintojen koodiavaimet"
+msgstr "API-avaimet"
 
 #: qml/PreferencesPage.qml:384
 msgid ""
@@ -1680,13 +1747,12 @@ msgid ""
 " that you comply with them."
 msgstr ""
 "Voit määritellä henkilökohtaisia avaimia verkkopalveluita varten näissä "
-"asetuksissa. Tarkistathan käyttöehdot kustakin palvelusta, jota haluat "
-"käyttää, että toimit niiden mukaan."
+"asetuksissa. Tarkistathan käyttämiesi palveluiden käyttöehdot "
+"varmistaaksesi, että toimit niiden mukaan."
 
 #: qml/PreferencesPage.qml:393
 msgid "Please restart application after changing API keys."
-msgstr ""
-"Käynnistäthän ohjelman uudelleen vaihdettuasi API-rajapinnan koodiavainmen."
+msgstr "Käynnistäthän sovelluksen uudelleen API-avaimen vaihtamisen jälkeen."
 
 #: qml/PreferencesPage.qml:455
 msgid "Exploring"
@@ -1722,7 +1788,7 @@ msgstr "Näytä navigointiohjeet"
 
 #: qml/PreferencesPage.qml:501
 msgid "Voice navigation instructions"
-msgstr "Lausu navigointiohjeet"
+msgstr "Puhenavigointiohjeet"
 
 #: qml/PreferencesPage.qml:511
 msgid "Reroute automatically"
@@ -1730,7 +1796,7 @@ msgstr "Uudelleenreititä automaattisesti"
 
 #: qml/PreferencesPage.qml:520
 msgid "Automatic zoom on start"
-msgstr "Automaattinen mittakaava alussa"
+msgstr "Automaattinen suurennos navigoinnin alussa"
 
 #: qml/PreferencesPage.qml:530
 msgid "Uses OSM Scout Server for its operation."
@@ -1760,15 +1826,15 @@ msgstr "Kallista karttaa navigoidessa"
 
 #: qml/PreferencesPage.qml:571
 msgid "Smooth position animation"
-msgstr "Pehmeä liikeanimaatio"
+msgstr "Sulava liikeanimaatio"
 
 #: qml/PreferencesPage.qml:581
 msgid ""
 "Preferred gender for voice navigation. Only supported by some engines and "
 "languages."
 msgstr ""
-"Toivottu sukupuoli navigoinnin ääniohjeisiin. Tuettu vain osassa äänikoneita"
-" ja kieliä."
+"Puhenavigoinnin ensisijainen sukupuoli. Tuettu vain osassa "
+"puhesyntetisaattoreita ja kieliä."
 
 #: qml/PreferencesPage.qml:582 qml/PreferencesPage.qml:962
 msgid "Voice gender"
@@ -1787,10 +1853,12 @@ msgid ""
 "Timeout between traffic information updates leading to possible rerouting. "
 "This is active only while routing."
 msgstr ""
+"Aikakatkaisu liikennetietojen päivitysten välillä voi johtaa "
+"uudelleenreititykseen. Tämä on käytössä vain reititettäessä."
 
 #: qml/PreferencesPage.qml:597
 msgid "Update traffic while routing"
-msgstr "Päivitä liikenne reitittäessä"
+msgstr "Päivitä liikennetiedot reitittäessä"
 
 #: qml/PreferencesPage.qml:599
 msgid "Disabled"
@@ -1837,10 +1905,12 @@ msgid ""
 "Accuracy of the positioning supported by device. Deviation from the route "
 "below the specified accuracy will be ignored."
 msgstr ""
+"Laitteesi tukema sijainnin tarkkuus. Määritetyn tarkkuuden alittavaa "
+"poikkeamaa reitiltä ei oteta huomioon."
 
 #: qml/PreferencesPage.qml:650
 msgid "Positioning accuracy"
-msgstr ""
+msgstr "Sijainnin tarkkuus"
 
 #: qml/PreferencesPage.qml:688 qml/PreferencesPage.qml:792
 msgid "Compass"
@@ -1868,7 +1938,7 @@ msgstr "Käytä kompassia"
 
 #: qml/PreferencesPage.qml:718
 msgid "Controls"
-msgstr "Säädöt"
+msgstr "Säätimet"
 
 #: qml/PreferencesPage.qml:725
 msgid ""
@@ -1876,25 +1946,25 @@ msgid ""
 "or with a smaller selected set of controls in minimal view mode. To switch "
 "between the modes, click on a map."
 msgstr ""
-"Karttanäkymä voidaan näyttää kaikki käytettävissä olevat säätimet näkyvillä "
-"täydessä näkymätilassa tai pienempänä vain valittujen säätöjen kanssa mini-"
-"näkymässä. Vaihtaaksesi tilojen välillä, klikkaa karttaa."
+"Karttanäkymässä voidaan näyttää joko kaikki käytettävissä olevat säätimet "
+"täydessä näkymätilassa tai vain valitut säätimet minimaalisessa näkymässä. "
+"Klikkaa karttaa vaihtaaksesi tilojen välillä."
 
 #: qml/PreferencesPage.qml:734
 msgid "Set map view to minimal mode on start"
-msgstr "Aseta karttanäkymä mini-näkymään aloituksessa"
+msgstr "Käytä minimaalista näkymää navigoinnin alussa"
 
 #: qml/PreferencesPage.qml:742
 msgid ""
 "Automatically switch to minimal view mode after given delay or disable "
 "automatic switch between map view modes."
 msgstr ""
-"Automaattisesti vaihda mini-näkymään tietyn viiveen jälkeen tai poista "
-"käytöstä automaattinen karttanäkymien vaihto."
+"Vaihda automaattisesti minimaaliseen näkymään asetetun viivearvon mukaisesti"
+" tai poista automaattinen vaihto käytöstä."
 
 #: qml/PreferencesPage.qml:744
 msgid "Switch to minimal view"
-msgstr "Vaihda mini-näkymään"
+msgstr "Vaihda minimaaliseen näkymään"
 
 #: qml/PreferencesPage.qml:746
 msgid "10 seconds"
@@ -1921,8 +1991,8 @@ msgid ""
 "Always show the selected controls regardless of whether map view is in the "
 "minimal or in the full mode."
 msgstr ""
-"Näytä aina valitut säätimet riippumatta siitä onko kartta mini-näkymässä vai"
-" täyden näkymän tilassa."
+"Näytä aina valitut säätimet riippumatta siitä, onko kartta minimaalisen vai "
+"täyden näkymän tilassa."
 
 #: qml/PreferencesPage.qml:774
 msgid "Menu"
@@ -1961,8 +2031,8 @@ msgid ""
 "Map zoom level can be adjusted automatically according to your speed. Here, "
 "you can adjust settings related to this adjustment."
 msgstr ""
-"Kartan näytetty koko voidaan säätää automaattisesti nopeutesi mukaan. Tässä "
-"voit säätää siihen liittyviä asetuksia."
+"Kartan suurennostaso voidaan asettaa automaattisesti nopeutesi mukaan. Tässä"
+" voit säätää siihen liittyviä asetuksia."
 
 #: qml/PreferencesPage.qml:887
 msgid ""
@@ -1974,15 +2044,15 @@ msgstr ""
 
 #: qml/PreferencesPage.qml:889
 msgid "Maximal zoom level"
-msgstr "Maksimitaso suurennokselle"
+msgstr "Suurennoksen enimmäistaso"
 
 #: qml/PreferencesPage.qml:900
 msgid ""
 "Zoom level will be adjusted to have the same map height as the distance that"
 " is covered by you in the given amount of seconds."
 msgstr ""
-"Suurennoksen taso säädetään samaksi karttakorkeudeksi, kuin etäisyys, jonka "
-"liikut annetussa ajassa sekuntteja."
+"Suurennoksen taso säädetään samalle korkeudelle kuin etäisyys, jonka liikut "
+"asetetun sekuntimäärän aikana."
 
 #: qml/PreferencesPage.qml:903
 msgid "Time range, s"
@@ -1997,8 +2067,8 @@ msgid ""
 "Testing of Text-to-Speech (TTS) engine. Select the same language as used for"
 " navigation, preferred gender, and press the button below for testing."
 msgstr ""
-"Teksti ääneksi (TTS) -puheentuottokoneen koekäyttö. Valitse sama kieli kuin "
-"navigaatioon, toivottu sukupuoli ja paina alla olevaa näppäintä "
+"Teksti puheeksi -puhesyntetisaattorin (TTS) koekäyttö. Valitse sama kieli "
+"kuin navigaatioon, toivottu sukupuoli ja paina alla olevaa näppäintä "
 "kokeillaksesi."
 
 #: qml/PreferencesPage.qml:954
@@ -2007,7 +2077,8 @@ msgstr "slovakki"
 
 #: qml/PreferencesPage.qml:961
 msgid "Preferred gender. Only supported by some engines and languages."
-msgstr "Toivottu sukupuoli. Tuettu vain osassa äänikoneita ja kieliä."
+msgstr ""
+"Toivottu sukupuoli. Tuettu vain osassa puhesyntetisaattoreita ja kieliä."
 
 #: qml/PreferencesPage.qml:975
 msgid "Test"
@@ -2015,7 +2086,7 @@ msgstr "Koe"
 
 #: qml/PreferencesPage.qml:986
 msgid "Selected voice engine: %1"
-msgstr "Valittu äänikone: %1"
+msgstr "Valittu puhesyntetisaattori: %1"
 
 #: qml/PreferencesPage.qml:988
 msgid ""
@@ -2023,6 +2094,9 @@ msgid ""
 "\n"
 "Pure Maps supports Mimic, Flite, PicoTTS, and Espeak TTS engines. Unless you are using Pure Maps through Flatpak or OpenStore, the engines have to be installed separately. Sailfish OS users can find the engines at Chum."
 msgstr ""
+"Puhesyntetisaattoria ei ole saatavilla valitulle kielelle.\n"
+"\n"
+"Pure Maps tukee Mimic-, Flite-, PicoTTS ja Espeak TTS-syntetisaattoreita. Puhesyntetisaattorit on asennettava erikseen, ellei käytössäsi ole Pure Mapsin Flatpak- tai OpenStore-versio. Sailfish OS -käyttäjät voivat asentaa syntetisaattorit Chumista."
 
 #: qml/PreferencesPage.qml:1022
 msgid "Development"
@@ -2050,7 +2124,7 @@ msgstr "Aseta sijainti kartan keskelle"
 
 #: qml/PreferencesPage.qml:1045
 msgid "Show current zoom level"
-msgstr "Näytä mittasuhteen taso"
+msgstr "Näytä nykyisen suurennoksen taso"
 
 #: qml/pure-maps.qml:30
 msgid "Pure Maps"
@@ -2062,7 +2136,7 @@ msgstr "Yhteensä"
 
 #: qml/RouteOverallInfo.qml:167
 msgid "incl %1 traffic delay"
-msgstr ""
+msgstr "sis. %1 liikenneruuhka"
 
 #: qml/RoutePage.qml:34
 msgid "Stop"
@@ -2108,9 +2182,9 @@ msgid ""
 "\n"
 "Dismiss this dialog to stop showing this message."
 msgstr ""
-"Kohteita (K) ja reittipisteitä (p) voidaan lisätä matkan varrelle. Molempia käytetään reitityksen laskemiseen, mutta vain kohteiden saavuttamista seurataan. Tämän takia, mikäli menet reittipisteen huti ja myöhemmin palaat lasketulle reitille, oletetaan että reittipiste saavutettiin ja sitä ei enää huomioida uudellenreitityksessä myöhemmin. Sitä vastoin, kohteet pitää saavuttaa tietyn toleranssin sisällä ja niitä ei unohdeta reitityksestä.\n"
+"Kohteita ja reittipisteitä voidaan lisätä matkan varrelle. Molempia käytetään reitityksen laskemiseen, mutta vain kohteiden saavuttamista seurataan. Tämän takia, mikäli menet reittipisteen ohi ja myöhemmin palaat lasketulle reitille, oletetaan että reittipiste saavutettiin ja sitä ei enää huomioida uudellenreitityksessä myöhemmin. Sitä vastoin, kohteet pitää saavuttaa tietyn toleranssin sisällä ja niitä ei unohdeta reitityksestä.\n"
 "\n"
-"Eli, aseta paikka kohteeksi, kun siellä on käytävä, ja aseta paikka reittipisteenä, kun se on vain osa mieleisen reitin valintaa.\n"
+"Eli, aseta paikka kohteeksi, kun siellä on käytävä, ja aseta paikka reittipisteeksi, kun se on vain osa mieleisen reitin valintaa.\n"
 "\n"
 "Hylkää tämä viesti lopettaaksesi sen näyttämisen."
 
@@ -2191,15 +2265,15 @@ msgstr "Kulkutavat: %1"
 
 #: qml/ScaleBar.qml:208
 msgid "Auto-zoom requires auto-centering to be enabled"
-msgstr "Automaattinen mittakaava vaatii automaattisen keskittämisen käyttöä"
+msgstr "Automaattinen suurennos vaatii automaattisen keskittämisen käyttöä"
 
 #: qml/ScaleBar.qml:219
 msgid "Auto-zoom on"
-msgstr "Automaattinen mittakaava käytössä"
+msgstr "Automaattinen suurennos käytössä"
 
 #: qml/ScaleBar.qml:220
 msgid "Auto-zoom off"
-msgstr "Automaattinen mittakaava pois"
+msgstr "Automaattinen suurennos pois käytöstä"
 
 #: qml/SharePage.qml:48
 msgid "SMS"
@@ -2215,7 +2289,7 @@ msgstr "Viesti kopioitu leikepöydälle"
 
 #: qml/SharePage.qml:59
 msgid "Error sending message"
-msgstr "Virhe viestinlähetyksessä"
+msgstr "Virhe viestin lähetyksessä"
 
 #: qml/SharePage.qml:69
 msgid "Launching the Email application"
@@ -2252,7 +2326,7 @@ msgstr "Linja-auto"
 
 #: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "High-occupancy vehicle (HOV)"
-msgstr "Usean henkilön kuljetus (HOV-kulkuneuvo)"
+msgstr "Monipaikkainen ajoneuvo (HOV)"
 
 #: routers/gpx_osmscout_settings.qml:56 routers/ValhallaSettings.qml:39
 msgid "Motorcycle"
@@ -2725,7 +2799,7 @@ msgstr "Vältä tietulleja"
 
 #: routers/here_settings.qml:217
 msgid "Avoid highways"
-msgstr "Vältä valtateitä"
+msgstr "Vältä maanteitä"
 
 #: routers/here_settings.qml:229
 msgid "Avoid tunnels"
@@ -2785,7 +2859,7 @@ msgstr "Mäkipyörä"
 
 #: routers/ValhallaSettings.qml:131
 msgid "Your desire to use buses."
-msgstr "Toiveesi linja-autojen käytöstä"
+msgstr "Haluat käyttää linja-autoja."
 
 #: routers/ValhallaSettings.qml:133 routers/ValhallaSettings.qml:168
 #: routers/ValhallaSettings.qml:185 routers/ValhallaSettings.qml:205
@@ -2865,7 +2939,7 @@ msgid ""
 "you do not fear hills and steeper grades."
 msgstr ""
 "Haluat kohdata mäkinousuja. Kun vältetään mäkiä ja jyrkkiä nousuja, voidaan "
-"valita pidempiä (aika ja matka) reittejä. Sallimalla mäet, indikoit ettet "
+"valita pidempiä (aika ja matka) reittejä. Sallimalla mäet ilmaiset, ettet "
 "pelkää mäkiä ja jyrkempiä rinteitä."
 
 #: routers/ValhallaSettings.qml:204
@@ -2882,7 +2956,7 @@ msgstr "Päätiet"
 
 #: routers/ValhallaSettings.qml:237
 msgid "Your desire to use rail/subway/metro."
-msgstr "Halusi käyttää raideliikennettä - juna/metro"
+msgstr "Halusi käyttää raitioteitä / junaa / metroa."
 
 #: routers/ValhallaSettings.qml:238
 msgid "Rail"
@@ -2926,15 +3000,15 @@ msgstr "Vaihdot"
 msgid "Alternatives"
 msgstr "Vaihtoehdot"
 
-#: src/cmdlineparser.cpp:18
+#: src/cmdlineparser.cpp:20
 msgid "Displays help on commandline options."
 msgstr "Näyttää lisätietoja komentorivin vaihtoehdoista."
 
-#: src/cmdlineparser.cpp:20
+#: src/cmdlineparser.cpp:22
 msgid "Displays version information."
 msgstr "Näyttää versiotiedot."
 
-#: src/cmdlineparser.cpp:23
+#: src/cmdlineparser.cpp:25
 msgid "Show location given by geo:latitude,longitude URI or perform search."
 msgstr ""
 "Näytä sijainti käyttäen geo:latitude,longitude URI-muotoa tai tee haku."
@@ -2945,7 +3019,7 @@ msgstr "Valmistautuu aloittamaan navigoinnin"
 
 #: src/navigator.cpp:464
 msgid "Moving in a wrong direction"
-msgstr "Liikkuu väärään suuntaan"
+msgstr "Liikut väärään suuntaan"
 
 #: src/navigator.cpp:474
 msgid "Away from route"
@@ -2957,7 +3031,7 @@ msgstr "Sijainti epätarkka: tarkkuus %1"
 
 #: src/navigator.cpp:520 src/navigator.cpp:1101
 msgid "Position unknown"
-msgstr "Sijaintia ei tiedetä"
+msgstr "Tuntematon sijainti"
 
 #. TRANSLATORS: Example: In 500 m, turn right onto Broadway. Translate "In"
 #. and adjust the order if needed
@@ -2983,73 +3057,73 @@ msgstr "Aloitetaan navigointi"
 
 #: src/navigator.cpp:1100
 msgid "Position imprecise"
-msgstr ""
+msgstr "Epätarkka sijainti"
 
 #: src/navigator.cpp:1102
 msgid "Position available"
-msgstr ""
+msgstr "Sijainti saatavilla"
 
-#: standard input:1
+#: ⁨standard input⁩:1
 msgid "Search in Finland. Supports autocomplete"
 msgstr "Hae Suomesta. Tukee automaattista täydennystä"
 
-#: standard input:2
+#: ⁨standard input⁩:2
 msgid "Search based on HERE data. Supports autocomplete"
 msgstr "Haku perustuu HERE-aineistoon. Tukee automaattista täydennystä"
 
-#: standard input:3
+#: ⁨standard input⁩:3
 msgid "Search based on open data sources"
 msgstr "Haku perustuen avoimiin tietolähteisiin"
 
-#: standard input:4
+#: ⁨standard input⁩:4
 msgid "Search based on open data sources. Supports autocomplete"
 msgstr ""
 "Haku perustuu avoimiin tietolähteisiin. Tukee automaattista täydennystä"
 
-#: standard input:5
+#: ⁨standard input⁩:5
 msgid "Search based on OpenStreetMap data. Supports autocomplete"
 msgstr ""
 "Haku perustuu OpenStreetMap-aineistoon. Tukee automaattista täydennystä"
 
-#: standard input:6
+#: ⁨standard input⁩:6
 msgid "Venues listed and reviewed by Foursquare users"
-msgstr "Foursquaren käyttäjien lisäämät ja arvioimat paikat"
+msgstr "Foursquare-käyttäjien lisäämät ja arvioimat paikat"
 
-#: standard input:7 standard input:8
+#: ⁨standard input⁩:7
 msgid "Points of interest from OpenStreetMap data"
 msgstr "Kohdepisteet OpenStreetMap-aineistosta"
 
-#: standard input:9
+#: ⁨standard input⁩:8
 msgid "Routing along GPX track"
 msgstr "Reititys pitkin GPX-reittiä"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:20 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:19 ⁨standard input⁩:21
 msgid "car"
 msgstr "auto"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:21
 msgid "bicycle"
 msgstr "polkupyörä"
 
-#: standard input:10 standard input:12 standard input:14 standard input:16
-#: standard input:18 standard input:22
+#: ⁨standard input⁩:9 ⁨standard input⁩:11 ⁨standard input⁩:13 ⁨standard
+#: input⁩:15 ⁨standard input⁩:17 ⁨standard input⁩:21
 msgid "foot"
-msgstr "kävellen"
+msgstr "kävely"
 
-#: standard input:11
+#: ⁨standard input⁩:10
 msgid "Routing along GPX track processed by OSM Scout Server"
 msgstr "Reititys pitkin GPX-reittiä toteutettu OSM Scout Serverillä"
 
-#: standard input:13
+#: ⁨standard input⁩:12
 msgid "Routing by HERE"
 msgstr "Reitityksen toteuttaa HERE"
 
-#: standard input:15 standard input:17 standard input:19
+#: ⁨standard input⁩:14 ⁨standard input⁩:16 ⁨standard input⁩:18
 msgid "Routing based on OpenStreetMap data"
 msgstr "Reititys pohjautuen OpenStreetMap-aineistoon"
 
-#: standard input:21
+#: ⁨standard input⁩:20
 msgid "Routing by Valhalla based on OpenStreetMap data"
 msgstr "Reititys Valhalla-ohjelmistolla pohjautuen OpenStreetMap-aineistoon"
