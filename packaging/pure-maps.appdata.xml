@@ -39,6 +39,15 @@
  </screenshots>
  <metadata_license>CC-BY-SA-3.0</metadata_license>
  <releases>
+   <release  version="3.5.1" date="2026-05-30">
+     <description>
+       <ul>
+	 <li>Update translations</li>
+	 <li>Update build docs [MaizeShark]</li>
+	 <li>[sfos] Workaround for SFOS 5.1</li>
+       </ul>
+     </description>
+   </release>
    <release  version="3.5.0" date="2026-01-08">
      <description>
        <ul>

@@ -1,3 +1,10 @@
+2026-05-30: Pure Maps 3.5.1
+===========================
+
+* Update translations
+* Update build docs [MaizeShark]
+* [sfos] Workaround for SFOS 5.1
+
 2026-01-08: Pure Maps 3.5.0
 ===========================
 
