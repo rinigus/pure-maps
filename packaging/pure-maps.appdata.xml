@@ -19,6 +19,13 @@
  <url type="donation">https://rinigus.github.io/donate</url>
  <url type="translate">https://www.transifex.com/rinigus/pure-maps</url>
  <launchable type="desktop-id">io.github.rinigus.PureMaps.desktop</launchable>
+ <supports>
+  <control>touch</control>
+  <control>pointing</control>
+ </supports>
+ <requires>
+  <display_length compare="ge">360</display_length>
+ </requires>
  <provides>
   <binary>pure-maps</binary>
  </provides>
