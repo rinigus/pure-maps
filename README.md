@@ -83,7 +83,7 @@ Methods:
 * `Clear()` - stops navigation and removes current route
 
 * `Start() -> Boolean` - start navigation and returns `true` if
-  succesful. If already started or has no route defined, will return
+  successful. If already started or has no route defined, will return
   `false` to indicate failure.
 
 * `Stop()` - stop navigation if running.
