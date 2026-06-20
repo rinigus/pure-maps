@@ -52,6 +52,7 @@ ComboBoxPL {
 
         index = model.indexOf(languages[index].name);
         comboBox.currentIndex = index;
+        languageIndex = index
     }
     onCurrentIndexChanged: {
         if (comboBox.currentIndex < 0) return;
