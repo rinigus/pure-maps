@@ -23,6 +23,14 @@
   <binary>pure-maps</binary>
  </provides>
  <project_license>GPL-3.0-or-later</project_license>
+ <supports>
+   <control>keyboard</control>
+   <control>pointing</control>
+   <control>touch</control>
+ </supports>
+ <requires>
+   <display_length compare="ge">360</display_length>
+ </requires>
  <screenshots>
   <screenshot type="default">
    <caption>Main screen of the application</caption>
