@@ -57,7 +57,7 @@ PositionSource::PositionSource(QObject *parent) : QObject(parent)
 #endif
     }
 
-  m_source->setPreferredPositioningMethods(QGeoPositionInfoSource::SatellitePositioningMethods);
+  m_source->setPreferredPositioningMethods(QGeoPositionInfoSource::AllPositioningMethods);
 
   connect(m_source, &QGeoPositionInfoSource::positionUpdated,
           this, &PositionSource::onPositionUpdated);
