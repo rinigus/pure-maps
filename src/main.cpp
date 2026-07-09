@@ -27,6 +27,7 @@
 #include <QStringList>
 #include <QScopedPointer>
 #include <QTranslator>
+#include <QUrl>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #ifdef IS_QTCONTROLS_QT
@@ -221,7 +222,11 @@ int main(int argc, char *argv[])
 #endif
 #ifdef IS_QTCONTROLS_QT
   engine.addImportPath(DEFAULT_DATA_PREFIX);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
   engine.loadFromModule("pm", "Main");
+#else
+  engine.load(QUrl::fromLocalFile(QStringLiteral(DEFAULT_DATA_PREFIX "qml/Main.qml")));
+#endif
 
   if (engine.rootObjects().isEmpty())
     {
