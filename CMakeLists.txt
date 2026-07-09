@@ -137,7 +137,7 @@ if(RUN_FROM_SOURCE)
 
     add_custom_command(OUTPUT .platformlink.set.${FLAVOR}
         COMMAND rm -f ${CMAKE_CURRENT_SOURCE_DIR}/qml/platform .platformlink.set.*
-        COMMAND ln -s platform.${FLAVOR} ${CMAKE_CURRENT_SOURCE_DIR}/qml/platform
+        COMMAND ln -s ${CMAKE_CURRENT_BINARY_DIR}/qml/platform ${CMAKE_CURRENT_SOURCE_DIR}/qml/platform
         COMMAND touch .platformlink.set.${FLAVOR})
     add_custom_target(run_from_source ALL
         DEPENDS .platformlink.set.${FLAVOR})

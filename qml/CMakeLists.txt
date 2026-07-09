@@ -40,7 +40,7 @@ add_custom_command(
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/platform/qmldir
     COMMAND ${GENERATE_QMLDIR_SCRIPT} ${CMAKE_CURRENT_BINARY_DIR}/platform pm.platform
-    DEPENDS ${GENERATE_QMLDIR_SCRIPT} ${_PLATFORM_FILES} 
+    DEPENDS ${GENERATE_QMLDIR_SCRIPT} ${_RESOLVED_FILES}
     COMMENT "Generating qmldir for module pm.platform"
 )
 

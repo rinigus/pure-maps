@@ -127,45 +127,6 @@ the value of the property has changed.
   readable form.
 
 
-
-## Development
-
-For development of Pure Maps and testing on desktop, you would have to
-choose platform for which you develop, install dependencies, and be
-able to run the application. In this case, Qt Creator can be used. See
-details below.
-
-Alternative, is to use Flatpak-based environment and develop using
-that. For this approach, see separate
-[README](packaging/flatpak/README.md).
-
-Building and Debugging for Ubuntu Touch is described in
-[README](packaging/click/README.md).
-
-
-## Platforms
-
-To support multiple platforms, QML code is split into
-platform-specific and platform-independent parts. Platform-independent
-part is in `qml` folder with the platform-dependent code under
-`qml/<platform-id>`. Correct platform is picked up in installation
-phase (`make install`) or is set by `make` for local builds.
-
-Within platform-independent code, platform is included allowing to
-access platform-specific implementations of page stack, file dialog,
-and other specific aspects. For this approach to work, API in the
-platform specific implementation has to be the same for all platforms.
-
-To add new platform, add new directory under `qml`, new Makefile
-target to set it, and implement all the required QML items. Take a
-look under other platforms for examples.
-
-## Building from Source
-
-To build PureMaps from source, please refer to the [Build.md](./Build.md) file.
-It provides comprehensive instructions for compiling the application on systems such as Debian 12 and Ubuntu 24.04.
-
-
 ## API keys
 
 Note that you will need API keys if you wish to access the services
@@ -195,6 +156,72 @@ Ubuntu Touch specific instructions are available in
 
 
 ## Development
+
+## Development environment
+
+For development of Pure Maps and testing on desktop, you would have to
+choose platform for which you develop, install dependencies, and be
+able to run the application. In this case, Qt Creator or VSCode can be used.
+
+Alternative is to use Dev Containers. Three containers are available:
+
+* `Qt5 Latest (Debian 12)` provides the latest Qt 5 packages available in
+  Debian 12, currently Qt 5.15.8.
+* `Qt6 Stable (Debian 13)` provides the stable Qt 6 packages available in
+  Debian 13, currently Qt 6.8.2.
+* `Qt6 Latest (Fedora 44)` tracks the latest Qt 6 packages released by
+  Fedora 44.
+
+To use them, install a Dev Containers compatible editor extension, such as
+VSCode Dev Containers, and make sure either Docker or Podman is available.
+Open the Pure Maps source tree in the editor, run the "Dev Containers: Reopen
+in Container" command, and select one of the containers above. The container
+builds the development dependencies and mounts the source tree at `/workspace`.
+If you switch containers later, use the "Dev Containers: Rebuild and Reopen in
+Container" command so the selected image is rebuilt.
+See [Dev Container README](.devcontainer/README.md) for details about containers.
+
+There are two CMake presets available: `debug-kirigami-qt5` for Qt 5 and `debug-qtcontrols6` for Qt 6.
+Both presets use Ninja, write the build tree to `build`, set
+`CMAKE_INSTALL_PREFIX` to `install` under the source tree, enable
+`RUN_FROM_SOURCE`, and bundle the development copies of GPXPy and the Geoclue2
+Qt plugin. Configure with
+`cmake --preset <preset-name>` and build with `cmake --build build`.
+
+Do not run `cmake --install` for builds configured with these presets. They are
+made for running Pure Maps directly from the source folder, and CMake emits a
+warning for this configuration. For installation or packaging, use a separate
+build configured without `RUN_FROM_SOURCE`.
+
+Another alternative, is to use Flatpak-based environment and develop using
+that. For this approach, see separate
+[README](packaging/flatpak/README.md).
+
+Building and Debugging for Ubuntu Touch is described in
+[README](packaging/click/README.md).
+
+
+## Platforms
+
+To support multiple platforms, QML code is split into
+platform-specific and platform-independent parts. Platform-independent
+part is in `qml` folder with the platform-dependent code under
+`qml/<platform-id>`. Correct platform is picked up in installation
+phase (`make install`) or is set by `make` for local builds.
+
+Within platform-independent code, platform is included allowing to
+access platform-specific implementations of page stack, file dialog,
+and other specific aspects. For this approach to work, API in the
+platform specific implementation has to be the same for all platforms.
+
+To add new platform, add new directory under `qml`, new Makefile
+target to set it, and implement all the required QML items. Take a
+look under other platforms for examples.
+
+## Building from Source
+
+To build PureMaps from source, please refer to the [Build.md](./Build.md) file.
+It provides comprehensive instructions for compiling the application on systems such as Debian 12 and Ubuntu 24.04.
 
 ### General
 

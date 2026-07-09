@@ -1,0 +1,61 @@
+{
+  "name": "Qt6 Latest (Fedora 44)",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "INSTALL_MAP_QML_DEPS": "true"
+    }
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.devcontainer/state/config ${localWorkspaceFolder}/.devcontainer/state/fedora-qt6/local ${localWorkspaceFolder}/.devcontainer/state/fedora-qt6/cache",
+  "remoteUser": "dev",
+  "updateRemoteUserUID": true,
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}",
+    "XAUTHORITY": "/home/dev/.Xauthority",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/tmp/host-dbus/session-bus",
+    "PULSE_SERVER": "unix:/tmp/host-pulse/native",
+    "XDG_RUNTIME_DIR": "/tmp/runtime-dev",
+    "QT_X11_NO_MITSHM": "1"
+  },
+  "runArgs": [
+    "--device=/dev/dri",
+    "--security-opt=label:disable",
+    "--userns=keep-id",
+    "--volume=/tmp/.X11-unix:/tmp/.X11-unix:ro",
+    "--volume=${localEnv:HOME}/.Xauthority:/home/dev/.Xauthority:ro",
+    "--volume=${localWorkspaceFolder}/.devcontainer/state/config:/home/dev/.config",
+    "--volume=${localWorkspaceFolder}/.devcontainer/state/fedora-qt6/local:/home/dev/.local",
+    "--volume=${localWorkspaceFolder}/.devcontainer/state/fedora-qt6/cache:/home/dev/.cache",
+    "--volume=${localEnv:XDG_RUNTIME_DIR}/bus:/tmp/host-dbus/session-bus",
+    "--volume=${localEnv:XDG_RUNTIME_DIR}/pulse/native:/tmp/host-pulse/native",
+    "--volume=/run/dbus/system_bus_socket:/run/dbus/system_bus_socket:ro"
+  ],
+  "shutdownAction": "stopContainer",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "theqtcompany.qt",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "twxs.cmake"
+      ],
+      "settings": {
+        "cmake.configureOnOpen": true,
+        "cmake.useCMakePresets": "always",
+        "qt-core.additionalQtPaths": [
+          {
+            "name": "Qt-6-fedora",
+            "path": "/usr/bin/qmake6"
+          }
+        ],
+        "qt-qml.doNotAskForQmllsDownload": true,
+        "qt-qml.qmlls.customExePath": "/usr/lib64/qt6/bin/qmlls",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}

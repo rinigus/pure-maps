@@ -1,0 +1,37 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "debug-kirigami-qt5",
+      "displayName": "Debug Kirigami Qt5",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "FLAVOR": "kirigami",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+        "RUN_FROM_SOURCE": "ON",
+        "USE_BUNDLED_GPXPY": "ON",
+        "USE_BUNDLED_GEOCLUE2": "ON",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "APP_ORG": "io.github.rinigus"
+      }
+    },
+    {
+      "name": "debug-qtcontrols6",
+      "displayName": "Debug QtControls Qt6",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "FLAVOR": "qtcontrols6",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+        "RUN_FROM_SOURCE": "ON",
+        "USE_BUNDLED_GPXPY": "ON",
+        "USE_BUNDLED_GEOCLUE2": "ON",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "APP_ORG": "io.github.rinigus"
+      }
+    }
+  ]
+}
