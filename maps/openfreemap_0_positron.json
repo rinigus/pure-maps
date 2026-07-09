@@ -10,6 +10,9 @@
     "name": "OpenFreeMap Positron",
     "profiles": ["mixed", "online"],
     "provider": "OpenFreeMap Positron",
+    "style_gui": {
+        "mapFont": "Noto Sans Regular"
+    },
     "style_url": "https://tiles.openfreemap.org/styles/positron",
     "type": "default"
 }

@@ -43,6 +43,7 @@ StylerPL {
                                           (_itemColBg.b*3+_itemColFg.b)/4,
                                           (_itemColBg.a*3+_itemColFg.a)/4)
     property string maneuver             // maneuver circle inner color
+    property string mapFont              // text font used for POIs
     property string position             // variant of position marker, set to "" for default
     property string positionUncertainty  // position marker uncertainty
     property int    radius: styler.themePaddingMedium // shields radius - do not change in defaults or style
@@ -72,6 +73,7 @@ StylerPL {
         fg = "black";
         iconVariant = "";
         maneuver = "white";
+        mapFont = "Open Sans Regular";
         position = "";
         positionUncertainty = "#87cefa";
         route = "#0540ff";

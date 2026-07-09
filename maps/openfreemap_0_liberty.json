@@ -10,6 +10,9 @@
     "name": "OpenFreeMap Liberty",
     "profiles": ["mixed", "online"],
     "provider": "OpenFreeMap Liberty",
+    "style_gui": {
+        "mapFont": "Noto Sans Regular"
+    },
     "style_url": "https://tiles.openfreemap.org/styles/liberty",
     "type": "default"
 }
