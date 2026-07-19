@@ -16,12 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick
-import QtQuick.Effects
+import pm.platform 1.0
 
-MultiEffect {
-    shadowBlur: 1.0
-    shadowColor: styler.shadowColor
-    shadowEnabled: true
-    shadowOpacity: 0.35
+DialogPL {
+    hideAcceptButton: true
 }

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 MAPLIBRE_REF="v3.0.0"
-MAPBOX_GL_QML_REF="426eb3de463cdde60f9949e8beb4080b9a017c75"
+MAPBOX_GL_QML_REF="79e0ccc"
 
 QT_VERSION="${1:?usage: build-map-qml-deps.sh <qt5|qt6>}"
 JOBS=$(nproc)

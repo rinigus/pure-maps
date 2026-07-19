@@ -17,11 +17,31 @@
  */
 
 import QtQuick
-import QtQuick.Effects
+import pm.platform 1.0
 
-MultiEffect {
-    shadowBlur: 1.0
-    shadowColor: styler.shadowColor
-    shadowEnabled: true
-    shadowOpacity: 0.35
+PagePL {
+    id: page
+
+    acceptCallback: () => page.accepted()
+    acceptText: app.tr("Accept")
+    isDialog: true
+
+    property var    acceptDestination
+    property bool   acceptDestinationPop: false
+    property alias  canAccept: page.canNavigateForward
+
+    signal accepted
+
+    onAccepted: {
+        if (acceptDestination) {
+            if (acceptDestinationPop) app.pages.pop(acceptDestination);
+            else app.push(acceptDestination);
+        } else {
+            app.pages.pop();
+        }
+    }
+
+    function accept() {
+        if (canAccept) accepted();
+    }
 }

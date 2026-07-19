@@ -16,12 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick
-import QtQuick.Effects
+import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
 
-MultiEffect {
-    shadowBlur: 1.0
-    shadowColor: styler.shadowColor
-    shadowEnabled: true
-    shadowOpacity: 0.35
+Kirigami.FormLayout {
+    anchors.left: parent.left
+    anchors.leftMargin: styler.themeHorizontalPageMargin
+    anchors.right: parent.right
+    anchors.rightMargin: styler.themeHorizontalPageMargin
+    wideMode: false
+
+    property bool isFormLayout: true
+    property int  spacing // column compatibility
 }

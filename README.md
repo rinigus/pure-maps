@@ -181,8 +181,9 @@ If you switch containers later, use the "Dev Containers: Rebuild and Reopen in
 Container" command so the selected image is rebuilt.
 See [Dev Container README](.devcontainer/README.md) for details about containers.
 
-There are two CMake presets available: `debug-kirigami-qt5` for Qt 5 and `debug-qtcontrols6` for Qt 6.
-Both presets use Ninja, write the build tree to `build`, set
+There are three CMake presets available: `debug-kirigami-qt5` for Qt 5,
+`debug-qtcontrols6` for Qt 6, and `debug-kirigami6` for Qt 6 with Kirigami.
+These presets use Ninja, write the build tree to `build`, set
 `CMAKE_INSTALL_PREFIX` to `install` under the source tree, enable
 `RUN_FROM_SOURCE`, and bundle the development copies of GPXPy and the Geoclue2
 Qt plugin. Configure with

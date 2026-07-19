@@ -16,12 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick
-import QtQuick.Effects
+import org.kde.kirigami as Kirigami
 
-MultiEffect {
-    shadowBlur: 1.0
-    shadowColor: styler.shadowColor
-    shadowEnabled: true
-    shadowOpacity: 0.35
+Kirigami.Action {
+    id: action
+
+    icon.name: iconName
+
+    property string iconName
+    property bool isAction: true
+
+    signal clicked
+
+    onTriggered: clicked()
 }
