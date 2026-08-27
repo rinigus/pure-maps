@@ -3,9 +3,7 @@
   "build": {
     "dockerfile": "Dockerfile",
     "context": "..",
-    "args": {
-      "INSTALL_MAP_QML_DEPS": "true"
-    }
+    "args": {}
   },
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",

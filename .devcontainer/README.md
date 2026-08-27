@@ -5,33 +5,7 @@ Maps from the source tree. The containers are intended for local development
 with a Dev Containers compatible editor and either Podman or Docker (tested
 with Podman only so far).
 
-## Naming
-
-Container display names focus on the Qt version first and keep the base system
-in parentheses:
-
-* `Qt5 Latest (Debian 12)` uses the latest Qt 5 packages shipped by Debian 12.
-* `Qt6 Stable (Debian 13)` uses the stable Qt 6 packages shipped by Debian 13.
-* `Qt6 Latest (Fedora 44)` tracks the latest Qt 6 packages released by Fedora.
-
-Directory names use the base distribution family first, followed by the Qt line,
-for stable paths used by mounts and cache directories. Distribution release
-numbers are intentionally kept out of these names so the base image version can
-change without changing the Dev Container entry or state directory name:
-
-* `debian-qt5`
-* `debian-qt6`
-* `fedora-qt6`
-
-The scripts use `qt5` and `qt6` as short arguments when the build step only
-needs to know the Qt major version.
-
-## Layout
-
-Each container directory contains a `devcontainer.json` and a `Dockerfile`.
-The build context is `.devcontainer`, which allows each Dockerfile to copy
-shared scripts from `common` while keeping distro-specific package installation
-in the per-container Dockerfile.
+## Shared scripts
 
 The shared scripts are organized as follows:
 
@@ -49,13 +23,6 @@ The shared scripts are organized as follows:
 
 Source archives cloned during image builds are placed under `/opt` and removed
 before the image layer completes.
-
-## Build Options
-
-All containers define the `INSTALL_MAP_QML_DEPS` build argument and set it to
-`true` from `devcontainer.json`. When enabled, the image builds MapLibre Native
-Qt and `mapbox-gl-qml` during image creation. Set this argument to `false` only
-when you intentionally want a lighter image without those QML map dependencies.
 
 The Debian containers install Qt and most runtime dependencies from distro
 packages. The Fedora container installs Qt from Fedora packages too, but builds

@@ -3,7 +3,6 @@ FROM fedora:44
 ARG USERNAME=dev
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
-ARG INSTALL_MAP_QML_DEPS=true
 
 COPY common/build-s2geometry.sh /tmp/build-s2geometry.sh
 COPY common/build-pyotherside.sh /tmp/build-pyotherside.sh
@@ -62,7 +61,7 @@ RUN chmod +x /tmp/build-pyotherside.sh \
     && rm -f /tmp/build-pyotherside.sh
 
 RUN chmod +x /tmp/build-map-qml-deps.sh \
-    && if [ "${INSTALL_MAP_QML_DEPS}" = "true" ]; then /tmp/build-map-qml-deps.sh qt6; fi \
+    && /tmp/build-map-qml-deps.sh qt6 \
     && ldconfig \
     && rm -f /tmp/build-map-qml-deps.sh
 
