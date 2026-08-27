@@ -76,6 +76,7 @@ The containers also mount selected host runtime paths so the desktop
 application can be launched from inside the container:
 
 * `/tmp/.X11-unix` and `${HOME}/.Xauthority` provide X11 access.
+* `${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}` provides Wayland access.
 * `${XDG_RUNTIME_DIR}/bus` provides the host session D-Bus socket.
 * `${XDG_RUNTIME_DIR}/pulse/native` provides PulseAudio access.
 * `/run/dbus/system_bus_socket` provides read-only access to the system D-Bus
@@ -112,9 +113,10 @@ session.
 
 ## Runtime Notes
 
-The runtime mounts are aimed at Linux desktop sessions with X11, D-Bus,
-PulseAudio, and `/dev/dri` available on the host. Wayland-only or sandboxed host
-setups may need additional local adjustments.
+The runtime mounts are aimed at Linux desktop sessions with X11, Wayland, D-Bus,
+PulseAudio, and `/dev/dri` available on the host. The images include the matching
+Qt Wayland plugin and the devcontainers default `QT_QPA_PLATFORM` to `wayland`.
+Use `QT_QPA_PLATFORM=xcb` to force X11/Xwayland when needed.
 
 The `--userns=keep-id` and `--security-opt=label:disable` run arguments are
 included for Podman-friendly host integration. Docker generally ignores user

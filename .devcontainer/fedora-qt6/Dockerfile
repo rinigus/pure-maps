@@ -44,6 +44,7 @@ RUN dnf install -y \
         qt6-qtsvg-devel \
         qt6-qttools-devel \
         qt6-qttools \
+        qt6-qtwayland \
         sudo \
         which \
         xz \

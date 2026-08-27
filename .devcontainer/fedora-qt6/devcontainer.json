@@ -14,6 +14,8 @@
   "updateRemoteUserUID": true,
   "containerEnv": {
     "DISPLAY": "${localEnv:DISPLAY}",
+    "WAYLAND_DISPLAY": "/tmp/host-wayland/${localEnv:WAYLAND_DISPLAY}",
+    "QT_QPA_PLATFORM": "wayland",
     "XAUTHORITY": "/home/dev/.Xauthority",
     "DBUS_SESSION_BUS_ADDRESS": "unix:path=/tmp/host-dbus/session-bus",
     "PULSE_SERVER": "unix:/tmp/host-pulse/native",
@@ -25,6 +27,7 @@
     "--security-opt=label:disable",
     "--userns=keep-id",
     "--volume=/tmp/.X11-unix:/tmp/.X11-unix:ro",
+    "--volume=${localEnv:XDG_RUNTIME_DIR}/${localEnv:WAYLAND_DISPLAY}:/tmp/host-wayland/${localEnv:WAYLAND_DISPLAY}:ro",
     "--volume=${localEnv:HOME}/.Xauthority:/home/dev/.Xauthority:ro",
     "--volume=${localWorkspaceFolder}/.devcontainer/state/config:/home/dev/.config",
     "--volume=${localWorkspaceFolder}/.devcontainer/state/fedora-qt6/local:/home/dev/.local",

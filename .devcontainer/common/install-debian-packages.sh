@@ -56,6 +56,7 @@ QT5_PACKAGES=(
   qtquickcontrols2-5-dev
   qttools5-dev
   qttools5-dev-tools
+  qtwayland5
   qml-module-io-thp-pyotherside
   qml-module-org-kde-kirigami2
   qml-module-qt-labs-platform
@@ -83,6 +84,7 @@ QT6_PACKAGES=(
   qt6-svg-plugins
   qt6-tools-dev
   qt6-tools-dev-tools
+  qt6-wayland
   qml6-module-io-thp-pyotherside
   qml6-module-org-kde-kirigami
   qml6-module-qt-labs-platform
