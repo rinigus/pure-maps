@@ -11,8 +11,7 @@ dist
 /libs
 rpm/*.rpm
 tools/apikeys.py
-/build/
-/qml/platform
+/build*/
 /.clickable/
 /.devcontainer/state/
 /clickable.yaml

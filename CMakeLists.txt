@@ -132,15 +132,22 @@ find_package(s2 REQUIRED)
 
 # handle request for running from source dir
 if(RUN_FROM_SOURCE)
-    set(DATADIR ${CMAKE_CURRENT_SOURCE_DIR})
+    set(DATADIR ${CMAKE_CURRENT_BINARY_DIR}/runtime/share)
     set(DATADIR_RUNNING ${DATADIR})
 
-    add_custom_command(OUTPUT .platformlink.set.${FLAVOR}
-        COMMAND rm -f ${CMAKE_CURRENT_SOURCE_DIR}/qml/platform .platformlink.set.*
-        COMMAND ln -s ${CMAKE_CURRENT_BINARY_DIR}/qml/platform ${CMAKE_CURRENT_SOURCE_DIR}/qml/platform
-        COMMAND touch .platformlink.set.${FLAVOR})
-    add_custom_target(run_from_source ALL
-        DEPENDS .platformlink.set.${FLAVOR})
+    set(_RUNTIME_DATA_STAMP ${DATADIR}/.source-links)
+    add_custom_command(OUTPUT ${_RUNTIME_DATA_STAMP}
+        COMMAND rm -rf ${DATADIR}
+        COMMAND mkdir -p ${DATADIR}
+        COMMAND ln -s -r ${CMAKE_CURRENT_SOURCE_DIR}/geocoders ${DATADIR}/geocoders
+        COMMAND ln -s -r ${CMAKE_CURRENT_SOURCE_DIR}/guides ${DATADIR}/guides
+        COMMAND ln -s -r ${CMAKE_CURRENT_SOURCE_DIR}/locale ${DATADIR}/locale
+        COMMAND ln -s -r ${CMAKE_CURRENT_SOURCE_DIR}/maps ${DATADIR}/maps
+        COMMAND ln -s -r ${CMAKE_CURRENT_SOURCE_DIR}/poor ${DATADIR}/poor
+        COMMAND ln -s -r ${CMAKE_CURRENT_SOURCE_DIR}/routers ${DATADIR}/routers
+        COMMAND ln -s -r ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty ${DATADIR}/thirdparty
+        COMMAND touch ${_RUNTIME_DATA_STAMP})
+    add_custom_target(runtime_data ALL DEPENDS ${_RUNTIME_DATA_STAMP})
     message(WARNING "Please DO NOT run 'cmake --install' in this build")
 else()
     set(DATADIR ${CMAKE_INSTALL_FULL_DATAROOTDIR}/${APP_NAME})
@@ -208,6 +215,11 @@ add_subdirectory(poor)
 add_subdirectory(thirdparty)
 add_subdirectory(src)
 add_subdirectory(po)
+
+if(RUN_FROM_SOURCE)
+    add_custom_target(run_from_source ALL)
+    add_dependencies(run_from_source generate_qmldir runtime_data)
+endif()
 
 # appdata
 install(FILES packaging/pure-maps.appdata.xml
