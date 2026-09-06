@@ -93,15 +93,6 @@ if(FLAVOR STREQUAL "silica")
         )
 endif()
 
-if(NOT RUN_FROM_SOURCE AND QT_VERSION_MAJOR EQUAL 6)
-    target_link_libraries(${APP_NAME}
-        PureMapsQml
-        PureMapsQmlplugin
-        PureMapsPlatformQml
-        PureMapsPlatformQmlplugin
-    )
-endif()
-
 if (NOT RUN_FROM_SOURCE)
     install(TARGETS ${APP_NAME}
         DESTINATION ${CMAKE_INSTALL_BINDIR})
