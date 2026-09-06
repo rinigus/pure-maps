@@ -167,8 +167,6 @@ Alternative is to use Dev Containers. Three containers are available:
 
 * `Qt5 Latest (Debian 12)` provides the latest Qt 5 packages available in
   Debian 12, currently Qt 5.15.8.
-* `Qt6 Stable (Debian 13)` provides the stable Qt 6 packages available in
-  Debian 13, currently Qt 6.8.2.
 * `Qt6 Latest (Fedora 44)` tracks the latest Qt 6 packages released by
   Fedora 44.
 
