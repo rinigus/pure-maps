@@ -33,7 +33,7 @@ FormLayoutPL {
         value: selectedFile ? selectedFile : app.tr("None")
         width: parent.width
         onClicked: {
-            var dialog = app.pages.push(Qt.resolvedUrl("../qml/platform/FileSelectorPL.qml"),
+            var dialog = app.pages.push(Qt.resolvedUrl("../pm/platform/FileSelectorPL.qml"),
                                         {"nameFilters": [ '*.gpx' ]});
             dialog.selected.connect(function() {
                 selectedFile = dialog.selectedFilepath;

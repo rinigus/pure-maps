@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
   // add fallback icon path
-  QString icons_extra_path(QStringLiteral(DEFAULT_DATA_PREFIX "qml/icons/fallback"));
+  QString icons_extra_path(QStringLiteral(DEFAULT_DATA_PREFIX "pm/icons/fallback"));
   if (QFileInfo::exists(icons_extra_path))
     {
       std::cout << "Fallback icons at " << icons_extra_path.toStdString() << "\n";

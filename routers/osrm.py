@@ -65,8 +65,8 @@ cache = {}
 def init_icons():
     """Initialize the global list of maneuver icons."""
     # OSRM's maneuver types and modifiers match Mapbox directions
-    # icons, which are included under qml/icons/navigation.
-    directory = os.path.join(poor.DATA_DIR, "qml", "icons", "navigation")
+    # icons, which are included under pm/icons/navigation.
+    directory = os.path.join(poor.DATA_DIR, "pm", "icons", "navigation")
     icons = glob.glob("{}/*-white.svg".format(directory))
     icons = list(map(os.path.basename, icons))
     icons = [x.replace("-white.svg", "") for x in icons]
