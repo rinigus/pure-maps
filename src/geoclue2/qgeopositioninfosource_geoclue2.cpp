@@ -47,6 +47,7 @@
 #include <QtCore/QScopedPointer>
 #include <QtCore/QTimer>
 #include <QtDBus/QDBusPendingCallWatcher>
+#include <QGuiApplication>
 
 // Auto-generated D-Bus files.
 #include "clientinterface.h"
@@ -346,12 +347,15 @@ bool PM::QGeoPositionInfoSourceGeoclue2::configureClient()
 
     auto desktopId = QString::fromUtf8(qgetenv("QT_GEOCLUE_APP_DESKTOP_ID"));
     if (desktopId.isEmpty())
+        desktopId = QGuiApplication::desktopFileName().replace(QRegularExpression("\\.desktop$"), "");
+    if (desktopId.isEmpty())
         desktopId = QCoreApplication::applicationName();
     if (desktopId.isEmpty()) {
         qCCritical(lcPositioningGeoclue2) << "Unable to configure the client "
                                              "due to the application desktop id "
                                              "is not set via QT_GEOCLUE_APP_DESKTOP_ID "
-                                             "envirorment variable or QCoreApplication::applicationName";
+                                             "environment variable or QGuiApplication::desktopFileName"
+                                             "or QCoreApplication::applicationName properties";
         setError(AccessError);
         return false;
     }
