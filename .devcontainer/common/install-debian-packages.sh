@@ -3,12 +3,11 @@ set -euo pipefail
 
 QT_VERSION="${1:?usage: install-debian-packages.sh <qt5|qt6>}"
 
-export DEBIAN_FRONTEND=noninteractive
-
 COMMON_PACKAGES=(
   ca-certificates
   git
   build-essential
+  g++
   cmake
   ninja-build
   pkg-config

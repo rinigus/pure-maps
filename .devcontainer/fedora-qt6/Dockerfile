@@ -1,8 +1,8 @@
-FROM fedora:44
+# Build dependencies
+FROM fedora:44 AS deps
 
-ARG USERNAME=dev
-ARG USER_UID=1000
-ARG USER_GID=${USER_UID}
+ENV LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8
 
 COPY common/build-s2geometry.sh /tmp/build-s2geometry.sh
 COPY common/build-pyotherside.sh /tmp/build-pyotherside.sh
@@ -20,6 +20,7 @@ RUN dnf install -y \
         gcc-c++ \
         gettext \
         git \
+        kf6-kirigami \
         libtool \
         make \
         mesa-dri-drivers \
@@ -32,17 +33,14 @@ RUN dnf install -y \
         python3-devel \
         python3-pip \
         python3-setuptools \
-        qt6-qt5compat \
-        qt6-qt5compat-devel \
         qt6-qtbase-devel \
+        qt6-qt5compat \
         qt6-qtdeclarative-devel \
-        qt6-qtlocation-devel \
-        qt6-qtmultimedia-devel \
+        qt6-qtmultimedia \
         qt6-qtpositioning-devel \
-        qt6-qtsensors-devel \
+        qt6-qtsensors \
         qt6-qtsvg-devel \
         qt6-qttools-devel \
-        qt6-qttools \
         qt6-qtwayland \
         sudo \
         which \
@@ -64,6 +62,25 @@ RUN chmod +x /tmp/build-map-qml-deps.sh \
     && /tmp/build-map-qml-deps.sh qt6 \
     && ldconfig \
     && rm -f /tmp/build-map-qml-deps.sh
+
+# Cleanup: drop build-only packages no longer needed to rebuild the app.
+RUN dnf remove -y \
+        autoconf \
+        automake \
+        libtool \
+    && dnf autoremove -y \
+    && dnf clean all \
+    && rm -rf /var/cache/dnf \
+    && ldconfig
+
+# Stage 2: the delivered devcontainer
+FROM scratch
+
+ARG USERNAME=dev
+ARG USER_UID=1000
+ARG USER_GID=${USER_UID}
+
+COPY --from=deps / /
 
 RUN groupadd --gid "${USER_GID}" "${USERNAME}" \
     && useradd --uid "${USER_UID}" --gid "${USER_GID}" -m -s /bin/bash "${USERNAME}" \

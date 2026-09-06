@@ -1,8 +1,7 @@
-FROM debian:13
+# Build dependencies
+FROM debian:13 AS deps
 
-ARG USERNAME=dev
-ARG USER_UID=1000
-ARG USER_GID=${USER_UID}
+ENV DEBIAN_FRONTEND=noninteractive
 
 COPY common/install-debian-packages.sh /tmp/install-debian-packages.sh
 COPY common/build-s2geometry.sh /tmp/build-s2geometry.sh
@@ -21,6 +20,35 @@ RUN chmod +x /tmp/build-map-qml-deps.sh \
     && /tmp/build-map-qml-deps.sh qt6 \
     && ldconfig \
     && rm -f /tmp/build-map-qml-deps.sh
+
+# Cleanup
+RUN apt-get purge -y \
+        autoconf \
+        automake \
+        libtool \
+        libxml2-dev \
+        libxslt1-dev \
+        libpcre2-dev \
+        libpopt-dev \
+        libgeoip-dev \
+        libasound2-dev \
+        libxkbcommon-dev \
+        libicu-dev \
+        zlib1g-dev \
+        xz-utils \
+        wget \
+    && apt-get autoremove --purge -y \
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* \
+    && ldconfig
+
+# Stage 2: the delivered devcontainer
+FROM scratch
+
+ARG USERNAME=dev
+ARG USER_UID=1000
+ARG USER_GID=${USER_UID}
+
+COPY --from=deps / /
 
 RUN groupadd --gid "${USER_GID}" "${USERNAME}" \
     && useradd --uid "${USER_UID}" --gid "${USER_GID}" -m -s /bin/bash "${USERNAME}" \
