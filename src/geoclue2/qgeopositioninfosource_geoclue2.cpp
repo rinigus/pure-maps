@@ -189,8 +189,12 @@ void PM::QGeoPositionInfoSourceGeoclue2::stopUpdates()
 void PM::QGeoPositionInfoSourceGeoclue2::requestUpdate(int timeout)
 {
     if (timeout < minimumUpdateInterval() && timeout != 0) {
-        emit updateTimeout();
-        return;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+      emit errorOccurred(QGeoPositionInfoSource::UpdateTimeoutError);
+#else
+      emit updateTimeout();
+#endif
+      return;
     }
 
     if (m_requestTimer->isActive()) {
@@ -205,7 +209,11 @@ void PM::QGeoPositionInfoSourceGeoclue2::requestUpdate(int timeout)
 void PM::QGeoPositionInfoSourceGeoclue2::setError(QGeoPositionInfoSource::Error error)
 {
     m_error = error;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    emit errorOccurred(m_error);
+#else
     emit QGeoPositionInfoSource::error(m_error);
+#endif
 }
 
 void PM::QGeoPositionInfoSourceGeoclue2::restoreLastPosition()
@@ -389,9 +397,13 @@ void PM::QGeoPositionInfoSourceGeoclue2::requestUpdateTimeout()
 {
     qCDebug(lcPositioningGeoclue2) << "Request update timeout occurred";
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    emit errorOccurred(QGeoPositionInfoSource::UpdateTimeoutError);
+#else
     emit updateTimeout();
+#endif
 
-    stopClient();
+stopClient();
 }
 
 void PM::QGeoPositionInfoSourceGeoclue2::handleNewLocation(const QDBusObjectPath &oldLocation,

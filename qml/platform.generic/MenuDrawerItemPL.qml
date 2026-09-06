@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import ".."
+import pm 1.0
 
 IconListItem {
     id: item

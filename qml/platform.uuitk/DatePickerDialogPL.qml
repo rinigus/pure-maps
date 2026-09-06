@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.9
-import "."
+import pm.platform 1.0
 
 DialogPL {
     id: dialog

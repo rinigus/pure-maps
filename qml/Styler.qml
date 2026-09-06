@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import "platform"
+import pm.platform 1.0
 
 StylerPL {
     id: styler
@@ -43,18 +43,21 @@ StylerPL {
                                           (_itemColBg.b*3+_itemColFg.b)/4,
                                           (_itemColBg.a*3+_itemColFg.a)/4)
     property string maneuver             // maneuver circle inner color
+    property string mapFont              // text font used for POIs
     property string position             // variant of position marker, set to "" for default
     property string positionUncertainty  // position marker uncertainty
     property int    radius: styler.themePaddingMedium // shields radius - do not change in defaults or style
     property string route                // route color on the map. also used for maneuver markers
     property real   routeOpacity         // opacity of route
     property string shadowColor          // shadow color used on map buttons and panels
-    property real   shadowOpacity: 0.35  // shadow opacity - do not change in defaults or style
-    property int    shadowRadius: 10     // shadow radius - do not change in defaults or style
 
     // private properties
     property color  _itemColBg: itemBg
     property color  _itemColFg: itemFg
+
+    Component.onCompleted: {
+        defaults()
+    }
 
     function apply(guistyle) {
         defaults();
@@ -70,6 +73,7 @@ StylerPL {
         fg = "black";
         iconVariant = "";
         maneuver = "white";
+        mapFont = "Open Sans Regular";
         position = "";
         positionUncertainty = "#87cefa";
         route = "#0540ff";
@@ -77,6 +81,5 @@ StylerPL {
         itemFg = "black";
         itemBg = "white";
         shadowColor = "black";
-
     }
 }

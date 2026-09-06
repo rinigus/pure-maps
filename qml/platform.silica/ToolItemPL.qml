@@ -18,7 +18,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "."
+import pm.platform 1.0
 
 BackgroundItem {
     id: item
@@ -32,7 +32,6 @@ BackgroundItem {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: styler.themePaddingLarge
-        fillMode: Image.PreserveAspectFit
     }
 
     Label {

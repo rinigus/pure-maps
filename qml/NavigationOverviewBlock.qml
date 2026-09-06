@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.0
-import "platform"
-import "."
+import pm.platform 1.0
+import pm 1.0
 
 Item {
     id: block
@@ -378,7 +378,7 @@ Item {
             height: parent.height
             opacity: 0.75
             radius: height / 2
-            width: app.navigator.progress * progressTotal.width
+            width: app.navigator ? app.navigator.progress * progressTotal.width : 0
         }
     }
 

@@ -4,6 +4,8 @@
 .cache
 .flatpak-builder
 .pytest_cache
+.qmlls.ini
+qmldir
 __pycache__
 dist
 /libs
@@ -12,6 +14,8 @@ tools/apikeys.py
 /build/
 /qml/platform
 /.clickable/
+/.devcontainer/state/
 /clickable.yaml
 /pure-maps-*.tar.gz
 /CMakeLists.txt.user*
+/venv

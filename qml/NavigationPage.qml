@@ -19,8 +19,8 @@
 import QtQuick 2.0
 import QtPositioning 5.4
 import QtQuick.Layouts 1.1
-import "."
-import "platform"
+import pm 1.0
+import pm.platform 1.0
 
 PagePL {
     id: page

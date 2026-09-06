@@ -9,12 +9,10 @@ This document covers the full process for building and installing **PureMaps** a
 In addition to general QML development packages, the following specific dependencies are required:
 
 * [PyOtherSide](https://github.com/thp/pyotherside)
-* [PyXDG](https://www.freedesktop.org/wiki/Software/pyxdg/)
 * [MapLibre Native Qt](https://github.com/maplibre/maplibre-native-qt)
 * [Mapbox GL QML](https://github.com/rinigus/mapbox-gl-qml)
 * [GPXPy](https://github.com/tkrajina/gpxpy) (available as submodule)
 * [S2 Geometry Library](https://github.com/google/s2geometry)
-* [Nemo DBus](https://github.com/sailfishos/nemo-qml-plugin-dbus) (needed for Kirigami platform)
 
 > When building with **flatpak-builder**, dependencies will be handled via Flatpak manifest.
 
@@ -26,7 +24,7 @@ In addition to general QML development packages, the following specific dependen
 sudo apt update
 sudo apt install -y git build-essential cmake ninja-build pkg-config \
     qt5-qmake libqt5core5a libqt5dbus5 qtbase5-dev qtdeclarative5-dev \
-    python3 python3-pip python3-setuptools python3-xdg \
+    python3 python3-pip python3-setuptools \
     libpcre2-dev libasound2-dev libssl-dev \
     libtool automake autoconf libxml2-dev libxslt1-dev \
     libgeoip-dev libgl1-mesa-dev libgles2-mesa-dev \
@@ -62,18 +60,6 @@ cmake -DBUILD_SHARED_LIBS=ON -DBUILD_PYTHON=OFF -DBUILD_TESTS=OFF -G Ninja ..
 ninja -j$(nproc)
 sudo ninja install
 cd ../..
-```
-
-### Nemo DBus (for Kirigami)
-
-```bash
-wget https://github.com/sailfishos/nemo-qml-plugin-dbus/archive/refs/tags/2.1.27.tar.gz
-tar -xzvf 2.1.27.tar.gz
-cd nemo-qml-plugin-dbus-2.1.27
-qmake
-make -j$(nproc)
-sudo make install
-cd ..
 ```
 
 ### PyOtherSide

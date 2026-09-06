@@ -17,8 +17,7 @@
  */
 
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
-import "platform"
+import pm.platform 1.0
 
 Item {
     id: item
@@ -43,11 +42,8 @@ Item {
         color: item.pressed ? styler.itemPressed : styler.itemBg
         height: wh
         layer.enabled: true
-        layer.effect: DropShadow {
-            color: item.pressed ? "transparent" : styler.shadowColor
-            opacity: styler.shadowOpacity
-            radius: styler.shadowRadius
-            samples: 1 + radius*2
+        layer.effect: ShadowPL {
+            shadowEnabled: !item.pressed
         }
         opacity: item.enabled ? 1.0 : 0.75
         radius: wh/2

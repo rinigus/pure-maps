@@ -1,0 +1,1 @@
+../platform.qtcontrols6/LabelPL.qml

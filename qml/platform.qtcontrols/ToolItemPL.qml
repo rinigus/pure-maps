@@ -18,7 +18,7 @@
 
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import "."
+import pm.platform 1.0
 
 Item {
     id: host
@@ -39,7 +39,6 @@ Item {
             anchors.horizontalCenter: item.horizontalCenter
             anchors.top: item.top
             anchors.topMargin: styler.themePaddingLarge
-            fillMode: Image.PreserveAspectFit
             height: styler.themeItemSizeSmall
         }
 

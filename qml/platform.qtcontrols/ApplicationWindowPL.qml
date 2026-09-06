@@ -19,7 +19,8 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
-import "."
+import org.puremaps 1.0
+import pm.platform 1.0
 
 ApplicationWindow {
     id: appWindow
@@ -38,10 +39,8 @@ ApplicationWindow {
     property bool   keepAlive: false
     property bool   keepAliveBackground: false // not used
 
-    ScreenSaver {
-        name: "Pure Maps"
-        preventBlanking: active && keepAlive
-        reason: "Showing Maps"
+    ScreenSaverInhibitor {
+        active: appWindow.active && appWindow.keepAlive
     }
 
     StackView {

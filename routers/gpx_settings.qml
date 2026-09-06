@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import "../qml/platform"
+import pm.platform 1.0
 
 FormLayoutPL {
     id: settingsBlock

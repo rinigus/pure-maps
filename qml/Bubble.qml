@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import "platform"
+import pm.platform 1.0
 
 Rectangle {
     id: bubble
@@ -184,6 +184,6 @@ Rectangle {
         }
     }
 
-    onWidthChanged: label.doLayout();
+    onWidthChanged: if (qtMajorVersion === 5) { label.doLayout(); }
 
 }

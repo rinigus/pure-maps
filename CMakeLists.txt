@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.1) # Latest version as supported by Ubuntu Touch
+cmake_minimum_required(VERSION 3.10.0)
 
 project(pure-maps
     VERSION 3.5.1
@@ -8,7 +8,7 @@ project(pure-maps
 set(APP_NAME "" CACHE STRING "Name of the application, specify if custom name is needed")
 set(APP_REV_NAME "" CACHE STRING "Name of the application used for data files, specify if custom name is needed")
 set(APP_ORG "" CACHE STRING "Name of the organization, specify if different from APP_NAME")
-set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami, silica, qtcontrols, uuitk")
+set(FLAVOR "kirigami" CACHE STRING "Platform to build support for. Supported platforms: kirigami6, kirigami, silica, qtcontrols6, qtcontrols, uuitk")
 option(APP_VARIANT_JOLLA_STORE "Set if compiling for Sailfish Jolla Store" OFF)
 set(PYTHON_EXE "auto" CACHE STRING "Set python3 executable. If set to 'auto', cmake will try to find it.")
 option(RUN_FROM_SOURCE "Run from source, this is mainly intended for easy development" OFF)
@@ -33,8 +33,10 @@ endif()
 # check options
 set(VALID_FLAVOR_OPTIONS
     "kirigami"
+    "kirigami6"
     "silica"
     "qtcontrols"
+    "qtcontrols6"
     "uuitk")
 
 if(NOT FLAVOR IN_LIST VALID_FLAVOR_OPTIONS)
@@ -85,9 +87,17 @@ if(NOT APP_ORG)
 endif()
 
 # requirements
-set(QT_MIN_VERSION "5.6.0")
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+
+# determine if it is Qt5 or Qt6
+if(FLAVOR STREQUAL "kirigami6" OR FLAVOR STREQUAL "qtcontrols6")
+    set(QT_VERSION_MAJOR 6)
+    set(QT_MIN_VERSION "6.8.0")
+else()
+    set(QT_VERSION_MAJOR 5)
+    set(QT_MIN_VERSION "5.6.0")
+endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -105,12 +115,16 @@ else()
 endif()
 
 # Qt
-find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Positioning Qml Quick DBus LinguistTools REQUIRED)
-if(FLAVOR STREQUAL "kirigami" OR FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "uuitk")
-    find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Widgets QuickControls2 REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} ${QT_MIN_VERSION} COMPONENTS Gui Positioning Qml Quick DBus LinguistTools REQUIRED)
+if(FLAVOR STREQUAL "kirigami" OR FLAVOR STREQUAL "kirigami6" OR FLAVOR STREQUAL "qtcontrols" OR FLAVOR STREQUAL "qtcontrols6" OR FLAVOR STREQUAL "uuitk")
+    find_package(Qt${QT_VERSION_MAJOR} ${QT_MIN_VERSION} COMPONENTS Widgets QuickControls2 REQUIRED)
 elseif(FLAVOR STREQUAL "silica")
     include(FindPkgConfig)
     pkg_search_module(SAILFISH sailfishapp REQUIRED)
+endif()
+
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt_standard_project_setup(REQUIRES 6.5)
 endif()
 
 # s2
@@ -123,7 +137,7 @@ if(RUN_FROM_SOURCE)
 
     add_custom_command(OUTPUT .platformlink.set.${FLAVOR}
         COMMAND rm -f ${CMAKE_CURRENT_SOURCE_DIR}/qml/platform .platformlink.set.*
-        COMMAND ln -s platform.${FLAVOR} ${CMAKE_CURRENT_SOURCE_DIR}/qml/platform
+        COMMAND ln -s ${CMAKE_CURRENT_BINARY_DIR}/qml/platform ${CMAKE_CURRENT_SOURCE_DIR}/qml/platform
         COMMAND touch .platformlink.set.${FLAVOR})
     add_custom_target(run_from_source ALL
         DEPENDS .platformlink.set.${FLAVOR})
@@ -142,18 +156,21 @@ endif()
 ## extension modules
 file(GLOB GEOCODERS_SRC geocoders/*.json geocoders/*.md geocoders/*.py)
 file(GLOB GEOCODERS_EXTRA LIST_DIRECTORIES false geocoders/test/*)
-install(FILES ${GEOCODERS_SRC} DESTINATION ${DATADIR}/geocoders)
 
 file(GLOB GUIDES_SRC guides/*.json guides/*.md guides/*.qml guides/*.py)
 file(GLOB GUIDES_EXTRA LIST_DIRECTORIES false guides/test/*)
-install(FILES ${GUIDES_SRC} DESTINATION ${DATADIR}/guides)
 
 file(GLOB MAPS_SRC maps/*.json maps/*.md)
-install(FILES ${MAPS_SRC} DESTINATION ${DATADIR}/maps)
 
 file(GLOB ROUTERS_SRC routers/*.json routers/*.md routers/*.qml routers/*.py)
 file(GLOB ROUTERS_EXTRA LIST_DIRECTORIES false routers/test/*)
-install(FILES ${ROUTERS_SRC} DESTINATION ${DATADIR}/routers)
+
+if (NOT RUN_FROM_SOURCE)
+    install(FILES ${GEOCODERS_SRC} DESTINATION ${DATADIR}/geocoders)
+    install(FILES ${GUIDES_SRC} DESTINATION ${DATADIR}/guides)
+    install(FILES ${MAPS_SRC} DESTINATION ${DATADIR}/maps)
+    install(FILES ${ROUTERS_SRC} DESTINATION ${DATADIR}/routers)
+endif()
 
 ## python sources: installed in subdir
 file(GLOB POOR_SRC poor/*.py)
@@ -185,10 +202,11 @@ add_custom_target(Sources SOURCES
     )
 
 # process linking and installation in the subdirs where needed
-add_subdirectory(src)
+
+add_subdirectory(qml)
 add_subdirectory(poor)
 add_subdirectory(thirdparty)
-add_subdirectory(qml)
+add_subdirectory(src)
 add_subdirectory(po)
 
 # appdata
@@ -207,8 +225,8 @@ else()
     # SFOS
     if (APP_VARIANT_JOLLA_STORE)
       install(FILES data/harbour-pure-maps-jolla-store.desktop
-	DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
-	RENAME harbour-pure-maps.desktop)
+	    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
+	    RENAME harbour-pure-maps.desktop)
     else()
       set(DESKTOP_SRC
           data/${APP_REV_NAME}.desktop

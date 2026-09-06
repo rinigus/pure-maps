@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.9
-import "."
-import ".."
+import pm.platform 1.0
+import pm 1.0
 
 Column {
     id: section
@@ -43,10 +43,10 @@ Column {
             property bool expanded: false
 
             IconListItem {
-                icon: expanded ? styler.iconDown : styler.iconForward
+                icon: del.expanded ? styler.iconDown : styler.iconForward
                 iconHeight: styler.themeItemSizeSmall*0.5
                 label: selections[model.index].title
-                labelBold: expanded
+                labelBold: del.expanded
                 onClicked: {
                     if (!del.expanded) closeAll();
                     del.expanded = !del.expanded;
@@ -64,12 +64,12 @@ Column {
 
             Spacer {
                 height: styler.themePaddingLarge
-                visible: expanded
+                visible: del.expanded
             }
 
             Connections {
                 target: section
-                onCloseAll: del.expanded = false
+                function onCloseAll() { del.expanded = false; }
             }
         }
 

@@ -25,6 +25,7 @@ IconImage {
     id: image
 
     color: iconColorize ? styler.themeHighlightColor : "transparent"
+    fillMode: Image.PreserveAspectFit
     name: iconName
     source: iconSource
     sourceSize.height: iconHeight
