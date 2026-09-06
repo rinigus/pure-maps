@@ -1,0 +1,45 @@
+name: Release source archive
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  upload-source-archive:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          submodules: recursive
+
+      - name: Create source archive
+        id: archive
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version="${TAG#pure-maps-}"
+          archive="pure-maps-${version}.tar.gz"
+          timestamp="$(git log -1 --format=%ct)"
+
+          tar \
+            --create \
+            --gzip \
+            --file="$RUNNER_TEMP/$archive" \
+            --directory="$GITHUB_WORKSPACE" \
+            --exclude-vcs \
+            --sort=name \
+            --mtime="@$timestamp" \
+            --transform="s,^\./,pure-maps-${version}/," \
+            .
+
+          echo "path=$RUNNER_TEMP/$archive" >> "$GITHUB_OUTPUT"
+
+      - name: Upload source archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: gh release upload "$TAG" "${{ steps.archive.outputs.path }}" --clobber
