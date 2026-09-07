@@ -20,19 +20,18 @@ import QtQuick
 import QtQuick.Controls
 import pm.platform 1.0
 
+// TODO: Implement a Qt 6 date picker using MonthGrid and DayOfWeekRow.
+// So far, its not used in the current code
 DialogPL {
     id: dialog
 
-    property alias date: cal.selectedDate
+    property date date: new Date()
 
-    Item {
-        height: childrenRect.height
-        width: parent.width
-
-        Calendar {
-            id: cal
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: Math.min(parent.width - 2*styler.themeHorizontalPageMargin, implicitWidth)
-        }
+    Label {
+        anchors.horizontalCenter: parent.horizontalCenter
+        // not translated as its a debug message
+        text: "Date selection is not implemented for Qt 6."
+        width: parent.width - 2 * styler.themeHorizontalPageMargin
+        wrapMode: Text.Wrap
     }
 }
