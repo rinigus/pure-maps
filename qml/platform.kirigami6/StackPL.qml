@@ -115,7 +115,8 @@ Item {
     }
 
     function push(page, options, immediate) {
-        if (typeof page === "string" && page.includes("FileSelectorPL.qml")) {
+        const pageUrl = page.toString ? page.toString() : page;
+        if (typeof pageUrl === "string" && pageUrl.includes("FileSelectorPL.qml")) {
             const fs = app.createObject(page, options ?? {});
             if (!fs) return null;
             fs.open();

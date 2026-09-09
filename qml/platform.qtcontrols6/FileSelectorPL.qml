@@ -24,11 +24,13 @@ import QtQuick.Dialogs
 FileDialog {
     id: fs
 
+    fileMode: FileDialog.OpenFile
+    parentWindow: app
     property string selectedFilepath
     signal selected
 
     onAccepted: {
-        var path = fileUrl.toString();
+        var path = selectedFile.toString();
         // remove prefixed "file://"
         path = path.replace(/^(file:\/{2})/,"");
         // unescape html codes like '%23' for '#'
