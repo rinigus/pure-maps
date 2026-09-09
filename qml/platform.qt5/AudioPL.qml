@@ -19,7 +19,7 @@
 import QtMultimedia 5.6
 
 Audio {
-    audioRole: Audio.NotificationRole
+    // audioRole: Audio.NotificationRole
     autoLoad: true
     loops: 1
 }
