@@ -24,7 +24,7 @@ import pm.platform 1.0
 MenuDrawerPL {
     id: page
 
-    banner: "icons/banner.jpg"
+    banner: Qt.resolvedUrl("icons/banner.jpg")
     title: "Pure Maps"
     titleIcon: "pure-maps"
     pageMenu: PageMenuPL {
