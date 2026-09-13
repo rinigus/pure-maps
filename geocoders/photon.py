@@ -40,7 +40,7 @@ def geocode(query, x=0, y=0, zoom=16, params={}):
     query = urllib.parse.quote_plus(query)
     limit = params.get("limit", 10)
     lang = poor.util.get_default_language("en")
-    lang = (lang if lang in ("de", "en", "it", "fr") else "en")
+    lang = (lang if lang in ("de", "en", "fr") else "en")
     url = URL.format(**locals())
     if x and y:
         url += "&lon={:.3f}".format(x)
@@ -131,7 +131,7 @@ def reverse(x, y, radius, limit=1, params={}):
     lon = x
     lat = y
     lang = poor.util.get_default_language("en")
-    lang = (lang if lang in ("de", "en", "it", "fr") else "en")
+    lang = (lang if lang in ("de", "en", "fr") else "en")
     url = URL_REVERSE.format(**locals())
     with poor.util.silent(KeyError):
         return copy.deepcopy(cache[url])
