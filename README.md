@@ -118,6 +118,9 @@ the value of the property has changed.
 
 * `progress` - current progress along the route in percentage (0-100)
 
+* `route` - path geometry as an array of doubles. Values are (lat, lon)
+  in degrees, ordered from start to destination.
+
 * `running` - whether navigation in active
 
 * `street` - short form of the narrative usually shown in Pure Maps
