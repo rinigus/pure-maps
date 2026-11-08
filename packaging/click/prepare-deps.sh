@@ -45,5 +45,7 @@ git apply $PATCH_DIR/maplibre-native_vendor/*.patch
 cd $ABSEIL_SRC_DIR
 git apply $PATCH_DIR/abseil/*.patch
 
-cd $MIMIC_SRC_DIR
-patch -p1 < $PATCH_DIR/mimic/fix-compilation.patch
+if [ "$ENABLE_MIMIC" == "1" ] ; then
+    cd $MIMIC_SRC_DIR
+    patch -p1 < $PATCH_DIR/mimic/fix-compilation.patch
+fi
