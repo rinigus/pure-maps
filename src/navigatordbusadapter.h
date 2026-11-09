@@ -2,6 +2,7 @@
 #define NAVIGATORDBUSADAPTER_H
 
 #include <QDBusAbstractAdaptor>
+#include <QList>
 #include <QObject>
 
 #include "config.h"
@@ -26,6 +27,7 @@ class NavigatorDBusAdapter : public QDBusAbstractAdaptor
   Q_PROPERTY(QString mode READ mode NOTIFY modeChanged)
   Q_PROPERTY(QString narrative READ narrative NOTIFY narrativeChanged)
   Q_PROPERTY(int     progress READ progress NOTIFY progressChanged)
+  Q_PROPERTY(QList<double> route READ route NOTIFY routeChanged)
   Q_PROPERTY(int     roundaboutExit READ roundaboutExit NOTIFY roundaboutExitChanged)
   Q_PROPERTY(bool    running READ running NOTIFY runningChanged)
   Q_PROPERTY(QString street READ street NOTIFY streetChanged)
@@ -49,6 +51,7 @@ public:
   QString mode() const { return m->mode(); }
   QString narrative() const { return m->narrative(); }
   int     progress() const { return m->progress(); }
+  QList<double> route() const;
   int     roundaboutExit() const { return m->roundaboutExit(); }
   bool    running() const { return m->running(); }
   QString street() const { return m->street(); }
@@ -76,6 +79,7 @@ signals:
   void modeChanged();
   void narrativeChanged();
   void progressChanged();
+  void routeChanged();
   void roundaboutExitChanged();
   void runningChanged();
   void streetChanged();
