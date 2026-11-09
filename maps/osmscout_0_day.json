@@ -12,6 +12,6 @@
     "name": "OSM Scout Day",
     "profiles": ["mixed", "offline"],
     "provider": "OSM Scout",
-    "style_url": "http://localhost:8553/v1/mbgl/style?style=osmbright",
+    "style_url": "http://127.0.0.1:8553/v1/mbgl/style?style=osmbright",
     "type": "default"
 }

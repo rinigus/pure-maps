@@ -12,7 +12,7 @@
     "name": "OSM Scout Car Night",
     "profiles": ["mixed", "offline"],
     "provider": "OSM Scout",
-    "style_url": "http://localhost:8553/v1/mbgl/style?style=mc-car",
+    "style_url": "http://127.0.0.1:8553/v1/mbgl/style?style=mc-car",
     "style_gui": {
         "fg": "white",
         "iconVariant": "white",
