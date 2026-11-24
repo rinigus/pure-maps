@@ -182,7 +182,11 @@ int main(int argc, char *argv[])
 #endif
                                   );
   rootContext->setContextProperty("defaultFontProvider", DEFAULT_FONTPROVIDER);
-  rootContext->setContextProperty("dataDirectory", DATA_DIR);
+  // Resolve the data directory to an absolute path at runtime, because
+  // the relative path fails for poor import
+  const QString dataDir = QDir(QStringLiteral(DEFAULT_DATA_PREFIX)).absolutePath();
+  std::cout << "dataDirectory = " << dataDir.toStdString() << "\n";
+  rootContext->setContextProperty("dataDirectory", dataDir);
 
   rootContext->setContextProperty("qtMajorVersion",
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
