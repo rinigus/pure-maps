@@ -1,0 +1,21 @@
+{
+    "attribution": {
+        "© TomTom": "https://www.tomtom.com"
+    },
+    "format": "raster",
+    "keys": [
+        "TOMTOM_KEY"
+    ],
+    "light": "day",
+    "name": "TomTom Satellite",
+    "profiles": [
+        "mixed",
+        "online"
+    ],
+    "provider": "TomTom",
+    "tile_size": 256,
+    "tile_url": [
+        "https://api.tomtom.com/map/1/tile/sat/main/{z}/{x}/{y}.jpg?key=#TOMTOM_KEY#"
+    ],
+    "type": "satellite"
+}

@@ -1,0 +1,11 @@
+{
+    "attribution": {
+        "© TomTom": "https://www.tomtom.com"
+    },
+    "_description": "Routing by TomTom, with live traffic",
+    "_modes": ["car", "bicycle", "foot"],
+    "keys": ["TOMTOM_KEY"],
+    "name": "TomTom",
+    "source": "tomtom.com",
+    "profiles": ["mixed", "online"]
+}
