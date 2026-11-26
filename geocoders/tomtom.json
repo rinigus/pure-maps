@@ -1,0 +1,9 @@
+{
+    "attribution": {
+        "© TomTom": "https://www.tomtom.com"
+    },
+    "_description": "Search by TomTom. Supports autocomplete",
+    "keys": ["TOMTOM_KEY"],
+    "name": "TomTom",
+    "profiles": ["mixed", "online"]
+}

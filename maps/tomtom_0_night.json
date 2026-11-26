@@ -1,0 +1,36 @@
+{
+    "attribution": {
+        "© TomTom": "https://www.tomtom.com"
+    },
+    "background_color": "#1b1f24",
+    "format": "raster",
+    "keys": [
+        "TOMTOM_KEY"
+    ],
+    "lang": {
+        "local": "NGT",
+        "int": "en-GB",
+        "en": "en-GB",
+        "fr": "fr-FR",
+        "de": "de-DE",
+        "es": "es-ES",
+        "it": "it-IT",
+        "nl": "nl-NL",
+        "pt": "pt-PT",
+        "pl": "pl-PL",
+        "ru": "ru-RU"
+    },
+    "lang_key": "#LANG#",
+    "light": "night",
+    "name": "TomTom Night",
+    "profiles": [
+        "mixed",
+        "online"
+    ],
+    "provider": "TomTom",
+    "tile_size": 256,
+    "tile_url": [
+        "https://api.tomtom.com/map/1/tile/basic/night/{z}/{x}/{y}.png?key=#TOMTOM_KEY#&tileSize=512&view=Unified&language=#LANG#"
+    ],
+    "type": "default"
+}

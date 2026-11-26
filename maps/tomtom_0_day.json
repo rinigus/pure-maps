@@ -1,0 +1,35 @@
+{
+    "attribution": {
+        "© TomTom": "https://www.tomtom.com"
+    },
+    "format": "raster",
+    "keys": [
+        "TOMTOM_KEY"
+    ],
+    "lang": {
+        "local": "NGT",
+        "int": "en-GB",
+        "en": "en-GB",
+        "fr": "fr-FR",
+        "de": "de-DE",
+        "es": "es-ES",
+        "it": "it-IT",
+        "nl": "nl-NL",
+        "pt": "pt-PT",
+        "pl": "pl-PL",
+        "ru": "ru-RU"
+    },
+    "lang_key": "#LANG#",
+    "light": "day",
+    "name": "TomTom Day",
+    "profiles": [
+        "mixed",
+        "online"
+    ],
+    "provider": "TomTom",
+    "tile_size": 256,
+    "tile_url": [
+        "https://api.tomtom.com/map/1/tile/basic/main/{z}/{x}/{y}.png?key=#TOMTOM_KEY#&tileSize=512&view=Unified&language=#LANG#"
+    ],
+    "type": "default"
+}
